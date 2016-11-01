@@ -1,0 +1,33 @@
+{
+  "name": "sba-gov",
+  "version": "0.0.1",
+  "description": "The application repository for sba.gov",
+  "main": "index.js",
+  "scripts": {
+    "run": "node src/index.js",
+    "test": "jest test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sba-ds/sba-gov.git"
+  },
+  "keywords": [
+    "sba",
+    "ds",
+    "node",
+    "react"
+  ],
+  "author": "SBA Digital Services",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sba-ds/sba-gov/issues"
+  },
+  "homepage": "https://github.com/sba-ds/sba-gov#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1"
+  },
+  "devDependencies": {
+    "jest": "^16.0.2"
+  }
+}
