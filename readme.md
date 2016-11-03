@@ -14,7 +14,7 @@ Express.js
 ### Directory Setup for Node Development
 
 Home
-    *app.js - contains the high-level references to init.js, server.js and controller.js
+....*app.js - contains the high-level references to init.js, server.js and controller.js...
     *init.js - other initializations
     *server.js - express intializations
     *controller.js - controller initializations
