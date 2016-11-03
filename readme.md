@@ -1,6 +1,17 @@
-Put some readme information here
+#  SBA.gov Node.js Component
+## aka Katana
 
-Does the JIRA to Github connection work?Directory Setup for Node Development
+This project represents the new development for the SBA.gov website functionality. 
+
+### Major Technologies Used
+Node.js
+React.js
+Gulp
+Webpack
+Express.js
+
+
+Directory Setup for Node Development
 
 Home
     app.js - contains the high-level references to init.js, server.js and controller.js
