@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 module.exports = {
     devtool: 'eval',
     entry: [
@@ -22,11 +23,8 @@ module.exports = {
             include: path.join(__dirname, 'src')
         },{
             test: /\.jsx?$/,
-            loader: 'babel-loader',
+            loaders: ['react-hot', 'babel'],
             exclude: /node_modules/,
-            query: {
-                presets: ['es2015']
-            }
         }]
     }
 };
