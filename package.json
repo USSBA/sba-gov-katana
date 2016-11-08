@@ -4,8 +4,9 @@
   "description": "The application repository for sba.gov",
   "main": "index.js",
   "scripts": {
-    "run": "node src/index.js",
-    "test": "jest test/"
+    "start": "node app.js",
+    "test": "jest test/",
+    "local": "scripts/docker-local.sh"
   },
   "repository": {
     "type": "git",
