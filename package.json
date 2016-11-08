@@ -2,15 +2,16 @@
   "name": "sba-gov",
   "version": "0.0.1",
   "description": "The application repository for sba.gov",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "build" : "docker build -t sba-gov-katana .",
     "test": "jest test/",
     "local": "scripts/docker-local.sh"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sba-ds/sba-gov.git"
+    "url": "git+https://github.com/sba-ds/sba-gov.git",
+    "type": "git"
   },
   "keywords": [
     "sba",
@@ -40,7 +41,10 @@
     "jest": "^16.0.2",
     "react-test-renderer": "^15.3.2"
   },
-  "jest":{
-    "testPathIgnorePatterns":["/node_modules/",".c9"]
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      ".c9"
+    ]
   }
 }

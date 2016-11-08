@@ -1,22 +1,24 @@
 #  SBA.gov Node.js Component
-## aka Katana
+## aka *Katana*
 
-This project represents the new development for the SBA.gov website functionality. 
+This project represents the new development for the SBA.gov website functionality.
+
+For the development environment setup, see development.md
 
 ### Major Technologies Used
-Node.js
-React.js
-Gulp
-Webpack
-Express.js
+* Node.js
+* React.js
+* Gulp
+* Webpack
+* Express.js
 
 
 ### Directory Setup for Node Development
 
 * Home
     * app.js - contains the high-level references to init.js, server.js and controller.js
-    * init.js - other initializations
-    * server.js - express intializations
+    * init.js - configuration bootstrapping
+    * server.js - express initializations
     * controller.js - controller initializations
     * package.json - dependencies
     * public - publically accessible folder for static content
@@ -24,9 +26,14 @@ Express.js
             * images
             * videos
         * build
-    * views
-        * ejs files - view templates can be ejs or pug or anything else
+    * views - pug templates
     * controllers - request handler definitions grouped as controllers
+    * models - for constituting objects retrieved from the database.
+    * utils
+    * client
+        * views
+        * stores
+        * actions
     * test
         * controllers
         * util
@@ -34,10 +41,4 @@ Express.js
             * views
             * stores
             * actions
-    * utils
-    * client
-        * views
-        * stores
-        * actions
-    * models - for constituting objects retrieved from the database.
     * scripts
