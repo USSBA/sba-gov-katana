@@ -12,6 +12,6 @@ This is for the development/build setup guide
 
 ## Build Process
 1. `yarn` to install the dependencies
-2. `gulp` to run the build
+2. `gulp` to run the code cleaning and client resources build
 3. `npm test` to execute the tests
-4. `npm run build` to build the docker container
+4. `npm run build` to build the docker image
