@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 
+
+
 module.exports = {
     devtool: 'eval',
     entry: [
@@ -14,7 +16,12 @@ module.exports = {
         publicPath: '/static/'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ],
     module: {
         loaders: [{
@@ -25,6 +32,15 @@ module.exports = {
             test: /\.jsx?$/,
             loaders: ['react-hot', 'babel'],
             exclude: /node_modules/,
+        },{
+            test: /\.css$/,
+            loader: 'style!css?modules'
+        },{
+            test: /\.scss$/,
+            loaders: ["style", "css?modules", "sass?modules"]
+        },{
+            test: /\.json$/,
+            loader: 'json'
         }]
     }
 };

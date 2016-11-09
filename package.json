@@ -4,7 +4,7 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "babel-node app.js --presets es2015",
     "build": "docker build -t sba-gov-katana .",
     "test": "jest test/",
     "local": "scripts/docker-local.sh"
@@ -30,12 +30,14 @@
     "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^3.0.1",
+    "json-loader": "^0.5.4",
     "pug": "^2.0.0-beta6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "webpack": "^1.12.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
     "babel-jest": "^16.0.0",
@@ -43,11 +45,17 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.0.15",
+    "css-loader": "^0.25.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "jest": "^16.0.2",
+    "node-sass": "^3.11.2",
+    "postcss-loader": "^1.1.0",
     "react-hot-loader": "^1.3.0",
     "react-test-renderer": "^15.3.2",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },

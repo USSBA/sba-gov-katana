@@ -2,7 +2,8 @@
 
 
 var path = require('path');
-var webpack = require('webpack');
+// var webpack = require('webpack');
+import webpack from 'webpack';
 var express = require('express');
 var config = require('./webpack.config');
 
