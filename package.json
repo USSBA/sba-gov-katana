@@ -6,6 +6,7 @@
   "scripts": {
     "start": "babel-node app.js --presets es2015",
     "build": "docker build -t sba-gov-katana .",
+    "build-prod": "webpack --config webpack.config.production.js --progress --profile --colors",
     "test": "jest test/",
     "local": "scripts/docker-local.sh"
   },

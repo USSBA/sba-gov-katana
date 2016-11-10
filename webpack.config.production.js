@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-
 module.exports = {
     devtool: 'eval',
     entry: [
@@ -14,7 +13,12 @@ module.exports = {
         publicPath: '/static/'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     ],
     module: {
         loaders: [{
