@@ -49,6 +49,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^16.0.2",
     "node-sass": "^3.11.2",
     "postcss-loader": "^1.1.0",
@@ -63,6 +64,9 @@
     "testPathIgnorePatterns": [
       "/node_modules/",
       ".c9"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   }
 }
