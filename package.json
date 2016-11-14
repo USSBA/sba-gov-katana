@@ -26,11 +26,11 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^3.0.1",
     "pug": "^2.0.0-beta6"
   },
   "devDependencies": {
+    "eslint": "^3.10.1",
+    "eslint-plugin-react": "^6.7.0",
     "jest": "^16.0.2"
   }
 }
