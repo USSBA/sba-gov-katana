@@ -42,6 +42,3 @@ For the development environment setup, see development.md
             * stores
             * actions
     * scripts
-
-
-jenkins commit test1
