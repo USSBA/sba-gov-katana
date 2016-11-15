@@ -9,6 +9,8 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app/
 RUN cp -a /tmp/node_modules /usr/src/app/
 
+RUN npm test
+
 EXPOSE 3000
 
 CMD ["npm", "start"]
