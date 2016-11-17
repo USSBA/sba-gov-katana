@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Welcome from './welcome.jsx';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux'
+import nameReducer from '../reducers/name.js'
+import LincMain from './linc-main.jsx';
 
-let name = "Scruminati";
+const store = createStore(nameReducer);
+
 
 ReactDOM.render(
-  (<Welcome name={name} />),
+  ( <Provider store={store}>
+      <LincMain />
+    </Provider>),
   document.getElementById('root')
 );
