@@ -21,11 +21,11 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.js$/,
-            loaders: ['react-hot-loader/webpack','babel-loader'],
+            loaders: ['babel-loader'],
             include: path.join(__dirname, 'src')
         }, {
             test: /\.jsx?$/,
-            loaders: ['react-hot-loader/webpack', 'babel-loader'],
+            loaders: ['babel-loader'],
             exclude: /node_modules/
         }, {
             test: /\.css$/,
