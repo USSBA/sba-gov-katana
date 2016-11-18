@@ -1527,9 +1527,11 @@ concat-stream@^1.4.6:
     readable-stream "~2.0.0"
     typedarray "~0.0.5"
 
-config-node@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/config-node/-/config-node-1.3.0.tgz#92d16c18079f87a821e0040c8f4390f7ab3665b0"
+config@^1.24.0:
+  version "1.24.0"
+  resolved "https://registry.yarnpkg.com/config/-/config-1.24.0.tgz#553bc4d77637d6630a305b52c33cb6da2b9f42f0"
+  dependencies:
+    json5 "0.4.0"
 
 connect-history-api-fallback@^1.3.0:
   version "1.3.0"
@@ -3309,7 +3311,7 @@ json3@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
 
-json5@^0.4.0:
+json5@^0.4.0, json5@0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/json5/-/json5-0.4.0.tgz#054352e4c4c80c86c0923877d449de176a732c8d"
 
@@ -3778,10 +3780,6 @@ natural-compare@^1.4.0:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
-
-node-config@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/node-config/-/node-config-0.0.2.tgz#46b40dcfbcb0e66d46a15f81b54eac2130fb150d"
 
 node-emoji@^1.4.1:
   version "1.4.1"

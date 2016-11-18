@@ -6,8 +6,7 @@ var path = require('path');
 import webpack from 'webpack';
 var express = require('express');
 var webpackconfig = require('./webpack.config');
-var config = require('node-config')
-
+var config = require('config');
 
 var app = express();
 var compiler = webpack(webpackconfig);
@@ -28,10 +27,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*',function(req, res){
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/src/index.html');
 });
 
 //listen to port
-let port =  process.env.PORT || config.server.port;
+let port =  config.get('server.port');
 app.listen(port);
 console.log('Express server listening on port '+port);
