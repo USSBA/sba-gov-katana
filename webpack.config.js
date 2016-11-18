@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-
 module.exports = {
     devtool: 'eval',
     entry: [
@@ -9,7 +8,7 @@ module.exports = {
         './src/client/components/main.jsx'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'public', "build"),
         filename: 'bundle.js',
         publicPath: '/static/'
     },
