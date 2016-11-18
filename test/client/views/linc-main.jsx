@@ -3,14 +3,13 @@
 /*eslint-disable no-unused-vars*/
 import React from 'react';
 /*eslint-enable no-unused-vars*/
-import Welcome from '../../../client/views/welcome.jsx';
+import LincMain from '../../../src/client/components/linc-main.jsx';
 import renderer from 'react-test-renderer';
 
-console.log(Welcome);
 
-test('Welcome displays a name', () => {
+test('LincMain renders', () => {
   const component = renderer.create(
-    <Welcome name="Jon" />
+    <LincMain name="Jon" />
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

@@ -1,7 +1,0 @@
-exports[`test Welcome displays a name 1`] = `
-<h1
-  className="app">
-  Hello, 
-  Jon
-</h1>
-`;
