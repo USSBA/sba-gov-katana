@@ -21,17 +21,17 @@ module.exports = {
             test: /\.js$/,
             loaders: ['babel'],
             include: path.join(__dirname, 'src')
-        },{
+        }, {
             test: /\.jsx?$/,
-            loaders: [ 'babel'],
+            loaders: ['babel'],
             exclude: /node_modules/
-        },{
+        }, {
             test: /\.css$/,
             loader: 'style!css?modules'
-        },{
+        }, {
             test: /\.scss$/,
             loaders: ["style", "css?modules", "sass?modules"]
-        },{
+        }, {
             test: /\.json$/,
             loader: 'json'
         }]
