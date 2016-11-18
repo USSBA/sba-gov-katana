@@ -6,6 +6,7 @@ from 'react-redux';
 
 import LandingPage from './landing-page/landing-page.jsx';
 import BorrowerForm from './borrower-form/borrower-form.jsx';
+import SuccessPage from './success-page/success-page.jsx';
 
 class LincMain extends React.Component {
     render() {
@@ -14,6 +15,7 @@ class LincMain extends React.Component {
             <div>
                 <LandingPage class={this.props.page !== 'landingPage' ? "hidden" : ""}/>
                 <BorrowerForm className={this.props.page !== 'borrowerForm' ? "hidden" : ""}/>
+                <SuccessPage className={this.props.page !== 'borrowerForm' ? "hidden" : ""}/>
             </div>
         );
     }
