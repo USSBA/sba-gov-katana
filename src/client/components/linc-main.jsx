@@ -12,8 +12,8 @@ class LincMain extends React.Component {
         console.log(this.props.page);
         return (
             <div>
-                <LandingPage class={this.props.page !== 'landingPage' ? "hidden" : ""}/>
-                <BorrowerForm className={this.props.page !== 'borrowerForm' ? "hidden" : ""}/>
+                <LandingPage className={this.props.page !== 'landingPage' ? "hidden" : ""}/>
+                <BorrowerForm />
             </div>
         );
     }
