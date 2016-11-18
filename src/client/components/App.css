@@ -8,6 +8,32 @@
     display: none;
 }
 
-body{
-    background-color: gray;
+/*body{*/
+    /*background-color: grey;*/
+/*}*/
+
+
+
+
+
+.successHeader{
+    text-align: center;
+}
+
+.successHeader h2{
+    font-size: 30px;
+}
+
+.dynamicContent{
+    background-color: grey;
+    width: 33%;
+    height: 400px;
+}
+
+.dynamicLeft{
+    float: left;
+}
+
+.dynamicRight{
+    float: right;
 }
