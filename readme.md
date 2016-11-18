@@ -8,32 +8,33 @@ For the development environment setup, see development.md
 ### Major Technologies Used
 * Node.js
 * React.js
-* Gulp
+* Redux
 * Webpack
 * Express.js
 
 
 ### Directory Setup for Node Development
 
-* Home
-    * app.js - contains the high-level references to init.js, server.js and controller.js
-    * init.js - configuration bootstrapping
-    * server.js - express initializations
-    * controller.js - controller initializations
+* Root
+    * src
+        * app.js - contains the high-level references to init.js, server.js and controller.js
+        * init.js - configuration bootstrapping
+        * server.js - express initializations
+        * controller.js - controller initializations
+        * views - pug templates
+        * controllers - request handler definitions grouped as controllers
+        * models - for constituting objects retrieved from the database.
+        * utils
+        * client
+            * views
+            * stores
+            * actions
     * package.json - dependencies
     * public - publically accessible folder for static content
         * assets
             * images
             * videos
         * build
-    * views - pug templates
-    * controllers - request handler definitions grouped as controllers
-    * models - for constituting objects retrieved from the database.
-    * utils
-    * client
-        * views
-        * stores
-        * actions
     * test
         * controllers
         * util
