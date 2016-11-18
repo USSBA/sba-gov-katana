@@ -14,8 +14,12 @@ class SuccessPage extends React.Component {
             <div>
                 <Header />
                 <Success />
-                <DynamicLenderMatches />
-                <DynamicCounselingAndTools />
+                <div className="container">
+                    <div className="row">
+                        <DynamicLenderMatches />
+                        <DynamicCounselingAndTools />
+                    </div>
+                </div>
                 <Footer />
             </div>
         )
