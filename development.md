@@ -9,6 +9,10 @@ This is for the development/build setup guide
 3. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
 4. Install yarn https://yarnpkg.com/en/docs/install
 
+## Development Process
+1. `yarn` to install the dependencies
+2. `npm start` to run the server/hot-reloader
+
 
 ## Build Process
 1. `yarn` to install the dependencies
