@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Sanders from '../actions/landing-page-buttons.js'
+import * as Sanders from '../../actions/landing-page-buttons.js'
 
 class ButtonSection extends React.Component{
     render(){

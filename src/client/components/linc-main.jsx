@@ -19,8 +19,4 @@ function mapReduxStateToProps(state){
     };
 }
 
-export default connect(
-mapReduxStateToProps,
-null    
-    
-)(LincMain);
+export default connect(mapReduxStateToProps,null)(LincMain);
