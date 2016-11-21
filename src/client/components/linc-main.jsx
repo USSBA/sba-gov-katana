@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-    connect
-}
+import { connect }
 from 'react-redux';
 
 import LandingPage from './landing-page/landing-page.jsx';
@@ -9,22 +7,14 @@ import BorrowerForm from './borrower-form/borrower-form.jsx';
 import SuccessPage from './success-page/success-page.jsx';
 
 class LincMain extends React.Component {
-    shownIfCurrentPageIs(currentPage) {
-        return this.props.page === currentPage ? "" : "hidden";
-    }
     render() {
-        console.log(this.props.page);
+        const page = this.props.page;
+        console.log(page);
         return (
             <div>
-                <div className={this.shownIfCurrentPageIs('landingPage')}>
-                    <LandingPage />
-                </div>
-                <div className={this.shownIfCurrentPageIs('borrowerForm')}>
-                    <BorrowerForm />
-                </div>
-                <div className={this.shownIfCurrentPageIs('successPage')}>
-                    <SuccessPage />
-                </div>
+                { page === 'landingPage' ? <LandingPage /> : null }
+                { page === 'borrowerForm' ? <BorrowerForm /> : null }
+                { page === 'successPage' ? <SuccessPage /> : null }
             </div>
         );
     }
@@ -36,8 +26,9 @@ LincMain.defaultProps = {
 };
 
 function mapReduxStateToProps(state) {
+    console.log(state)
     return {
-        page: state.currentPage
+        page: state.navigationReducer.currentPage
     };
 }
 
