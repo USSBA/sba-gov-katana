@@ -16,7 +16,7 @@ class BorrowerForm extends React.Component {
             selectInput: this.selectInput.value,
             checkboxInput: this.checkboxInput.value
         };
-        this.props.actions.submitFormData;
+        this.props.actions.submitFormData(formData);
         this.borrowerForm.reset();
     }
 
