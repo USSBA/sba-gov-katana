@@ -4,7 +4,7 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "scripts/run-local.sh",
+    "start": "scripts/run-dev.sh",
     "build": "scripts/build.sh",
     "test": "jest test/",
     "local": "scripts/run-local.sh",
