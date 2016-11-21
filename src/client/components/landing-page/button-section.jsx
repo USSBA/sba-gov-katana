@@ -1,21 +1,21 @@
 import React from 'react';
 import {
-  connect
+    connect
 }
-from 'react-redux';
+    from 'react-redux';
 import {
-  bindActionCreators
+    bindActionCreators
 }
-from 'redux';
+    from 'redux';
 import * as Sanders from '../../actions/navigation.js'
 
 class ButtonSection extends React.Component {
   render() {
     return (
-      <div>
-            <button onClick={event => console.log("you are not ready")}> Am I Ready? </button>
-            <button onClick={this.props.actions.findLenders}> Find Lenders </button> 
-          </div>
+        <div>
+          <button onClick={event => console.log("you are not ready")}> Am I Ready?</button>
+          <button onClick={this.props.actions.findLenders}> Find Lenders</button>
+        </div>
     );
   };
 }
@@ -33,6 +33,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
+    mapReduxStateToProps,
+    mapDispatchToProps
 )(ButtonSection);

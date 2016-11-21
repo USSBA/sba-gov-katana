@@ -4,13 +4,16 @@ const navigationReducer = (state, action) => {
         return {
             currentPage: "borrowerForm"
         };
-    }
-    else {
+    } else {
         return state || {
             currentPage: "landingPage"
         };
     }
-}
+
+};
 
 
 export default navigationReducer;
+
+
+

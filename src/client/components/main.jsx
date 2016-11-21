@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Provider
-}
+import { Provider }
 from 'react-redux';
-import {
-  createStore
-}
+import { createStore, combineReducers }
 from 'redux'
 import navigationReducer from '../reducers/navigation.js'
+import formReducer from '../reducers/form.js'
 import LincMain from './linc-main.jsx';
 
-const store = createStore(navigationReducer);
-
+const rootReducer = combineReducers({
+   navigationReducer,
+   formReducer
+});
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   (<Provider store={store}>
