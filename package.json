@@ -7,7 +7,7 @@
     "start": "scripts/run-dev.sh",
     "build": "scripts/build.sh",
     "test": "jest test/",
-    "local": "scripts/run-local.sh",
+    "local": "docker run -p 8080:3000 -e NODE_ENV=$1 -d sba-gov-katana",
     "lint": "eslint src"
   },
   "repository": {
