@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as FormActions from '../../actions/form.js'
+import * as FormActions from '../../actions/loan-form.js'
+import * as NavActions from '../../actions/navigation.js'
 
 import Header from '../common/header.jsx';
 import Footer from '../common/footer.jsx';
 
 
-class BorrowerForm extends React.Component {
+class LoanForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
@@ -17,6 +18,7 @@ class BorrowerForm extends React.Component {
             checkboxInput: this.checkboxInput.value
         };
         this.props.actions.submitFormData(formData);
+        this.props.actions.seeMatches();
         this.borrowerForm.reset();
     }
 
@@ -47,10 +49,10 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators(FormActions, dispatch)
+        actions: bindActionCreators({...FormActions, ...NavActions}, dispatch)
     }
 }
 export default connect(
     mapReduxStateToProps,
     mapDispatchToProps
-)(BorrowerForm);
+)(LoanForm);

@@ -5,7 +5,7 @@ from 'react-redux';
 import { createStore, combineReducers }
 from 'redux'
 import navigationReducer from '../reducers/navigation.js'
-import formReducer from '../reducers/form.js'
+import formReducer from '../reducers/loan-form.js'
 import LincMain from './linc-main.jsx';
 
 const rootReducer = combineReducers({
