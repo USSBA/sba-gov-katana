@@ -16,6 +16,7 @@ For the development environment setup, see development.md
 ### Directory Setup for Node Development
 
 * Root
+    * package.json - dependencies
     * src
         * app.js - contains the high-level references to init.js, server.js and controller.js
         * init.js - configuration bootstrapping
@@ -29,7 +30,6 @@ For the development environment setup, see development.md
             * views
             * stores
             * actions
-    * package.json - dependencies
     * public - publically accessible folder for static content
         * assets
             * images
@@ -43,3 +43,4 @@ For the development environment setup, see development.md
             * stores
             * actions
     * scripts
+    * *[auto-generated]* dist - the babelized server source-code
