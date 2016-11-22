@@ -19,13 +19,14 @@ class LoanForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createLoan(this.state.loanFields);
+        browserHistory.push('/success')
         this.loanForm.reset()
     }
 
     handleChange(e){
         const loanFields = {};
         loanFields[e.target.name] = e.target.value;
-        this.setState({loanFields: Object.assign({}, this.state.loanFields, loanFields)});
+        this.setState({loanFields: Object.assign({}, this.state.loanFields, loanFields)})
         console.log(this.state.loanFields)
     }
 
