@@ -18,14 +18,22 @@ var extraBusinessInfoChecklist = [
 ]
 
 class AdditionalInfoPage extends React.Component {
+
+    handleSubmit(e){
+        e.preventDefault();
+    };
+
     render(){
         return (
             <div>
                 <h3>Additional Info</h3>
-                <div>What's your industry experience?</div>
-                <DropdownList data={colors} />
-                <div>Check all that apply to you: </div>
-                <SelectList multiple={true} data={extraBusinessInfoChecklist} />
+                <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <div>What's your industry experience?</div>
+                    <DropdownList data={colors}  />
+                    <div>Check all that apply to you: </div>
+                    <SelectList multiple={true} data={extraBusinessInfoChecklist} />
+                    <button type="submit">Review Answers</button>
+                </form>
             </div>
         )
     }
@@ -33,6 +41,7 @@ class AdditionalInfoPage extends React.Component {
 
 
 function mapReduxStateToProps(reduxState) {
+    console.log(reduxState)
     return {};
 }
 
