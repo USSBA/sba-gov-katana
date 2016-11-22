@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../styles/common.css';
-import '../../styles/common.scss';
-import styles from 'style-loader!./styles.scss';
+// import '../../styles/common.css';
+// import '../../styles/common.scss';
+// import styles from 'style-loader!./styles.scss';
 
 
 class Footer extends React.Component{

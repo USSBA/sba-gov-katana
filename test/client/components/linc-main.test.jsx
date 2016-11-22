@@ -9,7 +9,9 @@ import renderer from 'react-test-renderer';
 
 test('LincMain renders', () => {
   const component = renderer.create(
-    <LincMain name="Jon" />
+    <LincMain>
+        <div> Test </div>
+    </LincMain>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();

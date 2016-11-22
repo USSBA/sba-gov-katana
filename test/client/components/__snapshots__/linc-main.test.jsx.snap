@@ -1,0 +1,23 @@
+exports[`test LincMain renders 1`] = `
+<div>
+  <div
+    className="full-width header">
+    <h3
+      className="text-center">
+       Welcome to LINC, an SBA Tool 
+    </h3>
+    <image
+      src="assets/logo.png" />
+  </div>
+  <div>
+     Test 
+  </div>
+  <div
+    className="full-width footer">
+    <h3
+      className="text-center">
+       U.S. Small Business Administration, 409 3rd St, SW. Washington DC 20416. 
+    </h3>
+  </div>
+</div>
+`;
