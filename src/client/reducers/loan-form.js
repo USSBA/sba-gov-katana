@@ -1,7 +1,7 @@
 const formReducer = (state = {}, action) => {
     console.log("the action is " + JSON.stringify(action));
-    if(action.type === "SUBMIT_FORM_DATA"){
-        return Object.assign({}, state, {formData: action.formData})
+    if(action.type === "CREATE_LOAN"){
+        return Object.assign({}, state, {loanData: action.loanData})
     }
     return state;
 }

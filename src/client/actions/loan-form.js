@@ -1,7 +1,7 @@
-export function submitFormData(formData){
+export function createLoan(loanData){
     return {
-        type: "SUBMIT_FORM_DATA",
-        formData: formData
+        type: "CREATE_LOAN",
+        loanData: loanData
     }
 }
 
