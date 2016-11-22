@@ -4,8 +4,9 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "scripts/run-dev.sh",
+    "start": "NODE_ENV=development babel-node src/app.js --presets es2015",
     "build": "scripts/build.sh",
+    "build-docker": "docker build -t sba-gov-katana .",
     "test": "jest test/",
     "local": "docker run -p 8080:3000 -e NODE_ENV=$1 -d sba-gov-katana",
     "lint": "eslint src"
@@ -55,6 +56,7 @@
     "bootstrap-loader": "^2.0.0-beta.15",
     "bootstrap-sass": "^3.3.7",
     "css-loader": "^0.25.0",
+    "enzyme": "^2.6.0",
     "eslint": "^3.10.1",
     "eslint-plugin-react": "^6.7.1",
     "extract-text-webpack-plugin": "^2.0.0-beta",
@@ -64,6 +66,7 @@
     "jest": "^16.0.2",
     "node-sass": "^3.11.2",
     "postcss-loader": "^1.1.0",
+    "react-addons-test-utils": "^15.4.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^15.4.0",
     "resolve-url-loader": "^1.6.0",

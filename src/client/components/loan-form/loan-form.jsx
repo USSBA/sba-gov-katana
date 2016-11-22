@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CurrencyInput from '../helpers/form-helpers.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
+import { browserHistory } from 'react-router';
 
 
 class LoanForm extends React.Component {
