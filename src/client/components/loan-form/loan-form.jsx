@@ -1,48 +1,79 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as FormActions from '../../actions/loan-form.js'
+import { CurrencyInput } from '../helpers/form-helpers.jsx'
+import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
 
 
 class LoanForm extends React.Component {
+    constructor(){
+        super();
+        this.state ={
+            loanFields: {
+                fundingAmount: ""
+            }
+        }
+    }
 
     handleSubmit(e){
         e.preventDefault();
-        const formData = {
-            textInput: this.textInput.value,
-            selectInput: this.selectInput.value,
-            checkboxInput: this.checkboxInput.value
-        };
-        this.props.actions.submitFormData(formData);
-        browserHistory.push('/success')
-        this.borrowerForm.reset();
+        this.props.actions.createLoan(this.state.loanFields);
+        browserHistory.push('/success');
+        this.loanForm.reset()
+    }
+
+    handleChange(e){
+        let loanFields = {};
+        loanFields[e.target.name] = e.target.value;
+        this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
+        console.log(this.state.loanFields)
+    }
+
+    handleFormat(e){
+        let loanFields = {};
+        let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
+        if(num && Number(e.target.value)) {
+            loanFields[e.target.name] = "$" + num.toLocaleString() + ".00";
+            this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
+        }
     }
 
     render() {
         return (
-                <form ref={(input) => this.borrowerForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <input ref={(input) => this.textInput = input} type="text"/>
-                    <select ref={(input) => this.selectInput = input}>
-                        <option value="option-1">option-1</option>
-                        <option value="option-2">option-2</option>
+            <div>
+                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                    <CurrencyInput label="How much funding do you need?"
+                                   name="fundingAmount"
+                                   handleChange={this.handleChange.bind(this)}
+                                   handleFormat={this.handleFormat.bind(this)}
+                                   value={this.state.loanFields.fundingAmount}
+                                   />
+                    <p>How much funding do you need?</p>
+                    <input name="textInput" onChange={(e) => this.handleInputChange(e)}/>
+                    <p>How will these funds be used?</p>
+                    <select name="selectInput" onChange={(e) => this.handleInputChange(e)}>
+                        <option  value="option-1">option-1</option>
+                        <option  value="option-2">option-2</option>
                     </select>
-                    <input ref={(input) => this.checkboxInput = input} type="checkbox" value="value"/>
                     <button type="submit"> See Matches </button>
                 </form>
+            </div>
         );
     };
 }
 
 function mapReduxStateToProps(reduxState) {
+    console.log(reduxState)
     return {};
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators({...FormActions}, dispatch)
+        actions: bindActionCreators(LoanActions, dispatch)
     }
 }
+
 export default connect(
     mapReduxStateToProps,
     mapDispatchToProps
