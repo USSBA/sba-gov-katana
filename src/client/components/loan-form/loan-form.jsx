@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import TextInput from '../helpers/form-helpers.jsx'
 import * as FormActions from '../../actions/loan-form.js'
 import * as NavActions from '../../actions/navigation.js'
 
@@ -19,7 +20,7 @@ class LoanForm extends React.Component {
         };
         this.props.actions.submitFormData(formData);
         this.props.actions.seeMatches();
-        this.borrowerForm.reset();
+        this.props.loanForm.reset()
     }
 
     render() {
@@ -27,8 +28,8 @@ class LoanForm extends React.Component {
             <div>
                 <Header />
 
-                <form ref={(input) => this.borrowerForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <input ref={(input) => this.textInput = input} type="text"/>
+                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                    <input ref={(input) => this.textInput = input}/>
                     <select ref={(input) => this.selectInput = input}>
                         <option value="option-1">option-1</option>
                         <option value="option-2">option-2</option>

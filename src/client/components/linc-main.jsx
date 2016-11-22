@@ -27,7 +27,7 @@ LincMain.defaultProps = {
 function mapReduxStateToProps(state) {
     console.log(state)
     return {
-        page: state.navigationReducer.currentPage
+        page: 'loanForm'
     };
 }
 
