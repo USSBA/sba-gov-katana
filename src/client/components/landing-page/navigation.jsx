@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 
 class Navigation extends React.Component {
   render() {

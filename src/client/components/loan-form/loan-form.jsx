@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as FormActions from '../../actions/loan-form.js'
-import * as NavActions from '../../actions/navigation.js'
-
-import Header from '../common/header.jsx';
-import Footer from '../common/footer.jsx';
+import { browserHistory } from 'react-router';
 
 
 class LoanForm extends React.Component {
@@ -18,15 +15,12 @@ class LoanForm extends React.Component {
             checkboxInput: this.checkboxInput.value
         };
         this.props.actions.submitFormData(formData);
-        this.props.actions.seeMatches();
+        browserHistory.push('/success')
         this.borrowerForm.reset();
     }
 
     render() {
         return (
-            <div>
-                <Header />
-
                 <form ref={(input) => this.borrowerForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <input ref={(input) => this.textInput = input} type="text"/>
                     <select ref={(input) => this.selectInput = input}>
@@ -36,9 +30,6 @@ class LoanForm extends React.Component {
                     <input ref={(input) => this.checkboxInput = input} type="checkbox" value="value"/>
                     <button type="submit"> See Matches </button>
                 </form>
-
-                <Footer />
-            </div>
         );
     };
 }
@@ -49,7 +40,7 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators({...FormActions, ...NavActions}, dispatch)
+        actions: bindActionCreators({...FormActions}, dispatch)
     }
 }
 export default connect(

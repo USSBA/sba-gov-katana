@@ -4,8 +4,9 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "scripts/run-dev.sh",
+    "start": "NODE_ENV=development babel-node src/app.js --presets es2015",
     "build": "scripts/build.sh",
+    "build-docker": "docker build -t sba-gov-katana .",
     "test": "jest test/",
     "local": "docker run -p 8080:3000 -e NODE_ENV=$1 -d sba-gov-katana",
     "lint": "eslint src"
