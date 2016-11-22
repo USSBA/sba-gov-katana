@@ -25,6 +25,7 @@ from 'react-router-redux';
 import LincMain from './linc-main.jsx';
 import LandingPage from './landing-page/landing-page.jsx';
 import LoanForm from './loan-form/loan-form.jsx';
+import AdditionalInfoPage from './additional-info-page/additional-info-page.jsx'
 import SuccessPage from './success-page/success-page.jsx';
 
 const store = createStore(rootReducer);
@@ -43,6 +44,7 @@ ReactDOM.render(
           <IndexRoute component={LandingPage}/>
           <Route path="landing" component={LandingPage} />
           <Route path="form" component={LoanForm} />
+          <Route path="addinfo" component={AdditionalInfoPage} />
           <Route path="success" component={SuccessPage} />
         </Route>
       </Router>
