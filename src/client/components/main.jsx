@@ -9,12 +9,12 @@ import {
 }
 from 'redux';
 import rootReducer from '../reducers/index.js'
-import LincMain from './linc-main.jsx';
 
 import {
     Router,
     Route,
-    browserHistory
+    browserHistory,
+    IndexRoute
 }
 from 'react-router';
 import {
@@ -22,6 +22,7 @@ import {
 }
 from 'react-router-redux';
 
+import LincMain from './linc-main.jsx';
 import LandingPage from './landing-page/landing-page.jsx';
 import LoanForm from './loan-form/loan-form.jsx';
 import SuccessPage from './success-page/success-page.jsx';
@@ -31,14 +32,14 @@ const store = createStore(rootReducer);
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
 
-
 ReactDOM.render(
     (<Provider store={store}>
       <Router history={history}>
         <Route path="/" component={LincMain}>
-          <Route path="landing" component={LandingPage}/>
-          <Route path="form" component={LoanForm}/>
-          <Route path="success" component={SuccessPage}/>
+          <IndexRoute component={LandingPage}/>
+          <Route path="landing" component={LandingPage} />
+          <Route path="form" component={LoanForm} />
+          <Route path="success" component={SuccessPage} />
         </Route>
       </Router>
     </Provider>),

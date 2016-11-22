@@ -4,16 +4,13 @@ import Header from './common/header.jsx';
 import Footer from './common/footer.jsx';
 
 
-class LincMain extends React.Component {
-    render() {
-        return (
-            <div>
-                <Header />
-                {this.props.children}
-                <Footer />
-            </div>
-        );
-    }
-}
 
-export default LincMain;
+export default function LincMain({children}){
+  return (
+      <div>
+          <Header />
+            {children}
+          <Footer />
+      </div>
+  );
+};
