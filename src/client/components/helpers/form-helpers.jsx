@@ -4,27 +4,32 @@ import { FormGroup,
          ControlLabel
 } from 'react-bootstrap';
 
-export default class CurrencyInput extends React.Component {
+export class CurrencyInput extends React.Component{
     constructor(props){
         super(props)
     }
-
     render(){
+        const { handleChange, handleFormat, value, ...rest} = this.props;
         return(
-            <div>
-                <FormGroup>
-                    <ControlLabel>{this.props.label}</ControlLabel>
-                    <FormControl
-                        name="fundingAmount"
-                        type="text"
-                        placeholder={this.props.placeholder}
-                        onChange={this.props.handleChange}
-                        value={this.props.value}
-                        onBlur={this.props.handleFormat}
-                    />
-                    <FormControl.Feedback />
-                </FormGroup>
-            </div>
+            <TextInput
+                {...rest}
+                onChange={handleChange}
+                onBlur={handleFormat}
+                value={value}
+            />
         );
     }
 }
+
+const TextInput = (props) =>
+    <div>
+        <FormGroup>
+            <ControlLabel>{props.label}</ControlLabel>
+            <FormControl
+                {...props}
+                type="text"
+            />
+            <FormControl.Feedback />
+        </FormGroup>
+    </div>;
+
