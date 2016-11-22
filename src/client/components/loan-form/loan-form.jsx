@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import CurrencyInput from '../helpers/form-helpers.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 
 
@@ -8,7 +9,9 @@ class LoanForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            loanFields: {}
+            loanFields: {
+                fundingAmount: ""
+            }
         }
     }
 
@@ -18,17 +21,31 @@ class LoanForm extends React.Component {
         this.loanForm.reset()
     }
 
-    handleInputChange(e){
+    handleChange(e){
         const loanFields = {};
         loanFields[e.target.name] = e.target.value;
         this.setState({loanFields: Object.assign({}, this.state.loanFields, loanFields)});
         console.log(this.state.loanFields)
     }
 
+    handleFormat(e){
+        const loanFields = {};
+        let str = e.target.value.replace(/(\$|,)/g, "");
+        let num = parseInt(str)
+        const formatedAmount = "$" + num.toLocaleString() + ".00"
+        loanFields[e.target.name] = formatedAmount;
+        this.setState({loanFields: Object.assign({}, this.state.loanFields, loanFields)});
+    }
+
     render() {
         return (
             <div>
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                    <CurrencyInput label="How much funding do you need?"
+                                   handleChange={this.handleChange.bind(this)}
+                                   handleFormat={this.handleFormat.bind(this)}
+                                   value={this.state.loanFields.fundingAmount}
+                    />
                     <p>How much funding do you need?</p>
                     <input name="textInput" onChange={(e) => this.handleInputChange(e)}/>
                     <p>How will these funds be used?</p>
