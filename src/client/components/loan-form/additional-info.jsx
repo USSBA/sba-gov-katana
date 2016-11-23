@@ -26,7 +26,6 @@ class AdditionalInfoForm extends React.Component {
         super();
         this.state ={
             additionalInfoFields: {
-
             }
         }
     }
@@ -38,20 +37,38 @@ class AdditionalInfoForm extends React.Component {
 
     handleChange(e){
         let additionalInfoFields = {};
-        additionalInfoFields[e.target.textField] = e.target.value;
+        additionalInfoFields[e.target.name] = e.target.value;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
-        console.log(this.state.additionalInfoFields)
+        console.log(this.state)
+    }
+
+    handleCheckChange(e){
+        var addInfo = {};
+        addInfo ["extraInfo"] = e;
+        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
+        console.log(this.state);
     }
 
     render(){
         return (
             <div>
                 <h3>Additional Info</h3>
-                <form onSubmit={(e) => this.handleSubmit(e)}>
+                <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <div>What's your industry experience?</div>
-                    <DropdownList data={colors} textField="additionalExp" value={this.state.additionalInfoFields.industryExp} onChange={this.handleChange.bind(this)} />
+                    <SelectBox name = "industryExp" handleChange={this.handleChange.bind(this)}>
+                        <option defaultValue=""></option>
+                        <option value="none">none</option>
+                        <option value="lots">lots</option>
+                    </SelectBox>
                     <div>Check all that apply to you: </div>
-                    <SelectList multiple={true} data={extraBusinessInfoChecklist} value={this.state.additionalInfoFields.extraExp} onChange={value => this.setState({value})} />
+
+
+                    <SelectList data={extraBusinessInfoChecklist} multiple={true} onChange={this.handleCheckChange.bind(this)} />
+
+
+
+
+
                     <button className="col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
                 </form>
             </div>
