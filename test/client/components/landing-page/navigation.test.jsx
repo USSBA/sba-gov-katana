@@ -20,7 +20,7 @@ test('that the "Find Lenders" button fires a push event', () => {
     const component = shallow(
         <Navigation />
     );
-    jest.mock(component.browserHistory)
+    jest.mock(component.browserHistory);
     // component.find('Button#landing-page-button-find-lenders').simulate("click");
     // expect(component);
 });

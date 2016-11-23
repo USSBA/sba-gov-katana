@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
+import { TextInput, SelectBox } from '../helpers/form-helpers.jsx'
 import * as BusinessInfoActions from '../../actions/business-info.js'
 import { browserHistory } from 'react-router';
-import { Col } from 'react-bootstrap';
 
 
 class BusinessInfoForm extends React.Component {
