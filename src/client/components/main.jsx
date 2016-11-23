@@ -1,25 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-    Provider
-}
+import { Provider }
 from 'react-redux';
-import {
-    createStore
-}
+import { createStore }
 from 'redux';
 import rootReducer from '../reducers/index.js'
 
-import {
-    Router,
-    Route,
-    browserHistory,
-    IndexRoute
-}
+import { Router, Route, browserHistory, IndexRoute }
 from 'react-router';
-import {
-    syncHistoryWithStore
-}
+import { syncHistoryWithStore }
 from 'react-router-redux';
 
 import LincMain from './linc-main.jsx';
