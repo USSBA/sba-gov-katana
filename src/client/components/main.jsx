@@ -37,7 +37,7 @@ ReactDOM.render(
           <Route path="landing" component={LandingPage} />
           <Route path="form" component={LoanForm}>
             <IndexRedirect to='contact' />
-            <Route path="contact" component={ContactInfo } />
+            <Route path="contact" component={ContactInfo} />
             <Route path="loan" component={LoanInfo} />
             <Route path="business" component={BusinessInfo} />
             <Route path="additional" component={AdditionalInfo} />
