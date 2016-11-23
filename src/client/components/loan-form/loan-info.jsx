@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 import { Col } from 'react-bootstrap';
 
 
-class ContactInfoForm extends React.Component {
+class LoanForm extends React.Component {
     constructor(){
         super();
         this.state ={
@@ -20,7 +20,7 @@ class ContactInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createLoan(this.state.loanFields);
-        browserHistory.push('/form/business');
+        browserHistory.push('/success');
         this.loanForm.reset()
     }
 
@@ -31,11 +31,20 @@ class ContactInfoForm extends React.Component {
         console.log(this.state.loanFields)
     }
 
+
+    handleAmountChange(e){
+        let amount = e.target.value.replace(/(\$|,)/g, "")
+        if (!/[^\d$,]/.test(amount) && amount.length < 10) {
+            this.handleChange(e)
+        }
+    }
+
+
     handleFormat(e){
         let loanFields = {};
         let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-        if(num && Number(e.target.value)) {
-            loanFields[e.target.name] = "$" + num.toLocaleString() + ".00";
+        if(Number(num)) {
+            loanFields[e.target.name] = "$" + num.toLocaleString();
             this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
         }
     }
@@ -46,15 +55,17 @@ class ContactInfoForm extends React.Component {
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CurrencyInput label="How much funding do you need?"
                                    name="loanAmount"
-                                   handleChange={this.handleChange.bind(this)}
+                                   handleChange={this.handleAmountChange.bind(this)}
                                    handleFormat={this.handleFormat.bind(this)}
                                    value={this.state.loanFields.loanAmount}
-                                   />
+                    />
 
                     <SelectBox label="How will these funds be used?"
                                name="loanDescription"
                                handleChange={this.handleChange.bind(this)}
-                               >
+                               defaultValue=""
+                    >
+                        <option value="" disabled>- Select use of funds -</option>
                         <option value="option 1">option 1</option>
                         <option value="option 2">option 2</option>
                     </SelectBox>
@@ -62,11 +73,13 @@ class ContactInfoForm extends React.Component {
                     <TextArea label="Describe how these funds will be used?"
                               name="loanUsage"
                               handleChange={this.handleChange.bind(this)}
-                              />
+                              placeholder="Include details such as this sample placeholder and this other example."
 
-                        <button className="col-xs-2 col-xs-offset-5"
-                                type="submit">
-                                Next </button>
+                    />
+
+                    <button className="col-xs-2 col-xs-offset-5"
+                            type="submit">
+                        See Matches </button>
 
                 </form>
             </div>
@@ -88,4 +101,5 @@ function mapDispatchToProps(dispatch){
 export default connect(
     mapReduxStateToProps,
     mapDispatchToProps
-)(ContactInfoForm);
+)(LoanForm);
+
