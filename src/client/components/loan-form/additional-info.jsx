@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
 import { Col } from 'react-bootstrap';
 
@@ -10,9 +9,7 @@ import 'react-widgets/lib/less/react-widgets.less';
 import DropdownList from 'react-widgets/lib/DropdownList';
 import SelectList from 'react-widgets/lib/SelectList';
 
-import * as AdditionalInfoActions from '../../actions/additional-info-page.js'
-
-var colors = ["red", "blue"];
+import * as AdditionalInfoActions from '../../actions/additional-info.js'
 
 var extraBusinessInfoChecklist = [
     "I have a written business plan",
@@ -32,7 +29,9 @@ class AdditionalInfoForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        console.log(this.state)
+        this.props.actions.reviewAnswers(this.state.additionalInfoFields);
+        browserHistory.push("/success");
+        this.addInfoForm.reset()
     };
 
     handleChange(e){
@@ -44,7 +43,7 @@ class AdditionalInfoForm extends React.Component {
 
     handleCheckChange(e){
         var addInfo = {};
-        addInfo ["extraInfo"] = e;
+        addInfo["extraInfo"] = e;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
         console.log(this.state);
     }
@@ -84,7 +83,7 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators({AdditionalInfoActions}, dispatch)
+        actions: bindActionCreators(AdditionalInfoActions, dispatch)
     }
 }
 export default connect(
