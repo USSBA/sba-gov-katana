@@ -1,12 +1,13 @@
 import React from 'react';
 
-class Header extends React.Component{
-    render(){
-      return (
-        <div>
-          <h1> Welcome to LINC, an SBA Tool, built for YOU! </h1>
-        </div>
-      );
-    };
+class Header extends React.Component {
+  render() {
+    return (
+      <div className="full-width header">
+          <h3 className="text-center"> Welcome to LINC, an SBA Tool </h3>
+          <image src="assets/logo.png" />
+      </div>
+    );
+  }
 }
 export default Header;

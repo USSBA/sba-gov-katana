@@ -1,44 +1,17 @@
 import React from 'react';
-import {
-    connect
-}
-from 'react-redux';
 
-import LandingPage from './landing-page/landing-page.jsx';
-import BorrowerForm from './borrower-form/borrower-form.jsx';
-import SuccessPage from './success-page/success-page.jsx';
-
-class LincMain extends React.Component {
-    shownIfCurrentPageIs(currentPage) {
-        return this.props.page === currentPage ? "" : "hidden";
-    }
-    render() {
-        console.log(this.props.page);
-        return (
-            <div>
-                <div className={this.shownIfCurrentPageIs('landingPage')}>
-                    <LandingPage />
-                </div>
-                <div className={this.shownIfCurrentPageIs('borrowerForm')}>
-                    <BorrowerForm />
-                </div>
-                <div className={this.shownIfCurrentPageIs('successPage')}>
-                    <SuccessPage />
-                </div>
-            </div>
-        );
-    }
-}
+import Header from './common/header.jsx';
+import Footer from './common/footer.jsx';
 
 
-LincMain.defaultProps = {
-    page: 'landingPage'
+
+export default function LincMain({children}){
+  return (
+      <div>
+          <Header />
+            {children}
+          <Footer />
+      </div>
+  );
 };
 
-function mapReduxStateToProps(state) {
-    return {
-        page: state.currentPage
-    };
-}
-
-export default connect(mapReduxStateToProps, null)(LincMain);

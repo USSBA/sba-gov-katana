@@ -1,23 +1,19 @@
 import React from 'react';
 
-import Header from '../common/header.jsx';
 import ValueProposition from './value-proposition.jsx';
 import ProcessAndFacts from './process-and-facts.jsx';
 import PrepartionAndGuidance from './preparation-and-guidance.jsx';
-import ButtonSection from './button-section.jsx';
-import Footer from '../common/footer.jsx';
+import Navigation from './navigation.jsx';
 
 class LandingPage extends React.Component{
     render(){
         return (
             <div>
-                <Header />
                 <ValueProposition />
                 <ProcessAndFacts />
-                <ButtonSection />
+                <Navigation />
                 <PrepartionAndGuidance />
-                <Footer />
-            </div>    
+            </div>
         );
     }
 }
