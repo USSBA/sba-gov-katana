@@ -19,9 +19,26 @@ var extraBusinessInfoChecklist = [
 
 class AdditionalInfoPage extends React.Component {
 
+    constructor(){
+        super();
+        this.state ={
+            additionalInfoFields: {
+
+            }
+        }
+    }
+
     handleSubmit(e){
         e.preventDefault();
+        console.log(this.state)
     };
+
+    handleChange(e){
+        let additionalInfoFields = {};
+        additionalInfoFields[e.target.name] = e.target.value;
+        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
+        console.log(this.state.additionalInfoFields)
+    }
 
     render(){
         return (
@@ -29,9 +46,9 @@ class AdditionalInfoPage extends React.Component {
                 <h3>Additional Info</h3>
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <div>What's your industry experience?</div>
-                    <DropdownList data={colors}  />
+                    <DropdownList data={colors} name="additionalExp" value={this.state.additionalInfoFields.industryExp} onChange={this.handleChange.bind(this)} />
                     <div>Check all that apply to you: </div>
-                    <SelectList multiple={true} data={extraBusinessInfoChecklist} />
+                    <SelectList multiple={true} data={extraBusinessInfoChecklist} value={this.state.additionalInfoFields.extraExp} onChange={value => this.setState({value})} />
                     <button type="submit">Review Answers</button>
                 </form>
             </div>
