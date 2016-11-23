@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput } from '../helpers/form-helpers.jsx'
+import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
+import { Col } from 'react-bootstrap';
 
 
 class LoanForm extends React.Component {
@@ -11,7 +12,7 @@ class LoanForm extends React.Component {
         super();
         this.state ={
             loanFields: {
-                fundingAmount: ""
+                loanAmount: ""
             }
         }
     }
@@ -44,19 +45,29 @@ class LoanForm extends React.Component {
             <div>
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CurrencyInput label="How much funding do you need?"
-                                   name="fundingAmount"
+                                   name="loanAmount"
                                    handleChange={this.handleChange.bind(this)}
                                    handleFormat={this.handleFormat.bind(this)}
-                                   value={this.state.loanFields.fundingAmount}
+                                   value={this.state.loanFields.loanAmount}
                                    />
-                    <p>How much funding do you need?</p>
-                    <input name="textInput" onChange={(e) => this.handleInputChange(e)}/>
-                    <p>How will these funds be used?</p>
-                    <select name="selectInput" onChange={(e) => this.handleInputChange(e)}>
-                        <option  value="option-1">option-1</option>
-                        <option  value="option-2">option-2</option>
-                    </select>
-                    <button type="submit"> See Matches </button>
+
+                    <SelectBox label="How will these funds be used?"
+                               name="loanDescription"
+                               handleChange={this.handleChange.bind(this)}
+                               >
+                        <option value="option 1">option 1</option>
+                        <option value="option 2">option 2</option>
+                    </SelectBox>
+
+                    <TextArea label="Describe how these funds will be used?"
+                              name="loanUsage"
+                              handleChange={this.handleChange.bind(this)}
+                              />
+
+                        <button className="col-xs-2 col-xs-offset-5"
+                                type="submit">
+                                See Matches </button>
+
                 </form>
             </div>
         );
@@ -64,7 +75,7 @@ class LoanForm extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
-    console.log(reduxState)
+    console.log(reduxState);
     return {};
 }
 

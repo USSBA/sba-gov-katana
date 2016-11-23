@@ -1,8 +1,12 @@
 import React from 'react';
 import { FormGroup,
-         FormControl,
-         ControlLabel
+    FormControl,
+    ControlLabel,
+    Col
 } from 'react-bootstrap';
+
+
+//standard react form components to be used throughout application
 
 export class CurrencyInput extends React.Component{
     constructor(props){
@@ -13,7 +17,7 @@ export class CurrencyInput extends React.Component{
         return(
             <TextInput
                 {...rest}
-                onChange={handleChange}
+                handleChange={handleChange}
                 onBlur={handleFormat}
                 value={value}
             />
@@ -21,15 +25,40 @@ export class CurrencyInput extends React.Component{
     }
 }
 
-const TextInput = (props) =>
-    <div>
-        <FormGroup>
+export const TextInput = ({handleChange, ...props}) =>
+    <Col md={6} mdOffset={3}>
+        <FormGroup className="input1">
             <ControlLabel>{props.label}</ControlLabel>
             <FormControl
                 {...props}
+                onChange={handleChange}
                 type="text"
-            />
+                />
             <FormControl.Feedback />
         </FormGroup>
-    </div>;
+    </Col>;
 
+export const TextArea = ({handleChange, label, ...props}) =>
+    <Col md={6} mdOffset={3}>
+        <FormGroup>
+            <ControlLabel>{label}</ControlLabel>
+            <FormControl
+                {...props}
+                onChange={handleChange}
+                componentClass="textArea"
+
+                />
+        </FormGroup>
+    </Col>;
+
+export const SelectBox = ({handleChange, label, ...props}) =>
+    <Col md={6} mdOffset={3}>
+        <FormGroup>
+           <ControlLabel>{label}</ControlLabel>
+           <FormControl
+               {...props}
+               onChange={handleChange}
+               componentClass="select"
+               />
+        </FormGroup>
+    </Col>;
