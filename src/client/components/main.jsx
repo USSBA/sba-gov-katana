@@ -6,7 +6,7 @@ import { createStore }
 from 'redux';
 import rootReducer from '../reducers/index.js'
 
-import { Router, Route, browserHistory, IndexRoute }
+import { Router, Route, browserHistory, IndexRoute, IndexRedirect }
 from 'react-router';
 import { syncHistoryWithStore }
 from 'react-router-redux';
@@ -15,6 +15,10 @@ import LincMain from './linc-main.jsx';
 import LandingPage from './landing-page/landing-page.jsx';
 import LoanForm from './loan-form/loan-form.jsx';
 import SuccessPage from './success-page/success-page.jsx';
+import ContactInfo from './loan-form/contact-info.jsx';
+import LoanInfo from './loan-form/loan-info.jsx';
+import BusinessInfo from './loan-form/business-info.jsx';
+import AdditionalInfo from './loan-form/additional-info.jsx';
 
 const store = createStore(rootReducer);
 
@@ -31,7 +35,13 @@ ReactDOM.render(
         <Route path="/" component={LincMain}>
           <IndexRoute component={LandingPage}/>
           <Route path="landing" component={LandingPage} />
-          <Route path="form" component={LoanForm} />
+          <Route path="form" component={LoanForm}>
+            <IndexRedirect to='contact' />
+            <Route path="contact" component={ContactInfo} />
+            <Route path="loan" component={LoanInfo} />
+            <Route path="business" component={BusinessInfo} />
+            <Route path="additional" component={AdditionalInfo} />
+          </Route>
           <Route path="success" component={SuccessPage} />
         </Route>
       </Router>
