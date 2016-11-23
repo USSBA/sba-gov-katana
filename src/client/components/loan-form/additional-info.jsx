@@ -6,67 +6,70 @@ import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
 import { Col } from 'react-bootstrap';
 
+import 'react-widgets/lib/less/react-widgets.less';
+import DropdownList from 'react-widgets/lib/DropdownList';
+import SelectList from 'react-widgets/lib/SelectList';
+
+import * as AdditionalInfoActions from '../../actions/additional-info-page.js'
+
+var colors = ["red", "blue"];
+
+var extraBusinessInfoChecklist = [
+    "I have a written business plan",
+    "I have financial projections",
+    "I'm generating revenue",
+    "I'm a veteran"
+]
 
 class AdditionalInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            loanFields: {
-                loanAmount: ""
+            additionalInfoFields: {
+
             }
         }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createLoan(this.state.loanFields);
-        browserHistory.push("/success");
-        this.loanForm.reset()
-    }
+        console.log(this.state)
+    };
 
     handleChange(e){
-        let loanFields = {};
-        loanFields[e.target.name] = e.target.value;
-        this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        console.log(this.state.loanFields)
+        let additionalInfoFields = {};
+        additionalInfoFields[e.target.textField] = e.target.value;
+        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
+        console.log(this.state.additionalInfoFields)
     }
 
-    handleFormat(e){
-        let loanFields = {};
-        let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-        if(num && Number(e.target.value)) {
-            loanFields[e.target.name] = "$" + num.toLocaleString() + ".00";
-            this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        }
-    }
-
-    render() {
+    render(){
         return (
             <div>
-                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <p>Additional Info</p>
-
-                        <button className="col-xs-2 col-xs-offset-5"
-                                type="submit">
-                                Next </button>
-
+                <h3>Additional Info</h3>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <div>What's your industry experience?</div>
+                    <DropdownList data={colors} textField="additionalExp" value={this.state.additionalInfoFields.industryExp} onChange={this.handleChange.bind(this)} />
+                    <div>Check all that apply to you: </div>
+                    <SelectList multiple={true} data={extraBusinessInfoChecklist} value={this.state.additionalInfoFields.extraExp} onChange={value => this.setState({value})} />
+                    <button className="col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
                 </form>
             </div>
-        );
-    };
+        )
+    }
 }
 
+
 function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
+    console.log(reduxState)
     return {};
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators(LoanActions, dispatch)
+        actions: bindActionCreators({AdditionalInfoActions}, dispatch)
     }
 }
-
 export default connect(
     mapReduxStateToProps,
     mapDispatchToProps
