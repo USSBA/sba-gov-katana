@@ -31,11 +31,20 @@ class LoanForm extends React.Component {
         console.log(this.state.loanFields)
     }
 
+
+    handleAmountChange(e){
+        let amount = e.target.value.replace(/(\$|,)/g, "")
+        if (!/[^\d$,]/.test(amount) && amount.length < 10) {
+            this.handleChange(e)
+        }
+    }
+
+
     handleFormat(e){
         let loanFields = {};
         let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-        if(num && Number(e.target.value)) {
-            loanFields[e.target.name] = "$" + num.toLocaleString() + ".00";
+        if(Number(num)) {
+            loanFields[e.target.name] = "$" + num.toLocaleString();
             this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
         }
     }
@@ -46,7 +55,7 @@ class LoanForm extends React.Component {
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CurrencyInput label="How much funding do you need?"
                                    name="loanAmount"
-                                   handleChange={this.handleChange.bind(this)}
+                                   handleChange={this.handleAmountChange.bind(this)}
                                    handleFormat={this.handleFormat.bind(this)}
                                    value={this.state.loanFields.loanAmount}
                                    />
@@ -54,7 +63,9 @@ class LoanForm extends React.Component {
                     <SelectBox label="How will these funds be used?"
                                name="loanDescription"
                                handleChange={this.handleChange.bind(this)}
+                               defaultValue=""
                                >
+                        <option value="" disabled>- Select use of funds -</option>
                         <option value="option 1">option 1</option>
                         <option value="option 2">option 2</option>
                     </SelectBox>
@@ -62,6 +73,8 @@ class LoanForm extends React.Component {
                     <TextArea label="Describe how these funds will be used?"
                               name="loanUsage"
                               handleChange={this.handleChange.bind(this)}
+                              placeholder="Include details such as this sample placeholder and this other example."
+
                               />
 
                         <button className="col-xs-2 col-xs-offset-5"
