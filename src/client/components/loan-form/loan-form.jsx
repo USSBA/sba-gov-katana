@@ -1,29 +1,55 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as LoanActions from '../../actions/loan-form.js'
-import { browserHistory } from 'react-router';
-import { Col } from 'react-bootstrap';
-var Steps = require('react-steps');
+import {
+    connect
+}
+from 'react-redux';
+import {
+    bindActionCreators
+}
+from 'redux';
+import * as LoanActions from '../../actions/loan-form.js';
+import Steps from 'react-steps';
+import _ from 'lodash';
 
 class LoanForm extends React.Component {
-
     render() {
-        let data = {};
+        // TODO: refactor this to be more extensible
+        let pages = ['contact', 'loan', 'business', 'additional']; // TODO make this static or configuration
+        let page = this.props.location.replace('/form/', '');
+        let locationIndex = _.indexOf(pages, page);
+        let data = [{
+            text: "Contact",
+            isActive: locationIndex === 0,
+            isDone: locationIndex > 0
+        }, {
+            text: "Loan",
+            isActive: locationIndex === 1,
+            isDone: locationIndex > 1
+        }, {
+            text: "Business",
+            isActive: locationIndex === 2,
+            isDone: locationIndex > 2
+        }, {
+            text: "Additional",
+            isActive: locationIndex === 3,
+            isDone: locationIndex > 3
+        }];
         return (
             <div>
+                <Steps items={data} type={'circle'}/>
                 {this.props.children}
             </div>
         );
     };
 }
 
-function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
-    return {};
+function mapReduxStateToProps(reduxState, ownProps) {
+    return {
+        location: ownProps.location.pathname
+    };
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(LoanActions, dispatch)
     }

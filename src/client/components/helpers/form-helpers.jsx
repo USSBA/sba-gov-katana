@@ -5,7 +5,6 @@ import { FormGroup,
     Col
 } from 'react-bootstrap';
 
-
 //standard react form components to be used throughout application
 
 export class CurrencyInput extends React.Component{
@@ -26,7 +25,7 @@ export class CurrencyInput extends React.Component{
 }
 
 export const TextInput = ({handleChange, ...props}) =>
-    <Col md={6} mdOffset={3}>
+    <Col xs={6} xsOffset={3}>
         <FormGroup className="input1">
             <ControlLabel>{props.label}</ControlLabel>
             <FormControl
@@ -39,7 +38,7 @@ export const TextInput = ({handleChange, ...props}) =>
     </Col>;
 
 export const TextArea = ({handleChange, label, ...props}) =>
-    <Col md={6} mdOffset={3}>
+    <Col xs={6} xsOffset={3}>
         <FormGroup>
             <ControlLabel>{label}</ControlLabel>
             <FormControl
@@ -52,7 +51,7 @@ export const TextArea = ({handleChange, label, ...props}) =>
     </Col>;
 
 export const SelectBox = ({handleChange, label, ...props}) =>
-    <Col md={6} mdOffset={3}>
+    <Col xs={6} xsOffset={3}>
         <FormGroup>
            <ControlLabel>{label}</ControlLabel>
            <FormControl
