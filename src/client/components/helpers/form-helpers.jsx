@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormGroup,
     FormControl,
+    Checkbox,
     ControlLabel,
     Col
 } from 'react-bootstrap';
@@ -59,5 +60,12 @@ export const SelectBox = ({handleChange, label, ...props}) =>
                onChange={handleChange}
                componentClass="select"
                />
+        </FormGroup>
+    </Col>;
+
+export const CheckBox = ({handleClick, label, ...props}) =>
+    <Col xs={6} xsOffset={3}>
+        <FormGroup>
+            <Checkbox {...props} onClick={handleClick}>{label}</Checkbox>
         </FormGroup>
     </Col>;
