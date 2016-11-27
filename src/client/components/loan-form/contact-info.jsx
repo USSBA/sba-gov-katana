@@ -10,46 +10,46 @@ class ContactInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            contactFields: {
-                contactName: "",
-                contactPhone: "",
-                contactEmail: ""
-            }
+            contactInfoFields: {}
         }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createContactInfo(this.state.contactFields);
+        this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/loan');
-        this.loanForm.reset()
+        this.contactInfoForm.reset();
+        console.log('handle submit called.');
     }
 
     handleChange(e){
-        let contactFields = {};
-        contactFields[e.target.name] = e.target.value;
-        this.setState({contactFields: {...this.state.contactFields, ...contactFields}});
-        console.log(this.state.contactFields)
+        let contactInfoFields = {};
+        contactInfoFields[e.target.name] = e.target.value;
+        this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
+        //console.log(this.state.contactFields)
     }
 
     render() {
         return (
             <div>
-                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                <form ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <h2 className="col-xs-2 col-xs-offset-5">Contact Info</h2>
                     <TextInput     label="What is your full name?"
-                                   name="contactName"
+                                   name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
+                                   //value={this.props.contactInfoData.contactFullName}
                     />
 
                     <TextInput     label="What is your phone number?"
-                                   name="phoneNumber"
+                                   name="contactPhoneNumber"
                                    handleChange={this.handleChange.bind(this)}
+                                   //value={this.props.contactInfoData.contactPhoneNumber}
                     />
 
                     <TextInput     label="What is your email address?"
-                                   name="address"
+                                   name="contactEmailAddress"
                                    handleChange={this.handleChange.bind(this)}
+                                   //value={this.props.contactInfoData.contactEmailAddress}
                     />
                     <button className="col-xs-2 col-xs-offset-5" type="submit">Next </button>
                 </form>
@@ -58,9 +58,10 @@ class ContactInfoForm extends React.Component {
     };
 }
 
-function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
-    return {};
+function mapStateToProps(state) {
+    return {
+        contactInfoData: state.contactInfoData
+    };
 }
 
 function mapDispatchToProps(dispatch){
@@ -70,6 +71,6 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(
-    mapReduxStateToProps,
+    mapStateToProps,
     mapDispatchToProps
 )(ContactInfoForm);

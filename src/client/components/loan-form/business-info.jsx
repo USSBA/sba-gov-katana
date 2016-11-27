@@ -10,58 +10,52 @@ class BusinessInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            businessFields: {
-                businessName: "",
-                businessZipcode: "",
-                businessWebsite: "",
-                businessType: "",
-                businessDescription: ""
-            }
+            businessInfoFields: {}
         }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createBusinessInfo(this.state.businessFields);
+        this.props.actions.createBusinessInfo(this.state.businessInfoFields);
         browserHistory.push('/form/additional');
-        this.loanForm.reset()
+        this.businessInfoForm.reset()
     }
 
     handleChange(e){
-        let businessFields = {};
-        businessFields[e.target.name] = e.target.value;
-        this.setState({businessFields: {...this.state.businessFields, ...businessFields}});
-        console.log(this.state.businessFields)
+        let businessInfoFields = {};
+        businessInfoFields[e.target.name] = e.target.value;
+        this.setState({businessInfoFields: {...this.state.businessInfoFields, ...businessInfoFields}});
+        console.log(this.state.businessInfoFields)
     }
 
     render() {
         return (
             <div>
-                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <h2 className="col-xs-2 col-xs-offset-5">Business Info</h2>
                     <TextInput     label="What is the name of your business?"
-                                   name="businessName"
+                                   name="businessInfoName"
                                    handleChange={this.handleChange.bind(this)}
                     />
 
                     <TextInput     label="What is the business ZIP code?"
-                                   name="businessZipcode"
+                                   name="businessInfoZipcode"
                                    handleChange={this.handleChange.bind(this)}
                     />
 
                     <TextInput     label="What is your business website?"
-                                   name="businessWebsite"
+                                   name="businessInfoWebsite"
                                    handleChange={this.handleChange.bind(this)}
                     />
                     <SelectBox label="What type of business is it?"
-                               name="businessType"
+                               name="businessInfoType"
                                handleChange={this.handleChange.bind(this)}
                     >
                         <option value="Profit">Profit</option>
                         <option value="Non-profit">Non-profit</option>
                     </SelectBox>
                     <TextInput     label="Describe what your business does"
-                                   name="businessDescription"
+                                   name="businessInfoDescription"
                                    handleChange={this.handleChange.bind(this)}
                     />
                     <button className="col-xs-2 col-xs-offset-5" type="submit"> Next </button>
@@ -72,8 +66,8 @@ class BusinessInfoForm extends React.Component {
     };
 }
 
-function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
+function mapStateToProps(state) {
+    //console.log(reduxState);
     return {};
 }
 
@@ -84,6 +78,6 @@ function mapDispatchToProps(dispatch){
 }
 
 export default connect(
-    mapReduxStateToProps,
+    mapStateToProps,
     mapDispatchToProps
 )(BusinessInfoForm);
