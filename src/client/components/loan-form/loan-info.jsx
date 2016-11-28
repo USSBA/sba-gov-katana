@@ -19,7 +19,7 @@ export class LoanInfo extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createLoan(this.state.loanFields);
-        browserHistory.push('/form/business');
+        browserHistory.push('/form/additional');
         this.loanForm.reset()
     }
 

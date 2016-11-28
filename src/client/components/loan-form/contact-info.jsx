@@ -17,7 +17,7 @@ class ContactInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createContactInfo(this.state.contactInfoFields);
-        browserHistory.push('/form/loan');
+        browserHistory.push('/form/business');
         this.contactInfoForm.reset();
         console.log('handle submit called.');
     }
