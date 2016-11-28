@@ -1,54 +1,64 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import * as LoanActions from '../../actions/loan-form.js'
+import { TextInput, SelectBox } from '../helpers/form-helpers.jsx'
+import * as BusinessInfoActions from '../../actions/business-info.js'
 import { browserHistory } from 'react-router';
-import { Col } from 'react-bootstrap';
 
 
-class BusinessInfo extends React.Component {
+class BusinessInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            loanFields: {
-                loanAmount: ""
-            }
+            businessInfoFields: {}
         }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createLoan(this.state.loanFields);
+        this.props.actions.createBusinessInfo(this.state.businessInfoFields);
         browserHistory.push('/form/additional');
-        this.loanForm.reset()
+        this.businessInfoForm.reset()
     }
 
     handleChange(e){
-        let loanFields = {};
-        loanFields[e.target.name] = e.target.value;
-        this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        console.log(this.state.loanFields)
-    }
-
-    handleFormat(e){
-        let loanFields = {};
-        let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-        if(num && Number(e.target.value)) {
-            loanFields[e.target.name] = "$" + num.toLocaleString() + ".00";
-            this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        }
+        let businessInfoFields = {};
+        businessInfoFields[e.target.name] = e.target.value;
+        this.setState({businessInfoFields: {...this.state.businessInfoFields, ...businessInfoFields}});
+        console.log(this.state.businessInfoFields)
     }
 
     render() {
         return (
             <div>
-                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <p>Business Info</p>
+                <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                    <h2 className="col-xs-2 col-xs-offset-5">Business Info</h2>
+                    <TextInput     label="What is the name of your business?"
+                                   name="businessInfoName"
+                                   handleChange={this.handleChange.bind(this)}
+                    />
 
-                        <button className="col-xs-2 col-xs-offset-5"
-                                type="submit">
-                                Next </button>
+                    <TextInput     label="What is the business ZIP code?"
+                                   name="businessInfoZipcode"
+                                   handleChange={this.handleChange.bind(this)}
+                    />
+
+                    <TextInput     label="What is your business website?"
+                                   name="businessInfoWebsite"
+                                   handleChange={this.handleChange.bind(this)}
+                    />
+                    <SelectBox label="What type of business is it?"
+                               name="businessInfoType"
+                               handleChange={this.handleChange.bind(this)}
+                    >
+                        <option value="Profit">Profit</option>
+                        <option value="Non-profit">Non-profit</option>
+                    </SelectBox>
+                    <TextInput     label="Describe what your business does"
+                                   name="businessInfoDescription"
+                                   handleChange={this.handleChange.bind(this)}
+                    />
+                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Next </button>
 
                 </form>
             </div>
@@ -56,18 +66,18 @@ class BusinessInfo extends React.Component {
     };
 }
 
-function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
+function mapStateToProps(state) {
+    //console.log(reduxState);
     return {};
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators(LoanActions, dispatch)
+        actions: bindActionCreators(BusinessInfoActions, dispatch)
     }
 }
 
 export default connect(
-    mapReduxStateToProps,
+    mapStateToProps,
     mapDispatchToProps
-)(BusinessInfo);
+)(BusinessInfoForm);

@@ -1,72 +1,76 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import * as LoanActions from '../../actions/loan-form.js'
+import { TextInput } from '../helpers/form-helpers.jsx'
+import * as ContactInfoActions from '../../actions/contact-info.js'
 import { browserHistory } from 'react-router';
-import { Col } from 'react-bootstrap';
 
 
 class ContactInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            loanFields: {
-                loanAmount: ""
-            }
+            contactInfoFields: {}
         }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createLoan(this.state.loanFields);
+        this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/loan');
-        this.loanForm.reset()
+        this.contactInfoForm.reset();
+        console.log('handle submit called.');
     }
 
     handleChange(e){
-        let loanFields = {};
-        loanFields[e.target.name] = e.target.value;
-        this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        console.log(this.state.loanFields)
-    }
-
-    handleFormat(e){
-        let loanFields = {};
-        let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-        if(num && Number(e.target.value)) {
-            loanFields[e.target.name] = "$" + num.toLocaleString() + ".00";
-            this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        }
+        let contactInfoFields = {};
+        contactInfoFields[e.target.name] = e.target.value;
+        this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
+        //console.log(this.state.contactFields)
     }
 
     render() {
         return (
             <div>
-                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <p>Contact Info</p>
-                        <button className="col-xs-2 col-xs-offset-5"
-                                type="submit">
-                                Next </button>
+                <form ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                    <h2 className="col-xs-2 col-xs-offset-5">Contact Info</h2>
+                    <TextInput     label="What is your full name?"
+                                   name="contactFullName"
+                                   handleChange={this.handleChange.bind(this)}
+                                   //value={this.props.contactInfoData.contactFullName}
+                    />
 
+                    <TextInput     label="What is your phone number?"
+                                   name="contactPhoneNumber"
+                                   handleChange={this.handleChange.bind(this)}
+                                   //value={this.props.contactInfoData.contactPhoneNumber}
+                    />
+
+                    <TextInput     label="What is your email address?"
+                                   name="contactEmailAddress"
+                                   handleChange={this.handleChange.bind(this)}
+                                   //value={this.props.contactInfoData.contactEmailAddress}
+                    />
+                    <button className="col-xs-2 col-xs-offset-5" type="submit">Next </button>
                 </form>
             </div>
         );
     };
 }
 
-function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
-    return {};
+function mapStateToProps(state) {
+    return {
+        contactInfoData: state.contactInfoData
+    };
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators(LoanActions, dispatch)
+        actions: bindActionCreators(ContactInfoActions, dispatch)
     }
 }
 
 export default connect(
-    mapReduxStateToProps,
+    mapStateToProps,
     mapDispatchToProps
 )(ContactInfoForm);
