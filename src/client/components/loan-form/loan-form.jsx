@@ -40,7 +40,7 @@ class LoanForm extends React.Component {
         }];
         return (
             <div>
-                <Steps items={data} type={'circle'}/>
+                <Steps items={data} type={'point'}/>
                 {this.props.children}
             </div>
         );

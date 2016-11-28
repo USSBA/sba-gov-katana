@@ -46,7 +46,6 @@ export const TextArea = ({handleChange, label, ...props}) =>
                 {...props}
                 onChange={handleChange}
                 componentClass="textArea"
-
                 />
         </FormGroup>
     </Col>;
