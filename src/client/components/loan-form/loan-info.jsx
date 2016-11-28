@@ -20,7 +20,7 @@ class LoanForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createLoan(this.state.loanFields);
-        browserHistory.push('/success');
+        browserHistory.push('/form/business');
         this.loanForm.reset()
     }
 
