@@ -1,0 +1,103 @@
+exports[`test AdditionalInfo page renders input fields 1`] = `
+<div>
+  <button
+    onClick={[Function]}>
+    Back
+  </button>
+  <h3>
+    Additional Info
+  </h3>
+  <form
+    onSubmit={[Function]}>
+    <div>
+      What\'s your industry experience?
+    </div>
+    <div
+      className="col-xs-6 col-xs-offset-3">
+      <div
+        className="form-group">
+        <label
+          className="control-label"
+          htmlFor={undefined} />
+        <select
+          className="form-control"
+          id={undefined}
+          name="industryExp"
+          onChange={[Function]}
+          type={undefined}>
+          <option
+            defaultValue="" />
+          <option
+            value="none">
+            none
+          </option>
+          <option
+            value="lots">
+            lots
+          </option>
+        </select>
+      </div>
+    </div>
+    <div>
+      Check all that apply to you: 
+    </div>
+    <br />
+    <div
+      className="form-group">
+      <div
+        className="checkbox"
+        style={undefined}>
+        <label>
+          <input
+            disabled={false}
+            name="hasWrittenPlan"
+            onClick={[Function]}
+            type="checkbox" />
+          I have a written business plan
+        </label>
+      </div>
+      <div
+        className="checkbox"
+        style={undefined}>
+        <label>
+          <input
+            disabled={false}
+            name="hasFinancialProjections"
+            onClick={[Function]}
+            type="checkbox" />
+          I have financial projections
+        </label>
+      </div>
+      <div
+        className="checkbox"
+        style={undefined}>
+        <label>
+          <input
+            disabled={false}
+            name="isGeneratingRevenue"
+            onClick={[Function]}
+            type="checkbox" />
+          I\'m generating revenue
+        </label>
+      </div>
+      <div
+        className="checkbox"
+        style={undefined}>
+        <label>
+          <input
+            disabled={false}
+            name="isVeteran"
+            onClick={[Function]}
+            type="checkbox" />
+          I\'m a veteran
+        </label>
+      </div>
+    </div>
+    <button
+      className="col-xs-2 col-xs-offset-5"
+      type="submit">
+      Review Answers
+    </button>
+  </form>
+</div>
+`;

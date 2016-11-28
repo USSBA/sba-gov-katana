@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
+import { SelectBox, CheckBox } from '../helpers/form-helpers.jsx'
 import { browserHistory } from 'react-router';
-import { Col } from 'react-bootstrap';
 
-import 'react-widgets/lib/less/react-widgets.less';
-import DropdownList from 'react-widgets/lib/DropdownList';
-import SelectList from 'react-widgets/lib/SelectList';
+// import 'react-widgets/lib/less/react-widgets.less';
+// import SelectList from 'react-widgets/lib/SelectList';
+
+import { FormGroup, Checkbox } from 'react-bootstrap'
 
 import * as AdditionalInfoActions from '../../actions/additional-info.js'
 
@@ -18,7 +18,7 @@ var extraBusinessInfoChecklist = [
     "I'm a veteran"
 ]
 
-class AdditionalInfoForm extends React.Component {
+export class AdditionalInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
@@ -30,6 +30,7 @@ class AdditionalInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.reviewAnswers(this.state.additionalInfoFields);
+        // console.log(this.state)
         browserHistory.push("/success");
         this.addInfoForm.reset()
     };
@@ -38,19 +39,28 @@ class AdditionalInfoForm extends React.Component {
         let additionalInfoFields = {};
         additionalInfoFields[e.target.name] = e.target.value;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
-        console.log(this.state)
+        // console.log(this.state)
     }
 
-    handleCheckChange(e){
-        var addInfo = {};
-        addInfo["extraInfo"] = e;
-        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
-        console.log(this.state);
+    handleClick(e){
+        let additionalInfoFields = {};
+        additionalInfoFields[e.target.name] = e.target.value;
+        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}});
+        // console.log(this.state);
     }
+
+
+    // handleCheckChange(e){
+    //     var addInfo = {};
+    //     addInfo["extraInfo"] = e;
+    //     this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
+    //     console.log(this.state);
+    // }
 
     render(){
         return (
             <div>
+                <button onClick={browserHistory.goBack}>Back</button>
                 <h3>Additional Info</h3>
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <div>What's your industry experience?</div>
@@ -60,13 +70,22 @@ class AdditionalInfoForm extends React.Component {
                         <option value="lots">lots</option>
                     </SelectBox>
                     <div>Check all that apply to you: </div>
-
-
-                    <SelectList data={extraBusinessInfoChecklist} multiple={true} onChange={this.handleCheckChange.bind(this)} />
-
-
-
-
+                    {/*<SelectList data={extraBusinessInfoChecklist} multiple={true} onChange={this.handleCheckChange.bind(this)} />*/}
+                    <br/>
+                    <FormGroup>
+                        <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
+                            I have a written business plan
+                        </Checkbox>
+                        <Checkbox name = "hasFinancialProjections" onClick={this.handleClick.bind(this)}>
+                            I have financial projections
+                        </Checkbox>
+                        <Checkbox name="isGeneratingRevenue" onClick={this.handleClick.bind(this)}>
+                            I'm generating revenue
+                        </Checkbox>
+                        <Checkbox name="isVeteran" onClick={this.handleClick.bind(this)}>
+                            I'm a veteran
+                        </Checkbox>
+                    </FormGroup>
 
                     <button className="col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
                 </form>

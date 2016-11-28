@@ -19,7 +19,7 @@ export class LoanInfo extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createLoan(this.state.loanFields);
-        browserHistory.push('/form/business');
+        browserHistory.push('/form/additional');
         this.loanForm.reset()
     }
 
@@ -51,6 +51,7 @@ export class LoanInfo extends React.Component {
     render() {
         return (
             <div>
+                <button onClick={browserHistory.goBack}>Back</button>
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CurrencyInput label="How much funding do you need?"
                                    name="loanAmount"

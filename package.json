@@ -88,7 +88,7 @@
       ".c9"
     ],
     "moduleNameMapper": {
-      "\\.(css|scss)$": "identity-obj-proxy"
+      "\\.(css|scss|less)$": "identity-obj-proxy"
     }
   }
 }
