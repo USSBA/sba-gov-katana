@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput, SelectBox } from '../helpers/form-helpers.jsx'
+import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import * as BusinessInfoActions from '../../actions/business-info.js'
 import { browserHistory } from 'react-router';
 
@@ -50,15 +50,17 @@ class BusinessInfoForm extends React.Component {
                     <SelectBox label="What type of business is it?"
                                name="businessInfoType"
                                handleChange={this.handleChange.bind(this)}
+                               defaultValue=""
                     >
+                        <option value="" disabled>- Select business type -</option>
                         <option value="Profit">Profit</option>
                         <option value="Non-profit">Non-profit</option>
                     </SelectBox>
-                    <TextInput     label="Describe what your business does"
+                    <TextArea     label="Describe what your business does"
                                    name="businessInfoDescription"
                                    handleChange={this.handleChange.bind(this)}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Next </button>
+                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Continue </button>
 
                 </form>
             </div>
@@ -68,7 +70,9 @@ class BusinessInfoForm extends React.Component {
 
 function mapStateToProps(state) {
     //console.log(reduxState);
-    return {};
+    return {
+        businessInfoData: state.businessInfoData
+    };
 }
 
 function mapDispatchToProps(dispatch){
