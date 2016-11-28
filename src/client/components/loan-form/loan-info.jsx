@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 import { Col } from 'react-bootstrap';
 
 
-class LoanInfo extends React.Component {
+export class LoanInfo extends React.Component {
     constructor(){
         super();
         this.state ={
