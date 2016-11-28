@@ -1,5 +1,9 @@
 exports[`test AdditionalInfo page renders input fields 1`] = `
 <div>
+  <button
+    onClick={[Function]}>
+    Back
+  </button>
   <h3>
     Additional Info
   </h3>
@@ -37,6 +41,7 @@ exports[`test AdditionalInfo page renders input fields 1`] = `
     <div>
       Check all that apply to you: 
     </div>
+    <br />
     <div
       className="form-group">
       <div

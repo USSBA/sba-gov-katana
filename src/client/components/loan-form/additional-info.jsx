@@ -30,36 +30,37 @@ export class AdditionalInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.reviewAnswers(this.state.additionalInfoFields);
-        console.log(this.state)
-        // browserHistory.push("/success");
-        // this.addInfoForm.reset()
+        // console.log(this.state)
+        browserHistory.push("/success");
+        this.addInfoForm.reset()
     };
 
     handleChange(e){
         let additionalInfoFields = {};
         additionalInfoFields[e.target.name] = e.target.value;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     handleClick(e){
         let additionalInfoFields = {};
         additionalInfoFields[e.target.name] = e.target.value;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}});
-        console.log(this.state);
+        // console.log(this.state);
     }
 
 
-    handleCheckChange(e){
-        var addInfo = {};
-        addInfo["extraInfo"] = e;
-        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
-        console.log(this.state);
-    }
+    // handleCheckChange(e){
+    //     var addInfo = {};
+    //     addInfo["extraInfo"] = e;
+    //     this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
+    //     console.log(this.state);
+    // }
 
     render(){
         return (
             <div>
+                <button onClick={browserHistory.goBack}>Back</button>
                 <h3>Additional Info</h3>
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <div>What's your industry experience?</div>
@@ -70,7 +71,7 @@ export class AdditionalInfoForm extends React.Component {
                     </SelectBox>
                     <div>Check all that apply to you: </div>
                     {/*<SelectList data={extraBusinessInfoChecklist} multiple={true} onChange={this.handleCheckChange.bind(this)} />*/}
-
+                    <br/>
                     <FormGroup>
                         <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
                             I have a written business plan
