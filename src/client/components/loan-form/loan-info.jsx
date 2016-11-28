@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 import { Col } from 'react-bootstrap';
 
 
-class LoanForm extends React.Component {
+class LoanInfo extends React.Component {
     constructor(){
         super();
         this.state ={
@@ -101,5 +101,5 @@ function mapDispatchToProps(dispatch){
 export default connect(
     mapReduxStateToProps,
     mapDispatchToProps
-)(LoanForm);
+)(LoanInfo);
 
