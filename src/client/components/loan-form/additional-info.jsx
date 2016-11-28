@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SelectBox, CheckBox } from '../helpers/form-helpers.jsx'
+import { FormPanel } from '../common/form-styling.jsx'
 import { browserHistory } from 'react-router';
 
 import { FormGroup, Checkbox, Panel, ButtonToolbar, Row } from 'react-bootstrap'
@@ -24,7 +25,7 @@ export class AdditionalInfoForm extends React.Component {
         e.preventDefault();
         this.props.actions.reviewAnswers(this.state.additionalInfoFields);
         // console.log(this.state)
-        browserHistory.push("/success");
+        browserHistory.push("/form/review");
         this.addInfoForm.reset()
     };
 
@@ -44,13 +45,7 @@ export class AdditionalInfoForm extends React.Component {
 
     render(){
         return (
-            <Panel className={styles.formPanel}>
-                <ButtonToolbar>
-                    <button type="button" className="btn btn-default btn-sm pull-left" onClick={browserHistory.goBack}>
-                        <span className="glyphicon glyphicon-chevron-left"></span> Back
-                    </button>
-                </ButtonToolbar>
-                <h2 className="col-md-4 col-md-offset-5">Additional Info</h2>
+            <FormPanel title="Additional Info">
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <SelectBox
                         label="What's your industry experience?"
@@ -76,9 +71,11 @@ export class AdditionalInfoForm extends React.Component {
                         </Checkbox>
                     </FormGroup>
 
-                    <button className=" col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
+                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
+                            type="submit">
+                        Continue </button>
                 </form>
-            </Panel>
+            </FormPanel>
         )
     }
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput } from '../helpers/form-helpers.jsx'
+import { FormPanel } from '../common/form-styling.jsx'
 import * as ContactInfoActions from '../../actions/contact-info.js'
 import { browserHistory } from 'react-router';
 
@@ -31,9 +32,8 @@ class ContactInfoForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormPanel title="Contact Form">
                 <form ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <h2 className="col-xs-2 col-xs-offset-5">Contact Info</h2>
                     <TextInput     label="What is your full name?"
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
@@ -48,9 +48,11 @@ class ContactInfoForm extends React.Component {
                                    name="contactEmailAddress"
                                    handleChange={this.handleChange.bind(this)}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Continue </button>
+                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
+                            type="submit">
+                        Continue </button>
                 </form>
-            </div>
+            </FormPanel>
         );
     };
 }

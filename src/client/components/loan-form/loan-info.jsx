@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import { FormPanel } from '../common/form-panel.jsx'
+import { FormPanel } from '../common/form-styling.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
 
@@ -78,9 +78,9 @@ export class LoanInfo extends React.Component {
 
                     />
 
-                    <button className="col-xs-2 col-xs-offset-5"
+                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
                             type="submit">
-                        See Matches </button>
+                        Continue </button>
 
                 </form>
             </FormPanel>

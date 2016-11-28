@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import * as BusinessInfoActions from '../../actions/business-info.js'
 import { browserHistory } from 'react-router';
+import { FormPanel } from '../common/form-styling.jsx'
 
 
 class BusinessInfoForm extends React.Component {
@@ -30,9 +31,8 @@ class BusinessInfoForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormPanel title="Business Info">
                 <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <h2 className="col-xs-2 col-xs-offset-5">Business Info</h2>
                     <TextInput     label="What is the name of your business?"
                                    name="businessInfoName"
                                    handleChange={this.handleChange.bind(this)}
@@ -60,10 +60,13 @@ class BusinessInfoForm extends React.Component {
                                    name="businessInfoDescription"
                                    handleChange={this.handleChange.bind(this)}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Continue </button>
+
+                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
+                            type="submit">
+                        Continue </button>
 
                 </form>
-            </div>
+            </FormPanel>
         );
     };
 }

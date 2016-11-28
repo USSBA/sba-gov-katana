@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
+import { FormPanel } from '../common/form-styling.jsx'
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
@@ -37,7 +38,7 @@ class ReviewSubmitInfoForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormPanel>
                 <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <h2 className="col-xs-2 col-xs-offset-5">Review and Submit</h2>
                     <TextInput     label="Name"
@@ -73,7 +74,7 @@ class ReviewSubmitInfoForm extends React.Component {
                     />
                     <button className="col-xs-2 col-xs-offset-5" type="submit"> See Matches </button>
                 </form>
-            </div>
+            </FormPanel>
         );
     };
 }
