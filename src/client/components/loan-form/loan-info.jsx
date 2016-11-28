@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
+import { FormPanel } from '../common/form-panel.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
 
@@ -30,7 +31,6 @@ export class LoanInfo extends React.Component {
         console.log(this.state.loanFields)
     }
 
-
     handleAmountChange(e){
         let amount = e.target.value.replace(/(\$|,)/g, "")
         if (!/[^\d$,]/.test(amount) && amount.length < 10) {
@@ -38,20 +38,21 @@ export class LoanInfo extends React.Component {
         }
     }
 
-
     handleFormat(e){
         let loanFields = {};
         let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
         if(Number(num)) {
             loanFields[e.target.name] = "$" + num.toLocaleString();
             this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
+        } else {
+            loanFields[e.target.name] = "";
+            this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
         }
     }
 
     render() {
         return (
-            <div>
-                <button onClick={browserHistory.goBack}>Back</button>
+            <FormPanel title="Loan Info">
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CurrencyInput label="How much funding do you need?"
                                    name="loanAmount"
@@ -82,7 +83,7 @@ export class LoanInfo extends React.Component {
                         See Matches </button>
 
                 </form>
-            </div>
+            </FormPanel>
         );
     };
 }

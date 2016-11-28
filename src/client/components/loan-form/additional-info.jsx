@@ -61,7 +61,7 @@ export class AdditionalInfoForm extends React.Component {
                         <option value="lots">lots</option>
                     </SelectBox>
                     <FormGroup className="col-xs-6 col-xs-offset-3">
-                        <label>Check all that apply to you: </label>
+                        <label className={styles.controlLabel}>Check all that apply to you: </label>
                         <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
                             I have a written business plan
                         </Checkbox>
@@ -76,7 +76,7 @@ export class AdditionalInfoForm extends React.Component {
                         </Checkbox>
                     </FormGroup>
 
-                    <button className="col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
+                    <button className=" col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
                 </form>
             </Panel>
         )
