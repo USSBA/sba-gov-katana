@@ -36,7 +36,10 @@ module.exports = {
         }, {
             test: /\.scss$/,
             loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"]
-        }, {
+        },{
+            test: /\.less$/,
+            loader: "style-loader!css-loader!less-loader"
+        },{
             test: /\.json$/,
             loader: 'json-loader'
         },{
