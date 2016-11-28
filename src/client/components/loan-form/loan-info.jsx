@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
-import { Col } from 'react-bootstrap';
 
 
 export class LoanInfo extends React.Component {
