@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { SelectBox, CheckBox } from '../helpers/form-helpers.jsx'
 import { browserHistory } from 'react-router';
 
-import { FormGroup, Checkbox, Panel, Row } from 'react-bootstrap'
+import { FormGroup, Checkbox, Panel, ButtonToolbar, Row } from 'react-bootstrap'
 
 import * as AdditionalInfoActions from '../../actions/additional-info.js'
 
@@ -44,13 +44,13 @@ export class AdditionalInfoForm extends React.Component {
 
     render(){
         return (
-            <Panel>
-                <Row>
+            <Panel className={styles.formPanel}>
+                <ButtonToolbar>
                     <button type="button" className="btn btn-default btn-sm pull-left" onClick={browserHistory.goBack}>
                         <span className="glyphicon glyphicon-chevron-left"></span> Back
                     </button>
-                </Row>
-                <h2 className="col-xs-2 col-xs-offset-5">Additional Info</h2>
+                </ButtonToolbar>
+                <h2 className="col-md-4 col-md-offset-5">Additional Info</h2>
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <SelectBox
                         label="What's your industry experience?"
