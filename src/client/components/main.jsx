@@ -19,6 +19,8 @@ import ContactInfo from './loan-form/contact-info.jsx';
 import LoanInfo from './loan-form/loan-info.jsx';
 import BusinessInfo from './loan-form/business-info.jsx';
 import AdditionalInfo from './loan-form/additional-info.jsx';
+import ReviewSubmitInfo from './loan-form/review-submit-info.jsx';
+
 
 const store = createStore(rootReducer);
 
@@ -41,6 +43,7 @@ ReactDOM.render(
             <Route path="loan" component={LoanInfo} />
             <Route path="business" component={BusinessInfo} />
             <Route path="additional" component={AdditionalInfo} />
+            <Route path="review" component={ReviewSubmitInfo} />
           </Route>
           <Route path="success" component={SuccessPage} />
         </Route>

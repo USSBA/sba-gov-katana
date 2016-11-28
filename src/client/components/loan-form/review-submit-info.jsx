@@ -1,97 +1,97 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput CheckBox} from '../helpers/form-helpers.jsx'
-import * as ContactInfoActions from '../../actions/contact-info.js'
+import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
+import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
 
-class ReviewInfoForm extends React.Component {
+class ReviewSubmitInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            reviewFields: {
-                reviewName: "",
-                reviewAddress: "",
-                neededFunds: "",
-                useOfFunds: "",
-                useOfFundsDescription: "",
-                emailProspect: ""
-            }
+            reviewSubmitInfoFields: {}
         }
     }
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createReviewInfo(this.state.reviewFields);
-        browserHistory.push('/form/loan');
-        this.loanForm.reset()
+        this.props.actions.createReviewSubmitInfo(this.state.reviewSubmitInfoFields);
+        browserHistory.push("/success");
+        this.reviewSubmitInfoForm.reset();
     }
 
     handleChange(e){
-        let reviewFields = {};
-        reviewFields[e.target.name] = e.target.value;
-        this.setState({reviewFields: {...this.state.reviewFields, ...reviewFields}});
-        console.log(this.state.reviewFields)
+        let reviewSubmitInfoFields = {};
+        reviewSubmitInfoFields[e.target.name] = e.target.value;
+        this.setState({reviewSubmitInfoFields: {...this.state.reviewSubmitInfoFields, ...reviewSubmitInfoFields}});
+        console.log(this.state.reviewSubmitInfoFields);
     }
 
     handleClick(e){
-        let reviewFields = {};
-        reviewFields[e.target.name] = e.target.value;
-        this.setState({reviewFields: {...this.state.reviewFields, ...reviewFields}});
-        console.log(this.state.reviewFields)
+        let reviewSubmitInfoFields = {};
+        reviewSubmitInfoFields[e.target.name] = e.target.value;
+        this.setState({reviewSubmitFields: {...this.state.reviewSubmitInfoFields, ...reviewSubmitInfoFields}});
+        console.log(this.state.reviewSubmitInfoFields);
     }
 
     render() {
         return (
             <div>
-                <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <h2 className="col-xs-2 col-xs-offset-5">Review and Submit</h2>
                     <TextInput     label="Name"
                                    name="reviewName"
                                    handleChange={this.handleChange.bind(this)}
+                                   value="Jordan Watts"
                     />
 
                     <TextInput     label="Address"
                                    name="reviewAddress"
                                    handleChange={this.handleChange.bind(this)}
+                                   value="8 Market Pl, Baltimore, MD 21202"
                     />
 
                     <TextInput     label="Funds Needed"
-                                   name="neededFunds"
+                                   name="reviewNeededFunds"
                                    handleChange={this.handleChange.bind(this)}
+                                   value="$1,000,000"
                     />
                     <TextInput     label="Use of Funds"
-                                   name="useOfFunds"
+                                   name="reviewUseOfFunds"
                                    handleChange={this.handleChange.bind(this)}
+                                   value="Purchasing equipment"
                     />
                     <TextInput     label="Use of Funds Description"
-                                   name="useOfFundsDescription"
+                                   name="reviewUseOfFundsDescription"
                                    handleChange={this.handleChange.bind(this)}
+                                   value="I think you get the picture"
                     />
                     <CheckBox     label="Please email me in the future about improving this tool."
-                                   name="emailProspect"
+                                   name="reviewEmailProspect"
                                    handleClick={this.handleClick.bind(this)}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit">Next </button>
+                    <button className="col-xs-2 col-xs-offset-5" type="submit"> See Matches </button>
                 </form>
             </div>
         );
     };
 }
 
-function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
-    return {};
+function mapStateToProps(state) {
+    //console.log(reduxState);
+    return {
+        reviewSubmitInfoData: state.reviewSubmitInfoData
+    };
 }
 
 function mapDispatchToProps(dispatch){
     return {
-        actions: bindActionCreators(ReviewInfoActions, dispatch)
+        actions: bindActionCreators(ReviewSubmitInfoActions, dispatch)
     }
 }
 
 export default connect(
-    mapReduxStateToProps,
+    mapStateToProps,
     mapDispatchToProps
-)(ReviewInfoForm);
+)(ReviewSubmitInfoForm);

@@ -12,22 +12,22 @@ class ContactInfoForm extends React.Component {
         this.state ={
             contactInfoFields: {}
         }
-    }
+    };
 
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createContactInfo(this.state.contactInfoFields);
-        browserHistory.push('/form/loan');
-        this.contactInfoForm.reset();
+        browserHistory.push('/form/business');
+        //this.contactInfoForm.reset();
         console.log('handle submit called.');
-    }
+    };
 
     handleChange(e){
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
         //console.log(this.state.contactFields)
-    }
+    };
 
     render() {
         return (
@@ -37,21 +37,18 @@ class ContactInfoForm extends React.Component {
                     <TextInput     label="What is your full name?"
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
-                                   //value={this.props.contactInfoData.contactFullName}
                     />
 
                     <TextInput     label="What is your phone number?"
                                    name="contactPhoneNumber"
                                    handleChange={this.handleChange.bind(this)}
-                                   //value={this.props.contactInfoData.contactPhoneNumber}
                     />
 
                     <TextInput     label="What is your email address?"
                                    name="contactEmailAddress"
                                    handleChange={this.handleChange.bind(this)}
-                                   //value={this.props.contactInfoData.contactEmailAddress}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit">Next </button>
+                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Continue </button>
                 </form>
             </div>
         );
