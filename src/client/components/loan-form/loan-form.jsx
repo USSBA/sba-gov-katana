@@ -33,10 +33,6 @@ class LoanForm extends React.Component {
             text: "Additional",
             isActive: locationIndex === 3,
             isDone: locationIndex > 3
-        }, {
-            text: "Review and Submit",
-            isActive: locationIndex === 4,
-            isDone: locationIndex > 4
         }];
         return (
             <div>
