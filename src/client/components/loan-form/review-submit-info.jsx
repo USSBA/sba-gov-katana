@@ -38,9 +38,8 @@ class ReviewSubmitInfoForm extends React.Component {
 
     render() {
         return (
-            <FormPanel>
+            <FormPanel title="Review and Submit">
                 <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <h2 className="col-xs-2 col-xs-offset-5">Review and Submit</h2>
                     <TextInput     label="Name"
                                    name="reviewName"
                                    handleChange={this.handleChange.bind(this)}

@@ -5,7 +5,7 @@ import styles from '../common/styles.scss';
 
 export const FormPanel = ({title, ...props}) =>
 
-    <Panel className={"col-sm-8 col-sm-offset-2 " + styles.formPanel}>
+    <Panel className={"col-sm-6 col-sm-offset-3 " + styles.formPanel}>
         <ButtonToolbar>
             <button type="button" className="btn btn-default btn-sm pull-left" onClick={browserHistory.goBack}>
                 <span className="glyphicon glyphicon-chevron-left"></span> Back
