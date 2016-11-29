@@ -47,10 +47,10 @@ class ReviewSubmitInfoForm extends React.Component {
                                    defaultValue={this.props.contactInfoData.contactFullName}
                     />
 
-                    <TextInput     label="Address"
-                                   name="reviewAddress"
+                    <TextInput     label="Zipcode"
+                                   name="reviewZipcode"
                                    handleChange={this.handleChange.bind(this)}
-                                   defaultValue="8 Market Pl, Baltimore, MD 21202"
+                                   defaultValue={this.props.businessInfoData.businessInfoZipcode}
                     />
 
                     <TextInput     label="Funds Needed"
