@@ -44,29 +44,29 @@ class ReviewSubmitInfoForm extends React.Component {
                     <TextInput     label="Name"
                                    name="reviewName"
                                    handleChange={this.handleChange.bind(this)}
-                                   value={this.props.contactInfoData.contactFullName}
+                                   defaultValue={this.props.contactInfoData.contactFullName}
                     />
 
                     <TextInput     label="Address"
                                    name="reviewAddress"
                                    handleChange={this.handleChange.bind(this)}
-                                   value="8 Market Pl, Baltimore, MD 21202"
+                                   defaultValue="8 Market Pl, Baltimore, MD 21202"
                     />
 
                     <TextInput     label="Funds Needed"
                                    name="reviewNeededFunds"
                                    handleChange={this.handleChange.bind(this)}
-                                   value={this.props.loanData.loanAmount}
+                                   defaultValue={this.props.loanData.loanAmount}
                     />
                     <TextInput     label="Use of Funds"
                                    name="reviewUseOfFunds"
                                    handleChange={this.handleChange.bind(this)}
-                                   value={this.props.loanData.loanDescription}
+                                   defaultValue={this.props.loanData.loanDescription}
                     />
                     <TextInput     label="Use of Funds Description"
                                    name="reviewUseOfFundsDescription"
                                    handleChange={this.handleChange.bind(this)}
-                                   value={this.props.businessInfoData.businessInfoDescription}
+                                   defaultValue={this.props.businessInfoData.businessInfoDescription}
                     />
                     <CheckBox     label="Please email me in the future about improving this tool."
                                    name="reviewEmailProspect"
