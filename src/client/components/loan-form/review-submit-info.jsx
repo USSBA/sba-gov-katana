@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
+import {matchFormData} from '../fake-db.jsx';
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
@@ -16,7 +17,8 @@ class ReviewSubmitInfoForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createReviewSubmitInfo(this.state.reviewSubmitInfoFields);
+        //this.props.actions.createReviewSubmitInfo(this.state.reviewSubmitInfoFields);
+        matchFormData(this.state.reviewSubmitInfoFields);
         browserHistory.push("/success");
         this.reviewSubmitInfoForm.reset();
     }
@@ -43,7 +45,7 @@ class ReviewSubmitInfoForm extends React.Component {
                     <TextInput     label="Name"
                                    name="reviewName"
                                    handleChange={this.handleChange.bind(this)}
-                                   value="Jordan Watts"
+                                   value={this.props.contactInfoData.contactFullName}
                     />
 
                     <TextInput     label="Address"
@@ -55,17 +57,17 @@ class ReviewSubmitInfoForm extends React.Component {
                     <TextInput     label="Funds Needed"
                                    name="reviewNeededFunds"
                                    handleChange={this.handleChange.bind(this)}
-                                   value="$1,000,000"
+                                   value={this.props.loanData.loanAmount}
                     />
                     <TextInput     label="Use of Funds"
                                    name="reviewUseOfFunds"
                                    handleChange={this.handleChange.bind(this)}
-                                   value="Purchasing equipment"
+                                   value={this.props.loanData.loanDescription}
                     />
                     <TextInput     label="Use of Funds Description"
                                    name="reviewUseOfFundsDescription"
                                    handleChange={this.handleChange.bind(this)}
-                                   value="I think you get the picture"
+                                   value={this.props.businessInfoData.businessInfoDescription}
                     />
                     <CheckBox     label="Please email me in the future about improving this tool."
                                    name="reviewEmailProspect"
@@ -81,7 +83,10 @@ class ReviewSubmitInfoForm extends React.Component {
 function mapStateToProps(state) {
     //console.log(reduxState);
     return {
-        reviewSubmitInfoData: state.reviewSubmitInfoData
+        loanData: state.loanReducer.loanData,
+        additionalInfoData: state.additionalInfoReducer.additionalInfoData,
+        contactInfoData: state.contactInfoReducer.contactInfoData,
+        businessInfoData: state.businessInfoReducer.businessInfoData
     };
 }
 
