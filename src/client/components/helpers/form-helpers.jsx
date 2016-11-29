@@ -5,6 +5,7 @@ import { FormGroup,
     ControlLabel,
     Col
 } from 'react-bootstrap';
+import styles from '../common/styles.scss';
 
 //standard react form components to be used throughout application
 
@@ -26,9 +27,9 @@ export class CurrencyInput extends React.Component{
 }
 
 export const TextInput = ({handleChange, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup className="input1">
-            <ControlLabel>{props.label}</ControlLabel>
+            <ControlLabel className={styles.controlLabel}>{props.label}</ControlLabel>
             <FormControl
                 {...props}
                 onChange={handleChange}
@@ -39,9 +40,9 @@ export const TextInput = ({handleChange, ...props}) =>
     </Col>;
 
 export const TextArea = ({handleChange, label, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup>
-            <ControlLabel>{label}</ControlLabel>
+            <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
             <FormControl
                 {...props}
                 onChange={handleChange}
@@ -51,9 +52,9 @@ export const TextArea = ({handleChange, label, ...props}) =>
     </Col>;
 
 export const SelectBox = ({handleChange, label, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup>
-           <ControlLabel>{label}</ControlLabel>
+           <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
            <FormControl
                {...props}
                onChange={handleChange}
@@ -63,7 +64,7 @@ export const SelectBox = ({handleChange, label, ...props}) =>
     </Col>;
 
 export const CheckBox = ({handleClick, label, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup>
             <Checkbox {...props} onClick={handleClick}>{label}</Checkbox>
         </FormGroup>

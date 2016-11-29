@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
 import {matchFormData} from '../fake-db.jsx';
+import { FormPanel } from '../common/form-styling.jsx'
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
@@ -17,8 +18,7 @@ class ReviewSubmitInfoForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        //this.props.actions.createReviewSubmitInfo(this.state.reviewSubmitInfoFields);
-        matchFormData(this.state.reviewSubmitInfoFields);
+        this.props.actions.createReviewSubmitInfo(this.state.reviewSubmitInfoFields);
         browserHistory.push("/success");
         this.reviewSubmitInfoForm.reset();
     }
@@ -39,9 +39,8 @@ class ReviewSubmitInfoForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormPanel title="Review and Submit">
                 <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <h2 className="col-xs-2 col-xs-offset-5">Review and Submit</h2>
                     <TextInput     label="Name"
                                    name="reviewName"
                                    handleChange={this.handleChange.bind(this)}
@@ -75,7 +74,7 @@ class ReviewSubmitInfoForm extends React.Component {
                     />
                     <button className="col-xs-2 col-xs-offset-5" type="submit"> See Matches </button>
                 </form>
-            </div>
+            </FormPanel>
         );
     };
 }

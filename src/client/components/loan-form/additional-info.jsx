@@ -2,21 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SelectBox, CheckBox } from '../helpers/form-helpers.jsx'
+import { FormPanel } from '../common/form-styling.jsx'
 import { browserHistory } from 'react-router';
 
-// import 'react-widgets/lib/less/react-widgets.less';
-// import SelectList from 'react-widgets/lib/SelectList';
-
-import { FormGroup, Checkbox } from 'react-bootstrap'
+import { FormGroup, Checkbox, Panel, ButtonToolbar, Row } from 'react-bootstrap'
 
 import * as AdditionalInfoActions from '../../actions/additional-info.js'
 
-var extraBusinessInfoChecklist = [
-    "I have a written business plan",
-    "I have financial projections",
-    "I'm generating revenue",
-    "I'm a veteran"
-]
+import styles from '../common/styles.scss';
+
 
 export class AdditionalInfoForm extends React.Component {
     constructor(){
@@ -31,7 +25,7 @@ export class AdditionalInfoForm extends React.Component {
         e.preventDefault();
         this.props.actions.reviewAnswers(this.state.additionalInfoFields);
         // console.log(this.state)
-        browserHistory.push("/success");
+        browserHistory.push("/form/review");
         this.addInfoForm.reset()
     };
 
@@ -49,30 +43,20 @@ export class AdditionalInfoForm extends React.Component {
         // console.log(this.state);
     }
 
-
-    // handleCheckChange(e){
-    //     var addInfo = {};
-    //     addInfo["extraInfo"] = e;
-    //     this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...addInfo}});
-    //     console.log(this.state);
-    // }
-
     render(){
         return (
-            <div>
-                <button onClick={browserHistory.goBack}>Back</button>
-                <h3>Additional Info</h3>
+            <FormPanel title="Additional Info">
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <div>What's your industry experience?</div>
-                    <SelectBox name = "industryExp" handleChange={this.handleChange.bind(this)}>
+                    <SelectBox
+                        label="What's your industry experience?"
+                        name = "industryExp"
+                        handleChange={this.handleChange.bind(this)}>
                         <option defaultValue=""></option>
                         <option value="none">none</option>
                         <option value="lots">lots</option>
                     </SelectBox>
-                    <div>Check all that apply to you: </div>
-                    {/*<SelectList data={extraBusinessInfoChecklist} multiple={true} onChange={this.handleCheckChange.bind(this)} />*/}
-                    <br/>
-                    <FormGroup>
+                    <FormGroup className="col-xs-6 col-xs-offset-3">
+                        <label className={styles.controlLabel}>Check all that apply to you: </label>
                         <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
                             I have a written business plan
                         </Checkbox>
@@ -87,9 +71,11 @@ export class AdditionalInfoForm extends React.Component {
                         </Checkbox>
                     </FormGroup>
 
-                    <button className="col-xs-2 col-xs-offset-5" type="submit">Review Answers</button>
+                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
+                            type="submit">
+                        Continue </button>
                 </form>
-            </div>
+            </FormPanel>
         )
     }
 }
