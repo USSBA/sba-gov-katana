@@ -28,11 +28,10 @@ export class LoanInfo extends React.Component {
         let loanFields = {};
         loanFields[e.target.name] = e.target.value;
         this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        console.log(this.state.loanFields)
     }
 
     handleAmountChange(e){
-        let amount = e.target.value.replace(/(\$|,)/g, "")
+        let amount = e.target.value.replace(/(\$|,)/g, "");
         if (!/[^\d$,]/.test(amount) && amount.length < 10) {
             this.handleChange(e)
         }
@@ -89,7 +88,6 @@ export class LoanInfo extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
-    console.log(reduxState);
     return {};
 }
 

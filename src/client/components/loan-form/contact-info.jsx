@@ -20,14 +20,13 @@ class ContactInfoForm extends React.Component {
         this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/business');
         //this.contactInfoForm.reset();
-        console.log('handle submit called.');
+
     };
 
     handleChange(e){
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
-        //console.log(this.state.contactFields)
     };
 
     render() {
