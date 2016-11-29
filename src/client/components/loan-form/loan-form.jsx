@@ -14,7 +14,7 @@ import _ from 'lodash';
 class LoanForm extends React.Component {
     render() {
         // TODO: refactor this to be more extensible
-        let pages = ['contact', 'business', 'loan', 'additional', 'review and submit']; // TODO make this static or configuration
+        let pages = ['contact', 'business', 'loan', 'additional', 'review']; // TODO make this static or configuration
         let page = this.props.location.replace('/form/', '');
         let locationIndex = _.indexOf(pages, page);
         let data = [{
