@@ -27,7 +27,7 @@ export class CurrencyInput extends React.Component{
 }
 
 export const TextInput = ({handleChange, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup className="input1">
             <ControlLabel className={styles.controlLabel}>{props.label}</ControlLabel>
             <FormControl
@@ -40,7 +40,7 @@ export const TextInput = ({handleChange, ...props}) =>
     </Col>;
 
 export const TextArea = ({handleChange, label, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup>
             <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
             <FormControl
@@ -52,7 +52,7 @@ export const TextArea = ({handleChange, label, ...props}) =>
     </Col>;
 
 export const SelectBox = ({handleChange, label, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup>
            <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
            <FormControl
@@ -64,7 +64,7 @@ export const SelectBox = ({handleChange, label, ...props}) =>
     </Col>;
 
 export const CheckBox = ({handleClick, label, ...props}) =>
-    <Col xs={6} xsOffset={3}>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
         <FormGroup>
             <Checkbox {...props} onClick={handleClick}>{label}</Checkbox>
         </FormGroup>
