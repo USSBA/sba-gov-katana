@@ -7,6 +7,7 @@ module.exports = {
     entry: [
         'webpack-hot-middleware/client',
         'bootstrap-loader',
+        'babel-polyfill',
         './src/client/components/main.jsx'
     ],
     output: {
