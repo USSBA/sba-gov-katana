@@ -5,7 +5,6 @@ import thumbNail from '../../../../public/assets/images/placeholder80X80.png';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
 
 export const Introduction = (props) =>
-        <Grid fluid={true}>
             <Row>
                 <Col xs={12} className={styles.introSection + " " + styles.landingSection}>
 
@@ -34,24 +33,22 @@ export const Introduction = (props) =>
                             <IntroSubSection
                                 image={thumbNail}
                                 title="Select the right lender"
-                                text="Accelerator seed round freemium seed money research & development"
+                                text="Accelerator seed round freemium and seed money"
                             />
                         </Col>
                     </Row>
 
-                    <Row style={{marginTop: "80px"}}>
+                    <Row style={{marginTop: "80px", marginBottom: "60px"}}>
                         <Col xs={2} xsOffset={3}>
                             <HelpMeBtn/>
                         </Col>
                         <Col xs={2} xsOffset={2}>
-
                             <FindLendersBtn/>
                         </Col>
                     </Row>
 
                 </Col>
-            </Row>
-        </Grid>;
+            </Row>;
 
 const IntroSubSection = (props) =>
     <Col xs={4}>

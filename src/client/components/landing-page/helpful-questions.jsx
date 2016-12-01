@@ -1,8 +1,28 @@
 import React from 'react';
+import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
+import styles from '../common/styles.scss';
+import thumbNail from '../../../../public/assets/images/placeholder80X80.png';
 
 export const HelpfulQuestions = (props) =>
-      <div>
-          <h2  className="text-center"> Process And Facts </h2>
-          <p  className="text-center"> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." </p>
-        </div>;
+    <Row>
+        <Col xs={12} className={styles.questionSection + " " + styles.landingSection}>
+
+            <Row>
+                <p  className={styles.sectionTitle + " text-center"}> Preparation Checklist </p>
+            </Row>
+
+            <Row style={{marginTop: "60px"}}>
+                <Col xs={10} xsOffset={1}>
+
+                </Col>
+            </Row>
+
+            <Row>
+                <Col xs={6} xsOffset={3}>
+                    <p className="text-center">Have questions or need guidance? Take advantage of free, local counseling. </p>
+                </Col>
+            </Row>
+
+        </Col>
+    </Row>;
 
