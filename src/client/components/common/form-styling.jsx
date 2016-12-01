@@ -12,7 +12,7 @@ export const FormPanel = ({title, subtitle, ...props}) =>
             </button>
         </ButtonToolbar>
 
-        <h2 className="col-md-4 col-md-offset-4 text-center">{title}</h2>
-        {/*<div className="col-md-4 col-md-offset-4 text-center">{subtitle}</div>*/}
+        <h2 className="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">{title}</h2>
+        <p className="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">{subtitle}</p>
         {props.children}
     </Panel>;
