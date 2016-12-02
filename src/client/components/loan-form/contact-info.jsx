@@ -11,7 +11,10 @@ class ContactInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            contactInfoFields: {}
+            contactInfoFields: {},
+            errors: {
+                contactPhoneNumber: null
+            }
         }
     };
 
@@ -27,6 +30,23 @@ class ContactInfoForm extends React.Component {
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
+        this.getValidationState(e)
+    };
+
+    getValidationState(e) {
+        console.log(e)
+        let errors = {};
+        if (e.target.value.length <= 10 && e.target.value.length >= 7){
+            errors[e.target.name] = "success";
+        } else if (e.target.value.length === 0) {
+            errors[e.target.name] = null;
+        } else if (e.target.value.length < 7){
+            errors[e.target.name] = "warning";
+        } else {
+            errors[e.target.name] = "error";
+        }
+        // const length = e.target.value.length;
+        this.setState({errors: {...this.state.errors, ...errors}})
     };
 
     render() {
@@ -43,6 +63,7 @@ class ContactInfoForm extends React.Component {
                                    name="contactPhoneNumber"
                                    pattern="[\d]{7,10}"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.errors["contactPhoneNumber"]}
                                    required
                     />
 
