@@ -1,6 +1,56 @@
 import React from 'react';
+import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
+import styles from '../common/styles.scss';
+import {FindLendersBtn} from './find-lenders-btn.jsx'
+import {CounselorBtn} from './counselor-btn.jsx'
 
 export const SuccessStories = (props) =>
-    <div>
-        oi oi oi oi oi
-    </div>;
+    <Row>
+        <Col xs={12} className={styles.storiesSection + " " + styles.landingSection}>
+
+            <p className="text-center" style={titleStyle}>Hear from other business owners</p>
+
+            <Quote
+                text="Responsive web design network effects burn rate stock seed round. Incubator growth hacking investor vesting period innovator disruptive stealth termsheet market ownership funding analytics burn rate."
+                name="John Doe"
+                title="Ceo of Getdough"
+            />
+
+            <Quote
+                text="Equity paradigm shift growth hacking venture. Conversion iPhone agile development deployment. Ramen ownership release. A/B testing business model canvas influencer alpha direct mailing."
+                name="Zander Nelson"
+                title="God Walking Amongst Mere Mortals"
+            />
+
+            <Row style={{marginTop: "80px", marginBottom: "60px"}}>
+                <Col xs={2} xsOffset={3}>
+                    <CounselorBtn/>
+                </Col>
+                <Col xs={2} xsOffset={2}>
+                    <FindLendersBtn/>
+                </Col>
+            </Row>
+
+        </Col>
+    </Row>;
+
+const Quote = (props) =>
+    <Row style={{marginBottom: "30px"}}>
+        <Col className="text-center" xs={4} xsOffset={4}>
+            <p  style={quoteStyle}>"{props.text}"</p>
+            <span >_______</span>
+            <p>{props.name}</p>
+            <p>{props.title}</p>
+        </Col>
+    </Row>;
+
+const quoteStyle = {
+    fontStyle: "italic",
+    textAlign: "justify"
+};
+
+const titleStyle = {
+    fontSize: "34px",
+    marginTop: "40px",
+    marginBottom: "40px"
+};

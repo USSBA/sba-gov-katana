@@ -3,6 +3,7 @@ import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
 import styles from '../common/styles.scss';
 import thumbNail from '../../../../public/assets/images/placeholder80X80.png';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
+import {CounselorBtn} from './counselor-btn.jsx'
 
 export const PreparationChecklist = (props) =>
         <Row>
@@ -16,33 +17,33 @@ export const PreparationChecklist = (props) =>
                     <Col xs={10} xsOffset={1}>
                         <PrepSubSection
                             image={thumbNail}
-                            title="Describe Your needs"
-                            text="A financing validation funding alpha monetization early"
+                            title="Business Plan"
+                            text="Bandwidth iPhone incubator angel investor founders"
                         />
                         <PrepSubSection
                             image={thumbNail}
-                            title="Get matched in 2 days"
-                            text="Prototype return on investment first mover advantage agile"
+                            title="Collateral"
+                            text="Direct mailing ecosystem incubator creative"
                         />
                         <PrepSubSection
                             image={thumbNail}
-                            title="Select the right lender"
-                            text="Accelerator seed round freemium seed money research & development"
+                            title="Credit Score"
+                            text="Lean startup accelerator hackathon client funding"
                         />
                         <PrepSubSection
                             image={thumbNail}
-                            title="Describe Your needs"
-                            text="A financing validation funding alpha monetization early"
+                            title="Financial Projections"
+                            text="Venture stock channels success A/B testing series A"
                         />
                         <PrepSubSection
                             image={thumbNail}
-                            title="Get matched in 2 days"
-                            text="Prototype return on investment first mover advantage agile"
+                            title="Valid Use"
+                            text="Ownership social media ramen effects partnership customer"
                         />
                         <PrepSubSection
                             image={thumbNail}
-                            title="Select the right lender"
-                            text="Accelerator seed round freemium seed money research & development"
+                            title="Industry Experience"
+                            text="A/B testing long tail buzz branding customer early"
                         />
                     </Col>
                 </Row>
@@ -55,7 +56,7 @@ export const PreparationChecklist = (props) =>
 
                 <Row style={{marginTop: "30px", marginBottom: "60px"}}>
                     <Col xs={2} xsOffset={3}>
-                        <HelpMeBtn/>
+                        <CounselorBtn/>
                     </Col>
                     <Col xs={2} xsOffset={2}>
                         <FindLendersBtn/>
@@ -75,8 +76,3 @@ const PrepSubSection = (props) =>
             <p className={styles.subSectionText}>{props.text}</p>
         </Col>
     </Col>;
-
-const HelpMeBtn = (props) =>
-    <div>
-        <Button block className={ styles.btn+ " " + styles.whiteBtn}>HELP ME GET READY</Button>
-    </div>;

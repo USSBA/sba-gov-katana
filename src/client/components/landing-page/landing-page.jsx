@@ -14,6 +14,7 @@ class LandingPage extends React.Component{
                 <Introduction />
                 <PreparationChecklist />
                 <HelpfulQuestions/>
+                <SuccessStories/>
             </Grid>
         );
     }
