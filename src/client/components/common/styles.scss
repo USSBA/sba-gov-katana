@@ -4,9 +4,6 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-
-
-
 //COMMON STYLES
 
 .footer {
@@ -74,12 +71,23 @@
 //LANDING PAGE STYLES
 
 .landingSection {
-    height:500px;
     font-weight: lighter;
 }
 
 .introSection {
     background: #efefef;
+}
+
+.prepSection {
+    background: white;
+}
+
+.questionSection {
+    background: #efefef;
+}
+
+.storiesSection {
+    background: white;
 }
 
 //LANDING PAGE STYLES: COMMON

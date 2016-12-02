@@ -7,8 +7,10 @@ import React from 'react';
 class Footer extends React.Component{
     render(){
       return (
-      <div className="text-center col-xs-8 col-xs-offset-2">
-        <h3 className="footer"> U.S. Small Business Administration, 409 3rd St, SW. Washington DC 2046 </h3>
+      <div style={{background: "#c4d8f2"}} className="text-center col-xs-12">
+          <div style={{marginTop: "30px", marginBottom: "30px"}}>
+              <h4 className="footer"> U.S. Small Business Administration, 409 3rd St, SW. Washington DC 2046 </h4>
+          </div>
       </div>
       );
     };
