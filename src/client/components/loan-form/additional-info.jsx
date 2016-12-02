@@ -47,14 +47,7 @@ export class AdditionalInfoForm extends React.Component {
         return (
             <FormPanel title="Additional Info">
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <SelectBox
-                        label="What's your industry experience?"
-                        name = "industryExp"
-                        handleChange={this.handleChange.bind(this)}>
-                        <option defaultValue=""></option>
-                        <option value="none">none</option>
-                        <option value="lots">lots</option>
-                    </SelectBox>
+
                     <FormGroup className="col-xs-6 col-xs-offset-3">
                         <label className={styles.controlLabel}>Check all that apply to you: </label>
                         <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>

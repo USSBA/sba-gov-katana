@@ -18,7 +18,7 @@ class BusinessInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createBusinessInfo(this.state.businessInfoFields);
-        browserHistory.push('/form/loan');
+        browserHistory.push('/form/industry');
         this.businessInfoForm.reset()
     }
 
