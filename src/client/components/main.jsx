@@ -40,8 +40,8 @@ ReactDOM.render(
           <Route path="form" component={LoanForm}>
             <IndexRedirect to='contact' />
             <Route path="contact" component={ContactInfo} />
-            <Route path="loan" component={LoanInfo} />
             <Route path="business" component={BusinessInfo} />
+            <Route path="loan" component={LoanInfo} />
             <Route path="additional" component={AdditionalInfo} />
             <Route path="review" component={ReviewSubmitInfo} />
           </Route>
