@@ -56,8 +56,11 @@ module.exports = {
             test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
             loader: 'imports-loader?jQuery=jquery'
         },{
-            test: /\.(png|jpg)$/,
+            test: /\.(jpg)$/,
             loader: 'url-loader?limit=8192'
+        },{
+            test: /\.(png)$/,
+            loader: 'url-loader?limit=8192&mimetype=image/png'
         }]
     }
 };
