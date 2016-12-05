@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
 import styles from '../common/styles.scss';
-import thumbNail from '../../../../public/assets/images/placeholder370X170.png';
+import thumbNail from '../../../../public/assets/images/placeholder370x170.png';
 
 export const HelpfulQuestions = (props) =>
     <Row>
