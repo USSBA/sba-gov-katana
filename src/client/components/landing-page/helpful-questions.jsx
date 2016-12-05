@@ -11,7 +11,7 @@ export const HelpfulQuestions = (props) =>
                 <Col xs={10} xsOffset={1}>
                     <Col xs={6}>
                         <p style={titleStyle}>What should I ask a lender?</p>
-                        Growth hacking startup scrum project marketing business-to-business pivot lean startup advisor. IPhone validation funding user experience innovator partner network facebook agile development network effects partnership customer android. Business model canvas facebook crowdsource stealth buzz network effects agile development MVP rockstar client
+                        Growth hacking startup scruminati project marketing business-to-business pivot lean startup advisor. IPhone validation funding user experience innovator partner network facebook agile development network effects partnership customer android. Business model canvas facebook crowdsource stealth buzz network effects agile development MVP rockstar client
                     </Col>
                     <Col xs={6}>
                         <Image className="pull-right" src={thumbNail}/>
