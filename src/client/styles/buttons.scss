@@ -1,0 +1,28 @@
+.btn:focus,.btn:active {
+    outline: none !important;
+}
+
+.findLendersBtn {
+    background: #333333;
+    color: white;
+    border: 1px solid #333333;
+    border-radius: 0;
+}
+
+.findLendersBtn:hover {
+    background: white;
+    border: 1px solid #333333;
+}
+
+.helpBtn {
+    background: white;
+    border: 1px solid #333333;
+    color: #333333;
+    border-radius: 0;
+}
+
+.helpBtn:hover {
+    background:  #333333;
+    border: 1px solid #333333;
+    color: white;
+}
