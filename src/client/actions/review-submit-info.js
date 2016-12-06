@@ -8,12 +8,12 @@ export function matchFormData(reviewSubmitInfoData){
     return function(dispatch){
         dispatch({type: "MATCH_FORM_DATA_START"});
         axios.post("http://localhost:3000/matchFormData",
-            reviewSubmitInfoData,
+            reviewSubmitInfoData/*,
             {
                 headers:{
                     "Content-Type": "application/x-www-form-urlencoded"
                 }
-            })
+            }*/)
             .then((response) => {
                 dispatch({type: "MATCH_FORM_DATA_SUCCESS", payload: response.data});
                 console.log("SUCCESS: " + response.data);

@@ -5,7 +5,6 @@ import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
-import matchFormData from '../../api/match-form-data.js';
 
 
 class ReviewSubmitInfoForm extends React.Component {
@@ -85,7 +84,6 @@ class ReviewSubmitInfoForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-    //console.log(reduxState);
     return {
         loanData: state.loanReducer.loanData,
         additionalInfoData: state.additionalInfoReducer.additionalInfoData,
