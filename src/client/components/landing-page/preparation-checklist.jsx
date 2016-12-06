@@ -1,16 +1,16 @@
 import React from 'react';
 import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
-import styles from '../common/styles.scss';
+import styles from '../../styles/landing-page/preparation-checklist.scss';
 import thumbNail from '../../../../public/assets/images/placeholder80x80.png';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
 import {CounselorBtn} from './counselor-btn.jsx'
 
 export const PreparationChecklist = (props) =>
         <Row>
-            <Col xs={12} className={styles.prepSection + " " + styles.landingSection}>
+            <Col xs={12} className={styles.section}>
 
                 <Row>
-                    <p  className={styles.sectionTitle + " text-center"}> Preparation Checklist </p>
+                    <p  className={styles.title + " text-center"}> Preparation Checklist </p>
                 </Row>
 
                 <Row style={{marginTop: "60px"}}>
@@ -72,7 +72,7 @@ const PrepSubSection = (props) =>
             <Image src={props.image} circle/>
         </Col>
         <Col xs={8}>
-            <h3 className={styles.subSectionTitle}>{props.title}</h3>
-            <p className={styles.subSectionText}>{props.text}</p>
+            <h3 className={styles.subTitle}>{props.title}</h3>
+            <p className={styles.subText}>{props.text}</p>
         </Col>
     </Col>;

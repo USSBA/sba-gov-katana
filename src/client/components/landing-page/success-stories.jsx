@@ -1,14 +1,14 @@
 import React from 'react';
 import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
-import styles from '../common/styles.scss';
+import styles from '../../styles/landing-page/success-stories.scss';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
 import {CounselorBtn} from './counselor-btn.jsx'
 
 export const SuccessStories = (props) =>
     <Row>
-        <Col xs={12} className={styles.storiesSection + " " + styles.landingSection}>
+        <Col xs={12} className={styles.section}>
 
-            <p className="text-center" style={titleStyle}>Hear from other business owners</p>
+            <p className={styles.title + " text-center"}>Hear from other business owners</p>
 
             <Quote
                 text="Responsive web design network effects burn rate stock seed round. Incubator growth hacking investor vesting period innovator disruptive stealth termsheet market ownership funding analytics burn rate."
@@ -37,20 +37,11 @@ export const SuccessStories = (props) =>
 const Quote = (props) =>
     <Row style={{marginBottom: "30px"}}>
         <Col className="text-center" xs={4} xsOffset={4}>
-            <p  style={quoteStyle}>"{props.text}"</p>
+            <p  className={styles.quote}>"{props.text}"</p>
             <span >_______</span>
             <p>{props.name}</p>
             <p>{props.title}</p>
         </Col>
     </Row>;
 
-const quoteStyle = {
-    fontStyle: "italic",
-    textAlign: "justify"
-};
 
-const titleStyle = {
-    fontSize: "34px",
-    marginTop: "40px",
-    marginBottom: "40px"
-};
