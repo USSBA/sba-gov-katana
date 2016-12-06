@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput } from '../helpers/form-helpers.jsx'
+import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx'
 import { FormPanel } from '../common/form-styling.jsx'
 import * as ContactInfoActions from '../../actions/contact-info.js'
 import { browserHistory } from 'react-router';
+
+import { getNameValidationState, getPhoneValidationState, getEmailValidationState } from '../helpers/page-validator-helpers.jsx'
 
 
 class ContactInfoForm extends React.Component {
@@ -12,9 +14,7 @@ class ContactInfoForm extends React.Component {
         super();
         this.state ={
             contactInfoFields: {},
-            errors: {
-                contactPhoneNumber: null
-            }
+            errors: {}
         }
     };
 
@@ -23,7 +23,6 @@ class ContactInfoForm extends React.Component {
         this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/business');
         this.contactInfoForm.reset();
-
     };
 
     handleChange(e){
@@ -34,52 +33,17 @@ class ContactInfoForm extends React.Component {
     };
 
     getValidationState(e) {
+        let errors = {}
         if (e.target.name === "contactFullName") {
-            this.getNameValidationState(e)
+            errors = getNameValidationState(e)
         } else if (e.target.name === "contactPhoneNumber") {
-            this.getPhoneValidationState(e)
+            errors = getPhoneValidationState(e)
         } else if (e.target.name === "contactEmailAddress") {
-            this.getEmailValidationState(e)
+            errors = getEmailValidationState(e)
         }
+        this.setState({errors: {...this.state.errors, ...errors}})
     };
 
-    getNameValidationState(e) {
-        let errors = {};
-        var nameRegex = new RegExp(/^[a-z ,.'-]+$/i)
-        if (nameRegex.test(e.target.value)) {
-            errors[e.target.name] = "success";
-        } else if (e.target.value.length === 0) {
-            errors[e.target.name] = null;
-        } else {
-            errors[e.target.name] = "error";
-        }
-        this.setState({errors: {...this.state.errors, ...errors}})
-    }
-
-    getPhoneValidationState(e) {
-        let errors = {};
-        if (e.target.value.length <= 10 && e.target.value.length >= 7){
-            errors[e.target.name] = "success";
-        } else if (e.target.value.length < 7) {
-            errors[e.target.name] = null;
-        } else {
-            errors[e.target.name] = "error";
-        }
-        this.setState({errors: {...this.state.errors, ...errors}})
-    }
-
-    getEmailValidationState(e) {
-        let errors ={};
-        var emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/)
-        if (emailRegex.test(e.target.value)) {
-            errors[e.target.name] = "success";
-        } else if (e.target.value.length === 0) {
-            errors[e.target.name] = null;
-        } else if ((/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(e.target.value)) {
-            errors[e.target.name] = "error";
-        }
-        this.setState({errors: {...this.state.errors, ...errors}})
-    }
 
     render() {
         return (
