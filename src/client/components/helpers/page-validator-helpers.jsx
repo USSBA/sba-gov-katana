@@ -16,9 +16,9 @@ export function getNameValidationState(e) {
 export function getPhoneValidationState(e) {
     let validStates = {};
     var numberRegex = new RegExp(/^\d+$/)
-    if (e.target.value.length <= 10 && e.target.value.length >= 7 && numberRegex.test(e.target.value)){
+    if (e.target.value.length >= 10 && numberRegex.test(e.target.value)){
         validStates[e.target.name] = "success";
-    } else if (e.target.value.length < 7 && numberRegex.test(e.target.value)) {
+    } else if (e.target.value.length < 10 && numberRegex.test(e.target.value)) {
         validStates[e.target.name] = null;
     } else {
         validStates[e.target.name] = "error";
