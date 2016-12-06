@@ -18,9 +18,9 @@ class IndustryInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.createIndustryInfo(this.state.industryInfoFields);
-    //     browserHistory.push('/form/loan');
-    //     this.industryInfoForm.reset()
-        console.log(this.state)
+        browserHistory.push('/form/loan');
+        this.industryInfoForm.reset()
+        // console.log(this.state)
     }
 
     handleChange(e){

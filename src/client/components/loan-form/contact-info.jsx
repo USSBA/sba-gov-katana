@@ -22,7 +22,7 @@ class ContactInfoForm extends React.Component {
         e.preventDefault();
         this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/business');
-        //this.contactInfoForm.reset();
+        this.contactInfoForm.reset();
 
     };
 
@@ -70,12 +70,12 @@ class ContactInfoForm extends React.Component {
 
     getEmailValidationState(e) {
         let errors ={};
-        var emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+        var emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/)
         if (emailRegex.test(e.target.value)) {
             errors[e.target.name] = "success";
         } else if (e.target.value.length === 0) {
             errors[e.target.name] = null;
-        } else {
+        } else if ((/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(e.target.value)) {
             errors[e.target.name] = "error";
         }
         this.setState({errors: {...this.state.errors, ...errors}})
