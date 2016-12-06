@@ -1,7 +1,7 @@
 import React from 'react';
 import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
 import styles from '../common/styles.scss';
-import thumbNail from '../../../../public/assets/images/placeholder80X80.png';
+import thumbNail from '../../../../public/assets/images/placeholder80x80.png';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
 import {CounselorBtn} from './counselor-btn.jsx'
 
