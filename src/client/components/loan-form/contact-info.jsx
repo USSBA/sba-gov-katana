@@ -11,7 +11,10 @@ class ContactInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            contactInfoFields: {}
+            contactInfoFields: {},
+            errors: {
+                contactPhoneNumber: null
+            }
         }
     };
 
@@ -19,7 +22,7 @@ class ContactInfoForm extends React.Component {
         e.preventDefault();
         this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/business');
-        //this.contactInfoForm.reset();
+        this.contactInfoForm.reset();
 
     };
 
@@ -27,7 +30,56 @@ class ContactInfoForm extends React.Component {
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
+        this.getValidationState(e)
     };
+
+    getValidationState(e) {
+        if (e.target.name === "contactFullName") {
+            this.getNameValidationState(e)
+        } else if (e.target.name === "contactPhoneNumber") {
+            this.getPhoneValidationState(e)
+        } else if (e.target.name === "contactEmailAddress") {
+            this.getEmailValidationState(e)
+        }
+    };
+
+    getNameValidationState(e) {
+        let errors = {};
+        var nameRegex = new RegExp(/^[a-z ,.'-]+$/i)
+        if (nameRegex.test(e.target.value)) {
+            errors[e.target.name] = "success";
+        } else if (e.target.value.length === 0) {
+            errors[e.target.name] = null;
+        } else {
+            errors[e.target.name] = "error";
+        }
+        this.setState({errors: {...this.state.errors, ...errors}})
+    }
+
+    getPhoneValidationState(e) {
+        let errors = {};
+        if (e.target.value.length <= 10 && e.target.value.length >= 7){
+            errors[e.target.name] = "success";
+        } else if (e.target.value.length < 7) {
+            errors[e.target.name] = null;
+        } else {
+            errors[e.target.name] = "error";
+        }
+        this.setState({errors: {...this.state.errors, ...errors}})
+    }
+
+    getEmailValidationState(e) {
+        let errors ={};
+        var emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/)
+        if (emailRegex.test(e.target.value)) {
+            errors[e.target.name] = "success";
+        } else if (e.target.value.length === 0) {
+            errors[e.target.name] = null;
+        } else if ((/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(e.target.value)) {
+            errors[e.target.name] = "error";
+        }
+        this.setState({errors: {...this.state.errors, ...errors}})
+    }
 
     render() {
         return (
@@ -36,6 +88,7 @@ class ContactInfoForm extends React.Component {
                     <TextInput     label="What is your full name?"
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.errors["contactFullName"]}
                                    required
                     />
 
@@ -43,6 +96,7 @@ class ContactInfoForm extends React.Component {
                                    name="contactPhoneNumber"
                                    pattern="[\d]{7,10}"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.errors["contactPhoneNumber"]}
                                    required
                     />
 
@@ -50,6 +104,7 @@ class ContactInfoForm extends React.Component {
                                    name="contactEmailAddress"
                                    pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.errors["contactEmailAddress"]}
                                    required
                     />
                     <button className="btn btn-default col-xs-2 col-xs-offset-5"
