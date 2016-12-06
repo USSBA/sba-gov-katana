@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
-import {matchFormData} from '../fake-db.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
+import matchFormData from '../../api/match-form-data.js';
 
 
 class ReviewSubmitInfoForm extends React.Component {
@@ -18,7 +18,12 @@ class ReviewSubmitInfoForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.actions.createReviewSubmitInfo(this.state.reviewSubmitInfoFields);
+        this.props.actions.matchFormData({
+            loanData: this.props.loanData,
+            additionalInfoData: this.props.additionalInfoData,
+            contactInfoData: this.props.contactInfoData,
+            businessInfoData: this.props.businessInfoData
+        });
         browserHistory.push("/success");
         this.reviewSubmitInfoForm.reset();
     }

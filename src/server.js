@@ -1,6 +1,7 @@
 /*Contains express server setup*/
 var express = require('express');
 var config = require('config');
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -8,6 +9,8 @@ var app = express();
 app.set('view engine', 'pug');
 app.set('views', './src/views')
 
+
+var urlEncodedParser = bodyParser.urlencoded({extended: false});
 //set up static files handler not route specific but will route to any static files inside public and its subfolders
 app.use(express.static('./public'));
 
@@ -25,6 +28,10 @@ if (process.env.NODE_ENV === 'development') {
 
 app.get('*', function(req, res) {
     res.render('main');
+});
+
+app.post('/matchFormData', urlEncodedParser, function(req, res){
+    console.log(req.body);
 });
 
 //listen to port
