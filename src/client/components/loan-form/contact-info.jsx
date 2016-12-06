@@ -14,9 +14,23 @@ class ContactInfoForm extends React.Component {
         super();
         this.state ={
             contactInfoFields: {},
-            errors: {}
+            validStates: {
+                "contactFullName": null,
+                "contactPhoneNumber": null,
+                "contactEmailAddress": null
+            }
         }
     };
+
+    isValidForm(){
+        let validForm = true;
+        for (var inputState in this.state.validStates){
+            if(this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null){
+                validForm = false;
+            }
+        }
+        return validForm
+    }
 
     handleSubmit(e){
         e.preventDefault();
@@ -30,18 +44,19 @@ class ContactInfoForm extends React.Component {
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
         this.getValidationState(e)
+
     };
 
     getValidationState(e) {
-        let errors = {}
+        let validStates = {}
         if (e.target.name === "contactFullName") {
-            errors = getNameValidationState(e)
+            validStates = getNameValidationState(e)
         } else if (e.target.name === "contactPhoneNumber") {
-            errors = getPhoneValidationState(e)
+            validStates = getPhoneValidationState(e)
         } else if (e.target.name === "contactEmailAddress") {
-            errors = getEmailValidationState(e)
+            validStates = getEmailValidationState(e)
         }
-        this.setState({errors: {...this.state.errors, ...errors}})
+        this.setState({validStates: {...this.state.validStates, ...validStates}})
     };
 
 
@@ -52,7 +67,7 @@ class ContactInfoForm extends React.Component {
                     <TextInput     label="What is your full name?"
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
-                                   getValidationState={this.state.errors["contactFullName"]}
+                                   getValidationState={this.state.validStates["contactFullName"]}
                                    required
                     />
 
@@ -60,7 +75,7 @@ class ContactInfoForm extends React.Component {
                                    name="contactPhoneNumber"
                                    pattern="[\d]{7,10}"
                                    handleChange={this.handleChange.bind(this)}
-                                   getValidationState={this.state.errors["contactPhoneNumber"]}
+                                   getValidationState={this.state.validStates["contactPhoneNumber"]}
                                    required
                     />
 
@@ -68,12 +83,12 @@ class ContactInfoForm extends React.Component {
                                    name="contactEmailAddress"
                                    pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                                    handleChange={this.handleChange.bind(this)}
-                                   getValidationState={this.state.errors["contactEmailAddress"]}
+                                   getValidationState={this.state.validStates["contactEmailAddress"]}
                                    required
                     />
                     <button className="btn btn-default col-xs-2 col-xs-offset-5"
-                            type="submit">
-                        Continue </button>
+                            type="submit"
+                            disabled={!(this.isValidForm())}> Continue </button>
                 </form>
             </FormPanel>
         );
