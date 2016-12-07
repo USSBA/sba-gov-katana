@@ -39,3 +39,13 @@ export function getEmailValidationState(e) {
     }
     return validStates
 }
+///////////////
+export function getBusinessNameValidationState(e){
+    let validStates = {};
+    if (e.target.value.length > 0){
+        validStates[e.target.name] = "success";
+    } else {
+        validStates[e.target.name] = "error"
+    }
+    return validStates
+}
