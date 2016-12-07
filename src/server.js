@@ -75,56 +75,56 @@ app.post('/matchFormData', jsonParser, function(req, res){
 
         //return next(err);
     }
-    if(req.body.contactInfoData.contactPhoneNumber.isEmpty){
+    if(!("contactPhoneNumber" in req.body.contactInfoData)){
         console.log("Error: Contact Phone Number is required.");
         var err = new Error("Contact Phone Number is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.contactInfoData.contactEmailAddress.isEmpty){
+    if(!("contactEmailAddress" in req.body.contactInfoData)){
         console.log("Error: Contact Email Address is required.");
         var err = new Error("Contact Email Address is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.businessInfoData.businessInfoName.isEmpty){
+    if(!("businessInfoName" in req.body.businessInfoData)){
         console.log("Error: Business Name is required.");
         var err = new Error("Business Name is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.businessInfoData.businessInfoZipcode.isEmpty){
+    if(!("businessInfoZipcode" in req.body.businessInfoData)){
         console.log("Error: Business Zip Code is required.");
         var err = new Error("Business Zip Code is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.businessInfoData.businessInfoType.isEmpty){
+    if(!("businessInfoType" in req.body.businessInfoData)){
         console.log("Error: Business Type is required.");
         var err = new Error("Business Type is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.additionalInfoData.industryExp.isEmpty){
+    if(!("industryExp" in req.body.additionalInfoData)){
         console.log("Error: Industry Experience is required.");
         var err = new Error("Industry Experience is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.loanData.loanAmount.isEmpty){
+    if(!("loanAmount" in req.body.loanData)){
         console.log("Error: Loan Amount is required.");
         var err = new Error("Loan Amount is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(req.body.loanData.loanDescription.isEmpty){
+    if(!("loanDescription" in req.body.loanData)){
         console.log("Error: Loan Description is required.");
         var err = new Error("Loan Description is required.");
         err.code = 406;
