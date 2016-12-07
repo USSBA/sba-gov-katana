@@ -51,7 +51,7 @@ export class LoanInfo extends React.Component {
 
     // render() {
     //     return (
-    //         <FormPanel title="Loan Info" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+    //         <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
     //             <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
     //                 <CurrencyInput label="How much funding do you need?"
     //                                name="loanAmount"
