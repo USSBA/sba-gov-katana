@@ -20,6 +20,7 @@ import SuccessPage from './success-page/success-page.jsx';
 import ContactInfo from './loan-form/contact-info.jsx';
 import LoanInfo from './loan-form/loan-info.jsx';
 import BusinessInfo from './loan-form/business-info.jsx';
+import IndustryInfo from './loan-form/industry-info.jsx';
 import AdditionalInfo from './loan-form/additional-info.jsx';
 import ReviewSubmitInfo from './loan-form/review-submit-info.jsx';
 
@@ -42,8 +43,9 @@ ReactDOM.render(
           <Route path="form" component={LoanForm}>
             <IndexRedirect to='contact' />
             <Route path="contact" component={ContactInfo} />
-            <Route path="loan" component={LoanInfo} />
             <Route path="business" component={BusinessInfo} />
+            <Route path="industry" component={IndustryInfo} />
+            <Route path="loan" component={LoanInfo} />
             <Route path="additional" component={AdditionalInfo} />
             <Route path="review" component={ReviewSubmitInfo} />
           </Route>

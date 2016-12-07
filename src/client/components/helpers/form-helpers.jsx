@@ -26,9 +26,9 @@ export class CurrencyInput extends React.Component{
     }
 }
 
-export const TextInput = ({handleChange, ...props}) =>
+export const TextInput = ({handleChange, getValidationState, ...props}) =>
     <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
-        <FormGroup className="input1">
+        <FormGroup className="input1" validationState={getValidationState}>
             <ControlLabel className={styles.controlLabel}>{props.label}</ControlLabel>
             <FormControl
                 {...props}

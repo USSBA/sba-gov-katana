@@ -1,19 +1,21 @@
 import React from 'react';
 
-import ValueProposition from './value-proposition.jsx';
-import ProcessAndFacts from './process-and-facts.jsx';
-import PrepartionAndGuidance from './preparation-and-guidance.jsx';
-import Navigation from './navigation.jsx';
+import { Introduction } from './introduction.jsx';
+import { HelpfulQuestions } from './helpful-questions.jsx';
+import { PreparationChecklist } from './preparation-checklist.jsx';
+import { SuccessStories } from './success-stories.jsx'
+import {Grid, Row, Col} from 'react-bootstrap';
+
 
 class LandingPage extends React.Component{
     render(){
         return (
-            <div>
-                <ValueProposition />
-                <ProcessAndFacts />
-                <Navigation />
-                <PrepartionAndGuidance />
-            </div>
+            <Grid fluid={true}>
+                <Introduction />
+                <PreparationChecklist />
+                <HelpfulQuestions/>
+                <SuccessStories/>
+            </Grid>
         );
     }
 }

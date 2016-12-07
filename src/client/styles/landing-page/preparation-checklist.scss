@@ -1,0 +1,20 @@
+@import "../buttons";
+
+.section {
+    font-weight: lighter;
+    background: #efefef;
+}
+
+.title {
+    margin-top: 40px;
+    margin-bottom:20px;
+    font-size: 38px;
+}
+
+.subTitle {
+    composes: subTitle from "./landing-page.scss"
+}
+
+.subText {
+    composes: subText from "./landing-page.scss"
+}
