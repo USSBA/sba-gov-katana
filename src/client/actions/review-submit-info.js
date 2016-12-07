@@ -7,6 +7,7 @@ export function matchFormData(reviewSubmitInfoData){
     console.log("qs stringify: " + qs.stringify(reviewSubmitInfoData));
     return function(dispatch){
         dispatch({type: "MATCH_FORM_DATA_START"});
+        console.log("Match Form Data being sent to the server.");
         axios.post("http://localhost:3000/matchFormData",
             reviewSubmitInfoData/*,
             {

@@ -27,9 +27,9 @@ if (process.env.NODE_ENV === 'development') {
     app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.use(sendError);
+//app.use(sendError);
 
-function sendError(err, req, res, next){
+function sendError(err,req, res){
     var code = err.code;
     var message = err.message;
     res.writeHead(code, message, {'content-type': 'text/plain'});
@@ -56,9 +56,7 @@ app.post('/matchFormData', jsonParser, function(req, res){
     //additionalInfoData.industryExp
     //loanData.loanAmount
     //loanData.loanDescription
-/*    if(req.body.contactInfoData.contactFullName.isEmpty){
-        throwError("Contact Full Name is required.");
-    }*/
+
     if(!("contactFullName" in req.body.contactInfoData)){
         //res.statusCode = 406;
         //res.statusText = "Contact Full Name is required.";
@@ -66,39 +64,72 @@ app.post('/matchFormData', jsonParser, function(req, res){
         //res.status(406).send('Contact Full Name is required.');
         //res.send("Contact Full Name is required.");
         //err.message = "Contact Full Name is required.";
-        //sendError(err, req, res, next);
         //res.status(406).json({message: 'Contact Full Name is required.'});
-        res.writeHead(406, 'Contact Full Name is required.', {'content-type' : 'text/plain'});
-        res.end("Contact Full Name is required.");
+        //res.writeHead(406, 'Contact Full Name is required.', {'content-type' : 'text/plain'});
+        //res.end("Contact Full Name is required.");
+        console.log("Error: Contact Full Name is required.");
+        var err = new Error("Contact Full Name is required.");
+        err.code = 406;
+        sendError(err, req, res);
         return;
 
-        /*var err = new Error("Contact Full Name is required.");
-        err.code = 406;
-        return next(err);*/
+        //return next(err);
     }
     if(req.body.contactInfoData.contactPhoneNumber.isEmpty){
-        throwError("Contact Phone Number is required.");
+        console.log("Error: Contact Phone Number is required.");
+        var err = new Error("Contact Phone Number is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.contactInfoData.contactEmailAddress.isEmpty){
-        throwError("Contact Email Address is required.");
+        console.log("Error: Contact Email Address is required.");
+        var err = new Error("Contact Email Address is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.businessInfoData.businessInfoName.isEmpty){
-        throwError("Business Name is required.");
+        console.log("Error: Business Name is required.");
+        var err = new Error("Business Name is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.businessInfoData.businessInfoZipcode.isEmpty){
-        throwError("Business Zip Code is required.");
+        console.log("Error: Business Zip Code is required.");
+        var err = new Error("Business Zip Code is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.businessInfoData.businessInfoType.isEmpty){
-        throwError("Business Type is required.");
+        console.log("Error: Business Type is required.");
+        var err = new Error("Business Type is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.additionalInfoData.industryExp.isEmpty){
-        throwError("Industry Experience is required.");
+        console.log("Error: Industry Experience is required.");
+        var err = new Error("Industry Experience is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.loanData.loanAmount.isEmpty){
-        throwError("Loan Amount is required.");
+        console.log("Error: Loan Amount is required.");
+        var err = new Error("Loan Amount is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     if(req.body.loanData.loanDescription.isEmpty){
-        throwError("Loan Description is required.");
+        console.log("Error: Loan Description is required.");
+        var err = new Error("Loan Description is required.");
+        err.code = 406;
+        sendError(err, req, res);
+        return;
     }
     res.send("Data received successfully.");
 });
