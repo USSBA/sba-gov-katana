@@ -88,7 +88,8 @@ class ContactInfoForm extends React.Component {
                     />
                     <button className="btn btn-default col-xs-2 col-xs-offset-5"
                             type="submit"
-                            disabled={!(this.isValidForm())}> Continue </button>
+                            disabled={!(this.isValidForm())}
+                    > Continue </button>
                 </form>
             </FormPanel>
         );
