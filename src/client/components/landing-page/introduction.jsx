@@ -1,15 +1,16 @@
 import React from 'react';
 import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
-import styles from '../common/styles.scss';
+import styles from '../../styles/landing-page/introduction.scss';
 import thumbNail from '../../../../public/assets/images/placeholder80x80.png';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
+import {HelpMeBtn} from './help-me-btn.jsx'
 
 export const Introduction = (props) =>
             <Row>
-                <Col xs={12} className={styles.introSection + " " + styles.landingSection}>
+                <Col xs={12} className={styles.section}>
 
                     <Row>
-                        <h2  className={styles.sectionTitle + " text-center"}> Find lenders who can finance your business loan </h2>
+                        <h2  className={styles.title + " text-center"}> Find lenders who can finance your business loan </h2>
                     </Row>
 
                     <Row>
@@ -56,15 +57,8 @@ const IntroSubSection = (props) =>
             <Image src={props.image}/>
         </Col>
         <Col xs={8}>
-            <h3 className={styles.subSectionTitle}>{props.title}</h3>
-            <p className={styles.subSectionText}>{props.text}</p>
+            <h3 className={styles.subTitle}>{props.title}</h3>
+            <p className={styles.subText}>{props.text}</p>
         </Col>
     </Col>;
-
-const HelpMeBtn = (props) =>
-    <div>
-        <Button block className={ styles.btn+ " " + styles.whiteBtn}>HELP ME GET READY</Button>
-    </div>;
-
-
 
