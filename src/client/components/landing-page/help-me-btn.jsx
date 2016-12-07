@@ -16,7 +16,7 @@ export class HelpMeBtn extends React.Component {
                         className={ styles.helpBtn }
                         onClick={this.scroll.bind(this)}
                 >
-                    Help Me Get Ready
+                    HELP ME GET READY
                 </Button>
             </div>
         )
