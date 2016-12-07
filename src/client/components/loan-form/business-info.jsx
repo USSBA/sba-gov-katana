@@ -66,7 +66,7 @@ class BusinessInfoForm extends React.Component {
 
     // render() {
     //     return (
-    //         <FormPanel title="Business Info"  subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+    //         <FormPanel title="Tell us about your business"  subtitle="Here's why we're asking for this info and how it will help you get a loan.">
     //             <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
     //                 <TextInput
     //                     label="What is the name of your business?"

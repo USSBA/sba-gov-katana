@@ -24,7 +24,6 @@ export class AdditionalInfoForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         this.props.actions.reviewAnswers(this.state.additionalInfoFields);
-        // console.log(this.state)
         browserHistory.push("/form/review");
         this.addInfoForm.reset()
     };
@@ -33,22 +32,20 @@ export class AdditionalInfoForm extends React.Component {
         let additionalInfoFields = {};
         additionalInfoFields[e.target.name] = e.target.value;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
-        // console.log(this.state)
     }
 
     handleClick(e){
         let additionalInfoFields = {};
         additionalInfoFields[e.target.name] = e.target.value;
         this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}});
-        // console.log(this.state);
     }
 
     render(){
         return (
-            <FormPanel title="Additional Info">
+            <FormPanel title="Anything else you can tell us?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
 
-                    <FormGroup className="col-xs-6 col-xs-offset-3">
+                    <FormGroup className="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">
                         <label className={styles.controlLabel}>Check all that apply to you: </label>
                         <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
                             I have a written business plan
