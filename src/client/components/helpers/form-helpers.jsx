@@ -41,7 +41,7 @@ export const TextInput = ({handleChange, getValidationState, ...props}) =>
 
 export const TextArea = ({handleChange, label, getValidationState, ...props}) =>
     <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
-        <FormGroup>
+        <FormGroup validationState={getValidationState}>
             <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
             <FormControl
                 {...props}
