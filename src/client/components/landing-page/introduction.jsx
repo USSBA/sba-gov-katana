@@ -3,6 +3,7 @@ import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
 import styles from '../../styles/landing-page/introduction.scss';
 import thumbNail from '../../../../public/assets/images/placeholder80x80.png';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
+import {HelpMeBtn} from './help-me-btn.jsx'
 
 export const Introduction = (props) =>
             <Row>
@@ -61,11 +62,3 @@ const IntroSubSection = (props) =>
         </Col>
     </Col>;
 
-
-
-
-
-const HelpMeBtn = (props) =>
-    <div>
-        <Button block className={ styles.helpBtn }>HELP ME GET READY</Button>
-    </div>;

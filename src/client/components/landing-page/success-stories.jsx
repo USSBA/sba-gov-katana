@@ -19,11 +19,11 @@ export const SuccessStories = (props) =>
             <Quote
                 text="Equity paradigm shift growth hacking venture. Conversion iPhone agile development deployment. Ramen ownership release. A/B testing business model canvas influencer alpha direct mailing."
                 name="Zander Nelson"
-                title="God Walking Amongst Mere Mortals"
+                title="I Have Many Leather Bound Books"
             />
 
             <Row style={{marginTop: "80px", marginBottom: "60px"}}>
-                <Col xs={2} xsOffset={3}>
+                <Col xs={3} xsOffset={2}>
                     <CounselorBtn/>
                 </Col>
                 <Col xs={2} xsOffset={2}>

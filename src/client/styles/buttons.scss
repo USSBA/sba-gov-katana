@@ -1,5 +1,19 @@
 .btn:focus,.btn:active {
     outline: none !important;
+    background: none;
+}
+
+.findCounselorsBtn {
+    background: #333333;
+    color: white;
+    border: 1px solid #333333;
+    border-radius: 0;
+    composes: btn;
+}
+
+.findCounselorsBtn:hover {
+    background: white;
+    border: 1px solid #333333;
 }
 
 .findLendersBtn {
@@ -7,6 +21,7 @@
     color: white;
     border: 1px solid #333333;
     border-radius: 0;
+    composes: btn;
 }
 
 .findLendersBtn:hover {
@@ -19,10 +34,12 @@
     border: 1px solid #333333;
     color: #333333;
     border-radius: 0;
+    composes: btn;
 }
 
 .helpBtn:hover {
     background:  #333333;
     border: 1px solid #333333;
     color: white;
+
 }

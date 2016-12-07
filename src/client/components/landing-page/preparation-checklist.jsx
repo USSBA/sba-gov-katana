@@ -7,7 +7,7 @@ import {CounselorBtn} from './counselor-btn.jsx'
 
 export const PreparationChecklist = (props) =>
         <Row>
-            <Col xs={12} className={styles.section}>
+            <Col xs={12} id="preparation-checklist" className={styles.section}>
 
                 <Row>
                     <p  className={styles.title + " text-center"}> Preparation Checklist </p>
@@ -55,7 +55,7 @@ export const PreparationChecklist = (props) =>
                 </Row>
 
                 <Row style={{marginTop: "30px", marginBottom: "60px"}}>
-                    <Col xs={2} xsOffset={3}>
+                    <Col xs={3} xsOffset={2}>
                         <CounselorBtn/>
                     </Col>
                     <Col xs={2} xsOffset={2}>
