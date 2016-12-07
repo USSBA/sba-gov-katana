@@ -39,9 +39,9 @@ export const TextInput = ({handleChange, getValidationState, ...props}) =>
         </FormGroup>
     </Col>;
 
-export const TextArea = ({handleChange, label, ...props}) =>
+export const TextArea = ({handleChange, label, getValidationState, ...props}) =>
     <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
-        <FormGroup>
+        <FormGroup validationState={getValidationState}>
             <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
             <FormControl
                 {...props}
@@ -51,9 +51,9 @@ export const TextArea = ({handleChange, label, ...props}) =>
         </FormGroup>
     </Col>;
 
-export const SelectBox = ({handleChange, label, ...props}) =>
+export const SelectBox = ({handleChange, label, getValidationState, ...props}) =>
     <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
-        <FormGroup>
+        <FormGroup validationState={getValidationState}>
            <ControlLabel className={styles.controlLabel}>{label}</ControlLabel>
            <FormControl
                {...props}
@@ -63,9 +63,9 @@ export const SelectBox = ({handleChange, label, ...props}) =>
         </FormGroup>
     </Col>;
 
-export const CheckBox = ({handleClick, label, ...props}) =>
+export const CheckBox = ({handleClick, label, getValidationState, ...props}) =>
     <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
-        <FormGroup>
+        <FormGroup validationState={getValidationState}>
             <Checkbox {...props} onClick={handleClick}>{label}</Checkbox>
         </FormGroup>
     </Col>;
