@@ -4,7 +4,7 @@ import { Provider }
 from 'react-redux';
 import { applyMiddleware, createStore }
 from 'redux';
-import logger from "redux-logger";
+//import logger from "redux-logger";
 import thunk from "redux-thunk";
 import rootReducer from '../reducers/index.js'
 
@@ -23,7 +23,7 @@ import BusinessInfo from './loan-form/business-info.jsx';
 import AdditionalInfo from './loan-form/additional-info.jsx';
 import ReviewSubmitInfo from './loan-form/review-submit-info.jsx';
 
-const middleware = applyMiddleware(thunk, logger());
+const middleware = applyMiddleware(thunk);
 const store = createStore(rootReducer, middleware);
 
 // Create an enhanced history that syncs navigation events with the store
