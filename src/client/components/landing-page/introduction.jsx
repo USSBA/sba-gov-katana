@@ -20,7 +20,7 @@ export const Introduction = (props) =>
                     </Row>
 
                     <Row style={{marginTop: "60px"}}>
-                        <Col xs={10} xsOffset={1}>
+                        <Col xs={12} lg={10} lgOffset={1}>
                             <IntroSubSection
                                 image={thumbNail}
                                 title="Describe Your needs"
@@ -40,10 +40,10 @@ export const Introduction = (props) =>
                     </Row>
 
                     <Row style={{marginTop: "80px", marginBottom: "60px"}}>
-                        <Col xs={2} xsOffset={3}>
+                        <Col xs={3} xsOffset={2} lg={2} lgOffset={3}>
                             <HelpMeBtn/>
                         </Col>
-                        <Col xs={2} xsOffset={2}>
+                        <Col xs={3} xsOffset={2} lg={2} lgOffset={2}>
                             <FindLendersBtn/>
                         </Col>
                     </Row>

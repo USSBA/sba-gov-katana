@@ -5,14 +5,28 @@ import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import * as IndustryInfoActions from '../../actions/industry-info.js'
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
-
+import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
 
 class IndustryInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            industryInfoFields: {}
+            industryInfoFields: {},
+            validStates: {
+                "industryType": null,
+                "industryExperience": null
+            }
         }
+    }
+
+    isValidForm(){
+        let validForm = true;
+        for (var inputState in this.state.validStates){
+            if(this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null){
+                validForm = false;
+            }
+        }
+        return validForm
     }
 
     handleSubmit(e){
@@ -20,14 +34,18 @@ class IndustryInfoForm extends React.Component {
         this.props.actions.createIndustryInfo(this.state.industryInfoFields);
         browserHistory.push('/form/loan');
         this.industryInfoForm.reset()
-        // console.log(this.state)
     }
 
     handleChange(e){
         let industryInfoFields = {};
         industryInfoFields[e.target.name] = e.target.value;
         this.setState({industryInfoFields: {...this.state.industryInfoFields, ...industryInfoFields}});
-        // console.log(this.state.industryInfoFields)
+        this.getValidationState(e)
+    }
+
+    getValidationState(e) {
+        let validStates = getSelectBoxValidationState(e)
+        this.setState({validStates: {...this.state.validStates, ...validStates}})
     }
 
     // render() {
@@ -38,6 +56,7 @@ class IndustryInfoForm extends React.Component {
     //                     label="In what industry is your business?"
     //                     name = "industryType"
     //                     handleChange={this.handleChange.bind(this)}
+    //                     getValidationState={this.state.validStates["industryType"]}
     //                     defaultValue=""
     //                     required
     //                 >
@@ -70,6 +89,7 @@ class IndustryInfoForm extends React.Component {
     //                     label="What's your experience in this industry?"
     //                     name = "industryExperience"
     //                     handleChange={this.handleChange.bind(this)}
+    //                     getValidationState={this.state.validStates["industryExperience"]}
     //                     defaultValue=""
     //                     required
     //                 >
@@ -81,8 +101,9 @@ class IndustryInfoForm extends React.Component {
     //                 </SelectBox>
     //
     //                 <button className="btn btn-default col-xs-2 col-xs-offset-5"
-    //                         type="submit">
-    //                     Continue </button>
+    //                         type="submit"
+    //                         disabled={!(this.isValidForm())}
+    //                 > Continue </button>
     //
     //             </form>
     //         </FormPanel>

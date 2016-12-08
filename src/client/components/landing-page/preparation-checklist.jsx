@@ -14,37 +14,45 @@ export const PreparationChecklist = (props) =>
                 </Row>
 
                 <Row style={{marginTop: "60px"}}>
-                    <Col xs={10} xsOffset={1}>
-                        <PrepSubSection
-                            image={thumbNail}
-                            title="Business Plan"
-                            text="Bandwidth iPhone incubator angel investor founders"
-                        />
-                        <PrepSubSection
-                            image={thumbNail}
-                            title="Collateral"
-                            text="Direct mailing ecosystem incubator creative"
-                        />
-                        <PrepSubSection
-                            image={thumbNail}
-                            title="Credit Score"
-                            text="Lean startup accelerator hackathon client funding"
-                        />
-                        <PrepSubSection
-                            image={thumbNail}
-                            title="Financial Projections"
-                            text="Venture stock channels success A/B testing series A"
-                        />
-                        <PrepSubSection
-                            image={thumbNail}
-                            title="Valid Use"
-                            text="Ownership social media ramen effects partnership customer"
-                        />
-                        <PrepSubSection
-                            image={thumbNail}
-                            title="Industry Experience"
-                            text="A/B testing long tail buzz branding customer early"
-                        />
+                    <Col xs={12} lg={10} lgOffset={1}>
+                        <Row>
+                            <PrepSubSection
+                                image={thumbNail}
+                                title="Business Plan"
+                                text="Bandwidth iPhone incubator angel investor founders"
+                            />
+                            <PrepSubSection
+                                image={thumbNail}
+                                title="Collateral"
+                                text="Direct mailing ecosystem incubator creative"
+                            />
+                            <PrepSubSection
+                                image={thumbNail}
+                                title="Credit Score"
+                                text="Lean startup accelerator hackathon client funding"
+                            />
+                        </Row>
+
+                        <Row>
+                            <PrepSubSection
+                                image={thumbNail}
+                                title="Financial Projections"
+                                text="Venture stock channels success A/B testing series A"
+                            />
+                            <PrepSubSection
+                                image={thumbNail}
+                                title="Valid Use"
+                                text="Ownership social media ramen effects partnership customer"
+                            />
+                            <PrepSubSection
+                                image={thumbNail}
+                                title="Industry Experience"
+                                text="A/B testing long tail buzz branding customer early"
+                            />
+
+                        </Row>
+
+
                     </Col>
                 </Row>
 
@@ -55,10 +63,10 @@ export const PreparationChecklist = (props) =>
                 </Row>
 
                 <Row style={{marginTop: "30px", marginBottom: "60px"}}>
-                    <Col xs={3} xsOffset={2}>
+
                         <CounselorBtn/>
-                    </Col>
-                    <Col xs={2} xsOffset={2}>
+
+                    <Col xs={2} xsOffset={2} lg={2} lgOffset={2}>
                         <FindLendersBtn/>
                     </Col>
                 </Row>
@@ -67,8 +75,8 @@ export const PreparationChecklist = (props) =>
         </Row>;
 
 const PrepSubSection = (props) =>
-    <Col xs={4} style={{marginBottom: "60px"}}>
-        <Col xs={4}>
+    <Col xs={4} style={{marginBottom: "60px", paddingLeft: "0px", paddingRight: "0px"}}>
+        <Col style={{paddingLeft: "0px", paddingRight: "0px"}} xs={4}>
             <Image src={props.image} circle/>
         </Col>
         <Col xs={8}>

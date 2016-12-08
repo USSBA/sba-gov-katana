@@ -1,3 +1,6 @@
+//remove this when breaking server.js up into controllers -zandypants
+import zlib from 'zlib';
+
 /*Contains express server setup*/
 var express = require('express');
 var config = require('config');
@@ -132,6 +135,19 @@ app.post('/matchFormData', jsonParser, function(req, res){
         return;
     }
     res.send("Data received successfully.");
+});
+
+app.post('/matchCounselors', jsonParser, function(req, res){
+    let zipStr = "zip:" + req.body.zipcode + ":distance:50";
+        zlib.deflate(zipStr, function(err, buffer){
+            if(err) {
+                return callback(err)
+            }
+            let url = "https://www.sba.gov/tools/local-assistance/map/filter/"
+            let encodedUrl = url + buffer.toString("hex")
+            res.send({redirectTo: encodedUrl})
+        })
+
 });
 
 //listen to port
