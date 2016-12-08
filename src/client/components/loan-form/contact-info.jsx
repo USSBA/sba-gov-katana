@@ -71,7 +71,6 @@ class ContactInfoForm extends React.Component {
 
                     <TextInput     label="What is your phone number?"
                                    name="contactPhoneNumber"
-                                   pattern="[\d]{7,10}"
                                    handleChange={this.handleChange.bind(this)}
                                    getValidationState={this.state.validStates["contactPhoneNumber"]}
                                    required
@@ -79,7 +78,6 @@ class ContactInfoForm extends React.Component {
 
                     <TextInput     label="What is your email address?"
                                    name="contactEmailAddress"
-                                   pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                                    handleChange={this.handleChange.bind(this)}
                                    getValidationState={this.state.validStates["contactEmailAddress"]}
                                    required

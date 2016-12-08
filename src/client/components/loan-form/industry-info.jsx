@@ -112,7 +112,6 @@ class IndustryInfoForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-    //console.log(reduxState);
     return {
         industryInfoData: state.industryInfoData
     };
