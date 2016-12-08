@@ -7,6 +7,8 @@ import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
 
+import { ReviewSection } from '../helpers/review-page-helpers.jsx';
+
 class ReviewSubmitInfoForm extends React.Component {
     constructor(){
         super();
@@ -44,40 +46,18 @@ class ReviewSubmitInfoForm extends React.Component {
 
     render() {
         return (
-            <FormPanel title="Review and Submit">
+            <FormPanel title="Take one last look and then submit">
+
+                <div className ="col-xs-12 col-lg-6 col-lg-offset-3">
+                    <ReviewSection label="test"></ReviewSection>
+                </div>
+
                 <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                    <TextInput     label="Name"
-                                   name="reviewName"
-                                   handleChange={this.handleChange.bind(this)}
-                                   defaultValue={this.props.contactInfoData.contactFullName}
-                    />
-
-                    <TextInput     label="Zipcode"
-                                   name="reviewZipcode"
-                                   handleChange={this.handleChange.bind(this)}
-                                   defaultValue={this.props.businessInfoData.businessInfoZipcode}
-                    />
-
-                    <TextInput     label="Funds Needed"
-                                   name="reviewNeededFunds"
-                                   handleChange={this.handleChange.bind(this)}
-                                   defaultValue={this.props.loanData.loanAmount}
-                    />
-                    <TextInput     label="Use of Funds"
-                                   name="reviewUseOfFunds"
-                                   handleChange={this.handleChange.bind(this)}
-                                   defaultValue={this.props.loanData.loanDescription}
-                    />
-                    <TextInput     label="Use of Funds Description"
-                                   name="reviewUseOfFundsDescription"
-                                   handleChange={this.handleChange.bind(this)}
-                                   defaultValue={this.props.businessInfoData.businessInfoDescription}
-                    />
                     <CheckBox     label="Please email me in the future about improving this tool."
                                    name="reviewEmailProspect"
                                    handleClick={this.handleClick.bind(this)}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit"> See Matches </button>
+                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Submit to Lenders </button>
                 </form>
             </FormPanel>
         );
