@@ -36,32 +36,39 @@ export class CounselorBtn extends React.Component {
         return (
             <div>
                 {!this.state.displayZip ? (
-
+                <Col xs={2} xsOffset={3}>
                     <Button
+                        block
                         className={ styles.helpBtn + " pull-right"}
                         onClick={this.displayZipBtn.bind(this)}
                     >
                         TALK TO A COUNSELOR
                     </Button>
+                </Col>
 
                 ) : (
                     <div>
-                        <Col xs={6}>
-                            <FormGroup style={{display: "inline"}}>
-                                <FormControl style={{display: "inline"}}
-                                             type="text"
-                                             placeholder="Enter Zipcode"
-                                             onChange={(e) => this.handleChange(e)}
-                                />
-                            </FormGroup>
-                        </Col>
+                        <Col xs={4} xsOffset={1}>
+                            <Col xs={6}>
+                                <FormGroup style={{display: "inline"}}>
+                                    <FormControl style={{display: "inline"}}
+                                                 type="text"
+                                                 placeholder="Enter Zipcode"
+                                                 onChange={(e) => this.handleChange(e)}
+                                    />
+                                </FormGroup>
+                            </Col>
 
-                        <Button
-                            className={ styles.findCounselorsBtn + " pull-right" }
-                            onClick={this.postZipcode.bind(this)}
-                        >
-                            LETS DO THIS
-                        </Button>
+                            <Col xs={6}>
+                                <Button
+                                    block
+                                    className={ styles.findCounselorsBtn + " pull-right" }
+                                    onClick={this.postZipcode.bind(this)}
+                                >
+                                    LETS DO THIS
+                                </Button>
+                            </Col>
+                        </Col>
                     </div>
                 )}
             </div>
