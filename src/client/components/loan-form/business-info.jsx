@@ -64,73 +64,31 @@ class BusinessInfoForm extends React.Component {
         this.setState({validStates: {...this.state.validStates, ...validStates}});
     }
 
-    // render() {
-    //     return (
-    //         <FormPanel title="Tell us about your business"  subtitle="Here's why we're asking for this info and how it will help you get a loan.">
-    //             <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-    //                 <TextInput
-    //                     label="What is the name of your business?"
-    //                     name="businessInfoName"
-    //                     handleChange={this.handleChange.bind(this)}
-    //                     getValidationState={this.state.validStates["businessInfoName"]}
-    //                     required
-    //                 />
-    //
-    //                 <TextInput
-    //                     label="What is the business ZIP code?"
-    //                     name="businessInfoZipcode"
-    //                     handleChange={this.handleChange.bind(this)}
-    //                     getValidationState={this.state.validStates["businessInfoZipcode"]}
-    //                     required
-    //                 />
-    //
-    //                 <TextInput
-    //                     label="What is your business website?"
-    //                     name="businessInfoWebsite"
-    //                     handleChange={this.handleChange.bind(this)}
-    //                     getValidationState ={this.state.optionalStates["businessInfoWebsite"]}
-    //                     placeholder="Optional"
-    //                 />
-    //
-    //                 <TextArea
-    //                     label="Describe what your business does"
-    //                     name="businessInfoDescription"
-    //                     handleChange={this.handleChange.bind(this)}
-    //                     getValidationState = {this.state.validStates["businessInfoDescription"]}
-    //                     required
-    //                 />
-    //
-    //                 <button
-    //                     className="btn btn-default col-xs-2 col-xs-offset-5"
-    //                     type="submit"
-    //                     disabled={!(this.isValidForm())}
-    //                 > Continue </button>
-    //
-    //             </form>
-    //         </FormPanel>
-    //     );
-    // };
-
     render() {
         return (
-            <FormPanel title="Business Info"  subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+            <FormPanel title="Tell us about your business"  subtitle="Here's why we're asking for this info and how it will help you get a loan.">
                 <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <TextInput
                         label="What is the name of your business?"
                         name="businessInfoName"
                         handleChange={this.handleChange.bind(this)}
+                        getValidationState={this.state.validStates["businessInfoName"]}
+                        required
                     />
 
                     <TextInput
                         label="What is the business ZIP code?"
                         name="businessInfoZipcode"
                         handleChange={this.handleChange.bind(this)}
+                        getValidationState={this.state.validStates["businessInfoZipcode"]}
+                        required
                     />
 
                     <TextInput
                         label="What is your business website?"
                         name="businessInfoWebsite"
                         handleChange={this.handleChange.bind(this)}
+                        getValidationState ={this.state.optionalStates["businessInfoWebsite"]}
                         placeholder="Optional"
                     />
 
@@ -138,11 +96,14 @@ class BusinessInfoForm extends React.Component {
                         label="Describe what your business does"
                         name="businessInfoDescription"
                         handleChange={this.handleChange.bind(this)}
+                        getValidationState = {this.state.validStates["businessInfoDescription"]}
+                        required
                     />
 
                     <button
                         className="btn btn-default col-xs-2 col-xs-offset-5"
                         type="submit"
+                        disabled={!(this.isValidForm())}
                     > Continue </button>
 
                 </form>
