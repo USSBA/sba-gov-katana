@@ -76,73 +76,25 @@ export class LoanInfo extends React.Component {
         this.setState({validStates: {...this.state.validStates, ...validStates}})
     };
 
-    // render() {
-    //     return (
-    //         <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
-    //             <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-    //                 <CurrencyInput label="How much funding do you need?"
-    //                                name="loanAmount"
-    //                                handleChange={this.handleAmountChange.bind(this)}
-    //                                handleFormat={this.handleFormat.bind(this)}
-    //                                value={this.state.loanFields.loanAmount}
-    //                                getValidationState = {this.state.validStates["loanAmount"]}
-    //                                required
-    //                 />
-    //
-    //                 <SelectBox label="How will these funds be used?"
-    //                            name="loanDescription"
-    //                            handleChange={this.handleChange.bind(this)}
-    //                            getValidationState={this.state.validStates["loanDescription"]}
-    //                            defaultValue=""
-    //                            required
-    //                 >
-    //                     <option value="" disabled>- Select use of funds -</option>
-    //                     <option value="Buying an Existing Business">Buying an Existing Business</option>
-    //                     <option value="Developing a Product">Developing a Product</option>
-    //                     <option value="Hiring Employees/Staff">Hiring Employees/Staff</option>
-    //                     <option value="Marketing/Advertising">Marketing/Advertising</option>
-    //                     <option value="Opening a New Location ">Opening a New Location </option>
-    //                     <option value="Other">Other</option>
-    //                     <option value="Participating in Trade Show">Participating in Trade Show</option>
-    //                     <option value="Purchasing Equipment">Purchasing Equipment</option>
-    //                     <option value="Purchasing Inventory">Purchasing Inventory</option>
-    //                     <option value="Purchasing Property">Purchasing Property</option>
-    //                     <option value="Refinancing/consolidating debt">Refinancing/consolidating debt</option>
-    //                     <option value="Remodeling an existing location">Remodeling an existing location</option>
-    //                     <option value="Working Capital">Working Capital</option>
-    //                 </SelectBox>
-    //
-    //                 <TextArea label="Describe how these funds will be used?"
-    //                           name="loanUsage"
-    //                           handleChange={this.handleChange.bind(this)}
-    //                           placeholder="Include details such as this sample placeholder and this other example."
-    //
-    //                 />
-    //
-    //                 <button className="btn btn-default col-xs-2 col-xs-offset-5"
-    //                         type="submit"
-    //                         disabled={!(this.isValidForm())}
-    //                 > Continue </button>
-    //
-    //             </form>
-    //         </FormPanel>
-    //     );
-    // };
     render() {
         return (
-            <FormPanel title="Loan Info" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+            <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
                 <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CurrencyInput label="How much funding do you need?"
                                    name="loanAmount"
                                    handleChange={this.handleAmountChange.bind(this)}
                                    handleFormat={this.handleFormat.bind(this)}
                                    value={this.state.loanFields.loanAmount}
+                                   getValidationState = {this.state.validStates["loanAmount"]}
+                                   required
                     />
 
                     <SelectBox label="How will these funds be used?"
                                name="loanDescription"
                                handleChange={this.handleChange.bind(this)}
+                               getValidationState={this.state.validStates["loanDescription"]}
                                defaultValue=""
+                               required
                     >
                         <option value="" disabled>- Select use of funds -</option>
                         <option value="Buying an Existing Business">Buying an Existing Business</option>
@@ -150,13 +102,14 @@ export class LoanInfo extends React.Component {
                         <option value="Hiring Employees/Staff">Hiring Employees/Staff</option>
                         <option value="Marketing/Advertising">Marketing/Advertising</option>
                         <option value="Opening a New Location ">Opening a New Location </option>
+                        <option value="Other">Other</option>
                         <option value="Participating in Trade Show">Participating in Trade Show</option>
                         <option value="Purchasing Equipment">Purchasing Equipment</option>
                         <option value="Purchasing Inventory">Purchasing Inventory</option>
                         <option value="Purchasing Property">Purchasing Property</option>
                         <option value="Refinancing/consolidating debt">Refinancing/consolidating debt</option>
                         <option value="Remodeling an existing location">Remodeling an existing location</option>
-                        <option value="Other">Other</option>
+                        <option value="Working Capital">Working Capital</option>
                     </SelectBox>
 
                     <TextArea label="Describe how these funds will be used?"
@@ -167,14 +120,14 @@ export class LoanInfo extends React.Component {
                     />
 
                     <button className="btn btn-default col-xs-2 col-xs-offset-5"
-                            type="submit">
-                        Continue </button>
+                            type="submit"
+                            disabled={!(this.isValidForm())}
+                    > Continue </button>
 
                 </form>
             </FormPanel>
         );
     };
-
 }
 
 function mapReduxStateToProps(reduxState) {
