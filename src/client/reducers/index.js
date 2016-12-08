@@ -7,6 +7,7 @@ import additionalInfoReducer from '../reducers/additional-info.js';
 import contactInfoReducer from '../reducers/contact-info.js';
 import businessInfoReducer from '../reducers/business-info.js';
 import reviewSubmitInfoReducer from './review-submit-info.js';
+import industryInfoReducer from './industry-info.js';
 
 // combine the custom reducers with the routing reducer
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   contactInfoReducer: contactInfoReducer,
   businessInfoReducer: businessInfoReducer,
   reviewSubmitInfoReducer: reviewSubmitInfoReducer,
+  industryInfoReducer: industryInfoReducer,
   routing: routerReducer
 });
 

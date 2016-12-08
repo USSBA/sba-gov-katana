@@ -21,7 +21,8 @@ class ReviewSubmitInfoForm extends React.Component {
             loanData: this.props.loanData,
             additionalInfoData: this.props.additionalInfoData,
             contactInfoData: this.props.contactInfoData,
-            businessInfoData: this.props.businessInfoData
+            businessInfoData: this.props.businessInfoData,
+            industryInfoData: this.props.industryInfoData
         });
         browserHistory.push("/success");
         this.reviewSubmitInfoForm.reset();
@@ -88,7 +89,8 @@ function mapStateToProps(state) {
         loanData: state.loanReducer.loanData,
         additionalInfoData: state.additionalInfoReducer.additionalInfoData,
         contactInfoData: state.contactInfoReducer.contactInfoData,
-        businessInfoData: state.businessInfoReducer.businessInfoData
+        businessInfoData: state.businessInfoReducer.businessInfoData,
+        industryInfoData: state.industryInfoReducer.industryInfoData
     };
 }
 
