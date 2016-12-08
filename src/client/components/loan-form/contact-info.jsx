@@ -43,7 +43,7 @@ class ContactInfoForm extends React.Component {
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
-        this.getValidationState(e)
+        this.getValidationState(e);
     };
 
     getValidationState(e) {
