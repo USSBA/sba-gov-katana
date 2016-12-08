@@ -23,9 +23,9 @@ export const SuccessStories = (props) =>
             />
 
             <Row style={{marginTop: "80px", marginBottom: "60px"}}>
-                <Col xs={3} xsOffset={2}>
+   
                     <CounselorBtn/>
-                </Col>
+
                 <Col xs={2} xsOffset={2}>
                     <FindLendersBtn/>
                 </Col>
