@@ -6,6 +6,7 @@ import { FormPanel } from '../common/form-styling.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
 
+import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
 
 export class LoanInfo extends React.Component {
     constructor(){
@@ -13,8 +14,22 @@ export class LoanInfo extends React.Component {
         this.state ={
             loanFields: {
                 loanAmount: ""
+            },
+            validStates: {
+                "loanAmount": null,
+                "loanDescription": null
             }
         }
+    }
+
+    isValidForm(){
+        let validForm = true;
+        for (var inputState in this.state.validStates){
+            if(this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null){
+                validForm = false;
+            }
+        }
+        return validForm
     }
 
     handleSubmit(e){
@@ -28,6 +43,7 @@ export class LoanInfo extends React.Component {
         let loanFields = {};
         loanFields[e.target.name] = e.target.value;
         this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
+        this.getValidationState(e);
     }
 
     handleAmountChange(e){
@@ -49,6 +65,17 @@ export class LoanInfo extends React.Component {
         }
     }
 
+    getValidationState(e) {
+        let validStates = {}
+        if (e.target.name === "loanAmount") {
+            console.log(e.target.value.length)
+            validStates = getCurrencyValidationState(e)
+        } else if (e.target.name === "loanDescription") {
+            validStates = getSelectBoxValidationState(e)
+        }
+        this.setState({validStates: {...this.state.validStates, ...validStates}})
+    };
+
     // render() {
     //     return (
     //         <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
@@ -58,12 +85,14 @@ export class LoanInfo extends React.Component {
     //                                handleChange={this.handleAmountChange.bind(this)}
     //                                handleFormat={this.handleFormat.bind(this)}
     //                                value={this.state.loanFields.loanAmount}
+    //                                getValidationState = {this.state.validStates["loanAmount"]}
     //                                required
     //                 />
     //
     //                 <SelectBox label="How will these funds be used?"
     //                            name="loanDescription"
     //                            handleChange={this.handleChange.bind(this)}
+    //                            getValidationState={this.state.validStates["loanDescription"]}
     //                            defaultValue=""
     //                            required
     //                 >
@@ -73,13 +102,14 @@ export class LoanInfo extends React.Component {
     //                     <option value="Hiring Employees/Staff">Hiring Employees/Staff</option>
     //                     <option value="Marketing/Advertising">Marketing/Advertising</option>
     //                     <option value="Opening a New Location ">Opening a New Location </option>
+    //                     <option value="Other">Other</option>
     //                     <option value="Participating in Trade Show">Participating in Trade Show</option>
     //                     <option value="Purchasing Equipment">Purchasing Equipment</option>
     //                     <option value="Purchasing Inventory">Purchasing Inventory</option>
     //                     <option value="Purchasing Property">Purchasing Property</option>
     //                     <option value="Refinancing/consolidating debt">Refinancing/consolidating debt</option>
     //                     <option value="Remodeling an existing location">Remodeling an existing location</option>
-    //                     <option value="Other">Other</option>
+    //                     <option value="Working Capital">Working Capital</option>
     //                 </SelectBox>
     //
     //                 <TextArea label="Describe how these funds will be used?"
@@ -90,8 +120,9 @@ export class LoanInfo extends React.Component {
     //                 />
     //
     //                 <button className="btn btn-default col-xs-2 col-xs-offset-5"
-    //                         type="submit">
-    //                     Continue </button>
+    //                         type="submit"
+    //                         disabled={!(this.isValidForm())}
+    //                 > Continue </button>
     //
     //             </form>
     //         </FormPanel>
