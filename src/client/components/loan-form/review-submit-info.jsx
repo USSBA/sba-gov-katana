@@ -7,7 +7,13 @@ import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
 
-import { ReviewSection } from '../helpers/review-page-helpers.jsx';
+import ReviewSection from '../helpers/review-page-helpers.jsx';
+
+
+var testContent = {
+    "test1": "Menuka Samaranayake",
+    "test2": "5555555555"
+}
 
 class ReviewSubmitInfoForm extends React.Component {
     constructor(){
@@ -49,7 +55,7 @@ class ReviewSubmitInfoForm extends React.Component {
             <FormPanel title="Take one last look and then submit">
 
                 <div className ="col-xs-12 col-lg-6 col-lg-offset-3">
-                    <ReviewSection label="test"></ReviewSection>
+                    <ReviewSection label="Contact" sectionContent = {testContent}/>
                 </div>
 
                 <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
