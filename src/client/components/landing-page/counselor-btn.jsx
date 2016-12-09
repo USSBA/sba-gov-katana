@@ -22,7 +22,7 @@ export class CounselorBtn extends React.Component {
             zipcode: this.state.zip
         })
             .then(function (res){
-                document.location = res.data.redirectTo
+                window.open(res.data.redirectTo, "_blank")
             })
             .then(function (err){console.log(err)})
     }
