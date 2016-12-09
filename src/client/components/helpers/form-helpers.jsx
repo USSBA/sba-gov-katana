@@ -14,10 +14,11 @@ export class CurrencyInput extends React.Component{
         super(props)
     }
     render(){
-        const { handleChange, handleFormat, value, ...rest} = this.props;
+        const { handleChange, handleFormat, value, getValidationState, ...rest} = this.props;
         return(
             <TextInput
                 {...rest}
+                getValidationState={getValidationState}
                 handleChange={handleChange}
                 onBlur={handleFormat}
                 value={value}

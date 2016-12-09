@@ -55,7 +55,7 @@ app.post('/matchFormData', jsonParser, function(req, res){
     //contactInfoData.contactEmailAddress
     //businessInfoData.businessInfoName
     //businessInfoData.businessInfoZipcode
-    //businessInfoData.businessInfoType
+    //industryInfoData.industryType
     //additionalInfoData.industryExp
     //loanData.loanAmount
     //loanData.loanDescription
@@ -106,14 +106,14 @@ app.post('/matchFormData', jsonParser, function(req, res){
         sendError(err, req, res);
         return;
     }
-    if(!("businessInfoType" in req.body.businessInfoData)){
-        console.log("Error: Business Type is required.");
-        var err = new Error("Business Type is required.");
+    if(!("industryType" in req.body.industryInfoData)){
+        console.log("Error: Industry Type is required.");
+        var err = new Error("Industry Type is required.");
         err.code = 406;
         sendError(err, req, res);
         return;
     }
-    if(!("industryExp" in req.body.additionalInfoData)){
+    if(!("industryExperience" in req.body.industryInfoData)){
         console.log("Error: Industry Experience is required.");
         var err = new Error("Industry Experience is required.");
         err.code = 406;
