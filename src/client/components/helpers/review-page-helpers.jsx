@@ -9,26 +9,35 @@ class ReviewSection extends React.Component {
     }
 
 
-    additionalInfoCases(key) {
-        if (key === "hasWrittenPlan") {
-            return "I have a written business plan"
-        } else if (key === "hasFinancialProjections") {
-            return "I have financial projections"
-        } else if (key === "isGeneratingRevenue") {
-            return "I'm generating revenue"
-        } else if (key === "isVeteran") {
-            return "I'm a veteran"
-        }
-    }
+    // additionalInfoCases(key) {
+    //     if (key === "hasWrittenPlan") {
+    //         return "I have a written business plan"
+    //     } else if (key === "hasFinancialProjections") {
+    //         return "I have financial projections"
+    //     } else if (key === "isGeneratingRevenue") {
+    //         return "I'm generating revenue"
+    //     } else if (key === "isVeteran") {
+    //         return "I'm a veteran"
+    //     }
+    // }
 
     mapSectionContentToList() {
         var list = []
         if (this.props.label === "Additional") {
             var sectionContent = this.props.sectionContent
             Object.keys(sectionContent).map(function (key, index) {
-                if(sectionContent[key].length >0 ) {
-                    var additionalInfoValue = this.additionalInfoCases(key)
-                    list.push(<li key={index}>{additionalInfoValue}</li>)
+                if(key.length > 0 ) {
+                    if (key === "hasWrittenPlan") {
+                        list.push(<li key={index}>I have a written business plan</li>)
+                    } else if (key === "hasFinancialProjections") {
+                        list.push(<li key={index}>I have financial projections</li>)
+                    } else if (key === "isGeneratingRevenue") {
+                        list.push(<li key={index}>I'm generating revenue</li>)
+                    } else if (key === "isVeteran") {
+                        list.push(<li key={index}>I'm a veteran</li>)
+                    }
+                    // var additionalInfoValue = this.additionalInfoCases(key)
+                    // list.push(<li key={index}>{additionalInfoValue}</li>)
                 }
             })
         } else {
