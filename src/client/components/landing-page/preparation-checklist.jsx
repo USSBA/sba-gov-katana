@@ -66,7 +66,7 @@ export const PreparationChecklist = (props) =>
 
                         <CounselorBtn/>
 
-                    <Col xs={2} xsOffset={2} lg={2} lgOffset={2}>
+                    <Col xs={3} xsOffset={2} lg={2} lgOffset={2}>
                         <FindLendersBtn/>
                     </Col>
                 </Row>
