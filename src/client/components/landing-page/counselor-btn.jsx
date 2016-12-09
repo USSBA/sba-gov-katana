@@ -18,11 +18,12 @@ export class CounselorBtn extends React.Component {
     }
 
     postZipcode(){
+        let newTab = window.open("", "_blank")
         axios.post('/matchLocalAssistants', {
             zipcode: this.state.zip
         })
             .then(function (res){
-                window.open(res.data.redirectTo, "_blank")
+                newTab.location = res.data.redirectTo;
             })
             .then(function (err){console.log(err)})
     }
