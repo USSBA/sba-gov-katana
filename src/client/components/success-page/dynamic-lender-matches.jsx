@@ -1,6 +1,25 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import axios from 'axios';
 
-class DynamicLenderMatches extends React.Component{
+export class DynamicLenderMatches extends React.Component{
+    constructor(){
+        super();
+    }
+
+    componentWillMount(){
+        console.log(this.props)
+        axios.post('/matchCounselors', {
+            zipcode: this.props.businessInfoData.businessInfoZipcode
+        })
+            .then(function (res){
+                document.location = res.data.redirectTo
+            })
+            .then(function (err){console.log(err)})
+    }
+
+
+
     render(){
         return (
             <div className="col-md-6">
@@ -12,5 +31,15 @@ class DynamicLenderMatches extends React.Component{
         )
     };
 }
-export default DynamicLenderMatches;
+
+function mapStateToProps(state) {
+    return {
+        businessInfoData: state.businessInfoReducer.businessInfoData
+    };
+}
+
+export default connect(
+    mapStateToProps
+)(DynamicLenderMatches);
+
 

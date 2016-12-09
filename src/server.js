@@ -137,7 +137,7 @@ app.post('/matchFormData', jsonParser, function(req, res){
     res.send("Data received successfully.");
 });
 
-app.post('/matchCounselors', jsonParser, function(req, res){
+app.post('/matchLocalAssistants', jsonParser, function(req, res){
     let zipStr = "zip:" + req.body.zipcode + ":distance:50";
         zlib.deflate(zipStr, function(err, buffer){
             if(err) {
@@ -147,7 +147,11 @@ app.post('/matchCounselors', jsonParser, function(req, res){
             let encodedUrl = url + buffer.toString("hex")
             res.send({redirectTo: encodedUrl})
         })
+});
 
+
+app.post('/matchCounselors', jsonParser, function(req, res){
+   console.log(req.body.zipcode)
 });
 
 //listen to port
