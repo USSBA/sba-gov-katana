@@ -6,14 +6,10 @@ import { FormPanel } from '../common/form-styling.jsx'
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
 
-
+import styles from '../../styles/review-submit.scss'
 import ReviewSection from '../helpers/review-page-helpers.jsx';
+import { Col } from 'react-bootstrap';
 
-
-var testContent = {
-    "test1": "Menuka Samaranayake",
-    "test2": "5555555555"
-}
 
 class ReviewSubmitInfoForm extends React.Component {
     constructor(){
@@ -54,16 +50,40 @@ class ReviewSubmitInfoForm extends React.Component {
         return (
             <FormPanel title="Take one last look and then submit">
 
-                <div className ="col-xs-12 col-lg-6 col-lg-offset-3">
-                    <ReviewSection label="Contact" sectionContent = {testContent}/>
-                </div>
+                <ReviewSection
+                    label="Contact"
+                    sectionContent = {this.props.contactInfoData}
+                    editPath = "/form/contact"
+                />
+                <ReviewSection
+                    label="Business"
+                    sectionContent = {this.props.businessInfoData}
+                    editPath = "/form/business"
+                />
+                <ReviewSection
+                    label="Industry"
+                    sectionContent = {this.props.industryInfoData}
+                    editPath = "/form/industry"
+                />
+                <ReviewSection
+                    label="Loan"
+                    sectionContent = {this.props.loanData}
+                    editPath = "/form/loan"
+                />
+                <ReviewSection
+                    label="Additional"
+                    sectionContent = {this.props.additionalInfoData}
+                    editPath = "/form/additional"
+                />
 
                 <form ref={(input) => this.reviewSubmitInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
                     <CheckBox     label="Please email me in the future about improving this tool."
                                    name="reviewEmailProspect"
                                    handleClick={this.handleClick.bind(this)}
                     />
-                    <button className="col-xs-2 col-xs-offset-5" type="submit"> Submit to Lenders </button>
+                    <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
+                        <button className={styles.findLendersBtn +" btn-block"} type="submit"> Submit to Lenders </button>
+                    </Col>
                 </form>
             </FormPanel>
         );

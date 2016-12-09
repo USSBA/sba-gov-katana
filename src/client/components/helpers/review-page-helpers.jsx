@@ -1,12 +1,6 @@
 import React from 'react';
 import {browserHistory} from 'react-router';
-
-// export const ReviewSection = ({label, editPath, sectionContent, ...props}) =>
-//     <div >
-//         <h4 className="col-xs-12 col-lg-6 col-lg-offset-3">{label}</h4>
-//         {for (var i = )}
-//     </div>
-//
+import { Col, Row, Button, ButtonToolbar } from 'react-bootstrap';
 
 
 class ReviewSection extends React.Component {
@@ -15,20 +9,39 @@ class ReviewSection extends React.Component {
     }
 
     mapSectionContentToList(){
-        var list = ''
-        for (var key in this.props.sectionContent){
-            <li>{this.props.sectionContent[key]}</li>
-        }
+        var sectionContent = this.props.sectionContent
+        var list = []
+        Object.keys(sectionContent).map(function(key, index){
+            list.push(<li  key={index}>{sectionContent[key]}</li>)
+        })
         return list
+    }
+
+
+    handleClick(){
+        browserHistory.push(this.props.editPath)
     }
 
     render(){
         return (
-            <div >
-                <h4 className="col-xs-12 col-lg-6 col-lg-offset-3">{this.props.label}</h4>
-                <ul>
-                    {this.mapSectionContentToList()}
-                </ul>
+            <div>
+                <Row >
+                    <Col xs={6} xsOffset={0} sm={3} smOffset={3} >
+                        <h4>{this.props.label}</h4>
+                    </Col>
+                    <Col xs={6} xsOffset={0} sm={3}>
+                        <ButtonToolbar>
+                            <Button className="pull-right" onClick={this.handleClick.bind(this)}>
+                                Edit
+                            </Button>
+                        </ButtonToolbar>
+                    </Col>
+                </Row>
+                <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
+                    <ul>
+                        {this.mapSectionContentToList()}
+                    </ul>
+                </Col>
              </div>
         )
     };
