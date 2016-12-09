@@ -8,14 +8,40 @@ class ReviewSection extends React.Component {
         super();
     }
 
-    mapSectionContentToList(){
-        var sectionContent = this.props.sectionContent
+
+    additionalInfoCases(key) {
+        if (key === "hasWrittenPlan") {
+            return "I have a written business plan"
+        } else if (key === "hasFinancialProjections") {
+            return "I have financial projections"
+        } else if (key === "isGeneratingRevenue") {
+            return "I'm generating revenue"
+        } else if (key === "isVeteran") {
+            return "I'm a veteran"
+        }
+    }
+
+    mapSectionContentToList() {
         var list = []
-        Object.keys(sectionContent).map(function(key, index){
-            list.push(<li  key={index}>{sectionContent[key]}</li>)
-        })
+        if (this.props.label === "Additional") {
+            var sectionContent = this.props.sectionContent
+            Object.keys(sectionContent).map(function (key, index) {
+                if(sectionContent[key].length >0 ) {
+                    var additionalInfoValue = this.additionalInfoCases(key)
+                    list.push(<li key={index}>{additionalInfoValue}</li>)
+                }
+            })
+        } else {
+            var sectionContent = this.props.sectionContent
+            Object.keys(sectionContent).map(function (key, index) {
+                if(sectionContent[key].length >0 ) {
+                    list.push(<li key={index}>{sectionContent[key]}</li>)
+                }
+            })
+        }
         return list
     }
+
 
 
     handleClick(){
