@@ -116,7 +116,9 @@ function mapDispatchToProps(dispatch){
     }
 }
 
+export {ContactInfoForm};
 export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(ContactInfoForm);
+
