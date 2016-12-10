@@ -1,17 +1,16 @@
 import React from 'react';
 
-import Success from './success.jsx';
-import DynamicLenderMatches from './dynamic-lender-matches.jsx'
-import DynamicCounselingAndTools from './dynamic-counseling-and-tools.jsx'
-
+import DynamicLenderMatches from './dynamic-lender-matches.jsx';
+import DynamicCounselingAndTools from './dynamic-counseling-and-tools.jsx';
+import ConfirmSection from './confirm-section.jsx';
 
 
 class SuccessPage extends React.Component {
     render(){
         return (
             <div>
-                <Success />
                 <div className="container">
+                    <ConfirmSection />
                     <div className="row">
                         <DynamicLenderMatches />
                         <DynamicCounselingAndTools />

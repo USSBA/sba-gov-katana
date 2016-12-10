@@ -1,9 +1,9 @@
 import React from 'react';
 import {Grid, Row, Col, Image, Button } from 'react-bootstrap'
-import styles from '../../styles/success-page/confirm.scss';
+import styles from '../../styles/success-page/confirm-section.scss';
 import thumbNail from '../../../../public/assets/images/placeholder370x170.png';
 
-export const Confirm = (props) =>
+const ConfirmSection = (props) =>
     <Row>
         <Col xs={12} className={styles.section}>
             <Row>
@@ -12,46 +12,34 @@ export const Confirm = (props) =>
 
             <Row>
                 <Col xs={6} xsOffset={3}>
-                    <p className="text-center">Don't see the confirmation in your inbox? <a>Click here</a> to resend</p>
+                    <p className="text-center">Don't see the confirmation in your inbox? <a href="#">Click here</a> to resend</p>
                 </Col>
             </Row>
 
             <Row style={{marginTop: "40px", marginBottom: "40px"}}>
-                <Col xs={10} xsOffset={1}>
-                    <Row>
-                        <Col xs={6}>
-                            <Image className="pull-right" src={thumbNail}/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={6}>
-                            <p className={styles.title}>How to prepare a loan proposal</p>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={6}>
-                            <p className="text-left">Learning Course 30 Minute Video</p>
-                        </Col>
-                    </Row>
-                </Col>
+                <ConfirmSubSection
+                    image={thumbNail}
+                    title="How to prepare a loan proposal"
+                    subTitle="Learning Course 30 Minute Video"
+                    linkRef="https://www.sba.gov/offices/district/nd/fargo/resources/how-prepare-loan-proposal"
+                />
 
-                <Col xs={10} xsOffset={1}>
-                    <Row>
-                        <Col xs={6}>
-                            <Image className="pull-left" src={thumbNail}/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={6}>
-                            <p className={styles.title}>5 Tips for navigating a loan application</p>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xs={6}>
-                            <p className="text-left">Blog 12 Minute Read</p>
-                        </Col>
-                    </Row>
-                </Col>
+                <ConfirmSubSection
+                    image={thumbNail}
+                    title="5 Tips for navigating a loan application"
+                    subTitle="Blog 12 Minute Read"
+                    linkRef="https://www.sba.gov/blogs/5-tips-successfully-navigating-sba-loan-application-process"
+                />
             </Row>
         </Col>
     </Row>;
+
+const ConfirmSubSection = (props) =>
+    <Col className={styles.display}>
+        <Image src={props.image}/>
+        <a className={styles.subtitle} href={props.linkRef}>{props.title}</a>
+        <p className={styles.subpara}>{props.subTitle}</p>
+    </Col>
+    ;
+
+export default ConfirmSection;
