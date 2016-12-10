@@ -28,12 +28,6 @@ export class AdditionalInfoForm extends React.Component {
         this.addInfoForm.reset()
     };
 
-    handleChange(e){
-        let additionalInfoFields = {};
-        additionalInfoFields[e.target.name] = e.target.value;
-        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}})
-    }
-
     handleClick(e){
         let additionalInfoFields = {};
         additionalInfoFields[e.target.name] = e.target.value;

@@ -39,7 +39,7 @@ export function getEmailValidationState(e) {
     }
     return validStates;
 }
-///////////////
+
 export function getTextAlphanumeicValidationState(e){
     let validStates = {};
     if (e.target.value.length > 0){
@@ -82,4 +82,20 @@ export function getSelectBoxValidationState(e) {
         validStates[e.target.name] = null
     }
     return validStates
+}
+
+export function getCurrencyValidationState(e) {
+    let validStates = {};
+    if (e.target.value.length > 0){
+        validStates[e.target.name] = "success"
+    } else {
+        validStates[e.target.name] = null
+    }
+    return validStates
+}
+
+export function getAlwaysValidValidationState(e){
+    let validStates = {};
+    validStates[e.target.name] = "success";
+    return validStates;
 }

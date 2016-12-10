@@ -6,7 +6,7 @@ import { FormPanel } from '../common/form-styling.jsx'
 import * as ContactInfoActions from '../../actions/contact-info.js'
 import { browserHistory } from 'react-router';
 
-import { getNameValidationState, getPhoneValidationState, getEmailValidationState } from '../helpers/page-validator-helpers.jsx'
+import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx'
 
 
 class ContactInfoForm extends React.Component {
@@ -43,7 +43,7 @@ class ContactInfoForm extends React.Component {
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
-        this.getValidationState(e)
+        this.getValidationState(e);
     };
 
     getValidationState(e) {
@@ -54,45 +54,12 @@ class ContactInfoForm extends React.Component {
             validStates = getPhoneValidationState(e)
         } else if (e.target.name === "contactEmailAddress") {
             validStates = getEmailValidationState(e)
+        }else if (e.target.name === "contactSecondaryEmailAddress") {
+            validStates = getAlwaysValidValidationState(e)
         }
         this.setState({validStates: {...this.state.validStates, ...validStates}})
     };
 
-
-    // render() {
-    //     return (
-    //         <FormPanel title="How do we reach you?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
-    //             <form ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-    //                 <TextInput     label="What is your full name?"
-    //                                name="contactFullName"
-    //                                handleChange={this.handleChange.bind(this)}
-    //                                getValidationState={this.state.validStates["contactFullName"]}
-    //                                required
-    //                 />
-    //
-    //                 <TextInput     label="What is your phone number?"
-    //                                name="contactPhoneNumber"
-    //                                pattern="[\d]{7,10}"
-    //                                handleChange={this.handleChange.bind(this)}
-    //                                getValidationState={this.state.validStates["contactPhoneNumber"]}
-    //                                required
-    //                 />
-    //
-    //                 <TextInput     label="What is your email address?"
-    //                                name="contactEmailAddress"
-    //                                pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
-    //                                handleChange={this.handleChange.bind(this)}
-    //                                getValidationState={this.state.validStates["contactEmailAddress"]}
-    //                                required
-    //                 />
-    //                 <button className="btn btn-default col-xs-2 col-xs-offset-5"
-    //                         type="submit"
-    //                         disabled={!(this.isValidForm())}
-    //                 > Continue </button>
-    //             </form>
-    //         </FormPanel>
-    //     );
-    // };
     render() {
         return (
             <FormPanel title="How do we reach you?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
@@ -100,19 +67,36 @@ class ContactInfoForm extends React.Component {
                     <TextInput     label="What is your full name?"
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.validStates["contactFullName"]}
+                                   required
                     />
 
                     <TextInput     label="What is your phone number?"
                                    name="contactPhoneNumber"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.validStates["contactPhoneNumber"]}
+                                   required
                     />
 
                     <TextInput     label="What is your email address?"
                                    name="contactEmailAddress"
                                    handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.validStates["contactEmailAddress"]}
+                                   required
+                    />
+
+                    {/* HoneyPot -- this comment should not appear in the minified code*/}
+                    <TextInput     label="What is your second email address?"
+                                   name="contactSecondaryEmailAddress"
+                                   tabIndex={-1}
+                                   handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.validStates["contactSecondaryEmailAddress"]}
+                                   hidden
+
                     />
                     <button className="btn btn-default col-xs-2 col-xs-offset-5"
                             type="submit"
+                            disabled={!(this.isValidForm())}
                     > Continue </button>
                 </form>
             </FormPanel>
@@ -132,7 +116,9 @@ function mapDispatchToProps(dispatch){
     }
 }
 
+export {ContactInfoForm};
 export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(ContactInfoForm);
+

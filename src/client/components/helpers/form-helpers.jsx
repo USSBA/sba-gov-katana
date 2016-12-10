@@ -6,6 +6,7 @@ import { FormGroup,
     Col
 } from 'react-bootstrap';
 import styles from '../common/styles.scss';
+import commonStyles from '../../styles/common.scss';
 
 //standard react form components to be used throughout application
 
@@ -14,10 +15,11 @@ export class CurrencyInput extends React.Component{
         super(props)
     }
     render(){
-        const { handleChange, handleFormat, value, ...rest} = this.props;
+        const { handleChange, handleFormat, value, getValidationState, ...rest} = this.props;
         return(
             <TextInput
                 {...rest}
+                getValidationState={getValidationState}
                 handleChange={handleChange}
                 onBlur={handleFormat}
                 value={value}
@@ -26,8 +28,8 @@ export class CurrencyInput extends React.Component{
     }
 }
 
-export const TextInput = ({handleChange, getValidationState, ...props}) =>
-    <Col xs={12} xsOffset={0} sm={6} smOffset={3}>
+export const TextInput = ({handleChange, getValidationState, hidden, ...props}) =>
+    <Col xs={12} xsOffset={0} sm={6} smOffset={3} lgHidden={hidden} mdHidden={hidden} smHidden={hidden} xsHidden={hidden}>
         <FormGroup className="input1" validationState={getValidationState}>
             <ControlLabel className={styles.controlLabel}>{props.label}</ControlLabel>
             <FormControl

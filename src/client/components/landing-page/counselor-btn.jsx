@@ -18,11 +18,12 @@ export class CounselorBtn extends React.Component {
     }
 
     postZipcode(){
-        axios.post('/matchCounselors', {
+        let newTab = window.open("", "_blank")
+        axios.post('/matchLocalAssistants', {
             zipcode: this.state.zip
         })
             .then(function (res){
-                document.location = res.data.redirectTo
+                newTab.location = res.data.redirectTo;
             })
             .then(function (err){console.log(err)})
     }
@@ -36,7 +37,7 @@ export class CounselorBtn extends React.Component {
         return (
             <div>
                 {!this.state.displayZip ? (
-                <Col xs={2} xsOffset={3}>
+                    <Col xs={3} xsOffset={2} lg={2} lgOffset={3}>
                     <Button
                         block
                         className={ styles.helpBtn + " pull-right"}
