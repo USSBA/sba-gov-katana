@@ -6,7 +6,7 @@ import { FormPanel } from '../common/form-styling.jsx'
 import * as ContactInfoActions from '../../actions/contact-info.js'
 import { browserHistory } from 'react-router';
 
-import { getNameValidationState, getPhoneValidationState, getEmailValidationState } from '../helpers/page-validator-helpers.jsx'
+import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx'
 
 
 class ContactInfoForm extends React.Component {
@@ -54,6 +54,8 @@ class ContactInfoForm extends React.Component {
             validStates = getPhoneValidationState(e)
         } else if (e.target.name === "contactEmailAddress") {
             validStates = getEmailValidationState(e)
+        }else if (e.target.name === "contactSecondaryEmailAddress") {
+            validStates = getAlwaysValidValidationState(e)
         }
         this.setState({validStates: {...this.state.validStates, ...validStates}})
     };
@@ -81,6 +83,16 @@ class ContactInfoForm extends React.Component {
                                    handleChange={this.handleChange.bind(this)}
                                    getValidationState={this.state.validStates["contactEmailAddress"]}
                                    required
+                    />
+
+                    {/* HoneyPot -- this comment should not appear in the minified code*/}
+                    <TextInput     label="What is your second email address?"
+                                   name="contactSecondaryEmailAddress"
+                                   tabIndex={-1}
+                                   handleChange={this.handleChange.bind(this)}
+                                   getValidationState={this.state.validStates["contactSecondaryEmailAddress"]}
+                                   hidden
+
                     />
                     <button className="btn btn-default col-xs-2 col-xs-offset-5"
                             type="submit"

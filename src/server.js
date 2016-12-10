@@ -60,6 +60,12 @@ app.post('/matchFormData', jsonParser, function(req, res){
     //loanData.loanAmount
     //loanData.loanDescription
 
+
+
+    if(("contactSecondaryEmailAddress" in req.body.contactInfoData)){
+        console.log('honeypot form element was filled.  This was probably submitted by a bot.');
+
+    }
     if(!("contactFullName" in req.body.contactInfoData)){
         //res.statusCode = 406;
         //res.statusText = "Contact Full Name is required.";
