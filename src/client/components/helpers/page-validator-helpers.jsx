@@ -18,10 +18,8 @@ export function getPhoneValidationState(e) {
     var numberRegex = new RegExp(/^\d+$/)
     if (e.target.value.length >= 10 && numberRegex.test(e.target.value)){
         validStates[e.target.name] = "success";
-    } else if (e.target.value.length < 10 && numberRegex.test(e.target.value)) {
-        validStates[e.target.name] = null;
     } else {
-        validStates[e.target.name] = "error";
+        validStates[e.target.name] = null;
     }
     return validStates;
 }
@@ -55,10 +53,8 @@ export function getZipcodeValidationState(e) {
     var numberRegex = new RegExp(/^\d+$/)
     if (e.target.value.length === 5 && numberRegex.test(e.target.value)){
         validStates[e.target.name] = "success";
-    } else if (e.target.value.length < 5 && numberRegex.test(e.target.value)){
-        validStates[e.target.name] = null;
     } else {
-        validStates[e.target.name] = "error";
+        validStates[e.target.name] = null;
     }
     return validStates;
 }

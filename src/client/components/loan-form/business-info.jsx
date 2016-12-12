@@ -13,7 +13,9 @@ class BusinessInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            businessInfoFields: {},
+            businessInfoFields: {
+                businessInfoZipcode: ""
+            },
             validStates:{
                 "businessInfoName": null,
                 "businessInfoZipcode": null,
@@ -49,6 +51,16 @@ class BusinessInfoForm extends React.Component {
         this.getValidationState(e);
     }
 
+    handleZipcodeChange(e){
+        let businessInfoFields = {};
+        let zipcode = e.target.value.replace(/[\D]/g, "");
+        if (zipcode.length <= 5) {
+            businessInfoFields[e.target.name] = zipcode;
+            this.setState({businessInfoFields: {...this.state.businessInfoFields, ...businessInfoFields}});
+            this.getValidationState(e);
+        }
+    }
+
     getValidationState(e) {
         let validStates = {}
         if (e.target.name === "businessInfoName") {
@@ -79,8 +91,10 @@ class BusinessInfoForm extends React.Component {
                     <TextInput
                         label="What is the business ZIP code?"
                         name="businessInfoZipcode"
-                        handleChange={this.handleChange.bind(this)}
+                        handleChange={this.handleZipcodeChange.bind(this)}
+                        value={this.state.businessInfoFields.businessInfoZipcode}
                         getValidationState={this.state.validStates["businessInfoZipcode"]}
+                        maxLength="5"
                         required
                     />
 
