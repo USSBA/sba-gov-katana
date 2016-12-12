@@ -29,7 +29,10 @@ export class CounselorBtn extends React.Component {
     }
 
     handleChange(e){
-        this.setState({zip: e.target.value});
+        let num = e.target.value;
+        if (!/[^\d]/.test(num) && num.length <= 5) {
+            this.setState({zip: e.target.value});
+        }
     }
 
 
@@ -54,9 +57,10 @@ export class CounselorBtn extends React.Component {
                                 <FormGroup style={{display: "inline"}}>
                                     <FormControl style={{display: "inline"}}
                                                  type="text"
+                                                 value={this.state.zip}
                                                  placeholder="Enter Zipcode"
                                                  onChange={(e) => this.handleChange(e)}
-                                                 maxLength="5"
+
                                     />
                                 </FormGroup>
                             </Col>
