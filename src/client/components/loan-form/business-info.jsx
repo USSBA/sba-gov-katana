@@ -54,6 +54,8 @@ class BusinessInfoForm extends React.Component {
     handleZipcodeChange(e){
         let businessInfoFields = {};
         let zipcode = e.target.value.replace(/[\D]/g, "");
+        console.log(zipcode)
+        console.log(zipcode.length)
         if (zipcode.length <= 5) {
             businessInfoFields[e.target.name] = zipcode;
             this.setState({businessInfoFields: {...this.state.businessInfoFields, ...businessInfoFields}});
@@ -94,6 +96,7 @@ class BusinessInfoForm extends React.Component {
                         handleChange={this.handleZipcodeChange.bind(this)}
                         value={this.state.businessInfoFields.businessInfoZipcode}
                         getValidationState={this.state.validStates["businessInfoZipcode"]}
+                        maxLength="5"
                         required
                     />
 
