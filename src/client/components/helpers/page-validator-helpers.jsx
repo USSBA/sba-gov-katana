@@ -89,3 +89,9 @@ export function getCurrencyValidationState(e) {
     }
     return validStates
 }
+
+export function getAlwaysValidValidationState(e){
+    let validStates = {};
+    validStates[e.target.name] = "success";
+    return validStates;
+}

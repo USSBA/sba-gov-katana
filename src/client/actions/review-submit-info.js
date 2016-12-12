@@ -9,7 +9,7 @@ export function matchFormData(reviewSubmitInfoData){
         dispatch({type: "MATCH_FORM_DATA_START"});
         console.log("Match Form Data being sent to the server.");
         //axios.post("http://localhost:3000/matchFormData",
-        axios.post("http://ec2-52-23-225-150.compute-1.amazonaws.com/matchFormData",
+        axios.post("matchFormData",
             reviewSubmitInfoData/*,
             {
                 headers:{

@@ -1,0 +1,33 @@
+@import "../buttons";
+
+.section {
+  font-weight: lighter;
+  background: white;
+}
+
+.title {
+  font-size: 28px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  width: 370px;
+  text-align: left;
+  display: inline-block;
+}
+
+.subpara{
+  width: 370px;
+  text-align: left;
+  display: inline-block;
+}
+
+.display{
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+}
