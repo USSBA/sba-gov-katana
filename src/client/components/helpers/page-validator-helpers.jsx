@@ -15,13 +15,12 @@ export function getNameValidationState(e) {
 
 export function getPhoneValidationState(e) {
     let validStates = {};
-    var numberRegex = new RegExp(/^\d+$/)
-    if (e.target.value.length >= 10 && numberRegex.test(e.target.value)){
+    if (e.target.value.length >= 10){
         validStates[e.target.name] = "success";
-    } else if (e.target.value.length < 10 && numberRegex.test(e.target.value)) {
+    } else if (e.target.value.length < 10) {
         validStates[e.target.name] = null;
     } else {
-        validStates[e.target.name] = "error";
+        validStates[e.target.name] = null;
     }
     return validStates;
 }
@@ -52,13 +51,10 @@ export function getTextAlphanumeicValidationState(e){
 
 export function getZipcodeValidationState(e) {
     let validStates = {};
-    var numberRegex = new RegExp(/^\d+$/)
-    if (e.target.value.length === 5 && numberRegex.test(e.target.value)){
+    if (e.target.value.length === 5){
         validStates[e.target.name] = "success";
-    } else if (e.target.value.length < 5 && numberRegex.test(e.target.value)){
+    } else if (e.target.value.length < 5){
         validStates[e.target.name] = null;
-    } else {
-        validStates[e.target.name] = "error";
     }
     return validStates;
 }

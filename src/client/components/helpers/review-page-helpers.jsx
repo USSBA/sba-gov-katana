@@ -8,19 +8,6 @@ class ReviewSection extends React.Component {
         super();
     }
 
-
-    // additionalInfoCases(key) {
-    //     if (key === "hasWrittenPlan") {
-    //         return "I have a written business plan"
-    //     } else if (key === "hasFinancialProjections") {
-    //         return "I have financial projections"
-    //     } else if (key === "isGeneratingRevenue") {
-    //         return "I'm generating revenue"
-    //     } else if (key === "isVeteran") {
-    //         return "I'm a veteran"
-    //     }
-    // }
-
     mapSectionContentToList() {
         var list = []
         if (this.props.label === "Additional") {
@@ -36,22 +23,18 @@ class ReviewSection extends React.Component {
                     } else if (key === "isVeteran") {
                         list.push(<li key={index}>I'm a veteran</li>)
                     }
-                    // var additionalInfoValue = this.additionalInfoCases(key)
-                    // list.push(<li key={index}>{additionalInfoValue}</li>)
                 }
             })
         } else {
             var sectionContent = this.props.sectionContent
             Object.keys(sectionContent).map(function (key, index) {
-                if(sectionContent[key].length >0 ) {
+                if(sectionContent[key].length > 0 ) {
                     list.push(<li key={index}>{sectionContent[key]}</li>)
                 }
             })
         }
         return list
     }
-
-
 
     handleClick(){
         browserHistory.push(this.props.editPath)

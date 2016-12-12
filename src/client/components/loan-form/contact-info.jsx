@@ -13,7 +13,9 @@ class ContactInfoForm extends React.Component {
     constructor(){
         super();
         this.state ={
-            contactInfoFields: {},
+            contactInfoFields: {
+                contactPhoneNumber: ""
+            },
             validStates: {
                 "contactFullName": null,
                 "contactPhoneNumber": null,
@@ -46,6 +48,14 @@ class ContactInfoForm extends React.Component {
         this.getValidationState(e);
     };
 
+    handlePhoneChange(e){
+        let contactInfoFields = {};
+        let phoneNumber = e.target.value.replace(/[\D]/g,"");
+        contactInfoFields[e.target.name] = phoneNumber
+        this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
+        this.getValidationState(e);
+    }
+
     getValidationState(e) {
         let validStates = {}
         if (e.target.name === "contactFullName") {
@@ -71,7 +81,8 @@ class ContactInfoForm extends React.Component {
 
                     <TextInput     label="What is your phone number?"
                                    name="contactPhoneNumber"
-                                   handleChange={this.handleChange.bind(this)}
+                                   handleChange={this.handlePhoneChange.bind(this)}
+                                   value={this.state.contactInfoFields.contactPhoneNumber}
                                    getValidationState={this.state.validStates["contactPhoneNumber"]}
                                    required
                     />
