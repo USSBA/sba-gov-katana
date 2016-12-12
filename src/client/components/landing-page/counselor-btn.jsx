@@ -56,6 +56,7 @@ export class CounselorBtn extends React.Component {
                                                  type="text"
                                                  placeholder="Enter Zipcode"
                                                  onChange={(e) => this.handleChange(e)}
+                                                 maxLength="5"
                                     />
                                 </FormGroup>
                             </Col>
