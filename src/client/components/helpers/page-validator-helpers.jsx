@@ -26,14 +26,13 @@ export function getPhoneValidationState(e) {
 
 export function getEmailValidationState(e) {
     let validStates ={};
-    var emailRegex = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
-
+    var emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
     if (emailRegex.test(e.target.value)) {
         validStates[e.target.name] = "success";
     } else if (e.target.value.length === 0) {
         validStates[e.target.name] = null;
-    } else if ((/[!#$%&’*+/=?^_`{|}~]/).test(e.target.value)) {
-        validStates[e.target.name] = "error";
+    } else if (!((emailRegex).test(e.target.value))) {
+        validStates[e.target.name] = null;
     }
     return validStates;
 }
