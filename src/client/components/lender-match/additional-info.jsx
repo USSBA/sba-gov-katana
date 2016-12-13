@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { SelectBox, CheckBox } from '../helpers/form-helpers.jsx'
 import { FormPanel } from '../common/form-styling.jsx'
 import { browserHistory } from 'react-router';
-
-import { FormGroup, Checkbox, Panel, ButtonToolbar, Row } from 'react-bootstrap'
-
+import { FormGroup, Checkbox, Col } from 'react-bootstrap'
 import * as AdditionalInfoActions from '../../actions/additional-info.js'
+import styles from '../../styles/lender-match/lender-match.scss';
 
-import styles from '../common/styles.scss';
 
 
 export class AdditionalInfoForm extends React.Component {
@@ -40,7 +37,7 @@ export class AdditionalInfoForm extends React.Component {
                 <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
 
                     <FormGroup className="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">
-                        <label className={styles.controlLabel}>Check all that apply to you: </label>
+                        <label>Check all that apply to you: </label>
                         <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
                             I have a written business plan
                         </Checkbox>
@@ -54,10 +51,11 @@ export class AdditionalInfoForm extends React.Component {
                             I'm a veteran
                         </Checkbox>
                     </FormGroup>
-
-                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
-                            type="submit">
-                        Continue </button>
+                    <Col md={6} mdOffset={3} >
+                        <button className={styles.continueBtn}
+                                type="submit">
+                            Continue </button>
+                    </Col>
                 </form>
             </FormPanel>
         )

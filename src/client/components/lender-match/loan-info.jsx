@@ -5,8 +5,9 @@ import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LoanActions from '../../actions/loan-form.js'
 import { browserHistory } from 'react-router';
-
 import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
+import styles from '../../styles/lender-match/lender-match.scss';
+import { Col } from 'react-bootstrap';
 
 export class LoanInfo extends React.Component {
     constructor(){
@@ -119,10 +120,13 @@ export class LoanInfo extends React.Component {
 
                     />
 
-                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
-                            type="submit"
-                            disabled={!(this.isValidForm())}
-                    > Continue </button>
+                    <Col md={6} mdOffset={3} >
+                        <button className={styles.continueBtn}
+                                type="submit"
+                                disabled={!(this.isValidForm())}
+                        > Continue </button>
+                    </Col>
+
 
                 </form>
             </FormPanel>

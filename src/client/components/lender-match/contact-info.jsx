@@ -5,9 +5,9 @@ import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx'
 import { FormPanel } from '../common/form-styling.jsx'
 import * as ContactInfoActions from '../../actions/contact-info.js'
 import { browserHistory } from 'react-router';
-
-import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx'
-
+import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
+import styles from '../../styles/lender-match/lender-match.scss';
+import { Col } from 'react-bootstrap';
 
 class ContactInfoForm extends React.Component {
     constructor(){
@@ -105,10 +105,12 @@ class ContactInfoForm extends React.Component {
                                    hidden
 
                     />
-                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
-                            type="submit"
-                            disabled={!(this.isValidForm())}
-                    > Continue </button>
+                    <Col md={6} mdOffset={3} >
+                        <button className={styles.continueBtn}
+                                type="submit"
+                                disabled={!(this.isValidForm())}
+                        > Continue </button>
+                    </Col>
                 </form>
             </FormPanel>
         );

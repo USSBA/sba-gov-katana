@@ -14,14 +14,14 @@ from 'react-router-redux';
 
 import LincMain from './linc-main.jsx';
 import LandingPage from './landing-page/landing-page.jsx';
-import LoanForm from './loan-form/loan-form.jsx';
+import LoanForm from './lender-match/loan-form.jsx';
 import SuccessPage from './success-page/success-page.jsx';
-import ContactInfo from './loan-form/contact-info.jsx';
-import LoanInfo from './loan-form/loan-info.jsx';
-import BusinessInfo from './loan-form/business-info.jsx';
-import IndustryInfo from './loan-form/industry-info.jsx';
-import AdditionalInfo from './loan-form/additional-info.jsx';
-import ReviewSubmitInfo from './loan-form/review-submit-info.jsx';
+import ContactInfo from './lender-match/contact-info.jsx';
+import LoanInfo from './lender-match/loan-info.jsx';
+import BusinessInfo from './lender-match/business-info.jsx';
+import IndustryInfo from './lender-match/industry-info.jsx';
+import AdditionalInfo from './lender-match/additional-info.jsx';
+import ReviewSubmitInfo from './lender-match/review-submit-info.jsx';
 
 const middleware = applyMiddleware(thunk);
 const store = createStore(rootReducer, middleware);

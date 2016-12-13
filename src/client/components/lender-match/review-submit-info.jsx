@@ -5,8 +5,7 @@ import { TextInput, CheckBox} from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
 import { browserHistory } from 'react-router';
-
-import styles from '../../styles/review-submit.scss'
+import styles from '../../styles/lender-match/review-submit.scss'
 import ReviewSection from '../helpers/review-page-helpers.jsx';
 import { Col } from 'react-bootstrap';
 

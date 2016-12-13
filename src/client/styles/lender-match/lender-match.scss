@@ -1,0 +1,23 @@
+@import "../buttons";
+
+.backBtn{
+  border: none;
+}
+
+.continueBtn{
+  composes: helpBtn;
+  background: #ffffff;
+  width: 100%;
+  height: 30px;
+}
+
+.continueBtn:disabled{
+  background: #ffffff;
+  font-weight: lighter;
+  border-color: #efefef;
+  color: grey;
+}
+
+.continueBtn:disabled:hover{
+  color: #333333;
+}

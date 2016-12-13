@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import {should} from 'should';
 
-import {ContactInfoForm}  from '../../../../src/client/components/loan-form/contact-info.jsx';
+import {ContactInfoForm}  from '../../../../src/client/components/lender-match/contact-info.jsx';
 
 describe('<ContactInfoForm />', function () {
   it('should have one form', function () {

@@ -6,6 +6,8 @@ import * as IndustryInfoActions from '../../actions/industry-info.js'
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
+import styles from '../../styles/lender-match/lender-match.scss';
+import { Col } from 'react-bootstrap';
 
 class IndustryInfoForm extends React.Component {
     constructor(){
@@ -100,10 +102,12 @@ class IndustryInfoForm extends React.Component {
                         <option value="5+ years">5+ years</option>
                     </SelectBox>
 
-                    <button className="btn btn-default col-xs-2 col-xs-offset-5"
-                            type="submit"
-                            disabled={!(this.isValidForm())}
-                    > Continue </button>
+                    <Col md={6} mdOffset={3} >
+                        <button className={styles.continueBtn}
+                                type="submit"
+                                disabled={!(this.isValidForm())}
+                        > Continue </button>
+                    </Col>
 
                 </form>
             </FormPanel>
