@@ -26,7 +26,7 @@ export function getPhoneValidationState(e) {
 
 export function getEmailValidationState(e) {
     let validStates ={};
-    var emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w+)+$/)
+    var emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/)
     if (emailRegex.test(e.target.value)) {
         validStates[e.target.name] = "success";
     } else if (e.target.value.length === 0) {
