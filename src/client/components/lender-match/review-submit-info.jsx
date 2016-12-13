@@ -80,7 +80,7 @@ class ReviewSubmitInfoForm extends React.Component {
                                    name="reviewEmailProspect"
                                    handleClick={this.handleClick.bind(this)}
                     />
-                    <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
+                    <Col md={6} mdOffset={3}>
                         <button className={styles.findLendersBtn +" btn-block"} type="submit"> Submit to Lenders </button>
                     </Col>
                 </form>

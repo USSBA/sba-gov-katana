@@ -87,6 +87,7 @@ class BusinessInfoForm extends React.Component {
                         name="businessInfoName"
                         handleChange={this.handleChange.bind(this)}
                         getValidationState={this.state.validStates["businessInfoName"]}
+                        autoFocus
                         required
                     />
 

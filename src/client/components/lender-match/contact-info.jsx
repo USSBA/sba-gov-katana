@@ -78,6 +78,7 @@ class ContactInfoForm extends React.Component {
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
                                    getValidationState={this.state.validStates["contactFullName"]}
+                                   autoFocus
                                    required
                     />
 

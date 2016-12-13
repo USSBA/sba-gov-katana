@@ -60,6 +60,7 @@ class IndustryInfoForm extends React.Component {
                         handleChange={this.handleChange.bind(this)}
                         getValidationState={this.state.validStates["industryType"]}
                         defaultValue=""
+                        autoFocus
                         required
                     >
                         <option value="" disabled>- Select use of funds -</option>

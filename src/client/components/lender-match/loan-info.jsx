@@ -87,6 +87,7 @@ export class LoanInfo extends React.Component {
                                    handleFormat={this.handleFormat.bind(this)}
                                    value={this.state.loanFields.loanAmount}
                                    getValidationState = {this.state.validStates["loanAmount"]}
+                                   autoFocus
                                    required
                     />
 
