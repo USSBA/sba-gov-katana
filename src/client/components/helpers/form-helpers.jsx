@@ -35,7 +35,6 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
             <FormControl
                 {...props}
                 onChange={handleChange}
-                type="text"
                 />
             <FormControl.Feedback />
         </FormGroup>

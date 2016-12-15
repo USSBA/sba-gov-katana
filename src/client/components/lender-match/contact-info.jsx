@@ -1,28 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx'
-import { FormPanel } from '../common/form-styling.jsx'
-import * as ContactInfoActions from '../../actions/contact-info.js'
+import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx';
+import { FormPanel } from '../common/form-styling.jsx';
+import * as ContactInfoActions from '../../actions/contact-info.js';
 import { browserHistory } from 'react-router';
 import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
 import styles from '../../styles/lender-match/lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 class ContactInfoForm extends React.Component {
-    constructor(){
+    constructor(props){
         super();
-        this.state ={
-            contactInfoFields: {
-                contactPhoneNumber: ""
-            },
+        this.state = {
+            contactInfoFields: Object.assign({},{
+                contactPhoneNumber: "",
+                contactFullName: "",
+                contactEmailAddress: ""
+            }, props.contactInfoFields),
             validStates: {
                 "contactFullName": null,
                 "contactPhoneNumber": null,
                 "contactEmailAddress": null
             }
-        }
-    };
+        };
+    }
 
     isValidForm(){
         let validForm = true;
@@ -31,7 +33,7 @@ class ContactInfoForm extends React.Component {
                 validForm = false;
             }
         }
-        return validForm
+        return validForm;
     }
 
     handleSubmit(e){
@@ -39,36 +41,36 @@ class ContactInfoForm extends React.Component {
         this.props.actions.createContactInfo(this.state.contactInfoFields);
         browserHistory.push('/form/business');
         this.contactInfoForm.reset();
-    };
+    }
 
     handleChange(e){
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
         this.getValidationState(e);
-    };
+    }
 
     handlePhoneChange(e){
         let contactInfoFields = {};
         let phoneNumber = e.target.value.replace(/[\D]/g,"");
-        contactInfoFields[e.target.name] = phoneNumber
+        contactInfoFields[e.target.name] = phoneNumber;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
         this.getValidationState(e);
     }
 
     getValidationState(e) {
-        let validStates = {}
+        let validStates = {};
         if (e.target.name === "contactFullName") {
-            validStates = getNameValidationState(e)
+            validStates = getNameValidationState(e);
         } else if (e.target.name === "contactPhoneNumber") {
-            validStates = getPhoneValidationState(e)
+            validStates = getPhoneValidationState(e);
         } else if (e.target.name === "contactEmailAddress") {
-            validStates = getEmailValidationState(e)
+            validStates = getEmailValidationState(e);
         }else if (e.target.name === "contactSecondaryEmailAddress") {
-            validStates = getAlwaysValidValidationState(e)
+            validStates = getAlwaysValidValidationState(e);
         }
-        this.setState({validStates: {...this.state.validStates, ...validStates}})
-    };
+        this.setState({validStates: {...this.state.validStates, ...validStates}});
+    }
 
     render() {
         return (
@@ -77,6 +79,7 @@ class ContactInfoForm extends React.Component {
                     <TextInput     label="What is your full name?"
                                    name="contactFullName"
                                    handleChange={this.handleChange.bind(this)}
+                                   value={this.state.contactInfoFields.contactFullName}
                                    getValidationState={this.state.validStates["contactFullName"]}
                                    autoFocus
                                    required
@@ -93,6 +96,7 @@ class ContactInfoForm extends React.Component {
                     <TextInput     label="What is your email address?"
                                    name="contactEmailAddress"
                                    handleChange={this.handleChange.bind(this)}
+                                   value={this.state.contactInfoFields.contactEmailAddress}
                                    getValidationState={this.state.validStates["contactEmailAddress"]}
                                    required
                     />
@@ -115,19 +119,20 @@ class ContactInfoForm extends React.Component {
                 </form>
             </FormPanel>
         );
-    };
+    }
 }
 
 function mapStateToProps(state) {
-    return {
-        contactInfoData: state.contactInfoData
+    let newProps = {
+        contactInfoFields: Object.assign({}, state.contactInfoReducer.contactInfoData)
     };
+    return newProps;
 }
 
 function mapDispatchToProps(dispatch){
     return {
         actions: bindActionCreators(ContactInfoActions, dispatch)
-    }
+    };
 }
 
 export {ContactInfoForm};
