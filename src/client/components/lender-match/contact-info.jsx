@@ -12,17 +12,18 @@ import { Col } from 'react-bootstrap';
 class ContactInfoForm extends React.Component {
     constructor(props){
         super();
-        this.state = {
-            contactInfoFields: Object.assign({},{
+        let contactInfoFields = Object.assign({},{
                 contactPhoneNumber: "",
                 contactFullName: "",
                 contactEmailAddress: ""
-            }, props.contactInfoFields),
-            validStates: {
-                "contactFullName": null,
-                "contactPhoneNumber": null,
-                "contactEmailAddress": null
-            }
+            }, props.contactInfoFields);
+        let validStates = {};
+        validStates= Object.assign(validStates, this.getValidationState("contactFullName", contactInfoFields.contactFullName));
+        validStates= Object.assign(validStates, this.getValidationState("contactPhoneNumber", contactInfoFields.contactPhoneNumber));
+        validStates= Object.assign(validStates, this.getValidationState("contactEmailAddress", contactInfoFields.contactEmailAddress));
+        this.state = {
+            contactInfoFields: contactInfoFields,
+            validStates: validStates
         };
     }
 
@@ -43,11 +44,14 @@ class ContactInfoForm extends React.Component {
         this.contactInfoForm.reset();
     }
 
+
+    // TODO: combine handleChange and handlePhoneChange
     handleChange(e){
         let contactInfoFields = {};
         contactInfoFields[e.target.name] = e.target.value;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
-        this.getValidationState(e);
+        let validStates = this.getValidationState(e.target.name, e.target.value);
+        this.setState({validStates: {...this.state.validStates, ...validStates}});
     }
 
     handlePhoneChange(e){
@@ -55,21 +59,22 @@ class ContactInfoForm extends React.Component {
         let phoneNumber = e.target.value.replace(/[\D]/g,"");
         contactInfoFields[e.target.name] = phoneNumber;
         this.setState({contactInfoFields: {...this.state.contactInfoFields, ...contactInfoFields}});
-        this.getValidationState(e);
+        let validStates = this.getValidationState(e.target.name, e.target.value);
+        this.setState({validStates: {...this.state.validStates, ...validStates}});
     }
 
-    getValidationState(e) {
+    getValidationState(name, value) {
         let validStates = {};
-        if (e.target.name === "contactFullName") {
-            validStates = getNameValidationState(e);
-        } else if (e.target.name === "contactPhoneNumber") {
-            validStates = getPhoneValidationState(e);
-        } else if (e.target.name === "contactEmailAddress") {
-            validStates = getEmailValidationState(e);
-        }else if (e.target.name === "contactSecondaryEmailAddress") {
-            validStates = getAlwaysValidValidationState(e);
+        if (name === "contactFullName") {
+            validStates = getNameValidationState(name, value);
+        } else if (name === "contactPhoneNumber") {
+            validStates = getPhoneValidationState(name, value);
+        } else if (name === "contactEmailAddress") {
+            validStates = getEmailValidationState(name, value);
+        }else if (name === "contactSecondaryEmailAddress") {
+            validStates = getAlwaysValidValidationState(name, value);
         }
-        this.setState({validStates: {...this.state.validStates, ...validStates}});
+        return validStates;
     }
 
     render() {
@@ -122,11 +127,10 @@ class ContactInfoForm extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    let newProps = {
-        contactInfoFields: Object.assign({}, state.contactInfoReducer.contactInfoData)
+function mapStateToProps(reduxState) {
+    return {
+        contactInfoFields: reduxState.contactInfoReducer.contactInfoData
     };
-    return newProps;
 }
 
 function mapDispatchToProps(dispatch){

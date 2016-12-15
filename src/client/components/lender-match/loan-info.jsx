@@ -10,17 +10,22 @@ import styles from '../../styles/lender-match/lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 export class LoanInfo extends React.Component {
-    constructor(){
+    constructor(props){
         super();
-        this.state ={
-            loanFields: {
-                loanAmount: ""
-            },
-            validStates: {
-                "loanAmount": null,
-                "loanDescription": null
-            }
+        let loanFields = Object.assign({},{
+                loanAmount: "",
+                loanDescription: "",
+                loanUsage: ""
+            }, props.loanFields);
+        let validStates = {};
+        validStates= Object.assign(validStates, this.getValidationState("loanAmount", loanFields.loanAmount));
+        if(loanFields.loanDescription){
+            validStates= Object.assign(validStates, this.getValidationState("loanDescription", loanFields.loanDescription));
         }
+        this.state = {
+            loanFields: loanFields,
+            validStates: validStates
+        };
     }
 
     isValidForm(){
@@ -44,7 +49,8 @@ export class LoanInfo extends React.Component {
         let loanFields = {};
         loanFields[e.target.name] = e.target.value;
         this.setState({loanFields: {...this.state.loanFields, ...loanFields}});
-        this.getValidationState(e);
+        let validStates = this.getValidationState(e.target.name, e.target.value);
+        this.setState({validStates: {...this.state.validStates, ...validStates}})
     }
 
     handleAmountChange(e){
@@ -66,15 +72,15 @@ export class LoanInfo extends React.Component {
         }
     }
 
-    getValidationState(e) {
+    getValidationState(name, value) {
         let validStates = {}
-        if (e.target.name === "loanAmount") {
-            console.log(e.target.value.length)
-            validStates = getCurrencyValidationState(e)
-        } else if (e.target.name === "loanDescription") {
-            validStates = getSelectBoxValidationState(e)
+        if (name === "loanAmount") {
+            validStates = getCurrencyValidationState(name, value)
+        } else if (name === "loanDescription") {
+            validStates = getSelectBoxValidationState(name, value)
         }
-        this.setState({validStates: {...this.state.validStates, ...validStates}})
+        return validStates;
+
     };
 
     render() {
@@ -95,7 +101,7 @@ export class LoanInfo extends React.Component {
                                name="loanDescription"
                                handleChange={this.handleChange.bind(this)}
                                getValidationState={this.state.validStates["loanDescription"]}
-                               defaultValue=""
+                               defaultValue={this.state.loanFields.loanDescription}
                                required
                     >
                         <option value="" disabled>- Select use of funds -</option>
@@ -117,6 +123,7 @@ export class LoanInfo extends React.Component {
                     <TextArea label="Describe how these funds will be used?"
                               name="loanUsage"
                               handleChange={this.handleChange.bind(this)}
+                              value={this.state.loanFields.loanUsage}
                               placeholder="Include details such as this sample placeholder and this other example."
 
                     />
@@ -136,7 +143,9 @@ export class LoanInfo extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
-    return {};
+    return {
+        loanFields: reduxState.loanReducer.loanData
+    };
 }
 
 function mapDispatchToProps(dispatch){

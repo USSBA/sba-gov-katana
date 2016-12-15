@@ -10,12 +10,17 @@ import styles from '../../styles/lender-match/lender-match.scss';
 
 
 export class AdditionalInfoForm extends React.Component {
-    constructor(){
+    constructor(props){
         super();
-        this.state ={
-            additionalInfoFields: {
-            }
-        }
+        let additionalInfoFields = Object.assign({},{
+                hasWrittenPlan: false,
+                hasFinancialProjections: false,
+                isGeneratingRevenue: false,
+                isVeteran: false
+            }, props.additionalInfoFields);
+        this.state = {
+            additionalInfoFields: additionalInfoFields
+        };
     }
 
     handleSubmit(e){
@@ -26,9 +31,9 @@ export class AdditionalInfoForm extends React.Component {
     };
 
     handleClick(e){
-        let additionalInfoFields = {};
-        additionalInfoFields[e.target.name] = e.target.value;
-        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...additionalInfoFields}});
+        let newState = {};
+        newState[e.target.name] = e.target.checked;
+        this.setState({additionalInfoFields: {...this.state.additionalInfoFields, ...newState}});
     }
 
     render(){
@@ -38,16 +43,18 @@ export class AdditionalInfoForm extends React.Component {
 
                     <FormGroup className="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">
                         <label>Check all that apply to you: </label>
-                        <Checkbox name = "hasWrittenPlan" onClick={this.handleClick.bind(this)}>
+                        <Checkbox   name = "hasWrittenPlan"
+                                    checked={this.state.additionalInfoFields.hasWrittenPlan}
+                                    onChange={this.handleClick.bind(this)}>
                             I have a written business plan
                         </Checkbox>
-                        <Checkbox name = "hasFinancialProjections" onClick={this.handleClick.bind(this)}>
+                        <Checkbox name = "hasFinancialProjections" checked={this.state.additionalInfoFields.hasFinancialProjections} onChange={this.handleClick.bind(this)}>
                             I have financial projections
                         </Checkbox>
-                        <Checkbox name="isGeneratingRevenue" onClick={this.handleClick.bind(this)}>
+                        <Checkbox name="isGeneratingRevenue" checked={this.state.additionalInfoFields.isGeneratingRevenue} onChange={this.handleClick.bind(this)}>
                             I'm generating revenue
                         </Checkbox>
-                        <Checkbox name="isVeteran" onClick={this.handleClick.bind(this)}>
+                        <Checkbox name="isVeteran" checked={this.state.additionalInfoFields.isVeteran} onChange={this.handleClick.bind(this)}>
                             I'm a veteran
                         </Checkbox>
                     </FormGroup>
@@ -64,8 +71,9 @@ export class AdditionalInfoForm extends React.Component {
 
 
 function mapReduxStateToProps(reduxState) {
-    console.log(reduxState)
-    return {};
+    return {
+        additionalInfoFields: reduxState.additionalInfoReducer.additionalInfoData
+    };
 }
 
 function mapDispatchToProps(dispatch){

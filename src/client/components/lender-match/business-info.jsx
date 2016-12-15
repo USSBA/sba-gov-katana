@@ -12,28 +12,34 @@ import { Col } from 'react-bootstrap';
 
 
 class BusinessInfoForm extends React.Component {
-    constructor(){
+    static requiredFields = ["businessInfoName","businessInfoZipcode","businessInfoDescription"]
+
+    constructor(props){
         super();
-        this.state ={
-            businessInfoFields: {
-                businessInfoZipcode: ""
-            },
-            validStates:{
-                "businessInfoName": null,
-                "businessInfoZipcode": null,
-                "businessInfoDescription": null
-            },
-            optionalStates:{
-                "businessInfoWebsite": null
-            }
-        }
+        let businessInfoFields = Object.assign({},{
+                businessInfoName: "",
+                businessInfoZipcode: "",
+                businessInfoDescription: "",
+                businessInfoWebsite: ""
+            }, props.businessInfoFields);
+        let validStates = {};
+        validStates= Object.assign(validStates, this.getValidationState("businessInfoName", businessInfoFields.businessInfoName));
+        validStates= Object.assign(validStates, this.getValidationState("businessInfoZipcode", businessInfoFields.businessInfoZipcode));
+        validStates= Object.assign(validStates, this.getValidationState("businessInfoDescription", businessInfoFields.businessInfoDescription));
+        validStates= Object.assign(validStates, this.getValidationState("businessInfoWebsite", businessInfoFields.businessInfoWebsite));
+        this.state = {
+            businessInfoFields: businessInfoFields,
+            validStates: validStates
+        };
     }
 
     isValidForm(){
         let validForm = true;
-        for (var inputState in this.state.validStates){
-            if(this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null){
-                validForm = false;
+        for (var fieldName in this.state.validStates){
+            if(BusinessInfoForm.requiredFields.indexOf(fieldName) !== -1){
+                if(this.state.validStates[fieldName] === "error" || this.state.validStates[fieldName] === null){
+                    validForm = false;
+                }
             }
         }
         return validForm
@@ -50,7 +56,8 @@ class BusinessInfoForm extends React.Component {
         let businessInfoFields = {};
         businessInfoFields[e.target.name] = e.target.value;
         this.setState({businessInfoFields: {...this.state.businessInfoFields, ...businessInfoFields}});
-        this.getValidationState(e);
+        let validStates = this.getValidationState(e.target.name, e.target.value);
+        this.setState({validStates: {...this.state.validStates, ...validStates}});
     }
 
     handleZipcodeChange(e){
@@ -59,23 +66,23 @@ class BusinessInfoForm extends React.Component {
         if (zipcode.length <= 5) {
             businessInfoFields[e.target.name] = zipcode;
             this.setState({businessInfoFields: {...this.state.businessInfoFields, ...businessInfoFields}});
-            this.getValidationState(e);
+            let validStates = this.getValidationState(e.target.name, e.target.value);
+            this.setState({validStates: {...this.state.validStates, ...validStates}});
         }
     }
 
-    getValidationState(e) {
+    getValidationState(name, value) {
         let validStates = {}
-        if (e.target.name === "businessInfoName") {
-            validStates = getTextAlphanumeicValidationState(e);
-        } else if (e.target.name === "businessInfoZipcode") {
-            validStates = getZipcodeValidationState(e);
-        } else if (e.target.name === "businessInfoDescription") {
-            validStates = getTextAlphanumeicValidationState(e);
-        } else if (e.target.name === "businessInfoWebsite") {
-            let optionalStates = getWebsiteValidationState(e);
-            this.setState({optionalStates: {...this.state.optionalStates, ...optionalStates}});
+        if (name === "businessInfoName") {
+            validStates = getTextAlphanumeicValidationState(name, value);
+        } else if (name === "businessInfoZipcode") {
+            validStates = getZipcodeValidationState(name, value);
+        } else if (name === "businessInfoDescription") {
+            validStates = getTextAlphanumeicValidationState(name, value);
+        } else if (name === "businessInfoWebsite") {
+            validStates= getWebsiteValidationState(name, value);
         }
-        this.setState({validStates: {...this.state.validStates, ...validStates}});
+        return validStates;
     }
 
     render() {
@@ -86,6 +93,7 @@ class BusinessInfoForm extends React.Component {
                         label="What is the name of your business?"
                         name="businessInfoName"
                         handleChange={this.handleChange.bind(this)}
+                        value={this.state.businessInfoFields.businessInfoName}
                         getValidationState={this.state.validStates["businessInfoName"]}
                         autoFocus
                         required
@@ -105,7 +113,8 @@ class BusinessInfoForm extends React.Component {
                         label="What is your business website?"
                         name="businessInfoWebsite"
                         handleChange={this.handleChange.bind(this)}
-                        getValidationState ={this.state.optionalStates["businessInfoWebsite"]}
+                        value={this.state.businessInfoFields.businessInfoWebsite}
+                        getValidationState ={this.state.validStates["businessInfoWebsite"]}
                         placeholder="Optional"
                     />
 
@@ -113,6 +122,7 @@ class BusinessInfoForm extends React.Component {
                         label="Describe what your business does"
                         name="businessInfoDescription"
                         handleChange={this.handleChange.bind(this)}
+                        value={this.state.businessInfoFields.businessInfoDescription}
                         getValidationState = {this.state.validStates["businessInfoDescription"]}
                         required
                     />
@@ -131,9 +141,8 @@ class BusinessInfoForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-    //console.log(reduxState);
     return {
-        businessInfoData: state.businessInfoData
+        businessInfoFields: state.businessInfoReducer.businessInfoData
     };
 }
 

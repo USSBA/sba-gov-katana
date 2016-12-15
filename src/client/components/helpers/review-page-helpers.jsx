@@ -9,7 +9,7 @@ class ReviewSection extends React.Component {
     }
 
     mapSectionContentToList() {
-        var list = []
+        var list = [];
         if (this.props.label === "Additional") {
             var sectionContent = this.props.sectionContent
             Object.keys(sectionContent).map(function (key, index) {
@@ -26,12 +26,14 @@ class ReviewSection extends React.Component {
                 }
             })
         } else {
-            var sectionContent = this.props.sectionContent
-            Object.keys(sectionContent).map(function (key, index) {
-                if(sectionContent[key].length > 0 ) {
-                    list.push(<li key={index}>{sectionContent[key]}</li>)
-                }
-            })
+            var sectionContent = this.props.sectionContent;
+            if(sectionContent){
+                Object.keys(sectionContent).map(function (key, index) {
+                    if(sectionContent[key].length > 0 ) {
+                        list.push(<li key={index}>{sectionContent[key]}</li>)
+                    }
+                })
+            }
         }
         return list
     }

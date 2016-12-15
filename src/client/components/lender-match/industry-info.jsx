@@ -10,15 +10,24 @@ import styles from '../../styles/lender-match/lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 class IndustryInfoForm extends React.Component {
-    constructor(){
+    constructor(props){
         super();
-        this.state ={
-            industryInfoFields: {},
-            validStates: {
-                "industryType": null,
-                "industryExperience": null
-            }
+        let industryInfoFields = Object.assign({},{
+                industryType: "",
+                industryExperience: "",
+            }, props.industryInfoFields);
+        let validStates = {};
+        console.log(industryInfoFields);
+        if(industryInfoFields.industryType){
+            validStates= Object.assign(validStates, this.getValidationState("industryType", industryInfoFields.industryType));
         }
+        if(industryInfoFields.industryExperience){
+            validStates= Object.assign(validStates, this.getValidationState("industryExperience", industryInfoFields.industryExperience));
+        }
+        this.state = {
+            industryInfoFields: industryInfoFields,
+            validStates: validStates
+        };
     }
 
     isValidForm(){
@@ -42,12 +51,12 @@ class IndustryInfoForm extends React.Component {
         let industryInfoFields = {};
         industryInfoFields[e.target.name] = e.target.value;
         this.setState({industryInfoFields: {...this.state.industryInfoFields, ...industryInfoFields}});
-        this.getValidationState(e)
+        let validStates = this.getValidationState(e.target.name, e.target.value)
+        this.setState({validStates: {...this.state.validStates, ...validStates}})
     }
 
-    getValidationState(e) {
-        let validStates = getSelectBoxValidationState(e)
-        this.setState({validStates: {...this.state.validStates, ...validStates}})
+    getValidationState(name, value) {
+        return getSelectBoxValidationState(name, value)
     }
 
     render() {
@@ -59,7 +68,7 @@ class IndustryInfoForm extends React.Component {
                         name = "industryType"
                         handleChange={this.handleChange.bind(this)}
                         getValidationState={this.state.validStates["industryType"]}
-                        defaultValue=""
+                        defaultValue={this.state.industryInfoFields.industryType}
                         autoFocus
                         required
                     >
@@ -93,7 +102,7 @@ class IndustryInfoForm extends React.Component {
                         name = "industryExperience"
                         handleChange={this.handleChange.bind(this)}
                         getValidationState={this.state.validStates["industryExperience"]}
-                        defaultValue=""
+                        defaultValue={this.state.industryInfoFields.industryExperience}
                         required
                     >
                         <option value="" disabled>- Select use of funds -</option>
@@ -118,7 +127,7 @@ class IndustryInfoForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        industryInfoData: state.industryInfoData
+        industryInfoFields: state.industryInfoReducer.industryInfoData
     };
 }
 

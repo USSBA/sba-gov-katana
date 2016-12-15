@@ -1,96 +1,99 @@
 import React from 'react'
-
-export function getNameValidationState(e) {
+export function getNameValidationState(name, value) {
     let validStates = {};
     var nameRegex = new RegExp(/^[a-z ,.'-]+$/i)
-    if (nameRegex.test(e.target.value)) {
-        validStates[e.target.name] = "success";
-    } else if (e.target.value.length === 0) {
-        validStates[e.target.name] = null;
-    } else {
-        validStates[e.target.name] = "error";
+    if (nameRegex.test(value)) {
+        validStates[name] = "success";
+    }
+    else if (value.length === 0) {
+        validStates[name] = null;
+    }
+    else {
+        validStates[name] = "error";
     }
     return validStates
 }
-
-export function getPhoneValidationState(e) {
+export function getPhoneValidationState(name, value) {
     let validStates = {};
     var numberRegex = new RegExp(/^\d+$/)
-    if (e.target.value.length >= 10 && numberRegex.test(e.target.value)){
-        validStates[e.target.name] = "success";
-    } else {
-        validStates[e.target.name] = null;
+    if (value.length >= 10 && numberRegex.test(value)) {
+        validStates[name] = "success";
+    }
+    else {
+        validStates[name] = null;
     }
     return validStates;
 }
-
-export function getEmailValidationState(e) {
-    let validStates ={};
+export function getEmailValidationState(name, value) {
+    let validStates = {};
     var emailRegex = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/)
-    if (emailRegex.test(e.target.value)) {
-        validStates[e.target.name] = "success";
-    } else if (e.target.value.length === 0) {
-        validStates[e.target.name] = null;
-    } else if (!((emailRegex).test(e.target.value))) {
-        validStates[e.target.name] = null;
+    if (emailRegex.test(value)) {
+        validStates[name] = "success";
+    }
+    else if (value.length === 0) {
+        validStates[name] = null;
+    }
+    else if (!((emailRegex).test(value))) {
+        validStates[name] = null;
     }
     return validStates;
 }
-
-export function getTextAlphanumeicValidationState(e){
+export function getTextAlphanumeicValidationState(name, value) {
     let validStates = {};
-    if (e.target.value.length > 0){
-        validStates[e.target.name] = "success";
+    if (value.length > 0) {
+        validStates[name] = "success";
+    }
+    else if (value.length === 0) {
+        validStates[name] = null;
     } else {
-        validStates[e.target.name] = "error"
+        validStates[name] = "error"
     }
     return validStates;
 }
-
-export function getZipcodeValidationState(e) {
+export function getZipcodeValidationState(name, value) {
     let validStates = {};
     var numberRegex = new RegExp(/^\d+$/)
-    if (e.target.value.length === 5 && numberRegex.test(e.target.value)){
-        validStates[e.target.name] = "success";
-    } else {
-        validStates[e.target.name] = null;
+    if (value.length === 5 && numberRegex.test(value)) {
+        validStates[name] = "success";
+    }
+    else {
+        validStates[name] = null;
     }
     return validStates;
 }
-
-export function getWebsiteValidationState(e) {
-    let optionalStates = {};
+export function getWebsiteValidationState(name, value) {
+    let validStates = {};
     var websiteRegex = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)
-    if (websiteRegex.test(e.target.value)) {
-        optionalStates[e.target.name] = "success"
-    } else {
-        optionalStates[e.target.name] = null
+    if (websiteRegex.test(value)) {
+        validStates[name] = "success"
     }
-    return optionalStates;
-}
-
-export function getSelectBoxValidationState(e) {
-    let validStates = {};
-    if (e.target.value != null){
-        validStates[e.target.name] = "success"
-    } else {
-        validStates[e.target.name] = null
+    else {
+        validStates[name] = null
     }
-    return validStates
+    return validStates;
 }
-
-export function getCurrencyValidationState(e) {
+export function getSelectBoxValidationState(name, value) {
     let validStates = {};
-    if (e.target.value.length > 0){
-        validStates[e.target.name] = "success"
-    } else {
-        validStates[e.target.name] = null
+    if (value != null) {
+        validStates[name] = "success"
+    }
+    else {
+        validStates[name] = null
     }
     return validStates
 }
-
-export function getAlwaysValidValidationState(e){
+export function getCurrencyValidationState(name, value) {
     let validStates = {};
-    validStates[e.target.name] = "success";
+    if (value.length > 0) {
+        validStates[name] = "success"
+    }
+    else {
+        validStates[name] = null
+    }
+    return validStates
+}
+export function getAlwaysValidValidationState(name, value) {
+    let validStates = {};
+    validStates[name] = "success";
     return validStates;
 }
