@@ -123,7 +123,7 @@ class Footer extends React.Component{
           </div>
           <div className = " hidden-xl hidden-lg hidden-md container">
               <div className = {styles.socialSmall + " col-xs-12 container"}>
-                  <div className = " col-xs-2 col-xs-offset-2 text-center">
+                  <div className = " col-xs-2 col-xs-offset-2 text-left">
                       <a href="https://www.facebook.com/SBAgov">
                           <img src={ facebookThumbnail } alt="SBA Facebook page"/>
                       </a>
@@ -138,11 +138,12 @@ class Footer extends React.Component{
                           <img src={ googlePlusThumbnail } alt="SBA Google Plus page"/>
                       </a>
                   </div>
-                  <div className = " col-xs-2 text-center">
+                  <div className = " col-xs-2 text-right">
                       <a href="https://www.youtube.com/sba">
                           <img src={ youtubeThumbnail } alt="SBA Youtube page"/>
                       </a>
                   </div>
+                  <div className={styles.smallBottomBorder + " col-xs-8 col-xs-offset-2"}></div>
               </div>
               <div className = {styles.addressSmall + " col-xs-12 container"}>
                   <div className = " text-center"> U.S. Small Business Administration</div>

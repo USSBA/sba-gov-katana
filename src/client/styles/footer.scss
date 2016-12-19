@@ -91,20 +91,24 @@
 
 .socialSmall{
   padding-top: 20px;
-  padding-bottom: 25px;
+  padding-bottom: 0;
   margin: 0;
-  border-bottom: 1px solid #979797;
-
 }
 
 .socialSmall div{
   padding: 0;
+  padding-bottom: 25px;
+
 }
 
 .socialSmall div a img{
   padding: 0;
   width: 45px;
   height: 45px;
+}
+
+.smallBottomBorder{
+  border-bottom: 1px solid #979797;
 }
 
 .addressSmall{
