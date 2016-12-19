@@ -1,8 +1,7 @@
 .footer {
   background-color: #E8E8E8;
   padding-top: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
+
 }
 
 .linkSectionContainer{
@@ -64,6 +63,7 @@
 
 .social div{
   padding: 0;
+  padding-right: 35px;
 }
 
 .social div a img{
@@ -83,3 +83,36 @@
 }
 
 
+.smallLinks a{
+  font-size: 16px;
+  padding-bottom: 20px;
+  text-decoration: none;
+}
+
+.socialSmall{
+  padding-top: 20px;
+  padding-bottom: 25px;
+  margin: 0;
+  border-bottom: 1px solid #979797;
+
+}
+
+.socialSmall div{
+  padding: 0;
+}
+
+.socialSmall div a img{
+  padding: 0;
+  width: 45px;
+  height: 45px;
+}
+
+.addressSmall{
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.addressSmall div {
+  padding: 0;
+  font-size: 16px;
+}

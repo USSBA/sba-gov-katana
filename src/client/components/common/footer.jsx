@@ -12,7 +12,7 @@ class Footer extends React.Component{
     render(){
       return (
       <footer className={styles.footer}>
-          <div className={styles.linkSectionContainer  + " container-fluid"}>
+          <div className={styles.linkSectionContainer  + " hidden-sm hidden-xs container-fluid"}>
               <div className = {styles.linkSubject+ " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4"}>
                   <h4>Customer Service</h4>
                   <ul>
@@ -82,31 +82,71 @@ class Footer extends React.Component{
                   </ul>
               </div>
           </div>
-          <div className={ styles.bottom + " container-fluid"}>
-              <div className={styles.social + " col-md-6 container col-sm-12"}>
-                  <div className = " col-md-1 col-md-offset-0 col-sm-2 col-sm-offset-2">
+          <div className={ styles.bottom + " container-fluid hidden-sm hidden-xs"}>
+              <div className={styles.social + " col-md-3 col-sm-12 container "}>
+                  <div className = " col-md-1 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-2 col-xs-offset-2">
                       <a href="https://www.facebook.com/SBAgov">
                         <img src={ facebookThumbnail } alt="SBA Facebook page"/>
                       </a>
                   </div>
-                  <div className = " col-md-1 col-sm-2">
+                  <div className = " col-md-1 col-sm-3  col-xs-2">
                       <a href="https://www.twitter.com/sbagov">
                           <img src={ twitterThumbnail } alt="SBA Twitter page"/>
                       </a>
                   </div>
-                  <div className = " col-md-1 col-sm-2">
+                  <div className = " col-md-1 col-sm-3  col-xs-2">
                       <a href="https://plus.google.com/+sbagov">
                           <img src={ googlePlusThumbnail } alt="SBA Google Plus page"/>
                       </a>
                   </div>
-                  <div className = " col-md-1 col-sm-2">
+                  <div className = " col-md-1 col-sm-3  col-xs-2">
                       <a href="https://www.youtube.com/sba">
                           <img src={ youtubeThumbnail } alt="SBA Youtube page"/>
                       </a>
                   </div>
               </div>
-              <div className={ styles.address + " col-md-6 container col-sm-12"}>
+              <div className={ styles.address + " col-md-9 container col-sm-12"}>
                   <div className = " col-md-12 text-right">U.S. Small Business Administration   |   409 3rd St, SW. Washington DC 20416</div>
+              </div>
+          </div>
+          <div className = { styles.smallLinks + " hidden-xl hidden-lg hidden-md container"}>
+              <a className = " col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/what-we-do">What we do</a>
+              <a className = " col-xs-4" href="https://www.sba.gov/about-sba/sba-team">SBA Team</a>
+              <a className = " col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/sba-newsroom">SBA News Room</a>
+              <a className = " col-xs-4" href="https://www.sba.gov/about-sba/sba-performance">SBA Performance</a>
+              <a className = " col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/sba-performance/open-government/foia">FOIA</a>
+              <a className = " col-xs-4" href="https://www.sba.gov/about-sba/oversight-advocacy">Oversight & Advocacy</a>
+              <a className = " col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">Contact SBA</a>
+              <a className = " col-xs-4" href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
+              <a className = " col-xs-4 col-xs-offset-2" href="https://es.sba.gov/">SBA En Español</a>
+
+          </div>
+          <div className = " hidden-xl hidden-lg hidden-md container">
+              <div className = {styles.socialSmall + " col-xs-12 container"}>
+                  <div className = " col-xs-2 col-xs-offset-2 text-center">
+                      <a href="https://www.facebook.com/SBAgov">
+                          <img src={ facebookThumbnail } alt="SBA Facebook page"/>
+                      </a>
+                  </div>
+                  <div className = " col-xs-2 text-center">
+                      <a href="https://www.twitter.com/sbagov">
+                          <img src={ twitterThumbnail } alt="SBA Twitter page"/>
+                      </a>
+                  </div>
+                  <div className = " col-xs-2 text-center">
+                      <a href="https://plus.google.com/+sbagov">
+                          <img src={ googlePlusThumbnail } alt="SBA Google Plus page"/>
+                      </a>
+                  </div>
+                  <div className = " col-xs-2 text-center">
+                      <a href="https://www.youtube.com/sba">
+                          <img src={ youtubeThumbnail } alt="SBA Youtube page"/>
+                      </a>
+                  </div>
+              </div>
+              <div className = {styles.addressSmall + " col-xs-12 container"}>
+                  <div className = " text-center"> U.S. Small Business Administration</div>
+                  <div className = " text-center"> 409 3rd St, SW. Washington DC 20416</div>
               </div>
           </div>
       </footer>
