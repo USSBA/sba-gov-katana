@@ -14,8 +14,8 @@
 
 .linkSubject {
   padding-left: 0px;
-  padding-right: 5px;
-  padding-bottom: 30px;
+  padding-right: 7px;
+  padding-bottom: 60px;
 
 }
 
@@ -54,6 +54,16 @@
 .social{
   padding: 0;
   margin: 0;
+}
+
+.social div{
+  padding: 0;
+}
+
+.social div a img{
+  padding: 0;
+  width: 30px;
+  height: 30px;
 }
 
 .address {
