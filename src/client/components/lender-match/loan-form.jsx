@@ -10,40 +10,40 @@ from 'redux';
 import * as LoanActions from '../../actions/loan-form.js';
 import Steps from 'react-steps';
 import _ from 'lodash';
+import {Panel, ButtonToolbar, Glyphicon} from 'react-bootstrap';
+import lenderMatchStyles from '../../styles/lender-match/lender-match.scss';
+import {browserHistory} from 'react-router';
+
+const BackButton = ({text}) =>
+    <ButtonToolbar>
+        <button type="button" className={lenderMatchStyles.backBtn + " btn btn-default btn-sm pull-left"} onClick={browserHistory.goBack}>
+            <Glyphicon glyph="chevron-left" /> {text}
+        </button>
+    </ButtonToolbar>;
 
 class LoanForm extends React.Component {
+    getBackButtonText(locationIndex){
+        return locationIndex === 0? "Exit" : "Back";
+    }
     render() {
-        // TODO: refactor this to be more extensible
         let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review']; // TODO make this static or configuration
         let page = this.props.location.replace('/form/', '');
         let locationIndex = _.indexOf(pages, page);
-        let data = [{
-            text: "Contact",
-            isActive: locationIndex === 0,
-            isDone: locationIndex > 0
-        }, {
-            text: "Business",
-            isActive: locationIndex === 1,
-            isDone: locationIndex > 1
-        }, {
-            text: "Industry",
-            isActive: locationIndex === 2,
-            isDone: locationIndex > 2
-        },{
-            text: "Loan",
-            isActive: locationIndex === 3,
-            isDone: locationIndex > 3
-        }, {
-            text: "Additional",
-            isActive: locationIndex === 4,
-            isDone: locationIndex > 4
-        }];
+        let data = _.chain(pages).slice(0,5).map(function(item, index){
+            return {
+                text: _.startCase(item),
+                isActive: locationIndex === index,
+                isDone: locationIndex > index
+            };
+        }).value();
+        let backButton = locationIndex === 5? "" : (<BackButton text={this.getBackButtonText(locationIndex)} />);
         return (
             <div>
                 <Steps items={data} type={'point'}/>
+                {backButton}
                 {this.props.children}
             </div>
-        );
+            );
     };
 }
 
@@ -58,8 +58,4 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(LoanActions, dispatch)
     }
 }
-
-export default connect(
-    mapReduxStateToProps,
-    mapDispatchToProps
-)(LoanForm);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(LoanForm);
