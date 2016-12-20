@@ -16,21 +16,13 @@ var connectionOptions = {
     debug: true
 };
 
-// var connectionOptions = {
-//     transport: 'ses',
-//     accessKeyId: config.get("email.username"),
-//     secretAccessKey: config.get('email.password')
-// };
-console.log(connectionOptions);
-
 var transporter = nodemailer.createTransport(connectionOptions);
 
 function sendConfirmationEmail(to, confirmationLink) {
-    console.log();
     return new Promise((resolve, reject) => {
         // setup e - mail data with unicode symbols
         var mailOptions = {
-            from: '"Small Business Administration" <answerdesk@sba.gov>',
+            from: config.get('email.sender'),
             to: to,
             subject: 'LenderMatch Confirmation Email',
             text: "Thank you for applying to LenderMatch! Please visit the link below to confirm your email: " + confirmationLink,
@@ -38,7 +30,6 @@ function sendConfirmationEmail(to, confirmationLink) {
                 confirmationLink: confirmationLink
             })
         };
-        console.log(mailOptions);
         // send mail with defined transport object
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
