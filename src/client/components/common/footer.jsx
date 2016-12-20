@@ -119,7 +119,7 @@ class Footer extends React.Component{
               <a className = " col-xs-4 col-xs-offset-2" href="https://es.sba.gov/">SBA En Español</a>
 
           </div>
-          <div className = " hidden-xl hidden-lg hidden-md container">
+          <div className = " hidden-xl hidden-lg hidden-md container " aria-hidden="true">
               <div className = {styles.socialSmall + " col-xs-12 container"}>
                   <div className = " col-xs-2 col-xs-offset-2 text-left">
                       <a href="https://www.facebook.com/SBAgov">
