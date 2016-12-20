@@ -38,7 +38,7 @@ class LoanForm extends React.Component {
         }).value();
         let backButton = locationIndex === 5? "" : (<BackButton text={this.getBackButtonText(locationIndex)} />);
         return (
-            <div>
+            <div className= " container-fluid">
                 <Steps items={data} type={'point'}/>
                 {backButton}
                 {this.props.children}
