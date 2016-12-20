@@ -13,6 +13,7 @@ import _ from 'lodash';
 import {Panel, ButtonToolbar, Glyphicon} from 'react-bootstrap';
 import lenderMatchStyles from '../../styles/lender-match/lender-match.scss';
 import {browserHistory} from 'react-router';
+import styles from '../common/styles.scss';
 
 const BackButton = ({text}) =>
     <ButtonToolbar>
@@ -38,10 +39,12 @@ class LoanForm extends React.Component {
         }).value();
         let backButton = locationIndex === 5? "" : (<BackButton text={this.getBackButtonText(locationIndex)} />);
         return (
-            <div className= " container-fluid">
+            <div className= "container-fluid">
                 <Steps items={data} type={'point'}/>
-                {backButton}
-                {this.props.children}
+                <Panel className={"col-xs-12 col-md-6 col-md-offset-3 "+styles.formPanel}>
+                    {backButton}
+                    {this.props.children}
+                </Panel>
             </div>
             );
     };
