@@ -2,10 +2,15 @@ import React from 'react';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
 import {HelpMeBtn} from './help-me-btn.jsx'
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
+import findLendersImage from "../../../../public/assets/images/lender-match/lendermatch-hero.jpg"
+
 
 export const FindLendersIntro = (props) =>
-    <div className = {styles.parentContainer}>
-        <GreenFindLendersSection />
+    <div className=" container-fluid">
+        <div className = {styles.parentContainer + " col-md-12"}>
+            <GreenFindLendersSection />
+            <FindLendersImage />
+        </div>
     </div>
 
 
@@ -25,4 +30,9 @@ export const GreenFindLendersSection = (props) =>
                 <FindLendersBtn/>
             </div>
         </div>
+    </div>
+
+export const FindLendersImage = (props) =>
+    <div className = {styles.imageContainer}>
+        <img src={ findLendersImage } alt="Match with lenders" width="947" height="646"/>
     </div>

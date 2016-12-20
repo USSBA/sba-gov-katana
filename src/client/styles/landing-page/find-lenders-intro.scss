@@ -1,41 +1,53 @@
 .parentContainer{
-  //postition: relative;
-  //width: 25em;
-  //padding-bottom: 25em;
-  //float: left;
-  //height: 0;
-}
-
-.childContainer{
-  //width: 100em;
-  //height: 100em;
-  //position: absolute;
+  width: 100%;
+  height: 46vw;
+  border: 1px solid blue;
+  display: flex;
+  jutify-content: center;
+  padding: 0;
 }
 
 .greenBox{
-  width: 53vw;
-  height: 49vw;
+  width: 38vw;
+  height: 35vw;
   background-color: #609F00;
-
+  border: 1px solid red;
+  align-self: center;
+  position: absolute;
+  margin-left: 8.4vw;
 }
 
 .title{
   color: #FFFFFF;
-  width: 45vw;
-  font-size: 7.32vw;
+  width: 32vw; //////
+  font-size: 5.2vw;
+  line-height: 5.2vw;
   font-weight: bold;
-  line-height: 7.32vw;
   margin: 0 auto;
-  padding-top: 8.3vw;
+  padding-top: 2.2vw;
+  border: 1px solid black;
 }
 
 .subTitle{
   color: #FFFFFF;
   font-family: Merriweather;
   font-style: italic;
-  font-size: 2.1vw;
+  font-size: 1.5vw;
+  line-height: 1.8vw;
   font-weight: lighter;
-  width: 45vw;
+  width: 32vw;
   margin: 0 auto;
-  padding-top: 3vw;
+  padding-top: 2.2vw;
+}
+
+.imageContainer{
+  align-self: center;
+  margin-right: 8.4vw;
+  margin-left: auto;
+}
+
+.imageContainer img{
+  max-width: 100%;
+  height: auto;
+  border: 1px solid yellow;
 }
