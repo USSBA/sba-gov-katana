@@ -33,6 +33,8 @@ const history = syncHistoryWithStore(browserHistory, store);
 import '../styles/common.css';
 import '../styles/common.scss';
 
+import '../../../public/assets/fonts/Source_Sans_Pro/sourceSansPro.scss';
+
 ReactDOM.render(
     (<Provider store={store}>
       <Router history={history}>
