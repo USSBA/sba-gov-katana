@@ -48,7 +48,7 @@ app.get('*', function(req, res) {
 });
 
 import matchController from 'match-controller.js';
-app.post('/matchFormData', jsonParser, lenderMatchController.matchController);
+app.post('/matchFormData', jsonParser, matchController.matchController);
 
 import confirmationController from 'confirmation-controller';
 app.get('confirmEmail', confirmationController.confirmEmail);
