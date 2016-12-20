@@ -1,2 +1,6 @@
 server:
     port: 3000
+email:
+    hostname: overrideInHostnameYaml
+    username: overrideInHostnameYaml
+    password: overrideInHostnameYaml
