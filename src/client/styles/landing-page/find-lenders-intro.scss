@@ -1,0 +1,41 @@
+.parentContainer{
+  //postition: relative;
+  //width: 25em;
+  //padding-bottom: 25em;
+  //float: left;
+  //height: 0;
+}
+
+.childContainer{
+  //width: 100em;
+  //height: 100em;
+  //position: absolute;
+}
+
+.greenBox{
+  width: 53vw;
+  height: 49vw;
+  background-color: #609F00;
+
+}
+
+.title{
+  color: #FFFFFF;
+  width: 45vw;
+  font-size: 7.32vw;
+  font-weight: bold;
+  line-height: 7.32vw;
+  margin: 0 auto;
+  padding-top: 8.3vw;
+}
+
+.subTitle{
+  color: #FFFFFF;
+  font-family: Merriweather;
+  font-style: italic;
+  font-size: 2.1vw;
+  font-weight: lighter;
+  width: 45vw;
+  margin: 0 auto;
+  padding-top: 3vw;
+}
