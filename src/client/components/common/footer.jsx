@@ -5,8 +5,6 @@ import facebookThumbnail from "../../../../public/assets/images/footer/facebook.
 import twitterThumbnail from "../../../../public/assets/images/footer/twitter.png"
 import googlePlusThumbnail from "../../../../public/assets/images/footer/googleplus.png"
 import youtubeThumbnail from "../../../../public/assets/images/footer/youtube-play.png"
-import rssThumbnail from "../../../../public/assets/images/footer/rss.png"
-
 
 class Footer extends React.Component{
     render(){
