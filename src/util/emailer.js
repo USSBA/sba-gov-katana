@@ -3,7 +3,6 @@ import pug from 'pug';
 import config from 'config';
 import Promise from 'bluebird';
 import path from 'path';
-
 var connectionOptions = {
     secure: true,
     port: 465,
@@ -15,7 +14,6 @@ var connectionOptions = {
     logger: true,
     debug: true
 };
-
 var transporter = nodemailer.createTransport(connectionOptions);
 
 function sendConfirmationEmail(to, confirmationLink) {
@@ -30,15 +28,21 @@ function sendConfirmationEmail(to, confirmationLink) {
                 confirmationLink: confirmationLink
             })
         };
-        // send mail with defined transport object
-        transporter.sendMail(mailOptions, function(error, info) {
-            if (error) {
-                reject(error);
-            }
-            else {
-                return resolve(info);
-            }
-        });
+        if (config.get("debugEmailOnly")) {
+            console.log("Email sender would have sent:" + JSON.stringify(mailOptions, 0, 4));
+            resolve();
+        }
+        else {
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, function(error, info) {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    return resolve(info);
+                }
+            });
+        }
     });
 }
 export {

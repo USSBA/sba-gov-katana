@@ -1,95 +1,86 @@
-function handleLenderMatchSubmission(req, res){
-    console.log(req.body);
-    //required fields
-    //contactInfoData.contactFullName
-    //contactInfoData.contactPhoneNumber
-    //contactInfoData.contactEmailAddress
-    //businessInfoData.businessInfoName
-    //businessInfoData.businessInfoZipcode
-    //industryInfoData.industryType
-    //additionalInfoData.industryExp
-    //loanData.loanAmount
-    //loanData.loanDescription
+import emailer from '../util/emailer.js';
+import uuid from 'uuid';
+import moment from 'moment';
+import config from 'config';
+import * as emailConfirmationDao from '../models/dao/email-confirmation.js';
 
-
-
-    if(("contactSecondaryEmailAddress" in req.body.contactInfoData)){
+function handleLenderMatchSubmission(req, res, next) {
+    if (("contactSecondaryEmailAddress" in req.body.contactInfoData)) {
         console.log('honeypot form element was filled.  This was probably submitted by a bot.');
-
     }
-    if(!("contactFullName" in req.body.contactInfoData)){
-        //res.statusCode = 406;
-        //res.statusText = "Contact Full Name is required.";
-        //res.status(406).send({error: "Contact Full Name is required."});
-        //res.status(406).send('Contact Full Name is required.');
-        //res.send("Contact Full Name is required.");
-        //err.message = "Contact Full Name is required.";
-        //res.status(406).json({message: 'Contact Full Name is required.'});
-        //res.writeHead(406, 'Contact Full Name is required.', {'content-type' : 'text/plain'});
-        //res.end("Contact Full Name is required.");
-        console.log("Error: Contact Full Name is required.");
-        var err = new Error("Contact Full Name is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-
-        //return next(err);
+    let errors = [];
+    if (!("contactFullName" in req.body.contactInfoData)) {
+        errors.push("Contact Full Name is required.");
     }
-    if(!("contactPhoneNumber" in req.body.contactInfoData)){
-        console.log("Error: Contact Phone Number is required.");
-        var err = new Error("Contact Phone Number is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("contactPhoneNumber" in req.body.contactInfoData)) {
+        errors.push("Contact Phone Number is required.");
     }
-    if(!("contactEmailAddress" in req.body.contactInfoData)){
-        console.log("Error: Contact Email Address is required.");
-        var err = new Error("Contact Email Address is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("contactEmailAddress" in req.body.contactInfoData)) {
+        errors.push("Error: Contact Email Address is required.");
     }
-    if(!("businessInfoName" in req.body.businessInfoData)){
-        console.log("Error: Business Name is required.");
-        var err = new Error("Business Name is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("businessInfoName" in req.body.businessInfoData)) {
+        errors.push("Error: Business Name is required.");
     }
-    if(!("businessInfoZipcode" in req.body.businessInfoData)){
-        console.log("Error: Business Zip Code is required.");
-        var err = new Error("Business Zip Code is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("businessInfoZipcode" in req.body.businessInfoData)) {
+        errors.push("Error: Business Zip Code is required.");
     }
-    if(!("industryType" in req.body.industryInfoData)){
-        console.log("Error: Industry Type is required.");
-        var err = new Error("Industry Type is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("industryType" in req.body.industryInfoData)) {
+        errors.push("Error: Industry Type is required.");
     }
-    if(!("industryExperience" in req.body.industryInfoData)){
-        console.log("Error: Industry Experience is required.");
-        var err = new Error("Industry Experience is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("industryExperience" in req.body.industryInfoData)) {
+        errors.push("Error: Industry Experience is required.");
     }
-    if(!("loanAmount" in req.body.loanData)){
-        console.log("Error: Loan Amount is required.");
-        var err = new Error("Loan Amount is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("loanAmount" in req.body.loanData)) {
+        errors.push("Error: Loan Amount is required.");
     }
-    if(!("loanDescription" in req.body.loanData)){
-        console.log("Error: Loan Description is required.");
-        var err = new Error("Loan Description is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
+    if (!("loanDescription" in req.body.loanData)) {
+        errors.push("Error: Loan Description is required.");
     }
-    res.send("Data received successfully.");
+    if (errors.length === 0) {
+        saveFormSubmission(req.body)
+        .then(function(){
+            sendConfirmationEmail(req.body.contactEmailAddress).then(function() {
+                res.status(204).send();
+            });
+        });
+    }
+    else {
+        res.status(406).send("Error during validation: " + errors.join(","));
+    }
 }
+
+function handleEmailConfirmation(req, res, next) {
+    if (!("token" in req.query)) {
+        res.render('invalid-email-confirmation-token');
+    }
+    else {
+        let emailConfirmationRecord = emailConfirmationDao.retrieve(req.query.token);
+        if (emailConfirmationRecord && moment(emailConfirmationRecord.expiration).isBeforeNow()) {
+            emailConfirmationRecord.confirmed = moment().unix();
+            emailConfirmationDao.update(emailConfirmationRecord);
+            // AYO submit OCA request here
+            res.status(204).send();
+        }
+        else {
+            res.render('invalid-email-confirmation-token');
+        }
+    }
+};
+export {
+    handleLenderMatchSubmission,
+    handleEmailConfirmation
+};
+
+function sendConfirmationEmail(emailAddress) {
+    let newToken = uuid.v4();
+    let link = config.get("linc.confirmationBase") + "/linc/confirmEmail?token="+newToken;
+    let newEmailConfirmationRecord ={
+      sent: moment().unix(),
+      token: newToken,
+      email: emailAddress
+    };
+    // save token and data to database to database
+    return emailer.sendConfirmationEmail(emailAddress, link)
+        .then()
+}
+

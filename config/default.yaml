@@ -6,3 +6,5 @@ email:
     hostname: overrideInHostnameYaml
     username: overrideInHostnameYaml
     password: overrideInHostnameYaml
+linc:
+    confirmationEmailBase: "http://ec2-52-23-225-150.compute-1.amazonaws.com/"
