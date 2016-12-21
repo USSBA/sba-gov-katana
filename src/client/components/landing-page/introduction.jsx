@@ -39,15 +39,6 @@ export const Introduction = (props) =>
                         </Col>
                     </Row>
 
-                    <Row style={{marginTop: "80px", marginBottom: "60px"}}>
-                        <Col xs={3} xsOffset={2} lg={2} lgOffset={3}>
-                            <HelpMeBtn/>
-                        </Col>
-                        <Col xs={3} xsOffset={2} lg={2} lgOffset={2}>
-                            <FindLendersBtn/>
-                        </Col>
-                    </Row>
-
                 </Col>
             </Row>;
 

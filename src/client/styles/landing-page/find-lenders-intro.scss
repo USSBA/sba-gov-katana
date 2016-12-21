@@ -54,10 +54,11 @@
 }
 
 .btnContainer{
-  
+  padding-top: 2.22vw;
 }
 
 .tellMeHowBtn {
+  margin-left: .76vw;
   border: 2px solid #FFFFFF;
   border-radius: 0;
   background-color: #609F00;
@@ -67,9 +68,24 @@
   font-size: 1.25vw;
   font-weight: bold;
   text-align: center;
+  padding: 0;
 }
 
-.findLendersBtn{
+.tellMeHowBtn:hover {
+  background-color: rgba(255,255,255,0.3);;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+}
+
+.tellMeHowBtn:active{
+  background-color: #FFFFFF !important;
+  border: 2px solid #FFFFFF !important;
+  color: #609F00 !important;
+  outline: none !important;
+}
+
+.findLendersWhiteBtn{
+  margin-left: 1.9vw;
   border: 2px solid #FFFFFF;
   border-radius: 0;
   background-color: #FFFFFF;
@@ -79,4 +95,18 @@
   font-size: 1.25vw;
   font-weight: bold;
   text-align: center;
+  padding: 0;
+}
+
+.findLendersWhiteBtn:hover{
+  background-color: rgba(255,255,255,0.8);
+  color: #609F00;
+  border: 2px solid rgba(255,255,255,0.8);
+}
+
+.findLendersWhiteBtn:active{
+  background-color: rgba(255,255,255,0.6) !important;
+  color: #609F00 !important;
+  border: 2px solid rgba(255,255,255,0.6) !important;
+  outline: none !important;
 }

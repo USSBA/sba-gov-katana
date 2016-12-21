@@ -24,11 +24,11 @@ export const GreenFindLendersSection = (props) =>
             Lender Match (formerly LINC) is a free online referral tool that connects small business with participating SBA-approved lenders.
         </div>
         <div className = {styles.btnContainer + " container-fluid"}>
-            <div className = " col-sm-6">
+            <div className = " col-xs-4">
                 <HelpMeBtn />
             </div>
-            <div className=" col-sm-6">
-                <Button block className={styles.findLendersBtn} onClick={(e) => browserHistory.push('/form/contact')}>FIND LENDERS</Button>
+            <div className=" col-xs-4">
+                <Button block className={styles.findLendersWhiteBtn} onClick={(e) => browserHistory.push('/form/contact')}>FIND LENDERS</Button>
             </div>
         </div>
     </div>
