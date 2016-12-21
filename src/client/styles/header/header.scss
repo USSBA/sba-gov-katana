@@ -1,0 +1,49 @@
+
+
+.navbar {
+    border: 0;
+}
+
+.logo {
+    height: calc(2em + 4vw);
+    margin: 1em;
+}
+
+.miniNavItem > a {
+    font-size: 0.9em;
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+
+.mainNavItem > a {
+    position: relative;
+    vertical-align: middle;
+    height: 2.6em;
+    color: #0B97DD !important;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+
+
+.triangle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height:0px;
+    width: 0px;
+    border-bottom: 10px solid #0B97DD;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 0;
+    visibility: hidden;
+}
+
+
+
+.mainNavItem:hover .triangle {
+    visibility: visible;
+}
