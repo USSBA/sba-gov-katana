@@ -30,28 +30,13 @@ if (process.env.NODE_ENV === 'development') {
     app.use(require('webpack-hot-middleware')(compiler));
 }
 
-//app.use(sendError);
-
-function sendError(err,req, res){
-    var code = err.code;
-    var message = err.message;
-    res.writeHead(code, message, {'content-type': 'text/plain'});
-    res.end(message);
-    /*if(res.headersSent){
-        return next(err);
-    }
-    res.status(406).send({error: err});*/
-}
-
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     res.render('main');
 });
 
-import matchController from 'match-controller.js';
-app.post('/matchFormData', jsonParser, matchController.matchController);
-
-import confirmationController from 'confirmation-controller';
-app.get('confirmEmail', confirmationController.confirmEmail);
+import * as matchController from './controllers/match-controller.js';
+app.post('/matchFormData', jsonParser, matchController.handleLenderMatchSubmission);
+app.get('/linc/confirmEmail', matchController.handleEmailConfirmation);
 
 
 app.post('/matchLocalAssistants', jsonParser, function(req, res){
@@ -69,6 +54,30 @@ app.post('/matchLocalAssistants', jsonParser, function(req, res){
 
 app.post('/matchCounselors', jsonParser, function(req, res){
    console.log(req.body.zipcode)
+});
+
+
+// development error handler
+// will print stacktrace
+if (process.env.NODE_ENV === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: err
+    });
+  });
+
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 //listen to port

@@ -1,8 +1,9 @@
-import emailer from '../util/emailer.js';
+import {sendConfirmationEmail} from '../util/emailer.js';
 import uuid from 'uuid';
 import moment from 'moment';
 import config from 'config';
 import * as emailConfirmationDao from '../models/dao/email-confirmation.js';
+import * as lenderMatchRecordDao from '../models/dao/lender-match-record.js';
 
 function handleLenderMatchSubmission(req, res, next) {
     if (("contactSecondaryEmailAddress" in req.body.contactInfoData)) {
@@ -37,11 +38,22 @@ function handleLenderMatchSubmission(req, res, next) {
         errors.push("Error: Loan Description is required.");
     }
     if (errors.length === 0) {
-        saveFormSubmission(req.body)
-        .then(function(){
-            sendConfirmationEmail(req.body.contactEmailAddress).then(function() {
-                res.status(204).send();
-            });
+        lenderMatchRecordDao
+        .create(req.body) // TODO: trim this to certain properties that are needed
+        .then(function(result){
+            return createConfirmationEmail(req.body.contactInfoData.contactEmailAddress)
+                .then(function(newToken){
+                    let newEmailConfirmationRecord ={
+                      sent: moment().unix(),
+                      expiration: moment().add(2, 'days').unix(),
+                      token: newToken,
+                      lenderMatchRecordId: result._id,
+                    };
+                    return emailConfirmationDao.create(newEmailConfirmationRecord)
+                        .then(function() {
+                            res.status(204).send();
+                        });
+                });
         });
     }
     else {
@@ -54,33 +66,35 @@ function handleEmailConfirmation(req, res, next) {
         res.render('invalid-email-confirmation-token');
     }
     else {
-        let emailConfirmationRecord = emailConfirmationDao.retrieve(req.query.token);
-        if (emailConfirmationRecord && moment(emailConfirmationRecord.expiration).isBeforeNow()) {
-            emailConfirmationRecord.confirmed = moment().unix();
-            emailConfirmationDao.update(emailConfirmationRecord);
-            // AYO submit OCA request here
-            res.status(204).send();
-        }
-        else {
-            res.render('invalid-email-confirmation-token');
-        }
+        emailConfirmationDao.retrieve(req.query.token)
+        .then(function(emailConfirmationRecord){
+            if (emailConfirmationRecord && moment(emailConfirmationRecord.expiration).isBefore()) {
+                emailConfirmationRecord.confirmed = moment().unix();
+                emailConfirmationDao.update(emailConfirmationRecord)
+                .then(function(){
+                    // AYO submit OCA request here
+                    res.render('email-confirmed');
+                });
+            }
+            else {
+                res.render('invalid-email-confirmation-token');
+            }
+        });
     }
 };
+
+
+function createConfirmationEmail(emailAddress) {
+    let newToken = uuid.v4();
+    let link = config.get("linc.confirmationEmailBase") + "/linc/confirmEmail?token="+newToken;
+    return sendConfirmationEmail(emailAddress, link)
+        .then(function(){
+            return newToken;
+        })
+}
+
+
 export {
     handleLenderMatchSubmission,
     handleEmailConfirmation
 };
-
-function sendConfirmationEmail(emailAddress) {
-    let newToken = uuid.v4();
-    let link = config.get("linc.confirmationBase") + "/linc/confirmEmail?token="+newToken;
-    let newEmailConfirmationRecord ={
-      sent: moment().unix(),
-      token: newToken,
-      email: emailAddress
-    };
-    // save token and data to database to database
-    return emailer.sendConfirmationEmail(emailAddress, link)
-        .then()
-}
-

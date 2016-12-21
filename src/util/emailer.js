@@ -28,7 +28,7 @@ function sendConfirmationEmail(to, confirmationLink) {
                 confirmationLink: confirmationLink
             })
         };
-        if (config.get("debugEmailOnly")) {
+        if (config.get("email.debugEmailOnly")) {
             console.log("Email sender would have sent:" + JSON.stringify(mailOptions, 0, 4));
             resolve();
         }
