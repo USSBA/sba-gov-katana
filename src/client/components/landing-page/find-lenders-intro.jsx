@@ -8,8 +8,8 @@ import findLendersImage from '../../../../public/assets/images/lender-match/lend
 
 
 export const FindLendersIntro = (props) =>
-    <div className=" container-fluid">
-        <div className = {styles.parentContainer + " col-md-12"}>
+    <div className= " row">
+        <div className = {styles.parentContainer + " col-xs-12 nopadding"}>
             <GreenFindLendersSection />
             <FindLendersImage />
         </div>
@@ -25,10 +25,10 @@ export const GreenFindLendersSection = (props) =>
             Lender Match (formerly LINC) is a free online referral tool that connects small business with participating SBA-approved lenders.
         </div>
         <div className = {styles.btnContainer + " container-fluid"}>
-            <div className = " col-xs-4 nopadding">
+            <div className = " col-sm-4 col-xs-12 nopadding">
                 <HelpMeBtn />
             </div>
-            <div className=" col-xs-4 nopadding">
+            <div className=" col-sm-4 col-xs-12 nopadding">
                 <Button block className={styles.findLendersWhiteBtn} onClick={(e) => browserHistory.push('/form/contact')}>FIND LENDERS</Button>
             </div>
         </div>
