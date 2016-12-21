@@ -1,0 +1,3 @@
+email:
+    debugEmailOnly: true
+    sender: '"SBA.gov Team" <sbagov@fearless.tech>'

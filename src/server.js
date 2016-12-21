@@ -30,118 +30,14 @@ if (process.env.NODE_ENV === 'development') {
     app.use(require('webpack-hot-middleware')(compiler));
 }
 
-//app.use(sendError);
-
-function sendError(err,req, res){
-    var code = err.code;
-    var message = err.message;
-    res.writeHead(code, message, {'content-type': 'text/plain'});
-    res.end(message);
-    /*if(res.headersSent){
-        return next(err);
-    }
-    res.status(406).send({error: err});*/
-}
-
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     res.render('main');
 });
 
-app.post('/matchFormData', jsonParser, function(req, res){
-    console.log(req.body);
-    //required fields
-    //contactInfoData.contactFullName
-    //contactInfoData.contactPhoneNumber
-    //contactInfoData.contactEmailAddress
-    //businessInfoData.businessInfoName
-    //businessInfoData.businessInfoZipcode
-    //industryInfoData.industryType
-    //additionalInfoData.industryExp
-    //loanData.loanAmount
-    //loanData.loanDescription
+import * as matchController from './controllers/match-controller.js';
+app.post('/matchFormData', jsonParser, matchController.handleLenderMatchSubmission);
+app.get('/linc/confirmEmail', matchController.handleEmailConfirmation);
 
-
-
-    if(("contactSecondaryEmailAddress" in req.body.contactInfoData)){
-        console.log('honeypot form element was filled.  This was probably submitted by a bot.');
-
-    }
-    if(!("contactFullName" in req.body.contactInfoData)){
-        //res.statusCode = 406;
-        //res.statusText = "Contact Full Name is required.";
-        //res.status(406).send({error: "Contact Full Name is required."});
-        //res.status(406).send('Contact Full Name is required.');
-        //res.send("Contact Full Name is required.");
-        //err.message = "Contact Full Name is required.";
-        //res.status(406).json({message: 'Contact Full Name is required.'});
-        //res.writeHead(406, 'Contact Full Name is required.', {'content-type' : 'text/plain'});
-        //res.end("Contact Full Name is required.");
-        console.log("Error: Contact Full Name is required.");
-        var err = new Error("Contact Full Name is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-
-        //return next(err);
-    }
-    if(!("contactPhoneNumber" in req.body.contactInfoData)){
-        console.log("Error: Contact Phone Number is required.");
-        var err = new Error("Contact Phone Number is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("contactEmailAddress" in req.body.contactInfoData)){
-        console.log("Error: Contact Email Address is required.");
-        var err = new Error("Contact Email Address is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("businessInfoName" in req.body.businessInfoData)){
-        console.log("Error: Business Name is required.");
-        var err = new Error("Business Name is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("businessInfoZipcode" in req.body.businessInfoData)){
-        console.log("Error: Business Zip Code is required.");
-        var err = new Error("Business Zip Code is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("industryType" in req.body.industryInfoData)){
-        console.log("Error: Industry Type is required.");
-        var err = new Error("Industry Type is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("industryExperience" in req.body.industryInfoData)){
-        console.log("Error: Industry Experience is required.");
-        var err = new Error("Industry Experience is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("loanAmount" in req.body.loanData)){
-        console.log("Error: Loan Amount is required.");
-        var err = new Error("Loan Amount is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    if(!("loanDescription" in req.body.loanData)){
-        console.log("Error: Loan Description is required.");
-        var err = new Error("Loan Description is required.");
-        err.code = 406;
-        sendError(err, req, res);
-        return;
-    }
-    res.send("Data received successfully.");
-});
 
 app.post('/matchLocalAssistants', jsonParser, function(req, res){
     let zipStr = "zip:" + req.body.zipcode + ":distance:50";
@@ -158,6 +54,30 @@ app.post('/matchLocalAssistants', jsonParser, function(req, res){
 
 app.post('/matchCounselors', jsonParser, function(req, res){
    console.log(req.body.zipcode)
+});
+
+
+// development error handler
+// will print stacktrace
+if (process.env.NODE_ENV === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: err
+    });
+  });
+
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
 //listen to port
