@@ -1,5 +1,4 @@
 .parentContainer{
-  //max-width: 1440px;
   width: 100%;
   height: 44.8vw;
   padding: 0;
@@ -54,11 +53,18 @@
 }
 
 .btnContainer{
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 2.22vw;
+  width: 32vw;
+  margin: 0 auto;
+}
+
+.btnContainer div{
+  padding: 0;
 }
 
 .tellMeHowBtn {
-  margin-left: .76vw;
   border: 2px solid #FFFFFF;
   border-radius: 0;
   background-color: #609F00;
@@ -77,15 +83,16 @@
   border: 2px solid #FFFFFF;
 }
 
-.tellMeHowBtn:active{
+.tellMeHowBtn:active, .tellMeHowBtn:focus{
   background-color: #FFFFFF !important;
   border: 2px solid #FFFFFF !important;
   color: #609F00 !important;
   outline: none !important;
+  box-shadow: none !important;
 }
 
 .findLendersWhiteBtn{
-  margin-left: 1.9vw;
+  margin-left: 2.5vw;
   border: 2px solid #FFFFFF;
   border-radius: 0;
   background-color: #FFFFFF;
@@ -104,9 +111,10 @@
   border: 2px solid rgba(255,255,255,0.8);
 }
 
-.findLendersWhiteBtn:active{
+.findLendersWhiteBtn:active, .findLendersWhiteBtn:focus{
   background-color: rgba(255,255,255,0.6) !important;
   color: #609F00 !important;
   border: 2px solid rgba(255,255,255,0.6) !important;
   outline: none !important;
+  box-shadow: none !important;
 }

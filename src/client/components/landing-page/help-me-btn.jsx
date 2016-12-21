@@ -12,14 +12,12 @@ export class HelpMeBtn extends React.Component {
 
     render(){
         return(
-            <div>
-                <Button block
-                        className={ styles.tellMeHowBtn }
-                        onClick={this.scroll.bind(this)}
-                >
-                    TELL ME HOW
-                </Button>
-            </div>
+            <Button block
+                    className={ styles.tellMeHowBtn }
+                    onClick={this.scroll.bind(this)}
+            >
+                TELL ME HOW
+            </Button>
         )
     }
 }
