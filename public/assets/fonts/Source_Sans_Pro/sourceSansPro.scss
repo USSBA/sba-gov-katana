@@ -22,6 +22,20 @@
   font-style: normal;
 }
 
+@font-face{
+  font-family: 'Source Sans Pro';
+  src: url('./italic/SourceSansPro-italic.eot');
+  src: url('./italic/SourceSansPro-italic.eot#iefix') format('embedded-opentype'),
+  url('./italic/SourceSansPro-italic.woff2') format('woff2'),
+  url('./italic/SourceSansPro-italic.woff') format('woff'),
+  url('./italic/SourceSansPro-italic.ttf') format('truetype'),
+  url('./italic/SourceSansPro-italic.svg#SourceSansPro') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+
+
 
 
 body {

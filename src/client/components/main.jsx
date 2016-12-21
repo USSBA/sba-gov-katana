@@ -34,6 +34,7 @@ import '../styles/common.css';
 import '../styles/common.scss';
 
 import '../../../public/assets/fonts/Source_Sans_Pro/sourceSansPro.scss';
+import '../../../public/assets/fonts/Merriweather/merriweather.scss';
 
 ReactDOM.render(
     (<Provider store={store}>

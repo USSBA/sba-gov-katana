@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Merriweather';
+  src: url('./regular/Merriweather-Regular.eot');
+  src: url('./regular/Merriweather-Regular.eot#iefix') format('embedded-opentype'),
+  url('./regular/Merriweather-Regular.woff2') format('woff2'),
+  url('./regular/Merriweather-Regular.woff') format('woff'),
+  url('./regular/Merriweather-Regular.ttf') format('truetype'),
+  url('./regular/Merriweather-Regular.svg#Merriweather') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Merriweather';
+  src: url('./italic/Merriweather-italic.eot');
+  src: url('./italic/Merriweather-italic.eot#iefix') format('embedded-opentype'),
+  url('./italic/Merriweather-italic.woff2') format('woff2'),
+  url('./italic/Merriweather-italic.woff') format('woff'),
+  url('./italic/Merriweather-italic.ttf') format('truetype'),
+  url('./italic/Merriweather-italic.svg#Merriweather') format('svg');
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face{
+  font-family: 'Merriweather';
+  src: url('./bold/Merriweather-bold.eot');
+  src: url('./bold/Merriweather-bold.eot#iefix') format('embedded-opentype'),
+  url('./bold/Merriweather-bold.woff2') format('woff2'),
+  url('./bold/Merriweather-bold.woff') format('woff'),
+  url('./bold/Merriweather-bold.ttf') format('truetype'),
+  url('./bold/Merriweather-bold.svg#Merriweather') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Merriweather';
+  src: url('./light-italic/Merriweather-Lightitalic.eot');
+  src: url('./light-italic/Merriweather-Lightitalic.eot#iefix') format('embedded-opentype'),
+  url('./light-italic/Merriweather-Lightitalic.woff2') format('woff2'),
+  url('./light-italic/Merriweather-Lightitalic.woff') format('woff'),
+  url('./light-italic/Merriweather-Lightitalic.ttf') format('truetype'),
+  url('./light-italic/Merriweather-Lightitalic.svg#Merriweather') format('svg');
+  font-weight: lighter;
+  font-style: italic;
+}
