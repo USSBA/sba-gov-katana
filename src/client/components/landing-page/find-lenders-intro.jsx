@@ -1,8 +1,9 @@
 import React from 'react';
 import {FindLendersBtn} from './find-lenders-btn.jsx'
 import {HelpMeBtn} from './help-me-btn.jsx'
+import {Button} from 'react-bootstrap'
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
-import findLendersImage from "../../../../public/assets/images/lender-match/lendermatch-hero.jpg"
+import findLendersImage from '../../../../public/assets/images/lender-match/lendermatch-hero.jpg'
 
 
 export const FindLendersIntro = (props) =>
@@ -22,12 +23,12 @@ export const GreenFindLendersSection = (props) =>
         <div className = {styles.subTitle}>
             Lender Match (formerly LINC) is a free online referral tool that connects small business with participating SBA-approved lenders.
         </div>
-        <div className = " container-fluid">
-            <div className = " col-md-6">
+        <div className = {styles.btnContainer + " container-fluid"}>
+            <div className = " col-sm-6">
                 <HelpMeBtn />
             </div>
-            <div className=" col-md-6">
-                <FindLendersBtn/>
+            <div className=" col-sm-6">
+                <Button block className={styles.findLendersBtn} onClick={(e) => browserHistory.push('/form/contact')}>FIND LENDERS</Button>
             </div>
         </div>
     </div>

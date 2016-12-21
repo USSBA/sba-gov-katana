@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../../styles/buttons.scss';
+// import styles from '../../styles/buttons.scss';
+import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import {Button } from 'react-bootstrap'
 
 export class HelpMeBtn extends React.Component {
@@ -13,10 +14,10 @@ export class HelpMeBtn extends React.Component {
         return(
             <div>
                 <Button block
-                        className={ styles.helpBtn }
+                        className={ styles.tellMeHowBtn }
                         onClick={this.scroll.bind(this)}
                 >
-                    HELP ME GET READY
+                    TELL ME HOW
                 </Button>
             </div>
         )

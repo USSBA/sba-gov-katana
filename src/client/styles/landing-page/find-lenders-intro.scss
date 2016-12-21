@@ -1,24 +1,25 @@
 .parentContainer{
+  //max-width: 1440px;
   width: 100%;
-  height: 46vw;
-  border: 1px solid blue;
-  display: flex;
-  jutify-content: center;
+  height: 44.8vw;
   padding: 0;
 }
 
 .greenBox{
+  //max-width: 553px;
+  //max-height: 502px;
   width: 38vw;
   height: 35vw;
   background-color: #609F00;
-  align-self: center;
   position: absolute;
-  margin-left: 8.4vw;
+  margin: auto;
+  top: 0; left: 8.2vw; bottom: 0;
+  //margin-left: 8.2vw;
 }
 
 .title{
   color: #FFFFFF;
-  width: 32vw; //////
+  width: 32vw;
   font-size: 5.2vw;
   line-height: 5.2vw;
   font-weight: bold;
@@ -39,13 +40,43 @@
 }
 
 .imageContainer{
-  align-self: center;
-  margin-right: 8.4vw;
-  margin-left: auto;
+  postition: relative;
+
 }
 
 .imageContainer img{
-  max-width: 100%;
+  position: absolute;
+  right: 0;
+  margin-right: 8.2vw;
+  width: 65.7vw;
   height: auto;
-  border: 1px solid yellow;
+  z-index: -1;
+}
+
+.btnContainer{
+  
+}
+
+.tellMeHowBtn {
+  border: 2px solid #FFFFFF;
+  border-radius: 0;
+  background-color: #609F00;
+  color: #FFFFFF;
+  width: 11.24vw;
+  height: 3.33vw;
+  font-size: 1.25vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+.findLendersBtn{
+  border: 2px solid #FFFFFF;
+  border-radius: 0;
+  background-color: #FFFFFF;
+  color: #609F00;
+  width: 11.24vw;
+  height: 3.33vw;
+  font-size: 1.25vw;
+  font-weight: bold;
+  text-align: center;
 }
