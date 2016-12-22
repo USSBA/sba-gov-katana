@@ -1,3 +1,6 @@
+$primary-color: #609F00;
+
+
 //styles for DESKTOP
 @media screen and (min-width: 750px){
 
@@ -25,7 +28,7 @@
     //styles nav dropdown
     .navDropdown > a {
         height: 3.5em;
-        color: #0B97DD !important;
+        color: $primary-color !important;
         font-size: 1.3vw;
         font-weight: bold;
         margin-top: 1vw;
@@ -44,7 +47,7 @@
         margin: auto;
         height:0px;
         width: 0px;
-        border-bottom: 10px solid #0B97DD;
+        border-bottom: 10px solid $primary-color;
         border-right: 10px solid transparent;
         border-left: 10px solid transparent;
         border-top: 0;
@@ -67,7 +70,7 @@
     .mainNav > li > ul {
         min-width:60vw;
         width: 90vw;
-        border-top: solid #0B97DD;
+        border-top: solid $primary-color;
     }
 
     .mainNav > li:hover > ul {
@@ -81,7 +84,7 @@
     //styles the dropdown children
     .dropdownHeader {
         font-size: calc(0.7em + 0.5vw);
-        color: #0B97DD;
+        color: $primary-color;
     }
 
     .dropdownItem {
@@ -98,7 +101,7 @@
     }
 
     .dropdownItem > a:hover {
-        color: #0B97DD;
+        color: $primary-color;
     }
 
     .menuBtn {
