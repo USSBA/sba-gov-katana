@@ -1,89 +1,121 @@
-.navbar {
-    border: 0;
+//styles for DESKTOP
+@media screen and (min-width: 750px){
+
+    //styles entire navbar container
+    .navbar {
+        border: 0;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        background-color: white;
+    }
+
+    .logo {
+        height: calc(1em + 4.3vw);
+        margin: 1em;
+    }
+
+    //styles the small top nav
+    .miniNavItem > a {
+        font-size: calc(1.3vw - 2px);
+        margin-top: 1vw;
+        padding-top: 0.5em !important;
+        padding-bottom: 0.5em !important;
+    }
+
+    //styles nav dropdown
+    .navDropdown > a {
+        height: 3.5em;
+        color: #0B97DD !important;
+        font-size: 1.3vw;
+        font-weight: bold;
+        margin-top: 1vw;
+        padding-top: 0.5em !important;
+        padding-bottom: 0.5em !important;
+        padding-right: 1vw !important;
+        padding-left: 1vw !important;
+    }
+
+    //styles the lil triangle in nav dropdown
+    .navDropdown > a > span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        height:0px;
+        width: 0px;
+        border-bottom: 10px solid #0B97DD;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 0;
+        visibility: hidden;
+    }
+
+    .navDropdown:hover > a > span {
+        visibility: visible;
+    }
+
+    //styles the dropdown container
+    .mainNav {
+        float: right !important;
+    }
+
+    .mainNav > li {
+        position: static;
+    }
+
+    .mainNav > li > ul {
+        min-width:60vw;
+        width: 90vw;
+        border-top: solid #0B97DD;
+    }
+
+    .mainNav > li:hover > ul {
+        display: block;
+    }
+
+    .disabledDropdown:hover > ul {
+        display: none;
+    }
+
+    //styles the dropdown children
+    .dropdownHeader {
+        font-size: calc(0.7em + 0.5vw);
+        color: #0B97DD;
+    }
+
+    .dropdownItem {
+        margin-top: 1em !important;
+        margin-bottom: 1em !important;
+    }
+
+    .dropdownItem > a {
+        font-size: calc(0.5em + 0.5vw);
+        color: black;
+        outline: none !important;
+        background: none;
+        text-decoration: none;
+    }
+
+    .dropdownItem > a:hover {
+        color: #0B97DD;
+    }
+
+    .menuBtn {
+        visibility: hidden;
+    }
 }
 
-.hamburger {
-    margin-top: 12px;
-}
+//styles for MOBILE
+@media screen and (max-width: 750px){
+    //removes .pull-right in bootstrap
+    .mainNav {
+        float: none !important;
+    }
 
-.logo {
-    height: calc(1em + 4.3vw);
-    margin: 1em;
-}
 
-//styles the small top nav
-.miniNavItem > a {
-    font-size: calc(1.3vw - 2px);
-    margin-top: 1vw;
-    padding-top: 0.5em !important;
-    padding-bottom: 0.5em !important;
-}
 
-//styles nav dropdown
-.navDropdown > a {
-    height: 3.5em;
-    color: #0B97DD !important;
-    font-size: 1.3vw;
-    font-weight: bold;
-    margin-top: 1vw;
-    padding-top: 0.5em !important;
-    padding-bottom: 0.5em !important;
-    padding-right: 1vw !important;
-    padding-left: 1vw !important;
-}
 
-//styles the lil triangle in nav dropdown
-.navDropdown > a > span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    height:0px;
-    width: 0px;
-    border-bottom: 10px solid #0B97DD;
-    border-right: 10px solid transparent;
-    border-left: 10px solid transparent;
-    border-top: 0;
-    visibility: hidden;
-}
-
-.navDropdown:hover > a > span {
-    visibility: visible;
-}
-
-//styles the dropdown container
-.mainNav > li {
-    position: static;
-}
-
-.mainNav > li > ul {
-    min-width:60vw;
-    width: 80vw;
-    margin-left: 20vw;
-    border-top: solid #0B97DD;
-}
-
-.mainNav > li:hover > ul {
-    display: block;
-}
-
-//styles the dropdown children
-.dropdownHeader {
-    font-size: 1.2em;
-    color: #0B97DD;
-}
-
-.dropdownItem > a {
-    font-size: 1.1em;
-    color: black;
-    outline: none !important;
-    background: none;
-    text-decoration: none;
-}
-
-.dropdownItem > a:hover {
-    color: #0B97DD;
 }
 
 
