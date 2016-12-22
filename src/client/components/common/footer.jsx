@@ -107,7 +107,7 @@ class Footer extends React.Component{
                   <div className = " col-md-12 text-right">U.S. Small Business Administration   |   409 3rd St, SW. Washington DC 20416</div>
               </div>
           </div>
-          <div className = { styles.smallLinks + " hidden-xl hidden-lg hidden-md container"}>
+          <div className = { styles.smallLinks + " hidden-xl hidden-lg hidden-md container"} aria-hidden="true">
               <a className = " col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/what-we-do">What we do</a>
               <a className = " col-xs-4" href="https://www.sba.gov/about-sba/sba-team">SBA Team</a>
               <a className = " col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/sba-newsroom">SBA News Room</a>

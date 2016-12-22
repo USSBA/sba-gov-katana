@@ -13,7 +13,14 @@ This is for the development/build setup guide
 
 ## Development Process
 1. ~~`yarn` to install the dependencies~~ `npm install`
-2. `npm start` to run the server/hot-reloader
+2. Create config/local.yaml e.g.
+>    database:
+>        mongoConnectString: mongodb://localhost:27017/sba
+>    linc:
+>        confirmationEmailBase: "http://localhost:65097"
+>
+3. `npm start` to run the server/hot-reloader
+4. `./scripts/run-local-mongo.sh` to execute a local mongo
 
 
 ## Build Process
