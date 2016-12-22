@@ -12,6 +12,13 @@ $primary-color: #609F00;
         background-color: white;
     }
 
+    //styles navbar header contents
+
+    .navbarHeader {
+        width: 19vw;
+        height: 8vw;
+    }
+
     .logo {
         height: calc(1em + 4.3vw);
         margin: 1em;
@@ -21,6 +28,8 @@ $primary-color: #609F00;
     .miniNavItem > a {
         font-size: calc(1.3vw - 2px);
         margin-top: 1vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
         padding-top: 0.5em !important;
         padding-bottom: 0.5em !important;
     }
@@ -104,6 +113,42 @@ $primary-color: #609F00;
         color: $primary-color;
     }
 
+    //styles for search bar
+
+    .searchNavItem > a {
+        font-size: calc(1.3vw - 2px);
+        margin-top: 1vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .searchBar {
+        margin: 0;
+        width: 180px;
+        vertical-align: middle;
+        border-left: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0px;
+    }
+
+    .searchBar:focus {
+        border:1px solid #ccc !important;
+        border-left: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .searchAddon {
+        background-color: white;
+        border-radius: 0px;
+        border-right: solid white;
+    }
+
+    .searchIcon {
+        vertical-align: middle;
+    }
+
     .menuBtn {
         visibility: hidden;
     }
@@ -115,6 +160,44 @@ $primary-color: #609F00;
     .mainNav {
         float: none !important;
     }
+
+    .navbar {
+        border: 0;
+        background-color: white;
+    }
+
+    .logo {
+        margin: 1em;
+        height: 10vw;
+    }
+
+    .menuBtn {
+        margin: 1em;
+        width: 24vw;
+        height: 10vw;
+        border: 2px solid $primary-color;
+        background-color: white;
+    }
+
+    .menuBtn:focus, .menuBtn:active {
+        outline: none !important;
+        background: none;
+    }
+
+    .menuBtnTxt {
+        font-size: 1em;
+        font-weight: bold;
+        margin-right: 1em;
+        vertical-align: middle;
+        color: $primary-color;
+    }
+
+    .hamburgerIcon {
+        font-size: 1.7em;
+        vertical-align: middle;
+        color: $primary-color;
+    }
+
 
 
 

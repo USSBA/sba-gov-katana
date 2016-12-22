@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, Button } from 'react-bootstrap';
+import {Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, Button, Glyphicon, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import styles from '../../styles/header/header.scss';
 import sbaLogo from '../../../../public/assets/svg/sba-logo.svg';
 
@@ -12,12 +12,13 @@ class Header extends React.Component {
         }
     }
 
-
     toggleNav(){
         this.setState({expanded: !this.state.expanded})
     }
 
-
+    toggleSearch(){
+        this.setState({search: !this.state.search})
+    }
 
     render() {
         return (
@@ -26,9 +27,10 @@ class Header extends React.Component {
 
                     <Navbar fluid={true} className={styles.navbar} expanded={this.state.expanded}>
 
-                        <Navbar.Header>
+                        <Navbar.Header className={styles.navbarHeader}>
                             <Image className={styles.logo} src={sbaLogo}/>
-                            <NavToggle  onClick={this.toggleNav.bind(this)}/>
+                            <NavToggle  onClick={this.toggleNav.bind(this)} expanded={this.state.expanded}/>
+
                         </Navbar.Header>
 
 
@@ -257,13 +259,71 @@ const MiniNav = (props) =>
             <NavItem className={styles.miniNavItem} eventKey={1} href="#">Contact Us</NavItem>
             <NavItem className={styles.miniNavItem} eventKey={1} href="#">Register</NavItem>
             <NavItem className={styles.miniNavItem} eventKey={1} href="#">Log In</NavItem>
-            <NavItem className={styles.miniNavItem} eventKey={1} href="#">Link</NavItem>
+            <Search/>
         </Nav>
     </Col>;
 
+export class Search extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            search: false,
+            value: ""
+        }
+    }
 
-const NavToggle = ({onClick, ...props}) =>
-            <button className={styles.menuBtn + " pull-right"} onClick={onClick} {...props}>Menu</button>;
+    toggleSearch(){
+        this.setState({search: !this.state.search})
+    }
+
+    search(e){
+        e.preventDefault();
+        let uri = encodeURI("https://www.sba.gov/tools/search-result-page?search=" + this.state.value);
+        document.location = uri
+    }
+
+    handleChange(e){
+        console.log(this.state.value)
+        this.setState({value: e.target.value})
+    }
+
+    render(){
+        return(
+            <NavItem className={!!this.state.search ? styles.searchNavItem : styles.miniNavItem }  eventKey={1} href="#">
+                {!!this.state.search ? (
+                    <form onSubmit={(e) => this.search(e)}  >
+                        <FormGroup className={styles.searchBar}>
+                            <InputGroup className={styles.searchBar}>
+                                <InputGroup.Addon className={styles.searchAddon}><Glyphicon className={styles.searchBarIcon} glyph="search"/></InputGroup.Addon>
+                                <FormControl onChange={(e) => this.handleChange(e)} className={styles.searchBar} type="text" placeholder="Search" />
+                            </InputGroup>
+                        </FormGroup>
+                    </form>
+                ) : (
+                    <Glyphicon className={styles.searchIcon} onClick={this.toggleSearch.bind(this)} glyph="search"/>
+                )}
+            </NavItem>
+        )
+    }
+}
+
+
+const NavToggle = ({expanded, onClick, ...props}) => {
+  if(expanded == false ) {
+      return <button className={styles.menuBtn + " pull-right"} onClick={onClick} {...props}>
+                <span className={styles.menuBtnTxt}>MENU</span>
+                <Glyphicon className={styles.hamburgerIcon} glyph="menu-hamburger"/>
+             </button>;
+  } else {
+      return <button className={styles.menuBtn + " pull-right"} onClick={onClick} {...props}>
+                <span className={styles.menuBtnTxt}>CLOSE</span>
+                <Glyphicon className={styles.hamburgerIcon} glyph="remove"/>
+            </button>;
+  }
+};
+
+
+
 
 
 
