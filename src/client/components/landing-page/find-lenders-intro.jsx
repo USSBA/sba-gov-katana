@@ -5,7 +5,7 @@ import {Button} from 'react-bootstrap'
 import { browserHistory } from 'react-router';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import findLendersImage from '../../../../public/assets/images/lender-match/lendermatch-hero.jpg'
-
+import cornerGraphic from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
 
 export const FindLendersIntro = (props) =>
     <div className= " row">
@@ -32,7 +32,9 @@ export const GreenFindLendersSection = (props) =>
                 <Button block className={styles.findLendersWhiteBtn} onClick={(e) => browserHistory.push('/form/contact')}>FIND LENDERS</Button>
             </div>
         </div>
+        <img src={ cornerGraphic } aria-hidden="true" width="166" height="166" />
     </div>
+
 
 export const FindLendersImage = (props) =>
     <div className = {styles.imageContainer}>

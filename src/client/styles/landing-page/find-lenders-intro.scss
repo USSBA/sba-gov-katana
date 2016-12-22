@@ -15,7 +15,17 @@
     position: absolute;
     margin: auto;
     top: 0; left: 8.2vw; bottom: 0;
+    z-index: -2;
     //margin-left: 8.2vw;
+  }
+
+  .greenBox img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 11.59vw;
+    width: 11.59vw;
+    z-index: -1;
   }
 
   .title{
@@ -51,7 +61,7 @@
     margin-right: 8.2vw;
     width: 65.7vw;
     height: auto;
-    z-index: -1;
+    z-index: -3;
   }
 
   .btnContainer{
@@ -140,6 +150,16 @@
     margin-left: 5vw;
     position: absolute;
     bottom: 0;
+    z-index: -2;
+  }
+
+  .greenBox img{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 25.86vw;
+    width: 25.86vw;
+    z-index: -1;
   }
 
   .title {
@@ -242,7 +262,7 @@
     width: auto;
     margin-right: auto;
     margin-left: auto;
-    z-index: -1;
+    z-index: -3;
   }
 
 }
