@@ -7,16 +7,12 @@
   }
 
   .greenBox{
-    //max-width: 553px;
-    //max-height: 502px;
     width: 38vw;
     height: 35vw;
     background-color: #609F00;
     position: absolute;
     margin: auto;
     top: 0; left: 8.2vw; bottom: 0;
-    z-index: -2;
-    //margin-left: 8.2vw;
   }
 
   .greenBox img{
@@ -25,7 +21,7 @@
     right: 0;
     height: 11.59vw;
     width: 11.59vw;
-    z-index: -1;
+
   }
 
   .title{
@@ -61,7 +57,7 @@
     margin-right: 8.2vw;
     width: 65.7vw;
     height: auto;
-    z-index: -3;
+    z-index: -1;
   }
 
   .btnContainer{
@@ -87,6 +83,8 @@
     font-weight: bold;
     text-align: center;
     padding: 0;
+    position: relative;
+
   }
 
   .tellMeHowBtn:hover {
@@ -150,7 +148,6 @@
     margin-left: 5vw;
     position: absolute;
     bottom: 0;
-    z-index: -2;
   }
 
   .greenBox img{
@@ -159,7 +156,6 @@
     right: 0;
     height: 25.86vw;
     width: 25.86vw;
-    z-index: -1;
   }
 
   .title {
@@ -262,7 +258,7 @@
     width: auto;
     margin-right: auto;
     margin-left: auto;
-    z-index: -3;
+    z-index: -1;
   }
 
 }

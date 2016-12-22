@@ -18,6 +18,7 @@ export const FindLendersIntro = (props) =>
 
 export const GreenFindLendersSection = (props) =>
     <div className = {styles.greenBox}>
+        <img src={ cornerGraphic } aria-hidden="true" width="166" height="166" />
         <div className = {styles.title}>
             Lender Match helps you find lenders.
         </div>
@@ -32,7 +33,7 @@ export const GreenFindLendersSection = (props) =>
                 <Button block className={styles.findLendersWhiteBtn} onClick={(e) => browserHistory.push('/form/contact')}>FIND LENDERS</Button>
             </div>
         </div>
-        <img src={ cornerGraphic } aria-hidden="true" width="166" height="166" />
+
     </div>
 
 

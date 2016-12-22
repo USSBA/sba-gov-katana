@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from '../../styles/buttons.scss';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import {Button } from 'react-bootstrap'
 
