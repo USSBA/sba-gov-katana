@@ -1,6 +1,6 @@
-export function reviewAnswers(additionalInfoData){
-    return {
-        type: "REVIEW_ANSWERS",
-        additionalInfoData: additionalInfoData
-    };
+export function reviewAnswers(additionalInfoData) {
+  return {
+    type: "REVIEW_ANSWERS",
+    additionalInfoData: additionalInfoData
+  };
 }

@@ -21,15 +21,15 @@ app.use(express.static("./public"));
 
 
 if (config.get("developmentOptions.webpack")) {
-    const webpack = require("webpack"); // eslint-disable-line global-require
-    const webpackConfig = require("../webpack.config"); // eslint-disable-line global-require
-    const compiler = webpack(webpackConfig);
-    app.use(require("webpack-dev-middleware")(compiler, { // eslint-disable-line global-require
-        publicPath: webpackConfig.output.publicPath,
-        noInfo: config.get("developmentOptions.webpack.silent")
-    }));
+  const webpack = require("webpack"); // eslint-disable-line global-require
+  const webpackConfig = require("../webpack.config"); // eslint-disable-line global-require
+  const compiler = webpack(webpackConfig);
+  app.use(require("webpack-dev-middleware")(compiler, { // eslint-disable-line global-require
+    publicPath: webpackConfig.output.publicPath,
+    noInfo: config.get("developmentOptions.webpack.silent")
+  }));
 
-    app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
+  app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
 }
 
 
@@ -38,49 +38,51 @@ app.post("/matchFormData", jsonParser, matchController.handleLenderMatchSubmissi
 app.get("/linc/confirmEmail", matchController.handleEmailConfirmation);
 
 
-app.post("/matchLocalAssistants", jsonParser, function(req, res){
-    const zipStr = "zip:" + req.body.zipcode + ":distance:50";
-    zlib.deflate(zipStr, function(err, buffer){
-        if(err) {
-            throw new Error(err);
-        }
-        const url = "https://www.sba.gov/tools/local-assistance/map/filter/";
-        const encodedUrl = url + buffer.toString("hex");
-        res.send({redirectTo: encodedUrl});
+app.post("/matchLocalAssistants", jsonParser, function(req, res) {
+  const zipStr = "zip:" + req.body.zipcode + ":distance:50";
+  zlib.deflate(zipStr, function(err, buffer) {
+    if (err) {
+      throw new Error(err);
+    }
+    const url = "https://www.sba.gov/tools/local-assistance/map/filter/";
+    const encodedUrl = url + buffer.toString("hex");
+    res.send({
+      redirectTo: encodedUrl
     });
+  });
 });
 
 
-app.post("/matchCounselors", jsonParser, function(req, res){
-    console.log(req.body.zipcode);
-    res.status(HttpStatus.NO_CONTENT).send();
+app.post("/matchCounselors", jsonParser, function(req, res) {
+  console.log(req.body.zipcode);
+  res.status(HttpStatus.NO_CONTENT).send();
 });
 
 app.get("*", function(req, res) {
-    res.render("main");
+  res.render("main");
 });
 
 // development error handler
 // will print stacktrace
 if (config.get("developmentOptions.webpack")) {
-    app.use(function(err, req, res) {
-        res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-        res.render("error", {
-            message: err.message,
-            error: err
-        });
+  app.use(function(err, req, res) {
+    res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+    res.render("error", {
+      message: err.message,
+      error: err
     });
+  });
 
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res) {
-    res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-    res.render("error", {
-        message: err.message,
-        error: {}
-    });
+  res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+  res.render("error", {
+    message: err.message,
+    error: {}
+  });
 });
 
 //listen to port

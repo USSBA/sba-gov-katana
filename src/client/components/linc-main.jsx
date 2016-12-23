@@ -4,13 +4,14 @@ import Footer from './common/footer.jsx';
 
 
 
-export default function LincMain({children}){
+export default function LincMain({children}) {
   return (
-      <div>
-          <Header />
-            {children}
-          <Footer />
-      </div>
-  );
-};
+    <div>
+      <Header />
+      { children }
+      <Footer />
+    </div>
+    );
+}
+;
 
