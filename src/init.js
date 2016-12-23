@@ -1,5 +1,4 @@
-import mongodb from './models/mongodb.js';
-import Promise from 'bluebird';
+import mongodb from "./models/mongodb.js";
 function init(){
     return mongodb.init();
 }

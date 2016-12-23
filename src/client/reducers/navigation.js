@@ -7,17 +7,10 @@ const navigationReducer = (state, action) => {
     } else if (action.type === "MOVE_TO_SEE_MATCHES") {
         return {
             currentPage: "successPage"
-        }
-    } else {
-        return state || {
-            currentPage: "landingPage"
         };
     }
-
+    return state || {
+        currentPage: "landingPage"
+    };
 };
-
-
 export default navigationReducer;
-
-
-

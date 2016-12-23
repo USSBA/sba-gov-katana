@@ -1,10 +1,10 @@
-import axios from 'axios';
-const qs = require('qs');
+import axios from "axios";
+const queryString = require("qs");
 
 export function matchFormData(reviewSubmitInfoData){
     console.log("JSON stringify: " + JSON.stringify(reviewSubmitInfoData));
     //console.log("querystring stringify: " + querystring.stringify(reviewSubmitInfoData));
-    console.log("qs stringify: " + qs.stringify(reviewSubmitInfoData));
+    console.log("qs stringify: " + queryString.stringify(reviewSubmitInfoData));
     return function(dispatch){
         dispatch({type: "MATCH_FORM_DATA_START"});
         console.log("Match Form Data being sent to the server.");
@@ -17,11 +17,17 @@ export function matchFormData(reviewSubmitInfoData){
                 }
             }*/)
             .then((response) => {
-                dispatch({type: "MATCH_FORM_DATA_SUCCESS", payload: response.data});
+                dispatch({
+                    type: "MATCH_FORM_DATA_SUCCESS",
+                    payload: response.data
+                });
                 console.log("SUCCESS: " + response.data);
             })
             .catch((error) => {
-                dispatch({type: "MATCH_FORM_DATA_ERROR", payload: error});
+                dispatch({
+                    type: "MATCH_FORM_DATA_ERROR",
+                    payload: error
+                });
                 console.log("ERROR: " + error);
             });
     };
