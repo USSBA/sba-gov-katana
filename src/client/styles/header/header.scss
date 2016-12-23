@@ -4,12 +4,23 @@ $primary-color: #609F00;
 //styles for DESKTOP
 @media screen and (min-width: 750px){
 
+    .mobileNav {
+        display: none;
+    }
+
     //styles entire navbar container
     .navbar {
         border: 0;
         margin-left: 5vw;
         margin-right: 5vw;
         background-color: white;
+    }
+
+    //styles navbar header contents
+
+    .navbarHeader {
+        width: 19vw;
+        height: 8vw;
     }
 
     .logo {
@@ -21,6 +32,8 @@ $primary-color: #609F00;
     .miniNavItem > a {
         font-size: calc(1.3vw - 2px);
         margin-top: 1vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
         padding-top: 0.5em !important;
         padding-bottom: 0.5em !important;
     }
@@ -104,6 +117,42 @@ $primary-color: #609F00;
         color: $primary-color;
     }
 
+    //styles for search bar
+
+    .searchNavItem > a {
+        font-size: calc(1.3vw - 2px);
+        margin-top: 1vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .searchBar {
+        margin: 0;
+        width: 180px;
+        vertical-align: middle;
+        border-left: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0px;
+    }
+
+    .searchBar:focus {
+        border:1px solid #ccc !important;
+        border-left: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .searchAddon {
+        background-color: white;
+        border-radius: 0px;
+        border-right: solid white;
+    }
+
+    .searchIcon {
+        vertical-align: middle;
+    }
+
     .menuBtn {
         visibility: hidden;
     }
@@ -113,10 +162,77 @@ $primary-color: #609F00;
 @media screen and (max-width: 750px){
     //removes .pull-right in bootstrap
     .mainNav {
-        float: none !important;
+        display: none;
     }
 
+    .navbar {
+        border: 0;
+        background-color: white;
+    }
 
+    .logo {
+        margin: 1em;
+        height: 10vw;
+    }
+
+    //hamburger styling
+
+    .menuBtn {
+        margin: 1em;
+        width: 24vw;
+        height: 10vw;
+        border: 2px solid $primary-color;
+        background-color: white;
+    }
+
+    .menuBtn:focus, .menuBtn:active {
+        outline: none !important;
+        background: none;
+    }
+
+    .menuBtnTxt {
+        font-size: 1em;
+        font-weight: bold;
+        margin-right: 1em;
+        vertical-align: middle;
+        color: $primary-color;
+    }
+
+    .hamburgerIcon {
+        font-size: 1.7em;
+        vertical-align: middle;
+        color: $primary-color;
+    }
+
+    //mobile nav styling
+
+    .mobileNavDropdown > a {
+        height: 3.5em;
+        color: $primary-color !important;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 40px;
+    }
+
+    .mobileNavDropdown > a > span {
+        display:none;
+    }
+
+    .mobileNavDropdownSub > a {
+        height: 3.5em;
+        color: #666666;
+        font-size: 18px;
+        margin-left: 40px;
+    }
+
+    .mobileNavDropdownSub > a > span {
+        display:none;
+    }
+
+    .sectionDivider {
+        margin: 0;
+        margin-bottom: 10px;
+    }
 
 
 }
