@@ -1,8 +1,9 @@
 import * as nodemailer from 'nodemailer';
-import pug from 'pug';
 import config from 'config';
 import Promise from 'bluebird';
-import path from 'path';
+import _ from 'lodash';
+
+
 var connectionOptions = {
     secure: true,
     port: 465,
@@ -16,18 +17,16 @@ var connectionOptions = {
 };
 var transporter = nodemailer.createTransport(connectionOptions);
 
-function sendConfirmationEmail(to, confirmationLink) {
+function sendConfirmationEmail(options) {
     return new Promise((resolve, reject) => {
-        // setup e - mail data with unicode symbols
-        var mailOptions = {
+        var defaultMailOptions = {
             from: config.get('email.sender'),
-            to: to,
-            subject: 'LenderMatch Confirmation Email',
-            text: "Thank you for applying to LenderMatch! Please visit the link below to confirm your email: " + confirmationLink,
-            html: pug.renderFile(path.join(__dirname, '../views/confirmation-email.pug'), {
-                confirmationLink: confirmationLink
-            })
+            to: config.get('email.sender'),
+            subject: 'SBA Test Email',
+            text: "Test Email",
+            html: "<p>This is a test</p>"
         };
+        var mailOptions = _.assign({}, defaultMailOptions, options);
         if (config.get("email.debugEmailOnly")) {
             console.log("Email sender would have sent:" + JSON.stringify(mailOptions, 0, 4));
             resolve();

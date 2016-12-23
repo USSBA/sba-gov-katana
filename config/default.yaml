@@ -1,8 +1,12 @@
+developmentOptions:
+    webpack:
+        enabled: false
+        silent: false
 server:
     port: 3000
 email:
     debugEmailOnly: false
-    sender: '"Small Business Administration" <answerdesk@sba.gov>'
+    sender: '"Small Business Administration" <lendermatch@sba.gov>'
     hostname: overrideInHostnameYaml
     username: overrideInHostnameYaml
     password: overrideInHostnameYaml

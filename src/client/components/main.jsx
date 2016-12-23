@@ -16,6 +16,8 @@ import LincMain from './linc-main.jsx';
 import LandingPage from './landing-page/landing-page.jsx';
 import LoanForm from './lender-match/loan-form.jsx';
 import SuccessPage from './success-page/success-page.jsx';
+import EmailConfirmedPage from './success-page/email-confirmed-page.jsx';
+import EmailConfirmationInvalid from './success-page/email-confirmation-invalid.jsx';
 import ContactInfo from './lender-match/contact-info.jsx';
 import LoanInfo from './lender-match/loan-info.jsx';
 import BusinessInfo from './lender-match/business-info.jsx';
@@ -52,6 +54,8 @@ ReactDOM.render(
             <Route path="review" component={ReviewSubmitInfo} />
           </Route>
           <Route path="success" component={SuccessPage} />
+          <Route path="emailconfirmed" component={EmailConfirmedPage} />
+          <Route path="emailinvalid" component={EmailConfirmationInvalid} />
         </Route>
       </Router>
     </Provider>),

@@ -19,20 +19,18 @@ var jsonParser = bodyParser.json();
 app.use(express.static('./public'));
 
 
-if (process.env.NODE_ENV === 'development') {
+if (config.get('developmentOptions.webpack')) {
     var webpack = require('webpack');
     var webpackConfig = require('../webpack.config');
     var compiler = webpack(webpackConfig);
     app.use(require('webpack-dev-middleware')(compiler, {
-        publicPath: webpackConfig.output.publicPath
+        publicPath: webpackConfig.output.publicPath,
+        noInfo: config.get('developmentOptions.webpack.silent')
     }));
 
     app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.get('/', function(req, res) {
-    res.render('main');
-});
 
 import * as matchController from './controllers/match-controller.js';
 app.post('/matchFormData', jsonParser, matchController.handleLenderMatchSubmission);
@@ -56,6 +54,9 @@ app.post('/matchCounselors', jsonParser, function(req, res){
    console.log(req.body.zipcode)
 });
 
+app.get('*', function(req, res) {
+    res.render('main');
+});
 
 // development error handler
 // will print stacktrace
