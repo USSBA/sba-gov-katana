@@ -34,21 +34,6 @@
   font-style: italic;
 }
 
-@font-face{
-  font-family: 'Source Sans Pro';
-  src: url('./Light/SourceSansPro-Light.eot');
-  src: url('./Light/SourceSansPro-Light.eot#iefix') format('embedded-opentype'),
-  url('./Light/SourceSansPro-Light.woff2') format('woff2'),
-  url('./Light/SourceSansPro-Light.woff') format('woff'),
-  url('./Light/SourceSansPro-Light.ttf') format('truetype'),
-  url('./Light/SourceSansPro-Light.svg#SourceSansPro') format('svg');
-  font-weight: lighter;
-  font-style: normal;
-}
-
-
-
-
 body {
   font-family: "Source Sans Pro";
 }

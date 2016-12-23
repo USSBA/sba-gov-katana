@@ -14,13 +14,17 @@
     top: 0; left: 10.4vw; bottom: 0;
   }
 
-  .greenBox img{
+  .triangleBig{
     position: absolute;
     bottom: 0;
     right: 0;
     height: 11.59vw;
     width: 11.59vw;
 
+  }
+
+  .triangleSmall {
+    display: none;
   }
 
   .title{
@@ -149,7 +153,11 @@
     bottom: 0;
   }
 
-  .greenBox img{
+  .triangleBig {
+    display: none;
+  }
+
+  .triangleSmall {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -164,23 +172,22 @@
     line-height: 13vw;
     font-weight: bold;
     margin: 0 auto;
-    padding-top: 7.1vw;
+    padding-top: 7.2vw;
   }
 
   .subTitle {
     color: #FFFFFF;
     font-size: 4.2vw;
     line-height: 5.8vw;
-    font-weight: lighter;
     width: 74.9vw;
     margin: 0 auto;
-    padding-top: 2.2vw;
+    padding-top: 2.4vw;
   }
 
   .btnContainer{
     padding-left: 0;
     padding-right: 0;
-    padding-top: 4.4vw;
+    padding-top: 4.53vw;
     width: 74.9vw;
     margin: 0 auto;
   }
