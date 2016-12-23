@@ -1,6 +1,5 @@
 @media screen and (min-width:768px){
   .parentContainer{
-    //max-width: 1440px;
     width: 100%;
     height: 44.8vw;
     padding: 0;
@@ -15,13 +14,17 @@
     top: 0; left: 10.4vw; bottom: 0;
   }
 
-  .greenBox img{
+  .triangleBig{
     position: absolute;
     bottom: 0;
     right: 0;
     height: 11.59vw;
     width: 11.59vw;
 
+  }
+
+  .triangleSmall {
+    display: none;
   }
 
   .title{
@@ -134,7 +137,7 @@
 
   .parentContainer {
     width: 100vw;
-    height: 155.4vw;
+    height: 172.5vw;
     padding: 0;
     postition: relative;
     overflow: hidden;
@@ -142,15 +145,19 @@
 
 
   .greenBox {
-    width: 90vw;
-    height: 104.5vw;
+    width: 91.8vw;
+    height: 109vw;
     background-color: #609F00;
-    margin-left: 5vw;
+    margin-left: 4.1vw;
     position: absolute;
     bottom: 0;
   }
 
-  .greenBox img{
+  .triangleBig {
+    display: none;
+  }
+
+  .triangleSmall {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -161,29 +168,27 @@
   .title {
     color: #FFFFFF;
     width: 74.9vw;
-    font-size: 11.2vw;
-    line-height: 11.2vw;
+    font-size: 12.3vw;
+    line-height: 13vw;
     font-weight: bold;
     margin: 0 auto;
-    padding-top: 6.9vw;
+    padding-top: 7.2vw;
   }
 
   .subTitle {
     color: #FFFFFF;
-    font-family: Merriweather;
-    font-style: italic;
-    font-size: 3.7vw;
-    line-height: 5.3vw;
+    font-size: 4.2vw;
+    line-height: 5.8vw;
     font-weight: lighter;
     width: 74.9vw;
     margin: 0 auto;
-    padding-top: 2.2vw;
+    padding-top: 2.4vw;
   }
 
   .btnContainer{
     padding-left: 0;
     padding-right: 0;
-    padding-top: 4.22vw;
+    padding-top: 4.53vw;
     width: 74.9vw;
     margin: 0 auto;
   }
@@ -228,7 +233,7 @@
     font-size: 4.8vw;
     font-weight: bold;
     text-align: center;
-    margin-top: 3vw;
+    margin-top: 4.2vw;
   }
 
   .findLendersWhiteBtn:hover{
@@ -252,9 +257,9 @@
 
   .imageContainer img{
     position: absolute;
-    left: -30%;
-    top: -10%;
-    height: 90.4vw;
+    left: -72.3%;
+    top: -27vw;
+    height: 68%;
     width: auto;
     margin-right: auto;
     margin-left: auto;

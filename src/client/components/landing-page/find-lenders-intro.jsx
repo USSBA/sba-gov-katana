@@ -1,11 +1,11 @@
 import React from 'react';
-import {FindLendersBtn} from './find-lenders-btn.jsx'
 import {HelpMeBtn} from './help-me-btn.jsx'
 import {Button} from 'react-bootstrap'
 import { browserHistory } from 'react-router';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import findLendersImage from '../../../../public/assets/images/lender-match/lendermatch-hero.jpg'
-import cornerGraphic from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
+import cornerGraphicBig from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
+import cornerGraphicSmall from '../../../../public/assets/images/lender-match/rectangle-corner-graphic-mobile.png'
 
 export const FindLendersIntro = (props) =>
     <div className= " row">
@@ -18,12 +18,13 @@ export const FindLendersIntro = (props) =>
 
 export const GreenFindLendersSection = (props) =>
     <div className = {styles.greenBox}>
-        <img src={ cornerGraphic } aria-hidden="true" width="166" height="166" />
+        <img className = { styles.triangleBig } src={ cornerGraphicBig } aria-hidden="true" width="166" height="166" alt="" />
+        <img className = { styles.triangleSmall } src={ cornerGraphicSmall } aria-hidden="true" width="92" height="92" alt="" />
         <div className = {styles.title}>
             Lender Match helps you find lenders.
         </div>
         <div className = {styles.subTitle}>
-            Lender Match (formerly LINC) is a free online referral tool that connects small business with participating SBA-approved lenders.
+            Lender Match (formerly LINC) is a free online referral tool that connects small businesses with participating SBA-approved lenders.
         </div>
         <div className = {styles.btnContainer + " container-fluid"}>
             <div className = " col-sm-4 col-xs-12 nopadding">
