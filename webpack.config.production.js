@@ -12,7 +12,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'public', "build"),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/public/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -45,7 +45,7 @@ module.exports = {
             loader: 'json-loader'
         }, {
             test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
-            loader: 'url-loader?limit=100000'
+            loader: 'url-loader?limit=150000'
         }, {
             test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
             loader: 'imports-loader?jQuery=jquery'
