@@ -5,10 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=development babel-node src/app.js --presets es2015",
-    "prestart": "npm run lint",
+    "prestart": "npm run lint && npm run format",
     "build": "scripts/build.sh",
     "test": "jest test/",
     "lint": "eslint src",
+    "format" : "esformatter -i 'src/**/*.js?(x)'",
     "test2": "mocha test2/helpers/browser.js test2/**/*.test.js"
   },
   "repository": {
