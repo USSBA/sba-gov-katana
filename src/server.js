@@ -5,12 +5,17 @@ import zlib from 'zlib';
 var express = require('express');
 var config = require('config');
 var bodyParser = require('body-parser');
+var lincSoapRequest = require('../src/controllers/linc-soap-request');
 
 var app = express();
 
+//const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.wsdl';
+const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.cfc';
+var username = 'OCPL_LincUser';
+var password = 'zQUcm4Yu';
 //set up template engine
 app.set('view engine', 'pug');
-app.set('views', './src/views')
+app.set('views', './src/views');
 
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
@@ -140,7 +145,14 @@ app.post('/matchFormData', jsonParser, function(req, res){
         sendError(err, req, res);
         return;
     }
-    res.send("Data received successfully.");
+    //res.send("Data received successfully.");
+    lincSoapRequest(ocaSoapWSDL, req, username, password).then(function(response){
+        res.send(response);
+    }).catch(function(error){
+        var err = new Error("Error from OCA Soap service.");
+        err.code = 406;
+        sendError(err, req, res);
+    });
 });
 
 app.post('/matchLocalAssistants', jsonParser, function(req, res){

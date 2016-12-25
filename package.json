@@ -59,11 +59,14 @@
     "react-router-redux": "^4.0.7",
     "react-steps": "0.0.4",
     "redux": "^3.6.0",
+    "request": "^2.79.0",
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.27"
+    "webpack": "^2.1.0-beta.27",
+    "xml2js": "^0.4.17",
+    "xmldom": "^0.1.27"
   },
   "devDependencies": {
     "axios": "^0.15.3",
