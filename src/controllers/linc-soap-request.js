@@ -331,19 +331,11 @@ class LincSoapRequest{
                 body: lincSoapRequestEnvelopeXml,
                 timeout: 5000,
                 secureProtocol: 'TLSv1_2_method',
-                headers: [{
-                    name: 'Content-Type',
-                    value: 'text/xml; charset=UTF-8'
-                },{
-                    name: 'SOAPAction',
-                    value: ""
-                }]
-                /*,
-                agentOptions:{
-                    keepAlive: true,
-                    secureProtocol: 'TLSv1_2_method'}*/
+                headers: {
+                    'Content-Type' : 'text/xml; charset=UTF-8',
+                    'SOAPAction' : ""
+                }
             };
-            //options.agent = new https.Agent(options);
             request(options, function(error, response, body){
                 if(error){
                     throw error;
