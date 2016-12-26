@@ -340,6 +340,7 @@ class LincSoapRequest{
                     throw error;
                 }else{
                     if(this.parseResponse(body) === "S") {
+                        //success response received
                         resolve("Data successfully received by OCA.");
                     }else{
                         throw body;
