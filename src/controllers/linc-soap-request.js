@@ -4,7 +4,7 @@ let xml2js = require('xml2js');
 let DOMParser = require('xmldom').DOMParser;
 let XMLSerializer = require('xmldom').XMLSerializer;
 
-class sbaLincEnq {
+class SbaLincEnq {
     constructor(req, sbaGovUser, dbUserID, submissionID){
             //UserName <= 80 chars
             this.UserName = sbaGovUser;
@@ -294,8 +294,26 @@ class sbaLincEnq {
         return nameArray[1];
     }
 }
+class FormDataToXml {
+    static convertFormDataToXml(req){
+        //remove &, < and > from the xml
+        //user_id and form_submission_id and sbaGovUser will come from the database
+        const dbUserID = 1;
+        const submissionID = 1;
+        const sbaGovUser = "newUser";
 
-function formDataXml(req){
+        const objFormData = {
+            "LINC_APP": {
+                "SBA_LINC_ENQ": new SbaLincEnq(req,sbaGovUser, dbUserID, submissionID)
+            }
+        };
+
+        const builder = new xml2js.Builder({'headless': true});
+        const xmlFormData = builder.buildObject(objFormData);
+        return xmlFormData;
+    }
+}
+/*function formDataXml(req){
     //remove &, < and > from the xml
     //user_id and form_submission_id and sbaGovUser will come from the database
     const dbUserID = 1;
@@ -304,14 +322,14 @@ function formDataXml(req){
 
     const objFormData = {
         "LINC_APP": {
-            "SBA_LINC_ENQ": new sbaLincEnq(req,sbaGovUser, dbUserID, submissionID)
+            "SBA_LINC_ENQ": new SbaLincEnq(req,sbaGovUser, dbUserID, submissionID)
         }
     };
 
     const builder = new xml2js.Builder({'headless': true});
     const xmlFormData = builder.buildObject(objFormData);
     return xmlFormData;
-}
+}*/
 
 function lincSoapRequestXml(username, password, unwrappedFormData){
     let text, parser, xmlDoc;
@@ -366,7 +384,7 @@ function lincSoapRequestXml(username, password, unwrappedFormData){
 let lincSoapRequest = function (soapUrl, req, username, password){
     return new Promise(function(resolve){
 
-        const dataXml = formDataXml(req);
+        const dataXml = FormDataToXml.convertFormDataToXml(req);
         console.log(dataXml);
         const soapRequestXml = lincSoapRequestXml(username, password, dataXml);
         console.log(soapRequestXml);
