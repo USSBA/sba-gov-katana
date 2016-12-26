@@ -43,7 +43,7 @@ class SbaLincEnq {
             //RequestedAmtRangeCd = 2 chars
             this.RequestedAmtRangeCd = this.reqAmtRangeCd(req.body.loanData.loanAmount);
             //CollateralInd Y for Yes  or N for No
-            this.CollateralInd = "";
+            this.CollateralInd = "N";
             //CollateralDesc <= 255 chars
             this.CollateralDesc = "";
             //BusinessAdvisoryInd Y for Yes or N for No
@@ -334,6 +334,9 @@ class LincSoapRequest{
                 headers: [{
                     name: 'Content-Type',
                     value: 'text/xml; charset=UTF-8'
+                },{
+                    name: 'SOAPAction',
+                    value: ""
                 }]
                 /*,
                 agentOptions:{
