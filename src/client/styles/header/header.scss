@@ -1,0 +1,250 @@
+$primary-color: #609F00;
+
+
+//styles for DESKTOP
+@media screen and (min-width: 750px){
+
+    .mobileNav {
+        display: none;
+    }
+
+    //styles entire navbar container
+    .navbar {
+        border: 0;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        background-color: white;
+    }
+
+    //styles navbar header contents
+
+    .navbarHeader {
+        width: 19vw;
+        height: 8vw;
+    }
+
+    .logo {
+        height: calc(1em + 4.3vw);
+        margin: 1em;
+    }
+
+    //styles the small top nav
+    .miniNavItem > a {
+        font-size: calc(1.3vw - 2px);
+        margin-top: 1vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        padding-top: 0.5em !important;
+        padding-bottom: 0.5em !important;
+    }
+
+    //styles nav dropdown
+    .navDropdown > a {
+        height: 3.5em;
+        color: $primary-color !important;
+        font-size: 1.3vw;
+        font-weight: bold;
+        margin-top: 1vw;
+        padding-top: 0.5em !important;
+        padding-bottom: 0.5em !important;
+        padding-right: 1vw !important;
+        padding-left: 1vw !important;
+    }
+
+    //styles the lil triangle in nav dropdown
+    .navDropdown > a > span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        height:0px;
+        width: 0px;
+        border-bottom: 10px solid $primary-color;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 0;
+        visibility: hidden;
+    }
+
+    .navDropdown:hover > a > span {
+        visibility: visible;
+    }
+
+    //styles the dropdown container
+    .mainNav {
+        float: right !important;
+    }
+
+    .mainNav > li {
+        position: static;
+    }
+
+    .mainNav > li > ul {
+        min-width:60vw;
+        width: 90vw;
+        border-top: solid $primary-color;
+    }
+
+    .mainNav > li:hover > ul {
+        display: block;
+    }
+
+    .disabledDropdown:hover > ul {
+        display: none;
+    }
+
+    //styles the dropdown children
+    .dropdownHeader {
+        font-size: calc(0.7em + 0.5vw);
+        color: $primary-color;
+    }
+
+    .dropdownItem {
+        margin-top: 1em !important;
+        margin-bottom: 1em !important;
+    }
+
+    .dropdownItem > a {
+        font-size: calc(0.5em + 0.5vw);
+        color: black;
+        outline: none !important;
+        background: none;
+        text-decoration: none;
+    }
+
+    .dropdownItem > a:hover {
+        color: $primary-color;
+    }
+
+    //styles for search bar
+
+    .searchNavItem > a {
+        font-size: calc(1.3vw - 2px);
+        margin-top: 1vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .searchBar {
+        margin: 0;
+        width: 180px;
+        vertical-align: middle;
+        border-left: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0px;
+    }
+
+    .searchBar:focus {
+        border:1px solid #ccc !important;
+        border-left: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .searchAddon {
+        background-color: white;
+        border-radius: 0px;
+        border-right: solid white;
+    }
+
+    .searchIcon {
+        vertical-align: middle;
+    }
+
+    .menuBtn {
+        visibility: hidden;
+    }
+}
+
+//styles for MOBILE
+@media screen and (max-width: 750px){
+    //removes .pull-right in bootstrap
+    .mainNav {
+        display: none;
+    }
+
+    .navbar {
+        border: 0;
+        background-color: white;
+    }
+
+    .logo {
+        margin: 1em;
+        height: 10vw;
+    }
+
+    //hamburger styling
+
+    .menuBtn {
+        margin: 1em;
+        width: 24vw;
+        height: 10vw;
+        border: 2px solid $primary-color;
+        background-color: white;
+    }
+
+    .menuBtn:focus, .menuBtn:active {
+        outline: none !important;
+        background: none;
+    }
+
+    .menuBtnTxt {
+        font-size: 1em;
+        font-weight: bold;
+        margin-right: 1em;
+        vertical-align: middle;
+        color: $primary-color;
+    }
+
+    .hamburgerIcon {
+        font-size: 1.7em;
+        vertical-align: middle;
+        color: $primary-color;
+    }
+
+    //mobile nav styling
+
+    .mobileNavDropdown > a {
+        height: 3.5em;
+        color: $primary-color !important;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 40px;
+    }
+
+    .mobileNavDropdown > a > span {
+        display:none;
+    }
+
+    .mobileNavDropdownSub > a {
+        height: 3.5em;
+        color: #666666;
+        font-size: 18px;
+        margin-left: 40px;
+    }
+
+    .mobileNavDropdownSub > a > span {
+        display:none;
+    }
+
+    .sectionDivider {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

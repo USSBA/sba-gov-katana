@@ -5,11 +5,11 @@
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=development babel-node src/app.js --presets es2015",
+    "prestart": "npm run lint && npm run format",
     "build": "scripts/build.sh",
-    "build-docker": "docker build -t sba-gov-katana .",
     "test": "jest test/",
-    "local": "docker run -p 8080:3000 -e NODE_ENV=$1 -d sba-gov-katana",
     "lint": "eslint src",
+    "format" : "esformatter -i 'src/**/*.js?(x)'",
     "test2": "mocha test2/helpers/browser.js test2/**/*.test.js"
   },
   "repository": {
@@ -30,6 +30,7 @@
   "homepage": "https://github.com/sba-ds/sba-gov#readme",
   "dependencies": {
     "babel-polyfill": "^6.16.0",
+    "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "bootstrap-loader": "2.0.0-beta.16",
     "bootstrap-sass": "^3.3.7",
@@ -38,6 +39,7 @@
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^0.9.0",
+    "http-status-codes": "^1.0.6",
     "imports-loader": "^0.6.5",
     "jquery": "^3.1.1",
     "js-yaml": "^3.7.0",
@@ -45,7 +47,11 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "lodash": "^4.17.2",
+    "moment": "^2.17.1",
+    "mongodb": "^2.2.16",
+    "node-mailer": "^0.1.1",
     "node-sass": "^3.11.2",
+    "nodemailer": "^2.7.0",
     "postcss-loader": "^1.1.0",
     "pug": "^2.0.0-beta6",
     "qs": "^6.3.0",
@@ -67,6 +73,8 @@
     "webpack": "^2.1.0-beta.27",
     "xml2js": "^0.4.17",
     "xmldom": "^0.1.27"
+    "uuid": "^3.0.1",
+    "webpack": "^2.1.0-beta.27"
   },
   "devDependencies": {
     "axios": "^0.15.3",
@@ -80,6 +88,8 @@
     "babel-preset-stage-0": "^6.0.15",
     "babel-register": "^6.18.0",
     "enzyme": "^2.6.0",
+    "esformatter": "^0.10.0",
+    "esformatter-jsx": "^7.4.0",
     "eslint": "^3.10.1",
     "eslint-plugin-react": "^6.7.1",
     "identity-obj-proxy": "^3.0.0",

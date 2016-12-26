@@ -1,3 +1,4 @@
 /*application entry point*/
-
-import './server.js';
+import init from "./init.js";
+init();
+import "./server.js";

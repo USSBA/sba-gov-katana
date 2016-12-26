@@ -25,7 +25,7 @@ For the development environment setup, see development.md
         * views - pug templates
         * controllers - request handler definitions grouped as controllers
         * models - for constituting objects retrieved from the database.
-        * utils
+        * utils - other utilities and logic
         * client
             * views
             * stores
