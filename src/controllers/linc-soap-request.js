@@ -320,10 +320,9 @@ class LincSoapRequest{
         return new Promise((resolve)=>{
 
             const dataXml = FormDataToXml.convertFormDataToXml(req);
-            console.log(dataXml);
             const lincSoapRequestEnvelopeXml = this.createLincSoapRequestEnvelopeXml(username, password, dataXml);
-            console.log(lincSoapRequestEnvelopeXml);
-            var options = {
+
+            let options = {
                 uri: soapUrl,
                 method: "POST",
                 followAllRedirects: true,
@@ -336,16 +335,50 @@ class LincSoapRequest{
                     'SOAPAction' : ""
                 }
             };
-            request(options, function(error, response, body){
+            request(options, (error, response, body)=>{
                 if(error){
                     throw error;
                 }else{
-                    console.log(response);
-                    console.log(body);
-                    resolve("Data successfully received by OCA.");
+                    if(this.parseResponse(body) === "S") {
+                        resolve("Data successfully received by OCA.");
+                    }else{
+                        throw body;
+                    }
                 }
             });
         });
+    }
+
+    parseResponse(xmlBody){
+        let parser, xmlRespDoc, resultCode, errorMessageTechnical, response, errorMessageEnglish, passwordUpdateRequired;
+        let retVal = "F";
+        parser = new DOMParser();
+        xmlRespDoc = parser.parseFromString(xmlBody);
+        passwordUpdateRequired = xmlRespDoc.getElementsByTagName("item")[0].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+        console.log(passwordUpdateRequired);
+
+        //this element can be empty
+        let secondItemChildren = xmlRespDoc.getElementsByTagName("item")[1].getElementsByTagName("value")[0].childNodes;
+        if(secondItemChildren.length > 0){
+            errorMessageEnglish = secondItemChildren[0].nodeValue;
+            console.log(errorMessageEnglish);
+        }
+        response = xmlRespDoc.getElementsByTagName("item")[2].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+        console.log(response);
+
+        //this element can be empty
+        let fourthItemChildren = xmlRespDoc.getElementsByTagName("item")[3].getElementsByTagName("value")[0].childNodes;
+        if(fourthItemChildren.length > 0){
+            errorMessageTechnical = fourthItemChildren[0].nodeValue;
+            console.log(errorMessageTechnical);
+        }
+        resultCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+        console.log(resultCode);
+        if(resultCode === "0"){
+            let lincRespXmlDoc = parser.parseFromString(response);
+            retVal = lincRespXmlDoc.getElementsByTagName("Result")[0].childNodes[0].nodeValue;
+        }
+        return retVal;
     }
 
     createLincSoapRequestEnvelopeXml(username, password, unwrappedFormData){
