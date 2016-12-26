@@ -4,317 +4,307 @@ let xml2js = require('xml2js');
 let DOMParser = require('xmldom').DOMParser;
 let XMLSerializer = require('xmldom').XMLSerializer;
 
-function loanProceedTypCd(loanDesc){
-    return loanDesc.split(",").map(function(loanDescItem){
-        const strLoanDesc = loanDescItem.trim(" ").toUpperCase();
-        let retLoanDescCd = "";
-        switch(strLoanDesc){
-            case "PURCHASING PROPERTY":
-                retLoanDescCd = "01";
+class sbaLincEnq {
+    constructor(req, sbaGovUser, dbUserID, submissionID){
+            //UserName <= 80 chars
+            this.UserName = sbaGovUser;
+            //UniqueID <= 30 chars
+            this.UniqueID = this.formatMoment() + "-" + dbUserID + "-" + submissionID;
+            //LoanName <= 255 chars
+            this.LoanName = req.body.businessInfoData.businessInfoName;
+            //ProjectZipCd = 5 chars
+            this.ProjectZipCd = req.body.businessInfoData.businessInfoZipcode;
+            //ProjectZip4Cd = 4 chars
+            this.ProjectZip4Cd = "0000";
+            //FirstName <= 80 chars
+            this.FirstName = this.fName(req.body.contactInfoData.contactFullName);
+            //LastName <= 80 chars
+            this.LastName = this.lName(req.body.contactInfoData.contactFullName);
+            //PrimaryPhone <= 25 chars
+            this.PrimaryPhone = req.body.contactInfoData.contactPhoneNumber;
+            //PrimaryEmail <= 255 chars
+            this.PrimaryEmail = req.body.contactInfoData.contactEmailAddress;
+            //CurrEmpQty = int
+            this.CurrEmpQty = "";
+            //BusinessAgeCd = 2 chars
+            this.BusinessAgeCd = this.bAgeCd(req.body.industryInfoData.industryExperience);
+            //GrossRevenueSales  = decimal
+            this.GrossRevenueSales = "";
+            //LegalOrgnztnCd = 2 chars
+            this.LegalOrgnztnCd = "";
+            //BusinessDtlTypCd = 2 chars
+            this.BusinessDtlTypCd = this.bDtlTypCd(req.body.industryInfoData.industryType);
+            //BusinessDtlTypTxt <= 255 chars
+            this.BusinessDtlTypTxt = this.bDtlTypTxt(req);
+            //LoanProceedTypCd <= 255 comma delimited
+            this.LoanProceedTypCd = this.lProceedTypCd(req.body.loanData.loanDescription);
+            //ProceedOthTypTxt <= 255 chars
+            this.ProceedOthTypTxt = req.body.loanData.loanUsage;
+            //RequestedAmtRangeCd = 2 chars
+            this.RequestedAmtRangeCd = this.reqAmtRangeCd(req.body.loanData.loanAmount);
+            //CollateralInd Y for Yes  or N for No
+            this.CollateralInd = "";
+            //CollateralDesc <= 255 chars
+            this.CollateralDesc = "";
+            //BusinessAdvisoryInd Y for Yes or N for No
+            this.BusinessAdvisoryInd = this.bAdvisoryInd(req);
+            //BusinessPlanInd Y for Yes or N for No
+            this.BusinessPlanInd = this.bPlanInd(req);
+            //OtherFundSourceInd Y for Yes or N for No
+            this.OtherFundSourceInd = this.oFundSourceInd(req);
+            //BusinessStatusDescTxt <= 1000
+            this.BusinessStatusDescTxt = this.bStatusDescTxt(req);
+            //Veteran = unsignedByte means 6 for Yes 1 for No
+            this.Veteran = this.vetInd(req);
+    }
+
+    lProceedTypCd(loanDesc){
+        return loanDesc.split(",").map(function(loanDescItem){
+            const strLoanDesc = loanDescItem.trim(" ").toUpperCase();
+            let retLoanDescCd = "";
+            switch(strLoanDesc){
+                case "PURCHASING PROPERTY":
+                    retLoanDescCd = "01";
+                    break;
+                case "PURCHASING EQUIPMENT":
+                    retLoanDescCd = "02";
+                    break;
+                case "REMODELING AN EXISTING LOCATION":
+                    retLoanDescCd = "03";
+                    break;
+                case "REFINANCING/CONSOLIDATING DEBT":
+                    retLoanDescCd = "04";
+                    break;
+                case "HIRING EMPLOYEES/STAFF":
+                    retLoanDescCd = "05";
+                    break;
+                case "WORKING CAPITAL":
+                    retLoanDescCd = "06";
+                    break;
+                case "PURCHASING INVENTORY":
+                    retLoanDescCd = "07";
+                    break;
+                case "MARKETING/ADVERTISING":
+                    retLoanDescCd = "08";
+                    break;
+                case "BUYING AN EXISTING BUSINESS":
+                    retLoanDescCd = "09";
+                    break;
+                case "OTHER":
+                    retLoanDescCd = "99";
+                    break;
+                case "BUSINESS TRAINING":
+                    retLoanDescCd = "10";
+                    break;
+                case "DEVELOPING A PRODUCT":
+                    retLoanDescCd = "11";
+                    break;
+                case "OPENING A NEW LOCATION":
+                    retLoanDescCd = "12";
+                    break;
+                case "PARTICIPATING IN TRADE SHOW":
+                    retLoanDescCd = "13";
+                    break;
+            }
+            return retLoanDescCd;
+        }).join();
+    }
+
+    bDtlTypCd(industryType){
+        return industryType.split(",").map(function(industryTypeItem){
+            const strIndustryType = industryTypeItem.trim(" ").toUpperCase();
+            let retIndustryTypeCd = "";
+            switch(strIndustryType){
+                case "SERVICE":
+                    retIndustryTypeCd = "01";
+                    break;
+                case "MANUFACTURING":
+                    retIndustryTypeCd = "02";
+                    break;
+                case "WHOLESALE":
+                    retIndustryTypeCd = "03";
+                    break;
+                case "RETAIL":
+                    retIndustryTypeCd = "04";
+                    break;
+                case "RESTAURANT/BAR":
+                    retIndustryTypeCd = "05";
+                    break;
+                case "HOTEL/MOTEL":
+                    retIndustryTypeCd = "06";
+                    break;
+                case "AUTOMOTIVE/SERVICE STATION":
+                    retIndustryTypeCd = "07";
+                    break;
+                case "OTHER":
+                    retIndustryTypeCd = "99";
+                    break;
+                case "ADVERTISING/MARKETING":
+                    retIndustryTypeCd = "08";
+                    break;
+                case "AGRICULTURE":
+                    retIndustryTypeCd = "09";
+                    break;
+                case "CHEMICAL/PHARMACEUTICAL":
+                    retIndustryTypeCd = "10";
+                    break;
+                case "CONSTRUCTION":
+                    retIndustryTypeCd = "11";
+                    break;
+                case "EDUCATION":
+                    retIndustryTypeCd = "12";
+                    break;
+                case "ENERGY":
+                    retIndustryTypeCd = "13";
+                    break;
+                case "ENTERTAINMENT/RECREATION":
+                    retIndustryTypeCd = "14";
+                    break;
+                case "FINANCIAL SERVICES":
+                    retIndustryTypeCd = "15";
+                    break;
+                case "FOOD SERVICES":
+                    retIndustryTypeCd = "16";
+                    break;
+                case "HEALTH CARE":
+                    retIndustryTypeCd = "17";
+                    break;
+                case "HOSPITALITY":
+                    retIndustryTypeCd = "18";
+                    break;
+                case "MEDIA":
+                    retIndustryTypeCd = "19";
+                    break;
+                case "NON-PROFIT":
+                    retIndustryTypeCd = "20";
+                    break;
+                case "PROFESSIONAL SERVICES":
+                    retIndustryTypeCd = "21";
+                    break;
+                case "REAL ESTATE":
+                    retIndustryTypeCd = "22";
+                    break;
+                case "TECHNOLOGY":
+                    retIndustryTypeCd = "23";
+                    break;
+                case "TRANSPORTATION/LOGISTICS":
+                    retIndustryTypeCd = "24";
+                    break;
+            }
+            return retIndustryTypeCd;
+        }).join();
+    }
+
+    bAgeCd(exp){
+        var retVal = "";
+        switch (exp){
+            case "Less than 1 year":
+                retVal = "01";
                 break;
-            case "PURCHASING EQUIPMENT":
-                retLoanDescCd = "02";
+            case "1-2 years":
+                retVal = "02";
                 break;
-            case "REMODELING AN EXISTING LOCATION":
-                retLoanDescCd = "03";
+            case "2-5 years":
+                retVal = "03";
                 break;
-            case "REFINANCING/CONSOLIDATING DEBT":
-                retLoanDescCd = "04";
-                break;
-            case "HIRING EMPLOYEES/STAFF":
-                retLoanDescCd = "05";
-                break;
-            case "WORKING CAPITAL":
-                retLoanDescCd = "06";
-                break;
-            case "PURCHASING INVENTORY":
-                retLoanDescCd = "07";
-                break;
-            case "MARKETING/ADVERTISING":
-                retLoanDescCd = "08";
-                break;
-            case "BUYING AN EXISTING BUSINESS":
-                retLoanDescCd = "09";
-                break;
-            case "OTHER":
-                retLoanDescCd = "99";
-                break;
-            case "BUSINESS TRAINING":
-                retLoanDescCd = "10";
-                break;
-            case "DEVELOPING A PRODUCT":
-                retLoanDescCd = "11";
-                break;
-            case "OPENING A NEW LOCATION":
-                retLoanDescCd = "12";
-                break;
-            case "PARTICIPATING IN TRADE SHOW":
-                retLoanDescCd = "13";
+            case "5+ years":
+                retVal = "04";
                 break;
         }
-        return retLoanDescCd;
-    }).join();
-}
+        return retVal;
+    }
 
-function businessDtlTypCd(industryType){
-    return industryType.split(",").map(function(industryTypeItem){
-        const strIndustryType = industryTypeItem.trim(" ").toUpperCase();
-        let retIndustryTypeCd = "";
-        switch(strIndustryType){
-            case "SERVICE":
-                retIndustryTypeCd = "01";
-                break;
-            case "MANUFACTURING":
-                retIndustryTypeCd = "02";
-                break;
-            case "WHOLESALE":
-                retIndustryTypeCd = "03";
-                break;
-            case "RETAIL":
-                retIndustryTypeCd = "04";
-                break;
-            case "RESTAURANT/BAR":
-                retIndustryTypeCd = "05";
-                break;
-            case "HOTEL/MOTEL":
-                retIndustryTypeCd = "06";
-                break;
-            case "AUTOMOTIVE/SERVICE STATION":
-                retIndustryTypeCd = "07";
-                break;
-            case "OTHER":
-                retIndustryTypeCd = "99";
-                break;
-            case "ADVERTISING/MARKETING":
-                retIndustryTypeCd = "08";
-                break;
-            case "AGRICULTURE":
-                retIndustryTypeCd = "09";
-                break;
-            case "CHEMICAL/PHARMACEUTICAL":
-                retIndustryTypeCd = "10";
-                break;
-            case "CONSTRUCTION":
-                retIndustryTypeCd = "11";
-                break;
-            case "EDUCATION":
-                retIndustryTypeCd = "12";
-                break;
-            case "ENERGY":
-                retIndustryTypeCd = "13";
-                break;
-            case "ENTERTAINMENT/RECREATION":
-                retIndustryTypeCd = "14";
-                break;
-            case "FINANCIAL SERVICES":
-                retIndustryTypeCd = "15";
-                break;
-            case "FOOD SERVICES":
-                retIndustryTypeCd = "16";
-                break;
-            case "HEALTH CARE":
-                retIndustryTypeCd = "17";
-                break;
-            case "HOSPITALITY":
-                retIndustryTypeCd = "18";
-                break;
-            case "MEDIA":
-                retIndustryTypeCd = "19";
-                break;
-            case "NON-PROFIT":
-                retIndustryTypeCd = "20";
-                break;
-            case "PROFESSIONAL SERVICES":
-                retIndustryTypeCd = "21";
-                break;
-            case "REAL ESTATE":
-                retIndustryTypeCd = "22";
-                break;
-            case "TECHNOLOGY":
-                retIndustryTypeCd = "23";
-                break;
-            case "TRANSPORTATION/LOGISTICS":
-                retIndustryTypeCd = "24";
-                break;
+    formatMoment(){
+
+        const d = new Date();
+
+        return (d.getDay() + ":" + d.getMonth() + ":" + d.getYear() + "-" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+    }
+
+    reqAmtRangeCd(loanAmount){
+        //strip the amount of any non number characters
+        const loanAmt = loanAmount.replace(/[^0-9\.]+/g, "");
+        const intLoanAmt = parseInt(loanAmt, 10);
+        if(intLoanAmt <= 50000) return "01";
+        if((intLoanAmt >= 50001) && (intLoanAmt <= 150000)) return "02";
+        if((intLoanAmt >= 150001) && (intLoanAmt <= 250000)) return "03";
+        if((intLoanAmt >= 250001) && (intLoanAmt <= 350000)) return "04";
+        if((intLoanAmt >= 350001) && (intLoanAmt <= 1000000)) return "05";
+        if((intLoanAmt >= 1000001) && (intLoanAmt <= 5000000)) return "06";
+        if(intLoanAmt > 5000000) return "07";
+    }
+
+    vetInd(req){
+        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("isVeteran") && (req.body.additionalInfoData.isVeteran === "on")){
+            return "6";
+        }else{
+            return "1";
         }
-        return retIndustryTypeCd;
-    }).join();
-}
-
-function businessAgeCd(exp){
-    var retVal = "";
-    switch (exp){
-        case "Less than 1 year":
-            retVal = "01";
-            break;
-        case "1-2 years":
-            retVal = "02";
-            break;
-        case "2-5 years":
-            retVal = "03";
-            break;
-        case "5+ years":
-            retVal = "04";
-            break;
     }
-    return retVal;
-}
 
-function formatMoment(){
-
-    const d = new Date();
-
-    return (d.getDay() + ":" + d.getMonth() + ":" + d.getYear() + "-" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
-}
-
-function requestAmtRangeCd(loanAmount){
-    //strip the amount of any non number characters
-    const loanAmt = loanAmount.replace(/[^0-9\.]+/g, "");
-    const intLoanAmt = parseInt(loanAmt, 10);
-    if(intLoanAmt <= 50000) return "01";
-    if((intLoanAmt >= 50001) && (intLoanAmt <= 150000)) return "02";
-    if((intLoanAmt >= 150001) && (intLoanAmt <= 250000)) return "03";
-    if((intLoanAmt >= 250001) && (intLoanAmt <= 350000)) return "04";
-    if((intLoanAmt >= 350001) && (intLoanAmt <= 1000000)) return "05";
-    if((intLoanAmt >= 1000001) && (intLoanAmt <= 5000000)) return "06";
-    if(intLoanAmt > 5000000) return "07";
-}
-
-function veteranInd(req){
-    if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("isVeteran") && (req.body.additionalInfoData.isVeteran === "on")){
-        return "6";
-    }else{
-        return "1";
+    bPlanInd(req){
+        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("hasWrittenPlan") && (req.body.additionalInfoData.hasWrittenPlan === "on")){
+            return "Y";
+        }else{
+            return "N";
+        }
     }
-}
 
-function businessPlanInd(req){
-    if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("hasWrittenPlan") && (req.body.additionalInfoData.hasWrittenPlan === "on")){
-        return "Y";
-    }else{
-        return "N";
+    oFundSourceInd(req){
+        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("isGeneratingRevenue") && (req.body.additionalInfoData.isGeneratingRevenue === "on")){
+            return "Y";
+        }else{
+            return "N";
+        }
     }
-}
 
-function otherFundSourceInd(req){
-    if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("isGeneratingRevenue") && (req.body.additionalInfoData.isGeneratingRevenue === "on")){
-        return "Y";
-    }else{
-        return "N";
+    bAdvisoryInd(req){
+        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("hasFinancialProjections") && (req.body.additionalInfoData.hasFinancialProjections === "on")){
+            return "Y";
+        }else{
+            return "N";
+        }
     }
-}
 
-function businessAdvisoryInd(req){
-    if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("hasFinancialProjections") && (req.body.additionalInfoData.hasFinancialProjections === "on")){
-        return "Y";
-    }else{
-        return "N";
+    bDtlTypTxt(req){
+        if(("loanData" in req.body) && ("loanUsage" in req.body.loanData)){
+            return (req.body.loanData.loanUsage);
+        }else{
+            return "";
+        }
     }
-}
 
-function businessDtlTypTxt(req){
-    if(("loanData" in req.body) && ("loanUsage" in req.body.loanData)){
-        return (req.body.loanData.loanUsage);
-    }else{
-        return "";
+    bStatusDescTxt(req){
+        if(("businessInfoData" in req.body) && ("businessInfoDescription" in req.body.businessInfoData)){
+            return req.body.businessInfoData.businessInfoDescription;
+        }else{
+            return "";
+        }
     }
-}
 
-function businessStatusDescTxt(req){
-    if(("businessInfoData" in req.body) && ("businessInfoDescription" in req.body.businessInfoData)){
-        return req.body.businessInfoData.businessInfoDescription;
-    }else{
-        return "";
+    fName(name){
+        //check that first name is less than 40 chars
+        let nameArray = name.split(" ");
+        return nameArray[0];
     }
-}
 
-function firstName(name){
-    //check that first name is less than 40 chars
-    let nameArray = name.split(" ");
-    return nameArray[0];
-}
-
-function lastName(name){
-    //check that last name is less than 40 chars
-    let nameArray = name.split(" ");
-    return nameArray[1];
+    lName(name){
+        //check that last name is less than 40 chars
+        let nameArray = name.split(" ");
+        return nameArray[1];
+    }
 }
 
 function formDataXml(req){
     //remove &, < and > from the xml
-
     //user_id and form_submission_id and sbaGovUser will come from the database
     const dbUserID = 1;
     const submissionID = 1;
     const sbaGovUser = "newUser";
 
-    const uniqueID = formatMoment() + "-" + dbUserID + "-" + submissionID;
-    const fName = firstName(req.body.contactInfoData.contactFullName);
-    const lName = lastName(req.body.contactInfoData.contactFullName);
-    const bAgeCd = businessAgeCd(req.body.industryInfoData.industryExperience);
-    const bDtlTypCd = businessDtlTypCd(req.body.industryInfoData.industryType);
-    const bDtlTypTxt = businessDtlTypTxt(req);
-    const lProceedTypCd = loanProceedTypCd(req.body.loanData.loanDescription);
-    const reqAmtRangeCd = requestAmtRangeCd(req.body.loanData.loanAmount);
-    const bAdvisoryInd = businessAdvisoryInd(req);
-    const bPlanInd = businessPlanInd(req);
-    const oFundSourceInd = otherFundSourceInd(req);
-    const bStatusDescTxt = businessStatusDescTxt(req);
-    const vetInd = veteranInd(req);
     const objFormData = {
         "LINC_APP": {
-            "SBA_LINC_ENQ": {
-                //UserName <= 80 chars
-                "UserName": sbaGovUser,
-                //UniqueID <= 30 chars
-                "UniqueID": uniqueID,
-                //LoanName <= 255 chars
-                "LoanName": req.body.businessInfoData.businessInfoName,
-                //ProjectZipCd = 5 chars
-                "ProjectZipCd": req.body.businessInfoData.businessInfoZipcode,
-                //ProjectZip4Cd = 4 chars
-                "ProjectZip4Cd": "0000",
-                //FirstName <= 80 chars
-                "FirstName": fName,
-                //LastName <= 80 chars
-                "LastName": lName,
-                //PrimaryPhone <= 25 chars
-                "PrimaryPhone": req.body.contactInfoData.contactPhoneNumber,
-                //PrimaryEmail <= 255 chars
-                "PrimaryEmail": req.body.contactInfoData.contactEmailAddress,
-                //CurrEmpQty = int
-                "CurrEmpQty": "",
-                //BusinessAgeCd = 2 chars
-                "BusinessAgeCd": bAgeCd,
-                //GrossRevenueSales  = decimal
-                "GrossRevenueSales": "",
-                //LegalOrgnztnCd = 2 chars
-                "LegalOrgnztnCd": "",
-                //BusinessDtlTypCd = 2 chars
-                "BusinessDtlTypCd": bDtlTypCd,
-                //BusinessDtlTypTxt <= 255 chars
-                "BusinessDtlTypTxt": bDtlTypTxt,
-                //LoanProceedTypCd <= 255 comma delimited
-                "LoanProceedTypCd": lProceedTypCd,
-                //ProceedOthTypTxt <= 255 chars
-                "ProceedOthTypTxt": req.body.loanData.loanUsage,
-                //RequestedAmtRangeCd = 2 chars
-                "RequestedAmtRangeCd": reqAmtRangeCd,
-                //CollateralInd Y for Yes  or N for No
-                "CollateralInd": "",
-                //CollateralDesc <= 255 chars
-                "CollateralDesc": "",
-                //BusinessAdvisoryInd Y for Yes or N for No
-                "BusinessAdvisoryInd": bAdvisoryInd,
-                //BusinessPlanInd Y for Yes or N for No
-                "BusinessPlanInd": bPlanInd,
-                //OtherFundSourceInd Y for Yes or N for No
-                "OtherFundSourceInd": oFundSourceInd,
-                //BusinessStatusDescTxt <= 1000
-                "BusinessStatusDescTxt": bStatusDescTxt,
-                //Veteran = unsignedByte means 6 for Yes 1 for No
-                "Veteran": vetInd
-            }
+            "SBA_LINC_ENQ": new sbaLincEnq(req,sbaGovUser, dbUserID, submissionID)
         }
     };
 
