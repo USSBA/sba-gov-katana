@@ -218,7 +218,7 @@ class SbaLincEnq {
 
         const d = new Date();
 
-        return (d.getDay() + ":" + d.getMonth() + ":" + d.getYear() + "-" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+        return (d.getDate() + ":" + d.getMonth() + ":" + d.getFullYear() + "-" + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
     }
 
     reqAmtRangeCd(loanAmount){
@@ -313,109 +313,96 @@ class FormDataToXml {
         return xmlFormData;
     }
 }
-/*function formDataXml(req){
-    //remove &, < and > from the xml
-    //user_id and form_submission_id and sbaGovUser will come from the database
-    const dbUserID = 1;
-    const submissionID = 1;
-    const sbaGovUser = "newUser";
 
-    const objFormData = {
-        "LINC_APP": {
-            "SBA_LINC_ENQ": new SbaLincEnq(req,sbaGovUser, dbUserID, submissionID)
-        }
-    };
+class LincSoapRequest{
 
-    const builder = new xml2js.Builder({'headless': true});
-    const xmlFormData = builder.buildObject(objFormData);
-    return xmlFormData;
-}*/
+    sendLincSoapRequest(soapUrl, req, username, password){
+        return new Promise((resolve)=>{
 
-function lincSoapRequestXml(username, password, unwrappedFormData){
-    let text, parser, xmlDoc;
-    text = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.linc" xmlns:x-="http://xml.apache.org/xml-soap"></soapenv:Envelope>';
-    parser = new DOMParser();
-    xmlDoc = parser.parseFromString(text,"text/xml");
-    let envelope = xmlDoc.documentElement;
-    let header = xmlDoc.createElement("soapenv:Header");
-    let body = xmlDoc.createElement("soapenv:Body");
-    envelope.appendChild(header);
-    envelope.appendChild(body);
-    let first_SBA_LINC = xmlDoc.createElement("ws:SBA_LINC");
-    body.appendChild(first_SBA_LINC);
-    let inner_SBA_LINC = xmlDoc.createElement("ws:SBA_LINC");
-    first_SBA_LINC.appendChild(inner_SBA_LINC);
-    let first_item = xmlDoc.createElement("x-:item");
-    let second_item = xmlDoc.createElement("x-:item");
-    let third_item = xmlDoc.createElement("x-:item");
-    inner_SBA_LINC.appendChild(first_item);
-    inner_SBA_LINC.appendChild(second_item);
-    inner_SBA_LINC.appendChild(third_item);
-    let first_item_key = xmlDoc.createElement("x-:key");
-    let first_item_value = xmlDoc.createElement("x-:value");
-    first_item.appendChild(first_item_key);
-    first_item.appendChild(first_item_value);
-    let key_username = xmlDoc.createTextNode("username");
-    first_item_key.appendChild(key_username);
-    let value_username = xmlDoc.createTextNode(username);
-    first_item_value.appendChild(value_username);
-    let second_item_key = xmlDoc.createElement("x-:key");
-    let second_item_value = xmlDoc.createElement("x-:value");
-    second_item.appendChild(second_item_key);
-    second_item.appendChild(second_item_value);
-    let key_password = xmlDoc.createTextNode("password");
-    second_item_key.appendChild(key_password);
-    let value_password = xmlDoc.createTextNode(password);
-    second_item_value.appendChild(value_password);
-    let third_item_key = xmlDoc.createElement("x-:key");
-    let third_item_value = xmlDoc.createElement("x-:value");
-    third_item.appendChild(third_item_key);
-    third_item.appendChild(third_item_value);
-    let key_SBA_LINC  = xmlDoc.createTextNode("SBA_LINC");
-    third_item_key.appendChild(key_SBA_LINC);
-    let wrapped_SBA_LINC = xmlDoc.createCDATASection(unwrappedFormData);
-    third_item_value.appendChild(wrapped_SBA_LINC);
-    let domSerializer = new XMLSerializer();
-    let soapRequestXml = domSerializer.serializeToString(xmlDoc);
-    console.log(soapRequestXml);
-    return soapRequestXml;
+            const dataXml = FormDataToXml.convertFormDataToXml(req);
+            console.log(dataXml);
+            const lincSoapRequestEnvelopeXml = this.createLincSoapRequestEnvelopeXml(username, password, dataXml);
+            console.log(lincSoapRequestEnvelopeXml);
+            var options = {
+                uri: soapUrl,
+                method: "POST",
+                followAllRedirects: true,
+                followOriginalHttpMethod: true,
+                body: lincSoapRequestEnvelopeXml,
+                timeout: 5000,
+                secureProtocol: 'TLSv1_2_method',
+                headers: [{
+                    name: 'Content-Type',
+                    value: 'text/xml; charset=UTF-8'
+                }]
+                /*,
+                agentOptions:{
+                    keepAlive: true,
+                    secureProtocol: 'TLSv1_2_method'}*/
+            };
+            //options.agent = new https.Agent(options);
+            request(options, function(error, response, body){
+                if(error){
+                    throw error;
+                }else{
+                    console.log(response);
+                    console.log(body);
+                    resolve("Data successfully received by OCA.");
+                }
+            });
+        });
+    }
+
+    createLincSoapRequestEnvelopeXml(username, password, unwrappedFormData){
+        let text, parser, xmlDoc;
+        text = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://ws.linc" xmlns:x-="http://xml.apache.org/xml-soap"></soapenv:Envelope>';
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text,"text/xml");
+        let envelope = xmlDoc.documentElement;
+        let header = xmlDoc.createElement("soapenv:Header");
+        let body = xmlDoc.createElement("soapenv:Body");
+        envelope.appendChild(header);
+        envelope.appendChild(body);
+        let first_SBA_LINC = xmlDoc.createElement("ws:SBA_LINC");
+        body.appendChild(first_SBA_LINC);
+        let inner_SBA_LINC = xmlDoc.createElement("ws:SBA_LINC");
+        first_SBA_LINC.appendChild(inner_SBA_LINC);
+        let first_item = xmlDoc.createElement("x-:item");
+        let second_item = xmlDoc.createElement("x-:item");
+        let third_item = xmlDoc.createElement("x-:item");
+        inner_SBA_LINC.appendChild(first_item);
+        inner_SBA_LINC.appendChild(second_item);
+        inner_SBA_LINC.appendChild(third_item);
+        let first_item_key = xmlDoc.createElement("x-:key");
+        let first_item_value = xmlDoc.createElement("x-:value");
+        first_item.appendChild(first_item_key);
+        first_item.appendChild(first_item_value);
+        let key_username = xmlDoc.createTextNode("username");
+        first_item_key.appendChild(key_username);
+        let value_username = xmlDoc.createTextNode(username);
+        first_item_value.appendChild(value_username);
+        let second_item_key = xmlDoc.createElement("x-:key");
+        let second_item_value = xmlDoc.createElement("x-:value");
+        second_item.appendChild(second_item_key);
+        second_item.appendChild(second_item_value);
+        let key_password = xmlDoc.createTextNode("password");
+        second_item_key.appendChild(key_password);
+        let value_password = xmlDoc.createTextNode(password);
+        second_item_value.appendChild(value_password);
+        let third_item_key = xmlDoc.createElement("x-:key");
+        let third_item_value = xmlDoc.createElement("x-:value");
+        third_item.appendChild(third_item_key);
+        third_item.appendChild(third_item_value);
+        let key_SBA_LINC  = xmlDoc.createTextNode("SBA_LINC");
+        third_item_key.appendChild(key_SBA_LINC);
+        let wrapped_SBA_LINC = xmlDoc.createCDATASection(unwrappedFormData);
+        third_item_value.appendChild(wrapped_SBA_LINC);
+        let domSerializer = new XMLSerializer();
+        let soapRequestXml = domSerializer.serializeToString(xmlDoc);
+        console.log(soapRequestXml);
+        return soapRequestXml;
+    }
+
 }
 
-let lincSoapRequest = function (soapUrl, req, username, password){
-    return new Promise(function(resolve){
-
-        const dataXml = FormDataToXml.convertFormDataToXml(req);
-        console.log(dataXml);
-        const soapRequestXml = lincSoapRequestXml(username, password, dataXml);
-        console.log(soapRequestXml);
-        var options = {
-            uri: soapUrl,
-            method: "POST",
-            followAllRedirects: true,
-            followOriginalHttpMethod: true,
-            body: soapRequestXml,
-            timeout: 5000,
-            secureProtocol: 'TLSv1_2_method',
-            headers: [{
-                name: 'Content-Type',
-                value: 'text/xml; charset=UTF-8'
-            }]
-            /*,
-            agentOptions:{
-                keepAlive: true,
-                secureProtocol: 'TLSv1_2_method'}*/
-        };
-        //options.agent = new https.Agent(options);
-        request(options, function(error, response, body){
-            if(error){
-                throw error;
-            }else{
-                console.log(response);
-                console.log(body);
-                resolve("Data successfully received by OCA.");
-            }
-        });
-    });
-};
-
-module.exports = lincSoapRequest;
+module.exports = LincSoapRequest;

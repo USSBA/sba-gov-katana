@@ -5,7 +5,7 @@ import zlib from 'zlib';
 var express = require('express');
 var config = require('config');
 var bodyParser = require('body-parser');
-var lincSoapRequest = require('../src/controllers/linc-soap-request');
+var LincSoapRequest = require('../src/controllers/linc-soap-request');
 
 var app = express();
 
@@ -146,7 +146,8 @@ app.post('/matchFormData', jsonParser, function(req, res){
         return;
     }
     //res.send("Data received successfully.");
-    lincSoapRequest(ocaSoapWSDL, req, username, password).then(function(response){
+    const soapRequest = new LincSoapRequest();
+    soapRequest.sendLincSoapRequest(ocaSoapWSDL, req, username, password).then(function(response){
         res.send(response);
     }).catch(function(error){
         var err = new Error("Error from OCA Soap service.");
