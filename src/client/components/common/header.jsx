@@ -32,6 +32,10 @@ class Header extends React.Component {
     document.location = uri
   }
 
+  googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+
 
   render() {
     return (
@@ -46,10 +50,11 @@ class Header extends React.Component {
             <MiniNav submitSearch={ this.submitSearch.bind(this) } handleSearchChange={ this.handleSearchChange.bind(this) } />
             <MobileNav submitSearch={ this.submitSearch.bind(this) } handleSearchChange={ this.handleSearchChange.bind(this) } />
             <Nav className={ styles.mainNav + " pull-right hidden-xs-down" } id="mainNavbar">
-              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Starting & Managing" id="basic-nav-dropdown" href="https://www.sba.gov/loans-grants/get-ready-apply">
+              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Starting & Managing" id="basic-nav-dropdown" href="https://www.sba.gov/starting-managing-business">
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
+                    <div id="google_translate_element" onClick={this.googleTranslateElementInit.bind(this)}>oioioioio</div>
                   <h3 className={ styles.dropdownHeader }><a href="https://www.sba.gov/starting-business">Starting a Business</a></h3>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business" eventKey={ 1.1 } >How to Start a Business</MenuItem>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/write-your-business-plan" eventKey={ 1.2 } >Write Your Business Plan</MenuItem>
@@ -78,7 +83,7 @@ class Header extends React.Component {
                 </Row>
                 </Col>
               </NavDropdown>
-              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Loans & Grants" id="basic-nav-dropdown">
+              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Loans & Grants" id="basic-nav-dropdown" href="https://www.sba.gov/loans-grants">
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
@@ -109,7 +114,7 @@ class Header extends React.Component {
                 </Row>
                 </Col>
               </NavDropdown>
-              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Contracting" id="basic-nav-dropdown">
+              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Contracting" id="basic-nav-dropdown" href="https://www.sba.gov/contracting">
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
@@ -160,7 +165,7 @@ class Header extends React.Component {
               <NavItem className={ styles.navDropdown } href="https://www.sba.gov/tools/sba-learning-center/search/training">
                 Learning Center
               </NavItem>
-              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Local Assistance" id="basic-nav-dropdown">
+              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="Local Assistance" id="basic-nav-dropdown" href="https://www.sba.gov/tools/local-assistance">
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
@@ -179,7 +184,7 @@ class Header extends React.Component {
                 </Row>
                 </Col>
               </NavDropdown>
-              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="About" id="basic-nav-dropdown">
+              <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="About" id="basic-nav-dropdown" href="https://www.sba.gov/about-sba">
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
@@ -236,12 +241,12 @@ class Header extends React.Component {
 const MiniNav = (props) => <Col xsHidden={ true }>
                            <Nav className="pull-right">
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">Translate</NavItem>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">SBA En Espanol</NavItem>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">For Lenders</NavItem>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">Newsroom</NavItem>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">Contact Us</NavItem>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">Register</NavItem>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">Log In</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://es.sba.gov/">SBA En Espanol</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/for-lenders">For Lenders</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/about-sba/sba-newsroom">Newsroom</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/about-sba/what-we-do/contact-sba">Contact Us</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/user/register">Register</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/user/login?destination=about-sba">Log In</NavItem>
                              <Search submitSearch={ props.submitSearch } handleSearchChange={ props.handleSearchChange } />
                            </Nav>
                            </Col>;
@@ -249,24 +254,24 @@ const MiniNav = (props) => <Col xsHidden={ true }>
 const MobileNav = (props) => <Nav className={ styles.mobileNav }>
                                <MobileSearch submitSearch={ props.submitSearch } handleSearchChange={ props.handleSearchChange } />
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="#">Starting & Managing</NavItem>
+                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="https://www.sba.gov/starting-managing-business">Starting & Managing</NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="#">Loans & Grants</NavItem>
+                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="https://www.sba.gov/loans-grants">Loans & Grants</NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="#">Contracting</NavItem>
+                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="https://www.sba.gov/contracting">Contracting</NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="#">Learning Center</NavItem>
+                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="https://www.sba.gov/tools/sba-learning-center/search/training">Learning Center</NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="#">Local Assistance</NavItem>
+                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="https://www.sba.gov/tools/local-assistance">Local Assistance</NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="#">About Us</NavItem>
+                               <NavItem className={ styles.mobileNavDropdown } eventKey={ 1 } href="https://www.sba.gov/about-sba">About Us</NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdownSub } eventKey={ 1 } href="#">
+                               <NavItem className={ styles.mobileNavDropdownSub } eventKey={ 1 } href="https://www.sba.gov/tools/local-assistance#locations-page">
                                  <p style={ { margin: "0px" } }>
                                    <Glyphicon style={ { marginRight: "10px" } } glyph="map-marker" /> SBA Near You</p>
                                </NavItem>
                                <hr className={ styles.sectionDivider } />
-                               <NavItem className={ styles.mobileNavDropdownSub } eventKey={ 1 } href="#">
+                               <NavItem className={ styles.mobileNavDropdownSub } eventKey={ 1 } href="https://www.sba.gov/tools/events#events-page">
                                  <p>
                                    <Glyphicon style={ { marginRight: "10px" } } glyph="calendar" /> Small Business Events</p>
                                </NavItem>
