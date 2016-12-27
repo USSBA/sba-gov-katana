@@ -7,7 +7,7 @@ import moment from "moment";
 import config from "config";
 import * as emailConfirmationDao from "../models/dao/email-confirmation.js";
 import * as lenderMatchRecordDao from "../models/dao/lender-match-record.js";
-import LincSoapRequest from  "linc-soap-request.js";
+import LincSoapRequest from  "./linc-soap-request.js";
 import HttpStatus from "http-status-codes";
 const numberOfHoursForWhichEmailIsValid = 48;
 //const ocaSoapWSDL = "https://catweb2.sba.gov/linc/ws/linc.wsdl";
