@@ -37,7 +37,7 @@ class Header extends React.Component {
                     <Navbar fluid={true} className={styles.navbar} expanded={this.state.expanded}>
 
                         <Navbar.Header className={styles.navbarHeader}>
-                            <Image className={styles.logo} src={sbaLogo}/>
+                            <Image className={styles.logo} src={sbaLogo} alt="SBA logo"/>
                             <NavToggle  onClick={this.toggleNav.bind(this)} expanded={this.state.expanded}/>
 
                         </Navbar.Header>
