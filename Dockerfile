@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY dist /usr/src/app/
 COPY public /usr/src/app/public
 RUN mv /tmp/node_modules /usr/src/app/
-COPY src/views /usr/src/app/src/views
+COPY src/views /usr/src/app/views
 
 EXPOSE 3000
 

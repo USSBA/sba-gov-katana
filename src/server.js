@@ -1,6 +1,6 @@
 //remove this when breaking server.js up into controllers -zandypants
 import zlib from "zlib";
-
+import path from "path";
 /*Contains express server setup*/
 import express from "express";
 import config from "config";
@@ -11,7 +11,7 @@ const app = express();
 
 //set up template engine
 app.set("view engine", "pug");
-app.set("views", "./src/views");
+app.set("views", path.join(__dirname, "./views/"));
 
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
