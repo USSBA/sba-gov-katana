@@ -65,7 +65,8 @@ app.get("*", function(req, res) {
 // development error handler
 // will print stacktrace
 if (config.get("developmentOptions.webpack.enabled")) {
-  app.use(function(err, req, res) {
+  app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
+    console.log(arguments);
     res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
     res.render("error", {
       message: err.message,
@@ -73,17 +74,19 @@ if (config.get("developmentOptions.webpack.enabled")) {
     });
   });
 
+} else {
+  // production error handler
+  // no stacktraces leaked to user
+  app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
+    res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+    res.render("error", {
+      message: err.message,
+      error: {}
+    });
+  });
+
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res) {
-  res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-  res.render("error", {
-    message: err.message,
-    error: {}
-  });
-});
 
 //listen to port
 const port = config.get("server.port");
