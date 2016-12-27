@@ -1,4 +1,4 @@
-import { dbConnection } from "../mongodbConnection.js";
+import { dbConnection } from "../mongodb.js";
 import Promise from "bluebird";
 import uuid from "uuid";
 import _ from "lodash";

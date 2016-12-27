@@ -10,10 +10,10 @@ import * as lenderMatchRecordDao from "../models/dao/lender-match-record.js";
 import LincSoapRequest from  "linc-soap-request.js";
 import HttpStatus from "http-status-codes";
 const numberOfHoursForWhichEmailIsValid = 48;
-//const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.wsdl';
-const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.cfc';
-const username = 'OCPL_LincUser';
-const password = 'zQUcm4Yu';
+//const ocaSoapWSDL = "https://catweb2.sba.gov/linc/ws/linc.wsdl";
+const ocaSoapWSDL = "https://catweb2.sba.gov/linc/ws/linc.cfc";
+const username = "OCPL_LincUser";
+const password = "zQUcm4Yu";
 
 function createConfirmation(req, res) {
   lenderMatchRecordDao.create(req.body) // TODO: trim this to certain properties that are needed

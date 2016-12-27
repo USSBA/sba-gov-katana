@@ -1,5 +1,4 @@
 import axios from "axios";
-const queryString = require("qs");
 
 export function matchFormData(reviewSubmitInfoData){
     return function(dispatch){
