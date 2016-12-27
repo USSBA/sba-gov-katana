@@ -102,6 +102,11 @@ $primary-color: #609F00;
         color: $primary-color;
     }
 
+    .dropdownHeader:hover {
+        text-decoration: underline;
+        color: darken($primary-color, 7%);
+    }
+
     .dropdownItem {
         margin-top: 0.8vw !important;
         margin-bottom: 0.8vw !important;
@@ -116,7 +121,7 @@ $primary-color: #609F00;
     }
 
     .dropdownItem > a:hover {
-        color: $primary-color;
+        text-decoration: underline;
     }
 
     //styles for search bar
