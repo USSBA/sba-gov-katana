@@ -54,7 +54,7 @@ app.post("/matchLocalAssistants", jsonParser, function(req, res) {
 
 
 app.get("/matchCounselors", jsonParser, function(req, res) {
-  console.log(req.body.zipcode);
+  console.log("zip = " + req.body.zipcode);
   res.status(HttpStatus.NO_CONTENT).send();
 });
 
