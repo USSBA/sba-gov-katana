@@ -12,7 +12,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'public', "build"),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/public/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -44,17 +44,11 @@ module.exports = {
             test: /\.json$/,
             loader: 'json-loader'
         }, {
-            test: /\.gif$/,
-            loader: "url-loader?mimetype=image/png"
-        }, {
-            test: /\.(woff|woff2|ttf|otf|eot|svg)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
-            loader: 'url-loader?limit=100000'
+            test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
+            loader: 'url-loader?limit=150000'
         }, {
             test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
             loader: 'imports-loader?jQuery=jquery'
-        }, {
-            test: /\.(png|jpg)$/,
-            loader: 'url-loader?limit=8192'
         }]
     }
 };

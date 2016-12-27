@@ -5,14 +5,14 @@ import ConfirmSection from './confirm-section.jsx';
 
 
 class SuccessPage extends React.Component {
-    render(){
-        return (
-            <div>
-                <ConfirmSection />
-                <DynamicCounselingAndTools />
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <ConfirmSection />
+        <DynamicCounselingAndTools />
+      </div>
+    )
+  }
 
 }
 

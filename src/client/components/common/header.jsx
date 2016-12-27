@@ -273,40 +273,40 @@ const MiniNav = (props) =>
     </Col>;
 
 const MobileNav = (props) =>
-        <Nav className={styles.mobileNav}>
+    <Nav className={styles.mobileNav}>
 
-            <MobileSearch submitSearch={props.submitSearch} handleSearchChange={props.handleSearchChange}/>
-            <hr className={styles.sectionDivider}/>
+        <MobileSearch submitSearch={props.submitSearch} handleSearchChange={props.handleSearchChange}/>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Starting & Managing</NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Starting & Managing</NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Loans & Grants</NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Loans & Grants</NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Contracting</NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Contracting</NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Learning Center</NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Learning Center</NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Local Assistance</NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Local Assistance</NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">About Us</NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">About Us</NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdownSub} eventKey={1} href="#">
-                <p style={{margin: "0px"}}><Glyphicon style={{marginRight: "10px"}} glyph="map-marker"/> SBA Near You</p>
-            </NavItem>
-            <hr className={styles.sectionDivider}/>
+        <NavItem className={styles.mobileNavDropdownSub} eventKey={1} href="#">
+            <p style={{margin: "0px"}}><Glyphicon style={{marginRight: "10px"}} glyph="map-marker"/> SBA Near You</p>
+        </NavItem>
+        <hr className={styles.sectionDivider}/>
 
-            <NavItem className={styles.mobileNavDropdownSub} eventKey={1} href="#">
-                <p><Glyphicon style={{marginRight: "10px"}} glyph="calendar"/> Small Business Events</p>
-            </NavItem>
+        <NavItem className={styles.mobileNavDropdownSub} eventKey={1} href="#">
+            <p><Glyphicon style={{marginRight: "10px"}} glyph="calendar"/> Small Business Events</p>
+        </NavItem>
 
 
-        </Nav>;
+    </Nav>;
 
 
 export class Search extends React.Component {
