@@ -7,8 +7,13 @@ import moment from "moment";
 import config from "config";
 import * as emailConfirmationDao from "../models/dao/email-confirmation.js";
 import * as lenderMatchRecordDao from "../models/dao/lender-match-record.js";
+import LincSoapRequest from  "linc-soap-request.js";
 import HttpStatus from "http-status-codes";
 const numberOfHoursForWhichEmailIsValid = 48;
+//const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.wsdl';
+const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.cfc';
+const username = 'OCPL_LincUser';
+const password = 'zQUcm4Yu';
 
 function createConfirmation(req, res) {
   lenderMatchRecordDao.create(req.body) // TODO: trim this to certain properties that are needed
@@ -102,8 +107,14 @@ function handleEmailConfirmation(req, res) {
           confirmed: now
         });
         emailConfirmationDao.update(confirmedRecord).then(function() {
-          // AYO submit OCA request here
-          res.redirect("/emailconfirmed");
+          // AYO submit OCA request
+            const soapRequest = new LincSoapRequest();
+            soapRequest.sendLincSoapRequest(ocaSoapWSDL, req, username, password).then(function(response){
+                res.send(response);
+            }).catch(function(error){
+                res.send(error.message);
+            });
+            res.redirect("/emailconfirmed");
         });
       } else {
         res.redirect("/emailinvalid");

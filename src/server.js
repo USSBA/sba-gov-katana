@@ -9,10 +9,6 @@ import HttpStatus from "http-status-codes";
 
 const app = express();
 
-//const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.wsdl';
-const ocaSoapWSDL = 'https://catweb2.sba.gov/linc/ws/linc.cfc';
-var username = 'OCPL_LincUser';
-var password = 'zQUcm4Yu';
 //set up template engine
 app.set("view engine", "pug");
 app.set("views", "./src/views");
