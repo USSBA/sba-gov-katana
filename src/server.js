@@ -20,7 +20,7 @@ const jsonParser = bodyParser.json();
 app.use(express.static("./public"));
 
 
-if (config.get("developmentOptions.webpack")) {
+if (config.get("developmentOptions.webpack.enabled")) {
   const webpack = require("webpack"); // eslint-disable-line global-require
   const webpackConfig = require("../webpack.config"); // eslint-disable-line global-require
   const compiler = webpack(webpackConfig);
@@ -64,7 +64,7 @@ app.get("*", function(req, res) {
 
 // development error handler
 // will print stacktrace
-if (config.get("developmentOptions.webpack")) {
+if (config.get("developmentOptions.webpack.enabled")) {
   app.use(function(err, req, res) {
     res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
     res.render("error", {
