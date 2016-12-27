@@ -53,7 +53,7 @@ app.post("/matchLocalAssistants", jsonParser, function(req, res) {
 });
 
 
-app.post("/matchCounselors", jsonParser, function(req, res) {
+app.get("/matchCounselors", jsonParser, function(req, res) {
   console.log(req.body.zipcode);
   res.status(HttpStatus.NO_CONTENT).send();
 });
