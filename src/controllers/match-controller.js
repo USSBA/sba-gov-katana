@@ -106,15 +106,17 @@ function handleEmailConfirmation(req, res) {
         const confirmedRecord = _.merge({}, emailConfirmationRecord, {
           confirmed: now
         });
-        emailConfirmationDao.update(confirmedRecord).then(function() {
+        emailConfirmationDao.update(confirmedRecord).then(function(result) {
           // AYO submit OCA request
-            const soapRequest = new LincSoapRequest();
-            soapRequest.sendLincSoapRequest(ocaSoapWSDL, req, username, password).then(function(response){
-                res.send(response);
-            }).catch(function(error){
-                res.send(error.message);
+            lenderMatchRecordDao.retrieve(result.value.lenderMatchRecordId).then(function(lenderMatchRecord){
+                const soapRequest = new LincSoapRequest();
+                soapRequest.sendLincSoapRequest(ocaSoapWSDL, lenderMatchRecord, username, password).then(function(response){
+                    res.send(response);
+                }).catch(function(error){
+                    res.send(error.message);
+                });
+                res.redirect("/emailconfirmed");
             });
-            res.redirect("/emailconfirmed");
         });
       } else {
         res.redirect("/emailinvalid");

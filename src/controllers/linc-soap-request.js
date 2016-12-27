@@ -11,37 +11,37 @@ class SbaLincEnq {
             //UniqueID <= 30 chars
             this.UniqueID = this.formatMoment() + "-" + dbUserID + "-" + submissionID;
             //LoanName <= 255 chars
-            this.LoanName = req.body.businessInfoData.businessInfoName;
+            this.LoanName = req.businessInfoData.businessInfoName;
             //ProjectZipCd = 5 chars
-            this.ProjectZipCd = req.body.businessInfoData.businessInfoZipcode;
+            this.ProjectZipCd = req.businessInfoData.businessInfoZipcode;
             //ProjectZip4Cd = 4 chars
             this.ProjectZip4Cd = "0000";
             //FirstName <= 80 chars
-            this.FirstName = this.fName(req.body.contactInfoData.contactFullName);
+            this.FirstName = this.fName(req.contactInfoData.contactFullName);
             //LastName <= 80 chars
-            this.LastName = this.lName(req.body.contactInfoData.contactFullName);
+            this.LastName = this.lName(req.contactInfoData.contactFullName);
             //PrimaryPhone <= 25 chars
-            this.PrimaryPhone = req.body.contactInfoData.contactPhoneNumber;
+            this.PrimaryPhone = req.contactInfoData.contactPhoneNumber;
             //PrimaryEmail <= 255 chars
-            this.PrimaryEmail = req.body.contactInfoData.contactEmailAddress;
+            this.PrimaryEmail = req.contactInfoData.contactEmailAddress;
             //CurrEmpQty = int
             this.CurrEmpQty = "";
             //BusinessAgeCd = 2 chars
-            this.BusinessAgeCd = this.bAgeCd(req.body.industryInfoData.industryExperience);
+            this.BusinessAgeCd = this.bAgeCd(req.industryInfoData.industryExperience);
             //GrossRevenueSales  = decimal
             this.GrossRevenueSales = "";
             //LegalOrgnztnCd = 2 chars
             this.LegalOrgnztnCd = "";
             //BusinessDtlTypCd = 2 chars
-            this.BusinessDtlTypCd = this.bDtlTypCd(req.body.industryInfoData.industryType);
+            this.BusinessDtlTypCd = this.bDtlTypCd(req.industryInfoData.industryType);
             //BusinessDtlTypTxt <= 255 chars
             this.BusinessDtlTypTxt = this.bDtlTypTxt(req);
             //LoanProceedTypCd <= 255 comma delimited
-            this.LoanProceedTypCd = this.lProceedTypCd(req.body.loanData.loanDescription);
+            this.LoanProceedTypCd = this.lProceedTypCd(req.loanData.loanDescription);
             //ProceedOthTypTxt <= 255 chars
             this.ProceedOthTypTxt = req.body.loanData.loanUsage;
             //RequestedAmtRangeCd = 2 chars
-            this.RequestedAmtRangeCd = this.reqAmtRangeCd(req.body.loanData.loanAmount);
+            this.RequestedAmtRangeCd = this.reqAmtRangeCd(req.loanData.loanAmount);
             //CollateralInd Y for Yes  or N for No
             this.CollateralInd = "N";
             //CollateralDesc <= 255 chars
@@ -235,7 +235,7 @@ class SbaLincEnq {
     }
 
     vetInd(req){
-        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("isVeteran") && (req.body.additionalInfoData.isVeteran === "on")){
+        if(req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("isVeteran") && (req.additionalInfoData.isVeteran === true)){
             return "6";
         }else{
             return "1";
@@ -243,7 +243,7 @@ class SbaLincEnq {
     }
 
     bPlanInd(req){
-        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("hasWrittenPlan") && (req.body.additionalInfoData.hasWrittenPlan === "on")){
+        if(req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("hasWrittenPlan") && (req.additionalInfoData.hasWrittenPlan === true)){
             return "Y";
         }else{
             return "N";
@@ -251,7 +251,7 @@ class SbaLincEnq {
     }
 
     oFundSourceInd(req){
-        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("isGeneratingRevenue") && (req.body.additionalInfoData.isGeneratingRevenue === "on")){
+        if(req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("isGeneratingRevenue") && (req.additionalInfoData.isGeneratingRevenue === true)){
             return "Y";
         }else{
             return "N";
@@ -259,7 +259,7 @@ class SbaLincEnq {
     }
 
     bAdvisoryInd(req){
-        if(req.body.hasOwnProperty("additionalInfoData") && req.body.additionalInfoData.hasOwnProperty("hasFinancialProjections") && (req.body.additionalInfoData.hasFinancialProjections === "on")){
+        if(req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("hasFinancialProjections") && (req.additionalInfoData.hasFinancialProjections === true)){
             return "Y";
         }else{
             return "N";
@@ -267,16 +267,16 @@ class SbaLincEnq {
     }
 
     bDtlTypTxt(req){
-        if(("loanData" in req.body) && ("loanUsage" in req.body.loanData)){
-            return (req.body.loanData.loanUsage);
+        if(("loanData" in req) && ("loanUsage" in req.loanData)){
+            return (req.loanData.loanUsage);
         }else{
             return "";
         }
     }
 
     bStatusDescTxt(req){
-        if(("businessInfoData" in req.body) && ("businessInfoDescription" in req.body.businessInfoData)){
-            return req.body.businessInfoData.businessInfoDescription;
+        if(("businessInfoData" in req) && ("businessInfoDescription" in req.businessInfoData)){
+            return req.businessInfoData.businessInfoDescription;
         }else{
             return "";
         }
