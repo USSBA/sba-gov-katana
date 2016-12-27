@@ -67,24 +67,37 @@ app.get("*", function(req, res) {
 if (config.get("developmentOptions.webpack.enabled")) {
   app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
     console.log(arguments);
-    res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-    res.render("error", {
-      message: err.message,
-      error: err
-    });
+    if (req.xhr) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+        error: "Something went wrong! Oh no!"
+      });
+    } else {
+      res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+      res.render("error", {
+        message: err.message,
+        error: err
+      });
+    }
+
+
   });
 
 } else {
   // production error handler
   // no stacktraces leaked to user
   app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
-    res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-    res.render("error", {
-      message: err.message,
-      error: {}
-    });
+    if (req.xhr) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+        error: "Something went wrong! Oh no!"
+      });
+    } else {
+      res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+      res.render("error", {
+        message: err.message,
+        error: {}
+      });
+    }
   });
-
 }
 
 
