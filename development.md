@@ -11,7 +11,7 @@ This is for the development/build setup guide
 5. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
 
 ## Development Process
-1. ~~`yarn` to install the dependencies~~ `npm install`
+1. `npm install`
 2. Create config/local.yaml e.g.
 >    database:
 >        mongoConnectString: mongodb://localhost:27017/sba
