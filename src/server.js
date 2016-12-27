@@ -19,8 +19,8 @@ const jsonParser = bodyParser.json();
 //set up static files handler not route specific but will route to any static files inside public and its subfolders
 app.use(express.static("./public"));
 
-
 if (config.get("developmentOptions.webpack.enabled")) {
+  console.log("Enabling Webpack");
   const webpack = require("webpack"); // eslint-disable-line global-require
   const webpackConfig = require("../webpack.config"); // eslint-disable-line global-require
   const compiler = webpack(webpackConfig);
@@ -66,19 +66,20 @@ app.get("*", function(req, res) {
 // will print stacktrace
 if (config.get("developmentOptions.webpack.enabled")) {
   app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
-    console.log(arguments);
-    if (req.xhr) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
-        error: "Something went wrong! Oh no!"
-      });
-    } else {
-      res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-      res.render("error", {
-        message: err.message,
-        error: err
-      });
+    if (err) {
+      console.log(err);
+      if (req.xhr) {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+          error: "Something went wrong! Oh no!"
+        });
+      } else {
+        res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+        res.render("error", {
+          message: err.message,
+          error: err
+        });
+      }
     }
-
 
   });
 
@@ -86,16 +87,20 @@ if (config.get("developmentOptions.webpack.enabled")) {
   // production error handler
   // no stacktraces leaked to user
   app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
-    if (req.xhr) {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
-        error: "Something went wrong! Oh no!"
-      });
-    } else {
-      res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-      res.render("error", {
-        message: err.message,
-        error: {}
-      });
+    if (err) {
+      console.log(err);
+      if (req.xhr) {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+          error: "Something went wrong! Oh no!"
+        });
+      } else {
+
+        res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
+        res.render("error", {
+          message: err.message,
+          error: {}
+        });
+      }
     }
   });
 }
