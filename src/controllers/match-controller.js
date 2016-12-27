@@ -46,7 +46,7 @@ function createConfirmation(req, res) {
         })
         .then(emailConfirmationDao.create)
         .then(function() {
-          res.status(HttpStatus.NO_CONTENT).send();
+          res.status(HttpStatus.OK).send();
         });
     });
 }
@@ -92,6 +92,7 @@ function handleLenderMatchSubmission(req, res) {
   if (_.isEmpty(errors)) {
     createConfirmation(req, res);
   } else {
+    console.log(errors);
     res.status(HttpStatus.BAD_REQUEST).send("Error during validation: " + errors.join(","));
   }
 }

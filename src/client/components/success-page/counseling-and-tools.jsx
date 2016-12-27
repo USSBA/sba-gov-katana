@@ -13,7 +13,7 @@ export class DynamicCounselingAndTools extends React.Component {
 
   componentWillMount() {
     console.log(this.props)
-    axios.post('/matchCounselors', {
+    axios.get('/matchCounselors', {
       zipcode: this.props.businessInfoData.businessInfoZipcode
     })
       .then(function(res) {
@@ -56,4 +56,3 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps
 )(DynamicCounselingAndTools)
-
