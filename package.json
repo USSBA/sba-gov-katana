@@ -72,7 +72,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.27",
     "xml2js": "^0.4.17",
-    "xmldom": "^0.1.27"
+    "xmldom": "^0.1.27",
     "uuid": "^3.0.1",
     "webpack": "^2.1.0-beta.27"
   },
