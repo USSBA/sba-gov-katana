@@ -33,8 +33,11 @@ class Header extends React.Component {
   }
 
   googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
 
 
   render() {
@@ -54,18 +57,18 @@ class Header extends React.Component {
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
-                    <div id="google_translate_element" onClick={this.googleTranslateElementInit.bind(this)}>oioioioio</div>
+                  <div id="google_translate_element" onClick={ this.googleTranslateElementInit.bind(this) }>oioioioio</div>
                   <h3 className={ styles.dropdownHeader }><a href="https://www.sba.gov/starting-business">Starting a Business</a></h3>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business" eventKey={ 1.1 } >How to Start a Business</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/write-your-business-plan" eventKey={ 1.2 } >Write Your Business Plan</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/choose-your-business-structure" eventKey={ 1.3 } >Choose Your Business Structure</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/choose-register-your-business" eventKey={ 1.4 } >Choose & Register Your Business</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/choose-your-business-location-equipment" eventKey={ 1.5 } >Choose Your Business Location and Equipment</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/business-licenses-permits" eventKey={ 1.6 } >Business Licenses & Permits</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/learn-about-business-laws" eventKey={ 1.7 } >Learn About Business Laws</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/business-financials" eventKey={ 1.8 } >Business Financials</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/filing-paying-taxes" eventKey={ 1.9 } >Filing and Paying Taxes</MenuItem>
-                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/hire-retain-employees" eventKey={ 1.10 } >Hire and Retain Employees</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business" eventKey={ 1.1 }>How to Start a Business</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/write-your-business-plan" eventKey={ 1.2 }>Write Your Business Plan</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/choose-your-business-structure" eventKey={ 1.3 }>Choose Your Business Structure</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/choose-register-your-business" eventKey={ 1.4 }>Choose & Register Your Business</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/choose-your-business-location-equipment" eventKey={ 1.5 }>Choose Your Business Location and Equipment</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/business-licenses-permits" eventKey={ 1.6 }>Business Licenses & Permits</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/learn-about-business-laws" eventKey={ 1.7 }>Learn About Business Laws</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/business-financials" eventKey={ 1.8 }>Business Financials</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/filing-paying-taxes" eventKey={ 1.9 }>Filing and Paying Taxes</MenuItem>
+                  <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/hire-retain-employees" eventKey={ 1.10 }>Hire and Retain Employees</MenuItem>
                   </Col>
                   <Col sm={ 3 } smOffset={ 1 }>
                   <h3 className={ styles.dropdownHeader }><a href="https://www.sba.gov/managing-business">Managing a Business</a></h3>
@@ -122,13 +125,13 @@ class Header extends React.Component {
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/what-government-contracting/overview" eventKey={ 3.1 }>Overview</MenuItem>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/what-government-contracting/sbas-role-government-contracting" eventKey={ 3.2 }>SBA's Role in Contracting</MenuItem>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/what-government-contracting/your-responsibilities-contractor" eventKey={ 3.3 }>Your Responsibilities as a Contractor</MenuItem>
-                  {/*<MenuItem className={ styles.dropdownItem } href="#" eventKey={ 3.4 }>Contracting Regulations</MenuItem>*/}
+                  { /*<MenuItem className={ styles.dropdownItem } href="#" eventKey={ 3.4 }>Contracting Regulations</MenuItem>*/ }
                   </Col>
                   <Col sm={ 3 } smOffset={ 1 }>
                   <h3 className={ styles.dropdownHeader }><a href="https://www.sba.gov/contracting/getting-started-contractor">Getting Started as a Contractor</a></h3>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/getting-started-contractor/qualifying-small-business" eventKey={ 5.1 }>Qualifying as a Small Business</MenuItem>
-                  {/*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 5.2 }>Determine Your Financial Needs</MenuItem>*/}
-                  {/*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 5.3 }>Gather The Info You'll Need</MenuItem>*/}
+                  { /*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 5.2 }>Determine Your Financial Needs</MenuItem>*/ }
+                  { /*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 5.3 }>Gather The Info You'll Need</MenuItem>*/ }
                   </Col>
                   <Col sm={ 3 } smOffset={ 1 }>
                   <h3 className={ styles.dropdownHeader }><a href="https://www.sba.gov/contracting/finding-government-customers">Finding Government Customers</a></h3>
@@ -144,7 +147,7 @@ class Header extends React.Component {
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/resources-small-businesses/commercial-market-representatives" eventKey={ 3.2 }>Commercial Market Representatives</MenuItem>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/resources-small-businesses/procurement-center-representatives" eventKey={ 3.3 }>Procurement Center Representatives</MenuItem>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/resources-small-businesses/report-fraud-waste-abuse" eventKey={ 3.4 }>Report Fraud</MenuItem>
-                  {/*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 3.4 }>Size Protest</MenuItem>*/}
+                  { /*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 3.4 }>Size Protest</MenuItem>*/ }
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/contracting/resources-small-businesses/certificates-competency" eventKey={ 3.4 }>Certificates of Competency</MenuItem>
                   </Col>
                   <Col sm={ 3 } smOffset={ 1 }>

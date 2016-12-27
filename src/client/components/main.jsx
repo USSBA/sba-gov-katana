@@ -20,6 +20,7 @@ import BusinessInfo from './lender-match/business-info.jsx';
 import IndustryInfo from './lender-match/industry-info.jsx';
 import AdditionalInfo from './lender-match/additional-info.jsx';
 import ReviewSubmitInfo from './lender-match/review-submit-info.jsx';
+import Homepage from './homepage/homepage.jsx';
 
 const middleware = applyMiddleware(thunk);
 const store = createStore(rootReducer, middleware);
@@ -52,6 +53,7 @@ ReactDOM.render(
          <Route path="success" component={ SuccessPage } />
          <Route path="emailconfirmed" component={ EmailConfirmedPage } />
          <Route path="emailinvalid" component={ EmailConfirmationInvalid } />
+         <Route path="homepage" component={ Homepage }/>
        </Route>
      </Router>
    </Provider>),
