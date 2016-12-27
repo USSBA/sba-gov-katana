@@ -57,7 +57,6 @@ class Header extends React.Component {
                 <Col sm={ 10 } smOffset={ 1 }>
                 <Row>
                   <Col sm={ 3 }>
-                  <div id="google_translate_element" onClick={ this.googleTranslateElementInit.bind(this) }>oioioioio</div>
                   <h3 className={ styles.dropdownHeader }><a href="https://www.sba.gov/starting-business">Starting a Business</a></h3>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business" eventKey={ 1.1 }>How to Start a Business</MenuItem>
                   <MenuItem className={ styles.dropdownItem } href="https://www.sba.gov/starting-business/write-your-business-plan" eventKey={ 1.2 }>Write Your Business Plan</MenuItem>
