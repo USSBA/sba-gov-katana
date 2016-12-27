@@ -97,9 +97,17 @@ $primary-color: #609F00;
 
     //styles the dropdown children
     .dropdownHeader {
+    }
+
+    .dropdownHeader > a {
         font-size: calc(1.3vw - 2px);
         font-weight: bold;
         color: $primary-color;
+    }
+
+    .dropdownHeader > a:hover {
+        text-decoration: underline;
+        color: darken($primary-color, 7%);
     }
 
     .dropdownItem {
@@ -116,7 +124,7 @@ $primary-color: #609F00;
     }
 
     .dropdownItem > a:hover {
-        color: $primary-color;
+        text-decoration: underline;
     }
 
     //styles for search bar
