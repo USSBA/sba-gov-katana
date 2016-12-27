@@ -53,7 +53,7 @@ ReactDOM.render(
          <Route path="success" component={ SuccessPage } />
          <Route path="emailconfirmed" component={ EmailConfirmedPage } />
          <Route path="emailinvalid" component={ EmailConfirmationInvalid } />
-         <Route path="homepage" component={ Homepage }/>
+         <Route path="homepage" component={ Homepage } />
        </Route>
      </Router>
    </Provider>),
