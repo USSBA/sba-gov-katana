@@ -1,11 +1,13 @@
 import axios from "axios";
 
-export function matchFormData(reviewSubmitInfoData){
-    return function(dispatch){
-        dispatch({type: "MATCH_FORM_DATA_START"});
-        console.log("Match Form Data being sent to the server.");
-        axios.post("matchFormData",
-            reviewSubmitInfoData/*,
+export function matchFormData(reviewSubmitInfoData) {
+  return function(dispatch) {
+    dispatch({
+      type: "MATCH_FORM_DATA_START"
+    });
+    console.log("Match Form Data being sent to the server.");
+    axios.post("matchFormData",
+      reviewSubmitInfoData /*,
 export function matchFormData(reviewSubmitInfoData) {
   console.log("JSON stringify: " + JSON.stringify(reviewSubmitInfoData));
   //console.log("querystring stringify: " + querystring.stringify(reviewSubmitInfoData));
