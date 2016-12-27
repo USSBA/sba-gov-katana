@@ -8,7 +8,8 @@ class Header extends React.Component {
     constructor(){
         super();
         this.state = {
-            expanded: false
+            expanded: false,
+            searchValue: ""
         }
     }
 
@@ -16,9 +17,17 @@ class Header extends React.Component {
         this.setState({expanded: !this.state.expanded})
     }
 
-    toggleSearch(){
-        this.setState({search: !this.state.search})
+    handleSearchChange(e){
+        console.log(this.state.searchValue);
+        this.setState({searchValue: e.target.value})
     }
+
+    submitSearch(e){
+        e.preventDefault();
+        let uri = encodeURI("https://www.sba.gov/tools/search-result-page?search=" + this.state.searchValue);
+        document.location = uri
+    }
+
 
     render() {
         return (
@@ -36,9 +45,9 @@ class Header extends React.Component {
 
                         <Navbar.Collapse>
 
-                            <MiniNav/>
+                            <MiniNav submitSearch={this.submitSearch.bind(this)} handleSearchChange={this.handleSearchChange.bind(this)}/>
 
-                            <MobileNav/>
+                            <MobileNav submitSearch={this.submitSearch.bind(this)} handleSearchChange={this.handleSearchChange.bind(this)}/>
 
                             <Nav className={styles.mainNav + " pull-right hidden-xs-down"} id="mainNavbar">
 
@@ -259,16 +268,15 @@ const MiniNav = (props) =>
             <NavItem className={styles.miniNavItem} eventKey={1} href="#">Contact Us</NavItem>
             <NavItem className={styles.miniNavItem} eventKey={1} href="#">Register</NavItem>
             <NavItem className={styles.miniNavItem} eventKey={1} href="#">Log In</NavItem>
-            <Search/>
+            <Search submitSearch={props.submitSearch} handleSearchChange={props.handleSearchChange}/>
         </Nav>
     </Col>;
 
 const MobileNav = (props) =>
         <Nav className={styles.mobileNav}>
 
-            <Col>
-                
-            </Col>
+            <MobileSearch submitSearch={props.submitSearch} handleSearchChange={props.handleSearchChange}/>
+            <hr className={styles.sectionDivider}/>
 
             <NavItem className={styles.mobileNavDropdown} eventKey={1} href="#">Starting & Managing</NavItem>
             <hr className={styles.sectionDivider}/>
@@ -289,13 +297,15 @@ const MobileNav = (props) =>
             <hr className={styles.sectionDivider}/>
 
             <NavItem className={styles.mobileNavDropdownSub} eventKey={1} href="#">
-                <p><Glyphicon style={{marginRight: "10px"}} glyph="map-marker"/> SBA Near You</p>
+                <p style={{margin: "0px"}}><Glyphicon style={{marginRight: "10px"}} glyph="map-marker"/> SBA Near You</p>
             </NavItem>
             <hr className={styles.sectionDivider}/>
 
             <NavItem className={styles.mobileNavDropdownSub} eventKey={1} href="#">
                 <p><Glyphicon style={{marginRight: "10px"}} glyph="calendar"/> Small Business Events</p>
             </NavItem>
+
+
         </Nav>;
 
 
@@ -303,8 +313,7 @@ export class Search extends React.Component {
     constructor(){
         super();
         this.state = {
-            search: false,
-            value: ""
+            search: false
         }
     }
 
@@ -312,26 +321,15 @@ export class Search extends React.Component {
         this.setState({search: !this.state.search})
     }
 
-    search(e){
-        e.preventDefault();
-        let uri = encodeURI("https://www.sba.gov/tools/search-result-page?search=" + this.state.value);
-        document.location = uri
-    }
-
-    handleChange(e){
-        console.log(this.state.value)
-        this.setState({value: e.target.value})
-    }
-
     render(){
         return(
             <NavItem className={!!this.state.search ? styles.searchNavItem : styles.miniNavItem }  eventKey={1} href="#">
                 {!!this.state.search ? (
-                    <form onSubmit={(e) => this.search(e)}  >
+                    <form onSubmit={(e) => this.props.submitSearch(e)}  >
                         <FormGroup className={styles.searchBar}>
                             <InputGroup className={styles.searchBar}>
                                 <InputGroup.Addon className={styles.searchAddon}><Glyphicon className={styles.searchBarIcon} glyph="search"/></InputGroup.Addon>
-                                <FormControl onChange={(e) => this.handleChange(e)} className={styles.searchBar} type="text" placeholder="Search" />
+                                <FormControl onChange={(e) => this.props.handleSearchChange(e)} className={styles.searchBar} type="text" placeholder="Search SBA.gov" />
                             </InputGroup>
                         </FormGroup>
                     </form>
@@ -342,6 +340,19 @@ export class Search extends React.Component {
         )
     }
 }
+
+const MobileSearch = (props) =>
+    <NavItem className={styles.searchNavItem}  eventKey={1} href="#">
+        <form onSubmit={(e) => props.submitSearch(e)}>
+            <FormGroup className={styles.searchBar}>
+                <InputGroup className={styles.searchBar}>
+                    <InputGroup.Addon className={styles.searchAddon}><Glyphicon className={styles.searchBarIcon} glyph="search"/></InputGroup.Addon>
+                    <FormControl onChange={(e) => props.handleSearchChange(e)} className={styles.searchBar} type="text" placeholder="Search SBA.gov" />
+                </InputGroup>
+            </FormGroup>
+        </form>
+    </NavItem>;
+
 
 
 const NavToggle = ({expanded, onClick, ...props}) => {
