@@ -31,12 +31,12 @@ $primary-color: #609F00;
 
     //styles the small top nav
     .miniNavItem > a {
-        font-size: calc(1.3vw - 2px);
+        font-size: calc(1.1vw - 2px);
         margin-top: 1vw;
         padding-left: 6px !important;
         padding-right: 6px !important;
-        padding-top: 0.5em !important;
-        padding-bottom: 0.5em !important;
+        padding-top: 0.3em !important;
+        padding-bottom: 0.3em !important;
     }
 
     //styles nav dropdown
@@ -116,7 +116,7 @@ $primary-color: #609F00;
     }
 
     .dropdownItem > a {
-        font-size: calc(1.3vw - 2px);
+        font-size: calc(1.1vw - 2px);
         color: black;
         outline: none !important;
         background: none;
