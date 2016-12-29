@@ -31,7 +31,7 @@ class Header extends React.Component {
     let uri = encodeURI("https://www.sba.gov/tools/search-result-page?search=" + this.state.searchValue);
     document.location = uri
   }
-  
+
 
   render() {
     return (
