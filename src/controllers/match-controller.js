@@ -10,29 +10,32 @@ import * as lenderMatchRecordDao from "../models/dao/lender-match-record.js";
 import LincSoapRequest from  "./linc-soap-request.js";
 import HttpStatus from "http-status-codes";
 const numberOfHoursForWhichEmailIsValid = 48;
-//const ocaSoapWSDL = "https://catweb2.sba.gov/linc/ws/linc.wsdl";
-const ocaSoapWSDL = "https://catweb2.sba.gov/linc/ws/linc.cfc";
+var htmlToText = require("html-to-text");
+
+//const ocaSoapWsdl = "https://catweb2.sba.gov/linc/ws/linc.wsdl";
+const ocaSoapWsdl = "https://catweb2.sba.gov/linc/ws/linc.cfc";
 const username = "OCPL_LincUser";
 const password = "zQUcm4Yu";
 
 function createConfirmation(req, res) {
   lenderMatchRecordDao.create(req.body) // TODO: trim this to certain properties that are needed
     .then(function(result) {
-      var firstName = _.head(req.body.contactInfoData.contactFullName.split(" "));
+      var firstName = _.first(_.words(req.body.contactInfoData.contactFullName));
       var emailAddress = req.body.contactInfoData.contactEmailAddress;
       const newToken = uuid.v4();
       const link = config.get("linc.confirmationEmailBase") + "/linc/confirmEmail?token=" + newToken;
-      const firstSentence = "Welcome to Lender Match, " + firstName + "!";
-      const secondSentence = "Before we match you with lenders, please confirm your email address. " + link + ".";
-      const thirdSentence = "Or, paste this link into your browser: <Confirmation Link>";
+
+      const htmlContents = pug.renderFile(path.join(__dirname, "../views/confirmation-email.pug"), {
+        confirmationLink: link,
+        firstName: firstName
+      });
+      const textContents = htmlToText.fromString(htmlContents);
+
       var mailOptions = {
         to: emailAddress,
         subject: "Almost done! Confirm your email to find lenders",
-        text: firstSentence + secondSentence + thirdSentence,
-        html: pug.renderFile(path.join(__dirname, "../views/confirmation-email.pug"), {
-          confirmationLink: link,
-          firstName: firstName
-        })
+        text: textContents,
+        html: htmlContents
       };
       return sendConfirmationEmail(mailOptions)
         .then(function() {
@@ -46,7 +49,7 @@ function createConfirmation(req, res) {
         })
         .then(emailConfirmationDao.create)
         .then(function() {
-          res.status(HttpStatus.NO_CONTENT).send();
+          res.status(HttpStatus.OK).send();
         });
     });
 }
@@ -92,13 +95,14 @@ function handleLenderMatchSubmission(req, res) {
   if (_.isEmpty(errors)) {
     createConfirmation(req, res);
   } else {
+    console.log(errors);
     res.status(HttpStatus.BAD_REQUEST).send("Error during validation: " + errors.join(","));
   }
 }
 
 function handleEmailConfirmation(req, res) {
   if (!("token" in req.query)) {
-    res.redirect("/emailinvalid");
+    res.redirect("/linc/emailinvalid");
   } else {
     emailConfirmationDao.retrieve(req.query.token).then(function(emailConfirmationRecord) {
       if (emailConfirmationRecord && moment(emailConfirmationRecord.expiration).isBefore()) {
@@ -124,7 +128,7 @@ function handleEmailConfirmation(req, res) {
             });
         });
       } else {
-        res.redirect("/emailinvalid");
+        res.redirect("/linc/emailinvalid");
       }
     });
   }

@@ -7,7 +7,7 @@ class Navigation extends React.Component {
     return (
       <div className="text-center">
         <Button onClick={ event => alert("you are not ready") }> Am I Ready?</Button>
-        <Button id="landing-page-button-find-lenders" onClick={ event => browserHistory.push('/form') }> Find Lenders</Button>
+        <Button id="landing-page-button-find-lenders" onClick={ event => browserHistory.push('/linc/form') }> Find Lenders</Button>
       </div>
       );
   }

@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 let request = require('request');
 let xml2js = require('xml2js');
 let DOMParser = require('xmldom').DOMParser;

@@ -8,6 +8,7 @@ $primary-color: #609F00;
         display: none;
     }
 
+
     //styles entire navbar container
     .navbar {
         border: 0;
@@ -30,12 +31,12 @@ $primary-color: #609F00;
 
     //styles the small top nav
     .miniNavItem > a {
-        font-size: calc(1.3vw - 2px);
+        font-size: calc(1.1vw - 2px);
         margin-top: 1vw;
         padding-left: 6px !important;
         padding-right: 6px !important;
-        padding-top: 0.5em !important;
-        padding-bottom: 0.5em !important;
+        padding-top: 0.3em !important;
+        padding-bottom: 0.3em !important;
     }
 
     //styles nav dropdown
@@ -96,17 +97,26 @@ $primary-color: #609F00;
 
     //styles the dropdown children
     .dropdownHeader {
-        font-size: calc(0.7em + 0.5vw);
+    }
+
+    .dropdownHeader > a {
+        font-size: calc(1.3vw - 2px);
+        font-weight: bold;
         color: $primary-color;
     }
 
+    .dropdownHeader > a:hover {
+        text-decoration: underline;
+        color: darken($primary-color, 7%);
+    }
+
     .dropdownItem {
-        margin-top: 1em !important;
-        margin-bottom: 1em !important;
+        margin-top: 0.8vw !important;
+        margin-bottom: 0.8vw !important;
     }
 
     .dropdownItem > a {
-        font-size: calc(0.5em + 0.5vw);
+        font-size: calc(1.1vw - 2px);
         color: black;
         outline: none !important;
         background: none;
@@ -114,7 +124,7 @@ $primary-color: #609F00;
     }
 
     .dropdownItem > a:hover {
-        color: $primary-color;
+        text-decoration: underline;
     }
 
     //styles for search bar
@@ -161,13 +171,19 @@ $primary-color: #609F00;
 //styles for MOBILE
 @media screen and (max-width: 750px){
     //removes .pull-right in bootstrap
-    .mainNav {
+    .mainNav{
         display: none;
+    }
+
+    .mobileNav {
+        margin-top: 0px !important;
+        margin-bottom:0px !important;
     }
 
     .navbar {
         border: 0;
         background-color: white;
+        margin-bottom:0px !important;
     }
 
     .logo {
@@ -206,8 +222,9 @@ $primary-color: #609F00;
 
     //mobile nav styling
 
+
     .mobileNavDropdown > a {
-        height: 3.5em;
+        height: 2.5em;
         color: $primary-color !important;
         font-size: 18px;
         font-weight: bold;
@@ -219,7 +236,7 @@ $primary-color: #609F00;
     }
 
     .mobileNavDropdownSub > a {
-        height: 3.5em;
+        height: 2.5em;
         color: #666666;
         font-size: 18px;
         margin-left: 40px;
@@ -232,6 +249,49 @@ $primary-color: #609F00;
     .sectionDivider {
         margin: 0;
         margin-bottom: 10px;
+    }
+
+    //styles for search bar
+
+    .searchNavItem{
+        padding-top: 11px !important;
+        padding-bottom: 11px !important;
+        background-color: #EBEBEB !important;
+    }
+
+    .searchNavItem > a {
+        font-size: calc(1.3vw - 2px);
+        width: 80vw !important;
+        margin-left: 10vw !important;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .searchBar {
+        background-color: #FFFFFF !important;
+        margin: 0;
+        vertical-align: middle;
+        border-left: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0px;
+    }
+
+    .searchBar:focus {
+        border:1px solid #ccc !important;
+        border-left: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .searchAddon {
+        background-color: white;
+        border-radius: 0px;
+        border-right: solid white;
+    }
+
+    .searchIcon {
+        vertical-align: middle;
     }
 
 

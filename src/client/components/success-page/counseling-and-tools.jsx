@@ -13,15 +13,15 @@ export class DynamicCounselingAndTools extends React.Component {
 
   componentWillMount() {
     console.log(this.props)
-    axios.post('/matchCounselors', {
-      zipcode: this.props.businessInfoData.businessInfoZipcode
-    })
-      .then(function(res) {
-        document.location = res.data.redirectTo
-      })
-      .then(function(err) {
-        console.log(err)
-      })
+  // axios.get('/matchCounselors', {
+  //   zipcode: this.props.businessInfoData.businessInfoZipcode
+  // })
+  //   .then(function(res) {
+  //     document.location = res.data.redirectTo
+  //   })
+  //   .then(function(err) {
+  //     console.log(err)
+  //   })
   }
 
   render() {
@@ -56,4 +56,3 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps
 )(DynamicCounselingAndTools)
-

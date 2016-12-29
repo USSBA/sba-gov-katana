@@ -8,6 +8,7 @@ import contactInfoReducer from "../reducers/contact-info.js";
 import businessInfoReducer from "../reducers/business-info.js";
 import reviewSubmitInfoReducer from "./review-submit-info.js";
 import industryInfoReducer from "./industry-info.js";
+import modalReducer from "./modal.js";
 
 // combine the custom reducers with the routing reducer
 const rootReducer = combineReducers({
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   businessInfoReducer: businessInfoReducer,
   reviewSubmitInfoReducer: reviewSubmitInfoReducer,
   industryInfoReducer: industryInfoReducer,
-  routing: routerReducer
+  routing: routerReducer,
+  modalReducer: modalReducer
 });
 
 export default rootReducer;

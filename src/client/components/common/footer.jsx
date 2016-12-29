@@ -6,8 +6,28 @@ import twitterThumbnail from "../../../../public/assets/images/footer/twitter.pn
 import googlePlusThumbnail from "../../../../public/assets/images/footer/googleplus.png"
 import youtubeThumbnail from "../../../../public/assets/images/footer/youtube-play.png"
 
+import * as ModalActions from '../../actions/show-modal.js'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
 class Footer extends React.Component {
+  handleSocialMediaClick(e) {
+    e.preventDefault();
+    let targetUrl = e.target.dataset.target;
+    this.props.actions.leaveSba(targetUrl);
+
+  }
+
   render() {
+    const SocialMediaLink = ({imageSrc, altText, targetUrl, ...props}) => {
+      return (
+        <a href={ targetUrl } onClick={ this.handleSocialMediaClick.bind(this) }>
+          <img src={ imageSrc } alt={ altText } data-target={ targetUrl } />
+        </a>
+        );
+    };
+
     return (
       <footer className={ styles.footer }>
         <div className={ styles.linkSectionContainer + " hidden-sm hidden-xs container-fluid" }>
@@ -81,24 +101,16 @@ class Footer extends React.Component {
         <div className={ styles.bottom + " container-fluid hidden-sm hidden-xs" }>
           <div className={ styles.social + " col-md-3 col-sm-12 container " }>
             <div className=" col-md-1 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-2 col-xs-offset-2">
-              <a href="https://www.facebook.com/SBAgov">
-                <img src={ facebookThumbnail } alt="SBA Facebook page" />
-              </a>
+              <SocialMediaLink imageSrc={ facebookThumbnail } altText="SBA Facebook page" targetUrl="https://www.facebook.com/SBAgov" />
             </div>
             <div className=" col-md-1 col-sm-3  col-xs-2">
-              <a href="https://www.twitter.com/sbagov">
-                <img src={ twitterThumbnail } alt="SBA Twitter page" />
-              </a>
+              <SocialMediaLink imageSrc={ twitterThumbnail } altText="SBA Twitter page" targetUrl="https://www.twitter.com/sbagov" />
             </div>
             <div className=" col-md-1 col-sm-3  col-xs-2">
-              <a href="https://plus.google.com/+sbagov">
-                <img src={ googlePlusThumbnail } alt="SBA Google Plus page" />
-              </a>
+              <SocialMediaLink imageSrc={ googlePlusThumbnail } altText="SBA Google Plus page" targetUrl="https://plus.google.com/+sbagov" />
             </div>
             <div className=" col-md-1 col-sm-3  col-xs-2">
-              <a href="https://www.youtube.com/sba">
-                <img src={ youtubeThumbnail } alt="SBA Youtube page" />
-              </a>
+              <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/sba" />
             </div>
           </div>
           <div className={ styles.address + " col-md-9 container col-sm-12" }>
@@ -119,24 +131,16 @@ class Footer extends React.Component {
         <div className=" hidden-xl hidden-lg hidden-md container " aria-hidden="true">
           <div className={ styles.socialSmall + " col-xs-12 container" }>
             <div className=" col-xs-2 col-xs-offset-2 text-left">
-              <a href="https://www.facebook.com/SBAgov">
-                <img src={ facebookThumbnail } alt="SBA Facebook page" />
-              </a>
+              <SocialMediaLink imageSrc={ facebookThumbnail } altText="SBA Facebook page" targetUrl="https://www.facebook.com/SBAgov" />
             </div>
             <div className=" col-xs-2 text-center">
-              <a href="https://www.twitter.com/sbagov">
-                <img src={ twitterThumbnail } alt="SBA Twitter page" />
-              </a>
+              <SocialMediaLink imageSrc={ twitterThumbnail } altText="SBA Twitter page" targetUrl="https://www.twitter.com/sbagov" />
             </div>
             <div className=" col-xs-2 text-center">
-              <a href="https://plus.google.com/+sbagov">
-                <img src={ googlePlusThumbnail } alt="SBA Google Plus page" />
-              </a>
+              <SocialMediaLink imageSrc={ googlePlusThumbnail } altText="SBA Google Plus page" targetUrl="https://plus.google.com/+sbagov" />
             </div>
             <div className=" col-xs-2 text-right">
-              <a href="https://www.youtube.com/sba">
-                <img src={ youtubeThumbnail } alt="SBA Youtube page" />
-              </a>
+              <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/sba" />
             </div>
             <div className={ styles.smallBottomBorder + " col-xs-8 col-xs-offset-2" }></div>
           </div>
@@ -150,4 +154,18 @@ class Footer extends React.Component {
   }
   ;
 }
-export default Footer;
+
+function mapReduxStateToProps(reduxState) {
+  return {
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ModalActions, dispatch)
+  }
+}
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(Footer);

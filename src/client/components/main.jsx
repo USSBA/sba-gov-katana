@@ -20,6 +20,7 @@ import BusinessInfo from './lender-match/business-info.jsx';
 import IndustryInfo from './lender-match/industry-info.jsx';
 import AdditionalInfo from './lender-match/additional-info.jsx';
 import ReviewSubmitInfo from './lender-match/review-submit-info.jsx';
+import Homepage from './homepage/homepage.jsx';
 
 const middleware = applyMiddleware(thunk);
 const store = createStore(rootReducer, middleware);
@@ -37,7 +38,8 @@ import '../../../public/assets/fonts/Merriweather/merriweather.scss';
 ReactDOM.render(
   (<Provider store={ store }>
      <Router history={ history }>
-       <Route path="/" component={ LincMain }>
+       <Route path="/" component={ Homepage } />
+       <Route path="/linc" component={ LincMain }>
          <IndexRoute component={ LandingPage } />
          <Route path="landing" component={ LandingPage } />
          <Route path="form" component={ LoanForm }>
