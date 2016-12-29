@@ -32,6 +32,10 @@ class Header extends React.Component {
     document.location = uri
   }
 
+  googleTranslate() {
+    return {__html: `sdfgsdfgsdfgsdfg` }
+  }
+
 
 
   render() {
@@ -236,7 +240,7 @@ class Header extends React.Component {
 
 const MiniNav = (props) => <Col xsHidden={ true }>
                            <Nav className="pull-right">
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="#">Translate</NavItem>
+                             <Translate/>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://es.sba.gov/">SBA En Espanol</NavItem>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/for-lenders">For Lenders</NavItem>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/about-sba/sba-newsroom">Newsroom</NavItem>
@@ -326,6 +330,32 @@ const MobileSearch = (props) => <NavItem className={ styles.searchNavItem } even
                                 </NavItem>;
 
 
+export class Translate extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      translate: false
+    }
+  }
+
+  toggleTranslate() {
+    this.setState({
+      translate: !this.state.translate
+    })
+  }
+
+
+  render() {
+    return (
+      <NavItem className={ !!this.state.translate ? styles.googleTranslateContainer : styles.miniNavItem } eventKey={ 1 } href="#">
+          <div className={ !!this.state.translate ? styles.googleTranslate : styles.hidden } id="google_translate_element"></div>
+          <div className={ !!this.state.translate ? styles.hidden : "" } onClick={this.toggleTranslate.bind(this)}>Translate</div>
+      </NavItem>
+    )
+  }
+}
+
+
 
 const NavToggle = ({expanded, onClick, ...props}) => {
   if (expanded == false) {
@@ -344,5 +374,6 @@ const NavToggle = ({expanded, onClick, ...props}) => {
 
 
 export default Header;
+
 
 

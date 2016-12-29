@@ -1,5 +1,9 @@
 $primary-color: #609F00;
 
+.hidden {
+    display: none;
+}
+
 
 //styles for DESKTOP
 @media screen and (min-width: 750px){
@@ -37,6 +41,23 @@ $primary-color: #609F00;
         padding-right: 6px !important;
         padding-top: 0.3em !important;
         padding-bottom: 0.3em !important;
+    }
+
+    //styles the google translate widget
+
+    .googleTranslateContainer  > a {
+        font-size: calc(1.1vw - 2px);
+        margin-top: 0.6vw;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        padding-top: 0.3em !important;
+        padding-bottom: 0.3em !important;
+    }
+
+    .googleTranslate > div > div{
+        font-size: calc(1.1vw - 2px) !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     //styles nav dropdown
@@ -131,7 +152,7 @@ $primary-color: #609F00;
 
     .searchNavItem > a {
         font-size: calc(1.3vw - 2px);
-        margin-top: 0.5vw;
+        margin-top: 0.2vw;
         padding-left: 6px !important;
         padding-right: 6px !important;
         padding-top: 0 !important;

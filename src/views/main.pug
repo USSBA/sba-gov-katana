@@ -6,3 +6,12 @@ html
   body
     #root
     script(src='/build/bundle.js')
+    script(src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript")
+    script(type="text/javascript").
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      }
+
+
