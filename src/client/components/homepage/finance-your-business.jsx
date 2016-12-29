@@ -2,7 +2,7 @@ import React from 'react';
 //import { HelpMeBtn } from './help-me-btn.jsx'
 import { Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router';
-import styles from '../../styles/landing-page/find-lenders-intro.scss'
+import styles from '../../styles/homepage/finance-your-business.scss'
 import fYBImage from '../../../../public/assets/images/homepage/finance.jpg'
 import cornerGraphicBig from '../../../../public/assets/images/homepage/diagonal-lines.png'
 import cornerGraphicSmall from '../../../../public/assets/images/lender-match/rectangle-corner-graphic-mobile.png'
