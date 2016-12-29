@@ -124,7 +124,7 @@ function handleEmailConfirmation(req, res) {
                 }).catch(function(error){
                     res.send(error.message);
                 });
-                res.redirect("/emailconfirmed");
+                res.redirect("/linc/emailconfirmed");
             });
         });
       } else {
