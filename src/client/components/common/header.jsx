@@ -179,7 +179,7 @@ class Header extends React.Component {
               </Row>
               </Col>
             </NavDropdown>
-            <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="About" id="basic-nav-dropdown" href="https://www.sba.gov/about-sba">
+            <NavDropdown className={ styles.navDropdown } eventKey={ 3 } title="About Us" id="basic-nav-dropdown" href="https://www.sba.gov/about-sba">
               <Col sm={ 10 } smOffset={ 1 }>
               <Row>
                 <Col sm={ 3 }>

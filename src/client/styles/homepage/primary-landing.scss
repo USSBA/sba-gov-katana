@@ -1,0 +1,49 @@
+$primary-color: #0B97DD;
+
+.container {
+    position: relative;
+}
+
+.hero {
+    width: 100vw;
+}
+
+.box {
+    position: absolute;
+    background: $primary-color;
+    width: 38vw;
+    height: 33vw;
+    margin: auto;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    top: 0;
+    left: 10vw;
+    bottom: 0;
+}
+
+.title {
+    font-size: 5vw;
+    font-weight: 900;
+    line-height:5vw;
+    color: #FFFFFF;
+    margin-bottom: 1.4vw;
+}
+
+.text {
+    font-size: 1.3vw;
+    color: #FFFFFF;
+    margin-bottom: 2.2vw;
+}
+
+.button {
+    width: 9.3vw;
+    height: 3.3vw;
+    background-color: #FFFFFF;
+
+}
+
+.triangle {
+
+}
