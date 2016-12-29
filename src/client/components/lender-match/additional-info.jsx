@@ -26,7 +26,7 @@ export class AdditionalInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.reviewAnswers(this.state.additionalInfoFields);
-    browserHistory.push("/form/review");
+    browserHistory.push("/linc/form/review");
     this.addInfoForm.reset()
   }
   ;

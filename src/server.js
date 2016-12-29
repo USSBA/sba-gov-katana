@@ -32,13 +32,16 @@ if (config.get("developmentOptions.webpack.enabled")) {
   app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
 }
 
+app.get("/", function(req, res) {
+  res.render("main");
+});
 
 import * as matchController from "./controllers/match-controller.js";
-app.post("/matchFormData", jsonParser, matchController.handleLenderMatchSubmission);
+app.post("/linc/matchFormData", jsonParser, matchController.handleLenderMatchSubmission);
 app.get("/linc/confirmEmail", matchController.handleEmailConfirmation);
 
 
-app.post("/matchLocalAssistants", jsonParser, function(req, res) {
+app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
   const zipStr = "zip:" + req.body.zipcode + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
     if (err) {
@@ -53,7 +56,7 @@ app.post("/matchLocalAssistants", jsonParser, function(req, res) {
 });
 
 
-app.get("/matchCounselors", jsonParser, function(req, res) {
+app.get("/linc/matchCounselors", jsonParser, function(req, res) {
   console.log("zip = " + req.body.zipcode);
   res.status(HttpStatus.NO_CONTENT).send();
 });

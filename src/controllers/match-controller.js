@@ -102,7 +102,7 @@ function handleLenderMatchSubmission(req, res) {
 
 function handleEmailConfirmation(req, res) {
   if (!("token" in req.query)) {
-    res.redirect("/emailinvalid");
+    res.redirect("/linc/emailinvalid");
   } else {
     emailConfirmationDao.retrieve(req.query.token).then(function(emailConfirmationRecord) {
       if (emailConfirmationRecord && moment(emailConfirmationRecord.expiration).isBefore()) {
@@ -118,10 +118,10 @@ function handleEmailConfirmation(req, res) {
           }).catch(function(error) {
             res.send(error.message);
           });
-          res.redirect("/emailconfirmed");
+          res.redirect("/linc/emailconfirmed");
         });
       } else {
-        res.redirect("/emailinvalid");
+        res.redirect("/linc/emailinvalid");
       }
     });
   }

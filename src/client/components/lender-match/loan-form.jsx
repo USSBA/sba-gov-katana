@@ -22,7 +22,7 @@ class LoanForm extends React.Component {
   }
   render() {
     let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review']; // TODO make this static or configuration
-    let page = this.props.location.replace('/form/', '');
+    let page = this.props.location.replace('/linc/form/', '');
     let locationIndex = _.indexOf(pages, page);
     let data = _.chain(pages).slice(0, 5).map(function(item, index) {
       return {
