@@ -36,8 +36,8 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Row>
-        <Col xs={ 12 }>
+
+
         <Navbar fluid={ true } className={ styles.navbar } expanded={ this.state.expanded }>
           <Navbar.Header className={ styles.navbarHeader }>
             <Image className={ styles.logo } src={ sbaLogo } alt="SBA logo" />
@@ -227,8 +227,8 @@ class Header extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        </Col>
-      </Row>
+
+
       );
 
   }
@@ -288,6 +288,7 @@ export class Search extends React.Component {
     })
   }
 
+
   render() {
     return (
       <NavItem className={ !!this.state.search ? styles.searchNavItem : styles.miniNavItem } eventKey={ 1 } href="#">
@@ -298,7 +299,12 @@ export class Search extends React.Component {
                 <InputGroup.Addon className={ styles.searchAddon }>
                   <Glyphicon className={ styles.searchBarIcon } glyph="search" />
                 </InputGroup.Addon>
-                <FormControl onChange={ (e) => this.props.handleSearchChange(e) } className={ styles.searchBar } type="text" placeholder="Search SBA.gov" />
+                <FormControl onChange={ (e) => this.props.handleSearchChange(e) }
+                             className={ styles.searchBar }
+                             type="text"
+                             placeholder="Search SBA.gov"
+                             autoFocus={true}
+                             onBlur={this.toggleSearch.bind(this)}/>
               </InputGroup>
             </FormGroup>
           </form>

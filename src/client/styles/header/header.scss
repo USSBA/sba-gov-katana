@@ -12,15 +12,15 @@ $primary-color: #609F00;
     //styles entire navbar container
     .navbar {
         border: 0;
-        margin-left: 5vw;
-        margin-right: 5vw;
+        margin-left: 7.3vw;
+        margin-right:  7.3vw;
         background-color: white;
     }
 
     //styles navbar header contents
 
     .navbarHeader {
-        width: 19vw;
+        width: 17vw;
         height: 8vw;
     }
 
@@ -83,7 +83,7 @@ $primary-color: #609F00;
 
     .mainNav > li > ul {
         min-width:60vw;
-        width: 90vw;
+        width: 85vw;
         border-top: solid $primary-color;
     }
 
@@ -131,7 +131,7 @@ $primary-color: #609F00;
 
     .searchNavItem > a {
         font-size: calc(1.3vw - 2px);
-        margin-top: 1vw;
+        margin-top: 0.5vw;
         padding-left: 6px !important;
         padding-right: 6px !important;
         padding-top: 0 !important;
