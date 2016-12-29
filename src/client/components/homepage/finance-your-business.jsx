@@ -9,7 +9,6 @@ import cornerGraphicSmall from '../../../../public/assets/images/lender-match/re
 
 export const FinanceYourBusinessSection = (props) => <div className=" row">
     <div className={ styles.parentContainer + " col-xs-12 nopadding" }>
-        <FinanceYourBusinessGreenSection />
         <FinanceYourBusinessImage />
     </div>
 </div>
