@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelpMeBtn } from './help-me-btn.jsx'
+//import { HelpMeBtn } from './help-me-btn.jsx'
 import { Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
