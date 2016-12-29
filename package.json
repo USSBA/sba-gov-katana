@@ -9,7 +9,7 @@
     "build": "scripts/build.sh",
     "test": "jest test/",
     "lint": "eslint src",
-    "format" : "esformatter -i 'src/**/*.js?(x)'",
+    "format": "esformatter -i 'src/**/*.js?(x)'",
     "test2": "mocha test2/helpers/browser.js test2/**/*.test.js"
   },
   "repository": {
@@ -39,6 +39,7 @@
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^0.9.0",
+    "html-to-text": "^3.0.0",
     "http-status-codes": "^1.0.6",
     "imports-loader": "^0.6.5",
     "jquery": "^3.1.1",
@@ -70,11 +71,10 @@
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "uuid": "^3.0.1",
     "webpack": "^2.1.0-beta.27",
     "xml2js": "^0.4.17",
-    "xmldom": "^0.1.27",
-    "uuid": "^3.0.1",
-    "webpack": "^2.1.0-beta.27"
+    "xmldom": "^0.1.27"
   },
   "devDependencies": {
     "axios": "^0.15.3",

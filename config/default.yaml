@@ -7,10 +7,10 @@ server:
 email:
     debugEmailOnly: false
     sender: '"Small Business Administration" <lendermatch@sba.gov>'
-    hostname: overrideInHostnameYaml
-    username: overrideInHostnameYaml
-    password: overrideInHostnameYaml
+    hostname: placeholder
+    username: placeholder
+    password: placeholder
 linc:
-    confirmationEmailBase: "http://ec2-52-23-225-150.compute-1.amazonaws.com"
+    confirmationEmailBase: http://sbagov.fearlesstesters.com
 database:
     mongoConnectString: mongodb://mongodb:27017/sba
