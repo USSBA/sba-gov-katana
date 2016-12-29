@@ -7,13 +7,15 @@ import moment from "moment";
 import config from "config";
 import * as emailConfirmationDao from "../models/dao/email-confirmation.js";
 import * as lenderMatchRecordDao from "../models/dao/lender-match-record.js";
-import LincSoapRequest from "./linc-soap-request.js";
+import LincSoapRequest from  "./linc-soap-request.js";
 import HttpStatus from "http-status-codes";
 const numberOfHoursForWhichEmailIsValid = 48;
 var htmlToText = require("html-to-text");
 
+// TODO: get server Endpoint from wsdl file instead of hard coding
 //const ocaSoapWsdl = "https://catweb2.sba.gov/linc/ws/linc.wsdl";
 const ocaSoapWsdl = "https://catweb2.sba.gov/linc/ws/linc.cfc";
+// TODO: put wsdl, username and password in configuration file.
 const username = "OCPL_LincUser";
 const password = "zQUcm4Yu";
 
@@ -110,15 +112,23 @@ function handleEmailConfirmation(req, res) {
         const confirmedRecord = _.merge({}, emailConfirmationRecord, {
           confirmed: now
         });
-        emailConfirmationDao.update(confirmedRecord).then(function() {
+        emailConfirmationDao.update(confirmedRecord).then(function(result) {
           // AYO submit OCA request
-          const soapRequest = new LincSoapRequest();
-          soapRequest.sendLincSoapRequest(ocaSoapWsdl, req, username, password).then(function(response) {
-            res.send(response);
-          }).catch(function(error) {
-            res.send(error.message);
-          });
-          res.redirect("/linc/emailconfirmed");
+            lenderMatchRecordDao.retrieve(result.value.lenderMatchRecordId).then(function(lenderMatchRecord){
+                const soapRequest = new LincSoapRequest();
+                soapRequest.sendLincSoapRequest(ocaSoapWSDL, lenderMatchRecord, username, password).then(function(response){
+                    // TODO: check the response from OCA
+                    //do nothing if it is "S"
+                    //save to database if it is "P"
+                    // TODO: handle checking of the database for pending items and resending them.
+                    //throw error if it is "F
+                    //need to figure out with Jon what to page to reroute the user to in case of error.
+                    //email might be confirmed but OCA soap might still have returned an error!
+                }).catch(function(error){
+                    res.send(error.message);
+                });
+                res.redirect("/linc/emailconfirmed");
+            });
         });
       } else {
         res.redirect("/linc/emailinvalid");

@@ -24,7 +24,7 @@ function retrieve(lenderMatchRecordId) {
   return new Promise((resolve, reject) => {
     var collection = dbConnection.collection("lenderMatchRecord");
     // Insert some documents
-    collection.find({
+    collection.findOne({
       _id: lenderMatchRecordId
     }, function(err, result) {
       if (err) {
