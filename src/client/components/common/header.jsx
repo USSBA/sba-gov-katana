@@ -31,12 +31,7 @@ class Header extends React.Component {
     let uri = encodeURI("https://www.sba.gov/tools/search-result-page?search=" + this.state.searchValue);
     document.location = uri
   }
-
-  googleTranslate() {
-    return {__html: `sdfgsdfgsdfgsdfg` }
-  }
-
-
+  
 
   render() {
     return (
@@ -348,8 +343,8 @@ export class Translate extends React.Component {
   render() {
     return (
       <NavItem className={ !!this.state.translate ? styles.googleTranslateContainer : styles.miniNavItem } eventKey={ 1 } href="#">
-          <div className={ !!this.state.translate ? styles.googleTranslate : styles.hidden } id="google_translate_element"></div>
-          <div className={ !!this.state.translate ? styles.hidden : "" } onClick={this.toggleTranslate.bind(this)}>Translate</div>
+        <div className={ !!this.state.translate ? styles.googleTranslate : styles.hidden } id="google_translate_element"></div>
+        <div className={ !!this.state.translate ? styles.hidden : "" } onClick={ this.toggleTranslate.bind(this) }>Translate</div>
       </NavItem>
     )
   }
