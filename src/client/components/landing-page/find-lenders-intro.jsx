@@ -29,7 +29,7 @@ export const GreenFindLendersSection = (props) => <div className={ styles.greenB
                                                         <HelpMeBtn />
                                                       </div>
                                                       <div className=" col-sm-4 col-xs-12 nopadding">
-                                                        <Button block className={ styles.findLendersWhiteBtn } onClick={ (e) => browserHistory.push('/form/contact') }>FIND LENDERS</Button>
+                                                        <Button block className={ styles.findLendersWhiteBtn } onClick={ (e) => browserHistory.push('/linc/form/contact') }>FIND LENDERS</Button>
                                                       </div>
                                                     </div>
                                                   </div>

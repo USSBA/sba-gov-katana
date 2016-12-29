@@ -5,6 +5,5 @@ import styles from '../../styles/buttons.scss';
 
 
 export const FindLendersBtn = (props) => <div>
-                                           <Button block className={ styles.findLendersBtn } onClick={ (e) => browserHistory.push('/form/contact') }>FIND LENDERS</Button>
+                                           <Button block className={ styles.findLendersBtn } onClick={ (e) => browserHistory.push('/linc/form/contact') }>FIND LENDERS</Button>
                                          </div>;
-

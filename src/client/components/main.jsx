@@ -38,7 +38,8 @@ import '../../../public/assets/fonts/Merriweather/merriweather.scss';
 ReactDOM.render(
   (<Provider store={ store }>
      <Router history={ history }>
-       <Route path="/" component={ LincMain }>
+       <Route path="/" component={ Homepage } />
+       <Route path="/linc" component={ LincMain }>
          <IndexRoute component={ LandingPage } />
          <Route path="landing" component={ LandingPage } />
          <Route path="form" component={ LoanForm }>
@@ -53,7 +54,6 @@ ReactDOM.render(
          <Route path="success" component={ SuccessPage } />
          <Route path="emailconfirmed" component={ EmailConfirmedPage } />
          <Route path="emailinvalid" component={ EmailConfirmationInvalid } />
-         <Route path="homepage" component={ Homepage } />
        </Route>
      </Router>
    </Provider>),

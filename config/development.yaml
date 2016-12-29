@@ -1,0 +1,10 @@
+developmentOptions:
+    webpack:
+        enabled: true
+        silent: false
+email:
+    debugEmailOnly: false
+database:
+    mongoConnectString: mongodb://localhost:27017/sba
+linc:
+    confirmationEmailBase: http://localhost:3000

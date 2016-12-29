@@ -40,7 +40,7 @@ class ContactInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createContactInfo(this.state.contactInfoFields);
-    browserHistory.push('/form/business');
+    browserHistory.push('/linc/form/business');
     this.contactInfoForm.reset();
   }
 
@@ -136,4 +136,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ContactInfoForm);
-

@@ -41,7 +41,7 @@ export class LoanInfo extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createLoan(this.state.loanFields);
-    browserHistory.push('/form/additional');
+    browserHistory.push('/linc/form/additional');
     this.loanForm.reset()
   }
 
@@ -155,4 +155,3 @@ export default connect(
   mapReduxStateToProps,
   mapDispatchToProps
 )(LoanInfo);
-
