@@ -111,7 +111,12 @@ function handleEmailConfirmation(req, res) {
             lenderMatchRecordDao.retrieve(result.value.lenderMatchRecordId).then(function(lenderMatchRecord){
                 const soapRequest = new LincSoapRequest();
                 soapRequest.sendLincSoapRequest(ocaSoapWSDL, lenderMatchRecord, username, password).then(function(response){
-                    res.send(response);
+                    //TODO: check the response from OCA
+                    //do nothing if it is "S"
+                    //save to database if it is "P"
+                    //throw error if it is "F
+                    //need to figure out with Jon what to page to reroute the user to in case of error.
+                    //email might be confirmed but OCA soap might still have returned an error!
                 }).catch(function(error){
                     res.send(error.message);
                 });

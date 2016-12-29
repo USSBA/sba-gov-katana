@@ -39,7 +39,7 @@ class SbaLincEnq {
             //LoanProceedTypCd <= 255 comma delimited
             this.LoanProceedTypCd = this.lProceedTypCd(req.loanData.loanDescription);
             //ProceedOthTypTxt <= 255 chars
-            this.ProceedOthTypTxt = req.body.loanData.loanUsage;
+            this.ProceedOthTypTxt = req.loanData.loanUsage;
             //RequestedAmtRangeCd = 2 chars
             this.RequestedAmtRangeCd = this.reqAmtRangeCd(req.loanData.loanAmount);
             //CollateralInd Y for Yes  or N for No
@@ -339,12 +339,11 @@ class LincSoapRequest{
                 if(error){
                     throw error;
                 }else{
-                    if(this.parseResponse(body) === "S") {
-                        //success response received
-                        resolve("Data successfully received by OCA.");
-                    }else{
-                        throw body;
-                    }
+                    const respChar = this.parseResponse(body);
+                    if(respChar === "F")
+                        console.log(body);
+
+                    resolve(respChar);
                 }
             });
         });
