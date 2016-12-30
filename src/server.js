@@ -57,9 +57,9 @@ app.get("/linc/matchCounselors", jsonParser, function(req, res) {
   res.status(HttpStatus.NO_CONTENT).send();
 });
 
-import {node, singleNode} from './controllers/content.js';
+import { node, singleNode } from "./controllers/content.js";
 app.get("/content/node.json", node);
-app.get("/content/node/:id.json",singleNode);
+app.get("/content/node/:id.json", singleNode);
 
 
 app.get("*", function(req, res) {

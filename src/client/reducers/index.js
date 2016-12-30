@@ -9,6 +9,7 @@ import businessInfoReducer from "../reducers/business-info.js";
 import reviewSubmitInfoReducer from "./review-submit-info.js";
 import industryInfoReducer from "./industry-info.js";
 import modalReducer from "./modal.js";
+import contentReducer from "./content.js";
 
 // combine the custom reducers with the routing reducer
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   reviewSubmitInfoReducer: reviewSubmitInfoReducer,
   industryInfoReducer: industryInfoReducer,
   routing: routerReducer,
-  modalReducer: modalReducer
+  modalReducer: modalReducer,
+  contentReducer: contentReducer
 });
 
 export default rootReducer;
