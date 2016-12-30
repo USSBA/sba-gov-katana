@@ -41,9 +41,19 @@ $primary-color: #0B97DD;
     width: 9.3vw;
     height: 3.3vw;
     background-color: #FFFFFF;
+    border: none;
+    font-size: 1.3vw;
+    font-weight: 900;
+    color: $primary-color
 
 }
 
 .triangle {
+    position: absolute;
+    width: 11.6vw;
+    height: 11.6vw;
+    bottom:0;
+    right:0;
+
 
 }

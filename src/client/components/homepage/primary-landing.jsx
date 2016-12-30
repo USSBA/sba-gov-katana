@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '../../styles/homepage/primary-landing.scss';
 import { Image } from 'react-bootstrap';
-import hero from '../../../../public/assets/images/homepage/primary-landing/primarylanding-hero.jpg'
+import hero from '../../../../public/assets/images/homepage/primary-landing/primarylanding-hero.jpg';
+import triangle from '../../../../public/assets/images/homepage/primary-landing/corner-graphic.png';
 import '../../styles/common/normalize.scss';
 
 
@@ -22,6 +23,8 @@ export default PrimaryLanding;
 const Box = (props) => <div className={ styles.box }>
                          <div className={ styles.title }> Start and grow your business.</div>
                          <div className={ styles.text }> Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
-                         <button className={ styles.button }>LET'S GO</button>
-                         <div className={ styles.triangle }></div>
+                         <button className={ styles.button } onClick={ (e) => location.href = "https://www.sba.gov/starting-managing-business" }>
+                           LET'S GO
+                         </button>
+                         <Image src={ triangle } className={ styles.triangle } />
                        </div>;
