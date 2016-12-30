@@ -24,13 +24,13 @@ export const FinanceYourBusinessGreenSection = (props) => <div className={ style
                                                               Lender Match (formerly LINC) is a free online referral tool that connects small businesses with participating SBA-approved lenders.
                                                             </div>
                                                             { /*    <div className={ styles.btnContainer + " container-fluid" }>
-                                                                                                                                <div className=" col-sm-4 col-xs-12 nopadding">
-                                                                                                                                    <HelpMeBtn />
-                                                                                                                                </div>
-                                                                                                                                <div className=" col-sm-4 col-xs-12 nopadding">
-                                                                                                                                    <Button block className={ styles.findLendersWhiteBtn } onClick={ (e) => browserHistory.push('/linc/form/contact') }>FIND LENDERS</Button>
-                                                                                                                                </div>
-                                                                                                                            </div>*/ }
+                                                                                                                                                                                                                                                        <div className=" col-sm-4 col-xs-12 nopadding">
+                                                                                                                                                                                                                                                            <HelpMeBtn />
+                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                        <div className=" col-sm-4 col-xs-12 nopadding">
+                                                                                                                                                                                                                                                            <Button block className={ styles.findLendersWhiteBtn } onClick={ (e) => browserHistory.push('/linc/form/contact') }>FIND LENDERS</Button>
+                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                    </div>*/ }
                                                           </div>
 
 export const FinanceYourBusinessImage = (props) => <div className={ styles.imageContainer }>
