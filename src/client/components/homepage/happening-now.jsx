@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Grid, Row, Col , Carousel} from 'react-bootstrap';
+import { Grid, Row, Col, Carousel } from 'react-bootstrap';
 import * as ContentActions from "../../actions/content.js";
 import styles from "../../styles/homepage/styles.scss";
+
 class HappeningNow extends React.Component {
   constructor() {
     super();
@@ -23,51 +24,53 @@ class HappeningNow extends React.Component {
         mdSize = 4;
       }
     }
-    return (<div className={styles.homepageSection}>
+    return (<div className={ styles.homepageSection }>
               <Grid fluid>
                 <Row>
                   <Col xs={ 12 }>
-                  <p className={styles.homepageSectionTitle}>What's happening now.</p>
+                  <p className={ styles.homepageSectionTitle }>What's happening now.</p>
                   </Col>
                 </Row>
                 <Row>
                   { items.map(function(item) {
+                      return (<Col xsHidden smHidden md={ mdSize }>
+                              <a href={ item.field_url.url }>
+                                <img className="img-responsive" src={ item.field_image.file.uri } alt={ item.field_image.alt }></img>
+                              </a>
+                              </Col>);
+                    }) }
+                </Row>
+                <Row>
+                  { items.map(function(item) {
                       return <Col xsHidden smHidden md={ mdSize }>
-                             <a href={ item.field_url.url }>
-                               <img className="img-responsive" src={ item.field_image.file.uri } alt={ item.field_image.alt }></img>
-                             </a>
+                             <p className={ styles.homepageSectionItemTitle }>
+                               { item.title }
+                             </p>
                              </Col>;
                     }) }
                 </Row>
                 <Row>
                   { items.map(function(item) {
                       return <Col xsHidden smHidden md={ mdSize }>
-                                <p className={styles.homepageSectionItemTitle}>{ item.title }</p>
+                             <button className={ "btn btn-default " + styles.homepageLearnMore }>LEARN MORE</button>
                              </Col>;
                     }) }
                 </Row>
                 <Row>
-                  { items.map(function(item) {
-                      return <Col xsHidden smHidden md={ mdSize }>
-                             <button className={"btn btn-default "+styles.homepageLearnMore}>LEARN MORE</button>
-                             </Col>;
-                    }) }
-                </Row>
-                <Row>
-                <Col xs={12} sm={12} mdHidden lgHidden>
-                    <Carousel controls={false}>
-                    { items.map(function(item) {
+                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
+                  <div className="happeningNowCarousel">
+                    <Carousel controls={ false }>
+                      { items.map(function(item) {
                           return <Carousel.Item>
-                              <img className={styles.carouselImage} src={ item.field_image.file.uri } alt={ item.field_image.alt }></img>
-                                <p className={"text-center " + styles.homepageSectionCarouselItemTitle}>{ item.title }</p>
-                            </Carousel.Item>
-
-                          ;
-                        })
-
-                    }
-                  </Carousel>
-              </Col>
+                                   <img className={ styles.carouselImage } src={ item.field_image.file.uri } alt={ item.field_image.alt }></img>
+                                   <p className={ "text-center " + styles.homepageSectionCarouselItemTitle }>
+                                     { item.title }
+                                   </p>
+                                 </Carousel.Item>;
+                        }) }
+                    </Carousel>
+                  </div>
+                  </Col>
                 </Row>
               </Grid>
             </div>);

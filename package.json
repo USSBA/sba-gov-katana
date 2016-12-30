@@ -54,6 +54,7 @@
     "node-mailer": "^0.1.1",
     "node-sass": "^3.11.2",
     "nodemailer": "^2.7.0",
+    "nuka-carousel": "^2.0.3",
     "postcss-loader": "^1.1.0",
     "pug": "^2.0.0-beta6",
     "qs": "^6.3.0",

@@ -2,6 +2,9 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
+    drupal:
+        proxy: false
+        hostname: http://sbagov-drupal.fearlesstesters.com/
 server:
     port: 3000
 email:
@@ -14,6 +17,3 @@ linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
 database:
     mongoConnectString: mongodb://mongodb:27017/sba
-drupal:
-    hostname: http://sbagov-drupal.fearlesstesters.com/
-    nodeEndpoint: node.json

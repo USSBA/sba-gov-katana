@@ -8,7 +8,7 @@ import HttpStatus from "http-status-codes";
 function nodeReal(req, res) {
   if (req.query) {
     const givenQueryString = querystring.stringify(req.query);
-    axios.get(path.join(config.drupal.hostname, config.drupal.endpoint + "?" + givenQueryString))
+    axios.get(path.join(config.get("developmentOptions.drupal.hostname"), "node.json?" + givenQueryString))
       .then(function(response) {
         res.status(HttpStatus.OK).send(response.data);
       })

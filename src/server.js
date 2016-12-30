@@ -58,9 +58,10 @@ app.get("/linc/matchCounselors", jsonParser, function(req, res) {
 });
 
 import { node, singleNode } from "./controllers/content.js";
-app.get("/content/node.json", node);
-app.get("/content/node/:id.json", singleNode);
-
+if (config.get("developmentOptions.drupal.proxy")) {
+    app.get("node.json", node);
+    app.get("node/:id.json", singleNode);
+}
 
 app.get("*", function(req, res) {
   res.render("main");
