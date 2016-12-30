@@ -7,7 +7,7 @@ class Homepage extends React.Component {
     return (
       <div>
         <Header />
-        <p> Homepage</p>
+        <HappeningNow />
         <Footer />
       </div>
     )

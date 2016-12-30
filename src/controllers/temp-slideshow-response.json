@@ -1,0 +1,187 @@
+{
+    "self": "http:\/\/sbagov-drupal.fearlesstesters.com\/node?type=slideshow_element\u0026limit=4\u0026sort=changed\u0026direction=DESC",
+    "first": "http:\/\/sbagov-drupal.fearlesstesters.com\/node?type=slideshow_element\u0026limit=4\u0026sort=changed\u0026direction=DESC\u0026page=0",
+    "last": "http:\/\/sbagov-drupal.fearlesstesters.com\/node?type=slideshow_element\u0026limit=4\u0026sort=changed\u0026direction=DESC\u0026page=36",
+    "next": "http:\/\/sbagov-drupal.fearlesstesters.com\/node?type=slideshow_element\u0026limit=4\u0026sort=changed\u0026direction=DESC\u0026page=1",
+    "list": [{
+        "field_image": {
+            "file": {
+                "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/file\/970444",
+                "id": "970444",
+                "resource": "file",
+                "uuid": "68c903ce-ce86-44da-b58d-05eec17c2fd5"
+            },
+            "alt": "National Write A Business Plan Month"
+        },
+        "field_url": {
+            "title": "https:\/\/www.sba.gov\/starting-business\/write-your-business-plan?hb=",
+            "url": "https:\/\/www.sba.gov\/starting-business\/write-your-business-plan?hb=",
+            "attributes": []
+        },
+        "field_svg_markup": [],
+        "nid": "1552306",
+        "vid": "1617408",
+        "is_new": false,
+        "type": "slideshow_element",
+        "title": "National Write A Business Plan Month",
+        "language": "und",
+        "url": "http:\/\/sbagov-drupal.fearlesstesters.com\/content\/national-write-business-plan-month",
+        "edit_url": "http:\/\/sbagov-drupal.fearlesstesters.com\/node\/1552306\/edit",
+        "status": "1",
+        "promote": "0",
+        "sticky": "0",
+        "created": "1481555210",
+        "changed": "1481555573",
+        "author": {
+            "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/user\/6289984",
+            "id": "6289984",
+            "resource": "user",
+            "uuid": "0ccb8816-5ace-44b7-98aa-dd6f4117da7d"
+        },
+        "log": "",
+        "revision": null,
+        "comment": "0",
+        "comments": [],
+        "comment_count": 0,
+        "comment_count_new": "0",
+        "body": [],
+        "uuid": "30c645fd-7baf-4245-bc5e-92516ddfecac",
+        "vuuid": "db90d386-66f6-4889-aec2-96c02adb7722",
+        "weight": false
+    }, {
+        "field_image": {
+            "file": {
+                "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/file\/964796",
+                "id": "964796",
+                "resource": "file",
+                "uuid": "5f0e3e7c-9cfc-4a2b-bf35-4d2bc9b7c9f0"
+            },
+            "alt": "Holiday Marketing Tips for Your Small Business"
+        },
+        "field_url": {
+            "title": "https:\/\/www.sba.gov\/blogs\/22-holiday-marketing-ideas-local-businesses",
+            "url": "https:\/\/www.sba.gov\/blogs\/22-holiday-marketing-ideas-local-businesses?hb",
+            "attributes": []
+        },
+        "field_svg_markup": [],
+        "nid": "1551134",
+        "vid": "1615120",
+        "is_new": false,
+        "type": "slideshow_element",
+        "title": "Holiday Marketing Tips for Your Small Business",
+        "language": "und",
+        "url": "http:\/\/sbagov-drupal.fearlesstesters.com\/content\/holiday-marketing-tips-your-small-business",
+        "edit_url": "http:\/\/sbagov-drupal.fearlesstesters.com\/node\/1551134\/edit",
+        "status": "1",
+        "promote": "0",
+        "sticky": "0",
+        "created": "1480543139",
+        "changed": "1480543289",
+        "author": {
+            "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/user\/201",
+            "id": "201",
+            "resource": "user",
+            "uuid": "79c271e5-f5ae-4ee4-adad-1d55412888e6"
+        },
+        "log": "",
+        "revision": null,
+        "comment": "0",
+        "comments": [],
+        "comment_count": 0,
+        "comment_count_new": "0",
+        "body": [],
+        "uuid": "009de65d-a188-46a2-98a3-a11df700609e",
+        "vuuid": "01332df7-9a67-4867-b51b-83f3617941c9",
+        "weight": false
+    }, {
+        "field_image": {
+            "file": {
+                "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/file\/964418",
+                "id": "964418",
+                "resource": "file",
+                "uuid": "605e935c-322a-4272-ad91-5dd9dcc47a26"
+            },
+            "alt": "National Small Business Week Awards - Submit your nomination by 3pm ET on January 10, 2017"
+        },
+        "field_url": {
+            "title": "https:\/\/www.sba.gov\/nsbw\/",
+            "url": "https:\/\/www.sba.gov\/nsbw?hb",
+            "attributes": []
+        },
+        "field_svg_markup": [],
+        "nid": "1551028",
+        "vid": "1614868",
+        "is_new": false,
+        "type": "slideshow_element",
+        "title": "National Small Business Week Awards 2017",
+        "language": "und",
+        "url": "http:\/\/sbagov-drupal.fearlesstesters.com\/content\/national-small-business-week-awards-2017",
+        "edit_url": "http:\/\/sbagov-drupal.fearlesstesters.com\/node\/1551028\/edit",
+        "status": "1",
+        "promote": "0",
+        "sticky": "0",
+        "created": "1480515585",
+        "changed": "1480543256",
+        "author": {
+            "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/user\/201",
+            "id": "201",
+            "resource": "user",
+            "uuid": "79c271e5-f5ae-4ee4-adad-1d55412888e6"
+        },
+        "log": "",
+        "revision": null,
+        "comment": "0",
+        "comments": [],
+        "comment_count": 0,
+        "comment_count_new": "0",
+        "body": [],
+        "uuid": "8b143fe0-7c26-49fb-a5f4-a0c99a240be4",
+        "vuuid": "d448fdac-26f9-4615-bc11-8014a7968244",
+        "weight": false
+    }, {
+        "field_image": {
+            "file": {
+                "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/file\/949014",
+                "id": "949014",
+                "resource": "file",
+                "uuid": "8278106d-e53f-4b0b-8e18-0ebb4ee998d5"
+            },
+            "alt": "National Veterans Small Business Week 2016 (10\/31-11\/04).  Celebrating generations of veteran entrepreneurship and success."
+        },
+        "field_url": {
+            "title": "National Veterans Small Business Week",
+            "url": "https:\/\/www.sba.gov\/about-sba\/sba-initiatives\/veterans-small-business-week",
+            "attributes": []
+        },
+        "field_svg_markup": [],
+        "nid": "1547746",
+        "vid": "1608688",
+        "is_new": false,
+        "type": "slideshow_element",
+        "title": "NVSBW 2016",
+        "language": "und",
+        "url": "http:\/\/sbagov-drupal.fearlesstesters.com\/content\/nvsbw-2016",
+        "edit_url": "http:\/\/sbagov-drupal.fearlesstesters.com\/node\/1547746\/edit",
+        "status": "0",
+        "promote": "0",
+        "sticky": "0",
+        "created": "1477687446",
+        "changed": "1479924758",
+        "author": {
+            "uri": "http:\/\/sbagov-drupal.fearlesstesters.com\/user\/201",
+            "id": "201",
+            "resource": "user",
+            "uuid": "79c271e5-f5ae-4ee4-adad-1d55412888e6"
+        },
+        "log": "",
+        "revision": null,
+        "comment": "0",
+        "comments": [],
+        "comment_count": 0,
+        "comment_count_new": "0",
+        "body": [],
+        "uuid": "5160e773-db65-4914-935c-292e90c3f3cb",
+        "vuuid": "ae790738-38af-4996-a790-0d77f11daa2d",
+        "weight": false
+    }]
+}
