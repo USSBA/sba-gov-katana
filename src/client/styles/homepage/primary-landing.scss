@@ -1,59 +1,129 @@
 $primary-color: #0B97DD;
 
-.container {
-    position: relative;
+@media screen and (min-width:768px){
+
+    .container {
+        position: relative;
+    }
+
+    .hero {
+        width: 100vw;
+    }
+
+    .mobileHero {
+        display: none;
+    }
+
+    .box {
+        position: absolute;
+        background: $primary-color;
+        width: 38vw;
+        height: 33vw;
+        margin: auto;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
+        top: 0;
+        left: 10vw;
+        bottom: 0;
+    }
+
+    .title {
+        font-size: 5vw;
+        font-weight: 900;
+        line-height:5vw;
+        color: #FFFFFF;
+        margin-bottom: 1.4vw;
+    }
+
+    .text {
+        font-size: 1.3vw;
+        color: #FFFFFF;
+        margin-bottom: 2.2vw;
+    }
+
+    .button {
+        width: 9.3vw;
+        height: 3.3vw;
+        background-color: #FFFFFF;
+        border: none;
+        font-size: 1.3vw;
+        font-weight: 900;
+        color: $primary-color
+    }
+
+    .triangle {
+        position: absolute;
+        width: 11.6vw;
+        height: 11.6vw;
+        bottom:0;
+        right:0;
+    }
 }
 
-.hero {
-    width: 100vw;
+@media screen and (max-width:768px) {
+    .hero {
+        display: none;
+    }
+
+    .mobileHero {
+        width: 100vw;
+        height: 90vw;
+    }
+
+    .container {
+        position: relative;
+        height:153vw;
+        width:100vw;
+    }
+
+    .box {
+        background: $primary-color;
+        position: absolute;
+        bottom:0;
+        width: 90vw;
+        height: 90vw;
+        margin-left: 4.3vw;
+        padding-top: 6.9vw;
+        padding-bottom: 8.5vw;
+        padding-left: 8.5vw;
+        padding-right: 8.5vw;
+    }
+
+    .title {
+        font-size: 12vw;
+        font-weight: 900;
+        line-height:12vw;
+        color: #FFFFFF;
+        margin-bottom: 3vw;
+    }
+
+    .text {
+        font-size: 4.3vw;
+        color: #FFFFFF;
+        margin-bottom: 4.3vw;
+        line-height: 6vw;
+    }
+
+    .button {
+        width: 74.7vw;
+        height: 12.8vw;
+        background-color: #FFFFFF;
+        border: none;
+        font-size: 4.8vw;
+        font-weight: 900;
+        color: $primary-color
+    }
+
+    .triangle {
+        position: absolute;
+        width: 25vw;
+        height: 25vw;
+        bottom:0;
+        right:0;
+    }
+
+
 }
 
-.box {
-    position: absolute;
-    background: $primary-color;
-    width: 38vw;
-    height: 33vw;
-    margin: auto;
-    padding-top: 2vw;
-    padding-bottom: 2vw;
-    padding-left: 4vw;
-    padding-right: 4vw;
-    top: 0;
-    left: 10vw;
-    bottom: 0;
-}
-
-.title {
-    font-size: 5vw;
-    font-weight: 900;
-    line-height:5vw;
-    color: #FFFFFF;
-    margin-bottom: 1.4vw;
-}
-
-.text {
-    font-size: 1.3vw;
-    color: #FFFFFF;
-    margin-bottom: 2.2vw;
-}
-
-.button {
-    width: 9.3vw;
-    height: 3.3vw;
-    background-color: #FFFFFF;
-    border: none;
-    font-size: 1.3vw;
-    font-weight: 900;
-    color: $primary-color
-
-}
-
-.triangle {
-    position: absolute;
-    width: 11.6vw;
-    height: 11.6vw;
-    bottom:0;
-    right:0;
-
-
-}

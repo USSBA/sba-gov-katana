@@ -217,8 +217,8 @@ $primary-color: #609F00;
 
     .menuBtn {
         margin: 1em;
-        width: 24vw;
-        height: 10vw;
+        width: calc(24vw + 10px);
+        height: calc(10vw + 10px);
         border: 2px solid $primary-color;
         background-color: white;
     }
