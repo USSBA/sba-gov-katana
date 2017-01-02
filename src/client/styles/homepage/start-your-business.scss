@@ -15,14 +15,15 @@
     font-size: 6vw;
     font-weight: bold;
     padding-bottom: 2vw;
+    padding-left: 12vw;
   }
 
   .sybAccentBox{
-    position: relative;
+    position: absolute;
     background: rgb(172, 62, 161);
     width: 36vw;
     height: 18vw;
-    bottom: 33vw;
+    bottom: 15vw;
     left: 57vw;
   }
 
@@ -46,7 +47,11 @@
     right: 0;
   }
 
-  .sybAccentBox li:nth-child(n+1){
+  .sybAccentBox li:nth-child(2){
+    border-top: 1px solid darkmagenta;
+  }
+
+  .sybAccentBox li:nth-child(3){
     border-top: 1px solid darkmagenta;
   }
 

@@ -1,269 +1,64 @@
 @media screen and (min-width:768px){
-  .parentContainer{
-    width: 100%;
-    height: 44.8vw;
-    padding: 0;
-  }
-
-  .greenBox{
-    width: 38vw;
-    height: 35vw;
-    background-color: #609F00;
-    position: absolute;
-    margin: auto;
-    top: 0; left: 10.4vw; bottom: 0;
-  }
-
-  .triangleBig{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 11.59vw;
-    width: 11.59vw;
-
-  }
-
-  .triangleSmall {
-    display: none;
-  }
-
-  .title{
-    color: #FFFFFF;
-    width: 32vw;
-    font-size: 5.2vw;
-    line-height: 5.2vw;
-    font-weight: bold;
-    margin: 0 auto;
-    padding-top: 2.2vw;
-  }
-
-  .subTitle{
-    color: #FFFFFF;
-    font-family: Merriweather;
-    font-style: italic;
-    font-size: 1.5vw;
-    line-height: 1.8vw;
-    font-weight: lighter;
-    width: 32vw;
-    margin: 0 auto;
-    padding-top: 2.2vw;
-  }
-
-  .imageContainer{
-    postition: relative;
-
-  }
-
-  .imageContainer img{
-    position: absolute;
-    right: 0;
-    margin-right: 10.4vw;
-    width: 65.7vw;
-    height: auto;
-    z-index: -1;
-  }
-
-  .btnContainer{
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 2.22vw;
-    width: 32vw;
-    margin: 0 auto;
-  }
-
-  .btnContainer div{
-    padding: 0;
-  }
-
-  .tellMeHowBtn {
-    border: 2px solid #FFFFFF;
-    border-radius: 0;
-    background-color: #609F00;
-    color: #FFFFFF;
-    width: 11.24vw;
-    height: 3.33vw;
-    font-size: 1.25vw;
-    font-weight: bold;
-    text-align: center;
-    padding: 0;
+  .stgContainer{
     position: relative;
-
+    margin-top: 5vw;
   }
 
-  .tellMeHowBtn:hover {
-    background-color: rgba(255,255,255,0.3);;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+  .stgBanner{
+    width: 85vw;
+    height: 40vw;
   }
 
-  .tellMeHowBtn:active, .tellMeHowBtn:focus{
-    background-color: #FFFFFF !important;
-    border: 2px solid #FFFFFF !important;
-    color: #609F00 !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-
-  .findLendersWhiteBtn{
-    margin-left: 2.5vw;
-    border: 2px solid #FFFFFF;
-    border-radius: 0;
-    background-color: #FFFFFF;
-    color: #609F00;
-    width: 11.24vw;
-    height: 3.33vw;
-    font-size: 1.25vw;
+  .stgContainer p{
+    font-family: Arial, sans-serif;
+    font-size: 6vw;
     font-weight: bold;
-    text-align: center;
+    padding-bottom: 2vw;
+    padding-left: 12vw;
+  }
+
+  .stgAccentBox{
+    position: absolute;
+    background: rgb(0, 81, 147);
+    width: 36vw;
+    height: 18vw;
+    bottom: 15vw;
+    left: 57vw;
+  }
+
+  .stgAccentBox ul{
+    list-style: none;
     padding: 0;
   }
 
-  .findLendersWhiteBtn:hover{
-    background-color: rgba(255,255,255,0.8);
-    color: #609F00;
-    border: 2px solid rgba(255,255,255,0.8);
+  .stgAccentBox li{
+    height: 6vw;
+    padding-left: 2vw;
+    font-size: 20px;
+    line-height: 6vw;
   }
 
-  .findLendersWhiteBtn:active, .findLendersWhiteBtn:focus{
-    background-color: rgba(255,255,255,0.6) !important;
-    color: #609F00 !important;
-    border: 2px solid rgba(255,255,255,0.6) !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-}
-
-@media screen and (max-width:768px) {
-
-  .parentContainer {
-    width: 100vw;
-    height: 172.5vw;
-    padding: 0;
-    postition: relative;
-    overflow: hidden;
-  }
-
-
-  .greenBox {
-    width: 91.8vw;
-    height: 109vw;
-    background-color: #609F00;
-    margin-left: 4.1vw;
+  .stgAccentBox img{
     position: absolute;
-    bottom: 0;
-  }
-
-  .triangleBig {
-    display: none;
-  }
-
-  .triangleSmall {
-    position: absolute;
+    width: 8.5vw;
+    height: 8.5vw;
     bottom: 0;
     right: 0;
-    height: 25.86vw;
-    width: 25.86vw;
   }
 
-  .title {
-    color: #FFFFFF;
-    width: 74.9vw;
-    font-size: 12.3vw;
-    line-height: 13vw;
+  .stgAccentBox li:nth-child(2){
+    border-top: 1px solid darkblue;
+  }
+
+  .stgAccentBox li:nth-child(3){
+    border-top: 1px solid darkblue;
+  }
+
+  .stgAccentBox a{
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #fff;
     font-weight: bold;
-    margin: 0 auto;
-    padding-top: 7.2vw;
   }
-
-  .subTitle {
-    color: #FFFFFF;
-    font-size: 4.2vw;
-    line-height: 5.8vw;
-    font-weight: lighter;
-    width: 74.9vw;
-    margin: 0 auto;
-    padding-top: 2.4vw;
-  }
-
-  .btnContainer{
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 4.53vw;
-    width: 74.9vw;
-    margin: 0 auto;
-  }
-
-  .btnContainer div{
-    padding: 0;
-  }
-
-  .tellMeHowBtn {
-    border: 2px solid #FFFFFF;
-    border-radius: 0;
-    background-color: #609F00;
-    color: #FFFFFF;
-    height: 12.8vw;
-    width: 74.6vw;
-    font-size: 4.8vw;
-    font-weight: bold;
-    text-align: center;
-  }
-
-  .tellMeHowBtn:hover {
-    background-color: rgba(255,255,255,0.3);;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-  }
-
-  .tellMeHowBtn:active, .tellMeHowBtn:focus{
-    background-color: #FFFFFF !important;
-    border: 2px solid #FFFFFF !important;
-    color: #609F00 !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-
-  .findLendersWhiteBtn{
-    border: 2px solid #FFFFFF;
-    border-radius: 0;
-    background-color: #FFFFFF;
-    color: #609F00;
-    width: 74.6vw;
-    height: 12.8vw;
-    font-size: 4.8vw;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 4.2vw;
-  }
-
-  .findLendersWhiteBtn:hover{
-    background-color: rgba(255,255,255,0.8);
-    color: #609F00;
-    border: 2px solid rgba(255,255,255,0.8);
-  }
-
-  .findLendersWhiteBtn:active, .findLendersWhiteBtn:focus{
-    background-color: rgba(255,255,255,0.6) !important;
-    color: #609F00 !important;
-    border: 2px solid rgba(255,255,255,0.6) !important;
-    outline: none !important;
-    box-shadow: none !important;
-  }
-
-  .imageContainer{
-    postition: relative;
-    top: 0;
-  }
-
-  .imageContainer img{
-    position: absolute;
-    left: -72.3%;
-    top: -27vw;
-    height: 68%;
-    width: auto;
-    margin-right: auto;
-    margin-left: auto;
-    z-index: -1;
-  }
-
 }
+
