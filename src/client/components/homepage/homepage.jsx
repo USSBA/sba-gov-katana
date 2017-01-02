@@ -14,8 +14,6 @@ class Homepage extends React.Component {
         <Header />
         <PrimaryLanding/>
         <StartYourBusinessSection />
-        <FinanceYourBusinessSection />
-        <SellToGovtSection />
         <Footer />
       </div>
     )
