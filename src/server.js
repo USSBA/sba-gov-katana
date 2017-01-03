@@ -64,6 +64,13 @@ if (config.get("developmentOptions.drupal.proxy")) {
   app.get("/node/:id.json", singleNode);
 }
 
+import { blogNode, blogSingleNode } from "./controllers/blog-homepage-content.js";
+if (config.get("developmentOptions.drupal.proxy")) {
+  console.log("Enabling Drupal Proxy");
+  app.get("/node.json", blogNode);
+  app.get("/node/:id.json", blogSingleNode);
+}
+
 app.get(["/", "/linc/*"], function(req, res) {
   res.render("main");
 });

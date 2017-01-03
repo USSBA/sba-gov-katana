@@ -8,6 +8,8 @@ import Header from '../common/header.jsx';
 import Footer from '../common/footer.jsx';
 import PrimaryLanding from './primary-landing.jsx';
 
+import Blog from './blog.jsx';
+
 class Homepage extends React.Component {
   render() {
     return (
@@ -18,6 +20,7 @@ class Homepage extends React.Component {
         <FinanceYourBusinessSection/>
         <SellToGovtSection/>
         <HappeningNow />
+        <Blog />
         <Footer />
       </div>
     )
