@@ -1,0 +1,38 @@
+.title {
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+}
+
+.text {
+    line-height: 1.3em;
+    margin-bottom: 15px;
+}
+
+.btnContainer {
+    padding: 0;
+}
+
+.btn {
+    height: 2em;
+    border-radius: 0;
+    border: none;
+    color: white;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    background: none;
+}
+
+.btnContinue {
+    composes: btn;
+    background: #0B97DD;
+}
+
+.btnCancel {
+    composes: btn;
+    border: 2px solid #0B97DD;
+    background: white;
+    color: #0B97DD;
+}

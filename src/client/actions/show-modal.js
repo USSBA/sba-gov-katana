@@ -7,3 +7,15 @@ export function leaveSba(targetUrl) {
     }
   };
 }
+
+export function navigateLeaveSba() {
+  return {
+    type: "NAVIGATE_MODAL"
+  };
+}
+
+export function closeLeaveSba() {
+  return {
+    type: "CLOSE_MODAL"
+  };
+}
