@@ -6,13 +6,12 @@
 
   .fybBanner{
     position: relative;
-    width: 85vw;
+    width: 82vw;
     height: 40vw;
-    left: 20vw;
+    left: 18vw;
   }
 
   .fybContainer p{
-    font-family: Arial, sans-serif;
     font-size: 6vw;
     font-weight: bold;
     padding-bottom: 2vw;
@@ -25,7 +24,7 @@
     width: 36vw;
     height: 18vw;
     bottom: 15vw;
-    left: 12vw;
+    left: 10vw;
   }
 
   .fybAccentBox ul{
@@ -58,7 +57,65 @@
 
   .fybAccentBox a{
     text-decoration: none;
-    font-family: Arial, sans-serif;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .fybContainer{
+    margin-bottom: 42vw;
+  }
+
+  .fybBanner{
+    display: none;
+  }
+
+  .fybContainer p{
+    font-size: 6vw;
+    font-weight: bold;
+    padding-bottom: 2vw;
+    padding-left: 12vw;
+  }
+
+  .fybAccentBox{
+    position: absolute;
+    background: rgb(125, 176, 46);
+    width: 90vw;
+    height: 36vw;
+    margin-left: 4.5vw;
+  }
+
+  .fybAccentBox ul{
+    list-style: none;
+    padding: 0;
+  }
+
+  .fybAccentBox li{
+    height: 12vw;
+    padding-left: 7vw;
+    font-size: 4vw;
+    line-height: 12vw;
+  }
+
+  .fybAccentBox img{
+    position: absolute;
+    width: 18vw;
+    height: 18vw;
+    bottom: 0;
+    right: 0;
+  }
+
+  .fybAccentBox li:nth-child(2){
+    border-top: 1px solid darkolivegreen;
+  }
+
+  .fybAccentBox li:nth-child(3){
+    border-top: 1px solid darkolivegreen;
+  }
+
+  .fybAccentBox a{
+    text-decoration: none;
     color: #fff;
     font-weight: bold;
   }
