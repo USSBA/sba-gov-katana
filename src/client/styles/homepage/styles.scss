@@ -1,0 +1,38 @@
+
+
+.homepageSection {
+    margin-left: 6vw;
+    margin-right: 6vw;
+}
+
+.homepageSectionTitle{
+    color: black;
+    font-size: 5vw;
+    font-weight: 900;
+}
+
+.homepageSectionItemTitle{
+    color: black;
+    font-size: 1.3vw;
+    font-weight: 600;
+}
+
+.homepageLearnMore, .homepageLearnMore:hover{
+    background-color: rgb(10,151,222);
+    color: white;
+    font-weight: 600;
+    border-radius: 0;
+    border: 0;
+    padding: 10px 20px;
+}
+
+.carouselImage{
+    padding: 1px;
+}
+
+.homepageSectionCarouselItemTitle{
+    color: black;
+    font-weight: 600;
+    font-size: 3.5vw;
+    background-color: white;
+}

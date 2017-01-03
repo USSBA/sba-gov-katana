@@ -2,6 +2,9 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
+    drupal:
+        proxy: false
+        hostname: http://sbagov-drupal.fearlesstesters.com/
 server:
     port: 3000
 email:
