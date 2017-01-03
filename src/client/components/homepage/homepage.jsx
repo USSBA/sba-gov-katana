@@ -8,6 +8,8 @@ import Header from '../common/header.jsx';
 import Footer from '../common/footer.jsx';
 import PrimaryLanding from './primary-landing.jsx';
 
+import ModalController from '../common/modal-controller.jsx';
+
 class Homepage extends React.Component {
   render() {
     return (
@@ -19,6 +21,7 @@ class Homepage extends React.Component {
         <SellToGovtSection/>
         <HappeningNow />
         <Footer />
+        <ModalController/>
       </div>
     )
   }
