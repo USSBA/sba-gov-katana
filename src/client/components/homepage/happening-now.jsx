@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Grid, Row, Col, Carousel } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
+import ModifiedCarousel from "../helpers/carousel.jsx";
 import * as ContentActions from "../../actions/content.js";
 import styles from "../../styles/homepage/styles.scss";
 
@@ -24,6 +25,14 @@ class HappeningNow extends React.Component {
         mdSize = 4;
       }
     }
+
+    let carouselItems = items.map(function(item) {
+      return {
+        title: item.title,
+        imageSrc: item.field_image.file.uri,
+        imageAlt: item.field_image.alt
+      };
+    });
     return (<div className={ styles.homepageSection }>
               <Grid fluid>
                 <Row>
@@ -59,16 +68,7 @@ class HappeningNow extends React.Component {
                 <Row>
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
                   <div className="happeningNowCarousel">
-                    <Carousel controls={ false }>
-                      { items.map(function(item) {
-                          return <Carousel.Item>
-                                   <img className={ styles.carouselImage } src={ item.field_image.file.uri } alt={ item.field_image.alt }></img>
-                                   <p className={ "text-center " + styles.homepageSectionCarouselItemTitle }>
-                                     { item.title }
-                                   </p>
-                                 </Carousel.Item>;
-                        }) }
-                    </Carousel>
+                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.homepageSectionCarouselItemTitle } items={ carouselItems } />
                   </div>
                   </Col>
                 </Row>

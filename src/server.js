@@ -59,11 +59,12 @@ app.get("/linc/matchCounselors", jsonParser, function(req, res) {
 
 import { node, singleNode } from "./controllers/content.js";
 if (config.get("developmentOptions.drupal.proxy")) {
-    app.get("node.json", node);
-    app.get("node/:id.json", singleNode);
+  console.log("Enabling Drupal Proxy");
+  app.get("/node.json", node);
+  app.get("/node/:id.json", singleNode);
 }
 
-app.get("*", function(req, res) {
+app.get(["/", "/linc/*"], function(req, res) {
   res.render("main");
 });
 

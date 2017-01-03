@@ -14,7 +14,7 @@ function receiveNodes(query, data) {
 function fetchNodes(query) {
   return (dispatch) => {
     dispatch(receiveNodes(query));
-    return axios.get("/content/node.json?" + queryString.stringify(query)).then((response) => {
+    return axios.get("/node.json?" + queryString.stringify(query)).then((response) => {
       return response.data;
     }).then((data) => {
       return dispatch(receiveNodes(query, data));
