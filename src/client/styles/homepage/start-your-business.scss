@@ -11,7 +11,6 @@
   }
 
   .sybContainer p{
-    font-family: Arial, sans-serif;
     font-size: 6vw;
     font-weight: bold;
     padding-bottom: 2vw;
@@ -57,7 +56,66 @@
 
   .sybAccentBox a{
     text-decoration: none;
-    font-family: Arial, sans-serif;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .sybContainer{
+    margin-top: 8vw;
+    margin-bottom: 42vw;
+  }
+
+  .sybBanner{
+    display: none;
+  }
+
+  .sybContainer p{
+    font-size: 6vw;
+    font-weight: bold;
+    padding-bottom: 2vw;
+    padding-left: 12vw;
+  }
+
+  .sybAccentBox{
+    position: absolute;
+    background: rgb(172, 62, 161);
+    width: 90vw;
+    height: 36vw;
+    margin-left: 4.5vw;
+  }
+
+  .sybAccentBox ul{
+    list-style: none;
+    padding: 0;
+  }
+
+  .sybAccentBox li{
+    height: 12vw;
+    padding-left: 7vw;
+    font-size: 4vw;
+    line-height: 12vw;
+  }
+
+  .sybAccentBox img{
+    position: absolute;
+    width: 18vw;
+    height: 18vw;
+    bottom: 0;
+    right: 0;
+  }
+
+  .sybAccentBox li:nth-child(2){
+    border-top: 1px solid darkmagenta;
+  }
+
+  .sybAccentBox li:nth-child(3){
+    border-top: 1px solid darkmagenta;
+  }
+
+  .sybAccentBox a{
+    text-decoration: none;
     color: #fff;
     font-weight: bold;
   }
