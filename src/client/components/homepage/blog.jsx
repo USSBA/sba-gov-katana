@@ -18,7 +18,7 @@ class Blog extends React.Component {
     if (this.props.blog) {
       items = this.props.blog.list;
     }
-    console.log(items)
+    console.log(this.props)
 
     return (
       <div>

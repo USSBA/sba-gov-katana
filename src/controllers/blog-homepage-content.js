@@ -1,4 +1,4 @@
-import data from "./temp-blog-response.json";
+import data from "temp-blog-response.json";
 import config from "config";
 import axios from "axios";
 import path from "path";
