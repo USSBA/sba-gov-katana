@@ -107,6 +107,8 @@ $primary-color: #0B97DD;
         min-width:60vw;
         width: 85vw;
         border-top: solid $primary-color;
+        padding-top: 4vw;
+        padding-bottom: 4vw;
     }
 
     .mainNav > li:hover > ul {
