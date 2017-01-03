@@ -212,14 +212,14 @@ $primary-color: #0B97DD;
 
     .logo {
         margin: 1em;
-        height: 10vw;
+        height: 10.7vw;
     }
 
     //hamburger styling
 
     .menuBtn {
         margin: 1em;
-        width: calc(24vw + 25px);
+        width: calc(24vw + 29px);
         height: calc(10vw + 10px);
         border: 2px solid $primary-color;
         background-color: white;
@@ -231,7 +231,7 @@ $primary-color: #0B97DD;
     }
 
     .menuBtnTxt {
-        font-size: 1em;
+        font-size: 3.5vw;
         font-weight: bold;
         margin-right: 1em;
         vertical-align: middle;
@@ -239,7 +239,7 @@ $primary-color: #0B97DD;
     }
 
     .hamburgerIcon {
-        font-size: 1.7em;
+        font-size: 1.5em;
         vertical-align: middle;
         color: $primary-color;
     }
