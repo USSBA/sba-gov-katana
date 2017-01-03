@@ -39,8 +39,6 @@ app.get("/", function(req, res) {
 import * as matchController from "./controllers/match-controller.js";
 app.post("/linc/matchFormData", jsonParser, matchController.handleLenderMatchSubmission);
 app.get("/linc/confirmEmail", matchController.handleEmailConfirmation);
-
-
 app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
   const zipStr = "zip:" + req.body.zipcode + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
@@ -54,14 +52,19 @@ app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
     });
   });
 });
-
-
 app.get("/linc/matchCounselors", jsonParser, function(req, res) {
   console.log("zip = " + req.body.zipcode);
   res.status(HttpStatus.NO_CONTENT).send();
 });
 
-app.get("*", function(req, res) {
+import { node, singleNode } from "./controllers/content.js";
+if (config.get("developmentOptions.drupal.proxy")) {
+  console.log("Enabling Drupal Proxy");
+  app.get("/node.json", node);
+  app.get("/node/:id.json", singleNode);
+}
+
+app.get(["/", "/linc/*"], function(req, res) {
   res.render("main");
 });
 
