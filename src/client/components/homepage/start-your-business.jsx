@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../styles/homepage/start-your-business.scss';
 import sYBImage from '../../../../public/assets/images/homepage/start-image.jpg';
 import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
+import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const StartYourBusinessSection = (props) => <div className={ styles.sybContainer }>
                                                      <p>Start your business.</p>
@@ -12,7 +13,8 @@ export const StartYourBusinessSection = (props) => <div className={ styles.sybCo
                                                          <li><a href="https://www.sba.gov/tools/local-assistance#locations-page">Find local mentoring and support</a></li>
                                                          <li><a href="https://www.sba.gov/tools/business-plan/1?from_mobile=true">Create a business plan</a></li>
                                                        </ul>
-                                                       <img src={ diagonalLines } alt="" />
+                                                       <img className="hidden-xs" src={ diagonalLines } alt="" />
+                                                       <img className="visible-xs" src={ diagonalLinesMobile } alt="" />
                                                      </div>
                                                    </div>
 

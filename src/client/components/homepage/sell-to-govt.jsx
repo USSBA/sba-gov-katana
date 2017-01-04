@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../styles/homepage/sell-to-govt.scss';
 import sTGImage from '../../../../public/assets/images/homepage/contract.jpg';
 import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
+import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const SellToGovtSection = (props) => <div className={ styles.stgContainer }>
                                               <p>Sell to the government.</p>
@@ -12,7 +13,8 @@ export const SellToGovtSection = (props) => <div className={ styles.stgContainer
                                                   <li><a href="https://www.sba.gov/contracting/resources-small-businesses/government-contracting-classroom">Contracting classroom</a></li>
                                                   <li><a href="https://www.sba.gov/tools/size-standards-tool">Quality for government contracts</a></li>
                                                 </ul>
-                                                <img src={ diagonalLines } alt="" />
+                                                <img className="hidden-xs" src={ diagonalLines } alt="" />
+                                                <img className="visible-xs" src={ diagonalLinesMobile } alt="" />
                                               </div>
                                             </div>
 
