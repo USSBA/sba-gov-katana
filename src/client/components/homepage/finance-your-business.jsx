@@ -12,6 +12,6 @@ export const FinanceYourBusinessSection = (props) => <div className={ styles.fyb
                                                            <li><a href="https://www.sba.gov/loans-grants/see-what-sba-offers/sba-loan-programs">Loan programs</a></li>
                                                            <li><a href="https://www.sba.gov/tools/linc">Connect with SBA lenders</a></li>
                                                          </ul>
-                                                         <img src={ diagonalLines } alt=""/>
+                                                         <img src={ diagonalLines } alt="" />
                                                        </div>
                                                      </div>
