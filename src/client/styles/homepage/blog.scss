@@ -1,34 +1,96 @@
-.blogSection{
-  margin-left: 10.4vw;
-  margin-right: 10.4vw;
-  border: 1px solid black;
-  padding: 0;
+@media screen and (min-width:768px) {
+  .blogSection {
+    margin-left: 10.4vw;
+    margin-right: 10.4vw;
+    padding: 0;
+    //width: 79.166vw
+  }
+
+  .sectionTitle {
+    color: #333333;
+    font-size: 5.2vw;
+    font-weight: 900;
+    padding: 0;
+  }
+
+  .blogsContainer {
+    padding: 0;
+    //height: 52.8vw
+  }
+
+  .singleBlog:first-of-type {
+    position: relative;
+    padding: 0;
+    margin-top: 2.98vw;
+    height: 45vw;
+    width: 38.5vw;
+    margin-bottom: 5.55vw;
+    margin-right: 1.94vw;
+  }
+
+  .singleBlog {
+    position: relative;
+    padding: 0;
+    margin-top: 2.98vw;
+    height: 45vw;
+    width: 38.5vw;
+    margin-bottom: 5.55vw;
+  }
+
+  .blogTitle {
+    margin-top: .9vw;
+    font-size: 2.5vw;
+    font-weight: 900;
+    line-height: 2.78vw;
+  }
+
+  .blogTitle a {
+    color: #333333;
+  }
+
+  .blogInfo {
+    position: absolute;
+    bottom: 4.86vw;
+    color: #666666;
+    font-size: 1.25vw;
+    line-height: 1.88vw;
+  }
+
+  .imageContainer img {
+    width: 38.5vw;
+    height: auto;
+  }
+
+  .blueBtn {
+    position: absolute;
+    bottom: 0;
+    height: 3.33vw;
+    width: 11.8vw;
+    background-color: #0093DF;
+    color: #FFFFFF;
+    font-size: 1.25vw;
+    line-height: 1.59vw;
+    text-align: center;
+    padding-top: .833vw;
+    padding-bottom: .833vw;
+    font-weight: 900;
+  }
+
+  .blueBtn:hover {
+    text-decoration: none;
+    background-color: #006BA2;
+    color: #FFFFFF;
+  }
+
+  .blueBtn:active, .blueBtn:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #004265;
+  }
 }
 
-.sectionTitle{
-  color: #333333;
-  font-size: 5.2vw;
-  font-weight: 900;
-  padding: 0;
-}
-
-.blogsContainer{
-  padding: 0;
-}
-
-.singleBlog{
-  padding: 0;
-}
-
-.blogTitle{
-  color: #333333;
-  font-size: 2.5vw;
-  font-weight: 900;
-  line-height: 2.78vw;
-}
-
-.blogInfo{
-  color: #666666;
-  font-size: 1.25vw;
-  line-height: 1.88vw;
+@media screen and (max-width:768px) {
+  .imageContainer {
+    display: none
+  }
 }

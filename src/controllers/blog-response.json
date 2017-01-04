@@ -33,9 +33,11 @@
       "sticky":"0",
       "created":"1481623200",
       "changed":"1481659501",
+      "image_url":"http:\/\/i.imgur.com\/ByGedxE.png",
       "author":{
         "uri":"http:\/\/sbagov-drupal.fearlesstesters.com\/user\/1298751",
         "id":"1298751",
+        "field_name":"Joel Libava",
         "resource":"user",
         "uuid":"7de7c03e-1149-466b-b1ce-8acd36570c5d"
       },
@@ -86,9 +88,11 @@
       "sticky":"0",
       "created":"1481191200",
       "changed":"1481191501",
+      "image_url":"http:\/\/i.imgur.com\/htjxGFj.png",
       "author":{
         "uri":"http:\/\/sbagov-drupal.fearlesstesters.com\/user\/1331341",
         "id":"1331341",
+        "field_name":"Barbara Weltman",
         "resource":"user",
         "uuid":"fa68f6a2-c3bc-4ea9-8ab0-fa08ac79ceb9"
       },

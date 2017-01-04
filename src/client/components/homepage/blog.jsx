@@ -18,29 +18,35 @@ class Blog extends React.Component {
 
   returnFormatedDate(date) {
     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var dateTime = new Date(date*1000);
+    var dateTime = new Date(date * 1000);
     var day = dateTime.getDate();
     var month = monthNames[dateTime.getMonth()];
     var year = dateTime.getFullYear();
-    return(month + " " + day + ", " + year);
+    return (month + " " + day + ", " + year);
   }
 
-  itemMapper(items){
+  itemMapper(items) {
+    var imgSource = ["http://i.imgur.com/htjxGFj.png", "http://i.imgur.com/ByGedxE.png"]
+
     var blogThis = this;
     return (
-      <div className={styles.blogsContainer + " container-fluid"}>
+      <div className={ styles.blogsContainer + " container-fluid" }>
         { items.map(function(item) {
-          return (
-              <div className ={styles.singleBlog + " col-sm-6 nopadding"}>
-                <div className={styles.blogTitle}>
-                    { item.title }
+            return (
+              <div className={ styles.singleBlog + " col-sm-6 nopadding" }>
+                <div className={ styles.imageContainer }>
+                  <img src={ item.image_url } alt={ item.title } width="555" height="450" />
                 </div>
-                <div className={styles.blogInfo}>
-                    { "by NAME on " + blogThis.returnFormatedDate(item.created) }
+                <div className={ styles.blogTitle }>
+                  <a href={ item.url }>{ item.title }</a>
                 </div>
+                <div className={ styles.blogInfo }>
+                  { "by " + item.author.field_name + " on " + blogThis.returnFormatedDate(item.created) }
+                </div>
+                <a href={ item.url } className={ styles.blueBtn }>READ MORE</a>
               </div>
-          );
-        }) }
+              );
+          }) }
       </div> );
   }
 
@@ -51,11 +57,11 @@ class Blog extends React.Component {
     }
 
     return (
-      <div className={styles.blogSection}>
-        <div className={styles.sectionTitle}>
+      <div className={ styles.blogSection }>
+        <div className={ styles.sectionTitle }>
           From the blog.
         </div>
-          { this.itemMapper(items) }
+        { this.itemMapper(items) }
       </div>
 
 
