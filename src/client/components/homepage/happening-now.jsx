@@ -38,11 +38,11 @@ class HappeningNow extends React.Component {
       };
     });
     let me = this;
-    return (<div className={ styles.homepageSection }>
+    return (<div className={ styles.happeningNow }>
               <Grid fluid>
                 <Row>
                   <Col xs={ 12 }>
-                  <p className={ styles.homepageSectionTitle }>What's happening now.</p>
+                  <p className={ styles.happeningNowTitle }>What's happening now.</p>
                   </Col>
                 </Row>
                 <Row>
@@ -57,7 +57,7 @@ class HappeningNow extends React.Component {
                 <Row>
                   { items.map(function(item) {
                       return <Col xsHidden smHidden md={ mdSize }>
-                             <p className={ styles.homepageSectionItemTitle }>
+                             <p className={ styles.happeningNowItemTitle }>
                                { item.title }
                              </p>
                              </Col>;
@@ -66,14 +66,14 @@ class HappeningNow extends React.Component {
                 <Row>
                   { items.map(function(item) {
                       return <Col xsHidden smHidden md={ mdSize }>
-                             <a href={ item.url } className={ "btn btn-default " + styles.homepageLearnMore }>LEARN MORE</a>
+                             <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore } >LEARN MORE</a>
                              </Col>;
                     }) }
                 </Row>
                 <Row>
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
                   <div className="happeningNowCarousel">
-                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.homepageSectionCarouselItemTitle } items={ carouselItems } />
+                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
                   </div>
                   </Col>
                 </Row>

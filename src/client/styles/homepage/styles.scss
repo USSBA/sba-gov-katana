@@ -1,23 +1,25 @@
 
-
-.homepageSection {
-    margin-left: 6vw;
-    margin-right: 6vw;
+.happeningNow {
+    margin-top: 5vw;
+    padding-left: calc(10.4vw - 15px);
+    padding-right: calc(10.4vw - 15px);
 }
 
-.homepageSectionTitle{
-    color: black;
-    font-size: 5vw;
+.happeningNowTitle{
+    font-size: 5.2vw;
     font-weight: 900;
+    padding-bottom: 2vw;
 }
 
-.homepageSectionItemTitle{
+.happeningNowItemTitle{
     color: black;
-    font-size: 1.3vw;
-    font-weight: 600;
+    font-size: 1.2vw;
+    font-weight: 700;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
 }
 
-.homepageLearnMore, .homepageLearnMore:hover{
+.happeningNowLearnMore, .happeningNowLearnMore:hover{
     background-color: rgb(10,151,222);
     color: white;
     font-weight: 600;
@@ -30,7 +32,7 @@
     padding: 1px;
 }
 
-.homepageSectionCarouselItemTitle{
+.happeningNowCarouselItemTitle{
     color: black;
     font-weight: 600;
     font-size: 3.5vw;
