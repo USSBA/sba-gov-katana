@@ -20,6 +20,7 @@ const ModalController = ({modalType, modalProps}) => {
 
 export default connect(
   (state) => {
+    console.log(state.modalReducer)
     return state.modalReducer;
   }
 )(ModalController);

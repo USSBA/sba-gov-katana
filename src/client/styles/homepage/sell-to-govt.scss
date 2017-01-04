@@ -10,7 +10,6 @@
   }
 
   .stgContainer p{
-    font-family: Arial, sans-serif;
     font-size: 6vw;
     font-weight: bold;
     padding-bottom: 2vw;
@@ -19,7 +18,7 @@
 
   .stgAccentBox{
     position: absolute;
-    background: rgb(0, 81, 147);
+    background: #0F48AA;
     width: 36vw;
     height: 18vw;
     bottom: 15vw;
@@ -56,7 +55,65 @@
 
   .stgAccentBox a{
     text-decoration: none;
-    font-family: Arial, sans-serif;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .stgContainer{
+    margin-bottom: 42vw;
+  }
+
+  .stgBanner{
+    display: none;
+  }
+
+  .stgContainer p{
+    font-size: 6vw;
+    font-weight: bold;
+    padding-bottom: 2vw;
+    padding-left: 12vw;
+  }
+
+  .stgAccentBox{
+    position: absolute;
+    background: #0F48AA;
+    width: 90vw;
+    height: 36vw;
+    margin-left: 4.5vw;
+  }
+
+  .stgAccentBox ul{
+    list-style: none;
+    padding: 0;
+  }
+
+  .stgAccentBox li{
+    height: 12vw;
+    padding-left: 7vw;
+    font-size: 4vw;
+    line-height: 12vw;
+  }
+
+  .stgAccentBox img{
+    position: absolute;
+    width: 18vw;
+    height: 18vw;
+    bottom: 0;
+    right: 0;
+  }
+
+  .stgAccentBox li:nth-child(2){
+    border-top: 1px solid darkblue;
+  }
+
+  .stgAccentBox li:nth-child(3){
+    border-top: 1px solid darkblue;
+  }
+
+  .stgAccentBox a{
+    text-decoration: none;
     color: #fff;
     font-weight: bold;
   }

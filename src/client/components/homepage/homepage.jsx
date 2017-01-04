@@ -9,6 +9,7 @@ import Footer from '../common/footer.jsx';
 import PrimaryLanding from './primary-landing.jsx';
 
 import Blog from './blog.jsx';
+import ModalController from '../common/modal-controller.jsx';
 
 class Homepage extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class Homepage extends React.Component {
         <HappeningNow />
         <Blog />
         <Footer />
+        <ModalController/>
       </div>
     )
   }

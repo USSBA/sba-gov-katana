@@ -4,7 +4,17 @@ const modalReducer = (state = {}, action) => {
       modalType: action.modalType,
       modalProps: action.modalProps
     };
+  } else if (action.type === "NAVIGATE_MODAL") {
+    document.location = state.modalProps.targetUrl;
+    return {
+      modalType: null
+    };
+  } else if (action.type === "CLOSE_MODAL") {
+    return {
+      modalType: null
+    };
   }
+
   return state;
 };
 

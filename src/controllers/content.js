@@ -1,9 +1,10 @@
-import data from "./temp-slideshow-response.json";
+var data = {};
 import config from "config";
 import axios from "axios";
 import path from "path";
 import querystring from "querystring";
 import HttpStatus from "http-status-codes";
+
 
 function nodeReal(req, res) {
   if (req.query) {
