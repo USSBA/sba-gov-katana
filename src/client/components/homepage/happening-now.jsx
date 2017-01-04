@@ -12,15 +12,18 @@ class HappeningNow extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-    this.props.actions.fetchNodesIfNeeded({
-      type: "slideshow_element"
-    });
+    this.props.actions.fetchContentIfNeeded("frontpageslides", {});
   }
+
+  handleClick() {
+    console.log(arguments);
+  }
+
   render() {
     let items = [];
     let mdSize = 3;
     if (this.props.happeningNow) {
-      items = this.props.happeningNow.list;
+      items = this.props.happeningNow;
       if (items.length === 3) {
         mdSize = 4;
       }
@@ -29,10 +32,12 @@ class HappeningNow extends React.Component {
     let carouselItems = items.map(function(item) {
       return {
         title: item.title,
-        imageSrc: item.field_image.file.uri,
-        imageAlt: item.field_image.alt
+        imageSrc: item.image,
+        imageAlt: item.imageAlt,
+        href: item.url
       };
     });
+    let me = this;
     return (<div className={ styles.homepageSection }>
               <Grid fluid>
                 <Row>
@@ -43,8 +48,8 @@ class HappeningNow extends React.Component {
                 <Row>
                   { items.map(function(item) {
                       return (<Col xsHidden smHidden md={ mdSize }>
-                              <a href={ item.field_url.url }>
-                                <img className="img-responsive" src={ item.field_image.file.uri } alt={ item.field_image.alt }></img>
+                              <a href={ item.url }>
+                                <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
                               </a>
                               </Col>);
                     }) }
@@ -61,7 +66,7 @@ class HappeningNow extends React.Component {
                 <Row>
                   { items.map(function(item) {
                       return <Col xsHidden smHidden md={ mdSize }>
-                             <button className={ "btn btn-default " + styles.homepageLearnMore }>LEARN MORE</button>
+                             <a href={ item.url } className={ "btn btn-default " + styles.homepageLearnMore }>LEARN MORE</a>
                              </Col>;
                     }) }
                 </Row>

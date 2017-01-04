@@ -1,36 +1,60 @@
-var data = {};
-import config from "config";
-import axios from "axios";
-import path from "path";
-import querystring from "querystring";
+import { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
 import HttpStatus from "http-status-codes";
 
-
-function nodeReal(req, res) {
-  if (req.query) {
-    const givenQueryString = querystring.stringify(req.query);
-    axios.get(path.join(config.get("developmentOptions.drupal.hostname"), "node.json?" + givenQueryString))
-      .then(function(response) {
-        res.status(HttpStatus.OK).send(response.data);
+function fetchContent(req, res) {
+  if (req.query && req.params && req.params.type) {
+    fetchFromDrupal(req.params.type + ".json", req.query)
+      .then(function(data) {
+        res.status(HttpStatus.OK).send(data);
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.error(error);
         res.status(error.response.status).send("Error retrieving content");
       });
   } else {
     res.send(HttpStatus.BAD_REQUEST).send("Too few query params");
   }
-
-  res.status(HttpStatus.OK).send(data);
 }
 
 
-function node(req, res) {
-  res.status(HttpStatus.OK).send(data);
+function fetchContentById(req, res) {
+  if (req.query && req.params && req.params.type && req.params.id) {
+    fetchFromDrupal(req.params.type + "/" + req.params.id + ".json")
+      .then(function(data) {
+        res.status(HttpStatus.OK).send(data);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(error.response.status).send("Error retrieving content");
+      });
+  } else {
+    res.send(HttpStatus.BAD_REQUEST).send("Incorrect request format");
+  }
 }
 
-function singleNode(req, res) {
-  res.status(HttpStatus.OK).send(data);
+
+function fetchBlogs(req, res) {
+  fetchBlogsFromDrupal()
+    .then(function(data) {
+      res.status(HttpStatus.OK).send(data);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(error.response.status).send("Error retrieving content");
+    });
 }
 
-export { node, singleNode, nodeReal };
+
+function fetchFrontPageSlides(req, res) {
+  fetchFrontPageSlidesFromDrupal()
+    .then(function(data) {
+      res.status(HttpStatus.OK).send(data);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(error.response.status).send("Error retrieving content");
+    });
+}
+
+
+export { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs };
