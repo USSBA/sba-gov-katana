@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../styles/homepage/finance-your-business.scss';
 import fYBImage from '../../../../public/assets/images/homepage/finance.jpg';
 import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
+import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const FinanceYourBusinessSection = (props) => <div className={ styles.fybContainer }>
                                                        <p>Finance your business.</p>
@@ -12,6 +13,7 @@ export const FinanceYourBusinessSection = (props) => <div className={ styles.fyb
                                                            <li><a href="https://www.sba.gov/loans-grants/see-what-sba-offers/sba-loan-programs">Loan programs</a></li>
                                                            <li><a href="https://www.sba.gov/tools/linc">Connect with SBA lenders</a></li>
                                                          </ul>
-                                                         <img src={ diagonalLines } alt="" />
+                                                         <img className="hidden-xs" src={ diagonalLines } alt="" />
+                                                         <img className="visible-xs" src={ diagonalLinesMobile } alt="" />
                                                        </div>
                                                      </div>
