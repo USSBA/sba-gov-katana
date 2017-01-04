@@ -285,8 +285,8 @@ $primary-color: #0B97DD;
 
     .searchNavItem > a {
         font-size: calc(1.3vw - 2px);
-        width: 80vw !important;
-        margin-left: 10vw !important;
+        width: 93.3vw !important;
+        margin-left: 3.35vw !important;
         padding-left: 6px !important;
         padding-right: 6px !important;
         padding-top: 0 !important;
@@ -312,12 +312,19 @@ $primary-color: #0B97DD;
 
     .searchAddon {
         background-color: white;
+        color: #757575 !important;
         border-radius: 0px;
         border-right: solid white;
     }
 
     .searchIcon {
         vertical-align: middle;
+    }
+
+    :global {
+        input::-webkit-input-placeholder {
+            color: #666666 !important;
+        }
     }
 
 
