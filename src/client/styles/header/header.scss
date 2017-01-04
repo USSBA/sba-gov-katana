@@ -6,7 +6,7 @@ $primary-color: #0B97DD;
 
 
 //styles for DESKTOP
-@media screen and (min-width: 750px){
+@media screen and (min-width: 768px){
 
     .mobileNav {
         display: none;
@@ -25,23 +25,23 @@ $primary-color: #0B97DD;
     //styles navbar header contents
 
     .navbarHeader {
-        width: 17vw;
-        height: 8vw;
+        width: 12.8vw;
+        height: calc(1em + 4.3vw);
     }
 
     .logo {
-        height: calc(1em + 4.3vw);
-        margin: 1em;
+        height: 4.6vw;
+        margin-top: 1.3vw;
     }
 
     //styles the small top nav
     .miniNavItem > a {
         font-size: calc(1.1vw - 2px);
-        margin-top: 1vw;
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-        padding-top: 0.3em !important;
-        padding-bottom: 0.3em !important;
+        margin-top: 1.5vw;
+        padding-left: 0.48vw !important;
+        padding-right: 0.48vw !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
     }
 
     //styles the google translate widget
@@ -51,8 +51,8 @@ $primary-color: #0B97DD;
         margin-top: 0.6vw;
         padding-left: 6px !important;
         padding-right: 6px !important;
-        padding-top: 0.3em !important;
-        padding-bottom: 0.3em !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
     }
 
     .googleTranslate > div > div{
@@ -63,11 +63,11 @@ $primary-color: #0B97DD;
 
     //styles nav dropdown
     .navDropdown > a {
-        height: 3.5em;
+        height: 3.3vw;
         color: $primary-color !important;
         font-size: 1.3vw;
         font-weight: bold;
-        margin-top: 1vw;
+        margin-top: 0.4vw;
         padding-top: 0.5em !important;
         padding-bottom: 0.5em !important;
         padding-right: 1vw !important;
@@ -83,9 +83,9 @@ $primary-color: #0B97DD;
         margin: auto;
         height:0px;
         width: 0px;
-        border-bottom: 10px solid $primary-color;
-        border-right: 10px solid transparent;
-        border-left: 10px solid transparent;
+        border-bottom: 0.7vw solid $primary-color;
+        border-right: 0.7vw solid transparent;
+        border-left: 0.7vw solid transparent;
         border-top: 0;
         visibility: hidden;
     }
@@ -135,8 +135,8 @@ $primary-color: #0B97DD;
     }
 
     .dropdownItem {
-        margin-top: 0.8vw !important;
-        margin-bottom: 0.8vw !important;
+        margin-top: 0.9vw !important;
+        margin-bottom: 0.9vw !important;
     }
 
     .dropdownItem > a {
@@ -193,7 +193,7 @@ $primary-color: #0B97DD;
 }
 
 //styles for MOBILE
-@media screen and (max-width: 750px){
+@media screen and (max-width: 768px){
     //removes .pull-right in bootstrap
     .mainNav{
         display: none;
@@ -212,14 +212,14 @@ $primary-color: #0B97DD;
 
     .logo {
         margin: 1em;
-        height: 10vw;
+        height: 10.7vw;
     }
 
     //hamburger styling
 
     .menuBtn {
         margin: 1em;
-        width: calc(24vw + 10px);
+        width: calc(24vw + 29px);
         height: calc(10vw + 10px);
         border: 2px solid $primary-color;
         background-color: white;
@@ -231,7 +231,7 @@ $primary-color: #0B97DD;
     }
 
     .menuBtnTxt {
-        font-size: 1em;
+        font-size: 3.5vw;
         font-weight: bold;
         margin-right: 1em;
         vertical-align: middle;
@@ -239,7 +239,7 @@ $primary-color: #0B97DD;
     }
 
     .hamburgerIcon {
-        font-size: 1.7em;
+        font-size: 1.5em;
         vertical-align: middle;
         color: $primary-color;
     }
@@ -285,8 +285,8 @@ $primary-color: #0B97DD;
 
     .searchNavItem > a {
         font-size: calc(1.3vw - 2px);
-        width: 80vw !important;
-        margin-left: 10vw !important;
+        width: 93.3vw !important;
+        margin-left: 3.35vw !important;
         padding-left: 6px !important;
         padding-right: 6px !important;
         padding-top: 0 !important;
@@ -300,6 +300,8 @@ $primary-color: #0B97DD;
         border-left: 0 !important;
         box-shadow: none !important;
         border-radius: 0px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
     }
 
     .searchBar:focus {
@@ -310,12 +312,19 @@ $primary-color: #0B97DD;
 
     .searchAddon {
         background-color: white;
+        color: #757575 !important;
         border-radius: 0px;
         border-right: solid white;
     }
 
     .searchIcon {
         vertical-align: middle;
+    }
+
+    :global {
+        input::-webkit-input-placeholder {
+            color: #666666 !important;
+        }
     }
 
 

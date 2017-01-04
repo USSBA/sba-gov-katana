@@ -14,10 +14,14 @@ $primary-color: #0B97DD;
         display: none;
     }
 
+    .mobileTriangle {
+        display: none;
+    }
+
     .box {
         position: absolute;
         background: $primary-color;
-        width: 38vw;
+        width: 38.6vw;
         height: 33vw;
         margin: auto;
         padding-top: 2vw;
@@ -25,7 +29,7 @@ $primary-color: #0B97DD;
         padding-left: 4vw;
         padding-right: 4vw;
         top: 0;
-        left: 10vw;
+        left: 10.4vw;
         bottom: 0;
     }
 
@@ -39,6 +43,8 @@ $primary-color: #0B97DD;
 
     .text {
         font-size: 1.3vw;
+        line-height: 1.9vw;
+        font-weight: 100;
         color: #FFFFFF;
         margin-bottom: 2.2vw;
     }
@@ -64,6 +70,10 @@ $primary-color: #0B97DD;
 
 @media screen and (max-width:768px) {
     .hero {
+        display: none;
+    }
+
+    .triangle {
         display: none;
     }
 
@@ -116,10 +126,10 @@ $primary-color: #0B97DD;
         color: $primary-color
     }
 
-    .triangle {
+    .mobileTriangle {
         position: absolute;
-        width: 25vw;
-        height: 25vw;
+        width: 25.9vw;
+        height: 25.9vw;
         bottom:0;
         right:0;
     }
