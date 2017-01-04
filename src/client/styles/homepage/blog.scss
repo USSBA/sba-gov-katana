@@ -90,7 +90,52 @@
 }
 
 @media screen and (max-width:768px) {
-  .imageContainer {
-    display: none
+  .sectionTitle{
+    font-size: 7.47vw;
+    line-height: 8vw;
+    font-weight: 900;
+    color: #333333;
+    padding-left: 12.53vw;
+    height: 8vw;
   }
+
+  a:hover {
+    text-decoration: none;
+
+  }
+
+  .singleBlog {
+    border: 1px solid #C4C4C4;
+    width: 92vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4.267vw;
+  }
+
+  .blogTitle {
+    color: #333333;
+    font-size: 5.06vw;
+    line-height: 5.867vw;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75.2vw;
+    margin-top: 4vw;
+  }
+
+  .blogInfo {
+    color: #333333;
+    font-size: 3.73vw;
+    line-height: 5.867vw;
+    margin-top: 1.067vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75.2vw;
+    margin-bottom: 4vw;
+  }
+
+  .whiteSpace{
+    height: 16vw;
+  }
+
 }

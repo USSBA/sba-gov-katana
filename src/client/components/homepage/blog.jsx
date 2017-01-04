@@ -25,15 +25,13 @@ class Blog extends React.Component {
     return (month + " " + day + ", " + year);
   }
 
-  itemMapper(items) {
-    var imgSource = ["http://i.imgur.com/htjxGFj.png", "http://i.imgur.com/ByGedxE.png"]
-
+  itemMapperDesktop(items) {
     var blogThis = this;
     return (
       <div className={ styles.blogsContainer + " container-fluid" }>
         { items.map(function(item) {
             return (
-              <div className={ styles.singleBlog + " col-sm-6 nopadding" }>
+              <div className={ styles.singleBlog + " col-sm-6  nopadding" }>
                 <div className={ styles.imageContainer }>
                   <img src={ item.image_url } alt={ item.title } width="555" height="450" />
                 </div>
@@ -47,7 +45,31 @@ class Blog extends React.Component {
               </div>
               );
           }) }
-      </div> );
+      </div>
+    );
+  }
+
+  itemMapperMobile(items) {
+    var blogThis = this;
+    return (
+      <div className={ styles.blogsContainer }>
+        { items.map(function(item) {
+          return (
+            <a href={ item.url }>
+              <div className={ styles.singleBlog }>
+                <div className={ styles.blogTitle }>
+                  { item.title }
+                </div>
+                <div className={ styles.blogInfo }>
+                  { blogThis.returnFormatedDate(item.created) }
+                </div>
+              </div>
+            </a>
+          );
+        }) }
+        <div className = {styles.whiteSpace}></div>
+      </div>
+    );
   }
 
   render() {
@@ -61,11 +83,14 @@ class Blog extends React.Component {
         <div className={ styles.sectionTitle }>
           From the blog.
         </div>
-        { this.itemMapper(items) }
+        <div className = "hidden-xs">
+          { this.itemMapperDesktop(items) }
+        </div>
+        <div className = "hidden-xl hidden-lg hidden-md hidden-sm">
+          { this.itemMapperMobile(items) }
+        </div>
       </div>
-
-
-      );
+    );
   }
 
 }
