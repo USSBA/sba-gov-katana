@@ -12,7 +12,7 @@ export const StartYourBusinessSection = (props) => <div className={ styles.sybCo
                                                          <li><a href="https://www.sba.gov/tools/local-assistance#locations-page">Find local mentoring and support</a></li>
                                                          <li><a href="https://www.sba.gov/tools/business-plan/1?from_mobile=true">Create a business plan</a></li>
                                                        </ul>
-                                                       <img src={ diagonalLines } />
+                                                       <img src={ diagonalLines } alt="" />
                                                      </div>
                                                    </div>
 

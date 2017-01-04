@@ -12,7 +12,7 @@ export const SellToGovtSection = (props) => <div className={ styles.stgContainer
                                                   <li><a href="https://www.sba.gov/contracting/resources-small-businesses/government-contracting-classroom">Contracting classroom</a></li>
                                                   <li><a href="https://www.sba.gov/tools/size-standards-tool">Quality for government contracts</a></li>
                                                 </ul>
-                                                <img src={ diagonalLines } />
+                                                <img src={ diagonalLines } alt="" />
                                               </div>
                                             </div>
 
