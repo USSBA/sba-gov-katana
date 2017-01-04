@@ -57,12 +57,12 @@ app.get("/linc/matchCounselors", jsonParser, function(req, res) {
   res.status(HttpStatus.NO_CONTENT).send();
 });
 
-import { node, singleNode } from "./controllers/content.js";
-if (config.get("developmentOptions.drupal.proxy")) {
-  console.log("Enabling Drupal Proxy");
-  app.get("/node.json", node);
-  app.get("/node/:id.json", singleNode);
-}
+// import { node, singleNode } from "./controllers/content.js";
+// if (config.get("developmentOptions.drupal.proxy")) {
+//   console.log("Enabling Drupal Proxy");
+//   app.get("/node.json", node);
+//   app.get("/node/:id.json", singleNode);
+// }
 
 import { blogNode, blogSingleNode } from "./controllers/blog-homepage-content.js";
 if (config.get("developmentOptions.drupal.proxy")) {
