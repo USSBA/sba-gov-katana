@@ -27,14 +27,11 @@ function fetchBlogsFromDrupal() {
 
 
 function fetchFrontPageSlidesFromDrupal() {
-  return fetchFromDrupal("entityqueue_subqueue", {
+  return fetchFromDrupal("entityqueue_subqueue.json", {
     name: "frontpage_slide_order"
   })
     .then((result) => {
       return _.map(result.list[0].eq_node, "id");
-    })
-    .then((result) => {
-      return result;
     })
     .then((ids) => {
       return Promise.map(ids, (nodeId) => {

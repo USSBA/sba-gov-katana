@@ -15,10 +15,6 @@ class HappeningNow extends React.Component {
     this.props.actions.fetchContentIfNeeded("frontpageslides", {});
   }
 
-  handleClick() {
-    console.log(arguments);
-  }
-
   render() {
     let items = [];
     let mdSize = 3;
@@ -84,7 +80,7 @@ class HappeningNow extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    happeningNow: reduxState.contentReducer.happeningNow
+    happeningNow: reduxState.contentReducer.data
   };
 }
 

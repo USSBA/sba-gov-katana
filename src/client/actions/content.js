@@ -1,10 +1,10 @@
 import axios from "axios";
 import queryString from "querystring";
-export const receiveHappeningNow = "RECEIVE_HAPPENING_NOW";
+export const siteContent = "SITE_CONTENT";
 
 function receiveContent(type, query, data) {
   return {
-    type: receiveHappeningNow,
+    type: siteContent,
     query,
     data: data,
     receivedAt: Date.now()

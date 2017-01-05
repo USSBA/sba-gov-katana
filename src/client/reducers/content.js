@@ -1,9 +1,9 @@
-import { receiveHappeningNow } from "../actions/content.js";
+import { siteContent } from "../actions/content.js";
 
 const contentReducer = (state = {}, action) => {
-  if (action.type === receiveHappeningNow) {
+  if (action.type === siteContent) {
     return {
-      happeningNow: action.data
+      data: action.data
     };
   }
   return state;
