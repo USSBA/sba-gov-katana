@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as BlogContentActions from "../../actions/blog-homepage-content.js";
+import * as ContentActions from "../../actions/content.js";
 import styles from "../../styles/homepage/blog.scss"
 
 class Blog extends React.Component {
@@ -11,9 +11,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchBlogNodesIfNeeded({
-      type: "blog"
-    });
+    this.props.actions.fetchContentIfNeeded("blog", {});
   }
 
   returnFormatedDate(date) {
@@ -36,7 +34,9 @@ class Blog extends React.Component {
                   <img src={ item.image_url } alt={ item.title } width="555" height="450" />
                 </div>
                 <div className={ styles.blogTitle }>
-                  <a href={ item.url }>{ item.title }</a>
+                  <a href={ item.url }>
+                    { item.title }
+                  </a>
                 </div>
                 <div className={ styles.blogInfo }>
                   { "by " + item.author.field_name + " on " + blogThis.returnFormatedDate(item.created) }
@@ -46,7 +46,7 @@ class Blog extends React.Component {
               );
           }) }
       </div>
-    );
+      );
   }
 
   itemMapperMobile(items) {
@@ -54,28 +54,28 @@ class Blog extends React.Component {
     return (
       <div className={ styles.blogsContainer }>
         { items.map(function(item) {
-          return (
-            <a href={ item.url }>
-              <div className={ styles.singleBlog }>
-                <div className={ styles.blogTitle }>
-                  { item.title }
+            return (
+              <a href={ item.url }>
+                <div className={ styles.singleBlog }>
+                  <div className={ styles.blogTitle }>
+                    { item.title }
+                  </div>
+                  <div className={ styles.blogInfo }>
+                    { blogThis.returnFormatedDate(item.created) }
+                  </div>
                 </div>
-                <div className={ styles.blogInfo }>
-                  { blogThis.returnFormatedDate(item.created) }
-                </div>
-              </div>
-            </a>
-          );
-        }) }
-        <div className = {styles.whiteSpace}></div>
+              </a>
+              );
+          }) }
+        <div className={ styles.whiteSpace }></div>
       </div>
-    );
+      );
   }
 
   render() {
     let items = [];
     if (this.props.blog) {
-      items = this.props.blog.list;
+      items = this.props.blog;
     }
 
     return (
@@ -83,14 +83,14 @@ class Blog extends React.Component {
         <div className={ styles.sectionTitle }>
           From the blog.
         </div>
-        <div className = "hidden-xs">
+        <div className="hidden-xs">
           { this.itemMapperDesktop(items) }
         </div>
-        <div className = "hidden-xl hidden-lg hidden-md hidden-sm">
+        <div className="hidden-xl hidden-lg hidden-md hidden-sm">
           { this.itemMapperMobile(items) }
         </div>
       </div>
-    );
+      );
   }
 
 }
@@ -98,13 +98,13 @@ class Blog extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    blog: reduxState.blogHomepageReducer.blog
+    blog: reduxState.contentReducer.blog
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(BlogContentActions, dispatch)
+    actions: bindActionCreators(ContentActions, dispatch)
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Blog);
