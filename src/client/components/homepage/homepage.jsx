@@ -17,10 +17,10 @@ class Homepage extends React.Component {
       <div>
         <Header />
         <PrimaryLanding/>
+        <HappeningNow />
         <StartYourBusinessSection />
         <FinanceYourBusinessSection/>
         <SellToGovtSection/>
-        <HappeningNow />
         <Blog />
         <Footer />
         <ModalController/>

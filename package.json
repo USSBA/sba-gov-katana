@@ -51,6 +51,7 @@
     "lodash": "^4.17.2",
     "moment": "^2.17.1",
     "mongodb": "^2.2.16",
+    "mysql": "^2.12.0",
     "node-mailer": "^0.1.1",
     "node-sass": "^3.11.2",
     "nodemailer": "^2.7.0",

@@ -2,9 +2,9 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
-    drupal:
-        proxy: false
-        hostname: http://sbagov-drupal.fearlesstesters.com/
+drupal:
+    hostname: http://wakizashi/
+    enablePassThrough: false
 server:
     port: 3000
 email:
@@ -17,3 +17,9 @@ linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
 database:
     mongoConnectString: mongodb://mongodb:27017/sba
+    mysql:
+      connectionLimit: 100
+      database: placeholder
+      host: placeholder
+      password: placeholder
+      user: placeholder

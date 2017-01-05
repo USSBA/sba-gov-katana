@@ -107,7 +107,7 @@ $primary-color: #0B97DD;
         min-width:60vw;
         width: 85vw;
         border-top: solid $primary-color;
-        padding-top: 4vw;
+        padding-top: 1.8vw;
         padding-bottom: 4vw;
     }
 
@@ -121,6 +121,7 @@ $primary-color: #0B97DD;
 
     //styles the dropdown children
     .dropdownHeader {
+        margin-top: 2.2vw !important;
     }
 
     .dropdownHeader > a {
@@ -212,7 +213,7 @@ $primary-color: #0B97DD;
 
     .logo {
         margin: 1em;
-        height: 10.7vw;
+        height: calc(10vw + 10px);
     }
 
     //hamburger styling

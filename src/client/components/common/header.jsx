@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, Button, Glyphicon, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import styles from '../../styles/header/header.scss';
 import sbaLogo from '../../../../public/assets/svg/sba-logo.svg';
+import sbaLogoMobile from '../../../../public/assets/svg/sba-logo-mobile.svg';
 
 
 class Header extends React.Component {
@@ -39,7 +40,8 @@ class Header extends React.Component {
 
       <Navbar fluid={ true } className={ styles.navbar } expanded={ this.state.expanded }>
         <Navbar.Header className={ styles.navbarHeader }>
-          <Image className={ styles.logo } src={ sbaLogo } alt="SBA logo" />
+          <Image className={ styles.logo + " hidden-xs" } src={ sbaLogo } alt="SBA logo" />
+          <Image className={ styles.logo + " visible-xs-inline" } src={ sbaLogoMobile } alt="SBA logo" />
           <NavToggle onClick={ this.toggleNav.bind(this) } expanded={ this.state.expanded } />
         </Navbar.Header>
         <Navbar.Collapse>

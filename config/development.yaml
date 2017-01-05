@@ -2,9 +2,8 @@ developmentOptions:
     webpack:
         enabled: true
         silent: false
-    drupal:
-        proxy: false
-        hostname: http://sbagov-drupal.fearlesstesters.com/
+drupal:
+    hostname: http://sbagov-drupal.fearlesstesters.com/
 email:
     debugEmailOnly: false
 database:
