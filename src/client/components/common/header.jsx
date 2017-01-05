@@ -41,7 +41,7 @@ class Header extends React.Component {
       <Navbar fluid={ true } className={ styles.navbar } expanded={ this.state.expanded }>
         <Navbar.Header className={ styles.navbarHeader }>
           <Image className={ styles.logo + " hidden-xs" } src={ sbaLogo } alt="SBA logo" />
-          <Image className={ styles.logo + " visible-xs-inline"} src={ sbaLogoMobile } alt="SBA logo" />
+          <Image className={ styles.logo + " visible-xs-inline" } src={ sbaLogoMobile } alt="SBA logo" />
           <NavToggle onClick={ this.toggleNav.bind(this) } expanded={ this.state.expanded } />
         </Navbar.Header>
         <Navbar.Collapse>
