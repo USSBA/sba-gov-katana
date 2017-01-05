@@ -212,7 +212,7 @@ $primary-color: #0B97DD;
 
     .logo {
         margin: 1em;
-        height: 10.7vw;
+        height: calc(10vw + 10px);
     }
 
     //hamburger styling

@@ -66,7 +66,7 @@ class HappeningNow extends React.Component {
                 <Row>
                   { items.map(function(item) {
                       return <Col xsHidden smHidden md={ mdSize }>
-                             <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore } >LEARN MORE</a>
+                             <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
                              </Col>;
                     }) }
                 </Row>
