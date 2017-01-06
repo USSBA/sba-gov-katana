@@ -2,9 +2,9 @@ import { siteContent } from "../actions/content.js";
 
 const contentReducer = (state = {}, action) => {
   if (action.type === siteContent) {
-    return {
-      data: action.data
-    };
+    const newState = {};
+    newState[action.contentType] = action.data;
+    return Object.assign({}, state, newState);
   }
   return state;
 };

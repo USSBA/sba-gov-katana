@@ -22,27 +22,20 @@ function fetchFromDrupal(url, query) {
 
 
 function fetchBlogsFromDrupal() {
-  // return Promise.resolve([]);
-  return fetchFromDrupal("node.json", {
-    type: "blog",
-    limit: 2,
-    sort: "created",
-    direction: "DESC"
-  })
-    .then((result) => {
-      return _.map(result.list, function(item) {
-        console.log(result)
+  return fetchFromDrupal("content/recent-blogs")
+    .then((blogs) => {
+      return _.map(blogs, (blog, index) => {
+        /* eslint-disable no-magic-numbers */
         return {
-          title: item.title,
-          url: item.url,
-          created: item.created,
-          fieldName: "Menuka",
-          imageUrl: "http://i.imgur.com/ByGedxE.png"
+          url: blog.url,
+          title: blog.title,
+          name: blog.name,
+          date: blog.date,
+          imageUrl: index === 0 ? "assets/images/homepage/2016-blogs-photo.jpg" : "assets/images/homepage/credit-line-blog-photo.jpg"
         };
+      /* eslint-enable no-magic-numbers */
       });
     });
-
-
 }
 
 

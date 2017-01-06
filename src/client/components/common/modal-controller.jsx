@@ -7,20 +7,16 @@ const modalTypes = {
 };
 
 const ModalController = ({modalType, modalProps}) => {
-  console.log(modalType);
-  console.log(modalProps);
   if (!modalType) {
     return <div />
   } else {
     const ModalClass = modalTypes[modalType];
-    console.log(ModalClass);
     return (<ModalClass {...modalProps} />);
   }
 };
 
 export default connect(
   (state) => {
-    console.log(state.modalReducer)
     return state.modalReducer;
   }
 )(ModalController);
