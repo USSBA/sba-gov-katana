@@ -22,7 +22,27 @@ function fetchFromDrupal(url, query) {
 
 
 function fetchBlogsFromDrupal() {
-  return Promise.resolve([]);
+  // return Promise.resolve([]);
+  return fetchFromDrupal("node.json", {
+    type: "blog",
+    limit: 2,
+    sort: "created",
+    direction: "DESC"
+  })
+    .then((result) => {
+      return _.map(result.list, function(item) {
+        console.log(result)
+        return {
+          title: item.title,
+          url: item.url,
+          created: item.created,
+          fieldName: "Menuka",
+          imageUrl: "http://i.imgur.com/ByGedxE.png"
+        };
+      });
+    });
+
+
 }
 
 
