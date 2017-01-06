@@ -5,6 +5,14 @@
     padding-right: calc(10.4vw - 15px);
 }
 
+.happeningNowMobile{
+    margin-top: 2vw;
+}
+
+.happeningNowSection{
+    padding-bottom: 2.5vw;
+}
+
 .happeningNowTitle{
     font-size: 5.2vw;
     font-weight: 900;
@@ -15,6 +23,14 @@
     color: black;
     font-size: 1.2vw;
     font-weight: 700;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+.happeningNowItemTitleMobile{
+    color: black;
+    font-size: 3vw;
+    font-weight: bold;
     padding-top: 1vw;
     padding-bottom: 1vw;
 }

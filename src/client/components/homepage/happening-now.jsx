@@ -68,11 +68,28 @@ class HappeningNow extends React.Component {
                 </Row>
                 <Row>
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
+                    <div className={styles.happeningNowMobile}>
+                        { items.map(function(item) {
+                            return (<div className={styles.happeningNowSection} md={ mdSize }>
+                              <a href={ item.url }>
+                                <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
+                              </a>
+                              <p className={ styles.happeningNowItemTitleMobile }>
+                                  { item.title }
+                              </p>
+                              <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
+                            </div>);
+                        }) }
+                    </div>
+                  </Col>
+                </Row>
+                {/*<Row>
+                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
                   <div className="happeningNowCarousel">
                     <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
                   </div>
                   </Col>
-                </Row>
+                </Row>*/}
               </Grid>
             </div>);
   }
