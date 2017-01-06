@@ -11,7 +11,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("blog", {});
+    this.props.actions.fetchContentIfNeeded("blogs", {});
   }
 
   returnFormatedDate(date) {
@@ -27,11 +27,11 @@ class Blog extends React.Component {
     var blogThis = this;
     return (
       <div className={ styles.blogsContainer + " container-fluid" }>
-        { items.map(function(item) {
+        { items.map(function(item, i) {
             return (
-              <div className={ styles.singleBlog + " col-sm-6  nopadding" }>
+              <div className={ styles.singleBlog + " col-sm-6  nopadding" } key={i}>
                 <div className={ styles.imageContainer }>
-                  <img src={ item.image_url } alt={ item.title } width="555" height="450" />
+                  <img src={ item.imageUrl } alt={ item.title } width="555" height="450" />
                 </div>
                 <div className={ styles.blogTitle }>
                   <a href={ item.url }>
@@ -39,7 +39,7 @@ class Blog extends React.Component {
                   </a>
                 </div>
                 <div className={ styles.blogInfo }>
-                  { "by " + item.author.field_name + " on " + blogThis.returnFormatedDate(item.created) }
+                  { "by " + item.fieldName + " on " + blogThis.returnFormatedDate(item.created) }
                 </div>
                 <a href={ item.url } className={ styles.blueBtn }>READ MORE</a>
               </div>
@@ -53,9 +53,9 @@ class Blog extends React.Component {
     var blogThis = this;
     return (
       <div className={ styles.blogsContainer }>
-        { items.map(function(item) {
+        { items.map(function(item, i) {
             return (
-              <a href={ item.url }>
+              <a href={ item.url } key={i}>
                 <div className={ styles.singleBlog }>
                   <div className={ styles.blogTitle }>
                     { item.title }
@@ -78,6 +78,8 @@ class Blog extends React.Component {
       items = this.props.blog;
     }
 
+    console.log(items)
+
     return (
       <div className={ styles.blogSection }>
         <div className={ styles.sectionTitle }>
@@ -98,7 +100,7 @@ class Blog extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    blog: reduxState.contentReducer.blog
+    blog: reduxState.contentReducer.data
   };
 }
 
