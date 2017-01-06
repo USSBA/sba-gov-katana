@@ -19,3 +19,11 @@
 .indicators li.active{
     background-color: rgb(10,151,222);
 }
+
+.nextImg{
+    clip-path: inset(0 90% 0 0);
+}
+
+.prevImg{
+    clip-path: inset(0 0 0 90%);
+}
