@@ -30,8 +30,8 @@ class Footer extends React.Component {
 
     return (
       <footer className={ styles.footer }>
-        <div className={ styles.linkSectionContainer + " hidden-sm hidden-xs container-fluid" }>
-          <div className={ styles.linkSubject + " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4" }>
+        <div className={ styles.linkSectionContainer + " hidden-xs container-fluid" }>
+          <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>Customer Service</h4>
             <ul>
               <li><a href="https://www.sba.gov/about-sba">About SBA</a></li>
@@ -42,7 +42,7 @@ class Footer extends React.Component {
               <li><a href="https://www.sba.gov/about-sba/sba-team">SBA Team</a></li>
             </ul>
           </div>
-          <div className={ styles.linkSubject + " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4" }>
+          <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>About SBA.gov</h4>
             <ul>
               <li><a href="https://www.sba.gov/sitemap">Site Map</a></li>
@@ -55,7 +55,7 @@ class Footer extends React.Component {
               <li><a href="https://www.sba.gov/blogs">Blog</a></li>
             </ul>
           </div>
-          <div className={ styles.linkSubject + " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4" }>
+          <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>SBA Information</h4>
             <ul>
               <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/foia">Freedom of Information Act</a></li>
@@ -65,7 +65,7 @@ class Footer extends React.Component {
               <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page">Plain Language</a></li>
             </ul>
           </div>
-          <div className={ styles.linkSubject + " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4" }>
+          <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>SBA Performance</h4>
             <ul>
               <li><a href="https://www.sba.gov/about-sba/sba-performance/strategic-planning">Strategic Planning</a></li>
@@ -75,7 +75,7 @@ class Footer extends React.Component {
               <li><a href="https://www.sba.gov/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse">Eliminating Fraud, Waste, and Abuse </a></li>
             </ul>
           </div>
-          <div className={ styles.linkSubject + " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4" }>
+          <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>Oversight</h4>
             <ul>
               <li><a href="https://www.sba.gov/office-of-inspector-general">Inspector General</a></li>
@@ -87,7 +87,7 @@ class Footer extends React.Component {
               <li><a href="https://www.regulations.gov">Regulations.gov</a></li>
             </ul>
           </div>
-          <div className={ styles.linkSubjectLast + " col-xl-2 col-md-2 col-md-offset-0 col-sm-4 col-sm-offset-4" }>
+          <div className={ styles.linkSubjectLast + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>Tools and Features</h4>
             <ul>
               <li><a href="https://www.sba.gov/tools/sba-learning-center/search/training">Online Training</a></li>
@@ -98,52 +98,52 @@ class Footer extends React.Component {
             </ul>
           </div>
         </div>
-        <div className={ styles.bottom + " container-fluid hidden-sm hidden-xs" }>
-          <div className={ styles.social + " col-md-3 col-sm-12 container " }>
-            <div className=" col-md-1 col-md-offset-0 col-sm-3 col-sm-offset-0 col-xs-2 col-xs-offset-2">
+        <div className={ styles.bottom + " container-fluid hidden-xs" }>
+          <div className={ styles.social + " col-sm-3 container " }>
+            <div className=" col-sm-1 col-sm-offset-0">
               <SocialMediaLink imageSrc={ facebookThumbnail } altText="SBA Facebook page" targetUrl="https://www.facebook.com/SBAgov" />
             </div>
-            <div className=" col-md-1 col-sm-3  col-xs-2">
+            <div className=" col-sm-1 col-sm-offset-0">
               <SocialMediaLink imageSrc={ twitterThumbnail } altText="SBA Twitter page" targetUrl="https://www.twitter.com/sbagov" />
             </div>
-            <div className=" col-md-1 col-sm-3  col-xs-2">
+            <div className=" col-sm-1 col-sm-offset-0">
               <SocialMediaLink imageSrc={ googlePlusThumbnail } altText="SBA Google Plus page" targetUrl="https://plus.google.com/+sbagov" />
             </div>
-            <div className=" col-md-1 col-sm-3  col-xs-2">
+            <div className=" col-sm-1 col-sm-offset-0">
               <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/sba" />
             </div>
           </div>
-          <div className={ styles.address + " col-md-9 container col-sm-12" }>
-            <div className=" col-md-12 text-right">U.S. Small Business Administration | 409 3rd St, SW. Washington DC 20416</div>
+          <div className={ styles.address + " col-sm-9 container" }>
+            <div className=" col-sm-12 text-right">U.S. Small Business Administration | 409 3rd St, SW. Washington DC 20416</div>
           </div>
         </div>
-        <div className={ styles.smallLinks + " hidden-xl hidden-lg hidden-md container" } aria-hidden="true">
-          <a className=" col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/what-we-do">What we do</a>
-          <a className=" col-xs-4" href="https://www.sba.gov/about-sba/sba-team">SBA Team</a>
-          <a className=" col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/sba-newsroom">SBA News Room</a>
-          <a className=" col-xs-4" href="https://www.sba.gov/about-sba/sba-performance">SBA Performance</a>
-          <a className=" col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/sba-performance/open-government/foia">FOIA</a>
-          <a className=" col-xs-4" href="https://www.sba.gov/about-sba/oversight-advocacy">Oversight & Advocacy</a>
-          <a className=" col-xs-4 col-xs-offset-2" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">Contact SBA</a>
-          <a className=" col-xs-4" href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
-          <a className=" col-xs-4 col-xs-offset-2" href="https://es.sba.gov/">SBA En Español</a>
+        <div className={ styles.smallLinks + " hidden-xl hidden-lg hidden-md hidden-sm container" } aria-hidden="true">
+          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/what-we-do">What we do</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/sba-team">SBA Team</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/sba-newsroom">SBA News Room</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/sba-performance">SBA Performance</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/sba-performance/open-government/foia">FOIA</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/oversight-advocacy">Oversight & Advocacy</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">Contact SBA</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="https://es.sba.gov/">SBA En Español</a>
         </div>
-        <div className=" hidden-xl hidden-lg hidden-md container " aria-hidden="true">
-          <div className={ styles.socialSmall + " col-xs-12 container" }>
-            <div className=" col-xs-2 col-xs-offset-2 text-left">
+        <div className=" hidden-xl hidden-lg hidden-md hidden-sm container-fluid no-padding" aria-hidden="true">
+          <div className={ styles.socialSmall }>
+            <div className=" ">
               <SocialMediaLink imageSrc={ facebookThumbnail } altText="SBA Facebook page" targetUrl="https://www.facebook.com/SBAgov" />
             </div>
-            <div className=" col-xs-2 text-center">
+            <div className=" ">
               <SocialMediaLink imageSrc={ twitterThumbnail } altText="SBA Twitter page" targetUrl="https://www.twitter.com/sbagov" />
             </div>
-            <div className=" col-xs-2 text-center">
+            <div className="">
               <SocialMediaLink imageSrc={ googlePlusThumbnail } altText="SBA Google Plus page" targetUrl="https://plus.google.com/+sbagov" />
             </div>
-            <div className=" col-xs-2 text-right">
+            <div className="">
               <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/sba" />
             </div>
-            <div className={ styles.smallBottomBorder + " col-xs-8 col-xs-offset-2" }></div>
           </div>
+          <div className={ styles.smallBottomBorder + " col-xs-12 col-xs-offset-0" }></div>
           <div className={ styles.addressSmall + " col-xs-12 container" }>
             <div className=" text-center"> U.S. Small Business Administration</div>
             <div className=" text-center"> 409 3rd St, SW. Washington DC 20416</div>

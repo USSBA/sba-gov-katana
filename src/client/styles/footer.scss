@@ -1,122 +1,155 @@
-.footer {
-  background-color: #E8E8E8;
-  padding-top: 50px;
+@media screen and (min-width:768px) {
+  .footer {
+    background-color: #E8E8E8;
+    padding-top: 3.68vw;
 
+  }
+
+  .linkSectionContainer {
+    border-bottom: 1px solid #979797;
+    padding: 0;
+    margin-left: 10.48vw;
+    margin-right: 10.48vw;
+  }
+
+  .linkSubject {
+    padding-left: 0;
+    padding-right: 2.08vw;
+    padding-bottom: 4.16vw;
+  }
+
+  .linkSubjectLast {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 4.16vw;
+  }
+
+  .footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .footer ul li {
+    padding-top: 1.25vw;
+  }
+
+  .footer a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 1.11vw;
+    line-height: 1.25vw;
+  }
+
+  .footer h4 {
+    color: #333333;
+    font-size: 1.25vw;
+    font-weight: bold;
+    line-height: 1.875vw;
+  }
+
+  .bottom {
+    padding-top: 17px;
+    padding-bottom: 3.88vw;
+    margin-left: 10.48vw;
+    margin-right: 10.48vw;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .social {
+    padding: 0;
+    margin: 0;
+  }
+
+  .social div {
+    padding: 0;
+    width: 2.08vw;
+    height: 2.08vw;
+    margin-right: 0.69vw;
+  }
+
+  .social div a img {
+    padding: 0;
+    width: 2.08vw;
+    height: 2.08vw;
+  }
+
+  .address {
+    padding: 0;
+  }
+
+  .address div {
+    font-size: 1.11vw;
+    padding: 0;
+    margin: 0;
+  }
 }
 
-.linkSectionContainer{
-  border-bottom: 1px solid #979797;
-  padding: 0;
-  margin-left: 150px;
-  margin-right: 150px;
-}
+@media screen and (max-width:768px) {
+  .footer{
+    background-color: #E8E8E8;
+  }
 
-.linkSubject {
-  padding-left: 0px;
-  padding-right: 30px;
-  padding-bottom: 60px;
-}
+  .smallLinks {
+    margin-left: -15px;
+  }
 
-.linkSubjectLast {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-bottom: 60px;
-}
+  .smallLinks a {
+    font-size: 4.26vw;
+    padding-top: 8vw;
+    text-decoration: none;
+    color: #333333;
+  }
 
+  .smallLinks a:hover{
+    color: #333333;
+    text-decoration: none;
+  }
 
-.footer ul {
-  list-style: none;
-  padding-left: 0px;
-}
+  .socialSmall {
+    padding-top: 5.33vw;
+    padding-bottom: 0;
+    margin: 0;
+    padding-left: 12.53vw;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
 
-.footer ul li {
-  padding-top: 10px;
-}
+  .socialSmall div {
+    padding: 0;
+    padding-bottom: 5.33vw;
+    width: 12vw;
+    margin-right: 8.88vw;
+    float: left;
 
-.footer a {
-  color: #333333;
-  text-decoration: none;
-  font-size: 16px;
-  line-height: 18px;
-}
+  }
 
-.footer h4{
-  color: #333333;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 27px;
-}
+  .socialSmall div a img {
+    padding: 0;
+    width: 12vw;
+    height: 12vw;
+  }
 
-.bottom {
-  padding-top: 30px;
-  padding-bottom: 70px;
-  margin-left: 150px;
-  margin-right: 150px;
-  padding-left: 0;
-  padding-right: 0;
-}
+  .smallBottomBorder {
+    border-bottom: 2px solid #979797;
+    width: 74.66vw;
+    margin-left: 8.66vw;
+    margin-right: auto;
+  }
 
-.social{
-  padding: 0;
-  margin: 0;
-}
+  .addressSmall {
+    padding-top: 5.06vw;
+    padding-bottom: 8vw;
+    color: #333333;
+  }
 
-.social div{
-  padding: 0;
-  padding-right: 35px;
-}
+  .addressSmall div {
+    padding: 0;
+    font-size: 4.26vw;
+    color: #333333;
+  }
 
-.social div a img{
-  padding: 0;
-  width: 30px;
-  height: 30px;
-}
-
-.address {
-  padding: 0;
-}
-
-.address div{
-  font-size: 16px;
-  padding: 0;
-  margin: 0;
-}
-
-
-.smallLinks a{
-  font-size: 16px;
-  padding-bottom: 20px;
-  text-decoration: none;
-}
-
-.socialSmall{
-  padding-top: 20px;
-  padding-bottom: 0;
-  margin: 0;
-}
-
-.socialSmall div{
-  padding: 0;
-  padding-bottom: 25px;
-
-}
-
-.socialSmall div a img{
-  padding: 0;
-  width: 45px;
-  height: 45px;
-}
-
-.smallBottomBorder{
-  border-bottom: 1px solid #979797;
-}
-
-.addressSmall{
-  padding-top: 25px;
-  padding-bottom: 30px;
-}
-
-.addressSmall div {
-  padding: 0;
-  font-size: 16px;
+  .addressSmall div:last-of-type{
+    padding-top: 1.6vw;
+  }
 }
