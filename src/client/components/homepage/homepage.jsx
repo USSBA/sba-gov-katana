@@ -8,6 +8,7 @@ import Header from '../common/header.jsx';
 import Footer from '../common/footer.jsx';
 import PrimaryLanding from './primary-landing.jsx';
 
+import Blog from './blog.jsx';
 import ModalController from '../common/modal-controller.jsx';
 
 class Homepage extends React.Component {
@@ -20,6 +21,7 @@ class Homepage extends React.Component {
         <StartYourBusinessSection />
         <FinanceYourBusinessSection/>
         <SellToGovtSection/>
+        <Blog />
         <Footer />
         <ModalController/>
       </div>
