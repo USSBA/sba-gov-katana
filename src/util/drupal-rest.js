@@ -4,7 +4,10 @@ import config from "config";
 import Promise from "bluebird";
 
 var requestObject = {
-  baseURL: config.get("drupal.hostname")
+  baseURL: config.get("drupal.hostname"),
+  headers: {
+    "Accepts": "application/json"
+  }
 };
 
 
@@ -24,17 +27,20 @@ function fetchFromDrupal(url, query) {
 function fetchBlogsFromDrupal() {
   return fetchFromDrupal(config.get("drupal.endpoint") + "/recent-blogs")
     .then((blogs) => {
-      return _.map(blogs, (blog, index) => {
-        /* eslint-disable no-magic-numbers */
-        return {
-          url: blog.url,
-          title: blog.title,
-          name: blog.name,
-          date: blog.date,
-          imageUrl: index === 0 ? "assets/images/homepage/2016-blogs-photo.jpg" : "assets/images/homepage/credit-line-blog-photo.jpg"
-        };
-      /* eslint-enable no-magic-numbers */
-      });
+      if (_.isArray(blogs)) {
+        return _.map(blogs, (blog, index) => {
+          /* eslint-disable no-magic-numbers */
+          return {
+            url: blog.url,
+            title: blog.title,
+            name: blog.name,
+            date: blog.date,
+            imageUrl: index === 0 ? "assets/images/homepage/2016-blogs-photo.jpg" : "assets/images/homepage/credit-line-blog-photo.jpg"
+          };
+        /* eslint-enable no-magic-numbers */
+        });
+      }
+      return [];
     });
 }
 
