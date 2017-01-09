@@ -37,8 +37,11 @@ class HappeningNow extends React.Component {
     return (<div className={ styles.happeningNow }>
               <Grid fluid>
                 <Row>
-                  <Col xs={ 12 }>
+                  <Col xs={ 12 } xsHidden smHidden>
                   <p className={ styles.happeningNowTitle }>What's happening now.</p>
+                  </Col>
+                  <Col xs={ 12 } mdHidden lgHidden>
+                    <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                   </Col>
                 </Row>
                 <Row>
@@ -70,7 +73,7 @@ class HappeningNow extends React.Component {
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
                     <div className={styles.happeningNowMobile}>
                         { items.map(function(item) {
-                            return (<div className={styles.happeningNowSection} md={ mdSize }>
+                            return (<div className={styles.happeningNowSection} >
                               <a href={ item.url }>
                                 <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
                               </a>

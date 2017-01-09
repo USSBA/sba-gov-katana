@@ -10,12 +10,18 @@
 }
 
 .happeningNowSection{
-    padding-bottom: 2.5vw;
+    padding-bottom: 4vw;
 }
 
 .happeningNowTitle{
     font-size: 5.2vw;
-    font-weight: 900;
+    font-weight: bold;
+    padding-bottom: 2vw;
+}
+
+.happeningNowTitleMobile{
+    font-size: 6vw;
+    font-weight: bold;
     padding-bottom: 2vw;
 }
 
@@ -29,7 +35,7 @@
 
 .happeningNowItemTitleMobile{
     color: black;
-    font-size: 3vw;
+    font-size: 3.5vw;
     font-weight: bold;
     padding-top: 1vw;
     padding-bottom: 1vw;
