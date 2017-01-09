@@ -22,7 +22,7 @@ function fetchFromDrupal(url, query) {
 
 
 function fetchBlogsFromDrupal() {
-  return fetchFromDrupal("content/recent-blogs")
+  return fetchFromDrupal(config.get("drupal.endpoint")+ "/recent-blogs")
     .then((blogs) => {
       return _.map(blogs, (blog, index) => {
         /* eslint-disable no-magic-numbers */

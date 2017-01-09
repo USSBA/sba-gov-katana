@@ -5,6 +5,7 @@ developmentOptions:
 drupal:
     hostname: http://wakizashi/
     enablePassThrough: false
+    endpoint: rest
 server:
     port: 3000
 email:
