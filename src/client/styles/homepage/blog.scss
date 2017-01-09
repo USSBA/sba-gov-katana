@@ -11,12 +11,16 @@
 
     .blogSection > div > div {
         padding: 0;
+        margin-left: -15px;
+        margin-right: -15px;
     }
 
+
     .blogsImage {
-        width: 37vw;
+        width: 38.7vw;
         height: auto;
-        margin-left: -15px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .sectionTitle {
@@ -29,9 +33,7 @@
 
     .blogTitleContainer{
         margin-top: 1.5vw;
-        margin-left: -15px;
-        width: 37vw;
-
+        width: 38.7vw;
     }
 
     .blogTitle {
@@ -51,7 +53,6 @@
         font-weight: normal;
         font-size: 1.25vw;
         line-height: 1.88vw;
-        margin-left: -15px;
     }
 
     .blueBtn {
@@ -65,7 +66,6 @@
         padding-bottom: 0.833vw;
         font-weight: 900;
         margin-top: 2vw;
-        margin-left: -15px;
     }
 
 
@@ -87,7 +87,7 @@
 
     .singleBlog {
         border: 1px solid #C4C4C4;
-        width: 92vw;
+        width: 91.4vw;
         margin-left: auto;
         margin-right: auto;
         margin-top: 4.267vw;
