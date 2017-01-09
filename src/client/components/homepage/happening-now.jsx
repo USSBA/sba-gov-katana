@@ -79,10 +79,6 @@ class HappeningNow extends React.Component {
                                   <a href={ item.url }>
                                     <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
                                   </a>
-                                  <p className={ styles.happeningNowItemTitleMobile }>
-                                    { item.title }
-                                  </p>
-                                  <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
                                 </div>);
                       }) }
                   </div>
