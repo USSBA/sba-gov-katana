@@ -1,141 +1,122 @@
 @media screen and (min-width:768px) {
-  .blogSection {
-    margin-left: 10.4vw;
-    margin-right: 10.4vw;
-    padding: 0;
-    //width: 79.166vw
-  }
+    .blogSection {
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+        margin-left: 10.4vw;
+        margin-right: 10.4vw;
+        padding: 0;
+    }
 
-  .sectionTitle {
-    color: #333333;
-    font-size: 5.2vw;
-    font-weight: 900;
-    padding: 0;
-  }
+    .blogSection > div > div {
+        padding: 0;
+    }
 
-  .blogsContainer {
-    padding: 0;
-    //height: 52.8vw
-  }
+    .blogsImage {
+        width: 37vw;
+        height: auto;
+    }
 
-  .singleBlog:first-of-type {
-    position: relative;
-    padding: 0;
-    margin-top: 2.98vw;
-    height: 45vw;
-    width: 38.5vw;
-    margin-bottom: 5.55vw;
-    margin-right: 1.94vw;
-  }
+    .sectionTitle {
+        color: #333333;
+        font-size: 5.2vw;
+        font-weight: 900;
+        padding: 0;
+        margin-bottom: 2vw;
+    }
 
-  .singleBlog {
-    position: relative;
-    padding: 0;
-    margin-top: 2.98vw;
-    height: 45vw;
-    width: 38.5vw;
-    margin-bottom: 5.55vw;
-  }
+    .blogTitleContainer{
+        margin-top: 1.5vw;
 
-  .blogTitle {
-    margin-top: .9vw;
-    font-size: 2.5vw;
-    font-weight: 900;
-    line-height: 2.78vw;
-  }
+    }
 
-  .blogTitle a {
-    color: #333333;
-  }
+    .blogTitle {
+        font-size: 2.5vw;
+        font-weight: 900;
+        line-height: 2.78vw;
+        color: #333333;
+    }
 
-  .blogInfo {
-    position: absolute;
-    bottom: 4.86vw;
-    color: #666666;
-    font-size: 1.25vw;
-    line-height: 1.88vw;
-  }
+    .blogInfo {
+        margin-top: 1.5vw;
+        color: #666666;
+        font-weight: 300;
+        font-size: 1.25vw;
+        line-height: 1.88vw;
+    }
 
-  .imageContainer img {
-    width: 38.5vw;
-    height: auto;
-  }
+    .blueBtn {
+        height: 3.33vw;
+        width: 11.8vw;
+        background-color: #0093DF;
+        color: #FFFFFF;
+        font-size: 1.25vw;
+        line-height: 1.59vw;
+        text-align: center;
+        padding-top: 0.833vw;
+        padding-bottom: 0.833vw;
+        font-weight: 900;
+        margin-top: 2vw;
+    }
 
-  .blueBtn {
-    position: absolute;
-    bottom: 0;
-    height: 3.33vw;
-    width: 11.8vw;
-    background-color: #0093DF;
-    color: #FFFFFF;
-    font-size: 1.25vw;
-    line-height: 1.59vw;
-    text-align: center;
-    padding-top: .833vw;
-    padding-bottom: .833vw;
-    font-weight: 900;
-  }
+    .blueBtn:hover {
+        text-decoration: none;
+        background-color: #006BA2;
+        color: #FFFFFF;
+    }
 
-  .blueBtn:hover {
-    text-decoration: none;
-    background-color: #006BA2;
-    color: #FFFFFF;
-  }
-
-  .blueBtn:active, .blueBtn:focus {
-    color: #FFFFFF;
-    text-decoration: none;
-    background-color: #004265;
-  }
+    .blueBtn:active,
+    .blueBtn:focus {
+        color: #FFFFFF;
+        text-decoration: none;
+        background-color: #004265;
+    }
 }
-
 @media screen and (max-width:768px) {
-  .sectionTitle{
-    font-size: 7.47vw;
-    line-height: 8vw;
-    font-weight: 900;
-    color: #333333;
-    padding-left: 12.53vw;
-    height: 8vw;
-  }
+    .sectionTitle {
+        font-size: 7.47vw;
+        line-height: 8vw;
+        font-weight: 900;
+        color: #333333;
+        padding-left: 12.53vw;
+        height: 8vw;
+    }
 
-  a:hover {
-    text-decoration: none;
+    a:hover {
+        text-decoration: none;
+    }
 
-  }
 
-  .singleBlog {
-    border: 1px solid #C4C4C4;
-    width: 92vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4.267vw;
-  }
+    .singleBlog {
+        border: 1px solid #C4C4C4;
+        width: 92vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4.267vw;
+    }
 
-  .blogTitle {
-    color: #333333;
-    font-size: 5.06vw;
-    line-height: 5.867vw;
-    font-weight: bold;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75.2vw;
-    margin-top: 4vw;
-  }
+    .blogTitle {
+        color: #333333;
+        font-size: 5.06vw;
+        line-height: 5.867vw;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75.2vw;
+        margin-top: 4vw;
+    }
 
-  .blogInfo {
-    color: #333333;
-    font-size: 3.73vw;
-    line-height: 5.867vw;
-    margin-top: 1.067vw;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75.2vw;
-    margin-bottom: 4vw;
-  }
+    .blogInfo {
+        color: #333333;
+        font-size: 3.73vw;
+        line-height: 5.867vw;
+        margin-top: 1.067vw;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75.2vw;
+        margin-bottom: 4vw;
+    }
 
-  .whiteSpace{
-    height: 16vw;
-  }
-
+    .whiteSpace {
+        height: 16vw;
+    }
 }

@@ -6,13 +6,15 @@ import ModifiedCarousel from "../helpers/carousel.jsx";
 import * as ContentActions from "../../actions/content.js";
 import styles from "../../styles/homepage/styles.scss";
 
+const contentProperty = "happeningNow";
+
 class HappeningNow extends React.Component {
   constructor() {
     super();
     this.state = {};
   }
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("frontpageslides", {});
+    this.props.actions.fetchContentIfNeeded(contentProperty, "frontpageslides", {});
   }
 
   render() {
@@ -71,19 +73,19 @@ class HappeningNow extends React.Component {
                 </Row>
                 <Row>
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
-                    <div className={styles.happeningNowMobile}>
-                        { items.map(function(item) {
-                            return (<div className={styles.happeningNowSection} >
-                              <a href={ item.url }>
-                                <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
-                              </a>
-                              <p className={ styles.happeningNowItemTitleMobile }>
-                                  { item.title }
-                              </p>
-                              <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
-                            </div>);
-                        }) }
-                    </div>
+                  <div className={ styles.happeningNowMobile }>
+                    { items.map(function(item, i) {
+                        return (<div className={ styles.happeningNowSection } key={ i }>
+                                  <a href={ item.url }>
+                                    <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
+                                  </a>
+                                  <p className={ styles.happeningNowItemTitleMobile }>
+                                    { item.title }
+                                  </p>
+                                  <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
+                                </div>);
+                      }) }
+                  </div>
                   </Col>
                 </Row>
                 {/*<Row>
@@ -100,7 +102,7 @@ class HappeningNow extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    happeningNow: reduxState.contentReducer.data
+    happeningNow: reduxState.contentReducer[contentProperty]
   };
 }
 

@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import * as ContentActions from "../../actions/content.js";
-import styles from "../../styles/homepage/blog.scss"
+import styles from "../../styles/homepage/blog.scss";
+import moment from 'moment';
 
 class Blog extends React.Component {
   constructor() {
@@ -11,40 +13,61 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("blogs", {});
+    this.props.actions.fetchContentIfNeeded("blogs", "blogs", {});
   }
 
   returnFormatedDate(date) {
-    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var dateTime = new Date(date * 1000);
-    var day = dateTime.getDate();
-    var month = monthNames[dateTime.getMonth()];
-    var year = dateTime.getFullYear();
-    return (month + " " + day + ", " + year);
+    return moment(date, "X").format("MMMM D, YYYY");
   }
 
   itemMapperDesktop(items) {
     var blogThis = this;
     return (
-      <div className={ styles.blogsContainer + " container-fluid" }>
-        { items.map(function(item, i) {
-            return (
-              <div className={ styles.singleBlog + " col-sm-6  nopadding" } key={i}>
-                <div className={ styles.imageContainer }>
-                  <img src={ item.imageUrl } alt={ item.title } width="555" height="450" />
-                </div>
-                <div className={ styles.blogTitle }>
-                  <a href={ item.url }>
-                    { item.title }
-                  </a>
-                </div>
-                <div className={ styles.blogInfo }>
-                  { "by " + item.fieldName + " on " + blogThis.returnFormatedDate(item.created) }
-                </div>
-                <a href={ item.url } className={ styles.blueBtn }>READ MORE</a>
-              </div>
-              );
-          }) }
+      <div className={ styles.blogsContainer }>
+        <Grid fluid>
+          <Row>
+            { items.map(function(item, i) {
+                return (
+                  <Col xs={ 6 }>
+                  <img className={ styles.blogsImage } src={ item.imageUrl } alt={ item.title } />
+                  </Col>
+                  );
+              }) }
+          </Row>
+          <Row>
+            { items.map(function(item, i) {
+                return (
+                  <Col xs={ 6 }>
+                  <div className={ styles.blogTitleContainer }>
+                    <a className={ styles.blogTitle } href={ item.url }>
+                      { item.title }
+                    </a>
+                  </div>
+                  </Col>
+                  );
+              }) }
+          </Row>
+          <Row>
+            { items.map(function(item, i) {
+                return (
+                  <Col xs={ 6 }>
+                  <div className={ styles.blogInfo }>
+                    { "By " + item.name + " on " + blogThis.returnFormatedDate(item.date) }
+                  </div>
+                  </Col>
+                  );
+              }) }
+          </Row>
+          <Row>
+            { items.map(function(item, i) {
+                return (
+                  <Col xs={ 6 }>
+                  <a href={ item.url } className={ "btn btn-default " + styles.blueBtn }>READ MORE</a>
+                  </Col>
+                  );
+              }) }
+          </Row>
+        </Grid>
       </div>
       );
   }
@@ -55,13 +78,13 @@ class Blog extends React.Component {
       <div className={ styles.blogsContainer }>
         { items.map(function(item, i) {
             return (
-              <a href={ item.url } key={i}>
+              <a href={ item.url } key={ i }>
                 <div className={ styles.singleBlog }>
                   <div className={ styles.blogTitle }>
                     { item.title }
                   </div>
                   <div className={ styles.blogInfo }>
-                    { blogThis.returnFormatedDate(item.created) }
+                    { blogThis.returnFormatedDate(item.date) }
                   </div>
                 </div>
               </a>
@@ -77,8 +100,6 @@ class Blog extends React.Component {
     if (this.props.blog) {
       items = this.props.blog;
     }
-
-    console.log(items)
 
     return (
       <div className={ styles.blogSection }>
@@ -97,10 +118,9 @@ class Blog extends React.Component {
 
 }
 
-
 function mapReduxStateToProps(reduxState) {
   return {
-    blog: reduxState.contentReducer.data
+    blog: reduxState.contentReducer.blogs
   };
 }
 
