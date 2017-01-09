@@ -360,12 +360,12 @@ const NavToggle = ({expanded, onClick, ...props}) => {
   if (expanded == false) {
     return <div className={ styles.menuBtn + " pull-right" } onClick={ onClick } {...props}>
              <span className={ styles.menuBtnTxt }>MENU</span>
-      <img className={styles.hamburgerIcon} src={hamburger}/>
+             <img className={ styles.hamburgerIcon } src={ hamburger } />
            </div>;
   } else {
     return <div className={ styles.menuBtnClose + " pull-right" } onClick={ onClick } {...props}>
              <span className={ styles.menuBtnTxt }>CLOSE</span>
-             <img className={styles.hamburgerIcon} src={hamburgerClose}/>
+             <img className={ styles.hamburgerIcon } src={ hamburgerClose } />
            </div>;
   }
 };
