@@ -1,5 +1,4 @@
 @media screen and (min-width:768px){
-
   .sybContainer{
     position: relative;
     margin-top: 5vw;
@@ -24,6 +23,7 @@
     height: 18vw;
     bottom: 15vw;
     left: 55.8vw;
+    z-index: 0;
   }
 
   .sybAccentBox ul{
@@ -34,8 +34,12 @@
   .sybAccentBox li{
     height: 6vw;
     padding-left: 2vw;
-    font-size: 20px;
+    font-size: 1.66vw;
     line-height: 6vw;
+  }
+
+  .borderBox {
+    border-bottom: 0.1vw solid rgba(51,51,51,0.3);
   }
 
   .sybAccentBox img{
@@ -44,14 +48,7 @@
     height: 8.5vw;
     bottom: 0;
     right: 0;
-  }
-
-  .sybAccentBox li:nth-child(2){
-    border-top: 1px solid darkmagenta;
-  }
-
-  .sybAccentBox li:nth-child(3){
-    border-top: 1px solid darkmagenta;
+    z-index: -1;
   }
 
   .sybAccentBox a{
@@ -64,7 +61,7 @@
 @media screen and (max-width:768px) {
   .sybContainer{
     margin-top: 8vw;
-    margin-bottom: 42vw;
+    margin-bottom: 54vw;
   }
 
   .sybBanner{
@@ -82,8 +79,9 @@
     position: absolute;
     background: #AB3EA0;
     width: 90vw;
-    height: 36vw;
+    height: 48vw;
     margin-left: 4.5vw;
+    z-index: 0;
   }
 
   .sybAccentBox ul{
@@ -92,10 +90,14 @@
   }
 
   .sybAccentBox li{
-    height: 12vw;
+    height: 16vw;
     padding-left: 7vw;
-    font-size: 4vw;
-    line-height: 12vw;
+    font-size: 5vw;
+    line-height: 16vw;
+  }
+
+  .borderBox {
+    border-bottom: .3vw solid rgba(51,51,51,0.3);
   }
 
   .sybAccentBox img{
@@ -104,14 +106,7 @@
     height: 25.9vw;
     bottom: 0;
     right: 0;
-  }
-
-  .sybAccentBox li:nth-child(2){
-    border-top: 1px solid darkmagenta;
-  }
-
-  .sybAccentBox li:nth-child(3){
-    border-top: 1px solid darkmagenta;
+    z-index: -1;
   }
 
   .sybAccentBox a{

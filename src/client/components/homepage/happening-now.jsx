@@ -90,12 +90,13 @@ class HappeningNow extends React.Component {
                   </Col>
                 </Row>
                 { /*<Row>
-                                                                                                                                                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
-                                                                                                                                                  <div className="happeningNowCarousel">
-                                                                                                                                                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
-                                                                                                                                                  </div>
-                                                                                                                                                  </Col>
-                                                                                                                                                </Row>*/ }
+
+                                                                                                                                                                                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
+                                                                                                                                                                                  <div className="happeningNowCarousel">
+                                                                                                                                                                                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
+                                                                                                                                                                                  </div>
+                                                                                                                                                                                  </Col>
+                                                                                                                                                                                </Row>*/ }
               </Grid>
             </div>);
   }

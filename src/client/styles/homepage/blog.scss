@@ -1,3 +1,5 @@
+@import "../buttons.scss";
+
 @media screen and (min-width:768px) {
     .blogSection {
         margin-top: 5vw;
@@ -14,6 +16,7 @@
     .blogsImage {
         width: 37vw;
         height: auto;
+        margin-left: -15px;
     }
 
     .sectionTitle {
@@ -26,6 +29,8 @@
 
     .blogTitleContainer{
         margin-top: 1.5vw;
+        margin-left: -15px;
+        width: 37vw;
 
     }
 
@@ -36,19 +41,23 @@
         color: #333333;
     }
 
+    .blogTitle:hover {
+        color: #333333;
+    }
+
     .blogInfo {
         margin-top: 1.5vw;
         color: #666666;
-        font-weight: 300;
+        font-weight: normal;
         font-size: 1.25vw;
         line-height: 1.88vw;
+        margin-left: -15px;
     }
 
     .blueBtn {
+        composes: homeBtnBlue;
         height: 3.33vw;
         width: 11.8vw;
-        background-color: #0093DF;
-        color: #FFFFFF;
         font-size: 1.25vw;
         line-height: 1.59vw;
         text-align: center;
@@ -56,20 +65,10 @@
         padding-bottom: 0.833vw;
         font-weight: 900;
         margin-top: 2vw;
+        margin-left: -15px;
     }
 
-    .blueBtn:hover {
-        text-decoration: none;
-        background-color: #006BA2;
-        color: #FFFFFF;
-    }
 
-    .blueBtn:active,
-    .blueBtn:focus {
-        color: #FFFFFF;
-        text-decoration: none;
-        background-color: #004265;
-    }
 }
 @media screen and (max-width:768px) {
     .sectionTitle {
