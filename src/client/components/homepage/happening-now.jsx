@@ -43,7 +43,7 @@ class HappeningNow extends React.Component {
                   <p className={ styles.happeningNowTitle }>What's happening now.</p>
                   </Col>
                   <Col xs={ 12 } mdHidden lgHidden>
-                    <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
+                  <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                   </Col>
                 </Row>
                 <Row>
@@ -85,12 +85,12 @@ class HappeningNow extends React.Component {
                   </Col>
                 </Row>
                 { /*<Row>
-                                                                                                                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
-                                                                                                                  <div className="happeningNowCarousel">
-                                                                                                                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
-                                                                                                                  </div>
-                                                                                                                  </Col>
-                                                                                                                </Row>*/ }
+                                                                                                                                                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
+                                                                                                                                                  <div className="happeningNowCarousel">
+                                                                                                                                                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
+                                                                                                                                                  </div>
+                                                                                                                                                  </Col>
+                                                                                                                                                </Row>*/ }
               </Grid>
             </div>);
   }
