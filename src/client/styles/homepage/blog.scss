@@ -14,6 +14,7 @@
     .blogsImage {
         width: 37vw;
         height: auto;
+        margin-left: -15px;
     }
 
     .sectionTitle {
@@ -26,6 +27,8 @@
 
     .blogTitleContainer{
         margin-top: 1.5vw;
+        margin-left: -15px;
+        width: 37vw;
 
     }
 
@@ -34,6 +37,7 @@
         font-weight: 900;
         line-height: 2.78vw;
         color: #333333;
+
     }
 
     .blogInfo {
@@ -42,6 +46,7 @@
         font-weight: 300;
         font-size: 1.25vw;
         line-height: 1.88vw;
+        margin-left: -15px;
     }
 
     .blueBtn {
@@ -56,6 +61,7 @@
         padding-bottom: 0.833vw;
         font-weight: 900;
         margin-top: 2vw;
+        margin-left: -15px;
     }
 
     .blueBtn:hover {
