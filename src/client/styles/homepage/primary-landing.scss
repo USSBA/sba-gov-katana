@@ -1,3 +1,5 @@
+@import "../buttons.scss";
+
 $primary-color: #0B97DD;
 
 @media screen and (min-width:768px){
@@ -50,13 +52,11 @@ $primary-color: #0B97DD;
     }
 
     .button {
+        composes: homeBtnWhite;
         width: 9.3vw;
         height: 3.3vw;
-        background-color: #FFFFFF;
-        border: none;
         font-size: 1.3vw;
         font-weight: 900;
-        color: $primary-color
     }
 
     .triangle {

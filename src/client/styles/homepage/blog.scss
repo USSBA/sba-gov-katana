@@ -1,3 +1,5 @@
+@import "../buttons.scss";
+
 @media screen and (min-width:768px) {
     .blogSection {
         margin-top: 5vw;
@@ -50,10 +52,9 @@
     }
 
     .blueBtn {
+        composes: homeBtnBlue;
         height: 3.33vw;
         width: 11.8vw;
-        background-color: #0093DF;
-        color: #FFFFFF;
         font-size: 1.25vw;
         line-height: 1.59vw;
         text-align: center;
@@ -64,18 +65,7 @@
         margin-left: -15px;
     }
 
-    .blueBtn:hover {
-        text-decoration: none;
-        background-color: #006BA2;
-        color: #FFFFFF;
-    }
 
-    .blueBtn:active,
-    .blueBtn:focus {
-        color: #FFFFFF;
-        text-decoration: none;
-        background-color: #004265;
-    }
 }
 @media screen and (max-width:768px) {
     .sectionTitle {
