@@ -101,8 +101,6 @@ class Blog extends React.Component {
       items = this.props.blog;
     }
 
-    console.log(items)
-
     return (
       <div className={ styles.blogSection }>
         <div className={ styles.sectionTitle }>
