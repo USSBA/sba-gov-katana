@@ -1,10 +1,10 @@
 .btn {
-    font-size:12px;
+    border-radius: 0;
+    font-family: "Source Sans Pro";
 }
 
 .btn:focus,.btn:active {
     outline: none !important;
-    background: none;
 }
 
 .findCounselorsBtn {
@@ -47,5 +47,49 @@
     background:  #333333;
     border: 1px solid #333333;
     color: white;
-
 }
+
+//BUTTONS FOR HOME PAGE
+
+.homeBtnBlue {
+    composes: btn;
+    background-color: #0093DF !important;
+    font-family: "Source Sans Pro" !important;
+    text-align: center !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+.homeBtnBlue:hover {
+    background-color: #006BA2 !important;
+    color: #FFFFFF !important;
+}
+
+.homeBtnBlue:active {
+    background-color: #004265 !important;
+    color: #FFFFFF !important;
+}
+
+
+
+
+.homeBtnWhite {
+    composes: btn;
+    background-color: #FFFFFF !important;
+    font-family: "Source Sans Pro" !important;
+    text-align: center !important;
+    color: #0B97DD !important;
+    border: none !important;
+}
+
+.homeBtnWhite:hover {
+    background-color: rgba(255,255,255,0.8) !important;
+    color: #0B97DD !important;
+}
+
+.homeBtnWhite:active {
+    background-color: rgba(255,255,255,0.6) !important;
+    color: #0B97DD !important;
+}
+
+
