@@ -213,17 +213,21 @@ $primary-color: #0B97DD;
 
     .logo {
         margin: 1em;
-        height: calc(10vw + 10px);
+        height: 9.6vw;
     }
 
     //hamburger styling
 
     .menuBtn {
         margin: 1em;
-        width: calc(24vw + 29px);
-        height: calc(10vw + 10px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 9.6vw;
         border: 2px solid $primary-color;
+        color: $primary-color;
         background-color: white;
+        padding: 0 3.5vw 0 3.5vw;
     }
 
     .menuBtn:focus, .menuBtn:active {
@@ -231,16 +235,21 @@ $primary-color: #0B97DD;
         background: none;
     }
 
+    .menuBtnClose {
+        composes: menuBtn;
+        border: 2px solid #006BA2;
+        color: #006BA2 !important;
+    }
+
     .menuBtnTxt {
         font-size: 3.5vw;
         font-weight: bold;
         margin-right: 1em;
         vertical-align: middle;
-        color: $primary-color;
     }
 
     .hamburgerIcon {
-        font-size: 1.5em;
+        height: 3.5vw;
         vertical-align: middle;
         color: $primary-color;
     }

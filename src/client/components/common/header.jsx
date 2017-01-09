@@ -3,6 +3,8 @@ import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, But
 import styles from '../../styles/header/header.scss';
 import sbaLogo from '../../../../public/assets/svg/sba-logo.svg';
 import sbaLogoMobile from '../../../../public/assets/svg/sba-logo-mobile.svg';
+import hamburgerClose from '../../../../public/assets/svg/close.svg';
+import hamburger from '../../../../public/assets/svg/hamburger.svg';
 
 
 class Header extends React.Component {
@@ -356,15 +358,15 @@ export class Translate extends React.Component {
 
 const NavToggle = ({expanded, onClick, ...props}) => {
   if (expanded == false) {
-    return <button className={ styles.menuBtn + " pull-right" } onClick={ onClick } {...props}>
+    return <div className={ styles.menuBtn + " pull-right" } onClick={ onClick } {...props}>
              <span className={ styles.menuBtnTxt }>MENU</span>
-             <Glyphicon className={ styles.hamburgerIcon } glyph="menu-hamburger" />
-           </button>;
+             <img className={ styles.hamburgerIcon } src={ hamburger } />
+           </div>;
   } else {
-    return <button className={ styles.menuBtn + " pull-right" } onClick={ onClick } {...props}>
+    return <div className={ styles.menuBtnClose + " pull-right" } onClick={ onClick } {...props}>
              <span className={ styles.menuBtnTxt }>CLOSE</span>
-             <Glyphicon className={ styles.hamburgerIcon } glyph="remove" />
-           </button>;
+             <img className={ styles.hamburgerIcon } src={ hamburgerClose } />
+           </div>;
   }
 };
 
