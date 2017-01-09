@@ -22,7 +22,8 @@
     width: 36vw;
     height: 18vw;
     bottom: 15vw;
-    left: 55.8vw;
+    //left: 55.8vw;
+    right: 10.4vw;
     z-index: 0;
   }
 
@@ -78,9 +79,10 @@
   .sybAccentBox{
     position: absolute;
     background: #AB3EA0;
-    width: 90vw;
+    width: 91.4vw;
+    margin-left: 4.3vw;
+    margin-right: 4.3vw;
     height: 48vw;
-    margin-left: 4.5vw;
     z-index: 0;
   }
 
