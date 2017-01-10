@@ -238,7 +238,7 @@ class Header extends React.Component {
 }
 
 const MiniNav = (props) => <Col xsHidden={ true }>
-                           <Nav className={styles.miniNav + " pull-right"}>
+                           <Nav className={ styles.miniNav + " pull-right" }>
                              <Translate/>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://es.sba.gov/">SBA En Espanol</NavItem>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://www.sba.gov/for-lenders">For Lenders</NavItem>
@@ -296,10 +296,10 @@ export class Search extends React.Component {
     return (
       <NavItem className={ !!this.state.search ? styles.searchNavItem : styles.miniNavItem } eventKey={ 1 } href="#">
         { !!this.state.search ? (
-          <form className={styles.searchBarContainer} onSubmit={ (e) => this.props.submitSearch(e) }>
-                <FormControl onChange={ (e) => this.props.handleSearchChange(e) } className={ styles.searchBar } type="text" placeholder="Search SBA.gov" autoFocus={ true } onBlur={ this.toggleSearch.bind(this) }
-                />
-               <Glyphicon className={ styles.searchSubmitBtn + " pull-right" } onMouseDown={ (e) => this.props.submitSearch(e) } glyph="search" />
+          <form className={ styles.searchBarContainer } onSubmit={ (e) => this.props.submitSearch(e) }>
+            <FormControl onChange={ (e) => this.props.handleSearchChange(e) } className={ styles.searchBar } type="text" placeholder="Search SBA.gov" autoFocus={ true } onBlur={ this.toggleSearch.bind(this) }
+            />
+            <Glyphicon className={ styles.searchSubmitBtn + " pull-right" } onMouseDown={ (e) => this.props.submitSearch(e) } glyph="search" />
           </form>
           ) : (
           <Glyphicon className={ styles.searchIcon } onClick={ this.toggleSearch.bind(this) } glyph="search" />
