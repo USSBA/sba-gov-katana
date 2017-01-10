@@ -35,6 +35,10 @@ $primary-color: #0B97DD;
     }
 
     //styles the small top nav
+    .miniNav {
+        margin-right: 0.4vw;
+    }
+
     .miniNavItem > a {
         font-size: calc(1.1vw - 2px);
         margin-top: 1.5vw;
@@ -154,44 +158,54 @@ $primary-color: #0B97DD;
 
     //styles for search bar
 
+
     .searchNavItem > a {
         font-size: calc(1.3vw - 2px);
-        margin-top: 0.2vw;
+        margin-top: 1vw;
+        cursor: default !important;
         padding-left: 6px !important;
         padding-right: 6px !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
 
+    .searchIcon {
+        font-size: calc(1.1vw - 4px);
+    }
+
+    .searchBarContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 17vw;
+    }
+
     .searchBar {
-        margin: 0;
-        width: 180px;
-        vertical-align: middle;
-        border-left: 0 !important;
-        box-shadow: none !important;
+        display: inline-block;
+        height: 1.6vw !important;
+        width: 15vw !important;
+        margin-right: 0px !important;
         border-radius: 0px;
+        font-size: calc(1.1vw - 2px);
+        box-shadow: none !important;
     }
 
     .searchBar:focus {
-        border:1px solid #ccc !important;
-        border-left: 0 !important;
+        border: 1px solid #ccc !important;
         box-shadow: none !important;
     }
 
-    .searchAddon {
-        background-color: white;
-        border-radius: 0px;
-        border-right: solid white;
-    }
-
-    .searchIcon {
-        vertical-align: middle;
+    .searchSubmitBtn {
+        font-size: calc(1.1vw - 4px);
+        cursor: pointer !important;
+        margin-left: 1vw;
     }
 
     .menuBtn {
         visibility: hidden;
     }
 }
+
 
 //styles for MOBILE
 @media screen and (max-width: 768px){
@@ -336,8 +350,6 @@ $primary-color: #0B97DD;
             color: #666666 !important;
         }
     }
-
-
 }
 
 
