@@ -34,54 +34,54 @@ class Footer extends React.Component {
           <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>Customer Service</h4>
             <ul>
-              <li><a href="https://www.sba.gov/about-sba">About SBA</a></li>
-              <li><a href="https://www.sba.gov/about-sba/what-we-do/contact-sba">Contact SBA</a></li>
+              <li><a href="/about-sba">About SBA</a></li>
+              <li><a href="/about-sba/what-we-do/contact-sba">Contact SBA</a></li>
               <li><a href="https://es.sba.gov/">En Español</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-newsroom">Media and Press Relations</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-locations">SBA Locations</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-team">SBA Team</a></li>
+              <li><a href="/about-sba/sba-newsroom">Media and Press Relations</a></li>
+              <li><a href="/about-sba/sba-locations">SBA Locations</a></li>
+              <li><a href="/about-sba/sba-team">SBA Team</a></li>
             </ul>
           </div>
           <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>About SBA.gov</h4>
             <ul>
-              <li><a href="https://www.sba.gov/sitemap">Site Map</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy">Linking Policy</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/accessibility">Accessibility</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer">Disclaimers</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/social-media">Social Media</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/digital-sba/open-data">Data Store</a></li>
-              <li><a href="https://www.sba.gov/blogs">Blog</a></li>
+              <li><a href="/sitemap">Site Map</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy">Linking Policy</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/about-sbagov-website/accessibility">Accessibility</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer">Disclaimers</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/about-sbagov-website/social-media">Social Media</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/digital-sba/open-data">Data Store</a></li>
+              <li><a href="/blogs">Blog</a></li>
             </ul>
           </div>
           <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>SBA Information</h4>
             <ul>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/foia">Freedom of Information Act</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act">No Fear Act</a></li>
-              <li><a href="https://www.sba.gov/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse">Report Fraud, Waste and Abuse</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-initiatives">Initiatives</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page">Plain Language</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/foia">Freedom of Information Act</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act">No Fear Act</a></li>
+              <li><a href="/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse">Report Fraud, Waste and Abuse</a></li>
+              <li><a href="/about-sba/sba-initiatives">Initiatives</a></li>
+              <li><a href="/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page">Plain Language</a></li>
             </ul>
           </div>
           <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>SBA Performance</h4>
             <ul>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/strategic-planning">Strategic Planning</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/performance-budget-finances">Performance, Budget & Financing</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/open-government">Open Government</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/policy-regulations">Policy and Regulations</a></li>
-              <li><a href="https://www.sba.gov/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse">Eliminating Fraud, Waste, and Abuse </a></li>
+              <li><a href="/about-sba/sba-performance/strategic-planning">Strategic Planning</a></li>
+              <li><a href="/about-sba/sba-performance/performance-budget-finances">Performance, Budget & Financing</a></li>
+              <li><a href="/about-sba/sba-performance/open-government">Open Government</a></li>
+              <li><a href="/about-sba/sba-performance/policy-regulations">Policy and Regulations</a></li>
+              <li><a href="/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse">Eliminating Fraud, Waste, and Abuse </a></li>
             </ul>
           </div>
           <div className={ styles.linkSubject + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>Oversight</h4>
             <ul>
-              <li><a href="https://www.sba.gov/office-of-inspector-general">Inspector General</a></li>
-              <li><a href="https://www.sba.gov/advocacy">Advocacy</a></li>
-              <li><a href="https://www.sba.gov/oha">Hearings and Appeals</a></li>
-              <li><a href="https://www.sba.gov/ombudsman">Ombudsman</a></li>
+              <li><a href="/office-of-inspector-general">Inspector General</a></li>
+              <li><a href="/advocacy">Advocacy</a></li>
+              <li><a href="/oha">Hearings and Appeals</a></li>
+              <li><a href="/ombudsman">Ombudsman</a></li>
               <li><a href="https://www.whitehouse.gov">WhiteHouse.gov</a></li>
               <li><a href="https://www.usa.gov">USA.gov</a></li>
               <li><a href="https://www.regulations.gov">Regulations.gov</a></li>
@@ -90,11 +90,11 @@ class Footer extends React.Component {
           <div className={ styles.linkSubjectLast + " col-xl-2 col-sm-2 col-sm-offset-0" }>
             <h4>Tools and Features</h4>
             <ul>
-              <li><a href="https://www.sba.gov/tools/sba-learning-center/search/training">Online Training</a></li>
-              <li><a href="https://www.sba.gov/tools/business-plan">Create a Business Plan</a></li>
-              <li><a href="https://www.sba.gov/tools/events">Find Events</a></li>
-              <li><a href="https://www.sba.gov/tools/size-standards-tool">Qualify for Government Contracts</a></li>
-              <li><a href="https://www.sba.gov/videos">SBA Videos</a></li>
+              <li><a href="/tools/sba-learning-center/search/training">Online Training</a></li>
+              <li><a href="/tools/business-plan">Create a Business Plan</a></li>
+              <li><a href="/tools/events">Find Events</a></li>
+              <li><a href="/tools/size-standards-tool">Qualify for Government Contracts</a></li>
+              <li><a href="/videos">SBA Videos</a></li>
             </ul>
           </div>
         </div>
@@ -118,14 +118,14 @@ class Footer extends React.Component {
           </div>
         </div>
         <div className={ styles.smallLinks + " hidden-xl hidden-lg hidden-md hidden-sm container" } aria-hidden="true">
-          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/what-we-do">What we do</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/sba-team">SBA Team</a>
-          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/sba-newsroom">SBA News Room</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/sba-performance">SBA Performance</a>
-          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/sba-performance/open-government/foia">FOIA</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/oversight-advocacy">Oversight & Advocacy</a>
-          <a className=" col-xs-5 col-xs-offset-1" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">Contact SBA</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="https://www.sba.gov/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/what-we-do">What we do</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-team">SBA Team</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/sba-newsroom">SBA News Room</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-performance">SBA Performance</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/sba-performance/open-government/foia">FOIA</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/oversight-advocacy">Oversight & Advocacy</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/what-we-do/contact-sba">Contact SBA</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
           <a className=" col-xs-5 col-xs-offset-1" href="https://es.sba.gov/">SBA En Español</a>
         </div>
         <div className=" hidden-xl hidden-lg hidden-md hidden-sm container-fluid no-padding" aria-hidden="true">
