@@ -10,3 +10,8 @@ database:
     mongoConnectString: mongodb://localhost:27017/sba
 linc:
     confirmationEmailBase: http://localhost:3000
+oca:
+    soap:
+        username: placeholder
+        password: placeholder
+        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.cfc

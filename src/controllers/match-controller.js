@@ -12,12 +12,6 @@ import HttpStatus from "http-status-codes";
 const numberOfHoursForWhichEmailIsValid = 48;
 var htmlToText = require("html-to-text");
 
-// TODO: get server Endpoint from wsdl file instead of hard coding
-const ocaSoapWsdl = "https://catweb2.sba.gov/linc/ws/linc.wsdl";
-// TODO: put wsdl, username and password in configuration file.
-const username = "OCPL_LincUser";
-const password = "zQUcm4Yu";
-
 function createConfirmation(req, res) {
   lenderMatchRecordDao.create(req.body) // TODO: trim this to certain properties that are needed
     .then(function(result) {
@@ -114,8 +108,11 @@ function handleEmailConfirmation(req, res) {
         emailConfirmationDao.update(confirmedRecord).then(function(result) {
           // AYO submit OCA request
           lenderMatchRecordDao.retrieve(result.value.lenderMatchRecordId).then(function(lenderMatchRecord) {
+            const username = config.get("oca.soap.username");
+            const password = config.get("oca.soap.password");
+            const ocaSoapWsdl = config.get("oca.soap.wsdlUrl");
             const soapRequest = new LincSoapRequest();
-            soapRequest.sendLincSoapRequest(ocaSoapWsdl, lenderMatchRecord, username, password).then(function() {
+            soapRequest.sendLincSoapRequest(ocaSoapWsdl, lenderMatchRecord, username, password).then(function(response) {
               // TODO: check the response from OCA
               //do nothing if it is "S"
               //save to database if it is "P"

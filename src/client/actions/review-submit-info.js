@@ -6,7 +6,7 @@ export function matchFormData(reviewSubmitInfoData) {
       type: "MATCH_FORM_DATA_START"
     });
     console.log("Match Form Data being sent to the server.");
-    axios.post("linc/matchFormData", reviewSubmitInfoData)
+    axios.post("matchFormData", reviewSubmitInfoData)
       .then((response) => {
         dispatch({
           type: "MATCH_FORM_DATA_SUCCESS",
