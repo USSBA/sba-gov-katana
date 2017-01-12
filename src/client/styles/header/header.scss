@@ -31,12 +31,14 @@ $primary-color: #0B97DD;
 
     .logo {
         height: 4.6vw;
-        margin-top: 1.3vw;
+        margin-top: 1vw;
+        margin-left: calc(3.13vw - 15px);
     }
 
     //styles the small top nav
     .miniNav {
-        margin-right: 0.4vw;
+        margin-right: 1vw;
+        padding-right: 0vw;
     }
 
     .miniNavItem > a {
