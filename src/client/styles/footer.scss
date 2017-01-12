@@ -91,7 +91,6 @@
   }
 
   .smallLinks {
-    margin-left: -15px;
   }
 
   .smallLinks a {
@@ -99,6 +98,8 @@
     padding-top: 8vw;
     text-decoration: none;
     color: #333333;
+    margin-left: 0px;
+    padding-left: 1.86vw;
   }
 
   .smallLinks a:hover{
@@ -110,7 +111,7 @@
     padding-top: 5.33vw;
     padding-bottom: 0;
     margin: 0;
-    padding-left: 12.53vw;
+    padding-left: 12vw;
     margin-left: -15px;
     margin-right: -15px;
   }
@@ -119,7 +120,7 @@
     padding: 0;
     padding-bottom: 5.33vw;
     width: 12vw;
-    margin-right: 8.88vw;
+    margin-right: 4vw;
     float: left;
 
   }
@@ -131,10 +132,11 @@
   }
 
   .smallBottomBorder {
-    border-bottom: 2px solid #979797;
-    width: 74.66vw;
-    margin-left: 8.66vw;
-    margin-right: auto;
+    border-bottom: 0.533vw solid #979797;
+    width: 90.66vw;
+    //margin-left: -15px;
+    margin-left: 1.33vw;
+    //margin-right: auto;
   }
 
   .addressSmall {
