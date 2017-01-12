@@ -22,7 +22,8 @@
     width: 36vw;
     height: 18vw;
     bottom: 15vw;
-    left: 55.8vw;
+    //left: 55.8vw;
+    right: 10.4vw;
     z-index: 0;
   }
 
@@ -68,18 +69,19 @@
   }
 
   .stgContainer p{
-    font-size: 6vw;
+    font-size: 7.47vw;
     font-weight: bold;
     padding-bottom: 2vw;
-    padding-left: 12vw;
+    padding-left: 12.53vw;
   }
 
   .stgAccentBox{
     position: absolute;
     background: #0F48AA;
-    width: 90vw;
+    width: 91.4vw;
+    margin-left: 4.3vw;
+    margin-right: 4.3vw;
     height: 48vw;
-    margin-left: 4.5vw;
     z-index: 0;
   }
 

@@ -46,44 +46,44 @@ class HappeningNow extends React.Component {
                   <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                   </Col>
                 </Row>
-                  <div className={styles.happeningNowDesktop}>
-                    <Row>
-                      { items.map(function(item) {
-                          return (<Col xsHidden smHidden md={ mdSize }>
-                                  <a href={ item.url }>
-                                    <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
-                                  </a>
-                                  </Col>);
-                        }) }
-                    </Row>
-                    <Row>
-                      { items.map(function(item) {
-                          return <Col xsHidden smHidden md={ mdSize }>
-                                 <p className={ styles.happeningNowItemTitle }>
-                                   { item.title }
-                                 </p>
-                                 </Col>;
-                        }) }
-                    </Row>
-                    <Row>
-                      { items.map(function(item) {
-                          return <Col xsHidden smHidden md={ mdSize }>
-                                 <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
-                                 </Col>;
-                        }) }
-                    </Row>
-                  </div>
+                <div className={ styles.happeningNowDesktop }>
+                  <Row>
+                    { items.map(function(item) {
+                        return (<Col xsHidden smHidden md={ mdSize }>
+                                <a href={ item.url }>
+                                  <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
+                                </a>
+                                </Col>);
+                      }) }
+                  </Row>
+                  <Row>
+                    { items.map(function(item) {
+                        return <Col xsHidden smHidden md={ mdSize }>
+                               <p className={ styles.happeningNowItemTitle }>
+                                 { item.title }
+                               </p>
+                               </Col>;
+                      }) }
+                  </Row>
+                  <Row>
+                    { items.map(function(item) {
+                        return <Col xsHidden smHidden md={ mdSize }>
+                               <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
+                               </Col>;
+                      }) }
+                  </Row>
+                </div>
                 <Row>
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
                   <div className={ styles.happeningNowMobile }>
                     { items.map(function(item, i) {
                         return (<div className={ styles.happeningNowSection } key={ i }>
                                   <a href={ item.url }>
-                                    <img className={styles.mobileImg} src={ item.image } alt={ item.imageAlt }></img>
+                                    <img className={ styles.mobileImg } src={ item.image } alt={ item.imageAlt }></img>
                                   </a>
-                                    <p className={ styles.happeningNowItemTitleMobile }>
-                                        { item.title }
-                                    </p>
+                                  <p className={ styles.happeningNowItemTitleMobile }>
+                                    { item.title }
+                                  </p>
                                 </div>);
                       }) }
                   </div>
@@ -91,12 +91,12 @@ class HappeningNow extends React.Component {
                 </Row>
                 { /*<Row>
 
-                                                                                                                                                                                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
-                                                                                                                                                                                  <div className="happeningNowCarousel">
-                                                                                                                                                                                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
-                                                                                                                                                                                  </div>
-                                                                                                                                                                                  </Col>
-                                                                                                                                                                                </Row>*/ }
+                                                                                                                                                                                                                                                                                                                                                                                                                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
+                                                                                                                                                                                                                                                                                                                                                                                                                  <div className="happeningNowCarousel">
+                                                                                                                                                                                                                                                                                                                                                                                                                    <ModifiedCarousel imageStyle={ styles.carouselImage } titleStyle={ styles.happeningNowCarouselItemTitle } items={ carouselItems } />
+                                                                                                                                                                                                                                                                                                                                                                                                                  </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                  </Col>
+                                                                                                                                                                                                                                                                                                                                                                                                                </Row>*/ }
               </Grid>
             </div>);
   }

@@ -91,6 +91,7 @@ $primary-color: #0B97DD;
     .box {
         background: $primary-color;
         position: absolute;
+        z-index: 0;
         bottom:0;
         width: 90vw;
         height: 90vw;
@@ -128,6 +129,7 @@ $primary-color: #0B97DD;
 
     .mobileTriangle {
         position: absolute;
+        z-index: -1;
         width: 25.9vw;
         height: 25.9vw;
         bottom:0;

@@ -4,7 +4,6 @@ var webpack = require('webpack');
 module.exports = {
     devtool: 'eval',
     entry: [
-        'webpack-hot-middleware/client',
         'bootstrap-loader',
         'babel-polyfill',
         './src/client/components/main.jsx'
@@ -15,12 +14,6 @@ module.exports = {
         publicPath: '/public/'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
     ],
     module: {
         loaders: [{
