@@ -5,6 +5,7 @@ import facebookThumbnail from "../../../../public/assets/images/footer/facebook.
 import twitterThumbnail from "../../../../public/assets/images/footer/twitter.png"
 import googlePlusThumbnail from "../../../../public/assets/images/footer/googleplus.png"
 import youtubeThumbnail from "../../../../public/assets/images/footer/youtube-play.png"
+import linkedInThumbnail from "../../../../public/assets/images/footer/linkedin.png"
 
 import * as ModalActions from '../../actions/show-modal.js'
 import { connect } from 'react-redux';
@@ -110,7 +111,10 @@ class Footer extends React.Component {
               <SocialMediaLink imageSrc={ googlePlusThumbnail } altText="SBA Google Plus page" targetUrl="https://plus.google.com/+sbagov" />
             </div>
             <div className=" col-sm-1 col-sm-offset-0">
-              <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/sba" />
+              <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/user/sba" />
+            </div>
+            <div className=" col-sm-1 col-sm-offset-0">
+              <SocialMediaLink imageSrc={ linkedInThumbnail } altText="SBA LinkedIn page" targetUrl="https://www.linkedin.com/company/us-small-business-administration" />
             </div>
           </div>
           <div className={ styles.address + " col-sm-9 container" }>
@@ -127,6 +131,7 @@ class Footer extends React.Component {
           <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/what-we-do/contact-sba">Contact SBA</a>
           <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
           <a className=" col-xs-5 col-xs-offset-1" href="https://es.sba.gov/">SBA En Español</a>
+          <a className=" col-xs-6 col-xs-offset-0" href="/blogs">Blog</a>
         </div>
         <div className=" hidden-xl hidden-lg hidden-md hidden-sm container-fluid no-padding" aria-hidden="true">
           <div className={ styles.socialSmall }>
@@ -140,7 +145,10 @@ class Footer extends React.Component {
               <SocialMediaLink imageSrc={ googlePlusThumbnail } altText="SBA Google Plus page" targetUrl="https://plus.google.com/+sbagov" />
             </div>
             <div className="">
-              <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/sba" />
+              <SocialMediaLink imageSrc={ youtubeThumbnail } altText="SBA Youtube page" targetUrl="https://www.youtube.com/user/sba" />
+            </div>
+            <div className="">
+              <SocialMediaLink imageSrc={ linkedInThumbnail } altText="SBA LinkedIn page" targetUrl="https://www.linkedin.com/company/us-small-business-administration" />
             </div>
           </div>
           <div className={ styles.smallBottomBorder + " col-xs-12 col-xs-offset-0" }></div>
