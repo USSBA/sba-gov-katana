@@ -122,15 +122,15 @@ class Footer extends React.Component {
           </div>
         </div>
         <div className={ styles.smallLinks + " hidden-xl hidden-lg hidden-md hidden-sm container" } aria-hidden="true">
-          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/what-we-do">What we do</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/what-we-do">What we do</a>
           <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-team">SBA Team</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-newsroom">SBA News Room</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/sba-newsroom">SBA News Room</a>
           <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-performance">SBA Performance</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-performance/open-government/foia">FOIA</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/sba-performance/open-government/foia">FOIA</a>
           <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/oversight-advocacy">Oversight & Advocacy</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/what-we-do/contact-sba">Contact SBA</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="/about-sba/what-we-do/contact-sba">Contact SBA</a>
           <a className=" col-xs-6 col-xs-offset-0" href="/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy Policy</a>
-          <a className=" col-xs-6 col-xs-offset-0" href="https://es.sba.gov/">SBA En Español</a>
+          <a className=" col-xs-5 col-xs-offset-1" href="https://es.sba.gov/">SBA En Español</a>
           <a className=" col-xs-6 col-xs-offset-0" href="/blogs">Blog</a>
         </div>
         <div className=" hidden-xl hidden-lg hidden-md hidden-sm container-fluid no-padding" aria-hidden="true">
