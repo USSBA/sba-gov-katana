@@ -14,6 +14,7 @@ module.exports = {
         publicPath: '/public/'
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({minimize: true})
     ],
     module: {
         loaders: [{
