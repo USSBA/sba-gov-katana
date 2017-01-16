@@ -12,10 +12,10 @@ export const StartYourBusinessSection = (props) => <div className={ styles.sybCo
                                                          <a href="https://www.sba.gov/starting-business/how-start-business/10-steps-starting-business">
                                                            <li className={ styles.borderBox }>10 steps to get started.</li>
                                                          </a>
-                                                         <a href="https://www.sba.gov/tools/local-assistance#locations-page">
+                                                         <a href="/tools/local-assistance#locations-page">
                                                            <li className={ styles.borderBox }>Find local mentoring and support</li>
                                                          </a>
-                                                         <a href="https://www.sba.gov/tools/business-plan/1?from_mobile=true">
+                                                         <a href="/tools/business-plan/1?from_mobile=true">
                                                            <li>Create a business plan</li>
                                                          </a>
                                                        </ul>
