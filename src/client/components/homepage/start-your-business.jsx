@@ -9,7 +9,7 @@ export const StartYourBusinessSection = (props) => <div className={ styles.sybCo
                                                      <img className={ styles.sybBanner } src={ sYBImage } alt="Start your own business." />
                                                      <div className={ styles.sybAccentBox }>
                                                        <ul>
-                                                         <a href="https://www.sba.gov/starting-business/how-start-business/10-steps-starting-business">
+                                                         <a href="/starting-business/how-start-business/10-steps-starting-business">
                                                            <li className={ styles.borderBox }>10 steps to get started</li>
                                                          </a>
                                                          <a href="/tools/local-assistance#locations-page">
