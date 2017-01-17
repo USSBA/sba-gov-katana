@@ -35,7 +35,7 @@ function fetchBlogsFromDrupal() {
             title: blog.title,
             name: blog.name,
             date: blog.date,
-            imageUrl: index === 0 ? "assets/images/homepage/2016-blogs-photo.jpg" : "assets/images/homepage/credit-line-blog-photo.jpg"
+            imageUrl: index === 0 ? "assets/images/homepage/open-for-business-blogs-photo.jpg" : "assets/images/homepage/credit-line-blog-photo.jpg"
           };
         /* eslint-enable no-magic-numbers */
         });
