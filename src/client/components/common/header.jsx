@@ -244,7 +244,7 @@ class Header extends React.Component {
 const MiniNav = (props) => <Col xsHidden={ true }>
                            <Nav className={ styles.miniNav + " pull-right" }>
                              <Translate/>
-                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://es.sba.gov/">SBA En Espanol</NavItem>
+                             <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="https://es.sba.gov/">SBA En Español</NavItem>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="/for-lenders">For Lenders</NavItem>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="/about-sba/sba-newsroom">Newsroom</NavItem>
                              <NavItem className={ styles.miniNavItem } eventKey={ 1 } href="/about-sba/what-we-do/contact-sba">Contact Us</NavItem>
