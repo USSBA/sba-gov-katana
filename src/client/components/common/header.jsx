@@ -173,7 +173,7 @@ class Header extends React.Component {
               <Row>
                 <Col sm={ 3 }>
                 <h3 className={ styles.dropdownHeader }><a href="/tools/local-assistance">SBA Offices and Resource Partners</a></h3>
-                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/districtoffices" eventKey={ 1.1 }>SBA Distrcit Offices</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/districtoffices" eventKey={ 1.1 }>SBA District Offices</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/regionaloffices" eventKey={ 1.2 }>SBA Regional Offices</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/disasteroffices" eventKey={ 1.3 }>Disaster Field Offices</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/score" eventKey={ 1.4 }>SCORE Business Mentors</MenuItem>
