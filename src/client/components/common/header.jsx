@@ -126,6 +126,10 @@ class Header extends React.Component {
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/contracting/getting-started-contractor">Getting Started as a Contractor</a></h3>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/getting-started-contractor/qualifying-small-business" eventKey={ 5.1 }>Qualifying as a Small Business</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/getting-started-contractor/determine-your-naics-code" eventKey={ 5.1 }>Determine Your NAICS Code</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" eventKey={ 5.1 }>Make Sure You Meet SBA Size Standards</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/getting-started-contractor/get-d-u-n-s-number" eventKey={ 5.1 }>Get a D-U-N-S Number</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/getting-started-contractor/register-government-contracting" eventKey={ 5.1 }>Register for Government Contracting</MenuItem>
                 { /*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 5.2 }>Determine Your Financial Needs</MenuItem>*/ }
                 { /*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 5.3 }>Gather The Info You'll Need</MenuItem>*/ }
                 </Col>
@@ -199,10 +203,10 @@ class Header extends React.Component {
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/about-sba/sba-locations">SBA Locations</a></h3>
-                <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-performance/policy-regulations" eventKey={ 5.1 }>Policy & Regulations</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-performance/strategic-planning" eventKey={ 5.2 }>Strategic Planning</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-performance/performance-budget-finances" eventKey={ 5.3 }>Performance & Budget</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-performance/open-government" eventKey={ 5.3 }>Open Government</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-locations/headquarters-offices" eventKey={ 5.1 }>Headquarters Offices</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/regionaloffices" eventKey={ 5.2 }>Regional Offices</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/districtoffices" eventKey={ 5.3 }>District Offices</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/disasteroffices" eventKey={ 5.3 }>Disaster Offices</MenuItem>
                 </Col>
               </Row>
               <Row>
