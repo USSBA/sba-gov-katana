@@ -27,7 +27,7 @@ export default PrimaryLanding;
 const Box = (props) => <div className={ styles.box }>
                          <div className={ styles.title }> Start and grow your business.</div>
                          <div className={ styles.text }> Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
-                         <button className={ styles.button } onClick={ (e) => location.href = "https://www.sba.gov/starting-managing-business" }>
+                         <button className={ styles.button } onClick={ (e) => location.href = "/starting-managing-business" }>
                            LET'S GO
                          </button>
                          <Image alt="" src={ Triangle } className={ styles.triangle } />
