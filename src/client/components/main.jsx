@@ -46,7 +46,7 @@ import '../../../public/assets/fonts/Merriweather/merriweather.scss';
 
 ReactDOM.render(
   (<Provider store={ store }>
-     <Router onUpdate={logPageView} history={ history }>
+     <Router onUpdate={ logPageView() } history={ history }>
        <Route path="/" component={ Homepage } />
        <Route path="/linc" component={ LincMain }>
          <IndexRoute component={ LandingPage } />
