@@ -28,6 +28,15 @@ const store = createStore(rootReducer, middleware);
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 
+var ReactGA = require('react-ga');
+ReactGA.initialize('UA-19362636-5');
+
+function logPageView() {
+  ReactGA.set({
+    page: window.location.pathname
+  });
+  ReactGA.pageview(window.location.pathname);
+}
 
 import '../styles/common.css';
 import '../styles/common.scss';
@@ -37,7 +46,7 @@ import '../../../public/assets/fonts/Merriweather/merriweather.scss';
 
 ReactDOM.render(
   (<Provider store={ store }>
-     <Router history={ history }>
+     <Router onUpdate={logPageView} history={ history }>
        <Route path="/" component={ Homepage } />
        <Route path="/linc" component={ LincMain }>
          <IndexRoute component={ LandingPage } />
