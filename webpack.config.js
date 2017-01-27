@@ -43,7 +43,7 @@ module.exports = {
             loader: 'json-loader'
         }, {
             test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
-            loader: 'url-loader?limit=100000'
+            loader: 'file-loader?name=img/img-[hash:6].[ext]'
         }, {
             test:/bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
             loader: 'imports-loader?jQuery=jquery'

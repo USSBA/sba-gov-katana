@@ -1,5 +1,5 @@
 import React from "react";
-import {isEmpty} from "lodash";
+import { isEmpty } from "lodash";
 
 import { Carousel } from 'react-bootstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
