@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    devtool: 'eval',
+    devtool: 'cheap-module-source-map',
     entry: [
         'bootstrap-loader',
         'babel-polyfill',
@@ -14,7 +14,16 @@ module.exports = {
         publicPath: '/public/'
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin({minimize: true})
+        new webpack.DefinePlugin({
+            'process.env': {
+              'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/,/moment$/),
+        new webpack.optimize.OccurrenceOrderPlugin(true)
     ],
     module: {
         loaders: [{

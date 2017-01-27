@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+import {isEmpty} from "lodash";
 
 import { Carousel } from 'react-bootstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
@@ -33,7 +33,7 @@ class ModifiedCarousel extends React.Component {
 
 
 
-    if (_.isEmpty(this.props.items)) {
+    if (isEmpty(this.props.items)) {
       return <div></div>;
     }
 

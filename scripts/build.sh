@@ -1,5 +1,5 @@
 #!/bin/bash
-eslint src
+rm -rf public/build
 rm -rf dist
 $(npm bin)/babel src -d dist --ignore client/*
-$(npm bin)/webpack --config webpack.config.production.js --progress --profile --colors
+NODE_ENV=production $(npm bin)/webpack --config webpack.config.production.js --progress --profile --colors

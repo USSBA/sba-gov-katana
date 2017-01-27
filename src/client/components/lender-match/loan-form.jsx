@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LoanActions from '../../actions/loan-form.js';
 import Steps from 'react-steps';
-import _ from 'lodash';
+import {indexOf, chain, startCase} from 'lodash';
 import { Panel, ButtonToolbar, Glyphicon } from 'react-bootstrap';
 import lenderMatchStyles from '../../styles/lender-match/lender-match.scss';
 import { browserHistory } from 'react-router';
@@ -23,10 +23,10 @@ class LoanForm extends React.Component {
   render() {
     let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review']; // TODO make this static or configuration
     let page = this.props.location.replace('/linc/form/', '');
-    let locationIndex = _.indexOf(pages, page);
-    let data = _.chain(pages).slice(0, 5).map(function(item, index) {
+    let locationIndex = indexOf(pages, page);
+    let data = chain(pages).slice(0, 5).map(function(item, index) {
       return {
-        text: _.startCase(item),
+        text: startCase(item),
         isActive: locationIndex === index,
         isDone: locationIndex > index
       };
