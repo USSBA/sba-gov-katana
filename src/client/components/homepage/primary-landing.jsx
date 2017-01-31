@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from '../../styles/homepage/primary-landing.scss';
 import { Image } from 'react-bootstrap';
-import Hero from '../../../../public/assets/images/homepage/primary-landing/primarylanding-hero.jpg';
-import MobileHero from '../../../../public/assets/images/homepage/primary-landing/primarylanding-mobile-hero.png';
 import Triangle from '../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png';
 import MobileTriangle from '../../../../public/assets/images/homepage/primary-landing/mobile-corner-graphic.png';
 
@@ -13,8 +11,8 @@ class PrimaryLanding extends React.Component {
   render() {
     return (
       <div className={ styles.container }>
-        <Image alt="banner image of small business owner" className={ styles.hero } src={ Hero } />
-        <Image alt="banner image of small business owner" className={ styles.mobileHero } src={ MobileHero } />
+        <Image alt="banner image of small business owner" className={ styles.hero } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/primarylanding-hero.jpg" } />
+        <Image alt="banner image of small business owner" className={ styles.mobileHero } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/primarylanding-mobile-hero.png" } />
         <Box/>
       </div>
     )
