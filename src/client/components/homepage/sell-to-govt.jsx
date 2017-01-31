@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from '../../styles/homepage/sell-to-govt.scss';
-import sTGImage from '../../../../public/assets/images/homepage/contract.jpg';
 import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
 import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const SellToGovtSection = (props) => <div className={ styles.stgContainer }>
                                               <p>Sell to the government.</p>
-                                              <img className={ styles.stgBanner } src={ sTGImage } alt="Sell to the government." />
+                                              <img className={ styles.stgBanner } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/contract.jpg" } alt="Sell to the government." />
                                               <div className={ styles.stgAccentBox }>
                                                 <ul>
                                                   <a href="/contracting/getting-started-contractor">
@@ -23,4 +22,3 @@ export const SellToGovtSection = (props) => <div className={ styles.stgContainer
                                                 <img className="visible-xs" src={ diagonalLinesMobile } alt="" />
                                               </div>
                                             </div>
-

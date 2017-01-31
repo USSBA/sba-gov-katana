@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from '../../styles/homepage/start-your-business.scss';
-import sYBImage from '../../../../public/assets/images/homepage/start-image.jpg';
 import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
 import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const StartYourBusinessSection = (props) => <div className={ styles.sybContainer }>
                                                      <p>Start your business.</p>
-                                                     <img className={ styles.sybBanner } src={ sYBImage } alt="Start your own business." />
+                                                     <img className={ styles.sybBanner } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/start-image.jpg" } alt="Start your own business." />
                                                      <div className={ styles.sybAccentBox }>
                                                        <ul>
                                                          <a href="/starting-business/how-start-business/10-steps-starting-business">
@@ -23,4 +22,3 @@ export const StartYourBusinessSection = (props) => <div className={ styles.sybCo
                                                        <img className="visible-xs" src={ diagonalLinesMobile } alt="" />
                                                      </div>
                                                    </div>
-

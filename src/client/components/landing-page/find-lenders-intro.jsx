@@ -3,7 +3,6 @@ import { HelpMeBtn } from './help-me-btn.jsx'
 import { Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
-import findLendersImage from '../../../../public/assets/images/lender-match/lendermatch-hero.jpg'
 import cornerGraphicBig from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
 import cornerGraphicSmall from '../../../../public/assets/images/lender-match/rectangle-corner-graphic-mobile.png'
 
@@ -36,5 +35,5 @@ export const GreenFindLendersSection = (props) => <div className={ styles.greenB
 
 
 export const FindLendersImage = (props) => <div className={ styles.imageContainer }>
-                                             <img src={ findLendersImage } alt="Match with lenders" width="947" height="646" />
+                                             <img src={ "https://s3.amazonaws.com/fearlesstesters.com/img/lendermatch-hero.jpg" } alt="Match with lenders" width="947" height="646" />
                                            </div>
