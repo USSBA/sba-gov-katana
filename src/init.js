@@ -3,3 +3,4 @@ function init() {
   return mongodb.init();
 }
 export default init;
+import 'newrelic';
