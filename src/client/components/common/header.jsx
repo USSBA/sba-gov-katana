@@ -101,7 +101,7 @@ class Header extends React.Component {
               </Row>
               <Row>
                 <Col sm={ 3 }>
-                <h3 className={ styles.dropdownHeader }><a href="/loans-grants/get-ready-apply">Connect With SBA Approved Lenders</a></h3>
+                <h3 className={ styles.dropdownHeader }><a href="/loans-grants/get-ready-apply">Connect with SBA Lenders</a></h3>
                 <MenuItem className={ styles.dropdownItem } href="/tools/linc" eventKey={ 4.1 }>SBA LINC Tool</MenuItem>
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
@@ -119,7 +119,7 @@ class Header extends React.Component {
                 <Col sm={ 3 }>
                 <h3 className={ styles.dropdownHeader }><a href="/contracting/what-government-contracting">What is Government Contracting?</a></h3>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/what-government-contracting/overview" eventKey={ 3.1 }>Overview</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/contracting/what-government-contracting/sbas-role-government-contracting" eventKey={ 3.2 }>SBA's Role in Contracting</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/what-government-contracting/sbas-role-government-contracting" eventKey={ 3.2 }>SBA's Role in Government Contracting</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/what-government-contracting/your-responsibilities-contractor" eventKey={ 3.3 }>Your Responsibilities as a Contractor</MenuItem>
                 { /*<MenuItem className={ styles.dropdownItem } href="#" eventKey={ 3.4 }>Contracting Regulations</MenuItem>*/ }
                 </Col>
@@ -135,7 +135,7 @@ class Header extends React.Component {
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/contracting/finding-government-customers">Finding Government Customers</a></h3>
-                <MenuItem className={ styles.dropdownItem } href="/contracting/finding-government-customers/contracting-resources-small-businesses" eventKey={ 5.1 }>Resources for Finding Customers</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/finding-government-customers/contracting-resources-small-businesses" eventKey={ 5.1 }>Contracting Resources for Small Businesses</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/finding-government-customers/subcontracting" eventKey={ 5.2 }>Subcontracting</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/finding-government-customers/see-agency-small-business-scorecards" eventKey={ 5.3 }>See Agency Small Business Scorecards</MenuItem>
                 </Col>
