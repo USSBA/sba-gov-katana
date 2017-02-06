@@ -63,6 +63,7 @@ class Header extends React.Component {
                 <MenuItem className={ styles.dropdownItem } href="/starting-business/business-licenses-permits" eventKey={ 1.6 }>Business Licenses & Permits</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/starting-business/learn-about-business-laws" eventKey={ 1.7 }>Learn About Business Laws</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/starting-business/business-financials" eventKey={ 1.8 }>Business Financials</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/starting-business/finance-your-business" eventKey={ 1.9 }>Finance Your Business</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/starting-business/filing-paying-taxes" eventKey={ 1.9 }>Filing and Paying Taxes</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/starting-business/hire-retain-employees" eventKey={ 1.10 }>Hire and Retain Employees</MenuItem>
                 </Col>
@@ -73,7 +74,6 @@ class Header extends React.Component {
                 <MenuItem className={ styles.dropdownItem } href="/managing-business/growing-your-business" eventKey={ 2.3 }>Growing Your Business</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/managing-business/business-law-regulations" eventKey={ 2.4 }>Business Law and Regulations</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/managing-business/business-guides-industry" eventKey={ 2.5 }>Business Guides by Industry</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/managing-business/small-business-health-care" eventKey={ 2.6 }>Small Business Health Care</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/managing-business/exporting" eventKey={ 2.7 }>Exporting</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/managing-business/closing-down-your-business" eventKey={ 2.8 }>Closing Down Your Business</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/managing-business/cybersecurity" eventKey={ 2.9 }>Cybersecurity</MenuItem>
@@ -147,17 +147,18 @@ class Header extends React.Component {
                 <MenuItem className={ styles.dropdownItem } href="/contracting/resources-small-businesses/commercial-market-representatives" eventKey={ 3.2 }>Commercial Market Representatives</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/resources-small-businesses/procurement-center-representatives" eventKey={ 3.3 }>Procurement Center Representatives</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/resources-small-businesses/report-fraud-waste-abuse" eventKey={ 3.4 }>Report Fraud</MenuItem>
-                { /*<MenuItem className={ styles.dropdownItem } href="" eventKey={ 3.4 }>Size Protest</MenuItem>*/ }
                 <MenuItem className={ styles.dropdownItem } href="/contracting/resources-small-businesses/certificates-competency" eventKey={ 3.4 }>Certificates of Competency</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/resources-small-businesses/report-fraud-waste-abuse" eventKey={ 3.4 }>Report Fraud</MenuItem>
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/contracting/government-contracting-programs">Government Contracting Programs</a></h3>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/what-small-business-set-aside" eventKey={ 5.1 }>What is a Small Business Set Aside?</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/8a-business-development-program" eventKey={ 5.2 }>8(a) Business Development Program</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/small-disadvantaged-businesses" eventKey={ 5.3 }>Small Disadvantaged Businesses</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/women-owned-small-businesses" eventKey={ 5.3 }>Women-Owned Small Businesses</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/8a-business-development-program" eventKey={ 5.2 }>8(a) Business Development Program</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/hubzone-program" eventKey={ 5.3 }>HUBzone Program</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/navigation-structure/all-small-mentor-protege-program" eventKey={ 5.3 }>All Small Mentor Protege Program</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/service-disabled-veteran-owned-businesses" eventKey={ 5.3 }>Service-Disabled Veterans</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/contracting/government-contracting-programs/small-disadvantaged-businesses" eventKey={ 5.3 }>Small Disadvantaged Businesses</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/navigation-structure/all-small-mentor-protege-program" eventKey={ 5.3 }>All Small Mentor Protégé Program</MenuItem>
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/contracting/contracting-officials">For Contracting Officials</a></h3>
@@ -197,15 +198,14 @@ class Header extends React.Component {
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/about-sba/sba-team">SBA Team</a></h3>
-                <MenuItem className={ styles.dropdownItem } href="/administrator" eventKey={ 5.1 }>The SBA Administrator</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-team/jobs-sba" eventKey={ 5.2 }>Jobs at SBA</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-team/sba-leadership" eventKey={ 5.3 }>SBA Leadership</MenuItem>
                 </Col>
                 <Col sm={ 3 } smOffset={ 1 }>
                 <h3 className={ styles.dropdownHeader }><a href="/about-sba/sba-locations">SBA Locations</a></h3>
                 <MenuItem className={ styles.dropdownItem } href="/about-sba/sba-locations/headquarters-offices" eventKey={ 5.1 }>Headquarters Offices</MenuItem>
-                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/regionaloffices" eventKey={ 5.2 }>Regional Offices</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/districtoffices" eventKey={ 5.3 }>District Offices</MenuItem>
+                <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/regionaloffices" eventKey={ 5.2 }>Regional Offices</MenuItem>
                 <MenuItem className={ styles.dropdownItem } href="/tools/local-assistance/disasteroffices" eventKey={ 5.3 }>Disaster Offices</MenuItem>
                 </Col>
               </Row>
