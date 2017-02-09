@@ -40,6 +40,7 @@ function logPageView() {
 
 import '../styles/common.css';
 import '../styles/common.scss';
+require('font-awesome-webpack2');
 
 
 ReactDOM.render(

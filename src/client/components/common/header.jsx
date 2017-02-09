@@ -271,12 +271,12 @@ const MobileNav = (props) => <Nav className={ styles.mobileNav }>
                                <hr className={ styles.sectionDivider } />
                                <NavItem className={ styles.mobileNavDropdownSub } eventKey={ 1 } href="/tools/local-assistance#locations-page">
                                  <p style={ { margin: "0px" } }>
-                                   <Glyphicon style={ { marginRight: "10px" } } glyph="map-marker" /> SBA Near You</p>
+                                   <span style={ { marginRight: "16px" } } className="fa fa-map-marker"></span> SBA Near You</p>
                                </NavItem>
                                <hr className={ styles.sectionDivider } />
                                <NavItem className={ styles.mobileNavDropdownSub } eventKey={ 1 } href="/tools/events#events-page">
                                  <p>
-                                   <Glyphicon style={ { marginRight: "10px" } } glyph="calendar" /> Small Business Events</p>
+                                   <span style={ { marginRight: "10px" } } className="fa fa-calendar"></span> Small Business Events</p>
                                </NavItem>
                              </Nav>;
 
@@ -318,7 +318,7 @@ const MobileSearch = (props) => <NavItem className={ styles.searchNavItem } even
                                     <FormGroup className={ styles.searchBar }>
                                       <InputGroup className={ styles.searchBar }>
                                         <InputGroup.Addon className={ styles.searchAddon }>
-                                          <Glyphicon className={ styles.searchBarIcon } glyph="search" />
+                                          <span className="fa fa-search"></span>
                                         </InputGroup.Addon>
                                         <FormControl onChange={ (e) => props.handleSearchChange(e) } className={ styles.searchBar } type="text" placeholder="Search SBA.gov" />
                                       </InputGroup>
