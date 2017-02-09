@@ -2,9 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import ModifiedCarousel from "../helpers/carousel.jsx";
+import { isEmpty } from "lodash";
+
+import './carousel-overrides.scss';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.scss';
+import 'slick-carousel/slick/slick-theme.scss';
 import * as ContentActions from "../../actions/content.js";
-import styles from "../../styles/homepage/styles.scss";
+import styles from "./happening-now.scss";
 
 const contentProperty = "happeningNow";
 
@@ -27,15 +32,22 @@ class HappeningNow extends React.Component {
       }
     }
 
-    let carouselItems = items.map(function(item) {
-      return {
-        title: item.title,
-        imageSrc: item.image,
-        imageAlt: item.imageAlt,
-        href: item.url
-      };
-    });
-    let me = this;
+    if (isEmpty(items)) {
+      return <div></div>;
+    }
+
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      // dotsClass: styles.happeningNowCarouselDots,
+      centerMode: true
+    };
+
+    console.log(items);
+    console.log(settings);
     return (<div className={ styles.happeningNow }>
               <Grid fluid>
                 <Row>
@@ -76,22 +88,24 @@ class HappeningNow extends React.Component {
                 <Row>
                   <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
                   <div className={ styles.happeningNowMobile }>
-                    { items.map(function(item, i) {
-                        return (<div className={ styles.happeningNowSection } key={ i }>
-                                  <a href={ item.url }>
-                                    <img className={ styles.mobileImg } src={ item.image } alt={ item.imageAlt }></img>
-                                  </a>
-                                  <p className={ styles.happeningNowItemTitleMobile }>
-                                    { item.title }
-                                  </p>
-                                </div>);
-                      }) }
+                    <Slider {...settings}>
+                      { items.map(function(item, index) {
+                          return <div key={ "happeningNowCarousel-item-" + index } class="happeningNowCarouselItem">
+                                   <a href={ item.url }>
+                                     <img className={ styles.carouselImage } src={ item.image } alt={ item.imageAlt }></img>
+                                   </a>
+                                 </div>;
+                        }) }
+                    </Slider>
                   </div>
                   </Col>
                 </Row>
               </Grid>
             </div>);
   }
+
+
+
 }
 
 function mapReduxStateToProps(reduxState) {

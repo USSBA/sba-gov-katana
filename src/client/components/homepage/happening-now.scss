@@ -1,29 +1,15 @@
-@import "../buttons.scss";
+@import "../../styles/buttons.scss";
 
 .happeningNow {
     margin-top: 5vw;
     padding-left: 0;
     padding-right: 0;
 }
+
+/* Desktop */
 .happeningNowDesktop{
     padding-left: calc(10.4vw - 15px);
     padding-right: calc(10.4vw - 15px);
-}
-
-.happeningNowMobile{
-    margin-top: 2vw;
-}
-
-.happeningNowSection{
-    padding-bottom: 4vw;
-}
-
-.mobileImg{
-    width: 91.4vw;
-    height: auto;
-    margin-left: calc(4.3vw - 15px);
-    margin-right: calc(4.3vw - 15px);
-    padding-right: 0;
 }
 
 .happeningNowTitle{
@@ -31,14 +17,6 @@
     font-weight: bold;
     padding-left: calc(10.4vw - 15px);
     padding-bottom: 2vw;
-}
-
-.happeningNowTitleMobile{
-    font-size: 7.47vw;
-    line-height: 8vw;
-    font-weight: 900;
-    padding-bottom: 2vw;
-    padding-left: calc(12.53vw - 15px);
 }
 
 .happeningNowItemTitle{
@@ -49,23 +27,35 @@
     padding-bottom: 1vw;
 }
 
-.happeningNowItemTitleMobile{
-    color: black;
-    font-size: 4vw;
-    font-weight: bold;
-    padding-top: 1vw;
-    padding-left: calc(4.3vw - 15px);
-    padding-bottom: 1vw;
-}
-
 .happeningNowLearnMore{
     composes: homeBtnBlue;
     font-weight: 600;
     padding: 10px 20px;
 }
 
+/* Mobile */
+
+.happeningNowMobile{
+    margin-top: 2vw;
+}
+
+.happeningNowTitleMobile{
+    font-size: 7.47vw;
+    line-height: 8vw;
+    font-weight: 900;
+    padding-bottom: 2vw;
+    padding-left: calc(12.53vw - 15px);
+}
+
 .carouselImage{
     padding: 1px;
+    width: 73vw;
+    margin-left: 4.16vw ;
+    // width: 91.4vw;
+    // height: auto;
+    // margin-left: calc(4.3vw - 15px);
+    // margin-right: calc(4.3vw - 15px);
+    // padding-right: 0;
 }
 
 .happeningNowCarouselItemTitle{
@@ -73,4 +63,14 @@
     font-weight: 600;
     font-size: 3.5vw;
     background-color: white;
+    
 }
+
+.happeningNowCarouselItem{
+    color: blue;
+}
+
+.happeningNowCarouselDots{
+    color: blue;
+}
+
