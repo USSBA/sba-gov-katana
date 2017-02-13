@@ -37,6 +37,9 @@ class HappeningNow extends React.Component {
     }
 
     var settings = {
+      customPaging: function(i) {
+        return <button disabled>{i + 1}</button>;
+      },
       dots: true,
       infinite: true,
       speed: 500,
