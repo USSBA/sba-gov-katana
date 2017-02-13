@@ -70,7 +70,7 @@
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
-    "react-slick": "0.14.6",
+    "react-slick": "file:hax/react-slick",
     "react-steps": "0.0.4",
     "redux": "^3.6.0",
     "request": "^2.79.0",
@@ -80,12 +80,11 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "uuid": "^3.0.1",
-    "webpack": "^2.1.0-beta.27",
+    "webpack": "2.2.0",
     "xml2js": "^0.4.17",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {
-    "@epegzz/sass-vars-loader": "^1.0.3",
     "axios": "^0.15.3",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.0.20",

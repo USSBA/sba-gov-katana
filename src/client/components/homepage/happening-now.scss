@@ -4,6 +4,7 @@
     margin-top: 5vw;
     padding-left: 0;
     padding-right: 0;
+    width: 100%;
 }
 
 /* Desktop */
@@ -42,35 +43,36 @@
 .happeningNowTitleMobile{
     font-size: 7.47vw;
     line-height: 8vw;
-    font-weight: 900;
+    font-weight: bold;
     padding-bottom: 2vw;
-    padding-left: calc(12.53vw - 15px);
-}
-
-.carouselImage{
-    padding: 1px;
-    width: 73vw;
-    margin-left: 4.16vw ;
-    // width: 91.4vw;
-    // height: auto;
-    // margin-left: calc(4.3vw - 15px);
-    // margin-right: calc(4.3vw - 15px);
-    // padding-right: 0;
-}
-
-.happeningNowCarouselItemTitle{
-    color: black;
-    font-weight: 600;
-    font-size: 3.5vw;
-    background-color: white;
-    
+    padding-left: 12.53vw;
 }
 
 .happeningNowCarouselItem{
-    color: blue;
 }
 
-.happeningNowCarouselDots{
-    color: blue;
+.carouselImage{
+    margin: auto;
+    max-width: 75vw;
+    width: 100%;
+    height: auto;
 }
+
+.carouselAnchor{
+}
+
+
+.happeningNowCarouselItemTitle{
+    text-align: left;
+    color: black;
+    font-weight: bold;
+    font-size: 3.5vw;
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    margin-left: 4.2%;
+}
+
+
+
 

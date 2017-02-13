@@ -4,10 +4,10 @@ import { bindActionCreators } from 'redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { isEmpty } from "lodash";
 
-import './carousel-overrides.scss';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.scss';
-import 'slick-carousel/slick/slick-theme.scss';
+import './slick-theme.scss';
+// import 'slick-carousel/slick/slick-theme.scss';
 import * as ContentActions from "../../actions/content.js";
 import styles from "./happening-now.scss";
 
@@ -42,20 +42,15 @@ class HappeningNow extends React.Component {
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      // dotsClass: styles.happeningNowCarouselDots,
-      centerMode: true
+      centerMode: true,
+      centerPadding: "2.1%"
     };
 
-    console.log(items);
-    console.log(settings);
     return (<div className={ styles.happeningNow }>
               <Grid fluid>
                 <Row>
                   <Col xs={ 12 } xsHidden smHidden>
                   <p className={ styles.happeningNowTitle }>What's happening now.</p>
-                  </Col>
-                  <Col xs={ 12 } mdHidden lgHidden>
-                  <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                   </Col>
                 </Row>
                 <div className={ styles.happeningNowDesktop }>
@@ -85,23 +80,28 @@ class HappeningNow extends React.Component {
                       }) }
                   </Row>
                 </div>
-                <Row>
-                  <Col xs={ 12 } sm={ 12 } mdHidden lgHidden>
-                  <div className={ styles.happeningNowMobile }>
-                    <Slider {...settings}>
-                      { items.map(function(item, index) {
-                          return <div key={ "happeningNowCarousel-item-" + index } class="happeningNowCarouselItem">
-                                   <a href={ item.url }>
-                                     <img className={ styles.carouselImage } src={ item.image } alt={ item.imageAlt }></img>
-                                   </a>
-                                 </div>;
-                        }) }
-                    </Slider>
-                  </div>
-                  </Col>
-                </Row>
               </Grid>
+              <div className="hidden-md hidden-lg">
+                <div>
+                  <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
+                </div>
+                <div className={ styles.happeningNowMobile }>
+                  <Slider {...settings}>
+                    { items.map(function(item, index) {
+                        return <div key={ "happeningNowCarousel-item-" + index } className={ styles.happeningNowCarouselItem }>
+                                 <a href={ item.url } className={ styles.carouselAnchor }>
+                                   <img className={ styles.carouselImage } src={ item.image } alt={ item.imageAlt }></img>
+                                   <p className={ styles.happeningNowCarouselItemTitle }>
+                                     { item.title }
+                                   </p>
+                                 </a>
+                               </div>;
+                      }) }
+                  </Slider>
+                </div>
+              </div>
             </div>);
+
   }
 
 
