@@ -17,7 +17,6 @@ class Header extends React.Component {
       expanded: false,
       searchValue: ""
     }
-    props.actions.fetchMainMenu();
   }
 
   toggleNav() {
