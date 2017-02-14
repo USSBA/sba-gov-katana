@@ -14,6 +14,10 @@ module.exports = {
         publicPath: '/public/'
     },
     plugins: [
+        new webpack.LoaderOptionsPlugin({
+          minimize: true,
+          debug: false
+      }),
         new webpack.DefinePlugin({
             'process.env': {
               'NODE_ENV': JSON.stringify('production')
@@ -37,9 +41,20 @@ module.exports = {
         }, {
             test: /\.css$/,
             loader: 'style-loader!css-loader?modules'
-        }, {
+        }, 
+        {
+            test: /.*slick.*\.scss$/,
+            loader: 'style-loader!css-loader!sass-loader?outputStyle=expanded&' + 'includePaths[]=' +
+                (path.resolve(__dirname, './node_modules'))
+        }, 
+        {
             test: /\.scss$/,
-            loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"]
+            loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"],
+            exclude: [
+                path.resolve(__dirname, "node_modules/slick-carousel"),
+                path.resolve(__dirname, "node_modules/react-slick"),
+                path.resolve(__dirname, "src/client/components/homepage/slick-theme.scss")
+            ]
         }, {
             test: /\.less$/,
             loader: "style-loader!css-loader!less-loader"

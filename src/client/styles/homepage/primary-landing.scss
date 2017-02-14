@@ -9,7 +9,7 @@ $primary-color: #0B97DD;
     }
 
     .hero {
-        width: 100vw;
+        width: 100%;
     }
 
     .mobileHero {
@@ -78,14 +78,14 @@ $primary-color: #0B97DD;
     }
 
     .mobileHero {
-        width: 100vw;
+        width: 100%;
         height: 90vw;
     }
 
     .container {
         position: relative;
         height:153vw;
-        width:100vw;
+        width:100%;
     }
 
     .box {
