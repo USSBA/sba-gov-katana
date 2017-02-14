@@ -1,19 +1,23 @@
 import React from 'react';
 import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, Button, Glyphicon, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import styles from '../../styles/header/header.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import sbaLogo from '../../../../public/assets/images/logo.png';
 import sbaLogoMobile from '../../../../public/assets/svg/sba-logo-mobile.svg';
 import hamburgerClose from '../../../../public/assets/svg/close.svg';
 import hamburger from '../../../../public/assets/svg/hamburger.svg';
+import *  as MainMenuActions from '../../actions/main-menu.js';
 
 
 class Header extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       expanded: false,
       searchValue: ""
     }
+    props.actions.fetchMainMenu();
   }
 
   toggleNav() {
@@ -369,5 +373,19 @@ const NavToggle = ({expanded, onClick, ...props}) => {
 };
 
 
+function mapStateToProps(state) {
+    return {
+        mainMenuData: state.mainMenuReducer.mainMenuData
+    };
+}
 
-export default Header;
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(MainMenuActions, dispatch)
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);
