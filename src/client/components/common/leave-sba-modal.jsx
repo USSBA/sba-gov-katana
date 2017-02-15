@@ -14,22 +14,19 @@ class LeaveSbaModal extends React.Component {
         <img className={ styles.logo } src={ sbaLogo } />
         <a onClick={ this.props.actions.closeLeaveSba }><img className={ styles.exitIcon } src={ exitIcon } /></a>
         <h2 className={ styles.title }> You're leaving the Small Business Administration website.</h2>
-        <div className={styles.divider}></div>
-        <p className={styles.text}>This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy
+        <div className={ styles.divider }></div>
+        <p className={ styles.text }>This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy
           of information provided by third-parties and other linked sites.</p>
-        <div className={styles.linkContainer}><span>Link to website: </span>
+        <div className={ styles.linkContainer }><span>Link to website: </span>
           <a tabIndex="0">
             { this.props.url }
           </a>
         </div>
-
-        <div className={styles.btnContainer}>
-          <button onClick={ this.props.actions.closeLeaveSba }
-                  className={ styles.btnCancel }>CANCEL
+        <div className={ styles.btnContainer }>
+          <button onClick={ this.props.actions.closeLeaveSba } className={ styles.btnCancel }>CANCEL
           </button>
-          <button onClick={(e) => document.location = this.props.url} className={ styles.btnContinue }>CONTINUE</button>
+          <button onClick={ (e) => document.location = this.props.url } className={ styles.btnContinue }>CONTINUE</button>
         </div>
-
       </Modal>
 
       );
