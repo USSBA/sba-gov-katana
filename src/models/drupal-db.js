@@ -7,8 +7,10 @@ function executeQuery(query) {
   return new Promise((resolve, reject) => {
     pool.query(query, function(err, rows) {
       if (err) {
+        console.log(err);
         reject(err);
       } else {
+        console.log(rows);
         resolve(rows);
       }
     });
@@ -16,3 +18,5 @@ function executeQuery(query) {
 }
 
 export { executeQuery };
+
+

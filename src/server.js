@@ -67,6 +67,9 @@ if (config.get("drupal.enablePassThrough")) {
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchContentById);
 
+import { fetchMainMenu } from "./controllers/main-menu.js";
+app.get("/main-menu", fetchMainMenu);
+
 app.get(["/", "/linc/*"], function(req, res) {
   res.render("main");
 });
