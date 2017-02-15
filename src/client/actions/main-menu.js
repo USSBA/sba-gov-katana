@@ -3,25 +3,25 @@
  */
 import axios from "axios";
 export function fetchMainMenu() {
-    return function(dispatch) {
+  return function(dispatch) {
+    dispatch({
+      type: "FETCH_MAIN_MENU_START"
+    });
+    console.log("Fetching main menu from the server.");
+    axios.get("/main-menu")
+      .then((response) => {
         dispatch({
-            type: "FETCH_MAIN_MENU_START"
+          type: "FETCH_MAIN_MENU_SUCCESS",
+          payload: response.data
         });
-        console.log("Fetching main menu from the server.");
-        axios.get("/main-menu")
-            .then((response) => {
-                dispatch({
-                    type: "FETCH_MAIN_MENU_SUCCESS",
-                    payload: response.data
-                });
-                console.log("SUCCESS: " + response.data);
-            })
-            .catch((error) => {
-                dispatch({
-                    type: "FETCH_MAIN_MENU_ERROR",
-                    payload: error
-                });
-                console.log("ERROR: " + error);
-            });
-    };
+        console.log("SUCCESS: " + response.data);
+      })
+      .catch((error) => {
+        dispatch({
+          type: "FETCH_MAIN_MENU_ERROR",
+          payload: error
+        });
+        console.log("ERROR: " + error);
+      });
+  };
 }
