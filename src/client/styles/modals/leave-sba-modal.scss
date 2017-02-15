@@ -1,38 +1,149 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.66);
+}
+
+.content {
+    background-color: white;
+    position: relative;
+    width: 665px;
+    height: 489px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto;
+    padding: 30px;
+    font-family: "Source Sans Pro";
+
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+        height: auto;
+        margin: auto;
+        padding: 8vw;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    margin-bottom: 25px;
+
+    @media screen and (max-width: 768px) {
+        width: 26.7vw;
+        margin-bottom: 6.7vw;
+        height: auto;
+    }
+}
+
+.exitIcon {
+    position: absolute;
+    top:30px;
+    right:30px;
+    width: 26.16px;
+    height: 26.16px;
+    color: #666666;
+    transform: scaleX(-1);
+    border-radius: 1px;
+    cursor: pointer;
+}
+
 .title {
-    font-size: 1.3em;
+    margin-bottom: 30px;
+    font-size: 36px;
+    font-weight: 900;
     text-align: center;
-    font-weight: bold;
+
+    @media screen and (max-width: 768px) {
+        font-size: 6.4vw;
+        margin-bottom: 6.7vw;
+    }
+}
+
+.divider {
+    width: 160px;
+    border: 2px solid #0B97DD;
+    margin: auto;
+    margin-bottom: 30px;
+
+    @media screen and (max-width: 768px) {
+        width: 42.7vw;
+        margin-bottom: 8vw;
+    }
 }
 
 .text {
-    line-height: 1.3em;
-    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 23px;
+
+    @media screen and (max-width: 768px) {
+        font-size: 4.3vw;
+        margin-bottom: 8vw;
+        line-height: 6.1vw;
+    }
+}
+
+.linkContainer {
+    text-align: center;
+    margin-bottom: 30px;
+
+    @media screen and (max-width: 768px) {
+        margin-bottom: 8vw;
+    }
+}
+
+.link {
+    color: #0B97DD;
+
+    @media screen and (max-width: 768px) {
+        font-size: 4.3vw;
+        margin-bottom: 8vw;
+        line-height: 6.1vw;
+    }
 }
 
 .btnContainer {
-    padding: 0;
+    text-align: center;
 }
 
 .btn {
-    height: 2em;
-    border-radius: 0;
-    border: none;
-    color: white;
-}
+    width: 124px;
+    height: 37px;
+    font-size: 13px;
+    font-weight: bold;
+    
+    @media screen and (max-width: 768px) {
+        width: 33.1vw;
+        height: 9.9vw;;
+        font-size: 3.5vw;
+    }
 
-.btn:focus,.btn:active {
-    outline: none !important;
-    background: none;
-}
-
-.btnContinue {
-    composes: btn;
-    background: #0B97DD;
 }
 
 .btnCancel {
     composes: btn;
-    border: 2px solid #0B97DD;
-    background: white;
-    color: #0B97DD;
+    color: #666666;
+    background-color: white;
+    border: 2px solid #666666;
+    margin-right: 30px;
+
+    @media screen and (max-width: 768px) {
+        margin-right: 6vw;
+    }
 }
+
+.btnContinue {
+    composes: btn;
+    color: white;
+    background-color: #0093DF;
+    border: none;
+}
+
+
+
