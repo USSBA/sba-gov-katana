@@ -14,7 +14,7 @@ import {
 from '../../../../src/client/components/lender-match/contact-info.jsx';
 describe('<ContactInfoForm />', function() {
     it('should have one form', function() {
-        const wrapper = shallow(<ContactInfoForm />);
+        //const wrapper = shallow(<ContactInfoForm />);
         wrapper.find('form').should.have.length(1);
     });
 });
