@@ -1,0 +1,29 @@
+
+.indicators{
+    list-style-type: circle;
+    padding: 0px;
+}
+
+.indicators li{
+    content: '. ';
+    display: inline-block;
+    margin: 1vw;
+    border: 0px solid black;
+    cursor: pointer;
+    border-radius: 4vw;
+    height: 4vw;
+    width: 4vw;
+    background-color: lightgray;
+}
+
+.indicators li.active{
+    background-color: rgb(10,151,222);
+}
+
+.nextImg{
+    clip-path: inset(0 90% 0 0);
+}
+
+.prevImg{
+    clip-path: inset(0 0 0 90%);
+}

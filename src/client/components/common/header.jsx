@@ -373,18 +373,18 @@ const NavToggle = ({expanded, onClick, ...props}) => {
 
 
 function mapStateToProps(state) {
-    return {
-        mainMenuData: state.mainMenuReducer.mainMenuData
-    };
+  return {
+    mainMenuData: state.mainMenuReducer.mainMenuData
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(MainMenuActions, dispatch)
-    }
+  return {
+    actions: bindActionCreators(MainMenuActions, dispatch)
+  }
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Header);

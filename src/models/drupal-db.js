@@ -17,6 +17,6 @@ function executeQuery(query) {
   });
 }
 
-export {executeQuery};
+export { executeQuery };
 
 
