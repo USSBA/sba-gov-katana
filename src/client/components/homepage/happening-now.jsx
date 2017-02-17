@@ -4,10 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { isEmpty } from "lodash";
 
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.scss';
-import './slick-theme.scss';
-// import 'slick-carousel/slick/slick-theme.scss';
+import Slider from '../common/carousel/carousel.jsx';
 import * as ContentActions from "../../actions/content.js";
 import styles from "./happening-now.scss";
 
