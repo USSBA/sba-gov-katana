@@ -88,7 +88,7 @@ class HappeningNow extends React.Component {
                   <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                 </div>
                 <div className={ styles.happeningNowMobile }>
-                  <Slider {...settings}>
+                  <Slider>
                     { items.map(function(item, index) {
                         return <div key={ "happeningNowCarousel-item-" + index } className={ styles.happeningNowCarouselItem }>
                                  <a href={ item.url } className={ styles.carouselAnchor }>

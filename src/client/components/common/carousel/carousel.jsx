@@ -1,12 +1,13 @@
 import styles from './styles.scss';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 var Slider = React.createClass({
   getDefaultProps() {
     return {
       loop: false,
       selected: 0,
-      showArrows: true,
+      showArrows: false,
       showNav: true,
     };
   },
@@ -121,7 +122,7 @@ var Slider = React.createClass({
       index: index,
       lastIndex: index,
       transition: true,
-    })
+    });
   },
 
   renderNav() {
@@ -129,36 +130,21 @@ var Slider = React.createClass({
     const {lastIndex} = this.state;
 
     const nav = children.map((slide, i) => {
-      const buttonClasses = i === lastIndex ? 'Slider-navButton Slider-navButton--active' : 'Slider-navButton';
+      const buttonClasses = i === lastIndex ? styles.SliderNavButton + " " + styles.SliderNavButtonActive : styles.SliderNavButton;
       return (
         <button className={ buttonClasses } key={ i } onClick={ (event) => this.goToSlide(i, event) } />
         );
-    })
+    });
 
     return (
-      <div className='Slider-nav'>
+      <div className={ styles.SliderNav }>
         { nav }
       </div>
       );
   },
 
-  renderArrows() {
-    const {children, loop, showNav, } = this.props;
-    const {lastIndex} = this.state;
-    const arrowsClasses = showNav ? 'Slider-arrows' : 'Slider-arrows Slider-arrows--noNav';
-
-    return (
-      <div className={ arrowsClasses }>
-        { loop || lastIndex > 0 ?
-          <button className='Slider-arrow Slider-arrow--left' onClick={ (event) => this.goToSlide(lastIndex - 1, event) } /> : null }
-        { loop || lastIndex < children.length - 1 ?
-          <button className='Slider-arrow Slider-arrow--right' onClick={ (event) => this.goToSlide(lastIndex + 1, event) } /> : null }
-      </div>
-      );
-  },
-
   render() {
-    const {children, showArrows, showNav, } = this.props;
+    const {children, showNav, } = this.props;
 
     const {index, transition, } = this.state;
 
@@ -167,13 +153,15 @@ var Slider = React.createClass({
       width: `${ 100 * children.length }%`,
       transform: `translateX(${ -1 * index * (100 / children.length) }%)`,
     };
-    const slidesClasses = transition ? 'Slider-slides Slider-slides--transition' : 'Slider-slides';
+    const slidesClasses = transition ? styles.SliderSlides + " " + styles.SliderSlidesTransition : styles.SliderSlides;
 
     return (
       <div className='Slider' ref='slider'>
-        { showArrows ? this.renderArrows() : null }
         { showNav ? this.renderNav() : null }
-        <div className='Slider-inner' onTouchStart={ (event) => this.handleDragStart(event, true) } onTouchMove={ (event) => this.handleDragMove(event, true) } onTouchEnd={ () => this.handleDragEnd(true) }>
+        <div className={ styles.SliderInner } 
+              onTouchStart={ (event) => this.handleDragStart(event, true) } 
+              onTouchMove={ (event) => this.handleDragMove(event, true) } 
+              onTouchEnd={ () => this.handleDragEnd(true) }>
           <div className={ slidesClasses } style={ slidesStyles }>
             { children }
           </div>
@@ -182,3 +170,6 @@ var Slider = React.createClass({
       );
   }
 });
+
+
+export default Slider;
