@@ -47,4 +47,4 @@ function buildMenuTree(data, parent){
     return result;
 }
 
-module.exports = fetchMainMenuFromDB;
+export {fetchMainMenuFromDB};
