@@ -77,7 +77,7 @@ var Slider = React.createClass({
   },
 
   handleDragEnd() {
-    const {children, } = this.props;
+    const {items, } = this.props;
     const {dragStartTime, index, lastIndex, } = this.state;
 
     const timeElapsed = new Date().getTime() - dragStartTime.getTime();
@@ -92,8 +92,8 @@ var Slider = React.createClass({
 
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= children.length) {
-      newIndex = children.length - 1;
+    } else if (newIndex >= items.length) {
+      newIndex = items.length - 1;
     }
 
     this.setState({
@@ -105,7 +105,7 @@ var Slider = React.createClass({
   },
 
   goToSlide(index, event) {
-    const {children, loop, } = this.props;
+    const {items, loop, } = this.props;
 
     if (event) {
       event.preventDefault();
@@ -113,9 +113,9 @@ var Slider = React.createClass({
     }
 
     if (index < 0) {
-      index = loop ? children.length - 1 : 0;
-    } else if (index >= children.length) {
-      index = loop ? 0 : children.length - 1;
+      index = loop ? items.length - 1 : 0;
+    } else if (index >= items.length) {
+      index = loop ? 0 : items.length - 1;
     }
 
     this.setState({
@@ -126,10 +126,10 @@ var Slider = React.createClass({
   },
 
   renderNav() {
-    const {children} = this.props;
+    const {items} = this.props;
     const {lastIndex} = this.state;
 
-    const nav = children.map((slide, i) => {
+    const nav = items.map((slide, i) => {
       const buttonClasses = i === lastIndex ? styles.SliderNavButton + " " + styles.SliderNavButtonActive : styles.SliderNavButton;
       return (
         <button className={ buttonClasses } key={ i } onClick={ (event) => this.goToSlide(i, event) } />
@@ -143,29 +143,59 @@ var Slider = React.createClass({
       );
   },
 
+  makeItem(item, index){
+      return <div key={ "slider-item-" + (index+1) }>
+               <a href={ item.url }>
+                 <img className={ styles.SliderItemImage } src={ item.image } alt={ item.imageAlt }></img>
+                 <p className={ styles.SliderItemTitle }>
+                   { item.title }
+                 </p>
+               </a>
+             </div>;
+  },
+
+  makeChildrenFromItems(items){
+      // in order to create the wrap around effect, we need to create a copy of the last element
+      // before the first, and the first element after the last
+      const children = items.map(this.makeItem);
+      const newFirstItem = this.makeItem(items[items.length-1],-1);
+      const newLastItem = this.makeItem(items[0],items.length);
+      const childrenLoopable = ([newFirstItem].concat(children.slice(0))).concat([newLastItem]);
+      return childrenLoopable;
+  },
+
+  calculateTotalWidth(numberOfChildren){
+      return (numberOfChildren * 75) + ((numberOfChildren-1) *4.2);
+  },
+
+  calculateTranslation(numberOfChildren, index){
+      return  -14.5 + (-1 * index * (100 / numberOfChildren));
+  },
+
   render() {
-    const {children, showNav, } = this.props;
+    const {items, showNav, } = this.props;
 
     const {index, transition, } = this.state;
 
+    const children = this.makeChildrenFromItems(items);
 
     const slidesStyles = {
-      width: `${ 100 * children.length }%`,
-      transform: `translateX(${ -1 * index * (100 / children.length) }%)`,
+      width: `${ this.calculateTotalWidth(children.length) }%`,
+      transform: `translateX(${ this.calculateTranslation(children.length, index) }%)`,
     };
     const slidesClasses = transition ? styles.SliderSlides + " " + styles.SliderSlidesTransition : styles.SliderSlides;
 
     return (
-      <div className='Slider' ref='slider'>
-        { showNav ? this.renderNav() : null }
-        <div className={ styles.SliderInner } 
-              onTouchStart={ (event) => this.handleDragStart(event, true) } 
-              onTouchMove={ (event) => this.handleDragMove(event, true) } 
-              onTouchEnd={ () => this.handleDragEnd(true) }>
+      <div className={styles.Slider} ref='slider'>
+        <div className={ styles.SliderInner }
+                onTouchStart={ (event) => this.handleDragStart(event, true) }
+                onTouchMove={ (event) => this.handleDragMove(event, true) }
+                onTouchEnd={ () => this.handleDragEnd(true) }>
           <div className={ slidesClasses } style={ slidesStyles }>
-            { children }
+              { children }
           </div>
         </div>
+        { showNav ? this.renderNav() : null }
       </div>
       );
   }

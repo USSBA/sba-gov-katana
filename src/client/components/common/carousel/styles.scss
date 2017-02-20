@@ -1,8 +1,8 @@
 .Slider {
   overflow: hidden;
   position: relative;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 }
 
 .SliderSlides {
@@ -69,4 +69,26 @@
 
 .SliderInner{
   width: 100vw;
+}
+
+
+
+.SliderItemImage{
+    margin: auto;
+    max-width: 75vw;
+    width: 100%;
+    height: auto;
+}
+
+
+
+.SliderItemTitle{
+    text-align: left;
+    color: black;
+    font-weight: bold;
+    font-size: 4.5vw;
+    background-color: white;
+    margin-top: 4.2vw;
+    margin-bottom: 8vw;
+    margin-left: 4.2%;
 }
