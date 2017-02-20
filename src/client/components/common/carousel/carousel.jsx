@@ -147,9 +147,6 @@ var Slider = React.createClass({
       return <div key={ "slider-item-" + (index+1) }>
                <a href={ item.url }>
                  <img className={ styles.SliderItemImage } src={ item.image } alt={ item.imageAlt }></img>
-                 <p className={ styles.SliderItemTitle }>
-                   { item.title }
-                 </p>
                </a>
              </div>;
   },
@@ -169,7 +166,7 @@ var Slider = React.createClass({
   },
 
   calculateTranslation(numberOfChildren, index){
-      return  -14.5 + (-1 * index * (100 / numberOfChildren));
+      return  -14 + (-1 * index * (100 / numberOfChildren));
   },
 
   render() {
@@ -185,6 +182,8 @@ var Slider = React.createClass({
     };
     const slidesClasses = transition ? styles.SliderSlides + " " + styles.SliderSlidesTransition : styles.SliderSlides;
 
+    const activeItem = items[index];
+
     return (
       <div className={styles.Slider} ref='slider'>
         <div className={ styles.SliderInner }
@@ -194,6 +193,11 @@ var Slider = React.createClass({
           <div className={ slidesClasses } style={ slidesStyles }>
               { children }
           </div>
+          <a href={ activeItem.url }>
+            <p className={ styles.SliderItemTitle }>
+              { activeItem.title }
+            </p>
+          </a>
         </div>
         { showNav ? this.renderNav() : null }
       </div>

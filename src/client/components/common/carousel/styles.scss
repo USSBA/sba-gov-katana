@@ -1,8 +1,6 @@
 .Slider {
   overflow: hidden;
   position: relative;
-  // display: flex;
-  // flex-direction: column;
 }
 
 .SliderSlides {
@@ -34,52 +32,44 @@
 .SliderNavButton {
   background: none;
   border: 0;
-  height: 20px;
-  opacity: 0.5;
+  height: 5vw;
+  opacity: 1;
   outline: none;
   position: relative;
   transition: opacity 0.25s;
-  width: 20px;
+  width: 5vw;
   padding: 0;
 
   &::after {
-    background: #345;
+    background: #C4C4C4;
     border-radius: 50%;
     content: '';
     display: block;
-    height: 6px;
+    height: 4vw;
+    width: 4vw;
     left: 7px;
     position: absolute;
     top: 7px;
-    width: 6px;
+    opacity: 1;
   }
 }
 
 .SliderNavButtonActive {
-  opacity: 1;
-
   &::after {
-    height: 12px;
-    left: 4px;
-    opacity: 1;
-    top: 4px;
-    width: 12px;
+    background: #0B97DD ;
   }
 }
 
 .SliderInner{
-  width: 100vw;
+  width: 100%;
 }
-
 
 
 .SliderItemImage{
     margin: auto;
-    max-width: 75vw;
-    width: 100%;
+    width: 95%;
     height: auto;
 }
-
 
 
 .SliderItemTitle{
@@ -90,5 +80,6 @@
     background-color: white;
     margin-top: 4.2vw;
     margin-bottom: 8vw;
-    margin-left: 4.2%;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
 }
