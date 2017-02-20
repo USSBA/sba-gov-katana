@@ -7,7 +7,7 @@ var Slider = React.createClass({
     return {
       loop: false,
       selected: 0,
-      showArrows: false,
+      navIsClickable: false,
       showNav: true,
     };
   },
@@ -105,29 +105,32 @@ var Slider = React.createClass({
   },
 
   goToSlide(index, event) {
-    const {items, loop, } = this.props;
+    const {items, loop, navIsClickable} = this.props;
 
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
 
-    if (index < 0) {
-      index = loop ? items.length - 1 : 0;
-    } else if (index >= items.length) {
-      index = loop ? 0 : items.length - 1;
-    }
+    if(navIsClickable){
+        if (index < 0) {
+            index = loop ? items.length - 1 : 0;
+        } else if (index >= items.length) {
+            index = loop ? 0 : items.length - 1;
+        }
 
-    this.setState({
-      index: index,
-      lastIndex: index,
-      transition: true,
-    });
+        this.setState({
+            index: index,
+            lastIndex: index,
+            transition: true,
+        });
+    }
   },
 
   renderNav() {
-    const {items} = this.props;
+    const {items, navIsClickable} = this.props;
     const {lastIndex} = this.state;
+
 
     const nav = items.map((slide, i) => {
       const buttonClasses = i === lastIndex ? styles.SliderNavButton + " " + styles.SliderNavButtonActive : styles.SliderNavButton;
@@ -170,7 +173,7 @@ var Slider = React.createClass({
   },
 
   render() {
-    const {items, showNav, } = this.props;
+    const {items, showNav, navIsClickable} = this.props;
 
     const {index, transition, } = this.state;
 
