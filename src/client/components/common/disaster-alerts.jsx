@@ -20,9 +20,6 @@ class DisasterAlerts extends React.Component {
       secure: true
     });
   }
-  ;
-
-
 
   render() {
     return (
