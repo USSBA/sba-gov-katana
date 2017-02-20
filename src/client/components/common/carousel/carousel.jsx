@@ -112,18 +112,18 @@ var Slider = React.createClass({
       event.stopPropagation();
     }
 
-    if(navIsClickable){
-        if (index < 0) {
-            index = loop ? items.length - 1 : 0;
-        } else if (index >= items.length) {
-            index = loop ? 0 : items.length - 1;
-        }
+    if (navIsClickable) {
+      if (index < 0) {
+        index = loop ? items.length - 1 : 0;
+      } else if (index >= items.length) {
+        index = loop ? 0 : items.length - 1;
+      }
 
-        this.setState({
-            index: index,
-            lastIndex: index,
-            transition: true,
-        });
+      this.setState({
+        index: index,
+        lastIndex: index,
+        transition: true,
+      });
     }
   },
 
@@ -146,30 +146,30 @@ var Slider = React.createClass({
       );
   },
 
-  makeItem(item, index){
-      return <div key={ "slider-item-" + (index+1) }>
-               <a href={ item.url }>
-                 <img className={ styles.SliderItemImage } src={ item.image } alt={ item.imageAlt }></img>
-               </a>
-             </div>;
+  makeItem(item, index) {
+    return <div key={ "slider-item-" + (index + 1) }>
+             <a href={ item.url }>
+               <img className={ styles.SliderItemImage } src={ item.image } alt={ item.imageAlt }></img>
+             </a>
+           </div>;
   },
 
-  makeChildrenFromItems(items){
-      // in order to create the wrap around effect, we need to create a copy of the last element
-      // before the first, and the first element after the last
-      const children = items.map(this.makeItem);
-      const newFirstItem = this.makeItem(items[items.length-1],-1);
-      const newLastItem = this.makeItem(items[0],items.length);
-      const childrenLoopable = ([newFirstItem].concat(children.slice(0))).concat([newLastItem]);
-      return childrenLoopable;
+  makeChildrenFromItems(items) {
+    // in order to create the wrap around effect, we need to create a copy of the last element
+    // before the first, and the first element after the last
+    const children = items.map(this.makeItem);
+    const newFirstItem = this.makeItem(items[items.length - 1], -1);
+    const newLastItem = this.makeItem(items[0], items.length);
+    const childrenLoopable = ([newFirstItem].concat(children.slice(0))).concat([newLastItem]);
+    return childrenLoopable;
   },
 
-  calculateTotalWidth(numberOfChildren){
-      return (numberOfChildren * 75) + ((numberOfChildren-1) *4.2);
+  calculateTotalWidth(numberOfChildren) {
+    return (numberOfChildren * 75) + ((numberOfChildren - 1) * 4.2);
   },
 
-  calculateTranslation(numberOfChildren, index){
-      return  -14 + (-1 * index * (100 / numberOfChildren));
+  calculateTranslation(numberOfChildren, index) {
+    return -14 + (-1 * index * (100 / numberOfChildren));
   },
 
   render() {
@@ -188,13 +188,10 @@ var Slider = React.createClass({
     const activeItem = items[index];
 
     return (
-      <div className={styles.Slider} ref='slider'>
-        <div className={ styles.SliderInner }
-                onTouchStart={ (event) => this.handleDragStart(event, true) }
-                onTouchMove={ (event) => this.handleDragMove(event, true) }
-                onTouchEnd={ () => this.handleDragEnd(true) }>
+      <div className={ styles.Slider } ref='slider'>
+        <div className={ styles.SliderInner } onTouchStart={ (event) => this.handleDragStart(event, true) } onTouchMove={ (event) => this.handleDragMove(event, true) } onTouchEnd={ () => this.handleDragEnd(true) }>
           <div className={ slidesClasses } style={ slidesStyles }>
-              { children }
+            { children }
           </div>
           <a href={ activeItem.url }>
             <p className={ styles.SliderItemTitle }>

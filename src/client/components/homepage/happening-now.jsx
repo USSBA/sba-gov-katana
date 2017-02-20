@@ -73,7 +73,7 @@ class HappeningNow extends React.Component {
                   <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                 </div>
                 <div className={ styles.happeningNowMobile }>
-                  <Slider items={items} />
+                  <Slider items={ items } />
                 </div>
               </div>
             </div>);
