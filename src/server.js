@@ -64,48 +64,8 @@ if (config.get("drupal.enablePassThrough")) {
   app.get("/content/:type.json", fetchContent);
   app.get("/content/:type/:id.json", fetchContentById);
 }
-app.get("/content/frontpageslides.json", function(req, res) {
-  res.json([{
-    "imageAlt": "Find a mentor to help you start or grow a business",
-    "url": "https://www.sba.gov/tools/local-assistance",
-    "title": "Find a Small Business Counselor",
-    "image": "https://www.sba.gov/sites/default/files/slideshow-images/National_Mentoring_Month_Herobox_500x500_0.jpg"
-  }, {
-    "imageAlt": "10 Steps to starting a business",
-    "url": "https://www.sba.gov/starting-business/how-start-business/10-steps-starting-business",
-    "title": "10 Steps to Starting a Business",
-    "image": "https://www.sba.gov/sites/default/files/slideshow-images/National_Entrepreneurship_Week_Homepage_1000x1000.jpg"
-  }, {
-    "imageAlt": "Do I qualify for government contracts?",
-    "url": "https://www.sba.gov/contracting/getting-started-contractor/qualifying-small-business",
-    "title": "Do I qualify for government contracts?",
-    "image": "https://www.sba.gov/sites/default/files/slideshow-images/Government_Contracting_Herobox_800x800.jpg"
-  }, {
-    "imageAlt": "Top Ten Cybersecurity Tips",
-    "url": "https://www.sba.gov/managing-business/cybersecurity/top-ten-cybersecurity-tips",
-    "title": "Top Ten Cybersecurity Tips",
-    "image": "https://www.sba.gov/sites/default/files/slideshow-images/Data_Privacy_Day_Homepage_900x900.jpg"
-  }]);
-});
-app.get("/content/blogs.json", function(req, res) {
-  res.json([{
-    "nodeId": "1555784",
-    "url": "/blogs/6-tools-every-small-business-owner-needs-succeed-2017",
-    "date": "1484243703",
-    "author": "949794",
-    "userId": "bridgetwpollack",
-    "name": "Bridget Weston Pollack",
-    "title": "6 Tools Every Small Business Owner Needs to Succeed in 2017"
-  }, {
-    "nodeId": "1556390",
-    "url": "/blogs/using-technology-work-smarter-not-harder-twitter-chat-sbachat",
-    "date": "1483732164",
-    "author": "187",
-    "userId": "Stephen Morris",
-    "name": "Stephen Morris",
-    "title": "Using Technology to Work Smarter (Not Harder) Twitter Chat | #SBAchat"
-  }]);
-});
+app.get("/content/frontpageslides.json", fetchFrontPageSlides);
+app.get("/content/blogs.json", fetchBlogs);
 
 app.get(["/", "/linc/*"], function(req, res) {
   res.render("main");

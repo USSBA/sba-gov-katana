@@ -12,7 +12,7 @@ function fetchContent(req, res) {
         res.status(error.response.status).send("Error retrieving content");
       });
   } else {
-    res.send(HttpStatus.BAD_REQUEST).send("Too few query params");
+    res.status(HttpStatus.BAD_REQUEST).send("Too few query params");
   }
 }
 
@@ -28,7 +28,7 @@ function fetchContentById(req, res) {
         res.status(error.response.status).send("Error retrieving content");
       });
   } else {
-    res.send(HttpStatus.BAD_REQUEST).send("Incorrect request format");
+    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format");
   }
 }
 
