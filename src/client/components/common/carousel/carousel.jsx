@@ -91,9 +91,9 @@ var Slider = React.createClass({
     }
 
     if (newIndex < 0) {
-      newIndex = 0;
+      newIndex = items.length;
     } else if (newIndex >= items.length) {
-      newIndex = items.length - 1;
+      newIndex = 0;
     }
 
     this.setState({
