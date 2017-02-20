@@ -1,0 +1,172 @@
+@media screen and (min-width: 768px){
+  .applyForDisasterLoanParatureWrapper {
+    /*margin-left: calc(480px - 50vw);*/
+    position: relative;
+    top:0;
+    z-index:100;
+    width: 100vw;
+    background-color: #FFC63D;
+    //display:none;
+  }
+  .disasterLoanParature {
+    height:3.89vw;
+    width:100vw;
+    background-color: #FFC63D;
+    color:#333333;
+    margin-left: auto;
+    margin-right: auto;
+    padding:0;
+    position: static;
+  }
+
+  .disasterLoanParature .triangleIcon {
+    font-size: 1.66vw;
+    margin-left: 29.44vw;
+    margin-top: 1.11vw;
+    color: #333333;
+  }
+
+  .disasterLoanParature .disasterDescription {
+    font: bold 1.11vw "Source Sans Pro", sans-serif;
+    color:#333333;
+    margin-left: 1.04vw;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 1.25vw;
+    padding: 0;
+  }
+
+  .disasterLoanParature .disasterBtn {
+    position: absolute;;
+    width: 13.75vw;
+    height: 2.5vw;
+    text-align: center;
+    border: 0.14vw solid #333333;
+    margin-left: 1.04vw;
+    font-family: "Source Sans Pro";
+    line-height: 2.5vw;
+    text-decoration: none;
+    color: #333333;
+    font-size: 0.9vw;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    top: 0.63vw;
+  }
+
+  .disasterLoanParature .disasterBtn:hover, .disasterBtn:focus {
+    background: rgba(51, 51, 51, 0.3);
+    text-decoration: none;
+  }
+
+  .disasterLoanParature .disasterBtn:active {
+    background: rgba(51, 51, 51, 1);
+    color: #FFC63D;
+    text-decoration: none;
+  }
+
+  .disasterLoanParature .disasterLoanParatureClose {
+    width: 1.35vw;
+    height: 1.35vw;
+    position: absolute;
+    top: 1.25vw;
+    right: 1.25vw;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 10000;
+  }
+
+  .disasterLoanParature .disasterLoanParatureClose:hover, .disasterLoanParatureClose:active {
+    opacity: 1;
+  }
+
+  .disasterLoanParature .closeIcon {
+    width: 1.35vw;
+    height: 1.35vw;
+  }
+
+}
+@media screen and (max-width: 767px){
+
+  .applyForDisasterLoanParatureWrapper {
+    position:static;
+    width: 100vw;
+    top:0;
+    z-index:100;
+    background-color: #FFC63D;
+    /*display:none;*/
+  }
+  .disasterLoanParature {
+    height:27.73vw;
+    background-color: #FFC63D;
+    color:#333333;
+    position: static;
+  }
+
+  .disasterLoanParature .triangleIcon {
+    display: none;
+  }
+
+  .disasterLoanParature .disasterDescription {
+    width: 67.73vw;
+    font: bold 4.27vw "Source Sans Pro", sans-serif;
+    color:#333333;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2.67vw;
+    text-align: center;
+    line-height: 5.07vw;
+  }
+
+  .disasterLoanParature .disasterBtn {
+    position: absolute;
+    width: 52.8vw;
+    height: 9.6vw;
+    text-align: center;
+    border: 0.53vw solid #333333;
+    margin-left: 24vw;
+    font-family: "Source Sans Pro";
+    line-height: 9.6vw;
+    text-decoration: none;
+    color: #333333;
+    font-size: 3.47vw;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    margin-top: 1.87vw;
+    /*top: 9px;*/
+  }
+
+  .disasterLoanParature .disasterBtn:hover, .disasterBtn:focus {
+    background: rgba(51, 51, 51, 0.3);
+    text-decoration: none;
+  }
+
+  .disasterLoanParature .disasterBtn:active {
+    background: rgba(51, 51, 51, 1);
+    color: #FFC63D;
+    text-decoration: none;
+  }
+
+  .disasterLoanParature .disasterLoanParatureClose {
+    width: 5.17vw;
+    height: 5.17vw;
+    position: absolute;
+    top: 11.2vw;
+    right: 4.97vw;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 10000;
+  }
+
+  .disasterLoanParature .disasterLoanParatureClose:hover, .disasterLoanParature-close:active {
+    opacity: 1;
+  }
+
+  .disasterLoanParature .closeIcon {
+    width: 5.17vw;
+    height: 5.17vw;
+  }
+
+  .region-contenttop .applyForDisasterLoanParatureWrapper {
+    display: none !important;
+  }
+}
