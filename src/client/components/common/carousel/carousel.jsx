@@ -169,7 +169,7 @@ var Slider = React.createClass({
   },
 
   calculateTranslation(numberOfChildren, index) {
-    return -14 + (-1 * index * (100 / numberOfChildren));
+    return (-1* (numberOfChildren ===6 ? 14 : 16.5)) + (-1 * index * (100 / numberOfChildren));
   },
 
   render() {
