@@ -6,7 +6,7 @@ function fetchDisasterFromDrupalDatabase() {
     .spread((description, visibility) => {
       return {
         description: description,
-        visibility: visibility
+        visible: visible
       };
     });
 }
