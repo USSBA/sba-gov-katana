@@ -34,13 +34,13 @@ if (config.get("developmentOptions.webpack.enabled")) {
   require("newrelic"); // eslint-disable-line global-require
 }
 
-const metaVariables ={
-    description: "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
-    title: "Small Business Administration"
-  };
+const metaVariables = {
+  description: "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
+  title: "Small Business Administration"
+};
 
 app.get("/", function(req, res) {
-  res.render("main",metaVariables);
+  res.render("main", metaVariables);
 });
 
 import * as matchController from "./controllers/match-controller.js";
@@ -73,8 +73,8 @@ app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 
 app.get(["/", "/linc/*"], function(req, res) {
-  res.render("main",metaVariables);
-  
+  res.render("main", metaVariables);
+
 });
 
 // development error handler
