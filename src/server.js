@@ -64,13 +64,19 @@ app.get("/linc/matchCounselors", jsonParser, function(req, res) {
   res.status(HttpStatus.NO_CONTENT).send();
 });
 
-import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs } from "./controllers/content.js";
+import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
 if (config.get("drupal.enablePassThrough")) {
   app.get("/content/:type.json", fetchContent);
   app.get("/content/:type/:id.json", fetchContentById);
 }
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
+app.get("/content/disaster.json", function(req, res) {
+  res.json({
+    visible: true,
+    description: "Have you been affected by the Louisiana Flooding?"
+  });
+});
 
 app.get(["/", "/linc/*"], function(req, res) {
   res.render("main", metaVariables);
