@@ -71,12 +71,7 @@ if (config.get("drupal.enablePassThrough")) {
 }
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
-app.get("/content/disaster.json", function(req, res) {
-  res.json({
-    visible: true,
-    description: "Have you been affected by the Louisiana Flooding?"
-  });
-});
+app.get("/content/disaster.json", fetchDisaster);
 
 app.get(["/", "/linc/*"], function(req, res) {
   res.render("main", metaVariables);
