@@ -23,7 +23,7 @@
   .disasterLoanParature .triangleIcon {
     font-size: 1.66vw;
     margin-left: auto;
-    margin-right: 1.04vw;
+    //margin-right: 1.04vw;
     margin-top: 1.11vw;
     color: #333333;
   }
@@ -31,10 +31,12 @@
   .disasterLoanParature .disasterDescription {
     font: bold 1.11vw "Source Sans Pro", sans-serif;
     color:#333333;
-    //margin-left: 1.04vw;
+    margin-left: 1.04vw;
+    margin-right: 1.04vw;
     display: inline-block;
     vertical-align: top;
     margin-top: 1.25vw;
+    margin-bottom: 0.625vw;
     padding: 0;
   }
 
@@ -44,7 +46,7 @@
     height: 2.5vw;
     text-align: center;
     border: 0.14vw solid #333333;
-    margin-left: 1.04vw;
+    //margin-left: 1.04vw;
     font-family: "Source Sans Pro";
     line-height: 2.5vw;
     text-decoration: none;
@@ -54,6 +56,7 @@
     letter-spacing: 0.6px;
     top: -0.11vw;
     display: inline-block;
+    margin-bottom: 0.625vw;
   }
 
   .disasterLoanParature .disasterBtn:hover, .disasterBtn:focus {
