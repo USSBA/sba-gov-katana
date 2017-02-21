@@ -6,6 +6,7 @@
 
 import { executeQuery } from "../drupal-db.js";
 import _ from "lodash";
+import Promise from "bluebird";
 
 function fetchMainMenuFromDb() {
   return new Promise((resolve) => {

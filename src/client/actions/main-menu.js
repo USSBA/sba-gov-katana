@@ -8,7 +8,7 @@ export function fetchMainMenu() {
       type: "FETCH_MAIN_MENU_START"
     });
     console.log("Fetching main menu from the server.");
-    axios.get("/main-menu")
+    axios.get("/content/main-menu.json")
       .then((response) => {
         dispatch({
           type: "FETCH_MAIN_MENU_SUCCESS",
