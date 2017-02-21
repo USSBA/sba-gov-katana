@@ -3,7 +3,7 @@ import Promise from "bluebird";
 
 function fetchDisasterFromDrupalDatabase() {
   return Promise.all([fetchDescription(), fetchVisibility()])
-    .spread((description, visibility) => {
+    .spread((description, visible) => {
       return {
         description: description,
         visible: visible
