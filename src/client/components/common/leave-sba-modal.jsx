@@ -10,7 +10,7 @@ import exitIcon from '../../../../public/assets/svg/exit-modal-close.svg';
 class LeaveSbaModal extends React.Component {
 
   continueButton() {
-    this.props.actions.closeLeaveSba
+    this.props.actions.closeLeaveSba();
     document.location = this.props.url
   }
 
@@ -24,7 +24,7 @@ class LeaveSbaModal extends React.Component {
         <p className={ styles.text }>This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy
           of information provided by third-parties and other linked sites.</p>
         <div className={ styles.linkContainer }><span>Link to website: </span>
-          <a tabIndex="0" href={ this.props.url }>
+          <a className={ styles.link } tabIndex="0" href={ this.props.url }>
             { this.props.url }
           </a>
         </div>
