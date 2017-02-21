@@ -2,11 +2,11 @@
  * Created by aadeogun on 2/13/17.
  */
 import HttpStatus from "http-status-codes";
-import fetchMainMenuFromDB from "../models/dao/main-menu.js";
+import { fetchMainMenuFromDb } from "../models/dao/main-menu.js";
 
 function fetchMainMenu(req, res) {
 
-  fetchMainMenuFromDB()
+  fetchMainMenuFromDb()
     .then(function(data) {
       res.status(HttpStatus.OK).send(data);
     })
@@ -16,4 +16,4 @@ function fetchMainMenu(req, res) {
     });
 }
 
-export { fetchMainMenu };
+export {fetchMainMenu};

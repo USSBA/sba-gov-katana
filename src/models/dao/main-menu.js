@@ -1,10 +1,13 @@
 /**
  * Created by aadeogun on 2/13/17.
  */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
+
 import { executeQuery } from "../drupal-db.js";
 import _ from "lodash";
 
-function fetchMainMenuFromDB() {
+function fetchMainMenuFromDb() {
   return new Promise((resolve) => {
     const sqlQuery = "(select mlid, plid, link_title, alias as link from menu_links, url_alias where menu_name = 'main-menu' and link_path = source and hidden = 0)" +
       " union all " +
@@ -34,7 +37,7 @@ function buildMenuTree(data, parent) {
   });
   if (!_.isEmpty(children)) {
     _.each(children, function(child) {
-      if (child != null) {
+      if (child !== null) {
         result.push(child);
         const ownChildren = buildMenuTree(data, child);
         if (!_.isEmpty(ownChildren)) {
@@ -49,4 +52,4 @@ function buildMenuTree(data, parent) {
   return result;
 }
 
-export { fetchMainMenuFromDB };
+export { fetchMainMenuFromDb };

@@ -15,6 +15,7 @@ const mainMenuReducer = (state = {
       };
     }
     case "FETCH_MAIN_MENU_SUCCESS": {
+      console.log("reducer called.");
       return {
         ...state,
         fetching: false,
