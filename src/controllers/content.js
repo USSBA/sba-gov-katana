@@ -1,4 +1,5 @@
 import { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
+import { fetchDescription } from "../models/dao/disaster.js";
 import HttpStatus from "http-status-codes";
 
 function fetchContent(req, res) {
@@ -57,4 +58,19 @@ function fetchFrontPageSlides(req, res) {
 }
 
 
-export { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs };
+function fetchDisaster(req, res) {
+  fetchDescription()
+    .then(function(description) {
+      res.status(HttpStatus.OK).send({
+        description: description,
+        visible: true
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(error.response.status).send("Error retrieving content");
+    });
+}
+
+
+export { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster };

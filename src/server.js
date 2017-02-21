@@ -34,8 +34,13 @@ if (config.get("developmentOptions.webpack.enabled")) {
   require("newrelic"); // eslint-disable-line global-require
 }
 
+const metaVariables = {
+  description: "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
+  title: "Small Business Administration"
+};
+
 app.get("/", function(req, res) {
-  res.render("main");
+  res.render("main", metaVariables);
 });
 
 import * as matchController from "./controllers/match-controller.js";
@@ -59,19 +64,18 @@ app.get("/linc/matchCounselors", jsonParser, function(req, res) {
   res.status(HttpStatus.NO_CONTENT).send();
 });
 
-import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs } from "./controllers/content.js";
+import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
 if (config.get("drupal.enablePassThrough")) {
   app.get("/content/:type.json", fetchContent);
   app.get("/content/:type/:id.json", fetchContentById);
 }
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
-app.get("/content/blogs.json", fetchContentById);
-
-import { fetchMainMenu } from "./controllers/main-menu.js";
-app.get("/main-menu", fetchMainMenu);
+app.get("/content/blogs.json", fetchBlogs);
+app.get("/content/disaster.json", fetchDisaster);
 
 app.get(["/", "/linc/*"], function(req, res) {
-  res.render("main");
+  res.render("main", metaVariables);
+
 });
 
 // development error handler

@@ -4,10 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { isEmpty } from "lodash";
 
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.scss';
-import './slick-theme.scss';
-// import 'slick-carousel/slick/slick-theme.scss';
+import Slider from '../common/carousel/carousel.jsx';
 import * as ContentActions from "../../actions/content.js";
 import styles from "./happening-now.scss";
 
@@ -35,21 +32,6 @@ class HappeningNow extends React.Component {
     if (isEmpty(items)) {
       return <div></div>;
     }
-
-    var settings = {
-      customPaging: function(i) {
-        return <button disabled>
-                 { i + 1 }
-               </button>;
-      },
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      centerMode: true,
-      centerPadding: "2.1%"
-    };
 
     return (<div className={ styles.happeningNow }>
               <Grid fluid>
@@ -91,18 +73,7 @@ class HappeningNow extends React.Component {
                   <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
                 </div>
                 <div className={ styles.happeningNowMobile }>
-                  <Slider {...settings}>
-                    { items.map(function(item, index) {
-                        return <div key={ "happeningNowCarousel-item-" + index } className={ styles.happeningNowCarouselItem }>
-                                 <a href={ item.url } className={ styles.carouselAnchor }>
-                                   <img className={ styles.carouselImage } src={ item.image } alt={ item.imageAlt }></img>
-                                   <p className={ styles.happeningNowCarouselItemTitle }>
-                                     { item.title }
-                                   </p>
-                                 </a>
-                               </div>;
-                      }) }
-                  </Slider>
+                  <Slider items={ items } />
                 </div>
               </div>
             </div>);

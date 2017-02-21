@@ -2,7 +2,16 @@ doctype html
 html
   head
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    title Small Business Administration
+    meta(name="description" content=description)
+    meta(property="og:title" content=title)
+    meta(property="og:description" content=description)
+    meta(property="og:image" content="https://s3.amazonaws.com/fearlesstesters.com/img/HPSEOImage.jpg")
+    meta(name="twitter:title" content=title)
+    meta(name="twitter:description" content=description)
+    meta(name="twitter:card" content="summary")
+    meta(name="twitter:image" content="https://s3.amazonaws.com/fearlesstesters.com/img/HPSEOImage.jpg")
+    meta(property="og:site_name" content=title)
+    title= title
   body
     #root
     script(src='/build/bundle.js')
