@@ -1,5 +1,5 @@
 import { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
-import { fetchDescription } from "../models/dao/disaster.js";
+import { fetchDisasterFromDrupalDatabase } from "../util/drupal-database.js";
 import HttpStatus from "http-status-codes";
 
 function fetchContent(req, res) {
@@ -59,12 +59,9 @@ function fetchFrontPageSlides(req, res) {
 
 
 function fetchDisaster(req, res) {
-  fetchDescription()
-    .then(function(description) {
-      res.status(HttpStatus.OK).send({
-        description: description,
-        visible: true
-      });
+  fetchDisasterFromDrupalDatabase()
+    .then(function(result) {
+      res.status(HttpStatus.OK).send(result);
     })
     .catch((error) => {
       console.error(error);

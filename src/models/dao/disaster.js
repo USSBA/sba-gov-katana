@@ -16,6 +16,17 @@ function fetchDescription() {
       return description;
     });
 }
-;
 
-export { fetchDescription };
+function fetchVisibility() {
+  return executeQuery("select region from block where delta = (SELECT bid FROM block_custom WHERE info = 'Apply For Disaster Loan Parature') and theme = 'smallbizd7';")
+    .then(function(result) {
+      let visible = false;
+      if (result && result[0].region) {
+        visible = "page_top_bar" === result[0].region;
+      }
+      return visible;
+    });
+}
+
+
+export { fetchDescription, fetchVisibility };
