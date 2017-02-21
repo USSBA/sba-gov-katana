@@ -1,5 +1,5 @@
 import { fetchDescription, fetchVisibility } from "../models/dao/disaster.js";
-import Promise from 'bluebird';
+import Promise from "bluebird";
 
 function fetchDisasterFromDrupalDatabase() {
   return Promise.all([fetchDescription(), fetchVisibility()])
@@ -7,7 +7,7 @@ function fetchDisasterFromDrupalDatabase() {
       return {
         description: description,
         visibility: visibility
-      }
+      };
     });
 }
 export { fetchDisasterFromDrupalDatabase };

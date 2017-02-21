@@ -24,7 +24,7 @@ class LeaveSbaModal extends React.Component {
         <p className={ styles.text }>This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy
           of information provided by third-parties and other linked sites.</p>
         <div className={ styles.linkContainer }><span>Link to website: </span>
-          <a className={ styles.link } tabIndex="0" onClick={ this.continueLink.bind(this)}>
+          <a className={ styles.link } tabIndex="0" onClick={ this.continueLink.bind(this) }>
             { this.props.url }
           </a>
         </div>

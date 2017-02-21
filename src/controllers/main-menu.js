@@ -16,4 +16,4 @@ function fetchMainMenu(req, res) {
     });
 }
 
-export {fetchMainMenu};
+export { fetchMainMenu };

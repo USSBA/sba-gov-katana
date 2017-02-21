@@ -1,14 +1,15 @@
 import { executeQuery } from "../drupal-db.js";
 
 function fetchDescription() {
-  return executeQuery('select body from block_custom where info = "Apply For Disaster Loan Parature";')
+  return executeQuery("select body from block_custom where info = \"Apply For Disaster Loan Parature\";")
     .then(function(result) {
       let description = "";
+      const minLength = 1;
       if (result && result[0].body) {
-        let divResult = /<div class='disaster-description'>.*<\/div>/.exec(result[0].body);
+        const divResult = (/<div class='disaster-description'>.*<\/div>/).exec(result[0].body);
         if (divResult) {
-          let descriptionResult = /<div class='disaster-description'>(.*)<\/div>/.exec(divResult[0]);
-          if (descriptionResult && descriptionResult.length > 1) {
+          const descriptionResult = (/<div class='disaster-description'>(.*)<\/div>/).exec(divResult[0]);
+          if (descriptionResult && descriptionResult.length > minLength) {
             description = descriptionResult[1];
           }
         }
@@ -22,7 +23,7 @@ function fetchVisibility() {
     .then(function(result) {
       let visible = false;
       if (result && result[0].region) {
-        visible = "page_top_bar" === result[0].region;
+        visible = result[0].region === "page_top_bar";
       }
       return visible;
     });
