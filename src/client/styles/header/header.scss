@@ -1,357 +1,425 @@
-$primary-color: #0B97DD;
 
-.hidden {
-    display: none;
+/*merged 2 versions together*/
+/*DESKTOP STYLES FOR REACT HEADER*/
+
+/*GLOBAL STYLES--STYLES FOR SQUASHING SBA.GOV ABNORMALITIES*/
+#block-block-38{
+    top: 110px !important;
+    position: absolute !important;
+    z-index: 99 !important;
 }
 
 
-//styles for DESKTOP
-@media screen and (min-width: 768px){
+@media screen and (min-width: 959px){
 
-    .mobileNav {
+    .normalizeMenuItemNew {
+        text-decoration: none;
+        list-style: none;
+    }
+
+    .mobileHeaderContainerNew {
         display: none;
     }
 
-
-    //styles entire navbar container
-    .navbar {
-        border: 0;
-        margin-left: 7.3vw;
-        margin-right:  7.3vw;
-        margin-bottom: 0;
+    .headerNew {
         background-color: white;
+        height: 107px;
+        width: 960px;
+        margin: auto;
+        box-sizing: border-box;
+        font-family: 'Source Sans Pro', sans-serif !important;
+        letter-spacing: -0.4px !important;
     }
 
-    //styles navbar header contents
-
-    .navbarHeader {
-        width: 12.8vw;
-        height: calc(1em + 4.3vw);
+    /*NAVBAR CONTAINER*/
+    .navbarNew {
+        position: relative;
+        height: 103px;
+        width: 960px;
+        z-index: 12 !important;
     }
 
-    .logo {
-        height: 4.6vw;
-        margin-top: 1vw;
-        margin-left: calc(3.13vw - 15px);
-    }
-
-    //styles the small top nav
-    .miniNav {
-        margin-right: 1vw;
-        padding-right: 0vw;
-    }
-
-    .miniNavItem > a {
-        font-size: calc(1.1vw - 2px);
-        margin-top: 1.5vw;
-        padding-left: 0.48vw !important;
-        padding-right: 0.48vw !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-
-    //styles the google translate widget
-
-    .googleTranslateContainer  > a {
-        font-size: calc(1.1vw - 2px);
-        margin-top: 0.6vw;
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-
-    .googleTranslate > div > div{
-        font-size: calc(1.1vw - 2px) !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    //styles nav dropdown
-    .navDropdown > a {
-        height: 3.3vw;
-        color: $primary-color !important;
-        font-size: 1.3vw;
-        font-weight: bold;
-        margin-top: 0.4vw;
-        padding-top: 0.5em !important;
-        padding-bottom: 0.5em !important;
-        padding-right: 1vw !important;
-        padding-left: 1vw !important;
-    }
-
-    //styles the lil triangle in nav dropdown
-    .navDropdown > a > span {
+    .logoNew {
         position: absolute;
+        width: 169px;
+        height: auto;
+        left: 0;
+        bottom: 18px;
+    }
+
+    /*BOTTOM NAV BAR*/
+    .mainNavNew {
+        /*container for bottom nav bar*/
+        position: absolute;
+        font-weight: bold;
+        width: 755px;
+        top: 59px;
+        bottom: 0;
+        right: 0;
+        margin: 0;
+    }
+
+    .mainNavNew > ul {
+        /*remove styling for ul in bottom nav*/
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+
+    .mainNavNew > ul > li {
+        /*floats the navbar ro the right*/
+        float: right;
+    }
+
+    .mainNavNew > ul > li {
+        /*reverses the order of the navs so they are semantic and arranged left to right*/
+        float: left;
+    }
+
+    .mainBtnNew {
+        /*container for menu button*/
+        position: relative;
+        top: 0;
+        display: inline-block;
+        padding-left: 7px;
+        padding-right: 7px;
+        height: 43px;
+        cursor: pointer;
+        text-decoration: none !important;
+    }
+
+    .mainNavNew > ul > li:first-child > a {
+        /*removes left padding for the first main nav button*/
+        padding-left: 0;
+    }
+
+    .mainNavNew > ul > li:last-child > a {
+        /*removes right padding for the last main nav button*/
+        padding-right: 0;
+    }
+
+    .mainBtnNew > span {
+        /*text for menu button*/
+        color: #0B97DD;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 24px !important;
+        text-decoration: none !important;
+        font-family: 'Source Sans Pro', sans-serif !important;
+    }
+
+    .mainBtnNew > span:first-child {
+        margin-left: 0;
+    }
+
+    .triangleNew {
+        /*little triangle in menu button*/
+        visibility: hidden;
+        position: absolute;
+        height: 0;
+        width: 0;
         left: 0;
         right: 0;
         bottom: 0;
         margin: auto;
-        height:0px;
-        width: 0px;
-        border-bottom: 0.7vw solid $primary-color;
-        border-right: 0.7vw solid transparent;
-        border-left: 0.7vw solid transparent;
+        border-bottom: 8px solid #0B97DD;
+        border-right: 8px solid transparent;
+        border-left: 8px solid transparent;
         border-top: 0;
-        visibility: hidden;
     }
 
-    .navDropdown:hover > a > span {
+    .mainBtnNew:hover .triangleNew {
         visibility: visible;
     }
 
-    //styles the dropdown container
-    .mainNav {
-        float: right !important;
+    /*DROPDOWN MENU*/
+    .mainMenuNew {
+        position: absolute;
+        visibility: hidden;
+        border-top: 5px solid #0B97DD;
+        background-color: white;
+        padding: 0;
+        padding-bottom: 40px;
+        padding-top: 20px;
+        width: 960px;
+        left: -220px;
+        list-style-type: none;
     }
 
-    .mainNav > li {
-        position: static;
+    .mainNavNew > ul > li:hover > a + ul {
+        visibility: visible !important;
     }
 
-    .mainNav > li > ul {
-        min-width:60vw;
-        width: 85vw;
-        border-top: solid $primary-color;
-        padding-top: 1.8vw;
-        padding-bottom: 4vw;
+    .mainNavNew > ul > li:hover > a > .triangleNew {
+        visibility: visible !important;
     }
 
-    .mainNav > li:hover > ul {
-        display: block;
+    /*CONTENT INSIDE DROPDOWN MENU*/
+    .columnNew {
+        /*columns for dropdown*/
+        float: left;
+        margin: 0;
+        width: 33%;
+        padding-left: 50px;
+        list-style-type: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 
-    .disabledDropdown:hover > ul {
-        display: none;
+    .columnNew > li {
+        /*all elements in drodown*/
+        text-decoration: none;
+        list-style: none;
+        margin-bottom: 15px;
     }
 
-    //styles the dropdown children
-    .dropdownHeader {
-        margin-top: 2.2vw !important;
-    }
-
-    .dropdownHeader > a {
-        font-size: calc(1.3vw - 2px);
+    .columnNew > li > h2 {
+        /*dopdown headers*/
+        font-family: 'Source Sans Pro', sans-serif;
+        letter-spacing: -0.4px !important;
+        margin-top: 30px;
+        margin-bottom: 0px;
+        font-size: 18px;
         font-weight: bold;
-        color: $primary-color;
+        color: #0B97DD;
     }
 
-    .dropdownHeader > a:hover {
+    .columnNew > li > h2 > a {
+        /*dopdown headers*/
+        text-decoration: none;
+        color: #0B97DD;
+    }
+
+    .columnNew > li > h2 > a:hover {
+        /*dopdown headers*/
         text-decoration: underline;
-        color: darken($primary-color, 7%);
+        color: #006BA2;
     }
 
-    .dropdownItem {
-        margin-top: 0.9vw !important;
-        margin-bottom: 0.9vw !important;
-    }
-
-    .dropdownItem > a {
-        font-size: calc(1.1vw - 2px);
-        color: black;
-        outline: none !important;
-        background: none;
+    .columnNew > li > a {
+        /*dopdown links*/
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 15px;
+        font-weight: normal;
+        color: #333333;
         text-decoration: none;
     }
 
-    .dropdownItem > a:hover {
+    .columnNew > li > a:hover {
+        /*dopdown links*/
         text-decoration: underline;
     }
 
-    //styles for search bar
-
-
-    .searchNavItem > a {
-        font-size: calc(1.3vw - 2px);
-        margin-top: 1vw;
-        cursor: default !important;
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+    /*TOP MINI NAV BAR*/
+    .miniNavNew{
+        position: absolute;
+        height: 21px;
+        top: 29px;
+        right: 0;
     }
 
-    .searchIcon {
-        font-size: calc(1.1vw - 4px);
+
+    .miniNavLinkNew {
+        color: #757575 !important;
+        font-size: 14px;
+        line-height: 0px !important;
+        margin-left: 11px;
+        margin-top: 5px !important;
+        text-decoration: none !important;
+        font-family: 'Source Sans Pro', sans-serif !important;
     }
 
-    .searchBarContainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 17vw;
+    .miniNavLinkNew:hover {
+        color: #333 !important;
     }
 
-    .searchBar {
+    .searchIconNew {
+        cursor: pointer;
+        color: #757575;
+        font-size: 13px;
+        line-height: 14px;
+        margin-left: 11px;
+        margin-top: 5px !important;
+        text-decoration: none;
+    }
+
+    .searchIconNew:hover {
+        color: #333;
+    }
+
+    #searchBarNew {
+        display: none;
+        margin-left: 11px;
+    }
+
+    #searchInputNew {
+        margin-right: 11px;
+        -webkit-appearance: textfield !important;
+        width: 200px;
+    }
+
+    #googleTranslateElement {
         display: inline-block;
-        height: 1.6vw !important;
-        width: 15vw !important;
-        margin-right: 0px !important;
-        border-radius: 0px;
-        font-size: calc(1.1vw - 2px);
-        box-shadow: none !important;
-    }
-
-    .searchBar:focus {
-        border: 1px solid #ccc !important;
-        box-shadow: none !important;
-    }
-
-    .searchSubmitBtn {
-        font-size: calc(1.1vw - 4px);
-        cursor: pointer !important;
-        margin-left: 1vw;
-    }
-
-    .menuBtn {
-        visibility: hidden;
+        height: 22px;
     }
 }
 
 
-//styles for MOBILE
-@media screen and (max-width: 768px){
-    //removes .pull-right in bootstrap
-    .mainNav{
+@media screen and (max-width:959px) {
+    #block-block-38{
+        display:none;
+    }
+
+    .header-new{
         display: none;
     }
 
-    .mobileNav {
-        margin-top: 0px !important;
-        margin-bottom:0px !important;
+    .mobileHeaderContainerNew {
+        font-family: "Source Sans Pro";
+        width: 100%;
+        margin: 0;
     }
 
-    .navbar {
-        border: 0;
-        background-color: white;
-        margin-bottom:0px !important;
+    .mobileMainHeaderNew {
+        height: 16vw;
+        box-shadow: 0 0.266vw 0 0 #EBEBEB;
+        background-color: #ffffff;
     }
 
-    .logo {
-        margin: 1em;
-        margin-left: 4.3vw;
+    .logoNew {
+        position: absolute;
         height: 9.6vw;
+        width: auto;
+        left: 5.33vw;
+        top: 3.2vw;
     }
 
-    //hamburger styling
+    .menuBtnNew {
+        position: absolute;
+        right: 5.33vw;
+        top: 3.2vw;
+        /*width: 24vw;*/
+        /*height: 9.6vw;*/
+        width: 22.934vw;
+        height: 8.534vw;
+        font-size: 3.2vw;
+        line-height: 9.6vw;
+        color: #0B97DD;
+        text-decoration: none;
+        font-weight: bold;
+        border: 0.533vw solid #0B97DD;
+    }
 
-    .menuBtn {
-        margin: 1em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .menuBtnTextNew {
+        color: #0B97DD;
         height: 9.6vw;
-        border: 2px solid $primary-color;
-        color: $primary-color;
-        background-color: white;
-        padding: 0 3.5vw 0 3.5vw;
+        margin-top: -.533vw;
+        padding-left: 3.73vw;
+        float: left;
     }
 
-    .menuBtn:focus, .menuBtn:active {
-        outline: none !important;
-        background: none;
+    .menuIconHamburgerNew{
+        height: 3.466vw;
+        width: 4vw;
+        margin-right: 3.466vw;
+        /*margin-top: 3.2vw;*/
+        margin-top: 2.667vw;
+        float: right;
     }
 
-    .menuBtnClose {
-        composes: menuBtn;
-        border: 2px solid #006BA2;
-        color: #006BA2 !important;
+    .menuIconCloseNew{
+        height: 3.466vw;
+        width: 4vw;
+        margin-right: 3.466vw;
+        /*margin-top: 3.2vw;*/
+        margin-top: 2.667vw;
+        float: right;
+        display: none;
     }
 
-    .menuBtnTxt {
-        font-size: 3.5vw;
-        font-weight: bold;
-        margin-right: 1em;
-        vertical-align: middle;
+    .mobile-search-new{
+        width: 100%;
     }
 
-    .hamburgerIcon {
-        height: 3.5vw;
-        vertical-align: middle;
-        color: $primary-color;
+    .mainNavNew {
+        width: 100%;
+        display: none;
+        background-color: #ffffff;
+        overflow: auto;
     }
 
-    //mobile nav styling
-
-
-    .mobileNavDropdown > a {
-        height: 2.5em;
-        color: $primary-color !important;
-        font-size: 18px;
-        font-weight: bold;
-        margin-left: 40px;
+    .mobileSearchContainerNew {
+        background-color: #EBEBEB;
+        height: 16vw;
+        margin-bottom: 0;
+        position: relative;
     }
 
-    .mobileNavDropdown > a > span {
-        display:none;
+    .searchIconContainerNew {
+        position: absolute;
+        height: 4vw;
+        width: 4vw;
+        top: 5.9vw;
+        left: 8vw;
+        z-index: 1;
     }
 
-    .mobileNavDropdownSub > a {
-        height: 2.5em;
+    .searchIconNew {
+        height: 4vw;
+        width: auto;
+    }
+
+    .searchInputFieldNew {
+        position: absolute;
+        margin-top: 2.93vw;
+        height: 10.13vw;
+        margin-left: 5.33vw;
+        width: 89.33vw;
+        font-size: 3.73vw;
+        line-height: 4.8vw;
         color: #666666;
-        font-size: 18px;
-        margin-left: 40px;
+        text-indent: 7.466vw;
+        border: 0.266vw solid #C4C4C4;
     }
 
-    .mobileNavDropdownSub > a > span {
-        display:none;
+    .mainNavNew div a {
+        font-size: 4.8vw;
+        border-bottom: 0.266vw solid #DBDBDB;
+        padding-left: 12.8vw;
+        margin-left: 0;
+        text-decoration: none;
+        display: block;
+        height: 16vw;
+        line-height: 16vw;
+        font-family: "Source Sans Pro" !important;
     }
 
-    .sectionDivider {
-        margin: 0;
-        margin-bottom: 10px;
+    .navLinkNew {
+        font-weight: bold;
+        color: #0B97DD !important;
     }
 
-    //styles for search bar
-
-    .searchNavItem{
-        padding-top: 11px !important;
-        padding-bottom: 11px !important;
-        background-color: #EBEBEB !important;
+    .navLinkSpecialNew{
+        color: #666666 !important;
     }
 
-    .searchNavItem > a {
-        font-size: calc(1.3vw - 2px);
-        width: 93.3vw !important;
-        margin-left: 3.35vw !important;
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-
-    .searchBar {
-        background-color: #FFFFFF !important;
-        margin: 0;
+    .navLinkNearIconNew{
+        margin-right: 4vw;
+        height: 4.8vw;
+        width: auto;
         vertical-align: middle;
-        border-left: 0 !important;
-        box-shadow: none !important;
-        border-radius: 0px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
+        padding-left: .6vw;
+        margin-top: -1.3vw;
     }
 
-    .searchBar:focus {
-        border:1px solid #ccc !important;
-        border-left: 0 !important;
-        box-shadow: none !important;
-    }
-
-    .searchAddon {
-        background-color: white;
-        color: #757575 !important;
-        border-radius: 0px;
-        border-right: solid white;
-    }
-
-    .searchIcon {
+    .navLinkCalendarIconNew{
+        margin-right: 3.2vw;
+        height: 4.8vw;
+        width: auto;
         vertical-align: middle;
-    }
-
-    :global {
-        input::-webkit-input-placeholder {
-            color: #666666 !important;
-        }
+        margin-top: -1.3vw;
     }
 }
 
