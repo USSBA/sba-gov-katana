@@ -6,14 +6,14 @@ import fetchMainMenuFromDB from "../models/dao/main-menu.js";
 
 function fetchMainMenu(req, res) {
 
-    fetchMainMenuFromDB()
-        .then(function(data) {
-            res.status(HttpStatus.OK).send(data);
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(error.response.status).send("Error retrieving main-menu");
-        });
+  fetchMainMenuFromDB()
+    .then(function(data) {
+      res.status(HttpStatus.OK).send(data);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(error.response.status).send("Error retrieving main-menu");
+    });
 }
 
-export {fetchMainMenu};
+export { fetchMainMenu };
