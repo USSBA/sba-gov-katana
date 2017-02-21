@@ -8,6 +8,12 @@ import sbaLogo from '../../../../public/assets/images/logo.png';
 import exitIcon from '../../../../public/assets/svg/exit-modal-close.svg';
 
 class LeaveSbaModal extends React.Component {
+
+  continueButton() {
+    this.props.actions.closeLeaveSba
+    document.location = this.props.url
+  }
+
   render() {
     return (
       <Modal isOpen={ true } className={ styles.content } overlayClassName={ styles.overlay }>
@@ -25,7 +31,7 @@ class LeaveSbaModal extends React.Component {
         <div className={ styles.btnContainer }>
           <button onClick={ this.props.actions.closeLeaveSba } className={ styles.btnCancel }>CANCEL
           </button>
-          <button onClick={ (e) => document.location = this.props.url } className={ styles.btnContinue }>CONTINUE</button>
+          <button onClick={ this.continueButton.bind(this) } className={ styles.btnContinue }>CONTINUE</button>
         </div>
       </Modal>
 
