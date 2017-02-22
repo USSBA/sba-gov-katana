@@ -59,6 +59,8 @@
         margin: 0;
     }
 
+
+
     .mainNavNew > ul {
         /*remove styling for ul in bottom nav*/
         margin: 0;
@@ -289,19 +291,16 @@
     }
 
     .logoNew {
-        position: absolute;
         height: 9.6vw;
         width: auto;
-        left: 5.33vw;
-        top: 3.2vw;
+        margin-left: 5.33vw;
+        margin-top: 3.2vw;
     }
 
     .menuBtnNew {
-        position: absolute;
-        right: 5.33vw;
-        top: 3.2vw;
-        /*width: 24vw;*/
-        /*height: 9.6vw;*/
+        float: right;
+        margin-top: 3.5vw;
+        margin-right: 2vw;
         width: 22.934vw;
         height: 8.534vw;
         font-size: 3.2vw;
@@ -315,7 +314,7 @@
     .menuBtnTextNew {
         color: #0B97DD;
         height: 9.6vw;
-        margin-top: -.533vw;
+        margin-top: -.633vw;
         padding-left: 3.73vw;
         float: left;
     }
@@ -325,7 +324,7 @@
         width: 4vw;
         margin-right: 3.466vw;
         /*margin-top: 3.2vw;*/
-        margin-top: 2.667vw;
+        margin-top: 2.367vw;
         float: right;
     }
 
@@ -348,6 +347,10 @@
         display: none;
         background-color: #ffffff;
         overflow: auto;
+    }
+
+    .mainNavNewShow{
+        display: inherit;
     }
 
     .mobileSearchContainerNew {
@@ -422,15 +425,3 @@
         margin-top: -1.3vw;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

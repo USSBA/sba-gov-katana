@@ -7,21 +7,18 @@ export function fetchMainMenu() {
     dispatch({
       type: "FETCH_MAIN_MENU_START"
     });
-    console.log("Fetching main menu from the server.");
     axios.get("/content/main-menu.json")
       .then((response) => {
         dispatch({
           type: "FETCH_MAIN_MENU_SUCCESS",
           payload: response.data
         });
-        console.log("SUCCESS: " + response.data);
       })
       .catch((error) => {
         dispatch({
           type: "FETCH_MAIN_MENU_ERROR",
           payload: error
         });
-        console.log("ERROR: " + error);
       });
   };
 }

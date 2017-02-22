@@ -32,7 +32,7 @@ class DisasterAlerts extends React.Component {
   render() {
     return (
       <div>
-        { this.state.isVisible && this.props.disaster.visible
+        { this.state.isVisible
           ? <div className={ styles.applyForDisasterLoanParatureWrapper }>
               <div className={ styles.disasterLoanParature }>
                 <div className={ styles.triangleIcon + " fa fa-exclamation-triangle" } aria-hidden="true"></div>
