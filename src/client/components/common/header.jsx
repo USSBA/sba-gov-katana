@@ -19,8 +19,8 @@ class Header extends React.Component {
     }
   }
 
-  toggleNav(proxy, event) {
-    event.preventDefault();
+  toggleNav(e) {
+    e.preventDefault();
     this.setState({
       expanded: !this.state.expanded
     })
@@ -44,6 +44,7 @@ class Header extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     let menuContainer = [];
     let fetchedMenuArray = [];
     if (this.props.mainMenuData.fetched === true) {
@@ -120,20 +121,20 @@ class Header extends React.Component {
           </header>
         </div>
         <div className="hidden-md hidden-lg">
-          <div className={ styles.mobileHeaderContainerNew }>
+          <div className={ this.props.disaster.visible? styles.mobileHeaderContainerNewWithDisasterCallout: styles.mobileHeaderContainerNew  }>
             <div className={ styles.mobileMainHeaderNew }>
               <a href="/">
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                            <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                              <div>
-                                <div className={ styles.menuBtnTextNew }>MENU</div>
-                                <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                              </div>
-                            </a>
-                        </span>
+                                  <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                                    <div>
+                                      <div className={ styles.menuBtnTextNew }>MENU</div>
+                                      <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                                      <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                                    </div>
+                                  </a>
+                              </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
@@ -166,10 +167,17 @@ class Header extends React.Component {
   }
 }
 
+Header.defaultProps = {
+  disaster: {
+    visible: false
+  }
+}
 
-function mapStateToProps(state) {
+
+function mapStateToProps(reduxState) {
   return {
-    mainMenuData: state.mainMenuReducer
+    mainMenuData: reduxState.mainMenuReducer,
+    disaster: reduxState.contentReducer["disaster"]
   };
 }
 

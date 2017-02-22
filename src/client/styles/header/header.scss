@@ -282,6 +282,18 @@
         font-family: "Source Sans Pro";
         width: 100%;
         margin: 0;
+        position: fixed;
+        top: 0px;
+        z-index: 100000;
+    }
+
+    .mobileHeaderContainerNewWithDisasterCallout {
+        font-family: "Source Sans Pro";
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        top: auto;
+        z-index: 100000;
     }
 
     .mobileMainHeaderNew {

@@ -83,18 +83,18 @@ $primary-color: #0B97DD;
     }
 
     .container {
-        position: relative;
+        margin-top: 16vw; //matches the height of mobileMainHeaderNew
         height:153vw;
         width:100%;
     }
 
     .box {
         background: $primary-color;
-        position: absolute;
         z-index: 0;
-        bottom:0;
         width: 90vw;
         height: 90vw;
+        position: relative;
+        top: -28vw;
         margin-left: 4.3vw;
         padding-top: 6.9vw;
         padding-bottom: 8.5vw;
