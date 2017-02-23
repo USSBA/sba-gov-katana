@@ -44,7 +44,6 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     let menuContainer = [];
     let fetchedMenuArray = [];
     if (this.props.mainMenuData.fetched === true) {
@@ -59,7 +58,7 @@ class Header extends React.Component {
                 subSubMenuContainer.push(
                   <li key={ subSubMenuIndex }>
                     <a tabIndex="0" href={ subSubMenu.link }>
-                      { subSubMenu.link_title }
+                      { subSubMenu.linkTitle }
                     </a>
                   </li>);
               });
@@ -67,7 +66,7 @@ class Header extends React.Component {
             subMenuContainer.push(
               <ul key={ subMenuIndex } className={ styles.columnNew }>
                 <li>
-                  <h2><a tabIndex="0" href={ subMenu.link }>{ subMenu.link_title }</a></h2>
+                  <h2><a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a></h2>
                 </li>
                 { subSubMenuContainer }
               </ul>
@@ -76,8 +75,8 @@ class Header extends React.Component {
         }
         menuContainer.push(
           <li key={ index }>
-            <a tabIndex="0" aria-haspopup="true" title={ mainMenu.link_title } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
-              <span>{ mainMenu.link_title }</span>
+            <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
+              <span>{ mainMenu.linkTitle }</span>
               <div className={ styles.triangleNew }></div>
             </a>
             <ul aria-label="submenu" className={ styles.mainMenuNew }>
@@ -121,20 +120,20 @@ class Header extends React.Component {
           </header>
         </div>
         <div className="hidden-md hidden-lg">
-          <div className={ this.props.disaster.visible? styles.mobileHeaderContainerNewWithDisasterCallout: styles.mobileHeaderContainerNew  }>
+          <div className={ this.props.disaster.visible ? styles.mobileHeaderContainerNewWithDisasterCallout : styles.mobileHeaderContainerNew }>
             <div className={ styles.mobileMainHeaderNew }>
               <a href="/">
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                                  <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                    <div>
-                                      <div className={ styles.menuBtnTextNew }>MENU</div>
-                                      <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                      <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                    </div>
-                                  </a>
-                              </span>
+                                        <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                                          <div>
+                                            <div className={ styles.menuBtnTextNew }>MENU</div>
+                                            <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                                            <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                                          </div>
+                                        </a>
+                                    </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
