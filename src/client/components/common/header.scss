@@ -1,16 +1,5 @@
 
-/*merged 2 versions together*/
-/*DESKTOP STYLES FOR REACT HEADER*/
-
-/*GLOBAL STYLES--STYLES FOR SQUASHING SBA.GOV ABNORMALITIES*/
-#block-block-38{
-    top: 110px !important;
-    position: absolute !important;
-    z-index: 99 !important;
-}
-
-
-@media screen and (min-width: 959px){
+@media screen and (min-width: 992px){
 
     .normalizeMenuItemNew {
         text-decoration: none;
@@ -22,29 +11,29 @@
     }
 
     .headerNew {
+        width:100%;
+        padding-left: 7.3vw;
+        padding-right: 7.3vw;
         background-color: white;
-        height: 107px;
-        width: 960px;
+        height: 10vw;
         margin: auto;
         box-sizing: border-box;
-        font-family: 'Source Sans Pro', sans-serif !important;
-        letter-spacing: -0.4px !important;
+        font-family: 'Source Sans Pro', sans-serif ;
+        letter-spacing: -0.4px ;
     }
 
     /*NAVBAR CONTAINER*/
     .navbarNew {
         position: relative;
-        height: 103px;
-        width: 960px;
-        z-index: 12 !important;
+        height: 10vw;
+        z-index: 12 ;
     }
 
     .logoNew {
-        position: absolute;
-        width: 169px;
+        margin-top: 1.8vw;
+        margin-left: 3.13vw;
+        width : 12.5vw;
         height: auto;
-        left: 0;
-        bottom: 18px;
     }
 
     /*BOTTOM NAV BAR*/
@@ -52,8 +41,8 @@
         /*container for bottom nav bar*/
         position: absolute;
         font-weight: bold;
-        width: 755px;
-        top: 59px;
+        width: 75vw;
+        top: 6.2vw;
         bottom: 0;
         right: 0;
         margin: 0;
@@ -66,13 +55,10 @@
         margin: 0;
         padding: 0;
         list-style-type: none;
-    }
-
-
-    .mainNavNew > ul > li {
         /*floats the navbar ro the right*/
         float: right;
     }
+
 
     .mainNavNew > ul > li {
         /*reverses the order of the navs so they are semantic and arranged left to right*/
@@ -84,11 +70,11 @@
         position: relative;
         top: 0;
         display: inline-block;
-        padding-left: 7px;
-        padding-right: 7px;
-        height: 43px;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+        height: 3.5vw;
         cursor: pointer;
-        text-decoration: none !important;
+        text-decoration: none ;
     }
 
     .mainNavNew > ul > li:first-child > a {
@@ -104,11 +90,11 @@
     .mainBtnNew > span {
         /*text for menu button*/
         color: #0B97DD;
-        font-size: 18px;
+        font-size: 1.55vw;
+        margin-right: 0.5vw;
         font-weight: bold;
-        line-height: 24px !important;
-        text-decoration: none !important;
-        font-family: 'Source Sans Pro', sans-serif !important;
+        text-decoration: none ;
+        font-family: 'Source Sans Pro', 'sans-serif' ;
     }
 
     .mainBtnNew > span:first-child {
@@ -125,9 +111,9 @@
         right: 0;
         bottom: 0;
         margin: auto;
-        border-bottom: 8px solid #0B97DD;
-        border-right: 8px solid transparent;
-        border-left: 8px solid transparent;
+        border-bottom: 0.5vw solid #0B97DD;
+        border-right: 0.5vw solid transparent;
+        border-left: 0.5vw solid transparent;
         border-top: 0;
     }
 
@@ -139,22 +125,25 @@
     .mainMenuNew {
         position: absolute;
         visibility: hidden;
-        border-top: 5px solid #0B97DD;
+        border-top: 0.5vw solid #0B97DD;
         background-color: white;
         padding: 0;
-        padding-bottom: 40px;
-        padding-top: 20px;
-        width: 960px;
-        left: -220px;
+        padding-bottom: 2.5vw;
+        width: 81.2vw;
+        right: -0.2vw;
         list-style-type: none;
+        box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+        border-left: 1px solid #c4c4c4;
+        border-right: 1px solid #c4c4c4;
+        border-bottom: 1px solid #c4c4c4;
     }
 
     .mainNavNew > ul > li:hover > a + ul {
-        visibility: visible !important;
+        visibility: visible ;
     }
 
     .mainNavNew > ul > li:hover > a > .triangleNew {
-        visibility: visible !important;
+        visibility: visible ;
     }
 
     /*CONTENT INSIDE DROPDOWN MENU*/
@@ -163,7 +152,7 @@
         float: left;
         margin: 0;
         width: 33%;
-        padding-left: 50px;
+        padding: 0% 4%;
         list-style-type: none;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -174,16 +163,16 @@
         /*all elements in drodown*/
         text-decoration: none;
         list-style: none;
-        margin-bottom: 15px;
+        margin-bottom: 1vw;
     }
 
     .columnNew > li > h2 {
         /*dopdown headers*/
         font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: -0.4px !important;
-        margin-top: 30px;
+        letter-spacing: -0.4px ;
+        margin-top: 3.1vw;
         margin-bottom: 0px;
-        font-size: 18px;
+        font-size: 1.45vw;
         font-weight: bold;
         color: #0B97DD;
     }
@@ -203,7 +192,7 @@
     .columnNew > li > a {
         /*dopdown links*/
         font-family: 'Source Sans Pro', sans-serif;
-        font-size: 15px;
+        font-size: 1.25vw;
         font-weight: normal;
         color: #333333;
         text-decoration: none;
@@ -217,33 +206,33 @@
     /*TOP MINI NAV BAR*/
     .miniNavNew{
         position: absolute;
-        height: 21px;
-        top: 29px;
+        height: 2.1vw;
+        top: 2vw;
         right: 0;
     }
 
 
     .miniNavLinkNew {
-        color: #757575 !important;
-        font-size: 14px;
-        line-height: 0px !important;
-        margin-left: 11px;
-        margin-top: 5px !important;
-        text-decoration: none !important;
-        font-family: 'Source Sans Pro', sans-serif !important;
+        color: #757575 ;
+        font-size: 1vw;
+        line-height: 0px ;
+        margin-left: 1.25vw;
+        margin-top: 0.5vw ;
+        text-decoration: none ;
+        font-family: 'Source Sans Pro', sans-serif ;
     }
 
     .miniNavLinkNew:hover {
-        color: #333 !important;
+        color: #333 ;
     }
 
     .searchIconNew {
         cursor: pointer;
         color: #757575;
-        font-size: 13px;
-        line-height: 14px;
-        margin-left: 11px;
-        margin-top: 5px !important;
+        font-size: 1.2vw;
+        line-height: 1.4vw;
+        margin-left: 1.1vw;
+        margin-top: 5px ;
         text-decoration: none;
     }
 
@@ -253,26 +242,42 @@
 
     #searchBarNew {
         display: none;
-        margin-left: 11px;
+        margin-left: 1.1vw;
     }
 
     #searchInputNew {
         margin-right: 11px;
-        -webkit-appearance: textfield !important;
-        width: 200px;
+        -webkit-appearance: textfield ;
+        width: 20vw;
     }
 
     #googleTranslateElement {
         display: inline-block;
-        height: 22px;
+        height: 2.2vw;
+    }
+    
+    
+    .menuCallToAction {
+        margin-top: 2vw;
+        background-color: #0B97DD;
+    }
+
+    .menuCallToAction img {
+        width: 100%;
+    }
+
+    .menuCallToAction p {
+        color: white;
+        font-weight: bold;
+        font-size: 2vw;
+        padding: 2vw;
+        letter-spacing: normal;
+        line-height: normal;
     }
 }
 
 
-@media screen and (max-width:959px) {
-    #block-block-38{
-        display:none;
-    }
+@media screen and (max-width:992px) {
 
     .header-new{
         display: none;
@@ -408,16 +413,16 @@
         display: block;
         height: 16vw;
         line-height: 16vw;
-        font-family: "Source Sans Pro" !important;
+        font-family: "Source Sans Pro" ;
     }
 
     .navLinkNew {
         font-weight: bold;
-        color: #0B97DD !important;
+        color: #0B97DD ;
     }
 
     .navLinkSpecialNew{
-        color: #666666 !important;
+        color: #666666 ;
     }
 
     .navLinkNearIconNew{
