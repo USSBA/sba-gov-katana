@@ -55,7 +55,7 @@ function buildMenuTree(data, parent) {
         let ownChildren = buildMenuTree(data, child);
         if (!_.isEmpty(ownChildren)) {
           child.isParent = true;
-          ownChildren = _.sortBy(ownChildren,'weight');
+          ownChildren = _.sortBy(ownChildren, "weight");
           child.children = ownChildren;
         } else {
           child.isParent = false;
@@ -67,7 +67,7 @@ function buildMenuTree(data, parent) {
       }
     });
   }
-  result = _.sortBy(result,'weight');
+  result = _.sortBy(result, "weight");
   return result;
 }
 
