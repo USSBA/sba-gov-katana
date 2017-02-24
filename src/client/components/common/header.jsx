@@ -1,14 +1,16 @@
 import React from 'react';
-import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, Button, Glyphicon, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
-import styles from '../../styles/header/header.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { isEmpty } from "lodash";
+
+
+import styles from './header.scss';
 import sbaLogo from '../../../../public/assets/images/logo.png';
 import sbaLogoMobile from '../../../../public/assets/svg/sba-logo-mobile.svg';
 import hamburgerClose from '../../../../public/assets/svg/close.svg';
 import hamburger from '../../../../public/assets/svg/hamburger.svg';
 import *  as MainMenuActions from '../../actions/main-menu.js';
-import { isEmpty } from "lodash";
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -43,6 +45,19 @@ class Header extends React.Component {
     this.props.actions.fetchMainMenu();
   }
 
+  makeFeaturedCalled(featuredCallout) {
+    return (
+      <div class="menu-cta">
+        <a href={ featuredCallout.target } title={ featuredCallout.title }>
+          <img src={ featuredCallout.image } alt={ featuredCallout.text } title={ featuredCallout.title } />
+          <p>
+            { featuredCallout.text }
+          </p>
+        </a>
+      </div>
+      );
+  }
+
   render() {
     let menuContainer = [];
     let fetchedMenuArray = [];
@@ -52,38 +67,50 @@ class Header extends React.Component {
         let subMenuContainer = [];
         if( (mainMenu.isParent) ) {
           mainMenu.children.forEach((subMenu, subMenuIndex) => {
-            let subSubMenuContainer = [];
-            if (subMenu.isParent) {
+            let subSubMenuContainer = []
+            if (subMenu.isParent && !subMenu.invisible) {
               subMenu.children.forEach((subSubMenu, subSubMenuIndex) => {
-                subSubMenuContainer.push(
-                  <li key={ subSubMenuIndex }>
-                    <a tabIndex="0" href={ subSubMenu.link }>
-                      { subSubMenu.linkTitle }
-                    </a>
-                  </li>);
+                if (!subSubMenu.invisble) {
+                  subSubMenuContainer.push(
+                    <li key={ subSubMenuIndex }>
+                      <a tabIndex="0" href={ subSubMenu.link }>
+                        { subSubMenu.linkTitle }
+                      </a>
+                    </li>);
+                }
               });
             }
-            subMenuContainer.push(
-              <ul key={ subMenuIndex } className={ styles.columnNew }>
-                <li>
-                  <h2><a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a></h2>
-                </li>
-                { subSubMenuContainer }
-              </ul>
-            );
+            if (!subMenu.invisible) {
+              subMenuContainer.push(
+                <ul key={ subMenuIndex } className={ styles.columnNew }>
+                  <li>
+                    <h2><a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a></h2>
+                  </li>
+                  { subSubMenuContainer }
+                </ul>
+              );
+            }
           });
         }
+        let featuredCallout = mainMenu.featuredCallout ? this.makeFeaturedCalled(mainMenu.featuredCallout) : undefined;
+        if (featuredCallout) {
+          subMenuContainer.push(featuredCallout);
+        }
+        const subMenu = _.isEmpty(subMenuContainer) ? "" :
+          (<ul aria-label="submenu" className={ styles.mainMenuNew }>
+             <li className={ styles.normalizeMenuItemNew }>
+               { subMenuContainer }
+             </li>
+           </ul>
+          );
+
         menuContainer.push(
           <li key={ index }>
             <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
               <span>{ mainMenu.linkTitle }</span>
               <div className={ styles.triangleNew }></div>
             </a>
-            <ul aria-label="submenu" className={ styles.mainMenuNew }>
-              <li className={ styles.normalizeMenuItemNew }>
-                { subMenuContainer }
-              </li>
-            </ul>
+            { subMenu }
           </li>);
       });
     } else {
@@ -126,14 +153,14 @@ class Header extends React.Component {
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                                        <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                          <div>
-                                            <div className={ styles.menuBtnTextNew }>MENU</div>
-                                            <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                            <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                          </div>
-                                        </a>
-                                    </span>
+                                                                      <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                                                                        <div>
+                                                                          <div className={ styles.menuBtnTextNew }>MENU</div>
+                                                                          <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                                                                          <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                                                                        </div>
+                                                                      </a>
+                                                                  </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>

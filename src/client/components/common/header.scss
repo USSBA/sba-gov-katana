@@ -1,15 +1,4 @@
 
-/*merged 2 versions together*/
-/*DESKTOP STYLES FOR REACT HEADER*/
-
-/*GLOBAL STYLES--STYLES FOR SQUASHING SBA.GOV ABNORMALITIES*/
-#block-block-38{
-    top: 110px !important;
-    position: absolute !important;
-    z-index: 99 !important;
-}
-
-
 @media screen and (min-width: 959px){
 
     .normalizeMenuItemNew {
@@ -22,29 +11,29 @@
     }
 
     .headerNew {
+        width:100%;
+        padding-left: 7.3vw;
+        padding-right: 7.3vw;
         background-color: white;
         height: 107px;
-        width: 960px;
         margin: auto;
         box-sizing: border-box;
-        font-family: 'Source Sans Pro', sans-serif !important;
-        letter-spacing: -0.4px !important;
+        font-family: 'Source Sans Pro', sans-serif ;
+        letter-spacing: -0.4px ;
     }
 
     /*NAVBAR CONTAINER*/
     .navbarNew {
         position: relative;
         height: 103px;
-        width: 960px;
-        z-index: 12 !important;
+        z-index: 12 ;
     }
 
     .logoNew {
-        position: absolute;
-        width: 169px;
+        margin-top: 1vw;
+        margin-left: 3.13vw;
+        width : 12.5vw;
         height: auto;
-        left: 0;
-        bottom: 18px;
     }
 
     /*BOTTOM NAV BAR*/
@@ -52,7 +41,7 @@
         /*container for bottom nav bar*/
         position: absolute;
         font-weight: bold;
-        width: 755px;
+        width: 60vw;
         top: 59px;
         bottom: 0;
         right: 0;
@@ -84,11 +73,11 @@
         position: relative;
         top: 0;
         display: inline-block;
-        padding-left: 7px;
-        padding-right: 7px;
-        height: 43px;
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+        height: 3.5vw;
         cursor: pointer;
-        text-decoration: none !important;
+        text-decoration: none ;
     }
 
     .mainNavNew > ul > li:first-child > a {
@@ -104,11 +93,10 @@
     .mainBtnNew > span {
         /*text for menu button*/
         color: #0B97DD;
-        font-size: 18px;
+        font-size: 1.4vw;
         font-weight: bold;
-        line-height: 24px !important;
-        text-decoration: none !important;
-        font-family: 'Source Sans Pro', sans-serif !important;
+        text-decoration: none ;
+        font-family: 'Source Sans Pro', sans-serif ;
     }
 
     .mainBtnNew > span:first-child {
@@ -150,11 +138,11 @@
     }
 
     .mainNavNew > ul > li:hover > a + ul {
-        visibility: visible !important;
+        visibility: visible ;
     }
 
     .mainNavNew > ul > li:hover > a > .triangleNew {
-        visibility: visible !important;
+        visibility: visible ;
     }
 
     /*CONTENT INSIDE DROPDOWN MENU*/
@@ -180,7 +168,7 @@
     .columnNew > li > h2 {
         /*dopdown headers*/
         font-family: 'Source Sans Pro', sans-serif;
-        letter-spacing: -0.4px !important;
+        letter-spacing: -0.4px ;
         margin-top: 30px;
         margin-bottom: 0px;
         font-size: 18px;
@@ -218,23 +206,23 @@
     .miniNavNew{
         position: absolute;
         height: 21px;
-        top: 29px;
+        top: 2vw;
         right: 0;
     }
 
 
     .miniNavLinkNew {
-        color: #757575 !important;
+        color: #757575 ;
         font-size: 14px;
-        line-height: 0px !important;
+        line-height: 0px ;
         margin-left: 11px;
-        margin-top: 5px !important;
-        text-decoration: none !important;
-        font-family: 'Source Sans Pro', sans-serif !important;
+        margin-top: 5px ;
+        text-decoration: none ;
+        font-family: 'Source Sans Pro', sans-serif ;
     }
 
     .miniNavLinkNew:hover {
-        color: #333 !important;
+        color: #333 ;
     }
 
     .searchIconNew {
@@ -243,7 +231,7 @@
         font-size: 13px;
         line-height: 14px;
         margin-left: 11px;
-        margin-top: 5px !important;
+        margin-top: 5px ;
         text-decoration: none;
     }
 
@@ -258,7 +246,7 @@
 
     #searchInputNew {
         margin-right: 11px;
-        -webkit-appearance: textfield !important;
+        -webkit-appearance: textfield ;
         width: 200px;
     }
 
@@ -408,16 +396,16 @@
         display: block;
         height: 16vw;
         line-height: 16vw;
-        font-family: "Source Sans Pro" !important;
+        font-family: "Source Sans Pro" ;
     }
 
     .navLinkNew {
         font-weight: bold;
-        color: #0B97DD !important;
+        color: #0B97DD ;
     }
 
     .navLinkSpecialNew{
-        color: #666666 !important;
+        color: #666666 ;
     }
 
     .navLinkNearIconNew{

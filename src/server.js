@@ -73,16 +73,10 @@ app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 
-import { fetchMainMenuFromDb } from "./models/dao/main-menu.js";
-app.get("/content/main-menu.json", function(req, res, next) {
-  fetchMainMenuFromDb()
-    .then(function(result) {
-      res.json(result);
-    })
-    .catch(function(error) {
-      console.log(error);
-      next(error);
-    });
+import mainMenuStructure from "../scripts/probes/main-menu-from-server.json";
+import { fetchMainMenu } from "./models/dao/main-menu.js";
+app.get("/content/main-menu.json", (req, res) => {
+  res.json(mainMenuStructure);
 });
 
 app.get(["/", "/linc/*"], function(req, res) {
