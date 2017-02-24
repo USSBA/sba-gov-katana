@@ -1,4 +1,15 @@
 import { executeQuery } from "../drupal-db.js";
+import Promise from "bluebird";
+
+function fetchDisasterFromDrupalDatabase() {
+  return Promise.all([fetchDescription(), fetchVisibility()])
+    .spread((description, visible) => {
+      return {
+        description: description,
+        visible: visible
+      };
+    });
+}
 
 function fetchDescription() {
   return executeQuery("select body from block_custom where info = \"Apply For Disaster Loan Parature\";")
@@ -30,4 +41,4 @@ function fetchVisibility() {
 }
 
 
-export { fetchDescription, fetchVisibility };
+export { fetchDisasterFromDrupalDatabase };
