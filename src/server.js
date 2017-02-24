@@ -73,8 +73,8 @@ app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 
-import { fetchMainMenu } from "./models/dao/main-menu.js";
-app.get("/content/main-menu.json", fetchMainMenu);
+import { getMainMenu } from "./controllers/main-menu.js";
+app.get("/content/main-menu.json", getMainMenu);
 
 app.get(["/", "/linc/*"], function(req, res) {
   res.render("main", metaVariables);

@@ -54,24 +54,24 @@ function buildMenuTree(data, parent) {
 
         let ownChildren = buildMenuTree(data, child);
         if (!_.isEmpty(ownChildren)) {
-          ownChildren = _.sortBy(ownChildren,'weight');
-          ownChildren = _.map(ownChildren, function(item){
-             return  _.pick(item,['link','linkTitle', 'children']);
+          ownChildren = _.sortBy(ownChildren, "weight");
+          ownChildren = _.map(ownChildren, function(item) {
+            return _.pick(item, ["link", "linkTitle", "children"]);
           });
           child.children = ownChildren;
         }
         const options = child.options;
         delete child.options;
-        let invisible = options.includes("element-invisible");
-        if(!invisible){
-            result.push(child);
+        const invisible = options.includes("element-invisible");
+        if (!invisible) {
+          result.push(child);
         }
       }
     });
   }
-  result = _.sortBy(result,'weight');
-  result = _.map(result, function(item){
-     return  _.pick(item,['link','linkTitle', 'children']);
+  result = _.sortBy(result, "weight");
+  result = _.map(result, function(item) {
+    return _.pick(item, ["link", "linkTitle", "children"]);
   });
   return result;
 }

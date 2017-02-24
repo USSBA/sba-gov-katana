@@ -47,7 +47,7 @@ class Header extends React.Component {
   makeFeaturedCalled(featuredCallout) {
     return (
       <ul className={ styles.columnNew }>
-        <div className={styles.menuCallToAction}>
+        <div className={ styles.menuCallToAction }>
           <a href={ featuredCallout.target } title={ featuredCallout.title }>
             <img src={ featuredCallout.image } alt={ featuredCallout.text } title={ featuredCallout.title } />
             <p>
