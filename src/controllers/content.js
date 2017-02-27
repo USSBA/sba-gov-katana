@@ -1,5 +1,5 @@
 import { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
-import { fetchDisasterFromDrupalDatabase } from "../util/drupal-database.js";
+import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
 import HttpStatus from "http-status-codes";
 
 function fetchContent(req, res) {

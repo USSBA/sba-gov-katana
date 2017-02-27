@@ -25,9 +25,9 @@ function fetchMainMenu() {
 
 
 function fetchMainMenuStructure() {
-  const sqlQuery = "(select mlid, plid, link_title as linkTitle, alias as link, options from menu_links, url_alias where menu_name = 'main-menu' and link_path = source and hidden = 0)" +
+  const sqlQuery = "(select mlid, plid, link_title as linkTitle, alias as link, options, weight from menu_links, url_alias where menu_name = 'main-menu' and link_path = source and hidden = 0 order by weight asc)" +
     " union all " +
-    "(select mlid, plid, link_title as linkTitle, link_path as link, options from menu_links where menu_name = 'main-menu' and hidden = 0 and (link_path like 'http%' or link_path like 'tool%'))";
+    "(select mlid, plid, link_title as linkTitle, link_path as link, options, weight from menu_links where menu_name = 'main-menu' and hidden = 0 and (link_path like 'http%' or link_path like 'tool%') order by weight asc)";
   return executeQuery(sqlQuery)
     .then(function(results) {
       // conver the options buffer (because it is type blob in the DB to a string)
@@ -52,20 +52,27 @@ function buildMenuTree(data, parent) {
     _.each(children, function(child) {
       if (child !== null) {
 
-        const ownChildren = buildMenuTree(data, child);
+        let ownChildren = buildMenuTree(data, child);
         if (!_.isEmpty(ownChildren)) {
-          child.isParent = true;
+          ownChildren = _.sortBy(ownChildren, "weight");
+          ownChildren = _.map(ownChildren, function(item) {
+            return _.pick(item, ["link", "linkTitle", "children"]);
+          });
           child.children = ownChildren;
-        } else {
-          child.isParent = false;
         }
         const options = child.options;
         delete child.options;
-        child.invisible = options.includes("element-invisible");
-        result.push(child);
+        const invisible = options.includes("element-invisible");
+        if (!invisible) {
+          result.push(child);
+        }
       }
     });
   }
+  result = _.sortBy(result, "weight");
+  result = _.map(result, function(item) {
+    return _.pick(item, ["link", "linkTitle", "children"]);
+  });
   return result;
 }
 

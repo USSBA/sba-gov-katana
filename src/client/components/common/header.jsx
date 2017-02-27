@@ -1,14 +1,15 @@
 import React from 'react';
-import { Grid, Navbar, Nav, NavItem, NavDropdown, MenuItem, Row, Col, Image, Button, Glyphicon, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
-import styles from '../../styles/header/header.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { isEmpty, includes } from "lodash";
+
+
+import styles from './header.scss';
 import sbaLogo from '../../../../public/assets/images/logo.png';
-import sbaLogoMobile from '../../../../public/assets/svg/sba-logo-mobile.svg';
 import hamburgerClose from '../../../../public/assets/svg/close.svg';
 import hamburger from '../../../../public/assets/svg/hamburger.svg';
-import *  as MainMenuActions from '../../actions/main-menu.js';
-import { isEmpty } from "lodash";
+import *  as ContentActions from '../../actions/content.js';
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -16,76 +17,119 @@ class Header extends React.Component {
     this.state = {
       expanded: false,
       searchValue: ""
-    }
+    };
   }
 
   toggleNav(e) {
     e.preventDefault();
     this.setState({
       expanded: !this.state.expanded
-    })
+    });
   }
 
   handleSearchChange(e) {
     event.preventDefault();
     this.setState({
       searchValue: e.target.value
-    })
+    });
   }
 
   submitSearch(e) {
     e.preventDefault();
     let uri = encodeURI("/tools/search-result-page?search=" + this.state.searchValue);
-    document.location = uri
+    document.location = uri;
   }
 
   componentWillMount() {
-    this.props.actions.fetchMainMenu();
+    this.props.actions.fetchContentIfNeeded('mainMenu', 'main-menu');
   }
 
-  render() {
+  makeFeaturedCalled(featuredCallout) {
+    return (
+      <ul className={ styles.columnNew }>
+        <div className={ styles.menuCallToAction }>
+          <a href={ featuredCallout.target } title={ featuredCallout.title }>
+            <img src={ featuredCallout.image } alt={ featuredCallout.text } title={ featuredCallout.title } />
+            <p>
+              { featuredCallout.text }
+            </p>
+          </a>
+        </div>
+      </ul>
+      );
+  }
+
+  buildMenu(menuData) {
     let menuContainer = [];
-    let fetchedMenuArray = [];
-    if (this.props.mainMenuData.fetched === true) {
-      fetchedMenuArray = this.props.mainMenuData.fetchedMainMenu;
-      fetchedMenuArray.forEach((mainMenu, index) => {
-        let subMenuContainer = [];
-        if( (mainMenu.isParent) ) {
-          mainMenu.children.forEach((subMenu, subMenuIndex) => {
-            let subSubMenuContainer = [];
-            if (subMenu.isParent) {
-              subMenu.children.forEach((subSubMenu, subSubMenuIndex) => {
+    const endColumnLinks = ['starting-business', 'managing-business',
+      'loans-grants/connect-sba-lenders', 'loans-grants/find-other-sources-financing',
+      'contracting/resources-small-businesses', 'contracting/government-contracting-programs', 'contracting/contracting-officials',
+      'tools/local-assistance',
+      'about-sba/sba-performance', 'about-sba/oversight-advocacy'];
+
+    menuData.forEach((mainMenu, index) => {
+      let subMenuContainer = [];
+      if (mainMenu.children && !isEmpty(mainMenu.children)) {
+        let subSubMenuContainer = [];
+        mainMenu.children.forEach((subMenu, subMenuIndex) => {
+          subSubMenuContainer.push(
+            <li>
+              <h2><a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a></h2>
+            </li>
+          );
+          if (subMenu.children && !isEmpty(subMenu.children)) {
+            subMenu.children.forEach((subSubMenu, subSubMenuIndex) => {
+              if (!subSubMenu.invisble) {
                 subSubMenuContainer.push(
-                  <li key={ subSubMenuIndex }>
+                  <li key={ index + "-" + subMenuIndex + "-" + subSubMenuIndex }>
                     <a tabIndex="0" href={ subSubMenu.link }>
                       { subSubMenu.linkTitle }
                     </a>
                   </li>);
-              });
-            }
+              }
+            });
+          }
+          let endColumn = includes(endColumnLinks, subMenu.link) || (subMenuIndex === mainMenu.children.length - 1);
+          if (endColumn) {
             subMenuContainer.push(
-              <ul key={ subMenuIndex } className={ styles.columnNew }>
-                <li>
-                  <h2><a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a></h2>
-                </li>
+              <ul key={ index + "-" + subMenuIndex } className={ styles.columnNew }>
                 { subSubMenuContainer }
               </ul>
             );
-          });
-        }
-        menuContainer.push(
-          <li key={ index }>
-            <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
-              <span>{ mainMenu.linkTitle }</span>
-              <div className={ styles.triangleNew }></div>
-            </a>
-            <ul aria-label="submenu" className={ styles.mainMenuNew }>
-              <li className={ styles.normalizeMenuItemNew }>
-                { subMenuContainer }
-              </li>
-            </ul>
-          </li>);
-      });
+            subSubMenuContainer = [];
+          }
+
+
+        });
+      }
+      let featuredCallout = mainMenu.featuredCallout ? this.makeFeaturedCalled(mainMenu.featuredCallout) : undefined;
+      if (featuredCallout) {
+        subMenuContainer.push(featuredCallout);
+      }
+      const subMenu = isEmpty(subMenuContainer) ? "" :
+        (<ul aria-label="submenu" className={ styles.mainMenuNew }>
+           <li className={ styles.normalizeMenuItemNew }>
+             { subMenuContainer }
+           </li>
+         </ul>
+        );
+
+      menuContainer.push(
+        <li key={ index }>
+          <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
+            <span>{ mainMenu.linkTitle }</span>
+            <div className={ styles.triangleNew }></div>
+          </a>
+          { subMenu }
+        </li>);
+    });
+    return menuContainer;
+  }
+
+  render() {
+    let menuContainer = [];
+    if (this.props.mainMenuData) {
+      menuContainer = this.buildMenu(this.props.mainMenuData);
     } else {
       menuContainer.push(<div></div>);
     }
@@ -126,14 +170,14 @@ class Header extends React.Component {
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                                                    <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                                      <div>
-                                                        <div className={ styles.menuBtnTextNew }>MENU</div>
-                                                        <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                                        <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                                      </div>
-                                                    </a>
-                                                </span>
+                      <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                          <div>
+                            <div className={ styles.menuBtnTextNew }>MENU</div>
+                            <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                            <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                          </div>
+                        </a>
+                    </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
@@ -169,21 +213,22 @@ class Header extends React.Component {
 Header.defaultProps = {
   disaster: {
     visible: false
-  }
-}
+  },
+  mainMenuData: null
+};
 
 
 function mapStateToProps(reduxState) {
   return {
-    mainMenuData: reduxState.mainMenuReducer,
+    mainMenuData: reduxState.contentReducer["mainMenu"],
     disaster: reduxState.contentReducer["disaster"]
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(MainMenuActions, dispatch)
-  }
+    actions: bindActionCreators(ContentActions, dispatch)
+  };
 }
 
 export default connect(
