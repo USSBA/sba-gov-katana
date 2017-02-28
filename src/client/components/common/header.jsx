@@ -114,11 +114,12 @@ class Header extends React.Component {
          </ul>
         );
 
+      const triangleMarker = isEmpty(subMenuContainer) ? "" : (<div className={ styles.triangleNew }></div>);
       menuContainer.push(
         <li key={ index }>
           <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
             <span>{ mainMenu.linkTitle }</span>
-            <div className={ styles.triangleNew }></div>
+            { triangleMarker }
           </a>
           { subMenu }
         </li>);
