@@ -101,6 +101,7 @@
     "babel-register": "^6.18.0",
     "enzyme": "^2.6.0",
     "esformatter": "^0.10.0",
+    "esformatter-ignore": "^0.1.3",
     "esformatter-jsx": "^7.4.0",
     "eslint": "^3.10.1",
     "eslint-plugin-react": "^6.7.1",
