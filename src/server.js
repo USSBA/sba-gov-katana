@@ -76,10 +76,14 @@ app.get("/content/disaster.json", fetchDisaster);
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
-app.get(["/", "/linc/*"], function(req, res) {
+app.get(["/linc", "/linc/*"], function(req, res) {
   res.render("main", metaVariables);
-
 });
+app.post("/linc/resend", jsonParser, function(req, res) {
+  console.log(req.body);
+  res.status(HttpStatus.OK).send();
+});
+
 
 // development error handler
 // will print stacktrace
