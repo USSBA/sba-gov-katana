@@ -28,7 +28,7 @@ export class CounselorBtn extends React.Component {
         newTab.location = res.data.redirectTo;
       })
       .then(function(err) {
-        console.log(err)
+        console.error(err)
       })
   }
 
@@ -51,7 +51,7 @@ export class CounselorBtn extends React.Component {
             TALK TO A COUNSELOR
           </Button>
           </Col>
-          
+
           ) : (
           <div>
             <Col xs={ 4 } xsOffset={ 1 }>

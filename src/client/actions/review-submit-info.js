@@ -5,7 +5,6 @@ export function matchFormData(reviewSubmitInfoData) {
     dispatch({
       type: "MATCH_FORM_DATA_START"
     });
-    console.log("Match Form Data being sent to the server.");
     axios.post("matchFormData", reviewSubmitInfoData)
       .then((response) => {
         dispatch({
@@ -13,14 +12,12 @@ export function matchFormData(reviewSubmitInfoData) {
           payload: response.data
         });
         browserHistory.push("/linc/success");
-        console.log("SUCCESS: " + response.data);
       })
       .catch((error) => {
         dispatch({
           type: "MATCH_FORM_DATA_ERROR",
           payload: error
         });
-        console.log("ERROR: " + error);
       });
   };
 }

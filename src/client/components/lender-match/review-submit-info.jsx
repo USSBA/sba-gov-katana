@@ -40,7 +40,6 @@ class ReviewSubmitInfoForm extends React.Component {
         ...reviewSubmitInfoFields
       }
     });
-    console.log(this.state.reviewSubmitInfoFields);
   }
 
   handleClick(e) {
@@ -52,7 +51,6 @@ class ReviewSubmitInfoForm extends React.Component {
         ...reviewSubmitInfoFields
       }
     });
-    console.log(this.state.reviewSubmitInfoFields);
   }
 
   render() {

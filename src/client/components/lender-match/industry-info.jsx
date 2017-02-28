@@ -17,7 +17,6 @@ class IndustryInfoForm extends React.Component {
       industryExperience: "",
     }, props.industryInfoFields);
     let validStates = {};
-    console.log(industryInfoFields);
     if (industryInfoFields.industryType) {
       validStates = Object.assign(validStates, this.getValidationState("industryType", industryInfoFields.industryType));
     }
