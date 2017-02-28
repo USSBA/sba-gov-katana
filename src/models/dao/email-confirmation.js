@@ -20,19 +20,30 @@ function create(newConfirmation) {
   });
 }
 
-function retrieve(tokenString) {
+function retrieveOne(query) {
   return new Promise((resolve, reject) => {
     var collection = dbConnection.collection("emailConfirmation");
     // Insert some documents
-    collection.findOne({
-      token: tokenString
-    }, function(err, result) {
+    collection.findOne(query, function(err, result) {
       if (err) {
         reject(err);
       } else {
         resolve(result);
       }
     });
+  });
+}
+
+function retrieve(query) {
+  return new Promise((resolve, reject) => {
+    var collection = dbConnection.collection("emailConfirmation");
+    collection.find(query).toArray()
+      .then(function(result) {
+        resolve(result);
+      })
+      .catch(function(error) {
+        reject(error);
+      });
   });
 }
 
@@ -51,4 +62,4 @@ function update(emailConfirmation) {
     });
   });
 }
-export { create, retrieve, update };
+export { create, retrieve, update, retrieveOne };

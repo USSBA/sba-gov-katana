@@ -12,7 +12,7 @@ export function matchFormData(reviewSubmitInfoData) {
           type: "MATCH_FORM_DATA_SUCCESS",
           payload: response.data
         });
-        browserHistory.push("/success");
+        browserHistory.push("/linc/success");
         console.log("SUCCESS: " + response.data);
       })
       .catch((error) => {
