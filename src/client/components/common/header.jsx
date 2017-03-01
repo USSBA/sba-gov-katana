@@ -193,15 +193,17 @@ class Header extends React.Component {
               <a href="/">
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
+              /*esfmt-ignore-start*/
               <span>
-                                          <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                              <div>
-                                                <div className={ styles.menuBtnTextNew }>MENU</div>
-                                                <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                                <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                              </div>
-                                            </a>
-                                        </span>
+                <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                    <div>
+                        <div className={ styles.menuBtnTextNew }>MENU</div>
+                        <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                        <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                    </div>
+                </a>
+              </span>
+              /*esfmt-ignore-end*/
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
