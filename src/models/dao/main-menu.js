@@ -89,7 +89,11 @@ function fetchLoansAndGrantsCalloutBlock() {
         const body = result[0].body;
         title = (/title="(.*?)"/).exec(body)[1];
         image = (/img src="(.*?)"/).exec(body)[1];
-        text = (/p>(.*?)<\/p/).exec(body)[1];
+        if ((/p>(.*?)<\/p/).exec(body) === null) {
+          text = "";
+        } else {
+          text = (/p>(.*?)<\/p/).exec(body)[1];
+        }
         target = (/href="(.*?)"/).exec(body)[1];
       }
       return {

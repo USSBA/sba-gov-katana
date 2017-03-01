@@ -13,12 +13,14 @@ import *  as ContentActions from '../../actions/content.js';
 
 class Header extends React.Component {
   constructor(props) {
-    super();
-    this.state = {
-      expanded: false,
-      searchValue: ""
-    };
+      super();
+      this.state = {
+          expanded: false,
+          searchValue: "",
+          tabbedIndex: -1
+      };
   }
+
 
   toggleNav(e) {
     e.preventDefault();
@@ -42,6 +44,13 @@ class Header extends React.Component {
 
   componentWillMount() {
     this.props.actions.fetchContentIfNeeded('mainMenu', 'main-menu');
+  }
+
+  handleKeyUp(event, linkIndex){
+    let code = (event.keyCode ? event.keyCode : event.which);
+    if(code === 9){
+        this.setState({tabbedIndex: linkIndex});
+    }
   }
 
   makeFeaturedCalled(featuredCallout) {
@@ -106,16 +115,27 @@ class Header extends React.Component {
       if (featuredCallout) {
         subMenuContainer.push(featuredCallout);
       }
-      const subMenu = isEmpty(subMenuContainer) ? "" :
-        (<ul aria-label="submenu" className={ styles.mainMenuNew }>
-           <li className={ styles.normalizeMenuItemNew }>
-             { subMenuContainer }
-           </li>
-         </ul>
-        );
+
+      let subMenu = "";
+
+      if(!isEmpty(subMenuContainer)){
+        if(this.state.tabbedIndex !== -1 && this.state.tabbedIndex === index){
+          subMenu = (<ul aria-label="submenu" className={ styles.mainMenuShow }>
+            <li className={ styles.normalizeMenuItemNew }>
+                { subMenuContainer }
+            </li>
+          </ul>);
+        }else{
+            subMenu = (<ul aria-label="submenu" className={ styles.mainMenuHide }>
+              <li className={ styles.normalizeMenuItemNew }>
+                  { subMenuContainer }
+              </li>
+            </ul>);
+        }
+      }
 
       menuContainer.push(
-        <li key={ index }>
+        <li key={ index } onKeyUp={(event)=>this.handleKeyUp(event, index)}>
           <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
             <span>{ mainMenu.linkTitle }</span>
             <div className={ styles.triangleNew }></div>
@@ -139,20 +159,16 @@ class Header extends React.Component {
         <div className="hidden-xs hidden-sm">
           <header className={ styles.headerNew }>
             <div className={ styles.navbarNew }>
-              <a href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
+              <a tabIndex="-1" href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-                <div id={ styles.googleTranslateElement }></div>
-                <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } href="#">Translate</a>
-                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espaol</a>
+                <Translate />
+                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espa&#241;ol</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login?destination=about-sba%2Fwhat-we-do%2Fcontact-sba">Log In</a>
-                <a id="search-toggle-link" tabIndex="0" href="#"><i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>
-                <form id={ styles.searchBarNew }>
-                  <input id={ styles.searchInputNew } type='text' placeholder='Search'></input><i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
-                </form>
+                <Search />
               </nav>
               <br/>
               <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew }>
@@ -170,14 +186,14 @@ class Header extends React.Component {
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                      <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                          <div>
-                            <div className={ styles.menuBtnTextNew }>MENU</div>
-                            <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                            <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                          </div>
-                        </a>
-                    </span>
+                <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                    <div>
+                      <div className={ styles.menuBtnTextNew }>MENU</div>
+                      <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                      <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                    </div>
+                  </a>
+              </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
@@ -208,6 +224,70 @@ class Header extends React.Component {
       </div>
       );
   }
+}
+
+export class Translate extends React.Component { 
+
+  constructor() { 
+    super(); 
+    this.state = {  translate: false  } 
+  }  
+
+  toggleTranslate() { 
+    this.setState({ 
+      translate: !this.state.translate 
+    }) ;
+
+  }   
+
+  componentDidMount(){
+    console.log(this.state.translate);
+      if(this.state.translate === true){
+          this.googleTranslateHtml.isVisible = true;
+      }
+  }
+
+  render() { 
+
+    return (
+        <div style={{display: 'inline-block'}}>
+          <div tabIndex="0" id="google_translate_element" ref={(translateHtml)=>{this.googleTranslateHtml = translateHtml; console.log(this.googleTranslateHtml);}}></div>
+          <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew} onClick={this.toggleTranslate.bind(this)} href="#">Translate</a>
+        </div>
+        ) ;
+  } 
+}
+
+export class Search extends React.Component { 
+  constructor() { 
+    super(); 
+    this.state = { 
+      search: false 
+    } 
+  }  
+
+  toggleSearch() { 
+    this.setState({ 
+      search: !this.state.search  }) 
+  }   
+
+  render() { 
+    let search = "";
+    if(this.state.search){
+      search = (<form id={ styles.searchBarNew }>
+                  <input id={ styles.searchInputNew } type='text' placeholder='Search'></input><i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
+                </form>
+      );
+    }else{
+      search = (<a id="search-toggle-link" tabIndex="0" href="#"><i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
+    }
+    return (
+
+      <div style={{display: 'inline-block'}}>
+          {search}
+      </div>
+    ) ;
+  } 
 }
 
 Header.defaultProps = {
