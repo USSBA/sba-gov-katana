@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import * as BusinessInfoActions from '../../actions/business-info.js'
+import * as LenderMatchActions from '../../actions/lender-match.js'
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState } from '../helpers/page-validator-helpers.jsx'
