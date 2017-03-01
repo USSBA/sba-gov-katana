@@ -45,8 +45,9 @@ class Header extends React.Component {
 
     handleGoogleTranslateClick(e) {
         event.preventDefault();
-        console.log(this.googleTranslateHtml);
-        this.googleTranslateHtml.isVisible = true;
+        this.setState({
+          translate: !this.state.translate
+        });
     }
 
   submitSearch(e) {
@@ -166,7 +167,7 @@ class Header extends React.Component {
             <div className={ styles.navbarNew }>
               <a href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-                <div className={ styles.googleTranslateElement } id="google_translate_element" ref={(translateHtml)=>{this.googleTranslateHtml = translateHtml;}}></div>
+                <div className={ this.state.translate ? styles.googleTranslateElementVisible : styles.googleTranslateElement } id="google_translate_element"></div>
                   {googleTranslateBtn}
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espaol</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>

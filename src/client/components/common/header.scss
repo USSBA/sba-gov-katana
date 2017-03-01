@@ -207,7 +207,7 @@
     .miniNavNew{
         position: absolute;
         height: 2.1vw;
-        top: 2vw;
+        top: 3vw;
         right: 0;
     }
 
@@ -255,6 +255,12 @@
         display: inline-block;
         height: 2.2vw;
         visibility: hidden;
+    }
+
+    .googleTranslateElementVisible {
+        display: inline-block;
+        height: 2.2vw;
+        visibility: visible;;
     }
 
 
