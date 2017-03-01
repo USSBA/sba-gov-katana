@@ -153,7 +153,7 @@ class Header extends React.Component {
     }
 
     const searchBar = this.state.searchExpanded ? (
-      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={this.submitSearch.bind(this)} >
+      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
         <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyPress={ this.handleKeyPressOnSearch }></input>
         <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>)
@@ -170,7 +170,7 @@ class Header extends React.Component {
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
                 <div className={ this.state.translate ? styles.googleTranslateElementVisible : styles.googleTranslateElement } id="google_translate_element"></div>
                 { googleTranslateBtn }
-                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espaol</a>
+                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA en español</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
@@ -193,7 +193,7 @@ class Header extends React.Component {
               <a href="/">
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
-              /*esfmt-ignore-start*/
+              { /*esfmt-ignore-start*/}
               <span>
                 <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
                     <div>
@@ -203,7 +203,7 @@ class Header extends React.Component {
                     </div>
                 </a>
               </span>
-              /*esfmt-ignore-end*/
+              {/*esfmt-ignore-end*/ }
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
