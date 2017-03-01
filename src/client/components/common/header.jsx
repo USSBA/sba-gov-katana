@@ -38,17 +38,18 @@ class Header extends React.Component {
 
   handleSearchChange(e) {
     event.preventDefault();
+    console.log(event.target);
     this.setState({
       searchValue: e.target.value
     });
   }
 
-    handleGoogleTranslateClick(e) {
-        event.preventDefault();
-        this.setState({
-          translate: !this.state.translate
-        });
-    }
+  handleGoogleTranslateClick(e) {
+    event.preventDefault();
+    this.setState({
+      translate: !this.state.translate
+    });
+  }
 
   submitSearch(e) {
     e.preventDefault();
@@ -152,14 +153,14 @@ class Header extends React.Component {
     }
 
     const searchBar = this.state.searchExpanded ? (
-      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) }>
-        <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) }></input>
+      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={this.submitSearch.bind(this)} >
+        <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyPress={ this.handleKeyPressOnSearch }></input>
         <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>)
       : (<a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
            <i id="search-toggle" alt="search icon" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
 
-    let googleTranslateBtn = this.state.translate ? "" : <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } onClick={this.handleGoogleTranslateClick.bind(this)} href="#">Translate</a>;
+    let googleTranslateBtn = this.state.translate ? "" : <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } onClick={ this.handleGoogleTranslateClick.bind(this) } href="#">Translate</a>;
     return (
       <div>
         <div className="hidden-xs hidden-sm">
@@ -168,7 +169,7 @@ class Header extends React.Component {
               <a href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
                 <div className={ this.state.translate ? styles.googleTranslateElementVisible : styles.googleTranslateElement } id="google_translate_element"></div>
-                  {googleTranslateBtn}
+                { googleTranslateBtn }
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espaol</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
@@ -193,14 +194,14 @@ class Header extends React.Component {
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                                    <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                        <div>
-                                          <div className={ styles.menuBtnTextNew }>MENU</div>
-                                          <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                          <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                        </div>
-                                      </a>
-                                  </span>
+                                          <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                                              <div>
+                                                <div className={ styles.menuBtnTextNew }>MENU</div>
+                                                <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                                                <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                                              </div>
+                                            </a>
+                                        </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
