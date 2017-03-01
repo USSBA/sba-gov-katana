@@ -74,7 +74,7 @@
         padding-right: 0.5vw;
         height: 3.5vw;
         cursor: pointer;
-        text-decoration: none ;
+        text-decoration: none !important;
     }
 
     .mainNavNew > ul > li:first-child > a {
@@ -218,7 +218,7 @@
         line-height: 0px ;
         margin-left: 1.25vw;
         margin-top: 0.5vw ;
-        text-decoration: none ;
+        text-decoration: none !important;
         font-family: 'Source Sans Pro', sans-serif ;
     }
 
