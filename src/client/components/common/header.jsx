@@ -17,6 +17,7 @@ class Header extends React.Component {
     this.state = {
       expanded: false,
       searchExpanded: false,
+      translate: false,
       searchValue: ""
     };
   }
@@ -41,6 +42,12 @@ class Header extends React.Component {
       searchValue: e.target.value
     });
   }
+
+    handleGoogleTranslateClick(e) {
+        event.preventDefault();
+        console.log(this.googleTranslateHtml);
+        this.googleTranslateHtml.isVisible = true;
+    }
 
   submitSearch(e) {
     e.preventDefault();
@@ -150,7 +157,8 @@ class Header extends React.Component {
       </form>)
       : (<a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
            <i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
-    console.log(searchBar);
+
+    let googleTranslateBtn = this.state.translate ? "" : <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } onClick={this.handleGoogleTranslateClick.bind(this)} href="#">Translate</a>;
     return (
       <div>
         <div className="hidden-xs hidden-sm">
@@ -158,8 +166,8 @@ class Header extends React.Component {
             <div className={ styles.navbarNew }>
               <a href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-                <div id={ styles.googleTranslateElement }></div>
-                <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } href="#">Translate</a>
+                <div className={ styles.googleTranslateElement } id="google_translate_element" ref={(translateHtml)=>{this.googleTranslateHtml = translateHtml;}}></div>
+                  {googleTranslateBtn}
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espaol</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>

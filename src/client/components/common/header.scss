@@ -251,9 +251,10 @@
         width: 20vw;
     }
 
-    #googleTranslateElement {
+    .googleTranslateElement {
         display: inline-block;
         height: 2.2vw;
+        visibility: hidden;
     }
 
 
