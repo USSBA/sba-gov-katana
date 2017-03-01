@@ -144,8 +144,8 @@ class Header extends React.Component {
     }
 
     const searchBar = this.state.searchExpanded ? (
-      <form id={ styles.searchBarNew } onBlur={this.handleSearchToggle.bind(this)}>
-        <input autoFocus id={ styles.searchInputNew }  type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) }></input>
+      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) }>
+        <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) }></input>
         <i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>)
       : (<a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
@@ -184,14 +184,14 @@ class Header extends React.Component {
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                              <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                  <div>
-                                    <div className={ styles.menuBtnTextNew }>MENU</div>
-                                    <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                    <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                  </div>
-                                </a>
-                            </span>
+                                    <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                                        <div>
+                                          <div className={ styles.menuBtnTextNew }>MENU</div>
+                                          <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                                          <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                                        </div>
+                                      </a>
+                                  </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
