@@ -28,11 +28,11 @@ class Header extends React.Component {
     });
   }
 
-  handleSearchToggle(e){
-     e.preventDefault();
-     this.setState({
-       searchExpanded: !this.state.searchExpanded
-     });
+  handleSearchToggle(e) {
+    e.preventDefault();
+    this.setState({
+      searchExpanded: !this.state.searchExpanded
+    });
   }
 
   handleSearchChange(e) {
@@ -144,13 +144,13 @@ class Header extends React.Component {
     }
 
     const searchBar = this.state.searchExpanded ? (
-        <form id={ styles.searchBarNew }>
-              <input id={ styles.searchInputNew } type='text' placeholder='Search' onChange={this.handleSearchChange.bind(this)}></input>
-              <i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onClick={this.submitSearch.bind(this)}></i>
-        </form>)
-        : (<a id="search-toggle-link" tabIndex="0" onClick={this.handleSearchToggle.bind(this)}>
+      <form id={ styles.searchBarNew }>
+        <input id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) }></input>
+        <i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onClick={ this.submitSearch.bind(this) }></i>
+      </form>)
+      : (<a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
            <i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
-               console.log(searchBar);
+    console.log(searchBar);
     return (
       <div>
         <div className="hidden-xs hidden-sm">
@@ -166,7 +166,7 @@ class Header extends React.Component {
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login?destination=about-sba%2Fwhat-we-do%2Fcontact-sba">Log In</a>
-                {searchBar}
+                { searchBar }
               </nav>
               <br/>
               <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew }>
@@ -184,14 +184,14 @@ class Header extends React.Component {
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
               <span>
-                  <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                      <div>
-                        <div className={ styles.menuBtnTextNew }>MENU</div>
-                        <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                        <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                      </div>
-                    </a>
-                </span>
+                              <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                                  <div>
+                                    <div className={ styles.menuBtnTextNew }>MENU</div>
+                                    <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                                    <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                                  </div>
+                                </a>
+                            </span>
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>
