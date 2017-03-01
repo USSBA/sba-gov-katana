@@ -20,13 +20,11 @@ function create(formData) {
   });
 }
 
-function retrieve(lenderMatchRecordId) {
+function retrieve(query) {
   return new Promise((resolve, reject) => {
     var collection = dbConnection.collection("lenderMatchRecord");
     // Insert some documents
-    collection.findOne({
-      _id: lenderMatchRecordId
-    }, function(err, result) {
+    collection.findOne(query, function(err, result) {
       if (err) {
         reject(err);
       } else {

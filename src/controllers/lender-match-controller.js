@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 import HttpStatus from "http-status-codes";
-import { createLenderMatchRegistration, confirmEmail } from "../service/linc-service.js";
+import { createLenderMatchRegistration, confirmEmail, resendConfirmationEmail } from "../service/linc-service.js";
 
 
 function handleLenderMatchSubmission(req, res) {
@@ -79,4 +79,19 @@ function handleEmailConfirmation(req, res) {
       });
   }
 }
-export { handleLenderMatchSubmission, handleEmailConfirmation };
+
+function handleResendEmailConfirmation(req, res) {
+  if (req.body && req.body.emailAddress) {
+    resendConfirmationEmail(req.body.emailAddress)
+      .then((result) => {
+        res.status(HttpStatus.NO_CONTENT).send();
+      })
+      .catch((error) => {
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("The server encountered an error.  Please try again later or contact the helpdesk.");
+      });
+  } else {
+    res.status(HttpStatus.BAD_REQUEST, "Email Address is required to resend confirmation email");
+  }
+}
+
+export { handleLenderMatchSubmission, handleEmailConfirmation, handleResendEmailConfirmation };

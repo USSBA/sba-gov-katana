@@ -66,11 +66,12 @@ function findUnconfirmedRegistrations() {
 
 
 function findLenderMatchRegistrationByConfirmation(emailConfirmationRecord) {
-  return lenderMatchRegistrationDao.retrieve(emailConfirmationRecord.lenderMatchRegistrationId);
+  return lenderMatchRegistrationDao.retrieve({
+    _id: emailConfirmationRecord.lenderMatchRegistrationId
+  });
 }
 
 function sendFollowupConfirmations(emailConfirmationRecords) {
-  console.log(emailConfirmationRecords);
   return Promise.map(emailConfirmationRecords, (emailConfirmationRecord) => {
     return findLenderMatchRegistrationByConfirmation(emailConfirmationRecord)
       .then(function(lenderMatchRegistration) {
@@ -90,7 +91,7 @@ function sendFollowupConfirmations(emailConfirmationRecords) {
 
 
 
-function resendEmailJob() {
+function followupEmailJob() {
   return findUnconfirmedRegistrations().then(sendFollowupConfirmations);
 }
 
@@ -127,7 +128,9 @@ function confirmEmail(token) {
           });
           return emailConfirmationDao.update(confirmedRecord).then(function(result) {
             // AYO submit OCA request
-            return lenderMatchRegistrationDao.retrieve(result.value.lenderMatchRegistrationId)
+            return lenderMatchRegistrationDao.retrieve({
+              _id: result.value.lenderMatchRegistrationId
+            })
               .then(function(lenderMatchRegistration) {
                 sendDataToOca(lenderMatchRegistration);
                 return "success";
@@ -142,4 +145,20 @@ function confirmEmail(token) {
     });
 }
 
-export { createLenderMatchRegistration, confirmEmail, resendEmailJob };
+function resendConfirmationEmail(emailAddress) {
+  return lenderMatchRegistrationDao.retrieve({
+    emailAddress: emailAddress
+  })
+    .then(function(lenderMatchRegistration) {
+      return emailConfirmationDao.retrieveOne({
+        lenderMatchRegistrationId: lenderMatchRegistration._id
+      })
+        .then((emailConfirmationRecord) => {
+          return [lenderMatchRegistration.name, lenderMatchRegistration.emailAddress, lenderMatchRegistration._id, emailConfirmationRecord.token];
+        });
+    })
+    .spread(createConfirmationEmail);
+}
+
+
+export { createLenderMatchRegistration, confirmEmail, followupEmailJob, resendConfirmationEmail };
