@@ -153,10 +153,10 @@ class Header extends React.Component {
     const searchBar = this.state.searchExpanded ? (
       <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) }>
         <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) }></input>
-        <i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
+        <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>)
       : (<a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
-           <i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
+           <i id="search-toggle" alt="search icon" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
 
     let googleTranslateBtn = this.state.translate ? "" : <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } onClick={this.handleGoogleTranslateClick.bind(this)} href="#">Translate</a>;
     return (
