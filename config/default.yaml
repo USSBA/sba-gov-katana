@@ -20,13 +20,20 @@ linc:
     resendFrequency: 86400
     numberOfSecondsForWhichEmailIsValid: 86400
 database:
-    mongoConnectString: mongodb://mongodb:27017/sba
-    mysql:
-      connectionLimit: 100
-      database: placeholder
-      host: placeholder
-      password: placeholder
-      user: placeholder
+    pool:
+        max: 100
+        min: 0
+        idle: 1000
+    nonDrupal:
+        databaseName: placeholder
+        host: placeholder
+        password: placeholder
+        user: placeholder
+    drupal:
+        databaseName: placeholder
+        host: placeholder
+        password: placeholder
+        user: placeholder
 oca:
     soap:
         username: placeholder

@@ -81,6 +81,7 @@
     "request": "^2.79.0",
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.2",
+    "sequelize": "^3.30.2",
     "slick-carousel": "1.6.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

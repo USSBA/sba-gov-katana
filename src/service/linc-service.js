@@ -7,13 +7,13 @@ import _ from "lodash";
 import Promise from "bluebird";
 
 import { sendConfirmationEmail } from "../util/emailer.js";
-import * as lenderMatchRegistrationDao from "../models/dao/lender-match-record.js";
-import * as emailConfirmationDao from "../models/dao/email-confirmation.js";
+import LenderMatchRegistration from "../models/lender-match-registration.js";
+import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
 
 import LincSoapRequest from "./linc-soap-request.js";
 
-function createConfirmationEmail(name, emailAddress, lenderMatchRecordId, tokenString) {
+function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString) {
   let token = tokenString;
   if (!token) {
     token = uuid.v4();
@@ -36,19 +36,23 @@ function createConfirmationEmail(name, emailAddress, lenderMatchRecordId, tokenS
     .then(function() {
       return {
         sent: moment().unix(),
+        sentFollowup: null,
         token: token,
-        lenderMatchRegistrationId: lenderMatchRecordId
+        lenderMatchRegistrationId: lenderMatchRegistrationId
       };
     });
 }
 
 function createLenderMatchRegistration(data) {
-  return lenderMatchRegistrationDao.create(data) // TODO: trim this to certain properties that are needed
+  return LenderMatchRegistration.create(data)
     .then(function(result) {
-      return [data.name, data.emailAddress, result._id];
+      return [data.name, data.emailAddress, result.id];
     })
     .spread(createConfirmationEmail)
-    .then(emailConfirmationDao.create);
+    .tap(console.log)
+    .then(function(toCreate) {
+      return EmailConfirmation.create(toCreate);
+    });
 }
 
 
@@ -56,7 +60,7 @@ function createLenderMatchRegistration(data) {
 
 function findUnconfirmedRegistrations() {
   const lastExecution = moment().subtract(config.get("linc.resendFrequency"), "seconds");
-  return emailConfirmationDao.retrieve({
+  return EmailConfirmation.findAll({
     sent: {
       $gte: lastExecution.unix()
     }
@@ -65,27 +69,21 @@ function findUnconfirmedRegistrations() {
 
 
 
-function findLenderMatchRegistrationByConfirmation(emailConfirmationRecord) {
-  return lenderMatchRegistrationDao.retrieve({
-    _id: emailConfirmationRecord.lenderMatchRegistrationId
-  });
-}
-
-function sendFollowupConfirmations(emailConfirmationRecords) {
-  return Promise.map(emailConfirmationRecords, (emailConfirmationRecord) => {
-    return findLenderMatchRegistrationByConfirmation(emailConfirmationRecord)
+function sendFollowupConfirmations(emailConfirmations) {
+  return Promise.map(emailConfirmations, (emailConfirmation) => {
+    return LenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
       .then(function(lenderMatchRegistration) {
         const name = lenderMatchRegistration.name;
         const emailAddress = lenderMatchRegistration.emailAddress;
-        return [name, emailAddress, emailConfirmationRecord.token, lenderMatchRegistration._id];
+        return [name, emailAddress, emailConfirmation.token, lenderMatchRegistration.id];
       })
       .then(createConfirmationEmail)
       .then(function(result) {
-        return _.merge({}, emailConfirmationRecord, {
+        return _.merge({}, emailConfirmation, {
           sentFollowup: result.sent
         });
       })
-      .then(emailConfirmationDao.update);
+      .then(EmailConfirmation.update);
   });
 }
 
@@ -115,21 +113,19 @@ function sendDataToOca(lenderMatchRegistration) {
 }
 
 function confirmEmail(token) {
-  emailConfirmationDao.retrieveOne({
-    token: token
-  })
-    .then(function(emailConfirmationRecord) {
-      if (emailConfirmationRecord) {
-        const expiration = moment(emailConfirmationRecord.sent).add(config.get("linc.numberOfSecondsForWhichEmailIsValid"), "seconds");
+  return EmailConfirmation.findById(token)
+    .then(function(emailConfirmation) {
+      if (emailConfirmation) {
+        const expiration = moment(emailConfirmation.sent).add(config.get("linc.numberOfSecondsForWhichEmailIsValid"), "seconds");
         const now = moment().unix();
         if (expiration.isBefore(now)) {
-          const confirmedRecord = _.merge({}, emailConfirmationRecord, {
+          const confirmedRecord = _.merge({}, emailConfirmation, {
             confirmed: now
           });
-          return emailConfirmationDao.update(confirmedRecord).then(function(result) {
+          return EmailConfirmation.update(confirmedRecord).then(function(result) {
             // AYO submit OCA request
-            return lenderMatchRegistrationDao.retrieve({
-              _id: result.value.lenderMatchRegistrationId
+            return LenderMatchRegistration.retrieve({
+              id: result.value.lenderMatchRegistrationId
             })
               .then(function(lenderMatchRegistration) {
                 sendDataToOca(lenderMatchRegistration);
@@ -146,15 +142,19 @@ function confirmEmail(token) {
 }
 
 function resendConfirmationEmail(emailAddress) {
-  return lenderMatchRegistrationDao.retrieve({
-    emailAddress: emailAddress
+  return LenderMatchRegistration.findOne({
+    where: {
+      emailAddress: emailAddress
+    }
   })
     .then(function(lenderMatchRegistration) {
-      return emailConfirmationDao.retrieveOne({
-        lenderMatchRegistrationId: lenderMatchRegistration._id
+      return EmailConfirmation.findOne({
+        where: {
+          lenderMatchRegistrationId: lenderMatchRegistration.id
+        }
       })
-        .then((emailConfirmationRecord) => {
-          return [lenderMatchRegistration.name, lenderMatchRegistration.emailAddress, lenderMatchRegistration._id, emailConfirmationRecord.token];
+        .then((emailConfirmation) => {
+          return [lenderMatchRegistration.name, lenderMatchRegistration.emailAddress, lenderMatchRegistration.id, emailConfirmation.token];
         });
     })
     .spread(createConfirmationEmail);
