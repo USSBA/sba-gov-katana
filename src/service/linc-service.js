@@ -60,11 +60,11 @@ function createLenderMatchRegistration(data) {
 
 function findUnconfirmedRegistrations() {
   const lastExecution = moment().subtract(config.get("linc.resendFrequency"), "seconds");
-  return EmailConfirmation.findAll({
+  return EmailConfirmation.findAll({where :{
     sent: {
-      $gte: lastExecution.unix()
+      gte: lastExecution.unix()
     }
-  });
+  }});
 }
 
 
@@ -79,11 +79,10 @@ function sendFollowupConfirmations(emailConfirmations) {
       })
       .then(createConfirmationEmail)
       .then(function(result) {
-        return _.merge({}, emailConfirmation, {
-          sentFollowup: result.sent
+          return emailConfirmation.update({
+            sentFollowup: result.sent
         });
-      })
-      .then(EmailConfirmation.update);
+      });
   });
 }
 
