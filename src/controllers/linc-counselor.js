@@ -4,6 +4,7 @@ import { fetchCounselorsByLocation } from "../models/dao/linc-counselor";
 function getCounselorsByLocation(req, res) {
   fetchCounselorsByLocation(req.body.zipcode)
     .then(function(counselors) {
+      console.log("oi");
       console.log(counselors);
     });
   res.status(HttpStatus.OK).send("testingtesting");
