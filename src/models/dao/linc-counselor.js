@@ -40,10 +40,6 @@ function createCounselorsByLocationQuery(zipCoords) {
   return queryArr.join("");
 }
 
-function queryDataToJson(packet) {
-  return JSON.parse(JSON.stringify(packet));
-}
-
 function fetchUserZipCoords(zipcode) {
   const query = mysql.format("SELECT * from zipcodes WHERE zipcodes.zip = ?;", zipcode); //mysql.format to prevent sql inject
   return executeQuery(query)
@@ -53,6 +49,10 @@ function fetchUserZipCoords(zipcode) {
         longitude: zipCoords[0].longitude
       };
     });
+}
+
+function queryDataToJson(data) {
+  return JSON.parse(JSON.stringify(data));
 }
 
 function fetchCounselorsByLocation(zipcode) {

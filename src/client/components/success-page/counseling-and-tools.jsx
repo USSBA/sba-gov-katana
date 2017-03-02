@@ -19,7 +19,7 @@ export class DynamicCounselingAndTools extends React.Component {
         //document.location = res.data.redirectTo
         console.log(res)
       })
-      .then(function(err) {
+      .catch((err) => {
         console.log(err)
       })
   }
