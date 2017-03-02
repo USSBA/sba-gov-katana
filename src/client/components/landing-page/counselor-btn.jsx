@@ -28,7 +28,7 @@ export class CounselorBtn extends React.Component {
         newTab.location = res.data.redirectTo;
       })
       .then(function(err) {
-        console.log(err)
+        console.error(err)
       })
   }
 

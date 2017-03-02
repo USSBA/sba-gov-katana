@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import * as IndustryInfoActions from '../../actions/industry-info.js'
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
@@ -17,7 +17,6 @@ class IndustryInfoForm extends React.Component {
       industryExperience: "",
     }, props.industryInfoFields);
     let validStates = {};
-    console.log(industryInfoFields);
     if (industryInfoFields.industryType) {
       validStates = Object.assign(validStates, this.getValidationState("industryType", industryInfoFields.industryType));
     }
@@ -119,13 +118,13 @@ class IndustryInfoForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    industryInfoFields: state.industryInfoReducer.industryInfoData
+    industryInfoFields: state.lenderMatch.industryInfoData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(IndustryInfoActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 

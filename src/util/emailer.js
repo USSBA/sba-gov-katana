@@ -24,7 +24,7 @@ function sendConfirmationEmail(options) {
     };
     var mailOptions = _.assign({}, defaultMailOptions, options);
     if (config.get("email.debugEmailOnly")) {
-      console.log("Email sender would have sent:" + JSON.stringify(mailOptions));
+      console.log("Email sender would have sent:" + JSON.stringify(mailOptions, 0, 4)); //eslint-disable-line no-magic-numbers
       resolve();
     } else {
       // send mail with defined transport object
