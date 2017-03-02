@@ -45,7 +45,7 @@ export class DynamicCounselingAndTools extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoData: state.businessInfoReducer.businessInfoData
+    businessInfoData: state.lenderMatch.businessInfoData
   };
 }
 

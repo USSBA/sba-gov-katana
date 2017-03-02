@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import { FormPanel } from '../common/form-styling.jsx'
-import * as LoanActions from '../../actions/loan-form.js'
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from '../../styles/lender-match/lender-match.scss';
@@ -141,13 +141,13 @@ export class LoanInfo extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    loanFields: reduxState.loanReducer.loanData
+    loanFields: reduxState.lenderMatch.loanData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LoanActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as LoanActions from '../../actions/loan-form.js';
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import Steps from 'react-steps';
 import { indexOf, chain, startCase } from 'lodash';
 import { Panel, ButtonToolbar, Glyphicon } from 'react-bootstrap';
@@ -53,7 +53,7 @@ function mapReduxStateToProps(reduxState, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LoanActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(LoanForm);
