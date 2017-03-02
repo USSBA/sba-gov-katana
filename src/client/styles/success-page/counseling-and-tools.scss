@@ -1,30 +1,101 @@
 @import "../buttons";
 
 .section {
-  font-weight: lighter;
+  font-family: "Avenir Next";
   background: #efefef;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .title {
-  font-size: 28px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 2.2vw;
+  text-align: center;
+  font-weight: normal;
+  color: #4A4A4A;
+  margin-bottom: 2.8vw;
 }
 
 .subTitle {
-  margin-top:4px;
-  font-size: 13px;
-  font-weight:bold;
-}
-
-.subText {
-  font-size: 13px;
+  margin-top: 4px;
+  font-size: 1.1vw;
+  text-align: center;
+  margin-bottom: 1.9vw;
+  color: #4A4A4A;
 }
 
 .seeMoreBtn{
   composes: helpBtn;
   background: #efefef;
-  width: 100%;
+  width: 17.1vw;
+  height: 3.1vw;
+  display: block;
+  margin: auto;
+  margin-top: 2.1vw;
 }
+
+.counselorContainer {
+  height: 15.7vw;
+  text-align: center;
+  clear: both;
+}
+
+.counselorBox {
+  display: inline-block;
+  vertical-align: top;
+  width: 19.4vw;
+  height: 13.7vw;
+  margin-right: 4vw;
+  margin-top: 0;
+}
+
+.counselorBox:last-child {
+  margin-right: 0;
+}
+
+.counselorTitle {
+  font-family: "Avenir Next";
+  font-size: 1.3vw;
+  font-weight: 600;
+  text-align: center;
+  color: #4A4A4A;
+  margin-bottom: 2.2vw;
+}
+
+.counselorAttr {
+  font-family: "Avenir Next";
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+
+
+.loader {
+  display: inline-block;
+  text-align: center;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #4A4A4A; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
