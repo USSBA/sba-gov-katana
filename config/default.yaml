@@ -23,10 +23,10 @@ database:
     mongoConnectString: mongodb://mongodb:27017/sba
     mysql:
       connectionLimit: 100
-      database: sba_dev
-      host: localhost
-      password: Fearless1
-      user: root
+      database: placeholder
+      host: placeholder
+      password: placeholder
+      user: placeholder
 oca:
     soap:
         username: placeholder
