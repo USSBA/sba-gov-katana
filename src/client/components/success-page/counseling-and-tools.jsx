@@ -12,12 +12,16 @@ export class DynamicCounselingAndTools extends React.Component {
   }
 
   componentWillMount() {
-    // axios.get('/matchCounselors', {
-    //   zipcode: this.props.businessInfoData.businessInfoZipcode
-    // })
-    //   .then(function(res) {
-    //     document.location = res.data.redirectTo
-    //   });
+    axios.post('/matchCounselors', {
+      zipcode: "33452"
+    })
+      .then(function(res) {
+        //document.location = res.data.redirectTo
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   render() {
