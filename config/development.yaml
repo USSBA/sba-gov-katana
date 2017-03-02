@@ -3,7 +3,7 @@ developmentOptions:
         enabled: true
         silent: false
 drupal:
-    hostname: http://sbagov.fearlesstesters.com/
+    hostname: https://www.sbagov2.fearlesstesters.com/
 email:
     debugEmailOnly: false
 database:

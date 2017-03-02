@@ -11,8 +11,8 @@ class PrimaryLanding extends React.Component {
   render() {
     return (
       <div className={ styles.container }>
-        <Image alt="banner image of small business owner" className={ styles.hero } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/primarylanding-hero.jpg" } />
-        <Image alt="banner image of small business owner" className={ styles.mobileHero } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/primarylanding-mobile-hero.png" } />
+        <Image alt="banner image of small business owner" className={ styles.hero } src={ "assets/images/homepage/primarylanding-hero.jpg" } />
+        <Image alt="banner image of small business owner" className={ styles.mobileHero } src={ "assets/images/homepage/primarylanding-mobile-hero.png" } />
         <Box/>
       </div>
     )

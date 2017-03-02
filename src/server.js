@@ -43,9 +43,13 @@ app.get("/", function(req, res) {
   res.render("main", metaVariables);
 });
 
-import * as matchController from "./controllers/match-controller.js";
-app.post("/linc/matchFormData", jsonParser, matchController.handleLenderMatchSubmission);
-app.get("/linc/confirmEmail", matchController.handleEmailConfirmation);
+import * as lenderMatchController from "./controllers/lender-match-controller.js";
+app.get(["/linc", "/linc/", "/linc/*"], function(req, res) {
+  res.render("main", metaVariables);
+});
+app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
+app.get("/linc/confirmEmail", lenderMatchController.handleEmailConfirmation);
+app.post("/linc/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
 app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
   const zipStr = "zip:" + req.body.zipcode + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
@@ -84,10 +88,8 @@ app.get("/content/disaster.json", fetchDisaster);
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
-app.get(["/", "/linc/*"], function(req, res) {
-  res.render("main", metaVariables);
 
-});
+
 
 // development error handler
 // will print stacktrace

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
-import * as BusinessInfoActions from '../../actions/business-info.js'
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState } from '../helpers/page-validator-helpers.jsx'
@@ -129,13 +129,13 @@ class BusinessInfoForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoFields: state.businessInfoReducer.businessInfoData
+    businessInfoFields: state.lenderMatch.businessInfoData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(BusinessInfoActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 

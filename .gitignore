@@ -47,7 +47,8 @@ jspm_packages
 config/*local*
 
 # DS_Store
-**/.DS_Store
+.DS_Store
+*/**/.DS_Store
 
 # Developer personal probe scripts
 scripts/probes

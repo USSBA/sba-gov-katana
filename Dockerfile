@@ -2,7 +2,6 @@ FROM node:7.0.0
 
 WORKDIR /tmp
 COPY package.json /tmp/
-COPY node_modules/react-slick /tmp/hax/react-slick
 RUN npm config set registry http://registry.npmjs.org/ && npm install
 
 WORKDIR /usr/src/app

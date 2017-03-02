@@ -16,6 +16,8 @@ class Header extends React.Component {
     super();
     this.state = {
       expanded: false,
+      searchExpanded: false,
+      translate: false,
       searchValue: ""
     };
   }
@@ -27,10 +29,25 @@ class Header extends React.Component {
     });
   }
 
+  handleSearchToggle(e) {
+    e.preventDefault();
+    this.setState({
+      searchExpanded: !this.state.searchExpanded
+    });
+  }
+
   handleSearchChange(e) {
     event.preventDefault();
+    console.log(event.target);
     this.setState({
       searchValue: e.target.value
+    });
+  }
+
+  handleGoogleTranslateClick(e) {
+    event.preventDefault();
+    this.setState({
+      translate: !this.state.translate
     });
   }
 
@@ -114,11 +131,12 @@ class Header extends React.Component {
          </ul>
         );
 
+      const triangleMarker = isEmpty(subMenuContainer) ? "" : (<div className={ styles.triangleNew }></div>);
       menuContainer.push(
         <li key={ index }>
           <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
             <span>{ mainMenu.linkTitle }</span>
-            <div className={ styles.triangleNew }></div>
+            { triangleMarker }
           </a>
           { subMenu }
         </li>);
@@ -134,6 +152,15 @@ class Header extends React.Component {
       menuContainer.push(<div></div>);
     }
 
+    const searchBar = this.state.searchExpanded ? (
+      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
+        <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyPress={ this.handleKeyPressOnSearch }></input>
+        <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
+      </form>)
+      : (<a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
+           <i id="search-toggle" alt="search icon" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
+
+    let googleTranslateBtn = this.state.translate ? "" : <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } onClick={ this.handleGoogleTranslateClick.bind(this) } href="#">Translate</a>;
     return (
       <div>
         <div className="hidden-xs hidden-sm">
@@ -141,18 +168,15 @@ class Header extends React.Component {
             <div className={ styles.navbarNew }>
               <a href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-                <div id={ styles.googleTranslateElement }></div>
-                <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } href="#">Translate</a>
-                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espaol</a>
+                <div className={ this.state.translate ? styles.googleTranslateElementVisible : styles.googleTranslateElement } id="google_translate_element"></div>
+                { googleTranslateBtn }
+                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA en español</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login?destination=about-sba%2Fwhat-we-do%2Fcontact-sba">Log In</a>
-                <a id="search-toggle-link" tabIndex="0" href="#"><i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>
-                <form id={ styles.searchBarNew }>
-                  <input id={ styles.searchInputNew } type='text' placeholder='Search'></input><i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
-                </form>
+                { searchBar }
               </nav>
               <br/>
               <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew }>
@@ -169,15 +193,17 @@ class Header extends React.Component {
               <a href="/">
                 <img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } />
               </a>
+              { /*esfmt-ignore-start*/}
               <span>
-                                                                                                                                                                                                                                                    <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
-                                                                                                                                                                                                                                                        <div>
-                                                                                                                                                                                                                                                          <div className={ styles.menuBtnTextNew }>MENU</div>
-                                                                                                                                                                                                                                                          <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
-                                                                                                                                                                                                                                                          <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
-                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                      </a>
-                                                                                                                                                                                                                                                  </span>
+                <a className={ styles.menuBtnNew }  onClick={ this.toggleNav.bind(this) }>
+                    <div>
+                        <div className={ styles.menuBtnTextNew }>MENU</div>
+                        <img className={ styles.menuIconHamburgerNew } alt="" src={ hamburger } />
+                        <img className={ styles.menuIconCloseNew } alt="" src={ hamburgerClose } />
+                    </div>
+                </a>
+              </span>
+              {/*esfmt-ignore-end*/ }
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded ? styles.mainNavNewShow : "") }>
               <form className={ styles.mobileSearchContainerNew }>

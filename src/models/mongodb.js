@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 import config from "config";
-
+import Promise from "bluebird";
 
 function init() {
   return new Promise((resolve, reject) => {
@@ -18,4 +18,3 @@ function init() {
 }
 
 module.exports.init = init;
-
