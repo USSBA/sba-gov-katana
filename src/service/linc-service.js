@@ -61,7 +61,7 @@ function createLenderMatchRegistration(data) {
 
 
 function findUnconfirmedRegistrations() {
-  const soonest = moment().subtract(config.get("linc.resendFrequency"), "seconds");
+  const soonest = moment().subtract(config.get("linc.lookback"), "seconds");
   const earliest = moment().subtract(config.get("linc.numberOfSecondsForWhichEmailIsValid"), "seconds");
   return EmailConfirmation.findAll({
     where: {
