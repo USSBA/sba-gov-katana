@@ -1,4 +1,6 @@
-import { nonDrupal } from "./db-connect.js";
+import {
+  nonDrupal
+} from "./db-connect.js";
 import uuid from "uuid";
 import * as Sequelize from "sequelize";
 
@@ -26,7 +28,7 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     type: Sequelize.INTEGER
   },
   industry: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   industryExperience: {
     type: Sequelize.TEXT
@@ -35,7 +37,7 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     type: Sequelize.INTEGER
   },
   loanDescription: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
