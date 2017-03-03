@@ -2,6 +2,9 @@ import React from 'react';
 import { FormGroup, FormControl, Checkbox, ControlLabel, Col } from 'react-bootstrap';
 import styles from '../common/styles.scss';
 import commonStyles from '../../styles/common.scss';
+import MultiSelect from 'react-select';
+import 'react-select/dist/react-select.css';
+import './react-select-helpers.css';
 
 //standard react form components to be used throughout application
 
@@ -11,9 +14,7 @@ export class CurrencyInput extends React.Component {
   }
   render() {
     const {handleChange, handleFormat, value, getValidationState, ...rest} = this.props;
-    return (
-      <TextInput {...rest} getValidationState={ getValidationState } handleChange={ handleChange } onBlur={ handleFormat } value={ value } />
-      );
+    return (<TextInput {...rest} getValidationState={ getValidationState } handleChange={ handleChange } onBlur={ handleFormat } value={ value } />);
   }
 }
 
@@ -24,7 +25,7 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
                                                                                        { props.label }
                                                                                      </ControlLabel>
                                                                                      <FormControl {...props} onChange={ handleChange } />
-                                                                                     <FormControl.Feedback />
+                                                                                     <FormControl.Feedback/>
                                                                                    </FormGroup>
                                                                                    </Col>;
 
@@ -53,3 +54,12 @@ export const CheckBox = ({handleClick, label, getValidationState, ...props}) => 
                                                                                   </Checkbox>
                                                                                 </FormGroup>
                                                                                 </Col>;
+
+export const MultiSelectBox = ({label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
+                                                                         <FormGroup validationState={ getValidationState }>
+                                                                           <ControlLabel className={ styles.controlLabel }>
+                                                                             { label }
+                                                                           </ControlLabel>
+                                                                           <MultiSelect multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," } {...props}/>
+                                                                         </FormGroup>
+                                                                         </Col>;
