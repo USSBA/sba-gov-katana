@@ -50,8 +50,8 @@ app.get(["/linc", "/linc/", "/linc/*"], function(req, res) {
 app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
 app.get("/linc/confirmEmail", lenderMatchController.handleEmailConfirmation);
 app.post("/linc/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
-app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
-  const zipStr = "zip:" + req.body.zipcode + ":distance:50";
+app.get("/content/counselors-redirect.json", function(req, res) {
+  const zipStr = "zip:" + req.query.zip + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
     if (err) {
       throw new Error(err);

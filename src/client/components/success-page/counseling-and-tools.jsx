@@ -13,7 +13,16 @@ export class DynamicCounselingAndTools extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('counselors', 'counselors-by-location', {zip: 22066})
+    this.props.actions.fetchContentIfNeeded('counselors', 'counselors-by-location', {zip: this.props.businessInfoData.businessInfoZipcode})
+  }
+
+  redirectLocalAssistance(){
+    let newTab = window.open("", "_blank");
+    this.props.actions.fetchContentIfNeeded('counselorsRedirect', 'counselors-redirect', {zip: this.props.businessInfoData.businessInfoZipcode})
+      .then((res) => {
+        console.log(res.data.redirectTo);
+        newTab.location = res.data.redirectTo;
+      })
   }
 
   trimStr(str){
@@ -53,7 +62,7 @@ export class DynamicCounselingAndTools extends React.Component {
         <div className={styles.counselorContainer}>
           {counselorBoxes ? this.createCounselorBoxes() : <div className={styles.loader}></div>}
         </div>
-        <button className={styles.seeMoreBtn}>SEE MORE</button>
+        <button className={styles.seeMoreBtn} onClick={() =>  this.redirectLocalAssistance()}>SEE MORE</button>
       </div>
     )
   }
