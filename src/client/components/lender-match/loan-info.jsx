@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {CurrencyInput, TextArea, SelectBox, MultiSelectBox} from '../helpers/form-helpers.jsx'
-import {FormPanel} from '../common/form-styling.jsx'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { CurrencyInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import {browserHistory} from 'react-router';
-import {getSelectBoxValidationState, getCurrencyValidationState} from '../helpers/page-validator-helpers.jsx'
+import { browserHistory } from 'react-router';
+import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from '../../styles/lender-match/lender-match.scss';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 class LoanInfo extends React.Component {
   constructor(props) {
@@ -46,12 +46,17 @@ class LoanInfo extends React.Component {
   }
 
   handleSelectChange(newValue) {
-    console.log(newValue);
-    let newLoanFields = _.merge(this.state.loanFields, {loanDescription: newValue});
-    this.setState({newLoanFields: newLoanFields});
+    let newLoanFields = _.merge(this.state.loanFields, {
+      loanDescription: newValue
+    });
+    this.setState({
+      loanFields: newLoanFields
+    });
     let validStates = this.getValidationState("loanDescription", newValue);
     let newValidStates = _.merge(this.state.validStates, validStates);
-    this.setState({validStates: newValidStates});
+    this.setState({
+      validStates: newValidStates
+    });
   }
 
   handleChange(e) {
@@ -128,28 +133,37 @@ class LoanInfo extends React.Component {
       "Remodeling an existing location",
       "Working Capital"
     ], (x) => {
-      return {label: x, value: x};
+      return {
+        label: x,
+        value: x
+      };
     });
 
     return (
       <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
-        <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={this.handleAmountChange.bind(this)} handleFormat={this.handleFormat.bind(this)} value={this.state.loanFields.loanAmount} getValidationState={this.state.validStates["loanAmount"]} autoFocus required/>
-          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={this.handleSelectChange.bind(this)} getValidationState={this.state.validStates["loanDescription"]} value={this.state.loanFields.loanDescription} options={loanDescriptionOptions} required></MultiSelectBox>
-          <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={this.handleChange.bind(this)} value={this.state.loanFields.loanUsage} placeholder="Include details such as this sample placeholder and this other example."/>
-          <Col md={6} mdOffset={3}>
-            <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
-              Continue
-            </button>
+        <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
+          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanFields.loanAmount }
+            getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
+          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
+            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required></MultiSelectBox>
+          <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="Include details such as this sample placeholder and this other example."
+          />
+          <Col md={ 6 } mdOffset={ 3 }>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+            Continue
+          </button>
           </Col>
         </form>
       </FormPanel>
-    );
-  };
+      );
+  }
+  ;
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {loanFields: reduxState.lenderMatch.loanData};
+  return {
+    loanFields: reduxState.lenderMatch.loanData
+  };
 }
 
 function mapDispatchToProps(dispatch) {

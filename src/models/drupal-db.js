@@ -1,4 +1,4 @@
-import { drupal } from "./db.js";
+import { drupal } from "./db-connect.js";
 import * as Sequelize from "sequelize";
 
 function executeQuery(query) {

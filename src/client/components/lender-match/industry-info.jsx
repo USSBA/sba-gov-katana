@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
+import { TextInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
@@ -14,7 +14,7 @@ class IndustryInfoForm extends React.Component {
     super();
     let industryInfoFields = Object.assign({}, {
       industryType: "",
-      industryExperience: "",
+      industryExperience: ""
     }, props.industryInfoFields);
     let validStates = {};
     if (industryInfoFields.industryType) {
@@ -68,36 +68,57 @@ class IndustryInfoForm extends React.Component {
     return getSelectBoxValidationState(name, value)
   }
 
+  handleSelectChange(newValue) {
+    let newIndustryInfoFields = _.merge(this.state.industryInfoFields, {
+      industryType: newValue
+    });
+    this.setState({
+      industryInfoFields: newIndustryInfoFields
+    });
+    let validStates = this.getValidationState("industryType", newValue);
+    let newValidStates = _.merge(this.state.validStates, validStates);
+    this.setState({
+      validStates: newValidStates
+    });
+  }
+
   render() {
+    let industryTypeOptions = _.map([
+      "Advertising/Marketing",
+      "Agriculture",
+      "Automotive/Service Station",
+      "Chemical/Pharmaceutical",
+      "Construction",
+      "Education",
+      "Energy",
+      "Entertainment/Recreation",
+      "Financial Services",
+      "Food Services",
+      "Health Care",
+      "Hospitality",
+      "Manufacturing",
+      "Media",
+      "Non-Profit",
+      "Other",
+      "Professional Services",
+      "Real Estate",
+      "Restaurant/Bar",
+      "Retail",
+      "Technology",
+      "Transportation/Logistics"
+    ], (x) => {
+      return {
+        label: x,
+        value: x
+      };
+    });
+    ;
+
     return (
       <FormPanel title="What's your industry?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
         <form ref={ (input) => this.industryInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <SelectBox label="In what industry is your business?" name="industryType" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } defaultValue={ this.state.industryInfoFields.industryType }
-            autoFocus required>
-            <option value="" disabled>- Select use of funds -</option>
-            <option value="Advertising/Marketing">Advertising/Marketing</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Automotive/Service Station">Automotive/Service Station</option>
-            <option value="Chemical/Pharmaceutical">Chemical/Pharmaceutical</option>
-            <option value="Construction">Construction</option>
-            <option value="Education">Education</option>
-            <option value="Energy">Energy</option>
-            <option value="Entertainment/Recreation">Entertainment/Recreation</option>
-            <option value="Financial Services">Financial Services</option>
-            <option value="Food Services">Food Services</option>
-            <option value="Health Care">Health Care</option>
-            <option value="Hospitality">Hospitality</option>
-            <option value="Manufacturing">Manufacturing</option>
-            <option value="Media">Media</option>
-            <option value="Non-Profit">Non-Profit</option>
-            <option value="Other">Other</option>
-            <option value="Professional Services">Professional Services</option>
-            <option value="Real Estate">Real Estate</option>
-            <option value="Restaurant/Bar">Restaurant/Bar</option>
-            <option value="Retail">Retail</option>
-            <option value="Technology">Technology</option>
-            <option value="Transportation/Logistics">Transportation/Logistics</option>
-          </SelectBox>
+          <MultiSelectBox label="In what industry is your business?" name="industryType" handleChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
+            options={ industryTypeOptions } autoFocus required></MultiSelectBox>
           <SelectBox label="What's your experience in this industry?" name="industryExperience" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } defaultValue={ this.state.industryInfoFields.industryExperience }
             required>
             <option value="" disabled>- Select use of funds -</option>
@@ -107,7 +128,9 @@ class IndustryInfoForm extends React.Component {
             <option value="5+ years">5+ years</option>
           </SelectBox>
           <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> Continue </button>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+            Continue
+          </button>
           </Col>
         </form>
       </FormPanel>
@@ -128,7 +151,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(IndustryInfoForm);
+export default connect(mapStateToProps, mapDispatchToProps)(IndustryInfoForm);
