@@ -124,6 +124,21 @@
         visibility: visible;
     }
 
+    .skipLink {
+        margin-top: 1.5vw;
+        margin-left: 3.5vw;
+        font-size: 1.45vw;
+        pointer-events: none;
+    }
+
+    .skipLink > a {
+        color: white;
+    }
+
+    .skipLink > a:focus {
+        color: black;
+    }
+
     /*DROPDOWN MENU*/
     .mainMenuShow {
         position: absolute;

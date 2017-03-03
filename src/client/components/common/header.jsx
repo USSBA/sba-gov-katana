@@ -12,34 +12,29 @@ import *  as ContentActions from '../../actions/content.js';
 
 
 class Header extends React.Component {
+
+   menuHtml = [];
+   renderNextMenu = false;
+
   constructor(props) {
       super();
       this.state = {
           expanded: false,
           searchValue: "",
-          tabbedIndex: -1
+          tabbedIndex: -1,
+          tabbedSubSubMenuIndex: -1,
+          tabbedSubMenuIndex: -1,
+          goToNextSectionFocus: true,
+          nextMenuItem: -1,
+          currentMenuItem: -1
       };
   }
-
 
   toggleNav(e) {
     e.preventDefault();
     this.setState({
       expanded: !this.state.expanded
     });
-  }
-
-  handleSearchChange(e) {
-    event.preventDefault();
-    this.setState({
-      searchValue: e.target.value
-    });
-  }
-
-  submitSearch(e) {
-    e.preventDefault();
-    let uri = encodeURI("/tools/search-result-page?search=" + this.state.searchValue);
-    document.location = uri;
   }
 
   componentWillMount() {
@@ -52,6 +47,35 @@ class Header extends React.Component {
         this.setState({tabbedIndex: linkIndex});
     }
   }
+
+    handleSubSubMenuKeyUp(event, subMenuLinkIndex){
+        let code = (event.keyCode ? event.keyCode : event.which);
+        if(code === 9){
+            this.setState({tabbedSubSubMenuIndex: subMenuLinkIndex});
+        }
+    }
+
+    handleSubMenuKeyUp(event, subMenuLinkIndex){
+        let code = (event.keyCode ? event.keyCode : event.which);
+        if(code === 9){
+            this.setState({tabbedSubMenuIndex: subMenuLinkIndex});
+
+        }
+    }
+
+    handleSkipLinkKeyDown(event, menuIndex){
+        let code = (event.keyCode ? event.keyCode : event.which);
+        if(code === 13){
+            if(menuIndex < this.menuHtml.length - 1){
+                this.menuHtml[menuIndex + 1].focus();
+                this.setState({nextMenuItem: menuIndex + 1});
+                this.renderNextMenu = true;
+            }
+            console.log("inside on key up.");
+        }
+    }
+
+
 
   makeFeaturedCalled(featuredCallout) {
     return (
@@ -70,6 +94,8 @@ class Header extends React.Component {
 
   buildMenu(menuData) {
     let menuContainer = [];
+    let menuChildrenArray = [];
+    let subMenuChildrenArray = [];
     const endColumnLinks = ['starting-business', 'managing-business',
       'loans-grants/connect-sba-lenders', 'loans-grants/find-other-sources-financing',
       'contracting/resources-small-businesses', 'contracting/government-contracting-programs', 'contracting/contracting-officials',
@@ -77,9 +103,15 @@ class Header extends React.Component {
       'about-sba/sba-performance', 'about-sba/oversight-advocacy'];
 
     menuData.forEach((mainMenu, index) => {
+
+
+
+
       let subMenuContainer = [];
+
       if (mainMenu.children && !isEmpty(mainMenu.children)) {
         let subSubMenuContainer = [];
+        menuChildrenArray = mainMenu.children.slice();
         mainMenu.children.forEach((subMenu, subMenuIndex) => {
           subSubMenuContainer.push(
             <li>
@@ -87,21 +119,25 @@ class Header extends React.Component {
             </li>
           );
           if (subMenu.children && !isEmpty(subMenu.children)) {
+              subMenuChildrenArray = subMenu.children.slice();
             subMenu.children.forEach((subSubMenu, subSubMenuIndex) => {
+
               if (!subSubMenu.invisble) {
                 subSubMenuContainer.push(
-                  <li key={ index + "-" + subMenuIndex + "-" + subSubMenuIndex }>
+                  <li key={ index + "-" + subMenuIndex + "-" + subSubMenuIndex } onKeyUp={(event)=>this.handleSubSubMenuKeyUp(event, subSubMenuIndex)}>
                     <a tabIndex="0" href={ subSubMenu.link }>
                       { subSubMenu.linkTitle }
                     </a>
                   </li>);
               }
             });
+
           }
+
           let endColumn = includes(endColumnLinks, subMenu.link) || (subMenuIndex === mainMenu.children.length - 1);
           if (endColumn) {
             subMenuContainer.push(
-              <ul key={ index + "-" + subMenuIndex } className={ styles.columnNew }>
+              <ul key={ index + "-" + subMenuIndex } className={ styles.columnNew } onKeyUp={(event)=>this.handleSubMenuKeyUp(event, subMenuIndex)}>
                 { subSubMenuContainer }
               </ul>
             );
@@ -120,28 +156,61 @@ class Header extends React.Component {
 
       if(!isEmpty(subMenuContainer)){
         if(this.state.tabbedIndex !== -1 && this.state.tabbedIndex === index){
-          subMenu = (<ul aria-label="submenu" className={ styles.mainMenuShow }>
-            <li className={ styles.normalizeMenuItemNew }>
-                { subMenuContainer }
-            </li>
-          </ul>);
-        }else{
+            if(this.state.tabbedIndex === menuData.length - 1){
+                subMenu = (<ul aria-label="submenu" className={ styles.mainMenuShow }>
+                    <li className={ styles.normalizeMenuItemNew }>
+                        { subMenuContainer }
+                    </li>
+                </ul>);
+            }else{
+                subMenu = (<ul aria-label="submenu" className={ styles.mainMenuShow }>
+                    <li className={styles.skipLink} onKeyDown={(event)=>this.handleSkipLinkKeyDown(event, index)}> <a tabIndex="0">Go to Next Section</a></li>
+                    <li className={ styles.normalizeMenuItemNew }>
+                        { subMenuContainer }
+                    </li>
+                </ul>);
+            }
+        } else if(this.state.nextMenuItem === index && this.renderNextMenu){
+            subMenu = (<ul aria-label="submenu" className={ styles.mainMenuShow }>
+                <li className={styles.skipLink} onKeyDown={(event)=>this.handleSkipLinkKeyDown(event, index)}> <a tabIndex="0">Go to Next Section</a></li>
+                <li className={ styles.normalizeMenuItemNew }>
+                    { subMenuContainer }
+                </li>
+            </ul>);
+            console.log("next menu index. = " + this.state.nextMenuItem);
+            this.renderNextMenu = false;
+        } else {
             subMenu = (<ul aria-label="submenu" className={ styles.mainMenuHide }>
-              <li className={ styles.normalizeMenuItemNew }>
-                  { subMenuContainer }
-              </li>
+                <li className={ styles.normalizeMenuItemNew }>
+                    { subMenuContainer }
+                </li>
             </ul>);
         }
       }
 
+    if((this.state.tabbedIndex === menuData.length - 1) ){
+            if(this.state.tabbedSubMenuIndex === menuChildrenArray.length -1){
+                let noChildren = isEmpty(menuChildrenArray.children);
+                if(noChildren || this.state.tabbedSubSubMenuIndex === subMenuChildrenArray.length - 1){
+
+                    subMenu = (<ul aria-label="submenu" className={ styles.mainMenuHide }>
+                        <li className={ styles.normalizeMenuItemNew }>
+                            { subMenuContainer }
+                        </li>
+                    </ul>);
+
+                }
+            }
+    }
       menuContainer.push(
-        <li key={ index } onKeyUp={(event)=>this.handleKeyUp(event, index)}>
-          <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
+        <li key={ index } onKeyUp={(event)=>this.handleKeyUp(event, index)} >
+          <a tabIndex="0" aria-haspopup="true" title={ mainMenu.linkTitle } ref={(htmlMenu)=>{this.menuHtml[index] = htmlMenu}} className={ styles.mainBtnNew + " " + styles.normalizeMenuItemNew } href={ mainMenu.link }>
             <span>{ mainMenu.linkTitle }</span>
             <div className={ styles.triangleNew }></div>
           </a>
           { subMenu }
         </li>);
+
     });
     return menuContainer;
   }
@@ -161,14 +230,17 @@ class Header extends React.Component {
             <div className={ styles.navbarNew }>
               <a tabIndex="-1" href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-                <Translate />
+                <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew} href="#">Translate</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Espa&#241;ol</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login?destination=about-sba%2Fwhat-we-do%2Fcontact-sba">Log In</a>
-                <Search />
+                <a id="search-toggle-link" tabIndex="0" href="#"><i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>
+                  <form id={ styles.searchBarNew }>
+                      <input id={ styles.searchInputNew } type='text' placeholder='Search'></input><i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
+                  </form>
               </nav>
               <br/>
               <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew }>
@@ -224,70 +296,6 @@ class Header extends React.Component {
       </div>
       );
   }
-}
-
-export class Translate extends React.Component { 
-
-  constructor() { 
-    super(); 
-    this.state = {  translate: false  } 
-  }  
-
-  toggleTranslate() { 
-    this.setState({ 
-      translate: !this.state.translate 
-    }) ;
-
-  }   
-
-  componentDidMount(){
-    console.log(this.state.translate);
-      if(this.state.translate === true){
-          this.googleTranslateHtml.isVisible = true;
-      }
-  }
-
-  render() { 
-
-    return (
-        <div style={{display: 'inline-block'}}>
-          <div tabIndex="0" id="google_translate_element" ref={(translateHtml)=>{this.googleTranslateHtml = translateHtml; console.log(this.googleTranslateHtml);}}></div>
-          <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew} onClick={this.toggleTranslate.bind(this)} href="#">Translate</a>
-        </div>
-        ) ;
-  } 
-}
-
-export class Search extends React.Component { 
-  constructor() { 
-    super(); 
-    this.state = { 
-      search: false 
-    } 
-  }  
-
-  toggleSearch() { 
-    this.setState({ 
-      search: !this.state.search  }) 
-  }   
-
-  render() { 
-    let search = "";
-    if(this.state.search){
-      search = (<form id={ styles.searchBarNew }>
-                  <input id={ styles.searchInputNew } type='text' placeholder='Search'></input><i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
-                </form>
-      );
-    }else{
-      search = (<a id="search-toggle-link" tabIndex="0" href="#"><i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>);
-    }
-    return (
-
-      <div style={{display: 'inline-block'}}>
-          {search}
-      </div>
-    ) ;
-  } 
 }
 
 Header.defaultProps = {
