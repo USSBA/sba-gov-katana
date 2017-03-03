@@ -118,7 +118,7 @@
         "func-names": ["off"],
         "func-style": ["off"],
         "id-blacklist": ["off"],
-        "id-length": ["error", {"min": 3, "exceptions" : ["_","to"]}],
+        "id-length": ["error", {"min": 3, "exceptions" : ["_","to","id"]}],
         "id-match": ["error", "^[a-z_]+([A-Z][a-z]+)*$", { "onlyDeclarations" : true }],
         "indent": ["off"],
         "jsx-quotes": ["error"],
