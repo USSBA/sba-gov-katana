@@ -16,9 +16,9 @@ email:
     password: placeholder
 linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
-    resendEmailCron: '0 0 0 * * *'
-    resendFrequency: 86400
-    numberOfSecondsForWhichEmailIsValid: 86400
+    resendEmailCron: '0 0 * * * *'
+    lookback: 86400
+    numberOfSecondsForWhichEmailIsValid: 172800
 database:
     pool:
         max: 100
