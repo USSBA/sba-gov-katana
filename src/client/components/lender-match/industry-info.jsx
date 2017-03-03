@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { TextInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {TextInput, TextArea, SelectBox, MultiSelectBox} from '../helpers/form-helpers.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
-import { FormPanel } from '../common/form-styling.jsx'
-import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
+import {browserHistory} from 'react-router';
+import {FormPanel} from '../common/form-styling.jsx'
+import {getSelectBoxValidationState} from '../helpers/page-validator-helpers.jsx'
 import styles from '../../styles/lender-match/lender-match.scss';
-import { Col } from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
@@ -69,17 +69,11 @@ class IndustryInfoForm extends React.Component {
   }
 
   handleSelectChange(newValue) {
-    let newIndustryInfoFields = _.merge(this.state.industryInfoFields, {
-      industryType: newValue
-    });
-    this.setState({
-      industryInfoFields: newIndustryInfoFields
-    });
+    let newIndustryInfoFields = _.merge(this.state.industryInfoFields, {industryType: newValue});
+    this.setState({industryInfoFields: newIndustryInfoFields});
     let validStates = this.getValidationState("industryType", newValue);
     let newValidStates = _.merge(this.state.validStates, validStates);
-    this.setState({
-      validStates: newValidStates
-    });
+    this.setState({validStates: newValidStates});
   }
 
   render() {
@@ -107,42 +101,33 @@ class IndustryInfoForm extends React.Component {
       "Technology",
       "Transportation/Logistics"
     ], (x) => {
-      return {
-        label: x,
-        value: x
-      };
-    });
-    ;
+      return {label: x, value: x};
+    });;
 
     return (
       <FormPanel title="What's your industry?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
-        <form ref={ (input) => this.industryInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <MultiSelectBox label="In what industry is your business?" name="industryType" handleChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
-            options={ industryTypeOptions } autoFocus required></MultiSelectBox>
-          <SelectBox label="What's your experience in this industry?" name="industryExperience" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } defaultValue={ this.state.industryInfoFields.industryExperience }
-            required>
+        <form ref={(input) => this.industryInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+          <MultiSelectBox label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} getValidationState={this.state.validStates["industryType"]} value={this.state.industryInfoFields.industryType} options={industryTypeOptions} autoFocus required></MultiSelectBox>
+          <SelectBox label="What's your experience in this industry?" name="industryExperience" handleChange={this.handleChange.bind(this)} getValidationState={this.state.validStates["industryExperience"]} defaultValue={this.state.industryInfoFields.industryExperience} required>
             <option value="" disabled>- Select use of funds -</option>
             <option value="Less than 1 year">Less than 1 year</option>
             <option value="1-2 years">1-2 years</option>
             <option value="2-5 years">2-5 years</option>
             <option value="5+ years">5+ years</option>
           </SelectBox>
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
-            Continue
-          </button>
+          <Col md={6} mdOffset={3}>
+            <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
+              Continue
+            </button>
           </Col>
         </form>
       </FormPanel>
-      );
-  }
-  ;
+    );
+  };
 }
 
 function mapStateToProps(state) {
-  return {
-    industryInfoFields: state.lenderMatch.industryInfoData
-  };
+  return {industryInfoFields: state.lenderMatch.industryInfoData};
 }
 
 function mapDispatchToProps(dispatch) {
