@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import *  as ContentActions from '../../actions/content.js';
 
 import { Row, Col, Button } from 'react-bootstrap';
 import styles from '../../styles/success-page/counseling-and-tools.scss';
@@ -12,35 +13,73 @@ export class DynamicCounselingAndTools extends React.Component {
   }
 
   componentWillMount() {
-    axios.post('/matchCounselors', {
-      zipcode: "33452"
+    this.props.actions.fetchContentIfNeeded('counselors', 'counselors-by-location', {
+      zip: this.props.businessInfoData.businessInfoZipcode
     })
-      .then(function(res) {
-        //document.location = res.data.redirectTo
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
+  }
+
+  redirectLocalAssistance() {
+    let newTab = window.open("", "_blank");
+    this.props.actions.fetchContentIfNeeded('counselorsRedirect', 'counselors-redirect', {
+      zip: this.props.businessInfoData.businessInfoZipcode
+    })
+      .then((res) => {
+        console.log(res.data.redirectTo);
+        newTab.location = res.data.redirectTo;
       })
   }
 
+  trimStr(str) {
+    return str.length > 40 ? str.slice(0, 40) + "..." : str
+  }
+
+  getMiles(num) {
+    let miles = parseInt(num) * 0.000621371192;
+    return Math.round(miles * 100) / 100
+  }
+
+  createCounselorBoxes() {
+    const counselorsData = this.props.counselorsData;
+    const counselorBox = Object.keys(counselorsData).map((key, index) => {
+      let counselor = counselorsData[key];
+      return (
+        <div className={ styles.counselorBox }>
+          <p className={ styles.counselorTitle }>
+            { this.trimStr(counselor['title']) || "Not Available" }
+          </p>
+          <p className={ styles.counselorAttr }>
+            { counselor['name'] || "Not Available" }
+          </p>
+          <p className={ styles.counselorAttr }>
+            { counselor['street'] + ", " + counselor['additional'] || "Not Available" }
+          </p>
+          <p className={ styles.counselorAttr }>
+            { counselor['city'] + ", " + counselor['province'] + " " + counselor['postal_code'] }
+          </p>
+          <p className={ styles.counselorAttr }>
+            { this.getMiles(counselor['location_distance']) + " miles away" }
+          </p>
+          <p className={ styles.counselorAttr }>
+            { 'Phone: ' + counselor['phone'] || "Not Available" }
+          </p>
+        </div>
+      )
+    });
+    return counselorBox
+  }
+
+
   render() {
+    const counselorBoxes = this.props.counselorsData;
     return (
-      <Row className={ styles.section }>
-        <Col sm={ 12 } md={ 12 } lg={ 12 }>
-        <p className={ styles.title + " text-center" }> Get free, personalized help from a local counselor</p>
-        <Row>
-          <Col sm={ 12 }>
-          <p className=" text-center">Local counselors can help you prepare materials and introduce you to additonal lenders</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={ 8 } xsOffset={ 2 } sm={ 4 } smOffset={ 4 } md={ 4 } mdOffset={ 4 }>
-          <Button className={ styles.seeMoreBtn }>SEE MORE</Button>
-          </Col>
-        </Row>
-        </Col>
-      </Row>
+      <div className={ styles.section }>
+        <h1 className={ styles.title }>Get free, personalized help from a local counselor</h1>
+        <p className={ styles.subTitle }>Local Counselors can help you prepare materials and introduce you to additional lenders</p>
+        <div className={ styles.counselorContainer }>
+          { counselorBoxes ? this.createCounselorBoxes() : <div className={ styles.loader }></div> }
+        </div>
+        <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
+      </div>
     )
   }
   ;
@@ -49,10 +88,18 @@ export class DynamicCounselingAndTools extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoData: state.lenderMatch.businessInfoData
+    businessInfoData: state.lenderMatch.businessInfoData,
+    counselorsData: state.contentReducer["counselors"]
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
   };
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(DynamicCounselingAndTools)
