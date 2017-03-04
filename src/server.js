@@ -43,11 +43,15 @@ app.get("/", function(req, res) {
   res.render("main", metaVariables);
 });
 
-import * as matchController from "./controllers/match-controller.js";
-app.post("/linc/matchFormData", jsonParser, matchController.handleLenderMatchSubmission);
-app.get("/linc/confirmEmail", matchController.handleEmailConfirmation);
-app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
-  const zipStr = "zip:" + req.body.zipcode + ":distance:50";
+import * as lenderMatchController from "./controllers/lender-match-controller.js";
+app.get(["/linc", "/linc/", "/linc/*"], function(req, res) {
+  res.render("main", metaVariables);
+});
+app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
+app.get("/linc/confirmEmail", lenderMatchController.handleEmailConfirmation);
+app.post("/linc/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
+app.get("/content/counselors-redirect.json", function(req, res) {
+  const zipStr = "zip:" + req.query.zip + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
     if (err) {
       throw new Error(err);
@@ -59,10 +63,9 @@ app.post("/linc/matchLocalAssistants", jsonParser, function(req, res) {
     });
   });
 });
-app.get("/linc/matchCounselors", jsonParser, function(req, res) {
-  console.log("zip = " + req.body.zipcode);
-  res.status(HttpStatus.NO_CONTENT).send();
-});
+
+import * as lincCounselorController from "./controllers/linc-counselor.js";
+app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
 import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
 if (config.get("drupal.enablePassThrough")) {
@@ -76,10 +79,8 @@ app.get("/content/disaster.json", fetchDisaster);
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
-app.get(["/", "/linc/*"], function(req, res) {
-  res.render("main", metaVariables);
 
-});
+
 
 // development error handler
 // will print stacktrace

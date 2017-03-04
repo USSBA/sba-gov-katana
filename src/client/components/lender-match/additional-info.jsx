@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { FormPanel } from '../common/form-styling.jsx'
 import { browserHistory } from 'react-router';
 import { FormGroup, Checkbox, Col } from 'react-bootstrap'
-import * as AdditionalInfoActions from '../../actions/additional-info.js'
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import styles from '../../styles/lender-match/lender-match.scss';
 
 
@@ -74,13 +74,13 @@ export class AdditionalInfoForm extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    additionalInfoFields: reduxState.additionalInfoReducer.additionalInfoData
+    additionalInfoFields: reduxState.lenderMatch.additionalInfoData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(AdditionalInfoActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 export default connect(

@@ -3,7 +3,7 @@ developmentOptions:
         enabled: false
         silent: false
 drupal:
-    hostname: http://wakizashi/
+    hostname: http://localhost/
     enablePassThrough: false
     endpoint: rest
 server:
@@ -16,14 +16,24 @@ email:
     password: placeholder
 linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
+    resendEmailCron: '0 0 * * * *'
+    lookback: 86400
+    numberOfSecondsForWhichEmailIsValid: 172800
 database:
-    mongoConnectString: mongodb://mongodb:27017/sba
-    mysql:
-      connectionLimit: 100
-      database: placeholder
-      host: placeholder
-      password: placeholder
-      user: placeholder
+    pool:
+        max: 100
+        min: 0
+        idle: 1000
+    nonDrupal:
+        databaseName: placeholder
+        host: placeholder
+        password: placeholder
+        user: placeholder
+    drupal:
+        databaseName: placeholder
+        host: placeholder
+        password: placeholder
+        user: placeholder
 oca:
     soap:
         username: placeholder

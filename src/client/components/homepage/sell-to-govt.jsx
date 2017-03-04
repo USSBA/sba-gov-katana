@@ -5,7 +5,7 @@ import diagonalLinesMobile from '../../../../public/assets/images/homepage/diago
 
 export const SellToGovtSection = (props) => <div className={ styles.stgContainer }>
                                               <p>Sell to the government.</p>
-                                              <img className={ styles.stgBanner } src={ "https://s3.amazonaws.com/fearlesstesters.com/img/contract.jpg" } alt="Sell to the government." />
+                                              <img className={ styles.stgBanner } src={ "assets/images/homepage/contract.jpg" } alt="Sell to the government." />
                                               <div className={ styles.stgAccentBox }>
                                                 <ul>
                                                   <a href="/contracting/getting-started-contractor">

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, CheckBox } from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
-import * as ReviewSubmitInfoActions from '../../actions/review-submit-info.js';
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import styles from '../../styles/lender-match/review-submit.scss'
 import ReviewSection from '../helpers/review-page-helpers.jsx';
@@ -40,7 +40,6 @@ class ReviewSubmitInfoForm extends React.Component {
         ...reviewSubmitInfoFields
       }
     });
-    console.log(this.state.reviewSubmitInfoFields);
   }
 
   handleClick(e) {
@@ -52,7 +51,6 @@ class ReviewSubmitInfoForm extends React.Component {
         ...reviewSubmitInfoFields
       }
     });
-    console.log(this.state.reviewSubmitInfoFields);
   }
 
   render() {
@@ -77,17 +75,17 @@ class ReviewSubmitInfoForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    loanData: state.loanReducer.loanData,
-    additionalInfoData: state.additionalInfoReducer.additionalInfoData,
-    contactInfoData: state.contactInfoReducer.contactInfoData,
-    businessInfoData: state.businessInfoReducer.businessInfoData,
-    industryInfoData: state.industryInfoReducer.industryInfoData
+    loanData: state.lenderMatch.loanData,
+    additionalInfoData: state.lenderMatch.additionalInfoData,
+    contactInfoData: state.lenderMatch.contactInfoData,
+    businessInfoData: state.lenderMatch.businessInfoData,
+    industryInfoData: state.lenderMatch.industryInfoData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ReviewSubmitInfoActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 

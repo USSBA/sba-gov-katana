@@ -35,5 +35,5 @@ export const GreenFindLendersSection = (props) => <div className={ styles.greenB
 
 
 export const FindLendersImage = (props) => <div className={ styles.imageContainer }>
-                                             <img src={ "https://s3.amazonaws.com/fearlesstesters.com/img/lendermatch-hero.jpg" } alt="Match with lenders" width="947" height="646" />
+                                             <img src={ "assets/images/homepage/lendermatch-hero.jpg" } alt="Match with lenders" width="947" height="646" />
                                            </div>

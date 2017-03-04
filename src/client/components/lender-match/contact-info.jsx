@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx';
-import * as ContactInfoActions from '../../actions/contact-info.js';
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
 import styles from '../../styles/lender-match/lender-match.scss';
@@ -121,13 +121,13 @@ class ContactInfoForm extends React.Component {
 
 function mapStateToProps(reduxState) {
   return {
-    contactInfoFields: reduxState.contactInfoReducer.contactInfoData
+    contactInfoFields: reduxState.lenderMatch.contactInfoData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ContactInfoActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   };
 }
 

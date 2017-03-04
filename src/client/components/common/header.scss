@@ -77,7 +77,7 @@
         padding-right: 0.5vw;
         height: 3.5vw;
         cursor: pointer;
-        text-decoration: none ;
+        text-decoration: none !important;
     }
 
     .mainNavNew > ul > li:first-child > a {
@@ -241,7 +241,7 @@
     .miniNavNew{
         position: absolute;
         height: 2.1vw;
-        top: 2vw;
+        top: 3.5vw;
         right: 0;
     }
 
@@ -252,7 +252,7 @@
         line-height: 0px ;
         margin-left: 1.25vw;
         margin-top: 0.5vw ;
-        text-decoration: none ;
+        text-decoration: none !important;
         font-family: 'Source Sans Pro', sans-serif ;
     }
 
@@ -275,8 +275,8 @@
     }
 
     #searchBarNew {
-        display: none;
         margin-left: 1.1vw;
+        display: inline;
     }
 
     #searchInputNew {
@@ -285,26 +285,19 @@
         width: 20vw;
     }
 
-    #googleTranslateElement {
+    .googleTranslateElement {
         display: inline-block;
         height: 2.2vw;
+        visibility: hidden;
     }
 
-    .googleTranslateContainer > a {
-        font-size: calc(1.1vw - 2px);
-        margin-top: 0.6vw;
-        padding-left: 6px !important;
-        padding-right: 6px !important;
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
+    .googleTranslateElementVisible {
+        display: inline-block;
+        height: 2.2vw;
+        visibility: visible;;
     }
 
-    .googleTranslate > div > div {
-        font-size: calc(1.1vw - 2px) !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
+
     .menuCallToAction {
         margin-top: 2vw;
         background-color: #0B97DD;

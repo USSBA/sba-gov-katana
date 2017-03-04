@@ -1,18 +1,9 @@
-import mysql from "mysql";
-import config from "config";
-import Promise from "bluebird";
-var pool = mysql.createPool(config.get("database.mysql"));
+import { drupal } from "./db-connect.js";
+import * as Sequelize from "sequelize";
 
 function executeQuery(query) {
-  return new Promise((resolve, reject) => {
-    pool.query(query, function(err, rows) {
-      if (err) {
-        console.log(err);
-        reject(err);
-      } else {
-        resolve(rows);
-      }
-    });
+  return drupal.query(query, {
+    type: Sequelize.QueryTypes.SELECT
   });
 }
 

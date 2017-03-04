@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
+import { CurrencyInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
 import { FormPanel } from '../common/form-styling.jsx'
-import * as LoanActions from '../../actions/loan-form.js'
+import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from '../../styles/lender-match/lender-match.scss';
 import { Col } from 'react-bootstrap';
 
-export class LoanInfo extends React.Component {
+class LoanInfo extends React.Component {
   constructor(props) {
     super();
     let loanFields = Object.assign({}, {
@@ -45,6 +45,20 @@ export class LoanInfo extends React.Component {
     this.loanForm.reset()
   }
 
+  handleSelectChange(newValue) {
+    let newLoanFields = _.merge(this.state.loanFields, {
+      loanDescription: newValue
+    });
+    this.setState({
+      loanFields: newLoanFields
+    });
+    let validStates = this.getValidationState("loanDescription", newValue);
+    let newValidStates = _.merge(this.state.validStates, validStates);
+    this.setState({
+      validStates: newValidStates
+    });
+  }
+
   handleChange(e) {
     let loanFields = {};
     loanFields[e.target.name] = e.target.value;
@@ -60,7 +74,7 @@ export class LoanInfo extends React.Component {
         ...this.state.validStates,
         ...validStates
       }
-    })
+    });
   }
 
   handleAmountChange(e) {
@@ -102,35 +116,42 @@ export class LoanInfo extends React.Component {
     return validStates;
 
   }
-  ;
 
   render() {
+    let loanDescriptionOptions = _.map([
+      "Buying an Existing Business",
+      "Developing a Product",
+      "Hiring Employees/Staff",
+      "Marketing/Advertising",
+      "Opening a New Location ",
+      "Other",
+      "Participating in Trade Show",
+      "Purchasing Equipment",
+      "Purchasing Inventory",
+      "Purchasing Property",
+      "Refinancing/consolidating debt",
+      "Remodeling an existing location",
+      "Working Capital"
+    ], (x) => {
+      return {
+        label: x,
+        value: x
+      };
+    });
+
     return (
       <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
         <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanFields.loanAmount }
-            getValidationState={ this.state.validStates["loanAmount"] } autoFocus required />
-          <SelectBox label="How will these funds be used?" name="loanDescription" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] } defaultValue={ this.state.loanFields.loanDescription }
-            required>
-            <option value="" disabled>- Select use of funds -</option>
-            <option value="Buying an Existing Business">Buying an Existing Business</option>
-            <option value="Developing a Product">Developing a Product</option>
-            <option value="Hiring Employees/Staff">Hiring Employees/Staff</option>
-            <option value="Marketing/Advertising">Marketing/Advertising</option>
-            <option value="Opening a New Location ">Opening a New Location </option>
-            <option value="Other">Other</option>
-            <option value="Participating in Trade Show">Participating in Trade Show</option>
-            <option value="Purchasing Equipment">Purchasing Equipment</option>
-            <option value="Purchasing Inventory">Purchasing Inventory</option>
-            <option value="Purchasing Property">Purchasing Property</option>
-            <option value="Refinancing/consolidating debt">Refinancing/consolidating debt</option>
-            <option value="Remodeling an existing location">Remodeling an existing location</option>
-            <option value="Working Capital">Working Capital</option>
-          </SelectBox>
+            getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
+          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
+            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required></MultiSelectBox>
           <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="Include details such as this sample placeholder and this other example."
           />
           <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> Continue </button>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+            Continue
+          </button>
           </Col>
         </form>
       </FormPanel>
@@ -141,17 +162,14 @@ export class LoanInfo extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    loanFields: reduxState.loanReducer.loanData
+    loanFields: reduxState.lenderMatch.loanData
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LoanActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch)
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(LoanInfo);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(LoanInfo);

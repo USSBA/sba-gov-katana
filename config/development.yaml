@@ -3,11 +3,20 @@ developmentOptions:
         enabled: true
         silent: false
 drupal:
-    hostname: http://sbagov.fearlesstesters.com/
+    hostname: https://www.sbagov2.fearlesstesters.com/
 email:
     debugEmailOnly: false
 database:
-    mongoConnectString: mongodb://localhost:27017/sba
+    nonDrupal:
+        databaseName: sba_katana
+        host: localhost
+        password: placeholder
+        user: placeholder
+    drupal:
+        databaseName: sba_drupal
+        host: localhost
+        password: placeholder
+        user: placeholder
 linc:
     confirmationEmailBase: http://localhost:3000
 oca:

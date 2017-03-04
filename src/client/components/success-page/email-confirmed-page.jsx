@@ -9,7 +9,9 @@ class EmailConfirmedPage extends React.Component {
       <div className="container">
         <Col xs={ 12 } className={ styles.section }>
         <Row>
-          <h2 className={ styles.title + " text-center" }> Thank you for confirming your email. </h2>
+          <h2 className={ styles.title + " text-center" }>
+                    Thank you for confirming your email.
+                  </h2>
         </Row>
         </Col>
       </div>
