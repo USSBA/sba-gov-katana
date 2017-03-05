@@ -12,10 +12,27 @@ import Promise from "bluebird";
 function fetchMainMenu() {
   return Promise.all([fetchMainMenuStructure(), fetchLoansAndGrantsCalloutBlock()])
     .spread(function(menuStructure, loansAndGrantsCallout) {
-      let unique = _.uniqBy(menuStructure, function(item) {
-        return item.link;
-      });
-      const menuTree = buildMenuTree(unique);
+      let cleaned = _.chain(menuStructure)
+        .uniqWith(function(x, y) {
+          return x.plid === y.plid && x.linkPath === y.linkPath;
+        })
+        .map(function(item) {
+          return {
+            link: item.link || item.linkPath,
+            linkTitle: item.linkTitle,
+            weight: item.weight,
+            plid: item.plid,
+            mlid: item.mlid
+          };
+        })
+        .filter(function(item) {
+          return !item.mlid || (item.mlid !== 1116 && item.mlid !== 5031 && item.mlid !== 5171);
+        })
+        .value();
+
+
+
+      const menuTree = buildMenuTree(cleaned);
       const loansAndGrants = _.find(menuTree, {
         linkTitle: "Loans & Grants"
       });
@@ -28,17 +45,8 @@ function fetchMainMenu() {
 
 
 function fetchMainMenuStructure() {
-  const sqlQuery = "(select mlid, plid, link_title as linkTitle, alias as link, options, weight from menu_links, url_alias where menu_name = 'main-menu' and link_path = source and hidden = 0 order by weight asc)" +
-    " union all " +
-    "(select mlid, plid, link_title as linkTitle, link_path as link, options, weight from menu_links where menu_name = 'main-menu' and hidden = 0 and (link_path like 'http%' or link_path like 'tool%') order by weight asc)";
-  return executeQuery(sqlQuery)
-    .then(function(results) {
-      // conver the options buffer (because it is type blob in the DB to a string)
-      _.each(results, function(result) {
-        result.options = String(result.options);
-      });
-      return results;
-    });
+  const sqlQuery = "select ml.mlid, ml.plid, ml.link_title as linkTitle, ml.link_path as linkPath, ua.alias as link, ml.weight from menu_links as ml left join url_alias as ua on ua.source = ml.link_path where ml.menu_name = 'main-menu' and hidden = 0 and options NOT LIKE '%element-invisible%' order by weight asc;";
+  return executeQuery(sqlQuery);
 }
 
 
@@ -63,12 +71,7 @@ function buildMenuTree(data, parent) {
           });
           child.children = ownChildren;
         }
-        const options = child.options;
-        delete child.options;
-        const invisible = options.includes("element-invisible");
-        if (!invisible) {
-          result.push(child);
-        }
+        result.push(child);
       }
     });
   }
