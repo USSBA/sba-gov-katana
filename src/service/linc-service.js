@@ -18,7 +18,7 @@ function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, 
   if (!token) {
     token = uuid.v4();
   }
-  const link = path.join(config.get("linc.confirmationEmailBase"), "/linc/confirmEmail?token=" + token);
+  const link = path.join(config.get("linc.confirmationEmailBase"), "/linc/emailconfirmed?token=" + token);
 
   const htmlContents = pug.renderFile(path.join(__dirname, "../views/confirmation-email.pug"), {
     confirmationLink: link,
