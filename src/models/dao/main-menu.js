@@ -12,7 +12,10 @@ import Promise from "bluebird";
 function fetchMainMenu() {
   return Promise.all([fetchMainMenuStructure(), fetchLoansAndGrantsCalloutBlock()])
     .spread(function(menuStructure, loansAndGrantsCallout) {
-      const menuTree = buildMenuTree(menuStructure);
+      let unique = _.uniqBy(menuStructure, function(item) {
+        return item.link;
+      });
+      const menuTree = buildMenuTree(unique);
       const loansAndGrants = _.find(menuTree, {
         linkTitle: "Loans & Grants"
       });
