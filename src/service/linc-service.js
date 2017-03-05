@@ -6,9 +6,7 @@ import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
 
-import {
-  sendConfirmationEmail
-} from "../util/emailer.js";
+import { sendConfirmationEmail } from "../util/emailer.js";
 import LenderMatchRegistration from "../models/lender-match-registration.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
@@ -133,8 +131,8 @@ function confirmEmail(token) {
           return EmailConfirmation.update(confirmedRecord).then(function(result) {
             // AYO submit OCA request
             return LenderMatchRegistration.retrieve({
-                id: result.value.lenderMatchRegistrationId
-              })
+              id: result.value.lenderMatchRegistrationId
+            })
               .then(function(lenderMatchRegistration) {
                 sendDataToOca(lenderMatchRegistration);
                 return "success";
@@ -151,16 +149,16 @@ function confirmEmail(token) {
 
 function resendConfirmationEmail(emailAddress) {
   return LenderMatchRegistration.findOne({
-      where: {
-        emailAddress: emailAddress
-      }
-    })
+    where: {
+      emailAddress: emailAddress
+    }
+  })
     .then(function(lenderMatchRegistration) {
       return EmailConfirmation.findOne({
-          where: {
-            lenderMatchRegistrationId: lenderMatchRegistration.id
-          }
-        })
+        where: {
+          lenderMatchRegistrationId: lenderMatchRegistration.id
+        }
+      })
         .then((emailConfirmation) => {
           return [lenderMatchRegistration.name, lenderMatchRegistration.emailAddress, lenderMatchRegistration.id, emailConfirmation.token];
         });
@@ -169,9 +167,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export {
-  createLenderMatchRegistration,
-  confirmEmail,
-  followupEmailJob,
-  resendConfirmationEmail
-};
+export { createLenderMatchRegistration, confirmEmail, followupEmailJob, resendConfirmationEmail };

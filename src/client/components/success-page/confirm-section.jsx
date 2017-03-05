@@ -20,7 +20,7 @@ const ConfirmSubSection = (props) => (
 
 class ConfirmSection extends React.Component {
   resend() {
-    //this.props.actions.resendConfirmationEmail(this.props.email);
+    this.props.actions.resendConfirmationEmail(this.props.email);
   }
 
   render() {
@@ -28,11 +28,14 @@ class ConfirmSection extends React.Component {
       <div className="container">
         <Col xs={ 12 } className={ styles.section }>
         <Row>
-          <h2 className={ styles.title + " text-center" }>  You're almost done! Confirm your e-mail to get matched </h2>
+          <h2 className={ styles.title + " text-center" }>
+                    You're almost done! Confirm your e-mail to get matched
+                  </h2>
         </Row>
         <Row>
           <Col xs={ 6 } xsOffset={ 3 }>
-          <p className="text-center"> Don't see the confirmation in your inbox?
+          <p className="text-center">
+            Don't see the confirmation in your inbox?
             <a onClick={ this.resend.bind(this) }>Click here</a> to resend</p>
           </Col>
         </Row>
@@ -56,8 +59,7 @@ class ConfirmSection extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    // email: reduxState.lenderMatch.contactInfoData.contactEmailAddress,
-    // resent: reduxState.confirmationEmailReducer.resent
+    email: reduxState.lenderMatch.contactInfoData.contactEmailAddress
   };
 }
 
