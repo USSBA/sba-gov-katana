@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import cornerGraphicBig from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
 import cornerGraphicSmall from '../../../../public/assets/images/lender-match/rectangle-corner-graphic-mobile.png'
+import lenderMatchHero from '../../../../public/assets/images/homepage/primarylanding-hero.jpg';
 
 export const FindLendersIntro = (props) => <div className=" row">
                                              <div className={ styles.parentContainer + " col-xs-12 nopadding" }>
@@ -35,5 +36,5 @@ export const GreenFindLendersSection = (props) => <div className={ styles.greenB
 
 
 export const FindLendersImage = (props) => <div className={ styles.imageContainer }>
-                                             <img src={ "assets/images/homepage/lendermatch-hero.jpg" } alt="Match with lenders" width="947" height="646" />
+                                             <img src={ lenderMatchHero } alt="Match with lenders" width="947" height="646" />
                                            </div>

@@ -141,10 +141,6 @@ class Header extends React.Component {
       'about-sba/sba-performance', 'about-sba/oversight-advocacy'];
 
     menuData.forEach((mainMenu, index) => {
-
-
-
-
       let subMenuContainer = [];
 
       if (mainMenu.children && !isEmpty(mainMenu.children)) {

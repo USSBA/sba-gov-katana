@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { FindLendersIntro } from './find-lenders-intro.jsx'
-import { Introduction } from './introduction.jsx';
+import { HowItWorksSection } from './how-it-works.jsx';
 import { HelpfulQuestions } from './helpful-questions.jsx';
 import { PreparationChecklist } from './preparation-checklist.jsx';
 import { SuccessStories } from './success-stories.jsx'
@@ -12,7 +12,7 @@ class LandingPage extends React.Component {
     return (
       <Grid fluid={ true }>
         <FindLendersIntro />
-        <Introduction />
+        <HowItWorksSection />
         <PreparationChecklist />
         <HelpfulQuestions/>
         <SuccessStories/>
