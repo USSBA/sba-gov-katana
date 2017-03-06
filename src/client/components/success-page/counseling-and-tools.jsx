@@ -21,10 +21,14 @@ export class DynamicCounselingAndTools extends React.Component {
       zip: this.props.businessInfoData.businessInfoZipcode
     })
       .then((res) => {
-        this.setState({counselors: this.props.counselorsData})
+        this.setState({
+          counselors: this.props.counselorsData
+        })
       })
       .catch((err) => {
-        this.setState({counselorsErr: err});
+        this.setState({
+          counselorsErr: err
+        });
       })
   }
 
@@ -77,19 +81,17 @@ export class DynamicCounselingAndTools extends React.Component {
     });
   }
 
-  displayCounselors(){
-    if(this.state.counselors == null && this.state.counselorsErr == null) {
+  displayCounselors() {
+    if (this.state.counselors == null && this.state.counselorsErr == null) {
       return (<div className={ styles.counselorBox }>
                 <div className={ styles.loader }></div>
               </div>)
-    }
-    else if(this.state.counselors && this.state.counselorsErr == null) {
+    } else if (this.state.counselors && this.state.counselorsErr == null) {
       return this.createCounselorBoxes()
-    }
-    else if(this.state.counselorsErr){
-      return(<div className={ styles.counselorBox }>
-              <p> Sorry we were unable to process your zipcode.</p>
-             </div>)
+    } else if (this.state.counselorsErr) {
+      return (<div className={ styles.counselorBox }>
+                <p> Sorry we were unable to process your zipcode.</p>
+              </div>)
     }
   }
 
