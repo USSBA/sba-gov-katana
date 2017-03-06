@@ -12,7 +12,11 @@ var emailConfirmation = nonDrupal.define("emailConfirmation", {
   token: {
     type: Sequelize.UUID,
     primaryKey: true
+  },
+  confirmed: {
+    type: Sequelize.BIGINT
   }
+
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });

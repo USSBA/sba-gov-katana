@@ -48,7 +48,7 @@ app.get(["/linc", "/linc/", "/linc/*"], function(req, res) {
   res.render("main", metaVariables);
 });
 app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
-app.get("/linc/confirmEmail", lenderMatchController.handleEmailConfirmation);
+app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);
 app.post("/linc/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
 app.get("/content/counselors-redirect.json", function(req, res) {
   const zipStr = "zip:" + req.query.zip + ":distance:50";
