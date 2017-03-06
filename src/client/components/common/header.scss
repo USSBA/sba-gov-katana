@@ -124,6 +124,10 @@
         visibility: visible;
     }
 
+    .mainBtnNew:focus .triangleNew{
+        visibility: visible;
+    }
+
     .skipLink {
         margin-top: 1.5vw;
         margin-left: 3.5vw;
