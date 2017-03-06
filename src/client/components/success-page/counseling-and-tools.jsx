@@ -10,12 +10,26 @@ import styles from '../../styles/success-page/counseling-and-tools.scss';
 export class DynamicCounselingAndTools extends React.Component {
   constructor() {
     super();
+    this.state = {
+      counselors: null,
+      counselorsErr: null
+    }
   }
 
   componentWillMount() {
     this.props.actions.fetchContentIfNeeded('counselors', 'counselors-by-location', {
       zip: this.props.businessInfoData.businessInfoZipcode
     })
+      .then((res) => {
+        this.setState({
+          counselors: this.props.counselorsData
+        })
+      })
+      .catch((err) => {
+        this.setState({
+          counselorsErr: err
+        });
+      })
   }
 
   redirectLocalAssistance() {
@@ -39,9 +53,9 @@ export class DynamicCounselingAndTools extends React.Component {
   }
 
   createCounselorBoxes() {
-    const counselorsData = this.props.counselorsData;
-    const counselorBox = Object.keys(counselorsData).map((key, index) => {
-      let counselor = counselorsData[key];
+    const counselorsObj = this.state.counselors;
+    return Object.keys(counselorsObj).map((key) => {
+      let counselor = counselorsObj[key];
       return (
         <div className={ styles.counselorBox }>
           <p className={ styles.counselorTitle }>
@@ -65,7 +79,20 @@ export class DynamicCounselingAndTools extends React.Component {
         </div>
       )
     });
-    return counselorBox
+  }
+
+  displayCounselors() {
+    if (this.state.counselors == null && this.state.counselorsErr == null) {
+      return (<div className={ styles.counselorBox }>
+                <div className={ styles.loader }></div>
+              </div>)
+    } else if (this.state.counselors && this.state.counselorsErr == null) {
+      return this.createCounselorBoxes()
+    } else if (this.state.counselorsErr) {
+      return (<div className={ styles.counselorBox }>
+                <p> Sorry we were unable to process your zipcode.</p>
+              </div>)
+    }
   }
 
 
@@ -76,9 +103,7 @@ export class DynamicCounselingAndTools extends React.Component {
         <h1 className={ styles.title }>Get free, personalized help from a local counselor</h1>
         <p className={ styles.subTitle }>Local Counselors can help you prepare materials and introduce you to additional lenders</p>
         <div className={ styles.counselorContainer }>
-          { counselorBoxes ? this.createCounselorBoxes() : <div className={ styles.counselorBox }>
-                                                             <div className={ styles.loader }></div>
-                                                           </div> }
+          { this.displayCounselors() }
         </div>
         <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
       </div>
