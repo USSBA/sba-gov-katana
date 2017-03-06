@@ -63,7 +63,7 @@
     "nodemailer": "^2.7.0",
     "npm": "^4.1.2",
     "postcss-loader": "^1.1.0",
-    "pug": "^2.0.0-beta6",
+    "pug": "^2.0.0-beta11",
     "qs": "^6.3.0",
     "querystring": "^0.2.0",
     "rc-progress": "^2.0.3",

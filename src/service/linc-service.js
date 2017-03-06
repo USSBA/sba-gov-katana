@@ -1,5 +1,6 @@
 import pug from "pug";
 import path from "path";
+import url from "url";
 import uuid from "uuid";
 import moment from "moment";
 import config from "config";
@@ -15,12 +16,17 @@ import LincSoapRequest from "./linc-soap-request.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString) {
   let token = tokenString;
+  let followup = true;
   if (!token) {
     token = uuid.v4();
+    followup = false;
   }
-  const link = path.join(config.get("linc.confirmationEmailBase"), "/linc/emailconfirmed?token=" + token);
+  const link = url.resolve(config.get("linc.confirmationEmailBase"), "/linc/emailconfirmed?token=" + token);
 
-  const htmlContents = pug.renderFile(path.join(__dirname, "../views/confirmation-email.pug"), {
+
+  const pugTemplate = followup ? "../views/followup-email.pug" : "../views/confirmation-email.pug";
+  const subject = followup ? "Reminder: Confirm your email to find lenders" : "Almost done! Confirm your email to find lenders";
+  const htmlContents = pug.renderFile(path.join(__dirname, pugTemplate), {
     confirmationLink: link,
     firstName: _.first(_.words(name))
   });
@@ -28,7 +34,7 @@ function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, 
 
   const mailOptions = {
     to: emailAddress,
-    subject: "Almost done! Confirm your email to find lenders",
+    subject: subject,
     text: textContents,
     html: htmlContents
   };
@@ -82,7 +88,7 @@ function sendFollowupConfirmations(emailConfirmations) {
       .then(function(lenderMatchRegistration) {
         const name = lenderMatchRegistration.name;
         const emailAddress = lenderMatchRegistration.emailAddress;
-        return [name, emailAddress, emailConfirmation.token, lenderMatchRegistration.id];
+        return [name, emailAddress, lenderMatchRegistration.id, emailConfirmation.token];
       })
       .spread(createConfirmationEmail)
       .then(function(result) {

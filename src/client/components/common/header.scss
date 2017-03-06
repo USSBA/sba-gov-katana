@@ -2,6 +2,25 @@
     display: none;
 }
 
+
+.show{
+    visibility: visible;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+// Variables
+$sba-blue: #0B97DD;
+$byzantine: #AB3EA0;
+$money-green: #609F00;
+$cobalt-blue: #0F48AA;
+$sba-blue-dark: #006BA2;
+$byzantine-dark: #7E2E76;
+$money-green-dark: #336200;
+$cobalt-blue-dark: #0A3072;
+
 @media screen and (min-width: 992px){
 
     .normalizeMenuItemNew {
@@ -53,6 +72,8 @@
 
 
 
+
+
     .mainNavNew > ul {
         /*remove styling for ul in bottom nav*/
         margin: 0;
@@ -79,6 +100,20 @@
         cursor: pointer;
         text-decoration: none !important;
     }
+
+    .sba-blue .mainBtnNew > span {
+        color: $sba-blue;
+    }
+    .byzantine .mainBtnNew > span {
+        color: $byzantine;
+    }
+    .money-green .mainBtnNew > span {
+        color: $money-green;
+    }
+    .cobalt-blue .mainBtnNew > span {
+        color: $cobalt-blue;
+    }
+
 
     .mainNavNew > ul > li:first-child > a {
         /*removes left padding for the first main nav button*/
@@ -114,10 +149,22 @@
         right: 0;
         bottom: 0;
         margin: auto;
-        border-bottom: 0.5vw solid #0B97DD;
         border-right: 0.5vw solid transparent;
         border-left: 0.5vw solid transparent;
         border-top: 0;
+    }
+
+    .sba-blue .triangleNew {
+        border-bottom: 0.5vw solid $sba-blue;
+    }
+    .byzantine .triangleNew {
+        border-bottom: 0.5vw solid $byzantine;
+    }
+    .money-green .triangleNew {
+        border-bottom: 0.5vw solid $money-green;
+    }
+    .cobalt-blue .triangleNew {
+        border-bottom: 0.5vw solid $cobalt-blue;
     }
 
     .mainBtnNew:hover .triangleNew {
@@ -148,10 +195,8 @@
     }
 
     /*DROPDOWN MENU*/
-    .mainMenuShow {
+    .mainMenuNew {
         position: absolute;
-        visibility: visible;
-        border-top: 0.5vw solid #0B97DD;
         background-color: white;
         padding: 0;
         padding-bottom: 2.5vw;
@@ -164,20 +209,17 @@
         border-bottom: 1px solid #c4c4c4;
     }
 
-    .mainMenuHide {
-        position: absolute;
-        visibility: hidden;
-        border-top: 0.5vw solid #0B97DD;
-        background-color: white;
-        padding: 0;
-        padding-bottom: 2.5vw;
-        width: 81.2vw;
-        right: -0.2vw;
-        list-style-type: none;
-        box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
-        border-left: 1px solid #c4c4c4;
-        border-right: 1px solid #c4c4c4;
-        border-bottom: 1px solid #c4c4c4;
+    .sba-blue .mainMenuNew {
+        border-top: 0.5vw solid $sba-blue;
+    }
+    .byzantine .mainMenuNew {
+        border-top: 0.5vw solid $byzantine;
+    }
+    .money-green .mainMenuNew {
+        border-top: 0.5vw solid $money-green;
+    }
+    .cobalt-blue .mainMenuNew {
+        border-top: 0.5vw solid $cobalt-blue;
     }
 
     .mainNavNew > ul > li:hover > a + ul {
@@ -201,6 +243,8 @@
         box-sizing: border-box;
     }
 
+
+
     .columnNew > li {
         /*all elements in drodown*/
         text-decoration: none;
@@ -216,7 +260,19 @@
         margin-bottom: 0px;
         font-size: 1.45vw;
         font-weight: bold;
-        color: #0B97DD;
+    }
+
+    .sba-blue .columnNew > li > h2 {
+        color: $sba-blue;
+    }
+    .byzantine .columnNew > li > h2 {
+        color: $byzantine;
+    }
+    .money-green .columnNew > li > h2 {
+        color: $money-green;
+    }
+    .cobalt-blue .columnNew > li > h2 {
+        color: $cobalt-blue;
     }
 
     .columnNew > li > h2 > a {
@@ -228,7 +284,19 @@
     .columnNew > li > h2 > a:hover {
         /*dopdown headers*/
         text-decoration: underline;
-        color: #006BA2;
+    }
+
+    .sba-blue .columnNew > li > h2 > a {
+        color: $sba-blue;
+    }
+    .byzantine .columnNew > li > h2 > a {
+        color: $byzantine;
+    }
+    .money-green .columnNew > li > h2 > a {
+        color: $money-green;
+    }
+    .cobalt-blue .columnNew > li > h2 > a {
+        color: $cobalt-blue;
     }
 
     .columnNew > li > a {
@@ -244,6 +312,20 @@
         /*dopdown links*/
         text-decoration: underline;
     }
+
+    .sba-blue .columnNew > li > h2 > a:hover {
+        color: $sba-blue-dark;
+    }
+    .byzantine .columnNew > li > h2 > a:hover {
+        color: $byzantine-dark;
+    }
+    .money-green .columnNew > li > h2 > a:hover {
+        color: $money-green-dark;
+    }
+    .cobalt-blue .columnNew > li > h2 > a:hover {
+        color: $cobalt-blue-dark;
+    }
+
 
     /*TOP MINI NAV BAR*/
     .miniNavNew{
@@ -308,7 +390,19 @@
 
     .menuCallToAction {
         margin-top: 2vw;
-        background-color: #0B97DD;
+    }
+
+    .sba-blue .menuCallToAction {
+        background-color: $sba-blue;
+    }
+    .byzantine .menuCallToAction {
+        background-color: $byzantine;
+    }
+    .money-green .menuCallToAction {
+        background-color: $money-green;
+    }
+    .cobalt-blue .menuCallToAction {
+        background-color: $cobalt-blue;
     }
 
     .menuCallToAction img {
@@ -371,18 +465,46 @@
         height: 8.534vw;
         font-size: 3.2vw;
         line-height: 9.6vw;
-        color: #0B97DD;
         text-decoration: none;
         font-weight: bold;
-        border: 0.533vw solid #0B97DD;
     }
 
+    .sba-blue .menuBtnNew {
+        color: $sba-blue;
+        border: 0.533vw solid $sba-blue;
+    }
+    .byzantine .menuBtnNew {
+        color: $byzantine;
+        border: 0.533vw solid $byzantine;
+    }
+    .money-green .menuBtnNew {
+        color: $money-green;
+        border: 0.533vw solid $money-green;
+    }
+    .cobalt-blue .menuBtnNew {
+        color: $cobalt-blue;
+        border: 0.533vw solid $cobalt-blue;
+    }
+
+
     .menuBtnTextNew {
-        color: #0B97DD;
         height: 9.6vw;
         margin-top: -.633vw;
         padding-left: 3.73vw;
         float: left;
+    }
+
+    .sba-blue .menuBtnTextNew {
+        color: $sba-blue;
+    }
+    .byzantine .menuBtnTextNew {
+        color: $byzantine;
+    }
+    .money-green .menuBtnTextNew {
+        color: $money-green;
+    }
+    .cobalt-blue .menuBtnTextNew {
+        color: $cobalt-blue;
     }
 
     .menuIconHamburgerNew{
@@ -467,7 +589,19 @@
 
     .navLinkNew {
         font-weight: bold;
-        color: #0B97DD ;
+    }
+
+    .sba-blue .navLinkNew {
+        color: $sba-blue;
+    }
+    .byzantine .navLinkNew {
+        color: $byzantine;
+    }
+    .money-green .navLinkNew {
+        color: $money-green;
+    }
+    .cobalt-blue .navLinkNew {
+        color: $cobalt-blue;
     }
 
     .navLinkSpecialNew{
