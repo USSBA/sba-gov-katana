@@ -60,7 +60,7 @@ export class DynamicCounselingAndTools extends React.Component {
             { this.getMiles(counselor['location_distance']) + " miles away" }
           </p>
           <p className={ styles.counselorAttr }>
-            { 'Phone: ' + counselor['phone'] || "Not Available" }
+            { counselor['phone'] ? 'Phone: ' + counselor['phone'] : "Not Available" }
           </p>
         </div>
       )
@@ -76,7 +76,9 @@ export class DynamicCounselingAndTools extends React.Component {
         <h1 className={ styles.title }>Get free, personalized help from a local counselor</h1>
         <p className={ styles.subTitle }>Local Counselors can help you prepare materials and introduce you to additional lenders</p>
         <div className={ styles.counselorContainer }>
-          { counselorBoxes ? this.createCounselorBoxes() : <div className={ styles.loader }></div> }
+          { counselorBoxes ? this.createCounselorBoxes() : <div className={ styles.counselorBox }>
+                                                             <div className={ styles.loader }></div>
+                                                           </div> }
         </div>
         <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
       </div>
