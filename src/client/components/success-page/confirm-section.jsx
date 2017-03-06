@@ -29,8 +29,8 @@ class ConfirmSection extends React.Component {
         <Col xs={ 12 } className={ styles.section }>
         <Row>
           <h2 className={ styles.title + " text-center" }>
-                                      You're almost done! Confirm your e-mail to get matched
-                                    </h2>
+                                                        You're almost done! Confirm your e-mail to get matched
+                                                      </h2>
         </Row>
         <Row>
           <Col xs={ 6 } xsOffset={ 3 }>
