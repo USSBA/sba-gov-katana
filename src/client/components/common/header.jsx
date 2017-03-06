@@ -236,6 +236,7 @@ class Header extends React.Component {
           }
         }
       }
+
       const triangleMarker = isEmpty(subMenuContainer) ? "" : (<div className={ styles.triangleNew }></div>);
       menuContainer.push(
         <li key={ index } onKeyUp={ (event) => this.handleKeyUp(event, index) }>
