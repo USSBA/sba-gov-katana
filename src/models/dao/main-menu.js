@@ -3,6 +3,7 @@
  */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
+/* eslint-disable no-magic-numbers */
 
 import { executeQuery } from "../drupal-db.js";
 import _ from "lodash";
@@ -13,8 +14,8 @@ function fetchMainMenu() {
   return Promise.all([fetchMainMenuStructure(), fetchLoansAndGrantsCalloutBlock()])
     .spread(function(menuStructure, loansAndGrantsCallout) {
       const cleaned = _.chain(menuStructure)
-        .uniqWith(function(x, y) {
-          return x.plid === y.plid && x.linkPath === y.linkPath;
+        .uniqWith(function(first, second) {
+          return first.plid === second.plid && first.linkPath === second.linkPath;
         })
         .map(function(item) {
           return {
