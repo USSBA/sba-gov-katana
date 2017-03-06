@@ -28,9 +28,11 @@ class ConfirmSection extends React.Component {
       <div className="container">
         <Col xs={ 12 } className={ styles.section }>
         <Row>
-          <h2 className={ styles.title + " text-center" }>
-                                                        You're almost done! Confirm your e-mail to get matched
-                                                      </h2>
+          { /*esfmt-ignore-start*/}
+            <h2 className={styles.title + " text-center"}>
+              You're almost done! Confirm your e-mail to get matched
+            </h2>
+            {/*esfmt-ignore-end*/ }
         </Row>
         <Row>
           <Col xs={ 6 } xsOffset={ 3 }>

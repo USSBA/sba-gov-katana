@@ -18,7 +18,7 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                     <div className={ styles.line }></div>
                                                   </li>
                                                   <li>
-                                                    <p>Answer a few questions about your business in as little as five minutes.</p>
+                                                    <p className={ styles.sectionItemDescription }>Answer a few questions about your business in as little as five minutes.</p>
                                                   </li>
                                                 </ul>
                                                 <ul className={ styles.sectionItem }>
@@ -30,7 +30,7 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                     <div className={ styles.line }></div>
                                                   </li>
                                                   <li>
-                                                    <p>Receive an email with contact information of lenders who express interest in your loan.</p>
+                                                    <p className={ styles.sectionItemDescription }>Receive an email with contact information of lenders who express interest in your loan.</p>
                                                   </li>
                                                 </ul>
                                                 <ul className={ styles.sectionItem }>
@@ -42,7 +42,7 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                     <div className={ styles.line }></div>
                                                   </li>
                                                   <li>
-                                                    <p>Compare rates, terms, fees, and more.</p>
+                                                    <p className={ styles.sectionItemDescription }>Compare rates, terms, fees, and more.</p>
                                                   </li>
                                                 </ul>
                                                 <ul className={ styles.sectionItem }>
@@ -54,7 +54,8 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                     <div className={ styles.line }></div>
                                                   </li>
                                                   <li>
-                                                    <p>Submit loan applications and paperwork. You're well on your way to securing a business loan!</p>.</li>
+                                                    <p className={ styles.sectionItemDescription }>Submit loan applications and paperwork. You're well on your way to securing a business loan!</p>
+                                                  </li>
                                                 </ul>
                                               </div>
                                             </div>
