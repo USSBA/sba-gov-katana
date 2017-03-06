@@ -60,6 +60,7 @@ export const MultiSelectBox = ({label, getValidationState, ...props}) => <Col xs
                                                                            <ControlLabel className={ styles.controlLabel }>
                                                                              { label }
                                                                            </ControlLabel>
-                                                                           <MultiSelect multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," } {...props}/>
+                                                                           <MultiSelect tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
+                                                                             {...props}/>
                                                                          </FormGroup>
                                                                          </Col>;
