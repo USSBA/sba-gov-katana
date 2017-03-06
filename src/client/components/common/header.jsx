@@ -286,10 +286,6 @@ class Header extends React.Component {
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login?destination=about-sba%2Fwhat-we-do%2Fcontact-sba">Log In</a>
-                <a id="search-toggle-link" tabIndex="0" href="#"><i id="search-toggle" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i></a>
-                <form id={ styles.searchBarNew }>
-                  <input id={ styles.searchInputNew } type='text' placeholder='Search'></input><i id="search-btn-new" tabIndex="0" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
-                </form>
                 { searchBar }
               </nav>
               <br/>
