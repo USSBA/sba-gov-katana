@@ -2,7 +2,7 @@
  * Created by aadeogun on 2/13/17.
  */
 import HttpStatus from "http-status-codes";
-import { fetchMainMenu } from "../models/dao/main-menu-hardcoded.js";
+import { fetchMainMenu } from "../models/dao/main-menu.js";
 
 function getMainMenu(req, res) {
   fetchMainMenu()

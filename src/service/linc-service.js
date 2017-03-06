@@ -18,7 +18,7 @@ function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, 
   if (!token) {
     token = uuid.v4();
   }
-  const link = config.get("linc.confirmationEmailBase") + "/linc/confirmEmail?token=" + token;
+  const link = path.join(config.get("linc.confirmationEmailBase"), "/linc/emailconfirmed?token=" + token);
 
   const htmlContents = pug.renderFile(path.join(__dirname, "../views/confirmation-email.pug"), {
     confirmationLink: link,
@@ -65,7 +65,7 @@ function findUnconfirmedRegistrations() {
     where: {
       sent: {
         $gt: earliest.unix(),
-        $lt: soonest.unit()
+        $lt: soonest.unix()
       },
       sentFollowup: {
         $eq: null
@@ -84,7 +84,7 @@ function sendFollowupConfirmations(emailConfirmations) {
         const emailAddress = lenderMatchRegistration.emailAddress;
         return [name, emailAddress, emailConfirmation.token, lenderMatchRegistration.id];
       })
-      .then(createConfirmationEmail)
+      .spread(createConfirmationEmail)
       .then(function(result) {
         return emailConfirmation.update({
           sentFollowup: result.sent

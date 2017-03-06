@@ -1,3 +1,6 @@
+.hidden {
+    display: none;
+}
 
 @media screen and (min-width: 992px){
 
@@ -121,8 +124,43 @@
         visibility: visible;
     }
 
+    .mainBtnNew:focus .triangleNew{
+        visibility: visible;
+    }
+
+    .skipLink {
+        margin-top: 1.5vw;
+        margin-left: 3.5vw;
+        font-size: 1.45vw;
+        pointer-events: none;
+    }
+
+    .skipLink > a {
+        color: white;
+    }
+
+    .skipLink > a:focus {
+        color: black;
+    }
+
     /*DROPDOWN MENU*/
-    .mainMenuNew {
+    .mainMenuShow {
+        position: absolute;
+        visibility: visible;
+        border-top: 0.5vw solid #0B97DD;
+        background-color: white;
+        padding: 0;
+        padding-bottom: 2.5vw;
+        width: 81.2vw;
+        right: -0.2vw;
+        list-style-type: none;
+        box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+        border-left: 1px solid #c4c4c4;
+        border-right: 1px solid #c4c4c4;
+        border-bottom: 1px solid #c4c4c4;
+    }
+
+    .mainMenuHide {
         position: absolute;
         visibility: hidden;
         border-top: 0.5vw solid #0B97DD;

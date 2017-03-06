@@ -59,9 +59,6 @@ var masterHardCodedMenu = [{
       "link": "managing-business/business-guides-industry",
       "linkTitle": "Business Guides by Industry"
     }, {
-      "link": "managing-business/small-business-health-care",
-      "linkTitle": "Small Business Health Care"
-    }, {
       "link": "managing-business/exporting",
       "linkTitle": "Exporting"
     }, {
@@ -73,9 +70,6 @@ var masterHardCodedMenu = [{
     }, {
       "link": "managing-business/forms",
       "linkTitle": "Forms"
-    }, {
-      "link": "category/navigation-structure/starting-managing-business/managing-business/local-resources",
-      "linkTitle": "Local Resources"
     }]
   }]
 }, {
@@ -304,19 +298,6 @@ var masterHardCodedMenu = [{
       "linkTitle": "Open Government"
     }]
   }, {
-    "link": "about-sba/sba-team",
-    "linkTitle": "SBA Team",
-    "children": [{
-      "link": "about-sba/sba-team/jobs-sba",
-      "linkTitle": "The SBA Administrator"
-    }, {
-      "link": "about-sba/sba-team/jobs-sba",
-      "linkTitle": "Jobs at SBA"
-    }, {
-      "link": "about-sba/sba-team/sba-leadership",
-      "linkTitle": "SBA Leadership"
-    }]
-  }, {
     "link": "about-sba/oversight-advocacy",
     "linkTitle": "Oversight & Advocacy",
     "children": [{
@@ -331,6 +312,16 @@ var masterHardCodedMenu = [{
     }, {
       "link": "oha",
       "linkTitle": "Hearings & Appeals"
+    }]
+  }, {
+    "link": "about-sba/sba-team",
+    "linkTitle": "SBA Team",
+    "children": [{
+      "link": "about-sba/sba-team/jobs-sba",
+      "linkTitle": "Jobs at SBA"
+    }, {
+      "link": "about-sba/sba-team/sba-leadership",
+      "linkTitle": "SBA Leadership"
     }]
   }, {
     "link": "about-sba/sba-locations",
@@ -350,11 +341,7 @@ var masterHardCodedMenu = [{
     }]
   }, {
     "link": "about-sba/sba-newsroom",
-    "linkTitle": "SBA Newsroom",
-    "children": [{
-      "link": "content/fiscal-year-2012-budget-summary",
-      "linkTitle": "Fiscal Year 2012 Budget Summary"
-    }]
+    "linkTitle": "SBA Newsroom"
   }, {
     "link": "about-sba/sba-initiatives",
     "linkTitle": "SBA Initiatives"
