@@ -154,9 +154,11 @@ class Header extends React.Component {
         mainMenu.children.forEach((subMenu, subMenuIndex) => {
           subSubMenuContainer.push(
             <li>
+              { /*esfmt-ignore-start*/}
               <h2>
-                                        <a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a>
-                                      </h2>
+                <a tabIndex="0" href={subMenu.link}>{subMenu.linkTitle}</a>
+              </h2>
+              {/*esfmt-ignore-end*/ }
             </li>
           );
           if (subMenu.children && !isEmpty(subMenu.children)) {
@@ -339,13 +341,6 @@ class Header extends React.Component {
                   </div>
                 </a>
               </span>
-              <a className={styles.menuBtnNew} onClick={this.toggleNav.bind(this)}>
-                <div>
-                  <div className={styles.menuBtnTextNew}>MENU</div>
-                  <img className={styles.menuIconHamburgerNew} alt="" src={hamburger}/>
-                  <img className={styles.menuIconCloseNew} alt="" src={hamburgerClose}/>
-                </div>
-              </a>
               {/*esfmt-ignore-end*/ }
             </div>
             <nav className={ styles.mainNavNew + " " + (this.state.expanded
