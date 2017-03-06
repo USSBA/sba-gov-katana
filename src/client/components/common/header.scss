@@ -516,6 +516,21 @@ $cobalt-blue-dark: #0A3072;
         float: right;
     }
 
+    .sba-blue .hamburgerIcon {
+        fill: $sba-blue !important;
+    }
+    .byzantine .hamburgerIcon {
+        fill: $byzantine !important;
+    }
+    .money-green .hamburgerIcon {
+        fill: $money-green !important;
+    }
+    .cobalt-blue .hamburgerIcon {
+        fill: $cobalt-blue !important;
+    }
+
+
+
     .menuIconCloseNew{
         height: 3.466vw;
         width: 4vw;
@@ -524,6 +539,10 @@ $cobalt-blue-dark: #0A3072;
         margin-top: 2.667vw;
         float: right;
         display: none;
+    }
+
+    .closeIcon {
+        fill: $byzantine !important;
     }
 
     .mobile-search-new{

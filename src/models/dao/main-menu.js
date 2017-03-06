@@ -5,9 +5,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-magic-numbers */
 
-import {
-  executeQuery
-} from "../drupal-db.js";
+import { executeQuery } from "../drupal-db.js";
 import _ from "lodash";
 import Promise from "bluebird";
 
@@ -114,9 +112,4 @@ function fetchLoansAndGrantsCalloutBlock() {
     });
 }
 
-export {
-  fetchMainMenu,
-  fetchMainMenuStructure,
-  fetchLoansAndGrantsCalloutBlock,
-  buildMenuTree
-};
+export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree };
