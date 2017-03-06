@@ -12,7 +12,6 @@ import * as ContentActions from '../../actions/content.js';
 class Header extends React.Component {
 
   menuHtml = [];
-  renderNextMenu = false;
 
   constructor(props) {
     super();
@@ -23,10 +22,7 @@ class Header extends React.Component {
       searchValue: "",
       tabbedIndex: -1,
       tabbedSubSubMenuIndex: -1,
-      tabbedSubMenuIndex: -1,
-      goToNextSectionFocus: true,
-      nextMenuItem: -1,
-      currentMenuItem: -1
+      tabbedSubMenuIndex: -1
     };
   }
 
@@ -111,10 +107,8 @@ class Header extends React.Component {
       if (menuIndex < this.menuHtml.length - 1) {
         this.menuHtml[menuIndex + 1].focus();
         this.setState({
-          tabbedIndex: this.state.tabbedIndex + 1,
-          nextMenuItem: menuIndex + 1
+          tabbedIndex: this.state.tabbedIndex + 1
         });
-        this.renderNextMenu = true;
       }
     }
   }
@@ -225,18 +219,6 @@ class Header extends React.Component {
               </ul>
             );
           }
-        } else if (this.state.nextMenuItem === index && this.renderNextMenu) {
-          subMenu = (
-            <ul aria-label="submenu" className={ styles.mainMenuNew + " " + styles.show }>
-              <li className={ styles.skipLink } onKeyDown={ (event) => this.handleSkipLinkKeyDown(event, index) }>
-                <a tabIndex="0">Go to Next Section</a>
-              </li>
-              <li className={ styles.normalizeMenuItemNew }>
-                { subMenuContainer }
-              </li>
-            </ul>
-          );
-          this.renderNextMenu = false;
         } else {
           subMenu = (
             <ul aria-label="submenu" className={ styles.mainMenuNew + " " + styles.hide }>
