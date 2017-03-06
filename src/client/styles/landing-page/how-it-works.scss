@@ -17,12 +17,19 @@
     margin-bottom: 1vw;
     font-size: 1.5vw;
     font-weight: bolder;
+    letter-spacing: -0.025em;
+  }
+
+  .sectionItemDescription{
+    font-size: 1.3vw;
+    letter-spacing: -0.025em;
   }
   .sectionTitle{
+    letter-spacing: -0.025em;
     margin-left: 2vw;
     margin-bottom: 20px;
-    font-size: 5vw;
-    font-weight: bolder;
+    font-size: 5.2vw;
+    font-weight: 900;
   }
   .sectionItemWrapper:after{
     content: '';

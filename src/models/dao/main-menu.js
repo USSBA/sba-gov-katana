@@ -12,7 +12,7 @@ import Promise from "bluebird";
 function fetchMainMenu() {
   return Promise.all([fetchMainMenuStructure(), fetchLoansAndGrantsCalloutBlock()])
     .spread(function(menuStructure, loansAndGrantsCallout) {
-      let cleaned = _.chain(menuStructure)
+      const cleaned = _.chain(menuStructure)
         .uniqWith(function(x, y) {
           return x.plid === y.plid && x.linkPath === y.linkPath;
         })
