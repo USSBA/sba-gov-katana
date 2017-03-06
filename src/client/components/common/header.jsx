@@ -276,8 +276,6 @@ class Header extends React.Component {
             <div className={ styles.navbarNew }>
               <a tabIndex="-1" href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-                <a tabIndex="0" id="translate-toggle-new" className={ styles.miniNavLinkNew } href="#">Translate</a>
-                <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA En Español</a>
                 <div className={ this.state.translate ? styles.googleTranslateElementVisible : styles.googleTranslateElement } id="google_translate_element"></div>
                 { googleTranslateBtn }
                 <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA en español</a>
