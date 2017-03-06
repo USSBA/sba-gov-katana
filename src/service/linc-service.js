@@ -160,6 +160,12 @@ function resendConfirmationEmail(emailAddress) {
         sentFollowup: {
           $eq: null
         }
+      },
+      order: [
+        ['sent', 'DESC']
+      ],
+      limit: {
+        1
       }
     })
     .then(function(lenderMatchRegistration) {
