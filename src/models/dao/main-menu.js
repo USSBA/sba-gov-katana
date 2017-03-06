@@ -5,7 +5,9 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-magic-numbers */
 
-import { executeQuery } from "../drupal-db.js";
+import {
+  executeQuery
+} from "../drupal-db.js";
 import _ from "lodash";
 import Promise from "bluebird";
 
@@ -27,7 +29,7 @@ function fetchMainMenu() {
           };
         })
         .filter(function(item) {
-          return !item.mlid || (item.mlid !== 1116 && item.mlid !== 5031 && item.mlid !== 5171);
+          return !item.mlid || (item.mlid !== 1116 && item.mlid !== 5171);
         })
         .value();
 
@@ -112,4 +114,9 @@ function fetchLoansAndGrantsCalloutBlock() {
     });
 }
 
-export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree };
+export {
+  fetchMainMenu,
+  fetchMainMenuStructure,
+  fetchLoansAndGrantsCalloutBlock,
+  buildMenuTree
+};
