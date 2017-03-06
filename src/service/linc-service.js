@@ -164,9 +164,7 @@ function resendConfirmationEmail(emailAddress) {
       order: [
         ['sent', 'DESC']
       ],
-      limit: {
-        1
-      }
+      limit: 1
     })
     .then(function(lenderMatchRegistration) {
       return EmailConfirmation.findOne({
