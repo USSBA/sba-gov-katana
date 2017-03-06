@@ -46,7 +46,6 @@ class Header extends React.Component {
 
   handleSearchChange(e) {
     event.preventDefault();
-    console.log(event.target);
     this.setState({
       searchValue: e.target.value
     });
@@ -107,15 +106,16 @@ class Header extends React.Component {
     let code = (event.keyCode
       ? event.keyCode
       : event.which);
+
     if (code === 13) {
       if (menuIndex < this.menuHtml.length - 1) {
         this.menuHtml[menuIndex + 1].focus();
         this.setState({
+          tabbedIndex: this.state.tabbedIndex + 1,
           nextMenuItem: menuIndex + 1
         });
         this.renderNextMenu = true;
       }
-      console.log("inside on key up.");
     }
   }
 
@@ -236,7 +236,6 @@ class Header extends React.Component {
               </li>
             </ul>
           );
-          console.log("next menu index. = " + this.state.nextMenuItem);
           this.renderNextMenu = false;
         } else {
           subMenu = (
