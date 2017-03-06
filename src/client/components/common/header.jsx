@@ -155,8 +155,8 @@ class Header extends React.Component {
           subSubMenuContainer.push(
             <li>
               <h2>
-                            <a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a>
-                          </h2>
+                                        <a tabIndex="0" href={ subMenu.link }>{ subMenu.linkTitle }</a>
+                                      </h2>
             </li>
           );
           if (subMenu.children && !isEmpty(subMenu.children)) {
