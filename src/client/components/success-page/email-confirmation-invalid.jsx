@@ -8,9 +8,11 @@ class EmailConfirmationInvalid extends React.Component {
       <div className="container">
         <Col xs={ 12 } className={ styles.section }>
         <Row>
-          <h2 className={ styles.title + " text-center" }>
-                                      That email confirmation link is either expired or invalid. If is has been more than 48 hours since you submitted your request, please submit a new one.
-                                    </h2>
+          { /*esfmt-ignore-start*/}
+            <h2 className={styles.title + " text-center"}>
+              Your email confirmation link has expired. Please submit a new application with your updated information at https://www.sba.gov/lendermatch.
+            </h2>
+            {/*esfmt-ignore-end*/ }
         </Row>
         </Col>
       </div>
