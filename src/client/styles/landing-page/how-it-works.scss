@@ -12,6 +12,26 @@
   .sectionItem:nth-child(even){
     bottom: -90px;
   }
+  .sectionImage{
+    position: relative;
+  }
+
+  .sectionImage p{
+    position: absolute;
+    width: 96px;
+    height: 151px;
+    opacity: 0.4;
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 151px;
+    color: #609F00;
+    bottom: 178px;
+    left: 15px;
+  }
+
+  .sectionItem:nth-child(odd) .sectionImage p{
+    bottom: 173px;
+  }
   .sectionItemTitle{
     margin-top: 1vw;
     margin-bottom: 1vw;
@@ -27,7 +47,7 @@
   .sectionTitle{
     letter-spacing: -0.025em;
     margin-left: 2vw;
-    margin-bottom: 20px;
+    margin-bottom: 78px;
     font-size: 5.2vw;
     font-weight: 900;
   }
