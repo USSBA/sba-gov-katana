@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../main-menu.scss';
-import {isEmpty, includes} from "lodash";
+import { isEmpty, includes } from "lodash";
 /* esfmt-ignore-start */
 class SubMenu extends React.Component {
 
@@ -32,9 +32,8 @@ class SubMenu extends React.Component {
     let code = (event.keyCode
       ? event.keyCode
       : event.which);
-
     if (code === 13) {
-      this.props.onSkipToNext(this.props.menuId);
+      this.props.onSkipToNext(this.props.menuId, event);
       event.preventDefault();
     }
   }
@@ -173,7 +172,7 @@ class SubMenu extends React.Component {
         <div className={styles.triangleNew}></div>
       );
     return (
-      <li key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)} autoFocus={this.autoFocusOnTitle}>
+      <li key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)}>
         <a tabIndex="0" aria-haspopup="true" title={this.props.data.linkTitle} className={styles.mainBtnNew + " " + styles.normalizeMenuItemNew} href={this.props.data.link}>
           <span>{this.props.data.linkTitle}</span>
           {triangleMarker}

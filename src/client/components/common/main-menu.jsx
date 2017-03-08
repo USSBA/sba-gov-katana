@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styles from './main-menu.scss';
 import SubMenu from './menu/sub-menu.jsx';
 
@@ -9,21 +10,27 @@ class MainMenu extends React.Component {
     this.state = {
       currentlyFocusedTopLevelMenu: -1
     };
-    this.submenuRefs = [];
   }
 
   handleFocus(menuId) {
-    this.setState({currentlyFocusedTopLevelMenu: menuId});
+    this.setState({
+      currentlyFocusedTopLevelMenu: menuId
+    });
   }
 
-  handleSkipToNext(menuId) {
+  handleSkipToNext(menuId, event) {
+    let nextAnchor = event.target.parentNode.parentNode.parentNode.nextSibling.firstChild;
     this.setState({
       currentlyFocusedTopLevelMenu: menuId + 1
+    }, function() {
+      nextAnchor.focus();
     });
   }
 
   handleFinalBlur() {
-    this.setState({currentlyFocusedTopLevelMenu: -1});
+    this.setState({
+      currentlyFocusedTopLevelMenu: -1
+    });
   }
 
   handleKeyDown(event) {
@@ -32,7 +39,9 @@ class MainMenu extends React.Component {
       : event.which);
     if (code == 9 && event.shiftKey) {
       if (this.state.currentlyFocusedTopLevelMenu === 0) {
-        this.setState({currentlyFocusedTopLevelMenu: -1});
+        this.setState({
+          currentlyFocusedTopLevelMenu: -1
+        });
       }
     }
   }
@@ -55,7 +64,8 @@ class MainMenu extends React.Component {
     let menuItems = [];
     if (this.props.data) {
       menuItems = this.props.data.map((item, index) => {
-        return <SubMenu key={index} shown={index === this.state.currentlyFocusedTopLevelMenu} data={item} columnDefintion={submenusPerColumn[index]} onFocus={(event) => this.handleFocus(event)} menuId={index} onSkipToNext={(event) => this.handleSkipToNext(event)} isLast={index === this.props.data.length - 1} onFinalBlur={(event) => this.handleFinalBlur(event)} autoFocusOnTitle={index === this.state.currentlyFocusedTopLevelMenu}/>
+        return <SubMenu key={ index } shown={ index === this.state.currentlyFocusedTopLevelMenu } data={ item } columnDefintion={ submenusPerColumn[index] } onFocus={ (event) => this.handleFocus(event) } menuId={ index }
+                 onSkipToNext={ (menuId, event) => this.handleSkipToNext(menuId, event) } isLast={ index === this.props.data.length - 1 } onFinalBlur={ (event) => this.handleFinalBlur(event) } autoFocusOnTitle={ index === this.state.currentlyFocusedTopLevelMenu } />
       });
     } else {
       menuItems.push(
@@ -64,12 +74,12 @@ class MainMenu extends React.Component {
     }
 
     return (
-      <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainNavNew + " " + styles[this.props.theme]}>
-        <ul className="reverse-ul" onKeyDown={(event) => this.handleKeyDown(event)}>
-          {menuItems}
+      <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew + " " + styles[this.props.theme] }>
+        <ul className="reverse-ul" onKeyDown={ (event) => this.handleKeyDown(event) }>
+          { menuItems }
         </ul>
       </nav>
-    );
+      );
   }
 }
 export default MainMenu;
