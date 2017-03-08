@@ -5,11 +5,21 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-magic-numbers */
 
-import {
-  executeQuery
-} from "../drupal-db.js";
+import { executeQuery } from "../drupal-db.js";
 import _ from "lodash";
 import Promise from "bluebird";
+import path from "path";
+
+
+function fixLink(link, linkPath) {
+  var fixedLink = link || linkPath;
+  var hardCodedPrefixToRemove = "https://www.sba.gov";
+  if (fixedLink.indexOf(hardCodedPrefixToRemove) !== -1) {
+    fixedLink = fixedLink.substring(hardCodedPrefixToRemove.length);
+  }
+  fixedLink = path.join("/", fixedLink);
+  return fixedLink;
+}
 
 
 function fetchMainMenu() {
@@ -21,7 +31,7 @@ function fetchMainMenu() {
         })
         .map(function(item) {
           return {
-            link: item.link || item.linkPath,
+            link: fixLink(item.link, item.linkPath),
             linkTitle: item.linkTitle,
             weight: item.weight,
             plid: item.plid,
@@ -114,9 +124,4 @@ function fetchLoansAndGrantsCalloutBlock() {
     });
 }
 
-export {
-  fetchMainMenu,
-  fetchMainMenuStructure,
-  fetchLoansAndGrantsCalloutBlock,
-  buildMenuTree
-};
+export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree };
