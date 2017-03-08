@@ -11,6 +11,16 @@
         visibility: hidden;
     }
 
+    .showVisible{
+        opacity: 1;
+        height: auto;
+    }
+
+    .hideVisible{
+        opacity: 0;
+        height: 0px
+    }
+
 
     .normalizeMenuItemNew {
         text-decoration: none;

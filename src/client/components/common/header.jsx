@@ -26,7 +26,7 @@ class Header extends React.Component {
               <a tabIndex="-1" href="/"><img className={ styles.logoNew } alt="Small Business Administration" src={ sbaLogo } /></a>
               <MiniNav/>
               <br/>
-              <MainMenu mainMenuData={ this.props.mainMenuData } theme={ this.props.theme } />
+              <MainMenu data={ this.props.mainMenuData } theme={ this.props.theme } />
             </div>
           </header>
         </div>
