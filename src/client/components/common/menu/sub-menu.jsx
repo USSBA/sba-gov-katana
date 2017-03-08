@@ -173,7 +173,7 @@ class SubMenu extends React.Component {
         <div className={styles.triangleNew}></div>
       );
     return (
-      <li key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)}>
+      <li key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)} autoFocus={this.autoFocusOnTitle}>
         <a tabIndex="0" aria-haspopup="true" title={this.props.data.linkTitle} className={styles.mainBtnNew + " " + styles.normalizeMenuItemNew} href={this.props.data.link}>
           <span>{this.props.data.linkTitle}</span>
           {triangleMarker}
@@ -189,6 +189,7 @@ SubMenu.defaultProps = {
   shown: false,
   data: [],
   columnDefintion: [],
+  autoFocusOnTitle: false,
   onFocus: function() {},
   onSkipToNext: function() {},
   onFinalBlur: function() {}

@@ -17,18 +17,24 @@ class MainMenu extends React.Component {
   }
 
   handleSkipToNext(menuId) {
-    let next = this.refs["submenu" + (menuId + 1)];
-    console.log(next);
-    next.focus();
+    this.setState({
+      currentlyFocusedTopLevelMenu: menuId + 1
+    });
   }
 
   handleFinalBlur() {
     this.setState({currentlyFocusedTopLevelMenu: -1});
   }
 
-  handleTopBlur() {
-    // console.log(arguments);
-    // this.setState({currentlyFocusedTopLevelMenu: -1});
+  handleKeyDown(event) {
+    let code = (event.keyCode
+      ? event.keyCode
+      : event.which);
+    if (code == 9 && event.shiftKey) {
+      if (this.state.currentlyFocusedTopLevelMenu === 0) {
+        this.setState({currentlyFocusedTopLevelMenu: -1});
+      }
+    }
   }
 
   render() {
@@ -49,17 +55,17 @@ class MainMenu extends React.Component {
     let menuItems = [];
     if (this.props.data) {
       menuItems = this.props.data.map((item, index) => {
-        return <SubMenu key={index} shown={index === this.state.currentlyFocusedTopLevelMenu} data={item} columnDefintion={submenusPerColumn[index]} onFocus={(event) => this.handleFocus(event)} menuId={index} onSkipToNext={(event) => this.handleSkipToNext(event)} isLast={index === this.props.data.length - 1} onFinalBlur={(event) => this.handleFinalBlur(event)}/>
+        return <SubMenu key={index} shown={index === this.state.currentlyFocusedTopLevelMenu} data={item} columnDefintion={submenusPerColumn[index]} onFocus={(event) => this.handleFocus(event)} menuId={index} onSkipToNext={(event) => this.handleSkipToNext(event)} isLast={index === this.props.data.length - 1} onFinalBlur={(event) => this.handleFinalBlur(event)} autoFocusOnTitle={index === this.state.currentlyFocusedTopLevelMenu}/>
       });
     } else {
       menuItems.push(
-        <div></div >
+        <div></div>
       );
     }
 
     return (
-      <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainNavNew + " " + styles[this.props.theme]} onBlur={(event) => this.handleTopBlur(event)}>
-        <ul className="reverse-ul">
+      <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainNavNew + " " + styles[this.props.theme]}>
+        <ul className="reverse-ul" onKeyDown={(event) => this.handleKeyDown(event)}>
           {menuItems}
         </ul>
       </nav>
