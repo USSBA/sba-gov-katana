@@ -2,6 +2,7 @@ import axios from "axios";
 import _ from "lodash";
 import config from "config";
 import Promise from "bluebird";
+import URL from "url";
 
 var requestObject = {
   baseURL: config.get("drupal.hostname"),
@@ -37,7 +38,7 @@ function fetchBlogsFromDrupal() {
             date: blog.date,
             imageUrl: index === 0 ? "assets/images/homepage/two-ladies.jpg" : "assets/images/homepage/open-for-business-blogs-photo.jpg"
           };
-        /* eslint-enable no-magic-numbers */
+          /* eslint-enable no-magic-numbers */
         });
       }
       return [];
@@ -47,8 +48,8 @@ function fetchBlogsFromDrupal() {
 
 function fetchFrontPageSlidesFromDrupal() {
   return fetchFromDrupal("entityqueue_subqueue.json", {
-    name: "frontpage_slide_order"
-  })
+      name: "frontpage_slide_order"
+    })
     .then((result) => {
       return _.map(result.list[0].eq_node, "id");
     })
@@ -59,10 +60,12 @@ function fetchFrontPageSlidesFromDrupal() {
     })
     .then((nodes) => {
       return _.map(nodes, function(item) {
+        const originalUrl = item.field_url.url;
+        const fixedUrl = URL.parse(originalUrl).path;
         return {
           fileId: item.field_image.file.id,
           imageAlt: item.field_image.alt,
-          url: item.field_url.url,
+          url: fixedUrl,
           title: item.title
         };
       });
@@ -83,4 +86,8 @@ function fetchFrontPageSlidesFromDrupal() {
 }
 
 
-export { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal };
+export {
+  fetchFromDrupal,
+  fetchFrontPageSlidesFromDrupal,
+  fetchBlogsFromDrupal
+};
