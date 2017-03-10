@@ -154,14 +154,14 @@ function confirmEmail(token) {
 
 function resendConfirmationEmail(emailAddress) {
   return LenderMatchRegistration.findOne({
-      where: {
-        emailAddress: emailAddress
-      },
-      order: [
-        ["createdAt", "DESC"]
-      ],
-      limit: 1
-    })
+    where: {
+      emailAddress: emailAddress
+    },
+    order: [
+      ["createdAt", "DESC"]
+    ],
+    limit: 1
+  })
     .then(function(lenderMatchRegistration) {
       return EmailConfirmation.findOne({
         where: {

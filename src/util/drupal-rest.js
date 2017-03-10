@@ -38,7 +38,7 @@ function fetchBlogsFromDrupal() {
             date: blog.date,
             imageUrl: index === 0 ? "assets/images/homepage/two-ladies.jpg" : "assets/images/homepage/open-for-business-blogs-photo.jpg"
           };
-          /* eslint-enable no-magic-numbers */
+        /* eslint-enable no-magic-numbers */
         });
       }
       return [];
@@ -48,8 +48,8 @@ function fetchBlogsFromDrupal() {
 
 function fetchFrontPageSlidesFromDrupal() {
   return fetchFromDrupal("entityqueue_subqueue.json", {
-      name: "frontpage_slide_order"
-    })
+    name: "frontpage_slide_order"
+  })
     .then((result) => {
       return _.map(result.list[0].eq_node, "id");
     })
@@ -86,8 +86,4 @@ function fetchFrontPageSlidesFromDrupal() {
 }
 
 
-export {
-  fetchFromDrupal,
-  fetchFrontPageSlidesFromDrupal,
-  fetchBlogsFromDrupal
-};
+export { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal };
