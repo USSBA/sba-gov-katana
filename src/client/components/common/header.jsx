@@ -31,7 +31,7 @@ class Header extends React.Component {
           </header>
         </div>
         <div className=" hidden-sm hidden-md hidden-lg">
-          <div className={ this.props.disaster.visible
+          <div className={ this.props.disasterAlertIsVisible
                            ? styles.mobileHeaderContainerNewWithDisasterCallout
                            : styles.mobileHeaderContainerNew }>
             <MobileNav theme={ this.props.theme } />
@@ -43,9 +43,7 @@ class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  disaster: {
-    visible: false
-  },
+  disasterAlertIsVisible: false,
   mainMenuData: null
 };
 

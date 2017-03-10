@@ -11,13 +11,40 @@ import PrimaryLanding from './primary-landing.jsx';
 
 import Blog from './blog.jsx';
 import ModalController from '../common/modal-controller.jsx';
+import cookie from 'react-cookie';
 
 class Homepage extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      disasterAlertIsVisible: false
+    };
+  }
+
+  componentWillMount() {
+    let visible = cookie.load('close_disaster_loan_parature')
+      ? false
+      : true;
+    this.setState({
+      disasterAlertIsVisible: visible
+    });
+  }
+
+  handleClose() {
+    this.setState({
+      disasterAlertIsVisible: false
+    });
+    cookie.save('close_disaster_loan_parature', '1', {
+      path: '/',
+      secure: true
+    });
+  }
+
   render() {
     return (
       <div>
-        <DisasterAlerts/>
-        <Header theme="sba-blue" />
+        <DisasterAlerts disasterAlertIsVisible={ this.state.disasterAlertIsVisible } onClose={ this.handleClose.bind(this) } />
+        <Header theme="sba-blue" disasterAlertIsVisible={ this.state.disasterAlertIsVisible } />
         <PrimaryLanding/>
         <HappeningNow/>
         <StartYourBusinessSection/>
