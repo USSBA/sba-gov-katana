@@ -6,7 +6,6 @@ import express from "express";
 import config from "config";
 import bodyParser from "body-parser";
 import HttpStatus from "http-status-codes";
-import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -14,8 +13,6 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "./views/"));
 
-//set up cooking parsing middleware
-app.use(cookieParser());
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json();
 //set up static files handler not route specific but will route to any static files inside public and its subfolders
@@ -80,9 +77,6 @@ app.get("/content/disaster.json", fetchDisaster);
 
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
-
-import { getUserRoles } from "./controllers/user-roles.js";
-app.get("/content/user-roles.json", getUserRoles);
 
 
 // development error handler

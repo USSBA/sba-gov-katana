@@ -48,8 +48,6 @@ class MiniNav extends React.Component {
   componentWillMount() {
     this.setState({
       userId: cookie.load('DRUPAL_UID')
-    }, function() {
-      console.log("drupal user id = " + this.state.userId);
     });
   }
 
