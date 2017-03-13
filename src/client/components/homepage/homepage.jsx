@@ -1,7 +1,7 @@
 import React from 'react';
-import {StartYourBusinessSection} from './start-your-business.jsx';
-import {FinanceYourBusinessSection} from './finance-your-business.jsx';
-import {SellToGovtSection} from './sell-to-govt.jsx';
+import { StartYourBusinessSection } from './start-your-business.jsx';
+import { FinanceYourBusinessSection } from './finance-your-business.jsx';
+import { SellToGovtSection } from './sell-to-govt.jsx';
 import HappeningNow from "./happening-now.jsx";
 
 import DisasterAlerts from '../common/disaster-alerts.jsx'
@@ -27,11 +27,15 @@ class Homepage extends React.Component {
     let visible = cookie.load('close_disaster_loan_parature')
       ? false
       : true;
-    this.setState({disasterAlertIsVisible: visible});
+    this.setState({
+      disasterAlertIsVisible: visible
+    });
   }
 
   handleClose() {
-    this.setState({disasterAlertIsVisible: false});
+    this.setState({
+      disasterAlertIsVisible: false
+    });
     cookie.save('close_disaster_loan_parature', '1', {
       path: '/',
       secure: true
@@ -39,19 +43,23 @@ class Homepage extends React.Component {
   }
 
   handleWaypointLeave() {
-    this.setState({userHasScrolledPastAlert: true});
+    this.setState({
+      userHasScrolledPastAlert: true
+    });
   }
 
   handleWaypointEnter() {
-    this.setState({userHasScrolledPastAlert: false});
+    this.setState({
+      userHasScrolledPastAlert: false
+    });
   }
 
   render() {
     return (
       <div>
-        <DisasterAlerts disasterAlertIsVisible={this.state.disasterAlertIsVisible} onClose={this.handleClose.bind(this)}/>
-        <Waypoint onEnter={this.handleWaypointEnter.bind(this)} onLeave={this.handleWaypointLeave.bind(this)}/>
-        <Header theme="sba-blue" disasterAlertIsVisible={this.state.disasterAlertIsVisible} userHasScrolledPastAlert={this.state.userHasScrolledPastAlert}/>
+        <DisasterAlerts disasterAlertIsVisible={ this.state.disasterAlertIsVisible } onClose={ this.handleClose.bind(this) } />
+        <Waypoint onEnter={ this.handleWaypointEnter.bind(this) } onLeave={ this.handleWaypointLeave.bind(this) } />
+        <Header theme="sba-blue" disasterAlertIsVisible={ this.state.disasterAlertIsVisible } userHasScrolledPastAlert={ this.state.userHasScrolledPastAlert } />
         <PrimaryLanding/>
         <HappeningNow/>
         <StartYourBusinessSection/>
