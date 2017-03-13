@@ -21,12 +21,14 @@ class MiniNav extends React.Component {
   }
 
   handleLogOut(e) {
-      e.preventDefault();
-      this.setState({
-          userId: ""
-      }, function(){
-        cookie.remove('DRUPAL_UID', {path: '/'});
+    e.preventDefault();
+    this.setState({
+      userId: ""
+    }, function() {
+      cookie.remove('DRUPAL_UID', {
+        path: '/'
       });
+    });
   }
 
   handleSearchChange(e) {
@@ -59,11 +61,11 @@ class MiniNav extends React.Component {
 
   render() {
     const loggedInUser = this.state.userId ?
-      (<div className={styles.loggedInUser}>
+      (<div className={ styles.loggedInUser }>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
-         <a tabIndex="0" className={ styles.miniNavLinkNew } onClick={this.handleLogOut.bind(this)} href="/user/logout">Log Out</a>
-      </div>) :
+         <a tabIndex="0" className={ styles.miniNavLinkNew } onClick={ this.handleLogOut.bind(this) } href="/user/logout">Log Out</a>
+       </div>) :
       (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>);
     const searchBar = this.state.searchIsExpanded
       ? (
