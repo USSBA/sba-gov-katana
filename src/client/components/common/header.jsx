@@ -17,6 +17,7 @@ class Header extends React.Component {
   }
 
   render() {
+    console.log(this.props.disaster.visible && this.props.disasterAlertIsVisible && !this.props.userHasScrolledPastAlert);
     return (
       <div>
         <div className="hidden-xs">
@@ -30,7 +31,7 @@ class Header extends React.Component {
           </header>
         </div>
         <div className=" hidden-sm hidden-md hidden-lg">
-          <div className={ this.props.disasterAlertIsVisible && !this.props.userHasScrolledPastAlert
+          <div className={ this.props.disaster.visible && this.props.disasterAlertIsVisible && !this.props.userHasScrolledPastAlert
                            ? styles.mobileHeaderContainerNewWithDisasterCallout
                            : styles.mobileHeaderContainerNew }>
             <MobileNav theme={ this.props.theme } />
@@ -44,7 +45,10 @@ class Header extends React.Component {
 Header.defaultProps = {
   disasterAlertIsVisible: false,
   userHasScrolledPastAlert: false,
-  mainMenuData: null
+  mainMenuData: null,
+  disaster: {
+    visible: false
+  }
 };
 
 function mapStateToProps(reduxState) {
