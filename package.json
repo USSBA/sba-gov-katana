@@ -78,6 +78,7 @@
     "react-router-redux": "^4.0.7",
     "react-select": "^1.0.0-rc.3",
     "react-steps": "0.0.4",
+    "react-waypoint": "^5.1.0",
     "redux": "^3.6.0",
     "request": "^2.79.0",
     "resolve-url-loader": "^1.6.0",
