@@ -34,8 +34,10 @@ class MiniNav extends React.Component {
     });
   }
 
-  componentWillMount(){
-    this.setState({userId: cookie.load('DRUPAL_UID')}, function(){
+  componentWillMount() {
+    this.setState({
+      userId: cookie.load('DRUPAL_UID')
+    }, function() {
       console.log("drupal user id = " + this.state.userId);
     });
   }
@@ -48,12 +50,12 @@ class MiniNav extends React.Component {
 
   render() {
     const loggedInUser = this.state.userId ?
-        (<div>
-          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>
-          <a tabIndex="0" className={ styles.miniNavLinkNew } href={"/user/" + this.state.userId + "/edit"}>My Account</a>
-          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
-        </div>):
-        (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>);
+      (<div style={{display:"inline-block", whiteSpace: "nowrap"}}>
+         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>
+         <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
+         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
+      </div>) :
+      (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>);
     const searchBar = this.state.searchIsExpanded
       ? (
       <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
@@ -82,7 +84,7 @@ class MiniNav extends React.Component {
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
-        {loggedInUser}
+        { loggedInUser }
         { searchBar }
       </nav>
       );
