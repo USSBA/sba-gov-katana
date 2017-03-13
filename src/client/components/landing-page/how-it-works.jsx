@@ -10,7 +10,10 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                               <p className={ styles.sectionTitle }>How it works.</p>
                                               <div className={ styles.sectionItemWrapper }>
                                                 <ul className={ styles.sectionItem }>
-                                                  <li><div className={ styles.sectionImage }><p>1</p><img src={ howItWorksImg1 } alt="Describe your needs" /></div></li>
+                                                  <li>
+                                                    <div className={ styles.sectionImage }>
+                                                      <p>1</p><img src={ howItWorksImg1 } alt="Describe your needs" /></div>
+                                                  </li>
                                                   <li>
                                                     <p className={ styles.sectionItemTitle }>Describe your needs</p>
                                                   </li>
@@ -22,7 +25,10 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                   </li>
                                                 </ul>
                                                 <ul className={ styles.sectionItem }>
-                                                  <li><div className={ styles.sectionImage }><p>2</p><img src={ howItWorksImg2 } alt="Get matched in 2 days" /></div></li>
+                                                  <li>
+                                                    <div className={ styles.sectionImage }>
+                                                      <p>2</p><img src={ howItWorksImg2 } alt="Get matched in 2 days" /></div>
+                                                  </li>
                                                   <li>
                                                     <p className={ styles.sectionItemTitle }>Get matched in 2 days</p>
                                                   </li>
@@ -34,7 +40,10 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                   </li>
                                                 </ul>
                                                 <ul className={ styles.sectionItem }>
-                                                  <li><div className={ styles.sectionImage }><p>3</p><img src={ howItWorksImg3 } alt="Talk to lenders" /></div></li>
+                                                  <li>
+                                                    <div className={ styles.sectionImage }>
+                                                      <p>3</p><img src={ howItWorksImg3 } alt="Talk to lenders" /></div>
+                                                  </li>
                                                   <li>
                                                     <p className={ styles.sectionItemTitle }>Talk to lenders</p>
                                                   </li>
@@ -46,7 +55,10 @@ export const HowItWorksSection = (props) => <div className={ styles.sectionWrapp
                                                   </li>
                                                 </ul>
                                                 <ul className={ styles.sectionItem }>
-                                                  <li><div className={ styles.sectionImage }><p>4</p><img src={ howItWorksImg4 } alt="Apply for a loan" /></div></li>
+                                                  <li>
+                                                    <div className={ styles.sectionImage }>
+                                                      <p>4</p><img src={ howItWorksImg4 } alt="Apply for a loan" /></div>
+                                                  </li>
                                                   <li>
                                                     <p className={ styles.sectionItemTitle }>Apply for a loan</p>
                                                   </li>

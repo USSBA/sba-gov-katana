@@ -1,6 +1,6 @@
 
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 768px){
 
     .mobileHeaderContainerNew {
         display: none;
@@ -26,15 +26,15 @@
     }
 
     .logoNew {
-        margin-top: 1.8vw;
+        margin-top: 2.3vw;
         margin-left: 3.13vw;
-        width : 12.5vw;
+        width : 10vw;
         height: auto;
     }
 
 }
 
-@media screen and (max-width:992px) {
+@media screen and (max-width:767px) {
 
     .mobileHeaderContainerNew {
         font-family: "Source Sans Pro";

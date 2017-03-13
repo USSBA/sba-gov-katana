@@ -33,54 +33,58 @@ class HappeningNow extends React.Component {
       return <div></div>;
     }
 
-    return (<div className={ styles.happeningNow }>
-              <Grid fluid>
-                <Row>
-                  <Col xs={ 12 } xsHidden smHidden>
-                  <p className={ styles.happeningNowTitle }>What's happening now.</p>
-                  </Col>
-                </Row>
-                <div className={ styles.happeningNowDesktop }>
-                  <Row>
-                    { items.map(function(item) {
-                        return (<Col xsHidden smHidden md={ mdSize }>
-                                <a href={ item.url }>
-                                  <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
-                                </a>
-                                </Col>);
-                      }) }
-                  </Row>
-                  <Row>
-                    { items.map(function(item) {
-                        return <Col xsHidden smHidden md={ mdSize }>
-                               <p className={ styles.happeningNowItemTitle }>
-                                 { item.title }
-                               </p>
-                               </Col>;
-                      }) }
-                  </Row>
-                  <Row>
-                    { items.map(function(item) {
-                        return <Col xsHidden smHidden md={ mdSize }>
-                               <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
-                               </Col>;
-                      }) }
-                  </Row>
-                </div>
-              </Grid>
-              <div className="hidden-md hidden-lg">
-                <div>
-                  <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
-                </div>
-                <div className={ styles.happeningNowMobile }>
-                  <Slider items={ items } />
-                </div>
-              </div>
-            </div>);
+    return (
+      <div className={ styles.happeningNow }>
+        <div className="hidden-xs">
+          <Grid fluid>
+            <Row>
+              <Col sm={ 12 } xsHidden>
+              <p className={ styles.happeningNowTitle }>What's happening now.</p>
+              </Col>
+            </Row>
+            <div className={ styles.happeningNowDesktop }>
+              <Row>
+                { items.map(function(item) {
+                    return (
+                      <Col xsHidden sm={ mdSize }>
+                      <a href={ item.url }>
+                        <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
+                      </a>
+                      </Col>
+                      );
+                  }) }
+              </Row>
+              <Row>
+                { items.map(function(item) {
+                    return <Col xsHidden sm={ mdSize }>
+                           <p className={ styles.happeningNowItemTitle }>
+                             { item.title }
+                           </p>
+                           </Col>;
+                  }) }
+              </Row>
+              <Row>
+                { items.map(function(item) {
+                    return <Col xsHidden sm={ mdSize }>
+                           <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
+                           </Col>;
+                  }) }
+              </Row>
+            </div>
+          </Grid>
+        </div>
+        <div className="hidden-md hidden-lg hidden-sm">
+          <div>
+            <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
+          </div>
+          <div className={ styles.happeningNowMobile }>
+            <Slider items={ items } />
+          </div>
+        </div>
+      </div>
+      );
 
   }
-
-
 
 }
 

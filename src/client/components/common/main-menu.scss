@@ -1,7 +1,7 @@
 @import "../../styles/variables.scss";
 
 
-@media screen and (min-width: 992px){
+@media screen and (min-width: 768px){
 
     .show{
         visibility: visible;
@@ -9,6 +9,16 @@
 
     .hide{
         visibility: hidden;
+    }
+
+    .showVisible{
+        opacity: 1;
+        height: auto;
+    }
+
+    .hideVisible{
+        opacity: 0;
+        height: 0px
     }
 
 

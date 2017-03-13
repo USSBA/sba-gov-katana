@@ -67,7 +67,7 @@ class MiniNav extends React.Component {
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login?destination=about-sba%2Fwhat-we-do%2Fcontact-sba">Log In</a>
+        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>
         { searchBar }
       </nav>
       );

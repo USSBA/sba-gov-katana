@@ -18,7 +18,7 @@
     padding: 30px;
     font-family: "Source Sans Pro";
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 90vw;
         position: absolute;
         height: auto;
@@ -39,7 +39,7 @@
     margin: auto;
     margin-bottom: 25px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 26.7vw;
         margin-bottom: 6.7vw;
         height: auto;
@@ -64,7 +64,7 @@
     font-weight: 900;
     text-align: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         font-size: 6.4vw;
         margin-bottom: 6.7vw;
     }
@@ -76,7 +76,7 @@
     margin: auto;
     margin-bottom: 30px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         width: 42.7vw;
         margin-bottom: 8vw;
     }
@@ -88,7 +88,7 @@
     margin-bottom: 30px;
     line-height: 23px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         font-size: 4.3vw;
         margin-bottom: 8vw;
         line-height: 6.1vw;
@@ -100,7 +100,7 @@
     margin-bottom: 30px;
     font-size: 18px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         margin-bottom: 8vw;
         font-size: 4.3vw;
     }
@@ -123,8 +123,8 @@
     height: 37px;
     font-size: 13px;
     font-weight: bold;
-    
-    @media screen and (max-width: 768px) {
+
+    @media screen and (max-width: 767px) {
         width: 33.1vw;
         height: 9.9vw;;
         font-size: 3.5vw;
@@ -139,7 +139,7 @@
     border: 2px solid #666666;
     margin-right: 30px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
         margin-right: 6vw;
     }
 }
@@ -150,6 +150,3 @@
     background-color: #0093DF;
     border: none;
 }
-
-
-

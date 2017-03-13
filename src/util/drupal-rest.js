@@ -2,6 +2,7 @@ import axios from "axios";
 import _ from "lodash";
 import config from "config";
 import Promise from "bluebird";
+import URL from "url";
 
 var requestObject = {
   baseURL: config.get("drupal.hostname"),
@@ -59,10 +60,12 @@ function fetchFrontPageSlidesFromDrupal() {
     })
     .then((nodes) => {
       return _.map(nodes, function(item) {
+        const originalUrl = item.field_url.url;
+        const fixedUrl = URL.parse(originalUrl).path;
         return {
           fileId: item.field_image.file.id,
           imageAlt: item.field_image.alt,
-          url: item.field_url.url,
+          url: fixedUrl,
           title: item.title
         };
       });
