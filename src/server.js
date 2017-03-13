@@ -15,7 +15,7 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "./views/"));
 
 //set up cooking parsing middleware
-app.use(cookieParser);
+app.use(cookieParser());
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json();
 //set up static files handler not route specific but will route to any static files inside public and its subfolders
@@ -69,7 +69,13 @@ app.get("/content/counselors-redirect.json", function(req, res) {
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
-import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
+import {
+  fetchContent,
+  fetchContentById,
+  fetchFrontPageSlides,
+  fetchBlogs,
+  fetchDisaster
+} from "./controllers/content.js";
 if (config.get("drupal.enablePassThrough")) {
   app.get("/content/:type.json", fetchContent);
   app.get("/content/:type/:id.json", fetchContentById);
@@ -78,10 +84,14 @@ app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 
-import { getMainMenu } from "./controllers/main-menu.js";
+import {
+  getMainMenu
+} from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
-import { getUserRoles } from "./controllers/user-roles.js";
+import {
+  getUserRoles
+} from "./controllers/user-roles.js";
 app.get("/content/user-roles.json", getUserRoles);
 
 
