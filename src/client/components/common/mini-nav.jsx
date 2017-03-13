@@ -50,7 +50,7 @@ class MiniNav extends React.Component {
 
   render() {
     const loggedInUser = this.state.userId ?
-      (<div style={{display:"inline-block", whiteSpace: "nowrap"}}>
+      (<div className={styles.loggedInUser}>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
