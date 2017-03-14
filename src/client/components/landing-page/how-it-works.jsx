@@ -6,68 +6,34 @@ import howItWorksImg3 from '../../../../public/assets/images/lender-match/howItW
 import howItWorksImg4 from '../../../../public/assets/images/lender-match/howItWorksImg4.jpg';
 
 
-export const HowItWorksSection = (props) => <div className={ styles.sectionWrapper }>
-                                              <p className={ styles.sectionTitle }>How it works.</p>
-                                              <div className={ styles.sectionItemWrapper }>
-                                                <ul className={ styles.sectionItem }>
-                                                  <li>
-                                                    <div className={ styles.sectionImage }>
-                                                      <p>1</p><img src={ howItWorksImg1 } alt="Describe your needs" /></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemTitle }>Describe your needs</p>
-                                                  </li>
-                                                  <li>
-                                                    <div className={ styles.line }></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemDescription }>Answer a few questions about your business in as little as five minutes.</p>
-                                                  </li>
-                                                </ul>
-                                                <ul className={ styles.sectionItem }>
-                                                  <li>
-                                                    <div className={ styles.sectionImage }>
-                                                      <p>2</p><img src={ howItWorksImg2 } alt="Get matched in 2 days" /></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemTitle }>Get matched in 2 days</p>
-                                                  </li>
-                                                  <li>
-                                                    <div className={ styles.line }></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemDescription }>Receive an email with contact information of lenders who express interest in your loan.</p>
-                                                  </li>
-                                                </ul>
-                                                <ul className={ styles.sectionItem }>
-                                                  <li>
-                                                    <div className={ styles.sectionImage }>
-                                                      <p>3</p><img src={ howItWorksImg3 } alt="Talk to lenders" /></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemTitle }>Talk to lenders</p>
-                                                  </li>
-                                                  <li>
-                                                    <div className={ styles.line }></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemDescription }>Compare rates, terms, fees, and more.</p>
-                                                  </li>
-                                                </ul>
-                                                <ul className={ styles.sectionItem }>
-                                                  <li>
-                                                    <div className={ styles.sectionImage }>
-                                                      <p>4</p><img src={ howItWorksImg4 } alt="Apply for a loan" /></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemTitle }>Apply for a loan</p>
-                                                  </li>
-                                                  <li>
-                                                    <div className={ styles.line }></div>
-                                                  </li>
-                                                  <li>
-                                                    <p className={ styles.sectionItemDescription }>Submit loan applications and paperwork. You're well on your way to securing a business loan!</p>
-                                                  </li>
-                                                </ul>
+export const HowItWorksSection = (props) => <div className={ styles.section }>
+                                              <h2>How it works.</h2>
+                                              <div className={ styles.step }>
+                                                <span className={ styles.numbers }>1</span>
+                                                <img src={ howItWorksImg1 } alt="Hands typing on a laptop." />
+                                                <h3>Describe your needs</h3>
+                                                <hr/>
+                                                <p>Answer a few questions about your business in as little as five minutes.</p>
+                                              </div>
+                                              <div className={ styles.step }>
+                                                <span className={ styles.numbers }>2</span>
+                                                <img src={ howItWorksImg2 } alt="A person reading email on a smartwatch." />
+                                                <h3>Get matched in 2 days</h3>
+                                                <hr/>
+                                                <p>Receive an email with contact information of lenders who express interest in your loan.</p>
+                                              </div>
+                                              <div className={ styles.step }>
+                                                <span className={ styles.numbers }>3</span>
+                                                <img src={ howItWorksImg3 } alt="Two people in discussion around a conference table." />
+                                                <h3>Talk to lenders</h3>
+                                                <hr/>
+                                                <p>Compare rates, terms, fees, and more.</p>
+                                              </div>
+                                              <div className={ styles.step }>
+                                                <span className={ styles.numbers }>4</span>
+                                                <img src={ howItWorksImg4 } alt="A piggy bank." />
+                                                <h3>Apply for a loan</h3>
+                                                <hr/>
+                                                <p>Submit loan applications and paperwork. You're well on your way to securing a business loan!</p>
                                               </div>
                                             </div>

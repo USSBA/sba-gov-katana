@@ -1,74 +1,89 @@
-@media screen and (min-width:768px){
-  .sectionWrapper{
-    width: auto;
-    margin-left: 7vw;
-  }
-  .sectionItem{
-    width: 20%;
-    margin-left: 2vw;
-    float: left;
+.section {
     position: relative;
-  }
-  .sectionItem:nth-child(even){
-    bottom: -90px;
-  }
-  .sectionImage{
-    position: relative;
-    height: 231px;
-  }
+    width: 91.8vw;
+    margin: 35px auto 0;
+    h2 {
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 30px;
+        color: #333333;
+        margin-bottom: -25px;
+    }
+    p {
+        width: 262px;
+        height: 44px;
+        font-size: 18px;
+        line-height: 22px;
+        color: #333333;
+    }
+}
 
+.step {
+    h3,
+    p {
+        display: inline;
+    }
+    .numbers {
+        width: 96px;
+        height: 151px;
+        opacity: 0.4;
+        font-size: 120px;
+        font-weight: 900;
+        color: #609F00;
+        position: relative;
+        left: 20px;
+        top: 35px;
+    }
+    img {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    hr {
+        width: 25px;
+        border-top: 2px solid #609F00;
+        margin: 16px 0;
+    }
+    h3 {
+        font-size: 21px;
+        font-weight: 900;
+        line-height: 22px;
+        color: #333333;
+    }
+    p {
+        font-size: 18px;
+        line-height: 22px;
+        color: #333333;
+    }
+}
 
-  .sectionImage p{
-    position: absolute;
-    width: 96px;
-    height: 151px;
-    opacity: 0.4;
-    font-size: 110px;
-    font-weight: 900;
-    line-height: 151px;
-    color: #609F00;
-    bottom: 178px;
-    left: 15px;
-  }
-
-  .sectionItem:nth-child(odd) .sectionImage p{
-    bottom: 173px;
-  }
-  .sectionItemTitle{
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-    font-size: 1.5vw;
-    font-weight: bolder;
-    letter-spacing: -0.025em;
-  }
-
-  .sectionItemDescription{
-    font-size: 1.2vw;
-    letter-spacing: -0.025em;
-  }
-  .sectionTitle{
-    letter-spacing: -0.025em;
-    margin-left: 2vw;
-    margin-bottom: 78px;
-    font-size: 5.2vw;
-    font-weight: 900;
-  }
-  .sectionItemWrapper:after{
-    content: '';
-    display: block;
-    clear: both;
-  }
-  .sectionItem img{
-    width: 100%;
-  }
-  .sectionItem li{
-    list-style: none;
-  }
-  .line{
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-    width: 3vw;
-    height: 4px;
-    border-bottom: 3px solid limegreen;
-  }
+@media screen and (min-width:768px) {
+    .section {
+        max-width: 80vw;
+        margin: 0 auto;
+        h2 {
+            width: 570px;
+            height: 75px;
+            font-size: 75px;
+            font-weight: 900;
+            line-height: 75px;
+        }
+    }
+    .step {
+        width: 18.8vw;
+        float: left;
+        margin-right: 1.6vw;
+        &:nth-of-type(even) {
+            margin-top: 100px;
+        }
+        &:last-of-type {
+            margin-right: 0;
+        }
+        h3 {
+            font-family: "Source Sans Pro";
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 22px;
+        }
+        p {}
+    }
 }
