@@ -1,6 +1,6 @@
 .section {
     position: relative;
-    width: 91.8vw;
+    width: 98vw;
     margin: 35px auto 0;
     h2 {
         font-size: 28px;
@@ -50,7 +50,7 @@
         color: #333333;
     }
     p {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 22px;
         color: #333333;
     }
@@ -58,20 +58,18 @@
 
 @media screen and (min-width:768px) {
     .section {
-        max-width: 80vw;
-        margin: 0 auto;
+        top: -75px;
+        width: 79vw;
         h2 {
-            width: 570px;
-            height: 75px;
             font-size: 75px;
             font-weight: 900;
             line-height: 75px;
         }
     }
     .step {
-        width: 18.8vw;
         float: left;
-        margin-right: 1.6vw;
+        width: 18.25vw;
+        margin-right: 2vw;
         &:nth-of-type(even) {
             margin-top: 100px;
         }
@@ -84,6 +82,9 @@
             font-weight: bold;
             line-height: 22px;
         }
-        p {}
+        p {
+            font-size: 18px;
+            line-height: 22px;
+        }
     }
 }
