@@ -2,6 +2,8 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
+newrelic:
+    enabled: false
 drupal:
     hostname: http://localhost/
     enablePassThrough: false

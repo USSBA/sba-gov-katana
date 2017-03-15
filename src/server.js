@@ -29,7 +29,10 @@ if (config.get("developmentOptions.webpack.enabled")) {
   }));
 
   app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
-} else {
+}
+
+if (config.get("newrelic.enabled")) {
+  console.log("Starting NewRelic");
   require("newrelic"); // eslint-disable-line global-require
 }
 
