@@ -1,4 +1,5 @@
 /* eslint-disable */
+import axios from "axios";
 let request = require('request');
 let xml2js = require('xml2js');
 let DOMParser = require('xmldom').DOMParser;
@@ -344,11 +345,32 @@ class LincSoapRequest {
           const respChar = this.parseResponse(body);
           if (respChar === "F")
             console.log(body);
-
           resolve(respChar);
         }
       });
     });
+  }
+
+  getEndPointUrl(wsdlUrl) {
+    return new Promise((resolve) => {
+      axios.get(wsdlUrl).then((response) => {
+        if (response.status === 200 && response.statusText === 'OK') {
+          let endPointUrl = this.getEndPointFromXml(response.data);
+          resolve(endPointUrl);
+        } else {
+          throw "Error retrieving wsdl from server " + response.statusText;
+        }
+      }).catch(function(error) {
+        throw error;
+      });
+    });
+  }
+
+  getEndPointFromXml(responseData) {
+    let parser = new DOMParser();
+    let xmlRespDoc = parser.parseFromString(responseData);
+    let wsdlSoapAddressLocation = xmlRespDoc.getElementsByTagName("wsdlsoap:address")[0].getAttribute("location");
+    return wsdlSoapAddressLocation;
   }
 
   parseResponse(xmlBody) {
