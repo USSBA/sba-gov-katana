@@ -1,6 +1,5 @@
 .section {
     position: relative;
-    width: 98vw;
     margin: 35px auto 0;
     h2 {
         font-size: 28px;
@@ -59,7 +58,8 @@
 @media screen and (min-width:768px) {
     .section {
         top: -75px;
-        width: 79vw;
+        width: 84vw;
+        margin-left: 9.7vw;
         h2 {
             font-size: 75px;
             font-weight: 900;
@@ -68,7 +68,7 @@
     }
     .step {
         float: left;
-        width: 18.25vw;
+        width: 19vw;
         margin-right: 2vw;
         &:nth-of-type(even) {
             margin-top: 100px;
