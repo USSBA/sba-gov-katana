@@ -319,14 +319,15 @@ class FormDataToXml {
 
 class LincSoapRequest {
 
-  sendLincSoapRequest(soapUrl, req, username, password) {
+  sendLincSoapRequest(wsdlUrl, req, username, password) {
     return new Promise((resolve) => {
 
       const dataXml = FormDataToXml.convertFormDataToXml(req);
       const lincSoapRequestEnvelopeXml = this.createLincSoapRequestEnvelopeXml(username, password, dataXml);
+      const endPointUrl = this.getEndPointUrl(wsdlUrl);
 
       let options = {
-        uri: soapUrl,
+        uri: endPointUrl,
         method: "POST",
         followAllRedirects: true,
         followOriginalHttpMethod: true,
@@ -352,18 +353,11 @@ class LincSoapRequest {
   }
 
   getEndPointUrl(wsdlUrl) {
-    return new Promise((resolve) => {
       axios.get(wsdlUrl).then((response) => {
-        if (response.status === 200 && response.statusText === 'OK') {
-          let endPointUrl = this.getEndPointFromXml(response.data);
-          resolve(endPointUrl);
-        } else {
-          throw "Error retrieving wsdl from server " + response.statusText;
-        }
+         return this.getEndPointFromXml(response.data);
       }).catch(function(error) {
         throw error;
       });
-    });
   }
 
   getEndPointFromXml(responseData) {
