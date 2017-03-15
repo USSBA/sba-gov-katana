@@ -9,7 +9,8 @@ class MiniNav extends React.Component {
       searchIsExpanded: false,
       translateIsExpanded: false,
       searchValue: "",
-      userId: ""
+      userId: "",
+      userLoggedOn: false
     };
   }
 
@@ -17,17 +18,6 @@ class MiniNav extends React.Component {
     e.preventDefault();
     this.setState({
       searchIsExpanded: !this.state.searchIsExpanded
-    });
-  }
-
-  handleLogOut(e) {
-    e.preventDefault();
-    this.setState({
-      userId: ""
-    }, function() {
-      cookie.remove('DRUPAL_UID', {
-        path: '/'
-      });
     });
   }
 
@@ -47,7 +37,8 @@ class MiniNav extends React.Component {
 
   componentWillMount() {
     this.setState({
-      userId: cookie.load('DRUPAL_UID')
+      userId: cookie.load('DRUPAL_UID'),
+      userLoggedOn: Object.keys(cookie.select(/^SSESS.*/i)).length > 0 ? true : false
     });
   }
 
@@ -58,11 +49,11 @@ class MiniNav extends React.Component {
   }
 
   render() {
-    const loggedInUser = this.state.userId ?
+    const loggedInUser = this.state.userLoggedOn ?
       (<div className={ styles.loggedInUser }>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
-         <a tabIndex="0" className={ styles.miniNavLinkNew } onClick={ this.handleLogOut.bind(this) } href="/user/logout">Log Out</a>
+         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
        </div>) :
       (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>);
     const searchBar = this.state.searchIsExpanded
