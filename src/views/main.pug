@@ -12,6 +12,8 @@ html
     meta(name="twitter:image" content="https://www.sba.gov/sites/default/files/images/HPSEOImage.jpg")
     meta(property="og:site_name" content=title)
     title= title
+    script(type="text/javascript").
+        var isUserLoggedIn = #{isUserLoggedIn}
   body
     #root
     script(src='/build/bundle.js')

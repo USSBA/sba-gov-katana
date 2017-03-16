@@ -41,7 +41,7 @@ class MiniNav extends React.Component {
   componentWillMount() {
     this.setState({
       userId: cookie.load('DRUPAL_UID'),
-      userLoggedOn: Object.keys(cookie.select(/^SSESS.*/i)).length > 0 ? true : false
+      userLoggedOn: window.isUserLoggedIn
     });
   }
 
@@ -58,9 +58,8 @@ class MiniNav extends React.Component {
   render() {
     let adminWidget = "";
     if (this.props.userRoles) {
-      console.log("user roles length = " + this.props.userRoles.length);
       if (this.props.userRoles.length > 0) {
-        adminWidget = (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>);
+        adminWidget = (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admin Tool</a>);
       }
     }
 
@@ -118,4 +117,3 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav);
-
