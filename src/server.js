@@ -50,7 +50,7 @@ app.get("/", function(req, res) {
   let pugVariables = _.merge({}, metaVariables, {
     isUserLoggedIn: hasSessionCookie || false
   });
-  res.render("main", metaVariables);
+  res.render("main", pugVariables);
 });
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
