@@ -44,10 +44,11 @@ const metaVariables = {
 };
 
 app.get("/", function(req, res) {
+  let hasSessionCookie = _.findKey(req.cookie, (key) => {
+    return _.startsWith(key, "SSESS");
+  });
   let pugVariables = _.merge({}, metaVariables, {
-    isUserLoggedIn: _.findKey(req.cookie, (key) => {
-      return _.startsWith(key, "SSESS");
-    })
+    isUserLoggedIn: hasSessionCookie || false
   });
   res.render("main", metaVariables);
 });
