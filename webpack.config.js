@@ -8,7 +8,7 @@ module.exports = {
     'webpack-hot-middleware/client',
     'bootstrap-loader',
     'babel-polyfill',
-    './src/client/components/entry.jsx'
+    './src/client/components/entry-dev.jsx'
   ],
   output: {
     path: path.join(__dirname, 'public', "build"),
