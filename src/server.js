@@ -81,6 +81,8 @@ app.get("/content/disaster.json", fetchDisaster);
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
+import { getUserRoles } from "./controllers/user-roles.js";
+app.get("/content/:userId.json", getUserRoles);
 
 // development error handler
 // will print stacktrace
