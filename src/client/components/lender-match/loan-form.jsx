@@ -30,7 +30,7 @@ class LoanForm extends React.Component {
       <div className="container-fluid">
         <Panel className={ "col-xs-12 col-md-6 col-md-offset-3 " + styles.formPanel }>
           { backButton }
-          <ProgressBar pages={ pages.length+1 } locationIndex={ locationIndex+1 } />
+          <ProgressBar pages={ pages.length + 1 } locationIndex={ locationIndex + 1 } />
           { this.props.children }
         </Panel>
       </div>
