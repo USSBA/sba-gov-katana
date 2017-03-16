@@ -17,8 +17,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-
-
   ],
   module: {
     rules: [{

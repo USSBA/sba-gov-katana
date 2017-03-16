@@ -14,6 +14,7 @@ module.exports = {
     publicPath: '/public/'
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false

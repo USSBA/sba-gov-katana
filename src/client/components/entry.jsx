@@ -1,4 +1,3 @@
-import "react-hot-loader/patch";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes.jsx';
@@ -13,6 +12,7 @@ ReactDOM.render((
   ), root);
 
 if (module.hot) {
+    require("react-hot-loader/patch");
   module.hot.accept('./routes.jsx', () => {
     // reload the routes file
     let nextRoutes = require('./routes.jsx');
