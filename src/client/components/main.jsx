@@ -1,12 +1,9 @@
 import "react-hot-loader/patch";
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import thunk from "redux-thunk";
 import rootReducer from '../reducers/index.js'
-import routes from './routes.jsx';
-import { AppContainer } from 'react-hot-loader';
 
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -33,30 +30,16 @@ import '../styles/common.scss';
 require('font-awesome-webpack2');
 
 
-ReactDOM.render(
-  (<AppContainer>
-     <Provider store={ store }>
-       <HaxRouter onUpdate={ logPageView() } history={ history }>
-           { routes }
-       </HaxRouter>
-     </Provider>
-   </AppContainer>),
-  document.getElementById('root')
-);
-
-
-if (module.hot) {
-  module.hot.accept('./routes.jsx', () => {
-    // reload the routes file
-    let nextRoutes = require('./routes.jsx')
-    render((
-      <AppContainer>
-        <Provider store={ store }>
-          <HaxRouter onUpdate={ logPageView() } history={ history }>
-              { routes }
-          </HaxRouter>
-        </Provider>)
-      </AppContainer>
-      ), root)
-  })
+class App extends React.Component {
+  render() {
+    return (
+      <Provider store={ store }>
+        <HaxRouter onUpdate={ logPageView() } history={ history }>
+          { this.props.routes }
+        </HaxRouter>
+      </Provider>
+      );
+  }
 }
+
+export default App;

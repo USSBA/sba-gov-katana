@@ -17,9 +17,9 @@ class HaxRouter extends Component {
   }
 
   render() {
-    return <Router ref={ ref => this.router = ref } onUpdate={ this.props.onUpdate } history={ this.props.history } routes={ this.props.routes }>
-        { this.props.routes }
-    </Router>
+    return <Router ref={ ref => this.router = ref } onUpdate={ this.props.onUpdate } history={ this.props.history }>
+             { this.props.children }
+           </Router>
   }
 }
 

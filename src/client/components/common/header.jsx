@@ -17,7 +17,6 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props.disaster.visible && this.props.disasterAlertIsVisible && !this.props.userHasScrolledPastAlert);
     return (
       <div>
         <div className="hidden-xs">
