@@ -9,6 +9,7 @@ import { getNameValidationState, getPhoneValidationState, getEmailValidationStat
 import styles from '../../styles/lender-match/lender-match.scss';
 import { Col } from 'react-bootstrap';
 
+
 class ContactInfoForm extends React.Component {
   constructor(props) {
     super();
@@ -114,6 +115,8 @@ class ContactInfoForm extends React.Component {
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> Continue </button>
           </Col>
         </form>
+        <Col md={ 12 }>
+        </Col>
       </FormPanel>
       );
   }

@@ -353,11 +353,11 @@ class LincSoapRequest {
   }
 
   getEndPointUrl(wsdlUrl) {
-      axios.get(wsdlUrl).then((response) => {
-         return this.getEndPointFromXml(response.data);
-      }).catch(function(error) {
-        throw error;
-      });
+    axios.get(wsdlUrl).then((response) => {
+      return this.getEndPointFromXml(response.data);
+    }).catch(function(error) {
+      throw error;
+    });
   }
 
   getEndPointFromXml(responseData) {
