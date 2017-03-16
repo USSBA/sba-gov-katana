@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ContentActions from "../../actions/content.js";
 import styles from './mini-nav.scss';
 import cookie from 'react-cookie';
 
@@ -42,6 +45,10 @@ class MiniNav extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.props.actions.fetchContentIfNeeded("userRoles", this.state.userId, {});
+  }
+
   submitSearch(e) {
     e.preventDefault();
     let uri = encodeURI("/tools/search-result-page?search=" + this.state.searchValue);
@@ -49,9 +56,17 @@ class MiniNav extends React.Component {
   }
 
   render() {
+    let adminWidget = "";
+    if (this.props.userRoles) {
+      console.log("user roles length = " + this.props.userRoles.length);
+      if (this.props.userRoles.length > 0) {
+        adminWidget = (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>);
+      }
+    }
+
     const loggedInUser = this.state.userLoggedOn ?
       (<div className={ styles.loggedInUser }>
-         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admin Tool</a>
+         { adminWidget }
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
        </div>) :
@@ -91,4 +106,16 @@ class MiniNav extends React.Component {
   }
 }
 
-export default MiniNav;
+function mapReduxStateToProps(reduxState) {
+  return {
+    userRoles: reduxState.contentReducer["userRoles"]
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  };
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav);
+
