@@ -8,6 +8,7 @@ import { Panel, ButtonToolbar, Glyphicon } from 'react-bootstrap';
 import lenderMatchStyles from '../../styles/lender-match/lender-match.scss';
 import { browserHistory } from 'react-router';
 import styles from '../common/styles.scss';
+import { ProgressBar } from './progress-bar.jsx'
 
 const BackButton = ({text}) => <ButtonToolbar>
                                  <button type="button" className={ lenderMatchStyles.backBtn + " btn btn-default btn-sm pull-left" } onClick={ browserHistory.goBack }>
@@ -24,19 +25,12 @@ class LoanForm extends React.Component {
     let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review']; // TODO make this static or configuration
     let page = this.props.location.replace('/linc/form/', '');
     let locationIndex = indexOf(pages, page);
-    let data = chain(pages).slice(0, 5).map(function(item, index) {
-      return {
-        text: startCase(item),
-        isActive: locationIndex === index,
-        isDone: locationIndex > index
-      };
-    }).value();
     let backButton = locationIndex === 5 ? "" : (<BackButton text={ this.getBackButtonText(locationIndex) } />);
     return (
       <div className="container-fluid">
-        <Steps items={ data } type={ 'point' } />
         <Panel className={ "col-xs-12 col-md-6 col-md-offset-3 " + styles.formPanel }>
           { backButton }
+          <ProgressBar pages={ pages.length + 1 } locationIndex={ locationIndex + 1 } />
           { this.props.children }
         </Panel>
       </div>
