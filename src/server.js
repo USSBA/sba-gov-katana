@@ -1,14 +1,16 @@
 //remove this when breaking server.js up into controllers -zandypants
 import zlib from "zlib";
 import path from "path";
+import _ from 'lodash';
 /*Contains express server setup*/
 import express from "express";
 import config from "config";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
 
 const app = express();
-
+app.use(cookieParser());
 //set up template engine
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "./views/"));
@@ -42,7 +44,16 @@ const metaVariables = {
 };
 
 app.get("/", function(req, res) {
-  res.render("main", metaVariables);
+  console.log(req.cookie);
+  let hasSessionCookie = _.findKey(req.cookie, (key) => {
+    console.log(key);
+    return _.startsWith(key, "SSESS");
+  });
+  console.log(hasSessionCookie);
+  let pugVariables = _.merge({}, metaVariables, {
+    isUserLoggedIn: hasSessionCookie || false
+  });
+  res.render("main", pugVariables);
 });
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
@@ -69,7 +80,13 @@ app.get("/content/counselors-redirect.json", function(req, res) {
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
-import { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
+import {
+  fetchContent,
+  fetchContentById,
+  fetchFrontPageSlides,
+  fetchBlogs,
+  fetchDisaster
+} from "./controllers/content.js";
 if (config.get("drupal.enablePassThrough")) {
   app.get("/content/:type.json", fetchContent);
   app.get("/content/:type/:id.json", fetchContentById);
@@ -78,9 +95,15 @@ app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 
-import { getMainMenu } from "./controllers/main-menu.js";
+import {
+  getMainMenu
+} from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
+import {
+  getUserRoles
+} from "./controllers/user-roles.js";
+app.get("/content/:userId.json", getUserRoles);
 
 // development error handler
 // will print stacktrace
