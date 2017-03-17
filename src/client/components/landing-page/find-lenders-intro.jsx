@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import cornerGraphicBig from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
 import cornerGraphicSmall from '../../../../public/assets/images/lender-match/rectangle-corner-graphic-mobile.png'
-import lenderMatchHero from '../../../../public/assets/images/homepage/primarylanding-hero.jpg';
+import lenderMatchHero from '../../../../public/assets/images/lender-match/hero.jpg';
 
 export const FindLendersIntro = (props) => <div className=" row">
                                              <div className={ styles.parentContainer + " col-xs-12 nopadding" }>
