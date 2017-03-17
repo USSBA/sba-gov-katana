@@ -45,8 +45,10 @@ const metaVariables = {
 
 app.get("/", function(req, res) {
   let hasSessionCookie = _.findKey(req.cookie, (key) => {
+    console.log(key);
     return _.startsWith(key, "SSESS");
   });
+  console.log(hasSessionCookie);
   let pugVariables = _.merge({}, metaVariables, {
     isUserLoggedIn: hasSessionCookie || false
   });
