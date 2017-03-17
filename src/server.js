@@ -43,13 +43,15 @@ const metaVariables = {
   title: "Small Business Administration"
 };
 
-app.get("/", function(req, res) {
-  console.log(req.cookie);
-  const hasSessionCookie = _.findKey(req.cookie, (key) => {
-    console.log(key);
+app.get("/", function(req, res, next) {
+  const sessionCookie = _.find(_.keys(req.cookies), (key) => {
     return _.startsWith(key, "SSESS");
   });
-  console.log(hasSessionCookie);
+  console.log("Session cookie: ", sessionCookie);
+  let hasSessionCookie = false;
+  if (sessionCookie) {
+    hasSessionCookie = true;
+  }
   const pugVariables = _.merge({}, metaVariables, {
     isUserLoggedIn: hasSessionCookie || false
   });

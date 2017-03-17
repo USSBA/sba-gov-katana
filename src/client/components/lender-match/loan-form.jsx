@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import Steps from 'react-steps';
 import { indexOf, chain, startCase } from 'lodash';
 import { Panel, ButtonToolbar, Glyphicon } from 'react-bootstrap';
 import lenderMatchStyles from './lender-match.scss';
