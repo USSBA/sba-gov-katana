@@ -21,15 +21,15 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
                                                                                      <ControlLabel className={ styles.controlLabel }>
                                                                                        { props.label }
                                                                                      </ControlLabel>
-                                                                                     <FormControl {...props} className={styles.textInput} onChange={ handleChange } />
-                                                                                     <FormControl.Feedback className={styles.validIcon}/>
+                                                                                     <FormControl {...props} className={ styles.textInput } onChange={ handleChange } />
+                                                                                     <FormControl.Feedback className={ styles.validIcon } />
                                                                                    </FormGroup>;
 
 export const TextArea = ({handleChange, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                                    <ControlLabel className={ styles.controlLabel }>
                                                                                      { label }
                                                                                    </ControlLabel>
-                                                                                   <FormControl {...props} className={styles.textArea} onChange={ handleChange } componentClass="textArea" />
+                                                                                   <FormControl {...props} className={ styles.textArea } onChange={ handleChange } componentClass="textArea" />
                                                                                  </FormGroup>;
 
 export const SelectBox = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 }>
@@ -51,6 +51,6 @@ export const MultiSelectBox = ({label, getValidationState, ...props}) => <FormGr
                                                                            <ControlLabel className={ styles.controlLabel }>
                                                                              { label }
                                                                            </ControlLabel>
-                                                                           <MultiSelect  tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
+                                                                           <MultiSelect tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
                                                                              {...props}/>
                                                                          </FormGroup>;

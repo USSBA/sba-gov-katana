@@ -11,8 +11,8 @@ import styles from './lender-match.scss';
 import { ProgressBar } from './progress-bar.jsx'
 
 const BackButton = ({text}) => <button type="button" className={ styles.backBtn } onClick={ browserHistory.goBack }>
-                                   { text }
-                                 </button>;
+                                 { text }
+                               </button>;
 
 
 class LoanForm extends React.Component {
@@ -25,11 +25,11 @@ class LoanForm extends React.Component {
     let locationIndex = indexOf(pages, page);
     let backButton = locationIndex === 5 ? "" : (<BackButton text={ this.getBackButtonText(locationIndex) } />);
     return (
-      <div className={styles.formContainer}>
-        <main className={styles.formPanel}>
-          <h1 className={styles.title}>Lender Match</h1>
+      <div className={ styles.formContainer }>
+        <main className={ styles.formPanel }>
+          <h1 className={ styles.title }>Lender Match</h1>
           <ProgressBar pages={ pages.length + 1 } locationIndex={ locationIndex + 1 } />
-            { this.props.children }
+          { this.props.children }
           { backButton }
         </main>
       </div>

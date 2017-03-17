@@ -44,6 +44,9 @@
   background-color: rgba(102,102,102,1);
   padding-top: 55px;
   padding-bottom: 55px;
+  @media screen and (max-width: 768px) {
+    background-color: white;
+  }
 }
 
 //box for entire linc form

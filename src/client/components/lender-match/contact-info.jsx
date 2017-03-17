@@ -113,7 +113,7 @@ class ContactInfoForm extends React.Component {
             hidden />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
-        </div>
+      </div>
       );
   }
 }

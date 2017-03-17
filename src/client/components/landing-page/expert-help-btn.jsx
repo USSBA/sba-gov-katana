@@ -5,5 +5,5 @@ import styles from '../../styles/buttons.scss';
 
 
 export const ExpertHelpBtn = (props) => <div>
-                                           <Button block className={ styles.helpBtn } href="#">EXPERT HELP</Button>
-                                         </div>;
+                                          <Button block className={ styles.helpBtn } href="#">EXPERT HELP</Button>
+                                        </div>;

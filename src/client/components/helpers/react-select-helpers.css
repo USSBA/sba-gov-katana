@@ -4,11 +4,12 @@
 
 .Select-control {
     border-radius: 0px !important;
+    border: 1px solid #666666;
     height: 48px;
 }
 
 .Select-placeholder {
-    line-height: inherit;
+    line-height: 21px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
