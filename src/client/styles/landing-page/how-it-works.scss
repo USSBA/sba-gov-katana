@@ -36,6 +36,9 @@
         position: relative;
         left: 20px;
         top: 35px;
+        &:nth-of-type(odd ) {
+            top: 42px;
+        }
     }
     img {
         width: 100%;
@@ -94,7 +97,7 @@
     }
 }
 
-  .tellMeHowBtn {
+.tellMeHowBtn {
     border: 2px solid #FFFFFF;
     border-radius: 0;
     background-color: #609F00;
@@ -106,24 +109,25 @@
     text-align: center;
     padding: 0;
     position: relative;
+}
 
-  }
-
-  .tellMeHowBtn:hover {
-    background-color: rgba(255,255,255,0.3);;
+.tellMeHowBtn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    ;
     color: #FFFFFF;
     border: 2px solid #FFFFFF;
-  }
+}
 
-  .tellMeHowBtn:active, .tellMeHowBtn:focus{
+.tellMeHowBtn:active,
+.tellMeHowBtn:focus {
     background-color: #FFFFFF !important;
     border: 2px solid #FFFFFF !important;
     color: #609F00 !important;
     outline: none !important;
     box-shadow: none !important;
-  }
+}
 
-  .findLendersWhiteBtn{
+.findLendersWhiteBtn {
     margin-left: 2.5vw;
     border: 2px solid #FFFFFF;
     border-radius: 0;
@@ -135,18 +139,19 @@
     font-weight: bold;
     text-align: center;
     padding: 0;
-  }
+}
 
-  .findLendersWhiteBtn:hover{
-    background-color: rgba(255,255,255,0.8);
+.findLendersWhiteBtn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
     color: #609F00;
-    border: 2px solid rgba(255,255,255,0.8);
-  }
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
 
-  .findLendersWhiteBtn:active, .findLendersWhiteBtn:focus{
-    background-color: rgba(255,255,255,0.6) !important;
+.findLendersWhiteBtn:active,
+.findLendersWhiteBtn:focus {
+    background-color: rgba(255, 255, 255, 0.6) !important;
     color: #609F00 !important;
-    border: 2px solid rgba(255,255,255,0.6) !important;
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
     outline: none !important;
     box-shadow: none !important;
-  }
+}
