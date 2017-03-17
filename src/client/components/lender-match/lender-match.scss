@@ -1,0 +1,72 @@
+@import "../../styles/buttons";
+
+//LINC BUTTONS
+.backBtn{
+  width: 140px;
+  height: 48px;
+  border: 2px solid #666666;
+  background: white;
+  font-size: 18px;
+  font-weight: 700;
+  color: #666666;
+  margin-top: 40px;
+}
+
+.continueBtn{
+  width: 190px;
+  height: 48px;
+  float: right;
+  background: #609F00;
+  color: #FFFFFF;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  border: 0;
+  margin-top: 40px;
+}
+
+.continueBtn:disabled{
+  background-color: #C4C4C4;
+}
+
+.continueBtn:disabled:hover{
+  background-color: #C4C4C4;
+}
+
+.continueBtn:hover{
+  background:  #8BC03B;
+}
+
+//LINC FORM CONTAINERS
+
+//greater form container with dark background
+.formContainer {
+  background-color: rgba(102,102,102,1);
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+
+//box for entire linc form
+.formPanel {
+  width: 556px;
+  margin: auto;
+  padding: 30px 97px 40px 97px;
+  //overflow used to force panel height expansion with floated (bootstrap) elements inside
+  overflow: hidden;
+  background-color: white;
+  @media screen and (max-width: 768px) {
+    width: 370px;
+    padding: 0px 5px 10px 5px;
+
+  }
+}
+
+
+
+// LINC TEXT
+.title {
+  font-size: 36px;
+  font-weight: 900;
+  text-align: center;
+  color: #333333;
+}

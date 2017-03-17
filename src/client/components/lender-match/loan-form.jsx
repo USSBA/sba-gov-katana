@@ -5,21 +5,19 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import Steps from 'react-steps';
 import { indexOf, chain, startCase } from 'lodash';
 import { Panel, ButtonToolbar, Glyphicon } from 'react-bootstrap';
-import lenderMatchStyles from '../../styles/lender-match/lender-match.scss';
+import lenderMatchStyles from './lender-match.scss';
 import { browserHistory } from 'react-router';
-import styles from '../common/styles.scss';
+import styles from './lender-match.scss';
 import { ProgressBar } from './progress-bar.jsx'
 
-const BackButton = ({text}) => <ButtonToolbar>
-                                 <button type="button" className={ lenderMatchStyles.backBtn + " btn btn-default btn-sm pull-left" } onClick={ browserHistory.goBack }>
-                                   <Glyphicon glyph="chevron-left" />
+const BackButton = ({text}) => <button type="button" className={ styles.backBtn } onClick={ browserHistory.goBack }>
                                    { text }
-                                 </button>
-                               </ButtonToolbar>;
+                                 </button>;
+
 
 class LoanForm extends React.Component {
   getBackButtonText(locationIndex) {
-    return locationIndex === 0 ? "Exit" : "Back";
+    return locationIndex === 0 ? "EXIT" : "BACK";
   }
   render() {
     let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review']; // TODO make this static or configuration
@@ -27,12 +25,13 @@ class LoanForm extends React.Component {
     let locationIndex = indexOf(pages, page);
     let backButton = locationIndex === 5 ? "" : (<BackButton text={ this.getBackButtonText(locationIndex) } />);
     return (
-      <div className="container-fluid">
-        <Panel className={ "col-xs-12 col-md-6 col-md-offset-3 " + styles.formPanel }>
-          { backButton }
+      <div className={styles.formContainer}>
+        <main className={styles.formPanel}>
+          <h1 className={styles.title}>Lender Match</h1>
           <ProgressBar pages={ pages.length + 1 } locationIndex={ locationIndex + 1 } />
-          { this.props.children }
-        </Panel>
+            { this.props.children }
+          { backButton }
+        </main>
       </div>
       );
   }

@@ -5,7 +5,7 @@ import { FormPanel } from '../common/form-styling.jsx'
 import { browserHistory } from 'react-router';
 import { FormGroup, Checkbox, Col } from 'react-bootstrap'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import styles from '../../styles/lender-match/lender-match.scss';
+import styles from './lender-match.scss';
 
 
 
@@ -44,10 +44,10 @@ export class AdditionalInfoForm extends React.Component {
 
   render() {
     return (
-      <FormPanel title="Anything else you can tell us?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+      <div>
         <form ref={ (input) => this.addInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <FormGroup className="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">
-            <label>Check all that apply to you: </label>
+          <FormGroup>
+            <label>These components will get destroyed soon: </label>
             <Checkbox name="hasWrittenPlan" checked={ this.state.additionalInfoFields.hasWrittenPlan } onChange={ this.handleClick.bind(this) }>
               I have a written business plan
             </Checkbox>
@@ -61,12 +61,9 @@ export class AdditionalInfoForm extends React.Component {
               I'm a veteran
             </Checkbox>
           </FormGroup>
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit">
-            Continue </button>
-          </Col>
+          <button className={ styles.continueBtn } type="submit"> CONTINUE </button>
         </form>
-      </FormPanel>
+      </div>
     )
   }
 }

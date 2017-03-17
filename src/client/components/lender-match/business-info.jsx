@@ -6,7 +6,7 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState } from '../helpers/page-validator-helpers.jsx'
-import styles from '../../styles/lender-match/lender-match.scss';
+import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 
@@ -107,7 +107,7 @@ class BusinessInfoForm extends React.Component {
 
   render() {
     return (
-      <FormPanel title="Tell us about your business" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+      <div>
         <form ref={ (input) => this.businessInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <TextInput label="What is the name of your business?" name="businessInfoName" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoName } getValidationState={ this.state.validStates["businessInfoName"] }
             autoFocus required />
@@ -117,11 +117,9 @@ class BusinessInfoForm extends React.Component {
             placeholder="Optional" />
           <TextArea label="Describe what your business does" name="businessInfoDescription" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoDescription } getValidationState={ this.state.validStates["businessInfoDescription"] }
             required />
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> Continue </button>
-          </Col>
+            <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
-      </FormPanel>
+      </div>
       );
   }
   ;

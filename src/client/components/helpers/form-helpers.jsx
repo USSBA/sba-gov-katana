@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormGroup, FormControl, Checkbox, ControlLabel, Col } from 'react-bootstrap';
-import styles from '../common/styles.scss';
-import commonStyles from '../../styles/common.scss';
+import styles from './form-helpers.scss';
 import MultiSelect from 'react-select';
 import 'react-select/dist/react-select.css';
 import './react-select-helpers.css';
@@ -18,27 +17,22 @@ export class CurrencyInput extends React.Component {
   }
 }
 
-export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 } lgHidden={ hidden } mdHidden={ hidden }
-                                                                                     smHidden={ hidden } xsHidden={ hidden }>
-                                                                                   <FormGroup className="input1" validationState={ getValidationState }>
+export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                                      <ControlLabel className={ styles.controlLabel }>
                                                                                        { props.label }
                                                                                      </ControlLabel>
-                                                                                     <FormControl {...props} onChange={ handleChange } />
-                                                                                     <FormControl.Feedback/>
-                                                                                   </FormGroup>
-                                                                                   </Col>;
+                                                                                     <FormControl {...props} className={styles.textInput} onChange={ handleChange } />
+                                                                                     <FormControl.Feedback className={styles.validIcon}/>
+                                                                                   </FormGroup>;
 
-export const TextArea = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
-                                                                                 <FormGroup validationState={ getValidationState }>
+export const TextArea = ({handleChange, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                                    <ControlLabel className={ styles.controlLabel }>
                                                                                      { label }
                                                                                    </ControlLabel>
-                                                                                   <FormControl {...props} onChange={ handleChange } componentClass="textArea" />
-                                                                                 </FormGroup>
-                                                                                 </Col>;
+                                                                                   <FormControl {...props} className={styles.textArea} onChange={ handleChange } componentClass="textArea" />
+                                                                                 </FormGroup>;
 
-export const SelectBox = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
+export const SelectBox = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 }>
                                                                                   <FormGroup validationState={ getValidationState }>
                                                                                     <ControlLabel className={ styles.controlLabel }>
                                                                                       { label }
@@ -47,20 +41,16 @@ export const SelectBox = ({handleChange, label, getValidationState, ...props}) =
                                                                                   </FormGroup>
                                                                                   </Col>;
 
-export const CheckBox = ({handleClick, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
-                                                                                <FormGroup validationState={ getValidationState }>
+export const CheckBox = ({handleClick, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                                   <Checkbox {...props} onClick={ handleClick }>
                                                                                     { label }
                                                                                   </Checkbox>
-                                                                                </FormGroup>
-                                                                                </Col>;
+                                                                                </FormGroup>;
 
-export const MultiSelectBox = ({label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
-                                                                         <FormGroup validationState={ getValidationState }>
+export const MultiSelectBox = ({label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                            <ControlLabel className={ styles.controlLabel }>
                                                                              { label }
                                                                            </ControlLabel>
-                                                                           <MultiSelect tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
+                                                                           <MultiSelect  tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
                                                                              {...props}/>
-                                                                         </FormGroup>
-                                                                         </Col>;
+                                                                         </FormGroup>;

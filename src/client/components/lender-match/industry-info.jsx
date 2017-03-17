@@ -6,7 +6,7 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
-import styles from '../../styles/lender-match/lender-match.scss';
+import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 class IndustryInfoForm extends React.Component {
@@ -115,11 +115,11 @@ class IndustryInfoForm extends React.Component {
     ;
 
     return (
-      <FormPanel title="What's your industry?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+      <div>
         <form ref={ (input) => this.industryInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <MultiSelectBox label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
             options={ industryTypeOptions } autoFocus required></MultiSelectBox>
-          <SelectBox label="What's your experience in this industry?" name="industryExperience" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } defaultValue={ this.state.industryInfoFields.industryExperience }
+          <SelectBox label="This component will get destroyed soon!" name="industryExperience" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } defaultValue={ this.state.industryInfoFields.industryExperience }
             required>
             <option value="" disabled>- Select use of funds -</option>
             <option value="Less than 1 year">Less than 1 year</option>
@@ -127,13 +127,9 @@ class IndustryInfoForm extends React.Component {
             <option value="2-5 years">2-5 years</option>
             <option value="5+ years">5+ years</option>
           </SelectBox>
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
-            Continue
-          </button>
-          </Col>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
-      </FormPanel>
+      </div>
       );
   }
   ;

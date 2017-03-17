@@ -6,7 +6,7 @@ import { FormPanel } from '../common/form-styling.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
-import styles from '../../styles/lender-match/lender-match.scss';
+import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 
@@ -100,7 +100,7 @@ class ContactInfoForm extends React.Component {
 
   render() {
     return (
-      <FormPanel title="How do we reach you?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+      <div>
         <form ref={ (input) => this.contactInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <TextInput label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName } getValidationState={ this.state.validStates["contactFullName"] }
             autoFocus required />
@@ -111,13 +111,9 @@ class ContactInfoForm extends React.Component {
           { /* HoneyPot -- this comment should not appear in the minified code*/ }
           <TextInput label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] }
             hidden />
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> Continue </button>
-          </Col>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
-        <Col md={ 12 }>
-        </Col>
-      </FormPanel>
+        </div>
       );
   }
 }
