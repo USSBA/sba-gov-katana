@@ -44,6 +44,7 @@ const metaVariables = {
 };
 
 app.get("/", function(req, res) {
+  console.log(req.cookie);
   let hasSessionCookie = _.findKey(req.cookie, (key) => {
     console.log(key);
     return _.startsWith(key, "SSESS");
