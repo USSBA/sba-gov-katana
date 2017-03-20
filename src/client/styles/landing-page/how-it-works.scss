@@ -26,7 +26,7 @@
     p {
         display: inline;
     }
-    .numbers {
+    .evenNumbers {
         width: 96px;
         height: 151px;
         opacity: 0.4;
@@ -36,9 +36,17 @@
         position: relative;
         left: 20px;
         top: 35px;
-        &:nth-of-type(odd) {
-            top: 42px;
-        }
+    }
+    .oddNumbers {
+        width: 96px;
+        height: 151px;
+        opacity: 0.4;
+        font-size: 120px;
+        font-weight: 900;
+        color: #609F00;
+        position: relative;
+        left: 20px;
+        top: 42px;
     }
     img {
         width: 100%;
