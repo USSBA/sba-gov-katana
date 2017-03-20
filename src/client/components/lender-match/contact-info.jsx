@@ -109,8 +109,7 @@ class ContactInfoForm extends React.Component {
           <TextInput label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress } getValidationState={ this.state.validStates["contactEmailAddress"] }
             required />
           { /* HoneyPot -- this comment should not appear in the minified code*/ }
-          <TextInput label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] }
-            hidden />
+          <TextInput hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] }/>
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
       </div>

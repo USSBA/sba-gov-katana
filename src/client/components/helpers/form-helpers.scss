@@ -12,6 +12,12 @@
     height: 48px;
 }
 
+.textInput:focus {
+    outline: none;
+    border: 1px solid #609F00;
+    box-shadow: 0 0 10px #609F00;
+}
+
 .textArea {
     border-radius: 0px !important;
     border: 1px solid #666666;
