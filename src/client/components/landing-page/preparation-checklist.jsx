@@ -18,7 +18,7 @@ export const PreparationChecklist = (props) => <div className={ styles.section }
                                                    <ToDo icon={ planIcon } title="Business plan" caption="Most lenders expect a business plan when you apply for startup funding. If you need to create one, follow our free business plan guide."
                                                    />
                                                    <ToDo icon={ fundsIcon } title="Amount & use of funds" caption="Know how much capital you need and how it will help your business.
-                                                                                                                                                                                            You can’t use an SBA-approved loan to flip a house."
+                                                   You can’t use an SBA-approved loan to flip a house."
                                                    />
                                                    <ToDo icon={ creditIcon } title="Credit history" caption="Lenders use credit scores to determine credit risk and interest rates. The SBA helps guarantee some loans that otherwise may not qualify."
                                                    />
