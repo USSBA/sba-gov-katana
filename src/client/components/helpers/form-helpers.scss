@@ -1,21 +1,54 @@
 //LINC FORM INPUTS
+
+//colors
+$money-green: #609F00;
+$error: #E21234;
+
+
 .controlLabel {
+    display: block;
     font-family: "Source Sans Pro", sans-serif;
     font-size: 18px;
     margin: 5px 0 5px 0;
     color: #333333;
 }
 
+.inputContainer {
+    position: relative;
+}
+
 .textInput {
+    display: block;
     border-radius: 0px !important;
     border: 1px solid #666666;
     height: 48px;
+    width: 100%;
 }
 
 .textInput:focus {
     outline: none;
     border: 1px solid #609F00;
-    box-shadow: 0 0 10px #609F00;
+    box-shadow: none;
+}
+
+.inputInvalid {
+    composes: textInput;
+    border: 1px solid $error !important;
+}
+
+.iconValid {
+    font-size: 22px !important;
+    color: #609F00;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.errText {
+    font-size: 16px;
+    font-weight: 600;
+    color: #E21C3D;
 }
 
 .textArea {
@@ -24,6 +57,5 @@
     height: 100px !important;
 }
 
-.validIcon {
-    line-height: 55px;
-}
+
+

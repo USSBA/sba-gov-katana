@@ -102,14 +102,15 @@ class ContactInfoForm extends React.Component {
     return (
       <div>
         <form ref={ (input) => this.contactInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <TextInput label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName } getValidationState={ this.state.validStates["contactFullName"] }
+          <TextInput errText="You have failed, please try again." label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName } getValidationState={ this.state.validStates["contactFullName"] }
             autoFocus required />
-          <TextInput label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber } getValidationState={ this.state.validStates["contactPhoneNumber"] }
+          <TextInput errText="You have failed, please try again." label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber } getValidationState={ this.state.validStates["contactPhoneNumber"] }
             required />
-          <TextInput label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress } getValidationState={ this.state.validStates["contactEmailAddress"] }
+          <TextInput errText="You have failed, please try again." label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress } getValidationState={ this.state.validStates["contactEmailAddress"] }
             required />
           { /* HoneyPot -- this comment should not appear in the minified code*/ }
-          <TextInput hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] }/>
+          <TextInput hidden={ true } label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) }
+            getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] } />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
       </div>
