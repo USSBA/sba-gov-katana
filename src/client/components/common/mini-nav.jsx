@@ -69,7 +69,7 @@ class MiniNav extends React.Component {
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
        </div>) :
-      (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>);
+      [(<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>),(<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>)];
     const searchBar = this.state.searchIsExpanded
       ? (
       <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
@@ -97,7 +97,6 @@ class MiniNav extends React.Component {
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
         { loggedInUser }
         { searchBar }
       </nav>
