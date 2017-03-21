@@ -49,8 +49,8 @@
         float: left;
         text-align: center;
         width: 25.76vw;
-        min-height: 256px;
-        padding: 30px;
+        min-height: 320px;
+        padding: 3vw;
         border: 1px solid #C4C4C4;
         margin: 0px 2vw 30px 0;
         &:nth-of-type(3n+0) {
@@ -80,6 +80,12 @@
     }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1120px) {
+    .card{
+        height: 400px;
+    }
+}
+
 @media screen and (max-width:767px) {
     .section {
         width: 100%;
@@ -96,6 +102,7 @@
         .card {
             float: none;
             width: 100%;
+            min-height: 250px;
             h3 {
                 font-size: 21px;
                 font-weight: 900;
