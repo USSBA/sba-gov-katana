@@ -33,3 +33,10 @@
 .validIcon {
     line-height: 55px;
 }
+
+:global {
+    /* webkit solution */
+    ::-webkit-input-placeholder { text-align:right; }
+    /* mozilla solution */
+    input:-moz-placeholder { text-align:right; }
+}
