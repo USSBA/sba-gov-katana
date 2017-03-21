@@ -18,7 +18,6 @@ export const PreparationChecklist = (props) => <div className={ styles.section }
                                                    <ToDo icon={ planIcon } title="Business plan" caption="Most lenders expect a business plan when you apply for startup funding. If you need to create one, follow our free business plan guide."
                                                    />
                                                    <ToDo icon={ fundsIcon } title="Amount & use of funds" caption="Know how much capital you need and how it will help your business.
-
                                                    You can’t use an SBA-approved loan to flip a house."
                                                    />
                                                    <ToDo icon={ creditIcon } title="Credit history" caption="Lenders use credit scores to determine credit risk and interest rates. The SBA helps guarantee some loans that otherwise may not qualify."
@@ -33,10 +32,10 @@ export const PreparationChecklist = (props) => <div className={ styles.section }
                                                  <div className={ styles.CallToAction }>
                                                    <p>Have questions or need help getting prepared? Take advantage of free, local counseling.</p>
                                                    <div className={ styles.ButtonGroup }>
-                                                     <Col xs={ 12 } lgOffset={ 4 } lg={ 2 }>
+                                                     <Col xs={ 12 } smOffset={ 3 } sm={ 3 }>
                                                      <ExpertHelpBtn/>
                                                      </Col>
-                                                     <Col xs={ 12 } lg={ 2 }>
+                                                     <Col xs={ 12 } sm={ 3 }>
                                                      <FindLendersBtn/>
                                                      </Col>
                                                    </div>
