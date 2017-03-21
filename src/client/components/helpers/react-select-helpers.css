@@ -34,3 +34,21 @@
     background-color: lightgray !important;
     color: #333333 !important;
 }
+
+.is-focused .Select-control {
+    border: 1px solid #609F00;
+}
+
+.is-focused .Select-menu-outer {
+    border: 1px solid #609F00;
+    border-top: none;
+    border-radius: 0;
+}
+
+.Select-input:hover {
+    background: red;
+}
+
+.Select-option.is-focused {
+    background-color: #EBEBEB;
+}
