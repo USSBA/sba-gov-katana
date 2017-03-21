@@ -7,6 +7,7 @@
 }
 
 .textInput {
+    font-size: 18px;
     border-radius: 0px !important;
     border: 1px solid #666666;
     height: 48px;
@@ -19,6 +20,7 @@
 }
 
 .textArea {
+    font-size: 18px;
     border-radius: 0px !important;
     border: 1px solid #666666;
     height: 100px !important;
@@ -34,9 +36,3 @@
     line-height: 55px;
 }
 
-:global {
-    /* webkit solution */
-    ::-webkit-input-placeholder { text-align:right; }
-    /* mozilla solution */
-    input:-moz-placeholder { text-align:right; }
-}
