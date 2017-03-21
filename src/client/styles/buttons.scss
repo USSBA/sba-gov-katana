@@ -42,6 +42,12 @@
     border-color: #609F00;
 }
 
+.findLendersBtn:active:hover {
+    background: white;
+    color: #609F00;
+    border-color: #609F00;
+}
+
 .helpBtn {
     font-family: "Source Sans Pro";
     font-size: 18px;
@@ -57,6 +63,12 @@
 }
 
 .helpBtn:hover {
+    color: #FFFFFF;
+    background-color: #609F00;
+    border-color: #609F00;
+}
+
+.helpBtn:hover:active {
     color: #FFFFFF;
     background-color: #609F00;
     border-color: #609F00;
