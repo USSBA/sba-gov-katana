@@ -55,6 +55,13 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"],
+        exclude: [
+          path.resolve(__dirname, "src/client/styles/common/collapse.scss")
+        ]
+      },
+      {
+        test: /.*collapse\.scss$/,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       }, {
         test: /\.less$/,
         loader: "style-loader!css-loader!less-loader"
