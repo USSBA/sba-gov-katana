@@ -4,7 +4,6 @@
 $money-green: #609F00;
 $error: #E21234;
 
-
 .controlLabel {
     display: block;
     font-family: "Source Sans Pro", sans-serif;
@@ -19,11 +18,12 @@ $error: #E21234;
 
 .textInput {
     display: block;
-    border-radius: 0px !important;
+    border-radius: 0px;
     border: 1px solid #666666;
     height: 48px;
     width: 100%;
-    padding-left: 16px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .textInput:focus {
@@ -42,7 +42,7 @@ $error: #E21234;
     color: #609F00;
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 15px;
     transform: translateY(-50%);
 }
 
@@ -57,6 +57,20 @@ $error: #E21234;
     border: 1px solid #666666;
     height: 100px !important;
 }
+
+.textArea:focus {
+    outline: none !important;
+    border: 1px solid #609F00;
+    box-shadow: none !important;
+}
+
+:global {
+        /* webkit solution */
+    ::-webkit-input-placeholder { text-align:right; }
+        /* mozilla solution */
+    input:-moz-placeholder { text-align:right; }
+}
+
 
 
 
