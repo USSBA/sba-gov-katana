@@ -1,12 +1,59 @@
-@import "../buttons";
-
 .section {
-    font-weight: lighter;
-    background: white;
+    position: relative;
+    margin: 60px 5.1vw 80px 9.7vw;
+    overflow: auto;
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    h2 {
+        font-size: 75px;
+        font-weight: 900;
+        line-height: 75px;
+        color: #333333;
+        margin-bottom: 35px;
+    }
+    .CallToAction {
+        margin: 25px auto 75px;
+        p {
+            font-size: 18px;
+            text-align: center;
+            line-height: 27px;
+        }
+        .ButtonGroup {
+            margin-top: 25px;
+            button {
+                margin: 15px 0;
+            }
+        }
+    }
 }
 
-.title {
-    font-size: 30px;
-    margin-top: 0px;
-    margin-bottom: 20px;
+@media screen and (max-width:767px) {
+    .section {
+        width: 100%;
+        margin: 50px auto;
+        h2 {
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 30px;
+        }
+        h5 {
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .desktop {
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .mobile {
+        display: none;
+    }
 }

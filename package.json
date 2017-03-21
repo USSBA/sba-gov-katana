@@ -67,6 +67,7 @@
     "pug": "^2.0.0-beta11",
     "qs": "^6.3.0",
     "querystring": "^0.2.0",
+    "rc-collapse": "^1.6.12",
     "rc-progress": "^2.0.3",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.6",

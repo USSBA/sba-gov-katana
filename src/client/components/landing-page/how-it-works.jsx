@@ -9,7 +9,7 @@ import howItWorksImg4 from '../../../../public/assets/images/lender-match/howItW
 export const HowItWorksSection = (props) => <div className={ styles.section }>
                                               <h2>How it works.</h2>
                                               <div className={ styles.step }>
-                                                <span className={ styles.oddNumbers}>1</span>
+                                                <span className={ styles.oddNumbers }>1</span>
                                                 <img src={ howItWorksImg1 } alt="Hands typing on a laptop." />
                                                 <h3>Describe your needs</h3>
                                                 <hr/>
