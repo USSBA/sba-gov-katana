@@ -2,8 +2,9 @@
 
 //colors
 $money-green: #609F00;
-$error: #E21234;
+$error: #E21C3D;
 
+//LABEL
 .controlLabel {
     display: block;
     font-family: "Source Sans Pro", sans-serif;
@@ -12,6 +13,12 @@ $error: #E21234;
     color: #333333;
 }
 
+//TEXT INPUT
+//container for entire text input component
+.textInputContainer {
+    margin-bottom: 20px;
+}
+//container for just the input and err msg
 .inputContainer {
     position: relative;
 }
@@ -33,9 +40,24 @@ $error: #E21234;
     box-shadow: none !important;;
 }
 
+//TEXT AREA
+.textArea {
+    font-size: 18px;
+    border-radius: 0px !important;
+    border: 1px solid #666666;
+    height: 100px !important;
+}
+
+.textArea:focus {
+    outline: none !important;
+    border: 1px solid #609F00;
+    box-shadow: none !important;
+}
+
+//VALIDATIONS
 .inputInvalid {
     composes: textInput;
-    border: 1px solid $error !important;
+    border: 2px solid $error !important;
 }
 
 .iconValid {
@@ -50,18 +72,5 @@ $error: #E21234;
 .errText {
     font-size: 16px;
     font-weight: 600;
-    color: #E21C3D;
-}
-
-.textArea {
-    font-size: 18px;
-    border-radius: 0px !important;
-    border: 1px solid #666666;
-    height: 100px !important;
-}
-
-.textArea:focus {
-    outline: none !important;
-    border: 1px solid #609F00;
-    box-shadow: none !important;
+    color: $error;
 }
