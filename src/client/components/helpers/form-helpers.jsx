@@ -28,7 +28,9 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
   }
 
   function errText() {
-    return getValidationState == 'error' ? <p className={styles.errText} >{props.errText}</p> : null
+    return getValidationState == 'error' ? <p className={ styles.errText }>
+                                             { props.errText }
+                                           </p> : null
   }
 
   return (
