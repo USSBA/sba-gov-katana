@@ -47,23 +47,13 @@ class ReviewSection extends React.Component {
   render() {
     return (
       <div>
-        <Row>
-          <Col xs={ 6 } xsOffset={ 0 } sm={ 3 } smOffset={ 3 }>
-          <h4>{ this.props.label }</h4>
-          </Col>
-          <Col xs={ 6 } xsOffset={ 0 } sm={ 3 }>
-          <ButtonToolbar>
-            <Button className="pull-right" onClick={ this.handleClick.bind(this) }>
-              Edit
-            </Button>
-          </ButtonToolbar>
-          </Col>
-        </Row>
-        <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
+        <h4>{ this.props.label }</h4>
+        <button className="pull-right" onClick={ this.handleClick.bind(this) }>
+          Edit
+        </button>
         <ul>
           { this.mapSectionContentToList() }
         </ul>
-        </Col>
       </div>
     )
   }
