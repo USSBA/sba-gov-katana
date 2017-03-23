@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
+import MultiSelectBox from '../atoms/multiselect.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
+import _ from "lodash";
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
@@ -36,14 +38,14 @@ class IndustryInfoForm extends React.Component {
         validForm = false;
       }
     }
-    return validForm
+    return validForm;
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createIndustryInfo(this.state.industryInfoFields);
     browserHistory.push('/linc/form/loan');
-    this.industryInfoForm.reset()
+    this.industryInfoForm.reset();
   }
 
   handleChange(e) {
@@ -55,17 +57,17 @@ class IndustryInfoForm extends React.Component {
         ...industryInfoFields
       }
     });
-    let validStates = this.getValidationState(e.target.name, e.target.value)
+    let validStates = this.getValidationState(e.target.name, e.target.value);
     this.setState({
       validStates: {
         ...this.state.validStates,
         ...validStates
       }
-    })
+    });
   }
 
   getValidationState(name, value) {
-    return getSelectBoxValidationState(name, value)
+    return getSelectBoxValidationState(name, value);
   }
 
   handleSelectChange(newValue) {
@@ -112,7 +114,7 @@ class IndustryInfoForm extends React.Component {
         value: x
       };
     });
-    ;
+
 
     return (
       <div>
@@ -132,7 +134,6 @@ class IndustryInfoForm extends React.Component {
       </div>
       );
   }
-  ;
 }
 
 function mapStateToProps(state) {

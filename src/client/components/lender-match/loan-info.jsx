@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
+import MultiSelectBox from '../atoms/multiselect.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
