@@ -12,23 +12,28 @@ class RadioButtonGroup extends React.Component {
     let radioButtons = this.props.options.map(function(item, index) {
       let id = "radio" + index;
       let radioInput = (
-      <input className={ styles.regularRadio } type="radio" name={ me.props.name } checked={ item.value === me.props.value } onClick={ me.handleClick.bind(this) } id={ id } value={ item.value }></input>
+        <input className={styles.regularRadio} type="radio" name={me.props.name} checked={item.value === me.props.value} onClick={me.handleClick.bind(this)} id={id} value={item.value}></input>
       );
       let radioLabel = (
-      <label clasName={ styles.myLabel } for={ id }>
-        { item.text }
-      </label>
+        <label className={styles.myLabel} for={id} />
       );
-      return [radioInput, radioLabel];
+      let spanLabel = (
+        <span>
+          {item.text}
+      </span>
+      );
+      return [radioInput, radioLabel, spanLabel, (<br/>)];
     });
     return (
-      <div className={ styles.container }>
-        <label className={ formHelperStyles.controlLabel }>
-          { this.props.label }
+      <div>
+        <label className={formHelperStyles.controlLabel}>
+          {this.props.label}
         </label>
-        { radioButtons }
+        <div className={styles.container}>
+          {radioButtons}
+        </div>
       </div>
-      );
+    );
   }
 }
 

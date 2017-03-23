@@ -1,14 +1,14 @@
 .mylabel{
-    display: inline;
+    // display: inline;
 }
 
 .container{
-    float: left;
-    margin-left: 6px;
-    margin-top: 16px;
+    // float: left;
+    // margin-left: 6px;
+    // margin-top: 16px;
 }
 .regularRadio{
-    display: none;
+    opacity: 0;
 }
 .regularRadio+ label {
     background-color: #fafafa;
