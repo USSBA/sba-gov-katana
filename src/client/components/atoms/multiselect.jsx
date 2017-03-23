@@ -9,13 +9,11 @@ import _ from "lodash";
 
 class MultiSelectBox extends React.Component {
   handleChange(newValue) {
-    console.log("In multiselect", newValue);
     if (newValue.length <= 3) {
       this.props.onChange(_.map(newValue, 'value').join(","));
     }
   }
   render() {
-    console.log(this.props);
     let arrayValue = this.props.value ? this.props.value.split(",") : [];
     return (
       <FormGroup validationState={ this.props.getValidationState }>

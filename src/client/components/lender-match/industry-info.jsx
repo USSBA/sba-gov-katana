@@ -71,7 +71,6 @@ class IndustryInfoForm extends React.Component {
   }
 
   handleSelectChange(newValue) {
-    console.log(newValue);
     let newIndustryInfoFields = _.merge(this.state.industryInfoFields, {
       industryType: newValue
     });
