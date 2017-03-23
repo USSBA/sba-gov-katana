@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
-import MultiSelectBox from '../atoms/multiselect.jsx';
+import MultiSelect from '../atoms/multiselect.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
@@ -71,6 +71,7 @@ class IndustryInfoForm extends React.Component {
   }
 
   handleSelectChange(newValue) {
+    console.log(newValue);
     let newIndustryInfoFields = _.merge(this.state.industryInfoFields, {
       industryType: newValue
     });
@@ -119,8 +120,8 @@ class IndustryInfoForm extends React.Component {
     return (
       <div>
         <form ref={ (input) => this.industryInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <MultiSelectBox label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
-            options={ industryTypeOptions } autoFocus required></MultiSelectBox>
+          <MultiSelect label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
+            options={ industryTypeOptions } autoFocus required maxValues={ 3 }></MultiSelect>
           <SelectBox label="This component will get destroyed soon!" name="industryExperience" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } defaultValue={ this.state.industryInfoFields.industryExperience }
             required>
             <option value="" disabled>- Select use of funds -</option>

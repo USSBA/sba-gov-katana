@@ -44,7 +44,7 @@ module.exports = {
         loader: 'style-loader!css-loader?modules&',
         exclude: [
           path.resolve(__dirname, "node_modules/react-select"),
-          path.resolve(__dirname, "src/client/components/helpers/react-select-helpers.css")
+          path.resolve(__dirname, "src/client/components/atoms/react-select-helpers.css")
         ]
       },
       {
