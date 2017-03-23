@@ -32,11 +32,17 @@
     color: #FFFFFF;
     background-color: #609F00;
     border: 2px solid #609F00;
-    border-color:#609F00;
+    border-color: #609F00;
     composes: btn;
 }
 
 .findLendersBtn:hover {
+    background: white;
+    color: #609F00;
+    border-color: #609F00;
+}
+
+.findLendersBtn:active:hover {
     background: white;
     color: #609F00;
     border-color: #609F00;
@@ -51,12 +57,18 @@
     padding: 12px;
     color: #609F00;
     border: 2px solid #609F00;
-    border-color:#609F00;
+    border-color: #609F00;
     border-radius: 0;
     composes: btn;
 }
 
 .helpBtn:hover {
+    color: #FFFFFF;
+    background-color: #609F00;
+    border-color: #609F00;
+}
+
+.helpBtn:hover:active {
     color: #FFFFFF;
     background-color: #609F00;
     border-color: #609F00;

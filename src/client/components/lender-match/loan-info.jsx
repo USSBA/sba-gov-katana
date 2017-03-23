@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
+import MultiSelectBox from '../atoms/multiselect.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
@@ -145,7 +146,7 @@ class LoanInfo extends React.Component {
           <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanFields.loanAmount }
             getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
           <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
-            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required></MultiSelectBox>
+            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
           <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="Include details such as this sample placeholder and this other example."
           />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>

@@ -1,15 +1,13 @@
 import React from 'react';
 import { FormGroup, FormControl, Checkbox, ControlLabel, Col } from 'react-bootstrap';
 import styles from './form-helpers.scss';
-import MultiSelect from 'react-select';
-import 'react-select/dist/react-select.css';
-import './react-select-helpers.css';
+
 
 //standard react form components to be used throughout application
 
 export class CurrencyInput extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     const {handleChange, handleFormat, value, getValidationState, ...rest} = this.props;
@@ -68,10 +66,3 @@ export const CheckBox = ({handleClick, label, getValidationState, ...props}) => 
                                                                                   </Checkbox>
                                                                                 </FormGroup>;
 
-export const MultiSelectBox = ({label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
-                                                                           <ControlLabel className={ styles.controlLabel }>
-                                                                             { label }
-                                                                           </ControlLabel>
-                                                                           <MultiSelect tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
-                                                                             {...props}/>
-                                                                         </FormGroup>;
