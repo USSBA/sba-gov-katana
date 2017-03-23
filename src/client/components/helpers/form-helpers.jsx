@@ -57,8 +57,8 @@ export const TextArea = ({handleChange, getValidationState, hidden, ...props}) =
 
   function errText() {
     return getValidationState == 'error' ? <p className={ styles.errText }>
-      { props.errText }
-    </p> : null
+                                             { props.errText }
+                                           </p> : null
   }
 
   return (
