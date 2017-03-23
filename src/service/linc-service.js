@@ -12,7 +12,7 @@ import LenderMatchRegistration from "../models/lender-match-registration.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
 
-import LincSoapRequest from "./linc-soap-request.js";
+import { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest } from "./linc-soap-request.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -108,21 +108,35 @@ function followupEmailJob() {
 
 
 function sendDataToOca(lenderMatchRegistration) {
-  const username = config.get("oca.soap.username");
-  const password = config.get("oca.soap.password");
-  const ocaSoapWsdl = config.get("oca.soap.wsdlUrl");
-  const soapRequest = new LincSoapRequest();
-  soapRequest.sendLincSoapRequest(ocaSoapWsdl, lenderMatchRegistration, username, password).then(function(response) {
-    // TODO: check the response from OCA
-    //do nothing if it is "S"
-    //save to database if it is "P"
-    // TODO: handle checking of the database for pending items and resending them.
-    //throw error if it is "F
-    //need to figure out with Jon what to page to reroute the user to in case of error.
-    //email might be confirmed but OCA soap might still have returned an error!
-  }).catch(function(error) {
-    console.log(error.message);
-  });
+  const soapRequestData = {
+    userName: config.get("oca.soap.username"),
+    password: config.get("oca.soap.password"),
+    ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
+    formRequestData: {}
+  };
+
+  getEndPointUrl(soapRequestData).then(function(response) {
+    return convertFormDataToXml(response);
+  })
+    .then(function(response) {
+      return createLincSoapRequestEnvelopeXml(response);
+    })
+    .then(function(response) {
+      return sendLincSoapRequest(response);
+    })
+    .then(function(response) {
+      // TODO: check the response from OCA
+      //do nothing if it is "S"
+      //save to database if it is "P"
+      // TODO: handle checking of the database for pending items and resending them.
+      //throw error if it is "F
+      //need to figure out with Jon what to page to reroute the user to in case of error.
+      //email might be confirmed but OCA soap might still have returned an error!
+    })
+    .catch(function(error) {
+      console.log(error.message);
+      throw error;
+    });
 }
 
 function confirmEmail(token) {
