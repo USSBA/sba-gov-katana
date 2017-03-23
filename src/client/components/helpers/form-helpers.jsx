@@ -15,13 +15,34 @@ export class CurrencyInput extends React.Component {
   }
 }
 
-export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => <FormGroup hidden={ hidden } validationState={ getValidationState }>
-                                                                                     <ControlLabel className={ styles.controlLabel }>
-                                                                                       { props.label }
-                                                                                     </ControlLabel>
-                                                                                     <FormControl {...props} className={ styles.textInput } onChange={ handleChange } />
-                                                                                     <FormControl.Feedback className={ styles.validIcon } />
-                                                                                   </FormGroup>;
+export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => {
+
+  function iconValidation() {
+    return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.iconValid } aria-hidden="true"></i> : null
+  }
+
+  function inputValidation() {
+    return getValidationState == 'error' ? styles.inputInvalid : styles.textInput
+  }
+
+  function errText() {
+    return getValidationState == 'error' ? <p className={ styles.errText }>
+                                             { props.errText }
+                                           </p> : null
+  }
+
+  return (
+    <div className={styles.textInputContainer} hidden={ hidden } validationState={ getValidationState }>
+      <label className={ styles.controlLabel }>
+        { props.label }
+      </label>
+      <div className={ styles.inputContainer }>
+        <input {...props} className={ inputValidation() } onChange={ handleChange } />
+        { iconValidation() }
+      </div>
+      { errText() }
+    </div>);
+}
 
 export const TextArea = ({handleChange, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                                    <ControlLabel className={ styles.controlLabel }>

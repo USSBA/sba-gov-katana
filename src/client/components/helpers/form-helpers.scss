@@ -1,24 +1,46 @@
 //LINC FORM INPUTS
+
+//colors
+$money-green: #609F00;
+$error: #E21C3D;
+
+//LABEL
 .controlLabel {
+    display: block;
     font-family: "Source Sans Pro", sans-serif;
     font-size: 18px;
     margin: 5px 0 5px 0;
     color: #333333;
 }
 
+//TEXT INPUT
+//container for entire text input component
+.textInputContainer {
+    margin-bottom: 20px;
+}
+//container for just the input and err msg
+.inputContainer {
+    position: relative;
+}
+
 .textInput {
+    display: block;
+    border-radius: 0px;
     font-size: 18px;
-    border-radius: 0px !important;
     border: 1px solid #666666;
     height: 48px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .textInput:focus {
     outline: none;
     border: 1px solid #609F00;
-    box-shadow: none !important;
+    box-shadow: none !important;;
 }
 
+//TEXT AREA
 .textArea {
     font-size: 18px;
     border-radius: 0px !important;
@@ -27,12 +49,28 @@
 }
 
 .textArea:focus {
-    outline: none;
+    outline: none !important;
     border: 1px solid #609F00;
     box-shadow: none !important;
 }
 
-.validIcon {
-    line-height: 55px;
+//VALIDATIONS
+.inputInvalid {
+    composes: textInput;
+    border: 2px solid $error !important;
 }
 
+.iconValid {
+    font-size: 22px !important;
+    color: #609F00;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+.errText {
+    font-size: 16px;
+    font-weight: 600;
+    color: $error;
+}
