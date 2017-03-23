@@ -147,7 +147,7 @@ class LoanInfo extends React.Component {
             getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
           <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
             value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
-          <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="Include details such as this sample placeholder and this other example."
+          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
           />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>

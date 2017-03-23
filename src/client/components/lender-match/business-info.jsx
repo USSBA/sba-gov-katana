@@ -115,7 +115,7 @@ class BusinessInfoForm extends React.Component {
             maxLength="5" required />
           <TextInput label="What is your business website?" name="businessInfoWebsite" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoWebsite } getValidationState={ this.state.validStates["businessInfoWebsite"] }
             placeholder="Optional" />
-          <TextArea label="Describe what your business does" name="businessInfoDescription" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoDescription } getValidationState={ this.state.validStates["businessInfoDescription"] }
+          <TextArea label="Describe what your business does" name="businessInfoDescription" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoDescription } getValidationState={ this.state.validStates["businessInfoDescription"]} placeholder="My neighborhood pizza restaurant specializes in serving fast cuisine made with high-quality, local ingredients..."
             required />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
