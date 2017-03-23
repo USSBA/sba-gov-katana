@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
+import MultiSelectBox from '../atoms/multiselect.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
-import styles from '../../styles/lender-match/lender-match.scss';
+import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 class LoanInfo extends React.Component {
@@ -140,21 +141,17 @@ class LoanInfo extends React.Component {
     });
 
     return (
-      <FormPanel title="What are your funding needs?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+      <div>
         <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanFields.loanAmount }
             getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
           <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
-            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required></MultiSelectBox>
+            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
           <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="Include details such as this sample placeholder and this other example."
           />
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
-            Continue
-          </button>
-          </Col>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
-      </FormPanel>
+      </div>
       );
   }
   ;

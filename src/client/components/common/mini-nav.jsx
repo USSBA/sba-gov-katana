@@ -41,7 +41,7 @@ class MiniNav extends React.Component {
   componentWillMount() {
     this.setState({
       userId: cookie.load('DRUPAL_UID'),
-      userLoggedOn: Object.keys(cookie.select(/^SSESS.*/i)).length > 0 ? true : false
+      userLoggedOn: window.isUserLoggedIn
     });
   }
 
@@ -58,9 +58,8 @@ class MiniNav extends React.Component {
   render() {
     let adminWidget = "";
     if (this.props.userRoles) {
-      console.log("user roles length = " + this.props.userRoles.length);
       if (this.props.userRoles.length > 0) {
-        adminWidget = (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admintool</a>);
+        adminWidget = (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/admintool">Admin Tool</a>);
       }
     }
 
@@ -70,7 +69,7 @@ class MiniNav extends React.Component {
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
        </div>) :
-      (<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>);
+      [(<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>),(<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>)];
     const searchBar = this.state.searchIsExpanded
       ? (
       <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
@@ -98,7 +97,6 @@ class MiniNav extends React.Component {
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
         <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>
         { loggedInUser }
         { searchBar }
       </nav>
@@ -118,4 +116,3 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav);
-

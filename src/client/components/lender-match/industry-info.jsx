@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput, TextArea, SelectBox, MultiSelectBox } from '../helpers/form-helpers.jsx'
+import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
+import MultiSelect from '../atoms/multiselect.jsx';
+import RadioButtonGroup from '../atoms/radio.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import { browserHistory } from 'react-router';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
-import styles from '../../styles/lender-match/lender-match.scss';
+import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
+import _ from "lodash";
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
@@ -36,36 +39,36 @@ class IndustryInfoForm extends React.Component {
         validForm = false;
       }
     }
-    return validForm
+    return validForm;
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createIndustryInfo(this.state.industryInfoFields);
     browserHistory.push('/linc/form/loan');
-    this.industryInfoForm.reset()
+    this.industryInfoForm.reset();
   }
 
-  handleChange(e) {
+  handleChange(newValue) {
     let industryInfoFields = {};
-    industryInfoFields[e.target.name] = e.target.value;
+    industryInfoFields["industryExperience"] = newValue;
     this.setState({
       industryInfoFields: {
         ...this.state.industryInfoFields,
         ...industryInfoFields
       }
     });
-    let validStates = this.getValidationState(e.target.name, e.target.value)
+    let validStates = this.getValidationState("industryExperience", newValue);
     this.setState({
       validStates: {
         ...this.state.validStates,
         ...validStates
       }
-    })
+    });
   }
 
   getValidationState(name, value) {
-    return getSelectBoxValidationState(name, value)
+    return getSelectBoxValidationState(name, value);
   }
 
   handleSelectChange(newValue) {
@@ -112,31 +115,33 @@ class IndustryInfoForm extends React.Component {
         value: x
       };
     });
-    ;
+
+    let radioButtonOptions = [{
+      value: "Less than 1 year",
+      text: "Less than 1 year"
+    }, {
+      value: "1-2 years",
+      text: "1-2 years"
+    }, {
+      value: "2-5 years",
+      text: "2-5 years"
+    }, {
+      value: "5+ years",
+      text: "5+ years"
+    }];
 
     return (
-      <FormPanel title="What's your industry?" subtitle="Here's why we're asking for this info and how it will help you get a loan.">
+      <div>
         <form ref={ (input) => this.industryInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <MultiSelectBox label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
-            options={ industryTypeOptions } autoFocus required></MultiSelectBox>
-          <SelectBox label="What's your experience in this industry?" name="industryExperience" handleChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } defaultValue={ this.state.industryInfoFields.industryExperience }
-            required>
-            <option value="" disabled>- Select use of funds -</option>
-            <option value="Less than 1 year">Less than 1 year</option>
-            <option value="1-2 years">1-2 years</option>
-            <option value="2-5 years">2-5 years</option>
-            <option value="5+ years">5+ years</option>
-          </SelectBox>
-          <Col md={ 6 } mdOffset={ 3 }>
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
-            Continue
-          </button>
-          </Col>
+          <MultiSelect label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
+            options={ industryTypeOptions } autoFocus required maxValues={ 3 }></MultiSelect>
+          <RadioButtonGroup label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } value={ this.state.industryInfoFields.industryExperience }
+            options={ radioButtonOptions } required />
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
-      </FormPanel>
+      </div>
       );
   }
-  ;
 }
 
 function mapStateToProps(state) {

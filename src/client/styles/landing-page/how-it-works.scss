@@ -1,6 +1,12 @@
 .section {
     position: relative;
     margin: 35px auto 0;
+    overflow: auto;
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
     h2 {
         font-size: 28px;
         font-weight: 900;
@@ -9,8 +15,6 @@
         margin-bottom: -25px;
     }
     p {
-        width: 262px;
-        height: 44px;
         font-size: 18px;
         line-height: 22px;
         color: #333333;
@@ -22,7 +26,7 @@
     p {
         display: inline;
     }
-    .numbers {
+    .evenNumbers {
         width: 96px;
         height: 151px;
         opacity: 0.4;
@@ -32,6 +36,17 @@
         position: relative;
         left: 20px;
         top: 35px;
+    }
+    .oddNumbers {
+        width: 96px;
+        height: 151px;
+        opacity: 0.4;
+        font-size: 120px;
+        font-weight: 900;
+        color: #609F00;
+        position: relative;
+        left: 20px;
+        top: 42px;
     }
     img {
         width: 100%;
@@ -58,9 +73,9 @@
 
 @media screen and (min-width:768px) {
     .section {
-        top: -75px;
+        top: 0;
         width: 84vw;
-        margin-left: 9.7vw;
+        margin: 60px 0 0 9.7vw;
         h2 {
             font-size: 75px;
             font-weight: 900;
@@ -88,4 +103,63 @@
             line-height: 22px;
         }
     }
+}
+
+.tellMeHowBtn {
+    border: 2px solid #FFFFFF;
+    border-radius: 0;
+    background-color: #609F00;
+    color: #FFFFFF;
+    width: 11.24vw;
+    height: 3.33vw;
+    font-size: 1.25vw;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    position: relative;
+}
+
+.tellMeHowBtn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    ;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+}
+
+.tellMeHowBtn:active,
+.tellMeHowBtn:focus {
+    background-color: #FFFFFF !important;
+    border: 2px solid #FFFFFF !important;
+    color: #609F00 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.findLendersWhiteBtn {
+    margin-left: 2.5vw;
+    border: 2px solid #FFFFFF;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    color: #609F00;
+    width: 11.24vw;
+    height: 3.33vw;
+    font-size: 1.25vw;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+}
+
+.findLendersWhiteBtn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #609F00;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.findLendersWhiteBtn:active,
+.findLendersWhiteBtn:focus {
+    background-color: rgba(255, 255, 255, 0.6) !important;
+    color: #609F00 !important;
+    border: 2px solid rgba(255, 255, 255, 0.6) !important;
+    outline: none !important;
+    box-shadow: none !important;
 }

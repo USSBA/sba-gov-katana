@@ -8,7 +8,7 @@ module.exports = {
     'webpack-hot-middleware/client',
     'bootstrap-loader',
     'babel-polyfill',
-    './src/client/components/entry.jsx'
+    './src/client/components/entry-dev.jsx'
   ],
   output: {
     path: path.join(__dirname, 'public', "build"),
@@ -33,7 +33,7 @@ module.exports = {
         loader: 'style-loader!css-loader?modules&',
         exclude: [
           path.resolve(__dirname, "node_modules/react-select"),
-          path.resolve(__dirname, "src/client/components/helpers/react-select-helpers.css")
+          path.resolve(__dirname, "src/client/components/atoms/react-select-helpers.css")
         ]
       },
       {
@@ -43,7 +43,14 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"]
+        loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"],
+        exclude: [
+          path.resolve(__dirname, "src/client/styles/common/collapse.scss")
+        ]
+      },
+      {
+        test: /.*collapse\.scss$/,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.less$/,

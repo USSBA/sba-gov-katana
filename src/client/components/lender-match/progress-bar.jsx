@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/lender-match/progress-bar.scss';
+import styles from './progress-bar.scss';
 
 
 
@@ -10,7 +10,6 @@ export class ProgressBar extends React.Component {
   }
 
   calcProgress() {
-    console.log((this.props.locationIndex / this.props.pages) * 100 + "%");
     return (this.props.locationIndex / this.props.pages) * 100 + "%"
   }
 

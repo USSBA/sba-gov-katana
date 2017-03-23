@@ -1,14 +1,16 @@
 //remove this when breaking server.js up into controllers -zandypants
 import zlib from "zlib";
 import path from "path";
+import _ from "lodash";
 /*Contains express server setup*/
 import express from "express";
 import config from "config";
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
 
 const app = express();
-
+app.use(cookieParser());
 //set up template engine
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "./views/"));
@@ -41,8 +43,19 @@ const metaVariables = {
   title: "Small Business Administration"
 };
 
-app.get("/", function(req, res) {
-  res.render("main", metaVariables);
+app.get("/", function(req, res, next) {
+  const sessionCookie = _.find(_.keys(req.cookies), (key) => {
+    return _.startsWith(key, "SSESS");
+  });
+  console.log("Session cookie: ", sessionCookie);
+  let hasSessionCookie = false;
+  if (sessionCookie) {
+    hasSessionCookie = true;
+  }
+  const pugVariables = _.merge({}, metaVariables, {
+    isUserLoggedIn: hasSessionCookie || false
+  });
+  res.render("main", pugVariables);
 });
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";

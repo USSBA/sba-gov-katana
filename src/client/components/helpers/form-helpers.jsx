@@ -1,16 +1,13 @@
 import React from 'react';
 import { FormGroup, FormControl, Checkbox, ControlLabel, Col } from 'react-bootstrap';
-import styles from '../common/styles.scss';
-import commonStyles from '../../styles/common.scss';
-import MultiSelect from 'react-select';
-import 'react-select/dist/react-select.css';
-import './react-select-helpers.css';
+import styles from './form-helpers.scss';
+
 
 //standard react form components to be used throughout application
 
 export class CurrencyInput extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     const {handleChange, handleFormat, value, getValidationState, ...rest} = this.props;
@@ -18,27 +15,67 @@ export class CurrencyInput extends React.Component {
   }
 }
 
-export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 } lgHidden={ hidden } mdHidden={ hidden }
-                                                                                     smHidden={ hidden } xsHidden={ hidden }>
-                                                                                   <FormGroup className="input1" validationState={ getValidationState }>
-                                                                                     <ControlLabel className={ styles.controlLabel }>
-                                                                                       { props.label }
-                                                                                     </ControlLabel>
-                                                                                     <FormControl {...props} onChange={ handleChange } />
-                                                                                     <FormControl.Feedback/>
-                                                                                   </FormGroup>
-                                                                                   </Col>;
 
-export const TextArea = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
-                                                                                 <FormGroup validationState={ getValidationState }>
-                                                                                   <ControlLabel className={ styles.controlLabel }>
-                                                                                     { label }
-                                                                                   </ControlLabel>
-                                                                                   <FormControl {...props} onChange={ handleChange } componentClass="textArea" />
-                                                                                 </FormGroup>
-                                                                                 </Col>;
+export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => {
 
-export const SelectBox = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
+  function iconValidation() {
+    return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textInputIconValid } aria-hidden="true"></i> : null
+  }
+
+  function inputValidation() {
+    return getValidationState == 'error' ? styles.textInputInvalid : styles.textInput
+  }
+
+  function errText() {
+    return getValidationState == 'error' ? <p className={ styles.errText }>
+                                             { props.errText }
+                                           </p> : null
+  }
+
+  return (
+    <div className={ styles.inputContainer } hidden={ hidden } validationState={ getValidationState }>
+      <label className={ styles.controlLabel }>
+        { props.label }
+      </label>
+      <div className={ styles.textInputContainer }>
+        <input {...props} className={ inputValidation() } onChange={ handleChange } />
+        { iconValidation() }
+      </div>
+      { errText() }
+    </div>);
+};
+
+export const TextArea = ({handleChange, getValidationState, hidden, ...props}) => {
+
+  function iconValidation() {
+    return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textAreaIconValid } aria-hidden="true"></i> : null
+  }
+
+  function inputValidation() {
+    return getValidationState == 'error' ? styles.textAreaInvalid : styles.textArea
+  }
+
+  function errText() {
+    return getValidationState == 'error' ? <p className={ styles.errText }>
+                                             { props.errText }
+                                           </p> : null
+  }
+
+  return (
+    <div className={ styles.inputContainer } hidden={ hidden } validationState={ getValidationState }>
+      <label className={ styles.controlLabel }>
+        { props.label }
+      </label>
+      <div className={ styles.textAreaContainer }>
+        <textarea {...props} className={ inputValidation() } onChange={ handleChange } />
+        { iconValidation() }
+      </div>
+      { errText() }
+    </div>);
+};
+
+
+export const SelectBox = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 }>
                                                                                   <FormGroup validationState={ getValidationState }>
                                                                                     <ControlLabel className={ styles.controlLabel }>
                                                                                       { label }
@@ -47,20 +84,8 @@ export const SelectBox = ({handleChange, label, getValidationState, ...props}) =
                                                                                   </FormGroup>
                                                                                   </Col>;
 
-export const CheckBox = ({handleClick, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
-                                                                                <FormGroup validationState={ getValidationState }>
+export const CheckBox = ({handleClick, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
                                                                                   <Checkbox {...props} onClick={ handleClick }>
                                                                                     { label }
                                                                                   </Checkbox>
-                                                                                </FormGroup>
-                                                                                </Col>;
-
-export const MultiSelectBox = ({label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 } sm={ 6 } smOffset={ 3 }>
-                                                                         <FormGroup validationState={ getValidationState }>
-                                                                           <ControlLabel className={ styles.controlLabel }>
-                                                                             { label }
-                                                                           </ControlLabel>
-                                                                           <MultiSelect tabSelectsValue={ false } multi={ true } simpleValue={ true } joinValues={ true } delimiter={ "," }
-                                                                             {...props}/>
-                                                                         </FormGroup>
-                                                                         </Col>;
+                                                                                </FormGroup>;

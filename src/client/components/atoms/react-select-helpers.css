@@ -1,0 +1,60 @@
+.has-success .Select-control {
+    border: 1px solid #3c763d;
+}
+
+.Select-control {
+    border-radius: 0px !important;
+    border: 1px solid #666666;
+    height: 48px;
+}
+
+.Select-control:focus {
+    outline: none !important;
+    border: 1px solid #609F00 !important;
+    box-shadow: none !important;
+}
+
+.Select-placeholder {
+    line-height: 21px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.Select-value {
+    border: 1px solid #666666 !important;
+    background-color: #EBEBEB !important;
+    border-radius: 5px !important;
+    color: #333333 !important;
+
+}
+
+.Select-value-icon {
+    border-right: 1px solid #666666 !important;
+    border-bottom-left-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+}
+
+.Select-value-icon:hover {
+    background-color: white !important;
+    background-color: lightgray !important;
+    color: #333333 !important;
+}
+
+.is-focused .Select-control {
+    border: 1px solid #609F00;
+}
+
+.is-focused .Select-menu-outer {
+    border: 1px solid #609F00;
+    border-top: none;
+    border-radius: 0;
+}
+
+.Select-input:hover {
+    background: red;
+}
+
+.Select-option.is-focused {
+    background-color: #EBEBEB;
+}

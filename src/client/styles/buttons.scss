@@ -3,7 +3,8 @@
     font-family: "Source Sans Pro";
 }
 
-.btn:focus,.btn:active {
+.btn:focus,
+.btn:active {
     outline: none !important;
 }
 
@@ -22,35 +23,58 @@
 }
 
 .findLendersBtn {
-    background: #333333;
-    color: white;
-    border: 1px solid #333333;
-    border-radius: 0;
+    font-family: "Source Sans Pro";
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 23px;
+    padding: 12px;
+    color: #FFFFFF;
+    background-color: #609F00;
+    border: 2px solid #609F00;
+    border-color: #609F00;
     composes: btn;
 }
 
 .findLendersBtn:hover {
     background: white;
-    color: black;
-    border: 1px solid #333333;
+    color: #609F00;
+    border-color: #609F00;
+}
+
+.findLendersBtn:active:hover {
+    background: white;
+    color: #609F00;
+    border-color: #609F00;
 }
 
 .helpBtn {
-    background: white;
-    border: 1px solid #333333;
-    color: #333333;
+    font-family: "Source Sans Pro";
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 23px;
+    padding: 12px;
+    color: #609F00;
+    border: 2px solid #609F00;
+    border-color: #609F00;
     border-radius: 0;
     composes: btn;
 }
 
 .helpBtn:hover {
-    background:  #333333;
-    border: 1px solid #333333;
-    color: white;
+    color: #FFFFFF;
+    background-color: #609F00;
+    border-color: #609F00;
+}
+
+.helpBtn:hover:active {
+    color: #FFFFFF;
+    background-color: #609F00;
+    border-color: #609F00;
 }
 
 //BUTTONS FOR HOME PAGE
-
 .homeBtnBlue {
     composes: btn;
     background-color: #0093DF !important;
@@ -70,9 +94,6 @@
     color: #FFFFFF !important;
 }
 
-
-
-
 .homeBtnWhite {
     composes: btn;
     background-color: #FFFFFF !important;
@@ -83,13 +104,11 @@
 }
 
 .homeBtnWhite:hover {
-    background-color: rgba(255,255,255,0.8) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
     color: #0B97DD !important;
 }
 
 .homeBtnWhite:active {
-    background-color: rgba(255,255,255,0.6) !important;
+    background-color: rgba(255, 255, 255, 0.6) !important;
     color: #0B97DD !important;
 }
-
-

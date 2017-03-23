@@ -55,7 +55,7 @@ class ReviewSubmitInfoForm extends React.Component {
 
   render() {
     return (
-      <FormPanel title="Take one last look and then submit">
+      <div>
         <ReviewSection label="Contact" sectionContent={ this.props.contactInfoData } editPath="/linc/form/contact" />
         <ReviewSection label="Business" sectionContent={ this.props.businessInfoData } editPath="/linc/form/business" />
         <ReviewSection label="Industry" sectionContent={ this.props.industryInfoData } editPath="/linc/form/industry" />
@@ -67,7 +67,7 @@ class ReviewSubmitInfoForm extends React.Component {
           <button className={ styles.findLendersBtn + " btn-block" } type="submit"> Submit to Lenders </button>
           </Col>
         </form>
-      </FormPanel>
+      </div>
       );
   }
   ;
