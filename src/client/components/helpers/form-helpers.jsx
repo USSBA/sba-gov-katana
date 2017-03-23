@@ -15,14 +15,15 @@ export class CurrencyInput extends React.Component {
   }
 }
 
+
 export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => {
 
   function iconValidation() {
-    return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.iconValid } aria-hidden="true"></i> : null
+    return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textInputIconValid } aria-hidden="true"></i> : null
   }
 
   function inputValidation() {
-    return getValidationState == 'error' ? styles.inputInvalid : styles.textInput
+    return getValidationState == 'error' ? styles.textInputInvalid : styles.textInput
   }
 
   function errText() {
@@ -32,24 +33,47 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
   }
 
   return (
-    <div className={styles.textInputContainer} hidden={ hidden } validationState={ getValidationState }>
+    <div className={ styles.inputContainer } hidden={ hidden } validationState={ getValidationState }>
       <label className={ styles.controlLabel }>
         { props.label }
       </label>
-      <div className={ styles.inputContainer }>
+      <div className={ styles.textInputContainer }>
         <input {...props} className={ inputValidation() } onChange={ handleChange } />
         { iconValidation() }
       </div>
       { errText() }
     </div>);
-}
+};
 
-export const TextArea = ({handleChange, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
-                                                                                   <ControlLabel className={ styles.controlLabel }>
-                                                                                     { label }
-                                                                                   </ControlLabel>
-                                                                                   <FormControl {...props} className={ styles.textArea } onChange={ handleChange } componentClass="textArea" />
-                                                                                 </FormGroup>;
+export const TextArea = ({handleChange, getValidationState, hidden, ...props}) => {
+
+  function iconValidation() {
+    return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textAreaIconValid } aria-hidden="true"></i> : null
+  }
+
+  function inputValidation() {
+    return getValidationState == 'error' ? styles.textAreaInvalid : styles.textArea
+  }
+
+  function errText() {
+    return getValidationState == 'error' ? <p className={ styles.errText }>
+      { props.errText }
+    </p> : null
+  }
+
+  return (
+    <div className={ styles.inputContainer } hidden={ hidden } validationState={ getValidationState }>
+      <label className={ styles.controlLabel }>
+        { props.label }
+      </label>
+      <div className={ styles.textAreaContainer }>
+        <textarea {...props} className={ inputValidation() } onChange={ handleChange } />
+        { iconValidation() }
+      </div>
+      { errText() }
+    </div>);
+};
+
 
 export const SelectBox = ({handleChange, label, getValidationState, ...props}) => <Col xs={ 12 } xsOffset={ 0 }>
                                                                                   <FormGroup validationState={ getValidationState }>
