@@ -32,7 +32,7 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
   }
 
   return (
-    <div className={styles.textInputContainer} hidden={ hidden } validationState={ getValidationState }>
+    <div className={ styles.textInputContainer } hidden={ hidden } validationState={ getValidationState }>
       <label className={ styles.controlLabel }>
         { props.label }
       </label>
