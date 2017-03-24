@@ -46,7 +46,7 @@ class SubMenu extends React.Component {
 
   makeFeaturedCalled(featuredCallout) {
     return (
-      <ul className={styles.columnNew}>
+      <ul key={13} className={styles.columnNew}>
         <div className={styles.menuCallToAction}>
           <a href={featuredCallout.target} title={featuredCallout.title}>
             <img src={featuredCallout.image} alt={featuredCallout.text} title={featuredCallout.title}/>
@@ -121,7 +121,7 @@ class SubMenu extends React.Component {
           </li>
         );
       return (
-        <ul aria-label="submenu" className={styles.mainMenuNew + " " + (this.props.shown
+        <ul key={1} aria-label="submenu" className={styles.mainMenuNew + " " + (this.props.shown
           ? styles.show
           : styles.hide)}>
           {goToNextButton}

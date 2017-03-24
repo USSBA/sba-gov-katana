@@ -69,7 +69,7 @@ class MainMenu extends React.Component {
       });
     } else {
       menuItems.push(
-        <div></div>
+        <div key={ 1 }></div>
       );
     }
 
