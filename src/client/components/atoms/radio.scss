@@ -1,62 +1,63 @@
-.radioItem{
-    padding: .5vw;
-    margin-top: .5vw;
+@import "../../styles/variables.scss";
+
+.radioItem {
+    padding: 5px;
+    margin-top: 10px;
+    height: 2.8vw;
+    min-height: 48px;
 }
-.radioItemSelected{
+
+.radioItemSelected {
     border: 1px solid black;
 }
-.radioItemNotSelected{
-    border: 1px solid gray;
+
+.radioItemNotSelected {
+    border: 1px solid #CCCCCC;
 }
 
-.container{
-    // float: left;
-    // margin-left: 6px;
-    // margin-top: 16px;
-}
-.regularRadio{
+.regularRadio {
     display: none;
 }
-.regularRadio+ label {
-    background-color: #fafafa;
-    border: 2px solid #cacece;
-    border-radius: 50px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 -15px 10px -12px rgba(0, 0, 0, 0.05) inset;
-    display: inline-block;
-    padding: 11px;
-    position: relative;
 
+.regularRadio+ label {
+    background-color: #ffffff;
+    border: 2px solid #c4c4c4;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 9px;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 10px;
 }
+
 .regularRadio+ label:before {
     background: none repeat scroll 0 0 #FDFDFD;
     border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
     content: " ";
-    font-size: 36px;
-    height: 8px;
-    left: 7px;
-    position: absolute;
-    top: 7px;
-    width: 8px;
 }
+
 .regularRadio:checked + label:after {
-    background: none repeat scroll 0 0 #94E325;
+    background: none repeat scroll 0 0 $money-green;
     border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) inset;
     content: " ";
     font-size: 36px;
-    height: 8px;
-    left: 7px;
+    height: 14px;
+    left: 2px;
     position: absolute;
-    top: 7px;
-    width: 8px;
+    top: 2px;
+    width: 14px;
 }
+
 .regularRadio:checked + label {
-    background-color: #e9ecee;
-    border: 2px solid #adb8c0;
+    background-color: #ffffff;
+    border: 2px solid $money-green;
     color: #99a1a7;
-    padding: 11px;
+    padding: 9px;
 }
-.regularRadio+ label:active, .regularRadio:checked + label:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+
+.radioText {
+    margin-left: 10px;
+    position: relative;
+    top: -3px;
+    font-size: 1.2rem;
 }
