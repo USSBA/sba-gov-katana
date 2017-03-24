@@ -1,4 +1,4 @@
-.has-success .Select-control {
+.has-success .label {
     border: 1px solid #3c763d;
 }
 
@@ -57,4 +57,9 @@
 
 .Select-option.is-focused {
     background-color: #EBEBEB;
+}
+
+.is-focused:not(.is-open)>.Select-control {
+    border: 1px solid #609F00;
+    box-shadow: none;
 }

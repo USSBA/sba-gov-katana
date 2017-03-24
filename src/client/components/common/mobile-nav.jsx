@@ -49,7 +49,7 @@ class MobileNav extends React.Component {
                     <title>Close Button</title>
                     <desc>Created with Sketch.</desc>
                     <defs/>
-                    <g id="Style-Guide" stroke="none" strokeWidth={1} fill="none" fill-rule="evenodd">
+                    <g id="Style-Guide" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                       <g id="Close-Button" fill="#333333">
                         <g id="Group">
                           <rect className={styles.closeIcon} id="Rectangle-7" transform="translate(13.081475, 13.081475) rotate(45.000000) translate(-13.081475, -13.081475) " x="11.5814755" y="-3.91852455" width={3} height={34} rx={1}/>
