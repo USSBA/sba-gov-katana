@@ -10,32 +10,77 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     },
     primaryKey: true
   },
-  name: {
+  uniqueId: {
     type: Sequelize.STRING
   },
-  phone: {
+  loanName: {
     type: Sequelize.STRING
   },
-  emailAddress: {
-    type: Sequelize.STRING
-  },
-  businessName: {
-    type: Sequelize.STRING
-  },
-  businessZip: {
+  projectZipCd: {
     type: Sequelize.INTEGER
   },
-  industry: {
-    type: Sequelize.TEXT
-  },
-  industryExperience: {
-    type: Sequelize.TEXT
-  },
-  loanAmount: {
+  projectZip4Cd: {
     type: Sequelize.INTEGER
   },
-  loanDescription: {
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequelize.STRING
+  },
+  primaryPhone: {
+    type: Sequelize.STRING
+  },
+  primaryEmail: {
+    type: Sequelize.STRING
+  },
+  currEmpQty: {
+    type: Sequelize.INTEGER
+  },
+  businessAgeCd: {
+    type: Sequelize.CHAR(2)
+  },
+  grossRevenueSales: {
+    type: Sequelize.DECIMAL
+  },
+  legalOrgnztnCd: {
+    type: Sequelize.CHAR(2)
+  },
+  businessDtlTypCd: {
+    type: Sequelize.STRING
+  },
+  businessDtlTypTxt: {
+    type: Sequelize.STRING
+  },
+  loanProceedTypCd: {
+    type: Sequelize.STRING
+  },
+  proceedOthTypTxt: {
+    type: Sequelize.STRING
+  },
+  requestedAmtRangeCd: {
+    type: Sequelize.CHAR(2)
+  },
+  collateralInd: {
+    type: Sequelize.CHAR(1)
+  },
+  collateralDesc: {
+    type: Sequelize.STRING
+  },
+  businessAdvisoryInd: {
+    type: Sequelize.CHAR(1)
+  },
+  businessPlanInd: {
+    type: Sequelize.CHAR(1)
+  },
+  otherFundSourceInd: {
+    type: Sequelize.CHAR(1)
+  },
+  businessStatusDescTxt: {
     type: Sequelize.TEXT
+  },
+  veteran: {
+    type: Sequelize.CHAR(1)
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
