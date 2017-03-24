@@ -46,7 +46,7 @@ class HappeningNow extends React.Component {
               <Row>
                 { items.map(function(item, i) {
                     return (
-                      <Col key={i} xsHidden sm={ mdSize }>
+                      <Col key={ i } xsHidden sm={ mdSize }>
                       <a href={ item.url }>
                         <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
                       </a>
@@ -56,7 +56,7 @@ class HappeningNow extends React.Component {
               </Row>
               <Row>
                 { items.map(function(item, i) {
-                    return <Col key={i} xsHidden sm={ mdSize }>
+                    return <Col key={ i } xsHidden sm={ mdSize }>
                            <p className={ styles.happeningNowItemTitle }>
                              { item.title }
                            </p>
@@ -65,7 +65,7 @@ class HappeningNow extends React.Component {
               </Row>
               <Row>
                 { items.map(function(item, i) {
-                    return <Col key={i} xsHidden sm={ mdSize }>
+                    return <Col key={ i } xsHidden sm={ mdSize }>
                            <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
                            </Col>;
                   }) }

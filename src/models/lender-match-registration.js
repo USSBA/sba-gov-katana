@@ -38,13 +38,13 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     type: Sequelize.INTEGER
   },
   businessAgeCd: {
-    type: Sequelize.CHAR(2)
+    type: Sequelize.CHAR
   },
   grossRevenueSales: {
     type: Sequelize.DECIMAL
   },
   legalOrgnztnCd: {
-    type: Sequelize.CHAR(2)
+    type: Sequelize.CHAR
   },
   businessDtlTypCd: {
     type: Sequelize.STRING
@@ -59,28 +59,28 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     type: Sequelize.STRING
   },
   requestedAmtRangeCd: {
-    type: Sequelize.CHAR(2)
+    type: Sequelize.CHAR
   },
   collateralInd: {
-    type: Sequelize.CHAR(1)
+    type: Sequelize.CHAR
   },
   collateralDesc: {
     type: Sequelize.STRING
   },
   businessAdvisoryInd: {
-    type: Sequelize.CHAR(1)
+    type: Sequelize.CHAR
   },
   businessPlanInd: {
-    type: Sequelize.CHAR(1)
+    type: Sequelize.CHAR
   },
   otherFundSourceInd: {
-    type: Sequelize.CHAR(1)
+    type: Sequelize.CHAR
   },
   businessStatusDescTxt: {
     type: Sequelize.TEXT
   },
   veteran: {
-    type: Sequelize.CHAR(1)
+    type: Sequelize.CHAR
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
