@@ -187,16 +187,16 @@ const AdditionalSection = (props) => {
   let displaySection = additionalInfo.isGeneratingRevenue || additionalInfo.hasWrittenPlan || additionalInfo.hasFinancialProjections || additionalInfo.isVeteran;
   return (
     <div>
-      {displaySection ? (
-      <div className={ styles.sectionContainer }>
-        <h1 className={ styles.title }>Additional</h1>
-        { additionalInfo.isGeneratingRevenue ? <p className={ styles.field }>I'm generating revenue</p> : null }
-        { additionalInfo.hasWrittenPlan ? <p className={ styles.field }>I have a written business plan</p> : null }
-        { additionalInfo.hasFinancialProjections ? <p className={ styles.field }>I have financial projections</p> : null }
-        { additionalInfo.isVeteran ? <p className={ styles.field }>I'm a veteran</p> : null }
-        <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
-      </div>
-      ) : null }
+      { displaySection ? (
+        <div className={ styles.sectionContainer }>
+          <h1 className={ styles.title }>Additional</h1>
+          { additionalInfo.isGeneratingRevenue ? <p className={ styles.field }>I'm generating revenue</p> : null }
+          { additionalInfo.hasWrittenPlan ? <p className={ styles.field }>I have a written business plan</p> : null }
+          { additionalInfo.hasFinancialProjections ? <p className={ styles.field }>I have financial projections</p> : null }
+          { additionalInfo.isVeteran ? <p className={ styles.field }>I'm a veteran</p> : null }
+          <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
+        </div>
+        ) : null }
     </div>
   )
 };
