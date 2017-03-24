@@ -14,6 +14,8 @@ html
     title= title
     script(type="text/javascript").
         var isUserLoggedIn = #{isUserLoggedIn}
+    script(type="text/javascript").
+        var googleAnalyticsId = !{googleAnalyticsId}
   body
     #root
     script(src='/build/bundle.js')
