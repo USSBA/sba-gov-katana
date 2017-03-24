@@ -33,8 +33,8 @@ class RadioButtonGroup extends React.Component {
                  value={ item.value }></input>
                <label className={ styles.myLabel } htmlFor={ id } />
                <span className={ styles.radioText }>
-                                                                                                                                                                                                                                                    { item.text }
-                                                                                                                                                                                                                                                  </span>
+                                                                                                                                                                                                                                                                 { item.text }
+                                                                                                                                                                                                                                                               </span>
              </div>;
     });
     return (

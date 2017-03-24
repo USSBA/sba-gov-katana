@@ -10,83 +10,61 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     },
     primaryKey: true
   },
-  uniqueId: {
+  name: {
     type: Sequelize.STRING
   },
-  loanName: {
+  phone: {
     type: Sequelize.STRING
   },
-  projectZipCd: {
+  emailAddress: {
+    type: Sequelize.STRING
+  },
+  businessName: {
+    type: Sequelize.STRING
+  },
+  businessZip: {
     type: Sequelize.INTEGER
   },
-  projectZip4Cd: {
-    type: Sequelize.INTEGER
-  },
-  firstName: {
-    type: Sequelize.STRING
-  },
-  lastName: {
-    type: Sequelize.STRING
-  },
-  primaryPhone: {
-    type: Sequelize.STRING
-  },
-  primaryEmail: {
-    type: Sequelize.STRING
-  },
-  currEmpQty: {
-    type: Sequelize.INTEGER
-  },
-  businessAgeCd: {
-    type: Sequelize.CHAR
-  },
-  grossRevenueSales: {
-    type: Sequelize.DECIMAL
-  },
-  legalOrgnztnCd: {
-    type: Sequelize.CHAR
-  },
-  businessDtlTypCd: {
-    type: Sequelize.STRING
-  },
-  businessDtlTypTxt: {
-    type: Sequelize.STRING
-  },
-  loanProceedTypCd: {
-    type: Sequelize.STRING
-  },
-  proceedOthTypTxt: {
-    type: Sequelize.STRING
-  },
-  requestedAmtRangeCd: {
-    type: Sequelize.CHAR
-  },
-  collateralInd: {
-    type: Sequelize.CHAR
-  },
-  collateralDesc: {
-    type: Sequelize.STRING
-  },
-  businessAdvisoryInd: {
-    type: Sequelize.CHAR
-  },
-  businessPlanInd: {
-    type: Sequelize.CHAR
-  },
-  otherFundSourceInd: {
-    type: Sequelize.CHAR
-  },
-  businessStatusDescTxt: {
+  industry: {
     type: Sequelize.TEXT
   },
-  veteran: {
-    type: Sequelize.CHAR
+  industryExperience: {
+    type: Sequelize.TEXT
+  },
+  loanAmount: {
+    type: Sequelize.INTEGER
+  },
+  loanDescription: {
+    type: Sequelize.TEXT
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
+var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
+  id: { //eslint-disable-line id-length
+    type: Sequelize.UUID,
+    defaultValue: function() {
+      return uuid.v4();
+    },
+    primaryKey: true
+  },
+  uniqueId: {
+    type: Sequelize.STRING
+  },
+  responseCode: {
+    type: Sequelize.CHAR
+  },
+  responseReason: {
+    type: Sequelize.STRING
+  }
+}, {
+  freezeTableName: true // Model tableName will be the same as the model name
+});
+
+lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 
 lenderMatchRegistration.sync();
+lenderMatchSoapResponse.sync();
 
 export default lenderMatchRegistration;
