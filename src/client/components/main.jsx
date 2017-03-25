@@ -5,12 +5,13 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from "redux-thunk";
 import rootReducer from '../reducers/index.js'
 import { logPageView, googleAnalyticsMiddleware } from "../services/analytics.js";
+import logging from "../services/logger.js";
 
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import HaxRouter from './hax-router.jsx';
 
-const middleware = applyMiddleware(thunk, googleAnalyticsMiddleware);
+const middleware = applyMiddleware(thunk, logging, googleAnalyticsMiddleware);
 const store = createStore(rootReducer, middleware);
 
 // Create an enhanced history that syncs navigation events with the store

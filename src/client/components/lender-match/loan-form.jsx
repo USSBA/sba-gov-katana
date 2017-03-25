@@ -34,7 +34,6 @@ class LoanForm extends React.Component {
       </div>
       );
   }
-  ;
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
