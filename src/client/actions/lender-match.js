@@ -1,3 +1,7 @@
+import axios from "axios";
+import { browserHistory } from "react-router";
+import config from "../services/config.js";
+
 export function createBusinessInfo(businessInfoData) {
   return {
     type: "CREATE_BUSINESS_INFO",
@@ -33,14 +37,12 @@ export function createLoan(loanData) {
   };
 }
 
-import axios from "axios";
-import { browserHistory } from "react-router";
 export function matchFormData(reviewSubmitInfoData) {
   return function(dispatch) {
     dispatch({
       type: "MATCH_FORM_DATA_START"
     });
-    axios.post("matchFormData", reviewSubmitInfoData)
+    axios.post(config.routes.submitForm, reviewSubmitInfoData)
       .then((response) => {
         dispatch({
           type: "MATCH_FORM_DATA_SUCCESS",
