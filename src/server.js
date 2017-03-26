@@ -43,7 +43,7 @@ const metaVariables = {
   title: "Small Business Administration"
 };
 
-app.get(["/", "/linc", "/linc/", "/linc/*"], function(req, res, next) {
+app.use(function(req, res, next) {
   const sessionCookie = _.find(_.keys(req.cookies), (key) => {
     return _.startsWith(key, "SSESS");
   });
@@ -54,9 +54,16 @@ app.get(["/", "/linc", "/linc/", "/linc/*"], function(req, res, next) {
   }
   const clientConfig = {
     isUserLoggedIn: hasSessionCookie || false,
-    googleAnalyticsId: "\"" + config.get("googleAnalytics.accountId") + "\""
+    googleAnalytics: config.get("googleAnalytics")
   };
-  const pugVariables = _.merge({}, metaVariables, clientConfig);
+  req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
+  next();
+});
+
+app.get(["/", "/linc", "/linc/", "/linc/*"], function(req, res, next) {
+  const pugVariables = _.merge({}, metaVariables, {
+    config: JSON.stringify(req.sessionAndConfig)
+  });
   res.render("main", pugVariables);
 });
 

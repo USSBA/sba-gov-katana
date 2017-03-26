@@ -1,14 +1,13 @@
 /* eslint-disable  callback-return */
-function logging({getState}) {
+const logger = (store) => {
   return (next) => {
     return (action) => {
-      console.log("will dispatch", action);
-      const returnValue = next(action);
-      console.log("post action state", returnValue);
-      return returnValue;
+      console.log("dispatching", action);
+      const result = next(action);
+      console.log("next state", store.getState());
+      return result;
     };
   };
-}
-
+};
 /* eslint-enable  callback-return */
-export default logging;
+export default logger;

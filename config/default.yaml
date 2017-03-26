@@ -5,6 +5,7 @@ developmentOptions:
 newrelic:
     enabled: false
 googleAnalytics:
+    enabled: true
     accountId: "UA-19362636-5"
     debug: false
 drupal:

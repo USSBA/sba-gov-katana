@@ -41,7 +41,7 @@ class MiniNav extends React.Component {
   componentWillMount() {
     this.setState({
       userId: cookie.load('DRUPAL_UID'),
-      userLoggedOn: window.isUserLoggedIn
+      userLoggedOn: window.CONFIG.isUserLoggedIn
     });
   }
 
