@@ -1,4 +1,6 @@
 developmentOptions:
+    redux:
+        logging: true
     webpack:
         enabled: true
         silent: false

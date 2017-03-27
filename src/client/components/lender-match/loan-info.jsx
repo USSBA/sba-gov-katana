@@ -42,7 +42,10 @@ class LoanInfo extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createLoan(this.state.loanFields);
-    this.props.locationActions.locationChange('/linc/form/additional');
+    this.props.locationActions.locationChange('/linc/form/additional', {
+      action: "Continue Button Pushed",
+      label: "/linc/form/loan"
+    });
     this.loanForm.reset()
   }
 

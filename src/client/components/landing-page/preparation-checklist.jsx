@@ -35,7 +35,7 @@ export const PreparationChecklist = (props) => <div className={ styles.section }
                                                      <ExpertHelpBtn/>
                                                      </Col>
                                                      <Col xs={ 12 } sm={ 3 }>
-                                                     <FindLendersButton/>
+                                                     <FindLendersButton label={ "Find Lenders #3" } />
                                                      </Col>
                                                    </div>
                                                  </div>

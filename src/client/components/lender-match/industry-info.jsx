@@ -9,7 +9,6 @@ import * as LocationChangeActions from '../../actions/location-change.js';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
-import { Col } from 'react-bootstrap';
 import _ from "lodash";
 
 class IndustryInfoForm extends React.Component {
@@ -45,7 +44,10 @@ class IndustryInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createIndustryInfo(this.state.industryInfoFields);
-    this.props.locationActions.locationChange('/linc/form/loan');
+    this.props.locationActions.locationChange('/linc/form/loan', {
+      action: "Continue Button Pushed",
+      label: "/linc/form/industry"
+    });
     this.industryInfoForm.reset();
   }
 

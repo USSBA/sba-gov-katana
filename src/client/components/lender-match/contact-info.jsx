@@ -41,7 +41,10 @@ class ContactInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createContactInfo(this.state.contactInfoFields);
-    this.props.locationActions.locationChange('/linc/form/business');
+    this.props.locationActions.locationChange('/linc/form/business', {
+      action: "Continue Button Pushed",
+      label: "/linc/form/contact"
+    });
     this.contactInfoForm.reset();
   }
 

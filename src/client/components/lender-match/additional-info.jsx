@@ -26,7 +26,10 @@ export class AdditionalInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.reviewAnswers(this.state.additionalInfoFields);
-    this.props.locationActions.locationChange("/linc/form/review");
+    this.props.locationActions.locationChange("/linc/form/review", {
+      action: "Continue Button Pushed",
+      label: "/linc/form/review"
+    });
     this.addInfoForm.reset()
   }
   ;

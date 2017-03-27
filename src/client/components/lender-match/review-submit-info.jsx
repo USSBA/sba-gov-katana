@@ -7,7 +7,6 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './review-submit.scss'
 import ReviewSection from '../helpers/review-page-helpers.jsx';
-import { Col } from 'react-bootstrap';
 
 
 class ReviewSubmitInfoForm extends React.Component {
@@ -27,7 +26,10 @@ class ReviewSubmitInfoForm extends React.Component {
       businessInfoData: this.props.businessInfoData,
       industryInfoData: this.props.industryInfoData
     });
-    this.props.locationActions.locationChange("/linc/success");
+    this.props.locationActions.locationChange("/linc/success", {
+      action: "Submission",
+      label: "Data Submitted"
+    });
     this.reviewSubmitInfoForm.reset();
   }
 

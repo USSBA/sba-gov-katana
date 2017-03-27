@@ -48,7 +48,10 @@ class BusinessInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createBusinessInfo(this.state.businessInfoFields);
-    this.props.locationActions.locationChange('/linc/form/industry');
+    this.props.locationActions.locationChange('/linc/form/industry', {
+      action: "Continue Button Pushed",
+      label: "/linc/form/business"
+    });
     this.businessInfoForm.reset();
   }
 
