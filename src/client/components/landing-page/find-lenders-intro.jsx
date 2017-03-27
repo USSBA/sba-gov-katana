@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LocationChangeActions from '../../actions/location-change.js';
+console.log(LocationChangeActions);
 
 import styles from '../../styles/landing-page/find-lenders-intro.scss'
 import cornerGraphicBig from '../../../../public/assets/images/lender-match/rectangle-corner-graphic.png'
@@ -32,7 +33,7 @@ class FindLendersIntro extends React.Component {
                 <HelpMeBtn/>
               </div>
               <div className=" col-sm-4 col-xs-12 nopadding">
-                <Button block className={ styles.findLendersWhiteBtn } onClick={ this.handleClick }>FIND LENDERS</Button>
+                <Button block className={ styles.findLendersWhiteBtn } onClick={ this.handleClick.bind(this) }>FIND LENDERS</Button>
               </div>
             </div>
           </div>
@@ -50,6 +51,7 @@ function mapReduxStateToProps(reduxState) {
 }
 
 function mapDispatchToProps(dispatch) {
+  console.log(LocationChangeActions);
   return {
     actions: bindActionCreators(LocationChangeActions, dispatch)
   };

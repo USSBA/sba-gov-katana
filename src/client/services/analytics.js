@@ -12,7 +12,7 @@ function logPageView() {
       page: window.location.pathname
     });
     reactGa.pageview(window.location.pathname);
-    console.log('Posting Location Change to GA:', window.location.pathname);
+    console.log("Posting Location Change to GA:", window.location.pathname);
   }
 }
 
@@ -22,7 +22,7 @@ function googleAnalyticsMiddleware({getState}) {
     return (action) => {
       if (window.CONFIG.googleAnalytics.enabled) {
         if (action.type === "@@router/LOCATION_CHANGE") {
-          console.log('Posting Location Change to GA:', action.payload.pathname);
+          console.log("Posting Location Change to GA:", action.payload.pathname);
           reactGa.pageview(action.payload.pathname);
         }
       }

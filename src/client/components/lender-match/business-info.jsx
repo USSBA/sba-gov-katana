@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
@@ -48,7 +48,7 @@ class BusinessInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createBusinessInfo(this.state.businessInfoFields);
-    browserHistory.push('/linc/form/industry');
+    this.props.locationActions.locationChange('/linc/form/industry');
     this.businessInfoForm.reset();
   }
 
@@ -133,7 +133,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 

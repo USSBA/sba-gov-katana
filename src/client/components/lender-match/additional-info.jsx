@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormPanel } from '../common/form-styling.jsx'
-import { browserHistory } from 'react-router';
 import { FormGroup, Checkbox, Col } from 'react-bootstrap'
 import * as LenderMatchActions from '../../actions/lender-match.js';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './lender-match.scss';
 
 
@@ -26,7 +26,7 @@ export class AdditionalInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.reviewAnswers(this.state.additionalInfoFields);
-    browserHistory.push("/linc/form/review");
+    this.props.locationActions.locationChange("/linc/form/review");
     this.addInfoForm.reset()
   }
   ;
@@ -77,7 +77,8 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 export default connect(

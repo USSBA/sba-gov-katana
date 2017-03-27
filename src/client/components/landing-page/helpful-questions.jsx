@@ -4,7 +4,7 @@ import styles from '../../styles/landing-page/helpful-questions.scss';
 import thumbNail from '../../../../public/assets/images/placeholder370x170.png';
 import '../../styles/common/collapse.scss'
 
-import { FindLendersBtn } from './find-lenders-btn.jsx';
+import FindLendersButton from './find-lenders-btn.jsx';
 import { ExpertHelpBtn } from './expert-help-btn.jsx';
 
 var Collapse = require('rc-collapse');
@@ -80,7 +80,7 @@ export const HelpfulQuestions = (props) => <div className={ styles.section }>
                                                  <ExpertHelpBtn/>
                                                  </Col>
                                                  <Col xs={ 12 } sm={ 3 }>
-                                                 <FindLendersBtn/>
+                                                 <FindLendersButton />
                                                  </Col>
                                                </div>
                                              </div>

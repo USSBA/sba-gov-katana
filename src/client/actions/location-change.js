@@ -13,7 +13,8 @@ export function locationChange(targetLocation) {
 
 export function goBack() {
   return function(dispatch) {
-    browserHistory.back();
+    console.log("browserHistory", browserHistory.getCurrentLocation());
+    browserHistory.goBack();
     dispatch({
       type: "LOCATION_CHANGE",
       path: ""

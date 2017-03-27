@@ -1,7 +1,7 @@
 const clientConfig = {
   routes: {
     confirmationEmail: "/linc/resend",
-    submitForm: "matchFormData"
+    submitForm: "/linc/matchFormData"
   }
 };
 

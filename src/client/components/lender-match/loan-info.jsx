@@ -5,7 +5,7 @@ import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import MultiSelectBox from '../atoms/multiselect.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
@@ -42,7 +42,7 @@ class LoanInfo extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createLoan(this.state.loanFields);
-    browserHistory.push('/linc/form/additional');
+    this.props.locationActions.locationChange('/linc/form/additional');
     this.loanForm.reset()
   }
 
@@ -165,7 +165,8 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 

@@ -8,7 +8,7 @@ import projectionsIcon from '../../../../public/assets/images/lender-match/finan
 import collateralIcon from '../../../../public/assets/images/lender-match/collateral.png';
 import industryIcon from '../../../../public/assets/images/lender-match/industry-experience.png';
 
-import { FindLendersBtn } from './find-lenders-btn.jsx'
+import FindLendersButton from './find-lenders-btn.jsx'
 import { ExpertHelpBtn } from './expert-help-btn.jsx'
 
 export const PreparationChecklist = (props) => <div className={ styles.section }>
@@ -35,7 +35,7 @@ export const PreparationChecklist = (props) => <div className={ styles.section }
                                                      <ExpertHelpBtn/>
                                                      </Col>
                                                      <Col xs={ 12 } sm={ 3 }>
-                                                     <FindLendersBtn/>
+                                                     <FindLendersButton/>
                                                      </Col>
                                                    </div>
                                                  </div>
@@ -49,4 +49,3 @@ const ToDo = (props) => <div className={ styles.card }>
                             { props.caption }
                           </p>
                         </div>;
-

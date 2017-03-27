@@ -1,6 +1,8 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
-import { Col, Row, Button, ButtonToolbar } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as LocationChangeActions from '../../actions/location-change.js';
+import { Button } from 'react-bootstrap';
 
 
 class ReviewSection extends React.Component {
@@ -41,7 +43,7 @@ class ReviewSection extends React.Component {
   }
 
   handleClick() {
-    browserHistory.push(this.props.editPath)
+    this.props.actions.locationChange(this.props.editPath);
   }
 
   render() {
@@ -61,4 +63,13 @@ class ReviewSection extends React.Component {
 }
 
 
-export default ReviewSection;
+function mapReduxStateToProps(reduxState) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(LocationChangeActions, dispatch)
+  };
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(ReviewSection);
