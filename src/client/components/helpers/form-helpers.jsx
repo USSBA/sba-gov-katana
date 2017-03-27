@@ -67,9 +67,10 @@ export const TextArea = ({handleChange, getValidationState, hidden, ...props}) =
         { props.label }
       </label>
       <div className={ styles.textAreaContainer }>
-        <textarea {...props} className={ inputValidation() } onChange={ handleChange } />
+        <textarea {...props} className={ inputValidation() } onChange={ handleChange } maxLength="250" />
         { iconValidation() }
       </div>
+      <span className={ styles.textAreaCounter }>{ props.value.length }/250</span>
       { errText() }
     </div>);
 };

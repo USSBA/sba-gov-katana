@@ -41,7 +41,7 @@ class MiniNav extends React.Component {
   componentWillMount() {
     this.setState({
       userId: cookie.load('DRUPAL_UID'),
-      userLoggedOn: window.isUserLoggedIn
+      userLoggedOn: window.CONFIG.isUserLoggedIn
     });
   }
 
@@ -64,21 +64,21 @@ class MiniNav extends React.Component {
     }
 
     const loggedInUser = this.state.userLoggedOn ?
-      (<div className={ styles.loggedInUser }>
+      (<div key={ 1 } className={ styles.loggedInUser }>
          { adminWidget }
          <a tabIndex="0" className={ styles.miniNavLinkNew } href={ "/user/" + this.state.userId + "/edit" }>My Account</a>
          <a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/logout">Log Out</a>
        </div>) :
-      [(<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>),(<a tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>)];
+      [(<a key={ 5 } tabIndex="0" className={ styles.miniNavLinkNew } href="/user/register">Register</a>),(<a key={ 6 } tabIndex="0" className={ styles.miniNavLinkNew } href="/user/login">Log In</a>)];
     const searchBar = this.state.searchIsExpanded
       ? (
-      <form id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
+      <form key={ 2 } id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
         <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyPress={ this.handleKeyPressOnSearch }></input>
         <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>
       )
       : (
-      <a id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
+      <a key={ 3 } id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
         <i id="search-toggle" alt="search icon" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
       </a>
       );
@@ -89,14 +89,14 @@ class MiniNav extends React.Component {
 
     return (
       <nav role="navigation" aria-label="mini navigation" className={ styles.miniNavNew }>
-        <div className={ this.state.translateIsExpanded
-                         ? styles.googleTranslateElementVisible
-                         : styles.googleTranslateElement } id="google_translate_element"></div>
+        <div key={ 0 } className={ this.state.translateIsExpanded
+                                   ? styles.googleTranslateElementVisible
+                                   : styles.googleTranslateElement } id="google_translate_element"></div>
         { googleTranslateBtn }
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA en español</a>
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
-        <a tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
+        <a key={ 10 } tabIndex="0" className={ styles.miniNavLinkNew } href="https://es.sba.gov/">SBA en español</a>
+        <a key={ 11 } tabIndex="0" className={ styles.miniNavLinkNew } href="/for-lenders">For Lenders</a>
+        <a key={ 12 } tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/sba-newsroom">Newsroom</a>
+        <a key={ 13 } tabIndex="0" className={ styles.miniNavLinkNew } href="/about-sba/what-we-do/contact-sba">Contact Us</a>
         { loggedInUser }
         { searchBar }
       </nav>

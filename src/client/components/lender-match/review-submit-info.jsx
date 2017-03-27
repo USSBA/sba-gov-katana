@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { TextInput, CheckBox } from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './review-submit.scss'
 import ReviewSection from '../helpers/review-page-helpers.jsx';
 import { Col } from 'react-bootstrap';
@@ -27,7 +27,7 @@ class ReviewSubmitInfoForm extends React.Component {
       businessInfoData: this.props.businessInfoData,
       industryInfoData: this.props.industryInfoData
     });
-    browserHistory.push("/linc/success");
+    this.props.locationActions.locationChange("/linc/success");
     this.reviewSubmitInfoForm.reset();
   }
 
@@ -106,6 +106,10 @@ class ReviewSubmitInfoForm extends React.Component {
 //   loanUsage: "This will be used to make some good business and make things very profitable for my stakeholders."
 // };
 
+const EditButton = (props) => {
+  return (<button className={ styles.editBtn } onClick={ () => this.props.locationActions.locationChange(props.editPath) }>Edit</button>);
+};
+
 const ContactSection = (props) => {
   let contact = props.contactInfoData;
   return (
@@ -120,7 +124,7 @@ const ContactSection = (props) => {
       <p className={ styles.field }>
         { contact.contactEmailAddress }
       </p>
-      <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
+      <EditButton editPath={ props.editPath } />
     </div>
   )
 };
@@ -142,7 +146,7 @@ const BusinessSection = (props) => {
       <p className={ styles.field }>
         { business.businessInfoDescription }
       </p>
-      <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
+      <EditButton editPath={ props.editPath } />
     </div>
   )
 };
@@ -158,7 +162,7 @@ const IndustrySection = (props) => {
       <p className={ styles.field }>
         { industry.industryExperience }
       </p>
-      <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
+      <EditButton editPath={ props.editPath } />
     </div>
   )
 };
@@ -177,7 +181,7 @@ const LoanSection = (props) => {
       <p className={ styles.field }>
         { loan.loanDescription }
       </p>
-      <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
+      <EditButton editPath={ props.editPath } />
     </div>
   )
 };
@@ -194,7 +198,7 @@ const AdditionalSection = (props) => {
           { additionalInfo.hasWrittenPlan ? <p className={ styles.field }>I have a written business plan</p> : null }
           { additionalInfo.hasFinancialProjections ? <p className={ styles.field }>I have financial projections</p> : null }
           { additionalInfo.isVeteran ? <p className={ styles.field }>I'm a veteran</p> : null }
-          <button className={ styles.editBtn } onClick={ () => browserHistory.push(props.editPath) }>Edit</button>
+          <EditButton editPath={ props.editPath } />
         </div>
         ) : null }
     </div>
@@ -215,7 +219,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 

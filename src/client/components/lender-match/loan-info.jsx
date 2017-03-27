@@ -5,7 +5,7 @@ import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx'
 import MultiSelectBox from '../atoms/multiselect.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
@@ -42,7 +42,7 @@ class LoanInfo extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createLoan(this.state.loanFields);
-    browserHistory.push('/linc/form/additional');
+    this.props.locationActions.locationChange('/linc/form/additional');
     this.loanForm.reset()
   }
 
@@ -147,7 +147,7 @@ class LoanInfo extends React.Component {
             getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
           <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
             value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
-          <TextArea label="Describe how these funds will be used?" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="Include details such as this sample placeholder and this other example."
+          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
           />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
@@ -165,7 +165,8 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 

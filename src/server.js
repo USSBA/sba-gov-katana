@@ -43,7 +43,7 @@ const metaVariables = {
   title: "Small Business Administration"
 };
 
-app.get("/", function(req, res, next) {
+app.use(function(req, res, next) {
   const sessionCookie = _.find(_.keys(req.cookies), (key) => {
     return _.startsWith(key, "SSESS");
   });
@@ -52,16 +52,22 @@ app.get("/", function(req, res, next) {
   if (sessionCookie) {
     hasSessionCookie = true;
   }
+  const clientConfig = {
+    isUserLoggedIn: hasSessionCookie || false,
+    googleAnalytics: config.get("googleAnalytics")
+  };
+  req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
+  next();
+});
+
+app.get(["/", "/linc", "/linc/", "/linc/*"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
-    isUserLoggedIn: hasSessionCookie || false
+    config: JSON.stringify(req.sessionAndConfig)
   });
   res.render("main", pugVariables);
 });
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
-app.get(["/linc", "/linc/", "/linc/*"], function(req, res) {
-  res.render("main", metaVariables);
-});
 app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
 app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);
 app.post("/linc/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);

@@ -28,7 +28,7 @@ class Blog extends React.Component {
           <Row>
             { items.map(function(item, i) {
                 return (
-                  <Col xs={ 6 }>
+                  <Col key={ i } Hxs={ 6 }>
                   <img className={ styles.blogsImage } src={ item.imageUrl } alt={ item.title } />
                   </Col>
                   );
@@ -37,7 +37,7 @@ class Blog extends React.Component {
           <Row>
             { items.map(function(item, i) {
                 return (
-                  <Col xs={ 6 }>
+                  <Col key={ i } xs={ 6 }>
                   <div className={ styles.blogTitleContainer }>
                     <a className={ styles.blogTitle } href={ item.url }>
                       { item.title }
@@ -50,7 +50,7 @@ class Blog extends React.Component {
           <Row>
             { items.map(function(item, i) {
                 return (
-                  <Col xs={ 6 }>
+                  <Col key={ i } xs={ 6 }>
                   <div className={ styles.blogInfo }>
                     { "By " + item.name + " on " + blogThis.returnFormatedDate(item.date) }
                   </div>
@@ -61,7 +61,7 @@ class Blog extends React.Component {
           <Row>
             { items.map(function(item, i) {
                 return (
-                  <Col xs={ 6 }>
+                  <Col key={ i } xs={ 6 }>
                   <a href={ item.url } className={ "btn btn-default " + styles.blueBtn }>READ MORE</a>
                   </Col>
                   );

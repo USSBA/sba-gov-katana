@@ -13,7 +13,7 @@ html
     meta(property="og:site_name" content=title)
     title= title
     script(type="text/javascript").
-        var isUserLoggedIn = #{isUserLoggedIn}
+        window.CONFIG = !{config}
   body
     #root
     script(src='/build/bundle.js')
