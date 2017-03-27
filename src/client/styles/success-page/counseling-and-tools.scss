@@ -1,24 +1,44 @@
 @import "../buttons";
+@import "../atoms/grid";
+@import "../atoms/typography";
+
+
+$example-2-grid: (
+  gutter: 1rem,
+  media: 1200px,
+);
 
 .section {
-  font-family: "Avenir Next";
+  @include grid-container;
+}
+
+// .counselorContainer {
+//   @include grid-column;
+//   @include grid-media($example-2-grid) {
+//     @include grid-column(12);
+//   }
+// }
+.counselorBox  {
+  @include grid-column;
+  @include grid-media($example-2-grid) {
+    @include grid-column(4);
+  }
+}
+
+.section {
   background: #efefef;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .title {
-  font-size: 2.2vw;
   text-align: center;
-  font-weight: normal;
   color: #4A4A4A;
   margin-bottom: 2.8vw;
 }
 
 .subTitle {
   margin-top: 4px;
-  font-size: 1.1vw;
-  text-align: center;
   margin-bottom: 1.9vw;
   color: #4A4A4A;
 }
@@ -35,7 +55,6 @@
 
 .counselorContainer {
   height: 15.7vw;
-  text-align: center;
   clear: both;
 }
 
@@ -53,18 +72,12 @@
 }
 
 .counselorTitle {
-  font-family: "Avenir Next";
-  font-size: 1.3vw;
-  font-weight: 600;
-  text-align: center;
   color: #4A4A4A;
   margin-bottom: 2.2vw;
 }
 
 .counselorAttr {
-  font-family: "Avenir Next";
   margin-top: 15px;
-  font-size: 14px;
 }
 
 
