@@ -32,15 +32,7 @@ class RadioButtonGroup extends React.Component {
                <input className={ styles.regularRadio } type="radio" name={ me.props.name } checked={ isChecked } tabIndex="0" onChange={ me.handleChange } id={ id }
                  value={ item.value }></input>
                <label className={ styles.myLabel } htmlFor={ id } />
-<<<<<<< HEAD
-               <span className={ styles.radioText }>
-                                                                                                                                                                                                                                                                                                        { item.text }
-                                                                                                                                                                                                                                                                                                      </span>
-=======
-
                <span className={ styles.radioText }>{ item.text }</span>
-
->>>>>>> c86f7c9bbaad98c0396cf91011b2003fceec586f
              </div>;
     });
     return (
