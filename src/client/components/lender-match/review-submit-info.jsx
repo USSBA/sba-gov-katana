@@ -31,28 +31,6 @@ class ReviewSubmitInfoForm extends React.Component {
     this.reviewSubmitInfoForm.reset();
   }
 
-  handleChange(e) {
-    let reviewSubmitInfoFields = {};
-    reviewSubmitInfoFields[e.target.name] = e.target.value;
-    this.setState({
-      reviewSubmitInfoFields: {
-        ...this.state.reviewSubmitInfoFields,
-        ...reviewSubmitInfoFields
-      }
-    });
-  }
-
-  handleClick(e) {
-    let reviewSubmitInfoFields = {};
-    reviewSubmitInfoFields[e.target.name] = e.target.value;
-    this.setState({
-      reviewSubmitFields: {
-        ...this.state.reviewSubmitInfoFields,
-        ...reviewSubmitInfoFields
-      }
-    });
-  }
-
   render() {
     return (
       <div>
@@ -61,11 +39,6 @@ class ReviewSubmitInfoForm extends React.Component {
         <IndustrySection industryInfoData={ this.props.industryInfoData } editPath="/linc/form/industry" />
         <LoanSection loanData={ this.props.loanData } editPath="/linc/form/loan" />
         <AdditionalSection additionalInfoData={ this.props.additionalInfoData } editPath="/linc/form/additional" />
-        { /*<ReviewSection label="Contact" sectionContent={ this.props.contactInfoData }  />*/ }
-        { /*<ReviewSection label="Business" sectionContent={ this.props.businessInfoData } editPath="/linc/form/business" />*/ }
-        { /*<ReviewSection label="Industry" sectionContent={ this.props.industryInfoData } editPath="/linc/form/industry" />*/ }
-        { /*<ReviewSection label="Loan" sectionContent={ this.props.loanData } editPath="/linc/form/loan" />*/ }
-        { /*<ReviewSection label="Additional" sectionContent={ this.props.additionalInfoData } editPath="/linc/form/additional" />*/ }
         <form ref={ (input) => this.reviewSubmitInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <button className={ styles.submitBtn } type="submit"> SUBMIT </button>
         </form>
@@ -75,6 +48,7 @@ class ReviewSubmitInfoForm extends React.Component {
   ;
 }
 
+// dummy objects for skipping form steps
 // let contactInfoData = {
 //   contactEmailAddress: "blahblah@gmail.com",
 //   contactFullName: "Alexander Nelson",
