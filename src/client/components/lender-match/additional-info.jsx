@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormPanel } from '../common/form-styling.jsx'
 import { FormGroup, Checkbox, Col } from 'react-bootstrap'
+import CheckBox from '../atoms/checkbox.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './lender-match.scss';
@@ -48,6 +49,7 @@ export class AdditionalInfoForm extends React.Component {
         <form ref={ (input) => this.addInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <FormGroup>
             <label>These components will get destroyed soon: </label>
+            <CheckBox />
             <Checkbox name="hasWrittenPlan" checked={ this.state.additionalInfoFields.hasWrittenPlan } onChange={ this.handleClick.bind(this) }>
               I have a written business plan
             </Checkbox>

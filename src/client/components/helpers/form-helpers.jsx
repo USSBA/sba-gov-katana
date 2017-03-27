@@ -85,8 +85,3 @@ export const SelectBox = ({handleChange, label, getValidationState, ...props}) =
                                                                                   </FormGroup>
                                                                                   </Col>;
 
-export const CheckBox = ({handleClick, label, getValidationState, ...props}) => <FormGroup validationState={ getValidationState }>
-                                                                                  <Checkbox {...props} onClick={ handleClick }>
-                                                                                    { label }
-                                                                                  </Checkbox>
-                                                                                </FormGroup>;
