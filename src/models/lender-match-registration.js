@@ -36,7 +36,29 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
   },
   loanDescription: {
     type: Sequelize.TEXT
+  },
+  loanUsage: {
+    type: Sequelize.STRING
+  },
+  businessWebsite: {
+    type: Sequelize.STRING
+  },
+  businessDescription: {
+    type: Sequelize.STRING
+  },
+  hasWrittenPlan: {
+    type: Sequelize.BOOLEAN
+  },
+  hasFinancialProjections: {
+    type: Sequelize.BOOLEAN
+  },
+  isGeneratingRevenue: {
+    type: Sequelize.BOOLEAN
+  },
+  isVeteran: {
+    type: Sequelize.BOOLEAN
   }
+
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });

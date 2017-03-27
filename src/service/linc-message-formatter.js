@@ -212,55 +212,55 @@ function reqAmtRangeCd(loanAmount) { //eslint-disable-line complexity
   return retVal;
 }
 
-function vetInd(req) {
-  return (req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("isVeteran") && (req.additionalInfoData.isVeteran === true)) ? "6" : "1";
+function vetInd(isVeteran) {
+  return (isVeteran) ? "6" : "1";
 }
 
-function bPlanInd(req) {
-  return (req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("hasWrittenPlan") && (req.additionalInfoData.hasWrittenPlan === true)) ? "Y" : "N";
+function bPlanInd(hasWrittenPlan) {
+  return (hasWrittenPlan) ? "Y" : "N";
 }
 
-function oFundSourceInd(req) {
-  return (req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("isGeneratingRevenue") && (req.additionalInfoData.isGeneratingRevenue === true)) ? "Y" : "N";
+function oFundSourceInd(isGeneratingRevenue) {
+  return (isGeneratingRevenue) ? "Y" : "N";
 }
 
-function bAdvisoryInd(req) {
-  return (req.hasOwnProperty("additionalInfoData") && req.additionalInfoData.hasOwnProperty("hasFinancialProjections") && (req.additionalInfoData.hasFinancialProjections === true)) ? "Y" : "N";
+function bAdvisoryInd(hasFinancialProjections) {
+  return (hasFinancialProjections) ? "Y" : "N";
 }
 
-function bDtlTypTxt(req) {
+function bDtlTypTxt(loanUsage) {
   let retVal = "";
-  if (req.hasOwnProperty("loanData") && req.loanData.hasOwnProperty("loanUsage")) {
-    if (req.loanData.loanUsage.length > textLowerLimit && req.loanData.loanUsage.length < textUpperLimit) {
-      retVal = req.loanData.loanUsage;
-    } else if (req.loanData.loanUsage.length >= textUpperLimit) {
-      retVal = req.loanData.loanUsage.substring(textLowerLimit, textUpperLimit);
-    }
+
+  if (loanUsage.length > textLowerLimit && loanUsage.length < textUpperLimit) {
+    retVal = loanUsage;
+  } else if (loanUsage.length >= textUpperLimit) {
+    retVal = loanUsage.substring(textLowerLimit, textUpperLimit);
   }
+
   return retVal;
 }
 
-function pOthTypTxt(req) {
+function pOthTypTxt(loanUsage) {
   let retVal = "";
-  if (req.hasOwnProperty("loanData") && req.loanData.hasOwnProperty("loanUsage")) {
-    if (req.loanData.loanUsage.length > textLowerLimit && req.loanData.loanUsage.length < textUpperLimit) {
-      retVal = req.loanData.loanUsage;
-    } else if (req.loanData.loanUsage.length >= textUpperLimit) {
-      retVal = req.loanData.loanUsage.substring(textLowerLimit, textUpperLimit);
-    }
+
+  if (loanUsage.length > textLowerLimit && loanUsage.length < textUpperLimit) {
+    retVal = loanUsage;
+  } else if (loanUsage.length >= textUpperLimit) {
+    retVal = loanUsage.substring(textLowerLimit, textUpperLimit);
   }
+
   return retVal;
 }
 
-function bStatusDescTxt(req) {
+function bStatusDescTxt(businessDescription) {
   let retVal = "";
-  if (req.hasOwnProperty("businessInfoData") && req.businessInfoData.hasOwnProperty("businessInfoDescription")) {
-    if (req.businessInfoData.businessInfoDescription.length > textLowerLimit && req.businessInfoData.businessInfoDescription.length < textUpperLimit) {
-      retVal = req.businessInfoData.businessInfoDescription;
-    } else if (req.businessInfoData.businessInfoDescription.length >= textUpperLimit) {
-      retVal = req.businessInfoData.businessInfoDescription.substring(textLowerLimit, textUpperLimit);
-    }
+
+  if (businessDescription.length > textLowerLimit && businessDescription.length < textUpperLimit) {
+    retVal = businessDescription;
+  } else if (businessDescription.length >= textUpperLimit) {
+    retVal = businessDescription.substring(textLowerLimit, textUpperLimit);
   }
+
   return retVal;
 }
 
@@ -278,8 +278,7 @@ function userName(whichName, name) {
 }
 
 function formatMessage(reqData) {
-
-  const req = reqData.req;
+  const lenderMatchRegistration = reqData.lenderMatchRegistration;
   const firstName = 0;
   const lastName = 1;
 
@@ -289,51 +288,51 @@ function formatMessage(reqData) {
     //UniqueID <= 30 chars
     "UniqueID": formatMoment() + "-" + reqData.dbUserID + "-" + reqData.submissionID,
     //LoanName <= 255 chars
-    "LoanName": reqData.req.businessInfoData.businessInfoName,
+    "LoanName": lenderMatchRegistration.businessName,
     //ProjectZipCd = 5 chars
-    "ProjectZipCd": reqData.req.businessInfoData.businessInfoZipcode,
+    "ProjectZipCd": lenderMatchRegistration.businessZip,
     //ProjectZip4Cd = 4 chars
     "ProjectZip4Cd": "0000",
     //FirstName <= 80 chars
-    "FirstName": userName("First Name", req.contactInfoData.contactFullName.split(" ")[firstName]),
+    "FirstName": userName("First Name", lenderMatchRegistration.name.split(" ")[firstName]),
     //LastName <= 80 chars
-    "LastName": userName("Last Name", req.contactInfoData.contactFullName.split(" ")[lastName]),
+    "LastName": userName("Last Name", lenderMatchRegistration.name.split(" ")[lastName]),
     //PrimaryPhone <= 25 chars
-    "PrimaryPhone": req.contactInfoData.contactPhoneNumber,
+    "PrimaryPhone": lenderMatchRegistration.phone,
     //PrimaryEmail <= 255 chars
-    "PrimaryEmail": req.contactInfoData.contactEmailAddress,
+    "PrimaryEmail": lenderMatchRegistration.emailAddress,
     //CurrEmpQty = int
     "CurrEmpQty": "",
     //BusinessAgeCd = 2 chars
-    "BusinessAgeCd": bAgeCd(req.industryInfoData.industryExperience),
+    "BusinessAgeCd": bAgeCd(lenderMatchRegistration.industryExperience),
     //GrossRevenueSales  = decimal
     "GrossRevenueSales": "",
     //LegalOrgnztnCd = 2 chars
     "LegalOrgnztnCd": "",
     //BusinessDtlTypCd = 2 chars
-    "BusinessDtlTypCd": bDtlTypCd(req.industryInfoData.industryType),
+    "BusinessDtlTypCd": bDtlTypCd(lenderMatchRegistration.industry),
     //BusinessDtlTypTxt <= 255 chars
-    "BusinessDtlTypTxt": bDtlTypTxt(req),
+    "BusinessDtlTypTxt": bDtlTypTxt(lenderMatchRegistration.loanUsage),
     //LoanProceedTypCd <= 255 comma delimited
-    "LoanProceedTypCd": lProceedTypCd(req.loanData.loanDescription),
+    "LoanProceedTypCd": lProceedTypCd(lenderMatchRegistration.loanDescription),
     //ProceedOthTypTxt <= 255 chars
-    "ProceedOthTypTxt": pOthTypTxt(req),
+    "ProceedOthTypTxt": pOthTypTxt(lenderMatchRegistration.loanUsage),
     //RequestedAmtRangeCd = 2 chars
-    "RequestedAmtRangeCd": reqAmtRangeCd(req.loanData.loanAmount),
+    "RequestedAmtRangeCd": reqAmtRangeCd(lenderMatchRegistration.loanAmount),
     //CollateralInd Y for Yes  or N for No
     "CollateralInd": "N",
     //CollateralDesc <= 255 chars
     "CollateralDesc": "",
     //BusinessAdvisoryInd Y for Yes or N for No
-    "BusinessAdvisoryInd": bAdvisoryInd(req),
+    "BusinessAdvisoryInd": bAdvisoryInd(lenderMatchRegistration.hasFinancialProjections),
     //BusinessPlanInd Y for Yes or N for No
-    "BusinessPlanInd": bPlanInd(req),
+    "BusinessPlanInd": bPlanInd(lenderMatchRegistration.hasWrittenPlan),
     //OtherFundSourceInd Y for Yes or N for No
-    "OtherFundSourceInd": oFundSourceInd(req),
+    "OtherFundSourceInd": oFundSourceInd(lenderMatchRegistration.isGeneratingRevenue),
     //BusinessStatusDescTxt <= 1000
-    "BusinessStatusDescTxt": bStatusDescTxt(req),
+    "BusinessStatusDescTxt": bStatusDescTxt(lenderMatchRegistration.businessDescription),
     //Veteran = unsignedByte means 6 for Yes 1 for No
-    "Veteran": vetInd(req)
+    "Veteran": vetInd(lenderMatchRegistration.isVeteran)
   };
 }
 

@@ -87,81 +87,41 @@ describe('linc soap request test', function(){
         });
 
         it('test bDtlTypTxt with arbitrary string between length of 0 and 255', function(){
-            let req = {loanData: {loanUsage: 'We build shopping malls in all states for several years.'}};
-            let retVal = bDtlTypTxt(req);
+            let retVal = bDtlTypTxt("We build shopping malls in all states for several years.");
             retVal.should.be.exactly("We build shopping malls in all states for several years.");
         });
 
         it('test bDtlTypTxt with string of length greater than 255', function(){
-            let req = {loanData: {loanUsage: "We build shopping malls in all states for several years and we " +
+            let req = "We build shopping malls in all states for several years and we " +
             "have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. " +
             "Please give us this loan as we need it so we don't go bankrupt. " + "We will forever be grateful for your help " +
-            "and will let our great grand children know how you have helped us through this difficult time."}};
+            "and will let our great grand children know how you have helped us through this difficult time.";
             let retVal = bDtlTypTxt(req);
             retVal.should.have.length(255);
         });
 
-        it('test bDtlTypTxt with loanUsage is empty string', function(){
-            let req = {loanData: {loanUsage: ''}};
-            let retVal = bDtlTypTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test bDtlTypTxt with loanData is empty string', function(){
-            let req = {loanData: ''};
-            let retVal = bDtlTypTxt(req);
-            retVal.should.be.exactly("");
-        });
-
         it('test bDtlTypTxt with request data as empty string', function(){
-            let req = "";
-            let retVal = bDtlTypTxt(req);
+            let retVal = bDtlTypTxt("");
             retVal.should.be.exactly("");
         });
 
         it('test pOthTypTxt with arbitrary string between length of 0 and 255', function(){
-            let req = {loanData: {loanUsage: 'We build shopping malls in all states for several years.'}};
-            let retVal = pOthTypTxt(req);
+            let retVal = pOthTypTxt("We build shopping malls in all states for several years.");
             retVal.should.be.exactly("We build shopping malls in all states for several years.");
         });
 
         it('test pOthTypTxt with string of length greater than 255', function(){
-            let req = {loanData: {loanUsage: "We build shopping malls in all states for several years and we " +
+            let req = "We build shopping malls in all states for several years and we " +
             "have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. " +
             "Please give us this loan as we need it so we don't go bankrupt. " + "We will forever be grateful for your help " +
-            "and will let our great grand children know how you have helped us through this difficult time."}};
+            "and will let our great grand children know how you have helped us through this difficult time.";
             let retVal = pOthTypTxt(req);
             retVal.should.have.length(255);
             retVal.should.be.exactly("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
         });
 
         it('test pOthTypTxt with loanUsage is empty string', function(){
-            let req = {loanData: {loanUsage: ''}};
-            let retVal = pOthTypTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test pOthTypTxt with loanData is empty string', function(){
-            let req = {loanData: ''};
-            let retVal = pOthTypTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test pOthTypTxt with badBadLoanData is empty string', function(){
-            let req = {badLoanData: ''};
-            let retVal = pOthTypTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test pOthTypTxt with badBadLoanData and valid loanUsage', function(){
-            let req = {badBadLoanData: {loanUsage: 'We are open for business.'}};
-            let retVal = pOthTypTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test pOthTypTxt with request data as empty string', function(){
-            let req = "";
-            let retVal = pOthTypTxt(req);
+            let retVal = pOthTypTxt("");
             retVal.should.be.exactly("");
         });
 
@@ -239,97 +199,64 @@ describe('linc soap request test', function(){
         });
 
         it('test bAdvisoryInd for Yes', function(){
-            let req = {additionalInfoData: {hasFinancialProjections : true}};
-            let retVal = bAdvisoryInd(req);
+            let retVal = bAdvisoryInd(true);
             retVal.should.be.exactly("Y");
         });
 
         it('test bAdvisoryInd for No', function(){
-            let req = {additionalInfoData: {hasFinancialProjections : false}};
-            let retVal = bAdvisoryInd(req);
+            let retVal = bAdvisoryInd(false);
             retVal.should.be.exactly("N");
         });
 
         it('test bPlanInd for Yes', function(){
-            let req = {additionalInfoData: {hasWrittenPlan : true}};
-            let retVal = bPlanInd(req);
+            let retVal = bPlanInd(true);
             retVal.should.be.exactly("Y");
         });
 
         it('test bPlanInd for No', function(){
-            let req = {additionalInfoData: {hasWrittenPlan : false}};
-            let retVal = bPlanInd(req);
+            let retVal = bPlanInd(false);
             retVal.should.be.exactly("N");
         });
 
 
         it('test oFundSourceInd for Yes', function(){
-        let req = {additionalInfoData: {isGeneratingRevenue : true}};
-            let retVal = oFundSourceInd(req);
+            let retVal = oFundSourceInd(true);
             retVal.should.be.exactly("Y");
         });
 
         it('test oFundSourceInd for No', function(){
-            let req = {additionalInfoData: {isGeneratingRevenue : false}};
-            let retVal = oFundSourceInd(req);
+            let retVal = oFundSourceInd(false);
             retVal.should.be.exactly("N");
         });
 
         it('test bStatusDescTxt with arbitrary string between length of 0 and 255', function(){
-            let req = {businessInfoData: {businessInfoDescription: 'We build shopping malls in all states for several years.'}};
-            let retVal = bStatusDescTxt(req);
+            let retVal = bStatusDescTxt("We build shopping malls in all states for several years.");
             retVal.should.be.exactly("We build shopping malls in all states for several years.");
         });
 
         it('test bStatusDescTxt with string of length greater than 255', function(){
-            let req = {businessInfoData: {businessInfoDescription: "We build shopping malls in all states for several years and we " +
+            let req = "We build shopping malls in all states for several years and we " +
                         "have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. " +
                         "Please give us this loan as we need it so we don't go bankrupt. " + "We will forever be grateful for your help " +
-                        "and will let our great grand children know how you have helped us through this difficult time."}};
+                        "and will let our great grand children know how you have helped us through this difficult time.";
             let retVal = bStatusDescTxt(req);
             retVal.should.have.length(255);
             retVal.should.be.exactly("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
         });
 
-        it('test bStatusDescTxt with businessInfoDescription is empty string', function(){
-            let req = {businessInfoData: {businessInfoDescription: ''}};
-            let retVal = bStatusDescTxt(req);
+        it('test bStatusDescTxt with businessDescription is empty string', function(){
+            let retVal = bStatusDescTxt("");
             retVal.should.be.exactly("");
         });
 
-        it('test bStatusDescTxt with businessInfoData is empty string', function(){
-            let req = {businessInfoData: ''};
-            let retVal = bStatusDescTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test bStatusDescTxt with badBusinessInfoData is empty string', function(){
-            let req = {badBusinessInfoData: ''};
-            let retVal = bStatusDescTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test bStatusDescTxt with badBusinessInfoData and valid businessInfoDescription', function(){
-            let req = {badBusinessInfoData: {businessInfoDescription: 'We are open for business.'}};
-            let retVal = bStatusDescTxt(req);
-            retVal.should.be.exactly("");
-        });
-
-        it('test bStatusDescTxt with request data as empty string', function(){
-            let req = "";
-            let retVal = bStatusDescTxt(req);
-            retVal.should.be.exactly("");
-        });
 
         it('test vetInd for Yes', function(){
-            let req = {additionalInfoData: {isVeteran: true}};
-            let retVal = vetInd(req);
+            let retVal = vetInd(true);
             retVal.should.be.exactly("6");
         });
 
         it('test vetInd for No', function(){
-            let req = {additionalInfoData: {isVeteran: false}};
-            let retVal = vetInd(req);
+            let retVal = vetInd(false);
             retVal.should.be.exactly("1");
         });
     });
