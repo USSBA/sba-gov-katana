@@ -16,7 +16,7 @@ export class CurrencyInput extends React.Component {
 }
 
 
-export const TextInput = ({handleChange, getValidationState, hidden, ...props}) => {
+export const TextInput = ({handleChange, getValidationState, errText, hidden, ...props}) => {
 
   function iconValidation() {
     return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textInputIconValid } aria-hidden="true"></i> : null
@@ -26,14 +26,14 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
     return getValidationState == 'error' ? styles.textInputInvalid : styles.textInput
   }
 
-  function errText() {
+  function errMsg() {
     return getValidationState == 'error' ? <p className={ styles.errText }>
-                                             { props.errText }
+                                             { errText }
                                            </p> : null
   }
 
   return (
-    <div className={ styles.inputContainer } hidden={ hidden } validationState={ getValidationState }>
+    <div className={ styles.inputContainer } hidden={ hidden }>
       <label className={ styles.controlLabel }>
         { props.label }
       </label>
@@ -41,11 +41,11 @@ export const TextInput = ({handleChange, getValidationState, hidden, ...props}) 
         <input {...props} className={ inputValidation() } onChange={ handleChange } />
         { iconValidation() }
       </div>
-      { errText() }
+      { errMsg() }
     </div>);
 };
 
-export const TextArea = ({handleChange, getValidationState, hidden, ...props}) => {
+export const TextArea = ({handleChange, getValidationState, errText, hidden, ...props}) => {
 
   function iconValidation() {
     return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textAreaIconValid } aria-hidden="true"></i> : null
@@ -55,14 +55,14 @@ export const TextArea = ({handleChange, getValidationState, hidden, ...props}) =
     return getValidationState == 'error' ? styles.textAreaInvalid : styles.textArea
   }
 
-  function errText() {
+  function errMsg() {
     return getValidationState == 'error' ? <p className={ styles.errText }>
-                                             { props.errText }
+                                             { errText }
                                            </p> : null
   }
 
   return (
-    <div className={ styles.inputContainer } hidden={ hidden } validationState={ getValidationState }>
+    <div className={ styles.inputContainer } hidden={ hidden }>
       <label className={ styles.controlLabel }>
         { props.label }
       </label>
@@ -71,7 +71,7 @@ export const TextArea = ({handleChange, getValidationState, hidden, ...props}) =
         { iconValidation() }
       </div>
       <span className={ styles.textAreaCounter }>{ props.value.length }/250</span>
-      { errText() }
+      { errMsg() }
     </div>);
 };
 
