@@ -1,5 +1,5 @@
 import { browserHistory } from "react-router";
-import { logEvent } from '../services/analytics.js';
+import { logEvent } from "../services/analytics.js";
 
 export function locationChange(targetLocation, eventConfig) {
   return function(dispatch) {
