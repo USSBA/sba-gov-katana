@@ -1,11 +1,14 @@
 developmentOptions:
+    redux:
+        logging: false
     webpack:
         enabled: false
         silent: false
 newrelic:
     enabled: false
 googleAnalytics:
-    accountId: UA-19362636-5
+    enabled: true
+    accountId: "UA-19362636-5"
     debug: false
 drupal:
     hostname: http://localhost/

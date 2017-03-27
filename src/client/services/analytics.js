@@ -1,30 +1,51 @@
 var reactGa = require("react-ga");
-reactGa.initialize(window.googleAnalyticsId);
 
-function logPageView() {
-  reactGa.set({
-    page: window.location.pathname
-  });
-  reactGa.pageview(window.location.pathname);
+
+function isEnabled() {
+  return window.CONFIG.googleAnalytics.enabled;
 }
 
-/* eslint-disable  callback-return */
+if (isEnabled()) {
+  reactGa.initialize(window.CONFIG.googleAnalytics.accountId);
+} else {
+  console.log("GA in Development Mode");
+}
+
+function logPageView() {
+  if (isEnabled()) {
+    reactGa.set({
+      page: window.location.pathname
+    });
+    reactGa.pageview(window.location.pathname);
+    console.log("Posting Location Change to GA:", window.location.pathname);
+  }
+}
+
+function logEvent(eventToLog) {
+  if (isEnabled()) {
+    console.log("Posting Event to GA:", eventToLog);
+    reactGa.event(eventToLog);
+  }
+}
+
+/* eslint-disable callback-return */
 function googleAnalyticsMiddleware({getState}) {
   return (next) => {
     return (action) => {
-      console.log("will dispatch", action);
-
-      // Call the next dispatch method in the middleware chain.
-      const returnValue = next(action);
-
-      console.log("state after dispatch", getState());
-
-      // This will likely be the action itself, unless
-      // a middleware further in chain changed it.
-      return returnValue;
+      if (isEnabled()) {
+        if (action.type === "@@router/LOCATION_CHANGE") {
+          console.log("Posting Location Change to GA:", action.payload.pathname);
+          reactGa.event({
+            category: "Navigation",
+            action: "Changed Location",
+            label: action.payload.pathname
+          });
+        }
+      }
+      return next(action);
     };
   };
 }
-/* eslint-enable  callback-return */
+/* eslint-enable callback-return */
 
-export { logPageView, googleAnalyticsMiddleware };
+export { logPageView, googleAnalyticsMiddleware, logEvent };

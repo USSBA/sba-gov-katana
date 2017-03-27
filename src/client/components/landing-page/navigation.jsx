@@ -1,17 +1,31 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as LocationChangeActions from '../../actions/location-change.js';
 
 class Navigation extends React.Component {
+  handleClick() {
+    this.props.actions.locationChange('/linc/form', {
+      label: "Find Lenders #2"
+    });
+  }
   render() {
     return (
       <div className="text-center">
         <Button onClick={ event => alert("you are not ready") }> Am I Ready?</Button>
-        <Button id="landing-page-button-find-lenders" onClick={ event => browserHistory.push('/linc/form') }> Find Lenders</Button>
+        <Button id="landing-page-button-find-lenders" onClick={ this.handleClick.bind(this) }> Find Lenders</Button>
       </div>
       );
   }
   ;
 }
 
-export default Navigation;
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(LocationChangeActions, dispatch)
+  };
+}
+export default connect(null, mapDispatchToProps)(Navigation);

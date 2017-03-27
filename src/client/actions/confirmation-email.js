@@ -1,9 +1,10 @@
 import axios from "axios";
 import queryString from "querystring";
+import config from "../services/config.js";
 
 export function resendConfirmationEmail(emailAddress) {
   return function(dispatch) {
-    axios.post("/linc/resend", {
+    axios.post(config.routes.confirmationEmail, {
       emailAddress: emailAddress
     })
       .then((response) => {

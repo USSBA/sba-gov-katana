@@ -58,9 +58,9 @@ export class DynamicCounselingAndTools extends React.Component {
       let counselor = counselorsObj[key];
       return (
         <div className={ styles.counselorBox }>
-          <p className={ styles.counselorTitle }>
-            { this.trimStr(counselor['title']) || "Not Available" }
-          </p>
+          <h3 className={ styles.counselorTitle }>
+                    { this.trimStr(counselor['title']) || "Not Available" }
+                  </h3>
           <p className={ styles.counselorAttr }>
             { counselor['name'] || "Not Available" }
           </p>
@@ -100,8 +100,8 @@ export class DynamicCounselingAndTools extends React.Component {
     const counselorBoxes = this.props.counselorsData;
     return (
       <div className={ styles.section }>
-        <h1 className={ styles.title }>Get free, personalized help from a local counselor</h1>
-        <p className={ styles.subTitle }>Local Counselors can help you prepare materials and introduce you to additional lenders</p>
+        <h2 className={ styles.title }>Get free, personalized help from a local counselor</h2>
+        <h5 className={ styles.subTitle }>Local Counselors can help you prepare materials and introduce you to additional lenders</h5>
         <div className={ styles.counselorContainer }>
           { this.displayCounselors() }
         </div>

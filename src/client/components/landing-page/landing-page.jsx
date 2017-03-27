@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { FindLendersIntro } from './find-lenders-intro.jsx'
+import FindLendersIntro from './find-lenders-intro.jsx'
 import { HowItWorksSection } from './how-it-works.jsx';
 import { HelpfulQuestions } from './helpful-questions.jsx';
 import { PreparationChecklist } from './preparation-checklist.jsx';

@@ -1,9 +1,11 @@
 developmentOptions:
+    redux:
+        logging: true
     webpack:
         enabled: true
         silent: false
 googleAnalytics:
-    accountId: UA-96147768-1
+    accountId: "UA-96147768-1"
     debug: true
 drupal:
     hostname: https://www.sbagov2.fearlesstesters.com/
@@ -13,13 +15,13 @@ database:
     nonDrupal:
         databaseName: sba_katana
         host: localhost
-        password: placeholder
-        user: placeholder
+        password: testuser
+        user: Password123
     drupal:
         databaseName: sba_drupal
         host: localhost
-        password: placeholder
-        user: placeholder
+        password: testuser
+        user: Password123
 linc:
     confirmationEmailBase: http://localhost:3000
 oca:

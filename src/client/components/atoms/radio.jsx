@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './radio.scss';
 import _ from "lodash";
 import formHelperStyles from "../helpers/form-helpers.scss";
-
+/* esfmt-ignore-start */
 class RadioButtonGroup extends React.Component {
   constructor(props) {
     super();
@@ -32,9 +32,15 @@ class RadioButtonGroup extends React.Component {
                <input className={ styles.regularRadio } type="radio" name={ me.props.name } checked={ isChecked } tabIndex="0" onChange={ me.handleChange } id={ id }
                  value={ item.value }></input>
                <label className={ styles.myLabel } htmlFor={ id } />
+<<<<<<< HEAD
                <span className={ styles.radioText }>
                                                                                                                                                                                                                                                                                                         { item.text }
                                                                                                                                                                                                                                                                                                       </span>
+=======
+
+               <span className={ styles.radioText }>{ item.text }</span>
+
+>>>>>>> c86f7c9bbaad98c0396cf91011b2003fceec586f
              </div>;
     });
     return (
@@ -49,7 +55,7 @@ class RadioButtonGroup extends React.Component {
       );
   }
 }
-
+/* esfmt-ignore-end */
 /* options is array of name/value/text triples */
 RadioButtonGroup.propTypes = {
   value: React.PropTypes.string.isRequired,

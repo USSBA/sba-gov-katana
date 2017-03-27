@@ -5,11 +5,10 @@ import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
 import MultiSelect from '../atoms/multiselect.jsx';
 import RadioButtonGroup from '../atoms/radio.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
-import { Col } from 'react-bootstrap';
 import _ from "lodash";
 
 class IndustryInfoForm extends React.Component {
@@ -45,7 +44,10 @@ class IndustryInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createIndustryInfo(this.state.industryInfoFields);
-    browserHistory.push('/linc/form/loan');
+    this.props.locationActions.locationChange('/linc/form/loan', {
+      action: "Continue Button Pushed",
+      label: "/linc/form/industry"
+    });
     this.industryInfoForm.reset();
   }
 
@@ -152,7 +154,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 

@@ -2,16 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LenderMatchActions from '../../actions/lender-match.js';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import { indexOf, chain, startCase } from 'lodash';
 import { Panel, ButtonToolbar, Glyphicon } from 'react-bootstrap';
 import lenderMatchStyles from './lender-match.scss';
-import { browserHistory } from 'react-router';
 import styles from './lender-match.scss';
 import { ProgressBar } from './progress-bar.jsx'
-
-const BackButton = ({text}) => <button type="button" className={ styles.backBtn } onClick={ browserHistory.goBack }>
-                                 { text }
-                               </button>;
 
 
 class LoanForm extends React.Component {
@@ -22,7 +18,9 @@ class LoanForm extends React.Component {
     let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review']; // TODO make this static or configuration
     let page = this.props.location.replace('/linc/form/', '');
     let locationIndex = indexOf(pages, page);
-    let backButton = locationIndex === 5 ? "" : (<BackButton text={ this.getBackButtonText(locationIndex) } />);
+    let backButton = locationIndex === 5 ? "" : (<button type="button" className={ styles.backBtn } onClick={ this.props.locationActions.goBack }>
+                                                   { this.getBackButtonText(locationIndex) }
+                                                 </button>);
     return (
       <div className={ styles.formContainer }>
         <main className={ styles.formPanel }>
@@ -34,7 +32,6 @@ class LoanForm extends React.Component {
       </div>
       );
   }
-  ;
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
@@ -45,7 +42,8 @@ function mapReduxStateToProps(reduxState, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(LoanForm);

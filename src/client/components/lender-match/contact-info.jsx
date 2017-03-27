@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
-import { browserHistory } from 'react-router';
+import * as LocationChangeActions from '../../actions/location-change.js';
 import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
 import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
@@ -41,7 +41,10 @@ class ContactInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createContactInfo(this.state.contactInfoFields);
-    browserHistory.push('/linc/form/business');
+    this.props.locationActions.locationChange('/linc/form/business', {
+      action: "Continue Button Pushed",
+      label: "/linc/form/contact"
+    });
     this.contactInfoForm.reset();
   }
 
@@ -126,7 +129,8 @@ function mapStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(LenderMatchActions, dispatch)
+    actions: bindActionCreators(LenderMatchActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   };
 }
 
