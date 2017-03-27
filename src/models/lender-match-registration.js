@@ -41,7 +41,30 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
+var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
+  id: { //eslint-disable-line id-length
+    type: Sequelize.UUID,
+    defaultValue: function() {
+      return uuid.v4();
+    },
+    primaryKey: true
+  },
+  uniqueId: {
+    type: Sequelize.STRING
+  },
+  responseCode: {
+    type: Sequelize.CHAR
+  },
+  responseReason: {
+    type: Sequelize.STRING
+  }
+}, {
+  freezeTableName: true // Model tableName will be the same as the model name
+});
+
+lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 
 lenderMatchRegistration.sync();
+lenderMatchSoapResponse.sync();
 
 export default lenderMatchRegistration;
