@@ -1,22 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-<<<<<<< Updated upstream
-import * as ContentActions from '../../actions/content.js';
-import { logEvent } from "../../services/analytics.js";
-import { Row, Col, Button } from 'react-bootstrap';
-import styles from '../../styles/success-page/counseling-and-tools.scss';
 
-=======
 import *  as ContentActions from '../../actions/content.js';
 import lenderMatchHero from '../../../../public/assets/images/map.png';
 
 import { Row, Col, Button } from 'react-bootstrap';
 import styles from '../../styles/success-page/counseling-and-tools.scss';
+import { logEvent } from "../../services/analytics.js";
 
-
-
->>>>>>> Stashed changes
 export class DynamicCounselingAndTools extends React.Component {
   constructor() {
     super();
