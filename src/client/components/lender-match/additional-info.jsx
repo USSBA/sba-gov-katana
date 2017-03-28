@@ -7,6 +7,7 @@ import CheckBox from '../atoms/checkbox.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './lender-match.scss';
+import addInfoStyles from './additional-info.scss'
 
 
 
@@ -48,20 +49,10 @@ export class AdditionalInfoForm extends React.Component {
       <div>
         <form ref={ (input) => this.addInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <FormGroup>
-            <label>These components will get destroyed soon: </label>
-            <CheckBox />
-            <Checkbox name="hasWrittenPlan" checked={ this.state.additionalInfoFields.hasWrittenPlan } onChange={ this.handleClick.bind(this) }>
-              I have a written business plan
-            </Checkbox>
-            <Checkbox name="hasFinancialProjections" checked={ this.state.additionalInfoFields.hasFinancialProjections } onChange={ this.handleClick.bind(this) }>
-              I have financial projections
-            </Checkbox>
-            <Checkbox name="isGeneratingRevenue" checked={ this.state.additionalInfoFields.isGeneratingRevenue } onChange={ this.handleClick.bind(this) }>
-              I'm generating revenue
-            </Checkbox>
-            <Checkbox name="isVeteran" checked={ this.state.additionalInfoFields.isVeteran } onChange={ this.handleClick.bind(this) }>
-              I'm a veteran
-            </Checkbox>
+            <label className={addInfoStyles.label}>Select all that apply to you: </label>
+            <CheckBox name="hasWrittenPlan" label="I have written a business plan" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasWrittenPlan}/>
+            <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={this.handleClick.bind(this)} checked={ this.state.additionalInfoFields.hasFinancialProjections }/>
+            <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={this.handleClick.bind(this)} checked={ this.state.additionalInfoFields.isGeneratingRevenue }/>
           </FormGroup>
           <button className={ styles.continueBtn } type="submit"> CONTINUE </button>
         </form>

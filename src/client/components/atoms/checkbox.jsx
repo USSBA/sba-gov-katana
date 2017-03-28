@@ -6,12 +6,10 @@ class CheckBox extends React.Component {
 
   render() {
     return (
-      <div  className="rc-checkbox-container">
+      <div className="rc-checkbox-container">
         <label className="rc-checkbox-label">
-        <Checkbox/>
-          here is the label
+          <Checkbox autofocus tabIndex={this.props.tabIndex} name={this.props.name} onChange={this.props.handleChange} checked={this.props.checked}/> {this.props.label}
         </label>
-
       </div>
 
 
