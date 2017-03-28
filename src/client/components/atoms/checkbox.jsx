@@ -39,7 +39,7 @@ class CheckBox extends React.Component {
 
   render() {
     return (
-      <div onClick={ this.handleCheckboxFocus.bind(this) } onBlur={ this.handleCheckboxBlur.bind(this) } className={ this.containerStyle() }>
+      <div className={ this.containerStyle() }>
         <label className="rc-checkbox-label">
           <Checkbox name={ this.props.name }
                     checked={ this.props.checked }
