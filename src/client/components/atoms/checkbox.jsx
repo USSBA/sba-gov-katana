@@ -22,10 +22,10 @@ class CheckBox extends React.Component {
     })
   }
 
-  containerStyle(){
-    if(this.state.focus){
+  containerStyle() {
+    if (this.state.focus) {
       return "rc-checkbox-container-focused"
-    } else if(this.props.checked){
+    } else if (this.props.checked) {
       return "rc-checkbox-container-checked"
     } else {
       return "rc-checkbox-container"
