@@ -71,13 +71,13 @@ var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
     },
     primaryKey: true
   },
-  uniqueId: {
-    type: Sequelize.STRING
-  },
   responseCode: {
     type: Sequelize.CHAR
   },
-  responseReason: {
+  errorMessageEnglish: {
+    type: Sequelize.STRING
+  },
+  errorMessageTechnical: {
     type: Sequelize.STRING
   }
 }, {
@@ -89,4 +89,4 @@ lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 lenderMatchRegistration.sync();
 lenderMatchSoapResponse.sync();
 
-export default lenderMatchRegistration;
+export { lenderMatchRegistration, lenderMatchSoapResponse };
