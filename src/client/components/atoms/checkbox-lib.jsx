@@ -76,7 +76,7 @@ export default class Checkbox extends React.Component {
     });
   };
 
-    /*esfmt-ignore-start*/
+/*esfmt-ignore-start*/
   render() {
     const {prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
     const {checked} = this.state;

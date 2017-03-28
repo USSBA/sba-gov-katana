@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import *  as ContentActions from '../../actions/content.js';
+import * as ContentActions from '../../actions/content.js';
 import lenderMatchHero from '../../../../public/assets/images/map.png';
 
 import { Row, Col, Button } from 'react-bootstrap';
@@ -112,24 +112,20 @@ export class DynamicCounselingAndTools extends React.Component {
 
   render() {
     const counselorBoxes = this.props.counselorsData;
-  /*esfmt-ignore-start*/
     return (
-      <div className={styles.section}>
+      <div className={ styles.section }>
         <h2>Free local counseling.</h2>
-        <h5>Local counselors can offer free, personalized help with preparing your loan application.
-       Some counseling offices can also introduce you to additional lenders.</h5>
+        <h5>Local counselors can offer free, personalized help with preparing your loan application. Some counseling offices can also introduce you to additional lenders.</h5>
         <div className={ styles.counselorContainer }>
           { this.displayCounselors() }
           <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
         </div>
         <div className={ styles.mapContainer }>
-          <div className={ styles.mapPlaceholder}>
+          <div className={ styles.mapPlaceholder } />
         </div>
       </div>
-    );
-    /*esfmt-ignore-end*/
+      );
   }
-  ;
 }
 
 function mapStateToProps(state) {

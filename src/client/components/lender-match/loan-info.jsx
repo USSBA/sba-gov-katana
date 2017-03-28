@@ -1,14 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {CurrencyInput, TextArea, SelectBox} from '../helpers/form-helpers.jsx';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
 import MultiSelectBox from '../atoms/multiselect.jsx';
-import {FormPanel} from '../common/form-styling.jsx'
+import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
-import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from '../helpers/page-validator-helpers.jsx'
+import { getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
-import {Col} from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 class LoanInfo extends React.Component {
   constructor(props) {
@@ -34,7 +34,9 @@ class LoanInfo extends React.Component {
     validStates = Object.assign(validStates, getCurrencyValidationState("loanAmount", this.state.loanAmount));
     validStates = Object.assign(validStates, getSelectBoxValidationState("loanDescription", this.state.loanDescription));
     validStates = Object.assign(validStates, getTextAlphanumeicValidationState("loanUsage", this.state.loanUsage));
-    this.setState({validStates: validStates})
+    this.setState({
+      validStates: validStates
+    })
   }
 
   isValidForm() {
@@ -43,7 +45,11 @@ class LoanInfo extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actions.createLoan({loanAmount: this.state.loanAmount, loanDescription: this.state.loanDescription, loanUsage: this.state.loanUsage});
+    this.props.actions.createLoan({
+      loanAmount: this.state.loanAmount,
+      loanDescription: this.state.loanDescription,
+      loanUsage: this.state.loanUsage
+    });
     this.props.locationActions.locationChange('/linc/form/additional', {
       action: "Continue Button Pushed",
       label: "/linc/form/loan"
@@ -104,26 +110,35 @@ class LoanInfo extends React.Component {
       "Remodeling an existing location",
       "Working Capital"
     ], (x) => {
-      return {label: x, value: x};
+      return {
+        label: x,
+        value: x
+      };
     });
 
     return (
       <div>
-        <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={this.handleAmountChange.bind(this)} handleFormat={this.handleFormat.bind(this)} value={this.state.loanAmount} getValidationState={this.state.validStates.loanAmount} autoFocus required/>
-          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={this.handleSelectChange.bind(this)} getValidationState={this.state.validStates.loanDescription} value={this.state.loanDescription} options={loanDescriptionOptions} required maxValues={3}></MultiSelectBox>
-          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={this.handleChange.bind(this)} value={this.state.loanUsage} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."/>
-          <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
+        <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
+          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanAmount }
+            getValidationState={ this.state.validStates.loanAmount } autoFocus required/>
+          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.loanDescription }
+            value={ this.state.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
+          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
+          />
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
             CONTINUE
           </button>
         </form>
       </div>
-    );
-  };
+      );
+  }
+  ;
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {loanFields: reduxState.lenderMatch.loanData};
+  return {
+    loanFields: reduxState.lenderMatch.loanData
+  };
 }
 
 function mapDispatchToProps(dispatch) {
