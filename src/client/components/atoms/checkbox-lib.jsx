@@ -53,7 +53,7 @@ export default class Checkbox extends React.Component {
   // }
 
   handleChange = (e) => {
-    const { props } = this;
+    const {props} = this;
     if (props.disabled) {
       return;
     }
@@ -77,44 +77,31 @@ export default class Checkbox extends React.Component {
   };
 
   render() {
-    const {
-      prefixCls,
-      className,
-      style,
-      name,
-      type,
-      disabled,
-      readOnly,
-      tabIndex,
-      onClick,
-      onFocus,
-      onBlur,
-      autoFocus
-    } = this.props;
-    const { checked } = this.state;
+    const {prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
+    const {checked} = this.state;
     const classString = classNames(prefixCls, className, {
       [`${prefixCls}-checked`]: checked,
       [`${prefixCls}-disabled`]: disabled,
     });
 
     return (
-      <span className={classString} style={style}>
-        <input
-          name={name}
-          autoFocus={autoFocus}
-          type={type}
-          readOnly={readOnly}
-          disabled={disabled}
-          tabIndex={tabIndex}
-          className={`${prefixCls}-input`}
-          checked={!!checked}
-          onClick={onClick}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onChange={this.handleChange}
-        />
-        <span className={`${prefixCls}-inner`} />
-      </span>
-    );
+      <span className={ classString } style={ style }>
+              <input
+            name={ name }
+            autoFocus={ autoFocus }
+            type={ type }
+            readOnly={ readOnly }
+            disabled={ disabled }
+            tabIndex={ tabIndex }
+            className={ `${prefixCls}-input` }
+            checked={ !!checked }
+            onClick={ onClick }
+            onFocus={ onFocus }
+            onBlur={ onBlur }
+            onChange={ this.handleChange }
+            />
+              <span className={ `${prefixCls}-inner` } />
+            </span>
+      );
   }
 }

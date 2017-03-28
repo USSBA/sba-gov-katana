@@ -10,28 +10,25 @@ class CheckBox extends React.Component {
     };
   }
 
-  handleFocus(){
-    this.setState({focus: true})
+  handleFocus() {
+    this.setState({
+      focus: true
+    })
   }
 
-  handleBlur(){
-    this.setState({focus: false})
+  handleBlur() {
+    this.setState({
+      focus: false
+    })
   }
 
   render() {
     return (
-      <div className={this.state.focus ? "rc-checkbox-container-focused" : "rc-checkbox-container"}>
+      <div className={ this.state.focus ? "rc-checkbox-container-focused" : "rc-checkbox-container" }>
         <label className="rc-checkbox-label">
-          <Checkbox
-                    name={this.props.name}
-                    checked={this.props.checked}
-                    onChange={this.props.handleChange}
-                    onFocus={this.handleFocus.bind(this)}
-                    onBlur={this.handleBlur.bind(this)}
-                    autoFocus={this.props.autoFocus}
+          <Checkbox name={ this.props.name } checked={ this.props.checked } onChange={ this.props.handleChange } onFocus={ this.handleFocus.bind(this) } onBlur={ this.handleBlur.bind(this) } autoFocus={ this.props.autoFocus }
           />
-
-          {this.props.label}
+          { this.props.label }
         </label>
       </div>
       );

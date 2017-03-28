@@ -52,10 +52,11 @@ export class AdditionalInfoForm extends React.Component {
       <div>
         <form ref={ (input) => this.addInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <FormGroup>
-            <label className={addInfoStyles.label}>Select all that apply to you: </label>
-            <CheckBox autoFocus={true} name="hasWrittenPlan" label="I have written a business plan" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasWrittenPlan}/>
-            <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={this.handleClick.bind(this)} checked={ this.state.additionalInfoFields.hasFinancialProjections }/>
-            <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={this.handleClick.bind(this)} checked={ this.state.additionalInfoFields.isGeneratingRevenue }/>
+            <label className={ addInfoStyles.label }>Select all that apply to you: </label>
+            <CheckBox autoFocus={ true } name="hasWrittenPlan" label="I have written a business plan" handleChange={ this.handleClick.bind(this) } checked={ this.state.additionalInfoFields.hasWrittenPlan }
+            />
+            <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={ this.handleClick.bind(this) } checked={ this.state.additionalInfoFields.hasFinancialProjections } />
+            <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={ this.handleClick.bind(this) } checked={ this.state.additionalInfoFields.isGeneratingRevenue } />
           </FormGroup>
           <button className={ styles.continueBtn } type="submit"> CONTINUE </button>
         </form>
