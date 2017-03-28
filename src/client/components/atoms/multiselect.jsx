@@ -21,7 +21,7 @@ class MultiSelectBox extends React.Component {
           { this.props.label }
         </ControlLabel>
         <ReactSelect tabSelectsValue={ false } multi={ true } onChange={ this.handleChange.bind(this) } name={ this.props.name } require={ this.props.required }
-          autofocus value={ arrayValue } options={ this.props.options } />
+          autofocus={this.props.autoFocus} value={ arrayValue } options={ this.props.options } />
       </FormGroup>
       );
   }
