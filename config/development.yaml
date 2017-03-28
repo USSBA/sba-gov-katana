@@ -8,9 +8,7 @@ googleAnalytics:
     accountId: "UA-96147768-1"
     debug: true
 drupal:
-    hostname: https://www.sbagov2.fearlesstesters.com/
-email:
-    debugEmailOnly: false
+    hostname: https://www.sbagov.fearlesstesters.com/
 database:
     nonDrupal:
         databaseName: sba_katana
