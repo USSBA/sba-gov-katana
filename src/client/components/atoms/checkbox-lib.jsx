@@ -76,6 +76,7 @@ export default class Checkbox extends React.Component {
     });
   };
 
+    /*esfmt-ignore-start*/
   render() {
     const {prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
     const {checked} = this.state;
@@ -86,7 +87,7 @@ export default class Checkbox extends React.Component {
 
     return (
       <span className={ classString } style={ style }>
-                          <input
+                                <input
             name={ name }
             autoFocus={ autoFocus }
             type={ type }
@@ -100,8 +101,9 @@ export default class Checkbox extends React.Component {
             onBlur={ onBlur }
             onChange={ this.handleChange }
             />
-                          <span className={ `${prefixCls}-inner` } />
-                        </span>
+        <span className={ `${prefixCls}-inner` } />
+      </span>
       );
   }
+      /*esfmt-ignore-end*/
 }
