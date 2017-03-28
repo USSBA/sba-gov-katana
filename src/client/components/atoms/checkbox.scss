@@ -136,6 +136,14 @@ $money-green: #609F00;
     position: relative;
     width: 360px;
     height: 48px;
+    border: 1px solid #C4C4C4;
+    margin-bottom: 10px;
+}
+
+.rc-checkbox-container-checked {
+    position: relative;
+    width: 360px;
+    height: 48px;
     border: 1px solid #666666;
     margin-bottom: 10px;
 }
