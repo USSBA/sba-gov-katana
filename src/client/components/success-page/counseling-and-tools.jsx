@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import *  as ContentActions from '../../actions/content.js';
-
+import { logEvent } from "../../services/analytics.js";
 import { Row, Col, Button } from 'react-bootstrap';
 import styles from '../../styles/success-page/counseling-and-tools.scss';
 
@@ -38,6 +38,11 @@ export class DynamicCounselingAndTools extends React.Component {
       zip: this.props.businessInfoData.businessInfoZipcode
     })
       .then((res) => {
+        logEvent({
+          category: "Navigation",
+          action: "Change to Local Assistance Tool",
+          label: ""
+        });
         console.log(res.data.redirectTo);
         newTab.location = res.data.redirectTo;
       })
@@ -62,8 +67,8 @@ export class DynamicCounselingAndTools extends React.Component {
       return (
         <div className={ styles.counselorBox }>
           <h4>
-          { this.trimStr(counselor['title']) || "Not Available" }
-          </h4>
+                                  { this.trimStr(counselor['title']) || "Not Available" }
+                                  </h4>
           <p className={ styles.counselorAttr }>
             { counselor['name'] || "Not Available" }
           </p>
@@ -108,7 +113,7 @@ export class DynamicCounselingAndTools extends React.Component {
       <div className={ styles.section }>
         <h2>Free local counseling.</h2>
         <h5>Local counselors can offer free, personalized help with preparing your loan application.
-       Some counseling offices can also introduce you to additional lenders.</h5>
+                         Some counseling offices can also introduce you to additional lenders.</h5>
         <div className={ styles.counselorContainer }>
           { this.displayCounselors() }
           <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>

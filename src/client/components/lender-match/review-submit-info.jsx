@@ -7,7 +7,7 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './review-submit.scss'
 import ReviewSection from '../helpers/review-page-helpers.jsx';
-
+import {startCase } from 'lodash';
 
 class ReviewSubmitInfoForm extends React.Component {
   constructor() {
@@ -15,6 +15,10 @@ class ReviewSubmitInfoForm extends React.Component {
     this.state = {
       reviewSubmitInfoFields: {}
     }
+  }
+
+  makeEditEvent(target) {
+    return ;
   }
 
   handleSubmit(e) {
@@ -33,14 +37,18 @@ class ReviewSubmitInfoForm extends React.Component {
     this.reviewSubmitInfoForm.reset();
   }
 
+  handleEditClick(target){
+      this.props.locationActions.locationChange("/linc/form/"+target, {action: "Edit Button Pushed: " + startCase(target)});
+  }
+
   render() {
     return (
       <div>
-        <ContactSection contactInfoData={ this.props.contactInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/contact") } />
-        <BusinessSection businessInfoData={ this.props.businessInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/business") } />
-        <IndustrySection industryInfoData={ this.props.industryInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/industry") } />
-        <LoanSection loanData={ this.props.loanData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/loan") } />
-        <AdditionalSection additionalInfoData={ this.props.additionalInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/additional") } />
+        <ContactSection contactInfoData={ this.props.contactInfoData } onEditClick={ () => this.handleEditClick("contact") } />
+        <BusinessSection businessInfoData={ this.props.businessInfoData } onEditClick={ () => this.handleEditClick("business")} />
+        <IndustrySection industryInfoData={ this.props.industryInfoData } onEditClick={ () => this.handleEditClick("industry") } />
+        <LoanSection loanData={ this.props.loanData } onEditClick={ () => this.handleEditClick("loan") } />
+        <AdditionalSection additionalInfoData={ this.props.additionalInfoData } onEditClick={ () => this.handleEditClick("additional") } />
         <form ref={ (input) => this.reviewSubmitInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <button className={ styles.submitBtn } type="submit"> SUBMIT </button>
         </form>

@@ -34,8 +34,7 @@ function googleAnalyticsMiddleware({getState}) {
     return (action) => {
       if (isEnabled()) {
         if (action.type === "@@router/LOCATION_CHANGE") {
-          console.log("Posting Location Change to GA:", action.payload.pathname);
-          reactGa.event({
+          logEvent({
             category: "Navigation",
             action: "Changed Location",
             label: action.payload.pathname
