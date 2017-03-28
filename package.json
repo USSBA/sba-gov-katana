@@ -107,7 +107,7 @@
     "enzyme": "^2.6.0",
     "esformatter": "^0.10.0",
     "esformatter-ignore": "^0.1.3",
-    "esformatter-jsx": "^7.4.0",
+    "esformatter-jsx": "7.4.1",
     "eslint": "^3.10.1",
     "eslint-plugin-react": "^6.7.1",
     "identity-obj-proxy": "^3.0.0",
