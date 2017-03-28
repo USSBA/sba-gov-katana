@@ -6,8 +6,7 @@ class CheckBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkboxFocus: false,
-      labelFocus: false
+      checkboxFocus: false
     };
   }
 
@@ -26,13 +25,10 @@ class CheckBox extends React.Component {
 
   containerStyle() {
     if (this.state.checkboxFocus) {
-      console.log("focused");
       return "rc-checkbox-container-focused"
     } else if (this.props.checked) {
-      console.log("checked");
       return "rc-checkbox-container-checked"
     } else {
-      console.log("normal");
       return "rc-checkbox-container"
     }
   }

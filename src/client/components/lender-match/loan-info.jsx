@@ -121,9 +121,9 @@ class LoanInfo extends React.Component {
       <div>
         <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanAmount }
-            getValidationState={ this.state.validStates.loanAmount } autoFocus required/>
+            getValidationState={ this.state.validStates.loanAmount } autoFocus />
           <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.loanDescription }
-            value={ this.state.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
+            value={ this.state.loanDescription } options={ loanDescriptionOptions } maxValues={ 3 }></MultiSelectBox>
           <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
           />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>

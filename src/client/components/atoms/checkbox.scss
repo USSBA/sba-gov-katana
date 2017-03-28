@@ -52,15 +52,15 @@ $money-green: #609F00;
 }
 .rc-checkbox-input {
     position: absolute;
-    left: 0;
+    left: -15px;
     z-index: 9999;
     cursor: pointer;
     opacity: 0;
-    top: 0;
+    top: -17px;
     bottom: 0;
     right: 0;
-    width: 360px;
-    height: 48px;
+    width: 350px;
+    height: 47px;
 }
 /* 选中状态 */
 .rc-checkbox-checked:hover .rc-checkbox-inner {
