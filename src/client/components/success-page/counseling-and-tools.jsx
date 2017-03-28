@@ -56,11 +56,14 @@ export class DynamicCounselingAndTools extends React.Component {
     const counselorsObj = this.state.counselors;
     return Object.keys(counselorsObj).map((key) => {
       let counselor = counselorsObj[key];
+      {
+        /*esfmt-ignore-start*/
+      }
       return (
         <div className={ styles.counselorBox }>
           <h3 className={ styles.counselorTitle }>
-                                                    { this.trimStr(counselor['title']) || "Not Available" }
-                                                  </h3>
+                    { this.trimStr(counselor['title']) || "Not Available" }
+                  </h3>
           <p className={ styles.counselorAttr }>
             { counselor['name'] || "Not Available" }
           </p>
@@ -77,7 +80,10 @@ export class DynamicCounselingAndTools extends React.Component {
             { counselor['phone'] ? 'Phone: ' + counselor['phone'] : "Not Available" }
           </p>
         </div>
-      )
+        );
+      {
+        /*esfmt-ignore-start*/
+      }
     });
   }
 

@@ -9,7 +9,7 @@ import _ from "lodash";
 
 class MultiSelectBox extends React.Component {
   handleChange(newValue) {
-    if (newValue.length <= 3) {
+    if (newValue.length <= this.props.maxValues) {
       this.props.onChange(_.map(newValue, 'value').join(","));
     }
   }
@@ -21,7 +21,7 @@ class MultiSelectBox extends React.Component {
           { this.props.label }
         </ControlLabel>
         <ReactSelect tabSelectsValue={ false } multi={ true } onChange={ this.handleChange.bind(this) } name={ this.props.name } require={ this.props.required }
-          autoFocus={ this.props.autoFocus } value={ arrayValue } options={ this.props.options } />
+          autofocus value={ arrayValue } options={ this.props.options } />
       </FormGroup>
       );
   }
