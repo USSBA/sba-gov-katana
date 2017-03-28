@@ -36,7 +36,29 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
   },
   loanDescription: {
     type: Sequelize.TEXT
+  },
+  loanUsage: {
+    type: Sequelize.STRING
+  },
+  businessWebsite: {
+    type: Sequelize.STRING
+  },
+  businessDescription: {
+    type: Sequelize.STRING
+  },
+  hasWrittenPlan: {
+    type: Sequelize.BOOLEAN
+  },
+  hasFinancialProjections: {
+    type: Sequelize.BOOLEAN
+  },
+  isGeneratingRevenue: {
+    type: Sequelize.BOOLEAN
+  },
+  isVeteran: {
+    type: Sequelize.BOOLEAN
   }
+
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });
@@ -49,13 +71,13 @@ var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
     },
     primaryKey: true
   },
-  uniqueId: {
-    type: Sequelize.STRING
-  },
   responseCode: {
     type: Sequelize.CHAR
   },
-  responseReason: {
+  errorMessageEnglish: {
+    type: Sequelize.STRING
+  },
+  errorMessageTechnical: {
     type: Sequelize.STRING
   }
 }, {
@@ -67,4 +89,4 @@ lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 lenderMatchRegistration.sync();
 lenderMatchSoapResponse.sync();
 
-export default lenderMatchRegistration;
+export { lenderMatchRegistration, lenderMatchSoapResponse };

@@ -6,7 +6,9 @@ import * as LocationChangeActions from '../../actions/location-change.js';
 
 class Navigation extends React.Component {
   handleClick() {
-    this.props.actions.locationChange('/linc/form');
+    this.props.actions.locationChange('/linc/form', {
+      label: "Find Lenders #2"
+    });
   }
   render() {
     return (

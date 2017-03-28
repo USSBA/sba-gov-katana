@@ -5,14 +5,18 @@ import { bindActionCreators } from 'redux';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from '../../styles/buttons.scss';
 
+
 class FindLendersButton extends React.Component {
+
   handleClick() {
-    this.props.actions.locationChange('/linc/form/contact');
+    this.props.actions.locationChange('/linc/form/contact', {
+      label: this.props.eventLabel
+    });
   }
   render() {
     return (
       <div>
-        <Button block className={ styles.findLendersBtn } onClick={ this.handleClick.bind(this) }>FIND LENDERS</Button>
+        <Button block className={ this.props.isWhite ? styles.findLendersWhiteBtn : styles.findLendersBtn } onClick={ this.handleClick.bind(this) }>FIND LENDERS</Button>
       </div>
       );
   }

@@ -8,7 +8,7 @@ import _ from "lodash";
 import Promise from "bluebird";
 
 import { sendConfirmationEmail } from "../util/emailer.js";
-import LenderMatchRegistration from "../models/lender-match-registration.js";
+import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
 
@@ -48,7 +48,7 @@ function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, 
 }
 
 function createLenderMatchRegistration(data) {
-  return LenderMatchRegistration.create(data)
+  return lenderMatchRegistration.create(data)
     .then(function(result) {
       return [data.name, data.emailAddress, result.id, null, false];
     })
@@ -59,7 +59,21 @@ function createLenderMatchRegistration(data) {
     });
 }
 
+function createLenderMatchRegistrationData(data) {
+  return lenderMatchRegistration.create(data)
+    .then(function(result) {
+      console.log(result);
+      return result;
+    });
+}
 
+function createLenderMatchSoapResponseData(data) {
+  return lenderMatchSoapResponse.create(data)
+    .then(function(result) {
+      console.log(result);
+      return result;
+    });
+}
 
 
 function findUnconfirmedRegistrations() {
@@ -85,11 +99,11 @@ function findUnconfirmedRegistrations() {
 
 function sendFollowupConfirmations(emailConfirmations) {
   return Promise.map(emailConfirmations, (emailConfirmation) => {
-    return LenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
-      .then(function(lenderMatchRegistration) {
-        const name = lenderMatchRegistration.name;
-        const emailAddress = lenderMatchRegistration.emailAddress;
-        return [name, emailAddress, lenderMatchRegistration.id, emailConfirmation.token, true];
+    return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
+      .then(function(lenderMatchRegistrationData) {
+        const name = lenderMatchRegistrationData.name;
+        const emailAddress = lenderMatchRegistrationData.emailAddress;
+        return [name, emailAddress, lenderMatchRegistrationData.id, emailConfirmation.token, true];
       })
       .spread(createConfirmationEmail)
       .then(function(result) {
@@ -107,12 +121,12 @@ function followupEmailJob() {
 }
 
 
-function sendDataToOca(lenderMatchRegistration) {
+function sendDataToOca(lenderMatchRegistrationData) {
   const soapRequestData = {
     userName: config.get("oca.soap.username"),
     password: config.get("oca.soap.password"),
     ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
-    formRequestData: {}
+    lenderMatchRegistration: lenderMatchRegistrationData
   };
 
   getEndPointUrl(soapRequestData).then(function(response) {
@@ -125,13 +139,20 @@ function sendDataToOca(lenderMatchRegistration) {
       return sendLincSoapRequest(response);
     })
     .then(function(response) {
-      // TODO: check the response from OCA
-      //do nothing if it is "S"
-      //save to database if it is "P"
-      // TODO: handle checking of the database for pending items and resending them.
-      //throw error if it is "F
-      //need to figure out with Jon what to page to reroute the user to in case of error.
-      //email might be confirmed but OCA soap might still have returned an error!
+      if (response.resultCode === "S" || response.resultCode === "F") {
+        const lenderMatchSoapResponseData = {
+          responseCode: response.resultCode,
+          errorMessageEnglish: response.errorMessageEnglish,
+          errorMessageTechnical: response.errorMessageTechnical,
+          lenderMatchRegistrationId: response.lenderMatchRegistrationId
+        };
+        createLenderMatchSoapResponseData(lenderMatchSoapResponseData).then(function(resp) {
+          console.log(resp);
+        }).catch(function(error) {
+          console.log(error.message);
+          throw error;
+        });
+      }
     })
     .catch(function(error) {
       console.log(error.message);
@@ -151,9 +172,9 @@ function confirmEmail(token) {
           emailConfirmation.set("confirmed", now.unix());
           return emailConfirmation.save()
             .then(function(result) {
-              return LenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
-                .then(function(lenderMatchRegistration) {
-                  //   sendDataToOca(lenderMatchRegistration);
+              return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
+                .then(function(lenderMatchRegistrationData) {
+                  //   sendDataToOca(lenderMatchRegistrationData);
                   return "success";
                 });
             });
@@ -167,7 +188,7 @@ function confirmEmail(token) {
 }
 
 function resendConfirmationEmail(emailAddress) {
-  return LenderMatchRegistration.findOne({
+  return lenderMatchRegistration.findOne({
     where: {
       emailAddress: emailAddress
     },
@@ -176,18 +197,18 @@ function resendConfirmationEmail(emailAddress) {
     ],
     limit: 1
   })
-    .then(function(lenderMatchRegistration) {
+    .then(function(lenderMatchRegistrationData) {
       return EmailConfirmation.findOne({
         where: {
-          lenderMatchRegistrationId: lenderMatchRegistration.id
+          lenderMatchRegistrationId: lenderMatchRegistrationData.id
         }
       })
         .then((emailConfirmation) => {
-          return [lenderMatchRegistration.name, lenderMatchRegistration.emailAddress, lenderMatchRegistration.id, emailConfirmation.token, false];
+          return [lenderMatchRegistrationData.name, lenderMatchRegistrationData.emailAddress, lenderMatchRegistrationData.id, emailConfirmation.token, false];
         });
     })
     .spread(createConfirmationEmail);
 }
 
 
-export { createLenderMatchRegistration, confirmEmail, followupEmailJob, resendConfirmationEmail };
+export { createLenderMatchRegistration, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };

@@ -27,8 +27,8 @@ function convertFormDataToXml(reqData) {
 }
 
 function parseResponse(xmlBody) {
-  let errorMessageTechnical,
-    errorMessageEnglish;
+  let errorMessageTechnical = "";
+  let errorMessageEnglish = "";
 
   let retVal = "F";
   const parser = new DOMParser();
@@ -56,7 +56,11 @@ function parseResponse(xmlBody) {
     const lincRespXmlDoc = parser.parseFromString(response);
     retVal = lincRespXmlDoc.getElementsByTagName("Result")[0].childNodes[0].nodeValue;
   }
-  return retVal;
+  return {
+    resultCode: retVal,
+    errorMessageEnglish: errorMessageEnglish,
+    errorMessageTechnical: errorMessageTechnical
+  };
 }
 
 function sendLincSoapRequest(reqData) {
@@ -79,11 +83,12 @@ function sendLincSoapRequest(reqData) {
       if (error) {
         throw error;
       } else {
-        const respChar = parseResponse(body);
-        if (respChar === "F") {
+        const resp = parseResponse(body);
+        resp.lenderMatchRegistrationId = reqData.lenderMatchRegistration.id;
+        if (resp.resultCode === "F") {
           console.log(body);
         }
-        resolve(respChar);
+        resolve(resp);
       }
     });
   });

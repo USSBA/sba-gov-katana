@@ -1,13 +1,18 @@
 var reactGa = require("react-ga");
 
-if (window.CONFIG.googleAnalytics.enabled) {
+
+function isEnabled() {
+  return window.CONFIG.googleAnalytics.enabled;
+}
+
+if (isEnabled()) {
   reactGa.initialize(window.CONFIG.googleAnalytics.accountId);
 } else {
   console.log("GA in Development Mode");
 }
 
 function logPageView() {
-  if (window.CONFIG.googleAnalytics.enabled) {
+  if (isEnabled()) {
     reactGa.set({
       page: window.location.pathname
     });
@@ -16,14 +21,24 @@ function logPageView() {
   }
 }
 
+function logEvent(eventToLog) {
+  if (isEnabled()) {
+    console.log("Posting Event to GA:", eventToLog);
+    reactGa.event(eventToLog);
+  }
+}
+
 /* eslint-disable callback-return */
 function googleAnalyticsMiddleware({getState}) {
   return (next) => {
     return (action) => {
-      if (window.CONFIG.googleAnalytics.enabled) {
+      if (isEnabled()) {
         if (action.type === "@@router/LOCATION_CHANGE") {
-          console.log("Posting Location Change to GA:", action.payload.pathname);
-          reactGa.pageview(action.payload.pathname);
+          logEvent({
+            category: "Navigation",
+            action: "Changed Location",
+            label: action.payload.pathname
+          });
         }
       }
       return next(action);
@@ -32,4 +47,4 @@ function googleAnalyticsMiddleware({getState}) {
 }
 /* eslint-enable callback-return */
 
-export { logPageView, googleAnalyticsMiddleware };
+export { logPageView, googleAnalyticsMiddleware, logEvent };

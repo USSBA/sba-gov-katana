@@ -1,79 +1,58 @@
 @import "../buttons";
+@import "../atoms/grid";
+@import "../atoms/typography";
+
+// Variables
 
 .section {
-  font-family: "Avenir Next";
-  background: #efefef;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  // border: 2px solid green;
+  width: 84vw;
+  margin: 0  auto;
+  left: 2.4vw;
+  position: relative;
+  @include grid-container;
+  // @include grid-visual;
 }
 
-.title {
-  font-size: 2.2vw;
-  text-align: center;
-  font-weight: normal;
-  color: #4A4A4A;
-  margin-bottom: 2.8vw;
-}
-
-.subTitle {
-  margin-top: 4px;
-  font-size: 1.1vw;
-  text-align: center;
-  margin-bottom: 1.9vw;
-  color: #4A4A4A;
-}
-
-.seeMoreBtn{
-  composes: helpBtn;
-  background: #efefef;
-  width: 17.1vw;
-  height: 3.1vw;
-  display: block;
-  margin: auto;
-  margin-top: 2.1vw;
+h2, h5 {
+    @include grid-column(12);
 }
 
 .counselorContainer {
-  height: 15.7vw;
-  text-align: center;
-  clear: both;
+  @include grid-column(12);
 }
 
 .counselorBox {
-  display: inline-block;
-  vertical-align: top;
-  width: 19.4vw;
-  height: 13.7vw;
-  margin-right: 4vw;
-  margin-top: 0;
+  margin-bottom: 30px;
+  p {
+    margin-bottom: 0;
+  }
 }
 
-.counselorBox:last-child {
-  margin-right: 0;
+@media (max-width: 767px) {
+.mapContainer {
+  display: none;
 }
+  }
 
-.counselorTitle {
-  font-family: "Avenir Next";
-  font-size: 1.3vw;
-  font-weight: 600;
-  text-align: center;
-  color: #4A4A4A;
-  margin-bottom: 2.2vw;
+@media (min-width: 768px) {
+
+.mapContainer {
+  background: red;
+  height: 568px;
+  @include grid-column(8);
+  @include grid-push(1);
 }
-
-.counselorAttr {
-  font-family: "Avenir Next";
-  margin-top: 15px;
-  font-size: 14px;
+.counselorContainer {
+  @include grid-column(3);
 }
-
-
-
+}
+// Loader
 .loader {
   display: inline-block;
   text-align: center;
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #4A4A4A; /* Blue */
+  border: 16px solid #f3f3f3; 
+  border-top: 16px solid #4A4A4A; 
   border-radius: 50%;
   width: 120px;
   height: 120px;

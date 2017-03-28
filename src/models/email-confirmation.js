@@ -1,5 +1,5 @@
 import { nonDrupal } from "./db-connect.js";
-import LenderMatchRegistration from "./lender-match-registration.js";
+import { lenderMatchRegistration, lenderMatchSoapResponse } from "./lender-match-registration.js";
 import * as Sequelize from "sequelize";
 
 var emailConfirmation = nonDrupal.define("emailConfirmation", {
@@ -21,7 +21,7 @@ var emailConfirmation = nonDrupal.define("emailConfirmation", {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-emailConfirmation.belongsTo(LenderMatchRegistration);
+emailConfirmation.belongsTo(lenderMatchRegistration);
 
 emailConfirmation.sync();
 
