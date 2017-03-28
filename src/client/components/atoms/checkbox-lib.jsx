@@ -86,7 +86,7 @@ export default class Checkbox extends React.Component {
 
     return (
       <span className={ classString } style={ style }>
-              <input
+                          <input
             name={ name }
             autoFocus={ autoFocus }
             type={ type }
@@ -100,8 +100,8 @@ export default class Checkbox extends React.Component {
             onBlur={ onBlur }
             onChange={ this.handleChange }
             />
-              <span className={ `${prefixCls}-inner` } />
-            </span>
+                          <span className={ `${prefixCls}-inner` } />
+                        </span>
       );
   }
 }
