@@ -82,7 +82,8 @@ class LoanInfo extends React.Component {
   handleFormat(e) {
     let loanFields = {};
     let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-    if (Number(num)) {
+    console.log("num", num);
+    if (Number(num) || num === 0) {
       this.setState({
         loanAmount: "$" + num.toLocaleString()
       });
