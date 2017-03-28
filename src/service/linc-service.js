@@ -6,6 +6,7 @@ import moment from "moment";
 import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
+import * as Sequelize from "sequelize";
 
 import { sendConfirmationEmail } from "../util/emailer.js";
 import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
@@ -114,12 +115,18 @@ function sendFollowupConfirmations(emailConfirmations) {
   });
 }
 
-
+function findFailedOrPendingMessages() {
+  return Sequelize.query("select * from lenderMatchRegistration reg inner join lenderMatchResponse res on reg.id = res.lenderMatchRegistrationId " +
+    "inner join emailConfirmation eco on reg.id = eco.lenderMatchRegistrationId where eco.confirmed != null and (res.responseCode = 'P' or res.responseCode = 'F')").then(
+    function(results) {
+      return results;
+    }
+  );
+}
 
 function followupEmailJob() {
   return findUnconfirmedRegistrations().then(sendFollowupConfirmations);
 }
-
 
 function sendDataToOca(lenderMatchRegistrationData) {
   const soapRequestData = {
@@ -139,25 +146,58 @@ function sendDataToOca(lenderMatchRegistrationData) {
       return sendLincSoapRequest(response);
     })
     .then(function(response) {
-      if (response.resultCode === "S" || response.resultCode === "F") {
+      if (response.resultCode === "P" || response.resultCode === "F") {
         const lenderMatchSoapResponseData = {
           responseCode: response.resultCode,
           errorMessageEnglish: response.errorMessageEnglish,
           errorMessageTechnical: response.errorMessageTechnical,
           lenderMatchRegistrationId: response.lenderMatchRegistrationId
         };
-        createLenderMatchSoapResponseData(lenderMatchSoapResponseData).then(function(resp) {
-          console.log(resp);
-        }).catch(function(error) {
-          console.log(error.message);
-          throw error;
-        });
+
+        createLenderMatchSoapResponseData(lenderMatchSoapResponseData)
+          .then(function(resp) {
+            console.log(resp);
+          })
+          .catch(function(error) {
+            console.log(error.message);
+            throw error;
+          });
       }
     })
     .catch(function(error) {
       console.log(error.message);
       throw error;
     });
+}
+
+function sendMessagesToOca(results) {
+  return Promise.map(results, (result) => {
+    const reg = result.reg;
+    const lenderMatchRegistrationData = {
+      id: reg.id,
+      name: reg.name,
+      phone: reg.phone,
+      emailAddress: reg.emailAddress,
+      businessName: reg.businessName,
+      businessZip: reg.businessZip,
+      industry: reg.industry,
+      industryExperience: reg.industryExperience,
+      loanAmount: reg.loanAmount,
+      loanDescription: reg.loanDescription,
+      loanUsage: reg.loanUsage,
+      businessWebsite: reg.businessWebsite,
+      businessDescription: reg.businessDescription,
+      hasWrittenPlan: reg.hasWrittenPlan,
+      hasFinancialProjects: reg.hasFinancialProjections,
+      isGeneratingRevenue: reg.isGeneratingRevenue,
+      isVeteran: reg.isVeteran
+    };
+    sendDataToOca(lenderMatchRegistrationData);
+  });
+}
+
+function sendDataToOcaJob() {
+  return findFailedOrPendingMessages().then(sendMessagesToOca);
 }
 
 function confirmEmail(token) {
