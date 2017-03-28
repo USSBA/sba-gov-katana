@@ -7,43 +7,47 @@ import RadioButtonGroup from '../atoms/radio.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import { FormPanel } from '../common/form-styling.jsx'
-import { getSelectBoxValidationState } from '../helpers/page-validator-helpers.jsx'
+import { getSelectBoxValidationState, containsErrorOrNull } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
 import _ from "lodash";
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
     super();
-    let industryInfoFields = Object.assign({}, {
-      industryType: "",
-      industryExperience: ""
-    }, props.industryInfoFields);
-    let validStates = {};
-    if (industryInfoFields.industryType) {
-      validStates = Object.assign(validStates, this.getValidationState("industryType", industryInfoFields.industryType));
-    }
-    if (industryInfoFields.industryExperience) {
-      validStates = Object.assign(validStates, this.getValidationState("industryExperience", industryInfoFields.industryExperience));
-    }
+    let initialData = props.industryInfoFields || {};
     this.state = {
-      industryInfoFields: industryInfoFields,
-      validStates: validStates
+      industryType: initialData.industryType || "",
+      industryExperience: initialData.industryExperience || "",
+      validStates: {
+        industryType: null,
+        industryExperience: null
+      }
     };
   }
 
+  componentDidMount() {
+    this.validateForm();
+  }
+
+  validateForm() {
+    let validStates = {};
+    validStates = Object.assign(validStates, getSelectBoxValidationState("industryType", this.state.industryType));
+    validStates = Object.assign(validStates, getSelectBoxValidationState("industryExperience", this.state.industryExperience));
+    this.setState({
+      validStates: validStates
+    })
+  }
+
   isValidForm() {
-    let validForm = true;
-    for (var inputState in this.state.validStates) {
-      if (this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null) {
-        validForm = false;
-      }
-    }
-    return validForm;
+    return !containsErrorOrNull(this.state.validStates);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actions.createIndustryInfo(this.state.industryInfoFields);
+    this.props.actions.createIndustryInfo({
+      industryType: this.state.industryType,
+      industryExperience: this.state.industryExperience
+    });
     this.props.locationActions.locationChange('/linc/form/loan', {
       action: "Continue Button Pushed",
       label: "/linc/form/industry"
@@ -52,39 +56,15 @@ class IndustryInfoForm extends React.Component {
   }
 
   handleChange(newValue) {
-    let industryInfoFields = {};
-    industryInfoFields["industryExperience"] = newValue;
     this.setState({
-      industryInfoFields: {
-        ...this.state.industryInfoFields,
-        ...industryInfoFields
-      }
-    });
-    let validStates = this.getValidationState("industryExperience", newValue);
-    this.setState({
-      validStates: {
-        ...this.state.validStates,
-        ...validStates
-      }
-    });
-  }
-
-  getValidationState(name, value) {
-    return getSelectBoxValidationState(name, value);
+      industryExperience: newValue
+    }, () => this.validateForm());
   }
 
   handleSelectChange(newValue) {
-    let newIndustryInfoFields = _.merge(this.state.industryInfoFields, {
+    this.setState({
       industryType: newValue
-    });
-    this.setState({
-      industryInfoFields: newIndustryInfoFields
-    });
-    let validStates = this.getValidationState("industryType", newValue);
-    let newValidStates = _.merge(this.state.validStates, validStates);
-    this.setState({
-      validStates: newValidStates
-    });
+    }, () => this.validateForm());
   }
 
   render() {
@@ -118,28 +98,32 @@ class IndustryInfoForm extends React.Component {
       };
     });
 
-    let radioButtonOptions = [{
-      value: "Less than 1 year",
-      text: "Less than 1 year"
-    }, {
-      value: "1-2 years",
-      text: "1-2 years"
-    }, {
-      value: "2-5 years",
-      text: "2-5 years"
-    }, {
-      value: "5+ years",
-      text: "5+ years"
-    }];
+    let radioButtonOptions = [
+      {
+        value: "Less than 1 year",
+        text: "Less than 1 year"
+      }, {
+        value: "1-2 years",
+        text: "1-2 years"
+      }, {
+        value: "2-5 years",
+        text: "2-5 years"
+      }, {
+        value: "5+ years",
+        text: "5+ years"
+      }
+    ];
 
     return (
       <div>
         <form ref={ (form) => this.industryInfoForm = form } onSubmit={ (e) => this.handleSubmit(e) }>
-          <MultiSelect label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["industryType"] } value={ this.state.industryInfoFields.industryType }
-            options={ industryTypeOptions } autoFocus required maxValues={ 3 } autoFocus></MultiSelect>
-          <RadioButtonGroup label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates["industryExperience"] } value={ this.state.industryInfoFields.industryExperience }
-            options={ radioButtonOptions } required />
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
+          <MultiSelect label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.industryType } value={ this.state.industryType }
+            options={ industryTypeOptions } autoFocus required maxValues={ 3 }></MultiSelect>
+          <RadioButtonGroup label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates.industryExperience } value={ this.state.industryExperience }
+            options={ radioButtonOptions } required/>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+            CONTINUE
+          </button>
         </form>
       </div>
       );

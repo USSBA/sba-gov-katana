@@ -6,42 +6,50 @@ import MultiSelectBox from '../atoms/multiselect.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
-import { getSelectBoxValidationState, getCurrencyValidationState } from '../helpers/page-validator-helpers.jsx'
+import { getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
 import { Col } from 'react-bootstrap';
 
 class LoanInfo extends React.Component {
   constructor(props) {
     super();
-    let loanFields = Object.assign({}, {
-      loanAmount: "",
-      loanDescription: "",
-      loanUsage: ""
-    }, props.loanFields);
-    let validStates = {};
-    validStates = Object.assign(validStates, this.getValidationState("loanAmount", loanFields.loanAmount));
-    if (loanFields.loanDescription) {
-      validStates = Object.assign(validStates, this.getValidationState("loanDescription", loanFields.loanDescription));
-    }
+    let initialData = props.loanFields || {};
     this.state = {
-      loanFields: loanFields,
-      validStates: validStates
+      loanAmount: initialData.loanAmount || "",
+      loanDescription: initialData.loanDescription || "",
+      loanUsage: initialData.loanUsage || "",
+      validStates: {
+        industryType: null,
+        industryExperience: null
+      }
     };
   }
 
+  componentDidMount() {
+    this.validateForm();
+  }
+
+  validateForm() {
+    let validStates = {};
+    validStates = Object.assign(validStates, getCurrencyValidationState("loanAmount", this.state.loanAmount));
+    validStates = Object.assign(validStates, getSelectBoxValidationState("loanDescription", this.state.loanDescription));
+    validStates = Object.assign(validStates, getTextAlphanumeicValidationState("loanUsage", this.state.loanUsage));
+    this.setState({
+      validStates: validStates
+    })
+  }
+
   isValidForm() {
-    let validForm = true;
-    for (var inputState in this.state.validStates) {
-      if (this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null) {
-        validForm = false;
-      }
-    }
-    return validForm
+    return !containsErrorOrNull(this.state.validStates);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actions.createLoan(this.state.loanFields);
+    this.props.actions.createLoan({
+      loanAmount: this.state.loanAmount,
+      loanDescription: this.state.loanDescription,
+      loanUsage: this.state.loanUsage
+    });
     this.props.locationActions.locationChange('/linc/form/additional', {
       action: "Continue Button Pushed",
       label: "/linc/form/loan"
@@ -50,35 +58,18 @@ class LoanInfo extends React.Component {
   }
 
   handleSelectChange(newValue) {
-    let newLoanFields = _.merge(this.state.loanFields, {
+    this.setState({
       loanDescription: newValue
-    });
-    this.setState({
-      loanFields: newLoanFields
-    });
-    let validStates = this.getValidationState("loanDescription", newValue);
-    let newValidStates = _.merge(this.state.validStates, validStates);
-    this.setState({
-      validStates: newValidStates
-    });
+    }, () => this.validateForm());
   }
 
   handleChange(e) {
     let loanFields = {};
-    loanFields[e.target.name] = e.target.value;
-    this.setState({
-      loanFields: {
-        ...this.state.loanFields,
-        ...loanFields
-      }
-    });
-    let validStates = this.getValidationState(e.target.name, e.target.value);
-    this.setState({
-      validStates: {
-        ...this.state.validStates,
-        ...validStates
-      }
-    });
+    let name = e.target.name;
+    let value = e.target.value;
+    let newState = {};
+    newState[name] = value;
+    this.setState(newState, () => this.validateForm());
   }
 
   handleAmountChange(e) {
@@ -92,34 +83,16 @@ class LoanInfo extends React.Component {
     let loanFields = {};
     let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
     if (Number(num)) {
-      loanFields[e.target.name] = "$" + num.toLocaleString();
       this.setState({
-        loanFields: {
-          ...this.state.loanFields,
-          ...loanFields
-        }
+        loanAmount: "$" + num.toLocaleString()
       });
     } else {
-      loanFields[e.target.name] = "";
       this.setState({
-        loanFields: {
-          ...this.state.loanFields,
-          ...loanFields
-        }
+        loanAmount: ""
       });
     }
   }
 
-  getValidationState(name, value) {
-    let validStates = {}
-    if (name === "loanAmount") {
-      validStates = getCurrencyValidationState(name, value)
-    } else if (name === "loanDescription") {
-      validStates = getSelectBoxValidationState(name, value)
-    }
-    return validStates;
-
-  }
 
   render() {
     let loanDescriptionOptions = _.map([
@@ -146,13 +119,15 @@ class LoanInfo extends React.Component {
     return (
       <div>
         <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanFields.loanAmount }
-            getValidationState={ this.state.validStates["loanAmount"] } autoFocus required/>
-          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates["loanDescription"] }
-            value={ this.state.loanFields.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
-          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanFields.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
+          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanAmount }
+            getValidationState={ this.state.validStates.loanAmount } autoFocus required/>
+          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.loanDescription }
+            value={ this.state.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
+          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
           />
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
+          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+            CONTINUE
+          </button>
         </form>
       </div>
       );

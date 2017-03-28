@@ -81,23 +81,22 @@
     text-align: center;
     line-height: 23px;
     padding: 12px;
-    color: #609F00;
+    color: #FFFFFF;
+    background-color: #609F00;
     border: 2px solid #609F00;
-    background: none;
     border-color: #609F00;
-    border-radius: 0;
     composes: btn;
 }
 
 .seeMoreBtn:hover {
-    color: #FFFFFF;
-    background-color: #609F00;
+    background: #fff;
+    color: #609F00;
     border-color: #609F00;
 }
 
 .seeMore:hover:active {
-    color: #FFFFFF;
-    background-color: #609F00;
+    background: #fff;
+    color: #609F00;
     border-color: #609F00;
 }
 
