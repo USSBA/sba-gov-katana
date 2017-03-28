@@ -67,8 +67,8 @@ export class DynamicCounselingAndTools extends React.Component {
       return (
         <div className={ styles.counselorBox }>
           <h4>
-          { this.trimStr(counselor['title']) || "Not Available" }
-          </h4>
+                  { this.trimStr(counselor['title']) || "Not Available" }
+                  </h4>
           <p className={ styles.counselorAttr }>
             { counselor['name'] || "Not Available" }
           </p>
