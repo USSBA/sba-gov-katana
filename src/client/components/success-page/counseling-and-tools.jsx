@@ -2,9 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import *  as ContentActions from '../../actions/content.js';
+import lenderMatchHero from '../../../../public/assets/images/map.png';
 
 import { Row, Col, Button } from 'react-bootstrap';
 import styles from '../../styles/success-page/counseling-and-tools.scss';
+import { logEvent } from "../../services/analytics.js";
+
+
 
 
 export class DynamicCounselingAndTools extends React.Component {
@@ -114,6 +118,8 @@ export class DynamicCounselingAndTools extends React.Component {
           <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
         </div>
         <div className={ styles.mapContainer }>
+          <div className={ styles.mapPlaceholder }>
+          </div>
         </div>
       </div>
     )

@@ -45,11 +45,16 @@ module.exports = {
         test: /\.scss$/,
         loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"],
         exclude: [
-          path.resolve(__dirname, "src/client/styles/common/collapse.scss")
+          path.resolve(__dirname, "src/client/styles/common/collapse.scss"),
+          path.resolve(__dirname, "src/client/components/atoms/checkbox.scss")
         ]
       },
       {
         test: /.*collapse\.scss$/,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /.*checkbox\.scss$/,
         loaders: ["style-loader", "css-loader", "sass-loader"]
       },
       {

@@ -6,13 +6,9 @@ export function locationChange(targetLocation, eventConfig) {
     browserHistory.push(targetLocation);
     logEvent({
       category: "Navigation",
-      action: "Location Change",
-      label: eventConfig.label
+      action: eventConfig.action || "Location Change",
+      label: eventConfig.label || ""
     });
-  // dispatch({
-  //   type: "LOCATION_CHANGE",
-  //   path: targetLocation
-  // });
   };
 }
 

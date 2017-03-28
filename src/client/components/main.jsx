@@ -14,12 +14,14 @@ import HaxRouter from './hax-router.jsx';
 
 let middlewareList = [];
 middlewareList.push(thunk);
-middlewareList.push(logging);
+if (window.CONFIG.debug) {
+  middlewareList.push(logging);
+}
 if (window.CONFIG.googleAnalytics.enabled) {
   middlewareList.push(googleAnalyticsMiddleware);
 }
 
-const middleware = applyMiddleware(thunk, logging);
+const middleware = applyMiddleware(...middlewareList);
 const store = createStore(rootReducer, middleware);
 
 // Create an enhanced history that syncs navigation events with the store

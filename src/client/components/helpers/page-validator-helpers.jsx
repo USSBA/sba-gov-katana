@@ -66,7 +66,7 @@ export function getWebsiteValidationState(name, value) {
 }
 export function getSelectBoxValidationState(name, value) {
   let validStates = {};
-  if (value != null) {
+  if (value !== null && value.length > 0) {
     validStates[name] = "success"
   } else {
     validStates[name] = null
@@ -86,4 +86,14 @@ export function getAlwaysValidValidationState(name, value) {
   let validStates = {};
   validStates[name] = "success";
   return validStates;
+}
+
+export function containsErrorOrNull(items) {
+  let found = false;
+  for (var inputState in items) {
+    if (items[inputState] === "error" || items[inputState] === null) {
+      found = true;
+    }
+  }
+  return found;
 }
