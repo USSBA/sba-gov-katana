@@ -6,7 +6,6 @@ import styles from './progress-bar.scss';
 export class ProgressBar extends React.Component {
   constructor(props) {
     super();
-    console.log(props)
   }
 
   calcProgress() {
