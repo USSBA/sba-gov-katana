@@ -44,7 +44,7 @@ export class DynamicCounselingAndTools extends React.Component {
   }
 
   trimStr(str) {
-    return str.length > 40 ? str.slice(0, 40) + "..." : str
+    return str.length > 45 ? str.slice(0, 45) + "..." : str
   }
 
   getMiles(num) {
@@ -56,28 +56,34 @@ export class DynamicCounselingAndTools extends React.Component {
     const counselorsObj = this.state.counselors;
     return Object.keys(counselorsObj).map((key) => {
       let counselor = counselorsObj[key];
+      {
+        /*esfmt-ignore-start*/
+      }
       return (
         <div className={ styles.counselorBox }>
-          <h3 className={ styles.counselorTitle }>
-                                                                                                                                                    { this.trimStr(counselor['title']) || "Not Available" }
-                                                                                                                                                  </h3>
+          <h4>
+          { this.trimStr(counselor['title']) || "Not Available" }
+          </h4>
           <p className={ styles.counselorAttr }>
             { counselor['name'] || "Not Available" }
           </p>
-          <p className={ styles.counselorAttr }>
+          <p>
             { counselor['street'] + ", " + counselor['additional'] || "Not Available" }
           </p>
-          <p className={ styles.counselorAttr }>
+          <p>
             { counselor['city'] + ", " + counselor['province'] + " " + counselor['postal_code'] }
           </p>
-          <p className={ styles.counselorAttr }>
+          <p>
             { this.getMiles(counselor['location_distance']) + " miles away" }
           </p>
-          <p className={ styles.counselorAttr }>
+          <p>
             { counselor['phone'] ? 'Phone: ' + counselor['phone'] : "Not Available" }
           </p>
         </div>
-      )
+        );
+      {
+        /*esfmt-ignore-start*/
+      }
     });
   }
 
@@ -100,12 +106,15 @@ export class DynamicCounselingAndTools extends React.Component {
     const counselorBoxes = this.props.counselorsData;
     return (
       <div className={ styles.section }>
-        <h2 className={ styles.title }>Get free, personalized help from a local counselor</h2>
-        <h5 className={ styles.subTitle }>Local Counselors can help you prepare materials and introduce you to additional lenders</h5>
+        <h2>Free local counseling.</h2>
+        <h5>Local counselors can offer free, personalized help with preparing your loan application.
+       Some counseling offices can also introduce you to additional lenders.</h5>
         <div className={ styles.counselorContainer }>
           { this.displayCounselors() }
+          <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
         </div>
-        <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
+        <div className={ styles.mapContainer }>
+        </div>
       </div>
     )
   }
@@ -115,7 +124,9 @@ export class DynamicCounselingAndTools extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoData: state.lenderMatch.businessInfoData,
+    businessInfoData: state.lenderMatch.businessInfoData || {
+        businessInfoZipcode: 20005
+    },
     counselorsData: state.contentReducer["counselors"]
   };
 }

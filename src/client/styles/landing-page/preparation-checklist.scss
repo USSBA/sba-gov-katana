@@ -24,7 +24,6 @@
         margin-bottom: 30px;
     }
     .checklist {
-        overflow: auto;
         &::after {
             content: "";
             clear: both;

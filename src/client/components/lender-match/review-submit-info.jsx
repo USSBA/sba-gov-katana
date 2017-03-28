@@ -36,11 +36,11 @@ class ReviewSubmitInfoForm extends React.Component {
   render() {
     return (
       <div>
-        <ContactSection contactInfoData={ this.props.contactInfoData } editPath="/linc/form/contact" />
-        <BusinessSection businessInfoData={ this.props.businessInfoData } editPath="/linc/form/business" />
-        <IndustrySection industryInfoData={ this.props.industryInfoData } editPath="/linc/form/industry" />
-        <LoanSection loanData={ this.props.loanData } editPath="/linc/form/loan" />
-        <AdditionalSection additionalInfoData={ this.props.additionalInfoData } editPath="/linc/form/additional" />
+        <ContactSection contactInfoData={ this.props.contactInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/contact") } />
+        <BusinessSection businessInfoData={ this.props.businessInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/business") } />
+        <IndustrySection industryInfoData={ this.props.industryInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/industry") } />
+        <LoanSection loanData={ this.props.loanData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/loan") } />
+        <AdditionalSection additionalInfoData={ this.props.additionalInfoData } onEditClick={ () => this.props.locationActions.locationChange("/linc/form/additional") } />
         <form ref={ (input) => this.reviewSubmitInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <button className={ styles.submitBtn } type="submit"> SUBMIT </button>
         </form>
@@ -83,7 +83,7 @@ class ReviewSubmitInfoForm extends React.Component {
 // };
 
 const EditButton = (props) => {
-  return (<button className={ styles.editBtn } onClick={ () => this.props.locationActions.locationChange(props.editPath) }>Edit</button>);
+  return (<button className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
 };
 
 const ContactSection = (props) => {
@@ -100,7 +100,7 @@ const ContactSection = (props) => {
       <p className={ styles.field }>
         { contact.contactEmailAddress }
       </p>
-      <EditButton editPath={ props.editPath } />
+      <EditButton onEditClick={ props.onEditClick } />
     </div>
   )
 };
@@ -122,7 +122,7 @@ const BusinessSection = (props) => {
       <p className={ styles.field }>
         { business.businessInfoDescription }
       </p>
-      <EditButton editPath={ props.editPath } />
+      <EditButton onEditClick={ props.onEditClick } />
     </div>
   )
 };
@@ -138,7 +138,7 @@ const IndustrySection = (props) => {
       <p className={ styles.field }>
         { industry.industryExperience }
       </p>
-      <EditButton editPath={ props.editPath } />
+      <EditButton onEditClick={ props.onEditClick } />
     </div>
   )
 };
@@ -157,7 +157,7 @@ const LoanSection = (props) => {
       <p className={ styles.field }>
         { loan.loanDescription }
       </p>
-      <EditButton editPath={ props.editPath } />
+      <EditButton onEditClick={ props.onEditClick } />
     </div>
   )
 };
@@ -174,7 +174,7 @@ const AdditionalSection = (props) => {
           { additionalInfo.hasWrittenPlan ? <p className={ styles.field }>I have a written business plan</p> : null }
           { additionalInfo.hasFinancialProjections ? <p className={ styles.field }>I have financial projections</p> : null }
           { additionalInfo.isVeteran ? <p className={ styles.field }>I'm a veteran</p> : null }
-          <EditButton editPath={ props.editPath } />
+          <EditButton onEditClick={ props.onEditClick } />
         </div>
         ) : null }
     </div>
