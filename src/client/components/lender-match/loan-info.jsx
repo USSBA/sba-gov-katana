@@ -8,7 +8,7 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import { getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
-import { Col } from 'react-bootstrap';
+import clientConfig from "../../services/config.js";
 
 class LoanInfo extends React.Component {
   constructor(props) {
@@ -121,11 +121,11 @@ class LoanInfo extends React.Component {
       <div>
         <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanAmount }
-            getValidationState={ this.state.validStates.loanAmount } autoFocus required/>
-          <MultiSelectBox placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.loanDescription }
-            value={ this.state.loanDescription } options={ loanDescriptionOptions } required maxValues={ 3 }></MultiSelectBox>
-          <TextArea label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
-          />
+            getValidationState={ this.state.validStates.loanAmount } autoFocus />
+          <MultiSelectBox errorText={ clientConfig.messages.validation.invalidLoanDescription } placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) }
+            getValidationState={ this.state.validStates.loanDescription } value={ this.state.loanDescription } options={ loanDescriptionOptions } maxValues={ 3 }></MultiSelectBox>
+          <TextArea errorText={ clientConfig.messages.validation.invalidLoanUsage } label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanUsage }
+                    getValidationState={ this.state.validStates.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
             CONTINUE
           </button>

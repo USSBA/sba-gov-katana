@@ -87,9 +87,9 @@ var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 
 lenderMatchRegistration.sync();
 lenderMatchSoapResponse.sync();
+lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 
 export { lenderMatchRegistration, lenderMatchSoapResponse };

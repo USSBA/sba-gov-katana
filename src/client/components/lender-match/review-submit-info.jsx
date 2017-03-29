@@ -61,7 +61,7 @@ class ReviewSubmitInfoForm extends React.Component {
 }
 
 const EditButton = (props) => {
-  return (<button className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
+  return (<button autoFocus={props.autofocus} className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
 };
 
 const ContactSection = (props) => {
@@ -78,7 +78,7 @@ const ContactSection = (props) => {
       <p className={ styles.field }>
         { contact.contactEmailAddress }
       </p>
-      <EditButton onEditClick={ props.onEditClick } />
+      <EditButton autofocus={true} onEditClick={ props.onEditClick } />
     </div>
   )
 };

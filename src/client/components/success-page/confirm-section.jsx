@@ -6,16 +6,20 @@ import styles from '../../styles/success-page/confirm-section.scss';
 import thumbNail from '../../../../public/assets/images/placeholder370x170.png';
 import * as ConfirmationEmailActions from '../../actions/confirmation-email.js';
 
-const ConfirmSubSection = (props) => (
-  <Col className={ styles.display }>
-  <Image src={ props.image } />
-  <a className={ styles.subtitle } href={ props.linkRef }>
-    { props.title }
-  </a>
-  <p className={ styles.subpara }>
-    { props.subTitle }
-  </p>
-  </Col>
+const Resource = (props) => (
+  <div className={ styles.resource }>
+    <h4>{ props.title }</h4>
+    <p>
+      { props.duration }
+    </p>
+    <hr />
+    <p>
+      { props.description }
+    </p>
+    <button className={ styles.seeMoreBtn } href={ props.buttonURL } target="_blank">
+      { props.buttonText }
+    </button>
+  </div>
 );
 
 class ConfirmSection extends React.Component {
@@ -25,33 +29,19 @@ class ConfirmSection extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <Col xs={ 12 } className={ styles.section }>
-        <Row>
-          { /*esfmt-ignore-start*/}
-            <h2 className={styles.title + " text-center"}>
-              You're almost done! Confirm your e-mail to get matched
-            </h2>
-            {/*esfmt-ignore-end*/ }
-        </Row>
-        <Row>
-          <Col xs={ 6 } xsOffset={ 3 }>
-          <p className="text-center">
-            Don't see the confirmation in your inbox?
-            <a onClick={ this.resend.bind(this) }>Click here</a> to resend</p>
-          </Col>
-        </Row>
-        <Row style={ { marginTop: "40px", marginBottom: "40px" } }>
-          <Col md={ 5 } mdOffset={ 0 } sm={ 12 } xs={ 12 }>
-          <ConfirmSubSection image={ thumbNail } title="How to prepare a loan proposal" subTitle="Learning Course 30 Minute Video" linkRef="https://www.sba.gov/offices/district/nd/fargo/resources/how-prepare-loan-proposal"
-          />
-          </Col>
-          <Col md={ 5 } mdOffset={ 2 } sm={ 12 } xs={ 12 }>
-          <ConfirmSubSection image={ thumbNail } title="5 Tips for navigating a loan application" subTitle="Blog 12 Minute Read" linkRef="https://www.sba.gov/blogs/5-tips-successfully-navigating-sba-loan-application-process"
-          />
-          </Col>
-        </Row>
-        </Col>
+      // Section
+      <div className={ styles.section }>
+        <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
+        <h5>We sent an email to {this.props.email}. Click on the verification link inside.
+        <br />Don’t see a confirmation email? <a href="">Click here to resend.</a></h5>
+        <div className={ styles.resources }>
+          <Resource title="Free business plan template" duration="1-hour activity" description="You stated you don’t have a business plan. Many lenders expect one — consider using this template."
+            buttonURL="http://google.com" buttonText="Create Plan" />
+          <Resource title="How to prep a loan proposal" duration="30-minute video" description="This video learning course will walk you through commonly requested documents."
+            buttonURL="http://google.com" buttonText="Watch Video" />
+          <Resource title="5 Tips for loan applications" duration="5-minute read" description="This blog features tips and tricks on getting through the loan process quickly and easily."
+            buttonURL="http://google.com" buttonText="Read Blog" />
+        </div>
       </div>
     )
   }
@@ -61,6 +51,7 @@ class ConfirmSection extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
+    name: reduxState.lenderMatch.contactInfoData ? reduxState.lenderMatch.contactInfoData.contactFullName : "SBA",
     email: reduxState.lenderMatch.contactInfoData ? reduxState.lenderMatch.contactInfoData.contactEmailAddress : "sba@sba.gov"
   };
 }

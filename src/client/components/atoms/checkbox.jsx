@@ -6,18 +6,21 @@ class CheckBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkboxFocus: false,
-      labelFocus: false
+      checkboxFocus: false
     };
   }
 
-  handleCheckboxFocus() {
+  handleCheckboxFocus(e) {
+    console.log(e.target);
+    console.log("FOCUSSS");
     this.setState({
       checkboxFocus: true
     })
   }
 
-  handleCheckboxBlur() {
+  handleCheckboxBlur(e) {
+    console.log(e.target);
+    console.log("BLURR");
     this.setState({
       checkboxFocus: false
     })
@@ -26,13 +29,10 @@ class CheckBox extends React.Component {
 
   containerStyle() {
     if (this.state.checkboxFocus) {
-      console.log("focused");
       return "rc-checkbox-container-focused"
     } else if (this.props.checked) {
-      console.log("checked");
       return "rc-checkbox-container-checked"
     } else {
-      console.log("normal");
       return "rc-checkbox-container"
     }
   }
@@ -41,7 +41,12 @@ class CheckBox extends React.Component {
     return (
       <div className={ this.containerStyle() }>
         <label className="rc-checkbox-label">
-          <Checkbox name={ this.props.name } checked={ this.props.checked } onChange={ this.props.handleChange } onFocus={ this.handleCheckboxFocus.bind(this) } onBlur={ this.handleCheckboxBlur.bind(this) } autoFocus={ this.props.autoFocus }
+          <Checkbox name={ this.props.name } checked={ this.props.checked } onChange={ this.props.handleChange } onFocus={ (e) => {
+                                                                                                                           
+                                                                                                                             this.handleCheckboxFocus(e)
+                                                                                                                           } } onBlur={ (e) => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   this.handleCheckboxBlur(e)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 } } autoFocus={ this.props.autoFocus }
           />
           { this.props.label }
         </label>

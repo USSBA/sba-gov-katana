@@ -7,7 +7,7 @@ import * as LocationChangeActions from '../../actions/location-change.js';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
-import { Col } from 'react-bootstrap';
+import clientConfig from "../../services/config.js";
 
 
 
@@ -113,13 +113,13 @@ class BusinessInfoForm extends React.Component {
       <div>
         <form ref={ (input) => this.businessInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <TextInput label="What is the name of your business?" name="businessInfoName" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoName } getValidationState={ this.state.validStates["businessInfoName"] }
-            autoFocus required />
-          <TextInput label="What is the business ZIP code?" name="businessInfoZipcode" handleChange={ this.handleZipcodeChange.bind(this) } value={ this.state.businessInfoFields.businessInfoZipcode } getValidationState={ this.state.validStates["businessInfoZipcode"] }
-            maxLength="5" required />
+            autoFocus />
+          <TextInput errorText={ clientConfig.messages.validation.invalidZip } label="What is the business ZIP code?" name="businessInfoZipcode" handleChange={ this.handleZipcodeChange.bind(this) } value={ this.state.businessInfoFields.businessInfoZipcode }
+            getValidationState={ this.state.validStates["businessInfoZipcode"] } maxLength="5" />
           <TextInput label="What is your business website?" name="businessInfoWebsite" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoWebsite } getValidationState={ this.state.validStates["businessInfoWebsite"] }
             placeholder="Optional" />
           <TextArea label="Describe what your business does" name="businessInfoDescription" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoDescription } getValidationState={ this.state.validStates["businessInfoDescription"] }
-            placeholder="My neighborhood pizza restaurant specializes in serving fast cuisine made with high-quality, local ingredients..." required />
+            placeholder="My neighborhood pizza restaurant specializes in serving fast cuisine made with high-quality, local ingredients..." />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
         </form>
       </div>

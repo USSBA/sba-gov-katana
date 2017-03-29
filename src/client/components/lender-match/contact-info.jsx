@@ -7,7 +7,7 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
 import styles from './lender-match.scss';
-import { Col } from 'react-bootstrap';
+import clientConfig from "../../services/config.js";
 
 
 class ContactInfoForm extends React.Component {
@@ -105,12 +105,12 @@ class ContactInfoForm extends React.Component {
     return (
       <div>
         <form ref={ (input) => this.contactInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <TextInput errText="Doesn't look like a valid name." label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName }
-            getValidationState={ this.state.validStates["contactFullName"] } autoFocus required />
-          <TextInput errText="Doesn't look like a valid phone number." label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber }
-            getValidationState={ this.state.validStates["contactPhoneNumber"] } required />
-          <TextInput errText="Doesn't look like a valid email address." label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress }
-            getValidationState={ this.state.validStates["contactEmailAddress"] } required />
+          <TextInput errorText={ clientConfig.messages.validation.invalidName } label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName } getValidationState={ this.state.validStates["contactFullName"] }
+            autoFocus />
+          <TextInput errorText={ clientConfig.messages.validation.invalidPhoneNumber } label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber }
+            getValidationState={ this.state.validStates["contactPhoneNumber"] } />
+          <TextInput errorText={ clientConfig.messages.validation.invalidEmail } label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress }
+            getValidationState={ this.state.validStates["contactEmailAddress"] } />
           { /* HoneyPot -- this comment should not appear in the minified code*/ }
           <TextInput hidden={ true } label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) }
             getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] } />
