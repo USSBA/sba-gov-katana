@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { TextInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
 import MultiSelect from '../atoms/multiselect.jsx';
 import RadioButtonGroup from '../atoms/radio.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
@@ -10,6 +9,7 @@ import { FormPanel } from '../common/form-styling.jsx'
 import { getSelectBoxValidationState, containsErrorOrNull } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
 import _ from "lodash";
+import clientConfig from "../../services/config.js";
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
@@ -67,6 +67,11 @@ class IndustryInfoForm extends React.Component {
     }, () => this.validateForm());
   }
 
+  handleBlur() {
+    console.log('blur ii');
+    this.validateForm();
+  }
+
   render() {
     let industryTypeOptions = _.map([
       "Advertising/Marketing",
@@ -117,10 +122,10 @@ class IndustryInfoForm extends React.Component {
     return (
       <div>
         <form ref={ (form) => this.industryInfoForm = form } onSubmit={ (e) => this.handleSubmit(e) }>
-          <MultiSelect label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.industryType } value={ this.state.industryType }
-            options={ industryTypeOptions } autoFocus maxValues={ 3 }></MultiSelect>
-          <RadioButtonGroup label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates.industryExperience } value={ this.state.industryExperience }
-            options={ radioButtonOptions } />
+          <MultiSelect errorText={ clientConfig.messages.validation.invalidIndustry } label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.industryType }
+            value={ this.state.industryType } options={ industryTypeOptions } autoFocus maxValues={ 3 }></MultiSelect>
+          <RadioButtonGroup errorText={ clientConfig.messages.validation.invalidIndustryExperience } label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } validationState={ this.state.validStates.industryExperience }
+            value={ this.state.industryExperience } options={ radioButtonOptions } onBlur={ this.handleBlur.bind(this) } />
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
             CONTINUE
           </button>

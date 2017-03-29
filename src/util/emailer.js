@@ -2,21 +2,17 @@ import * as nodemailer from "nodemailer";
 import config from "config";
 import Promise from "bluebird";
 import _ from "lodash";
-var connectionOptions = {
-  secure: true,
-  host: config.get("email.hostname"),
-  auth: {
-    user: config.get("email.username"),
-    pass: config.get("email.password")
-  },
-  logger: true,
-  debug: true
-};
-var transporter = nodemailer.createTransport(connectionOptions);
+
+var transporter = nodemailer.createTransport({
+  sendmail: true,
+  newline: 'unix',
+  path: '/usr/sbin/sendmail'
+});
 
 function sendConfirmationEmail(options) {
   return new Promise((resolve, reject) => {
-    var defaultMailOptions = { from : config.get("email.sender"),
+    var defaultMailOptions = {
+      from: config.get("email.sender"),
       to: config.get("email.sender"),
       subject: "SBA Test Email",
       text: "Test Email",
@@ -38,4 +34,6 @@ function sendConfirmationEmail(options) {
     }
   });
 }
-export { sendConfirmationEmail };
+export {
+  sendConfirmationEmail
+};

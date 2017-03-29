@@ -14,16 +14,12 @@ googleAnalytics:
     debug: false
 drupal:
     hostname: http://localhost/
-    enablePassThrough: false
     endpoint: rest
 server:
     port: 3000
 email:
     debugEmailOnly: false
     sender: '"Small Business Administration" <lendermatch@sba.gov>'
-    hostname: placeholder
-    username: placeholder
-    password: placeholder
 linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
     resendEmailCron: '0 0 * * * *'
