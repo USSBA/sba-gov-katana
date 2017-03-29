@@ -10,7 +10,7 @@
     "build": "scripts/build.sh",
     "test": "jest test/",
     "lint": "eslint src --fix",
-    "format": "esformatter -i 'src/**/*.js?(x)'",
+    "format": "esformatter -i 'src/**/*.js'",
     "clean": "rm -rf dist && rm -rf public/build",
     "test2": "mocha test2/helpers/browser.js test2/**/*.test.js"
   },
