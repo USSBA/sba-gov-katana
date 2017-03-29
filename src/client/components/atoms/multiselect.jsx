@@ -15,7 +15,8 @@ class MultiSelectBox extends React.Component {
   }
   render() {
     let arrayValue = this.props.value ? this.props.value.split(",") : [];
-    let errorMessage = this.props.validationState == 'error' ? <p className={ styles.errorText }> { errorText } </p> : undefined;
+    let errorMessage = this.props.validationState == 'error' ? <p className={ styles.errorText }>
+                                                                 { errorText } </p> : undefined;
     return (
       <FormGroup validationState={ this.props.getValidationState }>
         <ControlLabel className={ styles.controlLabel }>
@@ -23,7 +24,7 @@ class MultiSelectBox extends React.Component {
         </ControlLabel>
         <ReactSelect tabSelectsValue={ false } multi={ true } onChange={ this.handleChange.bind(this) } name={ this.props.name } require={ this.props.required }
           autofocus={ this.props.autoFocus } value={ arrayValue } options={ this.props.options } />
-        {errorMessage}
+        { errorMessage }
       </FormGroup>
       );
   }

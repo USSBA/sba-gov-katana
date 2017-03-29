@@ -105,11 +105,11 @@ class ContactInfoForm extends React.Component {
     return (
       <div>
         <form ref={ (input) => this.contactInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <TextInput errorText={clientConfig.messages.validation.invalidName} label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName }
-            getValidationState={ this.state.validStates["contactFullName"] } autoFocus />
-          <TextInput errorText={clientConfig.messages.validation.invalidPhoneNumber}label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber }
+          <TextInput errorText={ clientConfig.messages.validation.invalidName } label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName } getValidationState={ this.state.validStates["contactFullName"] }
+            autoFocus />
+          <TextInput errorText={ clientConfig.messages.validation.invalidPhoneNumber } label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber }
             getValidationState={ this.state.validStates["contactPhoneNumber"] } />
-          <TextInput errorText={clientConfig.messages.validation.invalidEmail}  label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress }
+          <TextInput errorText={ clientConfig.messages.validation.invalidEmail } label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress }
             getValidationState={ this.state.validStates["contactEmailAddress"] } />
           { /* HoneyPot -- this comment should not appear in the minified code*/ }
           <TextInput hidden={ true } label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) }

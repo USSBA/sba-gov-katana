@@ -12,7 +12,7 @@ const clientConfig = {
       invalidIndustry: "Please select at least 1 industry.",
       invalidIndustryExperience: "Please estimate your experience.",
       invalidLoanUsage: "Please select at least 1 use of funds.",
-      invalidLoanDescription: "Please provide a brief description.",
+      invalidLoanDescription: "Please provide a brief description."
     }
   }
 };
