@@ -39,20 +39,19 @@ class CheckBox extends React.Component {
 
   render() {
     return (
-      /*esfmt-ignore-start*/
       <div className={ this.containerStyle() }>
         <label className="rc-checkbox-label">
           <Checkbox name={ this.props.name } checked={ this.props.checked } onChange={ this.props.handleChange } onFocus={ (e) => {
-            this.handleCheckboxFocus(e)
-          } } onBlur={ (e) => {
-            this.handleCheckboxBlur(e)
-          } } autoFocus={ this.props.autoFocus }
+                                                                                                                           
+                                                                                                                             this.handleCheckboxFocus(e)
+                                                                                                                           } } onBlur={ (e) => {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   this.handleCheckboxBlur(e)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 } } autoFocus={ this.props.autoFocus }
           />
           { this.props.label }
         </label>
       </div>
-      /*esfmt-ignore-end*/
-    );
+      );
   }
 }
 
