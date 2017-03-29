@@ -9,6 +9,7 @@ RUN mv /tmp/node_modules /usr/src/app/
 COPY src/views /usr/src/app/views
 COPY public /usr/src/app/public
 COPY dist /usr/src/app/
+RUN ln -s /mnt/sbin/sendmail /usr/sbin/sendmail
 
 EXPOSE 3000
 
