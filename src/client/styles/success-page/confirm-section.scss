@@ -1,11 +1,5 @@
 @import "../buttons";
 @import "../atoms/grid";
-@media (max-width: 767px) {
-    body {
-        margin-top: 16vw;
-    }
-}
-
 .section {
     width: 84vw;
     margin: 0 auto 70px;
