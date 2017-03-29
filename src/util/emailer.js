@@ -5,14 +5,13 @@ import _ from "lodash";
 
 var transporter = nodemailer.createTransport({
   sendmail: true,
-  newline: 'unix',
-  path: '/usr/sbin/sendmail'
+  newline: "unix",
+  path: "/usr/sbin/sendmail"
 });
 
 function sendConfirmationEmail(options) {
   return new Promise((resolve, reject) => {
-    var defaultMailOptions = {
-      from: config.get("email.sender"),
+    var defaultMailOptions = { from : config.get("email.sender"),
       to: config.get("email.sender"),
       subject: "SBA Test Email",
       text: "Test Email",
@@ -34,6 +33,4 @@ function sendConfirmationEmail(options) {
     }
   });
 }
-export {
-  sendConfirmationEmail
-};
+export { sendConfirmationEmail };
