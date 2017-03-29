@@ -7,12 +7,18 @@ import thumbNail from '../../../../public/assets/images/placeholder370x170.png';
 import * as ConfirmationEmailActions from '../../actions/confirmation-email.js';
 
 const Resource = (props) => (
-  <div className={ styles.resource}>
+  <div className={ styles.resource }>
     <h4>{ props.title }</h4>
-    <p>{ props.duration }</p>
+    <p>
+      { props.duration }
+    </p>
     <hr />
-    <p>{ props.description }</p>
-    <button className={ styles.seeMoreBtn } href={ props.buttonURL } target="_blank">{ props.buttonText }</button>
+    <p>
+      { props.description }
+    </p>
+    <button className={ styles.seeMoreBtn } href={ props.buttonURL } target="_blank">
+      { props.buttonText }
+    </button>
   </div>
 );
 
@@ -27,11 +33,14 @@ class ConfirmSection extends React.Component {
       <div className={ styles.section }>
         <h1>Ryan, check your email.</h1>
         <h5>We sent an email to ryan.hillard@sba.gov. Click on the verification link inside.
-        <br />Don’t see a confirmation email? <a href="">Click here to resend.</a></h5>
+              <br />Don’t see a confirmation email? <a href="">Click here to resend.</a></h5>
         <div className={ styles.resources }>
-          <Resource title="Free business plan template" duration="1-hour activity" description="You stated you don’t have a business plan. Many lenders expect one — consider using this template." buttonURL="http://google.com" buttonText="Create Plan" />
-          <Resource title="How to prep a loan proposal" duration="30-minute video" description="This video learning course will walk you through commonly requested documents." buttonURL="http://google.com" buttonText="Watch Video" />
-          <Resource title="5 Tips for loan applications" duration="5-minute read" description="This blog features tips and tricks on getting through the loan process quickly and easily." buttonURL="http://google.com" buttonText="Read Blog" />
+          <Resource title="Free business plan template" duration="1-hour activity" description="You stated you don’t have a business plan. Many lenders expect one — consider using this template."
+            buttonURL="http://google.com" buttonText="Create Plan" />
+          <Resource title="How to prep a loan proposal" duration="30-minute video" description="This video learning course will walk you through commonly requested documents."
+            buttonURL="http://google.com" buttonText="Watch Video" />
+          <Resource title="5 Tips for loan applications" duration="5-minute read" description="This blog features tips and tricks on getting through the loan process quickly and easily."
+            buttonURL="http://google.com" buttonText="Read Blog" />
         </div>
       </div>
     )

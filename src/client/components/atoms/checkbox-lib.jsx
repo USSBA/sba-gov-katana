@@ -76,6 +76,10 @@ export default class Checkbox extends React.Component {
     });
   };
 
+  handleCheckboxClick(e){
+    this.checkBox.focus();
+  }
+
 /*esfmt-ignore-start*/
   render() {
     const {prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
@@ -89,6 +93,7 @@ export default class Checkbox extends React.Component {
       <span className={ classString } style={ style }>
         <input
             name={ name }
+            ref={(input) => {this.checkBox = input;}}
             autoFocus={ autoFocus }
             type={ type }
             readOnly={ readOnly }
@@ -96,7 +101,7 @@ export default class Checkbox extends React.Component {
             tabIndex={ tabIndex }
             className={ `${prefixCls}-input` }
             checked={ !!checked }
-            onClick={ onClick }
+            onClick={ (e) => {this.handleCheckboxClick(e)} }
             onFocus={ onFocus }
             onBlur={ onBlur }
             onChange={ this.handleChange }
