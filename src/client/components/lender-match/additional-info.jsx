@@ -8,7 +8,7 @@ import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './lender-match.scss';
 import addInfoStyles from './additional-info.scss'
-
+import clientConfig from "../../services/config.js";
 
 
 export class AdditionalInfoForm extends React.Component {

@@ -16,7 +16,7 @@ export class CurrencyInput extends React.Component {
 }
 
 
-export const TextInput = ({handleChange, getValidationState, errText, hidden, ...props}) => {
+export const TextInput = ({handleChange, getValidationState, errorText, hidden, ...props}) => {
 
   function iconValidation() {
     return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textInputIconValid } aria-hidden="true"></i> : null
@@ -27,8 +27,8 @@ export const TextInput = ({handleChange, getValidationState, errText, hidden, ..
   }
 
   function errMsg() {
-    return getValidationState == 'error' ? <p className={ styles.errText }>
-                                             { errText }
+    return getValidationState == 'error' ? <p className={ styles.errorText }>
+                                             { errorText }
                                            </p> : null
   }
 
@@ -45,7 +45,7 @@ export const TextInput = ({handleChange, getValidationState, errText, hidden, ..
     </div>);
 };
 
-export const TextArea = ({handleChange, getValidationState, errText, hidden, ...props}) => {
+export const TextArea = ({handleChange, getValidationState, errorText, hidden, ...props}) => {
 
   function iconValidation() {
     return getValidationState == 'success' ? <i className={ "fa fa-check-circle " + styles.textAreaIconValid } aria-hidden="true"></i> : null
@@ -56,8 +56,8 @@ export const TextArea = ({handleChange, getValidationState, errText, hidden, ...
   }
 
   function errMsg() {
-    return getValidationState == 'error' ? <p className={ styles.errText }>
-                                             { errText }
+    return getValidationState == 'error' ? <p className={ styles.errorText }>
+                                             { errorText }
                                            </p> : null
   }
 
@@ -84,4 +84,3 @@ export const SelectBox = ({handleChange, label, getValidationState, ...props}) =
                                                                                     <FormControl {...props} onChange={ handleChange } componentClass="select" />
                                                                                   </FormGroup>
                                                                                   </Col>;
-

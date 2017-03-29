@@ -7,7 +7,7 @@ import * as LocationChangeActions from '../../actions/location-change.js';
 import { FormPanel } from '../common/form-styling.jsx'
 import { getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState } from '../helpers/page-validator-helpers.jsx'
 import styles from './lender-match.scss';
-import { Col } from 'react-bootstrap';
+import clientConfig from "../../services/config.js";
 
 
 
@@ -114,7 +114,7 @@ class BusinessInfoForm extends React.Component {
         <form ref={ (input) => this.businessInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
           <TextInput label="What is the name of your business?" name="businessInfoName" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoName } getValidationState={ this.state.validStates["businessInfoName"] }
             autoFocus />
-          <TextInput label="What is the business ZIP code?" name="businessInfoZipcode" handleChange={ this.handleZipcodeChange.bind(this) } value={ this.state.businessInfoFields.businessInfoZipcode } getValidationState={ this.state.validStates["businessInfoZipcode"] }
+          <TextInput errorText={clientConfig.messages.validation.invalidZip} label="What is the business ZIP code?" name="businessInfoZipcode" handleChange={ this.handleZipcodeChange.bind(this) } value={ this.state.businessInfoFields.businessInfoZipcode } getValidationState={ this.state.validStates["businessInfoZipcode"] }
             maxLength="5" />
           <TextInput label="What is your business website?" name="businessInfoWebsite" handleChange={ this.handleChange.bind(this) } value={ this.state.businessInfoFields.businessInfoWebsite } getValidationState={ this.state.validStates["businessInfoWebsite"] }
             placeholder="Optional" />
