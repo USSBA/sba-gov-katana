@@ -60,8 +60,39 @@ class ReviewSubmitInfoForm extends React.Component {
   ;
 }
 
+let contactInfoData = {
+  contactEmailAddress: "blahblah@gmail.com",
+  contactFullName: "Alexander Nelson",
+  contactPhoneNumber: "7037574642"
+};
+
+let industryInfoData = {
+  industryExperience: "",
+  industryType: "Automotive/Service Station,Energy"
+};
+
+let additionalInfoData = {
+  hasFinancialProjections: false,
+  hasWrittenPlan: false,
+  isGeneratingRevenue: false,
+  isVeteran: false
+};
+
+let businessInfoData = {
+  businessInfoDescription: "It is a business that does some interesting things yeah. It does a lot of interesting things and this paragraphs should be long enough to simulate stuff.",
+  businessInfoName: "Propers Pizza Palace",
+  businessInfoWebsite: "suhdude.com",
+  businessInfoZipcode: "22066"
+};
+
+let loanData = {
+  loanAmount: "$234,234,234",
+  loanDescription: "Developing a Product,Participating in Trade Show",
+  loanUsage: "This will be used to make some good business and make things very profitable for my stakeholders."
+};
+
 const EditButton = (props) => {
-  return (<button className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
+  return (<button autoFocus={props.autofocus} className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
 };
 
 const ContactSection = (props) => {
@@ -78,7 +109,7 @@ const ContactSection = (props) => {
       <p className={ styles.field }>
         { contact.contactEmailAddress }
       </p>
-      <EditButton onEditClick={ props.onEditClick } />
+      <EditButton autofocus={true} onEditClick={ props.onEditClick } />
     </div>
   )
 };
@@ -163,11 +194,11 @@ const AdditionalSection = (props) => {
 
 function mapStateToProps(state) {
   return {
-    loanData: state.lenderMatch.loanData,
-    additionalInfoData: state.lenderMatch.additionalInfoData,
-    contactInfoData: state.lenderMatch.contactInfoData,
-    businessInfoData: state.lenderMatch.businessInfoData,
-    industryInfoData: state.lenderMatch.industryInfoData
+    loanData: loanData, //state.lenderMatch.loanData,
+    additionalInfoData: additionalInfoData, //state.lenderMatch.additionalInfoData,
+    contactInfoData: contactInfoData, //state.lenderMatch.contactInfoData,
+    businessInfoData: businessInfoData, //state.lenderMatch.businessInfoData,
+    industryInfoData: industryInfoData //state.lenderMatch.industryInfoData
   };
 }
 

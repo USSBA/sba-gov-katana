@@ -59,7 +59,7 @@ $money-green: #609F00;
     top: -17px;
     bottom: 0;
     right: 0;
-    width: 350px;
+    width: 360px;
     height: 47px;
 }
 /* 选中状态 */
@@ -136,7 +136,7 @@ $money-green: #609F00;
 
 .rc-checkbox-container {
     position: relative;
-    width: 360px;
+    width: 100%;
     height: 48px;
     border: 1px solid #C4C4C4;
     margin-bottom: 10px;
@@ -144,7 +144,7 @@ $money-green: #609F00;
 
 .rc-checkbox-container-checked {
     position: relative;
-    width: 360px;
+    width: 100%;
     height: 48px;
     border: 1px solid #666666;
     margin-bottom: 10px;
