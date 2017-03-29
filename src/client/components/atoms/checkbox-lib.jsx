@@ -76,7 +76,7 @@ export default class Checkbox extends React.Component {
     });
   };
 
-  handleCheckboxClick(e){
+  handleCheckboxClick(e) {
     this.checkBox.focus();
   }
 
