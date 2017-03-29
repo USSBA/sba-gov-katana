@@ -88,7 +88,7 @@ let businessInfoData = {
 let loanData = {
   loanAmount: "$234,234,234",
   loanDescription: "Developing a Product,Participating in Trade Show",
-  loanUsage: "This will be used to make some good business and make things very profitable for my stakeholders."
+  loanUsage: "This will be used to make somegoodsdfsdfsdfsdfsdfsdfsdfsdsomegoodsdfsdfsdfsdfsdfsdfsdfsdsomegoodsdfsdfsdfsdfsdfsdfsdfsdsomegoodsdfsdfsdfsdfsdfsdfsdfsd"
 };
 
 const EditButton = (props) => {
