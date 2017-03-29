@@ -119,7 +119,7 @@ class IndustryInfoForm extends React.Component {
         <form ref={ (form) => this.industryInfoForm = form } onSubmit={ (e) => this.handleSubmit(e) }>
           <MultiSelect errorText={clientConfig.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.industryType } value={ this.state.industryType }
             options={ industryTypeOptions } autoFocus maxValues={ 3 }></MultiSelect>
-          <RadioButtonGroup errorText={clientConfig.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } getValidationState={ this.state.validStates.industryExperience } value={ this.state.industryExperience }
+        <RadioButtonGroup errorText={clientConfig.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } validationState={ this.state.validStates.industryExperience } value={ this.state.industryExperience }
             options={ radioButtonOptions }/>
           <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
             CONTINUE

@@ -35,6 +35,9 @@ class RadioButtonGroup extends React.Component {
                <span className={ styles.radioText }>{ item.text }</span>
              </div>;
     });
+
+    let errorMessage = this.props.validationState == 'error' ? <p className={ styles.errorText }> { errorText } </p> : undefined;
+
     return (
       <div>
         <label className={ formHelperStyles.controlLabel }>
@@ -43,6 +46,7 @@ class RadioButtonGroup extends React.Component {
         <div>
           { radioButtons }
         </div>
+        {errorMessage}
       </div>
       );
   }
