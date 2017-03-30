@@ -23,11 +23,23 @@ const Resource = (props) => (
 );
 
 class ConfirmSection extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+            resendClicked: false
+        };
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.setState({resendClicked: true});
+    }
   resend() {
     this.props.actions.resendConfirmationEmail(this.props.email);
   }
 
   render() {
+      let resendLink = this.state.resendClicked ? <span>Email was re-sent.</span> : <a onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
     return (
       // Section
       <div className={ styles.section }>
@@ -47,7 +59,6 @@ class ConfirmSection extends React.Component {
   }
 
 }
-;
 
 function mapReduxStateToProps(reduxState) {
   return {

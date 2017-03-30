@@ -7,7 +7,7 @@ import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
 ///import * as Sequelize from "sequelize";
-import { drupal, nonDrupal } from "../../src/models/db-connect.js";
+import { drupal, nonDrupal } from "../models/db-connect.js";
 
 import { sendConfirmationEmail } from "../util/emailer.js";
 import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
