@@ -55,18 +55,42 @@ function queryDataToJson(data) {
   return JSON.parse(JSON.stringify(data));
 }
 
+// function fetchCounselorsByLocation(zipcode) {
+//   return fetchUserZipCoords(zipcode)
+//     .then(function(zipCoords) {
+//       return createCounselorsByLocationQuery(zipCoords);
+//     })
+//     .then(function(query) {
+//       return executeQuery(query);
+//     })
+//     .then(function(counselors) {
+//       return queryDataToJson(counselors);
+//     });
+// }
+
 function fetchCounselorsByLocation(zipcode) {
-  return fetchUserZipCoords(zipcode)
-    .then(function(zipCoords) {
-      return createCounselorsByLocationQuery(zipCoords);
-    })
-    .then(function(query) {
-      return executeQuery(query);
-    })
-    .then(function(counselors) {
-      return queryDataToJson(counselors);
+  let userZipCoords = fetchUserZipCoords(zipcode);
+
+  let counselorQuery = userZipCoords.then(function (zipCoords) {
+    return createCounselorsByLocationQuery(zipCoords);
+  });
+
+  let counselorData = counselorQuery.then(function (query) {
+    return executeQuery(query);
+  });
+
+  let counselorJson = counselorData.then(function (counselors) {
+    return queryDataToJson(counselors);
+  });
+
+  return Promise.join(userZipCoords, counselorQuery, counselorData, counselorJson,
+    function(zipCoords, query, counselors, counselorsJson){
+      //counselorsJson.unshift({userZipCoords: zipCoords});
+      return counselorsJson
     });
 }
+
+
 
 export { fetchCounselorsByLocation };
 
