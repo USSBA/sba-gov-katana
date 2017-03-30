@@ -10,6 +10,7 @@ function createCounselorsByLocationQuery(zipCoords) {
     "node.title, taxonomy_term_data.name, location.street, location.additional, ",
     "location.city, location.province, location.postal_code, location_phone.phone, ",
     "field_data_field_partner_website.field_partner_website_url AS website, ",
+    "location.latitude, location.longitude, " ,
     "(COALESCE(ACOS( SIN(" + zipCoords.latitude + "*PI()/180) * SIN(location.latitude*PI()/180) ",
     "+ COS(" + zipCoords.latitude + "*PI()/180) * COS(location.latitude*PI()/180) ",
     "* COS(location.longitude*PI()/180 - " + zipCoords.longitude + "*PI()/180)), 0.00000) ",
@@ -55,19 +56,6 @@ function queryDataToJson(data) {
   return JSON.parse(JSON.stringify(data));
 }
 
-// function fetchCounselorsByLocation(zipcode) {
-//   return fetchUserZipCoords(zipcode)
-//     .then(function(zipCoords) {
-//       return createCounselorsByLocationQuery(zipCoords);
-//     })
-//     .then(function(query) {
-//       return executeQuery(query);
-//     })
-//     .then(function(counselors) {
-//       return queryDataToJson(counselors);
-//     });
-// }
-
 function fetchCounselorsByLocation(zipcode) {
   let userZipCoords = fetchUserZipCoords(zipcode);
 
@@ -85,7 +73,7 @@ function fetchCounselorsByLocation(zipcode) {
 
   return Promise.join(userZipCoords, counselorQuery, counselorData, counselorJson,
     function(zipCoords, query, counselors, counselorsJson){
-      //counselorsJson.unshift({userZipCoords: zipCoords});
+      counselorsJson.unshift({userZipCoords: zipCoords});
       return counselorsJson
     });
 }
