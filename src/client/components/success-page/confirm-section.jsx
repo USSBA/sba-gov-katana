@@ -23,17 +23,29 @@ const Resource = (props) => (
 );
 
 class ConfirmSection extends React.Component {
+    constructor(props) {
+        super();
+        this.state = {
+            resendClicked: false
+        };
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.setState({resendClicked: true});
+    }
   resend() {
     this.props.actions.resendConfirmationEmail(this.props.email);
   }
 
   render() {
+      let resendLink = this.state.resendClicked ? <span>Email was re-sent.</span> : <a onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
     return (
       // Section
       <div className={ styles.section }>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
         <h5>We sent an email to {this.props.email}. Click on the verification link inside.
-        <br />Don’t see a confirmation email? <a href="">Click here to resend.</a></h5>
+        <br />Don’t see a confirmation email? {resendLink} </h5>
         <div className={ styles.resources }>
           <Resource title="Free business plan template" duration="1-hour activity" description="You stated you don’t have a business plan. Many lenders expect one — consider using this template."
             buttonURL="http://google.com" buttonText="Create Plan" />
@@ -47,7 +59,6 @@ class ConfirmSection extends React.Component {
   }
 
 }
-;
 
 function mapReduxStateToProps(reduxState) {
   return {
