@@ -57,14 +57,19 @@ class BusinessInfoForm extends React.Component {
 
   handleChange(e) {
     let businessInfoFields = {};
-    businessInfoFields[e.target.name] = e.target.value;
+    let name = e.target.name;
+    let value = e.target.value;
+    if((name === "businessInfoDescription") && value && value.length > 250){
+      value = value.substring(0,250);
+    }
+    businessInfoFields[name] = value;
     this.setState({
       businessInfoFields: {
         ...this.state.businessInfoFields,
         ...businessInfoFields
       }
     });
-    let validStates = this.getValidationState(e.target.name, e.target.value);
+    let validStates = this.getValidationState(name, value);
     this.setState({
       validStates: {
         ...this.state.validStates,

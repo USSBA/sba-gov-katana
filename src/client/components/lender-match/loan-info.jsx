@@ -64,9 +64,11 @@ class LoanInfo extends React.Component {
   }
 
   handleChange(e) {
-    let loanFields = {};
     let name = e.target.name;
     let value = e.target.value;
+    if((name === "loanUsage") && value && value.length > 250){
+      value = value.substring(0, 250);
+    }
     let newState = {};
     newState[name] = value;
     this.setState(newState, () => this.validateForm());
