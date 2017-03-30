@@ -6,7 +6,8 @@ import moment from "moment";
 import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
-import * as Sequelize from "sequelize";
+///import * as Sequelize from "sequelize";
+import { drupal, nonDrupal } from "../../src/models/db-connect.js";
 
 import { sendConfirmationEmail } from "../util/emailer.js";
 import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
@@ -116,9 +117,14 @@ function sendFollowupConfirmations(emailConfirmations) {
 }
 
 function findFailedOrPendingMessages() {
-  return Sequelize.query("select * from lenderMatchRegistration reg inner join lenderMatchResponse res on reg.id = res.lenderMatchRegistrationId " +
-    "inner join emailConfirmation eco on reg.id = eco.lenderMatchRegistrationId where eco.confirmed != null and (res.responseCode = 'P' or res.responseCode = 'F')").then(
-    function(results) {
+  const sqlQuery = "select reg.id, reg.name, reg.phone, reg.emailAddress, reg.businessName, reg.businessZip, reg.industry, reg.industryExperience, " +
+    " reg.loanAmount, reg.loanDescription, reg.loanUsage, reg.businessWebsite, reg.businessDescription, reg.hasWrittenPlan, reg.hasFinancialProjections, " +
+    "reg.isGeneratingRevenue, reg.isVeteran, res.id as responseId, count(*) as resCount from lenderMatchRegistration reg inner join lenderMatchSoapResponse res on reg.id = res.lenderMatchRegistrationId " +
+    "inner join emailConfirmation eco on reg.id = eco.lenderMatchRegistrationId where eco.confirmed is not null and res.processed is null " +
+    "and res.updatedAt = (select max(updatedAt) from lenderMatchSoapResponse where lenderMatchRegistrationId = reg.id) and (res.responseCode = 'P' or res.responseCode = 'F') group by responseId having resCount < 5";
+
+  return nonDrupal.query(sqlQuery).spread(
+    function(results, metadata) {
       return results;
     }
   );
@@ -162,7 +168,27 @@ function sendDataToOca(lenderMatchRegistrationData) {
             console.log(error.message);
             throw error;
           });
+      } else if (response.resultCode === "S") {
+        //update the database to processed or delete lenderMatchRegistration when deletion is implemented
+        const notDeletingYet = true;
+        const now = moment();
+        let sqlQuery;
+
+        if (notDeletingYet) {
+          sqlQuery = "update lenderMatchSoapResponse set  processed = " + now.unix() + " where lenderMatchRegistrationId = " + "'" + response.lenderMatchRegistrationId + "'"; //eslint-disable-line no-useless-concat
+        } else {
+          sqlQuery = "delete from lenderMatchRegistration where lenderMatchRegistrationId = " + "'" + response.lenderMatchRegistrationId + "'"; //eslint-disable-line no-useless-concat
+        }
+        nonDrupal.query(sqlQuery).spread(
+          function(results, metadata) {
+            console.log(results);
+            console.log(metadata);
+          }
+        );
+      } else {
+        throw new Error("Unknown Response Code receieved from OCA.");
       }
+
     })
     .catch(function(error) {
       console.log(error.message);
@@ -172,25 +198,25 @@ function sendDataToOca(lenderMatchRegistrationData) {
 
 function sendMessagesToOca(results) {
   return Promise.map(results, (result) => {
-    const reg = result.reg;
+
     const lenderMatchRegistrationData = {
-      id: reg.id,
-      name: reg.name,
-      phone: reg.phone,
-      emailAddress: reg.emailAddress,
-      businessName: reg.businessName,
-      businessZip: reg.businessZip,
-      industry: reg.industry,
-      industryExperience: reg.industryExperience,
-      loanAmount: reg.loanAmount,
-      loanDescription: reg.loanDescription,
-      loanUsage: reg.loanUsage,
-      businessWebsite: reg.businessWebsite,
-      businessDescription: reg.businessDescription,
-      hasWrittenPlan: reg.hasWrittenPlan,
-      hasFinancialProjects: reg.hasFinancialProjections,
-      isGeneratingRevenue: reg.isGeneratingRevenue,
-      isVeteran: reg.isVeteran
+      id: result.id,
+      name: result.name,
+      phone: result.phone,
+      emailAddress: result.emailAddress,
+      businessName: result.businessName,
+      businessZip: result.businessZip,
+      industry: result.industry,
+      industryExperience: result.industryExperience,
+      loanAmount: result.loanAmount,
+      loanDescription: result.loanDescription,
+      loanUsage: result.loanUsage,
+      businessWebsite: result.businessWebsite,
+      businessDescription: result.businessDescription,
+      hasWrittenPlan: result.hasWrittenPlan,
+      hasFinancialProjects: result.hasFinancialProjections,
+      isGeneratingRevenue: result.isGeneratingRevenue,
+      isVeteran: result.isVeteran
     };
     sendDataToOca(lenderMatchRegistrationData);
   });
@@ -251,4 +277,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export { createLenderMatchRegistration, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
+export { createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };

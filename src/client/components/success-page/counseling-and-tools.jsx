@@ -114,7 +114,7 @@ export class DynamicCounselingAndTools extends React.Component {
       <div className={ styles.section }>
         <h2>Free local counseling.</h2>
         <h5>Local counselors can offer free, personalized help with preparing your loan application.
-                                           Some counseling offices can also introduce you to additional lenders.</h5>
+                   Some counseling offices can also introduce you to additional lenders.</h5>
         <div className={ styles.counselorContainer }>
           { this.displayCounselors() }
           <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>

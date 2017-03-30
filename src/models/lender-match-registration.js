@@ -32,7 +32,7 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
     type: Sequelize.TEXT
   },
   loanAmount: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   loanDescription: {
     type: Sequelize.TEXT
@@ -79,6 +79,9 @@ var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
   },
   errorMessageTechnical: {
     type: Sequelize.STRING
+  },
+  processed: {
+    type: Sequelize.BIGINT
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name

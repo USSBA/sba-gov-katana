@@ -13,7 +13,7 @@ googleAnalytics:
     accountId: "UA-19362636-5"
     debug: false
 drupal:
-    hostname: http://localhost/
+    hostname: https://www.sba.gov/
     endpoint: rest
 server:
     port: 3000
@@ -23,6 +23,7 @@ email:
 linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
     resendEmailCron: '0 0 * * * *'
+    ocaSoapCron: '0 0 * * * *'
     lookback: 86400
     numberOfSecondsForWhichEmailIsValid: 172800
 database:
