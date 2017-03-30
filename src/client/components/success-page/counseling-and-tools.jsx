@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import *  as ContentActions from '../../actions/content.js';
 import lenderMatchHero from '../../../../public/assets/images/map.png';
 
+import CounselorMap from './counselor-map.jsx';
+
 import { Row, Col, Button } from 'react-bootstrap';
 import styles from '../../styles/success-page/counseling-and-tools.scss';
 import { logEvent } from "../../services/analytics.js";
@@ -66,8 +68,8 @@ export class DynamicCounselingAndTools extends React.Component {
       return (
         <div className={ styles.counselorBox }>
           <h4>
-                                                          { this.trimStr(counselor['title']) || "Not Available" }
-                                                          </h4>
+            { this.trimStr(counselor['title']) || "Not Available" }
+          </h4>
           <p className={ styles.counselorAttr }>
             { counselor['name'] || "Not Available" }
           </p>
@@ -84,7 +86,7 @@ export class DynamicCounselingAndTools extends React.Component {
             { counselor['phone'] ? 'Phone: ' + counselor['phone'] : "Not Available" }
           </p>
         </div>
-        );
+      );
       {
         /*esfmt-ignore-start*/
       }
@@ -119,6 +121,7 @@ export class DynamicCounselingAndTools extends React.Component {
         </div>
         <div className={ styles.mapContainer }>
           <div className={ styles.mapPlaceholder }>
+            <CounselorMap/>
           </div>
         </div>
       </div>
