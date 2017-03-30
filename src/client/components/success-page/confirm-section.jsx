@@ -62,8 +62,8 @@ class ConfirmSection extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    name: reduxState.lenderMatch.contactInfoData ? reduxState.lenderMatch.contactInfoData.contactFullName : "SBA",
-    email: reduxState.lenderMatch.contactInfoData ? reduxState.lenderMatch.contactInfoData.contactEmailAddress : "sba@sba.gov"
+    name: reduxState.lenderMatch.contactInfoData.contactFullName,
+    email: reduxState.lenderMatch.contactInfoData.contactEmailAddress
   };
 }
 
