@@ -4,7 +4,7 @@
 import React from 'react';
 /*eslint-enable no-unused-vars*/
 import ReactSelect from 'react-select';
-import MultiSelect from '../../../../src/client/components/atoms/multiselect.jsx';
+import MultiSelect from 'client/components/atoms/multiselect.jsx';
 import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 

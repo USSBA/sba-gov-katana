@@ -12,11 +12,15 @@
         background: #EBEBEB;
         padding: 20px 30px 35px;
         margin-bottom: 20px;
-        button {
+        a.seeMoreBtn {
             font-size: 13px;
             text-transform: uppercase;
             margin: 0 auto;
             padding: 8px 15px;
+            text-decoration: none;
+            &:focus {
+                color: #fff;
+            }
         }
     }
     // Mobile
@@ -49,7 +53,7 @@
         margin: 16px 0 25px;
         text-align: left;
     }
-    a {
+    a.resendLink {
         color: #609F00;
         text-decoration: underline;
         &:hover {

@@ -1,46 +1,68 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { TextInput, ValidTextInput } from '../helpers/form-helpers.jsx';
-import { FormPanel } from '../common/form-styling.jsx';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {TextInput} from '../helpers/form-helpers.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
-import { getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState } from '../helpers/page-validator-helpers.jsx';
+import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../services/page-validator-helpers.js';
 import styles from './lender-match.scss';
 import clientConfig from "../../services/config.js";
-
+import {includes} from 'lodash';
+import {logEvent} from "../../services/analytics.js";
 
 class ContactInfoForm extends React.Component {
   constructor(props) {
     super();
-    let contactInfoFields = Object.assign({}, {
-      contactPhoneNumber: "",
-      contactFullName: "",
-      contactEmailAddress: ""
-    }, props.contactInfoFields);
-    let validStates = {};
-    validStates = Object.assign(validStates, this.getValidationState("contactFullName", contactInfoFields.contactFullName));
-    validStates = Object.assign(validStates, this.getValidationState("contactPhoneNumber", contactInfoFields.contactPhoneNumber));
-    validStates = Object.assign(validStates, this.getValidationState("contactEmailAddress", contactInfoFields.contactEmailAddress));
+    let initialData = props.contactInfoFields || {};
     this.state = {
-      contactInfoFields: contactInfoFields,
-      validStates: validStates
+      contactFullName: initialData.contactFullName || "",
+      contactPhoneNumber: initialData.contactPhoneNumber || "",
+      contactEmailAddress: initialData.contactEmailAddress || "",
+      validStates: {
+        contactFullName: null,
+        contactPhoneNumber: null,
+        contactEmailAddress: null
+      }
     };
   }
 
-  isValidForm() {
-    let validForm = true;
-    for (var inputState in this.state.validStates) {
-      if (this.state.validStates[inputState] === "error" || this.state.validStates[inputState] === null) {
-        validForm = false;
+  componentDidMount() {
+    this.validateFields(["contactPhoneNumber", "contactFullName", "contactEmailAddress", "contactSecondaryEmailAddress"]);
+  }
+
+
+  validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
+      let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+      if(validationState[name] === "error"){
+        logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
       }
+      return validationState;
+  }
+
+  validateFields(fields, defaultWhenNotSuccessful) {
+    let validStates = this.state.validStates;
+    if (includes(fields, "contactFullName")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getNameValidationState, "contactFullName", defaultWhenNotSuccessful));
     }
-    return validForm;
+    if (includes(fields, "contactPhoneNumber")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getPhoneValidationState, "contactPhoneNumber", defaultWhenNotSuccessful));
+    }
+    if (includes(fields, "contactEmailAddress")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getEmailValidationState, "contactEmailAddress", defaultWhenNotSuccessful));
+    }
+    if (includes(fields, "contactSecondaryEmailAddress")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getAlwaysValidValidationState, "contactSecondaryEmailAddress", defaultWhenNotSuccessful));
+    }
+    this.setState({validStates: validStates})
+  }
+
+  isValidForm() {
+    return !containsErrorOrNull(this.state.validStates);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actions.createContactInfo(this.state.contactInfoFields);
+    this.props.actions.createContactInfo({contactPhoneNumber: this.state.contactPhoneNumber, contactFullName: this.state.contactFullName, contactEmailAddress: this.state.contactEmailAddress});
     this.props.locationActions.locationChange('/linc/form/business', {
       action: "Continue Button Pushed",
       label: "/linc/form/contact"
@@ -48,83 +70,47 @@ class ContactInfoForm extends React.Component {
     this.contactInfoForm.reset();
   }
 
-
-  // TODO: combine handleChange and handlePhoneChange
   handleChange(e) {
-    let contactInfoFields = {};
-    contactInfoFields[e.target.name] = e.target.value;
-    this.setState({
-      contactInfoFields: {
-        ...this.state.contactInfoFields,
-        ...contactInfoFields
-      }
-    });
-    let validStates = this.getValidationState(e.target.name, e.target.value);
-    this.setState({
-      validStates: {
-        ...this.state.validStates,
-        ...validStates
-      }
-    });
-  }
-
-  handlePhoneChange(e) {
-    let contactInfoFields = {};
-    let phoneNumber = e.target.value.replace(/[\D]/g, "");
-    contactInfoFields[e.target.name] = phoneNumber;
-    this.setState({
-      contactInfoFields: {
-        ...this.state.contactInfoFields,
-        ...contactInfoFields
-      }
-    });
-    let validStates = this.getValidationState(e.target.name, e.target.value);
-    this.setState({
-      validStates: {
-        ...this.state.validStates,
-        ...validStates
-      }
-    });
-  }
-
-  getValidationState(name, value) {
-    let validStates = {};
-    if (name === "contactFullName") {
-      validStates = getNameValidationState(name, value);
-    } else if (name === "contactPhoneNumber") {
-      validStates = getPhoneValidationState(name, value);
-    } else if (name === "contactEmailAddress") {
-      validStates = getEmailValidationState(name, value);
-    } else if (name === "contactSecondaryEmailAddress") {
-      validStates = getAlwaysValidValidationState(name, value);
+    let newState = {};
+    let name = e.target.name;
+    let newValue = e.target.value;
+    if (name && name === 'contactPhoneNumber') {
+      newValue = newValue.replace(/[\D]/g, "");
     }
-    return validStates;
+    newState[name] = newValue;
+    this.setState(newState, () => this.validateFields([name]));
+  }
+
+  handleBlur(e) {
+    this.validateFields([e.target.name], "error");
+  }
+
+  handleFocus(nameOrEvent) {
+    let name = nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
+      ? nameOrEvent.target.name
+      : nameOrEvent;
+    logEvent({"category": "Lender Match Form", "action": "Focus Event", "label": name});
   }
 
   render() {
     return (
       <div>
-        <form ref={ (input) => this.contactInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <TextInput errorText={ clientConfig.messages.validation.invalidName } label="What is your full name?" name="contactFullName" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactFullName } getValidationState={ this.state.validStates["contactFullName"] }
-            autoFocus />
-          <TextInput errorText={ clientConfig.messages.validation.invalidPhoneNumber } label="What is your phone number?" name="contactPhoneNumber" handleChange={ this.handlePhoneChange.bind(this) } value={ this.state.contactInfoFields.contactPhoneNumber }
-            getValidationState={ this.state.validStates["contactPhoneNumber"] } />
-          <TextInput errorText={ clientConfig.messages.validation.invalidEmail } label="What is your email address?" name="contactEmailAddress" handleChange={ this.handleChange.bind(this) } value={ this.state.contactInfoFields.contactEmailAddress }
-            getValidationState={ this.state.validStates["contactEmailAddress"] } />
-          { /* HoneyPot -- this comment should not appear in the minified code*/ }
-          <TextInput hidden={ true } label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={ -1 } handleChange={ this.handleChange.bind(this) }
-            getValidationState={ this.state.validStates["contactSecondaryEmailAddress"] } />
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }> CONTINUE </button>
+        <form ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+          <TextInput errorText={clientConfig.messages.validation.invalidName} label="What is your full name?" name="contactFullName" handleChange={this.handleChange.bind(this)} value={this.state.contactFullName} getValidationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput errorText={clientConfig.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" handleChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} getValidationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput errorText={clientConfig.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" handleChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} getValidationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
+          <TextInput hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} handleChange={this.handleChange.bind(this)} getValidationState={this.state.validStates.contactSecondaryEmailAddress}/>
+          <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
+            CONTINUE
+          </button>
         </form>
       </div>
-      );
+    );
   }
 }
 
 function mapStateToProps(reduxState) {
-  return {
-    contactInfoFields: reduxState.lenderMatch.contactInfoData
-  };
+  return {contactInfoFields: reduxState.lenderMatch.contactInfoData};
 }
 
 function mapDispatchToProps(dispatch) {
@@ -134,8 +120,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export { ContactInfoForm };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ContactInfoForm);
+export {ContactInfoForm};
+export default connect(mapStateToProps, mapDispatchToProps)(ContactInfoForm);

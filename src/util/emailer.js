@@ -3,11 +3,23 @@ import config from "config";
 import Promise from "bluebird";
 import _ from "lodash";
 
-var transporter = nodemailer.createTransport({
+const sendMailConnectionOptions = {
   sendmail: true,
   newline: "unix",
   path: "/usr/sbin/sendmail"
-});
+};
+
+var sesConnectionOptions = {
+  secure: true,
+  host: config.get("email.hostname"),
+  auth: {
+    user: config.get("email.username"),
+    pass: config.get("email.password")
+  },
+  logger: true
+};
+
+var transporter = nodemailer.createTransport(sesConnectionOptions);
 
 function sendConfirmationEmail(options) {
   return new Promise((resolve, reject) => {
