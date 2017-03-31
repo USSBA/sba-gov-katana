@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoanInfo } from '../../../../../src/client/components/lender-match/loan-info.jsx'
+import { LoanInfo } from 'client/components/lender-match/loan-info.jsx'
 import renderer from 'react-test-renderer';
 
 

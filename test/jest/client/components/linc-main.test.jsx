@@ -3,7 +3,7 @@
 /*eslint-disable no-unused-vars*/
 import React from 'react';
 /*eslint-enable no-unused-vars*/
-import LincMain from '../../../src/client/components/linc-main.jsx';
+import LincMain from 'client/components/linc-main.jsx';
 import renderer from 'react-test-renderer';
 
 
