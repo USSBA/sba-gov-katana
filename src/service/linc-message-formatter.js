@@ -1,4 +1,3 @@
-
 const textLowerLimit = 0;
 const textUpperLimit = 255;
 
@@ -312,11 +311,11 @@ function formatMessage(reqData) {
     //BusinessDtlTypCd = 2 chars
     "BusinessDtlTypCd": bDtlTypCd(lenderMatchRegistration.industry),
     //BusinessDtlTypTxt <= 255 chars
-    "BusinessDtlTypTxt": bDtlTypTxt(lenderMatchRegistration.loanUsage),
+    "BusinessDtlTypTxt": bDtlTypTxt(lenderMatchRegistration.loanDescription),
     //LoanProceedTypCd <= 255 comma delimited
-    "LoanProceedTypCd": lProceedTypCd(lenderMatchRegistration.loanDescription),
+    "LoanProceedTypCd": lProceedTypCd(lenderMatchRegistration.loanUsage),
     //ProceedOthTypTxt <= 255 chars
-    "ProceedOthTypTxt": pOthTypTxt(lenderMatchRegistration.loanUsage),
+    "ProceedOthTypTxt": pOthTypTxt(lenderMatchRegistration.loanDescription),
     //RequestedAmtRangeCd = 2 chars
     "RequestedAmtRangeCd": reqAmtRangeCd(lenderMatchRegistration.loanAmount),
     //CollateralInd Y for Yes  or N for No
@@ -336,4 +335,19 @@ function formatMessage(reqData) {
   };
 }
 
-export { userName, bStatusDescTxt, bDtlTypTxt, bAdvisoryInd, oFundSourceInd, bPlanInd, vetInd, reqAmtRangeCd, formatMoment, bAgeCd, bDtlTypCd, lProceedTypCd, formatMessage, pOthTypTxt };
+export {
+  userName,
+  bStatusDescTxt,
+  bDtlTypTxt,
+  bAdvisoryInd,
+  oFundSourceInd,
+  bPlanInd,
+  vetInd,
+  reqAmtRangeCd,
+  formatMoment,
+  bAgeCd,
+  bDtlTypCd,
+  lProceedTypCd,
+  formatMessage,
+  pOthTypTxt
+};
