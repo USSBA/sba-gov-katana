@@ -1,13 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { CurrencyInput, TextArea, SelectBox } from '../helpers/form-helpers.jsx';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {CurrencyInput, TextArea, SelectBox} from '../helpers/form-helpers.jsx';
 import MultiSelectBox from '../atoms/multiselect.jsx';
-import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
-import { getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState } from '../helpers/page-validator-helpers.jsx'
+import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from '../../services/page-validator-helpers.js'
 import styles from './lender-match.scss';
+import {includes, map} from "lodash";
 import clientConfig from "../../services/config.js";
 
 class LoanInfo extends React.Component {
@@ -19,37 +19,52 @@ class LoanInfo extends React.Component {
       loanDescription: initialData.loanDescription || "",
       loanUsage: initialData.loanUsage || "",
       validStates: {
-        industryType: null,
-        industryExperience: null
+        loanAmount: null,
+        loanDescription: null,
+        loanUsage: null
       }
     };
   }
 
   componentDidMount() {
-    this.validateForm();
+    this.validateFields(["loanAmount", "loanDescription", "loanUsage"]);
   }
 
-  validateForm() {
-    let validStates = {};
-    validStates = Object.assign(validStates, getCurrencyValidationState("loanAmount", this.state.loanAmount));
-    validStates = Object.assign(validStates, getSelectBoxValidationState("loanDescription", this.state.loanDescription));
-    validStates = Object.assign(validStates, getTextAlphanumeicValidationState("loanUsage", this.state.loanUsage));
-    this.setState({
-      validStates: validStates
-    })
+  validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
+    return validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+  }
+
+  validateFields(fields, defaultWhenNotSuccessful) {
+    let validStates = this.state.validStates;
+    if (includes(fields, "loanAmount")) {
+      validStates = Object.assign(validStates, this.validateSingleField(this.getLoanAmountValidationState, "loanAmount", defaultWhenNotSuccessful));
+    }
+    if (includes(fields, "loanDescription")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "loanDescription", defaultWhenNotSuccessful));
+    }
+    if (includes(fields, "loanUsage")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getTextAlphanumeicValidationState, "loanUsage", defaultWhenNotSuccessful));
+    }
+    this.setState({validStates: validStates});
   }
 
   isValidForm() {
     return !containsErrorOrNull(this.state.validStates);
   }
 
+  getLoanAmountValidationState(name, value, defaultWhenNotSuccessful) {
+    let validFormat = getCurrencyValidationState(name, value, defaultWhenNotSuccessful);
+    let amountWithoutCommas = value.replace(/(\$|,)/g, "");
+    let validAmount = Number(amountWithoutCommas) > 499;
+    let valid = validFormat[name] === 'success' && validAmount ? "success" : defaultWhenNotSuccessful;
+    let newState = {};
+    newState[name] = valid;
+    return newState;
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actions.createLoan({
-      loanAmount: this.state.loanAmount,
-      loanDescription: this.state.loanDescription,
-      loanUsage: this.state.loanUsage
-    });
+    this.props.actions.createLoan({loanAmount: this.state.loanAmount, loanDescription: this.state.loanDescription, loanUsage: this.state.loanUsage});
     this.props.locationActions.locationChange('/linc/form/additional', {
       action: "Continue Button Pushed",
       label: "/linc/form/loan"
@@ -60,42 +75,48 @@ class LoanInfo extends React.Component {
   handleSelectChange(newValue) {
     this.setState({
       loanDescription: newValue
-    }, () => this.validateForm());
+    }, () => this.validateFields(["loanDescription"]));
   }
 
   handleChange(e) {
     let name = e.target.name;
     let value = e.target.value;
-    if((name === "loanUsage") && value && value.length > 250){
+    if (name && name === "loanDescription" && value && value.length > 250) {
       value = value.substring(0, 250);
+    }
+    if (name && name === "loanAmount") {
+      let amountWithoutCommas = value.replace(/(\$|,)/g, "");
+      if (amountWithoutCommas.length > 9) {
+        value = this.state.loanAmount;
+      }
     }
     let newState = {};
     newState[name] = value;
-    this.setState(newState, () => this.validateForm());
+    this.setState(newState, () => this.validateFields([name]));
   }
 
-  handleAmountChange(e) {
-    let amount = e.target.value.replace(/(\$|,)/g, "");
-    if (!/[^\d$,]/.test(amount) && amount.length < 10) {
-      this.handleChange(e)
-    }
-  }
-
-  handleFormat(e) {
-    let loanFields = {};
-    let num = parseInt(e.target.value.replace(/(\$|,)/g, ""));
-    console.log("num", num);
+  handleAmountBlur(value, callback) {
+    let num = parseInt(value.replace(/(\$|,)/g, ""));
+    let correctAmount = "";
     if (Number(num) || num === 0) {
-      this.setState({
-        loanAmount: "$" + num.toLocaleString()
+      correctAmount = "$" + num.toLocaleString();
+    }
+    this.setState({
+      loanAmount: correctAmount
+    }, callback);
+  }
+
+  handleBlur(e) {
+    let name = e.target.name;
+    let value = e.target.value;
+    if (name === "loanAmount") {
+      this.handleAmountBlur(value, function() {
+        this.validateFields([name], "error");
       });
     } else {
-      this.setState({
-        loanAmount: ""
-      });
+      this.validateFields([name], "error");
     }
   }
-
 
   render() {
     let loanDescriptionOptions = _.map([
@@ -113,35 +134,26 @@ class LoanInfo extends React.Component {
       "Remodeling an existing location",
       "Working Capital"
     ], (x) => {
-      return {
-        label: x,
-        value: x
-      };
+      return {label: x, value: x};
     });
 
     return (
       <div>
-        <form ref={ (input) => this.loanForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <CurrencyInput label="How much funding do you need?" name="loanAmount" handleChange={ this.handleAmountChange.bind(this) } handleFormat={ this.handleFormat.bind(this) } value={ this.state.loanAmount }
-            getValidationState={ this.state.validStates.loanAmount } autoFocus />
-          <MultiSelectBox errorText={ clientConfig.messages.validation.invalidLoanDescription } placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={ this.handleSelectChange.bind(this) }
-            getValidationState={ this.state.validStates.loanDescription } value={ this.state.loanDescription } options={ loanDescriptionOptions } maxValues={ 3 }></MultiSelectBox>
-          <TextArea errorText={ clientConfig.messages.validation.invalidLoanUsage } label="Describe how you plan to use these funds" name="loanUsage" handleChange={ this.handleChange.bind(this) } value={ this.state.loanUsage }
-                    getValidationState={ this.state.validStates.loanUsage } placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." />
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+        <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+          <CurrencyInput errorText={clientConfig.messages.validation.invalidLoanAmount} label="How much funding do you need?" name="loanAmount" onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)} value={this.state.loanAmount} validationState={this.state.validStates.loanAmount} autoFocus/>
+          <MultiSelectBox errorText={clientConfig.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanDescription} value={this.state.loanDescription} options={loanDescriptionOptions} maxValues={3} onBlur={this.handleBlur.bind(this)}></MultiSelectBox>
+          <TextArea errorText={clientConfig.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanUsage" handleChange={this.handleChange.bind(this)} value={this.state.loanUsage} getValidationState={this.state.validStates.loanUsage} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)}/>
+          <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>
         </form>
       </div>
-      );
-  }
-  ;
+    );
+  };
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {
-    loanFields: reduxState.lenderMatch.loanData
-  };
+  return {loanFields: reduxState.lenderMatch.loanData};
 }
 
 function mapDispatchToProps(dispatch) {

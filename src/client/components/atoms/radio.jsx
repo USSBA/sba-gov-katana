@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './radio.scss';
 import _ from "lodash";
 import formHelperStyles from "../helpers/form-helpers.scss";
+import FormErrorMessage from "./form-error-message.jsx";
 /* esfmt-ignore-start */
 class RadioButtonGroup extends React.Component {
   constructor(props) {
@@ -45,9 +46,7 @@ class RadioButtonGroup extends React.Component {
     });
 
     let errorMessage = this.props.validationState == 'error'
-      ? <p className={styles.errorText}>
-          {errorText}
-        </p>
+      ? <FormErrorMessage errorText={this.props.errorText} />
       : undefined;
 
     return (

@@ -2,10 +2,10 @@ import React from 'react';
 import ReactSelect from 'react-select';
 import 'react-select/dist/react-select.css';
 import './react-select-helpers.css';
-import { FormGroup, ControlLabel } from 'react-bootstrap';
-import styles from '../helpers/form-helpers.scss';
+import formHelperStyles from '../helpers/form-helpers.scss';
+import FormErrorMessage from "./form-error-message.jsx";
+import styles from './multiselect.scss';
 import _ from "lodash";
-
 
 class MultiSelectBox extends React.Component {
   handleChange(newValue) {
@@ -13,20 +13,30 @@ class MultiSelectBox extends React.Component {
       this.props.onChange(_.map(newValue, 'value').join(","));
     }
   }
+  handleBlur(){
+      this.props.onBlur({target:{name: this.props.name}});
+  }
   render() {
-    let arrayValue = this.props.value ? this.props.value.split(",") : [];
-    let errorMessage = this.props.validationState == 'error' ? <p className={ styles.errorText }>
-                                                                 { errorText } </p> : undefined;
+    let arrayValue = this.props.value
+      ? this.props.value.split(",")
+      : [];
+    let errorMessage = this.props.validationState == 'error'
+      ? <FormErrorMessage errorText={this.props.errorText} />
+      : undefined;
+    let errorClass = this.props.validationState == 'error'
+      ? styles.redBorder
+      : undefined;
     return (
-      <FormGroup validationState={ this.props.getValidationState }>
-        <ControlLabel className={ styles.controlLabel }>
-          { this.props.label }
-        </ControlLabel>
-        <ReactSelect tabSelectsValue={ false } multi={ true } onChange={ this.handleChange.bind(this) } name={ this.props.name } require={ this.props.required }
-          autofocus={ this.props.autoFocus } value={ arrayValue } options={ this.props.options } />
-        { errorMessage }
-      </FormGroup>
-      );
+      <div>
+        <label className={formHelperStyles.controlLabel}>
+          {this.props.label}
+        </label>
+        <div className={styles.errorClass}>
+          <ReactSelect className={errorClass} tabSelectsValue={false} multi={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={arrayValue} options={this.props.options} onBlur={this.handleBlur.bind(this)}/>
+        </div>
+        {errorMessage}
+      </div>
+    );
   }
 }
 

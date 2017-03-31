@@ -1,14 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import MultiSelect from '../atoms/multiselect.jsx';
 import RadioButtonGroup from '../atoms/radio.jsx';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
-import { FormPanel } from '../common/form-styling.jsx'
-import { getSelectBoxValidationState, containsErrorOrNull } from '../helpers/page-validator-helpers.jsx'
+import {getSelectBoxValidationState, containsErrorOrNull} from '../../services/page-validator-helpers.js';
 import styles from './lender-match.scss';
-import _ from "lodash";
+import {includes, map} from "lodash";
 import clientConfig from "../../services/config.js";
 
 class IndustryInfoForm extends React.Component {
@@ -26,16 +25,22 @@ class IndustryInfoForm extends React.Component {
   }
 
   componentDidMount() {
-    this.validateForm();
+    this.validateFields(["industryType", "industryExperience"]);
   }
 
-  validateForm() {
-    let validStates = {};
-    validStates = Object.assign(validStates, getSelectBoxValidationState("industryType", this.state.industryType));
-    validStates = Object.assign(validStates, getSelectBoxValidationState("industryExperience", this.state.industryExperience));
-    this.setState({
-      validStates: validStates
-    })
+  validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
+    return validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+  }
+
+  validateFields(fields, defaultWhenNotSuccessful) {
+    let validStates = this.state.validStates;
+    if (includes(fields, "industryType")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "industryType", defaultWhenNotSuccessful));
+    }
+    if (includes(fields, "industryExperience")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "industryExperience", defaultWhenNotSuccessful));
+    }
+    this.setState({validStates: validStates});
   }
 
   isValidForm() {
@@ -44,10 +49,7 @@ class IndustryInfoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.actions.createIndustryInfo({
-      industryType: this.state.industryType,
-      industryExperience: this.state.industryExperience
-    });
+    this.props.actions.createIndustryInfo({industryType: this.state.industryType, industryExperience: this.state.industryExperience});
     this.props.locationActions.locationChange('/linc/form/loan', {
       action: "Continue Button Pushed",
       label: "/linc/form/industry"
@@ -58,22 +60,25 @@ class IndustryInfoForm extends React.Component {
   handleChange(newValue) {
     this.setState({
       industryExperience: newValue
-    }, () => this.validateForm());
+    }, () => this.validateFields(["industryExperience"]));
   }
 
   handleSelectChange(newValue) {
     this.setState({
       industryType: newValue
-    }, () => this.validateForm());
+    }, () => this.validateFields(["industryType"]));
   }
 
-  handleBlur() {
-    console.log('blur ii');
-    this.validateForm();
+  handleIndustryTypeBlur() {
+    this.validateFields(["industryType"], "error");
+  }
+
+  handleIndustryExperienceBlur(){
+    this.validateFields(["industryExperience"], "error");
   }
 
   render() {
-    let industryTypeOptions = _.map([
+    let industryTypeOptions = map([
       "Advertising/Marketing",
       "Agriculture",
       "Automotive/Service Station",
@@ -97,10 +102,7 @@ class IndustryInfoForm extends React.Component {
       "Technology",
       "Transportation/Logistics"
     ], (x) => {
-      return {
-        label: x,
-        value: x
-      };
+      return {label: x, value: x};
     });
 
     let radioButtonOptions = [
@@ -121,24 +123,20 @@ class IndustryInfoForm extends React.Component {
 
     return (
       <div>
-        <form ref={ (form) => this.industryInfoForm = form } onSubmit={ (e) => this.handleSubmit(e) }>
-          <MultiSelect errorText={ clientConfig.messages.validation.invalidIndustry } label="In what industry is your business?" name="industryType" onChange={ this.handleSelectChange.bind(this) } getValidationState={ this.state.validStates.industryType }
-            value={ this.state.industryType } options={ industryTypeOptions } autoFocus maxValues={ 3 }></MultiSelect>
-          <RadioButtonGroup errorText={ clientConfig.messages.validation.invalidIndustryExperience } label="How much experience do you have?" name="industryExperience" onChange={ this.handleChange.bind(this) } validationState={ this.state.validStates.industryExperience }
-            value={ this.state.industryExperience } options={ radioButtonOptions } onBlur={ this.handleBlur.bind(this) } />
-          <button className={ styles.continueBtn } type="submit" disabled={ !(this.isValidForm()) }>
+        <form ref={(form) => this.industryInfoForm = form} onSubmit={(e) => this.handleSubmit(e)}>
+          <MultiSelect errorText={clientConfig.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3}></MultiSelect>
+          <RadioButtonGroup errorText={clientConfig.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)}/>
+          <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>
         </form>
       </div>
-      );
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return {
-    industryInfoFields: state.lenderMatch.industryInfoData
-  };
+  return {industryInfoFields: state.lenderMatch.industryInfoData};
 }
 
 function mapDispatchToProps(dispatch) {
