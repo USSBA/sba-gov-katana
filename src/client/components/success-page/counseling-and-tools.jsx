@@ -27,7 +27,7 @@ export class DynamicCounselingAndTools extends React.Component {
     })
       .then((res) => {
         let counselorsData = this.props.counselorsData;
-        let userZipCoords = counselorsData.shift();
+        let userZipCoords = counselorsData.shift().userZipCoords;
         this.setState({
           userZipCoords: userZipCoords,
           counselors: counselorsData
@@ -53,15 +53,15 @@ export class DynamicCounselingAndTools extends React.Component {
 
   formatMapObjects(){
     let counselors = this.state.counselors;
-    if(this.state.counselors == null && this.state.counselorsErr){
-      counselors.map((counselor) => {
+    if(this.state.counselors == null && this.state.counselorsErr == null){
+      return null
+    } else {
+      return counselors.map((counselor) => {
         return {
           lat: counselor.latitude,
           lng: counselor.longitude
         }
       })
-    } else {
-      return null
     }
   }
 
@@ -117,7 +117,7 @@ export class DynamicCounselingAndTools extends React.Component {
         </div>
         <div className={ styles.mapContainer }>
           <div className={ styles.mapPlaceholder }>
-            <CounselorMap defaultCoords={this.state.userZipCoords} locationsObject={this.formatMapObjects()}/>
+            <CounselorMap userZipCoords={this.state.userZipCoords} markerLocations={this.formatMapObjects()}/>
           </div>
         </div>
       </div>
@@ -129,9 +129,7 @@ export class DynamicCounselingAndTools extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoData: state.lenderMatch.businessInfoData || {
-      businessInfoZipcode: 20005
-    },
+    businessInfoData: state.lenderMatch.businessInfoData,
     counselorsData: state.contentReducer["counselors"]
   };
 }

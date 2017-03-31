@@ -1,26 +1,46 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import styles from './counselor-map.scss';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div className={styles.marker}><p className={styles.markerText} >{text}</p></div>;
+
+
 
 class CounselorMap extends Component {
+  constructor(props) {
+    super();
+  }
+
   static defaultProps = {
-    center: {lat: 59.95, lng: 30.33},
+    defaultCenter: {lat: 38.897676, lng: -77.036483},
     zoom: 11
   };
 
+  displayMarkers() {
+    let letter = ["A", "B", "C"];
+    return this.props.markerLocations.map((marker, index) => {
+      return (
+        <AnyReactComponent
+          lat={marker.lat}
+          lng={marker.lng}
+          text={letter[index]}
+        />
+      )
+    })
+  }
+
   render() {
+    console.log(this.props.userZipCoords)
     return (
       <GoogleMapReact
-        defaultCenter={this.props.center}
+        defaultCenter={this.props.defaultCenter}
         defaultZoom={this.props.zoom}
         apiKey={"AIzaSyCKowpuwSs7kT_N_cYKdihQ0VdtizEM-hk"}
+        center={this.props.userZipCoords ? this.props.userZipCoords : null}
       >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text={'Kreyser Avrora'}
-        />
+
+        {this.props.markerLocations ? this.displayMarkers() : this.props.center}
+
       </GoogleMapReact>
     );
   }

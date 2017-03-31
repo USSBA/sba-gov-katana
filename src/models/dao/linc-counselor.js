@@ -11,9 +11,9 @@ function createCounselorsByLocationQuery(zipCoords) {
     "location.city, location.province, location.postal_code, location_phone.phone, ",
     "field_data_field_partner_website.field_partner_website_url AS website, ",
     "location.latitude, location.longitude, " ,
-    "(COALESCE(ACOS( SIN(" + zipCoords.latitude + "*PI()/180) * SIN(location.latitude*PI()/180) ",
-    "+ COS(" + zipCoords.latitude + "*PI()/180) * COS(location.latitude*PI()/180) ",
-    "* COS(location.longitude*PI()/180 - " + zipCoords.longitude + "*PI()/180)), 0.00000) ",
+    "(COALESCE(ACOS( SIN(" + zipCoords.lat + "*PI()/180) * SIN(location.latitude*PI()/180) ",
+    "+ COS(" + zipCoords.lat + "*PI()/180) * COS(location.latitude*PI()/180) ",
+    "* COS(location.longitude*PI()/180 - " + zipCoords.lng + "*PI()/180)), 0.00000) ",
     "* 6369640.5452077) AS location_distance ",
     "FROM node ",
     "LEFT JOIN location_instance ON node.vid = location_instance.vid ",
@@ -24,9 +24,9 @@ function createCounselorsByLocationQuery(zipCoords) {
     "LEFT JOIN taxonomy_index ON node.nid = taxonomy_index.nid ",
     "LEFT JOIN taxonomy_term_data ON taxonomy_index.tid = taxonomy_term_data.tid ",
     "WHERE ",
-    "(COALESCE(ACOS( SIN(" + zipCoords.latitude + "*PI()/180) * SIN(location.latitude*PI()/180) ",
-    "+ COS(" + zipCoords.latitude + "*PI()/180) * COS(location.latitude*PI()/180) ",
-    "* COS(location.longitude*PI()/180 - " + zipCoords.longitude + "*PI()/180)), 0.00000) ",
+    "(COALESCE(ACOS( SIN(" + zipCoords.lat + "*PI()/180) * SIN(location.latitude*PI()/180) ",
+    "+ COS(" + zipCoords.lat + "*PI()/180) * COS(location.latitude*PI()/180) ",
+    "* COS(location.longitude*PI()/180 - " + zipCoords.lng + "*PI()/180)), 0.00000) ",
     "* 6369640.5452077) > 0 ",
     "AND (( (node.status = '1') AND (node.type IN  ('sba_resource_partner_offices')) ",
     "AND (node.nid IN ",
@@ -46,8 +46,8 @@ function fetchUserZipCoords(zipcode) {
   return executeQuery(query)
     .then(function(zipCoords) {
       return {
-        latitude: zipCoords[0].latitude,
-        longitude: zipCoords[0].longitude
+        lat: zipCoords[0].latitude,
+        lng: zipCoords[0].longitude
       };
     });
 }

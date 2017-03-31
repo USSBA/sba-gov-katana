@@ -1,0 +1,19 @@
+.marker {
+    box-sizing: border-box;
+    height: 34px;
+    width: 34px;
+    border: 2px solid #FFFFFF;
+    background-color: #609F00;
+    border-radius: 17px;
+}
+
+.markerText {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
