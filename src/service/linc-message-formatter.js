@@ -335,19 +335,4 @@ function formatMessage(reqData) {
   };
 }
 
-export {
-  userName,
-  bStatusDescTxt,
-  bDtlTypTxt,
-  bAdvisoryInd,
-  oFundSourceInd,
-  bPlanInd,
-  vetInd,
-  reqAmtRangeCd,
-  formatMoment,
-  bAgeCd,
-  bDtlTypCd,
-  lProceedTypCd,
-  formatMessage,
-  pOthTypTxt
-};
+export { userName, bStatusDescTxt, bDtlTypTxt, bAdvisoryInd, oFundSourceInd, bPlanInd, vetInd, reqAmtRangeCd, formatMoment, bAgeCd, bDtlTypCd, lProceedTypCd, formatMessage, pOthTypTxt };
