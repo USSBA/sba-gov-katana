@@ -8,6 +8,7 @@ import {getNameValidationState, getPhoneValidationState, getEmailValidationState
 import styles from './lender-match.scss';
 import clientConfig from "../../services/config.js";
 import {includes} from 'lodash';
+import {logEvent} from "../../services/analytics.js";
 
 class ContactInfoForm extends React.Component {
   constructor(props) {
@@ -31,7 +32,11 @@ class ContactInfoForm extends React.Component {
 
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    return validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+      let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+      if(validationState[name] === "error"){
+        logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
+      }
+      return validationState;
   }
 
   validateFields(fields, defaultWhenNotSuccessful) {
@@ -80,13 +85,20 @@ class ContactInfoForm extends React.Component {
     this.validateFields([e.target.name], "error");
   }
 
+  handleFocus(nameOrEvent) {
+    let name = nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
+      ? nameOrEvent.target.name
+      : nameOrEvent;
+    logEvent({"category": "Lender Match Form", "action": "Focus Event", "label": name});
+  }
+
   render() {
     return (
       <div>
         <form ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <TextInput errorText={clientConfig.messages.validation.invalidName} label="What is your full name?" name="contactFullName" handleChange={this.handleChange.bind(this)} value={this.state.contactFullName} getValidationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)}/>
-          <TextInput errorText={clientConfig.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" handleChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} getValidationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)}/>
-          <TextInput errorText={clientConfig.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" handleChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} getValidationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
+          <TextInput errorText={clientConfig.messages.validation.invalidName} label="What is your full name?" name="contactFullName" handleChange={this.handleChange.bind(this)} value={this.state.contactFullName} getValidationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput errorText={clientConfig.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" handleChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} getValidationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput errorText={clientConfig.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" handleChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} getValidationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
           <TextInput hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} handleChange={this.handleChange.bind(this)} getValidationState={this.state.validStates.contactSecondaryEmailAddress}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE

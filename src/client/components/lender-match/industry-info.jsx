@@ -9,6 +9,7 @@ import {getSelectBoxValidationState, containsErrorOrNull} from '../../services/p
 import styles from './lender-match.scss';
 import {includes, map} from "lodash";
 import clientConfig from "../../services/config.js";
+import {logEvent} from "../../services/analytics.js";
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
@@ -29,7 +30,11 @@ class IndustryInfoForm extends React.Component {
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    return validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+      let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+      if(validationState[name] === "error"){
+        logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
+      }
+      return validationState;
   }
 
   validateFields(fields, defaultWhenNotSuccessful) {
@@ -40,7 +45,7 @@ class IndustryInfoForm extends React.Component {
     if (includes(fields, "industryExperience")) {
       validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "industryExperience", defaultWhenNotSuccessful));
     }
-    
+
     this.setState({validStates: validStates});
   }
 
@@ -74,8 +79,15 @@ class IndustryInfoForm extends React.Component {
     this.validateFields(["industryType"], "error");
   }
 
-  handleIndustryExperienceBlur(){
+  handleIndustryExperienceBlur() {
     this.validateFields(["industryExperience"], "error");
+  }
+
+  handleFocus(nameOrEvent) {
+    let name = nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
+      ? nameOrEvent.target.name
+      : nameOrEvent;
+    logEvent({"category": "Lender Match Form", "action": "Focus Event", "label": name});
   }
 
   render() {
@@ -125,8 +137,8 @@ class IndustryInfoForm extends React.Component {
     return (
       <div>
         <form ref={(form) => this.industryInfoForm = form} onSubmit={(e) => this.handleSubmit(e)}>
-          <MultiSelect errorText={clientConfig.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3}></MultiSelect>
-          <RadioButtonGroup errorText={clientConfig.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)}/>
+          <MultiSelect errorText={clientConfig.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3} onFocus={this.handleFocus.bind(this)}></MultiSelect>
+          <RadioButtonGroup errorText={clientConfig.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>

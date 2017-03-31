@@ -30,6 +30,9 @@ class RadioButtonGroup extends React.Component {
       this.props.onBlur();
     }
   }
+  handleFocus(){
+      this.props.onFocus({target:{name: this.props.name}});
+  }
   render() {
     let me = this;
     let radioButtons = this.props.options.map(function(item, index) {
@@ -38,7 +41,7 @@ class RadioButtonGroup extends React.Component {
 
       return <div className={styles.radioItem + " " + (isChecked
         ? styles.radioItemSelected
-        : styles.radioItemNotSelected)} onClick={(event) => me.handleClick(index, me)} key={index} tabIndex="0" onKeyPress={(event) => me.handleKeyPress(event, index, me)} onBlur={(e) => me.handleBlur(index)}>
+        : styles.radioItemNotSelected)} onClick={(event) => me.handleClick(index, me)} key={index} tabIndex="0" onKeyPress={(event) => me.handleKeyPress(event, index, me)} onFocus={me.handleFocus.bind(me)} onBlur={(e) => me.handleBlur(index)}>
         <input className={styles.regularRadio} type="radio" name={me.props.name} checked={isChecked} tabIndex="0" onChange={me.handleChange} id={id} value={item.value}></input>
         <label className={styles.myLabel} htmlFor={id}/>
         <span className={styles.radioText}>{item.text}</span>

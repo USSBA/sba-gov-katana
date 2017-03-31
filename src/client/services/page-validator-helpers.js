@@ -16,82 +16,60 @@ export function nameValidation(value) {
   return nameRegex.test(value);
 }
 
-export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, nameValidation);
-}
-
-
 export function phoneValidation(value) {
   const numberRegex = new RegExp(/^\d+$/);
   return value && value.length >= phoneMaxLength && numberRegex.test(value);
 }
 
+export function emailValidation(value) {
+  const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/);
+  return emailRegex.test(value);
+}
+
+export function hasLengthGreaterThanZero(value) {
+  return value !== null && value.length > 0;
+}
+
+export function zipCodeValidation(value) {
+  const numberRegex = new RegExp(/^\d+$/);
+  return value.length === zipMaxLength && numberRegex.test(value);
+}
+
+export function domainNameValidation(value) {
+  const websiteRegex = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/);
+  return websiteRegex.test(value);
+}
+
+
+export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, nameValidation);
+}
 export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
   return executeValidation(name, value, defaultWhenNotSuccessful, phoneValidation);
 }
-
 export function getEmailValidationState(name, value, defaultWhenNotSuccessful) {
-  const validStates = {};
-  const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/);
-  if (emailRegex.test(value)) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return executeValidation(name, value, defaultWhenNotSuccessful, emailValidation);
 }
 export function getTextAlphanumeicValidationState(name, value, defaultWhenNotSuccessful) {
-  const validStates = {};
-  if (value.length > 0) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero);
 }
 export function getZipcodeValidationState(name, value, defaultWhenNotSuccessful) {
-
-  const validStates = {};
-  const numberRegex = new RegExp(/^\d+$/);
-  if (value.length === zipMaxLength && numberRegex.test(value)) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return executeValidation(name, value, defaultWhenNotSuccessful, zipCodeValidation);
 }
 export function getWebsiteValidationState(name, value, defaultWhenNotSuccessful) {
-  const validStates = {};
-  const websiteRegex = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/);
-  if (websiteRegex.test(value)) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return executeValidation(name, value, defaultWhenNotSuccessful, domainNameValidation);
 }
 export function getSelectBoxValidationState(name, value, defaultWhenNotSuccessful) {
-  const validStates = {};
-  if (value !== null && value.length > 0) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero);
 }
 export function getCurrencyValidationState(name, value, defaultWhenNotSuccessful) {
-  const validStates = {};
-  if (value.length > 0) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero);
 }
+
 export function getAlwaysValidValidationState(name, value) {
-  const validStates = {};
-  validStates[name] = "success";
-  return validStates;
+  return executeValidation(name, value, null, () => {
+    return true;
+  });
 }
 
 export function containsErrorOrNull(items) {
