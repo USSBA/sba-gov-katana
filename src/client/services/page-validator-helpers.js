@@ -1,16 +1,27 @@
 const phoneMaxLength = 10;
 const zipMaxLength = 5;
 
-export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
+function executeValidation(name, value, defaultWhenNotSuccessful, tester) {
   const validStates = {};
-  const nameRegex = new RegExp(/^[a-z ,.'-]+$/i);
-  if (nameRegex.test(value)) {
+  if (tester(value)) {
     validStates[name] = "success";
   } else {
     validStates[name] = defaultWhenNotSuccessful;
   }
   return validStates;
 }
+
+export function nameValidation(value) {
+  const nameRegex = new RegExp(/^[a-z ,.'-]+$/i);
+  return nameRegex.test(value);
+}
+
+
+export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, nameValidation);
+}
+
+
 export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
   const validStates = {};
   const numberRegex = new RegExp(/^\d+$/);

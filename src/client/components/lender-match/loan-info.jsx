@@ -95,6 +95,14 @@ class LoanInfo extends React.Component {
     this.setState(newState, () => this.validateFields([name]));
   }
 
+  handleOptionalChange(e){
+      let name = e.target.name;
+      let value = e.target.value;
+      let newState = {};
+      newState[name] = value;
+      this.setState(newState, () => this.validateFields([name]));
+  }
+
   handleAmountBlur(value, callback) {
     let num = parseInt(value.replace(/(\$|,)/g, ""));
     let correctAmount = "";
@@ -142,7 +150,7 @@ class LoanInfo extends React.Component {
         <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
           <CurrencyInput errorText={clientConfig.messages.validation.invalidLoanAmount} label="How much funding do you need?" name="loanAmount" onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)} value={this.state.loanAmount} validationState={this.state.validStates.loanAmount} autoFocus/>
           <MultiSelectBox errorText={clientConfig.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanDescription" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanDescription} value={this.state.loanDescription} options={loanDescriptionOptions} maxValues={3} onBlur={this.handleBlur.bind(this)}></MultiSelectBox>
-          <TextArea errorText={clientConfig.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanUsage" handleChange={this.handleChange.bind(this)} value={this.state.loanUsage} getValidationState={this.state.validStates.loanUsage} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)}/>
+          <TextArea errorText={clientConfig.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanUsage" handleChange={this.handleOptionalChange.bind(this)} value={this.state.loanUsage} getValidationState={this.state.validStates.loanUsage} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>

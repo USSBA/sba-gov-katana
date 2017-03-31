@@ -40,6 +40,7 @@ class IndustryInfoForm extends React.Component {
     if (includes(fields, "industryExperience")) {
       validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "industryExperience", defaultWhenNotSuccessful));
     }
+    
     this.setState({validStates: validStates});
   }
 

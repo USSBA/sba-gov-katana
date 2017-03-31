@@ -30,11 +30,10 @@ class BusinessInfoForm extends React.Component {
   }
 
   componentDidMount() {
-    this.validateFields([]);
+    this.validateFields(["businessInfoName", "businessInfoZipcode", "businessInfoDescription", "businessInfoWebsite"]);
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-
     // if the value is not required and it is empty, then override the defaultWhenNotSuccessful to null
     let defaultWhenNotSuccessfulOverride = defaultWhenNotSuccessful;
     if (!includes(BusinessInfoForm.requiredFields, name) && (!this.state[name] || this.state[name].length === 0)) {
