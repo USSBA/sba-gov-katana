@@ -47,7 +47,7 @@ class ConfirmSection extends React.Component {
         <h5>We sent an email to {this.props.email}. Click on the verification link inside.
         <br />Don’t see a confirmation email? <a className={ styles.resendLink} href="">Click here to resend.</a></h5>
         <div className={ styles.resources }>
-          <Resource title="Free business plan template" duration="1-hour activity" description="You stated you don’t have a business plan. Many lenders expect one — consider using this template."
+          <Resource title="Free business plan template" duration="1-hour activity" description="Many lenders expect a business plan — consider using this template."
             buttonURL="https://www.sba.gov/tools/business-plan/1" buttonText="Create Plan" />
           <Resource title="How to prep a loan proposal" duration="30-minute video" description="This video learning course will walk you through commonly requested documents."
             buttonURL="https://www.sba.gov/tools/sba-learning-center/training/how-prepare-loan-package" buttonText="Watch Video" />
