@@ -40,7 +40,7 @@ class BusinessInfoForm extends React.Component {
     if (!includes(BusinessInfoForm.requiredFields, name) && (!this.state[name] || this.state[name].length === 0)) {
       defaultWhenNotSuccessfulOverride = null;
     }
-    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessfulOverride || null);
     if(validationState[name] === "error"){
       logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
     }

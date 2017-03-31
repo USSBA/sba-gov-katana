@@ -3,7 +3,7 @@ import config from "config";
 import Promise from "bluebird";
 import _ from "lodash";
 
-let sendMailConnectionOptions = {
+const sendMailConnectionOptions = {
   sendmail: true,
   newline: "unix",
   path: "/usr/sbin/sendmail"
@@ -23,8 +23,7 @@ var transporter = nodemailer.createTransport(sesConnectionOptions);
 
 function sendConfirmationEmail(options) {
   return new Promise((resolve, reject) => {
-    var defaultMailOptions = {
-      from: config.get("email.sender"),
+    var defaultMailOptions = { from : config.get("email.sender"),
       to: config.get("email.sender"),
       subject: "SBA Test Email",
       text: "Test Email",
@@ -46,6 +45,4 @@ function sendConfirmationEmail(options) {
     }
   });
 }
-export {
-  sendConfirmationEmail
-};
+export { sendConfirmationEmail };
