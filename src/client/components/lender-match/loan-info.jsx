@@ -39,11 +39,11 @@ class LoanInfo extends React.Component {
     if (includes(fields, "loanAmount")) {
       validStates = Object.assign(validStates, this.validateSingleField(this.getLoanAmountValidationState, "loanAmount", defaultWhenNotSuccessful));
     }
-    if (includes(fields, "loanDescription")) {
-      validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "loanDescription", defaultWhenNotSuccessful));
-    }
     if (includes(fields, "loanUsage")) {
-      validStates = Object.assign(validStates, this.validateSingleField(getTextAlphanumeicValidationState, "loanUsage", defaultWhenNotSuccessful));
+      validStates = Object.assign(validStates, this.validateSingleField(getSelectBoxValidationState, "loanUsage", defaultWhenNotSuccessful));
+    }
+    if (includes(fields, "loanDescription")) {
+      validStates = Object.assign(validStates, this.validateSingleField(getTextAlphanumeicValidationState, "loanDescription", defaultWhenNotSuccessful));
     }
     this.setState({validStates: validStates});
   }
@@ -74,8 +74,8 @@ class LoanInfo extends React.Component {
 
   handleSelectChange(newValue) {
     this.setState({
-      loanDescription: newValue
-    }, () => this.validateFields(["loanDescription"]));
+      loanUsage: newValue
+  }, () => this.validateFields(["loanUsage"]));
   }
 
   handleChange(e) {
@@ -119,7 +119,7 @@ class LoanInfo extends React.Component {
   }
 
   render() {
-    let loanDescriptionOptions = _.map([
+    let loanUsageOptions = _.map([
       "Buying an Existing Business",
       "Developing a Product",
       "Hiring Employees/Staff",
@@ -141,8 +141,8 @@ class LoanInfo extends React.Component {
       <div>
         <form ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
           <CurrencyInput errorText={clientConfig.messages.validation.invalidLoanAmount} label="How much funding do you need?" name="loanAmount" onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)} value={this.state.loanAmount} validationState={this.state.validStates.loanAmount} autoFocus/>
-          <MultiSelectBox errorText={clientConfig.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanUsage" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanDescription} value={this.state.loanDescription} options={loanDescriptionOptions} maxValues={3} onBlur={this.handleBlur.bind(this)}></MultiSelectBox>
-          <TextArea errorText={clientConfig.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanDescription" handleChange={this.handleChange.bind(this)} value={this.state.loanUsage} getValidationState={this.state.validStates.loanUsage} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)}/>
+          <MultiSelectBox errorText={clientConfig.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanUsage" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanUsage} value={this.state.loanUsage} options={loanUsageOptions} maxValues={3} onBlur={this.handleBlur.bind(this)}></MultiSelectBox>
+          <TextArea errorText={clientConfig.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanDescription" handleChange={this.handleChange.bind(this)} value={this.state.loanDescription} getValidationState={this.state.validStates.loanDescription} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>

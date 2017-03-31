@@ -16,22 +16,20 @@ export function nameValidation(value) {
   return nameRegex.test(value);
 }
 
-
 export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
   return executeValidation(name, value, defaultWhenNotSuccessful, nameValidation);
 }
 
 
-export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
-  const validStates = {};
+export function phoneValidation(value) {
   const numberRegex = new RegExp(/^\d+$/);
-  if (value && value.length >= phoneMaxLength && numberRegex.test(value)) {
-    validStates[name] = "success";
-  } else {
-    validStates[name] = defaultWhenNotSuccessful;
-  }
-  return validStates;
+  return value && value.length >= phoneMaxLength && numberRegex.test(value);
 }
+
+export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, phoneValidation);
+}
+
 export function getEmailValidationState(name, value, defaultWhenNotSuccessful) {
   const validStates = {};
   const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/);
