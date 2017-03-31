@@ -69,24 +69,24 @@ function queryDataToJson(data) {
 // }
 
 function fetchCounselorsByLocation(zipcode) {
-  let userZipCoords = fetchUserZipCoords(zipcode);
+  const userZipCoords = fetchUserZipCoords(zipcode);
 
-  let counselorQuery = userZipCoords.then(function (zipCoords) {
+  const counselorQuery = userZipCoords.then(function(zipCoords) {
     return createCounselorsByLocationQuery(zipCoords);
   });
 
-  let counselorData = counselorQuery.then(function (query) {
+  const counselorData = counselorQuery.then(function(query) {
     return executeQuery(query);
   });
 
-  let counselorJson = counselorData.then(function (counselors) {
+  const counselorJson = counselorData.then(function(counselors) {
     return queryDataToJson(counselors);
   });
 
   return Promise.join(userZipCoords, counselorQuery, counselorData, counselorJson,
-    function(zipCoords, query, counselors, counselorsJson){
+    function(zipCoords, query, counselors, counselorsJson) {
       //counselorsJson.unshift({userZipCoords: zipCoords});
-      return counselorsJson
+      return counselorsJson;
     });
 }
 
