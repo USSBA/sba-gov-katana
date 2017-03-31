@@ -39,13 +39,13 @@ class ConfirmSection extends React.Component {
   }
 
   render() {
-      let resendLink = this.state.resendClicked ? <span>Email was re-sent.</span> : <a onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
+      let resendLink = this.state.resendClicked ? <span className={ styles.resendLink}> Email was re-sent.</span> : <a className={ styles.resendLink} onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
     return (
       // Section
       <div className={ styles.section }>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
         <h5>We sent an email to {this.props.email}. Click on the verification link inside.
-        <br />Don’t see a confirmation email? <a className={ styles.resendLink} href="">Click here to resend.</a></h5>
+        <br />Don’t see a confirmation email? {resendLink} </h5>
         <div className={ styles.resources }>
           <Resource title="Free business plan template" duration="1-hour activity" description="Many lenders expect a business plan — consider using this template."
             buttonURL="https://www.sba.gov/tools/business-plan/1" buttonText="Create Plan" />
