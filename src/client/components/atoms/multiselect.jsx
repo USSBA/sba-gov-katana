@@ -35,7 +35,7 @@ class MultiSelectBox extends React.Component {
           {this.props.label}
         </label>
         <div className={styles.errorClass}>
-          <ReactSelect className={errorClass} tabSelectsValue={false} multi={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={arrayValue} options={this.props.options} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <ReactSelect className={errorClass} menuBuffer={10} tabSelectsValue={false} multi={true} autoBlur={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={arrayValue} options={this.props.options} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
         </div>
         {errorMessage}
       </div>
