@@ -13,7 +13,7 @@ googleAnalytics:
     accountId: "UA-19362636-5"
     debug: false
 drupal:
-    hostname: https://www.sba.gov/
+    hostname: http://www.sba.gov/
     endpoint: rest
 server:
     port: 3000
