@@ -32,6 +32,7 @@ class ConfirmSection extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
+        this.resend();
         this.setState({resendClicked: true});
     }
   resend() {
