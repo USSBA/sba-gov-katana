@@ -16,7 +16,6 @@ export class DynamicCounselingAndTools extends React.Component {
     super();
     this.state = {
       counselors: null,
-      userZipCoords: null,
       counselorsErr: null
     }
   }
@@ -27,9 +26,7 @@ export class DynamicCounselingAndTools extends React.Component {
     })
       .then((res) => {
         let counselorsData = this.props.counselorsData;
-        let userZipCoords = counselorsData.shift().userZipCoords;
         this.setState({
-          userZipCoords: userZipCoords,
           counselors: counselorsData
         })
       })
@@ -51,27 +48,27 @@ export class DynamicCounselingAndTools extends React.Component {
       })
   }
 
-  formatMapObjects(){
+  formatMapObjects() {
     let counselors = this.state.counselors;
-    if(this.state.counselors == null && this.state.counselorsErr == null){
+    if (this.state.counselorsErr || this.state.counselors == null) {
       return null
-    } else {
+    } else if (this.state.counselors && this.state.counselorsErr == null) {
       return counselors.map((counselor) => {
         return {
           lat: counselor.latitude,
           lng: counselor.longitude
         }
-      })
+      });
     }
-  }
-
-  trimStr(str) {
-    return str.length > 45 ? str.slice(0, 45) + "..." : str
   }
 
   getMiles(num) {
     let miles = parseInt(num) * 0.000621371192;
     return Math.round(miles * 100) / 100
+  }
+
+  trimStr(str) {
+    return str.length > 45 ? str.slice(0, 45) + "..." : str
   }
 
   createCounselorBoxes() {
@@ -117,7 +114,7 @@ export class DynamicCounselingAndTools extends React.Component {
         </div>
         <div className={ styles.mapContainer }>
           <div className={ styles.mapPlaceholder }>
-            <CounselorMap userZipCoords={this.state.userZipCoords} markerLocations={this.formatMapObjects()}/>
+            <CounselorMap markerLocations={this.formatMapObjects()}/>
           </div>
         </div>
       </div>
@@ -129,7 +126,9 @@ export class DynamicCounselingAndTools extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoData: state.lenderMatch.businessInfoData,
+    businessInfoData: state.lenderMatch.businessInfoData || {
+      businessInfoZipcode: 19980
+    },
     counselorsData: state.contentReducer["counselors"]
   };
 }
