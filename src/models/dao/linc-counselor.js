@@ -10,7 +10,7 @@ function createCounselorsByLocationQuery(zipCoords) {
     "node.title, taxonomy_term_data.name, location.street, location.additional, ",
     "location.city, location.province, location.postal_code, location_phone.phone, ",
     "field_data_field_partner_website.field_partner_website_url AS website, ",
-    "location.latitude, location.longitude, " ,
+    "location.latitude, location.longitude, ",
     "(COALESCE(ACOS( SIN(" + zipCoords.lat + "*PI()/180) * SIN(location.latitude*PI()/180) ",
     "+ COS(" + zipCoords.lat + "*PI()/180) * COS(location.latitude*PI()/180) ",
     "* COS(location.longitude*PI()/180 - " + zipCoords.lng + "*PI()/180)), 0.00000) ",

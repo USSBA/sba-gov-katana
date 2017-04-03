@@ -27,6 +27,7 @@ class IndustryInfoForm extends React.Component {
 
   componentDidMount() {
     this.validateFields(["industryType", "industryExperience"]);
+    window.scrollTo(0, 0);
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
