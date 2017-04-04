@@ -1,24 +1,15 @@
 /* eslint-disable */
-import {
-  sortBy
-} from "lodash";
-import {
-  fitBounds
-} from "google-map-react/utils";
+import { sortBy } from "lodash";
+import { fitBounds } from "google-map-react/utils";
 
 // Here world is a tube
-const findZoomAndCenter = ({
-    size,
-    center: defaultCenter = {
+const findZoomAndCenter = ({size, center: defaultCenter = {
       lat: 35.689,
       lng: 139.741
-    },
-    zoom: defaultZoom = 10,
-    zoomBounds = {
+    }, zoom: defaultZoom = 10, zoomBounds = {
       min: 3,
       max: 17
-    }
-  },
+    }},
   points
 ) => {
   if (size === undefined) {
@@ -67,23 +58,11 @@ const findZoomAndCenter = ({
       return r;
     }, []);
 
-  const {
-    lat: latFirst,
-    lng: lngFirst
-  } = pointsNorm[0];
+  const {lat: latFirst, lng: lngFirst} = pointsNorm[0];
 
-  const {
-    nw,
-    se
-  } = pointsNorm
+  const {nw, se} = pointsNorm
     .reduce(
-      ({
-        nw: ptNW,
-        se: ptSE
-      }, {
-        lat,
-        lng
-      }) => {
+      ({nw: ptNW, se: ptSE}, {lat, lng}) => {
         return ({
           nw: {
             lat: Math.max(ptNW.lat, lat + eps),
@@ -104,7 +83,7 @@ const findZoomAndCenter = ({
           lng: lngFirst
         }
       }
-    );
+  );
 
   // bounds on the tube can be not as simple {from, to}
   // ____***_____
@@ -154,10 +133,7 @@ const findZoomAndCenter = ({
     lat: (bounds.se.lat + bounds.nw.lat) / 2
   };
 
-  const {
-    center: center0,
-    zoom: zoom0
-  } = fitBounds(bounds, size);
+  const {center: center0, zoom: zoom0} = fitBounds(bounds, size);
 
   const center = zoom0 > zoomBounds.max ?
     primitiveCenter :
