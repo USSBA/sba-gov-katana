@@ -1,4 +1,4 @@
-
+import moment from "moment";
 import Promise from 'bluebird';
 var should = require('should');
 import {
@@ -316,7 +316,7 @@ describe('linc soap request test', function() {
   });
 
   describe('response handling tests', function(){
-      let lenderMatchSoapResponseCreateStub, lenderMatchSoapResponseUpdateStub, lenderMatchRegistrationDeleteStub, fakeSoapResponse;
+      let lenderMatchSoapResponseCreateStub, lenderMatchSoapResponseUpdateStub, lenderMatchRegistrationDeleteStub;
 
       beforeEach(function(){
           lenderMatchSoapResponseCreateStub = sinon.stub(lenderMatchSoapResponse, 'create').returns(Promise.resolve(1));
@@ -332,37 +332,44 @@ describe('linc soap request test', function() {
           lenderMatchRegistrationDeleteStub.restore();
       });
       it('Failure as soap response test', function(){
-          fakeSoapResponse = {
+          let fakeFailureResponse = {
               responseCode: "F",
               errorMessageEnglish: "Unable to perform service at this time.",
               errorMessageTechnical: "Unable to perform service at this time.",
               lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
           }
 
-          handleSoapResponse(fakeSoapResponse);
-          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeSoapResponse);
+          handleSoapResponse(fakeFailureResponse);
+          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeFailureResponse);
       });
 
       it('Pending as soap response test', function(){
-          fakeSoapResponse = {
+          let fakePendingResponse = {
               responseCode: "P",
               errorMessageEnglish: "Unable to perform service at this time.",
               errorMessageTechnical: "Unable to perform service at this time.",
               lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
           }
-          handleSoapResponse(fakeSoapResponse);
-          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeSoapResponse);
+          handleSoapResponse(fakePendingResponse);
+          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakePendingResponse);
       });
 
       it('Success Update as soap response test', function(){
-          fakeSoapResponse = {
+          let fakeUpdateResponse = {
               responseCode: "S",
               errorMessageEnglish: "Unable to perform service at this time.",
               errorMessageTechnical: "Unable to perform service at this time.",
               lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
           }
-          handleSoapResponse(fakeSoapResponse);
-          sinon.assert.calledWith(lenderMatchSoapResponseUpdateStub, fakeSoapResponse);
+          const now = moment();
+          handleSoapResponse(fakeUpdateResponse);
+          sinon.assert.calledWith(lenderMatchSoapResponseUpdateStub, {
+              processed: now.unix()
+          }, {
+              where: {
+                  lenderMatchRegistrationId: fakeUpdateResponse.lenderMatchRegistrationId
+              }
+          });
       });
   });
 
