@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LocationChangeActions from '../../actions/location-change.js';
 
-class Navigation extends React.Component {
+export class Navigation extends React.Component {
   handleClick() {
     this.props.actions.locationChange('/linc/form', {
       label: "Find Lenders #2"

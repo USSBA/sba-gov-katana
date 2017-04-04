@@ -80,7 +80,7 @@ export const HelpfulQuestions = (props) => <div className={ styles.section }>
                                                  <ExpertHelpBtn/>
                                                  </Col>
                                                  <Col xs={ 12 } sm={ 3 }>
-                                                 <FindLendersButton label={ "Find Lenders #4" } />
+                                                 <FindLendersButton eventLabel={ "Find Lenders #2" } />
                                                  </Col>
                                                </div>
                                              </div>

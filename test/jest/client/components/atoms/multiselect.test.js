@@ -7,6 +7,7 @@ import ReactSelect from 'react-select';
 import MultiSelect from 'client/components/atoms/multiselect.jsx';
 import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
+import _ from 'lodash';
 
 
 // Does not appear to work with React-Select
@@ -30,14 +31,20 @@ import renderer from 'react-test-renderer';
 //     expect(tree).toMatchSnapshot();
 // });
 
-
+function makeValueLikeReactSelectReturnsIt(x){
+    return _.map(x, (item) => { return {value: item};});
+}
 
 test('MultiSelect maximum values', () => {
     let lastValue = "A,B,C";
     function handleChange(newValue){
-        console.log(lastValue);
         lastValue = newValue;
     }
+
+    function simulateChange(component, value){
+        component.find(ReactSelect).simulate('change',makeValueLikeReactSelectReturnsIt(value));
+    }
+
     const component = shallow(
         <MultiSelect    label="Some Label"
                         name="somename"
@@ -50,12 +57,12 @@ test('MultiSelect maximum values', () => {
                         maxValues={ 3 }>
         </MultiSelect>
     );
-    component.find(ReactSelect).simulate('change',["B"]);
+    simulateChange(component, ['B']);
     expect(lastValue).toEqual("B");
-    component.find(ReactSelect).simulate('change',["A","B"]);
+    simulateChange(component, ['A','B']);
     expect(lastValue).toEqual("A,B");
-    component.find(ReactSelect).simulate('change',["A","B","C"]);
+    simulateChange(component, ['A','B', 'C']);
     expect(lastValue).toEqual("A,B,C");
-    component.find(ReactSelect).simulate('change',["A","B","C","D"]);
+    simulateChange(component, ['A','B', 'C', 'D']);
     expect(lastValue).toEqual("A,B,C");
 });

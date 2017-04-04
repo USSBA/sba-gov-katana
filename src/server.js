@@ -78,7 +78,7 @@ app.get("/content/counselors-redirect.json", function(req, res) {
     if (err) {
       throw new Error(err);
     }
-    const url = "https://www.sba.gov/tools/local-assistance/map/filter/";
+    const url = "/tools/local-assistance/map/filter/";
     const encodedUrl = url + buffer.toString("hex");
     res.send({
       redirectTo: encodedUrl

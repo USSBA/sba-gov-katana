@@ -21,8 +21,8 @@ email:
     debugEmailOnly: false
     sender: '"Small Business Administration" <jking@fearless.tech>'
     hostname: email-smtp.us-east-1.amazonaws.com
-    password: Avd4coTIkX2FUOycOhQoJB/7VICbhU8VlF69ZG75eHQk
-    username: AKIAJJEHXXEYPCIZKPCA
+    password: placeholder
+    username: placeholder
 linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
     resendEmailJobEnabled: true
