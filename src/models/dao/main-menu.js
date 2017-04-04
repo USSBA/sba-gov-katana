@@ -5,7 +5,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-magic-numbers */
 
-import { executeQuery } from "../drupal-db.js";
+import { executeDrupalQuery } from "../drupal-db.js";
 import _ from "lodash";
 import Promise from "bluebird";
 import path from "path";
@@ -59,7 +59,7 @@ function fetchMainMenu() {
 
 function fetchMainMenuStructure() {
   const sqlQuery = "select ml.mlid, ml.plid, ml.link_title as linkTitle, ml.link_path as linkPath, ua.alias as link, ml.weight from menu_links as ml left join url_alias as ua on ua.source = ml.link_path where ml.menu_name = 'main-menu' and hidden = 0 and options NOT LIKE '%element-invisible%' order by weight asc;";
-  return executeQuery(sqlQuery);
+  return executeDrupalQuery(sqlQuery);
 }
 
 
@@ -98,7 +98,7 @@ function buildMenuTree(data, parent) {
 
 function fetchLoansAndGrantsCalloutBlock() {
   const query = "select body from block_custom where info = 'Feature block for Menu - Loans & Grants';";
-  return executeQuery(query)
+  return executeDrupalQuery(query)
     .then(function(result) {
       let title = "";
       let image = "";

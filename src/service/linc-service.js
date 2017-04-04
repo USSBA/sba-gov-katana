@@ -6,9 +6,6 @@ import moment from "moment";
 import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
-///import * as Sequelize from "sequelize";
-import { drupal, nonDrupal } from "../models/db-connect.js";
-
 import { sendConfirmationEmail } from "../util/emailer.js";
 import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
 import EmailConfirmation from "../models/email-confirmation.js";
@@ -77,6 +74,51 @@ function createLenderMatchSoapResponseData(data) {
     });
 }
 
+function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
+  const now = moment();
+  return lenderMatchSoapResponse.update(
+    {
+      processed: now.unix()
+    },
+    {
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      throw err;
+    });
+}
+
+function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
+  return lenderMatchRegistration.destroy(
+    {
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      throw err;
+    });
+}
+
+function handleSoapResponse(soapResponse) {
+  if (soapResponse.resultCode === "P" || soapResponse.resultCode === "F") {
+    return createLenderMatchSoapResponseData(soapResponse);
+  } else if (soapResponse.resultCode === "S") {
+    //update the database to processed or delete lenderMatchRegistration when deletion is implemented
+    const notDeletingYet = true;
+    return notDeletingYet ? updateLenderMatchSoapResponse(soapResponse.lenderMatchRegistrationId) : deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
+  } else { //eslint-disable-line no-else-return
+    throw new Error("Unknown Response Code receieved from OCA.");
+  }
+}
 
 function findUnconfirmedRegistrations() {
   const soonest = moment().subtract(config.get("linc.lookback"), "seconds");
@@ -116,18 +158,14 @@ function sendFollowupConfirmations(emailConfirmations) {
   });
 }
 
-function findFailedOrPendingMessages() {
-  const sqlQuery = "select reg.id, reg.name, reg.phone, reg.emailAddress, reg.businessName, reg.businessZip, reg.industry, reg.industryExperience, " +
-    " reg.loanAmount, reg.loanDescription, reg.loanUsage, reg.businessWebsite, reg.businessDescription, reg.hasWrittenPlan, reg.hasFinancialProjections, " +
-    "reg.isGeneratingRevenue, reg.isVeteran, res.id as responseId, count(*) as resCount from lenderMatchRegistration reg inner join lenderMatchSoapResponse res on reg.id = res.lenderMatchRegistrationId " +
-    "inner join emailConfirmation eco on reg.id = eco.lenderMatchRegistrationId where eco.confirmed is not null and res.processed is null " +
-    "and res.updatedAt = (select max(updatedAt) from lenderMatchSoapResponse where lenderMatchRegistrationId = reg.id) and (res.responseCode = 'P' or res.responseCode = 'F') group by responseId having resCount < 5";
+function findFailedOrPendingMessages(fetchPendingOrFailedMessagesFromDb) {
 
-  return nonDrupal.query(sqlQuery).spread(
+  return fetchPendingOrFailedMessagesFromDb();
+/*  return nonDrupal.query(sqlQuery).spread(
     function(results, metadata) {
       return results;
     }
-  );
+  );*/
 }
 
 function followupEmailJob() {
@@ -152,43 +190,13 @@ function sendDataToOca(lenderMatchRegistrationData) {
       return sendLincSoapRequest(response);
     })
     .then(function(response) {
-      if (response.resultCode === "P" || response.resultCode === "F") {
-        const lenderMatchSoapResponseData = {
-          responseCode: response.resultCode,
-          errorMessageEnglish: response.errorMessageEnglish,
-          errorMessageTechnical: response.errorMessageTechnical,
-          lenderMatchRegistrationId: response.lenderMatchRegistrationId
-        };
-
-        createLenderMatchSoapResponseData(lenderMatchSoapResponseData)
-          .then(function(resp) {
-            console.log(resp);
-          })
-          .catch(function(error) {
-            console.log(error.message);
-            throw error;
-          });
-      } else if (response.resultCode === "S") {
-        //update the database to processed or delete lenderMatchRegistration when deletion is implemented
-        const notDeletingYet = true;
-        const now = moment();
-        let sqlQuery;
-
-        if (notDeletingYet) {
-          sqlQuery = "update lenderMatchSoapResponse set  processed = " + now.unix() + " where lenderMatchRegistrationId = " + "'" + response.lenderMatchRegistrationId + "'"; //eslint-disable-line no-useless-concat
-        } else {
-          sqlQuery = "delete from lenderMatchRegistration where lenderMatchRegistrationId = " + "'" + response.lenderMatchRegistrationId + "'"; //eslint-disable-line no-useless-concat
-        }
-        nonDrupal.query(sqlQuery).spread(
-          function(results, metadata) {
-            console.log(results);
-            console.log(metadata);
-          }
-        );
-      } else {
-        throw new Error("Unknown Response Code receieved from OCA.");
-      }
-
+      /*      const lenderMatchSoapResponseData = {
+                responseCode: response.resultCode,
+                errorMessageEnglish: response.errorMessageEnglish,
+                errorMessageTechnical: response.errorMessageTechnical,
+                lenderMatchRegistrationId: response.lenderMatchRegistrationId
+            };*/
+      return handleSoapResponse(response);
     })
     .catch(function(error) {
       console.log(error.message);
@@ -222,8 +230,8 @@ function sendMessagesToOca(results) {
   });
 }
 
-function sendDataToOcaJob() {
-  return findFailedOrPendingMessages().then(sendMessagesToOca);
+function sendDataToOcaJob(fetchPendingOrFailedMessagesFromDb) {
+  return findFailedOrPendingMessages(fetchPendingOrFailedMessagesFromDb).then(sendMessagesToOca);
 }
 
 function confirmEmail(token) {

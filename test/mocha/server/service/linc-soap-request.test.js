@@ -1,3 +1,5 @@
+
+
 var should = require('should');
 import {
   userName,
@@ -14,6 +16,14 @@ import {
   formatMessage,
   pOthTypTxt
 } from "../../../../src/service/linc-message-formatter.js";
+
+let chai = require('chai');
+let sinonChai = require("sinon-chai");
+let expect = chai.expect;
+chai.use(chaiAsPromised);
+require('sinon-as-promised');
+let sinon = require('sinon');
+chai.use(sinonChai);
 
 describe('linc soap request test', function() {
   describe('soap request formatting functions test', function() {
@@ -293,6 +303,10 @@ describe('linc soap request test', function() {
       let retVal = vetInd(false);
       retVal.should.be.exactly("1");
     });
+  });
+
+  describe('create message and handle response tests', function(){
+
   });
 
 });
