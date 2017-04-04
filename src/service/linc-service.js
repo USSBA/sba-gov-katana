@@ -250,7 +250,7 @@ function confirmEmail(token) {
             .then(function(result) {
               return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
                 .then(function(lenderMatchRegistrationData) {
-                  //   sendDataToOca(lenderMatchRegistrationData);
+                  sendDataToOca(lenderMatchRegistrationData);
                   return "success";
                 });
             });

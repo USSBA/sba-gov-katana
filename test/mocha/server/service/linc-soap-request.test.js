@@ -66,6 +66,20 @@ describe('linc soap request test', function() {
               }
           });
     });
+
+  it('should result in an exception if passed an unknown responseCode', function() {
+      let fakeUpdateResponse = {
+          responseCode: "unknown",
+          errorMessageEnglish: "Unable to perform service at this time.",
+          errorMessageTechnical: "Unable to perform service at this time.",
+          lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
+      };
+
+      (function() {
+          handleSoapResponse(fakeUpdateResponse);
+      }).should.throw("Unknown Response Code receieved from OCA.");
+  });
+
   });
 
 });
