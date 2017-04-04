@@ -5,6 +5,8 @@ import { Grid, Row, Col, Image, Button } from 'react-bootstrap'
 import styles from '../../styles/success-page/confirm-section.scss';
 import thumbNail from '../../../../public/assets/images/placeholder370x170.png';
 import * as ConfirmationEmailActions from '../../actions/confirmation-email.js';
+import { logEvent } from "../../services/analytics.js";
+
 
 const Resource = (props) => (
   <div className={ styles.resource }>
@@ -33,7 +35,13 @@ class ConfirmSection extends React.Component {
     handleClick(e) {
         e.preventDefault();
         this.resend();
-        this.setState({resendClicked: true});
+        this.setState({resendClicked: true}, function(){
+            logEvent({
+                category: "Email",
+                action: "Resend Button Pushed",
+                label: "LINC Email Resend Button"
+            });
+        });
     }
   resend() {
     this.props.actions.resendConfirmationEmail(this.props.email);
@@ -44,7 +52,7 @@ class ConfirmSection extends React.Component {
     return (
       <div className={ styles.section }>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
-        <h5>We sent an email to {this.props.email}.<br /> 
+        <h5>We sent an email to {this.props.email}.<br />
         Click on the verification link inside.<br />
         Don’t see a confirmation email? {resendLink} </h5>
         <div className={ styles.resources }>
