@@ -44,8 +44,9 @@ class ConfirmSection extends React.Component {
     return (
       <div className={ styles.section }>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
-        <h5>We sent an email to {this.props.email}. Click on the verification link inside.
-        <br />Don’t see a confirmation email? {resendLink} </h5>
+        <h5>We sent an email to {this.props.email}.<br /> 
+        Click on the verification link inside.<br />
+        Don’t see a confirmation email? {resendLink} </h5>
         <div className={ styles.resources }>
           <Resource title="Free business plan template" duration="1-hour activity" description="Many lenders expect a business plan — consider using this template."
             buttonURL="/tools/business-plan/1" buttonText="Create Plan" />

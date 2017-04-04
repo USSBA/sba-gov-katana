@@ -1,4 +1,4 @@
-import { executeQuery } from "../drupal-db.js";
+import { executeDrupalQuery } from "../drupal-db.js";
 import mysql from "mysql";
 import _ from "lodash";
 import Promise from "bluebird";
@@ -43,7 +43,7 @@ function createCounselorsByLocationQuery(zipCoords) {
 
 function fetchUserZipCoords(zipcode) {
   const query = mysql.format("SELECT * from zipcodes WHERE zipcodes.zip = ?;", zipcode); //mysql.format to prevent sql inject
-  return executeQuery(query)
+  return executeDrupalQuery(query)
     .then(function(zipCoords) {
       return {
         lat: zipCoords[0].latitude,
@@ -64,7 +64,7 @@ function fetchCounselorsByLocation(zipcode) {
   });
 
   const counselorData = counselorQuery.then(function(query) {
-    return executeQuery(query);
+    return executeDrupalQuery(query);
   });
 
   const counselorJson = counselorData.then(function(counselors) {

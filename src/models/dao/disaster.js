@@ -1,10 +1,10 @@
-import { executeQuery } from "../drupal-db.js";
+import { executeDrupalQuery } from "../drupal-db.js";
 import Promise from "bluebird";
 
 
 
 function fetchDescription() {
-  return executeQuery("select body from block_custom where info = \"Apply For Disaster Loan Parature\";")
+  return executeDrupalQuery("select body from block_custom where info = \"Apply For Disaster Loan Parature\";")
     .then(function(result) {
       let description = "";
       const minLength = 1;
@@ -22,7 +22,7 @@ function fetchDescription() {
 }
 
 function fetchVisibility() {
-  return executeQuery("select region from block where delta = (SELECT bid FROM block_custom WHERE info = 'Apply For Disaster Loan Parature') and theme = 'smallbizd7';")
+  return executeDrupalQuery("select region from block where delta = (SELECT bid FROM block_custom WHERE info = 'Apply For Disaster Loan Parature') and theme = 'smallbizd7';")
     .then(function(result) {
       let visible = false;
       if (result && result[0].region) {

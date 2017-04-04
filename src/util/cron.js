@@ -2,6 +2,7 @@ var CronJob = require("cron").CronJob; // eslint-disable-line id-match
 import config from "config";
 
 import { followupEmailJob, sendDataToOcaJob } from "../service/linc-service.js";
+import { fetchPendingOrFailedMessagesFromDb } from "../models/dao/linc-service.js";
 
 function init() {
   /* eslint-disable no-new, id-match */
@@ -11,7 +12,7 @@ function init() {
   }
   if (config.get("linc.sendToOcaJobEnabled")) {
     console.log("Starting sending failed or pending messages to OCA");
-    new CronJob(config.get("linc.ocaSoapCron"), sendDataToOcaJob, null, true, "America/New_York");
+    new CronJob(config.get("linc.ocaSoapCron"), sendDataToOcaJob(fetchPendingOrFailedMessagesFromDb), null, true, "America/New_York");
   }
 /* eslint-enable no-new, id-match */
 }
