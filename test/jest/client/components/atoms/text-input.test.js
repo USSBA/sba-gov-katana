@@ -8,14 +8,14 @@ import {shallow} from 'enzyme';
 test('TextInput', () => {
     let lastValue = "";
     function handleChange(newValue){
-        console.log(lastValue);
+        // console.log(lastValue);
         lastValue = newValue;
     }
     function onBlur(newValue){
-        console.log("onBlur");
+        // console.log("onBlur");
     }
     function onFocus(newValue){
-        console.log("onFocus");
+        // console.log("onFocus");
     }
     const component = shallow(
         <TextInput
