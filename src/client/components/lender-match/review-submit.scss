@@ -33,4 +33,8 @@
   composes: continueBtn from "./lender-match.scss";
   width: 100%;
   margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  float: none;
 }
