@@ -8,7 +8,7 @@ import renderer from 'react-test-renderer';
 import {shallow} from 'enzyme';
 
 jest.mock('client/services/analytics.js', function(){
-    console.log(arguments);
+    // console.log(arguments);
 });
 
 test('Navigation renders two buttons', () => {
