@@ -136,10 +136,12 @@
 
 @media (min-width: 1000px) {
     .mapContainer {
+        position: relative;
         width: 100%;
         height: auto;
         .mapPlaceholder {
             background: white;
+            position: absolute;
             width: 100%;
             height: 100%;
         }
