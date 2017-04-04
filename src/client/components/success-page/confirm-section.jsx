@@ -42,18 +42,18 @@ class ConfirmSection extends React.Component {
   render() {
       let resendLink = this.state.resendClicked ? <span className={ styles.resendLink}> Email was re-sent.</span> : <a className={ styles.resendLink} onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
     return (
-      // Section
       <div className={ styles.section }>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
-        <h5>We sent an email to {this.props.email}. Click on the verification link inside.
-        <br />Don’t see a confirmation email? {resendLink} </h5>
+        <h5>We sent an email to {this.props.email}.<br /> 
+        Click on the verification link inside.<br />
+        Don’t see a confirmation email? {resendLink} </h5>
         <div className={ styles.resources }>
           <Resource title="Free business plan template" duration="1-hour activity" description="Many lenders expect a business plan — consider using this template."
-            buttonURL="https://www.sba.gov/tools/business-plan/1" buttonText="Create Plan" />
+            buttonURL="/tools/business-plan/1" buttonText="Create Plan" />
           <Resource title="How to prep a loan proposal" duration="30-minute video" description="This video learning course will walk you through commonly requested documents."
-            buttonURL="https://www.sba.gov/tools/sba-learning-center/training/how-prepare-loan-package" buttonText="Watch Video" />
+            buttonURL="/tools/sba-learning-center/training/how-prepare-loan-package" buttonText="Watch Video" />
           <Resource title="5 Tips for loan applications" duration="5-minute read" description="This blog features tips and tricks on getting through the loan process quickly and easily."
-            buttonURL="https://www.sba.gov/blogs/5-tips-successfully-navigating-sba-loan-application-process" buttonText="Read Blog" />
+            buttonURL="/blogs/5-tips-successfully-navigating-sba-loan-application-process" buttonText="Read More" />
         </div>
       </div>
     )

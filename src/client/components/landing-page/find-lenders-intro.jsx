@@ -34,7 +34,7 @@ class FindLendersIntro extends React.Component {
                 <HelpMeBtn/>
               </div>
               <div className=" col-sm-4 col-xs-12 nopadding">
-                <Button block className={ styles.findLendersWhiteBtn } onClick={ this.handleClick.bind(this) }>FIND LENDERS</Button>
+                <Button id="find-lenders-button-one"  block className={ styles.findLendersWhiteBtn } onClick={ this.handleClick.bind(this) }>FIND LENDERS</Button>
               </div>
             </div>
           </div>

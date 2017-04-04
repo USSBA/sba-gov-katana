@@ -136,6 +136,8 @@
 
 @media (min-width: 1000px) {
     .mapContainer {
+        width: 800px;
+        height: 600px;
         .mapPlaceholder {
             background: lightgrey;
             width: 100%;

@@ -73,9 +73,6 @@ function fetchCounselorsByLocation(zipcode) {
 
   return Promise.join(userZipCoords, counselorQuery, counselorData, counselorJson,
     function(zipCoords, query, counselors, counselorsJson) {
-      counselorsJson.unshift({
-        userZipCoords: zipCoords
-      });
       return counselorsJson;
     });
 }
