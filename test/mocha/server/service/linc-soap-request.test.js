@@ -6,7 +6,7 @@ import {
   lenderMatchSoapResponse,
   lenderMatchRegistration
 } from "../../../../src/models/lender-match-registration.js";
-
+import moment from "moment";
 
 describe('linc soap request test', function() {
 
@@ -26,37 +26,45 @@ describe('linc soap request test', function() {
       lenderMatchRegistrationDeleteStub.restore();
     });
     it('Failure as soap response test', function() {
-      fakeSoapResponse = {
+      let fakeFailureResponse = {
         responseCode: "F",
         errorMessageEnglish: "Unable to perform service at this time.",
         errorMessageTechnical: "Unable to perform service at this time.",
         lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
       }
 
-      handleSoapResponse(fakeSoapResponse);
-      sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeSoapResponse);
+      handleSoapResponse(fakeFailureResponse);
+      sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeFailureResponse);
     });
 
     it('Pending as soap response test', function() {
-      fakeSoapResponse = {
+      let fakePendingResponse = {
         responseCode: "P",
         errorMessageEnglish: "Unable to perform service at this time.",
         errorMessageTechnical: "Unable to perform service at this time.",
         lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
       }
-      handleSoapResponse(fakeSoapResponse);
-      sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeSoapResponse);
+      handleSoapResponse(fakePendingResponse);
+      sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakePendingResponse);
     });
 
     it('Success Update as soap response test', function() {
-      fakeSoapResponse = {
+      let fakeUpdateResponse = {
         responseCode: "S",
         errorMessageEnglish: "Unable to perform service at this time.",
         errorMessageTechnical: "Unable to perform service at this time.",
         lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
       }
-      handleSoapResponse(fakeSoapResponse);
-      sinon.assert.calledWith(lenderMatchSoapResponseUpdateStub, fakeSoapResponse.lenderMatchRegistrationId);
+      handleSoapResponse(fakeUpdateResponse);
+      const now = moment();
+      sinon.assert.calledWith(lenderMatchSoapResponseUpdateStub, {
+              processed: now.unix()
+          },
+          {
+              where: {
+                  lenderMatchRegistrationId: fakeUpdateResponse.lenderMatchRegistrationId
+              }
+          });
     });
   });
 
