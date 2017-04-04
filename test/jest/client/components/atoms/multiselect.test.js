@@ -37,6 +37,7 @@ test('MultiSelect maximum values', () => {
     function handleChange(newValue){
         console.log(lastValue);
         lastValue = newValue;
+        console.log(lastValue);
     }
     const component = shallow(
         <MultiSelect    label="Some Label"

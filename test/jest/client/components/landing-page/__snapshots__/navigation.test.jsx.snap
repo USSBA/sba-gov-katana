@@ -1,11 +1,15 @@
-exports[`test Navigation renders two buttons 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation renders two buttons 1`] = `
 <div
-  className="text-center">
+  className="text-center"
+>
   <button
     className="btn btn-default"
     disabled={false}
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
      Am I Ready?
   </button>
   <button
@@ -13,7 +17,8 @@ exports[`test Navigation renders two buttons 1`] = `
     disabled={false}
     id="landing-page-button-find-lenders"
     onClick={[Function]}
-    type="button">
+    type="button"
+  >
      Find Lenders
   </button>
 </div>
