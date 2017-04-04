@@ -17,11 +17,21 @@ import {
   pOthTypTxt
 } from "../../../../src/service/linc-message-formatter.js";
 
+import {
+  handleSoapResponse
+} from "../../../../src/service/linc-service.js";
+import {
+  lenderMatchSoapResponse,
+  lenderMatchRegistration
+} from "../../../../src/models/lender-match-registration.js";
+
 let chai = require('chai');
 let sinonChai = require("sinon-chai");
+let chaiAsPromised = require('chai-as-promised');
 let expect = chai.expect;
-chai.use(chaiAsPromised);
 require('sinon-as-promised');
+chai.use(chaiAsPromised);
+
 let sinon = require('sinon');
 chai.use(sinonChai);
 
@@ -305,8 +315,32 @@ describe('linc soap request test', function() {
     });
   });
 
-  describe('create message and handle response tests', function(){
+  describe('response handling tests', function(){
+      let lenderMatchSoapResponseCreateStub, lenderMatchSoapResponseUpdateStub, lenderMatchRegistrationDeleteStub, fakeSoapResponse;
 
+      beforeEach(function(){
+          lenderMatchSoapResponseCreateStub = sinon.stub(lenderMatchSoapResponse, 'create');
+          lenderMatchSoapResponseUpdateStub = sinon.stub(lenderMatchSoapResponse, 'update');
+          lenderMatchRegistrationDeleteStub = sinon.stub(lenderMatchRegistration, 'destroy');
+
+          fakeSoapResponse = {
+              responseCode: "F",
+              errorMessageEnglish: "Unable to perform service at this time.",
+              errorMessageTechnical: "Unable to perform service at this time.",
+              lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
+          }
+      });
+
+      afterEach(function(){
+          lenderMatchSoapResponseCreateStub.restore();
+          lenderMatchSoapResponseUpdateStub.restore();
+          lenderMatchRegistrationDeleteStub.restore();
+      });
+      it('Success as soap response test', function(){
+
+          handleSoapResponse(fakeSoapResponse);
+          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeSoapResponse);
+      });
   });
 
 });

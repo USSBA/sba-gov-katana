@@ -109,15 +109,16 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
 }
 
 function handleSoapResponse(soapResponse) {
-  if (soapResponse.resultCode === "P" || soapResponse.resultCode === "F") {
-    return createLenderMatchSoapResponseData(soapResponse);
-  } else if (soapResponse.resultCode === "S") {
+  if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
+    retVal = createLenderMatchSoapResponseData(soapResponse);
+  } else if (soapResponse.responseCode === "S") {
     //update the database to processed or delete lenderMatchRegistration when deletion is implemented
     const notDeletingYet = true;
-    return notDeletingYet ? updateLenderMatchSoapResponse(soapResponse.lenderMatchRegistrationId) : deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
+    retVal = notDeletingYet ? updateLenderMatchSoapResponse(soapResponse.lenderMatchRegistrationId) : deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
   } else { //eslint-disable-line no-else-return
     throw new Error("Unknown Response Code receieved from OCA.");
   }
+    return retVal;
 }
 
 function findUnconfirmedRegistrations() {
@@ -285,4 +286,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export { createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
+export { handleSoapResponse, updateLenderMatchSoapResponse,createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
