@@ -115,7 +115,7 @@ export class DynamicCounselingAndTools extends React.Component {
           </div>
           <div className={ styles.mapContainer }>
             <div className={ styles.mapPlaceholder }>
-              <CounselorMap markerLocations={this.formatMapObjects()}/>
+              { this.state.counselors ? <CounselorMap markerLocations={this.formatMapObjects()}/> : null}
             </div>
           </div>
         </div>
@@ -125,6 +125,9 @@ export class DynamicCounselingAndTools extends React.Component {
   ;
 }
 
+//56001
+//11510
+//21117
 
 function mapStateToProps(state) {
   return {
