@@ -42,7 +42,6 @@ class ConfirmSection extends React.Component {
   render() {
       let resendLink = this.state.resendClicked ? <span className={ styles.resendLink}> Email was re-sent.</span> : <a className={ styles.resendLink} onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
     return (
-      // Section
       <div className={ styles.section }>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
         <h5>We sent an email to {this.props.email}. Click on the verification link inside.

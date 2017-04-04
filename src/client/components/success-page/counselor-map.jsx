@@ -1,46 +1,66 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import styles from './counselor-map.scss';
+import { fitBounds } from 'google-map-react/utils';
 
-const AnyReactComponent = ({ text }) => <div className={styles.marker}><p className={styles.markerText} >{text}</p></div>;
-
-
+const MapMarker = ({ text }) => <div className={styles.marker}><p className={styles.markerText}>{text}</p></div>;
 
 class CounselorMap extends Component {
-  constructor(props) {
+  constructor() {
     super();
+    this.state = {
+      zoom: null,
+      center: null
+    }
   }
 
   static defaultProps = {
     defaultCenter: {lat: 38.897676, lng: -77.036483},
-    zoom: 11
+    defaultZoom: 11
   };
+
+  fitMarkers(){
+    if(this.state.zoom == null && this.state.center == null){
+      let bounds = new google.maps.LatLngBounds();
+      this.props.markerLocations.forEach((marker) => {
+        bounds.extend(new google.maps.LatLng(marker.lat, marker.lng))
+      });
+      // GET NW, SE BY NE, SW bounds. SE/NW necessary for fitBounds()
+      const ne = bounds.getNorthEast();
+      const sw = bounds.getSouthWest();
+      const nw = { lat: ne.lat(), lng: sw.lng() };
+      const se = { lat: sw.lat(), lng: ne.lng() };
+      const { center, zoom } = fitBounds({
+        se: { lat: se.lat, lng: se.lng },
+        nw: { lat: nw.lat, lng: nw.lng }
+      }, { width: 600, height: 490 });
+      this.setState({zoom, center})
+    }
+  }
 
   displayMarkers() {
     let letter = ["A", "B", "C"];
     return this.props.markerLocations.map((marker, index) => {
       return (
-        <AnyReactComponent
+        <MapMarker
           lat={marker.lat}
           lng={marker.lng}
           text={letter[index]}
         />
       )
-    })
+    });
   }
 
   render() {
-    console.log(this.props.userZipCoords)
     return (
       <GoogleMapReact
-        defaultCenter={this.props.defaultCenter}
-        defaultZoom={this.props.zoom}
+        ref="googlemapreacttest"
         apiKey={"AIzaSyCKowpuwSs7kT_N_cYKdihQ0VdtizEM-hk"}
-        center={this.props.userZipCoords ? this.props.userZipCoords : null}
+        zoom={this.state.zoom ? this.state.zoom : this.props.defaultZoom}
+        center={this.state.center ? this.state.center: this.props.defaultCenter}
       >
-
-        {this.props.markerLocations ? this.displayMarkers() : this.props.center}
-
+        {this.props.markerLocations ? this.displayMarkers() : null}
+        {this.props.markerLocations ? this.fitMarkers() : null}
       </GoogleMapReact>
     );
   }
