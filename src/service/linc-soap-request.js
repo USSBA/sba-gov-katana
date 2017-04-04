@@ -50,14 +50,14 @@ function parseResponse(xmlBody) {
     errorMessageTechnical = fourthItemChildren[0].nodeValue;
     console.log(errorMessageTechnical);
   }
-  const resultCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-  console.log(resultCode);
-  if (resultCode === "0") {
+  const responseCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+  console.log(responseCode);
+  if (responseCode === "0") {
     const lincRespXmlDoc = parser.parseFromString(response);
     retVal = lincRespXmlDoc.getElementsByTagName("Result")[0].childNodes[0].nodeValue;
   }
   return {
-    resultCode: retVal,
+    responseCode: retVal,
     errorMessageEnglish: errorMessageEnglish,
     errorMessageTechnical: errorMessageTechnical
   };
@@ -85,7 +85,7 @@ function sendLincSoapRequest(reqData) {
       } else {
         const resp = parseResponse(body);
         resp.lenderMatchRegistrationId = reqData.lenderMatchRegistration.id;
-        if (resp.resultCode === "F") {
+        if (resp.responseCode === "F") {
           console.log(body);
         }
         resolve(resp);

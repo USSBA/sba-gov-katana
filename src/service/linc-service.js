@@ -185,25 +185,19 @@ function sendDataToOca(lenderMatchRegistrationData) {
   getEndPointUrl(soapRequestData).then(function(response) {
     return convertFormDataToXml(response);
   })
-    .then(function(response) {
-      return createLincSoapRequestEnvelopeXml(response);
-    })
-    .then(function(response) {
-      return sendLincSoapRequest(response);
-    })
-    .then(function(response) {
-      /*      const lenderMatchSoapResponseData = {
-                responseCode: response.resultCode,
-                errorMessageEnglish: response.errorMessageEnglish,
-                errorMessageTechnical: response.errorMessageTechnical,
-                lenderMatchRegistrationId: response.lenderMatchRegistrationId
-            };*/
-      return handleSoapResponse(response);
-    })
-    .catch(function(error) {
-      console.log(error.message);
-      throw error;
-    });
+  .then(function(response) {
+    return createLincSoapRequestEnvelopeXml(response);
+  })
+  .then(function(response) {
+    return sendLincSoapRequest(response);
+  })
+  .then(function(response) {
+    return handleSoapResponse(response);
+  })
+  .catch(function(error) {
+    console.log(error.message);
+    throw error;
+  });
 }
 
 function sendMessagesToOca(results) {
