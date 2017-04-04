@@ -25,7 +25,7 @@ describe('linc soap request test', function() {
       lenderMatchSoapResponseUpdateStub.restore();
       lenderMatchRegistrationDeleteStub.restore();
     });
-    it('Failure as soap response test', function() {
+    it('should result in saving a lenderMatchSoapResponse to the database when responseCode is F', function() {
       let fakeFailureResponse = {
         responseCode: "F",
         errorMessageEnglish: "Unable to perform service at this time.",
@@ -37,7 +37,7 @@ describe('linc soap request test', function() {
       sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeFailureResponse);
     });
 
-    it('Pending as soap response test', function() {
+    it('should result in saving a lenderMatchSoapResponse to the database when responseCode is P', function() {
       let fakePendingResponse = {
         responseCode: "P",
         errorMessageEnglish: "Unable to perform service at this time.",
@@ -48,7 +48,7 @@ describe('linc soap request test', function() {
       sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakePendingResponse);
     });
 
-    it('Success Update as soap response test', function() {
+    it('should result in updating a lenderMatchSoapResponse to processed when responseCode is S', function() {
       let fakeUpdateResponse = {
         responseCode: "S",
         errorMessageEnglish: "Unable to perform service at this time.",
