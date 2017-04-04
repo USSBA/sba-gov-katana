@@ -10,7 +10,7 @@
     "build": "scripts/build.sh",
     "test": "npm run test-jest && npm run test-mocha",
     "test-jest": "jest test/jest/",
-    "test-mocha": "mocha test/mocha/helpers/browser.js test/mocha/**/*.test.js",
+    "test-mocha": "mocha test/mocha/helpers/browser.js test/mocha/helpers/globals.js test/mocha/**/*.test.js",
     "lint": "eslint src --fix",
     "format": "esformatter -i 'src/**/*.js'",
     "clean": "rm -rf dist && rm -rf public/build"
