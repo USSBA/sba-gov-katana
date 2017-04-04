@@ -28,7 +28,7 @@ class Blog extends React.Component {
           <Row>
             { items.map(function(item, i) {
                 return (
-                  <Col key={ i } Hxs={ 6 }>
+                  <Col key={ i } xs={ 6 }>
                   <img className={ styles.blogsImage } src={ item.imageUrl } alt={ item.title } />
                   </Col>
                   );
