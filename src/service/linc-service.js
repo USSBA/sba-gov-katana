@@ -109,6 +109,7 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
 }
 
 function handleSoapResponse(soapResponse) {
+  let retVal;
   if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
     retVal = createLenderMatchSoapResponseData(soapResponse);
   } else if (soapResponse.responseCode === "S") {
