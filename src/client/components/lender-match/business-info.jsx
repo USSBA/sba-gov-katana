@@ -33,6 +33,7 @@ class BusinessInfoForm extends React.Component {
 
   componentDidMount() {
     this.validateFields(["businessInfoName", "businessInfoZipcode", "businessInfoDescription", "businessInfoWebsite"]);
+    window.scrollTo(0, 0);
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {

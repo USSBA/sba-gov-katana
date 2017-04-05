@@ -28,6 +28,7 @@ class ContactInfoForm extends React.Component {
 
   componentDidMount() {
     this.validateFields(["contactPhoneNumber", "contactFullName", "contactEmailAddress", "contactSecondaryEmailAddress"]);
+    window.scrollTo(0, 0);
   }
 
 

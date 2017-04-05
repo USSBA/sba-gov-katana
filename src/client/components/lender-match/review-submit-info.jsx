@@ -17,6 +17,11 @@ class ReviewSubmitInfoForm extends React.Component {
     }
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
+
   makeEditEvent(target) {
     return;
   }

@@ -3,11 +3,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
-import {indexOf, chain, startCase} from 'lodash';
-import {Panel, ButtonToolbar, Glyphicon} from 'react-bootstrap';
+import {indexOf} from 'lodash';
 import lenderMatchStyles from './lender-match.scss';
 import styles from './lender-match.scss';
-import {ProgressBar} from './progress-bar.jsx'
+import ProgressBar from '../atoms/progress-bar.jsx'
 
 class LoanForm extends React.Component {
   getBackButtonText(locationIndex) {

@@ -25,6 +25,10 @@ export class AdditionalInfoForm extends React.Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.reviewAnswers(this.state.additionalInfoFields);
