@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CheckBox } from '../helpers/form-helpers.jsx';
 import { FormPanel } from '../common/form-styling.jsx'
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import styles from './review-submit.scss'
-import ReviewSection from '../helpers/review-page-helpers.jsx';
+import ReviewSection from './review-page-helpers.jsx';
 import { startCase } from 'lodash';
 
 class ReviewSubmitInfoForm extends React.Component {

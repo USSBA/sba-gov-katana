@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './radio.scss';
 import _ from "lodash";
-import formHelperStyles from "../helpers/form-helpers.scss";
+import formHelperStyles from "./form-helpers.scss";
 import FormErrorMessage from "./form-error-message.jsx";
 /* esfmt-ignore-start */
 class RadioButtonGroup extends React.Component {

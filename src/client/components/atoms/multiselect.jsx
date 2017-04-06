@@ -2,7 +2,7 @@ import React from 'react';
 import ReactSelect from 'react-select';
 import 'react-select/dist/react-select.css';
 import './react-select-helpers.css';
-import formHelperStyles from '../helpers/form-helpers.scss';
+import formHelperStyles from './form-helpers.scss';
 import FormErrorMessage from "./form-error-message.jsx";
 import styles from './multiselect.scss';
 import _ from "lodash";

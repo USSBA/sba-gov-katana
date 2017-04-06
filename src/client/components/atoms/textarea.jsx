@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../helpers/form-helpers.scss';
+import styles from './form-helpers.scss';
 
 class TextArea extends React.Component {
 
