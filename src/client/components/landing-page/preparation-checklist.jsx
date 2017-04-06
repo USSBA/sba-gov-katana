@@ -11,7 +11,7 @@ import industryIcon from '../../../../public/assets/images/lender-match/industry
 import FindLendersButton from './find-lenders-btn.jsx'
 import { ExpertHelpBtn } from './expert-help-btn.jsx'
 
-export const PreparationChecklist = (props) => <div className={ styles.section }>
+export const PreparationChecklist = (props) => <div id={props.tellMeHowAnchor} className={ styles.section }>
                                                  <h2>Get ready.</h2>
                                                  <h5>Before you start talking to lenders, have a look at the abbreviated checklist to see if you're ready.</h5>
                                                  <div className={ styles.checklist }>

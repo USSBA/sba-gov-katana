@@ -1,5 +1,5 @@
 import React from 'react';
-import { HelpMeBtn } from './help-me-btn.jsx'
+import AnchorButton from '../atoms/anchor-button.jsx'
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -31,7 +31,7 @@ class FindLendersIntro extends React.Component {
             </div>
             <div className={ styles.btnContainer + " container-fluid" }>
               <div className=" col-sm-4 col-xs-12 nopadding">
-                <HelpMeBtn/>
+                <AnchorButton className={styles.tellMeHowBtn} text="TELL ME HOW" anchor={this.props.tellMeHowAnchor}/>
               </div>
               <div className=" col-sm-4 col-xs-12 nopadding">
                 <Button id="find-lenders-button-one"  block className={ styles.findLendersWhiteBtn } onClick={ this.handleClick.bind(this) }>FIND LENDERS</Button>

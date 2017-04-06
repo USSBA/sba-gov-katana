@@ -5,15 +5,15 @@ import { HowItWorksSection } from './how-it-works.jsx';
 import { HelpfulQuestions } from './helpful-questions.jsx';
 import { PreparationChecklist } from './preparation-checklist.jsx';
 import { SuccessStories } from './success-stories.jsx'
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 
 class LandingPage extends React.Component {
   render() {
     return (
       <Grid fluid={ true }>
-        <FindLendersIntro />
+        <FindLendersIntro tellMeHowAnchor="tell-me-how" />
         <HowItWorksSection />
-        <PreparationChecklist />
+        <PreparationChecklist tellMeHowAnchor="tell-me-how" />
         <HelpfulQuestions/>
       </Grid>
       );
