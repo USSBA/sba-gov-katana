@@ -10,7 +10,7 @@ import Footer from '../organisms/header-footer/footer.jsx';
 import PrimaryLanding from '../organisms/homepage/primary-landing.jsx';
 
 import Blog from '../organisms/homepage/blog.jsx';
-import ModalController from '../common/modal-controller.jsx';
+import ModalController from '../modal-controller.jsx';
 import cookie from 'react-cookie';
 import Waypoint from 'react-waypoint';
 

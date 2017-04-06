@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LeaveSbaModal from "./leave-sba-modal.jsx";
+import LeaveSbaModal from "./organisms/modals/leave-sba-modal/leave-sba-modal.jsx";
 
 const modalTypes = {
   "LEAVE_SBA": LeaveSbaModal
