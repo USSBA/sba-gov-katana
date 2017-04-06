@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
-import * as ContentActions from "../../actions/content.js";
-import styles from "../../styles/homepage/blog.scss";
+import * as ContentActions from "../../../actions/content.js";
+import styles from "./blog.scss";
 import moment from 'moment';
 
 class Blog extends React.Component {

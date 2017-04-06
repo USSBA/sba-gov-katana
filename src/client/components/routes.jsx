@@ -11,7 +11,7 @@ import BusinessInfo from './lender-match/business-info.jsx';
 import IndustryInfo from './lender-match/industry-info.jsx';
 import AdditionalInfo from './lender-match/additional-info.jsx';
 import ReviewSubmitInfo from './lender-match/review-submit-info.jsx';
-import Homepage from './homepage/homepage.jsx';
+import Homepage from './templates/homepage.jsx';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 const routes = [

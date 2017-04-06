@@ -1,15 +1,15 @@
 import React from 'react';
-import { StartYourBusinessSection } from './start-your-business.jsx';
-import { FinanceYourBusinessSection } from './finance-your-business.jsx';
-import { SellToGovtSection } from './sell-to-govt.jsx';
-import HappeningNow from "./happening-now.jsx";
+import { StartYourBusinessSection } from '../organisms/homepage/start-your-business.jsx';
+import { FinanceYourBusinessSection } from '../organisms/homepage/finance-your-business.jsx';
+import { SellToGovtSection } from '../organisms/homepage/sell-to-govt.jsx';
+import HappeningNow from "../organisms/homepage/happening-now.jsx";
 
 import DisasterAlerts from '../common/disaster-alerts.jsx'
 import Header from '../common/header.jsx';
 import Footer from '../common/footer.jsx';
-import PrimaryLanding from './primary-landing.jsx';
+import PrimaryLanding from '../organisms/homepage/primary-landing.jsx';
 
-import Blog from './blog.jsx';
+import Blog from '../organisms/homepage/blog.jsx';
 import ModalController from '../common/modal-controller.jsx';
 import cookie from 'react-cookie';
 import Waypoint from 'react-waypoint';

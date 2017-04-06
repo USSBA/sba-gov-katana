@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/homepage/sell-to-govt.scss';
-import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
-import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
+import styles from './sell-to-govt.scss';
+import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
+import diagonalLinesMobile from '../../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const SellToGovtSection = (props) => <div className={ styles.stgContainer }>
                                               <p>Sell to the government.</p>

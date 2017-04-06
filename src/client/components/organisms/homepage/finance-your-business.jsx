@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/homepage/finance-your-business.scss';
-import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
-import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
+import styles from './finance-your-business.scss';
+import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
+import diagonalLinesMobile from '../../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const FinanceYourBusinessSection = (props) => <div className={ styles.fybContainer }>
                                                        <p>Finance your business.</p>

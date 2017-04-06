@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from '../../styles/homepage/start-your-business.scss';
-import diagonalLines from '../../../../public/assets/images/homepage/diagonal-lines.png';
-import diagonalLinesMobile from '../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
+import styles from './start-your-business.scss';
+import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
+import diagonalLinesMobile from '../../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
 
 export const StartYourBusinessSection = (props) => <div className={ styles.sybContainer }>
                                                      <p>Start your business.</p>

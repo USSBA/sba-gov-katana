@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from '../../styles/homepage/primary-landing.scss';
+import styles from './primary-landing.scss';
 import { Image } from 'react-bootstrap';
-import Triangle from '../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png';
-import MobileTriangle from '../../../../public/assets/images/homepage/primary-landing/mobile-corner-graphic.png';
+import Triangle from '../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png';
+import MobileTriangle from '../../../../../public/assets/images/homepage/primary-landing/mobile-corner-graphic.png';
 
-import '../../styles/common/normalize.scss';
+import '../../../styles/common/normalize.scss';
 
 
 class PrimaryLanding extends React.Component {
