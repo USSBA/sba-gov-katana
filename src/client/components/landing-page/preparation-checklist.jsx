@@ -9,7 +9,7 @@ import collateralIcon from '../../../../public/assets/images/lender-match/collat
 import industryIcon from '../../../../public/assets/images/lender-match/industry-experience.png';
 
 import FindLendersButton from './find-lenders-btn.jsx'
-import { ExpertHelpBtn } from './expert-help-btn.jsx'
+import LightButton from '../atoms/light-button.jsx'
 
 export const PreparationChecklist = (props) => <div id={props.tellMeHowAnchor} className={ styles.section }>
                                                  <h2>Get ready.</h2>
@@ -32,7 +32,7 @@ export const PreparationChecklist = (props) => <div id={props.tellMeHowAnchor} c
                                                    <p>Have questions or need help getting prepared? Take advantage of free, local counseling.</p>
                                                    <div className={ styles.ButtonGroup }>
                                                      <Col xs={ 12 } smOffset={ 3 } sm={ 3 }>
-                                                     <ExpertHelpBtn/>
+                                                     <LightButton href="/tools/local-assistance" text="EXPERT HELP"/>
                                                      </Col>
                                                      <Col xs={ 12 } sm={ 3 }>
                                                      <FindLendersButton eventLabel={ "Find Lenders #3" } />
