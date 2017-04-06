@@ -40,7 +40,7 @@ export const HelpfulQuestions = (props) => <div className={ styles.section }>
                                                </Collapse>
                                                <Collapse accordion={ false }>
                                                  <Panel showArrow={ false } header="Where can I learn more about loans?">
-                                                   <hr/>We're glad you asked! You can learn about our loan programs in more detail online. If you need to talk to someone about Lender Match, you can contact us.</Panel>
+                                                   <hr/>We're glad you asked! You can learn about our loan programs in more detail <a href="/loans-grants/see-what-sba-offers/sba-loan-programs">online</a>. If you need to talk to someone about Lender Match, you can <a href="mailto:lendermatch@sba.gov">contact us</a>.</Panel>
                                                </Collapse>
                                              </div>
                                              <div className={ styles.desktop }>
@@ -71,7 +71,7 @@ export const HelpfulQuestions = (props) => <div className={ styles.section }>
                                                </Collapse>
                                                <Collapse accordion={ false } defaultActiveKey="6">
                                                  <Panel showArrow={ false } header="Where can I learn more about loans?" key="6">
-                                                   <hr/>We're glad you asked! You can learn about our loan programs in more detail online. If you need to talk to someone about Lender Match, you can contact us.</Panel>
+                                                   <hr/>We're glad you asked! You can learn about our loan programs in more detail <a href="/loans-grants/see-what-sba-offers/sba-loan-programs">online</a>. If you need to talk to someone about Lender Match, you can <a href="mailto:lendermatch@sba.gov">contact us</a>.</Panel>
                                                </Collapse>
                                              </div>
                                              <div className={ styles.CallToAction }>
