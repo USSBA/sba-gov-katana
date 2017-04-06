@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from '../../styles/footer.scss';
+import styles from './footer.scss';
 
-import facebookThumbnail from "../../../../public/assets/images/footer/facebook.png"
-import twitterThumbnail from "../../../../public/assets/images/footer/twitter.png"
-import googlePlusThumbnail from "../../../../public/assets/images/footer/googleplus.png"
-import youtubeThumbnail from "../../../../public/assets/images/footer/youtube-play.png"
-import linkedInThumbnail from "../../../../public/assets/images/footer/linkedin.png"
+import facebookThumbnail from "../../../../../public/assets/images/footer/facebook.png"
+import twitterThumbnail from "../../../../../public/assets/images/footer/twitter.png"
+import googlePlusThumbnail from "../../../../../public/assets/images/footer/googleplus.png"
+import youtubeThumbnail from "../../../../../public/assets/images/footer/youtube-play.png"
+import linkedInThumbnail from "../../../../../public/assets/images/footer/linkedin.png"
 
-import * as ModalActions from '../../actions/show-modal.js'
+import * as ModalActions from '../../../actions/show-modal.js'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 

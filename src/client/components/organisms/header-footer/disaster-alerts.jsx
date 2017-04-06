@@ -1,11 +1,10 @@
 import React from 'react';
-import styles from '../../styles/disaster-alerts.scss'
-
-import exitIcon from '../../../../public/assets/svg/exit-modal-close.svg';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as ContentActions from "../../actions/content.js";
+
+import styles from './disaster-alerts.scss'
+import exitIcon from '../../../../../public/assets/svg/exit-modal-close.svg';
+import * as ContentActions from "../../../actions/content.js";
 
 class DisasterAlerts extends React.Component {
 

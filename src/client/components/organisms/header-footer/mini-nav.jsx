@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as ContentActions from "../../actions/content.js";
+
+import * as ContentActions from "../../../actions/content.js";
+import clientConfig from "../../../services/client-config.js";
+
 import styles from './mini-nav.scss';
 import cookie from 'react-cookie';
-import clientConfig from "../../services/client-config.js";
 
 export class MiniNav extends React.Component {
   constructor(props) {

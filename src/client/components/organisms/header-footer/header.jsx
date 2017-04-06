@@ -7,8 +7,8 @@ import MobileNav from "./mobile-nav.jsx";
 import MainMenu from "./main-menu.jsx";
 
 import styles from './header.scss';
-import sbaLogo from '../../../../public/assets/images/logo.png';
-import * as ContentActions from '../../actions/content.js';
+import sbaLogo from '../../../../../public/assets/images/logo.png';
+import * as ContentActions from '../../../actions/content.js';
 
 class Header extends React.Component {
 

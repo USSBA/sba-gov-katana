@@ -1,7 +1,7 @@
 import React from 'react';
-import sbaLogo from '../../../../public/assets/images/logo.png';
+import sbaLogo from '../../../../../public/assets/images/logo.png';
 import styles from "./mobile-nav.scss";
-import HamburgerIcon from "../atoms/hamburger-icon.jsx";
+import HamburgerIcon from "../../atoms/hamburger-icon.jsx";
 /* esfmt-ignore-start */
 class MobileNav extends React.Component {
   constructor(props) {

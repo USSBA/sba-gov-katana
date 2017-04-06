@@ -4,9 +4,9 @@ import { FinanceYourBusinessSection } from '../organisms/homepage/finance-your-b
 import { SellToGovtSection } from '../organisms/homepage/sell-to-govt.jsx';
 import HappeningNow from "../organisms/homepage/happening-now.jsx";
 
-import DisasterAlerts from '../common/disaster-alerts.jsx'
-import Header from '../common/header.jsx';
-import Footer from '../common/footer.jsx';
+import DisasterAlerts from '../organisms/header-footer/disaster-alerts.jsx'
+import Header from '../organisms/header-footer/header.jsx';
+import Footer from '../organisms/header-footer/footer.jsx';
 import PrimaryLanding from '../organisms/homepage/primary-landing.jsx';
 
 import Blog from '../organisms/homepage/blog.jsx';

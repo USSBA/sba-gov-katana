@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../main-menu.scss';
+import styles from './main-menu.scss';
 import { isEmpty, includes } from "lodash";
 /* esfmt-ignore-start */
 class SubMenu extends React.Component {
