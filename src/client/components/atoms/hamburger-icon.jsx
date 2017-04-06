@@ -5,21 +5,11 @@ class HamburgerIcon extends React.Component {
 
   getOpen() {
     return (
-      <div>
-        <svg className={styles.menuIconCloseNew} width="27px" height="27px" viewBox="0 0 27 27" version="1.1">
-          <title>Close Button</title>
-          <desc>Created with Sketch.</desc>
-          <defs/>
-          <g id="Style-Guide" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-            <g id="Close-Button" fill="#333333">
-              <g id="Group">
-                <rect className={styles.closeIcon} id="Rectangle-7" transform="translate(13.081475, 13.081475) rotate(45.000000) translate(-13.081475, -13.081475) " x="11.5814755" y="-3.91852455" width={3} height={34} rx={2}/>
-                <rect className={styles.closeIcon} id="Rectangle-7" transform="translate(13.081475, 13.081475) scale(-1, 1) rotate(45.000000) translate(-13.081475, -13.081475) " x="11.5814755" y="-3.91852455" width={3} height={34} rx={1}/>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </div>
+        <div>
+          <svg viewbox="0 0 40 40" className={styles.menuIconCloseNew}  >
+            <path className={styles.closeIcon} strokeWidth={4} fill="transparent" strokeLinecap="round" d="M 10,10 L 30,30 M 30,10 L 10,30"/>
+          </svg>
+        </div>
     )
   }
 

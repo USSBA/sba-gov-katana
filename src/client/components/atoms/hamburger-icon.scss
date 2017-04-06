@@ -48,12 +48,15 @@
 
 
     .menuIconCloseNew{
-        height: 3.466vw;
-        width: 4vw;
+        height: 7vw;
+        width: 6vw;
         margin-right: 3.466vw;
-        /*margin-top: 3.2vw;*/
-        margin-top: 2.667vw;
+        margin-top: 1vw;
         float: right;
+    }
+
+    .closeIcon {
+        stroke: $sba-blue;
     }
 
     .sba-blue .closeIcon {
