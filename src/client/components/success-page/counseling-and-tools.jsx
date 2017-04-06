@@ -38,17 +38,16 @@ export class DynamicCounselingAndTools extends React.Component {
   }
 
   redirectLocalAssistance() {
+      logEvent({
+          category: "Navigation",
+          action: "Button Push",
+          label: "See More"
+      });
     let newTab = window.open("", "_blank");
     this.props.actions.fetchContentIfNeeded('counselorsRedirect', 'counselors-redirect', {
       zip: this.props.businessInfoData.businessInfoZipcode
     })
       .then((res) => {
-        console.log(res.data.redirectTo);
-        logEvent({
-            category: "Navigation",
-            action: "Button Push",
-            label: "See More"
-        });
         newTab.location = res.data.redirectTo;
       })
   }

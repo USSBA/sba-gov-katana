@@ -35,13 +35,7 @@ class ConfirmSection extends React.Component {
     handleClick(e) {
         e.preventDefault();
         this.resend();
-        this.setState({resendClicked: true}, function(){
-            logEvent({
-                category: "Email",
-                action: "Resend Button Pushed",
-                label: "LINC Email Resend Button"
-            });
-        });
+        this.setState({resendClicked: true});
     }
   resend() {
     this.props.actions.resendConfirmationEmail(this.props.email);
