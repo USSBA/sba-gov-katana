@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import * as ContentActions from "../../actions/content.js";
 import styles from './mini-nav.scss';
 import cookie from 'react-cookie';
+import clientConfig from "../../services/client-config.js";
 
-class MiniNav extends React.Component {
+export class MiniNav extends React.Component {
   constructor(props) {
     super();
     this.state = {
@@ -22,6 +23,12 @@ class MiniNav extends React.Component {
     this.setState({
       searchIsExpanded: !this.state.searchIsExpanded
     });
+  }
+
+  handleSearchKeypress(e){
+      if(e.keyCode === 13){
+          this.handleSearchToggle(e);
+      }
   }
 
   handleSearchChange(e) {
@@ -41,7 +48,7 @@ class MiniNav extends React.Component {
   componentWillMount() {
     this.setState({
       userId: cookie.load('DRUPAL_UID'),
-      userLoggedOn: window.CONFIG.isUserLoggedIn
+      userLoggedOn: clientConfig.isUserLoggedIn
     });
   }
 
@@ -73,12 +80,12 @@ class MiniNav extends React.Component {
     const searchBar = this.state.searchIsExpanded
       ? (
       <form key={ 2 } id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
-        <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyPress={ this.handleKeyPressOnSearch }></input>
+        <input id="search-input" autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyDown={ this.handleKeyPressOnSearch }></input>
         <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>
       )
       : (
-      <a key={ 3 } id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) }>
+      <a key={ 3 } id="search-toggle-link" tabIndex="0" onClick={ this.handleSearchToggle.bind(this) } onKeyDown={ this.handleSearchKeypress.bind(this) }>
         <i id="search-toggle" alt="search icon" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true"></i>
       </a>
       );
