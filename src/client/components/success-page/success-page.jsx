@@ -12,7 +12,7 @@ class SuccessPage extends React.Component {
   render() {
     return (
       <div>
-        <ConfirmSection />
+        {/*<ConfirmSection />*/}
         <DynamicCounselingAndTools />
       </div>
     )

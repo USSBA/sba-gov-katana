@@ -4,7 +4,13 @@ import styles from './counselor-map.scss';
 import { fitBounds } from 'google-map-react/utils';
 import findZoomAndCenter  from './counselor-map-util.js'
 
-const MapMarker = ({ text }) => <div className={styles.marker}><p className={styles.markerText}>{text}</p></div>;
+const MapMarker = ({text}) =>
+  <div className={styles.markerContainer}>
+    <div className={styles.marker}>
+      <p className={styles.markerText}>{text}</p>
+      <div className={styles.triangle}><div className={styles.innerTriangle}></div></div>
+    </div>
+  </div>;
 
 class CounselorMap extends Component {
   constructor() {

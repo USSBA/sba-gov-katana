@@ -1,16 +1,63 @@
-.marker {
-    box-sizing: border-box;
-    height: 34px;
-    width: 34px;
-    border: 2px solid #FFFFFF;
-    background-color: #609F00;
-    border-radius: 17px;
+.markerContainer {
     -webkit-animation: fadein 5s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 5s; /* Firefox < 16 */
     -ms-animation: fadein 5s; /* Internet Explorer */
     -o-animation: fadein 5s; /* Opera < 12.1 */
     animation: fadein 5s;
 }
+
+.marker {
+    position: relative;
+    box-sizing: border-box;
+    height: 34px;
+    width: 34px;
+    border: 2px solid #FFFFFF;
+    background-color: #609F00;
+    border-radius: 17px;
+}
+
+.markerText {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.triangle {
+    position: absolute;
+    z-index: -9999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 27px;
+    width: 0;
+    height: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+
+    border-top: 20px solid white;
+}
+
+.innerTriangle {
+    position: absolute;
+    left: -10px;
+    width: 0;
+    height: 0;
+    bottom: 2px;
+
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid #b26666;
+}
+
+
+
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -39,15 +86,4 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
-}
-
-.markerText {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    color: #FFFFFF;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-
 }

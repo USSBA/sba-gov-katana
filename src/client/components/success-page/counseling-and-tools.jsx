@@ -136,7 +136,9 @@ export class DynamicCounselingAndTools extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    businessInfoData: state.lenderMatch.businessInfoData,
+    businessInfoData: state.lenderMatch.businessInfoData || {
+      businessInfoZipcode: 22066
+    },
     counselorsData: state.contentReducer["counselors"]
   };
 }
