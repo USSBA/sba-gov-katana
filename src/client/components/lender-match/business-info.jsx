@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {TextArea, SelectBox} from '../helpers/form-helpers.jsx'
+import {SelectBox} from '../helpers/form-helpers.jsx'
 import TextInput from '../atoms/text-input.jsx';
+import TextArea from "../atoms/textarea.jsx";
 import * as LenderMatchActions from '../../actions/lender-match.js';
 import * as LocationChangeActions from '../../actions/location-change.js';
 import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from '../../services/page-validator-helpers.js';
