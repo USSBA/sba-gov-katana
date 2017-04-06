@@ -1,11 +1,9 @@
 import React from "react";
-import Modal from 'react-modal'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import SbaModal from '../molecules/modal.jsx';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import * as ModalActions from '../../actions/show-modal.js'
-import styles from '../../styles/modals/leave-sba-modal.scss'
-import sbaLogo from '../../../../public/assets/images/logo.png';
-import exitIcon from '../../../../public/assets/svg/exit-modal-close.svg';
+import styles from './leave-sba-modal.scss'
 
 class LeaveSbaModal extends React.Component {
 
@@ -15,34 +13,24 @@ class LeaveSbaModal extends React.Component {
   }
 
   render() {
+    let title = "You're leaving the Small Business Administration website.";
+    let text = "This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy of information provided by third-parties and other linked sites.";
     return (
-      <Modal isOpen={ true } className={ styles.content } overlayClassName={ styles.overlay }>
-        <img className={ styles.logo } src={ sbaLogo } />
-        <a onClick={ this.props.actions.closeLeaveSba }><img className={ styles.exitIcon } src={ exitIcon } /></a>
-        <h2 className={ styles.title }> You're leaving the Small Business Administration website.</h2>
-        <div className={ styles.divider }></div>
-        <p className={ styles.text }>This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy
-          of information provided by third-parties and other linked sites.</p>
-        <div className={ styles.linkContainer }><span>Link to website: </span>
-          <a className={ styles.link } tabIndex="0" onClick={ this.continueLink.bind(this) }>
-            { this.props.url }
+      <SbaModal showLogo={true} title={title} text={text} cancelButtonText="CANCEL" okButtonText="CONTINUE" onClose={this.props.actions.closeLeaveSba} onClickOk={this.continueLink.bind(this)}>
+        <div className={styles.linkContainer}>
+          <span>Link to website:
+          </span>
+          <a className={styles.link} tabIndex="0" onClick={this.continueLink.bind(this)}>
+            {this.props.url}
           </a>
         </div>
-        <div className={ styles.btnContainer }>
-          <button onClick={ this.props.actions.closeLeaveSba } className={ styles.btnCancel }>CANCEL
-          </button>
-          <button onClick={ this.continueLink.bind(this) } className={ styles.btnContinue }>CONTINUE</button>
-        </div>
-      </Modal>
-
-      );
+      </SbaModal>
+    );
   }
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {
-    url: reduxState.modalReducer.modalProps.targetUrl
-  };
+  return {url: reduxState.modalReducer.modalProps.targetUrl};
 }
 
 function mapDispatchToProps(dispatch) {
@@ -50,7 +38,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(LeaveSbaModal);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(LeaveSbaModal);
