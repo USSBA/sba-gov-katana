@@ -1,17 +1,23 @@
 import React from 'react';
+
 import LincMain from './linc-main.jsx';
-import LandingPage from './landing-page/landing-page.jsx';
-import LoanForm from './lender-match/loan-form.jsx';
-import SuccessPage from './success-page/success-page.jsx';
-import EmailConfirmedPage from './success-page/email-confirmed-page.jsx';
-import EmailConfirmationInvalid from './success-page/email-confirmation-invalid.jsx';
-import ContactInfo from './lender-match/contact-info.jsx';
-import LoanInfo from './lender-match/loan-info.jsx';
-import BusinessInfo from './lender-match/business-info.jsx';
-import IndustryInfo from './lender-match/industry-info.jsx';
-import AdditionalInfo from './lender-match/additional-info.jsx';
-import ReviewSubmitInfo from './lender-match/review-submit-info.jsx';
-import Homepage from './homepage/homepage.jsx';
+
+import StyleGuide from './templates/style-guide.jsx'
+
+import LandingPage from './templates/lender-match/landing-page.jsx';
+import SuccessPage from './templates/lender-match/success-page.jsx';
+import EmailConfirmedPage from './organisms/lender-match/success-page/email-confirmed-page.jsx';
+import EmailConfirmationInvalid from './organisms/lender-match/success-page/email-confirmation-invalid.jsx';
+
+import LoanForm from './templates/lender-match/loan-form.jsx';
+import ContactInfo from './organisms/lender-match/form/contact-info.jsx';
+import LoanInfo from './organisms/lender-match/form/loan-info.jsx';
+import BusinessInfo from './organisms/lender-match/form/business-info.jsx';
+import IndustryInfo from './organisms/lender-match/form/industry-info.jsx';
+import AdditionalInfo from './organisms/lender-match/form/additional-info.jsx';
+import ReviewSubmitInfo from './organisms/lender-match/form/review-submit-info.jsx';
+
+import Homepage from './templates/homepage.jsx';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 const routes = [
@@ -34,7 +40,8 @@ const routes = [
      <Route key={ 4 } path="emailconfirmed" component={ EmailConfirmedPage } />) (
      <Route key={ 5 } path="emailinvalid" component={ EmailConfirmationInvalid } />)
    </Route>
-  )
+  ),
+  (<Route key={ 3 } path="/styleguide" component={ StyleGuide } />)
 ];
 
 

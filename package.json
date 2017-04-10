@@ -143,6 +143,13 @@
     },
     "modulePaths": [
       "<rootDir>/src/"
-    ]
+  ],
+  "globals":{
+      "window":{
+          "CONFIG":{
+              "isUserLoggedIn": false
+          }
+      }
+  }
   }
 }

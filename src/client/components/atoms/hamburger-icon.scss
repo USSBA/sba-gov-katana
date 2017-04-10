@@ -1,0 +1,76 @@
+@import "../../styles/variables.scss";
+
+
+@media screen and (max-width:767px) {
+
+    .menuBtnTextNew {
+        height: 9.6vw;
+        margin-top: -.633vw;
+        padding-left: 3.73vw;
+        float: left;
+    }
+
+    .sba-blue .menuBtnTextNew {
+        color: $sba-blue;
+    }
+    .byzantine .menuBtnTextNew {
+        color: $byzantine;
+    }
+    .money-green .menuBtnTextNew {
+        color: $money-green;
+    }
+    .cobalt-blue .menuBtnTextNew {
+        color: $cobalt-blue;
+    }
+
+    .menuIconHamburgerNew{
+        height: 3.466vw;
+        width: 4vw;
+        margin-right: 3.466vw;
+        /*margin-top: 3.2vw;*/
+        margin-top: 2.367vw;
+        float: right;
+    }
+
+    .sba-blue .hamburgerIcon {
+        fill: $sba-blue !important;
+    }
+    .byzantine .hamburgerIcon {
+        fill: $byzantine !important;
+    }
+    .money-green .hamburgerIcon {
+        fill: $money-green !important;
+    }
+    .cobalt-blue .hamburgerIcon {
+        fill: $cobalt-blue !important;
+    }
+
+
+
+    .menuIconCloseNew{
+        height: 7vw;
+        width: 6vw;
+        margin-right: 3.466vw;
+        margin-top: 1vw;
+        float: right;
+    }
+
+    .closeIcon {
+        stroke: $sba-blue;
+    }
+
+    .sba-blue .closeIcon {
+        fill: $sba-blue !important;
+    }
+    .byzantine .closeIcon {
+        fill: $byzantine !important;
+    }
+    .money-green .closeIcon {
+        fill: $money-green !important;
+    }
+    .cobalt-blue .closeIcon {
+        fill: $cobalt-blue !important;
+    }
+
+
+}

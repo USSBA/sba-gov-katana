@@ -32,7 +32,7 @@ function createCounselorsByLocationQuery(zipCoords) {
     "AND (node.nid IN ",
     "(SELECT taxonomy_index.nid AS nid ",
     "FROM taxonomy_index ",
-    "WHERE ( (taxonomy_index.tid IN  ('7354', '7355', '7356', '7357', '7358', '7361', '7359', '7362', '7366', '7364', '88266', '88268')) ))) )) ",
+    "WHERE ( (taxonomy_index.tid IN  ('7354', '7355', '7356', '7357', '7358', '7361', '7359', '7362', '7364', '88266', '88268')) ))) )) ",
     "GROUP BY node.nid, location.lid ",
     "ORDER BY location_distance ASC ",
     "LIMIT 3;"

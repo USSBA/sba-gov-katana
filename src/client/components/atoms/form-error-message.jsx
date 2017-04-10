@@ -1,5 +1,5 @@
 import React from 'react';
-import formHelperStyles from '../helpers/form-helpers.scss';
+import formHelperStyles from './form-helpers.scss';
 
 class FormErrorMessage extends React.Component {
   render() {
