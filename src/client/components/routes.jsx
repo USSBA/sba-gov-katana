@@ -2,6 +2,8 @@ import React from 'react';
 
 import LincMain from './linc-main.jsx';
 
+import StyleGuide from './templates/style-guide.jsx'
+
 import LandingPage from './templates/lender-match/landing-page.jsx';
 import SuccessPage from './templates/lender-match/success-page.jsx';
 import EmailConfirmedPage from './organisms/lender-match/success-page/email-confirmed-page.jsx';
@@ -38,7 +40,8 @@ const routes = [
      <Route key={ 4 } path="emailconfirmed" component={ EmailConfirmedPage } />) (
      <Route key={ 5 } path="emailinvalid" component={ EmailConfirmationInvalid } />)
    </Route>
-  )
+  ),
+  (<Route key={ 3 } path="/styleguide" component={ StyleGuide } />)
 ];
 
 
