@@ -158,60 +158,59 @@ function sendFollowupConfirmations(emailConfirmations) {
 }
 
 function findConfirmedEmails() {
-    return EmailConfirmation.findAll({
-        where: {
-            confirmed: {
-                $not: null
-            }
-        }
-    });
+  return EmailConfirmation.findAll({
+    where: {
+      confirmed: {
+        $not: null
+      }
+    }
+  });
 }
 
-function findLenderMatchRegistrations(emailConfirmation){
-    return lenderMatchSoapResponse.findAll({
-        where: {
-            lenderMatchRegistrationId: emailConfirmation.lenderMatchRegistrationId
-        },
-        order: [
-            ["createdAt", "DESC"]
-        ]
-    }).then(function(lenderMatchSoapResponses){
-        if(!_.isEmpty(lenderMatchSoapResponses)){
-            //filter out the processed responses
-            let unprocessedResponses = _.filter(lenderMatchSoapResponses, (lenderMatchResponse)=>{
-                return !lenderMatchResponse.processed;
-            });
-            if(!_.isEmpty(unprocessedResponses)){
-                let firstResponse = _.head(unprocessedResponses);
-                return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem){
-                    return lenderMatchRegistrationItem;
-                });
-            }else{
-              return Promise.resolve("Not Found");
-            }
-        }else{
-          return Promise.resolve("Not Found")
-        }
-    }).catch(function(err){
-        console.log(err);
-    });
-}
-
-function findFailedOrPendingMessages(result){
-      let accumulator = [];
-      return result.reduce(function(lenderMatchRegistrations, emailConfirmation){
-          return lenderMatchRegistrations.then(function(){
-              return findLenderMatchRegistrations(emailConfirmation);
-          }).then(function(lenderMatchReg){
-            if(lenderMatchReg !== "Not Found")
-              accumulator.push(lenderMatchReg);
-          });
-
-      },Promise.resolve()).then(function(){
-        return accumulator;
-      }).catch(function(err){
-        console.log(err);
+function findLenderMatchRegistrations(emailConfirmation) {
+  return lenderMatchSoapResponse.findAll({
+    where: {
+      lenderMatchRegistrationId: emailConfirmation.lenderMatchRegistrationId
+    },
+    order: [
+      ["createdAt", "DESC"]
+    ]
+  }).then(function(lenderMatchSoapResponses) {
+    if (!_.isEmpty(lenderMatchSoapResponses)) {
+      //filter out the processed responses
+      const unprocessedResponses = _.filter(lenderMatchSoapResponses, (lenderMatchResponse) => {
+        return !lenderMatchResponse.processed;
       });
+      if (!_.isEmpty(unprocessedResponses)) {
+        const firstResponse = _.head(unprocessedResponses);
+        return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
+          return lenderMatchRegistrationItem;
+        });
+      }
+      return Promise.resolve("Not Found");
+    }
+    return Promise.resolve("Not Found");
+  }).catch(function(err) {
+    console.log(err);
+  });
+}
+
+function findFailedOrPendingMessages(result) {
+  const accumulator = [];
+  return result.reduce(function(lenderMatchRegistrations, emailConfirmation) {
+    return lenderMatchRegistrations.then(function() {
+      return findLenderMatchRegistrations(emailConfirmation);
+    }).then(function(lenderMatchReg) {
+      if (lenderMatchReg !== "Not Found") {
+        accumulator.push(lenderMatchReg);
+      }
+    });
+
+  }, Promise.resolve()).then(function() {
+    return accumulator;
+  }).catch(function(err) {
+    console.log(err);
+  });
 }
 
 function followupEmailJob() {
@@ -229,18 +228,18 @@ function sendDataToOca(lenderMatchRegistrationData) {
   getEndPointUrl(soapRequestData).then(function(response) {
     return convertFormDataToXml(response);
   })
-  .then(function(response) {
-    return createLincSoapRequestEnvelopeXml(response);
-  })
-  .then(function(response) {
-    return sendLincSoapRequest(response);
-  })
-  .then(function(response) {
-    return handleSoapResponse(response);
-  })
-  .catch(function(error) {
-    console.log(error.message);
-  });
+    .then(function(response) {
+      return createLincSoapRequestEnvelopeXml(response);
+    })
+    .then(function(response) {
+      return sendLincSoapRequest(response);
+    })
+    .then(function(response) {
+      return handleSoapResponse(response);
+    })
+    .catch(function(error) {
+      console.log(error.message);
+    });
 }
 
 function sendMessagesToOca(results) {
@@ -324,4 +323,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export { findConfirmedEmails,handleSoapResponse, updateLenderMatchSoapResponse, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
+export { findConfirmedEmails, handleSoapResponse, updateLenderMatchSoapResponse, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
