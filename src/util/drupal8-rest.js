@@ -12,7 +12,7 @@ var requestObject = {
 };
 
 
-function fetchFromDrupal8(type, id) {
+function fetchFromDrupalEight(type, id) {
   const options = _.merge({}, requestObject);
   options.url = type + "/" + id + "/";
   options.params = {
@@ -26,19 +26,19 @@ function fetchFromDrupal8(type, id) {
 }
 
 
-function fetchNodeFromDrupal8(nodeId) {
-  return fetchFromDrupal8("node", nodeId);
+function fetchNodeFromDrupalEight(nodeId) {
+  return fetchFromDrupalEight("node", nodeId);
 }
 
-function fetchParagraphFromDrupal8(paragraphId) {
-  return fetchFromDrupal8("entity/paragraph", paragraphId);
+function fetchParagraphFromDrupalEight(paragraphId) {
+  return fetchFromDrupalEight("entity/paragraph", paragraphId);
 }
 
-function formatDrupal8NodeResponse(response) {
-  let paragraphs = response['field_paragraphs'];
-  let title = response['title'][0].value;
+function formatDrupalEightNodeResponse(response) {
+  const paragraphs = response.field_paragraphs;
+  const title = response.title[0].value;
   return Promise.map(paragraphs, (paragraph) => {
-    return fetchParagraphFromDrupal8(paragraph['target_id']);
+    return fetchParagraphFromDrupalEight(paragraph.target_id);
   }).then((paragraphData) => {
     return {
       title: title,
@@ -51,7 +51,7 @@ function formatDrupal8NodeResponse(response) {
 
 
 function fetchFormattedNode(nodeId) {
-  return fetchNodeFromDrupal8(nodeId).then(formatDrupal8NodeResponse);
+  return fetchNodeFromDrupalEight(nodeId).then(formatDrupalEightNodeResponse);
 }
 
 
@@ -59,6 +59,4 @@ function fetchFormattedNode(nodeId) {
 
 
 
-export {
-  fetchFormattedNode
-};
+export { fetchFormattedNode };
