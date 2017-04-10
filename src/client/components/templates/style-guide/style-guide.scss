@@ -1,0 +1,211 @@
+// SBA Color Palette
+@function color($color, $value: primary) {
+  @return map-get($color, $value);
+}
+
+$sba-blue: (
+    primary: #0B97DD,
+    darkest: #004265,
+    dark: #006BA2,
+    light: #9DDDFF,
+    lightest: #D6ECFC
+);
+
+$byzantine: (
+    primary: #AB3EA0,
+    darkest: #511D4C,
+    dark: #7E2E76,
+    light: #C661BB,
+    lightest: #E7BEE3
+);
+
+$money-green: (
+    primary: #609F00,
+    darkest: #1F3A00,
+    dark: #336200,
+    light: #8BC03B,
+    lightest: #DBEDC0
+);
+
+$cobalt-blue: (
+    primary: #0F48AA,
+    darkest: #05183A,
+    dark: #0A3072,
+    light: #4E89EF,
+    lightest: #C8DAFA
+);
+
+$base-font-color: blue;
+
+// Universal Colors Regardless of Section
+$grey: (
+  primary: #666666,
+    light: #C4C4C4,
+    lighter: #EBEBEB,
+    lightest: #F7F7F7
+);
+
+// Error and Success Colors
+$crimson: #E21234;
+
+$themes: ( "warning": #FFECBD, "error": #F9D3DA, "info": #D6ECFC, "success": #DBEDC0, ) !default;
+@each $theme-type,
+$color in $themes {
+    .theme-#{$theme-type} {
+        background-color: $color;
+    }
+}
+/* Color Palette */
+
+.color {
+    background: #666666;
+    color: #fff;
+    font-family: "Helvetica", sans-serif;
+}
+
+.color-primary {
+    padding: 45px 0 15px 20px;
+    margin-bottom: 12px;
+}
+
+.color-secondary {
+    padding: 15px 0 15px 20px;
+}
+
+.color p.color-name,
+.color p.color-hex {
+    margin: 0;
+    line-height: 22px;
+    font-weight: bold;
+}
+
+.color-name {
+    font-size: 13px;
+}
+
+.colorhex {
+    font-size: 18px;
+}
+
+.text-black {
+    color: #000;
+}
+
+// Color Palette
+// 
+// SBA Blues
+.sba-blue {
+    background: color($sba-blue);
+}
+
+.sba-blue-darkest {
+    background: color($sba-blue, darkest);
+}
+
+.sba-blue-dark {
+    background: color($sba-blue, dark);
+}
+
+.sba-blue-light {
+    background: color($sba-blue, light);
+}
+
+.sba-blue-lightest {
+    background: color($sba-blue, lightest);
+}
+
+// Byzantines
+.byzantine {
+    background: color($byzantine);
+}
+
+.byzantine-darkest {
+    background: color($byzantine, darkest);
+}
+
+.byzantine-dark {
+    background: color($byzantine, dark);
+}
+
+.byzantine-light {
+    background: color($byzantine, light);
+}
+
+.byzantine-lightest {
+    background: color($byzantine, lightest);
+}
+
+// Money Greens
+.money-green {
+    background: color($money-green);
+}
+
+.money-green-darkest {
+    background: color($money-green, darkest);
+}
+
+.money-green-dark {
+    background: color($money-green, dark);
+}
+
+.money-green-light {
+    background: color($money-green, light);
+}
+
+.money-green-lightest {
+    background: color($money-green, lightest);
+}
+
+// Cobalt Blues
+.cobalt-blue {
+    background: color($cobalt-blue);
+}
+
+.cobalt-blue-darkest {
+    background: color($cobalt-blue, darkest);
+}
+
+.cobalt-blue-dark {
+    background: color($cobalt-blue, dark);
+}
+
+.cobalt-blue-light {
+    background: color($cobalt-blue, light);
+}
+
+.cobalt-blue-lightest {
+    background: color($cobalt-blue, lightest);
+}
+
+// White and Text Grey
+.text-grey {
+    background-color: $base-font-color;
+}
+
+.white {
+    background-color: #fff;
+    border: 1px solid #979797;
+    color: $base-font-color;
+}
+
+// Greys
+.grey {
+    background: color($grey);
+}
+
+.grey-light {
+    background: color($grey, light);
+}
+
+.grey-lighter {
+    background: color($grey, lighter);
+}
+
+.grey-lightest {
+    background: color($grey, lightest);
+}
+
+// Success and Error
+.crimson {
+    background: $crimson;
+}
