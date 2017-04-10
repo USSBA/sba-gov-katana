@@ -34,13 +34,11 @@ function parseResponse(xmlBody) {
   const parser = new DOMParser();
   const xmlRespDoc = parser.parseFromString(xmlBody);
   const passwordUpdateRequired = xmlRespDoc.getElementsByTagName("item")[0].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-  console.log(passwordUpdateRequired);
 
   //this element can be empty
   const secondItemChildren = xmlRespDoc.getElementsByTagName("item")[1].getElementsByTagName("value")[0].childNodes;
   if (secondItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
     errorMessageEnglish = secondItemChildren[0].nodeValue;
-    console.log(errorMessageEnglish);
   }
   const response = xmlRespDoc.getElementsByTagName("item")[2].getElementsByTagName("value")[0].childNodes[0].nodeValue;
 
@@ -48,7 +46,6 @@ function parseResponse(xmlBody) {
   const fourthItemChildren = xmlRespDoc.getElementsByTagName("item")[3].getElementsByTagName("value")[0].childNodes;
   if (fourthItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
     errorMessageTechnical = fourthItemChildren[0].nodeValue;
-    console.log(errorMessageTechnical);
   }
   const responseCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
   console.log(responseCode);
@@ -85,9 +82,6 @@ function sendLincSoapRequest(reqData) {
       } else {
         const resp = parseResponse(body);
         resp.lenderMatchRegistrationId = reqData.lenderMatchRegistration.id;
-        if (resp.responseCode === "F") {
-          console.log(body);
-        }
         resolve(resp);
       }
     });
@@ -156,9 +150,7 @@ function createLincSoapRequestEnvelopeXml(reqData) {
   const wrappedSbaLinc = xmlDoc.createCDATASection(reqData.formDataXml);
   thirdItemValue.appendChild(wrappedSbaLinc);
   const domSerializer = new XmlSerializer();
-  const soapRequestXml = domSerializer.serializeToString(xmlDoc);
-  console.log(soapRequestXml);
-  reqData.soapRequestXml = soapRequestXml; // eslint-disable-line no-param-reassign
+  reqData.soapRequestXml = domSerializer.serializeToString(xmlDoc);
   return reqData;
 }
 

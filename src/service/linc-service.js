@@ -60,7 +60,6 @@ function createLenderMatchRegistration(data) {
 function createLenderMatchRegistrationData(data) {
   return lenderMatchRegistration.create(data)
     .then(function(result) {
-      console.log(result);
       return result;
     });
 }
@@ -68,7 +67,6 @@ function createLenderMatchRegistrationData(data) {
 function createLenderMatchSoapResponseData(data) {
   return lenderMatchSoapResponse.create(data)
     .then(function(result) {
-      console.log(result);
       return result;
     });
 }
