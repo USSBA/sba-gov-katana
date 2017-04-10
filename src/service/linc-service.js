@@ -10,7 +10,6 @@ import { sendConfirmationEmail } from "../util/emailer.js";
 import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
-import { fetchPendingOrFailedMessagesFromDb } from "../models/dao/linc-service.js";
 import { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest } from "./linc-soap-request.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
@@ -141,8 +140,6 @@ function findUnconfirmedRegistrations() {
   });
 }
 
-
-
 function sendFollowupConfirmations(emailConfirmations) {
   return Promise.map(emailConfirmations, (emailConfirmation) => {
     return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
@@ -160,8 +157,61 @@ function sendFollowupConfirmations(emailConfirmations) {
   });
 }
 
-function findFailedOrPendingMessages() {
-  return fetchPendingOrFailedMessagesFromDb();
+function findConfirmedEmails() {
+    return EmailConfirmation.findAll({
+        where: {
+            confirmed: {
+                $not: null
+            }
+        }
+    });
+}
+
+function findLenderMatchRegistrations(emailConfirmation){
+    return lenderMatchSoapResponse.findAll({
+        where: {
+            lenderMatchRegistrationId: emailConfirmation.lenderMatchRegistrationId
+        },
+        order: [
+            ["createdAt", "DESC"]
+        ]
+    }).then(function(lenderMatchSoapResponses){
+        if(!_.isEmpty(lenderMatchSoapResponses)){
+            //filter out the processed responses
+            let unprocessedResponses = _.filter(lenderMatchSoapResponses, (lenderMatchResponse)=>{
+                return !lenderMatchResponse.processed;
+            });
+            if(!_.isEmpty(unprocessedResponses)){
+                let firstResponse = _.head(unprocessedResponses);
+                return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem){
+                    return lenderMatchRegistrationItem;
+                });
+            }else{
+              return Promise.resolve("Not Found");
+            }
+        }else{
+          return Promise.resolve("Not Found")
+        }
+    }).catch(function(err){
+        console.log(err);
+    });
+}
+
+function findFailedOrPendingMessages(result){
+      let accumulator = [];
+      return result.reduce(function(lenderMatchRegistrations, emailConfirmation){
+          return lenderMatchRegistrations.then(function(){
+              return findLenderMatchRegistrations(emailConfirmation);
+          }).then(function(lenderMatchReg){
+            if(lenderMatchReg !== "Not Found")
+              accumulator.push(lenderMatchReg);
+          });
+
+      },Promise.resolve()).then(function(){
+        return accumulator;
+      }).catch(function(err){
+        console.log(err);
+      });
 }
 
 function followupEmailJob() {
@@ -179,19 +229,18 @@ function sendDataToOca(lenderMatchRegistrationData) {
   getEndPointUrl(soapRequestData).then(function(response) {
     return convertFormDataToXml(response);
   })
-    .then(function(response) {
-      return createLincSoapRequestEnvelopeXml(response);
-    })
-    .then(function(response) {
-      return sendLincSoapRequest(response);
-    })
-    .then(function(response) {
-      return handleSoapResponse(response);
-    })
-    .catch(function(error) {
-      console.log(error.message);
-      throw error;
-    });
+  .then(function(response) {
+    return createLincSoapRequestEnvelopeXml(response);
+  })
+  .then(function(response) {
+    return sendLincSoapRequest(response);
+  })
+  .then(function(response) {
+    return handleSoapResponse(response);
+  })
+  .catch(function(error) {
+    console.log(error.message);
+  });
 }
 
 function sendMessagesToOca(results) {
@@ -221,7 +270,7 @@ function sendMessagesToOca(results) {
 }
 
 function sendDataToOcaJob() {
-  return findFailedOrPendingMessages().then(sendMessagesToOca);
+  return findConfirmedEmails().then(findFailedOrPendingMessages).then(sendMessagesToOca);
 }
 
 function confirmEmail(token) {
@@ -275,4 +324,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export { handleSoapResponse, updateLenderMatchSoapResponse, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
+export { findConfirmedEmails,handleSoapResponse, updateLenderMatchSoapResponse, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };

@@ -1,9 +1,9 @@
 const textLowerLimit = 0;
 const textUpperLimit = 255;
 
-function lProceedTypCd(loanDesc) {
-  return loanDesc.split(",").map(function(loanDescItem) { // eslint-disable-line complexity
-    const strLoanDesc = loanDescItem.trim(" ").toUpperCase();
+function lProceedTypCd(loanUsage) {
+  return loanUsage.split(",").map(function(loanUsageItem) { // eslint-disable-line complexity
+    const strLoanDesc = loanUsageItem.trim(" ").toUpperCase();
     let retLoanDescCd = "";
     switch (strLoanDesc) {
       case "PURCHASING PROPERTY":
@@ -227,25 +227,25 @@ function bAdvisoryInd(hasFinancialProjections) {
   return (hasFinancialProjections) ? "Y" : "N";
 }
 
-function bDtlTypTxt(loanUsage) {
+function bDtlTypTxt(loanDesc) {
   let retVal = "";
 
-  if (loanUsage.length > textLowerLimit && loanUsage.length < textUpperLimit) {
-    retVal = loanUsage;
-  } else if (loanUsage.length >= textUpperLimit) {
-    retVal = loanUsage.substring(textLowerLimit, textUpperLimit);
+  if (loanDesc.length > textLowerLimit && loanDesc.length < textUpperLimit) {
+    retVal = loanDesc;
+  } else if (loanDesc.length >= textUpperLimit) {
+    retVal = loanDesc.substring(textLowerLimit, textUpperLimit);
   }
 
   return retVal;
 }
 
-function pOthTypTxt(loanUsage) {
+function pOthTypTxt(loanDesc) {
   let retVal = "";
 
-  if (loanUsage.length > textLowerLimit && loanUsage.length < textUpperLimit) {
-    retVal = loanUsage;
-  } else if (loanUsage.length >= textUpperLimit) {
-    retVal = loanUsage.substring(textLowerLimit, textUpperLimit);
+  if (loanDesc.length > textLowerLimit && loanDesc.length < textUpperLimit) {
+    retVal = loanDesc;
+  } else if (loanDesc.length >= textUpperLimit) {
+    retVal = loanDesc.substring(textLowerLimit, textUpperLimit);
   }
 
   return retVal;
