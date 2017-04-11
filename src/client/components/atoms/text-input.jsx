@@ -32,7 +32,7 @@ class TextInput extends React.Component {
           {label}
         </label>
         <div className={styles.textInputContainer}>
-          <input {...rest} className={this.inputValidation(getValidationState)} onChange={handleChange}/> {validationIcon}
+          <input id={this.props.id} {...rest} className={this.inputValidation(getValidationState)} onChange={handleChange}/> {validationIcon}
         </div>
         {errorMessage}
       </div>
