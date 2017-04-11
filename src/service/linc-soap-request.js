@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { formatMessage } from "../service/linc-message-formatter.js";
 const request = require("request");
@@ -150,7 +149,7 @@ function createLincSoapRequestEnvelopeXml(reqData) {
   const wrappedSbaLinc = xmlDoc.createCDATASection(reqData.formDataXml);
   thirdItemValue.appendChild(wrappedSbaLinc);
   const domSerializer = new XmlSerializer();
-  reqData.soapRequestXml = domSerializer.serializeToString(xmlDoc);
+  reqData.soapRequestXml = domSerializer.serializeToString(xmlDoc); // eslint-disable-line no-param-reassign
   return reqData;
 }
 
