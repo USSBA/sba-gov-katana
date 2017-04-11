@@ -8,6 +8,7 @@ import config from "config";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
+import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from "./util/dev.js";
 
 const app = express();
 app.use(cookieParser());
@@ -21,16 +22,7 @@ const jsonParser = bodyParser.json();
 app.use(express.static("public"));
 
 if (config.get("developmentOptions.webpack.enabled")) {
-  console.log("Enabling Webpack");
-  const webpack = require("webpack"); // eslint-disable-line global-require
-  const webpackConfig = require("../webpack.config"); // eslint-disable-line global-require
-  const compiler = webpack(webpackConfig);
-  app.use(require("webpack-dev-middleware")(compiler, { // eslint-disable-line global-require
-    publicPath: webpackConfig.output.publicPath,
-    noInfo: config.get("developmentOptions.webpack.silent")
-  }));
-
-  app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
+  enableWebpackHotModuleReplacement(app, config.get("developmentOptions.webpack.silent"));
 }
 
 if (config.get("newrelic.enabled")) {
@@ -103,24 +95,7 @@ app.get("/content/:userId.json", getUserRoles);
 // development error handler
 // will print stacktrace
 if (config.get("developmentOptions.webpack.enabled")) {
-  app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
-    if (err) {
-      console.log(err);
-      if (req.xhr) {
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
-          error: "Something went wrong! Oh no!"
-        });
-      } else {
-        res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
-        res.render("error", {
-          message: err.message,
-          error: err
-        });
-      }
-    }
-
-  });
-
+  addDevelopmentErrorHandler(app);
 } else {
   // production error handler
   // no stacktraces leaked to user
