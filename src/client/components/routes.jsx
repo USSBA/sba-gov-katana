@@ -2,7 +2,7 @@ import React from 'react';
 
 import LincMain from './linc-main.jsx';
 
-import StyleGuide from './templates/style-guide.jsx'
+import StyleGuide from './templates/style-guide/style-guide.jsx'
 
 import LandingPage from './templates/lender-match/landing-page.jsx';
 import SuccessPage from './templates/lender-match/success-page.jsx';

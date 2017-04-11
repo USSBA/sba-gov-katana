@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { formatMessage } from "../service/linc-message-formatter.js";
 const request = require("request");

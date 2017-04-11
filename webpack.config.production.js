@@ -54,7 +54,19 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style-loader", "css-loader?modules", "sass-loader?modules"],
+        use: ["style-loader", "css-loader?modules", {
+          loader: "sass-loader",
+          options: {
+            includePaths: [
+              path.join(__dirname, 'src', 'client', 'styles')
+            ]
+          }
+        }, {
+          loader: 'sass-resources-loader',
+          options: {
+            resources: [path.join(__dirname, 'src', 'client', 'styles', "global.scss"), path.join(__dirname, 'src', 'client', 'styles', "variables.scss")]
+          },
+        }],
         exclude: [
           path.resolve(__dirname, "src/client/styles/common/collapse.scss"),
           path.resolve(__dirname, "src/client/components/atoms/checkbox.scss")
