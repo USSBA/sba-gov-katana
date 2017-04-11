@@ -150,7 +150,7 @@ function createLincSoapRequestEnvelopeXml(reqData) {
   const wrappedSbaLinc = xmlDoc.createCDATASection(reqData.formDataXml);
   thirdItemValue.appendChild(wrappedSbaLinc);
   const domSerializer = new XmlSerializer();
-  reqData.soapRequestXml = domSerializer.serializeToString(xmlDoc);
+  reqData.soapRequestXml = domSerializer.serializeToString(xmlDoc); // eslint-disable-line no-param-reassign
   return reqData;
 }
 

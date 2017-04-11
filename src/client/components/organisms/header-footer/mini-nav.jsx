@@ -82,7 +82,7 @@ export class MiniNav extends React.Component {
     const searchBar = this.state.searchIsExpanded
       ? (
       <form key={ 2 } id={ styles.searchBarNew } onBlur={ this.handleSearchToggle.bind(this) } onSubmit={ this.submitSearch.bind(this) }>
-        <input id="search-input" autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyDown={ this.handleKeyPressOnSearch }></input>
+        <input autoFocus id={ styles.searchInputNew } type='text' placeholder='Search' onChange={ this.handleSearchChange.bind(this) } onKeyDown={ this.handleKeyPressOnSearch }></input>
         <i id="search-btn-new" tabIndex="0" alt="search button" className={ styles.searchIconNew + " fa fa-search" } aria-hidden="true" onMouseDown={ this.submitSearch.bind(this) }></i>
       </form>
       )
