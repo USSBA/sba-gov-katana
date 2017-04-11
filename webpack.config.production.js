@@ -64,7 +64,7 @@ module.exports = {
         }, {
           loader: 'sass-resources-loader',
           options: {
-            resources: [path.join(__dirname, 'src', 'client', 'styles', 'vendors', "vendor.scss"), path.join(__dirname, 'src', 'client', 'styles', "variables.scss")]
+            resources: [path.join(__dirname, 'src', 'client', 'styles', "global.scss"), path.join(__dirname, 'src', 'client', 'styles', "variables.scss")]
           },
         }],
         exclude: [
