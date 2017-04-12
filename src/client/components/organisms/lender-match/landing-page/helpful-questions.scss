@@ -57,3 +57,14 @@
         display: none;
     }
 }
+
+.faqAnchor{
+    text-decoration: underline;
+    color: $sba-blue;
+}
+
+
+.faqAnchor:hover, .faqAnchor:active{
+    text-decoration: underline;
+    color: $sba-blue-dark;
+}
