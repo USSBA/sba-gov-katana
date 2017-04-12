@@ -1,53 +1,17 @@
 // SBA Color Palette
 @function color($color, $value: primary) {
-  @return map-get($color, $value);
+    @return map-get($color, $value);
 }
 
-$sba-blue: (
-    primary: #0B97DD,
-    darkest: #004265,
-    dark: #006BA2,
-    light: #9DDDFF,
-    lightest: #D6ECFC
-);
-
-$byzantine: (
-    primary: #AB3EA0,
-    darkest: #511D4C,
-    dark: #7E2E76,
-    light: #C661BB,
-    lightest: #E7BEE3
-);
-
-$money-green: (
-    primary: #609F00,
-    darkest: #1F3A00,
-    dark: #336200,
-    light: #8BC03B,
-    lightest: #DBEDC0
-);
-
-$cobalt-blue: (
-    primary: #0F48AA,
-    darkest: #05183A,
-    dark: #0A3072,
-    light: #4E89EF,
-    lightest: #C8DAFA
-);
-
+$sba-blue: ( primary: #0B97DD, darkest: #004265, dark: #006BA2, light: #9DDDFF, lightest: #D6ECFC);
+$byzantine: ( primary: #AB3EA0, darkest: #511D4C, dark: #7E2E76, light: #C661BB, lightest: #E7BEE3);
+$money-green: ( primary: #609F00, darkest: #1F3A00, dark: #336200, light: #8BC03B, lightest: #DBEDC0);
+$cobalt-blue: ( primary: #0F48AA, darkest: #05183A, dark: #0A3072, light: #4E89EF, lightest: #C8DAFA);
 $base-font-color: blue;
-
 // Universal Colors Regardless of Section
-$grey: (
-  primary: #666666,
-    light: #C4C4C4,
-    lighter: #EBEBEB,
-    lightest: #F7F7F7
-);
-
+$grey: ( primary: #666666, light: #C4C4C4, lighter: #EBEBEB, lightest: #F7F7F7);
 // Error and Success Colors
 $crimson: #E21234;
-
 $themes: ( "warning": #FFECBD, "error": #F9D3DA, "info": #D6ECFC, "success": #DBEDC0, ) !default;
 @each $theme-type,
 $color in $themes {
@@ -55,6 +19,8 @@ $color in $themes {
         background-color: $color;
     }
 }
+
+
 /* Color Palette */
 
 .color {
@@ -63,23 +29,23 @@ $color in $themes {
     font-family: "Helvetica", sans-serif;
 }
 
-.color-primary {
+.colorprimary {
     padding: 45px 0 15px 20px;
     margin-bottom: 12px;
 }
 
-.color-secondary {
+.colorsecondary {
     padding: 15px 0 15px 20px;
 }
 
-.color p.color-name,
-.color p.color-hex {
+.color p.colorname,
+.color p.colorhex {
     margin: 0;
     line-height: 22px;
     font-weight: bold;
 }
 
-.color-name {
+.colorname {
     font-size: 13px;
 }
 
@@ -87,30 +53,30 @@ $color in $themes {
     font-size: 18px;
 }
 
-.text-black {
+.textblack {
     color: #000;
 }
 
 // Color Palette
 // 
 // SBA Blues
-.sba-blue {
+.sbablue {
     background: color($sba-blue);
 }
 
-.sba-blue-darkest {
+.sbabluedarkest {
     background: color($sba-blue, darkest);
 }
 
-.sba-blue-dark {
+.sbabluedark {
     background: color($sba-blue, dark);
 }
 
-.sba-blue-light {
+.sbabluelight {
     background: color($sba-blue, light);
 }
 
-.sba-blue-lightest {
+.sbabluelightest {
     background: color($sba-blue, lightest);
 }
 
@@ -119,61 +85,61 @@ $color in $themes {
     background: color($byzantine);
 }
 
-.byzantine-darkest {
+.byzantinedarkest {
     background: color($byzantine, darkest);
 }
 
-.byzantine-dark {
+.byzantinedark {
     background: color($byzantine, dark);
 }
 
-.byzantine-light {
+.byzantinelight {
     background: color($byzantine, light);
 }
 
-.byzantine-lightest {
+.byzantinelightest {
     background: color($byzantine, lightest);
 }
 
 // Money Greens
-.money-green {
+.moneygreen {
     background: color($money-green);
 }
 
-.money-green-darkest {
+.moneygreendarkest {
     background: color($money-green, darkest);
 }
 
-.money-green-dark {
+.moneygreendark {
     background: color($money-green, dark);
 }
 
-.money-green-light {
+.moneygreenlight {
     background: color($money-green, light);
 }
 
-.money-green-lightest {
+.moneygreenlightest {
     background: color($money-green, lightest);
 }
 
 // Cobalt Blues
-.cobalt-blue {
+.cobaltblue {
     background: color($cobalt-blue);
 }
 
-.cobalt-blue-darkest {
+.cobaltbluedarkest {
     background: color($cobalt-blue, darkest);
 }
 
-.cobalt-blue-dark {
+.cobaltbluedark {
     background: color($cobalt-blue, dark);
 }
 
-.cobalt-blue-light {
+.cobaltbluelight {
     background: color($cobalt-blue, light);
 }
 
-.cobalt-blue-lightest {
+.cobaltbluelightest {
     background: color($cobalt-blue, lightest);
 }
 
@@ -208,4 +174,14 @@ $color in $themes {
 // Success and Error
 .crimson {
     background: $crimson;
+}
+
+$custom-grid: ( media: $large-screen, );
+
+
+.column {
+    @include grid-column;
+    @include grid-media($custom-grid) {
+        @include grid-column(3);
+    }
 }

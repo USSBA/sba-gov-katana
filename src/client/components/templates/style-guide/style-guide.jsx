@@ -36,96 +36,96 @@ export default StyleGuide;
 
  const ColorPalette = () => 
  	<div>
- 		<div class="column">
+ 		<div className={ styles.column }>
 		    <h4>SBA Blue</h4>
-		    <div class="color color-primary sba-blue">
-		        <p class="color-name">sba-blue</p>
-		        <p className={ styles.colorhex }>#0b97DD</p>
+		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue }>
+		        <p className={ styles.colorName }>sba-blue</p>
+		        <p className={ styles.colorHex }>#0b97DD</p>
 		    </div>
-		    <div class="color color-secondary sba-blue-darkest">
-		        <p class="color-name">sba-blue-darkest</p>
-		        <p class="color-hex">#004265</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedarkest }>
+		        <p className={ styles.colorName }>sba-blue-darkest</p>
+		        <p className={ styles.colorHex }>#004265</p>
 		    </div>
-		    <div class="color color-secondary sba-blue-dark">
-		        <p class="color-name">sba-blue-dark</p>
-		        <p class="color-hex">#006BA2</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark }>
+		        <p className={ styles.colorName }>sba-blue-dark</p>
+		        <p className={ styles.colorHex }>#006BA2</p>
 		    </div>
-		    <div class="color color-secondary sba-blue-light text-black">
-		        <p class="color-name">sba-blue-light</p>
-		        <p class="color-hex">#9DDDFF</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelight + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>sba-blue-light</p>
+		        <p className={ styles.colorHex }>#9DDDFF</p>
 		    </div>
-		    <div class="color color-secondary sba-blue-lightest text-black">
-		        <p class="color-name">sba-blue-lightest</p>
-		        <p class="color-hex">#D6ECFC</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelightest + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>sba-blue-lightest</p>
+		        <p className={ styles.colorHex }>#D6ECFC</p>
 		    </div>
 		</div>
-		<div class="column">
+		<div className={ styles.column }>
 		    <h4>Byzantine</h4>
-		    <div class="color color-primary byzantine">
-		        <p class="color-name">byzantine</p>
-		        <p class="color-hex">#AB3EA0</p>
+		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine }>
+		        <p className={ styles.colorName }>byzantine</p>
+		        <p className={ styles.colorHex }>#AB3EA0</p>
 		    </div>
-		    <div class="color color-secondary byzantine-darkest">
-		        <p class="color-name">byzantine-darkest</p>
-		        <p class="color-hex">#511D4C</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedarkest }>
+		        <p className={ styles.colorName }>byzantine-darkest</p>
+		        <p className={ styles.colorHex }>#511D4C</p>
 		    </div>
-		    <div class="color color-secondary byzantine-dark">
-		        <p class="color-name">byzantine-dark</p>
-		        <p class="color-hex">#7E2E76</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedark }>
+		        <p className={ styles.colorName }>byzantine-dark</p>
+		        <p className={ styles.colorHex }>#7E2E76</p>
 		    </div>
-		    <div class="color color-secondary byzantine-light">
-		        <p class="color-name">byzantine-light</p>
-		        <p class="color-hex">#C661BB</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelight }>
+		        <p className={ styles.colorName }>byzantine-light</p>
+		        <p className={ styles.colorHex }>#C661BB</p>
 		    </div>
-		    <div class="color color-secondary byzantine-lightest">
-		        <p class="color-name">byzantine-lightest</p>
-		        <p class="color-hex">#C661BB</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelightest + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>byzantine-lightest</p>
+		        <p className={ styles.colorHex }>#C661BB</p>
 		    </div>
 		</div>
-		<div class="column">
+		<div className={ styles.column }>
 		    <h4>Money Green</h4>
-		    <div class="color color-primary money-green">
-		        <p class="color-name">money-green</p>
-		        <p class="color-hex">#609F00</p>
+		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen }>
+		        <p className={ styles.colorName }>money-green</p>
+		        <p className={ styles.colorHex }>#609F00</p>
 		    </div>
-		    <div class="color color-secondary money-green-darkest">
-		        <p class="color-name">money-green-darkest</p>
-		        <p class="color-hex">#1F3A00</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendarkest }>
+		        <p className={ styles.colorName }>money-green-darkest</p>
+		        <p className={ styles.colorHex }>#1F3A00</p>
 		    </div>
-		    <div class="color color-secondary money-green-dark">
-		        <p class="color-name">money-green-dark</p>
-		        <p class="color-hex">#336200</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendark }>
+		        <p className={ styles.colorName }>money-green-dark</p>
+		        <p className={ styles.colorHex }>#336200</p>
 		    </div>
-		    <div class="color color-secondary money-green-light">
-		        <p class="color-name">money-green-light</p>
-		        <p class="color-hex">#8BC03B</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlight + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>money-green-light</p>
+		        <p className={ styles.colorHex }>#8BC03B</p>
 		    </div>
-		    <div class="color color-secondary money-green-lightest">
-		        <p class="color-name">money-green-lightest</p>
-		        <p class="color-hex">#DBEDC0</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlightest + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>money-green-lightest</p>
+		        <p className={ styles.colorHex }>#DBEDC0</p>
 		    </div>
 		</div>
-		<div class="column">
+		<div className={ styles.column }>
 		    <h4>Cobalt Blue</h4>
-		    <div class="color color-primary cobalt-blue">
-		        <p class="color-name">cobalt-blue</p>
-		        <p class="color-hex">#609F00</p>
+		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue }>
+		        <p className={ styles.colorName }>cobalt-blue</p>
+		        <p className={ styles.colorHex }>#609F00</p>
 		    </div>
-		    <div class="color color-secondary cobalt-blue-darkest">
-		        <p class="color-name">cobalt-blue-darkest</p>
-		        <p class="color-hex">#1F3A00</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedarkest }>
+		        <p className={ styles.colorName }>cobalt-blue-darkest</p>
+		        <p className={ styles.colorHex }>#1F3A00</p>
 		    </div>
-		    <div class="color color-secondary cobalt-blue-dark">
-		        <p class="color-name">cobalt-blue-dark</p>
-		        <p class="color-hex">#336200</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedark }>
+		        <p className={ styles.colorName }>cobalt-blue-dark</p>
+		        <p className={ styles.colorHex }>#336200</p>
 		    </div>
-		    <div class="color color-secondary cobalt-blue-light">
-		        <p class="color-name">cobalt-blue-light</p>
-		        <p class="color-hex">#8BC03B</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelight + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>cobalt-blue-light</p>
+		        <p className={ styles.colorHex }>#8BC03B</p>
 		    </div>
-		    <div class="color color-secondary cobalt-blue-lightest">
-		        <p class="color-name">money-green-lightest</p>
-		        <p class="color-hex">#DBEDC0</p>
+		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelightest + ' ' + styles.textblack }>
+		        <p className={ styles.colorName }>money-green-lightest</p>
+		        <p className={ styles.colorHex }>#DBEDC0</p>
 		    </div>
 		</div>
  	</div>;
