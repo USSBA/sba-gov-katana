@@ -18,8 +18,8 @@ class MobileNav extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div className={styles.mobileMainHeaderNew + " " + styles[this.props.theme]}>
+      <div className={this.props.theme}>
+        <div className={styles.mobileMainHeaderNew}>
           <a href="/">
             <img className={styles.logoNew} alt="Small Business Administration" src={sbaLogo}/>
           </a>

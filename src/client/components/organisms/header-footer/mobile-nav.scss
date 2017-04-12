@@ -28,19 +28,19 @@
         font-weight: bold;
     }
 
-    .sba-blue .menuBtnNew {
+    :global(.sba-blue) .menuBtnNew {
         color: $sba-blue;
         border: 0.533vw solid $sba-blue;
     }
-    .byzantine .menuBtnNew {
+    :global(.byzantine) .menuBtnNew {
         color: $byzantine;
         border: 0.533vw solid $byzantine;
     }
-    .money-green .menuBtnNew {
+    :global(.money-green) .menuBtnNew {
         color: $money-green;
         border: 0.533vw solid $money-green;
     }
-    .cobalt-blue .menuBtnNew {
+    :global(.cobalt-blue) .menuBtnNew {
         color: $cobalt-blue;
         border: 0.533vw solid $cobalt-blue;
     }
@@ -111,16 +111,16 @@
         font-weight: bold;
     }
 
-    .sba-blue .navLinkNew {
+    :global(.sba-blue) .navLinkNew {
         color: $sba-blue;
     }
-    .byzantine .navLinkNew {
+    :global(.byzantine) .navLinkNew {
         color: $byzantine;
     }
-    .money-green .navLinkNew {
+    :global(.money-green) .navLinkNew {
         color: $money-green;
     }
-    .cobalt-blue .navLinkNew {
+    :global(.cobalt-blue) .navLinkNew {
         color: $cobalt-blue;
     }
 
