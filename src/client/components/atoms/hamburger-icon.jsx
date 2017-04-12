@@ -6,7 +6,7 @@ class HamburgerIcon extends React.Component {
   getOpen() {
     return (
         <div className={this.props.theme}>
-          <svg viewbox="0 0 40 40" className={ styles.menuIconCloseNew}  >
+          <svg viewBox="0 0 40 40" className={ styles.menuIconCloseNew}  >
             <path className={styles.closeIcon} strokeWidth={4} fill="transparent" strokeLinecap="round" d="M 10,10 L 30,30 M 30,10 L 10,30"/>
           </svg>
         </div>
@@ -35,7 +35,7 @@ class HamburgerIcon extends React.Component {
 
   getText(open) {
     return <div className={styles.menuBtnTextNew}>{open
-        ? "Close"
+        ? "CLOSE"
         : "MENU"}</div>;
   }
 

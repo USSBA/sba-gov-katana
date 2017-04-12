@@ -50,26 +50,22 @@
     .menuIconCloseNew{
         height: 7vw;
         width: 6vw;
-        margin-right: 3.466vw;
-        margin-top: 1vw;
+        margin-right: 2.5vw;
+        margin-top: 0.5vw;
         float: right;
     }
 
-    .closeIcon {
-        stroke: $sba-blue;
-    }
-
     :global(.sba-blue) .closeIcon {
-        fill: $sba-blue !important;
+        stroke: $sba-blue !important;
     }
     :global(.byzantine) .closeIcon {
-        fill: $byzantine !important;
+        stroke: $byzantine !important;
     }
     :global(.money-green) .closeIcon {
-        fill: $money-green !important;
+        stroke: $money-green !important;
     }
     :global(.cobalt-blue) .closeIcon {
-        fill: $cobalt-blue !important;
+        stroke: $cobalt-blue !important;
     }
 
 

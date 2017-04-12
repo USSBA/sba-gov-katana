@@ -1,6 +1,4 @@
-import {
-  nonDrupal
-} from "./db-connect.js";
+import { nonDrupal } from "./db-connect.js";
 import uuid from "uuid";
 import * as Sequelize from "sequelize";
 
@@ -94,7 +92,4 @@ lenderMatchRegistration.sync();
 lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 lenderMatchSoapResponse.sync();
 
-export {
-  lenderMatchRegistration,
-  lenderMatchSoapResponse
-};
+export { lenderMatchRegistration, lenderMatchSoapResponse };
