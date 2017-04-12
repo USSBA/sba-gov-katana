@@ -5,24 +5,6 @@ body {
   line-height: $base-line-height;
 }
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   font-family: $heading-font-family;
-//   font-size: modular-scale(1);
-//   line-height: $heading-line-height;
-//   margin: 0 0 $small-spacing;
-// }
-
-// p {
-//   margin: 0 0 $small-spacing;
-// }
-
-
-
 h1,
 h2,
 h3,
@@ -30,7 +12,6 @@ h4,
 h5,
 h6 {
   line-height: $heading-line-height;
-
 }
 
 h1 {
@@ -71,7 +52,7 @@ h6 {
   @include margin(0 0 $margin-10 0);
 }
 
-.extra-large-title {
+.XL {
   @include font-size($extra-large-title-font-sizes);
 }
 
@@ -81,10 +62,8 @@ h6 {
   font-style: italic;
 }
 
-
-
 a {
-  color: $action-color;
+  color: $sba-blue;
   text-decoration: underline;
   transition: color $base-duration $base-timing;
 

@@ -7,7 +7,6 @@ import styles from './style-guide.scss'
 	<div>
 		<main>
 			<Typography />
-			
 			<ColorPalette />
 		</main>
 	</div>;
@@ -17,6 +16,7 @@ export default StyleGuide;
 
  const Typography = () => 
 	<div className={ styles.typography }>
+		<h1 className={ styles.XL }>XL:h1 Source Sans Pro Black</h1>
 		<h1>h1 Source Sans Pro Black</h1>
 		<h2>h2 Source Sans Pro Black</h2>
 		<h3>h3 Source Sans Pro Black</h3>
