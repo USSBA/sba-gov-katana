@@ -10,16 +10,16 @@
         float: left;
     }
 
-    .sba-blue .menuBtnTextNew {
+    :global(.sba-blue) .menuBtnTextNew {
         color: $sba-blue;
     }
-    .byzantine .menuBtnTextNew {
+    :global(.byzantine) .menuBtnTextNew {
         color: $byzantine;
     }
-    .money-green .menuBtnTextNew {
+    :global(.money-green) .menuBtnTextNew {
         color: $money-green;
     }
-    .cobalt-blue .menuBtnTextNew {
+    :global(.cobalt-blue) .menuBtnTextNew {
         color: $cobalt-blue;
     }
 
@@ -32,16 +32,16 @@
         float: right;
     }
 
-    .sba-blue .hamburgerIcon {
+    :global(.sba-blue) .hamburgerIcon {
         fill: $sba-blue !important;
     }
-    .byzantine .hamburgerIcon {
+    :global(.byzantine) .hamburgerIcon {
         fill: $byzantine !important;
     }
-    .money-green .hamburgerIcon {
+    :global(.money-green) .hamburgerIcon {
         fill: $money-green !important;
     }
-    .cobalt-blue .hamburgerIcon {
+    :global(.cobalt-blue) .hamburgerIcon {
         fill: $cobalt-blue !important;
     }
 
@@ -59,16 +59,16 @@
         stroke: $sba-blue;
     }
 
-    .sba-blue .closeIcon {
+    :global(.sba-blue) .closeIcon {
         fill: $sba-blue !important;
     }
-    .byzantine .closeIcon {
+    :global(.byzantine) .closeIcon {
         fill: $byzantine !important;
     }
-    .money-green .closeIcon {
+    :global(.money-green) .closeIcon {
         fill: $money-green !important;
     }
-    .cobalt-blue .closeIcon {
+    :global(.cobalt-blue) .closeIcon {
         fill: $cobalt-blue !important;
     }
 
