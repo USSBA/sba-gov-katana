@@ -73,15 +73,13 @@ function createLenderMatchSoapResponseData(data) {
 
 function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
   const now = moment();
-  return lenderMatchSoapResponse.update(
-    {
-      processed: now.unix()
-    },
-    {
-      where: {
-        lenderMatchRegistrationId: lenderMatchRegistrationId
-      }
-    })
+  return lenderMatchSoapResponse.update({
+    processed: now.unix()
+  }, {
+    where: {
+      lenderMatchRegistrationId: lenderMatchRegistrationId
+    }
+  })
     .then((result) => {
       return result;
     })
@@ -91,12 +89,11 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
 }
 
 function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
-  return lenderMatchRegistration.destroy(
-    {
-      where: {
-        lenderMatchRegistrationId: lenderMatchRegistrationId
-      }
-    })
+  return lenderMatchRegistration.destroy({
+    where: {
+      lenderMatchRegistrationId: lenderMatchRegistrationId
+    }
+  })
     .then((result) => {
       return result;
     })
@@ -285,7 +282,7 @@ function sendMessagesToOca(results) {
     };
     console.log("sendMessagesToOca");
     console.log(lenderMatchRegistrationData);
-    sendDataToOca(lenderMatchRegistrationData);
+    return sendDataToOca(lenderMatchRegistrationData);
   });
 }
 
