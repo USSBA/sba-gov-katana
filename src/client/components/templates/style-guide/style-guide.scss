@@ -1,28 +1,5 @@
-// SBA Color Palette
-@function color($color, $value: primary) {
-    @return map-get($color, $value);
-}
-
-$sba-blue: ( primary: #0B97DD, darkest: #004265, dark: #006BA2, light: #9DDDFF, lightest: #D6ECFC);
-$byzantine: ( primary: #AB3EA0, darkest: #511D4C, dark: #7E2E76, light: #C661BB, lightest: #E7BEE3);
-$money-green: ( primary: #609F00, darkest: #1F3A00, dark: #336200, light: #8BC03B, lightest: #DBEDC0);
-$cobalt-blue: ( primary: #0F48AA, darkest: #05183A, dark: #0A3072, light: #4E89EF, lightest: #C8DAFA);
-$base-font-color: blue;
-// Universal Colors Regardless of Section
-$grey: ( primary: #666666, light: #C4C4C4, lighter: #EBEBEB, lightest: #F7F7F7);
-// Error and Success Colors
-$crimson: #E21234;
-$themes: ( "warning": #FFECBD, "error": #F9D3DA, "info": #D6ECFC, "success": #DBEDC0, ) !default;
-@each $theme-type,
-$color in $themes {
-    .theme-#{$theme-type} {
-        background-color: $color;
-    }
-}
-
-
-/* Color Palette */
-
+// Color Palette
+// 
 .color {
     background: #666666;
     color: #fff;
@@ -57,90 +34,88 @@ $color in $themes {
     color: #000;
 }
 
-// Color Palette
-// 
 // SBA Blues
 .sbablue {
-    background: color($sba-blue);
+    background: $sba-blue;
 }
 
 .sbabluedarkest {
-    background: color($sba-blue, darkest);
+    background: $sba-blue-darkest;
 }
 
 .sbabluedark {
-    background: color($sba-blue, dark);
+    background: $sba-blue-dark;
 }
 
 .sbabluelight {
-    background: color($sba-blue, light);
+    background: $sba-blue-light;
 }
 
 .sbabluelightest {
-    background: color($sba-blue, lightest);
+    background: $sba-blue-lightest;
 }
 
 // Byzantines
 .byzantine {
-    background: color($byzantine);
+    background: $byzantine;
 }
 
 .byzantinedarkest {
-    background: color($byzantine, darkest);
+    background: $byzantine-darkest;
 }
 
 .byzantinedark {
-    background: color($byzantine, dark);
+    background: $byzantine-dark;
 }
 
 .byzantinelight {
-    background: color($byzantine, light);
+    background: $byzantine-light;
 }
 
 .byzantinelightest {
-    background: color($byzantine, lightest);
+    background: $byzantine-lightest;
 }
 
 // Money Greens
 .moneygreen {
-    background: color($money-green);
+    background: $money-green;
 }
 
 .moneygreendarkest {
-    background: color($money-green, darkest);
+    background: $money-green-darkest;
 }
 
 .moneygreendark {
-    background: color($money-green, dark);
+    background: $money-green-dark;
 }
 
 .moneygreenlight {
-    background: color($money-green, light);
+    background: $money-green-light;
 }
 
 .moneygreenlightest {
-    background: color($money-green, lightest);
+    background: $money-green-lightest;
 }
 
 // Cobalt Blues
 .cobaltblue {
-    background: color($cobalt-blue);
+    background: $cobalt-blue;
 }
 
 .cobaltbluedarkest {
-    background: color($cobalt-blue, darkest);
+    background: $cobalt-blue-darkest;
 }
 
 .cobaltbluedark {
-    background: color($cobalt-blue, dark);
+    background: $cobalt-blue-dark;
 }
 
 .cobaltbluelight {
-    background: color($cobalt-blue, light);
+    background: $cobalt-blue-light;
 }
 
 .cobaltbluelightest {
-    background: color($cobalt-blue, lightest);
+    background: $cobalt-blue-lightest;
 }
 
 // White and Text Grey
@@ -154,34 +129,14 @@ $color in $themes {
     color: $base-font-color;
 }
 
-// Greys
-.grey {
-    background: color($grey);
+// Grid
+.typography {
+    @include grid-column(12, $sba-grid-medium);
 }
-
-.grey-light {
-    background: color($grey, light);
-}
-
-.grey-lighter {
-    background: color($grey, lighter);
-}
-
-.grey-lightest {
-    background: color($grey, lightest);
-}
-
-// Success and Error
-.crimson {
-    background: $crimson;
-}
-
-$custom-grid: ( media: $large-screen, );
-
 
 .column {
-    @include grid-column;
-    @include grid-media($custom-grid) {
-        @include grid-column(3);
-    }
+    @include grid-column(6, $sba-grid-small);
+    @include grid-media( $sba-grid-medium) {
+    @include grid-column(3);
+  }
 }
