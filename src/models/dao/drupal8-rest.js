@@ -27,13 +27,11 @@ function fetchById(type, id) {
     .catch(function(error) {
       if (error && error.response && error.response.status === HttpStatus.NOT_FOUND) {
         return null;
-      } else {
-        throw new Error("Error encountered contacting the drupal 8 rest services in fetchById", error);
       }
+      throw new Error("Error encountered contacting the drupal 8 rest services in fetchById", error);
+
     }));
 }
 
 
-export {
-  fetchById
-};
+export { fetchById };

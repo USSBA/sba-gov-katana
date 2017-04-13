@@ -64,16 +64,16 @@
         text-decoration: none !important;
     }
 
-    .sba-blue .mainBtnNew > span {
+    :global(.sba-blue) .mainBtnNew > span {
         color: $sba-blue;
     }
-    .byzantine .mainBtnNew > span {
+    :global(.byzantine) .mainBtnNew > span {
         color: $byzantine;
     }
-    .money-green .mainBtnNew > span {
+    :global(.money-green) .mainBtnNew > span {
         color: $money-green;
     }
-    .cobalt-blue .mainBtnNew > span {
+    :global(.cobalt-blue) .mainBtnNew > span {
         color: $cobalt-blue;
     }
 
@@ -117,16 +117,16 @@
         border-top: 0;
     }
 
-    .sba-blue .triangleNew {
+    :global(.sba-blue) .triangleNew {
         border-bottom: 0.5vw solid $sba-blue;
     }
-    .byzantine .triangleNew {
+    :global(.byzantine) .triangleNew {
         border-bottom: 0.5vw solid $byzantine;
     }
-    .money-green .triangleNew {
+    :global(.money-green) .triangleNew {
         border-bottom: 0.5vw solid $money-green;
     }
-    .cobalt-blue .triangleNew {
+    :global(.cobalt-blue) .triangleNew {
         border-bottom: 0.5vw solid $cobalt-blue;
     }
 
@@ -172,16 +172,16 @@
         border-bottom: 1px solid #c4c4c4;
     }
 
-    .sba-blue .mainMenuNew {
+    :global(.sba-blue) .mainMenuNew {
         border-top: 0.5vw solid $sba-blue;
     }
-    .byzantine .mainMenuNew {
+    :global(.byzantine) .mainMenuNew {
         border-top: 0.5vw solid $byzantine;
     }
-    .money-green .mainMenuNew {
+    :global(.money-green) .mainMenuNew {
         border-top: 0.5vw solid $money-green;
     }
-    .cobalt-blue .mainMenuNew {
+    :global(.cobalt-blue) .mainMenuNew {
         border-top: 0.5vw solid $cobalt-blue;
     }
 
@@ -225,16 +225,16 @@
         font-weight: bold;
     }
 
-    .sba-blue .columnNew > li > h2 {
+    :global(.sba-blue) .columnNew > li > h2 {
         color: $sba-blue;
     }
-    .byzantine .columnNew > li > h2 {
+    :global(.byzantine) .columnNew > li > h2 {
         color: $byzantine;
     }
-    .money-green .columnNew > li > h2 {
+    :global(.money-green) .columnNew > li > h2 {
         color: $money-green;
     }
-    .cobalt-blue .columnNew > li > h2 {
+    :global(.cobalt-blue) .columnNew > li > h2 {
         color: $cobalt-blue;
     }
 
@@ -249,16 +249,16 @@
         text-decoration: underline;
     }
 
-    .sba-blue .columnNew > li > h2 > a {
+    :global(.sba-blue) .columnNew > li > h2 > a {
         color: $sba-blue;
     }
-    .byzantine .columnNew > li > h2 > a {
+    :global(.byzantine) .columnNew > li > h2 > a {
         color: $byzantine;
     }
-    .money-green .columnNew > li > h2 > a {
+    :global(.money-green) .columnNew > li > h2 > a {
         color: $money-green;
     }
-    .cobalt-blue .columnNew > li > h2 > a {
+    :global(.cobalt-blue) .columnNew > li > h2 > a {
         color: $cobalt-blue;
     }
 
@@ -276,16 +276,16 @@
         text-decoration: underline;
     }
 
-    .sba-blue .columnNew > li > h2 > a:hover {
+    :global(.sba-blue) .columnNew > li > h2 > a:hover {
         color: $sba-blue-dark;
     }
-    .byzantine .columnNew > li > h2 > a:hover {
+    :global(.byzantine) .columnNew > li > h2 > a:hover {
         color: $byzantine-dark;
     }
-    .money-green .columnNew > li > h2 > a:hover {
+    :global(.money-green) .columnNew > li > h2 > a:hover {
         color: $money-green-dark;
     }
-    .cobalt-blue .columnNew > li > h2 > a:hover {
+    :global(.cobalt-blue) .columnNew > li > h2 > a:hover {
         color: $cobalt-blue-dark;
     }
 
@@ -296,16 +296,16 @@
         margin-top: 2vw;
     }
 
-    .sba-blue .menuCallToAction {
+    :global(.sba-blue) .menuCallToAction {
         background-color: $sba-blue;
     }
-    .byzantine .menuCallToAction {
+    :global(.byzantine) .menuCallToAction {
         background-color: $byzantine;
     }
-    .money-green .menuCallToAction {
+    :global(.money-green) .menuCallToAction {
         background-color: $money-green;
     }
-    .cobalt-blue .menuCallToAction {
+    :global(.cobalt-blue) .menuCallToAction {
         background-color: $cobalt-blue;
     }
 

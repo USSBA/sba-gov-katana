@@ -8,7 +8,7 @@ const themes = {
     }
 
 class Themer extends React.Component {
-
+                         
     generateTheme(){
       let theme;
       Object.keys(themes).map((key) => {

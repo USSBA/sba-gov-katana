@@ -74,7 +74,7 @@ class MainMenu extends React.Component {
     }
 
     return (
-      <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew + " " + styles[this.props.theme] }>
+      <nav role="menubar" aria-label="main navigation bar with dropdown submenus" className={ styles.mainNavNew }>
         <ul className="reverse-ul" onKeyDown={ (event) => this.handleKeyDown(event) }>
           { menuItems }
         </ul>
