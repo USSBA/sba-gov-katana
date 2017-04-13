@@ -19,25 +19,13 @@ describe("LINC", function() {
   describe('Soap Request Formatting', function() {
 
     it('should accept a userName that is a string of length between 1 and less than 40 characters', function() {
-      let retVal = userName("Last Name", "Benjamin");
+      let retVal = userName("Benjamin");
       retVal.should.be.exactly("Benjamin");
     });
 
     it('should accept a userName that is a string having white space that should be trimmed', function() {
-      let retVal = userName("Last Name", " Benjamin ");
+      let retVal = userName("Benjamin ");
       retVal.should.be.exactly("Benjamin");
-    });
-
-    it('should not accept a userName that is a string of length greater than 40 characters long', function() {
-      (function() {
-        userName("Last Name", "BenjaminfromtheAntacticCircleBeyondAustralia")
-      }).should.throw("User Last Name is required and should be less than 40 characters.");
-    });
-
-    it('should not accept a userName with empty string', function() {
-      (function() {
-        userName("Last Name", "")
-      }).should.throw("User Last Name is required and should be less than 40 characters.");
     });
 
     it('should accept a bAgeCd that is Less than 1 year', function() {

@@ -1,3 +1,4 @@
+import _ from "lodash";
 const textLowerLimit = 0;
 const textUpperLimit = 255;
 
@@ -263,17 +264,20 @@ function bStatusDescTxt(businessDescription) {
   return retVal;
 }
 
-function userName(whichName, name) {
+function userName(name) {
 
   const nameLowerLimit = 0;
   const nameUpperLimit = 40;
 
-  const strName = name.trim();
-  if (strName.length > nameLowerLimit && strName.length < nameUpperLimit) {
-    return strName;
+  let strName = name;
+
+  if(!_.isEmpty(strName)){
+    strName = name.trim();
   }
-  const strError = "User " + whichName + " is required and should be less than 40 characters.";
-  throw new Error(strError);
+  //if (strName.length > nameLowerLimit && strName.length < nameUpperLimit) {
+  //  console.log("Name greater less than or greater than length supported by OCA");
+  //}
+    return strName;
 }
 
 function formatMessage(reqData) {
@@ -293,9 +297,9 @@ function formatMessage(reqData) {
     //ProjectZip4Cd = 4 chars
     "ProjectZip4Cd": "0000",
     //FirstName <= 80 chars
-    "FirstName": userName("First Name", lenderMatchRegistration.name.split(" ")[firstName]),
+    "FirstName": userName(lenderMatchRegistration.name.split(" ")[firstName]),
     //LastName <= 80 chars
-    "LastName": userName("Last Name", lenderMatchRegistration.name.split(" ")[lastName]),
+    "LastName": userName(lenderMatchRegistration.name.split(" ")[lastName]),
     //PrimaryPhone <= 25 chars
     "PrimaryPhone": lenderMatchRegistration.phone,
     //PrimaryEmail <= 255 chars

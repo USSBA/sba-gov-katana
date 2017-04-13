@@ -7,7 +7,8 @@ import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
 import { sendConfirmationEmail } from "../util/emailer.js";
-import { lenderMatchRegistration, lenderMatchSoapResponse } from "../models/lender-match-registration.js";
+import { lenderMatchRegistration } from "../models/lender-match-registration.js";
+import { lenderMatchSoapResponse } from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
 import { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest } from "./linc-soap-request.js";
@@ -89,31 +90,29 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
 }
 
 function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
-  return lenderMatchRegistration.destroy({
+  return EmailConfirmation.destroy({
     where: {
       lenderMatchRegistrationId: lenderMatchRegistrationId
     }
   })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      throw err;
-    });
+  .then(function() {
+    return lenderMatchSoapResponse.destroy({where:{lenderMatchRegistrationId: lenderMatchRegistrationId}});
+  })
+  .then(function(){
+    return lenderMatchRegistration.destroy({where:{id: lenderMatchRegistrationId}});
+  })
+  .catch((err) => {
+    throw err;
+  });
 }
 
 function handleSoapResponse(soapResponse) {
   let retVal;
   if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
     retVal = createLenderMatchSoapResponseData(soapResponse);
-    console.log("after createLenderMatchSoapResponseData");
-    console.log(retVal);
   } else if (soapResponse.responseCode === "S") {
-    //update the database to processed or delete lenderMatchRegistration when deletion is implemented
-    const notDeletingYet = true;
-    retVal = notDeletingYet ? updateLenderMatchSoapResponse(soapResponse.lenderMatchRegistrationId) : deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
-    console.log("after updateLenderMatchSoapResponse");
-    console.log(retVal);
+    retVal = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
+    console.log("SUCCESSSSSSSSSSSFUL : deleting EmailConfirmation, LenderMatchSoapResponse and LenderMatchRegistration." + " id = " + soapResponse.lenderMatchRegistrationId);
   } else { //eslint-disable-line no-else-return
     throw new Error("Unknown Response Code receieved from OCA.");
   }
@@ -175,26 +174,28 @@ function findLenderMatchRegistrations(emailConfirmation) {
       ["createdAt", "DESC"]
     ]
   }).then(function(lenderMatchSoapResponses) {
-    console.log("inside findLenderMatchRegistrations");
-    console.log(lenderMatchSoapResponses);
+    const MAX_RETRIES = 5;
     if (!_.isEmpty(lenderMatchSoapResponses)) {
       //filter out the processed responses
       const unprocessedResponses = _.filter(lenderMatchSoapResponses, (lenderMatchResponse) => {
         return !lenderMatchResponse.processed;
       });
       if (!_.isEmpty(unprocessedResponses)) {
-        console.log("unprocessedResponses");
-        console.log(unprocessedResponses);
-        const firstResponse = _.head(unprocessedResponses);
-        return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
-          console.log("lenderMatchRegistrationItem");
-          console.log(lenderMatchRegistrationItem);
-          return lenderMatchRegistrationItem;
-        });
+        if(_.size(unprocessedResponses) < MAX_RETRIES){
+          const firstResponse = _.head(unprocessedResponses);
+          return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
+              return lenderMatchRegistrationItem;
+          });
+        }
+        return Promise.resolve("Not Found");
       }
       return Promise.resolve("Not Found");
+    }else{
+        return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
+            return lenderMatchRegistrationItem;
+        });
     }
-    return Promise.resolve("Not Found");
+
   }).catch(function(err) {
     console.log(err);
   });
@@ -231,16 +232,10 @@ function sendDataToOca(lenderMatchRegistrationData) {
     ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
     lenderMatchRegistration: lenderMatchRegistrationData
   };
-  console.log("before getEndPointUrl");
-  console.log(soapRequestData);
   getEndPointUrl(soapRequestData).then(function(response) {
-    console.log("before confirmFormDataToXml");
-    console.log(response);
     return convertFormDataToXml(response);
   })
     .then(function(response) {
-      console.log("before createLincSoapRequestEnvelopeXml");
-      console.log(response);
       return createLincSoapRequestEnvelopeXml(response);
     })
     .then(function(response) {
@@ -280,8 +275,6 @@ function sendMessagesToOca(results) {
       isGeneratingRevenue: result.isGeneratingRevenue,
       isVeteran: result.isVeteran
     };
-    console.log("sendMessagesToOca");
-    console.log(lenderMatchRegistrationData);
     return sendDataToOca(lenderMatchRegistrationData);
   });
 }
