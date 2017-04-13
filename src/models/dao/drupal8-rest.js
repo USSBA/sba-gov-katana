@@ -3,7 +3,8 @@ import config from "config";
 import Promise from "bluebird";
 
 
-function fetchFromDrupalEight(type, id) {
+
+function fetchById(type, id) {
   const options = {
     url: type + "/" + id + "/",
     params: {
@@ -16,11 +17,24 @@ function fetchFromDrupalEight(type, id) {
   };
   return Promise.resolve(axios.request(options)
     .then(function(response) {
-      return response.data;
+      if (response && response.data) {
+        return response.data;
+      } else {
+        return null;
+      }
+    })
+    .catch(function(error) {
+      console.log(arguments);
+      if (error && error.status === 404) {
+        return null;
+      } else {
+        console.log("Error encountered contacting the drupal 8 rest services in fetchById", error);
+        throw error;
+      }
     }));
 }
 
 
-
-
-export { fetchFromDrupalEight };
+export {
+  fetchById
+};
