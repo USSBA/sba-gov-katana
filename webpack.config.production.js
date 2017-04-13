@@ -35,7 +35,7 @@ module.exports = function(env) {
     module: {
       rules: [{
         test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
-        loader: 'file-loader?name=img/img-[hash:6].[ext]'
+        loader: 'url-loader?limit=400000'
       }]
     }
   });

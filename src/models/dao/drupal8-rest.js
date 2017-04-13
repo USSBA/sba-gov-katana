@@ -19,18 +19,18 @@ function fetchById(type, id) {
     .then(function(response) {
       if (response && response.data) {
         return response.data;
-      } else {
-        return null;
       }
+      return null;
+
     })
     .catch(function(error) {
       console.log(arguments);
-      if (error && error.status === 404) {
-        return null;
-      } else {
-        console.log("Error encountered contacting the drupal 8 rest services in fetchById", error);
-        throw error;
-      }
+      //   if (error && error.status === 404) {
+      //     return null;
+      //   } 
+      console.log("Error encountered contacting the drupal 8 rest services in fetchById", error);
+      throw error;
+
     }));
 }
 
