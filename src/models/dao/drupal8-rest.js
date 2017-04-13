@@ -1,6 +1,7 @@
 import axios from "axios";
 import config from "config";
 import Promise from "bluebird";
+import HttpStatus from "http-status-codes";
 
 
 
@@ -24,13 +25,11 @@ function fetchById(type, id) {
 
     })
     .catch(function(error) {
-      console.log(arguments);
-      //   if (error && error.status === 404) {
-      //     return null;
-      //   } 
-      console.log("Error encountered contacting the drupal 8 rest services in fetchById", error);
-      throw error;
-
+      if (error && error.response && error.response.status === HttpStatus.NOT_FOUND) {
+        return null;
+      } else {
+        throw new Error("Error encountered contacting the drupal 8 rest services in fetchById", error);
+      }
     }));
 }
 

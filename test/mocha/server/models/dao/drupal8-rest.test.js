@@ -43,11 +43,23 @@ describe("Drupal 8 ReST client", () => {
     }).then(done);
   });
 
-  it.only('should respond with null if the server returns a 404', (done) => {
+  it('should respond with null if the server returns a 404', (done) => {
     mock.onGet('/node/3/').reply(404);
 
     fetchById('node', 3).then(function(result) {
       expect(result).to.be.null;
     }).then(done);
+  });
+
+  it('should throw an error when receiving a 500', (done) => {
+    mock.onGet('/node/4/').reply(500, "Internal Server Error");
+
+    fetchById('node', 4).then(function(result) {
+        done(new Error("Test Failed.  Promise resolved, but it should not have."));
+      })
+      .catch((error) => {
+        error.should.not.be.null;
+        done();
+      });
   });
 });
