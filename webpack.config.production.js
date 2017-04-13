@@ -31,6 +31,12 @@ module.exports = function(env) {
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.optimize.OccurrenceOrderPlugin(true)
-    ]
-  })
+    ],
+    module: {
+      rules: [{
+        test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
+        loader: 'url-loader?limit=400000'
+      }]
+    }
+  });
 }

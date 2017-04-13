@@ -89,7 +89,7 @@ var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
 
 
 lenderMatchRegistration.sync();
-lenderMatchSoapResponse.sync();
 lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
+lenderMatchSoapResponse.sync();
 
 export { lenderMatchRegistration, lenderMatchSoapResponse };

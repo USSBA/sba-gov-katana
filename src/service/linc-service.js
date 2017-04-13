@@ -73,15 +73,13 @@ function createLenderMatchSoapResponseData(data) {
 
 function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
   const now = moment();
-  return lenderMatchSoapResponse.update(
-    {
-      processed: now.unix()
-    },
-    {
-      where: {
-        lenderMatchRegistrationId: lenderMatchRegistrationId
-      }
-    })
+  return lenderMatchSoapResponse.update({
+    processed: now.unix()
+  }, {
+    where: {
+      lenderMatchRegistrationId: lenderMatchRegistrationId
+    }
+  })
     .then((result) => {
       return result;
     })
@@ -91,12 +89,11 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
 }
 
 function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
-  return lenderMatchRegistration.destroy(
-    {
-      where: {
-        lenderMatchRegistrationId: lenderMatchRegistrationId
-      }
-    })
+  return lenderMatchRegistration.destroy({
+    where: {
+      lenderMatchRegistrationId: lenderMatchRegistrationId
+    }
+  })
     .then((result) => {
       return result;
     })
@@ -109,10 +106,14 @@ function handleSoapResponse(soapResponse) {
   let retVal;
   if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
     retVal = createLenderMatchSoapResponseData(soapResponse);
+    console.log("after createLenderMatchSoapResponseData");
+    console.log(retVal);
   } else if (soapResponse.responseCode === "S") {
     //update the database to processed or delete lenderMatchRegistration when deletion is implemented
     const notDeletingYet = true;
     retVal = notDeletingYet ? updateLenderMatchSoapResponse(soapResponse.lenderMatchRegistrationId) : deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
+    console.log("after updateLenderMatchSoapResponse");
+    console.log(retVal);
   } else { //eslint-disable-line no-else-return
     throw new Error("Unknown Response Code receieved from OCA.");
   }
@@ -174,14 +175,20 @@ function findLenderMatchRegistrations(emailConfirmation) {
       ["createdAt", "DESC"]
     ]
   }).then(function(lenderMatchSoapResponses) {
+    console.log("inside findLenderMatchRegistrations");
+    console.log(lenderMatchSoapResponses);
     if (!_.isEmpty(lenderMatchSoapResponses)) {
       //filter out the processed responses
       const unprocessedResponses = _.filter(lenderMatchSoapResponses, (lenderMatchResponse) => {
         return !lenderMatchResponse.processed;
       });
       if (!_.isEmpty(unprocessedResponses)) {
+        console.log("unprocessedResponses");
+        console.log(unprocessedResponses);
         const firstResponse = _.head(unprocessedResponses);
         return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
+          console.log("lenderMatchRegistrationItem");
+          console.log(lenderMatchRegistrationItem);
           return lenderMatchRegistrationItem;
         });
       }
@@ -205,6 +212,8 @@ function findFailedOrPendingMessages(result) {
     });
 
   }, Promise.resolve()).then(function() {
+    console.log("accumulator");
+    console.log(accumulator);
     return accumulator;
   }).catch(function(err) {
     console.log(err);
@@ -222,17 +231,26 @@ function sendDataToOca(lenderMatchRegistrationData) {
     ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
     lenderMatchRegistration: lenderMatchRegistrationData
   };
-
+  console.log("before getEndPointUrl");
+  console.log(soapRequestData);
   getEndPointUrl(soapRequestData).then(function(response) {
+    console.log("before confirmFormDataToXml");
+    console.log(response);
     return convertFormDataToXml(response);
   })
     .then(function(response) {
+      console.log("before createLincSoapRequestEnvelopeXml");
+      console.log(response);
       return createLincSoapRequestEnvelopeXml(response);
     })
     .then(function(response) {
+      console.log("before sendLincSoapRequest");
+      console.log(response);
       return sendLincSoapRequest(response);
     })
     .then(function(response) {
+      console.log("before handleSoapResponse");
+      console.log(response);
       return handleSoapResponse(response);
     })
     .catch(function(error) {
@@ -262,7 +280,9 @@ function sendMessagesToOca(results) {
       isGeneratingRevenue: result.isGeneratingRevenue,
       isVeteran: result.isVeteran
     };
-    sendDataToOca(lenderMatchRegistrationData);
+    console.log("sendMessagesToOca");
+    console.log(lenderMatchRegistrationData);
+    return sendDataToOca(lenderMatchRegistrationData);
   });
 }
 
@@ -284,7 +304,7 @@ function confirmEmail(token) {
             .then(function(result) {
               return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
                 .then(function(lenderMatchRegistrationData) {
-                  sendDataToOca(lenderMatchRegistrationData);
+                  //sendDataToOca(lenderMatchRegistrationData);
                   return "success";
                 });
             });

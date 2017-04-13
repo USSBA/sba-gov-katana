@@ -20,12 +20,12 @@ describe("LINC", function() {
 
     it('should accept a userName that is a string of length between 1 and less than 40 characters', function() {
       let retVal = userName("Last Name", "Benjamin");
-      retVal.should.be.exactly("Benjamin");
+      retVal.should.equal("Benjamin");
     });
 
     it('should accept a userName that is a string having white space that should be trimmed', function() {
       let retVal = userName("Last Name", " Benjamin ");
-      retVal.should.be.exactly("Benjamin");
+      retVal.should.equal("Benjamin");
     });
 
     it('should not accept a userName that is a string of length greater than 40 characters long', function() {
@@ -42,22 +42,22 @@ describe("LINC", function() {
 
     it('should accept a bAgeCd that is Less than 1 year', function() {
       let retVal = bAgeCd("Less than 1 year");
-      retVal.should.be.exactly("01");
+      retVal.should.equal("01");
     });
 
     it('should accept a bAgeCd that is 1-2 years', function() {
       let retVal = bAgeCd("1-2 years");
-      retVal.should.be.exactly("02");
+      retVal.should.equal("02");
     });
 
     it('should accept a bAgeCd that is 2-5 years', function() {
       let retVal = bAgeCd("2-5 years");
-      retVal.should.be.exactly("03");
+      retVal.should.equal("03");
     });
 
     it('should accept a bAgeCd that is 5+ years', function() {
       let retVal = bAgeCd("5+ years");
-      retVal.should.be.exactly("04");
+      retVal.should.equal("04");
     });
 
     it('should not accept a bAgeCd that is empty string', function() {
@@ -74,12 +74,12 @@ describe("LINC", function() {
 
     it('should accept a bDtlTypCd that has multiple items in the list', function() {
       let retVal = bDtlTypCd("ENTERTAINMENT/RECREATION,NON-PROFIT,MANUFACTURING,RETAIL");
-      retVal.should.be.exactly("14,20,02,04");
+      retVal.should.equal("14,20,02,04");
     });
 
     it('should accept bDtlTypCd that has a single item in the list', function() {
       let retVal = bDtlTypCd("SERVICE");
-      retVal.should.be.exactly("01");
+      retVal.should.equal("01");
     });
 
     it('should not accept bDtlTypCd that has an empty string', function() {
@@ -96,12 +96,12 @@ describe("LINC", function() {
 
     it('should accept lProceedTypCd that has multiple items in the list', function() {
       let retVal = lProceedTypCd("REFINANCING/CONSOLIDATING DEBT,REMODELING AN EXISTING LOCATION,HIRING EMPLOYEES/STAFF");
-      retVal.should.be.exactly("04,03,05");
+      retVal.should.equal("04,03,05");
     });
 
     it('should accept lProceedTypCd that is a single item in the list', function() {
       let retVal = lProceedTypCd("PURCHASING PROPERTY");
-      retVal.should.be.exactly("01");
+      retVal.should.equal("01");
     });
 
     it('should not accept lProceedTypCd that is empty string', function() {
@@ -118,7 +118,7 @@ describe("LINC", function() {
 
     it('should accept bDtlTypTxt that has an arbitrary string between length of 0 and 255', function() {
       let retVal = bDtlTypTxt("We build shopping malls in all states for several years.");
-      retVal.should.be.exactly("We build shopping malls in all states for several years.");
+      retVal.should.equal("We build shopping malls in all states for several years.");
     });
 
     it('should accept bDtlTypTxt that is a string of length greater than 255', function() {
@@ -132,12 +132,12 @@ describe("LINC", function() {
 
     it('should accept bDtlTypTxt that has an empty string', function() {
       let retVal = bDtlTypTxt("");
-      retVal.should.be.exactly("");
+      retVal.should.equal("");
     });
 
     it('should accept pOthTypTxt that has an arbitrary string between length of 0 and 255', function() {
       let retVal = pOthTypTxt("We build shopping malls in all states for several years.");
-      retVal.should.be.exactly("We build shopping malls in all states for several years.");
+      retVal.should.equal("We build shopping malls in all states for several years.");
     });
 
     it('should accept pOthTypTxt that has a string of length greater than 255', function() {
@@ -147,17 +147,17 @@ describe("LINC", function() {
         "and will let our great grand children know how you have helped us through this difficult time.";
       let retVal = pOthTypTxt(req);
       retVal.should.have.length(255);
-      retVal.should.be.exactly("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
+      retVal.should.equal("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
     });
 
     it('should accept pOthTypTxt that has a loanUsage that is empty string', function() {
       let retVal = pOthTypTxt("");
-      retVal.should.be.exactly("");
+      retVal.should.equal("");
     });
 
     it('should accept reqAmtRangeCd with lower bound range up to 50000', function() {
       let retVal = reqAmtRangeCd("$50,000");
-      retVal.should.be.exactly("01");
+      retVal.should.equal("01");
     });
 
     it('should not accept reqAmtRangeCd that is a non-number', function() {
@@ -168,62 +168,62 @@ describe("LINC", function() {
 
     it('should accept reqAmtRangeCd that is a decimal value', function() {
       let retVal = reqAmtRangeCd("$50,000.98");
-      retVal.should.be.exactly("01");
+      retVal.should.equal("01");
     });
 
     it('should accept reqAmtRangeCd that has a lower bound of 50001', function() {
       let retVal = reqAmtRangeCd("$50,001");
-      retVal.should.be.exactly("02");
+      retVal.should.equal("02");
     });
 
     it('should accept reqAmtRangeCd that has an upper bound of 150000', function() {
       let retVal = reqAmtRangeCd("$150,000");
-      retVal.should.be.exactly("02");
+      retVal.should.equal("02");
     });
 
     it('should accept reqAmtRangeCd that has a lower bound of 150001', function() {
       let retVal = reqAmtRangeCd("$150,001");
-      retVal.should.be.exactly("03");
+      retVal.should.equal("03");
     });
 
     it('should accept reqAmtRangeCd that has an upper bound of 250000', function() {
       let retVal = reqAmtRangeCd("$250,000");
-      retVal.should.be.exactly("03");
+      retVal.should.equal("03");
     });
 
     it('should accept reqAmtRangeCd that has a lower bound of 250001', function() {
       let retVal = reqAmtRangeCd("$250,001");
-      retVal.should.be.exactly("04");
+      retVal.should.equal("04");
     });
 
     it('should accept reqAmtRangeCd that has an upper bound of 350000', function() {
       let retVal = reqAmtRangeCd("$350,000");
-      retVal.should.be.exactly("04");
+      retVal.should.equal("04");
     });
 
     it('should accept reqAmtRangeCd that has a lower bound of 350001', function() {
       let retVal = reqAmtRangeCd("$350,001");
-      retVal.should.be.exactly("05");
+      retVal.should.equal("05");
     });
 
     it('should accept reqAmtRangeCd that has an upper bound of 1000000', function() {
       let retVal = reqAmtRangeCd("$1,000,000");
-      retVal.should.be.exactly("05");
+      retVal.should.equal("05");
     });
 
     it('should accept reqAmtRangeCd that has a lower bound of 1000001', function() {
       let retVal = reqAmtRangeCd("$1,000,001");
-      retVal.should.be.exactly("06");
+      retVal.should.equal("06");
     });
 
     it('should accept reqAmtRangeCd that has an upper bound range 5000000', function() {
       let retVal = reqAmtRangeCd("$5,000,000");
-      retVal.should.be.exactly("06");
+      retVal.should.equal("06");
     });
 
     it('should accept reqAmtRangeCd that has an upper bound of over 5000000', function() {
       let retVal = reqAmtRangeCd("$5,000,001");
-      retVal.should.be.exactly("07");
+      retVal.should.equal("07");
     });
 
     it('should not accept bAgeCd that is 6+ years', function() {
@@ -234,38 +234,38 @@ describe("LINC", function() {
 
     it('should accept bAdvisoryInd that is Yes', function() {
       let retVal = bAdvisoryInd(true);
-      retVal.should.be.exactly("Y");
+      retVal.should.equal("Y");
     });
 
     it('should accept bAdvisoryInd that is No', function() {
       let retVal = bAdvisoryInd(false);
-      retVal.should.be.exactly("N");
+      retVal.should.equal("N");
     });
 
     it('should accept bPlanInd that is Yes', function() {
       let retVal = bPlanInd(true);
-      retVal.should.be.exactly("Y");
+      retVal.should.equal("Y");
     });
 
     it('should accept bPlanInd that is No', function() {
       let retVal = bPlanInd(false);
-      retVal.should.be.exactly("N");
+      retVal.should.equal("N");
     });
 
 
     it('should accept oFundSourceInd that is Yes', function() {
       let retVal = oFundSourceInd(true);
-      retVal.should.be.exactly("Y");
+      retVal.should.equal("Y");
     });
 
     it('should accept oFundSourceInd that is No', function() {
       let retVal = oFundSourceInd(false);
-      retVal.should.be.exactly("N");
+      retVal.should.equal("N");
     });
 
     it('should accept bStatusDescTxt that is an arbitrary string between length of 0 and 255', function() {
       let retVal = bStatusDescTxt("We build shopping malls in all states for several years.");
-      retVal.should.be.exactly("We build shopping malls in all states for several years.");
+      retVal.should.equal("We build shopping malls in all states for several years.");
     });
 
     it('should accept bStatusDescTxt that is a string of length greater than 255', function() {
@@ -275,23 +275,23 @@ describe("LINC", function() {
         "and will let our great grand children know how you have helped us through this difficult time.";
       let retVal = bStatusDescTxt(req);
       retVal.should.have.length(255);
-      retVal.should.be.exactly("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
+      retVal.should.equal("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
     });
 
     it('should accept bStatusDescTxt that is empty string', function() {
       let retVal = bStatusDescTxt("");
-      retVal.should.be.exactly("");
+      retVal.should.equal("");
     });
 
 
     it('should accept vetInd that is Yes', function() {
       let retVal = vetInd(true);
-      retVal.should.be.exactly("6");
+      retVal.should.equal("6");
     });
 
     it('should accept vetInd that is No', function() {
       let retVal = vetInd(false);
-      retVal.should.be.exactly("1");
+      retVal.should.equal("1");
     });
   });
 

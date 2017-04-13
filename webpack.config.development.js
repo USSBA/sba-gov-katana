@@ -19,6 +19,12 @@ module.exports = function(env) {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-    ]
+    ],
+    module: {
+      rules: [{
+        test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
+        loader: 'file-loader?name=img/img-[hash:6].[ext]'
+      }]
+    }
   });
 };
