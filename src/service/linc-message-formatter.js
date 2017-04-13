@@ -271,13 +271,13 @@ function userName(name) {
 
   let strName = name;
 
-  if(!_.isEmpty(strName)){
+  if (!_.isEmpty(strName)) {
     strName = name.trim();
   }
   //if (strName.length > nameLowerLimit && strName.length < nameUpperLimit) {
   //  console.log("Name greater less than or greater than length supported by OCA");
   //}
-    return strName;
+  return strName;
 }
 
 function formatMessage(reqData) {

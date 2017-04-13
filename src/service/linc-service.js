@@ -95,15 +95,23 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
       lenderMatchRegistrationId: lenderMatchRegistrationId
     }
   })
-  .then(function() {
-    return lenderMatchSoapResponse.destroy({where:{lenderMatchRegistrationId: lenderMatchRegistrationId}});
-  })
-  .then(function(){
-    return lenderMatchRegistration.destroy({where:{id: lenderMatchRegistrationId}});
-  })
-  .catch((err) => {
-    throw err;
-  });
+    .then(function() {
+      return lenderMatchSoapResponse.destroy({
+        where: {
+          lenderMatchRegistrationId: lenderMatchRegistrationId
+        }
+      });
+    })
+    .then(function() {
+      return lenderMatchRegistration.destroy({
+        where: {
+          id: lenderMatchRegistrationId
+        }
+      });
+    })
+    .catch((err) => {
+      throw err;
+    });
 }
 
 function handleSoapResponse(soapResponse) {
@@ -112,7 +120,7 @@ function handleSoapResponse(soapResponse) {
     retVal = createLenderMatchSoapResponseData(soapResponse);
   } else if (soapResponse.responseCode === "S") {
     retVal = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
-    console.log("SUCCESSSSSSSSSSSFUL : deleting EmailConfirmation, LenderMatchSoapResponse and LenderMatchRegistration." + " id = " + soapResponse.lenderMatchRegistrationId);
+    console.log("SUCCESSSSSSSSSSSFUL : deleting EmailConfirmation, LenderMatchSoapResponse and LenderMatchRegistration." + " id = " + soapResponse.lenderMatchRegistrationId); //eslint-disable-line no-useless-concat
   } else { //eslint-disable-line no-else-return
     throw new Error("Unknown Response Code receieved from OCA.");
   }
@@ -174,28 +182,26 @@ function findLenderMatchRegistrations(emailConfirmation) {
       ["createdAt", "DESC"]
     ]
   }).then(function(lenderMatchSoapResponses) {
-    const MAX_RETRIES = 5;
+    const maxRetries = 5;
     if (!_.isEmpty(lenderMatchSoapResponses)) {
       //filter out the processed responses
       const unprocessedResponses = _.filter(lenderMatchSoapResponses, (lenderMatchResponse) => {
         return !lenderMatchResponse.processed;
       });
       if (!_.isEmpty(unprocessedResponses)) {
-        if(_.size(unprocessedResponses) < MAX_RETRIES){
+        if (_.size(unprocessedResponses) < maxRetries) {
           const firstResponse = _.head(unprocessedResponses);
           return lenderMatchRegistration.findById(firstResponse.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
-              return lenderMatchRegistrationItem;
+            return lenderMatchRegistrationItem;
           });
         }
         return Promise.resolve("Not Found");
       }
       return Promise.resolve("Not Found");
-    }else{
-        return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
-            return lenderMatchRegistrationItem;
-        });
     }
-
+    return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId).then(function(lenderMatchRegistrationItem) {
+      return lenderMatchRegistrationItem;
+    });
   }).catch(function(err) {
     console.log(err);
   });
