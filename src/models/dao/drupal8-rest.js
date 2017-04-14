@@ -30,9 +30,10 @@ function fetchById(type, id) {
       }
       console.error(error);
       throw new Error("Error encountered contacting the drupal 8 rest services in fetchById");
-
     }));
 }
 
 
-export { fetchById };
+export {
+  fetchById
+};

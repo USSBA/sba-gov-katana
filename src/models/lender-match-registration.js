@@ -2,7 +2,7 @@ import { nonDrupal } from "./db-connect.js";
 import uuid from "uuid";
 import * as Sequelize from "sequelize";
 
-var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
+const lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
   id: { //eslint-disable-line id-length
     type: Sequelize.UUID,
     defaultValue: function() {
@@ -63,33 +63,4 @@ var lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
   freezeTableName: true // Model tableName will be the same as the model name
 });
 
-var lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
-  id: { //eslint-disable-line id-length
-    type: Sequelize.UUID,
-    defaultValue: function() {
-      return uuid.v4();
-    },
-    primaryKey: true
-  },
-  responseCode: {
-    type: Sequelize.CHAR
-  },
-  errorMessageEnglish: {
-    type: Sequelize.STRING
-  },
-  errorMessageTechnical: {
-    type: Sequelize.STRING
-  },
-  processed: {
-    type: Sequelize.BIGINT
-  }
-}, {
-  freezeTableName: true // Model tableName will be the same as the model name
-});
-
-
-lenderMatchRegistration.sync();
-lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
-lenderMatchSoapResponse.sync();
-
-export { lenderMatchRegistration, lenderMatchSoapResponse };
+export { lenderMatchRegistration };

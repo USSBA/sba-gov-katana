@@ -11,6 +11,8 @@ import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import HaxRouter from './hax-router.jsx';
 
+import Themer from './templates/themer/themer.jsx'
+
 
 let middlewareList = [];
 middlewareList.push(thunk);
@@ -37,9 +39,11 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={ store }>
-        <HaxRouter onUpdate={ logPageView() } history={ history }>
-          { this.props.routes }
-        </HaxRouter>
+        <Themer>
+          <HaxRouter onUpdate={ logPageView() } history={ history }>
+            { this.props.routes }
+          </HaxRouter>
+        </Themer>
       </Provider>
       );
   }
