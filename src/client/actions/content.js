@@ -1,10 +1,11 @@
 import axios from "axios";
 import queryString from "querystring";
-export const siteContent = "SITE_CONTENT";
+import types from './types.js';
+
 
 function receiveContent(prop, type, query, data) {
   return {
-    type: siteContent,
+    type: types.siteContent,
     contentType: prop,
     query,
     data: data,
@@ -34,5 +35,3 @@ export function fetchContentIfNeeded(prop, type, query) {
     return Promise.resolve();
   };
 }
-
-

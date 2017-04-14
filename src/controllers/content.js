@@ -1,26 +1,17 @@
-import { fetchFromDrupal, fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
+import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
 import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
+
+import { fetchFormattedNode, fetchFormattedTaxonomyTerm } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 
-function fetchContent(req, res) {
-  if (req.query && req.params && req.params.type) {
-    fetchFromDrupal(req.params.type + ".json", req.query)
-      .then(function(data) {
-        res.status(HttpStatus.OK).send(data);
-      })
-      .catch((error) => {
-        console.error(error);
-        res.status(error.response.status).send("Error retrieving content");
-      });
-  } else {
-    res.status(HttpStatus.BAD_REQUEST).send("Too few query params");
-  }
-}
-
+const fetchFunctions = {
+  node: fetchFormattedNode,
+  taxonomy: fetchFormattedTaxonomyTerm
+};
 
 function fetchContentById(req, res) {
-  if (req.query && req.params && req.params.type && req.params.id) {
-    fetchFromDrupal(req.params.type + "/" + req.params.id + ".json")
+  if (req.params && req.params.type && req.params.id) {
+    fetchFunctions[req.params.type](req.params.id)
       .then(function(data) {
         res.status(HttpStatus.OK).send(data);
       })
@@ -29,7 +20,7 @@ function fetchContentById(req, res) {
         res.status(error.response.status).send("Error retrieving content");
       });
   } else {
-    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format");
+    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type or id");
   }
 }
 
@@ -70,4 +61,4 @@ function fetchDisaster(req, res) {
 }
 
 
-export { fetchContent, fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster };
+export { fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster };

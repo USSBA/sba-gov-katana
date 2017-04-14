@@ -1,0 +1,56 @@
+{
+    "id": [{
+        "value": 8
+    }],
+    "uuid": [{
+        "value": "26f4852b-f8d9-47d3-8d83-1e66e41ebdb5"
+    }],
+    "revision_id": [{
+        "value": 59
+    }],
+    "type": [{
+        "target_id": "text_section",
+        "target_type": "paragraphs_type",
+        "target_uuid": "52b9b2bd-5483-4659-942f-01f51eb82d50"
+    }],
+    "langcode": [{
+        "value": "en"
+    }],
+    "uid": [{
+        "target_id": 7,
+        "target_type": "user",
+        "target_uuid": "296aa7eb-a6dd-4948-9df2-4d6b2cd66ff2",
+        "url": "/user/7"
+    }],
+    "status": [{
+        "value": true
+    }],
+    "created": [{
+        "value": 1491413700
+    }],
+    "revision_uid": [{
+        "target_id": 7,
+        "target_type": "user",
+        "target_uuid": "296aa7eb-a6dd-4948-9df2-4d6b2cd66ff2",
+        "url": "/user/7"
+    }],
+    "parent_id": [{
+        "value": "5"
+    }],
+    "parent_type": [{
+        "value": "node"
+    }],
+    "parent_field_name": [{
+        "value": "field_paragraphs"
+    }],
+    "behavior_settings": [{
+        "value": "a:0:{}"
+    }],
+    "default_langcode": [{
+        "value": true
+    }],
+    "field_text_section_text": [{
+        "value": "<p>You’ll want to choose a business name that reflects your brand identity and doesn’t clash with the types of goods and services you offer.</p>\r\n\r\n<p>Once you settle on a name you like, you need to protect it. There are four different ways to register your business name. Each way of registering your name serves a different purpose, and some may be legally required depending on your business structure and location.</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p><a href=\"http://sbadigitalservices.atlassian.net/#ANCHOR-Entity%20Name\">Entity name</a>&nbsp;protects you at state level</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><a href=\"https://docs.google.com/document/d/1M4d21j8mGt7_7EkuLC_cNNmzDPO1v36EV09VfbwSLmI/edit#ANCHOR-Trademark\">Trademark</a>&nbsp;protects you at a federal level</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><a href=\"https://docs.google.com/document/d/1M4d21j8mGt7_7EkuLC_cNNmzDPO1v36EV09VfbwSLmI/edit#ANCHOR-DBA\">Doing Business As (DBA)</a>&nbsp;doesn’t give legal protection, but might be legally required</p>\r\n\t</li>\r\n\t<li>\r\n\t<p><a href=\"https://docs.google.com/document/d/1M4d21j8mGt7_7EkuLC_cNNmzDPO1v36EV09VfbwSLmI/edit#ANCHOR-Domain\">Domain name</a>&nbsp;protects your business website address</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Each of these name registrations are legally independent. Most small businesses try to use the same name for each kind of registration, but you’re not normally required to.</p>\r\n",
+        "format": "basic_html"
+    }]
+}
