@@ -1,5 +1,8 @@
 import React from 'react';
 import PrimaryButton from '../../atoms/primary-button/primary-button.jsx'
+import SecondaryButton from '../../atoms/primary-button/secondary-button.jsx'
+import InversePrimaryButton from '../../atoms/inverse-primary-button/primary-button.jsx'
+import InverseSecondaryButton from '../../atoms/inverse-secondary-button/primary-button.jsx'
 import styles from './style-guide.scss'
 
 
@@ -30,6 +33,20 @@ export default StyleGuide;j
 		<Links />
 		<br />
 		<PrimaryButton text="Hello" />
+		<br />
+		<SecondaryButton text="Hello" />
+		<br />
+		<InversePrimaryButton text="Hello" />
+		<br />
+		<InverseSecondaryButton text="Hello" />
+		<br />
+		<PrimaryButton text="Hello" />
+		<br />
+		<SecondaryButton text="Hello" />
+		<br />
+		<InversePrimaryButton text="Hello" />
+		<br />
+		<InverseSecondaryButton text="Hello" />
 	</div>;
 
  const Links = () =>
