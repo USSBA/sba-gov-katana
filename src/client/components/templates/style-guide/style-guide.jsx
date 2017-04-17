@@ -1,20 +1,19 @@
 import React from 'react';
-// import '../../../styles/global.scss';
+import PrimaryButton from '../../atoms/primary-button/primary-button.jsx'
 import styles from './style-guide.scss'
 
 
- const StyleGuide = () => 
+ const StyleGuide = () =>
 	<div>
-		<main>
+		<main className="sba-blue">
 			<Typography />
 			<ColorPalette />
 		</main>
 	</div>;
 
-export default StyleGuide;
+export default StyleGuide;j
 
-
- const Typography = () => 
+ const Typography = () =>
 	<div className={ styles.typography }>
 		<h1 className={ styles.XL }>XL:h1 Source Sans Pro Black</h1>
 		<h1>h1 Source Sans Pro Black</h1>
@@ -28,15 +27,17 @@ export default StyleGuide;
 		</p>
 		<p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
 		<p class="caption">Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor.</p>
-		<Links />	
+		<Links />
+		<br />
+		<PrimaryButton text="Hello" />
 	</div>;
 
- const Links = () => 
+ const Links = () =>
  	<div>
  		<p><a href="#">Link</a></p>
  	</div>;
 
- const ColorPalette = () => 
+ const ColorPalette = () =>
  	<div>
  		<div className={ styles.column }>
 		    <h4>SBA Blue</h4>

@@ -33,3 +33,19 @@
     }
   }
 }
+
+@mixin theme($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+    }
+  }
+}
+
+// @include theme(theme-name, component, background-color, text-color, border-color);
+@include theme(sba-blue, button, $sba-blue, red, null);
+@include theme(byzantine, button, $byzantine, blue, null);
+@include theme(money-green, button, $money-green, yellow, null);
+@include theme(cobalt-blue, button, $cobalt-blue, red, null);
