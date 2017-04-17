@@ -14,7 +14,7 @@ function receiveContent(prop, type, id, data) {
 function fetchContent(prop, type, id) {
   return (dispatch) => {
     dispatch(receiveContent(prop, type, id));
-    return axios.get("/content/" + type + " /" + id + "/" + ".json").then((response) => { //eslint-disable-line no-useless-concat
+    return axios.get("/content/" + type + " /" + id + ".json").then((response) => {
       return response.data;
     }).then((data) => {
       return dispatch(receiveContent(prop, type, id, data));

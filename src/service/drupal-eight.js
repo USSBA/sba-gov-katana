@@ -2,8 +2,12 @@ import _ from "lodash";
 import Promise from "bluebird";
 
 const fieldPrefix = "field_";
+const nodeEndpoint = "node";
+const taxonomyEndpoint = "/taxonomy/term";
+const paragraphEndpoint = "entity/paragraph";
 
 import { fetchById } from "../models/dao/drupal8-rest.js";
+
 
 // a few helper functions to extract data from the drupal wrappers
 function extractValue(object) {
@@ -15,15 +19,15 @@ function extractTargetId(object) {
 }
 
 function fetchNodeById(nodeId) {
-  return fetchById("node", nodeId);
+  return fetchById(nodeEndpoint, nodeId);
 }
 
 function fetchTaxonomyTermById(taxonomyTermId) {
-  return fetchById("/taxonomy/term", taxonomyTermId);
+  return fetchById(taxonomyEndpoint, taxonomyTermId);
 }
 
 function fetchParagraphId(paragraphId) {
-  return fetchById("entity/paragraph", paragraphId);
+  return fetchById(paragraphEndpoint, paragraphId);
 }
 
 
@@ -48,15 +52,19 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
 
 
 function formatParagraph(paragraph) {
-  const typeName = extractTargetId(paragraph.type);
-  const formattedParagraph = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-    return _.replace(fieldName, typeName, "");
-  });
-  return _.chain(formattedParagraph)
-    .merge({
-      type: _.camelCase(typeName)
-    })
-    .value();
+  if (paragraph) {
+    const typeName = extractTargetId(paragraph.type);
+    const formattedParagraph = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
+      return _.replace(fieldName, typeName, "");
+    });
+    return _.chain(formattedParagraph)
+      .merge({
+        type: _.camelCase(typeName)
+      })
+      .value();
+  }
+  return null;
+
 }
 
 function formatTaxonomyTerm(data) {
@@ -92,7 +100,7 @@ function formatNode(data) {
   return Promise.all([paragraphDataPromises, taxonomyPromise]).spread((paragraphData, taxonomyData) => {
     return {
       title: title,
-      paragraphs: paragraphData,
+      paragraphs: _.compact(paragraphData),
       taxonomy: taxonomyData
     };
   });
@@ -102,4 +110,4 @@ function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint };

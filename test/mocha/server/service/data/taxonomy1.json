@@ -1,0 +1,36 @@
+{
+    "tid": [{
+        "value": 11
+    }],
+    "uuid": [{
+        "value": "a67b5c33-04b9-4f50-878c-3a974114a73a"
+    }],
+    "langcode": [{
+        "value": "en"
+    }],
+    "vid": [{
+        "target_id": "site_location",
+        "target_type": "taxonomy_vocabulary",
+        "target_uuid": "36da05ef-ff18-4656-b383-c35b5b9a49a9"
+    }],
+    "name": [{
+        "value": "Plan"
+    }],
+    "description": [{
+        "value": null,
+        "format": null
+    }],
+    "weight": [{
+        "value": 0
+    }],
+    "parent": [],
+    "changed": [{
+        "value": 1490981492
+    }],
+    "default_langcode": [{
+        "value": true
+    }],
+    "path": [],
+    "field_icon_file": [],
+    "field_slug_text": []
+}

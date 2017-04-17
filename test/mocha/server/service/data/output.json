@@ -1,18 +1,24 @@
 {
-  "title": "Star Wars: A New Hope",
-  "paragraphs": [{
-      "text": "My Best Header Text",
-      "type": "sectionHeader"
-    },
-    {
-      "text": "Some text",
-      "type": "textSection"
-    },
-    {
-      "expandedCopyText": "This is some text",
-      "preview": "Some.",
-      "titleText": "Some title",
-      "type": "readMore"
+    "title": "Star Wars: A New Hope",
+    "paragraphs": [{
+            "text": "My Best Header Text",
+            "type": "sectionHeader"
+        },
+        {
+            "text": "Some text",
+            "type": "textSection"
+        },
+        {
+            "expandedCopyText": "This is some text",
+            "preview": "Stuff.",
+            "titleText": "Some title",
+            "type": "readMore"
+        }
+    ],
+    "taxonomy": {
+        "iconFile": null,
+        "name": "Plan",
+        "slugText": null,
+        "vocabulary": "siteLocation"
     }
-  ]
 }
