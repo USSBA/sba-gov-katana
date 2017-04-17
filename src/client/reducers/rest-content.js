@@ -1,7 +1,7 @@
 import types from "../actions/types.js";
 
-const contentReducer = (state = {}, action) => {
-  if (action.type === types.siteContent) {
+const restContentReducer = (state = {}, action) => {
+  if (action.type === types.restContent) {
     const newState = {};
     newState[action.contentType] = action.data;
     return Object.assign({}, state, newState);
@@ -10,4 +10,4 @@ const contentReducer = (state = {}, action) => {
 };
 
 
-export default contentReducer;
+export default restContentReducer;
