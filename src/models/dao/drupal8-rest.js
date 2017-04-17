@@ -34,6 +34,4 @@ function fetchById(type, id) {
 }
 
 
-export {
-  fetchById
-};
+export { fetchById };
