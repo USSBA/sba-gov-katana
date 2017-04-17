@@ -13,7 +13,9 @@ const clientConfig = {
       invalidIndustryExperience: "Please estimate your experience.",
       invalidLoanUsage: "Please select at least 1 use of funds.",
       invalidLoanDescription: "Please provide a brief description.",
-      invalidLoanAmount: "The minimum loan amount is $500."
+      invalidLoanAmount: "The minimum loan amount is $500.",
+      invalidNewsLetterEmail: "Enter a valid email address.",
+      invalidNewsLetterZipCode: "A U.S. ZIP code must be five digits."
     }
   }
 };

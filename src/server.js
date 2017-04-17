@@ -81,11 +81,10 @@ app.get("/content/counselors-redirect.json", function(req, res) {
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
-import { fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
+import { fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
-app.get("/content/:type/:id.json", fetchContentById);
 
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
@@ -93,6 +92,8 @@ app.get("/content/main-menu.json", getMainMenu);
 import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/content/:userId.json", getUserRoles);
 
+import { getDrupalUserEmail } from "./controllers/user-email.js";
+app.get("/content/:userId.json", getDrupalUserEmail);
 
 // development error handler
 // will print stacktrace

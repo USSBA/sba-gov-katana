@@ -1,0 +1,105 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.66);
+}
+
+.content {
+  background-color: #D6ECFC;
+  position: relative;
+  width: 400px;
+  height: 300px;
+  top: 50%;
+  transform: translate(80%,5%);
+  margin: auto;
+  padding: 20px;
+  font-family: "Source Sans Pro";
+
+  @media screen and (max-width: 767px) {
+    width: 90vw;
+    position: absolute;
+    height: auto;
+    margin: auto;
+    padding: 8vw;
+    left: 5%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+
+.exitIcon {
+  position: absolute;
+  top:30px;
+  right:30px;
+  width: 26.16px;
+  height: 26.16px;
+  color: #666666;
+  transform: scaleX(-1);
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.title {
+  height: 44px;
+  width: 280px;
+  color: #333333;
+  font-family: "Source Sans Pro";
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 22px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 6.4vw;
+    margin-bottom: 6.7vw;
+  }
+}
+
+.zipTextBox {
+  display: inline-block;
+  height: 0px;
+  width: 180px;
+  background-color: #FFFFFF;
+
+  @media screen and (max-width: 767px) {
+    font-size: 4.3vw;
+    margin-bottom: 8vw;
+    line-height: 6.1vw;
+  }
+}
+
+.btn {
+  display: inline-block;
+  width: 158px;
+  height: 48px;
+  font-size: 18px;
+  font-weight: 900;
+  text-align: center;
+  margin-left: 20px;
+
+  @media screen and (max-width: 767px) {
+    width: 33.1vw;
+    height: 9.9vw;;
+    font-size: 3.5vw;
+  }
+
+}
+
+.privacyLink{
+  margin-top: 30px;
+  text-align: center;
+}
+
+.btnSubscribe {
+  composes: btn;
+  color: white;
+  background-color: #0093DF;
+  border: none;
+}

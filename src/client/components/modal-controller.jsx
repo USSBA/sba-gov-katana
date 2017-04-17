@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LeaveSbaModal from "./organisms/modals/leave-sba-modal/leave-sba-modal.jsx";
+import SbaNewsModal from "./molecules/news-modal.jsx";
 
 const modalTypes = {
-  "LEAVE_SBA": LeaveSbaModal
+  "LEAVE_SBA": LeaveSbaModal,
+  "SBA_NEWSLETTER": SbaNewsModal
 };
 
 const ModalController = ({modalType, modalProps}) => {

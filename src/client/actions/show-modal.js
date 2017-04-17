@@ -8,6 +8,16 @@ export function leaveSba(targetUrl) {
   };
 }
 
+export function showSbaNewsletter(userEmail) {
+  return {
+    type: "SHOW_NEWSLETTER_MODAL",
+    modalType: "SBA_NEWSLETTER",
+    modalProps: {
+      userEmail: userEmail
+    }
+  };
+}
+
 export function navigateLeaveSba() {
   return {
     type: "NAVIGATE_MODAL"
@@ -15,6 +25,12 @@ export function navigateLeaveSba() {
 }
 
 export function closeLeaveSba() {
+  return {
+    type: "CLOSE_MODAL"
+  };
+}
+
+export function closeSbaNewsletter() {
   return {
     type: "CLOSE_MODAL"
   };

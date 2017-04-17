@@ -1,6 +1,6 @@
 import axios from "axios";
 import queryString from "querystring";
-import types from './types.js';
+import types from "./types.js";
 
 
 function receiveContent(prop, type, query, data) {

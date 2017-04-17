@@ -1,5 +1,5 @@
 import axios from "axios";
-import types from './types.js';
+import types from "./types.js";
 
 function receiveContent(prop, type, id, data) {
   return {
@@ -14,7 +14,7 @@ function receiveContent(prop, type, id, data) {
 function fetchContent(prop, type, id) {
   return (dispatch) => {
     dispatch(receiveContent(prop, type, id));
-    return axios.get("/content/" + type + " /" + id + "/" + ".json").then((response) => {
+    return axios.get("/content/" + type + " /" + id + "/" + ".json").then((response) => { //eslint-disable-line no-useless-concat
       return response.data;
     }).then((data) => {
       return dispatch(receiveContent(prop, type, id, data));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import * as ModalActions from "../../../actions/show-modal.js";
 import * as ContentActions from "../../../actions/content.js";
 import clientConfig from "../../../services/client-config.js";
 
@@ -9,6 +9,8 @@ import styles from './mini-nav.scss';
 import cookie from 'react-cookie';
 
 export class MiniNav extends React.Component {
+  timerId = null;
+
   constructor(props) {
     super();
     this.state = {
@@ -16,6 +18,7 @@ export class MiniNav extends React.Component {
       translateIsExpanded: false,
       searchValue: "",
       userId: "",
+      userEmail:"",
       userLoggedOn: false
     };
   }
@@ -56,6 +59,18 @@ export class MiniNav extends React.Component {
 
   componentDidMount() {
     this.props.actions.fetchContentIfNeeded("userRoles", this.state.userId, {});
+    if(this.state.userLoggedOn){
+        this.props.actions.fetchContentIfNeeded("userEmail", this.state.userEmail, {});
+        this.timerId = setTimeout(()=>{
+          this.props.modalActions.showSbaNewsletter(this.state.userEmail);
+        }, 3000);
+    }
+  }
+
+  componentWillUnmount(){
+    if(this.timerId != null){
+      clearTimeout(timerId);
+    }
   }
 
   submitSearch(e) {
@@ -115,13 +130,15 @@ export class MiniNav extends React.Component {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    userRoles: reduxState.contentReducer["userRoles"]
+    userRoles: reduxState.contentReducer["userRoles"],
+    userEmail: reduxState.contentReducer["userEmail"]
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ContentActions, dispatch)
+    actions: bindActionCreators(ContentActions, dispatch),
+    modalActions: bindActionCreators(ModalActions, dispatch)
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav);

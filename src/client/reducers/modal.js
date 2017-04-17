@@ -4,6 +4,11 @@ const modalReducer = (state = {}, action) => {
       modalType: action.modalType,
       modalProps: action.modalProps
     };
+  } else if (action.type === "SHOW_NEWSLETTER_MODAL") {
+    return {
+      modalType: action.modalType,
+      modalProps: action.modalProps
+    };
   } else if (action.type === "NAVIGATE_MODAL") {
     document.location = state.modalProps.targetUrl;
     return {
