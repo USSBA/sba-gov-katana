@@ -30,7 +30,7 @@ linc:
     resendEmailJobEnabled: true
     resendEmailCron: '0 0 * * * *'
     sendToOcaJobEnabled: true
-    ocaSoapCron: '0 0 * * * *'
+    ocaSoapCron: '0 * * * * *'
     lookback: 86400
     numberOfSecondsForWhichEmailIsValid: 172800
 database:
