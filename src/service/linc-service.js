@@ -85,6 +85,7 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
       return result;
     })
     .catch((err) => {
+      console.log("EXCEPTION: Problem updating lenderMatchSoapResponse.");
       throw err;
     });
 }
@@ -110,6 +111,7 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
       });
     })
     .catch((err) => {
+      console.log("EXCEPTION: Problem deleting lenderMatchRegistration.");
       throw err;
     });
 }
@@ -122,6 +124,7 @@ function handleSoapResponse(soapResponse) {
     retVal = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
     console.log("SUCCESSSSSSSSSSSFUL : deleting EmailConfirmation, LenderMatchSoapResponse and LenderMatchRegistration." + " id = " + soapResponse.lenderMatchRegistrationId); //eslint-disable-line no-useless-concat
   } else { //eslint-disable-line no-else-return
+    console.log("EXCEPTION: Unknown Response Code received from OCA.");
     throw new Error("Unknown Response Code receieved from OCA.");
   }
   return retVal;

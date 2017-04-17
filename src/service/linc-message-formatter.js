@@ -189,6 +189,8 @@ function reqAmtRangeCd(loanAmount) { //eslint-disable-line complexity
   const loanAmt = loanAmount.replace(/\$|,/g, "");
 
   if (isNaN(loanAmt)) {
+    console.log("Loan Amount is not a number in reqAmtRangeCd.");
+    console.log(loanAmt);
     throw Error("Value is a not a number.");
   }
 

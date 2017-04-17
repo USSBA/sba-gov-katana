@@ -77,7 +77,9 @@ function sendLincSoapRequest(reqData) {
     };
     request(options, (error, response, body) => {
       if (error) {
-        throw error;
+        console.log("EXCEPTION: Request failure in sendLincSoapRequest! ");
+        console.log(error);
+      //throw error;
       } else {
         const resp = parseResponse(body);
         resp.lenderMatchRegistrationId = reqData.lenderMatchRegistration.id;
@@ -99,6 +101,7 @@ function getEndPointUrl(reqData) {
       reqData.endPointUrl = getEndPointFromXml(response.data); // eslint-disable-line no-param-reassign
       resolve(reqData);
     }).catch(function(error) {
+      console.log("EXCEPTION: Unable to get Endpoint from WSDL file!");
       throw error;
     });
   });
