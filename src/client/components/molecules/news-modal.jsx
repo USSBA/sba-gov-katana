@@ -6,8 +6,9 @@ import * as ModalActions from "../../actions/show-modal.js";
 import styles from "./news-modal.scss";
 import TextInput from "../atoms/text-input.jsx";
 import exitIcon from "../../../../public/assets/svg/close_button.svg";
+import {logEvent} from "../../services/analytics.js";
 import clientConfig from "../../services/config.js";
-import {getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
+import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
 import envelope from '../../../../public/assets/svg/envelope.svg';
 
@@ -35,7 +36,7 @@ class SbaNewsModal extends React.Component {
     validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
         let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
         if(validationState[name] === "error"){
-            logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
+            logEvent({"category": "Newsletter Modal", "action": "Error Event", "label": name});
         }
         return validationState;
     }
@@ -47,7 +48,7 @@ class SbaNewsModal extends React.Component {
             validStates = Object.assign(validStates, this.validateSingleField(getEmailValidationState, "userEmailAddress", defaultWhenNotSuccessful));
         }
         if (includes(fields, "userZipCode")) {
-            validStates = Object.assign(validStates, this.validateSingleField(getAlwaysValidValidationState, "userZipCode", defaultWhenNotSuccessful));
+            validStates = Object.assign(validStates, this.validateSingleField(getZipcodeValidationState, "userZipCode", defaultWhenNotSuccessful));
         }
         this.setState({validStates: validStates})
     }
@@ -74,7 +75,10 @@ class SbaNewsModal extends React.Component {
     }
 
     handleFocus(nameOrEvent) {
-
+        let name = nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
+            ? nameOrEvent.target.name
+            : nameOrEvent;
+        logEvent({"category": "Newsletter Modal", "action": "Focus Event", "label": name});
     }
 
     handleClose(e){
@@ -93,13 +97,15 @@ class SbaNewsModal extends React.Component {
                         <TextInput name="userEmailAddress" errorText={clientConfig.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
                         <div>
                             <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={clientConfig.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
-                            <button className={styles.btnSubscribe} type="submit" disabled={!(this.isValidForm())}>
-                                SUBSCRIBE
-                            </button>
+                            <div className={styles.btnContainer}>
+                                <button className={styles.btnSubscribe} type="submit" disabled={!(this.isValidForm())}>
+                                    SUBSCRIBE
+                                </button>
+                            </div>
                         </div>
-
+                        <p className={styles.privacyLink}><a  href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
                     </form>
-                    <p className={styles.privacyLink}><a  href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
+
                 </div>
             </ReactModal>
         );

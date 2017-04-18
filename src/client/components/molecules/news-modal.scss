@@ -75,8 +75,13 @@
   }
 }
 
-.btn {
+.btnContainer{
   display: inline-block;
+  margin-top: 5px;
+  vertical-align: top;
+}
+
+.btn {
   width: 158px;
   height: 48px;
   font-size: 18px;
@@ -95,11 +100,13 @@
 .privacyLink{
   margin-top: 30px;
   text-align: center;
+  vertical-align: top;
 }
 
 .btnSubscribe {
   composes: btn;
   color: white;
   background-color: #0093DF;
+  padding-top: 2.5px;
   border: none;
 }
