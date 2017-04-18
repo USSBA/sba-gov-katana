@@ -16,7 +16,7 @@ drupal:
     hostname: http://www.sba.gov/
     endpoint: rest
 drupal8:
-    hostname: http://www.content.sba.gov/
+    hostname: tanto
 server:
     port: 3000
 email:
