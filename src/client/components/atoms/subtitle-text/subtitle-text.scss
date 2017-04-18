@@ -1,0 +1,5 @@
+.SubtitleText {
+  color: #6A6A6A;
+  @include margin(0 0 $margin-20 0);
+  font-style: italic;
+}

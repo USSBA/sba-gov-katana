@@ -12,3 +12,8 @@ html,
 body {
   height: 100%;
 }
+
+body {
+	// @include grid-visual; 
+    @include grid-container;
+}

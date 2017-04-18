@@ -1,17 +1,149 @@
+@mixin theme($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+    }
+  }
+}
+
+@mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+      &:hover,
+      &:focus {
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+      }
+    }
+  }
+}
+
 // Breakpoints
-$medium-screen: 600px;
-$large-screen: 900px;
+$small-screen: 767px;
+$medium-screen: 768px;
+$large-screen: 1080px;
+
+// Grid
+$sba-grid-large: (
+  columns: 12,
+  gutter: 30px,
+  media: "(min-width: $large-screen)",
+);
+
+$sba-grid-medium: (
+  columns: 12,
+  gutter: 30px,
+  media: "(min-width: $medium-screen)",
+);
+
+$sba-grid-small: (
+  columns: 6,
+  gutter: 20px,
+  media: "(max-width: $small-screen)",
+);
 
 // Typography
-$base-font-family: $font-stack-system;
+$san-serif-font: "Source Sans Pro", $font-stack-helvetica;
+$serif-font: "Merriweather", $font-stack-georgia;
+$base-font-family: $san-serif-font;
 $heading-font-family: $base-font-family;
 
-// Font Sizes
-$base-font-size: 1em;
+// // Font Sizes
+// $base-font-size: 1em;
+
+// // Line height
+// $base-line-height: 1.5;
+// $heading-line-height: 1.2;
+
+
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+$breakpoints: (
+  small : 767px,
+  medium: 768px,
+  large : 1080px
+);
+
+$base-font-sizes: (
+  null: 16px,
+  medium: 18px,
+  large: 18px
+  );
+
+$extra-large-title-font-sizes:  (
+  null: 46px,
+  medium: 90px,
+  large: 120px
+  );
+
+$h1-font-sizes: (
+  null: 32px,
+  medium: 54px,
+  large: 72px
+  );
+
+$h2-font-sizes: (
+  null: 24px,
+  medium: 36px,
+  large: 54px
+  );
+
+$h3-font-sizes: (
+  null: 20px,
+  medium: 27px,
+  large: 36px
+  );
+
+$h4-font-sizes: (
+  null: 17.6px,
+  medium: 23px,
+  large: 27px
+  );
+
+$h5-font-sizes: (
+  null: 16px,
+  medium: 18px,
+  large: 24px
+  );
+
+$h6-font-sizes: (
+  null: 16px,
+  medium: 18px,
+  large: 18px
+  );
 
 // Line height
 $base-line-height: 1.5;
-$heading-line-height: 1.2;
+$heading-line-height: 1;
+
+
+
+$margin-50: 50px;
+$margin-30: 30px;
+$margin-20: 20px;
+$margin-10: 10px;
+
+
+
 
 // Other Sizes
 $base-border-radius: 3px;
@@ -25,9 +157,63 @@ $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
 
+
+// Colors
+$blue: #1565c0;
+$dark-gray: #333;
+$medium-gray: #999;
+$light-gray: #ddd;
+
 // Font Colors
-$base-font-color: $dark-gray;
-$action-color: $blue;
+$base-font-color: #333333;
+$action-color: #0B97DD;
+
+// Colors
+$sba-blue: #0B97DD;
+$sba-blue-darkest: #004265;
+$sba-blue-dark: #006BA2;
+$sba-blue-light: #9DDDFF;
+$sba-blue-lightest: #D6ECFC;
+
+$byzantine: #AB3EA0;
+$byzantine-darkest: #511D4C;
+$byzantine-dark: #7E2E76;
+$byzantine-light: #C661BB;
+$byzantine-lightest: #E7BEE3;
+
+$money-green: #609F00;
+$money-green-darkest: #1F3A00;
+$money-green-dark: #336200;
+$money-green-light: #8BC03B;
+$money-green-lightest: #DBEDC0;
+
+$cobalt-blue: #0F48AA;
+$cobalt-blue-darkest: #05183A;
+$cobalt-blue-dark: #0A3072;
+$cobalt-blue-light: #4E89EF;
+$cobalt-blue-lightest: #C8DAFA;
+
+$grey: #666666;
+$grey-light: #C4C4C4;
+$grey-lighter: #EBEBEB;
+$grey-lightest: #F7F7F7;
+
+$crimson: #E21234;
+
+// SBA
+$sba-blue: #0B97DD;
+$byzantine: #AB3EA0;
+$money-green: #609F00;
+$cobalt-blue: #0F48AA;
+$sba-blue-dark: #006BA2;
+$byzantine-dark: #7E2E76;
+$money-green-dark: #336200;
+$cobalt-blue-dark: #0A3072;
+
+// Font Colors
+$text-grey: #333333;
+$base-font-color: $text-grey;
+$action-color: $sba-blue;
 
 // Border
 $base-border-color: $light-gray;
