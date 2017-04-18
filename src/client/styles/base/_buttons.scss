@@ -6,11 +6,12 @@
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
-  // font-size: $base-font-size;
+  font-size: 1.4em;
   -webkit-font-smoothing: antialiased;
-  font-weight: 600;
+  font-weight: 900;
+  letter-spacing: .6;
   line-height: 1;
-  padding: $small-spacing $base-spacing;
+  padding: .75em 1.25em;
   text-align: center;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;
