@@ -3,6 +3,7 @@ import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
 
 import { fetchFormattedNode, fetchFormattedTaxonomyTerm } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
+import _ from "lodash";
 
 const fetchFunctions = {
   node: fetchFormattedNode,
@@ -13,7 +14,11 @@ function fetchContentById(req, res) {
   if (req.params && req.params.type && req.params.id) {
     fetchFunctions[req.params.type](req.params.id)
       .then(function(data) {
-        res.status(HttpStatus.OK).send(data);
+        if (data && !_.isEmpty(data)) {
+          res.status(HttpStatus.OK).send(data);
+        } else {
+          res.status(HttpStatus.NOT_FOUND).send();
+        }
       })
       .catch((error) => {
         console.error(error);
