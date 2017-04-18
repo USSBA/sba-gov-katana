@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './primary-button.scss';
 
- const PrimaryButton = (props) => 
+ const PrimaryButton = (props) =>
 	<div>
-		<button href="{ props.URL }">{ props.text }</button>
+		<button className={ styles.primaryButton } href="{ props.URL }">{ props.text }</button>
 	</div>;
 
 export default PrimaryButton;
@@ -20,7 +20,7 @@ export default PrimaryButton;
 // 	}
 // }
 
-//  const PrimaryButton = () => 
+//  const PrimaryButton = () =>
 // 	<div>
 // 		<a className={props.newtab ? styles.inverse : styles.normal  + " " + props.small ? styles.small : (props.large? styles.large: styles.)} href="{ props.URL }">{ props.text }</a>
 // 	</div>;

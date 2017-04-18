@@ -1,3 +1,26 @@
+@mixin theme($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+    }
+  }
+}
+
+@mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+      &:hover,
+      &:focus {
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+      }
+    }
+  }
+}
+
 // Breakpoints
 $small-screen: 767px;
 $medium-screen: 768px;
@@ -56,19 +79,19 @@ $heading-font-family: $base-font-family;
 
 $breakpoints: (
   small : 767px,
-  medium: 768px, 
+  medium: 768px,
   large : 1080px
 );
 
-$base-font-sizes: ( 
+$base-font-sizes: (
   null: 16px,
-  medium: 18px, 
+  medium: 18px,
   large: 18px
   );
 
 $extra-large-title-font-sizes:  (
   null: 46px,
-  medium: 90px, 
+  medium: 90px,
   large: 120px
   );
 
@@ -80,19 +103,19 @@ $h1-font-sizes: (
 
 $h2-font-sizes: (
   null: 24px,
-  medium: 36px, 
+  medium: 36px,
   large: 54px
   );
 
 $h3-font-sizes: (
   null: 20px,
-  medium: 27px, 
+  medium: 27px,
   large: 36px
   );
 
 $h4-font-sizes: (
   null: 17.6px,
-  medium: 23px, 
+  medium: 23px,
   large: 27px
   );
 
@@ -104,7 +127,7 @@ $h5-font-sizes: (
 
 $h6-font-sizes: (
   null: 16px,
-  medium: 18px, 
+  medium: 18px,
   large: 18px
   );
 

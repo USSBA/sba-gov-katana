@@ -129,7 +129,7 @@
 }
 
 // Grid
-.typography {
+.typography, .buttons {
     margin-bottom: $margin-30;
     @include grid-column(6, $sba-grid-small);
     @include grid-media( $sba-grid-medium) {

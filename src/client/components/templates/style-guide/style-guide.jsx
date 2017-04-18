@@ -1,20 +1,18 @@
 import React from 'react';
 import PrimaryButton from '../../atoms/primary-button/primary-button.jsx'
-import SecondaryButton from '../../atoms/primary-button/secondary-button.jsx'
-import InversePrimaryButton from '../../atoms/inverse-primary-button/primary-button.jsx'
-import InverseSecondaryButton from '../../atoms/inverse-secondary-button/primary-button.jsx'
+import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx'
+import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx'
+import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx'
 import styles from './style-guide.scss'
 
 
  const StyleGuide = () =>
 	<div>
-		<main className="sba-blue">
 			<Typography />
 			<ColorPalette />
 		</main>
 	</div>;
 
-export default StyleGuide;j
 
  const Typography = () =>
 	<div className={ styles.typography }>

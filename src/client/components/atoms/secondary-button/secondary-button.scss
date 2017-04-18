@@ -1,51 +1,10 @@
-#{$all-buttons} {
-  appearance: none;
-  background-color: $sba-blue;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: $base-font-family;
-  // font-size: $base-font-size;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
-  line-height: 1;
-  padding: $small-spacing $base-spacing;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color $base-duration $base-timing;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+@include theme(sba-blue, '.secondaryButton', #fff, $sba-blue,  null);
+@include theme(byzantine, '.secondaryButton', #fff, $byzantine,  null);
+@include theme(money-green, '.secondaryButton', #fff, $money-green,  null);
+@include theme(cobalt-blue, '.secondaryButton', #fff, $cobalt-blue,  null);
 
-  &:hover,
-  &:focus {
-    background-color: shade($action-color, 20%);
-    color: #fff;
-  }
+@include theme-hover(sba-blue, '.secondaryButton', $sba-blue, #fff, null);
+@include theme-hover(byzantine, '.secondaryButton', $byzantine, #fff, null);
+@include theme-hover(money-green, '.secondaryButton', $money-green, #fff, null);
+@include theme-hover(cobalt-blue, '.secondaryButton', $cobalt-blue, #fff, null);
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-
-    &:hover {
-      background-color: $action-color;
-    }
-  }
-}
-
-@mixin theme($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}){
-    #{$component}{
-        background-color: $background-color;
-        color: $text-color;
-        border-color: $border-color;
-    }
-  }
-}
-
-// @include theme(theme-name, component, background-color, text-color, border-color);
-@include theme(sba-blue, button, $sba-blue, red, null);
-@include theme(byzantine, button, $byzantine, blue, null);
-@include theme(money-green, button, $money-green, yellow, null);
-@include theme(cobalt-blue, button, $cobalt-blue, red, null);
