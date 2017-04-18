@@ -12,30 +12,59 @@ import styles from './style-guide.scss'
  const StyleGuide = () =>
 	<div>
 			<Typography />
+			<ButtonGroup/>
 			<ColorPalette />
 	</div>;
 
+export default StyleGuide;
 
  const Typography = () =>
 	<div className={ styles.typography }>
+		<ExtraLargeTitleText text="XL:h1 Source Sans Pro Black" />
 		<h1>h1 Source Sans Pro Black</h1>
 		<h2>h2 Source Sans Pro Black</h2>
 		<h3>h3 Source Sans Pro Black</h3>
 		<h4>h4 Source Sans Pro Bold</h4>
 		<h5>h5 Merriweather Regular</h5>
+		<SubtitleText text="h5:subtitle Merriweather Regular Italic" />
 		<h6>h6 Source Sans Pro Bold 18px</h6>
 		<p>Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim. Fusce mattis justo vitae congue varius. Suspendisse auctor dapibus ornare. Praesent venenatis lacus a sem interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur malesuada scelerisque massa varius volutpat.
 		</p>
 		<p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
-		<Links />
-		<br />
-		<br />
-		<br />
+		<CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor." />
 	</div>;
 
- const Links = () =>
- 	<div>
+
+ const Buttons = () =>
+ 	<div className={ styles.buttons }>
  		<p><a href="#">Link</a></p>
+ 		<br />
+ 		<PrimaryButton text="Primary" />
+		<br />
+		<SecondaryButton text="Secondary" />
+		<br />
+		<div className={ styles.background }>
+		<InversePrimaryButton text="Inverse Primary" />
+		<br />
+		<InverseSecondaryButton text="Inverse Secondary" />
+		</div>
+	</div>;
+
+ const ButtonGroup = () =>
+ 	<div>
+ 	<div className="sba-blue">
+ 		<Buttons className={ styles.buttons}/>
+ 		</div>
+<div className="byzantine">
+ 		<Buttons className={ styles.buttons}/>
+ 		</div>
+<div className="money-green">
+ 		<Buttons className={ styles.buttons}/>
+ 		</div>
+<div className="cobalt-blue">
+ 		<Buttons className={ styles.buttons}/>
+
+</div>
  	</div>;
 
  const ColorPalette = () =>
