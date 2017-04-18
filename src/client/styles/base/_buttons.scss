@@ -1,17 +1,17 @@
-#{$all-buttons} {
+#{$all-buttons}{
   appearance: none;
-  background-color: $action-color;
-  border: 0;
-  border-radius: $base-border-radius;
+  background-color: $sba-blue;
+  border: 2px solid;
   color: #fff;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
-  font-size: $base-font-size;
+  font-size: 1.4em;
   -webkit-font-smoothing: antialiased;
-  font-weight: 600;
+  font-weight: 900;
+  letter-spacing: .6;
   line-height: 1;
-  padding: $small-spacing $base-spacing;
+  padding: .75em 1.25em;
   text-align: center;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;
@@ -27,7 +27,8 @@
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    background-color: #C4C4C4;
+    color: #fff;
 
     &:hover {
       background-color: $action-color;
