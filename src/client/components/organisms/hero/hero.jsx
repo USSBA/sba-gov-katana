@@ -5,10 +5,10 @@ import HeroImage from './hero.jpg'
 
  const Hero = (props) =>
   <div className={ styles.hero }>
+  <img src={ HeroImage }/>
   <div className={ styles.callout }>
   <Callout title={ props.title } message={ props.message } button={ props.button }/>
   </div>
-  <img src={ HeroImage }/>
   </div>;
 
 export default Hero;

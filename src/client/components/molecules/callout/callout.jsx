@@ -4,7 +4,7 @@ import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-pri
 
  const Callout = (props) =>
   <div className={styles.callout}>
-  <h3>{ props.title }</h3>
+  <h2>{ props.title }</h2>
   <p>{ props.message }</p>
   <InversePrimaryButton text={ props.button } />
   </div>;
