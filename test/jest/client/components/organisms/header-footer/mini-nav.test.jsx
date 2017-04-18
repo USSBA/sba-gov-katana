@@ -4,7 +4,7 @@
 import React from 'react';
 /*eslint-enable no-unused-vars*/
 import ReactSelect from 'react-select';
-import {MiniNav} from 'client/components/common/mini-nav.jsx';
+import {MiniNav} from 'client/components/organisms/header-footer/mini-nav.jsx';
 import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 import _ from 'lodash';

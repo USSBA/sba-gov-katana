@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as LocationChangeActions from '../../actions/location-change.js';
+import * as LocationChangeActions from '../../../../actions/location-change.js';
 
 export class Navigation extends React.Component {
   handleClick() {

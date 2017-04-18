@@ -68,13 +68,17 @@ function formatParagraph(paragraph) {
 }
 
 function formatTaxonomyTerm(data) {
-  const name = extractValue(data.name);
-  const vocabulary = extractTargetId(data.vid);
-  const fields = extractFieldsByFieldNamePrefix(data, fieldPrefix);
-  return _.merge(fields, {
-    name: name,
-    vocabulary: _.camelCase(vocabulary)
-  });
+  if (data) {
+    const name = extractValue(data.name);
+    const vocabulary = extractTargetId(data.vid);
+    const fields = extractFieldsByFieldNamePrefix(data, fieldPrefix);
+    return _.merge(fields, {
+      name: name,
+      vocabulary: _.camelCase(vocabulary)
+    });
+  }
+  return {};
+
 }
 
 function fetchFormattedParagraph(paragraphId) {
@@ -88,22 +92,26 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
 }
 
 function formatNode(data) {
-  const paragraphs = data.field_paragraphs || [];
-  const taxonomy = data.field_site_location;
-  const title = extractValue(data.title);
+  if (data) {
+    const paragraphs = data.field_paragraphs || [];
+    const taxonomy = data.field_site_location;
+    const title = extractValue(data.title);
 
-  const paragraphIds = _.map(paragraphs, "target_id");
-  const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
+    const paragraphIds = _.map(paragraphs, "target_id");
+    const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
 
-  const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
+    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
 
-  return Promise.all([paragraphDataPromises, taxonomyPromise]).spread((paragraphData, taxonomyData) => {
-    return {
-      title: title,
-      paragraphs: _.compact(paragraphData),
-      taxonomy: taxonomyData
-    };
-  });
+    return Promise.all([paragraphDataPromises, taxonomyPromise]).spread((paragraphData, taxonomyData) => {
+      return {
+        title: title,
+        paragraphs: _.compact(paragraphData),
+        taxonomy: taxonomyData
+      };
+    });
+  }
+  return {};
+
 }
 
 function fetchFormattedNode(nodeId) {

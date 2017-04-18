@@ -3,7 +3,7 @@
 /*eslint-disable no-unused-vars*/
 import React from 'react';
 /*eslint-enable no-unused-vars*/
-import {Navigation} from 'client/components/landing-page/navigation.jsx';
+import {Navigation} from 'client/components/organisms/lender-match/landing-page/navigation.jsx';
 import renderer from 'react-test-renderer';
 import {shallow} from 'enzyme';
 

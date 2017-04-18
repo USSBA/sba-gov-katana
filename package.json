@@ -13,7 +13,8 @@
     "test-mocha": "mocha --compilers js:babel-core/register  --require ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
     "lint": "eslint src --fix",
     "format": "esformatter -i 'src/**/*.js'",
-    "clean": "rm -rf dist && rm -rf public/build"
+    "clean": "rm -rf dist && rm -rf public/build",
+    "precommit": "npm run lint && npm run format && npm run test"
   },
   "repository": {
     "url": "git+https://github.com/sba-ds/sba-gov.git",
