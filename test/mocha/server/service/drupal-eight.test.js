@@ -84,4 +84,9 @@ describe("Drupal 8 Service", function() {
     setupStub(nodeBase, null, secondParagraphBase, thirdParagraphBase, null);
     runTest(done, output);
   })
+
+  it("should return nothing", function(done) {
+    setupStub(null, null, null, null, null);
+    runTest(done, {});
+  })
 })

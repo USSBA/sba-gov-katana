@@ -17,7 +17,7 @@ function fetchContentById(req, res) {
       })
       .catch((error) => {
         console.error(error);
-        res.status(error.response.status).send("Error retrieving content");
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
       });
   } else {
     res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type or id");
@@ -32,7 +32,7 @@ function fetchBlogs(req, res) {
     })
     .catch((error) => {
       console.error(error);
-      res.status(error.response.status).send("Error retrieving content");
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
     });
 }
 
@@ -44,7 +44,7 @@ function fetchFrontPageSlides(req, res) {
     })
     .catch((error) => {
       console.error(error);
-      res.status(error.response.status).send("Error retrieving content");
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
     });
 }
 
@@ -56,7 +56,7 @@ function fetchDisaster(req, res) {
     })
     .catch((error) => {
       console.error(error);
-      res.status(error.response.status).send("Error retrieving content");
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
     });
 }
 
