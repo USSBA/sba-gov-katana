@@ -11,11 +11,10 @@
     background-color: white;
     position: relative;
     width: 665px;
-    height: 489px;
     top: 50%;
     transform: translateY(-50%);
     margin: auto;
-    padding: 30px;
+    padding: 40px 40px 30px;
     font-family: "Source Sans Pro";
 
     @media screen and (max-width: 767px) {
@@ -59,40 +58,26 @@
 }
 
 .title {
-    margin-bottom: 30px;
-    font-size: 36px;
-    font-weight: 900;
+    margin-bottom: 22px;
     text-align: center;
 
-    @media screen and (max-width: 767px) {
-        font-size: 6.4vw;
-        margin-bottom: 6.7vw;
-    }
 }
 
 .divider {
     width: 160px;
     border: 2px solid #0B97DD;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 
     @media screen and (max-width: 767px) {
-        width: 42.7vw;
-        margin-bottom: 8vw;
+        width: 100px;
     }
 }
 
 .text {
-    font-size: 18px;
     text-align: center;
     margin-bottom: 30px;
-    line-height: 23px;
 
-    @media screen and (max-width: 767px) {
-        font-size: 4.3vw;
-        margin-bottom: 8vw;
-        line-height: 6.1vw;
-    }
 }
 
 
@@ -103,16 +88,13 @@
 
 .btn {
     width: 124px;
-    height: 37px;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 12px 0 12px;
 
     @media screen and (max-width: 767px) {
-        width: 33.1vw;
-        height: 9.9vw;;
-        font-size: 3.5vw;
+        width: 100%;
     }
-
 }
 
 .btnCancel {
@@ -121,9 +103,13 @@
     background-color: white;
     border: 2px solid #666666;
     margin-right: 30px;
-
+    &:hover,
+    &:focus {
+    background-color: #666666;
+    color: #fff;
+  }
     @media screen and (max-width: 767px) {
-        margin-right: 6vw;
+        margin-right: 0;
     }
 }
 
@@ -132,4 +118,8 @@
     color: white;
     background-color: #0093DF;
     border: none;
+    position: relative;
+        @media screen and (max-width: 767px) {
+        margin-top: 20px;
+    }
 }

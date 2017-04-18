@@ -1,0 +1,23 @@
+.hero {
+  @include grid-column(6, $sba-grid-small);
+  @include grid-media( $sba-grid-medium) {
+  @include grid-column(12);
+  display: flex;
+  align-items:center;
+  }
+}
+
+img {
+  @include grid-column(6, $sba-grid-small);
+  @include grid-media( $sba-grid-medium) {
+  @include grid-column(12);
+  }
+}
+
+.callout {
+  @include grid-column(5, $sba-grid-small);
+  @include grid-media( $sba-grid-medium) {
+  @include grid-column(5);
+  @include grid-shift(1);
+  }
+}

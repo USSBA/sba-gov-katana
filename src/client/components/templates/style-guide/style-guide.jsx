@@ -6,11 +6,18 @@ import PrimaryButton from '../../atoms/primary-button/primary-button.jsx'
 import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx'
 import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx'
 import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx'
+import SbaModal from '../../molecules/modal.jsx'
+import Callout from '../../molecules/callout/callout.jsx'
+import Hero from '../../organisms/hero/hero.jsx'
 import styles from './style-guide.scss'
 
 
  const StyleGuide = () =>
 	<div>
+			<SbaModal />
+			<div className="byzantine">
+			<Hero title="Need help? Get free business counseling." message="Get advice from partner organizations like SCORE mentors, Small Business Development Centers, and Women’s Business Centers." button="Find Counselors" />
+			</div>
 			<Typography />
 			<ButtonGroup/>
 			<ColorPalette />

@@ -1,0 +1,10 @@
+@include theme(sba-blue, '.callout', $sba-blue, #fff, #fff);
+@include theme(byzantine, '.callout', $byzantine, #fff, #fff);
+@include theme(money-green, '.callout', $money-green, #fff, #fff);
+@include theme(cobalt-blue, '.callout', $cobalt-blue, #fff, #fff);
+
+.callout {
+    background-image: url('./corner-graphic.png');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
