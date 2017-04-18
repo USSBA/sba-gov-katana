@@ -33,6 +33,17 @@
     color: #000;
 }
 
+// Buttons
+.background {
+    margin: 0 auto 25px;
+    padding: 25px 0 25px 25px;
+}
+
+@include theme(sba-blue, '.background', $sba-blue, null, null);
+@include theme(byzantine, '.background', $byzantine, null, null);
+@include theme(money-green, '.background', $money-green, null, null);
+@include theme(cobalt-blue, '.background', $cobalt-blue, null, null);
+
 // SBA Blues
 .sbablue {
     background: $sba-blue;
@@ -129,7 +140,7 @@
 }
 
 // Grid
-.typography, .buttons {
+.typography {
     margin-bottom: $margin-30;
     @include grid-column(6, $sba-grid-small);
     @include grid-media( $sba-grid-medium) {
@@ -137,7 +148,7 @@
   }
 }
 
-.column {
+.column, .buttons {
     @include grid-column(6, $sba-grid-small);
     @include grid-media( $sba-grid-medium) {
     @include grid-column(3);

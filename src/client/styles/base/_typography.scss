@@ -52,16 +52,6 @@ h6 {
   @include margin(0 0 $margin-10 0);
 }
 
-.XL {
-  @include font-size($extra-large-title-font-sizes);
-}
-
-.subtitle {
-  color: #6A6A6A;
-  @include margin(0 0 $margin-20 0);
-  font-style: italic;
-}
-
 a {
   color: $sba-blue;
   text-decoration: underline;
@@ -73,6 +63,18 @@ a {
     color: shade($action-color, 25%);
   }
 }
+
+@include theme(sba-blue, a, #fff, $sba-blue-dark, #fff);
+@include theme(byzantine, a, #fff, $byzantine, #fff);
+@include theme(money-green, a, #fff, $money-green-dark, #fff);
+@include theme(cobalt-blue, a, #fff, $cobalt-blue, #fff);
+
+@include theme-hover(sba-blue, a, null, $sba-blue-darkest, null);
+@include theme-hover(byzantine, a, null, $byzantine-dark, null);
+@include theme-hover(money-green, a, null, $money-green-darkest, null);
+@include theme-hover(cobalt-blue, a, null, $cobalt-blue-dark, null);
+
+
 
 hr {
   border-bottom: $base-border;
