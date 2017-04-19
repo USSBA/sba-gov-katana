@@ -1,39 +1,39 @@
-$hero-grid-medium: (
-  columns: 12,
-  gutter: 0px,
-  media: "(min-width: $medium-screen)",
-);
+// $hero-grid-medium: (
+//   columns: 12,
+//   gutter: 0px,
+//   media: "(min-width: $medium-screen)",
+// );
 
-$hero-grid-small: (
-  columns: 6,
-  gutter: 40px,
-  media: "(max-width: $small-screen)",
-);
+// $hero-grid-small: (
+//   columns: 6,
+//   gutter: 40px,
+//   media: "(max-width: $small-screen)",
+// );
 
 
-.hero {
-  @include grid-column(6, $sba-grid-small);
-  @include grid-collapse;
-  @include grid-media( $sba-grid-medium) {
-  @include grid-column(12);
-  display: flex;
-  align-items:center;
-  }
-}
+// .hero {
+//   @include grid-column(6, $sba-grid-small);
+//   @include grid-collapse;
+//   @include grid-media( $sba-grid-medium) {
+//   @include grid-column(12);
+//   display: flex;
+//   align-items:center;
+//   }
+// }
 
-img {
-  @include grid-column(6, $sba-grid-small);
-  @include grid-collapse;
-  @include grid-media( $sba-grid-medium) {
-  @include grid-column(10);
-  @include grid-push(2)
-  }
-}
+// img {
+//   @include grid-column(6, $sba-grid-small);
+//   @include grid-collapse;
+//   @include grid-media( $sba-grid-medium) {
+//   @include grid-column(10);
+//   @include grid-push(2)
+//   }
+// }
 
-.callout {
-  @include grid-column(6, $hero-grid-small);
-  @include grid-media( $hero-grid-medium) {
-  @include grid-column(5);
-  @include grid-shift(-12)
-  }
-}
+// .callout {
+//   @include grid-column(6, $hero-grid-small);
+//   @include grid-media( $hero-grid-medium) {
+//   @include grid-column(5);
+//   @include grid-shift(-12)
+//   }
+// }

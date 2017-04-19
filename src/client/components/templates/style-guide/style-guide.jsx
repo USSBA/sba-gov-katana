@@ -14,10 +14,6 @@ import styles from './style-guide.scss'
 
  const StyleGuide = () =>
 	<div>
-			<SbaModal />
-			<div className="byzantine">
-			<Hero title="Need help? Get free business counseling." message="Get advice from partner organizations like SCORE mentors, Small Business Development Centers, and Women’s Business Centers." button="Find Counselors" />
-			</div>
 			<Typography />
 			<ButtonGroup/>
 			<ColorPalette />
@@ -51,9 +47,9 @@ export default StyleGuide;
 		<SecondaryButton text="Secondary" />
 		<br />
 		<div className={ styles.background }>
-		<InversePrimaryButton text="Inverse Primary" />
+		<InversePrimaryButton text="Inv Primary" />
 		<br />
-		<InverseSecondaryButton text="Inverse Secondary" />
+		<InverseSecondaryButton text="Inv Secondary" />
 		</div>
 	</div>;
 
