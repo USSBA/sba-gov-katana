@@ -1,15 +1,16 @@
 import React from 'react';
-import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-title-text.jsx'
-import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx'
-import CaptionText from '../../atoms/caption-text/caption-text.jsx'
-import PrimaryButton from '../../atoms/primary-button/primary-button.jsx'
-import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx'
-import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx'
-import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx'
-import SbaModal from '../../molecules/modal.jsx'
-import Callout from '../../molecules/callout/callout.jsx'
-import Hero from '../../organisms/hero/hero.jsx'
-import styles from './style-guide.scss'
+import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-title-text.jsx';
+import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx';
+import CaptionText from '../../atoms/caption-text/caption-text.jsx';
+import PrimaryButton from '../../atoms/primary-button/primary-button.jsx';
+import PrimaryButtonSmall from '../../atoms/primary-button-small/primary-button-small.jsx';
+import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx';
+import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx';
+import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx';
+import SbaModal from '../../molecules/modal.jsx';
+import Callout from '../../molecules/callout/callout.jsx';
+import Hero from '../../organisms/hero/hero.jsx';
+import styles from './style-guide.scss';
 
 
  const StyleGuide = () =>
