@@ -12,9 +12,10 @@ import constants from "../../services/constants.js";
 import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
-import envelope from '../../../../public/assets/svg/envelope.svg';
+import envelopeIcon from '../../../../public/assets/svg/envelope.svg';
 
 class SbaNewsModal extends React.Component {
+    timerId = null;
 
     constructor(props) {
         super();
@@ -22,6 +23,7 @@ class SbaNewsModal extends React.Component {
             userEmailAddress: "",
             userZipCode:  "",
             modalIsOpen: config.govdelivery,
+            displayForm: true,
             validStates: {
                 userEmailAddress: null,
                 userZipCode: null
@@ -32,6 +34,7 @@ class SbaNewsModal extends React.Component {
     componentDidMount() {
         this.validateFields(["userEmailAddress", "userZipCode"]);
         window.scrollTo(0, 0);
+        console.log(config.govdelivery);
     }
 
 
@@ -65,6 +68,17 @@ class SbaNewsModal extends React.Component {
             userEmailAddress: this.state.userEmailAddress,
             userZipCode: this.state.userZipCode
         });
+
+        this.setState({displayForm: false});
+        this.timerId = setTimeout(()=>{
+            this.setState({modalIsOpen: false});
+        }, 5000);
+    }
+
+    componentWillUnmount(){
+        if(this.timerId != null){
+            clearTimeout(timerId);
+        }
     }
 
     handleChange(e) {
@@ -93,11 +107,11 @@ class SbaNewsModal extends React.Component {
         return (
             <ReactModal isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} contentLabel="Modal">
                 <div>
-                    <h2 className={styles.title}>Get business advice and invitations to local business events.</h2>
+                    <h2 className={this.state.displayForm ? styles.title : styles.hideForm}>Get business advice and invitations to local business events.</h2>
                     <a onClick={this.handleClose.bind(this)}><img className={styles.exitIcon} src={exitIcon}/></a>
                 </div>
-                <div>
-                    <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+                <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
+                    <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
                         <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
                         <div>
                             <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
@@ -109,7 +123,10 @@ class SbaNewsModal extends React.Component {
                         </div>
                         <p className={styles.privacyLink}><a  href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
                     </form>
-
+                </div>
+                <div className={this.state.displayForm ? styles.hideForm : styles.showForm}>
+                    <img className={styles.envelopeIcon} src={envelopeIcon}/>
+                    <p className={styles.byeMsg}>Thanks for subscribing!</p>
                 </div>
             </ReactModal>
         );

@@ -1,9 +1,7 @@
 import axios from "axios";
 import queryString from "querystring";
 import constants from "../services/constants.js";
-import {
-  logEvent
-} from "../services/analytics.js";
+import { logEvent } from "../services/analytics.js";
 
 export function resendConfirmationEmail(emailAddress) {
   return function(dispatch) {
@@ -13,8 +11,8 @@ export function resendConfirmationEmail(emailAddress) {
       label: ""
     });
     axios.post(constants.routes.confirmationEmail, {
-        emailAddress: emailAddress
-      })
+      emailAddress: emailAddress
+    })
       .then((response) => {
         dispatch({
           type: "RESEND_CONFIRMATION_EMAIL_SUCCESS",

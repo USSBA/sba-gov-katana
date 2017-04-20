@@ -11,27 +11,12 @@
   background-color: #D6ECFC;
   position: relative;
   width: 400px;
-  height: 300px;
+  height: auto;
   top: 50%;
-  transform: translate(80%,5%);
+  transform: translate(5%,-50%);
   margin: auto;
   padding: 20px;
   font-family: "Source Sans Pro";
-
-  @media screen and (max-width: 767px) {
-    width: 90vw;
-    position: absolute;
-    height: auto;
-    margin: auto;
-    padding: 8vw;
-    left: 5%;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
 }
 
 .exitIcon {
@@ -45,6 +30,37 @@
   border-radius: 1px;
   cursor: pointer;
 }
+.removeForm{
+  display: none;
+}
+
+.hideForm{
+  visibility: hidden;
+
+}
+.showForm{
+  visibility: visible;
+}
+
+.envelopeIcon{
+  position: absolute;
+  height: 33px;
+  width: 54px;
+  top: 120px;
+  right: 170px;
+}
+
+.byeMsg{
+  position: absolute;
+  height: 26px;
+  width: 268px;
+  top: 160px;
+  right: 50px;
+  color: #333333;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 26px;
+}
 
 .title {
   height: 44px;
@@ -55,11 +71,6 @@
   font-size: 18px;
   font-weight: bold;
   line-height: 22px;
-
-  @media screen and (max-width: 767px) {
-    font-size: 6.4vw;
-    margin-bottom: 6.7vw;
-  }
 }
 
 .zipTextBox {
@@ -67,12 +78,6 @@
   height: 0px;
   width: 180px;
   background-color: #FFFFFF;
-
-  @media screen and (max-width: 767px) {
-    font-size: 4.3vw;
-    margin-bottom: 8vw;
-    line-height: 6.1vw;
-  }
 }
 
 .btnContainer{
@@ -88,13 +93,6 @@
   font-weight: 900;
   text-align: center;
   margin-left: 20px;
-
-  @media screen and (max-width: 767px) {
-    width: 33.1vw;
-    height: 9.9vw;;
-    font-size: 3.5vw;
-  }
-
 }
 
 .privacyLink{
