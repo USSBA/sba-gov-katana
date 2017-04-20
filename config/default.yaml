@@ -6,6 +6,8 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
+govdelivery:
+    popupEnabled: true
 newrelic:
     enabled: false
 googleAnalytics:

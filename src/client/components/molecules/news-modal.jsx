@@ -20,7 +20,7 @@ class SbaNewsModal extends React.Component {
         this.state = {
             userEmailAddress: "",
             userZipCode:  "",
-            modalIsOpen: true,
+            modalIsOpen: true && clientConfig.govdelivery,
             validStates: {
                 userEmailAddress: null,
                 userZipCode: null
