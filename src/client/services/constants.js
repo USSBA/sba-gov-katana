@@ -1,4 +1,4 @@
-const clientConfig = {
+const constants = {
   routes: {
     confirmationEmail: "/linc/resend",
     submitForm: "/linc/matchFormData"
@@ -20,4 +20,4 @@ const clientConfig = {
   }
 };
 
-export default clientConfig;
+export default constants;

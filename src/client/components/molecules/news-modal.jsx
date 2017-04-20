@@ -8,7 +8,7 @@ import styles from "./news-modal.scss";
 import TextInput from "../atoms/text-input.jsx";
 import exitIcon from "../../../../public/assets/svg/close_button.svg";
 import {logEvent} from "../../services/analytics.js";
-import clientConfig from "../../services/config.js";
+import constants from "../../services/constants.js";
 import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
@@ -98,9 +98,9 @@ class SbaNewsModal extends React.Component {
                 </div>
                 <div>
                     <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-                        <TextInput name="userEmailAddress" errorText={clientConfig.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+                        <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
                         <div>
-                            <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={clientConfig.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
+                            <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
                             <div className={styles.btnContainer}>
                                 <button className={styles.btnSubscribe} type="submit" disabled={!(this.isValidForm())}>
                                     SUBSCRIBE

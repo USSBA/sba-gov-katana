@@ -7,7 +7,7 @@ import {includes, map} from "lodash";
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/location-change.js';
 import {getSelectBoxValidationState, containsErrorOrNull} from '../../../../services/page-validator-helpers.js';
-import clientConfig from "../../../../services/config.js";
+import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
 
@@ -142,8 +142,8 @@ class IndustryInfoForm extends React.Component {
     return (
       <div>
         <form ref={(form) => this.industryInfoForm = form} onSubmit={(e) => this.handleSubmit(e)}>
-          <MultiSelect errorText={clientConfig.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3} onFocus={this.handleFocus.bind(this)}></MultiSelect>
-          <RadioButtonGroup errorText={clientConfig.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <MultiSelect errorText={constants.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3} onFocus={this.handleFocus.bind(this)}></MultiSelect>
+          <RadioButtonGroup errorText={constants.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>
