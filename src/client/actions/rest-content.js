@@ -1,34 +1,34 @@
 import axios from "axios";
 import types from "./types.js";
 
-function receiveContent(prop, type, id, data) {
+function receiveContent(type, id, data) {
   return {
     type: types.restContent,
-    contentType: prop,
+    contentType: type,
     id,
     data: data,
     receivedAt: Date.now()
   };
 }
 
-function fetchContent(prop, type, id) {
+function fetchContent(type, id) {
   return (dispatch) => {
-    dispatch(receiveContent(prop, type, id));
-    return axios.get("/content/" + type + " /" + id + ".json").then((response) => {
+    dispatch(receiveContent(type, id));
+    return axios.get("/content/" + type + "/" + id + ".json").then((response) => {
       return response.data;
     }).then((data) => {
-      return dispatch(receiveContent(prop, type, id, data));
+      return dispatch(receiveContent(type, id, data));
     });
   };
 }
 
-function shouldFetchContent(state, prop, type, id) {
+function shouldFetchContent(state, type, id) {
   return id !== null; // TODO check current state
 }
-export function fetchContentIfNeeded(prop, type, id) {
+export function fetchContentIfNeeded(type, id) {
   return (dispatch, getState) => {
-    if (shouldFetchContent(getState(), prop, type, id)) {
-      return dispatch(fetchContent(prop, type, id));
+    if (shouldFetchContent(getState(), type, id)) {
+      return dispatch(fetchContent(type, id));
     }
     return Promise.resolve();
   };

@@ -1,8 +1,8 @@
 import _ from "lodash";
 import sinon from "sinon";
 
-import * as drupaleight from "../../../../src/service/drupal-eight.js";
-import * as rest from "../../../../src/models/dao/drupal8-rest.js";
+import * as drupalEightDataService from "../../../../src/service/drupal-eight.js";
+import * as drupalEightRestServiceClient from "../../../../src/models/dao/drupal8-rest.js";
 
 import outputBase from "./data/output.json";
 import nodeBase from "./data/node.json";
@@ -16,15 +16,15 @@ describe("Drupal 8 Service", function() {
   let fetchById;
 
   function setupStub(node, firstParagraph, secondParagraph, thirdParagraph, taxonomy) {
-    fetchById.withArgs(drupaleight.nodeEndpoint, 1).returns(Promise.resolve(node));
-    fetchById.withArgs(drupaleight.paragraphEndpoint, 1).returns(Promise.resolve(firstParagraph));
-    fetchById.withArgs(drupaleight.paragraphEndpoint, 2).returns(Promise.resolve(secondParagraph));
-    fetchById.withArgs(drupaleight.paragraphEndpoint, 3).returns(Promise.resolve(thirdParagraph));
-    fetchById.withArgs(drupaleight.taxonomyEndpoint, 1).returns(Promise.resolve(taxonomy));
+    fetchById.withArgs(drupalEightDataService.nodeEndpoint, 1).returns(Promise.resolve(node));
+    fetchById.withArgs(drupalEightDataService.paragraphEndpoint, 1).returns(Promise.resolve(firstParagraph));
+    fetchById.withArgs(drupalEightDataService.paragraphEndpoint, 2).returns(Promise.resolve(secondParagraph));
+    fetchById.withArgs(drupalEightDataService.paragraphEndpoint, 3).returns(Promise.resolve(thirdParagraph));
+    fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, 1).returns(Promise.resolve(taxonomy));
   }
 
   beforeEach(() => {
-    fetchById = sinon.stub(rest, "fetchById");
+    fetchById = sinon.stub(drupalEightRestServiceClient, "fetchById");
   })
 
   afterEach(() => {
@@ -34,7 +34,7 @@ describe("Drupal 8 Service", function() {
 
   function runTest(done, output, extraAssertions) {
     let myExtraAssertions = extraAssertions || _.identity();
-    return drupaleight.fetchFormattedNode(1)
+    return drupalEightDataService.fetchFormattedNode(1)
       .then((result) => {
         result.should.deep.equal(output);
         return result;
@@ -85,7 +85,7 @@ describe("Drupal 8 Service", function() {
     runTest(done, output);
   })
 
-  it("should return nothing", function(done) {
+  it("should return nothing when the requested node does not exist", function(done) {
     setupStub(null, null, null, null, null);
     runTest(done, {});
   })

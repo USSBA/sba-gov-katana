@@ -2,7 +2,7 @@ import React from "react";
 import Modal from 'react-modal'
 import styles from './modal.scss'
 import sbaLogo from '../../../../public/assets/images/logo.png';
-import exitIcon from '../../../../public/assets/svg/exit-modal-close.svg';
+import exitIcon from '../../../../public/assets/svg/grey-close-icon.svg';
 
 class SbaModal extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class SbaModal extends React.Component {
       <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
         {logo}
         <a onClick={this.props.onClose}><img className={styles.exitIcon} src={exitIcon}/></a>
-        <h2 className={styles.title}>{this.props.title}</h2>
+        <h3 className={styles.title}>{this.props.title}</h3>
         <div className={styles.divider}></div>
         <p className={styles.text}>{this.props.text}</p>
         {this.props.children}

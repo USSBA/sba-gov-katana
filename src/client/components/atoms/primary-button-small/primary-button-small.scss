@@ -1,0 +1,13 @@
+@include theme(sba-blue, '.primaryButtonSmall', $sba-blue, #fff, null);
+@include theme(byzantine, '.primaryButtonSmall', $byzantine, #fff, null);
+@include theme(money-green, '.primaryButtonSmall', $money-green, #fff, null);
+@include theme(cobalt-blue, '.primaryButtonSmall', $cobalt-blue, #fff, null);
+
+@include theme-hover(sba-blue, '.primaryButtonSmall', $sba-blue-dark, #fff, null);
+@include theme-hover(byzantine, '.primaryButtonSmall', $byzantine-dark, #fff, null);
+@include theme-hover(money-green, '.primaryButtonSmall', $money-green-dark, #fff, null);
+@include theme-hover(cobalt-blue, '.primaryButtonSmall', $cobalt-blue-dark, #fff, null);
+
+.primaryButtonSmall {
+  font-size: 13px;
+}

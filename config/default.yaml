@@ -27,9 +27,9 @@ email:
     username: placeholder
 linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
-    resendEmailJobEnabled: true
+    resendEmailJobEnabled: false
     resendEmailCron: '0 0 * * * *'
-    sendToOcaJobEnabled: true
+    sendToOcaJobEnabled: false
     ocaSoapCron: '0 * * * * *'
     lookback: 86400
     numberOfSecondsForWhichEmailIsValid: 172800

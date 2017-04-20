@@ -1,8 +1,9 @@
+import "react-hot-loader/patch";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import routes from './routes.jsx';
 import { AppContainer } from 'react-hot-loader';
-import App from "./main.jsx";
+import App from "./app.jsx";
 let root = document.getElementById('root');
 
 ReactDOM.render((
