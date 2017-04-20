@@ -1,4 +1,11 @@
 import React from 'react'
+import TextSection from "../../molecules/text-section/text-section.jsx";
+
+const ParagraphTypeToBeImplemented = ({ data}) => {
+  return (
+    <p>{JSON.stringify(data)}</p>
+  );
+}
 
 class BusinessGuideArticle extends React.Component {
 
@@ -7,9 +14,15 @@ class BusinessGuideArticle extends React.Component {
   makeParagraphs(paragraphData) {
     let paragraphs = [];
     paragraphs = paragraphData.map(function(item, i) {
-      return (
-        <p key={i}>{JSON.stringify(item)}</p>
-      );
+      if (item && item.type) {
+        if (item.type === "textSection") {
+            return (<TextSection key={i} text={item.text}/>);
+        } else {
+          return (<ParagraphTypeToBeImplemented key={i} data={item}/>);
+        }
+      } else {
+        return (<ParagraphTypeToBeImplemented key={i} data={item}/>);
+      }
     });
     return paragraphs;
   }
