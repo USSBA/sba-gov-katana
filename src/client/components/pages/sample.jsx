@@ -8,7 +8,7 @@ import _ from 'lodash';
 class SamplePage extends React.Component {
 
   componentWillMount() {
-      this.props.actions.fetchContentIfNeeded("node", 5);
+      this.props.actions.fetchContentIfNeeded("node", this.props.params.id);
   }
 
   render() {
@@ -20,8 +20,8 @@ class SamplePage extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState) {
-  return {data: _.get(reduxState, "restContent.node[5]")};
+function mapReduxStateToProps(reduxState, ownProps) {
+  return {data: _.get(reduxState, "restContent.node["+ownProps.params.id+"]")};
 }
 
 function mapDispatchToProps(dispatch) {
