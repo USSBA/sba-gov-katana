@@ -1,23 +1,20 @@
 import React from 'react';
-import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-title-text.jsx'
-import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx'
-import CaptionText from '../../atoms/caption-text/caption-text.jsx'
-import PrimaryButton from '../../atoms/primary-button/primary-button.jsx'
-import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx'
-import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx'
-import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx'
-import SbaModal from '../../molecules/modal.jsx'
-import Callout from '../../molecules/callout/callout.jsx'
-import Hero from '../../organisms/hero/hero.jsx'
-import styles from './style-guide.scss'
+import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-title-text.jsx';
+import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx';
+import CaptionText from '../../atoms/caption-text/caption-text.jsx';
+import PrimaryButton from '../../atoms/primary-button/primary-button.jsx';
+import PrimaryButtonSmall from '../../atoms/primary-button-small/primary-button-small.jsx';
+import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx';
+import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx';
+import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx';
+import SbaModal from '../../molecules/modal.jsx';
+import Callout from '../../molecules/callout/callout.jsx';
+import Hero from '../../organisms/hero/hero.jsx';
+import styles from './style-guide.scss';
 
 
  const StyleGuide = () =>
 	<div>
-			<SbaModal />
-			<div className="byzantine">
-			<Hero title="Need help? Get free business counseling." message="Get advice from partner organizations like SCORE mentors, Small Business Development Centers, and Women’s Business Centers." button="Find Counselors" />
-			</div>
 			<Typography />
 			<ButtonGroup/>
 			<ColorPalette />
@@ -51,9 +48,9 @@ export default StyleGuide;
 		<SecondaryButton text="Secondary" />
 		<br />
 		<div className={ styles.background }>
-		<InversePrimaryButton text="Inverse Primary" />
+		<InversePrimaryButton text="Inv Primary" />
 		<br />
-		<InverseSecondaryButton text="Inverse Secondary" />
+		<InverseSecondaryButton text="Inv Secondary" />
 		</div>
 	</div>;
 

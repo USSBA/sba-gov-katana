@@ -1,0 +1,9 @@
+@include theme(sba-blue, '.inverseSecondaryButtonSmall', $sba-blue, #fff, #fff);
+@include theme(byzantine, '.inverseSecondaryButtonSmall', $byzantine, #fff, #fff);
+@include theme(money-green, '.inverseSecondaryButtonSmall', $money-green, #fff, #fff);
+@include theme(cobalt-blue, '.inverseSecondaryButtonSmall', $cobalt-blue, #fff, #fff);
+
+@include theme-hover(sba-blue, '.inverseSecondaryButtonSmall', #fff, $sba-blue, #fff);
+@include theme-hover(byzantine, '.inverseSecondaryButtonSmall', #fff, $byzantine, #fff);
+@include theme-hover(money-green, '.inverseSecondaryButtonSmall', #fff, $money-green, #fff);
+@include theme-hover(cobalt-blue, '.inverseSecondaryButtonSmall', #fff, $cobalt-blue, #fff);
