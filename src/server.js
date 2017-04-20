@@ -8,10 +8,7 @@ import config from "config";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
-import {
-  enableWebpackHotModuleReplacement,
-  addDevelopmentErrorHandler
-} from "./util/dev.js";
+import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from "./util/dev.js";
 
 const app = express();
 app.use(cookieParser());
@@ -51,7 +48,7 @@ app.use(function(req, res, next) {
     isUserLoggedIn: hasSessionCookie || false,
     googleAnalytics: config.get("googleAnalytics"),
     debug: config.get("developmentOptions.client.logging"),
-    govdelivery: config.("govdelivery.popupEnabled")
+    govdelivery: config.get("govdelivery.popupEnabled")
   };
   req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
   next();
@@ -85,35 +82,22 @@ app.get("/content/counselors-redirect.json", function(req, res) {
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
-import {
-  fetchContentById,
-  fetchFrontPageSlides,
-  fetchBlogs,
-  fetchDisaster
-} from "./controllers/content.js";
+import { fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster } from "./controllers/content.js";
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 app.get("/content/:type/:id.json", fetchContentById);
 
-import {
-  getMainMenu
-} from "./controllers/main-menu.js";
+import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
 
-import {
-  getUserRoles
-} from "./controllers/user-roles.js";
+import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/content/:userId.json", getUserRoles);
 
-import {
-  getDrupalUserEmail
-} from "./controllers/user-email.js";
+import { getDrupalUserEmail } from "./controllers/user-email.js";
 app.get("/content/:userId.json", getDrupalUserEmail);
 
-import {
-  registerUserForNewsletter
-} from "./controllers/newsletter-registration.js";
+import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/content/newsletter-registration.json", registerUserForNewsletter);
 
 // development error handler

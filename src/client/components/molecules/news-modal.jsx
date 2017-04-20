@@ -9,6 +9,7 @@ import TextInput from "../atoms/text-input.jsx";
 import exitIcon from "../../../../public/assets/svg/close_button.svg";
 import {logEvent} from "../../services/analytics.js";
 import clientConfig from "../../services/config.js";
+import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
 import envelope from '../../../../public/assets/svg/envelope.svg';
@@ -20,7 +21,7 @@ class SbaNewsModal extends React.Component {
         this.state = {
             userEmailAddress: "",
             userZipCode:  "",
-            modalIsOpen: true && clientConfig.govdelivery,
+            modalIsOpen: config.govdelivery,
             validStates: {
                 userEmailAddress: null,
                 userZipCode: null
