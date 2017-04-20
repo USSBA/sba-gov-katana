@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './business-guide-article.scss';
 import TextSection from "../../molecules/text-section/text-section.jsx";
+import SectionHeader from "../../molecules/section-header/section-header.jsx"
 
 const ParagraphTypeToBeImplemented = ({ data}) => {
   return (
@@ -18,8 +19,8 @@ class BusinessGuideArticle extends React.Component {
       if (item && item.type) {
         if (item.type === "textSection") {
             return (<TextSection key={i} text={item.text}/>);
-        } else {
-          return (<ParagraphTypeToBeImplemented key={i} data={item}/>);
+        } else if (item.type === "sectionHeader") {
+            return (<SectionHeader key={i} text={item.text}/>);
         }
       } else {
         return (<ParagraphTypeToBeImplemented key={i} data={item}/>);
