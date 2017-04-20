@@ -3,6 +3,7 @@ import ReactModal from "react-modal";
 import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
 import * as ModalActions from "../../actions/show-modal.js";
+import * as ContentActions from "../../actions/content.js";
 import styles from "./news-modal.scss";
 import TextInput from "../atoms/text-input.jsx";
 import exitIcon from "../../../../public/assets/svg/close_button.svg";
@@ -59,8 +60,10 @@ class SbaNewsModal extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        //send data to the server.
-        this.newsletterModalForm.reset();
+        this.props.actions.fetchContentIfNeeded("newsletterRegistration", "newsletter-registration", {
+            userEmailAddress: this.state.userEmailAddress,
+            userZipCode: this.state.userZipCode
+        });
     }
 
     handleChange(e) {
@@ -120,6 +123,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        actions: bindActionCreators(ContentActions, dispatch),
         modalActions: bindActionCreators(ModalActions, dispatch)
     };
 }

@@ -96,6 +96,9 @@ app.get("/content/:userId.json", getUserRoles);
 import { getDrupalUserEmail } from "./controllers/user-email.js";
 app.get("/content/:userId.json", getDrupalUserEmail);
 
+import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
+app.get("/content/newsletter-registration.json", registerUserForNewsletter);
+
 // development error handler
 // will print stacktrace
 if (config.get("developmentOptions.webpack.enabled")) {
