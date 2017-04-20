@@ -66,7 +66,7 @@ export class MiniNav extends React.Component {
     if(!this.state.userEmail){
         this.timerId = setTimeout(()=>{
             this.props.modalActions.showSbaNewsletter(this.state.userEmail);
-        }, 3000);
+        }, 5000);
     }
   }
 
