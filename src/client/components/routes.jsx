@@ -44,7 +44,7 @@ const mainRoutes = [
        <Route key={ 5 } path="emailinvalid" component={ EmailConfirmationInvalid } />)
      </Route>
  ),
- (<Route key={ 4} path="/sample" component={ SamplePage } />)
+ (<Route key={ 4} path="/samples/:id/" component={ SamplePage } />)
 ];
 
 
