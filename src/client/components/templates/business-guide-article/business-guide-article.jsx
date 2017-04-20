@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './business-guide-article.scss';
 import TextSection from "../../molecules/text-section/text-section.jsx";
 
 const ParagraphTypeToBeImplemented = ({ data}) => {
@@ -30,7 +31,7 @@ class BusinessGuideArticle extends React.Component {
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     return (
-      <div>{paragraphs}</div>
+      <div className={styles.container}>{paragraphs}</div>
     );
   }
 }
