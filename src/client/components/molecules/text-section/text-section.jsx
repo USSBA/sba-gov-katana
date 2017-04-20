@@ -5,7 +5,10 @@ class TextSection extends React.Component{
 
     render(){
         let text = this.props.text || "";
-        return (<p dangerouslySetInnerHTML={{__html: this.props.text.replace(/(<? *script)/gi, 'illegalscript')}}/>);
+        console.log(text)
+        let cleaned = this.props.text.replace(/(<? *script)/gi, 'illegalscript');
+        console.log(cleaned)
+        return (<p dangerouslySetInnerHTML={{__html: cleaned}}/>);
     }
 }
 

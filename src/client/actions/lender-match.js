@@ -1,6 +1,6 @@
 import axios from "axios";
 import { browserHistory } from "react-router";
-import config from "../services/config.js";
+import constants from "../services/constants.js";
 
 export function createBusinessInfo(businessInfoData) {
   return {
@@ -42,7 +42,7 @@ export function matchFormData(reviewSubmitInfoData) {
     dispatch({
       type: "MATCH_FORM_DATA_START"
     });
-    axios.post(config.routes.submitForm, reviewSubmitInfoData)
+    axios.post(constants.routes.submitForm, reviewSubmitInfoData)
       .then((response) => {
         dispatch({
           type: "MATCH_FORM_DATA_SUCCESS",

@@ -5,7 +5,6 @@ import {FormGroup} from 'react-bootstrap'
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/location-change.js';
-import clientConfig from "../../../../services/config.js";
 import {logEvent} from "../../../../services/analytics.js";
 
 
