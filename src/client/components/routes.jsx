@@ -18,6 +18,7 @@ import AdditionalInfo from './organisms/lender-match/form/additional-info.jsx';
 import ReviewSubmitInfo from './organisms/lender-match/form/review-submit-info.jsx';
 
 import Homepage from './templates/homepage.jsx';
+import SamplePage from './pages/sample.jsx';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 const routes = [
@@ -41,7 +42,8 @@ const routes = [
      <Route key={ 5 } path="emailinvalid" component={ EmailConfirmationInvalid } />)
    </Route>
   ),
-  (<Route key={ 3 } path="/styleguide" component={ StyleGuide } />)
+  (<Route key={ 3 } path="/styleguide" component={ StyleGuide } />),
+  (<Route key={ 4} path="/sample" component={ SamplePage } />)
 ];
 
 

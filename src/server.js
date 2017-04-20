@@ -53,7 +53,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide"], function(req, res, next) {
+app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/sample"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig)
   });
