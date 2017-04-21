@@ -12,6 +12,7 @@ html
     meta(name="twitter:image" content="https://www.sba.gov/sites/default/files/images/HPSEOImage.jpg")
     meta(property="og:site_name" content=title)
     title= title
+    script(src='/assets/scripts/purify.min.js')
     script(type="text/javascript").
         window.CONFIG = !{config}
   body
@@ -25,4 +26,3 @@ html
           pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE
         }, 'google_translate_element');
       }
-

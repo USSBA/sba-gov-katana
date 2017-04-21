@@ -1,18 +1,12 @@
 import React from "react"
 import styles from "./text-section.scss";
 
-// const createDOMPurify = require('dompurify');
-// const jsdom = require('jsdom');
-// const window = jsdom.jsdom().defaultView;
-// const DOMPurify = createDOMPurify(window);
-
-
 
 class TextSection extends React.Component{
     render(){
         let dirty = this.props.text || "";
-        let cleaned = dirty;
-        // const clean = DOMPurify.sanitize(dirty);
+        // DOMPurify is loaded from a minimize script tag in the header due to issues with jsdom and webpack
+        let cleaned = DOMPurify.sanitize(dirty);
         return (<p className={styles.textSection} dangerouslySetInnerHTML={{__html: cleaned}}/>);
     }
 }
