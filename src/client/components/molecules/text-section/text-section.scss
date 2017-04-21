@@ -1,0 +1,8 @@
+.textSection {
+	margin-bottom: 2.1vw;
+  @include grid-column(7, $sba-grid-medium);
+  @include grid-push(5);
+  @include grid-media($sba-grid-small) {
+  	@include grid-column(6)
+  }
+}
