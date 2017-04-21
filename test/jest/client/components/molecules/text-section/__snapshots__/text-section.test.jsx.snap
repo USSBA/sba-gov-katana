@@ -2,6 +2,7 @@
 
 exports[`TextSection renders a simple paragraph 1`] = `
 <p
+  className="textSection"
   dangerouslySetInnerHTML={
     Object {
       "__html": "<p>test</p>",
@@ -12,6 +13,7 @@ exports[`TextSection renders a simple paragraph 1`] = `
 
 exports[`TextSection renders several paragraph 1`] = `
 <p
+  className="textSection"
   dangerouslySetInnerHTML={
     Object {
       "__html": "<p>test</p><p>test</p><p>test</p>",
@@ -22,6 +24,7 @@ exports[`TextSection renders several paragraph 1`] = `
 
 exports[`TextSection renders several paragraphs with an unordered list in the middle 1`] = `
 <p
+  className="textSection"
   dangerouslySetInnerHTML={
     Object {
       "__html": "<p>test</p><ul><li>1</li>1<li></li></ul><p>test</p>",
