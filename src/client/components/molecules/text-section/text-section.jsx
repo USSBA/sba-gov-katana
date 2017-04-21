@@ -1,13 +1,18 @@
 import React from "react"
 import styles from "./text-section.scss";
+
+// const createDOMPurify = require('dompurify');
+// const jsdom = require('jsdom');
+// const window = jsdom.jsdom().defaultView;
+// const DOMPurify = createDOMPurify(window);
+
+
+
 class TextSection extends React.Component{
-
-
     render(){
-        let text = this.props.text || "";
-        console.log(text)
-        let cleaned = this.props.text.replace(/(<? *script)/gi, 'illegalscript');
-        console.log(cleaned)
+        let dirty = this.props.text || "";
+        let cleaned = dirty;
+        // const clean = DOMPurify.sanitize(dirty);
         return (<p dangerouslySetInnerHTML={{__html: cleaned}}/>);
     }
 }

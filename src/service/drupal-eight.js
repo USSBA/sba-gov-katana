@@ -8,6 +8,8 @@ const paragraphEndpoint = "entity/paragraph";
 
 import { fetchById } from "../models/dao/drupal8-rest.js";
 
+import { sanitizeTextSectionHtml } from "../util/formatter.js";
+
 
 // a few helper functions to extract data from the drupal wrappers
 function extractValue(object) {
@@ -35,9 +37,9 @@ function fetchParagraphId(paragraphId) {
 // start with the given prefix and then formats the key name using the prefix and
 // given custom formatter, and then formats the values to the root value (not the
 // drupal 8 wrapper)
-function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter) {
+function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter, customValueFormatter) {
   return _.chain(object)
-    .pickBy(function(vvalue, key) {
+    .pickBy(function(value, key) {
       return _.startsWith(key, prefix);
     })
     .mapKeys(function(value, key) {
@@ -45,7 +47,10 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
       return _.chain(customFormatter(key)).replace(prefix, "").camelCase()
         .value();
     })
-    .mapValues(extractValue)
+    .mapValues(function(value, key) {
+      const customFormatter = customValueFormatter || _.identity;
+      return customFormatter(extractValue(value), key);
+    })
     .value();
 }
 
@@ -56,6 +61,12 @@ function formatParagraph(paragraph) {
     const typeName = extractTargetId(paragraph.type);
     const formattedParagraph = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
       return _.replace(fieldName, typeName, "");
+    }, function(value, key) {
+      let newValue = value;
+      if (typeName === "text_section" && key === "text") {
+        newValue = sanitizeTextSectionHtml(newValue);
+      }
+      return newValue;
     });
     return _.chain(formattedParagraph)
       .merge({

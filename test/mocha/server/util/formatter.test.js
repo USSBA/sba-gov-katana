@@ -1,1 +1,35 @@
-var data = "<p><strong>bold</strong></p>\r\n\r\n<p><em>italic</em></p>\r\n\r\n<p><a href=\"http://www.google.com\">link</a></p>\r\n\r\n<ul>\r\n\t<li>bullet list 1</li>\r\n\t<li>bullet list 2</li>\r\n\t<li>bullet list 3</li>\r\n</ul>\r\n\r\n<ol>\r\n\t<li>numbered list 1</li>\r\n\t<li>numbered list 2</li>\r\n\t<li>numbered list 3</li>\r\n</ol>\r\n\r\n<blockquote>\r\n<p>blockquote is blockquote</p>\r\n</blockquote>\r\n\r\n<img alt=\"The more you know...\" data-caption=\"The more you know about captions\" data-entity-type=\"file\" data-entity-uuid=\"8a892312-4faf-480a-a8a5-20d45ac76a1c\" src=\"/sites/default/files/inline-images/200_s.gif\" />\r\n\r\n<p>normal format</p>\r\n\r\n<h2>heading 2</h2>\r\n\r\n<h3>heading 3</h3>\r\n\r\n<h4>heading 4</h4>\r\n\r\n<h5>heading 5</h5>\r\n\r\n<h6>heading 6</h6>\r\n\r\n\r\n";
+var validData = "<p><strong>Strong</strong></p>\r\n\r\n<p><em>Italic</em></p>\r\n\r\n<ol>\r\n\t<li>First</li>\r\n\t<li>Second</li>\r\n\t<li>Third</li>\r\n</ol>\r\n\r\n<ul>\r\n\t<li>A New Hope</li>\r\n\t<li>Empire Strikes Back</li>\r\n\t<li>Shadows of the Empire</li>\r\n</ul>\r\n\r\n<hr />\r\n<p><a href=\"https://www.google.com\">https://www.google.com</a></p>\r\n\r\n<table>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Month</th>\r\n\t\t\t<th>Savings</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tfoot>\r\n\t\t<tr>\r\n\t\t\t<td>Sum</td>\r\n\t\t\t<td>$180</td>\r\n\t\t</tr>\r\n\t</tfoot>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>January</td>\r\n\t\t\t<td>$109000000</td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>February</td>\r\n\t\t\t<td>$800000</td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<dl>\r\n\t<dt>Coffee</dt>\r\n\t<dd>Black hot drink</dd>\r\n\t<dt>Milk</dt>\r\n\t<dd>White cold drink</dd>\r\n</dl>\r\n";
+
+var exampleXSSAttack = "<script>alert(document.cookie)</script>";
+
+import {
+  sanitizeTextSectionHtml
+} from "../../../../src/util/formatter.js";
+
+describe("#Formatter", function() {
+  describe("#sanitizeHtml", function() {
+    it("should return nothing when there is only a script tag", function(done) {
+      let clean = sanitizeTextSectionHtml(exampleXSSAttack);
+      clean.should.equal("");
+      done();
+    })
+
+    it("should remove the script tag next to a p tag", function(done) {
+      let clean = sanitizeTextSectionHtml("<p>Test123</p>" + exampleXSSAttack);
+      clean.should.equal("<p>Test123</p>");
+      done();
+    })
+
+    it("should remove the script tag inside of a p tag", function(done) {
+      let clean = sanitizeTextSectionHtml("<p>Test123" + exampleXSSAttack + "</p>");
+      clean.should.equal("<p>Test123</p>");
+      done();
+    })
+
+    it("should not touch the data because it is all valid", function(done) {
+      let clean = sanitizeTextSectionHtml(validData);
+      clean.should.equal(validData);
+      done();
+    })
+  });
+})
