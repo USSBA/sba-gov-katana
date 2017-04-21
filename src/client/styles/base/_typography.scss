@@ -23,7 +23,16 @@ h1 {
 h2 {
   @include font-size($h2-font-sizes);
   font-weight: 900;
-  @include margin(0 0 $margin-30 0);
+  
+  @include grid-media($sba-grid-small){
+    @include margin(0 0 $margin-10 0);
+  }
+  @include grid-media($sba-grid-medium){
+    @include margin(0 0 $margin-20 0);
+  }
+  @include grid-media($sba-grid-large){
+    @include margin(0 0 $margin-30 0);
+  }
 }
 
 h3 {

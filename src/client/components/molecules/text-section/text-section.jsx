@@ -13,7 +13,7 @@ class TextSection extends React.Component{
         let dirty = this.props.text || "";
         let cleaned = dirty;
         // const clean = DOMPurify.sanitize(dirty);
-        return (<p dangerouslySetInnerHTML={{__html: cleaned}}/>);
+        return (<p className={styles.textSection} dangerouslySetInnerHTML={{__html: cleaned}}/>);
     }
 }
 
