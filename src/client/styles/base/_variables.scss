@@ -8,6 +8,7 @@
   }
 }
 
+
 @mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
   :global(.#{$theme}){
     #{$component}{
@@ -230,3 +231,12 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+
+
+$primary-color-map:(
+	"sba-blue": $sba-blue,
+	"byzantine": $byzantine,
+	"money-green": $money-green,
+	"cobalt-blue": $cobalt-blue
+);
