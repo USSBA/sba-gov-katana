@@ -1,0 +1,14 @@
+@include theme(sba-blue, '.SmallInverseSecondaryButton', $sba-blue, #fff, #fff);
+@include theme(byzantine, '.SmallInverseSecondaryButton', $byzantine, #fff, #fff);
+@include theme(money-green, '.SmallInverseSecondaryButton', $money-green, #fff, #fff);
+@include theme(cobalt-blue, '.SmallInverseSecondaryButton', $cobalt-blue, #fff, #fff);
+
+@include theme-hover(sba-blue, '.SmallInverseSecondaryButton', #fff, $sba-blue, #fff);
+@include theme-hover(byzantine, '.SmallInverseSecondaryButton', #fff, $byzantine, #fff);
+@include theme-hover(money-green, '.SmallInverseSecondaryButton', #fff, $money-green, #fff);
+@include theme-hover(cobalt-blue, '.SmallInverseSecondaryButton', #fff, $cobalt-blue, #fff);
+
+.SmallInverseSecondaryButton {
+  font-size: 1.1em;
+  font-weight: 700;
+}

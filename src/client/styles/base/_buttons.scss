@@ -6,6 +6,7 @@
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
+  // @include font-size($base-font-sizes);
   font-size: 1.4em;
   -webkit-font-smoothing: antialiased;
   font-weight: 900;
