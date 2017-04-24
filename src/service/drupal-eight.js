@@ -10,10 +10,16 @@ import { fetchById } from "../models/dao/drupal8-rest.js";
 
 import { sanitizeTextSectionHtml } from "../util/formatter.js";
 
-
 // a few helper functions to extract data from the drupal wrappers
-function extractValue(object) {
-  return object && object.length > 0 ? object[0].value : null;
+function extractValue(object, key) {
+  if(object && object.length > 0){
+    if(object[0].value){
+      return object[0].value
+    } else if( key === 'image') {
+      return object[0]
+    }
+  } 
+  return null
 }
 
 function extractTargetId(object) {
@@ -32,16 +38,17 @@ function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
 }
 
-
 // this is an abstract function that takes an object, removes properties that do not
 // start with the given prefix and then formats the key name using the prefix and
 // given custom formatter, and then formats the values to the root value (not the
 // drupal 8 wrapper)
 function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter, customValueFormatter) {
   return _.chain(object)
+    //picks every object inside node that starts with field_
     .pickBy(function(value, key) {
       return _.startsWith(key, prefix);
     })
+    //maps picked objects. example = field_subsection_header_text : {value}
     .mapKeys(function(value, key) {
       const customFormatter = customFieldNameFormatter || _.identity;
       return _.chain(customFormatter(key)).replace(prefix, "").camelCase()
@@ -49,7 +56,7 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
     })
     .mapValues(function(value, key) {
       const customFormatter = customValueFormatter || _.identity;
-      return customFormatter(extractValue(value), key);
+      return customFormatter(extractValue(value, key), key);
     })
     .value();
 }
@@ -60,6 +67,9 @@ function formatParagraph(paragraph) {
   if (paragraph) {
     const typeName = extractTargetId(paragraph.type);
     const formattedParagraph = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
+      if (typeName === 'image') {
+        return fieldName
+      }
       return _.replace(fieldName, typeName, "");
     }, function(value, key) {
       let newValue = value;
