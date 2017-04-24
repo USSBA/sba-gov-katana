@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './business-guide-article.scss';
 import TextSection from "../../molecules/text-section/text-section.jsx";
-import SectionHeader from "../../molecules/section-header/section-header.jsx"
-import ImageSection from "../../molecules/image-section/image-section.jsx"
+import SectionHeader from "../../molecules/section-header/section-header.jsx";
+import ImageSection from "../../molecules/image-section/image-section.jsx";
+import TitleSection from "../../molecules/title-section/title-section.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -30,6 +31,7 @@ class BusinessGuideArticle extends React.Component {
         }
       }
       return (
+
         <div key={index} id={item.type + "-" + index}>{paragraph}</div>
       );
     });
@@ -39,7 +41,10 @@ class BusinessGuideArticle extends React.Component {
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     return (
-      <div className={styles.container}>{paragraphs}</div>
+      <div className={styles.container}>
+          <TitleSection paragraphs={this.props.paragraphs} title={this.props.title} summary={this.props.summary}/>
+          {paragraphs}
+      </div>
     );
   }
 }

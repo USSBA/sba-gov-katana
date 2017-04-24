@@ -2,11 +2,20 @@ import React from 'react';
 import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-title-text.jsx';
 import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx';
 import CaptionText from '../../atoms/caption-text/caption-text.jsx';
-import PrimaryButton from '../../atoms/primary-button/primary-button.jsx';
-import PrimaryButtonSmall from '../../atoms/primary-button-small/primary-button-small.jsx';
-import SecondaryButton from '../../atoms/secondary-button/secondary-button.jsx';
-import InversePrimaryButton from '../../atoms/inverse-primary-button/inverse-primary-button.jsx';
-import InverseSecondaryButton from '../../atoms/inverse-secondary-button/inverse-secondary-button.jsx';
+
+import LargePrimaryButton from '../../atoms/large-primary-button/large-primary-button.jsx';
+import LargeSecondaryButton from '../../atoms/large-secondary-button/large-secondary-button.jsx';
+import LargeInversePrimaryButton from '../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx';
+import LargeInverseSecondaryButton from '../../atoms/large-inverse-secondary-button/large-inverse-secondary-button.jsx';
+
+import SmallPrimaryButton from '../../atoms/small-primary-button/small-primary-button.jsx';
+import SmallSecondaryButton from '../../atoms/small-secondary-button/small-secondary-button.jsx';
+import SmallInversePrimaryButton from '../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx';
+import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
+
+import LargeGreySecondaryButton from '../../atoms/large-grey-secondary-button/large-grey-secondary-button.jsx';
+import SmallGreySecondaryButton from '../../atoms/small-grey-secondary-button/small-grey-secondary-button.jsx';
+
 import SbaModal from '../../molecules/modal.jsx';
 import Callout from '../../molecules/callout/callout.jsx';
 import Hero from '../../organisms/hero/hero.jsx';
@@ -43,15 +52,43 @@ export default StyleGuide;
  	<div className={ styles.buttons }>
  		<p><a href="#">Link</a></p>
  		<br />
- 		<PrimaryButton text="Primary" />
+
+ 		<h4>Primary</h4>
+ 		<LargePrimaryButton text="Large Button" />
 		<br />
-		<SecondaryButton text="Secondary" />
+		<SmallPrimaryButton text="Small Button" />
 		<br />
+
+		<h4>Secondary</h4>
+		<LargeSecondaryButton text="Large Button" />
+		<br />
+		<SmallSecondaryButton text="Small Button" />
+		<br />
+
+		<h4>Inverse Primary</h4>
 		<div className={ styles.background }>
-		<InversePrimaryButton text="Inv Primary" />
+		<LargeInversePrimaryButton text="Large Button" />
 		<br />
-		<InverseSecondaryButton text="Inv Secondary" />
+		<SmallInversePrimaryButton text="Small Button" />
 		</div>
+
+		<h4>Inverse Secondary</h4>
+		<div className={ styles.background }>
+		<LargeInverseSecondaryButton text="Large Button" />
+		<br />
+		<SmallInverseSecondaryButton text="Small Button" />
+		</div>
+
+		<h4>Grey Secondary</h4>
+		<LargeGreySecondaryButton text="Large Button" />
+		<br />
+		<SmallGreySecondaryButton text="Small Button" />
+		<br />
+
+		<h4>Disabled</h4>
+		<button disabled>Nope</button>
+		<br />
+		<br />
 	</div>;
 
  const ButtonGroup = () =>

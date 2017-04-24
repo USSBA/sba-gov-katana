@@ -1,0 +1,14 @@
+@include theme(sba-blue, '.SmallPrimaryButton', $sba-blue, #fff, null);
+@include theme(byzantine, '.SmallPrimaryButton', $byzantine, #fff, null);
+@include theme(money-green, '.SmallPrimaryButton', $money-green, #fff, null);
+@include theme(cobalt-blue, '.SmallPrimaryButton', $cobalt-blue, #fff, null);
+
+@include theme-hover(sba-blue, '.SmallPrimaryButton', $sba-blue-dark, #fff, null);
+@include theme-hover(byzantine, '.SmallPrimaryButton', $byzantine-dark, #fff, null);
+@include theme-hover(money-green, '.SmallPrimaryButton', $money-green-dark, #fff, null);
+@include theme-hover(cobalt-blue, '.SmallPrimaryButton', $cobalt-blue-dark, #fff, null);
+
+.SmallPrimaryButton {
+  font-size: 1.1em;
+  font-weight: 700;
+}

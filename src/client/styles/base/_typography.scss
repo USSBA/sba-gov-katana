@@ -1,8 +1,12 @@
-body {
+html, body {
   color: $base-font-color;
   font-family: $base-font-family;
   @include font-size($base-font-sizes);
   line-height: $base-line-height;
+}
+
+body {
+  font-size: 1em;
 }
 
 h1,
@@ -17,34 +21,25 @@ h6 {
 h1 {
   @include font-size($h1-font-sizes);
   font-weight: 900;
-  @include margin(0 0 $margin-30 0);
+  margin: 0 0 .6em 0;
 }
 
 h2 {
   @include font-size($h2-font-sizes);
   font-weight: 900;
-
-  @include grid-media($sba-grid-small){
-    @include margin(0 0 $margin-10 0);
-  }
-  @include grid-media($sba-grid-medium){
-    @include margin(0 0 $margin-20 0);
-  }
-  @include grid-media($sba-grid-large){
-    @include margin(0 0 $margin-30 0);
-  }
+  margin: 0 0 .5em 0;
 }
 
 h3 {
   @include font-size($h3-font-sizes);
   font-weight: 900;
-  @include margin(0 0 $margin-30 0);
+  margin: 0 0 .5em 0;
 }
 
 h4 {
   @include font-size($h4-font-sizes);
   font-weight: 700;
-  @include margin(0 0 $margin-20 0);
+  margin: 0 0 .5em 0;
 }
 
 h5 {
@@ -52,13 +47,18 @@ h5 {
   color: #666666;
   font-family: $serif-font;
   font-weight: 400;
-  @include margin(0 0 $margin-50 0);
+  margin: 0 0 2em 0;
 }
 
 h6 {
   @include font-size($h6-font-sizes);
   font-weight: 700;
-  @include margin(0 0 $margin-10 0);
+  margin: 0 0 .5em 0;
+}
+
+p {
+  @include font-size($paragraph-font-sizes);
+  margin: 0 0 1.1em 0;
 }
 
 a {

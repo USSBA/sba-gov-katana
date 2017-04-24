@@ -1,9 +1,0 @@
-@include theme(sba-blue, '.primaryButton', $sba-blue, #fff, null);
-@include theme(byzantine, '.primaryButton', $byzantine, #fff, null);
-@include theme(money-green, '.primaryButton', $money-green, #fff, null);
-@include theme(cobalt-blue, '.primaryButton', $cobalt-blue, #fff, null);
-
-@include theme-hover(sba-blue, '.primaryButton', $sba-blue-dark, #fff, null);
-@include theme-hover(byzantine, '.primaryButton', $byzantine-dark, #fff, null);
-@include theme-hover(money-green, '.primaryButton', $money-green-dark, #fff, null);
-@include theme-hover(cobalt-blue, '.primaryButton', $cobalt-blue-dark, #fff, null);

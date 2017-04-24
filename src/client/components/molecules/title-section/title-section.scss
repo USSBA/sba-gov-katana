@@ -1,0 +1,43 @@
+.titleSection {
+  @include grid-column(7, $sba-grid-medium);
+  @include grid-push(5);
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    text-align: center;
+  }
+}
+
+.lineCopy {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 3px;
+  width: 77px;
+  border: 3px solid #AD32A3;
+}
+
+.summary{
+  height: 102px;
+  color: #666666;
+  font-family: Merriweather;
+  font-size: 24px;
+  line-height: 34px;
+}
+
+.content{
+  height: 26px;
+  color: #333333;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 26px;
+}
+
+.titleLink{
+  color: #AD32A3;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.titleSection ul{
+  margin-bottom: 60px;
+}

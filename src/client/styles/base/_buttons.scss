@@ -6,11 +6,13 @@
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
+  // @include font-size($base-font-sizes);
   font-size: 1.4em;
   -webkit-font-smoothing: antialiased;
   font-weight: 900;
-  letter-spacing: .6;
+  letter-spacing: .6px;
   line-height: 1;
+  outline-offset: -2px;
   padding: .75em 1.25em;
   text-align: center;
   text-decoration: none;
@@ -18,7 +20,7 @@
   transition: background-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: normal;
 
   &:hover,
   &:focus {
@@ -30,9 +32,5 @@
     cursor: not-allowed;
     background-color: #C4C4C4;
     color: #fff;
-
-    &:hover {
-      background-color: $action-color;
-    }
   }
 }

@@ -122,6 +122,7 @@ function formatNode(data) {
     const paragraphs = data.field_paragraphs || [];
     const taxonomy = data.field_site_location;
     const title = extractValue(data.title);
+    const summary = extractValue(data.field_summary);
 
     const paragraphIds = _.map(paragraphs, "target_id");
     const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
@@ -132,7 +133,8 @@ function formatNode(data) {
       return {
         title: title,
         paragraphs: _.compact(paragraphData),
-        taxonomy: taxonomyData
+        taxonomy: taxonomyData,
+        summary: summary
       };
     });
   }

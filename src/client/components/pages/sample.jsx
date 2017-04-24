@@ -13,7 +13,7 @@ class SamplePage extends React.Component {
 
   render() {
       if(this.props.data){
-          return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs}/>);
+          return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary}/>);
       }else{
           return (<div>Loading....</div>);
       }
