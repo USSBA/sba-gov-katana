@@ -4,7 +4,7 @@ import styles from "./text-section.scss";
 
 class TextSection extends React.Component{
     render(){
-        return (<p className={styles.textSection} dangerouslySetInnerHTML={{__html: this.props.text}}/>);
+        return (<div className={styles.textSection} dangerouslySetInnerHTML={{__html: this.props.text}}/>);
     }
 }
 
