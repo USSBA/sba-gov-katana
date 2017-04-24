@@ -10,7 +10,7 @@
   font-size: 1.4em;
   -webkit-font-smoothing: antialiased;
   font-weight: 900;
-  letter-spacing: .6;
+  letter-spacing: .6px;
   line-height: 1;
   padding: .75em 1.25em;
   text-align: center;
@@ -19,7 +19,7 @@
   transition: background-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: normal;
 
   &:hover,
   &:focus {
