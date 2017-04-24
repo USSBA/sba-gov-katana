@@ -75,12 +75,11 @@ function formatParagraph(paragraph) {
       let newValue = value;
       if (typeName === "text_section" && key === "text") {
         newValue = sanitizeTextSectionHtml(newValue);
-      }
-      else if (key === "image") {
-        let imageUrl = url.parse(newValue.url)
-        let host = "http://content.sbagov.fearlesstesters.com"
-        imageUrl = host + imageUrl.pathname
-        newValue.url = imageUrl
+      } else if (key === "image") {
+        let imageUrl = url.parse(newValue.url);
+        const host = "http://content.sbagov.fearlesstesters.com";
+        imageUrl = host + imageUrl.pathname;
+        newValue.url = imageUrl;
       }
       return newValue;
     });
