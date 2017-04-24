@@ -53,13 +53,6 @@ $base-font-family: $san-serif-font;
 $heading-font-family: $base-font-family;
 
 // // Font Sizes
-// $base-font-size: 1em;
-
-// // Line height
-// $base-line-height: 1.5;
-// $heading-line-height: 1.2;
-
-
 @mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
   @each $fs-breakpoint, $fs-font-size in $fs-map {
     @if $fs-breakpoint == null {
@@ -79,7 +72,7 @@ $heading-font-family: $base-font-family;
 }
 
 $breakpoints: (
-  small : 767px,
+  null : 767px,
   medium: 768px,
   large : 1080px
 );
@@ -91,60 +84,61 @@ $base-font-sizes: (
   );
 
 $extra-large-title-font-sizes:  (
-  null: 46px,
-  medium: 90px,
-  large: 120px
+  null: 2.875rem,
+  medium: 5rem,
+  large: 6.66rem
   );
 
 $h1-font-sizes: (
-  null: 32px,
-  medium: 54px,
-  large: 72px
+  null: 2rem,
+  medium: 3rem,
+  large: 4rem
   );
 
 $h2-font-sizes: (
-  null: 24px,
-  medium: 36px,
-  large: 54px
+  null: 1.5rem,
+  medium: 2rem,
+  large: 3rem
   );
 
 $h3-font-sizes: (
-  null: 20px,
-  medium: 27px,
-  large: 36px
+  null: 1.25rem,
+  medium: 1.5rem,
+  large: 2rem
   );
 
 $h4-font-sizes: (
-  null: 17.6px,
-  medium: 23px,
-  large: 27px
+  null: 1.1rem,
+  medium: 1.25rem,
+  large: 1.5rem
   );
 
 $h5-font-sizes: (
-  null: 16px,
-  medium: 18px,
-  large: 24px
+  null: 1rem,
+  medium: 1rem,
+  large: 1.2rem
   );
 
 $h6-font-sizes: (
-  null: 16px,
-  medium: 18px,
-  large: 18px
+  null: 1rem,
+  medium: 1rem,
+  large: 1rem
+  );
+
+$paragraph-font-sizes: (
+  null: 1rem,
+  medium: 1rem,
+  large: 1rem
   );
 
 // Line height
 $base-line-height: 1.5;
 $heading-line-height: 1;
 
-
-
 $margin-50: 50px;
 $margin-30: 30px;
 $margin-20: 20px;
 $margin-10: 10px;
-
-
-
 
 // Other Sizes
 $base-border-radius: 3px;
