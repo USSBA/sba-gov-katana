@@ -36,7 +36,7 @@
 // Buttons
 .background {
     margin: 0 auto 25px;
-    padding: 25px 0 25px 25px;
+    padding: 25px;
 }
 
 @include theme(sba-blue, '.background', $sba-blue, null, null);
