@@ -24,9 +24,9 @@ class BusinessGuideArticle extends React.Component {
           let cleaned = DOMPurify.sanitize(item.text);
           paragraph = (<TextSection key={index} text={cleaned}/>);
         } else if (item.type === "sectionHeader") {
-          paragraph = (<SectionHeader key={index} index={index} text={item.text}/>);
+          paragraph = (<SectionHeader key={index} text={item.text}/>);
         } else if (item.type === "image") {
-          paragraph = (<ImageSection key={index} index={index} imageObj={item.image} captionText={item.captionText}/>)
+          paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>)
         }
       }
       return (
