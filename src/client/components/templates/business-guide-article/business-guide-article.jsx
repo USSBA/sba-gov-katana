@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './business-guide-article.scss';
 import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx"
+import ImageSection from "../../molecules/image-section/image-section.jsx"
 
 const ParagraphTypeToBeImplemented = ({ data}) => {
   return (
@@ -22,7 +23,9 @@ class BusinessGuideArticle extends React.Component {
             let cleaned = DOMPurify.sanitize(item.text);
             return (<TextSection key={i} text={cleaned}/>);
         } else if (item.type === "sectionHeader") {
-            return (<SectionHeader key={i} text={item.text}/>);
+            return (<SectionHeader key={i} index={i} text={item.text}/>);
+        } else if (item.type === "image") {
+          return (<ImageSection key={i} index={i} imageObj={item.image} captionText={item.captionText}/>)
         }
       } else {
         return (<ParagraphTypeToBeImplemented key={i} data={item}/>);
