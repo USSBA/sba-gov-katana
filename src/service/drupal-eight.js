@@ -1,5 +1,7 @@
+
 import _ from "lodash";
 import Promise from "bluebird";
+import url from "url";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
@@ -61,8 +63,6 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
     .value();
 }
 
-
-
 function formatParagraph(paragraph) {
   if (paragraph) {
     const typeName = extractTargetId(paragraph.type);
@@ -75,6 +75,12 @@ function formatParagraph(paragraph) {
       let newValue = value;
       if (typeName === "text_section" && key === "text") {
         newValue = sanitizeTextSectionHtml(newValue);
+      }
+      else if (key === "image") {
+        let imageUrl = url.parse(newValue.url)
+        let host = "http://content.sbagov.fearlesstesters.com"
+        imageUrl = host + imageUrl.pathname
+        newValue.url = imageUrl
       }
       return newValue;
     });
