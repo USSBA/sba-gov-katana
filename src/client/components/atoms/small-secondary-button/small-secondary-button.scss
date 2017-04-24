@@ -3,10 +3,10 @@
 @include theme(money-green, '.SmallSecondaryButton', #fff, $money-green,  null);
 @include theme(cobalt-blue, '.SmallSecondaryButton', #fff, $cobalt-blue,  null);
 
-@include theme-hover(sba-blue, '.SmallSecondaryButton', $sba-blue, #fff, null);
-@include theme-hover(byzantine, '.SmallSecondaryButton', $byzantine, #fff, null);
-@include theme-hover(money-green, '.SmallSecondaryButton', $money-green, #fff, null);
-@include theme-hover(cobalt-blue, '.SmallSecondaryButton', $cobalt-blue, #fff, null);
+@include theme-hover(sba-blue, '.SmallSecondaryButton', $sba-blue, #fff, $sba-blue);
+@include theme-hover(byzantine, '.SmallSecondaryButton', $byzantine, #fff, $byzantine);
+@include theme-hover(money-green, '.SmallSecondaryButton', $money-green, #fff, $money-green);
+@include theme-hover(cobalt-blue, '.SmallSecondaryButton', $cobalt-blue, #fff, $cobalt-blue);
 
 .SmallSecondaryButton {
   font-size: 1.1em;

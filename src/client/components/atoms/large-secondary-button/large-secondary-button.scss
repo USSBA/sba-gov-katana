@@ -3,8 +3,8 @@
 @include theme(money-green, '.LargeSecondaryButton', #fff, $money-green,  null);
 @include theme(cobalt-blue, '.LargeSecondaryButton', #fff, $cobalt-blue,  null);
 
-@include theme-hover(sba-blue, '.LargeSecondaryButton', $sba-blue, #fff, null);
-@include theme-hover(byzantine, '.LargeSecondaryButton', $byzantine, #fff, null);
-@include theme-hover(money-green, '.LargeSecondaryButton', $money-green, #fff, null);
-@include theme-hover(cobalt-blue, '.LargeSecondaryButton', $cobalt-blue, #fff, null);
+@include theme-hover(sba-blue, '.LargeSecondaryButton', $sba-blue, #fff, $sba-blue);
+@include theme-hover(byzantine, '.LargeSecondaryButton', $byzantine, #fff, $byzantine);
+@include theme-hover(money-green, '.LargeSecondaryButton', $money-green, #fff, $money-green);
+@include theme-hover(cobalt-blue, '.LargeSecondaryButton', $cobalt-blue, #fff, $cobalt-blue);
 
