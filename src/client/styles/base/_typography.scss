@@ -23,7 +23,7 @@ h1 {
 h2 {
   @include font-size($h2-font-sizes);
   font-weight: 900;
-  
+
   @include grid-media($sba-grid-small){
     @include margin(0 0 $margin-10 0);
   }
@@ -91,4 +91,8 @@ hr {
   border-right: 0;
   border-top: 0;
   margin: $base-spacing 0;
+}
+
+em{
+    font-style: italic;
 }

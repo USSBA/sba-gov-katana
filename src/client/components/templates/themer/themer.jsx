@@ -2,13 +2,13 @@ import React from 'react';
 
 const themes = {
       "sba-blue": [""],
-      "byzantine": [],
+      "byzantine": ['samples'],
       "money-green": ["linc"],
       "cobalt-blue": []
     }
 
 class Themer extends React.Component {
-                         
+
     generateTheme(){
       let theme;
       Object.keys(themes).map((key) => {

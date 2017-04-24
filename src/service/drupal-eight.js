@@ -14,14 +14,14 @@ import { sanitizeTextSectionHtml } from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractValue(object, key) {
-  if(object && object.length > 0){
-    if(object[0].value){
-      return object[0].value
-    } else if( key === 'image') {
-      return object[0]
+  if (object && object.length > 0) {
+    if (object[0].value) {
+      return object[0].value;
+    } else if (key === "image") {
+      return object[0];
     }
-  } 
-  return null
+  }
+  return null;
 }
 
 function extractTargetId(object) {
@@ -67,8 +67,8 @@ function formatParagraph(paragraph) {
   if (paragraph) {
     const typeName = extractTargetId(paragraph.type);
     const formattedParagraph = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-      if (typeName === 'image') {
-        return fieldName
+      if (typeName === "image") {
+        return fieldName;
       }
       return _.replace(fieldName, typeName, "");
     }, function(value, key) {
