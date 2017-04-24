@@ -18,7 +18,9 @@ class BusinessGuideArticle extends React.Component {
     paragraphs = paragraphData.map(function(item, i) {
       if (item && item.type) {
         if (item.type === "textSection") {
-            return (<TextSection key={i} text={item.text}/>);
+            // DOMPurify is loaded from a minimize script tag in the header due to issues with jsdom and webpack
+            let cleaned = DOMPurify.sanitize(item.text);
+            return (<TextSection key={i} text={cleaned}/>);
         } else if (item.type === "sectionHeader") {
             return (<SectionHeader key={i} text={item.text}/>);
         }
