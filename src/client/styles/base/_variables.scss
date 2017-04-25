@@ -141,17 +141,10 @@ $margin-20: 20px;
 $margin-10: 10px;
 
 // Other Sizes
-$base-border-radius: 3px;
+$base-border-radius: 0;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
-
-// Colors
-$blue: #1565c0;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #ddd;
-
 
 // Colors
 $blue: #1565c0;
@@ -189,6 +182,7 @@ $cobalt-blue-light: #4E89EF;
 $cobalt-blue-lightest: #C8DAFA;
 
 $grey: #666666;
+$grey-dark: #333333;
 $grey-light: #C4C4C4;
 $grey-lighter: #EBEBEB;
 $grey-lightest: #F7F7F7;
@@ -211,7 +205,7 @@ $base-font-color: $text-grey;
 $action-color: $sba-blue;
 
 // Border
-$base-border-color: $light-gray;
+$base-border-color: #666666;
 $base-border: 1px solid $base-border-color;
 
 // Background Colors
@@ -220,7 +214,7 @@ $secondary-background-color: tint($base-border-color, 75%);
 
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
-$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+$form-box-shadow-focus: none;
 
 // Animations
 $base-duration: 150ms;

@@ -6,13 +6,13 @@ $error: #E21C3D;
 
 //COMMON INPUT STYLES
 //input labels
-.controlLabel {
-    display: block;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 18px;
-    margin: 5px 0 5px 0;
-    color: #333333;
-}
+// .controlLabel {
+//     display: block;
+//     font-family: "Source Sans Pro", sans-serif;
+//     font-size: 18px;
+//     margin: 5px 0 5px 0;
+//     color: #333333;
+// }
 //input containers
 .inputContainer {
     margin-bottom: 20px;
@@ -29,25 +29,25 @@ $error: #E21C3D;
     position: relative;
 }
 
-.textInput {
-    display: block;
-    border-radius: 0px;
-    font-size: 18px;
-    border: 1px solid #666666;
-    height: 48px;
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-}
+// .textInput {
+//     display: block;
+//     border-radius: 0px;
+//     font-size: 18px;
+//     border: 1px solid #666666;
+//     height: 48px;
+//     width: 100%;
+//     padding-left: 15px;
+//     padding-right: 15px;
+// }
 
-.textInput:focus {
-    outline: none;
-    border: 1px solid #609F00;
-    box-shadow: none !important;;
-}
+// .textInput:focus {
+//     outline: none;
+//     border: 1px solid #609F00;
+//     box-shadow: none !important;;
+// }
 
 .textInputInvalid {
-    composes: textInput;
+    //composes: textInput;
     border: 2px solid $error !important;
 }
 
@@ -65,26 +65,26 @@ $error: #E21C3D;
     position: relative;
 }
 
-.textArea {
-    font-size: 18px;
-    border-radius: 0;
-    border: 1px solid #666666;
-    height: 101px;
-    width: 100%;
-    padding-top: 12px;
-    padding-left: 15px;
-    padding-right: 35px;
-    resize: none;
-}
+// .textArea {
+//     font-size: 18px;
+//     border-radius: 0;
+//     border: 1px solid #666666;
+//     height: 101px;
+//     width: 100%;
+//     padding-top: 12px;
+//     padding-left: 15px;
+//     padding-right: 35px;
+//     resize: none;
+// }
 
-.textArea:focus {
-    outline: none !important;
-    border: 1px solid #609F00;
-    box-shadow: none !important;
-}
+// .textArea:focus {
+//     outline: none !important;
+//     border: 1px solid #609F00;
+//     box-shadow: none !important;
+// }
 
 .textAreaInvalid {
-    composes: textArea;
+    //composes: textArea;
     border: 2px solid $error !important;
 }
 
