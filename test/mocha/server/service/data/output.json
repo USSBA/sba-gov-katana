@@ -20,5 +20,6 @@
         "name": "Plan",
         "slugText": null,
         "vocabulary": "siteLocation"
-    }
+    },
+    "summary": "This is a summary"
 }
