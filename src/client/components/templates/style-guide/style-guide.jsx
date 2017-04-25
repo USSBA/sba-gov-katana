@@ -69,18 +69,23 @@ export default StyleGuide;
  		<h4>Primary</h4>
  		<LargePrimaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallPrimaryButton text="Small Button" />
+		<br />
 		<br />
 
 		<h4>Secondary</h4>
 		<LargeSecondaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallSecondaryButton text="Small Button" />
+		<br />
 		<br />
 
 		<h4>Inverse Primary</h4>
 		<div className={ styles.background }>
 		<LargeInversePrimaryButton text="Large Button" />
+		<br />
 		<br />
 		<SmallInversePrimaryButton text="Small Button" />
 		</div>
@@ -89,17 +94,21 @@ export default StyleGuide;
 		<div className={ styles.background }>
 		<LargeInverseSecondaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallInverseSecondaryButton text="Small Button" />
 		</div>
 
 		<h4>Grey Secondary</h4>
 		<LargeGreySecondaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallGreySecondaryButton text="Small Button" />
+		<br />
 		<br />
 
 		<h4>Disabled</h4>
 		<button disabled>Nope</button>
+		<br />
 		<br />
 		<br />
 	</div>;
