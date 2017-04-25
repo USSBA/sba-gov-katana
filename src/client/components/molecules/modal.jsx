@@ -2,7 +2,9 @@ import React from "react";
 import Modal from 'react-modal'
 import styles from './modal.scss'
 import sbaLogo from '../../../../public/assets/images/logo.png';
-import exitIcon from '../../../../public/assets/svg/grey-close-icon.svg';
+import ModalCloseIcon from '../../../../public/assets/svg/modal-close-icon.svg';
+import SmallGreySecondaryButton from '../atoms/small-grey-secondary-button/small-grey-secondary-button.jsx';
+import SmallPrimaryButton from '../atoms/small-primary-button/small-primary-button.jsx';
 
 class SbaModal extends React.Component {
   render() {
@@ -10,14 +12,14 @@ class SbaModal extends React.Component {
     return (
       <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
         {logo}
-        <a onClick={this.props.onClose}><img className={styles.exitIcon} src={exitIcon}/></a>
+        <a onClick={this.props.onClose}><img className={styles.closeIcon} src={ModalCloseIcon}/></a>
         <h3 className={styles.title}>{this.props.title}</h3>
         <div className={styles.divider}></div>
         <p className={styles.text}>{this.props.text}</p>
         {this.props.children}
         <div className={styles.btnContainer}>
-          <button onClick={this.props.onClose} className={styles.btnCancel}>{this.props.cancelButtonText}</button>
-          <button onClick={this.props.onClickOk} className={styles.btnContinue}>{this.props.okButtonText}</button>
+          <SmallPrimaryButton onClick={this.props.onClickOk} text={this.props.okButtonText} />
+          <SmallGreySecondaryButton onClick={this.props.onClose} text={this.props.cancelButtonText} />
         </div>
       </Modal>
     );
@@ -37,12 +39,12 @@ SbaModal.propTypes = {
 }
 
 SbaModal.defaultProps ={
-  cancelButtonText: "Cancel",
-  okButtonText: "OK",
+  cancelButtonText: "Wait no",
+  okButtonText: "Yes",
   showCancel: true,
   showOk: true,
   title: "Sample Modal Title",
-  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui.",
   showLogo: false,
   onClickOk: function() {
     console.log("Clicked OK")

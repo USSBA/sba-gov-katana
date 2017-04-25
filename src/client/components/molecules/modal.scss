@@ -51,15 +51,10 @@
     }
 }
 
-.exitIcon {
+.closeIcon {
     position: absolute;
     top:30px;
     right:30px;
-    width: 26.16px;
-    height: 26.16px;
-    color: #666666;
-    transform: scaleX(-1);
-    border-radius: 1px;
     cursor: pointer;
 }
 
@@ -86,46 +81,48 @@
 
 }
 
-
-
 .btnContainer {
     text-align: center;
-}
 
-.btn {
-    width: 124px;
-    font-size: 18px;
-    font-weight: 900;
-    padding: 12px 0 12px;
-
-    @media screen and (max-width: 767px) {
-        width: 100%;
+    button {
+        margin-right: 30px;
     }
 }
 
-.btnCancel {
-    composes: btn;
-    color: #666666;
-    background-color: white;
-    border: 2px solid #666666;
-    margin-right: 30px;
-    &:hover,
-    &:focus {
-    background-color: #666666;
-    color: #fff;
-  }
-    @media screen and (max-width: 767px) {
-        margin-right: 0;
-    }
-}
+// .btn {
+//     width: 124px;
+//     font-size: 18px;
+//     font-weight: 900;
+//     padding: 12px 0 12px;
 
-.btnContinue {
-    composes: btn;
-    color: white;
-    background-color: #0093DF;
-    border: none;
-    position: relative;
-        @media screen and (max-width: 767px) {
-        margin-top: 20px;
-    }
-}
+//     @media screen and (max-width: 767px) {
+//         width: 100%;
+//     }
+// }
+
+// .btnCancel {
+//     // composes: btn;
+//     // color: #666666;
+//     // background-color: white;
+//     // border: 2px solid #666666;
+//     margin-right: 30px;
+//   //   &:hover,
+//   //   &:focus {
+//   //   // background-color: #666666;
+//   //   // color: #fff;
+//   // }
+//     @media screen and (max-width: 767px) {
+//         margin-right: 0;
+//     }
+// }
+
+// .btnContinue {
+//     composes: btn;
+//     color: white;
+//     background-color: #0093DF;
+//     border: none;
+//     position: relative;
+//         @media screen and (max-width: 767px) {
+//         margin-top: 20px;
+//     }
+// }
