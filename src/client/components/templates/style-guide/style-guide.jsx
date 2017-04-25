@@ -22,16 +22,28 @@ import Hero from '../../organisms/hero/hero.jsx';
 import styles from './style-guide.scss';
 
 
- const StyleGuide = () =>
-	<div>
-			<Typography />
+class StyleGuide extends React.Component{
+  constructor(){
+  	super();
+  	this.state = {exampleModalIsOpen: false};
+  }
+	handleModalExampleClick(e){
+		e.preventDefault();
+		this.setState({exampleModalIsOpen: !this.state.exampleModalIsOpen});
+	}
+	render(){
+		return(<div>
+			<Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
 			<ButtonGroup/>
 			<ColorPalette />
-	</div>;
+			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{this.setState({exampleModalIsOpen: false})}} /> : <div/>}
+	</div>);
+	}
+}
 
 export default StyleGuide;
 
- const Typography = () =>
+ const Typography = ({onModalExampleClick}) =>
 	<div className={ styles.typography }>
 		<ExtraLargeTitleText text="XL:h1 Source Sans Pro Black" />
 		<h1>h1 Source Sans Pro Black</h1>
@@ -45,6 +57,7 @@ export default StyleGuide;
 		</p>
 		<p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
 		<CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor." />
+		<LargeSecondaryButton text="Click for Modal" onClick={onModalExampleClick} />
 	</div>;
 
 
