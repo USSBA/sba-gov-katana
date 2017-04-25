@@ -5,38 +5,32 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.66);
+    margin: 0 auto;
+      display: flex;
+  align-items: center;
+  justify-content: center;
+        @include grid-media( $sba-grid-small) {
+    padding: 0 19px;
+    }
 }
 
 .content {
-    background-color: white;
+    background-color: #fff;
     position: absolute;
-    width: 665px;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    margin: auto;
-    padding: 40px 40px 30px;
-    font-family: "Source Sans Pro";
-
-    @media screen and (max-width: 767px) {
-        width: 90vw;
-        position: absolute;
-        height: auto;
-        margin: auto;
-        padding: 8vw;
-        left: 50%;
-        top: 50%;
-        -ms-transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        -o-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+    transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    padding: 30px;
+    // @include grid-column(6, $sba-grid-small);
+    width: calc(100% - 38px);
+    @include grid-media( $sba-grid-medium) {
+        width: 556px;
     }
+
 }
 
 .logo {
@@ -53,9 +47,9 @@
 
 .closeIcon {
     position: absolute;
-    top:30px;
-    right:30px;
     cursor: pointer;
+    right: 30px;
+    width: 21px;
 }
 
 .title {
@@ -82,47 +76,23 @@
 }
 
 .btnContainer {
-    text-align: center;
-
-    button {
-        margin-right: 30px;
+    margin: 0 auto;
+    @include grid-media($sba-grid-small) {
+        button {
+            width: 100%;
+            &:first-child {
+            margin-bottom: 20px;
+            }
+        }
+    }
+    @include grid-media($sba-grid-medium) {
+    max-width: 296px;
+        button {
+            width: 133px;
+            &:first-child {
+            margin-left: 30px;
+            float: right;
+        }
+      }
     }
 }
-
-// .btn {
-//     width: 124px;
-//     font-size: 18px;
-//     font-weight: 900;
-//     padding: 12px 0 12px;
-
-//     @media screen and (max-width: 767px) {
-//         width: 100%;
-//     }
-// }
-
-// .btnCancel {
-//     // composes: btn;
-//     // color: #666666;
-//     // background-color: white;
-//     // border: 2px solid #666666;
-//     margin-right: 30px;
-//   //   &:hover,
-//   //   &:focus {
-//   //   // background-color: #666666;
-//   //   // color: #fff;
-//   // }
-//     @media screen and (max-width: 767px) {
-//         margin-right: 0;
-//     }
-// }
-
-// .btnContinue {
-//     composes: btn;
-//     color: white;
-//     background-color: #0093DF;
-//     border: none;
-//     position: relative;
-//         @media screen and (max-width: 767px) {
-//         margin-top: 20px;
-//     }
-// }
