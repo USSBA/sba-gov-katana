@@ -4,6 +4,7 @@ import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
 import ImageSection from "../../molecules/image-section/image-section.jsx";
 import TitleSection from "../../molecules/title-section/title-section.jsx";
+import ReadMoreSection from "../../molecules/readmore-section/readmore-section.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -32,7 +33,9 @@ class BusinessGuideArticle extends React.Component {
           paragraph = (<SectionHeader key={index} refId={sectionHeaderId} text={item.text}/>);
           this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
         } else if (item.type === "image") {
-          paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>)
+          paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>);
+        }else if(item.type === "readMore"){
+            paragraph = (<ReadMoreSection key={index} expandedCopyText={item.expandedCopyText} preview={item.preview} titleText={item.titleText}/>)
         }
       }
 
