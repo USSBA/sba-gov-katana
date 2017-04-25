@@ -15,8 +15,11 @@ class BusinessGuideArticle extends React.Component {
 
   componentWillMount() {}
 
+  sectionHeaders = [];
+
   makeParagraphs(paragraphData) {
     let paragraphs = [];
+    this.sectionHeaders = [];
     paragraphs = paragraphData.map(function(item, index) {
       let paragraph = (<ParagraphTypeToBeImplemented key={index} data={item} index={index}/>);
       if (item && item.type) {
@@ -25,16 +28,18 @@ class BusinessGuideArticle extends React.Component {
           let cleaned = DOMPurify.sanitize(item.text);
           paragraph = (<TextSection key={index} text={cleaned}/>);
         } else if (item.type === "sectionHeader") {
-          paragraph = (<SectionHeader key={index} text={item.text}/>);
+          let sectionHeaderId = "section-header-" + index;
+          paragraph = (<SectionHeader key={index} refId={sectionHeaderId} text={item.text}/>);
+          this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
         } else if (item.type === "image") {
           paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>)
         }
       }
-      return (
 
+      return (
         <div key={index} id={item.type + "-" + index}>{paragraph}</div>
       );
-    });
+    }.bind(this));
     return paragraphs;
   }
 
@@ -42,7 +47,7 @@ class BusinessGuideArticle extends React.Component {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     return (
       <div className={styles.container}>
-          <TitleSection paragraphs={this.props.paragraphs} title={this.props.title} summary={this.props.summary}/>
+          <TitleSection sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/>
           {paragraphs}
       </div>
     );

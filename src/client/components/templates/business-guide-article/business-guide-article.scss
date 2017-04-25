@@ -1,2 +1,6 @@
 .container{
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    padding-top: 80px;
+  }
 }

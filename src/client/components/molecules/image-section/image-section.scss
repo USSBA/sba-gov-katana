@@ -16,7 +16,7 @@
 	@include grid-column(8, $sba-grid-medium);
   @include grid-push(4);
   @include grid-media($sba-grid-small) {
-    @include grid-column(6)
+    @include grid-column(6);
     text-align: center;
   }
 }
