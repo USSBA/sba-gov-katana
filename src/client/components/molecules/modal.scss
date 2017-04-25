@@ -6,29 +6,32 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.66);
     margin: 0 auto;
-      display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-        @include grid-media( $sba-grid-small) {
+    @include grid-media( $sba-grid-small) {
     padding: 0 19px;
     }
 }
 
 .content {
     background-color: #fff;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
+    position: relative;
+    // top: 50%;
+    // right: 50%;
+    // transform: translate(-50%, -50%);
+    //     -ms-transform: translate(-50%, -50%);
+    //     -webkit-transform: translate(-50%, -50%);
+    //     -moz-transform: translate(-50%, -50%);
+    //     -o-transform: translate(-50%, -50%);
+    //     transform: translate(-50%, -50%);
     padding: 30px;
-    // @include grid-column(6, $sba-grid-small);
     width: calc(100% - 38px);
     @include grid-media( $sba-grid-medium) {
         width: 556px;
+    }
+    &:focus {
+        outline: none;
     }
 
 }
@@ -87,9 +90,9 @@
         }
     }
     @include grid-media($sba-grid-medium) {
-    max-width: 296px;
+    max-width: 305px;
         button {
-            width: 133px;
+            width: 135px;
             &:first-child {
             margin-left: 30px;
             float: right;
