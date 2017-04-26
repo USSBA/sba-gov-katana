@@ -13,6 +13,7 @@ import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
 import envelopeIcon from '../../../../public/assets/svg/envelope.svg';
+import btnStyles from "../atoms/small-primary-button/small-primary-button.scss";
 
 class SbaNewsModal extends React.Component {
     timerId = null;
@@ -124,6 +125,7 @@ class SbaNewsModal extends React.Component {
                         <p className={styles.privacyLink}><a  href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
                     </form>
                 </div>
+
                 <div className={this.state.displayForm ? styles.hideForm : styles.showForm}>
                     <img className={styles.envelopeIcon} src={envelopeIcon}/>
                     <p className={styles.byeMsg}>Thanks for subscribing!</p>
