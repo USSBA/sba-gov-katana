@@ -18,14 +18,10 @@ $sba-red: #F0415E;
 
 .QuestionContainer {
     text-align: center;
-    @include grid-media($sba-grid-small) {
-    }
 }
 
 .InputContainer {
     text-align: center;
-    @include grid-media($sba-grid-small) {
-    }
 }
 
 .InputContainer button {
@@ -34,6 +30,14 @@ $sba-red: #F0415E;
 
 .ThankYouContainer {
     text-align: center;
-    @include grid-media($sba-grid-small) {
-    }
+}
+
+.checkIcon {
+    color: $money-green;
+    font-size: 1.8rem;
+}
+
+.thanksAgain{
+    margin-left: $margin-10;
+    display: inline;
 }
