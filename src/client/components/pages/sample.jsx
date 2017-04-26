@@ -8,20 +8,35 @@ import _ from 'lodash';
 class SamplePage extends React.Component {
 
   componentWillMount() {
+    let id = this.props.params.id;
+    if (id > 0) {
       this.props.actions.fetchContentIfNeeded("node", this.props.params.id);
+    } else {}
   }
 
   render() {
-      if(this.props.data){
-          return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary}/>);
-      }else{
-          return (<div>Loading....</div>);
-      }
+    if (this.props.data) {
+      return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary}/>);
+    } else {
+      return (
+        <div>Loading....</div>
+      );
+    }
+  }
+}
+
+SamplePage.defaultProps = {
+  data: {
+    title: "Test Page",
+    summary: "test page thing",
+    paragraphs: []
   }
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  return {data: _.get(reduxState, "restContent.node["+ownProps.params.id+"]")};
+  return {
+    data: _.get(reduxState, "restContent.node[" + ownProps.params.id + "]")
+  };
 }
 
 function mapDispatchToProps(dispatch) {

@@ -1,0 +1,48 @@
+$sba-red: #F0415E;
+@include single-color-button(".RedButton", $sba-red) @include single-color-button(".GreenButton", $money-green) .question {
+    font-size: 1.3rem;
+    margin-bottom: $margin-30;
+}
+@include small-button(".GreenButton");
+@include small-button(".RedButton");
+
+.GreenButton {
+    margin-right: $margin-30;
+}
+
+.GreenButton,
+.RedButton {
+    padding-left: $margin-30;
+    padding-right: $margin-30;
+}
+
+.QuestionContainer {
+    text-align: center;
+    @include grid-column(3, $sba-grid-medium);
+    @include grid-push(7);
+    @include grid-media($sba-grid-small) {
+         @include grid-column(6);
+    }
+}
+
+.InputContainer {
+    text-align: center;
+    @include grid-column(7, $sba-grid-medium);
+    @include grid-push(5);
+    @include grid-media($sba-grid-small) {
+         @include grid-column(6);
+    }
+}
+
+.InputContainer button {
+    float: right;
+}
+
+.ThankYouContainer {
+    text-align: center;
+    @include grid-column(3, $sba-grid-medium);
+    @include grid-push(7);
+    @include grid-media($sba-grid-small) {
+         @include grid-column(6);
+    }
+}

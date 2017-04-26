@@ -79,6 +79,10 @@ app.get("/content/counselors-redirect.json", function(req, res) {
   });
 });
 
+import * as feedbackController from "./controllers/feedback-controller.js";
+app.post("/actions/feedback", feedbackController.handleFeedback);
+app.put("/actions/feedback/:id/text", feedbackController.handleFeedbackText);
+
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
