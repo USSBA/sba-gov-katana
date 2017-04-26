@@ -43,10 +43,7 @@ DisasterAlerts.defaultProps = {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    disaster: {
-    visible: true,
-    description: "Have you been affected by the Louisiana Flooding?"
-  }
+    disaster: reduxState.contentReducer["disaster"]
   };
 }
 
