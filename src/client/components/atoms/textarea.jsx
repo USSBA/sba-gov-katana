@@ -31,6 +31,7 @@ class TextArea extends React.Component {
       getValidationState,
       handleChange,
       errorText,
+      showCounter,
       ...rest
     } = this.props;
     return (
@@ -41,11 +42,15 @@ class TextArea extends React.Component {
         <div className={styles.textAreaContainer}>
           <textarea {...rest} className={this.inputValidation(getValidationState)} onChange={handleChange} maxLength="250"/> {this.iconValidation(getValidationState)}
         </div>
-        <span className={styles.textAreaCounter}>{value.length}/250</span>
+        {showCounter?<span className={styles.textAreaCounter}>{value.length}/250</span>: <div/>}
         {this.errorMessage(getValidationState, errorText)}
       </div>
     );
   }
+}
+
+TextArea.defaultProps = {
+    showCounter: true
 }
 
 export default TextArea;

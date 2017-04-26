@@ -4,6 +4,7 @@ import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
 import ImageSection from "../../molecules/image-section/image-section.jsx";
 import TitleSection from "../../molecules/title-section/title-section.jsx";
+import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx"
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -31,7 +32,6 @@ class BusinessGuideArticle extends React.Component {
         }
       }
       return (
-
         <div key={index} id={item.type + "-" + index}>{paragraph}</div>
       );
     });
@@ -44,6 +44,7 @@ class BusinessGuideArticle extends React.Component {
       <div className={styles.container}>
           <TitleSection paragraphs={this.props.paragraphs} title={this.props.title} summary={this.props.summary}/>
           {paragraphs}
+          <FeedbackForm />
       </div>
     );
   }
