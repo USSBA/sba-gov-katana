@@ -16,17 +16,17 @@ class DisasterAlerts extends React.Component {
     return (
       <div>
         { this.props.disasterAlertIsVisible && this.props.disaster.visible
-          ? <div className={ styles.applyForDisasterLoanParatureWrapper }>
-              <div className={ styles.disasterLoanParature }>
-                <div className={ styles.triangleIcon + " fa fa-exclamation-triangle" } aria-hidden="true"></div>
-                <div className={ styles.disasterDescription }>
-                  { this.props.disaster.description }
-                </div>
-                <a href='https://disasterloan.sba.gov/ela/' title='Apply for disaster loan' className={ styles.disasterBtn }>APPLY FOR DISASTER LOAN</a>
-                <div className={ styles.disasterLoanParatureClose } onClick={ this.props.onClose }>
-                  <img className={ styles.closeIcon } src={ exitIcon } alt="Close" />
-                </div>
+          ? <div className={styles.wrapper}>
+          <div className={ styles.alert }>
+              <div className={ styles.alertIcon + " fa fa-exclamation-triangle" } aria-hidden="true"></div>
+              <div className={ styles.disasterDescription }>
+                { this.props.disaster.description }
               </div>
+              <div className={ styles.alertClose } onClick={ this.props.onClose }>
+                <img src={ exitIcon } alt="Close" />
+              </div>
+              <div><a href='https://disasterloan.sba.gov/ela/' title='Apply for disaster loan' className={ styles.alertButton }>APPLY FOR DISASTER LOAN</a></div>
+            </div>
             </div>
           : null }
       </div>
@@ -43,7 +43,10 @@ DisasterAlerts.defaultProps = {
 
 function mapReduxStateToProps(reduxState) {
   return {
-    disaster: reduxState.contentReducer["disaster"]
+    disaster: {
+    visible: true,
+    description: "Have you been affected by the Louisiana Flooding?"
+  }
   };
 }
 

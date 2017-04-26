@@ -6,9 +6,9 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.66);
     margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include grid-media( $sba-grid-small) {
     padding: 0 19px;
     }
