@@ -1,32 +1,33 @@
 .textSection {
 	margin-bottom: 2.1vw;
-	@include grid-column(7, $sba-grid-medium);
-	@include grid-push(5);
-	@include grid-media($sba-grid-small) {
-		 @include grid-column(6)
-	}
 }
-
 // redundant with normalize css, but better to be explicit
 .textSection ul {
 	list-style: none;
 }
 // override the normalize removal
+
 .textSection ol {
 	list-style: decimal;
 }
-// indendts the ordered list items
+// indents the ordered list items
+
 .textSection ol li {
 	margin-left: 1.75em;
 }
-// adds space between the number and text
+
+
 .textSection ol li::before {
 	content: "";
 	width: 0.20em;
 	display: inline-block;
 }
+
+.textSection dd {
+	margin-left: 2em;
+}
 // formatting for the unordered list bullets
-.textSection ul li::before {
+.textSection dl dt::before, .textSection ul li::before {
 	padding-right: 0.5em;
 	content: "";
 	height: 1em;
@@ -40,10 +41,8 @@
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
-
-
 @mixin primary-color-theme-for-color($component) {
-	@each $name, $value in $primary-color-map {
+	 @each $name, $value in $primary-color-map{
 		:global(.#{$name}) {
 			#{$component} {
 				background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em'><circle cx='10' cy='10' r='4' fill='#{$value}' /></svg>") no-repeat;
@@ -51,6 +50,5 @@
 		}
 	}
 }
-
-
-@include primary-color-theme-for-color('.textSection ul li::before');
+@include primary-color-theme-for-color( '.textSection ul li::before');
+@include primary-color-theme-for-color( '.textSection dl dt::before');

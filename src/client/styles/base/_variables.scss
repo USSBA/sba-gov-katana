@@ -228,3 +228,29 @@ $primary-color-map:(
 	"money-green": $money-green,
 	"cobalt-blue": $cobalt-blue
 );
+
+@mixin small-button($component){
+    #{$component} {
+      font-size: 1.1em;
+      font-weight: 700;
+    }
+}
+
+@mixin single-color-button($component, $my-color) {
+     @each $name, $value in $primary-color-map{
+        :global(.#{$name}) {
+            #{$component} {
+                background-color: #fff;
+                color: $my-color;
+                border-color: null;
+
+                &:focus,
+                &:hover {
+                    background-color: $my-color;
+                    color: #fff;
+                    border-color: my-color;
+                }
+            }
+        }
+    }
+}
