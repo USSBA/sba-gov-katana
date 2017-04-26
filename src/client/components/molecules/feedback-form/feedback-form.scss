@@ -18,19 +18,13 @@ $sba-red: #F0415E;
 
 .QuestionContainer {
     text-align: center;
-    @include grid-column(3, $sba-grid-medium);
-    @include grid-push(7);
     @include grid-media($sba-grid-small) {
-         @include grid-column(6);
     }
 }
 
 .InputContainer {
     text-align: center;
-    @include grid-column(7, $sba-grid-medium);
-    @include grid-push(5);
     @include grid-media($sba-grid-small) {
-         @include grid-column(6);
     }
 }
 
@@ -40,9 +34,6 @@ $sba-red: #F0415E;
 
 .ThankYouContainer {
     text-align: center;
-    @include grid-column(3, $sba-grid-medium);
-    @include grid-push(7);
     @include grid-media($sba-grid-small) {
-         @include grid-column(6);
     }
 }

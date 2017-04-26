@@ -1,6 +1,8 @@
-.container{
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6);
-    padding-top: 80px;
-  }
+.container {
+    @include grid-column(8, $sba-grid-medium);
+    @include grid-push(4);
+    @include grid-media($sba-grid-small) {
+         @include grid-column(6) ;
+         padding-top: 80px;
+    }
 }

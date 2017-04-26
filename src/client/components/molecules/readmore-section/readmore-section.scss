@@ -1,6 +1,4 @@
 .readMoreSection {
-  @include grid-column(7, $sba-grid-medium);
-  @include grid-push(5);
   padding: 40px;
   margin-bottom: 40px;
   //float: right;
@@ -8,7 +6,6 @@
   //@include grid-container;
   background-color: #EBEBEB;
   @include grid-media($sba-grid-small) {
-    @include grid-column(6);
     text-align: center;
   }
 }
