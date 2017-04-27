@@ -2,6 +2,6 @@ import React from 'react';
 import styles from './large-primary-button.scss';
 
  const LargePrimaryButton = (props) =>
-		<button className={ styles.LargePrimaryButton } href="{ props.URL }">{ props.text }</button>;
+		<button id={props.id} className={ styles.LargePrimaryButton } href={ props.URL } onClick={props.onClick} disabed={props.disabled}>{ props.text }</button>;
 
 export default LargePrimaryButton;
