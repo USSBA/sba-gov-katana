@@ -4,6 +4,13 @@
         background-color: $background-color;
         color: $text-color;
         border-color: $border-color;
+
+          &:disabled {
+    cursor: not-allowed;
+    background-color: #C4C4C4;
+    border-color: #C4C4C4;
+    color: #fff;
+  }
     }
   }
 }
@@ -17,7 +24,16 @@
         background-color: $background-color;
         color: $text-color;
         border-color: $border-color;
+
+          &:disabled {
+    cursor: not-allowed;
+    background-color: #C4C4C4;
+    color: #fff;
+    border-color: #C4C4C4;
+  }
       }
+
+
     }
   }
 }
