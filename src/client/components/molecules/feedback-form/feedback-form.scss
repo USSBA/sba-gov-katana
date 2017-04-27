@@ -1,5 +1,8 @@
 $sba-red: #F0415E;
-@include single-color-button(".RedButton", $sba-red) @include single-color-button(".GreenButton", $money-green) .question {
+@include single-color-button(".RedButton", $sba-red);
+@include single-color-button(".GreenButton", $money-green);
+
+.question {
     font-size: 1.3rem;
     margin-bottom: $margin-30;
 }
@@ -37,7 +40,7 @@ $sba-red: #F0415E;
     font-size: 1.8rem;
 }
 
-.thanksAgain{
+.thanksAgain {
     margin-left: $margin-10;
     display: inline;
 }

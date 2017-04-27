@@ -1,28 +1,39 @@
 import React from 'react';
+import { connect } from "react-redux";
+import {bindActionCreators} from "redux";
 import styles from './feedback-form.scss'
 import SmallPrimaryButton from "../../atoms/small-primary-button/small-primary-button.jsx"
 import TextArea from "../../atoms/textarea.jsx";
+import * as FeedbackActions from "../../../actions/feedback.js";
 
 let question = "Was this article helpful?";
 let firstThankYou = "Thanks for your feedback!";
 let subtext = "Please let us know how you think we can improve this article";
 let placeholder = "Add your suggestions here";
+let thanksAgain = "Thanks again for your feedback!";
 let states = ["QUESTION", "INPUT", "THANKYOU"];
 class FeedbackForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      displayState: states[0]
+      displayState: states[0],
+      feedbackText: ""
     };
   }
   handleYesClick() {
+    this.props.actions.submitResults(true);
     this.setState({displayState: states[1]});
   }
   handleNoClick() {
+    this.props.actions.submitResults(false);
     this.setState({displayState: states[1]});
   }
   handleSubmit() {
+    this.props.actions.submitText(this.props.lastFeedbackId, this.state.feedbackText);
     this.setState({displayState: states[2]});
+  }
+  handleChange(e) {
+    this.setState({feedbackText: e.target.value});
   }
   render() {
     if (this.state.displayState === states[1]) {
@@ -30,7 +41,7 @@ class FeedbackForm extends React.Component {
         <div id="feedback-module-input" className={styles.InputContainer}>
           <h4 className={styles.question}>{firstThankYou}</h4>
           <p>{subtext}</p>
-          <TextArea id="feedback-input" placeholder={placeholder} showCounter={false}/>
+          <TextArea id="feedback-input" placeholder={placeholder} showCounter={false} onChange={this.handleChange.bind(this)}/>
           <SmallPrimaryButton id="feedback-submit-button" text="SUBMIT" onClick={this.handleSubmit.bind(this)}/>
         </div>
       );
@@ -38,7 +49,7 @@ class FeedbackForm extends React.Component {
       return (
         <div id="feedback-module-thankyou" className={styles.ThankYouContainer}>
           <i id="thank-you-check-circle" tabIndex="-1" alt="thank-you" className={"fa fa-check-circle " + styles.checkIcon} aria-hidden="true"></i>
-          <h4 className={styles.thanksAgain} >Thanks again for your feedback!</h4>
+          <h4 className={styles.thanksAgain}>{thanksAgain}</h4>
         </div>
       );
     } else {
@@ -55,4 +66,13 @@ class FeedbackForm extends React.Component {
   }
 }
 
-export default FeedbackForm;
+function mapStateToProps(state) {
+  return {lastFeedbackId: state.feedback.lastFeedbackId};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(FeedbackActions, dispatch)
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm);

@@ -18,6 +18,7 @@ app.set("views", path.join(__dirname, "./views/"));
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json();
+app.use(jsonParser);
 //set up static files handler not route specific but will route to any static files inside public and its subfolders
 app.use(express.static("public"));
 

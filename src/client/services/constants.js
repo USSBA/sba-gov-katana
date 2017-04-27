@@ -1,7 +1,9 @@
 const constants = {
   routes: {
     confirmationEmail: "/linc/resend",
-    submitForm: "/linc/matchFormData"
+    submitForm: "/linc/matchFormData",
+    submitFeedbackResults: "/actions/feedback/",
+    submitFeedbackText: "/actions/feedback/{id}/text"
   },
   messages: {
     validation: {
