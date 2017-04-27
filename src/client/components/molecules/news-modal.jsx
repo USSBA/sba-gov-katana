@@ -13,7 +13,7 @@ import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
 import envelopeIcon from '../../../../public/assets/svg/envelope.svg';
-import btnStyles from "../atoms/small-primary-button/small-primary-button.scss";
+import SmallPrimaryButton from "../atoms/small-primary-button/small-primary-button.jsx";
 
 class SbaNewsModal extends React.Component {
     timerId = null;
@@ -114,13 +114,11 @@ class SbaNewsModal extends React.Component {
                 <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
                     <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
                         <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-                        <div>
+                        <div className="sba-blue">
                             <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
-                            <div className={styles.btnContainer}>
-                                <button className={styles.btnSubscribe} type="submit" disabled={!(this.isValidForm())}>
-                                    SUBSCRIBE
-                                </button>
-                            </div>
+                                <div className={styles.btnContainer}>
+                                    <SmallPrimaryButton text="SUBSCRIBE" type="submit" disabled={!(this.isValidForm())}/>
+                                </div>
                         </div>
                         <p className={styles.privacyLink}><a  href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
                     </form>
