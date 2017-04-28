@@ -16,11 +16,11 @@ class ReadMoreSection extends React.Component{
     }
     render(){
         let btnText = this.state.expanded ? "CLOSE" :  "READ MORE";
-        let expandedTextSection = this.state.expanded ? <p className={styles.expandedCopyText}>{this.props.expandedCopyText}</p> : "" ;
+        let expandedTextSection = this.state.expanded ? <p className={styles.expandedCopyText}>{this.props.readMoreSectionItem.expandedCopyText}</p> : "" ;
 
         return (<div className={styles.readMoreSection}>
-            <h3 className={styles.title}>{this.props.titleText}</h3>
-            <p className={styles.preview}>{this.props.preview}</p>
+            <h3 className={styles.title}>{this.props.readMoreSectionItem.titleText}</h3>
+            <p className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
             {expandedTextSection}
             <button className={btnStyles.SmallSecondaryButton} href="#" onClick={this.handleClick}>{btnText}</button>
         </div>);
@@ -28,9 +28,10 @@ class ReadMoreSection extends React.Component{
 }
 
 ReadMoreSection.propTypes ={
-    titleText: React.PropTypes.string.isRequired,
-    preview: React.PropTypes.string.isRequired,
-    expandedCopyText: React.PropTypes.string.isRequired
+    //titleText: React.PropTypes.string.isRequired,
+    //preview: React.PropTypes.string.isRequired,
+    //expandedCopyText: React.PropTypes.string.isRequired
+    readMoreSectionItem: React.PropTypes.object.isRequired
 };
 
 export default ReadMoreSection;

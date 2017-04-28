@@ -1,6 +1,15 @@
 .textSection {
 	margin-bottom: 2.1vw;
 }
+
+.readMoreSectionClosed{
+	margin-bottom: 2.1vw;
+	@include grid-column(4, $sba-grid-medium);
+	//@include grid-push(5);
+	width: 50%;
+	margin-left:0;
+}
+
 // redundant with normalize css, but better to be explicit
 .textSection ul {
 	list-style: none;

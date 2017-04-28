@@ -1,6 +1,7 @@
 .readMoreSection {
   padding: 40px;
   margin-bottom: 40px;
+  //height: 0;
   //float: right;
   //width: 30%;
   //@include grid-container;
@@ -8,6 +9,20 @@
   @include grid-media($sba-grid-small) {
     text-align: center;
   }
+}
+
+.readMoreSectionClosed {
+  @include grid-column(4, $sba-grid-medium);
+  //@include grid-push(3);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 0;
+  width: 30%;
+  //height: 0;
+  //float: right;
+  //width: 30%;
+  //@include grid-container;
+  //background-color: #EBEBEB;
 }
 
 .title{
