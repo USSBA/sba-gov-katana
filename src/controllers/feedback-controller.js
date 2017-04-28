@@ -1,18 +1,21 @@
-import { saveFeedback, saveFeedbackText } from "../service/feedback-service";
+import { saveFeedback, saveFeedbackText } from "../service/feedback-service.js";
 import moment from "moment";
 import HttpStatus from "http-status-codes";
 
 function handleFeedback(req, res) {
-  if (req.body.result) {
+  if (req && req.body && req.body.result) {
     const feedback = {
-      sessionId: req.sessionAndConfig,
+      id: req.body.id,
+      sessionId: req.sessionInfo || "",
       result: req.body.result,
       timestamp: moment().unix(),
       sourceIpAddress: req.ip
     };
     saveFeedback(feedback)
       .then(function(id) {
-        res.status(HttpStatus.OK).send(JSON.stringify(id));
+        res.status(HttpStatus.OK).send({
+          id: id
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -24,7 +27,7 @@ function handleFeedback(req, res) {
 }
 
 function handleFeedbackText(req, res) {
-  if (req.body.text && req.params.id) {
+  if (req && req.body && req.body.text && req.params && req.params.id) {
     saveFeedbackText(req.params.id, req.body.text)
       .then(function() {
         res.status(HttpStatus.NO_CONTENT).send();

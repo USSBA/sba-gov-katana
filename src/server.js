@@ -44,6 +44,7 @@ app.use(function(req, res, next) {
   let hasSessionCookie = false;
   if (sessionCookie) {
     hasSessionCookie = true;
+    req.sessionInfo = req.cookie[sessionCookie]; //eslint-disable-line no-param-reassign
   }
   const clientConfig = {
     isUserLoggedIn: hasSessionCookie || false,
