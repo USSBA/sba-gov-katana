@@ -43,8 +43,8 @@ class FeedbackForm extends React.Component {
         <div id="feedback-module-input" className={styles.InputContainer}>
           <h4 className={styles.question}>{firstThankYou}</h4>
           <p>{subtext}</p>
-          <TextArea id="feedback-input" placeholder={placeholder} showCounter={false} onChange={this.handleChange.bind(this)}/>
-          <SmallPrimaryButton id="feedback-submit-button" text="SUBMIT" onClick={this.handleSubmit.bind(this)}/>
+          <TextArea id="feedback-input" placeholder={placeholder} showCounter={false} onChange={this.handleChange.bind(this)} />
+          <SmallPrimaryButton id="feedback-submit-button" text="SUBMIT" onClick={this.handleSubmit.bind(this)} disabled={!this.state.feedbackText || this.state.feedbackText.length===0}/>
         </div>
       );
     } else if (this.state.displayState === states[2]) {
