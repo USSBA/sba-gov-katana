@@ -77,7 +77,7 @@ function formatParagraph(paragraph) {
         newValue = sanitizeTextSectionHtml(newValue);
       } else if (key === "image") {
         let imageUrl = url.parse(newValue.url);
-        const host = "http://content.sbagov.fearlesstesters.com";
+        const host = "https://content.sbagov.fearlesstesters.com";
         imageUrl = host + imageUrl.pathname;
         newValue.url = imageUrl;
       }
