@@ -2,10 +2,11 @@ import axios from "axios";
 import types from "./types.js";
 import constants from "../services/constants.js";
 
-export function submitResults(results) {
+export function submitResults(results, id) {
   return function(dispatch) {
     axios.post(constants.routes.submitFeedbackResults, {
-      result: results
+      result: results,
+      id: id
     })
       .then((response) => {
         dispatch({

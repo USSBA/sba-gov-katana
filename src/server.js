@@ -40,11 +40,11 @@ app.use(function(req, res, next) {
   const sessionCookie = _.find(_.keys(req.cookies), (key) => {
     return _.startsWith(key, "SSESS");
   });
-  req.sessionCookie = sessionCookie; //eslint-disable-line no-param-reassign
   console.log("Session cookie: ", sessionCookie);
   let hasSessionCookie = false;
   if (sessionCookie) {
     hasSessionCookie = true;
+    req.sessionInfo = req.cookie[sessionCookie]; //eslint-disable-line no-param-reassign
   }
   const clientConfig = {
     isUserLoggedIn: hasSessionCookie || false,

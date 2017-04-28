@@ -30,6 +30,7 @@ class TextArea extends React.Component {
       hidden,
       getValidationState,
       handleChange,
+      onChange,
       errorText,
       showCounter,
       ...rest
@@ -40,7 +41,7 @@ class TextArea extends React.Component {
           {label}
         </label>
         <div className={styles.textAreaContainer}>
-          <textarea {...rest} className={this.inputValidation(getValidationState)} onChange={handleChange} maxLength="250"/> {this.iconValidation(getValidationState)}
+          <textarea {...rest} className={this.inputValidation(getValidationState)} onChange={handleChange || onChange} maxLength="250"/> {this.iconValidation(getValidationState)}
         </div>
         {showCounter?<span className={styles.textAreaCounter}>{value.length}/250</span>: <div/>}
         {this.errorMessage(getValidationState, errorText)}

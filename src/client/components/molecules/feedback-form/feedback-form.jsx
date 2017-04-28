@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import styles from './feedback-form.scss'
 import SmallPrimaryButton from "../../atoms/small-primary-button/small-primary-button.jsx"
 import TextArea from "../../atoms/textarea.jsx";
 import * as FeedbackActions from "../../../actions/feedback.js";
+import uuid from "uuid";
 
 let question = "Was this article helpful?";
 let firstThankYou = "Thanks for your feedback!";
@@ -21,11 +22,11 @@ class FeedbackForm extends React.Component {
     };
   }
   handleYesClick() {
-    this.props.actions.submitResults(true);
+    this.props.actions.submitResults(true, uuid.v4());
     this.setState({displayState: states[1]});
   }
   handleNoClick() {
-    this.props.actions.submitResults(false);
+    this.props.actions.submitResults(false, uuid.v4());
     this.setState({displayState: states[1]});
   }
   handleSubmit() {
@@ -33,6 +34,7 @@ class FeedbackForm extends React.Component {
     this.setState({displayState: states[2]});
   }
   handleChange(e) {
+    console.log(e.target.value);
     this.setState({feedbackText: e.target.value});
   }
   render() {

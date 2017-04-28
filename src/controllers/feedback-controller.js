@@ -5,7 +5,8 @@ import HttpStatus from "http-status-codes";
 function handleFeedback(req, res) {
   if (req && req.body && req.body.result) {
     const feedback = {
-      sessionId: req.sessionCookie,
+      id: req.body.id,
+      sessionId: req.sessionInfo || "",
       result: req.body.result,
       timestamp: moment().unix(),
       sourceIpAddress: req.ip
