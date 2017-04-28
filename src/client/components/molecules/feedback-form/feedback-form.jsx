@@ -34,7 +34,6 @@ class FeedbackForm extends React.Component {
     this.setState({displayState: states[2]});
   }
   handleChange(e) {
-    console.log(e.target.value);
     this.setState({feedbackText: e.target.value});
   }
   render() {
