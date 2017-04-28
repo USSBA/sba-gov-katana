@@ -22,16 +22,28 @@ import Hero from '../../organisms/hero/hero.jsx';
 import styles from './style-guide.scss';
 
 
- const StyleGuide = () =>
-	<div>
-			<Typography />
+class StyleGuide extends React.Component{
+  constructor(){
+  	super();
+  	this.state = {exampleModalIsOpen: false};
+  }
+	handleModalExampleClick(e){
+		e.preventDefault();
+		this.setState({exampleModalIsOpen: !this.state.exampleModalIsOpen});
+	}
+	render(){
+		return(<div>
+			<Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
 			<ButtonGroup/>
 			<ColorPalette />
-	</div>;
+			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{this.setState({exampleModalIsOpen: false})}} /> : <div/>}
+	</div>);
+	}
+}
 
 export default StyleGuide;
 
- const Typography = () =>
+ const Typography = ({onModalExampleClick}) =>
 	<div className={ styles.typography }>
 		<ExtraLargeTitleText text="XL:h1 Source Sans Pro Black" />
 		<h1>h1 Source Sans Pro Black</h1>
@@ -45,6 +57,7 @@ export default StyleGuide;
 		</p>
 		<p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
 		<CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor." />
+		<LargeSecondaryButton text="Click for Modal" onClick={onModalExampleClick} />
 	</div>;
 
 
@@ -56,18 +69,23 @@ export default StyleGuide;
  		<h4>Primary</h4>
  		<LargePrimaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallPrimaryButton text="Small Button" />
+		<br />
 		<br />
 
 		<h4>Secondary</h4>
 		<LargeSecondaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallSecondaryButton text="Small Button" />
+		<br />
 		<br />
 
 		<h4>Inverse Primary</h4>
 		<div className={ styles.background }>
 		<LargeInversePrimaryButton text="Large Button" />
+		<br />
 		<br />
 		<SmallInversePrimaryButton text="Small Button" />
 		</div>
@@ -76,17 +94,21 @@ export default StyleGuide;
 		<div className={ styles.background }>
 		<LargeInverseSecondaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallInverseSecondaryButton text="Small Button" />
 		</div>
 
 		<h4>Grey Secondary</h4>
 		<LargeGreySecondaryButton text="Large Button" />
 		<br />
+		<br />
 		<SmallGreySecondaryButton text="Small Button" />
+		<br />
 		<br />
 
 		<h4>Disabled</h4>
 		<button disabled>Nope</button>
+		<br />
 		<br />
 		<br />
 	</div>;

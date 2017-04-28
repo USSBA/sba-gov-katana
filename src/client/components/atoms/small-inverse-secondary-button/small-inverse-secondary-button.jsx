@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './small-inverse-secondary-button.scss';
 
  const SmallInverseSecondaryButton = (props) =>
-	<div>
-		<button className={ styles.SmallInverseSecondaryButton } href="{ props.URL }">{ props.text }</button>
-	</div>;
+		<button id={props.id} className={ styles.SmallInverseSecondaryButton } href={ props.URL } onClick={props.onClick} disabled={props.disabled}>{ props.text }</button>;
 
 export default SmallInverseSecondaryButton;
 

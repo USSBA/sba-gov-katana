@@ -4,24 +4,25 @@ import styles from "./title-section.scss";
 
 class TitleSection extends React.Component{
 
-    makeTitleLinks(paragraphData) {
+    makeTitleLinks(sectionHeaders) {
         let titleLinks = [];
-        titleLinks = paragraphData.map(function(item, index) {
+        titleLinks = sectionHeaders.map(function(item, index) {
             return (
-            (item && item.type === "sectionHeader") ? <li ><a className={styles.titleLink} href={"#section-header" + "-" + index}>{item.text}</a></li> : ""
+                <li ><a className={styles.titleLink} href={"#" + item.id}>{item.text}</a></li>
             );
         });
         return titleLinks;
     }
 
     render(){
-        let titleLinks = this.makeTitleLinks(this.props.paragraphs);
+        let titleLinks = this.makeTitleLinks(this.props.sectionHeaders);
         return (<div className={styles.titleSection}>
-                    <h1>{this.props.title}</h1>
+                    <h1 className={styles.title}>{this.props.title}</h1>
                     <p className={styles.summary}>{this.props.summary}</p>
                     <hr className={styles.lineCopy}/>
                     <p className={styles.content}>Content</p>
                     <ul>{titleLinks}</ul>
+                    <hr className={styles.hrLine}/>
                 </div>);
     }
 }

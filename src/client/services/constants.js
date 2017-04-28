@@ -1,7 +1,9 @@
 const constants = {
   routes: {
     confirmationEmail: "/linc/resend",
-    submitForm: "/linc/matchFormData"
+    submitForm: "/linc/matchFormData",
+    submitFeedbackResults: "/actions/feedback/",
+    submitFeedbackText: "/actions/feedback/{id}/text"
   },
   messages: {
     validation: {
@@ -15,7 +17,7 @@ const constants = {
       invalidLoanDescription: "Please provide a brief description.",
       invalidLoanAmount: "The minimum loan amount is $500.",
       invalidNewsLetterEmail: "Enter a valid email address.",
-      invalidNewsLetterZipCode: "A U.S. ZIP code must be five digits."
+      invalidNewsLetterZipCode: "Enter a 5 digit ZIP code."
     }
   }
 };

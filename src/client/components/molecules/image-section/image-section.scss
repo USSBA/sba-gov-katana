@@ -1,11 +1,9 @@
 .imageSection {
-	@include grid-column(8, $sba-grid-medium);
-  @include grid-push(4);
-  @include grid-media($sba-grid-small) {
-    margin: 0;
-    text-align: center;
-    width: 100%
-  }
+	@include grid-media($sba-grid-small) {
+		margin: 0;
+		text-align: center;
+		width: 100%;
+	}
 }
 
 .captionText {
@@ -13,10 +11,7 @@
 	font-style: italic;
 	margin-top: 10px;
 	margin-bottom: 50px;
-	@include grid-column(8, $sba-grid-medium);
-  @include grid-push(4);
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6)
-    text-align: center;
-  }
+	@include grid-media($sba-grid-small) {
+		text-align: center;
+	}
 }

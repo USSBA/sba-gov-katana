@@ -18,6 +18,7 @@ app.set("views", path.join(__dirname, "./views/"));
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json();
+app.use(jsonParser);
 //set up static files handler not route specific but will route to any static files inside public and its subfolders
 app.use(express.static("public"));
 
@@ -43,6 +44,7 @@ app.use(function(req, res, next) {
   let hasSessionCookie = false;
   if (sessionCookie) {
     hasSessionCookie = true;
+    req.sessionInfo = req.cookie[sessionCookie]; //eslint-disable-line no-param-reassign
   }
   const clientConfig = {
     isUserLoggedIn: hasSessionCookie || false,
@@ -78,6 +80,10 @@ app.get("/content/counselors-redirect.json", function(req, res) {
     });
   });
 });
+
+import * as feedbackController from "./controllers/feedback-controller.js";
+app.post("/actions/feedback", feedbackController.handleFeedback);
+app.put("/actions/feedback/:id/text", feedbackController.handleFeedbackText);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);

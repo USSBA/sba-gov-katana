@@ -6,6 +6,7 @@ import lenderMatchReducer from "../reducers/lender-match.js";
 import reviewSubmitInfoReducer from "./review-submit-info.js";
 import modalReducer from "./modal.js";
 import contentReducer from "./content.js";
+import feedbackReducer from "./feedback.js";
 import restContentReducer from "./rest-content.js";
 import confirmationEmailReducer from "./confirmation-email.js";
 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   modalReducer: modalReducer,
   contentReducer: contentReducer,
   confirmationEmailReducer: confirmationEmailReducer,
-  restContent: restContentReducer
+  restContent: restContentReducer,
+  feedback: feedbackReducer
 });
 
 export default rootReducer;
