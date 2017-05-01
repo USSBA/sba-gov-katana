@@ -4,9 +4,8 @@ import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
 import ImageSection from "../../molecules/image-section/image-section.jsx";
 import TitleSection from "../../molecules/title-section/title-section.jsx";
+import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
 import TextReadMoreSection from "../../molecules/text-readmore-section/text-readmore-section.jsx";
-import ReadMoreSection from "../../molecules/readmore-section/readmore-section.jsx";
-import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx"
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
