@@ -10,8 +10,8 @@ class TextReadMoreSection extends React.Component{
     render(){
         let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
         return (<div className={styles.textReadMoreSection}>
-            <ReadMoreSection className={readMoreSectionStyles.readMoreSectionClosed} readMoreSectionItem={this.props.readMoreSectionItem}/>
             <TextSection className={textSectionStyles.readMoreSectionClosed} text={cleaned}/>
+            <ReadMoreSection className={readMoreSectionStyles.readMoreSectionClosed} readMoreSectionItem={this.props.readMoreSectionItem}/>
         </div>);
     }
 }

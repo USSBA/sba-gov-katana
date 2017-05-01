@@ -28,9 +28,6 @@ class ReadMoreSection extends React.Component{
 }
 
 ReadMoreSection.propTypes ={
-    //titleText: React.PropTypes.string.isRequired,
-    //preview: React.PropTypes.string.isRequired,
-    //expandedCopyText: React.PropTypes.string.isRequired
     readMoreSectionItem: React.PropTypes.object.isRequired
 };
 

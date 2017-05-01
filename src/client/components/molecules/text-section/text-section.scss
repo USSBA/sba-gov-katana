@@ -5,16 +5,7 @@
 .readMoreSectionClosed{
 	margin-bottom: 2.1vw;
 	@include grid-column(4, $sba-grid-medium);
-	//@include grid-push(5);
-	width: 50%;
-	margin-left:0;
-}
-
-.readMoreSectionClosed{
-	margin-bottom: 2.1vw;
-	@include grid-column(4, $sba-grid-medium);
-	//@include grid-push(5);
-	width: 50%;
+	//width: 50%;
 	margin-left:0;
 }
 
