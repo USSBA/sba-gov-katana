@@ -1,4 +1,5 @@
 .textReadMoreSection {
+  @include grid-container;
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
     text-align: center;
