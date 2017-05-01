@@ -3,10 +3,12 @@
 }
 
 .readMoreSectionClosed{
-	@include grid-column(6, $sba-grid-medium);
+	margin-left: 0 !important;
+	@include grid-column(6.5, $sba-grid-medium);
 }
 
 .readMoreSectionExpanded{
+	margin-left: 0 !important;
 	@include grid-push(0);
 }
 
