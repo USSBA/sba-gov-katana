@@ -89,6 +89,14 @@ class SbaNewsModal extends React.Component {
         this.setState(newState, () => this.validateFields([name]));
     }
 
+
+    handleKeyDown(event) {
+        let code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 13) {
+            this.setState({modalIsOpen: false});
+        }
+    }
+
     handleBlur(e) {
         this.validateFields([e.target.name], "error");
     }
@@ -110,7 +118,7 @@ class SbaNewsModal extends React.Component {
             <ReactModal isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} role="dialog" aria-labelledby="dialogTitle" contentLabel="Modal">
                 <div className={this.state.displayForm ? styles.titleWrapper : styles.hideForm}>
                     <h2 id="dialogTitle" className={styles.title} >Get business advice and invitations to local business events.</h2>
-                    <a onClick={this.handleClose.bind(this)}><img tabIndex="0" className={styles.exitIcon} src={exitIcon}/></a>
+                    <a onClick={this.handleClose.bind(this)}><img tabIndex="0" className={styles.exitIcon} src={exitIcon} onKeyDown={ (event) => this.handleKeyDown(event) }/></a>
                 </div>
                 <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
                     <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
