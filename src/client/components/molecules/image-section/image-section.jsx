@@ -8,6 +8,7 @@ class ImageSection extends React.Component {
 			<div>
 				<img id={"image-header-" + this.props.index}
 						 className={styles.imageSection}
+						 alt={this.props.imageObj.alt}
 						 src={this.props.imageObj.url}
 				/>
 				<p className={styles.captionText}>{this.props.captionText}</p>
