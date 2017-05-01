@@ -5,11 +5,17 @@
 .readMoreSectionClosed{
 	margin-left: 0 !important;
 	@include grid-column(6.5, $sba-grid-medium);
+	@include grid-media($sba-grid-small) {
+		text-align: left;
+	}
 }
 
 .readMoreSectionExpanded{
 	margin-left: 0 !important;
 	@include grid-push(0);
+	@include grid-media($sba-grid-small) {
+		text-align: left;
+	}
 }
 
 // redundant with normalize css, but better to be explicit
