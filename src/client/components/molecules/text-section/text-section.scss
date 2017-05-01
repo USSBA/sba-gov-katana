@@ -54,7 +54,7 @@
 	 @each $name, $value in $primary-color-map{
 		:global(.#{$name}) {
 			#{$component} {
-				background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em'><circle cx='10' cy='10' r='4' fill='#{$value}' /></svg>") no-repeat;
+				background: url("../../../../../public/assets/svg/circle/circle-#{$name}.svg") no-repeat;
 			}
 		}
 	}
