@@ -3,10 +3,11 @@
 }
 
 .readMoreSectionClosed{
-	//margin-bottom: 2.1vw;
 	@include grid-column(6, $sba-grid-medium);
-	//width: 50%;
-	//margin-left:0;
+}
+
+.readMoreSectionExpanded{
+	@include grid-push(0);
 }
 
 // redundant with normalize css, but better to be explicit

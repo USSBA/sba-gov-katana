@@ -8,12 +8,11 @@
 }
 
 .readMoreSectionClosed {
-  //@include grid-column(4, $sba-grid-medium);
   @include grid-push(6);
-  //padding: 20px;
-  //margin-bottom: 20px;
-  //margin-left: 0;
-  //width: 30%;
+}
+
+.readMoreSectionExpanded {
+  @include grid-push(0);
 }
 
 .title{
