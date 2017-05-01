@@ -1,54 +1,44 @@
 //LINC FORM INPUTS
 
-//colors
-$money-green: #609F00;
-$error: #E21C3D;
+  @include theme-focus('money-green', '.textInput', $money-green);
+  @include theme-focus('sba-blue', '.textInput', $sba-blue);
+  @include theme-focus('cobalt-blue', '.textInput', $cobalt-blue);
+  @include theme-focus('byzantine', '.textInput', $byzantine);
+
+  @include theme-focus('money-green', '.textArea', $money-green);
+  @include theme-focus('sba-blue', '.textArea', $sba-blue);
+  @include theme-focus('cobalt-blue', '.textArea', $cobalt-blue);
+  @include theme-focus('byzantine', '.textArea', $byzantine);
 
 //COMMON INPUT STYLES
-//input labels
-// .controlLabel {
-//     display: block;
-//     font-family: "Source Sans Pro", sans-serif;
-//     font-size: 18px;
-//     margin: 5px 0 5px 0;
-//     color: #333333;
-// }
-//input containers
+
 .inputContainer {
-    margin-bottom: 20px;
+  margin-bottom: 20px !important
 }
+
 //validation text
 .errorText {
     font-size: 16px;
     font-weight: 600;
     color: $error;
+    margin-bottom:0;
+    margin-top:0;
 }
 
 //TEXT INPUT
 .textInputContainer {
     position: relative;
+    margin-bottom: 0px !important;
 }
 
-// .textInput {
-//     display: block;
-//     border-radius: 0px;
-//     font-size: 18px;
-//     border: 1px solid #666666;
-//     height: 48px;
-//     width: 100%;
-//     padding-left: 15px;
-//     padding-right: 15px;
-// }
-
-// .textInput:focus {
-//     outline: none;
-//     border: 1px solid #609F00;
-//     box-shadow: none !important;;
-// }
+.textInput {
+  margin-bottom: 0px !important;
+}
 
 .textInputInvalid {
-    //composes: textInput;
-    border: 2px solid $error !important;
+    composes: textInput;
+    border: 1px solid $error !important;
+    box-shadow:inset 0px 0px 0px 1px $error !important;
 }
 
 .textInputIconValid {
@@ -65,36 +55,25 @@ $error: #E21C3D;
     position: relative;
 }
 
-// .textArea {
-//     font-size: 18px;
-//     border-radius: 0;
-//     border: 1px solid #666666;
-//     height: 101px;
-//     width: 100%;
-//     padding-top: 12px;
-//     padding-left: 15px;
-//     padding-right: 35px;
-//     resize: none;
-// }
-
-// .textArea:focus {
-//     outline: none !important;
-//     border: 1px solid #609F00;
-//     box-shadow: none !important;
-// }
+.textArea {
+  height: 120px;
+  padding-right: 37px;
+}
 
 .textAreaInvalid {
-    //composes: textArea;
-    border: 2px solid $error !important;
+  composes: textArea;
+  border: 1px solid $error !important;
+  box-shadow:inset 0px 0px 0px 1px $error;
 }
 
 .textAreaIconValid {
-    font-size: 22px !important;
-    color: #609F00;
-    position: absolute;
-    top: 12px;
-    right:15px;
+  font-size: 22px !important;
+  color: #609F00;
+  position: absolute;
+  top: 12px;
+  right:20px;
 }
+
 .textAreaCounter{
     display: block;
     text-align: right;
