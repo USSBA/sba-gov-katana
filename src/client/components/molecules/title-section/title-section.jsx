@@ -8,7 +8,7 @@ class TitleSection extends React.Component{
         let titleLinks = [];
         titleLinks = sectionHeaders.map(function(item, index) {
             return (
-                <li ><a className={styles.titleLink} href={"#" + item.id}>{item.text}</a></li>
+                <li id={"titleSectionLinkId" + index}><a className={styles.titleLink} href={"#" + item.id}>{item.text}</a></li>
             );
         });
         return titleLinks;
@@ -16,11 +16,11 @@ class TitleSection extends React.Component{
 
     render(){
         let titleLinks = this.makeTitleLinks(this.props.sectionHeaders);
-        return (<div className={styles.titleSection}>
-                    <h1 className={styles.title}>{this.props.title}</h1>
-                    <p className={styles.summary}>{this.props.summary}</p>
+        return (<div id="titleSectionId" className={styles.titleSection}>
+                    <h1 id="titleSectionTitleId" className={styles.title}>{this.props.title}</h1>
+                    <h5 id="titleSectionSummaryId" className={styles.summary}>{this.props.summary}</h5>
                     <hr className={styles.lineCopy}/>
-                    <p className={styles.content}>Content</p>
+                    <p id="titleSectionContentId" className={styles.content}>Content</p>
                     <ul>{titleLinks}</ul>
                     <hr className={styles.hrLine}/>
                 </div>);

@@ -28,7 +28,7 @@ class TextInput extends React.Component {
     let errorMessage = this.errorMessage(getValidationState);
     return (
       <div id={id + "-container"} className={styles.inputContainer} hidden={hidden}>
-        <label className={styles.controlLabel}>
+        <label htmlFor={this.props.id} className={styles.controlLabel}>
           {label}
         </label>
         <div className={styles.textInputContainer}>

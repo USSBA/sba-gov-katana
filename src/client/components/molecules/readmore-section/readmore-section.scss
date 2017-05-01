@@ -1,12 +1,35 @@
 .readMoreSection {
   padding: 40px;
   margin-bottom: 40px;
-  //float: right;
-  //width: 30%;
-  //@include grid-container;
   background-color: #EBEBEB;
   @include grid-media($sba-grid-small) {
-    text-align: center;
+    text-align: left;
+  }
+}
+
+.readMoreSectionClosed {
+  @include grid-push(6);
+  @include grid-media($sba-grid-small) {
+    text-align: left;
+  }
+}
+
+.readMoreSectionExpanded {
+  margin-left: 0 !important;
+  @include grid-push(0);
+  @include grid-media($sba-grid-small) {
+    text-align: left;
+  }
+}
+
+.lineCopy {
+  box-sizing: border-box;
+  height: 3px;
+  width: 60px;
+  border: 3px solid #AD32A3;
+  @include grid-media($sba-grid-small) {
+    width: 80px;
+    text-align: left;
   }
 }
 
@@ -27,6 +50,5 @@
 .expandedCopyText{
   color: #333333;
   font-size: 18px;
-  font-style: italic;
   line-height: 27px;
 }

@@ -1,6 +1,23 @@
 .textSection {
 	margin-bottom: 2.1vw;
 }
+
+.readMoreSectionClosed{
+	margin-left: 0 !important;
+	@include grid-column(6.5, $sba-grid-medium);
+	@include grid-media($sba-grid-small) {
+		text-align: left;
+	}
+}
+
+.readMoreSectionExpanded{
+	margin-left: 0 !important;
+	@include grid-push(0);
+	@include grid-media($sba-grid-small) {
+		text-align: left;
+	}
+}
+
 // redundant with normalize css, but better to be explicit
 .textSection ul {
 	list-style: none;
@@ -45,7 +62,7 @@
 	 @each $name, $value in $primary-color-map{
 		:global(.#{$name}) {
 			#{$component} {
-				background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em'><circle cx='10' cy='10' r='4' fill='#{$value}' /></svg>") no-repeat;
+				background: url("../../../../../public/assets/svg/circle/circle-#{$name}.svg") no-repeat;
 			}
 		}
 	}

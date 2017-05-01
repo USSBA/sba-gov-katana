@@ -3,34 +3,29 @@ import styles from "./readmore-section.scss";
 import btnStyles from "../../atoms/small-secondary-button/small-secondary-button.scss";
 
 class ReadMoreSection extends React.Component{
-    constructor(props) {
-        super();
-        this.state = {
-            expanded: false
-        };
-        this.handleClick = this.handleClick.bind(this);
-    }
+
     handleClick(e){
         e.preventDefault();
-        this.setState({expanded: !this.state.expanded});
+        this.props.readMoreStatus(!this.props.expanded);
     }
     render(){
-        let btnText = this.state.expanded ? "CLOSE" :  "READ MORE";
-        let expandedTextSection = this.state.expanded ? <p className={styles.expandedCopyText}>{this.props.expandedCopyText}</p> : "" ;
-
+        let btnText = this.props.expanded ? "CLOSE" :  "READ MORE";
+        let expandedTextSection = this.props.expanded ? <p className={styles.expandedCopyText}>{this.props.readMoreSectionItem.expandedCopyText}</p> : "" ;
+        let expandedHr = this.props.expanded ? <hr className={styles.lineCopy}/> : "";
         return (<div className={styles.readMoreSection}>
-            <h3 className={styles.title}>{this.props.titleText}</h3>
-            <p className={styles.preview}>{this.props.preview}</p>
+            <h3 className={styles.title}>{this.props.readMoreSectionItem.titleText}</h3>
+            <p className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
+            {expandedHr}
             {expandedTextSection}
-            <button className={btnStyles.SmallSecondaryButton} href="#" onClick={this.handleClick}>{btnText}</button>
+            <button className={btnStyles.SmallSecondaryButton} href="#" onClick={this.handleClick.bind(this)}>{btnText}</button>
         </div>);
     }
 }
 
 ReadMoreSection.propTypes ={
-    titleText: React.PropTypes.string.isRequired,
-    preview: React.PropTypes.string.isRequired,
-    expandedCopyText: React.PropTypes.string.isRequired
+    readMoreSectionItem: React.PropTypes.object.isRequired,
+    expanded: React.PropTypes.bool.isRequired,
+    readMoreStatus: React.PropTypes.func.isRequired
 };
 
 export default ReadMoreSection;

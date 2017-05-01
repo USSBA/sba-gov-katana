@@ -13,7 +13,7 @@ import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
 import {includes} from "lodash";
 import envelopeIcon from '../../../../public/assets/svg/envelope.svg';
-import SmallPrimaryButton from "../atoms/small-primary-button/small-primary-button.jsx";
+import NewsletterSmallPrimaryButton from "../atoms/newsletter-small-primary-button/newsletter-small-primary-button.jsx";
 
 class SbaNewsModal extends React.Component {
     timerId = null;
@@ -71,9 +71,9 @@ class SbaNewsModal extends React.Component {
         });
 
         this.setState({displayForm: false});
-        this.timerId = setTimeout(()=>{
-            this.setState({modalIsOpen: false});
-        }, 5000);
+        //this.timerId = setTimeout(()=>{
+       //     this.setState({modalIsOpen: false});
+        //}, 5000);
     }
 
     componentWillUnmount(){
@@ -89,6 +89,14 @@ class SbaNewsModal extends React.Component {
         this.setState(newState, () => this.validateFields([name]));
     }
 
+
+    handleKeyDown(event) {
+        let code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 13) {
+            this.setState({modalIsOpen: false});
+        }
+    }
+
     handleBlur(e) {
         this.validateFields([e.target.name], "error");
     }
@@ -100,35 +108,44 @@ class SbaNewsModal extends React.Component {
         logEvent({"category": "Newsletter Modal", "action": "Focus Event", "label": name});
     }
 
-    handleClose(e){
+    handleClose(){
         this.setState({modalIsOpen: false});
+    }
+
+    handleGlobalKeyPress(event){
+        console.log("handleGlobalKeyPress", event);
+        let code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 27) {
+            this.handleClose();
+        }
     }
 
     render() {
         return (
-            <ReactModal isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} contentLabel="Modal">
-                <div>
-                    <h2 className={this.state.displayForm ? styles.title : styles.hideForm}>Get business advice and invitations to local business events.</h2>
-                    <a onClick={this.handleClose.bind(this)}><img className={styles.exitIcon} src={exitIcon}/></a>
-                </div>
-                <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
-                    <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
-                        <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-                        <div className="sba-blue">
+            <ReactModal onRequestClose={this.handleClose.bind(this)} isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} role="dialog" aria-labelledby="dialogTitle" contentLabel="Modal">
+                <span onKeyDown={this.handleGlobalKeyPress.bind(this)}>
+                    <div className={this.state.displayForm ? styles.titleWrapper : styles.hideForm}>
+                        <h2 id="dialogTitle" className={styles.title} >Get business advice and invitations to local business events.</h2>
+                        <a onClick={this.handleClose.bind(this)}><img tabIndex="0" className={styles.exitIcon} src={exitIcon} onKeyDown={ (event) => this.handleKeyDown(event) }/></a>
+                    </div>
+                    <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
+                        <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
+                            <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
                             <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
-                                <div className={styles.btnContainer}>
-                                    <SmallPrimaryButton text="SUBSCRIBE" type="submit" disabled={!(this.isValidForm())}/>
-                                </div>
-                        </div>
-                        <p className={styles.privacyLink}><a  href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
-                    </form>
-                </div>
-
-                <div className={this.state.displayForm ? styles.hideForm : styles.showForm}>
-                    <img className={styles.envelopeIcon} src={envelopeIcon}/>
-                    <p className={styles.byeMsg}>Thanks for subscribing!</p>
-                </div>
+                            <div className={styles.btnContainer}>
+                                <NewsletterSmallPrimaryButton text="SUBSCRIBE" type="submit" disabled={!(this.isValidForm())}/>
+                            </div>
+                            <p className={styles.privacyLinkContainer}><a className={styles.privacyLink} href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
+                        </form>
+                    </div>
+                    <div className={this.state.displayForm ? styles.hideForm : styles.byeContainer}>
+                        <a onClick={this.handleClose.bind(this)}><img className={styles.exitIconBye} src={exitIcon}/></a>
+                        <img className={styles.envelopeIcon} src={envelopeIcon}/>
+                        <p className={styles.byeMsg}>Thanks for subscribing!</p>
+                    </div>
+                </span>
             </ReactModal>
+
         );
     }
 }

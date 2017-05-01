@@ -19,19 +19,30 @@
   margin: auto;
   padding: 20px;
   font-family: "Source Sans Pro";
+
 }
 
 .exitIcon {
-  position: absolute;
-  top:30px;
-  right:30px;
+  margin-left: 50px;
   width: 26.16px;
   height: 26.16px;
   color: #666666;
-  transform: scaleX(-1);
   border-radius: 1px;
   cursor: pointer;
+
 }
+
+.exitIconBye {
+  position: absolute;
+  margin-left: 50px;
+  width: 26.16px;
+  height: 26.16px;
+  color: #666666;
+  border-radius: 1px;
+  cursor: pointer;
+
+}
+
 .removeForm{
   display: none;
 }
@@ -64,20 +75,31 @@
   line-height: 26px;
 }
 
+.byeContainer{
+  height: 250px;
+}
+
 .title {
   height: 44px;
   width: 280px;
   color: #333333;
   font-family: "Source Sans Pro";
   margin-bottom: 30px;
+  float: left;
   font-size: 18px;
   font-weight: bold;
   line-height: 22px;
 }
 
+.titleWrapper:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .zipTextBox {
   display: inline-block;
-  height: 0px;
+  height: 0;
   width: 180px;
   background-color: #FFFFFF;
 }
@@ -86,11 +108,15 @@
   display: inline-block;
   width: 50%;
   padding-left: 20px;
+  margin-top: 5px;
+  vertical-align: top;
 }
-
-.privacyLink{
+.privacyLinkContainer{
   margin-top: 30px;
   text-align: center;
   vertical-align: top;
+}
+.privacyLink{
+  color: #006BA2 !important;
 }
 
