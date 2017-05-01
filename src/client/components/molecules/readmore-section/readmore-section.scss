@@ -1,10 +1,6 @@
 .readMoreSection {
   padding: 40px;
   margin-bottom: 40px;
-  //height: 0;
-  //float: right;
-  //width: 30%;
-  //@include grid-container;
   background-color: #EBEBEB;
   @include grid-media($sba-grid-small) {
     text-align: center;
@@ -18,11 +14,6 @@
   margin-bottom: 20px;
   margin-left: 0;
   width: 30%;
-  //height: 0;
-  //float: right;
-  //width: 30%;
-  //@include grid-container;
-  //background-color: #EBEBEB;
 }
 
 .title{
@@ -35,7 +26,7 @@
 .preview{
   color: #333333;
   font-size: 18px;
-  //font-style: italic;
+  font-style: italic;
   line-height: 27px;
 }
 
