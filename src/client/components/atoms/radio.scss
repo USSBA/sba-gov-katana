@@ -14,7 +14,7 @@
 }
 
 .regularRadio {
-    display: none;
+    display: none !important;;
 }
 
 .regularRadio+ label {
@@ -56,8 +56,9 @@
 .radioText {
     margin-left: 10px;
     position: relative;
-    top: -3px;
-    font-size: 1.2rem;
+    top: -10px;
+    font-size: 1.2rem !important;
+    font-weight: normal !important;
 }
 
 .radioItem:focus {
