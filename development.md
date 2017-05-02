@@ -12,17 +12,14 @@ This is for the development/build setup guide
 
 ## Development Process
 1. `npm install`
-2. Create config/local.yaml e.g.
->    database:
->        mongoConnectString: mongodb://localhost:27017/sba
->    linc:
->        confirmationEmailBase: "http://localhost:65097"
->
-3. `npm start` to run the server/hot-reloader
-4. `./scripts/run-local-mongo.sh` to execute a local mongo
-
+2. Download mysql seed data
+    - Setup AWS credentials in ~/.aws
+    - execute `./scripts/db/sql/download-sql.sh`
+3. `./scripts/db/run-db.sh` to execute a local mysql
+4. Create config/local.yaml to customize your options
+5. `npm start` to run the server/hot-reloader
 
 ## Build Process
-1. ~~`yarn` to install the dependencies~~ `npm install`
+1. `npm install`
 3. `npm test` to execute the tests
 4. `npm run build` to build the docker image
