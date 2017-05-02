@@ -26,6 +26,9 @@ import TextArea from "../../atoms/textarea.jsx";
 import RadioBtnGroup from "../../atoms/radio.jsx";
 import Checkbox from "../../atoms/checkbox.jsx";
 
+import HeroDesktopImage from './hero.jpg'
+import HeroMobileImage from './hero-mobile.jpg'
+
 
 
 class StyleGuide extends React.Component{
@@ -38,14 +41,21 @@ class StyleGuide extends React.Component{
 		this.setState({exampleModalIsOpen: !this.state.exampleModalIsOpen});
 	}
 	render(){
-//let radioButtonOptions = [{value: "Less than 1 year",text: "Less than 1 year"}, {value: "1-2 years",text: "1-2 years"}, {value: "2-5 years",text: "2-5 years"}, {value: "5+ years",text: "5+ years"}];
 		return(
 			<div>
 			<Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
 			<ButtonGroup/>
 			<ColorPalette />
+			<h1>Form Inputs</h1>
 			<FormElements/>
-			{/*<Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." button="LARGE BUTTON"/> */}
+			<h1>Hero</h1>
+			<Hero title="Hey this is a cool title." 
+						message="Whether you're already up and running or just getting started, we can help. Come take a look now." 
+						button="LARGE BUTTON"
+						desktopImage={HeroDesktopImage}
+						mobileImage={HeroMobileImage}
+						/>
+			<h1>Future components...</h1>
 			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{this.setState({exampleModalIsOpen: false})}} /> : <div/>}
 			</div>
 		);

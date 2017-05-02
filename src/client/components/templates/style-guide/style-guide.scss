@@ -168,6 +168,6 @@
         @include grid-column(6)
     }
     @include grid-media( $sba-grid-large ){
-        @include grid-column(6)
+        @include grid-column(4)
     }
 }

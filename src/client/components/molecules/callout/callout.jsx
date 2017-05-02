@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './callout.scss';
-import SmallInversePrimaryButton from '../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx'
+import LargeInversePrimaryButton from '../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx'
 
  const Callout = (props) =>
   <div className={styles.callout}>
-  <h2>{ props.title }</h2>
-  <p>{ props.message }</p>
-  <SmallInversePrimaryButton classname={styles.button} text={ props.button } />
+  <h2 className={styles.title}>{ props.title }</h2>
+  <p className={styles.message}>{ props.message }</p>
+  <LargeInversePrimaryButton classname={styles.button} text={ props.button } />
   </div>;
 
 export default Callout;
