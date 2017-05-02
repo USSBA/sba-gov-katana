@@ -5,7 +5,7 @@
 }
 
 .readMoreSectionClosed {
-  @include grid-push(6);
+  @include grid-push(7);
   @include grid-media($sba-grid-small) {
     display: none;
   }

@@ -4,7 +4,7 @@
 
 .readMoreSectionClosed{
 	margin-left: 0 !important;
-	@include grid-column(6.5, $sba-grid-medium);
+	@include grid-column(7.7, $sba-grid-medium);
 	@include grid-media($sba-grid-small) {
 		display: none;
 	}
