@@ -1,4 +1,7 @@
+$sba-blue: #0B97DD;
+$byzantine: #AB3EA0;
 $money-green: #609F00;
+$cobalt-blue: #0F48AA;
 
 .rc-checkbox {
     white-space: nowrap;
@@ -17,6 +20,7 @@ $money-green: #609F00;
 //.rc-checkbox-input:focus + .rc-checkbox-inner {
 //    border-color: $money-green;
 //}
+
 
 
 
@@ -59,8 +63,8 @@ $money-green: #609F00;
     top: -17px;
     bottom: 0;
     right: 0;
-    width: 360px;
-    height: 47px;
+    height: 0px;
+    width: 0px;
 }
 /* 选中状态 */
 .rc-checkbox-checked:hover .rc-checkbox-inner {
@@ -70,6 +74,45 @@ $money-green: #609F00;
     border-color: $money-green;
     background-color: $money-green;
 }
+
+
+.sba-blue .rc-checkbox-checked:hover .rc-checkbox-inner {
+    border-color: $sba-blue;
+}
+
+.sba-blue .rc-checkbox-checked .rc-checkbox-inner {
+    border-color: $sba-blue;
+    background-color: $sba-blue;
+}
+
+.money-green .rc-checkbox-checked:hover .rc-checkbox-inner {
+    border-color: $money-green;
+}
+
+.money-green .rc-checkbox-checked .rc-checkbox-inner {
+    border-color: $money-green;
+    background-color: $money-green;
+}
+
+.byzantine .rc-checkbox-checked:hover .rc-checkbox-inner {
+    border-color: $byzantine;
+}
+
+.byzantine .rc-checkbox-checked .rc-checkbox-inner {
+    border-color: $byzantine;
+    background-color: $byzantine;
+}
+
+.cobalt-blue .rc-checkbox-checked:hover .rc-checkbox-inner {
+    border-color: $cobalt-blue;
+}
+
+.cobalt-blue .rc-checkbox-checked .rc-checkbox-inner {
+    border-color: $cobalt-blue;
+    background-color: $cobalt-blue;
+}
+
+
 .rc-checkbox-checked .rc-checkbox-inner:after {
     transform: rotate(45deg);
     position: absolute;
@@ -148,9 +191,24 @@ $money-green: #609F00;
     border: 1px solid #666666;
 }
 
-.rc-checkbox-container-focused {
+.sba-blue .rc-checkbox-container-focused {
+    @extend .rc-checkbox-container;
+    border: 1px solid $sba-blue;
+}
+
+.money-green .rc-checkbox-container-focused {
     @extend .rc-checkbox-container;
     border: 1px solid $money-green;
+}
+
+.byzantine .rc-checkbox-container-focused {
+    @extend .rc-checkbox-container;
+    border: 1px solid $byzantine;
+}
+
+.cobalt-blue .rc-checkbox-container-focused {
+    @extend .rc-checkbox-container;
+    border: 1px solid $cobalt-blue;
 }
 
 

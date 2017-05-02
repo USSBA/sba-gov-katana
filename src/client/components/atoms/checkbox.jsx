@@ -5,10 +5,28 @@ import './checkbox.scss';
 class CheckBox extends React.Component {
   constructor(props) {
     super(props);
+    let checkboxContainer = null;
     this.state = {
-      checkboxFocus: false
+      checkboxFocus: false,
+      // containerWidth: 0,
+      // windowWidth: window.innerWidth
     };
   }
+
+  // handleResize(e) {
+  //   this.setState({
+  //   windowWidth: window.innerWidth,
+  //   containerWidth: this.checkboxContainer.offsetWidth
+  //   });
+  // }
+
+  // componentDidMount() {
+  //   window.addEventListener('resize', ::this.handleResize)
+  // }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener('resize', ::this.handleResize)
+  // }
 
   handleCheckboxFocus(e) {
     console.log(e.target);
@@ -26,7 +44,6 @@ class CheckBox extends React.Component {
     })
   }
 
-
   containerStyle() {
     if (this.state.checkboxFocus) {
       return "rc-checkbox-container-focused"
@@ -39,7 +56,7 @@ class CheckBox extends React.Component {
 
   render() {
     return (
-      <div className={ this.containerStyle() }>
+      <div ref={(container) => {this.checkboxContainer = container}} className={ this.containerStyle() }>
         <label className="rc-checkbox-label">
           <Checkbox name={ this.props.name } 
                     checked={ this.props.checked } 
