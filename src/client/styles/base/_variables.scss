@@ -15,7 +15,6 @@
   }
 }
 
-
 @mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
   :global(.#{$theme}){
     #{$component}{
@@ -33,10 +32,19 @@
   }
       }
 
-
     }
   }
 }
+
+@mixin theme-focus($theme, $component, $focus-color) {
+  :global(.#{$theme}) {
+    #{$component}:focus {
+      border-color: $focus-color;
+    }
+  }
+}
+
+
 
 // Breakpoints
 $small-screen: 767px;
@@ -167,6 +175,7 @@ $blue: #1565c0;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$error: #E21C3D;
 
 // Font Colors
 $base-font-color: #333333;
@@ -235,8 +244,6 @@ $form-box-shadow-focus: none;
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
-
-
 
 $primary-color-map:(
 	"sba-blue": $sba-blue,
