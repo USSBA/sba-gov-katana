@@ -1,8 +1,16 @@
 import { nonDrupal } from "./db-connect.js";
-import { lenderMatchRegistration, lenderMatchSoapResponse } from "./lender-match-registration.js";
+import uuid from "uuid";
 import * as Sequelize from "sequelize";
+import lenderMatchRegistration from "./lender-match-registration.js";
 
-var emailConfirmation = nonDrupal.define("emailConfirmation", {
+const emailConfirmation = nonDrupal.define("emailConfirmation", {
+  id: { //eslint-disable-line id-length
+    type: Sequelize.UUID,
+    defaultValue: function() {
+      return uuid.v4();
+    },
+    primaryKey: true
+  },
   sent: {
     type: Sequelize.BIGINT
   },
@@ -22,7 +30,5 @@ var emailConfirmation = nonDrupal.define("emailConfirmation", {
 });
 
 emailConfirmation.belongsTo(lenderMatchRegistration);
-
-emailConfirmation.sync();
 
 export default emailConfirmation;
