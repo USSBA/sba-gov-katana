@@ -53,4 +53,4 @@ config/*local*
 
 # Developer personal probe scripts
 scripts/probes
-scripts/db/sql/*.sql
+scripts/db/sql/sba_*.sql
