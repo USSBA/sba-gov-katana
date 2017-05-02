@@ -62,5 +62,5 @@ const lenderMatchRegistration = nonDrupal.define("lenderMatchRegistration", {
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });
-
-export { lenderMatchRegistration };
+lenderMatchRegistration.sync();
+export default lenderMatchRegistration;
