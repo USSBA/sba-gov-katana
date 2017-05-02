@@ -2,15 +2,12 @@
   padding: 40px;
   margin-bottom: 40px;
   background-color: #EBEBEB;
-  @include grid-media($sba-grid-small) {
-    text-align: left;
-  }
 }
 
 .readMoreSectionClosed {
   @include grid-push(6);
   @include grid-media($sba-grid-small) {
-    text-align: left;
+    display: none;
   }
 }
 
@@ -18,7 +15,16 @@
   margin-left: 0 !important;
   @include grid-push(0);
   @include grid-media($sba-grid-small) {
-    text-align: left;
+    display: none;
+  }
+}
+
+.readMoreSectionMobile{
+  display: none;
+  @include grid-media($sba-grid-small) {
+    @include grid-shift(-0.25);
+    margin-left: 0 !important;
+    display:block;
   }
 }
 

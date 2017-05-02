@@ -32,7 +32,13 @@ class TextReadMoreSection extends React.Component{
                 <div className={textSectionStyles.readMoreSectionClosed}><TextSection text={cleaned}/></div>
                 <div className={readMoreSectionStyles.readMoreSectionClosed}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded}  readMoreSectionItem={this.props.readMoreSectionItem}/></div>
             </div>);
-        return textReadMoreSection;
+
+        return <div>{textReadMoreSection}<div className={styles.textReadMoreSection}>
+                    <div className={textSectionStyles.readMoreSectionMobile}><TextSection text={cleaned}/></div>
+                    <div className={readMoreSectionStyles.readMoreSectionMobile}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded}  readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+                </div><div>
+
+        </div></div>;
     }
 }
 
