@@ -21,6 +21,12 @@ import Callout from '../../molecules/callout/callout.jsx';
 import Hero from '../../organisms/hero/hero.jsx';
 import styles from './style-guide.scss';
 
+import TextInput from '../../atoms/text-input.jsx';
+import TextArea from "../../atoms/textarea.jsx";
+import RadioBtnGroup from "../../atoms/radio.jsx";
+import Checkbox from "../../atoms/checkbox.jsx";
+
+
 
 class StyleGuide extends React.Component{
   constructor(){
@@ -32,16 +38,14 @@ class StyleGuide extends React.Component{
 		this.setState({exampleModalIsOpen: !this.state.exampleModalIsOpen});
 	}
 	render(){
+//let radioButtonOptions = [{value: "Less than 1 year",text: "Less than 1 year"}, {value: "1-2 years",text: "1-2 years"}, {value: "2-5 years",text: "2-5 years"}, {value: "5+ years",text: "5+ years"}];
 		return(
 			<div>
 			<Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
 			<ButtonGroup/>
 			<ColorPalette />
-			<p>Hero Callout</p>
-			<Hero title="Hey this is a cool title." 
-						message="Whether you're already up and running or just getting started, we can help. Come take a look now."
-						button="LARGE BUTTON"
-			/>
+			<FormElements/>
+			{/*<Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." button="LARGE BUTTON"/> */}
 			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{this.setState({exampleModalIsOpen: false})}} /> : <div/>}
 			</div>
 		);
@@ -232,4 +236,95 @@ export default StyleGuide;
 		    </div>
 		</div>
  	</div>;
+
+class FormElements extends React.Component{
+  constructor(){
+  	super();
+  	this.state = {
+  		textAreaValue: "",
+  		radioBtnValue: "",
+  		checkBoxFields: {
+  			checkbox1: false,
+  			checkbox2: false,
+  			checkbox3: false
+  		}
+  	};
+  }
+
+  handleTextAreaChange(e){
+  	this.setState({textAreaValue: e.target.value})
+  }
+
+  handleRadioBtnChange(newValue){
+    this.setState({
+      radioBtnValue: newValue
+    })
+  }
+
+  handleCheckBoxChange(e){
+  	let newState = {};
+    newState[e.target.name] = e.target.checked;
+    console.log(newState)
+    this.setState({
+      checkBoxFields: {
+        ...this.state.checkBoxFields,
+        ...newState
+      }
+    })
+  }
+
+	render(){
+		let radioButtonOptions = [{
+			value: "Less than 1 year",
+			text: "Less than 1 year"
+		}, {
+			value: "1-2 years",
+			text: "1-2 years"
+		}, {
+			value: "2-5 years",
+			text: "2-5 years"
+		}, {
+			value: "5+ years",
+			text: "5+ years"
+		}]
+
+		return (
+	 		<div className={styles.formElements}>
+		 		<div className={styles.inputContainer}>
+		 		 	<TextInput id="lender-match-name" errorText={"Please enter the correct thing."} label="What is your full name?" getValidationState={""} />
+		      <TextInput id="lender-match-name" errorText={"Please enter the correct thing."} label="What is your full name?" getValidationState={"success"} />
+		      <TextInput id="lender-match-phone" errorText={"Please enter the correct thing."} label="What is your full name?" getValidationState={"error"} />
+		      <TextArea errorText={"Please enter the correct thing."} onChange={(e) => {this.handleTextAreaChange(e)}} value={this.state.textAreaValue} label="Describe how you plan to use these funds" name="loanDescription" getValidationState={false} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." />
+		 			<RadioBtnGroup errorText={"Please enter the correct thing."} onChange={(e) => {this.handleRadioBtnChange(e)}} value={this.state.radioBtnValue} label="How much experience do you have?" name="industryExperience"  validationState={""} options={radioButtonOptions}/>
+		 			<label style={{marginTop: "40px"}}>Select all that apply to you:</label>
+		 			<Checkbox 
+		 				name="checkbox1"
+		 				label="This is the first checkbox"
+		 				handleChange={(e) => {this.handleCheckBoxChange(e)}}
+		 				checked={this.state.checkBoxFields.checkbox1}
+		 			/>
+		 			<Checkbox 
+		 				name="checkbox2"
+		 				label="This is the second checkbox"
+		 				handleChange={(e) => {this.handleCheckBoxChange(e)}}
+		 				checked={this.state.checkBoxFields.checkbox2}
+		 			/>
+		 			<Checkbox 
+		 				name="checkbox3"
+		 				label="This is the third checkbox"
+		 				handleChange={(e) => {this.handleCheckBoxChange(e)}}
+		 				checked={this.state.checkBoxFields.checkbox3}
+		 			/>
+		 		</div>
+	    </div>
+		);
+	}
+}
+
+export { FormElements }
+
+
+
+
+
 

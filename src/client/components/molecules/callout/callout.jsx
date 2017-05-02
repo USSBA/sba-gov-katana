@@ -6,7 +6,7 @@ import SmallInversePrimaryButton from '../../atoms/small-inverse-primary-button/
   <div className={styles.callout}>
   <h2>{ props.title }</h2>
   <p>{ props.message }</p>
-  <SmallInversePrimaryButton className={styles.button} text={ props.button } />
+  <SmallInversePrimaryButton classname={styles.button} text={ props.button } />
   </div>;
 
 export default Callout;

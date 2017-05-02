@@ -2,13 +2,15 @@
 # Find the location of the script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-docker run --name katana-mysql \
+DATA_DIR=${1:-"/tmp/mysql"}
+
+docker run --rm --name my-mysql \
 -e MYSQL_ROOT_PASSWORD=password123 \
--e MYSQL_DATABASE=sba_drupal \
--e MYSQL_USER=testuser \
 -v ${DIR}/sql:/mnt/database \
+-v $DATA_DIR:/var/lib/mysql \
 -p 3306:3306 -d mysql:5.6
 
-sleep 5
+sleep 10
 
-docker exec -it mysqlimport mysql -u testuser -p sba_drupal < /mnt/database/*.sql
+
+docker exec -it my-mysql sh /mnt/database/import-sql.sh
