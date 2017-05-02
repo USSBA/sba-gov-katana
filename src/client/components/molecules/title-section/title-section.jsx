@@ -8,7 +8,7 @@ class TitleSection extends React.Component{
         let titleLinks = [];
         titleLinks = sectionHeaders.map(function(item, index) {
             return (
-                <li id={"titleSectionLinkId" + index}><a className={styles.titleLink} href={"#" + item.id}>{item.text}</a></li>
+                <li id={"titleSectionLinkId" + index} key={index}><a className={styles.titleLink} href={"#" + item.id}>{item.text}</a></li>
             );
         });
         return titleLinks;

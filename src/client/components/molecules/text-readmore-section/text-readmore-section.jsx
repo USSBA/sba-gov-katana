@@ -26,7 +26,7 @@ class TextReadMoreSection extends React.Component{
             <div className={styles.textReadMoreSection}>
                 <div className={readMoreSectionStyles.readMoreSectionExpanded}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
                 <div className={textSectionStyles.readMoreSectionExpanded}><TextSection text={cleaned}/></div>
-            </div>
+           </div>
         ) :
             (<div className={styles.textReadMoreSection}>
                 <div className={textSectionStyles.readMoreSectionClosed}><TextSection text={cleaned}/></div>
