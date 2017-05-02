@@ -17,13 +17,13 @@ database:
     nonDrupal:
         databaseName: sba_katana
         host: localhost
-        password: testuser
-        user: Password123
+        password: password123
+        user: root
     drupal:
         databaseName: sba_drupal
         host: localhost
-        password: testuser
-        user: Password123
+        password: password123
+        user: root
 linc:
     confirmationEmailBase: http://localhost:3000
 oca:

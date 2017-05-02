@@ -1,7 +1,7 @@
 import { nonDrupal } from "./db-connect.js";
 import uuid from "uuid";
 import * as Sequelize from "sequelize";
-import { lenderMatchRegistration } from "./lender-match-registration.js";
+import lenderMatchRegistration from "./lender-match-registration.js";
 
 const lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
   id: { //eslint-disable-line id-length
@@ -29,4 +29,4 @@ const lenderMatchSoapResponse = nonDrupal.define("lenderMatchSoapResponse", {
 
 lenderMatchSoapResponse.belongsTo(lenderMatchRegistration);
 
-export { lenderMatchSoapResponse };
+export default lenderMatchSoapResponse;

@@ -123,7 +123,7 @@ export default StyleGuide;
 		<LargeGreySecondaryButton text="Large Button" />
 		<br />
 		<br />
-		<SmallGreySecondaryButton text="Small Button" />
+		<SmallGreySecondaryButton disabled text="Small Button" />
 		<br />
 		<br />
 
