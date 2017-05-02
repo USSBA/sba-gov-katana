@@ -41,12 +41,14 @@ class CheckBox extends React.Component {
     return (
       <div className={ this.containerStyle() }>
         <label className="rc-checkbox-label">
-          <Checkbox name={ this.props.name } checked={ this.props.checked } onChange={ this.props.handleChange } onFocus={ (e) => {
-                                                                                                                           
-                                                                                                                             this.handleCheckboxFocus(e)
-                                                                                                                           } } onBlur={ (e) => {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   this.handleCheckboxBlur(e)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 } } autoFocus={ this.props.autoFocus }
+          <Checkbox name={ this.props.name } 
+                    checked={ this.props.checked } 
+                    onChange={ this.props.handleChange } 
+                    onFocus={ (e) => {
+                        this.handleCheckboxFocus(e)}} 
+                    onBlur={ (e) => {
+                        this.handleCheckboxBlur(e)}} 
+                    autoFocus={ this.props.autoFocus }
           />
           { this.props.label }
         </label>

@@ -140,22 +140,17 @@ $money-green: #609F00;
     height: 48px;
     border: 1px solid #C4C4C4;
     margin-bottom: 10px;
+    background-color: white;
 }
 
 .rc-checkbox-container-checked {
-    position: relative;
-    width: 100%;
-    height: 48px;
+    @extend .rc-checkbox-container;
     border: 1px solid #666666;
-    margin-bottom: 10px;
 }
 
 .rc-checkbox-container-focused {
-    position: relative;
-    width: 100%;
-    height: 48px;
+    @extend .rc-checkbox-container;
     border: 1px solid $money-green;
-    margin-bottom: 10px;
 }
 
 
