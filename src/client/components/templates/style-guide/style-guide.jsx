@@ -32,12 +32,19 @@ class StyleGuide extends React.Component{
 		this.setState({exampleModalIsOpen: !this.state.exampleModalIsOpen});
 	}
 	render(){
-		return(<div>
+		return(
+			<div>
 			<Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
 			<ButtonGroup/>
 			<ColorPalette />
+			<p>Hero Callout</p>
+			<Hero title="Hey this is a cool title." 
+						message="Whether you're already up and running or just getting started, we can help. Come take a look now."
+						button="LARGE BUTTON"
+			/>
 			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{this.setState({exampleModalIsOpen: false})}} /> : <div/>}
-	</div>);
+			</div>
+		);
 	}
 }
 
