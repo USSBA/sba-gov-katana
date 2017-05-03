@@ -7,12 +7,19 @@ import SmallGreySecondaryButton from '../atoms/small-grey-secondary-button/small
 import SmallPrimaryButton from '../atoms/small-primary-button/small-primary-button.jsx';
 
 class SbaModal extends React.Component {
+  
+  handleEnter(e){
+    if(e.keyCode == 13){
+      this.props.onClose()
+    }
+  }
+
   render() {
     let logo = this.props.showLogo ? (<img className={styles.logo} src={sbaLogo}/>) : undefined;
     return (
       <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
         {logo}
-        <a onClick={this.props.onClose}><img className={styles.closeIcon} src={ModalCloseIcon}/></a>
+        <img tabIndex={0} onClick={this.props.onClose} onKeyDown={(e) => {this.handleEnter(e)}} className={styles.closeIcon} src={ModalCloseIcon}/>
         <h3 className={styles.title}>{this.props.title}</h3>
         <div className={styles.divider}></div>
         <p className={styles.text}>{this.props.text}</p>

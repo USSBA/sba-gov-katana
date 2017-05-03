@@ -56,7 +56,7 @@ class StyleGuide extends React.Component{
 						mobileImage={HeroMobileImage}
 						/>
 			<h1>Future components...</h1>
-			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{this.setState({exampleModalIsOpen: false})}} /> : <div/>}
+			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{document.location = "http://www.example.com/"}} /> : <div/>}
 			</div>
 		);
 	}
