@@ -6,7 +6,11 @@ const restContentReducer = (state = {}, action) => {
     if (!newState[action.contentType]) {
       newState[action.contentType] = [];
     }
-    newState[action.contentType][action.id] = action.data;
+    if (action.id) {
+      newState[action.contentType][action.id] = action.data;
+    } else {
+      newState[action.contentType] = action.data;
+    }
     return Object.assign({}, state, newState);
   }
   return state;
