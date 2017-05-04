@@ -27,10 +27,8 @@ function handleFeedback(req, res) {
 }
 
 function handleFeedbackText(req, res) {
-  if (req && req.body && req.body.text.honeyPotText) {
-    console.log("This is submitted by a spam bot.");
-  } else if (req && req.body && req.body.text.feedbackText && req.params && req.params.id) {
-    saveFeedbackText(req.params.id, req.body.text.feedbackText)
+  if (req && req.body && req.body.text.feedbackText && req.params && req.params.id) {
+    saveFeedbackText(req.params.id, req.body.text.feedbackText, req.body.text.honeyPotText)
       .then(function() {
         res.status(HttpStatus.NO_CONTENT).send();
       })
