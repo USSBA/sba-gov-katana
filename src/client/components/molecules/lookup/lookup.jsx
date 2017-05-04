@@ -11,12 +11,17 @@ class Lookup extends React.Component {
     this.props.actions.fetchContentIfNeeded(this.props.type);
   }
   render() {
+    console.log("items", this.props.items);
     return (
       <div>
         <h2>{this.props.title}</h2>
         <div>{this.props.items.map(function(item) {
-                <p>item.name</p>
-            })}</div>
+            return (
+              <p>
+                {JSON.stringify(item)}
+              </p>
+            );
+          })}</div>
       </div>
     )
   }
@@ -32,12 +37,14 @@ Lookup.defaultProps = {
   title: "Lookup Title",
   type: "contacts",
   display: "cards",
-  items:[]
+  items: []
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
-    console.log(ownProps);
-  return {items: reduxState.restContent[ownProps.type]};
+  console.log("arguments", arguments);
+  return {
+    items: reduxState.restContent[ownProps.type]
+  };
 }
 
 function mapDispatchToProps(dispatch) {

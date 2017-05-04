@@ -45,7 +45,7 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "image") {
           paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>);
         } else if (item.type === "lookup") {
-          paragraph = (<Lookup key={index} title={item.sectionHeaderText} type={item.contactCategory} display={item.display}/>);
+          paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
         }
       }
       return (
