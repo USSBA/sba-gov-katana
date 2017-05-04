@@ -96,7 +96,7 @@ describe("#Feedback Controller", function() {
 
         it("should return an error if no text is provided", function(done) {
             var request = {
-                body: {},
+                body: {text: {feedbackText: "", honeyPotText: ""}},
                 params: {
                     id: 1
                 }
