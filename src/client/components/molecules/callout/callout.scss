@@ -7,15 +7,25 @@
     background-image: url('./corner-graphic.png');
     background-position: bottom right;
     background-repeat: no-repeat;
-    padding: 50px;
-    p {
-    margin-bottom: 30px;
-    }
+    padding: 30px 30px 30px 30px;
+}
+
+.message {
+	margin-bottom: 30px;
+	font-size: 25px;
+	line-height: 30px;
+}
+
+.title {
+	@include grid-media($sba-grid-small){
+		font-size: 32px;
+	}
 }
 
 .button {
-	// @include grid-media()
-	width: 100%;
+	@include grid-media($sba-grid-small){
+		width: 100%;
+	}
 }
 
 

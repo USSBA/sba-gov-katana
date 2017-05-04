@@ -6,12 +6,19 @@ import moment from "moment";
 import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
-import { sendConfirmationEmail } from "../util/emailer.js";
-import { lenderMatchRegistration } from "../models/lender-match-registration.js";
-import { lenderMatchSoapResponse } from "../models/lender-match-soap-response.js";
+import {
+  sendConfirmationEmail
+} from "../util/emailer.js";
+import lenderMatchRegistration from "../models/lender-match-registration.js";
+import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
-import { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest } from "./linc-soap-request.js";
+import {
+  getEndPointUrl,
+  convertFormDataToXml,
+  createLincSoapRequestEnvelopeXml,
+  sendLincSoapRequest
+} from "./linc-soap-request.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -75,12 +82,12 @@ function createLenderMatchSoapResponseData(data) {
 function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
   const now = moment();
   return lenderMatchSoapResponse.update({
-    processed: now.unix()
-  }, {
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
+      processed: now.unix()
+    }, {
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
     .then((result) => {
       return result;
     })
@@ -92,10 +99,10 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
 
 function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
   return EmailConfirmation.destroy({
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
     .then(function() {
       return lenderMatchSoapResponse.destroy({
         where: {
@@ -242,8 +249,8 @@ function sendDataToOca(lenderMatchRegistrationData) {
     lenderMatchRegistration: lenderMatchRegistrationData
   };
   getEndPointUrl(soapRequestData).then(function(response) {
-    return convertFormDataToXml(response);
-  })
+      return convertFormDataToXml(response);
+    })
     .then(function(response) {
       return createLincSoapRequestEnvelopeXml(response);
     })
@@ -321,20 +328,20 @@ function confirmEmail(token) {
 
 function resendConfirmationEmail(emailAddress) {
   return lenderMatchRegistration.findOne({
-    where: {
-      emailAddress: emailAddress
-    },
-    order: [
-      ["createdAt", "DESC"]
-    ],
-    limit: 1
-  })
+      where: {
+        emailAddress: emailAddress
+      },
+      order: [
+        ["createdAt", "DESC"]
+      ],
+      limit: 1
+    })
     .then(function(lenderMatchRegistrationData) {
       return EmailConfirmation.findOne({
-        where: {
-          lenderMatchRegistrationId: lenderMatchRegistrationData.id
-        }
-      })
+          where: {
+            lenderMatchRegistrationId: lenderMatchRegistrationData.id
+          }
+        })
         .then((emailConfirmation) => {
           return [lenderMatchRegistrationData.name, lenderMatchRegistrationData.emailAddress, lenderMatchRegistrationData.id, emailConfirmation.token, false];
         });
@@ -343,4 +350,17 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export { findConfirmedEmails, handleSoapResponse, updateLenderMatchSoapResponse, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
+export {
+  findConfirmedEmails,
+  handleSoapResponse,
+  updateLenderMatchSoapResponse,
+  createLenderMatchRegistration,
+  sendDataToOcaJob,
+  findFailedOrPendingMessages,
+  sendMessagesToOca,
+  confirmEmail,
+  followupEmailJob,
+  resendConfirmationEmail,
+  createLenderMatchRegistrationData,
+  createLenderMatchSoapResponseData
+};
