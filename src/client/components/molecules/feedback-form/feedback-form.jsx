@@ -18,7 +18,8 @@ class FeedbackForm extends React.Component {
     super();
     this.state = {
       displayState: states[0],
-      feedbackText: ""
+      feedbackText: "",
+      honeyPotText: "",
     };
   }
   handleYesClick() {
@@ -30,12 +31,17 @@ class FeedbackForm extends React.Component {
     this.setState({displayState: states[1]});
   }
   handleSubmit() {
-    this.props.actions.submitText(this.props.lastFeedbackId, this.state.feedbackText);
+    this.props.actions.submitText(this.props.lastFeedbackId, {feedbackText: this.state.feedbackText, honeyPotText: this.state.honeyPotText});
     this.setState({displayState: states[2]});
   }
   handleChange(e) {
     this.setState({feedbackText: e.target.value});
   }
+
+  handleHoneyPotChange(e){
+    this.setState({honeyPotText: e.target.value});
+  }
+
   render() {
     if (this.state.displayState === states[1]) {
       return (
@@ -43,6 +49,7 @@ class FeedbackForm extends React.Component {
           <h4 className={styles.question}>{firstThankYou}</h4>
           <p>{subtext}</p>
           <TextArea id="feedback-input" placeholder={placeholder} showCounter={false} onChange={this.handleChange.bind(this)} />
+          <div className={styles.honeyPotInputContainer}><input id="honeypot-input" onChange={this.handleHoneyPotChange.bind(this)}/></div>
           <SmallPrimaryButton id="feedback-submit-button" text="SUBMIT" onClick={this.handleSubmit.bind(this)} disabled={!this.state.feedbackText || this.state.feedbackText.length===0}/>
         </div>
       );
