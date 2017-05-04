@@ -1,0 +1,64 @@
+{
+    "id": [{
+        "value": 570
+    }],
+    "uuid": [{
+        "value": "66a5846a-664c-427f-a95a-feb84acf9fee"
+    }],
+    "revision_id": [{
+        "value": 3532
+    }],
+    "type": [{
+        "target_id": "lookup",
+        "target_type": "paragraphs_type",
+        "target_uuid": "d3008f56-9468-4d42-bb27-d96057f35740"
+    }],
+    "langcode": [{
+        "value": "en"
+    }],
+    "uid": [{
+        "target_id": 5,
+        "target_type": "user",
+        "target_uuid": "abfed9d4-f39e-4094-bb90-dc39f669f163",
+        "url": "/user/5"
+    }],
+    "status": [{
+        "value": true
+    }],
+    "created": [{
+        "value": 1493897541
+    }],
+    "revision_uid": [{
+        "target_id": 5,
+        "target_type": "user",
+        "target_uuid": "abfed9d4-f39e-4094-bb90-dc39f669f163",
+        "url": "/user/5"
+    }],
+    "parent_id": [{
+        "value": "68"
+    }],
+    "parent_type": [{
+        "value": "node"
+    }],
+    "parent_field_name": [{
+        "value": "field_paragraphs"
+    }],
+    "behavior_settings": [{
+        "value": "a:0:{}"
+    }],
+    "default_langcode": [{
+        "value": true
+    }],
+    "field_contact_category": [{
+        "target_id": 2,
+        "target_type": "taxonomy_term",
+        "target_uuid": "a1f3ed3e-9868-4e97-905f-7516a9463f42",
+        "url": "/taxonomy/term/2"
+    }],
+    "field_display": [{
+        "value": "Cards"
+    }],
+    "field_section_header_text": [{
+        "value": "This is a lookup"
+    }]
+}

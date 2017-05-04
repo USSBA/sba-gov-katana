@@ -13,6 +13,12 @@
             "preview": "Stuff.",
             "titleText": "Some title",
             "type": "readMore"
+        },
+        {
+            "contactCategory": "Export express",
+            "display": "Cards",
+            "sectionHeaderText": "This is a lookup",
+            "type": "lookup"
         }
     ],
     "taxonomy": {

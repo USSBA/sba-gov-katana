@@ -1,4 +1,3 @@
-
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
@@ -17,11 +16,13 @@ function extractValue(object, key) {
   if (object && object.length > 0) {
     if (object[0].value) {
       return object[0].value;
-    } else if (key === "image") {
-      return object[0];
     }
   }
   return null;
+}
+
+function extractValuePromise(value, key) {
+  return Promise.resolve(extractValue(value, key));
 }
 
 function extractTargetId(object) {
@@ -43,9 +44,9 @@ function fetchParagraphId(paragraphId) {
 // this is an abstract function that takes an object, removes properties that do not
 // start with the given prefix and then formats the key name using the prefix and
 // given custom formatter, and then formats the values to the root value (not the
-// drupal 8 wrapper)
+// drupal 8 wrapper).  Note customerValueFormatter must return a promise
 function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter, customValueFormatter) {
-  return _.chain(object)
+  const withFixedKeys = _.chain(object)
     //picks every object inside node that starts with field_
     .pickBy(function(value, key) {
       return _.startsWith(key, prefix);
@@ -56,56 +57,80 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
       return _.chain(customFormatter(key)).replace(prefix, "").camelCase()
         .value();
     })
-    .mapValues(function(value, key) {
-      const customFormatter = customValueFormatter || _.identity;
-      return customFormatter(extractValue(value, key), key);
-    })
     .value();
-}
 
-function formatParagraph(paragraph) {
-  if (paragraph) {
-    const typeName = extractTargetId(paragraph.type);
-    const formattedParagraph = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-      if (typeName === "image") {
-        return fieldName;
-      }
-      return _.replace(fieldName, typeName, "");
-    }, function(value, key) {
-      let newValue = value;
-      if (typeName === "text_section" && key === "text") {
-        newValue = sanitizeTextSectionHtml(newValue);
-      } else if (key === "image") {
-        let imageUrl = url.parse(newValue.url);
-        const host = "http://content.sbagov.fearlesstesters.com";
-        imageUrl = host + imageUrl.pathname;
-        newValue.url = imageUrl;
-      }
-      return newValue;
-    });
-    return _.chain(formattedParagraph)
-      .merge({
-        type: _.camelCase(typeName)
-      })
-      .value();
-  }
-  return null;
-
+  const withValuesAsPromises = _.mapValues(withFixedKeys, customValueFormatter);
+  const retVal = Promise.props(withValuesAsPromises);
+  return retVal;
 }
 
 function formatTaxonomyTerm(data) {
   if (data) {
     const name = extractValue(data.name);
     const vocabulary = extractTargetId(data.vid);
-    const fields = extractFieldsByFieldNamePrefix(data, fieldPrefix);
-    return _.merge(fields, {
-      name: name,
-      vocabulary: _.camelCase(vocabulary)
-    });
+    return extractFieldsByFieldNamePrefix(data, fieldPrefix, null, extractValuePromise)
+      .then((object) => {
+        return _.assign({
+          name: name,
+          vocabulary: _.camelCase(vocabulary)
+        }, object);
+      });
   }
   return {};
 
 }
+
+function fetchFormattedTaxonomyTerm(taxonomyTermId) {
+  return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
+}
+
+
+
+function makeParagraphValueFormatter(typeName) {
+  return function(value, key) {
+    let newValuePromise;
+    if (typeName === "text_section" && key === "text") {
+      newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
+    } else if (key === "image") {
+      let imageUrl = url.parse(value[0].url);
+      const host = "http://content.sbagov.fearlesstesters.com";
+      imageUrl = host + imageUrl.pathname;
+      newValuePromise = Promise.resolve({
+        url: imageUrl
+      });
+    } else if (typeName === "lookup" && key === "contactCategory") {
+      const taxonomyTermId = extractTargetId(value);
+      newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
+        return result.name;
+      });
+    } else {
+      newValuePromise = Promise.resolve(extractValue(value));
+    }
+    return newValuePromise;
+  };
+}
+
+
+function formatParagraph(paragraph) {
+  if (paragraph) {
+    const typeName = extractTargetId(paragraph.type);
+    return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
+      if (typeName === "image") {
+        return fieldName;
+      }
+      return _.replace(fieldName, typeName, "");
+    }, makeParagraphValueFormatter(typeName))
+      .then((object) => {
+        return _.assign({
+          type: _.camelCase(typeName)
+        }, object);
+      });
+  }
+  return Promise.resolve(null);
+
+}
+
+
 
 function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
@@ -113,9 +138,6 @@ function fetchFormattedParagraph(paragraphId) {
 
 
 
-function fetchFormattedTaxonomyTerm(taxonomyTermId) {
-  return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
-}
 
 function formatNode(data) {
   if (data) {
@@ -128,7 +150,6 @@ function formatNode(data) {
     const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
 
     const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
-
     return Promise.all([paragraphDataPromises, taxonomyPromise]).spread((paragraphData, taxonomyData) => {
       return {
         title: title,
