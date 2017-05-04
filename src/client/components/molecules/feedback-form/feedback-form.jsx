@@ -38,7 +38,7 @@ class FeedbackForm extends React.Component {
     this.setState({feedbackText: e.target.value});
   }
 
-  handleHoneyPotChange(e){
+  handleMaidenNameChange(e){
     this.setState({honeyPotText: e.target.value});
   }
 
@@ -49,7 +49,7 @@ class FeedbackForm extends React.Component {
           <h4 className={styles.question}>{firstThankYou}</h4>
           <p>{subtext}</p>
           <TextArea id="feedback-input" placeholder={placeholder} showCounter={false} onChange={this.handleChange.bind(this)} />
-          <div className={styles.honeyPotInputContainer}><input id="honeypot-input" onChange={this.handleHoneyPotChange.bind(this)}/></div>
+          <div className={styles.maidenNameContainer}><input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)}/></div>
           <SmallPrimaryButton id="feedback-submit-button" text="SUBMIT" onClick={this.handleSubmit.bind(this)} disabled={!this.state.feedbackText || this.state.feedbackText.length===0}/>
         </div>
       );
