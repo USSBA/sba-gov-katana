@@ -27,21 +27,19 @@ function handleFeedback(req, res) {
 }
 
 function handleFeedbackText(req, res) {
-  if(req && req.body && req.body.text.honeyPotText){
+  if (req && req.body && req.body.text.honeyPotText) {
     console.log("This is submitted by a spam bot.");
-  }else{
-      if (req && req.body && req.body.text.feedbackText && req.params && req.params.id) {
-          saveFeedbackText(req.params.id, req.body.text.feedbackText)
-              .then(function() {
-                  res.status(HttpStatus.NO_CONTENT).send();
-              })
-              .catch((error) => {
-                  console.error(error);
-                  res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error saving feedback.");
-              });
-      } else {
-          res.status(HttpStatus.BAD_REQUEST).send("Text missing from body or ID missing from URL.  Please check that the HTTP request includes a text");
-      }
+  } else if (req && req.body && req.body.text.feedbackText && req.params && req.params.id) {
+    saveFeedbackText(req.params.id, req.body.text.feedbackText)
+      .then(function() {
+        res.status(HttpStatus.NO_CONTENT).send();
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error saving feedback.");
+      });
+  } else {
+    res.status(HttpStatus.BAD_REQUEST).send("Text missing from body or ID missing from URL.  Please check that the HTTP request includes a text");
   }
 }
 
