@@ -121,27 +121,25 @@ class SbaNewsModal extends React.Component {
     render() {
         return (
             <ReactModal onRequestClose={this.handleClose.bind(this)} isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} role="dialog" aria-labelledby="dialogTitle" contentLabel="Modal">
-                <span onKeyDown={this.handleGlobalKeyPress.bind(this)}>
-                    <div className={this.state.displayForm ? styles.titleWrapper : styles.hideForm}>
-                        <h2 id="dialogTitle" className={styles.title} >Get business advice and invitations to local business events.</h2>
-                        <a onClick={this.handleClose.bind(this)}><img tabIndex="0" className={styles.exitIcon} src={exitIcon} onKeyDown={ (event) => this.handleKeyDown(event) }/></a>
-                    </div>
-                    <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
-                        <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
-                            <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-                            <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
-                            <div className={styles.btnContainer}>
-                                <NewsletterSmallPrimaryButton text="SUBSCRIBE" type="submit" disabled={!(this.isValidForm())}/>
-                            </div>
-                            <p className={styles.privacyLinkContainer}><a className={styles.privacyLink} href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
-                        </form>
-                    </div>
-                    <div className={this.state.displayForm ? styles.hideForm : styles.byeContainer}>
-                        <a onClick={this.handleClose.bind(this)}><img className={styles.exitIconBye} src={exitIcon}/></a>
-                        <img className={styles.envelopeIcon} src={envelopeIcon}/>
-                        <p className={styles.byeMsg}>Thanks for subscribing!</p>
-                    </div>
-                </span>
+                <div className={this.state.displayForm ? styles.titleWrapper : styles.hideForm}>
+                    <h2 id="dialogTitle" className={styles.title} >Get business advice and invitations to local business events.</h2>
+                    <a onClick={this.handleClose.bind(this)}><img tabIndex="0" className={styles.exitIcon} src={exitIcon} onKeyDown={ (event) => this.handleKeyDown(event) }/></a>
+                </div>
+                <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
+                    <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
+                        <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+                        <div className={styles.zipTextBox}><TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/></div>
+                        <div className={styles.btnContainer}>
+                            <NewsletterSmallPrimaryButton text="SUBSCRIBE" type="submit" disabled={!(this.isValidForm())}/>
+                        </div>
+                        <p className={styles.privacyLinkContainer}><a className={styles.privacyLink} href="about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy">Privacy policy</a></p>
+                    </form>
+                </div>
+                <div className={this.state.displayForm ? styles.hideForm : styles.byeContainer}>
+                    <a onClick={this.handleClose.bind(this)}><img className={styles.exitIconBye} src={exitIcon}/></a>
+                    <img className={styles.envelopeIcon} src={envelopeIcon}/>
+                    <p className={styles.byeMsg}>Thanks for subscribing!</p>
+                </div>
             </ReactModal>
 
         );
