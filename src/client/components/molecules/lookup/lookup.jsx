@@ -12,7 +12,6 @@ class Lookup extends React.Component {
     this.props.actions.fetchContentIfNeeded(this.props.type);
   }
   render() {
-    console.log("items", this.props.items);
     return (
       <div>
         <div className={styles.container}>
@@ -53,7 +52,6 @@ Lookup.defaultProps = {
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  console.log("arguments", arguments);
   return {
     items: reduxState.restContent[ownProps.type]
   };
