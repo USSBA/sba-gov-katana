@@ -12,7 +12,7 @@
 .content {
   background-color: #D6ECFC;
   position: relative;
-  width: 400px;
+  width: 351px;
   height: auto;
   top: 50%;
   transform: translate(5%,-50%);
@@ -23,20 +23,24 @@
 }
 
 .exitIcon {
-  margin-left: 50px;
-  width: 26.16px;
-  height: 26.16px;
+  width: 19.38px;
+  height: 19.38px;
   color: #666666;
   border-radius: 1px;
   cursor: pointer;
+}
 
+.imgContainer{
+  float: right;
+  width: 19.38px;
+  height: 19.38px;
 }
 
 .exitIconBye {
   position: absolute;
-  margin-left: 50px;
-  width: 26.16px;
-  height: 26.16px;
+  margin-left: 10px;
+  width: 19.38px;
+  height: 19.38px;
   color: #666666;
   border-radius: 1px;
   cursor: pointer;
@@ -59,16 +63,16 @@
   position: absolute;
   height: 33px;
   width: 54px;
-  top: 120px;
-  right: 170px;
+  top: 80px;
+  right: 150px;
 }
 
 .byeMsg{
   position: absolute;
   height: 26px;
   width: 268px;
-  top: 160px;
-  right: 50px;
+  top: 125px;
+  right: 40px;
   color: #333333;
   font-size: 24px;
   font-weight: 900;
@@ -76,7 +80,7 @@
 }
 
 .byeContainer{
-  height: 250px;
+  height: 200px;
 }
 
 .title {
@@ -84,7 +88,7 @@
   width: 280px;
   color: #333333;
   font-family: "Source Sans Pro";
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   float: left;
   font-size: 18px;
   font-weight: bold;
@@ -99,25 +103,35 @@
 
 .zipTextBox {
   display: inline-block;
-  height: 0;
-  width: 180px;
-  background-color: #FFFFFF;
+  height: 50px;
+  width: 162px;
+  background-color: #D6ECFC;
   vertical-align: top;
 }
 
 .btnContainer{
   display: inline-block;
-  width: 50%;
-  padding-left: 20px;
-  margin-top: 5px;
+  width: 134px;
+  padding-left: 0;
+  margin-top: 7px;
   vertical-align: top;
+  float: right;
 }
+
+.zipButtonWrapper{
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .privacyLinkContainer{
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 0;
   text-align: center;
   vertical-align: top;
 }
 .privacyLink{
   color: #006BA2 !important;
+  font-size: 13px;
 }
 
