@@ -24,6 +24,7 @@ class BusinessGuideArticle extends React.Component {
     let paragraphs = [];
     this.sectionHeaders = [];
     paragraphs = paragraphData.map(function(item, index, paragraphArray) {
+      let paragraphGridStyle = styles.pushOne;
       let paragraph = (<ParagraphTypeToBeImplemented key={index} data={item} index={index}/>);
       if (item && item.type) {
         if (item.type === "readMore") {
@@ -43,13 +44,15 @@ class BusinessGuideArticle extends React.Component {
           paragraph = (<SectionHeader key={index} refId={sectionHeaderId} text={item.text}/>);
           this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
         } else if (item.type === "image") {
+          paragraphGridStyle = styles.pushZero;
           paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>);
         } else if (item.type === "lookup") {
+            paragraphGridStyle = styles.pushZero;
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
         }
       }
       return (
-        <div key={index} id={item.type + "-" + index}>{paragraph}</div>
+        <div key={index} id={item.type + "-" + index} className={paragraphGridStyle}>{paragraph}</div>
       );
     }.bind(this));
 

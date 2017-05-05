@@ -1,0 +1,20 @@
+.container{
+    border: 2px solid $grey-light;
+    @include grid-column(10.5, $sba-grid-medium);
+    @include grid-push(1);
+}
+
+.selectContainer{
+    @include grid-column(4, $sba-grid-medium);
+    @include grid-push(4);
+}
+
+.dataContainer{
+    @include grid-column(12, $sba-grid-medium);
+    @include grid-push(0);
+}
+
+.title{
+    text-align: center;
+    margin-top: $margin-30;
+}

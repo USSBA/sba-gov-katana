@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as RestContentActions from "../../../actions/rest-content.js"
 
 import styles from "./lookup.scss";
+import states from "../../../services/us-states.json";
 
 class Lookup extends React.Component {
 
@@ -14,14 +15,25 @@ class Lookup extends React.Component {
     console.log("items", this.props.items);
     return (
       <div>
-        <h2>{this.props.title}</h2>
-        <div>{this.props.items.map(function(item) {
-            return (
-              <p>
-                {JSON.stringify(item)}
-              </p>
-            );
-          })}</div>
+        <div className={styles.container}>
+          <h4 className={styles.title}>{this.props.title}</h4>
+          <div className={styles.selectContainer}>
+            <select>
+              {states.map(function(state) {
+                return (
+                  <option>{state.name}</option>
+                );
+              })}
+            </select>
+          </div>
+          <div className={styles.dataContainer}>{this.props.items.map(function(item) {
+              return (
+                <p>
+                  {JSON.stringify(item)}
+                </p>
+              );
+            })}</div>
+        </div>
       </div>
     )
   }
