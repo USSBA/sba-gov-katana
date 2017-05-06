@@ -63,7 +63,7 @@ class BusinessGuideArticle extends React.Component {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     return (
       <div className={styles.container}>
-        <TitleSection sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
+        <TitleSection gridClass={styles.pushOne} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <FeedbackForm/>
       </div>
     );

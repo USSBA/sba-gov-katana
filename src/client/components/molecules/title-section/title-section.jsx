@@ -16,7 +16,7 @@ class TitleSection extends React.Component{
 
     render(){
         let titleLinks = this.makeTitleLinks(this.props.sectionHeaders);
-        return (<div id="titleSectionId" className={styles.titleSection}>
+        return (<div id="titleSectionId" className={styles.titleSection + " " + this.props.gridClass}>
                     <h1 id="titleSectionTitleId" className={styles.title}>{this.props.title}</h1>
                     <h5 id="titleSectionSummaryId" className={styles.summary}>{this.props.summary}</h5>
                     <hr className={styles.lineCopy}/>
