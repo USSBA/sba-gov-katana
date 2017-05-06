@@ -16,18 +16,18 @@ class Lookup extends React.Component {
       <div>
         <div className={styles.container}>
           <h4 className={styles.title}>{this.props.title}</h4>
-          <div className={styles.selectContainer}>
+          <div key={1} className={styles.selectContainer}>
             <select>
-              {states.map(function(state) {
+              {states.map(function(state, index) {
                 return (
-                  <option>{state.name}</option>
+                  <option key={index}>{state.name}</option>
                 );
               })}
             </select>
           </div>
-          <div className={styles.dataContainer}>{this.props.items.map(function(item) {
+          <div key={2} className={styles.dataContainer}>{this.props.items.map(function(item, index) {
               return (
-                <p>
+                <p key={index} >
                   {JSON.stringify(item)}
                 </p>
               );
