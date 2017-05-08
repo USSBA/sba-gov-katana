@@ -93,6 +93,7 @@ class SbaNewsModal extends React.Component {
         if (code == 13) {
             this.setState({modalIsOpen: false});
         }
+        event.preventDefault()
     }
 
     handleBlur(e) {
@@ -106,21 +107,14 @@ class SbaNewsModal extends React.Component {
         logEvent({"category": "Newsletter Modal", "action": "Focus Event", "label": name});
     }
 
-    handleClose(){
+    handleClose(event){
         this.setState({modalIsOpen: false});
-    }
-
-    handleGlobalKeyPress(event){
-        console.log("handleGlobalKeyPress", event);
-        let code = (event.keyCode ? event.keyCode : event.which);
-        if (code == 27) {
-            this.handleClose();
-        }
+        event.preventDefault();
     }
 
     render() {
         return (
-            <ReactModal onRequestClose={this.handleClose.bind(this)} isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} role="dialog" aria-labelledby="dialogTitle" contentLabel="Modal">
+            <ReactModal isOpen={this.state.modalIsOpen} className={styles.content} overlayClassName={styles.overlay} role="dialog" aria-labelledby="dialogTitle" contentLabel="Modal">
                 <div className={this.state.displayForm ? styles.titleWrapper : styles.hideForm}>
                     <h2 id="dialogTitle" className={styles.title} >Get business advice and invitations to local business events.</h2>
                     <a className={styles.imgContainer}  onClick={this.handleClose.bind(this)} href=""><img className={styles.exitIcon} src={exitIcon} onKeyDown={ (event) => this.handleKeyDown(event) }/></a>
