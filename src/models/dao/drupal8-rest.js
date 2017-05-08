@@ -33,5 +33,34 @@ function fetchById(type, id) {
     }));
 }
 
+function fetchContentByType(type){
+    const options = {
+        url: type,
+        params: {
+            "_format": "json"
+        },
+        baseURL: config.get("drupal8.hostname"),
+        headers: {
+            "Accepts": "application/json"
+        }
+    };
 
-export { fetchById };
+    return Promise.resolve(axios.request(options)
+        .then(function(response) {
+            if (response && response.data) {
+                return response.data;
+            }
+            return null;
+
+        })
+        .catch(function(error) {
+            if (error && error.response && error.response.status === HttpStatus.NOT_FOUND) {
+                return null;
+            }
+            console.error(error);
+            throw new Error("Error encountered contacting the drupal 8 rest services in fetchContentByType");
+        }));
+}
+
+
+export { fetchById, fetchContentByType };

@@ -6,8 +6,9 @@ const fieldPrefix = "field_";
 const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
 const paragraphEndpoint = "entity/paragraph";
+const contactEndpoint = "contacts";
 
-import { fetchById } from "../models/dao/drupal8-rest.js";
+import { fetchById, fetchContentByType } from "../models/dao/drupal8-rest.js";
 
 import { sanitizeTextSectionHtml } from "../util/formatter.js";
 
@@ -39,6 +40,10 @@ function fetchTaxonomyTermById(taxonomyTermId) {
 
 function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
+}
+
+function fetchContacts(){
+  return fetchContentByType(contactEndpoint);
 }
 
 // this is an abstract function that takes an object, removes properties that do not
@@ -83,8 +88,6 @@ function formatTaxonomyTerm(data) {
 function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
-
-
 
 function makeParagraphValueFormatter(typeName) {
   return function(value, key) {
@@ -167,4 +170,4 @@ function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts };
