@@ -8,6 +8,7 @@ govdelivery:
     popupEnabled: false
 googleAnalytics:
     accountId: "UA-96147768-1"
+    tagManagerAccountId: "GTM-KS9GT4X"
     debug: true
 drupal:
     hostname: https://www.sbagov.fearlesstesters.com/
