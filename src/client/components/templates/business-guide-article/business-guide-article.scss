@@ -4,19 +4,17 @@
     @include grid-push(3);
     @include grid-media($sba-grid-small) {
          @include grid-column(6) ;
-         padding-top: 80px;
+         padding-top: 100px;
     }
 }
 
 
 .pushOne{
-    @include grid-container;
-    @include grid-column(10.666, $sba-grid-medium);
+    @include grid-column(10.6666, $sba-grid-medium);
     @include grid-push(1.333);
     @include grid-media($sba-grid-small) {
          @include grid-column(6) ;
          @include grid-push(0);
-         padding-top: 80px;
     }
 }
 

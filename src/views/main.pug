@@ -2,15 +2,7 @@ doctype html
 html
   head
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="description" content=description)
-    meta(property="og:title" content=title)
-    meta(property="og:description" content=description)
-    meta(property="og:image" content="https://www.sba.gov/sites/default/files/images/HPSEOImage.jpg")
-    meta(name="twitter:title" content=title)
-    meta(name="twitter:description" content=description)
-    meta(name="twitter:card" content="summary")
-    meta(name="twitter:image" content="https://www.sba.gov/sites/default/files/images/HPSEOImage.jpg")
-    meta(property="og:site_name" content=title)
+    include includes/seo-meta.pug
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     title= title
     script(src='/assets/scripts/purify.min.js')
@@ -23,12 +15,12 @@ html
         h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
         (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
         })(window,document.documentElement,'async-hide','dataLayer',4000,
-        {'GTM-KS9GT4X':true});
+        {'#{tagManagerAccountId}':true});
   body
     #root
     script(src='/build/bundle.js')
-    script(src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript")
     link(href="https://fonts.googleapis.com/css?family=Merriweather:400,400i|Source+Sans+Pro:400,500,600,700,800,900" rel="stylesheet")
+    script(src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript")
     script(type="text/javascript").
       function googleTranslateElementInit() {
         new google.translate.TranslateElement({

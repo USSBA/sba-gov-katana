@@ -7,7 +7,7 @@ function isEnabled() {
 
 if (isEnabled()) {
   reactGa.initialize(window.CONFIG.googleAnalytics.accountId);
-  reactGa.plugin.require("GTM-KS9GT4X");
+  reactGa.plugin.require(window.CONFIG.googleAnalytics.tagManagerAccountId);
 } else {
   console.log("GA in Development Mode");
 }
