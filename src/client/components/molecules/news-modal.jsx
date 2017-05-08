@@ -69,9 +69,9 @@ class SbaNewsModal extends React.Component {
         });
 
         this.setState({displayForm: false});
-        //this.timerId = setTimeout(()=>{
-       //     this.setState({modalIsOpen: false});
-        //}, 5000);
+        this.timerId = setTimeout(()=>{
+           this.setState({modalIsOpen: false});
+        }, 5000);
     }
 
     componentWillUnmount(){
