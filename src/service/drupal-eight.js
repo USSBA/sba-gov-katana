@@ -42,7 +42,29 @@ function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
 }
 
-function fetchContacts(){
+function fetchFormattedContactParagraph(paragraphArg) {
+  return fetchParagraphId(paragraphArg.paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
+    response.title = paragraphArg.title; //eslint-disable-line no-param-reassign
+    return response;
+  });
+}
+
+function formatContact(contact) {
+  const contactArg = {
+    title: contact.title[0].value,
+    paragraphId: extractTargetId(contact.field_type_of_contact)
+  };
+  return fetchFormattedContactParagraph(contactArg);
+}
+
+function formatContacts(data) {
+  if (data) {
+    return Promise.map(data, formatContact);
+  }
+  return {};
+}
+
+function fetchContacts() {
   return fetchContentByType(contactEndpoint).then(formatContacts);
 }
 
@@ -133,60 +155,39 @@ function formatParagraph(paragraph) {
 
 }
 
-function formatContactParagraph(paragraph){
-  if(paragraph){
-      const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
-      const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
-      const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
-      const contactLink = paragraph.field_link[0].uri;
-      const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
-      const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
-      const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
-      const contactCategoryTaxonomyPromise = contactCategoryTaxonomyId ? fetchFormattedTaxonomyTerm(contactCategoryTaxonomyId) : Promise.resolve(null);
-      const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId): Promise.resolve(null);
-      return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
-          return {
-              contactCity: contactCity,
-              contactLink: contactLink,
-              contactState: contactState,
-              contactStreetAddress: contactStreetAddress,
-              contactZipCode: contactZipCode,
-              contactCategoryTaxonomyTerm: contactCategoryTaxonomyData,
-              stateServedTaxonomyTerm: stateServedTaxonomyData
-          };
-      });
+
+function formatContactParagraph(paragraph) { //eslint-disable-line complexity
+  if (paragraph) {
+    const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
+    const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
+    const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
+    const contactLink = paragraph.field_link[0].uri;
+    const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
+    const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
+    const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
+    const contactCategoryTaxonomyPromise = contactCategoryTaxonomyId ? fetchFormattedTaxonomyTerm(contactCategoryTaxonomyId) : Promise.resolve(null);
+    const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
+    return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
+      return {
+        contactCity: contactCity,
+        contactLink: contactLink,
+        contactState: contactState,
+        contactStreetAddress: contactStreetAddress,
+        contactZipCode: contactZipCode,
+        contactCategoryTaxonomyTerm: contactCategoryTaxonomyData,
+        stateServedTaxonomyTerm: stateServedTaxonomyData
+      };
+    });
   }
   return Promise.resolve(null);
 }
-
 
 
 function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
 }
 
-function fetchFormattedContactParagraph(paragraphArg){
-  return fetchParagraphId(paragraphArg.paragraphId).then(formatContactParagraph).then(function(response){
-    response.title = paragraphArg.title;
-    return response;
-  });
-}
 
-function formatContact(contact){
-  const contact_arg = {
-    title: contact.title[0].value,
-      paragraphId: extractTargetId(contact.field_type_of_contact)
-  };
-  return fetchFormattedContactParagraph(contact_arg);
-}
-
-
-function formatContacts(data){
-  if(data){
-      return Promise.map(data, formatContact);
-  }
-  return {};
-}
 
 
 

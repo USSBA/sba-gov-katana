@@ -87,7 +87,7 @@ const constants = {
       "links": [{
         "url": "/about-sba",
         "text": "About SBA"
-        },
+      },
         {
           "url": "/about-sba/what-we-do/contact-sba",
           "text": "Contact SBA"
