@@ -98,7 +98,7 @@
     box-shadow: none;
 }
 
-  @include theme-focus('money-green', '.radioItem', $money-green);
-  @include theme-focus('sba-blue', '.radioItem', $sba-blue);
-  @include theme-focus('cobalt-blue', '.radioItem', $cobalt-blue);
-  @include theme-focus('byzantine', '.radioItem', $byzantine);
+  @include theme-focus('money-green', '.radioItem', null, null, $money-green);
+  @include theme-focus('sba-blue', '.radioItem', null, null, $sba-blue);
+  @include theme-focus('cobalt-blue', '.radioItem', null, null, $cobalt-blue);
+  @include theme-focus('byzantine', '.radioItem', null, null, $byzantine);

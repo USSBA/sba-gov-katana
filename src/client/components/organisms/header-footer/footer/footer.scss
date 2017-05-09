@@ -1,0 +1,123 @@
+ul.pageLinkGroup {
+  border: 2px solid gold;
+  }
+
+
+.footer{
+  padding: 30px 0;
+  background-color: #E8E8E8;
+  a {
+    text-decoration: none;
+  }
+  @include grid-container;
+}
+
+.footerLinksGroup {
+  @include grid-container;
+}
+
+.desktopFooterLinks {
+  display: none;
+  margin-bottom: 40px;
+  @include grid-media( $sba-grid-large) {
+    @include grid-column(2);
+    display: block;
+  }
+}
+
+.tabletFooterLinks {
+  display: none;
+  margin-bottom: 20px;
+  @include grid-container;
+  ul {
+    @include grid-column(4, $sba-grid-medium);
+  }
+  @include grid-media( $tablet-nav) {
+    display: block;
+  }
+}
+
+.mobileFooterLinks {
+  display: none;
+  margin-bottom: 20px;
+  @include grid-container;
+  ul {
+    @include grid-column(3, $sba-grid-small);
+  }
+  @include grid-media( $mobile-nav) {
+    display: block;
+  }
+}
+
+hr {
+  display: none;
+  border: 1px solid #C4C4C4;
+  &.desktopRule {
+    @include grid-media( $sba-grid-medium) {
+      display: block;
+      width: calc(100% - 40px);
+      margin: 0 auto 20px;
+    }
+  }
+  &.mobileRule {
+    @include grid-media( $sba-grid-small) {
+      display: block;
+      width: calc(100% - 40px);
+      margin: 0 auto 20px;
+    }
+  }
+}
+
+.SocialMediaLinkSet {
+  img {
+    width: 45px;
+    margin-right: 15px;
+  }
+  @include grid-media( $sba-grid-small) {
+    max-width: 300px;
+    margin: 0 auto 20px;
+  }
+  @include grid-media( $sba-grid-medium) {
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
+    @include grid-column(4);
+  }
+}
+
+.address {
+  font-size: 16px;
+  @include grid-media( $mobile-nav) {
+    text-align: center;
+    span {
+      display: block;
+    }
+  }
+  @include grid-media( $tablet-nav) {
+    float: right;
+    margin-right: 30px;
+    .name {
+      margin-right: 5px;
+      padding-right: 5px;
+      border-right: 2px solid #c4c4c4;
+    }
+  }
+  @include grid-media( $desktop-nav) {
+    float: right;
+    margin-right: 30px;
+    .name {
+      margin-right: 5px;
+      padding-right: 5px;
+      border-right: 2px solid #c4c4c4;
+    }
+  }
+  // @include grid-media( $sba-grid-medium) {
+  //   @include grid-column(9);
+  // }
+}
+
+@include theme(sba-blue, '.footer li:first-child a', null, $base-font-color, null);
+@include theme(byzantine, '.footer li:first-child a', null, $base-font-color, null);
+@include theme(money-green, '.footer li:first-child a', null, $base-font-color, null);
+@include theme(cobalt-blue, '.footer li:first-child a', null, $base-font-color, null);

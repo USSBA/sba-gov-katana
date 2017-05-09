@@ -1,0 +1,43 @@
+.miniNav {
+  // border: 2px solid orange;
+  margin-bottom: 12px;
+  @include grid-column(9, $desktop-nav);
+}
+
+.miniNav ul {
+  float: right;
+}
+
+.miniNav li {
+  display: inline-block;
+  // background-color: lightgreen;
+  margin-left: 12px;
+  font-size: 14px;
+  color: #757575;
+}
+
+@include theme(sba-blue, '.miniNav li a', null, #757575, null);
+@include theme(byzantine, '.miniNav li a', null, #757575, null);
+@include theme(money-green, '.miniNav li a', null, #757575, null);
+@include theme(cobalt-blue, '.miniNav li a', null, #757575, null);
+
+@include theme-hover(sba-blue, '.miniNav li a', null, $grey-dark, null);
+@include theme-hover(byzantine, '.miniNav li a', null, $grey-dark, null);
+@include theme-hover(money-green, '.miniNav li a', null, $grey-dark, null);
+@include theme-hover(cobalt-blue, '.miniNav li a', null, $grey-dark, null);
+
+.miniNav .searchBar {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 12px;
+}
+
+@include theme(sba-blue, '.miniNav .searchBar a', null, #757575, null);
+@include theme(byzantine, '.miniNav .searchBar a', null, #757575, null);
+@include theme(money-green, '.miniNav .searchBar a', null, #757575, null);
+@include theme(cobalt-blue, '.miniNav .searchBar a', null, #757575, null);
+
+@include theme-hover(sba-blue, '.miniNav .searchBar a', null, $grey-dark, null);
+@include theme-hover(byzantine, '.miniNav .searchBar a', null, $grey-dark, null);
+@include theme-hover(money-green, '.miniNav .searchBar a', null, $grey-dark, null);
+@include theme-hover(cobalt-blue, '.miniNav .searchBar a', null, $grey-dark, null);
