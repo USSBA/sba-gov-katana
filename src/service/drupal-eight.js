@@ -42,7 +42,7 @@ function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
 }
 
-function fetchContacts(){
+function fetchContacts() {
   return fetchContentByType(contactEndpoint);
 }
 
