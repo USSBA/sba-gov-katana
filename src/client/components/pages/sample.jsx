@@ -29,7 +29,7 @@ SamplePage.defaultProps = {
   data: {
     title: "Test Page",
     summary: "test page thing",
-    paragraphs: []
+    paragraphs: [{type: "lookup", contactCategory: "State registration", display: "Cards", sectionHeaderText: null}]
   }
 }
 

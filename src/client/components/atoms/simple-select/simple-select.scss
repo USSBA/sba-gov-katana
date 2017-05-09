@@ -1,0 +1,24 @@
+
+.myselect{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid $grey;
+    border-radius: 0;
+    text-align: center;
+    @include font-size($paragraph-font-sizes);
+    height: 48px;
+}
+
+.myoption{
+    padding: 10px;
+}
+// @include theme-focus('money-green', '.textInput', $money-green);
+// @include theme-focus('sba-blue', '.textInput', $sba-blue);
+// @include theme-focus('cobalt-blue', '.textInput', $cobalt-blue);
+// @include theme-focus('byzantine', '.textInput', $byzantine);
+//
+// @include theme-focus('money-green', '.textArea', $money-green);
+// @include theme-focus('sba-blue', '.textArea', $sba-blue);
+// @include theme-focus('cobalt-blue', '.textArea', $cobalt-blue);
+// @include theme-focus('byzantine', '.textArea', $byzantine);
