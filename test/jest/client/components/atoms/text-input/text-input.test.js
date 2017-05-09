@@ -1,7 +1,7 @@
 /*global expect*/
 
 import React from 'react';
-import TextInput from 'client/components/atoms/text-input.jsx';
+import TextInput from 'client/components/atoms/text-input/text-input.jsx';
 import {shallow} from 'enzyme';
 
 
@@ -23,9 +23,9 @@ test('TextInput', () => {
              errorText={"Error Thing"}
              label="What is your full name?"
              name="contactFullName"
-             handleChange={handleChange}
+             onChange={handleChange}
              value={lastValue}
-             getValidationState={null}
+             validationState={null}
              autoFocus
              onBlur={onBlur}
              onFocus={onFocus}

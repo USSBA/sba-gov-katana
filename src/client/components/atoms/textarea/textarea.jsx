@@ -1,14 +1,9 @@
 import React from 'react';
 import styles from './textarea.scss';
 import FormErrorMessage from "../form-error-message/form-error-message.jsx";
+import ValidationIcon from '../validation-icon/validation-icon.jsx';
 
 class TextArea extends React.Component {
-
-  iconValidation(validationState) {
-    return validationState == 'success' && this.props.showValidationIcon
-      ? <i className={"fa fa-check-circle " + styles.textAreaIconValid} aria-hidden="true"></i>
-      : null
-  }
 
   inputValidation(validationState) {
     return validationState == 'error'
@@ -40,9 +35,12 @@ class TextArea extends React.Component {
           {label}
         </label>
         <div className={styles.textAreaContainer}>
-          <textarea {...rest} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250"/> {this.iconValidation(validationState)}
+          <textarea {...rest} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250"/>
+          <ValidationIcon validationState={this.props.validationState} showSuccessIcon={this.props.showSuccessIcon} showErrorIcon={this.props.showErrorIcon} extraClassName={styles.validationIcon}/>
         </div>
-        {showCounter?<span className={styles.textAreaCounter}>{value.length}/250</span>: <div/>}
+        {showCounter
+          ? <span className={styles.textAreaCounter}>{value.length}/250</span>
+          : <div/>}
         {this.errorMessage(validationState, errorText)}
       </div>
     );
@@ -50,8 +48,9 @@ class TextArea extends React.Component {
 }
 
 TextArea.defaultProps = {
-    showCounter: true,
-    showValidationIcon: true
+  showCounter: true,
+  showSuccessIcon: true,
+  showErrorIcon: false
 }
 
 export default TextArea;

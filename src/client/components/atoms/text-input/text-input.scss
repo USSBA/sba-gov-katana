@@ -26,12 +26,3 @@
     border: 1px solid $error !important;
     box-shadow:inset 0px 0px 0px 1px $error !important;
 }
-
-.textInputIconValid {
-    font-size: 22px !important;
-    color: #609F00;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-}

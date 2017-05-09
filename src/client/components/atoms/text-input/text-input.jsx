@@ -1,13 +1,21 @@
 import React from 'react';
 import styles from './text-input.scss';
+import ValidationIcon from '../validation-icon/validation-icon.jsx';
 import FormErrorMessage from "../form-error-message/form-error-message.jsx";
 
 class TextInput extends React.Component {
-
   iconValidation(validationState) {
-    return validationState == 'success' && this.props.showValidationIcon
-      ? <i className={"fa fa-check-circle " + styles.textInputIconValid} aria-hidden="true"></i>
-      : null
+    if (this.props.showSuccessIcon && validationState == 'success') {
+      return (
+        <i className={"fa fa-check-circle " + styles.textInputIconValid} aria-hidden="true"></i>
+      );
+    } else if (this.props.showErrorIcon && validationState == 'error') {
+      return (
+        <i className={"fa fa-exclamation-circle " + styles.textInputIconValid} aria-hidden="true"></i>
+      );
+    } else {
+      return null;
+    }
   }
 
   inputValidation(validationState) {
@@ -40,7 +48,8 @@ class TextInput extends React.Component {
           {label}
         </label>
         <div className={styles.textInputContainer}>
-          <input id={this.props.id} {...rest} className={this.inputValidation(validationState)} onChange={onChange}/> {validationIcon}
+          <input id={this.props.id} {...rest} className={this.inputValidation(validationState)} onChange={onChange}/>
+          <ValidationIcon validationState={this.props.validationState} showSuccessIcon={this.props.showSuccessIcon} showErrorIcon={this.props.showErrorIcon} />
         </div>
         {errorMessage}
       </div>
@@ -49,7 +58,8 @@ class TextInput extends React.Component {
 }
 
 TextInput.defaultProps = {
-  showValidationIcon: true
+  showSuccessIcon: true,
+  showErrorIcon: false
 }
 
 export default TextInput;
