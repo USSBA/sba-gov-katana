@@ -10,7 +10,7 @@ const themes = {
 class Themer extends React.Component {
 
     generateTheme(){
-      let theme;
+      let theme = 'sba-blue';
       Object.keys(themes).map((key) => {
         let path = window.location.pathname.split("/")[1]
         themes[key].forEach((themePath) => {
