@@ -8,7 +8,7 @@ import * as LocationChangeActions from '../../../../actions/location-change.js';
 import {logEvent} from "../../../../services/analytics.js";
 
 
-import CheckBox from '../../../atoms/checkbox.jsx';
+import CheckBox from '../../../atoms/checkbox/checkbox.jsx';
 import styles from './lender-match.scss';
 import addInfoStyles from './additional-info.scss'
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import styles from './radio.scss';
 import _ from "lodash";
-import formHelperStyles from "./form-helpers.scss";
-import FormErrorMessage from "./form-error-message.jsx";
-/* esfmt-ignore-start */
+import FormErrorMessage from "../form-error-message/form-error-message.jsx";
+
 class RadioButtonGroup extends React.Component {
   constructor(props) {
     super();
@@ -30,8 +29,12 @@ class RadioButtonGroup extends React.Component {
       this.props.onBlur();
     }
   }
-  handleFocus(){
-      this.props.onFocus({target:{name: this.props.name}});
+  handleFocus() {
+    this.props.onFocus({
+      target: {
+        name: this.props.name
+      }
+    });
   }
   render() {
     let me = this;
@@ -49,12 +52,12 @@ class RadioButtonGroup extends React.Component {
     });
 
     let errorMessage = this.props.validationState == 'error'
-      ? <FormErrorMessage errorText={this.props.errorText} />
+      ? <FormErrorMessage errorText={this.props.errorText}/>
       : undefined;
 
     return (
       <div>
-        <label className={formHelperStyles.controlLabel}>
+        <label>
           {this.props.label}
         </label>
         <div>
@@ -65,7 +68,6 @@ class RadioButtonGroup extends React.Component {
     );
   }
 }
-/* esfmt-ignore-end */
 /* options is array of name/value/text triples */
 RadioButtonGroup.propTypes = {
   value: React.PropTypes.string.isRequired,

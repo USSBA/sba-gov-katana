@@ -1,0 +1,37 @@
+//LINC FORM INPUTS
+
+  @include theme-focus('money-green', '.textInput', $money-green);
+  @include theme-focus('sba-blue', '.textInput', $sba-blue);
+  @include theme-focus('cobalt-blue', '.textInput', $cobalt-blue);
+  @include theme-focus('byzantine', '.textInput', $byzantine);
+
+//COMMON INPUT STYLES
+
+.inputContainer {
+  margin-bottom: 20px !important
+}
+
+//TEXT INPUT
+.textInputContainer {
+    position: relative;
+    margin-bottom: 0px !important;
+}
+
+.textInput {
+  margin-bottom: 0px !important;
+}
+
+.textInputInvalid {
+    composes: textInput;
+    border: 1px solid $error !important;
+    box-shadow:inset 0px 0px 0px 1px $error !important;
+}
+
+.textInputIconValid {
+    font-size: 22px !important;
+    color: #609F00;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}

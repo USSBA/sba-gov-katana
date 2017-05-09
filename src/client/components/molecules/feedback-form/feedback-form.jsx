@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import styles from './feedback-form.scss'
 import SmallPrimaryButton from "../../atoms/small-primary-button/small-primary-button.jsx"
-import TextArea from "../../atoms/textarea.jsx";
+import TextArea from "../../atoms/textarea/textarea.jsx";
 import * as FeedbackActions from "../../../actions/feedback.js";
 import uuid from "uuid";
 

@@ -1,6 +1,14 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
+var sassResources = {
+  loader: 'sass-resources-loader',
+  options: {
+    resources: [path.join(__dirname, 'src', 'client', 'styles', "global.scss"), path.join(__dirname, 'src', 'client', 'styles', 'base', "_variables.scss")]
+  }
+};
+
 module.exports = function() {
   return {
     module: {
@@ -18,7 +26,7 @@ module.exports = function() {
           loader: 'style-loader!css-loader?modules&',
           exclude: [
             path.resolve(__dirname, "node_modules/react-select"),
-            path.resolve(__dirname, "src/client/components/atoms/react-select-helpers.css")
+            path.resolve(__dirname, "src/client/components/atoms/multiselect/react-select-helpers.css")
           ]
         },
         {
@@ -35,32 +43,43 @@ module.exports = function() {
                 path.join(__dirname, 'src', 'client', 'styles')
               ]
             }
-          }, {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: [path.join(__dirname, 'src', 'client', 'styles', "global.scss"), path.join(__dirname, 'src', 'client', 'styles', 'base', "_variables.scss")]
-            },
-          }],
+          }, sassResources],
           exclude: [
             path.resolve(__dirname, "src/client/styles/common/collapse.scss"),
-            path.resolve(__dirname, "src/client/components/atoms/checkbox.scss")
+            path.resolve(__dirname, "src/client/components/atoms/checkbox/checkbox.scss")
           ]
         },
         {
           test: /.*collapse\.scss$/,
-          loaders: ["style-loader", "css-loader", "sass-loader"]
+          loaders: ["style-loader", "css-loader", {
+            loader: "sass-loader",
+            options: {
+              includePaths: [
+                path.join(__dirname, 'src', 'client', 'styles')
+              ]
+            }
+          }, sassResources]
         },
         {
           test: /.*checkbox\.scss$/,
-          loaders: ["style-loader", "css-loader", "sass-loader"]
+          loaders: ["style-loader", "css-loader", {
+            loader: "sass-loader",
+            options: {
+              includePaths: [
+                path.join(__dirname, 'src', 'client', 'styles')
+              ]
+            }
+          }, sassResources]
         },
         {
           test: /\.less$/,
           loader: "style-loader!css-loader!less-loader"
-        }, {
+        },
+        {
           test: /\.json$/,
           loader: 'json-loader'
-        }, {
+        },
+        {
           test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
           loader: 'imports-loader?jQuery=jquery'
         }

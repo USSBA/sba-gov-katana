@@ -5,7 +5,7 @@ import {bindActionCreators} from "redux";
 import * as ModalActions from "../../actions/show-modal.js";
 import * as ContentActions from "../../actions/content.js";
 import styles from "./news-modal.scss";
-import TextInput from "../atoms/text-input.jsx";
+import TextInput from "../atoms/text-input/text-input.jsx";
 import exitIcon from "../../../../public/assets/svg/close_button.svg";
 import {logEvent} from "../../services/analytics.js";
 import constants from "../../services/constants.js";

@@ -21,258 +21,256 @@ import Callout from '../../molecules/callout/callout.jsx';
 import Hero from '../../organisms/hero/hero.jsx';
 import styles from './style-guide.scss';
 
-import TextInput from '../../atoms/text-input.jsx';
-import TextArea from "../../atoms/textarea.jsx";
-import RadioBtnGroup from "../../atoms/radio.jsx";
-import Checkbox from "../../atoms/checkbox.jsx";
+import TextInput from '../../atoms/text-input/text-input.jsx';
+import TextArea from "../../atoms/textarea/textarea.jsx";
+import RadioBtnGroup from "../../atoms/radio/radio.jsx";
+import Checkbox from "../../atoms/checkbox/checkbox.jsx";
 
 import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
 
-
-
-class StyleGuide extends React.Component{
-  constructor(){
-  	super();
-  	this.state = {exampleModalIsOpen: false};
+class StyleGuide extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      exampleModalIsOpen: false
+    };
   }
-	handleModalExampleClick(e){
-		e.preventDefault();
-		this.setState({exampleModalIsOpen: !this.state.exampleModalIsOpen});
-	}
-	render(){
-		return(
-			<div>
-			<Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
-			<ButtonGroup/>
-			<ColorPalette />
-			<h1>Form Inputs</h1>
-			<FormElements/>
-			<h1>Hero</h1>
-			<Hero title="Hey this is a cool title." 
-						message="Whether you're already up and running or just getting started, we can help. Come take a look now." 
-						button="LARGE BUTTON"
-						desktopImage={HeroDesktopImage}
-						mobileImage={HeroMobileImage}
-						/>
-			<h1>Future components...</h1>
-			{this.state.exampleModalIsOpen ? <SbaModal onClose={()=>{this.setState({exampleModalIsOpen: false})}} onClickOk={()=>{document.location = "http://www.example.com/"}} /> : <div/>}
-			</div>
-		);
-	}
+  handleModalExampleClick(e) {
+    e.preventDefault();
+    this.setState({
+      exampleModalIsOpen: !this.state.exampleModalIsOpen
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
+        <ButtonGroup/>
+        <ColorPalette/>
+        <h1>Form Inputs</h1>
+        <FormElements/>
+        <h1>Hero</h1>
+        <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." button="LARGE BUTTON" desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
+        <h1>Future components...</h1>
+        {this.state.exampleModalIsOpen
+          ? <SbaModal onClose={() => {
+              this.setState({exampleModalIsOpen: false})
+            }} onClickOk={() => {
+              document.location = "http://www.example.com/"
+            }}/>
+          : <div/>}
+      </div>
+    );
+  }
 }
 
 export default StyleGuide;
 
- const Typography = ({onModalExampleClick}) =>
-	<div className={ styles.typography }>
-		<ExtraLargeTitleText text="XL:h1 Source Sans Pro Black" />
-		<h1>h1 Source Sans Pro Black</h1>
-		<h2>h2 Source Sans Pro Black</h2>
-		<h3>h3 Source Sans Pro Black</h3>
-		<h4>h4 Source Sans Pro Bold</h4>
-		<h5>h5 Merriweather Regular</h5>
-		<SubtitleText text="h5:subtitle Merriweather Regular Italic" />
-		<h6>h6 Source Sans Pro Bold 18px</h6>
-		<p>Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim. Fusce mattis justo vitae congue varius. Suspendisse auctor dapibus ornare. Praesent venenatis lacus a sem interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur malesuada scelerisque massa varius volutpat.
-		</p>
-		<p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
-		<CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor." />
-		<LargeSecondaryButton text="Click for Modal" onClick={onModalExampleClick} />
-	</div>;
+const Typography = ({onModalExampleClick}) => <div className={styles.typography}>
+  <ExtraLargeTitleText text="XL:h1 Source Sans Pro Black"/>
+  <h1>h1 Source Sans Pro Black</h1>
+  <h2>h2 Source Sans Pro Black</h2>
+  <h3>h3 Source Sans Pro Black</h3>
+  <h4>h4 Source Sans Pro Bold</h4>
+  <h5>h5 Merriweather Regular</h5>
+  <SubtitleText text="h5:subtitle Merriweather Regular Italic"/>
+  <h6>h6 Source Sans Pro Bold 18px</h6>
+  <p>Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim. Fusce mattis justo vitae congue varius. Suspendisse auctor dapibus ornare. Praesent venenatis lacus a sem interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur malesuada scelerisque massa varius volutpat.
+  </p>
+  <p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
+  <CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor."/>
+  <LargeSecondaryButton text="Click for Modal" onClick={onModalExampleClick}/>
+</div>;
 
+const Buttons = () => <div className={styles.buttons}>
+  <p>
+    <a href="#">Link</a>
+  </p>
+  <br/>
 
- const Buttons = () =>
- 	<div className={ styles.buttons }>
- 		<p><a href="#">Link</a></p>
- 		<br />
+  <h4>Primary</h4>
+  <LargePrimaryButton text="Large Button"/>
+  <br/>
+  <br/>
+  <SmallPrimaryButton text="Small Button"/>
+  <br/>
+  <br/>
 
- 		<h4>Primary</h4>
- 		<LargePrimaryButton text="Large Button" />
-		<br />
-		<br />
-		<SmallPrimaryButton text="Small Button" />
-		<br />
-		<br />
+  <h4>Secondary</h4>
+  <LargeSecondaryButton text="Large Button"/>
+  <br/>
+  <br/>
+  <SmallSecondaryButton text="Small Button"/>
+  <br/>
+  <br/>
 
-		<h4>Secondary</h4>
-		<LargeSecondaryButton text="Large Button" />
-		<br />
-		<br />
-		<SmallSecondaryButton text="Small Button" />
-		<br />
-		<br />
+  <h4>Inverse Primary</h4>
+  <div className={styles.background}>
+    <LargeInversePrimaryButton text="Large Button"/>
+    <br/>
+    <br/>
+    <SmallInversePrimaryButton text="Small Button"/>
+  </div>
 
-		<h4>Inverse Primary</h4>
-		<div className={ styles.background }>
-		<LargeInversePrimaryButton text="Large Button" />
-		<br />
-		<br />
-		<SmallInversePrimaryButton text="Small Button" />
-		</div>
+  <h4>Inverse Secondary</h4>
+  <div className={styles.background}>
+    <LargeInverseSecondaryButton text="Large Button"/>
+    <br/>
+    <br/>
+    <SmallInverseSecondaryButton text="Small Button"/>
+  </div>
 
-		<h4>Inverse Secondary</h4>
-		<div className={ styles.background }>
-		<LargeInverseSecondaryButton text="Large Button" />
-		<br />
-		<br />
-		<SmallInverseSecondaryButton text="Small Button" />
-		</div>
+  <h4>Grey Secondary</h4>
+  <LargeGreySecondaryButton text="Large Button"/>
+  <br/>
+  <br/>
+  <SmallGreySecondaryButton disabled text="Small Button"/>
+  <br/>
+  <br/>
 
-		<h4>Grey Secondary</h4>
-		<LargeGreySecondaryButton text="Large Button" />
-		<br />
-		<br />
-		<SmallGreySecondaryButton disabled text="Small Button" />
-		<br />
-		<br />
+  <h4>Disabled</h4>
+  <button disabled>Nope</button>
+  <br/>
+  <br/>
+  <br/>
+</div>;
 
-		<h4>Disabled</h4>
-		<button disabled>Nope</button>
-		<br />
-		<br />
-		<br />
-	</div>;
+const ButtonGroup = () => <div>
+  <div className="sba-blue">
+    <Buttons className={styles.buttons}/>
+  </div>
+  <div className="byzantine">
+    <Buttons className={styles.buttons}/>
+  </div>
+  <div className="money-green">
+    <Buttons className={styles.buttons}/>
+  </div>
+  <div className="cobalt-blue">
+    <Buttons className={styles.buttons}/>
 
- const ButtonGroup = () =>
- 	<div>
- 	<div className="sba-blue">
- 		<Buttons className={ styles.buttons}/>
- 		</div>
-<div className="byzantine">
- 		<Buttons className={ styles.buttons}/>
- 		</div>
-<div className="money-green">
- 		<Buttons className={ styles.buttons}/>
- 		</div>
-<div className="cobalt-blue">
- 		<Buttons className={ styles.buttons}/>
+  </div>
+</div>;
 
-</div>
- 	</div>;
+const ColorPalette = () => <div>
+  <div className={styles.column}>
+    <h4>SBA Blue</h4>
+    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue}>
+      <p className={styles.colorName}>$sba-blue</p>
+      <p className={styles.colorHex}>#0b97DD</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedarkest}>
+      <p className={styles.colorName}>$sba-blue-darkest</p>
+      <p className={styles.colorHex}>#004265</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark}>
+      <p className={styles.colorName}>$sba-blue-dark</p>
+      <p className={styles.colorHex}>#006BA2</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelight + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$sba-blue-light</p>
+      <p className={styles.colorHex}>#9DDDFF</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelightest + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$sba-blue-lightest</p>
+      <p className={styles.colorHex}>#D6ECFC</p>
+    </div>
+  </div>
+  <div className={styles.column}>
+    <h4>Byzantine</h4>
+    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine}>
+      <p className={styles.colorName}>$byzantine</p>
+      <p className={styles.colorHex}>#AB3EA0</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedarkest}>
+      <p className={styles.colorName}>$byzantine-darkest</p>
+      <p className={styles.colorHex}>#511D4C</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedark}>
+      <p className={styles.colorName}>$byzantine-dark</p>
+      <p className={styles.colorHex}>#7E2E76</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelight}>
+      <p className={styles.colorName}>$byzantine-light</p>
+      <p className={styles.colorHex}>#C661BB</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelightest + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$byzantine-lightest</p>
+      <p className={styles.colorHex}>#C661BB</p>
+    </div>
+  </div>
+  <div className={styles.column}>
+    <h4>Money Green</h4>
+    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen}>
+      <p className={styles.colorName}>$money-green</p>
+      <p className={styles.colorHex}>#609F00</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendarkest}>
+      <p className={styles.colorName}>$money-green-darkest</p>
+      <p className={styles.colorHex}>#1F3A00</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendark}>
+      <p className={styles.colorName}>$money-green-dark</p>
+      <p className={styles.colorHex}>#336200</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlight + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$money-green-light</p>
+      <p className={styles.colorHex}>#8BC03B</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlightest + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$money-green-lightest</p>
+      <p className={styles.colorHex}>#DBEDC0</p>
+    </div>
+  </div>
+  <div className={styles.column}>
+    <h4>Cobalt Blue</h4>
+    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue}>
+      <p className={styles.colorName}>$cobalt-blue</p>
+      <p className={styles.colorHex}>#609F00</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedarkest}>
+      <p className={styles.colorName}>$cobalt-blue-darkest</p>
+      <p className={styles.colorHex}>#1F3A00</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedark}>
+      <p className={styles.colorName}>$cobalt-blue-dark</p>
+      <p className={styles.colorHex}>#336200</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelight + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$cobalt-blue-light</p>
+      <p className={styles.colorHex}>#8BC03B</p>
+    </div>
+    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelightest + ' ' + styles.textblack}>
+      <p className={styles.colorName}>$cobalt-blue-lightest</p>
+      <p className={styles.colorHex}>#DBEDC0</p>
+    </div>
+  </div>
+</div>;
 
- const ColorPalette = () =>
- 	<div>
- 		<div className={ styles.column }>
-		    <h4>SBA Blue</h4>
-		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue }>
-		        <p className={ styles.colorName }>$sba-blue</p>
-		        <p className={ styles.colorHex }>#0b97DD</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedarkest }>
-		        <p className={ styles.colorName }>$sba-blue-darkest</p>
-		        <p className={ styles.colorHex }>#004265</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark }>
-		        <p className={ styles.colorName }>$sba-blue-dark</p>
-		        <p className={ styles.colorHex }>#006BA2</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelight + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$sba-blue-light</p>
-		        <p className={ styles.colorHex }>#9DDDFF</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelightest + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$sba-blue-lightest</p>
-		        <p className={ styles.colorHex }>#D6ECFC</p>
-		    </div>
-		</div>
-		<div className={ styles.column }>
-		    <h4>Byzantine</h4>
-		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine }>
-		        <p className={ styles.colorName }>$byzantine</p>
-		        <p className={ styles.colorHex }>#AB3EA0</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedarkest }>
-		        <p className={ styles.colorName }>$byzantine-darkest</p>
-		        <p className={ styles.colorHex }>#511D4C</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedark }>
-		        <p className={ styles.colorName }>$byzantine-dark</p>
-		        <p className={ styles.colorHex }>#7E2E76</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelight }>
-		        <p className={ styles.colorName }>$byzantine-light</p>
-		        <p className={ styles.colorHex }>#C661BB</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelightest + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$byzantine-lightest</p>
-		        <p className={ styles.colorHex }>#C661BB</p>
-		    </div>
-		</div>
-		<div className={ styles.column }>
-		    <h4>Money Green</h4>
-		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen }>
-		        <p className={ styles.colorName }>$money-green</p>
-		        <p className={ styles.colorHex }>#609F00</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendarkest }>
-		        <p className={ styles.colorName }>$money-green-darkest</p>
-		        <p className={ styles.colorHex }>#1F3A00</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendark }>
-		        <p className={ styles.colorName }>$money-green-dark</p>
-		        <p className={ styles.colorHex }>#336200</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlight + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$money-green-light</p>
-		        <p className={ styles.colorHex }>#8BC03B</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlightest + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$money-green-lightest</p>
-		        <p className={ styles.colorHex }>#DBEDC0</p>
-		    </div>
-		</div>
-		<div className={ styles.column }>
-		    <h4>Cobalt Blue</h4>
-		    <div className={ styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue }>
-		        <p className={ styles.colorName }>$cobalt-blue</p>
-		        <p className={ styles.colorHex }>#609F00</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedarkest }>
-		        <p className={ styles.colorName }>$cobalt-blue-darkest</p>
-		        <p className={ styles.colorHex }>#1F3A00</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedark }>
-		        <p className={ styles.colorName }>$cobalt-blue-dark</p>
-		        <p className={ styles.colorHex }>#336200</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelight + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$cobalt-blue-light</p>
-		        <p className={ styles.colorHex }>#8BC03B</p>
-		    </div>
-		    <div className={ styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelightest + ' ' + styles.textblack }>
-		        <p className={ styles.colorName }>$cobalt-blue-lightest</p>
-		        <p className={ styles.colorHex }>#DBEDC0</p>
-		    </div>
-		</div>
- 	</div>;
-
-class FormElements extends React.Component{
-  constructor(){
-  	super();
-  	this.state = {
-  		textAreaValue: "",
-  		radioBtnValue: "",
-  		checkBoxFields: {
-  			checkbox1: false,
-  			checkbox2: false,
-  			checkbox3: false
-  		}
-  	};
+class FormElements extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      textAreaValue: "",
+      radioBtnValue: "",
+      checkBoxFields: {
+        checkbox1: false,
+        checkbox2: false,
+        checkbox3: false
+      }
+    };
   }
 
-  handleTextAreaChange(e){
-  	this.setState({textAreaValue: e.target.value})
+  handleTextAreaChange(e) {
+    this.setState({textAreaValue: e.target.value})
   }
 
-  handleRadioBtnChange(newValue){
-    this.setState({
-      radioBtnValue: newValue
-    })
+  handleRadioBtnChange(newValue) {
+    this.setState({radioBtnValue: newValue})
   }
 
-  handleCheckBoxChange(e){
-  	let newState = {};
+  handleCheckBoxChange(e) {
+    let newState = {};
     newState[e.target.name] = e.target.checked;
     console.log(newState)
     this.setState({
@@ -283,58 +281,52 @@ class FormElements extends React.Component{
     })
   }
 
-	render(){
-		let radioButtonOptions = [{
-			value: "Less than 1 year",
-			text: "Less than 1 year"
-		}, {
-			value: "1-2 years",
-			text: "1-2 years"
-		}, {
-			value: "2-5 years",
-			text: "2-5 years"
-		}, {
-			value: "5+ years",
-			text: "5+ years"
-		}]
+  render() {
+    let radioButtonOptions = [
+      {
+        value: "Less than 1 year",
+        text: "Less than 1 year"
+      }, {
+        value: "1-2 years",
+        text: "1-2 years"
+      }, {
+        value: "2-5 years",
+        text: "2-5 years"
+      }, {
+        value: "5+ years",
+        text: "5+ years"
+      }
+    ]
 
-		return (
-	 		<div className={styles.formElements}>
-		 		<div className={styles.inputContainer}>
-		 		 	<TextInput id="lender-match-name" errorText={"Please enter the correct thing."} label="What is your full name?" getValidationState={""} />
-		      <TextInput id="lender-match-name" errorText={"Please enter the correct thing."} label="What is your full name?" getValidationState={"success"} />
-		      <TextInput id="lender-match-phone" errorText={"Please enter the correct thing."} label="What is your full name?" getValidationState={"error"} />
-		      <TextArea errorText={"Please enter the correct thing."} onChange={(e) => {this.handleTextAreaChange(e)}} value={this.state.textAreaValue} label="Describe how you plan to use these funds" name="loanDescription" getValidationState={false} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." />
-		 			<RadioBtnGroup errorText={"Please enter the correct thing."} onChange={(e) => {this.handleRadioBtnChange(e)}} value={this.state.radioBtnValue} label="How much experience do you have?" name="industryExperience"  validationState={""} options={radioButtonOptions}/>
-		 			<label style={{marginTop: "40px"}}>Select all that apply to you:</label>
-		 			<Checkbox 
-		 				name="checkbox1"
-		 				label="This is the first checkbox"
-		 				handleChange={(e) => {this.handleCheckBoxChange(e)}}
-		 				checked={this.state.checkBoxFields.checkbox1}
-		 			/>
-		 			<Checkbox 
-		 				name="checkbox2"
-		 				label="This is the second checkbox"
-		 				handleChange={(e) => {this.handleCheckBoxChange(e)}}
-		 				checked={this.state.checkBoxFields.checkbox2}
-		 			/>
-		 			<Checkbox 
-		 				name="checkbox3"
-		 				label="This is the third checkbox"
-		 				handleChange={(e) => {this.handleCheckBoxChange(e)}}
-		 				checked={this.state.checkBoxFields.checkbox3}
-		 			/>
-		 		</div>
-	    </div>
-		);
-	}
+    return (
+      <div className={styles.formElements}>
+        <div className={styles.inputContainer}>
+          <TextInput id="lender-match-zero" errorText={"Please enter the correct thing."} label="What is the normal state?" validationState={""}/>
+          <TextInput id="lender-match-one" errorText={"Please enter the correct thing."} label="What is the success state?" validationState={"success"}/>
+          <TextInput id="lender-match-two" errorText={"Please enter the correct thing."} label="What does the error state look like?" validationState={"error"} value="Bad Data" onChange={()=>{}}/>
+          <TextInput id="lender-match-three" errorText={"Please enter the correct thing."} label="What does it look like without a validation icon?" validationState={"success"} showValidationIcon={false} value="Good Data" onChange={()=>{}}/>
+          <TextArea errorText={"Please enter the correct thing."} onChange={(e) => {
+            this.handleTextAreaChange(e)
+          }} value={this.state.textAreaValue} label="Describe how you plan to use these funds" name="loanDescription" validationState={false} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."/>
+          <RadioBtnGroup errorText={"Please enter the correct thing."} onChange={(e) => {
+            this.handleRadioBtnChange(e)
+          }} value={this.state.radioBtnValue} label="How much experience do you have?" name="industryExperience" validationState={""} options={radioButtonOptions}/>
+          <label style={{
+            marginTop: "40px"
+          }}>Select all that apply to you:</label>
+          <Checkbox name="checkbox1" label="This is the first checkbox" handleChange={(e) => {
+            this.handleCheckBoxChange(e)
+          }} checked={this.state.checkBoxFields.checkbox1}/>
+          <Checkbox name="checkbox2" label="This is the second checkbox" handleChange={(e) => {
+            this.handleCheckBoxChange(e)
+          }} checked={this.state.checkBoxFields.checkbox2}/>
+          <Checkbox name="checkbox3" label="This is the third checkbox" handleChange={(e) => {
+            this.handleCheckBoxChange(e)
+          }} checked={this.state.checkBoxFields.checkbox3}/>
+        </div>
+      </div>
+    );
+  }
 }
 
-export { FormElements }
-
-
-
-
-
-
+export {FormElements}

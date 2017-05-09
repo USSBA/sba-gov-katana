@@ -63,3 +63,7 @@
     border: 1px solid #609F00;
     box-shadow: none;
 }
+
+.Select-input input[role="combobox"]{
+    border: 0px;
+}

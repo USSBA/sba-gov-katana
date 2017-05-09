@@ -1,10 +1,10 @@
 import React from 'react';
-import formHelperStyles from './form-helpers.scss';
+import styles from './form-error-message.scss';
 
 class FormErrorMessage extends React.Component {
   render() {
     return (
-      <p className={formHelperStyles.errorText}>
+      <p id={this.props.errorFor + "-error"} className={styles.errorText}>
           {this.props.errorText}
       </p>
     );

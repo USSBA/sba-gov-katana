@@ -1,0 +1,41 @@
+
+//TEXT AREA
+.textAreaContainer {
+    position: relative;
+}
+
+.textArea {
+  height: 120px;
+  padding-right: 37px;
+}
+
+.textAreaInvalid {
+  composes: textArea;
+  border: 1px solid $error !important;
+  box-shadow:inset 0px 0px 0px 1px $error;
+}
+
+.textAreaIconValid {
+  font-size: 22px !important;
+  color: #609F00;
+  position: absolute;
+  top: 12px;
+  right:20px;
+}
+
+.textAreaCounter{
+    display: block;
+    text-align: right;
+    margin-right: 2px;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 18px;
+    color: #666666;
+}
+
+
+
+  @include theme-focus('money-green', '.textArea', $money-green);
+  @include theme-focus('sba-blue', '.textArea', $sba-blue);
+  @include theme-focus('cobalt-blue', '.textArea', $cobalt-blue);
+  @include theme-focus('byzantine', '.textArea', $byzantine);

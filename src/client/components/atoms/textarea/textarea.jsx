@@ -1,10 +1,11 @@
 import React from 'react';
-import styles from './form-helpers.scss';
+import styles from './textarea.scss';
+import FormErrorMessage from "../form-error-message/form-error-message.jsx";
 
 class TextArea extends React.Component {
 
   iconValidation(validationState) {
-    return validationState == 'success'
+    return validationState == 'success' && this.props.showValidationIcon
       ? <i className={"fa fa-check-circle " + styles.textAreaIconValid} aria-hidden="true"></i>
       : null
   }
@@ -17,9 +18,7 @@ class TextArea extends React.Component {
 
   errorMessage(validationState, errorText) {
     return validationState == 'error'
-      ? <p className={styles.errorText}>
-          {errorText}
-        </p>
+      ? <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText}/>
       : null
   }
 
@@ -28,11 +27,11 @@ class TextArea extends React.Component {
       label,
       value,
       hidden,
-      getValidationState,
-      handleChange,
+      validationState,
       onChange,
       errorText,
       showCounter,
+      showValidationIcon,
       ...rest
     } = this.props;
     return (
@@ -41,17 +40,18 @@ class TextArea extends React.Component {
           {label}
         </label>
         <div className={styles.textAreaContainer}>
-          <textarea {...rest} className={this.inputValidation(getValidationState)} onChange={handleChange || onChange} maxLength="250"/> {this.iconValidation(getValidationState)}
+          <textarea {...rest} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250"/> {this.iconValidation(validationState)}
         </div>
         {showCounter?<span className={styles.textAreaCounter}>{value.length}/250</span>: <div/>}
-        {this.errorMessage(getValidationState, errorText)}
+        {this.errorMessage(validationState, errorText)}
       </div>
     );
   }
 }
 
 TextArea.defaultProps = {
-    showCounter: true
+    showCounter: true,
+    showValidationIcon: true
 }
 
 export default TextArea;

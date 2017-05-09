@@ -2,8 +2,7 @@ import React from 'react';
 import ReactSelect from 'react-select';
 import 'react-select/dist/react-select.css';
 import './react-select-helpers.css';
-import formHelperStyles from './form-helpers.scss';
-import FormErrorMessage from "./form-error-message.jsx";
+import FormErrorMessage from "../form-error-message/form-error-message.jsx";
 import styles from './multiselect.scss';
 import _ from "lodash";
 
@@ -31,7 +30,7 @@ class MultiSelectBox extends React.Component {
       : undefined;
     return (
       <div>
-        <label className={formHelperStyles.controlLabel}>
+        <label>
           {this.props.label}
         </label>
         <div className={styles.errorClass}>
