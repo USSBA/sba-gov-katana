@@ -5,7 +5,7 @@
 }
 
 .selectContainer{
-    @include grid-column(4, $sba-grid-medium);
+    @include grid-column(3, $sba-grid-medium);
     @include grid-push(4);
 }
 

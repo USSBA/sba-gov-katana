@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./simple-select.scss"
+import ValidationIcon from '../validation-icon/validation-icon.jsx';
 class SimpleSelect extends React.Component {
 
   getValidationIcon() {
@@ -41,7 +42,7 @@ class SimpleSelect extends React.Component {
     return (
       <div id={this.props.id + "-container"} className={styles.selectContainer} hidden={this.props.hidden}>
         {labelTag}
-        <div>
+        <div className={styles.innerContainer}>
           <select id={this.props.id} className={styles.myselect}>
             <option key={this.props.options.length + 1} value="" disabled selected>{this.props.defaultValue}</option>
             {this.props.options.map(function(item, index) {
@@ -50,8 +51,7 @@ class SimpleSelect extends React.Component {
               );
             })}
           </select>
-          <i class="fa fa-chevron-down" aria-hidden="true"></i>
-          {validationIcon}
+          <ValidationIcon validationState={this.props.validationState} showSuccessIcon={this.props.showSuccessIcon} showErrorIcon={this.props.showErrorIcon} extraClassName={styles.validationIcon}/>
         </div>
         {errorMessage}
       </div>
@@ -61,7 +61,9 @@ class SimpleSelect extends React.Component {
 
 SimpleSelect.defaultProps = {
   options: [],
-  defaultValue: "Select a state"
+  defaultValue: "Select a state",
+  showSuccessIcon: true,
+  showErrorIcon: false
 }
 
 export default SimpleSelect;
