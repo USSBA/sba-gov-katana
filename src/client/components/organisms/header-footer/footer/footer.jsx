@@ -32,48 +32,35 @@ const Address = () => {
 }
 
 class Footer extends React.Component {
-
   render() {
-    let firstTabletColumn = _.slice(constants.footer.mobile, 0, 4);
-    let secondTabletColumn = _.slice(constants.footer.mobile, 4, 7);
-    let thirdTabletColumn = _.slice(constants.footer.mobile, 7);
+    let firstTabletColumn = _.slice(constants.footer.tablet, 0, 3);
+    let secondTabletColumn = _.slice(constants.footer.tablet, 3, 6);
+    let thirdTabletColumn = _.slice(constants.footer.tablet, 6);
 
     let firstMobileColumn = _.slice(constants.footer.mobile, 0, 5);
     let secondMobileColumn = _.slice(constants.footer.mobile, 5);
-
     return (
-      <div className={styles.footer}>
-
+      <footer className={styles.footer}>
         <div key={1} className={styles.footerLinks}>
           {constants.footer.desktop.map((item, index) => {
             return (
               <div className={styles.desktopFooterLinks}><PageLinkGroup key={index} title={item.title} links={item.links}/></div>
             );
           })}</div>
-
         <div key={2} className={styles.tabletFooterLinks}>
           <PageLinkGroup key={20} links={firstTabletColumn}/>
           <PageLinkGroup key={21} links={secondTabletColumn}/>
           <PageLinkGroup key={22} links={thirdTabletColumn}/>
         </div>
-
         <div key={3} className={styles.mobileFooterLinks}>
           <PageLinkGroup key={23} links={firstMobileColumn}/>
           <PageLinkGroup key={24} links={secondMobileColumn}/>
         </div>
-
-
-
           <hr key={4} className={styles.desktopRule}/>
-
           <SocialMediaLinkSet key={5}/>
-
           <hr key={6} className={styles.mobileRule}/>
-
           <Address key={7}/>
-
-
-      </div>
+      </footer>
     );
   };
 }

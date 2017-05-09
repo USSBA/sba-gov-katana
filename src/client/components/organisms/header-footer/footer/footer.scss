@@ -18,7 +18,7 @@ ul.pageLinkGroup {
 
 .desktopFooterLinks {
   display: none;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
   @include grid-media( $sba-grid-large) {
     @include grid-column(2);
     display: block;
@@ -54,16 +54,16 @@ hr {
   border: 1px solid #C4C4C4;
   &.desktopRule {
     @include grid-media( $sba-grid-medium) {
-      display: block;
-      width: calc(100% - 40px);
-      margin: 0 auto 20px;
+      display: inline-block;
+      width: calc(100% - 60px);
+      margin: 0 30px 20px 30px;
     }
   }
   &.mobileRule {
     @include grid-media( $sba-grid-small) {
-      display: block;
+      display: inline-block;
       width: calc(100% - 40px);
-      margin: 0 auto 20px;
+      margin: 0 20px 20px 20px;
     }
   }
 }
@@ -98,9 +98,9 @@ hr {
     float: right;
     margin-right: 30px;
     .name {
-      margin-right: 5px;
-      padding-right: 5px;
-      border-right: 2px solid #c4c4c4;
+      margin-right: 7px;
+      padding-right: 6px;
+      border-right: 1px solid #333;
     }
   }
   @include grid-media( $desktop-nav) {
@@ -117,7 +117,16 @@ hr {
   // }
 }
 
+.footer li {
+  margin-bottom: 15px;
+}
+
 @include theme(sba-blue, '.footer li:first-child a', null, $base-font-color, null);
 @include theme(byzantine, '.footer li:first-child a', null, $base-font-color, null);
 @include theme(money-green, '.footer li:first-child a', null, $base-font-color, null);
 @include theme(cobalt-blue, '.footer li:first-child a', null, $base-font-color, null);
+
+@include theme-hover(sba-blue, '.footer li:first-child a', null, $base-font-color, null);
+@include theme-hover(byzantine, '.footer li:first-child a', null, $base-font-color, null);
+@include theme-hover(money-green, '.footer li:first-child a', null, $base-font-color, null);
+@include theme-hover(cobalt-blue, '.footer li:first-child a', null, $base-font-color, null);

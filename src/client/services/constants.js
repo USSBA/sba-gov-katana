@@ -54,12 +54,40 @@ const constants = {
       text: "Blog",
       url: "/blogs"
     }],
+    tablet: [{
+      text: "What we do",
+      url: "/about-sba/what-we-do"
+    }, {
+      text: "SBA Performance",
+      url: "/about-sba/sba-performance"
+    }, {
+      text: "Contact SBA",
+      url: "/about-sba/what-we-do/contact-sba"
+    }, {
+      text: "SBA Team",
+      url: "/about-sba/sba-team"
+    }, {
+      text: "FOIA",
+      url: "/about-sba/sba-performance/open-government/foia"
+    }, {
+      text: "Privacy Policy",
+      url: "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy"
+    }, {
+      text: "SBA News Room",
+      url: "/about-sba/sba-newsroom"
+    }, {
+      text: "Oversight & Advocacy",
+      url: "/about-sba/oversight-advocacy"
+    }, {
+      text: "SBA en Español",
+      url: "https://es.sba.gov/"
+    }],
     desktop: [{
       "title": "Customer Service",
       "links": [{
         "url": "/about-sba",
         "text": "About SBA"
-      },
+        },
         {
           "url": "/about-sba/what-we-do/contact-sba",
           "text": "Contact SBA"
