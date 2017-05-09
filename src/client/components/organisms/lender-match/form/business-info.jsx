@@ -12,9 +12,8 @@ import {logEvent} from "../../../../services/analytics.js";
 
 
 import styles from './lender-match.scss';
-import SelectBox from '../../../atoms/select.jsx';
-import TextInput from '../../../atoms/text-input.jsx';
-import TextArea from "../../../atoms/textarea.jsx";
+import TextInput from '../../../atoms/text-input/text-input.jsx';
+import TextArea from "../../../atoms/textarea/textarea.jsx";
 
 class BusinessInfoForm extends React.Component {
   static requiredFields = ["businessInfoName", "businessInfoZipcode", "businessInfoDescription"]
@@ -117,10 +116,10 @@ class BusinessInfoForm extends React.Component {
     return (
       <div>
         <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <TextInput label="What is the name of your business?" name="businessInfoName" handleChange={this.handleChange.bind(this)} value={this.state.businessInfoName} getValidationState={this.state.validStates["businessInfoName"]} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <TextInput label="What is the business ZIP code?" name="businessInfoZipcode" handleChange={this.handleChange.bind(this)} value={this.state.businessInfoZipcode} getValidationState={this.state.validStates["businessInfoZipcode"]} maxLength="5" onBlur={this.handleBlur.bind(this)} errorText={constants.messages.validation.invalidZip} onFocus={this.handleFocus.bind(this)}/>
-          <TextInput label="What is your business website?" name="businessInfoWebsite" handleChange={this.handleChange.bind(this)} value={this.state.businessInfoWebsite} getValidationState={this.state.validStates["businessInfoWebsite"]} placeholder="Optional" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <TextArea label="Describe what your business does" name="businessInfoDescription" handleChange={this.handleChange.bind(this)} value={this.state.businessInfoDescription} getValidationState={this.state.validStates["businessInfoDescription"]} placeholder="My neighborhood pizza restaurant specializes in serving fast cuisine made with high-quality, local ingredients..." onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput label="What is the name of your business?" name="businessInfoName" onChange={this.handleChange.bind(this)} value={this.state.businessInfoName} validationState={this.state.validStates["businessInfoName"]} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput label="What is the business ZIP code?" name="businessInfoZipcode" onChange={this.handleChange.bind(this)} value={this.state.businessInfoZipcode} validationState={this.state.validStates["businessInfoZipcode"]} maxLength="5" onBlur={this.handleBlur.bind(this)} errorText={constants.messages.validation.invalidZip} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput label="What is your business website?" name="businessInfoWebsite" onChange={this.handleChange.bind(this)} value={this.state.businessInfoWebsite} validationState={this.state.validStates["businessInfoWebsite"]} placeholder="Optional" onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextArea label="Describe what your business does" name="businessInfoDescription" onChange={this.handleChange.bind(this)} value={this.state.businessInfoDescription} validationState={this.state.validStates["businessInfoDescription"]} placeholder="My neighborhood pizza restaurant specializes in serving fast cuisine made with high-quality, local ingredients..." onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>

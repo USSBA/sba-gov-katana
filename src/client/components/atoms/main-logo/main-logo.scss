@@ -1,0 +1,23 @@
+.logoNew {
+// background-color: yellow;
+
+@include grid-column(3, $sba-grid-small);
+    img {
+        width: 110px;
+    }
+    a {
+        vertical-align: none;
+        }
+    display: inline;
+
+
+@include grid-media( $sba-grid-medium) {
+    @include grid-column(3, $sba-grid-large);
+        img {
+            width: 128px;
+        }
+        a {
+            vertical-align: none;
+        }
+    }
+}

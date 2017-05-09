@@ -1,69 +1,58 @@
-@media screen and (max-width:767px) {
+.menuBtnTextNew {
+    font-size: 19px;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline;
+}
 
-    .menuBtnTextNew {
-        height: 9.6vw;
-        margin-top: -.633vw;
-        padding-left: 3.73vw;
-        float: left;
-    }
+.menuIconHamburgerNew,
+.menuIconCloseNew{
+    width: 25px;
+    float: right;
+    display: inline;
+}
 
-    :global(.sba-blue) .menuBtnTextNew {
-        color: $sba-blue;
-    }
-    :global(.byzantine) .menuBtnTextNew {
-        color: $byzantine;
-    }
-    :global(.money-green) .menuBtnTextNew {
-        color: $money-green;
-    }
-    :global(.cobalt-blue) .menuBtnTextNew {
-        color: $cobalt-blue;
-    }
+.menuIconHamburgerNew {
+    margin-top: 8px;
+}
 
-    .menuIconHamburgerNew{
-        height: 3.466vw;
-        width: 4vw;
-        margin-right: 3.466vw;
-        /*margin-top: 3.2vw;*/
-        margin-top: 2.367vw;
-        float: right;
-    }
-
-    :global(.sba-blue) .hamburgerIcon {
-        fill: $sba-blue !important;
-    }
-    :global(.byzantine) .hamburgerIcon {
-        fill: $byzantine !important;
-    }
-    :global(.money-green) .hamburgerIcon {
-        fill: $money-green !important;
-    }
-    :global(.cobalt-blue) .hamburgerIcon {
-        fill: $cobalt-blue !important;
-    }
+.menuIconCloseNew {
+    margin-top: 2px;
+}
 
 
+.menuIconContainer {
+    display: inline;
+}
 
-    .menuIconCloseNew{
-        height: 7vw;
-        width: 6vw;
-        margin-right: 2.5vw;
-        margin-top: 0.5vw;
-        float: right;
-    }
-
-    :global(.sba-blue) .closeIcon {
-        stroke: $sba-blue !important;
-    }
-    :global(.byzantine) .closeIcon {
-        stroke: $byzantine !important;
-    }
-    :global(.money-green) .closeIcon {
-        stroke: $money-green !important;
-    }
-    :global(.cobalt-blue) .closeIcon {
-        stroke: $cobalt-blue !important;
-    }
+@include theme(sba-blue, '.menuBtnTextNew', null, $sba-blue, null);
+@include theme(byzantine, '.menuBtnTextNew', null, $byzantine, null);
+@include theme(money-green, '.menuBtnTextNew', null, $money-green, null);
+@include theme(cobalt-blue, '.menuBtnTextNew', null, $cobalt-blue, null);
 
 
+:global(.sba-blue) .hamburgerIcon {
+    fill: $sba-blue !important;
+}
+:global(.byzantine) .hamburgerIcon {
+    fill: $byzantine !important;
+}
+:global(.money-green) .hamburgerIcon {
+    fill: $money-green !important;
+}
+:global(.cobalt-blue) .hamburgerIcon {
+    fill: $cobalt-blue !important;
+}
+
+:global(.sba-blue) .closeIcon {
+    stroke: $sba-blue !important;
+}
+:global(.byzantine) .closeIcon {
+    stroke: $byzantine !important;
+}
+:global(.money-green) .closeIcon {
+    stroke: $money-green !important;
+}
+:global(.cobalt-blue) .closeIcon {
+    stroke: $cobalt-blue !important;
 }

@@ -12,8 +12,8 @@ import {logEvent} from "../../../../services/analytics.js";
 
 
 import styles from './lender-match.scss';
-import MultiSelect from '../../../atoms/multiselect.jsx';
-import RadioButtonGroup from '../../../atoms/radio.jsx';
+import MultiSelect from '../../../atoms/multiselect/multiselect.jsx';
+import RadioButtonGroup from '../../../atoms/radio/radio.jsx';
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {

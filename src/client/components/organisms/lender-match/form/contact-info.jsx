@@ -9,7 +9,7 @@ import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../../../services/page-validator-helpers.js';
 
-import TextInput from '../../../atoms/text-input.jsx';
+import TextInput from '../../../atoms/text-input/text-input.jsx';
 import styles from './lender-match.scss';
 
 class ContactInfoForm extends React.Component {
@@ -99,10 +99,10 @@ class ContactInfoForm extends React.Component {
     return (
       <div>
         <form id="lender-match-contact-form" ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <TextInput id="lender-match-name" errorText={constants.messages.validation.invalidName} label="What is your full name?" name="contactFullName" handleChange={this.handleChange.bind(this)} value={this.state.contactFullName} getValidationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <TextInput id="lender-match-phone" errorText={constants.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" handleChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} getValidationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <TextInput id="lender-match-email" errorText={constants.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" handleChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} getValidationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
-          <TextInput id="lender-match-email-check" hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} handleChange={this.handleChange.bind(this)} getValidationState={this.state.validStates.contactSecondaryEmailAddress}/>
+          <TextInput id="lender-match-name" errorText={constants.messages.validation.invalidName} label="What is your full name?" name="contactFullName" onChange={this.handleChange.bind(this)} value={this.state.contactFullName} validationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput id="lender-match-phone" errorText={constants.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" onChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} validationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput id="lender-match-email" errorText={constants.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" onChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} validationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
+          <TextInput id="lender-match-email-check" hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} onChange={this.handleChange.bind(this)} validationState={this.state.validStates.contactSecondaryEmailAddress}/>
           <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
             CONTINUE
           </button>

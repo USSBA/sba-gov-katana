@@ -5,6 +5,7 @@ import * as RestContentActions from "../../../actions/rest-content.js"
 
 import styles from "./lookup.scss";
 import states from "../../../services/us-states.json";
+import SimpleSelect from "../../atoms/simple-select/simple-select.jsx";
 
 class Lookup extends React.Component {
 
@@ -17,13 +18,7 @@ class Lookup extends React.Component {
         <div className={styles.container}>
           <h4 className={styles.title}>{this.props.title}</h4>
           <div key={1} className={styles.selectContainer}>
-            <select>
-              {states.map(function(state, index) {
-                return (
-                  <option key={index}>{state.name}</option>
-                );
-              })}
-            </select>
+            <SimpleSelect id="lookup-select" options={states} />
           </div>
           <div key={2} className={styles.dataContainer}>{this.props.items.map(function(item, index) {
               return (

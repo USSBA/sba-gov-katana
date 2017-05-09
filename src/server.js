@@ -91,15 +91,15 @@ app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedb
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
-import { fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster, fetchRestContentByType } from "./controllers/content.js";
+import { getMainMenu } from "./controllers/main-menu.js";
+app.get("/content/main-menu.json", getMainMenu);
+
+import { fetchContentById, fetchContentByType, fetchFrontPageSlides, fetchBlogs, fetchDisaster, fetchRestContentByType } from "./controllers/content.js";
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 app.get("/content/:type/:id.json", fetchContentById);
 app.get("/content/:type.json", fetchRestContentByType);
-
-import { getMainMenu } from "./controllers/main-menu.js";
-app.get("/content/main-menu.json", getMainMenu);
 
 import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/content/:userId.json", getUserRoles);

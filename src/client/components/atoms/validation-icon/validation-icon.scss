@@ -1,0 +1,18 @@
+.success {
+    font-size: 22px !important;
+    color: $money-green;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+
+.error {
+    font-size: 22px !important;
+    color: $crimson;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}

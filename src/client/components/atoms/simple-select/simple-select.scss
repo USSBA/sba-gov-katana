@@ -1,0 +1,55 @@
+.selectContainer{
+
+}
+
+
+.innerContainer{
+    position: relative;
+}
+
+.myselect{
+    @include font-size($paragraph-font-sizes);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid $grey;
+    border-radius: 0;
+    height: 48px;
+    background: url("../../../../../public/assets/svg/chevron.svg") no-repeat 95% 50%;
+    padding-left: 14px;
+}
+
+.myselect::-ms-expand { /* for IE 11 */
+    display: none;
+}
+
+.myoption{
+    @include font-size($paragraph-font-sizes);
+    border: 1px solid $grey;
+    border-radius: 0;
+}
+
+.validationIcon{
+    right: 30px;
+}
+
+// .innerContainer::after {
+//   content: "\f078";
+//   font-family: FontAwesome;
+//   font-style: normal;
+//   font-weight: normal;
+//   text-decoration: inherit;
+//   position: absolute;
+//   font-size: 20px;
+//   color: $grey-light;
+//   top: 20%;
+//   left: 90%;
+//   // margin: -300px 0 0 -200px;
+//   z-index: 1;
+// }
+
+
+// @include theme-focus('money-green', '.myselect', $money-green);
+// @include theme-focus('sba-blue', '.myselect', $sba-blue);
+// @include theme-focus('cobalt-blue', '.myselect', $cobalt-blue);
+// @include theme-focus('byzantine', '.myselect', $byzantine);

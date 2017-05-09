@@ -1,0 +1,55 @@
+a.sectionLink {
+  display: inline-block;
+  font-size: 19px;
+  font-weight: 700;
+  position: relative;
+
+  @include grid-media( $sba-grid-medium) {
+  margin-left: 25px;
+  padding-bottom: 15px;
+  }
+}
+
+@include theme(sba-blue, 'a.sectionLink', null, $sba-blue, null);
+@include theme(byzantine, 'a.sectionLink', null, $byzantine, null);
+@include theme(money-green, 'a.sectionLink', null, $money-green, null);
+@include theme(cobalt-blue, 'a.sectionLink', null, $cobalt-blue, null);
+
+@include theme-hover(sba-blue, 'a.sectionLink', null, $sba-blue, null);
+@include theme-hover(byzantine, 'a.sectionLink', null, $byzantine, null);
+@include theme-hover(money-green, 'a.sectionLink', null, $money-green, null);
+@include theme-hover(cobalt-blue, 'a.sectionLink', null, $cobalt-blue, null);
+
+.triangle {
+    visibility: hidden;
+    position: relative;
+    height: 0;
+    width: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    border-right: 14px solid transparent;
+    border-left: 14px solid transparent;
+    border-top: 0;
+}
+
+:global(.sba-blue) .triangle {
+    border-bottom: 14px solid $sba-blue;
+}
+:global(.byzantine) .triangle {
+    border-bottom: 14px solid $byzantine;
+}
+:global(.money-green) .triangle {
+    border-bottom: 14px solid $money-green;
+}
+:global(.cobalt-blue) .triangle {
+    border-bottom: 14px solid $cobalt-blue;
+}
+
+.link:hover .triangle {
+    visibility: visible;
+}
+
+.link:focus .triangle{
+    visibility: visible;
+}
