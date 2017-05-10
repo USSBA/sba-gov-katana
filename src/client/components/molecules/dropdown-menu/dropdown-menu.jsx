@@ -5,6 +5,8 @@ import {isEmpty} from "lodash";
 import PageLinkGroup from "../page-link-group/page-link-group.jsx"
 import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
 
+import FeaturedCallout from "../featured-callout/featured-callout.jsx"
+
 class DropdownMenu extends React.Component {
   constructor(props) {
     super();
@@ -80,6 +82,9 @@ class DropdownMenu extends React.Component {
           : styles.hide)}>
           {goToNextButton}
           {pageLinkGroups}
+          {this.props.featuredCallout
+            ? <FeaturedCallout {...this.props.featuredCallout}/>
+            : undefined}
         </ul>
       );
     } else {

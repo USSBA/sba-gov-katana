@@ -5,7 +5,7 @@
   }
   @include grid-media( $sba-grid-large) {
     @include grid-column(12, $sba-grid-large);
-    padding: 25px 0 25px;
+    padding: 25px 0 10px;
   }
 }
 

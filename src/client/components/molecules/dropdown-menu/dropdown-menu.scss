@@ -14,13 +14,14 @@
   background-color: #fff;
   width: 100%;
   margin-top: 14px;
-  padding: 0 0 60px;
+  padding: 60px 20px;
   z-index: 10000000000;
+  background-color: lightgreen;
+  display: flex;
 }
 
 .one {
   height: 494px;
-  background-color: red;
 }
 
 .two {
@@ -39,7 +40,6 @@
   height: 456px;
 }
 
-
 @include theme(sba-blue, '.dropdownMenu', null, $sba-blue, null);
 @include theme(byzantine, '.dropdownMenu', null, $byzantine, null);
 @include theme(money-green, '.dropdownMenu', null, $money-green, null);
@@ -53,6 +53,8 @@
 .skipLink {
   pointer-events: none;
   height: 0;
+  position: absolute;
+  top: 0;
 }
 
 @include theme(sba-blue, '.skipLink a', null, #fff, null);
