@@ -9,20 +9,33 @@ import SimpleSelect from "../../atoms/simple-select/simple-select.jsx";
 
 class Lookup extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      displayedItems: []
+    }
+  }
+
   componentWillMount() {
     this.props.actions.fetchContentIfNeeded(this.props.type);
   }
+
+  handleChange(selectValue) {
+    let newDisplayedItems = _.filter(this.props.items, {state: selectValue});
+    this.setState({displayedItems: newDisplayedItems});
+  }
+
   render() {
     return (
       <div>
         <div className={styles.container}>
           <h4 className={styles.title}>{this.props.title}</h4>
           <div key={1} className={styles.selectContainer}>
-            <SimpleSelect id="lookup-select" options={states} />
+            <SimpleSelect id="lookup-select" options={states} onChange={this.handleChange.bind(this)}/>
           </div>
-          <div key={2} className={styles.dataContainer}>{this.props.items.map(function(item, index) {
+          <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(function(item, index) {
               return (
-                <p key={index} >
+                <p key={index}>
                   {JSON.stringify(item)}
                 </p>
               );

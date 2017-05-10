@@ -2,6 +2,8 @@ import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
 import cache from "memory-cache";
+import config from "config";
+import localContacts from "../models/dao/contacts.js";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
@@ -54,7 +56,10 @@ function fetchFormattedContactParagraph(contact) {
 
 function formatContacts(data) {
   if (data) {
-    if (cache.get("contacts")) {
+    if (config.get("drupal8.useLocalContacts")) {
+      console.log("Using Development Contacts information");
+      return Promise.resolve(localContacts);
+    } else if (cache.get("contacts")) {
       return Promise.resolve(cache.get("contacts"));
     }
     return Promise.map(data, fetchFormattedContactParagraph, {
