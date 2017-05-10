@@ -78,3 +78,43 @@
 }
 @include primary-color-theme-for-color( '.textSection ul li::before');
 @include primary-color-theme-for-color( '.textSection dl dt::before');
+
+
+//TABLE
+@include theme(sba-blue, '.textSection th', $sba-blue, $white, $sba-blue)
+@include theme(money-green, '.textSection th', $money-green, $white, $money-green)
+@include theme(byzantine, '.textSection th', $byzantine, $white, $byzantine)
+@include theme(cobalt-blue, '.textSection th', $cobalt-blue, $white, $cobalt-blue)
+
+.textSection {
+	//LARGE
+	@include grid-media($sba-grid-medium){
+		& table {
+			table-layout: auto;
+		}
+		& tbody {
+			border: 2px solid #EBEBEB;
+		}
+		& th {
+			text-align: center;
+			border: 2px solid;
+		}
+		& tr {
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+		& tr:nth-child(even) {
+			background-color: #EBEBEB;
+		}
+		& td {
+			padding-right: 15px;
+			padding-left: 15px;
+			border: 0px;
+		}
+
+	}
+}
+
+
+
+
