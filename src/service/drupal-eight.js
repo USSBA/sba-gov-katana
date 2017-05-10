@@ -51,7 +51,7 @@ function fetchFormattedContactParagraph(paragraphArg) {
 
 function formatContact(contact) {
   const contactArg = {
-    title: contact.title[0].value,
+    title: !_.isEmpty(contact.title) ? contact.title[0].value : "",
     paragraphId: extractTargetId(contact.field_type_of_contact)
   };
   return fetchFormattedContactParagraph(contactArg);
@@ -59,7 +59,9 @@ function formatContact(contact) {
 
 function formatContacts(data) {
   if (data) {
-    return Promise.map(data, formatContact);
+    return Promise.map(data, formatContact, {
+      concurrency: 50
+    }); //eslint-disable-line no-magic-numbers
   }
   return {};
 }
@@ -161,7 +163,7 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
     const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
     const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
     const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
-    const contactLink = paragraph.field_link[0].uri;
+    const contactLink = !_.isEmpty(paragraph.field_link) ? paragraph.field_link[0].uri : "";
     const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
     const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
     const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
@@ -169,12 +171,12 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
     const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
     return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
       return {
-        contactCity: contactCity,
-        contactLink: contactLink,
-        contactState: contactState,
-        contactStreetAddress: contactStreetAddress,
-        contactZipCode: contactZipCode,
-        contactCategoryTaxonomyTerm: contactCategoryTaxonomyData,
+        city: contactCity,
+        link: contactLink,
+        state: contactState,
+        streetAddress: contactStreetAddress,
+        zipCode: contactZipCode,
+        categoryTaxonomyTerm: contactCategoryTaxonomyData,
         stateServedTaxonomyTerm: stateServedTaxonomyData
       };
     });
