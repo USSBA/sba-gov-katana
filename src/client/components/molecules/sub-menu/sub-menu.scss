@@ -1,5 +1,11 @@
-li.subMenu a {
+li.subMenu{
     display: inline-block;
+    padding-left: 25px;
+}
+
+li.subMenu:first-child {
+    padding-left: 0;
+    // background-color: red;
 }
 
 // @include theme(sba-blue, 'li.subMenu a', null, $sba-blue, null);
