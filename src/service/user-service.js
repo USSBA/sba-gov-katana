@@ -1,20 +1,22 @@
 import _ from "lodash";
-import { fetchUserRoles } from "../models/dao/user-roles.js";
+import {
+  fetchUserRoles
+} from "../models/dao/user-roles.js";
 import Sessions from "../models/drupal-session.js";
 
 
 function isAdministrator(sessionId) {
   return Sessions.findOne({
-    where: {
-      ssid: sessionId
-    }
-  })
+      where: {
+        ssid: sessionId
+      }
+    })
     .then((result) => {
       if (result) {
         return result.uid;
+      } else {
+        return -1;
       }
-      return false;
-
     })
     .then(fetchUserRoles)
     .then((rolesObjects) => {
