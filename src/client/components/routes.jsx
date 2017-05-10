@@ -17,6 +17,7 @@ import BusinessInfo from './organisms/lender-match/form/business-info.jsx';
 import IndustryInfo from './organisms/lender-match/form/industry-info.jsx';
 import AdditionalInfo from './organisms/lender-match/form/additional-info.jsx';
 import ReviewSubmitInfo from './organisms/lender-match/form/review-submit-info.jsx';
+import DeveloperTester from './organisms/developer-tester/developer-tester.jsx'
 
 import Homepage from './templates/homepage/homepage.jsx';
 import SamplePage from './pages/sample.jsx';
@@ -53,6 +54,7 @@ const mainRoutes = [
 const routes = [
   (<Route key={ 1 } path="/" component={ Main }> {mainRoutes} </Route>),
   (<Route key={ 2 } path="/styleguide" component={ StyleGuide } />),
+  (<Route key={ 3 } path="/devtest" component={ DeveloperTester } />)
 ];
 
 

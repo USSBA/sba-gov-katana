@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
   handleSearchToggle(e) {
     e.preventDefault();
     this.setState({
-      expanded: true
+      expanded: true//!this.state.expanded
     });
   }
 
@@ -40,12 +40,12 @@ class SearchBar extends React.Component {
     if (this.state.expanded) {
       return (
         <form key={2} id="search-bar" className={styles.searchBar} onBlur={this.handleSearchToggle.bind(this)} onSubmit={this.submitSearch.bind(this)}>
-          <TextInput id="search-input" placeholder='Search' onChange={this.handleSearchChange.bind(this)} onKeyDown={this.handleKeyPressOnSearch} autoFocus/>
-          <SmallIcon id="search-button" onClick={this.submitSearch.bind(this)} alt="search button" fontAwesomeIconClassName="search"/>
+          <TextInput  id="search-input" placeholder='Search SBA.gov' onChange={this.handleSearchChange.bind(this)} onKeyDown={this.handleKeyPressOnSearch} autoFocus/>
+          <SmallIcon extraClassName={styles.searchIcon} id="search-button" onClick={this.submitSearch.bind(this)} alt="search button" fontAwesomeIconClassName="search"/>
         </form>
       );
     } else {
-      return (<SmallIcon id="search-toggle-link" className={styles.searchIcon} onClick={this.handleSearchToggle.bind(this)} onKeyDown={this.handleSearchKeypress.bind(this)} alt="search icon" fontAwesomeIconClassName="search"/>);
+      return (<SmallIcon id="search-toggle-link" extraClassName={styles.searchIcon} onClick={this.handleSearchToggle.bind(this)} onKeyDown={this.handleSearchKeypress.bind(this)} alt="search icon" fontAwesomeIconClassName="search"/>);
     }
   }
 }

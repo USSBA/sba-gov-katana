@@ -20,17 +20,35 @@
 // }
 
 .searchBar {
-    display: inline;
-    margin: 0px;
-    padding: 0px;
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
 }
 
-.searchBar input{
-    height: 24px;
+.searchBar input {
+    height: 40px;
     display: inline;
-    -webkit-appearance: textfield;
+    border-radius: 5px;
+    border-color: $grey-light;
+    width: 12vw;
 }
 
-.searchIcon:hover {
-    color: #333;
+.searchBar a {
+    position: absolute;
+    right: 0.5vw;
+    top: 12px;
 }
+
+.searchIcon{
+
+}
+
+@include theme("sba-blue", '.searchIcon i', null, #757575, null);
+@include theme("byzantine", '.searchIcon i', null, #757575, null);
+@include theme("money-green", '.searchIcon i', null, #757575, null);
+@include theme("cobalt-blue", '.searchIcon i', null, #757575, null);
+
+@include theme-hover("sba-blue", '.searchIcon i', null, $grey-dark, null);
+@include theme-hover("byzantine", '.searchIcon i', null, $grey-dark, null);
+@include theme-hover("money-green", '.searchIcon i', null, $grey-dark, null);
+@include theme-hover("cobalt-blue", '.searchIcon i', null, $grey-dark, null);
