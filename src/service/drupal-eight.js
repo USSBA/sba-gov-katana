@@ -47,7 +47,7 @@ function fetchParagraphId(paragraphId) {
 function fetchFormattedContactParagraph(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
-      response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
+    response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
     return response;
   });
 }
