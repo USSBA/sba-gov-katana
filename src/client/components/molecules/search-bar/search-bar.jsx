@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
   handleSearchToggle(e) {
     e.preventDefault();
     this.setState({
-      expanded: !this.state.expanded
+      expanded: true
     });
   }
 
@@ -39,9 +39,9 @@ class SearchBar extends React.Component {
   render() {
     if (this.state.expanded) {
       return (
-        <form key={2} id={styles.searchBar} onBlur={this.handleSearchToggle.bind(this)} onSubmit={this.submitSearch.bind(this)}>
-          <TextInput placeholder='Search' onChange={this.handleSearchChange.bind(this)} onKeyDown={this.handleKeyPressOnSearch} autoFocus/>
-          <SmallIcon className={styles.searchIconClose} id="search-button" onClick={this.submitSearch.bind(this)} alt="search button" fontAwesomeIconClassName="search"/>
+        <form key={2} id="search-bar" className={styles.searchBar} onBlur={this.handleSearchToggle.bind(this)} onSubmit={this.submitSearch.bind(this)}>
+          <TextInput id="search-input" placeholder='Search' onChange={this.handleSearchChange.bind(this)} onKeyDown={this.handleKeyPressOnSearch} autoFocus/>
+          <SmallIcon id="search-button" onClick={this.submitSearch.bind(this)} alt="search button" fontAwesomeIconClassName="search"/>
         </form>
       );
     } else {

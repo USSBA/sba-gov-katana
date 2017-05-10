@@ -1,4 +1,8 @@
-import { saveFeedback, saveFeedbackText, getFeedback } from "../service/feedback-service.js";
+import {
+  saveFeedback,
+  saveFeedbackText,
+  getFeedback
+} from "../service/feedback-service.js";
 import HttpStatus from "http-status-codes";
 
 function handleFeedback(req, res) {
@@ -42,7 +46,7 @@ function retrieveFeedback(req, res) {
   if (req && req.sessionInfo) {
     getFeedback(req.sessionInfo)
       .then(function(results) {
-        res.status(HttpStatus.OK).send(results);
+        res.header("Content-Type", "text/csv").status(HttpStatus.OK).send(results);
       })
       .catch((error) => {
         if (error.message === "FORBIDDEN") {
@@ -56,4 +60,8 @@ function retrieveFeedback(req, res) {
   }
 }
 
-export { handleFeedback, handleFeedbackText, retrieveFeedback };
+export {
+  handleFeedback,
+  handleFeedbackText,
+  retrieveFeedback
+};
