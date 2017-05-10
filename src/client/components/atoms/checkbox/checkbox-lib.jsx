@@ -82,7 +82,7 @@ export default class Checkbox extends React.Component {
 
 /*esfmt-ignore-start*/
   render() {
-    const {prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
+    const {id, prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
     const {checked} = this.state;
     const classString = classNames(prefixCls, className, {
       [`${prefixCls}-checked`]: checked,
@@ -92,6 +92,7 @@ export default class Checkbox extends React.Component {
     return (
       <span className={ classString } style={ style }>
         <input
+            id={id}
             name={ name }
             ref={(input) => {this.checkBox = input;}}
             autoFocus={ autoFocus }

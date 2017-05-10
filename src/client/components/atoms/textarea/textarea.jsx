@@ -19,6 +19,7 @@ class TextArea extends React.Component {
 
   render() {
     let {
+      id,
       label,
       value,
       hidden,
@@ -30,12 +31,12 @@ class TextArea extends React.Component {
       ...rest
     } = this.props;
     return (
-      <div className={styles.inputContainer} hidden={hidden}>
-        <label className={styles.controlLabel}>
+      <div id={id + "-container"} className={styles.inputContainer} hidden={hidden}>
+        <label htmlFor={this.props.id} className={styles.controlLabel}>
           {label}
         </label>
         <div className={styles.textAreaContainer}>
-          <textarea {...rest} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250"/>
+          <textarea {...rest} id={id} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250"/>
           <ValidationIcon validationState={this.props.validationState} showSuccessIcon={this.props.showSuccessIcon} showErrorIcon={this.props.showErrorIcon} extraClassName={styles.validationIcon}/>
         </div>
         {showCounter
