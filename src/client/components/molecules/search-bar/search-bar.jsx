@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
   handleSearchToggle(e) {
     e.preventDefault();
     this.setState({
-      expanded: true//!this.state.expanded
+      expanded: !this.state.expanded
     });
   }
 
