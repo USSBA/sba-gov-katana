@@ -6,7 +6,8 @@ function sanitizeTextSectionHtml(dirty) {
     clean = sanitizeHtml(dirty, {
       allowedTags: ["p", "strong", "em", "u", "hr", "a", "ol", "ul", "li", "dl", "dt", "dd", "table", "tbody", "thead", "tfoot", "tr", "td", "th"],
       allowedAttributes: {
-        "a": ["href"]
+        "a": ["href"],
+        "td": ["rowspan"]
       }
     });
   } catch (error) {

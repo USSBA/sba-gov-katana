@@ -1,4 +1,8 @@
-import { saveFeedback, saveFeedbackText, getFeedback } from "../service/feedback-service.js";
+import {
+  saveFeedback,
+  saveFeedbackText,
+  getFeedback
+} from "../service/feedback-service.js";
 
 import HttpStatus from "http-status-codes";
 
@@ -41,7 +45,7 @@ function handleFeedbackText(req, res) {
 
 function retrieveFeedback(req, res) {
   if (req && req.sessionInfo) {
-    getFeedback(req.sessionInfo)
+    getFeedback(_.values(req.sessionInfo)[0])
       .then(function(results) {
         res.status(HttpStatus.OK).send();
       })
@@ -57,4 +61,8 @@ function retrieveFeedback(req, res) {
   }
 }
 
-export { handleFeedback, handleFeedbackText, retrieveFeedback };
+export {
+  handleFeedback,
+  handleFeedbackText,
+  retrieveFeedback
+};
