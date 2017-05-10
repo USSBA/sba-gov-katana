@@ -1,8 +1,4 @@
-import {
-  saveFeedback,
-  saveFeedbackText,
-  getFeedback
-} from "../service/feedback-service.js";
+import { saveFeedback, saveFeedbackText, getFeedback } from "../service/feedback-service.js";
 import HttpStatus from "http-status-codes";
 
 function handleFeedback(req, res) {
@@ -60,8 +56,4 @@ function retrieveFeedback(req, res) {
   }
 }
 
-export {
-  handleFeedback,
-  handleFeedbackText,
-  retrieveFeedback
-};
+export { handleFeedback, handleFeedbackText, retrieveFeedback };

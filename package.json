@@ -62,6 +62,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "lodash": "^4.17.2",
+    "memory-cache": "^0.1.6",
     "moment": "^2.17.1",
     "mysql": "^2.12.0",
     "newrelic": "^1.36.2",

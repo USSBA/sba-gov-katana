@@ -1,12 +1,14 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
+import cache from "memory-cache";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
 const paragraphEndpoint = "entity/paragraph";
 const contactEndpoint = "contacts";
+
 
 import { fetchById, fetchContentByType } from "../models/dao/drupal8-rest.js";
 
@@ -59,9 +61,15 @@ function formatContact(contact) {
 
 function formatContacts(data) {
   if (data) {
+    if (cache.get("contacts")) {
+      return Promise.resolve(cache.get("contacts"));
+    }
     return Promise.map(data, formatContact, {
       concurrency: 50
-    }); //eslint-disable-line no-magic-numbers
+    }).tap(function(contacts) {
+      cache.put("contacts", contacts);
+    });
+
   }
   return {};
 }
