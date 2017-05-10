@@ -51,8 +51,8 @@ class CheckBox extends React.Component {
       <div ref={(container) => {
         this.checkboxContainer = container
       }} className={this.containerStyle()}>
-        <label className="rc-checkbox-label">
-          <Checkbox name={this.props.name} checked={this.props.checked} onChange={this.props.handleChange} onFocus={(e) => {
+        <label htmlFor={this.props.id} className="rc-checkbox-label">
+          <Checkbox id={this.props.id} name={this.props.name} checked={this.props.checked} onChange={this.props.handleChange} onFocus={(e) => {
             this.handleCheckboxFocus(e)
           }} onBlur={(e) => {
             this.handleCheckboxBlur(e)

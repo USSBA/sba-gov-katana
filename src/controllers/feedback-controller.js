@@ -42,7 +42,7 @@ function retrieveFeedback(req, res) {
   if (req && req.sessionInfo) {
     getFeedback(req.sessionInfo)
       .then(function(results) {
-        res.status(HttpStatus.OK).send();
+        res.status(HttpStatus.OK).send(results);
       })
       .catch((error) => {
         if (error.message === "FORBIDDEN") {

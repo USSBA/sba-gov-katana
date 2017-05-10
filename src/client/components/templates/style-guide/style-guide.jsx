@@ -306,29 +306,29 @@ class FormElements extends React.Component {
           <TextInput id="lender-match-four" errorText={"Please enter the correct thing."} label="What does it look like without a success icon?" validationState={"success"} showSuccessIcon={false} value="Good Data" onChange={() => {}}/>
           <TextInput id="lender-match-two" errorText={"Please enter the correct thing."} label="What does the error state look like?" validationState={"error"} value="Bad Data" onChange={() => {}}/>
           <TextInput id="lender-match-three" errorText={"Please enter the correct thing."} label="What does it look like with an error icon?" validationState={"error"} showErrorIcon={true} value="Bad Data" onChange={() => {}}/>
-          <TextArea errorText={"Please enter the correct thing."} onChange={(e) => {
+          <TextArea id="lender-match-textarea-1" errorText={"Please enter the correct thing."} onChange={(e) => {
             this.handleTextAreaChange(e)
           }} value={this.state.textAreaValue} label="Describe how you plan to use these funds" name="loanDescription" validationState={""} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."/>
-          <TextArea errorText={"Please enter the correct thing."} onChange={(e) => {
+          <TextArea id="lender-match-textarea-2" errorText={"Please enter the correct thing."} onChange={(e) => {
             this.handleTextAreaChange(e)
           }} value={this.state.textAreaValue} label="TextArea with success" name="loanDescription" validationState={"success"} placeholder="Notice the success state"/>
-          <TextArea errorText={"Please enter the correct thing."} onChange={(e) => {
+          <TextArea id="lender-match-textarea-3" errorText={"Please enter the correct thing."} onChange={(e) => {
             this.handleTextAreaChange(e)
           }} value={this.state.textAreaValue} label="TextArea with error" name="loanDescription" validationState={"error"} placeholder="Notice the error state"/>
 
-          <RadioBtnGroup errorText={"Please enter the correct thing."} onChange={(e) => {
+          <RadioBtnGroup gropuId="lender-match-radio-1" errorText={"Please enter the correct thing."} onChange={(e) => {
             this.handleRadioBtnChange(e)
           }} value={this.state.radioBtnValue} label="How much experience do you have?" name="industryExperience" validationState={""} options={radioButtonOptions}/>
           <label style={{
             marginTop: "40px"
           }}>Select all that apply to you:</label>
-          <Checkbox name="checkbox1" label="This is the first checkbox" handleChange={(e) => {
+          <Checkbox id="lender-match-checkbox-1" name="checkbox1" label="This is the first checkbox" handleChange={(e) => {
             this.handleCheckBoxChange(e)
           }} checked={this.state.checkBoxFields.checkbox1}/>
-          <Checkbox name="checkbox2" label="This is the second checkbox" handleChange={(e) => {
+          <Checkbox id="lender-match-checkbox-2" name="checkbox2" label="This is the second checkbox" handleChange={(e) => {
             this.handleCheckBoxChange(e)
           }} checked={this.state.checkBoxFields.checkbox2}/>
-          <Checkbox name="checkbox3" label="This is the third checkbox" handleChange={(e) => {
+          <Checkbox id="lender-match-checkbox-3" name="checkbox3" label="This is the third checkbox" handleChange={(e) => {
             this.handleCheckBoxChange(e)
           }} checked={this.state.checkBoxFields.checkbox3}/>
         </div>

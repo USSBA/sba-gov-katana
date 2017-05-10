@@ -13,7 +13,7 @@ function isAdministrator(sessionId) {
       if (result) {
         return result.uid;
       }
-      return false;
+      return 0;
 
     })
     .then(fetchUserRoles)
