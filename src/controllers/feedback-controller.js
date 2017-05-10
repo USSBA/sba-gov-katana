@@ -3,7 +3,6 @@ import {
   saveFeedbackText,
   getFeedback
 } from "../service/feedback-service.js";
-
 import HttpStatus from "http-status-codes";
 
 function handleFeedback(req, res) {
@@ -45,7 +44,7 @@ function handleFeedbackText(req, res) {
 
 function retrieveFeedback(req, res) {
   if (req && req.sessionInfo) {
-    getFeedback(_.values(req.sessionInfo)[0])
+    getFeedback(req.sessionInfo)
       .then(function(results) {
         res.status(HttpStatus.OK).send();
       })
