@@ -18,7 +18,7 @@ import IndustryInfo from './organisms/lender-match/form/industry-info.jsx';
 import AdditionalInfo from './organisms/lender-match/form/additional-info.jsx';
 import ReviewSubmitInfo from './organisms/lender-match/form/review-submit-info.jsx';
 
-import Homepage from './templates/homepage.jsx';
+import Homepage from './templates/homepage/homepage.jsx';
 import SamplePage from './pages/sample.jsx';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
