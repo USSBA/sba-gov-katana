@@ -44,19 +44,12 @@ function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
 }
 
-function fetchFormattedContactParagraph(paragraphArg) {
-  return fetchParagraphId(paragraphArg.paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
-    response.title = paragraphArg.title; //eslint-disable-line no-param-reassign
+function fetchFormattedContactParagraph(contact) {
+  const paragraphId = extractTargetId(contact.field_type_of_contact);
+  return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
+      response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
     return response;
   });
-}
-
-function formatContact(contact) {
-  const contactArg = {
-    title: !_.isEmpty(contact.title) ? contact.title[0].value : "",
-    paragraphId: extractTargetId(contact.field_type_of_contact)
-  };
-  return fetchFormattedContactParagraph(contactArg);
 }
 
 function formatContacts(data) {
@@ -64,7 +57,7 @@ function formatContacts(data) {
     if (cache.get("contacts")) {
       return Promise.resolve(cache.get("contacts"));
     }
-    return Promise.map(data, formatContact, {
+    return Promise.map(data, fetchFormattedContactParagraph, {
       concurrency: 50
     }).tap(function(contacts) {
       cache.put("contacts", contacts);
@@ -168,6 +161,7 @@ function formatParagraph(paragraph) {
 
 function formatContactParagraph(paragraph) { //eslint-disable-line complexity
   if (paragraph) {
+    console.log("inside formatContactParagraph");
     const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
     const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
     const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
@@ -197,10 +191,6 @@ function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
 }
 
-
-
-
-
 function formatNode(data) {
   if (data) {
     const paragraphs = data.field_paragraphs || [];
@@ -229,4 +219,4 @@ function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId };
