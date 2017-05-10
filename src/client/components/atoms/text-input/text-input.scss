@@ -1,9 +1,9 @@
 //LINC FORM INPUTS
 
-  @include theme-focus('money-green', '.textInput', $money-green);
-  @include theme-focus('sba-blue', '.textInput', $sba-blue);
-  @include theme-focus('cobalt-blue', '.textInput', $cobalt-blue);
-  @include theme-focus('byzantine', '.textInput', $byzantine);
+  @include theme-focus('money-green', '.textInput', null, null, $money-green);
+  @include theme-focus('sba-blue', '.textInput', null, null, $sba-blue);
+  @include theme-focus('cobalt-blue', '.textInput', null, null, $cobalt-blue);
+  @include theme-focus('byzantine', '.textInput', null, null, $byzantine);
 
 //COMMON INPUT STYLES
 

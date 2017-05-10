@@ -34,6 +34,7 @@ class SbaNewsModal extends React.Component {
 
     componentDidMount() {
         this.validateFields(["userEmailAddress", "userZipCode"]);
+        window.scrollTo(0, 0);
     }
 
 

@@ -1,0 +1,31 @@
+.menuCallToAction {
+    margin-top: 2vw;
+    display: none;
+    // REMOVE
+}
+
+:global(.sba-blue) .menuCallToAction {
+    background-color: $sba-blue;
+}
+:global(.byzantine) .menuCallToAction {
+    background-color: $byzantine;
+}
+:global(.money-green) .menuCallToAction {
+    background-color: $money-green;
+}
+:global(.cobalt-blue) .menuCallToAction {
+    background-color: $cobalt-blue;
+}
+
+.menuCallToAction img {
+    width: 100%;
+}
+
+.menuCallToAction p {
+    color: white;
+    font-weight: bold;
+    font-size: 2vw;
+    padding: 2vw;
+    letter-spacing: normal;
+    line-height: normal;
+}

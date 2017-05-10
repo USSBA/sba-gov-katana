@@ -34,15 +34,17 @@
   }
 }
 
-@mixin theme-focus($theme, $component, $focus-color) {
-  :global(.#{$theme}) {
-    #{$component}:focus {
-      border-color: $focus-color;
+@mixin theme-focus($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+      &:focus {
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+      }
     }
   }
 }
-
-
 
 // Breakpoints
 $small-screen: 767px;
@@ -66,6 +68,25 @@ $sba-grid-small: (
   columns: 6,
   gutter: 20px,
   media: "(max-width: $small-screen)",
+);
+
+$desktop-nav: (
+  columns: 12,
+  gutter: 0,
+  media: "(min-width: $large-screen)",
+);
+
+$tablet-nav: (
+  columns: 12,
+  gutter: 0,
+  media: "(min-width: $medium-screen) and (max-width: 1079px)",
+);
+
+
+$mobile-nav: (
+  columns: 6,
+  gutter: 0,
+  media: "(max-width: 768px)",
 );
 
 // Typography

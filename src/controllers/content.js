@@ -34,7 +34,7 @@ function fetchContentById(req, res) {
 }
 
 function fetchRestContentByType(req, res) {
-  if (req.params && req.params.type && req.params.id) {
+  if (req.params && req.params.type) {
     fetchContentTypeFunctions[req.params.type]()
       .then(function(data) {
         if (data && !_.isEmpty(data)) {
@@ -45,10 +45,10 @@ function fetchRestContentByType(req, res) {
       })
       .catch((error) => {
         console.error(error);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content.");
       });
   } else {
-    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type or id");
+    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type.");
   }
 }
 

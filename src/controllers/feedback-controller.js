@@ -1,14 +1,16 @@
-import { saveFeedback, saveFeedbackText } from "../service/feedback-service.js";
-import moment from "moment";
+import {
+  saveFeedback,
+  saveFeedbackText,
+  getFeedback
+} from "../service/feedback-service.js";
+
 import HttpStatus from "http-status-codes";
 
 function handleFeedback(req, res) {
   if (req && req.body && req.body.result) {
     const feedback = {
-      id: req.body.id,
       sessionId: req.sessionInfo || "",
       result: req.body.result,
-      timestamp: moment().unix(),
       sourceIpAddress: req.ip
     };
     saveFeedback(feedback)
@@ -41,4 +43,26 @@ function handleFeedbackText(req, res) {
   }
 }
 
-export { handleFeedback, handleFeedbackText };
+function retrieveFeedback(req, res) {
+  if (req && req.sessionInfo) {
+    getFeedback(_.values(req.sessionInfo)[0])
+      .then(function(results) {
+        res.status(HttpStatus.OK).send();
+      })
+      .catch((error) => {
+        if (error.message === "FORBIDDEN") {
+          res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator before requesting this data");
+        } else {
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving feedback");
+        }
+      });
+  } else {
+    res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator before requesting this data");
+  }
+}
+
+export {
+  handleFeedback,
+  handleFeedbackText,
+  retrieveFeedback
+};

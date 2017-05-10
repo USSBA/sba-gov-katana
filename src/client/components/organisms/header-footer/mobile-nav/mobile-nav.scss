@@ -1,0 +1,220 @@
+.mobileHeader {
+    // box-shadow: 0 1px 0 0 #EBEBEB;
+    display: none;
+    @include grid-media( $mobile-nav) {
+    display: block;
+    background-color: #ffffff;
+    height: 60px;
+    margin: 10px 20px;
+  }
+}
+
+.menuBtnNew {
+    float: right;
+    border: 2px solid;
+    width: 110px;
+    padding: 10px 13px 11px;
+}
+
+@include theme(sba-blue, '.menuBtnNew', null, $sba-blue, $sba-blue);
+@include theme(byzantine, '.menuBtnNew', null, $byzantine, $byzantine);
+@include theme(money-green, '.menuBtnNew', null, $money-green, $money-green);
+@include theme(cobalt-blue, '.menuBtnNew', null, $cobalt-blue, $cobalt-blue);
+
+.mainNavNew .menuLinkSection {
+    border-bottom: 1px solid #DBDBDB;
+    display: block;
+    padding: 20px 50px;
+}
+
+.mobile-search-new{
+    width: 100%;
+}
+
+.mainNavNew {
+    width: 100%;
+    display: none;
+    background-color: #ffffff;
+    overflow: auto;
+}
+
+.mainNavNewShow{
+    display: inherit;
+}
+
+.mobileSearchContainerNew {
+    background-color: #EBEBEB;
+    height: 60px;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+}
+
+.searchIconContainerNew {
+    position: absolute;
+    left: 10%;
+    top: 33%;
+    z-index: 1;
+}
+
+.searchIconNew {
+    width: 15px;
+}
+
+input.searchInputFieldNew {
+    position: relative;
+    height: 40px;
+    width: 90vw;
+    font-size: 16px;
+    color: #666666;
+    text-indent: 10%;
+    border: 1px solid #C4C4C4;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0 auto;
+}
+
+@include theme(sba-blue, 'a.navLinkSpecialNew', null, $grey, null);
+@include theme(byzantine, 'a.navLinkSpecialNew', null, $grey, null);
+@include theme(money-green, 'a.navLinkSpecialNew', null, $grey, null);
+@include theme(cobalt-blue, 'a.navLinkSpecialNew', null, $grey, null);
+
+.linkIcon {
+    height: 18px;
+    width: 17px;
+    vertical-align: middle;
+    margin-top: -2px;
+    margin-right: 12px;
+}
+
+
+
+// @media screen and (max-width:767px) {
+
+//     .mobileMainHeaderNew {
+//         height: 16vw;
+//         box-shadow: 0 0.266vw 0 0 #EBEBEB;
+//         background-color: #ffffff;
+//     }
+
+//     .logoNew {
+//         height: 9.6vw;
+//         width: auto;
+//         margin-left: 5.33vw;
+//         margin-top: 3.2vw;
+//     }
+
+//     .menuBtnNew {
+//         float: right;
+//         margin-top: 3.5vw;
+//         margin-right: 2vw;
+//         width: 22.934vw;
+//         height: 8.534vw;
+//         font-size: 3.2vw;
+//         line-height: 9.6vw;
+//         text-decoration: none;
+//         font-weight: bold;
+//     }
+
+//     :global(.sba-blue) .menuBtnNew {
+//         color: $sba-blue;
+//         border: 0.533vw solid $sba-blue;
+//     }
+//     :global(.byzantine) .menuBtnNew {
+//         color: $byzantine;
+//         border: 0.533vw solid $byzantine;
+//     }
+//     :global(.money-green) .menuBtnNew {
+//         color: $money-green;
+//         border: 0.533vw solid $money-green;
+//     }
+//     :global(.cobalt-blue) .menuBtnNew {
+//         color: $cobalt-blue;
+//         border: 0.533vw solid $cobalt-blue;
+//     }
+
+
+//     .mobile-search-new{
+//         width: 100%;
+//     }
+
+//     .mainNavNew {
+//         width: 100%;
+//         display: none;
+//         background-color: #ffffff;
+//         overflow: auto;
+//     }
+
+//     .mainNavNewShow{
+//         display: inherit;
+//     }
+
+//     .mobileSearchContainerNew {
+//         background-color: #EBEBEB;
+//         height: 16vw;
+//         margin-bottom: 0;
+//         position: relative;
+//     }
+
+//     .searchIconContainerNew {
+//         position: absolute;
+//         height: 4vw;
+//         width: 4vw;
+//         top: 5.9vw;
+//         left: 8vw;
+//         z-index: 1;
+//     }
+
+//     .searchIconNew {
+//         height: 4vw;
+//         width: auto;
+//     }
+
+//     .searchInputFieldNew {
+//         position: absolute;
+//         margin-top: 2.93vw;
+//         height: 10.13vw;
+//         margin-left: 5.33vw;
+//         width: 89.33vw;
+//         font-size: 3.73vw;
+//         line-height: 4.8vw;
+//         color: #666666;
+//         text-indent: 7.466vw;
+//         border: 0.266vw solid #C4C4C4;
+//     }
+
+//     .mainNavNew div a {
+//         font-size: 4.8vw;
+//         border-bottom: 0.266vw solid #DBDBDB;
+//         padding-left: 12.8vw;
+//         margin-left: 0;
+//         text-decoration: none;
+//         display: block;
+//         height: 16vw;
+//         line-height: 16vw;
+//         font-family: "Source Sans Pro" ;
+//     }
+
+
+
+//     .navLinkSpecialNew{
+//         color: #666666 ;
+//     }
+
+//     .navLinkNearIconNew{
+//         margin-right: 4vw;
+//         height: 4.8vw;
+//         width: auto;
+//         vertical-align: middle;
+//         padding-left: .6vw;
+//         margin-top: -1.3vw;
+//     }
+
+//     .navLinkCalendarIconNew{
+//         margin-right: 3.2vw;
+//         height: 4.8vw;
+//         width: auto;
+//         vertical-align: middle;
+//         margin-top: -1.3vw;
+//     }
+// }

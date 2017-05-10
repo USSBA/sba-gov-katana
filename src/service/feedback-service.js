@@ -1,15 +1,59 @@
+import Feedback from "../models/feedback.js";
+import _ from "lodash";
+import moment from "moment";
+import uuid from "uuid";
+import UserService from "../service/user-service.js";
+import jsonToCsv from "json2csv";
+
 function saveFeedback(feedback) {
-  console.log("Saving feedback", feedback);
-  return Promise.resolve(feedback.id);
+  const newFeedback = _.assign({}, feedback, {
+    id: uuid.v4(),
+    timestamp: moment().unix()
+  });
+  return Feedback.create(newFeedback)
+    .then(function(result) {
+      return result.id;
+    });
 }
 
 function saveFeedbackText(id, feedbackText, honeyPotText) {
   if (honeyPotText) {
-    return Promise.reject("This is submitted by a spam bot.");
+    console.log("Detected submission with honeypot field filled.");
+    return Promise.resolve();
   }
-  console.log("Saving feedback text", id, feedbackText);
-  return Promise.resolve();
+  return Feedback.update({
+    text: feedbackText
+  }, {
+    where: {
+      id: id
+    }
+  });
+
+}
+
+function getFeedback(sessionId) {
+  // the user authorization is here for now; move it to the global ACL when one is implemented
+  return UserService.isAdministrator(sessionId)
+    .then((isAdmin) => {
+      if (isAdmin) {
+        return Feedback.findAll({
+          raw: true
+        }).then((data) => {
+          if (data && data.length > 0) {
+            const fields = _.keys(data[0]);
+            return jsonToCsv({
+              data: data,
+              fields: fields
+            });
+          }
+          return "";
+
+        });
+      }
+      throw new Error("FORBIDDEN");
+
+    });
 }
 
 
-export { saveFeedback, saveFeedbackText };
+export { saveFeedback, saveFeedbackText, getFeedback };
