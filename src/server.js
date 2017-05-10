@@ -48,7 +48,7 @@ app.use(function(req, res, next) {
   if (sessionCookie) {
     hasSessionCookie = true;
     if (req.cookies) {
-      req.sessionInfo = req.cookie[sessionCookie]; //eslint-disable-line no-param-reassign
+      req.sessionInfo = req.cookies[sessionCookie]; //eslint-disable-line no-param-reassign
       console.log("Session info: ", req.sessionInfo);
     }
   }
