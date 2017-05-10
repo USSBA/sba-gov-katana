@@ -29,15 +29,15 @@ describe("Drupal 8 Service", function() {
 
   before(() => {
     fetchById = sinon.stub(drupalEightRestServiceClient, "fetchById");
-  })
+  });
 
   afterEach(() => {
     fetchById.reset();
-  })
+  });
 
   after(() => {
     fetchById.restore();
-  })
+  });
 
   function runTest(done, output, extraAssertions) {
 
@@ -57,7 +57,7 @@ describe("Drupal 8 Service", function() {
     runTest(done, outputBase, function(result) {
       result.paragraphs.should.have.length(4);
     });
-  })
+  });
 
   it("should not have a title when there is not title", function(done) {
     let localNode = _.set(_.cloneDeep(nodeBase), "title[0].value", null);
@@ -66,7 +66,7 @@ describe("Drupal 8 Service", function() {
     });
     setupStub(localNode, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
-  })
+  });
 
   it("should return normally when there are no paragraphs", function(done) {
     let localNode = _.assign({}, nodeBase, {
@@ -77,7 +77,7 @@ describe("Drupal 8 Service", function() {
     });
     setupStub(localNode, null, null, null, null, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
-  })
+  });
 
 
   it("should return normally less the paragraph when a paragraph is not found", function(done) {
@@ -87,7 +87,7 @@ describe("Drupal 8 Service", function() {
     });
     setupStub(nodeBase, null, null, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
-  })
+  });
 
   it("should return normally less the taxonomy when no taxonomy is given", function(done) {
     let localNode = _.assign({}, nodeBase, {
@@ -98,7 +98,7 @@ describe("Drupal 8 Service", function() {
     });
     setupStub(localNode, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
-  })
+  });
 
   it("should return normally less the taxonomy when the given taxonomy is not found", function(done) {
     let output = _.assign({}, outputBase, {
@@ -106,10 +106,10 @@ describe("Drupal 8 Service", function() {
     });
     setupStub(nodeBase, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, null, taxonomyTwoBase);
     runTest(done, output);
-  })
+  });
 
   it("should return nothing when the requested node does not exist", function(done) {
     setupStub(null, null, null, null, null, null, null);
     runTest(done, {});
   })
-})
+});

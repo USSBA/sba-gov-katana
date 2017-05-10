@@ -63,7 +63,7 @@ function formatContacts(data) {
       concurrency: 50
     }); //eslint-disable-line no-magic-numbers
   }
-  return {};
+  return Promise.resolve(null);
 }
 
 function fetchContacts() {
