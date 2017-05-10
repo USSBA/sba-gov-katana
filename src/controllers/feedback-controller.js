@@ -6,6 +6,7 @@ function handleFeedback(req, res) {
     const feedback = {
       sessionId: req.sessionInfo || "",
       result: req.body.result,
+      sourceLocation: req.header("Referer"),
       sourceIpAddress: req.ip
     };
     saveFeedback(feedback)

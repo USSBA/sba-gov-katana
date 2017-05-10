@@ -7,19 +7,26 @@ var feedback = nonDrupal.define("feedback", {
     primaryKey: true
   },
   result: {
-    type: Sequelize.BOOLEAN
+    type: Sequelize.STRING,
+    allowNull: false
   },
   timestamp: {
-    type: Sequelize.BIGINT
+    type: Sequelize.BIGINT,
+    allowNull: false
   },
   sourceIpAddress: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   sessionId: {
     type: Sequelize.STRING
   },
   text: {
     type: Sequelize.STRING
+  },
+  sourceLocation: {
+    type: Sequelize.STRING,
+    allowNull: false
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
