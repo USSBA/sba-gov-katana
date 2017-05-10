@@ -80,9 +80,7 @@ export class MiniNav extends React.Component {
         <UtilityLink key={3} url="/about-sba/sba-newsroom" text="Newsroom"/>
         <UtilityLink key={4} url="/about-sba/what-we-do/contact-sba" text="Contact Us"/>
         { this.makeUserAccountSpecificLinks() }
-        <div className={styles.searchBar}>
         <SearchBar />
-        </div>
       </ul>
       </div>
     );

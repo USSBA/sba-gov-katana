@@ -3,7 +3,6 @@ import styles from './sub-menu.scss';
 import {isEmpty} from "lodash";
 
 import SectionLink from "../../atoms/section-link/section-link.jsx"
-import FeaturedCallout from "../featured-callout/featured-callout.jsx"
 import DropdownMenu from "../dropdown-menu/dropdown-menu.jsx"
 
 class SubMenu extends React.Component {
@@ -19,10 +18,8 @@ class SubMenu extends React.Component {
     return (
       <li className={styles.subMenu} key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)} onMouseOut={this.props.onMenuMouseOut}>
         <SectionLink url={data.link} text={data.linkTitle} showTriangleMarker={showTriangleMarker} onMouseOver={this.props.onTitleMouseOver} onKeyDown={this.props.onSectionLinkKeyDown} >
-          <DropdownMenu links={data.children} {...rest}/>
-          {this.props.data.featuredCallout
-            ? <FeaturedCallout {...data.featuredCallout}/>
-            : undefined}
+          <DropdownMenu links={data.children} {...rest} featuredCallout={data.featuredCallout}/>
+
         </SectionLink>
       </li>
     );
