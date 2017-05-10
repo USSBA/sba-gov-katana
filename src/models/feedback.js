@@ -17,8 +17,10 @@ var feedback = nonDrupal.define("feedback", {
   },
   sessionId: {
     type: Sequelize.STRING
+  },
+  text: {
+    type: Sequelize.STRING
   }
-
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
 });
