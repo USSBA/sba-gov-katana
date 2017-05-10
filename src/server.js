@@ -87,12 +87,14 @@ app.get("/content/counselors-redirect.json", function(req, res) {
 import * as feedbackController from "./controllers/feedback-controller.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
+app.get("/content/feedback.csv", feedbackController.retrieveFeedback);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
 import { getMainMenu } from "./controllers/main-menu.js";
 app.get("/content/main-menu.json", getMainMenu);
+
 
 import { fetchContentById, fetchContentByType, fetchFrontPageSlides, fetchBlogs, fetchDisaster, fetchRestContentByType } from "./controllers/content.js";
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
