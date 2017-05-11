@@ -14,6 +14,7 @@ drupal:
     hostname: https://www.sbagov.fearlesstesters.com/
 drupal8:
     hostname: http://content.sbagov.fearlesstesters.com/
+    useLocalContacts: true
 database:
     nonDrupal:
         databaseName: sba_katana

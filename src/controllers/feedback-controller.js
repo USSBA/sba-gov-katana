@@ -7,6 +7,7 @@ function handleFeedback(req, res) {
     const feedback = {
       sessionId: req.sessionInfo || "",
       result: req.body.result,
+      sourceLocation: req.header("Referer"),
       sourceIpAddress: req.ip
     };
     saveFeedback(feedback)
@@ -41,9 +42,9 @@ function handleFeedbackText(req, res) {
 
 function retrieveFeedback(req, res) {
   if (req && req.sessionInfo) {
-    getFeedback(_.values(req.sessionInfo)[0])
+    getFeedback(req.sessionInfo)
       .then(function(results) {
-        res.status(HttpStatus.OK).send();
+        res.header("Content-Type", "text/csv").status(HttpStatus.OK).send(results);
       })
       .catch((error) => {
         if (error.message === "FORBIDDEN") {

@@ -1,12 +1,16 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
+import cache from "memory-cache";
+import config from "config";
+import localContacts from "../models/dao/contacts.js";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
 const paragraphEndpoint = "entity/paragraph";
 const contactEndpoint = "contacts";
+
 
 import { fetchById, fetchContentByType } from "../models/dao/drupal8-rest.js";
 
@@ -42,30 +46,34 @@ function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
 }
 
-function fetchFormattedContactParagraph(paragraphArg) {
-  return fetchParagraphId(paragraphArg.paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
-    response.title = paragraphArg.title; //eslint-disable-line no-param-reassign
+function fetchFormattedContactParagraph(contact) {
+  const paragraphId = extractTargetId(contact.field_type_of_contact);
+  return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
+    response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
     return response;
   });
 }
 
-function formatContact(contact) {
-  const contactArg = {
-    title: contact.title[0].value,
-    paragraphId: extractTargetId(contact.field_type_of_contact)
-  };
-  return fetchFormattedContactParagraph(contactArg);
-}
-
 function formatContacts(data) {
   if (data) {
-    return Promise.map(data, formatContact);
+    return Promise.map(data, fetchFormattedContactParagraph, {
+      concurrency: 50
+    });
   }
-  return {};
+  return Promise.resolve(null);
 }
 
 function fetchContacts() {
-  return fetchContentByType(contactEndpoint).then(formatContacts);
+  if (config.get("drupal8.useLocalContacts")) {
+    console.log("Using Development Contacts information");
+    return Promise.resolve(localContacts);
+  } else if (cache.get("contacts")) {
+    return Promise.resolve(cache.get("contacts"));
+  }
+  return fetchContentByType(contactEndpoint).then(formatContacts).tap(function(contacts) {
+    cache.put("contacts", contacts);
+  });
+
 }
 
 // this is an abstract function that takes an object, removes properties that do not
@@ -158,10 +166,11 @@ function formatParagraph(paragraph) {
 
 function formatContactParagraph(paragraph) { //eslint-disable-line complexity
   if (paragraph) {
+    console.log("inside formatContactParagraph");
     const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
     const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
     const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
-    const contactLink = paragraph.field_link[0].uri;
+    const contactLink = !_.isEmpty(paragraph.field_link) ? paragraph.field_link[0].uri : "";
     const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
     const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
     const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
@@ -169,13 +178,13 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
     const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
     return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
       return {
-        contactCity: contactCity,
-        contactLink: contactLink,
-        contactState: contactState,
-        contactStreetAddress: contactStreetAddress,
-        contactZipCode: contactZipCode,
-        contactCategoryTaxonomyTerm: contactCategoryTaxonomyData,
-        stateServedTaxonomyTerm: stateServedTaxonomyData
+        city: contactCity,
+        link: contactLink,
+        state: contactState,
+        streetAddress: contactStreetAddress,
+        zipCode: contactZipCode,
+        category: contactCategoryTaxonomyData ? contactCategoryTaxonomyData.name : "",
+        stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
       };
     });
   }
@@ -186,10 +195,6 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
 function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
 }
-
-
-
-
 
 function formatNode(data) {
   if (data) {
@@ -219,4 +224,4 @@ function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId };

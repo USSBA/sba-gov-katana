@@ -2,6 +2,7 @@
   @include grid-container;
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
+    margin-left: 14px;
     text-align: left;
   }
 }

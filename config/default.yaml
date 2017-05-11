@@ -13,13 +13,14 @@ newrelic:
 googleAnalytics:
     enabled: true
     accountId: "UA-19362636-5"
-    tagManagerAccountId: "GTM-KS9GT4X"
+    tagManagerAccountId: "GTM-NPDXPPF"
     debug: false
 drupal:
     hostname: http://www.sba.gov/
     endpoint: rest
 drupal8:
     hostname: http://tanto
+    useLocalContacts: false
 server:
     port: 3000
 email:

@@ -4,6 +4,8 @@ ul.pageLinkGroup {
 
 
 .footer{
+width:100%;
+float:left;
   padding: 30px 0;
   background-color: #E8E8E8;
   a {
@@ -49,7 +51,7 @@ ul.pageLinkGroup {
   }
 }
 
-hr {
+.footer hr {
   display: none;
   border: 1px solid #C4C4C4;
   &.desktopRule {
@@ -115,10 +117,6 @@ hr {
   // @include grid-media( $sba-grid-medium) {
   //   @include grid-column(9);
   // }
-}
-
-.footer li {
-  margin-bottom: 15px;
 }
 
 @include theme(sba-blue, '.footer li:first-child a', null, $base-font-color, null);

@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
   if (sessionCookie) {
     hasSessionCookie = true;
     if (req.cookies) {
-      req.sessionInfo = req.cookie[sessionCookie]; //eslint-disable-line no-param-reassign
+      req.sessionInfo = req.cookies[sessionCookie]; //eslint-disable-line no-param-reassign
       console.log("Session info: ", req.sessionInfo);
     }
   }
@@ -59,7 +59,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*"], function(req, res, next) {
+app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*", "/devtest"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig),
     tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
@@ -101,17 +101,18 @@ import { fetchContentById, fetchContentByType, fetchFrontPageSlides, fetchBlogs,
 app.get("/content/frontpageslides.json", fetchFrontPageSlides);
 app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
-app.get("/content/:type/:id.json", fetchContentById);
-app.get("/content/:type.json", fetchRestContentByType);
 
 import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/content/:userId.json", getUserRoles);
 
 import { getDrupalUserEmail } from "./controllers/user-email.js";
-app.get("/content/:userId.json", getDrupalUserEmail);
+app.get("/content/useremail/:userId.json", getDrupalUserEmail);
 
 import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/content/newsletter-registration.json", registerUserForNewsletter);
+
+app.get("/content/:type/:id.json", fetchContentById);
+app.get("/content/:type.json", fetchRestContentByType);
 
 // development error handler
 // will print stacktrace

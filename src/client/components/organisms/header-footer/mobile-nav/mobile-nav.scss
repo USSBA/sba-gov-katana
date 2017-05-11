@@ -1,12 +1,15 @@
 .mobileHeader {
     // box-shadow: 0 1px 0 0 #EBEBEB;
     display: none;
-    @include grid-media( $mobile-nav) {
-    display: block;
     background-color: #ffffff;
     height: 60px;
     margin: 10px 20px;
-  }
+    @include grid-media( $tablet-nav) {
+      display: block;
+    }
+    @include grid-media( $mobile-nav) {
+      display: block;
+    }
 }
 
 .menuBtnNew {

@@ -1,27 +1,25 @@
 .container {
-    @include grid-container;
-    @include grid-column(9, $sba-grid-large);
-    @include grid-push(3);
     @include grid-media($sba-grid-small) {
-         @include grid-column(6) ;
-         padding-top: 100px;
+        padding-top: 100px;
     }
 }
 
-
-.pushOne{
-    @include grid-column(10.6666, $sba-grid-medium);
-    @include grid-push(1.333);
+.feedback,
+.lookup,
+.sectionHeader,
+.textSection,
+.titleSection {
+    @include grid-column(7, $sba-grid-large);
+    @include grid-push(4);
     @include grid-media($sba-grid-small) {
-         @include grid-column(6) ;
-         @include grid-push(0);
+         @include grid-column(6);
+        @include grid-push(0);
     }
     padding-bottom: 30px;
 }
 
-.pushZero{
-    @include grid-container;
-    @include grid-column(12, $sba-grid-medium);
-    @include grid-push(0);
+.image {
+    @include grid-column(9, $sba-grid-large);
+    @include grid-push(3);
     padding-bottom: 30px;
 }

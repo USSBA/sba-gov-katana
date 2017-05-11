@@ -5,10 +5,11 @@ a.sectionLink {
   position: relative;
 
   @include grid-media( $sba-grid-medium) {
-  margin-left: 25px;
-  padding-bottom: 15px;
+  // margin-left: 25px;
+  // padding-bottom: 15px;
   }
 }
+
 
 @include theme(sba-blue, 'a.sectionLink', null, $sba-blue, null);
 @include theme(byzantine, 'a.sectionLink', null, $byzantine, null);
@@ -25,12 +26,13 @@ a.sectionLink {
     position: relative;
     height: 0;
     width: 0;
-    left: 50%;
-    right: 50%;
+    left: 40%;
+    right: 60%;
     bottom: 0;
     border-right: 14px solid transparent;
     border-left: 14px solid transparent;
     border-top: 0;
+    z-index: 100000000000;
 }
 
 :global(.sba-blue) .triangle {
