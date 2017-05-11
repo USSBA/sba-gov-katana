@@ -38,7 +38,9 @@ export class MiniNav extends React.Component {
     this.props.actions.fetchContentIfNeeded("userRoles", this.state.userId, {});
     if(this.state.userLoggedOn){
         //check whether email is already provided
-        this.props.actions.fetchContentIfNeeded("userEmail", this.state.userEmail, {});
+        this.props.actions.fetchContentIfNeeded("userEmail", "useremail", {
+            userId: this.state.userId
+        });
     }
     if(!this.state.userEmail){
         this.timerId = setTimeout(()=>{
