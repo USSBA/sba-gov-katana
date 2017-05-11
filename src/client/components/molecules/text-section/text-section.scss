@@ -103,6 +103,15 @@
 		}
 		& td {
 			border: none;
+			@include grid-push(2)
+		}
+		& td:before {
+			left: 15px;
+			position: absolute;
+			display: block;
+			@include grid-column(2);
+			content: attr(data-label);
+
 		}
 		& td:nth-child(even){
 			background-color: #EBEBEB;
