@@ -18,9 +18,8 @@
   z-index: 10000000000;
   // background-color: lightgreen;
   display: flex;
-   flex-wrap:wrap;
-  flex-direction:column;
-  justify-content: space-between;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
 }
 
 .one {
@@ -28,7 +27,7 @@
 }
 
 .two {
-  height: 520px;
+  height: 500px;
 }
 
 .three {
