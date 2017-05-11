@@ -1,7 +1,6 @@
 .menuCallToAction {
-    // margin-top: 2vw;
-    // display: none;
-    // // REMOVE
+   width: 351px;
+   display: block;
 }
 
 :global(.sba-blue) .menuCallToAction {
@@ -24,8 +23,9 @@
 .menuCallToAction p {
     color: white;
     font-weight: bold;
-    font-size: 2vw;
-    padding: 2vw;
+    font-size: 36px;
+    padding: 30px;
     letter-spacing: normal;
     line-height: normal;
+    margin-bottom: 0;
 }

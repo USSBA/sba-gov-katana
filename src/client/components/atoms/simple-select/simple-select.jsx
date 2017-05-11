@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from "./simple-select.scss"
 import ValidationIcon from '../validation-icon/validation-icon.jsx';
+import _ from "lodash";
+
 class SimpleSelect extends React.Component {
 
   getValidationIcon() {
@@ -34,6 +36,11 @@ class SimpleSelect extends React.Component {
     return labelTag;
   }
 
+  handleChange(e) {
+    let value = e.target.value;
+    this.props.onChange(value);
+  }
+
   render() {
     let validationIcon = this.getValidationIcon();
     let errorMessage = this.getErrorMessage();
@@ -43,8 +50,8 @@ class SimpleSelect extends React.Component {
       <div id={this.props.id + "-container"} className={styles.selectContainer} hidden={this.props.hidden}>
         {labelTag}
         <div className={styles.innerContainer}>
-          <select id={this.props.id} className={styles.myselect}>
-            <option key={this.props.options.length + 1} value="" disabled selected>{this.props.defaultValue}</option>
+          <select id={this.props.id} className={styles.myselect} onChange={this.handleChange.bind(this)} defaultValue={""}>
+            <option key={this.props.options.length + 1} value="" disabled >{this.props.defaultValue}</option>
             {this.props.options.map(function(item, index) {
               return (
                 <option key={index} value={item.value} className={styles.myoption}>{item.name}</option>

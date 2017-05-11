@@ -1,8 +1,7 @@
 li.pageLink {
-  // background-color: pink;
   display: list-item;
-  margin: 0;
   font-size: 16px;
+  margin-bottom: 15px;
 }
 
 @include theme(sba-blue, 'li.pageLink a', null, $base-font-color, null);

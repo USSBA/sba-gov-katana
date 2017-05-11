@@ -23,11 +23,11 @@ class FeedbackForm extends React.Component {
     };
   }
   handleYesClick() {
-    this.props.actions.submitResults(true, uuid.v4());
+    this.props.actions.submitResults("yes", uuid.v4());
     this.setState({displayState: states[1]});
   }
   handleNoClick() {
-    this.props.actions.submitResults(false, uuid.v4());
+    this.props.actions.submitResults("no", uuid.v4());
     this.setState({displayState: states[1]});
   }
   handleSubmit() {
@@ -66,7 +66,7 @@ class FeedbackForm extends React.Component {
           <h4 className={styles.question}>{question}</h4>
           <div>
             <button id="feedback-yes-button" className={styles.GreenButton} onClick={this.handleYesClick.bind(this)}>YES</button>
-            <button id="feedback-no-button" className={styles.RedButton} onClick={this.handleYesClick.bind(this)}>NO</button>
+            <button id="feedback-no-button" className={styles.RedButton} onClick={this.handleNoClick.bind(this)}>NO</button>
           </div>
         </div>
       );
