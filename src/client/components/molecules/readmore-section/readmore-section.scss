@@ -23,6 +23,7 @@
   display: none;
   @include grid-media($sba-grid-small) {
     @include grid-shift(-0.25);
+    @include grid-column(7.42);
     margin-left: 0 !important;
     display:block;
   }
