@@ -88,6 +88,25 @@
 
 .textSection {
 	//LARGE
+	@include grid-media($sba-grid-small){
+		& table {
+
+		}
+		& thead > tr > th {
+			display: none;
+		}
+		& tr {
+			border: 2px solid #EBEBEB;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		& td {
+			border: none;
+		}
+		& td:nth-child(even){
+			background-color: #EBEBEB;
+		}
+	}
 	@include grid-media($sba-grid-medium){
 		& table {
 			table-layout: auto;
@@ -111,7 +130,12 @@
 			padding-left: 15px;
 			border: 0px;
 		}
+	}
 
+	@include grid-media($sba-grid-small){
+		table, thead, tbody, th, td, tr {
+			display: block;
+		}
 	}
 }
 
