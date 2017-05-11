@@ -22,6 +22,7 @@
 .readMoreSectionMobile {
 	display: none;
 	@include grid-media($sba-grid-small) {
+		@include grid-column(7.42);
 		@include grid-shift(-0.25);
 		margin-left: 0 !important;
 		display: block;
