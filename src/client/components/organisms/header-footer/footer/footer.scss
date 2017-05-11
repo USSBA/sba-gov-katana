@@ -119,10 +119,6 @@ hr {
   // }
 }
 
-.footer li {
-  margin-bottom: 15px;
-}
-
 @include theme(sba-blue, '.footer li:first-child a', null, $base-font-color, null);
 @include theme(byzantine, '.footer li:first-child a', null, $base-font-color, null);
 @include theme(money-green, '.footer li:first-child a', null, $base-font-color, null);
