@@ -40,7 +40,7 @@ function getFeedback(sessionId) {
           raw: true
         }).then((data) => {
           if (data && data.length > 0) {
-            const fields = _.keys(data[0]);
+            const fields = _.without(_.keys(data[0]), "sourceIpAddress");
             return jsonToCsv({
               data: data,
               fields: fields
