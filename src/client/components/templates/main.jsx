@@ -45,7 +45,7 @@ class Main extends React.Component {
         <Waypoint onEnter={this.handleWaypointEnter.bind(this)} onLeave={this.handleWaypointLeave.bind(this)}/>
         <Header theme="sba-blue" disasterAlertIsVisible={this.state.disasterAlertIsVisible} userHasScrolledPastAlert={this.state.userHasScrolledPastAlert}/>
         {this.props.children}
-        <Footer/>
+        {/* <Footer/> */}
         <ModalController/>
       </div>
     )
