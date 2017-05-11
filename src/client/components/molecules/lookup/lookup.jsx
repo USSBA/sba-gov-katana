@@ -2,17 +2,17 @@ import React from "react"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as RestContentActions from "../../../actions/rest-content.js"
+import {filter} from "lodash"
 
 import styles from "./lookup.scss";
-import states from "../../../services/us-states.json";
-import SimpleSelect from "../../atoms/simple-select/simple-select.jsx";
+import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx"
 
 class Lookup extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      displayedItems: []
+      filteredItems: []
     }
   }
 
@@ -20,28 +20,29 @@ class Lookup extends React.Component {
     this.props.actions.fetchContentIfNeeded(this.props.type);
   }
 
-  handleChange(selectValue) {
-    let newDisplayedItems = _.filter(this.props.items, {state: selectValue});
-    this.setState({displayedItems: newDisplayedItems});
+  componentWillReceiveProps(nextProps, ownProps){
+      this.setState({filteredItems: this.filterItems(nextProps.items, nextProps.subtype)});
+  }
+
+  filterItems(items, subtype) {
+    let filteredItems = filter(items, function(item) {
+        if(item.categoryTaxonomyTerm && item.categoryTaxonomyTerm.name){
+            return  item.categoryTaxonomyTerm.name === subtype;
+        }else{
+            return false;
+        }
+    });
+    return filteredItems;
   }
 
   render() {
+    if (this.props.type === "contacts") {
+      if (this.props.subtype === "State registration") {
+        return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title}/>);
+      }
+    }
     return (
-      <div>
-        <div className={styles.container}>
-          <h4 className={styles.title}>{this.props.title}</h4>
-          <div key={1} className={styles.selectContainer}>
-            <SimpleSelect id="lookup-select" options={states} onChange={this.handleChange.bind(this)}/>
-          </div>
-          <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(function(item, index) {
-              return (
-                <p key={index}>
-                  {JSON.stringify(item)}
-                </p>
-              );
-            })}</div>
-        </div>
-      </div>
+      <div></div>
     )
   }
 }
@@ -55,9 +56,12 @@ Lookup.propTypes = {
 Lookup.defaultProps = {
   title: "Lookup Title",
   type: "contacts",
+  subtype: "State registration",
   display: "cards",
   items: []
 }
+
+
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {

@@ -56,24 +56,24 @@ function fetchFormattedContactParagraph(contact) {
 
 function formatContacts(data) {
   if (data) {
-    if (config.get("drupal8.useLocalContacts")) {
-      console.log("Using Development Contacts information");
-      return Promise.resolve(localContacts);
-    } else if (cache.get("contacts")) {
-      return Promise.resolve(cache.get("contacts"));
-    }
     return Promise.map(data, fetchFormattedContactParagraph, {
       concurrency: 50
-    }).tap(function(contacts) {
-      cache.put("contacts", contacts);
     });
-
   }
   return Promise.resolve(null);
 }
 
 function fetchContacts() {
-  return fetchContentByType(contactEndpoint).then(formatContacts);
+  if (config.get("drupal8.useLocalContacts")) {
+    console.log("Using Development Contacts information");
+    return Promise.resolve(localContacts);
+  } else if (cache.get("contacts")) {
+    return Promise.resolve(cache.get("contacts"));
+  }
+  return fetchContentByType(contactEndpoint).then(formatContacts).tap(function(contacts) {
+    cache.put("contacts", contacts);
+  });
+
 }
 
 // this is an abstract function that takes an object, removes properties that do not
@@ -183,8 +183,8 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
         state: contactState,
         streetAddress: contactStreetAddress,
         zipCode: contactZipCode,
-        categoryTaxonomyTerm: contactCategoryTaxonomyData,
-        stateServedTaxonomyTerm: stateServedTaxonomyData
+        category: contactCategoryTaxonomyData ? contactCategoryTaxonomyData.name : "",
+        stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
       };
     });
   }

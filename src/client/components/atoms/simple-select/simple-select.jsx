@@ -50,8 +50,8 @@ class SimpleSelect extends React.Component {
       <div id={this.props.id + "-container"} className={styles.selectContainer} hidden={this.props.hidden}>
         {labelTag}
         <div className={styles.innerContainer}>
-          <select id={this.props.id} className={styles.myselect} onChange={this.handleChange.bind(this)}>
-            <option key={this.props.options.length + 1} value="" disabled selected>{this.props.defaultValue}</option>
+          <select id={this.props.id} className={styles.myselect} onChange={this.handleChange.bind(this)} defaultValue={""}>
+            <option key={this.props.options.length + 1} value="" disabled >{this.props.defaultValue}</option>
             {this.props.options.map(function(item, index) {
               return (
                 <option key={index} value={item.value} className={styles.myoption}>{item.name}</option>
