@@ -17,7 +17,7 @@ class ReadMoreSection extends React.Component{
             <p className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
             {expandedHr}
             {expandedTextSection}
-            <button className={btnStyles.SmallSecondaryButton} href="#" onClick={this.handleClick.bind(this)}>{btnText}</button>
+            <button className={styles.readMore} href="#" onClick={this.handleClick.bind(this)}>{btnText}</button>
         </div>);
     }
 }
