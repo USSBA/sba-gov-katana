@@ -1,4 +1,3 @@
-@import "../../../styles/buttons.scss";
 
 .happeningNow {
     margin-top: 5vw;
@@ -14,8 +13,6 @@
 }
 
 .happeningNowTitle{
-    font-size: 5.2vw;
-    font-weight: bold;
     padding-left: calc(10.4vw - 15px);
     padding-bottom: 2vw;
 }
@@ -28,11 +25,6 @@
     padding-bottom: 1vw;
 }
 
-.happeningNowLearnMore{
-    composes: homeBtnBlue;
-    font-weight: 600;
-    padding: 10px 20px;
-}
 
 /* Mobile */
 
