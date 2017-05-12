@@ -1,1 +1,12 @@
-.container{}
+.container{
+    background-color: white;
+    @include grid-column(7, $sba-grid-large);
+    @include grid-push(4);
+}
+
+.imageThing{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: purple;
+}
