@@ -19,7 +19,6 @@ class TextSection extends React.Component{
 					$(tdata).contents().wrap(wrapper)
 
 					let label = "<div class='table-header-label'>" + headers[i] +":</div>"
-					console.log(label)
 					$(tdata).prepend(label)
 				})
 			})
