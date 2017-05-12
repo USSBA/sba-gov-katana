@@ -1,10 +1,12 @@
 .container{
-    border: 2px solid $grey-light;
+  border: 2px solid $grey-light;
+  overflow: auto;
 }
 
 .selectContainer{
     margin: auto;
-    width: 42%
+    width: 42%;
+    margin-bottom: 30px;
 }
 
 .dataContainer{
@@ -13,4 +15,35 @@
 .title{
     text-align: center;
     margin-top: $margin-30;
+}
+
+.itemLink {
+
+}
+
+.dataContainer {
+
+}
+
+.noContacts {
+	padding: 20px;
+	@include grid-column(4)
+	@include grid-push(4)
+	text-align: center;
+}
+
+.card {
+	border: 2px solid #C4C4C4;
+	@include grid-column(12)
+	padding: 20px;
+	margin-bottom: 30px;
+
+}
+
+.dataTitle {
+
+}
+
+.dataLink {
+
 }
