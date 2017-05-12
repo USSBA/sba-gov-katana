@@ -59,6 +59,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  console.log("Received request for " + req.originalUrl);
+  next();
+});
+
 app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*", "/devtest"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig),
