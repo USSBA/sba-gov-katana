@@ -15,7 +15,12 @@ class TextSection extends React.Component{
 			})
 			$(table).find('tbody > tr').each((i, trow) => {
 				$(trow).find('td').each((i, tdata) => {
-					$(tdata).attr('data-label', headers[i])
+					let wrapper = "<div class='table-data-wrapper'></div>"
+					$(tdata).contents().wrap(wrapper)
+
+					let label = "<div class='table-header-label'>" + headers[i] +":</div>"
+					console.log(label)
+					$(tdata).prepend(label)
 				})
 			})
 		})
@@ -23,7 +28,6 @@ class TextSection extends React.Component{
 	}
 
   render(){
-  	this.parseTables()
     return (<div className={styles.textSection} dangerouslySetInnerHTML={{__html: this.parseTables()}}/>);
   }
 }
