@@ -27,8 +27,6 @@
 
 .noContacts {
 	padding: 20px;
-	@include grid-column(4)
-	@include grid-push(4)
 	text-align: center;
 }
 
