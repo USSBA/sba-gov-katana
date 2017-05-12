@@ -103,10 +103,10 @@ app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 
 import { getUserRoles } from "./controllers/user-roles.js";
-app.get("/content/:userId.json", getUserRoles);
+app.get("/content/:userId/roles.json", getUserRoles);
 
 import { getDrupalUserEmail } from "./controllers/user-email.js";
-app.get("/content/useremail/:userId.json", getDrupalUserEmail);
+app.get("/content/:userId/email.json", getDrupalUserEmail);
 
 import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/content/newsletter-registration.json", registerUserForNewsletter);
