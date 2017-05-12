@@ -12,27 +12,39 @@ class MultiSelectBox extends React.Component {
       this.props.onChange(_.map(newValue, 'value').join(","));
     }
   }
-  handleBlur(){
-      this.props.onBlur({target:{name: this.props.name}});
+  handleBlur() {
+    this.props.onBlur({
+      target: {
+        name: this.props.name
+      }
+    });
   }
-  handleFocus(){
-      this.props.onFocus({target:{name: this.props.name}});
+  handleFocus() {
+    this.props.onFocus({
+      target: {
+        name: this.props.name
+      }
+    });
   }
 
-  renderArrow(){
-      return (<i src={chevron}/>);
+  renderArrow() {
+    return (<i src={chevron}/>);
   }
   render() {
 
-    let myValue = this.props.multi ? (this.props.value
-      ? this.props.value.split(",")
-      : []) : this.props.value;
-    let errorMessage = this.props.validationState == 'error'
-      ? <FormErrorMessage errorText={this.props.errorText} />
-      : undefined;
-    let errorClass = this.props.validationState == 'error'
-      ? styles.redBorder
-      : "";
+    let myValue = this.props.multi ? (this.props.value ?
+      this.props.value.split(",") :
+      []) : this.props.value;
+    let errorMessage = this.props.validationState == 'error' ?
+      <FormErrorMessage errorText={this.props.errorText} /> :
+      undefined;
+    let errorClass = this.props.validationState == 'error' ?
+      styles.redBorder :
+      "";
+    //arrowRenderer={this.renderArrow}
+    let clearRenderer = this.props.multi ? undefined : () => {
+      return (<div/>);
+    };
     return (
       <div>
         <label>
@@ -40,7 +52,7 @@ class MultiSelectBox extends React.Component {
         </label>
         <div className={styles.errorClass}>
           <ReactSelect className={errorClass + " " + styles.myselect } menuBuffer={10} tabSelectsValue={false} multi={this.props.multi} autoBlur={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={myValue} options={this.props.options} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}
-              arrowRenderer={this.renderArrow}/>
+              clearRenderer={clearRenderer} searchable={this.props.multi} />
         </div>
         {errorMessage}
 
@@ -50,7 +62,7 @@ class MultiSelectBox extends React.Component {
 }
 
 MultiSelectBox.defaultProps = {
-    multi: true
+  multi: true
 }
 
 export default MultiSelectBox;

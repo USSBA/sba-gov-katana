@@ -296,3 +296,23 @@ $primary-color-map:(
         }
     }
 }
+
+@mixin border-color-theme($component) {
+  @each $name, $value in $primary-color-map {
+     :global(.#{$name}) {
+      #{$component} {
+        border-color: $value;
+      }
+    }
+  }
+}
+
+@mixin background-color-theme($component) {
+  @each $name, $value in $primary-color-map {
+     :global(.#{$name}) {
+      #{$component} {
+        background-color: $value;
+      }
+    }
+  }
+}
