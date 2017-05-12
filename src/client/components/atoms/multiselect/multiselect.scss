@@ -4,7 +4,7 @@
 
 .myselect {
     border: none;
-    color: #1C2E36;
+    color: #1C2E36 !important; 
 }
 
 .myselect::-ms-expand {
@@ -50,9 +50,11 @@
     transform: translateY(-50%);
 }
 
-.myselect :global(.Select-value) {
-    
+
+.myselect:global(.is-focused) :global(.Select-control){
+    box-shadow: none;
 }
+
 
 .myselect:global(.Select--multi) :global(.Select-value){
     background-color: $grey-lighter;
@@ -70,9 +72,6 @@
     color: #333333 !important;
 }
 
-// .myselect :global(.is-focused) :global(.Select-control) {
-//     border: 0px solid #609F00;
-// }
 
 .myselect :global(.Select-menu-outer) {
     border-width: 1px;
@@ -88,13 +87,10 @@
     background-color: inherit;
 }
 
-// .myselect :global(.is-focused):not(.is-open)>:global(.Select-control) {
-//     border: 1px solid #609F00;
-//     box-shadow: none;
-// }
 
 @include  border-color-theme('.myselect :global(.Select-menu-outer)');
 @include  border-color-theme('.myselect:global(.is-open) :global(.Select-control)');
+@include  border-color-theme('.myselect:global(.is-focused) :global(.Select-control)');
 
 
 
@@ -113,4 +109,9 @@
 
 .myselect :global(.Select-control) :global(.Select-value){
     top: 5px;
+}
+
+.chevronIcon{
+    opacity: 0.75;
+    height: 9px;
 }

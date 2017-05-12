@@ -46,7 +46,6 @@ export class DeveloperTester extends React.Component {
     return (
       <div className={styles.container}>
         <MultiSelect {...myprops}></MultiSelect>
-        <i className={styles.imageThing} src={chevron}/>
       </div>
     );
   }
