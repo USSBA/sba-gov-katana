@@ -1,13 +1,73 @@
-.navbar {
-  // background-color: black;
+nav {
+  width: 100%;
+  background-color: #fff;
+  z-index: 10000000;
   a {
     text-decoration: none;
-  }
+    }
   @include grid-media( $sba-grid-large) {
     @include grid-column(12, $sba-grid-large);
     padding: 25px 0 10px;
   }
+  @include grid-media( $tablet-nav) {
+    top: 0;
+    position: fixed;
+    box-shadow: 0 1px 0 0 #EBEBEB;
+  }
+  @include grid-media( $mobile-nav) {
+    top: 0;
+    position: fixed;
+    box-shadow: 0 1px 0 0 #EBEBEB;
+  }
 }
+
+.alertIsActive nav {
+  @media only screen and (max-width: 1079px) {
+    top: 53px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    top: 89px;
+  }
+
+  @media only screen and (max-width: 506px) {
+    top: 113px;
+  }
+
+  @media only screen and (max-width: 305px) {
+    top: 156px;
+  }
+}
+
+body {
+    @include grid-media( $tablet-nav) {
+      padding-top: 74px;
+    }
+    @include grid-media( $mobile-nav) {
+      padding-top: 74px;
+    }
+
+}
+
+.alertIsActive body {
+  @media only screen and (max-width: 1079px) {
+    padding-top: 127px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    padding-top: 163px;
+  }
+
+  @media only screen and (max-width: 506px) {
+    padding-top: 187px;
+  }
+
+  @media only screen and (max-width: 305px) {
+    padding-top: 230px;
+  }
+}
+
+
 
 // nav {
 //   margin-top: 60px;
