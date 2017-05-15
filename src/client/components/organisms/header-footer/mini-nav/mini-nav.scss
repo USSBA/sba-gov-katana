@@ -1,5 +1,4 @@
 .miniNav {
-  // background-color: orange;
   margin-bottom: 12px;
   @include grid-column(9, $desktop-nav);
   float: right;
@@ -11,7 +10,6 @@
 
 .miniNav li {
   display: inline-block;
-  // background-color: lightgreen;
   margin-right: 12px;
   font-size: 14px;
   color: #757575;
