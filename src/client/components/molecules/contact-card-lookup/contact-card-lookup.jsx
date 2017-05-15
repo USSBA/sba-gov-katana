@@ -32,7 +32,7 @@ class ContactCardLookup extends React.Component {
           </div>
           <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(function(item, index) {
               return (
-                <div className={styles.card}>
+                <div id={"card-" + index} className={styles.card}>
                   { item.link ? <a className={styles.itemLink} href={item.link}>{item.title} <i className="fa fa-external-link-square" aria-hidden="true"></i></a> : null }
                   { item.streetAddress ? <div className={styles.itemData}>{item.streetAddress}</div> : null }
                   { item.city&&item.state&&item.zipCode ? <div className={styles.itemData}>{item.city}, {item.state} {item.zipCode}</div> : null }
