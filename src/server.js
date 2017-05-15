@@ -59,6 +59,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  console.log("Received request for " + req.originalUrl);
+  next();
+});
+
 app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*", "/devtest"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig),
@@ -103,10 +108,10 @@ app.get("/content/blogs.json", fetchBlogs);
 app.get("/content/disaster.json", fetchDisaster);
 
 import { getUserRoles } from "./controllers/user-roles.js";
-app.get("/content/:userId.json", getUserRoles);
+app.get("/content/:userId/roles.json", getUserRoles);
 
 import { getDrupalUserEmail } from "./controllers/user-email.js";
-app.get("/content/useremail/:userId.json", getDrupalUserEmail);
+app.get("/content/:userId/email.json", getDrupalUserEmail);
 
 import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/content/newsletter-registration.json", registerUserForNewsletter);

@@ -32,7 +32,7 @@ class MobileNav extends React.Component {
             </a>
           </span>
         </div>
-        <nav className={styles.mainNavNew + " " + (this.state.expanded
+        <div className={styles.mainNavNew + " " + (this.state.expanded
           ? styles.mainNavNewShow
           : "")}>
           <form className={styles.mobileSearchContainerNew}>
@@ -71,7 +71,7 @@ class MobileNav extends React.Component {
               Small Business Events
             </a>
           </div>
-        </nav>
+        </div>
       </div>
     );
   }

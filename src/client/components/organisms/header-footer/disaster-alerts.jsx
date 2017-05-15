@@ -36,8 +36,8 @@ class DisasterAlerts extends React.Component {
 
 DisasterAlerts.defaultProps = {
   disaster: {
-    visible: false,
-    description: ""
+    visible: true,
+    description: "Have you been affected by the Louisiana Flooding?"
   }
 }
 

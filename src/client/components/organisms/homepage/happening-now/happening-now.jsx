@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { isEmpty } from "lodash";
 
-import Slider from '../../atoms/carousel/carousel.jsx';
-import * as ContentActions from "../../../actions/content.js";
+import Slider from '../../../atoms/carousel/carousel.jsx';
+import SmallPrimaryButton from '../../../atoms/small-primary-button/small-primary-button.jsx';
+import * as ContentActions from "../../../../actions/content.js";
 import styles from "./happening-now.scss";
 
 const contentProperty = "happeningNow";
@@ -39,7 +40,7 @@ class HappeningNow extends React.Component {
           <Grid fluid>
             <Row>
               <Col sm={ 12 } xsHidden>
-              <p className={ styles.happeningNowTitle }>What's happening now.</p>
+              <h1 className={styles.happeningNowTitle}>What's happening now.</h1>
               </Col>
             </Row>
             <div className={ styles.happeningNowDesktop }>
@@ -66,7 +67,7 @@ class HappeningNow extends React.Component {
               <Row>
                 { items.map(function(item, i) {
                     return <Col key={ i } xsHidden sm={ mdSize }>
-                           <a href={ item.url } className={ "btn btn-default " + styles.happeningNowLearnMore }>LEARN MORE</a>
+                           <SmallPrimaryButton URL={ item.url } text="LEARN MORE"/>
                            </Col>;
                   }) }
               </Row>

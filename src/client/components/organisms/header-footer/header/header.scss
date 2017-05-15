@@ -1,65 +1,67 @@
-.navbar {
-  // background-color: black;
+nav {
+  width: 100%;
+  background-color: #fff;
+  z-index: 10000000;
   a {
     text-decoration: none;
-  }
+    }
   @include grid-media( $sba-grid-large) {
     @include grid-column(12, $sba-grid-large);
     padding: 25px 0 10px;
   }
+  @include grid-media( $tablet-nav) {
+    top: 0;
+    position: fixed;
+    box-shadow: 0 1px 0 0 #EBEBEB;
+  }
+  @include grid-media( $mobile-nav) {
+    top: 0;
+    position: fixed;
+    box-shadow: 0 1px 0 0 #EBEBEB;
+  }
 }
 
-// @media screen and (min-width: 768px){
+.alertIsActive nav {
+  @media only screen and (max-width: 1079px) {
+    top: 53px;
+  }
 
-//     .mobileHeaderContainerNew {
-//         display: none;
-//     }
+  @media only screen and (max-width: 767px) {
+    top: 89px;
+  }
 
-//     .headerNew {
-//         width:100%;
-//         padding-left: 7.3vw;
-//         padding-right: 7.3vw;
-//         background-color: white;
-//         height: 10vw;
-//         margin: auto;
-//         box-sizing: border-box;
-//         font-family: 'Source Sans Pro', sans-serif ;
-//         letter-spacing: -0.4px ;
-//     }
+  @media only screen and (max-width: 506px) {
+    top: 113px;
+  }
 
-//     /*NAVBAR CONTAINER*/
-//     .navbarNew {
-//         position: relative;
-//         height: 10vw;
-//         z-index: 12 ;
-//     }
+  @media only screen and (max-width: 305px) {
+    top: 156px;
+  }
+}
 
-//     .logoNew {
-//         margin-top: 3.3vw;
-//         margin-left: 3.13vw;
-//         width : 10vw;
-//         height: auto;
-//     }
+.mainContent {
+    @include grid-media( $tablet-nav) {
+      padding-top: 74px;
+    }
+    @include grid-media( $mobile-nav) {
+      padding-top: 74px;
+    }
+}
 
-// }
+.alertIsActive .mainContent {
+  @media only screen and (max-width: 1079px) {
+    padding-top: 127px;
+  }
 
-// @media screen and (max-width:767px) {
+  @media only screen and (max-width: 767px) {
+    padding-top: 163px;
+  }
 
-//     .mobileHeaderContainerNew {
-//         font-family: "Source Sans Pro";
-//         width: 100%;
-//         margin: 0;
-//         position: fixed;
-//         top: 0px;
-//         z-index: 100000;
-//     }
+  @media only screen and (max-width: 506px) {
+    padding-top: 187px;
+  }
 
-//     .mobileHeaderContainerNewWithDisasterCallout {
-//         font-family: "Source Sans Pro";
-//         width: 100%;
-//         margin: 0;
-//         position: absolute;
-//         top: auto;
-//         z-index: 100000;
-//     }
-// }
+  @media only screen and (max-width: 305px) {
+    padding-top: 230px;
+  }
+}

@@ -17,7 +17,7 @@ nav .pageLinkGroup {
 @include theme(money-green, '.pageLinkGroup li:first-child a', null, $money-green, null);
 @include theme(cobalt-blue, '.pageLinkGroup li:first-child a', null, $cobalt-blue, null);
 
-@include theme-hover(sba-blue, '.pageLinkGroup li:first-child a', null, $sba-blue-darkest, null);
+@include theme-hover(sba-blue, '.pageLinkGroup li:first-child a', null, $sba-blue-dark, null);
 @include theme-hover(byzantine, '.pageLinkGroup li:first-child a', null, $byzantine-dark, null);
-@include theme-hover(money-green, '.pageLinkGroup li:first-child a', null, $money-green-darkest, null);
+@include theme-hover(money-green, '.pageLinkGroup li:first-child a', null, $money-green-dark, null);
 @include theme-hover(cobalt-blue, '.pageLinkGroup li:first-child a', null, $cobalt-blue-dark, null);

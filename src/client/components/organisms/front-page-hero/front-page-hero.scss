@@ -1,0 +1,140 @@
+.purple .AccentBox {
+    background: #AB3EA0;
+}
+
+.green .AccentBox {
+    background: #609F00;
+}
+
+.blue .AccentBox {
+    background: #0F48AA;
+}
+@media screen and (min-width:768px) {
+    .Container {
+        position: relative;
+        margin-top: 5vw;
+    }
+
+    .Banner {
+        width: 85%;
+        height: 40vw;
+    }
+
+    .reverse .Banner {
+        position: relative;
+        width: 82%;
+        height: 40vw;
+        left: 18vw;
+    }
+
+    .Container p {
+        font-size: 5.2vw;
+        font-weight: 900;
+        padding-bottom: 2vw;
+        padding-left: 10.4vw;
+    }
+
+    .AccentBox {
+        position: absolute;
+        background: #0F48AA;
+        width: 36vw;
+        height: 18vw;
+        bottom: 15vw;
+        //left: 55.8vw;
+        right: 10.4vw;
+        z-index: 0;
+    }
+
+    .reverse .AccentBox {
+        left: 10.5vw;
+    }
+
+    .AccentBox ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .AccentBox li {
+        height: 6vw;
+        padding-left: 2vw;
+        font-size: 1.66vw;
+        line-height: 6vw;
+    }
+
+    .borderBox {
+        border-bottom: 0.1vw solid rgba(51,51,51,0.3);
+    }
+
+    .AccentBox img {
+        position: absolute;
+        width: 8.5vw;
+        height: 8.5vw;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    .AccentBox a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
+}
+@media screen and (max-width:767px) {
+    .Container {
+        margin-bottom: 54vw;
+    }
+
+    .Banner {
+        display: none;
+    }
+
+    .Container p {
+        font-size: 7.47vw;
+        font-weight: bold;
+        padding-bottom: 2vw;
+        padding-left: 12.53vw;
+    }
+
+    .AccentBox {
+        position: absolute;
+        background: #0F48AA;
+        width: 91.4vw;
+        margin-left: 4.3vw;
+        margin-right: 4.3vw;
+        height: 48vw;
+        z-index: 0;
+    }
+
+    .AccentBox ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .AccentBox li {
+        text-decoration: none;
+        height: 16vw;
+        padding-left: 7vw;
+        font-size: 5vw;
+        line-height: 16vw;
+    }
+
+    .borderBox {
+        border-bottom: 0.3vw solid rgba(51,51,51,0.3);
+    }
+
+    .AccentBox img {
+        position: absolute;
+        width: 25.9vw;
+        height: 25.9vw;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+
+    .AccentBox a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
+}

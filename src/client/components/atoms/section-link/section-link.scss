@@ -3,10 +3,10 @@ a.sectionLink {
   font-size: 19px;
   font-weight: 700;
   position: relative;
-
+  &:hover {
+    text-decoration: none;
+  }
   @include grid-media( $sba-grid-medium) {
-  // margin-left: 25px;
-  // padding-bottom: 15px;
   }
 }
 

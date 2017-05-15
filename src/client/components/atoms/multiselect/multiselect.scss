@@ -1,3 +1,117 @@
-.redBorder{
-    border  : 1px solid #E21C3D;
+.innerContainer {
+    position: relative;
+}
+
+.myselect {
+    border: none;
+    color: #1C2E36 !important; 
+}
+
+.myselect::-ms-expand {
+    /* for IE 11 */
+    display: none;
+}
+
+.myoption {
+    @include font-size($paragraph-font-sizes);
+    border: 1px solid $grey;
+    border-radius: 0;
+}
+
+.validationIcon {
+    right: 30px;
+}
+
+.has-success .label {
+    border: 1px solid #3c763d;
+}
+
+.myselect :global(.Select-control) {
+    border-radius: 0px;
+    border: 1px solid #666666;
+    height: 48px;
+}
+
+.redBorder :global(.Select-control) {
+    border-color: $crimson;
+}
+
+.myselect :global(.Select-control:focus) {
+    outline: none !important;
+    border: 1px solid $grey !important;
+    border-radius: 0px;
+    box-shadow: none !important;
+}
+
+.myselect :global(.Select-placeholder) {
+    line-height: 21px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.myselect:global(.is-focused) :global(.Select-control){
+    box-shadow: none;
+}
+
+
+.myselect:global(.Select--multi) :global(.Select-value){
+    background-color: $grey-lighter;
+    border: 1px solid #666666 !important;
+    color: #333333 !important;
+}
+
+.myselect :global(.Select-value-icon) {
+    border-right: 1px solid #666666 !important;
+}
+
+.myselect :global(.Select-value-icon:hover) {
+    background-color: white !important;
+    background-color: lightgray !important;
+    color: #333333 !important;
+}
+
+
+.myselect :global(.Select-menu-outer) {
+    border-width: 1px;
+    border-top: none;
+    border-radius: 0;
+}
+
+.myselect :global(.Select-menu-outer) div:hover {
+    background-color: $grey-lighter;
+}
+
+.myselect :global(.Select-option):global(.is-focused) {
+    background-color: inherit;
+}
+
+
+@include  border-color-theme('.myselect :global(.Select-menu-outer)');
+@include  border-color-theme('.myselect:global(.is-open) :global(.Select-control)');
+@include  border-color-theme('.myselect:global(.is-focused) :global(.Select-control)');
+
+
+
+
+.myselect :global(.Select-input) input[role="combobox"] {
+    border: 0px;
+}
+
+.myselect :global(.Select-arrow-zone) i {
+    width: 100%;
+}
+
+.myselect:global(.Select--single) :global(.Select-clear-zone) {
+    width: 0px;
+}
+
+.myselect :global(.Select-control) :global(.Select-value){
+    top: 5px;
+}
+
+.chevronIcon{
+    opacity: 0.75;
+    height: 9px;
 }

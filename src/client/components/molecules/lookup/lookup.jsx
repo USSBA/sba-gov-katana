@@ -37,9 +37,7 @@ class Lookup extends React.Component {
 
   render() {
     if (this.props.type === "contacts") {
-      if (this.props.subtype === "State registration") {
         return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title}/>);
-      }
     }
     return (
       <div></div>

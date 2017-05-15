@@ -1,11 +1,6 @@
-@import "../../../styles/buttons.scss";
-
 @media screen and (min-width:768px) {
     .blogSection {
-        margin-top: 5vw;
-        margin-bottom: 5vw;
-        margin-left: 10.4vw;
-        margin-right: 10.4vw;
+        margin: 5vw 10.4vw;
         padding: 0;
     }
 
@@ -14,7 +9,6 @@
         margin-left: -15px;
         margin-right: -15px;
     }
-
 
     .blogsImage {
         width: 38.5vw;
@@ -31,7 +25,7 @@
         margin-bottom: 2vw;
     }
 
-    .blogTitleContainer{
+    .blogTitleContainer {
         margin-top: 1.5vw;
         width: 38.5vw;
     }
@@ -54,21 +48,6 @@
         font-size: 1.25vw;
         line-height: 1.88vw;
     }
-
-    .blueBtn {
-        composes: homeBtnBlue;
-        height: 3.33vw;
-        width: 11.8vw;
-        font-size: 1.25vw;
-        line-height: 1.59vw;
-        text-align: center;
-        padding-top: 0.833vw;
-        padding-bottom: 0.833vw;
-        font-weight: 900;
-        margin-top: 2vw;
-    }
-
-
 }
 @media screen and (max-width:767px) {
     .sectionTitle {
@@ -83,7 +62,6 @@
     a:hover {
         text-decoration: none;
     }
-
 
     .singleBlog {
         border: 1px solid #C4C4C4;
