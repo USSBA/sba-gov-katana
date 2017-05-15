@@ -7,25 +7,41 @@
     background-image: url('./corner-graphic.png');
     background-position: bottom right;
     background-repeat: no-repeat;
-    padding: 30px 30px 30px 30px;
+    padding: 40px 40px 40px 40px;
+	width: 455px;
 }
 
 .message {
+	@include font-size($paragraph-font-sizes);
 	margin-bottom: 30px;
-	font-size: 25px;
-	line-height: 30px;
+	//font-family: $serif-font;
+	font-family: Merriweather;
+	font-style: italic;
+	font-size: 20px;
+	line-height: 25px;
 }
 
 .title {
+	@include font-size($h1-font-sizes);
 	@include grid-media($sba-grid-small){
-		font-size: 32px;
+		font-size: 34px;
 	}
 }
 
 .button {
+	font-size: 12px;
+	margin-right: 20px;
+	float: left;
 	@include grid-media($sba-grid-small){
 		width: 100%;
 	}
 }
+
+.buttonContainer:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
 
 

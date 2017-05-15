@@ -1,12 +1,28 @@
 import React from 'react';
 import styles from './callout.scss';
-import LargeInversePrimaryButton from '../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx'
+import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
 
- const Callout = (props) =>
-  <div className={styles.callout}>
-  <h2 className={styles.title}>{ props.title }</h2>
-  <p className={styles.message}>{ props.message }</p>
-  <LargeInversePrimaryButton classname={styles.button} text={ props.button } />
-  </div>;
+class Callout extends React.Component {
+ clickHandler(){
 
+ }
+ render(){
+
+   return (
+       <div className={styles.callout}>
+          <h2 className={styles.title}>{ this.props.title }</h2>
+          <p className={styles.message}>{ this.props.message }</p>
+          <div className={styles.buttonContainer}>
+              {
+               this.props.buttons.map((item, index)=>{
+                   return (<div className={styles.button} key={index}><SmallInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
+               })
+              }
+           </div>
+       </div>
+   ) ;
+ }
+
+
+ }
 export default Callout;

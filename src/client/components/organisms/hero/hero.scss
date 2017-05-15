@@ -4,24 +4,25 @@ $hero-container-grid: (
 );
 
 .heroContainer {
-	@include grid-column(12, $hero-container-grid)
+	@include grid-column(12, $hero-container-grid);
 	position: relative;
 }
 
 .callout {
 	@include grid-media($sba-grid-small){
-		@include grid-column(6)
+		@include grid-column(6);
 		position: relative;
 		bottom: 100px;
 	}
 	@include grid-media($sba-grid-medium){
-		@include grid-column(6)
+		@include grid-column(6);
 			position: absolute;
 			top: 50%;
-			transform: translateY(-50%);
+			transform: translate(-10%, -50%);
+
 	}
 	@include grid-media($sba-grid-large){
-		@include grid-column(5)
+		@include grid-column(5);
 	}
 }
 
@@ -30,63 +31,20 @@ $hero-container-grid: (
 		display: none;
 	}
 	@include grid-media($sba-grid-medium){
-		@include grid-column(11)
+		@include grid-column(11);
 		@include grid-push(1)
 	}
 	@include grid-media($sba-grid-large){
-		@include grid-column(10)
+		@include grid-column(10);
 		@include grid-push(2)
 	}
 }
 
 .heroMobileImage {
 	@include grid-media($sba-grid-small){
-		width: 100%
+		width: 100%;
 	}
 	@include grid-media($sba-grid-medium){
 		display: none;
 	}
 }
-
-
-
-
-// $hero-grid-medium: (
-//   columns: 12,
-//   gutter: 0px,
-//   media: "(min-width: $medium-screen)",
-// );
-
-// $hero-grid-small: (
-//   columns: 6,
-//   gutter: 40px,
-//   media: "(max-width: $small-screen)",
-// );
-
-
-// .hero {
-//   @include grid-column(6, $sba-grid-small);
-//   @include grid-collapse;
-//   @include grid-media( $sba-grid-medium) {
-//   @include grid-column(12);
-//   display: flex;
-//   align-items:center;
-//   }
-// }
-
-// img {
-//   @include grid-column(6, $sba-grid-small);
-//   @include grid-collapse;
-//   @include grid-media( $sba-grid-medium) {
-//   @include grid-column(10);
-//   @include grid-push(2)
-//   }
-// }
-
-// .callout {
-//   @include grid-column(6, $hero-grid-small);
-//   @include grid-media( $hero-grid-medium) {
-//   @include grid-column(5);
-//   @include grid-shift(-12)
-//   }
-// }
