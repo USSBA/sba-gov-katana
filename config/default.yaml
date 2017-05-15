@@ -20,7 +20,7 @@ drupal:
     endpoint: rest
 drupal8:
     hostname: http://tanto
-    useLocalContacts: false
+    useLocalContacts: true
 server:
     port: 3000
 email:
