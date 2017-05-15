@@ -18,22 +18,3 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
-
-.editBtn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 22px;
-  border: 1px solid #666666;
-  background-color: white;
-}
-
-.submitBtn{
-  composes: continueBtn from "./lender-match.scss";
-  width: 100%;
-  margin-top: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  float: none;
-}

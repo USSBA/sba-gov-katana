@@ -10,6 +10,7 @@ import {logEvent} from "../../../../services/analytics.js";
 import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../../../services/page-validator-helpers.js';
 
 import TextInput from '../../../atoms/text-input/text-input.jsx';
+import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
 import styles from './lender-match.scss';
 
 class ContactInfoForm extends React.Component {
@@ -33,13 +34,12 @@ class ContactInfoForm extends React.Component {
     window.scrollTo(0, 0);
   }
 
-
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-      let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
-      if(validationState[name] === "error"){
-        logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
-      }
-      return validationState;
+    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null);
+    if (validationState[name] === "error") {
+      logEvent({"category": "Lender Match Form", "action": "Error Event", "label": name});
+    }
+    return validationState;
   }
 
   validateFields(fields, defaultWhenNotSuccessful) {
@@ -96,6 +96,7 @@ class ContactInfoForm extends React.Component {
   }
 
   render() {
+    console.log("this.props.backButtonText", this.props.backButtonText);
     return (
       <div>
         <form id="lender-match-contact-form" ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
@@ -103,9 +104,7 @@ class ContactInfoForm extends React.Component {
           <TextInput id="lender-match-phone" errorText={constants.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" onChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} validationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
           <TextInput id="lender-match-email" errorText={constants.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" onChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} validationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
           <TextInput id="lender-match-email-check" hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} onChange={this.handleChange.bind(this)} validationState={this.state.validStates.contactSecondaryEmailAddress}/>
-          <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
-            CONTINUE
-          </button>
+          <FormPageButtons backButtonText="EXIT" backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
         </form>
       </div>
     );

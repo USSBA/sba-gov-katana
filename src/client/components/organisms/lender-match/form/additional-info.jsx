@@ -9,6 +9,7 @@ import {logEvent} from "../../../../services/analytics.js";
 
 
 import CheckBox from '../../../atoms/checkbox/checkbox.jsx';
+import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
 import styles from './lender-match.scss';
 import addInfoStyles from './additional-info.scss'
 
@@ -58,15 +59,12 @@ export class AdditionalInfoForm extends React.Component {
       <div>
         <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
           <FormGroup>
-            <label className={addInfoStyles.label}>Select all that apply to you:
-            </label>
+            <h6 className={addInfoStyles.label}>Select all that apply to you:</h6>
             <CheckBox autoFocus={true} name="hasWrittenPlan" label="I have written a business plan" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasWrittenPlan}/>
             <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasFinancialProjections}/>
             <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.isGeneratingRevenue}/>
           </FormGroup>
-          <button className={styles.continueBtn} type="submit">
-            CONTINUE
-          </button>
+          <FormPageButtons backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} />
         </form>
       </div>
     )

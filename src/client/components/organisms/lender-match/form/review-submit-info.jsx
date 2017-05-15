@@ -10,6 +10,7 @@ import * as LocationChangeActions from '../../../../actions/location-change.js';
 
 import styles from './review-submit.scss'
 import ReviewSection from './review-page-helpers.jsx';
+import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
 
 class ReviewSubmitInfoForm extends React.Component {
   constructor() {
@@ -59,7 +60,7 @@ class ReviewSubmitInfoForm extends React.Component {
         <LoanSection loanData={ this.props.loanData } onEditClick={ () => this.handleEditClick("loan") } />
         <AdditionalSection additionalInfoData={ this.props.additionalInfoData } onEditClick={ () => this.handleEditClick("additional") } />
         <form ref={ (input) => this.reviewSubmitInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <button className={ styles.submitBtn } type="submit"> SUBMIT </button>
+          <FormPageButtons showBackButton={false} continueButtonHandler={this.handleSubmit.bind(this)}/>
         </form>
       </div>
       );
