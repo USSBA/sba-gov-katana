@@ -11,6 +11,7 @@ import * as LocationChangeActions from '../../../../actions/location-change.js';
 import styles from './review-submit.scss'
 import ReviewSection from './review-page-helpers.jsx';
 import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
+import SmallGreySecondaryButton from "../../../atoms/small-grey-secondary-button/small-grey-secondary-button.jsx"
 
 class ReviewSubmitInfoForm extends React.Component {
   constructor() {
@@ -69,7 +70,8 @@ class ReviewSubmitInfoForm extends React.Component {
 }
 
 const EditButton = (props) => {
-  return (<button autoFocus={props.autofocus} className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
+  // return (<button autoFocus={props.autofocus} className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
+  return (<SmallGreySecondaryButton extraClassName={styles.editButton} autoFocus={props.autofocus} onClick={ props.onEditClick } text="EDIT"/>);
 };
 
 const ContactSection = (props) => {

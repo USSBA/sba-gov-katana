@@ -18,3 +18,13 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
+.editButton{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.7em;
+    border-width: 1px;
+    font-weight: normal;
+    // padding: .5em .75em;
+}
