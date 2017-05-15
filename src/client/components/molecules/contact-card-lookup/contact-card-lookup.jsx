@@ -8,21 +8,21 @@ class ContactCardLookup extends React.Component {
   constructor() {
     super();
     this.state = {
-      displayedItems: []
+      displayedItems: [],
+      noContacts: false
     }
   }
 
   handleChange(selectValue) {
-    console.log("handleChange", this.props);
-    console.log("selectValue", selectValue);
     let stateName = _.find(states, {value: selectValue});
-    console.log("stateName", stateName);
+    //console.log("stateName", stateName);
     let newDisplayedItems = _.filter(this.props.items, {stateServed: stateName.name});
-    this.setState({displayedItems: newDisplayedItems});
+    this.setState({displayedItems: newDisplayedItems}, ()=>{
+      this.state.displayedItems.length < 1 ? this.setState({noContacts: true}) : this.setState({noContacts: false})
+    });
   }
 
   render() {
-    console.log("ContactCardLookup render", this.props);
     return (
       <div>
         <div className={styles.container}>
@@ -32,11 +32,16 @@ class ContactCardLookup extends React.Component {
           </div>
           <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(function(item, index) {
               return (
-                <p key={index}>
-                  {JSON.stringify(item)}
-                </p>
+                <div className={styles.card}>
+                  { item.link ? <a className={styles.itemLink} href={item.link}>{item.title} <i className="fa fa-external-link-square" aria-hidden="true"></i></a> : null }
+                  { item.streetAddress ? <div className={styles.itemData}>{item.streetAddress}</div> : null }
+                  { item.city&&item.state&&item.zipCode ? <div className={styles.itemData}>{item.city}, {item.state} {item.zipCode}</div> : null }
+                </div>
               );
             })}</div>
+
+          { this.state.noContacts ? <div className={styles.noContacts}>No contacts found for this State</div> : null }
+
         </div>
       </div>
     )
