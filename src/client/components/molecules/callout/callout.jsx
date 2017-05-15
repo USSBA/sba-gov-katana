@@ -3,9 +3,6 @@ import styles from './callout.scss';
 import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
 
 class Callout extends React.Component {
- clickHandler(){
-
- }
  render(){
 
    return (
