@@ -39,33 +39,37 @@ nav {
   }
 }
 
-body {
+.mainContent {
     @include grid-media( $tablet-nav) {
       padding-top: 74px;
     }
     @include grid-media( $mobile-nav) {
       padding-top: 74px;
     }
-
 }
 
-.alertIsActive body {
+.alertIsActive .mainContent {
   @media only screen and (max-width: 1079px) {
     padding-top: 127px;
+    background-color: red;
   }
 
   @media only screen and (max-width: 767px) {
     padding-top: 163px;
+    background-color: red;
   }
 
   @media only screen and (max-width: 506px) {
     padding-top: 187px;
+    background-color: red;
   }
 
   @media only screen and (max-width: 305px) {
     padding-top: 230px;
+    background-color: red;
   }
 }
+
 
 
 

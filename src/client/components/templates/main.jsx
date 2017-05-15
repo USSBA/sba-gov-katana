@@ -5,6 +5,8 @@ import cookie from 'react-cookie';
 import DisasterAlerts from '../organisms/header-footer/disaster-alerts.jsx'
 import ModalController from '../modal-controller.jsx';
 
+import styles from '../organisms/header-footer/header/header.scss';
+
 class Main extends React.Component {
   constructor(props) {
     super();
@@ -35,10 +37,11 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={ this.state.disasterAlertIsVisible ? styles.alertIsActive : ""}>
         <DisasterAlerts disasterAlertIsVisible={this.state.disasterAlertIsVisible} onClose={this.handleClose.bind(this)}/>
         <Header />
-        {this.props.children}
+        <div className={styles.mainContent}>{this.props.children}</div>
+
          <Footer/>
         <ModalController/>
       </div>
