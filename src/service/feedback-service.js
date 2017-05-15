@@ -3,7 +3,7 @@ import _ from "lodash";
 import moment from "moment";
 import uuid from "uuid";
 import UserService from "../service/user-service.js";
-import jsonToCsv from "json2csv";
+import { formatFeedbackData } from "../util/formatter.js";
 
 function saveFeedback(feedback) {
   const newFeedback = _.assign({}, feedback, {
@@ -40,11 +40,7 @@ function getFeedback(sessionId) {
           raw: true
         }).then((data) => {
           if (data && data.length > 0) {
-            const fields = _.without(_.keys(data[0]), "sourceIpAddress");
-            return jsonToCsv({
-              data: data,
-              fields: fields
-            });
+            return formatFeedbackData(data);
           }
           return "";
 

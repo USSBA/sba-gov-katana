@@ -2,8 +2,13 @@ var validData = "<p><strong>Strong</strong></p>\r\n\r\n<p><em>Italic</em></p>\r\
 
 var exampleXSSAttack = "<script>alert(document.cookie)</script>";
 
+import feedbackData from "./feedback.json"
+import fs from "fs";
+let formattedFeedbackData = fs.readFileSync("test/mocha/server/util/formatted-feedback.csv", "utf-8");
+
 import {
-  sanitizeTextSectionHtml
+  sanitizeTextSectionHtml,
+  formatFeedbackData
 } from "../../../../src/util/formatter.js";
 
 describe("#Formatter", function() {
@@ -29,6 +34,14 @@ describe("#Formatter", function() {
     it("should not touch the data because it is all valid", function(done) {
       let clean = sanitizeTextSectionHtml(validData);
       clean.should.equal(validData);
+      done();
+    })
+  });
+
+  describe("#formatFeedbackData", function() {
+    it("should return nothing when there is only a script tag", function(done) {
+      let formatted = formatFeedbackData(feedbackData)
+      formatted.should.equal(formattedFeedbackData);
       done();
     })
   });
