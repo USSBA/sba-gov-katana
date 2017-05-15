@@ -40,12 +40,12 @@ nav {
 }
 
 .mainContent {
-    @include grid-media( $tablet-nav) {
-      padding-top: 74px;
-    }
-    @include grid-media( $mobile-nav) {
-      padding-top: 74px;
-    }
+  @include grid-media( $tablet-nav) {
+    padding-top: 74px;
+  }
+  @include grid-media( $mobile-nav) {
+    padding-top: 74px;
+  }
 }
 
 .alertIsActive .mainContent {
