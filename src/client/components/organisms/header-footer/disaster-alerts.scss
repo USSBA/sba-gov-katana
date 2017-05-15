@@ -1,9 +1,29 @@
+$wrapper-tablet-height: 55px;
+$wrapper-mobile-height: 113px;
+$mobile-nav-height: 53px;
+
 .wrapper {
   position: static;
-  @include grid-media($sba-grid-small) {
-    position: fixed;
-    z-index: 100000000;
+  width:100%;
+  z-index: 1000000000;
+  // top: 0;
+  // left: 0;
+  @include grid-media($tablet-nav) {
+  position: fixed;
+  top: 0;
+  left: 0;
   }
+  @include grid-media($mobile-nav) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  }
+}
+
+.wrapper:after {
+  content: '';
+  display: block;
+
 }
 
 .alert {
