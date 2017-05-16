@@ -10,28 +10,28 @@ export const HowItWorksSection = (props) => <div className={ styles.section }>
                                               <h2>How it works.</h2>
                                               <div className={ styles.step }>
                                                 <span className={ styles.numbers }>1</span>
-                                                <img src={ howItWorksImg1 } alt="Hands typing on a laptop." />
+                                                <img className={ styles.img } src={ howItWorksImg1 } alt="Hands typing on a laptop." />
                                                 <h3>Describe your needs</h3>
                                                 <hr/>
                                                 <p>Answer a few questions about your business in as little as five minutes.</p>
                                               </div>
                                               <div className={ styles.step }>
                                                 <span className={ styles.numbers }>2</span>
-                                                <img src={ howItWorksImg2 } alt="A person reading email on a smartwatch." />
+                                                <img className={ styles.img } src={ howItWorksImg2 } alt="A person reading email on a smartwatch." />
                                                 <h3>Get matched in 2 days</h3>
                                                 <hr/>
                                                 <p>Receive an email with contact information of lenders who express interest in your loan.</p>
                                               </div>
                                               <div className={ styles.step }>
                                                 <span className={ styles.numbers }>3</span>
-                                                <img src={ howItWorksImg3 } alt="Two people in discussion around a conference table." />
+                                                <img className={ styles.img } src={ howItWorksImg3 } alt="Two people in discussion around a conference table." />
                                                 <h3>Talk to lenders</h3>
                                                 <hr/>
                                                 <p>Compare rates, terms, fees, and more.</p>
                                               </div>
                                               <div className={ styles.step }>
                                                 <span className={ styles.numbers }>4</span>
-                                                <img src={ howItWorksImg4 } alt="A piggy bank." />
+                                                <img className={ styles.img } src={ howItWorksImg4 } alt="A piggy bank." />
                                                 <h3>Apply for a loan</h3>
                                                 <hr/>
                                                 <p>Submit loan applications and paperwork. You're well on your way to securing a business loan!</p>

@@ -1,12 +1,33 @@
 .section {
     @include grid-column(12)
+    margin-top: 60px;
 }
 
 .step {
-    @include grid-column(3)
-    position: relative;
-    height: 20px;
+    @include grid-media($sba-grid-small) {
+        @include grid-column(6)
+        position: relative;
+        margin-top: 83px;
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(3)
+        position: relative;
+        margin-top: 83px;
+        & .step:nth-child(odd){
+            margin-top: 183px;
+        }
+    }
 }
+
+.img {
+    width: 100%
+}
+
+
+// .imageContainer {
+//     @include grid-column(3)
+//     position: relative;
+// }
 
 // .step:nth-child(even) {
 //     padding-top: 40px;
@@ -17,9 +38,10 @@
     opacity: 0.4;
     color: #609F00;
     font-weight: 900;
-    position: relative;
-    bottom: -79px;
-    right: -30px;
+    position: absolute;
+    line-height: 75px;
+    top: -59px;
+    // right: -30px;
 }
 
 
