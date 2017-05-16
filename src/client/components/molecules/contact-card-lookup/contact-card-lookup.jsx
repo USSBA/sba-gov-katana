@@ -1,7 +1,6 @@
 import React from "react"
 import styles from "./contact-card-lookup.scss";
 import states from "../../../services/us-states.json";
-import SimpleSelect from "../../atoms/simple-select/simple-select.jsx";
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 
 class ContactCardLookup extends React.Component {
@@ -49,7 +48,6 @@ class ContactCardLookup extends React.Component {
       multi: false,
       onFocus: this.handleFocus.bind(this)
     };
-    // <SimpleSelect id="lookup-select" options={states} onChange={this.handleChange.bind(this)}/>
     return (
       <div>
         <div className={styles.container}>
