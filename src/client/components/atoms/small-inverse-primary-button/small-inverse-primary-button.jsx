@@ -1,13 +1,7 @@
 import React from 'react';
+import ButtonBase from "../button-base/button-base.jsx"
 import styles from './small-inverse-primary-button.scss';
 
- const SmallInversePrimaryButton = (props) =>
-		<button id={props.id}
-		        className={ styles.SmallInversePrimaryButton + " " + (props.extraClassName ? props.extraClassName : "")} 
-		        href={ props.URL }
-		        onClick={props.onClick}
-		        disabled={props.disabled}>
-		        { props.text }
-		</button>;
+const SmallInversePrimaryButton = (props) => <ButtonBase {...props} buttonClassName={styles.SmallInversePrimaryButton}/>;
 
 export default SmallInversePrimaryButton;
