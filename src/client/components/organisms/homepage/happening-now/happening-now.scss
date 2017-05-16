@@ -19,7 +19,7 @@
 
 .happeningNowItemTitle{
     color: black;
-    font-size: 1.2vw;
+    @include font-size($h5-font-sizes);
     font-weight: 700;
     padding-top: 1vw;
     padding-bottom: 1vw;
@@ -33,7 +33,7 @@
 }
 
 .happeningNowTitleMobile{
-    font-size: 7.47vw;
+    @include font-size($h5-font-sizes);
     // line-height: 8vw;
     font-weight: bold;
     padding-bottom: 2vw;
