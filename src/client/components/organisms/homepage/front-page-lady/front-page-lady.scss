@@ -1,43 +1,37 @@
-@media screen and (min-width:768px){
 
+
+@media screen and (min-width: map-get($breakpoints, 'medium')) {
     .container {
         position: relative;
     }
-
     .hero {
         width: 100%;
     }
-
     .mobileHero {
         display: none;
     }
-
     .mobileTriangle {
         display: none;
     }
-
     .box {
         position: absolute;
         background: $sba-blue;
         width: 38.6vw;
-        // margin-top: 10%;
         padding-top: 40px;
         padding-bottom: 50px;
         padding-left: 4vw;
         padding-right: 4vw;
-        top: 50%;
-        bottom: 50%;
+        top: 6%;
+        bottom: 13%;
         left: 10.4vw;
     }
-
     .title {
         font-size: 5vw;
         font-weight: 900;
-        line-height:5vw;
+        line-height: 5vw;
         color: #FFFFFF;
         margin-bottom: 1.4vw;
     }
-
     .text {
         font-size: 1.3vw;
         line-height: 1.9vw;
@@ -45,36 +39,38 @@
         color: #FFFFFF;
         margin-bottom: 2.2vw;
     }
-
     .triangle {
         position: absolute;
         width: 11.6vw;
         height: 11.6vw;
-        bottom:0;
-        right:0;
+        bottom: 0;
+        right: 0;
     }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (min-width: map-get($breakpoints, 'large')) {
+    .box {
+        top: 10%;
+        bottom: 24%;
+    }
+}
+
+@media screen and (max-width: map-get($breakpoints, null)) {
     .hero {
         display: none;
     }
-
     .triangle {
         display: none;
     }
-
     .mobileHero {
         width: 100%;
         height: 90vw;
     }
-
     .container {
         // margin-top: 16vw; //matches the height of mobileMainHeaderNew
-        height:153vw;
-        width:100%;
+        height: 153vw;
+        width: 100%;
     }
-
     .box {
         background: $sba-blue;
         z-index: 0;
@@ -88,30 +84,25 @@
         padding-left: 8.5vw;
         padding-right: 8.5vw;
     }
-
     .title {
         font-size: 12vw;
         font-weight: 900;
-        line-height:12vw;
+        line-height: 12vw;
         color: #FFFFFF;
         margin-bottom: 3vw;
     }
-
     .text {
         font-size: 4.3vw;
         color: #FFFFFF;
         margin-bottom: 4.3vw;
         line-height: 6vw;
     }
-
     .mobileTriangle {
         position: absolute;
         z-index: -1;
         width: 25.9vw;
         height: 25.9vw;
-        bottom:0;
-        right:0;
+        bottom: 0;
+        right: 0;
     }
-
-
 }
