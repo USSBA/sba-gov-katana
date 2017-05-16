@@ -17,7 +17,7 @@ class DesktopNav extends React.Component {
 
   render() {
     return (
-      <div className={styles.desktopNav}>
+      <div id="desktop-nav" className={styles.desktopNav}>
           <MainLogo/>
           <MiniNav/>
           <MainMenu data={this.props.mainMenuData}/>

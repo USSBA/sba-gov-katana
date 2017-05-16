@@ -52,7 +52,22 @@ class MainMenu extends React.Component {
     let menuItems = [];
     if (this.props.data) {
       menuItems = this.props.data.map((item, index) => {
-        return <SubMenu key={index} shown={index === this.state.currentlyFocusedTopLevelMenu} data={item} onFocus={(event) => this.handleFocus(event)} menuId={index} onTitleMouseOver={(event) => this.handleTitleMouseOver(index, event)} onMenuMouseOut={(event) => this.onMenuMouseOut(index, event)} onSkipToNext={(event) => this.handleSkipToNext(index, event)} hasNext={index !== this.props.data.length - 1} onFinalBlur={(event) => this.handleFinalBlur(event)} autoFocusOnTitle={index === this.state.currentlyFocusedTopLevelMenu} onSectionLinkKeyDown={(event) => this.handleKeyDown(event)}/>
+        let submenuProps = {
+          id: "sub-menu-" + index,
+          key: index,
+          shown: index === this.state.currentlyFocusedTopLevelMenu,
+          data: item,
+          onFocus: (event) => this.handleFocus(event),
+          menuId: index,
+          onTitleMouseOver: (event) => this.handleTitleMouseOver(index, event),
+          onMenuMouseOut: (event) => this.onMenuMouseOut(index, event),
+          onSkipToNext: (event) => this.handleSkipToNext(index, event),
+          hasNext: index !== this.props.data.length - 1,
+          onFinalBlur: (event) => this.handleFinalBlur(event),
+          autoFocusOnTitle: index === this.state.currentlyFocusedTopLevelMenu,
+          onSectionLinkKeyDown: (event) => this.handleKeyDown(event)
+        };
+        return <SubMenu {...submenuProps}/>
       });
     } else {
       menuItems.push(
@@ -61,8 +76,8 @@ class MainMenu extends React.Component {
     }
 
     return (
-      <div role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainMenu}>
-        <ul>
+      <div id="main-menu" role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainMenu}>
+        <ul >
           {menuItems}
         </ul>
       </div>
