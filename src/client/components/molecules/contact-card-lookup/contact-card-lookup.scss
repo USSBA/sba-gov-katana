@@ -1,15 +1,12 @@
 .container{
   border: 2px solid $grey-light;
-  overflow: auto;
+  overflow: visible;
 }
 
 .selectContainer{
     margin: auto;
     width: 42%;
     margin-bottom: 30px;
-}
-
-.dataContainer{
 }
 
 .title{
@@ -32,16 +29,11 @@
 
 .card {
 	border: 2px solid #C4C4C4;
-	@include grid-column(12)
+    width: 85%;
 	padding: 20px;
-	margin-bottom: 30px;
+	margin: 30px auto;
 
 }
-
-.dataTitle {
-
-}
-
-.dataLink {
-
+.card i{
+    margin-left: 5px;
 }

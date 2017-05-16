@@ -6,11 +6,15 @@ import styles from './multiselect.scss';
 import _ from "lodash";
 import chevron from "../../../../../public/assets/svg/chevron.svg";
 
-
 class MultiSelectBox extends React.Component {
   handleChange(newValue) {
-    if (newValue.length <= this.props.maxValues) {
-      this.props.onChange(_.map(newValue, 'value').join(","));
+    if (this.props.multi) {
+      if (newValue.length <= this.props.maxValues) {
+        this.props.onChange(_.map(newValue, 'value').join(","));
+      }
+
+    } else {
+      this.props.onChange(newValue);
     }
   }
   handleBlur() {
@@ -33,28 +37,32 @@ class MultiSelectBox extends React.Component {
   }
   render() {
 
-    let myValue = this.props.multi ? (this.props.value ?
-      this.props.value.split(",") : []) : this.props.value;
-    let errorMessage = this.props.validationState == 'error' ?
-      <FormErrorMessage errorText={this.props.errorText} /> :
-      undefined;
-    let errorClass = this.props.validationState == 'error' ?
-      styles.redBorder :
-      "";
+    let myValue = this.props.multi
+      ? (this.props.value
+        ? this.props.value.split(",")
+        : [])
+      : this.props.value;
+    let errorMessage = this.props.validationState == 'error'
+      ? <FormErrorMessage errorText={this.props.errorText}/>
+      : undefined;
+    let errorClass = this.props.validationState == 'error'
+      ? styles.redBorder
+      : "";
     let arrowRenderer = () => {
       return (<img className={styles.chevronIcon} src={chevron}/>);
     };
-    let clearRenderer = this.props.multi ? undefined : () => {
-      return (<div/>);
-    };
+    let clearRenderer = this.props.multi
+      ? undefined
+      : () => {
+        return (<div/>);
+      };
     return (
       <div>
         <label>
           {this.props.label}
         </label>
         <div className={styles.errorClass}>
-          <ReactSelect className={errorClass + " " + styles.myselect } menuBuffer={10} tabSelectsValue={false} multi={this.props.multi} autoBlur={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={myValue} options={this.props.options} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}
-              arrowRenderer={arrowRenderer} clearRenderer={clearRenderer} searchable={this.props.multi} />
+          <ReactSelect className={errorClass + " " + styles.myselect} menuBuffer={10} tabSelectsValue={false} multi={this.props.multi} autoBlur={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={myValue} options={this.props.options} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)} arrowRenderer={arrowRenderer} clearRenderer={clearRenderer} searchable={this.props.multi}/>
         </div>
         {errorMessage}
 
@@ -64,7 +72,8 @@ class MultiSelectBox extends React.Component {
 }
 
 MultiSelectBox.defaultProps = {
-  multi: true
+  multi: true,
+  maxValues: 3
 }
 
 export default MultiSelectBox;
