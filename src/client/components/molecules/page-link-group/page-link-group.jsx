@@ -5,19 +5,19 @@ import PageLink from "../../atoms/page-link/page-link.jsx";
 class PageLinkGroup extends React.Component {
 
   makePageLink(item, index) {
-    return (<PageLink key={index+1} text={item.text} url={item.url} onBlur={this.props.onBlur}/>);
+    return (<PageLink id={this.props.id+"-"+index} key={index+1} text={item.text} url={item.url} onBlur={this.props.onBlur}/>);
   }
   render() {
     let header = this.props.title
       ? (
         <li key={0}>
-            <a tabIndex="0" href={this.props.titleLink} onBlur={this.props.onBlur}>{this.props.title}</a>
+            <a tabIndex="0" href={this.props.titleLink} onBlur={this.props.onBlur} id={this.props.id+"-title"}>{this.props.title}</a>
         </li>
       )
       : undefined;
     let links = this.props.links.map(this.makePageLink.bind(this));
     return (
-      <ul className={styles.pageLinkGroup}>
+      <ul id={this.props.id} className={styles.pageLinkGroup}>
         {header}
         {links}
       </ul>
