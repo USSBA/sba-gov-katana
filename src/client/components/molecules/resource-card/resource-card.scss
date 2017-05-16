@@ -1,0 +1,21 @@
+.resource {
+    @include grid-column(12);
+    background: #EBEBEB;
+    padding: 20px 30px 35px;
+    margin-bottom: 20px;
+}
+
+// Tablet
+@media (min-width: 768px) {
+    .resource {
+        @include grid-column(4);
+        margin-bottom: 0;
+    }
+}
+// Desktop
+@media (min-width: 1080px) {
+    .resource {
+        @include grid-column(4);
+        margin-bottom: 0;
+    }
+}

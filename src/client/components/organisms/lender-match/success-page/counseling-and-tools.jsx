@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import *  as ContentActions from '../../../../actions/content.js';
 import { logEvent } from "../../../../services/analytics.js";
+import SmallPrimaryButton from "../../../atoms/small-primary-button/small-primary-button.jsx"
 
 
 import CounselorMap from './counselor-map.jsx';
@@ -114,7 +115,7 @@ export class DynamicCounselingAndTools extends React.Component {
         <div className={ styles.counselingRow }>
           <div className={ styles.counselorContainer }>
             { this.displayCounselors() }
-            <button className={ styles.seeMoreBtn } onClick={ () => this.redirectLocalAssistance() }>SEE MORE</button>
+            <SmallPrimaryButton  onClick={ () => this.redirectLocalAssistance() } text="SEE MORE"/>
           </div>
           <div className={ styles.mapContainer }>
             <div className={ styles.mapPlaceholder }>
