@@ -1,6 +1,11 @@
+
 .section {
-    @include grid-column(12)
+    @include grid-column(12, $desktop-nav)
     margin-top: 60px;
+}
+
+.title {
+    @include grid-column(12)
 }
 
 .step {
@@ -13,7 +18,7 @@
         @include grid-column(3)
         position: relative;
         margin-top: 83px;
-        & .step:nth-child(odd){
+        &:nth-child(odd){
             margin-top: 183px;
         }
     }
@@ -21,6 +26,22 @@
 
 .img {
     width: 100%
+}
+
+.header {
+    margin: 0.8em 0;
+}
+
+.line {
+    width: 25px;
+    border-top: 2px solid #609F00;
+    border-bottom: none;
+    margin: 0.8em 0;
+    text-align: left;
+}
+
+.blurb {
+    margin: 0.8em 0;
 }
 
 
