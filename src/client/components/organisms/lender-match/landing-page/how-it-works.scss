@@ -9,14 +9,13 @@
 }
 
 .step {
+     position: relative;
     @include grid-media($sba-grid-small) {
         @include grid-column(6)
-        position: relative;
         margin-top: 83px;
     }
-    @include grid-media($sba-grid-large) {
+    @include grid-media($sba-grid-medium) {
         @include grid-column(3)
-        position: relative;
         margin-top: 83px;
         &:nth-child(odd){
             margin-top: 183px;
@@ -44,16 +43,6 @@
     margin: 0.8em 0;
 }
 
-
-// .imageContainer {
-//     @include grid-column(3)
-//     position: relative;
-// }
-
-// .step:nth-child(even) {
-//     padding-top: 40px;
-// }
-
 .numbers {
     font-size: 7.5em;
     opacity: 0.4;
@@ -62,7 +51,7 @@
     position: absolute;
     line-height: 75px;
     top: -59px;
-    // right: -30px;
+    left: 30px;
 }
 
 
