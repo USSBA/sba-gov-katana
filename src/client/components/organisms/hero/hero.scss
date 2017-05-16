@@ -18,7 +18,7 @@ $hero-container-grid: (
 		@include grid-column(6);
 			position: absolute;
 			top: 50%;
-			transform: translate(-10%, -50%);
+			transform: translateY(-50%);
 
 	}
 	@include grid-media($sba-grid-large){
