@@ -6,10 +6,11 @@ import {indexOf} from 'lodash';
 import * as LenderMatchActions from '../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../actions/location-change.js';
 import styles from './loan-form.scss';
-import ProgressBar from '../../atoms/progress-bar.jsx'
+import ProgressBar from '../../atoms/progress-bar/progress-bar.jsx'
 
 class LoanForm extends React.Component {
   render() {
+      
     let pages = [
       'contact',
       'business',

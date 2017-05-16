@@ -6,22 +6,8 @@ import * as ConfirmationEmailActions from '../../../../actions/confirmation-emai
 import {logEvent} from "../../../../services/analytics.js";
 
 import styles from './confirm-section.scss';
+import Resource from "../../../molecules/resource-card/resource-card.jsx"
 
-const Resource = (props) => (
-  <div className={styles.resource}>
-    <h4>{props.title}</h4>
-    <p>
-      {props.duration}
-    </p>
-    <hr/>
-    <p>
-      {props.description}
-    </p>
-    <a className={styles.seeMoreBtn} href={props.buttonURL} target="_blank">
-      {props.buttonText}
-    </a>
-  </div>
-);
 
 class ConfirmSection extends React.Component {
   constructor(props) {
@@ -44,7 +30,7 @@ class ConfirmSection extends React.Component {
     let resendLink = this.state.resendClicked
       ? <span className={styles.resendLink}>
           Email was re-sent.</span>
-      : <a className={styles.resendLink} onClick={this.handleClick.bind(this)} href="">Click here to resend.</a>;
+      : <span className={styles.resendLink}><a  onClick={this.handleClick.bind(this)} href="">Click here</a> to resend.</span>;
     return (
       <div className={styles.section}>
         <h1>{this.props.name.split(" ")[0]}, check your email.</h1>
@@ -64,6 +50,7 @@ class ConfirmSection extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
+    // return {name: "Jon", email: "j@j.gov"};
   return {name: reduxState.lenderMatch.contactInfoData.contactFullName, email: reduxState.lenderMatch.contactInfoData.contactEmailAddress};
 }
 
