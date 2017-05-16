@@ -20,15 +20,14 @@
         position: absolute;
         background: $sba-blue;
         width: 38.6vw;
-        height: 68%;
-        margin: auto;
-        padding-top: 2vw;
-        padding-bottom: 3vw;
+        // margin-top: 10%;
+        padding-top: 40px;
+        padding-bottom: 50px;
         padding-left: 4vw;
         padding-right: 4vw;
-        top: 0;
+        top: 50%;
+        bottom: 50%;
         left: 10.4vw;
-        bottom: 0;
     }
 
     .title {
