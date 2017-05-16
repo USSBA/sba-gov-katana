@@ -69,8 +69,7 @@ class ContactCardLookup extends React.Component {
                     ? <div className={styles.itemData}>{item.streetAddress}</div>
                     : null}
                   {item.city && item.state && item.zipCode
-                    ? <div className={styles.itemData}>{item.city}, {item.state}
-                        {item.zipCode}</div>
+                    ? <div className={styles.itemData}>{item.city}, {item.state}{" "}{item.zipCode}</div>
                     : null}
                 </div>
               );
