@@ -9,7 +9,7 @@ class ButtonBase extends React.Component {
       id: this.props.id,
       className: this.props.buttonClassName,
       disabled: this.props.disabled,
-      formtarget: this.props.newWindow
+      formTarget: this.props.newWindow
         ? "_blank"
         : "_self",
       onClick: this.props.onClick
