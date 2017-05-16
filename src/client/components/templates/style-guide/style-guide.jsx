@@ -32,10 +32,28 @@ import HeroMobileImage from './hero-mobile.jpg'
 class StyleGuide extends React.Component {
   constructor() {
     super();
+    this.handleLenderMatchClicked = this.handleLenderMatchClicked.bind(this);
+    this.handleTellMeHowClicked = this.handleTellMeHowClicked.bind(this);
     this.state = {
       exampleModalIsOpen: false
     };
   }
+
+  handleLenderMatchClicked() {
+    this.props.actions.locationChange('/linc/form/contact', {
+      label: "Find Lenders #1"
+    });
+  }
+
+  handleTellMeHowClicked(){
+      let element = document.getElementById(this.props.tellMeHowAnchor);
+      console.log(element);
+      element.scrollIntoView({
+          block: "start",
+          behavior: "smooth"
+      });
+  }
+
   handleModalExampleClick(e) {
     e.preventDefault();
     this.setState({
@@ -43,6 +61,9 @@ class StyleGuide extends React.Component {
     });
   }
   render() {
+    let calloutMessage = "Lender Match (formerly LINC) is a free online referral tool that connects small businesses with participating SBA-approved lenders.";
+    let calloutTitle = "Lender Match helps you find lenders.";
+    let buttonsArray = [{onClickHandler: this.handleTellMeHowClicked, btnText:"TELL ME HOW"}, {onClickHandler: this.handleLenderMatchClicked, btnText:"FIND LENDERS"}];
     return (
       <div>
         <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
@@ -51,7 +72,7 @@ class StyleGuide extends React.Component {
         <h1>Form Inputs</h1>
         <FormElements/>
         <h1>Hero</h1>
-        <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." button="LARGE BUTTON" desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
+        <Hero title={calloutTitle} message={calloutMessage} desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage} buttons={buttonsArray}/>
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
           ? <SbaModal onClose={() => {
