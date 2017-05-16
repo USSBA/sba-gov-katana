@@ -54,8 +54,8 @@ class Footer extends React.Component {
           <PageLinkGroup id={"tablet-footer-group-3"} key={22} links={thirdTabletColumn}/>
         </div>
         <div key={3} className={styles.mobileFooterLinks}>
-          <PageLinkGroup id={"tablet-footer-group-1"} key={23} links={firstMobileColumn}/>
-          <PageLinkGroup id={"tablet-footer-group-2"}key={24} links={secondMobileColumn}/>
+          <PageLinkGroup id={"mobile-footer-group-1"} key={23} links={firstMobileColumn}/>
+          <PageLinkGroup id={"mobile-footer-group-2"}key={24} links={secondMobileColumn}/>
         </div>
         <hr key={4} className={styles.desktopRule}/>
         <SocialMediaLinkSet key={5}/>
