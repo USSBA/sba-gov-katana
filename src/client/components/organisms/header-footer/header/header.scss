@@ -6,8 +6,7 @@ nav {
     text-decoration: none;
     }
   @include grid-media( $sba-grid-large) {
-    @include grid-column(12, $sba-grid-large);
-    padding: 25px 0 10px;
+    height: 116px;
   }
   @include grid-media( $tablet-nav) {
     top: 0;
@@ -34,18 +33,22 @@ nav {
     top: 113px;
   }
 
+  @media only screen and (max-width: 335px) {
+    top: 137px;
+  }
+
   @media only screen and (max-width: 305px) {
     top: 156px;
   }
 }
 
 .mainContent {
-  @include grid-media( $tablet-nav) {
-    padding-top: 74px;
-  }
-  @include grid-media( $mobile-nav) {
-    padding-top: 74px;
-  }
+    @include grid-media( $tablet-nav) {
+      padding-top: 74px;
+    }
+    @include grid-media( $mobile-nav) {
+      padding-top: 74px;
+    }
 }
 
 .alertIsActive .mainContent {
@@ -59,6 +62,10 @@ nav {
 
   @media only screen and (max-width: 506px) {
     padding-top: 187px;
+  }
+
+  @media only screen and (max-width: 335px) {
+    padding-top: 210px;
   }
 
   @media only screen and (max-width: 305px) {

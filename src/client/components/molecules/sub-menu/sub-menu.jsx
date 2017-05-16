@@ -13,13 +13,15 @@ class SubMenu extends React.Component {
   }
 
   render() {
-    let {data, ...rest} = this.props;
-    const showTriangleMarker =data.children && !isEmpty(data.children);
+    let {
+      data,
+      ...rest
+    } = this.props;
+    const showTriangleMarker = data.children && !isEmpty(data.children);
     return (
       <li className={styles.subMenu} key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)} onMouseOut={this.props.onMenuMouseOut}>
-        <SectionLink url={data.link} text={data.linkTitle} showTriangleMarker={showTriangleMarker} onMouseOver={this.props.onTitleMouseOver} onKeyDown={this.props.onSectionLinkKeyDown} >
+        <SectionLink id={this.props.id+"-title"} url={data.link} text={data.linkTitle} showTriangleMarker={showTriangleMarker} onMouseOver={this.props.onTitleMouseOver} onKeyDown={this.props.onSectionLinkKeyDown}>
           <DropdownMenu links={data.children} {...rest} featuredCallout={data.featuredCallout}/>
-
         </SectionLink>
       </li>
     );

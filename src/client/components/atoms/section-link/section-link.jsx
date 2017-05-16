@@ -4,8 +4,8 @@ import styles from "./section-link.scss";
 class SectionLink extends React.Component {
   render() {
     return (
-      <span className={styles.link} onMouseOver={this.props.onMouseOver} onMouseOut={this.props.onMouseOut}>
-        <a className={styles.sectionLink} href={this.props.url} onKeyDown={this.props.onKeyDown}>{this.props.text}</a>
+      <span id={this.props.id+"-container"} className={styles.link} onMouseOver={this.props.onMouseOver} onMouseOut={this.props.onMouseOut}>
+        <a id={this.props.id} className={styles.sectionLink} href={this.props.url} onKeyDown={this.props.onKeyDown}>{this.props.text}</a>
         {this.props.children}
         {this.props.showTriangleMarker
           ? (

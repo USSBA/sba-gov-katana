@@ -26,8 +26,8 @@ class Lookup extends React.Component {
 
   filterItems(items, subtype) {
     let filteredItems = filter(items, function(item) {
-        if(item.categoryTaxonomyTerm && item.categoryTaxonomyTerm.name){
-            return  item.categoryTaxonomyTerm.name === subtype;
+        if(item.category){
+            return  item.category === subtype;
         }else{
             return false;
         }

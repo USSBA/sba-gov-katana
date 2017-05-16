@@ -81,12 +81,14 @@ $mobile-nav-height: 53px;
   }
 }
 
-.alert .alertClose {
+img.alertClose {
   opacity: .6;
   position: absolute;
   right: 20px;
+  top: 15px;
   display: inline-block;
   cursor: pointer;
   z-index: 10000;
   width: 20px;
+  height: auto;
 }

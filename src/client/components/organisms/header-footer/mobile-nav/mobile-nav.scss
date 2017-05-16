@@ -1,9 +1,7 @@
-$mobile-nav-height: 53px;
-
 .mobileHeader {
     display: none;
     background-color: #ffffff;
-    height: $mobile-nav-height;
+    height: 53px;
     margin: 10px 20px;
     @include grid-media( $tablet-nav) {
       display: block;
