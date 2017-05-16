@@ -61,7 +61,7 @@ class ReviewSubmitInfoForm extends React.Component {
         <LoanSection loanData={ this.props.loanData } onEditClick={ () => this.handleEditClick("loan") } />
         <AdditionalSection additionalInfoData={ this.props.additionalInfoData } onEditClick={ () => this.handleEditClick("additional") } />
         <form ref={ (input) => this.reviewSubmitInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <FormPageButtons showBackButton={false} continueButtonHandler={this.handleSubmit.bind(this)}/>
+          <FormPageButtons continueButtonFullWidth continueButtonText="SUBMIT" showBackButton={false} continueButtonHandler={this.handleSubmit.bind(this)}/>
         </form>
       </div>
       );
