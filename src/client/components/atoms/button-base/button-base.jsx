@@ -1,13 +1,15 @@
 import React from 'react';
 
 class ButtonBase extends React.Component {
-    handleClick(){
-        document.location.href  = this.props.URL || this.props.url;
-    }
+  handleClick() {
+    document.location.href = this.props.URL || this.props.url;
+  }
   render() {
     let buttonProps = {
       id: this.props.id,
-      className: this.props.buttonClassName,
+      className: this.props.buttonClassName + " " + (this.props.extraClassName
+        ? this.props.extraClassName
+        : ""),
       disabled: this.props.disabled,
       formTarget: this.props.newWindow
         ? "_blank"
