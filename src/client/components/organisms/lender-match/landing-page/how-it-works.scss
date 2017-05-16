@@ -1,165 +1,195 @@
 .section {
-    position: relative;
-    margin: 35px auto 0;
-    overflow: auto;
-    &::after {
-        content: "";
-        clear: both;
-        display: table;
-    }
-    h2 {
-        font-size: 28px;
-        font-weight: 900;
-        line-height: 30px;
-        color: #333333;
-        margin-bottom: -25px;
-    }
-    p {
-        font-size: 18px;
-        line-height: 22px;
-        color: #333333;
-    }
+    @include grid-column(12)
 }
 
 .step {
-    h3,
-    p {
-        display: inline;
-    }
-    .evenNumbers {
-        width: 96px;
-        height: 151px;
-        opacity: 0.4;
-        font-size: 120px;
-        font-weight: 900;
-        color: #609F00;
-        position: relative;
-        left: 20px;
-        top: 35px;
-    }
-    .oddNumbers {
-        width: 96px;
-        height: 151px;
-        opacity: 0.4;
-        font-size: 120px;
-        font-weight: 900;
-        color: #609F00;
-        position: relative;
-        left: 20px;
-        top: 42px;
-    }
-    img {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-    hr {
-        width: 25px;
-        border-top: 2px solid #609F00;
-        margin: 16px 0;
-        text-align: left;
-    }
-    h3 {
-        font-size: 21px;
-        font-weight: 900;
-        line-height: 22px;
-        color: #333333;
-    }
-    p {
-        font-size: 16px;
-        line-height: 22px;
-        color: #333333;
-    }
-}
-
-@media screen and (min-width:768px) {
-    .section {
-        top: 0;
-        width: 84vw;
-        margin: 60px 0 0 9.7vw;
-        h2 {
-            font-size: 75px;
-            font-weight: 900;
-            line-height: 75px;
-        }
-    }
-    .step {
-        float: left;
-        width: 19vw;
-        margin-right: 2vw;
-        &:nth-of-type(even) {
-            margin-top: 100px;
-        }
-        &:last-of-type {
-            margin-right: 0;
-        }
-        h3 {
-            font-family: "Source Sans Pro";
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 22px;
-        }
-        p {
-            font-size: 18px;
-            line-height: 22px;
-        }
-    }
-}
-
-.tellMeHowBtn {
-    border: 2px solid #FFFFFF;
-    border-radius: 0;
-    background-color: #609F00;
-    color: #FFFFFF;
-    width: 11.24vw;
-    height: 3.33vw;
-    font-size: 1.25vw;
-    font-weight: bold;
-    text-align: center;
-    padding: 0;
+    @include grid-column(3)
     position: relative;
+    height: 20px;
 }
 
-.tellMeHowBtn:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    ;
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-}
+// .step:nth-child(even) {
+//     padding-top: 40px;
+// }
 
-.tellMeHowBtn:active,
-.tellMeHowBtn:focus {
-    background-color: #FFFFFF !important;
-    border: 2px solid #FFFFFF !important;
-    color: #609F00 !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.findLendersWhiteBtn {
-    margin-left: 2.5vw;
-    border: 2px solid #FFFFFF;
-    border-radius: 0;
-    background-color: #FFFFFF;
+.numbers {
+    font-size: 7.5em;
+    opacity: 0.4;
     color: #609F00;
-    width: 11.24vw;
-    height: 3.33vw;
-    font-size: 1.25vw;
-    font-weight: bold;
-    text-align: center;
-    padding: 0;
+    font-weight: 900;
+    position: relative;
+    bottom: -79px;
+    right: -30px;
 }
 
-.findLendersWhiteBtn:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #609F00;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-}
 
-.findLendersWhiteBtn:active,
-.findLendersWhiteBtn:focus {
-    background-color: rgba(255, 255, 255, 0.6) !important;
-    color: #609F00 !important;
-    border: 2px solid rgba(255, 255, 255, 0.6) !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
+
+
+
+
+
+// .section {
+//     position: relative;
+//     margin: 35px auto 0;
+//     overflow: auto;
+//     &::after {
+//         content: "";
+//         clear: both;
+//         display: table;
+//     }
+//     h2 {
+//         font-size: 28px;
+//         font-weight: 900;
+//         line-height: 30px;
+//         color: #333333;
+//         margin-bottom: -25px;
+//     }
+//     p {
+//         font-size: 18px;
+//         line-height: 22px;
+//         color: #333333;
+//     }
+// }
+
+// .step {
+//     h3,
+//     p {
+//         display: inline;
+//     }
+//     .evenNumbers {
+//         width: 96px;
+//         height: 151px;
+//         opacity: 0.4;
+//         font-size: 120px;
+//         font-weight: 900;
+//         color: #609F00;
+//         position: relative;
+//         left: 20px;
+//         top: 35px;
+//     }
+//     .oddNumbers {
+//         width: 96px;
+//         height: 151px;
+//         opacity: 0.4;
+//         font-size: 120px;
+//         font-weight: 900;
+//         color: #609F00;
+//         position: relative;
+//         left: 20px;
+//         top: 42px;
+//     }
+//     img {
+//         width: 100%;
+//         margin-bottom: 15px;
+//     }
+//     hr {
+//         width: 25px;
+//         border-top: 2px solid #609F00;
+//         margin: 16px 0;
+//         text-align: left;
+//     }
+//     h3 {
+//         font-size: 21px;
+//         font-weight: 900;
+//         line-height: 22px;
+//         color: #333333;
+//     }
+//     p {
+//         font-size: 16px;
+//         line-height: 22px;
+//         color: #333333;
+//     }
+// }
+
+// @media screen and (min-width:768px) {
+//     .section {
+//         top: 0;
+//         width: 84vw;
+//         margin: 60px 0 0 9.7vw;
+//         h2 {
+//             font-size: 75px;
+//             font-weight: 900;
+//             line-height: 75px;
+//         }
+//     }
+//     .step {
+//         float: left;
+//         width: 19vw;
+//         margin-right: 2vw;
+//         &:nth-of-type(even) {
+//             margin-top: 100px;
+//         }
+//         &:last-of-type {
+//             margin-right: 0;
+//         }
+//         h3 {
+//             font-family: "Source Sans Pro";
+//             font-size: 24px;
+//             font-weight: bold;
+//             line-height: 22px;
+//         }
+//         p {
+//             font-size: 18px;
+//             line-height: 22px;
+//         }
+//     }
+// }
+
+// .tellMeHowBtn {
+//     border: 2px solid #FFFFFF;
+//     border-radius: 0;
+//     background-color: #609F00;
+//     color: #FFFFFF;
+//     width: 11.24vw;
+//     height: 3.33vw;
+//     font-size: 1.25vw;
+//     font-weight: bold;
+//     text-align: center;
+//     padding: 0;
+//     position: relative;
+// }
+
+// .tellMeHowBtn:hover {
+//     background-color: rgba(255, 255, 255, 0.3);
+//     ;
+//     color: #FFFFFF;
+//     border: 2px solid #FFFFFF;
+// }
+
+// .tellMeHowBtn:active,
+// .tellMeHowBtn:focus {
+//     background-color: #FFFFFF !important;
+//     border: 2px solid #FFFFFF !important;
+//     color: #609F00 !important;
+//     outline: none !important;
+//     box-shadow: none !important;
+// }
+
+// .findLendersWhiteBtn {
+//     margin-left: 2.5vw;
+//     border: 2px solid #FFFFFF;
+//     border-radius: 0;
+//     background-color: #FFFFFF;
+//     color: #609F00;
+//     width: 11.24vw;
+//     height: 3.33vw;
+//     font-size: 1.25vw;
+//     font-weight: bold;
+//     text-align: center;
+//     padding: 0;
+// }
+
+// .findLendersWhiteBtn:hover {
+//     background-color: rgba(255, 255, 255, 0.8);
+//     color: #609F00;
+//     border: 2px solid rgba(255, 255, 255, 0.8);
+// }
+
+// .findLendersWhiteBtn:active,
+// .findLendersWhiteBtn:focus {
+//     background-color: rgba(255, 255, 255, 0.6) !important;
+//     color: #609F00 !important;
+//     border: 2px solid rgba(255, 255, 255, 0.6) !important;
+//     outline: none !important;
+//     box-shadow: none !important;
+// }
