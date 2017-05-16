@@ -1,11 +1,11 @@
 .container{
     margin-top: 40px;
 }
-.container div{
+.container button{
     display: inline;
 }
 
-.container div:last-child{
+.container button:last-child{
     display: inline;
     float: right;
 }
