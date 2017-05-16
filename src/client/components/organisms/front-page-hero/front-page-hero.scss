@@ -32,6 +32,7 @@
         font-weight: 900;
         padding-bottom: 2vw;
         padding-left: 10.4vw;
+        margin-bottom: 0px;
     }
 
     .AccentBox {
@@ -59,6 +60,7 @@
         padding-left: 2vw;
         font-size: 1.66vw;
         line-height: 6vw;
+        color:white;
     }
 
     .borderBox {
@@ -83,6 +85,7 @@
 @media screen and (max-width:767px) {
     .Container {
         margin-bottom: 54vw;
+        margin-top: 10vw;
     }
 
     .Banner {
@@ -94,6 +97,7 @@
         font-weight: bold;
         padding-bottom: 2vw;
         padding-left: 12.53vw;
+        margin-bottom: 0px;
     }
 
     .AccentBox {
@@ -117,6 +121,7 @@
         padding-left: 7vw;
         font-size: 5vw;
         line-height: 16vw;
+        color:white;
     }
 
     .borderBox {

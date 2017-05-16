@@ -5,15 +5,10 @@ import {indexOf} from 'lodash';
 
 import * as LenderMatchActions from '../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../actions/location-change.js';
-import styles from '../../organisms/lender-match/form/lender-match.scss';
+import styles from './loan-form.scss';
 import ProgressBar from '../../atoms/progress-bar.jsx'
 
 class LoanForm extends React.Component {
-  getBackButtonText(locationIndex) {
-    return locationIndex === 0
-      ? "EXIT"
-      : "BACK";
-  }
   render() {
     let pages = [
       'contact',
@@ -25,13 +20,6 @@ class LoanForm extends React.Component {
     ]; // TODO make this static or configuration
     let page = this.props.location.replace('/linc/form/', '');
     let locationIndex = indexOf(pages, page);
-    let backButton = locationIndex === 5
-      ? ""
-      : (
-        <button type="button" className={styles.backBtn} onClick={this.props.locationActions.goBack}>
-          {this.getBackButtonText(locationIndex)}
-        </button>
-      );
     let title = locationIndex === 5
       ? "Review and Submit"
       : "Lender Match";
@@ -39,8 +27,8 @@ class LoanForm extends React.Component {
       <div className={styles.formContainer}>
         <main className={styles.formPanel}>
           <h1 className={styles.title}>{title}</h1>
-          <ProgressBar pages={pages.length + 1} locationIndex={locationIndex + 1}/> {this.props.children}
-          {backButton}
+          <ProgressBar pages={pages.length + 1} locationIndex={locationIndex + 1}/>
+          {this.props.children}
         </main>
       </div>
     );

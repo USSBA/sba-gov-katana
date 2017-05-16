@@ -13,6 +13,7 @@ import styles from './lender-match.scss';
 import TextInput from '../../../atoms/text-input/text-input.jsx';
 import TextArea from "../../../atoms/textarea/textarea.jsx";
 import MultiSelectBox from '../../../atoms/multiselect/multiselect.jsx';
+import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
 
 class LoanInfo extends React.Component {
   constructor(props) {
@@ -159,9 +160,7 @@ class LoanInfo extends React.Component {
           <TextInput errorText={constants.messages.validation.invalidLoanAmount} label="How much funding do you need?" name="loanAmount" onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)} value={this.state.loanAmount} validationState={this.state.validStates.loanAmount} autoFocus onFocus={this.handleFocus.bind(this)}/>
           <MultiSelectBox errorText={constants.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanUsage" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanUsage} value={this.state.loanUsage} options={loanUsageOptions} maxValues={3} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}></MultiSelectBox>
           <TextArea errorText={constants.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanDescription" onChange={this.handleChange.bind(this)} value={this.state.loanDescription} validationState={this.state.validStates.loanDescription} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <button className={styles.continueBtn} type="submit" disabled={!(this.isValidForm())}>
-            CONTINUE
-          </button>
+         <FormPageButtons backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
         </form>
       </div>
     );

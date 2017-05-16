@@ -4,7 +4,7 @@
 
 .myselect {
     border: none;
-    color: #1C2E36 !important; 
+    color: #1C2E36 !important;
 }
 
 .myselect::-ms-expand {
@@ -80,6 +80,10 @@
 }
 
 .myselect :global(.Select-menu-outer) div:hover {
+    background-color: $grey-lighter;
+}
+
+.myselect :global(.Select-menu-outer) div :global(.is-focused) {
     background-color: $grey-lighter;
 }
 

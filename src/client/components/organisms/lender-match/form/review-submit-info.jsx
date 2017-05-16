@@ -10,6 +10,8 @@ import * as LocationChangeActions from '../../../../actions/location-change.js';
 
 import styles from './review-submit.scss'
 import ReviewSection from './review-page-helpers.jsx';
+import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
+import SmallGreySecondaryButton from "../../../atoms/small-grey-secondary-button/small-grey-secondary-button.jsx"
 
 class ReviewSubmitInfoForm extends React.Component {
   constructor() {
@@ -59,7 +61,7 @@ class ReviewSubmitInfoForm extends React.Component {
         <LoanSection loanData={ this.props.loanData } onEditClick={ () => this.handleEditClick("loan") } />
         <AdditionalSection additionalInfoData={ this.props.additionalInfoData } onEditClick={ () => this.handleEditClick("additional") } />
         <form ref={ (input) => this.reviewSubmitInfoForm = input } onSubmit={ (e) => this.handleSubmit(e) }>
-          <button className={ styles.submitBtn } type="submit"> SUBMIT </button>
+          <FormPageButtons showBackButton={false} continueButtonHandler={this.handleSubmit.bind(this)}/>
         </form>
       </div>
       );
@@ -68,7 +70,8 @@ class ReviewSubmitInfoForm extends React.Component {
 }
 
 const EditButton = (props) => {
-  return (<button autoFocus={props.autofocus} className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
+  // return (<button autoFocus={props.autofocus} className={ styles.editBtn } onClick={ props.onEditClick }>Edit</button>);
+  return (<SmallGreySecondaryButton extraClassName={styles.editButton} autoFocus={props.autofocus} onClick={ props.onEditClick } text="EDIT"/>);
 };
 
 const ContactSection = (props) => {
