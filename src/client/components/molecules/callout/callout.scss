@@ -8,24 +8,20 @@
     background-position: bottom right;
     background-repeat: no-repeat;
     padding: 40px 40px 40px 40px;
-	width: 455px;
 }
 
 .message {
 	@include font-size($paragraph-font-sizes);
 	margin-bottom: 30px;
-	//font-family: $serif-font;
-	font-family: Merriweather;
-	font-style: italic;
-	font-size: 20px;
+	font-family: "Source Sans Pro";
 	line-height: 25px;
+	@include grid-media($sba-grid-small){
+		font-style: normal;
+	}
 }
 
 .title {
 	@include font-size($h1-font-sizes);
-	@include grid-media($sba-grid-small){
-		font-size: 34px;
-	}
 }
 
 .button {
@@ -34,6 +30,18 @@
 	float: left;
 	@include grid-media($sba-grid-small){
 		width: 100%;
+	}
+}
+
+.button > button{
+	@include grid-media($sba-grid-small){
+		width: 100%;
+	}
+}
+
+.buttonContainer button:nth-child(1){
+	@include grid-media($sba-grid-small){
+		margin-bottom: 15px;
 	}
 }
 
