@@ -42,7 +42,13 @@ class StyleGuide extends React.Component {
       exampleModalIsOpen: !this.state.exampleModalIsOpen
     });
   }
+
+  handleLargeBtnClicked(e) {
+      e.preventDefault();
+  }
+
   render() {
+      let buttonsArray = [{onClickHandler: this.handleLargeBtnClicked, btnText: "LARGE BUTTON"}];
     return (
       <div>
         <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
@@ -51,7 +57,7 @@ class StyleGuide extends React.Component {
         <h1>Form Inputs</h1>
         <FormElements/>
         <h1>Hero</h1>
-        <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." button="LARGE BUTTON" desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
+        <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." buttons={buttonsArray} desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
           ? <SbaModal onClose={() => {
