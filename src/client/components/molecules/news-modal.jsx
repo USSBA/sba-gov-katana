@@ -122,10 +122,10 @@ class SbaNewsModal extends React.Component {
                 </div>
                 <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
                     <form id="newsletter-modal-form" ref={(input) => this.newsletterModalForm = input} onSubmit={(e) => this.handleSubmit(e)} >
-                        <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  handleChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} getValidationState={this.state.validStates.userEmailAddress} style={{height:'40px'}} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+                        <TextInput name="userEmailAddress" errorText={constants.messages.validation.invalidNewsLetterEmail} placeholder="Your email address"  onChange={this.handleChange.bind(this)} value={this.state.userEmailAddress} validationState={this.state.validStates.userEmailAddress} style={{height:'40px'}} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
                         <div className={styles.zipButtonWrapper}>
                             <div className={styles.zipTextBox}>
-                                <TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  handleChange={this.handleChange.bind(this)} value={this.state.userZipCode} getValidationState={this.state.validStates.userZipCode} maxLength="5"  style={{height:'40px'}} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+                                <TextInput name="userZipCode" errorText={constants.messages.validation.invalidNewsLetterZipCode}  placeholder="Zip code"  onChange={this.handleChange.bind(this)} value={this.state.userZipCode} validationState={this.state.validStates.userZipCode} maxLength="5"  style={{height:'40px'}} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
                             </div>
                             <div className={styles.btnContainer}>
                                 <NewsletterSmallPrimaryButton text="SUBSCRIBE" type="submit" disabled={!(this.isValidForm())}/>
