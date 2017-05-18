@@ -1,13 +1,14 @@
 import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
 import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
 
-import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts } from "../service/drupal-eight.js";
+import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
 
 const fetchFunctions = {
   node: fetchFormattedNode,
-  taxonomy: fetchFormattedTaxonomyTerm
+  taxonomy: fetchFormattedTaxonomyTerm,
+  menu: fetchFormattedMenu
 };
 
 const fetchContentTypeFunctions = {
