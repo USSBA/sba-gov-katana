@@ -10,9 +10,10 @@ const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
 const paragraphEndpoint = "entity/paragraph";
 const contactEndpoint = "contacts";
+const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 
-import { fetchById, fetchContentByType } from "../models/dao/drupal8-rest.js";
+import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
 
 import { sanitizeTextSectionHtml } from "../util/formatter.js";
 
@@ -46,6 +47,10 @@ function fetchParagraphId(paragraphId) {
   return fetchById(paragraphEndpoint, paragraphId);
 }
 
+function fetchMenuTreeByName(name) {
+  return fetchContent(menuTreeEndpoint.replace(":name", name));
+}
+
 function fetchFormattedContactParagraph(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
@@ -70,7 +75,7 @@ function fetchContacts() {
   } else if (cache.get("contacts")) {
     return Promise.resolve(cache.get("contacts"));
   }
-  return fetchContentByType(contactEndpoint).then(formatContacts).tap(function(contacts) {
+  return fetchContent(contactEndpoint).then(formatContacts).tap(function(contacts) {
     cache.put("contacts", contacts);
   });
 
@@ -220,8 +225,44 @@ function formatNode(data) {
 
 }
 
+function formatMenu(data) {
+  if (data) {
+    let promise = Promise.resolve(null);
+    if (data.has_children && data.subtree) {
+      promise = formatMenuTree(data.subtree); //eslint-disable-line no-use-before-define
+    }
+    return promise.then((submenus) => {
+      return {
+        title: data.link.title,
+        children: submenus,
+        node: data.link.route_parameters ? data.link.route_parameters.node : null,
+        weight: data.link.weight
+      };
+    });
+  }
+  return Promise.resolve({});
+
+}
+
+function formatMenuTree(data) {
+  if (data) {
+    return Promise.map(data, formatMenu).then((menu) => {
+      return _.chain(menu).sortBy("weight").reverse()
+        .value();
+    }, {
+      concurrency: 1
+    });
+  }
+  return Promise.resolve([]);
+}
+
+
 function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId };
+function fetchFormattedMenu(menuName) {
+  return fetchMenuTreeByName(menuName).then(formatMenuTree);
+}
+
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu };
