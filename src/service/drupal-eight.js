@@ -140,7 +140,7 @@ function makeParagraphValueFormatter(typeName) {
       const taxonomyTermId = extractTargetId(value);
       newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
         return result.name;
-      });
+      }); 
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
@@ -152,20 +152,42 @@ function makeParagraphValueFormatter(typeName) {
 function formatParagraph(paragraph) {
   if (paragraph) {
     const typeName = extractTargetId(paragraph.type);
-    return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-      if (typeName === "image") {
-        return fieldName;
-      }
-      return _.replace(fieldName, typeName, "");
-    }, makeParagraphValueFormatter(typeName))
-      .then((object) => {
-        return _.assign({
-          type: _.camelCase(typeName)
-        }, object);
-      });
+    switch (typeName) {
+      case "call_to_action":
+        //need to retrun at some point
+        formatCallToAction(paragraph)
+        break;
+
+      default:
+        return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
+            if (typeName === "image") {
+              return fieldName;
+            }
+            return _.replace(fieldName, typeName, "");
+          }, makeParagraphValueFormatter(typeName))
+          .then((object) => {
+            return _.assign({
+              type: _.camelCase(typeName)
+            }, object);
+          });
+    }
   }
   return Promise.resolve(null);
 
+}
+
+function formatCallToAction(paragraph){
+  const style = extractValue(paragraph.field_style)
+  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference)
+  let cta = { style: style }
+
+  fetchParagraphId(ctaRef)
+  .then((data) => {
+    
+    console.log(data)
+  })
+  // console.log(cta)
+  // console.log(ctaRef)
 }
 
 
