@@ -1,6 +1,6 @@
 import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
 import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
-
+import { fetchMainMenu } from "../models/dao/main-menu.js";
 import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
@@ -12,7 +12,11 @@ const fetchFunctions = {
 };
 
 const fetchContentTypeFunctions = {
-  contacts: fetchContacts
+  contacts: fetchContacts,
+  blogs: fetchBlogsFromDrupal,
+  disaster: fetchDisasterFromDrupalDatabase,
+  frontpageslides: fetchFrontPageSlidesFromDrupal,
+  "main-menu": fetchMainMenu
 };
 
 function fetchContentById(req, res) {
@@ -34,7 +38,7 @@ function fetchContentById(req, res) {
   }
 }
 
-function fetchRestContentByType(req, res) {
+function fetchContentByType(req, res) {
   if (req.params && req.params.type) {
     fetchContentTypeFunctions[req.params.type]()
       .then(function(data) {
@@ -53,40 +57,5 @@ function fetchRestContentByType(req, res) {
   }
 }
 
-function fetchBlogs(req, res) {
-  fetchBlogsFromDrupal()
-    .then(function(data) {
-      res.status(HttpStatus.OK).send(data);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
-    });
-}
 
-
-function fetchFrontPageSlides(req, res) {
-  fetchFrontPageSlidesFromDrupal()
-    .then(function(data) {
-      res.status(HttpStatus.OK).send(data);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
-    });
-}
-
-
-function fetchDisaster(req, res) {
-  fetchDisasterFromDrupalDatabase()
-    .then(function(result) {
-      res.status(HttpStatus.OK).send(result);
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
-    });
-}
-
-
-export { fetchContentById, fetchFrontPageSlides, fetchBlogs, fetchDisaster, fetchRestContentByType };
+export { fetchContentById, fetchContentByType };
