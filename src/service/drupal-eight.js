@@ -56,7 +56,6 @@ function convertUrlHost(urlStr) {
   let newUrl = url.parse(urlStr);
   newUrl = host + newUrl.pathname;
   return newUrl;
-
 }
 
 function fetchFormattedContactParagraph(contact) {
@@ -207,7 +206,6 @@ function formatParagraph(paragraph) {
     }
   }
   return Promise.resolve(null);
-
 }
 
 
