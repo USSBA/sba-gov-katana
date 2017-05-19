@@ -51,6 +51,13 @@ function fetchMenuTreeByName(name) {
   return fetchContent(menuTreeEndpoint.replace(":name", name));
 }
 
+function convertUrlHost(urlStr){
+  const host = "http://content.sbagov.fearlesstesters.com";
+  let newUrl = url.parse(urlStr);
+  return newUrl = host + newUrl.pathname;
+
+}
+
 function fetchFormattedContactParagraph(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
@@ -148,6 +155,32 @@ function makeParagraphValueFormatter(typeName) {
   };
 }
 
+function formatCallToAction(paragraph) {
+  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
+  const cta = {
+    'style': extractValue(paragraph.field_style)
+  };
+
+  return fetchNodeById(ctaRef).then((subCta) => {
+    const btnRef = extractTargetId(subCta['field_button_action']);
+    cta['headline'] = extractValue(subCta['field_headline'])
+    cta['blurb'] = extractValue(subCta['field_blurb'])
+    cta['image'] = convertUrlHost(subCta['field_image'][0]['url'])
+    cta['image_alt'] = subCta['field_image'][0]['alt']
+    
+    return fetchParagraphId(btnRef).then((btn) => {
+      if(btn['field_link']){
+        cta['btn_title'] = btn['field_link'][0]['title']
+        cta['btn_url'] = btn['field_link'][0]['uri']
+      } else if(btn['field_file'] && btn['field_button_text']){
+        cta['btn_title'] = extractValue(btn['field_button_text'])
+        cta['btn_url'] = convertUrlHost(btn['field_file'][0]['url'])
+      }
+      return cta
+    })
+  })
+}
+
 
 function formatParagraph(paragraph) {
   if (paragraph) {
@@ -155,7 +188,7 @@ function formatParagraph(paragraph) {
     switch (typeName) {
       case "call_to_action":
         //need to retrun at some point
-        formatCallToAction(paragraph)
+        return formatCallToAction(paragraph);
         break;
 
       default:
@@ -174,20 +207,6 @@ function formatParagraph(paragraph) {
   }
   return Promise.resolve(null);
 
-}
-
-function formatCallToAction(paragraph){
-  const style = extractValue(paragraph.field_style)
-  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference)
-  let cta = { style: style }
-
-  fetchParagraphId(ctaRef)
-  .then((data) => {
-    
-    console.log(data)
-  })
-  // console.log(cta)
-  // console.log(ctaRef)
 }
 
 
