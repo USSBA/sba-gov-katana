@@ -1,7 +1,7 @@
 .section {
     @include grid-column(12);
     //position: relative;
-    margin: 60px 5.1vw 80px 9.7vw;
+    //margin: 60px 5.1vw 80px 9.7vw;
     //overflow: auto;
     &::after {
         content: "";
@@ -19,7 +19,7 @@
             button {
                 margin: 15px 0;
                 @include grid-column(3);
-                @include grid-shift(2.1);
+                @include grid-shift(2.75);
                 margin-bottom: 20px;
             }
         }
@@ -32,6 +32,7 @@
         margin: 50px auto;
         h2 {
             @include font-size($h2-font-sizes);
+            @include grid-shift(0.4);
             line-height: 30px;
         }
         h5 {
@@ -43,7 +44,7 @@
                 margin-top: 20px;
                 button {
                     @include grid-column(12);
-                    @include grid-shift(-.1);
+                    @include grid-shift(-0.05);
                 }
             }
         }

@@ -17,11 +17,14 @@
 
 @media screen and (min-width:768px) {
     .rc-collapse {
-        width: 39.5vw;
-        float: left;
+        @include grid-column(6);
+        @include grid-shift(-0.25);
+        //width: 39.5vw;
+        //float: left;
         height: 256px;
         &:nth-of-type(odd) {
-            margin-right: 1.5vw;
+            //margin-right: 1.5vw;
+            margin-right: 2.5px;
         }
     }
 }
