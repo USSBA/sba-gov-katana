@@ -7,7 +7,7 @@ import styles from './form-page-buttons.scss';
 class FormPageButtons extends React.Component {
   render() {
     return (
-      <div className={styles.container}>
+      <div className={styles.container + " " + (this.props.continueButtonFullWidth ? styles.oneButton : "" )}>
         { this.props.showBackButton? <SmallGraySecondaryButton text={this.props.backButtonText} onClick={this.props.backButtonHandler}/> : ""}
         <SmallPrimaryButton text={this.props.continueButtonText} disabled={this.props.continueButtonDisabled} onClick={this.props.continueButtonHandler}/>
       </div>
@@ -21,7 +21,8 @@ FormPageButtons.defaultProps = {
   continueButtonText:  "CONTINUE",
   backButtonHandler: () => {},
   continueButtonHandler: () => {},
-  continueButtonDisabled: false
+  continueButtonDisabled: false,
+  continueButtonFullWidth: false
 }
 
 export default FormPageButtons;

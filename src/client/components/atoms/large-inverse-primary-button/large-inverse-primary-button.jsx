@@ -1,8 +1,7 @@
 import React from 'react';
+import ButtonBase from "../button-base/button-base.jsx"
 import styles from './large-inverse-primary-button.scss';
 
- const LargeInversePrimaryButton = (props) =>
-		<button id={props.id} className={ styles.LargeInversePrimaryButton + " " + props.classname } href={ props.URL } onClick={props.onClick} disabled={props.disabled}>{ props.text }</button>;
+const LargeInversePrimaryButton = (props) => <ButtonBase {...props} buttonClassName={styles.LargeInversePrimaryButton}/>;
 
 export default LargeInversePrimaryButton;
-

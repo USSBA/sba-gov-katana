@@ -48,6 +48,8 @@
         font-weight: normal;
         font-size: 1.25vw;
         line-height: 1.88vw;
+        margin-bottom: $margin-20;
+        text-decoration: none;
     }
 }
 @media screen and (max-width:767px) {
@@ -60,10 +62,15 @@
         height: 8vw;
     }
 
-    a {
+    .blogsContainer a {
         text-decoration: none;
         color: #333333;
     }
+
+    .blogsContainer a:hover {
+        text-decoration: underline;
+    }
+
 
     .singleBlog {
         border: 1px solid #C4C4C4;
@@ -86,6 +93,7 @@
     }
 
     .blogInfo {
+        text-decoration: none;
         color: #333333;
         font-size: 3.73vw;
         line-height: 5.867vw;

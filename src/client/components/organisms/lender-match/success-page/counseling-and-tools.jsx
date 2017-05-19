@@ -77,16 +77,16 @@ export class DynamicCounselingAndTools extends React.Component {
 
   createCounselorBoxes() {
     const counselors = this.state.counselors;
-    return Object.keys(counselors).map((key) => {
+    return Object.keys(counselors).map((key, index) => {
       let counselor = counselors[key];
       return (
-        <div className={ styles.counselorBox }>
-          <h4>{ this.trimStr(counselor['title']) || "Not Available" }</h4>
-          <p className={ styles.counselorAttr }>{ counselor['name'] || "Not Available" }</p>
-          <p>{ counselor['street'] + ", " + counselor['additional'] || "Not Available" }</p>
-          <p>{ counselor['city'] + ", " + counselor['province'] + " " + counselor['postal_code'] }</p>
-          <p>{ this.getMiles(counselor['location_distance']) + " miles away" }</p>
-          <p>{ counselor['phone'] ? 'Phone: ' + counselor['phone'] : "Not Available" }</p>
+        <div key={index} className={ styles.counselorBox }>
+          <h4 key={1} >{ this.trimStr(counselor['title']) || "Not Available" }</h4>
+          <p key={2} className={ styles.counselorAttr }>{ counselor['name'] || "Not Available" }</p>
+          <p key={3} >{ counselor['street'] + ", " + counselor['additional'] || "Not Available" }</p>
+          <p key={4} >{ counselor['city'] + ", " + counselor['province'] + " " + counselor['postal_code'] }</p>
+          <p key={5} >{ this.getMiles(counselor['location_distance']) + " miles away" }</p>
+          <p key={6} >{ counselor['phone'] ? 'Phone: ' + counselor['phone'] : "Not Available" }</p>
         </div>
       );
     });

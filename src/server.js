@@ -98,14 +98,6 @@ app.get("/content/feedback.csv", feedbackController.retrieveFeedback);
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
-import { getMainMenu } from "./controllers/main-menu.js";
-app.get("/content/main-menu.json", getMainMenu);
-
-
-import { fetchContentById, fetchContentByType, fetchFrontPageSlides, fetchBlogs, fetchDisaster, fetchRestContentByType } from "./controllers/content.js";
-app.get("/content/frontpageslides.json", fetchFrontPageSlides);
-app.get("/content/blogs.json", fetchBlogs);
-app.get("/content/disaster.json", fetchDisaster);
 
 import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/content/:userId/roles.json", getUserRoles);
@@ -116,8 +108,9 @@ app.get("/content/:userId/email.json", getDrupalUserEmail);
 import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/content/newsletter-registration.json", registerUserForNewsletter);
 
+import { fetchContentById, fetchContentByType } from "./controllers/content.js";
 app.get("/content/:type/:id.json", fetchContentById);
-app.get("/content/:type.json", fetchRestContentByType);
+app.get("/content/:type.json", fetchContentByType);
 
 // development error handler
 // will print stacktrace

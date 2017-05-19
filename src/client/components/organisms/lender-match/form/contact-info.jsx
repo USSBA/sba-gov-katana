@@ -96,7 +96,6 @@ class ContactInfoForm extends React.Component {
   }
 
   render() {
-    console.log("this.props.backButtonText", this.props.backButtonText);
     return (
       <div>
         <form id="lender-match-contact-form" ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>

@@ -1,7 +1,7 @@
 import React from 'react';
+import ButtonBase from "../button-base/button-base.jsx"
 import styles from './large-primary-button.scss';
 
- const LargePrimaryButton = (props) =>
-		<button id={props.id} className={styles.LargePrimaryButton} href={ props.URL } onClick={props.onClick} disabled={props.disabled}>{ props.text }</button>;
+ const LargePrimaryButton = (props)=> <ButtonBase {...props} buttonClassName={styles.LargePrimaryButton}/>;
 
 export default LargePrimaryButton;

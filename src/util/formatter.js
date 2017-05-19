@@ -10,7 +10,8 @@ function sanitizeTextSectionHtml(dirty) {
       allowedTags: ["p", "strong", "em", "u", "hr", "a", "ol", "ul", "li", "dl", "dt", "dd", "table", "tbody", "thead", "tfoot", "tr", "td", "th"],
       allowedAttributes: {
         "a": ["href"],
-        "td": ["rowspan"]
+        "td": ["rowspan"],
+        "th": ["scope"]
       }
     });
   } catch (error) {
