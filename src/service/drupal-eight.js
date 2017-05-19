@@ -159,6 +159,7 @@ function makeParagraphValueFormatter(typeName) {
 function formatCallToAction(paragraph) {
   const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
   const cta = {
+    type: "callToAction",
     style: extractValue(paragraph.field_style)
   };
 
