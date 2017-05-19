@@ -316,3 +316,11 @@ $primary-color-map:(
     }
   }
 }
+
+@mixin clearFix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}

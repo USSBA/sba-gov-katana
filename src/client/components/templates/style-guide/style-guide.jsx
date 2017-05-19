@@ -48,7 +48,13 @@ class StyleGuide extends React.Component {
   }
 
   render() {
-      let buttonsArray = [{onClickHandler: this.handleLargeBtnClicked, btnText: "LARGE BUTTON"}];
+      let buttonsArray = [
+                            {
+                              onClickHandler: this.handleLargeBtnClicked,
+                              btnText: "LARGE BUTTON",
+                              btnType: "SmallInverseSecondaryButton"
+                            }
+                          ];
     return (
       <div>
         <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
