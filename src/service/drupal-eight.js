@@ -51,10 +51,11 @@ function fetchMenuTreeByName(name) {
   return fetchContent(menuTreeEndpoint.replace(":name", name));
 }
 
-function convertUrlHost(urlStr){
+function convertUrlHost(urlStr) {
   const host = "http://content.sbagov.fearlesstesters.com";
   let newUrl = url.parse(urlStr);
-  return newUrl = host + newUrl.pathname;
+  newUrl = host + newUrl.pathname;
+  return newUrl;
 
 }
 
@@ -147,7 +148,7 @@ function makeParagraphValueFormatter(typeName) {
       const taxonomyTermId = extractTargetId(value);
       newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
         return result.name;
-      }); 
+      });
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
@@ -158,27 +159,27 @@ function makeParagraphValueFormatter(typeName) {
 function formatCallToAction(paragraph) {
   const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
   const cta = {
-    'style': extractValue(paragraph.field_style)
+    style: extractValue(paragraph.field_style)
   };
 
   return fetchNodeById(ctaRef).then((subCta) => {
-    const btnRef = extractTargetId(subCta['field_button_action']);
-    cta['headline'] = extractValue(subCta['field_headline'])
-    cta['blurb'] = extractValue(subCta['field_blurb'])
-    cta['image'] = convertUrlHost(subCta['field_image'][0]['url'])
-    cta['image_alt'] = subCta['field_image'][0]['alt']
-    
+    const btnRef = extractTargetId(subCta.field_button_action);
+    cta.headline = extractValue(subCta.field_headline);
+    cta.blurb = extractValue(subCta.field_blurb);
+    cta.image = convertUrlHost(subCta.field_image[0].url);
+    cta.imageAlt = subCta.field_image[0].alt;
+
     return fetchParagraphId(btnRef).then((btn) => {
-      if(btn['field_link']){
-        cta['btn_title'] = btn['field_link'][0]['title']
-        cta['btn_url'] = btn['field_link'][0]['uri']
-      } else if(btn['field_file'] && btn['field_button_text']){
-        cta['btn_title'] = extractValue(btn['field_button_text'])
-        cta['btn_url'] = convertUrlHost(btn['field_file'][0]['url'])
+      if (btn.field_link) {
+        cta.btnTitle = btn.field_link[0].title;
+        cta.btnUrl = btn.field_link[0].uri;
+      } else if (btn.field_file && btn.field_button_text) {
+        cta.btnTitle = extractValue(btn.field_button_text);
+        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
       }
-      return cta
-    })
-  })
+      return cta;
+    });
+  });
 }
 
 
@@ -189,15 +190,14 @@ function formatParagraph(paragraph) {
       case "call_to_action":
         //need to retrun at some point
         return formatCallToAction(paragraph);
-        break;
 
       default:
         return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-            if (typeName === "image") {
-              return fieldName;
-            }
-            return _.replace(fieldName, typeName, "");
-          }, makeParagraphValueFormatter(typeName))
+          if (typeName === "image") {
+            return fieldName;
+          }
+          return _.replace(fieldName, typeName, "");
+        }, makeParagraphValueFormatter(typeName))
           .then((object) => {
             return _.assign({
               type: _.camelCase(typeName)
