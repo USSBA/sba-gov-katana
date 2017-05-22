@@ -82,7 +82,7 @@ class BusinessGuideArticle extends React.Component {
 
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
-    let breadcrumbs = this.makeBreadcrumbs(this.props.lineage);
+    let breadcrumbs = this.props.lineage? this.makeBreadcrumbs(this.props.lineage) : <div></div>;
     return (
       <div className={styles.container}>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>

@@ -12,7 +12,7 @@ class Breadcrumb extends React.Component {
     );
   }
   render() {
-    if (this.props.items) {
+    if (this.props.items && this.props.items.length > 0) {
       let tail = _.last(this.props.items);
       let tailAnchor = this.makeLastAnchor(tail);
       let rest = _.take(this.props.items, this.props.items.length - 1);
