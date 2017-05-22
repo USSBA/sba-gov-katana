@@ -10,7 +10,7 @@ import LargeInversePrimaryButton from './large-inverse-primary-button/large-inve
 import LargeInverseSecondaryButton from './large-inverse-secondary-button/large-inverse-secondary-button.jsx'
 import LargePrimaryButton from './large-primary-button/large-primary-button.jsx'
 import LargeSecondaryButton from './large-secondary-button/large-secondary-button.jsx'
-import LightButtonJsx from './light-button.jsx/light-button.jsx.jsx'
+//import LightButtonJsx from './light-button.jsx/light-button.jsx.jsx'
 import MainLogo from './main-logo/main-logo.jsx'
 import Multiselect from './multiselect/multiselect.jsx'
 import NewsletterSmallPrimaryButton from './newsletter-small-primary-button/newsletter-small-primary-button.jsx'
@@ -44,7 +44,7 @@ export {
   LargeInverseSecondaryButton,
   LargePrimaryButton,
   LargeSecondaryButton,
-  LightButtonJsx,
+  // LightButtonJsx,
   MainLogo,
   Multiselect,
   NewsletterSmallPrimaryButton,

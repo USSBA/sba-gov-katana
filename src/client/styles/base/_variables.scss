@@ -14,6 +14,12 @@
   }
 }
 
+//theme boilerplate..
+// @include theme(sba-blue, '.LargeInversePrimaryButton', #fff, $sba-blue, #fff);
+// @include theme(byzantine, '.LargeInversePrimaryButton', #fff, $byzantine, #fff);
+// @include theme(money-green, '.LargeInversePrimaryButton', #fff, $money-green, #fff);
+// @include theme(cobalt-blue, '.LargeInversePrimaryButton', #fff, $cobalt-blue, #fff);
+
 @mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
   :global(.#{$theme}){
     #{$component}{
@@ -50,8 +56,16 @@
 $small-screen: 767px;
 $medium-screen: 768px;
 $large-screen: 1080px;
+$max-screen: 1440px;
 
 // Grid
+
+$sba-grid-max: (
+  columns: 12,
+  gutter: 30px,
+  media: "(min-width: $max-screen)",
+);
+
 $sba-grid-large: (
   columns: 12,
   gutter: 30px,
@@ -68,6 +82,24 @@ $sba-grid-small: (
   columns: 6,
   gutter: 20px,
   media: "(max-width: $small-screen)",
+);
+
+$desktop-0gutter: (
+  columns: 12,
+  gutter: 0px,
+  media: "(min-width: $large-screen)",
+);
+
+$tablet-0gutter: (
+  columns: 12,
+  gutter: 0,
+  media: "(min-width: $medium-screen) and (max-width: 1079px)",
+);
+
+$mobile-0gutter: (
+  columns: 6,
+  gutter: 0,
+  media: "(max-width: 768px)",
 );
 
 $desktop-nav: (
