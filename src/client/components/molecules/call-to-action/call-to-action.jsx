@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './call-to-action.scss';
 import SmallInversePrimaryButton from "../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx";
+import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
 //import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
 import cornerGraphicLarge from './corner-graphic-large.png';
 import cornerGraphicSmall from './corner-graphic-small.png';
@@ -18,6 +19,8 @@ class Callout extends React.Component {
       return styles.medium
     } else if (this.props.size === "Small"){
       return styles.small
+    } else if (this.props.size === "Button only"){
+      return styles.btnOnly
     } else {
       return null
     }
@@ -25,17 +28,22 @@ class Callout extends React.Component {
 
   render(){
     return (
-      <div className={styles.ctaContainer + " " + this.ctaSize()}>
-        <img className={styles.image} src={this.props.image} alt={this.props.imageAlt}/>
-        <div className={styles.contentContainer}>
-          <h4 className={styles.headline}>{this.props.headline}</h4>
-          <p className={styles.blurb}>{this.props.blurb}</p>
-          <div className={styles.imageWrapper}></div>
-          <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle} onClick={() => {this.handleClick()}}/>
+      <div className={this.ctaSize()}>
+        <div className={styles.ctaContainer}>
+          <img className={styles.image} src={this.props.image} alt={this.props.imageAlt}/>
+          <div className={styles.contentContainer}>
+            <h4 className={styles.headline}>{this.props.headline}</h4>
+            <p className={styles.blurb}>{this.props.blurb}</p>
+            <div className={styles.imageWrapper}>
+              <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle} onClick={() => {this.handleClick()}}/>
+            </div>
+          </div>
+          <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge}/>
+          <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall}/>
         </div>
-        <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge}/>
-        <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall}/>
+        <SmallInverseSecondaryButton className={styles.btnSecondary} text={this.props.btnTitle} onClick={() => {this.handleClick()}}/>
       </div>
+
     ) ;
   }
 }
