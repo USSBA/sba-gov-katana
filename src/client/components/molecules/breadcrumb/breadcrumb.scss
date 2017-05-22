@@ -1,0 +1,15 @@
+.container {}
+
+.container span {}
+
+.slash {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+@include color-theme(".container a");
+
+.last a {
+    font-weight: bold;
+    text-decoration: none;
+    color: $base-font-color;
+}

@@ -4,6 +4,7 @@ import url from "url";
 import cache from "memory-cache";
 import config from "config";
 import localContacts from "../models/dao/contacts.js";
+import path from "path";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
@@ -58,6 +59,8 @@ function convertUrlHost(urlStr) {
   return newUrl;
 }
 
+
+
 function fetchFormattedContactParagraph(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
@@ -111,6 +114,8 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
   return retVal;
 }
 
+
+
 function formatTaxonomyTerm(data) {
   if (data) {
     const name = extractValue(data.name);
@@ -131,7 +136,7 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
 
-function makeParagraphValueFormatter(typeName) {
+function makeParagraphValueFormatter(typeName, paragraph) {
   return function(value, key) {
     let newValuePromise;
     if (typeName === "text_section" && key === "text") {
@@ -148,12 +153,16 @@ function makeParagraphValueFormatter(typeName) {
       newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
         return result.name;
       });
+    } else if (typeName === "card_collection" && key === "cards") {
+      newValuePromise = fetchCards(paragraph); //eslint-disable-line no-use-before-define
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
     return newValuePromise;
   };
 }
+
+
 
 function formatCallToAction(paragraph) {
   const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
@@ -190,14 +199,13 @@ function formatParagraph(paragraph) {
       case "call_to_action":
         //need to retrun at some point
         return formatCallToAction(paragraph);
-
       default:
         return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
           if (typeName === "image") {
             return fieldName;
           }
           return _.replace(fieldName, typeName, "");
-        }, makeParagraphValueFormatter(typeName))
+        }, makeParagraphValueFormatter(typeName, paragraph))
           .then((object) => {
             return _.assign({
               type: _.camelCase(typeName)
@@ -208,10 +216,23 @@ function formatParagraph(paragraph) {
   return Promise.resolve(null);
 }
 
+function fetchFormattedParagraph(paragraphId) {
+  return fetchParagraphId(paragraphId).then(formatParagraph);
+}
+
+function fetchCards(paragraph) {
+  const cards = paragraph.field_cards || [];
+  const cardIds = _.map(cards, "target_id");
+  if (cards) {
+    return Promise.map(cardIds, fetchFormattedParagraph);
+  }
+
+  return Promise.resolve(null);
+}
+
 
 function formatContactParagraph(paragraph) { //eslint-disable-line complexity
   if (paragraph) {
-    console.log("inside formatContactParagraph");
     const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
     const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
     const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
@@ -234,11 +255,6 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
     });
   }
   return Promise.resolve(null);
-}
-
-
-function fetchFormattedParagraph(paragraphId) {
-  return fetchParagraphId(paragraphId).then(formatParagraph);
 }
 
 function formatNode(data) {
@@ -265,15 +281,21 @@ function formatNode(data) {
 
 }
 
-function formatMenu(data) {
+function formatMenu(data, parentUrl) {
   if (data) {
+    const menuUrl = data.link.url ? _.last(data.link.url.split(path.sep)) : "";
+    const fullUrl = path.join(parentUrl, menuUrl);
+
     let promise = Promise.resolve(null);
     if (data.has_children && data.subtree) {
-      promise = formatMenuTree(data.subtree); //eslint-disable-line no-use-before-define
+      promise = formatMenuTree(data.subtree, fullUrl); //eslint-disable-line no-use-before-define
     }
+
     return promise.then((submenus) => {
       return {
         title: data.link.title,
+        url: menuUrl,
+        fullUrl: fullUrl,
         children: submenus,
         node: data.link.route_parameters ? data.link.route_parameters.node : null,
         weight: data.link.weight
@@ -284,9 +306,12 @@ function formatMenu(data) {
 
 }
 
-function formatMenuTree(data) {
+function formatMenuTree(data, parentUrl) {
   if (data) {
-    return Promise.map(data, formatMenu).then((menu) => {
+    const rootUrl = parentUrl ? parentUrl : "/";
+    return Promise.map(data, (item) => {
+      return formatMenu(item, rootUrl);
+    }).then((menu) => {
       return _.chain(menu).sortBy("weight").reverse()
         .value();
     }, {
@@ -301,8 +326,8 @@ function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-function fetchFormattedMenu(menuName) {
-  return fetchMenuTreeByName(menuName).then(formatMenuTree);
+function fetchFormattedMenu() {
+  return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
 export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu };

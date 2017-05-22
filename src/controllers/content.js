@@ -7,8 +7,7 @@ import _ from "lodash";
 
 const fetchFunctions = {
   node: fetchFormattedNode,
-  taxonomy: fetchFormattedTaxonomyTerm,
-  menu: fetchFormattedMenu
+  taxonomy: fetchFormattedTaxonomyTerm
 };
 
 const fetchContentTypeFunctions = {
@@ -16,7 +15,8 @@ const fetchContentTypeFunctions = {
   blogs: fetchBlogsFromDrupal,
   disaster: fetchDisasterFromDrupalDatabase,
   frontpageslides: fetchFrontPageSlidesFromDrupal,
-  "main-menu": fetchMainMenu
+  "main-menu": fetchMainMenu,
+  menu: fetchFormattedMenu
 };
 
 function fetchContentById(req, res) {

@@ -21,6 +21,7 @@ import DeveloperTester from './organisms/developer-tester/developer-tester.jsx'
 
 import Homepage from './templates/homepage/homepage.jsx';
 import SamplePage from './pages/sample.jsx';
+import RootPage from './pages/root-page.jsx';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 
@@ -45,7 +46,10 @@ const mainRoutes = [
        <Route key={ 5 } path="emailinvalid" component={ EmailConfirmationInvalid } />)
      </Route>
  ),
- (<Route key={ 4} path="/samples/:id/" component={ SamplePage } />)
+ (<Route key={ 4} path="/samples/:id/" component={ SamplePage } />),
+ (<Route key={ 5} path="/:section/" component={ RootPage } />),
+ (<Route key={ 6} path="/:section/:subsection/" component={ RootPage } />),
+ (<Route key={ 7} path="/:section/:subsection/:page" component={ RootPage } />)
 ];
 
 

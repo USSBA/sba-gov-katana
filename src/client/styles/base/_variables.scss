@@ -349,6 +349,15 @@ $primary-color-map:(
   }
 }
 
+@mixin color-theme($component) {
+  @each $name, $value in $primary-color-map {
+     :global(.#{$name}) {
+      #{$component} {
+        color: $value;
+      }
+    }
+  }
+}
 @mixin clearFix{
   &:after{
     content: "";
