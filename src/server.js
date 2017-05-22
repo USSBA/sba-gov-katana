@@ -64,13 +64,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*", "/devtest", "/guide/*"], function(req, res, next) {
-  const pugVariables = _.merge({}, metaVariables, {
-    config: JSON.stringify(req.sessionAndConfig),
-    tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
-  });
-  res.render("main", pugVariables);
-});
+
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
 app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
@@ -111,6 +105,14 @@ app.get("/content/newsletter-registration.json", registerUserForNewsletter);
 import { fetchContentById, fetchContentByType } from "./controllers/content.js";
 app.get("/content/:type/:id.json", fetchContentById);
 app.get("/content/:type.json", fetchContentByType);
+
+app.get(["/", "/*"], function(req, res, next) {
+  const pugVariables = _.merge({}, metaVariables, {
+    config: JSON.stringify(req.sessionAndConfig),
+    tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
+  });
+  res.render("main", pugVariables);
+});
 
 // development error handler
 // will print stacktrace
