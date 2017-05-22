@@ -2,7 +2,7 @@ import React from 'react';
 
 const themes = {
       "sba-blue": ["styleguide"],
-      "byzantine": ['samples'],
+      "byzantine": ['guide',"business-guide"],
       "money-green": ["linc"],
       "cobalt-blue": []
     }
@@ -24,7 +24,9 @@ class Themer extends React.Component {
 
   render() {
     let theme = this.generateTheme();
-    document.body.className = document.body.className + " " + theme;
+    if(document.body.className && document.body.className.indexOf(theme) === -1){
+        document.body.className = document.body.className + " " + theme;
+    }
     return (
       <div className={theme}>
         {this.props.children}

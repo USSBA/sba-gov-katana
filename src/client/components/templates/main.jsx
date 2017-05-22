@@ -11,38 +11,34 @@ class Main extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      disasterAlertIsVisible: false,
+      disasterAlertIsVisible: false
     };
   }
 
   componentWillMount() {
-    let visible = cookie.load('close_disaster_loan_parature') ?
-      false :
-      true;
-    this.setState({
-      disasterAlertIsVisible: visible
-    });
+    let visible = cookie.load('close_disaster_loan_parature')
+      ? false
+      : true;
+    this.setState({disasterAlertIsVisible: visible});
   }
 
   handleClose() {
-    this.setState({
-      disasterAlertIsVisible: false
-    });
+    this.setState({disasterAlertIsVisible: false});
     cookie.save('close_disaster_loan_parature', '1', {
       path: '/',
       secure: true
     });
   }
 
-
   render() {
     return (
-      <div className={ this.state.disasterAlertIsVisible ? styles.alertIsActive : ""}>
+      <div className={this.state.disasterAlertIsVisible
+        ? styles.alertIsActive
+        : ""}>
         <DisasterAlerts disasterAlertIsVisible={this.state.disasterAlertIsVisible} onClose={this.handleClose.bind(this)}/>
-        <Header />
+        <Header/>
         <div className={styles.mainContent}>{this.props.children}</div>
-
-         <Footer/>
+        <Footer/>
         <ModalController/>
       </div>
     )

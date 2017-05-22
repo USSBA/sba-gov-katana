@@ -64,7 +64,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*", "/devtest"], function(req, res, next) {
+app.get(["/", "/linc", "/linc/", "/linc/*", "/styleguide", "/samples/*", "/devtest", "/guide/*"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig),
     tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")

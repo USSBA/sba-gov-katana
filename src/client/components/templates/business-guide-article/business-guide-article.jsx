@@ -7,6 +7,7 @@ import TitleSection from "../../molecules/title-section/title-section.jsx";
 import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
 import TextReadMoreSection from "../../molecules/text-readmore-section/text-readmore-section.jsx";
 import Lookup from "../../molecules/lookup/lookup.jsx"
+import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -62,12 +63,29 @@ class BusinessGuideArticle extends React.Component {
     return paragraphs;
   }
 
+  makeBreadcrumbs(lineage) {
+    return [
+      {
+        title: lineage.sectionData.title,
+        url: lineage.sectionData.fullUrl
+      }, {
+        title: lineage.subsectionData.title,
+        url: lineage.subsectionData.fullUrl
+      }, {
+        title: lineage.pageData.title,
+        url: lineage.pageData.fullUrl
+      }
+    ];
+  }
+
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
+    let breadcrumbs = this.makeBreadcrumbs(this.props.lineage);
     return (
       <div className={styles.container}>
-        <TitleSection gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
-        <div className={styles.feedback}><FeedbackForm/></div>
+        <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
+        <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
+        <div key={3} className={styles.feedback}><FeedbackForm/></div>
 
       </div>
     );

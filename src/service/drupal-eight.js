@@ -4,6 +4,7 @@ import url from "url";
 import cache from "memory-cache";
 import config from "config";
 import localContacts from "../models/dao/contacts.js";
+import path from "path";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
@@ -225,15 +226,21 @@ function formatNode(data) {
 
 }
 
-function formatMenu(data) {
+function formatMenu(data, parentUrl) {
   if (data) {
+    const menuUrl = data.link.url ? _.last(data.link.url.split(path.sep)) : "";
+    const fullUrl = path.join(parentUrl, menuUrl);
+
     let promise = Promise.resolve(null);
     if (data.has_children && data.subtree) {
-      promise = formatMenuTree(data.subtree); //eslint-disable-line no-use-before-define
+      promise = formatMenuTree(data.subtree, fullUrl); //eslint-disable-line no-use-before-define
     }
+
     return promise.then((submenus) => {
       return {
         title: data.link.title,
+        url: menuUrl,
+        fullUrl: fullUrl,
         children: submenus,
         node: data.link.route_parameters ? data.link.route_parameters.node : null,
         weight: data.link.weight
@@ -244,9 +251,12 @@ function formatMenu(data) {
 
 }
 
-function formatMenuTree(data) {
+function formatMenuTree(data, parentUrl) {
   if (data) {
-    return Promise.map(data, formatMenu).then((menu) => {
+    const rootUrl = parentUrl ? parentUrl : "/";
+    return Promise.map(data, (item) => {
+      return formatMenu(item, rootUrl);
+    }).then((menu) => {
       return _.chain(menu).sortBy("weight").reverse()
         .value();
     }, {
@@ -261,8 +271,8 @@ function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
 
-function fetchFormattedMenu(menuName) {
-  return fetchMenuTreeByName(menuName).then(formatMenuTree);
+function fetchFormattedMenu() {
+  return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
 export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu };

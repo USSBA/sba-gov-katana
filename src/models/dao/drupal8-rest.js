@@ -15,9 +15,11 @@ function fetchContent(resource) {
       "Accepts": "application/json"
     }
   };
+  console.log("Submitting request to ", resource);
 
   return Promise.resolve(axios.request(options)
     .then(function(response) {
+      //   console.log("Response was ", response);
       if (response && response.data) {
         return response.data;
       }
