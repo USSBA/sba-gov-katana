@@ -59,6 +59,8 @@ function convertUrlHost(urlStr) {
   return newUrl;
 }
 
+
+
 function fetchFormattedContactParagraph(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
@@ -112,6 +114,8 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
   return retVal;
 }
 
+
+
 function formatTaxonomyTerm(data) {
   if (data) {
     const name = extractValue(data.name);
@@ -132,7 +136,7 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
 
-function makeParagraphValueFormatter(typeName) {
+function makeParagraphValueFormatter(typeName, paragraph) {
   return function(value, key) {
     let newValuePromise;
     if (typeName === "text_section" && key === "text") {
@@ -149,12 +153,16 @@ function makeParagraphValueFormatter(typeName) {
       newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
         return result.name;
       });
+    } else if (typeName === "card_collection" && key === "cards") {
+      newValuePromise = fetchCards(paragraph); //eslint-disable-line no-use-before-define
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
     return newValuePromise;
   };
 }
+
+
 
 function formatCallToAction(paragraph) {
   const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
@@ -191,14 +199,13 @@ function formatParagraph(paragraph) {
       case "call_to_action":
         //need to retrun at some point
         return formatCallToAction(paragraph);
-
       default:
         return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
           if (typeName === "image") {
             return fieldName;
           }
           return _.replace(fieldName, typeName, "");
-        }, makeParagraphValueFormatter(typeName))
+        }, makeParagraphValueFormatter(typeName, paragraph))
           .then((object) => {
             return _.assign({
               type: _.camelCase(typeName)
@@ -209,10 +216,23 @@ function formatParagraph(paragraph) {
   return Promise.resolve(null);
 }
 
+function fetchFormattedParagraph(paragraphId) {
+  return fetchParagraphId(paragraphId).then(formatParagraph);
+}
+
+function fetchCards(paragraph) {
+  const cards = paragraph.field_cards || [];
+  const cardIds = _.map(cards, "target_id");
+  if (cards) {
+    return Promise.map(cardIds, fetchFormattedParagraph);
+  }
+
+  return Promise.resolve(null);
+}
+
 
 function formatContactParagraph(paragraph) { //eslint-disable-line complexity
   if (paragraph) {
-    console.log("inside formatContactParagraph");
     const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
     const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
     const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
@@ -235,11 +255,6 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
     });
   }
   return Promise.resolve(null);
-}
-
-
-function fetchFormattedParagraph(paragraphId) {
-  return fetchParagraphId(paragraphId).then(formatParagraph);
 }
 
 function formatNode(data) {
