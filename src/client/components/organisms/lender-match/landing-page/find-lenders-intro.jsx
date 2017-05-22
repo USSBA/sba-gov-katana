@@ -31,7 +31,17 @@ class FindLendersIntro extends React.Component {
   render() {
     let calloutMessage = "Lender Match (formerly LINC) is a free online referral tool that connects small businesses with participating SBA-approved lenders.";
     let calloutTitle = "Lender Match helps you find lenders.";
-    let buttonsArray = [{onClickHandler: this.handleTellMeHowClicked, btnText:"TELL ME HOW"}, {onClickHandler: this.handleLenderMatchClicked, btnText:"FIND LENDERS"}];
+    let buttonsArray = [
+                            {
+                                onClickHandler: this.handleTellMeHowClicked,
+                                btnText:"TELL ME HOW",
+                                btnType:"SmallInverseSecondaryButton"
+                            },
+                            {   onClickHandler: this.handleLenderMatchClicked,
+                                btnText:"FIND LENDERS",
+                                btnType:"SmallInversePrimaryButton"
+                            }
+                        ];
     return (
         <Hero title={calloutTitle} message={calloutMessage} desktopImage={lenderMatchHero} mobileImage={lenderMatchMobile} buttons={buttonsArray}/>
       );

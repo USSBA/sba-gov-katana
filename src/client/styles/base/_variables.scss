@@ -326,3 +326,11 @@ $primary-color-map:(
     }
   }
 }
+@mixin clearFix{
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+>>>>>>> 408e6055bd81ba21c96bb55c96fe9aaa833f327f

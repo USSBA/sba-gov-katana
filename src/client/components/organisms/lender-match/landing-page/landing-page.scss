@@ -1,3 +1,4 @@
+
 .subTitle {
     margin-top:4px;
     font-size: 13px;
@@ -6,4 +7,8 @@
 
 .subText {
     font-size: 13px;
+}
+
+.landingPage{
+    @include grid-container($sba-grid-medium);
 }

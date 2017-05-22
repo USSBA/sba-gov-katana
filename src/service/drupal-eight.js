@@ -52,6 +52,13 @@ function fetchMenuTreeByName(name) {
   return fetchContent(menuTreeEndpoint.replace(":name", name));
 }
 
+function convertUrlHost(urlStr) {
+  const host = "http://content.sbagov.fearlesstesters.com";
+  let newUrl = url.parse(urlStr);
+  newUrl = host + newUrl.pathname;
+  return newUrl;
+}
+
 function fetchFormattedContactParagraph(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
@@ -149,24 +156,57 @@ function makeParagraphValueFormatter(typeName) {
   };
 }
 
+function formatCallToAction(paragraph) {
+  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
+  const cta = {
+    type: "callToAction",
+    style: extractValue(paragraph.field_style)
+  };
+
+  return fetchNodeById(ctaRef).then((subCta) => {
+    const btnRef = extractTargetId(subCta.field_button_action);
+    cta.headline = extractValue(subCta.field_headline);
+    cta.blurb = extractValue(subCta.field_blurb);
+    cta.image = convertUrlHost(subCta.field_image[0].url);
+    cta.imageAlt = subCta.field_image[0].alt;
+
+    return fetchParagraphId(btnRef).then((btn) => {
+      if (btn.field_link) {
+        cta.btnTitle = btn.field_link[0].title;
+        cta.btnUrl = btn.field_link[0].uri;
+      } else if (btn.field_file && btn.field_button_text) {
+        cta.btnTitle = extractValue(btn.field_button_text);
+        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
+      }
+      return cta;
+    });
+  });
+}
+
 
 function formatParagraph(paragraph) {
   if (paragraph) {
     const typeName = extractTargetId(paragraph.type);
-    return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-      if (typeName === "image") {
-        return fieldName;
-      }
-      return _.replace(fieldName, typeName, "");
-    }, makeParagraphValueFormatter(typeName))
-      .then((object) => {
-        return _.assign({
-          type: _.camelCase(typeName)
-        }, object);
-      });
+    switch (typeName) {
+      case "call_to_action":
+        //need to retrun at some point
+        return formatCallToAction(paragraph);
+
+      default:
+        return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
+          if (typeName === "image") {
+            return fieldName;
+          }
+          return _.replace(fieldName, typeName, "");
+        }, makeParagraphValueFormatter(typeName))
+          .then((object) => {
+            return _.assign({
+              type: _.camelCase(typeName)
+            }, object);
+          });
+    }
   }
   return Promise.resolve(null);
-
 }
 
 

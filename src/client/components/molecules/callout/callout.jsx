@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './callout.scss';
 import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
+import SmallInversePrimaryButton from "../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx";
 
 class Callout extends React.Component {
  render(){
@@ -12,7 +13,12 @@ class Callout extends React.Component {
           <div className={styles.buttonContainer}>
               {
                this.props.buttons.map((item, index)=>{
-                   return (<div className={styles.button} key={index}><SmallInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
+                   if(item.btnType === "SmallInverseSecondaryButton"){
+                       return (<div className={styles.button} key={index}><SmallInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
+                   }
+                   if(item.btnType === "SmallInversePrimaryButton"){
+                       return (<div className={styles.button} key={index}><SmallInversePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);v
+                   }
                })
               }
            </div>

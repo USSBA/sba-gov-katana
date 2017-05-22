@@ -53,6 +53,8 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "lookup") {
           paragraphGridStyle = styles.lookup;
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
+        } else if(item.type === "callToAction") {
+          paragraph = (<div>oioioioioioioi</div>)
         }
       }
       return (
