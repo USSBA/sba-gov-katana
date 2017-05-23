@@ -7,9 +7,10 @@ module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
     devtool: 'eval',
     entry: [
+      'babel-polyfill',
+      'react-hot-loader/patch',
       'webpack-hot-middleware/client',
       'bootstrap-loader',
-      'babel-polyfill',
       './src/client/components/entry-dev.jsx'
     ],
     output: {

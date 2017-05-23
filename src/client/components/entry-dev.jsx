@@ -17,6 +17,7 @@ if (module.hot) {
   module.hot.accept('./routes.jsx', () => {
     // reload the routes file
     let nextRoutes = require('./routes.jsx');
+    console.log("nextRoutes",nextRoutes);
     ReactDOM.render(
       <AppContainer>
         <App routes={ routes } />
