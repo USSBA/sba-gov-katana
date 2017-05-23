@@ -11,7 +11,7 @@ import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
-import { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest } from "./linc-soap-request.js";
+import { sendDataToOca } from "./oca-service.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -65,70 +65,8 @@ function createLenderMatchRegistrationData(data) {
     });
 }
 
-function createLenderMatchSoapResponseData(data) {
-  return lenderMatchSoapResponse.create(data)
-    .then(function(result) {
-      return result;
-    });
-}
 
-function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
-  const now = moment();
-  return lenderMatchSoapResponse.update({
-    processed: now.unix()
-  }, {
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
-    .then((result) => {
-      return result;
-    })
-    .catch((err) => {
-      console.log("EXCEPTION: Problem updating lenderMatchSoapResponse.");
-      throw err;
-    });
-}
 
-function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
-  return EmailConfirmation.destroy({
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
-    .then(function() {
-      return lenderMatchSoapResponse.destroy({
-        where: {
-          lenderMatchRegistrationId: lenderMatchRegistrationId
-        }
-      });
-    })
-    .then(function() {
-      return lenderMatchRegistration.destroy({
-        where: {
-          id: lenderMatchRegistrationId
-        }
-      });
-    })
-    .catch((err) => {
-      console.log("EXCEPTION: Problem deleting lenderMatchRegistration.");
-      throw err;
-    });
-}
-
-function handleSoapResponse(soapResponse) {
-  let retVal;
-  if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
-    retVal = createLenderMatchSoapResponseData(soapResponse);
-  } else if (soapResponse.responseCode === "S") {
-    retVal = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
-    console.log("SUCCESSSSSSSSSSSFUL : deleting EmailConfirmation, LenderMatchSoapResponse and LenderMatchRegistration." + " id = " + soapResponse.lenderMatchRegistrationId); //eslint-disable-line no-useless-concat
-  } else { //eslint-disable-line no-else-return
-    console.log("EXCEPTION: Unknown Response Code received from OCA.");
-    throw new Error("Unknown Response Code receieved from OCA.");
-  }
-  return retVal;
-}
 
 function findUnconfirmedRegistrations() {
   const soonest = moment().subtract(config.get("linc.lookback"), "seconds");
@@ -222,8 +160,6 @@ function findFailedOrPendingMessages(result) {
     });
 
   }, Promise.resolve()).then(function() {
-    console.log("accumulator");
-    console.log(accumulator);
     return accumulator;
   }).catch(function(err) {
     console.log(err);
@@ -234,37 +170,9 @@ function followupEmailJob() {
   return findUnconfirmedRegistrations().then(sendFollowupConfirmations);
 }
 
-function sendDataToOca(lenderMatchRegistrationData) {
-  const soapRequestData = {
-    userName: config.get("oca.soap.username"),
-    password: config.get("oca.soap.password"),
-    ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
-    lenderMatchRegistration: lenderMatchRegistrationData
-  };
-  getEndPointUrl(soapRequestData).then(function(response) {
-    return convertFormDataToXml(response);
-  })
-    .then(function(response) {
-      return createLincSoapRequestEnvelopeXml(response);
-    })
-    .then(function(response) {
-      console.log("before sendLincSoapRequest");
-      console.log(response);
-      return sendLincSoapRequest(response);
-    })
-    .then(function(response) {
-      console.log("before handleSoapResponse");
-      console.log(response);
-      return handleSoapResponse(response);
-    })
-    .catch(function(error) {
-      console.log(error.message);
-    });
-}
 
 function sendMessagesToOca(results) {
   return Promise.map(results, (result) => {
-
     const lenderMatchRegistrationData = {
       id: result.id,
       name: result.name,
@@ -306,7 +214,6 @@ function confirmEmail(token) {
             .then(function(result) {
               return lenderMatchRegistration.findById(emailConfirmation.lenderMatchRegistrationId)
                 .then(function(lenderMatchRegistrationData) {
-                  //sendDataToOca(lenderMatchRegistrationData);
                   return "success";
                 });
             });
@@ -343,4 +250,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export { findConfirmedEmails, handleSoapResponse, updateLenderMatchSoapResponse, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, createLenderMatchSoapResponseData };
+export { findConfirmedEmails, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData };
