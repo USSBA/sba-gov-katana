@@ -14,8 +14,8 @@ class LandingPage extends React.Component {
         <div className={styles.landingPage}>
             <FindLendersIntro tellMeHowAnchor="tell-me-how" />
             <HowItWorksSection />
-            <PreparationChecklist tellMeHowAnchor="tell-me-how" />
-            <HelpfulQuestions/>
+            // <PreparationChecklist tellMeHowAnchor="tell-me-how" />
+            // <HelpfulQuestions/>
         </div>
       );
   }
