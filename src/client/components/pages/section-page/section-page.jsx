@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "./section-page.scss";
+import path from 'path';
 
 class SectionPage extends React.Component {
 
