@@ -47,6 +47,8 @@
 }
 
 .button > button{
+	width: 129px;
+	margin-bottom: 10px;
 	@include grid-media($sba-grid-small){
 		width: 100%;
 	}
