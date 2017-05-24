@@ -16,18 +16,12 @@ class RootPage extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log("componentDidUpdate", arguments);
     this.checkForForward();
-  }
-  componentWillReceiveProps() {
-    console.log("componentWillReceiveProps", arguments);
   }
 
   checkForForward() {
-    console.log("this.props", this.props);
     if (this.props.params.section && this.props.params.subsection && !this.props.params.page) {
       let subSectionData = findSubSection(this.props.menu, this.props.params.section, this.props.params.subsection);
-      console.log("subSectionData", subSectionData);
       if (subSectionData && subSectionData.children && subSectionData.children[0]) {
         let page = subSectionData.children[0].url;
         this.props.locationActions.locationChange(path.join("/", this.props.params.section, this.props.params.subsection, page),{});
@@ -47,7 +41,6 @@ class RootPage extends React.Component {
   }
 
   render() {
-    console.log("RootPage render", this.props);
     if (this.props.params.section && this.props.params.subsection) {
       return this.renderPage(this.props.params.section, this.props.params.subsection, this.props.params.page);
     } else if (this.props.params.section) {
