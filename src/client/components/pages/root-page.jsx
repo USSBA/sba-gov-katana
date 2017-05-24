@@ -17,7 +17,6 @@ class RootPage extends React.Component {
   render() {
     if (this.props.params.section && this.props.params.subsection && this.props.params.page) {
       let pageLineage = findPageLineage(this.props.menu, this.props.params.section, this.props.params.subsection, this.props.params.page);
-      console.log("pageLineage", pageLineage);
       if (pageLineage && pageLineage.pageData) {
         let nodeId = pageLineage.pageData.node;
         return (<Page lineage={pageLineage} nodeId={nodeId}/>);
