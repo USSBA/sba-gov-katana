@@ -1,6 +1,6 @@
 const themes = {
   "sba-blue": ["styleguide"],
-  "byzantine": ['guide', "business-guide"],
+  "byzantine": ["guide", "business-guide"],
   "money-green": ["linc"],
   "cobalt-blue": []
 };
