@@ -116,7 +116,7 @@
 		}
 		& :global(.table-header-label){
 			display: block;
-			@include grid-column(2)
+			@include grid-column(2);
 			font-weight: bold;
 		}
 		& :global(.table-data-wrapper){

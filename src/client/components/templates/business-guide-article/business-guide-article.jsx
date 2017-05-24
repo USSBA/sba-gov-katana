@@ -9,6 +9,10 @@ import TextReadMoreSection from "../../molecules/text-readmore-section/text-read
 import Lookup from "../../molecules/lookup/lookup.jsx"
 import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
+<<<<<<< HEAD
+=======
+import CardCollection from "../../molecules/card-collection/card-collection.jsx";
+>>>>>>> 5f02ee9aa0dfc78eaa8c3893630c3d7fd01d825f
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -56,7 +60,16 @@ class BusinessGuideArticle extends React.Component {
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
         } else if (item.type === "callToAction") {
           paragraphGridStyle = styles.callToAction;
-          paragraph = (<CallToAction key={index} size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}/>)
+          paragraph = (<CallToAction key={index}
+                                     size={item.style}
+                                     headline={item.headline}
+                                     blurb={item.blurb}
+                                     image={item.image}
+                                     imageAlt={item.imageAlt}
+                                     btnTitle={item.btnTitle}
+                                     btnUrl={item.btnUrl} />)
+        } else if(item.type === "cardCollection"){
+            paragraph = (<CardCollection key={index} cards={item.cards}/>);
         }
       }
       return (
