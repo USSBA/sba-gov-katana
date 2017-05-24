@@ -17,7 +17,7 @@ function convertFormDataToXml(reqData) {
 
   const objFormData = {
     "LINC_APP": {
-      "SBA_LINC_ENQ": formatMessage(messageData),
+      "SBA_LINC_ENQ": formatMessage(messageData.lenderMatchRegistration),
       "$version": config.get("linc.ocaVersion")
     }
   };

@@ -8,10 +8,7 @@ import moment from "moment";
 
 
 function createLenderMatchSoapResponseData(data) {
-  return lenderMatchSoapResponse.create(data)
-    .then(function(result) {
-      return result;
-    });
+  return lenderMatchSoapResponse.create(data);
 }
 
 function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
@@ -82,7 +79,8 @@ function sendDataToOca(lenderMatchRegistrationData) {
     ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
     lenderMatchRegistration: lenderMatchRegistrationData
   };
-  return getEndPointUrl(soapRequestData).then(convertFormDataToXml)
+  return getEndPointUrl(soapRequestData)
+    .then(convertFormDataToXml)
     .then(createLincSoapRequestEnvelopeXml)
     .then(sendLincSoapRequest)
     .then(handleSoapResponse)

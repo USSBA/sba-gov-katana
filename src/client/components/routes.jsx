@@ -55,10 +55,10 @@ const mainRoutes = [
   (<Route key={11} path="/:section/:subsection/:page/" component={RootPage}/>)
 ];
 
-const routes = [(
+const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>), (
     <Route key={1} path="/" component={Main}>
       {mainRoutes}
     </Route>
-  ), (<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>)];
+  )];
 
 export default routes;

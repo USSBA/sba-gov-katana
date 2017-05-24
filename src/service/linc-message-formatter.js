@@ -290,16 +290,15 @@ function toNumber(value) {
   return Number(value);
 }
 
-function formatMessage(reqData) {
-  const lenderMatchRegistration = reqData.lenderMatchRegistration;
+function formatMessage(userInfo, lenderMatchRegistration) {
   const firstName = 0;
   const lastName = 1;
 
   return {
     //UserName <= 80 chars
-    "UserName": reqData.sbaGovUser,
+    "UserName": userInfo.sbaGovUser,
     //UniqueID <= 30 chars
-    "UniqueID": formatMoment() + "-" + reqData.dbUserID + "-" + reqData.submissionID,
+    "UniqueID": formatMoment() + "-" + userInfo.dbUserID + "-" + userInfo.submissionID,
     //LoanName <= 255 chars
     "LoanName": lenderMatchRegistration.businessName,
     //ProjectZipCd = 5 chars
@@ -312,7 +311,7 @@ function formatMessage(reqData) {
     "LastName": userName(lenderMatchRegistration.name.split(" ")[lastName]),
     //BusinessWebsite <= 255 chars
     "BusinessWebsite": lenderMatchRegistration.businessWebsite,
-    //FinancialInd <= 
+    //FinancialInd <=
     "FinancialInd": booleanToChar(lenderMatchRegistration.hasFinancialProjections),
     //RevenueInd
     "RevenueInd": booleanToChar(lenderMatchRegistration.isGeneratingRevenue),

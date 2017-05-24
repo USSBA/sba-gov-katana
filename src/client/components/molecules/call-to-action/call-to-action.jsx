@@ -34,9 +34,7 @@ class Callout extends React.Component {
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
             <p className={styles.blurb}>{this.props.blurb}</p>
-            <div className={styles.imageWrapper}>
-              <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle} onClick={() => {this.handleClick()}}/>
-            </div>
+            <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle} onClick={() => {this.handleClick()}}/>
           </div>
           <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge}/>
           <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall}/>

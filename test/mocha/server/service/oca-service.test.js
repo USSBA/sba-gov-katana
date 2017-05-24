@@ -4,7 +4,7 @@ import {
 } from "../../../../src/service/oca-service.js";
 import lenderMatchRegistration from "../../../../src/models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../../../../src/models/lender-match-soap-response.js";
-import EmailConfirmation from "../../../../src/models/email-confirmation.js";
+import emailConfirmation from "../../../../src/models/email-confirmation.js";
 
 describe('linc soap request test', function() {
 
@@ -15,7 +15,7 @@ describe('linc soap request test', function() {
       lenderMatchSoapResponseCreateStub = sinon.stub(lenderMatchSoapResponse, 'create').returns(Promise.resolve(1));
       lenderMatchSoapResponseUpdateStub = sinon.stub(lenderMatchSoapResponse, 'update').returns(Promise.resolve(1));
       lenderMatchRegistrationDeleteStub = sinon.stub(lenderMatchRegistration, 'destroy').returns(Promise.resolve(1));
-      lenderMatchEmailConfirmationDeleteStub = sinon.stub(EmailConfirmation, 'destroy').returns(Promise.resolve(1));
+      lenderMatchEmailConfirmationDeleteStub = sinon.stub(emailConfirmation, 'destroy').returns(Promise.resolve(1));
       lenderMatchSoapResponseDeleteStub = sinon.stub(lenderMatchSoapResponse, 'destroy').returns(Promise.resolve(1));
 
     });
