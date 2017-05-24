@@ -10,7 +10,6 @@ import Lookup from "../../molecules/lookup/lookup.jsx"
 import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 
-
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
     <p>{JSON.stringify(data)}</p>
@@ -55,16 +54,9 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "lookup") {
           paragraphGridStyle = styles.lookup;
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
-        } else if(item.type === "callToAction") {
+        } else if (item.type === "callToAction") {
           paragraphGridStyle = styles.callToAction;
-          paragraph = (<CallToAction key={index} 
-                                     size={item.style} 
-                                     headline={item.headline} 
-                                     blurb={item.blurb} 
-                                     image={item.image} 
-                                     imageAlt={item.imageAlt}
-                                     btnTitle={item.btnTitle}
-                                     btnUrl={item.btnUrl} />)
+          paragraph = (<CallToAction key={index} size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}/>)
         }
       }
       return (
@@ -76,23 +68,16 @@ class BusinessGuideArticle extends React.Component {
   }
 
   makeBreadcrumbs(lineage) {
-    return [
-      {
-        title: lineage.sectionData.title,
-        url: lineage.sectionData.fullUrl
-      }, {
-        title: lineage.subsectionData.title,
-        url: lineage.subsectionData.fullUrl
-      }, {
-        title: lineage.pageData.title,
-        url: lineage.pageData.fullUrl
-      }
-    ];
+    return _.map(lineage, (item) => {
+      return {url: item.fullUrl, title: item.title}
+    });
   }
 
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
-    let breadcrumbs = this.props.lineage? this.makeBreadcrumbs(this.props.lineage) : <div></div>;
+    let breadcrumbs = this.props.lineage
+      ? this.makeBreadcrumbs(this.props.lineage)
+      : <div></div>;
     return (
       <div className={styles.container}>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
