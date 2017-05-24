@@ -268,18 +268,26 @@ function bStatusDescTxt(businessDescription) {
 
 function userName(name) {
 
-  const nameLowerLimit = 0;
-  const nameUpperLimit = 40;
 
   let strName = name;
 
   if (!_.isEmpty(strName)) {
     strName = name.trim();
   }
+  // const nameLowerLimit = 0;
+  // const nameUpperLimit = 40;
   //if (strName.length > nameLowerLimit && strName.length < nameUpperLimit) {
   //  console.log("Name greater less than or greater than length supported by OCA");
   //}
   return strName;
+}
+
+function booleanToChar(value) {
+  return value ? "Y" : "N";
+}
+
+function toNumber(value) {
+  return Number(value);
 }
 
 function formatMessage(reqData) {
@@ -302,18 +310,18 @@ function formatMessage(reqData) {
     "FirstName": userName(lenderMatchRegistration.name.split(" ")[firstName]),
     //LastName <= 80 chars
     "LastName": userName(lenderMatchRegistration.name.split(" ")[lastName]),
-    //PrimaryPhone <= 25 chars
-    "PrimaryPhone": lenderMatchRegistration.phone,
+    //BusinessWebsite <= 255 chars
+    "BusinessWebsite": lenderMatchRegistration.businessWebsite,
+    //FinancialInd <= 
+    "FinancialInd": booleanToChar(lenderMatchRegistration.hasFinancialProjections),
+    //RevenueInd
+    "RevenueInd": booleanToChar(lenderMatchRegistration.isGeneratingRevenue),
     //PrimaryEmail <= 255 chars
     "PrimaryEmail": lenderMatchRegistration.emailAddress,
-    //CurrEmpQty = int
-    "CurrEmpQty": "",
+    //PrimaryPhone <= 25 chars
+    "PrimaryPhone": lenderMatchRegistration.phone,
     //BusinessAgeCd = 2 chars
     "BusinessAgeCd": bAgeCd(lenderMatchRegistration.industryExperience),
-    //GrossRevenueSales  = decimal
-    "GrossRevenueSales": "",
-    //LegalOrgnztnCd = 2 chars
-    "LegalOrgnztnCd": "",
     //BusinessDtlTypCd = 2 chars
     "BusinessDtlTypCd": bDtlTypCd(lenderMatchRegistration.industry),
     //BusinessDtlTypTxt <= 255 chars
@@ -322,20 +330,12 @@ function formatMessage(reqData) {
     "LoanProceedTypCd": lProceedTypCd(lenderMatchRegistration.loanUsage),
     //ProceedOthTypTxt <= 255 chars
     "ProceedOthTypTxt": pOthTypTxt(lenderMatchRegistration.loanDescription),
-    //RequestedAmtRangeCd = 2 chars
-    "RequestedAmtRangeCd": reqAmtRangeCd(lenderMatchRegistration.loanAmount),
-    //CollateralInd Y for Yes  or N for No
-    "CollateralInd": "N",
-    //CollateralDesc <= 255 chars
-    "CollateralDesc": "",
+    //RequestedAmtRangeCd = decimal
+    "RequestedLoanAmount": toNumber(lenderMatchRegistration.loanAmount),
     //BusinessAdvisoryInd Y for Yes or N for No
     "BusinessAdvisoryInd": bAdvisoryInd(lenderMatchRegistration.hasFinancialProjections),
     //BusinessPlanInd Y for Yes or N for No
-    "BusinessPlanInd": bPlanInd(lenderMatchRegistration.hasWrittenPlan),
-    //OtherFundSourceInd Y for Yes or N for No
-    "OtherFundSourceInd": oFundSourceInd(lenderMatchRegistration.isGeneratingRevenue),
-    //BusinessStatusDescTxt <= 1000
-    "BusinessStatusDescTxt": bStatusDescTxt(lenderMatchRegistration.businessDescription),
+    "BusinessPlanInd": booleanToChar(lenderMatchRegistration.hasWrittenPlan),
     //Veteran = unsignedByte means 6 for Yes 1 for No
     "Veteran": vetInd(lenderMatchRegistration.isVeteran)
   };

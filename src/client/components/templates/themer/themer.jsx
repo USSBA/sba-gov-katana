@@ -1,11 +1,5 @@
 import React from 'react';
-
-const themes = {
-      "sba-blue": ["styleguide"],
-      "byzantine": ['guide',"business-guide"],
-      "money-green": ["linc"],
-      "cobalt-blue": []
-    }
+import themes from "./themes.js"
 
 class Themer extends React.Component {
 

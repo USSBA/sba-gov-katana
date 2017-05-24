@@ -24,6 +24,19 @@
 	@include font-size($h1-font-sizes);
 }
 
+@media screen and (max-width: 1260px) and (min-width: 1077px){
+	.title {
+		@include font-size($h2-font-sizes);
+	}
+}
+
+@media screen and (max-width: 930px) and (min-width: 768px){
+	.title {
+		@include font-size($h2-font-sizes);
+	}
+}
+
+
 .button {
 	font-size: 12px;
 	margin-right: 20px;

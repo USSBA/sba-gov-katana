@@ -49,7 +49,7 @@ class MultiSelectBox extends React.Component {
       ? styles.redBorder
       : "";
     let arrowRenderer = () => {
-      return (<img alt="" className={styles.chevronIcon} src={chevron}/>);
+      return (<img alt="dropdown arrow" className={styles.chevronIcon} src={chevron}/>);
     };
     let clearRenderer = this.props.multi
       ? undefined

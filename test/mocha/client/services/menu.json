@@ -1,0 +1,217 @@
+[{
+    "title": "Business Guide",
+    "url": "guide",
+    "fullUrl": "/guide",
+    "children": [{
+        "title": "Test Page",
+        "url": "testpage",
+        "fullUrl": "/guide/testpage",
+        "children": [{
+            "title": "Test Page 3",
+            "url": "testpage3",
+            "fullUrl": "/guide/testpage/testpage3",
+            "children": null,
+            "weight": "-50"
+        }, {
+            "title": "Test Page 2",
+            "url": "testpage2",
+            "fullUrl": "/guide/testpage/testpage2",
+            "children": null,
+            "weight": "-49"
+        }],
+        "weight": "-50"
+    }, {
+        "title": "Plan your business",
+        "url": "plan",
+        "fullUrl": "/guide/plan",
+        "children": [{
+            "title": "Market research and competitive analysis",
+            "url": "market",
+            "fullUrl": "/guide/plan/market",
+            "children": null,
+            "node": "47",
+            "weight": "-50"
+        }, {
+            "title": "Fund your business",
+            "url": "50",
+            "fullUrl": "/guide/plan/50",
+            "children": null,
+            "node": "50",
+            "weight": "-49"
+        }, {
+            "title": "Buy an existing business or franchise",
+            "url": "62",
+            "fullUrl": "/guide/plan/62",
+            "children": null,
+            "node": "62",
+            "weight": "-48"
+        }],
+        "weight": "-49"
+    }, {
+        "title": "Launch your business",
+        "url": "launch",
+        "fullUrl": "/guide/launch",
+        "children": [{
+            "title": "Pick your business location",
+            "url": "48",
+            "fullUrl": "/guide/launch/48",
+            "children": null,
+            "node": "48",
+            "weight": "-50"
+        }, {
+            "title": "Choose a business structure",
+            "url": "59",
+            "fullUrl": "/guide/launch/59",
+            "children": null,
+            "node": "59",
+            "weight": "-49"
+        }, {
+            "title": "Choose your business name",
+            "url": "5",
+            "fullUrl": "/guide/launch/5",
+            "children": null,
+            "node": "5",
+            "weight": "-48"
+        }, {
+            "title": "Register your business",
+            "url": "51",
+            "fullUrl": "/guide/launch/51",
+            "children": null,
+            "node": "51",
+            "weight": "-47"
+        }, {
+            "title": "Register your business",
+            "url": "26",
+            "fullUrl": "/guide/launch/26",
+            "children": null,
+            "node": "26",
+            "weight": "-46"
+        }, {
+            "title": "Get federal and state tax ID numbers",
+            "url": "53",
+            "fullUrl": "/guide/launch/53",
+            "children": null,
+            "node": "53",
+            "weight": "-45"
+        }, {
+            "title": "Apply for licenses and permits",
+            "url": "66",
+            "fullUrl": "/guide/launch/66",
+            "children": null,
+            "node": "66",
+            "weight": "-44"
+        }, {
+            "title": "Open a business bank account",
+            "url": "52",
+            "fullUrl": "/guide/launch/52",
+            "children": null,
+            "node": "52",
+            "weight": "-43"
+        }, {
+            "title": "Get business insurance",
+            "url": "61",
+            "fullUrl": "/guide/launch/61",
+            "children": null,
+            "node": "61",
+            "weight": "-42"
+        }],
+        "weight": "-48"
+    }, {
+        "title": "Manage your business",
+        "url": "manage",
+        "fullUrl": "/guide/manage",
+        "children": [{
+            "title": "Manage your finances",
+            "url": "65",
+            "fullUrl": "/guide/manage/65",
+            "children": null,
+            "node": "65",
+            "weight": "-49"
+        }, {
+            "title": "Hire and manage employees",
+            "url": "69",
+            "fullUrl": "/guide/manage/69",
+            "children": null,
+            "node": "69",
+            "weight": "-48"
+        }, {
+            "title": "Pay taxes",
+            "url": "13",
+            "fullUrl": "/guide/manage/13",
+            "children": null,
+            "node": "13",
+            "weight": "-47"
+        }, {
+            "title": "Stay legally compliant",
+            "url": "55",
+            "fullUrl": "/guide/manage/55",
+            "children": null,
+            "node": "55",
+            "weight": "-46"
+        }, {
+            "title": "Buy assets and equipment",
+            "url": "57",
+            "fullUrl": "/guide/manage/57",
+            "children": null,
+            "node": "57",
+            "weight": "-45"
+        }],
+        "weight": "-47"
+    }, {
+        "title": "Grow your business",
+        "url": "grow",
+        "fullUrl": "/guide/grow",
+        "children": [{
+            "title": "Get more funding",
+            "url": "64",
+            "fullUrl": "/guide/grow/64",
+            "children": null,
+            "node": "64",
+            "weight": "-50"
+        }, {
+            "title": "Expand to new locations",
+            "url": "54",
+            "fullUrl": "/guide/grow/54",
+            "children": null,
+            "node": "54",
+            "weight": "-49"
+        }, {
+            "title": "Merge and acquire businesses",
+            "url": "63",
+            "fullUrl": "/guide/grow/63",
+            "children": null,
+            "node": "63",
+            "weight": "-48"
+        }, {
+            "title": "Native American-owned businesses",
+            "url": "74",
+            "fullUrl": "/guide/grow/74",
+            "children": null,
+            "node": "74",
+            "weight": "-47"
+        }, {
+            "title": "Veteran-owned businesses",
+            "url": "73",
+            "fullUrl": "/guide/grow/73",
+            "children": null,
+            "node": "73",
+            "weight": "-46"
+        }, {
+            "title": "Women-owned businesses",
+            "url": "76",
+            "fullUrl": "/guide/grow/76",
+            "children": null,
+            "node": "76",
+            "weight": "-45"
+        }],
+        "weight": "-46"
+    }],
+    "weight": "-49"
+}, {
+    "title": "Investment capital",
+    "url": "58",
+    "fullUrl": "/58",
+    "children": null,
+    "node": "58",
+    "weight": "-48"
+}]

@@ -16,6 +16,7 @@ function receiveContent(prop, type, query, data) {
 function fetchContent(prop, type, query) {
   return (dispatch) => {
     dispatch(receiveContent(prop, type, query));
+    console.log("query", query);
     return axios.get("/content/" + type + ".json" + (query ? "?" + queryString.stringify(query) : "")).then((response) => {
       return response.data;
     }).then((data) => {
@@ -29,7 +30,7 @@ function shouldFetchContent(state, prop, type, query) {
 }
 export function fetchContentIfNeeded(prop, type, query) {
   return (dispatch, getState) => {
-    if (shouldFetchContent(getState(), prop, type, query)) {
+    if (prop && type && shouldFetchContent(getState(), prop, type, query)) {
       return dispatch(fetchContent(prop, type, query));
     }
     return Promise.resolve();

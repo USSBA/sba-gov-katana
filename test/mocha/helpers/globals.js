@@ -5,7 +5,7 @@ let chaiAsPromised = require('chai-as-promised');
 
 let expect = chai.expect;
 
-require('sinon-as-promised');
+// require('sinon-as-promised');
 chai.use(chaiAsPromised);
 
 let sinon = require('sinon');

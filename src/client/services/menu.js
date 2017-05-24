@@ -31,18 +31,19 @@ function findPage(menu, section, subsection, page) {
   return findByUrl(subsectionData.children, page);
 }
 
-function findPageLineage(menu, section, subsection, page) {
+function findPageLineage(menu, urlFragments) {
   if (!menu) {
     return null;
   }
-  const sectionData = findByUrl(menu, section);
-  const subsectionData = findSubSection(menu, section, subsection);
-  const pageData = findByUrl(subsectionData.children, page);
-  return {
-    pageData: pageData,
-    subsectionData: subsectionData,
-    sectionData: sectionData
-  };
+  const first = urlFragments[0];
+  const rest = _.tail(urlFragments);
+  const child = findByUrl(menu, first);
+  let descendants = null;
+  if (child && child.children) {
+    descendants = findPageLineage(child.children, rest);
+  }
+  const result = _.compact([child].concat(descendants));
+  return result;
 }
 
 
