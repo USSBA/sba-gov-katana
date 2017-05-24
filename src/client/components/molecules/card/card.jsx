@@ -44,8 +44,8 @@ class Card extends React.Component {
         let cardStyle = this.computeCardStyle();
         return (
             <div id={"card-" + this.props.index} className={cardStyle}>
-                {this.props.item.image.url
-                    ? <img className={styles.itemImage} src={this.props.item.image.url}/>
+                {this.props.item.image && this.props.item.image.url
+                    ? <img className={styles.itemImage} src={this.props.item.image.url} alt={this.props.item.image.alt}/>
                     : null}
                 {this.props.item.titleText
                     ? <p className={styles.itemTitle}>{this.props.item.titleText}</p>

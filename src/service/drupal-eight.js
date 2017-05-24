@@ -142,12 +142,15 @@ function makeParagraphValueFormatter(typeName, paragraph) {
     if (typeName === "text_section" && key === "text") {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
     } else if (key === "image") {
-      let imageUrl = url.parse(value[0].url);
-      const host = "http://content.sbagov.fearlesstesters.com";
-      imageUrl = host + imageUrl.pathname;
-      newValuePromise = Promise.resolve({
-        url: imageUrl
-      });
+      if (value[0]) {
+        let imageUrl = url.parse(value[0].url);
+        const host = "http://content.sbagov.fearlesstesters.com";
+        imageUrl = host + imageUrl.pathname;
+        newValuePromise = Promise.resolve({
+          url: imageUrl,
+          alt: value[0].alt
+        });
+      }
     } else if (typeName === "lookup" && key === "contactCategory") {
       const taxonomyTermId = extractTargetId(value);
       newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
