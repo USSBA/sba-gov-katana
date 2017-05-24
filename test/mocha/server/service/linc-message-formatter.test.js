@@ -14,8 +14,35 @@ import {
   pOthTypTxt
 } from "../../../../src/service/linc-message-formatter.js";
 
-
-describe("LINC", function() {
+describe("LINC Message Formatter", function() {
+  describe('#formatMessage', function() {
+    it('should have all the correct fields filled', function() {
+      let output = formatMessage({
+        dbUserID: 1,
+        submissionID: 1,
+        sbaGovUser: "newUser"
+      }, {
+        id: "some-test-id",
+        name: "Test User",
+        phone: "123-456-7890",
+        emailAddress: "test@test.test",
+        businessName: "businessName",
+        businessZip: "21113",
+        industry: "AGRICULTURE",
+        industryExperience: "Less than 1 year",
+        loanAmount: "10000",
+        loanDescription: "loanDescription",
+        loanUsage: "REMODELING AN EXISTING LOCATION",
+        businessWebsite: "businessWebsite",
+        businessDescription: "businessDescription",
+        hasWrittenPlan: true,
+        hasFinancialProjects: true,
+        isGeneratingRevenue: true,
+        isVeteran: true
+      });
+      output.should.have.property('UserName');
+    });
+  })
   describe('Soap Request Formatting', function() {
 
     it('should accept a userName that is a string of length between 1 and less than 40 characters', function() {
