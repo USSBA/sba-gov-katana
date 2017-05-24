@@ -15,10 +15,9 @@ class Page extends React.Component {
   }
 
   render() {
-    console.log("Page", this.props);
-    if (this.props.data) {
-      if (this.props.lineage.sectionData.url === "guide" || this.props.lineage.sectionData.url === "business-guide") {
-        return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage} />);
+    if (this.props.data && this.props.lineage) {
+      if (this.props.lineage[0].url === "guide" || this.props.lineage[0].url === "business-guide") {
+        return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage}/>);
       }
     }
     return (
