@@ -9,10 +9,7 @@ import TextReadMoreSection from "../../molecules/text-readmore-section/text-read
 import Lookup from "../../molecules/lookup/lookup.jsx"
 import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
-<<<<<<< HEAD
-=======
 import CardCollection from "../../molecules/card-collection/card-collection.jsx";
->>>>>>> 5f02ee9aa0dfc78eaa8c3893630c3d7fd01d825f
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
