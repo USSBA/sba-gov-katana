@@ -9,7 +9,7 @@ import * as ContentActions from "../../../actions/content.js";
 class DisasterAlerts extends React.Component {
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("disaster", "disaster", {});
+    this.props.actions.fetchContentIfNeeded("disaster", "disaster");
   }
 
   render() {

@@ -27,7 +27,7 @@ function shouldFetchContent(state, type, id) {
 }
 export function fetchContentIfNeeded(type, id) {
   return (dispatch, getState) => {
-    if (shouldFetchContent(getState(), type, id)) {
+    if (type && id && shouldFetchContent(getState(), type, id)) {
       return dispatch(fetchContent(type, id));
     }
     return Promise.resolve();
