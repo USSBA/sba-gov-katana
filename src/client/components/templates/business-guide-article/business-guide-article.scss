@@ -24,3 +24,10 @@
     @include grid-push(3);
     padding-bottom: 30px;
 }
+
+.callToAction {
+    @include grid-column(12, $sba-grid-large);
+    @include grid-media($sba-grid-small){
+        @include grid-column(6, $mobile-0gutter)
+    }
+}

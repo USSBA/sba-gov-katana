@@ -1,7 +1,7 @@
 let sinon = require('sinon');
 import {
   handleSoapResponse
-} from "../../../../src/service/linc-service.js";
+} from "../../../../src/service/oca-service.js";
 import lenderMatchRegistration from "../../../../src/models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../../../../src/models/lender-match-soap-response.js";
 import EmailConfirmation from "../../../../src/models/email-confirmation.js";

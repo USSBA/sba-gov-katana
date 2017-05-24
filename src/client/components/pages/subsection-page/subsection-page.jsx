@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from "./subsection-page.scss"
 
 class SubsectionPage extends React.Component {
 
@@ -6,7 +7,7 @@ class SubsectionPage extends React.Component {
     if (this.props.subSectionData) {
       let subsectionData = this.props.subSectionData;
       return (
-        <div>
+        <div className={styles.container}>
           <p>{subsectionData.title}</p>
           <ol>
             {subsectionData.children

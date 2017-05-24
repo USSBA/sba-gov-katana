@@ -15,7 +15,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("blogs", "blogs", {});
+    this.props.actions.fetchContentIfNeeded("blogs", "blogs");
   }
 
   returnFormatedDate(date) {

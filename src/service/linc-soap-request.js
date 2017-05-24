@@ -4,16 +4,21 @@ const request = require("request");
 const xmlToJs = require("xml2js");
 const DOMParser = require("xmldom").DOMParser; // eslint-disable-line id-match
 const XmlSerializer = require("xmldom").XMLSerializer; // eslint-disable-line id-match
-
+import config from "config";
+import _ from "lodash";
 
 function convertFormDataToXml(reqData) {
-  reqData.dbUserID = 1; // eslint-disable-line no-param-reassign
-  reqData.submissionID = 1; // eslint-disable-line no-param-reassign
-  reqData.sbaGovUser = "newUser"; // eslint-disable-line no-param-reassign
+
+  const messageData = _.merge({}, reqData, {
+    dbUserID: 1,
+    submissionID: 1,
+    sbaGovUser: "newUser"
+  });
 
   const objFormData = {
     "LINC_APP": {
-      "SBA_LINC_ENQ": formatMessage(reqData)
+      "SBA_LINC_ENQ": formatMessage(messageData),
+      "$version": config.get("linc.ocaVersion")
     }
   };
 
@@ -156,4 +161,4 @@ function createLincSoapRequestEnvelopeXml(reqData) {
   return reqData;
 }
 
-export { createLincSoapRequestEnvelopeXml, parseResponse, getEndPointFromXml, getEndPointUrl, sendLincSoapRequest, convertFormDataToXml };
+export { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest };
