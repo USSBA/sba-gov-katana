@@ -1,0 +1,123 @@
+.twoColumn{
+  @include grid-column(6);
+  margin-bottom: 10px;
+  height: 620px;
+  .itemImage{
+    border: 1px solid #9B9B9B;
+  }
+  .itemTitle{
+    @include font-size($h4-font-sizes);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .itemHr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: 2px;
+    width: 60px;
+    border: 2px solid #609F00;
+  }
+  .itemSubTitle{
+    @include font-size($paragraph-font-sizes);
+  }
+  @include grid-media($sba-grid-small) {
+    @include grid-column(12);
+    height: auto;
+    width: auto;
+  }
+}
+
+.threeColumn{
+  @include grid-column(4);
+  margin-bottom: 10px;
+  height: 620px;
+  .itemImage{
+    border: 1px solid #9B9B9B;
+  }
+  .itemTitle{
+    @include font-size($h4-font-sizes);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .itemHr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: 2px;
+    width: 30px;
+    border: 2px solid #609F00;
+  }
+  .itemSubTitle{
+    @include font-size($paragraph-font-sizes);
+  }
+  @include grid-media($sba-grid-small) {
+    @include grid-column(12);
+    height: auto;
+    width: auto;
+  }
+}
+
+.fourColumn{
+  @include grid-column(3);
+  margin-bottom: 10px;
+  height: 620px;
+  .itemImage{
+    border: 1px solid #9B9B9B;
+  }
+  .itemTitle{
+    @include font-size($h4-font-sizes);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .itemHr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: 2px;
+    width: 30px;
+    border: 2px solid #609F00;
+  }
+  .itemSubTitle{
+    @include font-size($paragraph-font-sizes);
+  }
+  @include grid-media($sba-grid-small) {
+    @include grid-column(12);
+    height: auto;
+    width: auto;
+  }
+}
+.sixColumn{
+  @include grid-column(2);
+  margin-bottom: 10px;
+  height: 780px;
+
+  .itemImage{
+    border: 1px solid #9B9B9B;
+  }
+  .itemTitle{
+    @include font-size($h4-font-sizes);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .itemHr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: 2px;
+    width: 30px;
+    border: 2px solid #609F00;
+  }
+  .itemSubTitle{
+    @include font-size($paragraph-font-sizes);
+  }
+  @include grid-media($sba-grid-small) {
+    @include grid-column(12);
+    height: auto;
+    width: auto;
+  }
+}

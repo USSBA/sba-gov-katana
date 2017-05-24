@@ -8,6 +8,7 @@ import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
 import TextReadMoreSection from "../../molecules/text-readmore-section/text-readmore-section.jsx";
 import Lookup from "../../molecules/lookup/lookup.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
+import CardCollection from "../../molecules/card-collection/card-collection.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -55,6 +56,8 @@ class BusinessGuideArticle extends React.Component {
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
         } else if(item.type === "callToAction") {
           paragraph = (<div>oioioioioioioi</div>)
+        } else if(item.type === "cardCollection"){
+          paragraph = (<CardCollection key={index} cards={item.cards}/>);
         }
       }
       return (
