@@ -6,16 +6,12 @@ import moment from "moment";
 import config from "config";
 import _ from "lodash";
 import Promise from "bluebird";
-import {
-  sendConfirmationEmail
-} from "../util/emailer.js";
+import { sendConfirmationEmail } from "../util/emailer.js";
 import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
-import {
-  sendDataToOca
-} from "./oca-service.js";
+import { sendDataToOca, handleSoapResponse } from "./oca-service.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -233,20 +229,20 @@ function confirmEmail(token) {
 
 function resendConfirmationEmail(emailAddress) {
   return lenderMatchRegistration.findOne({
-      where: {
-        emailAddress: emailAddress
-      },
-      order: [
-        ["createdAt", "DESC"]
-      ],
-      limit: 1
-    })
+    where: {
+      emailAddress: emailAddress
+    },
+    order: [
+      ["createdAt", "DESC"]
+    ],
+    limit: 1
+  })
     .then(function(lenderMatchRegistrationData) {
       return EmailConfirmation.findOne({
-          where: {
-            lenderMatchRegistrationId: lenderMatchRegistrationData.id
-          }
-        })
+        where: {
+          lenderMatchRegistrationId: lenderMatchRegistrationData.id
+        }
+      })
         .then((emailConfirmation) => {
           return [lenderMatchRegistrationData.name, lenderMatchRegistrationData.emailAddress, lenderMatchRegistrationData.id, emailConfirmation.token, false];
         });
@@ -255,14 +251,4 @@ function resendConfirmationEmail(emailAddress) {
 }
 
 
-export {
-  findConfirmedEmails,
-  createLenderMatchRegistration,
-  sendDataToOcaJob,
-  findFailedOrPendingMessages,
-  sendMessagesToOca,
-  confirmEmail,
-  followupEmailJob,
-  resendConfirmationEmail,
-  createLenderMatchRegistrationData
-};
+export { findConfirmedEmails, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData };

@@ -259,8 +259,9 @@ function toNumber(value) {
 
 function shorten(bufStr) {
   // we lose some uniqueness here; someday should find a better way to encode this
-  let shorter = bufStr.replace(/-/g, "")
-  return shorter.substring(0, 29);
+  const shorter = bufStr.replace(/-/g, "");
+  const maxIdLength = 29;
+  return shorter.substring(0, maxIdLength);
 }
 
 function formatMessage(userId, lenderMatchRegistration) {
@@ -313,16 +314,4 @@ function formatMessage(userId, lenderMatchRegistration) {
   };
 }
 
-export {
-  userName,
-  mapToUnsignedByte,
-  reqAmtRangeCd,
-  formatMoment,
-  bAgeCd,
-  bDtlTypCd,
-  lProceedTypCd,
-  formatMessage,
-  booleanToChar,
-  toNumber,
-  trimToSize
-};
+export { userName, mapToUnsignedByte, reqAmtRangeCd, formatMoment, bAgeCd, bDtlTypCd, lProceedTypCd, formatMessage, booleanToChar, toNumber, trimToSize };

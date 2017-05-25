@@ -1,7 +1,5 @@
 import axios from "axios";
-import {
-  formatMessage
-} from "../service/linc-message-formatter.js";
+import { formatMessage } from "../service/linc-message-formatter.js";
 const request = require("request");
 const xmlToJs = require("xml2js");
 const DOMParser = require("xmldom").DOMParser; // eslint-disable-line id-match
@@ -11,11 +9,11 @@ import _ from "lodash";
 
 
 function getEndPointFromXml(response) {
-  let responseData = response.data;
+  const responseData = response.data;
   const parser = new DOMParser();
   const xmlRespDoc = parser.parseFromString(responseData);
-  let targetNode = xmlRespDoc.getElementsByTagName("wsdlsoap:address")[0];
-  let location = targetNode.getAttribute("location");
+  const targetNode = xmlRespDoc.getElementsByTagName("wsdlsoap:address")[0];
+  const location = targetNode.getAttribute("location");
   return location;
 }
 
@@ -126,9 +124,9 @@ function parseResponse(xmlBody) {
   };
 }
 
-function sendLincSoapRequest(endpoint, bodyXML) {
+function sendLincSoapRequest(endpoint, bodyXml) {
 
-  // console.log("Sending Data to OCA", bodyXML);
+  // console.log("Sending Data to OCA", bodyXml);
 
   return new Promise((resolve, reject) => {
 
@@ -137,7 +135,7 @@ function sendLincSoapRequest(endpoint, bodyXML) {
       method: "POST",
       followAllRedirects: true,
       followOriginalHttpMethod: true,
-      body: bodyXML,
+      body: bodyXml,
       timeout: 5000,
       secureProtocol: "TLSv1_2_method",
       headers: {
@@ -161,9 +159,4 @@ function sendLincSoapRequest(endpoint, bodyXML) {
 
 
 
-export {
-  getEndPointUrl,
-  convertFormDataToXml,
-  createSoapEnvelope,
-  sendLincSoapRequest
-};
+export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest };
