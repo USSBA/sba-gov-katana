@@ -1,4 +1,5 @@
 let sinon = require('sinon');
+import chai from "chai";
 import {
   handleSoapResponse
 } from "../../../../src/service/oca-service.js";
@@ -50,51 +51,30 @@ describe('linc soap request test', function() {
       sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakePendingResponse);
     });
 
-    /*it('should result in deleting a lenderMatchRegistration when responseCode is S', function() {
-      let fakeUpdateResponse = {
+    it('should result in deleting all related objects when responseCode is S', function(done) {
+      let fakeSuccessResponse = {
         responseCode: "S",
         errorMessageEnglish: "Unable to perform service at this time.",
         errorMessageTechnical: "Unable to perform service at this time.",
         lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
       }
-      handleSoapResponse(fakeUpdateResponse);
-      sinon.assert.calledWith(lenderMatchRegistrationDeleteStub,
-          {
-              where: {
-                  id: fakeUpdateResponse.lenderMatchRegistrationId
-              }
-          });
-    });*/
-
-    /*it('should result in deleting a lenderMatchSoapResponse when responseCode is S', function() {
-        let fakeUpdateResponse = {
-            responseCode: "S",
-            errorMessageEnglish: "Unable to perform service at this time.",
-            errorMessageTechnical: "Unable to perform service at this time.",
-            lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
-        }
-        handleSoapResponse(fakeUpdateResponse);
-        sinon.assert.calledWith(lenderMatchSoapResponseDeleteStub,
-            {
-                where: {
-                    lenderMatchRegistrationId: fakeUpdateResponse.lenderMatchRegistrationId
-                }
-            });
-    });*/
-
-    it('should result in deleting an EmailConfirmation when responseCode is S', function() {
-      let fakeUpdateResponse = {
-        responseCode: "S",
-        errorMessageEnglish: "Unable to perform service at this time.",
-        errorMessageTechnical: "Unable to perform service at this time.",
-        lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
-      }
-      handleSoapResponse(fakeUpdateResponse);
-      sinon.assert.calledWith(lenderMatchEmailConfirmationDeleteStub, {
-        where: {
-          lenderMatchRegistrationId: fakeUpdateResponse.lenderMatchRegistrationId
-        }
-      });
+      handleSoapResponse(fakeSuccessResponse).then(function() {
+        sinon.assert.calledWith(lenderMatchEmailConfirmationDeleteStub, {
+          where: {
+            lenderMatchRegistrationId: fakeSuccessResponse.lenderMatchRegistrationId
+          }
+        });
+        sinon.assert.calledWith(lenderMatchSoapResponseDeleteStub, {
+          where: {
+            lenderMatchRegistrationId: fakeSuccessResponse.lenderMatchRegistrationId
+          }
+        });
+        sinon.assert.calledWith(lenderMatchRegistrationDeleteStub, {
+          where: {
+            id: fakeSuccessResponse.lenderMatchRegistrationId
+          }
+        });
+      }).then(done);
     });
 
     it('should result in an exception if passed an unknown responseCode', function() {
@@ -104,10 +84,7 @@ describe('linc soap request test', function() {
         errorMessageTechnical: "Unable to perform service at this time.",
         lenderMatchRegistrationId: "4b4cb2e1-1ea3-488d-9ee5-37bd80ae8904"
       };
-
-      (function() {
-        handleSoapResponse(fakeUpdateResponse);
-      }).should.throw("Unknown Response Code receieved from OCA.");
+      handleSoapResponse.bind(this, fakeUpdateResponse).should.throw("Unknown Response Code receieved from OCA.");
     });
 
   });

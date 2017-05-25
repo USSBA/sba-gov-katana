@@ -69,9 +69,4 @@ describe('OCA SOAP Client', function() {
       result.should.equal(expected);
     })
   })
-  // describe('#sendLincSoapRequest', function() {
-  //   it('should', function() {
-  //
-  //   })
-  // })
 })

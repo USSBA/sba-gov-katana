@@ -57,16 +57,12 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
 
 
 function handleSoapResponse(soapResponse) {
-  let returnPromise;
   if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
-    returnPromise = createLenderMatchSoapResponseData(soapResponse);
+    return createLenderMatchSoapResponseData(soapResponse);
   } else if (soapResponse.responseCode === "S") {
-    returnPromise = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
-  } else { //eslint-disable-line no-else-return
-    console.log("EXCEPTION: Unknown Response Code received from OCA.");
-    throw new Error("Unknown Response Code receieved from OCA.");
+    return deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
   }
-  return returnPromise;
+  throw new Error("Unknown Response Code receieved from OCA.");
 }
 
 function sendDataToOca(lenderMatchRegistrationData) {
