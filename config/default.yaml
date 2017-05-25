@@ -35,7 +35,7 @@ linc:
     resendEmailCron: '0 0 * * * *'
     sendToOcaJobEnabled: false
     ocaSoapCron: '0 * * * * *'
-    ocaVersion: 2.0
+    ocaVersion: "2.0"
     lookback: 86400
     numberOfSecondsForWhichEmailIsValid: 172800
 database:
@@ -57,4 +57,4 @@ oca:
     soap:
         username: placeholder
         password: placeholder
-        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.cfc
+        wsdlUrl: https://catweb.sba.gov/linc/ws/linc.wsdl

@@ -30,6 +30,4 @@ linc:
     confirmationEmailBase: http://localhost:3000
 oca:
     soap:
-        username: placeholder
-        password: placeholder
-        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.cfc
+        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl

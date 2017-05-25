@@ -1,10 +1,16 @@
 import config from "config";
-import { getEndPointUrl, convertFormDataToXml, createLincSoapRequestEnvelopeXml, sendLincSoapRequest } from "./linc-soap-request.js";
+import {
+  getEndPointUrl,
+  convertFormDataToXml,
+  createSoapEnvelope,
+  sendLincSoapRequest
+} from "./oca-soap-client.js";
 import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
-import EmailConfirmation from "../models/email-confirmation.js";
+import emailConfirmation from "../models/email-confirmation.js";
 
 import moment from "moment";
+import _ from "lodash";
 
 
 function createLenderMatchSoapResponseData(data) {
@@ -12,16 +18,12 @@ function createLenderMatchSoapResponseData(data) {
 }
 
 function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
-  const now = moment();
   return lenderMatchSoapResponse.update({
-    processed: now.unix()
-  }, {
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
-    .then((result) => {
-      return result;
+      processed: moment().unix()
+    }, {
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
     })
     .catch((err) => {
       console.log("EXCEPTION: Problem updating lenderMatchSoapResponse.");
@@ -31,11 +33,11 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
 
 
 function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
-  return EmailConfirmation.destroy({
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
+  return emailConfirmation.destroy({
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
     .then(function() {
       return lenderMatchSoapResponse.destroy({
         where: {
@@ -60,31 +62,36 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
 
 
 function handleSoapResponse(soapResponse) {
-  let retVal;
+  let returnPromise;
   if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
-    retVal = createLenderMatchSoapResponseData(soapResponse);
+    returnPromise = createLenderMatchSoapResponseData(soapResponse);
   } else if (soapResponse.responseCode === "S") {
-    retVal = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
+    returnPromise = deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
   } else { //eslint-disable-line no-else-return
     console.log("EXCEPTION: Unknown Response Code received from OCA.");
     throw new Error("Unknown Response Code receieved from OCA.");
   }
-  return retVal;
+  return returnPromise;
 }
 
 function sendDataToOca(lenderMatchRegistrationData) {
-  const soapRequestData = {
-    userName: config.get("oca.soap.username"),
-    password: config.get("oca.soap.password"),
-    ocaSoapWsdl: config.get("oca.soap.wsdlUrl"),
-    lenderMatchRegistration: lenderMatchRegistrationData
-  };
-  return getEndPointUrl(soapRequestData)
-    .then(convertFormDataToXml)
-    .then(createLincSoapRequestEnvelopeXml)
-    .then(sendLincSoapRequest)
-    .then(handleSoapResponse)
-    .catch(console.error);
+  let sbagovUserId = "Username"
+  let dataAsXML = convertFormDataToXml(sbagovUserId, lenderMatchRegistrationData);
+  let soapEnvelope = createSoapEnvelope(config.get("oca.soap.username"), config.get("oca.soap.password"), dataAsXML);
+
+  let promise = getEndPointUrl(config.get("oca.soap.wsdlUrl"))
+    .then(function(endpoint) {
+      return sendLincSoapRequest(endpoint, soapEnvelope);
+    })
+    .then(function(response) {
+      return _.merge({}, response, {
+        lenderMatchRegistrationId: lenderMatchRegistrationData.id
+      })
+    });
+  return Promise.resolve(promise); // wrap in a bluebird promise
 }
 
-export { sendDataToOca, handleSoapResponse };
+export {
+  sendDataToOca,
+  handleSoapResponse
+};
