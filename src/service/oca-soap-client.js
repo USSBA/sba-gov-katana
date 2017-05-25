@@ -14,7 +14,9 @@ function getEndPointFromXml(response) {
   let responseData = response.data;
   const parser = new DOMParser();
   const xmlRespDoc = parser.parseFromString(responseData);
-  return xmlRespDoc.getElementsByTagName("wsdlsoap:address")[0].getAttribute("location");
+  let targetNode = xmlRespDoc.getElementsByTagName("wsdlsoap:address")[0];
+  let location = targetNode.getAttribute("location");
+  return location;
 }
 
 function getEndPointUrl(wsdlUrl) {
@@ -125,6 +127,9 @@ function parseResponse(xmlBody) {
 }
 
 function sendLincSoapRequest(endpoint, bodyXML) {
+
+  // console.log("Sending Data to OCA", bodyXML);
+
   return new Promise((resolve, reject) => {
 
     const options = {
@@ -146,7 +151,7 @@ function sendLincSoapRequest(endpoint, bodyXML) {
         console.log(error);
         reject(error);
       } else {
-        console.log("response body", body);
+        // console.log("Receiving Data from OCA", body);
         const resp = parseResponse(body);
         resolve(resp);
       }
