@@ -7,7 +7,7 @@ class Breadcrumb extends React.Component {
   makeLastAnchor(tail) {
     return (
       <span className={styles.last} key={20}>
-        <a href={tail.url+"/"}>{tail.title}</a>
+        <a id="breadcrumb-current" href={tail.url+"/"}>{tail.title}</a>
       </span>
     );
   }
@@ -22,7 +22,7 @@ class Breadcrumb extends React.Component {
           <span className={styles.slash}>/</span>
           {rest
             ? rest.map((item, index) => {
-              return [(<a href={item.url+"/"}>{item.title}</a>),(
+              return [(<a id={"breadcrumb-level"+index} href={item.url+"/"}>{item.title}</a>),(
                   <span className={styles.slash}>/</span>
               )];
             })
