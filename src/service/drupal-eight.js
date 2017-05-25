@@ -1,7 +1,6 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
-import cache from "memory-cache";
 import config from "config";
 import localContacts from "../models/dao/contacts.js";
 import path from "path";
@@ -82,13 +81,9 @@ function fetchContacts() {
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
     return Promise.resolve(localContacts);
-  } else if (cache.get("contacts")) {
-    return Promise.resolve(cache.get("contacts"));
+  } else {
+    return fetchContent(contactEndpoint).then(formatContacts);
   }
-  return fetchContent(contactEndpoint).then(formatContacts).tap(function(contacts) {
-    cache.put("contacts", contacts);
-  });
-
 }
 
 // this is an abstract function that takes an object, removes properties that do not
