@@ -13,14 +13,9 @@ const contactEndpoint = "contacts";
 const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 
-import {
-  fetchById,
-  fetchContent
-} from "../models/dao/drupal8-rest.js";
+import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
 
-import {
-  sanitizeTextSectionHtml
-} from "../util/formatter.js";
+import { sanitizeTextSectionHtml } from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractValue(object, key) {
@@ -204,11 +199,11 @@ function formatParagraph(paragraph) {
         return formatCallToAction(paragraph);
       default:
         return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-            if (typeName === "image") {
-              return fieldName;
-            }
-            return _.replace(fieldName, typeName, "");
-          }, makeParagraphValueFormatter(typeName, paragraph))
+          if (typeName === "image") {
+            return fieldName;
+          }
+          return _.replace(fieldName, typeName, "");
+        }, makeParagraphValueFormatter(typeName, paragraph))
           .then((object) => {
             return _.assign({
               type: _.camelCase(typeName)
@@ -333,14 +328,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export {
-  fetchFormattedNode,
-  fetchFormattedTaxonomyTerm,
-  nodeEndpoint,
-  taxonomyEndpoint,
-  paragraphEndpoint,
-  fetchContacts,
-  contactEndpoint,
-  fetchParagraphId,
-  fetchFormattedMenu
-};
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu };
