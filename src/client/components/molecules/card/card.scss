@@ -1,7 +1,7 @@
 .twoColumn{
   @include grid-column(6);
   margin-bottom: 10px;
-  height: 620px;
+  height: auto;
   text-align: center;
 
   .itemImage{
@@ -33,7 +33,7 @@
 .threeColumn{
   @include grid-column(4);
   margin-bottom: 10px;
-  height: 620px;
+  height: auto;
   text-align: center;
 
   .itemImage{
