@@ -4,6 +4,7 @@ import url from "url";
 import config from "config";
 import localContacts from "../models/dao/contacts.js";
 import path from "path";
+import cache from "memory-cache";
 
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
@@ -85,6 +86,7 @@ function fetchContacts() {
     return fetchContent(contactEndpoint).then(formatContacts);
   }
 }
+
 
 // this is an abstract function that takes an object, removes properties that do not
 // start with the given prefix and then formats the key name using the prefix and

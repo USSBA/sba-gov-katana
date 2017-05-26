@@ -4,7 +4,6 @@ import { fetchMainMenu } from "../models/dao/main-menu.js";
 import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
-
 import cache from "memory-cache";
 
 const fetchFunctions = {
@@ -23,27 +22,14 @@ const fetchContentTypeFunctions = {
 
 function fetchContentById(req, res) {
   if (req.params && req.params.type && req.params.id) {
-    const type = req.params.type;
-    const id = req.params.id;
-    const compositeKey = type + "-" + id;
-    let promise;
-    if (cache.get(compositeKey)) {
-      promise = Promise.resolve(cache.get(compositeKey));
-    } else {
-      promise = fetchFunctions[req.params.type](req.params.id)
-        .then((result) => {
-          cache.put(compositeKey, result);
-          return result;
-        });
-    }
-
-    promise.then(function(data) {
-      if (data && !_.isEmpty(data)) {
-        res.status(HttpStatus.OK).send(data);
-      } else {
-        res.status(HttpStatus.NOT_FOUND).send();
-      }
-    })
+    fetchFunctions[req.params.type](req.params.id)
+      .then(function(data) {
+        if (data && !_.isEmpty(data)) {
+          res.status(HttpStatus.OK).send(data);
+        } else {
+          res.status(HttpStatus.NOT_FOUND).send();
+        }
+      })
       .catch((error) => {
         console.error(error);
         res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
@@ -55,24 +41,14 @@ function fetchContentById(req, res) {
 
 function fetchContentByType(req, res) {
   if (req.params && req.params.type) {
-    const type = req.params.type;
-    let promise;
-    if (cache.get(type)) {
-      promise = Promise.resolve(cache.get(type));
-    } else {
-      promise = fetchContentTypeFunctions[type]()
-        .then((result) => {
-          cache.put(type, result);
-          return result;
-        });
-    }
-    promise.then(function(data) {
-      if (data && !_.isEmpty(data)) {
-        res.status(HttpStatus.OK).send(data);
-      } else {
-        res.status(HttpStatus.NOT_FOUND).send();
-      }
-    })
+    fetchContentTypeFunctions[req.params.type]()
+      .then(function(data) {
+        if (data && !_.isEmpty(data)) {
+          res.status(HttpStatus.OK).send(data);
+        } else {
+          res.status(HttpStatus.NOT_FOUND).send();
+        }
+      })
       .catch((error) => {
         console.error(error);
         res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content.");
