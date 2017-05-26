@@ -310,8 +310,7 @@ function formatMenuTree(data, parentUrl) {
     return Promise.map(data, (item) => {
       return formatMenu(item, rootUrl);
     }).then((menu) => {
-      return _.chain(menu).sortBy("weight").reverse()
-        .value();
+      return _.chain(menu).sortBy("weight").value();
     }, {
       concurrency: 1
     });
