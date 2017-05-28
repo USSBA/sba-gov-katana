@@ -6,10 +6,7 @@ import cache from "memory-cache";
 function clearCache(req, res) {
   console.log("Clearing the Cache");
   cache.clear();
-  res.status(HttpStatus.OK).json({
-    status: "success",
-    message: "The cache has been cleared"
-  });
+  res.status(HttpStatus.NO_CONTENT).send();
 }
 
 export { clearCache };
