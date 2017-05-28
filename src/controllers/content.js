@@ -28,11 +28,13 @@ function fetchContentById(req, res) {
     const compositeKey = type + "-" + id;
     let promise;
     if (cache.get(compositeKey)) {
+      console.log("Using cached content");
       promise = Promise.resolve(cache.get(compositeKey));
     } else {
       promise = fetchFunctions[req.params.type](req.params.id)
         .then((result) => {
           cache.put(compositeKey, result);
+          console.log("Caching " + compositeKey);
           return result;
         });
     }
@@ -58,11 +60,13 @@ function fetchContentByType(req, res) {
     const type = req.params.type;
     let promise;
     if (cache.get(type)) {
+      console.log("Using cached content");
       promise = Promise.resolve(cache.get(type));
     } else {
       promise = fetchContentTypeFunctions[type]()
         .then((result) => {
           cache.put(type, result);
+          console.log("Caching " + type);
           return result;
         });
     }
