@@ -45,14 +45,14 @@ class Card extends React.Component {
         return (
             <div id={"card-" + this.props.index} className={cardStyle}>
                 {this.props.item.image && this.props.item.image.url
-                    ? <img className={styles.itemImage} src={this.props.item.image.url} alt={this.props.item.image.alt}/>
+                    ? <img id={"image-" + this.props.index} className={styles.itemImage} src={this.props.item.image.url} alt={this.props.item.image.alt}/>
                     : null}
                 {this.props.item.titleText
-                    ? <p className={styles.itemTitle}>{this.props.item.titleText}</p>
+                    ? <p id={"title-" + this.props.index} className={styles.itemTitle}>{this.props.item.titleText}</p>
                     : null}
-                <hr className={styles.itemHr} />
+                <hr id={"hr-" + this.props.index} className={styles.itemHr} />
                 {this.props.item.subtitleText
-                    ? <p className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
+                    ? <p id={"subtitle-text-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
                     : null}
             </div>
         );

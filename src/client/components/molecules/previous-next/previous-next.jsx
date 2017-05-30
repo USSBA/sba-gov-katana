@@ -112,11 +112,11 @@ class PreviousNextSection extends React.Component{
         let nextMobileParams = this.calculateMobileParameters();
         return(
             <div id="previousNextSectionId" className={styles.previousNextContainer}>
-                <div className={styles.desktop}>
-                    <div className={styles.prevNextTitleContainer}>
+                <div id="desktopDivId" className={styles.desktop}>
+                    <div id="prevNextTitleContainerId" className={styles.prevNextTitleContainer}>
                         {
                             previousNextParams.previousText !== null ?
-                                <div className={styles.previousTitle}>
+                                <div id="previousTitleId" className={styles.previousTitle}>
                                     <h6 className={styles.previousTitle} >Previous</h6>
                                 </div>
                                 :
@@ -126,17 +126,17 @@ class PreviousNextSection extends React.Component{
                         }
                         {
                             previousNextParams.nextText !== null ?
-                                <div className={styles.nextTitle}>
+                                <div id="nextTitleDesktopId" className={styles.nextTitle}>
                                     <h6 className={styles.nextTitle}>Next</h6>
                                 </div>
                                 :
                                 null
                         }
                     </div>
-                    <div className={styles.prevNextButtonsContainer}>
+                    <div id="prevNextButtonsContainerId" className={styles.prevNextButtonsContainer}>
                         {
                             previousNextParams.previousText !== null ?
-                                <div className={styles.previousContainer}>
+                                <div id="previousContainerId" className={styles.previousContainer}>
                                     <a href={previousNextParams.previousUrl}><SmallSecondaryButton text={previousNextParams.previousText}/></a>
                                     <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
                                 </div>
@@ -147,7 +147,7 @@ class PreviousNextSection extends React.Component{
                         }
                         {
                             previousNextParams.nextText !== null ?
-                                <div className={styles.nextContainer}>
+                                <div id="nextContainerDesktopId" className={styles.nextContainer}>
                                     <a href={previousNextParams.nextUrl}><SmallSecondaryButton text={previousNextParams.nextText}/></a>
                                     <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
                                 </div>
@@ -156,10 +156,10 @@ class PreviousNextSection extends React.Component{
                         }
                     </div>
                 </div>
-                <div className={styles.mobile}>
+                <div id="mobileDivId" className={styles.mobile}>
                     {
                         nextMobileParams.nextText !== null ?
-                            <div className={styles.nextTitle}>
+                            <div id="nextTitleMobileId" className={styles.nextTitle}>
                                 <h6 className={styles.nextTitle}>Next</h6>
                             </div>
                             :
@@ -167,7 +167,7 @@ class PreviousNextSection extends React.Component{
                     }
                     {
                         nextMobileParams.nextText !== null ?
-                            <div className={styles.nextContainer}>
+                            <div id="nextContainerMobileId" className={styles.nextContainer}>
                                 <a href={nextMobileParams.nextUrl}><SmallSecondaryButton text={nextMobileParams.nextText}/></a>
                                 <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
                             </div>

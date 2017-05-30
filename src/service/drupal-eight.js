@@ -81,9 +81,8 @@ function fetchContacts() {
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
     return Promise.resolve(localContacts);
-  } else {
-    return fetchContent(contactEndpoint).then(formatContacts);
   }
+  return fetchContent(contactEndpoint).then(formatContacts);
 }
 
 // this is an abstract function that takes an object, removes properties that do not

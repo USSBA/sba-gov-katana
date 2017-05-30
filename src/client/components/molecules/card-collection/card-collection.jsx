@@ -36,7 +36,7 @@ class CardCollection extends React.Component {
         return (
             <div className={styles.cardCollection}>
                 {rows.map(function(item, index){
-                    return (<div key={index} className={styles.cardRow}>{item}</div>);
+                    return (<div id={"card-row-" + index} key={index} className={styles.cardRow}>{item}</div>);
                 })}
             </div>
         )
