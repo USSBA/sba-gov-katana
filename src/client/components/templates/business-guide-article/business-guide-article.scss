@@ -9,6 +9,7 @@
 .sectionHeader,
 .textSection,
 .titleSection,
+.previousNext,
 .breadcrumb {
     @include grid-column(7, $sba-grid-large);
     @include grid-push(4);

@@ -10,6 +10,7 @@ import Lookup from "../../molecules/lookup/lookup.jsx"
 import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import CardCollection from "../../molecules/card-collection/card-collection.jsx";
+import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -93,7 +94,7 @@ class BusinessGuideArticle extends React.Component {
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
-
+        <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div>
       </div>
     );
   }
