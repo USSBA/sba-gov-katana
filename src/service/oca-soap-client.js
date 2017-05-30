@@ -126,7 +126,7 @@ function parseResponse(xmlBody) {
 
 function sendLincSoapRequest(endpoint, bodyXml) {
 
-  // console.log("Sending Data to OCA", bodyXml);
+  console.log("Sending Data to OCA", bodyXml);
 
   return new Promise((resolve, reject) => {
 
