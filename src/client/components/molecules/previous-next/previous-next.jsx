@@ -3,60 +3,112 @@ import styles from "./previous-next.scss";
 import SmallSecondaryButton from "../../atoms/small-secondary-button/small-secondary-button.jsx";
 
 class PreviousNextSection extends React.Component{
-
-    calculateParameters() {
-        let parent = _.head(this.props.lineage);
-        let shortLineage = _.takeRight(this.props.lineage, 2);
-        let container = _.head(shortLineage).children;
-        let currentIndexInParentContainer = _.indexOf(parent, container);
-        //console.log("currentIndexInParentContainer: " + curr);
-        let current = _.last(shortLineage);
-        let currentIndex = _.indexOf(container, current);
-        let retParams = {};
-        if(currentIndex === 0 && _.size(container) === 1){
-            retParams.previousText = null;
-            retParams.nextText = null;
-        }else if(currentIndex === 0){
-            retParams.previousText = null;
-            retParams.nextText =  _.nth(container, currentIndex + 1).title;
-            retParams.nextUrl = _.nth(container, currentIndex + 1).fullUrl;
-        }else if(currentIndex === _.size(container) - 1){
-            retParams.previousText = _.nth(container, currentIndex - 1).title;
-            retParams.previousUrl = _.nth(container, currentIndex - 1).fullUrl;
-            retParams.nextText = null;
+    getNextSection(currentIndexInParent, parent){
+        let retObj = {};
+        let nextSectionIndex = currentIndexInParent + 1;
+        if(nextSectionIndex === _.size(parent)){
+            retObj.nextText = null;
+            retObj.nextUrl = null;
         }else{
-            retParams.previousText = _.nth(container, currentIndex - 1).title;
-            retParams.previousUrl = _.nth(container, currentIndex - 1).fullUrl;
-            retParams.nextText = _.nth(container, currentIndex + 1).title;
-            retParams.nextUrl = _.nth(container, currentIndex + 1).fullUrl;
+            let nextSection = _.nth(parent, nextSectionIndex).children;
+            if(nextSection){
+                let sectionFirstItem = _.head(nextSection);
+                retObj.nextText = sectionFirstItem.title;
+                retObj.nextUrl = sectionFirstItem.fullUrl;
+            }else{
+                retObj.nextText = null;
+                retObj.nextUrl = null;
+            }
         }
-        return retParams;
+        return retObj;
+    }
+
+    getPreviousSection(currentIndexInParent, parent){
+        let retObj = {};
+        let prevSectionIndex = currentIndexInParent - 1;
+        if(Math.sign(prevSectionIndex) === -1){
+            retObj.previousText = null;
+            retObj.previousUrl = null;
+        }else{
+            let prevSection = _.nth(parent, prevSectionIndex).children;
+            if(prevSection){
+                let sectionLastItem = _.last(prevSection);
+                retObj.previousText = sectionLastItem.title;
+                retObj.previousUrl = sectionLastItem.fullUrl;
+            }else{
+                retObj.previousText = null;
+                retObj.previousUrl = null;
+            }
+        }
+        return retObj;
+    }
+
+    calculateDesktopParameters() {
+        let parent = _.head(this.props.lineage).children;
+        let shortLineage = _.takeRight(this.props.lineage, 2);
+        let section = _.head(shortLineage).children;
+        let currentIndexInParent = _.indexOf(parent, _.head(shortLineage));
+        let current = _.last(shortLineage);
+        let currentIndexInSection = _.indexOf(section, current);
+        let retObj = {};
+        if(currentIndexInSection === 0 && _.size(section) === 1){
+            let nextSection = this.getNextSection(currentIndexInParent, parent);
+            let prevSection = this.getPreviousSection(currentIndexInParent, parent);
+            retObj.previousText = prevSection.previousText;
+            retObj.previousUrl = prevSection.previousUrl;
+            retObj.nextText = nextSection.nextText;
+            retObj.nextUrl = nextSection.nextUrl;
+
+        }else if(currentIndexInSection === 0){
+            let prevSection = this.getPreviousSection(currentIndexInParent, parent);
+            retObj.previousText = prevSection.previousText;
+            retObj.previousUrl = prevSection.previousUrl;
+            retObj.nextText =  _.nth(section, currentIndexInSection + 1).title;
+            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
+        }else if(currentIndexInSection === _.size(section) - 1){
+            retObj.previousText = _.nth(section, currentIndexInSection - 1).title;
+            retObj.previousUrl = _.nth(section, currentIndexInSection - 1).fullUrl;
+            let nextSection = this.getNextSection(currentIndexInParent, parent);
+            retObj.nextText = nextSection.nextText;
+            retObj.nextUrl = nextSection.nextUrl;
+        }else{
+            retObj.previousText = _.nth(section, currentIndexInSection - 1).title;
+            retObj.previousUrl = _.nth(section, currentIndexInSection - 1).fullUrl;
+            retObj.nextText = _.nth(section, currentIndexInSection + 1).title;
+            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
+        }
+        return retObj;
     }
 
     calculateMobileParameters() {
+        let parent = _.head(this.props.lineage).children;
         let shortLineage = _.takeRight(this.props.lineage, 2);
-        let container = _.head(shortLineage).children;
+        let section = _.head(shortLineage).children;
+        let currentIndexInParent = _.indexOf(parent, _.head(shortLineage));
         let current = _.last(shortLineage);
-        let currentIndex = _.indexOf(container, current);
-        let retParams = {};
-        if(currentIndex === 0 && _.size(container) === 1){
-            retParams.nextText = null;
-        }else if(currentIndex === 0){
-            retParams.nextText =  _.nth(container, currentIndex + 1).title;
-            retParams.nextUrl = _.nth(container, currentIndex + 1).fullUrl;
-        }else if(currentIndex === _.size(container) - 1){
-            let firstItem = _.head(container);
-            retParams.nextText = firstItem.title;
-            retParams.nextUrl = firstItem.fullUrl;
+        let currentIndexInSection = _.indexOf(section, current);
+        let retObj = {};
+        if(currentIndexInSection === 0 && _.size(section) === 1){
+            let nextSection = this.getNextSection(currentIndexInParent, parent);
+            retObj.nextText = nextSection.nextText;
+            retObj.nextUrl = nextSection.nextUrl;
+
+        }else if(currentIndexInSection === 0){
+            retObj.nextText =  _.nth(section, currentIndexInSection + 1).title;
+            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
+        }else if(currentIndexInSection === _.size(section) - 1){
+            let nextSection = this.getNextSection(currentIndexInParent, parent);
+            retObj.nextText = nextSection.nextText;
+            retObj.nextUrl = nextSection.nextUrl;
         }else{
-            retParams.nextText = _.nth(container, currentIndex + 1).title;
-            retParams.nextUrl = _.nth(container, currentIndex + 1).fullUrl;
+            retObj.nextText = _.nth(section, currentIndexInSection + 1).title;
+            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
         }
-        return retParams;
+        return retObj;
     }
 
     render(){
-        let previousNextParams = this.calculateParameters();
+        let previousNextParams = this.calculateDesktopParameters();
         let nextMobileParams = this.calculateMobileParameters();
         return(
             <div id="previousNextSectionId" className={styles.previousNextContainer}>
