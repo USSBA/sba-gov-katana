@@ -5,8 +5,11 @@ import SmallSecondaryButton from "../../atoms/small-secondary-button/small-secon
 class PreviousNextSection extends React.Component{
 
     calculateParameters() {
+        let parent = _.head(this.props.lineage);
         let shortLineage = _.takeRight(this.props.lineage, 2);
         let container = _.head(shortLineage).children;
+        let currentIndexInParentContainer = _.indexOf(parent, container);
+        //console.log("currentIndexInParentContainer: " + curr);
         let current = _.last(shortLineage);
         let currentIndex = _.indexOf(container, current);
         let retParams = {};

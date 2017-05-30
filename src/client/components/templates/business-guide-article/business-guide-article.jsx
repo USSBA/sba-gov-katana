@@ -89,12 +89,14 @@ class BusinessGuideArticle extends React.Component {
     let breadcrumbs = this.props.lineage
       ? this.makeBreadcrumbs(this.props.lineage)
       : <div></div>;
+
+
     return (
       <div className={styles.container}>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
-        <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div>
+        {this.props.lineage ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div> : <div></div>}
       </div>
     );
   }
