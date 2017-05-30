@@ -189,8 +189,8 @@ function reqAmtRangeCd(loanAmount) { //eslint-disable-line complexity
   const loanAmt = loanAmount.replace(/\$|,/g, "");
 
   if (isNaN(loanAmt)) {
-    console.log("Loan Amount is not a number in reqAmtRangeCd.");
-    console.log(loanAmt);
+    // console.log("Loan Amount is not a number in reqAmtRangeCd.");
+    // console.log(loanAmt);
     throw Error("Value is a not a number.");
   }
 
@@ -214,57 +214,23 @@ function reqAmtRangeCd(loanAmount) { //eslint-disable-line complexity
   return retVal;
 }
 
-function vetInd(isVeteran) {
+function mapToUnsignedByte(isVeteran) {
   return (isVeteran) ? "6" : "1";
 }
 
-function bPlanInd(hasWrittenPlan) {
-  return (hasWrittenPlan) ? "Y" : "N";
-}
-
-function oFundSourceInd(isGeneratingRevenue) {
-  return (isGeneratingRevenue) ? "Y" : "N";
-}
-
-function bAdvisoryInd(hasFinancialProjections) {
-  return (hasFinancialProjections) ? "Y" : "N";
-}
-
-function bDtlTypTxt(loanDesc) {
+function trimToSize(inputVal) {
   let retVal = "";
 
-  if (loanDesc.length > textLowerLimit && loanDesc.length < textUpperLimit) {
-    retVal = loanDesc;
-  } else if (loanDesc.length >= textUpperLimit) {
-    retVal = loanDesc.substring(textLowerLimit, textUpperLimit);
+  if (inputVal) {
+    if (inputVal.length > textLowerLimit && inputVal.length < textUpperLimit) {
+      retVal = inputVal;
+    } else if (inputVal.length >= textUpperLimit) {
+      retVal = inputVal.substring(textLowerLimit, textUpperLimit);
+    }
   }
-
   return retVal;
 }
 
-function pOthTypTxt(loanDesc) {
-  let retVal = "";
-
-  if (loanDesc.length > textLowerLimit && loanDesc.length < textUpperLimit) {
-    retVal = loanDesc;
-  } else if (loanDesc.length >= textUpperLimit) {
-    retVal = loanDesc.substring(textLowerLimit, textUpperLimit);
-  }
-
-  return retVal;
-}
-
-function bStatusDescTxt(businessDescription) {
-  let retVal = "";
-
-  if (businessDescription.length > textLowerLimit && businessDescription.length < textUpperLimit) {
-    retVal = businessDescription;
-  } else if (businessDescription.length >= textUpperLimit) {
-    retVal = businessDescription.substring(textLowerLimit, textUpperLimit);
-  }
-
-  return retVal;
-}
 
 function userName(name) {
 
@@ -290,15 +256,23 @@ function toNumber(value) {
   return Number(value);
 }
 
-function formatMessage(userInfo, lenderMatchRegistration) {
+
+function shorten(bufStr) {
+  // we lose some uniqueness here; someday should find a better way to encode this
+  const shorter = bufStr.replace(/-/g, "");
+  const maxIdLength = 29;
+  return shorter.substring(0, maxIdLength);
+}
+
+function formatMessage(userId, lenderMatchRegistration) {
   const firstName = 0;
   const lastName = 1;
 
   return {
     //UserName <= 80 chars
-    "UserName": userInfo.sbaGovUser,
+    "LoginID": userId,
     //UniqueID <= 30 chars
-    "UniqueID": formatMoment() + "-" + userInfo.dbUserID + "-" + userInfo.submissionID,
+    "RequestID": shorten(lenderMatchRegistration.id),
     //LoanName <= 255 chars
     "LoanName": lenderMatchRegistration.businessName,
     //ProjectZipCd = 5 chars
@@ -324,20 +298,20 @@ function formatMessage(userInfo, lenderMatchRegistration) {
     //BusinessDtlTypCd = 2 chars
     "BusinessDtlTypCd": bDtlTypCd(lenderMatchRegistration.industry),
     //BusinessDtlTypTxt <= 255 chars
-    "BusinessDtlTypTxt": bDtlTypTxt(lenderMatchRegistration.loanDescription),
+    "BusinessDtlTypTxt": trimToSize(lenderMatchRegistration.loanDescription),
     //LoanProceedTypCd <= 255 comma delimited
     "LoanProceedTypCd": lProceedTypCd(lenderMatchRegistration.loanUsage),
     //ProceedOthTypTxt <= 255 chars
-    "ProceedOthTypTxt": pOthTypTxt(lenderMatchRegistration.loanDescription),
+    "ProceedOthTypTxt": trimToSize(lenderMatchRegistration.loanDescription),
     //RequestedAmtRangeCd = decimal
     "RequestedLoanAmount": toNumber(lenderMatchRegistration.loanAmount),
     //BusinessAdvisoryInd Y for Yes or N for No
-    "BusinessAdvisoryInd": bAdvisoryInd(lenderMatchRegistration.hasFinancialProjections),
+    "BusinessAdvisoryInd": booleanToChar(lenderMatchRegistration.hasFinancialProjections),
     //BusinessPlanInd Y for Yes or N for No
     "BusinessPlanInd": booleanToChar(lenderMatchRegistration.hasWrittenPlan),
     //Veteran = unsignedByte means 6 for Yes 1 for No
-    "Veteran": vetInd(lenderMatchRegistration.isVeteran)
+    "Veteran": mapToUnsignedByte(lenderMatchRegistration.isVeteran)
   };
 }
 
-export { userName, bStatusDescTxt, bDtlTypTxt, bAdvisoryInd, oFundSourceInd, bPlanInd, vetInd, reqAmtRangeCd, formatMoment, bAgeCd, bDtlTypCd, lProceedTypCd, formatMessage, pOthTypTxt };
+export { userName, mapToUnsignedByte, reqAmtRangeCd, formatMoment, bAgeCd, bDtlTypCd, lProceedTypCd, formatMessage, booleanToChar, toNumber, trimToSize };

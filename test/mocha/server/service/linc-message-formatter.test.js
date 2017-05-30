@@ -1,17 +1,13 @@
 import {
   userName,
-  bStatusDescTxt,
-  bDtlTypTxt,
-  bAdvisoryInd,
-  oFundSourceInd,
-  bPlanInd,
-  vetInd,
+  mapToUnsignedByte,
   reqAmtRangeCd,
   bAgeCd,
   bDtlTypCd,
   lProceedTypCd,
   formatMessage,
-  pOthTypTxt
+  booleanToChar,
+  trimToSize
 } from "../../../../src/service/linc-message-formatter.js";
 
 describe("LINC Message Formatter", function() {
@@ -40,7 +36,28 @@ describe("LINC Message Formatter", function() {
         isGeneratingRevenue: true,
         isVeteran: true
       });
-      output.should.have.property('UserName');
+
+      // list is generated from the XSD
+      output.should.have.property("LoanName");
+      output.should.have.property("LoginID");
+      output.should.have.property("RequestID");
+      output.should.have.property("ProjectZipCd");
+      output.should.have.property("ProjectZip4Cd");
+      output.should.have.property("FirstName");
+      output.should.have.property("LastName");
+      output.should.have.property("BusinessWebsite");
+      output.should.have.property("FinancialInd");
+      output.should.have.property("RevenueInd");
+      output.should.have.property("PrimaryEmail");
+      output.should.have.property("PrimaryPhone");
+      output.should.have.property("BusinessAgeCd");
+      output.should.have.property("BusinessDtlTypCd");
+      output.should.have.property("BusinessDtlTypTxt");
+      output.should.have.property("LoanProceedTypCd");
+      output.should.have.property("ProceedOthTypTxt");
+      output.should.have.property("RequestedLoanAmount");
+      output.should.have.property("BusinessPlanInd");
+      output.should.have.property("Veteran");
     });
   })
   describe('Soap Request Formatting', function() {
@@ -131,45 +148,6 @@ describe("LINC Message Formatter", function() {
       }).should.throw("Value not a valid LoanDescription.");
     });
 
-    it('should accept bDtlTypTxt that has an arbitrary string between length of 0 and 255', function() {
-      let retVal = bDtlTypTxt("We build shopping malls in all states for several years.");
-      retVal.should.equal("We build shopping malls in all states for several years.");
-    });
-
-    it('should accept bDtlTypTxt that is a string of length greater than 255', function() {
-      let req = "We build shopping malls in all states for several years and we " +
-        "have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. " +
-        "Please give us this loan as we need it so we don't go bankrupt. " + "We will forever be grateful for your help " +
-        "and will let our great grand children know how you have helped us through this difficult time.";
-      let retVal = bDtlTypTxt(req);
-      retVal.should.have.length(255);
-    });
-
-    it('should accept bDtlTypTxt that has an empty string', function() {
-      let retVal = bDtlTypTxt("");
-      retVal.should.equal("");
-    });
-
-    it('should accept pOthTypTxt that has an arbitrary string between length of 0 and 255', function() {
-      let retVal = pOthTypTxt("We build shopping malls in all states for several years.");
-      retVal.should.equal("We build shopping malls in all states for several years.");
-    });
-
-    it('should accept pOthTypTxt that has a string of length greater than 255', function() {
-      let req = "We build shopping malls in all states for several years and we " +
-        "have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. " +
-        "Please give us this loan as we need it so we don't go bankrupt. " + "We will forever be grateful for your help " +
-        "and will let our great grand children know how you have helped us through this difficult time.";
-      let retVal = pOthTypTxt(req);
-      retVal.should.have.length(255);
-      retVal.should.equal("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
-    });
-
-    it('should accept pOthTypTxt that has a loanUsage that is empty string', function() {
-      let retVal = pOthTypTxt("");
-      retVal.should.equal("");
-    });
-
     it('should accept reqAmtRangeCd with lower bound range up to 50000', function() {
       let retVal = reqAmtRangeCd("$50,000");
       retVal.should.equal("01");
@@ -247,66 +225,47 @@ describe("LINC Message Formatter", function() {
       }).should.throw("Valid Industry Experience is required.");
     });
 
-    it('should accept bAdvisoryInd that is Yes', function() {
-      let retVal = bAdvisoryInd(true);
-      retVal.should.equal("Y");
-    });
-
-    it('should accept bAdvisoryInd that is No', function() {
-      let retVal = bAdvisoryInd(false);
-      retVal.should.equal("N");
-    });
-
-    it('should accept bPlanInd that is Yes', function() {
-      let retVal = bPlanInd(true);
-      retVal.should.equal("Y");
-    });
-
-    it('should accept bPlanInd that is No', function() {
-      let retVal = bPlanInd(false);
-      retVal.should.equal("N");
-    });
-
-
-    it('should accept oFundSourceInd that is Yes', function() {
-      let retVal = oFundSourceInd(true);
-      retVal.should.equal("Y");
-    });
-
-    it('should accept oFundSourceInd that is No', function() {
-      let retVal = oFundSourceInd(false);
-      retVal.should.equal("N");
-    });
-
-    it('should accept bStatusDescTxt that is an arbitrary string between length of 0 and 255', function() {
-      let retVal = bStatusDescTxt("We build shopping malls in all states for several years.");
+    it('should accept an arbitrary string between length of 0 and 255', function() {
+      let retVal = trimToSize("We build shopping malls in all states for several years.");
       retVal.should.equal("We build shopping malls in all states for several years.");
     });
 
-    it('should accept bStatusDescTxt that is a string of length greater than 255', function() {
+    it('should trim a string of length greater than 255', function() {
       let req = "We build shopping malls in all states for several years and we " +
         "have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. " +
         "Please give us this loan as we need it so we don't go bankrupt. " + "We will forever be grateful for your help " +
         "and will let our great grand children know how you have helped us through this difficult time.";
-      let retVal = bStatusDescTxt(req);
+      let retVal = trimToSize(req);
       retVal.should.have.length(255);
       retVal.should.equal("We build shopping malls in all states for several years and we have no problem being able to pay back this loan. We have several hundred employees in our Baltimore office. Please give us this loan as we need it so we don't go bankrupt. We will forever be ");
     });
 
-    it('should accept bStatusDescTxt that is empty string', function() {
-      let retVal = bStatusDescTxt("");
+    it('should accept the empty string', function() {
+      let retVal = trimToSize("");
       retVal.should.equal("");
     });
 
+    it('should convert the null string to the empty string', function() {
+      let retVal = trimToSize(null);
+      retVal.should.equal("");
+    });
 
-    it('should accept vetInd that is Yes', function() {
-      let retVal = vetInd(true);
+    it('should map true to the number 6', function() {
+      let retVal = mapToUnsignedByte(true);
       retVal.should.equal("6");
     });
 
-    it('should accept vetInd that is No', function() {
-      let retVal = vetInd(false);
+    it('should map false to the number 1', function() {
+      let retVal = mapToUnsignedByte(false);
       retVal.should.equal("1");
+    });
+
+    it('should translate boolean true to Y', function() {
+      booleanToChar(true).should.equal("Y");
+    });
+
+    it('should translate boolean false to F', function() {
+      booleanToChar(false).should.equal("N");
     });
   });
 

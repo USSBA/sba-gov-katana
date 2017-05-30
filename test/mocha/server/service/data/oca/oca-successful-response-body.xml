@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <soapenv:Body>
+  <SBA_LINCResponse xmlns="http://ws.linc">
+   <SBA_LINCReturn xsi:type="ns1:Map" xmlns:ns1="http://xml.apache.org/xml-soap">
+    <item xmlns="">
+     <key xsi:type="xsd:string">PasswordUpdateRequired</key>
+     <value xsi:type="xsd:string">No</value>
+    </item>
+    <item xmlns="">
+     <key xsi:type="xsd:string">ErrorMessageEnglish</key>
+     <value xsi:type="xsd:string"></value>
+    </item>
+    <item xmlns="">
+     <key xsi:type="xsd:string">Response</key>
+     <value xsi:type="xsd:string">&lt;SBALincResponse&gt;&lt;TotalRequests&gt;1&lt;/TotalRequests&gt;&lt;Enquiry&gt;&lt;index&gt;1&lt;/index&gt;&lt;BusinessName&gt;businessName&lt;/BusinessName&gt;&lt;ProjectZipCd&gt;21113&lt;/ProjectZipCd&gt;&lt;Result&gt;S&lt;/Result&gt;&lt;/Enquiry&gt;&lt;GoodRequests&gt;1&lt;/GoodRequests&gt;&lt;FailedRequests&gt;0&lt;/FailedRequests&gt;&lt;/SBALincResponse&gt;</value>
+    </item>
+    <item xmlns="">
+     <key xsi:type="xsd:string">ErrorMessageTechnical</key>
+     <value xsi:type="xsd:string"></value>
+    </item>
+    <item xmlns="">
+     <key xsi:type="xsd:string">ResultCode</key>
+     <value xsi:type="xsd:string">0</value>
+    </item>
+   </SBA_LINCReturn>
+  </SBA_LINCResponse>
+ </soapenv:Body>
+</soapenv:Envelope>

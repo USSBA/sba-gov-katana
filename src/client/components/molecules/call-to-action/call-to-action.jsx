@@ -29,7 +29,7 @@ class Callout extends React.Component {
   render(){
     return (
       <div className={this.ctaSize()}>
-        <div className={styles.ctaContainer}>
+        <div id="call-to-action" className={styles.ctaContainer}>
           <img className={styles.image} src={this.props.image} alt={this.props.imageAlt}/>
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>

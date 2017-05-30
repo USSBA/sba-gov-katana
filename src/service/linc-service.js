@@ -11,7 +11,7 @@ import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
-import { sendDataToOca } from "./oca-service.js";
+import { sendDataToOca, handleSoapResponse } from "./oca-service.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -192,7 +192,8 @@ function sendMessagesToOca(results) {
       isGeneratingRevenue: result.isGeneratingRevenue,
       isVeteran: result.isVeteran
     };
-    return sendDataToOca(lenderMatchRegistrationData);
+    return sendDataToOca(lenderMatchRegistrationData)
+      .then(handleSoapResponse);
   });
 }
 

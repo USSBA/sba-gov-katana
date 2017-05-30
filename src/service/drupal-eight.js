@@ -1,7 +1,6 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
-import cache from "memory-cache";
 import config from "config";
 import localContacts from "../models/dao/contacts.js";
 import path from "path";
@@ -82,13 +81,9 @@ function fetchContacts() {
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
     return Promise.resolve(localContacts);
-  } else if (cache.get("contacts")) {
-    return Promise.resolve(cache.get("contacts"));
+  } else {
+    return fetchContent(contactEndpoint).then(formatContacts);
   }
-  return fetchContent(contactEndpoint).then(formatContacts).tap(function(contacts) {
-    cache.put("contacts", contacts);
-  });
-
 }
 
 // this is an abstract function that takes an object, removes properties that do not
@@ -301,7 +296,7 @@ function formatMenu(data, parentUrl) {
         fullUrl: fullUrl,
         children: submenus,
         node: data.link.route_parameters ? data.link.route_parameters.node : null,
-        weight: data.link.weight
+        weight: _.toNumber(data.link.weight)
       };
     });
   }
@@ -315,8 +310,7 @@ function formatMenuTree(data, parentUrl) {
     return Promise.map(data, (item) => {
       return formatMenu(item, rootUrl);
     }).then((menu) => {
-      return _.chain(menu).sortBy("weight").reverse()
-        .value();
+      return _.chain(menu).sortBy("weight").value();
     }, {
       concurrency: 1
     });
