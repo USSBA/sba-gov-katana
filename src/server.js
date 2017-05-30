@@ -8,10 +8,7 @@ import config from "config";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
-import {
-  enableWebpackHotModuleReplacement,
-  addDevelopmentErrorHandler
-} from "./util/dev.js";
+import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from "./util/dev.js";
 
 const app = express();
 app.use(cookieParser());
@@ -88,35 +85,27 @@ app.get("/content/counselors-redirect.json", function(req, res) {
 });
 
 import * as feedbackController from "./controllers/feedback-controller.js";
-import * as cacheController from "./controllers/cache.js"
+import * as cacheController from "./controllers/cache.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
 app.get("/actions/clearCache", cacheController.clearCache);
+app.del("/cache", cacheController.clearCache);
 app.get("/content/feedback.csv", feedbackController.retrieveFeedback);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
 
-import {
-  getUserRoles
-} from "./controllers/user-roles.js";
+import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/content/:userId/roles.json", getUserRoles);
 
-import {
-  getDrupalUserEmail
-} from "./controllers/user-email.js";
+import { getDrupalUserEmail } from "./controllers/user-email.js";
 app.get("/content/:userId/email.json", getDrupalUserEmail);
 
-import {
-  registerUserForNewsletter
-} from "./controllers/newsletter-registration.js";
+import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/content/newsletter-registration.json", registerUserForNewsletter);
 
-import {
-  fetchContentById,
-  fetchContentByType
-} from "./controllers/content.js";
+import { fetchContentById, fetchContentByType } from "./controllers/content.js";
 app.get("/content/:type/:id.json", fetchContentById);
 app.get("/content/:type.json", fetchContentByType);
 

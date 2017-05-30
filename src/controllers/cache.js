@@ -4,10 +4,9 @@ import cache from "memory-cache";
 
 
 function clearCache(req, res) {
-  cache.clear()
+  console.log("Clearing the Cache");
+  cache.clear();
   res.status(HttpStatus.NO_CONTENT).send();
 }
 
-export {
-  clearCache
-};
+export { clearCache };
