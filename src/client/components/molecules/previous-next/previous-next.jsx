@@ -184,7 +184,7 @@ PreviousNextSection.propTypes ={
     lineage: React.PropTypes.array.isRequired
 };
 
-PreviousNextSection.propTypes ={
+PreviousNextSection.defaultProps ={
     lineage: []
 };
 
