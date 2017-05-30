@@ -24,9 +24,8 @@
     @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
-    @include grid-column(12);
+    @include grid-column(6);
     height: auto;
-    width: auto;
   }
 }
 
@@ -56,9 +55,8 @@
     @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
-    @include grid-column(12);
+    @include grid-column(6);
     height: auto;
-    width: auto;
   }
 }
 
@@ -89,9 +87,8 @@
     @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
-    @include grid-column(12);
+    @include grid-column(6);
     height: auto;
-    width: auto;
   }
 }
 
@@ -121,8 +118,7 @@
     @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
-    @include grid-column(12);
+    @include grid-column(6);
     height: auto;
-    width: auto;
   }
 }
