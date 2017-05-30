@@ -9,7 +9,6 @@ class PreviousNextSection extends React.Component{
         let container = _.head(shortLineage).children;
         let current = _.last(shortLineage);
         let currentIndex = _.indexOf(container, current);
-        console.log("currentIndex: " + currentIndex);
         let retParams = {};
         if(currentIndex === 0 && _.size(container) === 1){
             retParams.previousText = null;
@@ -56,7 +55,6 @@ class PreviousNextSection extends React.Component{
     render(){
         let previousNextParams = this.calculateParameters();
         let nextMobileParams = this.calculateMobileParameters();
-        console.log("nextMobileParams: " + JSON.stringify(nextMobileParams));
         return(
             <div id="previousNextSectionId" className={styles.previousNextContainer}>
                 <div className={styles.desktop}>
@@ -129,6 +127,10 @@ class PreviousNextSection extends React.Component{
 
 PreviousNextSection.propTypes ={
     lineage: React.PropTypes.array.isRequired
+};
+
+PreviousNextSection.propTypes ={
+    lineage: []
 };
 
 export default PreviousNextSection;
