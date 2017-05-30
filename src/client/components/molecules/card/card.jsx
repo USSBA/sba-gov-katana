@@ -43,16 +43,16 @@ class Card extends React.Component {
     render() {
         let cardStyle = this.computeCardStyle();
         return (
-            <div id={"card-" + this.props.index} className={cardStyle}>
+            <div id={"card-" + this.props.parentIndex + "-" + this.props.index} className={cardStyle}>
                 {this.props.item.image && this.props.item.image.url
-                    ? <img id={"image-" + this.props.index} className={styles.itemImage} src={this.props.item.image.url} alt={this.props.item.image.alt}/>
+                    ? <img id={"image-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemImage} src={this.props.item.image.url} alt={this.props.item.image.alt}/>
                     : null}
                 {this.props.item.titleText
-                    ? <p id={"title-" + this.props.index} className={styles.itemTitle}>{this.props.item.titleText}</p>
+                    ? <p id={"title-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemTitle}>{this.props.item.titleText}</p>
                     : null}
-                <hr id={"hr-" + this.props.index} className={styles.itemHr} />
+                <hr id={"hr-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemHr} />
                 {this.props.item.subtitleText
-                    ? <p id={"subtitle-text-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
+                    ? <p id={"subtitle-text-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
                     : null}
             </div>
         );
@@ -62,12 +62,14 @@ class Card extends React.Component {
 Card.propTypes = {
     item: React.PropTypes.object,
     index: React.PropTypes.number,
-    numCards: React.PropTypes.number
+    numCards: React.PropTypes.number,
+    parentIndex: React.PropTypes.number
 };
 
 Card.defaultProps = {
     item: {},
     index: -1,
-    numCards: -1
+    numCards: -1,
+    parentIndex: -1
 };
 export default Card;

@@ -67,7 +67,7 @@ class BusinessGuideArticle extends React.Component {
                                      btnTitle={item.btnTitle}
                                      btnUrl={item.btnUrl} />)
         } else if(item.type === "cardCollection"){
-            paragraph = (<CardCollection key={index} cards={item.cards}/>);
+            paragraph = (<CardCollection parentIndex={index} key={index} cards={item.cards}/>);
         }
       }
       return (

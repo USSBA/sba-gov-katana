@@ -26,9 +26,10 @@ class CardCollection extends React.Component {
     }
     render() {
         let numCards = _.size(this.props.cards);
+        let parentIndex = this.props.parentIndex;
         let cards = this.props.cards.map(function(item, index) {
             return (
-                <Card key={index} item={item} index={index} numCards={numCards} />
+                <Card parentIndex={parentIndex} key={index} item={item} index={index} numCards={numCards} />
             );
         });
         let cardsPerRow = cardsPerRowMap[cards.length];
@@ -36,7 +37,7 @@ class CardCollection extends React.Component {
         return (
             <div className={styles.cardCollection}>
                 {rows.map(function(item, index){
-                    return (<div id={"card-row-" + index} key={index} className={styles.cardRow}>{item}</div>);
+                    return (<div id={"card-row-" + parentIndex + "-" + index} key={index} className={styles.cardRow}>{item}</div>);
                 })}
             </div>
         )
@@ -44,10 +45,12 @@ class CardCollection extends React.Component {
 }
 
 CardCollection.propTypes = {
-    cards: React.PropTypes.array
+    cards: React.PropTypes.array,
+    parentIndex: React.PropTypes.number
 };
 
 CardCollection.defaultProps = {
-    cards: []
+    cards: [],
+    parentIndex: -1
 };
 export default CardCollection;
