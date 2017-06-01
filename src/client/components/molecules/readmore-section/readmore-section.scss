@@ -33,13 +33,18 @@
   box-sizing: border-box;
   height: 3px;
   width: 60px;
-  border: 3px solid #AD32A3;
+  border: 3px solid;
   text-align: left;
   @include grid-media($sba-grid-small) {
     width: 80px;
     text-align: left;
   }
 }
+
+@include theme(sba-blue, '.lineCopy', #fff, #fff, $sba-blue);
+@include theme(byzantine, '.lineCopy', #fff, #fff, $byzantine);
+@include theme(money-green, '.lineCopy', #fff, #fff, $money-green);
+@include theme(cobalt-blue, '.lineCopy', #fff, #fff, $cobalt-blue);
 
 .title{
   color: #333333;
