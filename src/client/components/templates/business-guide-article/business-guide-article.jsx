@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './business-guide-article.scss';
+import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
 import ImageSection from "../../molecules/image-section/image-section.jsx";
@@ -93,6 +94,7 @@ class BusinessGuideArticle extends React.Component {
 
     return (
       <div className={styles.container}>
+        <SectionNav />
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>

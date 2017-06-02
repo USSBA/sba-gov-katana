@@ -1,0 +1,96 @@
+.SectionNav {
+  background-color: $byzantine;
+  color: #fff;
+  position: absolute;
+  @include grid-column(3, $sba-grid-large);
+  @include grid-media($sba-grid-small){
+    display: none;
+  }
+}
+
+.BackLink, .SectionNav h2, .SectionNav h4 {
+  padding: 0 30px;
+}
+
+.SectionNav h2, .SectionNav h4 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.SectionNav h2{
+  margin-bottom: 0;
+}
+
+.SectionNav h4{
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+
+
+.SectionNav a {
+  display: block;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.2;
+  padding: 8px 30px 10px;
+  text-decoration: none;
+}
+
+.BackLink {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 20px;
+}
+
+a.BackLink{
+  padding: 20px 30px 20px 55px;
+}
+
+.BackLink:before {
+  content: "\f104";
+  font-family: FontAwesome;
+  font-size: 30px;
+  margin-right: 15px;
+  position: absolute;
+  top: 12px;
+  left: 30px;
+  // vertical-align: -8%;
+}
+
+.SectionNav img {
+  display: block;
+  margin: 0 auto 20px;
+  width: 105px;
+}
+
+.SectionNav hr {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 3px;
+  width: 5.5em;
+  border: 3px solid;
+  margin: 0 auto 30px;
+}
+
+.SectionNav li{
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.SectionNav li:last-child{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 40px;
+}
+
+.SectionNav li:hover + li{
+  border-top: 1px solid $byzantine;
+}
+
+@include theme(sba-blue, '.SectionNav li a, .BackLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(byzantine, '.SectionNav li a, .BackLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(money-green, '.SectionNav li a, .BackLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(cobalt-blue, '.SectionNav li a, .BackLink', null, #fff, rgba(255, 255, 255, 0.25));
+
+@include theme-hover(sba-blue, '.SectionNav li, .BackLink', $sba-blue-dark, #fff, $sba-blue-dark);
+@include theme-hover(byzantine, '.SectionNav li, .BackLink', $byzantine-dark, #fff, $byzantine-dark);
+@include theme-hover(money-green, '.SectionNav li, .BackLink', $money-green-dark, #fff, $money-green-dark);
+@include theme-hover(cobalt-blue, '.SectionNav li, .BackLink', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
