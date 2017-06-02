@@ -201,8 +201,16 @@ function sendDataToOcaJob() {
   return findConfirmedEmails().then(findFailedOrPendingMessages).then(sendMessagesToOca);
 }
 
+function findEmailConfirmationByToken(token) {
+  return EmailConfirmation.findOne({
+    where: {
+      token: token
+    }
+  });
+}
+
 function confirmEmail(token) {
-  return EmailConfirmation.findById(token)
+  return findEmailConfirmationByToken(token)
     .then(function(emailConfirmation) {
       if (emailConfirmation) {
         const expiration = moment.unix(emailConfirmation.sent).add(config.get("linc.numberOfSecondsForWhichEmailIsValid"), "seconds");
