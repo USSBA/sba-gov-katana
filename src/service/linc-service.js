@@ -228,7 +228,6 @@ function confirmEmail(token) {
             });
         }
         return "expired";
-
       }
       return "not found";
 
