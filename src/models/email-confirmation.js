@@ -19,7 +19,6 @@ const emailConfirmation = nonDrupal.define("emailConfirmation", {
   },
   token: {
     type: Sequelize.UUID
-  //primaryKey: true
   },
   confirmed: {
     type: Sequelize.BIGINT
