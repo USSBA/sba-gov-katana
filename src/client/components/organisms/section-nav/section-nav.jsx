@@ -14,7 +14,7 @@ class SectionNav extends React.Component {
       NavLinks = section.children.map(function(item, index) {
           return (
           <li key={index}>
-            <a href={item.fullUrl}>{item.title}</a>
+            <a id={"sectionLinkID"+index} href={item.fullUrl}>{item.title}</a>
           </li>
           );
       });
@@ -43,11 +43,12 @@ class SectionNav extends React.Component {
 
 
     return (
-    <div className={styles.SectionNav}>
-      <a className={styles.BackLink} href="/business-guide">Back to all topics</a>
-      <img src={sectionNavIcon} alt=""/>
-      <h2>{firstWord}</h2>
+    <div id="sectionNavigationID" className={styles.SectionNav}>
+      <a id="allTopicsLink"className={styles.BackLink} href="/business-guide">Back to all topics</a>
+      <img id="sectionIconID" src={sectionNavIcon} alt=""/>
+      <span id="sectionTitleID"><h2>{firstWord}</h2>
       <h4>{remainingTitle}</h4>
+      </span>
       <ul>
         <ul>{NavLinks}</ul>
       </ul>
