@@ -17,10 +17,10 @@
   }
 }
 
-@include theme(sba-blue, '.lineCopy', #fff, #fff, $sba-blue);
-@include theme(byzantine, '.lineCopy', #fff, #fff, $byzantine);
-@include theme(money-green, '.lineCopy', #fff, #fff, $money-green);
-@include theme(cobalt-blue, '.lineCopy', #fff, #fff, $cobalt-blue);
+@include theme(sba-blue, '.lineCopy', $sba-blue, $sba-blue, $sba-blue);
+@include theme(byzantine, '.lineCopy', $byzantine, $byzantine, $byzantine);
+@include theme(money-green, '.lineCopy', $money-green, $money-green, $money-green);
+@include theme(cobalt-blue, '.lineCopy', $cobalt-blue, $cobalt-blue, $cobalt-blue);
 
 .hrLine{
   box-sizing: border-box;
