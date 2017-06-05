@@ -49,9 +49,7 @@ class SectionNav extends React.Component {
       <span id="sectionTitleID"><h2>{firstWord}</h2>
       <h4>{remainingTitle}</h4>
       </span>
-      <ul>
         <ul>{NavLinks}</ul>
-      </ul>
     </div>
     );
   }
