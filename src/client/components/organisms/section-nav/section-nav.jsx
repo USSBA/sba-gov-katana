@@ -5,30 +5,38 @@ import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
 import whiteIconManage from '../../atoms/icons/white-manage.jsx';
 import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
 
-let title = "Launch Your Business";
-let titleArray = _.words(title);
-let firstWord = _.slice(titleArray, 0, 1);
-let remainingTitle = _.replace(title, RegExp("^"+firstWord),'');
-
 class SectionNav extends React.Component {
 
+  makeNavLinks() {
+      let NavLinks = [];
+      let section = _.nth(this.props.lineage, 1);
+      console.log("section: " + JSON.stringify(section));
+      NavLinks = section.children.map(function(item, index) {
+          return (
+          <li key={index}>
+            <a href={item.fullUrl}>{item.title}</a>
+          </li>
+          );
+      });
+      return NavLinks;
+  }
+
   render() {
+    let NavLinks = this.makeNavLinks();
+    let sectionTitle = _.nth(this.props.lineage, 1).title;
+    let titleArray = _.words(sectionTitle);
+    let firstWord = _.slice(titleArray, 0, 1);
+    let remainingTitle = _.replace(sectionTitle, RegExp("^"+firstWord),'');
+
     return (
     <div className={styles.SectionNav}>
-      <a className={styles.BackLink} href="#">Back to all topics</a>
+      <a className={styles.BackLink} href="/business-guide">Back to all topics</a>
       <img src={ whiteIconLaunch }/>
       <h2>{firstWord}</h2>
       <h4>{remainingTitle}</h4>
       <hr />
       <ul>
-        <li><a href="#">Pick your business location</a></li>
-        <li><a href="#">Choose a business structure</a></li>
-        <li><a href="#">Choose your business name</a></li>
-        <li><a href="#">Register your business</a></li>
-        <li><a href="#">Get federal and state tax ID numbers</a></li>
-        <li><a href="#">Apply for licenses and permits</a></li>
-        <li><a href="#">Open a business bank account</a></li>
-        <li><a href="#">Get business insurance</a></li>
+        <ul>{NavLinks}</ul>
       </ul>
     </div>
     );
@@ -36,3 +44,6 @@ class SectionNav extends React.Component {
 }
 
 export default SectionNav;
+
+
+
