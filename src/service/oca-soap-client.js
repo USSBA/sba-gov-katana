@@ -91,6 +91,54 @@ function createSoapEnvelope(userName, password, bodyData) {
 }
 
 
+function createSoapEnvelopeForPasswordUpdate(userName, password, newPassword) {
+  const text = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.linc\" xmlns:x-=\"http://xml.apache.org/xml-soap\"></soapenv:Envelope>";
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(text, "text/xml");
+  const envelope = xmlDoc.documentElement;
+  const header = xmlDoc.createElement("soapenv:Header");
+  const body = xmlDoc.createElement("soapenv:Body");
+  envelope.appendChild(header);
+  envelope.appendChild(body);
+  const passwordUpdate = xmlDoc.createElement("ws:PasswordUpdate");
+  body.appendChild(passwordUpdate);
+  const inputs = xmlDoc.createElement("ws:Inputs");
+  passwordUpdate.appendChild(inputs);
+  const firstItem = xmlDoc.createElement("x-:item");
+  const secondItem = xmlDoc.createElement("x-:item");
+  const thirdItem = xmlDoc.createElement("x-:item");
+  inputs.appendChild(firstItem);
+  inputs.appendChild(secondItem);
+  inputs.appendChild(thirdItem);
+  const firstItemKey = xmlDoc.createElement("x-:key");
+  const firstItemValue = xmlDoc.createElement("x-:value");
+  firstItem.appendChild(firstItemKey);
+  firstItem.appendChild(firstItemValue);
+  const keyUsername = xmlDoc.createTextNode("Username");
+  firstItemKey.appendChild(keyUsername);
+  const valueUsername = xmlDoc.createTextNode(userName);
+  firstItemValue.appendChild(valueUsername);
+  const secondItemKey = xmlDoc.createElement("x-:key");
+  const secondItemValue = xmlDoc.createElement("x-:value");
+  secondItem.appendChild(secondItemKey);
+  secondItem.appendChild(secondItemValue);
+  const keyPassword = xmlDoc.createTextNode("Password");
+  secondItemKey.appendChild(keyPassword);
+  const valuePassword = xmlDoc.createTextNode(password);
+  secondItemValue.appendChild(valuePassword);
+  const thirdItemKey = xmlDoc.createElement("x-:key");
+  const thirdItemValue = xmlDoc.createElement("x-:value");
+  thirdItem.appendChild(thirdItemKey);
+  thirdItem.appendChild(thirdItemValue);
+  const keyNewPassword = xmlDoc.createTextNode("NewPassword");
+  thirdItemKey.appendChild(keyNewPassword);
+  const valueNewPassword = xmlDoc.createTextNode(newPassword);
+  thirdItemValue.appendChild(valueNewPassword);
+  const domSerializer = new XmlSerializer();
+  return domSerializer.serializeToString(xmlDoc);
+}
+
+
 function parseResponse(xmlBody) {
   let errorMessageTechnical = "";
   let errorMessageEnglish = "";
@@ -124,7 +172,39 @@ function parseResponse(xmlBody) {
   };
 }
 
-function sendLincSoapRequest(endpoint, bodyXml) {
+function parsePasswordUpdateResponse(xmlBody) {
+  let errorMessageTechnical = "";
+  let errorMessageEnglish = "";
+
+  const parser = new DOMParser();
+  const xmlRespDoc = parser.parseFromString(xmlBody);
+  const passwordUpdateRequired = xmlRespDoc.getElementsByTagName("item")[0].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+
+  //this element can be empty
+  const secondItemChildren = xmlRespDoc.getElementsByTagName("item")[1].getElementsByTagName("value")[0].childNodes;
+  if (secondItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
+    errorMessageEnglish = secondItemChildren[0].nodeValue;
+  }
+  const response = xmlRespDoc.getElementsByTagName("item")[2].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+
+  //this element can be empty
+  const fourthItemChildren = xmlRespDoc.getElementsByTagName("item")[3].getElementsByTagName("value")[0].childNodes;
+  if (fourthItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
+    errorMessageTechnical = fourthItemChildren[0].nodeValue;
+  }
+  const resultCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
+
+  return {
+    passwordUpdateRequired: passwordUpdateRequired,
+    errorMessageEnglish: errorMessageEnglish,
+    comment: response,
+    errorMessageTechnical: errorMessageTechnical,
+    responseCode: resultCode
+  };
+}
+
+
+function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
   console.log("Sending Data to OCA", bodyXml);
 
@@ -149,8 +229,7 @@ function sendLincSoapRequest(endpoint, bodyXml) {
         console.log(error);
         reject(error);
       } else {
-        // console.log("Receiving Data from OCA", body);
-        const resp = parseResponse(body);
+        const resp = lincRequest ? parseResponse(body) : parsePasswordUpdateResponse(body);
         resolve(resp);
       }
     });
@@ -159,4 +238,4 @@ function sendLincSoapRequest(endpoint, bodyXml) {
 
 
 
-export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest };
+export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate };

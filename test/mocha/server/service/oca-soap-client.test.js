@@ -31,7 +31,7 @@ describe('OCA SOAP Client', function() {
         data: wsdl
       }));
       wsdlStub.withArgs(badWdslUrl).returns(Promise.resolve("<html><body>Hello World!</body><html>"));
-      wsdlStub.rejects("TypeError")
+      wsdlStub.rejects("TypeError");
     });
 
     after(function() {
@@ -41,18 +41,18 @@ describe('OCA SOAP Client', function() {
     it('should retrieve the wsdl and parse the proper soap endpoint', function() {
       let result = getEndPointUrl(fakeWdslUrl);
       result.should.eventually.equal("https://catweb2.sba.gov/linc/ws/linc.cfc");
-    })
+    });
 
     it('should fire an error if no wsdl endpoint is configured', function() {
       let result = getEndPointUrl();
       result.should.be.rejected;
-    })
+    });
 
     it('should fire an error if the wrong wsdl url is given', function() {
       let result = getEndPointUrl(badWdslUrl);
       result.should.be.rejected;
     })
-  })
+  });
   describe('#convertFormDataToXml', function() {
     it('should convert a lender match registration to proper xml', function() {
       let result = convertFormDataToXml("newUser", exampleLenderMatchRegistration);
@@ -60,7 +60,7 @@ describe('OCA SOAP Client', function() {
       let expected = fs.readFileSync(path.join(__dirname, "./data/oca/expected-lender-match-registration.xml"), "utf-8").trim();
       result.should.equal(expected);
     })
-  })
+  });
   describe('#createSoapEnvelope', function() {
     it('should wrap the given data in the proper soap envelope', function() {
       let result = createSoapEnvelope("user1", "password1", "<SomeXml/>");
@@ -69,4 +69,4 @@ describe('OCA SOAP Client', function() {
       result.should.equal(expected);
     })
   })
-})
+});

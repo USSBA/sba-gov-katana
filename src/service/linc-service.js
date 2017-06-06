@@ -11,7 +11,7 @@ import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
-import { sendDataToOca, handleSoapResponse } from "./oca-service.js";
+import { sendDataToOca, handleSoapResponse, sendPasswordUpdateToOca, handlePasswordUpdateResponse } from "./oca-service.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -64,8 +64,6 @@ function createLenderMatchRegistrationData(data) {
       return result;
     });
 }
-
-
 
 
 function findUnconfirmedRegistrations() {
@@ -169,7 +167,6 @@ function findFailedOrPendingMessages(result) {
 function followupEmailJob() {
   return findUnconfirmedRegistrations().then(sendFollowupConfirmations);
 }
-
 
 function sendMessagesToOca(results) {
   return Promise.map(results, (result) => {
