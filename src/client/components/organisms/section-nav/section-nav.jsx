@@ -5,34 +5,54 @@ import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
 import whiteIconManage from '../../atoms/icons/white-manage.jsx';
 import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
 
-let title = "Launch Your Business";
-let titleArray = _.words(title);
-let firstWord = _.slice(titleArray, 0, 1);
-let remainingTitle = _.replace(title, RegExp("^"+firstWord),'');
-
 class SectionNav extends React.Component {
 
+  makeNavLinks() {
+      let navLinks = [];
+      let section = _.nth(this.props.lineage, 1);
+      navLinks = section.children.map(function(item, index) {
+          return (
+          <li key={index}>
+            <a id={"sectionLinkID"+index} href={item.fullUrl}>{item.title}</a>
+          </li>
+          );
+      });
+      return navLinks;
+  }
+
   render() {
+    let navLinks = this.makeNavLinks();
+    let sectionTitle = _.nth(this.props.lineage, 1).title;
+    let titleArray = _.words(sectionTitle);
+    let firstWord = _.slice(titleArray, 0, 1);
+    let remainingTitle = _.replace(sectionTitle, RegExp("^"+firstWord),'');
+    let sectionNavIcon;
+
+    if (sectionTitle === "Plan your business") {
+      sectionNavIcon = whiteIconPlan;
+    } else if (sectionTitle === "Launch your business") {
+      sectionNavIcon = whiteIconLaunch;
+    } else if (sectionTitle === "Manage your business") {
+      sectionNavIcon = whiteIconManage;
+    } else if (sectionTitle === "Grow your business") {
+      sectionNavIcon = whiteIconGrow;
+    } else {
+      sectionNavIcon = whiteIconGrow;
+    }
+
     return (
-    <div className={styles.SectionNav}>
-      <a className={styles.BackLink} href="#">Back to all topics</a>
-      <img src={ whiteIconLaunch }/>
-      <h2>{firstWord}</h2>
+    <div id="sectionNavigationID" className={styles.sectionNav}>
+      <a id="allTopicsLink"className={styles.backLink} href="/business-guide">Back to all topics</a>
+      <img id="sectionIconID" src={sectionNavIcon} alt=""/>
+      <span id="sectionTitleID"><h2>{firstWord}</h2>
       <h4>{remainingTitle}</h4>
-      <hr />
-      <ul>
-        <li><a href="#">Pick your business location</a></li>
-        <li><a href="#">Choose a business structure</a></li>
-        <li><a href="#">Choose your business name</a></li>
-        <li><a href="#">Register your business</a></li>
-        <li><a href="#">Get federal and state tax ID numbers</a></li>
-        <li><a href="#">Apply for licenses and permits</a></li>
-        <li><a href="#">Open a business bank account</a></li>
-        <li><a href="#">Get business insurance</a></li>
-      </ul>
+      </span>
+        <ul>{navLinks}</ul>
     </div>
     );
   }
 }
 
 export default SectionNav;
+
+
