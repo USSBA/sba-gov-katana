@@ -60,7 +60,7 @@ function generatePassword(length) {
 }
 
 function updateLincPassword(updateInfo, newPassword) {
-  let newExpiry = moment().add(updateInfo.schedule * 60).unix(); //eslint-disable-line no-magic-numbers
+  const newExpiry = moment().add(updateInfo.schedule * 60).unix(); //eslint-disable-line no-magic-numbers
   return lincPasswordUpdate.update(
     {
       expiry: newExpiry,
