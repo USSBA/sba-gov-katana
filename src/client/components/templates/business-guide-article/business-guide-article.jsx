@@ -93,11 +93,7 @@ class BusinessGuideArticle extends React.Component {
 
     return (
       <div className={styles.container}>
-
-
-      <SectionNav lineage={this.props.lineage}/>
-
-
+      {this.props.lineage ? <SectionNav lineage={this.props.lineage}/> : <div></div>}
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>

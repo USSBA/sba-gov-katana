@@ -8,21 +8,20 @@ import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
 class SectionNav extends React.Component {
 
   makeNavLinks() {
-      let NavLinks = [];
+      let navLinks = [];
       let section = _.nth(this.props.lineage, 1);
-      // console.log("section: " + JSON.stringify(section));
-      NavLinks = section.children.map(function(item, index) {
+      navLinks = section.children.map(function(item, index) {
           return (
           <li key={index}>
             <a id={"sectionLinkID"+index} href={item.fullUrl}>{item.title}</a>
           </li>
           );
       });
-      return NavLinks;
+      return navLinks;
   }
 
   render() {
-    let NavLinks = this.makeNavLinks();
+    let navLinks = this.makeNavLinks();
     let sectionTitle = _.nth(this.props.lineage, 1).title;
     let titleArray = _.words(sectionTitle);
     let firstWord = _.slice(titleArray, 0, 1);
@@ -38,24 +37,22 @@ class SectionNav extends React.Component {
     } else if (sectionTitle === "Grow your business") {
       sectionNavIcon = whiteIconGrow;
     } else {
-      sectionNavIcon = whiteIconManage;
+      sectionNavIcon = whiteIconGrow;
     }
 
-
     return (
-    <div id="sectionNavigationID" className={styles.SectionNav}>
-      <a id="allTopicsLink"className={styles.BackLink} href="/business-guide">Back to all topics</a>
+    <div id="sectionNavigationID" className={styles.sectionNav}>
+      <a id="allTopicsLink"className={styles.backLink} href="/business-guide">Back to all topics</a>
       <img id="sectionIconID" src={sectionNavIcon} alt=""/>
       <span id="sectionTitleID"><h2>{firstWord}</h2>
       <h4>{remainingTitle}</h4>
       </span>
-        <ul>{NavLinks}</ul>
+        <ul>{navLinks}</ul>
     </div>
     );
   }
 }
 
 export default SectionNav;
-
 
 
