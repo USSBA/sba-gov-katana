@@ -12,6 +12,7 @@ import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import CardCollection from "../../molecules/card-collection/card-collection.jsx";
 import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
+import StyleGrayBackground from "../../molecules/style-gray-background/style-gray-background.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
     return (
@@ -69,6 +70,8 @@ class FundingProgramsPage extends React.Component {
                                                btnUrl={item.btnUrl} />)
                 } else if(item.type === "cardCollection"){
                     paragraph = (<CardCollection parentIndex={index} key={index} cards={item.cards}/>);
+                } else if(item.type === "styleGrayBackground"){
+                    paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>)
                 }
             }
             return (

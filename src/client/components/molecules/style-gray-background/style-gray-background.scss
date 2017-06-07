@@ -1,0 +1,18 @@
+.container {
+  @include grid-media($sba-grid-small) {
+    padding-top: 100px;
+  }
+}
+
+
+.sectionHeader,
+.textSection{
+  @include grid-column(7, $sba-grid-large);
+  @include grid-push(4);
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+  padding-bottom: 30px;
+}
+
