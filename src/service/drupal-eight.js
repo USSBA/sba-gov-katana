@@ -108,8 +108,6 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
   return retVal;
 }
 
-
-
 function formatTaxonomyTerm(data) {
   if (data) {
     const name = extractValue(data.name);
@@ -131,7 +129,7 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
 }
 
 function makeParagraphValueFormatter(typeName, paragraph) {
-  return function(value, key) {
+  return function(value, key) { //eslint-disable-line complexity
     let newValuePromise;
     if (typeName === "text_section" && key === "text") {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
@@ -151,15 +149,15 @@ function makeParagraphValueFormatter(typeName, paragraph) {
         return result.name;
       });
     } else if (typeName === "card_collection" && key === "cards") {
-      newValuePromise = fetchCards(paragraph); //eslint-disable-line no-use-before-define
+      newValuePromise = fetchNestedParagraph(paragraph, "card_collection"); //eslint-disable-line no-use-before-define
+    } else if (typeName === "style_gray_background") {
+      newValuePromise = fetchNestedParagraph(paragraph, "style_gray_background"); //eslint-disable-line no-use-before-define
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
     return newValuePromise;
   };
 }
-
-
 
 function formatCallToAction(paragraph) {
   const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
@@ -217,16 +215,6 @@ function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
 }
 
-function fetchCards(paragraph) {
-  const cards = paragraph.field_cards || [];
-  const cardIds = _.map(cards, "target_id");
-  if (cards) {
-    return Promise.map(cardIds, fetchFormattedParagraph);
-  }
-
-  return Promise.resolve(null);
-}
-
 
 function formatContactParagraph(paragraph) { //eslint-disable-line complexity
   if (paragraph) {
@@ -250,6 +238,21 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
         stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
       };
     });
+  }
+  return Promise.resolve(null);
+}
+
+function fetchNestedParagraph(nestedParagraph, typeName) {
+  console.log("nested paragraph: " + JSON.stringify(nestedParagraph));
+  if (nestedParagraph) {
+    let paragraphs;
+    if (typeName === "card_collection") {
+      paragraphs = nestedParagraph.field_cards || [];
+    } else if (typeName === "style_gray_background") {
+      paragraphs = nestedParagraph.field_paragraphs || [];
+    }
+    const paragraphIds = _.map(paragraphs, "target_id");
+    return Promise.map(paragraphIds, fetchFormattedParagraph);
   }
   return Promise.resolve(null);
 }
