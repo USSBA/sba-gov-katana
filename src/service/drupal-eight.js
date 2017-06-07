@@ -243,7 +243,6 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
 }
 
 function fetchNestedParagraph(nestedParagraph, typeName) {
-  console.log("nested paragraph: " + JSON.stringify(nestedParagraph));
   if (nestedParagraph) {
     let paragraphs;
     if (typeName === "card_collection") {
