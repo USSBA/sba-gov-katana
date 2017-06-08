@@ -19,7 +19,7 @@ describe('linc soap request test', function() {
         lenderMatchSoapResponseDeleteStub,
         findOneSuccessfulStub;
 
-    let fakePasswordUpdateDate = {
+    let fakePasswordUpdateData = {
       id: 'ddcd46a1-908e-4c7b-a6b9-1992f889c30b',
       username: 'lincUser',
       password: 'my2Pen4$',
@@ -33,7 +33,7 @@ describe('linc soap request test', function() {
       lenderMatchRegistrationDeleteStub = sinon.stub(lenderMatchRegistration, 'destroy').returns(Promise.resolve(1));
       lenderMatchEmailConfirmationDeleteStub = sinon.stub(emailConfirmation, 'destroy').returns(Promise.resolve(1));
       lenderMatchSoapResponseDeleteStub = sinon.stub(lenderMatchSoapResponse, 'destroy').returns(Promise.resolve(1));
-      findOneSuccessfulStub = sinon.stub(lincPasswordUpdate, 'findOne').returns(Promise.resolve(fakePasswordUpdateDate));
+      findOneSuccessfulStub = sinon.stub(lincPasswordUpdate, 'findOne').returns(Promise.resolve(fakePasswordUpdateData));
     });
 
     afterEach(function() {
