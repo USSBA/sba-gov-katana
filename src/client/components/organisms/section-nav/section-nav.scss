@@ -1,10 +1,11 @@
 .sectionNav {
-  background-color: $byzantine;
-  color: #fff;
-  position: absolute;
-  @include grid-column(3, $sba-grid-large);
-  @include grid-media($sba-grid-small){
-    display: none;
+  display: none;
+  @include grid-media( $sba-grid-large) {
+    background-color: $byzantine;
+    color: #fff;
+    display: block;
+    position: absolute;
+    @include grid-column(3, $sba-grid-large);
   }
 }
 
@@ -25,7 +26,6 @@
   font-weight: 500;
   margin-bottom: .8em;
 }
-
 
 .sectionNav a {
   display: block;
