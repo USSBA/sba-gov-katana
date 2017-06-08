@@ -1,17 +1,12 @@
 import React from 'react';
 import styles from './funding-programs-page.scss';
-import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
 import ImageSection from "../../molecules/image-section/image-section.jsx";
-import TitleSection from "../../molecules/title-section/title-section.jsx";
-import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
 import TextReadMoreSection from "../../molecules/text-readmore-section/text-readmore-section.jsx";
-import Lookup from "../../molecules/lookup/lookup.jsx"
-import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
-import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
+import Lookup from "../../molecules/lookup/lookup.jsx";
+import CallToAction from "../../molecules/call-to-action/call-to-action.jsx";
 import CardCollection from "../../molecules/card-collection/card-collection.jsx";
-import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
 import StyleGrayBackground from "../../molecules/style-gray-background/style-gray-background.jsx";
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
@@ -71,7 +66,7 @@ class FundingProgramsPage extends React.Component {
                 } else if(item.type === "cardCollection"){
                     paragraph = (<CardCollection parentIndex={index} key={index} cards={item.cards}/>);
                 } else if(item.type === "styleGrayBackground"){
-                    paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>)
+                    paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>);
                 }
             }
             return (
@@ -82,25 +77,13 @@ class FundingProgramsPage extends React.Component {
         return paragraphs;
     }
 
-    makeBreadcrumbs(lineage) {
-        return _.map(lineage, (item) => {
-            return {url: item.fullUrl, title: item.title}
-        });
-    }
 
     render() {
         let paragraphs = this.makeParagraphs(this.props.paragraphs);
-        let breadcrumbs = this.props.lineage
-            ? this.makeBreadcrumbs(this.props.lineage)
-            : <div></div>;
 
         return (
             <div className={styles.container}>
-                {this.props.lineage ? <SectionNav lineage={this.props.lineage}/> : <div></div>}
-                <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
-                <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
-                <div key={3} className={styles.feedback}><FeedbackForm/></div>
-                {this.props.lineage ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div> : <div></div>}
+                 {paragraphs}
             </div>
         );
     }
