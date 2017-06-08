@@ -19,7 +19,6 @@ describe('linc soap request test', function() {
         lenderMatchSoapResponseDeleteStub,
         findOneSuccessfulStub;
 
-
     let fakePasswordUpdateDate = {
       id: 'ddcd46a1-908e-4c7b-a6b9-1992f889c30b',
       username: 'lincUser',
