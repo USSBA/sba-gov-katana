@@ -119,16 +119,25 @@ function handleSoapResponse(soapResponse) {
 function sendDataToOca(lenderMatchRegistrationData) {
   const sbagovUserId = "Username";
   const dataAsXml = convertFormDataToXml(sbagovUserId, lenderMatchRegistrationData);
-  const soapEnvelope = createSoapEnvelope(config.get("oca.soap.username"), config.get("oca.soap.password"), dataAsXml);
-
   const promise = getEndPointUrl(config.get("oca.soap.wsdlUrl"))
     .then(function(endpoint) {
-      return sendLincSoapRequest(endpoint, soapEnvelope, true);
+        return lincPasswordUpdate.findOne()
+        .then((resp) => {
+          if(resp.username && resp.password){
+              const soapEnvelope = createSoapEnvelope(resp.username, resp.password, dataAsXml);
+              return sendLincSoapRequest(endpoint, soapEnvelope, true);
+          }
+          throw new Error("Unable to retrieve Username and Password from database.");
+        });
     })
     .then(function(response) {
       return _.merge({}, response, {
         lenderMatchRegistrationId: lenderMatchRegistrationData.id
       });
+    })
+    .catch((error) => {
+      console.log("Unable to send data to OCA.");
+      throw error;
     });
   return Promise.resolve(promise); // wrap in a bluebird promise
 }
