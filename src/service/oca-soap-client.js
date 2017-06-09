@@ -238,4 +238,4 @@ function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
 
 
-export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate };
+export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parsePasswordUpdateResponse };

@@ -135,4 +135,4 @@ function sendDataToOca(lenderMatchRegistrationData) {
 
 
 
-export { sendDataToOca, handleSoapResponse, sendPasswordUpdateRequest };
+export { sendDataToOca, handleSoapResponse, sendPasswordUpdateRequest, generatePassword };
