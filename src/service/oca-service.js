@@ -121,11 +121,11 @@ function sendDataToOca(lenderMatchRegistrationData) {
   const dataAsXml = convertFormDataToXml(sbagovUserId, lenderMatchRegistrationData);
   const promise = getEndPointUrl(config.get("oca.soap.wsdlUrl"))
     .then(function(endpoint) {
-        return lincPasswordUpdate.findOne()
+      return lincPasswordUpdate.findOne()
         .then((resp) => {
-          if(resp.username && resp.password){
-              const soapEnvelope = createSoapEnvelope(resp.username, resp.password, dataAsXml);
-              return sendLincSoapRequest(endpoint, soapEnvelope, true);
+          if (resp.username && resp.password) {
+            const soapEnvelope = createSoapEnvelope(resp.username, resp.password, dataAsXml);
+            return sendLincSoapRequest(endpoint, soapEnvelope, true);
           }
           throw new Error("Unable to retrieve Username and Password from database.");
         });
