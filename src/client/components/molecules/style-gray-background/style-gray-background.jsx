@@ -49,7 +49,7 @@ class StyleGrayBackground extends React.Component {
         let paragraphs = this.makeParagraphs(this.props.paragraphs);
 
         return (
-            <div className={styles.container}>
+            <div className={styles.greyParagraph}>
                 {paragraphs}
             </div>
         );
