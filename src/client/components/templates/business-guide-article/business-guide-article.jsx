@@ -17,7 +17,7 @@ const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
     <p>{JSON.stringify(data)}</p>
   );
-}
+};
 
 class BusinessGuideArticle extends React.Component {
 
@@ -93,7 +93,8 @@ class BusinessGuideArticle extends React.Component {
 
     return (
       <div className={styles.container}>
-      {this.props.lineage ? <SectionNav lineage={this.props.lineage}/> : <div></div>}
+        {this.props.lineage ? <SectionNav lineage={this.props.lineage}/> : <div></div>}
+        <div className={styles.backLink}><a id="allTopicsLink" href="/business-guide">Back to all topics</a></div>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
