@@ -33,7 +33,7 @@ linc:
     confirmationEmailBase: http://sbagov.fearlesstesters.com
     resendEmailJobEnabled: false
     resendEmailCron: '0 0 * * * *'
-    sendToOcaJobEnabled: false
+    sendToOcaJobEnabled: true
     ocaSoapCron: '0 * * * * *'
     sendToLincPasswordUpdateEnabled: true
     ocaPasswordUpdateCron: '*/10 * * * * *'
