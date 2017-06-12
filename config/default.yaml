@@ -36,7 +36,7 @@ linc:
     sendToOcaJobEnabled: true
     ocaSoapCron: '0 * * * * *'
     sendToLincPasswordUpdateEnabled: true
-    ocaPasswordUpdateCron: '*/10 * * * * *'
+    ocaPasswordUpdateCron: '0 0 * * * *'
     ocaVersion: "2"
     lookback: 86400
     numberOfSecondsForWhichEmailIsValid: 172800
