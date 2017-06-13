@@ -63,8 +63,11 @@
 }
 
 .breadcrumb{
-    @include grid-media($sba-grid-small){
+    @include grid-media($sba-grid-small) {
         display: none;
+    }
+    @include grid-media($sba-grid-medium) {
+        margin-top: 15px;
     }
 }
 
