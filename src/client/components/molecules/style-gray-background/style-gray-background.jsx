@@ -30,7 +30,7 @@ class StyleGrayBackground extends React.Component {
                     let cleaned = DOMPurify.sanitize(item.text);
                     paragraph = (<TextSection key={index} text={cleaned}/>);
                 } else if (item.type === "sectionHeader") {
-                    let sectionHeaderId = "section-header-" + index;
+                    let sectionHeaderId = "grey-section-header-" + index;
                     paragraphGridStyle = styles.sectionHeader;
                     paragraph = (<SectionHeader key={index} refId={sectionHeaderId} text={item.text}/>);
                     this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
