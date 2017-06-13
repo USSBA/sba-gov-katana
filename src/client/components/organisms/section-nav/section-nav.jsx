@@ -40,15 +40,20 @@ class SectionNav extends React.Component {
       sectionNavIcon = whiteIconGrow;
     }
 
+    console.log("this.props.displayLeftNav: " + this.props.displayLeftNav);
+    // + " " + this.props.animateNav ? styles.animateLeftNav : ""
     return (
-    <div id="sectionNavigationID" className={styles.sectionNav}>
-      <a id="allTopicsLink"className={styles.backLink} href="/business-guide">Back to all topics</a>
-      <img id="sectionIconID" src={sectionNavIcon} alt=""/>
-      <span id="sectionTitleID"><h2>{firstWord}</h2>
+    <div className={this.props.displayLeftNav ? styles.displayLeftNav : ""}>
+        <div id="sectionNavigationID" className={styles.sectionNav}>
+            <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
+            <img id="sectionIconID" src={sectionNavIcon} alt=""/>
+            <span id="sectionTitleID"><h2>{firstWord}</h2>
       <h4>{remainingTitle}</h4>
       </span>
-        <ul>{navLinks}</ul>
+            <ul>{navLinks}</ul>
+        </div>
     </div>
+
     );
   }
 }

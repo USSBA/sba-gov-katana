@@ -19,6 +19,7 @@ class StyleGrayBackground extends React.Component {
     makeParagraphs(paragraphData) {
         let paragraphs = [];
         this.sectionHeaders = [];
+        let parentIndex = this.props.parentIndex;
         paragraphs = paragraphData.map(function(item, index) {
             let paragraphGridStyle = styles.textSection;
             let paragraph = (<ParagraphTypeToBeImplemented key={index} data={item} index={index}/>);
@@ -38,7 +39,7 @@ class StyleGrayBackground extends React.Component {
                 }
             }
             return (
-                <div key={index} id={item.type + "-" + index} className={paragraphGridStyle}>{paragraph}</div>
+                <div key={index} id={item.type + "-" + parentIndex + "-" + index} className={paragraphGridStyle}>{paragraph}</div>
             );
         }.bind(this));
 
@@ -55,5 +56,13 @@ class StyleGrayBackground extends React.Component {
         );
     }
 }
+
+StyleGrayBackground.propTypes = {
+    parentIndex: React.PropTypes.number
+};
+
+StyleGrayBackground.defaultProps = {
+    parentIndex: -1
+};
 
 export default StyleGrayBackground;

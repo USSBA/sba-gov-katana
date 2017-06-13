@@ -21,6 +21,15 @@ const ParagraphTypeToBeImplemented = ({data, index}) => {
 
 class BusinessGuideArticle extends React.Component {
 
+    constructor(props) {
+        super();
+        this.state = {
+            slideLeftNavIn: false,
+            slideContentIn: false,
+            displayLeftNav: false
+        };
+    }
+
   componentWillMount() {}
 
   sectionHeaders = [];
@@ -85,21 +94,34 @@ class BusinessGuideArticle extends React.Component {
     });
   }
 
+  handleBackLinkClicked(e){
+      e.preventDefault();
+      this.setState({slideLeftNavIn: false,
+                      slideContentIn: false,
+                      displayLeftNav: true});
+  }
+
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     let breadcrumbs = this.props.lineage
       ? this.makeBreadcrumbs(this.props.lineage)
       : <div></div>;
 
+      console.log("this.state.displayLeftNav: " + this.state.displayLeftNav);
+    //animateNav={this.state.slideLeftNavIn}
+    //onClick={this.handleBackLinkClicked.bind(this)}
+
     return (
-      <div className={styles.container}>
-        {this.props.lineage ? <SectionNav lineage={this.props.lineage}/> : <div></div>}
-        <div className={styles.backLink}><a id="allTopicsLink" href="/business-guide">Back to all topics</a></div>
+    <div>
+      {this.props.lineage ? <SectionNav displayLeftNav={this.state.displayLeftNav} lineage={this.props.lineage}/> : <div></div>}
+      <div className={this.state.displayLeftNav ? styles.hideContainer : styles.container}>
+        <div className={styles.backLinkMobile}><a id="backToallTopics" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
         {this.props.lineage ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div> : <div></div>}
       </div>
+    </div>
     );
   }
 }
