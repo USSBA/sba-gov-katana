@@ -5,26 +5,36 @@
 }
 
 .readMoreSectionClosed {
-  @include grid-push(7);
   @include grid-media($sba-grid-small) {
     display: none;
   }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large){
+    @include grid-push(9);
+    @include grid-column(3.07);
+  }
+
 }
 
 .readMoreSectionExpanded {
-  margin-left: 0 !important;
-  @include grid-push(0);
   @include grid-media($sba-grid-small) {
     display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+    @include grid-push(4);  
   }
 }
 
 .readMoreSectionMobile{
   display: none;
   @include grid-media($sba-grid-small) {
-    @include grid-shift(-0.25);
-    @include grid-column(7.42);
-    margin-left: 0 !important;
+    @include grid-column(6, $sba-grid-small);
     display:block;
   }
 }

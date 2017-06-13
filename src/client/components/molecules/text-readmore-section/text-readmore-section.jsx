@@ -24,12 +24,12 @@ class TextReadMoreSection extends React.Component{
         let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
         let textReadMoreSection = this.state.readMoreExpanded ? (
             <div className={styles.textReadMoreSection}>
-                <div className={readMoreSectionStyles.readMoreSectionExpanded}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
                 <div className={textSectionStyles.readMoreSectionExpanded}><TextSection text={cleaned}/></div>
+                <div className={readMoreSectionStyles.readMoreSectionExpanded}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
            </div>
         ) :
             (<div className={styles.textReadMoreSection}>
-                <div className={textSectionStyles.readMoreSectionClosed}><TextSection text={cleaned}/></div>
+                <div className={textSectionStyles.readMoreSectionClosed}><TextSection style={{marginLeft: "400px !important"}} text={cleaned}/></div>
                 <div className={readMoreSectionStyles.readMoreSectionClosed}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded}  readMoreSectionItem={this.props.readMoreSectionItem}/></div>
             </div>);
 

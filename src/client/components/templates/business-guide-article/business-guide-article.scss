@@ -22,6 +22,7 @@
 .previousNext,
 .breadcrumb {
     padding-bottom: 30px;
+    //@include grid-visual;
     @include grid-media($sba-grid-small) {
          @include grid-column(6);
         @include grid-push(0);
@@ -31,7 +32,7 @@
         @include grid-push(0);
     }
     @include grid-media($sba-grid-large) {
-        @include grid-column(7, $sba-grid-large);
+        @include grid-column(7);
         @include grid-push(4);
     }
 }
@@ -45,6 +46,23 @@
         @include grid-push(3);
         padding-bottom: 30px;
     }
+}
+
+.textReadMoreSection {
+    @include grid-visual;
+    // padding-bottom: 30px;
+    // // @include grid-media($sba-grid-small) {
+    // //      @include grid-column(6);
+    // //     @include grid-push(0);
+    // // }
+    // // @include grid-media($sba-grid-medium) {
+    // //     @include grid-column(12);
+    // //     @include grid-push(0);
+    // // }
+    // @include grid-media($sba-grid-large) {
+    //     @include grid-column(7);
+    //     @include grid-push(4);
+    // }
 }
 
 .callToAction {
