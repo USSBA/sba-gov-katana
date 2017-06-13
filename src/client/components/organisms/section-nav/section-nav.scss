@@ -13,6 +13,14 @@
   }
 }
 
+.mobileSectionNav {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 100000000000;
+    width: 100%;
+}
+
 .sectionNav ul, .mobileSectionNav ul {
   padding-bottom: 100px;
   @include grid-media($sba-grid-large) {
@@ -89,12 +97,13 @@ a.mobileBackLink{
 }
 
 .mobileBackLink:before {
+  color: #fff;
   content: "\f104";
   font-family: FontAwesome;
   font-size: 30px;
   margin-right: 15px;
   position: absolute;
-  top: 12px;
+  top: 26px;
   left: 30px;
 }
 
@@ -147,10 +156,10 @@ a.mobileBackLink{
   100% { transform: translateX(0%); }
 }
 
-@include theme(sba-blue, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(byzantine, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(money-green, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(cobalt-blue, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(sba-blue, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(byzantine, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(money-green, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+@include theme(cobalt-blue, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
 
 @include theme-hover(sba-blue, '.sectionNav li, .backLink', $sba-blue-dark, #fff, $sba-blue-dark);
 @include theme-hover(byzantine, '.sectionNav li, .backLink', $byzantine-dark, #fff, $byzantine-dark);
