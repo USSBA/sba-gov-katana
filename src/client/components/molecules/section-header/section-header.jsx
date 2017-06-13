@@ -5,7 +5,7 @@ class SectionHeader extends React.Component {
 
 	render(){
 		return(
-				<h2 id={this.props.refId} className={styles.sectionHeader}>{this.props.text}</h2>
+				<h2 className={styles.sectionHeader}>{this.props.text}</h2>
 			)
 	}
 }
