@@ -4,7 +4,7 @@
   color: #fff;
   @include grid-media( $sba-grid-large) {
     display: block;
-    position: absolute;
+    position: fixed;
     @include grid-column(3, $sba-grid-large);
   }
 }
