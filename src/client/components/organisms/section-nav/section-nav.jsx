@@ -40,10 +40,10 @@ class SectionNav extends React.Component {
       sectionNavIcon = whiteIconGrow;
     }
 
-    console.log("this.props.displayLeftNav: " + this.props.displayLeftNav);
+    console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
     // + " " + this.props.animateNav ? styles.animateLeftNav : ""
     return (
-    <div className={this.props.displayLeftNav ? styles.displayLeftNav : ""}>
+    <div className={this.props.displayMobileNav ? styles.displayMobileNav : ""}>
         <div id="sectionNavigationID" className={styles.sectionNav}>
             <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
             <img id="sectionIconID" src={sectionNavIcon} alt=""/>
