@@ -115,7 +115,7 @@ class BusinessGuideArticle extends React.Component {
     <div>
       {this.props.lineage ? <SectionNav displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/> : <div></div>}
       <div className={this.state.displayMobileNav ? styles.hideContainer : styles.container}>
-        <div className={styles.backLinkMobile}><a id="backToallTopics" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
+        <div className={styles.backLinkMobile}><a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
