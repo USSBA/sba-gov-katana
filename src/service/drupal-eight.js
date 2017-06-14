@@ -296,6 +296,7 @@ function formatMenu(data, parentUrl) {
         url: menuUrl,
         fullUrl: fullUrl,
         children: submenus,
+        description: data.link.description,
         node: data.link.route_parameters ? data.link.route_parameters.node : null,
         weight: _.toNumber(data.link.weight)
       };
