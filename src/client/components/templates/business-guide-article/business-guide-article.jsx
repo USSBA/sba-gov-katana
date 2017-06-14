@@ -26,7 +26,7 @@ class BusinessGuideArticle extends React.Component {
         this.state = {
             slideLeftNavIn: false,
             slideContentIn: false,
-            displayLeftNav: false
+            displayMobileNav: false
         };
     }
 
@@ -98,7 +98,7 @@ class BusinessGuideArticle extends React.Component {
       e.preventDefault();
       this.setState({slideLeftNavIn: false,
                       slideContentIn: false,
-                      displayLeftNav: true});
+                      displayMobileNav: true});
   }
 
   render() {
@@ -107,15 +107,15 @@ class BusinessGuideArticle extends React.Component {
       ? this.makeBreadcrumbs(this.props.lineage)
       : <div></div>;
 
-      console.log("this.state.displayLeftNav: " + this.state.displayLeftNav);
+      console.log("this.state.displayMobileNav: " + this.state.displayMobileNav);
     //animateNav={this.state.slideLeftNavIn}
     //onClick={this.handleBackLinkClicked.bind(this)}
 
     return (
     <div>
-      {this.props.lineage ? <SectionNav displayLeftNav={this.state.displayLeftNav} lineage={this.props.lineage}/> : <div></div>}
-      <div className={this.state.displayLeftNav ? styles.hideContainer : styles.container}>
-        <div className={styles.backLinkMobile}><a id="backToallTopics" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
+      {this.props.lineage ? <SectionNav displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/> : <div></div>}
+      <div className={this.state.displayMobileNav ? styles.hideContainer : styles.container}>
+        <div className={styles.backLinkMobile}><a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
         <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
         <div key={3} className={styles.feedback}><FeedbackForm/></div>

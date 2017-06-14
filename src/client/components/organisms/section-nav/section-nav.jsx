@@ -40,10 +40,30 @@ class SectionNav extends React.Component {
       sectionNavIcon = whiteIconGrow;
     }
 
-    console.log("this.props.displayLeftNav: " + this.props.displayLeftNav);
+    console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
     // + " " + this.props.animateNav ? styles.animateLeftNav : ""
     return (
-    <div className={this.props.displayLeftNav ? styles.displayLeftNav : ""}>
+        this.props.displayMobileNav ? (
+            <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
+                <a id="mobileAllTopicsLink" className={styles.mobileBackLink} href="/business-guide">
+                    <img id="mobileSectionIconID" src={sectionNavIcon} alt=""/>
+                    <span id="mobileSectionTitleID"><h2>{firstWord}</h2>
+                        <h4>{remainingTitle}</h4>
+                    </span>
+                </a>
+                <ul>{navLinks}</ul>
+            </div>
+        ) : (
+            <div id="sectionNavigationID" className={styles.sectionNav}>
+                <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
+                <img id="sectionIconID" src={sectionNavIcon} alt=""/>
+                <span id="sectionTitleID"><h2>{firstWord}</h2>
+                    <h4>{remainingTitle}</h4>
+                </span>
+                <ul>{navLinks}</ul>
+            </div>
+        )
+/*    <div className={this.props.displayMobileNav ? styles.displayMobileNav : ""}>
         <div id="sectionNavigationID" className={styles.sectionNav}>
             <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
             <img id="sectionIconID" src={sectionNavIcon} alt=""/>
@@ -52,7 +72,7 @@ class SectionNav extends React.Component {
       </span>
             <ul>{navLinks}</ul>
         </div>
-    </div>
+    </div>*/
 
     );
   }
