@@ -68,6 +68,7 @@
     }
     @include grid-media($sba-grid-medium) {
         padding: 15px 0;
+        margin-bottom: 50px;
         border-bottom: 1px solid $grey-light;
     }
     @include grid-media($sba-grid-large) {
