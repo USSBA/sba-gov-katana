@@ -24,8 +24,8 @@ class TextReadMoreSection extends React.Component{
         let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
         let textReadMoreSection = this.state.readMoreExpanded ? (
             <div className={styles.textReadMoreSection}>
-                <div className={textSectionStyles.readMoreSectionExpanded}><TextSection text={cleaned}/></div>
                 <div className={readMoreSectionStyles.readMoreSectionExpanded}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+                <div className={textSectionStyles.readMoreSectionExpanded}><TextSection text={cleaned}/></div>
            </div>
         ) :
             (<div className={styles.textReadMoreSection}>
@@ -34,8 +34,8 @@ class TextReadMoreSection extends React.Component{
             </div>);
 
         return <div>{textReadMoreSection}<div className={styles.textReadMoreSection}>
-                    <div className={textSectionStyles.readMoreSectionMobile}><TextSection text={cleaned}/></div>
                     <div className={readMoreSectionStyles.readMoreSectionMobile}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded}  readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+                    <div className={textSectionStyles.readMoreSectionMobile}><TextSection text={cleaned}/></div>
                 </div><div>
 
         </div></div>;
