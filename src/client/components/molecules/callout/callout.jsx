@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './callout.scss';
-import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
-import SmallInversePrimaryButton from "../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx";
+import LargeInverseSecondaryButton from "../../atoms/Large-inverse-secondary-button/Large-inverse-secondary-button.jsx";
+import LargeInversePrimaryButton from "../../atoms/Large-inverse-primary-button/Large-inverse-primary-button.jsx";
 
 class Callout extends React.Component {
  render(){
@@ -13,11 +13,11 @@ class Callout extends React.Component {
           <div className={styles.buttonContainer}>
               {
                this.props.buttons.map((item, index)=>{
-                   if(item.btnType === "SmallInverseSecondaryButton"){
-                       return (<div className={styles.button} key={index}><SmallInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
+                   if(item.btnType === "LargeInverseSecondaryButton"){
+                       return (<div className={styles.button} key={index}><LargeInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
                    }
-                   if(item.btnType === "SmallInversePrimaryButton"){
-                       return (<div className={styles.button} key={index}><SmallInversePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);v
+                   if(item.btnType === "LargeInversePrimaryButton"){
+                       return (<div className={styles.button} key={index}><LargeInversePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);v
                    }
                })
               }
