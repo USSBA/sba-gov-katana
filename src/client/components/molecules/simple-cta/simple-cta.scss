@@ -1,0 +1,18 @@
+@include background-color-theme( '.container');
+
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.container p {
+    color: $white;
+    text-align: center;
+    @include font-size($h6-font-sizes);
+    font-weight: bold;
+}
+
+.container button {
+    font-size: 75%;
+}

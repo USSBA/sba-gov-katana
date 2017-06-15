@@ -9,9 +9,10 @@
     display: none;
   }
   @include grid-media($sba-grid-medium){
-    @include grid-column(12);
+    display: none;
   }
   @include grid-media($sba-grid-large){
+    display: block;
     @include grid-push(9);
     @include grid-column(3.07);
   }
@@ -23,9 +24,10 @@
     display: none;
   }
   @include grid-media($sba-grid-medium) {
-    @include grid-column(12);
+    display: none;
   }
   @include grid-media($sba-grid-large) {
+    display: block;
     @include grid-column(8);
     @include grid-push(4);  
   }
@@ -36,6 +38,13 @@
   @include grid-media($sba-grid-small) {
     @include grid-column(6, $sba-grid-small);
     display:block;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: block;
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
   }
 }
 
