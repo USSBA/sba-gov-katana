@@ -1,0 +1,72 @@
+.tile {
+	@include grid-media($sba-grid-large){
+		position: relative;
+		@include grid-column(3, $sba-grid-large)
+		height: 577px;
+		margin-top: 10px;
+		margin-bottom: 30px;
+		background-color: #EBEBEB;
+	}
+}
+
+.icon {
+	@include grid-media($sba-grid-large){
+		height: 105px;
+		width: 105px;
+		display: block;
+		margin: auto;
+		margin-top: 133px;
+	}
+}
+
+.largeTitle {
+	@include grid-media($sba-grid-large){
+		text-transform: uppercase;
+		text-align: center;
+		margin-top: 12px;
+		margin-bottom: 0px;
+    line-height: 50px;
+		font-size: 2.7em;
+		font-weight: 900;
+		color: #333333;
+	}
+}
+
+.smallTitle {
+	@include grid-media($sba-grid-large){
+		text-transform: uppercase;
+		text-align: center;
+		margin-bottom: 0px;
+    line-height: 31px;
+		font-size: 1.33em;
+		font-weight: bold;
+		color: #333333;
+	}
+}
+
+.line {
+	@include grid-media($sba-grid-large){
+		height: 1px;
+		width: 90px;
+		border: 3px solid $byzantine;
+		display: block;
+		margin: auto;
+		margin-top: 21px;
+		margin-bottom: 19px;
+	}
+}
+
+.blurb {
+	@include grid-media($sba-grid-large){
+		text-align: center;
+		margin: 1.1em;
+	}
+}
+
+.backgroundLines {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+
+}
