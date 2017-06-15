@@ -12,12 +12,12 @@ class ReadMoreSection extends React.Component{
         let btnText = this.props.expanded ? "CLOSE" :  "READ MORE";
         let expandedTextSection = this.props.expanded ? <p className={styles.expandedCopyText}>{this.props.readMoreSectionItem.expandedCopyText}</p> : "" ;
         let expandedHr = this.props.expanded ? <hr className={styles.lineCopy}/> : "";
-        return (<div className={styles.readMoreSection}>
-            <h3 className={styles.title}>{this.props.readMoreSectionItem.titleText}</h3>
-            <p className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
+        return (<div id="readMore" className={styles.readMoreSection}>
+            <h3 id="readMoreTitle" className={styles.title}>{this.props.readMoreSectionItem.titleText}</h3>
+            <p id="readMoreBlurb"className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
             {expandedHr}
             {expandedTextSection}
-            <button className={styles.readMore} href="#" onClick={this.handleClick.bind(this)}>{btnText}</button>
+            <button id="readMoreBtn" className={styles.readMore} href="#" onClick={this.handleClick.bind(this)}>{btnText}</button>
         </div>);
     }
 }
