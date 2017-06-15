@@ -6,7 +6,7 @@ class HamburgerIcon extends React.Component {
   getOpen() {
     return (
         <div className={styles.menuIconContainer}>
-          <svg viewBox="0 0 40 40" className={ styles.menuIconCloseNew}>
+          <svg viewBox="0 0 40 40" className={ styles.menuIconClose}>
             <path className={styles.closeIcon} strokeWidth={4} fill="transparent" strokeLinecap="round" d="M 10,10 L 30,30 M 30,10 L 10,30"/>
           </svg>
         </div>
@@ -16,7 +16,7 @@ class HamburgerIcon extends React.Component {
   getClosed() {
     return (
       <div className={styles.menuIconContainer}>
-        <svg className={styles.menuIconHamburgerNew} width="15px" height="13px" viewBox="0 0 15 13">
+        <svg className={styles.menuIconHamburger} width="15px" height="13px" viewBox="0 0 15 13">
           <title>hamburger icon</title>
           <desc>Created with Sketch.</desc>
           <defs/>
@@ -34,7 +34,7 @@ class HamburgerIcon extends React.Component {
   }
 
   getText(open) {
-    return <div className={styles.menuBtnTextNew}>{open
+    return <div className={open ? styles.textOpen : styles.textClosed}>{open
         ? "Close"
         : "Menu"}</div>;
   }

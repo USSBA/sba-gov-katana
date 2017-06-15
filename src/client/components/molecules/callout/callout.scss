@@ -38,8 +38,6 @@
 
 
 .button {
-	font-size: 12px;
-	margin-right: 20px;
 	float: left;
 	@include grid-media($sba-grid-small){
 		width: 100%;
@@ -47,7 +45,6 @@
 }
 
 .button > button{
-	width: 129px;
 	margin-bottom: 10px;
 	@include grid-media($sba-grid-small){
 		width: 100%;
