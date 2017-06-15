@@ -39,7 +39,7 @@ class SectionNav extends React.Component {
     } else {
       sectionNavIcon = whiteIconGrow;
     }
-    
+
     return (
         this.props.displayMobileNav ? (
             <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
