@@ -5,7 +5,7 @@
     background-color: $byzantine;
     color: #fff;
     display: block;
-    position: fixed;
+    position: absolute;
     @include grid-column(3, $sba-grid-large);
   }
   @include grid-media($sba-grid-small){
@@ -24,7 +24,7 @@
 .sectionNav ul, .mobileSectionNav ul {
   padding-bottom: 100px;
   @include grid-media($sba-grid-large) {
-    padding-bottom: 40px;
+    padding-bottom: 0;
   }
 }
 
@@ -33,7 +33,7 @@
 }
 
 .sectionNav h2, .sectionNav h4 {
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
 }
 
