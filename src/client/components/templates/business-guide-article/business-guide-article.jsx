@@ -116,7 +116,6 @@ class BusinessGuideArticle extends React.Component {
 
     return (
     <div>
-    <StickyContainer>
       {this.props.lineage ? <SectionNav displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/> : <div></div>}
       <div className={this.state.displayMobileNav ? styles.hideContainer : styles.container}>
         <div className={styles.backLinkMobile}><a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
@@ -125,7 +124,6 @@ class BusinessGuideArticle extends React.Component {
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
         {this.props.lineage ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div> : <div></div>}
       </div>
-      </StickyContainer>
     </div>
     );
   }

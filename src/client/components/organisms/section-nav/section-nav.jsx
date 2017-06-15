@@ -55,7 +55,7 @@ class SectionNav extends React.Component {
             </div>
         ) : (
 
-<Sticky>
+
             <div id="sectionNavigationID" className={styles.sectionNav}>
                 <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
                 <span id="sectionTitleID"><h2>{firstWord}</h2>
@@ -63,7 +63,7 @@ class SectionNav extends React.Component {
                 </span>
                 <ul>{navLinks}</ul>
             </div>
-</Sticky>
+
 
         )
     );
