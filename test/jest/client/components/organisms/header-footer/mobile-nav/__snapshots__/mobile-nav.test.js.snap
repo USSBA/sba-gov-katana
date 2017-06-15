@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mobile Navigation has the correct structure 1`] = `
+<div>
+  <div
+    className="mobileHeader"
+  >
+    <div
+      className="logoNew"
+    >
+      <a
+        href="/"
+        tabIndex="-1"
+      >
+        <img
+          alt="Small Business Administration"
+          src="test-file-stub"
+        />
+      </a>
+    </div>
+    <span>
+      <a
+        className="menuButtonClosed"
+        id="mobile-navigation-button"
+        onClick={[Function]}
+      >
+        <div>
+          <div
+            className="textClosed"
+          >
+            Menu
+          </div>
+          <div
+            className="menuIconContainer"
+          >
+            <svg
+              className="menuIconHamburger"
+              height="13px"
+              viewBox="0 0 15 13"
+              width="15px"
+            >
+              <title>
+                hamburger icon
+              </title>
+              <desc>
+                Created with Sketch.
+              </desc>
+              <defs />
+              <g
+                fill="none"
+                fillRule="evenodd"
+                id="Homepage"
+                stroke="none"
+                strokeWidth={1}
+              >
+                <g
+                  className="hamburgerIcon"
+                  id="alert-mobile"
+                  transform="translate(-337.000000, -128.000000)"
+                >
+                  <g
+                    id="Rectangle-14-+-whitepaper-Copy-11"
+                    transform="translate(274.000000, 116.000000)"
+                  >
+                    <path
+                      d="M78,22.4318182 C78,22.0962358 77.7167969,21.8181818 77.375,21.8181818 L63.625,21.8181818 C63.2832031,21.8181818 63,22.0962358 63,22.4318182 L63,23.6590909 C63,23.9946733 63.2832031,24.2727273 63.625,24.2727273 L77.375,24.2727273 C77.7167969,24.2727273 78,23.9946733 78,23.6590909 L78,22.4318182 Z M78,17.5227273 C78,17.1871449 77.7167969,16.9090909 77.375,16.9090909 L63.625,16.9090909 C63.2832031,16.9090909 63,17.1871449 63,17.5227273 L63,18.75 C63,19.0855824 63.2832031,19.3636364 63.625,19.3636364 L77.375,19.3636364 C77.7167969,19.3636364 78,19.0855824 78,18.75 L78,17.5227273 Z M78,12.6136364 C78,12.278054 77.7167969,12 77.375,12 L63.625,12 C63.2832031,12 63,12.278054 63,12.6136364 L63,13.8409091 C63,14.1764915 63.2832031,14.4545455 63.625,14.4545455 L77.375,14.4545455 C77.7167969,14.4545455 78,14.1764915 78,13.8409091 L78,12.6136364 Z"
+                      id="hamburger-icon"
+                    />
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </a>
+    </span>
+  </div>
+  <div
+    className="mainNavNew "
+  >
+    <form
+      className="mobileSearchContainerNew"
+    >
+      <div
+        className="searchIconContainerNew"
+      >
+        <img
+          alt="Search"
+          className="searchIconNew"
+          src="test-file-stub"
+        />
+      </div>
+      <input
+        className="searchInputFieldNew"
+        placeholder="Search SBA.gov"
+        type="text"
+      />
+    </form>
+    <div
+      className="menuLinkSection"
+    >
+      <span
+        className="link"
+        id="mobile-nav-starting-managing-container"
+        onMouseOut={undefined}
+        onMouseOver={undefined}
+      >
+        <a
+          className="sectionLink"
+          href="/starting-managing-business"
+          id="mobile-nav-starting-managing"
+          onKeyDown={undefined}
+        >
+          Starting & Managing
+        </a>
+      </span>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <span
+        className="link"
+        id="mobile-nav-loans-grants-container"
+        onMouseOut={undefined}
+        onMouseOver={undefined}
+      >
+        <a
+          className="sectionLink"
+          href="/loans-grants"
+          id="mobile-nav-loans-grants"
+          onKeyDown={undefined}
+        >
+          Loans & Grants
+        </a>
+      </span>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <span
+        className="link"
+        id="mobile-nav-contracting-container"
+        onMouseOut={undefined}
+        onMouseOver={undefined}
+      >
+        <a
+          className="sectionLink"
+          href="/contracting"
+          id="mobile-nav-contracting"
+          onKeyDown={undefined}
+        >
+          Contracting
+        </a>
+      </span>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <span
+        className="link"
+        id="mobile-nav-learning-container"
+        onMouseOut={undefined}
+        onMouseOver={undefined}
+      >
+        <a
+          className="sectionLink"
+          href="/tools/sba-learning-center/search/training"
+          id="mobile-nav-learning"
+          onKeyDown={undefined}
+        >
+          Learning Center
+        </a>
+      </span>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <span
+        className="link"
+        id="mobile-nav-local-assistance-container"
+        onMouseOut={undefined}
+        onMouseOver={undefined}
+      >
+        <a
+          className="sectionLink"
+          href="/tools/local-assistance"
+          id="mobile-nav-local-assistance"
+          onKeyDown={undefined}
+        >
+          Local Assistance
+        </a>
+      </span>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <span
+        className="link"
+        id="mobile-nav-about-container"
+        onMouseOut={undefined}
+        onMouseOver={undefined}
+      >
+        <a
+          className="sectionLink"
+          href="/about-sba"
+          id="mobile-nav-about"
+          onKeyDown={undefined}
+        >
+          About Us
+        </a>
+      </span>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <a
+        className="navLinkSpecialNew"
+        href="/tools/local-assistance#locations-page"
+        id="mobile-nav-near-you"
+      >
+        <img
+          alt=""
+          className="linkIcon"
+          src="test-file-stub"
+        />
+        SBA Near You
+      </a>
+    </div>
+    <div
+      className="menuLinkSection"
+    >
+      <a
+        className="navLinkSpecialNew"
+        href="/tools/events#events-page"
+        id="mobile-nav-events"
+      >
+        <img
+          alt=""
+          className="linkIcon"
+          src="test-file-stub"
+        />
+        Small Business Events
+      </a>
+    </div>
+  </div>
+</div>
+`;
