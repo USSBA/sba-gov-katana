@@ -1,4 +1,5 @@
 import React from 'react';
+import Sticky from 'react-sticky';
 import styles from './section-nav.scss';
 import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
 import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
@@ -41,7 +42,6 @@ class SectionNav extends React.Component {
     }
 
     console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
-    // + " " + this.props.animateNav ? styles.animateLeftNav : ""
     return (
         this.props.displayMobileNav ? (
             <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
@@ -54,26 +54,18 @@ class SectionNav extends React.Component {
                 <ul>{navLinks}</ul>
             </div>
         ) : (
+
+
             <div id="sectionNavigationID" className={styles.sectionNav}>
                 <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
-                <img id="sectionIconID" src={sectionNavIcon} alt=""/>
                 <span id="sectionTitleID"><h2>{firstWord}</h2>
                     <h4>{remainingTitle}</h4>
                 </span>
                 <ul>{navLinks}</ul>
             </div>
-        )
-/*    <div className={this.props.displayMobileNav ? styles.displayMobileNav : ""}>
-        <div id="sectionNavigationID" className={styles.sectionNav}>
-            <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
-            <img id="sectionIconID" src={sectionNavIcon} alt=""/>
-            <span id="sectionTitleID"><h2>{firstWord}</h2>
-      <h4>{remainingTitle}</h4>
-      </span>
-            <ul>{navLinks}</ul>
-        </div>
-    </div>*/
 
+
+        )
     );
   }
 }
