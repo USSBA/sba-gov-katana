@@ -3,6 +3,7 @@ import styles from './business-guide-article.scss';
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
+import SubsectionHeader from "../../molecules/subsection-header/subsection-header.jsx"
 import ImageSection from "../../molecules/image-section/image-section.jsx";
 import TitleSection from "../../molecules/title-section/title-section.jsx";
 import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
@@ -60,6 +61,9 @@ class BusinessGuideArticle extends React.Component {
           paragraphGridStyle = styles.sectionHeader;
           paragraph = (<SectionHeader key={index} refId={sectionHeaderId} text={item.text}/>);
           this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
+        } else if (item.type === "subsectionHeader") {
+          paragraphGridStyle = styles.sectionHeader;
+          paragraph = (<SubsectionHeader key={index} text={item.text}/>);  
         } else if (item.type === "image") {
           paragraphGridStyle = styles.image;
           paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>);
