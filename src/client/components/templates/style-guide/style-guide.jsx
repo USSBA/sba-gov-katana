@@ -28,6 +28,7 @@ import Checkbox from "../../atoms/checkbox/checkbox.jsx";
 
 import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
+import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
 
 class StyleGuide extends React.Component {
   constructor() {
@@ -49,12 +50,12 @@ class StyleGuide extends React.Component {
 
   render() {
       let buttonsArray = [
-                            {
-                              onClickHandler: this.handleLargeBtnClicked,
-                              btnText: "LARGE BUTTON",
-                              btnType: "SmallInverseSecondaryButton"
-                            }
-                          ];
+            {
+              onClickHandler: this.handleLargeBtnClicked,
+              btnText: "LARGE BUTTON",
+              btnType: "SmallInverseSecondaryButton"
+            }
+          ];
     return (
       <div>
         <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
@@ -64,6 +65,10 @@ class StyleGuide extends React.Component {
         <FormElements/>
         <h1>Hero</h1>
         <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." buttons={buttonsArray} desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
+        <h1>Calls to Action</h1>
+        <div className={styles.simpleCtaContainer}>
+            <SimpleCta/>
+        </div>
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
           ? <SbaModal onClose={() => {
