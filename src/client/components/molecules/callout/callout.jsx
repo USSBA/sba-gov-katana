@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './callout.scss';
-import LargeInverseSecondaryButton from "../../atoms/Large-inverse-secondary-button/Large-inverse-secondary-button.jsx";
-import LargeInversePrimaryButton from "../../atoms/Large-inverse-primary-button/Large-inverse-primary-button.jsx";
+import LargeInverseSecondaryButton from "../../atoms/large-inverse-secondary-button/large-inverse-secondary-button.jsx";
+import LargeInversePrimaryButton from "../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx";
 
 class Callout extends React.Component {
  render(){
