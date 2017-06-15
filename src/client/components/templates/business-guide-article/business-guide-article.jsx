@@ -45,10 +45,8 @@ class BusinessGuideArticle extends React.Component {
       let paragraphGridStyle = styles.textSection;
       let paragraph = (<ParagraphTypeToBeImplemented key={index} data={item} index={index}/>);
       if (item && item.type) {
-        if (item.type === "readMore") {
-          paragraph = (
-            <div></div>
-          )
+        if(item.type === "readMore"){
+          return null
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
             paragraphGridStyle = styles.textReadMoreSection;
