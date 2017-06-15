@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./section-page.scss";
 import path from 'path';
+import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
 
 class SectionPage extends React.Component {
 
@@ -32,6 +33,9 @@ class SectionPage extends React.Component {
               })
               : <div/>}
           </ol>
+          <div className={styles.nineStepsCtaContainer}>
+          <SimpleCta actionText="Start your business in 9 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>
+          </div>
         </div>
       );
     }
