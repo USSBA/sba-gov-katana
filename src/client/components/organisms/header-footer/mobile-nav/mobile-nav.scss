@@ -11,7 +11,7 @@
     }
 }
 
-.menuBtnNew {
+.menuButtonOpen, .menuButtonClosed {
     float: right;
     border: 2px solid;
     width: 110px;
@@ -22,10 +22,15 @@
     }
 }
 
-@include theme(sba-blue, '.menuBtnNew', null, $sba-blue, $sba-blue);
-@include theme(byzantine, '.menuBtnNew', null, $byzantine, $byzantine);
-@include theme(money-green, '.menuBtnNew', null, $money-green, $money-green);
-@include theme(cobalt-blue, '.menuBtnNew', null, $cobalt-blue, $cobalt-blue);
+@include theme(sba-blue, '.menuButtonClosed', null, $sba-blue, $sba-blue);
+@include theme(byzantine, '.menuButtonClosed', null, $byzantine, $byzantine);
+@include theme(money-green, '.menuButtonClosed', null, $money-green, $money-green);
+@include theme(cobalt-blue, '.menuButtonClosed', null, $cobalt-blue, $cobalt-blue);
+
+@include theme(sba-blue, '.menuButtonOpen', null, $sba-blue-dark, $sba-blue-dark);
+@include theme(byzantine, '.menuButtonOpen', null, $byzantine-dark, $byzantine-dark);
+@include theme(money-green, '.menuButtonOpen', null, $money-green-dark, $money-green-dark);
+@include theme(cobalt-blue, '.menuButtonOpen', null, $cobalt-blue-dark, $cobalt-blue-dark);
 
 .mainNavNew .menuLinkSection {
     border-bottom: 1px solid #DBDBDB;

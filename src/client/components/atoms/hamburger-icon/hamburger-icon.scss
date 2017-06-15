@@ -1,34 +1,38 @@
-.menuBtnTextNew {
+.textOpen, .textClosed {
     font-size: 19px;
     text-transform: uppercase;
     font-weight: 700;
     display: inline;
 }
 
-.menuIconHamburgerNew,
-.menuIconCloseNew{
+.menuIconHamburger,
+.menuIconClose{
     width: 25px;
     float: right;
     display: inline;
 }
 
-.menuIconHamburgerNew {
+.menuIconHamburger {
     margin-top: 8px;
 }
 
-.menuIconCloseNew {
+.menuIconClose {
     margin-top: 2px;
 }
-
 
 .menuIconContainer {
     display: inline;
 }
 
-@include theme(sba-blue, '.menuBtnTextNew', null, $sba-blue, null);
-@include theme(byzantine, '.menuBtnTextNew', null, $byzantine, null);
-@include theme(money-green, '.menuBtnTextNew', null, $money-green, null);
-@include theme(cobalt-blue, '.menuBtnTextNew', null, $cobalt-blue, null);
+@include theme(sba-blue, '.textClosed', null, $sba-blue, null);
+@include theme(byzantine, '.textClosed', null, $byzantine, null);
+@include theme(money-green, '.textClosed', null, $money-green, null);
+@include theme(cobalt-blue, '.textClosed', null, $cobalt-blue, null);
+
+@include theme(sba-blue, '.textOpen', null, $sba-blue-dark, null);
+@include theme(byzantine, '.textOpen', null, $byzantine-dark, null);
+@include theme(money-green, '.textOpen', null, $money-green-dark, null);
+@include theme(cobalt-blue, '.textOpen', null, $cobalt-blue-dark, null);
 
 
 :global(.sba-blue) .hamburgerIcon {
@@ -45,14 +49,14 @@
 }
 
 :global(.sba-blue) .closeIcon {
-    stroke: $sba-blue !important;
+    stroke: $sba-blue-dark !important;
 }
 :global(.byzantine) .closeIcon {
-    stroke: $byzantine !important;
+    stroke: $byzantine-dark !important;
 }
 :global(.money-green) .closeIcon {
-    stroke: $money-green !important;
+    stroke: $money-green-dark !important;
 }
 :global(.cobalt-blue) .closeIcon {
-    stroke: $cobalt-blue !important;
+    stroke: $cobalt-blue-dark !important;
 }
