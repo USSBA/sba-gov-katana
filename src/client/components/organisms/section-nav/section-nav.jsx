@@ -1,4 +1,5 @@
 import React from 'react';
+import Sticky from 'react-sticky';
 import styles from './section-nav.scss';
 import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
 import whiteIconPlan from '../../atoms/icons/white-plan.jsx';

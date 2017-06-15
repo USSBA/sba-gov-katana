@@ -6,7 +6,7 @@ class SimpleCta extends React.Component{
     render(){
         return (
             <div className={styles.container}>
-                <p>{this.props.actionText}</ppre>
+                <p>{this.props.actionText}</p>
                 <SmallSecondaryButton url={this.props.url} text={this.props.buttonText}/>
             </div>
         );

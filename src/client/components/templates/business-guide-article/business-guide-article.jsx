@@ -1,4 +1,7 @@
 import React from 'react'
+import StickyContainer from 'react-sticky';
+
+
 import styles from './business-guide-article.scss';
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import TextSection from "../../molecules/text-section/text-section.jsx";
