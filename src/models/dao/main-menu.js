@@ -30,7 +30,9 @@ function deepPickMenuTree(data) {
       } else if (key === "title") {
         acc.linkTitle = item[key];
       } else if (key === "children") {
-        acc[key] = deepPickMenuTree(item[key]);
+        if (!_.isEmpty(item[key])) {
+          acc[key] = deepPickMenuTree(item[key]);
+        }
       }
       return acc;
     }, {});
@@ -63,7 +65,7 @@ function fetchMainMenu() {
         })
         .value();
 
-      const menuTree = buildMenuTree(cleaned);
+      let menuTree = buildMenuTree(cleaned);
 
       const loansAndGrants = _.find(menuTree, {
         linkTitle: "Loans & Grants"
@@ -82,9 +84,9 @@ function fetchMainMenu() {
         });
 
         if (stAndMaIndex !== -1) {
-          menuTree.splice(stAndMaIndex, 1, businessGuide);
+          menuTree = _.concat(businessGuide, _.tail(menuTree));
         } else {
-          menuTree.splice(0, 0, businessGuide);
+          menuTree = _.concat(businessGuide, menuTree);
         }
       }
 
