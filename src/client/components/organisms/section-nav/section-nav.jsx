@@ -64,10 +64,10 @@ class SectionNav extends React.Component {
                 <ul>{navLinks}</ul>
             </div>
         ) : (
-            <div id="sectionNavigationID" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
-                <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
-                <img id="sectionIconID" src={sectionNavIcon} alt=""/>
-                <span id="sectionTitleID"><h2>{firstWord}</h2>
+            <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
+                <a id="article-navigation-back-button-desktop" className={styles.backLink} href="/business-guide">Back to all topics</a>
+                <img id="article-navigation-icon-desktop" src={sectionNavIcon} alt=""/>
+                <span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
                     <h4>{remainingTitle}</h4>
                 </span>
                 <ul>{navLinks}</ul>
