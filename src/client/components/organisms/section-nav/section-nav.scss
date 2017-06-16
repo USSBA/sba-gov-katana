@@ -13,6 +13,15 @@
   }
 }
 
+.stickyTop {
+  position: fixed;
+  top: 30px;
+}
+
+.stickBottom {
+  bottom: 500px;
+}
+
 .mobileSectionNav {
     position: absolute;
     height: 100%;

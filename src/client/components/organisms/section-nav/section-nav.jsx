@@ -20,6 +20,11 @@ class SectionNav extends React.Component {
       return navLinks;
   }
 
+    stickyFunction(){
+    return this.props.position == "middle" ? styles.stickyTop : null
+    return this.props.position == "bottom" ? styles.stickyBottom : null
+  }
+
   render() {
     let navLinks = this.makeNavLinks();
     let sectionTitle = _.nth(this.props.lineage, 1).title;
@@ -41,7 +46,6 @@ class SectionNav extends React.Component {
     }
 
     console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
-    // + " " + this.props.animateNav ? styles.animateLeftNav : ""
     return (
         this.props.displayMobileNav ? (
             <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
@@ -54,7 +58,7 @@ class SectionNav extends React.Component {
                 <ul>{navLinks}</ul>
             </div>
         ) : (
-            <div id="sectionNavigationID" className={styles.sectionNav}>
+            <div id="sectionNavigationID" className={styles.sectionNav + " " + this.stickyFunction()}>
                 <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
                 <img id="sectionIconID" src={sectionNavIcon} alt=""/>
                 <span id="sectionTitleID"><h2>{firstWord}</h2>
