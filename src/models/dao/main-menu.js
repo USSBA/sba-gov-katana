@@ -6,6 +6,7 @@
 /* eslint-disable no-magic-numbers */
 
 import { executeDrupalQuery } from "../drupal-db.js";
+import { fetchFormattedMenu } from "../../service/drupal-eight.js";
 import _ from "lodash";
 import Promise from "bluebird";
 import path from "path";
@@ -21,10 +22,29 @@ function fixLink(link, linkPath) {
   return fixedLink;
 }
 
+function deepPickMenuTree(data) {
+  const res = _.map(data, function(item) {
+    return _.reduce(_.keys(item), (acc, key) => {
+      if (key === "fullUrl") {
+        acc.link = item[key];
+      } else if (key === "title") {
+        acc.linkTitle = item[key];
+      } else if (key === "children") {
+        acc[key] = deepPickMenuTree(item[key]);
+      }
+      return acc;
+    }, {});
+  });
+  return res;
+}
+
+function fetchDeepPickFormattedMenu() {
+  return fetchFormattedMenu().then(deepPickMenuTree);
+}
 
 function fetchMainMenu() {
-  return Promise.all([fetchMainMenuStructure(), fetchLoansAndGrantsCalloutBlock()])
-    .spread(function(menuStructure, loansAndGrantsCallout) {
+  return Promise.all([fetchMainMenuStructure(), fetchLoansAndGrantsCalloutBlock(), fetchDeepPickFormattedMenu()])
+    .spread(function(menuStructure, loansAndGrantsCallout, deepPickFormattedMenu) {
       const cleaned = _.chain(menuStructure)
         .uniqWith(function(first, second) {
           return first.plid === second.plid && first.linkPath === second.linkPath;
@@ -43,15 +63,31 @@ function fetchMainMenu() {
         })
         .value();
 
-
-
       const menuTree = buildMenuTree(cleaned);
+
       const loansAndGrants = _.find(menuTree, {
         linkTitle: "Loans & Grants"
       });
       if (loansAndGrants) {
         loansAndGrants.featuredCallout = loansAndGrantsCallout;
       }
+
+      const businessGuide = _.find(deepPickFormattedMenu, {
+        linkTitle: "Business Guide"
+      });
+
+      if (businessGuide) {
+        const stAndMaIndex = _.findIndex(menuTree, {
+          linkTitle: "Starting & Managing"
+        });
+
+        if (stAndMaIndex !== -1) {
+          menuTree.splice(stAndMaIndex, 1, businessGuide);
+        } else {
+          menuTree.splice(0, 0, businessGuide);
+        }
+      }
+
       return menuTree;
     });
 }
