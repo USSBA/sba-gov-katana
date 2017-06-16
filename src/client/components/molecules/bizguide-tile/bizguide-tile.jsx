@@ -8,18 +8,32 @@ import cornerLines from "../../../../../public/assets/images/corner-diagonal-lin
 
 class BizguideTile extends React.Component {
 
+  _formatLargeTitle(){
+    return this.props.data.title.split(" ")[0]
+  }
+
+  _formatSmallTitle(){
+    let arr = this.props.data.title.split(" ")
+    arr.shift()
+    return arr.join(" ")
+  }
+
+  _handleClick(){
+    document.location = this.props.data.fullUrl
+  }
+
   render() {
       return (
-        <div className={s.tile}>
-        	<img className={s.icon} src={icon}/>
+        <div className={s.tile} onClick={() => {this._handleClick()}}>
+        	<img className={s.icon} src={this.props.icon}/>
           <div className={s.titleContainer}>
-            <h2 className={s.largeTitle}>plan</h2>
-            <h4 className={s.smallTitle}>your business</h4> 
+            <h2 className={s.largeTitle}>{this._formatLargeTitle()}</h2>
+            <h4 className={s.smallTitle}>{this._formatSmallTitle()}</h4> 
           </div>
           <i className={s.rightArrow + " fa fa-angle-right"}></i>
         	<div className={s.line}></div>
-        	<p className={s.blurb}>You've got a great idea. Now make a plan to turn it into a great business. Add a few more words here.</p>
-        	<img className={s.backgroundLines} src={backgroundLines}/>
+        	<p className={s.blurb}>{this.props.data.description}</p>
+        	<img className={s.backgroundLines} src={this.props.backgroundLines}/>
           <img className={s.cornerLines} src={cornerLines}/>
         </div>
       );
