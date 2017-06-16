@@ -66,7 +66,6 @@ class SectionNav extends React.Component {
         ) : (
             <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
                 <a id="article-navigation-back-button-desktop" className={styles.backLink} href="/business-guide">Back to all topics</a>
-                <img id="article-navigation-icon-desktop" src={sectionNavIcon} alt=""/>
                 <span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
                     <h4>{remainingTitle}</h4>
                 </span>
