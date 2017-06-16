@@ -11,7 +11,7 @@ class SectionPage extends React.Component {
       let sectionData = this.props.sectionData;
       return (
         <div className={styles.container}>
-          <BizguideTileCollection />
+          <BizguideTileCollection sectionData={sectionData}/>
           {/*<div className={styles.nineStepsCtaContainer}>*/}
           {/*<SimpleCta actionText="Start your business in 9 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>*/}
           {/*</div>*/}

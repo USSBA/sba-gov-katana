@@ -1,51 +1,107 @@
 .tile {
-	@include grid-media($sba-grid-large){
+	position: relative;
+	background-color: $grey-lighter;
+	cursor: pointer;
+	@include grid-media($sba-grid-small){
+		@include grid-column(6, $sba-grid-small)
 		position: relative;
+		margin-top: 20px;
+		padding: 27px;
+	}
+	@include grid-media($sba-grid-medium){
+		@include grid-column(6, $sba-grid-medium)
+		height: 450px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	@include grid-media($sba-grid-large){
 		@include grid-column(3, $sba-grid-large)
 		height: 577px;
 		margin-top: 10px;
 		margin-bottom: 30px;
-		background-color: #EBEBEB;
 	}
 }
 
 .icon {
-	@include grid-media($sba-grid-large){
+	@include grid-media($sba-grid-small){
+		height: 50px;
+	  width: 50px;
+	  vertical-align: baseline;
+	  margin-right: 15px;
+	}
+	@include grid-media($sba-grid-medium){
+		margin: auto;
+		margin-top: 71px;
 		height: 105px;
-		width: 105px;
+	  width: 105px;
 		display: block;
+	}
+	@include grid-media($sba-grid-large){
 		margin: auto;
 		margin-top: 133px;
+		height: 105px;
+	  width: 105px;
+		display: block;
+	}
+}
+
+.titleContainer {
+	@include grid-media($sba-grid-small){
+		width: 65%;
+		display: inline-block;
 	}
 }
 
 .largeTitle {
-	@include grid-media($sba-grid-large){
-		text-transform: uppercase;
+	font-weight: 900;
+	color: $base-font-color;
+	text-transform: uppercase;
+	@include grid-media($sba-grid-small){
+		font-size: 34px;
+		margin-bottom: 0px;
+	}
+	@include grid-media($sba-grid-medium){
 		text-align: center;
 		margin-top: 12px;
 		margin-bottom: 0px;
     line-height: 50px;
 		font-size: 2.7em;
-		font-weight: 900;
-		color: #333333;
 	}
 }
 
 .smallTitle {
-	@include grid-media($sba-grid-large){
-		text-transform: uppercase;
+	font-weight: bold;
+	color: $base-font-color;
+	text-transform: uppercase;
+	@include grid-media($sba-grid-small){
+		font-size: 20px;
+	}
+	@include grid-media($sba-grid-medium){
 		text-align: center;
 		margin-bottom: 0px;
     line-height: 31px;
 		font-size: 1.33em;
-		font-weight: bold;
-		color: #333333;
+	}
+}
+
+.rightArrow {
+	display: none !important;
+	@include grid-media($sba-grid-small){
+		font-size: 48px !important;
+		display: block !important;
+		position: absolute;
+		top: 27px;
+		right: 27px;
+		color: $byzantine;
 	}
 }
 
 .line {
-	@include grid-media($sba-grid-large){
+	@include grid-media($sba-grid-small){
+		border: 2px solid $byzantine;
+		width: 49px;
+	}
+	@include grid-media($sba-grid-medium){
 		height: 1px;
 		width: 90px;
 		border: 3px solid $byzantine;
@@ -57,16 +113,34 @@
 }
 
 .blurb {
-	@include grid-media($sba-grid-large){
+	@include grid-media($sba-grid-small){
+		margin-top: 15px;
+		margin-bottom: 0px;
+	}
+	@include grid-media($sba-grid-medium){
 		text-align: center;
-		margin: 1.1em;
+		margin: 20px 40px 20px 40px;
 	}
 }
 
 .backgroundLines {
-	position: absolute;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
-
+	display: none;
+	@include grid-media($sba-grid-large){
+		display: block;
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+	}
 }
+
+.cornerLines {
+	display: none;
+	@include grid-media($sba-grid-small){
+		display: block;
+		position: absolute;
+		right: 0px;
+		bottom: 0px;
+	}
+}
+
