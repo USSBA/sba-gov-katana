@@ -44,7 +44,7 @@ class SectionNav extends React.Component {
     return (
         this.props.displayMobileNav ? (
             <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
-                <a id="mobileAllTopicsLink" className={styles.mobileBackLink} href={parentUrl}>
+                <a id="back-to-all-topics-mobile" className={styles.mobileBackLink} href={parentUrl}>
                     <img id="mobileSectionIconID" src={sectionNavIcon} alt=""/>
                     <span id="mobileSectionTitleID"><h2>{firstWord}</h2>
                         <h4>{remainingTitle}</h4>
