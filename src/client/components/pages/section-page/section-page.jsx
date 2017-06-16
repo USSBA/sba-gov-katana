@@ -34,7 +34,7 @@ class SectionPage extends React.Component {
               : <div/>}
           </ol>
           <div className={styles.nineStepsCtaContainer}>
-            <SimpleCta actionText="Start your business in 9 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>
+            <SimpleCta actionText="Start your business in 10 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>
           </div>
         </div>
       );
