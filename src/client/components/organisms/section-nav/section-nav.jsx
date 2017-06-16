@@ -1,5 +1,4 @@
 import React from 'react';
-import Sticky from 'react-sticky';
 import styles from './section-nav.scss';
 import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
 import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
@@ -8,21 +7,26 @@ import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
 
 class SectionNav extends React.Component {
 
-  makeNavLinks() {
+  makeNavLinks(prefix) {
       let navLinks = [];
       let section = _.nth(this.props.lineage, 1);
       navLinks = section.children.map(function(item, index) {
           return (
           <li key={index}>
-            <a id={"sectionLinkID"+index} href={item.fullUrl}>{item.title}</a>
+            <a id={prefix+"-article-link-"+index} href={item.fullUrl}>{item.title}</a>
           </li>
           );
       });
       return navLinks;
   }
 
+    stickyFunction(){
+    return this.props.position == "middle" ? styles.stickyTop : null
+    return this.props.position == "bottom" ? styles.stickyBottom : null
+  }
+
   render() {
-    let navLinks = this.makeNavLinks();
+    let navLinks = this.makeNavLinks(this.props.displayMobileNav ? "mobile" : "desktop");
     let sectionTitle = _.nth(this.props.lineage, 1).title;
     let titleArray = _.words(sectionTitle);
     let firstWord = _.slice(titleArray, 0, 1);
@@ -40,20 +44,23 @@ class SectionNav extends React.Component {
     } else {
       sectionNavIcon = whiteIconGrow;
     }
+    let parentUrl = _.nth(this.props.lineage, 0).fullUrl;
+
+    console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
 
     return (
         this.props.displayMobileNav ? (
-            <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
-                <a id="mobileAllTopicsLink" className={styles.mobileBackLink} href="/business-guide">
-                    <img id="mobileSectionIconID" src={sectionNavIcon} alt=""/>
-                    <span id="mobileSectionTitleID"><h2>{firstWord}</h2>
+            <div id="article-navigation-mobile" className={styles.mobileSectionNav}>
+                <a id="article-navigation-back-button-mobile" className={styles.mobileBackLink} href={parentUrl}>
+                    <img id="article-navigation-icon-mobile" src={sectionNavIcon} alt=""/>
+                    <span id="article-navigation-title-mobile"><h2>{firstWord}</h2>
                         <h4>{remainingTitle}</h4>
                     </span>
                 </a>
                 <ul>{navLinks}</ul>
             </div>
         ) : (
-            <div id="sectionNavigationID" className={styles.sectionNav}>
+            <div id="sectionNavigationID" className={styles.sectionNav + " " + this.stickyFunction()}>
                 <a id="allTopicsLink" className={styles.backLink} href="/business-guide">Back to all topics</a>
                 <img id="sectionIconID" src={sectionNavIcon} alt=""/>
                 <span id="sectionTitleID"><h2>{firstWord}</h2>
@@ -62,10 +69,9 @@ class SectionNav extends React.Component {
                 <ul>{navLinks}</ul>
             </div>
         )
+
     );
   }
 }
 
 export default SectionNav;
-
-
