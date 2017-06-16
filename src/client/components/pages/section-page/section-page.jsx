@@ -12,9 +12,9 @@ class SectionPage extends React.Component {
       return (
         <div className={styles.container}>
           <BizguideTileCollection sectionData={sectionData}/>
-          {/*<div className={styles.nineStepsCtaContainer}>*/}
-          {/*<SimpleCta actionText="Start your business in 9 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>*/}
-          {/*</div>*/}
+          <div className={styles.nineStepsCtaContainer}>
+            <SimpleCta actionText="Start your business in 10 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>
+          </div>
         </div>
       );
     }

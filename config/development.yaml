@@ -28,6 +28,9 @@ database:
         user: root
 linc:
     confirmationEmailBase: http://localhost:3000
+    resendEmailJobEnabled: false
+    sendToOcaJobEnabled: false
+    sendToLincPasswordUpdateEnabled: false
 oca:
     soap:
         wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl

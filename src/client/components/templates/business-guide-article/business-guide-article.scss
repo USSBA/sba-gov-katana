@@ -21,6 +21,12 @@
     }
 }
 
+,
+.articleContainer > span{
+    @include grid-column(12);
+    @include grid-push(0);
+}
+
 .image {
     @include grid-media($sba-grid-medium){
 
@@ -134,6 +140,11 @@
     @include grid-media($sba-grid-large){
         display: block;
     }
+}
+
+.sticky {
+    position: fixed;
+    top: 30px;
 }
 
 @include theme(sba-blue, '.backLinkMobile', $sba-blue, $sba-blue, $sba-blue);

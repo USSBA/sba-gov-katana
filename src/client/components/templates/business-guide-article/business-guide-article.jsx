@@ -1,6 +1,6 @@
 import React from 'react'
-import StickyContainer from 'react-sticky';
 
+var Waypoint = require('react-waypoint');
 
 import styles from './business-guide-article.scss';
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
@@ -25,14 +25,15 @@ const ParagraphTypeToBeImplemented = ({data, index}) => {
 
 class BusinessGuideArticle extends React.Component {
 
-    constructor(props) {
-        super();
-        this.state = {
-            slideLeftNavIn: false,
-            slideContentIn: false,
-            displayMobileNav: false
-        };
-    }
+  constructor(props) {
+    super();
+    this.state = {
+      slideLeftNavIn: false,
+      slideContentIn: false,
+      displayMobileNav: false,
+      currentPosition: "top"
+    };
+  }
 
   componentWillMount() {}
 
@@ -50,7 +51,7 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
             paragraphGridStyle = styles.textReadMoreSection;
-            paragraph = (<TextReadMoreSection key={index} parentIndex={index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
+            paragraph = (<TextReadMoreSection key={index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
           } else {
             paragraphGridStyle = styles.textSection;
             // DOMPurify is loaded from a minimize script tag in the header due to issues with jsdom and webpack
@@ -64,7 +65,7 @@ class BusinessGuideArticle extends React.Component {
           this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
         } else if (item.type === "subsectionHeader") {
           paragraphGridStyle = styles.sectionHeader;
-          paragraph = (<SubsectionHeader key={index} text={item.text}/>);  
+          paragraph = (<SubsectionHeader key={index} text={item.text}/>);
         } else if (item.type === "image") {
           paragraphGridStyle = styles.image;
           paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>);
@@ -73,16 +74,9 @@ class BusinessGuideArticle extends React.Component {
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
         } else if (item.type === "callToAction") {
           paragraphGridStyle = styles.callToAction;
-          paragraph = (<CallToAction key={index}
-                                     size={item.style}
-                                     headline={item.headline}
-                                     blurb={item.blurb}
-                                     image={item.image}
-                                     imageAlt={item.imageAlt}
-                                     btnTitle={item.btnTitle}
-                                     btnUrl={item.btnUrl} />)
-        } else if(item.type === "cardCollection"){
-            paragraph = (<CardCollection parentIndex={index} key={index} cards={item.cards}/>);
+          paragraph = (<CallToAction key={index} size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}/>)
+        } else if (item.type === "cardCollection") {
+          paragraph = (<CardCollection parentIndex={index} key={index} cards={item.cards}/>);
         }
       }
       return (
@@ -99,11 +93,22 @@ class BusinessGuideArticle extends React.Component {
     });
   }
 
-  handleBackLinkClicked(e){
-      e.preventDefault();
-      this.setState({slideLeftNavIn: false,
-                      slideContentIn: false,
-                      displayMobileNav: true});
+  handleBackLinkClicked(e) {
+    e.preventDefault();
+    this.setState({slideLeftNavIn: false, slideContentIn: false, displayMobileNav: true});
+  }
+
+  handleTopWaypointEnter() {
+    this.setState({currentPosition: "top"});
+  }
+  handleTopWaypointLeave() {
+    this.setState({currentPosition: "middle"});
+  }
+  handleBottomWaypointEnter() {
+    this.setState({currentPosition: "bottom"});
+  }
+  handleBottomWaypointLeave() {
+    this.setState({currentPosition: "middle"});
   }
 
   render() {
@@ -112,21 +117,33 @@ class BusinessGuideArticle extends React.Component {
       ? this.makeBreadcrumbs(this.props.lineage)
       : <div></div>;
 
-      console.log("this.state.displayMobileNav: " + this.state.displayMobileNav);
-    //animateNav={this.state.slideLeftNavIn}
-    //onClick={this.handleBackLinkClicked.bind(this)}
+    console.log("this.state.displayMobileNav: " + this.state.displayMobileNav);
+    console.log("current position:" + this.state.currentPosition);
+    let sectionNavigation = this.props.lineage
+      ? (<SectionNav position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/>)
+      : (
+        <div></div>
+      );
+    let previousAndNextButtons = this.props.lineage
+      ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div>
+      : <div></div>;
 
     return (
-    <div>
-      {this.props.lineage ? <SectionNav displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/> : <div></div>}
-      <div className={this.state.displayMobileNav ? styles.hideContainer : styles.container}>
-        <div className={styles.backLinkMobile}><a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
-        <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
-        <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
-        <div key={3} className={styles.feedback}><FeedbackForm/></div>
-        {this.props.lineage ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div> : <div></div>}
+      <div className={styles.articleContainer}>
+        <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter.bind(this)} onLeave={this.handleTopWaypointLeave.bind(this)}/> {sectionNavigation}
+        <div className={this.state.displayMobileNav
+          ? styles.hideContainer
+          : styles.container}>
+          <div className={styles.backLinkMobile}>
+            <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a>
+          </div>
+          <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
+          <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
+          <div key={3} className={styles.feedback}><FeedbackForm/></div>
+          {previousAndNextButtons}
+        </div>
+        <div id="bottom" style={{display:"inline", position:"absolute", bottom:"0"}}><Waypoint bottomOffset="500" onEnter={this.handleBottomWaypointEnter.bind(this)} onLeave={this.handleBottomWaypointLeave.bind(this)}/></div>
       </div>
-    </div>
     );
   }
 }
