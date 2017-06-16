@@ -7,13 +7,13 @@ import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
 
 class SectionNav extends React.Component {
 
-  makeNavLinks() {
+  makeNavLinks(prefix) {
       let navLinks = [];
       let section = _.nth(this.props.lineage, 1);
       navLinks = section.children.map(function(item, index) {
           return (
           <li key={index}>
-            <a id={"sectionLinkID"+index} href={item.fullUrl}>{item.title}</a>
+            <a id={prefix+"-article-link-"+index} href={item.fullUrl}>{item.title}</a>
           </li>
           );
       });
@@ -26,7 +26,7 @@ class SectionNav extends React.Component {
   }
 
   render() {
-    let navLinks = this.makeNavLinks();
+    let navLinks = this.makeNavLinks(this.props.displayMobileNav ? "mobile" : "desktop");
     let sectionTitle = _.nth(this.props.lineage, 1).title;
     let titleArray = _.words(sectionTitle);
     let firstWord = _.slice(titleArray, 0, 1);
@@ -50,10 +50,10 @@ class SectionNav extends React.Component {
 
     return (
         this.props.displayMobileNav ? (
-            <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
-                <a id="back-to-all-topics-mobile" className={styles.mobileBackLink} href={parentUrl}>
-                    <img id="mobileSectionIconID" src={sectionNavIcon} alt=""/>
-                    <span id="mobileSectionTitleID"><h2>{firstWord}</h2>
+            <div id="article-navigation-mobile" className={styles.mobileSectionNav}>
+                <a id="article-navigation-back-button-mobile" className={styles.mobileBackLink} href={parentUrl}>
+                    <img id="article-navigation-icon-mobile" src={sectionNavIcon} alt=""/>
+                    <span id="article-navigation-title-mobile"><h2>{firstWord}</h2>
                         <h4>{remainingTitle}</h4>
                     </span>
                 </a>
