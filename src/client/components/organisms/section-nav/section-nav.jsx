@@ -44,12 +44,14 @@ class SectionNav extends React.Component {
     } else {
       sectionNavIcon = whiteIconGrow;
     }
+    let parentUrl = _.nth(this.props.lineage, 0).fullUrl;
 
     console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
+
     return (
         this.props.displayMobileNav ? (
             <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
-                <a id="mobileAllTopicsLink" className={styles.mobileBackLink} href="/business-guide">
+                <a id="back-to-all-topics-mobile" className={styles.mobileBackLink} href={parentUrl}>
                     <img id="mobileSectionIconID" src={sectionNavIcon} alt=""/>
                     <span id="mobileSectionTitleID"><h2>{firstWord}</h2>
                         <h4>{remainingTitle}</h4>
@@ -73,5 +75,3 @@ class SectionNav extends React.Component {
 }
 
 export default SectionNav;
-
-
