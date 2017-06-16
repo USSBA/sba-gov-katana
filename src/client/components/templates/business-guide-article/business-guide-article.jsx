@@ -144,7 +144,7 @@ class BusinessGuideArticle extends React.Component {
           <div key={3} className={styles.feedback}><FeedbackForm/></div>
           {previousAndNextButtons}
         </div>
-        <div id="bottom" style={{display:"inline", position:"absolute", bottom:"0"}}><Waypoint bottomOffset="500" onEnter={this.handleBottomWaypointEnter.bind(this)} onLeave={this.handleBottomWaypointLeave.bind(this)}/></div>
+        <Waypoint onEnter={this.handleBottomWaypointEnter.bind(this)} onLeave={this.handleBottomWaypointLeave.bind(this)}/>
       </div>
     );
   }
