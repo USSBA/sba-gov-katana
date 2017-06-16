@@ -52,6 +52,18 @@
   }
 }
 
+@mixin theme-active($theme, $component, $background-color, $text-color, $border-color) {
+  :global(.#{$theme}){
+    #{$component}{
+      &:active {
+        background-color: $background-color;
+        color: $text-color;
+        border-color: $border-color;
+      }
+    }
+  }
+}
+
 // Breakpoints
 $small-screen: 767px;
 $medium-screen: 768px;
