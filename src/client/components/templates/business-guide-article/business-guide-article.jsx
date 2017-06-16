@@ -132,7 +132,7 @@ class BusinessGuideArticle extends React.Component {
 
     return (
       <div className={styles.articleContainer}>
-        <Waypoint onEnter={this.handleTopWaypointEnter.bind(this)} onLeave={this.handleTopWaypointLeave.bind(this)}/> {sectionNavigation}
+        <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter.bind(this)} onLeave={this.handleTopWaypointLeave.bind(this)}/> {sectionNavigation}
         <div className={this.state.displayMobileNav
           ? styles.hideContainer
           : styles.container}>
@@ -144,7 +144,7 @@ class BusinessGuideArticle extends React.Component {
           <div key={3} className={styles.feedback}><FeedbackForm/></div>
           {previousAndNextButtons}
         </div>
-        <Waypoint onEnter={this.handleBottomWaypointEnter.bind(this)} onLeave={this.handleBottomWaypointLeave.bind(this)}/>
+        <div id="bottom" style={{position:"absolute", height:"500px", bottom:"0"}}><Waypoint onEnter={this.handleBottomWaypointEnter.bind(this)} onLeave={this.handleBottomWaypointLeave.bind(this)}/></div>
       </div>
     );
   }
