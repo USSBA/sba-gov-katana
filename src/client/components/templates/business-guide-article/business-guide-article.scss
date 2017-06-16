@@ -21,6 +21,12 @@
     }
 }
 
+,
+.articleContainer > span{
+    @include grid-column(12);
+    @include grid-push(0);
+}
+
 .image {
     @include grid-media($sba-grid-medium){
 
