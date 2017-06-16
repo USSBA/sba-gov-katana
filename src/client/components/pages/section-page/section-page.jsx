@@ -16,13 +16,13 @@ class SectionPage extends React.Component {
               ? this.props.sectionData.children.map(function(item, index) {
                 return (
                   <li key={index}>
-                    <a href={path.join("/",sectionData.url, item.url)}>{item.title}</a>
+                    <a href={path.join("/", sectionData.url, item.url)}>{item.title}</a>
                     <ul>
                       {item.children
                         ? item.children.map((inner, jndex) => {
                           return (
                             <li key={jndex}>
-                              <a href={path.join("/",sectionData.url, item.url, inner.url)}>{inner.title}</a>
+                              <a href={path.join("/", sectionData.url, item.url, inner.url)}>{inner.title}</a>
                             </li>
                           );
                         })
@@ -34,7 +34,7 @@ class SectionPage extends React.Component {
               : <div/>}
           </ol>
           <div className={styles.nineStepsCtaContainer}>
-          <SimpleCta actionText="Start your business in 9 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>
+            <SimpleCta actionText="Start your business in 9 steps" buttonText="SEE THE GUIDE" url="https://www.google.com"/>
           </div>
         </div>
       );
