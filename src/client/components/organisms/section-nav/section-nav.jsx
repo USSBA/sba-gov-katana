@@ -1,5 +1,4 @@
 import React from 'react';
-import Sticky from 'react-sticky';
 import styles from './section-nav.scss';
 import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
 import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
@@ -41,6 +40,8 @@ class SectionNav extends React.Component {
       sectionNavIcon = whiteIconGrow;
     }
 
+    console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
+    // + " " + this.props.animateNav ? styles.animateLeftNav : ""
     return (
         this.props.displayMobileNav ? (
             <div id="mobileSectionNavigationID" className={styles.mobileSectionNav}>
@@ -62,6 +63,7 @@ class SectionNav extends React.Component {
                 <ul>{navLinks}</ul>
             </div>
         )
+
     );
   }
 }

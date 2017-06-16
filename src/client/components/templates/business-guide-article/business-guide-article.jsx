@@ -1,6 +1,6 @@
 import React from 'react'
-import StickyContainer from 'react-sticky';
 
+var Waypoint = require('react-waypoint');
 
 import styles from './business-guide-article.scss';
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
@@ -30,7 +30,8 @@ class BusinessGuideArticle extends React.Component {
         this.state = {
             slideLeftNavIn: false,
             slideContentIn: false,
-            displayMobileNav: false
+            displayMobileNav: false,
+            currentPosition: "top"
         };
     }
 
@@ -52,7 +53,7 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
             paragraphGridStyle = styles.textReadMoreSection;
-            paragraph = (<TextReadMoreSection key={index} parentIndex={index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
+            paragraph = (<TextReadMoreSection key={index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
           } else {
             paragraphGridStyle = styles.textSection;
             // DOMPurify is loaded from a minimize script tag in the header due to issues with jsdom and webpack
@@ -66,7 +67,7 @@ class BusinessGuideArticle extends React.Component {
           this.sectionHeaders.push({id: sectionHeaderId, text: item.text});
         } else if (item.type === "subsectionHeader") {
           paragraphGridStyle = styles.sectionHeader;
-          paragraph = (<SubsectionHeader key={index} text={item.text}/>);  
+          paragraph = (<SubsectionHeader key={index} text={item.text}/>);
         } else if (item.type === "image") {
           paragraphGridStyle = styles.image;
           paragraph = (<ImageSection key={index} imageObj={item.image} captionText={item.captionText}/>);
@@ -108,6 +109,28 @@ class BusinessGuideArticle extends React.Component {
                       displayMobileNav: true});
   }
 
+
+  handleTopWaypointEnter(){
+    this.setState({
+      currentPosition: "top"
+    });
+  }
+  handleTopWaypointLeave(){
+    this.setState({
+      currentPosition: "middle"
+    });
+  }
+  handleBottomWaypointEnter(){
+    this.setState({
+      currentPosition: "bottom"
+    });
+  }
+  handleBottomWaypointLeave(){
+    this.setState({
+      currentPosition: "middle"
+    });
+  }
+
   render() {
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     let breadcrumbs = this.props.lineage
@@ -115,12 +138,19 @@ class BusinessGuideArticle extends React.Component {
       : <div></div>;
 
       console.log("this.state.displayMobileNav: " + this.state.displayMobileNav);
+      console.log("current position:" + this.state.currentPosition);
     //animateNav={this.state.slideLeftNavIn}
     //onClick={this.handleBackLinkClicked.bind(this)}
 
+
+
     return (
     <div>
-      {this.props.lineage ? <SectionNav displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/> : <div></div>}
+      <Waypoint
+    onEnter={this.handleTopWaypointEnter}
+    onLeave={this.handleTopWaypointLeave}
+    />
+      {this.props.lineage ? <SectionNav position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/> : <div></div>}
       <div className={this.state.displayMobileNav ? styles.hideContainer : styles.container}>
         <div className={styles.backLinkMobile}><a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a></div>
         <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
@@ -128,6 +158,10 @@ class BusinessGuideArticle extends React.Component {
         <div key={3} className={styles.feedback}><FeedbackForm/></div>
         {this.props.lineage ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div> : <div></div>}
       </div>
+      <Waypoint
+    onEnter={this.handleBottomWaypointEnter}
+    onLeave={this.handleBottomWaypointLeave}
+/>
     </div>
     );
   }

@@ -136,6 +136,11 @@
     }
 }
 
+.sticky {
+    position: fixed;
+    top: 30px;
+}
+
 @include theme(sba-blue, '.backLinkMobile', $sba-blue, $sba-blue, $sba-blue);
 @include theme(byzantine, '.backLinkMobile', $byzantine, $byzantine, $byzantine);
 @include theme(money-green, '.backLinkMobile', $money-green, $money-green, $money-green);
