@@ -30,9 +30,7 @@ function logEvent(eventToLog) {
 }
 
 /* eslint-disable callback-return */
-function googleAnalyticsMiddleware({
-  getState
-}) {
+function googleAnalyticsMiddleware({getState}) {
   return (next) => {
     return (action) => {
       if (isEnabled()) {
@@ -47,8 +45,4 @@ function googleAnalyticsMiddleware({
 }
 /* eslint-enable callback-return */
 
-export {
-  logPageView,
-  googleAnalyticsMiddleware,
-  logEvent
-};
+export { logPageView, googleAnalyticsMiddleware, logEvent };

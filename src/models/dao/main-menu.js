@@ -37,6 +37,8 @@ function deepPickMenuTree(data) {
       return acc;
     }, {});
   });
+
+  console.log("deepPickMenuTree: " + JSON.stringify(res));
   return res;
 }
 
@@ -79,6 +81,7 @@ function fetchMainMenu() {
       });
 
       if (businessGuide) {
+        console.log("businessGuide: " + JSON.stringify(businessGuide));
         const stAndMaIndex = _.findIndex(menuTree, {
           linkTitle: "Starting & Managing"
         });

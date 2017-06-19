@@ -1,3 +1,7 @@
+.container{
+	position: relative;
+}
+
 .nineStepsCtaContainer{
 	 @include grid-media($sba-grid-small) {
       @include grid-container;
@@ -13,9 +17,9 @@
     }
 	@include grid-media($sba-grid-large) {
 		@include grid-column(3);
-		padding: 10px;
+		padding: 0px 10px;
 		display: inherit;
-		bottom: -10px;
 		position: relative;
+		margin-top: -115px;
     }
 }
