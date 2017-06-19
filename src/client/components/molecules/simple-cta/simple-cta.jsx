@@ -5,7 +5,7 @@ import {SmallSecondaryButton} from "../../atoms";
 class SimpleCta extends React.Component{
     render(){
         return (
-            <div className={styles.container}>
+            <div id={this.props.id} className={styles.container}>
                 <p>{this.props.actionText}</p>
                 <SmallSecondaryButton url={this.props.url} text={this.props.buttonText}/>
             </div>
