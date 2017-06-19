@@ -10,8 +10,9 @@ html
         window.CONFIG = !{config}
     style(type="text/css")
         .async-hide { opacity: 0 !important}
-    include includes/google-tag-manager.pug
+    include includes/google-optimize.pug
   body
+    include includes/google-tag-manager.pug
     #root
     script(src='/build/bundle.js')
     link(href="https://fonts.googleapis.com/css?family=Merriweather:400,400i|Source+Sans+Pro:200,300,400,500,600,700,800,900" rel="stylesheet")

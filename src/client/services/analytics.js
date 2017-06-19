@@ -7,7 +7,7 @@ function isEnabled() {
 
 if (isEnabled()) {
   reactGa.initialize(window.CONFIG.googleAnalytics.accountId);
-  reactGa.plugin.require(window.CONFIG.googleAnalytics.tagManagerAccountId);
+  reactGa.plugin.require(window.CONFIG.googleAnalytics.optimizeContainerId);
 } else {
   console.log("GA in Development Mode");
 }
