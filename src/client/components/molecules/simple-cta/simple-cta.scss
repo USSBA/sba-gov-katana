@@ -14,6 +14,9 @@
     @include grid-media($sba-grid-medium) {
       display: inline;
       margin-right: 30px
+    }
+    @include grid-media($sba-grid-large) {
+      display: block;
   }
 }
 
