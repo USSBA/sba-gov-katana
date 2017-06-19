@@ -37,7 +37,6 @@ function deepPickMenuTree(data) {
       return acc;
     }, {});
   });
-
   console.log("deepPickMenuTree: " + JSON.stringify(res));
   return res;
 }
@@ -76,8 +75,9 @@ function fetchMainMenu() {
         loansAndGrants.featuredCallout = loansAndGrantsCallout;
       }
 
-      const businessGuide = _.find(deepPickFormattedMenu, {
-        linkTitle: "Business Guide"
+      const businessGuide = _.find(deepPickFormattedMenu, (item) => {
+        const businessGuideStr = "Business Guide";
+        return (item.linkTitle.toLowerCase() === businessGuideStr.toLowerCase());
       });
 
       if (businessGuide) {
