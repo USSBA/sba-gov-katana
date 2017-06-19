@@ -162,4 +162,4 @@ function fetchLoansAndGrantsCalloutBlock() {
     });
 }
 
-export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree };
+export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree, fetchDeepPickFormattedMenu, deepPickMenuTree};
