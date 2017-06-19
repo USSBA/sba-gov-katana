@@ -1,14 +1,14 @@
-
-
+.container{
+	position: relative;
+}
 
 .nineStepsCtaContainer{
 	display: none;
 	@include grid-media($sba-grid-large) {
 		@include grid-column(3);
-		padding: 10px;
+		padding: 0px 10px;
 		display: inherit;
-		bottom: -10px;
 		position: relative;
-
+		margin-top: -115px;
     }
 }
