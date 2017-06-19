@@ -65,7 +65,7 @@ function fetchMainMenu() {
         })
         .value();
 
-      let menuTree = buildMenuTree(cleaned);
+      const menuTree = buildMenuTree(cleaned);
 
       const loansAndGrants = _.find(menuTree, {
         linkTitle: "Loans & Grants"
@@ -84,12 +84,14 @@ function fetchMainMenu() {
         });
 
         if (stAndMaIndex !== -1) {
-          menuTree = _.concat(businessGuide, _.tail(menuTree));
+          //menuTree = _.concat(businessGuide, _.tail(menuTree));
+          menuTree.splice(stAndMaIndex, 1, businessGuide);
         } else {
-          menuTree = _.concat(businessGuide, menuTree);
+          //menuTree = _.concat(businessGuide, menuTree);
+          menuTree.splice(0, 0, businessGuide);
         }
       }
-
+      console.log("menuTree: " + JSON.stringify(menuTree));
       return menuTree;
     });
 }
