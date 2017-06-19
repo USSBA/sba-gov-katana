@@ -28,19 +28,15 @@ class BizguideTileCollection extends React.Component {
   render() {
     let assetArr = [{
       icon: iconPlan,
-      hoverIcon: "",
       background: backgroundPlan
     }, {
       icon: iconLaunch,
-      hoverIcon: "",
       background: backgroundLaunch
     }, {
       icon: iconManage,
-      hoverIcon: "",
       background: backgroundManage
     }, {
       icon: iconGrow,
-      hoverIcon: "",
       background: backgroundGrow
     }, ]
 
@@ -48,7 +44,7 @@ class BizguideTileCollection extends React.Component {
         <div>
           { this.props.sectionData.children ? 
               this.props.sectionData.children.map((object, index) => {
-                return <BizguideTile key={index} data={object} icon={assetArr[index].icon} backgroundLines={assetArr[index].background} hoverIcon={assetArr[index].hoverIcon}/>
+                return <BizguideTile iD={'tile-' + index} key={index} data={object} icon={assetArr[index].icon} backgroundLines={assetArr[index].background}/>
               }) : null
           }
         </div>
