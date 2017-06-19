@@ -14,7 +14,7 @@ googleAnalytics:
     enabled: true
     accountId: "UA-19362636-5"
     tagManagerAccountId: "GTM-NPDXPPF"
-    optimizeContainerId: "GTM-KS9GT4X"
+    optimizeContainerId: "GTM-MSNZZ6M"
     debug: false
 drupal:
     hostname: http://www.sba.gov/
