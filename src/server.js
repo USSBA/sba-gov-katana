@@ -112,6 +112,7 @@ app.get("/content/:type.json", fetchContentByType);
 app.get(["/", "/*"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig),
+    optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
     tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
   });
   res.render("main", pugVariables);
