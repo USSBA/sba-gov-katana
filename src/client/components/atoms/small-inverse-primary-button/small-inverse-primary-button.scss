@@ -8,7 +8,4 @@
 @include theme-hover(money-green, '.SmallInversePrimaryButton', $money-green-lightest, $money-green, $money-green-lightest);
 @include theme-hover(cobalt-blue, '.SmallInversePrimaryButton', $cobalt-blue-lightest, $cobalt-blue, $cobalt-blue-lightest);
 
-.SmallInversePrimaryButton {
-  font-size: 1.1em;
-  font-weight: 700;
-}
+@include small-button(".SmallInversePrimaryButton");
