@@ -18,13 +18,13 @@ function logPageView() {
       page: window.location.pathname
     });
     reactGa.pageview(window.location.pathname);
-  // console.log("Posting Location Change to GA:", window.location.pathname);
+    console.log("Posting Location Change to GA:", window.location.pathname);
   }
 }
 
 function logEvent(eventToLog) {
   if (isEnabled()) {
-    // console.log("Posting Event to GA:", eventToLog);
+    console.log("Posting Event to GA:", eventToLog);
     reactGa.event(eventToLog);
   }
 }
@@ -34,13 +34,10 @@ function googleAnalyticsMiddleware({getState}) {
   return (next) => {
     return (action) => {
       if (isEnabled()) {
-        if (action.type === "@@router/LOCATION_CHANGE") {
-          logEvent({
-            category: "Navigation",
-            action: "Changed Location",
-            label: action.payload.pathname
-          });
-        }
+        //example
+        // if (action.type === "@@router/LOCATION_CHANGE") {
+        // do something
+        // }
       }
       return next(action);
     };
