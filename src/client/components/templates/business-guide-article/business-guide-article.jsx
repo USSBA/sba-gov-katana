@@ -51,7 +51,7 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
             paragraphGridStyle = styles.textReadMoreSection;
-            paragraph = (<TextReadMoreSection key={index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
+            paragraph = (<TextReadMoreSection key={index} iD={"text-readmore-section-" + index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
           } else {
             paragraphGridStyle = styles.textSection;
             // DOMPurify is loaded from a minimize script tag in the header due to issues with jsdom and webpack
