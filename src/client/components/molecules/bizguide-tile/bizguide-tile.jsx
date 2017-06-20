@@ -8,7 +8,7 @@ class BizguideTile extends React.Component {
     constructor(props) {
       super()
       this.state = {
-        navMenu: false  
+        navMenuOpen: false  
       }
     }
 
@@ -23,20 +23,20 @@ class BizguideTile extends React.Component {
   }
 
   _handleClick(){
-    if(window.innerWidth <= 1080 && this.state.navMenu === false) {
-      this.setState({navMenu: true})
+    if(window.innerWidth <= 1080 && this.state.navMenuOpen === false) {
+      this.setState({navMenuOpen: true})
     }
   }
 
   _handleClose(){
     console.log("oioioioioi")
-    this.setState({navMenu: false})
+    this.setState({navMenuOpen: false})
   }
 
   render() {
       return (
           <div id={this.props.iD} className={s.tile} onClick={() => {this._handleClick()}}>
-            { this.state.navMenu ? 
+            { this.state.navMenuOpen ? 
               <BizguideNavMenu 
                 data={this.props.data}
                 iconWhite={this.props.iconWhite}
@@ -84,6 +84,10 @@ class BizguideTileStatic extends React.Component {
 }
 
 class BizguideTileHover extends React.Component {
+
+  _handleClick(linkObject){
+    document.location = linkObject.fullUrl
+  }
   
   render() {
     return(
@@ -93,7 +97,7 @@ class BizguideTileHover extends React.Component {
         <div className={s.topLine}></div>
         {
           this.props.data.children.map((object, index) => {
-            return <HoverLink iD={this.props.iD + "-link-" + index } key={index} link={object}/>
+            return <HoverLink iD={this.props.iD + "-link-" + index } key={index} link={object} handleClick={this._handleClick}/>
           })
         }
       </div>
@@ -102,7 +106,7 @@ class BizguideTileHover extends React.Component {
 }
 
 const HoverLink = (props) => 
-  <div className={s.linkContainer}>
+  <div className={s.linkContainer} onClick={() => {props.handleClick(props.link)}}>
     <a id={props.iD} 
       className={s.link} 
       href={props.link.fullUrl}>

@@ -191,6 +191,7 @@
 
 .linkContainer {
 	position: relative;
+	cursor: pointer;
 	padding: 5px 0 5px 15px;
 	border-bottom: 1px solid rgba(255,255,255, 0.5);
 	z-index: 9999 !important;
@@ -214,6 +215,22 @@
 		right: 0px;
 		bottom: 0px;
 		left: 0px;
+		-webkit-animation: slideLeft 0.7s; /* Safari, Chrome and Opera > 12.1 */
+  	-moz-animation: slideLeft 0.7s; /* Firefox < 16 */
+  	-ms-animation: slideLeft 0.7s; /* Internet Explorer */
+  	-o-animation: slideLeft 0.7s; /* Opera < 12.1 */
+  	animation: slideLeft 0.7s;
+
+  	@keyframes slideLeft {
+  		from {
+  			margin-left: 800px;
+  			margin-right: -2000px;
+  		}
+  		to {
+  			margin-left: 0px;
+  			margin-right: 0px;
+  		}
+  	}
 	}
 	@include grid-media($sba-grid-medium){
 		background-color: $byzantine;
