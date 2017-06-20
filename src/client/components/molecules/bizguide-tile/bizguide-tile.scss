@@ -208,7 +208,7 @@
 
 .navMenu {
 	@include grid-media($sba-grid-small){
-		z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999 !important;
+		z-index: 9999999999 !important;
 		background-color: $byzantine;
 		position: fixed;
 		top: 0px;
@@ -233,7 +233,6 @@
   	}
 	}
 	@include grid-media($sba-grid-medium){
-		z-index: 99999999999999999999999999999999999999999999999999999999999999999999999999 !important;
 		background-color: $byzantine;
 		position: absolute;
 		top: 0px;
