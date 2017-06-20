@@ -23,14 +23,14 @@ class TextReadMoreSection extends React.Component{
     render(){
         let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
         let textReadMoreSection = this.state.readMoreExpanded ? (
-            <div id={"readMoreTextSection-" + this.props.parentIndex} className={styles.textReadMoreSection}>
-                <div  className={readMoreSectionStyles.readMoreSectionExpanded}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
-                <div className={textSectionStyles.readMoreSectionExpanded}><TextSection text={cleaned}/></div>
+            <div id={this.props.iD} className={styles.textReadMoreSection}>
+                <div  className={readMoreSectionStyles.readMoreSectionExpanded}><ReadMoreSection iD={this.props.iD + "-read-more"} readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+                <div id={this.props.iD + "-text-section"} className={textSectionStyles.readMoreSectionExpanded}><TextSection text={cleaned}/></div>
            </div>
         ) :
-            (<div id={"readMoreTextSection-" + this.props.parentIndex} className={styles.textReadMoreSection}>
-                <div className={textSectionStyles.readMoreSectionClosed}><TextSection text={cleaned}/></div>
-                <div className={readMoreSectionStyles.readMoreSectionClosed}><ReadMoreSection readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded}  readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+            (<div id={this.props.iD} className={styles.textReadMoreSection}>
+                <div id={this.props.iD + "-text-section"} className={textSectionStyles.readMoreSectionClosed}><TextSection text={cleaned}/></div>
+                <div className={readMoreSectionStyles.readMoreSectionClosed}><ReadMoreSection iD={this.props.iD + "-read-more"} readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded}  readMoreSectionItem={this.props.readMoreSectionItem}/></div>
             </div>);
 
         return <div>{textReadMoreSection}<div className={styles.textReadMoreSection}>

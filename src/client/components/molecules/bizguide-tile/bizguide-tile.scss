@@ -1,7 +1,8 @@
+//COMMON STYLES FOR BOTH HOVER AND NORMAL TILE
+
 .tile {
 	position: relative;
 	background-color: $grey-lighter;
-	cursor: pointer;
 	@include grid-media($sba-grid-small){
 		@include grid-column(6, $sba-grid-small)
 		position: relative;
@@ -10,7 +11,7 @@
 	}
 	@include grid-media($sba-grid-medium){
 		@include grid-column(6, $sba-grid-medium)
-		height: 450px;
+		height: 480px;
 		margin-top: 15px;
 		margin-bottom: 15px;
 	}
@@ -19,6 +20,32 @@
 		height: 577px;
 		margin-top: 10px;
 		margin-bottom: 30px;
+	}
+}
+
+.backgroundLines {
+	display: none;
+	@include grid-media($sba-grid-large){
+		display: block;
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+	}
+}
+
+//SPECIFIC STYLES FOR NORMAL TILE
+
+.tile:hover {
+	//FLIPS BETWEEN HOVER TILE AND NORMAL TILE (ONLY TABLET+)
+	@include grid-media($sba-grid-large){
+		background-color: $byzantine;
+		.tileNormal {
+			display: none;
+		}
+		.tileHover {
+			display: block;
+		}
 	}
 }
 
@@ -91,7 +118,7 @@
 		display: block !important;
 		position: absolute;
 		top: 27px;
-		right: 27px;
+		right: 15px;
 		color: $byzantine;
 	}
 }
@@ -123,17 +150,6 @@
 	}
 }
 
-.backgroundLines {
-	display: none;
-	@include grid-media($sba-grid-large){
-		display: block;
-		position: absolute;
-		bottom: 0px;
-		left: 0px;
-		right: 0px;
-	}
-}
-
 .cornerLines {
 	display: none;
 	@include grid-media($sba-grid-small){
@@ -143,4 +159,219 @@
 		bottom: 0px;
 	}
 }
+
+//SPECIFIC STYLES FOR HOVER TILE
+
+.tileHover {
+	display: none;
+}
+
+.iconHover {
+	composes: icon;
+	margin-top: 30px;
+}
+
+.largeTitleHover {
+	composes: largeTitle;
+	margin-top: 20px;
+	color: white;
+}
+
+.smallTitleHover {
+	composes: smallTitle;
+	color: white;
+}
+
+.topLine {
+	margin-top: 20px;
+	background-color: rgba(255,255,255, 0.5);
+	height: 1px;
+	width: 100%;
+}
+
+.linkContainer {
+	position: relative;
+	cursor: pointer;
+	padding: 5px 0 5px 15px;
+	border-bottom: 1px solid rgba(255,255,255, 0.5);
+	z-index: 9999 !important;
+}
+
+.link {
+	font-size: 18px !important;
+	color: white !important;
+	text-decoration: none !important;
+	font-weight: 300 !important;
+}
+
+//SPECIFIC STYLES FOR NAV MENU TABLET
+
+.navMenu {
+	@include grid-media($sba-grid-small){
+		z-index: 9999999999 !important;
+		background-color: $byzantine;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		-webkit-animation: slideLeft 0.7s; /* Safari, Chrome and Opera > 12.1 */
+  	-moz-animation: slideLeft 0.7s; /* Firefox < 16 */
+  	-ms-animation: slideLeft 0.7s; /* Internet Explorer */
+  	-o-animation: slideLeft 0.7s; /* Opera < 12.1 */
+  	animation: slideLeft 0.7s;
+
+  	@keyframes slideLeft {
+  		from {
+  			margin-left: 800px;
+  			margin-right: -2000px;
+  		}
+  		to {
+  			margin-left: 0px;
+  			margin-right: 0px;
+  		}
+  	}
+	}
+	@include grid-media($sba-grid-medium){
+		background-color: $byzantine;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		-webkit-animation: fadein 0.7s; /* Safari, Chrome and Opera > 12.1 */
+  	-moz-animation: fadein 0.7s; /* Firefox < 16 */
+  	-ms-animation: fadein 0.7s; /* Internet Explorer */
+  	-o-animation: fadein 0.7s; /* Opera < 12.1 */
+  	animation: fadein 0.7s;
+
+		@keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+
+		/* Firefox < 16 */
+		@-moz-keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+
+		/* Safari, Chrome and Opera > 12.1 */
+		@-webkit-keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+
+		/* Internet Explorer */
+		@-ms-keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+	}
+	@include grid-media($sba-grid-large){
+		display: none;
+	}
+}
+
+.navHeader {
+	@include grid-media($sba-grid-small){
+		display: block;
+		position: relative;
+		height: 70px;
+	}
+	@include grid-media($sba-grid-medium){
+		display: none;
+	}
+}
+
+.navTitleContainer {
+	display: block;
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+  left: 100px;
+
+}
+
+.navLargeTitle {
+	font-weight: 900;
+	color: $base-font-color;
+	text-transform: uppercase;
+	font-size: 34px;
+	margin: 0px;
+	color: white;
+}
+
+.navSmallTitle {
+	font-weight: bold;
+	color: $base-font-color;
+	text-transform: uppercase;
+	font-size: 20px;
+	color: white;
+	margin: 0px;
+}
+
+.navIcon {
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+	height: 40px;
+	width: 40px;
+	left: 50px;
+
+}
+
+.navRightArrow {
+	@include grid-media($sba-grid-small){
+		display: none !important;
+	}
+	@include grid-media($sba-grid-medium){
+		display: block !important;
+		font-size: 30px !important;
+		line-height: 30px !important;
+		color: white;
+		position: absolute;
+		top: 50%;
+  	transform: translateY(-50%);
+  	right: 20px;
+	}
+}
+
+.navLeftArrow {
+	@include grid-media($sba-grid-small){
+		font-size: 30px !important;
+		line-height: 30px !important;
+		color: white;
+		position: absolute;
+		top: 50%;
+  	transform: translateY(-50%);
+  	left: 20px;
+	}
+
+}
+
+.navLinkContainer {
+	composes: linkContainer;
+	cursor: pointer;
+	padding: 10px 35px 10px 15px;
+}
+
+.navLink {
+	composes: link;
+}
+
+.navTopLine {
+	composes: topLine;
+	margin: 0px;
+	@include grid-media($sba-grid-small){
+		display: block;
+	}
+	@include grid-media($sba-grid-medium){
+		display: none;
+	}
+}
+
+
+
+
 
