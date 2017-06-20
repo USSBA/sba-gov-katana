@@ -74,20 +74,14 @@ function fetchMainMenu() {
         loansAndGrants.featuredCallout = loansAndGrantsCallout;
       }
 
-      const businessGuide = _.find(deepPickFormattedMenu, (item) => {
-        const businessGuideStr = "Business Guide";
-        return (item.linkTitle.toLowerCase() === businessGuideStr.toLowerCase());
-      });
-
-      if (businessGuide) {
+      if (!_.isEmpty(deepPickFormattedMenu)) {
         const stAndMaIndex = _.findIndex(menuTree, {
           linkTitle: "Starting & Managing"
         });
-
         if (stAndMaIndex !== -1) {
-          menuTree.splice(stAndMaIndex, 1, businessGuide);
+          menuTree.splice(stAndMaIndex, 1, _.head(deepPickFormattedMenu));
         } else {
-          menuTree.splice(0, 0, businessGuide);
+          menuTree.splice(0, 0, _.head(deepPickFormattedMenu));
         }
       }
       return menuTree;
