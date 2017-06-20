@@ -1,4 +1,5 @@
 import React from 'react';
+var Waypoint = require('react-waypoint');
 import styles from './section-nav.scss';
 import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
 import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
@@ -50,7 +51,6 @@ class SectionNav extends React.Component {
     }
     let parentUrl = _.nth(this.props.lineage, 0).fullUrl;
 
-    console.log("this.props.displayMobileNav: " + this.props.displayMobileNav);
 
     return (
         this.props.displayMobileNav ? (
@@ -65,6 +65,7 @@ class SectionNav extends React.Component {
             </div>
         ) : (
             <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
+                <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
                 <a id="article-navigation-back-button-desktop" className={styles.backLink} href="/business-guide">Back to all topics</a>
                 <span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
                     <h4>{remainingTitle}</h4>
