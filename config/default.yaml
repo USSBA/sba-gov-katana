@@ -13,7 +13,8 @@ newrelic:
 googleAnalytics:
     enabled: true
     accountId: "UA-19362636-5"
-    tagManagerAccountId: "GTM-NPDXPPF"
+    optimizeContainerId: "GTM-NPDXPPF"
+    tagManagerAccountId: "GTM-MSNZZ6M"
     debug: false
 drupal:
     hostname: http://www.sba.gov/

@@ -1,18 +1,38 @@
-@include background-color-theme( '.container');
-
 .container {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0;
     text-align: center;
+    position: relative;
 }
+
+@include theme(byzantine, '.container', $byzantine-dark, #fff , null);
 
 .container p {
     color: $white;
     text-align: center;
     @include font-size($h6-font-sizes);
-    font-weight: bold;
+    font-weight: 600;
+    @include grid-media($sba-grid-medium) {
+      display: inline;
+      margin-right: 30px
+    }
+    @include grid-media($sba-grid-large) {
+      margin-right: 0;
+      display: block;
+  }
 }
 
-.container button {
-    font-size: 75%;
+@include theme(byzantine, '.container button', $white, $byzantine , $white);
+@include theme-hover(byzantine, '.container button', $byzantine-lightest, $byzantine, $byzantine-lightest);
+
+.cornerLines {
+  display: none;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  @include grid-media($sba-grid-small) {
+    display: block;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: block;
+  }
 }

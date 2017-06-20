@@ -317,7 +317,7 @@ $primary-color-map:(
 
 @mixin small-button($component){
     #{$component} {
-      font-size: 1.1em;
+      font-size: .85em;
       font-weight: 700;
     }
 }

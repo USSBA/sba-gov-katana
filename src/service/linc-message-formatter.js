@@ -253,7 +253,7 @@ function booleanToChar(value) {
 }
 
 function toNumber(value) {
-  return Number(value);
+  return Number(value.replace(/\$|,/g, ""));
 }
 
 

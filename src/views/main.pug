@@ -10,20 +10,11 @@ html
         window.CONFIG = !{config}
     style(type="text/css")
         .async-hide { opacity: 0 !important}
-    script(type="text/javascript").
-        (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-        h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-        (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-        })(window,document.documentElement,'async-hide','dataLayer',4000,
-        {'#{tagManagerAccountId}':true});
+    include includes/google-optimize.pug
+    include includes/google-tag-manager-head.pug
   body
+    include includes/google-tag-manager.pug
     #root
     script(src='/build/bundle.js')
     link(href="https://fonts.googleapis.com/css?family=Merriweather:400,400i|Source+Sans+Pro:200,300,400,500,600,700,800,900" rel="stylesheet")
-    script(src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript")
-    script(type="text/javascript").
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-      }
+    include includes/google-translate.pug

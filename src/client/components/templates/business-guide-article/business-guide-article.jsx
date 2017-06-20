@@ -16,6 +16,7 @@ import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import CardCollection from "../../molecules/card-collection/card-collection.jsx";
 import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
+import {listenForOverlap} from 'element-overlap';
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -46,7 +47,7 @@ class BusinessGuideArticle extends React.Component {
       let paragraphGridStyle = styles.textSection;
       let paragraph = (<ParagraphTypeToBeImplemented key={index} data={item} index={index}/>);
       if (item && item.type) {
-        if(item.type === "readMore"){
+        if (item.type === "readMore") {
           return null
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
@@ -101,26 +102,38 @@ class BusinessGuideArticle extends React.Component {
   handleTopWaypointEnter() {
     this.setState({currentPosition: "top"});
   }
+
   handleTopWaypointLeave() {
     this.setState({currentPosition: "middle"});
   }
-  handleBottomWaypointEnter() {
-    this.setState({currentPosition: "bottom"});
-  }
+
   handleBottomWaypointLeave() {
     this.setState({currentPosition: "middle"});
   }
 
+  handleSectionNavigationEnter() {
+    if (this.state.currentPosition === "bottom") {
+      this.setState({currentPosition: "middle"});
+    }
+  }
+
+  componentDidMount() {
+    let me = this;
+    listenForOverlap('#article-navigation-desktop', '#sba-footer', function() {
+      me.setState({currentPosition: "bottom"});
+    }, {listenOn: "scroll"});
+  }
+
   render() {
+      
+        console.log("render", this.state.currentPosition);
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     let breadcrumbs = this.props.lineage
       ? this.makeBreadcrumbs(this.props.lineage)
       : <div></div>;
 
-    console.log("this.state.displayMobileNav: " + this.state.displayMobileNav);
-    console.log("current position:" + this.state.currentPosition);
     let sectionNavigation = this.props.lineage
-      ? (<SectionNav position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/>)
+      ? (<SectionNav onTopEnter={this.handleSectionNavigationEnter.bind(this)} position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/>)
       : (
         <div></div>
       );
@@ -142,7 +155,6 @@ class BusinessGuideArticle extends React.Component {
           <div key={3} className={styles.feedback}><FeedbackForm/></div>
           {previousAndNextButtons}
         </div>
-        <Waypoint bottomOffset='86px' onEnter={this.handleBottomWaypointEnter.bind(this)} onLeave={this.handleBottomWaypointLeave.bind(this)}/>
       </div>
     );
   }

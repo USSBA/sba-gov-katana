@@ -1,0 +1,252 @@
+[
+  {
+    "title":"Business Guide",
+    "url":"guide",
+    "fullUrl":"/guide",
+    "children":
+      [
+        {
+          "title":"Plan your business",
+          "url":"plan",
+          "fullUrl":"/guide/plan",
+          "children":
+            [
+              {
+                "title":"Market research and competitive analysis",
+                "url":"market",
+                "fullUrl":"/guide/plan/market",
+                "children":null,
+                "description":null,
+                "node":"47",
+                "weight":-50
+              },
+              {
+                "title":"Fund your business",
+                "url":"50",
+                "fullUrl":"/guide/plan/50",
+                "children":null,
+                "description":null,
+                "node":"50",
+                "weight":-49
+              },
+              {
+                "title":"Buy an existing business or franchise",
+                "url":"62",
+                "fullUrl":"/guide/plan/62",
+                "children":null,
+                "description":null,
+                "node":"62",
+                "weight":-48
+              }
+            ],
+          "description":"You've got a great idea. Now, make a plan to turn it into a great business.",
+          "weight":-49
+        },
+        {
+          "title":"Launch your business",
+          "url":"launch",
+          "fullUrl":"/guide/launch",
+          "children":
+            [
+              {
+                "title":"Pick your business location",
+                "url":"48",
+                "fullUrl":"/guide/launch/48",
+                "children":null,
+                "description":null,
+                "node":"48",
+                "weight":-50
+              },
+              {
+                "title":"Choose a business structure",
+                "url":"59",
+                "fullUrl":"/guide/launch/59",
+                "children":null,
+                "description":null,
+                "node":"59",
+                "weight":-49
+              },
+              {
+                "title":"Choose your business name",
+                "url":"5",
+                "fullUrl":"/guide/launch/5",
+                "children":null,
+                "description":null,
+                "node":"5",
+                "weight":-48
+              },
+              {
+                "title":"Register your business",
+                "url":"51",
+                "fullUrl":"/guide/launch/51",
+                "children":null,
+                "description":null,
+                "node":"51",
+                "weight":-47
+              },
+              {
+                "title":"Register your business",
+                "url":"26",
+                "fullUrl":"/guide/launch/26",
+                "children":null,
+                "description":null,
+                "node":"26",
+                "weight":-46
+              },
+              {
+                "title":"Get federal and state tax ID numbers",
+                "url":"53",
+                "fullUrl":"/guide/launch/53",
+                "children":null,
+                "description":null,
+                "node":"53",
+                "weight":-45
+              },
+              {
+                "title":"Apply for licenses and permits",
+                "url":"66",
+                "fullUrl":"/guide/launch/66",
+                "children":null,
+                "description":null,
+                "node":"66",
+                "weight":-44
+              },
+              {
+                "title":"Open a business bank account",
+                "url":"52",
+                "fullUrl":"/guide/launch/52",
+                "children":null,
+                "description":null,
+                "node":"52",
+                "weight":-43
+              },
+              {
+                "title":"Get business insurance",
+                "url":"61",
+                "fullUrl":"/guide/launch/61",
+                "children":null,
+                "description":null,
+                "node":"61",
+                "weight":-42
+              }
+            ],
+          "description":"Turn your business into a reality. Register, file, and start doing business.",
+          "weight":-48
+        },
+        {
+          "title":"Manage your business",
+          "url":"manage",
+          "fullUrl":"/guide/manage",
+          "children":
+            [
+              {
+                "title":"Manage your finances",
+                "url":"65",
+                "fullUrl":"/guide/manage/65",
+                "children":null,
+                "description":null,
+                "node":"65",
+                "weight":-49
+              },
+              {
+                "title":"Hire and manage employees",
+                "url":"69",
+                "fullUrl":"/guide/manage/69",
+                "children":null,
+                "description":null,
+                "node":"69",
+                "weight":-48
+              },
+              {
+                "title":"Pay taxes",
+                "url":"13",
+                "fullUrl":"/guide/manage/13",
+                "children":null,
+                "description":null,
+                "node":"13",
+                "weight":-47
+              },
+              {
+                "title":"Stay legally compliant",
+                "url":"55",
+                "fullUrl":"/guide/manage/55",
+                "children":null,
+                "description":null,
+                "node":"55",
+                "weight":-46
+              },
+              {
+                "title":"Buy assets and equipment",
+                "url":"57",
+                "fullUrl":"/guide/manage/57",
+                "children":null,
+                "description":null,
+                "node":"57",
+                "weight":-45
+              }
+            ],
+          "description":"Run your business like a boss. Master day-to-day operations and prepare for success.",
+          "weight":-47
+        },
+        {
+          "title":"Grow your business",
+          "url":"grow",
+          "fullUrl":"/guide/grow",
+          "children":
+            [
+              {
+                "title":"Get more funding",
+                "url":"64",
+                "fullUrl":"/guide/grow/64",
+                "children":null,
+                "description":null,
+                "node":"64",
+                "weight":-50
+              },
+              {
+                "title":"Expand to new locations",
+                "url":"54",
+                "fullUrl":"/guide/grow/54",
+                "children":null,
+                "description":null,
+                "node":"54",
+                "weight":-49
+              },
+              {
+                "title":"Merge and acquire businesses",
+                "url":"63",
+                "fullUrl":"/guide/grow/63",
+                "children":null,
+                "description":null,
+                "node":"63",
+                "weight":-48
+              }
+            ],
+          "description":"When business is good, it's time to expand. Find new funding, locations, and customers.",
+          "weight":-46
+        }
+      ],
+    "description":"Business guide",
+    "weight":-49
+  },
+  {
+    "title":"Investment capital",
+    "url":"58",
+    "fullUrl":"/58",
+    "children":
+      [
+        {
+          "title":"Ayo Program Page Test",
+          "url":"funding-programs",
+          "fullUrl":"/58/funding-programs",
+          "children":null,
+          "description":null,
+          "node":"78",
+          "weight":1
+        }
+      ],
+    "description":null,
+    "node":"58",
+    "weight":-48
+  }
+]

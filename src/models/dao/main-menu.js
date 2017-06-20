@@ -65,7 +65,7 @@ function fetchMainMenu() {
         })
         .value();
 
-      let menuTree = buildMenuTree(cleaned);
+      const menuTree = buildMenuTree(cleaned);
 
       const loansAndGrants = _.find(menuTree, {
         linkTitle: "Loans & Grants"
@@ -74,22 +74,16 @@ function fetchMainMenu() {
         loansAndGrants.featuredCallout = loansAndGrantsCallout;
       }
 
-      const businessGuide = _.find(deepPickFormattedMenu, {
-        linkTitle: "Business Guide"
-      });
-
-      if (businessGuide) {
+      if (!_.isEmpty(deepPickFormattedMenu)) {
         const stAndMaIndex = _.findIndex(menuTree, {
           linkTitle: "Starting & Managing"
         });
-
         if (stAndMaIndex !== -1) {
-          menuTree = _.concat(businessGuide, _.tail(menuTree));
+          menuTree.splice(stAndMaIndex, 1, _.head(deepPickFormattedMenu));
         } else {
-          menuTree = _.concat(businessGuide, menuTree);
+          menuTree.splice(0, 0, _.head(deepPickFormattedMenu));
         }
       }
-
       return menuTree;
     });
 }
@@ -162,4 +156,4 @@ function fetchLoansAndGrantsCalloutBlock() {
     });
 }
 
-export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree };
+export { fetchMainMenu, fetchMainMenuStructure, fetchLoansAndGrantsCalloutBlock, buildMenuTree, fetchDeepPickFormattedMenu, deepPickMenuTree };

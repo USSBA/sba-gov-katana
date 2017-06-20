@@ -8,6 +8,4 @@
 @include theme-hover(money-green, '.SmallPrimaryButton', $money-green-dark, #fff, $money-green-dark);
 @include theme-hover(cobalt-blue, '.SmallPrimaryButton', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
 
-
-
 @include small-button(".SmallPrimaryButton");
