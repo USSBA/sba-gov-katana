@@ -5,6 +5,12 @@ import backgroundLines from "../../../../../public/assets/svg/plan-background-li
 import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
 
 class BizguideTile extends React.Component {
+    constructor(props) {
+      super()
+      this.state = {
+        navMenu: false  
+      }
+    }
 
   _formatLargeTitle(){
     return this.props.data.title.split(" ")[0]
@@ -17,21 +23,36 @@ class BizguideTile extends React.Component {
   }
 
   _handleClick(){
-    if(window.innerWidth <= 768) {
-      document.location = this.props.data.fullUrl
+    if(window.innerWidth <= 1080 && this.state.navMenu === false) {
+      this.setState({navMenu: true})
     }
+  }
+
+  _handleClose(){
+    console.log("oioioioioi")
+    this.setState({navMenu: false})
   }
 
   render() {
       return (
           <div id={this.props.iD} className={s.tile} onClick={() => {this._handleClick()}}>
-            <BizguideTileHover data={this.props.data} 
+            { this.state.navMenu ? 
+              <BizguideNavMenu 
+                data={this.props.data}
+                iconWhite={this.props.iconWhite}
+                largeTitle={this._formatLargeTitle()} 
+                smallTitle={this._formatSmallTitle()}
+                handleClose={() => {this._handleClose()}}
+              /> : null 
+            }
+            <BizguideTileHover 
+              data={this.props.data} 
               iD={this.props.iD + '-hover'}
-              iconHover={this.props.iconHover} 
               largeTitle={this._formatLargeTitle()} 
               smallTitle={this._formatSmallTitle()}
               />
-            <BizguideTileStatic data={this.props.data} 
+            <BizguideTileStatic 
+              data={this.props.data} 
               iD={this.props.iD + '-static'}
               icon={this.props.icon} 
               largeTitle={this._formatLargeTitle()} 
@@ -87,6 +108,44 @@ const HoverLink = (props) =>
       href={props.link.fullUrl}>
       {props.link.title}
     </a>
+  </div>
+
+class BizguideNavMenu extends React.Component {
+
+  _handleClick(linkObject){
+    document.location = linkObject.fullUrl
+  }
+  
+  render() {
+    return(
+      <div className={s.navMenu}>
+        <div className={s.navHeader} onClick={() => {this.props.handleClose()}}>
+          <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
+          <img className={s.navIcon} src={this.props.iconWhite}/>
+          <div className={s.navTitleContainer}>
+            <h2 className={s.navLargeTitle}>{this.props.largeTitle}</h2>
+            <h4 className={s.navSmallTitle}>{this.props.smallTitle}</h4> 
+          </div>
+        </div>
+        <div className={s.navTopLine}></div>
+        {
+          this.props.data.children.map((linkObject, index) => {
+            return <NavLink key={index} link={linkObject} handleClick={this._handleClick}/>
+          })
+        }
+      </div>
+    );
+  }
+}
+
+const NavLink = (props) => 
+  <div className={s.navLinkContainer} onClick={() => {props.handleClick(props.link)}}>
+    <a id={props.iD} 
+      className={s.navLink} 
+      href={props.link.fullUrl}>
+      {props.link.title}
+    </a>
+    <i className={s.navRightArrow + " fa fa-angle-right"}></i>
   </div>
 
 export default BizguideTile;

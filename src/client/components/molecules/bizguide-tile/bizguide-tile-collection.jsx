@@ -13,6 +13,10 @@ import iconPlan from "../../../../../public/assets/svg/business-guide-icon-color
 import iconLaunch from "../../../../../public/assets/svg/business-guide-icon-color-launch.svg"
 import iconManage from "../../../../../public/assets/svg/business-guide-icon-color-manage.svg"
 import iconGrow from "../../../../../public/assets/svg/business-guide-icon-color-grow.svg"
+import iconWhitePlan from "../../../../../public/assets/svg/business-guide-icon-white-plan.svg"
+import iconWhiteLaunch from "../../../../../public/assets/svg/business-guide-icon-white-launch.svg"
+import iconWhiteManage from "../../../../../public/assets/svg/business-guide-icon-white-manage.svg"
+import iconWhiteGrow from "../../../../../public/assets/svg/business-guide-icon-white-grow.svg"
 
 
 import BizguideTile from "./bizguide-tile.jsx"
@@ -28,15 +32,19 @@ class BizguideTileCollection extends React.Component {
   render() {
     let assetArr = [{
       icon: iconPlan,
+      iconWhite: iconWhitePlan,
       background: backgroundPlan
     }, {
       icon: iconLaunch,
+      iconWhite: iconWhiteLaunch,
       background: backgroundLaunch
     }, {
       icon: iconManage,
+      iconWhite: iconWhiteManage,
       background: backgroundManage
     }, {
       icon: iconGrow,
+      iconWhite: iconWhiteGrow,
       background: backgroundGrow
     }, ]
 
@@ -44,7 +52,7 @@ class BizguideTileCollection extends React.Component {
         <div>
           { this.props.sectionData.children ? 
               this.props.sectionData.children.map((object, index) => {
-                return <BizguideTile iD={'tile-' + index} key={index} data={object} icon={assetArr[index].icon} backgroundLines={assetArr[index].background}/>
+                return <BizguideTile iD={'tile-' + index} key={index} data={object} icon={assetArr[index].icon} backgroundLines={assetArr[index].background} iconWhite={assetArr[index].iconWhite}/>
               }) : null
           }
         </div>

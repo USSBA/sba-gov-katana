@@ -11,7 +11,7 @@
 	}
 	@include grid-media($sba-grid-medium){
 		@include grid-column(6, $sba-grid-medium)
-		height: 450px;
+		height: 480px;
 		margin-top: 15px;
 		margin-bottom: 15px;
 	}
@@ -38,7 +38,7 @@
 
 .tile:hover {
 	//FLIPS BETWEEN HOVER TILE AND NORMAL TILE (ONLY TABLET+)
-	@include grid-media($sba-grid-medium){
+	@include grid-media($sba-grid-large){
 		background-color: $byzantine;
 		.tileNormal {
 			display: none;
@@ -202,5 +202,159 @@
 	text-decoration: none !important;
 	font-weight: 300 !important;
 }
+
+//SPECIFIC STYLES FOR NAV MENU TABLET
+
+.navMenu {
+	@include grid-media($sba-grid-small){
+		background-color: $byzantine;
+		position: fixed;
+		z-index: 9999999999999999999999999999999999 !important;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+	}
+	@include grid-media($sba-grid-medium){
+		background-color: $byzantine;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		-webkit-animation: fadein 0.7s; /* Safari, Chrome and Opera > 12.1 */
+  	-moz-animation: fadein 0.7s; /* Firefox < 16 */
+  	-ms-animation: fadein 0.7s; /* Internet Explorer */
+  	-o-animation: fadein 0.7s; /* Opera < 12.1 */
+  	animation: fadein 0.7s;
+
+		@keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+
+		/* Firefox < 16 */
+		@-moz-keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+
+		/* Safari, Chrome and Opera > 12.1 */
+		@-webkit-keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+
+		/* Internet Explorer */
+		@-ms-keyframes fadein {
+		    from { opacity: 0; }
+		    to   { opacity: 1; }
+		}
+	}
+	@include grid-media($sba-grid-large){
+		display: none;
+	}
+}
+
+.navHeader {
+	@include grid-media($sba-grid-small){
+		display: block;
+		position: relative;
+		height: 70px;
+	}
+	@include grid-media($sba-grid-medium){
+		display: none;
+	}
+}
+
+.navTitleContainer {
+	display: block;
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+  left: 100px;
+
+}
+
+.navLargeTitle {
+	font-weight: 900;
+	color: $base-font-color;
+	text-transform: uppercase;
+	font-size: 34px;
+	margin: 0px;
+	color: white;
+}
+
+.navSmallTitle {
+	font-weight: bold;
+	color: $base-font-color;
+	text-transform: uppercase;
+	font-size: 20px;
+	color: white;
+	margin: 0px;
+}
+
+.navIcon {
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+	height: 40px;
+	width: 40px;
+	left: 50px;
+
+}
+
+.navRightArrow {
+	@include grid-media($sba-grid-small){
+		display: none !important;
+	}
+	@include grid-media($sba-grid-medium){
+		display: block !important;
+		font-size: 30px !important;
+		line-height: 30px !important;
+		color: white;
+		position: absolute;
+		top: 50%;
+  	transform: translateY(-50%);
+  	right: 20px;
+	}
+}
+
+.navLeftArrow {
+	@include grid-media($sba-grid-small){
+		font-size: 30px !important;
+		line-height: 30px !important;
+		color: white;
+		position: absolute;
+		top: 50%;
+  	transform: translateY(-50%);
+  	left: 20px;
+	}
+
+}
+
+.navLinkContainer {
+	composes: linkContainer;
+	cursor: pointer;
+	padding: 10px 35px 10px 15px;
+}
+
+.navLink {
+	composes: link;
+}
+
+.navTopLine {
+	composes: topLine;
+	margin: 0px;
+	@include grid-media($sba-grid-small){
+		display: block;
+	}
+	@include grid-media($sba-grid-medium){
+		display: none;
+	}
+}
+
+
+
 
 
