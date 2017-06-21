@@ -1,69 +1,135 @@
 @media screen and (min-width:768px) {
-  .Container {
+
+  .transparentBox{
     position: relative;
-    margin-top: 5vw;
-    background: #0F48AA;
-    width: 36vw;
-    height: 18vw;
-    bottom: 15vw;
-    right: 10.4vw;
-    z-index: 0;
+    width: 578px;
+    height: 478px;
+    padding-top: 10px;
+
+    .sectionNum{
+      height: 64px;
+      width: 34px;
+      color: #333333;
+      font-family: "Source Sans Pro";
+      font-size: 64px;
+      font-weight: bold;
+      line-height: 64px;
+      text-align: center;
+    }
+
+    .sectionTitle{
+      margin-top: 20px;
+      color: #333333;
+      font-family: "Source Sans Pro";
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 68px;
+    }
+
+    .sectionText{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: #333333;
+      font-family: "Source Sans Pro";
+      font-size: 22px;
+      line-height: 28px;
+    }
+
+    li hr{
+      width: 34px;
+      color: #ffffff;
+      margin-top: 6px;
+      box-sizing: border-box;
+      height: 3px;
+      width: 34px;
+      border: 3px solid;
+    }
   }
 
-  .Container ul {
-    list-style: none;
-    padding: 0;
-  }
+  @include theme(sba-blue, '.solidBox', $sba-blue, $sba-blue, $sba-blue);
+  @include theme(byzantine, '.solidBox', $byzantine, $byzantine, $byzantine);
+  @include theme(money-green, '.solidBox', $money-green, $money-green, $money-green);
+  @include theme(cobalt-blue, '.solidBox', $cobalt-blue, $cobalt-blue, $cobalt-blue);
 
-  .Container li {
-    height: 6vw;
-    padding-left: 2vw;
-    font-size: 1.66vw;
-    line-height: 6vw;
-    color:white;
-  }
+  @include theme(sba-blue, '.transparentBox li hr', $sba-blue, $sba-blue, $sba-blue);
+  @include theme(byzantine, '.transparentBox li hr', $byzantine, $byzantine, $byzantine);
+  @include theme(money-green, '.transparentBox li hr', $money-green, $money-green, $money-green);
+  @include theme(cobalt-blue, '.transparentBox li hr', $cobalt-blue, $cobalt-blue, $cobalt-blue);
 
-  .Container img {
-    position: absolute;
-    width: 8.5vw;
-    height: 8.5vw;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
+  @include theme(sba-blue, '.transparentBox .sectionNum', null, $sba-blue, null);
+  @include theme(byzantine, '.transparentBox .sectionNum', null, $byzantine, null);
+  @include theme(money-green, '.transparentBox .sectionNum', null, $money-green, null);
+  @include theme(cobalt-blue, '.transparentBox .sectionNum', null, $cobalt-blue, null);
+
+  .solidBox{
+    position: relative;
+    width: 678px;
+    height: 515px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 15px;
+    
+    .sectionNum{
+      height: 64px;
+      width: 34px;
+
+      color: #ffffff;
+      font-family: "Source Sans Pro";
+      font-size: 64px;
+      font-weight: bold;
+      line-height: 64px;
+      text-align: center;
+    }
+
+    .sectionTitle{
+      margin-top: 20px;
+      color: #ffffff;
+      font-family: "Source Sans Pro";
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 68px;
+    }
+
+    .sectionText{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: #ffffff;
+      font-family: "Source Sans Pro";
+      font-size: 22px;
+      line-height: 28px;
+    }
+    
+    li hr{
+      width: 34px;
+      color: #ffffff;
+      margin-top: 6px;
+      box-sizing: border-box;
+      height: 3px;
+      width: 34px;
+      border: 3px solid;
+    }
+
+    .mobileImg{
+      display: none;
+    }
+
+    .desktopImg{
+      position: absolute;
+      height: 168px;
+      width: 163.76px;
+      bottom: 0;
+      right: 0;
+    }
   }
 }
 @media screen and (max-width:767px) {
-  .Container {
-    margin-bottom: 54vw;
-    margin-top: 10vw;
-    background: #0F48AA;
-    width: 91.4vw;
-    margin-left: 4.3vw;
-    margin-right: 4.3vw;
-    height: 48vw;
-    z-index: 0;
+  
+  .transparentBox{
+    width: 20vw;
+    height: 18vw;
   }
 
-  .Container ul {
-    list-style: none;
-    padding: 0;
-  }
+  .solidBox{
 
-  .Container li {
-    text-decoration: none;
-    height: 16vw;
-    padding-left: 7vw;
-    font-size: 5vw;
-    line-height: 16vw;
-    color:white;
-  }
-
-  .Container img {
-    position: absolute;
-    width: 25.9vw;
-    height: 25.9vw;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
   }
 }

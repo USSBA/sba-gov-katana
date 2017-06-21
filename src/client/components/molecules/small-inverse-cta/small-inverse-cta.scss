@@ -1,0 +1,17 @@
+.smallInverseCta {
+    border: 2px solid;
+    padding: 10px;
+    text-align: center;
+    width: 90%;
+    // Remove
+    position: absolute;
+    bottom: 30px;
+}
+
+.smallInverseCta p{
+  display: inline;
+  font-weight: 700;
+  margin-right: 30px;
+}
+
+@include theme(byzantine, '.smallInverseCta', null, $byzantine ,$byzantine);

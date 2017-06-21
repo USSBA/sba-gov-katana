@@ -45,16 +45,16 @@ const mainRoutes = [
     </Route>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
+  (<Route key={12} path="/tensteps" component={TenStepsLandingPage}/>),
   (<Route key={6} path="/:section" component={RootPage}/>),
   (<Route key={7} path="/:section/" component={RootPage}/>),
   (<Route key={8} path="/:section/:subsection" component={RootPage}/>),
   (<Route key={9} path="/:section/:subsection/" component={RootPage}/>),
   (<Route key={10} path="/:section/:subsection/:page" component={RootPage}/>),
-  (<Route key={11} path="/:section/:subsection/:page/" component={RootPage}/>),
-  (<Route key={12} path="/tensteps" component={TenStepsLandingPage}/>)
+  (<Route key={11} path="/:section/:subsection/:page/" component={RootPage}/>)
 ];
 
-const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>), (
+const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>),(
     <Route key={1} path="/" component={Main}>
       {mainRoutes}
     </Route>
