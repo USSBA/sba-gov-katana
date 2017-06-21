@@ -4,50 +4,6 @@
   background-color: #EBEBEB;
 }
 
-.readMoreSectionClosed {
-  @include grid-media($sba-grid-small) {
-    display: none;
-  }
-  @include grid-media($sba-grid-medium){
-    display: none;
-  }
-  @include grid-media($sba-grid-large){
-    display: block;
-    @include grid-push(9);
-    @include grid-column(3.07);
-  }
-
-}
-
-.readMoreSectionExpanded {
-  @include grid-media($sba-grid-small) {
-    display: none;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-  @include grid-media($sba-grid-large) {
-    display: block;
-    @include grid-column(8);
-    @include grid-push(4);  
-  }
-}
-
-.readMoreSectionMobile{
-  display: none;
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6, $sba-grid-small);
-    display:block;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: block;
-    @include grid-column(12);
-  }
-  @include grid-media($sba-grid-large) {
-    display: none;
-  }
-}
-
 .lineCopy {
   box-sizing: border-box;
   height: 3px;

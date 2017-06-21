@@ -51,7 +51,7 @@ class BusinessGuideArticle extends React.Component {
           return null
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
-            paragraphGridStyle = styles.textReadMoreSection;
+            paragraphGridStyle = "";
             paragraph = (<TextReadMoreSection key={index} iD={"text-readmore-section-" + index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
           } else {
             paragraphGridStyle = styles.textSection;
@@ -125,7 +125,7 @@ class BusinessGuideArticle extends React.Component {
   }
 
   render() {
-      
+
         console.log("render", this.state.currentPosition);
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     let breadcrumbs = this.props.lineage

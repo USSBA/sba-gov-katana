@@ -47,8 +47,10 @@ class DropdownMenu extends React.Component {
   render() {
     let sizingStyle = "";
     let menuId = this.props.menuId;
+    let smallInverseCta = false;
     if (menuId === 0) {
       sizingStyle = styles.one;
+      smallInverseCta = true;
     }
     if (menuId === 1) {
       sizingStyle = styles.two;
@@ -86,7 +88,9 @@ class DropdownMenu extends React.Component {
           {this.props.featuredCallout
             ? <FeaturedCallout {...this.props.featuredCallout}/>
             : undefined}
-        <SmallInverseCta />
+        {smallInverseCta
+          ? <div className={styles.businessGuideCTA}><SmallInverseCta /></div>
+          : undefined}
         </ul>
       );
     } else {
