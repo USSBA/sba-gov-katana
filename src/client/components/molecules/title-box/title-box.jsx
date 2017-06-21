@@ -9,18 +9,18 @@ class TitleBox extends React.Component {
 
     render() {
         return (
-            <div className={(this.props.solidBox ? styles.solidBox : styles.transparentBox)}>
-                <div>
-                    <ul>
-                        <li className={styles.sectionNum}>{this.props.sectionNum}</li>
-                        <li><hr/></li>
-                        <li className={styles.sectionTitle}>{this.props.title}</li>
-                        <li className={styles.sectionText}>{this.props.text}</li>
-                        <li>{this.props.solidBox ? <SmallInversePrimaryButton text={"LEARN MORE"} url={this.props.link}/> : <SmallSecondaryButton text={"LEARN MORE"} url={this.props.link}/>}</li>
+            <div id={"container-" + this.props.index} className={(this.props.solidBox ? styles.solidBox : styles.transparentBox)}>
+                <div id={"items-container-" + this.props.index}>
+                    <ul id={"title-box-ul-" + this.props.index}>
+                        <li id={"section-num-" + this.props.index} className={styles.sectionNum}>{this.props.sectionNum}</li>
+                        <li id={"li-hr-" + this.props.index}><hr/></li>
+                        <li id={"section-title-" + this.props.index} className={styles.sectionTitle}>{this.props.title}</li>
+                        <li id={"section-text-" + this.props.index} className={styles.sectionText}>{this.props.text}</li>
+                        <li id={"li-button-" + this.props.index}>{this.props.solidBox ? <SmallInversePrimaryButton text={"LEARN MORE"} url={this.props.link}/> : <SmallSecondaryButton text={"LEARN MORE"} url={this.props.link}/>}</li>
                     </ul>
                     {this.props.solidBox ? <div>
-                        <img className={styles.desktopImg} src={diagonalLines} alt=""/>
-                        <img className={styles.mobileImg} src={diagonalLinesMobile} alt=""/>
+                        <img id={"desktop-img-" + this.props.index} className={styles.desktopImg} src={diagonalLines} alt=""/>
+                        <img id={"mobile-img-" + this.props.index} className={styles.mobileImg} src={diagonalLinesMobile} alt=""/>
                     </div> : ""}
                 </div>
             </div>
@@ -33,7 +33,8 @@ TitleBox.propTypes = {
     sectionNum: React.PropTypes.number,
     title: React.PropTypes.string,
     text: React.PropTypes.string,
-    link: React.PropTypes.string
+    link: React.PropTypes.string,
+    index: React.PropTypes.number
 };
 
 TitleBox.defaultProps = {
@@ -41,7 +42,8 @@ TitleBox.defaultProps = {
     sectionNum: 0,
     title: "",
     text: "",
-    link: ""
+    link: "",
+    index: 0
 };
 
 export default TitleBox;

@@ -48,11 +48,11 @@ class TenStepsLandingPage extends React.Component {
         ];
 
         const tenstepSectionItems = titleBoxDataArray.map((item, index)=>{
-            return(<TenStepsSection key={index} sectionItem={item}/>);
+            return(<TenStepsSection key={index} index={index} sectionItem={item}/>);
         });
 
         return (
-            <div className={styles.tenStepsLandingPage}>
+            <div id="tenStepsLandingPageID" className={styles.tenStepsLandingPage}>
                 {tenstepSectionItems}
             </div>
         );
