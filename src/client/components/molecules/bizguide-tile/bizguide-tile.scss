@@ -11,9 +11,9 @@
 	}
 	@include grid-media($sba-grid-medium){
 		@include grid-column(6, $sba-grid-medium)
-		height: 480px;
-		margin-top: 15px;
-		margin-bottom: 15px;
+		position: relative;
+		margin-top: 20px;
+		padding: 27px;
 	}
 	@include grid-media($sba-grid-large){
 		@include grid-column(3, $sba-grid-large)
