@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./readmore-section.scss";
-import btnStyles from "../../atoms/small-secondary-button/small-secondary-button.scss";
+import {SmallSecondaryButton} from "../../atoms";
 
 class ReadMoreSection extends React.Component{
 
@@ -17,7 +17,7 @@ class ReadMoreSection extends React.Component{
             <p id={this.props.iD + "-preview"} className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
             {expandedHr}
             {expandedTextSection}
-            <button id={this.props.iD + "-btn"} className={styles.readMore} href="#" onClick={this.handleClick.bind(this)}>{btnText}</button>
+            <SmallSecondaryButton id={this.props.iD + "-btn"} extraClassName={styles.readMore} text={btnText} onClick={this.handleClick.bind(this)}/>
         </div>);
     }
 }
