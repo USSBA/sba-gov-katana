@@ -16,7 +16,6 @@ function receiveContent(prop, type, query, data) {
 function fetchContent(prop, type, query) {
   return (dispatch) => {
     dispatch(receiveContent(prop, type, query));
-    console.log("query", query);
     return axios.get("/content/" + type + ".json" + (query ? "?" + queryString.stringify(query) : "")).then((response) => {
       return response.data;
     }).then((data) => {
