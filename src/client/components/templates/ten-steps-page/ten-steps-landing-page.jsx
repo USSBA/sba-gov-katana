@@ -10,7 +10,7 @@ class TenStepsLandingPage extends React.Component {
                 title: "Do market research.",
                 leftAlignBox: true,
                 solidBox: false,
-                image: "assets/images/tensteps/research.png",
+                image: "assets/images/tensteps/plan.jpg",
                 imageAlt: "Do market research.",
                 link: "/starting-business/how-start-business/10-steps-starting-business",
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vehicula nisl sed leo volutpat, sit amet tristique lectus feugiat. Nulla ac faucibus urna. Proin arcu ante, feugiat ut eros vel, suscipit iaculis orci. Praesent felis dolor, finibus non accumsan in, varius vel arcu."
@@ -30,7 +30,7 @@ class TenStepsLandingPage extends React.Component {
                 title: "Fund your business.",
                 leftAlignBox: true,
                 solidBox: false,
-                image: "assets/images/tensteps/fund.png",
+                image: "assets/images/tensteps/plan.jpg",
                 imageAlt: "Fund your business.",
                 link: "/starting-business/how-start-business/10-steps-starting-business",
                 text: "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need."
@@ -40,7 +40,7 @@ class TenStepsLandingPage extends React.Component {
                 title: "Choose your business name.",
                 leftAlignBox: true,
                 solidBox: true,
-                image: "assets/images/tensteps/name.jpg",
+                image: "assets/images/tensteps/plan.jpg",
                 imageAlt: "Choose your business name.",
                 link: "/starting-business/how-start-business/10-steps-starting-business",
                 text: "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else."

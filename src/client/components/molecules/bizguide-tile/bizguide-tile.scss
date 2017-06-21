@@ -1,25 +1,15 @@
 //COMMON STYLES FOR BOTH HOVER AND NORMAL TILE
 
 .tile {
-	position: relative;
 	background-color: $grey-lighter;
-	@include grid-media($sba-grid-small){
-		@include grid-column(6, $sba-grid-small)
-		position: relative;
-		margin-top: 20px;
-		padding: 27px;
-	}
-	@include grid-media($sba-grid-medium){
-		@include grid-column(6, $sba-grid-medium)
-		position: relative;
-		margin-top: 20px;
-		padding: 27px;
-	}
+	position: relative;
+	margin-top: 20px;
+	padding: 27px;
 	@include grid-media($sba-grid-large){
 		@include grid-column(3, $sba-grid-large)
 		height: 577px;
-		margin-top: 10px;
-		margin-bottom: 30px;
+		margin: 20px 0 40px;
+		padding: 0;
 	}
 }
 
@@ -351,7 +341,7 @@
 	composes: topLine;
 	margin: 0px;
 	display: block;
-	
+
 }
 
 

@@ -11,13 +11,10 @@ class TitleBox extends React.Component {
         return (
             <div className={(this.props.solidBox ? styles.solidBox : styles.transparentBox)}>
                 <div>
-                    <ul>
-                        <li className={styles.sectionNum}>{this.props.sectionNum}</li>
-                        <li><hr/></li>
-                        <li className={styles.sectionTitle}>{this.props.title}</li>
-                        <li className={styles.sectionText}>{this.props.text}</li>
-                        <li>{this.props.solidBox ? <SmallInversePrimaryButton text={"LEARN MORE"} url={this.props.link}/> : <SmallSecondaryButton text={"LEARN MORE"} url={this.props.link}/>}</li>
-                    </ul>
+                        <span className={styles.sectionNum}>{this.props.sectionNum}</span>
+                        <h2 className={styles.sectionTitle}>{this.props.title}</h2>
+                        <p className={styles.sectionText}>{this.props.text}</p>
+                        {this.props.solidBox ? <SmallInversePrimaryButton text={"LEARN MORE"} url={this.props.link}/> : <SmallSecondaryButton text={"LEARN MORE"} url={this.props.link}/>}
                     {this.props.solidBox ? <div>
                         <img className={styles.desktopImg} src={diagonalLines} alt=""/>
                         <img className={styles.mobileImg} src={diagonalLinesMobile} alt=""/>
