@@ -195,6 +195,9 @@
 	padding: 5px 0 5px 15px;
 	border-bottom: 1px solid rgba(255,255,255, 0.5);
 	z-index: 9999 !important;
+	&:hover {
+		background: $byzantine-dark;
+	}
 }
 
 .link {
