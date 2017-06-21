@@ -1,6 +1,29 @@
 .sectionNum {
-  @include font-size($h2-font-sizes);
+  @include font-size($h1-font-sizes);
   font-weight: 900;
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid;
 }
+
+h2.sectionTitle {
+  @include font-size($h1-font-sizes);
+}
+
+.solidBox, .transparentBox {
+  @include grid-column(7);
+}
+
+.solidBox {
+  background-color: $byzantine;
+  h2 {
+    color: #fff;
+  }
+
+}
+
+.transparentBox {
+  border: 2px solid black;
+}
+
+
+// @include theme(byzantine, '.solidBox', $byzantine, $byzantine, $byzantine);
 
