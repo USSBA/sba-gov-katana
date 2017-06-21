@@ -11,7 +11,7 @@
 	}
 	@include grid-media($sba-grid-large) {
 		display: block;
-		@include grid-column(4.92);
+		@include grid-column(5, $sba-grid-large);
 		@include grid-push(4);
 	}
 }
@@ -174,7 +174,3 @@
 		}
 	}
 }
-
-
-
-

@@ -14,7 +14,7 @@
   @include grid-media($sba-grid-large){
     display: block;
     @include grid-push(9);
-    @include grid-column(3.07);
+    @include grid-column(3);
   }
 
 }
@@ -29,7 +29,7 @@
   @include grid-media($sba-grid-large) {
     display: block;
     @include grid-column(8);
-    @include grid-push(4);  
+    @include grid-push(4);
   }
 }
 
