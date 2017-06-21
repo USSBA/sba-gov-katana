@@ -8,7 +8,7 @@ class BizguideTile extends React.Component {
     constructor(props) {
       super()
       this.state = {
-        navMenuOpen: false  
+        navMenuClassname: "initial"
       }
     }
 
@@ -22,28 +22,38 @@ class BizguideTile extends React.Component {
     return arr.join(" ")
   }
 
-  _handleClick(){
-    if(window.innerWidth <= 1080 && this.state.navMenuOpen === false) {
-      this.setState({navMenuOpen: true})
+  _openNavMenu(){
+    if(window.innerWidth <= 1080 && this.state.navMenuClassname === "initial" || this.state.navMenuClassname === "close") {
+      this.setState({navMenuClassname: "open"})
     }
   }
 
-  _handleClose(){
-    this.setState({navMenuOpen: false})
+  _closeNavMenu(){
+    this.setState({navMenuClassname: "close"})
+  }
+
+  _setNavMenuClassname(){
+    console.log("set class")
+    if(this.state.navMenuClassname === "initial"){
+      return s.navMenuInitial
+    } else if(this.state.navMenuClassname === "open"){
+      return s.navMenuOpen
+    } else if(this.state.navMenuClassname === "close"){
+      return s.navMenuClose
+    }
   }
 
   render() {
       return (
-          <div id={this.props.iD} className={s.tile} onClick={() => {this._handleClick()}}>
-            { this.state.navMenuOpen ? 
+          <div id={this.props.iD} className={s.tile} onClick={() => {this._openNavMenu()}}>
               <BizguideNavMenu 
                 data={this.props.data}
                 iconWhite={this.props.iconWhite}
                 largeTitle={this._formatLargeTitle()} 
                 smallTitle={this._formatSmallTitle()}
-                handleClose={() => {this._handleClose()}}
-              /> : null 
-            }
+                navMenuClassname={this._setNavMenuClassname()}
+                closeNavMenu={() => {this._closeNavMenu()}}
+              />
             <BizguideTileHover 
               data={this.props.data} 
               iD={this.props.iD + '-hover'}
@@ -57,7 +67,7 @@ class BizguideTile extends React.Component {
               largeTitle={this._formatLargeTitle()} 
               smallTitle={this._formatSmallTitle()}
               />
-            <img className={s.backgroundLines} src={this.props.backgroundLines}/>
+            <img className={s.backgroundLines} src={this.props.backgroundLines} alt=""/>
           </div>
       );
   }
@@ -68,7 +78,7 @@ class BizguideTileStatic extends React.Component {
   render() {
     return(
       <div id={this.props.iD} className={s.tileNormal}>
-        <img id={this.props.iD + "-icon"} className={s.icon} src={this.props.icon}/>
+        <img id={this.props.iD + "-icon"} className={s.icon} src={this.props.icon} alt=""/>
           <div id={this.props.iD + "-title"} className={s.titleContainer}>
             <h2 className={s.largeTitle}>{this.props.largeTitle}</h2>
             <h4 className={s.smallTitle}>{this.props.smallTitle}</h4> 
@@ -76,7 +86,7 @@ class BizguideTileStatic extends React.Component {
           <i className={s.rightArrow + " fa fa-angle-right"}></i>
           <div className={s.line}></div>
           <p id={this.props.iD + "-blurb"} className={s.blurb}>{this.props.data.description}</p>
-          <img className={s.cornerLines} src={cornerLines}/>
+          <img className={s.cornerLines} src={cornerLines} alt=""/>
       </div>
     );
   }
@@ -121,10 +131,10 @@ class BizguideNavMenu extends React.Component {
   
   render() {
     return(
-      <div className={s.navMenu}>
-        <div className={s.navHeader} onClick={() => {this.props.handleClose()}}>
+      <div className={this.props.navMenuClassname}>
+        <div className={s.navHeader} onClick={() => {this.props.closeNavMenu()}}>
           <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
-          <img className={s.navIcon} src={this.props.iconWhite}/>
+          <img className={s.navIcon} src={this.props.iconWhite} alt=""/>
           <div className={s.navTitleContainer}>
             <h2 className={s.navLargeTitle}>{this.props.largeTitle}</h2>
             <h4 className={s.navSmallTitle}>{this.props.smallTitle}</h4> 
