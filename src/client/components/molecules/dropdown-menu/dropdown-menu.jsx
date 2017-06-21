@@ -6,6 +6,7 @@ import PageLinkGroup from "../page-link-group/page-link-group.jsx"
 import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
 
 import FeaturedCallout from "../featured-callout/featured-callout.jsx"
+import SmallInverseCta from "../../molecules/small-inverse-cta/small-inverse-cta.jsx"
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class DropdownMenu extends React.Component {
           {this.props.featuredCallout
             ? <FeaturedCallout {...this.props.featuredCallout}/>
             : undefined}
+        <SmallInverseCta />
         </ul>
       );
     } else {

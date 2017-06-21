@@ -20,11 +20,11 @@ class RootPage extends React.Component {
   }
 
   checkForForward() {
-    if (this.props.params.section && this.props.params.subsection && !this.props.params.page && !this.props.params.section === "funding-programs") {
+    if (this.props.params.section && this.props.params.subsection && !this.props.params.page && this.props.params.section !== "funding-programs") {
       let subSectionData = findSubSection(this.props.menu, this.props.params.section, this.props.params.subsection);
       if (subSectionData && subSectionData.children && subSectionData.children[0]) {
         let page = subSectionData.children[0].url;
-        this.props.locationActions.locationChange(path.join("/", this.props.params.section, this.props.params.subsection, page),{});
+        this.props.locationActions.locationChange(path.join("/", this.props.params.section, this.props.params.subsection, page), {});
       }
     }
   }
@@ -36,7 +36,7 @@ class RootPage extends React.Component {
       if (nodeId) {
         return (<Page lineage={pageLineage} nodeId={nodeId}/>);
       }
-    }else if(!page && section === "funding-programs"){
+    } else if (!page && section === "funding-programs") {
       return (<Page section={section} nodeId={subsection}/>);
     }
     return (<div/>);

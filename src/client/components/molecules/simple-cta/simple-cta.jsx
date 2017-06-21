@@ -22,5 +22,3 @@ SimpleCta.defaultProps = {
 }
 
 export default SimpleCta;
-
-
