@@ -2,48 +2,6 @@
 	margin-bottom: 2.1vw;
 }
 
-.readMoreSectionClosed {
-	@include grid-media($sba-grid-small) {
-		display: none;
-	}
-	@include grid-media($sba-grid-medium) {
-		display: none;
-	}
-	@include grid-media($sba-grid-large) {
-		display: block;
-		@include grid-column(5, $sba-grid-large);
-		@include grid-push(4);
-	}
-}
-
-.readMoreSectionExpanded{
-	@include grid-media($sba-grid-small) {
-		display: none;
-	}
-	@include grid-media($sba-grid-medium) {
-		display: none;
-	}
-	@include grid-media($sba-grid-large) {
-		display: block;
-		@include grid-column(7);
-		@include grid-push(4);
-	}
-}
-
-.readMoreSectionMobile {
-	display: none;
-	@include grid-media($sba-grid-small) {
-		@include grid-column(6, $sba-grid-small);
-		display: block;
-	}
-	@include grid-media($sba-grid-medium) {
-		display: block;
-		@include grid-column(12)
-	}
-	@include grid-media($sba-grid-large) {
-		display: none;
-	}
-}
 
 // redundant with normalize css, but better to be explicit
 .textSection ul {
