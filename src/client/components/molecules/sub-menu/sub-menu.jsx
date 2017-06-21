@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './sub-menu.scss';
 import {isEmpty} from "lodash";
 
-import SectionLink from "../../atoms/section-link/section-link.jsx"
+import {SectionLink} from "../../atoms"
 import DropdownMenu from "../dropdown-menu/dropdown-menu.jsx"
 
 class SubMenu extends React.Component {
