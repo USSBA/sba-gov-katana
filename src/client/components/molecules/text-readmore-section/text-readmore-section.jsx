@@ -18,8 +18,9 @@ class TextReadMoreSection extends React.Component {
     this.setState({readMoreExpanded: readMoreStatus});
   }
   makeTextSection(divStyle) {
+    let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
     return (
-      <div id={this.props.iD + "-text-section"} className={styles.textSectionSectionMobile}><TextSection text={cleaned}/></div>
+      <div id={this.props.iD + "-text-section"} className={divStyle}><TextSection text={cleaned}/></div>
     );
   }
 
@@ -30,7 +31,7 @@ class TextReadMoreSection extends React.Component {
   }
 
   render() {
-    let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
+
     let textReadMoreSection = this.state.readMoreExpanded
       ? (
         <div id={this.props.iD} className={styles.textReadMoreSection}>
