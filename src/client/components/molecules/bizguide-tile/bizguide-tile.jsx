@@ -29,7 +29,6 @@ class BizguideTile extends React.Component {
   }
 
   _handleClose(){
-    console.log("oioioioioi")
     this.setState({navMenuOpen: false})
   }
 
