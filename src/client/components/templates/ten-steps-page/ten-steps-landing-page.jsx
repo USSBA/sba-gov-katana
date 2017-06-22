@@ -13,7 +13,7 @@ class TenStepsLandingPage extends React.Component {
                 image: "assets/images/tensteps/research.png",
                 imageAlt: "Do market research.",
                 link: "/starting-business/how-start-business/10-steps-starting-business",
-                text: "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.."
+                text: "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business."
             },
             {
                 sectionNum: 2,
