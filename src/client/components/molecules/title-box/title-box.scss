@@ -19,3 +19,6 @@ h2.sectionTitle {
   @include font-size($h1-font-sizes);
 }
 
+p.sectionText {
+  @include font-size($h5-font-sizes);
+}
