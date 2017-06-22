@@ -3,7 +3,7 @@
 .rightAlignedSolidBoxSection,
 .rightAlignedBoxSection {
   @include grid-container;
-  border: 1px solid red;
+  // border: 1px solid red;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -26,17 +26,32 @@
 }
 
 .leftAlignedSolidBoxSection img,
-.leftAlignedBoxSection img,
 .rightAlignedSolidBoxSection img,
-.rightAlignedBoxSection img,
 .leftAlignedSolidBoxSection .titleBox,
-.leftAlignedBoxSection .titleBox,
-.rightAlignedSolidBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox {
+.rightAlignedSolidBoxSection .titleBox {
   @include grid-media($sba-grid-large) {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+  }
+}
+
+.leftAlignedBoxSection img,
+.rightAlignedBoxSection img {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 60%;
+    transform: translateY(-60%);
+  }
+}
+
+.leftAlignedBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    left: 50px;
+    top: 20%;
+    transform: translateY(-20%);
   }
 }
 
@@ -76,15 +91,15 @@
 .rightAlignedSolidBoxSection .titleBox,
 .rightAlignedBoxSection .titleBox {
   @include grid-media($sba-grid-large){
-    @include grid-column(7);
-    @include grid-shift(5);
+    @include grid-column(6);
+    @include grid-shift(6);
   }
 }
 
 .leftAlignedSolidBoxSection .titleBox,
 .leftAlignedBoxSection .titleBox {
   @include grid-media($sba-grid-large){
-    @include grid-column(7);
+    @include grid-column(6);
   }
 }
 
