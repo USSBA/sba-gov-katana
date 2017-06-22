@@ -20,8 +20,10 @@
 		height: 577px;
 		margin-top: 10px;
 		margin-bottom: 30px;
-		padding: 0px
+		padding: 0px;
+		overflow: hidden;
 	}
+
 }
 
 .backgroundLines {
@@ -32,6 +34,7 @@
 		bottom: 0px;
 		left: 0px;
 		right: 0px;
+		width: 100%;
 	}
 }
 
@@ -355,10 +358,5 @@
 	composes: topLine;
 	margin: 0px;
 	display: block;
-	
+
 }
-
-
-
-
-
