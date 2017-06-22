@@ -1,85 +1,112 @@
-@media screen and (min-width:768px) {
-  .leftAlignedBoxSection {
-    @include grid-column(12, $sba-grid-large);
-    position: relative;
-
-    .titleBox{
-      position: absolute;
-      top: 10px;
-      left: 40px;
-    }
-    .Banner{
-      @include grid-column(8, $sba-grid-large);
-      @include grid-push(4);
-      margin-top: 100px;
-      width: 85%;
-      height: 45vw;
-    }
-  }
-
-  .leftAlignedSolidBoxSection {
-    @include grid-column(12, $sba-grid-large);
-    position: relative;
-
-    .titleBox{
-      @include grid-column(7, $sba-grid-large);
-      position: absolute;
-      top: 140px;
-    }
-    .Banner{
-      @include grid-column(8, $sba-grid-large);
-      @include grid-push(2);
-      margin-top: 60px;
-      width: 85%;
-      height: 55vw;
-    }
-  }
-
-  .rightAlignedBoxSection{
-    @include grid-column(12, $sba-grid-large);
-    position: relative;
-
-    .titleBox{
-      @include grid-column(7, $sba-grid-large);
-      @include grid-push(5);
-      position: absolute;
-      top: 80px;
-    }
-    .Banner{
-      @include grid-column(10, $sba-grid-large);
-      height: 55vw;
-    }
-  }
-
-  .rightAlignedSolidBoxSection{
-    @include grid-column(12, $sba-grid-large);
-    position: relative;
-
-    .titleBox{
-      @include grid-column(7, $sba-grid-large);
-      @include grid-push(5);
-      position: absolute;
-      top: 80px;
-    }
-    .Banner{
-      @include grid-column(10, $sba-grid-large);
-      height: 55vw;
-    }
-  }
-
+.leftAlignedSolidBoxSection,
+.leftAlignedBoxSection,
+.rightAlignedSolidBoxSection,
+.rightAlignedBoxSection {
+  @include grid-container;
+  // border: 1px solid red;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-@media screen and (max-width:767px) {
-  .leftAlignedBoxSection {
-    margin-bottom: 54vw;
-    margin-top: 10vw;
-  }
+.leftAlignedSolidBoxSection img,
+.leftAlignedBoxSection img,
+.rightAlignedSolidBoxSection img,
+.rightAlignedBoxSection img {
+  position: absolute;
+  top: 5vh;
+}
 
-  .rightAlignedBoxSection{
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox,
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
+  position: absolute;
+  bottom: 10vh;
+}
 
-  }
-
-  .Banner {
-    display: none;
+.leftAlignedSolidBoxSection img,
+.rightAlignedSolidBoxSection img,
+.leftAlignedSolidBoxSection .titleBox,
+.rightAlignedSolidBoxSection .titleBox {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
+
+.leftAlignedBoxSection img,
+.rightAlignedBoxSection img {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.leftAlignedBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    left: 50px;
+    top: 20%;
+    transform: translateY(-20%);
+  }
+}
+
+.leftAlignedSolidBoxSection img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+    @include grid-shift(2);
+  }
+}
+
+.leftAlignedBoxSection img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(7,$desktop-0gutter);
+    @include grid-shift(5, $desktop-0gutter);
+  }
+}
+
+.leftAlignedBoxSection:last-of-type img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(4,$desktop-0gutter);
+    @include grid-shift(7, $desktop-0gutter);
+  }
+}
+
+.rightAlignedSolidBoxSection img,
+.rightAlignedBoxSection img {
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+  }
+}
+
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox,
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-small){
+    @include grid-column(6)
+  }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12)
+  }
+}
+
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-large){
+    @include grid-column(6);
+    @include grid-shift(6);
+  }
+}
+
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-large){
+    @include grid-column(6);
+  }
+}
+

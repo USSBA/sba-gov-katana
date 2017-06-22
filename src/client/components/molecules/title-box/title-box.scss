@@ -1,135 +1,24 @@
-@media screen and (min-width:768px) {
-
-  .transparentBox{
-    position: relative;
-    width: 578px;
-    height: 478px;
-    padding-top: 10px;
-
-    .sectionNum{
-      height: 64px;
-      width: 34px;
-      color: #333333;
-      font-family: "Source Sans Pro";
-      font-size: 64px;
-      font-weight: bold;
-      line-height: 64px;
-      text-align: center;
-    }
-
-    .sectionTitle{
-      margin-top: 20px;
-      color: #333333;
-      font-family: "Source Sans Pro";
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 68px;
-    }
-
-    .sectionText{
-      margin-top: 30px;
-      margin-bottom: 30px;
-      color: #333333;
-      font-family: "Source Sans Pro";
-      font-size: 22px;
-      line-height: 28px;
-    }
-
-    li hr{
-      width: 34px;
-      color: #ffffff;
-      margin-top: 6px;
-      box-sizing: border-box;
-      height: 3px;
-      width: 34px;
-      border: 3px solid;
-    }
-  }
-
-  @include theme(sba-blue, '.solidBox', $sba-blue, $sba-blue, $sba-blue);
-  @include theme(byzantine, '.solidBox', $byzantine, $byzantine, $byzantine);
-  @include theme(money-green, '.solidBox', $money-green, $money-green, $money-green);
-  @include theme(cobalt-blue, '.solidBox', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
-  @include theme(sba-blue, '.transparentBox li hr', $sba-blue, $sba-blue, $sba-blue);
-  @include theme(byzantine, '.transparentBox li hr', $byzantine, $byzantine, $byzantine);
-  @include theme(money-green, '.transparentBox li hr', $money-green, $money-green, $money-green);
-  @include theme(cobalt-blue, '.transparentBox li hr', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
-  @include theme(sba-blue, '.transparentBox .sectionNum', null, $sba-blue, null);
-  @include theme(byzantine, '.transparentBox .sectionNum', null, $byzantine, null);
-  @include theme(money-green, '.transparentBox .sectionNum', null, $money-green, null);
-  @include theme(cobalt-blue, '.transparentBox .sectionNum', null, $cobalt-blue, null);
-
-  .solidBox{
-    position: relative;
-    width: 678px;
-    height: 515px;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 15px;
-    
-    .sectionNum{
-      height: 64px;
-      width: 34px;
-
-      color: #ffffff;
-      font-family: "Source Sans Pro";
-      font-size: 64px;
-      font-weight: bold;
-      line-height: 64px;
-      text-align: center;
-    }
-
-    .sectionTitle{
-      margin-top: 20px;
-      color: #ffffff;
-      font-family: "Source Sans Pro";
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 68px;
-    }
-
-    .sectionText{
-      margin-top: 30px;
-      margin-bottom: 30px;
-      color: #ffffff;
-      font-family: "Source Sans Pro";
-      font-size: 22px;
-      line-height: 28px;
-    }
-    
-    li hr{
-      width: 34px;
-      color: #ffffff;
-      margin-top: 6px;
-      box-sizing: border-box;
-      height: 3px;
-      width: 34px;
-      border: 3px solid;
-    }
-
-    .mobileImg{
-      display: none;
-    }
-
-    .desktopImg{
-      position: absolute;
-      height: 168px;
-      width: 163.76px;
-      bottom: 0;
-      right: 0;
-    }
-  }
+.solidBox {
+  background-color: $byzantine;
+  border-color: #fff;
+  color: #fff;
+  padding: 15px 50px 50px;
 }
-@media screen and (max-width:767px) {
-  
-  .transparentBox{
-    width: 20vw;
-    height: 18vw;
-  }
 
-  .solidBox{
+.sectionNum {
+  @include font-size($h1-font-sizes);
+  font-weight: 900;
+  border-bottom: 4px solid;
+}
 
-  }
+.transparentBox .sectionNum {
+  color: $byzantine;
+}
+
+h2.sectionTitle {
+  @include font-size($h1-font-sizes);
+}
+
+p.sectionText {
+  @include font-size($h5-font-sizes);
 }
