@@ -27,49 +27,26 @@ class BizguideTile extends React.Component {
 
   _openNavMenu(){
     if(window.innerWidth <= 1080) {
-      this.props.actions.showMobileNav(this.props.data)
-    }
-  }
-
-  _closeNavMenu(){
-    this.setState({navMenuClassname: "close"})
-  }
-
-  _setNavMenuClassname(){
-    console.log("set class")
-    if(this.state.navMenuClassname === "initial"){
-      return s.navMenuInitial
-    } else if(this.state.navMenuClassname === "open"){
-      return s.navMenuOpen
-    } else if(this.state.navMenuClassname === "close"){
-      return s.navMenuClose
+      this.props.actions.showMobileNav(this.props.data, this.props.iconWhite)
     }
   }
 
   render() {
       return (
           <div id={this.props.iD} className={s.tile} onClick={() => {this._openNavMenu()}}>
-              <BizguideNavMenu 
-                data={this.props.data}
-                iconWhite={this.props.iconWhite}
-                largeTitle={this._formatLargeTitle()} 
-                smallTitle={this._formatSmallTitle()}
-                navMenuClassname={this._setNavMenuClassname()}
-                closeNavMenu={() => {this._closeNavMenu()}}
-              />
             <BizguideTileHover 
               data={this.props.data} 
               iD={this.props.iD + '-hover'}
               largeTitle={this._formatLargeTitle()} 
               smallTitle={this._formatSmallTitle()}
-              />
+            />
             <BizguideTileStatic 
               data={this.props.data} 
               iD={this.props.iD + '-static'}
               icon={this.props.icon} 
               largeTitle={this._formatLargeTitle()} 
               smallTitle={this._formatSmallTitle()}
-              />
+            />
             <img className={s.backgroundLines} src={this.props.backgroundLines} alt=""/>
           </div>
       );
@@ -124,44 +101,6 @@ const HoverLink = (props) =>
       href={props.link.fullUrl}>
       {props.link.title}
     </a>
-  </div>
-
-class BizguideNavMenu extends React.Component {
-
-  _handleClick(linkObject){
-    document.location = linkObject.fullUrl
-  }
-  
-  render() {
-    return(
-      <div className={this.props.navMenuClassname}>
-        <div className={s.navHeader} onClick={() => {this.props.closeNavMenu()}}>
-          <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
-          <img className={s.navIcon} src={this.props.iconWhite} alt=""/>
-          <div className={s.navTitleContainer}>
-            <h2 className={s.navLargeTitle}>{this.props.largeTitle}</h2>
-            <h4 className={s.navSmallTitle}>{this.props.smallTitle}</h4> 
-          </div>
-        </div>
-        <div className={s.navTopLine}></div>
-        {
-          this.props.data.children.map((linkObject, index) => {
-            return <NavLink key={index} link={linkObject} handleClick={this._handleClick}/>
-          })
-        }
-      </div>
-    );
-  }
-}
-
-const NavLink = (props) => 
-  <div className={s.navLinkContainer} onClick={() => {props.handleClick(props.link)}}>
-    <a id={props.iD} 
-      className={s.navLink} 
-      href={props.link.fullUrl}>
-      {props.link.title}
-    </a>
-    <i className={s.navRightArrow + " fa fa-angle-right"}></i>
   </div>
 
 

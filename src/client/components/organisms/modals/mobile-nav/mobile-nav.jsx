@@ -29,9 +29,9 @@ class MobileNav extends React.Component {
   render() {
     return(
       <div className={s.navMenu}>
-        <div className={s.navHeader}>
+        <div className={s.navHeader} onClick={() => {this.props.actions.closeMobileNav()}}>
           <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
-
+          <img className={s.navIcon} src={this.props.icon} alt=""/>
           <div className={s.navTitleContainer}>
             <h2 className={s.navLargeTitle}>{this._formatLargeTitle()}</h2>
             <h4 className={s.navSmallTitle}>{this._formatSmallTitle()}</h4> 

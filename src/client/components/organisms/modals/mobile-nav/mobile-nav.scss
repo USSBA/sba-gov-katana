@@ -12,59 +12,59 @@
 	}
 }
 
-.navMenuOpen {
-	composes: navMenu;
-	-webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
-	-ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
-	-o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
-	animation: slideLeft 1s ease-out;
+// .navMenuOpen {
+// 	composes: navMenu;
+// 	-webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
+// 	-moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
+// 	-ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
+// 	-o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
+// 	animation: slideLeft 1s ease-out;
 
-	@keyframes slideLeft {
-		from {
-			margin-left: 2000px;
-			margin-right: -4000px;
-			opacity: 1;
-		}
-		to {
-			margin-left: 0px;
-			margin-right: 0px;
-		}
-	}
-}
+// 	@keyframes slideLeft {
+// 		from {
+// 			margin-left: 2000px;
+// 			margin-right: -4000px;
+// 			opacity: 1;
+// 		}
+// 		to {
+// 			margin-left: 0px;
+// 			margin-right: 0px;
+// 		}
+// 	}
+// }
 
-.navMenuClose {
-	composes: navMenu;
-	-webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
-	-ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
-	-o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
-	animation: slideRight 1s ease-in forwards;
+// .navMenuClose {
+// 	composes: navMenu;
+// 	-webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
+// 	-moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
+// 	-ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
+// 	-o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
+// 	animation: slideRight 1s ease-in forwards;
 
-	@keyframes slideRight {
-		0% {
-			margin-left: 0px;
-			margin-right: 0px;
-		}
-		99% {
-			margin-left: 2000px;
-			margin-right: -4000px;
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
-}
+// 	@keyframes slideRight {
+// 		0% {
+// 			margin-left: 0px;
+// 			margin-right: 0px;
+// 		}
+// 		99% {
+// 			margin-left: 2000px;
+// 			margin-right: -4000px;
+// 			opacity: 1;
+// 		}
+// 		100% {
+// 			opacity: 0;
+// 		}
+// 	}
+// }
 
-.navMenuInitial {
-	display: none;
-}
+// .navMenuInitial {
+// 	display: none;
+// }
 
 .navHeader {
-		display: block;
-		position: relative;
-		height: 70px;
+	display: block;
+	position: relative;
+	height: 70px;
 }
 
 .navTitleContainer {
@@ -130,17 +130,29 @@
 }
 
 .navLinkContainer {
-	//composes: linkContainer;
+	position: relative;
 	cursor: pointer;
 	padding: 10px 35px 10px 15px;
+	border-bottom: 1px solid rgba(255,255,255, 0.5);
+	z-index: 9999 !important;
+	&:hover {
+		background: $byzantine-dark;
+	}
+	cursor: pointer;
 }
 
 .navLink {
-	//composes: link;
+	font-size: 18px !important;
+	color: white !important;
+	text-decoration: none !important;
+	font-weight: 300 !important;
 }
 
 .navTopLine {
-	//composes: topLine;
+	margin-top: 20px;
+	background-color: rgba(255,255,255, 0.5);
+	height: 1px;
+	width: 100%;
 	margin: 0px;
 	display: block;
 
