@@ -75,14 +75,7 @@ function fetchMainMenu() {
       }
 
       if (!_.isEmpty(deepPickFormattedMenu)) {
-        const stAndMaIndex = _.findIndex(menuTree, {
-          linkTitle: "Starting & Managing"
-        });
-        if (stAndMaIndex !== -1) {
-          menuTree.splice(stAndMaIndex, 1, _.head(deepPickFormattedMenu));
-        } else {
-          menuTree.splice(0, 0, _.head(deepPickFormattedMenu));
-        }
+        menuTree.splice(0, 1, _.head(deepPickFormattedMenu));
       }
       return menuTree;
     });

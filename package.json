@@ -97,6 +97,7 @@
     "url-loader": "0.5.7",
     "uuid": "3.0.1",
     "webpack": "2.2.1",
+    "winston": "^2.3.1",
     "xml2js": "0.4.17",
     "xmldom": "0.1.27"
   },
@@ -137,6 +138,7 @@
     "sinon": "2.3.1",
     "sinon-chai": "2.9.0",
     "style-loader": "0.18.0",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-middleware": "1.6.1",
     "webpack-dev-server": "2.1.0-beta.8",
     "webpack-hot-middleware": "2.10.0",

@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const sharedConfig = require('./webpack.config.shared.js');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
@@ -19,6 +20,7 @@ module.exports = function(env) {
       publicPath: '/build/'
     },
     plugins: [
+      new BundleAnalyzerPlugin(),
       new webpack.HotModuleReplacementPlugin(),
     ],
     module: {

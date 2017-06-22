@@ -17,8 +17,8 @@ a.sectionLink {
 @include theme-hover(byzantine, 'a.sectionLink', null, $byzantine, null);
 @include theme-hover(money-green, 'a.sectionLink', null, $money-green, null);
 @include theme-hover(cobalt-blue, 'a.sectionLink', null, $cobalt-blue, null);
-$triangle-size: 11px;
 
+$triangle-size: 11px;
 .triangle {
     visibility: hidden;
     position: relative;
@@ -33,37 +33,37 @@ $triangle-size: 11px;
     z-index: 100000000000;
 }
 
-:global(.sba-blue) .triangle {
+:global(.sba-blue) .triangleTheme {
     border-bottom: $triangle-size solid $sba-blue;
 }
 
-:global(.byzantine) .triangle {
+:global(.byzantine) .triangleTheme {
     border-bottom: $triangle-size solid $byzantine;
 }
 
-:global(.money-green) .triangle {
+:global(.money-green) .triangleTheme {
     border-bottom: $triangle-size solid $money-green;
 }
 
-:global(.cobalt-blue) .triangle {
+:global(.cobalt-blue) .triangleTheme {
     border-bottom: $triangle-size solid $cobalt-blue;
 }
 
-.link:hover .triangle {
+.triangleWhite {
+    border-bottom: $triangle-size solid transparent;
+}
+
+.link:hover .triangle,
+.link:focus .triangle  {
     visibility: visible;
 }
 
-.link:hover {
+
+.link {
+    border-bottom-color: transparent;
     padding-bottom: 2px;
     border-bottom-width: 3px;
     border-bottom-style: solid;
 }
 
-@include theme(sba-blue, '.link:hover', null, null,$sba-blue);
-@include theme(byzantine, '.link:hover', null, null, $byzantine);
-@include theme(money-green, '.link:hover', null, null, $money-green);
-@include theme(cobalt-blue, '.link:hover', null,null, $cobalt-blue);
-
-.link:focus .triangle {
-    visibility: visible;
-}
+@include border-color-theme(".underline");

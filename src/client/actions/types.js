@@ -4,5 +4,8 @@ export default {
   feedback: {
     submitResults: "SUBMIT_RESULT",
     submitText: "SUBMIT_TEXT"
+  },
+  display: {
+    theme: "THEME"
   }
 };

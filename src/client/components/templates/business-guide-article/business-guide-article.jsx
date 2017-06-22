@@ -1,8 +1,8 @@
 import React from 'react'
-
-var Waypoint = require('react-waypoint');
-
+import Waypoint from "react-waypoint"
 import styles from './business-guide-article.scss';
+import {listenForOverlap} from 'element-overlap';
+
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
@@ -16,7 +16,6 @@ import CallToAction from "../../molecules/call-to-action/call-to-action.jsx"
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import CardCollection from "../../molecules/card-collection/card-collection.jsx";
 import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
-import {listenForOverlap} from 'element-overlap';
 
 const ParagraphTypeToBeImplemented = ({data, index}) => {
   return (
@@ -52,7 +51,7 @@ class BusinessGuideArticle extends React.Component {
         } else if (item.type === "textSection") {
           if (paragraphArray[index + 1] && paragraphArray[index + 1].type === "readMore") {
             paragraphGridStyle = "";
-            paragraph = (<TextReadMoreSection key={index} iD={"text-readmore-section-" + index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
+            paragraph = (<TextReadMoreSection key={index} parentId={"text-readmore-section-" + index} textSectionItem={item} readMoreSectionItem={paragraphArray[index + 1]}/>);
           } else {
             paragraphGridStyle = styles.textSection;
             // DOMPurify is loaded from a minimize script tag in the header due to issues with jsdom and webpack
@@ -125,8 +124,6 @@ class BusinessGuideArticle extends React.Component {
   }
 
   render() {
-
-        console.log("render", this.state.currentPosition);
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
     let breadcrumbs = this.props.lineage
       ? this.makeBreadcrumbs(this.props.lineage)

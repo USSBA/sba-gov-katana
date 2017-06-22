@@ -13,7 +13,7 @@
   left: -48%;
   background-color: #fff;
   width: 148%;
-  margin-top: 14px;
+  margin-top: 3px;
   padding: 60px 50px;
   z-index: 10000000000;
   display: flex;
@@ -72,4 +72,3 @@
 @include theme-focus(byzantine, '.skipLink a', null, $grey-dark, null);
 @include theme-focus(money-green, '.skipLink a', null, $grey-dark, null);
 @include theme-focus(cobalt-blue, '.skipLink a', null, $grey-dark, null);
-

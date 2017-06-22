@@ -55,3 +55,7 @@ config/*production*
 # Developer personal probe scripts
 scripts/probes
 scripts/db/sql/sba_*.sql
+
+
+# webpack bundle stats.json
+stats.json
