@@ -16,8 +16,6 @@ class TitleBox extends React.Component {
                         <p className={styles.sectionText}>{this.props.text}</p>
                         {this.props.solidBox ? <SmallInversePrimaryButton text={"LEARN MORE"} url={this.props.link}/> : <SmallSecondaryButton text={"LEARN MORE"} url={this.props.link}/>}
                     {this.props.solidBox ? <div>
-                        <img className={styles.desktopImg} src={diagonalLines} alt=""/>
-                        <img className={styles.mobileImg} src={diagonalLinesMobile} alt=""/>
                     </div> : ""}
                 </div>
             </div>

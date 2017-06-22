@@ -1,10 +1,36 @@
-.sectionStyle {
+.leftAlignedSolidBoxSection,
+.leftAlignedBoxSection,
+.rightAlignedSolidBoxSection,
+.rightAlignedBoxSection {
   height: 100vh;
   border: 1px solid red;
+  position: relative;
+  padding-top: 25vh;
 }
 
-img {
-  display: none;
+.leftAlignedSolidBoxSection img,
+.leftAlignedBoxSection img{
+  @include grid-column(7);
+  @include grid-push(5);
 }
 
+.rightAlignedSolidBoxSection img,
+.rightAlignedBoxSection img {
+  @include grid-column(7);
+}
+
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
+  @include grid-column(7);
+  @include grid-push(5);
+  position: absolute;
+  margin-top: 2vh;
+}
+
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox {
+  @include grid-column(7);
+  position: absolute;
+  margin-top: 2vh;
+}
 

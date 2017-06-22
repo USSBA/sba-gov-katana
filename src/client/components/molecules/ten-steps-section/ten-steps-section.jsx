@@ -14,7 +14,7 @@ class TenStepsSection extends React.Component {
     render() {
         let sectionStyle = this.calculateSectionStyle();
         return (
-            <div className={styles.sectionStyle}>
+            <div className={sectionStyle}>
                 <img className={styles.Banner} src={this.props.sectionItem.image} alt={this.props.sectionItem.imageAlt}/>
                 <div className={styles.titleBox}><TitleBox solidBox={this.props.sectionItem.solidBox} sectionNum={this.props.sectionItem.sectionNum} title={this.props.sectionItem.title} text={this.props.sectionItem.text} link={this.props.sectionItem.link} /></div>
             </div>

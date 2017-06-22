@@ -8,22 +8,12 @@ h2.sectionTitle {
   @include font-size($h1-font-sizes);
 }
 
-.solidBox, .transparentBox {
-  @include grid-column(7);
-}
-
 .solidBox {
   background-color: $byzantine;
-  h2 {
-    color: #fff;
-  }
-
+  border-color: #fff;
+  color: #fff;
+  padding: 15px 50px 50px;
 }
-
-.transparentBox {
-  border: 2px solid black;
-}
-
 
 // @include theme(byzantine, '.solidBox', $byzantine, $byzantine, $byzantine);
 
