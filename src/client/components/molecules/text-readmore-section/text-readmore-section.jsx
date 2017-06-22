@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./text-readmore-section.scss";
 import TextSection from "../text-section/text-section.jsx";
 import ReadMoreSection from "../readmore-section/readmore-section.jsx";
+import {reverse, debounce} from "lodash";
 
 class TextReadMoreSection extends React.Component {
 
@@ -10,53 +11,60 @@ class TextReadMoreSection extends React.Component {
     this.state = {
       readMoreExpanded: false
     };
-
-    this.handleReadMoreStatus = this.handleReadMoreStatus.bind(this);
   }
 
   handleReadMoreStatus(readMoreStatus) {
     this.setState({readMoreExpanded: readMoreStatus});
   }
-  makeTextSection(divStyle) {
+
+  makeTextSection() {
     let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
     return (
-      <div id={this.props.iD + "-text-section"} className={divStyle}><TextSection text={cleaned}/></div>
+      <div key={2} className={styles.textSection} id={this.props.parentId + "-text-section"}><TextSection text={cleaned}/></div>
     );
   }
 
-  makeReadMoreSection(divStyle) {
+  makeReadMoreSection() {
     return (
-      <div className={divStyle}><ReadMoreSection iD={this.props.iD + "-read-more"} readMoreStatus={this.handleReadMoreStatus} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+      <div key={1} className={styles.readMoreSection}><ReadMoreSection parentId={this.props.parentId + "-read-more"} readMoreStatus={this.handleReadMoreStatus.bind(this)} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
     );
   }
+
+  /** The order of the components depends on both the expanded state and if the viewer agent is mobile or not
+   *  On desktop the order is reversed when expanded; on mobile it remains the same.  As such the render method below
+   *  uses the viewport width to determine when to reverse the order and when not to; however, the render method is not always
+   *  when the window is resized.  These methods will force that to ensure that the order is correct.
+   *  To reproduce one of these oddities, view in Desktop in non-expanded mode and then resize into mobile size.  Notice the readmore is below
+   *  the text section.  Toggle the "read more" button twice and notice that the readmore is now collapsed but before the text section.
+   *  If resizing becomes slow, remove this code.
+  **/
+  resize = () => this.forceUpdate()
+
+  componentDidMount() {
+    window.addEventListener('resize', debounce(this.resize, 400))
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resize)
+  }
+  /** End special render functions **/
 
   render() {
+    let expandedStyle = this.state.readMoreExpanded
+      ? styles.expanded
+      : "";
 
-    let textReadMoreSection = this.state.readMoreExpanded
-      ? (
-        <div id={this.props.iD} className={styles.textReadMoreSection}>
-          {this.makeReadMoreSection(styles.readMoreSectionExpanded)}
-          {this.makeTextSection(styles.textSectionExpanded)}
-        </div>
-      )
-      : (
-        <div id={this.props.iD} className={styles.textReadMoreSection}>
-          {this.makeTextSection(styles.textSectionClosed)}
-          {this.makeReadMoreSection(styles.readMoreSectionClosed)}
-        </div>
-      );
-
-    let textReadMoreSectionMobile = (
-      <div className={styles.textReadMoreSection}>
-        {this.makeReadMoreSection(styles.readMoreSectionMobile)}
-        {this.makeTextSection(styles.textSectionSectionMobile)}
-      </div>
-    );
+    let subcomponents = [
+      (this.makeReadMoreSection()),
+      (this.makeTextSection())
+    ];
+    if (!this.state.readMoreExpanded && window.innerWidth > 1079) {
+      subcomponents = reverse(subcomponents);
+    }
 
     return (
-      <div>
-        {textReadMoreSection}
-        {textReadMoreSectionMobile}
+      <div className={expandedStyle + " " + styles.textReadMoreSection}>
+        {subcomponents}
       </div>
     );
   }
@@ -64,7 +72,8 @@ class TextReadMoreSection extends React.Component {
 
 TextReadMoreSection.propTypes = {
   textSectionItem: React.PropTypes.object.isRequired,
-  readMoreSectionItem: React.PropTypes.object.isRequired
+  readMoreSectionItem: React.PropTypes.object.isRequired,
+  parentId: React.PropTypes.string.isRequired
 };
 
 export default TextReadMoreSection;
