@@ -65,7 +65,8 @@ class MainMenu extends React.Component {
           hasNext: index !== this.props.data.length - 1,
           onFinalBlur: (event) => this.handleFinalBlur(event),
           autoFocusOnTitle: index === this.state.currentlyFocusedTopLevelMenu,
-          onSectionLinkKeyDown: (event) => this.handleKeyDown(event)
+          onSectionLinkKeyDown: (event) => this.handleKeyDown(event),
+          showUnderline: index === this.props.activeIndex
         };
         return <SubMenu {...submenuProps}/>
       });

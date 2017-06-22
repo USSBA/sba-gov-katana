@@ -9,6 +9,7 @@ import MainMenu from "../main-menu/main-menu.jsx";
 import styles from './desktop-nav.scss';
 import * as ContentActions from '../../../../actions/content.js';
 
+
 class DesktopNav extends React.Component {
 
   componentWillMount() {
@@ -16,22 +17,29 @@ class DesktopNav extends React.Component {
   }
 
   render() {
+   // TODO generalize this with a constant mapping, maybe from the themer or redux state
+   let activeIndex = -1;
+   if(this.props.theme === "byzantine"){
+       activeIndex = 0;
+   }
+
+
     return (
       <div id="desktop-nav" className={styles.desktopNav}>
-          <MainLogo/>
-          <MiniNav/>
-          <MainMenu data={this.props.mainMenuData}/>
+        <MainLogo/>
+        <MiniNav/>
+        <MainMenu data={this.props.mainMenuData} activeIndex={activeIndex}/>
       </div>
     );
   }
 }
 
 DesktopNav.defaultProps = {
-  mainMenuData: null,
+  mainMenuData: null
 };
 
 function mapStateToProps(reduxState) {
-  return {mainMenuData: reduxState.contentReducer["mainMenu"]};
+  return {mainMenuData: reduxState.contentReducer["mainMenu"], theme: reduxState.display.theme};
 }
 
 function mapDispatchToProps(dispatch) {

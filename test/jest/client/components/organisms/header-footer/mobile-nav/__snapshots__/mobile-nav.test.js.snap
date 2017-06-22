@@ -113,6 +113,9 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         >
           Starting & Managing
         </a>
+        <div
+          className="triangle triangleWhite"
+        />
       </span>
     </div>
     <div
@@ -132,6 +135,9 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         >
           Loans & Grants
         </a>
+        <div
+          className="triangle triangleWhite"
+        />
       </span>
     </div>
     <div
@@ -151,6 +157,9 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         >
           Contracting
         </a>
+        <div
+          className="triangle triangleWhite"
+        />
       </span>
     </div>
     <div
@@ -170,6 +179,9 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         >
           Learning Center
         </a>
+        <div
+          className="triangle triangleWhite"
+        />
       </span>
     </div>
     <div
@@ -189,6 +201,9 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         >
           Local Assistance
         </a>
+        <div
+          className="triangle triangleWhite"
+        />
       </span>
     </div>
     <div
@@ -208,6 +223,9 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         >
           About Us
         </a>
+        <div
+          className="triangle triangleWhite"
+        />
       </span>
     </div>
     <div
