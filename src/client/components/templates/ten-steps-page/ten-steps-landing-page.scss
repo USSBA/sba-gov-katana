@@ -1,0 +1,43 @@
+.titleSection {
+  color: #fff;
+  height: calc(100vh - 115px);
+  padding-left: 80px;
+  position: relative;
+  background-color: $byzantine;
+  background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
+  background-position: 90% 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  h1 {
+    @include font-size($extra-large-title-font-sizes);
+    margin-bottom: 50px;
+  }
+  p {
+    @include font-size($h4-font-sizes);
+    font-family: $serif-font;
+  }
+}
+
+.titleSectionText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 900px;
+}
+
+.scrollButton {
+  background-color: #fff;
+  bottom: 0;
+  font-size: 36px;
+  height: 50px;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 68px;
+  &:hover{
+    background-color: $byzantine-lightest;
+    color: $byzantine-darkest;
+  }
+}
+
