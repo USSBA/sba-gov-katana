@@ -118,8 +118,9 @@ class TenStepsLandingPage extends React.Component {
                     </div>
                     <a className={styles.scrollButton} href="#"><i className={" fa fa-angle-down"}></i></a>
                 </div>
-            <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
-                {tenstepSectionItems}
+                <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
+                    {tenstepSectionItems}
+                </div>
             </div>
         );
     }
