@@ -1,0 +1,147 @@
+.navMenu {
+	display: block;
+	z-index: 9999999999 !important;
+	background-color: $byzantine;
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	@include grid-media($sba-grid-large){
+		display: none;
+	}
+}
+
+.navMenuOpen {
+	composes: navMenu;
+	-webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
+	-ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
+	-o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
+	animation: slideLeft 1s ease-out;
+
+	@keyframes slideLeft {
+		from {
+			margin-left: 2000px;
+			margin-right: -4000px;
+			opacity: 1;
+		}
+		to {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+	}
+}
+
+.navMenuClose {
+	composes: navMenu;
+	-webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
+	-ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
+	-o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
+	animation: slideRight 1s ease-in forwards;
+
+	@keyframes slideRight {
+		0% {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		99% {
+			margin-left: 2000px;
+			margin-right: -4000px;
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+}
+
+.navMenuInitial {
+	display: none;
+}
+
+.navHeader {
+		display: block;
+		position: relative;
+		height: 70px;
+}
+
+.navTitleContainer {
+	display: block;
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+  left: 100px;
+}
+
+.navLargeTitle {
+	font-weight: 900;
+	color: $base-font-color;
+	text-transform: uppercase;
+	font-size: 34px;
+	margin: 0px;
+	color: white;
+}
+
+.navSmallTitle {
+	font-weight: bold;
+	color: $base-font-color;
+	text-transform: uppercase;
+	font-size: 20px;
+	color: white;
+	margin: 0px;
+}
+
+.navIcon {
+	position: absolute;
+	top: 50%;
+  transform: translateY(-50%);
+	height: 40px;
+	width: 40px;
+	left: 50px;
+
+}
+
+.navRightArrow {
+	@include grid-media($sba-grid-small){
+		display: none !important;
+	}
+	@include grid-media($sba-grid-medium){
+		display: block !important;
+		font-size: 30px !important;
+		line-height: 30px !important;
+		color: white;
+		position: absolute;
+		top: 50%;
+  	transform: translateY(-50%);
+  	right: 20px;
+	}
+}
+
+.navLeftArrow {
+		font-size: 30px !important;
+		line-height: 30px !important;
+		color: white;
+		position: absolute;
+		top: 50%;
+  	transform: translateY(-50%);
+  	left: 20px;
+}
+
+.navLinkContainer {
+	//composes: linkContainer;
+	cursor: pointer;
+	padding: 10px 35px 10px 15px;
+}
+
+.navLink {
+	//composes: link;
+}
+
+.navTopLine {
+	//composes: topLine;
+	margin: 0px;
+	display: block;
+
+}

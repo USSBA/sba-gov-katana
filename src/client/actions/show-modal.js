@@ -35,3 +35,13 @@ export function closeSbaNewsletter() {
     type: "CLOSE_MODAL"
   };
 }
+
+export function showMobileNav(menuData) {
+  return {
+    type: "SHOW_MODAL",
+    modalType: "MOBILE_NAV",
+    modalProps: {
+      menuData: menuData
+    }
+  };
+}

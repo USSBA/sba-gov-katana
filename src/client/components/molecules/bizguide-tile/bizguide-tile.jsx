@@ -3,6 +3,9 @@ import s from "./bizguide-tile.scss"
 import icon from "../../../../../public/assets/svg/business-guide-icon-color-plan.svg"
 import backgroundLines from "../../../../../public/assets/svg/plan-background-lines.png"
 import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
+import * as ModalActions from '../../../actions/show-modal.js'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class BizguideTile extends React.Component {
     constructor(props) {
@@ -23,8 +26,8 @@ class BizguideTile extends React.Component {
   }
 
   _openNavMenu(){
-    if(window.innerWidth <= 1080 && this.state.navMenuClassname === "initial" || this.state.navMenuClassname === "close") {
-      this.setState({navMenuClassname: "open"})
+    if(window.innerWidth <= 1080) {
+      this.props.actions.showMobileNav(this.props.data)
     }
   }
 
@@ -161,5 +164,15 @@ const NavLink = (props) =>
     <i className={s.navRightArrow + " fa fa-angle-right"}></i>
   </div>
 
-export default BizguideTile;
+
+function mapReduxStateToProps(reduxState) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ModalActions, dispatch)
+  }
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(BizguideTile);
 
