@@ -106,11 +106,11 @@ class TenStepsLandingPage extends React.Component {
                 text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready."
             }
         ];      const tenstepSectionItems = titleBoxDataArray.map((item, index)=>{
-            return(<TenStepsSection key={index} sectionItem={item}/>);
+            return(<TenStepsSection index={index} key={index} sectionItem={item}/>);
         });
 
         return (
-            <div className={styles.tenStepsLandingPage}>
+            <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
                 {tenstepSectionItems}
             </div>
         );
