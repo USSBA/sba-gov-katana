@@ -2,72 +2,89 @@
 .leftAlignedBoxSection,
 .rightAlignedSolidBoxSection,
 .rightAlignedBoxSection {
-  height: 100vh;
+  @include grid-container;
   border: 1px solid red;
+  height: 100vh;
+  overflow: hidden;
   position: relative;
 }
-
 
 .leftAlignedSolidBoxSection img,
 .leftAlignedBoxSection img,
 .rightAlignedSolidBoxSection img,
+.rightAlignedBoxSection img {
+  position: absolute;
+  top: 5vh;
+}
+
 .leftAlignedSolidBoxSection .titleBox,
 .leftAlignedBoxSection .titleBox,
-.rightAlignedSolidBoxSection .titleBox {
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 10vh;
 }
 
 .leftAlignedSolidBoxSection img,
-.rightAlignedSolidBoxSection .titleBox{
-  @include grid-media($sba-grid-small) {
-    @include grid-collapse($sba-grid-small);
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
+.leftAlignedBoxSection img,
+.rightAlignedSolidBoxSection img,
+.rightAlignedBoxSection img,
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox,
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
   @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.leftAlignedSolidBoxSection img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+    @include grid-shift(2);
+  }
+}
+
+.leftAlignedBoxSection img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(8,$desktop-0gutter);
+    @include grid-shift(4, $desktop-0gutter);
+  }
+}
+
+.rightAlignedSolidBoxSection img,
+.rightAlignedBoxSection img {
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+  }
+}
+
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox,
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-small){
+    @include grid-column(6)
+  }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12)
+  }
+}
+
+.rightAlignedSolidBoxSection .titleBox,
+.rightAlignedBoxSection .titleBox {
+  @include grid-media($sba-grid-large){
     @include grid-column(7);
     @include grid-shift(5);
   }
 }
 
-.leftAlignedBoxSection img{
-  @include grid-media($sba-grid-small) {
-
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(7,$desktop-0gutter);
-    @include grid-shift(5, $desktop-0gutter);
-  }
-}
-
-.rightAlignedSolidBoxSection img,
 .leftAlignedSolidBoxSection .titleBox,
 .leftAlignedBoxSection .titleBox {
-  @include grid-media($sba-grid-small) {
-
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-  @include grid-media($sba-grid-large) {
+  @include grid-media($sba-grid-large){
     @include grid-column(7);
   }
 }
-
-// .rightAlignedSolidBoxSection .titleBox,
-// {
-//   @include grid-column(7);
-//   @include grid-shift(5);
-// }
-
-// .leftAlignedSolidBoxSection .titleBox,
-// .leftAlignedBoxSection .titleBox {
-//   @include grid-column(7);
-// }
 
