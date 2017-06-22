@@ -5,32 +5,69 @@
   height: 100vh;
   border: 1px solid red;
   position: relative;
-  padding-top: 25vh;
+}
+
+
+.leftAlignedSolidBoxSection img,
+.leftAlignedBoxSection img,
+.rightAlignedSolidBoxSection img,
+.leftAlignedSolidBoxSection .titleBox,
+.leftAlignedBoxSection .titleBox,
+.rightAlignedSolidBoxSection .titleBox {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .leftAlignedSolidBoxSection img,
+.rightAlignedSolidBoxSection .titleBox{
+  @include grid-media($sba-grid-small) {
+    @include grid-collapse($sba-grid-small);
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7);
+    @include grid-shift(5);
+  }
+}
+
 .leftAlignedBoxSection img{
-  @include grid-column(7);
-  @include grid-push(5);
+  @include grid-media($sba-grid-small) {
+
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7,$desktop-0gutter);
+    @include grid-shift(5, $desktop-0gutter);
+  }
 }
 
 .rightAlignedSolidBoxSection img,
-.rightAlignedBoxSection img {
-  @include grid-column(7);
-}
-
-.rightAlignedSolidBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox {
-  @include grid-column(7);
-  @include grid-push(5);
-  position: absolute;
-  margin-top: 2vh;
-}
-
 .leftAlignedSolidBoxSection .titleBox,
 .leftAlignedBoxSection .titleBox {
-  @include grid-column(7);
-  position: absolute;
-  margin-top: 2vh;
+  @include grid-media($sba-grid-small) {
+
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7);
+  }
 }
+
+// .rightAlignedSolidBoxSection .titleBox,
+// {
+//   @include grid-column(7);
+//   @include grid-shift(5);
+// }
+
+// .leftAlignedSolidBoxSection .titleBox,
+// .leftAlignedBoxSection .titleBox {
+//   @include grid-column(7);
+// }
 

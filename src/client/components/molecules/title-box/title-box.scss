@@ -1,13 +1,3 @@
-.sectionNum {
-  @include font-size($h1-font-sizes);
-  font-weight: 900;
-  border-bottom: 4px solid;
-}
-
-h2.sectionTitle {
-  @include font-size($h1-font-sizes);
-}
-
 .solidBox {
   background-color: $byzantine;
   border-color: #fff;
@@ -15,5 +5,17 @@ h2.sectionTitle {
   padding: 15px 50px 50px;
 }
 
-// @include theme(byzantine, '.solidBox', $byzantine, $byzantine, $byzantine);
+.sectionNum {
+  @include font-size($h1-font-sizes);
+  font-weight: 900;
+  border-bottom: 4px solid;
+}
+
+.transparentBox .sectionNum {
+  color: $byzantine;
+}
+
+h2.sectionTitle {
+  @include font-size($h1-font-sizes);
+}
 
