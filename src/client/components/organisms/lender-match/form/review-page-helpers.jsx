@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LocationChangeActions from '../../../../actions/location-change.js';
-import { Button } from 'react-bootstrap';
 
 
 class ReviewSection extends React.Component {
