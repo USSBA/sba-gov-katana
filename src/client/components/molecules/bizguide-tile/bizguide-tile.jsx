@@ -8,12 +8,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 class BizguideTile extends React.Component {
-    constructor(props) {
-      super()
-      this.state = {
-        navMenuClassname: "initial"
-      }
-    }
 
   _formatLargeTitle(){
     return this.props.data.title.split(" ")[0]
