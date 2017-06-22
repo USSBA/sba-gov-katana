@@ -8,7 +8,7 @@ class MobileNav extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      navMenuClassname: "initial"
+      navMenuClassname: ""
     }
   }
 
@@ -22,6 +22,14 @@ class MobileNav extends React.Component {
     return arr.join(" ")
   }
 
+  _handleBackBtn(){
+    if(this.props.backUrl !== false){
+      document.location = this.props.backUrl
+    } else {
+      this.props.actions.closeMobileNav()
+    }
+  }
+
   _handleClick(linkObject){
     document.location = linkObject.fullUrl
   }
@@ -29,7 +37,7 @@ class MobileNav extends React.Component {
   render() {
     return(
       <div className={s.navMenu}>
-        <div className={s.navHeader} onClick={() => {this.props.actions.closeMobileNav()}}>
+        <div className={s.navHeader} onClick={() => {this._handleBackBtn()}}>
           <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
           <img className={s.navIcon} src={this.props.icon} alt=""/>
           <div className={s.navTitleContainer}>
