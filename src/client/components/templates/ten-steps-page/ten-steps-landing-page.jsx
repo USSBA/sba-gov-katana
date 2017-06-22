@@ -36,6 +36,16 @@ class TenStepsLandingPage extends React.Component {
                 text: "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need."
             },
             {
+                sectionNum: 4,
+                title: "Pick your business location.",
+                leftAlignBox: false,
+                solidBox: true,
+                image: "assets/images/tensteps/location.jpg",
+                imageAlt: "Pick your business location.",
+                link: "/starting-business/how-start-business/10-steps-starting-business",
+                text: "Your business location is one of the most important decisions you'll make. Whether you're setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue."
+            },
+            {
                 sectionNum: 6,
                 title: "Choose your business name.",
                 leftAlignBox: true,
@@ -44,6 +54,16 @@ class TenStepsLandingPage extends React.Component {
                 imageAlt: "Choose your business name.",
                 link: "/starting-business/how-start-business/10-steps-starting-business",
                 text: "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else."
+            },
+            {
+                sectionNum: 10,
+                title: "Open a business bank account.",
+                leftAlignBox: false,
+                solidBox: true,
+                image: "assets/images/tensteps/bank.png",
+                imageAlt: "Open a business bank account.",
+                link: "/starting-business/how-start-business/10-steps-starting-business",
+                text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it's easy to set one up if you have the right registrations and paperwork ready."
             }
         ];
 
