@@ -12,50 +12,50 @@
 	}
 }
 
-// .navMenuOpen {
-// 	composes: navMenu;
-// 	-webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
-// 	-moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
-// 	-ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
-// 	-o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
-// 	animation: slideLeft 1s ease-out;
+.navMenuOpen {
+	composes: navMenu;
+	-webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
+	-ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
+	-o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
+	animation: slideLeft 1s ease-out;
 
-// 	@keyframes slideLeft {
-// 		from {
-// 			margin-left: 2000px;
-// 			margin-right: -4000px;
-// 			opacity: 1;
-// 		}
-// 		to {
-// 			margin-left: 0px;
-// 			margin-right: 0px;
-// 		}
-// 	}
-// }
+	@keyframes slideLeft {
+		from {
+			margin-left: 2000px;
+			margin-right: -4000px;
+			opacity: 1;
+		}
+		to {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+	}
+}
 
-// .navMenuClose {
-// 	composes: navMenu;
-// 	-webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
-// 	-moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
-// 	-ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
-// 	-o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
-// 	animation: slideRight 1s ease-in forwards;
+.navMenuClose {
+	composes: navMenu;
+	-webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
+	-moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
+	-ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
+	-o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
+	animation: slideRight 1s ease-in forwards;
 
-// 	@keyframes slideRight {
-// 		0% {
-// 			margin-left: 0px;
-// 			margin-right: 0px;
-// 		}
-// 		99% {
-// 			margin-left: 2000px;
-// 			margin-right: -4000px;
-// 			opacity: 1;
-// 		}
-// 		100% {
-// 			opacity: 0;
-// 		}
-// 	}
-// }
+	@keyframes slideRight {
+		0% {
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+		99% {
+			margin-left: 2000px;
+			margin-right: -4000px;
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+}
 
 // .navMenuInitial {
 // 	display: none;
@@ -103,21 +103,21 @@
 
 }
 
-.navRightArrow {
-	@include grid-media($sba-grid-small){
-		display: none !important;
-	}
-	@include grid-media($sba-grid-medium){
-		display: block !important;
-		font-size: 30px !important;
-		line-height: 30px !important;
-		color: white;
-		position: absolute;
-		top: 50%;
-  	transform: translateY(-50%);
-  	right: 20px;
-	}
-}
+// .navRightArrow {
+// 	@include grid-media($sba-grid-small){
+// 		display: none !important;
+// 	}
+// 	@include grid-media($sba-grid-medium){
+// 		display: block !important;
+// 		font-size: 30px !important;
+// 		line-height: 30px !important;
+// 		color: white;
+// 		position: absolute;
+// 		top: 50%;
+//   	transform: translateY(-50%);
+//   	right: 20px;
+// 	}
+// }
 
 .navLeftArrow {
 		font-size: 30px !important;

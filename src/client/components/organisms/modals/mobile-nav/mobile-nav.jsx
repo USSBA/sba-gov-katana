@@ -8,7 +8,7 @@ class MobileNav extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      navMenuClassname: ""
+      navMenu: "open"
     }
   }
 
@@ -26,17 +26,29 @@ class MobileNav extends React.Component {
     if(this.props.backUrl !== false){
       document.location = this.props.backUrl
     } else {
-      this.props.actions.closeMobileNav()
+      this.setState({navMenu: "close"}, 
+        setTimeout(() => {
+          this.props.actions.closeMobileNav()
+        }, 1000)
+      )
     }
   }
 
   _handleClick(linkObject){
     document.location = linkObject.fullUrl
   }
+
+  _navMenuClassname(){
+    if(this.state.navMenu === "open"){
+      return s.navMenuOpen
+    } else if(this.state.navMenu === "close"){
+      return s.navMenuClose
+    }
+  }
   
   render() {
     return(
-      <div className={s.navMenu}>
+      <div className={this._navMenuClassname()}>
         <div className={s.navHeader} onClick={() => {this._handleBackBtn()}}>
           <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
           <img className={s.navIcon} src={this.props.icon} alt=""/>
@@ -63,7 +75,7 @@ const NavLink = (props) =>
       href={props.link.fullUrl}>
       {props.link.title}
     </a>
-    <i className={s.navRightArrow + " fa fa-angle-right"}></i>
+    {/*<i className={s.navRightArrow + " fa fa-angle-right"}></i>*/}
   </div>
 
 function mapReduxStateToProps(reduxState) {
