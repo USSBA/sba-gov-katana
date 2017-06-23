@@ -2,28 +2,21 @@
 
 .tile {
 	position: relative;
-	background-color: $grey-lighter;
 	@include grid-media($sba-grid-small){
 		@include grid-column(6, $sba-grid-small)
-		position: relative;
 		margin-top: 20px;
-		padding: 27px;
 	}
 	@include grid-media($sba-grid-medium){
 		@include grid-column(6, $sba-grid-medium)
-		position: relative;
+		height: 450px;
 		margin-top: 20px;
-		padding: 27px;
 	}
 	@include grid-media($sba-grid-large){
 		@include grid-column(3, $sba-grid-large)
 		height: 577px;
 		margin-top: 10px;
 		margin-bottom: 30px;
-		padding: 0px;
-		overflow: hidden;
 	}
-
 }
 
 .backgroundLines {
@@ -38,18 +31,31 @@
 	}
 }
 
-//SPECIFIC STYLES FOR NORMAL TILE
+//LINK FOR DISPLAYING MENU ON TAB
 
-.tile:hover {
-	//FLIPS BETWEEN HOVER TILE AND NORMAL TILE (ONLY TABLET+)
+.tabDisplayMenu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	cursor: default;
+	opacity: 0;
+}
+
+//SPECIFIC STYLES FOR STATIC TILE
+
+.tileNormal {
+	height: 100%;
+	width: 100%;
+	background-color: $grey-lighter;
+	@include grid-media($sba-grid-small){
+		padding: 27px;
+	}
+	@include grid-media($sba-grid-medium){
+		padding-top: 71px;
+	}
 	@include grid-media($sba-grid-large){
-		background-color: $byzantine;
-		.tileNormal {
-			display: none;
-		}
-		.tileHover {
-			display: block;
-		}
+		padding-top: 133px;
 	}
 }
 
@@ -61,18 +67,16 @@
 	  margin-right: 15px;
 	}
 	@include grid-media($sba-grid-medium){
-		margin: auto;
-		margin-top: 71px;
 		height: 105px;
 	  width: 105px;
-		display: block;
+	  display: block;
+		margin: auto;
 	}
 	@include grid-media($sba-grid-large){
-		margin: auto;
-		margin-top: 133px;
 		height: 105px;
 	  width: 105px;
-		display: block;
+	  display: block;
+	  margin: auto;
 	}
 }
 
@@ -167,17 +171,14 @@
 //SPECIFIC STYLES FOR HOVER TILE
 
 .tileHover {
-	display: none;
-}
-
-.iconHover {
-	composes: icon;
-	margin-top: 30px;
+	height: 100%;
+	width: 100%;
+	background-color: $byzantine;
+	padding-top: 20px;
 }
 
 .largeTitleHover {
 	composes: largeTitle;
-	margin-top: 20px;
 	color: white;
 }
 

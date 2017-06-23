@@ -8,6 +8,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 class BizguideTile extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      displayHoverMenu: false
+    }
+  }
 
   _formatLargeTitle(){
     return this.props.data.title.split(" ")[0]
@@ -25,22 +31,55 @@ class BizguideTile extends React.Component {
     }
   }
 
+  _toggleTileClassOnTab(){
+    if(this.state.displayMenuOnFocus === false){
+      return ""
+    } else if(this.state.displayMenuOnFocus === true){
+      return s.tabChangeTileBackground
+    }
+  }
+
+  _mouseEnterTile(){
+    if(window.innerWidth >= 1080) {
+      this.setState({displayHoverMenu: true})
+    }
+  }
+
+  _mouseExitTile(){
+    if(window.innerWidth >= 1080) {
+      this.setState({displayHoverMenu: false})
+    }
+  }
+
+  _tabFocusTile(){
+    this.setState({displayHoverMenu: !this.state.displayHoverMenu})
+  }
+
   render() {
       return (
-          <div id={this.props.iD} className={s.tile} onClick={() => {this._openNavMenu()}}>
-            <BizguideTileHover 
-              data={this.props.data} 
-              iD={this.props.iD + '-hover'}
-              largeTitle={this._formatLargeTitle()} 
-              smallTitle={this._formatSmallTitle()}
-            />
-            <BizguideTileStatic 
-              data={this.props.data} 
-              iD={this.props.iD + '-static'}
-              icon={this.props.icon} 
-              largeTitle={this._formatLargeTitle()} 
-              smallTitle={this._formatSmallTitle()}
-            />
+          <div id={this.props.iD} 
+              className={s.tile} 
+              onClick={() => {this._openNavMenu()}}
+              onMouseEnter={() => {this._mouseEnterTile()}}
+              onMouseLeave={() => {this._mouseExitTile()}}
+           >
+            <a className={s.tabDisplayMenu} href="" onFocus={() => {this._tabFocusTile()}}>display menu</a>
+            {this.state.displayHoverMenu ? (
+              <BizguideTileHover 
+                data={this.props.data} 
+                iD={this.props.iD + '-hover'}
+                largeTitle={this._formatLargeTitle()} 
+                smallTitle={this._formatSmallTitle()}
+              /> 
+            ) : (
+              <BizguideTileStatic 
+                data={this.props.data} 
+                iD={this.props.iD + '-static'}
+                icon={this.props.icon} 
+                largeTitle={this._formatLargeTitle()} 
+                smallTitle={this._formatSmallTitle()}
+              />
+            )}
             <img className={s.backgroundLines} src={this.props.backgroundLines} alt=""/>
           </div>
       );
