@@ -1,7 +1,7 @@
 .titleSection {
   color: #fff;
   height: calc(100vh - 115px);
-  padding-left: 80px;
+  // padding-left: 80px;
   position: relative;
   background-color: $byzantine;
   background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
@@ -10,10 +10,10 @@
   background-size: contain;
   h1 {
     @include font-size($extra-large-title-font-sizes);
-    margin-bottom: 50px;
+    margin-bottom: .4em;
   }
   p {
-    @include font-size($h4-font-sizes);
+    @include font-size($h5-font-sizes);
     font-family: $serif-font;
   }
 }
@@ -23,6 +23,15 @@
   top: 50%;
   transform: translateY(-50%);
   max-width: 900px;
+  @include grid-media($sba-grid-small){
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large){
+    margin-left: 80px;
+  }
 }
 
 .scrollButton {
@@ -45,15 +54,31 @@
 @include theme-hover(byzantine, '.backLink', null, $byzantine-lightest, null);
 
 a.backLink {
-  position: relative;
+  position: absolute;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  @include grid-media($sba-grid-small){
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12);
+  }
+  text-decoration: none;
+  top: 20px;
+  &:hover {
+    text-decoration: none;
+    // border-bottom: 1px solid $byzantine-lightest;
+  }
 }
 
-.backLink:before {
-  content: "\f104";
-  font-family: FontAwesome;
-  font-size: 30px;
-  margin-right: 15px;
-  position: absolute;
-  top: 12px;
-  left: 30px;
+a.backLink:before {
+    content: "\F104";
+    font-family: FontAwesome;
+    font-size: 30px;
+    vertical-align: sub;
+    margin-right: 15px;
+      &:hover {
+    text-decoration: none;
+  }
 }
