@@ -5,7 +5,6 @@
   @include grid-container;
   // border: 1px solid red;
   height: 100vh;
-  overflow: hidden;
   position: relative;
   width: 100%;
 }
@@ -16,15 +15,16 @@
 .rightAlignedBoxSection img {
   position: absolute;
   top: 5vh;
+  max-height: 99vh;
 }
 
-.leftAlignedSolidBoxSection .titleBox,
-.leftAlignedBoxSection .titleBox,
-.rightAlignedSolidBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox {
-  position: absolute;
-  bottom: 10vh;
-}
+// .leftAlignedSolidBoxSection .titleBox,
+// .leftAlignedBoxSection .titleBox,
+// .rightAlignedSolidBoxSection .titleBox,
+// .rightAlignedBoxSection .titleBox {
+//   position: absolute;
+//   bottom: 10vh;
+// }
 
 .leftAlignedSolidBoxSection img,
 .rightAlignedSolidBoxSection img,

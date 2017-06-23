@@ -1,7 +1,6 @@
 .titleSection {
   color: #fff;
   height: calc(100vh - 115px);
-  // padding-left: 80px;
   position: relative;
   background-color: $byzantine;
   background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
@@ -55,21 +54,19 @@
 
 a.backLink {
   position: absolute;
-  display: inline-block;
   font-size: 18px;
   font-weight: 300;
   left: 0;
   text-decoration: none;
   top: 20px;
   @include grid-media($sba-grid-small){
-    @include grid-column(6);
+    padding-left: 20px;
   }
   @include grid-media($sba-grid-medium){
-    @include grid-column(12);
+    padding-left: 30px;
   }
   &:hover {
     text-decoration: none;
-    // border-bottom: 1px solid $byzantine-lightest;
   }
 }
 
