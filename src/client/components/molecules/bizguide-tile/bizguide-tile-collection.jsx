@@ -9,6 +9,7 @@ import backgroundPlan from "../../../../../public/assets/svg/plan-background-lin
 import backgroundLaunch from "../../../../../public/assets/svg/launch-background-lines.png"
 import backgroundManage from "../../../../../public/assets/svg/manage-background-lines.png"
 import backgroundGrow from "../../../../../public/assets/svg/grow-background-lines.png"
+<<<<<<< HEAD
 import iconPlan from "../../../../../public/assets/images/business-guide/business-guide-icon-color-plan.png"
 import iconLaunch from "../../../../../public/assets/images/business-guide/business-guide-icon-color-launch.png"
 import iconManage from "../../../../../public/assets/images/business-guide/business-guide-icon-color-manage.png"
@@ -17,6 +18,12 @@ import iconGrow from "../../../../../public/assets/images/business-guide/busines
 // import iconLaunch from "!!file-loader?name=img/img-[hash:6].[ext]!../../../../../public/assets/svg/business-guide-icon-color-launch.svg"
 // import iconManage from "!!file-loader?name=img/img-[hash:6].[ext]!../../../../../public/assets/svg/business-guide-icon-color-manage.svg"
 // import iconGrow from "!!file-loader?name=img/img-[hash:6].[ext]!../../../../../public/assets/svg/business-guide-icon-color-grow.svg"
+=======
+import iconPlan from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Plan_color.png"
+import iconLaunch from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Launch_color.png"
+import iconManage from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Manage_color.png"
+import iconGrow from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Grow_color.png"
+>>>>>>> DT-720 updates the png assets with better assets from Brianna
 import iconWhitePlan from "../../../../../public/assets/svg/business-guide-icon-white-plan.svg"
 import iconWhiteLaunch from "../../../../../public/assets/svg/business-guide-icon-white-launch.svg"
 import iconWhiteManage from "../../../../../public/assets/svg/business-guide-icon-white-manage.svg"
