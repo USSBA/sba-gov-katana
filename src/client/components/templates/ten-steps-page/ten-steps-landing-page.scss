@@ -58,14 +58,15 @@ a.backLink {
   display: inline-block;
   font-size: 18px;
   font-weight: 300;
+  left: 0;
+  text-decoration: none;
+  top: 20px;
   @include grid-media($sba-grid-small){
     @include grid-column(6);
   }
   @include grid-media($sba-grid-medium){
     @include grid-column(12);
   }
-  text-decoration: none;
-  top: 20px;
   &:hover {
     text-decoration: none;
     // border-bottom: 1px solid $byzantine-lightest;
