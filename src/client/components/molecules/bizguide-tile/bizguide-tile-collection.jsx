@@ -9,10 +9,10 @@ import backgroundPlan from "../../../../../public/assets/svg/plan-background-lin
 import backgroundLaunch from "../../../../../public/assets/svg/launch-background-lines.png"
 import backgroundManage from "../../../../../public/assets/svg/manage-background-lines.png"
 import backgroundGrow from "../../../../../public/assets/svg/grow-background-lines.png"
-import iconPlan from "../../../../../public/assets/svg/business-guide-icon-color-plan.svg"
-import iconLaunch from "../../../../../public/assets/svg/business-guide-icon-color-launch.svg"
-import iconManage from "../../../../../public/assets/svg/business-guide-icon-color-manage.svg"
-import iconGrow from "../../../../../public/assets/svg/business-guide-icon-color-grow.svg"
+import iconPlan from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Plan_color.png"
+import iconLaunch from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Launch_color.png"
+import iconManage from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Manage_color.png"
+import iconGrow from "../../../../../public/assets/images/business-guide/Business_Guide_Icon_Grow_color.png"
 import iconWhitePlan from "../../../../../public/assets/svg/business-guide-icon-white-plan.svg"
 import iconWhiteLaunch from "../../../../../public/assets/svg/business-guide-icon-white-launch.svg"
 import iconWhiteManage from "../../../../../public/assets/svg/business-guide-icon-white-manage.svg"
@@ -50,7 +50,7 @@ class BizguideTileCollection extends React.Component {
 
       return (
         <div>
-          { this.props.sectionData.children ? 
+          { this.props.sectionData.children ?
               this.props.sectionData.children.map((object, index) => {
                 return <BizguideTile iD={'tile-' + index} key={index} data={object} icon={assetArr[index].icon} backgroundLines={assetArr[index].background} iconWhite={assetArr[index].iconWhite}/>
               }) : null
