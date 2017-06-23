@@ -21,6 +21,22 @@
   }
 }
 
+.stepSection:first-of-type img,
+.stepSection:nth-of-type(8n) img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(7,$desktop-0gutter);
+    @include grid-shift(5, $desktop-0gutter);
+    top: 65%;
+  }
+}
+
+.stepSection:last-of-type img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(4,$desktop-0gutter);
+    @include grid-shift(7, $desktop-0gutter);
+  }
+}
+
 .leftAligned img {
   right: 0;
   @include grid-media($sba-grid-small){
@@ -34,6 +50,9 @@
     bottom: 2.5%;
     left: inherit;
     max-height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
@@ -44,6 +63,39 @@
   }
   @include grid-media($sba-grid-medium){
     top: 2.5%;
+  }
+}
+
+.leftAlignedHero img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+    @include grid-shift(2);
+  }
+}
+
+.leftAligned img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(7,$desktop-0gutter);
+    @include grid-shift(5, $desktop-0gutter);
+  }
+}
+
+.rightAlignedHero img,
+.rightAligned img {
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+  }
+}
+
+.leftAlignedHero img,
+.rightAlignedHero img,
+.leftAlignedHero .titleBox,
+.rightAlignedHero .titleBox {
+  @include grid-media($sba-grid-large) {
+    bottom: inherit;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
@@ -68,6 +120,12 @@
   @include grid-media($sba-grid-medium){
     top: 2.5%;
   }
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    left: 50px;
+    top: 20%;
+    transform: translateY(-20%);
+  }
 }
 
 .leftAlignedHero .titleBox,
@@ -77,63 +135,6 @@
   }
   @include grid-media($sba-grid-medium){
     bottom: 2.5%;
-  }
-}
-
-.leftAlignedHero img,
-.rightAlignedHero img,
-.leftAlignedHero .titleBox,
-.rightAlignedHero .titleBox {
-  @include grid-media($sba-grid-large) {
-    bottom: inherit;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
-.leftAligned img {
-  @include grid-media($sba-grid-large) {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
-.leftAligned .titleBox {
-  @include grid-media($sba-grid-large) {
-    position: absolute;
-    left: 50px;
-    top: 20%;
-    transform: translateY(-20%);
-  }
-}
-
-.leftAlignedHero img{
-  @include grid-media($sba-grid-large){
-    @include grid-column(10);
-    @include grid-shift(2);
-  }
-}
-
-.leftAligned img{
-  @include grid-media($sba-grid-large){
-    @include grid-column(7,$desktop-0gutter);
-    @include grid-shift(5, $desktop-0gutter);
-  }
-}
-
-.leftAligned:last-of-type img{
-  @include grid-media($sba-grid-large){
-    @include grid-column(4,$desktop-0gutter);
-    @include grid-shift(7, $desktop-0gutter);
-  }
-}
-
-.rightAlignedHero img,
-.rightAligned img {
-  @include grid-media($sba-grid-large){
-    @include grid-column(10);
   }
 }
 
