@@ -116,7 +116,8 @@ class TenStepsLandingPage extends React.Component {
                     <h1>10 steps to start your business.</h1>
                     <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>
                     </div>
-                    <a className={styles.scrollButton} href="#"><i className={" fa fa-angle-down"}></i></a>
+                    <a className={styles.scrollButton} href="#step-01"><i className={" fa fa-angle-down"}></i></a>
+                    <a className={styles.backLink} href="#">Back to all topics</a>
                 </div>
                 <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
                     {tenstepSectionItems}

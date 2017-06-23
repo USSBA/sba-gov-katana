@@ -48,7 +48,7 @@ export function showMobileNav(menuData, icon, backUrl) {
   };
 }
 
-export function closeMobileNav(){
+export function closeMobileNav() {
   return {
     type: "CLOSE_MODAL"
   };
