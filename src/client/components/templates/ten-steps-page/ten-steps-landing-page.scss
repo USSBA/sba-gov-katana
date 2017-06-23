@@ -1,0 +1,84 @@
+.titleSection {
+  color: #fff;
+  height: calc(100vh - 115px);
+  // padding-left: 80px;
+  position: relative;
+  background-color: $byzantine;
+  background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
+  background-position: 90% 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  h1 {
+    @include font-size($extra-large-title-font-sizes);
+    margin-bottom: .4em;
+  }
+  p {
+    @include font-size($h5-font-sizes);
+    font-family: $serif-font;
+  }
+}
+
+.titleSectionText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 900px;
+  @include grid-media($sba-grid-small){
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large){
+    margin-left: 80px;
+  }
+}
+
+.scrollButton {
+  background-color: #fff;
+  bottom: 0;
+  font-size: 36px;
+  height: 50px;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: 68px;
+  &:hover{
+    background-color: $byzantine-lightest;
+    color: $byzantine-darkest;
+  }
+}
+
+@include theme(byzantine, '.backLink', null, #fff, null);
+@include theme-hover(byzantine, '.backLink', null, $byzantine-lightest, null);
+
+a.backLink {
+  position: absolute;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  @include grid-media($sba-grid-small){
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium){
+    @include grid-column(12);
+  }
+  text-decoration: none;
+  top: 20px;
+  &:hover {
+    text-decoration: none;
+    // border-bottom: 1px solid $byzantine-lightest;
+  }
+}
+
+a.backLink:before {
+    content: "\F104";
+    font-family: FontAwesome;
+    font-size: 30px;
+    vertical-align: sub;
+    margin-right: 15px;
+      &:hover {
+    text-decoration: none;
+  }
+}

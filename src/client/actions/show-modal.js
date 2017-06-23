@@ -36,18 +36,19 @@ export function closeSbaNewsletter() {
   };
 }
 
-export function showMobileNav(menuData, icon) {
+export function showMobileNav(menuData, icon, backUrl) {
   return {
     type: "SHOW_MODAL",
     modalType: "MOBILE_NAV",
     modalProps: {
       menuData: menuData,
-      icon: icon
+      icon: icon,
+      backUrl: backUrl
     }
   };
 }
 
-export function closeMobileNav(){
+export function closeMobileNav() {
   return {
     type: "CLOSE_MODAL"
   };

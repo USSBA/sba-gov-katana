@@ -5,6 +5,9 @@ import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
 import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
 import whiteIconManage from '../../atoms/icons/white-manage.jsx';
 import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
+import * as ModalActions from '../../../actions/show-modal.js'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 class SectionNav extends React.Component {
 
@@ -54,15 +57,7 @@ class SectionNav extends React.Component {
 
     return (
         this.props.displayMobileNav ? (
-            <div id="article-navigation-mobile" className={styles.mobileSectionNav}>
-                <a id="article-navigation-back-button-mobile" className={styles.mobileBackLink} href={parentUrl}>
-                    <img id="article-navigation-icon-mobile" src={sectionNavIcon} alt=""/>
-                    <span id="article-navigation-title-mobile"><h2>{firstWord}</h2>
-                        <h4>{remainingTitle}</h4>
-                    </span>
-                </a>
-                <ul>{navLinks}</ul>
-            </div>
+            this.props.actions.showMobileNav(_.nth(this.props.lineage, 1), sectionNavIcon, "/business-guide")
         ) : (
             <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
                 <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
@@ -78,4 +73,13 @@ class SectionNav extends React.Component {
   }
 }
 
-export default SectionNav;
+function mapReduxStateToProps(reduxState) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ModalActions, dispatch)
+  }
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav);

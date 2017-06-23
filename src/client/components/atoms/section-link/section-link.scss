@@ -18,7 +18,7 @@ a.sectionLink {
 @include theme-hover(money-green, 'a.sectionLink', null, $money-green, null);
 @include theme-hover(cobalt-blue, 'a.sectionLink', null, $cobalt-blue, null);
 
-$triangle-size: 11px;
+$triangle-size: 13px;
 .triangle {
     visibility: hidden;
     position: relative;
@@ -31,6 +31,7 @@ $triangle-size: 11px;
     border-left: $triangle-size solid transparent;
     border-top: 0;
     z-index: 100000000000;
+    border-bottom: $triangle-size solid $white;
 }
 
 :global(.sba-blue) .triangleTheme {
@@ -49,9 +50,6 @@ $triangle-size: 11px;
     border-bottom: $triangle-size solid $cobalt-blue;
 }
 
-.triangleWhite {
-    border-bottom: $triangle-size solid transparent;
-}
 
 .link:hover .triangle,
 .link:focus .triangle  {

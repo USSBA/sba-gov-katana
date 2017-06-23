@@ -8,12 +8,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 class BizguideTile extends React.Component {
-    constructor(props) {
-      super()
-      this.state = {
-        navMenuClassname: "initial"
-      }
-    }
 
   _formatLargeTitle(){
     return this.props.data.title.split(" ")[0]
@@ -27,7 +21,7 @@ class BizguideTile extends React.Component {
 
   _openNavMenu(){
     if(window.innerWidth <= 1080) {
-      this.props.actions.showMobileNav(this.props.data, this.props.iconWhite)
+      this.props.actions.showMobileNav(this.props.data, this.props.iconWhite, false)
     }
   }
 
