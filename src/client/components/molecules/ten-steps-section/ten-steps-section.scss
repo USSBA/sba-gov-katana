@@ -16,7 +16,7 @@
 
 .stepSection:nth-of-type(5n+0) img {
   @include grid-media($sba-grid-small){
-    max-height: 40vh;
+    max-height: 45%;
   }
 }
 
