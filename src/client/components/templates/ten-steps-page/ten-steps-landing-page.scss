@@ -70,6 +70,10 @@
     margin-top: -115px;
     visibility: hidden;
   }
+    @include grid-media($sba-grid-large){
+    height: 0;
+    margin-top: 0;
+  }
 }
 
 @include theme(byzantine, '.backLink', null, #fff, null);
