@@ -1,7 +1,6 @@
 .stepSection {
   @include grid-container;
-  // border: 1px solid red;
-  height: calc(100vh - 73px);
+  height: calc(105vh - 73px);
   position: relative;
   width: 100%;
   margin-bottom: 1vh;
