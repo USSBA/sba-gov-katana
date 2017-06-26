@@ -1,53 +1,125 @@
-.leftAlignedSolidBoxSection,
-.leftAlignedBoxSection,
-.rightAlignedSolidBoxSection,
-.rightAlignedBoxSection {
+.stepSection {
   @include grid-container;
   // border: 1px solid red;
-  height: 100vh;
-  overflow: hidden;
+  height: calc(100vh - 73px);
   position: relative;
   width: 100%;
+  margin-bottom: 1vh;
+  overflow: hidden;
+  @include grid-media($sba-grid-large){
+    height: 100vh;
+  }
 }
 
-.leftAlignedSolidBoxSection img,
-.leftAlignedBoxSection img,
-.rightAlignedSolidBoxSection img,
-.rightAlignedBoxSection img {
+.stepSection img {
   position: absolute;
-  top: 5vh;
 }
 
-.leftAlignedSolidBoxSection .titleBox,
-.leftAlignedBoxSection .titleBox,
-.rightAlignedSolidBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox {
-  position: absolute;
-  bottom: 10vh;
+.stepSection:nth-of-type(5n+0) img {
+  @include grid-media($sba-grid-small){
+    max-height: 40vh;
+  }
 }
 
-.leftAlignedSolidBoxSection img,
-.rightAlignedSolidBoxSection img,
-.leftAlignedSolidBoxSection .titleBox,
-.rightAlignedSolidBoxSection .titleBox {
-  @include grid-media($sba-grid-large) {
+.stepSection:first-of-type img,
+.stepSection:nth-of-type(8n) img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(7,$desktop-0gutter);
+    @include grid-shift(5, $desktop-0gutter);
+    top: 65%;
+  }
+}
+
+.stepSection:last-of-type img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(4,$desktop-0gutter);
+    @include grid-shift(7, $desktop-0gutter);
+  }
+}
+
+.leftAligned img {
+  right: 0;
+  @include grid-media($sba-grid-small){
+    bottom: 0;
+  }
+  @include grid-media($sba-grid-medium){
+    bottom: 5%;
+    max-height: 50vh;
+  }
+  @include grid-media($sba-grid-large){
+    bottom: 2.5%;
+    left: inherit;
+    max-height: 100%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
   }
 }
 
-.leftAlignedBoxSection img,
-.rightAlignedBoxSection img {
+.leftAlignedHero img,
+.rightAlignedHero img {
+  @include grid-media($sba-grid-small){
+    top: 0;
+  }
+  @include grid-media($sba-grid-medium){
+    top: 2.5%;
+  }
+}
+
+.leftAlignedHero img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+    @include grid-shift(2);
+  }
+}
+
+.leftAligned img{
+  @include grid-media($sba-grid-large){
+    @include grid-column(7,$desktop-0gutter);
+    @include grid-shift(5, $desktop-0gutter);
+  }
+}
+
+.rightAlignedHero img,
+.rightAligned img {
+  @include grid-media($sba-grid-large){
+    @include grid-column(10);
+  }
+}
+
+.leftAlignedHero img,
+.rightAlignedHero img,
+.leftAlignedHero .titleBox,
+.rightAlignedHero .titleBox {
   @include grid-media($sba-grid-large) {
+    bottom: inherit;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
   }
 }
 
-.leftAlignedBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox {
+.titleBox {
+  position: absolute;
+}
+
+.leftAlignedHero .titleBox,
+.rightAlignedHero .titleBox {
+  @include grid-media($sba-grid-small){
+    bottom: 0;
+  }
+  @include grid-media($sba-grid-medium){
+    bottom: 2.5%;
+  }
+}
+
+.leftAligned .titleBox {
+  @include grid-media($sba-grid-small){
+    top: 0;
+  }
+  @include grid-media($sba-grid-medium){
+    top: 2.5%;
+  }
   @include grid-media($sba-grid-large) {
     position: absolute;
     left: 50px;
@@ -56,38 +128,19 @@
   }
 }
 
-.leftAlignedSolidBoxSection img{
-  @include grid-media($sba-grid-large){
-    @include grid-column(10);
-    @include grid-shift(2);
+.leftAlignedHero .titleBox,
+.rightAlignedHero .titleBox {
+  @include grid-media($sba-grid-small){
+    bottom: 0;
+  }
+  @include grid-media($sba-grid-medium){
+    bottom: 2.5%;
   }
 }
 
-.leftAlignedBoxSection img{
-  @include grid-media($sba-grid-large){
-    @include grid-column(7,$desktop-0gutter);
-    @include grid-shift(5, $desktop-0gutter);
-  }
-}
-
-.leftAlignedBoxSection:last-of-type img{
-  @include grid-media($sba-grid-large){
-    @include grid-column(4,$desktop-0gutter);
-    @include grid-shift(7, $desktop-0gutter);
-  }
-}
-
-.rightAlignedSolidBoxSection img,
-.rightAlignedBoxSection img {
-  @include grid-media($sba-grid-large){
-    @include grid-column(10);
-  }
-}
-
-.rightAlignedSolidBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox,
-.leftAlignedSolidBoxSection .titleBox,
-.leftAlignedBoxSection .titleBox {
+.rightAlignedHero .titleBox,
+.leftAlignedHero .titleBox,
+.leftAligned .titleBox {
   @include grid-media($sba-grid-small){
     @include grid-column(6)
   }
@@ -96,16 +149,15 @@
   }
 }
 
-.rightAlignedSolidBoxSection .titleBox,
-.rightAlignedBoxSection .titleBox {
+.rightAlignedHero .titleBox {
   @include grid-media($sba-grid-large){
     @include grid-column(6);
     @include grid-shift(6);
   }
 }
 
-.leftAlignedSolidBoxSection .titleBox,
-.leftAlignedBoxSection .titleBox {
+.leftAlignedHero .titleBox,
+.leftAligned .titleBox {
   @include grid-media($sba-grid-large){
     @include grid-column(6);
   }

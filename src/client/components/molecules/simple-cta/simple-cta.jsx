@@ -9,7 +9,7 @@ class SimpleCta extends React.Component{
             <div id={this.props.id} className={styles.container}>
                 <p>{this.props.actionText}</p>
                 <SmallSecondaryButton url={this.props.url} text={this.props.buttonText}/>
-                <img className={styles.cornerLines} src={cornerLines}/>
+                <img alt="" className={styles.cornerLines} src={cornerLines}/>
             </div>
         );
     }

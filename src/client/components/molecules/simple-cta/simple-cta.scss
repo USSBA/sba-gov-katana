@@ -25,7 +25,6 @@
 @include theme-hover(byzantine, '.container button', $byzantine-lightest, $byzantine, $byzantine-lightest);
 
 .cornerLines {
-  display: none;
   position: absolute;
   right: 0px;
   bottom: 0px;
@@ -34,5 +33,8 @@
   }
   @include grid-media($sba-grid-medium) {
     display: block;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
   }
 }
