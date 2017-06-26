@@ -26,11 +26,22 @@ class Callout extends React.Component {
     }
   }
 
+  backgroundImageStyles() {
+    return {
+      "backgroundImage": "url(" + this.props.image + ")",
+      "backgroundSize": "cover",
+      "width": "100%",
+      "height": "100%"
+    }
+  }
+
   render(){
     return (
       <div className={this.ctaSize()}>
         <div id="call-to-action" className={styles.ctaContainer}>
-          <img className={styles.image} src={this.props.image} alt={this.props.imageAlt}/>
+        <div className={styles.image}>
+          <div style={this.backgroundImageStyles()}></div>
+        </div>
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
             <p className={styles.blurb}>{this.props.blurb}</p>

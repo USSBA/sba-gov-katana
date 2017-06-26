@@ -173,6 +173,7 @@
 		display: none;
 	}
 	@include grid-media($sba-grid-large){
+		position: absolute;
 		height: 100% !important;
 		display: block;
 		@include grid-column(6, $desktop-0gutter)
@@ -191,6 +192,7 @@
 	}
 	@include grid-media($sba-grid-large){
 		@include grid-column(6);
+		@include grid-push(6);
 		padding: 30px 0 30px 0;
 	}
 }
