@@ -102,16 +102,6 @@
   position: absolute;
 }
 
-.leftAlignedHero .titleBox,
-.rightAlignedHero .titleBox {
-  @include grid-media($sba-grid-small){
-    bottom: 0;
-  }
-  @include grid-media($sba-grid-medium){
-    bottom: 2.5%;
-  }
-}
-
 .leftAligned .titleBox {
   @include grid-media($sba-grid-small){
     top: 0;
@@ -134,6 +124,9 @@
   }
   @include grid-media($sba-grid-medium){
     bottom: 2.5%;
+  }
+  @include grid-media($sba-grid-large){
+    bottom: inherit;
   }
 }
 
