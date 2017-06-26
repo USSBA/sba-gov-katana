@@ -22,6 +22,16 @@ class MobileNav extends React.Component {
     });
   }
   render() {
+      let menuItems = [];
+      if (this.props.mainMenuData) {
+          menuItems = this.props.mainMenuData.map((item, index) => {
+              return <div className={styles.menuLinkSection}><SectionLink id={"main-menu-" + index} url={item.link} text={item.linkTitle}/></div>
+          });
+      } else {
+          menuItems.push(
+              <div key={1}></div>
+          );
+      }
     return (
       <div>
         <div className={styles.mobileHeader}>
@@ -41,24 +51,7 @@ class MobileNav extends React.Component {
             </div>
             <input type="text" className={styles.searchInputFieldNew} placeholder="Search SBA.gov"></input>
           </form>
-          <div className={styles.menuLinkSection}>
-            <SectionLink id="mobile-nav-starting-managing" url="/starting-managing-business" text="Starting & Managing" />
-          </div>
-          <div className={styles.menuLinkSection}>
-            <SectionLink id="mobile-nav-loans-grants"  url="/loans-grants" text="Loans & Grants" />
-          </div>
-          <div className={styles.menuLinkSection}>
-            <SectionLink id="mobile-nav-contracting" url="/contracting" text="Contracting" />
-          </div>
-          <div className={styles.menuLinkSection}>
-            <SectionLink id="mobile-nav-learning"  url="/tools/sba-learning-center/search/training" text="Learning Center" />
-          </div>
-          <div className={styles.menuLinkSection}>
-            <SectionLink id="mobile-nav-local-assistance" url="/tools/local-assistance" text="Local Assistance" />
-          </div>
-          <div className={styles.menuLinkSection}>
-            <SectionLink id="mobile-nav-about" url="/about-sba" text="About Us" />
-          </div>
+            {menuItems}
           <div className={styles.menuLinkSection}>
             <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/tools/local-assistance#locations-page">
               <img className={styles.linkIcon} src={nearyouIcon} alt=""/>
