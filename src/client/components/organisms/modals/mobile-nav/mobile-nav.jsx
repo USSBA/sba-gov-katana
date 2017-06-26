@@ -23,15 +23,7 @@ class MobileNav extends React.Component {
   }
 
   _handleBackBtn(){
-    if(this.props.backUrl !== false){
-      document.location = this.props.backUrl
-    } else {
-      this.setState({navMenu: "close"}, 
-        setTimeout(() => {
-          this.props.actions.closeMobileNav()
-        }, 1000)
-      )
-    }
+    this.props.actions.closeMobileNav()
   }
 
   _handleClick(linkObject){
@@ -48,7 +40,7 @@ class MobileNav extends React.Component {
   
   render() {
     return(
-      <div className={this._navMenuClassname()}>
+      <div className={s.navMenuOpen}>
         <div className={s.navHeader} onClick={() => {this._handleBackBtn()}}>
           <i className={s.navLeftArrow + " fa fa-angle-left"}></i>
           <img className={s.navIcon} src={this.props.icon} alt=""/>
