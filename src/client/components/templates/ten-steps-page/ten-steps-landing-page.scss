@@ -7,9 +7,16 @@
   background-position: 90% 100%;
   background-repeat: no-repeat;
   background-size: contain;
+  @include grid-media($sba-grid-small){
+    background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern-mobile.png");
+    background-position: 100% 100%;
+  }
   h1 {
     @include font-size($extra-large-title-font-sizes);
     margin-bottom: .4em;
+    @include grid-media($sba-grid-small) {
+     max-width: 70%;
+    }
   }
   p {
     @include font-size($h5-font-sizes);
