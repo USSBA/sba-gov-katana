@@ -57,6 +57,21 @@
   }
 }
 
+.anchor{
+  @include grid-media($sba-grid-small){
+    display: block;
+    height: 70px;
+    margin-top: -70px;
+    visibility: hidden;
+  }
+  @include grid-media($sba-grid-medium){
+    display: block;
+    height: 115px;
+    margin-top: -115px;
+    visibility: hidden;
+  }
+}
+
 @include theme(byzantine, '.backLink', null, #fff, null);
 @include theme-hover(byzantine, '.backLink', null, $byzantine-lightest, null);
 

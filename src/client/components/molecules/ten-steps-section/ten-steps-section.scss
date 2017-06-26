@@ -5,6 +5,9 @@
   width: 100%;
   margin-bottom: 1vh;
   overflow: hidden;
+  @include grid-media($sba-grid-medium){
+    height: calc(100vh - 115px);
+  }
   @include grid-media($sba-grid-large){
     height: 100vh;
   }
