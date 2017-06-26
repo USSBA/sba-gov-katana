@@ -1,5 +1,11 @@
 import config from "config";
-import { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate } from "./oca-soap-client.js";
+import {
+  getEndPointUrl,
+  convertFormDataToXml,
+  createSoapEnvelope,
+  sendLincSoapRequest,
+  createSoapEnvelopeForPasswordUpdate
+} from "./oca-soap-client.js";
 import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import emailConfirmation from "../models/email-confirmation.js";
@@ -15,12 +21,12 @@ function createLenderMatchSoapResponseData(data) {
 
 function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
   return lenderMatchSoapResponse.update({
-    processed: moment().unix()
-  }, {
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
+      processed: moment().unix()
+    }, {
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
     .catch((err) => {
       console.log("EXCEPTION: Problem updating lenderMatchSoapResponse.");
       throw err;
@@ -30,10 +36,10 @@ function updateLenderMatchSoapResponse(lenderMatchRegistrationId) {
 
 function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
   return emailConfirmation.destroy({
-    where: {
-      lenderMatchRegistrationId: lenderMatchRegistrationId
-    }
-  })
+      where: {
+        lenderMatchRegistrationId: lenderMatchRegistrationId
+      }
+    })
     .then(function() {
       return lenderMatchSoapResponse.destroy({
         where: {
@@ -61,12 +67,10 @@ function generatePassword(length) {
 
 function updateLincPassword(updateInfo, newPassword) {
   const newExpiry = moment().add(updateInfo.schedule * 60, "seconds").unix(); //eslint-disable-line no-magic-numbers
-  return lincPasswordUpdate.update(
-    {
+  return lincPasswordUpdate.update({
       expiry: newExpiry,
       password: newPassword
-    },
-    {
+    }, {
       where: {
         id: updateInfo.id
       }
@@ -119,6 +123,7 @@ function handleSoapResponse(soapResponse) {
 function sendDataToOca(lenderMatchRegistrationData) {
   const sbagovUserId = "Username";
   const dataAsXml = convertFormDataToXml(sbagovUserId, lenderMatchRegistrationData);
+  console.log("OCA Service Data before SOAP", dataAsXml);
   const promise = getEndPointUrl(config.get("oca.soap.wsdlUrl"))
     .then(function(endpoint) {
       return lincPasswordUpdate.findOne()
@@ -144,4 +149,9 @@ function sendDataToOca(lenderMatchRegistrationData) {
 
 
 
-export { sendDataToOca, handleSoapResponse, sendPasswordUpdateRequest, generatePassword };
+export {
+  sendDataToOca,
+  handleSoapResponse,
+  sendPasswordUpdateRequest,
+  generatePassword
+};
