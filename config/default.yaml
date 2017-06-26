@@ -26,7 +26,7 @@ server:
     port: 3000
 email:
     debugEmailOnly: false
-    sender: '"Small Business Administration" <jking@fearless.tech>'
+    sender: '"Small Business Administration" <lendermatch@sba.gov>'
     hostname: email-smtp.us-east-1.amazonaws.com
     password: placeholder
     username: placeholder
