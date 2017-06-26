@@ -57,7 +57,7 @@ class SectionNav extends React.Component {
 
     return (
         this.props.displayMobileNav ? (
-            this.props.actions.showMobileNav(_.nth(this.props.lineage, 1), sectionNavIcon, "/business-guide")
+            this.props.actions.showMobileSectionNav(_.nth(this.props.lineage, 1), sectionNavIcon, "/business-guide")
         ) : (
             <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
                 <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>

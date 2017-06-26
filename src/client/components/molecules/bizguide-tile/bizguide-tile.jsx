@@ -27,7 +27,7 @@ class BizguideTile extends React.Component {
 
   _openNavMenu(){
     if(window.innerWidth <= 1080) {
-      this.props.actions.showMobileNav(this.props.data, this.props.iconWhite, false)
+      this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     }
   }
 
