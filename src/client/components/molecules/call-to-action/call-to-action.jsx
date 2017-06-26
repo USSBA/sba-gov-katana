@@ -28,7 +28,7 @@ class Callout extends React.Component {
 
   backgroundImageStyles() {
     return {
-      "backgroundImage": "url(" + this.props.image + ")",
+      "background": "url(" + this.props.image + ") no-repeat center center",
       "backgroundSize": "cover",
       "width": "100%",
       "height": "100%"

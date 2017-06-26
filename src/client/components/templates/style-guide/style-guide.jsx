@@ -69,7 +69,7 @@ class StyleGuide extends React.Component {
         <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." buttons={buttonsArray} desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
         <h1>Calls to Action</h1>
         <div className={styles.ctaContainer}>
-          <Cta size="large" btnUrl="http://www.example.com/" btnTitle="find happiness" image="http://content.sbagov.fearlesstesters.com/sites/default/files/2017-04/Counselor_Match_CTA_Image.jpg" imageAlt="alt text for image" headline="This is the headline for the CTA." blurb="This is the blurb for the CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."/>
+          <Cta size="large" btnUrl="http://www.example.com/" btnTitle="find happiness" image={HeroDesktopImage} imageAlt="alt text for image" headline="This is the headline for the CTA." blurb="This is the blurb for the CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."/>
         </div>
         <div className={styles.simpleCtaContainer}>
             <SimpleCta/>
