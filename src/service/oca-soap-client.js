@@ -1,5 +1,7 @@
 import axios from "axios";
-import { formatMessage } from "../service/linc-message-formatter.js";
+import {
+  formatMessage
+} from "../service/linc-message-formatter.js";
 const request = require("request");
 const xmlToJs = require("xml2js");
 const DOMParser = require("xmldom").DOMParser; // eslint-disable-line id-match
@@ -40,7 +42,7 @@ function convertFormDataToXml(userInfo, lenderMatchRegistration) {
     "headless": true
   });
 
-  return builder.buildObject(objFormData);
+  return builder.buildObject(objFormData).replace(/\r?\n/g, "");
 }
 
 function createSoapEnvelope(userName, password, bodyData) {
@@ -238,4 +240,11 @@ function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
 
 
-export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parsePasswordUpdateResponse };
+export {
+  getEndPointUrl,
+  convertFormDataToXml,
+  createSoapEnvelope,
+  sendLincSoapRequest,
+  createSoapEnvelopeForPasswordUpdate,
+  parsePasswordUpdateResponse
+};
