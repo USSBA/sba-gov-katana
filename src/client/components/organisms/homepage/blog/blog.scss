@@ -1,86 +1,50 @@
-@media screen and (min-width:768px) {
-    .blogSection {
-        margin: 5vw 10.4vw;
-        padding: 0;
+.containerDesktop {
+    @include grid-media($sba-grid-small) {
+        display: none;
     }
-
-    .blogSection > div > div {
-        padding: 0;
-        margin-left: -15px;
-        margin-right: -15px;
-    }
-
-    .blogsImage {
-        width: 38.5vw;
-        height: auto;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .sectionTitle {
-        color: #333333;
-        font-size: 5.2vw;
-        font-weight: 900;
-        padding: 0;
-        margin-bottom: 2vw;
-    }
-
-    .blogTitleContainer {
-        margin-top: 1.5vw;
-        width: 38.5vw;
-    }
-
-    .blogTitle {
-        font-size: 2.5vw;
-        font-weight: 900;
-        line-height: 2.78vw;
-        color: #333333 !important;
-        text-decoration: none;
-    }
-
-    .blogTitle:hover {
-        color: #333333;
-    }
-
-    .blogInfo {
-        margin-top: 1.5vw;
-        color: #666666;
-        font-weight: normal;
-        font-size: 1.25vw;
-        line-height: 1.88vw;
-        margin-bottom: $margin-20;
-        text-decoration: none;
+    @include grid-media($sba-grid-medium) {
+        display: block;
     }
 }
-@media screen and (max-width:767px) {
-    .sectionTitle {
-        font-size: 7.47vw;
-        line-height: 8vw;
-        font-weight: 900;
-        color: #333333;
+
+.blogColumn {
+    @include grid-media($sba-grid-small) {
+        display: none;
+    }
+    @include grid-media($sba-grid-medium) {
+         @include grid-column(6);
+    }
+}
+
+.containerMobile {
+    @include grid-media($sba-grid-small) {
+        display: block;
+    }
+    @include grid-media($sba-grid-medium) {
+        display: none;
+    }
+}
+
+.sectionTitle {
+    font-size: 7.47vw;
+    line-height: 8vw;
+    font-weight: 900;
+    color: #333333;
+    @include grid-media($sba-grid-small) {
         padding-left: 12.53vw;
         height: 8vw;
     }
-
-    .blogsContainer a {
-        text-decoration: none;
-        color: #333333;
+    @include grid-media($sba-grid-medium) {
+        font-size: 5.2vw;
+        line-height: normal;
+        font-weight: 900;
+        margin-bottom: 2vw;
+        @include grid-push(1);
     }
+}
 
-    .blogsContainer a:hover {
-        text-decoration: underline;
-    }
-
-
-    .singleBlog {
-        border: 1px solid #C4C4C4;
-        width: 91.4vw;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 4.267vw;
-    }
-
-    .blogTitle {
+.blogTitle {
+    @include grid-media($sba-grid-small) {
         color: #333333;
         font-size: 5.06vw;
         line-height: 5.867vw;
@@ -91,8 +55,17 @@
         margin-top: 4vw;
         text-decoration: none;
     }
+    @include grid-media($sba-grid-medium) {
+        font-size: 2.5vw;
+        font-weight: 900;
+        line-height: 2.78vw;
+        color: #333333 !important;
+        text-decoration: none;
+    }
+}
 
-    .blogInfo {
+.blogInfo {
+    @include grid-media($sba-grid-small) {
         text-decoration: none;
         color: #333333;
         font-size: 3.73vw;
@@ -103,8 +76,34 @@
         width: 75.2vw;
         margin-bottom: 4vw;
     }
-
-    .whiteSpace {
-        height: 16vw;
+    @include grid-media($sba-grid-medium) {
+        margin-top: 1.5vw;
+        color: #666666;
+        font-weight: normal;
+        font-size: 1.25vw;
+        line-height: 1.88vw;
+        margin-bottom: $margin-20;
+        text-decoration: none;
     }
+}
+
+.whiteSpace {
+    height: 16vw;
+}
+
+.containerMobile a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.containerMobile a:hover {
+    text-decoration: underline;
+}
+
+.containerMobile .singleBlog {
+    border: 1px solid #C4C4C4;
+    width: 91.4vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4.267vw;
 }

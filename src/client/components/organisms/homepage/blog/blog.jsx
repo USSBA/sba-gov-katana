@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Grid, Row, Col} from 'react-bootstrap';
 import {bindActionCreators} from 'redux';
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./blog.scss";
@@ -25,51 +24,49 @@ class Blog extends React.Component {
   itemMapperDesktop(items) {
     var blogThis = this;
     return (
-      <div className={styles.blogsContainer}>
-        <Grid fluid>
-          <Row>
-            {items.map(function(item, i) {
-              return (
-                <Col key={i} xs={6}>
-                  <img className={styles.blogsImage} src={item.imageUrl} alt={item.title}/>
-                </Col>
-              );
-            })}
-          </Row>
-          <Row>
-            {items.map(function(item, i) {
-              return (
-                <Col key={i} xs={6}>
-                  <div className={styles.blogTitleContainer}>
-                    <a className={styles.blogTitle} href={item.url}>
-                      {item.title}
-                    </a>
-                  </div>
-                </Col>
-              );
-            })}
-          </Row>
-          <Row>
-            {items.map(function(item, i) {
-              return (
-                <Col key={i} xs={6}>
-                  <div className={styles.blogInfo}>
-                    {"By " + item.name + " on " + blogThis.returnFormatedDate(item.date)}
-                  </div>
-                </Col>
-              );
-            })}
-          </Row>
-          <Row>
-            {items.map(function(item, i) {
-              return (
-                <Col key={i} xs={6}>
-                  <SmallPrimaryButton text="READ MORE" URL={item.url}/>
-                </Col>
-              );
-            })}
-          </Row>
-        </Grid>
+      <div className={styles.containerDesktop}>
+        <div>
+          {items.map(function(item, i) {
+            return (
+              <div key={i} className={styles.blogColumn}>
+                <img className={styles.blogsImage} src={item.imageUrl} alt={item.title}/>
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          {items.map(function(item, i) {
+            return (
+              <div key={i} className={styles.blogColumn}>
+                <div className={styles.blogTitleContainer}>
+                  <a className={styles.blogTitle} href={item.url}>
+                    {item.title}
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          {items.map(function(item, i) {
+            return (
+              <div key={i} className={styles.blogColumn}>
+                <div className={styles.blogInfo}>
+                  {"By " + item.name + " on " + blogThis.returnFormatedDate(item.date)}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          {items.map(function(item, i) {
+            return (
+              <div key={i} className={styles.blogColumn}>
+                <SmallPrimaryButton text="READ MORE" URL={item.url}/>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
@@ -77,7 +74,7 @@ class Blog extends React.Component {
   itemMapperMobile(items) {
     var blogThis = this;
     return (
-      <div className={styles.blogsContainer}>
+      <div className={styles.containerMobile}>
         {items.map(function(item, i) {
           return (
             <a href={item.url} key={i}>
@@ -92,7 +89,6 @@ class Blog extends React.Component {
             </a>
           );
         })}
-        <div className={styles.whiteSpace}></div>
       </div>
     );
   }
@@ -108,12 +104,8 @@ class Blog extends React.Component {
         <div className={styles.sectionTitle}>
           From the blog.
         </div>
-        <div className="hidden-xs">
-          {this.itemMapperDesktop(items)}
-        </div>
-        <div className="hidden-xl hidden-lg hidden-md hidden-sm">
-          {this.itemMapperMobile(items)}
-        </div>
+        {this.itemMapperDesktop(items)}
+        {this.itemMapperMobile(items)}
       </div>
     );
   }

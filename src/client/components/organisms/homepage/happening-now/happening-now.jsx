@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { isEmpty } from "lodash";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import Slider from '../../../atoms/carousel/carousel.jsx';
 import SmallPrimaryButton from '../../../atoms/small-primary-button/small-primary-button.jsx';
@@ -20,79 +18,55 @@ class HappeningNow extends React.Component {
     this.props.actions.fetchContentIfNeeded(contentProperty, "frontpageslides");
   }
 
+  makeDesktopItem(item, index, size) {
+    let style = size === 3
+      ? styles.itemDesktopThree
+      : styles.itemDesktopFour;
+    return (
+      <div key={index} className={style}>
+        <a href={item.url}>
+          <img src={item.image} alt={item.imageAlt}></img>
+        </a>
+        <p className={styles.itemTitleDesktop}>
+          {item.title}
+        </p>
+        <SmallPrimaryButton extraClassName={styles.buttonDesktop} url={item.url} text="LEARN MORE"/>
+      </div>
+    );
+  }
   render() {
-    let items = [];
-    let mdSize = 3;
-    if (this.props.happeningNow) {
-      items = this.props.happeningNow;
-      if (items.length === 3) {
-        mdSize = 4;
-      }
-    }
+    let items = this.props.happeningNow || [];
+    let size = items.length;
 
-    if (isEmpty(items)) {
+    if (size === 0) {
       return <div></div>;
     }
 
+    let me = this;
+    let title = "What's happening now.";
     return (
-      <div className={ styles.happeningNow }>
-        <div className="hidden-xs">
-          <Grid fluid>
-            <Row>
-              <Col sm={ 12 } xsHidden>
-              <h1 className={styles.happeningNowTitle}>What's happening now.</h1>
-              </Col>
-            </Row>
-            <div className={ styles.happeningNowDesktop }>
-              <Row>
-                { items.map(function(item, i) {
-                    return (
-                      <Col key={ i } xsHidden sm={ mdSize }>
-                      <a href={ item.url }>
-                        <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
-                      </a>
-                      </Col>
-                      );
-                  }) }
-              </Row>
-              <Row>
-                { items.map(function(item, i) {
-                    return <Col key={ i } xsHidden sm={ mdSize }>
-                           <p className={ styles.happeningNowItemTitle }>
-                             { item.title }
-                           </p>
-                           </Col>;
-                  }) }
-              </Row>
-              <Row>
-                { items.map(function(item, i) {
-                    return <Col key={ i } xsHidden sm={ mdSize }>
-                           <SmallPrimaryButton URL={ item.url } text="LEARN MORE"/>
-                           </Col>;
-                  }) }
-              </Row>
-            </div>
-          </Grid>
+      <div className={styles.happeningNow}>
+        <div className={styles.containerDesktop}>
+          <h1 className={styles.titleDesktop}>{title}</h1>
+          {items.map(function(item, index) {
+            return me.makeDesktopItem(item, index, size);
+          })}
         </div>
-        <div className="hidden-md hidden-lg hidden-sm">
-          <div>
-            <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
-          </div>
-          <div className={ styles.happeningNowMobile }>
-            <Slider items={ items } />
+        <div className={styles.containerMobile}>
+          <h2 className={styles.titleMobile}>{title}</h2>
+          <div className={styles.itemsMobile}>
+            <Slider items={items}/>
           </div>
         </div>
       </div>
-      );
+    );
 
   }
 
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {
-    happeningNow: reduxState.contentReducer[contentProperty]
-  };
+  return {happeningNow: reduxState.contentReducer[contentProperty]};
 }
 
 function mapDispatchToProps(dispatch) {
