@@ -6,7 +6,9 @@
   background-image: url("../../../../../public/assets/images/homepage/diagonal-lines.png");
   background-position: bottom right;
   background-repeat: no-repeat;
-  //background-size: 20%;
+  @include grid-media($sba-grid-small) {
+    padding: 10px 30px 30px;
+  }
 }
 
 .sectionNum {
