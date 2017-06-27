@@ -11,7 +11,6 @@ module.exports = function(env) {
       'babel-polyfill',
       'react-hot-loader/patch',
       'webpack-hot-middleware/client',
-      'bootstrap-loader',
       './src/client/components/entry-dev.jsx'
     ],
     output: {
@@ -22,6 +21,7 @@ module.exports = function(env) {
     plugins: [
       new BundleAnalyzerPlugin(),
       new webpack.HotModuleReplacementPlugin(),
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/)
     ],
     module: {
       rules: [{

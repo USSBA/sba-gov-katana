@@ -78,10 +78,6 @@ module.exports = function() {
         {
           test: /\.json$/,
           loader: 'json-loader'
-        },
-        {
-          test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
-          loader: 'imports-loader?jQuery=jquery'
         }
       ]
     }
