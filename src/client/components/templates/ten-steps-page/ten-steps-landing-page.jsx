@@ -57,7 +57,7 @@ class TenStepsLandingPage extends React.Component {
             },
             {
                 sectionNum: 6,
-                title: "Name your business.",
+                title: "Choose your business name.",
                 leftAlignBox: true,
                 solidBox: true,
                 image: "assets/images/tensteps/name.jpg",
