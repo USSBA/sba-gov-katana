@@ -1,9 +1,7 @@
-.happeningNow {
-    margin-top: 5vw;
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
+.container{
+    visibility: visible;
 }
+
 /* Desktop */
 .containerDesktop {
     @include grid-media($sba-grid-small) {
@@ -19,7 +17,6 @@
 
 .titleDesktop {
     @include grid-column(12);
-    @include grid-push(1);
     text-align: left;
 }
 
@@ -27,13 +24,8 @@
     @include font-size($h5-font-sizes);
     color: black;
     font-weight: 700;
-    padding-top: 1vw;
-    @include grid-media($sba-grid-medium) {
-         height: 70px;
-    }
-    @include grid-media($sba-grid-large) {
-         height: 60px;
-    }
+    padding-top: $margin-20;
+    padding-bottom: $margin-20;
 }
 
 .itemDesktopFour {
@@ -47,14 +39,13 @@
 }
 
 .buttonDesktop{
-    margin-bottom: 5vw;
 }
 
 /* Mobile */
 .containerMobile {
     margin-top: 2vw;
     @include grid-media($sba-grid-small) {
-         @include grid-column(6);
+         width: 100%;
     }
     @include grid-media($sba-grid-medium) {
         display: none;
@@ -67,5 +58,5 @@
 .titleMobile {
     font-size: 3rem;
     padding-bottom: 2vw;
-    padding-left: 11.5vw;
+    padding-left: 12.53vw;
 }

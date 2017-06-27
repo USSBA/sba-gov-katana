@@ -18,22 +18,31 @@ class HappeningNow extends React.Component {
     this.props.actions.fetchContentIfNeeded(contentProperty, "frontpageslides");
   }
 
-  makeDesktopItem(item, index, size) {
-    let style = size === 3
-      ? styles.itemDesktopThree
-      : styles.itemDesktopFour;
+  makeDesktopImage(item, index, desktopStyle) {
     return (
-      <div key={index} className={style}>
+      <div key={index} className={desktopStyle}>
         <a href={item.url}>
           <img src={item.image} alt={item.imageAlt}></img>
         </a>
-        <p className={styles.itemTitleDesktop}>
-          {item.title}
-        </p>
-        <SmallPrimaryButton extraClassName={styles.buttonDesktop} url={item.url} text="LEARN MORE"/>
       </div>
     );
   }
+
+  makeDeskopTitle(item, index, desktopStyle) {
+    return (
+      <div key={index} className={desktopStyle}>
+        <p className={styles.itemTitleDesktop} key={index}>
+          {item.title}
+        </p>
+      </div>
+    );
+  }
+  makeDesktopButton(item, index, desktopStyle) {
+    return (
+      <div key={index} className={desktopStyle}><SmallPrimaryButton key={index} extraClassName={styles.buttonDesktop} url={item.url} text="LEARN MORE"/></div>
+    );
+  }
+
   render() {
     let items = this.props.happeningNow || [];
     let size = items.length;
@@ -42,15 +51,30 @@ class HappeningNow extends React.Component {
       return <div></div>;
     }
 
+    let desktopStyle = size === 3
+      ? styles.itemDesktopThree
+      : styles.itemDesktopFour;
     let me = this;
     let title = "What's happening now.";
     return (
-      <div className={styles.happeningNow}>
+      <div className={styles.container}>
         <div className={styles.containerDesktop}>
           <h1 className={styles.titleDesktop}>{title}</h1>
-          {items.map(function(item, index) {
-            return me.makeDesktopItem(item, index, size);
-          })}
+          <div >
+            {items.map((item, index) => {
+              return me.makeDesktopImage(item, index, desktopStyle)
+            })}
+          </div>
+          <div key={2}>
+            {items.map((item, index) => {
+              return me.makeDeskopTitle(item, index, desktopStyle)
+            })}
+          </div>
+          <div key={3}>
+            {items.map((item, index) => {
+              return me.makeDesktopButton(item, index, desktopStyle)
+            })}
+          </div>
         </div>
         <div className={styles.containerMobile}>
           <h2 className={styles.titleMobile}>{title}</h2>
