@@ -57,7 +57,7 @@ class TenStepsLandingPage extends React.Component {
             },
             {
                 sectionNum: 6,
-                title: "Name your business.",
+                title: "Choose your business name.",
                 leftAlignBox: true,
                 solidBox: true,
                 image: "assets/images/tensteps/name.jpg",
@@ -100,7 +100,7 @@ class TenStepsLandingPage extends React.Component {
                 title: "Open a business bank account.",
                 leftAlignBox: true,
                 solidBox: false,
-                image: "assets/images/tensteps/bank.jpg",
+                image: "assets/images/tensteps/bank.png",
                 imageAlt: "Choose your business name.",
                 link: "/business-guide/launch/52",
                 text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready."
@@ -116,9 +116,10 @@ class TenStepsLandingPage extends React.Component {
                     <h1>10 steps to start your business.</h1>
                     <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>
                     </div>
-                    <a className={styles.scrollButton} aria-hidden="true" href="#step-01"><i className={" fa fa-angle-down"}></i></a>
+                    <a className={styles.scrollButton} aria-hidden="true" href="#step-1"><i className={" fa fa-angle-down"}></i></a>
                     <a className={styles.backLink} href="/business-guide">Back to all topics</a>
                 </div>
+                <span id="step-1" className={styles.anchor}></span>
                 <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
                     {tenstepSectionItems}
                 </div>

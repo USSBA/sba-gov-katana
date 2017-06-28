@@ -3,6 +3,15 @@ html, body {
   font-family: $base-font-family;
   @include font-size($base-font-sizes);
   line-height: $base-line-height;
+  letter-spacing: -0.4px;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+   letter-spacing: -0.4px;  // must be explicitly declare this even though it is declared on the body because a browser's "user agent styelsheet" might override the body declaration
 }
 
 body {

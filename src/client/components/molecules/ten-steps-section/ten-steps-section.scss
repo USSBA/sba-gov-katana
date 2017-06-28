@@ -1,11 +1,13 @@
 .stepSection {
   @include grid-container;
-  // border: 1px solid red;
-  height: calc(100vh - 73px);
+  height: 600px;
   position: relative;
   width: 100%;
   margin-bottom: 1vh;
   overflow: hidden;
+  @include grid-media($sba-grid-medium){
+    height: calc(100vh - 115px);
+  }
   @include grid-media($sba-grid-large){
     height: 100vh;
   }
@@ -17,7 +19,7 @@
 
 .stepSection:nth-of-type(5n+0) img {
   @include grid-media($sba-grid-small){
-    max-height: 40vh;
+    max-height: 45%;
   }
 }
 
@@ -25,7 +27,7 @@
 .stepSection:nth-of-type(8n) img{
   @include grid-media($sba-grid-large){
     @include grid-column(7,$desktop-0gutter);
-    @include grid-shift(5, $desktop-0gutter);
+    @include grid-push(5, $desktop-0gutter);
     top: 65%;
   }
 }
@@ -33,7 +35,7 @@
 .stepSection:last-of-type img{
   @include grid-media($sba-grid-large){
     @include grid-column(4,$desktop-0gutter);
-    @include grid-shift(7, $desktop-0gutter);
+    @include grid-push(7, $desktop-0gutter);
   }
 }
 
@@ -69,14 +71,14 @@
 .leftAlignedHero img{
   @include grid-media($sba-grid-large){
     @include grid-column(10);
-    @include grid-shift(2);
+    @include grid-push(2);
   }
 }
 
 .leftAligned img{
   @include grid-media($sba-grid-large){
     @include grid-column(7,$desktop-0gutter);
-    @include grid-shift(5, $desktop-0gutter);
+    @include grid-push(5, $desktop-0gutter);
   }
 }
 
@@ -103,16 +105,6 @@
   position: absolute;
 }
 
-.leftAlignedHero .titleBox,
-.rightAlignedHero .titleBox {
-  @include grid-media($sba-grid-small){
-    bottom: 0;
-  }
-  @include grid-media($sba-grid-medium){
-    bottom: 2.5%;
-  }
-}
-
 .leftAligned .titleBox {
   @include grid-media($sba-grid-small){
     top: 0;
@@ -136,6 +128,9 @@
   @include grid-media($sba-grid-medium){
     bottom: 2.5%;
   }
+  @include grid-media($sba-grid-large){
+    bottom: inherit;
+  }
 }
 
 .rightAlignedHero .titleBox,
@@ -152,7 +147,7 @@
 .rightAlignedHero .titleBox {
   @include grid-media($sba-grid-large){
     @include grid-column(6);
-    @include grid-shift(6);
+    @include grid-push(6);
   }
 }
 

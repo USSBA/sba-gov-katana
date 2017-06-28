@@ -1,9 +1,0 @@
-body{
-    font-family: "Source Sans Pro";
-}
-
-@media (max-width: 767px) {
-    body {
-    	margin-top: 16vw;
-    }
-}
