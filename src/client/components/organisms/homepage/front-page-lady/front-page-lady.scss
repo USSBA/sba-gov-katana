@@ -13,6 +13,7 @@
     @include grid-media($sba-grid-medium) {
         padding-left: 8.25vw;
         padding-right: 8.25vw;
+        position: relative;
     }
 }
 
@@ -36,29 +37,17 @@
 }
 
 .triangle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     @include grid-media($sba-grid-small) {
-        display: none;
-    }
-    @include grid-media($sba-grid-medium) {
-        position: absolute;
-        width: 11.6vw;
-        height: 11.6vw;
-        bottom: 0;
-        right: 0;
-    }
-}
-
-.mobileTriangle {
-    @include grid-media($sba-grid-small) {
-        position: absolute;
         z-index: -1;
         width: 25.9vw;
         height: 25.9vw;
-        bottom: 0;
-        right: 0;
     }
     @include grid-media($sba-grid-medium) {
-        display: none;
+        width: 11.6vw;
+        height: 11.6vw;
     }
 }
 
@@ -71,13 +60,14 @@
         position: absolute;
         top: 76vw;
         padding: 6.9vw 8.5vw 8.5vw;
-        @include grid-column(6);
+        @include grid-column(5);
     }
     @include grid-media($sba-grid-medium) {
         position: absolute;
-        @include grid-column(12);
+        @include grid-column(6);
         padding: 40px 4vw 50px;
-        top: -10vw;
+        top: -43vw;
+        left: calc(10.4vw - 30px);
         // bottom: 13%;
     }
     @include grid-media($sba-grid-large) {
@@ -87,26 +77,25 @@
 }
 
 .title {
+    color: #FFFFFF;
     @include grid-media($sba-grid-small) {
         font-size: 12vw;
         font-weight: 900;
         line-height: 12vw;
-        color: #FFFFFF;
         margin-bottom: 3vw;
     }
     @include grid-media($sba-grid-medium) {
         font-size: 5vw;
         font-weight: 900;
         line-height: 5vw;
-        color: #FFFFFF;
         margin-bottom: 1.4vw;
     }
 }
 
 .text {
+    color: #FFFFFF;
     @include grid-media($sba-grid-small) {
         font-size: 4.3vw;
-        color: #FFFFFF;
         margin-bottom: 4.3vw;
         line-height: 6vw;
     }
@@ -114,7 +103,6 @@
         font-size: 1.3vw;
         line-height: 1.9vw;
         font-weight: 100;
-        color: #FFFFFF;
         margin-bottom: 2.2vw;
     }
 }
