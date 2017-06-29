@@ -154,13 +154,13 @@ class LoanInfo extends React.Component {
       return {label: x, value: x};
     });
 
-    let id = "loan-info-form";
+    let id = "lender-match-loan-info-form";
     return (
       <div>
         <form id={id} ref={(input) => this.loanForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <TextInput errorText={constants.messages.validation.invalidLoanAmount} label="How much funding do you need?" name="loanAmount" onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)} value={this.state.loanAmount} validationState={this.state.validStates.loanAmount} autoFocus onFocus={this.handleFocus.bind(this)}/>
-          <MultiSelectBox errorText={constants.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanUsage" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanUsage} value={this.state.loanUsage} options={loanUsageOptions} maxValues={3} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}></MultiSelectBox>
-          <TextArea errorText={constants.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanDescription" onChange={this.handleChange.bind(this)} value={this.state.loanDescription} validationState={this.state.validStates.loanDescription} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput id={id+"-funding"}  errorText={constants.messages.validation.invalidLoanAmount} label="How much funding do you need?" name="loanAmount" onChange={this.handleChange.bind(this)} onBlur={this.handleBlur.bind(this)} value={this.state.loanAmount} validationState={this.state.validStates.loanAmount} autoFocus onFocus={this.handleFocus.bind(this)}/>
+          <MultiSelectBox id={id+"-use"}  errorText={constants.messages.validation.invalidLoanUsage} placeholder="- Select use of funds -" label="How will these funds be used?" name="loanUsage" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.loanUsage} value={this.state.loanUsage} options={loanUsageOptions} maxValues={3} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}></MultiSelectBox>
+          <TextArea id={id+"-describe"}  errorText={constants.messages.validation.invalidLoanDescription} label="Describe how you plan to use these funds" name="loanDescription" onChange={this.handleChange.bind(this)} value={this.state.loanDescription} validationState={this.state.validStates.loanDescription} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..." onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
          <FormPageButtons parentId={id} backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
         </form>
       </div>

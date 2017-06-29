@@ -39,10 +39,10 @@ class RadioButtonGroup extends React.Component {
   render() {
     let me = this;
     let radioButtons = this.props.options.map(function(item, index) {
-      let id = "radio" + index;
+      let id = this.props.id+"-radio" + index;
       let isChecked = item.value === me.props.value;
 
-      return <div className={styles.radioItem + " " + (isChecked
+      return <div id={id+"-item"} className={styles.radioItem + " " + (isChecked
         ? styles.radioItemSelected
         : styles.radioItemNotSelected)} onClick={(event) => me.handleClick(index, me)} key={index} tabIndex="0" onKeyPress={(event) => me.handleKeyPress(event, index, me)} onFocus={me.handleFocus.bind(me)} onBlur={(e) => me.handleBlur(index)}>
         <input className={styles.regularRadio} type="radio" name={me.props.name} checked={isChecked} tabIndex="0" onChange={me.handleChange} id={id} value={item.value}></input>
@@ -56,7 +56,7 @@ class RadioButtonGroup extends React.Component {
       : undefined;
 
     return (
-      <div>
+      <div id={this.props.id+"-container"}>
         <label>
           {this.props.label}
         </label>

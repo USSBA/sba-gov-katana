@@ -28,6 +28,8 @@ class TextArea extends React.Component {
       errorText,
       showCounter,
       showValidationIcon,
+      showSuccessIcon,
+      showErrorIcon,
       ...rest
     } = this.props;
     return (

@@ -140,12 +140,13 @@ class IndustryInfoForm extends React.Component {
       }
     ];
 
+    let id = "lender-match-industry-info-form";
     return (
       <div>
-        <form ref={(form) => this.industryInfoForm = form} onSubmit={(e) => this.handleSubmit(e)}>
-          <MultiSelect errorText={constants.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3} onFocus={this.handleFocus.bind(this)}></MultiSelect>
-          <RadioButtonGroup errorText={constants.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <FormPageButtons backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
+        <form id={id} ref={(form) => this.industryInfoForm = form} onSubmit={(e) => this.handleSubmit(e)}>
+          <MultiSelect id={id+"-name"} errorText={constants.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3} onFocus={this.handleFocus.bind(this)}></MultiSelect>
+          <RadioButtonGroup id={id+"-experience"} errorText={constants.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <FormPageButtons parentId={id} backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
         </form>
       </div>
     );
