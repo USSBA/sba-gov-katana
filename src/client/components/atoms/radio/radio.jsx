@@ -39,7 +39,7 @@ class RadioButtonGroup extends React.Component {
   render() {
     let me = this;
     let radioButtons = this.props.options.map(function(item, index) {
-      let id = this.props.id+"-radio" + index;
+      let id = me.props.id+"-radio" + index;
       let isChecked = item.value === me.props.value;
 
       return <div id={id+"-item"} className={styles.radioItem + " " + (isChecked
