@@ -7,7 +7,6 @@ module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
     devtool: 'cheap-module-source-map',
     entry: [
-      'bootstrap-loader',
       'babel-polyfill',
       './src/client/components/entry.jsx'
     ],
@@ -21,6 +20,7 @@ module.exports = function(env) {
         minimize: true,
         debug: false
       }),
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/),
       new webpack.DefinePlugin({
         'process.env': {
           'NODE_ENV': JSON.stringify('production')
@@ -30,7 +30,7 @@ module.exports = function(env) {
         sourceMap: false
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      new webpack.optimize.OccurrenceOrderPlugin(true)
+      new webpack.optimize.OccurrenceOrderPlugin(true),
     ],
     module: {
       rules: [{

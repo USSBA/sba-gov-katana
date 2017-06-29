@@ -46,12 +46,14 @@ class Homepage extends React.Component {
     ];
     return (
       <div className={styles.container}>
-        <FrontPageLady/>
-        <HappeningNow/>
-        <FrontPageHero color="purple" title="Start your business." image="assets/images/homepage/start-image.jpg" imageAlt="Start your own business." links={startLinks}/>
-        <FrontPageHero reverse color="green" title="Finance your business." image="assets/images/homepage/finance.jpg" imageAlt="Finance your business." links={financeLinks}/>
-        <FrontPageHero color="blue" title="Sell to the government." image="assets/images/homepage/contract.jpg" imageAlt="Sell to the government." links={sellLinks}/>
-        <Blog/>
+        <div className={styles.section}><FrontPageLady/></div>
+        <div className={styles.sectionWithPadding}><HappeningNow/></div>
+        <div className={styles.section}><FrontPageHero color="purple" title="Start your business." image="assets/images/homepage/start-image.jpg" imageAlt="Start your own business." links={startLinks}/></div>
+        <div className={styles.section}><FrontPageHero reverse color="green" title="Finance your business." image="assets/images/homepage/finance.jpg" imageAlt="Finance your business." links={financeLinks}/></div>
+        <div className={styles.section}><FrontPageHero color="blue" title="Sell to the government." image="assets/images/homepage/contract.jpg" imageAlt="Sell to the government." links={sellLinks}/></div>
+        <div className={styles.sectionWithPadding}>
+          <Blog/>
+        </div>
       </div>
     )
   }

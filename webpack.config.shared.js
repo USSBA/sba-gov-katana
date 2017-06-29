@@ -36,7 +36,13 @@ module.exports = function() {
         },
         {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader?modules", {
+          use: ["style-loader", {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]'
+            }
+          }, {
             loader: "sass-loader",
             options: {
               includePaths: [
@@ -78,10 +84,6 @@ module.exports = function() {
         {
           test: /\.json$/,
           loader: 'json-loader'
-        },
-        {
-          test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
-          loader: 'imports-loader?jQuery=jquery'
         }
       ]
     }

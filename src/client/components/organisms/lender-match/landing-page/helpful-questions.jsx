@@ -10,6 +10,7 @@ import '../../../../styles/common/collapse.scss';
 var Collapse = require('rc-collapse');
 var Panel = Collapse.Panel;
 
+
 let question1 = "What happens next?"
 let answer1 = "You’ll receive an email with contact information of interested lenders two business days after you submit the form. From there, you’ll start talking to lenders and completing applications. Some will reach out to you, and you’re welcome to contact them as well.";
 

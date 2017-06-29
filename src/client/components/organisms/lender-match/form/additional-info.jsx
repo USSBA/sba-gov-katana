@@ -1,12 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {FormGroup} from 'react-bootstrap'
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/location-change.js';
 import {logEvent} from "../../../../services/analytics.js";
-
 
 import CheckBox from '../../../atoms/checkbox/checkbox.jsx';
 import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
@@ -58,13 +56,11 @@ export class AdditionalInfoForm extends React.Component {
     return (
       <div>
         <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <FormGroup>
-            <h6 className={addInfoStyles.label}>Select all that apply to you:</h6>
-            <CheckBox autoFocus={true} name="hasWrittenPlan" label="I have written a business plan" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasWrittenPlan}/>
-            <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasFinancialProjections}/>
-            <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.isGeneratingRevenue}/>
-          </FormGroup>
-          <FormPageButtons backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} />
+          <h6 className={addInfoStyles.label}>Select all that apply to you:</h6>
+          <CheckBox autoFocus={true} name="hasWrittenPlan" label="I have written a business plan" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasWrittenPlan}/>
+          <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasFinancialProjections}/>
+          <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.isGeneratingRevenue}/>
+          <FormPageButtons backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)}/>
         </form>
       </div>
     )

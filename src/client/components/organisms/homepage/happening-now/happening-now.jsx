@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { isEmpty } from "lodash";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import Slider from '../../../atoms/carousel/carousel.jsx';
 import SmallPrimaryButton from '../../../atoms/small-primary-button/small-primary-button.jsx';
@@ -20,79 +18,79 @@ class HappeningNow extends React.Component {
     this.props.actions.fetchContentIfNeeded(contentProperty, "frontpageslides");
   }
 
-  render() {
-    let items = [];
-    let mdSize = 3;
-    if (this.props.happeningNow) {
-      items = this.props.happeningNow;
-      if (items.length === 3) {
-        mdSize = 4;
-      }
-    }
+  makeDesktopImage(item, index, desktopStyle) {
+    return (
+      <div key={index} className={desktopStyle}>
+        <a href={item.url}>
+          <img src={item.image} alt={item.imageAlt}></img>
+        </a>
+      </div>
+    );
+  }
 
-    if (isEmpty(items)) {
+  makeDeskopTitle(item, index, desktopStyle) {
+    return (
+      <div key={index} className={desktopStyle}>
+        <p className={styles.itemTitleDesktop} key={index}>
+          {item.title}
+        </p>
+      </div>
+    );
+  }
+  makeDesktopButton(item, index, desktopStyle) {
+    return (
+      <div key={index} className={desktopStyle}><SmallPrimaryButton key={index} extraClassName={styles.buttonDesktop} url={item.url} text="LEARN MORE"/></div>
+    );
+  }
+
+  render() {
+    let items = this.props.happeningNow || [];
+    let size = items.length;
+
+    if (size === 0) {
       return <div></div>;
     }
 
+    let desktopStyle = size === 3
+      ? styles.itemDesktopThree
+      : styles.itemDesktopFour;
+    let me = this;
+    let title = "What's happening now.";
     return (
-      <div className={ styles.happeningNow }>
-        <div className="hidden-xs">
-          <Grid fluid>
-            <Row>
-              <Col sm={ 12 } xsHidden>
-              <h1 className={styles.happeningNowTitle}>What's happening now.</h1>
-              </Col>
-            </Row>
-            <div className={ styles.happeningNowDesktop }>
-              <Row>
-                { items.map(function(item, i) {
-                    return (
-                      <Col key={ i } xsHidden sm={ mdSize }>
-                      <a href={ item.url }>
-                        <img className="img-responsive" src={ item.image } alt={ item.imageAlt }></img>
-                      </a>
-                      </Col>
-                      );
-                  }) }
-              </Row>
-              <Row>
-                { items.map(function(item, i) {
-                    return <Col key={ i } xsHidden sm={ mdSize }>
-                           <p className={ styles.happeningNowItemTitle }>
-                             { item.title }
-                           </p>
-                           </Col>;
-                  }) }
-              </Row>
-              <Row>
-                { items.map(function(item, i) {
-                    return <Col key={ i } xsHidden sm={ mdSize }>
-                           <SmallPrimaryButton URL={ item.url } text="LEARN MORE"/>
-                           </Col>;
-                  }) }
-              </Row>
-            </div>
-          </Grid>
-        </div>
-        <div className="hidden-md hidden-lg hidden-sm">
-          <div>
-            <p className={ styles.happeningNowTitleMobile }>What's happening now.</p>
+      <div className={styles.container}>
+        <div className={styles.containerDesktop}>
+          <h1 className={styles.titleDesktop}>{title}</h1>
+          <div >
+            {items.map((item, index) => {
+              return me.makeDesktopImage(item, index, desktopStyle)
+            })}
           </div>
-          <div className={ styles.happeningNowMobile }>
-            <Slider items={ items } />
+          <div key={2}>
+            {items.map((item, index) => {
+              return me.makeDeskopTitle(item, index, desktopStyle)
+            })}
+          </div>
+          <div key={3}>
+            {items.map((item, index) => {
+              return me.makeDesktopButton(item, index, desktopStyle)
+            })}
+          </div>
+        </div>
+        <div className={styles.containerMobile}>
+          <h2 className={styles.titleMobile}>{title}</h2>
+          <div className={styles.itemsMobile}>
+            <Slider items={items}/>
           </div>
         </div>
       </div>
-      );
+    );
 
   }
 
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {
-    happeningNow: reduxState.contentReducer[contentProperty]
-  };
+  return {happeningNow: reduxState.contentReducer[contentProperty]};
 }
 
 function mapDispatchToProps(dispatch) {

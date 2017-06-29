@@ -1,41 +1,62 @@
-
-.happeningNow {
-    margin-top: 5vw;
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
+.container{
+    visibility: visible;
 }
 
 /* Desktop */
-.happeningNowDesktop{
-    padding-left: calc(10.4vw - 15px);
-    padding-right: calc(10.4vw - 15px);
+.containerDesktop {
+    @include grid-media($sba-grid-small) {
+        display: none;
+    }
+    @include grid-media($sba-grid-medium) {
+         @include grid-column(12);
+    }
+    @include grid-media($sba-grid-large) {
+         @include grid-column(12);
+    }
 }
 
-.happeningNowTitle{
-    padding-left: calc(10.4vw - 15px);
-    padding-bottom: 2vw;
+.titleDesktop {
+    @include grid-column(12);
+    text-align: left;
 }
 
-.happeningNowItemTitle{
-    color: black;
+.itemTitleDesktop {
     @include font-size($h5-font-sizes);
+    color: black;
     font-weight: 700;
-    padding-top: 1vw;
-    padding-bottom: 1vw;
+    padding-top: $margin-20;
+    padding-bottom: $margin-20;
 }
 
+.itemDesktopFour {
+    @include grid-column(3);
+    @include grid-push(0);
+}
+
+.itemDesktopThree {
+    @include grid-column(4);
+    @include grid-push(0);
+}
+
+.buttonDesktop{
+}
 
 /* Mobile */
-
-.happeningNowMobile{
+.containerMobile {
     margin-top: 2vw;
+    @include grid-media($sba-grid-small) {
+         width: 100%;
+    }
+    @include grid-media($sba-grid-medium) {
+        display: none;
+    }
+    @include grid-media($sba-grid-large) {
+        display: none;
+    }
 }
 
-.happeningNowTitleMobile{
-    @include font-size($h5-font-sizes);
-    // line-height: 8vw;
-    font-weight: bold;
+.titleMobile {
+    font-size: 3rem;
     padding-bottom: 2vw;
     padding-left: 12.53vw;
 }

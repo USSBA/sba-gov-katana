@@ -57,7 +57,7 @@ class TenStepsLandingPage extends React.Component {
             },
             {
                 sectionNum: 6,
-                title: "Name your business.",
+                title: "Choose your business name.",
                 leftAlignBox: true,
                 solidBox: true,
                 image: "assets/images/tensteps/name.jpg",
@@ -100,7 +100,7 @@ class TenStepsLandingPage extends React.Component {
                 title: "Open a business bank account.",
                 leftAlignBox: true,
                 solidBox: false,
-                image: "assets/images/tensteps/bank.jpg",
+                image: "assets/images/tensteps/bank.png",
                 imageAlt: "Choose your business name.",
                 link: "/business-guide/launch/52",
                 text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready."
