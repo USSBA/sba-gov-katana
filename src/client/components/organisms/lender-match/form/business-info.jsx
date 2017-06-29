@@ -112,6 +112,7 @@ class BusinessInfoForm extends React.Component {
   }
 
   render() {
+    let id = "business-info-form";
     return (
       <div>
         <form ref={(input) => this.businessInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>

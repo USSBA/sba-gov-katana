@@ -53,14 +53,15 @@ export class AdditionalInfoForm extends React.Component {
   }
 
   render() {
+      let id = "additional-info-form";
     return (
       <div>
-        <form ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+        <form id={id} ref={(input) => this.addInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
           <h6 className={addInfoStyles.label}>Select all that apply to you:</h6>
           <CheckBox autoFocus={true} name="hasWrittenPlan" label="I have written a business plan" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasWrittenPlan}/>
           <CheckBox name="hasFinancialProjections" label="I have financial projections" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.hasFinancialProjections}/>
           <CheckBox name="isGeneratingRevenue" label="I'm generating revenue" handleChange={this.handleClick.bind(this)} checked={this.state.additionalInfoFields.isGeneratingRevenue}/>
-          <FormPageButtons backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)}/>
+          <FormPageButtons parentId={id} backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)}/>
         </form>
       </div>
     )

@@ -96,6 +96,7 @@ class ContactInfoForm extends React.Component {
   }
 
   render() {
+    let id = "contact-info-form";
     return (
       <div>
         <form id="lender-match-contact-form" ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
