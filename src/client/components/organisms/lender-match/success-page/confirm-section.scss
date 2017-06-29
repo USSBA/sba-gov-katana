@@ -1,5 +1,6 @@
-.container{
-    
+.emailConfirmationText{
+    min-height: 600px;
+    padding: 10% 10%;
 }
 
 .section {
@@ -10,11 +11,14 @@
     top: 30px;
     @include grid-container;
     // Mobile
+    h1, h5, .title {
+        text-align: center;
+    }
+
     h1 {
         font-size: 34px;
         font-weight: 900;
         margin-bottom: 12px;
-        text-align: center;
     }
     h4 {
         font-size: 21px;
@@ -27,7 +31,6 @@
         font-size: 16px;
         font-style: italic;
         margin-bottom: 32px;
-        text-align: center;
     }
     p {
         font-size: 18px;
