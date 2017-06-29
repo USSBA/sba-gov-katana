@@ -96,14 +96,15 @@ class ContactInfoForm extends React.Component {
   }
 
   render() {
+    let id = "lender-match-contact-info-form";
     return (
       <div>
-        <form id="lender-match-contact-form" ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
-          <TextInput id="lender-match-name" errorText={constants.messages.validation.invalidName} label="What is your full name?" name="contactFullName" onChange={this.handleChange.bind(this)} value={this.state.contactFullName} validationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <TextInput id="lender-match-phone" errorText={constants.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" onChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} validationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
-          <TextInput id="lender-match-email" errorText={constants.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" onChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} validationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
-          <TextInput id="lender-match-email-check" hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} onChange={this.handleChange.bind(this)} validationState={this.state.validStates.contactSecondaryEmailAddress}/>
-          <FormPageButtons backButtonText="EXIT" backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
+        <form id={id}  ref={(input) => this.contactInfoForm = input} onSubmit={(e) => this.handleSubmit(e)}>
+          <TextInput id={id+"-name"}  errorText={constants.messages.validation.invalidName} label="What is your full name?" name="contactFullName" onChange={this.handleChange.bind(this)} value={this.state.contactFullName} validationState={this.state.validStates.contactFullName} autoFocus onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput id={id+"-phone"}  errorText={constants.messages.validation.invalidPhoneNumber} label="What is your phone number?" name="contactPhoneNumber" onChange={this.handleChange.bind(this)} value={this.state.contactPhoneNumber} validationState={this.state.validStates.contactPhoneNumber} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <TextInput id={id+"-email"}  errorText={constants.messages.validation.invalidEmail} label="What is your email address?" name="contactEmailAddress" onChange={this.handleChange.bind(this)} value={this.state.contactEmailAddress} validationState={this.state.validStates.contactEmailAddress} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/> {/* HoneyPot -- this comment should not appear in the minified code*/}
+          <TextInput id={id+"-email-check"}  hidden={true} label="What is your second email address?" name="contactSecondaryEmailAddress" tabIndex={-1} onChange={this.handleChange.bind(this)} validationState={this.state.validStates.contactSecondaryEmailAddress}/>
+          <FormPageButtons parentId={id} backButtonText="EXIT" backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
         </form>
       </div>
     );
