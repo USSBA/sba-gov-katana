@@ -22,10 +22,10 @@ select,
 textarea {
   display: block;
   font-family: $base-font-family;
-  // font-size: $base-font-size;
 }
 
 #{$all-text-inputs} {
+  font-size: inherit;
   appearance: none;
   background-color: $base-background-color;
   border: $base-border;
