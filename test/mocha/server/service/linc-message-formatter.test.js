@@ -28,7 +28,7 @@ describe("LINC Message Formatter", function() {
         industryExperience: "Less than 1 year",
         loanAmount: "10000",
         loanDescription: "loanDescription",
-        loanUsage: "REMODELING AN EXISTING LOCATION",
+        loanUsage: "REMODELING/EXPANSION",
         businessWebsite: "businessWebsite",
         businessDescription: "businessDescription",
         hasWrittenPlan: true,
@@ -110,8 +110,8 @@ describe("LINC Message Formatter", function() {
     });
 
     it('should accept bDtlTypCd that has a single item in the list', function() {
-      let retVal = bDtlTypCd("SERVICE");
-      retVal.should.equal("01");
+      let retVal = bDtlTypCd("RETAIL");
+      retVal.should.equal("04");
     });
 
     it('should not accept bDtlTypCd that has an empty string', function() {
@@ -127,7 +127,7 @@ describe("LINC Message Formatter", function() {
     });
 
     it('should accept lProceedTypCd that has multiple items in the list', function() {
-      let retVal = lProceedTypCd("REFINANCING/CONSOLIDATING DEBT,REMODELING AN EXISTING LOCATION,HIRING EMPLOYEES/STAFF");
+      let retVal = lProceedTypCd("REFINANCING DEBT,REMODELING/EXPANSION,HIRING EMPLOYEES");
       retVal.should.equal("04,03,05");
     });
 

@@ -9,7 +9,7 @@ export default {
   industryExperience: "Less than 1 year",
   loanAmount: "10000",
   loanDescription: "loanDescription",
-  loanUsage: "REMODELING AN EXISTING LOCATION",
+  loanUsage: "BUYING EQUIPMENT",
   businessWebsite: "businessWebsite",
   businessDescription: "businessDescription",
   hasWrittenPlan: true,

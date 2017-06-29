@@ -15,7 +15,7 @@
     <BusinessAgeCd>01</BusinessAgeCd>
     <BusinessDtlTypCd>09</BusinessDtlTypCd>
     <BusinessDtlTypTxt>loanDescription</BusinessDtlTypTxt>
-    <LoanProceedTypCd>03</LoanProceedTypCd>
+    <LoanProceedTypCd>02</LoanProceedTypCd>
     <ProceedOthTypTxt>loanDescription</ProceedOthTypTxt>
     <RequestedLoanAmount>10000</RequestedLoanAmount>
     <BusinessAdvisoryInd>N</BusinessAdvisoryInd>
