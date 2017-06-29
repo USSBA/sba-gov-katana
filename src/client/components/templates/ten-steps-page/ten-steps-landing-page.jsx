@@ -123,6 +123,12 @@ class TenStepsLandingPage extends React.Component {
                 <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
                     {tenstepSectionItems}
                 </div>
+                <div className={styles.lastSection}>
+                    <div className={styles.lastSectionText}>
+                        <h1>Open shop.</h1>
+                        <p>Congratulations! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.</p>
+                    </div>
+                </div>
             </div>
         );
     }
