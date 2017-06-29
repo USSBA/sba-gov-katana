@@ -6,8 +6,11 @@ class EmailConfirmationInvalid extends React.Component {
     return (
       <div className={styles.section}>
         <h2 className={styles.title}>
-          Your email confirmation link has expired. Please submit a new application with your updated information at https://www.sba.gov/lendermatch.
+          Your email confirmation link has expired.
         </h2>
+        <p>
+          Please submit a new application with your updated information at <a href="https://www.sba.gov/lendermatch">https://www.sba.gov/lendermatch</a>.
+        </p>
       </div>
     )
   }

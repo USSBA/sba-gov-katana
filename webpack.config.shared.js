@@ -51,23 +51,11 @@ module.exports = function() {
             }
           }, sassResources],
           exclude: [
-            path.resolve(__dirname, "src/client/styles/common/collapse.scss"),
-            path.resolve(__dirname, "src/client/components/atoms/checkbox/checkbox.scss")
+            path.resolve(__dirname, "src/client/styles/common/collapse.scss")
           ]
         },
         {
           test: /.*collapse\.scss$/,
-          loaders: ["style-loader", "css-loader", {
-            loader: "sass-loader",
-            options: {
-              includePaths: [
-                path.join(__dirname, 'src', 'client', 'styles')
-              ]
-            }
-          }, sassResources]
-        },
-        {
-          test: /.*checkbox\.scss$/,
           loaders: ["style-loader", "css-loader", {
             loader: "sass-loader",
             options: {

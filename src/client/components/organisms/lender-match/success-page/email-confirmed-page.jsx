@@ -6,8 +6,11 @@ class EmailConfirmedPage extends React.Component {
     return (
       <div className={styles.section}>
         <h2 className={styles.title}>
-          {"Your email has been confirmed. Your submission is being forwarded to lenders in your area. Please allow at least two business days to be matched with a lender in our network. We'll email you with any updates."}
+          Your email has been confirmed.
         </h2>
+        <p>
+          Your submission is being forwarded to lenders in your area. Please allow at least two business days to be matched with a lender in our network. We'll email you with any updates.
+        </p>
       </div>
     )
   }

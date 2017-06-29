@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
-//import PureRenderMixin from 'rc-util/lib/PureRenderMixin';
-import classNames from 'classnames';
+import styles from './checkbox.scss';
 
 export default class Checkbox extends React.Component {
   static propTypes = {
-    prefixCls: PropTypes.string,
     className: PropTypes.string,
     style: PropTypes.object,
     name: PropTypes.string,
@@ -21,7 +19,6 @@ export default class Checkbox extends React.Component {
     autoFocus: PropTypes.bool
   };
   static defaultProps = {
-    prefixCls: 'rc-checkbox',
     className: '',
     style: {},
     type: 'checkbox',
@@ -48,9 +45,6 @@ export default class Checkbox extends React.Component {
     }
   }
 
-  // shouldComponentUpdate(...args) {
-  //   return PureRenderMixin.shouldComponentUpdate.apply(this, args);
-  // }
 
   handleChange = (e) => {
     const {props} = this;
@@ -80,17 +74,14 @@ export default class Checkbox extends React.Component {
     this.checkBox.focus();
   }
 
-/*esfmt-ignore-start*/
   render() {
-    const {id, prefixCls, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
+    const {id, className, style, name, type, disabled, readOnly, tabIndex, onClick, onFocus, onBlur, autoFocus} = this.props;
     const {checked} = this.state;
-    const classString = classNames(prefixCls, className, {
-      [`${prefixCls}-checked`]: checked,
-      [`${prefixCls}-disabled`]: disabled,
-    });
+    const disabledClass = disabled ? styles["rc-checkbox-disabled"] : " ";
+    const checkedClass = checked ? styles["rc-checkbox-checked"] : " ";
 
     return (
-      <span className={ classString } style={ style }>
+      <span className={ styles["rc-checkbox"] + " " + disabledClass + " " +  checkedClass} style={ style }>
         <input
             id={id}
             name={ name }
@@ -100,16 +91,15 @@ export default class Checkbox extends React.Component {
             readOnly={ readOnly }
             disabled={ disabled }
             tabIndex={ tabIndex }
-            className={ `${prefixCls}-input` }
+            className={ styles["rc-checkbox-input"] }
             checked={ !!checked }
             onClick={ (e) => {this.handleCheckboxClick(e)} }
             onFocus={ onFocus }
             onBlur={ onBlur }
             onChange={ this.handleChange }
             />
-        <span className={ `${prefixCls}-inner` } />
+        <span className={styles["rc-checkbox-inner"]} />
       </span>
       );
   }
-  /*esfmt-ignore-end*/
 }
