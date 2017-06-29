@@ -38,6 +38,8 @@ class TextInput extends React.Component {
       validationState,
       errorText,
       showValidationIcon,
+      showSuccessIcon,
+      showErrorIcon,
       ...rest
     } = this.props;
     let validationIcon = this.iconValidation(validationState);

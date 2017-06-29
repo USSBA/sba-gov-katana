@@ -57,11 +57,11 @@ class MultiSelectBox extends React.Component {
         return (<div/>);
       };
     return (
-      <div>
+      <div id={this.props.id+"-container"}>
         <label>
           {this.props.label}
         </label>
-        <div className={styles.errorClass}>
+        <div id={this.props.id} className={styles.errorClass}>
           <ReactSelect className={errorClass + " " + styles.myselect} menuBuffer={10} tabSelectsValue={false} multi={this.props.multi} autoBlur={true} onChange={this.handleChange.bind(this)} name={this.props.name} require={this.props.required} autofocus={this.props.autoFocus} value={myValue} options={this.props.options} onBlur={this.handleBlur.bind(this)} onFocus={this.handleFocus.bind(this)} arrowRenderer={arrowRenderer} clearRenderer={clearRenderer} searchable={this.props.multi}/>
         </div>
         {errorMessage}
