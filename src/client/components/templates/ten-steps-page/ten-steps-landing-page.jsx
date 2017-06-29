@@ -1,8 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as ContentActions from "../../../actions/content.js";
+import _ from 'lodash';
 import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
+import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
 import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
+import BizguideTileCollection from "../../molecules/bizguide-tile/bizguide-tile-collection.jsx";
 
 class TenStepsLandingPage extends React.Component {
+    componentWillMount() {
+        this.props.actions.fetchContentIfNeeded("menu", "menu");
+    }
     render() {
         let titleBoxDataArray = [
             {
@@ -109,6 +118,9 @@ class TenStepsLandingPage extends React.Component {
             return(<TenStepsSection index={index} key={index} sectionItem={item}/>);
         });
 
+        let sectionData = findSection(this.props.menu, "guide") || findSection(this.props.menu, "business-guide");
+        console.log("sectionData: " + sectionData);
+
         return (
             <div className={styles.tenStepsLandingPage}>
                 <div className={styles.titleSection}>
@@ -129,9 +141,26 @@ class TenStepsLandingPage extends React.Component {
                         <p>Congratulations! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.</p>
                     </div>
                 </div>
+                {sectionData ? <div className={styles.bizguideContainer}>
+                    <h1>Explore more topics.</h1>
+                    <BizguideTileCollection sectionData={sectionData}/></div> : <div></div>
+                }
             </div>
         );
     }
 }
 
-export default TenStepsLandingPage;
+function mapReduxStateToProps(reduxState, ownProps) {
+    return {
+        menu: _.get(reduxState, "contentReducer.menu")
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(ContentActions, dispatch)
+        //locationActions: bindActionCreators(LocationChangeActions, dispatch)
+    }
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(TenStepsLandingPage);
