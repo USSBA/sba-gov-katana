@@ -1,0 +1,74 @@
+$circleColorNegative: #E7BEE3;
+//$circleColor: $byzantine;
+$circleColor: black;
+
+
+.container {
+    position: fixed;
+    top: 25vh;
+    height: 50vh;
+    right: 5px;
+    z-index: 9999;
+    background-color: #0A3072;
+}
+
+//.container {
+//    position: absolute;
+//    top: 50%;
+//    transform: translateY(-50%);
+//    height: 50vh;
+//    right: 5px;
+//    z-index: 9999;
+//    background-color: #0A3072;
+//}
+
+.section {
+    position: relative;
+    height: 5vh;
+    min-width: 5vh;
+    float: right;
+    clear: right;
+}
+
+.section:hover {
+    .circle {
+        display: none;
+    }
+    .hoverBox {
+        display: block !important;
+    }
+}
+
+.circle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2vh;
+    width: 2vh;
+    border-radius: 50%;
+    background-color: $circleColorNegative;
+}
+
+.circleNegative {
+    composes: circle;
+    background-color: $circleColorNegative;
+}
+
+.hoverBox {
+    display: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4.5vh;
+    width: 5vh;
+    background-color: $byzantine-dark;
+}
+
+.activeCircle {
+    height: 4vh;
+    width: 4vh;
+    border-radius: 50%;
+    background-color: white;
+}
+
+

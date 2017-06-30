@@ -6,6 +6,7 @@ import _ from 'lodash';
 import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
 import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
 import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
+import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
 import BizguideTileCollection from "../../molecules/bizguide-tile/bizguide-tile-collection.jsx";
 
 class TenStepsLandingPage extends React.Component {
@@ -123,6 +124,7 @@ class TenStepsLandingPage extends React.Component {
 
         return (
             <div className={styles.tenStepsLandingPage}>
+                <TenStepsNav/>
                 <div className={styles.titleSection}>
                     <div className={styles.titleSectionText}>
                     <h1>10 steps to start your business.</h1>
