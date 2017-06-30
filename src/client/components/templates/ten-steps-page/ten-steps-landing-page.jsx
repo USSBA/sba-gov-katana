@@ -124,8 +124,8 @@ class TenStepsLandingPage extends React.Component {
 
         return (
             <div className={styles.tenStepsLandingPage}>
-                <TenStepsNav/>
                 <div className={styles.titleSection}>
+                    <TenStepsNav/>
                     <div className={styles.titleSectionText}>
                     <h1>10 steps to start your business.</h1>
                     <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>

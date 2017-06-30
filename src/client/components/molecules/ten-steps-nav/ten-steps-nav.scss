@@ -3,24 +3,22 @@ $circleColorNegative: #E7BEE3;
 $circleColor: black;
 
 
+//.container {
+//    position: fixed;
+//    top: 25vh;
+//    height: 450px;
+//    right: 5px;
+//    z-index: 9999;
+//}
+
 .container {
-    position: fixed;
-    top: 25vh;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     height: 450px;
     right: 5px;
     z-index: 9999;
-    //background-color: #0A3072;
 }
-
-//.container {
-//    position: absolute;
-//    top: 50%;
-//    transform: translateY(-50%);
-//    height: 50vh;
-//    right: 5px;
-//    z-index: 9999;
-//    background-color: #0A3072;
-//}
 
 .section {
     position: relative;
@@ -102,6 +100,6 @@ $circleColor: black;
     float: left;
     font-weight: bold;
     color: white;
-    margin: 0 10px 0 20px;
+    margin: 0 5px 0 15px;
 }
 
