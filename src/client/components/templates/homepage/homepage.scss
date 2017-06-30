@@ -19,14 +19,9 @@
 .last{
     margin-bottom: 50px;
 }
-.section:after,
-.sectionWithPadding:after {
-    content: " ";
-    /* Older browser do not support empty content */
-    visibility: hidden;
-    display: block;
-    height: 0;
-    clear: both;
+.section,
+.sectionWithPadding {
+    @include clearFix;
 }
 
 .sectionWithPadding {
@@ -35,7 +30,7 @@
         padding-right: 0;
     }
     @include grid-media($sba-grid-medium) {
-        padding-left: 120px;
-        padding-right: 120px;
+        padding-left: $homepage-gutter-size;
+        padding-right: $homepage-gutter-size;
     }
 }

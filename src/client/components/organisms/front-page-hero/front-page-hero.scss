@@ -17,8 +17,8 @@
         visibility: visible;
     }
     @include grid-media($sba-grid-medium) {
-        padding-left: 120px;
-        padding-right: 120px;
+        padding-left: $homepage-gutter-size;
+        padding-right: $homepage-gutter-size;
     }
 }
 
@@ -27,8 +27,8 @@
         visibility: visible;
     }
     @include grid-media($sba-grid-medium) {
-        padding-left: 120px;
-        padding-right: 120px;
+        padding-left: $homepage-gutter-size;
+        padding-right: $homepage-gutter-size;
         position: relative;
     }
 }
@@ -81,22 +81,17 @@
     }
 
     .AccentBox {
-
         @include grid-column(7, $sba-grid-medium);
         @include grid-push(5, $sba-grid-medium);
         position: relative;
         background: #0F48AA;
-        // width: 36vw;
         height: 18vw;
-        // bottom: 15vw;
         top: -33vw;
         margin-bottom: -33vw;
-        // right: 10.4vw;
         z-index: 0;
     }
 
     .reverse .AccentBox {
-        // left: 10.5vw;
         @include grid-push(0, $sba-grid-medium);
     }
 
@@ -106,9 +101,6 @@
     @include grid-media($sba-grid-small) {
         position: relative;
         background: #0F48AA;
-        // width: 91.4vw;
-        // margin-left: 4.3vw;
-        // margin-right: 4.3vw;
         @include grid-column(6);
         height: 48vw;
         z-index: 0;

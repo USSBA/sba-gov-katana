@@ -372,8 +372,13 @@ $primary-color-map:(
 }
 @mixin clearFix{
   &:after{
-    content: "";
-    display: block;
-    clear: both;
+      content: " ";
+      /* Older browser do not support empty content */
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
   }
 }
+
+$homepage-gutter-size: 8.333vw;
