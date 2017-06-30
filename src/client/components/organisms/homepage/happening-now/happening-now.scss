@@ -7,17 +7,13 @@
     @include grid-media($sba-grid-small) {
         display: none;
     }
-    @include grid-media($sba-grid-medium) {
-         @include grid-column(12);
-    }
-    @include grid-media($sba-grid-large) {
-         @include grid-column(12);
-    }
 }
 
 .titleDesktop {
-    @include grid-column(12);
+    @include grid-column(12, $sba-grid-medium);
     text-align: left;
+    font-size: 5.2vw;
+    font-weight: 900;
 }
 
 .itemTitleDesktop {
@@ -29,13 +25,13 @@
 }
 
 .itemDesktopFour {
-    @include grid-column(3);
-    @include grid-push(0);
+    @include grid-column(3, $sba-grid-medium);
+    @include grid-push(0, $sba-grid-medium);
 }
 
 .itemDesktopThree {
-    @include grid-column(4);
-    @include grid-push(0);
+    @include grid-column(4, $sba-grid-medium);
+    @include grid-push(0, $sba-grid-medium);
 }
 
 .buttonDesktop{
@@ -56,7 +52,8 @@
 }
 
 .titleMobile {
-    font-size: 3rem;
+    font-size: 7.47vw;
+    font-weight: bold;
     padding-bottom: 2vw;
     padding-left: 12.53vw;
 }

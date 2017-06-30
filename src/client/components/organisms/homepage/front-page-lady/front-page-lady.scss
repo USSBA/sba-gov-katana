@@ -2,7 +2,7 @@
 .imageContainer {
     width: 100%;
     @include grid-media($sba-grid-small){
-        height: 153vw;
+        // height: 160vw;
     }
 }
 
@@ -11,8 +11,8 @@
         visibility: visible;
     }
     @include grid-media($sba-grid-medium) {
-        padding-left: 8.25vw;
-        padding-right: 8.25vw;
+        padding-left: 120px;
+        padding-right: 120px;
         position: relative;
     }
 }
@@ -57,22 +57,18 @@
         z-index: 0;
         width: 90vw;
         height: 90vw;
-        position: absolute;
-        top: 76vw;
+        position: relative;
+        top: -29vw;
+        margin-bottom: -29vw;
         padding: 6.9vw 8.5vw 8.5vw;
-        @include grid-column(5);
+        @include grid-column(6);
     }
     @include grid-media($sba-grid-medium) {
-        position: absolute;
+        position: relative;
         @include grid-column(6);
         padding: 40px 4vw 50px;
         top: -43vw;
-        left: calc(10.4vw - 30px);
-        // bottom: 13%;
-    }
-    @include grid-media($sba-grid-large) {
-        // top: 10%;
-        // bottom: 24%;
+        margin-bottom: -43vw;
     }
 }
 

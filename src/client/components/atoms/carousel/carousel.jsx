@@ -193,7 +193,7 @@ var Slider = React.createClass({
           <div className={ slidesClasses } style={ slidesStyles }>
             { children }
           </div>
-          <a href={ activeItem.url }>
+          <a className={ styles.SliderItemAnchor } href={ activeItem.url }>
             <p className={ styles.SliderItemTitle }>
               { activeItem.title }
             </p>
