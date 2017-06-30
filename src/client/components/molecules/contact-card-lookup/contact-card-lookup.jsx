@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import _ from "lodash";
 import styles from "./contact-card-lookup.scss";
 import states from "../../../services/us-states.json";
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
@@ -10,19 +11,25 @@ class ContactCardLookup extends React.Component {
     this.state = {
       displayedItems: [],
       noContacts: false,
-      value: null
-    }
+      value: null,
+      numberOfTimesUserHasSelectedAState: 0
+    };
   }
 
   handleChange(selectValue) {
-    let newDisplayedItems = _.filter(this.props.items, {stateServed: selectValue.label});
+    let newValueLabel = selectValue.label;
+    let newDisplayedItems = _.filter(this.props.items, {stateServed:newValueLabel });
     this.setState({
       value: selectValue.value,
-      displayedItems: newDisplayedItems
+      displayedItems: newDisplayedItems,
+      numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState+1
     }, () => {
       this.state.displayedItems.length < 1
         ? this.setState({noContacts: true})
-        : this.setState({noContacts: false})
+        : this.setState({noContacts: false});
+        if(this.props.afterChange){
+          this.props.afterChange("state-lookup", newValueLabel, this.state.numberOfTimesUserHasSelectedAState);
+        }
     });
   }
 
@@ -32,7 +39,7 @@ class ContactCardLookup extends React.Component {
 
   render() {
     let statesMap = _.map(states, function(item) {
-      return {label: item.name, value: item.value}
+      return {label: item.name, value: item.value};
     });
     let multiselectProps = {
       id: "lookup-select",
@@ -79,17 +86,19 @@ class ContactCardLookup extends React.Component {
 
         </div>
       </div>
-    )
+    );
   }
 }
 
 ContactCardLookup.propTypes = {
   title: React.PropTypes.string,
-  items: React.PropTypes.array
-}
+  items: React.PropTypes.array,
+  afterChange: React.PropTypes.func
+};
 
 ContactCardLookup.defaultProps = {
   title: "Lookup Title",
-  items: []
-}
+  items: [],
+  afterChange: () => {}
+};
 export default ContactCardLookup;

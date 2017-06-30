@@ -8,9 +8,22 @@ class ReadMoreSection extends React.Component{
         e.preventDefault();
         this.props.readMoreStatus(!this.props.expanded);
     }
+    makeExpanded(text) {
+      if (text) {
+          let split = text.split("<br/>");
+          return split.map(function(item){
+              return (
+                  <p className={styles.expandedCopyText}>{item} </p>
+              );
+          });
+      } else {
+        return (<div/>);
+      }
+    }
+
     render(){
         let btnText = this.props.expanded ? "CLOSE" :  "READ MORE";
-        let expandedTextSection = this.props.expanded ? <p className={styles.expandedCopyText}>{this.props.readMoreSectionItem.expandedCopyText}</p> : "" ;
+        let expandedTextSection = this.props.expanded ? this.makeExpanded(this.props.readMoreSectionItem.expandedCopyText) : "" ;
         let expandedHr = this.props.expanded ? <hr className={styles.lineCopy}/> : "";
         return (<div className={styles.readMoreSection}>
             <h3 id={this.props.parentId + "-title"} className={styles.title}>{this.props.readMoreSectionItem.titleText}</h3>

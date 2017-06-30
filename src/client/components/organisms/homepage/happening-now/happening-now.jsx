@@ -59,7 +59,7 @@ class HappeningNow extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.containerDesktop}>
-          <h1 className={styles.titleDesktop}>{title}</h1>
+          <h2 className={styles.titleDesktop}>{title}</h2>
           <div >
             {items.map((item, index) => {
               return me.makeDesktopImage(item, index, desktopStyle)
