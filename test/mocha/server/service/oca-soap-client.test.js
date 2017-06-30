@@ -3,6 +3,11 @@ import uuid from "uuid";
 import _ from "lodash";
 import fs from "fs";
 import path from "path";
+import {
+  pd
+} from "pretty-data";
+
+
 
 const DOMParser = require("xmldom").DOMParser;
 
@@ -55,9 +60,9 @@ describe('OCA SOAP Client', function() {
   });
   describe('#convertFormDataToXml', function() {
     it('should convert a lender match registration to proper xml', function() {
-      let result = convertFormDataToXml("newUser", exampleLenderMatchRegistration);
+      let result = pd.xml(convertFormDataToXml("newUser", exampleLenderMatchRegistration));
       result.should.not.be.null;
-      let expected = fs.readFileSync(path.join(__dirname, "./data/oca/expected-lender-match-registration.xml"), "utf-8").trim();
+      let expected = pd.xml(fs.readFileSync(path.join(__dirname, "./data/oca/expected-lender-match-registration.xml"), "utf-8")).trim();
       result.should.equal(expected);
     })
   });

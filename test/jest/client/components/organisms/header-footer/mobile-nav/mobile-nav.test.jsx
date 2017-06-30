@@ -18,9 +18,10 @@ jest.mock("client/services/client-config.js", function() {
 });
 
 test('Mobile Navigation has the correct structure', () => {
-  const component = renderer.create( <
-    MobileNav / >
+  const component = renderer.create( <MobileNav/>
   );
   let tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
+
+// TODO add test here for to render more than just an empty menu
