@@ -152,6 +152,9 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       newValuePromise = fetchNestedParagraph(paragraph, "card_collection"); //eslint-disable-line no-use-before-define
     } else if (typeName === "style_gray_background") {
       newValuePromise = fetchNestedParagraph(paragraph, "style_gray_background"); //eslint-disable-line no-use-before-define
+    } else if (typeName === "read_more") {
+      const newValue = extractValue(value).replace(/\r?\n/g, "<br/>");
+      newValuePromise = Promise.resolve(newValue);
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }

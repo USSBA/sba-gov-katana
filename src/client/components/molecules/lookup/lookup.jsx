@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as RestContentActions from "../../../actions/rest-content.js"
 import {filter} from "lodash"
+import {logEvent} from "../../../services/analytics.js";
 
 import styles from "./lookup.scss";
 import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx"
@@ -24,6 +25,15 @@ class Lookup extends React.Component {
       this.setState({filteredItems: this.filterItems(nextProps.items, nextProps.subtype)});
   }
 
+  fireEvent(category, action, value){
+      logEvent({
+          category: category,
+          action: action,
+          label: window.location.pathname,
+          value: value
+      })
+  }
+
   filterItems(items, subtype) {
     let filteredItems = filter(items, function(item) {
         if(item.category){
@@ -37,7 +47,7 @@ class Lookup extends React.Component {
 
   render() {
     if (this.props.type === "contacts") {
-        return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title}/>);
+        return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
     }
     return (
       <div></div>
