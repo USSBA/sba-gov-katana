@@ -47,7 +47,7 @@ class TenStepsNav extends React.Component {
     ];
 
     return (
-      <div className={s.container}>
+      <div className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}>
         {
           steps.map((step, index) => {
             return (

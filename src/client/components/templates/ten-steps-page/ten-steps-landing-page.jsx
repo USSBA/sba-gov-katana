@@ -14,7 +14,8 @@ class TenStepsLandingPage extends React.Component {
         super();
         this.state = {
             sectionEnter: null,
-            sectionLeave: null
+            sectionLeave: null,
+            navType: "top"
         }
     }
     componentWillMount() {
@@ -24,7 +25,7 @@ class TenStepsLandingPage extends React.Component {
     handleSectionEnter(index){
         console.log("Enter")
         console.log(index)
-        this.setState({sectionEnter: index})
+        this.setState({sectionEnter: index}, this.toggleNavType)
     }
 
     handleSectionLeave(index){
@@ -32,6 +33,16 @@ class TenStepsLandingPage extends React.Component {
         console.log(index)
         this.setState({sectionLeave: index})
     }
+
+    toggleNavType(){
+        if(this.state.sectionEnter > 0) {
+            this.setState({navType: "center"})
+        } else {
+            this.setState({navType: "top"})
+        }
+    }
+
+
 
     render() {
         let titleBoxDataArray = [
@@ -144,8 +155,9 @@ class TenStepsLandingPage extends React.Component {
 
         return (
             <div className={styles.tenStepsLandingPage}>
+                { this.state.navType === 'center' ? <TenStepsNav navType='center'/> : null}
                 <div className={styles.titleSection}>
-                    <TenStepsNav/>
+                    { this.state.navType === 'top' ? <TenStepsNav navType='top'/> : null}
                     <div className={styles.titleSectionText}>
                     <h1>10 steps to start your business.</h1>
                     <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>

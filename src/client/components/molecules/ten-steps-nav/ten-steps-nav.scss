@@ -3,20 +3,20 @@ $circleColorNegative: #E7BEE3;
 $circleColor: black;
 
 
-//.container {
-//    position: fixed;
-//    top: 25vh;
-//    height: 450px;
-//    right: 5px;
-//    z-index: 9999;
-//}
+.containerCenter {
+    position: fixed;
+    top: 25vh;
+    height: 450px;
+    right: 0px;
+    z-index: 9999;
+}
 
-.container {
+.containerTop {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     height: 450px;
-    right: 5px;
+    right: 0px;
     z-index: 9999;
 }
 
