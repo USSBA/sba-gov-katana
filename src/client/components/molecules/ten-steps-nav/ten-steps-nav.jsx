@@ -54,7 +54,10 @@ class TenStepsNav extends React.Component {
               <div className={s.section} key={index}>
                 <div className={s.circle}></div>
                 <div className={s.hoverBox}>
-                  <div className={s.activeCircle}><span className={s.sectionNum}>{index + 1}</span></div>
+                  <div className={s.title}>{step.title}</div>
+                  <div className={s.activeCircleContainer }>
+                    <div className={s.activeCircle}><span className={s.sectionNum}>{index + 1}</span></div>
+                  </div>
                 </div>
               </div>
             )

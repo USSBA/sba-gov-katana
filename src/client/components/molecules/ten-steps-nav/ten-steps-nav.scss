@@ -6,10 +6,10 @@ $circleColor: black;
 .container {
     position: fixed;
     top: 25vh;
-    height: 50vh;
+    height: 450px;
     right: 5px;
     z-index: 9999;
-    background-color: #0A3072;
+    //background-color: #0A3072;
 }
 
 //.container {
@@ -24,8 +24,8 @@ $circleColor: black;
 
 .section {
     position: relative;
-    height: 5vh;
-    min-width: 5vh;
+    height: 45px;
+    min-width: 45px;
     float: right;
     clear: right;
 }
@@ -43,8 +43,8 @@ $circleColor: black;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    height: 2vh;
-    width: 2vh;
+    height: 15px;
+    width: 15px;
     margin: auto;
     border-radius: 50%;
     background-color: $circleColorNegative;
@@ -60,16 +60,26 @@ $circleColor: black;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    height: 4.5vh;
-    width: 5vh;
+    height: 42px;
     background-color: $byzantine-dark;
 }
 
+.activeCircleContainer {
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    min-width: 45px;
+}
+
 .activeCircle {
-    height: 4vh;
-    width: 4vh;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 30px;
     margin: auto;
     border-radius: 50%;
+    border: 1px solid $byzantine-dark;
     background-color: white;
 }
 
@@ -79,6 +89,19 @@ $circleColor: black;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: $byzantine-dark;
 }
 
+.title {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+    font-weight: bold;
+    color: white;
+    margin: 0 10px 0 20px;
+}
 
