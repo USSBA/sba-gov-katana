@@ -45,6 +45,7 @@ $circleColor: black;
     transform: translateY(-50%);
     height: 2vh;
     width: 2vh;
+    margin: auto;
     border-radius: 50%;
     background-color: $circleColorNegative;
 }
@@ -67,8 +68,17 @@ $circleColor: black;
 .activeCircle {
     height: 4vh;
     width: 4vh;
+    margin: auto;
     border-radius: 50%;
     background-color: white;
+}
+
+.sectionNum {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 
