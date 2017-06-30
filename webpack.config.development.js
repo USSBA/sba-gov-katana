@@ -5,7 +5,7 @@ const sharedConfig = require('./webpack.config.shared.js');
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = function(env) {
-  return webpackMerge(sharedConfig(), {
+  return webpackMerge(sharedConfig('[path][name]__[local]--[hash:base64:5]'), {
     devtool: 'eval',
     entry: [
       'babel-polyfill',
