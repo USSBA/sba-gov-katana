@@ -10,9 +10,29 @@ import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
 import BizguideTileCollection from "../../molecules/bizguide-tile/bizguide-tile-collection.jsx";
 
 class TenStepsLandingPage extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            sectionEnter: null,
+            sectionLeave: null
+        }
+    }
     componentWillMount() {
         this.props.actions.fetchContentIfNeeded("menu", "menu");
     }
+
+    handleSectionEnter(index){
+        console.log("Enter")
+        console.log(index)
+        this.setState({sectionEnter: index})
+    }
+
+    handleSectionLeave(index){
+        console.log("Leave")
+        console.log(index)
+        this.setState({sectionLeave: index})
+    }
+
     render() {
         let titleBoxDataArray = [
             {
@@ -116,7 +136,7 @@ class TenStepsLandingPage extends React.Component {
                 text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready."
             }
         ];      const tenstepSectionItems = titleBoxDataArray.map((item, index)=>{
-            return(<TenStepsSection index={index} key={index} sectionItem={item}/>);
+            return(<TenStepsSection index={index} key={index} sectionItem={item} sectionEnter={() => {this.handleSectionEnter(index)}} sectionLeave={() => {this.handleSectionLeave(index)}}/>);
         });
 
         let sectionData = findSection(this.props.menu, "guide") || findSection(this.props.menu, "business-guide");
