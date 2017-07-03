@@ -8,13 +8,13 @@ import {findPageLineage, findSubSection, findSection} from "../../../services/me
 import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
 import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
 import BizguideTileCollection from "../../molecules/bizguide-tile/bizguide-tile-collection.jsx";
+import Waypoint from "react-waypoint"
 
 class TenStepsLandingPage extends React.Component {
     constructor(){
         super();
         this.state = {
-            sectionEnter: null,
-            sectionLeave: null,
+            section: null,
             navType: "top"
         }
     }
@@ -23,21 +23,19 @@ class TenStepsLandingPage extends React.Component {
     }
 
     handleSectionEnter(index){
-        console.log("Enter")
-        console.log(index)
-        this.setState({sectionEnter: index}, this.toggleNavType)
+        console.log("Enter: " + index)
+        this.setState({section: index}, this.toggleNavType)
     }
 
-    handleSectionLeave(index){
-        console.log("Leave")
-        console.log(index)
-        this.setState({sectionLeave: index})
+    handleTitleSectionEnter(){
+        console.log("Enter: titleSection")
+        this.setState({section: "titleSection"} , this.toggleNavType)
     }
 
     toggleNavType(){
-        if(this.state.sectionEnter > 0) {
+        if(this.state.section == 1) {
             this.setState({navType: "center"})
-        } else {
+        } else if(this.state.section == "titleSection") {
             this.setState({navType: "top"})
         }
     }
@@ -147,24 +145,25 @@ class TenStepsLandingPage extends React.Component {
                 text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready."
             }
         ];      const tenstepSectionItems = titleBoxDataArray.map((item, index)=>{
-            return(<TenStepsSection index={index} key={index} sectionItem={item} sectionEnter={() => {this.handleSectionEnter(index)}} sectionLeave={() => {this.handleSectionLeave(index)}}/>);
+            return(<TenStepsSection index={index} key={index} sectionItem={item} sectionEnter={() => {this.handleSectionEnter(index)}}/>);
         });
 
         let sectionData = findSection(this.props.menu, "guide") || findSection(this.props.menu, "business-guide");
-        console.log("sectionData: " + sectionData);
 
         return (
             <div className={styles.tenStepsLandingPage}>
-                { this.state.navType === 'center' ? <TenStepsNav navType='center'/> : null}
-                <div className={styles.titleSection}>
-                    { this.state.navType === 'top' ? <TenStepsNav navType='top'/> : null}
-                    <div className={styles.titleSectionText}>
-                    <h1>10 steps to start your business.</h1>
-                    <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>
+                { this.state.navType === 'center' ? <TenStepsNav navType='center' section={this.state.section}/> : null}
+                <Waypoint onEnter={() => {this.handleTitleSectionEnter()}}>
+                    <div className={styles.titleSection}>
+                        { this.state.navType === 'top' ? <TenStepsNav navType='top'/> : null}
+                        <div className={styles.titleSectionText}>
+                        <h1>10 steps to start your business.</h1>
+                        <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>
+                        </div>
+                        <a className={styles.scrollButton} aria-hidden="true" href="#step-1"><i className={" fa fa-angle-down"}></i></a>
+                        <a className={styles.backLink} href="/business-guide">Back to all topics</a>
                     </div>
-                    <a className={styles.scrollButton} aria-hidden="true" href="#step-1"><i className={" fa fa-angle-down"}></i></a>
-                    <a className={styles.backLink} href="/business-guide">Back to all topics</a>
-                </div>
+                </Waypoint>
                 <span id="step-1" className={styles.anchor}></span>
                 <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
                     {tenstepSectionItems}
