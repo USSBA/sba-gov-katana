@@ -8,7 +8,7 @@ class TenStepsNav extends React.Component {
     console.log(index)
     if(this.props.section == index) {
       return (
-        <div className={s.activeCircleContainer }>
+        <div className={s.sectionCircleContainer }>
           <div className={s.activeCircle}><span className={s.sectionNum}>{index + 1}</span></div>
         </div>
       )
