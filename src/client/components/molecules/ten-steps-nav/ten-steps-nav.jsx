@@ -19,6 +19,10 @@ class TenStepsNav extends React.Component {
     }
   }
 
+  handleAnchorClick(index){
+    document.location.href = "#step-" + index + 1
+  }
+
 
 
   render() {
@@ -72,12 +76,12 @@ class TenStepsNav extends React.Component {
             return (
               <div className={s.section} key={index}>
                 {this.handleActiveStep(index)}
-                <div className={s.hoverBox}>
-                  <div className={s.title}>{step.title}</div>
-                  <div className={s.activeCircleContainer }>
-                    <div className={s.activeCircle}><span className={s.sectionNum}>{index + 1}</span></div>
+                  <div className={s.hoverBox} onClick={() => {this.handleAnchorClick(index)}}>
+                    <div className={s.title}>{step.title}</div>
+                    <div className={s.activeCircleContainer }>
+                      <div className={s.activeCircle}><span className={s.sectionNum}>{index + 1}</span></div>
+                    </div>
                   </div>
-                </div>
               </div>
             )
           })
