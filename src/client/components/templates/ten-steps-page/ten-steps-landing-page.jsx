@@ -36,6 +36,11 @@ class TenStepsLandingPage extends React.Component {
         this.setState({section: "titleSection"} , this.toggleNavType)
     }
 
+    handleTitleSectionLeave(){
+        console.log("Leave: titleSection")
+        this.setState({section: 0, navType: "center"})
+    }
+
     handleCalloutEnter(){
         this.setState({section: null, navType: null})
     }
@@ -165,17 +170,19 @@ class TenStepsLandingPage extends React.Component {
         return (
             <div className={styles.tenStepsLandingPage}>
                 { this.state.navType === 'center' ? <TenStepsNav navType='center' section={this.state.section}/> : null}
-                <Waypoint onEnter={() => {this.handleTitleSectionEnter()}}>
+
                     <div className={styles.titleSection}>
                         { this.state.navType === 'top' ? <TenStepsNav navType='top'/> : null}
                         <div className={styles.titleSectionText}>
-                        <h1>10 steps to start your business.</h1>
-                        <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>
+                                <h1>10 steps to start your business.</h1>
+                        <Waypoint onEnter={() => {this.handleTitleSectionEnter()}} onLeave={() => {this.handleTitleSectionLeave()}}>
+                            <p>Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.</p>
+                        </Waypoint>
                         </div>
                         <a className={styles.scrollButton} aria-hidden="true" href="#step-1"><i className={" fa fa-angle-down"}></i></a>
                         <a className={styles.backLink} href="/business-guide">Back to all topics</a>
                     </div>
-                </Waypoint>
+
                 <span id="step-1" className={styles.anchor}></span>
                 <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
                     {tenstepSectionItems}
