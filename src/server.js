@@ -89,7 +89,7 @@ import * as cacheController from "./controllers/cache.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
 app.get("/actions/clearCache", cacheController.clearCache);
-app.del("/cache", cacheController.clearCache);
+app.delete("/cache", cacheController.clearCache);
 app.get("/content/feedback.csv", feedbackController.retrieveFeedback);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
