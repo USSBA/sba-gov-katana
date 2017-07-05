@@ -8,26 +8,29 @@
 .section,
 .sectionWithPadding {
     width: 100%;
-    margin-bottom: 50px;
+    @include grid-media($sba-grid-small) {
+        margin-bottom: 20px;
+    }
+    @include grid-media($sba-grid-medium) {
+        margin-bottom: 50px;
+    }
 }
 
-.section:after,
-.sectionWithPadding:after {
-    content: " ";
-    /* Older browser do not support empty content */
-    visibility: hidden;
-    display: block;
-    height: 0;
-    clear: both;
+.last{
+    margin-bottom: 50px;
+}
+.section,
+.sectionWithPadding {
+    @include clearFix;
 }
 
 .sectionWithPadding {
     @include grid-media($sba-grid-small) {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
     @include grid-media($sba-grid-medium) {
-        padding-left: 8.25vw;
-        padding-right: 8.25vw;
+        padding-left: $homepage-gutter-size;
+        padding-right: $homepage-gutter-size;
     }
 }

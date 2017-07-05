@@ -137,19 +137,19 @@ class LoanInfo extends React.Component {
 
   render() {
     let loanUsageOptions = _.map([
-      "Buying an Existing Business",
+      "Purchasing property",
+      "Buying equipment",
+      "Remodeling/Expansion",
+      "Refinancing debt",
+      "Hiring employees",
+      "Working capital",
+      "Purchasing inventory",
+      "Marketing",
+      "Buy an existing business",
       "Developing a Product",
-      "Hiring Employees/Staff",
-      "Marketing/Advertising",
-      "Opening a New Location ",
-      "Other",
+      "Opening a New Location",
       "Participating in Trade Show",
-      "Purchasing Equipment",
-      "Purchasing Inventory",
-      "Purchasing Property",
-      "Refinancing/consolidating debt",
-      "Remodeling an existing location",
-      "Working Capital"
+      "Other"
     ], (x) => {
       return {label: x, value: x};
     });

@@ -10,16 +10,16 @@ function lProceedTypCd(loanUsage) {
       case "PURCHASING PROPERTY":
         retLoanDescCd = "01";
         break;
-      case "PURCHASING EQUIPMENT":
+      case "BUYING EQUIPMENT":
         retLoanDescCd = "02";
         break;
-      case "REMODELING AN EXISTING LOCATION":
+      case "REMODELING/EXPANSION":
         retLoanDescCd = "03";
         break;
-      case "REFINANCING/CONSOLIDATING DEBT":
+      case "REFINANCING DEBT":
         retLoanDescCd = "04";
         break;
-      case "HIRING EMPLOYEES/STAFF":
+      case "HIRING EMPLOYEES":
         retLoanDescCd = "05";
         break;
       case "WORKING CAPITAL":
@@ -28,10 +28,10 @@ function lProceedTypCd(loanUsage) {
       case "PURCHASING INVENTORY":
         retLoanDescCd = "07";
         break;
-      case "MARKETING/ADVERTISING":
+      case "MARKETING":
         retLoanDescCd = "08";
         break;
-      case "BUYING AN EXISTING BUSINESS":
+      case "BUY AN EXISTING BUSINESS":
         retLoanDescCd = "09";
         break;
       case "OTHER":
@@ -61,14 +61,8 @@ function bDtlTypCd(industryType) {
     const strIndustryType = industryTypeItem.trim(" ").toUpperCase();
     let retIndustryTypeCd = "";
     switch (strIndustryType) {
-      case "SERVICE":
-        retIndustryTypeCd = "01";
-        break;
       case "MANUFACTURING":
         retIndustryTypeCd = "02";
-        break;
-      case "WHOLESALE":
-        retIndustryTypeCd = "03";
         break;
       case "RETAIL":
         retIndustryTypeCd = "04";
@@ -76,11 +70,8 @@ function bDtlTypCd(industryType) {
       case "RESTAURANT/BAR":
         retIndustryTypeCd = "05";
         break;
-      case "HOTEL/MOTEL":
-        retIndustryTypeCd = "06";
-        break;
       case "AUTOMOTIVE/SERVICE STATION":
-        retIndustryTypeCd = "07";
+        retIndustryTypeCd = "25";
         break;
       case "OTHER":
         retIndustryTypeCd = "99";
@@ -125,7 +116,7 @@ function bDtlTypCd(industryType) {
         retIndustryTypeCd = "20";
         break;
       case "PROFESSIONAL SERVICES":
-        retIndustryTypeCd = "21";
+        retIndustryTypeCd = "01";
         break;
       case "REAL ESTATE":
         retIndustryTypeCd = "22";

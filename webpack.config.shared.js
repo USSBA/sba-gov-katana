@@ -9,7 +9,7 @@ var sassResources = {
   }
 };
 
-module.exports = function() {
+module.exports = function(styleNamingFormat) {
   return {
     module: {
       rules: [{
@@ -40,7 +40,7 @@ module.exports = function() {
             loader: 'css-loader',
             options: {
               modules: true,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]'
+              localIdentName: styleNamingFormat || '[hash:base64]'
             }
           }, {
             loader: "sass-loader",

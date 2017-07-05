@@ -1,0 +1,111 @@
+$circleColor: #E7BEE3;
+$circleColorNegative: $byzantine;
+
+
+.containerCenter {
+    position: fixed;
+    top: 25vh;
+    height: 450px;
+    right: 0px;
+    z-index: 9999;
+}
+
+.containerTop {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 450px;
+    right: 0px;
+    z-index: 9999;
+}
+
+.section {
+    position: relative;
+    height: 45px;
+    min-width: 35px;
+    float: right;
+    clear: right;
+}
+
+.section:hover {
+    .circle {
+        display: none;
+    }
+    .sectionCircleContainer {
+        display: none;
+    }
+    .hoverBox {
+        display: block !important;
+    }
+}
+
+.circle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 15px;
+    width: 15px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: $circleColor;
+}
+
+.circleNegative {
+    composes: circle;
+    background-color: $circleColorNegative;
+}
+
+.hoverBox {
+    display: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 42px;
+    background-color: $byzantine-dark;
+}
+
+.activeCircleContainer {
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    min-width: 35px;
+}
+
+.activeCircle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid $byzantine-dark;
+    background-color: white;
+}
+
+.sectionCircleContainer {
+    composes: activeCircleContainer;
+}
+
+.sectionNum {
+    display: table;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: $byzantine-dark;
+}
+
+.title {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+    font-weight: bold;
+    color: white;
+    margin: 0 5px 0 15px;
+}
+

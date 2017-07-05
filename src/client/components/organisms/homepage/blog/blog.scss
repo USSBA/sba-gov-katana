@@ -28,10 +28,10 @@
 .sectionTitle {
     font-size: 7.47vw;
     line-height: 8vw;
-    font-weight: 900;
     color: #333333;
     @include grid-media($sba-grid-small) {
-        padding-left: 12.53vw;
+        font-weight: bold;
+        padding-left: 10vw;
         height: 8vw;
     }
     @include grid-media($sba-grid-medium) {
@@ -39,6 +39,7 @@
         line-height: normal;
         font-weight: 900;
         margin-bottom: 2vw;
+        @include grid-column(12);
     }
 }
 
@@ -50,7 +51,7 @@
         font-weight: bold;
         margin-left: auto;
         margin-right: auto;
-        width: 75.2vw;
+        width: 79vw;
         margin-top: 4vw;
         text-decoration: none;
     }
@@ -72,7 +73,7 @@
         margin-top: 1.067vw;
         margin-left: auto;
         margin-right: auto;
-        width: 75.2vw;
+        width: 79vw;
         margin-bottom: 4vw;
     }
     @include grid-media($sba-grid-medium) {

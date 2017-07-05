@@ -98,9 +98,12 @@ class IndustryInfoForm extends React.Component {
 
   render() {
     let industryTypeOptions = map([
+      "Professional Services",
+      "Manufacturing",
+      "Retail",
+      "Restaurant/Bar",
       "Advertising/Marketing",
       "Agriculture",
-      "Automotive/Service Station",
       "Chemical/Pharmaceutical",
       "Construction",
       "Education",
@@ -110,16 +113,13 @@ class IndustryInfoForm extends React.Component {
       "Food Services",
       "Health Care",
       "Hospitality",
-      "Manufacturing",
       "Media",
       "Non-Profit",
-      "Other",
-      "Professional Services",
       "Real Estate",
-      "Restaurant/Bar",
-      "Retail",
       "Technology",
-      "Transportation/Logistics"
+      "Transportation/Logistics",
+      "Automotive/Service Station",
+      "Other"
     ], (x) => {
       return {label: x, value: x};
     });
