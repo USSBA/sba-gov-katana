@@ -1,7 +1,7 @@
 import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
 import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
 import { fetchMainMenu } from "../models/dao/main-menu.js";
-import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu } from "../service/drupal-eight.js";
+import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu, fetchCounsellorCta } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
 
@@ -18,7 +18,8 @@ const fetchContentTypeFunctions = {
   disaster: fetchDisasterFromDrupalDatabase,
   frontpageslides: fetchFrontPageSlidesFromDrupal,
   "main-menu": fetchMainMenu,
-  menu: fetchFormattedMenu
+  menu: fetchFormattedMenu,
+  counsellorCta: fetchCounsellorCta
 };
 
 function fetchContentById(req, res) {
