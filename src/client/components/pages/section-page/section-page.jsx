@@ -13,7 +13,7 @@ class SectionPage extends React.Component {
         <div className={styles.container}>
           <BizguideTileCollection sectionData={sectionData}/>
           <div className={styles.nineStepsCtaContainer}>
-            <SimpleCta id="business-guide-panel-10-steps-callout" actionText="Start your business in 10 steps" buttonText="SEE THE GUIDE" url="/tensteps"/>
+            <SimpleCta id="business-guide-panel-10-steps-callout" actionText="Start your business in 10 steps" buttonText="SEE THE GUIDE" url="/tensteps" eventCategory="Ten Steps CTA" labelCategory="Small" />
           </div>
         </div>
       );

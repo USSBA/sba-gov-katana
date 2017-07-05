@@ -58,13 +58,13 @@ class ContactCardLookup extends React.Component {
     return (
       <div>
         <div className={styles.container}>
-          <h4 className={styles.title}>{this.props.title || "Look up your state"}</h4>
+          <h4 key={6} className={styles.title}>{this.props.title || "Look up your state"}</h4>
           <div key={1} className={styles.selectContainer}>
             <MultiSelect {...multiselectProps}></MultiSelect>
           </div>
           <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(function(item, index) {
               return (
-                <div id={"card-" + index} className={styles.card}>
+                <div key={index} id={"card-" + index} className={styles.card}>
                   {item.link
                     ? <a className={styles.itemLink} href={item.link}>{item.title}
                         <i className="fa fa-external-link-square" aria-hidden="true"></i>
@@ -81,7 +81,7 @@ class ContactCardLookup extends React.Component {
             })}</div>
 
           {this.state.noContacts
-            ? <div className={styles.noContacts}>No contacts found for this State</div>
+            ? <div key={5} className={styles.noContacts}>No contacts found for this State</div>
             : null}
 
         </div>

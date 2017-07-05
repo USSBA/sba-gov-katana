@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/location-change.js';
+import * as LocationChangeActions from '../../../../actions/navigation.js';
 import {logEvent} from "../../../../services/analytics.js";
 
 import CheckBox from '../../../atoms/checkbox/checkbox.jsx';

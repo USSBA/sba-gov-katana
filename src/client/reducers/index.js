@@ -3,6 +3,7 @@ import { routerReducer } from "react-router-redux";
 
 // our customer reducers
 import lenderMatchReducer from "../reducers/lender-match.js";
+import navigationReducer from "../reducers/navigation.js";
 import reviewSubmitInfoReducer from "./review-submit-info.js";
 import modalReducer from "./modal.js";
 import contentReducer from "./content.js";
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   confirmationEmailReducer: confirmationEmailReducer,
   restContent: restContentReducer,
   feedback: feedbackReducer,
-  display: displayReducer
+  display: displayReducer,
+  navigation: navigationReducer
 });
 
 export default rootReducer;

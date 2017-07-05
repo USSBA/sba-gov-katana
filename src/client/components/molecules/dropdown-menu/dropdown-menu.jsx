@@ -68,6 +68,14 @@ class DropdownMenu extends React.Component {
       sizingStyle = styles.six;
     }
 
+    let businessGuideCtaData = {
+        url: "/tensteps",
+        buttonText: "See the guide",
+        actionText: "Not sure where to start? Start your business in 10 steps.",
+        eventCategory: "Ten Steps CTA",
+        eventLabel: "Inverse Small"
+    };
+
     if (!isEmpty(this.props.links)) {
       let pageLinkGroups = this.props.links.map((data, index) => {
         let children = data.children || [];
@@ -89,7 +97,7 @@ class DropdownMenu extends React.Component {
             ? <FeaturedCallout {...this.props.featuredCallout}/>
             : undefined}
         {smallInverseCta
-          ? <div className={styles.businessGuideCTA}><SmallInverseCta /></div>
+          ? <div className={styles.businessGuideCTA}><SmallInverseCta {...businessGuideCtaData}/></div>
           : undefined}
         </ul>
       );

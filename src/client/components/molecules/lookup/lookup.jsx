@@ -1,7 +1,7 @@
 import React from "react"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as RestContentActions from "../../../actions/rest-content.js"
+import * as ContentActions from "../../../actions/content.js"
 import {filter} from "lodash"
 import {logEvent} from "../../../services/analytics.js";
 
@@ -18,7 +18,7 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded(this.props.type);
+    this.props.actions.fetchContentIfNeeded("contacts", this.props.type);
   }
 
   componentWillReceiveProps(nextProps, ownProps){
@@ -73,13 +73,13 @@ Lookup.defaultProps = {
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
-    items: reduxState.restContent[ownProps.type]
+    items: reduxState.contentReducer[ownProps.type]
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(RestContentActions, dispatch)
+    actions: bindActionCreators(ContentActions, dispatch)
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Lookup);
