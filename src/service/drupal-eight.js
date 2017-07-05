@@ -258,9 +258,33 @@ function fetchNestedParagraph(nestedParagraph, typeName) {
 
 function formatNode(data) {
   if (data) {
+    const title = extractValue(data.title);
+    const targetId = extractTargetId(data.type);
+
+    if ((!_.isEmpty(title) && (_.toLower(title) === "counselor match cta")) && targetId === "call_to_action") {
+      const cta = {
+        type: "callToAction",
+        style: "Large"
+      };
+      const btnRef = extractTargetId(data.field_button_action);
+      cta.headline = extractValue(data.field_headline);
+      cta.blurb = extractValue(data.field_blurb);
+      cta.image = convertUrlHost(data.field_image[0].url);
+      cta.imageAlt = data.field_image[0].alt;
+
+      return fetchParagraphId(btnRef).then((btn) => {
+        if (btn.field_link) {
+          cta.btnTitle = btn.field_link[0].title;
+          cta.btnUrl = btn.field_link[0].uri;
+        } else if (btn.field_file && btn.field_button_text) {
+          cta.btnTitle = extractValue(btn.field_button_text);
+          cta.btnUrl = convertUrlHost(btn.field_file[0].url);
+        }
+        return cta;
+      });
+    }
     const paragraphs = data.field_paragraphs || [];
     const taxonomy = data.field_site_location;
-    const title = extractValue(data.title);
     const summary = extractValue(data.field_summary);
 
     const paragraphIds = _.map(paragraphs, "target_id");
