@@ -16,7 +16,8 @@ function receiveContent(prop, type, query, data) {
 function fetchContent(prop, type, query) {
   return (dispatch) => {
     dispatch(receiveContent(prop, type, query));
-    return axios.get("/content/" + type + ".json" + (query ? "?" + queryString.stringify(query) : "")).then((response) => {
+    const url = "/content/" + type + ".json" + (query ? "?" + queryString.stringify(query) : "");
+    return axios.get(url).then((response) => {
       return response.data;
     }).then((data) => {
       return dispatch(receiveContent(prop, type, query, data));
@@ -25,7 +26,7 @@ function fetchContent(prop, type, query) {
 }
 
 function shouldFetchContent(state, prop, type, query) {
-  return query !== null; // TODO check current state
+  return true; // TODO check current state
 }
 export function fetchContentIfNeeded(prop, type, query) {
   return (dispatch, getState) => {

@@ -23,7 +23,7 @@ function fetchContent(type, id) {
 }
 
 function shouldFetchContent(state, type, id) {
-  return id !== null; // TODO check current state
+  return true; // TODO check current state
 }
 export function fetchContentIfNeeded(type, id) {
   return (dispatch, getState) => {
