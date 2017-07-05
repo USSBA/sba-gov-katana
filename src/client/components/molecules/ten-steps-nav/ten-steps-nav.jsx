@@ -3,9 +3,7 @@ import s from './ten-steps-nav.scss'
 
 class TenStepsNav extends React.Component {
 
-  handleActiveStep(index){
-    console.log(this.props.section)
-    console.log(index)
+  renderStep(index){
     if(this.props.section == index) {
       return (
         <div className={s.sectionCircleContainer }>
@@ -14,7 +12,7 @@ class TenStepsNav extends React.Component {
       )
     } else {
       return (
-        <div className={s.circle}></div>
+        <div className={this.props.navType === "center" ? s.circleNegative : s.circle}></div>
       )
     }
   }
@@ -28,44 +26,34 @@ class TenStepsNav extends React.Component {
   render() {
     let steps = [
       {
-        title: "Plan",
-        anchor: "#"
+        title: "Plan"
       },
       {
-        title: "Fund",
-        anchor: "#"
+        title: "Fund"
       },
       {
-        title: "Location",
-        anchor: "#"
+        title: "Location"
       },
       {
-        title: "Structure",
-        anchor: "#"
+        title: "Structure"
       },
       {
-        title: "Name",
-        anchor: "#"
+        title: "Name"
       },
       {
-        title: "Register",
-        anchor: "#"
+        title: "Register"
       },
       {
-        title: "Tax IDs",
-        anchor: "#"
+        title: "Tax IDs"
       },
       {
-        title: "Licenses & Permits",
-        anchor: "#"
+        title: "Licenses & Permits"
       },
       {
-        title: "Bank Account",
-        anchor: "#"
+        title: "Bank Account"
       },
       {
-        title: "10th Step",
-        anchor: "#"
+        title: "10th Step"
       }
     ];
 
@@ -75,7 +63,7 @@ class TenStepsNav extends React.Component {
           steps.map((step, index) => {
             return (
               <div className={s.section} key={index}>
-                {this.handleActiveStep(index)}
+                {this.renderStep(index)}
                   <div className={s.hoverBox} onClick={() => {this.handleAnchorClick(index)}}>
                     <div className={s.title}>{step.title}</div>
                     <div className={s.activeCircleContainer }>

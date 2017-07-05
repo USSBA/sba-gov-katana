@@ -27,13 +27,25 @@ class TenStepsLandingPage extends React.Component {
         this.setState({section: index}, this.toggleNavType)
     }
 
+    handleSectionLeave(index){
+        console.log("Leave: " + index)
+    }
+
     handleTitleSectionEnter(){
         console.log("Enter: titleSection")
         this.setState({section: "titleSection"} , this.toggleNavType)
     }
 
+    handleCalloutEnter(){
+        this.setState({section: null, navType: null})
+    }
+
+    handleCalloutLeave(){
+        this.setState({section: 9, navType: "center"})
+    }
+
     toggleNavType(){
-        if(this.state.section == 1) {
+        if(this.state.section >= 1) {
             this.setState({navType: "center"})
         } else if(this.state.section == "titleSection") {
             this.setState({navType: "top"})
@@ -145,7 +157,7 @@ class TenStepsLandingPage extends React.Component {
                 text: "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready."
             }
         ];      const tenstepSectionItems = titleBoxDataArray.map((item, index)=>{
-            return(<TenStepsSection index={index} key={index} sectionItem={item} sectionEnter={() => {this.handleSectionEnter(index)}}/>);
+            return(<TenStepsSection index={index} key={index} sectionItem={item} sectionEnter={() => {this.handleSectionEnter(index)}} sectionLeave={() => {this.handleSectionLeave(index)}}/>);
         });
 
         let sectionData = findSection(this.props.menu, "guide") || findSection(this.props.menu, "business-guide");
@@ -171,7 +183,9 @@ class TenStepsLandingPage extends React.Component {
                 <div className={styles.lastSection}>
                     <div className={styles.lastSectionText}>
                         <h1>Open shop.</h1>
+                        <Waypoint onEnter={() => {this.handleCalloutEnter()}}>
                         <p>Congratulations! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.</p>
+                        </Waypoint>
                     </div>
                 </div>
                 {sectionData ? <div className={styles.bizguideContainer}>

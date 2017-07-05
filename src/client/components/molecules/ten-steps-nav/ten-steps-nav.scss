@@ -1,6 +1,5 @@
-$circleColorNegative: #E7BEE3;
-//$circleColor: $byzantine;
-$circleColor: black;
+$circleColor: #E7BEE3;
+$circleColorNegative: $byzantine;
 
 
 .containerCenter {
@@ -48,7 +47,7 @@ $circleColor: black;
     width: 15px;
     margin: auto;
     border-radius: 50%;
-    background-color: $circleColorNegative;
+    background-color: $circleColor;
 }
 
 .circleNegative {
