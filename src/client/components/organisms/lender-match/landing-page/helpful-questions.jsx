@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as LocationChangeActions from "../../../../actions/location-change.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
 import styles from './helpful-questions.scss';
 import thumbNail from '../../../../../../public/assets/images/placeholder370x170.png';
 import {SmallSecondaryButton, SmallPrimaryButton} from "../../../atoms";

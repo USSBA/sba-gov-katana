@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as LocationChangeActions from "../../../../actions/location-change.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
 import styles from './preparation-checklist.scss';
 import planIcon from '../../../../../../public/assets/images/lender-match/business-plan.png';
 import fundsIcon from '../../../../../../public/assets/images/lender-match/use-of-funds.png';

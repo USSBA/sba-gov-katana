@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {includes} from 'lodash';
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/location-change.js';
+import * as LocationChangeActions from '../../../../actions/navigation.js';
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../../../services/page-validator-helpers.js';

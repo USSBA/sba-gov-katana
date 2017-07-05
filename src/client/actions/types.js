@@ -7,5 +7,8 @@ export default {
   },
   display: {
     theme: "THEME"
+  },
+  navigation: {
+    callToAction: "CALL_TO_ACTION"
   }
 };

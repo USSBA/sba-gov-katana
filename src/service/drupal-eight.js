@@ -205,6 +205,7 @@ function formatCallToAction(paragraph) {
     cta.blurb = extractValue(subCta.field_blurb);
     cta.image = convertUrlHost(subCta.field_image[0].url);
     cta.imageAlt = subCta.field_image[0].alt;
+    cta.title = extractValue(subCta.title);
 
     return fetchParagraphId(btnRef).then((btn) => {
       if (btn.field_link) {
