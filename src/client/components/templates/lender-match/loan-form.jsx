@@ -19,7 +19,7 @@ class LoanForm extends React.Component {
       'additional',
       'review'
     ]; // TODO make this static or configuration
-    let page = this.props.location.replace('/linc/form/', '');
+    let page = this.props.location.replace('/lendermatch/form/', '');
     let locationIndex = indexOf(pages, page);
     let title = locationIndex === 5
       ? "Review and Submit"
