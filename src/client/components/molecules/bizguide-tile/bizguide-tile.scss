@@ -34,9 +34,7 @@
 //LINK FOR DISPLAYING MENU ON TAB
 
 .tabDisplayMenu {
-	@include grid-media($sba-grid-medium){
-		display: none;
-	}
+	display: none;
 	@include grid-media($sba-grid-large){
 		display: block;
 		position: absolute;
