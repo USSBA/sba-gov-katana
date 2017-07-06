@@ -2,8 +2,8 @@ const constants = {
   name: "U.S. Small Business Administration",
   address: "409 3rd St, SW. Washington DC 20416",
   routes: {
-    confirmationEmail: "/linc/resend",
-    submitForm: "/linc/matchFormData",
+    confirmationEmail: "/lendermatch/resend",
+    submitForm: "/lendermatch/matchFormData",
     submitFeedbackResults: "/actions/feedback/",
     submitFeedbackText: "/actions/feedback/{id}/text",
     tenSteps: "/business-guide/10-steps-start-your-business/"
