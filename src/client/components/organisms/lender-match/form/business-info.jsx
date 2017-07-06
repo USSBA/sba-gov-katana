@@ -5,7 +5,7 @@ import {includes, pick} from 'lodash';
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from '../../../../services/page-validator-helpers.js';
+import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from '../../../../services/form-validation-helpers.js';
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
