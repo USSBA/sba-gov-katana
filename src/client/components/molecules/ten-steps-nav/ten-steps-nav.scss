@@ -3,20 +3,28 @@ $circleColorNegative: $byzantine;
 
 
 .containerCenter {
-    position: fixed;
-    top: 25vh;
-    height: 450px;
-    right: 0px;
-    z-index: 9999;
+    display: none;
+    @include grid-media($sba-grid-large){
+        display: block;
+        position: fixed;
+        top: 25vh;
+        height: 450px;
+        right: 0px;
+        z-index: 9999;
+    }
 }
 
 .containerTop {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 450px;
-    right: 0px;
-    z-index: 9999;
+    display: none;
+    @include grid-media($sba-grid-large){
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 450px;
+        right: 0px;
+        z-index: 9999;
+    }
 }
 
 .section {
@@ -57,6 +65,7 @@ $circleColorNegative: $byzantine;
 
 .hoverBox {
     display: none;
+    cursor: pointer;
     position: relative;
     top: 50%;
     transform: translateY(-50%);

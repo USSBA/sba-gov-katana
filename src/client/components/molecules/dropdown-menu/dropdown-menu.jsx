@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './dropdown-menu.scss';
 import {isEmpty} from "lodash";
+import constants from "../../../services/constants.js"
 
 import PageLinkGroup from "../page-link-group/page-link-group.jsx"
 import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
@@ -69,7 +70,7 @@ class DropdownMenu extends React.Component {
     }
 
     let businessGuideCtaData = {
-        url: "/tensteps",
+        url: constants.routes.tenSteps,
         buttonText: "See the guide",
         actionText: "Not sure where to start? Start your business in 10 steps.",
         eventCategory: "Ten Steps CTA",

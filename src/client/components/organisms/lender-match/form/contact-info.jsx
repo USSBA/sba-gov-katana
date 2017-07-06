@@ -7,7 +7,7 @@ import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/navigation.js';
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
-import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../../../services/page-validator-helpers.js';
+import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../../../services/form-validation-helpers.js';
 
 import TextInput from '../../../atoms/text-input/text-input.jsx';
 import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
@@ -66,9 +66,9 @@ class ContactInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createContactInfo({contactPhoneNumber: this.state.contactPhoneNumber, contactFullName: this.state.contactFullName, contactEmailAddress: this.state.contactEmailAddress});
-    this.props.locationActions.locationChange('/linc/form/business', {
+    this.props.locationActions.locationChange('/lendermatch/form/business', {
       action: "Continue Button Pushed",
-      label: "/linc/form/contact"
+      label: "/lendermatch/form/contact"
     });
     this.contactInfoForm.reset();
   }

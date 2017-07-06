@@ -30,7 +30,7 @@ class ReviewSubmitInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.matchFormData({loanData: this.props.loanData, additionalInfoData: this.props.additionalInfoData, contactInfoData: this.props.contactInfoData, businessInfoData: this.props.businessInfoData, industryInfoData: this.props.industryInfoData});
-    this.props.locationActions.locationChange("/linc/success", {
+    this.props.locationActions.locationChange("/lendermatch/success", {
       action: "Submission",
       label: "Data Submitted"
     });
@@ -38,7 +38,7 @@ class ReviewSubmitInfoForm extends React.Component {
   }
 
   handleEditClick(target) {
-    this.props.locationActions.locationChange("/linc/form/" + target, {
+    this.props.locationActions.locationChange("/lendermatch/form/" + target, {
       action: "Edit Button Pushed: " + startCase(target)
     });
   }

@@ -28,7 +28,7 @@ class Homepage extends React.Component {
         link: "/loans-grants/see-what-sba-offers/sba-loan-programs",
         title: "Loan programs"
       }, {
-        link: "/tools/linc",
+        link: "/tools/lendermatch",
         title: "Connect with SBA lenders"
       }
     ];

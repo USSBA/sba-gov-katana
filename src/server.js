@@ -67,9 +67,9 @@ app.use(function(req, res, next) {
 
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
-app.post("/linc/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
+app.post("/lendermatch/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
 app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);
-app.post("/linc/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
+app.post("/lendermatch/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
 app.get("/content/counselors-redirect.json", function(req, res) {
   const zipStr = "zip:" + req.query.zip + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Main from "./templates/main.jsx";
-import LincMain from './templates/lender-match/linc-main.jsx';
+import LenderMatchMain from './templates/lender-match/lender-match-main.jsx';
 
 import StyleGuide from './templates/style-guide/style-guide.jsx'
 
@@ -24,10 +24,12 @@ import Homepage from './templates/homepage/homepage.jsx';
 import SamplePage from './pages/sample.jsx';
 import RootPage from './pages/root-page.jsx';
 import {Route, IndexRoute, IndexRedirect} from 'react-router';
+import constants from "../services/constants.js"
+
 
 const mainRoutes = [
   (<IndexRoute key={1} component={Homepage}/>),
-  (<Route key={2} path="/linc" component={LincMain}>
+  (<Route key={2} path="/lendermatch" component={LenderMatchMain}>
       (<IndexRoute component={LandingPage}/>),
       (<Route key={1} path="landing" component={LandingPage}/>)
       (<Route key={2} path="form" component={LoanForm}>
@@ -45,7 +47,7 @@ const mainRoutes = [
     </Route>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
-  (<Route key={12} path="/tensteps" component={TenStepsLandingPage}/>),
+  (<Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
   (<Route key={6} path="/:section" component={RootPage}/>),
   (<Route key={7} path="/:section/" component={RootPage}/>),
   (<Route key={8} path="/:section/:subsection" component={RootPage}/>),

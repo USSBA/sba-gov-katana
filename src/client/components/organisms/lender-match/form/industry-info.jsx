@@ -6,7 +6,7 @@ import {includes, map} from "lodash";
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getSelectBoxValidationState, containsErrorOrNull} from '../../../../services/page-validator-helpers.js';
+import {getSelectBoxValidationState, containsErrorOrNull} from '../../../../services/form-validation-helpers.js';
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
@@ -62,9 +62,9 @@ class IndustryInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createIndustryInfo({industryType: this.state.industryType, industryExperience: this.state.industryExperience});
-    this.props.locationActions.locationChange('/linc/form/loan', {
+    this.props.locationActions.locationChange('/lendermatch/form/loan', {
       action: "Continue Button Pushed",
-      label: "/linc/form/industry"
+      label: "/lendermatch/form/industry"
     });
     this.industryInfoForm.reset();
   }

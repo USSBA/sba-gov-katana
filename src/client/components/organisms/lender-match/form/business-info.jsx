@@ -5,7 +5,7 @@ import {includes, pick} from 'lodash';
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from '../../../../services/page-validator-helpers.js';
+import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from '../../../../services/form-validation-helpers.js';
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
@@ -76,9 +76,9 @@ class BusinessInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createBusinessInfo(pick(this.state, ["businessInfoName", "businessInfoZipcode", "businessInfoDescription", "businessInfoWebsite"]));
-    this.props.locationActions.locationChange('/linc/form/industry', {
+    this.props.locationActions.locationChange('/lendermatch/form/industry', {
       action: "Continue Button Pushed",
-      label: "/linc/form/business"
+      label: "/lendermatch/form/business"
     });
     this.businessInfoForm.reset();
   }

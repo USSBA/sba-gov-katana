@@ -5,7 +5,7 @@ import {includes, map, pickBy, keys} from "lodash";
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
 import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from '../../../../services/page-validator-helpers.js'
+import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from '../../../../services/form-validation-helpers.js'
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
@@ -75,9 +75,9 @@ class LoanInfo extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createLoan({loanAmount: this.state.loanAmount, loanDescription: this.state.loanDescription, loanUsage: this.state.loanUsage});
-    this.props.locationActions.locationChange('/linc/form/additional', {
+    this.props.locationActions.locationChange('/lendermatch/form/additional', {
       action: "Continue Button Pushed",
-      label: "/linc/form/loan"
+      label: "/lendermatch/form/loan"
     });
     this.loanForm.reset()
   }

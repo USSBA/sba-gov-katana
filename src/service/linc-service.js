@@ -185,7 +185,7 @@ function sendMessagesToOca(results) {
       businessWebsite: result.businessWebsite,
       businessDescription: result.businessDescription,
       hasWrittenPlan: result.hasWrittenPlan,
-      hasFinancialProjects: result.hasFinancialProjections,
+      hasFinancialProjections: result.hasFinancialProjections,
       isGeneratingRevenue: result.isGeneratingRevenue,
       isVeteran: result.isVeteran
     };

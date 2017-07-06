@@ -14,7 +14,7 @@ class FindLendersIntro extends React.Component {
         this.handleTellMeHowClicked = this.handleTellMeHowClicked.bind(this);
     }
   handleLenderMatchClicked() {
-    this.props.actions.locationChange('/linc/form/contact', {
+    this.props.actions.locationChange('/lendermatch/form/contact', {
       label: "Find Lenders #1"
     });
   }
@@ -38,7 +38,7 @@ class FindLendersIntro extends React.Component {
                             }
                         ];
     return (
-        <Hero title={calloutTitle} message={calloutMessage} desktopImage={lenderMatchHero} mobileImage={lenderMatchMobile} buttons={buttonsArray}/>
+        <Hero title={calloutTitle} message={calloutMessage} desktopImage={lenderMatchHero} mobileImage={lenderMatchMobile} buttons={buttonsArray} alt="Two people discussing in an office"/>
       );
   }
 }

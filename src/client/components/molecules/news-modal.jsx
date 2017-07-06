@@ -10,7 +10,7 @@ import exitIcon from "../../../../public/assets/svg/close_button.svg";
 import {logEvent} from "../../services/analytics.js";
 import constants from "../../services/constants.js";
 import config from "../../services/client-config.js";
-import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/page-validator-helpers.js";
+import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/form-validation-helpers.js";
 import {includes} from "lodash";
 import envelopeIcon from '../../../../public/assets/svg/envelope.svg';
 import NewsletterSmallPrimaryButton from "../atoms/newsletter-small-primary-button/newsletter-small-primary-button.jsx";

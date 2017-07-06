@@ -2,8 +2,8 @@ import _ from "lodash";
 
 const themes = {
   "sba-blue": ["styleguide"],
-  "byzantine": ["guide", "business-guide", "tensteps"],
-  "money-green": ["linc", "funding-programs"],
+  "byzantine": ["guide", "business-guide"],
+  "money-green": ["lendermatch", "funding-programs"],
   "cobalt-blue": []
 };
 
