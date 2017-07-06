@@ -40,8 +40,8 @@ class CallToAction extends React.Component {
               this.handleClick()
             }}/>
           </div>
-          <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge}/>
-          <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall}/>
+          <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge} alt=""/>
+          <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall} alt=""/>
         </div>
         <SmallInverseSecondaryButton className={styles.btnSecondary} text={this.props.btnTitle} onClick={() => {
           this.handleClick()
