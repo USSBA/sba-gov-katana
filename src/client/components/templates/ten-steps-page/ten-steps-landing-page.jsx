@@ -8,7 +8,8 @@ import {findPageLineage, findSubSection, findSection} from "../../../services/me
 import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
 import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
 import BizguideTileCollection from "../../molecules/bizguide-tile/bizguide-tile-collection.jsx";
-import Waypoint from "react-waypoint"
+import Waypoint from "react-waypoint";
+import CallToAction from "../../molecules/call-to-action/call-to-action.jsx";
 
 class TenStepsLandingPage extends React.Component {
     constructor(){
@@ -20,6 +21,7 @@ class TenStepsLandingPage extends React.Component {
     }
     componentWillMount() {
         this.props.actions.fetchContentIfNeeded("menu", "menu");
+        this.props.actions.fetchContentIfNeeded("counsellorCta", "counsellorCta");
     }
 
     handleSectionEnter(index){
@@ -166,6 +168,7 @@ class TenStepsLandingPage extends React.Component {
         });
 
         let sectionData = findSection(this.props.menu, "guide") || findSection(this.props.menu, "business-guide");
+        let counsellorCta = this.props.counsellorCta;
 
         return (
             <div className={styles.tenStepsLandingPage}>
@@ -199,6 +202,18 @@ class TenStepsLandingPage extends React.Component {
                     <h1>Explore more topics.</h1>
                     <BizguideTileCollection sectionData={sectionData}/></div> : <div></div>
                 }
+                {
+                    counsellorCta ? <div className={styles.counsellorCtaContainer}>
+                        <CallToAction
+                                      size={counsellorCta.style}
+                                      headline={counsellorCta.headline}
+                                      blurb={counsellorCta.blurb}
+                                      image={counsellorCta.image}
+                                      imageAlt={counsellorCta.imageAlt}
+                                      btnTitle={counsellorCta.btnTitle}
+                                      btnUrl={counsellorCta.btnUrl} />
+                    </div> : <div></div>
+                }
             </div>
         );
     }
@@ -206,14 +221,14 @@ class TenStepsLandingPage extends React.Component {
 
 function mapReduxStateToProps(reduxState, ownProps) {
     return {
-        menu: _.get(reduxState, "contentReducer.menu")
+        menu: _.get(reduxState, "contentReducer.menu"),
+        counsellorCta: _.get(reduxState, "contentReducer.counsellorCta")
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(ContentActions, dispatch)
-        //locationActions: bindActionCreators(LocationChangeActions, dispatch)
     }
 }
 

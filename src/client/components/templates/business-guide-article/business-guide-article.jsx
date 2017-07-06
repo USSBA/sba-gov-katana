@@ -74,7 +74,7 @@ class BusinessGuideArticle extends React.Component {
           paragraph = (<Lookup key={index} title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
         } else if (item.type === "callToAction") {
           paragraphGridStyle = styles.callToAction;
-          paragraph = (<CallToAction key={index} size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}/>)
+          paragraph = (<CallToAction key={index} size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl} title={item.title}/>)
         } else if (item.type === "cardCollection") {
           paragraph = (<CardCollection parentIndex={index} key={index} cards={item.cards}/>);
         }

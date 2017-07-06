@@ -68,6 +68,39 @@ function fetchFormattedContactParagraph(contact) {
   });
 }
 
+function fetchCounsellorCta() {
+  const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
+  if (counsellorCtaNodeId) {
+    return fetchNodeById(counsellorCtaNodeId).then((data) => {
+      const targetId = extractTargetId(data.type);
+      if (targetId === "call_to_action") {
+        const cta = {
+          type: "callToAction",
+          style: "Large"
+        };
+        const btnRef = extractTargetId(data.field_button_action);
+        cta.headline = extractValue(data.field_headline);
+        cta.blurb = extractValue(data.field_blurb);
+        cta.image = convertUrlHost(data.field_image[0].url);
+        cta.imageAlt = data.field_image[0].alt;
+
+        return fetchParagraphId(btnRef).then((btn) => {
+          if (btn.field_link) {
+            cta.btnTitle = btn.field_link[0].title;
+            cta.btnUrl = btn.field_link[0].uri;
+          } else if (btn.field_file && btn.field_button_text) {
+            cta.btnTitle = extractValue(btn.field_button_text);
+            cta.btnUrl = convertUrlHost(btn.field_file[0].url);
+          }
+          return cta;
+        });
+      }
+      return Promise.resolve(null);
+    });
+  }
+  return Promise.resolve(null);
+}
+
 function formatContacts(data) {
   if (data) {
     return Promise.map(data, fetchFormattedContactParagraph, {
@@ -172,6 +205,7 @@ function formatCallToAction(paragraph) {
     cta.blurb = extractValue(subCta.field_blurb);
     cta.image = convertUrlHost(subCta.field_image[0].url);
     cta.imageAlt = subCta.field_image[0].alt;
+    cta.title = extractValue(subCta.title);
 
     return fetchParagraphId(btnRef).then((btn) => {
       if (btn.field_link) {
@@ -259,30 +293,6 @@ function fetchNestedParagraph(nestedParagraph, typeName) {
 function formatNode(data) {
   if (data) {
     const title = extractValue(data.title);
-    const targetId = extractTargetId(data.type);
-
-    if ((!_.isEmpty(title) && (_.toLower(title) === "counselor match cta")) && targetId === "call_to_action") {
-      const cta = {
-        type: "callToAction",
-        style: "Large"
-      };
-      const btnRef = extractTargetId(data.field_button_action);
-      cta.headline = extractValue(data.field_headline);
-      cta.blurb = extractValue(data.field_blurb);
-      cta.image = convertUrlHost(data.field_image[0].url);
-      cta.imageAlt = data.field_image[0].alt;
-
-      return fetchParagraphId(btnRef).then((btn) => {
-        if (btn.field_link) {
-          cta.btnTitle = btn.field_link[0].title;
-          cta.btnUrl = btn.field_link[0].uri;
-        } else if (btn.field_file && btn.field_button_text) {
-          cta.btnTitle = extractValue(btn.field_button_text);
-          cta.btnUrl = convertUrlHost(btn.field_file[0].url);
-        }
-        return cta;
-      });
-    }
     const paragraphs = data.field_paragraphs || [];
     const taxonomy = data.field_site_location;
     const summary = extractValue(data.field_summary);
@@ -353,4 +363,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta };

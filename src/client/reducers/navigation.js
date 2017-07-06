@@ -1,5 +1,9 @@
+import types from "../actions/types.js";
+
 const navigationReducer = (state, action) => {
-  if (action.type === "MOVE_TO_FIND_LENDERS") {
+  if (action.type === "LOCATION_CHANGE") {
+    return Object.assign({}, state);
+  } else if (action.type === "MOVE_TO_FIND_LENDERS") {
     return {
       currentPage: "loanForm"
     };
@@ -7,6 +11,8 @@ const navigationReducer = (state, action) => {
     return {
       currentPage: "successPage"
     };
+  } else if (action.type === types.navigation.callToAction) {
+    return Object.assign({}, state);
   }
   return state || {
       currentPage: "landingPage"

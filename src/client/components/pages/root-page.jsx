@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ContentActions from "../../actions/content.js";
-import * as LocationChangeActions from '../../actions/location-change.js';
+import * as NavigationActions from '../../actions/navigation.js';
 import _ from 'lodash';
 import {findPageLineage, findSubSection, findSection} from "../../services/menu.js";
 import Page from "./page.jsx";
@@ -24,7 +24,7 @@ class RootPage extends React.Component {
       let subSectionData = findSubSection(this.props.menu, this.props.params.section, this.props.params.subsection);
       if (subSectionData && subSectionData.children && subSectionData.children[0]) {
         let page = subSectionData.children[0].url;
-        this.props.locationActions.locationChange(path.join("/", this.props.params.section, this.props.params.subsection, page), {});
+        this.props.navigationActions.locationChange(path.join("/", this.props.params.section, this.props.params.subsection, page), {});
       }
     }
   }
@@ -64,7 +64,7 @@ function mapReduxStateToProps(reduxState, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ContentActions, dispatch),
-    locationActions: bindActionCreators(LocationChangeActions, dispatch)
+    navigationActions: bindActionCreators(NavigationActions, dispatch)
   }
 }
 

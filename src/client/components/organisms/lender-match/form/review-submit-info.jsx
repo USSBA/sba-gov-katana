@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {startCase} from 'lodash';
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/location-change.js';
+import * as LocationChangeActions from '../../../../actions/navigation.js';
 
 import styles from './review-submit.scss'
 import ReviewSection from './review-page-helpers.jsx';

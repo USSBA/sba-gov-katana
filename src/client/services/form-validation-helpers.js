@@ -12,7 +12,9 @@ function executeValidation(name, value, defaultWhenNotSuccessful, tester) {
 }
 
 export function nameValidation(value) {
-  const nameRegex = new RegExp(/^[a-z ,.'-]+$/i);
+  // checks that there is multiple words; notice however that the second regex also captures spaces in order to allow three or more words
+  const nameRegex = new RegExp(/^[a-z,.'-]+\s+[a-z ,.'-]+$/i);
+
   return nameRegex.test(value);
 }
 

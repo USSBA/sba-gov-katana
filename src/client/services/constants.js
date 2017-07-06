@@ -9,7 +9,7 @@ const constants = {
   },
   messages: {
     validation: {
-      invalidName: "Please enter a valid name.",
+      invalidName: "Please enter your first and last names.",
       invalidPhoneNumber: "Please enter your 10-digit phone number.",
       invalidEmail: "Please enter a valid email address.",
       invalidZip: "Please enter a valid 5-digit US zip code.",
