@@ -81,6 +81,7 @@ class BizguideTile extends React.Component {
               />
             )}
             <img className={s.backgroundLines} src={this.props.backgroundLines} alt=""/>
+            <a className={s.tabDisplayMenu} href="" onFocus={() => {this._tabFocusTile()}}>display menu</a>
           </div>
       );
   }

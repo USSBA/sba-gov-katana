@@ -34,12 +34,18 @@
 //LINK FOR DISPLAYING MENU ON TAB
 
 .tabDisplayMenu {
-	position: absolute;
-	top: 0;
-	left: 0;
-	pointer-events: none;
-	cursor: default;
-	opacity: 0;
+	@include grid-media($sba-grid-medium){
+		display: none;
+	}
+	@include grid-media($sba-grid-large){
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+		cursor: default;
+		opacity: 0;
+	}
 }
 
 //SPECIFIC STYLES FOR STATIC TILE
