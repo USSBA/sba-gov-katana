@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Main from "./templates/main.jsx";
-import LincMain from './templates/lender-match/lendermatch-main.jsx';
+import LenderMatchMain from './templates/lender-match/lender-match-main.jsx';
 
 import StyleGuide from './templates/style-guide/style-guide.jsx'
 
@@ -27,7 +27,7 @@ import {Route, IndexRoute, IndexRedirect} from 'react-router';
 
 const mainRoutes = [
   (<IndexRoute key={1} component={Homepage}/>),
-  (<Route key={2} path="/lendermatch" component={LincMain}>
+  (<Route key={2} path="/lendermatch" component={LenderMatchMain}>
       (<IndexRoute component={LandingPage}/>),
       (<Route key={1} path="landing" component={LandingPage}/>)
       (<Route key={2} path="form" component={LoanForm}>
