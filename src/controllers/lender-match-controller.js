@@ -72,16 +72,16 @@ function handleLenderMatchSubmission(req, res) { //eslint-disable-line complexit
 
 function handleEmailConfirmation(req, res) {
   if (!("token" in req.query)) {
-    res.redirect("/linc/emailinvalid");
+    res.redirect("/lendermatch/emailinvalid");
   } else {
     confirmEmail(req.query.token)
       .then(function(result) {
         if (result === "success") {
-          res.redirect("/linc/emailconfirmed");
+          res.redirect("/lendermatch/emailconfirmed");
         } else if (result === "expired") {
-          res.redirect("/linc/emailinvalid");
+          res.redirect("/lendermatch/emailinvalid");
         } else {
-          res.redirect("/linc/emailinvalid");
+          res.redirect("/lendermatch/emailinvalid");
         }
       });
   }

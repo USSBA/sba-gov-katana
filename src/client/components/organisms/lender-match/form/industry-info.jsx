@@ -62,9 +62,9 @@ class IndustryInfoForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.actions.createIndustryInfo({industryType: this.state.industryType, industryExperience: this.state.industryExperience});
-    this.props.locationActions.locationChange('/linc/form/loan', {
+    this.props.locationActions.locationChange('/lendermatch/form/loan', {
       action: "Continue Button Pushed",
-      label: "/linc/form/industry"
+      label: "/lendermatch/form/industry"
     });
     this.industryInfoForm.reset();
   }

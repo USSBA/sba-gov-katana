@@ -123,7 +123,7 @@
    </wsdl:binding>
    <wsdl:service name="SBA LINC Web Services">
       <wsdl:port binding="impl:linc.cfcSoapBinding" name="linc.cfc">
-         <wsdlsoap:address location="https://catweb2.sba.gov/linc/ws/linc.cfc"/>
+         <wsdlsoap:address location="https://catweb2.sba.gov/lendermatch/ws/linc.cfc"/>
       </wsdl:port>
    </wsdl:service>
 </wsdl:definitions>
