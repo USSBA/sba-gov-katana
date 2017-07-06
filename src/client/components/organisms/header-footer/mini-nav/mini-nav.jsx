@@ -7,6 +7,7 @@ import clientConfig from "../../../../services/client-config.js";
 import SearchBar from "../../../molecules/search-bar/search-bar.jsx";
 import GoogleTranslate from "../../../molecules/google-translate/google-translate.jsx"
 import UtilityLink from "../../../atoms/utility-link/utility-link.jsx"
+import config from "../../../../services/client-config.js";
 
 import styles from './mini-nav.scss';
 import cookie from 'react-cookie';
@@ -35,12 +36,14 @@ export class MiniNav extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("userRoles", this.state.userId+"/roles");
-    if(this.state.userLoggedOn){
-        //check whether email is already provided
-        this.props.actions.fetchContentIfNeeded("userEmail", this.state.userId+"/email");
-    }
-    if(!this.state.userEmail){
+      if(this.state.userId){
+          this.props.actions.fetchContentIfNeeded("userRoles", this.state.userId+"/roles");
+          if(this.state.userLoggedOn){
+              //check whether email is already provided
+              this.props.actions.fetchContentIfNeeded("userEmail", this.state.userId+"/email");
+          }
+      }
+    if(!this.state.userEmail && config.govdelivery){
         this.timerId = setTimeout(()=>{
             this.props.modalActions.showSbaNewsletter(this.state.userEmail);
         }, 5000);
