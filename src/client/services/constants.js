@@ -5,7 +5,8 @@ const constants = {
     confirmationEmail: "/linc/resend",
     submitForm: "/linc/matchFormData",
     submitFeedbackResults: "/actions/feedback/",
-    submitFeedbackText: "/actions/feedback/{id}/text"
+    submitFeedbackText: "/actions/feedback/{id}/text",
+    tenSteps: "/business-guide/10-steps-start-your-business/"
   },
   messages: {
     validation: {
@@ -85,9 +86,9 @@ const constants = {
     desktop: [{
       "title": "Customer Service",
       "links": [{
-          "url": "/about-sba",
-          "text": "About SBA"
-        },
+        "url": "/about-sba",
+        "text": "About SBA"
+      },
         {
           "url": "/about-sba/what-we-do/contact-sba",
           "text": "Contact SBA"
@@ -112,9 +113,9 @@ const constants = {
     }, {
       "title": "About SBA.gov",
       "links": [{
-          "url": "/sitemap",
-          "text": "Site Map"
-        },
+        "url": "/sitemap",
+        "text": "Site Map"
+      },
         {
           "url": "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
           "text": "Privacy Policy"
@@ -147,9 +148,9 @@ const constants = {
     }, {
       "title": "SBA Information",
       "links": [{
-          "url": "/about-sba/sba-performance/open-government/foia",
-          "text": "Freedom of Information Act"
-        },
+        "url": "/about-sba/sba-performance/open-government/foia",
+        "text": "Freedom of Information Act"
+      },
         {
           "url": "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
           "text": "No Fear Act"
@@ -170,9 +171,9 @@ const constants = {
     }, {
       "title": "SBA Performance",
       "links": [{
-          "url": "/about-sba/sba-performance/strategic-planning",
-          "text": "Strategic Planning"
-        },
+        "url": "/about-sba/sba-performance/strategic-planning",
+        "text": "Strategic Planning"
+      },
         {
           "url": "/about-sba/sba-performance/performance-budget-finances",
           "text": "Performance, Budget & Financing"
@@ -193,9 +194,9 @@ const constants = {
     }, {
       "title": "Oversight",
       "links": [{
-          "url": "/office-of-inspector-general",
-          "text": "Inspector General"
-        },
+        "url": "/office-of-inspector-general",
+        "text": "Inspector General"
+      },
         {
           "url": "/advocacy",
           "text": "Advocacy"
@@ -224,9 +225,9 @@ const constants = {
     }, {
       "title": "Tools and Features",
       "links": [{
-          "url": "/tools/sba-learning-center/search/training",
-          "text": "Online Training"
-        },
+        "url": "/tools/sba-learning-center/search/training",
+        "text": "Online Training"
+      },
         {
           "url": "/tools/business-plan",
           "text": "Create a Business Plan"
