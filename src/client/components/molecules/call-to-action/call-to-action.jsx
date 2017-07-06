@@ -28,11 +28,22 @@ class CallToAction extends React.Component {
     }
   }
 
-  render() {
+  backgroundImageStyles() {
+    return {
+      "background": "url(" + this.props.image + ") no-repeat center center",
+      "backgroundSize": "cover",
+      "width": "100%",
+      "height": "100%"
+    }
+  }
+
+  render(){
     return (
       <div className={this.ctaSize()}>
         <div id="call-to-action" className={styles.ctaContainer}>
-          <img className={styles.image} src={this.props.image} alt={this.props.imageAlt}/>
+        <div className={styles.image}>
+          <div style={this.backgroundImageStyles()}></div>
+        </div>
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
             <p className={styles.blurb}>{this.props.blurb}</p>
