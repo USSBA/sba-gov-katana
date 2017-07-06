@@ -10,7 +10,8 @@ export function callToAction(targetLocation, category, action, value) {
       label: window.location.pathname,
       value: value
     });
-    browserHistory.push(targetLocation);
+    // browserHistory.push(targetLocation);
+    document.location = targetLocation;
   };
 }
 
