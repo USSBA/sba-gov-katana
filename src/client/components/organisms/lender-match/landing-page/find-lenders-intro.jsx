@@ -38,7 +38,7 @@ class FindLendersIntro extends React.Component {
                             }
                         ];
     return (
-        <Hero title={calloutTitle} message={calloutMessage} desktopImage={lenderMatchHero} mobileImage={lenderMatchMobile} buttons={buttonsArray}/>
+        <Hero title={calloutTitle} message={calloutMessage} desktopImage={lenderMatchHero} mobileImage={lenderMatchMobile} buttons={buttonsArray} alt="Two people discussing in an office"/>
       );
   }
 }
