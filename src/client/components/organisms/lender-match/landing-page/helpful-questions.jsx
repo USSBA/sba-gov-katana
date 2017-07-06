@@ -54,7 +54,7 @@ class HelpfulQuestions extends React.Component {
               <span>We're glad you asked! You can learn about our loan programs in more detail&nbsp;
                 <a target="_blank" className={styles.faqAnchor} href="/loans-grants/see-what-sba-offers/sba-loan-programs">online</a>. If you need to talk to someone about Lender Match, you can&nbsp;
                 <a className={styles.faqAnchor} target="_blank" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">contact us</a>
-                or email us at
+                &nbsp;or email us at&nbsp;
                 <a className={styles.faqAnchor} href="mailto:lendermatch@sba.gov">lendermatch@sba.gov</a>
               </span>
             </Panel>

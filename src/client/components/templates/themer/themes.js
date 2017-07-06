@@ -17,7 +17,5 @@ function getTheme() {
   });
 }
 
-export {
-  getTheme
-};
+export { getTheme };
 export default themes;
