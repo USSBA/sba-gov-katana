@@ -118,7 +118,7 @@ class TenStepsLandingPage extends React.Component {
                 title: "Choose your business name.",
                 leftAlignBox: true,
                 solidBox: true,
-                image: "assets/images/tensteps/name.jpg",
+                image: "/assets/images/tensteps/name.jpg",
                 imageAlt: "Choose your business name.",
                 link: "/business-guide/launch/5",
                 text: "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else."
