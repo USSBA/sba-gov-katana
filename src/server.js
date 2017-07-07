@@ -110,12 +110,12 @@ app.get("/content/:type/:id.json", fetchContentById);
 app.get("/content/:type.json", fetchContentByType);
 
 app.get(["/", "/*"], function(req, res, next) {
-  const pugVariables = _.merge({}, metaVariables, {
-    config: JSON.stringify(req.sessionAndConfig),
-    optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
-    tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
-  });
-  res.render("main", pugVariables);
+    const pugVariables = _.merge({}, metaVariables, {
+        config: JSON.stringify(req.sessionAndConfig),
+        optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
+        tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
+    });
+    res.render("main", pugVariables);
 });
 
 // development error handler
@@ -133,7 +133,6 @@ if (config.get("developmentOptions.webpack.enabled")) {
           error: "Something went wrong! Oh no!"
         });
       } else {
-
         res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR);
         res.render("error", {
           message: err.message,

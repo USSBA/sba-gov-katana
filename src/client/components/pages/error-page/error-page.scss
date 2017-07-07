@@ -1,0 +1,62 @@
+.errorPageSearch{
+  position: relative;
+  display: inline-block;
+
+}
+
+.errorPageSearch input {
+  height: 40px;
+  display: inline;
+  border-radius: 5px;
+  border-color: $grey-light;
+  width: 36vw;
+}
+
+.errorPageSearch a {
+  position: absolute;
+  right: 0.5vw;
+  top: 12px;
+}
+
+.errorPageSearchIcon{
+  cursor: pointer;
+}
+
+.errorContainer{
+  img{
+    width: 48%;
+    float: left;
+  }
+  margin-top: 6%;
+  margin-bottom: 10%;
+}
+
+.formContainer{
+  width: 48%;
+  float: right;
+  margin-top: 5%;
+}
+
+.errorContainer:after{
+  clear: both;
+  content: '';
+  display: block;
+}
+
+.title{
+  color: #888888;
+}
+
+.subTitle{
+
+}
+
+@include theme("sba-blue", '.errorPageSearchIcon i', null, #757575, null);
+@include theme("byzantine", '.errorPageSearchIcon i', null, #757575, null);
+@include theme("money-green", '.errorPageSearchIcon i', null, #757575, null);
+@include theme("cobalt-blue", '.errorPageSearchIcon i', null, #757575, null);
+
+@include theme-hover("sba-blue", '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover("byzantine", '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover("money-green", '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover("cobalt-blue", '.errorPageSearchIcon i', null, $grey-dark, null);
