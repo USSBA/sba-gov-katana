@@ -42,7 +42,7 @@ class CallToAction extends React.Component {
       <div className={this.ctaSize()}>
         <div id="call-to-action" className={styles.ctaContainer}>
         <div className={styles.image}>
-          <div style={this.backgroundImageStyles()}></div>
+          <div title={this.props.imageAlt} style={this.backgroundImageStyles()}></div>
         </div>
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
