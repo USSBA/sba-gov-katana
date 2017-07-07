@@ -90,32 +90,32 @@ app.post("/actions/feedback", feedbackController.handleFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
 app.get("/actions/clearCache", cacheController.clearCache);
 app.delete("/cache", cacheController.clearCache);
-app.get("/content/feedback.csv", feedbackController.retrieveFeedback);
+app.get("/api/content/feedback.csv", feedbackController.retrieveFeedback);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
-app.get("/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
+app.get("/api/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
 
 import { getUserRoles } from "./controllers/user-roles.js";
-app.get("/content/:userId/roles.json", getUserRoles);
+app.get("/api/content/:userId/roles.json", getUserRoles);
 
 import { getDrupalUserEmail } from "./controllers/user-email.js";
-app.get("/content/:userId/email.json", getDrupalUserEmail);
+app.get("/api/content/:userId/email.json", getDrupalUserEmail);
 
 import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
-app.get("/content/newsletter-registration.json", registerUserForNewsletter);
+app.get("/api/content/newsletter-registration.json", registerUserForNewsletter);
 
 import { fetchContentById, fetchContentByType } from "./controllers/content.js";
-app.get("/content/:type/:id.json", fetchContentById);
-app.get("/content/:type.json", fetchContentByType);
+app.get("/api/content/:type/:id.json", fetchContentById);
+app.get("/api/content/:type.json", fetchContentByType);
 
 app.get(["/", "/*"], function(req, res, next) {
-    const pugVariables = _.merge({}, metaVariables, {
-        config: JSON.stringify(req.sessionAndConfig),
-        optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
-        tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
-    });
-    res.render("main", pugVariables);
+  const pugVariables = _.merge({}, metaVariables, {
+    config: JSON.stringify(req.sessionAndConfig),
+    optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
+    tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
+  });
+  res.render("main", pugVariables);
 });
 
 // development error handler
