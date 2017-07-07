@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LocationChangeActions from '../../../../actions/navigation.js';
-import lenderMatchHero from '../../../../../../public/assets/images/lender-match/hero.jpg';
 import lenderMatchMobile from "../../../../../../public/assets/images/lender-match/hero-mobile.jpg";
 import Hero from "../../hero/hero.jsx";
 
@@ -38,7 +37,7 @@ class FindLendersIntro extends React.Component {
                             }
                         ];
     return (
-        <Hero title={calloutTitle} message={calloutMessage} desktopImage={lenderMatchHero} mobileImage={lenderMatchMobile} buttons={buttonsArray} alt="Two people discussing in an office"/>
+        <Hero title={calloutTitle} message={calloutMessage} imageUrl="/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg" mobileImage={lenderMatchMobile} buttons={buttonsArray} alt="Two people discussing in an office"/>
       );
   }
 }
