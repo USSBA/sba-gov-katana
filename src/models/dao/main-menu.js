@@ -42,7 +42,10 @@ function deepPickMenuTree(data) {
 }
 
 function fetchDeepPickFormattedMenu() {
-  return fetchFormattedMenu().then(deepPickMenuTree);
+  if (config.get("drupal8.useMenu")) {
+    return fetchFormattedMenu().then(deepPickMenuTree);
+  }
+  return Promise.resolve([]);
 }
 
 function fetchMainMenu() {
