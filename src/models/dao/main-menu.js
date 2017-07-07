@@ -10,6 +10,7 @@ import { fetchFormattedMenu } from "../../service/drupal-eight.js";
 import _ from "lodash";
 import Promise from "bluebird";
 import path from "path";
+import config from "config";
 
 
 function fixLink(link, linkPath) {
@@ -74,7 +75,7 @@ function fetchMainMenu() {
         loansAndGrants.featuredCallout = loansAndGrantsCallout;
       }
 
-      if (!_.isEmpty(deepPickFormattedMenu)) {
+      if (config.get("drupal8.useMenu") && !_.isEmpty(deepPickFormattedMenu)) {
         menuTree.splice(0, 1, _.head(deepPickFormattedMenu));
       }
       return menuTree;

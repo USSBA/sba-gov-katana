@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './dropdown-menu.scss';
 import {isEmpty} from "lodash";
 import constants from "../../../services/constants.js"
+import clientConfig from "../../../services/client-config.js"
 
 import PageLinkGroup from "../page-link-group/page-link-group.jsx"
 import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
@@ -51,7 +52,7 @@ class DropdownMenu extends React.Component {
     let smallInverseCta = false;
     if (menuId === 0) {
       sizingStyle = styles.one;
-      smallInverseCta = true;
+      smallInverseCta = true && clientConfig.useTantoMenu;
     }
     if (menuId === 1) {
       sizingStyle = styles.two;

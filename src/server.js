@@ -53,7 +53,8 @@ app.use(function(req, res, next) {
     isUserLoggedIn: hasSessionCookie || false,
     googleAnalytics: config.get("googleAnalytics"),
     debug: config.get("developmentOptions.client.logging"),
-    govdelivery: config.get("govdelivery.popupEnabled")
+    govdelivery: config.get("govdelivery.popupEnabled"),
+    useTantoMenu: config.get("drupal8.useMenu")
   };
   req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
   next();
