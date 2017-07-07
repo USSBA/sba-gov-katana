@@ -63,7 +63,7 @@ class BizguideTile extends React.Component {
               onMouseEnter={() => {this._mouseEnterTile()}}
               onMouseLeave={() => {this._mouseExitTile()}}
            >
-            <a className={s.tabDisplayMenu} href="" onFocus={() => {this._tabFocusTile()}}>toggle {this.props.data.title} menu</a>
+            <a className={s.tabDisplayMenu} href="" onClick={(e) => {e.preventDefault()}} onFocus={() => {this._mouseEnterTile()}}>toggle {this.props.data.title} menu</a>
             {this.state.displayHoverMenu ? (
               <BizguideTileHover 
                 data={this.props.data} 
@@ -81,7 +81,6 @@ class BizguideTile extends React.Component {
               />
             )}
             <img className={s.backgroundLines} src={this.props.backgroundLines} alt=""/>
-            <a className={s.tabDisplayMenu} href="" onFocus={() => {this._tabFocusTile()}}>toggle {this.props.data.title} menu</a>
           </div>
       );
   }
