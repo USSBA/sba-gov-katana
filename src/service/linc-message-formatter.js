@@ -256,8 +256,9 @@ function shorten(bufStr) {
 }
 
 function formatMessage(userId, lenderMatchRegistration) {
-  const firstName = 0;
-  const lastName = 1;
+
+  const [firstName, ...rest] = lenderMatchRegistration.name.split(" ");
+  const lastName = rest.join(" ");
 
   return {
     //UserName <= 80 chars
@@ -271,9 +272,9 @@ function formatMessage(userId, lenderMatchRegistration) {
     //ProjectZip4Cd = 4 chars
     "ProjectZip4Cd": "0000",
     //FirstName <= 80 chars
-    "FirstName": userName(lenderMatchRegistration.name.split(" ")[firstName]),
+    "FirstName": userName(firstName),
     //LastName <= 80 chars
-    "LastName": userName(lenderMatchRegistration.name.split(" ")[lastName]),
+    "LastName": userName(lastName),
     //BusinessWebsite <= 255 chars
     "BusinessWebsite": lenderMatchRegistration.businessWebsite,
     //FinancialInd <=

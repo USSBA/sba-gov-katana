@@ -26,6 +26,9 @@ class TenStepsNav extends React.Component {
   render() {
     let steps = [
       {
+        title: "Research"
+      },
+      {
         title: "Plan"
       },
       {
@@ -47,18 +50,15 @@ class TenStepsNav extends React.Component {
         title: "Tax IDs"
       },
       {
-        title: "Licenses & Permits"
+        title: "License"
       },
       {
-        title: "Bank Account"
-      },
-      {
-        title: "10th Step"
+        title: "Banking"
       }
     ];
 
     return (
-      <div className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}>
+      <div aria-hidden="true" className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}>
         {
           steps.map((step, index) => {
             return (

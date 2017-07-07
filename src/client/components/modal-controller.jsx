@@ -15,7 +15,11 @@ const ModalController = ({modalType, modalProps}) => {
     return <div />
   } else {
     const ModalClass = modalTypes[modalType];
-    return (<ModalClass {...modalProps} />);
+    if(ModalClass){
+        return (<ModalClass {...modalProps} />);
+    }else{
+        return <div />
+    }
   }
 };
 
