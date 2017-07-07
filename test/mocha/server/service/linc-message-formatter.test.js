@@ -19,7 +19,7 @@ describe("LINC Message Formatter", function() {
         sbaGovUser: "newUser"
       }, {
         id: "some-test-id",
-        name: "Test User",
+        name: "Test von User",
         phone: "123-456-7890",
         emailAddress: "test@test.test",
         businessName: "businessName",
@@ -44,7 +44,9 @@ describe("LINC Message Formatter", function() {
       output.should.have.property("ProjectZipCd");
       output.should.have.property("ProjectZip4Cd");
       output.should.have.property("FirstName");
+      output.FirstName.should.equal("Test");
       output.should.have.property("LastName");
+      output.LastName.should.equal("von User");
       output.should.have.property("BusinessWebsite");
       output.should.have.property("FinancialInd");
       output.should.have.property("RevenueInd");
