@@ -11,8 +11,9 @@ class Hero extends React.Component {
   render() {
     return (
       <div className={styles.heroContainer}>
+
         <div className={styles.heroMobileImageContainer}>
-          <div style={this.imgStyles()}></div>
+          <div title={this.props.alt} style={this.imgStyles()}></div>
         </div>
         <img className={styles.heroDesktopImage} src={this.props.imageUrl} alt={this.props.alt}/>
         <div className={styles.callout}>
