@@ -9,7 +9,7 @@
   display: inline;
   border-radius: 5px;
   border-color: $grey-light;
-  width: 36vw;
+  //width: 36vw;
 }
 
 .errorPageSearch a {
@@ -35,6 +35,9 @@
   width: 48%;
   float: right;
   margin-top: 5%;
+  form{
+    width: 80%;
+  }
 }
 
 .errorContainer:after{

@@ -7,7 +7,8 @@ import _ from 'lodash';
 import {findPageLineage, findSubSection, findSection} from "../../services/menu.js";
 import Page from "./page.jsx";
 import SectionPage from "./section-page/section-page.jsx";
-import path from "path"
+import path from "path";
+import ErrorPage from "../pages/error-page/error-page.jsx";
 
 class RootPage extends React.Component {
 
@@ -31,6 +32,7 @@ class RootPage extends React.Component {
 
   renderPage(section, subsection, page) {
     let pageLineage = findPageLineage(this.props.menu, _.compact([section, subsection, page]));
+    console.log("pageLineage: " + JSON.stringify(pageLineage));
     if (pageLineage && pageLineage.length > 1) {
       let nodeId = _.last(pageLineage).node;
       if (nodeId) {
@@ -38,7 +40,10 @@ class RootPage extends React.Component {
       }
     } else if (!page && section === "funding-programs") {
       return (<Page section={section} nodeId={subsection}/>);
+    }else if(pageLineage !== null){
+        return (<ErrorPage/>);
     }
+
     return (<div/>);
   }
 
@@ -47,10 +52,13 @@ class RootPage extends React.Component {
       return this.renderPage(this.props.params.section, this.props.params.subsection, this.props.params.page);
     } else if (this.props.params.section) {
       let sectionData = findSection(this.props.menu, this.props.params.section);
-      return (<SectionPage sectionData={sectionData}/>);
+      if(sectionData)
+        return (<SectionPage sectionData={sectionData}/>);
+      else if(sectionData !== null)
+        return(<ErrorPage/>);
     }
     return (
-      <div></div>
+      <div/>
     );
   }
 }
