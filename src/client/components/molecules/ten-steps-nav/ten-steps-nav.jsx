@@ -26,6 +26,9 @@ class TenStepsNav extends React.Component {
   render() {
     let steps = [
       {
+        title: "Research"
+      },
+      {
         title: "Plan"
       },
       {
@@ -47,13 +50,10 @@ class TenStepsNav extends React.Component {
         title: "Tax IDs"
       },
       {
-        title: "Licenses & Permits"
+        title: "License"
       },
       {
-        title: "Bank Account"
-      },
-      {
-        title: "10th Step"
+        title: "Banking"
       }
     ];
 
