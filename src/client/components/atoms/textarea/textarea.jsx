@@ -38,7 +38,7 @@ class TextArea extends React.Component {
           {label}
         </label>
         <div className={styles.textAreaContainer}>
-          <textarea {...rest} id={id} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250"/>
+          <textarea {...rest} id={id} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250" value={value} />
           <ValidationIcon validationState={this.props.validationState} showSuccessIcon={this.props.showSuccessIcon} showErrorIcon={this.props.showErrorIcon} extraClassName={styles.validationIcon}/>
         </div>
         {showCounter
