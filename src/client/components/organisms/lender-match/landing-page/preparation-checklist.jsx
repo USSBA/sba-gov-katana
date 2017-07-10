@@ -41,7 +41,7 @@ class PreparationChecklist extends React.Component{
                <div className={ styles.CallToAction }>
                    <p>Have questions or need help getting prepared? Take advantage of free, local counseling.</p>
                    <div className={ styles.ButtonGroup }>
-                       <SmallSecondaryButton href="/tools/local-assistance" text="EXPERT HELP"/>
+                       <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP"/>
                        <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)}/>
                    </div>
                </div>

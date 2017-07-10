@@ -95,7 +95,7 @@ class HelpfulQuestions extends React.Component {
         </div>
         <div className={styles.CallToAction}>
           <div className={styles.ButtonGroup}>
-            <SmallSecondaryButton href="/tools/local-assistance" text="EXPERT HELP"/>
+            <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP"/>
             <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)}/>
           </div>
         </div>
