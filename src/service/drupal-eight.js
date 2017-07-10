@@ -83,6 +83,7 @@ function fetchCounsellorCta() {
         cta.blurb = extractValue(data.field_blurb);
         cta.image = convertUrlHost(data.field_image[0].url);
         cta.imageAlt = data.field_image[0].alt;
+        cta.title = extractValue(data.title);
 
         return fetchParagraphId(btnRef).then((btn) => {
           if (btn.field_link) {

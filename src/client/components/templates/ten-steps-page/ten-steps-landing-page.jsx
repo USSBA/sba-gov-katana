@@ -211,7 +211,8 @@ class TenStepsLandingPage extends React.Component {
                                       image={counsellorCta.image}
                                       imageAlt={counsellorCta.imageAlt}
                                       btnTitle={counsellorCta.btnTitle}
-                                      btnUrl={counsellorCta.btnUrl} />
+                                      btnUrl={counsellorCta.btnUrl}
+                                      title={counsellorCta.title} />
                     </div> : <div></div>
                 }
             </div>
