@@ -13,9 +13,10 @@
 
 .sectionNum {
   @include font-size($h1-font-sizes);
-  font-weight: 900;
   border-bottom: 4px solid;
-  line-height: 2.2;
+  display: inline-block;
+  font-weight: 900;
+  margin-bottom: .25em;
 }
 
 .transparentBox .sectionNum {
@@ -24,6 +25,7 @@
 
 h2.sectionTitle {
   @include font-size($h1-font-sizes);
+  margin-bottom: .45em;
 }
 
 p.sectionText {
