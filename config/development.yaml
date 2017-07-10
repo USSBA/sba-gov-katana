@@ -12,7 +12,7 @@ googleAnalytics:
     optimizeContainerId: "GTM-KS9GT4X"
     debug: true
 drupal:
-    hostname: https://www.sbagov.fearlesstesters.com/
+    hostname: http://www.sbagov.fearlesstesters.com/
 drupal8:
     hostname: http://content.sbagov.fearlesstesters.com/
     useLocalContacts: true
