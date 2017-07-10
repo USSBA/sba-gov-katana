@@ -37,7 +37,7 @@ class ErrorPage extends React.Component {
                         Return to the <a href="/">home page</a>, or search for what you're trying to find.
                     </p>
                     <form key={2} id="error-form" className={styles.errorPageSearch} onSubmit={this.submitSearch.bind(this)}>
-                        <TextInput  id="error-page-search-input" placeholder='Search' onChange={this.handleSearchChange.bind(this)} autoFocus/>
+                        <TextInput aria-label="search sba.gov" id="error-page-search-input" placeholder='Search' onChange={this.handleSearchChange.bind(this)} autoFocus/>
                         <SmallIcon extraClassName={styles.errorPageSearchIcon} id="error-page-search-button" onClick={this.submitSearch.bind(this)} alt="error page search button" fontAwesomeIconClassName="search"/>
                     </form>
                 </div>
