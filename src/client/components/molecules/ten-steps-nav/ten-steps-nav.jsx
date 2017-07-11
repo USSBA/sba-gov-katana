@@ -58,7 +58,7 @@ class TenStepsNav extends React.Component {
     ];
 
     return (
-      <div aria-hidden="true" className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}>
+      <div id="ten-steps-nav" aria-hidden="true" className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}>
         {
           steps.map((step, index) => {
             return (
