@@ -23,11 +23,9 @@ class Main extends React.Component {
 
   componentWillMount() {
     let cookieValue = cookie.load('close_disaster_loan_parature');
-    console.log("cookieValue", cookieValue);
     let hidingCookie = cookieValue
       ? true
       : false;
-    console.log("hidingCookie", hidingCookie);
     this.setState({disasterAlertHidingCookieIsPresent: hidingCookie});
   }
 
@@ -37,7 +35,6 @@ class Main extends React.Component {
       path: '/',
       secure: true
     });
-    console.log("Saving Cookie");
   }
 
   render() {
