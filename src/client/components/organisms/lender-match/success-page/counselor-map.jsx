@@ -27,11 +27,9 @@ class CounselorMap extends Component {
   };
 
   fitMarkers(){
-    // console.log(this.props.markerLocations);
     if(this.state.zoom == null && this.state.center == null){
       const size = {width: 600, height: 490};
       let zoomAndCenter = findZoomAndCenter({ size }, this.props.markerLocations);
-    //   console.log(zoomAndCenter.center);
       this.setState({zoom: zoomAndCenter.zoom, center: zoomAndCenter.center});
       // let bounds = new google.maps.LatLngBounds();
       // this.props.markerLocations.forEach((marker) => {

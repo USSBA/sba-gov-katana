@@ -32,7 +32,6 @@ class RootPage extends React.Component {
 
   renderPage(section, subsection, page) {
     let pageLineage = findPageLineage(this.props.menu, _.compact([section, subsection, page]));
-    console.log("pageLineage: " + JSON.stringify(pageLineage));
     if (pageLineage && pageLineage.length > 1) {
       let nodeId = _.last(pageLineage).node;
       if (nodeId) {

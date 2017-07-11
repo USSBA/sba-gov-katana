@@ -17,7 +17,6 @@ export class DeveloperTester extends React.Component {
   }
 
   handleSelectChange(newValue) {
-    console.log("newValue", newValue);
   }
 
   handleIndustryTypeBlur() {}

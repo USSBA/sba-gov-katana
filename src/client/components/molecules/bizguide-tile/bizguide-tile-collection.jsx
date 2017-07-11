@@ -25,7 +25,6 @@ class BizguideTileCollection extends React.Component {
 
   _mapSection(){
     this.props.sectionData.children.map((value) => {
-      console.log(value)
     })
   }
 

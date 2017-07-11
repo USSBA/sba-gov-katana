@@ -294,7 +294,6 @@ class FormElements extends React.Component {
   handleCheckBoxChange(e) {
     let newState = {};
     newState[e.target.name] = e.target.checked;
-    console.log(newState)
     this.setState({
       checkBoxFields: {
         ...this.state.checkBoxFields,
