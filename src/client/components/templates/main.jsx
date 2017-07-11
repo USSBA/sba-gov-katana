@@ -4,38 +4,49 @@ import Footer from '../organisms/header-footer/footer/footer.jsx';
 import cookie from 'react-cookie';
 import DisasterAlerts from '../organisms/header-footer/disaster-alerts.jsx'
 import ModalController from '../modal-controller.jsx';
-
+import * as ContentActions from "../../actions/content.js";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import styles from '../organisms/header-footer/header/header.scss';
 
 class Main extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      disasterAlertIsVisible: false
+      disasterAlertHidingCookieIsPresent: false
     };
   }
 
+  componentDidMount() {
+    this.props.actions.fetchContentIfNeeded("disaster", "disaster");
+  }
+
   componentWillMount() {
-    let visible = cookie.load('close_disaster_loan_parature')
-      ? false
-      : true;
-    this.setState({disasterAlertIsVisible: visible});
+    let cookieValue = cookie.load('close_disaster_loan_parature');
+    console.log("cookieValue", cookieValue);
+    let hidingCookie = cookieValue
+      ? true
+      : false;
+    console.log("hidingCookie", hidingCookie);
+    this.setState({disasterAlertHidingCookieIsPresent: hidingCookie});
   }
 
   handleClose() {
-    this.setState({disasterAlertIsVisible: false});
+    this.setState({disasterAlertHidingCookieIsPresent: true});
     cookie.save('close_disaster_loan_parature', '1', {
       path: '/',
       secure: true
     });
+    console.log("Saving Cookie");
   }
 
   render() {
+    let visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent;
     return (
-      <div className={this.state.disasterAlertIsVisible
+      <div className={visible
         ? styles.alertIsActive
         : ""}>
-        <DisasterAlerts disasterAlertIsVisible={this.state.disasterAlertIsVisible} onClose={this.handleClose.bind(this)}/>
+        <DisasterAlerts description={this.props.disasterAlertDescription} visible={visible} onClose={this.handleClose.bind(this)}/>
         <Header/>
         <div className={styles.mainContent}>{this.props.children}</div>
         <Footer/>
@@ -45,4 +56,18 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+function mapReduxStateToProps(reduxState) {
+  let data = reduxState.contentReducer["disaster"];
+  if (data) {
+    return {disasterAlertVisible: data.visible, disasterAlertDescription: data.description};
+  } else {
+    return {};
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  };
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Main);
