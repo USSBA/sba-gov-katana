@@ -51,7 +51,7 @@ class ContactCardLookup extends React.Component {
       value: this.state.value,
       options: statesMap,
       onBlur: this.handleBlur.bind(this),
-      autoFocus: true,
+      autoFocus: false,
       multi: false,
       onFocus: this.handleFocus.bind(this)
     };
