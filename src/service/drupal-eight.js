@@ -5,6 +5,7 @@ import config from "config";
 import localContacts from "../models/dao/contacts.js";
 import path from "path";
 
+
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
@@ -15,7 +16,7 @@ const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
 
-import { sanitizeTextSectionHtml } from "../util/formatter.js";
+import { sanitizeTextSectionHtml, formatUrl } from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractValue(object, key) {
@@ -315,10 +316,12 @@ function formatNode(data) {
 
 }
 
+
+
 function formatMenu(data, parentUrl) {
   if (data) {
-    const menuUrl = data.link.url ? _.last(data.link.url.split(path.sep)) : "";
-    const fullUrl = path.join(parentUrl, menuUrl);
+    const myUrl = formatUrl(data.link.url, data.link.title);
+    const fullUrl = path.join(parentUrl, myUrl);
 
     let promise = Promise.resolve(null);
     if (data.has_children && data.subtree) {
@@ -328,7 +331,7 @@ function formatMenu(data, parentUrl) {
     return promise.then((submenus) => {
       return {
         title: data.link.title,
-        url: menuUrl,
+        url: myUrl,
         fullUrl: fullUrl,
         children: submenus,
         description: data.link.description,
@@ -346,10 +349,10 @@ function formatMenuTree(data, parentUrl) {
     const rootUrl = parentUrl ? parentUrl : "/";
     return Promise.map(data, (item) => {
       return formatMenu(item, rootUrl);
-    }).then((menu) => {
-      return _.chain(menu).sortBy("weight").value();
     }, {
       concurrency: 1
+    }).then((menu) => {
+      return _.chain(menu).sortBy("weight").value();
     });
   }
   return Promise.resolve([]);

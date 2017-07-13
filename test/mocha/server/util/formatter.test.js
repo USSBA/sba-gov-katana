@@ -8,7 +8,8 @@ let formattedFeedbackData = fs.readFileSync("test/mocha/server/util/formatted-fe
 
 import {
   sanitizeTextSectionHtml,
-  formatFeedbackData
+  formatFeedbackData,
+  formatUrl
 } from "../../../../src/util/formatter.js";
 
 describe("#Formatter", function() {
@@ -45,4 +46,62 @@ describe("#Formatter", function() {
       done();
     })
   });
-})
+
+  describe("#formatUrl", function() {
+    it("should use the url when provided with only one ", function(done) {
+      let url = formatUrl("/business-guide")
+      url.should.equal("business-guide");
+      done();
+    })
+
+    it("should use the last element of url when provided a nested path ", function(done) {
+      let url = formatUrl("/business-guide/plan/")
+      url.should.equal("plan");
+      done();
+    })
+
+    it("should  use the last element of url when provided a full path ", function(done) {
+      let url = formatUrl("/business-guide/plan/calculate-startup-costs-small-business")
+      url.should.equal("calculate-startup-costs-small-business");
+      done();
+    })
+
+    it("should set the url to a kebab case version of the title ", function(done) {
+      let url = formatUrl("/node/50", "Calculate startup costs")
+      url.should.equal("calculate-startup-costs");
+      done();
+    })
+
+    it("should remove useless words", function(done) {
+      let url = formatUrl("/node/50", "Calculate the startup costs of a small business")
+      url.should.equal("calculate-startup-costs-small-business");
+      done();
+    })
+
+    it("should convert everything to lower case ", function(done) {
+      let url = formatUrl("/node/50", "CalCulate The Startup costs")
+      url.should.equal("calculate-startup-costs");
+      done();
+    })
+
+    it("should convert nonASCII characters to ASCII letters ", function(done) {
+      let url = formatUrl("/node/50", "Use The Force Lúke")
+      url.should.equal("use-force-luke");
+      done();
+    })
+
+    it("should all the nonASCII characters to ASCII letters ", function(done) {
+      let url = formatUrl("/node/50", "中文 español deutsch English हिन्दी العربية português বাংলা русский 日本語 ਪੰਜਾਬੀ 한국어 தமிழ் עברית")
+      url.should.equal("zhong-wen-espanol-deutsch-english-hindii-laarby-portugues-baa-nlaa-russkiy-ri-ben-yu-p-njaabii-hangugeo-tmilll-bryt");
+      done();
+    })
+
+    it("should remove punctuation", function(done) {
+      let url = formatUrl("/node/50", "Use? The: Force; Luke!")
+      url.should.equal("use-force-luke");
+      done();
+    })
+
+
+  });
+});
