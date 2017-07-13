@@ -1,7 +1,9 @@
 import sanitizeHtml from "sanitize-html";
 import jsonToCsv from "json2csv";
 import _ from "lodash";
-import moment from "moment";
+import moment from "moment-timezone";
+import path from "path";
+import { transliterate } from "transliteration";
 
 function sanitizeTextSectionHtml(dirty) {
   let clean = "";
@@ -34,4 +36,20 @@ function formatFeedbackData(data) {
     }) + "\n";
 }
 
-export { sanitizeTextSectionHtml, formatFeedbackData };
+function formatUrl(url, title) {
+  if (url && !url.match(/\/node\/\d*/)) {
+    const withoutTrailingSlack = _.trim(url, "/");
+    return _.last(withoutTrailingSlack.split(path.sep));
+  }
+  const lower = title.toLowerCase();
+  const transliterated = transliterate(lower);
+  const punctuationless = transliterated.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
+  const withoutExtraWhitespace = punctuationless.replace(/\s{2,}/g, " ");
+  const words = _.words(withoutExtraWhitespace);
+  const withoutUselessWords = _.without(words, "a", "am", "an", "and", "as", "at", "for", "of", "on", "or", "the", "to", "too", "with", "but", "by", "for", "from", "this", "that", "with");
+  const finalString = _.kebabCase(withoutUselessWords);
+  return finalString;
+}
+
+
+export { sanitizeTextSectionHtml, formatFeedbackData, formatUrl };
