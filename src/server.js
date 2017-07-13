@@ -8,10 +8,7 @@ import config from "config";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
-import {
-  enableWebpackHotModuleReplacement,
-  addDevelopmentErrorHandler
-} from "./util/dev.js";
+import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from "./util/dev.js";
 
 const app = express();
 app.use(cookieParser());
@@ -100,25 +97,16 @@ import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/api/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
 
 
-import {
-  getUserRoles
-} from "./controllers/user-roles.js";
+import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/api/content/:userId/roles.json", getUserRoles);
 
-import {
-  getDrupalUserEmail
-} from "./controllers/user-email.js";
+import { getDrupalUserEmail } from "./controllers/user-email.js";
 app.get("/api/content/:userId/email.json", getDrupalUserEmail);
 
-import {
-  registerUserForNewsletter
-} from "./controllers/newsletter-registration.js";
+import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/api/content/newsletter-registration.json", registerUserForNewsletter);
 
-import {
-  fetchContentById,
-  fetchContentByType
-} from "./controllers/content.js";
+import { fetchContentById, fetchContentByType } from "./controllers/content.js";
 app.get("/api/content/:type/:id.json", fetchContentById);
 app.get("/api/content/:type.json", fetchContentByType);
 
