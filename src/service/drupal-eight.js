@@ -53,7 +53,7 @@ function fetchMenuTreeByName(name) {
 }
 
 function convertUrlHost(urlStr) {
-  const host = "http://content.sbagov.fearlesstesters.com";
+  const host = config.get("drupal8FQDN.hostname");
   let newUrl = url.parse(urlStr);
   newUrl = host + newUrl.pathname;
   return newUrl;
