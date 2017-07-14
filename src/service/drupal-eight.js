@@ -53,7 +53,7 @@ function fetchMenuTreeByName(name) {
 }
 
 function convertUrlHost(urlStr) {
-  const host = config.get("drupal8FQDN.hostname");
+  const host = config.get("drupal8.contentUrl");
   let newUrl = url.parse(urlStr);
   newUrl = host + newUrl.pathname;
   return newUrl;
