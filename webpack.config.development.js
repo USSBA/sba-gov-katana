@@ -19,7 +19,7 @@ module.exports = function(env) {
       publicPath: '/build/'
     },
     plugins: [
-      new BundleAnalyzerPlugin(),
+      //   new BundleAnalyzerPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/)
     ],
