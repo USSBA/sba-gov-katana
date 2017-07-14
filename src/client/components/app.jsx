@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import rootReducer from '../reducers/index.js'
 import { logPageView, googleAnalyticsMiddleware } from "../services/analytics.js";
 import logging from "../services/logger.js";
-import config from "./client-config.js";
+import config from "../services/client-config.js";
 
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
