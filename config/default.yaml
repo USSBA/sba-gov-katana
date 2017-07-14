@@ -23,8 +23,7 @@ drupal8:
     hostname: http://tanto
     useLocalContacts: false
     useMenu: true
-drupal8FQDN:
-    hostname: http://content.sbagov.fearlesstesters.com/
+    contentUrl: http://content.sbagov.fearlesstesters.com/
 server:
     port: 3000
 counsellorCta:
