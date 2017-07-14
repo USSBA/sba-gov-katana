@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import rootReducer from '../reducers/index.js'
 import { logPageView, googleAnalyticsMiddleware } from "../services/analytics.js";
 import logging from "../services/logger.js";
+import config from "./client-config.js";
 
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -15,10 +16,10 @@ import Themer from './templates/themer/themer.jsx'
 
 let middlewareList = [];
 middlewareList.push(thunk);
-if (window.CONFIG.debug) {
+if (config.debug) {
   middlewareList.push(logging);
 }
-if (window.CONFIG.googleAnalytics.enabled) {
+if (config.googleAnalytics.enabled) {
   middlewareList.push(googleAnalyticsMiddleware);
 }
 
