@@ -1,13 +1,15 @@
+import config from "./client-config.js";
+
 var reactGa = require("react-ga");
 
 
 function isEnabled() {
-  return window.CONFIG.googleAnalytics.enabled;
+  return config.googleAnalytics.enabled;
 }
 
 if (isEnabled()) {
-  reactGa.initialize(window.CONFIG.googleAnalytics.accountId);
-  reactGa.plugin.require(window.CONFIG.googleAnalytics.optimizeContainerId);
+  reactGa.initialize(config.googleAnalytics.accountId);
+  reactGa.plugin.require(config.googleAnalytics.optimizeContainerId);
 } else {
   console.log("GA in Development Mode");
 }
