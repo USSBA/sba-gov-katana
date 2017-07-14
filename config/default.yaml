@@ -8,6 +8,9 @@ developmentOptions:
         silent: false
 govdelivery:
     popupEnabled: true
+foresee:
+    environment: staging
+    enabled: true
 newrelic:
     enabled: false
 googleAnalytics:

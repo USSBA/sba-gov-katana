@@ -114,7 +114,9 @@ app.get(["/", "/*"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     config: JSON.stringify(req.sessionAndConfig),
     optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
-    tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId")
+    tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId"),
+    foreseeEnabled: config.get("foresee.enabled"),
+    foreseeEnvironment: config.get("foresee.environment")
   });
   res.render("main", pugVariables);
 });
