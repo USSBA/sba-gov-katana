@@ -35,7 +35,7 @@ class RootPage extends React.Component {
     if (pageLineage && pageLineage.length > 1) {
       let nodeId = _.last(pageLineage).node;
       if (nodeId) {
-        return (<Page lineage={pageLineage} snodeId={nodeId}/>);
+        return (<Page lineage={pageLineage} nodeId={nodeId}/>);
       }
     }
 

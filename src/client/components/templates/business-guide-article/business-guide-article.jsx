@@ -5,17 +5,12 @@ import {listenForOverlap} from 'element-overlap';
 import _ from "lodash";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
 
-
 import TitleSection from "../../molecules/title-section/title-section.jsx";
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
+import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
 
-const ParagraphTypeToBeImplemented = ({data, index}) => {
-  return (
-    <p>{JSON.stringify(data)}</p>
-  );
-};
 
 class BusinessGuideArticle extends React.Component {
 
@@ -32,27 +27,27 @@ class BusinessGuideArticle extends React.Component {
   componentWillMount() {}
 
   makeSectionHeaders(paragraphData) {
-    let paragraphs = [];
     let sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
       if (item && item.type && item.type === "sectionHeader") {
-          let sectionHeaderId = "section-header-" + index;
-          return {id: sectionHeaderId, text: item.text};
+        return {id: paragraphMapper.makeSectionHeaderId(index), text: item.text};
       }
       return undefined;
-    };
+    });
     return _.compact(sectionHeaders);
   }
 
   makeParagraphs(paragraphData) {
-    let paragraphList =  paragraphMapper.makeParagraphs(paragraphData);
-    let wrapperClassMapping  = {
-        textSection: styles.textSection,
-        textReadMoreSection: "",
-        sectionHeader: styles.sectionHeader,
-        image: styles.image,
-        lookup: styles.lookup,
-        callToAction: styles.callToAction,
-        cardCollection: styles.textSection
+    let paragraphList = paragraphMapper.makeParagraphs(paragraphData);
+    let wrapperClassMapping = {
+      textSection: styles.textSection,
+      textReadMoreSection: "",
+      sectionHeader: styles.sectionHeader,
+      subsectionHeader: styles.textSection,
+      image: styles.image,
+      lookup: styles.lookup,
+      callToAction: styles.callToAction,
+      cardCollection: styles.textSection,
+      styleGrayBackground: styles.textSection
     };
     let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped;
@@ -120,7 +115,7 @@ class BusinessGuideArticle extends React.Component {
             <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a>
           </div>
           <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
-          <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={this.sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
+          <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
           <div key={3} className={styles.feedback}><FeedbackForm/></div>
           {previousAndNextButtons}
         </div>
