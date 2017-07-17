@@ -11,15 +11,26 @@ import CallToAction from "../molecules/call-to-action/call-to-action.jsx"
 import CardCollection from "../molecules/card-collection/card-collection.jsx";
 import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
+import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
 
 function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
   let paragraphs = [];
+  let skipNextReadmore = false;
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
     let paragraph = (<ParagraphPlaceholder data={item} index={index}/>);
     let paragraphType = item.type;
     if (item && item.type) {
       if (item.type === "readMore") {
-        return null
+        if (skipNextReadmore) {
+          skipNextReadmore = false;
+          return null;
+        } else {
+          let readmoreProps = {
+            parentId: "-read-more",
+            readMoreSectionItem: item
+          }
+          paragraph = (<ReadMoreSection {...readmoreProps}/>);
+        }
       } else if (item.type === "textSection") {
         let next = paragraphArray.length >= index + 1
           ? paragraphArray[index + 1]
@@ -27,6 +38,7 @@ function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
         if (next && next.type === "readMore") {
           paragraphType = "textReadMoreSection";
           paragraph = (<TextReadMoreSection parentId={"text-readmore-section-" + index} textSectionItem={item} readMoreSectionItem={next}/>);
+          skipNextReadmore = true
         } else {
           paragraph = (<TextSection text={item.text}/>);
         }
