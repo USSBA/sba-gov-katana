@@ -17,15 +17,8 @@
 
 @media screen and (min-width:768px) {
     .rc-collapse {
-        @include grid-column(6);
-        @include grid-shift(-0.25);
-        //width: 39.5vw;
-        //float: left;
+        @include grid-column(6, $sba-grid-large);
         height: 256px;
-        &:nth-of-type(odd) {
-            //margin-right: 1.5vw;
-            margin-right: 2.5px;
-        }
     }
 }
 
@@ -83,6 +76,10 @@
 }
 
 // Question
+
+.rc-collapse > .rc-collapse-item > .rc-collapse-header {
+
+}
 .rc-collapse > .rc-collapse-item > .rc-collapse-header {
     line-height: 22px;
     color: #252525;
@@ -118,7 +115,7 @@
 .rc-collapse-content > .rc-collapse-content-box {
     hr {
         width: 25px;
-        border-top: 2px solid #609F00;
+        border-bottom: 2px solid #609F00;
         margin: 20px 0;
         text-align: left;
     }

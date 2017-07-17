@@ -23,7 +23,7 @@ class PreparationChecklist extends React.Component{
        return(
            <div id={this.props.tellMeHowAnchor} className={ styles.section }>
                <h2>Get ready.</h2>
-               <h5>Before you start talking to lenders, have a look at the abbreviated checklist to see if you're ready.</h5>
+               <h5>Before you start talking to lenders, have a look at the abbreviated checklist to see if youre ready.</h5>
                <div className={ styles.checklist }>
                    <ToDo icon={ planIcon } title="Business plan" caption="Most lenders expect a business plan when you apply for startup funding. If you need to create one, follow our free business plan guide."
                    />
@@ -38,13 +38,11 @@ class PreparationChecklist extends React.Component{
                    <ToDo icon={ industryIcon } title="Industry experience" caption="Industry experience isn't required, but it's helpful. Firsthand knowledge about your industry can make your lender feel confident about your loan request."
                    />
                </div>
-               <div className={ styles.CallToAction }>
-                   <p>Have questions or need help getting prepared? Take advantage of free, local counseling.</p>
+                   <p className={ styles.CallToAction }>Have questions or need help getting prepared? Take advantage of free, local counseling.</p>
                    <div className={ styles.ButtonGroup }>
                        <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP"/>
                        <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)}/>
                    </div>
-               </div>
            </div>
        );
     }
