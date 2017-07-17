@@ -12,7 +12,7 @@ import CardCollection from "../molecules/card-collection/card-collection.jsx";
 import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
 
-function makeParagraphs(paragraphData) {
+function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
   let paragraphs = [];
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
     let paragraph = (<ParagraphPlaceholder data={item} index={index}/>);
@@ -31,7 +31,8 @@ function makeParagraphs(paragraphData) {
           paragraph = (<TextSection text={item.text}/>);
         }
       } else if (item.type === "sectionHeader") {
-        paragraph = (<SectionHeader refId={makeSectionHeaderId(index)} text={item.text}/>);
+        let sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId;
+        paragraph = (<SectionHeader refId={sectionHeaderFunction(index)} text={item.text}/>);
       } else if (item.type === "subsectionHeader") {
         paragraph = (<SubsectionHeader text={item.text}/>);
       } else if (item.type === "image") {
@@ -55,15 +56,18 @@ function makeParagraphs(paragraphData) {
 function wrapParagraphs(paragraphsList, wrapperClassMapping) {
   return paragraphsList.map((item, index) => {
     let paragraphGridStyle = wrapperClassMapping[item.type];
+    if (!paragraphGridStyle) {
+      paragraphGridStyle = wrapperClassMapping["other"]
+    }
     return (
       <div key={index} id={item.type + "-" + index} className={paragraphGridStyle}>{item.paragraph}</div>
     );
   });
 }
 
-function makeSectionHeaderId(index){
-    let sectionHeaderId = "section-header-" + index;
-    return sectionHeaderId;
+function makeSectionHeaderId(index) {
+  let sectionHeaderId = "section-header-" + index;
+  return sectionHeaderId;
 }
 
 export {makeParagraphs, wrapParagraphs, makeSectionHeaderId};

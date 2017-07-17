@@ -1,13 +1,20 @@
 .container {
 }
 
-.feedback,
-.lookup,
 .sectionHeader,
 .textSection,
+.image {
+  @include grid-column(8, $sba-grid-large);
+}
+
+
+.feedback,
+.lookup,
 .titleSection,
 .previousNext,
 .breadcrumb,
-.callToAction {
+.callToAction,
+.cardCollection,
+.styleGrayBackground {
   @include grid-column(12, $sba-grid-large);
 }

@@ -39,6 +39,7 @@ class BusinessGuideArticle extends React.Component {
   makeParagraphs(paragraphData) {
     let paragraphList = paragraphMapper.makeParagraphs(paragraphData);
     let wrapperClassMapping = {
+      other: styles.textSection,
       textSection: styles.textSection,
       textReadMoreSection: "",
       sectionHeader: styles.sectionHeader,
@@ -46,7 +47,7 @@ class BusinessGuideArticle extends React.Component {
       image: styles.image,
       lookup: styles.lookup,
       callToAction: styles.callToAction,
-      cardCollection: styles.textSection,
+      cardCollection: styles.cardCollection,
       styleGrayBackground: styles.textSection
     };
     let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)

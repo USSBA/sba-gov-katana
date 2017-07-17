@@ -16,9 +16,7 @@ class Page extends React.Component {
   }
 
   render() {
-    console.log("Page render", this.props);
     let section = this.props.lineage[0].url;
-    console.log("section", section);
     if (this.props.data && this.props.lineage) {
       if (section === "business-guide") {
         return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage}/>);
