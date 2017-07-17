@@ -1,0 +1,13 @@
+.container {
+}
+
+.feedback,
+.lookup,
+.sectionHeader,
+.textSection,
+.titleSection,
+.previousNext,
+.breadcrumb,
+.callToAction {
+  @include grid-column(12, $sba-grid-large);
+}
