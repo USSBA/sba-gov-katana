@@ -1,7 +1,9 @@
-
 .section {
     @include grid-column(12, $desktop-nav)
-    margin-top: 60px;
+    margin-bottom: 50px;
+    @include grid-media ($sba-grid-medium) {
+        margin-top: 50px;
+    }
 }
 
 .title {

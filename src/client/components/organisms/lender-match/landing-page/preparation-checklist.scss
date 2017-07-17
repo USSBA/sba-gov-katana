@@ -1,108 +1,69 @@
 .section {
+    margin-bottom: 50px;
+}
+
+.card{
     @include grid-column(12);
-    //position: relative;
-    //margin: 60px 5.1vw 0 9.7vw;
-    //overflow: auto;
-    h2 {
-        @include font-size($h2-font-sizes);
-        line-height: 75px;
-        color: #333333;
-        margin-bottom: 25px;
+    text-align: center;
+    padding: 3vw;
+    border: 1px solid #C4C4C4;
+    margin-bottom: 20px;
+    img {
+        margin-bottom: 10px;
+        width: 25px;
     }
-    h5 {
-        @include font-size($h5-font-sizes);
-        font-family: Merriweather;
-        font-style: italic;
-        line-height: 27px;
-        color: #333333;
-        margin-bottom: 30px;
+    hr {
+        width: 40px;
+        border-bottom: 2px solid #609F00;
+        margin: 20px auto 25px;
     }
-    .checklist {
-        @include clearfix;
+}
+
+.CallToAction {
+    text-align: center;
+}
+
+.ButtonGroup {
+    @include grid-container;
+}
+
+@include grid-media($sba-grid-small) {
+    .section h2, .section h5 {
+        @include grid-column(6, $sba-grid-small);
+     }
+    .ButtonGroup button, .CallToAction {
+        @include grid-column(6);
     }
-    .CallToAction {
-        p {
-            @include font-size($paragraph-font-sizes);
-            @include grid-column(12);
-            text-align: center;
-            line-height: 27px;
-            margin-top: 15px;
+
+    .ButtonGroup button:first-child {
+        margin-bottom: 20px;
+    }
+}
+
+@include grid-media($sba-grid-medium) {
+        .section h2, .section h5 {
+             @include grid-column(12);
+         }
+        .card {
+            @include grid-column(4);
+            min-height: 250px;
+            height: 350px;
         }
-        .ButtonGroup {
-            margin-top: 25px;
-            button {
-                margin: 15px 0;
-                @include grid-column(3);
-                @include grid-shift(3);
-                margin-bottom: 20px;
-            }
+
+        .ButtonGroup button {
+            @include grid-column(3);
+            @include grid-shift(3);
         }
-    }
+}
+
+@include grid-media($sba-grid-large) {
     .card{
-        @include grid-column(4);
-        @include grid-shift(-0.25);
+        @include grid-column(4, $sba-grid-large);
         text-align: center;
-        //width: 25.76vw;
         height: 350px;
         min-height: 320px;
         padding: 3vw;
         border: 1px solid #C4C4C4;
         margin-bottom: 20px;
-
-        img {
-            margin-bottom: 10px;
-            width: 25px;
-        }
-        h3 {
-            @include font-size($h3-font-sizes);
-        }
-        hr {
-            width: 40px;
-            border-top: 2px solid #609F00;
-            margin: 20px auto 25px;
-        }
-        p {
-            @include font-size($paragraph-font-sizes);
-            line-height: 20px;
-        }
-    }
-}
-
-@media screen and (max-width:767px) {
-    .section {
-        width: 100%;
-        margin: 50px auto 0;
-        h2 {
-            @include font-size($h2-font-sizes);
-            @include grid-shift(0.5);
-            line-height: 30px;
-        }
-        h5 {
-            @include font-size($h5-font-sizes);
-            @include grid-shift(0.5);
-            line-height: 19px;
-        }
-        .CallToAction {
-            .ButtonGroup {
-                button {
-                    @include grid-column(12);
-                    @include grid-shift(-0.05);
-                }
-            }
-        }
-        .card {
-            @include grid-column(12);
-            @include grid-shift(0.05);
-            min-height: 250px;
-            height: 250px;
-            h3 {
-                @include font-size($h3-font-sizes);
-                line-height: 22px;
-            }
-            p {
-                @include font-size($paragraph-font-sizes);
-                line-height: 22px;
-            }
-        }
     }
 }
