@@ -9,6 +9,7 @@ class ProgramPage extends React.Component {
     let wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
+      readMore: styles.readMore,
       sectionHeader: styles.sectionHeader,
       image: styles.image,
       lookup: styles.lookup,
