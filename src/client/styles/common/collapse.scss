@@ -78,13 +78,17 @@
 // Question
 
 .rc-collapse > .rc-collapse-item > .rc-collapse-header {
-
-}
-.rc-collapse > .rc-collapse-item > .rc-collapse-header {
     line-height: 22px;
     color: #252525;
     cursor: pointer;
     font-family: "Source Sans Pro";
+    @include grid-media($sba-grid-medium) {
+        pointer-events: none;
+    }
+}
+
+.desktopFAQs .rc-collapse > .rc-collapse-item > .rc-collapse-header {
+     pointer-events: none;
 }
 
 .rc-collapse > .rc-collapse-item > .rc-collapse-header .arrow {
