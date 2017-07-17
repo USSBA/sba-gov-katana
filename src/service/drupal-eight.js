@@ -65,6 +65,7 @@ function convertUrlHost(urlStr) {
 
 
 function fetchFormattedContactParagraph(contact) {
+  var contactCategory = "sbic";
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
     response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
@@ -265,8 +266,7 @@ function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
 }
 
-
-function formatContactParagraph(paragraph) { //eslint-disable-line complexity
+function formatGeneralContactParagraph(paragraph) { //eslint-disable-line complexity
   if (paragraph) {
     const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
     const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
@@ -288,6 +288,25 @@ function formatContactParagraph(paragraph) { //eslint-disable-line complexity
         stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
       };
     });
+  }
+  return Promise.resolve(null);
+}
+
+function formatSbicContactParagraph(paragraph) {
+  return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix)
+    .then((paragraph) => {
+      return _.mapValues(paragraph, (value) => {
+        return value[0].value
+      })
+    })
+}
+
+function formatContactParagraph(paragraph) {
+  var contactCategory = "sbic";
+  if (contactCategory === "general") {
+    return formatGeneralContactParagraph(paragraph);
+  } else if (contactCategory === "sbic") {
+    return formatSbicContactParagraph(paragraph);
   }
   return Promise.resolve(null);
 }
