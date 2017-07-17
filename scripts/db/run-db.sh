@@ -26,7 +26,7 @@ else
       exit 1
     fi
     printf "."
-    sleep 1
+    sleep 3
   done
   printf "OK\nRunning import-sql script..."
   docker exec -it my-mysql sh /mnt/database/import-sql.sh
