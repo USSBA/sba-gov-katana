@@ -70,7 +70,7 @@ class Tile extends React.Component {
       : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'}/>);
 
     return (
-      <div id={this.props.id} className={s.tile} onClick={() => {
+      <div id={this.props.id} className={s.tile + " " +(this.props.size === 5 ? s.tileFive : s.tileFour)} onClick={() => {
         this._openNavMenu()
       }} onMouseEnter={() => {
         this._mouseEnterTile()

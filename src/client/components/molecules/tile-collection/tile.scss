@@ -16,6 +16,14 @@
 	}
 }
 
+.tileFive {
+	@include grid-media($sba-grid-large) {
+		 @include grid-column(2.4, $sba-grid-large) height: 577px;
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+}
+
 .backgroundLines {
 	display: none;
 	@include grid-media($sba-grid-large) {
@@ -28,6 +36,7 @@
 	}
 }
 //LINK FOR DISPLAYING MENU ON TAB
+
 .tabDisplayMenu {
 	display: none;
 	@include grid-media($sba-grid-large) {
@@ -41,6 +50,7 @@
 	}
 }
 //SPECIFIC STYLES FOR STATIC TILE
+
 .tileNormal {
 	height: 100%;
 	width: 100%;
@@ -55,7 +65,6 @@
 		padding-top: 133px;
 	}
 }
-
 @include background-color-theme(".tileInverse");
 
 .icon {
@@ -117,7 +126,7 @@
 	}
 }
 
-.titleInverse{
+.titleInverse {
 	color: $white;
 }
 
@@ -150,7 +159,7 @@
 @include border-color-theme(".line");
 
 .lineInverse {
-	border-color: $white  !important;
+	border-color: $white !important;
 }
 
 .blurb {
@@ -164,7 +173,7 @@
 	}
 }
 
-.blurbInverse{
+.blurbInverse {
 	color: $white;
 }
 
@@ -178,12 +187,12 @@
 	}
 }
 //SPECIFIC STYLES FOR HOVER TILE
+
 .tileHover {
 	height: 100%;
 	width: 100%;
 	padding-top: 20px;
 }
-
 @include background-color-theme(".tileHover");
 
 .largeTitleHover {

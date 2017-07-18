@@ -15,7 +15,8 @@ class TileCollection extends React.Component {
       icon: iconElement.icon,
       backgroundLines: iconElement.background,
       iconWhite: iconElement.iconWhite,
-      hoverShowsInverseOnly: this.props.hoverShowsInverseOnly
+      hoverShowsInverseOnly: this.props.hoverShowsInverseOnly,
+      size: this.props.icons.length
     };
     return (<Tile {...tileProps}/>);
   }
