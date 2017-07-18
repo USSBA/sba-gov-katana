@@ -4,12 +4,12 @@ import styles from "./page-link.scss"
 class PageLink extends React.Component {
 
   render() {
-    let anchorClass = styles.link + " " + (this.props.visible
-      ? ""
-      : styles.hidden)
+    let anchorClass = styles.link + " " + (this.props.visible ?
+      "" :
+      styles.hidden) 
     return (
-      <li className={ styles.pageLink }>
-        <a href={this.props.url} tabIndex="0" className={anchorClass} id={this.props.id} onClick={this.props.onClick} onBlur={this.props.onBlur} >
+      <li className={ styles.pageLink + " " + (this.props.indent ? styles.indent : "")}>
+        <a href={this.props.url} tabIndex="0" className={anchorClass } id={this.props.id} onClick={this.props.onClick} onBlur={this.props.onBlur} >
           {this.props.text}
         </a>
       </li>
@@ -29,7 +29,8 @@ PageLink.propTypes = {
   url: React.PropTypes.string,
   onClick: React.PropTypes.func,
   visible: React.PropTypes.bool,
-  onBlur: React.PropTypes.func
+  onBlur: React.PropTypes.func,
+  indent: React.PropTypes.bool
 };
 
 export default PageLink;
