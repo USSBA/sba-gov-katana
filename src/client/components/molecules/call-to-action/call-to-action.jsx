@@ -3,16 +3,15 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as NavigationActions from "../../../actions/navigation.js";
 import styles from './call-to-action.scss';
-import SmallInversePrimaryButton from "../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx";
-import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
+import {SmallInversePrimaryButton, SmallInverseSecondaryButton, LargePrimaryButton} from "../../atoms";
 import cornerGraphicLarge from './corner-graphic-large.png';
 import cornerGraphicSmall from './corner-graphic-small.png';
 
 class CallToAction extends React.Component {
 
-    handleClick() {
-      this.props.actions.callToAction(this.props.btnUrl, this.props.title, this.props.size, 1);
-    }
+  handleClick() {
+    this.props.actions.callToAction(this.props.btnUrl, this.props.title, this.props.size, 1);
+  }
 
   ctaSize() {
     if (this.props.size === "Large") {
@@ -37,13 +36,23 @@ class CallToAction extends React.Component {
     }
   }
 
-  render(){
+  render() {
+    let secondaryButtonProps = {
+      className: styles.btnSecondary,
+      text: this.props.btnTitle,
+      onClick: () => {
+        this.handleClick()
+      }
+    };
+    let secondaryButton = this.props.size === "Button only"
+      ? <LargePrimaryButton {...secondaryButtonProps}/>
+      : <SmallInverseSecondaryButton {...secondaryButtonProps}/>;
     return (
       <div className={this.ctaSize()}>
         <div id="call-to-action" className={styles.ctaContainer}>
-        <div className={styles.image}>
-          <div title={this.props.imageAlt} style={this.backgroundImageStyles()}></div>
-        </div>
+          <div className={styles.image}>
+            <div title={this.props.imageAlt} style={this.backgroundImageStyles()}></div>
+          </div>
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
             <p className={styles.blurb}>{this.props.blurb}</p>
@@ -54,9 +63,7 @@ class CallToAction extends React.Component {
           <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge} alt=""/>
           <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall} alt=""/>
         </div>
-        <SmallInverseSecondaryButton className={styles.btnSecondary} text={this.props.btnTitle} onClick={() => {
-          this.handleClick()
-        }}/>
+        {secondaryButton}
       </div>
 
     );

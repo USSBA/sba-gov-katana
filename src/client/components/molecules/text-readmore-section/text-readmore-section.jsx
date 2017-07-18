@@ -1,7 +1,7 @@
 import React from "react"
 import styles from "./text-readmore-section.scss";
 import TextSection from "../text-section/text-section.jsx";
-import ReadMoreSection from "../readmore-section/readmore-section.jsx";
+import ReadMore from "../readmore/readmore.jsx";
 import {reverse, debounce} from "lodash";
 
 class TextReadMoreSection extends React.Component {
@@ -18,15 +18,14 @@ class TextReadMoreSection extends React.Component {
   }
 
   makeTextSection() {
-    let cleaned = DOMPurify.sanitize(this.props.textSectionItem.text);
     return (
-      <div key={2} className={styles.textSection} id={this.props.parentId + "-text-section"}><TextSection text={cleaned}/></div>
+      <div key={2} className={styles.textSection} id={this.props.parentId + "-text-section"}><TextSection text={this.props.textSectionItem.text}/></div>
     );
   }
 
   makeReadMoreSection() {
     return (
-      <div key={1} className={styles.readMoreSection}><ReadMoreSection parentId={this.props.parentId + "-read-more"} readMoreStatus={this.handleReadMoreStatus.bind(this)} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+      <div key={1} className={styles.readMoreSection}><ReadMore parentId={this.props.parentId + "-read-more"} readMoreStatus={this.handleReadMoreStatus.bind(this)} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
     );
   }
 

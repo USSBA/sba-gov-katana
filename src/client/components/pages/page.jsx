@@ -1,6 +1,6 @@
 import React from 'react'
 import BusinessGuideArticle from "../templates/business-guide-article/business-guide-article.jsx";
-import FundingProgramsPage from "../templates/funding-programs-page/funding-programs-page.jsx";
+import ProgramPage from "../templates/program-page/program-page.jsx";
 import * as RestContentActions from "../../actions/rest-content.js"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -16,23 +16,25 @@ class Page extends React.Component {
   }
 
   render() {
+    let section = this.props.lineage[0].url;
     if (this.props.data && this.props.lineage) {
-      if (this.props.lineage[0].url === "guide" || this.props.lineage[0].url === "business-guide") {
+      if (section === "business-guide") {
         return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage}/>);
+      } else if (section === "funding-programs") {
+        return (<ProgramPage title={this.props.data.title} paragraphs={this.props.data.paragraphs} lineage={this.props.lineage}/>);
       }
-    }else if (this.props.data && this.props.section === "funding-programs") {
-          return (<FundingProgramsPage paragraphs={this.props.data.paragraphs} />);
     }
-
-    return (
-      <div>Loading....</div>
-    );
+    return (<div/>);
   }
 }
 
 Page.defaultProps = {
-  section: "guide",
-  nodeId: 26
+  lineage: [
+    {
+      url: "default"
+    }
+  ],
+  nodeId: 0
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {

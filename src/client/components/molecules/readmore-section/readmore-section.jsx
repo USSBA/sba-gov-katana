@@ -1,45 +1,32 @@
 import React from "react"
 import styles from "./readmore-section.scss";
-import {SmallSecondaryButton} from "../../atoms";
+import ReadMore from "../readmore/readmore.jsx";
 
-class ReadMoreSection extends React.Component{
+class ReadMoreSection extends React.Component {
 
-    handleClick(e){
-        e.preventDefault();
-        this.props.readMoreStatus(!this.props.expanded);
-    }
-    makeExpanded(text) {
-      if (text) {
-          let split = text.split("<br/>");
-          return split.map(function(item){
-              return (
-                  <p className={styles.expandedCopyText}>{item} </p>
-              );
-          });
-      } else {
-        return (<div/>);
-      }
-    }
+  constructor(props) {
+    super();
+    this.state = {
+      expanded: false
+    };
+  }
 
-    render(){
-        let btnText = this.props.expanded ? "CLOSE" :  "READ MORE";
-        let expandedTextSection = this.props.expanded ? this.makeExpanded(this.props.readMoreSectionItem.expandedCopyText) : "" ;
-        let expandedHr = this.props.expanded ? <hr className={styles.lineCopy}/> : "";
-        return (<div className={styles.readMoreSection}>
-            <h3 id={this.props.parentId + "-title"} className={styles.title}>{this.props.readMoreSectionItem.titleText}</h3>
-            <p id={this.props.parentId + "-preview"} className={styles.preview}>{this.props.readMoreSectionItem.preview}</p>
-            {expandedHr}
-            {expandedTextSection}
-            <SmallSecondaryButton id={this.props.parentId + "-btn"} extraClassName={styles.readMore} text={btnText} onClick={this.handleClick.bind(this)}/>
-        </div>);
-    }
+  handleToggleStatus(readMoreStatus) {
+    this.setState({expanded: readMoreStatus});
+  }
+
+  render() {
+    let expandedStyle = this.state.readMoreExpanded
+      ? styles.expanded
+      : "";
+
+    return (<ReadMore parentId={this.props.parentId + "-read-more"} onToggleStatus={this.handleToggleStatus.bind(this)} expanded={this.state.expanded} readMoreSectionItem={this.props.readMoreSectionItem}/>);
+  }
 }
 
-ReadMoreSection.propTypes ={
-    readMoreSectionItem: React.PropTypes.object.isRequired,
-    expanded: React.PropTypes.bool.isRequired,
-    readMoreStatus: React.PropTypes.func.isRequired,
-    parentId: React.PropTypes.string.isRequired
+ReadMoreSection.propTypes = {
+  readMoreSectionItem: React.PropTypes.object.isRequired,
+  parentId: React.PropTypes.string.isRequired
 };
 
 export default ReadMoreSection;

@@ -1,0 +1,21 @@
+.container {
+}
+
+.sectionHeader,
+.textSection,
+.image {
+  @include grid-column(8, $sba-grid-large);
+}
+
+
+.feedback,
+.lookup,
+.readMore,
+.titleSection,
+.previousNext,
+.breadcrumb,
+.callToAction,
+.cardCollection,
+.styleGrayBackground {
+  @include grid-column(12, $sba-grid-large);
+}
