@@ -1,13 +1,12 @@
 import React from 'react'
-import s from "./bizguide-tile.scss"
-import icon from "../../../../../public/assets/svg/business-guide-icon-color-plan.svg"
-import backgroundLines from "../../../../../public/assets/svg/plan-background-lines.png"
-import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
-import * as ModalActions from '../../../actions/show-modal.js'
+import s from "./tile.scss"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as ModalActions from '../../../actions/show-modal.js'
 
-class BizguideTile extends React.Component {
+import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
+
+class Tile extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -57,26 +56,26 @@ class BizguideTile extends React.Component {
 
   render() {
       return (
-          <div id={this.props.iD} 
-              className={s.tile} 
+          <div id={this.props.id}
+              className={s.tile}
               onClick={() => {this._openNavMenu()}}
               onMouseEnter={() => {this._mouseEnterTile()}}
               onMouseLeave={() => {this._mouseExitTile()}}
            >
             <a className={s.tabDisplayMenu} href="" onClick={(e) => {e.preventDefault()}} onFocus={() => {this._mouseEnterTile()}}>toggle {this.props.data.title} menu</a>
             {this.state.displayHoverMenu ? (
-              <BizguideTileHover 
-                data={this.props.data} 
-                iD={this.props.iD + '-hover'}
-                largeTitle={this._formatLargeTitle()} 
+              <BizguideTileHover
+                data={this.props.data}
+                id={this.props.id + '-hover'}
+                largeTitle={this._formatLargeTitle()}
                 smallTitle={this._formatSmallTitle()}
-              /> 
+              />
             ) : (
-              <BizguideTileStatic 
-                data={this.props.data} 
-                iD={this.props.iD + '-static'}
-                icon={this.props.icon} 
-                largeTitle={this._formatLargeTitle()} 
+              <BizguideTileStatic
+                data={this.props.data}
+                id={this.props.id + '-static'}
+                icon={this.props.icon}
+                largeTitle={this._formatLargeTitle()}
                 smallTitle={this._formatSmallTitle()}
               />
             )}
@@ -87,18 +86,18 @@ class BizguideTile extends React.Component {
 }
 
 class BizguideTileStatic extends React.Component {
-  
+
   render() {
     return(
-      <div id={this.props.iD} className={s.tileNormal}>
-        <img id={this.props.iD + "-icon"} className={s.icon} src={this.props.icon} alt=""/>
-          <div id={this.props.iD + "-title"} className={s.titleContainer}>
+      <div id={this.props.id} className={s.tileNormal}>
+        <img id={this.props.id + "-icon"} className={s.icon} src={this.props.icon} alt=""/>
+          <div id={this.props.id + "-title"} className={s.titleContainer}>
             <h2 className={s.largeTitle}>{this.props.largeTitle}</h2>
-            <h4 className={s.smallTitle}>{this.props.smallTitle}</h4> 
+            <h4 className={s.smallTitle}>{this.props.smallTitle}</h4>
           </div>
           <i className={s.rightArrow + " fa fa-angle-right"}></i>
           <div className={s.line}></div>
-          <p id={this.props.iD + "-blurb"} className={s.blurb}>{this.props.data.description}</p>
+          <p id={this.props.id + "-blurb"} className={s.blurb}>{this.props.data.description}</p>
           <img className={s.cornerLines} src={cornerLines} alt=""/>
       </div>
     );
@@ -110,16 +109,16 @@ class BizguideTileHover extends React.Component {
   _handleClick(linkObject){
     document.location = linkObject.fullUrl
   }
-  
+
   render() {
     return(
-      <div id={this.props.iD} className={s.tileHover}>
+      <div id={this.props.id} className={s.tileHover}>
         <h2 className={s.largeTitleHover}>{this.props.largeTitle}</h2>
-        <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4> 
+        <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         <div className={s.topLine}></div>
         {
           this.props.data.children.map((object, index) => {
-            return <HoverLink iD={this.props.iD + "-link-" + index } key={index} link={object} handleClick={this._handleClick}/>
+            return <HoverLink id={this.props.id + "-link-" + index } key={index} link={object} handleClick={this._handleClick}/>
           })
         }
       </div>
@@ -127,10 +126,10 @@ class BizguideTileHover extends React.Component {
   }
 }
 
-const HoverLink = (props) => 
+const HoverLink = (props) =>
   <div className={s.linkContainer} onClick={() => {props.handleClick(props.link)}}>
-    <a id={props.iD} 
-      className={s.link} 
+    <a id={props.id}
+      className={s.link}
       href={props.link.fullUrl}>
       {props.link.title}
     </a>
@@ -146,5 +145,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(BizguideTile);
-
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile);
