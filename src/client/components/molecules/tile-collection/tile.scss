@@ -8,11 +8,16 @@
 	@include grid-media($sba-grid-medium) {
 		 @include grid-column(6, $sba-grid-medium) height: 450px;
 		margin-top: 20px;
+
 	}
 	@include grid-media($sba-grid-large) {
 		margin-top: 10px;
 		margin-bottom: 30px;
 	}
+}
+
+.tile:last-of-type{
+	margin-bottom: 20px;
 }
 
 .tileFour {
