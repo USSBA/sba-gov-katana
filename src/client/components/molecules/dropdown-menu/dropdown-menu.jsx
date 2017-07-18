@@ -84,20 +84,17 @@ class DropdownMenu extends React.Component {
         let mappedChildren = children.map(function(item) {
           return {url: item.link, text: item.linkTitle}
         });
-        return <PageLinkGroup key={index} id={this.props.id + "-group-" + index} title={data.linkTitle} titleLink={data.link} onBlur={this.handleLeafBlur.bind(this)} links={mappedChildren}/>;
+        return <PageLinkGroup key={index} id={this.props.id + "-group-" + index} title={data.linkTitle} titleLink={data.link} onBlur={this.handleLeafBlur.bind(this)} links={mappedChildren} indent/>;
       });
       const goToNextButton = this.props.hasNext
         ? <ul className={styles.skipLink}><UtilityLink id={this.props.id + "-go-to-next"} visible={this.state.goToNextSectionShown} text="Go to Next Section" onKeyDown={(event) => this.handleSkipLinkKeyDown(event)} onFocus={(event) => this.handleGoToNextFocus(event)} onBlur={(event) => this.handleGoToNextBlur(event)}/></ul>
         : undefined;
       return (
-        <ul id={this.props.id} key={1} aria-label="submenu" className={sizingStyle + " " + styles.dropdownMenu + " " + (this.props.shown
+        <ul id={this.props.id} key={1} aria-label="submenu" className={styles.dropdownMenu+ " " + sizingStyle  + " " + (this.props.shown
           ? styles.show
           : styles.hide)}>
           {goToNextButton}
           {pageLinkGroups}
-          {this.props.featuredCallout
-            ? <FeaturedCallout {...this.props.featuredCallout}/>
-            : undefined}
         {smallInverseCta
           ? <div className={styles.businessGuideCTA}><SmallInverseCta {...businessGuideCtaData}/></div>
           : undefined}

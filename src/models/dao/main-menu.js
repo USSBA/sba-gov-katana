@@ -79,7 +79,7 @@ function fetchMainMenu() {
       }
 
       if (config.get("drupal8.useMenu") && !_.isEmpty(deepPickFormattedMenu)) {
-        menuTree.splice(0, 1, _.head(deepPickFormattedMenu));
+        menuTree.splice(0, 2, deepPickFormattedMenu[0], deepPickFormattedMenu[1]);
       }
       return menuTree;
     });
