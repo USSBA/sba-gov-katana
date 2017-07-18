@@ -7,7 +7,7 @@ import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
 import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
 import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
 import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
-import BizguideTileCollection from "../../molecules/bizguide-tile/bizguide-tile-collection.jsx";
+import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
 import Waypoint from "react-waypoint";
 import CallToAction from "../../molecules/call-to-action/call-to-action.jsx";
 
@@ -200,7 +200,7 @@ class TenStepsLandingPage extends React.Component {
                 </div>
                 {sectionData ? <div className={styles.bizguideContainer}>
                     <h1>Explore more topics.</h1>
-                    <BizguideTileCollection sectionData={sectionData}/></div> : <div></div>
+                    <BusinessGuideTileCollection sectionData={sectionData}/></div> : <div></div>
                 }
                 {
                     counsellorCta ? <div className={styles.counsellorCtaContainer}>
