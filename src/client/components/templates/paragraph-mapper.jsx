@@ -12,6 +12,7 @@ import CardCollection from "../organisms/card-collection/card-collection.jsx";
 import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
 import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
+import SbicLookup from "../molecules/sbic-lookup/sbic-lookup.jsx";
 
 function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
   let paragraphs = [];
@@ -49,8 +50,10 @@ function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
         paragraph = (<SubsectionHeader text={item.text}/>);
       } else if (item.type === "image") {
         paragraph = (<ImageSection imageObj={item.image} captionText={item.captionText}/>);
-      } else if (item.type === "lookup") {
+      } else if (item.type === "lookup" && item.contactCategory === "State registration") {
         paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
+      } else if (item.type === "lookup" && item.contactCategory === "SBIC") {
+        paragraph = (<SbicLookup title={item.sectionHeaderText} type="contacts"/>)
       } else if (item.type === "callToAction") {
         paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl} title={item.title}/>)
       } else if (item.type === "cardCollection") {
