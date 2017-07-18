@@ -80,7 +80,9 @@ class SbicLookup extends React.Component {
 	renderMultiSelects() {
 			let specificMultiSelectProps = [{
 				id: "sort-by-select",
-				onChange: (e) => {this.handleChange(e, "sortByValue")},
+				onChange: (e) => {
+					this.handleChange(e, "sortByValue")
+				},
 				label: "Sort by",
 				name: "sort-by-lookup",
 				value: this.state.sortByValue,
@@ -93,7 +95,9 @@ class SbicLookup extends React.Component {
 				}]
 			}, {
 				id: "industry-select",
-				onChange: (e) => {this.handleChange(e, "industryValue")},
+				onChange: (e) => {
+					this.handleChange(e, "industryValue")
+				},
 				label: "Industries",
 				name: "industry-lookup",
 				value: this.state.industryValue,
@@ -115,7 +119,9 @@ class SbicLookup extends React.Component {
 				}]
 			}, {
 				id: "investing-status-select",
-				onChange: (e) => {this.handleChange(e, "investingStatusValue")},
+				onChange: (e) => {
+					this.handleChange(e, "investingStatusValue")
+				},
 				label: "Investing status",
 				name: "investing-status-select",
 				value: this.state.investingStatusValue,
@@ -164,7 +170,6 @@ class SbicLookup extends React.Component {
 	}
 
 	render() {
-		console.log(this.state.contacts)
 		return ( 
 			<div>
 				<div className={s.banner}>
@@ -172,7 +177,7 @@ class SbicLookup extends React.Component {
 					{this.renderMultiSelects()}
 				</div>
 				<table>
-					<thead>
+					<thead className={s.thead}>
 						<tr>
 							<th>Investor name & address</th>
 							<th>Industry</th>
@@ -182,7 +187,7 @@ class SbicLookup extends React.Component {
 						</tr>
 					</thead>
 						{
-							this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>
+							this.state.contacts ? <tbody className={s.tbody}>{this.renderContacts()}</tbody> : <tbody>loading</tbody>
 						}
 				</table>
 			</div>
