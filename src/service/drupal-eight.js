@@ -294,11 +294,11 @@ function formatGeneralContactParagraph(paragraph) { //eslint-disable-line comple
 
 function formatSbicContactParagraph(paragraph) {
   return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix)
-    .then((paragraph) => {
-      return _.mapValues(paragraph, (value) => {
-        return value[0].value
-      })
-    })
+    .then((formattedParagraph) => {
+      return _.mapValues(formattedParagraph, (value) => {
+        return value[0].value;
+      });
+    });
 }
 
 function formatContactParagraph(paragraph) {
