@@ -16,7 +16,9 @@ class TileCollection extends React.Component {
       backgroundLines: iconElement.background,
       iconWhite: iconElement.iconWhite,
       hoverShowsInverseOnly: this.props.hoverShowsInverseOnly,
-      size: this.props.icons.length
+      size: this.props.icons.length,
+      uppercaseFirstWord: this.props.uppercaseFirstWord,
+      splitTitle: this.props.splitTitle
     };
     return (<Tile {...tileProps}/>);
   }
@@ -41,7 +43,9 @@ class TileCollection extends React.Component {
 TileCollection.defaultProps = {
   data: [],
   icons: {},
-  hoverShowsInverseOnly: false
+  hoverShowsInverseOnly: false,
+  uppercaseFirstWord: false,
+  splitTitle: false
 }
 
 export default TileCollection;

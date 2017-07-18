@@ -8,7 +8,7 @@ class FundingProgramsTileCollection extends React.Component {
     if (!this.props.sectionData || !this.props.sectionData.children) {
       return <div/>
     }
-    return (<TileCollection data={this.props.sectionData.children} icons={FundingProgramsIcons} hoverShowsInverseOnly/>);
+    return (<TileCollection data={this.props.sectionData.children} icons={FundingProgramsIcons} hoverShowsInverseOnly />);
   }
 }
 

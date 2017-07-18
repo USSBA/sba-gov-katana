@@ -61,8 +61,9 @@ class Tile extends React.Component {
       data: this.props.data,
       icon: this.props.icon,
       iconWhite: this.props.iconWhite,
-      largeTitle: this._formatLargeTitle(),
-      smallTitle: this._formatSmallTitle()
+      largeTitle: this.props.splitTitle? this._formatLargeTitle() : this.props.data.title,
+      smallTitle: this.props.splitTitle? this._formatSmallTitle() : "",
+      uppercaseFirstWord: this.props.uppercaseFirstWord
     };
 
     let hoverTile = this.props.hoverShowsInverseOnly
@@ -70,7 +71,9 @@ class Tile extends React.Component {
       : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'}/>);
 
     return (
-      <div id={this.props.id} className={s.tile + " " +(this.props.size === 5 ? s.tileFive : s.tileFour)} onClick={() => {
+      <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
+        ? s.tileFive
+        : s.tileFour)} onClick={() => {
         this._openNavMenu()
       }} onMouseEnter={() => {
         this._mouseEnterTile()
@@ -104,11 +107,15 @@ class StaticTile extends React.Component {
         <img id={this.props.id + "-icon"} className={s.icon} src={this.props.inverse
           ? this.props.iconWhite
           : this.props.icon} alt=""/>
-        <div id={this.props.id + "-title"} className={s.titleContainer+ " " + (this.props.inverse
+        <div id={this.props.id + "-title"} className={s.titleContainer + " " + (this.props.inverse
           ? s.titleInverse
           : "")}>
-          <h2 className={s.largeTitle}>{this.props.largeTitle}</h2>
-          <h4 className={s.smallTitle}>{this.props.smallTitle}</h4>
+          <h2 className={s.largeTitle + " " + (this.props.uppercaseFirstWord
+            ? s.upperCase
+            : "")}>{this.props.largeTitle}</h2>
+          <h4 className={s.smallTitle + " " + (this.props.uppercaseFirstWord
+            ? s.upperCase
+            : "")}>{this.props.smallTitle}</h4>
         </div>
         <i className={s.rightArrow + " fa fa-angle-right"}></i>
         <div className={s.line + " " + (this.props.inverse
