@@ -2,6 +2,7 @@
 
 .tile {
 	position: relative;
+	overflow: hidden;
 	@include grid-media($sba-grid-small){
 		@include grid-column(6, $sba-grid-small)
 		margin-top: 20px;
