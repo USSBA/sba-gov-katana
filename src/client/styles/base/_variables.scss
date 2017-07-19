@@ -65,6 +65,7 @@
 }
 
 // Breakpoints
+$smallest-screen: 0px;
 $small-screen: 767px;
 $medium-screen: 768px;
 $large-screen: 1080px;
@@ -88,6 +89,12 @@ $sba-grid-medium: (
   columns: 12,
   gutter: 30px,
   media: "(min-width: $medium-screen)",
+);
+
+$sba-grid-medium-and-small: (
+  columns: 6,
+  gutter: 20px,
+  media: "(min-width: 0px) and (max-width: 1079px)",
 );
 
 $sba-grid-small: (
