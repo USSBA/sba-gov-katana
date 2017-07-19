@@ -171,7 +171,7 @@ function makeParagraphValueFormatter(typeName, paragraph) {
     } else if (key === "image") {
       if (value[0]) {
         let imageUrl = url.parse(value[0].url);
-        const host = "http://content.sbagov.fearlesstesters.com";
+        const host = config.get("drupal8.contentUrl");
         imageUrl = host + imageUrl.pathname;
         newValuePromise = Promise.resolve({
           url: imageUrl,
