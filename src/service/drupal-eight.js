@@ -226,20 +226,25 @@ function formatParagraph(paragraph) {
     const typeName = extractTargetId(paragraph.type);
     switch (typeName) {
       case "call_to_action":
-        //need to retrun at some point
+        //need to return at some point
         return formatCallToAction(paragraph);
-      default:
-        return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
+      default: {
+        const fieldNameFormatter = function(fieldName) {
           if (typeName === "image") {
             return fieldName;
           }
           return _.replace(fieldName, typeName, "");
-        }, makeParagraphValueFormatter(typeName, paragraph))
-          .then((object) => {
-            return _.assign({
-              type: _.camelCase(typeName)
-            }, object);
-          });
+        };
+        const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
+        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, fieldNameFormatter, paragraphFormatter);
+        const combineResultWithCamelizedTypename = (object) => {
+          return _.assign({
+            type: _.camelCase(typeName)
+          }, object);
+        };
+
+        return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
+      }
     }
   }
   return Promise.resolve(null);
