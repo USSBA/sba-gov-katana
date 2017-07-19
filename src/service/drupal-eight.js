@@ -170,9 +170,7 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
     } else if (key === "image") {
       if (value[0]) {
-        let imageUrl = url.parse(value[0].url);
-        const host = "http://content.sbagov.fearlesstesters.com";
-        imageUrl = host + imageUrl.pathname;
+        let imageUrl = convertUrlHost(value[0].url);
         newValuePromise = Promise.resolve({
           url: imageUrl,
           alt: value[0].alt
