@@ -61,7 +61,7 @@ class SbicLookup extends React.Component {
 		return _.orderBy(this.props.items, iteratees, orders)
 	}
 
-	//TODO remove outer array brackets when industry field becomes an actual array. keep intersection though.
+	//TODO remove outer array brackets [contact.industry] when industry field becomes an actual array. keep intersection though.
 	filterContacts(contacts) {
 		let filteredContacts = contacts
 		if (this.state.industryValue !== "Diversified") {
@@ -159,25 +159,25 @@ class SbicLookup extends React.Component {
 		return this.state.contacts.map((contact, index) => {
 			return (
 				<tr key={index}> 
-					<td>
+					<td className={s.nameAndAddressCol}>
 						<div className={s.mobileHeader}>Investor name & address</div>
-						<NameAndAddress title={contact.title} streetAddress={contact.streetAddress}/>
+						<NameAndAddress title={contact.title} streetAddress={contact.streetAddress} city={contact.city} state={contact.state} zipCode={contact.zipCode}/>
 					</td>
-					<td>
+					<td className={s.industryCol}>
 						<div className={s.mobileHeader}>Industry</div>
 						{contact.industry}
 					</td>
-					<td>
+					<td className={s.activeSinceCol}>
 						<div className={s.mobileHeader}>Active since</div>
 						{contact.activeSince}
 					</td>
-					<td>
+					<td className={s.investingStatusCol}>
 						<div className={s.mobileHeader}>Investing status</div>
 						{contact.investingStatus === "investing" ? "Likely still investing" : "Not likely still investing"}
 					</td>
-					<td>
+					<td className={s.contactInfoCol}>
 						<div className={s.mobileHeader}>Contact info</div>
-						<ContactInfo name={contact.contactFirstName + " " + contact.contactLastName}/>
+						<ContactInfo name={contact.contactFirstName + " " + contact.contactLastName} phoneNumber={contact.phoneNumber}/>
 					</td>
 				</tr>
 			)
@@ -188,17 +188,17 @@ class SbicLookup extends React.Component {
 		return ( 
 			<div>
 				<div className={s.banner}>
-					<h2 className={s.title}>{this.props.title}</h2>
+					<h2 className={s.header}>{this.props.title}</h2>
 					{this.renderMultiSelects()}
 				</div>
 				<table className={s.table}>
 					<thead>
 						<tr>
-							<th>Investor name & address</th>
-							<th>Industry</th>
-							<th>Active since</th>
-							<th>Investing status</th>
-							<th>Contact info</th>
+							<th className={s.nameAndAddressHead}>Investor name & address</th>
+							<th className={s.industryHead}>Industry</th>
+							<th className={s.activeSinceHead}>Active since</th>
+							<th className={s.investingStatusHead}>Investing status</th>
+							<th className={s.contactInfoHead}>Contact info</th>
 						</tr>
 					</thead>
 						{
@@ -212,16 +212,25 @@ class SbicLookup extends React.Component {
 
 const NameAndAddress = (props) => {
 	return (
-	<div>
-		{props.title}
+	<div className={s.investorNameAndTitle}>
+		<div className={s.investorTitle}>{props.title}</div>
+		<i className={s.mapIcon + " fa fa-map-marker"} aria-hidden="true"></i>
+		<div className={s.addressContainer}>
+			<div className={s.streetAddress}>{props.streetAddress}</div>
+			<div className={s.cityAddress}>{props.city}, {props.state} {props.zipCode}</div>
+		</div>
 	</div>
 	)
 }
 
 const ContactInfo = (props) => {
 	return (
-		<div>
-			{props.name}
+		<div className={s.contactInfo}>
+			<div className={s.investorName}>{props.name}</div>
+			<div className={s.phoneContainer}>
+				<i className={s.phoneIcon + " fa fa-phone"} aria-hidden="true"></i>
+				<div className={s.investorPhone}>{props.phoneNumber}</div>
+			</div>	
 		</div>
 	)
 }
