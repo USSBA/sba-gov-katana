@@ -9,7 +9,6 @@
 
 
 .feedback,
-.lookup,
 .readMore,
 .titleSection,
 .previousNext,
@@ -18,4 +17,8 @@
 .cardCollection,
 .styleGrayBackground {
   @include grid-column(12, $sba-grid-large);
+}
+
+.lookup {
+	@include grid-column(12, $desktop-0gutter)
 }
