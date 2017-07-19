@@ -159,11 +159,26 @@ class SbicLookup extends React.Component {
 		return this.state.contacts.map((contact, index) => {
 			return (
 				<tr key={index}> 
-					<td><NameAndAddress title={contact.title} streetAddress={contact.streetAddress}/></td>
-					<td>{contact.industry}</td>
-					<td>{contact.activeSince}</td>
-					<td>{contact.investingStatus === "investing" ? "Likely still investing" : "Not likely still investing"}</td>
-					<td><ContactInfo name={contact.contactFirstName + " " + contact.contactLastName}/></td>
+					<td>
+						<div className={s.mobileHeader}>Investor name & address</div>
+						<NameAndAddress title={contact.title} streetAddress={contact.streetAddress}/>
+					</td>
+					<td>
+						<div className={s.mobileHeader}>Industry</div>
+						{contact.industry}
+					</td>
+					<td>
+						<div className={s.mobileHeader}>Active since</div>
+						{contact.activeSince}
+					</td>
+					<td>
+						<div className={s.mobileHeader}>Investing status</div>
+						{contact.investingStatus === "investing" ? "Likely still investing" : "Not likely still investing"}
+					</td>
+					<td>
+						<div className={s.mobileHeader}>Contact info</div>
+						<ContactInfo name={contact.contactFirstName + " " + contact.contactLastName}/>
+					</td>
 				</tr>
 			)
 		})
@@ -176,8 +191,8 @@ class SbicLookup extends React.Component {
 					<h2 className={s.title}>{this.props.title}</h2>
 					{this.renderMultiSelects()}
 				</div>
-				<table>
-					<thead className={s.thead}>
+				<table className={s.table}>
+					<thead>
 						<tr>
 							<th>Investor name & address</th>
 							<th>Industry</th>
@@ -187,7 +202,7 @@ class SbicLookup extends React.Component {
 						</tr>
 					</thead>
 						{
-							this.state.contacts ? <tbody className={s.tbody}>{this.renderContacts()}</tbody> : <tbody>loading</tbody>
+							this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>
 						}
 				</table>
 			</div>
