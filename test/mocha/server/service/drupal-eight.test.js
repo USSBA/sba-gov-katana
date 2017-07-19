@@ -129,8 +129,8 @@ describe("Drupal 8 Service Helper Functions", function() {
       done();
     });
     it("should not convert a relative url", function(done) {
-      let result = drupalEightDataService.convertUrlHost("/foo/bar");
-      result.should.equal("/foo/bar");
+      let result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
+      result.should.equal("internal:/foo/bar");
       done();
     });
   });
