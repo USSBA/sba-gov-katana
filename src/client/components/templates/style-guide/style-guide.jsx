@@ -32,6 +32,15 @@ import HeroMobileImage from './hero-mobile.jpg'
 import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
 import Cta from "../../molecules/call-to-action/call-to-action.jsx"
 
+import CaretIcon from "../../atoms/icons/caret-down.jsx"
+import CloseIcon from "../../atoms/icons/close.jsx"
+import HomeIcon from "../../atoms/icons/home.jsx"
+import SearchIcon from "../../atoms/icons/search.jsx"
+import FailureIcon from "../../atoms/icons/failure.jsx"
+import SuccessIcon from "../../atoms/icons/success.jsx"
+
+import DecorativeDash from "../../atoms/decorative-dash/decorative-dash.jsx"
+
 class StyleGuide extends React.Component {
   constructor() {
     super();
@@ -74,6 +83,10 @@ class StyleGuide extends React.Component {
         <div className={styles.simpleCtaContainer}>
             <SimpleCta/>
         </div>
+
+        <h1>Icons (WIP)</h1> 
+        <Icons />
+        <div className={styles.clear} />
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
           ? <SbaModal onClose={() => {
@@ -82,6 +95,7 @@ class StyleGuide extends React.Component {
               document.location = "http://www.example.com/"
             }}/>
           : <div/>}
+
       </div>
     );
   }
@@ -357,5 +371,40 @@ class FormElements extends React.Component {
     );
   }
 }
+
+const Icons = () => <div className={styles.columnHalf}>    
+      <ul className={styles.icons}>
+        <li>
+          <div><FailureIcon aria-hidden="true" /></div>
+          <p>Failure</p>
+          </li>
+        <li>
+          <div><SuccessIcon aria-hidden="true" /></div>
+          <p>Success</p>
+        </li>
+        <li>
+          <div><CaretIcon aria-hidden="true" /></div>
+          <p>Caret (can be rotated/flipped to different directions. Used in dropdown, etc)</p>
+        </li>
+        <li>
+          <div><SearchIcon aria-hidden="true" /></div>
+          <p>Search</p>
+        </li>
+        <li>
+          <div><CloseIcon aria-hidden="true" /></div>
+          <p>Close button (modal)</p>
+        </li>
+        <li>
+          <div><HomeIcon aria-hidden="true" /></div>
+          <p>Home icon in breadcrumbs (Changes to theme color)</p>
+        </li>
+        <li>
+          <div>
+            <DecorativeDash decorativeDashStyles={styles.decorativeDashStyles} />
+          </div>
+            <p>Decorative dash that goes between title and blurb in Cards (Changes to theme color)</p>
+        </li>
+      </ul>
+    </div>
 
 export {FormElements}

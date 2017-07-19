@@ -180,3 +180,44 @@
 .ctaContainer {
     @include grid-column(7, $sba-grid-large)
 }
+
+.columnHalf {
+    @include grid-column(12);
+    clear: both !important;
+}
+
+@media (min-width:768px) {
+
+    .columnHalf {
+        @include grid-column(6);
+    }
+
+}
+
+.icons li {
+    div {
+        float: left;
+        width: 40px;
+    }
+
+    p {
+        margin-left: 50px;
+    }
+}
+
+.clear {
+    clear: both;
+}
+
+.iconStyles {
+
+    color: #E21234 !important;
+    background: #ffffff !important;
+
+}
+
+.decorativeDashStyles {
+
+    border-top:3px solid #E21234 !important;
+    
+}
