@@ -400,7 +400,7 @@ const Icons = () => <div className={styles.columnHalf}>
         </li>
         <li>
           <div>
-            <DecorativeDash decorativeDashStyles={styles.decorativeDashStyles} />
+            <DecorativeDash aria-hidden="true" />
           </div>
             <p>Decorative dash that goes between title and blurb in Cards (Changes to theme color)</p>
         </li>
