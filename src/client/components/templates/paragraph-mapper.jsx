@@ -8,7 +8,7 @@ import ImageSection from "../molecules/image-section/image-section.jsx";
 import TextReadMoreSection from "../molecules/text-readmore-section/text-readmore-section.jsx";
 import Lookup from "../molecules/lookup/lookup.jsx"
 import CallToAction from "../molecules/call-to-action/call-to-action.jsx"
-import CardCollection from "../molecules/card-collection/card-collection.jsx";
+import CardCollection from "../organisms/card-collection/card-collection.jsx";
 import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
 import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";

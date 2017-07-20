@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './style-gray-background.scss';
 import TextSection from "../../molecules/text-section/text-section.jsx";
 import SectionHeader from "../../molecules/section-header/section-header.jsx";
-import CardCollection from "../../molecules/card-collection/card-collection.jsx";
+import CardCollection from "../../organisms/card-collection/card-collection.jsx";
 import * as paragraphMapper from "../../templates/paragraph-mapper.jsx";
 
 class StyleGrayBackground extends React.Component {

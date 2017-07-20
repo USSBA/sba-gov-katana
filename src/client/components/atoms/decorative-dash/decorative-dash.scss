@@ -1,5 +1,5 @@
 .decorativeDash {
-	border-top:3px solid #609F00;
+	border-top:3px solid #666;
 }
 
 @include theme(sba-blue, '.decorativeDash', null, null, $sba-blue);

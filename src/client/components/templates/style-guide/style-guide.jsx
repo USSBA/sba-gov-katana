@@ -41,6 +41,8 @@ import SuccessIcon from "../../atoms/icons/success.jsx"
 
 import DecorativeDash from "../../atoms/decorative-dash/decorative-dash.jsx"
 
+import CardCollection from '../../organisms/card-collection/card-collection.jsx'
+
 class StyleGuide extends React.Component {
   constructor() {
     super();
@@ -60,6 +62,7 @@ class StyleGuide extends React.Component {
   }
 
   render() {
+      
       let buttonsArray = [
             {
               onClickHandler: this.handleLargeBtnClicked,
@@ -67,6 +70,34 @@ class StyleGuide extends React.Component {
               btnType: "SmallInverseSecondaryButton"
             }
           ];
+
+      let cardCollectionMockData = [  
+          {  
+             "type":"card",
+             "image":{  
+                "url":"http://images.bigcartel.com/product_images/199085200/Scan309.jpg?auto=format&fit=max&h=300&w=300",
+                "alt":"Business plan"
+             },
+             "link":{  
+
+             },
+             "subtitleText":"This type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.",
+             "titleText":"Traditional business plan"
+          },
+          {  
+             "type":"card",
+             "image":{  
+                "url":"http://images.bigcartel.com/product_images/192360211/Dexter___Dee_Dee.jpg?auto=format&fit=max&h=300&w=300",
+                "alt":"Business plan"
+             },
+             "link":{  
+
+             },
+             "subtitleText":"This type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.",
+             "titleText":"Lean startup plan"
+          }
+       ];
+
     return (
       <div>
         <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
@@ -86,7 +117,14 @@ class StyleGuide extends React.Component {
 
         <h1>Icons (WIP)</h1> 
         <Icons />
+        
         <div className={styles.clear} />
+
+        <h1>Card Collection</h1>
+        <CardCollection parentIndex={0} cards={cardCollectionMockData}/>
+
+        <div className={styles.clear} />
+
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
           ? <SbaModal onClose={() => {
