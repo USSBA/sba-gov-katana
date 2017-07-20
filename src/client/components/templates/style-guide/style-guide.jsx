@@ -41,7 +41,7 @@ import SuccessIcon from "../../atoms/icons/success.jsx"
 
 import DecorativeDash from "../../atoms/decorative-dash/decorative-dash.jsx"
 
-import CardCollection from '../../molecules/card-collection/card-collection.jsx'
+import CardCollection from '../../organisms/card-collection/card-collection.jsx'
 
 class StyleGuide extends React.Component {
   constructor() {
