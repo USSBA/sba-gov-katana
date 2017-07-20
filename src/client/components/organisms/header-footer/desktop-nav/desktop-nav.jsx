@@ -8,17 +8,11 @@ import styles from './desktop-nav.scss';
 class DesktopNav extends React.Component {
 
   render() {
-   // TODO generalize this with a constant mapping, maybe from the themer or redux state
-   let activeIndex = -1;
-   if(this.props.theme === "byzantine"){
-       activeIndex = 0;
-   }
-
     return (
       <div id="desktop-nav" className={styles.desktopNav}>
         <MainLogo/>
         <MiniNav/>
-        <MainMenu data={this.props.mainMenuData} activeIndex={activeIndex}/>
+        <MainMenu data={this.props.mainMenuData}/>
       </div>
     );
   }
