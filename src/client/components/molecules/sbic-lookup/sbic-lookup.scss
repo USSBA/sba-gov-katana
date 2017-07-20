@@ -5,6 +5,7 @@
 
 .banner {
     width: 100%;
+    position: relative;
 
     @include grid-media($sba-grid-small) {
         padding: 20px;
@@ -23,6 +24,10 @@
     }
 }
 
+.header {
+    margin: 0 0 20px 0;
+}
+
 .multiSelect {
     @include grid-media($sba-grid-small) {
         width: 100%;
@@ -38,18 +43,29 @@
     }
 }
 
-.header {
-    margin: 0 0 20px 0;
-}
 
+.downloadBtn {
+    position: absolute;
+    right: 28px;
+    bottom: 20px;
+    margin: inherit;
+    width: 260px;
+    height: 48px;
+    font-size: 19px;
+    @include grid-media($sba-grid-medium-and-small) {
+        display: none;
+    }
+}
 
 
 .table {
     @include grid-media($sba-grid-medium-and-small) {
         display: block;
         overflow-y: auto;
-        border-bottom: 1px solid #dadada;
+
         height: 600px;
+
+        border-bottom: 1px solid #dadada;
         & thead {
             display: none;
         }
@@ -60,19 +76,23 @@
             border-bottom: 1px solid #dadada;
         }
         & td {
-            border: none;
             overflow: auto;
+
+            border: none;
         }
         & .mobileHeader {
+            font-weight: bold;
+
             float: left;
+
+            width: 25%;
             // @include grid-column(2, $sba-grid-medium-and-small);
             //height: 100%;
             margin-right: 5%;
-            width: 25%;
-            font-weight: bold;
         }
         & .investorNameAndTitle {
             display: inline-block;
+
             width: 70%;
         }
         & .contactInfo {

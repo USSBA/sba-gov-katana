@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ContentActions from "../../../actions/content.js"
 import {filter} from "lodash"
-
+import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 
 class SbicLookup extends React.Component {
@@ -190,6 +190,7 @@ class SbicLookup extends React.Component {
 				<div className={s.banner}>
 					<h2 className={s.header}>{this.props.title}</h2>
 					{this.renderMultiSelects()}
+					<SmallInverseSecondaryButton extraClassName={s.downloadBtn} text="download list (.XLS)" />
 				</div>
 				<table className={s.table}>
 					<thead>
