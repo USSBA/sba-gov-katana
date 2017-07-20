@@ -48,7 +48,7 @@
     @include grid-media($sba-grid-medium-and-small) {
         display: block;
         overflow-y: auto;
-
+        border-bottom: 1px solid #dadada;
         height: 600px;
         & thead {
             display: none;
@@ -61,17 +61,18 @@
         }
         & td {
             border: none;
+            overflow: auto;
         }
         & .mobileHeader {
             float: left;
             // @include grid-column(2, $sba-grid-medium-and-small);
             //height: 100%;
-
+            margin-right: 5%;
             width: 25%;
+            font-weight: bold;
         }
         & .investorNameAndTitle {
             display: inline-block;
-            margin-left: 5%;
             width: 70%;
         }
         & .contactInfo {
