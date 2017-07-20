@@ -10,7 +10,6 @@ class SectionPage extends React.Component {
 
   render() {
     if (this.props.sectionData) {
-      console.log("this.props.sectionData", this.props.sectionData);
       let sectionData = this.props.sectionData;
       let sectionName = this.props.sectionData.title;
 
@@ -32,7 +31,9 @@ class SectionPage extends React.Component {
 
       return (
         <div className={styles.container}>
-          {tileCollection}
+          <div className={styles.tiles}>
+            {tileCollection}
+          </div>
           {tenSteps}
         </div>
       );

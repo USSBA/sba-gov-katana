@@ -3,12 +3,13 @@
 .tile {
 	position: relative;
 	@include grid-media($sba-grid-small) {
-		 @include grid-column(6, $sba-grid-small) margin-top: 20px;
+		 @include grid-column(6, $sba-grid-small);
+		margin-top: 20px;
 	}
 	@include grid-media($sba-grid-medium) {
-		 @include grid-column(6, $sba-grid-medium) height: 450px;
+		@include grid-column(6, $sba-grid-medium);
+		height: 450px;
 		margin-top: 20px;
-
 	}
 	@include grid-media($sba-grid-large) {
 		margin-top: 10px;
@@ -16,19 +17,21 @@
 	}
 }
 
-.tile:last-of-type{
+.tile:last-of-type {
 	margin-bottom: 20px;
 }
 
 .tileFour {
 	@include grid-media($sba-grid-large) {
-		 @include grid-column(3, $sba-grid-large) height: 677px;
+		 @include grid-column(3, $sba-grid-large);
+		height: 677px;
 	}
 }
 
 .tileFive {
 	@include grid-media($sba-grid-large) {
-		 @include grid-column(2.4, $sba-grid-large) height: 677px;
+		 @include grid-column(2.4, $sba-grid-large);
+		height: 677px;
 	}
 }
 
@@ -104,7 +107,6 @@
 	color: $base-font-color;
 }
 
-
 .largeTitle {
 	font-weight: 900;
 	@include grid-media($sba-grid-small) {
@@ -133,13 +135,13 @@
 	}
 }
 
-.tileFive .largeTitle{
+.tileFive .largeTitle {
 	@include grid-media($sba-grid-large) {
 		font-size: 2.0em;
 	}
 }
 
-.upperCase{
+.upperCase {
 	text-transform: uppercase;
 }
 
