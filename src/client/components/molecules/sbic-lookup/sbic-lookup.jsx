@@ -9,85 +9,89 @@ import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 import json2csv from "json2csv"
 
 class SbicLookup extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			contacts: null,
-			contactsCsv: null,
-			sortByValue: "Investor Name",
-			industryValue: "Diversified",
-			investingStatusValue: "All"
+		constructor() {
+			super();
+			this.state = {
+				contacts: null,
+				contactsCsv: null,
+				sortByValue: "Investor Name",
+				industryValue: "Diversified",
+				investingStatusValue: "All"
+			}
 		}
-	}
 
-	componentWillMount() {
-		this.props.actions.fetchContentIfNeeded("contacts", this.props.type);
-	}
-
-	componentWillReceiveProps(nextProps, ownProps){
-    this.setState({contacts: nextProps.items}, () => {
-    	this.sortAndFilterContacts()
-    	this.convertContactsToCsv()
-    });
-  }
-
-	handleChange(e, selectStateKey) {
-		let stateCopy = this.state
-		stateCopy[selectStateKey] = e.value
-		this.setState({...stateCopy}, this.sortAndFilterContacts)
-	}
-
-	handleDownloadClick(e){
-		e.preventDefault()
-	}
-
-	createDownloadHref() {
-		console.log('data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv))
-		return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv)
-	}
-
-	sortAndFilterContacts() {
-		let sortedContacts = this.sortContacts()
-		let filteredContacts = this.filterContacts(sortedContacts)
-		this.setState({
-			contacts: filteredContacts
-		})
-	}
-
-	sortContacts() {
-		let orders = []
-		let iteratees = []
-		if (this.state.sortByValue === "Investor Name") {
-			orders.push("asc")
-			iteratees.push("title")
-		} else if (this.state.sortByValue === "Active Since") {
-			orders.push("desc")
-			iteratees.push("activeSince")
+		componentWillMount() {
+			this.props.actions.fetchContentIfNeeded("contacts", this.props.type);
 		}
-		return _.orderBy(this.props.items, iteratees, orders)
-	}
 
-	//TODO remove outer array brackets [contact.industry] when industry field becomes an actual array. keep intersection though.
-	filterContacts(contacts) {
-		let filteredContacts = contacts
-		if (this.state.industryValue !== "Diversified") {
-			filteredContacts = _.filter(contacts, (contact) => {
-				return !_.isEmpty(_.intersection([contact.industry], [this.state.industryValue]))
+		componentWillReceiveProps(nextProps, ownProps) {
+			this.setState({
+				contacts: nextProps.items
+			}, () => {
+				this.sortAndFilterContacts()
+				this.convertContactsToCsv()
+			});
+		}
+
+		handleChange(e, selectStateKey) {
+			let stateCopy = this.state
+			stateCopy[selectStateKey] = e.value
+			this.setState({...stateCopy
+			}, this.sortAndFilterContacts)
+		}
+
+		sortAndFilterContacts() {
+			let sortedContacts = this.sortContacts()
+			let filteredContacts = this.filterContacts(sortedContacts)
+			this.setState({
+				contacts: filteredContacts
 			})
 		}
-		if (this.state.investingStatusValue !== "All") {
-			filteredContacts = _.filter(filteredContacts, (contact) => {
-				return contact.investingStatus === this.state.investingStatusValue
+
+		sortContacts() {
+			let orders = []
+			let iteratees = []
+			if (this.state.sortByValue === "Investor Name") {
+				orders.push("asc")
+				iteratees.push("title")
+			} else if (this.state.sortByValue === "Active Since") {
+				orders.push("desc")
+				iteratees.push("activeSince")
+			}
+			return _.orderBy(this.props.items, iteratees, orders)
+		}
+
+		//TODO remove outer array brackets [contact.industry] when industry field becomes an actual array. keep intersection though.
+		//this filtering was intended to match multiple user selections to multiple industry types. 
+		filterContacts(contacts) {
+			let filteredContacts = contacts
+			if (this.state.industryValue !== "Diversified") {
+				filteredContacts = _.filter(contacts, (contact) => {
+					return !_.isEmpty(_.intersection([contact.industry], [this.state.industryValue]))
+				})
+			}
+			if (this.state.investingStatusValue !== "All") {
+				filteredContacts = _.filter(filteredContacts, (contact) => {
+					return contact.investingStatus === this.state.investingStatusValue
+				})
+			}
+			return filteredContacts
+		}
+
+		convertContactsToCsv() {
+			let fields = Object.keys(this.state.contacts[0])
+			let csv = json2csv({
+				data: this.state.contacts,
+				fields: fields
+			})
+			this.setState({
+				contactsCsv: csv
 			})
 		}
-		return filteredContacts
-	}
 
-	convertContactsToCsv(){
-		let fields = ['activeSince', 'city', 'contactFirstName', 'contactLastName', 'email', 'industry', 'investingStatus', 'phoneNumber', 'state', 'streetAddress', 'title', 'zipCode']
-		let csv = json2csv({data: this.state.contacts, fields: fields })
-		this.setState({contactsCsv: csv})
-	}
+		createDownloadHref() {
+			return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv)
+		}
 
 	renderMultiSelects() {
 			let specificMultiSelectProps = [{
@@ -168,7 +172,6 @@ class SbicLookup extends React.Component {
 	}
 
 	renderContacts() {
-		console.log(this.state.contacts)
 		return this.state.contacts.map((contact, index) => {
 			return (
 				<tr key={index}> 
