@@ -5,7 +5,7 @@ import PageLink from "../../atoms/page-link/page-link.jsx";
 class PageLinkGroup extends React.Component {
 
   makePageLink(item, index) {
-    return (<PageLink id={this.props.id+"-"+index} key={index+1} text={item.text} url={item.url} onBlur={this.props.onBlur}/>);
+    return (<PageLink id={this.props.id+"-"+index} key={index+1} text={item.text} url={item.url} onBlur={this.props.onBlur} indent={this.props.indent}/>);
   }
   render() {
     let header = this.props.title

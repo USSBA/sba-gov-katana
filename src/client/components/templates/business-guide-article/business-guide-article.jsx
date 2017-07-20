@@ -41,7 +41,7 @@ class BusinessGuideArticle extends React.Component {
     let wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
-      textReadMoreSection: "",
+      textReadMoreSection: "none",
       sectionHeader: styles.sectionHeader,
       subsectionHeader: styles.textSection,
       image: styles.image,

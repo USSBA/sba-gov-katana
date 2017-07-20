@@ -48,9 +48,19 @@ class MainMenu extends React.Component {
     }
   }
 
+  determineActiveSection(data) {
+      let topLevelPaths = _.map(data, (item)=> item.link.replace("/",""));
+      let path = window.location.pathname;
+      let split = path.split("/");
+      let sectionName = split && split.length >0 ? split[1] : "";
+      return _.indexOf(topLevelPaths, sectionName);
+
+  }
+
   render() {
     let menuItems = [];
     if (this.props.data) {
+      let activeIndex = this.determineActiveSection(this.props.data);
       menuItems = this.props.data.map((item, index) => {
         let submenuProps = {
           id: "sub-menu-" + index,
@@ -66,7 +76,7 @@ class MainMenu extends React.Component {
           onFinalBlur: (event) => this.handleFinalBlur(event),
           autoFocusOnTitle: index === this.state.currentlyFocusedTopLevelMenu,
           onSectionLinkKeyDown: (event) => this.handleKeyDown(event),
-          showUnderline: index === this.props.activeIndex
+          showUnderline: index === activeIndex
         };
         return <SubMenu {...submenuProps}/>
       });

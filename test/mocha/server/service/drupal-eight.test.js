@@ -12,6 +12,8 @@ import thirdParagraphBase from "./data/paragraph3.json";
 import fourthParagraphBase from "./data/paragraph4.json";
 import taxonomyOneBase from "./data/taxonomy1.json";
 import taxonomyTwoBase from "./data/taxonomy2.json";
+import paragraphBannerImage from "./data/paragraph-banner-image.json";
+import fieldBannerImage from "./data/field-banner-image.json";
 
 
 describe("Drupal 8 Service", function() {
@@ -112,4 +114,63 @@ describe("Drupal 8 Service", function() {
     setupStub(null, null, null, null, null, null, null);
     runTest(done, {});
   })
+});
+
+describe("Drupal 8 Service Helper Functions", function() {
+  describe("convertUrlHost", function() {
+    it("should convert a localhost:8080 url to drupal8", function(done) {
+      let result = drupalEightDataService.convertUrlHost("http://localhost:8080/foo/bar");
+      result.should.equal("http://drupal8.content.hostname/foo/bar");
+      done();
+    });
+    it("should convert a localhost url to drupal8", function(done) {
+      let result = drupalEightDataService.convertUrlHost("http://localhost/foo/bar");
+      result.should.equal("http://drupal8.content.hostname/foo/bar");
+      done();
+    });
+    it("should not convert a relative url", function(done) {
+      let result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
+      result.should.equal("internal:/foo/bar");
+      done();
+    });
+  });
+  describe("makeParagraphValueFormatter", function() {
+    it("should create a paragraph value formatter for banner_image types", function(done) {
+      const expectedResult = {
+        url: "http://drupal8.content.hostname/sites/default/files/2017-07/some_image.png",
+        alt: "SomeImageAltText"
+      };
+      let formatter = drupalEightDataService.makeParagraphValueFormatter("banner_image", paragraphBannerImage);
+      let promise = formatter(fieldBannerImage, "bannerImage");
+      promise.then(function(output){
+        output.should.include(expectedResult);
+        done();
+      });
+    });
+  });
+  describe("extractFieldsByFieldNamePrefix", function() {
+    it("should pull out expected fields for banner_image paragraphs", function(done) {
+      const typeName = "banner_image";
+      const expectedResult = {
+        bannerImage: {
+          url:"http://drupal8.content.hostname/sites/default/files/2017-07/foo.png",
+          alt:"FooAltText"
+        },
+        captionText: "FooCaption",
+        link: {
+          "url":"https://foourl.example.com",
+          "title":"FooLinkText"
+        }
+      }
+      let paragraphFormatter = drupalEightDataService.makeParagraphValueFormatter(typeName, paragraphBannerImage);
+      let promise = drupalEightDataService.extractFieldsByFieldNamePrefix(paragraphBannerImage, "field_", drupalEightDataService.paragraphFieldFormatter(typeName), paragraphFormatter);
+      promise.then(output => {
+        console.log(`Got my result! ${JSON.stringify(output)}`);
+        output.bannerImage.should.include(expectedResult.bannerImage);
+        output.captionText.should.equal(expectedResult.captionText);
+        output.link.should.include(expectedResult.link);
+        done();
+      });
+    });
+  });
 });

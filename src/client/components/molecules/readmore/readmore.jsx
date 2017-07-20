@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./readmore.scss";
 import {SmallSecondaryButton} from "../../atoms";
 
-class ReadMoreSection extends React.Component{
+class ReadMore extends React.Component{
 
     handleClick(e){
         e.preventDefault();
@@ -35,11 +35,11 @@ class ReadMoreSection extends React.Component{
     }
 }
 
-ReadMoreSection.propTypes ={
+ReadMore.propTypes ={
     readMoreSectionItem: React.PropTypes.object.isRequired,
     expanded: React.PropTypes.bool.isRequired,
     onToggleStatus: React.PropTypes.func.isRequired,
     parentId: React.PropTypes.string.isRequired
 };
 
-export default ReadMoreSection;
+export default ReadMore;

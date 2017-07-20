@@ -10,31 +10,32 @@ import styles from './header.scss';
 
 class Header extends React.Component {
 
-    componentWillMount() {
-        this.props.actions.fetchContentIfNeeded('mainMenu', 'main-menu');
-    }
+  componentWillMount() {
+    this.props.actions.fetchContentIfNeeded('mainMenu', 'main-menu');
+  }
+
   render() {
     return (
       <nav className={styles.navbar}>
-          <MobileNav mainMenuData={this.props.mainMenuData}/>
-          <DesktopNav mainMenuData={this.props.mainMenuData} theme={this.props.theme}/>
+        <MobileNav mainMenuData={this.props.mainMenuData}/>
+        <DesktopNav mainMenuData={this.props.mainMenuData}/>
       </nav>
     );
   }
 }
 
 Header.defaultProps = {
-    mainMenuData: null
+  mainMenuData: null
 };
 
 function mapStateToProps(reduxState) {
-    return {mainMenuData: reduxState.contentReducer["mainMenu"], theme: reduxState.display.theme};
+  return {mainMenuData: reduxState.contentReducer["mainMenu"]};
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(ContentActions, dispatch)
-    };
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

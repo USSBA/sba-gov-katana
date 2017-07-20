@@ -53,10 +53,13 @@ function fetchMenuTreeByName(name) {
 }
 
 function convertUrlHost(urlStr) {
-  const host = config.get("drupal8.contentUrl");
-  let newUrl = url.parse(urlStr);
-  newUrl = host + newUrl.pathname;
-  return newUrl;
+  const host = _.trimEnd(config.get("drupal8.contentUrl"), "/");
+  const parsedUrl = url.parse(urlStr);
+  //Only modify URL if it points to localhost
+  if (parsedUrl.hostname === "localhost") {
+    return `${host}${parsedUrl.pathname}`;
+  }
+  return urlStr;
 }
 
 
@@ -165,16 +168,13 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
 
 function makeParagraphValueFormatter(typeName, paragraph) {
   return function(value, key) { //eslint-disable-line complexity
-    let newValuePromise;
+    let newValuePromise = Promise.resolve({});
     if (typeName === "text_section" && key === "text") {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
-    } else if (key === "image") {
+    } else if (key === "image" || key === "bannerImage") {
       if (value[0]) {
-        let imageUrl = url.parse(value[0].url);
-        const host = "http://content.sbagov.fearlesstesters.com";
-        imageUrl = host + imageUrl.pathname;
         newValuePromise = Promise.resolve({
-          url: imageUrl,
+          url: convertUrlHost(value[0].url),
           alt: value[0].alt
         });
       }
@@ -187,6 +187,13 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       newValuePromise = fetchNestedParagraph(paragraph, "card_collection"); //eslint-disable-line no-use-before-define
     } else if (typeName === "style_gray_background") {
       newValuePromise = fetchNestedParagraph(paragraph, "style_gray_background"); //eslint-disable-line no-use-before-define
+    } else if (key === "link") {
+      if (value[0]) {
+        newValuePromise = Promise.resolve({
+          url: convertUrlHost(value[0].uri),
+          title: value[0].title
+        });
+      }
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
@@ -222,26 +229,33 @@ function formatCallToAction(paragraph) {
   });
 }
 
+function paragraphFieldFormatter(typeName) {
+  return function(fieldName) {
+    if (typeName === "image" || typeName === "banner_image") {
+      return fieldName;
+    }
+    return _.replace(fieldName, typeName, "");
+  };
+}
 
 function formatParagraph(paragraph) {
   if (paragraph) {
     const typeName = extractTargetId(paragraph.type);
     switch (typeName) {
       case "call_to_action":
-        //need to retrun at some point
+        //need to return at some point
         return formatCallToAction(paragraph);
-      default:
-        return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, function(fieldName) {
-          if (typeName === "image") {
-            return fieldName;
-          }
-          return _.replace(fieldName, typeName, "");
-        }, makeParagraphValueFormatter(typeName, paragraph))
-          .then((object) => {
-            return _.assign({
-              type: _.camelCase(typeName)
-            }, object);
-          });
+      default: {
+        const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
+        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, paragraphFieldFormatter(typeName), paragraphFormatter);
+        const combineResultWithCamelizedTypename = (object) => {
+          return _.assign({
+            type: _.camelCase(typeName)
+          }, object);
+        };
+
+        return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
+      }
     }
   }
   return Promise.resolve(null);
@@ -367,4 +381,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, paragraphFieldFormatter };

@@ -8,13 +8,14 @@
     "nodemonstart": "nodemon src/app.js --exec babel-node  --presets es2015",
     "prestart": "npm run clean && npm run lint && npm run format",
     "build": "scripts/build.sh",
-    "test": "npm run test-jest && npm run test-mocha",
-    "test-jest": "jest test/jest/",
-    "test-mocha": "mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
+    "test": "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
+    "test-jest": "NODE_ENV=test jest test/jest/",
+    "test-mocha": "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
     "lint": "eslint src --fix",
     "format": "esformatter -i 'src/**/*.js'",
     "clean": "rm -rf dist && rm -rf public/build",
-    "precommit": "npm run lint && npm run format && npm run test"
+    "precommit": "npm run lint && npm run format && npm run test",
+    "clear-cache": "curl localhost:3000/actions/clearcache"
   },
   "repository": {
     "url": "git+https://github.com/sba-ds/sba-gov.git",

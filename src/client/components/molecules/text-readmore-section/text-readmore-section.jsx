@@ -25,7 +25,7 @@ class TextReadMoreSection extends React.Component {
 
   makeReadMoreSection() {
     return (
-      <div key={1} className={styles.readMoreSection}><ReadMore parentId={this.props.parentId + "-read-more"} readMoreStatus={this.handleReadMoreStatus.bind(this)} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
+      <div key={1} className={styles.readMoreSection}><ReadMore parentId={this.props.parentId + "-read-more"} onToggleStatus={this.handleReadMoreStatus.bind(this)} expanded={this.state.readMoreExpanded} readMoreSectionItem={this.props.readMoreSectionItem}/></div>
     );
   }
 

@@ -4,6 +4,10 @@ li.pageLink {
   margin-bottom: 15px;
 }
 
+.indent{
+  margin-left: 20px;
+}
+
 @include theme(sba-blue, 'li.pageLink a', null, $base-font-color, null);
 @include theme(byzantine, 'li.pageLink a', null, $base-font-color, null);
 @include theme(money-green, 'li.pageLink a', null, $base-font-color, null);
