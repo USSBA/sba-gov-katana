@@ -6,12 +6,14 @@ import * as ContentActions from "../../../actions/content.js"
 import {filter} from "lodash"
 import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
+import json2csv from "json2csv"
 
 class SbicLookup extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			contacts: null,
+			contactsCsv: null,
 			sortByValue: "Investor Name",
 			industryValue: "Diversified",
 			investingStatusValue: "All"
@@ -23,7 +25,10 @@ class SbicLookup extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps, ownProps){
-    this.setState({contacts: nextProps.items}, this.sortAndFilterContacts);
+    this.setState({contacts: nextProps.items}, () => {
+    	this.sortAndFilterContacts()
+    	this.convertContactsToCsv()
+    });
   }
 
 	handleChange(e, selectStateKey) {
@@ -32,12 +37,13 @@ class SbicLookup extends React.Component {
 		this.setState({...stateCopy}, this.sortAndFilterContacts)
 	}
 
-	handleBlur(e) {
-		// console.log("blur")
+	handleDownloadClick(e){
+		e.preventDefault()
 	}
 
-	handleFocus(e) {
-		// console.log("focus")
+	createDownloadHref() {
+		console.log('data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv))
+		return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv)
 	}
 
 	sortAndFilterContacts() {
@@ -75,6 +81,12 @@ class SbicLookup extends React.Component {
 			})
 		}
 		return filteredContacts
+	}
+
+	convertContactsToCsv(){
+		let fields = ['activeSince', 'city', 'contactFirstName', 'contactLastName', 'email', 'industry', 'investingStatus', 'phoneNumber', 'state', 'streetAddress', 'title', 'zipCode']
+		let csv = json2csv({data: this.state.contacts, fields: fields })
+		this.setState({contactsCsv: csv})
 	}
 
 	renderMultiSelects() {
@@ -156,6 +168,7 @@ class SbicLookup extends React.Component {
 	}
 
 	renderContacts() {
+		console.log(this.state.contacts)
 		return this.state.contacts.map((contact, index) => {
 			return (
 				<tr key={index}> 
@@ -190,7 +203,7 @@ class SbicLookup extends React.Component {
 				<div className={s.banner}>
 					<h2 className={s.header}>{this.props.title}</h2>
 					{this.renderMultiSelects()}
-					<SmallInverseSecondaryButton extraClassName={s.downloadBtn} text="download list (.XLS)" />
+					<a href={this.createDownloadHref()} download="sbic-contacts.csv"><SmallInverseSecondaryButton url="#" extraClassName={s.downloadBtn} text="download list (.XLS)" /></a>
 				</div>
 				<table className={s.table}>
 					<thead>
