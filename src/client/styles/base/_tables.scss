@@ -22,3 +22,80 @@ td,
 th {
   vertical-align: middle;
 }
+
+//TABLE
+@include theme(sba-blue, '.textSection th', $sba-blue, $white, $sba-blue)
+@include theme(money-green, '.textSection th', $money-green, $white, $money-green)
+@include theme(byzantine, '.textSection th', $byzantine, $white, $byzantine)
+@include theme(cobalt-blue, '.textSection th', $cobalt-blue, $white, $cobalt-blue)
+
+
+
+@include theme(sba-blue, ':global(.table-header-label)', none, $sba-blue, none)
+@include theme(money-green, ':global(.table-header-label)', none, $money-green, none)
+@include theme(byzantine, ':global(.table-header-label)', none, $byzantine, none)
+@include theme(cobalt-blue, ':global(.table-header-label)', none, $cobalt-blue, none)
+
+
+.textSection {
+  //LARGE
+  @include grid-media($sba-grid-small){
+    & thead > tr {
+      display: none;
+    }
+    & tr {
+      border: 2px solid #EBEBEB;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    & td:nth-child(even){
+      background-color: #EBEBEB;
+    }
+    & td {
+      overflow: auto;
+      border: 0px;
+    }
+    & :global(.table-header-label){
+      display: block;
+      @include grid-column(2);
+      font-weight: bold;
+    }
+    & :global(.table-data-wrapper){
+      display: block;
+      @include grid-column(4)
+      }
+  }
+  @include grid-media($sba-grid-medium){
+    & table {
+      table-layout: auto;
+    }
+    & tbody {
+      border: 2px solid #EBEBEB;
+    }
+    & th {
+      text-align: center;
+      border: 2px solid;
+    }
+    & tr {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    & tr:nth-child(even) {
+      background-color: #EBEBEB;
+    }
+    & td {
+      padding-right: 15px;
+      padding-left: 15px;
+      border: 0px;
+    }
+    & :global(.table-header-label) {
+      display: none;
+    }
+  }
+
+  @include grid-media($sba-grid-small){
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  }
+}

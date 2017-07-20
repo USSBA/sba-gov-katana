@@ -43,6 +43,8 @@ import DecorativeDash from "../../atoms/decorative-dash/decorative-dash.jsx"
 
 import CardCollection from '../../organisms/card-collection/card-collection.jsx'
 
+import TextSection from '../../molecules/text-section/text-section.jsx'
+
 class StyleGuide extends React.Component {
   constructor() {
     super();
@@ -71,7 +73,7 @@ class StyleGuide extends React.Component {
             }
           ];
 
-      let cardCollectionMockData = [  
+      const cardCollectionMockData = [  
           {  
              "type":"card",
              "image":{  
@@ -98,6 +100,49 @@ class StyleGuide extends React.Component {
           }
        ];
 
+    const tableMockData = "<table>"
+      + "<thead>"
+      + " <tr>"
+      + "   <th>Thing 1</th>"
+      + "   <th>Thing 2</th>"
+      + "   <th>Thing 3</th>"
+      + "   <th>Thing 4</th>"
+      + " </tr>"
+      + "</thead>"
+      + "<tbody>"
+      + "  <tr>"
+      + "    <td>Lorem ipsum dolor</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
+      + "  </tr>"
+      + "</tbody>"
+      + "<tbody>"
+      + "  <tr>"
+      + "    <td>Lorem ipsum dolor</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
+      + "  </tr>"
+      + "</tbody>"
+      + "<tbody>"
+      + "  <tr>"
+      + "    <td>Lorem ipsum dolor</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
+      + "  </tr>"
+      + "</tbody>"
+      + "<tbody>"
+      + "  <tr>"
+      + "    <td>Lorem ipsum dolor</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
+      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
+      + "  </tr>"
+      + "</tbody>"
+      + "</table>"
+
     return (
       <div>
         <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
@@ -122,6 +167,11 @@ class StyleGuide extends React.Component {
 
         <h1>Card Collection</h1>
         <CardCollection parentIndex={0} cards={cardCollectionMockData}/>
+
+        <div className={styles.clear} />
+
+        <h1>Table</h1>
+        <TextSection text={tableMockData} />
 
         <div className={styles.clear} />
 
