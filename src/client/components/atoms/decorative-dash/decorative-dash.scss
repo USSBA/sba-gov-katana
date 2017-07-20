@@ -2,7 +2,7 @@
 	border-top:3px solid #666;
 }
 
-@include theme(sba-blue, '.decorativeDash', #fff, $sba-blue, $sba-blue);
-@include theme(byzantine, '.decorativeDash', #fff, $byzantine, $byzantine);
-@include theme(money-green, '.decorativeDash', #fff, $money-green, $money-green);
-@include theme(cobalt-blue, '.decorativeDash', #fff, $cobalt-blue, $cobalt-blue);
+@include theme(sba-blue, '.decorativeDash', null, null, $sba-blue);
+@include theme(byzantine, '.decorativeDash', null, null, $byzantine);
+@include theme(money-green, '.decorativeDash', null, null, $money-green);
+@include theme(cobalt-blue, '.decorativeDash', null, null, $cobalt-blue);

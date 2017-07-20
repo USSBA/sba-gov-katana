@@ -1,25 +1,32 @@
-.container{
+.container {
 	position: relative;
+	display: block;
 }
 
-.nineStepsCtaContainer{
-	 @include grid-media($sba-grid-small) {
-      @include grid-container;
-      @include grid-column(6);
-      margin-top: 20px;
-      margin-bottom: 40px;
-    }
-    @include grid-media($sba-grid-medium) {
-      @include grid-container;
-      @include grid-column(12);
-      margin-top: 20px;
-      margin-bottom: 30px;
-    }
+.tiles:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.nineStepsCtaContainer {
+	@include grid-media($sba-grid-small) {
+		@include grid-container;
+		@include grid-column(6);
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+	@include grid-media($sba-grid-medium) {
+		@include grid-container;
+		@include grid-column(12);
+		margin-top: 20px;
+		margin-bottom: 30px;
+	}
 	@include grid-media($sba-grid-large) {
-		@include grid-column(3);
-		padding: 0px 10px;
+		@include grid-column(3, $sba-grid-large);
+		padding: 0 10px;
 		display: inherit;
 		position: relative;
 		margin-top: -115px;
-    }
+	}
 }
