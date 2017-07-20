@@ -4,8 +4,9 @@
 @include theme(cobalt-blue, '.banner', $cobalt-blue, #fff, #fff);
 
 .banner {
-    width: 100%;
     position: relative;
+
+    width: 100%;
 
     @include grid-media($sba-grid-small) {
         padding: 20px;
@@ -45,13 +46,16 @@
 
 
 .downloadBtn {
+    font-size: 19px;
+
     position: absolute;
     right: 28px;
     bottom: 20px;
-    margin: inherit;
+
     width: 260px;
     height: 48px;
-    font-size: 19px;
+    margin: inherit;
+
     @include grid-media($sba-grid-medium-and-small) {
         display: none;
     }
@@ -59,13 +63,13 @@
 
 
 .table {
+    border-bottom: 1px solid #dadada;
+
     @include grid-media($sba-grid-medium-and-small) {
         display: block;
         overflow-y: auto;
 
         height: 600px;
-
-        border-bottom: 1px solid #dadada;
         & thead {
             display: none;
         }
@@ -133,7 +137,7 @@
             width: 21% !important;
             padding: 10px;
 
-            border-bottom: 1px solid #dadada;
+            border: none;
         }
         & thead {
             display: block;
@@ -151,6 +155,9 @@
             width: 20.5vw !important;
             padding: 10px;
 
+            border: none;
+        }
+        & tr {
             border-bottom: 1px solid #dadada;
         }
     }
