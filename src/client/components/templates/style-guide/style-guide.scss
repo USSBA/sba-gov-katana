@@ -177,8 +177,9 @@
     width: 25%;
 }
 
+
 .ctaContainer {
-    @include grid-column(7, $sba-grid-large)
+    @include grid-column(12, $sba-grid-large)
 }
 
 .columnHalf {

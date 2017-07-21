@@ -30,7 +30,7 @@ import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
 
 import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
-import Cta from "../../molecules/call-to-action/call-to-action.jsx"
+import CTA from "../../molecules/call-to-action/call-to-action.jsx"
 
 import CaretIcon from "../../atoms/icons/caret-down.jsx"
 import CloseIcon from "../../atoms/icons/close.jsx"
@@ -105,12 +105,59 @@ class StyleGuide extends React.Component {
         <ColorPalette/>
         <h1>Form Inputs</h1>
         <FormElements/>
-        <h1>Hero</h1>
-        <Hero title="Hey this is a cool title." message="Whether you're already up and running or just getting started, we can help. Come take a look now." buttons={buttonsArray} desktopImage={HeroDesktopImage} mobileImage={HeroMobileImage}/>
-        <h1>Calls to Action</h1>
-        <div className={styles.ctaContainer}>
-          <Cta size="large" btnUrl="http://www.example.com/" btnTitle="find happiness" image="http://content.sbagov.fearlesstesters.com/sites/default/files/2017-04/Counselor_Match_CTA_Image.jpg" imageAlt="alt text for image" headline="This is the headline for the CTA." blurb="This is the blurb for the CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."/>
+
+        <div>
+        
+          <h1>Hero</h1>
+          <Hero
+            title="Hey this is a cool title."
+            message="Whether you're already up and running or just getting started, we can help. Come take a look now."
+            buttons={buttonsArray}
+            imageUrl="http://images.bigcartel.com/product_images/196197151/Will.jpg?auto=format&fit=max&h=800&w=800"
+          />
+        
         </div>
+
+        <h1>Calls to Action</h1>
+        
+        <div className={styles.ctaContainer}>
+          
+          <CTA
+            size="large"
+            btnUrl="http://www.example.com/"
+            btnTitle="find happiness"
+            image="http://images.bigcartel.com/product_images/192360196/Mandark.jpg?auto=format&fit=max&h=800&w=800"
+            imageAlt="alt text for image"
+            headline="This is the headline for the Large CTA."
+            blurb="This is the blurb for the large CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
+          />
+
+        </div>
+
+        <div className={styles.ctaContainer}>
+          
+          <CTA
+            size="medium"
+            btnUrl="http://www.example.com/"
+            btnTitle="find happiness"
+            headline="This is the headline for the Medium CTA."
+            blurb="This is the blurb for the medium CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
+          />
+
+        </div>
+
+        <div className={styles.ctaContainer}>
+          
+          <CTA
+            size="small"
+            btnUrl="http://www.example.com/"
+            btnTitle="find happiness"
+            headline="This is the headline for the Small CTA."
+            blurb="This is the blurb for the small CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
+          />
+
+        </div>
+
         <div className={styles.simpleCtaContainer}>
             <SimpleCta/>
         </div>
