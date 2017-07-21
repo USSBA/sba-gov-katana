@@ -21,7 +21,7 @@ class SbicLookup extends React.Component {
 		}
 
 		componentWillMount() {
-			this.props.actions.fetchContentIfNeeded("contacts", this.props.type);
+			this.props.actions.fetchContentIfNeeded("contacts", this.props.type, {category: 'sbic'});
 		}
 
 		componentWillReceiveProps(nextProps, ownProps) {

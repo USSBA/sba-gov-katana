@@ -62,17 +62,89 @@ function convertUrlHost(urlStr) {
   return urlStr;
 }
 
+//contacts content type
+function fetchContacts(queryParams) {
+  const {category = 'general'} = queryParams
 
+  if (config.get("drupal8.useLocalContacts")) {
+    console.log("Using Development Contacts information")
+    return Promise.resolve(localContacts);
+  }
 
-function fetchFormattedContactParagraph(contact) {
-  var contactCategory = "sbic";
+  return fetchContent(contactEndpoint)
+    .then(formatContacts.bind(null, category))
+    .then((formattedContacts) => {
+      return formattedContacts.filter(contact =>
+        typeof contact !== 'undefined'
+      )
+    })
+}
+
+function formatContacts(category, data) {
+  if (data) {
+    return Promise.map(data, fetchFormattedContactParagraph.bind(null, category), {
+      concurrency: 50
+    });
+  }
+}
+
+function fetchFormattedContactParagraph(category, contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
-  return fetchParagraphId(paragraphId).then(formatContactParagraph).then(function(response) { //eslint-disable-line no-use-before-define
-    response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
-    return response;
+  return fetchParagraphId(paragraphId)
+  .then(formatContactParagraph.bind(null, category))
+  .then(function(response) { 
+    if (response) {
+      response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
+      return response;
+    }
   });
 }
 
+function formatContactParagraph(category, paragraph) {
+  if (category === "sbic" && extractTargetId(paragraph.type) === "sbic_contact") {
+    return formatSbicContactParagraph(paragraph);
+  } else if(category === "general" && extractTargetId(paragraph.type) === "business_guide_contact") {
+    return formatGeneralContactParagraph(paragraph);
+  }
+  return Promise.resolve(null);
+}
+
+function formatSbicContactParagraph(paragraph) {
+  return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix)
+    .then((formattedParagraph) => {
+      return _.mapValues(formattedParagraph, (value) => {
+        return value[0].value;
+      });
+    });
+}
+
+function formatGeneralContactParagraph(paragraph) { //eslint-disable-line complexity
+  if (paragraph) {
+    const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
+    const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
+    const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
+    const contactLink = !_.isEmpty(paragraph.field_link) ? paragraph.field_link[0].uri : "";
+    const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
+    const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
+    const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
+    const contactCategoryTaxonomyPromise = contactCategoryTaxonomyId ? fetchFormattedTaxonomyTerm(contactCategoryTaxonomyId) : Promise.resolve(null);
+    const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
+    return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
+      return {
+        city: contactCity,
+        link: contactLink,
+        state: contactState,
+        streetAddress: contactStreetAddress,
+        zipCode: contactZipCode,
+        category: contactCategoryTaxonomyData ? contactCategoryTaxonomyData.name : "",
+        stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
+      };
+    });
+  }
+  return Promise.resolve(null);
+}
+
+//cta content type
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
   if (counsellorCtaNodeId) {
@@ -107,21 +179,32 @@ function fetchCounsellorCta() {
   return Promise.resolve(null);
 }
 
-function formatContacts(data) {
-  if (data) {
-    return Promise.map(data, fetchFormattedContactParagraph, {
-      concurrency: 50
-    });
-  }
-  return Promise.resolve(null);
-}
+function formatCallToAction(paragraph) {
+  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
+  const cta = {
+    type: "callToAction",
+    style: extractValue(paragraph.field_style)
+  };
 
-function fetchContacts() {
-  if (config.get("drupal8.useLocalContacts")) {
-    console.log("Using Development Contacts information");
-    return Promise.resolve(localContacts);
-  }
-  return fetchContent(contactEndpoint).then(formatContacts);
+  return fetchNodeById(ctaRef).then((subCta) => {
+    const btnRef = extractTargetId(subCta.field_button_action);
+    cta.headline = extractValue(subCta.field_headline);
+    cta.blurb = extractValue(subCta.field_blurb);
+    cta.image = convertUrlHost(subCta.field_image[0].url);
+    cta.imageAlt = subCta.field_image[0].alt;
+    cta.title = extractValue(subCta.title);
+
+    return fetchParagraphId(btnRef).then((btn) => {
+      if (btn.field_link) {
+        cta.btnTitle = btn.field_link[0].title;
+        cta.btnUrl = btn.field_link[0].uri;
+      } else if (btn.field_file && btn.field_button_text) {
+        cta.btnTitle = extractValue(btn.field_button_text);
+        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
+      }
+      return cta;
+    });
+  });
 }
 
 // this is an abstract function that takes an object, removes properties that do not
@@ -202,34 +285,6 @@ function makeParagraphValueFormatter(typeName, paragraph) {
   };
 }
 
-function formatCallToAction(paragraph) {
-  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
-  const cta = {
-    type: "callToAction",
-    style: extractValue(paragraph.field_style)
-  };
-
-  return fetchNodeById(ctaRef).then((subCta) => {
-    const btnRef = extractTargetId(subCta.field_button_action);
-    cta.headline = extractValue(subCta.field_headline);
-    cta.blurb = extractValue(subCta.field_blurb);
-    cta.image = convertUrlHost(subCta.field_image[0].url);
-    cta.imageAlt = subCta.field_image[0].alt;
-    cta.title = extractValue(subCta.title);
-
-    return fetchParagraphId(btnRef).then((btn) => {
-      if (btn.field_link) {
-        cta.btnTitle = btn.field_link[0].title;
-        cta.btnUrl = btn.field_link[0].uri;
-      } else if (btn.field_file && btn.field_button_text) {
-        cta.btnTitle = extractValue(btn.field_button_text);
-        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
-      }
-      return cta;
-    });
-  });
-}
-
 function paragraphFieldFormatter(typeName) {
   return function(fieldName) {
     if (typeName === "image" || typeName === "banner_image") {
@@ -264,51 +319,6 @@ function formatParagraph(paragraph) {
 
 function fetchFormattedParagraph(paragraphId) {
   return fetchParagraphId(paragraphId).then(formatParagraph);
-}
-
-function formatGeneralContactParagraph(paragraph) { //eslint-disable-line complexity
-  if (paragraph) {
-    const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
-    const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
-    const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
-    const contactLink = !_.isEmpty(paragraph.field_link) ? paragraph.field_link[0].uri : "";
-    const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
-    const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
-    const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
-    const contactCategoryTaxonomyPromise = contactCategoryTaxonomyId ? fetchFormattedTaxonomyTerm(contactCategoryTaxonomyId) : Promise.resolve(null);
-    const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
-    return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
-      return {
-        city: contactCity,
-        link: contactLink,
-        state: contactState,
-        streetAddress: contactStreetAddress,
-        zipCode: contactZipCode,
-        category: contactCategoryTaxonomyData ? contactCategoryTaxonomyData.name : "",
-        stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
-      };
-    });
-  }
-  return Promise.resolve(null);
-}
-
-function formatSbicContactParagraph(paragraph) {
-  return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix)
-    .then((formattedParagraph) => {
-      return _.mapValues(formattedParagraph, (value) => {
-        return value[0].value;
-      });
-    });
-}
-
-function formatContactParagraph(paragraph) {
-  var contactCategory = "sbic";
-  if (contactCategory === "general") {
-    return formatGeneralContactParagraph(paragraph);
-  } else if (contactCategory === "sbic") {
-    return formatSbicContactParagraph(paragraph);
-  }
-  return Promise.resolve(null);
 }
 
 function fetchNestedParagraph(nestedParagraph, typeName) {
@@ -348,8 +358,6 @@ function formatNode(data) {
   return {};
 
 }
-
-
 
 function formatMenu(data, parentUrl) {
   if (data) {

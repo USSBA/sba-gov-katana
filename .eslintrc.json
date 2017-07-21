@@ -90,7 +90,7 @@
         "no-shadow": ["error"],
         "no-undef-init": ["error"],
         "no-undefined": ["error"],
-        "no-use-before-define": ["error"],
+        "no-use-before-define": ["off"],
 
         "callback-return": ["error"],
         "global-require": ["error"],
