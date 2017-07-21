@@ -98,7 +98,6 @@ function fetchFormattedContactParagraph(category, contact) {
         response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
         return response;
       }
-      return Promise.resolve(null);
     });
 }
 
