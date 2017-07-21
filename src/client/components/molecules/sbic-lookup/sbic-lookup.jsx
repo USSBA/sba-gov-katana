@@ -119,19 +119,13 @@ class SbicLookup extends React.Component {
 				value: this.state.industryValue,
 				options: [{
 					label: "All",
+					value: "All"
+				}, {
+					label: "Diversified",
 					value: "Diversified"
 				}, {
-					label: "Technology",
-					value: "Technology"
-				}, {
-					label: "Healthcare",
-					value: "Healthcare"
-				}, {
-					label: "Manufacturing",
-					value: "Manufacturing"
-				}, {
-					label: "Consumer",
-					value: "Consumer"
+					label: "Impact Diversified",
+					value: "ImpactDiversified"
 				}]
 			}, {
 				id: "investing-status-select",
@@ -158,8 +152,6 @@ class SbicLookup extends React.Component {
 				<div className={s.multiSelect} key={index}>
 					<MultiSelect 
 						{...multiSelectProps} 
-						onBlur={(e) => {this.handleBlur(e)}}
-						onFocus={(e) => {this.handleFocus(e)}}
 						validationState=""
 						errorText="" 
 						autoFocus={false}
@@ -181,7 +173,7 @@ class SbicLookup extends React.Component {
 					</td>
 					<td className={s.industryCol}>
 						<div className={s.mobileHeader}>Industry</div>
-						{contact.industry}
+						{contact.industry === "ImpactDiversified" ? "Impact Diversified" : contact.industry}
 					</td>
 					<td className={s.activeSinceCol}>
 						<div className={s.mobileHeader}>Active since</div>
