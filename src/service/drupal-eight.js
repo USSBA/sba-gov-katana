@@ -64,20 +64,20 @@ function convertUrlHost(urlStr) {
 
 //contacts content type
 function fetchContacts(queryParams) {
-  const {category = 'general'} = queryParams
+  const {category = "general"} = queryParams;
 
   if (config.get("drupal8.useLocalContacts")) {
-    console.log("Using Development Contacts information")
+    console.log("Using Development Contacts information");
     return Promise.resolve(localContacts);
   }
 
   return fetchContent(contactEndpoint)
     .then(formatContacts.bind(null, category))
     .then((formattedContacts) => {
-      return formattedContacts.filter(contact =>
-        typeof contact !== 'undefined'
-      )
-    })
+      return formattedContacts.filter((contact) => {
+        return typeof contact !== "undefined";
+      });
+    });
 }
 
 function formatContacts(category, data) {
@@ -86,24 +86,26 @@ function formatContacts(category, data) {
       concurrency: 50
     });
   }
+  return Promise.resolve(null);
 }
 
 function fetchFormattedContactParagraph(category, contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
   return fetchParagraphId(paragraphId)
-  .then(formatContactParagraph.bind(null, category))
-  .then(function(response) { 
-    if (response) {
-      response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
-      return response;
-    }
-  });
+    .then(formatContactParagraph.bind(null, category))
+    .then(function(response) {
+      if (response) {
+        response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
+        return response;
+      }
+      return Promise.resolve(null);
+    });
 }
 
 function formatContactParagraph(category, paragraph) {
   if (category === "sbic" && extractTargetId(paragraph.type) === "sbic_contact") {
     return formatSbicContactParagraph(paragraph);
-  } else if(category === "general" && extractTargetId(paragraph.type) === "business_guide_contact") {
+  } else if (category === "general" && extractTargetId(paragraph.type) === "business_guide_contact") {
     return formatGeneralContactParagraph(paragraph);
   }
   return Promise.resolve(null);
