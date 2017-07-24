@@ -158,6 +158,8 @@ class StyleGuide extends React.Component {
 
         </div>
 
+        <div className={styles.clear} />
+
         <div className={styles.simpleCtaContainer}>
             <SimpleCta/>
         </div>
