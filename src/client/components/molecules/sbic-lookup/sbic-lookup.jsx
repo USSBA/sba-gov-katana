@@ -15,7 +15,7 @@ class SbicLookup extends React.Component {
 				contacts: null,
 				contactsCsv: null,
 				sortByValue: "Investor Name",
-				industryValue: "Diversified",
+				industryValue: "All",
 				investingStatusValue: "All"
 			}
 		}
@@ -41,14 +41,15 @@ class SbicLookup extends React.Component {
 		}
 
 		sortAndFilterContacts() {
-			let sortedContacts = this.sortContacts()
+			let contacts = this.props.items
+			let sortedContacts = this.sortContacts(contacts)
 			let filteredContacts = this.filterContacts(sortedContacts)
 			this.setState({
 				contacts: filteredContacts
 			})
 		}
 
-		sortContacts() {
+		sortContacts(contacts) {
 			let orders = []
 			let iteratees = []
 			if (this.state.sortByValue === "Investor Name") {
@@ -58,7 +59,7 @@ class SbicLookup extends React.Component {
 				orders.push("desc")
 				iteratees.push("activeSince")
 			}
-			return _.orderBy(this.props.items, iteratees, orders)
+			return _.orderBy(contacts, iteratees, orders)
 		}
 
 		//TODO remove outer array brackets [contact.industry] when industry field becomes an actual array. keep intersection though.
@@ -67,7 +68,7 @@ class SbicLookup extends React.Component {
 			let filteredContacts = contacts
 			if (this.state.industryValue !== "All") {
 				filteredContacts = _.filter(contacts, (contact) => {
-					return !_.isEmpty(_.intersection([contact.industry], [this.state.industryValue]))
+					return !_.isEmpty(_.intersection(_.castArray(contact.industry), _.castArray(this.state.industryValue)))
 				})
 			}
 			if (this.state.investingStatusValue !== "All") {
@@ -152,6 +153,8 @@ class SbicLookup extends React.Component {
 				<div className={s.multiSelect} key={index}>
 					<MultiSelect 
 						{...multiSelectProps} 
+						onBlur={() => {return null}}
+						onFocus={() => {return null}}
 						validationState=""
 						errorText="" 
 						autoFocus={false}

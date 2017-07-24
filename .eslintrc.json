@@ -24,7 +24,7 @@
         "block-scoped-var": ["off"],
         "class-methods-use-this": ["warn"],
         "complexity": ["error", 6],
-        "consistent-return": ["off"],
+        "consistent-return": ["error"],
         "curly": ["warn"],
         "default-case": ["warn"],
         "dot-location": ["off"],

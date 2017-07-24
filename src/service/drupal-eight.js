@@ -75,7 +75,7 @@ function fetchContacts(queryParams) {
     .then(formatContacts.bind(null, category))
     .then((formattedContacts) => {
       return formattedContacts.filter((contact) => {
-        return typeof contact !== "undefined";
+        return contact !== null;
       });
     });
 }
@@ -98,6 +98,7 @@ function fetchFormattedContactParagraph(category, contact) {
         response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
         return response;
       }
+      return null;
     });
 }
 
