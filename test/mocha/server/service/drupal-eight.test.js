@@ -10,13 +10,16 @@ import firstParagraphBase from "./data/paragraph1.json";
 import secondParagraphBase from "./data/paragraph2.json";
 import thirdParagraphBase from "./data/paragraph3.json";
 import fourthParagraphBase from "./data/paragraph4.json";
+import fifthParagraphBase from "./data/paragraph5-banner-image.json";
 import taxonomyOneBase from "./data/taxonomy1.json";
 import taxonomyTwoBase from "./data/taxonomy2.json";
 import paragraphBannerImage from "./data/paragraph-banner-image.json";
 import fieldBannerImage from "./data/field-banner-image.json";
+//TODO: Delete this if it's no longer necessary
+import nodeProgramPage from "./data/node-program-page.json";
 
 
-describe("Drupal 8 Service", function() {
+describe("Drupal 8 Service with mocked endpoints", function() {
   let fetchById;
 
   function setupStub(node, firstParagraph, secondParagraph, thirdParagraph, fourthParagraph, taxonomy1, taxonomy2) {
@@ -28,6 +31,21 @@ describe("Drupal 8 Service", function() {
     fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, 1).returns(Promise.resolve(taxonomy1));
     fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, 2).returns(Promise.resolve(taxonomy2));
   }
+
+  // This will stub out endpoints based on the position in the array for each of
+  // nodes, paragraphs, and taxonomys.  Assigns endpoint id of index+1
+  function setupDynamicStub(nodes, paragraphs, taxonomys) {
+    for(var i = 0; i < nodes.length; i++){
+      fetchById.withArgs(drupalEightDataService.nodeEndpoint, i+1).returns(Promise.resolve(nodes[i]));
+    }
+    for(var i = 0; i < paragraphs.length; i++){
+      fetchById.withArgs(drupalEightDataService.paragraphEndpoint, i+1).returns(Promise.resolve(paragraphs[i]));
+    }
+    for(var i = 0; i < taxonomys.length; i++){
+      fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, i+1).returns(Promise.resolve(taxonomys[i]));
+    }
+  }
+
 
   before(() => {
     fetchById = sinon.stub(drupalEightRestServiceClient, "fetchById");
@@ -110,10 +128,86 @@ describe("Drupal 8 Service", function() {
     runTest(done, output);
   });
 
+  it("should return normally less the taxonomy when the given taxonomy is not found", function(done) {
+    let output = _.assign({}, outputBase, {
+      taxonomy: {}
+    });
+    setupStub(nodeBase, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, null, taxonomyTwoBase);
+    runTest(done, output);
+  });
+
   it("should return nothing when the requested node does not exist", function(done) {
     setupStub(null, null, null, null, null, null, null);
     runTest(done, {});
   })
+
+  describe("formatNode", function() {
+    it("should properly format a program_page type node", function(){
+      setupDynamicStub([nodeProgramPage], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+      const expectedResult = {
+        summary: "fieldSummaryText",
+        title: "Investment capital",
+        button: { title: "Find investors", url: "internal:#paragraph-11" },
+        bannerImage:{ "type": "bannerImage", "bannerImage": { "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg", "alt": "DogeBannerAltText" }, "captionText": "DogeBannerCaptionText", "link": { "url": "http://doge-banner-image.example.com", "title": "Doge Banner Link Text" } },
+        paragraphs: [{"type":"sectionHeader","text":"My Best Header Text"}],
+        taxonomy: null
+      };
+      return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
+        result.should.deep.equal(expectedResult);
+      });
+    });
+  });
+
+  describe("formatParagraph", function() {
+    it("should return the formatted paragraph for section_header types", function(done){
+      const expectedResult = {"type":"sectionHeader","text":"My Best Header Text"};
+      const promise = drupalEightDataService.formatParagraph(firstParagraphBase).then((output) => {
+        output.should.deep.equal(expectedResult);
+        done();
+      });
+    });
+    it("should return the formatted paragraph for text_section types", function(done){
+      const expectedResult = {"type":"textSection","text":"Some text"};
+      const promise = drupalEightDataService.formatParagraph(secondParagraphBase).then((output) => {
+        output.should.deep.equal(expectedResult);
+        done();
+      });
+    });
+    it("should return the formatted paragraph for read_more types", function(done){
+      const expectedResult = {"type":"readMore","expandedCopyText":"This is some text","preview":"Stuff.","titleText":"Some title"};
+      const promise = drupalEightDataService.formatParagraph(thirdParagraphBase).then((output) => {
+        output.should.deep.equal(expectedResult);
+        done();
+      });
+    });
+    it("should return the formatted paragraph for lookup types", function(done){
+      // Mock taxonomy call
+      fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, 2).returns(Promise.resolve(taxonomyTwoBase));
+      const expectedResult = {"type":"lookup","contactCategory":"Export express","display":"Cards","sectionHeaderText":"This is a lookup"};
+      const promise = drupalEightDataService.formatParagraph(fourthParagraphBase).then((output) => {
+        output.should.deep.equal(expectedResult);
+        done();
+      });
+    });
+    it("should return the formatted paragraph for banner_image types", function(done){
+      const expectedResult = {
+        "type": "bannerImage",
+        "bannerImage": {
+          "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg",
+          "alt": "DogeBannerAltText"
+        },
+        "captionText": "DogeBannerCaptionText",
+        "link": {
+          "url": "http://doge-banner-image.example.com",
+          "title": "Doge Banner Link Text"
+        }
+      };
+      const promise = drupalEightDataService.formatParagraph(fifthParagraphBase).then((output) => {
+        output.should.deep.equal(expectedResult);
+        done();
+      });
+    });
+  });
 });
 
 describe("Drupal 8 Service Helper Functions", function() {
@@ -148,6 +242,43 @@ describe("Drupal 8 Service Helper Functions", function() {
       });
     });
   });
+  describe("makeParagraphFieldFormatter", function() {
+    it("should create a valid formatter for image paragraphs", function(done) {
+      let prefix = "field_";
+      let formatter = drupalEightDataService.makeParagraphFieldFormatter("image");
+      formatter("field_image", prefix).should.equal("image");
+      formatter("field_caption_text", prefix).should.equal("captionText");
+      done();
+    });
+
+    it("should create a valid formatter for banner_image paragraphs", function(done) {
+      let prefix = "field_";
+      let formatter = drupalEightDataService.makeParagraphFieldFormatter("banner_image");
+      formatter("field_caption_text", prefix).should.equal("captionText");
+      formatter("field_banner_image", prefix).should.equal("bannerImage");
+      formatter("field_link").should.equal("link");
+      done();
+    });
+    it("should create a valid formatter for business_guide_contact paragraphs", function(done) {
+      let prefix = "field_";
+      let formatter = drupalEightDataService.makeParagraphFieldFormatter("business_guide_contact");
+      formatter("field_bg_contact_category", prefix).should.equal("bgContactCategory");
+      formatter("field_city", prefix).should.equal("city");
+      formatter("field_link", prefix).should.equal("link");
+      formatter("field_state", prefix).should.equal("state");
+      formatter("field_state_served", prefix).should.equal("stateServed");
+      formatter("field_street_address", prefix).should.equal("streetAddress");
+      formatter("field_zip_code", prefix).should.equal("zipCode");
+      done();
+    });
+    it("should create a valid formatter for subsection_header paragraphs", function(done) {
+      let prefix = "field_";
+      let formatter = drupalEightDataService.makeParagraphFieldFormatter("subsection_header");
+      formatter("field_subsection_header_text", prefix).should.equal("text");
+      done();
+    });
+  });
+
   describe("extractFieldsByFieldNamePrefix", function() {
     it("should pull out expected fields for banner_image paragraphs", function(done) {
       const typeName = "banner_image";
@@ -161,16 +292,43 @@ describe("Drupal 8 Service Helper Functions", function() {
           "url":"https://foourl.example.com",
           "title":"FooLinkText"
         }
-      }
+      };
       let paragraphFormatter = drupalEightDataService.makeParagraphValueFormatter(typeName, paragraphBannerImage);
-      let promise = drupalEightDataService.extractFieldsByFieldNamePrefix(paragraphBannerImage, "field_", drupalEightDataService.paragraphFieldFormatter(typeName), paragraphFormatter);
+      let promise = drupalEightDataService.extractFieldsByFieldNamePrefix(paragraphBannerImage, "field_", drupalEightDataService.makeParagraphFieldFormatter(typeName), paragraphFormatter);
       promise.then(output => {
-        console.log(`Got my result! ${JSON.stringify(output)}`);
-        output.bannerImage.should.include(expectedResult.bannerImage);
-        output.captionText.should.equal(expectedResult.captionText);
-        output.link.should.include(expectedResult.link);
+        output.should.deep.equal(expectedResult);
         done();
       });
     });
   });
+
+  describe("extractValue", function() {
+    it("should return the value field of the first element of an array", function(){
+      const testValue = [
+        { value: "mcfly" }
+      ];
+      const result = drupalEightDataService.extractValue(testValue);
+      result.should.equal("mcfly");
+    });
+    it("should return the value field of the first element of an array, even if more than 1 element", function(){
+      const testValue = [
+        { value: "mcfly" },
+        { value: "brown" }
+      ];
+      const result = drupalEightDataService.extractValue(testValue);
+      result.should.equal("mcfly");
+    });
+  });
+  describe("extractProperty", function() {
+    it("should return the value of an arbitrary key from the first element of an array", function(){
+      const testValue = [
+        { mcfly: "marty" },
+        { mcfly: "seamus" }
+      ];
+      const result = drupalEightDataService.extractProperty(testValue, "mcfly");
+      result.should.equal("marty");
+    });
+  });
+
+
 });
