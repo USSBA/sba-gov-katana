@@ -1,47 +1,59 @@
 import _ from "lodash";
 import sinon from "sinon";
+import Promise from 'bluebird';
 
+import * as restService from "../../../../src/models/dao/drupal8-rest.js"
 import * as drupalEightDataService from "../../../../src/service/drupal-eight.js";
 
-import contactOutputBase from "./data/contactOutput.json";
-
+import contactsNodeData from "./data/contact/contact.json";
+import contactParagraph from "./data/contact/contactParagraph.json";
+import taxonomy23 from "./data/contact/taxonomy23.json"
+import taxonomy29 from "./data/contact/taxonomy29.json"
+import contactOutput from "./data/contact/contactOutput.json";
 
 describe("Drupal 8 Contact Service", function() {
-    let fetchContacts;
+  let fetchContent, fetchById;
 
-    function setupStub(contact) {
-        fetchContacts.withArgs().returns(Promise.resolve(contact));
-    }
+  function setupStub() {
+    fetchContent.returns(Promise.resolve(contactsNodeData));
+    fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, 23).returns(Promise.resolve(taxonomy23));
+    fetchById.withArgs(drupalEightDataService.taxonomyEndpoint, 29).returns(Promise.resolve(taxonomy29));
+    fetchById.withArgs(drupalEightDataService.paragraphEndpoint, 2739).returns(Promise.resolve(contactParagraph));
+  }
 
-    before(() => {
-        fetchContacts = sinon.stub(drupalEightDataService, "fetchContacts");
+  before(() => {
+    fetchContent = sinon.stub(restService, "fetchContent");
+    fetchById = sinon.stub(restService, "fetchById");
+  });
+
+  afterEach(() => {
+    fetchContent.reset();
+    fetchById.reset();
+  });
+
+  after(() => {
+    fetchContent.restore();
+    fetchById.restore();
+  });
+
+  function runTest(done, output, extraAssertions) {
+
+    let myExtraAssertions = extraAssertions || _.identity();
+    return drupalEightDataService.fetchContacts()
+      .then((result) => {
+        result.should.deep.equal(output);
+        return result;
+      })
+      .then(myExtraAssertions)
+      .then(result => done())
+      .catch(error => done(error));
+  }
+
+  it("should format the contact data correctly", function(done) {
+    setupStub();
+    runTest(done, contactOutput, function(result) {
+      result.should.have.length(2);
     });
+  });
 
-    afterEach(() => {
-        fetchContacts.reset();
-    });
-
-    after(() => {
-        fetchContacts.restore();
-    });
-
-    function runTest(done, output, extraAssertions) {
-
-        let myExtraAssertions = extraAssertions || _.identity();
-        return drupalEightDataService.fetchContacts()
-            .then((result) => {
-                result.should.deep.equal(output);
-                return result;
-            })
-            .then(myExtraAssertions)
-            .then(result => done())
-            .catch(error => done(error));
-    }
-
-    it("should format the contact data correctly", function(done) {
-        setupStub(contactOutputBase);
-        runTest(done, contactOutputBase, function(result) {
-            result.should.have.length(2);
-        });
-    });
 });

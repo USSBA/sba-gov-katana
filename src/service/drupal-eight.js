@@ -14,9 +14,15 @@ const contactEndpoint = "contacts";
 const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 
-import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
+import {
+  fetchById,
+  fetchContent
+} from "../models/dao/drupal8-rest.js";
 
-import { sanitizeTextSectionHtml, formatUrl } from "../util/formatter.js";
+import {
+  sanitizeTextSectionHtml,
+  formatUrl
+} from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractProperty(object, key) {
@@ -66,7 +72,9 @@ function convertUrlHost(urlStr) {
 
 //contacts content type
 function fetchContacts(queryParams) {
-  const {category = "general"} = queryParams;
+  const {
+    category = "general"
+  } = queryParams;
 
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
@@ -93,95 +101,14 @@ function formatContacts(category, data) {
 
 function fetchFormattedContactParagraph(category, contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
-  return fetchParagraphId(paragraphId)
-    .then(formatContactParagraph.bind(null, category))
-    .then(function(response) {
-      if (response) {
-        response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
-        return response;
-      }
-      return null;
-    });
+  return fetchFormattedParagraph(paragraphId)
+  // .then(function(response) { //eslint-disable-line no-use-before-define
+  //   response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
+  //   return response;
+  // });
 }
 
-function formatContactParagraph(category, paragraph) {
-  if (category === "sbic" && extractTargetId(paragraph.type) === "sbic_contact") {
-    return formatSbicContactParagraph(paragraph);
-  } else if (category === "general" && extractTargetId(paragraph.type) === "business_guide_contact") {
-    return formatGeneralContactParagraph(paragraph);
-  }
-  return Promise.resolve(null);
-}
 
-function formatSbicContactParagraph(paragraph) {
-  return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix)
-    .then((formattedParagraph) => {
-      return _.mapValues(formattedParagraph, (value) => {
-        return value[0].value;
-      });
-    });
-}
-
-function formatGeneralContactParagraph(paragraph) { //eslint-disable-line complexity
-  if (paragraph) {
-    const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
-    const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
-    const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
-    const contactLink = !_.isEmpty(paragraph.field_link) ? paragraph.field_link[0].uri : "";
-    const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
-    const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
-    const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
-    const contactCategoryTaxonomyPromise = contactCategoryTaxonomyId ? fetchFormattedTaxonomyTerm(contactCategoryTaxonomyId) : Promise.resolve(null);
-    const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
-    return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
-      return {
-        city: contactCity,
-        link: contactLink,
-        state: contactState,
-        streetAddress: contactStreetAddress,
-        zipCode: contactZipCode,
-        category: contactCategoryTaxonomyData ? contactCategoryTaxonomyData.name : "",
-        stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
-      };
-    });
-  }
-  return Promise.resolve(null);
-}
-
-//cta content type
-function fetchCounsellorCta() {
-  const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
-  if (counsellorCtaNodeId) {
-    return fetchNodeById(counsellorCtaNodeId).then((data) => {
-      const targetId = extractTargetId(data.type);
-      if (targetId === "call_to_action") {
-        const cta = {
-          type: "callToAction",
-          style: "Large"
-        };
-        const btnRef = extractTargetId(data.field_button_action);
-        cta.headline = extractValue(data.field_headline);
-        cta.blurb = extractValue(data.field_blurb);
-        cta.image = convertUrlHost(data.field_image[0].url);
-        cta.imageAlt = data.field_image[0].alt;
-        cta.title = extractValue(data.title);
-
-        return fetchParagraphId(btnRef).then((btn) => {
-          if (btn.field_link) {
-            cta.btnTitle = btn.field_link[0].title;
-            cta.btnUrl = btn.field_link[0].uri;
-          } else if (btn.field_file && btn.field_button_text) {
-            cta.btnTitle = extractValue(btn.field_button_text);
-            cta.btnUrl = convertUrlHost(btn.field_file[0].url);
-          }
-          return cta;
-        });
-      }
-      return Promise.resolve(null);
-    });
-  }
-  return Promise.resolve(null);
-}
 
 function defaultFieldNameFormatter(fieldName, prefix = "field_") {
   return _.chain(fieldName).replace(prefix, "").camelCase()
@@ -236,11 +163,15 @@ function formatTaxonomyTerm(data) {
 }
 
 function fetchFormattedTaxonomyTerm(taxonomyTermId) {
+  console.log("taxonomyTermId=", taxonomyTermId);
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
 
 function makeParagraphValueFormatter(typeName, paragraph) {
+  console.log("typeName", typeName);
   return function(value, key) { //eslint-disable-line complexity
+    console.log("value", value);
+    console.log("key", key);
     let newValuePromise = Promise.resolve({});
     if (typeName === "text_section" && key === "text") {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
@@ -266,6 +197,12 @@ function makeParagraphValueFormatter(typeName, paragraph) {
           url: convertUrlHost(value[0].uri),
           title: value[0].title
         });
+      }
+    } else if (typeName === "business_guide_contact") {
+      if (key === "contactCategoryTaxonomyTerm" || key === "stateServed") {
+        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => item.name);
+      } else {
+        newValuePromise = Promise.resolve(extractValue(value));
       }
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
@@ -300,13 +237,14 @@ function formatCallToAction(paragraph) {
     style: extractValue(paragraph.field_style)
   };
 
-  return fetchNodeById(ctaRef).then((subCta) => {
-    const btnRef = extractTargetId(subCta.field_button_action);
-    cta.headline = extractValue(subCta.field_headline);
-    cta.blurb = extractValue(subCta.field_blurb);
-    cta.image = convertUrlHost(subCta.field_image[0].url);
-    cta.imageAlt = subCta.field_image[0].alt;
-    cta.title = extractValue(subCta.title);
+  function formatCallToAction(data) {
+    const cta = {};
+    const btnRef = extractTargetId(data.field_button_action);
+    cta.headline = extractValue(data.field_headline);
+    cta.blurb = extractValue(data.field_blurb);
+    cta.image = convertUrlHost(data.field_image[0].url);
+    cta.imageAlt = data.field_image[0].alt;
+    cta.title = extractValue(data.title);
 
     return fetchParagraphId(btnRef).then((btn) => {
       if (btn.field_link) {
@@ -317,134 +255,204 @@ function formatCallToAction(paragraph) {
         cta.btnUrl = convertUrlHost(btn.field_file[0].url);
       }
       return cta;
+    }).catch((error) => {
+      console.error("Unable to retrieve button information for CallToAction");
+      return null;
     });
-  });
-}
+  }
 
-function formatParagraph(paragraph) {
-  if (paragraph) {
-    const typeName = extractTargetId(paragraph.type);
-    switch (typeName) {
-      case "call_to_action":
-        //need to return at some point
-        return formatCallToAction(paragraph);
-      default: {
-        const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
-        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
-        const combineResultWithCamelizedTypename = (object) => {
-          return _.assign({
-            type: _.camelCase(typeName)
-          }, object);
-        };
+  function paragraphFieldFormatter(typeName) {
+    return function(fieldName) {
+      if (typeName === "image" || typeName === "banner_image") {
+        return fieldName;
+      } else if (typeName === "business_guide_contact" && fieldName === "field_bg_contact_category") {
+        return "contactCategoryTaxonomyTerm"
+      } else {
+        return _.replace(fieldName, typeName, "");
 
-        return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
+      }
+    };
+  }
+
+  function formatFormattedCallToActionByNodeId(nodeId, size) {
+    const ctaRef = extractTargetId(nodeId);
+    return fetchNodeById(ctaRef)
+      .then(formatCallToAction)
+      .then(function(result) {
+        return _.assign({}, {
+          type: "callToAction",
+          style: size
+        }, result);
+      })
+      .catch((error) => {
+        console.error("Unable to retrieve button information for CallToAction");
+        return null;
+      });
+  }
+
+  function formatFormattedCallToAction(paragraph) {
+    return formatFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
+  }
+
+
+  function fetchCounsellorCta() {
+    const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
+    return formatFormattedCallToActionByNodeId(counsellorCtaNodeId, "Large");
+  }
+
+
+  function formatParagraph(paragraph) {
+    if (paragraph) {
+      const typeName = extractTargetId(paragraph.type);
+      switch (typeName) {
+        case "call_to_action":
+          //need to return at some point
+          return formatCallToAction(paragraph);
+        default:
+          {
+            const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
+            const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
+            const combineResultWithCamelizedTypename = (object) => {
+              return _.assign({
+                type: _.camelCase(typeName)
+              }, object);
+            };
+
+            return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
+          }
       }
     }
+    return Promise.resolve(null);
   }
-  return Promise.resolve(null);
-}
 
-function fetchFormattedParagraph(paragraphId) {
-  return fetchParagraphId(paragraphId).then(formatParagraph);
-}
+  function fetchFormattedParagraph(paragraphId) {
+    return fetchParagraphId(paragraphId)
+      .then(formatParagraph)
+      .catch((error) => {
+        console.error("Unable to fetchFormattedParagraph " + paragraphId);
+        console.error(error);
+        return null;
+      });
+  }
 
-function fetchNestedParagraph(nestedParagraph, typeName) {
-  if (nestedParagraph) {
-    let paragraphs;
-    if (typeName === "card_collection") {
-      paragraphs = nestedParagraph.field_cards || [];
-    } else if (typeName === "style_gray_background") {
-      paragraphs = nestedParagraph.field_paragraphs || [];
+  function fetchNestedParagraph(nestedParagraph, typeName) {
+    if (nestedParagraph) {
+      let paragraphs;
+      if (typeName === "card_collection") {
+        paragraphs = nestedParagraph.field_cards || [];
+      } else if (typeName === "style_gray_background") {
+        paragraphs = nestedParagraph.field_paragraphs || [];
+      }
+      const paragraphIds = _.map(paragraphs, "target_id");
+      return Promise.map(paragraphIds, fetchFormattedParagraph);
     }
-    const paragraphIds = _.map(paragraphs, "target_id");
-    return Promise.map(paragraphIds, fetchFormattedParagraph);
+    return Promise.resolve(null);
   }
-  return Promise.resolve(null);
-}
 
-function formatNode(data) {
-  if (data) {
-    // Format Paragraphs
-    const paragraphs = data.field_paragraphs || [];
-    const paragraphIds = _.map(paragraphs, "target_id");
-    const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
+  function formatNode(data) {
+    if (data) {
+      // Format Paragraphs
+      const paragraphs = data.field_paragraphs || [];
+      const paragraphIds = _.map(paragraphs, "target_id");
+      const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
 
-    // Format Taxonomy
-    const taxonomy = data.field_site_location;
-    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
+      // Format Taxonomy
+      const taxonomy = data.field_site_location;
+      const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
 
-    // Format Summary (could be named one of two things)
-    const summary = extractValue(data.field_summary || data.field_summary160);
+      // Format Summary (could be named one of two things)
+      const summary = extractValue(data.field_summary || data.field_summary160);
 
-    // Create an object minus the "one-off" fields above
-    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
-      "field_summary", "field_summary160"]);
+      // Create an object minus the "one-off" fields above
+      const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
+        "field_summary", "field_summary160"
+      ]);
 
-    // Extract any other fields
-    const nodeValueFormatter = makeNodeValueFormatter(extractTargetId(data.type));
-    const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeParagraphFieldFormatter(""), nodeValueFormatter);
+      // Extract any other fields
+      const nodeValueFormatter = makeNodeValueFormatter(extractTargetId(data.type));
+      const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeParagraphFieldFormatter(""), nodeValueFormatter);
 
-    return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
-      const formattedNode = {
-        title: extractValue(data.title),
-        paragraphs: _.compact(paragraphData),
-        taxonomy: taxonomyData,
-        summary: summary
-      };
-      _.merge(formattedNode, extractedFields);
-      return formattedNode;
-    });
-  }
-  return {};
-}
-
-function formatMenu(data, parentUrl) {
-  if (data) {
-    const myUrl = formatUrl(data.link.url, data.link.title);
-    const fullUrl = path.join(parentUrl, myUrl);
-
-    let promise = Promise.resolve(null);
-    if (data.has_children && data.subtree) {
-      promise = formatMenuTree(data.subtree, fullUrl); //eslint-disable-line no-use-before-define
+      return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
+        const formattedNode = {
+          title: extractValue(data.title),
+          paragraphs: _.compact(paragraphData),
+          summary: summary
+        };
+        _.merge(formattedNode, extractedFields);
+        return formattedNode;
+      });
     }
-
-    return promise.then((submenus) => {
-      return {
-        title: data.link.title,
-        url: myUrl,
-        fullUrl: fullUrl,
-        children: submenus,
-        description: data.link.description,
-        node: data.link.route_parameters ? data.link.route_parameters.node : null,
-        weight: _.toNumber(data.link.weight)
-      };
-    });
+    return {};
   }
-  return Promise.resolve({});
 
-}
+  function formatMenu(data, parentUrl) {
+    if (data) {
+      const myUrl = formatUrl(data.link.url, data.link.title);
+      const fullUrl = path.join(parentUrl, myUrl);
 
-function formatMenuTree(data, parentUrl) {
-  if (data) {
-    const rootUrl = parentUrl ? parentUrl : "/";
-    return Promise.map(data, (item) => {
-      return formatMenu(item, rootUrl);
-    }, {
-      concurrency: 1
-    }).then((menu) => {
-      return _.chain(menu).sortBy("weight").value();
-    });
+      let promise = Promise.resolve(null);
+      if (data.has_children && data.subtree) {
+        promise = formatMenuTree(data.subtree, fullUrl); //eslint-disable-line no-use-before-define
+      }
+
+      return promise.then((submenus) => {
+        return {
+          title: data.link.title,
+          url: myUrl,
+          fullUrl: fullUrl,
+          children: submenus,
+          description: data.link.description,
+          node: data.link.route_parameters ? data.link.route_parameters.node : null,
+          weight: _.toNumber(data.link.weight)
+        };
+      });
+    }
+    return Promise.resolve({});
+
   }
-  return Promise.resolve([]);
-}
+
+  function formatMenuTree(data, parentUrl) {
+    if (data) {
+      const rootUrl = parentUrl ? parentUrl : "/";
+      return Promise.map(data, (item) => {
+        return formatMenu(item, rootUrl);
+      }, {
+        concurrency: 1
+      }).then((menu) => {
+        return _.chain(menu).sortBy("weight").value();
+      });
+    }
+    return Promise.resolve([]);
+  }
 
 
-function fetchFormattedNode(nodeId) {
-  return fetchNodeById(nodeId).then(formatNode);
-}
+  function fetchFormattedNode(nodeId) {
+    return fetchNodeById(nodeId).then(formatNode);
+  }
 
-function fetchFormattedMenu() {
-  return fetchMenuTreeByName("main").then(formatMenuTree);
-}
+  function fetchFormattedMenu() {
+    return fetchMenuTreeByName("main").then(formatMenuTree);
+  }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty };
+  export {
+    fetchFormattedNode,
+    fetchFormattedTaxonomyTerm,
+    nodeEndpoint,
+    taxonomyEndpoint,
+    paragraphEndpoint,
+    fetchContacts,
+    contactEndpoint,
+    fetchParagraphId,
+    fetchFormattedMenu,
+    fetchMenuTreeByName,
+    formatMenuTree,
+    fetchCounsellorCta,
+    convertUrlHost,
+    formatParagraph,
+    makeParagraphValueFormatter,
+    extractFieldsByFieldNamePrefix,
+    makeParagraphFieldFormatter,
+    formatNode,
+    extractValue,
+    extractProperty
+  };
