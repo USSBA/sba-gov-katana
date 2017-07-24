@@ -19,13 +19,15 @@ import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
 import { sanitizeTextSectionHtml, formatUrl } from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
-function extractValue(object, key) {
-  if (object && object.length > 0) {
-    if (object[0].value) {
-      return object[0].value;
-    }
+function extractProperty(object, key) {
+  if (object && object.length > 0 && key !== null && object[0][key]) {
+    return object[0][key];
   }
   return null;
+}
+
+function extractValue(object, key) {
+  return extractProperty(object, "value");
 }
 
 function extractValuePromise(value, key) {
@@ -33,7 +35,7 @@ function extractValuePromise(value, key) {
 }
 
 function extractTargetId(object) {
-  return object && object.length > 0 ? object[0].target_id : null;
+  return extractProperty(object, "target_id");
 }
 
 function fetchNodeById(nodeId) {
@@ -209,11 +211,27 @@ function formatCallToAction(paragraph) {
   });
 }
 
+function defaultFieldNameFormatter(fieldName, prefix = "field_") {
+  return _.chain(fieldName).replace(prefix, "").camelCase()
+    .value();
+}
+
+function makeParagraphFieldFormatter(typeName) {
+  return function(fieldName, prefix = "field_") {
+    let modifiedFieldName = fieldName;
+    if (typeName !== "image" && typeName !== "banner_image") {
+      modifiedFieldName = _.replace(fieldName, typeName, "");
+    }
+    return defaultFieldNameFormatter(modifiedFieldName, prefix);
+  };
+}
+
 // this is an abstract function that takes an object, removes properties that do not
 // start with the given prefix and then formats the key name using the prefix and
 // given custom formatter, and then formats the values to the root value (not the
 // drupal 8 wrapper).  Note customerValueFormatter must return a promise
 function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter, customValueFormatter) {
+  const fieldFormatter = customFieldNameFormatter || defaultFieldNameFormatter;
   const withFixedKeys = _.chain(object)
     //picks every object inside node that starts with field_
     .pickBy(function(value, key) {
@@ -221,12 +239,9 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
     })
     //maps picked objects. example = field_subsection_header_text : {value}
     .mapKeys(function(value, key) {
-      const customFormatter = customFieldNameFormatter || _.identity;
-      return _.chain(customFormatter(key)).replace(prefix, "").camelCase()
-        .value();
+      return fieldFormatter(key, prefix);
     })
     .value();
-
   const withValuesAsPromises = _.mapValues(withFixedKeys, customValueFormatter);
   const retVal = Promise.props(withValuesAsPromises);
   return retVal;
@@ -287,13 +302,51 @@ function makeParagraphValueFormatter(typeName, paragraph) {
   };
 }
 
-function paragraphFieldFormatter(typeName) {
-  return function(fieldName) {
-    if (typeName === "image" || typeName === "banner_image") {
-      return fieldName;
+function makeNodeValueFormatter(typeName) {
+  return function(value, key) {
+    let newValuePromise = Promise.resolve({});
+    if (!(Array.isArray(value) & value.length > 0)) {
+      newValuePromise = Promise.resolve({});
+    } else if (key === "button") {
+      newValuePromise = Promise.resolve({
+        url: extractProperty(value, "uri"),
+        title: extractProperty(value, "title")
+      });
+    } else if (key !== "paragraphs" && value[0].target_type === "paragraph") {
+      newValuePromise = fetchFormattedParagraph(extractTargetId(value)); //eslint-disable-line no-use-before-define
+    } else {
+      newValuePromise = Promise.resolve(extractValue(value));
     }
-    return _.replace(fieldName, typeName, "");
+    return newValuePromise;
   };
+}
+
+function formatCallToAction(paragraph) {
+  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
+  const cta = {
+    type: "callToAction",
+    style: extractValue(paragraph.field_style)
+  };
+
+  return fetchNodeById(ctaRef).then((subCta) => {
+    const btnRef = extractTargetId(subCta.field_button_action);
+    cta.headline = extractValue(subCta.field_headline);
+    cta.blurb = extractValue(subCta.field_blurb);
+    cta.image = convertUrlHost(subCta.field_image[0].url);
+    cta.imageAlt = subCta.field_image[0].alt;
+    cta.title = extractValue(subCta.title);
+
+    return fetchParagraphId(btnRef).then((btn) => {
+      if (btn.field_link) {
+        cta.btnTitle = btn.field_link[0].title;
+        cta.btnUrl = btn.field_link[0].uri;
+      } else if (btn.field_file && btn.field_button_text) {
+        cta.btnTitle = extractValue(btn.field_button_text);
+        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
+      }
+      return cta;
+    });
+  });
 }
 
 function formatParagraph(paragraph) {
@@ -305,7 +358,7 @@ function formatParagraph(paragraph) {
         return formatCallToAction(paragraph);
       default: {
         const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
-        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, paragraphFieldFormatter(typeName), paragraphFormatter);
+        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
         const combineResultWithCamelizedTypename = (object) => {
           return _.assign({
             type: _.camelCase(typeName)
@@ -339,26 +392,38 @@ function fetchNestedParagraph(nestedParagraph, typeName) {
 
 function formatNode(data) {
   if (data) {
-    const title = extractValue(data.title);
+    // Format Paragraphs
     const paragraphs = data.field_paragraphs || [];
-    const taxonomy = data.field_site_location;
-    const summary = extractValue(data.field_summary);
-
     const paragraphIds = _.map(paragraphs, "target_id");
     const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
 
+    // Format Taxonomy
+    const taxonomy = data.field_site_location;
     const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
-    return Promise.all([paragraphDataPromises, taxonomyPromise]).spread((paragraphData, taxonomyData) => {
-      return {
-        title: title,
+
+    // Format Summary (could be named one of two things)
+    const summary = extractValue(data.field_summary || data.field_summary160);
+
+    // Create an object minus the "one-off" fields above
+    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
+      "field_summary", "field_summary160"]);
+
+    // Extract any other fields
+    const nodeValueFormatter = makeNodeValueFormatter(extractTargetId(data.type));
+    const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeParagraphFieldFormatter(""), nodeValueFormatter);
+
+    return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
+      const formattedNode = {
+        title: extractValue(data.title),
         paragraphs: _.compact(paragraphData),
         taxonomy: taxonomyData,
         summary: summary
       };
+      _.merge(formattedNode, extractedFields);
+      return formattedNode;
     });
   }
   return {};
-
 }
 
 function formatMenu(data, parentUrl) {
@@ -410,4 +475,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, paragraphFieldFormatter };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty };

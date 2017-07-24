@@ -1,0 +1,119 @@
+{
+  "nid": [
+    {
+      "value": 58
+    }
+  ],
+  "uuid": [
+    {
+      "value": "72955e20-695d-4d8e-91b7-37dae45782bd"
+    }
+  ],
+  "vid": [
+    {
+      "value": 3427
+    }
+  ],
+  "langcode": [
+    {
+      "value": "en"
+    }
+  ],
+  "type": [
+    {
+      "target_id": "program_page",
+      "target_type": "node_type",
+      "target_uuid": "7bbc24a0-58b0-45b9-9fef-35cd36939608"
+    }
+  ],
+  "status": [
+    {
+      "value": true
+    }
+  ],
+  "title": [
+    {
+      "value": "Investment capital"
+    }
+  ],
+  "uid": [
+    {
+      "target_id": 3,
+      "target_type": "user",
+      "target_uuid": "b53edc6f-7b56-476c-8035-f4412ff9e3a3",
+      "url": "/user/3"
+    }
+  ],
+  "created": [
+    {
+      "value": 1493211010
+    }
+  ],
+  "changed": [
+    {
+      "value": 1496858746
+    }
+  ],
+  "promote": [
+    {
+      "value": true
+    }
+  ],
+  "sticky": [
+    {
+      "value": false
+    }
+  ],
+  "revision_timestamp": [
+    {
+      "value": 1496858746
+    }
+  ],
+  "revision_uid": [
+    {
+      "target_id": 3,
+      "target_type": "user",
+      "target_uuid": "b53edc6f-7b56-476c-8035-f4412ff9e3a3",
+      "url": "/user/3"
+    }
+  ],
+  "revision_log": [],
+  "revision_translation_affected": [
+    {
+      "value": true
+    }
+  ],
+  "default_langcode": [
+    {
+      "value": true
+    }
+  ],
+  "path": [],
+  "field_banner_image": [
+    {
+      "target_id": 5,
+      "target_revision_id": 11161,
+      "target_type": "paragraph",
+      "target_uuid": "286e0319-bd8a-4e94-a1d5-e7454ee74a20"
+    }
+  ],
+  "field_button": [
+    {
+      "uri": "internal:#paragraph-11",
+      "title": "Find investors",
+      "options": []
+    }
+  ],
+  "field_paragraphs": [{
+          "target_id": 1,
+          "target_revision_id": 58,
+          "target_type": "paragraph",
+          "target_uuid": "75296eaf-f651-487c-a814-00abda072da7"
+      }
+  ],
+  "field_summary160": [
+    {
+      "value": "fieldSummaryText"
+    }
+  ]
+}
