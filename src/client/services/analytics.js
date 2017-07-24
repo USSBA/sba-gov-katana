@@ -21,6 +21,8 @@ function logPageView() {
     });
     reactGa.pageview(window.location.pathname);
     console.log("Posting Location Change to GA:", window.location.pathname);
+  } else {
+    console.log("Would have posted location change to GA:", window.location.pathname);
   }
 }
 
@@ -28,6 +30,8 @@ function logEvent(eventToLog) {
   if (isEnabled()) {
     console.log("Posting Event to GA:", eventToLog);
     reactGa.event(eventToLog);
+  } else {
+    console.log("Would have posted event to GA if enabled:", eventToLog);
   }
 }
 

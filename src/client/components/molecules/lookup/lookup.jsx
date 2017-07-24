@@ -7,6 +7,7 @@ import {logEvent} from "../../../services/analytics.js";
 
 import styles from "./lookup.scss";
 import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx"
+import SbicLookup from "../sbic-lookup/sbic-lookup.jsx";
 
 class Lookup extends React.Component {
 
@@ -18,11 +19,11 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded("contacts", this.props.type);
+    this.props.actions.fetchContentIfNeeded("contacts", this.props.type, {category: this.props.subtype});
   }
 
   componentWillReceiveProps(nextProps, ownProps){
-      this.setState({filteredItems: this.filterItems(nextProps.items, nextProps.subtype)});
+      this.setState({filteredItems: nextProps.items});
   }
 
   fireEvent(category, action, value){
@@ -34,20 +35,12 @@ class Lookup extends React.Component {
       })
   }
 
-  filterItems(items, subtype) {
-    let filteredItems = filter(items, function(item) {
-        if(item.category){
-            return  item.category === subtype;
-        }else{
-            return false;
-        }
-    });
-    return filteredItems;
-  }
 
   render() {
-    if (this.props.type === "contacts") {
+    if (this.props.type === "contacts" && this.props.subtype === "State registration") {
         return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
+    }else if(this.props.type === "contacts" && this.props.subtype === "SBIC"){
+        return (<SbicLookup items={this.state.filteredItems}   title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
     }
     return (
       <div></div>

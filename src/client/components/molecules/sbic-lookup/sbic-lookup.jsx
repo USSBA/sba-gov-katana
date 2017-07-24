@@ -1,18 +1,15 @@
 import React from "react"
 import s from "./sbic-lookup.scss";
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ContentActions from "../../../actions/content.js"
-import {filter} from "lodash"
 import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 import json2csv from "json2csv"
 
 class SbicLookup extends React.Component {
-		constructor() {
+		constructor(ownProps) {
+			console.log("ownProps", ownProps)
 			super();
 			this.state = {
-				contacts: null,
+				contacts: ownProps.items,
 				contactsCsv: null,
 				sortByValue: "Investor Name",
 				industryValue: "All",
@@ -20,11 +17,11 @@ class SbicLookup extends React.Component {
 			}
 		}
 
-		componentWillMount() {
-			this.props.actions.fetchContentIfNeeded("contacts", this.props.type, {category: 'sbic'});
-		}
 
+
+		
 		componentWillReceiveProps(nextProps, ownProps) {
+			console.log("nextProps", nextProps)
 			this.setState({
 				contacts: nextProps.items
 			}, () => {
@@ -35,9 +32,15 @@ class SbicLookup extends React.Component {
 
 		handleChange(e, selectStateKey) {
 			let stateCopy = this.state
-			stateCopy[selectStateKey] = e.value
+			let newValue = e.value;
+			stateCopy[selectStateKey] = newValue
 			this.setState({...stateCopy
-			}, this.sortAndFilterContacts)
+			}, () => {
+		        this.sortAndFilterContacts();
+		        if(this.props.afterChange){
+		          this.props.afterChange("sbic-lookup", selectStateKey.replace("Value","") + " : " + newValue, null);
+		        }
+		    })
 		}
 
 		sortAndFilterContacts() {
@@ -80,14 +83,16 @@ class SbicLookup extends React.Component {
 		}
 
 		convertContactsToCsv() {
-			let fields = Object.keys(this.state.contacts[0])
-			let csv = json2csv({
-				data: this.state.contacts,
-				fields: fields
-			})
-			this.setState({
-				contactsCsv: csv
-			})
+			if(this.state.contacts && this.state.contacts.length > 0){
+				let fields = Object.keys(this.state.contacts[0])
+				let csv = json2csv({
+					data: this.state.contacts,
+					fields: fields
+				})
+				this.setState({
+					contactsCsv: csv
+				})
+			}
 		}
 
 		createDownloadHref() {
@@ -247,16 +252,5 @@ const ContactInfo = (props) => {
 	)
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-	return {
-		items: reduxState.contentReducer[ownProps.type]
-	};
-}
 
-function mapDispatchToProps(dispatch) {
-	return {
-		actions: bindActionCreators(ContentActions, dispatch)
-	}
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SbicLookup);
+export default SbicLookup;
