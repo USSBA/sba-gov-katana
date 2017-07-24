@@ -158,6 +158,18 @@ class StyleGuide extends React.Component {
 
         </div>
 
+        <div className={styles.ctaContainer}>
+          
+          <CTA
+            size="small"
+            btnUrl="http://www.example.com/"
+            btnTitle="find happiness"
+            headline="This is the headline for the Small CTA."
+            blurb="This is the blurb for the small CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
+          />
+
+        </div>
+
         <div className={styles.clear} />
 
         <div className={styles.simpleCtaContainer}>
