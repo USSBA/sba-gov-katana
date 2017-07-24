@@ -65,7 +65,7 @@ class SbicLookup extends React.Component {
 		//this filtering was intended to match multiple user selections to multiple industry types. 
 		filterContacts(contacts) {
 			let filteredContacts = contacts
-			if (this.state.industryValue !== "Diversified") {
+			if (this.state.industryValue !== "All") {
 				filteredContacts = _.filter(contacts, (contact) => {
 					return !_.isEmpty(_.intersection([contact.industry], [this.state.industryValue]))
 				})
