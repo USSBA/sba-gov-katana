@@ -14,17 +14,18 @@ class CallToAction extends React.Component {
   }
 
   ctaSize() {
-    if (this.props.size === "Large") {
-      return styles.large
-    } else if (this.props.size === "Medium") {
-      return styles.medium
-    } else if (this.props.size === "Small") {
-      return styles.small
-    } else if (this.props.size === "Button only") {
-      return styles.btnOnly
-    } else {
-      return null
-    }
+
+      const size = this.props.size.toLowerCase()
+      let css = {}
+
+      if(size === 'button only') {
+        css = styles.btnOnly
+      } else {
+        css = styles[size] || null
+      }
+      
+      return css
+
   }
 
   backgroundImageStyles() {

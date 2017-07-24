@@ -43,8 +43,7 @@
 
 .lastSection {
   color: #fff;
-  height: calc(50vh - 100px);
-  position: relative;
+  padding: 30px;
   background-color: $byzantine;
   background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
   background-position: right;
@@ -56,7 +55,6 @@
     transform: translateY(-25%);
     background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern-mobile.png");
     background-position: 100% 100%;
-    height: 250px;
   }
   h1 {
     @include font-size($extra-large-title-font-sizes);
@@ -75,20 +73,27 @@
   }
 }
 
+@media screen and (min-width:1080px) {
+  .lastSection {
+    padding-left:220px;
+  }
+}
+
 .lastSectionText {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   max-width: 900px;
   @include grid-media($sba-grid-small){
     @include grid-column(6);
+    float: none;
   }
   @include grid-media($sba-grid-medium){
     @include grid-column(12);
+    float: none;
   }
   @include grid-media($sba-grid-large){
-    margin-left: 220px;
+    width: auto;
+    float: none;
   }
+  
 }
 
 .scrollButton {
