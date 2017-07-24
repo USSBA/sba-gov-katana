@@ -183,34 +183,6 @@ function fetchCounsellorCta() {
   return Promise.resolve(null);
 }
 
-function formatCallToAction(paragraph) {
-  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
-  const cta = {
-    type: "callToAction",
-    style: extractValue(paragraph.field_style)
-  };
-
-  return fetchNodeById(ctaRef).then((subCta) => {
-    const btnRef = extractTargetId(subCta.field_button_action);
-    cta.headline = extractValue(subCta.field_headline);
-    cta.blurb = extractValue(subCta.field_blurb);
-    cta.image = convertUrlHost(subCta.field_image[0].url);
-    cta.imageAlt = subCta.field_image[0].alt;
-    cta.title = extractValue(subCta.title);
-
-    return fetchParagraphId(btnRef).then((btn) => {
-      if (btn.field_link) {
-        cta.btnTitle = btn.field_link[0].title;
-        cta.btnUrl = btn.field_link[0].uri;
-      } else if (btn.field_file && btn.field_button_text) {
-        cta.btnTitle = extractValue(btn.field_button_text);
-        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
-      }
-      return cta;
-    });
-  });
-}
-
 function defaultFieldNameFormatter(fieldName, prefix = "field_") {
   return _.chain(fieldName).replace(prefix, "").camelCase()
     .value();
