@@ -173,7 +173,7 @@ class StyleGuide extends React.Component {
             title={heroMockData.title}
             message={heroMockData.summary}
             buttons={buttonsArray}
-            //imageUrl={heroMockData.bannerImage.image.url}
+            imageUrl={heroMockData.bannerImage.image.url}
             alt={heroMockData.bannerImage.image.alt}
           />
         
