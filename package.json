@@ -12,7 +12,7 @@
     "test-jest": "NODE_ENV=test jest test/jest/",
     "test-mocha": "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
     "lint": "eslint src --fix",
-    "format": "esformatter -i 'src/**/*.js'",
+    "format": "esformatter -i 'src/**/*.js' && esformatter -i 'test/**/*.js'",
     "clean": "rm -rf dist && rm -rf public/build",
     "precommit": "npm run lint && npm run format && npm run test",
     "clear-cache": "curl localhost:3000/actions/clearcache"

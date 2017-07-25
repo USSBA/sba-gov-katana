@@ -17,7 +17,8 @@ import sbicContactParagraph from "./data/contact/sbic-contact-paragraph.json";
 import sbicContactOutput from "./data/contact/sbic-contact-output.json";
 
 describe("Drupal 8 Contact Service", function() {
-  let fetchContent, fetchById;
+  let fetchContent,
+    fetchById;
 
   function setupStub() {
     fetchContent.returns(Promise.resolve(contactsNodeData));
@@ -45,8 +46,8 @@ describe("Drupal 8 Contact Service", function() {
 
   function runTest(done, output, type) {
     return drupalEightDataService.fetchContacts({
-        type: type
-      })
+      type: type
+    })
       .then((result) => {
         result.should.deep.equal(output);
         return result;

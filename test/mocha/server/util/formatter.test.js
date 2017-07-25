@@ -6,11 +6,7 @@ import feedbackData from "./feedback.json"
 import fs from "fs";
 let formattedFeedbackData = fs.readFileSync("test/mocha/server/util/formatted-feedback.csv", "utf-8");
 
-import {
-  sanitizeTextSectionHtml,
-  formatFeedbackData,
-  formatUrl
-} from "../../../../src/util/formatter.js";
+import { sanitizeTextSectionHtml, formatFeedbackData, formatUrl } from "../../../../src/util/formatter.js";
 
 describe("#Formatter", function() {
   describe("#sanitizeHtml", function() {
