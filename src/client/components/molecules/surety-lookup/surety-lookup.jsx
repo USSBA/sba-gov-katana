@@ -61,8 +61,8 @@ class SuretyLookup extends React.Component {
           <span>{agency.phoneNumber}</span>
         </div>
         <div>
-          <i className={s.phoneIcon + " fa fa-envelope-o"} aria-hidden="true"></i>
-          <span>{agency.email}</span>
+          <i className={s.emailIcon + " fa fa-envelope-o"} aria-hidden="true"></i>
+          <a href={"mailto:"+agency.email+"?subject=The subject for the email"}>{agency.email}</a>
         </div>
       </div>
       )
