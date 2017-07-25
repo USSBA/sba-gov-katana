@@ -148,10 +148,10 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         type: "programPage",
         summary: "fieldSummaryText",
         title: "Investment capital",
-        button: {
+        button: [{
           title: "Find investors",
           url: "internal:#paragraph-11"
-        },
+        }],
         bannerImage: {
           "type": "bannerImage",
           "image": {
@@ -172,6 +172,37 @@ describe("Drupal 8 Service with mocked endpoints", function() {
       };
       return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
         result.should.deep.equal(expectedResult);
+      });
+    });
+
+    it("should handle multiple buttons for program_page type", function() {
+      const buttons = [
+        {
+          "uri": "http://left-button.example.com",
+          "title": "Left Button",
+          "options": []
+        },
+        {
+          "uri": "http://right-button.example.com",
+          "title": "Right Button",
+          "options": []
+        }
+      ];
+      let localNode = _.set(_.cloneDeep(nodeProgramPage), "field_button", buttons);
+      setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+      const expectedButtons = [
+        {
+          url: "http://left-button.example.com",
+          title: "Left Button"
+        },
+        {
+          url: "http://right-button.example.com",
+          title: "Right Button"
+        },
+      ];
+      return drupalEightDataService.formatNode(localNode).then((result) => {
+        result.button[0].should.deep.equal(expectedButtons[0]);
+        result.button[1].should.deep.equal(expectedButtons[1]);
       });
     });
   });
@@ -373,6 +404,41 @@ describe("Drupal 8 Service Helper Functions", function() {
       result.should.equal("marty");
     });
   });
-
-
+  describe("formatLink", function() {
+    it("should return the extracted value of the first element of the given array", function() {
+      const testValue = [{
+        uri: "https://example.foo.com",
+        title: "Foo Title",
+        options: {}
+      }];
+      const expectedResult = {
+        url: "https://example.foo.com",
+        title: "Foo Title"
+      };
+      return drupalEightDataService.formatLink(testValue).then((result) => {
+        result.should.deep.equal(expectedResult);
+      });
+    });
+    it("should return the extracted value of the n-th element of the given array", function() {
+      const testValue = [
+        {
+          uri: "https://example.foo.com",
+          title: "Foo Title",
+          options: {}
+        },
+        {
+          uri: "https://example.bar.com",
+          title: "Bar Title",
+          options: {}
+        }
+      ];
+      const expectedResult = {
+        url: "https://example.bar.com",
+        title: "Bar Title"
+      };
+      return drupalEightDataService.formatLink(testValue, 1).then((result) => {
+        result.should.deep.equal(expectedResult);
+      });
+    });
+  });
 });

@@ -172,10 +172,10 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
 
-function formatLink(value) {
+function formatLink(value, index = 0) {
   return Promise.resolve({
-    url: convertUrlHost(value[0].uri),
-    title: value[0].title
+    url: convertUrlHost(value[index].uri),
+    title: value[index].title
   });
 }
 
@@ -229,11 +229,12 @@ function makeNodeValueFormatter(typeName) {
     let newValuePromise = Promise.resolve({});
     if (!(Array.isArray(value) & value.length > 0)) {
       newValuePromise = Promise.resolve({});
-    } else if (key === "button") {
-      newValuePromise = Promise.resolve({
-        url: extractProperty(value, "uri"),
-        title: extractProperty(value, "title")
+    } else if (typeName === "program_page" && key === "button") {
+      newValuePromise = Promise.map(value, (button) => {
+        return formatLink([button]);
       });
+    } else if (key === "button") {
+      newValuePromise = formatLink(value);
     } else if (key !== "paragraphs" && value[0].target_type === "paragraph") {
       newValuePromise = fetchFormattedParagraph(extractTargetId(value)); //eslint-disable-line no-use-before-define
     } else {
@@ -442,4 +443,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, fetchFormattedCallToActionByNodeId };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, fetchFormattedCallToActionByNodeId, formatLink };
