@@ -27,6 +27,18 @@ $hero-container-grid: (
 
 }
 
+.inHeroWithNoImage {
+
+	text-align: center;
+
+	@include grid-media($sba-grid-small){
+		@include grid-column(6);
+	}
+	@include grid-media($sba-grid-medium){
+		@include grid-column(12);
+	}
+}
+
 .heroDesktopImage {
 	@include grid-media($sba-grid-small){
 		display: none;
