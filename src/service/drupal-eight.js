@@ -65,6 +65,8 @@ function convertUrlHost(urlStr) {
   //Only modify URL if it points to localhost
   if (parsedUrl.hostname === "localhost") {
     return `${host}${parsedUrl.pathname}`;
+  } else if (urlStr.startsWith("internal:")){
+    return urlStr.replace(/^internal:/,"");
   }
   return urlStr;
 }

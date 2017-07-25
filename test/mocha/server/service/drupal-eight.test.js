@@ -150,7 +150,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         title: "Investment capital",
         buttons: [{
           title: "Find investors",
-          url: "internal:#paragraph-11"
+          url: "#paragraph-11"
         }],
         bannerImage: {
           "type": "bannerImage",
@@ -296,9 +296,14 @@ describe("Drupal 8 Service Helper Functions", function() {
       result.should.equal("http://drupal8.content.hostname/foo/bar");
       done();
     });
-    it("should not convert a relative url", function(done) {
+    it("should convert an internal relative url", function(done) {
       let result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
-      result.should.equal("internal:/foo/bar");
+      result.should.equal("/foo/bar");
+      done();
+    });
+    it("should convert an internal anchor url", function(done) {
+      let result = drupalEightDataService.convertUrlHost("internal:#some-tag");
+      result.should.equal("#some-tag");
       done();
     });
   });
