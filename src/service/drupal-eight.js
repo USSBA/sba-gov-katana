@@ -112,7 +112,7 @@ function defaultFieldNameFormatter(fieldName, prefix = "field_") {
 }
 
 function makeParagraphFieldFormatter(typeName) {
-  return function(fieldName, prefix = "field_") {
+  return function(fieldName, prefix = "field_") { //eslint-disable-line complexity
     let modifiedFieldName = fieldName;
     if (typeName === "business_guide_contact") {
       if (fieldName === "field_bg_contact_category") {
@@ -122,7 +122,9 @@ function makeParagraphFieldFormatter(typeName) {
       if (fieldName === "field_single_contact_category") {
         modifiedFieldName = "field_category";
       }
-    } else if (typeName !== "image" && typeName !== "banner_image") {
+    } else if (typeName === "banner_image" && fieldName === "field_banner_image") {
+      modifiedFieldName = "image";
+    } else if (typeName !== "image") {
       modifiedFieldName = _.replace(fieldName, typeName, "");
     }
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
@@ -362,8 +364,12 @@ function formatNode(data) {
     const taxonomy = data.field_site_location;
     const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(undefined); //eslint-disable-line no-undefined
 
-    // Format Summary (could be named one of two things)
-    const summary = extractValue(data.field_summary || data.field_summary160);
+    // Process other required data
+    const otherData = {};
+    otherData.type = _.camelCase(extractTargetId(data.type));
+    otherData.title = extractValue(data.title);
+    // summary could be named one of two things. If more fields need renamed like this, consider creating nodeFieldFormatter
+    otherData.summary = extractValue(data.field_summary || data.field_summary160);
 
     // Create an object minus the "one-off" fields above
     const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
@@ -376,12 +382,10 @@ function formatNode(data) {
 
     return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
       const formattedNode = {
-        title: extractValue(data.title),
         paragraphs: _.compact(paragraphData),
-        summary: summary,
         taxonomy: taxonomyData
       };
-      _.merge(formattedNode, extractedFields);
+      _.merge(formattedNode, extractedFields, otherData);
       return formattedNode;
     });
   } else {
