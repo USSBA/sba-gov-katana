@@ -6,7 +6,7 @@ import config from "config";
 import path from "path";
 import localContacts from "../models/dao/contacts.js";
 import sbicContacts from "../models/dao/sbic-contacts.js";
-import suretyContacts from "../models/dao/surety-contacts.js"
+import suretyContacts from "../models/dao/surety-contacts.js";
 const localDataMap = {
   "State registration": localContacts,
   "SBIC": sbicContacts,
@@ -228,13 +228,17 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       if (key === "singleContactCategory") {
         newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
           return item.name;
-        })
-      } else if(key === "stateServed"){
-        newValuePromise = Promise.map(value, (state) => { 
+        });
+      } else if (key === "stateServed") {
+        newValuePromise = Promise.map(value, (state) => {
           return fetchFormattedTaxonomyTerm(state.target_id).then((formattedState) => {
-            return formattedState.name
-          }, {concurrency: 1})
-        }).then((formattedStates) => { return formattedStates })
+            return formattedState.name;
+          }, {
+            concurrency: 1
+          });
+        }).then((formattedStates) => {
+          return formattedStates;
+        });
       } else {
         newValuePromise = Promise.resolve(extractValue(value));
       }
