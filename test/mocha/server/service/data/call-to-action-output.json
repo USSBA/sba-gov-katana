@@ -1,0 +1,11 @@
+{
+    "blurb": "Get advice from partner organizations like SCORE mentors, Small Business Development Centers, and Women’s Business Centers. Find one now.",
+    "btnTitle": "Find counselors",
+    "btnUrl": "https://www.sba.gov/tools/local-assistance",
+    "headline": "Need help? Get free business counseling.",
+    "image": "http://drupal8.content.hostname/sites/default/files/2017-04/Counselor_Match_CTA_Image.jpg",
+    "imageAlt": "Counselor match",
+    "style": "Large",
+    "title": "Counselor match CTA",
+    "type": "callToAction"
+}

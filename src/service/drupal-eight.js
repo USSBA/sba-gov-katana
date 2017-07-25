@@ -279,7 +279,7 @@ function paragraphFieldFormatter(typeName) {
   };
 }
 
-function formatFormattedCallToActionByNodeId(nodeId, size) {
+function fetchFormattedCallToActionByNodeId(nodeId, size) {
   const ctaRef = extractTargetId(nodeId);
   return fetchNodeById(ctaRef)
     .then(formatCallToAction)
@@ -290,19 +290,19 @@ function formatFormattedCallToActionByNodeId(nodeId, size) {
       }, result);
     })
     .catch((error) => {
-      console.error("Unable to retrieve button information for CallToAction");
+      console.error("Unable to retrieve button information for CallToAction", error);
       return null;
     });
 }
 
 function formatFormattedCallToAction(paragraph) {
-  return formatFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
+  return fetchFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
 }
 
 
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
-  return formatFormattedCallToActionByNodeId(counsellorCtaNodeId, "Large");
+  return fetchFormattedCallToActionByNodeId(counsellorCtaNodeId, "Large");
 }
 
 
@@ -312,7 +312,7 @@ function formatParagraph(paragraph) {
     switch (typeName) {
       case "call_to_action":
         //need to return at some point
-        return formatCallToAction(paragraph);
+        return fetchFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
       default: {
         const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
         const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
@@ -442,4 +442,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, fetchFormattedCallToActionByNodeId };
