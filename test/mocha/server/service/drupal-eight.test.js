@@ -205,6 +205,15 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         result.buttons[1].should.deep.equal(expectedButtons[1]);
       });
     });
+    it("should handle an empty field_banner_image for program_page type", function() {
+      const bannerImage = [];
+      let localNode = _.set(_.cloneDeep(nodeProgramPage), "field_banner_image", bannerImage);
+      setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+      const expectedBannerImage = {};
+      return drupalEightDataService.formatNode(localNode).then((result) => {
+        result.bannerImage.should.deep.equal(expectedBannerImage);
+      });
+    });
   });
 
   describe("formatParagraph", function() {
