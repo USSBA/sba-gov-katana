@@ -6,9 +6,11 @@ import config from "config";
 import path from "path";
 import localContacts from "../models/dao/contacts.js";
 import sbicContacts from "../models/dao/sbic-contacts.js";
+import suretyContacts from "../models/dao/surety-contacts.js"
 const localDataMap = {
   "State registration": localContacts,
-  "SBIC": sbicContacts
+  "SBIC": sbicContacts,
+  "Surety bond agency": suretyContacts
 };
 
 
@@ -83,7 +85,6 @@ function fetchContacts(queryParams) {
   return fetchContent(contactEndpoint)
     .then(formatContacts)
     .then((results) => {
-      console.log(results)
       return _.filter(results, {
         category: category
       });
