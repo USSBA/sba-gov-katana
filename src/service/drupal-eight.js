@@ -246,7 +246,7 @@ function makeNodeValueFormatter(typeName) {
       newValuePromise = Promise.map(value, (button) => {
         return formatLink([button]);
       });
-    } else if (key === "buttons") {
+    } else if (key === "button") {
       newValuePromise = formatLink(value);
     } else if (key !== "paragraphs" && value[0].target_type === "paragraph") {
       newValuePromise = fetchFormattedParagraph(extractTargetId(value)); //eslint-disable-line no-use-before-define
@@ -383,13 +383,9 @@ function formatNode(data) {
     const otherData = {};
     otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
-    // summary could be named one of two things. If more fields need renamed like this, consider creating nodeFieldFormatter
-    otherData.summary = extractValue(data.field_summary || data.field_summary160);
 
     // Create an object minus the "one-off" fields above
-    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
-      "field_summary", "field_summary160"
-    ]);
+    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location"]);
 
     // Extract any other fields
     const nodeValueFormatter = makeNodeValueFormatter(nodeType);
