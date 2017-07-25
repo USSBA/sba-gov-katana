@@ -2,6 +2,7 @@ import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
 import config from "config";
+
 import path from "path";
 import localContacts from "../models/dao/contacts.js";
 import sbicContacts from "../models/dao/sbic-contacts.js";
