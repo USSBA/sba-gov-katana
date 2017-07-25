@@ -2,8 +2,13 @@ import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
 import config from "config";
-import localContacts from "../models/dao/contacts.js";
 import path from "path";
+import localContacts from "../models/dao/contacts.js";
+import sbicContacts from "../models/dao/sbic-contacts.js";
+const localDataMap = {
+  "State registration": localContacts,
+  "SBIC": sbicContacts
+};
 
 
 const fieldPrefix = "field_";
@@ -66,17 +71,17 @@ function convertUrlHost(urlStr) {
 
 //contacts content type
 function fetchContacts(queryParams) {
-  const type = queryParams.type + "Contact";
+  const category = queryParams.category;
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
-    return Promise.resolve(localContacts);
+    return Promise.resolve(localDataMap[category] || []);
   }
 
   return fetchContent(contactEndpoint)
     .then(formatContacts)
     .then((results) => {
       return _.filter(results, {
-        type: type
+        category: category
       });
     });
 }
