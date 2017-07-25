@@ -14,15 +14,9 @@ const contactEndpoint = "contacts";
 const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 
-import {
-  fetchById,
-  fetchContent
-} from "../models/dao/drupal8-rest.js";
+import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
 
-import {
-  sanitizeTextSectionHtml,
-  formatUrl
-} from "../util/formatter.js";
+import { sanitizeTextSectionHtml, formatUrl } from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractProperty(object, key) {
@@ -72,7 +66,7 @@ function convertUrlHost(urlStr) {
 
 //contacts content type
 function fetchContacts(queryParams) {
-  let type = queryParams.type + "Contact";
+  const type = queryParams.type + "Contact";
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
     return Promise.resolve(localContacts);
@@ -84,7 +78,7 @@ function fetchContacts(queryParams) {
       return _.filter(results, {
         type: type
       });
-    })
+    });
 }
 
 function formatContacts(data) {
@@ -101,7 +95,7 @@ function formatContact(contact) {
   return fetchFormattedParagraph(paragraphId).then((result) => {
     return _.assign({}, {
       title: extractValue(contact.title)
-    }, result)
+    }, result);
   });
 }
 
@@ -117,11 +111,11 @@ function makeParagraphFieldFormatter(typeName) {
     let modifiedFieldName = fieldName;
     if (typeName === "business_guide_contact") {
       if (fieldName === "field_bg_contact_category") {
-        modifiedFieldName = "field_category"
+        modifiedFieldName = "field_category";
       }
     } else if (typeName === "sbic_contact") {
       if (fieldName === "field_single_contact_category") {
-        modifiedFieldName = "field_category"
+        modifiedFieldName = "field_category";
       }
     } else if (typeName !== "image" && typeName !== "banner_image") {
       modifiedFieldName = _.replace(fieldName, typeName, "");
@@ -195,9 +189,13 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       newValuePromise = fetchNestedParagraph(paragraph, "style_gray_background"); //eslint-disable-line no-use-before-define
     } else if (typeName === "business_guide_contact" || typeName === "sbic_contact") {
       if (key === "category" || key === "stateServed") {
-        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => item.name);
+        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
+          return item.name;
+        });
       } else if (key === "link") {
-        newValuePromise = formatLink(value).then((item) => item.url);
+        newValuePromise = formatLink(value).then((item) => {
+          return item.url;
+        });
       } else {
         newValuePromise = Promise.resolve(extractValue(value));
       }
@@ -238,13 +236,6 @@ function makeNodeValueFormatter(typeName) {
   };
 }
 
-function formatCallToAction(paragraph) {
-  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
-  const cta = {
-    type: "callToAction",
-    style: extractValue(paragraph.field_style)
-  };
-}
 
 function formatCallToAction(data) {
   const cta = {};
@@ -275,11 +266,9 @@ function paragraphFieldFormatter(typeName) {
     if (typeName === "image" || typeName === "banner_image") {
       return fieldName;
     } else if (typeName === "business_guide_contact" && fieldName === "field_bg_contact_category") {
-      return "contactCategoryTaxonomyTerm"
-    } else {
-      return _.replace(fieldName, typeName, "");
-
+      return "contactCategoryTaxonomyTerm";
     }
+    return _.replace(fieldName, typeName, "");
   };
 }
 
@@ -317,18 +306,17 @@ function formatParagraph(paragraph) {
       case "call_to_action":
         //need to return at some point
         return formatCallToAction(paragraph);
-      default:
-        {
-          const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
-          const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
-          const combineResultWithCamelizedTypename = (object) => {
-            return _.assign({
-              type: _.camelCase(typeName)
-            }, object);
-          };
+      default: {
+        const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
+        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
+        const combineResultWithCamelizedTypename = (object) => {
+          return _.assign({
+            type: _.camelCase(typeName)
+          }, object);
+        };
 
-          return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
-        }
+        return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
+      }
     }
   }
   return Promise.resolve(null);
@@ -367,7 +355,7 @@ function formatNode(data) {
 
     // Format Taxonomy
     const taxonomy = data.field_site_location;
-    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
+    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(undefined); //eslint-disable-line no-undefined
 
     // Format Summary (could be named one of two things)
     const summary = extractValue(data.field_summary || data.field_summary160);
@@ -385,7 +373,8 @@ function formatNode(data) {
       const formattedNode = {
         title: extractValue(data.title),
         paragraphs: _.compact(paragraphData),
-        summary: summary
+        summary: summary,
+        taxonomy: taxonomyData
       };
       _.merge(formattedNode, extractedFields);
       return formattedNode;
@@ -443,25 +432,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export {
-  fetchFormattedNode,
-  fetchFormattedTaxonomyTerm,
-  nodeEndpoint,
-  taxonomyEndpoint,
-  paragraphEndpoint,
-  fetchContacts,
-  contactEndpoint,
-  fetchParagraphId,
-  fetchFormattedMenu,
-  fetchMenuTreeByName,
-  formatMenuTree,
-  fetchCounsellorCta,
-  convertUrlHost,
-  formatParagraph,
-  makeParagraphValueFormatter,
-  extractFieldsByFieldNamePrefix,
-  makeParagraphFieldFormatter,
-  formatNode,
-  extractValue,
-  extractProperty
-};
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty };

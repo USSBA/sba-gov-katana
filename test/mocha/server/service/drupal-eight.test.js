@@ -114,7 +114,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
       field_site_location: null
     });
     let output = _.assign({}, outputBase, {
-      taxonomy: null
+      taxonomy: undefined
     });
     setupStub(localNode, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
@@ -150,7 +150,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         button: { title: "Find investors", url: "internal:#paragraph-11" },
         bannerImage:{ "type": "bannerImage", "bannerImage": { "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg", "alt": "DogeBannerAltText" }, "captionText": "DogeBannerCaptionText", "link": { "url": "http://doge-banner-image.example.com", "title": "Doge Banner Link Text" } },
         paragraphs: [{"type":"sectionHeader","text":"My Best Header Text"}],
-        taxonomy: null
+        taxonomy: undefined
       };
       return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
         result.should.deep.equal(expectedResult);
@@ -262,7 +262,7 @@ describe("Drupal 8 Service Helper Functions", function() {
     it("should create a valid formatter for business_guide_contact paragraphs", function(done) {
       let prefix = "field_";
       let formatter = drupalEightDataService.makeParagraphFieldFormatter("business_guide_contact");
-      formatter("field_bg_contact_category", prefix).should.equal("bgContactCategory");
+      formatter("field_bg_contact_category", prefix).should.equal("category");
       formatter("field_city", prefix).should.equal("city");
       formatter("field_link", prefix).should.equal("link");
       formatter("field_state", prefix).should.equal("state");
