@@ -6,12 +6,20 @@ import madison from 'madison';
 
 class SuretyLookup extends React.Component {
 
-  constructor() {
+  constructor(ownProps) {
     super();
     this.state = {
-      filteredItems: [],
+      filteredItems: ownProps.items,
       suretyState: null
     }
+  }
+
+  componentWillReceiveProps(nextProps, ownProps) {
+    this.setState({
+      filteredItems: nextProps.items
+    }, () => {
+      console.log(this.state.filteredItems)
+    });
   }
 
   handleSelect(e){
@@ -33,6 +41,16 @@ class SuretyLookup extends React.Component {
     }
   }
 
+  renderCards(){
+    return this.state.filteredItems.map((agency) => {
+      return (
+      <div className={s.card}>
+        {agency.title}
+      </div>
+      )
+    })
+  }
+
   render() {
     return(
       <div>
@@ -52,6 +70,10 @@ class SuretyLookup extends React.Component {
               multi={false}
             />
           </div>
+        </div>
+
+        <div className={s.cardContainer}>
+          {this.state.filteredItems ? this.renderCards() : <div>Loading</div>}
         </div>
       </div>
     )
