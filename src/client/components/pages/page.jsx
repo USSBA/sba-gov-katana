@@ -25,7 +25,7 @@ class Page extends React.Component {
 
         title: this.props.data.title,
         summary: this.props.data.summary,
-        buttons: this.props.data.button,
+        buttons: this.props.data.buttons,
         bannerImage: this.props.data.bannerImage
 
       }

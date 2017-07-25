@@ -29,13 +29,24 @@ class ProgramPage extends React.Component {
     const { title, summary, buttons, bannerImage } = this.props.heroData
     const hasBannerImage = bannerImage.hasOwnProperty('image')
 
+    const _formattedButtons = buttons.map((button) => {
+       return {
+        onClickHandler: function(e) {
+          e.preventDefault()
+          window.location.href = button.url
+        },
+        btnText: button.title,
+        btnType: "LargeInversePrimaryButton"
+      }
+    })
+
     return (
       <div>
         { hasBannerImage &&
           <Hero
             title={title}
             message={summary}
-            buttons={buttons}
+            buttons={_formattedButtons}
             imageUrl={bannerImage.image.url}
             alt={bannerImage.image.alt}
           />
@@ -44,7 +55,7 @@ class ProgramPage extends React.Component {
           <Hero
             title={title}
             message={summary}
-            buttons={buttons}
+            buttons={_formattedButtons}
             alt={bannerImage.image.alt}
           />
         }
