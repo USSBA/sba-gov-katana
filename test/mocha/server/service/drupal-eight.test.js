@@ -145,6 +145,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
     it("should properly format a program_page type node", function() {
       setupDynamicStub([nodeProgramPage], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
       const expectedResult = {
+        type: "programPage",
         summary: "fieldSummaryText",
         title: "Investment capital",
         button: {
@@ -153,7 +154,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         },
         bannerImage: {
           "type": "bannerImage",
-          "bannerImage": {
+          "image": {
             "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg",
             "alt": "DogeBannerAltText"
           },
@@ -225,7 +226,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
     it("should return the formatted paragraph for banner_image types", function(done) {
       const expectedResult = {
         "type": "bannerImage",
-        "bannerImage": {
+        "image": {
           "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg",
           "alt": "DogeBannerAltText"
         },
@@ -288,7 +289,7 @@ describe("Drupal 8 Service Helper Functions", function() {
       let prefix = "field_";
       let formatter = drupalEightDataService.makeParagraphFieldFormatter("banner_image");
       formatter("field_caption_text", prefix).should.equal("captionText");
-      formatter("field_banner_image", prefix).should.equal("bannerImage");
+      formatter("field_banner_image", prefix).should.equal("image");
       formatter("field_link").should.equal("link");
       done();
     });
@@ -316,7 +317,7 @@ describe("Drupal 8 Service Helper Functions", function() {
     it("should pull out expected fields for banner_image paragraphs", function(done) {
       const typeName = "banner_image";
       const expectedResult = {
-        bannerImage: {
+        image: {
           url: "http://drupal8.content.hostname/sites/default/files/2017-07/foo.png",
           alt: "FooAltText"
         },
