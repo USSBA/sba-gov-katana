@@ -3,27 +3,37 @@ import s from "./surety-lookup.scss";
 import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 import madison from 'madison';
+import _ from 'lodash';
 
 class SuretyLookup extends React.Component {
 
   constructor(ownProps) {
     super();
     this.state = {
-      filteredItems: ownProps.items,
+      filteredContacts: ownProps.items,
       suretyState: null
     }
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
     this.setState({
-      filteredItems: nextProps.items
+      filteredContacts: nextProps.items
     }, () => {
-      console.log(this.state.filteredItems)
+      console.log(this.state.filteredContacts)
     });
   }
 
   handleSelect(e){
-    this.setState({suretyState: e.value})
+    this.setState({suretyState: e.value}, () => {
+      this.filterContacts()
+    })
+  }
+
+  filterContacts() {
+    let filteredContacts = _.filter(this.props.items, (agency) => {
+      return !_.isEmpty(_.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState)))
+    })
+    this.setState({filteredContacts: filteredContacts})
   }
 
   multiSelectProps() {
@@ -42,16 +52,25 @@ class SuretyLookup extends React.Component {
   }
 
   renderCards(){
-    return this.state.filteredItems.map((agency) => {
+    return this.state.filteredContacts.map((agency) => {
       return (
       <div className={s.card}>
-        {agency.title}
+        <h4 className={s.title}>{agency.title}</h4>
+        <div className={s.phoneContainer}>
+          <i className={s.phoneIcon + " fa fa-phone"} aria-hidden="true"></i>
+          <span>{agency.phoneNumber}</span>
+        </div>
+        <div>
+          <i className={s.phoneIcon + " fa fa-envelope-o"} aria-hidden="true"></i>
+          <span>{agency.email}</span>
+        </div>
       </div>
       )
     })
   }
 
   render() {
+    console.log(this.props.items)
     return(
       <div>
         <div className={s.banner}>
@@ -73,7 +92,7 @@ class SuretyLookup extends React.Component {
         </div>
 
         <div className={s.cardContainer}>
-          {this.state.filteredItems ? this.renderCards() : <div>Loading</div>}
+          {this.state.filteredContacts ? this.renderCards() : <div>Loading</div>}
         </div>
       </div>
     )
