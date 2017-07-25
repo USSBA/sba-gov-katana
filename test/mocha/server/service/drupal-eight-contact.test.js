@@ -44,9 +44,9 @@ describe("Drupal 8 Contact Service", function() {
     fetchById.restore();
   });
 
-  function runTest(done, output, type) {
+  function runTest(done, output, category) {
     return drupalEightDataService.fetchContacts({
-      type: type
+      category: category
     })
       .then((result) => {
         result.should.deep.equal(output);
@@ -58,12 +58,12 @@ describe("Drupal 8 Contact Service", function() {
 
   it("should format the contact data correctly", function(done) {
     setupStub();
-    runTest(done, contactOutput, "businessGuide");
+    runTest(done, contactOutput, "Export working capital");
   });
 
   it("should format the sbic contact data correctly", function(done) {
     setupStub();
-    runTest(done, sbicContactOutput, "sbic");
+    runTest(done, sbicContactOutput, "SBIC");
   });
 
 });
