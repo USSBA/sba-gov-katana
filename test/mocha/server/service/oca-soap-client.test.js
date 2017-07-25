@@ -3,20 +3,13 @@ import uuid from "uuid";
 import _ from "lodash";
 import fs from "fs";
 import path from "path";
-import {
-  pd
-} from "pretty-data";
+import { pd } from "pretty-data";
 
 
 
 const DOMParser = require("xmldom").DOMParser;
 
-import {
-  getEndPointUrl,
-  convertFormDataToXml,
-  createSoapEnvelope,
-  sendLincSoapRequest
-} from "../../../../src/service/oca-soap-client.js";
+import { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest } from "../../../../src/service/oca-soap-client.js";
 
 import axios from "axios";
 

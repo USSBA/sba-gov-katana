@@ -1,6 +1,4 @@
-import {
-  findPageLineage
-} from "../../../../src/client/services/menu.js";
+import { findPageLineage } from "../../../../src/client/services/menu.js";
 
 import menu from "./menu.json"
 

@@ -1,14 +1,4 @@
-import {
-  userName,
-  mapToUnsignedByte,
-  reqAmtRangeCd,
-  bAgeCd,
-  bDtlTypCd,
-  lProceedTypCd,
-  formatMessage,
-  booleanToChar,
-  trimToSize
-} from "../../../../src/service/linc-message-formatter.js";
+import { userName, mapToUnsignedByte, reqAmtRangeCd, bAgeCd, bDtlTypCd, lProceedTypCd, formatMessage, booleanToChar, trimToSize } from "../../../../src/service/linc-message-formatter.js";
 
 describe("LINC Message Formatter", function() {
   describe('#formatMessage', function() {

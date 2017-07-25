@@ -2,16 +2,18 @@ import React from 'react';
 import styles from './text-input.scss';
 import ValidationIcon from '../validation-icon/validation-icon.jsx';
 import FormErrorMessage from "../form-error-message/form-error-message.jsx";
+import SuccessIcon from "../../atoms/icons/success.jsx"
+import FailureIcon from "../../atoms/icons/failure.jsx"
 
 class TextInput extends React.Component {
   iconValidation(validationState) {
     if (this.props.showSuccessIcon && validationState == 'success') {
       return (
-        <i className={"fa fa-check-circle " + styles.textInputIconValid} aria-hidden="true"></i>
+        <SuccessIcon aria-hidden="true" />
       );
     } else if (this.props.showErrorIcon && validationState == 'error') {
       return (
-        <i className={"fa fa-exclamation-circle " + styles.textInputIconValid} aria-hidden="true"></i>
+        <FailureIcon aria-hidden="true" />
       );
     } else {
       return null;

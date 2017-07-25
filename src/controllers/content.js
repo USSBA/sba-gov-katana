@@ -64,7 +64,7 @@ function fetchContentByType(req, res) {
       console.log("Using cached content");
       promise = Promise.resolve(cache.get(type));
     } else {
-      promise = fetchContentTypeFunctions[type]()
+      promise = req.query ? fetchContentTypeFunctions[type](req.query) : fetchContentTypeFunctions[type]()
         .then((result) => {
           cache.put(type, result);
           console.log("Caching " + type);

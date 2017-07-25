@@ -1,0 +1,34 @@
+{
+    "tid": [{
+        "value": 29
+    }],
+    "uuid": [{
+        "value": "70e7fb38-e104-42c7-828a-8983e7dcb08a"
+    }],
+    "langcode": [{
+        "value": "en"
+    }],
+    "vid": [{
+        "target_id": "state",
+        "target_type": "taxonomy_vocabulary",
+        "target_uuid": "f21ae795-3fb1-41f9-a0e2-3f222d53001d"
+    }],
+    "name": [{
+        "value": "Georgia"
+    }],
+    "description": [{
+        "value": null,
+        "format": null
+    }],
+    "weight": [{
+        "value": 0
+    }],
+    "parent": [],
+    "changed": [{
+        "value": 1492518390
+    }],
+    "default_langcode": [{
+        "value": true
+    }],
+    "path": []
+}

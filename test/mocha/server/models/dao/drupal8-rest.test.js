@@ -1,6 +1,4 @@
-import {
-  fetchById
-} from "../../../../../src/models/dao/drupal8-rest.js";
+import { fetchById } from "../../../../../src/models/dao/drupal8-rest.js";
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
@@ -55,8 +53,8 @@ describe("Drupal 8 ReST client", () => {
     mockAxiosHttpClient.onGet('/node/4/').reply(500, "Internal Server Error");
 
     fetchById('node', 4).then(function(result) {
-        done(new Error("Test Failed.  Promise resolved, but it should not have."));
-      })
+      done(new Error("Test Failed.  Promise resolved, but it should not have."));
+    })
       .catch((error) => {
         error.should.not.be.null;
         done();

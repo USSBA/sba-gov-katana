@@ -27,5 +27,6 @@
         "slugText": null,
         "vocabulary": "siteLocation"
     },
-    "summary": "This is a summary"
+    "summary": "This is a summary",
+    "type": "page"
 }

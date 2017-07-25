@@ -1,8 +1,6 @@
 let sinon = require('sinon');
 import chai from "chai";
-import {
-  handleSoapResponse
-} from "../../../../src/service/oca-service.js";
+import { handleSoapResponse } from "../../../../src/service/oca-service.js";
 import lenderMatchRegistration from "../../../../src/models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../../../../src/models/lender-match-soap-response.js";
 import emailConfirmation from "../../../../src/models/email-confirmation.js";
@@ -11,9 +9,9 @@ describe('linc soap request test', function() {
 
   describe('response handling tests', function() {
     let lenderMatchSoapResponseCreateStub,
-        lenderMatchRegistrationDeleteStub,
-        lenderMatchEmailConfirmationDeleteStub,
-        lenderMatchSoapResponseDeleteStub;
+      lenderMatchRegistrationDeleteStub,
+      lenderMatchEmailConfirmationDeleteStub,
+      lenderMatchSoapResponseDeleteStub;
 
     it('should result in saving a lenderMatchSoapResponse to the database when responseCode is F', function() {
       lenderMatchSoapResponseCreateStub = sinon.stub(lenderMatchSoapResponse, 'create').returns(Promise.resolve(1));

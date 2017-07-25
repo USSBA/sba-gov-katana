@@ -1,6 +1,4 @@
-import {
-  nameValidation
-} from "../../../../src/client/services/form-validation-helpers.js";
+import { nameValidation } from "../../../../src/client/services/form-validation-helpers.js";
 
 describe("# Validation Helpers", function() {
   describe("#nameValidation", function() {
