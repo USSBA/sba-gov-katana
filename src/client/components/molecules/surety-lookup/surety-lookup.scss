@@ -56,7 +56,6 @@
 }
 
 .cardContainer {
-    border: 1px solid red;
     padding-top: 30px;
     height: 657px;
     overflow-y: auto;
@@ -64,6 +63,15 @@
 }
 
 .card {
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6, $sba-grid-medium-and-small)
+        margin-bottom: 30px;
+        padding: 30px;
+
+        height: 179px;
+
+        border: 1px solid #bebdbd;
+    }
     @include grid-media($sba-grid-large) {
         margin-bottom: 30px;
         padding: 30px;
