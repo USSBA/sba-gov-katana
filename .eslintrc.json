@@ -34,7 +34,7 @@
         "no-alert": ["warn"],
         "no-caller": ["error"],
         "no-div-regex": ["warn"],
-        "no-else-return": ["warn"],
+        "no-else-return": ["off"],
         "no-empty-function": ["error"],
         "no-eq-null": ["error"],
         "no-eval": ["error"],

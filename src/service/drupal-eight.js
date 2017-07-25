@@ -379,8 +379,9 @@ function formatNode(data) {
       _.merge(formattedNode, extractedFields);
       return formattedNode;
     });
+  } else {
+    return {};
   }
-  return {};
 }
 
 function formatMenu(data, parentUrl) {
