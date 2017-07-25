@@ -83,6 +83,7 @@ function fetchContacts(queryParams) {
   return fetchContent(contactEndpoint)
     .then(formatContacts)
     .then((results) => {
+      console.log(results)
       return _.filter(results, {
         category: category
       });
@@ -219,6 +220,20 @@ function makeParagraphValueFormatter(typeName, paragraph) {
         newValuePromise = formatLink(value).then((item) => {
           return item.url;
         });
+      } else {
+        newValuePromise = Promise.resolve(extractValue(value));
+      }
+    } else if (typeName === "surety_bond_contact") {
+      if (key === "singleContactCategory") {
+        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
+          return item.name;
+        })
+      } else if(key === "stateServed"){
+        newValuePromise = Promise.map(value, (state) => { 
+          return fetchFormattedTaxonomyTerm(state.target_id).then((formattedState) => {
+            return formattedState.name
+          }, {concurrency: 1})
+        }).then((formattedStates) => { return formattedStates })
       } else {
         newValuePromise = Promise.resolve(extractValue(value));
       }
