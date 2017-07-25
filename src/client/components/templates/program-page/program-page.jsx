@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './program-page.scss';
 import * as paragraphMapper from "../paragraph-mapper.jsx";
+import Hero from '../../organisms/hero/hero.jsx';
 
 class ProgramPage extends React.Component {
 
@@ -22,10 +23,34 @@ class ProgramPage extends React.Component {
   }
 
   render() {
+
     let paragraphs = this.makeParagraphs(this.props.paragraphs);
+    
+    const { title, summary, buttons, bannerImage } = this.props.heroData
+    const hasBannerImage = bannerImage.hasOwnProperty('image')
+
     return (
-      <div className={styles.container}>
-        {paragraphs}
+      <div>
+        { hasBannerImage &&
+          <Hero
+            title={title}
+            message={summary}
+            buttons={buttons}
+            imageUrl={bannerImage.image.url}
+            alt={bannerImage.image.alt}
+          />
+        }
+        { !hasBannerImage &&
+          <Hero
+            title={title}
+            message={summary}
+            buttons={buttons}
+            alt={bannerImage.image.alt}
+          />
+        }
+        <div className={styles.container}>
+          {paragraphs}
+        </div>
       </div>
     );
   }
