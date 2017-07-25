@@ -66,122 +66,40 @@ function convertUrlHost(urlStr) {
 
 //contacts content type
 function fetchContacts(queryParams) {
-  const {category = "general"} = queryParams;
-
+  const type = queryParams.type + "Contact";
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Contacts information");
     return Promise.resolve(localContacts);
   }
 
   return fetchContent(contactEndpoint)
-    .then(formatContacts.bind(null, category))
-    .then((formattedContacts) => {
-      return formattedContacts.filter((contact) => {
-        return contact !== null;
+    .then(formatContacts)
+    .then((results) => {
+      return _.filter(results, {
+        type: type
       });
     });
 }
 
-function formatContacts(category, data) {
+function formatContacts(data) {
   if (data) {
-    return Promise.map(data, fetchFormattedContactParagraph.bind(null, category), {
+    return Promise.map(data, formatContact, {
       concurrency: 50
     });
   }
-  return Promise.resolve(null);
+  return Promise.resolve([]);
 }
 
-function fetchFormattedContactParagraph(category, contact) {
+function formatContact(contact) {
   const paragraphId = extractTargetId(contact.field_type_of_contact);
-  return fetchParagraphId(paragraphId)
-    .then(formatContactParagraph.bind(null, category))
-    .then(function(response) {
-      if (response) {
-        response.title = !_.isEmpty(contact.title) ? contact.title[0].value : ""; //eslint-disable-line no-param-reassign
-        return response;
-      }
-      return null;
-    });
+  return fetchFormattedParagraph(paragraphId).then((result) => {
+    return _.assign({}, {
+      title: extractValue(contact.title)
+    }, result);
+  });
 }
 
-function formatContactParagraph(category, paragraph) {
-  if (category === "sbic" && extractTargetId(paragraph.type) === "sbic_contact") {
-    return formatSbicContactParagraph(paragraph);
-  } else if (category === "general" && extractTargetId(paragraph.type) === "business_guide_contact") {
-    return formatGeneralContactParagraph(paragraph);
-  }
-  return Promise.resolve(null);
-}
 
-function formatSbicContactParagraph(paragraph) {
-  return extractFieldsByFieldNamePrefix(paragraph, fieldPrefix)
-    .then((formattedParagraph) => {
-      return _.mapValues(formattedParagraph, (value) => {
-        return value[0].value;
-      });
-    });
-}
-
-function formatGeneralContactParagraph(paragraph) { //eslint-disable-line complexity
-  if (paragraph) {
-    const contactCategoryTaxonomyId = extractTargetId(paragraph.field_bg_contact_category);
-    const stateServedTaxonomyTermId = extractTargetId(paragraph.field_state_served);
-    const contactCity = !_.isEmpty(paragraph.field_city) ? paragraph.field_city[0].value : "";
-    const contactLink = !_.isEmpty(paragraph.field_link) ? paragraph.field_link[0].uri : "";
-    const contactState = !_.isEmpty(paragraph.field_state) ? paragraph.field_state[0].value : "";
-    const contactStreetAddress = !_.isEmpty(paragraph.field_street_address) ? paragraph.field_street_address[0].value : "";
-    const contactZipCode = !_.isEmpty(paragraph.field_zip_code) ? paragraph.field_zip_code[0].value : "";
-    const contactCategoryTaxonomyPromise = contactCategoryTaxonomyId ? fetchFormattedTaxonomyTerm(contactCategoryTaxonomyId) : Promise.resolve(null);
-    const stateServedTaxonomyPromise = stateServedTaxonomyTermId ? fetchFormattedTaxonomyTerm(stateServedTaxonomyTermId) : Promise.resolve(null);
-    return Promise.all([contactCategoryTaxonomyPromise, stateServedTaxonomyPromise]).spread((contactCategoryTaxonomyData, stateServedTaxonomyData) => {
-      return {
-        city: contactCity,
-        link: contactLink,
-        state: contactState,
-        streetAddress: contactStreetAddress,
-        zipCode: contactZipCode,
-        category: contactCategoryTaxonomyData ? contactCategoryTaxonomyData.name : "",
-        stateServed: stateServedTaxonomyData ? stateServedTaxonomyData.name : ""
-      };
-    });
-  }
-  return Promise.resolve(null);
-}
-
-//cta content type
-function fetchCounsellorCta() {
-  const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
-  if (counsellorCtaNodeId) {
-    return fetchNodeById(counsellorCtaNodeId).then((data) => {
-      const targetId = extractTargetId(data.type);
-      if (targetId === "call_to_action") {
-        const cta = {
-          type: "callToAction",
-          style: "Large"
-        };
-        const btnRef = extractTargetId(data.field_button_action);
-        cta.headline = extractValue(data.field_headline);
-        cta.blurb = extractValue(data.field_blurb);
-        cta.image = convertUrlHost(data.field_image[0].url);
-        cta.imageAlt = data.field_image[0].alt;
-        cta.title = extractValue(data.title);
-
-        return fetchParagraphId(btnRef).then((btn) => {
-          if (btn.field_link) {
-            cta.btnTitle = btn.field_link[0].title;
-            cta.btnUrl = btn.field_link[0].uri;
-          } else if (btn.field_file && btn.field_button_text) {
-            cta.btnTitle = extractValue(btn.field_button_text);
-            cta.btnUrl = convertUrlHost(btn.field_file[0].url);
-          }
-          return cta;
-        });
-      }
-      return Promise.resolve(null);
-    });
-  }
-  return Promise.resolve(null);
-}
 
 function defaultFieldNameFormatter(fieldName, prefix = "field_") {
   return _.chain(fieldName).replace(prefix, "").camelCase()
@@ -191,7 +109,15 @@ function defaultFieldNameFormatter(fieldName, prefix = "field_") {
 function makeParagraphFieldFormatter(typeName) {
   return function(fieldName, prefix = "field_") {
     let modifiedFieldName = fieldName;
-    if (typeName !== "image" && typeName !== "banner_image") {
+    if (typeName === "business_guide_contact") {
+      if (fieldName === "field_bg_contact_category") {
+        modifiedFieldName = "field_category";
+      }
+    } else if (typeName === "sbic_contact") {
+      if (fieldName === "field_single_contact_category") {
+        modifiedFieldName = "field_category";
+      }
+    } else if (typeName !== "image" && typeName !== "banner_image") {
       modifiedFieldName = _.replace(fieldName, typeName, "");
     }
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
@@ -239,18 +165,19 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
 
+function formatLink(value) {
+  return Promise.resolve({
+    url: convertUrlHost(value[0].uri),
+    title: value[0].title
+  });
+}
+
+
 function makeParagraphValueFormatter(typeName, paragraph) {
   return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
     if (typeName === "text_section" && key === "text") {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
-    } else if (key === "image" || key === "bannerImage") {
-      if (value[0]) {
-        newValuePromise = Promise.resolve({
-          url: convertUrlHost(value[0].url),
-          alt: value[0].alt
-        });
-      }
     } else if (typeName === "lookup" && key === "contactCategory") {
       const taxonomyTermId = extractTargetId(value);
       newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
@@ -260,12 +187,28 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       newValuePromise = fetchNestedParagraph(paragraph, "card_collection"); //eslint-disable-line no-use-before-define
     } else if (typeName === "style_gray_background") {
       newValuePromise = fetchNestedParagraph(paragraph, "style_gray_background"); //eslint-disable-line no-use-before-define
-    } else if (key === "link") {
+    } else if (typeName === "business_guide_contact" || typeName === "sbic_contact") {
+      if (key === "category" || key === "stateServed") {
+        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
+          return item.name;
+        });
+      } else if (key === "link") {
+        newValuePromise = formatLink(value).then((item) => {
+          return item.url;
+        });
+      } else {
+        newValuePromise = Promise.resolve(extractValue(value));
+      }
+    } else if (key === "image" || key === "bannerImage") {
       if (value[0]) {
         newValuePromise = Promise.resolve({
-          url: convertUrlHost(value[0].uri),
-          title: value[0].title
+          url: convertUrlHost(value[0].url),
+          alt: value[0].alt
         });
+      }
+    } else if (key === "link") {
+      if (value[0]) {
+        newValuePromise = formatLink(value);
       }
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
@@ -293,33 +236,68 @@ function makeNodeValueFormatter(typeName) {
   };
 }
 
-function formatCallToAction(paragraph) {
-  const ctaRef = extractTargetId(paragraph.field_call_to_action_reference);
-  const cta = {
-    type: "callToAction",
-    style: extractValue(paragraph.field_style)
-  };
 
-  return fetchNodeById(ctaRef).then((subCta) => {
-    const btnRef = extractTargetId(subCta.field_button_action);
-    cta.headline = extractValue(subCta.field_headline);
-    cta.blurb = extractValue(subCta.field_blurb);
-    cta.image = convertUrlHost(subCta.field_image[0].url);
-    cta.imageAlt = subCta.field_image[0].alt;
-    cta.title = extractValue(subCta.title);
+function formatCallToAction(data) {
+  const cta = {};
+  const btnRef = extractTargetId(data.field_button_action);
+  cta.headline = extractValue(data.field_headline);
+  cta.blurb = extractValue(data.field_blurb);
+  cta.image = convertUrlHost(data.field_image[0].url);
+  cta.imageAlt = data.field_image[0].alt;
+  cta.title = extractValue(data.title);
 
-    return fetchParagraphId(btnRef).then((btn) => {
-      if (btn.field_link) {
-        cta.btnTitle = btn.field_link[0].title;
-        cta.btnUrl = btn.field_link[0].uri;
-      } else if (btn.field_file && btn.field_button_text) {
-        cta.btnTitle = extractValue(btn.field_button_text);
-        cta.btnUrl = convertUrlHost(btn.field_file[0].url);
-      }
-      return cta;
-    });
+  return fetchParagraphId(btnRef).then((btn) => {
+    if (btn.field_link) {
+      cta.btnTitle = btn.field_link[0].title;
+      cta.btnUrl = btn.field_link[0].uri;
+    } else if (btn.field_file && btn.field_button_text) {
+      cta.btnTitle = extractValue(btn.field_button_text);
+      cta.btnUrl = convertUrlHost(btn.field_file[0].url);
+    }
+    return cta;
+  }).catch((error) => {
+    console.error("Unable to retrieve button information for CallToAction");
+    return cta;
   });
 }
+
+function paragraphFieldFormatter(typeName) {
+  return function(fieldName) {
+    if (typeName === "image" || typeName === "banner_image") {
+      return fieldName;
+    } else if (typeName === "business_guide_contact" && fieldName === "field_bg_contact_category") {
+      return "contactCategoryTaxonomyTerm";
+    }
+    return _.replace(fieldName, typeName, "");
+  };
+}
+
+function formatFormattedCallToActionByNodeId(nodeId, size) {
+  const ctaRef = extractTargetId(nodeId);
+  return fetchNodeById(ctaRef)
+    .then(formatCallToAction)
+    .then(function(result) {
+      return _.assign({}, {
+        type: "callToAction",
+        style: size
+      }, result);
+    })
+    .catch((error) => {
+      console.error("Unable to retrieve button information for CallToAction");
+      return null;
+    });
+}
+
+function formatFormattedCallToAction(paragraph) {
+  return formatFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
+}
+
+
+function fetchCounsellorCta() {
+  const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
+  return formatFormattedCallToActionByNodeId(counsellorCtaNodeId, "Large");
+}
+
 
 function formatParagraph(paragraph) {
   if (paragraph) {
@@ -345,7 +323,13 @@ function formatParagraph(paragraph) {
 }
 
 function fetchFormattedParagraph(paragraphId) {
-  return fetchParagraphId(paragraphId).then(formatParagraph);
+  return fetchParagraphId(paragraphId)
+    .then(formatParagraph)
+    .catch((error) => {
+      console.error("Unable to fetchFormattedParagraph " + paragraphId);
+      console.error(error);
+      return null;
+    });
 }
 
 function fetchNestedParagraph(nestedParagraph, typeName) {
@@ -371,14 +355,15 @@ function formatNode(data) {
 
     // Format Taxonomy
     const taxonomy = data.field_site_location;
-    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(null);
+    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(undefined); //eslint-disable-line no-undefined
 
     // Format Summary (could be named one of two things)
     const summary = extractValue(data.field_summary || data.field_summary160);
 
     // Create an object minus the "one-off" fields above
     const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
-      "field_summary", "field_summary160"]);
+      "field_summary", "field_summary160"
+    ]);
 
     // Extract any other fields
     const nodeValueFormatter = makeNodeValueFormatter(extractTargetId(data.type));
@@ -388,8 +373,8 @@ function formatNode(data) {
       const formattedNode = {
         title: extractValue(data.title),
         paragraphs: _.compact(paragraphData),
-        taxonomy: taxonomyData,
-        summary: summary
+        summary: summary,
+        taxonomy: taxonomyData
       };
       _.merge(formattedNode, extractedFields);
       return formattedNode;
