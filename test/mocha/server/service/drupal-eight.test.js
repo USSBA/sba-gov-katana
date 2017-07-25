@@ -148,7 +148,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         type: "programPage",
         summary: "fieldSummaryText",
         title: "Investment capital",
-        button: [{
+        buttons: [{
           title: "Find investors",
           url: "internal:#paragraph-11"
         }],
@@ -201,8 +201,8 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         },
       ];
       return drupalEightDataService.formatNode(localNode).then((result) => {
-        result.button[0].should.deep.equal(expectedButtons[0]);
-        result.button[1].should.deep.equal(expectedButtons[1]);
+        result.buttons[0].should.deep.equal(expectedButtons[0]);
+        result.buttons[1].should.deep.equal(expectedButtons[1]);
       });
     });
   });

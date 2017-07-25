@@ -130,6 +130,19 @@ function makeParagraphFieldFormatter(typeName) {
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
   };
 }
+function makeNodeFieldFormatter(typeName) {
+  return function(fieldName, prefix = "field_") { //eslint-disable-line complexity
+    let modifiedFieldName = fieldName;
+    if (typeName === "program_page") {
+      if (fieldName === "field_button") {
+        modifiedFieldName = "field_buttons";
+      } else if (fieldName === "field_summary160") {
+        modifiedFieldName = "field_summary";
+      }
+    }
+    return defaultFieldNameFormatter(modifiedFieldName, prefix);
+  };
+}
 
 // this is an abstract function that takes an object, removes properties that do not
 // start with the given prefix and then formats the key name using the prefix and
@@ -229,11 +242,11 @@ function makeNodeValueFormatter(typeName) {
     let newValuePromise = Promise.resolve({});
     if (!(Array.isArray(value) & value.length > 0)) {
       newValuePromise = Promise.resolve({});
-    } else if (typeName === "program_page" && key === "button") {
+    } else if (typeName === "program_page" && key === "buttons") {
       newValuePromise = Promise.map(value, (button) => {
         return formatLink([button]);
       });
-    } else if (key === "button") {
+    } else if (key === "buttons") {
       newValuePromise = formatLink(value);
     } else if (key !== "paragraphs" && value[0].target_type === "paragraph") {
       newValuePromise = fetchFormattedParagraph(extractTargetId(value)); //eslint-disable-line no-use-before-define
@@ -366,8 +379,9 @@ function formatNode(data) {
     const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(undefined); //eslint-disable-line no-undefined
 
     // Process other required data
+    const nodeType = extractTargetId(data.type);
     const otherData = {};
-    otherData.type = _.camelCase(extractTargetId(data.type));
+    otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
     // summary could be named one of two things. If more fields need renamed like this, consider creating nodeFieldFormatter
     otherData.summary = extractValue(data.field_summary || data.field_summary160);
@@ -378,8 +392,8 @@ function formatNode(data) {
     ]);
 
     // Extract any other fields
-    const nodeValueFormatter = makeNodeValueFormatter(extractTargetId(data.type));
-    const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeParagraphFieldFormatter(""), nodeValueFormatter);
+    const nodeValueFormatter = makeNodeValueFormatter(nodeType);
+    const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
       const formattedNode = {
