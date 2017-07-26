@@ -148,10 +148,10 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         type: "programPage",
         summary: "fieldSummaryText",
         title: "Investment capital",
-        button: {
+        buttons: [{
           title: "Find investors",
-          url: "internal:#paragraph-11"
-        },
+          url: "#paragraph-11"
+        }],
         bannerImage: {
           "type": "bannerImage",
           "image": {
@@ -172,6 +172,46 @@ describe("Drupal 8 Service with mocked endpoints", function() {
       };
       return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
         result.should.deep.equal(expectedResult);
+      });
+    });
+
+    it("should handle multiple buttons for program_page type", function() {
+      const buttons = [
+        {
+          "uri": "http://left-button.example.com",
+          "title": "Left Button",
+          "options": []
+        },
+        {
+          "uri": "http://right-button.example.com",
+          "title": "Right Button",
+          "options": []
+        }
+      ];
+      let localNode = _.set(_.cloneDeep(nodeProgramPage), "field_button", buttons);
+      setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+      const expectedButtons = [
+        {
+          url: "http://left-button.example.com",
+          title: "Left Button"
+        },
+        {
+          url: "http://right-button.example.com",
+          title: "Right Button"
+        },
+      ];
+      return drupalEightDataService.formatNode(localNode).then((result) => {
+        result.buttons[0].should.deep.equal(expectedButtons[0]);
+        result.buttons[1].should.deep.equal(expectedButtons[1]);
+      });
+    });
+    it("should handle an empty field_banner_image for program_page type", function() {
+      const bannerImage = [];
+      let localNode = _.set(_.cloneDeep(nodeProgramPage), "field_banner_image", bannerImage);
+      setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+      const expectedBannerImage = {};
+      return drupalEightDataService.formatNode(localNode).then((result) => {
+        result.bannerImage.should.deep.equal(expectedBannerImage);
       });
     });
   });
@@ -256,9 +296,14 @@ describe("Drupal 8 Service Helper Functions", function() {
       result.should.equal("http://drupal8.content.hostname/foo/bar");
       done();
     });
-    it("should not convert a relative url", function(done) {
+    it("should convert an internal relative url", function(done) {
       let result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
-      result.should.equal("internal:/foo/bar");
+      result.should.equal("/foo/bar");
+      done();
+    });
+    it("should convert an internal anchor url", function(done) {
+      let result = drupalEightDataService.convertUrlHost("internal:#some-tag");
+      result.should.equal("#some-tag");
       done();
     });
   });
@@ -373,6 +418,41 @@ describe("Drupal 8 Service Helper Functions", function() {
       result.should.equal("marty");
     });
   });
-
-
+  describe("formatLink", function() {
+    it("should return the extracted value of the first element of the given array", function() {
+      const testValue = [{
+        uri: "https://example.foo.com",
+        title: "Foo Title",
+        options: {}
+      }];
+      const expectedResult = {
+        url: "https://example.foo.com",
+        title: "Foo Title"
+      };
+      return drupalEightDataService.formatLink(testValue).then((result) => {
+        result.should.deep.equal(expectedResult);
+      });
+    });
+    it("should return the extracted value of the n-th element of the given array", function() {
+      const testValue = [
+        {
+          uri: "https://example.foo.com",
+          title: "Foo Title",
+          options: {}
+        },
+        {
+          uri: "https://example.bar.com",
+          title: "Bar Title",
+          options: {}
+        }
+      ];
+      const expectedResult = {
+        url: "https://example.bar.com",
+        title: "Bar Title"
+      };
+      return drupalEightDataService.formatLink(testValue, 1).then((result) => {
+        result.should.deep.equal(expectedResult);
+      });
+    });
+  });
 });

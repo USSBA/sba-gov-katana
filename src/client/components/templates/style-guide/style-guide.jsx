@@ -66,39 +66,54 @@ class StyleGuide extends React.Component {
   render() {
       
       let buttonsArray = [
-            {
-              onClickHandler: this.handleLargeBtnClicked,
-              btnText: "LARGE BUTTON",
-              btnType: "SmallInverseSecondaryButton"
-            }
-          ];
+        {
+          onClickHandler: this.handleLargeBtnClicked,
+          btnText: "LARGE BUTTON",
+          btnType: "LargeInversePrimaryButton"
+        }
+      ];
+
+      const heroMockData = {
+
+        "title":"Investment capital",
+        "summary":"Find an investor for your business through a Small Business Investment Company (SBIC) licensed by the Small Business Administration.",
+        "bannerImage":{  
+          "type":"bannerImage",
+          "image":{  
+            "url":"http://content.sbagov.fearlesstesters.com/sites/default/files/2017-05/sbic-hero-min%20%281%29.jpg",
+            "alt":"A man presents at a business meeting."
+          },
+          "captionText":null,
+          "link":{}
+        },
+      }
 
       const cardCollectionMockData = [  
-          {  
-             "type":"card",
-             "image":{  
-                "url":"http://images.bigcartel.com/product_images/199085200/Scan309.jpg?auto=format&fit=max&h=300&w=300",
-                "alt":"Business plan"
-             },
-             "link":{  
+        {  
+           "type":"card",
+           "image":{  
+              "url":"http://images.bigcartel.com/product_images/199085200/Scan309.jpg?auto=format&fit=max&h=300&w=300",
+              "alt":"Business plan"
+           },
+           "link":{  
 
-             },
-             "subtitleText":"This type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.",
-             "titleText":"Traditional business plan"
-          },
-          {  
-             "type":"card",
-             "image":{  
-                "url":"http://images.bigcartel.com/product_images/192360211/Dexter___Dee_Dee.jpg?auto=format&fit=max&h=300&w=300",
-                "alt":"Business plan"
-             },
-             "link":{  
+           },
+           "subtitleText":"This type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.",
+           "titleText":"Traditional business plan"
+        },
+        {  
+           "type":"card",
+           "image":{  
+              "url":"http://images.bigcartel.com/product_images/192360211/Dexter___Dee_Dee.jpg?auto=format&fit=max&h=300&w=300",
+              "alt":"Business plan"
+           },
+           "link":{  
 
-             },
-             "subtitleText":"This type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.",
-             "titleText":"Lean startup plan"
-          }
-       ];
+           },
+           "subtitleText":"This type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.",
+           "titleText":"Lean startup plan"
+        }
+      ];
 
     const tableMockData = "<table>"
       + "<thead>"
@@ -149,10 +164,11 @@ class StyleGuide extends React.Component {
         
           <h1>Hero</h1>
           <Hero
-            title="Hey this is a cool title."
-            message="Whether you're already up and running or just getting started, we can help. Come take a look now."
+            title={heroMockData.title}
+            message={heroMockData.summary}
             buttons={buttonsArray}
-            imageUrl="http://images.bigcartel.com/product_images/196197151/Will.jpg?auto=format&fit=max&h=800&w=800"
+            imageUrl={heroMockData.bannerImage.image.url}
+            alt={heroMockData.bannerImage.image.alt}
           />
         
         </div>

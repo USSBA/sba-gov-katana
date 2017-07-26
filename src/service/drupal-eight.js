@@ -65,6 +65,8 @@ function convertUrlHost(urlStr) {
   //Only modify URL if it points to localhost
   if (parsedUrl.hostname === "localhost") {
     return `${host}${parsedUrl.pathname}`;
+  } else if (urlStr.startsWith("internal:")) {
+    return urlStr.replace(/^internal:/, "");
   }
   return urlStr;
 }
@@ -130,6 +132,19 @@ function makeParagraphFieldFormatter(typeName) {
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
   };
 }
+function makeNodeFieldFormatter(typeName) {
+  return function(fieldName, prefix = "field_") { //eslint-disable-line complexity
+    let modifiedFieldName = fieldName;
+    if (typeName === "program_page") {
+      if (fieldName === "field_button") {
+        modifiedFieldName = "field_buttons";
+      } else if (fieldName === "field_summary160") {
+        modifiedFieldName = "field_summary";
+      }
+    }
+    return defaultFieldNameFormatter(modifiedFieldName, prefix);
+  };
+}
 
 // this is an abstract function that takes an object, removes properties that do not
 // start with the given prefix and then formats the key name using the prefix and
@@ -172,10 +187,10 @@ function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
 }
 
-function formatLink(value) {
+function formatLink(value, index = 0) {
   return Promise.resolve({
-    url: convertUrlHost(value[0].uri),
-    title: value[0].title
+    url: convertUrlHost(value[index].uri),
+    title: value[index].title
   });
 }
 
@@ -229,11 +244,12 @@ function makeNodeValueFormatter(typeName) {
     let newValuePromise = Promise.resolve({});
     if (!(Array.isArray(value) & value.length > 0)) {
       newValuePromise = Promise.resolve({});
-    } else if (key === "button") {
-      newValuePromise = Promise.resolve({
-        url: extractProperty(value, "uri"),
-        title: extractProperty(value, "title")
+    } else if (typeName === "program_page" && key === "buttons") {
+      newValuePromise = Promise.map(value, (button) => {
+        return formatLink([button]);
       });
+    } else if (key === "button") {
+      newValuePromise = formatLink(value);
     } else if (key !== "paragraphs" && value[0].target_type === "paragraph") {
       newValuePromise = fetchFormattedParagraph(extractTargetId(value)); //eslint-disable-line no-use-before-define
     } else {
@@ -279,7 +295,7 @@ function paragraphFieldFormatter(typeName) {
   };
 }
 
-function formatFormattedCallToActionByNodeId(nodeId, size) {
+function fetchFormattedCallToActionByNodeId(nodeId, size) {
   const ctaRef = extractTargetId(nodeId);
   return fetchNodeById(ctaRef)
     .then(formatCallToAction)
@@ -290,19 +306,19 @@ function formatFormattedCallToActionByNodeId(nodeId, size) {
       }, result);
     })
     .catch((error) => {
-      console.error("Unable to retrieve button information for CallToAction");
+      console.error("Unable to retrieve button information for CallToAction", error);
       return null;
     });
 }
 
 function formatFormattedCallToAction(paragraph) {
-  return formatFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
+  return fetchFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
 }
 
 
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
-  return formatFormattedCallToActionByNodeId(counsellorCtaNodeId, "Large");
+  return fetchFormattedCallToActionByNodeId(counsellorCtaNodeId, "Large");
 }
 
 
@@ -312,7 +328,7 @@ function formatParagraph(paragraph) {
     switch (typeName) {
       case "call_to_action":
         //need to return at some point
-        return formatCallToAction(paragraph);
+        return fetchFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
       default: {
         const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
         const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
@@ -365,20 +381,17 @@ function formatNode(data) {
     const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(undefined); //eslint-disable-line no-undefined
 
     // Process other required data
+    const nodeType = extractTargetId(data.type);
     const otherData = {};
-    otherData.type = _.camelCase(extractTargetId(data.type));
+    otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
-    // summary could be named one of two things. If more fields need renamed like this, consider creating nodeFieldFormatter
-    otherData.summary = extractValue(data.field_summary || data.field_summary160);
 
     // Create an object minus the "one-off" fields above
-    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location",
-      "field_summary", "field_summary160"
-    ]);
+    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location"]);
 
     // Extract any other fields
-    const nodeValueFormatter = makeNodeValueFormatter(extractTargetId(data.type));
-    const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeParagraphFieldFormatter(""), nodeValueFormatter);
+    const nodeValueFormatter = makeNodeValueFormatter(nodeType);
+    const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
       const formattedNode = {
@@ -442,4 +455,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, fetchFormattedCallToActionByNodeId, formatLink };
