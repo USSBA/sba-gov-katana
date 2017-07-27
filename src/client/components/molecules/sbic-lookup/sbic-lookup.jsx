@@ -3,6 +3,8 @@ import s from "./sbic-lookup.scss";
 import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 import json2csv from "json2csv"
+import TextInput from '../../atoms/text-input/text-input.jsx';
+import SearchIcon from "../../atoms/icons/search.jsx"
 
 class SbicLookup extends React.Component {
 		constructor(ownProps) {
@@ -200,11 +202,28 @@ class SbicLookup extends React.Component {
 		})
 	}
 
+	handleKeyPress(e) {
+		console.log('A', 'validate', e.target.value)
+	}
+
 	render() {
 		return (
 			<div>
 				<div className={s.banner}>
 					<h2 className={s.header}>{this.props.title}</h2>
+					<div className={s.searchBox}>
+						<TextInput
+							placeholder="Title or number"
+							id="sbic-search"
+							errorText={"Please enter the correct thing."}
+							label="Search"
+							validationState={""}
+							onKeyPress={(e) => this.handleKeyPress(e)}
+						/>
+						<div className={s.searchIcon}>
+							<SearchIcon aria-hidden="true" />
+						</div>
+					</div>
 					{this.renderMultiSelects()}
 					<a href={this.createDownloadHref()} download="sbic-contacts.csv"><SmallInverseSecondaryButton url="#" extraClassName={s.downloadBtn} text="download list (.XLS)" /></a>
 				</div>
