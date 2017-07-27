@@ -19,7 +19,8 @@ const SocialMediaLinkSet = () => {
       <SocialMediaLink id="twitter-link" key={2} image={twitterThumbnail} altText="SBA Twitter page" url="https://www.twitter.com/sbagov"/>
       <SocialMediaLink id="google-plus-link" key={3} image={googlePlusThumbnail} altText="SBA Google Plus page" url="https://plus.google.com/+sbagov"/>
       <SocialMediaLink id="youtube-link" key={4} image={youtubeThumbnail} altText="SBA Youtube page" url="https://www.youtube.com/user/sba"/>
-      <SocialMediaLink id="instagram-link" key={5} image={instagramThumbnail} altText="SBA Instagram page" url="https://www.instagram.com/sbagov"/>
+      <SocialMediaLink id="linkedin-link" key={5} image={linkedInThumbnail} altText="SBA LinkedIn page" url="https://www.linkedin.com/company/us-small-business-administration"/>
+      <SocialMediaLink id="instagram-link" key={6} image={instagramThumbnail} altText="SBA Instagram page" url="https://www.instagram.com/sbagov"/>
     </div>
   );
 }
