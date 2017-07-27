@@ -42,14 +42,25 @@
   padding: 0 30px;
 }
 
-.sectionNav h2, .sectionNav h4 {
+.sectionNav h2 {
   text-align: left;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
-.mobileSectionNav h2, .mobileSectionNav h4 {
+.sectionNav h4 {
   text-align: left;
-  text-transform: uppercase;
+  text-transform: lowercase;
+  font-weight: 700;
+}
+
+.mobileSectionNav h2 {
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.mobileSectionNav h4 {
+  text-align: left;
+  text-transform: lowercase;
 }
 
 .sectionNav h2{
