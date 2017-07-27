@@ -18,8 +18,6 @@ class SuretyLookup extends React.Component {
   componentWillReceiveProps(nextProps, ownProps) {
     this.setState({
       filteredContacts: nextProps.items
-    }, () => {
-      console.log(this.state.filteredContacts)
     });
   }
 
@@ -52,9 +50,9 @@ class SuretyLookup extends React.Component {
   }
 
   renderCards(){
-    return this.state.filteredContacts.map((agency) => {
+    return this.state.filteredContacts.map((agency, index) => {
       return (
-      <div className={s.card}>
+      <div id={'surety-card' + index} key={index} className={s.card}>
         <h4 className={s.title}>{agency.title}</h4>
         <div className={s.phoneContainer}>
           <i className={s.phoneIcon + " fa fa-phone"} aria-hidden="true"></i>
@@ -69,12 +67,19 @@ class SuretyLookup extends React.Component {
     })
   }
 
-
+  renderCardContainer(){
+    if(!_.isEmpty(this.state.filteredContacts)) {
+      return this.renderCards()
+    } else if (_.isEmpty(this.state.filteredContacts)){
+      return <EmptyContacts />
+    } else {
+      return "Loading"
+    }
+  }
 
   render() {
-    console.log(this.props.items)
     return(
-      <div>
+      <div id={'surety-lookup'}>
         <div className={s.banner}>
           <h2>Contact a surety bond agency</h2>
           <p className={s.blurb}>Check the database of surety agencies that offer SBA-guranteed bonds. Contact a surety agency in your state to get started with the application process.</p>
@@ -94,11 +99,16 @@ class SuretyLookup extends React.Component {
         </div>
 
         <div className={s.cardContainer}>
-          {this.state.filteredContacts ? this.renderCards() : <div>Loading</div>}
+          {this.renderCardContainer()}
         </div>
       </div>
     )
   }
 }
+
+const EmptyContacts = () => 
+  <div className={s.emptyContacts}>
+    <div>No surety agencies found</div>
+  </div>
 
 export default SuretyLookup;
