@@ -39,8 +39,8 @@ class RootPage extends React.Component {
       }
     } else if (!page && section === "funding-programs") {
       return (<Page section={section} nodeId={subsection}/>);
-    }else if(pageLineage !== null){
-        return (<ErrorPage/>);
+    } else if (pageLineage !== null) {
+      return (<ErrorPage/>);
     }
 
     return (<div/>);
@@ -51,14 +51,12 @@ class RootPage extends React.Component {
       return this.renderPage(this.props.params.section, this.props.params.subsection, this.props.params.page);
     } else if (this.props.params.section) {
       let sectionData = findSection(this.props.menu, this.props.params.section);
-      if(sectionData)
+      if (sectionData)
         return (<SectionPage sectionData={sectionData}/>);
-      else if(sectionData !== null)
-        return(<ErrorPage/>);
-    }
-    return (
-      <div/>
-    );
+      else if (sectionData !== null)
+        return (<ErrorPage/>);
+      }
+    return (<div/>);
   }
 }
 
