@@ -26,3 +26,17 @@
 .lookup {
 	@include grid-column(12, $desktop-0gutter)
 }
+
+.previousVersionsList {
+	li {
+		margin-bottom: 5px;
+	}
+
+	strong {
+		margin-right:10px;
+	}
+
+	i {
+	    margin-left: 10px;
+	}
+}
