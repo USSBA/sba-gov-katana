@@ -29,16 +29,18 @@ class ProgramPage extends React.Component {
     const { title, summary, buttons, bannerImage } = this.props.heroData
     const hasBannerImage = bannerImage.hasOwnProperty('image')
 
-    const _formattedButtons = buttons.map((button) => {
-       return {
-        onClickHandler: function(e) {
-          e.preventDefault()
-          window.location.href = button.url
-        },
-        btnText: button.title,
-        btnType: "LargeInversePrimaryButton"
-      }
-    })
+    const _formattedButtons = buttons === undefined ? [] : (
+        buttons.map((button) => {
+           return {
+            onClickHandler: function(e) {
+              e.preventDefault()
+              window.location.href = button.url
+            },
+            btnText: button.title,
+            btnType: "LargeInversePrimaryButton"
+          }
+        })
+      )
 
     return (
       <div>
