@@ -27,6 +27,8 @@ class SectionPage extends React.Component {
         tileCollection = (<BusinessGuideTileCollection sectionData={sectionData}/>);
       } else if (sectionName === constants.sections.fundingPrograms) {
         tileCollection = (<FundingProgramsTileCollection sectionData={sectionData}/>);
+      } else {
+        console.error("Unable to find matching section");
       }
 
       return (
