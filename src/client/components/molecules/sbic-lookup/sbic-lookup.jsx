@@ -2,9 +2,14 @@ import React from "react"
 import s from "./sbic-lookup.scss";
 import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
 import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
+<<<<<<< HEAD
 import json2csv from "json2csv"
 import TextInput from '../../atoms/text-input/text-input.jsx';
 import SearchIcon from "../../atoms/icons/search.jsx"
+=======
+import json2csv from "json2csv";
+import {pick} from "lodash"
+>>>>>>> master
 
 class SbicLookup extends React.Component {
 		constructor(ownProps) {
@@ -40,7 +45,7 @@ class SbicLookup extends React.Component {
 			}, () => {
 		        this.sortAndFilterContacts();
 		        if(this.props.afterChange){
-		          this.props.afterChange("sbic-lookup", selectStateKey.replace("Value","") + " : " + newValue, null);
+		          this.props.afterChange("sbic-lookup",  "Filter Status : " + JSON.stringify(pick(this.state, ['sortByValue','industryValue','investingStatusValue'] )) , null);
 		        }
 		    })
 		}
