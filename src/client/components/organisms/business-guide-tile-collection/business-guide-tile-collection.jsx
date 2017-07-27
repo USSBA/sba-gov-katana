@@ -8,7 +8,7 @@ class BusinessGuideTileCollection extends React.Component {
     if (!this.props.sectionData || !this.props.sectionData.children) {
       return <div/>
     }
-    return (<TileCollection data={this.props.sectionData.children} icons={BusinessGuideIcons} uppercaseFirstWord splitTitle/>);
+    return (<TileCollection data={this.props.sectionData.children} icons={BusinessGuideIcons} splitTitle/>);
   }
 }
 
