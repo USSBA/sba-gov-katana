@@ -76,7 +76,7 @@
   }
   @include grid-media( $sba-grid-medium) {
     img {
-      width: 28px;
+      width: 25px;
       margin-right: 10px;
     }
     @include grid-column(4);
