@@ -1,3 +1,4 @@
+/*eslint-disable max-lines*/
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
