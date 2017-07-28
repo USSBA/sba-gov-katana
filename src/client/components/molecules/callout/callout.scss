@@ -15,7 +15,7 @@
 }
 
 .message {
-	@include font-size($paragraph-font-sizes);
+	@include font-size($low-contrast-font-sizes);
 	margin-bottom: 30px;
 	font-family: "Source Sans Pro";
 	line-height: 25px;
@@ -53,6 +53,8 @@
 
 .button > button{
 	margin-bottom: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 	@include grid-media($sba-grid-small){
 		width: 100%;
 	}
