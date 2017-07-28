@@ -50,7 +50,8 @@ function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
       } else if (item.type === "image") {
         paragraph = (<ImageSection imageObj={item.image} captionText={item.captionText}/>);
       } else if (item.type === "lookup") {
-        paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
+        //paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
+        paragraph = (<Lookup title={item.sectionHeaderText} type="document" subtype={item.contactCategory} display={item.display}/>);
       } else if (item.type === "callToAction") {
         paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl} title={item.title}/>)
       } else if (item.type === "cardCollection") {

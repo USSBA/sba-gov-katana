@@ -8,6 +8,7 @@ import {logEvent} from "../../../services/analytics.js";
 import styles from "./lookup.scss";
 import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx"
 import SbicLookup from "../sbic-lookup/sbic-lookup.jsx";
+import DocumentLookup from "../document-lookup/document-lookup.jsx"
 
 class Lookup extends React.Component {
 
@@ -39,12 +40,13 @@ class Lookup extends React.Component {
   render() {
     if (this.props.type === "contacts" && this.props.subtype === "State registration") {
         return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
-    }else if(this.props.type === "contacts" && this.props.subtype === "SBIC"){
-        return (<SbicLookup items={this.state.filteredItems}   title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
+    } else if(this.props.type === "contacts" && this.props.subtype === "SBIC"){
+        return (<SbicLookup items={this.state.filteredItems} title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
+    } else if(this.props.type === "document") {
+      return <DocumentLookup title={'Document Stuff'} />
+    } else {
+    return <div></div>
     }
-    return (
-      <div></div>
-    )
   }
 }
 
