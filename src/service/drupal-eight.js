@@ -2,12 +2,15 @@ import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
 import config from "config";
+
 import path from "path";
 import localContacts from "../models/dao/contacts.js";
 import sbicContacts from "../models/dao/sbic-contacts.js";
+import suretyContacts from "../models/dao/surety-contacts.js";
 const localDataMap = {
   "State registration": localContacts,
-  "SBIC": sbicContacts
+  "SBIC": sbicContacts,
+  "Surety bond agency": suretyContacts
 };
 
 
@@ -217,6 +220,24 @@ function makeParagraphValueFormatter(typeName, paragraph) {
       } else if (key === "link") {
         newValuePromise = formatLink(value).then((item) => {
           return item.url;
+        });
+      } else {
+        newValuePromise = Promise.resolve(extractValue(value));
+      }
+    } else if (typeName === "surety_bond_contact") {
+      if (key === "singleContactCategory") {
+        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
+          return item.name;
+        });
+      } else if (key === "stateServed") {
+        newValuePromise = Promise.map(value, (state) => {
+          return fetchFormattedTaxonomyTerm(state.target_id).then((formattedState) => {
+            return formattedState.name;
+          }, {
+            concurrency: 1
+          });
+        }).then((formattedStates) => {
+          return formattedStates;
         });
       } else {
         newValuePromise = Promise.resolve(extractValue(value));

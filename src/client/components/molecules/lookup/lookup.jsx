@@ -9,6 +9,7 @@ import styles from "./lookup.scss";
 import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx"
 import SbicLookup from "../sbic-lookup/sbic-lookup.jsx";
 import DocumentLookup from "../document-lookup/document-lookup.jsx"
+import SuretyLookup from "../surety-lookup/surety-lookup.jsx";
 
 class Lookup extends React.Component {
 
@@ -42,6 +43,10 @@ class Lookup extends React.Component {
         return (<ContactCardLookup items={this.state.filteredItems} title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
     } else if(this.props.type === "contacts" && this.props.subtype === "SBIC"){
         return (<SbicLookup items={this.state.filteredItems} title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
+    } else if(this.props.type === "contacts" && this.props.subtype === "SBIC"){
+        return (<SbicLookup items={this.state.filteredItems}   title={this.props.title} afterChange={this.fireEvent.bind(this)}/>);
+    } else if(this.props.type === "contacts" && this.props.subtype === "Surety bond agency"){
+      return(<SuretyLookup items={this.state.filteredItems}   title={this.props.title}/>);
     } else if(this.props.type === "document") {
       return <DocumentLookup title={'Document Stuff'} />
     } else {

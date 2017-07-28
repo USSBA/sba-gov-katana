@@ -30,29 +30,45 @@ class RootPage extends React.Component {
     }
   }
 
-  renderPage(section, subsection, page) {
-    let pageLineage = _.compact(findPageLineage(this.props.menu, _.compact([section, subsection, page])));
-    if (pageLineage && pageLineage.length > 1) {
-      let nodeId = _.last(pageLineage).node;
-      if (nodeId) {
-        return (<Page lineage={pageLineage} nodeId={nodeId}/>);
-      }
+  renderPageOnLineage(pageLineage) {
+    let nodeId = _.last(pageLineage).node;
+    if (nodeId) {
+      return (<Page lineage={pageLineage} nodeId={nodeId}/>);
+    } else {
+      return (<ErrorPage/>);
     }
+  }
 
-    return (<ErrorPage/>);
+  renderPage(section, subsection, page) {
+    let pageLineage = findPageLineage(this.props.menu, _.compact([section, subsection, page]));
+    if (this.props.menu) {
+      if (section && subsection && page) {
+        if (pageLineage && pageLineage.length === 3) {
+          return this.renderPageOnLineage(pageLineage)
+        } else {
+          return (<ErrorPage/>);
+        }
+      } else if (section && subsection) {
+        if (pageLineage && pageLineage.length === 2) {
+          return this.renderPageOnLineage(pageLineage)
+        } else {
+          return (<ErrorPage/>);
+        }
+      } else if (section) {
+        let sectionData = findSection(this.props.menu, this.props.params.section);
+        if (sectionData) {
+          return (<SectionPage sectionData={sectionData}/>);
+        } else if (sectionData !== null) {
+          return (<ErrorPage/>);
+        }
+      }
+
+    }
+    return (<div/>);
   }
 
   render() {
-    if (this.props.params.section && this.props.params.subsection) {
-      return this.renderPage(this.props.params.section, this.props.params.subsection, this.props.params.page);
-    } else if (this.props.params.section) {
-      let sectionData = findSection(this.props.menu, this.props.params.section);
-      if (sectionData)
-        return (<SectionPage sectionData={sectionData}/>);
-      else if (sectionData !== null)
-        return (<ErrorPage/>);
-      }
-    return (<div/>);
+    return this.renderPage(this.props.params.section, this.props.params.subsection, this.props.params.page);
   }
 }
 
