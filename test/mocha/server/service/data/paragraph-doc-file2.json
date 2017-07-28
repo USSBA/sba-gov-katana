@@ -1,0 +1,105 @@
+{
+  "id": [
+    {
+      "value": 4
+    }
+  ],
+  "uuid": [
+    {
+      "value": "4444e055-6b5d-4dc9-8535-ef9cb166bfc1"
+    }
+  ],
+  "revision_id": [
+    {
+      "value": 44444
+    }
+  ],
+  "type": [
+    {
+      "target_id": "doc_file",
+      "target_type": "paragraphs_type",
+      "target_uuid": "4444d653-b2f2-455f-923f-557c42e60326"
+    }
+  ],
+  "langcode": [
+    {
+      "value": "en"
+    }
+  ],
+  "uid": [
+    {
+      "target_id": 22,
+      "target_type": "user",
+      "target_uuid": "444498fb-5f5c-4421-aabc-0efdb069fad7",
+      "url": "/user/22"
+    }
+  ],
+  "status": [
+    {
+      "value": true
+    }
+  ],
+  "created": [
+    {
+      "value": 1501261475
+    }
+  ],
+  "revision_uid": [
+    {
+      "target_id": 22,
+      "target_type": "user",
+      "target_uuid": "373c98fb-5f5c-4421-aabc-0efdb069fad7",
+      "url": "/user/22"
+    }
+  ],
+  "parent_id": [
+    {
+      "value": "3368"
+    }
+  ],
+  "parent_type": [
+    {
+      "value": "node"
+    }
+  ],
+  "parent_field_name": [
+    {
+      "value": "field_file"
+    }
+  ],
+  "behavior_settings": [
+    {
+      "value": "a:0:{}"
+    }
+  ],
+  "default_langcode": [
+    {
+      "value": true
+    }
+  ],
+  "field_doc_effective": [
+    {
+      "value": "1970-01-01"
+    }
+  ],
+  "field_doc_expiration": [
+    {
+      "value": "2038-01-19"
+    }
+  ],
+  "field_doc_file": [
+    {
+      "target_id": 449,
+      "display": true,
+      "description": "",
+      "target_type": "file",
+      "target_uuid": "444472f6-45ed-4b77-bef5-57c2147a9271",
+      "url": "http://localhost:8080/sites/default/files/1970-01/0.txt"
+    }
+  ],
+  "field_doc_version": [
+    {
+      "value": "4"
+    }
+  ]
+}
