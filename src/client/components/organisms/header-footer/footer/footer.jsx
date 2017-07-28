@@ -10,6 +10,7 @@ import twitterThumbnail from "../../../../../../public/assets/images/footer/twit
 import googlePlusThumbnail from "../../../../../../public/assets/images/footer/googleplus.png"
 import youtubeThumbnail from "../../../../../../public/assets/images/footer/youtube-play.png"
 import linkedInThumbnail from "../../../../../../public/assets/images/footer/linkedin.png"
+import instagramThumbnail from "../../../../../../public/assets/images/footer/instagram.png"
 
 const SocialMediaLinkSet = () => {
   return (
@@ -19,6 +20,7 @@ const SocialMediaLinkSet = () => {
       <SocialMediaLink id="google-plus-link" key={3} image={googlePlusThumbnail} altText="SBA Google Plus page" url="https://plus.google.com/+sbagov"/>
       <SocialMediaLink id="youtube-link" key={4} image={youtubeThumbnail} altText="SBA Youtube page" url="https://www.youtube.com/user/sba"/>
       <SocialMediaLink id="linkedin-link" key={5} image={linkedInThumbnail} altText="SBA LinkedIn page" url="https://www.linkedin.com/company/us-small-business-administration"/>
+      <SocialMediaLink id="instagram-link" key={6} image={instagramThumbnail} altText="SBA Instagram page" url="https://www.instagram.com/sbagov"/>
     </div>
   );
 }
