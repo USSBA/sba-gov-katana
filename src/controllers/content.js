@@ -4,7 +4,7 @@ import { fetchMainMenu } from "../models/dao/main-menu.js";
 import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu, fetchCounsellorCta } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
-
+import querystring from "querystring";
 import cache from "memory-cache";
 
 const fetchFunctions = {
@@ -34,8 +34,9 @@ function fetchContentById(req, res) {
     } else {
       promise = fetchFunctions[req.params.type](req.params.id)
         .then((result) => {
-          cache.put(compositeKey, result);
           console.log("Caching " + compositeKey);
+          cache.put(compositeKey, result);
+          console.log("cache keys are now", cache.keys());
           return result;
         });
     }
@@ -59,15 +60,18 @@ function fetchContentById(req, res) {
 function fetchContentByType(req, res) {
   if (req.params && req.params.type) {
     const type = req.params.type;
+    const compositeKey = type + (!_.isEmpty(req.query) ? "-" + querystring.stringify(req.query).replace(/\=/g, "-") : "");
+    console.log("compositeKey", compositeKey);
     let promise;
-    if (cache.get(type)) {
+    if (cache.get(compositeKey)) {
       console.log("Using cached content");
-      promise = Promise.resolve(cache.get(type));
+      promise = Promise.resolve(cache.get(compositeKey));
     } else {
-      promise = req.query ? fetchContentTypeFunctions[type](req.query) : fetchContentTypeFunctions[type]()
+      promise = fetchContentTypeFunctions[type](req.query)
         .then((result) => {
-          cache.put(type, result);
-          console.log("Caching " + type);
+          console.log("Caching " + compositeKey);
+          cache.put(compositeKey, result);
+          console.log("cache keys are now", cache.keys());
           return result;
         });
     }
