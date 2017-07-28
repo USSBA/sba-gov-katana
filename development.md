@@ -15,7 +15,7 @@ This is for the development/build setup guide
     - Setup AWS credentials in ~/.aws
     - execute `./scripts/db/sql/download-sql.sh`
 1. `./scripts/db/run-db.sh` to execute a local mysql
-1. Create config/local.yaml to customize your options
+1. Create config/local-development.yaml to customize your options
 1. `npm start` to run the server/hot-reloader
 
 ## Build Process

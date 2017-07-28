@@ -21,12 +21,6 @@
             "type": "lookup"
         }
     ],
-    "taxonomy": {
-        "iconFile": null,
-        "name": "Plan",
-        "slugText": null,
-        "vocabulary": "siteLocation"
-    },
     "summary": "This is a summary",
     "type": "page"
 }
