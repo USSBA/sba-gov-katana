@@ -48,7 +48,7 @@ class Lookup extends React.Component {
     } else if(this.props.type === "contacts" && this.props.subtype === "Surety bond agency"){
       return(<SuretyLookup items={this.state.filteredItems}   title={this.props.title}/>);
     } else if(this.props.type === "document") {
-      return <DocumentLookup title={'Document Stuff'} />
+      return <DocumentLookup title={'Document Lookup'} />
     } else {
     return <div></div>
     }
