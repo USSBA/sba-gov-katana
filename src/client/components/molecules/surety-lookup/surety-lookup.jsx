@@ -14,7 +14,8 @@ class SuretyLookup extends React.Component {
       filteredContacts: ownProps.items,
       suretyState: null,
 				pageStart: 1,
-				pageEnd: pageSize
+				pageEnd: pageSize,
+      numberOfTimesUserHasSelectedAState: 0
     }
   }
 
@@ -25,8 +26,12 @@ class SuretyLookup extends React.Component {
   }
 
   handleSelect(e){
-    this.setState({suretyState: e.value}, () => {
+    let newValue = e.value;
+    this.setState({suretyState: e.value, numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState+1}, () => {
       this.filterContacts()
+      if(this.props.afterChange){
+        this.props.afterChange("surety-lookup",  newValue , this.state.numberOfTimesUserHasSelectedAState);
+      }
     })
   }
 
