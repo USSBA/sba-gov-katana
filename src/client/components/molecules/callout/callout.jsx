@@ -16,17 +16,17 @@ class Callout extends React.Component {
     }
 
     return (
-       <div className={calloutStyles}>
-          <h2 className={styles.title}>{ this.props.title }</h2>
-          <p className={styles.message}>{ this.props.message }</p>
-          <div className={styles.buttonContainer}>
+       <div className={`callout ${calloutStyles}`}>
+          <h2 className={`callout-title ${styles.title}`}>{ this.props.title }</h2>
+          <p className={`callout-message ${styles.message}`}>{ this.props.message }</p>
+          <div className={`callout-buttons ${styles.buttonContainer}`}>
               {
                this.props.buttons.map((item, index)=>{
                    if(item.btnType === "LargeInverseSecondaryButton"){
-                       return (<div className={buttonStyles} key={index}><LargeInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
+                       return (<div className={`callout-button ${buttonStyles}`} key={index}><LargeInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
                    }
                    if(item.btnType === "LargeInversePrimaryButton"){
-                       return (<div className={buttonStyles} key={index}><LargeInversePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
+                       return (<div className={`callout-button ${buttonStyles}`} key={index}><LargeInversePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/></div>);
                    }
                })
               }
