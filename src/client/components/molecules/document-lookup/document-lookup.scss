@@ -36,7 +36,7 @@
     @include grid-media($sba-grid-large) {
         display: inline-block;
 
-        width: 150px;
+        width: 140px;
         margin-right: 20px;
         &:last-child {
             margin-right: 0;
@@ -56,7 +56,7 @@
         float: left;
         display: inline-block;
 
-        width: 250px;
+        width: 200px;
         margin-right: 20px;
         &:last-child {
             margin-right: 0;
@@ -82,14 +82,14 @@
 
 
 
-.downloadBtn {
+.applyFiltersBtn {
     font-size: 19px;
 
     position: absolute;
     right: 28px;
     bottom: 20px;
 
-    width: 260px;
+    max-width: 200px;
     height: 48px;
     margin: inherit;
 

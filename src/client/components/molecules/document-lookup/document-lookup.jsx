@@ -14,14 +14,12 @@ class DocumentLookup extends React.Component {
 			this.state = {
 				contacts: ownProps.items,
 				contactsCsv: null,
-				sortByValue: "Investor Name",
-				industryValue: "All",
-				investingStatusValue: "All"
+				documentType: "all",
+				programName: "all",
+				documentActivity: "all",
+				sortByValue: "sort-by-last-updated"
 			}
 		}
-
-
-
 
 		componentWillReceiveProps(nextProps, ownProps) {
 			console.log("nextProps", nextProps)
@@ -104,6 +102,135 @@ class DocumentLookup extends React.Component {
 
 	renderMultiSelects() {
 			let specificMultiSelectProps = [{
+				id: "document-type-select",
+				onChange: (e) => {
+					this.handleChange(e, "documentType")
+				},
+				label: "Document type",
+				name: "document-type",
+				value: this.state.documentType,
+				options: [{
+					label: "All",
+					value: "all"
+				}, {
+					label: "OMB",
+					value: "omb"
+				}, {
+					label: "SBA form",
+					value: "sba-form"
+				}, {
+					label: "SOP",
+					value: "sop"
+				}, {
+					label: "Public Law (PL)",
+					value: "pl"
+				}, {
+					label: "Code of Federal Regulations (CFR)",
+					value: "cfr"
+				}, {
+					label: "Policy Guidance (PG)",
+					value: "policy-guidance"
+				}, {
+					label: "TechNote (PG)",
+					value: "technote"
+				}, {
+					label: "Procedural notice (PG)",
+					value: "procedural-notice"
+				}, {
+					label: "Information notice (PG)",
+					value: "information-notice"
+				}, {
+					label: "Policy notice (PG)",
+					value: "policy-notice"
+				}, {
+					label: "Support",
+					value: "support"
+				}]
+			}, {
+				id: "program-name-select",
+				onChange: (e) => {
+					this.handleChange(e, "programName")
+				},
+				label: "Program",
+				name: "program-name",
+				value: this.state.programName,
+				options: [{
+					label: "All",
+					value: "all"
+				}, {
+					label: "Lending programs",
+					value: "lending-programs"
+				}, {
+					label: "7a",
+					value: "p-7a"
+				}, {
+					label: "504/CDC",
+					value: "p-504-cdc"
+				}, {
+					label: "Microloans",
+					value: "microloans"
+				}, {
+					label: "SBIC",
+					value: "sbic"
+				}, {
+					label: "Surety Bonds",
+					value: "surety-bonds"
+				}, {
+					label: "Disaster Assistance",
+					value: "disaster-assistance"
+				}]
+			}, {
+				id: "document-activity-select",
+				onChange: (e) => {
+					this.handleChange(e, "documentActivity")
+				},
+				label: "Document Activity",
+				name: "document-activity-select",
+				value: this.state.documentActivity,
+				options: [{
+					label: "All",
+					value: "all"
+				}, {
+					label: "Lending",
+					value: "lending"
+				}, {
+					label: "Authorization",
+					value: "authorization"
+				}, {
+					label: "Servicing",
+					value: "servicing"
+				}, {
+					label: "Closing",
+					value: "closing"
+				}, {
+					label: "Liquidation",
+					value: "liquidation"
+				}, {
+					label: "Litigation",
+					value: "litigation"
+				}, {
+					label: "Guaranty purchase",
+					value: "guaranty-purchase"
+				}, {
+					label: "Licensing and organizational",
+					value: "licensing-organizational"
+				}, {
+					label: "Credit and risk",
+					value: "credit-risk"
+				}, {
+					label: "Investment and transactions",
+					value: "investment-transactions"
+				}, {
+					label: "Leverage commitments and draws",
+					value: "leverage-commitments-draws"
+				}, {
+					label: "Periodic reporting",
+					value: "periodic-reporting"
+				}, {
+					label: "General",
+					value: "general"
+				}]
+			}, {
 				id: "sort-by-select",
 				onChange: (e) => {
 					this.handleChange(e, "sortByValue")
@@ -112,47 +239,14 @@ class DocumentLookup extends React.Component {
 				name: "sort-by-lookup",
 				value: this.state.sortByValue,
 				options: [{
-					label: "Investor Name",
-					value: "Investor Name"
+					label: "Last Updated",
+					value: "sort-by-last-updated"
 				}, {
-					label: "Active Since",
-					value: "Active Since"
-				}]
-			}, {
-				id: "industry-select",
-				onChange: (e) => {
-					this.handleChange(e, "industryValue")
-				},
-				label: "Industries",
-				name: "industry-lookup",
-				value: this.state.industryValue,
-				options: [{
-					label: "All",
-					value: "All"
+					label: "Name",
+					value: "sort-by-name"
 				}, {
-					label: "Diversified",
-					value: "Diversified"
-				}, {
-					label: "Impact Diversified",
-					value: "ImpactDiversified"
-				}]
-			}, {
-				id: "investing-status-select",
-				onChange: (e) => {
-					this.handleChange(e, "investingStatusValue")
-				},
-				label: "Investing status",
-				name: "investing-status-select",
-				value: this.state.investingStatusValue,
-				options: [{
-					label: "All",
-					value: "All"
-				}, {
-					label: "Likely still investing",
-					value: "investing"
-				}, {
-					label: "Not likely investing",
-					value: "notinvesting"
+					label: "Number",
+					value: "sort-by-number"
 				}]
 			}]
 
@@ -203,8 +297,27 @@ class DocumentLookup extends React.Component {
 		})
 	}
 
-	handleKeyPress(e) {
-		console.log('A', 'validate', e.target.value)
+	handleKeyUp(e) {
+		
+		if (e.keyCode === 13) {
+			console.log('A', 'validate', e.target.value)
+		}
+
+	}
+
+	applyFilters() {
+
+		const { documentType, programName, documentActivity, sortByValue } = this.state
+
+		const filters = {
+			documentType,
+			programName,
+			documentActivity,
+			sortByValue
+		}
+
+		console.log('B', 'apply filters', filters)
+
 	}
 
 	render() {
@@ -215,18 +328,22 @@ class DocumentLookup extends React.Component {
 					<div className={s.searchBox}>
 						<TextInput
 							placeholder="Title or number"
-							id="sbic-search"
+							id="document-lookup"
 							errorText={"Please enter the correct thing."}
 							label="Search"
 							validationState={""}
-							onKeyPress={(e) => this.handleKeyPress(e)}
+							onKeyUp={(e) => this.handleKeyUp(e)}
 						/>
 						<div className={s.searchIcon}>
 							<SearchIcon aria-hidden="true" />
 						</div>
 					</div>
 					{this.renderMultiSelects()}
-					<a href={this.createDownloadHref()} download="sbic-contacts.csv"><SmallInverseSecondaryButton url="#" extraClassName={s.downloadBtn} text="download list (.XLS)" /></a>
+					<SmallInverseSecondaryButton
+						onClick={() => this.applyFilters()}
+						extraClassName={s.applyFiltersBtn}
+						text="Apply Filters"
+					/>
 				</div>
 				<table className={s.table}>
 					<thead>
