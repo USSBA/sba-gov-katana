@@ -16,27 +16,20 @@ class Page extends React.Component {
   }
 
   render() {
-
-    let heroData = undefined
-
-    if (this.props.data) {
-
-      heroData = {
-
-        title: this.props.data.title,
-        summary: this.props.data.summary,
-        buttons: this.props.data.buttons,
-        bannerImage: this.props.data.bannerImage
-
-      }
-
-    }
-
     let section = this.props.lineage[0].url;
     if (this.props.data && this.props.lineage) {
       if (section === "business-guide") {
         return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage}/>);
       } else if (section === "funding-programs") {
+        let heroData = undefined
+        if (this.props.data) {
+          heroData = {
+            title: this.props.data.title,
+            summary: this.props.data.summary,
+            buttons: this.props.data.buttons,
+            bannerImage: this.props.data.bannerImage
+          }
+        }
         return (<ProgramPage heroData={heroData} title={this.props.data.title} paragraphs={this.props.data.paragraphs} lineage={this.props.lineage}/>);
       }
     }
