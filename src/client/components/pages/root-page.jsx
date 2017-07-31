@@ -9,6 +9,7 @@ import Page from "./page.jsx";
 import SectionPage from "./section-page/section-page.jsx";
 import path from "path";
 import ErrorPage from "../pages/error-page/error-page.jsx";
+import DocumentPage from "../pages/document-page/document-page.jsx"
 
 class RootPage extends React.Component {
 
@@ -21,11 +22,14 @@ class RootPage extends React.Component {
   }
 
   checkForForward() {
-    if (this.props.params.section && this.props.params.subsection && !this.props.params.page && this.props.params.section !== "funding-programs") {
-      let subSectionData = findSubSection(this.props.menu, this.props.params.section, this.props.params.subsection);
+    let first = this.props.params.first;
+    let second = this.props.params.second;
+    let third = this.props.params.third;
+    if (first && second && !third && first === "business-guide") {
+      let subSectionData = findSubSection(this.props.menu, first, second);
       if (subSectionData && subSectionData.children && subSectionData.children[0]) {
         let page = subSectionData.children[0].url;
-        this.props.navigationActions.locationChange(path.join("/", this.props.params.section, this.props.params.subsection, page), {});
+        this.props.navigationActions.locationChange(path.join("/", first, second, third), {});
       }
     }
   }
@@ -39,23 +43,31 @@ class RootPage extends React.Component {
     }
   }
 
-  renderPage(section, subsection, page) {
-    let pageLineage = findPageLineage(this.props.menu, _.compact([section, subsection, page]));
+  renderPage(first, second, third) {
+    console.log("rootpage", arguments)
+    let pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
+    if (first === "document") {
+        let split = second.split("-");
+        let type = split[0];
+        let id = split[1];
+        let rest = split.slice(2,split.length);
+        return (<DocumentPage type={type} id={id} title={rest}/>);
+    }else
     if (this.props.menu) {
-      if (section && subsection && page) {
+      if (first && second && third) {
         if (pageLineage && pageLineage.length === 3) {
           return this.renderPageOnLineage(pageLineage)
         } else {
           return (<ErrorPage/>);
         }
-      } else if (section && subsection) {
+      } else if (first && second) {
         if (pageLineage && pageLineage.length === 2) {
           return this.renderPageOnLineage(pageLineage)
         } else {
           return (<ErrorPage/>);
         }
-      } else if (section) {
-        let sectionData = findSection(this.props.menu, this.props.params.section);
+    } else if (first) {
+        let sectionData = findSection(this.props.menu, first);
         if (sectionData) {
           return (<SectionPage sectionData={sectionData}/>);
         } else if (sectionData !== null) {
@@ -68,7 +80,7 @@ class RootPage extends React.Component {
   }
 
   render() {
-    return this.renderPage(this.props.params.section, this.props.params.subsection, this.props.params.page);
+    return this.renderPage(this.props.params.first, this.props.params.second, this.props.params.third);
   }
 }
 
