@@ -3,15 +3,22 @@ import * as ContentActions from "../../../actions/content.js"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import s from './document-lookup-page.scss';
+import Lookup from "../../molecules/lookup/lookup.jsx"
 
 class DocumentLookupPage extends React.Component {
 
   componentWillMount() {}
+
   render() {
+    
     return (
-      <div>Document Lookup</div>
+      <div>
+        <Lookup title="Document Lookup" type="document" />
+      </div>
     )
+
   }
+  
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
