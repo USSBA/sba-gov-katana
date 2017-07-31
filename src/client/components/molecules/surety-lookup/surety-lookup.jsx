@@ -1,17 +1,20 @@
 import React from "react"
 import s from "./surety-lookup.scss";
-import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
-import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
+import {Multiselect}  from '../../atoms';
 import madison from 'madison';
 import _ from 'lodash';
+import Paginator from "../../molecules/paginator/paginator.jsx";
 
+var pageSize = 9;
 class SuretyLookup extends React.Component {
 
   constructor(ownProps) {
     super();
     this.state = {
       filteredContacts: ownProps.items,
-      suretyState: null
+      suretyState: null,
+				pageStart: 1,
+				pageEnd: pageSize
     }
   }
 
@@ -48,9 +51,24 @@ class SuretyLookup extends React.Component {
       options: options
     }
   }
+  
+  handleBack() {
+		this.setState({
+			pageStart: Math.max(1, this.state.pageStart - pageSize),
+			pageEnd: Math.max(pageSize, this.state.pageEnd - pageSize)
+		})
+	}
+
+	handleForward() {
+		this.setState({
+			pageStart: Math.min(this.state.pageStart + pageSize, this.state.filteredContacts.length - pageSize),
+			pageEnd: Math.min(this.state.pageEnd + pageSize, this.state.filteredContacts.length)
+		})
+	}
 
   renderCards(){
-    return this.state.filteredContacts.map((agency, index) => {
+		let slice = this.state.filteredContacts.slice(this.state.pageStart-1, this.state.pageEnd)
+    return slice.map((agency, index) => {
       return (
       <div id={'surety-card' + index} key={index} className={s.card}>
         <h4 className={s.title}>{agency.title}</h4>
@@ -84,7 +102,7 @@ class SuretyLookup extends React.Component {
           <h2>Contact a surety bond agency</h2>
           <p className={s.blurb}>Check the database of surety agencies that offer SBA-guranteed bonds. Contact a surety agency in your state to get started with the application process.</p>
           <div className={s.multiSelect}>
-            <MultiSelect 
+            <Multiselect 
               {...this.multiSelectProps()} 
               onChange={(e) => this.handleSelect(e)}
               value={this.state.suretyState}
@@ -101,6 +119,9 @@ class SuretyLookup extends React.Component {
         <div className={s.cardContainer}>
           {this.renderCardContainer()}
         </div>
+        <div className={s.paginator}>
+					<Paginator start={this.state.pageStart} end={this.state.pageEnd} total={this.state.filteredContacts.length} onBack={this.handleBack.bind(this)} onForward={this.handleForward.bind(this)}/>
+				</div>
       </div>
     )
   }
