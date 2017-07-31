@@ -22,6 +22,7 @@ import TenStepsLandingPage from './templates/ten-steps-page/ten-steps-landing-pa
 import Homepage from './templates/homepage/homepage.jsx';
 import SamplePage from './pages/sample.jsx';
 import RootPage from './pages/root-page.jsx';
+import DocumentLookupPage from "./pages/document-lookup-page/document-lookup-page.jsx"
 import {Route, IndexRoute, IndexRedirect} from 'react-router';
 import constants from "../services/constants.js"
 
@@ -46,13 +47,15 @@ const mainRoutes = [
     </Route>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
+  (<Route key={4} path="/document" component={DocumentLookupPage}/>),
+  (<Route key={14} path="/document/" component={DocumentLookupPage}/>),
   (<Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
-  (<Route key={6} path="/:section" component={RootPage}/>),
-  (<Route key={7} path="/:section/" component={RootPage}/>),
-  (<Route key={8} path="/:section/:subsection" component={RootPage}/>),
-  (<Route key={9} path="/:section/:subsection/" component={RootPage}/>),
-  (<Route key={10} path="/:section/:subsection/:page" component={RootPage}/>),
-  (<Route key={11} path="/:section/:subsection/:page/" component={RootPage}/>)
+  (<Route key={6} path="/:first" component={RootPage}/>),
+  (<Route key={7} path="/:first/" component={RootPage}/>),
+  (<Route key={8} path="/:first/:second" component={RootPage}/>),
+  (<Route key={9} path="/:first/:second/" component={RootPage}/>),
+  (<Route key={10} path="/:first/:second/:third" component={RootPage}/>),
+  (<Route key={11} path="/:first/:second/:third/" component={RootPage}/>)
 ];
 
 const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>),(

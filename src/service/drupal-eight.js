@@ -65,8 +65,8 @@ function fetchMenuTreeByName(name) {
 function convertUrlHost(urlStr) {
   const host = _.trimEnd(config.get("drupal8.contentUrl"), "/");
   const parsedUrl = url.parse(urlStr);
-  //Only modify URL if it points to localhost
-  if (parsedUrl.hostname === "localhost") {
+  //Only modify URL if it points to localhost or tanto
+  if (parsedUrl.hostname === "localhost" || parsedUrl.hostname === "tanto") {
     return `${host}${parsedUrl.pathname}`;
   } else if (urlStr.startsWith("internal:")) {
     return urlStr.replace(/^internal:/, "");

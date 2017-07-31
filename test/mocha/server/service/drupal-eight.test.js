@@ -296,6 +296,11 @@ describe("Drupal 8 Service Helper Functions", function() {
       result.should.equal("http://drupal8.content.hostname/foo/bar");
       done();
     });
+    it("should convert a tanto url to drupal8", function(done) {
+      let result = drupalEightDataService.convertUrlHost("http://tanto/foo/bar");
+      result.should.equal("http://drupal8.content.hostname/foo/bar");
+      done();
+    });
     it("should convert an internal relative url", function(done) {
       let result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
       result.should.equal("/foo/bar");

@@ -71,28 +71,41 @@ class StyleGuide extends React.Component {
 
   render() {
 
-      let buttonsArray = [
+      const oneButtonArray = [
+
         {
           onClickHandler: this.handleLargeBtnClicked,
-          btnText: "LARGE BUTTON",
+          btnText: "Single Button",
           btnType: "LargeInversePrimaryButton"
         }
       ];
 
-      const heroMockData = {
+      const twoButtonsArray = [
+          {
+              onClickHandler: this.handleLargeBtnClicked,
+              btnText: "First Button",
+              btnType: "LargeInversePrimaryButton"
+          },
+          {
+              onClickHandler: this.handleLargeBtnClicked,
+              btnText: "Second Button",
+              btnType: "LargeInversePrimaryButton"
+          }
+      ];
 
-        "title":"Investment capital",
-        "summary":"Find an investor for your business through a Small Business Investment Company (SBIC) licensed by the Small Business Administration.",
+
+      const heroMockData = {
+        "summary":"The summary field of a program page will have the text show up here.",
         "bannerImage":{
           "type":"bannerImage",
           "image":{
             "url":"http://content.sbagov.fearlesstesters.com/sites/default/files/2017-05/sbic-hero-min%20%281%29.jpg",
-            "alt":"A man presents at a business meeting."
+            "alt":"The alt text of a banner_image will be here."
           },
           "captionText":null,
           "link":{}
-        },
-      }
+        }
+      };
 
       const cardCollectionMockData = [
         {
@@ -168,13 +181,32 @@ class StyleGuide extends React.Component {
 
         <div>
 
-          <h1>Hero</h1>
+          <h1>Heros</h1>
+
           <Hero
-            title={heroMockData.title}
+            title="Hero with an image and button"
             message={heroMockData.summary}
-            buttons={buttonsArray}
+            buttons={oneButtonArray}
             imageUrl={heroMockData.bannerImage.image.url}
             alt={heroMockData.bannerImage.image.alt}
+          />
+
+          <Hero
+            title={"Hero with Button No-Image"}
+            message={heroMockData.summary}
+            buttons={oneButtonArray}
+          />
+          <Hero
+            title={"Hero with Two Buttons"}
+            message={heroMockData.summary}
+            buttons={twoButtonsArray}
+            imageUrl={heroMockData.bannerImage.image.url}
+            alt={heroMockData.bannerImage.image.alt}
+          />
+          <Hero
+            title={"Hero with Two Buttons No Image"}
+            message={heroMockData.summary}
+            buttons={twoButtonsArray}
           />
 
         </div>
