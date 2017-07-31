@@ -1,20 +1,24 @@
 import React from "react"
 import s from "./sbic-lookup.scss";
-import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
-import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
+import {SmallInverseSecondaryButton,Multiselect}  from '../../atoms';
 import json2csv from "json2csv";
-import {pick} from "lodash"
+import {pick} from "lodash";
+import Paginator from "../../molecules/paginator/paginator.jsx";
 
+
+var pageSize = 10;
 class SbicLookup extends React.Component {
 		constructor(ownProps) {
 			console.log("ownProps", ownProps)
 			super();
 			this.state = {
-				contacts: ownProps.items,
+				contacts: ownProps.items || [],
 				contactsCsv: null,
 				sortByValue: "Investor Name",
 				industryValue: "All",
-				investingStatusValue: "All"
+				investingStatusValue: "All",
+				pageStart: 1,
+				pageEnd: pageSize
 			}
 		}
 
@@ -157,7 +161,7 @@ class SbicLookup extends React.Component {
 		return specificMultiSelectProps.map((multiSelectProps, index) => {
 			return (
 				<div className={s.multiSelect} key={index}>
-					<MultiSelect
+					<Multiselect
 						{...multiSelectProps}
 						onBlur={() => {return null}}
 						onFocus={() => {return null}}
@@ -166,14 +170,31 @@ class SbicLookup extends React.Component {
 						autoFocus={false}
 						multi={false}
 					>
-					</MultiSelect>
+					</Multiselect>
 				</div>
 			)
 		})
 	}
+	
+	
+	handleBack() {
+		this.setState({
+			pageStart: Math.max(1, this.state.pageStart - pageSize),
+			pageEnd: Math.max(pageSize, this.state.pageEnd - pageSize)
+		})
+	}
+
+	handleForward() {
+		this.setState({
+			pageStart: Math.min(this.state.pageStart + pageSize, this.state.contacts.length - pageSize),
+			pageEnd: Math.min(this.state.pageEnd + pageSize, this.state.contacts.length)
+		})
+	}
+	
 
 	renderContacts() {
-		return this.state.contacts.map((contact, index) => {
+		let slice = this.state.contacts.slice(this.state.pageStart-1, this.state.pageEnd)
+		return slice.map((contact, index) => {
 			return (
 				<tr key={index}>
 					<td className={s.nameAndAddressCol}>
@@ -223,6 +244,9 @@ class SbicLookup extends React.Component {
 							this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>
 						}
 				</table>
+				<div className={s.paginator}>
+					<Paginator start={this.state.pageStart} end={this.state.pageEnd} total={this.state.contacts.length} onBack={this.handleBack.bind(this)} onForward={this.handleForward.bind(this)}/>
+				</div>
 			</div>
 		);
 	}
