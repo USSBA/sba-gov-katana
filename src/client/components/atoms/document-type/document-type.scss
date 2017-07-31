@@ -1,0 +1,22 @@
+.container {
+    display: inline-block;
+
+    height: 60px;
+
+    border: 2px solid #bcbcbc;
+}
+
+.type, .number {
+    font-size: 25px;
+    font-weight: bold;
+
+    display: inline-block;
+
+    padding: 5px 10px 5px 10px;
+
+    border: 2px solid #bcbcbc;
+}
+
+.type {
+    background-color: #bcbcbc;
+}

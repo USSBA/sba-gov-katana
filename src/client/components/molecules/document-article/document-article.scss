@@ -1,0 +1,119 @@
+.page {
+    margin-top: 50px;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(12);
+    }
+}
+
+.title {
+    margin-top: 30px;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(4, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(8, $desktop-0gutter);
+    }
+}
+
+.dates {
+    font-family: Merriweather;
+
+    color: #666;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(4, $mobile-0gutter);
+        & span {
+            display: none;
+        }
+    }
+    @include grid-media($sba-grid-large) {
+        font-size: 24px;
+
+        @include grid-column(8, $desktop-0gutter);
+    }
+}
+
+.office {
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(4, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(8, $desktop-0gutter);
+    }
+}
+
+.hr {
+    border: 1px solid #dadada;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(12, $desktop-0gutter);
+    }
+}
+
+.summaryContainer {
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        font-size: 24px;
+
+        @include grid-column(12, $desktop-0gutter);
+    }
+}
+
+.summary {
+    font-family: Merriweather;
+
+    margin-bottom: 0;
+
+    color: #666;
+
+    @include grid-media($sba-grid-large) {
+        font-size: 24px;
+
+        @include grid-column(8, $desktop-0gutter);
+    }
+}
+
+.downloadButton {
+    margin-bottom: 20px;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        float: right;
+    }
+}
+
+.body {
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(8, $desktop-0gutter);
+    }
+}
+
+
+
+.dashContainer {
+    @include grid-media($sba-grid-medium-and-small) {
+        @include grid-column(6, $mobile-0gutter);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(8, $desktop-0gutter);
+    }
+}
+
+.dash {
+    width: 77px;
+}
