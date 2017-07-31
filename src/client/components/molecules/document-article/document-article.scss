@@ -117,3 +117,19 @@
 .dash {
     width: 77px;
 }
+
+.relatedProgramsContainer {
+	@include grid-media($sba-grid-medium-and-small){
+		@include grid-column(6, $mobile-0gutter)
+	}
+	@include grid-media($sba-grid-large){
+		@include grid-column(12, $desktop-0gutter)
+	}
+	& hr {
+		margin: 10px 0 10px 0;
+	}
+}
+
+.relatedPrograms {
+    font-weight: bold;
+}

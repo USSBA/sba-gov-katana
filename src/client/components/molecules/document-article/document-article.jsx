@@ -28,6 +28,8 @@ class DocumentArticle extends React.Component {
 		window.open(this.state.newestFile.url, '_blank')
 	}
 
+	render
+
   render() {
   	const data = this.props.data
   	const newestFile = this.state.newestFile
@@ -44,7 +46,16 @@ class DocumentArticle extends React.Component {
      		</div>
      		<div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
      		<TextSection className={s.body} text={data.body}/>
-
+     		<div className={s.relatedProgramsContainer}>
+	     		<hr className={s.hr}/>
+		     		<span className={s.relatedPrograms}>Related programs: </span>
+		     		{
+		     			data.programs.map((program, index) => {
+		     				return <span><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
+		     			})
+		     		}
+	     		<hr className={s.hr}/>
+     		</div>
      	</div>
      );
 	}
