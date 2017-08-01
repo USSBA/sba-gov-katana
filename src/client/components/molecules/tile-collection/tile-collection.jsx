@@ -6,6 +6,23 @@ import Tile from "./tile.jsx"
 
 class TileCollection extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      panelShowingHoverState: -1
+    }
+  }
+
+  onFocus(index) {
+    console.log("onFocus", index)
+    this.setState({panelShowingHoverState: index});
+  }
+
+  onBlur(index) {
+    console.log("onBlur", index)
+    this.setState({panelShowingHoverState: -1});
+  }
+
   makeTile(object, index) {
     let iconElement = this.props.icons[index];
     let tileProps = {
@@ -19,7 +36,14 @@ class TileCollection extends React.Component {
       size: this.props.icons.length,
       uppercaseFirstWord: this.props.uppercaseFirstWord,
       splitTitle: this.props.splitTitle,
-      topLevelLinks: this.props.topLevelLinks
+      topLevelLinks: this.props.topLevelLinks,
+      onFocus: () => {
+        this.onFocus(index)
+      },
+      onBlur: () => {
+        this.onBlur(index)
+      },
+      showHover: index === this.state.panelShowingHoverState
     };
     return (<Tile {...tileProps}/>);
   }
