@@ -123,7 +123,7 @@ function makeParagraphFieldFormatter(typeName) {
       if (fieldName === "field_bg_contact_category") {
         modifiedFieldName = "field_category";
       }
-    } else if (typeName === "sbic_contact") {
+  } else if (typeName === "sbic_contact" || typeName === "surety_bond_contact") {
       if (fieldName === "field_single_contact_category") {
         modifiedFieldName = "field_category";
       }
@@ -225,7 +225,7 @@ function makeParagraphValueFormatter(typeName, paragraph) {
         newValuePromise = Promise.resolve(extractValue(value));
       }
     } else if (typeName === "surety_bond_contact") {
-      if (key === "singleContactCategory") {
+      if (key === "category") {
         newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
           return item.name;
         });
