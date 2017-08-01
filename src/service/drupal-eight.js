@@ -484,6 +484,7 @@ function formatNode(data, isChild = false) {
     const otherData = {};
     otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
+    otherData.id = extractValue(data.nid);
 
     // Create an object minus the "one-off" fields above
     const minimizedData = _.omit(data, ["field_site_location"]);
