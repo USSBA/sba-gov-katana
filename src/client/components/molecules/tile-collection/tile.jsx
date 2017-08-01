@@ -26,14 +26,14 @@ class Tile extends React.Component {
   }
 
   _openNavMenu(link) {
-      if(this.props.topLevelLinks){
-         this.props.locationActions.locationChange(this.props.data.fullUrl, {
-           action: "Landing Page Panel Pushed",
-           label: document.location.pathname
-         });
-      }else if (window.innerWidth <= 1080) {
-        this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
-      }
+    if (this.props.topLevelLinks) {
+      this.props.locationActions.locationChange(this.props.data.fullUrl, {
+        action: "Landing Page Panel Pushed",
+        label: document.location.pathname
+      });
+    } else if (window.innerWidth <= 1080) {
+      this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
+    }
 
   }
 
@@ -68,8 +68,12 @@ class Tile extends React.Component {
       data: this.props.data,
       icon: this.props.icon,
       iconWhite: this.props.iconWhite,
-      largeTitle: this.props.splitTitle? this._formatLargeTitle() : this.props.data.title,
-      smallTitle: this.props.splitTitle? this._formatSmallTitle() : "",
+      largeTitle: this.props.splitTitle
+        ? this._formatLargeTitle()
+        : this.props.data.title,
+      smallTitle: this.props.splitTitle
+        ? this._formatSmallTitle()
+        : "",
       uppercaseFirstWord: this.props.uppercaseFirstWord
     };
 
@@ -106,12 +110,18 @@ class Tile extends React.Component {
 
 class StaticTile extends React.Component {
 
-
   render() {
+    let smallTitleComponent = this.props.smallTitle
+      ? (
+        <h4 className={s.smallTitle + " " + (this.props.uppercaseFirstWord
+          ? s.upperCase
+          : "")}>{this.props.smallTitle}</h4>
+      )
+      : undefined;
     return (
       <div id={this.props.id} className={s.tileNormal + " " + (this.props.inverse
         ? s.tileInverse
-        : "")} >
+        : "")}>
         <img id={this.props.id + "-icon"} className={s.icon} src={this.props.inverse
           ? this.props.iconWhite
           : this.props.icon} alt=""/>
@@ -121,9 +131,7 @@ class StaticTile extends React.Component {
           <h2 className={s.largeTitle + " " + (this.props.uppercaseFirstWord
             ? s.upperCase
             : "")}>{this.props.largeTitle}</h2>
-          <h4 className={s.smallTitle + " " + (this.props.uppercaseFirstWord
-            ? s.upperCase
-            : "")}>{this.props.smallTitle}</h4>
+          {smallTitleComponent}
         </div>
         <i className={s.rightArrow + " fa fa-angle-right"}></i>
         <div className={s.line + " " + (this.props.inverse
@@ -141,10 +149,10 @@ class StaticTile extends React.Component {
 class HoverTileWithHoverLinks extends React.Component {
 
   _handleClick(linkObject) {
-      this.props.locationActions.locationChange(linkObject.fullUrl, {
-        action: "Landing Page Link Pushed",
-        label: document.location.pathname
-      });
+    this.props.locationActions.locationChange(linkObject.fullUrl, {
+      action: "Landing Page Link Pushed",
+      label: document.location.pathname
+    });
   }
 
   render() {
@@ -154,9 +162,9 @@ class HoverTileWithHoverLinks extends React.Component {
         <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         <div className={s.topLine}></div>
         {this.props.data.children.map((object, index) => {
-          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}/>
-        })
-}
+              return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}/>
+            })
+        }
       </div>
     );
   }
