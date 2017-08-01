@@ -36,7 +36,6 @@ function fetchContentById(req, res) {
         .then((result) => {
           console.log("Caching " + compositeKey);
           cache.put(compositeKey, result);
-          console.log("cache keys are now", cache.keys());
           return result;
         });
     }
@@ -60,8 +59,7 @@ function fetchContentById(req, res) {
 function fetchContentByType(req, res) {
   if (req.params && req.params.type) {
     const type = req.params.type;
-    const compositeKey = type + (!_.isEmpty(req.query) ? "-" + querystring.stringify(req.query).replace(/\=/g, "-") : "");
-    console.log("compositeKey", compositeKey);
+    const compositeKey = type + (!_.isEmpty(req.query) ? "-" + querystring.stringify(req.query) : "");
     let promise;
     if (cache.get(compositeKey)) {
       console.log("Using cached content");
@@ -71,7 +69,6 @@ function fetchContentByType(req, res) {
         .then((result) => {
           console.log("Caching " + compositeKey);
           cache.put(compositeKey, result);
-          console.log("cache keys are now", cache.keys());
           return result;
         });
     }

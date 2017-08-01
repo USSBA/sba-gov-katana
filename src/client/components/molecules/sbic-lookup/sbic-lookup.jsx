@@ -9,7 +9,6 @@ import Paginator from "../../molecules/paginator/paginator.jsx";
 var pageSize = 10;
 class SbicLookup extends React.Component {
 		constructor(ownProps) {
-			console.log("ownProps", ownProps)
 			super();
 			this.state = {
 				contacts: ownProps.items || [],
@@ -26,7 +25,6 @@ class SbicLookup extends React.Component {
 
 
 		componentWillReceiveProps(nextProps, ownProps) {
-			console.log("nextProps", nextProps)
 			this.setState({
 				contacts: nextProps.items
 			}, () => {
@@ -175,8 +173,8 @@ class SbicLookup extends React.Component {
 			)
 		})
 	}
-	
-	
+
+
 	handleBack() {
 		this.setState({
 			pageStart: Math.max(1, this.state.pageStart - pageSize),
@@ -190,7 +188,7 @@ class SbicLookup extends React.Component {
 			pageEnd: Math.min(this.state.pageEnd + pageSize, this.state.contacts.length)
 		})
 	}
-	
+
 
 	renderContacts() {
 		let slice = this.state.contacts.slice(this.state.pageStart-1, this.state.pageEnd)
