@@ -3,6 +3,7 @@ import s from "./tile.scss"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ModalActions from '../../../actions/show-modal.js'
+import * as LocationChangeActions from '../../../actions/navigation.js';
 
 import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
 
@@ -24,10 +25,16 @@ class Tile extends React.Component {
     return arr.join(" ")
   }
 
-  _openNavMenu() {
-    if (window.innerWidth <= 1080) {
-      this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
-    }
+  _openNavMenu(link) {
+      if(this.props.topLevelLinks){
+         this.props.locationActions.locationChange(this.props.data.fullUrl, {
+           action: "Landing Page Panel Pushed",
+           label: document.location.pathname
+         });
+      }else if (window.innerWidth <= 1080) {
+        this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
+      }
+
   }
 
   _toggleTileClassOnTab() {
@@ -68,7 +75,7 @@ class Tile extends React.Component {
 
     let hoverTile = this.props.hoverShowsInverseOnly
       ? (<StaticTile {...baseTileData} inverse id={this.props.id + '-hover'}/>)
-      : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'}/>);
+      : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'} locationActions={this.props.locationActions}/>);
 
     return (
       <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
@@ -99,11 +106,12 @@ class Tile extends React.Component {
 
 class StaticTile extends React.Component {
 
+
   render() {
     return (
       <div id={this.props.id} className={s.tileNormal + " " + (this.props.inverse
         ? s.tileInverse
-        : "")}>
+        : "")} >
         <img id={this.props.id + "-icon"} className={s.icon} src={this.props.inverse
           ? this.props.iconWhite
           : this.props.icon} alt=""/>
@@ -133,7 +141,10 @@ class StaticTile extends React.Component {
 class HoverTileWithHoverLinks extends React.Component {
 
   _handleClick(linkObject) {
-    document.location = linkObject.fullUrl
+      this.props.locationActions.locationChange(linkObject.fullUrl, {
+        action: "Landing Page Link Pushed",
+        label: document.location.pathname
+      });
   }
 
   render() {
@@ -143,7 +154,7 @@ class HoverTileWithHoverLinks extends React.Component {
         <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         <div className={s.topLine}></div>
         {this.props.data.children.map((object, index) => {
-          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick}/>
+          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}/>
         })
 }
       </div>
@@ -165,7 +176,8 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ModalActions, dispatch)
+    actions: bindActionCreators(ModalActions, dispatch),
+    locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile);
