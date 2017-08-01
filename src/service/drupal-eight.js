@@ -177,6 +177,12 @@ function makeNodeFieldFormatter(typeName) {
       modifiedFieldName = "field_summary";
     } else if (fieldName === "field_document_id") {
       modifiedFieldName = "field_documents";
+    } else if (fieldName === "field_doc_number") {
+      modifiedFieldName = "field_document_id_number";
+    } else if (fieldName === "field_doc_id_type") {
+      modifiedFieldName = "field_document_id_type";
+    } else if (fieldName === "field_doc_id_type") {
+      modifiedFieldName = "field_document_id_type";
     } else if (pluralizedFields.includes(fieldName)) {
       modifiedFieldName = `${fieldName}s`;
     }
@@ -303,7 +309,7 @@ function makeParagraphValueFormatter(typeName, paragraph) {
   };
 }
 
-function makeNodeValueFormatter(typeName, isChild = false) {
+function makeNodeValueFormatter(typeName) {
   return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
     if (value === null || !Array.isArray(value) || value.length === 0) {
@@ -323,12 +329,17 @@ function makeNodeValueFormatter(typeName, isChild = false) {
     } else if (key === "activitys" || key === "programs") {
       newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
     } else if (typeName === "document" && key === "relatedDocuments") {
-      newValuePromise = isChild ? Promise.resolve([]) : fetchNestedNodes(value);
+      newValuePromise = fetchNestedNodes(value);
+    } else if (value[0].target_type === "taxonomy_term") {
+      if (key === "activitys" || key === "programs") { // Multiple
+        newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
+      } else { // Single
+        newValuePromise = fetchFormattedTaxonomyName(extractTargetId(value));
+      }
     } else if (value[0].target_type === "paragraph") {
-      // Some fields expect multiple values, some expect single
-      if (key === "bannerImage") {
+      if (key === "bannerImage") { // Single
         newValuePromise = fetchNestedParagraph(value);
-      } else {
+      } else { // Multiple
         newValuePromise = fetchNestedParagraphs(value);
       }
     } else {
@@ -487,10 +498,13 @@ function formatNode(data, isChild = false) {
     otherData.id = extractValue(data.nid);
 
     // Create an object minus the "one-off" fields above
-    const minimizedData = _.omit(data, ["field_site_location"]);
+    let minimizedData = _.omit(data, ["field_site_location"]);
+    if (isChild) {
+      minimizedData = _.omit(minimizedData, ["field_related_documents"]);
+    }
 
     // Extract any other fields
-    const nodeValueFormatter = makeNodeValueFormatter(nodeType, isChild);
+    const nodeValueFormatter = makeNodeValueFormatter(nodeType);
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.all([extractedFieldsPromise]).spread((extractedFields) => {
@@ -555,4 +569,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter };

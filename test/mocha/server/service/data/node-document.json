@@ -109,18 +109,17 @@
       "format": "basic_html"
     }
   ],
-  "field_document_id": [
+  "field_doc_id_type": [
     {
-      "target_id": 1,
-      "target_revision_id": 13081,
-      "target_type": "paragraph",
-      "target_uuid": "294ae437-9582-42cc-9ac8-0376000d972a"
-    },
+      "target_id": 3,
+      "target_type": "taxonomy_term",
+      "target_uuid": "e8133a5a-1796-4502-8e12-86388941039a",
+      "url": "/taxonomy/term/3"
+    }
+  ],
+  "field_doc_number": [
     {
-      "target_id": 2,
-      "target_revision_id": 13082,
-      "target_type": "paragraph",
-      "target_uuid": "a91cdf08-1def-4905-846d-8653ed6b706d"
+      "value": "17 01 A"
     }
   ],
   "field_file": [
@@ -162,6 +161,11 @@
   "field_summary160": [
     {
       "value": "Document Summary"
+    }
+  ],
+  "field_omb_number": [
+    {
+      "value": "1234"
     }
   ]
 }

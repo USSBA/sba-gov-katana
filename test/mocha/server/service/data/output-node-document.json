@@ -24,8 +24,8 @@
     }
   ],
   "documentIdNumber": "17 01 A",
-  "documentIdType": "SOP",
-  "ombIdNumber": "17 01 D",
+  "documentIdType": "Authorization",
+  "ombNumber": "1234",
   "body": "<p>With a body</p>\r\n",
   "officeLink": {
     "url": "http://office-link.example.com",
