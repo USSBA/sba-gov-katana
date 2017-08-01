@@ -10,7 +10,7 @@ class DocumentCard extends React.Component {
     render() {
         const id = this.props.documents[0].number;
 
-        const ActivityRow = this.props.activitys ?
+        const ActivityRow = this.props.activitys && this.props.activitys.length >0 ?
             (<div className={s.row}> 
                     <div className={s.columnOne}>Activity:</div>
                     <div className={s.columnTwo}>{this.props.activitys.join(", ")}</div>
