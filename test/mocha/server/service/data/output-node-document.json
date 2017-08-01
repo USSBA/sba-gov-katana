@@ -23,18 +23,9 @@
       "version": "4"
     }
   ],
-  "documents": [
-    {
-      "idType": "Authorization",
-      "number": "17 01 A",
-      "type": "documentId"
-    },
-    {
-      "idType": "General",
-      "number": "17 01 D",
-      "type": "documentId"
-    }
-  ],
+  "documentIdNumber": "17 01 A",
+  "documentIdType": "SOP",
+  "ombIdNumber": "17 01 D",
   "body": "<p>With a body</p>\r\n",
   "officeLink": {
     "url": "http://office-link.example.com",

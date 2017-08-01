@@ -303,11 +303,11 @@ function makeParagraphValueFormatter(typeName, paragraph) {
   };
 }
 
-function makeNodeValueFormatter(typeName) {
+function makeNodeValueFormatter(typeName, isChild = false) {
   return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
     if (value === null || !Array.isArray(value) || value.length === 0) {
-      const arrayedFields = ["paragraphs", "files", "relatedDocuments"];
+      const arrayedFields = ["paragraphs", "files", "relatedDocuments", "programs", "activitys"];
       if (arrayedFields.includes(key)) {
         // Special case for fields expecting arrays
         newValuePromise = Promise.resolve([]);
@@ -322,6 +322,8 @@ function makeNodeValueFormatter(typeName) {
       newValuePromise = formatLink(value);
     } else if (key === "activitys" || key === "programs") {
       newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
+    } else if (typeName === "document" && key === "relatedDocuments") {
+      newValuePromise = isChild ? Promise.resolve([]) : fetchNestedNodes(value);
     } else if (value[0].target_type === "paragraph") {
       // Some fields expect multiple values, some expect single
       if (key === "bannerImage") {
@@ -336,6 +338,9 @@ function makeNodeValueFormatter(typeName) {
   };
 }
 
+function makeChildNodeValueFormatter(typeName) {
+  return makeNodeValueFormatter(typeName, true);
+}
 
 function formatCallToAction(data) {
   const cta = {};
@@ -431,11 +436,9 @@ function fetchFormattedParagraph(paragraphId) {
       return null;
     });
 }
-
 function fetchNestedParagraphs(paragraphs) {
   if (paragraphs) {
     const paragraphIds = _.map(paragraphs, "target_id");
-
     return Promise.map(paragraphIds, fetchFormattedParagraph).then((result) => {
       return _.compact(result);
     });
@@ -451,8 +454,30 @@ function fetchNestedParagraph(paragraphs) {
   }
   return Promise.resolve(null);
 }
+function fetchNestedNodes(nodes) {
+  if (nodes) {
+    const nodeIds = _.map(nodes, "target_id");
+    return Promise.map(nodeIds, fetchFormattedChildNode).then((result) => {
+      return _.compact(result);
+    });
+  }
+  return Promise.resolve(null);
+}
+function fetchNestedNode(nodes) {
+  if (nodes) {
+    if (nodes.length > 1) {
+      console.log(`WARNING: fetchNestedNode called, but was given multiple nodes: ${JSON.stringify(nodes)}`);
+    }
+    return fetchFormattedChildNode(extractTargetId(nodes));
+  }
+  return Promise.resolve(null);
+}
 
-function formatNode(data) {
+function formatChildNode(data) {
+  return formatNode(data, true);
+}
+
+function formatNode(data, isChild = false) {
   if (data) {
     // Process other required data
     const nodeType = extractTargetId(data.type);
@@ -464,7 +489,7 @@ function formatNode(data) {
     const minimizedData = _.omit(data, ["field_site_location"]);
 
     // Extract any other fields
-    const nodeValueFormatter = makeNodeValueFormatter(nodeType);
+    const nodeValueFormatter = makeNodeValueFormatter(nodeType, isChild);
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.all([extractedFieldsPromise]).spread((extractedFields) => {
@@ -520,6 +545,9 @@ function formatMenuTree(data, parentUrl) {
 
 function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
+}
+function fetchFormattedChildNode(nodeId) {
+  return fetchNodeById(nodeId).then(formatChildNode);
 }
 
 function fetchFormattedMenu() {
