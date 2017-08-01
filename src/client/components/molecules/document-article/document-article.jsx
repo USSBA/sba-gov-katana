@@ -5,6 +5,7 @@ import DocumentType from '../../atoms/document-type/document-type.jsx'
 import TextSection from '../text-section/text-section.jsx'
 import DecorativeDash from '../../atoms/decorative-dash/decorative-dash.jsx'
 import Button from '../../atoms/large-primary-button/large-primary-button.jsx'
+import moment from 'moment'
 
 class DocumentArticle extends React.Component {
 	constructor(){
@@ -28,7 +29,9 @@ class DocumentArticle extends React.Component {
 		window.open(this.state.newestFile.url, '_blank')
 	}
 
-	render
+	formatDate(date){
+		return moment(date).format('MMM D, YYYY')
+	}
 
   render() {
   	const data = this.props.data
@@ -37,7 +40,7 @@ class DocumentArticle extends React.Component {
      	<div className={s.page}>
      		<DocumentType type={data.docType} number={data.docNumber}/>
      		<h1 className={s.title}>{data.title}</h1>
-     		<p className={s.dates}>Expiration {newestFile.expirationDate} <span>|</span> Effective {newestFile.effectiveDate}</p>
+     		<p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)} <span>|</span> Effective {this.formatDate(newestFile.effectiveDate)}</p>
      		<div className={s.office}>By <a href={data.office.uri}>{data.office.title}</a></div>
      		<hr className={s.hr}/>
      		<div className={s.summaryContainer}>
@@ -51,7 +54,7 @@ class DocumentArticle extends React.Component {
 		     		<span className={s.relatedPrograms}>Related programs: </span>
 		     		{
 		     			data.programs.map((program, index) => {
-		     				return <span><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
+		     				return <span key={index}><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
 		     			})
 		     		}
 	     		<hr className={s.hr}/>

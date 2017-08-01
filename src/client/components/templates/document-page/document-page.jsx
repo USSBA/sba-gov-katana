@@ -22,7 +22,7 @@ class DocumentPage extends React.Component {
 }
 
 DocumentPage.defaultProps = {
-  fakeData: fakeDocumentData
+  fakeData: fakeDocumentData[0]
 }
 
 export default DocumentPage 
