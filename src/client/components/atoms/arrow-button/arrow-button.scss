@@ -15,3 +15,7 @@
     padding: 10px 10px;
     @include font-size($h5-font-sizes);
 }
+
+.noLeftBorder{
+    border-left-width: 0px;
+}
