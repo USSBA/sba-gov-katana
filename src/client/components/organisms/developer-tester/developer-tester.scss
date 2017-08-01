@@ -1,7 +1,8 @@
 .container{
+    margin-top: 100px;
     background-color: white;
-    @include grid-column(7, $sba-grid-large);
-    @include grid-push(4);
+    @include grid-column(3, $sba-grid-large);
+    @include grid-push(3);
 }
 
 .imageThing{

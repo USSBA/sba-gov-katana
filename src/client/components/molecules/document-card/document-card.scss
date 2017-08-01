@@ -1,0 +1,61 @@
+.container {
+    border: 1px solid #BEBDBD;
+    background-color: #FFFFFF;
+    padding: 20px;
+}
+
+.typeAndId {
+   margin-bottom: 20px;
+}
+
+.type {
+    @include font-size($h6-font-sizes);
+    padding: 10px;
+    display: inline-block;
+    border: 2px solid #DBEDC0;
+}
+
+.id {
+    @include font-size($h6-font-sizes);
+    padding: 10px;
+    display: inline-block;
+    border: 2px solid #DBEDC0;
+}
+
+.title {
+    text-decoration: underline;
+}
+
+@include background-color-theme(".type", $lightest-color-map);
+@include border-color-theme(".type", $lightest-color-map);
+@include border-color-theme(".id", $lightest-color-map);
+.details {}
+
+.row {
+    width: 100%;
+}
+
+.columnOne {
+    font-weight: 700;
+    display: inline-block;
+    width: 100px;
+}
+
+.columnTwo {
+    display: inline-block;
+}
+
+.dash {
+    width: 50px;
+}
+
+.download{
+    margin-top: 42px;
+}
+
+.link {
+    @include font-size($h6-font-sizes);
+    margin-right: 10px;
+}
+
+@include color-theme(".link");
