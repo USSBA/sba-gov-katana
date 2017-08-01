@@ -194,7 +194,8 @@ describe("Drupal 8 Service with mocked endpoints", function() {
           paragraphs: [{
             "type": "sectionHeader",
             "text": "My Best Header Text"
-          }]
+          }],
+          id: 58
         };
         return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
           result.should.deep.equal(expectedResult);
