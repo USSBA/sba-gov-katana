@@ -10,9 +10,6 @@ import cornerLines from "../../../../../public/assets/images/corner-diagonal-lin
 class Tile extends React.Component {
   constructor() {
     super()
-    this.state = {
-      displayHoverMenu: false
-    }
   }
 
   _formatLargeTitle() {
@@ -47,20 +44,14 @@ class Tile extends React.Component {
 
   _mouseEnterTile() {
     if (window.innerWidth >= 1080) {
-      this.setState({displayHoverMenu: true})
+      this.props.onFocus();
     }
   }
 
   _mouseExitTile() {
-    if (window.innerWidth >= 1080) {
-      this.setState({displayHoverMenu: false})
+    if (window.innerWidth >= 1080 && this.props.hoverShowsInverseOnly) { // this hoverShowsInverseOnly is a hack to make this work on Funding Programs, but to continue to be broken in BG
+      this.props.onBlur();
     }
-  }
-
-  _tabFocusTile() {
-    this.setState({
-      displayHoverMenu: !this.state.displayHoverMenu
-    })
   }
 
   render() {
@@ -84,20 +75,12 @@ class Tile extends React.Component {
     return (
       <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
         ? s.tileFive
-        : s.tileFour)} onClick={() => {
-        this._openNavMenu()
-      }} onMouseEnter={() => {
-        this._mouseEnterTile()
-      }} onMouseLeave={() => {
-        this._mouseExitTile()
-      }}>
+        : s.tileFour)} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
         <a className={s.tabDisplayMenu} href="" onClick={(e) => {
           e.preventDefault()
-        }} onFocus={() => {
-          this._mouseEnterTile()
-        }}>toggle {this.props.data.title}
+        }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this._mouseExitTile.bind(this)}>toggle {this.props.data.title}
           menu</a>
-        {this.state.displayHoverMenu
+        {this.props.showHover
           ? hoverTile
           : (<StaticTile id={this.props.id + '-static'} {...baseTileData}/>)}
         {this.props.backgroundLines
@@ -162,9 +145,9 @@ class HoverTileWithHoverLinks extends React.Component {
         <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         <div className={s.topLine}></div>
         {this.props.data.children.map((object, index) => {
-              return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}/>
-            })
-        }
+          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}/>
+        })
+}
       </div>
     );
   }
