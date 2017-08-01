@@ -22,6 +22,7 @@ import paragraphDocFileTwo from "./data/paragraph-doc-file2.json";
 import paragraphDocIdOne from "./data/paragraph-doc-id1.json";
 import paragraphDocIdTwo from "./data/paragraph-doc-id2.json";
 import fieldBannerImage from "./data/field-banner-image.json";
+import fieldRelatedDocuments from "./data/field-related-documents.json";
 import nodeProgramPage from "./data/node-program-page.json";
 import nodeDocument from "./data/node-document.json";
 
@@ -229,6 +230,15 @@ describe("Drupal 8 Service with mocked endpoints", function() {
           result.buttons[1].should.deep.equal(expectedButtons[1]);
         });
       });
+      it("should handle an empty field_banner_image for program_page type", function() {
+        const bannerImage = [];
+        const localNode = _.set(_.cloneDeep(nodeProgramPage), "field_banner_image", bannerImage);
+        setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+        const expectedBannerImage = {};
+        return drupalEightDataService.formatNode(localNode).then((result) => {
+          result.bannerImage.should.deep.equal(expectedBannerImage);
+        });
+      });
     });
     describe("of type 'document': ", function() {
       it("should properly format a document type node", function() {
@@ -238,13 +248,52 @@ describe("Drupal 8 Service with mocked endpoints", function() {
           result.should.deep.equal(expectedResult);
         });
       });
-      it("should handle an empty field_banner_image for program_page type", function() {
-        const bannerImage = [];
-        const localNode = _.set(_.cloneDeep(nodeProgramPage), "field_banner_image", bannerImage);
-        setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
-        const expectedBannerImage = {};
-        return drupalEightDataService.formatNode(localNode).then((result) => {
-          result.bannerImage.should.deep.equal(expectedBannerImage);
+      it("should handle multiple nested field_related_documents nodes and not fetch further child nodes", function() {
+        const childOneTitle = "First Child Document Title";
+        const childTwoTitle = "Second Child Document Title";
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_related_documents", fieldRelatedDocuments);
+        const documentTwo = _.set(_.set(_.cloneDeep(nodeDocument), "title[0].value", childOneTitle), "field_related_documents", fieldRelatedDocuments);
+        const documentThree = _.set(_.cloneDeep(nodeDocument), "title[0].value", childTwoTitle);
+        setupDynamicStub([null, documentTwo, documentThree], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedRelatedDocuments = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          result.relatedDocuments.should.have.lengthOf(2);
+          result.relatedDocuments[0].title.should.equal(childOneTitle);
+          result.relatedDocuments[1].title.should.equal(childTwoTitle);
+          result.relatedDocuments[0].relatedDocuments.should.be.empty;
+          result.relatedDocuments[1].relatedDocuments.should.be.empty;
+        });
+      });
+      it("should return an empty array when given no related documents", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_related_documents", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedRelatedDocuments = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          result.relatedDocuments.should.deep.equal(expectedRelatedDocuments);
+        });
+      });
+      it("should return an empty array when given no programs", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_program", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedPrograms = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          result.programs.should.deep.equal(expectedPrograms);
+        });
+      });
+      it("should return an empty array when given no activitys", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_activity", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedActivitys = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          result.activitys.should.deep.equal(expectedActivitys);
+        });
+      });
+      it("should return an empty array when given no files", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_file", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedFiles = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          result.files.should.deep.equal(expectedFiles);
         });
       });
     });
