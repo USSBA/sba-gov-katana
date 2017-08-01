@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import styles from "./developer-tester.scss";
 
 import DocumentCard from "../../molecules/document-card/document-card.jsx";
-import DocumentPage from "../../templates/document-page/document-page.jsx";
+import DocumentPage from "../../pages/document-page/document-page.jsx";
 import _ from "lodash";
 
 export class DeveloperTester extends React.Component {
