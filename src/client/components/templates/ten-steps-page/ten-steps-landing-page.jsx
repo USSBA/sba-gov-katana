@@ -25,21 +25,17 @@ class TenStepsLandingPage extends React.Component {
     }
 
     handleSectionEnter(index){
-        console.log("Enter: " + index)
         this.setState({section: index}, this.toggleNavType)
     }
 
     handleSectionLeave(index){
-        console.log("Leave: " + index)
     }
 
     handleTitleSectionEnter(){
-        console.log("Enter: titleSection")
         this.setState({section: "titleSection"} , this.toggleNavType)
     }
 
     handleTitleSectionLeave(){
-        console.log("Leave: titleSection")
         this.setState({section: 0, navType: "center"})
     }
 
