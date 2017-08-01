@@ -5,7 +5,7 @@ import * as drupalEightDataService from "../../../../src/service/drupal-eight.js
 import * as drupalEightRestServiceClient from "../../../../src/models/dao/drupal8-rest.js";
 
 import outputBase from "./data/output.json";
-import outputDocumentBase from "./data/output-node-document.json";
+import outputNodeDocumentBase from "./data/output-node-document.json";
 import nodeBase from "./data/node.json";
 import firstParagraphBase from "./data/paragraph1.json";
 import secondParagraphBase from "./data/paragraph2.json";
@@ -243,8 +243,9 @@ describe("Drupal 8 Service with mocked endpoints", function() {
     });
     describe("of type 'document': ", function() {
       it("should properly format a document type node", function() {
-        setupDynamicStub([nodeDocument], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
-        const expectedResult = outputDocumentBase;
+        setupDynamicStub([nodeDocument], [{}, {}, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        console.log(`nodeDocument=${JSON.stringify(nodeDocument, null, 2)}`);
+        const expectedResult = outputNodeDocumentBase;
         return drupalEightDataService.formatNode(nodeDocument).then((result) => {
           result.should.deep.equal(expectedResult);
         });
@@ -261,32 +262,29 @@ describe("Drupal 8 Service with mocked endpoints", function() {
           result.relatedDocuments.should.have.lengthOf(2);
           result.relatedDocuments[0].title.should.equal(childOneTitle);
           result.relatedDocuments[1].title.should.equal(childTwoTitle);
-          result.relatedDocuments[0].relatedDocuments.should.be.empty;
-          result.relatedDocuments[1].relatedDocuments.should.be.empty;
+          result.relatedDocuments[0].should.not.have.property("relatedDocuments");
+          result.relatedDocuments[1].should.not.have.property("relatedDocuments");
         });
       });
       it("should return an empty array when given no related documents", function() {
         const documentOne = _.set(_.cloneDeep(nodeDocument), "field_related_documents", []);
         setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
-        const expectedRelatedDocuments = [];
         return drupalEightDataService.formatNode(documentOne).then((result) => {
-          result.relatedDocuments.should.deep.equal(expectedRelatedDocuments);
+          return result.relatedDocuments.should.be.empty;
         });
       });
       it("should return an empty array when given no programs", function() {
         const documentOne = _.set(_.cloneDeep(nodeDocument), "field_program", []);
         setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
-        const expectedPrograms = [];
         return drupalEightDataService.formatNode(documentOne).then((result) => {
-          result.programs.should.deep.equal(expectedPrograms);
+          return result.programs.should.be.empty;
         });
       });
       it("should return an empty array when given no activitys", function() {
         const documentOne = _.set(_.cloneDeep(nodeDocument), "field_activity", []);
         setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
-        const expectedActivitys = [];
         return drupalEightDataService.formatNode(documentOne).then((result) => {
-          result.activitys.should.deep.equal(expectedActivitys);
+          return result.activitys.should.be.empty;
         });
       });
       it("should return an empty array when given no files", function() {
@@ -294,7 +292,7 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
         const expectedFiles = [];
         return drupalEightDataService.formatNode(documentOne).then((result) => {
-          result.files.should.deep.equal(expectedFiles);
+          return result.files.should.be.empty;
         });
       });
     });
@@ -471,6 +469,23 @@ describe("Drupal 8 Service Helper Functions", function() {
       const prefix = "field_";
       const formatter = drupalEightDataService.makeParagraphFieldFormatter("subsection_header");
       formatter("field_subsection_header_text", prefix).should.equal("text");
+      done();
+    });
+  });
+  describe("makeNodeFieldFormatter", function() {
+    it("should create a valid formatter for document nodes", function(done) {
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeNodeFieldFormatter("node");
+      formatter("field_omb_number", prefix).should.equal("ombNumber");
+      formatter("field_summary160", prefix).should.equal("summary");
+      formatter("field_related_documents", prefix).should.equal("relatedDocuments");
+      formatter("field_program", prefix).should.equal("programs");
+      formatter("field_office_link", prefix).should.equal("officeLink");
+      formatter("field_file", prefix).should.equal("files");
+      formatter("field_doc_number", prefix).should.equal("documentIdNumber");
+      formatter("field_doc_id_type", prefix).should.equal("documentIdType");
+      formatter("field_body", prefix).should.equal("body");
+      formatter("field_activity", prefix).should.equal("activitys");
       done();
     });
   });
