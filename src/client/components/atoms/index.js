@@ -3,6 +3,7 @@ import ButtonBase from "./button-base/button-base.jsx";
 import CaptionText from "./caption-text/caption-text.jsx";
 import Carousel from "./carousel/carousel.jsx";
 import Checkbox from "./checkbox/checkbox.jsx";
+import DecorativeDash from "./decorative-dash/decorative-dash.jsx"
 import ExtraLargeTitleText from "./extra-large-title-text/extra-large-title-text.jsx";
 import FormErrorMessage from "./form-error-message/form-error-message.jsx";
 import HamburgerIcon from "./hamburger-icon/hamburger-icon.jsx";
@@ -15,6 +16,7 @@ import MainLogo from "./main-logo/main-logo.jsx";
 import Multiselect from "./multiselect/multiselect.jsx";
 import NewsletterSmallPrimaryButton from "./newsletter-small-primary-button/newsletter-small-primary-button.jsx";
 import PageLink from "./page-link/page-link.jsx";
+import PdfIcon from "./icons/pdf.jsx"
 import ProgressBar from "./progress-bar/progress-bar.jsx";
 import Radio from "./radio/radio.jsx";
 import SectionLink from "./section-link/section-link.jsx";
@@ -33,4 +35,4 @@ import TextInput from "./text-input/text-input.jsx";
 import Textarea from "./textarea/textarea.jsx";
 import UtilityLink from "./utility-link/utility-link.jsx";
 import ValidationIcon from "./validation-icon/validation-icon.jsx";
-export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, Textarea, UtilityLink, ValidationIcon };
+export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, Textarea, UtilityLink, ValidationIcon };
