@@ -11,23 +11,22 @@ class SuretyLookup extends React.Component {
   constructor(ownProps) {
     super();
     this.state = {
-      filteredContacts: ownProps.items,
+      filteredContacts: _.sortBy(ownProps.items,'title') || [],
       suretyState: null,
-				pageStart: 1,
-				pageEnd: pageSize,
+      pageNumber: 1,
       numberOfTimesUserHasSelectedAState: 0
     }
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
     this.setState({
-      filteredContacts: nextProps.items
+      filteredContacts: _.sortBy(nextProps.items,'title')
     });
   }
 
   handleSelect(e){
     let newValue = e.value;
-    this.setState({suretyState: e.value, numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState+1}, () => {
+    this.setState({suretyState: e.value, numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState+1, pageNumber: 1}, () => {
       this.filterContacts()
       if(this.props.afterChange){
         this.props.afterChange("surety-lookup",  newValue , this.state.numberOfTimesUserHasSelectedAState);
@@ -56,23 +55,22 @@ class SuretyLookup extends React.Component {
       options: options
     }
   }
-  
-  handleBack() {
-		this.setState({
-			pageStart: Math.max(1, this.state.pageStart - pageSize),
-			pageEnd: Math.max(pageSize, this.state.pageEnd - pageSize)
-		})
-	}
 
-	handleForward() {
-		this.setState({
-			pageStart: Math.min(this.state.pageStart + pageSize, this.state.filteredContacts.length - pageSize),
-			pageEnd: Math.min(this.state.pageEnd + pageSize, this.state.filteredContacts.length)
-		})
-	}
+  handleBack() {
+      this.setState({
+          pageNumber: Math.max(1, this.state. pageNumber-1)
+      })
+  }
+
+  handleForward() {
+      this.setState({
+          pageNumber: Math.min(Math.ceil(this.state.filteredContacts.length / pageSize), this.state. pageNumber+1)
+      })
+  }
 
   renderCards(){
-		let slice = this.state.filteredContacts.slice(this.state.pageStart-1, this.state.pageEnd)
+    let start = ((this.state.pageNumber-1) * pageSize);
+	let slice = this.state.filteredContacts.slice(start, start+pageSize)
     return slice.map((agency, index) => {
       return (
       <div id={'surety-card' + index} key={index} className={s.card}>
@@ -107,14 +105,14 @@ class SuretyLookup extends React.Component {
           <h2>Contact a surety bond agency</h2>
           <p className={s.blurb}>Check the database of surety agencies that offer SBA-guranteed bonds. Contact a surety agency in your state to get started with the application process.</p>
           <div className={s.multiSelect}>
-            <Multiselect 
-              {...this.multiSelectProps()} 
+            <Multiselect
+              {...this.multiSelectProps()}
               onChange={(e) => this.handleSelect(e)}
               value={this.state.suretyState}
               onBlur={() => {return null}}
               onFocus={() => {return null}}
               validationState=""
-              errorText="" 
+              errorText=""
               autoFocus={false}
               multi={false}
             />
@@ -125,14 +123,14 @@ class SuretyLookup extends React.Component {
           {this.renderCardContainer()}
         </div>
         <div className={s.paginator}>
-					<Paginator start={this.state.pageStart} end={this.state.pageEnd} total={this.state.filteredContacts.length} onBack={this.handleBack.bind(this)} onForward={this.handleForward.bind(this)}/>
+					<Paginator pageNumber={this.state.pageNumber} pageSize={pageSize} total={this.state.filteredContacts.length} onBack={this.handleBack.bind(this)} onForward={this.handleForward.bind(this)}/>
 				</div>
       </div>
     )
   }
 }
 
-const EmptyContacts = () => 
+const EmptyContacts = () =>
   <div className={s.emptyContacts}>
     <div>No surety agencies found</div>
   </div>

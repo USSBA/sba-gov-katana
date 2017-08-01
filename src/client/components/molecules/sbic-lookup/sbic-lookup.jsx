@@ -16,8 +16,7 @@ class SbicLookup extends React.Component {
 				sortByValue: "Investor Name",
 				industryValue: "All",
 				investingStatusValue: "All",
-				pageStart: 1,
-				pageEnd: pageSize
+				pageNumber: 1
 			}
 		}
 
@@ -37,6 +36,7 @@ class SbicLookup extends React.Component {
 			let stateCopy = this.state
 			let newValue = e.value;
 			stateCopy[selectStateKey] = newValue
+			stateCopy.pageNumber =1 ;
 			this.setState({...stateCopy
 			}, () => {
 		        this.sortAndFilterContacts();
@@ -177,21 +177,20 @@ class SbicLookup extends React.Component {
 
 	handleBack() {
 		this.setState({
-			pageStart: Math.max(1, this.state.pageStart - pageSize),
-			pageEnd: Math.max(pageSize, this.state.pageEnd - pageSize)
+			pageNumber: Math.max(1, this.state. pageNumber-1)
 		})
 	}
 
 	handleForward() {
 		this.setState({
-			pageStart: Math.min(this.state.pageStart + pageSize, this.state.contacts.length - pageSize),
-			pageEnd: Math.min(this.state.pageEnd + pageSize, this.state.contacts.length)
+			pageNumber: Math.min(Math.ceil(this.state.contacts.length / pageSize), this.state. pageNumber+1)
 		})
 	}
 
 
 	renderContacts() {
-		let slice = this.state.contacts.slice(this.state.pageStart-1, this.state.pageEnd)
+		let start =  ((this.state.pageNumber-1) * pageSize);
+		let slice = this.state.contacts.slice(start, start+pageSize)
 		return slice.map((contact, index) => {
 			return (
 				<tr key={index}>
@@ -243,7 +242,7 @@ class SbicLookup extends React.Component {
 						}
 				</table>
 				<div className={s.paginator}>
-					<Paginator start={this.state.pageStart} end={this.state.pageEnd} total={this.state.contacts.length} onBack={this.handleBack.bind(this)} onForward={this.handleForward.bind(this)}/>
+					<Paginator pageNumber={this.state.pageNumber} pageSize={pageSize} total={this.state.contacts.length} onBack={this.handleBack.bind(this)} onForward={this.handleForward.bind(this)}/>
 				</div>
 			</div>
 		);
