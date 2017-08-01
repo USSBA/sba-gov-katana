@@ -38,10 +38,10 @@ class DocumentArticle extends React.Component {
   	const newestFile = this.state.newestFile
      return (
      	<div className={s.page}>
-     		<DocumentType type={data.docType} number={data.docNumber}/>
+     		<DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
      		<h1 className={s.title}>{data.title}</h1>
      		<p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)} <span>|</span> Effective {this.formatDate(newestFile.effectiveDate)}</p>
-     		<div className={s.office}>By <a href={data.office.uri}>{data.office.title}</a></div>
+     		<div className={s.office}>By <a href={data.officeLink.url}>{data.officeLink.title}</a></div>
      		<hr className={s.hr}/>
      		<div className={s.summaryContainer}>
      		  <Button className={s.downloadButton} onClick={(e) => this.downloadClick(e)}text="download pdf"/>

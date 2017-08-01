@@ -1,13 +1,14 @@
 import React from 'react'
 import s from './document-page.scss'
 
-import fakeDocumentData from './fake-document-data.js'
+import localDocuments from "../../../../models/dao/documents.js";
 
 import DocumentArticle from '../../molecules/document-article/document-article.jsx'
 
 class DocumentPage extends React.Component {
 
   render() {
+    console.log(localDocuments)
      return (
      	<div>
      		{this.props.fakeData ? (
@@ -22,7 +23,7 @@ class DocumentPage extends React.Component {
 }
 
 DocumentPage.defaultProps = {
-  fakeData: fakeDocumentData[0]
+  fakeData: localDocuments[0]
 }
 
 export default DocumentPage 
