@@ -9,18 +9,22 @@ class TileCollection extends React.Component {
   constructor() {
     super();
     this.state = {
+      enteringInReverse: false,
+      markAsEnteringInReverse: false,
       panelShowingHoverState: -1
     }
   }
 
   onFocus(index) {
-    console.log("onFocus", index)
-    this.setState({panelShowingHoverState: index});
+    this.setState({panelShowingHoverState: index, enteringInReverse: this.state.markAsEnteringInReverse, markAsEnteringInReverse: false});
   }
 
   onBlur(index) {
-    console.log("onBlur", index)
-    this.setState({panelShowingHoverState: -1});
+    this.setState({panelShowingHoverState: -1, markAsEnteringInReverse: false});
+  }
+
+  onTabBackwards(index, recentlyEnteringInReverse) {
+    this.setState({panelShowingHoverState: index, markAsEnteringInReverse: true});
   }
 
   makeTile(object, index) {
@@ -43,6 +47,10 @@ class TileCollection extends React.Component {
       onBlur: () => {
         this.onBlur(index)
       },
+      onTabBackwards: () => {
+        this.onTabBackwards(index)
+      },
+      enteringInReverse: this.state.enteringInReverse,
       showHover: index === this.state.panelShowingHoverState
     };
     return (<Tile {...tileProps}/>);
