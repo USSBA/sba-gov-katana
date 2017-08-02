@@ -49,9 +49,15 @@ class Tile extends React.Component {
   }
 
   _mouseExitTile() {
-    if (window.innerWidth >= 1080 && this.props.hoverShowsInverseOnly) { // this hoverShowsInverseOnly is a hack to make this work on Funding Programs, but to continue to be broken in BG
-      this.props.onBlur();
+    if (window.innerWidth >= 1080) {
+      this.props.onMouseExit();
     }
+  }
+
+  handleBlur(){
+      if (window.innerWidth >= 1080 && this.props.hoverShowsInverseOnly) { // this hoverShowsInverseOnly is a hack to make this work on Funding Programs, but to continue to be broken in BG
+        this.props.onBlur();
+      }
   }
 
   handleKeyDown(event) {
@@ -88,7 +94,7 @@ class Tile extends React.Component {
         : s.tileFour)} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
         <a className={s.tabDisplayMenu} href="" onClick={(e) => {
           e.preventDefault()
-        }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this._mouseExitTile.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
+        }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this.handleBlur.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
           toggle {this.props.data.title}
           menu</a>
         {this.props.showHover

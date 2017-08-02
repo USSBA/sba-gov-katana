@@ -47,6 +47,9 @@ class TileCollection extends React.Component {
       onBlur: () => {
         this.onBlur(index)
       },
+      onMouseExit: () => {
+        this.onBlur(index)
+      },
       onTabBackwards: () => {
         this.onTabBackwards(index)
       },
