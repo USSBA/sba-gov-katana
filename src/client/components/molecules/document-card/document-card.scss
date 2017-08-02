@@ -1,35 +1,39 @@
 .container {
-    border: 1px solid #BEBDBD;
-    background-color: #FFFFFF;
-    padding: 20px;
+    border: 1px solid #bebdbd;
+    background-color: #fff;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        padding: 15px;
+        margin-bottom: 20px;
+        @include grid-column(6)
+
+    }
+    @include grid-media($sba-grid-large) {
+        padding: 20px;
+        margin-bottom: 30px;
+
+        @include grid-column(4)
+    }
 }
 
-.typeAndId {
-   margin-bottom: 20px;
+.documentTypeContainer {
+    margin-bottom: 20px;
 }
 
-.type {
+.documentType > div {
+    padding: 5px 10px 5px 10px;
+
     @include font-size($h6-font-sizes);
-    padding: 10px;
-    display: inline-block;
-    border: 2px solid #DBEDC0;
-}
-
-.id {
-    @include font-size($h6-font-sizes);
-    padding: 10px;
-    display: inline-block;
-    border: 2px solid #DBEDC0;
 }
 
 .title {
     text-decoration: underline;
 }
 
-@include background-color-theme(".type", $lightest-color-map);
-@include border-color-theme(".type", $lightest-color-map);
-@include border-color-theme(".id", $lightest-color-map);
-.details {}
+@include background-color-theme('.type', $lightest-color-map);
+@include border-color-theme('.type', $lightest-color-map);
+@include border-color-theme('.id', $lightest-color-map);
+
 
 .row {
     width: 100%;
@@ -37,7 +41,9 @@
 
 .columnOne {
     font-weight: 700;
+
     display: inline-block;
+
     width: 100px;
 }
 
@@ -49,13 +55,14 @@
     width: 50px;
 }
 
-.download{
+.download {
     margin-top: 42px;
 }
 
 .link {
-    @include font-size($h6-font-sizes);
     margin-right: 10px;
+
+    @include font-size($h6-font-sizes);
 }
 
-@include color-theme(".link");
+@include color-theme('.link');
