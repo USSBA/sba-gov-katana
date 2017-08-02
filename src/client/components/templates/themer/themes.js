@@ -3,7 +3,7 @@ import _ from "lodash";
 const themes = {
   "sba-blue": ["styleguide"],
   "byzantine": ["guide", "business-guide"],
-  "money-green": ["lendermatch", "funding-programs"],
+  "money-green": ["lendermatch", "funding-programs", "document"],
   "cobalt-blue": []
 };
 

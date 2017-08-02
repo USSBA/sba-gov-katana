@@ -35,4 +35,6 @@ import TextInput from "./text-input/text-input.jsx";
 import Textarea from "./textarea/textarea.jsx";
 import UtilityLink from "./utility-link/utility-link.jsx";
 import ValidationIcon from "./validation-icon/validation-icon.jsx";
-export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, Textarea, UtilityLink, ValidationIcon };
+import SearchIcon from "./icons/search.jsx";
+
+export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, Textarea, UtilityLink, ValidationIcon, SearchIcon };
