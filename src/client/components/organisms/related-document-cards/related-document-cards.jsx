@@ -23,10 +23,7 @@ class RelatedDocumentCards extends React.Component {
 				return relatedDocument.documentIdType;
 			})
 		).map(docType => {
-			sortedDocuments[docType] = _.filter(relatedDocuments, [
-				"documentIdType",
-				docType
-			]);
+			sortedDocuments[docType] = _.filter(relatedDocuments, ["documentIdType", docType]);
 		});
 		this.setState({ sortedDocuments: sortedDocuments });
 	}
@@ -34,12 +31,16 @@ class RelatedDocumentCards extends React.Component {
 	renderRelatedDocumentSections() {
 		let sortedDouments = this.state.sortedDocuments;
 		return _.keys(this.state.sortedDocuments).map((documentType, index) => {
+			let documents = sortedDouments[documentType];
 			return (
-				<RelatedDocumentSection
-					key={index}
-					documentType={documentType}
-					documents={sortedDouments[documentType]}
-				/>
+				<div>
+					<h2 className={s.sectionTitle}>
+						{documentType}
+					</h2>
+					<div>
+						<DocumentCardCollection documentLookup={false} documents={documents} />
+					</div>
+				</div>
 			);
 		});
 	}
@@ -47,30 +48,13 @@ class RelatedDocumentCards extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.sortedDocuments
-					? this.renderRelatedDocumentSections()
-					: <div>loading</div>}
-			</div>
-		);
-	}
-}
-
-class RelatedDocumentSection extends React.Component {
-	render() {
-		return (
-			<div>
-				<h2 className={s.sectionTitle}>
-					{this.props.documentType}
-				</h2>
-				<div>
-					<DocumentCardCollection
-						documentLookup={false}
-						documents={this.props.documents}
-					/>
-				</div>
+				{this.state.sortedDocuments ? this.renderRelatedDocumentSections() : <div>loading</div>}
 			</div>
 		);
 	}
 }
 
 export default RelatedDocumentCards;
+
+
+

@@ -1,13 +1,14 @@
 .sectionTitle {
-		@include grid-media($sba-grid-medium-and-small){
-			@include grid-column(12)
-			margin-top: 40px;
-			margin-bottom: 20px;
-		}
-    @include grid-media($sba-grid-large) {
-        margin-top: 60px;
-        margin-bottom: 40px;
+	@include grid-media($sba-grid-medium-and-small) {
+		margin-top: 40px;
+		margin-bottom: 20px;
 
-        @include grid-column(12)
-    }
+		@include grid-column(12);
+	}
+	@include grid-media($sba-grid-large) {
+		margin-top: 60px;
+		margin-bottom: 40px;
+
+		@include grid-column(12);
+	}
 }
