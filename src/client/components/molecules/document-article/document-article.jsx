@@ -29,22 +29,22 @@ class DocumentArticle extends React.Component {
      return (
      	<div className={"document-article " + s.page}>
      		<DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
-     		<h1 className={"title " + s.title}>{data.title}</h1>
+     		<h1 className={"document-article-title " + s.title}>{data.title}</h1>
      		<p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)} <span>|</span> Effective {this.formatDate(newestFile.effectiveDate)}</p>
      		<div className={s.office}>By <a href={data.officeLink.url}>{data.officeLink.title}</a></div>
      		<hr className={s.hr}/>
      		<div className={s.summaryContainer}>
-     		  <Button className={"pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(e)}text="download pdf"/>
-     			<p className={"summary " + s.summary}>{data.summary}</p>
+     		  <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(e)}text="download pdf"/>
+     			<p className={"document-article-summary " + s.summary}>{data.summary}</p>
      		</div>
      		<div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
      		<TextSection className={s.body} text={data.body}/>
-     		<div className={"related-programs-container " + s.relatedProgramsContainer}>
+     		<div className={"document-article-related-programs-container " + s.relatedProgramsContainer}>
 	     		<hr className={s.hr}/>
 		     		<span className={s.relatedPrograms}>Related programs: </span>
 		     		{
 		     			data.programs.map((program, index) => {
-		     				return <span className="related-programs-link" key={index}><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
+		     				return <span className="document-article-related-programs-link" key={index}><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
 		     			})
 		     		}
 	     		<hr className={s.hr}/>
