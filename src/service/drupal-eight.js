@@ -8,6 +8,7 @@ import path from "path";
 import localContacts from "../models/dao/sample-data/contacts.js";
 import sbicContacts from "../models/dao/sample-data/sbic-contacts.js";
 import suretyContacts from "../models/dao/sample-data/surety-contacts.js";
+import documents from "../models/dao/sample-data/documents.js";
 const localDataMap = {
   "State registration": localContacts,
   "SBIC": sbicContacts,
@@ -15,11 +16,13 @@ const localDataMap = {
 };
 
 
+
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
 const paragraphEndpoint = "entity/paragraph";
 const contactEndpoint = "contacts";
+const documentEndpoint = "documents";
 const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 
@@ -91,6 +94,26 @@ function convertUrlHost(urlStr) {
     return urlStr.replace(/^internal:/, "");
   }
   return urlStr;
+}
+
+
+//contacts content type
+function fetchDocuments() {
+  if (config.get("drupal8.useLocalContacts")) {
+    console.log("Using Development Documents information");
+    return Promise.resolve(documents);
+  }
+
+  return fetchContent(documentEndpoint)
+    .then((data) => {
+      if (data) {
+        return Promise.map(data, formatNode, {
+          concurrency: 50
+        });
+      } else {
+        return Promise.resolve([]);
+      }
+    });
 }
 
 //contacts content type
@@ -168,6 +191,7 @@ function makeParagraphFieldFormatter(typeName) {
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
   };
 }
+
 function makeNodeFieldFormatter(typeName) {
   return function(fieldName, prefix = "field_") { //eslint-disable-line complexity
     let modifiedFieldName = fieldName;
@@ -236,6 +260,7 @@ function fetchFormattedTaxonomyName(id) {
     return item.name;
   });
 }
+
 function fetchFormattedTaxonomyNames(ids) {
   return Promise.mapSeries(ids, fetchFormattedTaxonomyName);
 }
@@ -448,6 +473,7 @@ function fetchFormattedParagraph(paragraphId) {
       return null;
     });
 }
+
 function fetchNestedParagraphs(paragraphs) {
   if (paragraphs) {
     const paragraphIds = _.map(paragraphs, "target_id");
@@ -457,6 +483,7 @@ function fetchNestedParagraphs(paragraphs) {
   }
   return Promise.resolve(null);
 }
+
 function fetchNestedParagraph(paragraphs) {
   if (paragraphs) {
     if (paragraphs.length > 1) {
@@ -466,6 +493,7 @@ function fetchNestedParagraph(paragraphs) {
   }
   return Promise.resolve(null);
 }
+
 function fetchNestedNodes(nodes) {
   if (nodes) {
     const nodeIds = _.map(nodes, "target_id");
@@ -475,6 +503,7 @@ function fetchNestedNodes(nodes) {
   }
   return Promise.resolve(null);
 }
+
 function fetchNestedNode(nodes) {
   if (nodes) {
     if (nodes.length > 1) {
@@ -562,6 +591,7 @@ function formatMenuTree(data, parentUrl) {
 function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
+
 function fetchFormattedChildNode(nodeId) {
   return fetchNodeById(nodeId).then(formatChildNode);
 }
@@ -570,4 +600,4 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchDocuments };

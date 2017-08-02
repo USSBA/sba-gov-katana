@@ -1,17 +1,21 @@
 import React from "react";
 import s from "./document-page.scss";
-import * as RestContentActions from "../../../actions/rest-content.js";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import localDocuments from "../../../../models/dao/sample-data/documents.js";
+import * as ContentActions from "../../../actions/content.js";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import DocumentArticle from "../../molecules/document-article/document-article.jsx";
 
 class DocumentPage extends React.Component {
+
+  componentWillMount() {
+    this.props.actions.fetchContentIfNeeded("documents", "documents");
+  }
+
   render() {
     return (
       <div>
         {this.props.documents
-          ? <DocumentArticle data={this.props.documents} />
+          ? <DocumentArticle data={this.props.documents[0]}/>
           : <div>LOADING DOCUMENT DATA</div>}
       </div>
     );
@@ -19,16 +23,16 @@ class DocumentPage extends React.Component {
 }
 
 DocumentPage.defaultProps = {
-  documents: localDocuments[0]
+  documents: []
 };
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  return {};
+  return {documents: reduxState.contentReducer["documents"]};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(RestContentActions, dispatch)
+    actions: bindActionCreators(ContentActions, dispatch)
   };
 }
 

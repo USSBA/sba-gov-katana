@@ -21,69 +21,68 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded("contacts", this.props.type, {category: this.props.subtype});
+    let queryArgs = this.props.subtype
+      ? {
+        category: this.props.subtype
+      }
+      : null;
+    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
   }
 
-  componentWillReceiveProps(nextProps, ownProps){
-      this.setState({filteredItems: nextProps.items});
+  componentWillReceiveProps(nextProps, ownProps) {
+    this.setState({filteredItems: nextProps.items});
   }
 
-  fireEvent(category, action, value){
-      logEvent({
-          category: category,
-          action: action,
-          label: window.location.pathname,
-          value: value
-      })
+  fireEvent(category, action, value) {
+    logEvent({category: category, action: action, label: window.location.pathname, value: value})
   }
-
 
   render() {
 
-    let SelectedLookup = <div />
+    let SelectedLookup = <div/>
     let _props = {
       items: this.state.filteredItems,
       title: this.props.title,
       afterChange: this.fireEvent.bind(this)
     }
 
-    if(this.props.type === "contacts") {
+    if (this.props.type === "contacts") {
 
       switch (this.props.subtype) {
-        
+
         case "State registration":
-          
-          SelectedLookup = <ContactCardLookup {..._props} />
-          
+
+          SelectedLookup = <ContactCardLookup {..._props}/>
+
           break;
 
         case "SBIC":
 
-          SelectedLookup = <SbicLookup {..._props} />
+          SelectedLookup = <SbicLookup {..._props}/>
 
           break;
 
         case "Surety bond agency":
 
-          SelectedLookup = <SuretyLookup {..._props} />
+          SelectedLookup = <SuretyLookup {..._props}/>
 
           break;
 
       }
-        
-    } else if(this.props.type === "document") {
-      
-      SelectedLookup = <DocumentLookup {..._props} />
-    
-    } 
+
+    } else if (this.props.type === "documents") {
+
+      SelectedLookup = <DocumentLookup {..._props}/>
+
+    }
 
     return (
 
-        <div>
-          {SelectedLookup}
-        </div>
+      <div>
+        {SelectedLookup}
+      </div>
 
-      )
+    )
 
   }
 }
@@ -101,8 +100,6 @@ Lookup.defaultProps = {
   display: "cards",
   items: []
 }
-
-
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
