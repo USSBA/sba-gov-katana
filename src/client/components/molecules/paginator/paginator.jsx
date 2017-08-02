@@ -4,7 +4,7 @@ import {ArrowButton} from "../../atoms";
 
 class Paginator extends React.Component {
   render() {
-    let start = 1 + ((this.props.pageNumber-1) * this.props.pageSize);
+    let start = 1 + ((this.props.pageNumber - 1) * this.props.pageSize);
     let end = Math.min(start + this.props.pageSize - 1, this.props.total);
     return (
       <div id={this.props.id} className={s.container}>
@@ -34,11 +34,11 @@ Paginator.propTypes = {
 };
 
 Paginator.defaultProps = {
-    onForward: ()=>{},
-    onBack: ()=>{},
-    pageNumber: 1,
-    pageSize: 0,
-    total: 0
+  onForward: () => {},
+  onBack: () => {},
+  pageNumber: 1,
+  pageSize: 0,
+  total: 0
 }
 
 export default Paginator;
