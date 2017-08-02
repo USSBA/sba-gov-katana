@@ -5,16 +5,16 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import localDocuments from "../../../../models/dao/sample-data/documents.js";
 import DocumentArticle from "../../molecules/document-article/document-article.jsx";
-import RelatedDocumentCards from "../../molecules/related-document-cards/related-document-cards.jsx"
+import RelatedDocumentCards from "../../organisms/related-document-cards/related-document-cards.jsx";
 
 class DocumentPage extends React.Component {
   render() {
     return (
       <div>
-        {this.props.documents
+        {this.props.document
           ? <div>
-              <DocumentArticle data={this.props.documents} />
-              <RelatedDocumentCards />
+              <DocumentArticle data={this.props.document} />
+              <RelatedDocumentCards documentObj={this.props.document}/>
             </div>
           : <div>LOADING DOCUMENT DATA</div>}
       </div>
@@ -23,7 +23,7 @@ class DocumentPage extends React.Component {
 }
 
 DocumentPage.defaultProps = {
-  documents: localDocuments[0]
+  document: localDocuments[15]
 };
 
 function mapReduxStateToProps(reduxState, ownProps) {
