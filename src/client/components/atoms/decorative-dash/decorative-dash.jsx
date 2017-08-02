@@ -5,7 +5,7 @@ class DecorativeDash extends React.Component {
 	
 	render() {
 	
-		return <hr className={styles.decorativeDash} />
+		return <hr className={styles.decorativeDash + " " + this.props.className} />
 	
 	}
 
