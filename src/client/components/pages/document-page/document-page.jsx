@@ -23,7 +23,7 @@ class DocumentPage extends React.Component {
 }
 
 DocumentPage.defaultProps = {
-  document: localDocuments[15]
+  document: localDocuments[0]
 };
 
 function mapReduxStateToProps(reduxState, ownProps) {
