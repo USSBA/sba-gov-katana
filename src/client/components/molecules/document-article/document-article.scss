@@ -23,7 +23,7 @@
 .dates {
     font-family: Merriweather;
 
-    color: #666;
+    color: $grey;
 
     @include grid-media($sba-grid-medium-and-small) {
         @include grid-column(4, $mobile-0gutter);
@@ -63,7 +63,7 @@
         @include grid-column(6, $mobile-0gutter);
     }
     @include grid-media($sba-grid-large) {
-        font-size: 24px;
+        @include font-size($h4-font-sizes);
 
         @include grid-column(12, $desktop-0gutter);
     }
@@ -74,10 +74,10 @@
 
     margin-bottom: 0;
 
-    color: #666;
+    color: $grey;
 
     @include grid-media($sba-grid-large) {
-        font-size: 24px;
+        @include font-size($h4-font-sizes);
 
         @include grid-column(8, $desktop-0gutter);
     }

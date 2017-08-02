@@ -8,16 +8,6 @@ import Button from '../../atoms/large-primary-button/large-primary-button.jsx'
 import moment from 'moment'
 
 class DocumentArticle extends React.Component {
-	constructor(){
-		super()
-		this.state = {
-			newestFile: null
-		}
-	}
-
-	componentWillMount(){
-		this.setState({newestFile: this.getNewestFile()})
-	}
 
 	getNewestFile(){
 		return this.props.data.files.reduce((acc, file) => {
@@ -35,7 +25,7 @@ class DocumentArticle extends React.Component {
 
   render() {
   	const data = this.props.data
-  	const newestFile = this.state.newestFile
+  	const newestFile = this.getNewestFile()
      return (
      	<div className={s.page}>
      		<DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
