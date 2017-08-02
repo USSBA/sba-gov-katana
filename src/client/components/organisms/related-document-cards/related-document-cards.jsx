@@ -11,7 +11,6 @@ class RelatedDocumentCards extends React.Component {
 	}
 
 	componentWillMount() {
-		//https://repl.it/Js5X
 		this.sortRelatedDocuments();
 	}
 
@@ -23,21 +22,18 @@ class RelatedDocumentCards extends React.Component {
 				return relatedDocument.documentIdType;
 			})
 		).map(docType => {
-			sortedDocuments[docType] = _.filter(relatedDocuments, ["documentIdType", docType]);
+			sortedDocuments[docType] = _.filter(relatedDocuments, [
+				"documentIdType",
+				docType
+			]);
 		});
 		this.setState({ sortedDocuments: sortedDocuments });
 	}
 
-	renderDocumentCards(){
-		console.log(this.state.sortedDocuments)
-		return (
-			<div>oioioioi</div>
-		)
-		_.mapKeys(this.state.sortedDocuments, (documentArr, type) => {
-			return <div>oioioio</div>	
-			documentArr.map((document, index) => {
-				console.log(document)
-			})
+	renderRelatedDocumentSections() {
+		let sortedDoumentsObj = this.state.sortedDocuments
+		return _.keys(this.state.sortedDocuments).map((documentType) => {
+			return <RelatedDocumentSection documentType={documentType} documentArr={sortedDoumentsObj[documentType]}/>
 		})
 	}
 
@@ -45,11 +41,18 @@ class RelatedDocumentCards extends React.Component {
 		return (
 			<div>
 				{this.state.sortedDocuments
-					? this.renderDocumentCards()
+					? this.renderRelatedDocumentSections()
 					: <div>loading</div>}
 				<div>sfsdf</div>
 			</div>
 		);
+	}
+}
+
+class RelatedDocumentSection extends React.Component {
+	render() {
+		console.log(this.props.documentArr)
+		return <div>RelatedDocuments component</div>;
 	}
 }
 
