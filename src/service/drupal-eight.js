@@ -600,4 +600,30 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchDocuments };
+function fetchTaxonomyVocabulary(queryParams) {
+  const data = [{
+    "name": "documentType",
+    "terms": ["All", "OMB", "SBA form", "SOP", "Public Law (PL)"]
+  }, {
+    "name": "program",
+    "terms": ["All", "Lending programs", "504/CDC", "Microloans"]
+  }, {
+    "name": "documentActivity",
+    "terms": ["All", "Lending", "Authorization", "Servicing"]
+  }, {
+    "name": "state",
+    "terms": ["All", "PA", "MD", "VA"]
+  }];
+  let names = _.map(data, "name");
+  if (queryParams.names) {
+    names = queryParams.names.split(",");
+  }
+  return Promise.resolve(data)
+    .then((results) => {
+      return _.filter(results, (item) => {
+        return _.includes(names, item.name);
+      });
+    });
+}
+
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchDocuments, fetchTaxonomyVocabulary };
