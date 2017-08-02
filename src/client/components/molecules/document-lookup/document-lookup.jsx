@@ -253,20 +253,7 @@ class DocumentLookup extends React.Component {
 						/>
 					</div>}
 				</div>
-				<table className={s.table}>
-					<thead>
-						<tr>
-							<th className={s.nameAndAddressHead}>Investor name & address</th>
-							<th className={s.industryHead}>Industry</th>
-							<th className={s.activeSinceHead}>Active since</th>
-							<th className={s.investingStatusHead}>Investing status</th>
-							<th className={s.contactInfoHead}>Contact info</th>
-						</tr>
-					</thead>
-						{
-							this.state.documents ? <tbody>{this.renderDocuments()}</tbody> : <tbody>loading</tbody>
-						}
-				</table>
+				{this.renderDocuments()}
 			</div>
 		);
 	}
