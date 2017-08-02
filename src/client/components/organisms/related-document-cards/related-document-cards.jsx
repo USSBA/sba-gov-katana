@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./related-document-cards.scss";
 import _ from "lodash";
+import DocumentCardCollection from "../document-card-collection/document-card-collection.jsx";
 
 class RelatedDocumentCards extends React.Component {
 	constructor() {
@@ -31,10 +32,16 @@ class RelatedDocumentCards extends React.Component {
 	}
 
 	renderRelatedDocumentSections() {
-		let sortedDoumentsObj = this.state.sortedDocuments
-		return _.keys(this.state.sortedDocuments).map((documentType) => {
-			return <RelatedDocumentSection documentType={documentType} documentArr={sortedDoumentsObj[documentType]}/>
-		})
+		let sortedDouments = this.state.sortedDocuments;
+		return _.keys(this.state.sortedDocuments).map((documentType, index) => {
+			return (
+				<RelatedDocumentSection
+					key={index}
+					documentType={documentType}
+					documents={sortedDouments[documentType]}
+				/>
+			);
+		});
 	}
 
 	render() {
@@ -43,7 +50,6 @@ class RelatedDocumentCards extends React.Component {
 				{this.state.sortedDocuments
 					? this.renderRelatedDocumentSections()
 					: <div>loading</div>}
-				<div>sfsdf</div>
 			</div>
 		);
 	}
@@ -51,8 +57,19 @@ class RelatedDocumentCards extends React.Component {
 
 class RelatedDocumentSection extends React.Component {
 	render() {
-		console.log(this.props.documentArr)
-		return <div>RelatedDocuments component</div>;
+		return (
+			<div>
+				<h2 className={s.sectionTitle}>
+					{this.props.documentType}
+				</h2>
+				<div>
+					<DocumentCardCollection
+						documentLookup={false}
+						documents={this.props.documents}
+					/>
+				</div>
+			</div>
+		);
 	}
 }
 
