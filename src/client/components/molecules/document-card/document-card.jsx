@@ -72,6 +72,21 @@ const SummaryRow = props =>
       </div>
     : null;
 
+DocumentCard.defaultProps = {
+  type: "MyType",
+  summary: "Document Summary",
+  title: "Document Title ABC",
+  programs: ["Program 1", "Program 2"],
+  documents: [
+    {
+      idType: "Authorization",
+      number: "00 01 A",
+      type: "documentId"
+    }
+  ],
+  activities: []
+};
+
 DocumentCard.propTypes = {};
 
 export default DocumentCard;
