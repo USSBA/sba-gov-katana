@@ -6,15 +6,15 @@ import style from "./document-lookup-page.scss";
 import Lookup from "../../molecules/lookup/lookup.jsx";
 
 class DocumentLookupPage extends React.Component {
-  
+
   render() {
     return (
       <div>
-        <Lookup title="Document Lookup" type="document" />
+        <Lookup title="Document Lookup" type="documents"/>
       </div>
     );
   }
-  
+
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {

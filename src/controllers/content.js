@@ -1,7 +1,7 @@
 import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/drupal-rest.js";
 import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
 import { fetchMainMenu } from "../models/dao/main-menu.js";
-import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu, fetchCounsellorCta } from "../service/drupal-eight.js";
+import { fetchFormattedNode, fetchFormattedTaxonomyTerm, fetchContacts, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments } from "../service/drupal-eight.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
 import querystring from "querystring";
@@ -19,7 +19,8 @@ const fetchContentTypeFunctions = {
   frontpageslides: fetchFrontPageSlidesFromDrupal,
   "main-menu": fetchMainMenu,
   menu: fetchFormattedMenu,
-  counsellorCta: fetchCounsellorCta
+  counsellorCta: fetchCounsellorCta,
+  documents: fetchDocuments
 };
 
 function fetchContentById(req, res) {

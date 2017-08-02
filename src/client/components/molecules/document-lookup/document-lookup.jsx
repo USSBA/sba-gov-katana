@@ -1,25 +1,26 @@
 import React from "react";
-import { pick } from "lodash";
+import {pick} from "lodash";
 import _ from "lodash";
 
 import s from "./document-lookup.scss";
 import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
-import { Multiselect, TextInput, SearchIcon } from "../../atoms";
+import {Multiselect, TextInput, SearchIcon} from "../../atoms";
+import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx"
 
 const createSlug = (str) => {
-	return str.toLowerCase()
-		.replace(/[^\w\s-]/g, "") // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-		.replace(/[\s_-]+/g, "-") // swap any length of whitespace, underscore, hyphen characters with a single -
-		.replace(/^-+|-+$/g, "");
+  return str.toLowerCase().replace(/[^\w\s-]/g, ""). // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+  replace(/[\s_-]+/g, "-"). // swap any length of whitespace, underscore, hyphen characters with a single -
+  replace(/^-+|-+$/g, "");
 };
 
 const createCamelCase = (str) => {
-	const sliceIndex = 1;
-	const _str = str[0].toLowerCase() + str.slice(sliceIndex);
-	return _str.replace(" ", "");
+  const sliceIndex = 1;
+  const _str = str[0].toLowerCase() + str.slice(sliceIndex);
+  return _str.replace(" ", "");
 };
 
 class DocumentLookup extends React.Component {
+
 		constructor(ownProps) {
 			console.log("ownProps", ownProps)
 			super();
@@ -265,6 +266,7 @@ class DocumentLookup extends React.Component {
 			</div>
 		);
 	}
+	
 }
 
 export default DocumentLookup;
