@@ -203,7 +203,7 @@ class DocumentLookup extends React.Component {
 	}
 
 	renderDocuments() {
-		return <div>document list here</div>;
+		return <DocumentCardCollection documents={this.state.documents}/>;
 	}
 
 	handleKeyUp(event) {
