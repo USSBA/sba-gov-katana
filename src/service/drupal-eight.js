@@ -34,8 +34,22 @@ function extractProperty(object, key) {
   return null;
 }
 
+function extractProperties(object, key) {
+  return _.map(object, (item) => {
+    return extractProperty([item], key);
+  });
+}
+
+function extractPropertyPromise(object, key) {
+  return Promise.resolve(extractProperty(object, key));
+}
+
 function extractValue(object, key) {
   return extractProperty(object, "value");
+}
+
+function extractConvertedUrl(object, key = "url") {
+  return convertUrlHost(extractProperty(object, key));
 }
 
 function extractValuePromise(value, key) {
@@ -44,6 +58,10 @@ function extractValuePromise(value, key) {
 
 function extractTargetId(object) {
   return extractProperty(object, "target_id");
+}
+
+function extractTargetIds(object) {
+  return extractProperties(object, "target_id");
 }
 
 function fetchNodeById(nodeId) {
@@ -109,8 +127,6 @@ function formatContact(contact) {
   });
 }
 
-
-
 function defaultFieldNameFormatter(fieldName, prefix = "field_") {
   return _.chain(fieldName).replace(prefix, "").camelCase()
     .value();
@@ -123,13 +139,29 @@ function makeParagraphFieldFormatter(typeName) {
       if (fieldName === "field_bg_contact_category") {
         modifiedFieldName = "field_category";
       }
-    } else if (typeName === "sbic_contact") {
+    } else if (typeName === "sbic_contact" || typeName === "surety_bond_contact") {
       if (fieldName === "field_single_contact_category") {
         modifiedFieldName = "field_category";
       }
     } else if (typeName === "banner_image" && fieldName === "field_banner_image") {
       modifiedFieldName = "image";
-    } else if (typeName !== "image") {
+    } else if (typeName === "doc_file") {
+      if (fieldName === "field_doc_effective") {
+        modifiedFieldName = "effectiveDate";
+      } else if (fieldName === "field_doc_expiration") {
+        modifiedFieldName = "expirationDate";
+      } else if (fieldName === "field_doc_file") {
+        modifiedFieldName = "fileUrl";
+      } else if (fieldName === "field_doc_version") {
+        modifiedFieldName = "version";
+      }
+    } else if (typeName === "document_id") {
+      if (fieldName === "field_doc_id_type") {
+        modifiedFieldName = "field_id_type";
+      } else if (fieldName === "field_doc_number") {
+        modifiedFieldName = "field_number";
+      }
+    } else if (prefix + typeName !== fieldName) {
       modifiedFieldName = _.replace(fieldName, typeName, "");
     }
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
@@ -138,12 +170,21 @@ function makeParagraphFieldFormatter(typeName) {
 function makeNodeFieldFormatter(typeName) {
   return function(fieldName, prefix = "field_") { //eslint-disable-line complexity
     let modifiedFieldName = fieldName;
-    if (typeName === "program_page") {
-      if (fieldName === "field_button") {
-        modifiedFieldName = "field_buttons";
-      } else if (fieldName === "field_summary160") {
-        modifiedFieldName = "field_summary";
-      }
+    const pluralizedFields = ["field_program", "field_file", "field_button", "field_activity"];
+    if (typeName === "program_page" && fieldName === "field_button") {
+      modifiedFieldName = "field_buttons";
+    } else if (fieldName === "field_summary160") {
+      modifiedFieldName = "field_summary";
+    } else if (fieldName === "field_document_id") {
+      modifiedFieldName = "field_documents";
+    } else if (fieldName === "field_doc_number") {
+      modifiedFieldName = "field_document_id_number";
+    } else if (fieldName === "field_doc_id_type") {
+      modifiedFieldName = "field_document_id_type";
+    } else if (fieldName === "field_doc_id_type") {
+      modifiedFieldName = "field_document_id_type";
+    } else if (pluralizedFields.includes(fieldName)) {
+      modifiedFieldName = `${fieldName}s`;
     }
     return defaultFieldNameFormatter(modifiedFieldName, prefix);
   };
@@ -183,11 +224,19 @@ function formatTaxonomyTerm(data) {
       });
   }
   return {};
-
 }
 
 function fetchFormattedTaxonomyTerm(taxonomyTermId) {
   return fetchTaxonomyTermById(taxonomyTermId).then(formatTaxonomyTerm);
+}
+
+function fetchFormattedTaxonomyName(id) {
+  return fetchFormattedTaxonomyTerm(id).then((item) => {
+    return item.name;
+  });
+}
+function fetchFormattedTaxonomyNames(ids) {
+  return Promise.mapSeries(ids, fetchFormattedTaxonomyName);
 }
 
 function formatLink(value, index = 0) {
@@ -198,20 +247,18 @@ function formatLink(value, index = 0) {
 }
 
 
+
 function makeParagraphValueFormatter(typeName, paragraph) {
   return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
     if (typeName === "text_section" && key === "text") {
       newValuePromise = Promise.resolve(sanitizeTextSectionHtml(extractValue(value)));
-    } else if (typeName === "lookup" && key === "contactCategory") {
-      const taxonomyTermId = extractTargetId(value);
-      newValuePromise = fetchFormattedTaxonomyTerm(taxonomyTermId).then((result) => {
-        return result.name;
-      });
+    } else if ((typeName === "lookup" && key === "contactCategory") || key === "idType") {
+      newValuePromise = fetchFormattedTaxonomyName(extractTargetId(value));
     } else if (typeName === "card_collection" && key === "cards") {
-      newValuePromise = fetchNestedParagraph(paragraph, "card_collection"); //eslint-disable-line no-use-before-define
+      newValuePromise = fetchNestedParagraphs(paragraph.field_cards);
     } else if (typeName === "style_gray_background") {
-      newValuePromise = fetchNestedParagraph(paragraph, "style_gray_background"); //eslint-disable-line no-use-before-define
+      newValuePromise = fetchNestedParagraphs(paragraph.field_paragraphs);
     } else if (typeName === "business_guide_contact" || typeName === "sbic_contact") {
       if (key === "category" || key === "stateServed") {
         newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
@@ -225,10 +272,8 @@ function makeParagraphValueFormatter(typeName, paragraph) {
         newValuePromise = Promise.resolve(extractValue(value));
       }
     } else if (typeName === "surety_bond_contact") {
-      if (key === "singleContactCategory") {
-        newValuePromise = fetchFormattedTaxonomyTerm(extractTargetId(value)).then((item) => {
-          return item.name;
-        });
+      if (key === "category") {
+        newValuePromise = fetchFormattedTaxonomyName(extractTargetId(value));
       } else if (key === "stateServed") {
         newValuePromise = Promise.map(value, (state) => {
           return fetchFormattedTaxonomyTerm(state.target_id).then((formattedState) => {
@@ -249,6 +294,10 @@ function makeParagraphValueFormatter(typeName, paragraph) {
           alt: value[0].alt
         });
       }
+    } else if (key === "fileUrl") {
+      if (value[0]) {
+        newValuePromise = Promise.resolve(extractConvertedUrl(value));
+      }
     } else if (key === "link") {
       if (value[0]) {
         newValuePromise = formatLink(value);
@@ -261,18 +310,38 @@ function makeParagraphValueFormatter(typeName, paragraph) {
 }
 
 function makeNodeValueFormatter(typeName) {
-  return function(value, key) {
+  return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
-    if (!(Array.isArray(value) & value.length > 0)) {
-      newValuePromise = Promise.resolve({});
+    if (value === null || !Array.isArray(value) || value.length === 0) {
+      const arrayedFields = ["paragraphs", "files", "relatedDocuments", "programs", "activitys"];
+      if (arrayedFields.includes(key)) {
+        // Special case for fields expecting arrays
+        newValuePromise = Promise.resolve([]);
+      } else {
+        newValuePromise = Promise.resolve({});
+      }
     } else if (typeName === "program_page" && key === "buttons") {
       newValuePromise = Promise.map(value, (button) => {
         return formatLink([button]);
       });
-    } else if (key === "button") {
+    } else if (key === "button" || key === "officeLink") {
       newValuePromise = formatLink(value);
-    } else if (key !== "paragraphs" && value[0].target_type === "paragraph") {
-      newValuePromise = fetchFormattedParagraph(extractTargetId(value)); //eslint-disable-line no-use-before-define
+    } else if (key === "activitys" || key === "programs") {
+      newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
+    } else if (typeName === "document" && key === "relatedDocuments") {
+      newValuePromise = fetchNestedNodes(value);
+    } else if (value[0].target_type === "taxonomy_term") {
+      if (key === "activitys" || key === "programs") { // Multiple
+        newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
+      } else { // Single
+        newValuePromise = fetchFormattedTaxonomyName(extractTargetId(value));
+      }
+    } else if (value[0].target_type === "paragraph") {
+      if (key === "bannerImage") { // Single
+        newValuePromise = fetchNestedParagraph(value);
+      } else { // Multiple
+        newValuePromise = fetchNestedParagraphs(value);
+      }
     } else {
       newValuePromise = Promise.resolve(extractValue(value));
     }
@@ -280,6 +349,9 @@ function makeNodeValueFormatter(typeName) {
   };
 }
 
+function makeChildNodeValueFormatter(typeName) {
+  return makeNodeValueFormatter(typeName, true);
+}
 
 function formatCallToAction(data) {
   const cta = {};
@@ -375,50 +447,68 @@ function fetchFormattedParagraph(paragraphId) {
       return null;
     });
 }
-
-function fetchNestedParagraph(nestedParagraph, typeName) {
-  if (nestedParagraph) {
-    let paragraphs;
-    if (typeName === "card_collection") {
-      paragraphs = nestedParagraph.field_cards || [];
-    } else if (typeName === "style_gray_background") {
-      paragraphs = nestedParagraph.field_paragraphs || [];
-    }
+function fetchNestedParagraphs(paragraphs) {
+  if (paragraphs) {
     const paragraphIds = _.map(paragraphs, "target_id");
-    return Promise.map(paragraphIds, fetchFormattedParagraph);
+    return Promise.map(paragraphIds, fetchFormattedParagraph).then((result) => {
+      return _.compact(result);
+    });
+  }
+  return Promise.resolve(null);
+}
+function fetchNestedParagraph(paragraphs) {
+  if (paragraphs) {
+    if (paragraphs.length > 1) {
+      console.log(`WARNING: fetchNestedParagraph called, but was given multiple paragraphs: ${JSON.stringify(paragraphs)}`);
+    }
+    return fetchFormattedParagraph(extractTargetId(paragraphs));
+  }
+  return Promise.resolve(null);
+}
+function fetchNestedNodes(nodes) {
+  if (nodes) {
+    const nodeIds = _.map(nodes, "target_id");
+    return Promise.map(nodeIds, fetchFormattedChildNode).then((result) => {
+      return _.compact(result);
+    });
+  }
+  return Promise.resolve(null);
+}
+function fetchNestedNode(nodes) {
+  if (nodes) {
+    if (nodes.length > 1) {
+      console.log(`WARNING: fetchNestedNode called, but was given multiple nodes: ${JSON.stringify(nodes)}`);
+    }
+    return fetchFormattedChildNode(extractTargetId(nodes));
   }
   return Promise.resolve(null);
 }
 
-function formatNode(data) {
+function formatChildNode(data) {
+  return formatNode(data, true);
+}
+
+function formatNode(data, isChild = false) {
   if (data) {
-    // Format Paragraphs
-    const paragraphs = data.field_paragraphs || [];
-    const paragraphIds = _.map(paragraphs, "target_id");
-    const paragraphDataPromises = Promise.map(paragraphIds, fetchFormattedParagraph);
-
-    // Format Taxonomy
-    const taxonomy = data.field_site_location;
-    const taxonomyPromise = taxonomy ? fetchFormattedTaxonomyTerm(extractTargetId(taxonomy)) : Promise.resolve(undefined); //eslint-disable-line no-undefined
-
     // Process other required data
     const nodeType = extractTargetId(data.type);
     const otherData = {};
     otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
+    otherData.id = extractValue(data.nid);
 
     // Create an object minus the "one-off" fields above
-    const minimizedData = _.omit(data, ["field_paragraphs", "field_site_location"]);
+    let minimizedData = _.omit(data, ["field_site_location"]);
+    if (isChild) {
+      minimizedData = _.omit(minimizedData, ["field_related_documents"]);
+    }
 
     // Extract any other fields
     const nodeValueFormatter = makeNodeValueFormatter(nodeType);
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
-    return Promise.all([paragraphDataPromises, taxonomyPromise, extractedFieldsPromise]).spread((paragraphData, taxonomyData, extractedFields) => {
-      const formattedNode = {
-        paragraphs: _.compact(paragraphData),
-        taxonomy: taxonomyData
-      };
+    return Promise.all([extractedFieldsPromise]).spread((extractedFields) => {
+      const formattedNode = {};
       _.merge(formattedNode, extractedFields, otherData);
       return formattedNode;
     });
@@ -471,9 +561,12 @@ function formatMenuTree(data, parentUrl) {
 function fetchFormattedNode(nodeId) {
   return fetchNodeById(nodeId).then(formatNode);
 }
+function fetchFormattedChildNode(nodeId) {
+  return fetchNodeById(nodeId).then(formatChildNode);
+}
 
 function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, fetchFormattedCallToActionByNodeId, formatLink };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter };

@@ -17,7 +17,7 @@ class Paginator extends React.Component {
             {this.props.total}</span>
         </p>
         <ArrowButton isBack onActivate={this.props.onBack}/>
-        <ArrowButton onActivate={this.props.onForward}/>
+        <ArrowButton noLeftBorder onActivate={this.props.onForward}/>
       </div>
     )
   }

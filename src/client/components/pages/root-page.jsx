@@ -44,7 +44,6 @@ class RootPage extends React.Component {
   }
 
   renderPage(first, second, third) {
-    console.log("rootpage", arguments)
     let pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
     if (first === "document") {
         let split = second.split("-");

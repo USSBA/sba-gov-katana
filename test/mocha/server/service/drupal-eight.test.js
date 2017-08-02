@@ -5,6 +5,7 @@ import * as drupalEightDataService from "../../../../src/service/drupal-eight.js
 import * as drupalEightRestServiceClient from "../../../../src/models/dao/drupal8-rest.js";
 
 import outputBase from "./data/output.json";
+import outputNodeDocumentBase from "./data/output-node-document.json";
 import nodeBase from "./data/node.json";
 import firstParagraphBase from "./data/paragraph1.json";
 import secondParagraphBase from "./data/paragraph2.json";
@@ -13,10 +14,17 @@ import fourthParagraphBase from "./data/paragraph4.json";
 import fifthParagraphBase from "./data/paragraph5-banner-image.json";
 import taxonomyOneBase from "./data/taxonomy1.json";
 import taxonomyTwoBase from "./data/taxonomy2.json";
+import taxonomyThreeBase from "./data/taxonomy3.json";
+import taxonomyFourBase from "./data/taxonomy4.json";
 import paragraphBannerImage from "./data/paragraph-banner-image.json";
+import paragraphDocFileOne from "./data/paragraph-doc-file1.json";
+import paragraphDocFileTwo from "./data/paragraph-doc-file2.json";
+import paragraphDocIdOne from "./data/paragraph-doc-id1.json";
+import paragraphDocIdTwo from "./data/paragraph-doc-id2.json";
 import fieldBannerImage from "./data/field-banner-image.json";
-//TODO: Delete this if it's no longer necessary
+import fieldRelatedDocuments from "./data/field-related-documents.json";
 import nodeProgramPage from "./data/node-program-page.json";
+import nodeDocument from "./data/node-document.json";
 
 
 describe("Drupal 8 Service with mocked endpoints", function() {
@@ -61,15 +69,19 @@ describe("Drupal 8 Service with mocked endpoints", function() {
 
   function runTest(done, output, extraAssertions) {
 
-    let myExtraAssertions = extraAssertions || _.identity();
+    const myExtraAssertions = extraAssertions || _.identity();
     return drupalEightDataService.fetchFormattedNode(1)
       .then((result) => {
         result.should.deep.equal(output);
         return result;
       })
       .then(myExtraAssertions)
-      .then(result => done())
-      .catch(error => done(error));
+      .then((result) => {
+        return done();
+      })
+      .catch((error) => {
+        return done(error);
+      });
   }
 
   it("should format the node data correctly", function(done) {
@@ -80,8 +92,8 @@ describe("Drupal 8 Service with mocked endpoints", function() {
   });
 
   it("should not have a title when there is not title", function(done) {
-    let localNode = _.set(_.cloneDeep(nodeBase), "title[0].value", null);
-    let output = _.assign({}, outputBase, {
+    const localNode = _.set(_.cloneDeep(nodeBase), "title[0].value", null);
+    const output = _.assign({}, outputBase, {
       title: null
     });
     setupStub(localNode, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
@@ -89,10 +101,10 @@ describe("Drupal 8 Service with mocked endpoints", function() {
   });
 
   it("should return normally when there are no paragraphs", function(done) {
-    let localNode = _.assign({}, nodeBase, {
+    const localNode = _.assign({}, nodeBase, {
       field_paragraphs: null
     });
-    let output = _.assign({}, outputBase, {
+    const output = _.assign({}, outputBase, {
       paragraphs: []
     });
     setupStub(localNode, null, null, null, null, taxonomyOneBase, taxonomyTwoBase);
@@ -101,37 +113,25 @@ describe("Drupal 8 Service with mocked endpoints", function() {
 
 
   it("should return normally less the paragraph when a paragraph is not found", function(done) {
-    let lastTwoParagraphs = _.slice(outputBase.paragraphs, 2);
-    let output = _.assign({}, outputBase, {
+    const lastTwoParagraphs = _.slice(outputBase.paragraphs, 2);
+    const output = _.assign({}, outputBase, {
       paragraphs: lastTwoParagraphs
     });
     setupStub(nodeBase, null, null, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
   });
 
-  it("should return normally less the taxonomy when no taxonomy is given", function(done) {
-    let localNode = _.assign({}, nodeBase, {
+  it("should ignore the taxonomy field entirely when field_site_location is null", function(done) {
+    const localNode = _.assign({}, nodeBase, {
       field_site_location: null
     });
-    let output = _.assign({}, outputBase, {
-      taxonomy: undefined
-    });
+    const output = _.assign({}, outputBase, {});
     setupStub(localNode, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, taxonomyOneBase, taxonomyTwoBase);
     runTest(done, output);
   });
 
-  it("should return normally less the taxonomy when the given taxonomy is not found", function(done) {
-    let output = _.assign({}, outputBase, {
-      taxonomy: {}
-    });
-    setupStub(nodeBase, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, null, taxonomyTwoBase);
-    runTest(done, output);
-  });
-
-  it("should return normally less the taxonomy when the given taxonomy is not found", function(done) {
-    let output = _.assign({}, outputBase, {
-      taxonomy: {}
-    });
+  it("should ignore the taxonomy field entirely when field_site_location is not set", function(done) {
+    const output = _.assign({}, outputBase, {});
     setupStub(nodeBase, firstParagraphBase, secondParagraphBase, thirdParagraphBase, fourthParagraphBase, null, taxonomyTwoBase);
     runTest(done, output);
   });
@@ -139,79 +139,161 @@ describe("Drupal 8 Service with mocked endpoints", function() {
   it("should return nothing when the requested node does not exist", function(done) {
     setupStub(null, null, null, null, null, null, null);
     runTest(done, {});
-  })
+  });
 
-  describe("formatNode", function() {
-    it("should properly format a program_page type node", function() {
-      setupDynamicStub([nodeProgramPage], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
-      const expectedResult = {
-        type: "programPage",
-        summary: "fieldSummaryText",
-        title: "Investment capital",
-        buttons: [{
-          title: "Find investors",
-          url: "#paragraph-11"
-        }],
-        bannerImage: {
-          "type": "bannerImage",
-          "image": {
-            "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg",
-            "alt": "DogeBannerAltText"
-          },
-          "captionText": "DogeBannerCaptionText",
-          "link": {
-            "url": "http://doge-banner-image.example.com",
-            "title": "Doge Banner Link Text"
-          }
-        },
-        paragraphs: [{
-          "type": "sectionHeader",
-          "text": "My Best Header Text"
-        }],
-        taxonomy: undefined
-      };
-      return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
+  describe("fetchFormattedTaxonomyNames", function() {
+    it("should return one taxonomy name in an array when given one ID", function() {
+      setupDynamicStub([], [], [taxonomyOneBase]);
+      const expectedResult = ["Plan"];
+      return drupalEightDataService.fetchFormattedTaxonomyNames([1]).then((result) => {
         result.should.deep.equal(expectedResult);
       });
     });
-
-    it("should handle multiple buttons for program_page type", function() {
-      const buttons = [
-        {
-          "uri": "http://left-button.example.com",
-          "title": "Left Button",
-          "options": []
-        },
-        {
-          "uri": "http://right-button.example.com",
-          "title": "Right Button",
-          "options": []
-        }
-      ];
-      let localNode = _.set(_.cloneDeep(nodeProgramPage), "field_button", buttons);
-      setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
-      const expectedButtons = [
-        {
-          url: "http://left-button.example.com",
-          title: "Left Button"
-        },
-        {
-          url: "http://right-button.example.com",
-          title: "Right Button"
-        },
-      ];
-      return drupalEightDataService.formatNode(localNode).then((result) => {
-        result.buttons[0].should.deep.equal(expectedButtons[0]);
-        result.buttons[1].should.deep.equal(expectedButtons[1]);
+    it("should return two taxonomy names in an array when given two IDs", function() {
+      setupDynamicStub([], [], [taxonomyOneBase, taxonomyTwoBase]);
+      const expectedResult = ["Plan", "Export express"];
+      return drupalEightDataService.fetchFormattedTaxonomyNames([1, 2]).then((result) => {
+        result.should.deep.equal(expectedResult);
       });
     });
-    it("should handle an empty field_banner_image for program_page type", function() {
-      const bannerImage = [];
-      let localNode = _.set(_.cloneDeep(nodeProgramPage), "field_banner_image", bannerImage);
-      setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
-      const expectedBannerImage = {};
-      return drupalEightDataService.formatNode(localNode).then((result) => {
-        result.bannerImage.should.deep.equal(expectedBannerImage);
+  });
+  describe("fetchFormattedTaxonomyName", function() {
+    it("should return a taxonomy name when given one ID", function() {
+      setupDynamicStub([], [], [taxonomyOneBase]);
+      const expectedResult = "Plan";
+      return drupalEightDataService.fetchFormattedTaxonomyName(1).then((result) => {
+        result.should.equal(expectedResult);
+      });
+    });
+  });
+
+  describe("formatNode ", function() {
+    describe("of type 'program_page': ", function() {
+      it("should properly format a program_page type node", function() {
+        setupDynamicStub([nodeProgramPage], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+        const expectedResult = {
+          type: "programPage",
+          summary: "fieldSummaryText",
+          title: "Investment capital",
+          buttons: [{
+            title: "Find investors",
+            url: "#paragraph-11"
+          }],
+          bannerImage: {
+            "type": "bannerImage",
+            "image": {
+              "url": "http://drupal8.content.hostname/sites/default/files/2017-07/doge100.jpg",
+              "alt": "DogeBannerAltText"
+            },
+            "captionText": "DogeBannerCaptionText",
+            "link": {
+              "url": "http://doge-banner-image.example.com",
+              "title": "Doge Banner Link Text"
+            }
+          },
+          paragraphs: [{
+            "type": "sectionHeader",
+            "text": "My Best Header Text"
+          }],
+          id: 58
+        };
+        return drupalEightDataService.formatNode(nodeProgramPage).then((result) => {
+          result.should.deep.equal(expectedResult);
+        });
+      });
+
+      it("should handle multiple buttons for program_page type", function() {
+        const buttons = [
+          {
+            "uri": "http://left-button.example.com",
+            "title": "Left Button",
+            "options": []
+          },
+          {
+            "uri": "http://right-button.example.com",
+            "title": "Right Button",
+            "options": []
+          }
+        ];
+        const localNode = _.set(_.cloneDeep(nodeProgramPage), "field_button", buttons);
+        setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+        const expectedButtons = [
+          {
+            url: "http://left-button.example.com",
+            title: "Left Button"
+          }, {
+            url: "http://right-button.example.com",
+            title: "Right Button"
+          }
+        ];
+        return drupalEightDataService.formatNode(localNode).then((result) => {
+          result.buttons[0].should.deep.equal(expectedButtons[0]);
+          result.buttons[1].should.deep.equal(expectedButtons[1]);
+        });
+      });
+      it("should handle an empty field_banner_image for program_page type", function() {
+        const bannerImage = [];
+        const localNode = _.set(_.cloneDeep(nodeProgramPage), "field_banner_image", bannerImage);
+        setupDynamicStub([localNode], [firstParagraphBase, null, null, null, fifthParagraphBase], []);
+        const expectedBannerImage = {};
+        return drupalEightDataService.formatNode(localNode).then((result) => {
+          result.bannerImage.should.deep.equal(expectedBannerImage);
+        });
+      });
+    });
+    describe("of type 'document': ", function() {
+      it("should properly format a document type node", function() {
+        setupDynamicStub([nodeDocument], [{}, {}, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        console.log(`nodeDocument=${JSON.stringify(nodeDocument, null, 2)}`);
+        const expectedResult = outputNodeDocumentBase;
+        return drupalEightDataService.formatNode(nodeDocument).then((result) => {
+          result.should.deep.equal(expectedResult);
+        });
+      });
+      it("should handle multiple nested field_related_documents nodes and not fetch further child nodes", function() {
+        const childOneTitle = "First Child Document Title";
+        const childTwoTitle = "Second Child Document Title";
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_related_documents", fieldRelatedDocuments);
+        const documentTwo = _.set(_.set(_.cloneDeep(nodeDocument), "title[0].value", childOneTitle), "field_related_documents", fieldRelatedDocuments);
+        const documentThree = _.set(_.cloneDeep(nodeDocument), "title[0].value", childTwoTitle);
+        setupDynamicStub([null, documentTwo, documentThree], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedRelatedDocuments = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          result.relatedDocuments.should.have.lengthOf(2);
+          result.relatedDocuments[0].title.should.equal(childOneTitle);
+          result.relatedDocuments[1].title.should.equal(childTwoTitle);
+          result.relatedDocuments[0].should.not.have.property("relatedDocuments");
+          result.relatedDocuments[1].should.not.have.property("relatedDocuments");
+        });
+      });
+      it("should return an empty array when given no related documents", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_related_documents", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          return result.relatedDocuments.should.be.empty;
+        });
+      });
+      it("should return an empty array when given no programs", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_program", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          return result.programs.should.be.empty;
+        });
+      });
+      it("should return an empty array when given no activitys", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_activity", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          return result.activitys.should.be.empty;
+        });
+      });
+      it("should return an empty array when given no files", function() {
+        const documentOne = _.set(_.cloneDeep(nodeDocument), "field_file", []);
+        setupDynamicStub([], [paragraphDocIdOne, paragraphDocIdTwo, paragraphDocFileOne, paragraphDocFileTwo], [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]);
+        const expectedFiles = [];
+        return drupalEightDataService.formatNode(documentOne).then((result) => {
+          return result.files.should.be.empty;
+        });
       });
     });
   });
@@ -280,6 +362,18 @@ describe("Drupal 8 Service with mocked endpoints", function() {
         output.should.deep.equal(expectedResult);
         done();
       });
+    });;
+    it("should return the formatted paragraph for doc_file types", function() {
+      const expectedResult = {
+        type: "docFile",
+        effectiveDate: "1867-11-07",
+        expirationDate: "1934-07-04",
+        fileUrl: "http://drupal8.content.hostname/sites/default/files/1898-12/88.txt",
+        version: "226"
+      };
+      return drupalEightDataService.formatParagraph(paragraphDocFileOne).then((output) => {
+        output.should.deep.equal(expectedResult);
+      });
     });
   });
 });
@@ -287,12 +381,12 @@ describe("Drupal 8 Service with mocked endpoints", function() {
 describe("Drupal 8 Service Helper Functions", function() {
   describe("convertUrlHost", function() {
     it("should convert a localhost:8080 url to drupal8", function(done) {
-      let result = drupalEightDataService.convertUrlHost("http://localhost:8080/foo/bar");
+      const result = drupalEightDataService.convertUrlHost("http://localhost:8080/foo/bar");
       result.should.equal("http://drupal8.content.hostname/foo/bar");
       done();
     });
     it("should convert a localhost url to drupal8", function(done) {
-      let result = drupalEightDataService.convertUrlHost("http://localhost/foo/bar");
+      const result = drupalEightDataService.convertUrlHost("http://localhost/foo/bar");
       result.should.equal("http://drupal8.content.hostname/foo/bar");
       done();
     });
@@ -302,50 +396,57 @@ describe("Drupal 8 Service Helper Functions", function() {
       done();
     });
     it("should convert an internal relative url", function(done) {
-      let result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
+      const result = drupalEightDataService.convertUrlHost("internal:/foo/bar");
       result.should.equal("/foo/bar");
       done();
     });
     it("should convert an internal anchor url", function(done) {
-      let result = drupalEightDataService.convertUrlHost("internal:#some-tag");
+      const result = drupalEightDataService.convertUrlHost("internal:#some-tag");
       result.should.equal("#some-tag");
       done();
     });
   });
   describe("makeParagraphValueFormatter", function() {
-    it("should create a paragraph value formatter for banner_image types", function(done) {
+    it("should create a paragraph value formatter for banner_image types", function() {
       const expectedResult = {
         url: "http://drupal8.content.hostname/sites/default/files/2017-07/some_image.png",
         alt: "SomeImageAltText"
       };
-      let formatter = drupalEightDataService.makeParagraphValueFormatter("banner_image", paragraphBannerImage);
-      let promise = formatter(fieldBannerImage, "bannerImage");
-      promise.then(function(output) {
+      const formatter = drupalEightDataService.makeParagraphValueFormatter("banner_image", paragraphBannerImage);
+      const promise = formatter(fieldBannerImage, "bannerImage");
+      return promise.then(function(output) {
         output.should.include(expectedResult);
-        done();
+      });
+    });
+    it("should create a paragraph value formatter for document.doc_file types", function() {
+      const expectedResult = "http://drupal8.content.hostname/sites/default/files/1898-12/88.txt";
+      const formatter = drupalEightDataService.makeParagraphValueFormatter("document", paragraphDocFileOne);
+      const promise = formatter(paragraphDocFileOne.field_doc_file, "fileUrl");
+      return promise.then(function(output) {
+        output.should.deep.equal(expectedResult);
       });
     });
   });
   describe("makeParagraphFieldFormatter", function() {
     it("should create a valid formatter for image paragraphs", function(done) {
-      let prefix = "field_";
-      let formatter = drupalEightDataService.makeParagraphFieldFormatter("image");
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeParagraphFieldFormatter("image");
       formatter("field_image", prefix).should.equal("image");
       formatter("field_caption_text", prefix).should.equal("captionText");
       done();
     });
 
     it("should create a valid formatter for banner_image paragraphs", function(done) {
-      let prefix = "field_";
-      let formatter = drupalEightDataService.makeParagraphFieldFormatter("banner_image");
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeParagraphFieldFormatter("banner_image");
       formatter("field_caption_text", prefix).should.equal("captionText");
       formatter("field_banner_image", prefix).should.equal("image");
       formatter("field_link").should.equal("link");
       done();
     });
     it("should create a valid formatter for business_guide_contact paragraphs", function(done) {
-      let prefix = "field_";
-      let formatter = drupalEightDataService.makeParagraphFieldFormatter("business_guide_contact");
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeParagraphFieldFormatter("business_guide_contact");
       formatter("field_bg_contact_category", prefix).should.equal("category");
       formatter("field_city", prefix).should.equal("city");
       formatter("field_link", prefix).should.equal("link");
@@ -355,10 +456,36 @@ describe("Drupal 8 Service Helper Functions", function() {
       formatter("field_zip_code", prefix).should.equal("zipCode");
       done();
     });
+    it("should create a valid formatter for doc_file paragraphs", function(done) {
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeParagraphFieldFormatter("doc_file");
+      formatter("field_doc_effective", prefix).should.equal("effectiveDate");
+      formatter("field_doc_expiration", prefix).should.equal("expirationDate");
+      formatter("field_doc_file", prefix).should.equal("fileUrl");
+      formatter("field_doc_version", prefix).should.equal("version");
+      done();
+    });
     it("should create a valid formatter for subsection_header paragraphs", function(done) {
-      let prefix = "field_";
-      let formatter = drupalEightDataService.makeParagraphFieldFormatter("subsection_header");
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeParagraphFieldFormatter("subsection_header");
       formatter("field_subsection_header_text", prefix).should.equal("text");
+      done();
+    });
+  });
+  describe("makeNodeFieldFormatter", function() {
+    it("should create a valid formatter for document nodes", function(done) {
+      const prefix = "field_";
+      const formatter = drupalEightDataService.makeNodeFieldFormatter("node");
+      formatter("field_omb_number", prefix).should.equal("ombNumber");
+      formatter("field_summary160", prefix).should.equal("summary");
+      formatter("field_related_documents", prefix).should.equal("relatedDocuments");
+      formatter("field_program", prefix).should.equal("programs");
+      formatter("field_office_link", prefix).should.equal("officeLink");
+      formatter("field_file", prefix).should.equal("files");
+      formatter("field_doc_number", prefix).should.equal("documentIdNumber");
+      formatter("field_doc_id_type", prefix).should.equal("documentIdType");
+      formatter("field_body", prefix).should.equal("body");
+      formatter("field_activity", prefix).should.equal("activitys");
       done();
     });
   });
@@ -377,9 +504,9 @@ describe("Drupal 8 Service Helper Functions", function() {
           "title": "FooLinkText"
         }
       };
-      let paragraphFormatter = drupalEightDataService.makeParagraphValueFormatter(typeName, paragraphBannerImage);
-      let promise = drupalEightDataService.extractFieldsByFieldNamePrefix(paragraphBannerImage, "field_", drupalEightDataService.makeParagraphFieldFormatter(typeName), paragraphFormatter);
-      promise.then(output => {
+      const paragraphFormatter = drupalEightDataService.makeParagraphValueFormatter(typeName, paragraphBannerImage);
+      const promise = drupalEightDataService.extractFieldsByFieldNamePrefix(paragraphBannerImage, "field_", drupalEightDataService.makeParagraphFieldFormatter(typeName), paragraphFormatter);
+      promise.then((output) => {
         output.should.deep.equal(expectedResult);
         done();
       });
@@ -421,6 +548,40 @@ describe("Drupal 8 Service Helper Functions", function() {
       ];
       const result = drupalEightDataService.extractProperty(testValue, "mcfly");
       result.should.equal("marty");
+    });
+  });
+  describe("extractProperties", function() {
+    it("should return the values of an arbitrary key from all the elements of an array", function() {
+      const testValue = [
+        {
+          mcfly: "marty"
+        },
+        {
+          mcfly: "seamus"
+        }
+      ];
+      const result = drupalEightDataService.extractProperties(testValue, "mcfly");
+      result.should.deep.equal(["marty", "seamus"]);
+    });
+  });
+  describe("extractConvertedUrl", function() {
+    it("should return the converted URL using the url key from the first element of an array", function() {
+      const testValue = [
+        {
+          url: "http://localhost:8080/foo/bar/baz.txt"
+        }
+      ];
+      const result = drupalEightDataService.extractConvertedUrl(testValue);
+      result.should.equal("http://drupal8.content.hostname/foo/bar/baz.txt");
+    });
+    it("should return the converted URL using an arbitrary key from the first element of an array", function() {
+      const testValue = [
+        {
+          cheeseburger: "http://localhost:8080/foo/bar/baz.txt"
+        }
+      ];
+      const result = drupalEightDataService.extractConvertedUrl(testValue, "cheeseburger");
+      result.should.equal("http://drupal8.content.hostname/foo/bar/baz.txt");
     });
   });
   describe("formatLink", function() {

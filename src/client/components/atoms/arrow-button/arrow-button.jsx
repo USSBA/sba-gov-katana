@@ -23,9 +23,11 @@ class ArrowButton extends React.Component {
       ? "previous page"
       : "next page";
     return (
-        <a className={s.ArrowButton} id={this.props.id} tabIndex="0" onClick={this.onClick.bind(this)} onKeyDown={this.onKeyDown.bind(this)}>
-          <i alt={altText} className={" fa fa-chevron-" + iconName} aria-hidden="true"></i>
-        </a>
+      <a className={s.ArrowButton + " " + (this.props.noLeftBorder
+        ? s.noLeftBorder
+        : "")} id={this.props.id} tabIndex="0" onClick={this.onClick.bind(this)} onKeyDown={this.onKeyDown.bind(this)}>
+        <i alt={altText} className={" fa fa-chevron-" + iconName} aria-hidden="true"></i>
+      </a>
     )
   }
 }

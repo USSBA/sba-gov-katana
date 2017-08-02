@@ -1,0 +1,93 @@
+{
+  "id": [
+    {
+      "value": 2
+    }
+  ],
+  "uuid": [
+    {
+      "value": "294ae437-9582-42cc-9ac8-0376000d972a"
+    }
+  ],
+  "revision_id": [
+    {
+      "value": 13089
+    }
+  ],
+  "type": [
+    {
+      "target_id": "document_id",
+      "target_type": "paragraphs_type",
+      "target_uuid": "94c142f2-c687-4e86-b70f-27f1d152fa7d"
+    }
+  ],
+  "langcode": [
+    {
+      "value": "en"
+    }
+  ],
+  "uid": [
+    {
+      "target_id": 22,
+      "target_type": "user",
+      "target_uuid": "373c98fb-5f5c-4421-aabc-0efdb069fad7",
+      "url": "/user/22"
+    }
+  ],
+  "status": [
+    {
+      "value": true
+    }
+  ],
+  "created": [
+    {
+      "value": 1501261475
+    }
+  ],
+  "revision_uid": [
+    {
+      "target_id": 22,
+      "target_type": "user",
+      "target_uuid": "373c98fb-5f5c-4421-aabc-0efdb069fad7",
+      "url": "/user/22"
+    }
+  ],
+  "parent_id": [
+    {
+      "value": "3368"
+    }
+  ],
+  "parent_type": [
+    {
+      "value": "node"
+    }
+  ],
+  "parent_field_name": [
+    {
+      "value": "field_document_id"
+    }
+  ],
+  "behavior_settings": [
+    {
+      "value": "a:0:{}"
+    }
+  ],
+  "default_langcode": [
+    {
+      "value": true
+    }
+  ],
+  "field_doc_id_type": [
+    {
+      "target_id": 4,
+      "target_type": "taxonomy_term",
+      "target_uuid": "e8133a5a-1796-4502-8e12-86388941039a",
+      "url": "/taxonomy/term/4"
+    }
+  ],
+  "field_doc_number": [
+    {
+      "value": "17 01 D"
+    }
+  ]
+}

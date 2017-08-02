@@ -12,19 +12,21 @@ class Hero extends React.Component {
     return (
       <div className={styles.heroContainer}>
         { this.props.imageUrl && 
-        <div>
+        <div className="hero">
           <div className={styles.heroMobileImageContainer}>
-            <div title={this.props.alt} style={this.imgStyles()}></div>
+            <div className="hero-image-mobile" title={this.props.alt} style={this.imgStyles()}></div>
           </div>
-          <img className={styles.heroDesktopImage} src={this.props.imageUrl} alt={this.props.alt}/>
-          <div className={styles.callout}>
+          <img className={`hero-image-desktop ${styles.heroDesktopImage}`} src={this.props.imageUrl} alt={this.props.alt}/>
+          <div className={`hero-callout ${styles.callout}`}>
             <Callout title={this.props.title} message={this.props.message} buttons={this.props.buttons}/>
           </div>
         </div>
         }
         { !this.props.imageUrl && 
-        <div className={styles.inHeroWithNoImage}>
-          <Callout inHeroWithNoImage={true} title={this.props.title} message={this.props.message} buttons={this.props.buttons}/>
+        <div className={`hero-noimage ${styles.inHeroWithNoImage}`}>
+          <div className="hero-callout">
+            <Callout inHeroWithNoImage={true} title={this.props.title} message={this.props.message} buttons={this.props.buttons}/>
+          </div>
         </div>
         }
       </div>

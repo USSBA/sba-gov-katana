@@ -1,50 +1,70 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {
+  connect
+}
+from 'react-redux';
+import {
+  bindActionCreators
+}
+from 'redux';
 import styles from "./developer-tester.scss";
 
-import MultiSelect from '../../atoms/multiselect/multiselect.jsx';
-import chevron from "../../../../../public/assets/svg/chevron.svg";
+import DocumentCard from '../../molecules/document-card/document-card.jsx';
 import _ from "lodash";
 
 export class DeveloperTester extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      value: "Han"
-    }
   }
 
-  handleSelectChange(newValue) {
-  }
-
-  handleIndustryTypeBlur() {}
-  handleFocus() {}
 
   render() {
 
-    let myOptions = _.map([
-      "Han", "Luke", "Leia", "JarJar"
-    ], (x) => {
-      return {label: x, value: x};
-    });
     let myprops = {
-      errorText: "Error Message",
-      label: "Who is your favorite?",
-      name: "starwars",
-      onChange: this.handleSelectChange.bind(this),
-      validationState: "",
-      value: this.state.value,
-      options: myOptions,
-      onBlur: this.handleIndustryTypeBlur.bind(this),
-      autoFocus: true,
-      multi: false,
-      onFocus: this.handleFocus.bind(this)
+      "type": "document",
+      "summary": "Document Summary",
+      "title": "DocumentTitle",
+      "programs": [
+        "Authorization",
+        "General"
+      ],
+      "relatedDocuments": [],
+      "files": [{
+        "type": "docFile",
+        "effectiveDate": "1867-11-07",
+        "expirationDate": "1934-07-04",
+        "fileUrl": "http://drupal8.content.hostname/sites/default/files/1898-12/88.txt",
+        "version": "226"
+      }, {
+        "type": "docFile",
+        "effectiveDate": "1970-01-01",
+        "expirationDate": "2038-01-19",
+        "fileUrl": "http://drupal8.content.hostname/sites/default/files/1970-01/0.txt",
+        "version": "4"
+      }],
+      "documents": [{
+        "idType": "Authorization",
+        "number": "17 01 A",
+        "type": "documentId"
+      }, {
+        "idType": "General",
+        "number": "17 01 D",
+        "type": "documentId"
+      }],
+      "body": "<p>With a body</p>\r\n",
+      "officeLink": {
+        "url": "http://office-link.example.com",
+        "title": "Office Example Test"
+      },
+      "activitys": [
+        "Plan",
+        "Export express"
+      ]
     };
     return (
       <div className={styles.container}>
-        <MultiSelect {...myprops}></MultiSelect>
+        <DocumentCard></DocumentCard>
       </div>
     );
   }
