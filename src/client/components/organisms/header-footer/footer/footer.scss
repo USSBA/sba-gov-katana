@@ -67,7 +67,7 @@
 
 .SocialMediaLinkSet {
   img {
-    width: 45px;
+    width: 35px;
     margin-right: 15px;
   }
   @include grid-media( $sba-grid-small) {
@@ -76,7 +76,7 @@
   }
   @include grid-media( $sba-grid-medium) {
     img {
-      width: 30px;
+      width: 25px;
       margin-right: 10px;
     }
     @include grid-column(4);

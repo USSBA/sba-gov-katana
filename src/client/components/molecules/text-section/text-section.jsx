@@ -27,7 +27,7 @@ class TextSection extends React.Component{
 	}
 
   render(){
-    return (<div className={styles.textSection} dangerouslySetInnerHTML={{__html: this.parseTables()}}/>);
+    return (<div className={styles.textSection + " " + this.props.className} dangerouslySetInnerHTML={{__html: this.parseTables()}}/>);
   }
 }
 

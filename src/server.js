@@ -94,6 +94,7 @@ import * as cacheController from "./controllers/cache.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
 app.get("/actions/clearCache", cacheController.clearCache);
+app.get("/actions/clearCache/contact", cacheController.clearContactCache);
 app.delete("/cache", cacheController.clearCache);
 app.get("/api/content/feedback.csv", feedbackController.retrieveFeedback);
 

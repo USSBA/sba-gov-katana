@@ -7,7 +7,7 @@ import SmallGreySecondaryButton from '../atoms/small-grey-secondary-button/small
 import SmallPrimaryButton from '../atoms/small-primary-button/small-primary-button.jsx';
 
 class SbaModal extends React.Component {
-  
+
   handleEnter(e){
     if(e.keyCode == 13){
       this.props.onClose()
@@ -41,7 +41,7 @@ SbaModal.propTypes = {
   title: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired,
   showLogo: React.PropTypes.boolean,
-  onClickOk: React.PropTypes.func,
+  onClickOk: React.PropTypes.func.isRequired,
   onClose: React.PropTypes.func
 }
 
@@ -54,7 +54,7 @@ SbaModal.defaultProps ={
   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui.",
   showLogo: false,
   onClickOk: function() {
-    console.log("Clicked OK")
+    console.error("Please override the click ok function")
   }
 }
 

@@ -1,0 +1,14 @@
+[
+  {
+    "target_id": 2,
+    "target_type": "node",
+    "target_uuid": "907e45db-1c3d-41b6-af96-95d97859e21a",
+    "url": "/node/2"
+  },
+  {
+    "target_id": 3,
+    "target_type": "node",
+    "target_uuid": "c2f2804e-54c4-4156-8e6c-4aa55839130e",
+    "url": "/node/3"
+  }
+]

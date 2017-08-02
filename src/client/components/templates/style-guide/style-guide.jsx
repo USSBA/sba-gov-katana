@@ -44,12 +44,20 @@ import DecorativeDash from "../../atoms/decorative-dash/decorative-dash.jsx"
 import CardCollection from '../../organisms/card-collection/card-collection.jsx'
 
 import TextSection from '../../molecules/text-section/text-section.jsx'
+import Paginator from "../../molecules/paginator/paginator.jsx"
+
+import DocumentType from '../../atoms/document-type/document-type.jsx'
 
 class StyleGuide extends React.Component {
   constructor() {
     super();
     this.state = {
-      exampleModalIsOpen: false
+      exampleModalIsOpen: false,
+      paginator:{
+          start: 0,
+          end: 10
+      },
+      paginatorTotal: 98
     };
   }
   handleModalExampleClick(e) {
@@ -64,50 +72,63 @@ class StyleGuide extends React.Component {
   }
 
   render() {
-      
-      let buttonsArray = [
+
+      const oneButtonArray = [
+
         {
           onClickHandler: this.handleLargeBtnClicked,
-          btnText: "LARGE BUTTON",
+          btnText: "Single Button",
           btnType: "LargeInversePrimaryButton"
         }
       ];
 
-      const heroMockData = {
+      const twoButtonsArray = [
+          {
+              onClickHandler: this.handleLargeBtnClicked,
+              btnText: "First Button",
+              btnType: "LargeInversePrimaryButton"
+          },
+          {
+              onClickHandler: this.handleLargeBtnClicked,
+              btnText: "Second Button",
+              btnType: "LargeInversePrimaryButton"
+          }
+      ];
 
-        "title":"Investment capital",
-        "summary":"Find an investor for your business through a Small Business Investment Company (SBIC) licensed by the Small Business Administration.",
-        "bannerImage":{  
+
+      const heroMockData = {
+        "summary":"The summary field of a program page will have the text show up here.",
+        "bannerImage":{
           "type":"bannerImage",
-          "image":{  
+          "image":{
             "url":"http://content.sbagov.fearlesstesters.com/sites/default/files/2017-05/sbic-hero-min%20%281%29.jpg",
-            "alt":"A man presents at a business meeting."
+            "alt":"The alt text of a banner_image will be here."
           },
           "captionText":null,
           "link":{}
-        },
-      }
+        }
+      };
 
-      const cardCollectionMockData = [  
-        {  
+      const cardCollectionMockData = [
+        {
            "type":"card",
-           "image":{  
+           "image":{
               "url":"http://images.bigcartel.com/product_images/199085200/Scan309.jpg?auto=format&fit=max&h=300&w=300",
               "alt":"Business plan"
            },
-           "link":{  
+           "link":{
 
            },
            "subtitleText":"This type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.",
            "titleText":"Traditional business plan"
         },
-        {  
+        {
            "type":"card",
-           "image":{  
+           "image":{
               "url":"http://images.bigcartel.com/product_images/192360211/Dexter___Dee_Dee.jpg?auto=format&fit=max&h=300&w=300",
               "alt":"Business plan"
            },
-           "link":{  
+           "link":{
 
            },
            "subtitleText":"This type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.",
@@ -161,22 +182,41 @@ class StyleGuide extends React.Component {
         <FormElements/>
 
         <div>
-        
-          <h1>Hero</h1>
+
+          <h1>Heros</h1>
+
           <Hero
-            title={heroMockData.title}
+            title="Hero with an image and button"
             message={heroMockData.summary}
-            buttons={buttonsArray}
+            buttons={oneButtonArray}
             imageUrl={heroMockData.bannerImage.image.url}
             alt={heroMockData.bannerImage.image.alt}
           />
-        
+
+          <Hero
+            title={"Hero with Button No-Image"}
+            message={heroMockData.summary}
+            buttons={oneButtonArray}
+          />
+          <Hero
+            title={"Hero with Two Buttons"}
+            message={heroMockData.summary}
+            buttons={twoButtonsArray}
+            imageUrl={heroMockData.bannerImage.image.url}
+            alt={heroMockData.bannerImage.image.alt}
+          />
+          <Hero
+            title={"Hero with Two Buttons No Image"}
+            message={heroMockData.summary}
+            buttons={twoButtonsArray}
+          />
+
         </div>
 
         <h1>Calls to Action</h1>
-        
+
         <div className={styles.ctaContainer}>
-          
+
           <CTA
             size="large"
             btnUrl="http://www.example.com/"
@@ -190,7 +230,7 @@ class StyleGuide extends React.Component {
         </div>
 
         <div className={styles.ctaContainer}>
-          
+
           <CTA
             size="medium"
             btnUrl="http://www.example.com/"
@@ -202,7 +242,7 @@ class StyleGuide extends React.Component {
         </div>
 
         <div className={styles.ctaContainer}>
-          
+
           <CTA
             size="small"
             btnUrl="http://www.example.com/"
@@ -219,9 +259,9 @@ class StyleGuide extends React.Component {
             <SimpleCta/>
         </div>
 
-        <h1>Icons (WIP)</h1> 
+        <h1>Icons (WIP)</h1>
         <Icons />
-        
+
         <div className={styles.clear} />
 
         <h1>Card Collection</h1>
@@ -232,8 +272,19 @@ class StyleGuide extends React.Component {
         <h1>Table</h1>
         <TextSection text={tableMockData} />
 
-        <div className={styles.clear} />
+        <h1>Paginator</h1>
 
+
+        <Paginator id="my-paginator" start={this.state.paginator.start} end={this.state.paginator.end}
+            total={this.state.paginatorTotal}
+            onBack={()=> {this.setState({paginator:{ start: Math.max(0,this.state.paginator.start -10), end: Math.max(0,this.state.paginator.end -10)}})}}
+            onForward={()=> {this.setState({paginator:{ start: Math.min(this.state.paginator.start +10,this.state.paginatorTotal -10), end: Math.min(this.state.paginator.end+10,this.state.paginatorTotal)}})}}/>
+
+
+        <h1>Document Type</h1>
+        <DocumentType type="sop" number="10 17 6(a)" />
+        
+        <div className={styles.clear} />
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
           ? <SbaModal onClose={() => {
@@ -242,7 +293,6 @@ class StyleGuide extends React.Component {
               document.location = "http://www.example.com/"
             }}/>
           : <div/>}
-
       </div>
     );
   }
@@ -519,7 +569,7 @@ class FormElements extends React.Component {
   }
 }
 
-const Icons = () => <div className={styles.columnHalf}>    
+const Icons = () => <div className={styles.columnHalf}>
       <ul className={styles.icons}>
         <li>
           <div><FailureIcon aria-hidden="true" /></div>

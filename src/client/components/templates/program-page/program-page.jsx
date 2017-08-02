@@ -58,7 +58,6 @@ class ProgramPage extends React.Component {
             title={title}
             message={summary}
             buttons={_formattedButtons}
-            alt={bannerImage.image.alt}
           />
         }
         <div className={styles.container}>

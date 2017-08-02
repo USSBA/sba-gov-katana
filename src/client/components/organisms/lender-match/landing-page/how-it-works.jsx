@@ -17,7 +17,7 @@ export const HowItWorksSection = (props) => <div className={ styles.section }>
                                               </div>
                                               <div className={ styles.step }>
                                                 <span className={ styles.numbers }>2</span>
-                                                <img className={ styles.img } src={ howItWorksImg2 } alt="A person reading email on a smartwatch." />
+                                                <img className={ styles.img } src={ howItWorksImg2 } alt="A calendar" />
                                                 <h3 className={styles.header}>Get matched in 2 days</h3>
                                                 <hr className={styles.line}/>
                                                 <p className={styles.blurb}>Receive an email with contact information of lenders who express interest in your loan.</p>

@@ -224,6 +224,13 @@ $paragraph-font-sizes: (
   large: 1rem
   );
 
+// 508 requires minimum of 25px in low contrast ratio non-bold text
+$low-contrast-font-sizes: (
+  null: 25px,
+  medium: 25px,
+  large: 25px
+  );
+
 // Line height
 $base-line-height: 1.5;
 $heading-line-height: 1;
@@ -322,6 +329,13 @@ $primary-color-map:(
 	"cobalt-blue": $cobalt-blue
 );
 
+$lightest-color-map:(
+	"sba-blue": $sba-blue-lightest,
+	"byzantine": $byzantine-lightest,
+	"money-green": $money-green-lightest,
+	"cobalt-blue": $cobalt-blue-lightest
+);
+
 @mixin small-button($component){
     #{$component} {
       font-size: .85em;
@@ -348,8 +362,8 @@ $primary-color-map:(
     }
 }
 
-@mixin border-color-theme($component) {
-  @each $name, $value in $primary-color-map {
+@mixin border-color-theme($component, $color-map : $primary-color-map) {
+  @each $name, $value in $color-map {
      :global(.#{$name}) {
       #{$component} {
         border-color: $value;
@@ -358,8 +372,8 @@ $primary-color-map:(
   }
 }
 
-@mixin background-color-theme($component) {
-  @each $name, $value in $primary-color-map {
+@mixin background-color-theme($component, $color-map : $primary-color-map) {
+  @each $name, $value in $color-map {
      :global(.#{$name}) {
       #{$component} {
         background-color: $value;
@@ -368,8 +382,8 @@ $primary-color-map:(
   }
 }
 
-@mixin color-theme($component) {
-  @each $name, $value in $primary-color-map {
+@mixin color-theme($component, $color-map : $primary-color-map) {
+  @each $name, $value in $color-map {
      :global(.#{$name}) {
       #{$component} {
         color: $value;
