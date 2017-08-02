@@ -54,6 +54,16 @@ class Tile extends React.Component {
     }
   }
 
+  handleKeyDown(event) {
+    let code = (event.keyCode
+      ? event.keyCode
+      : event.which);
+    if (code == 9 && event.shiftKey) {
+      this.props.onTabBackwards(this.props.enteringInReverse);
+    }
+  }
+
+
   render() {
     let baseTileData = {
       data: this.props.data,
@@ -70,7 +80,7 @@ class Tile extends React.Component {
 
     let hoverTile = this.props.hoverShowsInverseOnly
       ? (<StaticTile {...baseTileData} inverse id={this.props.id + '-hover'}/>)
-      : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'} locationActions={this.props.locationActions}/>);
+      : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'} locationActions={this.props.locationActions} autoFocusOnLast={this.props.enteringInReverse}/>);
 
     return (
       <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
@@ -78,7 +88,8 @@ class Tile extends React.Component {
         : s.tileFour)} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
         <a className={s.tabDisplayMenu} href="" onClick={(e) => {
           e.preventDefault()
-        }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this._mouseExitTile.bind(this)}>toggle {this.props.data.title}
+        }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this._mouseExitTile.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
+          toggle {this.props.data.title}
           menu</a>
         {this.props.showHover
           ? hoverTile
@@ -145,7 +156,9 @@ class HoverTileWithHoverLinks extends React.Component {
         <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         <div className={s.topLine}></div>
         {this.props.data.children.map((object, index) => {
-          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}/>
+          let autoFocusOnMe = this.props.autoFocusOnLast && index === (this.props.data.children.length - 1);
+
+          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)} autoFocus={autoFocusOnMe}/>
         })
 }
       </div>
@@ -153,13 +166,26 @@ class HoverTileWithHoverLinks extends React.Component {
   }
 }
 
-const HoverLink = (props) => <div className={s.linkContainer} onClick={() => {
-  props.handleClick(props.link)
-}}>
-  <a id={props.id} className={s.link} href={props.link.fullUrl}>
-    {props.link.title}
-  </a>
-</div>
+class HoverLink extends React.Component {
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      this.me.focus();
+    }
+  }
+  render() {
+    return (
+      <div className={s.linkContainer} onClick={() => {
+        this.props.handleClick(this.props.link)
+      }}>
+        <a id={this.props.id} className={s.link} href={this.props.link.fullUrl} ref={(me) => {
+          this.me = me;
+        }}>
+          {this.props.link.title}
+        </a>
+      </div>
+    );
+  }
+}
 
 function mapReduxStateToProps(reduxState) {
   return {};
