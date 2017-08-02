@@ -45,18 +45,26 @@ class DocumentLookup extends React.Component {
 		componentWillMount() {
 
 			const taxonomies = [{
-			"group": "Document Type",
-			"entries": ["All", "OMB","SBA form", "SOP", "Public Law (PL)"]
+				"name": "Document Type",
+				"terms": ["OMB","SBA form", "SOP", "Public Law (PL)"]
 			}, {
-				"group": "Program Name",
-				"entries": ["All", "Lending programs","504/CDC", "Microloans"]
+				"name": "Program Name",
+				"terms": ["Lending programs","504/CDC", "Microloans"]
 			}, {
-				"group": "Document Activity",
-				"entries": ["All", "Lending","Authorization", "Servicing"]
-			}, {
-				"group": "Sort By",
-				"entries": ["Last Updated", "Name","Number"]
+				"name": "Document Activity",
+				"terms": ["Lending","Authorization", "Servicing"]
 			}];
+
+			// place an "All" term at the beginning of each taxonomy
+			for (let index = 0; index < taxonomies.length; index++) {
+				taxonomies[index].terms.unshift("All");
+			}
+
+			// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
+			taxonomies.push({
+				"name": "Sort By",
+				"terms": ["Last Updated", "Name","Number"]
+			});
 
 			const mockResponseObj = Promise.resolve(taxonomies);
 			mockResponseObj.then((response) => {
@@ -147,12 +155,12 @@ class DocumentLookup extends React.Component {
 
 	renderMultiSelects() {
 
-		const _multiselects = this.state.taxonomies.map((object, index) => {
+		const _multiselects = this.state.taxonomies.map((taxonomy) => {
 		
-			const groupName = object.group;
-			const id = `${createSlug(groupName)}-select`;
-			const stateName = createCamelCase(groupName);
-			const options = object.entries.map((entry) => {
+			const {name} = taxonomy;
+			const id = `${createSlug(name)}-select`;
+			const stateName = createCamelCase(name);
+			const options = taxonomy.terms.map((entry) => {
 
 				return {
 					"label": entry,
@@ -167,7 +175,7 @@ class DocumentLookup extends React.Component {
 					this.handleChange(event, stateName);
 				},
 				name: id,
-				"label": groupName,
+				"label": name,
 				value: this.state[stateName],
 				"options": options
 			};
