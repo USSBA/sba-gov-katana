@@ -1,12 +1,13 @@
+/*eslint-disable max-lines*/
 import _ from "lodash";
 import Promise from "bluebird";
 import url from "url";
 import config from "config";
 
 import path from "path";
-import localContacts from "../models/dao/contacts.js";
-import sbicContacts from "../models/dao/sbic-contacts.js";
-import suretyContacts from "../models/dao/surety-contacts.js";
+import localContacts from "../models/dao/sample-data/contacts.js";
+import sbicContacts from "../models/dao/sample-data/sbic-contacts.js";
+import suretyContacts from "../models/dao/sample-data/surety-contacts.js";
 const localDataMap = {
   "State registration": localContacts,
   "SBIC": sbicContacts,

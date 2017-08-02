@@ -46,6 +46,8 @@ import CardCollection from '../../organisms/card-collection/card-collection.jsx'
 import TextSection from '../../molecules/text-section/text-section.jsx'
 import Paginator from "../../molecules/paginator/paginator.jsx"
 
+import DocumentType from '../../atoms/document-type/document-type.jsx'
+
 class StyleGuide extends React.Component {
   constructor() {
     super();
@@ -279,6 +281,9 @@ class StyleGuide extends React.Component {
             onForward={()=> {this.setState({paginator:{ start: Math.min(this.state.paginator.start +10,this.state.paginatorTotal -10), end: Math.min(this.state.paginator.end+10,this.state.paginatorTotal)}})}}/>
 
 
+        <h1>Document Type</h1>
+        <DocumentType type="sop" number="10 17 6(a)" />
+        
         <div className={styles.clear} />
         <h1>Future components...</h1>
         {this.state.exampleModalIsOpen
@@ -288,7 +293,6 @@ class StyleGuide extends React.Component {
               document.location = "http://www.example.com/"
             }}/>
           : <div/>}
-
       </div>
     );
   }
