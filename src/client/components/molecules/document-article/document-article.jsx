@@ -27,24 +27,24 @@ class DocumentArticle extends React.Component {
   	const data = this.props.data
   	const newestFile = this.getNewestFile()
      return (
-     	<div className={s.page}>
+     	<div className={"document-article " + s.page}>
      		<DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
-     		<h1 className={s.title}>{data.title}</h1>
+     		<h1 className={"title " + s.title}>{data.title}</h1>
      		<p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)} <span>|</span> Effective {this.formatDate(newestFile.effectiveDate)}</p>
      		<div className={s.office}>By <a href={data.officeLink.url}>{data.officeLink.title}</a></div>
      		<hr className={s.hr}/>
      		<div className={s.summaryContainer}>
-     		  <Button className={s.downloadButton} onClick={(e) => this.downloadClick(e)}text="download pdf"/>
-     			<p className={s.summary}>{data.summary}</p>
+     		  <Button className={"pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(e)}text="download pdf"/>
+     			<p className={"summary " + s.summary}>{data.summary}</p>
      		</div>
      		<div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
      		<TextSection className={s.body} text={data.body}/>
-     		<div className={s.relatedProgramsContainer}>
+     		<div className={"related-programs-container " + s.relatedProgramsContainer}>
 	     		<hr className={s.hr}/>
 		     		<span className={s.relatedPrograms}>Related programs: </span>
 		     		{
 		     			data.programs.map((program, index) => {
-		     				return <span key={index}><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
+		     				return <span className="related-programs-link" key={index}><a>{program}</a>{index == data.programs.length-1 ? null : ", "}</span>
 		     			})
 		     		}
 	     		<hr className={s.hr}/>
