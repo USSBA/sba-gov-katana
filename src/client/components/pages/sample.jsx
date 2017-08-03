@@ -1,5 +1,5 @@
 import React from 'react'
-import BusinessGuideArticle from "../templates/business-guide-article/business-guide-article.jsx";
+import Document from "../templates/document/document.jsx";
 import * as RestContentActions from "../../actions/rest-content.js"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -16,20 +16,12 @@ class SamplePage extends React.Component {
 
   render() {
     if (this.props.data) {
-      return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary}/>);
+      return (<Document document={this.props.data}/>);
     } else {
       return (
         <div>Loading....</div>
       );
     }
-  }
-}
-
-SamplePage.defaultProps = {
-  data: {
-    title: "Test Page",
-    summary: "test page thing",
-    paragraphs: []
   }
 }
 
