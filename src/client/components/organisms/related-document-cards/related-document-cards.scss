@@ -1,0 +1,29 @@
+.sectionTitle {
+	position: relative;
+
+	@include grid-media($sba-grid-medium-and-small) {
+		margin-top: 40px;
+		margin-bottom: 20px;
+
+		@include grid-column(5);
+	}
+	@include grid-media($sba-grid-large) {
+		margin-top: 60px;
+		margin-bottom: 40px;
+
+		@include grid-column(11);
+	}
+}
+
+.browseAll {
+	font-weight: normal;
+	@include font-size($paragraph-font-sizes);
+	@include grid-media($sba-grid-medium-and-small) {
+		@include grid-column(1);
+		margin-top: 55px;
+	}
+	@include grid-media($sba-grid-large) {
+		@include grid-column(1);
+		margin-top: 90px;
+	}
+}

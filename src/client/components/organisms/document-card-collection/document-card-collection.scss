@@ -1,15 +1,3 @@
-.card{
-    margin: 20px;
-    @include grid-media($sba-grid-small) {
-         @include grid-column(6);
-        @include grid-push(0);
-    }
-    @include grid-media($sba-grid-medium) {
-        @include grid-column(12);
-        @include grid-push(0);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(3);
-        @include grid-push(1);
-    }
+.cardCollection {
+	clear: left;
 }
