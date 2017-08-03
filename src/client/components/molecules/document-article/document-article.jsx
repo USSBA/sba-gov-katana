@@ -38,7 +38,7 @@ class DocumentArticle extends React.Component {
           <p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)}
             <span>|</span>
             Effective {this.formatDate(newestFile.effectiveDate)}</p>
-          <div className={s.office}>By
+          <div className={s.office}>By{" "}
             <a href={data.officeLink.url}>{data.officeLink.title}</a>
           </div>
           <hr className={s.hr}/>
@@ -50,7 +50,7 @@ class DocumentArticle extends React.Component {
           <TextSection className={s.body} text={data.body}/>
           <div className={"document-article-related-programs-container " + s.relatedProgramsContainer}>
             <hr className={s.hr}/>
-            <span className={s.relatedPrograms}>Related programs:
+            <span className={s.relatedPrograms}>Related programs:{" "}
             </span>
             {data.programs.map((program, index) => {
               return <span className="document-article-related-programs-link" key={index}>
