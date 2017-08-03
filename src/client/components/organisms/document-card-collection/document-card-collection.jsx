@@ -8,7 +8,7 @@ class DocumentCardCollection extends React.Component {
     return (
       <div className={"document-card-collection " + s.cardCollection}>
         {this.props.documents.map((doc, index) => {
-          return <DocumentCard key={index} doc={doc} showDetails={this.props.showDetails} />;
+          return <div key={index} className={s.card}><DocumentCard  doc={doc} showDetails={this.props.showDetails} /></div>;
         })}
       </div>
     );

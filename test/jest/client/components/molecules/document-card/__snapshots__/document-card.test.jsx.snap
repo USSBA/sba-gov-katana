@@ -1,37 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DocumentCard renders a single activity 1`] = `
-<div
-  className="document-card-container container"
-/>
-`;
+exports[`DocumentCard renders a single activity 1`] = `<div />`;
 
-exports[`DocumentCard renders a single program 1`] = `
-<div
-  className="document-card-container container"
-/>
-`;
+exports[`DocumentCard renders a single program 1`] = `<div />`;
 
-exports[`DocumentCard renders default data 1`] = `
-<div
-  className="document-card-container container"
-/>
-`;
+exports[`DocumentCard renders default data 1`] = `<div />`;
 
-exports[`DocumentCard renders no activitys when none are given 1`] = `
-<div
-  className="document-card-container container"
-/>
-`;
+exports[`DocumentCard renders no activitys when none are given 1`] = `<div />`;
 
-exports[`DocumentCard renders the summary 1`] = `
-<div
-  className="document-card-container container"
-/>
-`;
+exports[`DocumentCard renders the summary 1`] = `<div />`;
 
-exports[`DocumentCard renders the title 1`] = `
-<div
-  className="document-card-container container"
-/>
-`;
+exports[`DocumentCard renders the title 1`] = `<div />`;

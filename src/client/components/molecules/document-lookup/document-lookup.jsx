@@ -43,7 +43,7 @@ class DocumentLookup extends React.Component {
 			// prop:string, type:string, queryArgs:object
 
 			this.props.actions.fetchContentIfNeeded(
-				"taxonomies", 
+				"taxonomies",
 				"taxonomyVocabulary", {
 				"names": "documentType,program,documentActivity"
 			});
@@ -55,9 +55,9 @@ class DocumentLookup extends React.Component {
 			// set the taxomonies object when
 			// nextProps.items array is populated, AND state.taxonomies array is NOT populated
 
-			if (nextProps.items.length > 0 && this.state.taxonomies.length === 0) {
+			if (nextProps.taxonomies && nextProps.taxonomies.length > 0 && this.state.taxonomies.length === 0) {
 
-				const taxonomies = nextProps.items;
+				const taxonomies = nextProps.taxonomies;
 
 				// add an "All" filter option to dynamic taxonomies
 				for (let index = 0; index < taxonomies.length; index++) {
@@ -69,9 +69,9 @@ class DocumentLookup extends React.Component {
 					"name": "Sort By",
 					"terms": ["Last Updated", "Name","Number"]
 				});
-				
+
 				this.setState({
-					taxonomies: nextProps.items
+					taxonomies: nextProps.taxonomies
 				}, () => {
 					this.sortAndFilterDocuments();
 				});
@@ -104,11 +104,11 @@ class DocumentLookup extends React.Component {
 		}
 
 		sortAndFilterDocuments() {
-			
+
 			const documents = this.props.items;
 			const sortedDocuments = this.sortDocuments(documents);
 			const filteredDocuments = this.filterDocuments(sortedDocuments);
-			
+
 			this.setState({
 				documents: filteredDocuments
 			});
@@ -116,12 +116,12 @@ class DocumentLookup extends React.Component {
 		}
 
 		sortDocuments(contacts) {
-			
+
 			let direction; // asc|desc
 			let titleOrActiveSince; // title|activeSince
 
 			if (this.state.sortBy === "Investor Name") {
-	
+
 				direction = "asc";
 				titleOrActiveSince = "title";
 
@@ -159,7 +159,7 @@ class DocumentLookup extends React.Component {
 	renderMultiSelects() {
 
 		const _multiselects = this.state.taxonomies.map((taxonomy) => {
-		
+
 			const {name} = taxonomy;
 			const id = `${createSlug(name)}-select`;
 			const stateName = createCamelCase(name);
@@ -211,7 +211,7 @@ class DocumentLookup extends React.Component {
 	handleKeyUp(event) {
 
 		const returnKeyCode = 13
-		
+
 		if (event.keyCode === returnKeyCode) {
 			console.log('A', 'validate', event.target.value)
 		}
@@ -268,12 +268,12 @@ class DocumentLookup extends React.Component {
 			</div>
 		);
 	}
-	
+
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
-    items: reduxState.contentReducer["taxonomies"]
+    taxonomies: reduxState.contentReducer["taxonomies"]
   };
 }
 
