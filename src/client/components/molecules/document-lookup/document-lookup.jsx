@@ -1,7 +1,10 @@
 import React from "react";
 import {pick} from "lodash";
 import _ from "lodash";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
+import * as ContentActions from "../../../actions/content.js";
 import s from "./document-lookup.scss";
 import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
 import {Multiselect, TextInput, SearchIcon} from "../../atoms";
@@ -27,54 +30,53 @@ class DocumentLookup extends React.Component {
 			this.state = {
 				documents: ownProps.items,
 				documentType: "all",
-				programName: "all",
+				program: "all",
 				documentActivity: "all",
 				sortBy: "last-updated",
 				taxonomies: []
 			};
 		}
 
-		componentWillReceiveProps(nextProps, ownProps) {
-			console.log("nextProps", nextProps);
-			this.setState({
-				documents: nextProps.items
-			}, () => {
-				this.sortAndFilterDocuments();
-			});
-		}
-
 		componentWillMount() {
 
-			const taxonomies = [{
-				"name": "Document Type",
-				"terms": ["OMB","SBA form", "SOP", "Public Law (PL)"]
-			}, {
-				"name": "Program Name",
-				"terms": ["Lending programs","504/CDC", "Microloans"]
-			}, {
-				"name": "Document Activity",
-				"terms": ["Lending","Authorization", "Servicing"]
-			}];
+			// fetch taxonomies from server
+			// prop:string, type:string, queryArgs:object
 
-			// place an "All" term at the beginning of each taxonomy
-			for (let index = 0; index < taxonomies.length; index++) {
-				taxonomies[index].terms.unshift("All");
-			}
-
-			// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
-			taxonomies.push({
-				"name": "Sort By",
-				"terms": ["Last Updated", "Name","Number"]
+			this.props.actions.fetchContentIfNeeded(
+				"taxonomies", 
+				"taxonomyVocabulary", {
+				"names": "documentType,program,documentActivity"
 			});
 
-			const mockResponseObj = Promise.resolve(taxonomies);
-			mockResponseObj.then((response) => {
+		}
+
+		componentWillReceiveProps(nextProps, ownProps) {
+
+			// set the taxomonies object when
+			// nextProps.items array is populated, AND state.taxonomies array is NOT populated
+
+			if (nextProps.items.length > 0 && this.state.taxonomies.length === 0) {
+
+				const taxonomies = nextProps.items;
+
+				// add an "All" filter option to dynamic taxonomies
+				for (let index = 0; index < taxonomies.length; index++) {
+					taxonomies[index].terms.unshift("All");
+				}
+
+				// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
+				taxonomies.push({
+					"name": "Sort By",
+					"terms": ["Last Updated", "Name","Number"]
+				});
 				
 				this.setState({
-					"taxonomies": response
+					taxonomies: nextProps.items
+				}, () => {
+					this.sortAndFilterDocuments();
 				});
+			}
 
-			});
 		}
 
 		handleChange(event, selectStateKey) {
@@ -144,14 +146,14 @@ class DocumentLookup extends React.Component {
 			if (this.state.industryValue !== "All") {
 				filteredContacts = _.filter(contacts, (contact) => {
 					return !_.isEmpty(_.intersection(_.castArray(contact.industry), _.castArray(this.state.industryValue)))
-				})
+				});
 			}
 			if (this.state.investingStatusValue !== "All") {
 				filteredContacts = _.filter(filteredContacts, (contact) => {
 					return contact.investingStatus === this.state.investingStatusValue
-				})
+				});
 			}
-			return filteredContacts
+			return filteredContacts;
 		}
 
 	renderMultiSelects() {
@@ -176,7 +178,7 @@ class DocumentLookup extends React.Component {
 					this.handleChange(event, stateName);
 				},
 				name: id,
-				"label": name,
+				"label": _.startCase(name),
 				value: this.state[stateName],
 				"options": options
 			};
@@ -262,11 +264,22 @@ class DocumentLookup extends React.Component {
 						/>
 					</div>}
 				</div>
-				{this.renderDocuments()}
+				{this.state.documents && this.renderDocuments()}
 			</div>
 		);
 	}
 	
 }
 
-export default DocumentLookup;
+function mapReduxStateToProps(reduxState, ownProps) {
+  return {
+    items: reduxState.contentReducer["taxonomies"]
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  };
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(DocumentLookup);
