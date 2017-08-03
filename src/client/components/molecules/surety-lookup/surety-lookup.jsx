@@ -1,11 +1,14 @@
 import React from "react"
 import s from "./surety-lookup.scss";
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as ContentActions from "../../../actions/content.js"
 import {Multiselect} from '../../atoms';
-import madison from 'madison';
 import _ from 'lodash';
 import Paginator from "../../molecules/paginator/paginator.jsx";
 
 var pageSize = 9;
+var dataProp = "statesTaxonomy";
 class SuretyLookup extends React.Component {
 
   constructor(ownProps) {
@@ -16,6 +19,10 @@ class SuretyLookup extends React.Component {
       pageNumber: 1,
       numberOfTimesUserHasSelectedAState: 0
     }
+  }
+
+  componentWillMount() {
+    this.props.actions.fetchContentIfNeeded(dataProp, "taxonomyVocabulary", {names: "state"});
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -46,9 +53,10 @@ class SuretyLookup extends React.Component {
   }
 
   multiSelectProps() {
-    let options = madison.states.map((state) => {
-      return {label: state.name, value: state.name}
+    let options = this.props.states.terms.map((state) => {
+      return {label: state, value: state}
     })
+    options.push({label: "", value: null})
     return {id: "surety-state-select", label: "Show surety agencies licensed in", name: "surety-state-select", options: options}
   }
 
@@ -124,4 +132,26 @@ const EmptyContacts = () => <div className={s.emptyContacts}>
   <div>No surety agencies found</div>
 </div>
 
-export default SuretyLookup;
+SuretyLookup.defaultProps = {
+  states: {
+    name: "state",
+    terms: []
+  }
+}
+
+function mapReduxStateToProps(reduxState, ownProps) {
+  if (reduxState.contentReducer[dataProp]) {
+    return {states: reduxState.contentReducer[dataProp][0]
+    };
+
+  } else {
+    return {};
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  }
+}
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SuretyLookup);
