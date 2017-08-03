@@ -48,30 +48,6 @@ class DocumentLookup extends React.Component {
 			"names": "documentType,program,documentActivity"
 		});
 
-		const taxonomies = [{
-			"name": "Document Type",
-			"terms": ["OMB","SBA form", "SOP", "Public Law (PL)"]
-		}, {
-			"name": "Program",
-			"terms": ["Lending programs","504/CDC", "Microloans"]
-		}, {
-			"name": "Document Activity",
-			"terms": ["Lending","Authorization", "Servicing"]
-		}];
-
-		// add an "All" filter option to dynamic taxonomies
-		for (let index = 0; index < taxonomies.length; index++) {
-			taxonomies[index].terms.unshift("All");
-		}
-
-		// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
-		taxonomies.push({
-			"name": "Sort By",
-			"terms": ["Last Updated","Title","Number"]
-		});
-
-		this.setState({"taxonomies": taxonomies});
-
 	}
 
 	componentWillReceiveProps(nextProps, ownProps) {
