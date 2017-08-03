@@ -104,7 +104,8 @@ function convertUrlHost(urlStr) {
 
 
 //contacts content type
-function fetchDocuments() {
+function fetchDocuments(queryParams) {
+  console.log(queryParams)
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Documents information");
     return Promise.resolve(documents);
@@ -119,7 +120,42 @@ function fetchDocuments() {
       } else {
         return Promise.resolve([]);
       }
-    });
+    }).then((data) => {
+      console.log("result")
+      return filterAndSortDocuments(queryParams, data)
+    })
+}
+
+function filterAndSortDocuments(queryParams, documents) {
+  let filteredDocuments = filterDocuments(queryParams, documents);
+  let sortedDocuments = sortDocuments(queryParams, filteredDocuments);
+
+  return !parseInt(queryParams.start) && !parseInt(queryParams.end)
+    ? sortedDocuments
+    : sortedDocuments.slice(queryParams.start, queryParams.end);
+}
+
+function filterDocuments(queryParams, documents) {
+  return documents.filter(doc => {
+    return (
+      (queryParams.type === "All" || doc.documentIdType === queryParams.type) &&
+      (queryParams.program === "All" || doc.programs.includes(queryParams.program)) &&
+      (queryParams.activity === "All" || doc.activitys.includes(queryParams.activity)) &&
+      (queryParams.search === "" ||
+        doc.title.includes(queryParams.search) ||
+        doc.documentIdNumber.includes(queryParams.search))
+    );
+  });
+}
+
+function sortDocuments(queryParams, documents) {
+  let sortOrder;
+  if (queryParams.sortBy === "Title") {
+    sortOrder = ["title"];
+  } else if (queryParams.sortBy === "Number") {
+    sortOrder = ["documentIdNumber"];
+  }
+  return _.orderBy(documents, [doc => doc[sortOrder].toLowerCase()]);
 }
 
 //contacts content type
@@ -365,7 +401,7 @@ function makeNodeValueFormatter(typeName) {
   return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
     if (value === null || !Array.isArray(value) || value.length === 0) {
-      const arrayedFields = ["paragraphs", "files", "relatedDocuments", "programs", "activitys"];
+      const arrayedFields = ["paragraphs", "files", "relatedDocuments", "programs", "activities"];
       if (arrayedFields.includes(key)) {
         // Special case for fields expecting arrays
         newValuePromise = Promise.resolve([]);
@@ -378,7 +414,7 @@ function makeNodeValueFormatter(typeName) {
       });
     } else if (key === "button" || key === "officeLink") {
       newValuePromise = formatLink(value);
-    } else if (key === "activitys" || key === "programs") {
+    } else if (key === "activities" || key === "programs") {
       newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
     } else if (typeName === "document" && key === "relatedDocuments") {
       newValuePromise = fetchNestedNodes(value);
@@ -640,4 +676,4 @@ function fetchTaxonomyVocabulary(queryParams) {
     });
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments };
