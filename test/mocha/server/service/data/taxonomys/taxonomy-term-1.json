@@ -1,0 +1,52 @@
+{
+  "tid": [
+    {
+      "value": 1
+    }
+  ],
+  "uuid": [
+    {
+      "value": "52d07792-9b9c-4d6a-8870-0c7f33b7ad0a"
+    }
+  ],
+  "langcode": [
+    {
+      "value": "en"
+    }
+  ],
+  "vid": [
+    {
+      "target_id": "state",
+      "target_type": "taxonomy_vocabulary",
+      "target_uuid": "f21ae795-3fb1-41f9-a0e2-3f222d53001d"
+    }
+  ],
+  "name": [
+    {
+      "value": "National"
+    }
+  ],
+  "description": [
+    {
+      "value": null,
+      "format": null
+    }
+  ],
+  "weight": [
+    {
+      "value": 0
+    }
+  ],
+  "parent": [],
+  "changed": [
+    {
+      "value": 1492109744
+    }
+  ],
+  "default_langcode": [
+    {
+      "value": true
+    }
+  ],
+  "path": []
+}
