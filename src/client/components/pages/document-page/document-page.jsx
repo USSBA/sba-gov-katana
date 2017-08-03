@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import DocumentArticle from "../../molecules/document-article/document-article.jsx";
 import RelatedDocumentCards from "../../organisms/related-document-cards/related-document-cards.jsx";
+import localDocuments from "../../../../models/dao/sample-data/documents.js";
 
 class DocumentPage extends React.Component {
   componentWillMount() {
