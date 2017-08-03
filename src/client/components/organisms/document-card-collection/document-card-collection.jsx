@@ -8,7 +8,7 @@ class DocumentCardCollection extends React.Component {
     return (
       <div className={"document-card-collection " + s.cardCollection}>
         {this.props.documents.map((doc, index) => {
-          return <DocumentCard key={index} doc={doc} documentLookup={this.props.documentLookup} />;
+          return <DocumentCard key={index} doc={doc} showDetails={this.props.showDetails} />;
         })}
       </div>
     );
@@ -20,6 +20,6 @@ DocumentCardCollection.propTypes = {
 };
 
 DocumentCardCollection.defaultProps = {
-  documents: ["test"]
+  showDetails: true
 };
 export default DocumentCardCollection;

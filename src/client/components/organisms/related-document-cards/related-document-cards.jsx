@@ -41,7 +41,7 @@ class RelatedDocumentCards extends React.Component {
 						Browse all
 					</a>
 					<div>
-						<DocumentCardCollection documentLookup={false} documents={documents} />
+						<DocumentCardCollection showDetails={false} documents={documents} />
 					</div>
 				</div>
 			);

@@ -34,7 +34,7 @@ class DocumentCard extends React.Component {
                 {doc.title}
               </h6>
 
-              {this.props.documentLookup
+              {this.props.showDetails
                 ? <div>
                     <ActivityRow doc={doc} />
                     <ProgramsRow doc={doc} />
