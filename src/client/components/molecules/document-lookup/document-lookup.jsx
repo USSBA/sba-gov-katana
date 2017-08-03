@@ -220,16 +220,16 @@ class DocumentLookup extends React.Component {
 
 	applyFilters() {
 
-		const { documentType, programName, documentActivity, sortBy } = this.state
+		const { documentType, program, documentActivity, sortBy } = this.state;
 
 		const filters = {
 			documentType,
-			programName,
+			program,
 			documentActivity,
 			sortBy
 		};
 
-		console.log('B', 'apply filters', filters)
+		console.log('B', 'apply filters', filters);
 
 	}
 
