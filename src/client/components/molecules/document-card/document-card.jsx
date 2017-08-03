@@ -4,10 +4,23 @@ import s from "./document-card.scss";
 import DocumentType from "../../atoms/document-type/document-type.jsx";
 
 class DocumentCard extends React.Component {
+  getLatestFile() {
+    return this.props.doc.files
+      ? this.props.doc.files.reduce((acc, file) => {
+          return file.version > acc.version ? file : acc;
+        })
+      : {};
+  }
+
+  downloadClick() {
+    let latestFile = this.getLatestFile();
+    window.open(latestFile.url, "_blank");
+  }
+
   render() {
     const doc = this.props.doc;
     return (
-      <div className={s.container}>
+      <div className={"document-card-container " + s.container}>
         {doc
           ? <div>
               <div className={s.documentTypeContainer}>
@@ -17,7 +30,7 @@ class DocumentCard extends React.Component {
                   number={doc.documentIdNumber}
                 />
               </div>
-              <h6 className={s.title}>
+              <h6 className={"document-card-title " + s.title}>
                 {doc.title}
               </h6>
 
@@ -29,8 +42,8 @@ class DocumentCard extends React.Component {
                   </div>
                 : null}
 
-              <div className={s.download}>
-                <a onClick={() => doc.downloadClick(doc.latestFile)} className={s.link}>
+              <div className={"document-card-download " + s.download}>
+                <a onClick={() => this.downloadClick()} className={s.link}>
                   Download PDF
                 </a>
                 <PdfIcon />
@@ -71,21 +84,6 @@ const SummaryRow = props =>
         </div>
       </div>
     : null;
-
-DocumentCard.defaultProps = {
-  type: "MyType",
-  summary: "Document Summary",
-  title: "Document Title ABC",
-  programs: ["Program 1", "Program 2"],
-  documents: [
-    {
-      idType: "Authorization",
-      number: "00 01 A",
-      type: "documentId"
-    }
-  ],
-  activities: []
-};
 
 DocumentCard.propTypes = {};
 
