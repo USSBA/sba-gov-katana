@@ -1,0 +1,11 @@
+{
+  "uuid": "f21ae795-3fb1-41f9-a0e2-3f222d53001d",
+  "langcode": "en",
+  "status": true,
+  "dependencies": [],
+  "name": "State",
+  "vid": "state",
+  "description": "Complete list of U.S. states and territories.",
+  "hierarchy": 1,
+  "weight": 0
+}
