@@ -175,7 +175,7 @@ class SbicLookup extends React.Component {
 
   handleForward() {
     this.setState({
-      pageNumber: Math.min(Math.ceil(this.state.contacts.length / pageSize), this.state.pageNumber + 1)
+      pageNumber: Math.min(Math.max(1,Math.ceil(this.state.contacts.length / pageSize)), this.state.pageNumber + 1)
     })
   }
 
