@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Article-page.scss";
+import s from "./article-page.scss";
 import * as ContentActions from "../../../actions/content.js";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
