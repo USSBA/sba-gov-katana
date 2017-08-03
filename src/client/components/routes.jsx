@@ -55,7 +55,11 @@ const mainRoutes = [
   (<Route key={8} path="/:first/:second" component={RootPage}/>),
   (<Route key={9} path="/:first/:second/" component={RootPage}/>),
   (<Route key={10} path="/:first/:second/:third" component={RootPage}/>),
-  (<Route key={11} path="/:first/:second/:third/" component={RootPage}/>)
+  (<Route key={11} path="/:first/:second/:third/" component={RootPage}/>),
+  (<Route key={18} path="/:first/:second/:third/:fourth" component={RootPage}/>),
+  (<Route key={19} path="/:first/:second/:third/:fourth/" component={RootPage}/>),
+  (<Route key={20} path="/:first/:second/:third/:fourth/:fifth" component={RootPage}/>),
+  (<Route key={21} path="/:first/:second/:third/:fourth/:fifth/" component={RootPage}/>)
 ];
 
 const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>),(

@@ -10,6 +10,7 @@ import SectionPage from "./section-page/section-page.jsx";
 import path from "path";
 import ErrorPage from "../pages/error-page/error-page.jsx";
 import DocumentPage from "../pages/document-page/document-page.jsx"
+import ArticlePage from "../pages/article-page/article-page.jsx"
 
 class RootPage extends React.Component {
 
@@ -43,16 +44,21 @@ class RootPage extends React.Component {
     }
   }
 
-  renderPage(first, second, third) {
+  renderPage(first, second, third, fourth, fifth) {
     let pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
     if (first === "document") {
-        let split = second.split("-");
-        let type = split[0];
-        let id = split[1];
-        let rest = split.slice(2,split.length);
-        return (<DocumentPage type={type} id={id} title={rest}/>);
-    }else
-    if (this.props.menu) {
+      let split = second.split("-");
+      let type = split[0];
+      let id = split[1];
+      let rest = split.slice(2, split.length);
+      return (<DocumentPage type={type} id={id} title={rest}/>);
+  } else if (first === "article") {
+      let year = second;
+      let month = third;
+      let day = fourth;
+      let title = fifth;
+      return (<ArticlePage year={year} month={month} day={day} title={title}/>);
+    } else if (this.props.menu) {
       if (first && second && third) {
         if (pageLineage && pageLineage.length === 3) {
           return this.renderPageOnLineage(pageLineage)
@@ -65,7 +71,7 @@ class RootPage extends React.Component {
         } else {
           return (<ErrorPage/>);
         }
-    } else if (first) {
+      } else if (first) {
         let sectionData = findSection(this.props.menu, first);
         if (sectionData) {
           return (<SectionPage sectionData={sectionData}/>);
@@ -79,7 +85,7 @@ class RootPage extends React.Component {
   }
 
   render() {
-    return this.renderPage(this.props.params.first, this.props.params.second, this.props.params.third);
+    return this.renderPage(this.props.params.first, this.props.params.second, this.props.params.third, this.props.params.fourth, this.props.params.fifth);
   }
 }
 
