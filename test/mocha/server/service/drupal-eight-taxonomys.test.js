@@ -11,7 +11,7 @@ import taxonomys from "./data/taxonomys/taxonomys.json";
 import taxonomysOutputBase from "./data/taxonomys/output-taxonomys.json";
 
 
-describe("Drupal 8 Taxonomy Service", function () {
+describe("Drupal 8 Taxonomy Service", function() {
   let fetchContent,
     fetchById;
 
@@ -52,7 +52,7 @@ describe("Drupal 8 Taxonomy Service", function () {
   }
   it("should fetch all formatted taxonomys", () => {
     setupStub();
-    return drupalEightDataService.fetchTaxonomys().then((result)=>{
+    return drupalEightDataService.fetchTaxonomys().then((result) => {
       result.should.have.lengthOf(taxonomysOutputBase.length);
       result.should.deep.equal(taxonomysOutputBase);
     });

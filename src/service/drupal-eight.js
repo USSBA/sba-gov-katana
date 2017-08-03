@@ -85,7 +85,7 @@ function fetchMenuTreeByName(name) {
   return fetchContent(menuTreeEndpoint.replace(":name", name));
 }
 
-function fetchTaxonomys(){
+function fetchTaxonomys() {
   return fetchContent(taxonomysEndpoint)
     .then(formatTaxonomys);
 }
@@ -153,12 +153,18 @@ function formatTaxonomys(data) {
     return Promise.map(data, formatTaxonomyTerm, {
       concurrency: 50
     }).then((result) => {
+      /* eslint-disable no-param-reassign */
+      // TODO removes this eslint-disable
       return _.reduce(result, (reducedResult, value) => {
-        ( (reducedResult[value.vocabulary]) ||
-          (reducedResult[value.vocabulary] = {name: value.vocabulary, terms: []})
-        ).terms.push(value.name);
+        ((reducedResult[value.vocabulary]) ||
+        (reducedResult[value.vocabulary] = {
+          name: value.vocabulary,
+          terms: []
+        })
+          ).terms.push(value.name);
         return reducedResult;
       }, {});
+      /* eslint-enable no-param-reassign */
 
     }).then(Object.values);
   }
@@ -263,7 +269,10 @@ function formatTaxonomyTerm(data) {
   if (data) {
     const name = extractValue(data.name);
     const vocabulary = _.camelCase(extractTargetId(data.vid));
-    return {name: name, vocabulary: vocabulary};
+    return {
+      name: name,
+      vocabulary: vocabulary
+    };
   }
   return {};
 }
