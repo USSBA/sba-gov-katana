@@ -20,6 +20,7 @@ const localDataMap = {
 const fieldPrefix = "field_";
 const nodeEndpoint = "node";
 const taxonomyEndpoint = "/taxonomy/term";
+const taxonomysEndpoint = "taxonomys";
 const paragraphEndpoint = "entity/paragraph";
 const contactEndpoint = "contacts";
 const documentEndpoint = "documents";
@@ -84,6 +85,11 @@ function fetchMenuTreeByName(name) {
   return fetchContent(menuTreeEndpoint.replace(":name", name));
 }
 
+function fetchTaxonomys() {
+  return fetchContent(taxonomysEndpoint)
+    .then(formatTaxonomys);
+}
+
 function convertUrlHost(urlStr) {
   const host = _.trimEnd(config.get("drupal8.contentUrl"), "/");
   const parsedUrl = url.parse(urlStr);
@@ -138,6 +144,29 @@ function formatContacts(data) {
     return Promise.map(data, formatContact, {
       concurrency: 50
     });
+  }
+  return Promise.resolve([]);
+}
+
+function formatTaxonomys(data) {
+  if (data) {
+    return Promise.map(data, formatTaxonomyTerm, {
+      concurrency: 50
+    }).then((result) => {
+      /* eslint-disable no-param-reassign */
+      // TODO removes this eslint-disable
+      return _.reduce(result, (reducedResult, value) => {
+        ((reducedResult[value.vocabulary]) ||
+        (reducedResult[value.vocabulary] = {
+          name: value.vocabulary,
+          terms: []
+        })
+          ).terms.push(value.name);
+        return reducedResult;
+      }, {});
+      /* eslint-enable no-param-reassign */
+
+    }).then(Object.values);
   }
   return Promise.resolve([]);
 }
@@ -239,14 +268,11 @@ function extractFieldsByFieldNamePrefix(object, prefix, customFieldNameFormatter
 function formatTaxonomyTerm(data) {
   if (data) {
     const name = extractValue(data.name);
-    const vocabulary = extractTargetId(data.vid);
-    return extractFieldsByFieldNamePrefix(data, fieldPrefix, null, extractValuePromise)
-      .then((object) => {
-        return _.assign({
-          name: name,
-          vocabulary: _.camelCase(vocabulary)
-        }, object);
-      });
+    const vocabulary = _.camelCase(extractTargetId(data.vid));
+    return {
+      name: name,
+      vocabulary: vocabulary
+    };
   }
   return {};
 }
@@ -600,4 +626,18 @@ function fetchFormattedMenu() {
   return fetchMenuTreeByName("main").then(formatMenuTree);
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchDocuments };
+function fetchTaxonomyVocabulary(queryParams) {
+  const data = fetchTaxonomys();
+  let names = _.map(data, "name");
+  if (queryParams.names) {
+    names = queryParams.names.split(",");
+  }
+  return Promise.resolve(data)
+    .then((results) => {
+      return _.filter(results, (item) => {
+        return _.includes(names, item.name);
+      });
+    });
+}
+
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments };

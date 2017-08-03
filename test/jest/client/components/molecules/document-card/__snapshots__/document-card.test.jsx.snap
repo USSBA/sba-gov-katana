@@ -148,20 +148,6 @@ exports[`DocumentCard renders a single program 1`] = `
       <div
         className="columnOne"
       >
-        Activity:
-      </div>
-      <div
-        className="columnTwo"
-      >
-        Activity 1, Activity 2
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="columnOne"
-      >
         Summary:
       </div>
       <div
@@ -233,20 +219,6 @@ exports[`DocumentCard renders default data 1`] = `
         className="columnTwo"
       >
         Program 1, Program 2
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="columnOne"
-      >
-        Activity:
-      </div>
-      <div
-        className="columnTwo"
-      >
-        Activity 1, Activity 2
       </div>
     </div>
     <div
@@ -413,20 +385,6 @@ exports[`DocumentCard renders the summary 1`] = `
       <div
         className="columnOne"
       >
-        Activity:
-      </div>
-      <div
-        className="columnTwo"
-      >
-        Activity 1, Activity 2
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="columnOne"
-      >
         Summary:
       </div>
       <div
@@ -498,20 +456,6 @@ exports[`DocumentCard renders the title 1`] = `
         className="columnTwo"
       >
         Program 1, Program 2
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="columnOne"
-      >
-        Activity:
-      </div>
-      <div
-        className="columnTwo"
-      >
-        Activity 1, Activity 2
       </div>
     </div>
     <div
