@@ -1,0 +1,14 @@
+[
+  {
+    "name": "state",
+    "terms": [
+      "National", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado"
+    ]
+  },
+  {
+    "name": "businessGuideContactCategory",
+    "terms": [
+      "State license and permits", "State registration", "State taxes", "Export express"
+    ]
+  }
+]
