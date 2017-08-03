@@ -33,10 +33,13 @@ class RelatedDocumentCards extends React.Component {
 		return _.keys(this.state.sortedDocuments).map((documentType, index) => {
 			let documents = sortedDouments[documentType];
 			return (
-				<div>
+				<div className={"related-document-section"} key={index}>
 					<h2 className={s.sectionTitle}>
-						{documentType}
+						Related {documentType}{" "}
 					</h2>
+					<a className={s.browseAll} onClick={() => alert("what does this do")}>
+						Browse all
+					</a>
 					<div>
 						<DocumentCardCollection documentLookup={false} documents={documents} />
 					</div>
@@ -55,6 +58,3 @@ class RelatedDocumentCards extends React.Component {
 }
 
 export default RelatedDocumentCards;
-
-
-
