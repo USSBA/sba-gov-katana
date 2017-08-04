@@ -29,6 +29,34 @@ class DocumentCard extends React.Component {
     }
   }
 
+  makeTable(doc) {
+    let rows = [];
+    if (doc.activities && doc.activities.length > 0) {
+      rows.push({name: "Activity:", value: doc.activities.join(", ")});
+    }
+    if (doc.programs) {
+      rows.push({name: "Program:", value: doc.programs.join(", ")});
+    }
+    if (doc.summary) {
+      rows.push({name: "Summary:", value: doc.summary});
+    }
+
+    return (
+      <table>
+        <tbody>
+          {rows.map((row, index) => {
+            return (
+              <tr key={index}>
+                <td className={s.columnOne}>{row.name}</td>
+                <td className={s.columnTwo}>{row.value}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  }
+
   render() {
     const doc = this.props.doc;
     if (doc) {
@@ -42,18 +70,14 @@ class DocumentCard extends React.Component {
         <div className={"document-card-container " + s.container}>
           <div>
             <div className={s.documentTypeContainer}>
-              <DocumentType className={s.documentType} type={idData.idType} number={idData.number}/>
+              <DocumentType className={s.documentType} type={doc.documentIdType} number={doc.documentIdNumber}/>
             </div>
             <h6 className={"document-card-title " + s.title}>
               {doc.title}
             </h6>
 
             {this.props.showDetails
-              ? <div>
-                  <ActivityRow doc={doc}/>
-                  <ProgramsRow doc={doc}/>
-                  <SummaryRow doc={doc}/>
-                </div>
+              ? this.makeTable(this.props.doc)
               : null}
             {this.makeDownloadLink()}
           </div>
@@ -66,33 +90,6 @@ class DocumentCard extends React.Component {
     }
   }
 }
-
-const ActivityRow = props => props.doc.activities && props.doc.activities.length > 0
-  ? <div className={s.row}>
-      <div className={s.columnOne}>Activity:</div>
-      <div className={s.columnTwo}>
-        {props.doc.activities.join(", ")}
-      </div>
-    </div>
-  : null;
-
-const ProgramsRow = props => props.doc.programs
-  ? <div className={s.row}>
-      <div className={s.columnOne}>Program:</div>
-      <div className={s.columnTwo}>
-        {props.doc.programs.join(", ")}
-      </div>
-    </div>
-  : null;
-
-const SummaryRow = props => props.doc.summary
-  ? <div className={s.row}>
-      <div className={s.columnOne}>Summary:</div>
-      <div className={s.columnTwo}>
-        {props.doc.summary}
-      </div>
-    </div>
-  : null;
 
 DocumentCard.propTypes = {};
 
