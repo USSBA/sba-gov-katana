@@ -144,7 +144,7 @@ function filterDocuments(queryParams, documents) {
       (queryParams.program === "All" || doc.programs.includes(queryParams.program)) &&
       (queryParams.activity === "All" || doc.activitys.includes(queryParams.activity)) &&
       (queryParams.search === "" ||
-        doc.title.includes(queryParams.search) ||
+        doc.title.toLowerCase().includes(queryParams.search.toLowerCase()) ||
         doc.documentIdNumber.includes(queryParams.search))
     );
   });
