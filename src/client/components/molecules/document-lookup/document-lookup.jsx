@@ -24,137 +24,73 @@ const createCamelCase = (str) => {
 
 class DocumentLookup extends React.Component {
 
-		constructor(ownProps) {
-			console.log("ownProps", ownProps)
-			super();
-			this.state = {
-				documents: ownProps.items,
-				documentType: "all",
-				program: "all",
-				documentActivity: "all",
-				sortBy: "last-updated",
-				taxonomies: []
-			};
-		}
+	constructor(ownProps) {
+		super();
+		this.state = {
+			documents: ownProps.items,
+			searchTerm: "",
+			documentType: "all",
+			program: "all",
+			documentActivity: "all",
+			sortBy: "last-updated",
+			taxonomies: []
+		};
+	}
 
-		componentWillMount() {
+	componentWillMount() {
 
-			// fetch taxonomies from server
-			// prop:string, type:string, queryArgs:object
+		// fetch taxonomies from server
+		// prop:string, type:string, queryArgs:object
 
-			this.props.actions.fetchContentIfNeeded(
-				"taxonomies",
-				"taxonomyVocabulary", {
-				"names": "documentType,program,documentActivity"
+		this.props.actions.fetchContentIfNeeded(
+			"taxonomies",
+			"taxonomyVocabulary", {
+			"names": "documentType,program,documentActivity"
+		});
+
+	}
+
+	componentWillReceiveProps(nextProps, ownProps) {
+
+		const updatedProps = {};
+
+		// set the taxomonies object when
+		// nextProps.items array is populated, AND state.taxonomies array is NOT populated
+
+		if (nextProps.taxonomies && nextProps.taxonomies.length > 0 && this.state.taxonomies.length === 0) {
+
+			const taxonomies = nextProps.taxonomies;
+
+			// add an "All" filter option to dynamic taxonomies
+			for (let index = 0; index < taxonomies.length; index++) {
+				taxonomies[index].terms.unshift("All");
+			}
+
+			// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
+			taxonomies.push({
+				"name": "Sort By",
+				"terms": ["Last Updated","Title","Number"]
 			});
 
+			updatedProps.taxonomies = nextProps.taxonomies;
 		}
 
-		componentWillReceiveProps(nextProps, ownProps) {
-
-			// set the taxomonies object when
-			// nextProps.items array is populated, AND state.taxonomies array is NOT populated
-
-			if (nextProps.taxonomies && nextProps.taxonomies.length > 0 && this.state.taxonomies.length === 0) {
-
-				const taxonomies = nextProps.taxonomies;
-
-				// add an "All" filter option to dynamic taxonomies
-				for (let index = 0; index < taxonomies.length; index++) {
-					taxonomies[index].terms.unshift("All");
-				}
-
-				// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
-				taxonomies.push({
-					"name": "Sort By",
-					"terms": ["Last Updated", "Name","Number"]
-				});
-
-				this.setState({
-					taxonomies: nextProps.taxonomies
-				}, () => {
-					this.sortAndFilterDocuments();
-				});
-			}
-
+		if (nextProps.documents !== undefined) {
+			updatedProps.documents = nextProps.documents;
 		}
 
-		handleChange(event, selectStateKey) {
 
-			const obj = {};
-			obj[selectStateKey] = event.value;
+		this.setState(updatedProps);
 
-			this.setState(obj, () => {
-				this.sortAndFilterDocuments();
-					if(this.props.afterChange) {
-						this.props.afterChange(
-							"document-lookup",
-							"Filter Status : " + JSON.stringify(pick(this.state,
-								[
-									"documentType",
-									"programName",
-									"documentActivity",
-									"sortBy"
-								])
-							),
-						null
-					);
-				}
-			});
-		}
+	}
 
-		sortAndFilterDocuments() {
+	handleChange(event, selectStateKey) {
 
-			const documents = this.props.items;
-			const sortedDocuments = this.sortDocuments(documents);
-			const filteredDocuments = this.filterDocuments(sortedDocuments);
+		const obj = {};
+		obj[selectStateKey] = event.value;
 
-			this.setState({
-				documents: filteredDocuments
-			});
-
-		}
-
-		sortDocuments(contacts) {
-
-			let direction; // asc|desc
-			let titleOrActiveSince; // title|activeSince
-
-			if (this.state.sortBy === "Investor Name") {
-
-				direction = "asc";
-				titleOrActiveSince = "title";
-
-			} else if (this.state.sortBy === "Active Since") {
-
-				direction = "desc";
-				titleOrActiveSince = "activeSince";
-
-			}
-
-			const orders = [direction];
-			const iteratees = [titleOrActiveSince];
-
-			return _.orderBy(contacts, iteratees, orders);
-
-		}
-
-		//TODO remove outer array brackets [contact.industry] when industry field becomes an actual array. keep intersection though.
-		//this filtering was intended to match multiple user selections to multiple industry types.
-		filterDocuments(contacts) {
-			let filteredContacts = contacts
-			if (this.state.industryValue !== "All") {
-				filteredContacts = _.filter(contacts, (contact) => {
-					return !_.isEmpty(_.intersection(_.castArray(contact.industry), _.castArray(this.state.industryValue)))
-				});
-			}
-			if (this.state.investingStatusValue !== "All") {
-				filteredContacts = _.filter(filteredContacts, (contact) => {
-					return contact.investingStatus === this.state.investingStatusValue
-				});
-			}
-			return filteredContacts;
-		}
+		this.setState(obj);
+	}
 
 	renderMultiSelects() {
 
@@ -200,8 +136,8 @@ class DocumentLookup extends React.Component {
 					>
 					</Multiselect>
 				</div>
-			)
-		})
+			);
+		});
 	}
 
 	renderDocuments() {
@@ -210,27 +146,64 @@ class DocumentLookup extends React.Component {
 
 	handleKeyUp(event) {
 
-		const returnKeyCode = 13
+		const returnKeyCode = 13;
 
 		if (event.keyCode === returnKeyCode) {
-			console.log('A', 'validate', event.target.value)
+
+			this.submit();
+
 		}
 
 	}
 
-	applyFilters() {
+	updateSearchTerm(event) {
+		
+		this.setState({
+			"searchTerm": event.target.value
+		});
 
-		const { documentType, programName, documentActivity, sortBy } = this.state
+	}
 
-		const filters = {
-			documentType,
-			programName,
-			documentActivity,
+	submit() {
+
+		const {
+			searchTerm:search,
+			documentType:type,
+			program,
+			documentActivity:activity,
 			sortBy
+		} = this.state;
+
+		const data = {
+			search,
+			type,
+			program,
+			activity,
+			sortBy,
+			start: 1,
+			end: 10
 		};
 
-		console.log('B', 'apply filters', filters)
+		// fetch documents from server
+		// prop:string, type:string, queryArgs:object
 
+		this.props.actions.fetchContentIfNeeded(
+			"documents",
+			"documents",
+			data);
+
+		this.props.afterChange(
+				"document-lookup",
+				"Filter Status : " + JSON.stringify(pick(this.state,
+					[
+						"documentType",
+						"program",
+						"documentActivity",
+						"sortBy"
+					])
+				),
+			null
+		);
 	}
 
 	render() {
@@ -251,6 +224,7 @@ class DocumentLookup extends React.Component {
 								label="Search"
 								validationState={""}
 								onKeyUp={(e) => this.handleKeyUp(e)}
+								onChange={(e) => this.updateSearchTerm(e)}
 							/>
 							<div className={s.searchIcon}>
 								<SearchIcon aria-hidden="true" />
@@ -258,7 +232,7 @@ class DocumentLookup extends React.Component {
 						</div>
 						{this.renderMultiSelects()}
 						<SmallInverseSecondaryButton
-							onClick={() => this.applyFilters()}
+							onClick={() => this.submit()}
 							extraClassName={s.applyFiltersBtn}
 							text="Apply Filters"
 						/>
@@ -273,7 +247,8 @@ class DocumentLookup extends React.Component {
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
-    taxonomies: reduxState.contentReducer["taxonomies"]
+    taxonomies: reduxState.contentReducer["taxonomies"],
+    documents: reduxState.contentReducer["documents"]
   };
 }
 

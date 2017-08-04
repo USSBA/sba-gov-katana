@@ -31,7 +31,6 @@ class DocumentCard extends React.Component {
 
   render() {
     const doc = this.props.doc;
-    console.log("doc", doc)
     if (doc) {
       const idData = doc.documents && doc.documents.length > 0
         ? doc.documents[0]
