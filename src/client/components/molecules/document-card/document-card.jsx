@@ -70,7 +70,7 @@ class DocumentCard extends React.Component {
         <div className={"document-card-container " + s.container}>
           <div>
             <div className={s.documentTypeContainer}>
-              <DocumentType className={s.documentType} type={idData.idType} number={idData.number}/>
+              <DocumentType className={s.documentType} type={doc.documentIdType} number={doc.documentIdNumber}/>
             </div>
             <h6 className={"document-card-title " + s.title}>
               {doc.title}
