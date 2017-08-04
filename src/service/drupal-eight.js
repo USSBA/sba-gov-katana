@@ -119,44 +119,52 @@ function fetchDocuments(queryParams) {
         return Promise.resolve([]);
       }
     }).then((data) => {
-    return filterAndSortDocuments(queryParams, data);
+    return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
   });
 }
 
-function filterAndSortDocuments(queryParams, docs) {
-  const filteredDocuments = filterDocuments(queryParams, docs);
-  const sortedDocuments = sortDocuments(queryParams, filteredDocuments);
+function sanitizeDocumentParams(params) {
+  return _.mapValues(params, (value, key) => {
+    if (key === "start" || key === "end") {
+      return parseInt(value, 10) || value === "0" ? parseInt(value, 10) : "all";
+    } else {
+      return value ? value : "all";
+    }
+  });
+}
 
-  const start = parseInt(queryParams.start, 10);
-  const end = parseInt(queryParams.end, 10);
-  if (!start && !end) {
+function filterAndSortDocuments(params, docs) {
+  const filteredDocuments = filterDocuments(params, docs);
+  const sortedDocuments = sortDocuments(params, filteredDocuments);
+
+  if (params.start === "all" || params.end === "all") {
     return sortedDocuments;
   } else {
-    return sortedDocuments.slice(queryParams.start, queryParams.end);
+    return sortedDocuments.slice(params.start, params.end);
   }
 }
 
-function filterDocuments(queryParams, docs) {
+function filterDocuments(params, docs) {
   return docs.filter((doc) => {
     return (
-      (queryParams.type === "all" || doc.documentIdType === queryParams.type) &&
-      (queryParams.program === "all" || doc.programs.includes(queryParams.program)) &&
-      (queryParams.activity === "all" || doc.activitys.includes(queryParams.activity)) &&
-      (queryParams.search === "" ||
-      doc.title.toLowerCase().includes(queryParams.search.toLowerCase()) ||
-      doc.documentIdNumber.includes(queryParams.search))
+      (params.type === "all" || doc.documentIdType === params.type) &&
+      (params.program === "all" || doc.programs.includes(params.program)) &&
+      (params.activity === "all" || doc.activitys.includes(params.activity)) &&
+      (params.search === "all" ||
+      doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
+      doc.documentIdNumber.includes(params.search))
     );
   });
 }
 
-function sortDocuments(queryParams, docs) {
+function sortDocuments(params, docs) {
   let sortOrder = ["asc"];
   let sortItems;
-  if (queryParams.sortBy === "title") {
+  if (params.sortBy === "title") {
     sortItems = ["title"];
-  } else if (queryParams.sortBy === "number") {
+  } else if (params.sortBy === "number") {
     sortItems = ["documentIdNumber"];
-  } else if (queryParams.sortBy === "last-updated") {
+  } else if (params.sortBy === "last-updated") {
     sortItems = ["updated"];
     sortOrder = ["desc"];
   } else {
@@ -691,4 +699,4 @@ function fetchTaxonomyVocabulary(queryParams) {
     });
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments, sanitizeDocumentParams };
