@@ -29,6 +29,7 @@ class DocumentArticle extends React.Component {
 
   render() {
     const data = this.props.data
+    
     if (data) {
       const newestFile = this.getNewestFile()
       return (
@@ -52,14 +53,15 @@ class DocumentArticle extends React.Component {
             <hr className={s.hr}/>
             <span className={s.relatedPrograms}>Related programs:{" "}
             </span>
+            
             {data.programs.map((program, index) => {
               return <span className="document-article-related-programs-link" key={index}>
                 <a>{program}</a>{index == data.programs.length - 1
                   ? null
                   : ", "}</span>
-            })
-}
+            })}
             <hr className={s.hr}/>
+
           </div>
         </div>
       );
