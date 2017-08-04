@@ -76,5 +76,53 @@ describe("Drupal 8 Document Service", function() {
       );
       value[0].title.should.equal("ad elit ad magna labore dolore");
     });
+    it("should search for documents with only a search param", () => {
+      let value = drupalService.filterAndSortDocuments(
+        drupalService.sanitizeDocumentParams({
+          search: "ad elit"
+        }),
+        documentData
+      );
+      value[0].title.should.equal("ad elit ad magna labore dolore");
+    });
+    it("should return all documents with only a type param", () => {
+      drupalService
+        .filterAndSortDocuments(
+          drupalService.sanitizeDocumentParams({
+            type: "all"
+          }),
+          documentData
+      )
+        .should.deep.equal(documentData);
+    });
+    it("should return all documents with only a program param", () => {
+      drupalService
+        .filterAndSortDocuments(
+          drupalService.sanitizeDocumentParams({
+            program: "all"
+          }),
+          documentData
+      )
+        .should.deep.equal(documentData);
+    });
+    it("should return all documents with only an activity param", () => {
+      drupalService
+        .filterAndSortDocuments(
+          drupalService.sanitizeDocumentParams({
+            activity: "all"
+          }),
+          documentData
+      )
+        .should.deep.equal(documentData);
+    });
+    it("should sort all documents with only a sort by param", () => {
+      let value = drupalService.filterAndSortDocuments(
+        drupalService.sanitizeDocumentParams({
+          sortBy: "title"
+        }),
+        documentData
+      );
+      value[0].title.should.equal("ad elit ad magna labore dolore");
+    });
   });
 });

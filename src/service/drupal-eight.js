@@ -124,13 +124,22 @@ function fetchDocuments(queryParams) {
 }
 
 function sanitizeDocumentParams(params) {
-  return _.mapValues(params, (value, key) => {
+  const sanitizedParams = {
+    type: "all",
+    program: "all",
+    activity: "all",
+    search: "all",
+    start: "all",
+    end: "all"
+  };
+  _.mapValues(params, (value, key) => {
     if (key === "start" || key === "end") {
-      return parseInt(value, 10) || value === "0" ? parseInt(value, 10) : "all";
+      (parseInt(value, 10) || value === "0") && (sanitizedParams[key] = parseInt(value, 10));
     } else {
-      return value ? value : "all";
+      value && (sanitizedParams[key] = value);
     }
   });
+  return sanitizedParams;
 }
 
 function filterAndSortDocuments(params, docs) {
@@ -616,8 +625,7 @@ function formatNode(data, isChild = false) {
     if (isChild) {
       minimizedData = _.omit(minimizedData, ["field_related_documents"]);
     }
-    //console.log(minimizedData)
-    //console.log(data)
+
     // Extract any other fields
     const nodeValueFormatter = makeNodeValueFormatter(nodeType);
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
