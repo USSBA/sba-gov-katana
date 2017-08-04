@@ -119,50 +119,54 @@ function fetchDocuments(queryParams) {
         return Promise.resolve([]);
       }
     }).then((data) => {
-      return filterAndSortDocuments(queryParams, data)
-    })
+    return filterAndSortDocuments(queryParams, data);
+  });
 }
 
-function filterAndSortDocuments(queryParams, documents) {
-  let filteredDocuments = filterDocuments(queryParams, documents);
-  let sortedDocuments = sortDocuments(queryParams, filteredDocuments);
+function filterAndSortDocuments(queryParams, docs) {
+  const filteredDocuments = filterDocuments(queryParams, docs);
+  const sortedDocuments = sortDocuments(queryParams, filteredDocuments);
 
-  let start = parseInt(queryParams.start);
-  let end = parseInt(queryParams.end);
-  return !start && !end
-    ? sortedDocuments
-    : sortedDocuments.slice(queryParams.start, queryParams.end);
+  const start = parseInt(queryParams.start, 10);
+  const end = parseInt(queryParams.end, 10);
+  if (!start && !end) {
+    return sortedDocuments;
+  } else {
+    return sortedDocuments.slice(queryParams.start, queryParams.end);
+  }
 }
 
-function filterDocuments(queryParams, documents) {
-  return documents.filter(doc => {
+function filterDocuments(queryParams, docs) {
+  return docs.filter((doc) => {
     return (
-      (queryParams.type === "All" || doc.documentIdType === queryParams.type) &&
-      (queryParams.program === "All" || doc.programs.includes(queryParams.program)) &&
-      (queryParams.activity === "All" || doc.activitys.includes(queryParams.activity)) &&
+      (queryParams.type === "all" || doc.documentIdType === queryParams.type) &&
+      (queryParams.program === "all" || doc.programs.includes(queryParams.program)) &&
+      (queryParams.activity === "all" || doc.activitys.includes(queryParams.activity)) &&
       (queryParams.search === "" ||
-        doc.title.toLowerCase().includes(queryParams.search.toLowerCase()) ||
-        doc.documentIdNumber.includes(queryParams.search))
+      doc.title.toLowerCase().includes(queryParams.search.toLowerCase()) ||
+      doc.documentIdNumber.includes(queryParams.search))
     );
   });
 }
 
-function sortDocuments(queryParams, documents) {
+function sortDocuments(queryParams, docs) {
   let sortOrder = ["asc"];
   let sortItems;
-  if (queryParams.sortBy === "Title") {
+  if (queryParams.sortBy === "title") {
     sortItems = ["title"];
-  } else if (queryParams.sortBy === "Number") {
+  } else if (queryParams.sortBy === "number") {
     sortItems = ["documentIdNumber"];
-  } else if (queryParams.sortBy === "Last Updated") {
+  } else if (queryParams.sortBy === "last-updated") {
     sortItems = ["updated"];
     sortOrder = ["desc"];
   } else {
-    return documents;
+    return docs;
   }
   return _.orderBy(
-    documents,
-    [doc => (typeof doc[sortItems] === "string" ? doc[sortItems].toLowerCase() : doc[sortItems])],
+    docs,
+    [(doc) => {
+      return (typeof doc[sortItems] === "string" ? doc[sortItems].toLowerCase() : doc[sortItems]);
+    }],
     sortOrder
   );
 }
@@ -597,7 +601,7 @@ function formatNode(data, isChild = false) {
     otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
     otherData.id = extractValue(data.nid);
-    otherData.updated = extractValue(data.changed)
+    otherData.updated = extractValue(data.changed);
 
     // Create an object minus the "one-off" fields above
     let minimizedData = _.omit(data, ["field_site_location"]);
