@@ -130,7 +130,9 @@ function filterAndSortDocuments(queryParams, documents) {
   let filteredDocuments = filterDocuments(queryParams, documents);
   let sortedDocuments = sortDocuments(queryParams, filteredDocuments);
 
-  return !parseInt(queryParams.start) && !parseInt(queryParams.end)
+  let start = parseInt(queryParams.start);
+  let end = parseInt(queryParams.end);
+  return !start && !end
     ? sortedDocuments
     : sortedDocuments.slice(queryParams.start, queryParams.end);
 }
@@ -154,6 +156,8 @@ function sortDocuments(queryParams, documents) {
     sortOrder = ["title"];
   } else if (queryParams.sortBy === "Number") {
     sortOrder = ["documentIdNumber"];
+  } else {
+    return documents;
   }
   return _.orderBy(documents, [doc => doc[sortOrder].toLowerCase()]);
 }
