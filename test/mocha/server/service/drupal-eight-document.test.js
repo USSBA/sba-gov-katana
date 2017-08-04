@@ -57,9 +57,9 @@ describe("Drupal 8 Document Service", function() {
 					{
 						search: "",
 						type: "SOP",
-						program: "SBA operations",
-						activity: "Investment and transactions",
-						sortBy: "Title",
+						program: "8(a)",
+						activity: "Leverage commitments and draws",
+						sortBy: "Last Updated",
 						start: "0",
 						end: "0"
 					},
@@ -70,7 +70,7 @@ describe("Drupal 8 Document Service", function() {
 		it("should search for documents", () => {
 			let value = drupalService.filterAndSortDocuments(
 				{
-					search: "magna except",
+					search: "ad elit",
 					type: "All",
 					program: "All",
 					activity: "All",
@@ -80,7 +80,7 @@ describe("Drupal 8 Document Service", function() {
 				},
 				documentData
 			);
-			value[0].title.should.equal("magna excepteur fugiat adipisicing quis veniam");
+			value[0].title.should.equal("ad elit ad magna labore dolore");
 		});
 	});
 });

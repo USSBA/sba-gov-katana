@@ -102,7 +102,6 @@ function convertUrlHost(urlStr) {
   return urlStr;
 }
 
-
 //contacts content type
 function fetchDocuments(queryParams) {
   console.log(queryParams)
@@ -151,15 +150,23 @@ function filterDocuments(queryParams, documents) {
 }
 
 function sortDocuments(queryParams, documents) {
-  let sortOrder;
+  let sortOrder = ["asc"];
+  let sortItems;
   if (queryParams.sortBy === "Title") {
-    sortOrder = ["title"];
+    sortItems = ["title"];
   } else if (queryParams.sortBy === "Number") {
-    sortOrder = ["documentIdNumber"];
+    sortItems = ["documentIdNumber"];
+  } else if (queryParams.sortBy === "Last Updated") {
+    sortItems = ["updated"];
+    sortOrder = ["desc"];
   } else {
     return documents;
   }
-  return _.orderBy(documents, [doc => doc[sortOrder].toLowerCase()]);
+  return _.orderBy(
+    documents,
+    [doc => (typeof doc[sortItems] === "string" ? doc[sortItems].toLowerCase() : doc[sortItems])],
+    sortOrder
+  );
 }
 
 //contacts content type
@@ -592,13 +599,14 @@ function formatNode(data, isChild = false) {
     otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
     otherData.id = extractValue(data.nid);
+    otherData.updated = extractValue(data.changed)
 
     // Create an object minus the "one-off" fields above
     let minimizedData = _.omit(data, ["field_site_location"]);
     if (isChild) {
       minimizedData = _.omit(minimizedData, ["field_related_documents"]);
     }
-
+    //console.log(data)
     // Extract any other fields
     const nodeValueFormatter = makeNodeValueFormatter(nodeType);
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
