@@ -104,13 +104,15 @@
       "options": []
     }
   ],
-  "field_paragraphs": [{
-          "target_id": 1,
-          "target_revision_id": 58,
-          "target_type": "paragraph",
-          "target_uuid": "75296eaf-f651-487c-a814-00abda072da7"
-      }
+  "field_paragraphs": [
+    {
+      "target_id": 1,
+      "target_revision_id": 58,
+      "target_type": "paragraph",
+      "target_uuid": "75296eaf-f651-487c-a814-00abda072da7"
+    }
   ],
+  "updated": 1496858746,
   "field_summary160": [
     {
       "value": "fieldSummaryText"

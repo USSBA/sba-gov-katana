@@ -2,10 +2,7 @@
   "type": "document",
   "summary": "Document Summary",
   "title": "DocumentTitle",
-  "programs": [
-    "Authorization",
-    "General"
-  ],
+  "programs": ["Authorization", "General"],
   "relatedDocuments": [],
   "files": [
     {
@@ -31,9 +28,7 @@
     "url": "http://office-link.example.com",
     "title": "Office Example Test"
   },
-  "activitys": [
-    "Plan",
-    "Export express"
-  ],
-  "id": 3368
+  "activitys": ["Plan", "Export express"],
+  "id": 3368,
+  "updated": 1501265846
 }

@@ -102,9 +102,8 @@ function convertUrlHost(urlStr) {
   return urlStr;
 }
 
-
 //contacts content type
-function fetchDocuments() {
+function fetchDocuments(queryParams) {
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Documents information");
     return Promise.resolve(documents);
@@ -119,7 +118,78 @@ function fetchDocuments() {
       } else {
         return Promise.resolve([]);
       }
-    });
+    }).then((data) => {
+    return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
+  });
+}
+
+function sanitizeDocumentParams(params) {
+  const sanitizedParams = {
+    type: "all",
+    program: "all",
+    activity: "all",
+    search: "all",
+    start: "all",
+    end: "all"
+  };
+  _.mapValues(params, (value, key) => {
+    if (key === "start" || key === "end") {
+      if (parseInt(value, 10) || value === "0") {
+        sanitizedParams[key] = parseInt(value, 10);
+      } else {
+        throw new TypeError("start / end params should be a number");
+      }
+    } else {
+      value && (sanitizedParams[key] = value);
+    }
+  });
+  return sanitizedParams;
+}
+
+function filterAndSortDocuments(params, docs) {
+  const filteredDocuments = filterDocuments(params, docs);
+  const sortedDocuments = sortDocuments(params, filteredDocuments);
+
+  if (params.start === "all" || params.end === "all") {
+    return sortedDocuments;
+  } else {
+    return sortedDocuments.slice(params.start, params.end);
+  }
+}
+
+function filterDocuments(params, docs) {
+  return docs.filter((doc) => {
+    return (
+      (params.type === "all" || doc.documentIdType === params.type) &&
+      (params.program === "all" || doc.programs.includes(params.program)) &&
+      (params.activity === "all" || doc.activitys.includes(params.activity)) &&
+      (params.search === "all" ||
+      doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
+      doc.documentIdNumber.includes(params.search))
+    );
+  });
+}
+
+function sortDocuments(params, docs) {
+  let sortOrder = ["asc"];
+  let sortItems;
+  if (params.sortBy === "title") {
+    sortItems = ["title"];
+  } else if (params.sortBy === "number") {
+    sortItems = ["documentIdNumber"];
+  } else if (params.sortBy === "last-updated") {
+    sortItems = ["updated"];
+    sortOrder = ["desc"];
+  } else {
+    return docs;
+  }
+  return _.orderBy(
+    docs,
+    [(doc) => {
+      return (typeof doc[sortItems] === "string" ? doc[sortItems].toLowerCase() : doc[sortItems]);
+    }],
+    sortOrder
+  );
 }
 
 //contacts content type
@@ -365,7 +435,7 @@ function makeNodeValueFormatter(typeName) {
   return function(value, key) { //eslint-disable-line complexity
     let newValuePromise = Promise.resolve({});
     if (value === null || !Array.isArray(value) || value.length === 0) {
-      const arrayedFields = ["paragraphs", "files", "relatedDocuments", "programs", "activitys"];
+      const arrayedFields = ["paragraphs", "files", "relatedDocuments", "programs", "activities"];
       if (arrayedFields.includes(key)) {
         // Special case for fields expecting arrays
         newValuePromise = Promise.resolve([]);
@@ -378,7 +448,7 @@ function makeNodeValueFormatter(typeName) {
       });
     } else if (key === "button" || key === "officeLink") {
       newValuePromise = formatLink(value);
-    } else if (key === "activitys" || key === "programs") {
+    } else if (key === "activities" || key === "programs") {
       newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
     } else if (typeName === "document" && key === "relatedDocuments") {
       newValuePromise = fetchNestedNodes(value);
@@ -552,6 +622,7 @@ function formatNode(data, isChild = false) {
     otherData.type = _.camelCase(nodeType);
     otherData.title = extractValue(data.title);
     otherData.id = extractValue(data.nid);
+    otherData.updated = extractValue(data.changed);
 
     // Create an object minus the "one-off" fields above
     let minimizedData = _.omit(data, ["field_site_location"]);
@@ -640,4 +711,4 @@ function fetchTaxonomyVocabulary(queryParams) {
     });
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments };
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments, sanitizeDocumentParams };
