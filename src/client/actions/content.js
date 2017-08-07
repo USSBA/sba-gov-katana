@@ -21,7 +21,10 @@ function fetchContent(prop, type, query) {
       return response.data;
     }).then((data) => {
       return dispatch(receiveContent(prop, type, query, data));
-    });
+    })
+      .catch((error) => {
+        return dispatch(receiveContent(prop, type, query, null));
+      });
   };
 }
 
