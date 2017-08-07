@@ -134,7 +134,11 @@ function sanitizeDocumentParams(params) {
   };
   _.mapValues(params, (value, key) => {
     if (key === "start" || key === "end") {
-      (parseInt(value, 10) || value === "0") && (sanitizedParams[key] = parseInt(value, 10));
+      if (parseInt(value, 10) || value === "0") {
+        sanitizedParams[key] = parseInt(value, 10);
+      } else {
+        throw new TypeError("start / end params should be a number");
+      }
     } else {
       value && (sanitizedParams[key] = value);
     }
