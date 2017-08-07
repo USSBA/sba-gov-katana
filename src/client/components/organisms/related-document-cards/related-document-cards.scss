@@ -1,5 +1,4 @@
 .title {
-	position: relative;
 
 	@include grid-media($sba-grid-medium-and-small) {
 		margin-top: 30px;
@@ -33,7 +32,7 @@
 	position: relative;
 
 	@include grid-container;
-	@include grid-media($sba-grid-medium-and-small) {
+	@include grid-media($tablet-mobile-0gutter) {
 		height: 90px;
 
 		@include grid-column(6);
@@ -54,7 +53,7 @@
 	transform: translateY(-50%);
 
 	@include font-size($paragraph-font-sizes);
-	@include grid-media($sba-grid-medium-and-small) {
+	@include grid-media($tablet-mobile-0gutter) {
 		@include grid-column(2);
 	}
 	@include grid-media($sba-grid-large) {

@@ -115,6 +115,12 @@ $tablet-0gutter: (
   media: "(min-width: $medium-screen) and (max-width: 1079px)",
 );
 
+$tablet-mobile-0gutter: (
+  columns: 6,
+  gutter: 0,
+  media: "(min-width: 0px) and (max-width: 1079px)",
+);
+
 $mobile-0gutter: (
   columns: 6,
   gutter: 0,
