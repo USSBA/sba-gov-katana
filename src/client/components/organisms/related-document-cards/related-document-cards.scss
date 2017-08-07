@@ -1,29 +1,62 @@
-.sectionTitle {
-	position: relative;
+.title {
 
 	@include grid-media($sba-grid-medium-and-small) {
-		margin-top: 40px;
+		margin-top: 30px;
 		margin-bottom: 20px;
 
 		@include grid-column(5);
 	}
 	@include grid-media($sba-grid-large) {
-		margin-top: 60px;
+		margin-top: 50px;
 		margin-bottom: 40px;
 
 		@include grid-column(11);
 	}
 }
 
-.browseAll {
-	font-weight: normal;
-	@include font-size($paragraph-font-sizes);
+.sectionTitle {
+	position: relative;
+	top: 50%;
+
+	transform: translateY(-50%);
+
 	@include grid-media($sba-grid-medium-and-small) {
-		@include grid-column(1);
-		margin-top: 55px;
+		@include grid-column(4);
+	}
+	@include grid-media($desktop-0gutter) {
+		@include grid-column(10);
+	}
+}
+
+.sectionHeader {
+	position: relative;
+
+	@include grid-container;
+	@include grid-media($tablet-mobile-0gutter) {
+		height: 90px;
+
+		@include grid-column(6);
 	}
 	@include grid-media($sba-grid-large) {
-		@include grid-column(1);
-		margin-top: 90px;
+		height: 126px;
+
+		@include grid-column(12);
+	}
+}
+
+.browseAll {
+	font-weight: normal;
+
+	position: relative;
+	top: 50%;
+
+	transform: translateY(-50%);
+
+	@include font-size($paragraph-font-sizes);
+	@include grid-media($tablet-mobile-0gutter) {
+		@include grid-column(2);
+	}
+	@include grid-media($sba-grid-large) {
+		@include grid-column(2);
 	}
 }

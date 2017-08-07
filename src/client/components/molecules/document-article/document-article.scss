@@ -30,11 +30,17 @@
         & span {
             display: none;
         }
+        & div {
+            display: block;
+        }
     }
     @include grid-media($sba-grid-large) {
         font-size: 24px;
 
         @include grid-column(8, $desktop-0gutter);
+        & div {
+            display: none;
+        }
     }
 }
 
@@ -64,7 +70,6 @@
     }
     @include grid-media($sba-grid-large) {
         @include font-size($h4-font-sizes);
-
         @include grid-column(12, $desktop-0gutter);
     }
 }
@@ -78,8 +83,8 @@
 
     @include grid-media($sba-grid-large) {
         @include font-size($h4-font-sizes);
-
         @include grid-column(8, $desktop-0gutter);
+        @include grid-shift(-4);
     }
 }
 
@@ -91,6 +96,10 @@
     }
     @include grid-media($sba-grid-large) {
         float: right;
+
+        @include grid-column(4)
+        @include grid-shift(8);
+        // width: 335px;
     }
 }
 

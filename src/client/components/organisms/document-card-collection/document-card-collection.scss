@@ -1,16 +1,14 @@
 .cardCollection {
-	clear: left;
+    clear: left;
 }
 
-.card{
-	@include grid-media($sba-grid-medium-and-small) {
+.card {
+    @include grid-media($sba-grid-medium-and-small) {
         margin-bottom: 20px;
-        padding: 15px;
         @include grid-column(6);
     }
     @include grid-media($sba-grid-large) {
         margin-bottom: 30px;
-        padding: 20px;
         @include grid-column(4);
     }
 }

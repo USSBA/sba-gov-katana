@@ -10,6 +10,7 @@ import moment from 'moment'
 class DocumentArticle extends React.Component {
 
   getNewestFile() {
+    console.log(this.props.data)
     return this.props.data.files
       ? this.props.data.files.reduce((acc, file) => {
         return file.version > acc.version
@@ -19,8 +20,8 @@ class DocumentArticle extends React.Component {
       : {};
   }
 
-  downloadClick(e) {
-    window.open(this.state.newestFile.url, '_blank')
+  downloadClick(newestFile) {
+    window.open(newestFile.url, '_blank')
   }
 
   formatDate(date) {
@@ -37,14 +38,15 @@ class DocumentArticle extends React.Component {
           <DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
           <h1 className={"document-article-title " + s.title}>{data.title}</h1>
           <p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)}
-            <span>|</span>
+            <span>{" "}|{" "}</span>
+            <div></div>
             Effective {this.formatDate(newestFile.effectiveDate)}</p>
           <div className={s.office}>By{" "}
             <a href={data.officeLink.url}>{data.officeLink.title}</a>
           </div>
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(e)} text="download pdf"/>
+            <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text="download pdf"/>
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
