@@ -80,6 +80,7 @@
         @include font-size($h4-font-sizes);
 
         @include grid-column(8, $desktop-0gutter);
+        @include grid-shift(-4)
     }
 }
 
@@ -91,6 +92,9 @@
     }
     @include grid-media($sba-grid-large) {
         float: right;
+        @include grid-column(4)
+        @include grid-shift(8)
+        // width: 335px;
     }
 }
 
