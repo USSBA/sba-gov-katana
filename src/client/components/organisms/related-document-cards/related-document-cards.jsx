@@ -30,17 +30,19 @@ class RelatedDocumentCards extends React.Component {
 
 	renderRelatedDocumentSections() {
 		let sortedDouments = this.state.sortedDocuments;
-		console.log("sortedDouments", sortedDouments)
+		console.log("sortedDouments", sortedDouments);
 		return _.keys(this.state.sortedDocuments).map((documentType, index) => {
 			let documents = sortedDouments[documentType];
 			return (
 				<div className={"related-document-section"} key={index}>
-					<h2 className={s.sectionTitle}>
-						Related {documentType}{" "}
-					</h2>
-					<a className={s.browseAll} onClick={() => alert("what does this do")}>
-						Browse all
-					</a>
+					<div className={"related-document-section-header " + s.sectionHeader}>
+						<h3 className={s.sectionTitle}>
+							Related {documentType}{" "}
+						</h3>
+						<a className={s.browseAll} onClick={() => alert("what does this do")}>
+							Browse all
+						</a>
+					</div>
 					<div>
 						<DocumentCardCollection showDetails={false} documents={documents} />
 					</div>
@@ -52,6 +54,7 @@ class RelatedDocumentCards extends React.Component {
 	render() {
 		return (
 			<div>
+				<h2 className={s.sectionTitle}>Related Documents:</h2>
 				{this.state.sortedDocuments ? this.renderRelatedDocumentSections() : <div>loading</div>}
 			</div>
 		);
