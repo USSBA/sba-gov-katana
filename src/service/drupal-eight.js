@@ -104,6 +104,7 @@ function convertUrlHost(urlStr) {
 
 //contacts content type
 function fetchDocuments(queryParams) {
+  console.log("B queryParams: ", queryParams);
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Documents information");
     return Promise.resolve(documents);
@@ -150,6 +151,8 @@ function sanitizeDocumentParams(params) {
 function filterAndSortDocuments(params, docs) {
   const filteredDocuments = filterDocuments(params, docs);
   const sortedDocuments = sortDocuments(params, filteredDocuments);
+
+  console.log("C sortedDocuments: ", sortedDocuments);
 
   if (params.start === "all" || params.end === "all") {
     return sortedDocuments;
@@ -651,7 +654,9 @@ function formatNode(data, isChild = false) {
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.resolve(extractedFieldsPromise)
-      .then((extractedFields) => _.merge({}, extractedFields, otherData))
+      .then((extractedFields) => {
+        return _.merge({}, extractedFields, otherData);
+      })
       .then(addAliasFields);
   } else {
     return {};
