@@ -47,11 +47,7 @@ class RootPage extends React.Component {
   renderPage(first, second, third, fourth, fifth) {
     let pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
     if (first === "document") {
-      let split = second.split("-");
-      let type = split[0];
-      let id = split[1];
-      let rest = split.slice(2, split.length);
-      return (<DocumentPage type={type} id={id} title={rest}/>);
+      return (<DocumentPage url={second} />);
   } else if (first === "article") {
       let year = second;
       let month = third;

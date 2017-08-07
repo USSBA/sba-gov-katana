@@ -29,7 +29,7 @@ const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
 
-import { sanitizeTextSectionHtml, formatUrl } from "../util/formatter.js";
+import { sanitizeTextSectionHtml, formatUrl, formatForUrl } from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractProperty(object, key) {
@@ -130,7 +130,8 @@ function sanitizeDocumentParams(params) {
     activity: "all",
     search: "all",
     start: "all",
-    end: "all"
+    end: "all",
+    url: "all"
   };
   _.mapValues(params, (value, key) => {
     if (key === "start" || key === "end") {
@@ -157,18 +158,24 @@ function filterAndSortDocuments(params, docs) {
   }
 }
 
+/* eslint-disable complexity */
 function filterDocuments(params, docs) {
   return docs.filter((doc) => {
+    const matchesUrl = params.url === "all" || doc.url === params.url;
+    const matchesActivity = params.activity === "all" || doc.activitys.includes(params.activity);
+    const matchesProgram = params.program === "all" || doc.programs.includes(params.program);
     return (
       (params.type === "all" || doc.documentIdType === params.type) &&
-      (params.program === "all" || doc.programs.includes(params.program)) &&
-      (params.activity === "all" || doc.activitys.includes(params.activity)) &&
+      (matchesProgram) &&
+      (matchesActivity) &&
+      (matchesUrl) &&
       (params.search === "all" ||
       doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
       doc.documentIdNumber.includes(params.search))
     );
   });
 }
+/* eslint-enable complexity */
 
 function sortDocuments(params, docs) {
   let sortOrder = ["asc"];
@@ -184,8 +191,7 @@ function sortDocuments(params, docs) {
     return docs;
   }
   return _.orderBy(
-    docs,
-    [(doc) => {
+    docs, [(doc) => {
       return (typeof doc[sortItems] === "string" ? doc[sortItems].toLowerCase() : doc[sortItems]);
     }],
     sortOrder
@@ -614,6 +620,18 @@ function formatChildNode(data) {
   return formatNode(data, true);
 }
 
+function createAliasFields(otherData, extractedFields) {
+  // written to use a promise, but it doens't need it right now
+  let aliasFields = {};
+  if (otherData.type === "document") {
+    aliasFields = {
+      url: formatForUrl(extractedFields.documentIdType + " " + extractedFields.documentIdNumber) + "-" + formatUrl(null, otherData.title)
+    };
+  }
+
+  return Promise.resolve(aliasFields);
+}
+
 function formatNode(data, isChild = false) {
   if (data) {
     // Process other required data
@@ -635,9 +653,9 @@ function formatNode(data, isChild = false) {
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.all([extractedFieldsPromise]).spread((extractedFields) => {
-      const formattedNode = {};
-      _.merge(formattedNode, extractedFields, otherData);
-      return formattedNode;
+      return createAliasFields(otherData, extractedFields).then((aliasFields) => {
+        return _.merge({}, extractedFields, otherData, aliasFields);
+      });
     });
   } else {
     return {};

@@ -52,4 +52,11 @@ function formatUrl(url, title) {
 }
 
 
-export { sanitizeTextSectionHtml, formatFeedbackData, formatUrl };
+function formatForUrl(string) {
+  const lower = string.toLowerCase();
+  const finalString = _.kebabCase(lower);
+  return finalString;
+}
+
+
+export { sanitizeTextSectionHtml, formatFeedbackData, formatUrl, formatForUrl };
