@@ -27,9 +27,16 @@ const documentEndpoint = "documents";
 const menuTreeEndpoint = "/entity/menu/:name/tree";
 
 
-import { fetchById, fetchContent } from "../models/dao/drupal8-rest.js";
+import {
+  fetchById,
+  fetchContent
+} from "../models/dao/drupal8-rest.js";
 
-import { sanitizeTextSectionHtml, formatUrl, formatForUrl } from "../util/formatter.js";
+import {
+  sanitizeTextSectionHtml,
+  formatUrl,
+  formatForUrl
+} from "../util/formatter.js";
 
 // a few helper functions to extract data from the drupal wrappers
 function extractProperty(object, key) {
@@ -119,8 +126,8 @@ function fetchDocuments(queryParams) {
         return Promise.resolve([]);
       }
     }).then((data) => {
-    return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
-  });
+      return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
+    });
 }
 
 function sanitizeDocumentParams(params) {
@@ -170,8 +177,8 @@ function filterDocuments(params, docs) {
       (matchesActivity) &&
       (matchesUrl) &&
       (params.search === "all" ||
-      doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
-      doc.documentIdNumber.includes(params.search))
+        doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
+        doc.documentIdNumber.includes(params.search))
     );
   });
 }
@@ -233,11 +240,11 @@ function formatTaxonomys(data) {
       // TODO removes this eslint-disable
       return _.reduce(result, (reducedResult, value) => {
         ((reducedResult[value.vocabulary]) ||
-        (reducedResult[value.vocabulary] = {
-          name: value.vocabulary,
-          terms: []
-        })
-          ).terms.push(value.name);
+          (reducedResult[value.vocabulary] = {
+            name: value.vocabulary,
+            terms: []
+          })
+        ).terms.push(value.name);
         return reducedResult;
       }, {});
       /* eslint-enable no-param-reassign */
@@ -550,17 +557,18 @@ function formatParagraph(paragraph) {
       case "call_to_action":
         //need to return at some point
         return fetchFormattedCallToActionByNodeId(paragraph.field_call_to_action_reference, extractValue(paragraph.field_style));
-      default: {
-        const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
-        const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
-        const combineResultWithCamelizedTypename = (object) => {
-          return _.assign({
-            type: _.camelCase(typeName)
-          }, object);
-        };
+      default:
+        {
+          const paragraphFormatter = makeParagraphValueFormatter(typeName, paragraph);
+          const extractedFieldsPromise = extractFieldsByFieldNamePrefix(paragraph, fieldPrefix, makeParagraphFieldFormatter(typeName), paragraphFormatter);
+          const combineResultWithCamelizedTypename = (object) => {
+            return _.assign({
+              type: _.camelCase(typeName)
+            }, object);
+          };
 
-        return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
-      }
+          return extractedFieldsPromise.then(combineResultWithCamelizedTypename);
+        }
     }
   }
   return Promise.resolve(null);
@@ -620,16 +628,14 @@ function formatChildNode(data) {
   return formatNode(data, true);
 }
 
-function createAliasFields(otherData, extractedFields) {
-  // written to use a promise, but it doens't need it right now
+function addAliasFields(data) {
   let aliasFields = {};
-  if (otherData.type === "document") {
+  if (data.type === "document") {
     aliasFields = {
-      url: formatForUrl(extractedFields.documentIdType + " " + extractedFields.documentIdNumber) + "-" + formatUrl(null, otherData.title)
+      url: formatForUrl(data.documentIdType + " " + data.documentIdNumber) + "-" + formatUrl(null, data.title)
     };
   }
-
-  return Promise.resolve(aliasFields);
+  return _.assign({}, data, aliasFields);
 }
 
 function formatNode(data, isChild = false) {
@@ -652,11 +658,9 @@ function formatNode(data, isChild = false) {
     const nodeValueFormatter = makeNodeValueFormatter(nodeType);
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
-    return Promise.all([extractedFieldsPromise]).spread((extractedFields) => {
-      return createAliasFields(otherData, extractedFields).then((aliasFields) => {
-        return _.merge({}, extractedFields, otherData, aliasFields);
-      });
-    });
+    return Promise.resolve(extractedFieldsPromise)
+      .then((extractedFields) => _.merge({}, extractedFields, otherData))
+      .then(addAliasFields);
   } else {
     return {};
   }
@@ -729,4 +733,38 @@ function fetchTaxonomyVocabulary(queryParams) {
     });
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments, sanitizeDocumentParams };
+export {
+  fetchFormattedNode,
+  fetchFormattedTaxonomyTerm,
+  nodeEndpoint,
+  taxonomyEndpoint,
+  paragraphEndpoint,
+  taxonomysEndpoint,
+  fetchTaxonomys,
+  fetchContacts,
+  contactEndpoint,
+  fetchParagraphId,
+  fetchFormattedMenu,
+  fetchMenuTreeByName,
+  formatMenuTree,
+  fetchCounsellorCta,
+  convertUrlHost,
+  formatParagraph,
+  makeParagraphValueFormatter,
+  extractFieldsByFieldNamePrefix,
+  makeParagraphFieldFormatter,
+  formatNode,
+  extractValue,
+  extractProperty,
+  extractProperties,
+  fetchFormattedCallToActionByNodeId,
+  formatLink,
+  extractConvertedUrl,
+  fetchFormattedTaxonomyNames,
+  fetchFormattedTaxonomyName,
+  makeNodeFieldFormatter,
+  fetchTaxonomyVocabulary,
+  fetchDocuments,
+  filterAndSortDocuments,
+  sanitizeDocumentParams
+};
