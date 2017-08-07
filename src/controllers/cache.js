@@ -7,7 +7,7 @@ function clearCache(req, res) {
   console.log("Clearing the Cache (but not contacts or documents)");
   const keys = cache.keys();
   const keysWithoutContacts = _.filter(keys, (item) => {
-    return !item.includes("contact");
+    return !item.startsWith("contact") && !item.startsWith("document");
   });
 
   keysWithoutContacts.forEach((key) => {
@@ -20,10 +20,10 @@ function clearCache(req, res) {
 
 
 function clearContactCache(req, res) {
-  console.log("Clearing the Cache");
+  console.log("Clearing the Contact Cache");
   const keys = cache.keys();
   const contactKeys = _.filter(keys, (item) => {
-    return item.includes("contact");
+    return item.startsWith("contact");
   });
   contactKeys.forEach((key) => {
     cache.del(key);
@@ -32,4 +32,18 @@ function clearContactCache(req, res) {
   res.status(HttpStatus.NO_CONTENT).send();
 }
 
-export { clearCache, clearContactCache };
+
+function clearDocumentCache(req, res) {
+  console.log("Clearing the Document Cache");
+  const keys = cache.keys();
+  const contactKeys = _.filter(keys, (item) => {
+    return item.startsWith("document");
+  });
+  contactKeys.forEach((key) => {
+    cache.del(key);
+    console.log("Cleared from cache", key);
+  });
+  res.status(HttpStatus.NO_CONTENT).send();
+}
+
+export { clearCache, clearContactCache, clearDocumentCache };
