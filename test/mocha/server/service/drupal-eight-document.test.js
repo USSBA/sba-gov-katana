@@ -124,5 +124,20 @@ describe("Drupal 8 Document Service", function() {
       );
       value[0].title.should.equal("ad elit ad magna labore dolore");
     });
+    it("should return an error when the start/end is not a number", () => {
+      drupalService
+        .filterAndSortDocuments(
+          drupalService.sanitizeDocumentParams({
+            search: "all",
+            type: "all",
+            program: "all",
+            activity: "all",
+            start: "Use the Force, Luke",
+            end: "Stay on target!"
+          }),
+          documentData
+      )
+        .should.throw();
+    });
   });
 });
