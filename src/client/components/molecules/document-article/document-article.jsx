@@ -39,6 +39,7 @@ class DocumentArticle extends React.Component {
           <h1 className={"document-article-title " + s.title}>{data.title}</h1>
           <p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)}
             <span>{" "}|{" "}</span>
+            <div></div>
             Effective {this.formatDate(newestFile.effectiveDate)}</p>
           <div className={s.office}>By{" "}
             <a href={data.officeLink.url}>{data.officeLink.title}</a>
