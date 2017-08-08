@@ -14,7 +14,6 @@ import queryString from "querystring";
 class DocumentArticle extends React.Component {
 
   getNewestFile() {
-    console.log(this.props.data)
     return this.props.data.files
       ? this.props.data.files.reduce((acc, file) => {
         return file.version > acc.version
@@ -64,7 +63,7 @@ class DocumentArticle extends React.Component {
             <hr className={s.hr}/>
             <span className={s.relatedPrograms}>Related programs:{" "}
             </span>
-            
+
             {data.programs.map((program, index) => {
               return <span className="document-article-related-programs-link" key={index}>
                 <a onClick={() => this.handleRelatedPrograms(program)}>{program}</a>{index == data.programs.length - 1

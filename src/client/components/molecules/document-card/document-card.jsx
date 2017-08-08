@@ -72,10 +72,16 @@ class DocumentCard extends React.Component {
             <div className={s.documentTypeContainer}>
               <DocumentType className={s.documentType} type={doc.documentIdType} number={doc.documentIdNumber}/>
             </div>
-            <h6 className={"document-card-title " + s.title}>
-              {doc.title}
-            </h6>
-
+            <div>
+            </div>
+            <a href={"/document/"+doc.url}>
+                <h6 className={"document-card-title " + s.title}>
+                  {doc.title}
+                </h6>
+            </a>
+            <div className={s.dash}>
+                <DecorativeDash/>
+            </div>
             {this.props.showDetails
               ? this.makeTable(this.props.doc)
               : null}
