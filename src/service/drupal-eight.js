@@ -651,7 +651,9 @@ function formatNode(data, isChild = false) {
     const extractedFieldsPromise = extractFieldsByFieldNamePrefix(minimizedData, fieldPrefix, makeNodeFieldFormatter(nodeType), nodeValueFormatter);
 
     return Promise.resolve(extractedFieldsPromise)
-      .then((extractedFields) => _.merge({}, extractedFields, otherData))
+      .then((extractedFields) => {
+        return _.merge({}, extractedFields, otherData);
+      })
       .then(addAliasFields);
   } else {
     return {};

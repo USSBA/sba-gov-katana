@@ -31,10 +31,10 @@ class DocumentLookup extends React.Component {
 		this.state = {
 			documents: ownProps.items,
 			searchTerm: queryParams.search || "",
-			documentType: queryParams.type || "all",
-			program: queryParams.program || "all",
-			documentActivity: queryParams.activity || "all",
-			sortBy: "last-updated",
+			documentType: queryParams.type || "All",
+			program: queryParams.program || "All",
+			documentActivity: queryParams.activity || "All",
+			sortBy: "Last Updated",
 			taxonomies: []
 		};
 	}
@@ -104,7 +104,7 @@ class DocumentLookup extends React.Component {
 
 				return {
 					"label": entry,
-					"value": createSlug(entry, "-")
+					"value": entry
 				};
 
 			});
@@ -176,11 +176,15 @@ class DocumentLookup extends React.Component {
 			sortBy
 		} = this.state;
 
+		const setAllToEmptyString = (str) => {
+			return str === "All" ? "" : str;
+		};
+
 		const data = {
 			search,
-			type,
-			program,
-			activity,
+			type: setAllToEmptyString(type),
+			program: setAllToEmptyString(program),
+			activity: setAllToEmptyString(activity),
 			sortBy,
 			start: 1,
 			end: 10
