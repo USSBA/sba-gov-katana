@@ -18,7 +18,7 @@ describe("Drupal 8 Document Service", function() {
             activity: "all"
           }),
           documentData
-      )
+        )
         .should.deep.equal(documentData);
     });
     it("should return all documents with no range", () => {
@@ -31,7 +31,7 @@ describe("Drupal 8 Document Service", function() {
             activity: "all"
           }),
           documentData
-      )
+        )
         .should.deep.equal(documentData);
     });
     it("should return 10 documents", () => {
@@ -46,7 +46,7 @@ describe("Drupal 8 Document Service", function() {
             end: "10"
           }),
           documentData
-      )
+        )
         .should.have.lengthOf(10);
     });
     it("should filter and sort 10 documents", () => {
@@ -60,13 +60,26 @@ describe("Drupal 8 Document Service", function() {
             sortBy: "last-updated"
           }),
           documentData
-      )
+        )
         .should.deep.equal(documentSortAndFilterOutput);
     });
     it("should search for documents", () => {
       let value = drupalService.filterAndSortDocuments(
         drupalService.sanitizeDocumentParams({
           search: "ad elit",
+          type: "all",
+          program: "all",
+          activity: "all",
+          sortBy: ""
+        }),
+        documentData
+      );
+      value[0].title.should.equal("ad elit ad magna labore dolore");
+    });
+    it("should return a document when search term is exactly the same as document title", () => {
+      let value = drupalService.filterAndSortDocuments(
+        drupalService.sanitizeDocumentParams({
+          search: "ad elit ad magna labore dolore",
           type: "all",
           program: "all",
           activity: "all",
@@ -92,7 +105,7 @@ describe("Drupal 8 Document Service", function() {
             type: "all"
           }),
           documentData
-      )
+        )
         .should.deep.equal(documentData);
     });
     it("should return all documents with only a program param", () => {
@@ -102,7 +115,7 @@ describe("Drupal 8 Document Service", function() {
             program: "all"
           }),
           documentData
-      )
+        )
         .should.deep.equal(documentData);
     });
     it("should return all documents with only an activity param", () => {
@@ -112,7 +125,7 @@ describe("Drupal 8 Document Service", function() {
             activity: "all"
           }),
           documentData
-      )
+        )
         .should.deep.equal(documentData);
     });
     it("should sort all documents with only a sort by param", () => {

@@ -216,8 +216,9 @@ class DocumentLookup extends React.Component {
 		} = this.state;
 
 		const setAllToEmptyString = (str) => {
-			return str === "All" ? "" : str;
+			return str === "All" ? "all" : str;
 		};
+
 
 		const data = {
 			search,
@@ -225,7 +226,7 @@ class DocumentLookup extends React.Component {
 			program: setAllToEmptyString(program),
 			activity: setAllToEmptyString(activity),
 			sortBy,
-			start: 1,
+			start: 0,
 			end: 10
 		};
 
