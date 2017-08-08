@@ -223,7 +223,7 @@ class DocumentLookup extends React.Component {
 					<div>
 						<div className={s.searchBox}>
 							<TextInput
-								placeholder="Title or number"
+								placeholder="Search by title or number"
 								id="document-lookup"
 								errorText={"Please enter the correct thing."}
 								label="Search"
