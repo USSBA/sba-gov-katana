@@ -10,12 +10,14 @@ class DocumentPage extends React.Component {
 
     const {document:doc} = this.props;
 
-    let versionNumber = doc.files.length;
-    const previousVersionsList = doc.files.map((obj, index) => {
-      versionNumber--;
+    const previousVersionsList = doc.files.map((file, index) => {
+
+      const versionMessage = file.version ? `Version ${file.version}` : "Version: N/A";
+      const effectiveDateMessage = "Effective: " + (file.effectiveDate || "N/A");
+
       return (
           <li key={index}>
-            <strong>Version {versionNumber + 1}</strong> <strong>|</strong> Effective: {obj.effectiveDate}. <a href={obj.url} target="_blank">Download PDF <i className="fa fa-file-pdf-o" aria-hidden="true" /></a>
+            <strong>{versionMessage}</strong> <strong>|</strong> {effectiveDateMessage}. <a href={file.url} target="_blank">Download PDF <i className="fa fa-file-pdf-o" aria-hidden="true" /></a>
           </li>
         );
     });

@@ -119,7 +119,6 @@ class DocumentLookup extends React.Component {
 				value: this.state[stateName],
 				"options": options
 			};
-            console.log("_ms", _ms);
 
 			return _ms;
 		});
