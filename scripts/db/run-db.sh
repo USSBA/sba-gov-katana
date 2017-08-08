@@ -2,12 +2,12 @@
 # Find the location of the script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-DATA_DIR=${1:-"/tmp/mysql"}
+DATA_DIR=${1:-"/tmp/sba-gov-node-mysql"}
 
 docker ps | grep my-mysql > /dev/null 2>&1
 if [ $? -eq 0 ]; then
   echo "ERROR: A container named 'my-mysql' is already running."
-  echo '  Kill it with the command: `docker kill my-mysql`'
+  echo '  Kill it with the command: "docker kill my-mysql"'
 else
   printf "Starting my-mysql container..."
   docker run --rm --name my-mysql \
@@ -28,10 +28,11 @@ else
     printf "."
     sleep 3
   done
-  printf "OK\nRunning import-sql script..."
+  printf "OK\nRunning import-sql script...\n"
   docker exec -it my-mysql sh /mnt/database/import-sql.sh
   if [ $? -eq 0 ]; then
-    printf "OK\n"
+    echo "OK"
+    echo "Success!  To clean the mysql data, kill the container (docker kill my-mysql) and remove the data directorh (rm -rf ${DATA_DIR})"
   else
     printf "ERROR\n"
   fi
