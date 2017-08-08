@@ -53,7 +53,7 @@ class RootPage extends React.Component {
       let month = third;
       let day = fourth;
       let title = fifth;
-      return (<ArticlePage year={year} month={month} day={day} title={title}/>);
+      return (<ArticlePage url={year+'/'+month+"/"+day+"/"+title}/>);
     } else if (this.props.menu) {
       if (first && second && third) {
         if (pageLineage && pageLineage.length === 3) {
