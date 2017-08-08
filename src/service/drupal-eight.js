@@ -9,6 +9,7 @@ import localContacts from "../models/dao/sample-data/contacts.js";
 import sbicContacts from "../models/dao/sample-data/sbic-contacts.js";
 import suretyContacts from "../models/dao/sample-data/surety-contacts.js";
 import documents from "../models/dao/sample-data/documents.js";
+import articlesData from "../models/dao/sample-data/articles.js";
 const localDataMap = {
   "State registration": localContacts,
   "SBIC": sbicContacts,
@@ -620,10 +621,15 @@ function formatChildNode(data) {
 }
 
 function addAliasFields(data) {
+  console.log("addAliasFields", data);
   let aliasFields = {};
   if (data.type === "document") {
     aliasFields = {
       url: formatForUrl(data.documentIdType + " " + data.documentIdNumber) + "-" + formatUrl(null, data.title)
+    };
+  } else if (data.type === "article") {
+    aliasFields = {
+      url: data.year + "/" + data.month + "/" + data.day + "/" + formatUrl(null, data.title)
     };
   }
   return _.assign({}, data, aliasFields);
@@ -726,4 +732,28 @@ function fetchTaxonomyVocabulary(queryParams) {
     });
 }
 
-export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments, sanitizeDocumentParams };
+function fetchArticles(queryParams) {
+  return Promise.resolve(articlesData)
+    .then((data) => {
+      return _.map(data, (item) => {
+        return _.assign({}, item, {
+          type: "article"
+        });
+      });
+    })
+    .then((data) => {
+      return _.map(data, addAliasFields);
+    })
+    .then(addAliasFields)
+    .then((results) => {
+      if (queryParams && queryParams.url) {
+        return _.filter(results, (item) => {
+          return item.url === queryParams.url;
+        });
+      } else {
+        return results;
+      }
+    });
+}
+
+export { fetchFormattedNode, fetchFormattedTaxonomyTerm, nodeEndpoint, taxonomyEndpoint, paragraphEndpoint, taxonomysEndpoint, fetchTaxonomys, fetchContacts, contactEndpoint, fetchParagraphId, fetchFormattedMenu, fetchMenuTreeByName, formatMenuTree, fetchCounsellorCta, convertUrlHost, formatParagraph, makeParagraphValueFormatter, extractFieldsByFieldNamePrefix, makeParagraphFieldFormatter, formatNode, extractValue, extractProperty, extractProperties, fetchFormattedCallToActionByNodeId, formatLink, extractConvertedUrl, fetchFormattedTaxonomyNames, fetchFormattedTaxonomyName, makeNodeFieldFormatter, fetchTaxonomyVocabulary, fetchDocuments, filterAndSortDocuments, sanitizeDocumentParams, fetchArticles };

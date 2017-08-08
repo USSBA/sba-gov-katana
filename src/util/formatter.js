@@ -41,7 +41,11 @@ function formatUrl(url, title) {
     const withoutTrailingSlack = _.trim(url, "/");
     return _.last(withoutTrailingSlack.split(path.sep));
   }
-  const lower = title.toLowerCase();
+  let safeTitle = title;
+  if (!safeTitle) {
+    safeTitle = "";
+  }
+  const lower = safeTitle.toString().toLowerCase();
   const transliterated = transliterate(lower);
   const punctuationless = transliterated.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
   const withoutExtraWhitespace = punctuationless.replace(/\s{2,}/g, " ");

@@ -10,7 +10,7 @@ class DocumentLookupPage extends React.Component {
   render() {
     return (
       <div>
-        <Lookup title="Document Lookup" type="documents"/>
+        <Lookup title="Documentation Lookup" type="documents"/>
       </div>
     );
   }

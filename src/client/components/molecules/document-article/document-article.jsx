@@ -66,7 +66,7 @@ class DocumentArticle extends React.Component {
             <hr className={s.hr}/>
             <span className={s.relatedPrograms}>Related programs:{" "}
             </span>
-            
+
             {data.programs.map((program, index) => {
               return <span className="document-article-related-programs-link" key={index}>
                 <a onClick={() => this.handleRelatedPrograms(program)}>{program}</a>{index == data.programs.length - 1

@@ -22,6 +22,7 @@ class DocumentPage extends React.Component {
   }
 
   render() {
+    console.log("DocumentPage::render", this.props);
     if (this.props.url && this.props.document !== null) {
       if (this.props.document) {
         return (<Document document={this.props.document}/>);
