@@ -29,18 +29,21 @@ class ProgramPage extends React.Component {
     const { title, summary, buttons, bannerImage } = this.props.heroData
     const hasBannerImage = bannerImage.hasOwnProperty('image')
 
-    const _formattedButtons = buttons === undefined ? [] : (
-        buttons.map((button) => {
-           return {
-            onClickHandler: function(e) {
-              e.preventDefault()
-              window.location.href = button.url
-            },
-            btnText: button.title,
-            btnType: "LargeInversePrimaryButton"
-          }
-        })
-      )
+      const previousVersionsMockData = [{
+        'version': 'Version 2',
+        'date': 'Oct 17, 2015',
+        'url': '#'
+      }, {
+        'version': 'Version 1',
+        'date': 'Oct 24, 2014',
+        'url': '#'
+      }]
+
+      const previousVersionsList = previousVersionsMockData.map(o => {
+        return (
+            <li><strong>{o.version}</strong> <strong>|</strong> Effective: {o.date}. <a href={o.url}>Download PDF <i className="fa fa-file-pdf-o" aria-hidden="true" /></a></li>
+          )
+      })
 
     return (
       <div>
@@ -61,6 +64,12 @@ class ProgramPage extends React.Component {
           />
         }
         <div className={styles.container}>
+          <div>
+            <h3>Previous versions</h3>
+            <ul className={styles.previousVersionsList}>
+              {previousVersionsList}
+            </ul>
+          </div>
           {paragraphs}
         </div>
       </div>
