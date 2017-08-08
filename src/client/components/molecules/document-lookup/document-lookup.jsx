@@ -3,6 +3,7 @@ import {pick} from "lodash";
 import _ from "lodash";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import querystring from 'querystring';
 
 import * as ContentActions from "../../../actions/content.js";
 import s from "./document-lookup.scss";
@@ -26,12 +27,13 @@ class DocumentLookup extends React.Component {
 
 	constructor(ownProps) {
 		super();
+        let queryParams = querystring.decode(window.location.search.replace("?",""));
 		this.state = {
 			documents: ownProps.items,
-			searchTerm: "",
-			documentType: "All",
-			program: "All",
-			documentActivity: "All",
+			searchTerm: queryParams.search || "",
+			documentType: queryParams.type || "All",
+			program: queryParams.program || "All",
+			documentActivity: queryParams.activity || "All",
 			sortBy: "Last Updated",
 			taxonomies: []
 		};
@@ -93,7 +95,6 @@ class DocumentLookup extends React.Component {
 	}
 
 	renderMultiSelects() {
-
 		const _multiselects = this.state.taxonomies.map((taxonomy) => {
 
 			const {name} = taxonomy;
@@ -118,6 +119,7 @@ class DocumentLookup extends React.Component {
 				value: this.state[stateName],
 				"options": options
 			};
+            console.log("_ms", _ms);
 
 			return _ms;
 		});
@@ -157,7 +159,7 @@ class DocumentLookup extends React.Component {
 	}
 
 	updateSearchTerm(event) {
-		
+
 		this.setState({
 			"searchTerm": event.target.value
 		});
