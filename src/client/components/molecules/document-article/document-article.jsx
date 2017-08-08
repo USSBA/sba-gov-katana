@@ -34,7 +34,7 @@ class DocumentArticle extends React.Component {
 
   handleRelatedPrograms(program){
     let params = {program: program}
-    this.props.actions.locationChange("/documents/?" + queryString.stringify(params))
+    this.props.actions.locationChange("/document/?" + queryString.stringify(params))
   }
 
   render() {

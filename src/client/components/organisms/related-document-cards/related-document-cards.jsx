@@ -38,7 +38,7 @@ class RelatedDocumentCards extends React.Component {
 
 	handleBrowseAll(documentType){
 		let params = {type: documentType}
-		this.props.actions.locationChange("/documents/?" + queryString.stringify(params))
+		this.props.actions.locationChange("/document/?" + queryString.stringify(params))
 	}
 
 	renderRelatedDocumentSections() {
