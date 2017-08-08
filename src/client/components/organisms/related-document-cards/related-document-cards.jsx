@@ -17,27 +17,31 @@ class RelatedDocumentCards extends React.Component {
 
 	sortRelatedDocuments() {
 		let relatedDocuments = this.props.documentObj.relatedDocuments;
-		let sortedDocuments = {};
+		let sortedAndFilteredDocuments = {};
 		_.uniq(
 			relatedDocuments.map(relatedDocument => {
 				return relatedDocument.documentIdType;
 			})
 		).map(docType => {
-			sortedDocuments[docType] = _.filter(relatedDocuments, ["documentIdType", docType]);
+			let filteredDocuments = _.filter(relatedDocuments, ["documentIdType", docType]);
+			let sortedDocuments = filteredDocuments.sort((a, b) => {
+				return a.title.toLowerCase() > b.title.toLowerCase()
+			})
+			sortedAndFilteredDocuments[docType] = sortedDocuments
 		});
-		this.setState({ sortedDocuments: sortedDocuments });
+		this.setState({ sortedDocuments: sortedAndFilteredDocuments });
 	}
 
 	renderRelatedDocumentSections() {
 		let sortedDouments = this.state.sortedDocuments;
 		console.log("sortedDouments", sortedDouments);
-		return _.keys(this.state.sortedDocuments).map((documentType, index) => {
+		return _.keys(this.state.sortedDocuments).sort().map((documentType, index) => {
 			let documents = sortedDouments[documentType];
 			return (
 				<div className={"related-document-section"} key={index}>
 					<div className={"related-document-section-header " + s.sectionHeader}>
 						<h3 className={s.sectionTitle}>
-							Related {documentType}{" "}
+							{documentType}{" "}
 						</h3>
 						<a className={s.browseAll} onClick={() => alert("what does this do")}>
 							Browse all
@@ -54,8 +58,7 @@ class RelatedDocumentCards extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2 className={s.title}>Related Documents:</h2>
-				{this.state.sortedDocuments ? this.renderRelatedDocumentSections() : <div>loading</div>}
+				{this.state.sortedDocuments ? <div><h2 className={s.title}>Related Documents:</h2>{this.renderRelatedDocumentSections()}</div> : <div>loading</div>}
 			</div>
 		);
 	}
