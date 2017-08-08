@@ -179,13 +179,14 @@ function filterDocuments(params, docs) {
 /* eslint-enable complexity */
 
 function sortDocuments(params, docs) {
+  console.log(params);
   let sortOrder = ["asc"];
   let sortItems;
-  if (params.sortBy === "title") {
+  if (params.sortBy === "Title") {
     sortItems = ["title"];
-  } else if (params.sortBy === "number") {
+  } else if (params.sortBy === "Number") {
     sortItems = ["documentIdNumber"];
-  } else if (params.sortBy === "last-updated") {
+  } else if (params.sortBy === "Last Updated") {
     sortItems = ["updated"];
     sortOrder = ["desc"];
   } else {
