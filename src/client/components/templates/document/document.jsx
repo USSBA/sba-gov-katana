@@ -11,10 +11,10 @@ class DocumentPage extends React.Component {
     const {document:doc} = this.props;
 
     let versionNumber = doc.files.length;
-    const previousVersionsList = doc.files.map((obj) => {
+    const previousVersionsList = doc.files.map((obj, index) => {
       versionNumber--;
       return (
-          <li>
+          <li key={index}>
             <strong>Version {versionNumber + 1}</strong> <strong>|</strong> Effective: {obj.effectiveDate}. <a href={obj.url} target="_blank">Download PDF <i className="fa fa-file-pdf-o" aria-hidden="true" /></a>
           </li>
         );
@@ -22,17 +22,17 @@ class DocumentPage extends React.Component {
 
     return (
       <div>
-      
+
       { doc &&
-        
+
         <div>
-          
+
           <DocumentArticle data={this.props.document}/>
 
             <div className={s.previousVersionsList}>
-            
+
               <h3>Previous versions</h3>
-            
+
               <ul>
                 {previousVersionsList}
               </ul>
@@ -46,7 +46,7 @@ class DocumentPage extends React.Component {
         </div>
 
       }{!doc &&
-        
+
         <div>Loading....</div>
 
       }
