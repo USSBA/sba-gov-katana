@@ -45,10 +45,13 @@ class DocumentArticle extends React.Component {
         <div className={"document-article " + s.page}>
           <DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
           <h1 className={"document-article-title " + s.title}>{data.title}</h1>
-          <p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)}
-            <span className={s.dateSeperator}>{" "}|{" "}</span>
-            <span className={s.dateNewline}></span>
-            Effective {this.formatDate(newestFile.effectiveDate)}</p>
+          <p className={s.dates}> 
+            {data.updated ? <span className={s.date}>Last Updated {moment.unix(data.updated).format('MMM D, YYYY')}</span> : null}
+            {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
+            {newestFile.expirationDate ? <span className={s.date}>Expiration {this.formatDate(newestFile.expirationDate)}</span> : null}
+            {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
+            {newestFile.effectiveDate ? <span className={s.date}>Effective {this.formatDate(newestFile.effectiveDate)}</span> : null}
+            </p>
           <div className={s.office}>By{" "}
             <a href={data.officeLink.url}>{data.officeLink.title}</a>
           </div>

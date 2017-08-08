@@ -150,7 +150,6 @@ function sanitizeDocumentParams(params) {
 function filterAndSortDocuments(params, docs) {
   const filteredDocuments = filterDocuments(params, docs);
   const sortedDocuments = sortDocuments(params, filteredDocuments);
-
   if (params.start === "all" || params.end === "all") {
     return sortedDocuments;
   } else {
