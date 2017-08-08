@@ -27,7 +27,11 @@ class DocumentLookup extends React.Component {
 
 	constructor(ownProps) {
 		super();
-        let queryParams = querystring.decode(window.location.search.replace("?",""));
+        console.log("window.location.search", window.location.search);
+        let queryParams = {};
+        if(window.location.search && window.location.search !== ""){
+            queryParams = querystring.decode(window.location.search.replace("?",""));
+        }
 		this.state = {
 			documents: ownProps.items,
 			searchTerm: queryParams.search || "",
@@ -35,9 +39,13 @@ class DocumentLookup extends React.Component {
 			program: queryParams.program || "All",
 			documentActivity: queryParams.activity || "All",
 			sortBy: "Last Updated",
-			taxonomies: []
+			taxonomies: [],
 		};
 	}
+
+    hasQueryParams(){
+        return window.location.search && window.location.search !== "";
+    }
 
 	componentWillMount() {
 
@@ -51,6 +59,13 @@ class DocumentLookup extends React.Component {
 		});
 
 	}
+
+    componentDidMount(){
+        if(this.hasQueryParams()){
+            console.log("found query params, running submit");
+            this.submit();
+        }
+    }
 
 	componentWillReceiveProps(nextProps, ownProps) {
 
