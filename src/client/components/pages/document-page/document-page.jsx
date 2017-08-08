@@ -42,7 +42,7 @@ DocumentPage.defaultProps = {
 };
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  if (reduxState.contentReducer["documents"] === null) {
+  if (reduxState.contentReducer["documents"] === null && !this.props.document) {
     return {document: null};
   } else if (reduxState.contentReducer["documents"] && reduxState.contentReducer["documents"].length > 0) {
     return {document: reduxState.contentReducer["documents"][0]
