@@ -2,6 +2,10 @@ import React from "react";
 import s from "./related-document-cards.scss";
 import _ from "lodash";
 import DocumentCardCollection from "../document-card-collection/document-card-collection.jsx";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as NavigationActions from "../../../actions/navigation.js";
+import queryString from "querystring";
 
 class RelatedDocumentCards extends React.Component {
 	constructor() {
@@ -32,6 +36,11 @@ class RelatedDocumentCards extends React.Component {
 		this.setState({ sortedDocuments: sortedAndFilteredDocuments });
 	}
 
+	handleBrowseAll(documentType){
+		let params = {type: documentType}
+		this.props.actions.locationChange("/documents/?" + queryString.stringify(params))
+	}
+
 	renderRelatedDocumentSections() {
 		let sortedDouments = this.state.sortedDocuments;
 		console.log("sortedDouments", sortedDouments);
@@ -43,7 +52,7 @@ class RelatedDocumentCards extends React.Component {
 						<h3 className={s.sectionTitle}>
 							{documentType}{" "}
 						</h3>
-						<a className={s.browseAll} onClick={() => alert("what does this do")}>
+						<a className={s.browseAll} onClick={() => this.handleBrowseAll(documentType)}>
 							Browse all
 						</a>
 					</div>
@@ -64,4 +73,9 @@ class RelatedDocumentCards extends React.Component {
 	}
 }
 
-export default RelatedDocumentCards;
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(NavigationActions, dispatch)};
+}
+export default connect(null, mapDispatchToProps)(
+  RelatedDocumentCards
+);
