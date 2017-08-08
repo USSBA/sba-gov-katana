@@ -20,6 +20,8 @@
 
 .title {
     text-decoration: underline;
+    color: #333333;
+
 }
 @include background-color-theme( '.type', $lightest-color-map);
 @include border-color-theme( '.type', $lightest-color-map);
