@@ -12,15 +12,35 @@ import {Multiselect, TextInput, SearchIcon} from "../../atoms";
 import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx"
 
 const createSlug = (str) => {
+
   return str.toLowerCase().replace(/[^\w\s-]/g, ""). // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
   replace(/[\s_-]+/g, "-"). // swap any length of whitespace, underscore, hyphen characters with a single -
   replace(/^-+|-+$/g, "");
+
 };
 
 const createCamelCase = (str) => {
+  
   const sliceIndex = 1;
   const _str = str[0].toLowerCase() + str.slice(sliceIndex);
   return _str.replace(" ", "");
+
+};
+
+const findTaxonomy = (arr, name) => {
+				
+	let needle = {};
+
+	for (let index = 0; index < arr.length; index++) {
+		if (arr[index].name === name) {
+			needle = arr[index];
+
+			break;
+		}
+	}
+
+	return needle;
+
 };
 
 class DocumentLookup extends React.Component {
@@ -74,20 +94,26 @@ class DocumentLookup extends React.Component {
 
 		if (nextProps.taxonomies && nextProps.taxonomies.length > 0 && this.state.taxonomies.length === 0) {
 
-			const taxonomies = nextProps.taxonomies;
+			const taxonomies = nextProps.taxonomies.slice();
 
 			// add an "All" filter option to dynamic taxonomies
 			for (let index = 0; index < taxonomies.length; index++) {
 				taxonomies[index].terms.unshift("All");
 			}
 
+			const rearrangedTaxonomyOrder = [
+				findTaxonomy(taxonomies, "documentType"),
+				findTaxonomy(taxonomies, "program"),
+				findTaxonomy(taxonomies, "documentActivity")
+			];
+
 			// add a "Sort By" taxonomy object to append a "Sort By" multiselect component
-			taxonomies.push({
+			rearrangedTaxonomyOrder.push({
 				"name": "Sort By",
 				"terms": ["Last Updated","Title","Number"]
 			});
 
-			updatedProps.taxonomies = nextProps.taxonomies;
+			updatedProps.taxonomies = rearrangedTaxonomyOrder;
 		}
 
 		if (nextProps.documents !== undefined) {
@@ -108,6 +134,7 @@ class DocumentLookup extends React.Component {
 	}
 
 	renderMultiSelects() {
+
 		const _multiselects = this.state.taxonomies.map((taxonomy) => {
 
 			const {name} = taxonomy;

@@ -80,7 +80,20 @@
     }
 }
 
+@media screen and (min-width:1200px) {
 
+    .searchBox {
+        width: 24%
+    }
+   
+   .multiSelect {
+
+
+        width: 13%;        
+
+    }
+
+}
 
 .applyFiltersBtn {
     font-size: 19px;
