@@ -14,7 +14,6 @@ import queryString from "querystring";
 class DocumentArticle extends React.Component {
 
   getNewestFile() {
-    console.log(this.props.data)
     return this.props.data.files
       ? this.props.data.files.reduce((acc, file) => {
         return file.version > acc.version
@@ -25,7 +24,7 @@ class DocumentArticle extends React.Component {
   }
 
   downloadClick(newestFile) {
-    window.open(newestFile.url, '_blank')
+    window.open(newestFile.fileUrl, '_blank')
   }
 
   formatDate(date) {
