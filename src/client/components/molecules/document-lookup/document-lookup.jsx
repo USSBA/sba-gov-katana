@@ -189,7 +189,7 @@ class DocumentLookup extends React.Component {
 		} = this.state;
 
 		const setAllToEmptyString = (str) => {
-			return str === "All" ? "" : str;
+			return str === "All" ? "all" : str;
 		};
 
 		const data = {

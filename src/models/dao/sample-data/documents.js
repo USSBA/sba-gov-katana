@@ -1,5 +1,5 @@
 /*eslint-disable max-lines*/
-[
+export default [
   {
     officeLink: {
       title: "Office of est cupidatat",

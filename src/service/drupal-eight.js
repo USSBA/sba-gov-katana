@@ -106,7 +106,7 @@ function convertUrlHost(urlStr) {
 function fetchDocuments(queryParams) {
   if (config.get("drupal8.useLocalContacts")) {
     console.log("Using Development Documents information");
-    return Promise.resolve(documents);
+    return Promise.resolve(filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents));
   }
 
   return fetchContent(documentEndpoint)
