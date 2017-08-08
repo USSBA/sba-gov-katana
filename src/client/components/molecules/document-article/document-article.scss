@@ -7,6 +7,9 @@
     @include grid-media($sba-grid-large) {
         @include grid-column(12);
     }
+    & a {
+        cursor: pointer;
+    }
 }
 
 .title {
@@ -27,10 +30,10 @@
 
     @include grid-media($sba-grid-medium-and-small) {
         @include grid-column(4, $mobile-0gutter);
-        & span {
+        & .dateSeperator {
             display: none;
         }
-        & div {
+        & .dateNewline {
             display: block;
         }
     }
