@@ -6,6 +6,10 @@ import TextSection from '../text-section/text-section.jsx'
 import DecorativeDash from '../../atoms/decorative-dash/decorative-dash.jsx'
 import Button from '../../atoms/large-primary-button/large-primary-button.jsx'
 import moment from 'moment'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as NavigationActions from "../../../actions/navigation.js";
+import queryString from "querystring";
 
 class DocumentArticle extends React.Component {
 
@@ -28,9 +32,14 @@ class DocumentArticle extends React.Component {
     return moment(date).format('MMM D, YYYY')
   }
 
+  handleRelatedPrograms(program){
+    let params = {program: program}
+    this.props.actions.locationChange("/documents/?" + queryString.stringify(params))
+  }
+
   render() {
     const data = this.props.data
-    
+    const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
       const newestFile = this.getNewestFile()
       return (
@@ -38,8 +47,8 @@ class DocumentArticle extends React.Component {
           <DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
           <h1 className={"document-article-title " + s.title}>{data.title}</h1>
           <p className={s.dates}>Expiration {this.formatDate(newestFile.expirationDate)}
-            <span>{" "}|{" "}</span>
-            <div></div>
+            <span className={s.dateSeperator}>{" "}|{" "}</span>
+            <span className={s.dateNewline}></span>
             Effective {this.formatDate(newestFile.effectiveDate)}</p>
           <div className={s.office}>By{" "}
             <a href={data.officeLink.url}>{data.officeLink.title}</a>
@@ -50,7 +59,7 @@ class DocumentArticle extends React.Component {
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
-          <TextSection className={s.body} text={data.body}/>
+          <TextSection className={s.body} text={body}/>
           <div className={"document-article-related-programs-container " + s.relatedProgramsContainer}>
             <hr className={s.hr}/>
             <span className={s.relatedPrograms}>Related programs:{" "}
@@ -58,7 +67,7 @@ class DocumentArticle extends React.Component {
             
             {data.programs.map((program, index) => {
               return <span className="document-article-related-programs-link" key={index}>
-                <a>{program}</a>{index == data.programs.length - 1
+                <a onClick={() => this.handleRelatedPrograms(program)}>{program}</a>{index == data.programs.length - 1
                   ? null
                   : ", "}</span>
             })}
@@ -75,4 +84,9 @@ class DocumentArticle extends React.Component {
   }
 }
 
-export default DocumentArticle
+function mapDispatchToProps(dispatch) {
+  return { actions: bindActionCreators(NavigationActions, dispatch)};
+}
+export default connect(null, mapDispatchToProps)(
+  DocumentArticle
+);
