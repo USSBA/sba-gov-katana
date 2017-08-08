@@ -56,3 +56,8 @@
     @include font-size($h6-font-sizes);
 }
 @include color-theme( '.link');
+
+
+.container hr{
+    border-color: $grey-light !important;
+}
