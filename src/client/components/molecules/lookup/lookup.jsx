@@ -21,12 +21,14 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-    let queryArgs = this.props.subtype
-      ? {
-        category: this.props.subtype
+      if(this.props.type !== "documents"){
+          let queryArgs = this.props.subtype
+          ? {
+              category: this.props.subtype
+          }
+          : null;
+          this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
       }
-      : null;
-    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -96,7 +98,7 @@ Lookup.propTypes = {
 Lookup.defaultProps = {
   title: "Lookup Title",
   type: "contacts",
-  subtype: "State registration",
+  subtype: "",
   display: "cards",
   items: []
 }
