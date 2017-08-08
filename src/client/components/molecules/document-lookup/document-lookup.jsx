@@ -192,13 +192,14 @@ class DocumentLookup extends React.Component {
 			return str === "All" ? "all" : str;
 		};
 
+
 		const data = {
 			search,
 			type: setAllToEmptyString(type),
 			program: setAllToEmptyString(program),
 			activity: setAllToEmptyString(activity),
 			sortBy,
-			start: 1,
+			start: 0,
 			end: 10
 		};
 
