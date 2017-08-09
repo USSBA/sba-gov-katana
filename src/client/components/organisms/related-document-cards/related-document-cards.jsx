@@ -21,19 +21,21 @@ class RelatedDocumentCards extends React.Component {
 
 	sortRelatedDocuments() {
 		let relatedDocuments = this.props.documentObj.relatedDocuments;
-		let sortedAndFilteredDocuments = {};
-		_.uniq(
-			relatedDocuments.map(relatedDocument => {
-				return relatedDocument.documentIdType;
-			})
-		).map(docType => {
-			let filteredDocuments = _.filter(relatedDocuments, ["documentIdType", docType]);
-			let sortedDocuments = filteredDocuments.sort((a, b) => {
-				return a.title.toLowerCase() > b.title.toLowerCase()
-			})
-			sortedAndFilteredDocuments[docType] = sortedDocuments
-		});
-		this.setState({ sortedDocuments: sortedAndFilteredDocuments });
+		if(relatedDocuments){
+			let sortedAndFilteredDocuments = {};
+			_.uniq(
+				relatedDocuments.map(relatedDocument => {
+					return relatedDocument.documentIdType;
+				})
+			).map(docType => {
+				let filteredDocuments = _.filter(relatedDocuments, ["documentIdType", docType]);
+				let sortedDocuments = filteredDocuments.sort((a, b) => {
+					return a.title.toLowerCase() > b.title.toLowerCase()
+				})
+				sortedAndFilteredDocuments[docType] = sortedDocuments
+			});
+			this.setState({ sortedDocuments: sortedAndFilteredDocuments });
+		}
 	}
 
 	handleBrowseAll(documentType){
@@ -67,7 +69,7 @@ class RelatedDocumentCards extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.sortedDocuments ? <div><h2 className={s.title}>Related Documents:</h2>{this.renderRelatedDocumentSections()}</div> : <div>loading</div>}
+				{this.state.sortedDocuments ? <div><h2 className={s.title}>Related Documents:</h2>{this.renderRelatedDocumentSections()}</div> : <div></div>}
 			</div>
 		);
 	}

@@ -23,6 +23,7 @@ function fetchContent(prop, type, query) {
       return dispatch(receiveContent(prop, type, query, data));
     })
       .catch((error) => {
+        console.error("actions/content::fetchContent", error);
         return dispatch(receiveContent(prop, type, query, null));
       });
   };
