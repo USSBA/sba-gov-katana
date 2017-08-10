@@ -20,7 +20,7 @@ class DocumentPage extends React.Component {
             <strong>{versionMessage}</strong>
             <strong>|</strong>
             {effectiveDateMessage}.
-            <a href={file.url} target="_blank">Download PDF
+            <a href={file.fileUrl} target="_blank">Download PDF
               <i className="fa fa-file-pdf-o" aria-hidden="true"/></a>
           </li>
         );
