@@ -6,6 +6,7 @@ import * as ContentActions from "../../../actions/content.js"
 import {Multiselect} from '../../atoms';
 import _ from 'lodash';
 import Paginator from "../../molecules/paginator/paginator.jsx";
+import CardGrid from "../../molecules/card-grid/card-grid.jsx"
 
 var pageSize = 9;
 var dataProp = "statesTaxonomy";
@@ -72,29 +73,27 @@ class SuretyLookup extends React.Component {
     })
   }
 
-  renderCards() {
-    let start = ((this.state.pageNumber - 1) * pageSize);
-    let slice = this.state.filteredContacts.slice(start, start + pageSize)
-    return slice.map((agency, index) => {
+  renderCard(data, index){
       return (
-        <div id={'surety-card' + index} key={index} className={s.card}>
-          <h4 className={s.title}>{agency.title}</h4>
+        <div id={'surety-card' + index} className={s.card}>
+          <h4 className={s.title}>{data.title}</h4>
           <div className={s.phoneContainer}>
             <i className={s.phoneIcon + " fa fa-phone"} aria-hidden="true"></i>
-            <span>{agency.phoneNumber}</span>
+            <span>{data.phoneNumber}</span>
           </div>
           <div>
             <i className={s.emailIcon + " fa fa-envelope-o"} aria-hidden="true"></i>
-            <a href={"mailto:" + agency.email + "?subject=The subject for the email"}>Email</a>
+            <a href={"mailto:" + data.email + "?subject=The subject for the email"}>Email</a>
           </div>
         </div>
-      )
-    })
+    );
   }
 
   renderCardContainer() {
     if (!_.isEmpty(this.state.filteredContacts)) {
-      return this.renderCards()
+      let start = ((this.state.pageNumber - 1) * pageSize);
+      let slice = this.state.filteredContacts.slice(start, start + pageSize);
+      return (<CardGrid cards={slice} renderCard={this.renderCard}/>);
     } else if (_.isEmpty(this.state.filteredContacts)) {
       return <EmptyContacts/>
     } else {
