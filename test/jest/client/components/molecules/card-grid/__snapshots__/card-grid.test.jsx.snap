@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardGrid renders a simple 3x3 grid 1`] = `
+<div
+  className="card-grid container"
+>
+  <div
+    className="cardRow"
+  >
+    <div
+      className="card-container card"
+    />
+    <div
+      className="card-container card"
+    />
+    <div
+      className="card-container card"
+    />
+  </div>
+  <div
+    className="cardRow"
+  >
+    <div
+      className="card-container card"
+    />
+    <div
+      className="card-container card"
+    />
+    <div
+      className="card-container card"
+    />
+  </div>
+  <div
+    className="cardRow"
+  >
+    <div
+      className="card-container card"
+    />
+    <div
+      className="card-container card"
+    />
+    <div
+      className="card-container card"
+    />
+  </div>
+</div>
+`;
