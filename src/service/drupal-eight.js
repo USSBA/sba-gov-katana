@@ -178,7 +178,6 @@ function filterDocuments(params, docs) {
 /* eslint-enable complexity */
 
 function sortDocuments(params, docs) {
-  console.log(params);
   let sortOrder = ["asc"];
   let sortItems;
   if (params.sortBy === "Title") {
@@ -622,7 +621,6 @@ function formatChildNode(data) {
 }
 
 function addAliasFields(data) {
-  console.log("addAliasFields", data);
   let aliasFields = {};
   if (data.type === "document") {
     aliasFields = {

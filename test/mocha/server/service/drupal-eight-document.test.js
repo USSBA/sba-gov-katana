@@ -131,7 +131,7 @@ describe("Drupal 8 Document Service", function() {
     it("should sort all documents with only a sort by param", () => {
       let value = drupalService.filterAndSortDocuments(
         drupalService.sanitizeDocumentParams({
-          sortBy: "title"
+          sortBy: "Title"
         }),
         documentData
       );
