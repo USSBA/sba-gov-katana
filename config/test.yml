@@ -1,3 +1,5 @@
 drupal8:
     contentUrl: http://drupal8.content.hostname/
     useLocalContacts: false
+googleAnalytics:
+    enabled: false

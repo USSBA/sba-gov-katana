@@ -1,7 +1,7 @@
-import React from 'react'
-import Waypoint from "react-waypoint"
-import styles from './business-guide-article.scss';
-import {listenForOverlap} from 'element-overlap';
+import React from "react";
+import Waypoint from "react-waypoint";
+import styles from "./basic-page.scss";
+import {listenForOverlap} from "element-overlap";
 import _ from "lodash";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
 
@@ -12,7 +12,7 @@ import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx
 import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
 
 
-class BusinessGuideArticle extends React.Component {
+class BasicPage extends React.Component {
 
   constructor(props) {
     super();
@@ -27,7 +27,7 @@ class BusinessGuideArticle extends React.Component {
   componentWillMount() {}
 
   makeSectionHeaders(paragraphData) {
-    let sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
+    const sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
       if (item && item.type && item.type === "sectionHeader") {
         return {id: paragraphMapper.makeSectionHeaderId(index), text: item.text};
       }
@@ -37,8 +37,8 @@ class BusinessGuideArticle extends React.Component {
   }
 
   makeParagraphs(paragraphData) {
-    let paragraphList = paragraphMapper.makeParagraphs(paragraphData);
-    let wrapperClassMapping = {
+    const paragraphList = paragraphMapper.makeParagraphs(paragraphData);
+    const wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
       textReadMoreSection: "none",
@@ -50,13 +50,13 @@ class BusinessGuideArticle extends React.Component {
       cardCollection: styles.cardCollection,
       styleGrayBackground: styles.textSection
     };
-    let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
+    const wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping);
     return wrapped;
   }
 
   makeBreadcrumbs(lineage) {
     return _.map(lineage, (item) => {
-      return {url: item.fullUrl, title: item.title}
+      return {url: item.fullUrl, title: item.title};
     });
   }
 
@@ -84,45 +84,55 @@ class BusinessGuideArticle extends React.Component {
   }
 
   componentDidMount() {
-    let me = this;
-    listenForOverlap('#article-navigation-desktop', '#sba-footer', function() {
+    const me = this;
+    listenForOverlap("#article-navigation-desktop", "#sba-footer", function() {
       me.setState({currentPosition: "bottom"});
     }, {listenOn: "scroll"});
   }
 
   render() {
-    let paragraphs = this.makeParagraphs(this.props.paragraphs);
-    let sectionHeaders = this.makeSectionHeaders(this.props.paragraphs);
-    let breadcrumbs = this.props.lineage
-      ? this.makeBreadcrumbs(this.props.lineage)
-      : <div></div>;
+    const paragraphs = this.makeParagraphs(this.props.paragraphs);
+    const sectionHeaders = this.makeSectionHeaders(this.props.paragraphs);
+    const breadcrumbs = this.props.lineage
+      ? <Breadcrumb items={this.makeBreadcrumbs(this.props.lineage)}/>
+      : <div />;
 
-    let sectionNavigation = this.props.lineage
+    const sectionNavigation = this.props.lineage
       ? (<SectionNav onTopEnter={this.handleSectionNavigationEnter.bind(this)} position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/>)
       : (
-        <div></div>
+        <div />
       );
-    let previousAndNextButtons = this.props.lineage
+    const previousAndNextButtons = this.props.lineage
       ? <div key={4} className={styles.previousNext}><PreviousNextSection lineage={this.props.lineage}/></div>
-      : <div></div>;
+      : <div />;
 
     return (
-      <div className={styles.articleContainer}>
-        <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter.bind(this)} onLeave={this.handleTopWaypointLeave.bind(this)}/> {sectionNavigation}
-        <div className={this.state.displayMobileNav
+      <div className={`basicpage ${styles.articleContainer}`}>
+        <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter.bind(this)}
+                  onLeave={this.handleTopWaypointLeave.bind(this)}/>
+        <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
+        <div className={`basicpage-mobilenav ${this.state.displayMobileNav
           ? styles.hideContainer
-          : styles.container}>
-          <div className={styles.backLinkMobile}>
+          : styles.container}`}>
+          <div className={`basicpage-backlinkmobile ${styles.backLinkMobile}`}>
             <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a>
           </div>
-          <div key={1} className={styles.breadcrumb}><Breadcrumb items={breadcrumbs}/></div>
-          <TitleSection key={2} gridClass={styles.titleSection} sectionHeaders={sectionHeaders} title={this.props.title} summary={this.props.summary}/> {paragraphs}
-          <div key={3} className={styles.feedback}><FeedbackForm/></div>
-          {previousAndNextButtons}
+          <div key={1} className={`basicpage-breadcrumb ${styles.breadcrumb}`}>{breadcrumbs}</div>
+          <div className="basicpage-titlesection"><TitleSection key={2} gridClass={styles.titleSection}
+                                                                sectionHeaders={sectionHeaders} title={this.props.title}
+                                                                summary={this.props.summary}/> {paragraphs}</div>
+          <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}><FeedbackForm/></div>
+          <div className="basicpage-previousnext">
+            {previousAndNextButtons}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default BusinessGuideArticle;
+BasicPage.defaultProps = {
+  paragraphs: []
+};
+
+export default BasicPage;
