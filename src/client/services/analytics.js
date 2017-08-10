@@ -39,11 +39,8 @@ function logEvent(eventToLog) {
 function googleAnalyticsMiddleware({getState}) {
   return (next) => {
     return (action) => {
-      if (isEnabled()) {
-        //example
-        // if (action.type === "@@router/LOCATION_CHANGE") {
-        // do something
-        // }
+      if (action.type === "@@router/LOCATION_CHANGE") {
+        logPageView();
       }
       return next(action);
     };
