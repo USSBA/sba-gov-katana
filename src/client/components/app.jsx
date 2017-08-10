@@ -19,9 +19,7 @@ middlewareList.push(thunk);
 if (config.debug) {
   middlewareList.push(logging);
 }
-if (config.googleAnalytics.enabled) {
-  middlewareList.push(googleAnalyticsMiddleware);
-}
+middlewareList.push(googleAnalyticsMiddleware);
 
 const middleware = applyMiddleware(...middlewareList);
 const store = createStore(rootReducer, middleware);
@@ -38,7 +36,7 @@ class App extends React.Component {
     return (
       <Provider store={ store }>
         <Themer>
-          <HaxRouter onUpdate={ logPageView() } history={ history }>
+          <HaxRouter  history={ history }>
             { this.props.routes }
           </HaxRouter>
         </Themer>
