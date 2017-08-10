@@ -13,7 +13,7 @@ import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-p
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
 import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
 
-function makeParagraphs(paragraphData, optionalSectionHeaderFunction) {
+function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
   let paragraphs = [];
   let skipNextReadmore = false;
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {

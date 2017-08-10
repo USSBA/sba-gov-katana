@@ -1,5 +1,5 @@
 import React from 'react'
-import BusinessGuideArticle from "../templates/business-guide-article/business-guide-article.jsx";
+import BasicPage from "../templates/basic-page/basic-page.jsx";
 import ProgramPage from "../templates/program-page/program-page.jsx";
 import * as RestContentActions from "../../actions/rest-content.js"
 import {connect} from 'react-redux';
@@ -19,7 +19,7 @@ class Page extends React.Component {
     let section = this.props.lineage[0].url;
     if (this.props.data && this.props.lineage) {
       if (section === "business-guide") {
-        return (<BusinessGuideArticle title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage}/>);
+        return (<BasicPage title={this.props.data.title} paragraphs={this.props.data.paragraphs} summary={this.props.data.summary} lineage={this.props.lineage}/>);
       } else if (section === "funding-programs") {
         let heroData = undefined
         if (this.props.data) {
