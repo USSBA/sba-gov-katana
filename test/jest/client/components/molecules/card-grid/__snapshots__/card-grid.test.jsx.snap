@@ -9,39 +9,75 @@ exports[`CardGrid renders a simple 3x3 grid 1`] = `
   >
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #0
+      </p>
+    </div>
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #1
+      </p>
+    </div>
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #2
+      </p>
+    </div>
   </div>
   <div
     className="cardRow"
   >
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #3
+      </p>
+    </div>
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #4
+      </p>
+    </div>
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #5
+      </p>
+    </div>
   </div>
   <div
     className="cardRow"
   >
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #6
+      </p>
+    </div>
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #7
+      </p>
+    </div>
     <div
       className="card-container card"
-    />
+    >
+      <p>
+        this is card #8
+      </p>
+    </div>
   </div>
 </div>
 `;
