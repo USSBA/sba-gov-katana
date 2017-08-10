@@ -331,7 +331,6 @@ describe("Drupal 8 Service with mocked endpoints", function() {
           [{}, {}, paragraphDocFileOne, paragraphDocFileTwo],
           [taxonomyOneBase, taxonomyTwoBase, taxonomyThreeBase, taxonomyFourBase]
         );
-        console.log(`nodeDocument=${JSON.stringify(nodeDocument, null, 2)}`);
         const expectedResult = outputNodeDocumentBase;
         return drupalEightDataService.formatNode(nodeDocument).then(result => {
           result.should.deep.equal(expectedResult);
