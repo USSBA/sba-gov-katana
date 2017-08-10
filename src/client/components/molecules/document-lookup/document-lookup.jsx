@@ -8,6 +8,7 @@ import querystring from 'querystring';
 import * as ContentActions from "../../../actions/content.js";
 import s from "./document-lookup.scss";
 import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
+import ApplyButton from "../../atoms/apply-button/apply-button.jsx";
 import {Multiselect, TextInput, SearchIcon} from "../../atoms";
 import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx"
 
@@ -277,11 +278,9 @@ class DocumentLookup extends React.Component {
 							</div>
 						</div>
 						{this.renderMultiSelects()}
-						<SmallInverseSecondaryButton
-							onClick={() => this.submit()}
-							extraClassName={s.applyFiltersBtn}
-							text="Apply Filters"
-						/>
+						<ApplyButton submit={() => {
+							this.submit();
+						}} />
 					</div>}
 				</div>
 				{this.state.documents && this.renderDocuments()}
