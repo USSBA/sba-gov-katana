@@ -14,6 +14,7 @@ class ApplyButton extends React.Component {
 					onClick={() => {
 						this.props.submit();
 					}}
+					className="testClass"
 					extraClassName={s.applyFiltersBtn}
 					text="Apply"
 				/>
