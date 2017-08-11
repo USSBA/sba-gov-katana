@@ -1,16 +1,16 @@
-import React from 'react'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import * as ContentActions from "../../actions/content.js";
-import * as NavigationActions from '../../actions/navigation.js';
-import _ from 'lodash';
+import * as NavigationActions from "../../actions/navigation.js";
+import _ from "lodash";
 import {findPageLineage, findSubSection, findSection} from "../../services/menu.js";
 import Page from "./page.jsx";
 import SectionPage from "./section-page/section-page.jsx";
 import path from "path";
 import ErrorPage from "../pages/error-page/error-page.jsx";
-import DocumentPage from "../pages/document-page/document-page.jsx"
-import ArticlePage from "../pages/article-page/article-page.jsx"
+import DocumentPage from "../pages/document-page/document-page.jsx";
+import ArticlePage from "../pages/article-page/article-page.jsx";
 
 class RootPage extends React.Component {
 
@@ -23,20 +23,20 @@ class RootPage extends React.Component {
   }
 
   checkForForward() {
-    let first = this.props.params.first;
-    let second = this.props.params.second;
-    let third = this.props.params.third;
+    const first = this.props.params.first;
+    const second = this.props.params.second;
+    const third = this.props.params.third;
     if (first && second && !third && first === "business-guide") {
-      let subSectionData = findSubSection(this.props.menu, first, second);
+      const subSectionData = findSubSection(this.props.menu, first, second);
       if (subSectionData && subSectionData.children && subSectionData.children[0]) {
-        let page = subSectionData.children[0].url;
+        const page = subSectionData.children[0].url;
         this.props.navigationActions.locationChange(path.join("/", first, second, third), {});
       }
     }
   }
 
   renderPageOnLineage(pageLineage) {
-    let nodeId = _.last(pageLineage).node;
+    const nodeId = _.last(pageLineage).node;
     if (nodeId) {
       return (<Page lineage={pageLineage} nodeId={nodeId}/>);
     } else {
@@ -45,30 +45,30 @@ class RootPage extends React.Component {
   }
 
   renderPage(first, second, third, fourth, fifth) {
-    let pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
+    const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
     if (first === "document") {
-      return (<DocumentPage url={second} />);
-  } else if (first === "article") {
-      let year = second;
-      let month = third;
-      let day = fourth;
-      let title = fifth;
-      return (<ArticlePage url={year+'/'+month+"/"+day+"/"+title}/>);
+      return (<DocumentPage url={second}/>);
+    } else if (first === "article") {
+      const year = second;
+      const month = third;
+      const day = fourth;
+      const title = fifth;
+      return (<ArticlePage url={year + "/" + month + "/" + day + "/" + title}/>);
     } else if (this.props.menu) {
       if (first && second && third) {
         if (pageLineage && pageLineage.length === 3) {
-          return this.renderPageOnLineage(pageLineage)
+          return this.renderPageOnLineage(pageLineage);
         } else {
           return (<ErrorPage/>);
         }
       } else if (first && second) {
         if (pageLineage && pageLineage.length === 2) {
-          return this.renderPageOnLineage(pageLineage)
+          return this.renderPageOnLineage(pageLineage);
         } else {
           return (<ErrorPage/>);
         }
       } else if (first) {
-        let sectionData = findSection(this.props.menu, first);
+        const sectionData = findSection(this.props.menu, first);
         if (sectionData) {
           return (<SectionPage sectionData={sectionData}/>);
         } else if (sectionData !== null) {
@@ -95,7 +95,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ContentActions, dispatch),
     navigationActions: bindActionCreators(NavigationActions, dispatch)
-  }
+  };
 }
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(RootPage);
