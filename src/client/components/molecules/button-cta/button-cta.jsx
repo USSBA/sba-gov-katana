@@ -1,5 +1,5 @@
 import React from 'react'
-import LargePrimaryButton from '../../atoms/large-primary-button/large-primary-button.jsx'
+import {LargePrimaryButton} from '../../atoms';
 
 const ButtonCta = (props) => {
 	return(
