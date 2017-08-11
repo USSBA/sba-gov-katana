@@ -5,6 +5,14 @@ import renderer from "react-test-renderer";
 import Document from "client/components/templates/document/document.jsx";
 import RelatedDocumentCards from "client/components/organisms/related-document-cards/related-document-cards.jsx";
 
+jest.mock("client/services/client-config.js", function(){
+  return {
+    googleAnalytics: {
+      enabled: false
+    }
+  };
+});
+
 test("Document Component renders Document Article, Previous Versions List and Related Documents", () => {
 
 	const mockDocumentData = {
