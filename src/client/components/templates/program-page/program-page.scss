@@ -40,3 +40,8 @@
 	    margin-left: 10px;
 	}
 }
+
+.button {
+	 @include grid-column(12, $sba-grid-large);
+	 text-align: center;
+}

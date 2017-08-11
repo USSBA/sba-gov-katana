@@ -12,6 +12,7 @@ import CardCollection from "../organisms/card-collection/card-collection.jsx";
 import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
 import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
+import ButtonCta from "../molecules/button-cta/button-cta.jsx"
 
 function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
   let paragraphs = [];
@@ -57,6 +58,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
         paragraph = (<CardCollection parentIndex={index} cards={item.cards}/>);
       } else if (item.type === "styleGrayBackground") {
         paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>);
+      } else if (item.type === "button") {
+        paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title}/>)
       }
     }
     return {type: paragraphType, paragraph: paragraph};
@@ -72,7 +75,7 @@ function wrapParagraphs(paragraphsList, wrapperClassMapping) {
       paragraphGridStyle = wrapperClassMapping["other"]
     }
     return (
-      <div key={index} id={item.type + "-" + index} className={paragraphGridStyle}>{item.paragraph}</div>
+      <div key={index} id={item.type + "-" + index} className={paragraphGridStyle}><div id={"paragraph-"+ (index+1)}>{item.paragraph}</div></div>
     );
   });
 }
