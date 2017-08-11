@@ -16,7 +16,8 @@ class ProgramPage extends React.Component {
       lookup: styles.lookup,
       callToAction: styles.callToAction,
       cardCollection: styles.cardCollection,
-      styleGrayBackground: styles.styleGrayBackground
+      styleGrayBackground: styles.styleGrayBackground,
+      button: styles.button
     };
     let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped;
