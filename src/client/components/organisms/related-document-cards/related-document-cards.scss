@@ -47,14 +47,14 @@
 .browseAll {
 	font-weight: normal;
 	cursor: pointer;
-
+	text-align: right;
 	position: relative;
 	top: 50%;
 
 	transform: translateY(-50%);
 
 	@include font-size($paragraph-font-sizes);
-	@include grid-media($tablet-mobile-0gutter) {
+	@include grid-media($sba-grid-medium-and-small) {
 		@include grid-column(2);
 	}
 	@include grid-media($sba-grid-large) {

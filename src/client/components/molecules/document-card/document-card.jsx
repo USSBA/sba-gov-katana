@@ -42,6 +42,10 @@ class DocumentCard extends React.Component {
     }
 
     return (
+      <div>
+        <div className={s.dash}>
+          <DecorativeDash/>
+        </div>
       <table>
         <tbody>
           {rows.map((row, index) => {
@@ -54,6 +58,7 @@ class DocumentCard extends React.Component {
           })}
         </tbody>
       </table>
+      </div>
     );
   }
 
@@ -79,9 +84,6 @@ class DocumentCard extends React.Component {
                   {doc.title}
                 </h6>
             </a>
-            <div className={s.dash}>
-                <DecorativeDash/>
-            </div>
             {this.props.showDetails
               ? this.makeTable(this.props.doc)
               : null}

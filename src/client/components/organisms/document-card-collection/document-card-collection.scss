@@ -3,7 +3,11 @@
 }
 
 .card {
-    @include grid-media($sba-grid-medium-and-small) {
+	  @include grid-media($sba-grid-small) {
+        margin-bottom: 20px;
+        @include grid-column(6);
+    }
+    @include grid-media($sba-grid-medium) {
         margin-bottom: 20px;
         @include grid-column(6);
     }
