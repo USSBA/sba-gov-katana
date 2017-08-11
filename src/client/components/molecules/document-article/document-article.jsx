@@ -86,9 +86,16 @@ class DocumentArticle extends React.Component {
   }
 }
 
+export const testDocumentArticle = () => {
+  return <DocumentArticle />;
+};
+
 function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(NavigationActions, dispatch)};
 }
+
 export default connect(null, mapDispatchToProps)(
   DocumentArticle
 );
+
+

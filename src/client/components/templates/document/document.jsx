@@ -25,6 +25,7 @@ class DocumentPage extends React.Component {
           </li>
         );
       });
+
       return (
         <div>
           <DocumentArticle data={this.props.document}/>
