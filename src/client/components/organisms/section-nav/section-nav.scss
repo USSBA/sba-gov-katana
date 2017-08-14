@@ -1,3 +1,14 @@
+.stickyTop {
+  position: fixed;
+  top: 30px;
+}
+
+.stickyBottom {
+  position: absolute;
+  bottom: 518px;
+}
+
+
 .sectionNav {
   display: none;
 
@@ -10,162 +21,67 @@
   @include grid-media($sba-grid-small){
     display: none;
   }
-}
 
-.stickyTop {
-  position: fixed;
-  top: 30px;
-}
-
-.stickyBottom {
-  position: absolute;
-  bottom: 518px;
-}
-
-.mobileSectionNav {
-    position: absolute;
-    height: 100%;
-    top: 0;
-    z-index: 100000000000;
-    width: 100%;
-}
-
-.sectionNav ul, .mobileSectionNav ul {
-  padding-bottom: 100px;
-  @include grid-media($sba-grid-large) {
-    padding-bottom: 0;
+  .backLink, h2, h3, h4 {
+    padding: 0 30px;
   }
-}
-
-.backLink, .sectionNav h2, .sectionNav h4 {
-  padding: 0 30px;
-}
-
-.sectionNav h2 {
-  text-align: left;
-  text-transform: capitalize;
-}
-
-.sectionNav h4 {
-  text-align: left;
-  text-transform: lowercase;
-  font-weight: 700 !important;
-}
-
-.mobileSectionNav h2 {
-  text-align: left;
-  text-transform: capitalize;
-}
-
-.mobileSectionNav h4 {
-  text-align: left;
-  text-transform: lowercase;
-}
-
-.sectionNav h2{
-  margin-bottom: 0;
-}
-
-.sectionNav h4, .mobileSectionNav h4{
-  font-weight: 500;
-  margin-bottom: .8em;
-}
-
-.sectionNav a, .mobileSectionNav a {
-  display: block;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.2;
-  padding: 8px 30px 10px;
-  text-decoration: none;
-}
-
-.sectionNav a.currentNavLink, .mobileSectionNav a.currentNavLink {
-  font-weight: bold;
-}
-
-.mobileSectionNav h2{
-  margin-bottom: 0;
-  font-size: 34px;
-}
-
-.mobileSectionNav h4{
-  margin-bottom: 0;
-  font-weight: 900;
-  font-size: 21px;
-}
-
-
-.backLink {
-   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-   margin-bottom: 20px;
- }
-
-a.backLink{
-  padding: 20px 30px 20px 55px;
-  position: relative;
-}
-
-a.mobileBackLink{
-  padding: 20px 30px 20px 55px;
-  position: relative;
-}
-
-.backLink:before {
-  content: "\f104";
-  font-family: FontAwesome;
-  font-size: 30px;
-  margin-right: 15px;
-  position: absolute;
-  top: 12px;
-  left: 30px;
-}
-
-.mobileBackLink:before {
-  color: #fff;
-  content: "\f104";
-  font-family: FontAwesome;
-  font-size: 30px;
-  margin-right: 15px;
-  position: absolute;
-  top: 26px;
-  left: 30px;
-}
-
-.sectionNav img {
-   display: block;
-   margin: 0 auto 20px;
-   width: 105px;
- }
-
-.mobileSectionNav img {
-  //display: block;
-  margin-right: 15px;
-  width: 50px;
-  float: left;
-}
-
-.mobileSectionNav span {
-  //display: block;
-}
-
-
-.sectionNav li, .mobileSectionNav li{
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.sectionNav li:last-child, .mobileSectionNav li:last-child{
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  h2, h3, h4 {
+    text-align: left;
+  }
+  h2 {
+    margin-bottom: 0;
+  }
+  h4 {
+    margin-bottom: .8em;
+    font-weight: 700 !important;
+  }
+  a {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+    padding: 8px 30px 10px;
+    text-decoration: none;
+    .currentNavLink {
+      font-weight: bold;
+    }
+  }
+  ul {
+    padding-bottom: 100px;
+    @include grid-media($sba-grid-large) {
+      padding-bottom: 0;
+    }
+  }
+  img {
+    display: block;
+    margin: 0 auto 20px;
+    width: 105px;
+  }
+  li {
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .backLink {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    margin-bottom: 20px;
+    padding: 20px 30px 20px 55px;
+    position: relative;
+  }
+  .backLink:before {
+    content: "\f104";
+    font-family: FontAwesome;
+    font-size: 30px;
+    margin-right: 15px;
+    position: absolute;
+    top: 12px;
+    left: 30px;
+  }
 }
 
 .animateLeftNav{
   animation: slideNavIn 3s forwards;
-}
-
-.mobileSectionNav{
-  @include grid-media( $sba-grid-large) {
-    display: none;
-  }
 }
 
 @keyframes slideNavIn {
@@ -174,27 +90,27 @@ a.mobileBackLink{
 }
 
 $section-nav-color-map:(
-  "sba-blue": $sba-blue-dark,
-  "byzantine": $byzantine,
-  "money-green": $money-green-dark,
-  "cobalt-blue": $cobalt-blue
+        "sba-blue": $sba-blue-dark,
+        "byzantine": $byzantine,
+        "money-green": $money-green-dark,
+        "cobalt-blue": $cobalt-blue
 );
 $section-nav-dark-color-map:(
-  "sba-blue": $sba-blue-darkest,
-  "byzantine": $byzantine-dark,
-  "money-green": $money-green-darkest,
-  "cobalt-blue": $cobalt-blue-dark
+        "sba-blue": $sba-blue-darkest,
+        "byzantine": $byzantine-dark,
+        "money-green": $money-green-darkest,
+        "cobalt-blue": $cobalt-blue-dark
 );
 
 @each $name, $value in $section-nav-color-map {
-  @include theme($name, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+  @include theme($name, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
   @include theme($name, '.sectionNav', $value, null, null);
 }
 
 @each $name, $value in $section-nav-dark-color-map {
-  @include theme($name, '.mobileSectionNav li a.currentNavLink, .sectionNav li a.currentNavLink', $value, #fff, $value);
-  @include theme-hover($name, ".mobileSectionNav li a, .sectionNav li a, .sectionNav li, .backLink", $value, #fff, $value);
-  @include theme-active($name, '.mobileSectionNav li a, .sectionNav li a', $value, #fff, $value);
+  @include theme($name, '.currentNavLink', $value, #fff, $value);
+  @include theme-hover($name, ".sectionNav li a, .sectionNav li, .backLink", $value, #fff, $value);
+  @include theme-active($name, '.sectionNav li a', $value, #fff, $value);
   :global(.#{$name}) {
     .sectionNav li:hover + li{
       border-top: 1px solid $value;
