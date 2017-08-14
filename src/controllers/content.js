@@ -20,7 +20,8 @@ const fetchContentTypeFunctions = {
   counsellorCta: fetchCounsellorCta,
   documents: fetchDocuments,
   articles: fetchArticles,
-  taxonomyVocabulary: fetchTaxonomyVocabulary
+  taxonomyVocabulary: fetchTaxonomyVocabulary,
+  notification: fetchNotification
 };
 
 function fetchContentById(req, res) {
