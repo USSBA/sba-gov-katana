@@ -19,7 +19,7 @@ describe("SectionNav", () => {
     });
 
     test("Backlink points to first-level URL", () => {
-      const modifiedBacklinkUrl = "/my-back-url";
+      const modifiedBacklinkUrl = "/business-guide";
       const lineage = _.merge(_.cloneDeep(lineageBusinessGuide), [{fullUrl: modifiedBacklinkUrl}]);
       const component = shallow(<SectionNav lineage={lineage} />);
       expect(component.find("#article-navigation-back-button-desktop").props().href).toBe(modifiedBacklinkUrl);
@@ -47,37 +47,24 @@ describe("SectionNav", () => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
-    test("Backlink points to second-level URL", () => {
-      const modifiedBacklinkUrl = "/my-back-url";
-      const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{fullUrl: modifiedBacklinkUrl}]);
+    test("Backlink points to third-level URL", () => {
+      const modifiedBacklinkUrl = "/my/back/url";
+      const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{},{fullUrl: modifiedBacklinkUrl}]);
       const component = shallow(<SectionNav lineage={lineage} />);
       expect(component.find("#article-navigation-back-button-desktop").props().href).toBe(modifiedBacklinkUrl);
     });
-    test("Backlink text is second-level title", () => {
-      const modifiedTitle = "My Second Level Title";
-      const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{title: modifiedTitle}]);
+    test("Backlink text is third-level title", () => {
+      const modifiedTitle = "My Third Level Title";
+      const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{},{title: modifiedTitle}]);
       const component = shallow(<SectionNav lineage={lineage} />);
       expect(component.find("#article-navigation-back-button-desktop").text()).toBe(`Back to ${modifiedTitle}`);
     });
-    test("Navigation title uses first word of third-level as an H2 and the rest as H4", () => {
-      const firstWord = "Firstwordof";
-      const otherWords = " My Third Level Title";
-      const modifiedSecondLevelTitle = `${firstWord}${otherWords}`;
+    test("Navigation title has all content in an h3", () => {
+      const navigationTitle = "Firstwordof My Third Level Title";
       const lineage = _.cloneDeep(lineageForPartners);
-      lineage[2].title = modifiedSecondLevelTitle;
+      lineage[2].title = navigationTitle;
       const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-title-desktop").find("h2").text()).toBe(firstWord);
-      expect(component.find("#article-navigation-title-desktop").find("h4").text()).toBe(otherWords);
-    });
-    test("Navigation title works with non-standard words [like 7(a)]", () => {
-      const firstWord = "7(a)";
-      const otherWords = " loans";
-      const modifiedSecondLevelTitle = `${firstWord}${otherWords}`;
-      const lineage = _.cloneDeep(lineageForPartners);
-      lineage[2].title = modifiedSecondLevelTitle;
-      const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-title-desktop").find("h2").text()).toBe(firstWord);
-      expect(component.find("#article-navigation-title-desktop").find("h4").text()).toBe(otherWords);
+      expect(component.find("#article-navigation-title-desktop").find("h3").text()).toBe(navigationTitle);
     });
   });
 });

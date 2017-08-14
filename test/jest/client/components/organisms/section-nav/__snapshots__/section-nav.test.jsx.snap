@@ -120,20 +120,17 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
   />
   <a
     className="backLink"
-    href="/for-partners/lenders"
+    href="/for-partners/lenders/7a-loans"
     id="article-navigation-back-button-desktop"
   >
-    Back to Lenders
+    Back to 7(a) Loans
   </a>
   <span
     id="article-navigation-title-desktop"
   >
-    <h2>
-      7(a)
-    </h2>
-    <h4>
-       Loans
-    </h4>
+    <h3>
+      7(a) Loans
+    </h3>
   </span>
   <ul>
     <li>
