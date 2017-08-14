@@ -26,11 +26,13 @@ class Main extends React.Component {
   }
 
   componentWillMount() {
-    let cookieValue = cookie.load('close_disaster_loan_parature');
-    let hidingCookie = cookieValue
-      ? true
-      : false;
-    this.setState({disasterAlertHidingCookieIsPresent: hidingCookie});
+    
+    const updatedState = {
+      disasterAlertHidingCookieIsPresent: cookie.load("close_disaster_loan_parature") ? true : false,
+      notificationBarHidingCookieIsPresent: cookie.load("close_notification_bar") ? true : false
+    };
+
+    this.setState(updatedState);
   }
 
   handleClose(type) {
@@ -102,12 +104,12 @@ class Main extends React.Component {
         
         if (whiteLabeledUrl === this.props.location.pathname) {
         
-          showNotificationBar = true;
+          showNotificationBar = !this.state.notificationBarHidingCookieIsPresent;
           break;
         
         } else if (whiteLabeledUrl.split("/*")[0].split("/")[1] === this.props.location.pathname.split("/")[1]) {
 
-          showNotificationBar = true;
+          showNotificationBar = !this.state.notificationBarHidingCookieIsPresent;
           break;
 
         }
