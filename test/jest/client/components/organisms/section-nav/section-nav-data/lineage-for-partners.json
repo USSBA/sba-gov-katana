@@ -1,0 +1,220 @@
+[
+  {
+    "title": "For Partners",
+    "url": "for-partners",
+    "fullUrl": "/for-partners",
+    "children": [
+      {
+        "title": "Lenders",
+        "url": "lenders",
+        "fullUrl": "/for-partners/lenders",
+        "children": [
+          {
+            "title": "Pre 7a Loans",
+            "url": "pre-7a-loans",
+            "fullUrl": "/for-partners/lenders/pre-7a-loans",
+            "children": null,
+            "description": null,
+            "weight": -10
+          },
+          {
+            "title": "7a Loans",
+            "url": "7a-loans",
+            "fullUrl": "/for-partners/lenders/7a-loans",
+            "children": [
+              {
+                "title": "Types of 7(a) Loans",
+                "url": "types-of-7a-loans",
+                "fullUrl": "/for-partners/lenders/7a-loans/types-of-7a-loans",
+                "children": null,
+                "description": null,
+                "weight": -20
+              },
+              {
+                "title": "Operate as a 7(a) Lender",
+                "url": "operate-as-a-7a-lender",
+                "fullUrl": "/for-partners/lenders/7a-loans/operate-as-a-7a-lender",
+                "children": null,
+                "description": null,
+                "weight": -10
+              },
+              {
+                "title": "Secondary Markets",
+                "url": "secondary-markets",
+                "fullUrl": "/for-partners/lenders/7a-loans/secondary-markets",
+                "children": null,
+                "description": null,
+                "node": "3412",
+                "weight": 0
+              },
+              {
+                "title": "Training and Courses",
+                "url": "training-and-courses",
+                "fullUrl": "/for-partners/lenders/7a-loans/training-and-courses",
+                "children": null,
+                "description": null,
+                "weight": 10
+              },
+              {
+                "title": "Terms and Eligibility",
+                "url": "terms-and-eligibility",
+                "fullUrl": "/for-partners/lenders/7a-loans/terms-and-eligibility",
+                "children": null,
+                "description": null,
+                "weight": 20
+              }
+            ],
+            "description": null,
+            "weight": 0
+          },
+          {
+            "title": "Post 7a Loans",
+            "url": "post-7a-loans",
+            "fullUrl": "/for-partners/lenders/post-7a-loans",
+            "children": null,
+            "description": null,
+            "weight": 10
+          }
+        ],
+        "description": null,
+        "weight": 0
+      }
+    ],
+    "description": null,
+    "weight": 0
+  },
+  {
+    "title": "Lenders",
+    "url": "lenders",
+    "fullUrl": "/for-partners/lenders",
+    "children": [
+      {
+        "title": "Pre 7a Loans",
+        "url": "pre-7a-loans",
+        "fullUrl": "/for-partners/lenders/pre-7a-loans",
+        "children": null,
+        "description": null,
+        "weight": -10
+      },
+      {
+        "title": "7a Loans",
+        "url": "7a-loans",
+        "fullUrl": "/for-partners/lenders/7a-loans",
+        "children": [
+          {
+            "title": "Types of 7(a) Loans",
+            "url": "types-of-7a-loans",
+            "fullUrl": "/for-partners/lenders/7a-loans/types-of-7a-loans",
+            "children": null,
+            "description": null,
+            "weight": -20
+          },
+          {
+            "title": "Operate as a 7(a) Lender",
+            "url": "operate-as-a-7a-lender",
+            "fullUrl": "/for-partners/lenders/7a-loans/operate-as-a-7a-lender",
+            "children": null,
+            "description": null,
+            "weight": -10
+          },
+          {
+            "title": "Secondary Markets",
+            "url": "secondary-markets",
+            "fullUrl": "/for-partners/lenders/7a-loans/secondary-markets",
+            "children": null,
+            "description": null,
+            "node": "3412",
+            "weight": 0
+          },
+          {
+            "title": "Training and Courses",
+            "url": "training-and-courses",
+            "fullUrl": "/for-partners/lenders/7a-loans/training-and-courses",
+            "children": null,
+            "description": null,
+            "weight": 10
+          },
+          {
+            "title": "Terms and Eligibility",
+            "url": "terms-and-eligibility",
+            "fullUrl": "/for-partners/lenders/7a-loans/terms-and-eligibility",
+            "children": null,
+            "description": null,
+            "weight": 20
+          }
+        ],
+        "description": null,
+        "weight": 0
+      },
+      {
+        "title": "Post 7a Loans",
+        "url": "post-7a-loans",
+        "fullUrl": "/for-partners/lenders/post-7a-loans",
+        "children": null,
+        "description": null,
+        "weight": 10
+      }
+    ],
+    "description": null,
+    "weight": 0
+  },
+  {
+    "title": "7(a) Loans",
+    "url": "7a-loans",
+    "fullUrl": "/for-partners/lenders/7a-loans",
+    "children": [
+      {
+        "title": "Types of 7(a) Loans",
+        "url": "types-of-7a-loans",
+        "fullUrl": "/for-partners/lenders/7a-loans/types-of-7a-loans",
+        "children": null,
+        "description": null,
+        "weight": -20
+      },
+      {
+        "title": "Operate as a 7(a) Lender",
+        "url": "operate-as-a-7a-lender",
+        "fullUrl": "/for-partners/lenders/7a-loans/operate-as-a-7a-lender",
+        "children": null,
+        "description": null,
+        "weight": -10
+      },
+      {
+        "title": "Secondary Markets",
+        "url": "secondary-markets",
+        "fullUrl": "/for-partners/lenders/7a-loans/secondary-markets",
+        "children": null,
+        "description": null,
+        "node": "3412",
+        "weight": 0
+      },
+      {
+        "title": "Training and Courses",
+        "url": "training-and-courses",
+        "fullUrl": "/for-partners/lenders/7a-loans/training-and-courses",
+        "children": null,
+        "description": null,
+        "weight": 10
+      },
+      {
+        "title": "Terms and Eligibility",
+        "url": "terms-and-eligibility",
+        "fullUrl": "/for-partners/lenders/7a-loans/terms-and-eligibility",
+        "children": null,
+        "description": null,
+        "weight": 20
+      }
+    ],
+    "description": null,
+    "weight": 0
+  },
+  {
+    "title": "Secondary Markets",
+    "url": "secondary-markets",
+    "fullUrl": "/for-partners/lenders/7a-loans/secondary-markets",
+    "children": null,
+    "description": null,
+    "node": "3412",
+    "weight": 0
+  }
+]

@@ -45,7 +45,7 @@ class RootPage extends React.Component {
   }
 
   renderPage(first, second, third, fourth, fifth) {
-    const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third]));
+    const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third, fourth, fifth]));
     if (first === "document") {
       return (<DocumentPage url={second}/>);
     } else if (first === "article") {
@@ -55,7 +55,19 @@ class RootPage extends React.Component {
       const title = fifth;
       return (<ArticlePage url={year + "/" + month + "/" + day + "/" + title}/>);
     } else if (this.props.menu) {
-      if (first && second && third) {
+      if (first && second && third && fourth && fifth) {
+        if (pageLineage && pageLineage.length === 5) {
+          return this.renderPageOnLineage(pageLineage);
+        } else {
+          return (<ErrorPage/>);
+        }
+      } else if (first && second && third && fourth) {
+        if (pageLineage && pageLineage.length === 4) {
+          return this.renderPageOnLineage(pageLineage);
+        } else {
+          return (<ErrorPage/>);
+        }
+      } else if (first && second && third) {
         if (pageLineage && pageLineage.length === 3) {
           return this.renderPageOnLineage(pageLineage);
         } else {

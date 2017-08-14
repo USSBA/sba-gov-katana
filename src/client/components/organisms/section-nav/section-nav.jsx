@@ -8,20 +8,36 @@ import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
 import * as ModalActions from '../../../actions/show-modal.js'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import _ from "lodash";
 
-class SectionNav extends React.Component {
+export class SectionNav extends React.Component {
 
   makeNavLinks(prefix) {
-      let navLinks = [];
-      let section = _.nth(this.props.lineage, 1);
-      navLinks = section.children.map(function(item, index) {
-          return (
-          <li key={index}>
-            <a id={prefix+"-article-link-"+index} href={item.fullUrl}>{item.title}</a>
-          </li>
-          );
-      });
-      return navLinks;
+    const section = _.nth(this.props.lineage, -2);
+    const currentPage = _.nth(this.props.lineage, -1);
+    const navLinks = section.children.map(function (item, index) {
+      let currentLinkClass = "";//(item.fullUrl === _.nth(this.props.lineage, -1).fullUrl) ? styles.currentNavLink : "";
+      if(item.fullUrl === currentPage.fullUrl){
+        currentLinkClass = styles.currentNavLink;
+      }
+
+      return (
+        <li key={index}>
+          <a className={`article-navigation-article-link-${prefix} ${currentLinkClass}`}
+             id={prefix + "-article-link-" + index} href={item.fullUrl}>{item.title}</a>
+        </li>
+      );
+    });
+    return navLinks;
+  }
+
+  makeNavigationTitle(sectionTitle) {
+    const titleArray = _.words(sectionTitle, /[^ ]+/g);
+    const firstWord = _.slice(titleArray, 0, 1);
+    const remainingTitle = _.replace(sectionTitle, firstWord, '');
+    return (<span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
+              <h4>{remainingTitle}</h4>
+            </span>);
   }
 
   stickyFunctionTop(){
@@ -32,13 +48,20 @@ class SectionNav extends React.Component {
     return this.props.position == "bottom" ? styles.stickyBottom : null
   }
 
+  getBacklinkUrl(){
+    return _.nth(this.props.lineage, -3).fullUrl;
+  }
+
+  getBacklinkText(){
+    const backText = _.nth(this.props.lineage, -3).title === _.nth(this.props.lineage, 0).title ? "all topics" : _.nth(this.props.lineage, -3).title;
+    return `Back to ${backText}`;
+  }
 
   render() {
-    let navLinks = this.makeNavLinks(this.props.displayMobileNav ? "mobile" : "desktop");
-    let sectionTitle = _.nth(this.props.lineage, 1).title;
-    let titleArray = _.words(sectionTitle);
-    let firstWord = _.slice(titleArray, 0, 1);
-    let remainingTitle = _.replace(sectionTitle, RegExp("^"+firstWord),'');
+    const navLinks = this.makeNavLinks(this.props.displayMobileNav ? "mobile" : "desktop");
+    const sectionTitle = _.nth(this.props.lineage, -2).title;
+    const navigationTitle = this.makeNavigationTitle(sectionTitle);
+
     let sectionNavIcon;
 
     if (sectionTitle === "Plan your business") {
@@ -52,23 +75,20 @@ class SectionNav extends React.Component {
     } else {
       sectionNavIcon = whiteIconGrow;
     }
-    let parentUrl = _.nth(this.props.lineage, 0).fullUrl;
-
 
     return (
-        this.props.displayMobileNav ? (
-            this.props.actions.showMobileSectionNav(_.nth(this.props.lineage, 1), sectionNavIcon, "/business-guide")
-        ) : (
-            <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
-                <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
-                <a id="article-navigation-back-button-desktop" className={styles.backLink} href="/business-guide">Back to all topics</a>
-                <span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
-                    <h4>{remainingTitle}</h4>
-                </span>
-                <ul>{navLinks}</ul>
-            </div>
-        )
-
+      this.props.displayMobileNav ? (
+        this.props.actions.showMobileSectionNav(_.nth(this.props.lineage, 1), sectionNavIcon, "/business-guide")
+      ) : (
+        <div id="article-navigation-desktop"
+             className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
+          <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
+          <a id="article-navigation-back-button-desktop" className={styles.backLink}
+             href={this.getBacklinkUrl()}>{this.getBacklinkText()}</a>
+          {navigationTitle}
+          <ul>{navLinks}</ul>
+        </div>
+      )
     );
   }
 }
