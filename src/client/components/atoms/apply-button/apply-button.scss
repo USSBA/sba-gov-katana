@@ -1,0 +1,19 @@
+.applyFiltersBtn {
+    
+    font-size: 19px;
+
+    position: absolute;
+    right: 28px;
+    bottom: 20px;
+
+    max-width: 200px;
+    height: 48px;
+    margin: inherit;
+
+    @include grid-media($sba-grid-medium-and-small) {
+        
+        display: none;
+        
+    }
+
+}
