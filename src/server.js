@@ -112,9 +112,6 @@ app.get("/api/content/:userId/email.json", getDrupalUserEmail);
 import { registerUserForNewsletter } from "./controllers/newsletter-registration.js";
 app.get("/api/content/newsletter-registration.json", registerUserForNewsletter);
 
-import { fetchNotification } from "./controllers/notification.js";
-app.get("/api/content/notification.json", fetchNotification);
-
 import { fetchContentById, fetchContentByType } from "./controllers/content.js";
 app.get("/api/content/:type/:id.json", fetchContentById);
 app.get("/api/content/:type.json", fetchContentByType);
