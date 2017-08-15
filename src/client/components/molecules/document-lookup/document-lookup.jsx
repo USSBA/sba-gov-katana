@@ -16,7 +16,7 @@ import {
 	SmallInverseSecondaryButton
 } from "../../atoms";
 import {Paginator} from "../../molecules/";
-import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx"
+import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
 
 const createSlug = (str) => {
 
@@ -69,7 +69,9 @@ export class DocumentLookup extends React.Component {
 			program: queryParams.program || "All",
 			documentActivity: queryParams.activity || "All",
 			sortBy: "Last Updated",
-			taxonomies: []
+			taxonomies: [],
+			pageNumber: 1,
+			pageSize: 10
 		};
 	}
 
@@ -92,8 +94,9 @@ export class DocumentLookup extends React.Component {
 
 	}
 
-    componentDidMount(){
-        if(this.hasQueryParams()){
+    componentDidMount() {
+
+        if(this.hasQueryParams()) {
             this.submit();
         }
     }
@@ -270,14 +273,58 @@ export class DocumentLookup extends React.Component {
 		return <DocumentCardCollection documents={this.state.documents} />;
 	}
 
-	render() {
+	renderPaginator() {
 
-		const { taxonomies } = this.state;
+		const {
+			documents,
+			pageNumber,
+			pageSize
+		} = this.state;
 
 		return (
+			<div className={s.paginator}>
+				<Paginator
+					pageNumber={pageNumber}
+					pageSize={pageSize}
+					total={documents.length}
+					onBack={this.handleBack.bind(this)}
+					onForward={this.handleForward.bind(this)}
+				/>
+			</div>
+		);
+	}
+
+	handleBack() {
+		this.setState({
+			pageNumber: Math.max(1, this.state.pageNumber - 1)
+		});
+	}
+
+	handleForward() {
+		
+		const {
+			documents,
+			pageNumber,
+			pageSize
+		} = this.state;
+
+		this.setState({
+			pageNumber: Math.min(Math.max(1,Math.ceil(documents.length / pageSize)), pageNumber + 1)
+		});
+	}
+
+	render() {
+
+		const { taxonomies, documents} = this.state;
+
+		return (
+			
 			<div>
+				
 				<div className={s.banner}>
+					
 					<h2 className={s.header}>{this.props.title}</h2>
+					
 					{taxonomies.length > 0 &&
 					<div>
 						<div className={s.searchBox}>
@@ -299,9 +346,18 @@ export class DocumentLookup extends React.Component {
 							this.submit();
 						}} />
 					</div>}
+				
 				</div>
-				{this.state.documents && this.renderDocuments()}
+				
+				{documents.length > 0 && 
+				<div>
+					{this.renderPaginator()}
+					{this.renderDocuments()}
+					{this.renderPaginator()}
+				</div>}
+
 			</div>
+
 		);
 	}
 
