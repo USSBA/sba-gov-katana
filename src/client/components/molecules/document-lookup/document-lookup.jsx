@@ -3,13 +3,19 @@ import {pick} from "lodash";
 import _ from "lodash";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import querystring from 'querystring';
+import querystring from "querystring";
 
 import * as ContentActions from "../../../actions/content.js";
 import s from "./document-lookup.scss";
-import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
-import ApplyButton from "../../atoms/apply-button/apply-button.jsx";
-import {Multiselect, TextInput, SearchIcon} from "../../atoms";
+
+import {
+	ApplyButton,
+	Multiselect,
+	TextInput,
+	SearchIcon,
+	SmallInverseSecondaryButton
+} from "../../atoms";
+import {Paginator} from "../../molecules/";
 import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx"
 
 const createSlug = (str) => {
@@ -44,14 +50,18 @@ const findTaxonomy = (arr, name) => {
 
 };
 
-class DocumentLookup extends React.Component {
+export class DocumentLookup extends React.Component {
 
 	constructor(ownProps) {
+
 		super();
+
         let queryParams = {};
-        if(window.location.search && window.location.search !== ""){
-            queryParams = querystring.decode(window.location.search.replace("?",""));
+        const {search} = window.location;
+        if(search && search !== "") {
+            queryParams = querystring.decode(search.replace("?",""));
         }
+
 		this.state = {
 			documents: ownProps.items,
 			searchTerm: queryParams.search || "",
@@ -63,8 +73,10 @@ class DocumentLookup extends React.Component {
 		};
 	}
 
-    hasQueryParams(){
+    hasQueryParams() {
+
         return window.location.search && window.location.search !== "";
+
     }
 
 	componentWillMount() {
@@ -126,14 +138,6 @@ class DocumentLookup extends React.Component {
 
 	}
 
-	handleChange(event, selectStateKey) {
-
-		const obj = {};
-		obj[selectStateKey] = event.value;
-
-		this.setState(obj);
-	}
-
 	renderMultiSelects() {
 
 		const _multiselects = this.state.taxonomies.map((taxonomy) => {
@@ -165,25 +169,34 @@ class DocumentLookup extends React.Component {
 		});
 
 		return _multiselects.map((multiSelectProps, index) => {
+
+			const returnNull = () => {
+				return null;
+			};
+
 			return (
 				<div className={s.multiSelect} key={index}>
 					<Multiselect
 						{...multiSelectProps}
-						onBlur={() => {return null}}
-						onFocus={() => {return null}}
+						onBlur={returnNull}
+						onFocus={returnNull}
 						validationState=""
 						errorText=""
 						autoFocus={false}
 						multi={false}
-					>
-					</Multiselect>
+					/>
 				</div>
 			);
 		});
 	}
 
-	renderDocuments() {
-		return <DocumentCardCollection documents={this.state.documents}/>;
+	handleChange(event, selectStateKey) {
+
+		const obj = {};
+		obj[selectStateKey] = event.value;
+
+		this.setState(obj);
+
 	}
 
 	handleKeyUp(event) {
@@ -195,14 +208,6 @@ class DocumentLookup extends React.Component {
 			this.submit();
 
 		}
-
-	}
-
-	updateSearchTerm(event) {
-
-		this.setState({
-			"searchTerm": event.target.value
-		});
 
 	}
 
@@ -253,6 +258,18 @@ class DocumentLookup extends React.Component {
 		);
 	}
 
+	updateSearchTerm(event) {
+
+		this.setState({
+			"searchTerm": event.target.value
+		});
+
+	}
+
+	renderDocuments() {
+		return <DocumentCardCollection documents={this.state.documents} />;
+	}
+
 	render() {
 
 		const { taxonomies } = this.state;
@@ -290,11 +307,25 @@ class DocumentLookup extends React.Component {
 
 }
 
+DocumentLookup.defaultProps = {
+	documents: {},
+	searchTerm: "",
+	documentType: "All",
+	program: "All",
+	documentActivity: "All",
+	sortBy: "Last Updated",
+	taxonomies: []
+};
+
 function mapReduxStateToProps(reduxState, ownProps) {
-  return {
-    taxonomies: reduxState.contentReducer["taxonomies"],
-    documents: reduxState.contentReducer["documents"]
-  };
+
+	const {taxonomies, documents} = reduxState.contentReducer;
+
+	return {
+		taxonomies,
+		documents
+	};
+
 }
 
 function mapDispatchToProps(dispatch) {
