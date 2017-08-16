@@ -1,5 +1,5 @@
 import Promise from "bluebird";
-import { drupal, nonDrupal } from "./db-connect.js";
+import { nonDrupal } from "./db-connect.js";
 
 import lenderMatchRegistration from "./lender-match-registration.js";
 import lenderMatchSoapResponse from "./lender-match-soap-response.js";

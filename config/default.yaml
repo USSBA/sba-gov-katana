@@ -6,6 +6,7 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
+    useLocalDataNotDaisho: false
 govdelivery:
     popupEnabled: true
 foresee:
@@ -19,14 +20,6 @@ googleAnalytics:
     optimizeContainerId: "GTM-NPDXPPF"
     tagManagerAccountId: "GTM-MSNZZ6M"
     debug: false
-drupal:
-    hostname: http://www.sba.gov/
-    endpoint: rest
-drupal8:
-    hostname: http://tanto
-    useLocalContacts: false
-    useMenu: true
-    contentUrl: http://content.sbagov.fearlesstesters.com/
 server:
     port: 3000
 counsellorCta:
@@ -48,17 +41,15 @@ linc:
     ocaVersion: 2
     lookback: 86400
     numberOfSecondsForWhichEmailIsValid: 172800
+daisho:
+    hostname: http://daisho
+    port: 3001
 database:
     pool:
         max: 100
         min: 0
         idle: 1000
     nonDrupal:
-        databaseName: placeholder
-        host: placeholder
-        password: placeholder
-        user: placeholder
-    drupal:
         databaseName: placeholder
         host: placeholder
         password: placeholder

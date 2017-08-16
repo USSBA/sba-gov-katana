@@ -1,11 +1,6 @@
-import { drupal, nonDrupal } from "./db-connect.js";
+import { nonDrupal } from "./db-connect.js";
 import * as Sequelize from "sequelize";
 
-function executeDrupalQuery(query) {
-  return drupal.query(query, {
-    type: Sequelize.QueryTypes.SELECT
-  });
-}
 
 function executeNonDrupalQuery(query) {
   return nonDrupal.query(query, {
@@ -13,4 +8,4 @@ function executeNonDrupalQuery(query) {
   });
 }
 
-export { executeDrupalQuery, executeNonDrupalQuery };
+export { executeNonDrupalQuery };
