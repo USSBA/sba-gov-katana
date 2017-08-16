@@ -15,26 +15,49 @@ function get(resource, query) {
       "Accepts": "application/json"
     }
   };
-  winston.info("Submitting request to ", resource);
+  winston.info("Submitting request to ", options);
 
   return Promise.resolve().then(() => {
-    axios.request(options)
+    return axios.request(options)
       .then(function(response) {
         if (response && response.data) {
+          //   winston.info("Response from Daisho ", response.data);
           return response.data;
         }
+        winston.info("Response from Daisho did not contain data");
         return null;
-
       })
       .catch(function(error) {
-        if (error && error.response && error.response.status === HttpStatus.NOT_FOUND) {
-          return null;
-        }
         winston.error(error);
-        throw new Error("Error encountered contacting the drupal 8 rest services in fetchContent");
+        throw new Error("Error encountered contacting the daisho client in get");
+      });
+  });
+}
+
+function del(resource) {
+  const options = {
+    method: "delete",
+    url: "/api/content/" + resource + ".json",
+    baseURL: config.get("daisho.hostname") + ":" + config.get("daisho.port")
+  };
+  winston.info("Submitting request to ", options);
+
+  return Promise.resolve().then(() => {
+    return axios.request(options)
+      .then(function(response) {
+        if (response && response.status === HttpStatus.NO_CONTENT) {
+          winston.info("Response from Daisho ", response.data);
+          return response.data;
+        } else {
+          throw new Error("Error encountered contacting the daisho client, recieved " + response.status);
+        }
+      })
+      .catch(function(error) {
+        winston.error(error);
+        throw new Error("Error encountered contacting the daisho client in del");
       });
   });
 }
 
 
-export { get };
+export { get, del };

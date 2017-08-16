@@ -1,7 +1,7 @@
-import daishoClient from "./daisho-client.js";
+import { get } from "./daisho-client.js";
 
 function fetchDrupalUserEmail(userId) {
-  return daishoClient.get(userId + "/email");
+  return get(userId + "/email");
 }
 
 export { fetchDrupalUserEmail };

@@ -1,12 +1,12 @@
-import daishoClient from "../models/dao/daisho-client.js";
+import { get } from "../models/dao/daisho-client.js";
 
 function fetchBlogsFromDrupal() {
-  return daishoClient.get("blogs");
+  return get("blogs");
 }
 
 
 function fetchFrontPageSlidesFromDrupal() {
-  return daishoClient.get("frontpageslides");
+  return get("frontpageslides");
 }
 
 

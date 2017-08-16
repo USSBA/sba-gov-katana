@@ -1,7 +1,7 @@
-import daishoClient from "./daisho-client.js";
+import { get } from "./daisho-client.js";
 
 function fetchDisasterFromDrupalDatabase() {
-  return daishoClient.get("disaster");
+  return get("disaster");
 }
 
 export { fetchDisasterFromDrupalDatabase };

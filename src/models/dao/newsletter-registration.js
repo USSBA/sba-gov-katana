@@ -1,7 +1,7 @@
-import daishoClient from "./daisho-client.js";
+import { get } from "./daisho-client.js";
 
 function registerForNewsletter(userId) {
-  return daishoClient.get("newsletter-registration");
+  return get("newsletter-registration");
 }
 
 export { registerForNewsletter };

@@ -1,7 +1,7 @@
-import daishoClient from "./daisho-client.js";
+import { get } from "./daisho-client.js";
 
 function fetchUserRoles(userId) {
-  return daishoClient.get(userId + "/roles");
+  return get(userId + "/roles");
 }
 
 export { fetchUserRoles };

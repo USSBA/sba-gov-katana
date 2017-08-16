@@ -2,7 +2,7 @@ import _ from "lodash";
 import Promise from "bluebird";
 import config from "config";
 
-import daishoClient from "../models/dao/daisho-client.js";
+import { get } from "../models/dao/daisho-client.js";
 import localContacts from "../models/dao/sample-data/contacts.js";
 import sbicContacts from "../models/dao/sample-data/sbic-contacts.js";
 import suretyContacts from "../models/dao/sample-data/surety-contacts.js";
@@ -17,27 +17,27 @@ const localDataMap = {
 
 
 function fetchFormattedNode(nodeId) {
-  return daishoClient.get("node/" + nodeId);
+  return get("node/" + nodeId);
 }
 
 function fetchContacts(queryParams) {
   const category = queryParams.category;
-  if (config.get("drupal8.useLocalContacts")) {
+  if (config.get("developmentOptions.useLocalDataNotDaisho")) {
     console.log("Using Development Contacts information");
     return Promise.resolve(localDataMap[category] || []);
   }
 
-  return daishoClient.get("collection/contacts", queryParams);
+  return get("collection/contacts", queryParams);
 }
 
 
 function fetchFormattedMenu() {
-  return daishoClient.get("menu");
+  return get("menu");
 }
 
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get("counsellorCta.nodeId");
-  return daishoClient.get("node/" + counsellorCtaNodeId).then((data) => {
+  return get("node/" + counsellorCtaNodeId).then((data) => {
     return _.assign({}, data, {
       size: "Large"
     });
@@ -47,12 +47,12 @@ function fetchCounsellorCta() {
 
 
 function fetchDocuments(queryParams) {
-  if (config.get("drupal8.useLocalContacts")) {
+  if (config.get("developmentOptions.useLocalDataNotDaisho")) {
     console.log("Using Development Documents information");
     return Promise.resolve(filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents));
   }
 
-  return daishoClient.get("collection/documents")
+  return get("collection/documents")
     .then((data) => {
       return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
     });
@@ -137,7 +137,7 @@ function sortDocuments(params, docs) {
 
 
 function fetchTaxonomyVocabulary(queryParams) {
-  return daishoClient.get("collection/taxonomys")
+  return get("collection/taxonomys")
     .then((data) => {
       let names = _.map(data, "name");
       if (queryParams.names) {
@@ -154,7 +154,7 @@ function fetchTaxonomyVocabulary(queryParams) {
 }
 
 function fetchArticles(queryParams) {
-  return daishoClient.get("collection/articles", queryParams);
+  return get("collection/articles", queryParams);
 }
 
 

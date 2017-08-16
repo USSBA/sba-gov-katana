@@ -1,7 +1,7 @@
-import daishoClient from "../models/dao/daisho-client.js";
+import { get } from "../models/dao/daisho-client.js";
 
 function isAdministrator(sessionId) {
-  return daishoClient.get(sessionId + "/admin");
+  return get(sessionId + "/admin");
 }
 
 export { isAdministrator };

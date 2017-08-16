@@ -1,7 +1,7 @@
-import daishoClient from "./daisho-client.js";
+import { get } from "./daisho-client.js";
 
 function fetchCounselorsByLocation(userId) {
-  return daishoClient.get("counselors-by-location");
+  return get("counselors-by-location");
 }
 
 export { fetchCounselorsByLocation };
