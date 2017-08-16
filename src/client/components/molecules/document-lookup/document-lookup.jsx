@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import querystring from "querystring";
 
 import * as ContentActions from "../../../actions/content.js";
-import s from "./document-lookup.scss";
+import styles from "./document-lookup.scss";
 
 import {
 	ApplyButton,
@@ -17,6 +17,11 @@ import {
 } from "../../atoms";
 import {Paginator} from "../../molecules/";
 import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
+
+
+const config = {
+	pageSize: 10
+};
 
 const createSlug = (str) => {
 
@@ -70,8 +75,7 @@ export class DocumentLookup extends React.Component {
 			documentActivity: queryParams.activity || "All",
 			sortBy: "Last Updated",
 			taxonomies: [],
-			pageNumber: 1,
-			pageSize: 10
+			pageNumber: 1
 		};
 	}
 
@@ -178,7 +182,7 @@ export class DocumentLookup extends React.Component {
 			};
 
 			return (
-				<div className={s.multiSelect} key={index}>
+				<div className={styles.multiSelect} key={index}>
 					<Multiselect
 						{...multiSelectProps}
 						onBlur={returnNull}
@@ -270,22 +274,27 @@ export class DocumentLookup extends React.Component {
 	}
 
 	renderDocuments() {
-		return <DocumentCardCollection documents={this.state.documents} />;
+		
+		return (
+			<div className={styles.documentCardCollection}>
+				<DocumentCardCollection documents={this.state.documents} />
+			</div>
+		);
+
 	}
 
 	renderPaginator() {
 
 		const {
 			documents,
-			pageNumber,
-			pageSize
+			pageNumber
 		} = this.state;
 
 		return (
-			<div className={s.paginator}>
+			<div className={styles.paginator}>
 				<Paginator
 					pageNumber={pageNumber}
-					pageSize={pageSize}
+					pageSize={config.pageSize}
 					total={documents.length}
 					onBack={this.handleBack.bind(this)}
 					onForward={this.handleForward.bind(this)}
@@ -304,12 +313,11 @@ export class DocumentLookup extends React.Component {
 		
 		const {
 			documents,
-			pageNumber,
-			pageSize
+			pageNumber
 		} = this.state;
 
 		this.setState({
-			pageNumber: Math.min(Math.max(1,Math.ceil(documents.length / pageSize)), pageNumber + 1)
+			pageNumber: Math.min(Math.max(1,Math.ceil(documents.length / config.pageSize)), pageNumber + 1)
 		});
 	}
 
@@ -321,13 +329,13 @@ export class DocumentLookup extends React.Component {
 			
 			<div>
 				
-				<div className={s.banner}>
+				<div className={styles.banner}>
 					
-					<h2 className={s.header}>{this.props.title}</h2>
+					<h2 className={styles.header}>{this.props.title}</h2>
 					
 					{taxonomies.length > 0 &&
 					<div>
-						<div className={s.searchBox}>
+						<div className={styles.searchBox}>
 							<TextInput
 								placeholder="Search by title or number"
 								id="document-lookup"
@@ -337,7 +345,7 @@ export class DocumentLookup extends React.Component {
 								onKeyUp={(e) => this.handleKeyUp(e)}
 								onChange={(e) => this.updateSearchTerm(e)}
 							/>
-							<div className={s.searchIcon}>
+							<div className={styles.searchIcon}>
 								<SearchIcon aria-hidden="true" />
 							</div>
 						</div>

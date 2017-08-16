@@ -2,6 +2,10 @@
     clear: left;
 }
 
+.row {
+    display: table;
+}
+
 .card {
 	  @include grid-media($sba-grid-small) {
         margin-bottom: 20px;
