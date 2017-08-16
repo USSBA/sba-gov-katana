@@ -12,7 +12,7 @@ import _ from "lodash";
 
 const businessGuideFullUrl = "/business-guide";
 
-export class SectionNav extends React.Component {
+class SectionNav extends React.Component {
 
   isBusinessGuide(){
     return this.getNthLineage(0).fullUrl === businessGuideFullUrl;
@@ -120,3 +120,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav);
+export {SectionNav};
