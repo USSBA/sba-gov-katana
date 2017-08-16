@@ -341,6 +341,18 @@ $lightest-color-map:(
 	"money-green": $money-green-lightest,
 	"cobalt-blue": $cobalt-blue-lightest
 );
+$dark-color-map:(
+	"sba-blue": $sba-blue-dark,
+	"byzantine": $byzantine-dark,
+	"money-green": $money-green-dark,
+	"cobalt-blue": $cobalt-blue-dark
+);
+$darkest-color-map:(
+	"sba-blue": $sba-blue-darkest,
+	"byzantine": $byzantine-darkest,
+	"money-green": $money-green-darkest,
+	"cobalt-blue": $cobalt-blue-darkest
+);
 
 @mixin small-button($component){
     #{$component} {

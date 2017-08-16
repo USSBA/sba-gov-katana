@@ -1,44 +1,83 @@
-import React from 'react';
-var Waypoint = require('react-waypoint');
-import styles from './section-nav.scss';
-import whiteIconLaunch from '../../atoms/icons/white-launch.jsx';
-import whiteIconPlan from '../../atoms/icons/white-plan.jsx';
-import whiteIconManage from '../../atoms/icons/white-manage.jsx';
-import whiteIconGrow from '../../atoms/icons/white-grow.jsx';
-import * as ModalActions from '../../../actions/show-modal.js'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+var Waypoint = require("react-waypoint");
+import styles from "./section-nav.scss";
+import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
+import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
+import whiteIconManage from "../../atoms/icons/white-manage.jsx";
+import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
+import * as ModalActions from "../../../actions/show-modal.js";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import _ from "lodash";
+
+const businessGuideFullUrl = "/business-guide";
 
 class SectionNav extends React.Component {
 
-  makeNavLinks(prefix) {
-      let navLinks = [];
-      let section = _.nth(this.props.lineage, 1);
-      navLinks = section.children.map(function(item, index) {
-          return (
-          <li key={index}>
-            <a id={prefix+"-article-link-"+index} href={item.fullUrl}>{item.title}</a>
-          </li>
-          );
-      });
-      return navLinks;
+  isBusinessGuide(){
+    return this.getNthLineage(0).fullUrl === businessGuideFullUrl;
   }
 
+  getNthLineage(n) {
+    return _.nth(this.props.lineage, n);
+  }
+
+  makeNavLinks() {
+    const section = this.getNthLineage(-2);
+    const currentPage = this.getNthLineage(-1);
+    const navLinks = section.children.map(function (item, index) {
+      let currentLinkClass = "";
+      if(item.fullUrl === currentPage.fullUrl){
+        currentLinkClass = styles.currentNavLink;
+      }
+      return (
+        <li key={index}>
+          <a className={"article-navigation-article-link-desktop " + currentLinkClass}
+             id={"desktop-article-link-" + index} href={item.fullUrl}>{item.title}</a>
+        </li>
+      );
+    });
+    return navLinks;
+  }
+
+  makeNavigationTitle(sectionTitle) {
+    const baseSection = this.getNthLineage(0);
+    if(this.isBusinessGuide()){
+      const titleArray = _.words(sectionTitle, /[^ ]+/g);
+      const firstWord = _.slice(titleArray, 0, 1);
+      const remainingTitle = _.replace(sectionTitle, firstWord, "");
+      return (<span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
+              <h4>{remainingTitle}</h4>
+            </span>);
+    } else {
+      return (<span id="article-navigation-title-desktop"><h3>{sectionTitle}</h3></span>);
+    }
+  }
+
+
   stickyFunctionTop(){
-    return this.props.position == "middle" ? styles.stickyTop : null
+    return this.props.position === "middle" ? styles.stickyTop : null;
   }
 
   stickyFunctionBottom(){
-    return this.props.position == "bottom" ? styles.stickyBottom : null
+    return this.props.position === "bottom" ? styles.stickyBottom : null;
+  }
+
+  getBacklinkUrl(){
+    return (this.isBusinessGuide() ? this.getNthLineage(0) : this.getNthLineage(-2)).fullUrl;
   }
 
 
+  getBacklinkText(){
+    const backText = this.isBusinessGuide() ? "all topics" : this.getNthLineage(-2).title;
+    return `Back to ${backText}`;
+  }
+
   render() {
-    let navLinks = this.makeNavLinks(this.props.displayMobileNav ? "mobile" : "desktop");
-    let sectionTitle = _.nth(this.props.lineage, 1).title;
-    let titleArray = _.words(sectionTitle);
-    let firstWord = _.slice(titleArray, 0, 1);
-    let remainingTitle = _.replace(sectionTitle, RegExp("^"+firstWord),'');
+    const navLinks = this.makeNavLinks();
+    const sectionTitle = this.getNthLineage(-2).title;
+    const navigationTitle = this.makeNavigationTitle(sectionTitle);
+
     let sectionNavIcon;
 
     if (sectionTitle === "Plan your business") {
@@ -52,24 +91,22 @@ class SectionNav extends React.Component {
     } else {
       sectionNavIcon = whiteIconGrow;
     }
-    let parentUrl = _.nth(this.props.lineage, 0).fullUrl;
 
-
-    return (
-        this.props.displayMobileNav ? (
-            this.props.actions.showMobileSectionNav(_.nth(this.props.lineage, 1), sectionNavIcon, "/business-guide")
-        ) : (
-            <div id="article-navigation-desktop" className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
-                <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
-                <a id="article-navigation-back-button-desktop" className={styles.backLink} href="/business-guide">Back to all topics</a>
-                <span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
-                    <h4>{remainingTitle}</h4>
-                </span>
-                <ul>{navLinks}</ul>
-            </div>
-        )
-
-    );
+    if(this.props.displayMobileNav) {
+      this.props.actions.showMobileSectionNav(this.getNthLineage(1), sectionNavIcon, this.getBacklinkUrl());
+      return (<div></div>);
+    } else {
+      return (
+        <div id="article-navigation-desktop"
+             className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
+          <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
+          <a id="article-navigation-back-button-desktop" className={styles.backLink}
+             href={this.getBacklinkUrl()}>{this.getBacklinkText()}</a>
+          {navigationTitle}
+          <ul>{navLinks}</ul>
+        </div>
+      );
+    }
   }
 }
 
@@ -80,6 +117,7 @@ function mapReduxStateToProps(reduxState) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ModalActions, dispatch)
-  }
+  };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav);
+export {SectionNav};
