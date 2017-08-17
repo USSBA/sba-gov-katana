@@ -3,6 +3,10 @@ import styles from "./document-card-collection.scss";
 import _ from "lodash";
 import DocumentCard from "../../molecules/document-card/document-card.jsx";
 
+const config = {
+  cols: 3
+}
+
 const arrayChunk = (arr, size) => {
   
   if (!Array.isArray(arr)) {
@@ -24,38 +28,30 @@ const arrayChunk = (arr, size) => {
 
 class DocumentCardCollection extends React.Component {
 
-  constructor() {
-    super();
-
-    this.state = {
-      cols: 3
-    };
-
-  }
-
   render() {
 
-    const rows = arrayChunk(this.props.documents, this.state.cols);
+    const cardRows = arrayChunk(this.props.documents, config.cols);
 
     return (
 
       <div className={"document-card-collection " + styles.cardCollection}>
-        {rows.map((row, rowIndex) => {
+        {cardRows.map((cardRow, rowIndex) => {
           
           return (
             
-            <div className={styles.row} key={`row-${rowIndex}`}>
-              {row.map((col, colIndex) => {
+            <div className={styles.cardRow} key={`cardRow-${rowIndex}`}>
+              {cardRow.map((card, cardIndex) => {
 
                 return (
 
                   <div
-                    key={`col-${colIndex}`}
+                    key={`card-${cardIndex}`}
                     className={styles.card}>
                     
                     <DocumentCard
-                      doc={col}
+                      doc={card}
                       showDetails={this.props.showDetails}
+                      showBorder={false}
                     />
 
                   </div>
