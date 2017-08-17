@@ -76,7 +76,7 @@ a {
   color: $sba-blue;
   text-decoration: underline;
   transition: color $base-duration $base-timing;
-
+  cursor: pointer;
   &:active,
   &:focus,
   &:hover {
