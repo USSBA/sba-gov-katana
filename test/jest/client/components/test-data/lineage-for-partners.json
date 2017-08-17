@@ -92,7 +92,16 @@
         "title": "Pre 7a Loans",
         "url": "pre-7a-loans",
         "fullUrl": "/for-partners/lenders/pre-7a-loans",
-        "children": null,
+        "children": [
+          {
+            "title": "Pre 7(a) Loans Article",
+            "url": "pre-7a-loans-article",
+            "fullUrl": "/for-partners/lenders/pre-7a-loans/pre-7a-loans-article",
+            "children": null,
+            "description": null,
+            "weight": -20
+          }
+        ],
         "description": null,
         "weight": -10
       },
@@ -150,7 +159,16 @@
         "title": "Post 7a Loans",
         "url": "post-7a-loans",
         "fullUrl": "/for-partners/lenders/post-7a-loans",
-        "children": null,
+        "children": [
+          {
+            "title": "Post 7(a) Loans Article",
+            "url": "post-7a-loans-article",
+            "fullUrl": "/for-partners/lenders/post-7a-loans/post-7a-loans-article",
+            "children": null,
+            "description": null,
+            "weight": -20
+          }
+        ],
         "description": null,
         "weight": 10
       }
