@@ -43,6 +43,7 @@ linc:
     numberOfSecondsForWhichEmailIsValid: 172800
 daisho:
     hostname: http://daisho
+    port: 3000
 database:
     pool:
         max: 100
