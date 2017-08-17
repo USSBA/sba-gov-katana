@@ -42,8 +42,4 @@ function encryptPassword(password) {
   return encryptor.encrypt(password);
 }
 
-export {
-  generateOcaPassword,
-  decryptPassword,
-  encryptPassword
-};
+export { generateOcaPassword, decryptPassword, encryptPassword };
