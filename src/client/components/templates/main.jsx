@@ -82,7 +82,6 @@ class Main extends React.Component {
       notificationWhiteLabelUrls
     } = this.props;
 
-
     // determine visibility
 
     let showNotificationBar;
