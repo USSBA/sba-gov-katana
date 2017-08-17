@@ -1,191 +1,141 @@
 import React from "react"
 import styles from "./previous-next.scss";
+import _ from "lodash";
 import SmallSecondaryButton from "../../atoms/small-secondary-button/small-secondary-button.jsx";
 
-class PreviousNextSection extends React.Component{
-    getNextSection(currentIndexInParent, parent){
-        let retObj = {};
-        let nextSectionIndex = currentIndexInParent + 1;
-        if(nextSectionIndex === _.size(parent)){
-            retObj.nextText = null;
-            retObj.nextUrl = null;
-        }else{
-            let nextSection = _.nth(parent, nextSectionIndex).children;
-            if(nextSection){
-                let sectionFirstItem = _.head(nextSection);
-                retObj.nextText = sectionFirstItem.title;
-                retObj.nextUrl = sectionFirstItem.fullUrl;
-            }else{
-                retObj.nextText = null;
-                retObj.nextUrl = null;
-            }
-        }
-        return retObj;
+const businessGuideUrl = "/business-guide";
+
+class PreviousNextSection extends React.Component {
+  getCurrentArticle(lineage) {
+    return _.last(lineage);
+  }
+
+  getSections() {
+    return _.nth(this.props.lineage, -3).children;
+  }
+
+  getArticlesFromSections(sections) {
+    return _.compact(_.flatMap(sections, (section) => {
+      return section.children;
+    }));
+  }
+
+  getCurrentArticleIndex(articles, currentArticle) {
+    return _.findIndex(articles, (article) => {
+      return article && article.fullUrl && article.fullUrl === currentArticle.fullUrl;
+    });
+  }
+
+  getAdjacentArticle(indexDifference) {
+    if (!this.props.lineage) {
+      return null;
     }
-
-    getPreviousSection(currentIndexInParent, parent){
-        let retObj = {};
-        let prevSectionIndex = currentIndexInParent - 1;
-        if(Math.sign(prevSectionIndex) === -1){
-            retObj.previousText = null;
-            retObj.previousUrl = null;
-        }else{
-            let prevSection = _.nth(parent, prevSectionIndex).children;
-            if(prevSection){
-                let sectionLastItem = _.last(prevSection);
-                retObj.previousText = sectionLastItem.title;
-                retObj.previousUrl = sectionLastItem.fullUrl;
-            }else{
-                retObj.previousText = null;
-                retObj.previousUrl = null;
-            }
-        }
-        return retObj;
+    const includeAdjacentSections = this.props.lineage[0].fullUrl === businessGuideUrl
+    const currentArticle = this.getCurrentArticle(this.props.lineage);
+    const sections = this.getSections();
+    const articles = includeAdjacentSections ? this.getArticlesFromSections(sections) : _.nth(this.props.lineage, -2).children;
+    const currentArticleIndex = this.getCurrentArticleIndex(articles, currentArticle);
+    if (indexDifference > 0) {
+      if (currentArticleIndex < 0 || currentArticleIndex >= articles.length - indexDifference) {
+        return null;
+      }
+      return articles[currentArticleIndex + indexDifference];
+    } else {
+      // indexDifference negative
+      if (currentArticleIndex < (indexDifference * -1) || currentArticleIndex >= articles.length) {
+        return null;
+      }
+      return articles[currentArticleIndex + indexDifference];
     }
+  }
 
-    calculateDesktopParameters() {
-        let parent = _.head(this.props.lineage).children;
-        let shortLineage = _.takeRight(this.props.lineage, 2);
-        let section = _.head(shortLineage).children;
-        let currentIndexInParent = _.indexOf(parent, _.head(shortLineage));
-        let current = _.last(shortLineage);
-        let currentIndexInSection = _.indexOf(section, current);
-        let retObj = {};
-        if(currentIndexInSection === 0 && _.size(section) === 1){
-            let nextSection = this.getNextSection(currentIndexInParent, parent);
-            let prevSection = this.getPreviousSection(currentIndexInParent, parent);
-            retObj.previousText = prevSection.previousText;
-            retObj.previousUrl = prevSection.previousUrl;
-            retObj.nextText = nextSection.nextText;
-            retObj.nextUrl = nextSection.nextUrl;
+  getNextArticle() {
+    return this.getAdjacentArticle(1);
+  }
 
-        }else if(currentIndexInSection === 0){
-            let prevSection = this.getPreviousSection(currentIndexInParent, parent);
-            retObj.previousText = prevSection.previousText;
-            retObj.previousUrl = prevSection.previousUrl;
-            retObj.nextText =  _.nth(section, currentIndexInSection + 1).title;
-            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
-        }else if(currentIndexInSection === _.size(section) - 1){
-            retObj.previousText = _.nth(section, currentIndexInSection - 1).title;
-            retObj.previousUrl = _.nth(section, currentIndexInSection - 1).fullUrl;
-            let nextSection = this.getNextSection(currentIndexInParent, parent);
-            retObj.nextText = nextSection.nextText;
-            retObj.nextUrl = nextSection.nextUrl;
-        }else{
-            retObj.previousText = _.nth(section, currentIndexInSection - 1).title;
-            retObj.previousUrl = _.nth(section, currentIndexInSection - 1).fullUrl;
-            retObj.nextText = _.nth(section, currentIndexInSection + 1).title;
-            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
-        }
-        return retObj;
-    }
+  getPreviousArticle() {
+    return this.getAdjacentArticle(-1);
+  }
 
-    calculateMobileParameters() {
-        let parent = _.head(this.props.lineage).children;
-        let shortLineage = _.takeRight(this.props.lineage, 2);
-        let section = _.head(shortLineage).children;
-        let currentIndexInParent = _.indexOf(parent, _.head(shortLineage));
-        let current = _.last(shortLineage);
-        let currentIndexInSection = _.indexOf(section, current);
-        let retObj = {};
-        if(currentIndexInSection === 0 && _.size(section) === 1){
-            let nextSection = this.getNextSection(currentIndexInParent, parent);
-            retObj.nextText = nextSection.nextText;
-            retObj.nextUrl = nextSection.nextUrl;
+  render() {
+    const previousArticle = this.getPreviousArticle();
+    const nextArticle = this.getNextArticle();
 
-        }else if(currentIndexInSection === 0){
-            retObj.nextText =  _.nth(section, currentIndexInSection + 1).title;
-            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
-        }else if(currentIndexInSection === _.size(section) - 1){
-            let nextSection = this.getNextSection(currentIndexInParent, parent);
-            retObj.nextText = nextSection.nextText;
-            retObj.nextUrl = nextSection.nextUrl;
-        }else{
-            retObj.nextText = _.nth(section, currentIndexInSection + 1).title;
-            retObj.nextUrl = _.nth(section, currentIndexInSection + 1).fullUrl;
-        }
-        return retObj;
-    }
-
-    render(){
-        let previousNextParams = this.calculateDesktopParameters();
-        let nextMobileParams = this.calculateMobileParameters();
-        return(
-            <div id="previousNextSectionId" className={styles.previousNextContainer}>
-                <div id="desktopDivId" className={styles.desktop}>
-                    <div id="prevNextTitleContainerId" className={styles.prevNextTitleContainer}>
-                        {
-                            previousNextParams.previousText !== null ?
-                                <div id="previousTitleId" className={styles.previousTitle}>
-                                    <h6 className={styles.previousTitle} >Previous</h6>
-                                </div>
-                                :
-                                <div className={styles.titleHide}>
-                                    <h6 className={styles.previousTitle} >Previous</h6>
-                                </div>
-                        }
-                        {
-                            previousNextParams.nextText !== null ?
-                                <div id="nextTitleDesktopId" className={styles.nextTitle}>
-                                    <h6 className={styles.nextTitle}>Next</h6>
-                                </div>
-                                :
-                                null
-                        }
-                    </div>
-                    <div id="prevNextButtonsContainerId" className={styles.prevNextButtonsContainer}>
-                        {
-                            previousNextParams.previousText !== null ?
-                                <div id="previousContainerId" className={styles.previousContainer}>
-                                    <a href={previousNextParams.previousUrl}><SmallSecondaryButton text={previousNextParams.previousText}/></a>
-                                    <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
-                                </div>
-                                :
-                                <div className={styles.previousContainerHide}>
-                                    <SmallSecondaryButton text="Placeholder" />
-                                </div>
-                        }
-                        {
-                            previousNextParams.nextText !== null ?
-                                <div id="nextContainerDesktopId" className={styles.nextContainer}>
-                                    <a href={previousNextParams.nextUrl}><SmallSecondaryButton text={previousNextParams.nextText}/></a>
-                                    <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
-                                </div>
-                                :
-                                null
-                        }
-                    </div>
+    return (
+      <div id="previousNextSectionId" className={styles.previousNextContainer}>
+        <div id="desktopDivId" className={styles.desktop}>
+          <div id="prevNextTitleContainerId" className={styles.prevNextTitleContainer}>
+            {
+              previousArticle !== null ?
+                <div id="previousTitleId" className={styles.previousTitle}>
+                  <h6 className={styles.previousTitle}>Previous</h6>
                 </div>
-                <div id="mobileDivId" className={styles.mobile}>
-                    {
-                        nextMobileParams.nextText !== null ?
-                            <div id="nextTitleMobileId" className={styles.nextTitle}>
-                                <h6 className={styles.nextTitle}>Next</h6>
-                            </div>
-                            :
-                            null
-                    }
-                    {
-                        nextMobileParams.nextText !== null ?
-                            <div id="nextContainerMobileId" className={styles.nextContainer}>
-                                <a href={nextMobileParams.nextUrl}><SmallSecondaryButton text={nextMobileParams.nextText}/></a>
-                                <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
-                            </div>
-                            :
-                            null
-                    }
+                :
+                <div className={styles.titleHide}>
+                  <h6 className={styles.previousTitle}>No Previous Article</h6>
                 </div>
-            </div>
-        );
-    }
+            }
+            {
+              nextArticle !== null ?
+                <div id="nextTitleDesktopId" className={styles.nextTitle}>
+                  <h6 className={styles.nextTitle}>Next</h6>
+                </div>
+                :
+                <div />
+            }
+          </div>
+          <div id="prevNextButtonsContainerId" className={styles.prevNextButtonsContainer}>
+            {
+              previousArticle !== null ?
+                <div id="previousContainerId" className={styles.previousContainer}>
+                  <a className={"previousnext-previous-url"} href={previousArticle.fullUrl}><SmallSecondaryButton
+                    text={previousArticle.title}/></a>
+                  <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
+                </div>
+                :
+                <div className={styles.previousContainerHide}>
+                  <SmallSecondaryButton text="No previous article"/>
+                </div>
+            }
+            {
+              nextArticle !== null ?
+                <div id="nextContainerDesktopId" className={styles.nextContainer}>
+                  <a className={"previousnext-next-url"} href={nextArticle.fullUrl}><SmallSecondaryButton
+                    text={nextArticle.title}/></a>
+                  <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
+                </div>
+                :
+                <div/>
+            }
+          </div>
+        </div>
+        <div id="mobileDivId" className={styles.mobile}>
+          {
+            nextArticle !== null ?
+              <div id="nextTitleMobileId" className={styles.nextTitle}>
+                <h6 className={styles.nextTitle}>Next</h6>
+              </div>
+              :
+              <div/>
+          }
+          {
+            nextArticle !== null ?
+              <div id="nextContainerMobileId" className={styles.nextContainer}>
+                <a className={"previousnext-next-url"} href={nextArticle.fullUrl}><SmallSecondaryButton
+                  text={nextArticle.title}/></a>
+                <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
+              </div>
+              :
+              <div/>
+          }
+        </div>
+      </div>
+    );
+  }
 }
 
-PreviousNextSection.propTypes ={
-    lineage: React.PropTypes.array.isRequired
-};
-
-PreviousNextSection.defaultProps ={
-    lineage: []
+PreviousNextSection.propTypes = {
+  lineage: React.PropTypes.array.isRequired
 };
 
 export default PreviousNextSection;

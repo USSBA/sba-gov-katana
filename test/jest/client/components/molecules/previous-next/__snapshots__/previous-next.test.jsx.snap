@@ -1,0 +1,873 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreviousNext Business Guide When in a middle article it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="previousTitle"
+        id="previousTitleId"
+      >
+        <h6
+          className="previousTitle"
+        >
+          Previous
+        </h6>
+      </div>
+      <div
+        className="nextTitle"
+        id="nextTitleDesktopId"
+      >
+        <h6
+          className="nextTitle"
+        >
+          Next
+        </h6>
+      </div>
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainer"
+        id="previousContainerId"
+      >
+        <a
+          className="previousnext-previous-url"
+          href="/business-guide/launch/pick-your-business-location-zoning-laws"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Pick your business location
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-left chevronPrevious"
+        />
+      </div>
+      <div
+        className="nextContainer"
+        id="nextContainerDesktopId"
+      >
+        <a
+          className="previousnext-next-url"
+          href="/business-guide/launch/choose-your-business-name-register"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Choose your business name
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-right chevronNext"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div
+      className="nextTitle"
+      id="nextTitleMobileId"
+    >
+      <h6
+        className="nextTitle"
+      >
+        Next
+      </h6>
+    </div>
+    <div
+      className="nextContainer"
+      id="nextContainerMobileId"
+    >
+      <a
+        className="previousnext-next-url"
+        href="/business-guide/launch/choose-your-business-name-register"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          Choose your business name
+        </button>
+      </a>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right chevronNext"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PreviousNext Business Guide When in the first article of a middle section it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="previousTitle"
+        id="previousTitleId"
+      >
+        <h6
+          className="previousTitle"
+        >
+          Previous
+        </h6>
+      </div>
+      <div
+        className="nextTitle"
+        id="nextTitleDesktopId"
+      >
+        <h6
+          className="nextTitle"
+        >
+          Next
+        </h6>
+      </div>
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainer"
+        id="previousContainerId"
+      >
+        <a
+          className="previousnext-previous-url"
+          href="/business-guide/plan/buy-existing-business-franchise"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Buy an existing business or franchise
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-left chevronPrevious"
+        />
+      </div>
+      <div
+        className="nextContainer"
+        id="nextContainerDesktopId"
+      >
+        <a
+          className="previousnext-next-url"
+          href="/business-guide/launch/choose-business-structure-types-chart"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Choose a business structure
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-right chevronNext"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div
+      className="nextTitle"
+      id="nextTitleMobileId"
+    >
+      <h6
+        className="nextTitle"
+      >
+        Next
+      </h6>
+    </div>
+    <div
+      className="nextContainer"
+      id="nextContainerMobileId"
+    >
+      <a
+        className="previousnext-next-url"
+        href="/business-guide/launch/choose-business-structure-types-chart"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          Choose a business structure
+        </button>
+      </a>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right chevronNext"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PreviousNext Business Guide When in the first article of the first section it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="titleHide"
+      >
+        <h6
+          className="previousTitle"
+        >
+          No Previous Article
+        </h6>
+      </div>
+      <div
+        className="nextTitle"
+        id="nextTitleDesktopId"
+      >
+        <h6
+          className="nextTitle"
+        >
+          Next
+        </h6>
+      </div>
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainerHide"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          No previous article
+        </button>
+      </div>
+      <div
+        className="nextContainer"
+        id="nextContainerDesktopId"
+      >
+        <a
+          className="previousnext-next-url"
+          href="/business-guide/plan/write-your-business-plan-template"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Write your business plan
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-right chevronNext"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div
+      className="nextTitle"
+      id="nextTitleMobileId"
+    >
+      <h6
+        className="nextTitle"
+      >
+        Next
+      </h6>
+    </div>
+    <div
+      className="nextContainer"
+      id="nextContainerMobileId"
+    >
+      <a
+        className="previousnext-next-url"
+        href="/business-guide/plan/write-your-business-plan-template"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          Write your business plan
+        </button>
+      </a>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right chevronNext"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PreviousNext Business Guide When in the last article of a middle section it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="previousTitle"
+        id="previousTitleId"
+      >
+        <h6
+          className="previousTitle"
+        >
+          Previous
+        </h6>
+      </div>
+      <div
+        className="nextTitle"
+        id="nextTitleDesktopId"
+      >
+        <h6
+          className="nextTitle"
+        >
+          Next
+        </h6>
+      </div>
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainer"
+        id="previousContainerId"
+      >
+        <a
+          className="previousnext-previous-url"
+          href="/business-guide/launch/open-business-bank-account-fees-benefits"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Open a business bank account
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-left chevronPrevious"
+        />
+      </div>
+      <div
+        className="nextContainer"
+        id="nextContainerDesktopId"
+      >
+        <a
+          className="previousnext-next-url"
+          href="/business-guide/manage/manage-your-finances-business-credit"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Manage your finances
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-right chevronNext"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div
+      className="nextTitle"
+      id="nextTitleMobileId"
+    >
+      <h6
+        className="nextTitle"
+      >
+        Next
+      </h6>
+    </div>
+    <div
+      className="nextContainer"
+      id="nextContainerMobileId"
+    >
+      <a
+        className="previousnext-next-url"
+        href="/business-guide/manage/manage-your-finances-business-credit"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          Manage your finances
+        </button>
+      </a>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right chevronNext"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PreviousNext Business Guide When in the last article of the last section it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="previousTitle"
+        id="previousTitleId"
+      >
+        <h6
+          className="previousTitle"
+        >
+          Previous
+        </h6>
+      </div>
+      <div />
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainer"
+        id="previousContainerId"
+      >
+        <a
+          className="previousnext-previous-url"
+          href="/business-guide/grow/native-american-owned-businesses-programs"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Native American-owned businesses
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-left chevronPrevious"
+        />
+      </div>
+      <div />
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;
+
+exports[`PreviousNext For Partners When in a middle article it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="previousTitle"
+        id="previousTitleId"
+      >
+        <h6
+          className="previousTitle"
+        >
+          Previous
+        </h6>
+      </div>
+      <div
+        className="nextTitle"
+        id="nextTitleDesktopId"
+      >
+        <h6
+          className="nextTitle"
+        >
+          Next
+        </h6>
+      </div>
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainer"
+        id="previousContainerId"
+      >
+        <a
+          className="previousnext-previous-url"
+          href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Operate as a 7(a) Lender
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-left chevronPrevious"
+        />
+      </div>
+      <div
+        className="nextContainer"
+        id="nextContainerDesktopId"
+      >
+        <a
+          className="previousnext-next-url"
+          href="/for-partners/lenders/7a-loans/training-and-courses"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Training and Courses
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-right chevronNext"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div
+      className="nextTitle"
+      id="nextTitleMobileId"
+    >
+      <h6
+        className="nextTitle"
+      >
+        Next
+      </h6>
+    </div>
+    <div
+      className="nextContainer"
+      id="nextContainerMobileId"
+    >
+      <a
+        className="previousnext-next-url"
+        href="/for-partners/lenders/7a-loans/training-and-courses"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          Training and Courses
+        </button>
+      </a>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right chevronNext"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PreviousNext For Partners When in the first article of a section it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="titleHide"
+      >
+        <h6
+          className="previousTitle"
+        >
+          No Previous Article
+        </h6>
+      </div>
+      <div
+        className="nextTitle"
+        id="nextTitleDesktopId"
+      >
+        <h6
+          className="nextTitle"
+        >
+          Next
+        </h6>
+      </div>
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainerHide"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          No previous article
+        </button>
+      </div>
+      <div
+        className="nextContainer"
+        id="nextContainerDesktopId"
+      >
+        <a
+          className="previousnext-next-url"
+          href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Operate as a 7(a) Lender
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-right chevronNext"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div
+      className="nextTitle"
+      id="nextTitleMobileId"
+    >
+      <h6
+        className="nextTitle"
+      >
+        Next
+      </h6>
+    </div>
+    <div
+      className="nextContainer"
+      id="nextContainerMobileId"
+    >
+      <a
+        className="previousnext-next-url"
+        href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
+      >
+        <button
+          className="SmallSecondaryButton  "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onClick={[Function]}
+        >
+          Operate as a 7(a) Lender
+        </button>
+      </a>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right chevronNext"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PreviousNext For Partners When in the last article of a section it renders properly 1`] = `
+<div
+  className="previousNextContainer"
+  id="previousNextSectionId"
+>
+  <div
+    className="desktop"
+    id="desktopDivId"
+  >
+    <div
+      className="prevNextTitleContainer"
+      id="prevNextTitleContainerId"
+    >
+      <div
+        className="previousTitle"
+        id="previousTitleId"
+      >
+        <h6
+          className="previousTitle"
+        >
+          Previous
+        </h6>
+      </div>
+      <div />
+    </div>
+    <div
+      className="prevNextButtonsContainer"
+      id="prevNextButtonsContainerId"
+    >
+      <div
+        className="previousContainer"
+        id="previousContainerId"
+      >
+        <a
+          className="previousnext-previous-url"
+          href="/for-partners/lenders/7a-loans/training-and-courses"
+        >
+          <button
+            className="SmallSecondaryButton  "
+            disabled={undefined}
+            formTarget="_self"
+            id={undefined}
+            onClick={[Function]}
+          >
+            Training and Courses
+          </button>
+        </a>
+        <i
+          aria-hidden="true"
+          className="fa fa-chevron-left chevronPrevious"
+        />
+      </div>
+      <div />
+    </div>
+  </div>
+  <div
+    className="mobile"
+    id="mobileDivId"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;
+
+exports[`PreviousNext Won't render without a lineage 1`] = `"received is not a function"`;

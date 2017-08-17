@@ -1,14 +1,14 @@
 /*global expect*/
 
-/*eslint-disable no-unused-vars*/
+/* eslint-disable no-unused-vars,no-undef */
 import React from "react";
 /*eslint-enable no-unused-vars*/
 import {SectionNav} from "client/components/organisms/section-nav/section-nav.jsx";
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
-import lineageBusinessGuide from "./section-nav-data/lineage-business-guide.json";
-import lineageForPartners from "./section-nav-data/lineage-for-partners.json";
+import lineageBusinessGuide from "../../test-data/lineage-business-guide.json";
+import lineageForPartners from "../../test-data/lineage-for-partners.json";
 
 describe("SectionNav", () => {
   describe("Business Guide", () => {
