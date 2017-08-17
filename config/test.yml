@@ -1,2 +1,5 @@
 googleAnalytics:
     enabled: false
+oca:
+    soap:
+        passwordDecryptionKey: test123test123test123test123

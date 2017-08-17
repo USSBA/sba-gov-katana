@@ -4,6 +4,7 @@ import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import emailConfirmation from "../models/email-confirmation.js";
 import lincPasswordUpdate from "../models/linc-password-update.js";
+import { generateOcaPassword, decryptPassword, encryptPassword } from "../util/password-manager.js";
 
 import moment from "moment";
 import _ from "lodash";
@@ -54,16 +55,13 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
     });
 }
 
-function generatePassword(length) {
-  const chars = "abcdefghkmnpqrstuvwxyzABCDEFGHKMNPQRSTUVWXYZ23456789!$#%";
-  return _.sampleSize(chars, length).join("");
-}
 
 function updateLincPassword(updateInfo, newPassword) {
   const newExpiry = moment().add(updateInfo.schedule * 60, "seconds").unix(); //eslint-disable-line no-magic-numbers
   return lincPasswordUpdate.update({
     expiry: newExpiry,
-    password: newPassword
+    password: newPassword,
+    encrypted: true
   }, {
     where: {
       id: updateInfo.id
@@ -86,17 +84,21 @@ function sendPasswordUpdateToOca(userName, password, newPassword) {
 function sendPasswordUpdateRequest() {
   return lincPasswordUpdate.findOne()
     .then((response) => {
-      if (moment().unix() >= response.expiry) {
-        const newPassword = generatePassword(12); //eslint-disable-line no-magic-numbers
-        return sendPasswordUpdateToOca(response.username, response.password, newPassword).then((result) => {
-          if (result.responseCode === "0" && result.comment === "Password changed.") { //eslint-disable-line no-magic-numbers
-            return updateLincPassword(response, newPassword);
-          }
-          console.log("Unable to reset or update OCA password.");
-          return Promise.reject("Unable to reset or update OCA password.");
-        });
+      if (response) {
+        if (moment().unix() >= response.expiry) {
+          const newPassword = encryptPassword(generateOcaPassword());
+          return sendPasswordUpdateToOca(response.username, response.password, newPassword).then((result) => {
+            if (result.responseCode === "0" && result.comment === "Password changed.") { //eslint-disable-line no-magic-numbers
+              return updateLincPassword(response, newPassword);
+            }
+            console.log("Unable to reset or update OCA password.");
+            return Promise.reject("Unable to reset or update OCA password.");
+          });
+        }
+        return Promise.resolve(null);
+      } else {
+        return Promise.reject("No password configuration found");
       }
-      return Promise.resolve(null);
     })
     .catch((error) => {
       console.log("EXCEPTION: Error building Password Update Request.");
@@ -114,16 +116,31 @@ function handleSoapResponse(soapResponse) {
   throw new Error("Unknown Response Code receieved from OCA.");
 }
 
+function getCredentials() {
+  return lincPasswordUpdate.findOne()
+    .then((resp) => {
+      if (resp && resp.username && resp.password) {
+        const password = resp.encrypted ? decryptPassword(resp.password) : resp.password;
+        return {
+          username: resp.username,
+          password: password
+        };
+      } else {
+        throw new Error("Unable to retrieve Username and Password from database.");
+      }
+    });
+}
+
 function sendDataToOca(lenderMatchRegistrationData) {
   const sbagovUserId = "Username";
   const dataAsXml = convertFormDataToXml(sbagovUserId, lenderMatchRegistrationData);
   console.log("OCA Service Data before SOAP", dataAsXml);
-  const promise = getEndPointUrl(config.get("oca.soap.wsdlUrl"))
+  const promise = getEndPointUrl(config.get("oca.soap.wsdlUrl")) // TODO execute endpoint retrieval and credentials retrieval in parallel
     .then(function(endpoint) {
-      return lincPasswordUpdate.findOne()
-        .then((resp) => {
-          if (resp.username && resp.password) {
-            const soapEnvelope = createSoapEnvelope(resp.username, resp.password, dataAsXml);
+      return getCredentials()
+        .then((credentials) => {
+          if (credentials && credentials.username && credentials.password) {
+            const soapEnvelope = createSoapEnvelope(credentials.username, credentials.password, dataAsXml);
             return sendLincSoapRequest(endpoint, soapEnvelope, true);
           }
           throw new Error("Unable to retrieve Username and Password from database.");
@@ -143,4 +160,4 @@ function sendDataToOca(lenderMatchRegistrationData) {
 
 
 
-export { sendDataToOca, handleSoapResponse, sendPasswordUpdateRequest, generatePassword };
+export { sendDataToOca, handleSoapResponse, sendPasswordUpdateRequest, getCredentials };

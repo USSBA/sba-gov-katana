@@ -1,8 +1,9 @@
 let sinon = require('sinon');
 import chai from "chai";
-import { handleSoapResponse } from "../../../../src/service/oca-service.js";
+import { handleSoapResponse, getCredentials } from "../../../../src/service/oca-service.js";
 import lenderMatchRegistration from "../../../../src/models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../../../../src/models/lender-match-soap-response.js";
+import lincPasswordUpdate from "../../../../src/models/linc-password-update.js";
 import emailConfirmation from "../../../../src/models/email-confirmation.js";
 
 describe('linc soap request test', function() {
@@ -85,5 +86,56 @@ describe('linc soap request test', function() {
     });
 
   });
+
+  describe("# getCredentials", () => {
+    let lincPasswordUpdateStub;
+
+    before(() => {
+      lincPasswordUpdateStub = sinon.stub(lincPasswordUpdate, "findOne");
+    })
+
+    afterEach(() => {
+      lincPasswordUpdateStub.reset();
+    })
+
+    after(() => {
+      lincPasswordUpdateStub.restore();
+    })
+
+    it("should retrieve credentials but not decrypt them if decrypt is false", (done) => {
+      lincPasswordUpdateStub.returns(Promise.resolve({
+        username: "lskywalker",
+        password: "thereisstillgoodinhim",
+        encrypted: false
+      }));
+      getCredentials()
+        .then((result) => {
+          result.should.deep.equal({
+            username: "lskywalker",
+            password: "thereisstillgoodinhim",
+          });
+        }).then(result => {
+        return done();
+      }).catch(done);
+    })
+
+    it("should retrieve credentials but not decrypt them if decrypt is true", (done) => {
+      lincPasswordUpdateStub.returns(Promise.resolve({
+        username: "lskywalker",
+        password: "2360ecbbde2a0e63269a199777d89df751127a16c2d706dc143aba443b6cd74535547e0043687ec98b2cd91cd2d945023bGNWlYXSqfTYylaxJvZK+skxBo0J8rpCFOILYg1JM4=",
+        encrypted: true
+      }));
+      getCredentials()
+        .then((result) => {
+          result.should.deep.equal({
+            username: "lskywalker",
+            password: "thereisstillgoodinhim",
+          });
+        }).then(result => {
+        return done();
+      }).catch(done);
+    })
+  })
+
 
 });
