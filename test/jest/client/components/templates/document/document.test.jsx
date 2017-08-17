@@ -14,7 +14,7 @@ jest.mock("client/services/client-config.js", function(){
 
 describe("Document", () => {
 
-	describe("Previous Versions", () => {
+	describe("All Versions", () => {
 
 		const mockDocumentData = {
 			"files": [{
@@ -39,7 +39,7 @@ describe("Document", () => {
 
 		test("properly maps files array members to subsequent li tags", () => {
 
-			expect(component.find(".previousVersionsList li")).toHaveLength(mockDocumentData.files.length);
+			expect(component.find(".allVersionsList li")).toHaveLength(mockDocumentData.files.length);
 
 		});
 
@@ -55,7 +55,7 @@ describe("Document", () => {
             mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
             mockHtml += `</a></li>`;
 
-			expect(component.find(".previousVersionsList li").at(fileIndex).html()).toBe(mockHtml);
+			expect(component.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
 
 		});
 
@@ -71,7 +71,7 @@ describe("Document", () => {
             mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
             mockHtml += `</a></li>`;
 
-			expect(component.find(".previousVersionsList li").at(fileIndex).html()).toBe(mockHtml);
+			expect(component.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
 
 		});
 
