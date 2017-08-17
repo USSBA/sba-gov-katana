@@ -91,6 +91,10 @@ function fetchTaxonomys() {
     .then(formatTaxonomys);
 }
 
+function fetchNotification() {
+  return fetchNodeById("3411").then(formatNode);
+}
+
 function convertUrlHost(urlStr) {
   const host = _.trimEnd(config.get("drupal8.contentUrl"), "/");
   const parsedUrl = url.parse(urlStr);

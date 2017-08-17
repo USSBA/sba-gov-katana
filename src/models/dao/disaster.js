@@ -32,13 +32,13 @@ function fetchVisibility() {
     });
 }
 
-
 function fetchDisasterFromDrupalDatabase() {
   return Promise.all([fetchDescription(), fetchVisibility()])
     .spread((description, visible) => {
       return {
         description: description,
-        visible: visible
+        //visible: visible
+        visible: true
       };
     });
 }
