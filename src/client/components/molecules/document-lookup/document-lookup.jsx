@@ -20,7 +20,7 @@ import DocumentCardCollection from "../../organisms/document-card-collection/doc
 
 
 const config = {
-	pageSize: 10
+	pageSize: 5
 };
 
 const createSlug = (str) => {
@@ -75,7 +75,8 @@ export class DocumentLookup extends React.Component {
 			documentActivity: queryParams.activity || "All",
 			sortBy: "Last Updated",
 			taxonomies: [],
-			pageNumber: 1
+			pageNumber: 1,
+			hasUserInteracted: false
 		};
 	}
 
@@ -103,6 +104,8 @@ export class DocumentLookup extends React.Component {
         if(this.hasQueryParams()) {
             this.submit();
         }
+
+        this.submit();
     }
 
 	componentWillReceiveProps(nextProps, ownProps) {
@@ -212,9 +215,19 @@ export class DocumentLookup extends React.Component {
 
 		if (event.keyCode === returnKeyCode) {
 
-			this.submit();
+			this.setState({hasUserInteracted: true}, () => {
+				this.submit();
+			});
 
 		}
+
+	}
+
+	handleClick() {
+
+		this.setState({hasUserInteracted: true}, () => {
+			this.submit();
+		});
 
 	}
 
@@ -274,10 +287,31 @@ export class DocumentLookup extends React.Component {
 	}
 
 	renderDocuments() {
-		
+
+		let result = "Loading...";
+		const {documents, pageNumber} = this.state;
+
+		if (!_.isEmpty(documents)) {
+
+			const start = ((pageNumber - 1) * config.pageSize);
+			const slice = documents.slice(start, start + config.pageSize);
+
+			result = <DocumentCardCollection cards={slice} />;
+
+		} else if (_.isEmpty(documents) && this.state.hasUserInteracted) {
+
+			result = (
+				<div className={styles.emptyDocuments}>
+					<div>Sorry, we couldn't find any documents matching that query.</div>
+				</div>
+			);
+
+		}
+
 		return (
+
 			<div className={styles.documentCardCollection}>
-				<DocumentCardCollection documents={this.state.documents} />
+				{result}
 			</div>
 		);
 
@@ -351,18 +385,17 @@ export class DocumentLookup extends React.Component {
 						</div>
 						{this.renderMultiSelects()}
 						<ApplyButton submit={() => {
-							this.submit();
+							this.handleClick();
 						}} />
 					</div>}
 				
 				</div>
 				
-				{documents.length > 0 && 
 				<div>
 					{this.renderPaginator()}
 					{this.renderDocuments()}
 					{this.renderPaginator()}
-				</div>}
+				</div>
 
 			</div>
 

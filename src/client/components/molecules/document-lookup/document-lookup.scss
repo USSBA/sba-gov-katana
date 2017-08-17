@@ -242,7 +242,7 @@
     color: #666;
 }
 
-.paginator{
+.paginator {
     margin-top: 15px;
     float: right;
     margin: 30px 30px 30px 0;
@@ -252,5 +252,14 @@
 .documentCardCollection {
 
     clear: both;
+
+}
+
+.emptyDocuments {
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 48px;
+    padding: 0 50px;
 
 }
