@@ -10,7 +10,7 @@ function get(resource, query) {
   const options = {
     url: "/api/content/" + resource + ".json",
     params: query,
-    baseURL: config.get("daisho.hostname") + ":" + config.get("daisho.port"),
+    baseURL: config.get("daisho.hostname") + (config.get("daisho.port") ? ":" + config.get("daisho.port"): "" ),
     headers: {
       "Accepts": "application/json"
     }
@@ -38,7 +38,7 @@ function del(resource) {
   const options = {
     method: "delete",
     url: "/api/content/" + resource + ".json",
-    baseURL: config.get("daisho.hostname") + ":" + config.get("daisho.port")
+    baseURL: config.get("daisho.hostname") + (config.get("daisho.port") ? ":" + config.get("daisho.port"): "" )
   };
   winston.info("Submitting request to ", options);
 
