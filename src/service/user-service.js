@@ -1,35 +1,7 @@
-import _ from "lodash";
-import { fetchUserRoles } from "../models/dao/user-roles.js";
-import Sessions from "../models/drupal-session.js";
-
+import { get } from "../models/dao/daisho-client.js";
 
 function isAdministrator(sessionId) {
-  return Sessions.findOne({
-    where: {
-      ssid: sessionId
-    }
-  })
-    .then((result) => {
-      if (result) {
-        return result.uid;
-      }
-      return 0;
-
-    })
-    .then(fetchUserRoles)
-    .then((rolesObjects) => {
-      return _.map(rolesObjects, "userRole");
-    })
-    .then((roles) => {
-      if (_.includes(roles, "administrator")) {
-        return true;
-      }
-      return false;
-
-    });
+  return get(sessionId + "/admin");
 }
 
-
-export default {
-  isAdministrator
-};
+export { isAdministrator };

@@ -53,8 +53,7 @@ app.use(function(req, res, next) {
     isUserLoggedIn: hasSessionCookie || false,
     googleAnalytics: config.get("googleAnalytics"),
     debug: config.get("developmentOptions.client.logging"),
-    govdelivery: config.get("govdelivery.popupEnabled"),
-    useTantoMenu: config.get("drupal8.useMenu")
+    govdelivery: config.get("govdelivery.popupEnabled")
   };
   req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
   next();
@@ -90,14 +89,17 @@ app.get("/api/content/counselors-redirect.json", function(req, res) {
 });
 
 import * as feedbackController from "./controllers/feedback-controller.js";
-import * as cacheController from "./controllers/cache.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
-app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
-app.get("/actions/clearCache", cacheController.clearCache);
-app.get("/actions/clearCache/contact", cacheController.clearContactCache);
-app.get("/actions/clearCache/document", cacheController.clearDocumentCache);
-app.delete("/cache", cacheController.clearCache);
 app.get("/api/content/feedback.csv", feedbackController.retrieveFeedback);
+app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
+
+import * as cacheController from "./controllers/cache.js";
+app.get("/actions/clearCache/collection/:type.json", cacheController.clearContentCollectionCacheByType);
+app.get("/actions/clearCache/:type/:id.json", cacheController.clearContentCacheById);
+app.get("/actions/clearCache/:type.json", cacheController.clearContentCacheByType);
+app.delete("/api/content/collection/:type.json", cacheController.clearContentCollectionCacheByType);
+app.delete("/api/content/:type/:id.json", cacheController.clearContentCacheById);
+app.delete("/api/content/:type.json", cacheController.clearContentCacheByType);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
 app.get("/api/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);

@@ -1,49 +1,41 @@
+import { del } from "../models/dao/daisho-client.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
-import cache from "memory-cache";
 
 
-function clearCache(req, res) {
-  console.log("Clearing the Cache (but not contacts or documents)");
-  const keys = cache.keys();
-  const keysWithoutContacts = _.filter(keys, (item) => {
-    return !item.startsWith("contact") && !item.startsWith("document");
+function deleteCache(resource, res) {
+  del(resource)
+    .then(() => {
+      res.status(HttpStatus.OK).send("Cache cleared");
+    }).catch(() => {
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Failed to clear the cache");
   });
 
-  keysWithoutContacts.forEach((key) => {
-    cache.del(key);
-    console.log("Cleared from cache", key);
-  });
-  res.status(HttpStatus.NO_CONTENT).send();
+}
+
+function clearContentCollectionCacheByType(req, res) {
+  if (req.params && req.params.type) {
+    deleteCache("collection/" + req.params.type, res);
+  } else {
+    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type or id");
+  }
+}
+
+function clearContentCacheById(req, res) {
+  if (req.params && req.params.type && req.params.id) {
+    deleteCache(req.params.type + "/" + req.params.id, res);
+  } else {
+    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing id");
+  }
 }
 
 
-
-function clearContactCache(req, res) {
-  console.log("Clearing the Contact Cache");
-  const keys = cache.keys();
-  const contactKeys = _.filter(keys, (item) => {
-    return item.startsWith("contact");
-  });
-  contactKeys.forEach((key) => {
-    cache.del(key);
-    console.log("Cleared from cache", key);
-  });
-  res.status(HttpStatus.NO_CONTENT).send();
+function clearContentCacheByType(req, res) {
+  if (req.params && req.params.type) {
+    deleteCache(req.params.type, res);
+  } else {
+    res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type or id");
+  }
 }
 
-
-function clearDocumentCache(req, res) {
-  console.log("Clearing the Document Cache");
-  const keys = cache.keys();
-  const contactKeys = _.filter(keys, (item) => {
-    return item.startsWith("document");
-  });
-  contactKeys.forEach((key) => {
-    cache.del(key);
-    console.log("Cleared from cache", key);
-  });
-  res.status(HttpStatus.NO_CONTENT).send();
-}
-
-export { clearCache, clearContactCache, clearDocumentCache };
+export { clearContentCollectionCacheByType, clearContentCacheById, clearContentCacheByType };

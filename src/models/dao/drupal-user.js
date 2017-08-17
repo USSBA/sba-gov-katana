@@ -1,19 +1,7 @@
-import { users } from "../drupal-users";
-
-function findDrupalUser(userId) {
-  return users.findOne({
-    where: {
-      uid: {
-        $eq: userId
-      }
-    }
-  });
-}
+import { get } from "./daisho-client.js";
 
 function fetchDrupalUserEmail(userId) {
-  return findDrupalUser(userId).then(function(user) {
-    return user.mail;
-  });
+  return get(userId + "/email");
 }
 
-export { findDrupalUser, fetchDrupalUserEmail };
+export { fetchDrupalUserEmail };

@@ -52,7 +52,7 @@ class DropdownMenu extends React.Component {
     let smallInverseCta = false;
     if (menuId === 0) {
       sizingStyle = styles.one;
-      smallInverseCta = true && clientConfig.useTantoMenu;
+      smallInverseCta = true;
     }
     if (menuId === 1) {
       sizingStyle = styles.two;
