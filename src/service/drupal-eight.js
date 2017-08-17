@@ -459,7 +459,7 @@ function makeNodeValueFormatter(typeName) {
     } else if (typeName === "document" && key === "relatedDocuments") {
       newValuePromise = fetchNestedNodes(value);
     } else if (typeName === "announcement" && key === "url") {
-        newValuePromise = Promise.resolve(extractConvertedUrl(value, "uri"));
+      newValuePromise = Promise.resolve(extractConvertedUrl(value, "uri"));
     } else if (value[0].target_type === "taxonomy_term") {
       if (key === "activitys" || key === "programs") { // Multiple
         newValuePromise = fetchFormattedTaxonomyNames(extractTargetIds(value));
