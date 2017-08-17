@@ -12,7 +12,8 @@ import CardCollection from "../organisms/card-collection/card-collection.jsx";
 import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
 import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
 import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
-import ButtonCta from "../molecules/button-cta/button-cta.jsx"
+import ButtonCta from "../molecules/button-cta/button-cta.jsx";
+import QuickLinks from "../molecules/quick-links/quick-links.jsx";
 
 function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
   let paragraphs = [];
@@ -60,6 +61,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
         paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>);
       } else if (item.type === "button") {
         paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title}/>)
+      } else if (item.type === "quickLinks") {
+        paragraph = (<QuickLinks />)
       }
     }
     return {type: paragraphType, paragraph: paragraph};

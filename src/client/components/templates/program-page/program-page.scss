@@ -45,3 +45,7 @@
 	 @include grid-column(12, $sba-grid-large);
 	 text-align: center;
 }
+
+.quickLinks {
+	@include grid-column(12, $desktop-0gutter);
+}
