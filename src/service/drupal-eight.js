@@ -170,4 +170,3 @@ function fetchArticles(queryParams) {
 
 
 
-export { fetchFormattedNode, fetchContacts, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles };
