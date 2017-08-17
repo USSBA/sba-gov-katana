@@ -8,7 +8,7 @@ class DocumentPage extends React.Component {
 
   render() {
     if (this.props.document) {
-      const previousVersionsList = this.props.document.files.map((file, index) => {
+      const allVersionsList = this.props.document.files.map((file, index) => {
 
         const versionMessage = file.version
           ? `Version ${file.version}`
@@ -21,17 +21,19 @@ class DocumentPage extends React.Component {
             <strong>|</strong>
             {effectiveDateMessage}.
             <a href={file.fileUrl} target="_blank">Download PDF
-              <i className="fa fa-file-pdf-o" aria-hidden="true"/></a>
+              <i className="fa fa-file-pdf-o" aria-hidden="true"/>
+            </a>
           </li>
         );
       });
+
       return (
         <div>
           <DocumentArticle data={this.props.document}/>
-          <div className={s.previousVersionsList}>
-            <h3>Previous versions</h3>
+          <div className={s.allVersionsList}>
+            <h3>All versions</h3>
             <ul>
-              {previousVersionsList}
+              {allVersionsList}
             </ul>
             <hr className={s.hr}/>
           </div>

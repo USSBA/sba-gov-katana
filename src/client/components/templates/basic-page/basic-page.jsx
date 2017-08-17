@@ -22,9 +22,14 @@ class BasicPage extends React.Component {
       displayMobileNav: false,
       currentPosition: "top"
     };
+    this.handleSectionNavigationEnter = this.handleSectionNavigationEnter.bind(this);
+    this.handleTopWaypointEnter = this.handleTopWaypointEnter.bind(this);
+    this.handleTopWaypointLeave = this.handleTopWaypointLeave.bind(this);
+    this.handleBackLinkClicked = this.handleBackLinkClicked.bind(this);
+    this.handleOverlap = this.handleOverlap.bind(this);
   }
 
-  componentWillMount() {}
+  // componentWillMount() {}
 
   makeSectionHeaders(paragraphData) {
     const sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
@@ -83,11 +88,12 @@ class BasicPage extends React.Component {
     }
   }
 
+  handleOverlap() {
+    this.setState({currentPosition: "bottom"});
+  }
+
   componentDidMount() {
-    const me = this;
-    listenForOverlap("#article-navigation-desktop", "#sba-footer", function() {
-      me.setState({currentPosition: "bottom"});
-    }, {listenOn: "scroll"});
+    listenForOverlap("#article-navigation-desktop", "#sba-footer", this.handleOverlap, {listenOn: "scroll"});
   }
 
   render() {
@@ -98,7 +104,7 @@ class BasicPage extends React.Component {
       : <div />;
 
     const sectionNavigation = this.props.lineage
-      ? (<SectionNav onTopEnter={this.handleSectionNavigationEnter.bind(this)} position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/>)
+      ? (<SectionNav onTopEnter={ this.handleSectionNavigationEnter } position={this.state.currentPosition} displayMobileNav={this.state.displayMobileNav} lineage={this.props.lineage}/>)
       : (
         <div />
       );
@@ -108,14 +114,14 @@ class BasicPage extends React.Component {
 
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
-        <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter.bind(this)}
-                  onLeave={this.handleTopWaypointLeave.bind(this)}/>
+        <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter}
+                  onLeave={this.handleTopWaypointLeave}/>
         <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
         <div className={`basicpage-mobilenav ${this.state.displayMobileNav
           ? styles.hideContainer
           : styles.container}`}>
           <div className={`basicpage-backlinkmobile ${styles.backLinkMobile}`}>
-            <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked.bind(this)}>Back to all topics</a>
+            <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked}>Back to all topics</a>
           </div>
           <div key={1} className={`basicpage-breadcrumb ${styles.breadcrumb}`}>{breadcrumbs}</div>
           <div className="basicpage-titlesection"><TitleSection key={2} gridClass={styles.titleSection}

@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] = `
+<div
+  className="sectionNav null null"
+  id="article-navigation-desktop"
+>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
+  <a
+    className="backLink"
+    href="/business-guide"
+    id="article-navigation-back-button-desktop"
+  >
+    Back to all topics
+  </a>
+  <span
+    id="article-navigation-title-desktop"
+  >
+    <h2>
+      Launch
+    </h2>
+    <h4>
+       your business
+    </h4>
+  </span>
+  <ul>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/pick-your-business-location-zoning-laws"
+        id="desktop-article-link-0"
+      >
+        Pick your business location
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop currentNavLink"
+        href="/business-guide/launch/choose-business-structure-types-chart"
+        id="desktop-article-link-1"
+      >
+        Choose a business structure
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/choose-your-business-name-register"
+        id="desktop-article-link-2"
+      >
+        Choose your business name
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/register-your-business-federal-state-agency"
+        id="desktop-article-link-3"
+      >
+        Register your business
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/get-federal-state-tax-id-number-ein"
+        id="desktop-article-link-4"
+      >
+        Get federal and state tax ID numbers
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/apply-for-licenses-permits-federal-state"
+        id="desktop-article-link-5"
+      >
+        Apply for licenses and permits
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/open-business-bank-account-fees-benefits"
+        id="desktop-article-link-6"
+      >
+        Open a business bank account
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/business-guide/launch/get-business-insurance-assets-liability"
+        id="desktop-article-link-7"
+      >
+        Get business insurance
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] = `
+<div
+  className="sectionNav null null"
+  id="article-navigation-desktop"
+>
+  <span
+    style={
+      Object {
+        "fontSize": 0,
+      }
+    }
+  />
+  <a
+    className="backLink"
+    href="/for-partners/lenders/7a-loans"
+    id="article-navigation-back-button-desktop"
+  >
+    Back to 7(a) Loans
+  </a>
+  <span
+    id="article-navigation-title-desktop"
+  >
+    <h3>
+      7(a) Loans
+    </h3>
+  </span>
+  <ul>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/for-partners/lenders/7a-loans/types-of-7a-loans"
+        id="desktop-article-link-0"
+      >
+        Types of 7(a) Loans
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
+        id="desktop-article-link-1"
+      >
+        Operate as a 7(a) Lender
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop currentNavLink"
+        href="/for-partners/lenders/7a-loans/secondary-markets"
+        id="desktop-article-link-2"
+      >
+        Secondary Markets
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/for-partners/lenders/7a-loans/training-and-courses"
+        id="desktop-article-link-3"
+      >
+        Training and Courses
+      </a>
+    </li>
+    <li>
+      <a
+        className="article-navigation-article-link-desktop "
+        href="/for-partners/lenders/7a-loans/terms-and-eligibility"
+        id="desktop-article-link-4"
+      >
+        Terms and Eligibility
+      </a>
+    </li>
+  </ul>
+</div>
+`;

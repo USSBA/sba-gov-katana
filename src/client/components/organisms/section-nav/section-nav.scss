@@ -2,7 +2,6 @@
   display: none;
 
   @include grid-media( $sba-grid-large) {
-    background-color: $byzantine;
     color: #fff;
     display: block;
     position: absolute;
@@ -10,6 +9,49 @@
   }
   @include grid-media($sba-grid-small){
     display: none;
+  }
+
+  a {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+    padding: 8px 30px 10px;
+    text-decoration: none;
+  }
+  a.currentNavLink {
+    font-weight: bold;
+  }
+  h2, h3 , h4 {
+    text-align: left;
+    padding: 0 30px;
+  }
+  h2{
+    margin-bottom: 0;
+  }
+  li {
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .backLink {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    margin-bottom: 20px;
+  }
+
+  a.backLink{
+    padding: 20px 30px 20px 55px;
+    position: relative;
+  }
+  .backLink:before {
+    content: "\f104";
+    font-family: FontAwesome;
+    font-size: 30px;
+    margin-right: 15px;
+    position: absolute;
+    top: 12px;
+    left: 30px;
   }
 }
 
@@ -23,152 +65,8 @@
   bottom: 518px;
 }
 
-.mobileSectionNav {
-    position: absolute;
-    height: 100%;
-    top: 0;
-    z-index: 100000000000;
-    width: 100%;
-}
-
-.sectionNav ul, .mobileSectionNav ul {
-  padding-bottom: 100px;
-  @include grid-media($sba-grid-large) {
-    padding-bottom: 0;
-  }
-}
-
-.backLink, .sectionNav h2, .sectionNav h4 {
-  padding: 0 30px;
-}
-
-.sectionNav h2 {
-  text-align: left;
-  text-transform: capitalize;
-}
-
-.sectionNav h4 {
-  text-align: left;
-  text-transform: lowercase;
-  font-weight: 700 !important;
-}
-
-.mobileSectionNav h2 {
-  text-align: left;
-  text-transform: capitalize;
-}
-
-.mobileSectionNav h4 {
-  text-align: left;
-  text-transform: lowercase;
-}
-
-.sectionNav h2{
-  margin-bottom: 0;
-}
-
-.sectionNav h4, .mobileSectionNav h4{
-  font-weight: 500;
-  margin-bottom: .8em;
-}
-
-.sectionNav a, .mobileSectionNav a {
-  display: block;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.2;
-  padding: 8px 30px 10px;
-  text-decoration: none;
-}
-
-.mobileSectionNav h2{
-  margin-bottom: 0;
-  font-size: 34px;
-}
-
-.mobileSectionNav h4{
-  margin-bottom: 0;
-  font-weight: 900;
-  font-size: 21px;
-}
-
-.backLink {
-   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-   margin-bottom: 20px;
- }
-
-a.backLink{
-  padding: 20px 30px 20px 55px;
-  position: relative;
-}
-
-a.mobileBackLink{
-  padding: 20px 30px 20px 55px;
-  position: relative;
-}
-
-.backLink:before {
-  content: "\f104";
-  font-family: FontAwesome;
-  font-size: 30px;
-  margin-right: 15px;
-  position: absolute;
-  top: 12px;
-  left: 30px;
-}
-
-.mobileBackLink:before {
-  color: #fff;
-  content: "\f104";
-  font-family: FontAwesome;
-  font-size: 30px;
-  margin-right: 15px;
-  position: absolute;
-  top: 26px;
-  left: 30px;
-}
-
-.sectionNav img {
-   display: block;
-   margin: 0 auto 20px;
-   width: 105px;
- }
-
-.mobileSectionNav img {
-  //display: block;
-  margin-right: 15px;
-  width: 50px;
-  float: left;
-}
-
-.mobileSectionNav span {
-  //display: block;
-
-
-}
-
-.sectionNav li, .mobileSectionNav li{
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.sectionNav li:last-child, .mobileSectionNav li:last-child{
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.sectionNav li:hover + li{
-  border-top: 1px solid $byzantine;
-}
-
 .animateLeftNav{
   animation: slideNavIn 3s forwards;
-}
-
-.mobileSectionNav{
-  background-color: $byzantine;
-  color: #fff;
-  @include grid-media( $sba-grid-large) {
-    display: none;
-  }
 }
 
 @keyframes slideNavIn {
@@ -176,25 +74,31 @@ a.mobileBackLink{
   100% { transform: translateX(0%); }
 }
 
-@include theme(sba-blue, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(byzantine, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(money-green, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(cobalt-blue, '.mobileSectionNav h4, .mobileSectionNav h2, .mobileSectionNav li a, .sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+$section-nav-color-map: (
+        "sba-blue": $sba-blue-dark,
+        "byzantine": $byzantine,
+        "money-green": $money-green-dark,
+        "cobalt-blue": $cobalt-blue
+);
+$section-nav-dark-color-map: (
+        "sba-blue": $sba-blue-darkest,
+        "byzantine": $byzantine-dark,
+        "money-green": $money-green-darkest,
+        "cobalt-blue": $cobalt-blue-dark
+);
 
-@include theme-hover(sba-blue, '.mobileSectionNav li a, .sectionNav li a', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.mobileSectionNav li a, .sectionNav li a', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.mobileSectionNav li a, .sectionNav li a', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.mobileSectionNav li a, .sectionNav li a', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
+@each $name, $value in $section-nav-color-map {
+  @include theme($name, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
+  @include theme($name, '.sectionNav', $value, null, null);
+}
 
-
-@include theme-active(sba-blue, '.mobileSectionNav li a, .sectionNav li a', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-active(byzantine, '.mobileSectionNav li a, .sectionNav li a', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-active(money-green, '.mobileSectionNav li a, .sectionNav li a', $money-green-dark, #fff, $money-green-dark);
-@include theme-active(cobalt-blue, '.mobileSectionNav li a, .sectionNav li a', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
-
-
-
-@include theme-hover(sba-blue, '.sectionNav li, .backLink', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.sectionNav li, .backLink', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.sectionNav li, .backLink', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.sectionNav li, .backLink', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
+@each $name, $value in $section-nav-dark-color-map {
+  @include theme($name, '.currentNavLink', $value, #fff, $value);
+  @include theme-hover($name, ".sectionNav li a, .sectionNav li, .backLink", $value, #fff, $value);
+  @include theme-active($name, '.sectionNav li a', $value, #fff, $value);
+  :global(.#{$name}) {
+    .sectionNav li:hover + li {
+      border-top: 1px solid $value;
+    }
+  }
+}

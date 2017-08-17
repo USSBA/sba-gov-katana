@@ -149,6 +149,7 @@ function fetchTaxonomyVocabulary(queryParams) {
             return _.includes(names, item.name);
           });
         });
+
     });
 
 }

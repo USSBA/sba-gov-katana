@@ -11,7 +11,7 @@ import { bindActionCreators } from "redux";
 import * as NavigationActions from "../../../actions/navigation.js";
 import queryString from "querystring";
 
-class DocumentArticle extends React.Component {
+export class DocumentArticle extends React.Component {
 
   getNewestFile() {
     return this.props.data.files
@@ -89,6 +89,9 @@ class DocumentArticle extends React.Component {
 function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(NavigationActions, dispatch)};
 }
+
 export default connect(null, mapDispatchToProps)(
   DocumentArticle
 );
+
+

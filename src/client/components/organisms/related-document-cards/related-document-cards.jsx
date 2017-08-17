@@ -69,7 +69,7 @@ class RelatedDocumentCards extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.sortedDocuments ? <div><h2 className={s.title}>Related documents</h2>{this.renderRelatedDocumentSections()}</div> : <div></div>}
+				{!_.isEmpty(this.state.sortedDocuments) ? <div><h2 className={s.title}>Related documents</h2>{this.renderRelatedDocumentSections()}</div> : <div></div>}
 			</div>
 		);
 	}
