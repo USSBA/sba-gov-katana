@@ -215,7 +215,7 @@ export class DocumentLookup extends React.Component {
 
 		if (event.keyCode === returnKeyCode) {
 
-			this.setState({hasUserInteracted: true}, () => {
+			this.setState({documents: []}, () => {
 				this.submit();
 			});
 
@@ -225,7 +225,7 @@ export class DocumentLookup extends React.Component {
 
 	handleClick() {
 
-		this.setState({hasUserInteracted: true}, () => {
+		this.setState({documents: []}, () => {
 			this.submit();
 		});
 
@@ -405,7 +405,7 @@ export class DocumentLookup extends React.Component {
 }
 
 DocumentLookup.defaultProps = {
-	documents: {},
+	documents: [],
 	searchTerm: "",
 	documentType: "All",
 	program: "All",
