@@ -324,17 +324,27 @@ export class DocumentLookup extends React.Component {
 			pageNumber
 		} = this.state;
 
-		return (
-			<div className={styles.paginator}>
-				<Paginator
-					pageNumber={pageNumber}
-					pageSize={config.pageSize}
-					total={documents.length}
-					onBack={this.handleBack.bind(this)}
-					onForward={this.handleForward.bind(this)}
-				/>
-			</div>
-		);
+		let result = <div />;
+
+		if (!_.isEmpty(documents)) {
+			
+			result = (
+
+				<div className={styles.paginator}>
+					<Paginator
+						pageNumber={pageNumber}
+						pageSize={config.pageSize}
+						total={documents.length}
+						onBack={this.handleBack.bind(this)}
+						onForward={this.handleForward.bind(this)}
+					/>
+				</div>
+
+			);
+
+		}
+
+		return result;
 	}
 
 	handleBack() {
