@@ -21,6 +21,9 @@ const lincPasswordUpdate = nonDrupal.define("lincPasswordUpdate", {
   },
   schedule: {
     type: Sequelize.INTEGER
+  },
+  encrypted: {
+    type: Sequelize.BOOLEAN
   }
 
 }, {

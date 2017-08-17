@@ -10,22 +10,6 @@ import lincPasswordUpdate from "../../../../src/models/linc-password-update.js";
 
 describe('linc soap password update request test', function() {
 
-  describe('password generator test', function() {
-
-    it('should return a password equal in length to length', function() {
-      let pwdLength = 12;
-      let retPwd = generatePassword(pwdLength);
-      (retPwd.length).should.equal(pwdLength);
-    });
-
-    it('should return a password containing only alphanumeric characters', function() {
-      let pwdLength = 12;
-      let retPwd = generatePassword(pwdLength);
-      retPwd.should.match(/^[abcdefghkmnpqrstuvwxyzABCDEFGHKMNPQRSTUVWXYZ23456789!$#%]*$/);
-    });
-
-  });
-
   describe('response handling tests', function() {
     let findOneSuccessfulStub,
       getEndPointUrlStub,
