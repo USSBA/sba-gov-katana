@@ -101,7 +101,7 @@ class DocumentCard extends React.Component {
 }
 
 DocumentCard.propTypes = {
-  showBorder: React.PropTypes.boolean
+  showBorder: React.PropTypes.bool
 };
 
 DocumentCard.defaultProps = {
