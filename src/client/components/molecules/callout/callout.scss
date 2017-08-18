@@ -47,14 +47,17 @@
 	}
 }
 
+$buttonPadding: 15px;
+
 .noFloat {
 	float: none;
+	margin-left: -#{$buttonPadding}; // This prevents the buttons from becoming off-centered
 }
 
 .button > button{
 	margin-bottom: 10px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-left: $buttonPadding;
+	margin-right: $buttonPadding;
 	@include grid-media($sba-grid-small){
 		width: 100%;
 	}
