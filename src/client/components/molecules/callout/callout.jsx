@@ -43,3 +43,7 @@ class Callout extends React.Component {
 
  }
 export default Callout;
+
+Callout.defaultProps = {
+  buttons: []
+};
