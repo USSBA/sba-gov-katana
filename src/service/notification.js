@@ -10,7 +10,7 @@ function fetchNotification(req, res) {
         - if end date is greater than today's date
     	    AND if start date is less than or equal to today's date
      3. return the first item in the activeAnnouncements array
-	*/
+	   */
 
     // 1. sort announcements by expiration date in reverse-chronological order
     allAnnouncements.sort((__a, __b) => {

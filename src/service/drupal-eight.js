@@ -140,10 +140,6 @@ function sortDocuments(params, docs) {
   );
 }
 
-
-
-
-
 function fetchTaxonomyVocabulary(queryParams) {
   return get("collection/taxonomys")
     .then((data) => {
@@ -166,7 +162,9 @@ function fetchArticles(queryParams) {
   return get("collection/articles", queryParams);
 }
 
+function fetchAnnouncements() {
+  return get("collection/announcement");
+}
 
-
-
+export { fetchFormattedNode, fetchContacts, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles, fetchAnnouncements };
 

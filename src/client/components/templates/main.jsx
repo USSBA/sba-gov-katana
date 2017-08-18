@@ -11,6 +11,46 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import styles from '../organisms/header-footer/header/header.scss';
 
+const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePresent) => {
+
+  let boolean;
+
+  // if location pathname MATCHES a whitelabelurl
+    // show NotificationBar (if cookie is NOT set)
+  // else split whiteLabelUrl by slash-asterisk ("/*")
+    // if contains asterisk
+      // split whiteLabelUrl by slash
+      // split location pathname by slash
+      // if whiteLabelUrl[0] is equal to location pathname[0]
+        // show NotificationBar (if cookie is NOT set)
+
+  if (listOfUrls) {
+    
+    for (let index = 0; index < listOfUrls.length; index++) {
+      
+      const whiteLabeledUrl = listOfUrls[index];
+      
+      if (whiteLabeledUrl === currentPathname) {
+      
+        boolean = !isCookiePresent;
+        break;
+      
+      } else if (whiteLabeledUrl.split("/*")[0].split("/")[1] === currentPathname.split("/")[1]) {
+
+        boolean = !isCookiePresent;
+        break;
+
+      }
+
+    }
+
+  }
+
+  return boolean;
+
+};
+
+
 class Main extends React.Component {
   constructor(props) {
     super();
@@ -79,12 +119,19 @@ class Main extends React.Component {
     const {
       notificationDescription,
       notificationUrl,
-      notificationWhiteLabelUrls
+      notificationWhiteLabelUrls,
+      location: {
+        pathname
+      }
     } = this.props;
 
     // determine visibility
 
-    let showNotificationBar;
+    const showNotificationBar = shouldNotificationBarBeVisible(
+      notificationWhiteLabelUrls,
+      pathname,
+      this.state.notificationBarHidingCookieIsPresent
+    );
 
     // if location pathname MATCHES a whitelabelurl
       // show NotificationBar
@@ -95,6 +142,7 @@ class Main extends React.Component {
         // if whiteLabelUrl[0] is equal to location pathname[0]
           // show NotificationBar
 
+    /*
     if (notificationWhiteLabelUrls) {
       
       for (let index = 0; index < notificationWhiteLabelUrls.length; index++) {
@@ -116,6 +164,7 @@ class Main extends React.Component {
       }
 
     }
+    */
 
     return (
       
