@@ -20,7 +20,8 @@ import DocumentCardCollection from "../../organisms/document-card-collection/doc
 
 
 const config = {
-	pageSize: 5
+	pageSize: 5,
+	originalState: {}
 };
 
 const createSlug = (str) => {
@@ -55,7 +56,7 @@ const findTaxonomy = (arr, name) => {
 
 };
 
-export class DocumentLookup extends React.Component {
+export class DocumentLookup extends React.PureComponent {
 
 	constructor(ownProps) {
 
@@ -68,7 +69,8 @@ export class DocumentLookup extends React.Component {
         }
 
 		this.state = {
-			documents: ownProps.items,
+			documents: undefined,
+			documentsCount: 0,
 			searchTerm: queryParams.search || "",
 			documentType: queryParams.type || "All",
 			program: queryParams.program || "All",
@@ -76,8 +78,20 @@ export class DocumentLookup extends React.Component {
 			sortBy: "Last Updated",
 			taxonomies: [],
 			pageNumber: 1,
-			hasUserInteracted: false
+			isFetching: false
 		};
+
+		config.originalState = Object.assign({}, {
+			documents:this.state.documents,
+			documentsCount: this.state.documentsCount,
+			searchTerm: "",
+			documentType: "",
+			program: "",
+			documentActivity: "",
+			sortBy: this.state.sortBy,
+			pageNumber: this.state.pageNumber,
+			isFetching: this.state.isFetching
+		});
 	}
 
     hasQueryParams() {
@@ -140,7 +154,9 @@ export class DocumentLookup extends React.Component {
 		}
 
 		if (nextProps.documents !== undefined) {
-			updatedProps.documents = nextProps.documents;
+			updatedProps.documents = nextProps.documents.items;
+			updatedProps.documentsCount = nextProps.documents.count;
+			updatedProps.isFetching = false;
 		}
 
 
@@ -215,7 +231,7 @@ export class DocumentLookup extends React.Component {
 
 		if (event.keyCode === returnKeyCode) {
 
-			this.setState({documents: []}, () => {
+			this.setState({documents: undefined}, () => {
 				this.submit();
 			});
 
@@ -225,7 +241,7 @@ export class DocumentLookup extends React.Component {
 
 	handleClick() {
 
-		this.setState({documents: []}, () => {
+		this.setState({documents: undefined}, () => {
 			this.submit();
 		});
 
@@ -233,49 +249,55 @@ export class DocumentLookup extends React.Component {
 
 	submit() {
 
-		const {
-			searchTerm:search,
-			documentType:type,
-			program,
-			documentActivity:activity,
-			sortBy
-		} = this.state;
+		this.setState({isFetching: true}, () => {
 
-		const setAllToEmptyString = (str) => {
-			return str === "All" ? "all" : str;
-		};
+			const {
+				searchTerm:search,
+				documentType:type,
+				program,
+				documentActivity:activity,
+				sortBy
+			} = this.state;
 
+			const setAllToEmptyString = (str) => {
+				return str === "All" ? "all" : str;
+			};
 
-		const data = {
-			search,
-			type: setAllToEmptyString(type),
-			program: setAllToEmptyString(program),
-			activity: setAllToEmptyString(activity),
-			sortBy,
-			start: 0,
-			end: 10
-		};
+			const start = ((this.state.pageNumber - 1) * config.pageSize);
+			const end = start + config.pageSize;
 
-		// fetch documents from server
-		// prop:string, type:string, queryArgs:object
+			const data = {
+				search,
+				type: setAllToEmptyString(type),
+				program: setAllToEmptyString(program),
+				activity: setAllToEmptyString(activity),
+				sortBy,
+				start,
+				end
+			};
 
-		this.props.actions.fetchContentIfNeeded(
-			"documents",
-			"documents",
-			data);
+			// fetch documents from server
+			// prop:string, type:string, queryArgs:object
 
-		this.props.afterChange(
-				"document-lookup",
-				"Filter Status : " + JSON.stringify(pick(this.state,
-					[
-						"documentType",
-						"program",
-						"documentActivity",
-						"sortBy"
-					])
-				),
-			null
-		);
+			this.props.actions.fetchContentIfNeeded(
+				"documents",
+				"documents",
+				data);
+
+			this.props.afterChange(
+					"document-lookup",
+					"Filter Status : " + JSON.stringify(pick(this.state,
+						[
+							"documentType",
+							"program",
+							"documentActivity",
+							"sortBy"
+						])
+					),
+				null
+			);
+
+		});
 	}
 
 	updateSearchTerm(event) {
@@ -289,20 +311,18 @@ export class DocumentLookup extends React.Component {
 	renderDocuments() {
 
 		let result = "Loading...";
-		const {documents, pageNumber} = this.state;
+		const {documents, pageNumber, isFetching} = this.state;
 
 		if (!_.isEmpty(documents)) {
 
-			const start = ((pageNumber - 1) * config.pageSize);
-			const slice = documents.slice(start, start + config.pageSize);
+			result = <DocumentCardCollection cards={documents} />;
 
-			result = <DocumentCardCollection cards={slice} />;
-
-		} else if (_.isEmpty(documents) && this.state.hasUserInteracted) {
+		} else if (documents !== undefined && !isFetching) {
 
 			result = (
 				<div className={styles.emptyDocuments}>
-					<div>Sorry, we couldn't find any documents matching that query.</div>
+					<p className={styles.emptyDocumentsMessage}>Sorry, we couldn't find any documents matching that query.</p>
+					<p><a onClick={this.reset.bind(this)}>Clear all search filters</a></p>
 				</div>
 			);
 
@@ -317,10 +337,19 @@ export class DocumentLookup extends React.Component {
 
 	}
 
+	reset() {
+
+		this.setState(config.originalState, () => {
+			this.submit();
+		});
+
+	}
+
 	renderPaginator() {
 
 		const {
 			documents,
+			documentsCount,
 			pageNumber
 		} = this.state;
 
@@ -334,7 +363,7 @@ export class DocumentLookup extends React.Component {
 					<Paginator
 						pageNumber={pageNumber}
 						pageSize={config.pageSize}
-						total={documents.length}
+						total={documentsCount}
 						onBack={this.handleBack.bind(this)}
 						onForward={this.handleForward.bind(this)}
 					/>
@@ -348,20 +377,25 @@ export class DocumentLookup extends React.Component {
 	}
 
 	handleBack() {
+
 		this.setState({
 			pageNumber: Math.max(1, this.state.pageNumber - 1)
+		}, () => {
+			this.submit();
 		});
 	}
 
 	handleForward() {
 		
 		const {
-			documents,
+			documentsCount,
 			pageNumber
 		} = this.state;
 
 		this.setState({
-			pageNumber: Math.min(Math.max(1,Math.ceil(documents.length / config.pageSize)), pageNumber + 1)
+			pageNumber: Math.min(Math.max(1,Math.ceil(documentsCount / config.pageSize)), pageNumber + 1)
+		}, () => {
+			this.submit();
 		});
 	}
 
@@ -415,7 +449,7 @@ export class DocumentLookup extends React.Component {
 }
 
 DocumentLookup.defaultProps = {
-	documents: [],
+	documents: undefined,
 	searchTerm: "",
 	documentType: "All",
 	program: "All",

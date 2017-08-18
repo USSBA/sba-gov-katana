@@ -258,8 +258,20 @@
 .emptyDocuments {
 
     text-align: center;
-    font-weight: bold;
-    font-size: 48px;
     padding: 0 50px;
 
+    p {
+        margin: 20px 0;
+    }
+
+    .emptyDocumentsMessage {
+        font-weight: bold;
+        font-size: 38px;  
+    }
+
+    a {
+        cursor: pointer;
+    }
+
 }
+
