@@ -41,11 +41,17 @@ export class DocumentArticle extends React.Component {
     const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
       const newestFile = this.getNewestFile()
+      let documentTypeString = "Memo";
+      switch(data.type){
+          case "document" : documentTypeString = data.documentIdType; break;
+          case "article" : documentTypeString = data.category ? data.category[0] : "UNK";break;
+          default: documentTypeString = "UNK"
+      }
       return (
         <div className={"document-article " + s.page}>
-          <DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
+          <DocumentType type={documentTypeString} number={data.documentIdNumber}/>
           <h1 className={"document-article-title " + s.title}>{data.title}</h1>
-          <p className={s.dates}> 
+          <p className={s.dates}>
             {data.updated ? <span className={s.date}>Last Updated {moment.unix(data.updated).format('MMM D, YYYY')}</span> : null}
             {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
             {newestFile.expirationDate ? <span className={s.date}>Expiration {this.formatDate(newestFile.expirationDate)}</span> : null}
@@ -93,5 +99,3 @@ function mapDispatchToProps(dispatch) {
 export default connect(null, mapDispatchToProps)(
   DocumentArticle
 );
-
-

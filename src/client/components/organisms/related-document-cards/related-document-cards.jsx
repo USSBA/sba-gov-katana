@@ -20,7 +20,7 @@ class RelatedDocumentCards extends React.Component {
 	}
 
 	sortRelatedDocuments() {
-		let relatedDocuments = this.props.documentObj.relatedDocuments;
+		let relatedDocuments = this.props.data.relatedDocuments;
 		if(relatedDocuments){
 			let sortedAndFilteredDocuments = {};
 			_.uniq(
@@ -45,7 +45,6 @@ class RelatedDocumentCards extends React.Component {
 
 	renderRelatedDocumentSections() {
 		let sortedDouments = this.state.sortedDocuments;
-		console.log("sortedDouments", sortedDouments);
 		return _.keys(this.state.sortedDocuments).sort().map((documentType, index) => {
 			let documents = sortedDouments[documentType];
 			return (
