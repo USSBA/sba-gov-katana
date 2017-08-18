@@ -20,7 +20,7 @@ import DocumentCardCollection from "../../organisms/document-card-collection/doc
 
 
 const config = {
-	pageSize: 5,
+	pageSize: 30,
 	originalState: {}
 };
 
@@ -231,7 +231,10 @@ export class DocumentLookup extends React.PureComponent {
 
 		if (event.keyCode === returnKeyCode) {
 
-			this.setState({documents: undefined}, () => {
+			this.setState({
+				documents: undefined,
+				pageNumber: 1
+			}, () => {
 				this.submit();
 			});
 
@@ -241,7 +244,10 @@ export class DocumentLookup extends React.PureComponent {
 
 	handleClick() {
 
-		this.setState({documents: undefined}, () => {
+		this.setState({
+			documents: undefined,
+			pageNumber: 1
+		}, () => {
 			this.submit();
 		});
 
