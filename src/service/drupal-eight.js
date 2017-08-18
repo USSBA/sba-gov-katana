@@ -101,10 +101,11 @@ function filterAndSortDocuments(params, docs) {
 /* eslint-disable complexity */
 function filterDocuments(params, docs) {
 
-  return docs.filter((doc) => {
+  return docs.filter((doc, index) => {
+
     const matchesUrl = params.url === "all" || doc.url === params.url;
-    const matchesActivity = params.activity === "all" || (doc.activitys.hasOwnProperty("includes") && doc.activitys.includes(params.activity));
-    const matchesProgram = params.program === "all" || doc.programs.includes(params.program);
+    const matchesActivity = params.activity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
+    const matchesProgram = params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
     return (
       (params.type === "all" || doc.documentIdType === params.type) &&
       (matchesProgram) &&
