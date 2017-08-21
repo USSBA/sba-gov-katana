@@ -41,11 +41,24 @@ export class DocumentArticle extends React.Component {
     const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
       const newestFile = this.getNewestFile()
+<<<<<<< Updated upstream
       return (
         <div className={"document-article " + s.page}>
           <DocumentType type={data.documentIdType} number={data.documentIdNumber}/>
           <h1 className={"document-article-title " + s.title}>{data.title}</h1>
           <p className={s.dates}> 
+=======
+      let documentTypeString = null;
+      switch(data.type){
+          case "document" : documentTypeString = data.documentIdType; break;
+          default: documentTypeString = null; break;
+      }
+      return (
+        <div className={"document-article " + s.page}>
+          {documentTypeString ? <DocumentType type={documentTypeString} number={data.documentIdNumber}/> : undefined}
+          <h1 className={"document-article-title " + s.title + " " + (documentTypeString? s.marginTop:"")}>{data.title}</h1>
+          <p className={s.dates}>
+>>>>>>> Stashed changes
             {data.updated ? <span className={s.date}>Last Updated {moment.unix(data.updated).format('MMM D, YYYY')}</span> : null}
             {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
             {newestFile.expirationDate ? <span className={s.date}>Expiration {this.formatDate(newestFile.expirationDate)}</span> : null}
