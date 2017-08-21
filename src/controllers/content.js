@@ -2,6 +2,7 @@ import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from "../util/dr
 import { fetchDisasterFromDrupalDatabase } from "../models/dao/disaster.js";
 import { fetchMainMenu } from "../models/dao/main-menu.js";
 import { fetchFormattedNode, fetchContacts, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles } from "../service/drupal-eight.js";
+import { fetchNotification } from "../service/notification.js";
 import HttpStatus from "http-status-codes";
 import _ from "lodash";
 import querystring from "querystring";
@@ -20,7 +21,8 @@ const fetchContentTypeFunctions = {
   counsellorCta: fetchCounsellorCta,
   documents: fetchDocuments,
   articles: fetchArticles,
-  taxonomyVocabulary: fetchTaxonomyVocabulary
+  taxonomyVocabulary: fetchTaxonomyVocabulary,
+  notification: fetchNotification
 };
 
 function fetchContentById(req, res) {
