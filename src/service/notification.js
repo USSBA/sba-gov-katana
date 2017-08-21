@@ -50,8 +50,8 @@ function fetchNotification(req, res) {
     let activeAnnouncment;
 
     // 3. return the first active announcement
-      // if activeAnnouncements array length is greater than 0
-        // return first active announcement
+    // if activeAnnouncements array length is greater than 0
+    // return first active announcement
 
     if (activeAnnouncements.length > 0) {
       activeAnnouncment = activeAnnouncements[0];
