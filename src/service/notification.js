@@ -43,7 +43,7 @@ function fetchNotification(req, res) {
 
       const today = new Date();
 
-      return (today < new Date(announcement.expiration) && today > new Date(announcement.start));
+      return (today < new Date(announcement.expiration) && today >= new Date(announcement.start));
 
     });
 
