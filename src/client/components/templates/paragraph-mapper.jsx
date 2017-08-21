@@ -62,7 +62,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
       } else if (item.type === "button") {
         paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title}/>)
       } else if (item.type === "quickLinks") {
-        paragraph = (<QuickLinks />)
+        console.log(item)
+        paragraph = (<QuickLinks data={item}/>)
       }
     }
     return {type: paragraphType, paragraph: paragraph};
