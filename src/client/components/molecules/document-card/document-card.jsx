@@ -71,8 +71,9 @@ class DocumentCard extends React.Component {
           idType: "UNK",
           number: "UNK"
         };
+
       return (
-        <div className={"document-card-container " + s.container}>
+        <div className={"document-card-container " + (this.props.showBorder ? " " + s.container : "")}>
           <div>
             <div className={s.documentTypeContainer}>
               <DocumentType className={s.documentType} type={doc.documentIdType} number={doc.documentIdNumber}/>
@@ -99,6 +100,12 @@ class DocumentCard extends React.Component {
   }
 }
 
-DocumentCard.propTypes = {};
+DocumentCard.propTypes = {
+  showBorder: React.PropTypes.bool
+};
+
+DocumentCard.defaultProps = {
+  showBorder: true
+};
 
 export default DocumentCard;

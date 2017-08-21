@@ -3,14 +3,26 @@ import {pick} from "lodash";
 import _ from "lodash";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import querystring from 'querystring';
+import querystring from "querystring";
 
 import * as ContentActions from "../../../actions/content.js";
-import s from "./document-lookup.scss";
-import SmallInverseSecondaryButton from "../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx";
-import ApplyButton from "../../atoms/apply-button/apply-button.jsx";
-import {Multiselect, TextInput, SearchIcon} from "../../atoms";
-import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx"
+import styles from "./document-lookup.scss";
+
+import {
+	ApplyButton,
+	Multiselect,
+	TextInput,
+	SearchIcon,
+	SmallInverseSecondaryButton
+} from "../../atoms";
+import {Paginator} from "../../molecules/";
+import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
+
+
+const config = {
+	pageSize: 30,
+	originalState: {}
+};
 
 const createSlug = (str) => {
 
@@ -44,27 +56,48 @@ const findTaxonomy = (arr, name) => {
 
 };
 
-class DocumentLookup extends React.Component {
+export class DocumentLookup extends React.PureComponent {
 
 	constructor(ownProps) {
+
 		super();
+
         let queryParams = {};
-        if(window.location.search && window.location.search !== ""){
-            queryParams = querystring.decode(window.location.search.replace("?",""));
+        const {search} = window.location;
+        if(search && search !== "") {
+            queryParams = querystring.decode(search.replace("?",""));
         }
+
 		this.state = {
-			documents: ownProps.items,
+			documents: undefined,
+			documentsCount: 0,
 			searchTerm: queryParams.search || "",
 			documentType: queryParams.type || "All",
 			program: queryParams.program || "All",
 			documentActivity: queryParams.activity || "All",
 			sortBy: "Last Updated",
-			taxonomies: []
+			taxonomies: [],
+			pageNumber: 1,
+			isFetching: false
 		};
+
+		config.originalState = Object.assign({}, {
+			documents:this.state.documents,
+			documentsCount: this.state.documentsCount,
+			searchTerm: "",
+			documentType: "",
+			program: "",
+			documentActivity: "",
+			sortBy: this.state.sortBy,
+			pageNumber: this.state.pageNumber,
+			isFetching: this.state.isFetching
+		});
 	}
 
-    hasQueryParams(){
+    hasQueryParams() {
+
         return window.location.search && window.location.search !== "";
+
     }
 
 	componentWillMount() {
@@ -80,10 +113,13 @@ class DocumentLookup extends React.Component {
 
 	}
 
-    componentDidMount(){
-        if(this.hasQueryParams()){
+    componentDidMount() {
+
+        if(this.hasQueryParams()) {
             this.submit();
         }
+
+        this.submit();
     }
 
 	componentWillReceiveProps(nextProps, ownProps) {
@@ -118,20 +154,14 @@ class DocumentLookup extends React.Component {
 		}
 
 		if (nextProps.documents !== undefined) {
-			updatedProps.documents = nextProps.documents;
+			updatedProps.documents = nextProps.documents.items;
+			updatedProps.documentsCount = nextProps.documents.count;
+			updatedProps.isFetching = false;
 		}
 
 
 		this.setState(updatedProps);
 
-	}
-
-	handleChange(event, selectStateKey) {
-
-		const obj = {};
-		obj[selectStateKey] = event.value;
-
-		this.setState(obj);
 	}
 
 	renderMultiSelects() {
@@ -165,25 +195,34 @@ class DocumentLookup extends React.Component {
 		});
 
 		return _multiselects.map((multiSelectProps, index) => {
+
+			const returnNull = () => {
+				return null;
+			};
+
 			return (
-				<div className={s.multiSelect} key={index}>
+				<div className={styles.multiSelect} key={index}>
 					<Multiselect
 						{...multiSelectProps}
-						onBlur={() => {return null}}
-						onFocus={() => {return null}}
+						onBlur={returnNull}
+						onFocus={returnNull}
 						validationState=""
 						errorText=""
 						autoFocus={false}
 						multi={false}
-					>
-					</Multiselect>
+					/>
 				</div>
 			);
 		});
 	}
 
-	renderDocuments() {
-		return <DocumentCardCollection documents={this.state.documents}/>;
+	handleChange(event, selectStateKey) {
+
+		const obj = {};
+		obj[selectStateKey] = event.value;
+
+		this.setState(obj);
+
 	}
 
 	handleKeyUp(event) {
@@ -192,10 +231,79 @@ class DocumentLookup extends React.Component {
 
 		if (event.keyCode === returnKeyCode) {
 
-			this.submit();
+			this.setState({
+				documents: undefined,
+				pageNumber: 1
+			}, () => {
+				this.submit();
+			});
 
 		}
 
+	}
+
+	handleClick() {
+
+		this.setState({
+			documents: undefined,
+			pageNumber: 1
+		}, () => {
+			this.submit();
+		});
+
+	}
+
+	submit() {
+
+		this.setState({isFetching: true}, () => {
+
+			const {
+				searchTerm:search,
+				documentType:type,
+				program,
+				documentActivity:activity,
+				sortBy
+			} = this.state;
+
+			const setAllToEmptyString = (str) => {
+				return str === "All" ? "all" : str;
+			};
+
+			const start = ((this.state.pageNumber - 1) * config.pageSize);
+			const end = start + config.pageSize;
+
+			const data = {
+				search,
+				type: setAllToEmptyString(type),
+				program: setAllToEmptyString(program),
+				activity: setAllToEmptyString(activity),
+				sortBy,
+				start,
+				end
+			};
+
+			// fetch documents from server
+			// prop:string, type:string, queryArgs:object
+
+			this.props.actions.fetchContentIfNeeded(
+				"documents",
+				"documents",
+				data);
+
+			this.props.afterChange(
+					"document-lookup",
+					"Filter Status : " + JSON.stringify(pick(this.state,
+						[
+							"documentType",
+							"program",
+							"documentActivity",
+							"sortBy"
+						])
+					),
+				null
+			);
+
+		});
 	}
 
 	updateSearchTerm(event) {
@@ -206,64 +314,112 @@ class DocumentLookup extends React.Component {
 
 	}
 
-	submit() {
+	renderDocuments() {
+
+		let result = "Loading...";
+		const {documents, pageNumber, isFetching} = this.state;
+
+		if (!_.isEmpty(documents)) {
+
+			result = <DocumentCardCollection cards={documents} />;
+
+		} else if (documents !== undefined && !isFetching) {
+
+			result = (
+				<div className={styles.emptyDocuments}>
+					<p className={styles.emptyDocumentsMessage}>Sorry, we couldn't find any documents matching that query.</p>
+					<p><a onClick={this.reset.bind(this)}>Clear all search filters</a></p>
+				</div>
+			);
+
+		}
+
+		return (
+
+			<div className={styles.documentCardCollection}>
+				{result}
+			</div>
+		);
+
+	}
+
+	reset() {
+
+		this.setState(config.originalState, () => {
+			this.submit();
+		});
+
+	}
+
+	renderPaginator() {
 
 		const {
-			searchTerm:search,
-			documentType:type,
-			program,
-			documentActivity:activity,
-			sortBy
+			documents,
+			documentsCount,
+			pageNumber
 		} = this.state;
 
-		const setAllToEmptyString = (str) => {
-			return str === "All" ? "all" : str;
-		};
+		let result = <div />;
 
+		if (!_.isEmpty(documents)) {
+			
+			result = (
 
-		const data = {
-			search,
-			type: setAllToEmptyString(type),
-			program: setAllToEmptyString(program),
-			activity: setAllToEmptyString(activity),
-			sortBy,
-			start: 0,
-			end: 10
-		};
+				<div className={styles.paginator}>
+					<Paginator
+						pageNumber={pageNumber}
+						pageSize={config.pageSize}
+						total={documentsCount}
+						onBack={this.handleBack.bind(this)}
+						onForward={this.handleForward.bind(this)}
+					/>
+				</div>
 
-		// fetch documents from server
-		// prop:string, type:string, queryArgs:object
+			);
 
-		this.props.actions.fetchContentIfNeeded(
-			"documents",
-			"documents",
-			data);
+		}
 
-		this.props.afterChange(
-				"document-lookup",
-				"Filter Status : " + JSON.stringify(pick(this.state,
-					[
-						"documentType",
-						"program",
-						"documentActivity",
-						"sortBy"
-					])
-				),
-			null
-		);
+		return result;
+	}
+
+	handleBack() {
+
+		this.setState({
+			pageNumber: Math.max(1, this.state.pageNumber - 1)
+		}, () => {
+			this.submit();
+		});
+	}
+
+	handleForward() {
+		
+		const {
+			documentsCount,
+			pageNumber
+		} = this.state;
+
+		this.setState({
+			pageNumber: Math.min(Math.max(1,Math.ceil(documentsCount / config.pageSize)), pageNumber + 1)
+		}, () => {
+			this.submit();
+		});
 	}
 
 	render() {
 
-		const { taxonomies } = this.state;
+		const { taxonomies, documents} = this.state;
 
 		return (
+			
 			<div>
-				<div className={s.banner}>
-					<h2 className={s.header}>{this.props.title}</h2>
+				
+				<div className={styles.banner}>
+					
+					<h2 className={styles.header}>{this.props.title}</h2>
+					
 					{taxonomies.length > 0 &&
 					<div>
-						<div className={s.searchBox}>
+						<div className={styles.searchBox}>
 							<TextInput
 								placeholder="Search by title or number"
 								id="document-lookup"
@@ -273,28 +429,50 @@ class DocumentLookup extends React.Component {
 								onKeyUp={(e) => this.handleKeyUp(e)}
 								onChange={(e) => this.updateSearchTerm(e)}
 							/>
-							<div className={s.searchIcon}>
+							<div className={styles.searchIcon}>
 								<SearchIcon aria-hidden="true" />
 							</div>
 						</div>
 						{this.renderMultiSelects()}
 						<ApplyButton submit={() => {
-							this.submit();
+							this.handleClick();
 						}} />
 					</div>}
+				
 				</div>
-				{this.state.documents && this.renderDocuments()}
+				
+				<div>
+					{this.renderPaginator()}
+					{this.renderDocuments()}
+					{this.renderPaginator()}
+				</div>
+
 			</div>
+
 		);
 	}
 
 }
 
+DocumentLookup.defaultProps = {
+	documents: undefined,
+	searchTerm: "",
+	documentType: "All",
+	program: "All",
+	documentActivity: "All",
+	sortBy: "Last Updated",
+	taxonomies: []
+};
+
 function mapReduxStateToProps(reduxState, ownProps) {
-  return {
-    taxonomies: reduxState.contentReducer["taxonomies"],
-    documents: reduxState.contentReducer["documents"]
-  };
+
+	const {taxonomies, documents} = reduxState.contentReducer;
+
+	return {
+		taxonomies,
+		documents
+	};
+
 }
 
 function mapDispatchToProps(dispatch) {

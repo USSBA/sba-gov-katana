@@ -83,21 +83,29 @@ function sanitizeDocumentParams(params) {
 }
 
 function filterAndSortDocuments(params, docs) {
+
   const filteredDocuments = filterDocuments(params, docs);
   const sortedDocuments = sortDocuments(params, filteredDocuments);
-  if (params.start === "all" || params.end === "all") {
-    return sortedDocuments;
-  } else {
-    return sortedDocuments.slice(params.start, params.end);
-  }
+
+  const result = {
+    count: sortedDocuments.length,
+    items: (params.start === "all" || params.end === "all") ? sortedDocuments : sortedDocuments.slice(params.start, params.end)
+  };
+
+  return result;
+
 }
+
+
 
 /* eslint-disable complexity */
 function filterDocuments(params, docs) {
-  return docs.filter((doc) => {
+
+  return docs.filter((doc, index) => {
+
     const matchesUrl = params.url === "all" || doc.url === params.url;
-    const matchesActivity = params.activity === "all" || doc.activitys.includes(params.activity);
-    const matchesProgram = params.program === "all" || doc.programs.includes(params.program);
+    const matchesActivity = params.activity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
+    const matchesProgram = params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
     return (
       (params.type === "all" || doc.documentIdType === params.type) &&
       (matchesProgram) &&
