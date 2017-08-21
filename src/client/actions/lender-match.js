@@ -48,7 +48,6 @@ export function matchFormData(reviewSubmitInfoData) {
           type: "MATCH_FORM_DATA_SUCCESS",
           payload: response.data
         });
-        browserHistory.push("/lendermatch/success");
       })
       .catch((error) => {
         dispatch({
