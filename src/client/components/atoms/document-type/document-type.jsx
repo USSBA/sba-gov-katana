@@ -1,13 +1,21 @@
-import React from 'react'
-import s from './document-type.scss'
+import React from 'react';
+import s from './document-type.scss';
 
 const DocumentType = (props) => {
+
+	let numberDiv = props.number ? (<div className={s.number}>{props.number}</div>) : undefined;
+
 	return(
 		<div className={props.className}>
 			<div className={s.type}>{props.type ? props.type.toUpperCase() : null}</div>
-			<div className={s.number}>{props.number}</div>
+			{numberDiv}
 		</div>
 	)
 }
 
-export default DocumentType 
+DocumentType.defaultProps = {
+	type: "Memo"
+}
+
+export default DocumentType;
+

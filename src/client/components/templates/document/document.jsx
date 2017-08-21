@@ -37,7 +37,7 @@ class DocumentPage extends React.Component {
             </ul>
             <hr className={s.hr}/>
           </div>
-          <RelatedDocumentCards documentObj={this.props.document}/>
+          <RelatedDocumentCards data={this.props.document}/>
 
         </div>
       );
