@@ -85,9 +85,9 @@ export class DocumentLookup extends React.PureComponent {
 			documents:this.state.documents,
 			documentsCount: this.state.documentsCount,
 			searchTerm: "",
-			documentType: "",
-			program: "",
-			documentActivity: "",
+			documentType: "All",
+			program: "All",
+			documentActivity: "All",
 			sortBy: this.state.sortBy,
 			pageNumber: this.state.pageNumber,
 			isFetching: this.state.isFetching

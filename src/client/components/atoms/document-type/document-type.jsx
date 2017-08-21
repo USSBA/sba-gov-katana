@@ -1,5 +1,5 @@
-import React from 'react'
-import s from './document-type.scss'
+import React from 'react';
+import s from './document-type.scss';
 
 const DocumentType = (props) => {
 
@@ -13,8 +13,9 @@ const DocumentType = (props) => {
 	)
 }
 
-DocumentType.defaultProps ={
+DocumentType.defaultProps = {
 	type: "Memo"
 }
 
-export default DocumentType
+export default DocumentType;
+
