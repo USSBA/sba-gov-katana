@@ -21,9 +21,9 @@ class QuickLinks extends React.Component {
 			if (quickLink.type === "documentLookup") {
 				this.props.actions.fetchContentIfNeeded("documents-" + index, "documents", {
 					sortBy: "Last Updated",
-					type: _.isEmpty(quickLink.documentType[0]) ? "All" :  quickLink.documentType[0],
-					program: _.isEmpty(quickLink.documentProgram[0]) ? "All" : quickLink.documentProgram[0],
-					activity: _.isEmpty(quickLink.documentActivity[0]) ? "All" : quickLink.documentActivity[0],
+					type: _.isEmpty(quickLink.documentType[0]) ? "all" :  quickLink.documentType[0],
+					program: _.isEmpty(quickLink.documentProgram[0]) ? "all" : quickLink.documentProgram[0],
+					activity: _.isEmpty(quickLink.documentActivity[0]) ? "all" : quickLink.documentActivity[0],
 					start: 0,
 					end: 3
 				})
@@ -56,7 +56,6 @@ class QuickLinks extends React.Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return (
 			<div className={s.collection}>
 				{this.props.data ? this.renderQuickLinks() : <div>loading</div>}
@@ -82,8 +81,8 @@ const LatestDocumentsCard = props => {
 			</div>
 			<DecorativeDash className={s.dash} />
 			<div>
-				{props.documents
-					? props.documents.map((doc, index) => {
+				{props.documents && props.documents.items.length
+					? props.documents.items.map((doc, index) => {
 							return (
 								<div key={index}>
 									<a
