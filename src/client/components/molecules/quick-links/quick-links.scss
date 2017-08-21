@@ -2,6 +2,10 @@
     overflow: auto;
 
     margin-bottom: 30px !important;
+
+    @include grid-media($sba-grid-large){
+        display: flex;
+    }
 }
 
 .card {

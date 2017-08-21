@@ -7,31 +7,44 @@ import { DecorativeDash } from "../../atoms/index.js";
 import * as NavigationActions from "../../../actions/navigation.js";
 import queryString from "querystring";
 import moment from "moment";
+import Promise from "bluebird";
+import _ from "lodash";
 
 class QuickLinks extends React.Component {
+
 	componentWillMount() {
-		this.props.actions.fetchContentIfNeeded("documents", "documents", {
-			sortBy: "Last Updated",
-			start: 0,
-			end: 3
-		});
+		this.fetchDocuments()
+	}
+
+	fetchDocuments() {
+		this.props.data.typeOfLinks.map((quickLink, index) => {
+			if (quickLink.type === "documentLookup") {
+				this.props.actions.fetchContentIfNeeded("documents-" + index, "documents", {
+					sortBy: "Last Updated",
+					type: _.isEmpty(quickLink.documentType[0]) ? "All" :  quickLink.documentType[0],
+					program: _.isEmpty(quickLink.documentProgram[0]) ? "All" : quickLink.documentProgram[0],
+					activity: _.isEmpty(quickLink.documentActivity[0]) ? "All" : quickLink.documentActivity[0],
+					start: 0,
+					end: 3
+				})
+			}
+		})
 	}
 
 	renderQuickLinks() {
 		let gridClass = this.generateGrid(this.props.data.typeOfLinks.length);
-		console.log(gridClass);
 		return this.props.data.typeOfLinks.map((quickLink, index) => {
 			if (quickLink.type === "documentLookup") {
 				return (
 					<LatestDocumentsCard
 						key={index}
 						classname={s.card + " " + gridClass}
-						documents={this.props.documents}
+						documents={this.props["documents-" + index]}
 						{...quickLink}
 						locationChange={this.props.navigation.locationChange}
 					/>
 				);
-			} else if (quickLink.type === "ratesCard") {
+			} else if (quickLink.type === "ratesList") {
 				return <RatesCard key={index} {...quickLink} classname={s.card + " " + gridClass} />;
 			}
 		});
@@ -43,10 +56,10 @@ class QuickLinks extends React.Component {
 	}
 
 	render() {
-		console.log(this.props);
+		console.log(this.props)
 		return (
 			<div className={s.collection}>
-				{this.props.documents ? this.renderQuickLinks() : <div>loading</div>}
+				{this.props.data ? this.renderQuickLinks() : <div>loading</div>}
 			</div>
 		);
 	}
@@ -69,44 +82,43 @@ const LatestDocumentsCard = props => {
 			</div>
 			<DecorativeDash className={s.dash} />
 			<div>
-				{props.documents.map((doc, index) => {
-					return (
-						<div key={index}>
-							<a
-								onClick={() => {
-									props.locationChange("/" + doc.url);
-								}}>
-								{doc.title}
-							</a>
-							<div className={s.date}>
-								{moment.unix(doc.updated).format("MMM D, YYYY")}
-							</div>
-						</div>
-					);
-				})}
+				{props.documents
+					? props.documents.map((doc, index) => {
+							return (
+								<div key={index}>
+									<a
+										onClick={() => {
+											props.locationChange("/" + doc.url);
+										}}>
+										{doc.title}
+									</a>
+									<div className={s.date}>
+										{moment.unix(doc.updated).format("MMM D, YYYY")}
+									</div>
+								</div>
+							);
+						})
+					: <div>loading</div>}
 			</div>
 		</div>
 	);
 };
 
 const RatesCard = props => {
-	console.log(props);
 	return (
 		<div className={props.classname}>
 			<h3 className={s.title}>Rates</h3>
 			<DecorativeDash className={s.dash} />
-			<div className={s.rateContainer}>
-				SBA LIBOR Base Rate
-				<div className={s.rate}>{props.liborRate}</div>
-			</div>
-			<div className={s.rateContainer}>
-				SBA Peg Rate
-				<div className={s.rate}>{props.liborRate}</div>
-			</div>
-			<div className={s.rateContainer}>
-				SBA FIXED Base Rate
-				<div className={s.rate}>{props.liborRate}</div>
-			</div>
+			{
+				props.rate.map((rate, index) => {
+					return (
+						<div className={s.rateContainer}>
+							{rate.name}
+							<div className={s.rate}>{rate.percent}%</div>
+						</div>
+					)
+				})
+			}
 		</div>
 	);
 };
@@ -117,23 +129,38 @@ QuickLinks.defaultProps = {
 		typeOfLinks: [
 			{
 				type: "documentLookup",
-				documentActivity: {},
+				documentActivity: [],
 				documentProgram: ["CDC/504"],
 				documentType: ["SOP"],
 				sectionHeaderText: "SOPs"
 			},
 			{
 				type: "documentLookup",
-				documentActivity: {},
+				documentActivity: [],
 				documentProgram: ["7(a)"],
-				documentType: ["Information notice", "Policy notice"],
+				documentType: ["Information notice"],
 				sectionHeaderText: "Policy guidance"
 			},
 			{
-				type: "ratesCard",
-				liborRate: "4.08%",
-				pegRate: "6.08%",
-				fixedRate: "2.625%"
+				type: "ratesList",
+				rate: [
+					{
+						type: "rate",
+						name: "SBA LIBOR Base Rate",
+						percent: 4.08
+					},
+					{
+						type: "rate",
+						name: "SBA Peg Rate",
+						percent: 6.08
+					},
+					{
+						type: "rate",
+						name: "SBA FIXED Base Rate",
+						percent: 2.625
+					}
+				],
+				sectionHeaderText: "Rates"
 			}
 		]
 	}
@@ -141,7 +168,8 @@ QuickLinks.defaultProps = {
 
 function mapReduxStateToProps(reduxState) {
 	return {
-		documents: reduxState.contentReducer["documents"]
+		"documents-0": reduxState.contentReducer["documents-0"],
+		"documents-1": reduxState.contentReducer["documents-1"]
 	};
 }
 
