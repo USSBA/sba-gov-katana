@@ -1,7 +1,9 @@
 import { get } from "./daisho-client.js";
 
-function fetchCounselorsByLocation(userId) {
-  return get("counselors-by-location");
+function fetchCounselorsByLocation(zip) {
+  return get("counselors-by-location", {
+    zip: zip
+  });
 }
 
 export { fetchCounselorsByLocation };
