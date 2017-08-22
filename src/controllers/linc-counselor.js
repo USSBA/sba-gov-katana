@@ -4,7 +4,6 @@ import { fetchCounselorsByLocation } from "../models/dao/linc-counselor";
 function getCounselorsByLocation(req, res) {
   fetchCounselorsByLocation(req.query.zip)
     .then(function(counselors) {
-      console.log(counselors);
       res.status(HttpStatus.OK).send(counselors);
     })
     .catch((error) => {
