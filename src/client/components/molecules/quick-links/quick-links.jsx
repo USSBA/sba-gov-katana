@@ -75,7 +75,7 @@ const LatestDocumentsCard = props => {
 				<a
 					className={s.seeAll}
 					onClick={() => {
-						props.locationChange("/document?" + queryString.stringify({type: props.documentType}))
+						props.locationChange("/document?" + queryString.stringify({type: props.documentType, program: props.documentProgram}))
 					}}>
 					See all
 				</a>
@@ -88,9 +88,9 @@ const LatestDocumentsCard = props => {
 								<div key={index}>
 									<a
 										onClick={() => {
-											props.locationChange("/document");
+											props.locationChange("/document/" + doc.url);
 										}}>
-										{doc.title}
+										{doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title}
 									</a>
 									<div className={s.date}>
 										{moment.unix(doc.updated).format("MMM D, YYYY")}
