@@ -162,8 +162,7 @@ function fetchArticles(queryParams) {
 }
 
 function fetchAnnouncements() {
-  return get("collection/announcement");
+  return get("collection/announcements");
 }
 
 export { fetchFormattedNode, fetchContacts, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles, fetchAnnouncements };
-
