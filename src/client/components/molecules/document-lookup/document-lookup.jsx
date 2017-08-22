@@ -33,7 +33,7 @@ const createSlug = (str) => {
 };
 
 const createCamelCase = (str) => {
-  
+
   const sliceIndex = 1;
   const _str = str[0].toLowerCase() + str.slice(sliceIndex);
   return _str.replace(" ", "");
@@ -41,7 +41,7 @@ const createCamelCase = (str) => {
 };
 
 const findTaxonomy = (arr, name) => {
-				
+
 	let needle = {};
 
 	for (let index = 0; index < arr.length; index++) {
@@ -153,7 +153,7 @@ export class DocumentLookup extends React.PureComponent {
 			updatedProps.taxonomies = rearrangedTaxonomyOrder;
 		}
 
-		if (nextProps.documents !== undefined) {
+		if (nextProps.documents) {
 			updatedProps.documents = nextProps.documents.items;
 			updatedProps.documentsCount = nextProps.documents.count;
 			updatedProps.isFetching = false;
@@ -362,7 +362,7 @@ export class DocumentLookup extends React.PureComponent {
 		let result = <div />;
 
 		if (!_.isEmpty(documents)) {
-			
+
 			result = (
 
 				<div className={styles.paginator}>
@@ -392,7 +392,7 @@ export class DocumentLookup extends React.PureComponent {
 	}
 
 	handleForward() {
-		
+
 		const {
 			documentsCount,
 			pageNumber
@@ -410,13 +410,13 @@ export class DocumentLookup extends React.PureComponent {
 		const { taxonomies, documents} = this.state;
 
 		return (
-			
+
 			<div>
-				
+
 				<div className={styles.banner}>
-					
+
 					<h2 className={styles.header}>{this.props.title}</h2>
-					
+
 					{taxonomies.length > 0 &&
 					<div>
 						<div className={styles.searchBox}>
@@ -439,9 +439,9 @@ export class DocumentLookup extends React.PureComponent {
 							this.handleClick();
 						}} />
 					</div>}
-				
+
 				</div>
-				
+
 				<div>
 					{this.renderPaginator()}
 					{this.renderDocuments()}

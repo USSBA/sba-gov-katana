@@ -2,8 +2,7 @@ import React from 'react';
 import s from './document-type.scss';
 
 const DocumentType = (props) => {
-
-	let numberDiv = props.number ? (<div className={s.number}>{props.number}</div>) : undefined;
+	let numberDiv = props.number && typeof props.number === 'string' ? (<div className={s.number}>{props.number}</div>) : undefined;
 
 	return(
 		<div className={props.className}>
@@ -18,4 +17,3 @@ DocumentType.defaultProps = {
 }
 
 export default DocumentType;
-
