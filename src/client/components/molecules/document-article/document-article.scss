@@ -12,8 +12,12 @@
     }
 }
 
-.title {
+.marginTop{
     margin-top: 30px;
+    
+}
+
+.title {
 
     @include grid-media($sba-grid-medium-and-small) {
         @include grid-column(4, $mobile-0gutter);

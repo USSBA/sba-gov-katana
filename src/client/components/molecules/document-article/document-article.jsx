@@ -41,16 +41,15 @@ export class DocumentArticle extends React.Component {
     const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
       const newestFile = this.getNewestFile()
-      let documentTypeString = "Memo";
+      let documentTypeString = null;
       switch(data.type){
           case "document" : documentTypeString = data.documentIdType; break;
-          case "article" : documentTypeString = data.category ? data.category[0] : "UNK";break;
-          default: documentTypeString = "UNK"
+          default: documentTypeString = null; break;
       }
       return (
         <div className={"document-article " + s.page}>
-          <DocumentType type={documentTypeString} number={data.documentIdNumber}/>
-          <h1 className={"document-article-title " + s.title}>{data.title}</h1>
+          {documentTypeString ? <DocumentType type={documentTypeString} number={data.documentIdNumber}/> : undefined}
+          <h1 className={"document-article-title " + s.title + " " + (documentTypeString? s.marginTop:"")}>{data.title}</h1>
           <p className={s.dates}>
             {data.updated ? <span className={s.date}>Last Updated {moment.unix(data.updated).format('MMM D, YYYY')}</span> : null}
             {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
