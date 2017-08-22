@@ -112,7 +112,7 @@ const RatesCard = props => {
 			{
 				props.rate.map((rate, index) => {
 					return (
-						<div className={s.rateContainer}>
+						<div key={index} className={s.rateContainer}>
 							{rate.name}
 							<div className={s.rate}>{rate.percent}%</div>
 						</div>
