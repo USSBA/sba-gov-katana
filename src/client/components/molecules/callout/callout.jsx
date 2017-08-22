@@ -5,7 +5,7 @@ import LargeInversePrimaryButton from "../../atoms/large-inverse-primary-button/
 import LargePrimaryButton from "../../atoms/large-primary-button/large-primary-button.jsx";
 
 class Callout extends React.Component {
-  
+
   render() {
 
     let calloutStyles = styles.callout;
@@ -13,7 +13,7 @@ class Callout extends React.Component {
 
     if (this.props.inHeroWithNoImage) {
       calloutStyles +=  " " + styles.noDecoration
-      buttonStyles += " " + styles.noFloat
+      buttonStyles += " " + styles.noFloat + " " + styles.wideButtons
     }
 
     return (
@@ -38,7 +38,7 @@ class Callout extends React.Component {
            </div>
        </div>
     );
-  
+
   }
 
  }
