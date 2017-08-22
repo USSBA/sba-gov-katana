@@ -58,7 +58,7 @@ class RelatedDocumentCards extends React.Component {
 						</a>
 					</div>
 					<div>
-						<DocumentCardCollection showDetails={false} documents={documents} />
+						<DocumentCardCollection showDetails={false} cards={documents} />
 					</div>
 				</div>
 			);

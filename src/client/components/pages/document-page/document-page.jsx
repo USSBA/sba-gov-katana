@@ -42,11 +42,11 @@ DocumentPage.defaultProps = {
 };
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  if (reduxState.contentReducer["documents"] === null && !this.props.document) {
+  let documentStoreValue = reduxState.contentReducer["documents"];
+  if (documentStoreValue === null && !this.props.document) {
     return {document: null};
-  } else if (reduxState.contentReducer["documents"] && reduxState.contentReducer["documents"].length > 0) {
-    return {document: reduxState.contentReducer["documents"][0]
-    };
+  } else if (documentStoreValue && documentStoreValue.items && documentStoreValue.items.length > 0) {
+    return {document: documentStoreValue.items[0]};
   } else {
     return {};
   }
