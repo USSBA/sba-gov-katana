@@ -49,3 +49,8 @@
 .quickLinks {
 	@include grid-column(12, $desktop-0gutter);
 }
+
+.searchBox {
+	clear: both;
+	margin: 20px;
+}

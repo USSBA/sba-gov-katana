@@ -1,0 +1,80 @@
+.container {
+}
+
+.greyParagraph {
+  background-color: $grey;
+  color: #fff;
+  padding: 50px;
+  margin-bottom: 50px;
+  h2 {
+    @include font-size($h3-font-sizes);
+  }
+}
+
+.searchBox {
+
+	position: relative;
+
+	@include grid-media($sba-grid-small) {
+	    width: 100%;
+	}
+
+    @include grid-media($sba-grid-large) {
+        float: left;
+        display: inline-block;
+
+        width: 400px;
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    input {
+        line-height: 34px;
+        height: 48px;
+        padding-right: 40px !important;
+    }
+}
+
+.searchIcon {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+
+    @media screen and (min-width: 768px) {
+        top: 12px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        top: 17px;
+    }
+}
+
+.multiSelect {
+    @include grid-media($sba-grid-small) {
+        width: 100%;
+    }
+
+    @include grid-media($sba-grid-large) {
+        display: inline-block;
+
+        width: 200px;
+        margin-right: 20px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.clear {
+	clear: both;
+}
+
+.submitButton {
+
+    @media screen and (max-width: 1023px) {
+        margin-top: 25px;
+    }
+	
+}
