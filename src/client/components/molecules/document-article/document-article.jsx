@@ -14,17 +14,21 @@ import queryString from "querystring";
 export class DocumentArticle extends React.Component {
 
   getNewestFile() {
+      console.log(this.props.data.files)
+      console.log(this.props.data.file)
     return this.props.data.files
       ? this.props.data.files.reduce((acc, file) => {
         return file.version > acc.version
           ? file
           : acc
       })
-      : {};
+      : {fileUrl: this.props.data.file};
   }
 
   downloadClick(newestFile) {
-    window.open(newestFile.fileUrl, '_blank')
+      if(newestFile && newestFile.fileUrl){
+          window.open(newestFile.fileUrl, '_blank')
+      }
   }
 
   formatDate(date) {
