@@ -14,8 +14,6 @@ import queryString from "querystring";
 export class DocumentArticle extends React.Component {
 
   getNewestFile() {
-      console.log(this.props.data.files)
-      console.log(this.props.data.file)
     return this.props.data.files
       ? this.props.data.files.reduce((acc, file) => {
         return file.version > acc.version
@@ -45,6 +43,10 @@ export class DocumentArticle extends React.Component {
     const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
       const newestFile = this.getNewestFile()
+      let newestFileExtension = "pdf";
+      if(newestFile && newestFile.fileUrl){
+          newestFileExtension = newestFile.fileUrl.split(".")[1];
+      }
       let documentTypeString = null;
       switch(data.type){
           case "document" : documentTypeString = data.documentIdType; break;
@@ -66,7 +68,7 @@ export class DocumentArticle extends React.Component {
           </div>
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text="download pdf"/>
+            <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
