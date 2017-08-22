@@ -32,16 +32,34 @@ $hero-container-grid: (
 	text-align: center;
 
 	@include grid-media($sba-grid-small){
-		@include grid-column(6);
 		margin: 0;
     	width: 100%;
 	}
 	@include grid-media($sba-grid-medium){
-		@include grid-column(12);
-		margin: 0;
     	width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
 	}
 }
+
+.inHeroWithNoImage p {
+    font-weight: lighter;
+}
+
+@include theme(sba-blue, '.inHeroWithNoImage', $sba-blue, #fff, #fff);
+@include theme(byzantine, '.inHeroWithNoImage', $byzantine, #fff, #fff);
+@include theme(money-green, '.inHeroWithNoImage', $money-green, #fff, #fff);
+@include theme(cobalt-blue, '.inHeroWithNoImage', $cobalt-blue, #fff, #fff);
+
+.calloutContainer {
+    @include grid-media($sba-grid-medium){
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+
 
 .heroDesktopImage {
 	@include grid-media($sba-grid-small){
