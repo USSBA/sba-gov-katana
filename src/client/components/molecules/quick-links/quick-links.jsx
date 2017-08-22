@@ -31,6 +31,11 @@ class QuickLinks extends React.Component {
 		})
 	}
 
+	generateGrid(length) {
+		let gridClass = { 1: s.oneCard, 2: s.twoCards };
+		return length > 2 ? s.manyCards : gridClass[length];
+	}
+
 	renderQuickLinks() {
 		let gridClass = this.generateGrid(this.props.data.typeOfLinks.length);
 		return this.props.data.typeOfLinks.map((quickLink, index) => {
@@ -50,11 +55,6 @@ class QuickLinks extends React.Component {
 		});
 	}
 
-	generateGrid(length) {
-		let gridClass = { 1: s.oneCard, 2: s.twoCards };
-		return length > 2 ? s.manyCards : gridClass[length];
-	}
-
 	render() {
 		return (
 			<div className={s.collection}>
@@ -65,6 +65,7 @@ class QuickLinks extends React.Component {
 }
 
 const LatestDocumentsCard = props => {
+	console.log(props)
 	return (
 		<div className={props.classname}>
 			<div className={s.titleContainer}>
@@ -74,7 +75,7 @@ const LatestDocumentsCard = props => {
 				<a
 					className={s.seeAll}
 					onClick={() => {
-						props.locationChange("/document");
+						props.locationChange("/document?" + queryString.stringify({type: props.documentType}))
 					}}>
 					See all
 				</a>
@@ -87,7 +88,7 @@ const LatestDocumentsCard = props => {
 								<div key={index}>
 									<a
 										onClick={() => {
-											props.locationChange("/" + doc.url);
+											props.locationChange("/document");
 										}}>
 										{doc.title}
 									</a>
