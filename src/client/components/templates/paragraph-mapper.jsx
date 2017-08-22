@@ -14,6 +14,7 @@ import StyleGrayBackground from "../molecules/style-gray-background/style-gray-b
 import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
 import ButtonCta from "../molecules/button-cta/button-cta.jsx";
 import QuickLinks from "../molecules/quick-links/quick-links.jsx";
+import SearchBox from "../organisms/search-box/search-box.jsx";
 
 function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
   let paragraphs = [];
@@ -64,9 +65,29 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
       } else if (item.type === "quickLinks") {
         console.log(item)
         paragraph = (<QuickLinks data={item}/>)
+      } else if (item.type === "searchBox") {
+
+          const {
+            documentActivity,
+            documentProgram,
+            documentType,
+            sectionHeaderText
+          } = item.searchType[0];
+
+          const searchBoxProps = {
+            documentActivity,
+            documentProgram,
+            documentType,
+            sectionHeaderText
+          };
+
+          paragraph = <SearchBox {...searchBoxProps} />;
       }
     }
-    return {type: paragraphType, paragraph: paragraph};
+    return {
+      type: paragraphType,
+      paragraph: paragraph
+    };
   });
 
   return _.compact(paragraphs);

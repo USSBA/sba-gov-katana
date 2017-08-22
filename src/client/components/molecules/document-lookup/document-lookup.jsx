@@ -428,6 +428,7 @@ export class DocumentLookup extends React.PureComponent {
 								validationState={""}
 								onKeyUp={(e) => this.handleKeyUp(e)}
 								onChange={(e) => this.updateSearchTerm(e)}
+								defaultValue={this.state.searchTerm}
 							/>
 							<div className={styles.searchIcon}>
 								<SearchIcon aria-hidden="true" />
