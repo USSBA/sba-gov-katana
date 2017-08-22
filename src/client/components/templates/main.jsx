@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from "lodash";
 import Header from '../organisms/header-footer/header/header.jsx';
 import Footer from '../organisms/header-footer/footer/footer.jsx';
 import cookie from 'react-cookie';
@@ -29,17 +30,12 @@ const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePre
     for (let index = 0; index < listOfUrls.length; index++) {
       
       const whiteLabeledUrl = listOfUrls[index];
-      
-      if (whiteLabeledUrl === currentPathname) {
+
+      if (_.startsWith(currentPathname, whiteLabeledUrl)) {
       
         boolean = !isCookiePresent;
         break;
       
-      } else if (whiteLabeledUrl.split("/*")[0].split("/")[1] === currentPathname.split("/")[1]) {
-
-        boolean = !isCookiePresent;
-        break;
-
       }
 
     }
@@ -132,39 +128,6 @@ class Main extends React.Component {
       pathname,
       this.state.notificationBarHidingCookieIsPresent
     );
-
-    // if location pathname MATCHES a whitelabelurl
-      // show NotificationBar
-    // else split whiteLabelUrl by slash-asterisk ("/*")
-      // if contains asterisk
-        // split whiteLabelUrl by slash
-        // split location pathname by slash
-        // if whiteLabelUrl[0] is equal to location pathname[0]
-          // show NotificationBar
-
-    /*
-    if (notificationWhiteLabelUrls) {
-      
-      for (let index = 0; index < notificationWhiteLabelUrls.length; index++) {
-        
-        const whiteLabeledUrl = notificationWhiteLabelUrls[index];
-        
-        if (whiteLabeledUrl === this.props.location.pathname) {
-        
-          showNotificationBar = !this.state.notificationBarHidingCookieIsPresent;
-          break;
-        
-        } else if (whiteLabeledUrl.split("/*")[0].split("/")[1] === this.props.location.pathname.split("/")[1]) {
-
-          showNotificationBar = !this.state.notificationBarHidingCookieIsPresent;
-          break;
-
-        }
-
-      }
-
-    }
-    */
 
     return (
       
