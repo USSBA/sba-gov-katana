@@ -100,9 +100,7 @@ function filterAndSortDocuments(params, docs) {
 
 /* eslint-disable complexity */
 function filterDocuments(params, docs) {
-
   return docs.filter((doc, index) => {
-
     const matchesUrl = params.url === "all" || doc.url === params.url;
     const matchesActivity = params.activity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
     const matchesProgram = params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
@@ -113,7 +111,7 @@ function filterDocuments(params, docs) {
       (matchesUrl) &&
       (params.search === "all" ||
       doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
-      doc.documentIdNumber.includes(params.search))
+      (!_.isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.search)))
     );
   });
 }
