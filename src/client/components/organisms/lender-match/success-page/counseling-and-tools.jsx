@@ -59,8 +59,8 @@ export class DynamicCounselingAndTools extends React.Component {
     } else if (this.state.counselors && this.state.counselorsErr == null) {
       return counselors.map((counselor) => {
         return {
-          lat: counselor.latitude,
-          lng: counselor.longitude
+          lat: Number.parseFloat(counselor.latitude),
+          lng: Number.parseFloat(counselor.longitude)
         }
       });
     }
@@ -128,10 +128,6 @@ export class DynamicCounselingAndTools extends React.Component {
   }
   ;
 }
-
-//56001
-//11510
-//21117
 
 function mapStateToProps(state) {
   return {
