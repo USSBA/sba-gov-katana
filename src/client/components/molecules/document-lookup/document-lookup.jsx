@@ -345,8 +345,12 @@ export class DocumentLookup extends React.PureComponent {
 
 	reset() {
 
+
 		this.setState(config.originalState, () => {
+
+			document.getElementById("document-lookup-text-input").value = "";
 			this.submit();
+			
 		});
 
 	}
@@ -422,7 +426,7 @@ export class DocumentLookup extends React.PureComponent {
 						<div className={styles.searchBox}>
 							<TextInput
 								placeholder="Search by title or number"
-								id="document-lookup"
+								id="document-lookup-text-input"
 								errorText={"Please enter the correct thing."}
 								label="Search"
 								validationState={""}
