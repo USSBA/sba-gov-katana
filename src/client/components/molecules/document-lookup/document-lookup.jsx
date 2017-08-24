@@ -347,8 +347,7 @@ export class DocumentLookup extends React.PureComponent {
 
 
 		this.setState(config.originalState, () => {
-
-			document.getElementById("document-lookup-text-input").value = "";
+			
 			this.submit();
 			
 		});
@@ -433,6 +432,7 @@ export class DocumentLookup extends React.PureComponent {
 								onKeyUp={(e) => this.handleKeyUp(e)}
 								onChange={(e) => this.updateSearchTerm(e)}
 								defaultValue={this.state.searchTerm}
+								value={this.state.searchTerm}
 							/>
 							<div className={styles.searchIcon}>
 								<SearchIcon aria-hidden="true" />
