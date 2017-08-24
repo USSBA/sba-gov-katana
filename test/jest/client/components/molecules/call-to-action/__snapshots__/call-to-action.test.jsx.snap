@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CallToAction renders a button only 1`] = `
+<div
+  className="btnOnly"
+>
+  <div
+    className="ctaContainer"
+    id="call-to-action"
+  >
+    <div
+      className="image"
+    >
+      <div
+        style={
+          Object {
+            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
+            "backgroundSize": "cover",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+        title="alt text for image"
+      />
+    </div>
+    <div
+      className="contentContainer"
+    >
+      <h4
+        className="headline"
+      >
+        This is the headline for the CTA.
+      </h4>
+      <p
+        className="blurb"
+      >
+        This is the blurb for the CTA.
+      </p>
+      <button
+        className="SmallInversePrimaryButton  btn"
+        disabled={undefined}
+        formTarget="_self"
+        id={undefined}
+        onClick={[Function]}
+      >
+        Call To Action
+      </button>
+    </div>
+    <img
+      alt=""
+      className="cornerGraphicLarge"
+      src="test-file-stub"
+    />
+    <img
+      alt=""
+      className="cornerGraphicSmall"
+      src="test-file-stub"
+    />
+  </div>
+  <button
+    className="LargePrimaryButton  btnSecondary"
+    disabled={undefined}
+    formTarget="_self"
+    id={undefined}
+    onClick={[Function]}
+  >
+    Call To Action
+  </button>
+</div>
+`;
+
+exports[`CallToAction renders a large size 1`] = `
+<div
+  className="large"
+>
+  <div
+    className="ctaContainer"
+    id="call-to-action"
+  >
+    <div
+      className="image"
+    >
+      <div
+        style={
+          Object {
+            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
+            "backgroundSize": "cover",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+        title="alt text for image"
+      />
+    </div>
+    <div
+      className="contentContainer"
+    >
+      <h4
+        className="headline"
+      >
+        This is the headline for the CTA.
+      </h4>
+      <p
+        className="blurb"
+      >
+        This is the blurb for the CTA.
+      </p>
+      <button
+        className="SmallInversePrimaryButton  btn"
+        disabled={undefined}
+        formTarget="_self"
+        id={undefined}
+        onClick={[Function]}
+      >
+        Call To Action
+      </button>
+    </div>
+    <img
+      alt=""
+      className="cornerGraphicLarge"
+      src="test-file-stub"
+    />
+    <img
+      alt=""
+      className="cornerGraphicSmall"
+      src="test-file-stub"
+    />
+  </div>
+  <button
+    className="SmallInverseSecondaryButton  btnSecondary"
+    disabled={undefined}
+    formTarget="_self"
+    id={undefined}
+    onClick={[Function]}
+  >
+    Call To Action
+  </button>
+</div>
+`;
+
+exports[`CallToAction renders a medium size 1`] = `
+<div
+  className="medium"
+>
+  <div
+    className="ctaContainer"
+    id="call-to-action"
+  >
+    <div
+      className="image"
+    >
+      <div
+        style={
+          Object {
+            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
+            "backgroundSize": "cover",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+        title="alt text for image"
+      />
+    </div>
+    <div
+      className="contentContainer"
+    >
+      <h4
+        className="headline"
+      >
+        This is the headline for the CTA.
+      </h4>
+      <p
+        className="blurb"
+      >
+        This is the blurb for the CTA.
+      </p>
+      <button
+        className="SmallInversePrimaryButton  btn"
+        disabled={undefined}
+        formTarget="_self"
+        id={undefined}
+        onClick={[Function]}
+      >
+        Call To Action
+      </button>
+    </div>
+    <img
+      alt=""
+      className="cornerGraphicLarge"
+      src="test-file-stub"
+    />
+    <img
+      alt=""
+      className="cornerGraphicSmall"
+      src="test-file-stub"
+    />
+  </div>
+  <button
+    className="SmallInverseSecondaryButton  btnSecondary"
+    disabled={undefined}
+    formTarget="_self"
+    id={undefined}
+    onClick={[Function]}
+  >
+    Call To Action
+  </button>
+</div>
+`;
+
+exports[`CallToAction renders a small size 1`] = `
+<div
+  className="small"
+>
+  <div
+    className="ctaContainer"
+    id="call-to-action"
+  >
+    <div
+      className="image"
+    >
+      <div
+        style={
+          Object {
+            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
+            "backgroundSize": "cover",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+        title="alt text for image"
+      />
+    </div>
+    <div
+      className="contentContainer"
+    >
+      <h4
+        className="headline"
+      >
+        This is the headline for the CTA.
+      </h4>
+      <p
+        className="blurb"
+      >
+        This is the blurb for the CTA.
+      </p>
+      <button
+        className="SmallInversePrimaryButton  btn"
+        disabled={undefined}
+        formTarget="_self"
+        id={undefined}
+        onClick={[Function]}
+      >
+        Call To Action
+      </button>
+    </div>
+    <img
+      alt=""
+      className="cornerGraphicLarge"
+      src="test-file-stub"
+    />
+    <img
+      alt=""
+      className="cornerGraphicSmall"
+      src="test-file-stub"
+    />
+  </div>
+  <button
+    className="SmallInverseSecondaryButton  btnSecondary"
+    disabled={undefined}
+    formTarget="_self"
+    id={undefined}
+    onClick={[Function]}
+  >
+    Call To Action
+  </button>
+</div>
+`;
