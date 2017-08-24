@@ -4,235 +4,190 @@
 @include theme(cobalt-blue, '.ctaContainer', $cobalt-blue, #fff, #fff);
 
 .ctaContainer {
-	position: relative;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	@include grid-media($sba-grid-small){
-		@include grid-column(6, $mobile-0gutter);
-	}
-	@include grid-media($sba-grid-medium){
-		@include grid-column(12, $tablet-0gutter);
-	}
-	@include grid-media($sba-grid-large){
-		@include grid-column(12, $desktop-0gutter);
-	}
-	overflow: hidden;
+  position: relative;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12, $tablet-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12, $desktop-0gutter);
+  }
+  overflow: hidden;
 }
 
 .btnSecondary {
-	display: none;
+  display: none;
 }
 
 .btnOnly {
-	.ctaContainer {
-		display: none;
-	}
-	.btnSecondary {
-		display: block;
-		margin: 30px auto 30px auto;
+  .ctaContainer {
+    display: none;
+  }
+  .btnSecondary {
+    display: block;
+    margin: 30px auto 30px auto;
 
-
-	}
+  }
 }
 
 .small {
-	.image {
-		display: none;
-	}
-	.blurb {
-		display: none;
-	}
-	.cornerGraphicLarge {
-			@include grid-media($sba-grid-large){
-				height: 100%;
-		}
-	}
-	.contentContainer {
-		@include grid-media($sba-grid-large){
-			@include grid-column(12, $sba-grid-large);
-	  	display: -webkit-flex;
-	  	display: flex;
-	    -webkit-align-items: center;
-	    align-items: center;
-	    -webkit-justify-content: center;
-	    justify-content: center;
-		}
-	}
+  .image {
+    display: none;
+  }
+  .blurb {
+    display: none;
+  }
+  .cornerGraphicLarge {
+    @include grid-media($sba-grid-large) {
+      height: 100%;
+    }
+  }
+  .contentContainer {
+    @include grid-media($sba-grid-large) {
+      @include grid-column(12, $sba-grid-large);
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      padding: 30px 0 30px 0;
+    }
+  }
 
+  .headline {
+    @include grid-media($sba-grid-large) {
+      margin: 0;
+      margin-right: 30px;
+    }
+  }
 
-
-		// @include grid-media($sba-grid-large){
-		// 	position: relative;
-		// 	@include grid-column(12, $sba-grid-large)
-		// }
-	.headline {
-		@include grid-media($sba-grid-large){
-			margin: 0;
-			margin-right: 30px; 
-		}
-
-
-
-		// @include grid-media($sba-grid-large){
-		// 	@include grid-column(7)
-		// 	position: absolute;
-  //   	top: 50%;
-  //   	transform: translateY(-50%);
-		// 	margin-bottom: 0px;
-		// }
-
-
-		// @include grid-media($sba-grid-large){
-		// 	@include grid-column(6, $desktop-0gutter)
-		// 	@include grid-push(1)
-  //   	position: absolute;
-  //   	top: 50%;
-  //   	transform: translateY(-50%);
-		// 	margin-bottom: 0px;
-		// }
-	}
   .btn {
-  	@include grid-media($sba-grid-large){
-  		margin: 0;
-  	}
-
-
-
-
-  	// @include grid-media($sba-grid-large){
-  	// 	@include grid-push(7)
-  	// }
-
-
-		// @include grid-media($sba-grid-large){
-		// 	@include grid-column(2, $desktop-0gutter)
-		// 	@include grid-push(8)
-		// }
-	}
+    @include grid-media($sba-grid-large) {
+      margin: 0;
+    }
+  }
 }
 
 .medium {
-	.image {
-		display: none;
-	}
-	.contentContainer {
-		@include grid-media($sba-grid-large){
-		text-align: left;
-		@include grid-column(12);
-		padding: 30px 0 30px 0;
-		}
-	}	
+  .image {
+    display: none;
+  }
+  .contentContainer {
+    @include grid-media($sba-grid-large) {
+      text-align: left;
+      @include grid-column(12);
+      padding: 30px 0 30px 0;
+    }
+  }
 }
 
 .large {
+  .contentContainer {
+    padding: 100px 30px;
+  }
 
 }
 
 .cornerGraphicLarge {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	@include grid-media($sba-grid-small){
-		display: none;
-	}
-	@include grid-media($sba-grid-medium){
-		display: none;
-	}
-	@include grid-media($sba-grid-large){
-		display: block;
-	}
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: block;
+  }
 }
 
 .cornerGraphicSmall {
-	position: absolute;
-	right: 0px;
-	bottom: 0px;
-	@include grid-media($sba-grid-small){
-		display: block;
-	}
-	@include grid-media($sba-grid-medium){
-		display: block;
-	}
-	@include grid-media($sba-grid-large){
-		display: none;
-	}
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  @include grid-media($sba-grid-small) {
+    display: block;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: block;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
 }
 
-// .imageWrapper {
-// 	display: inline-block;
-// 	@include grid-media($sba-grid-large){
-// 		@include grid-column(6, $desktop-0gutter)
-// 	}
-// }
-
 .image {
-	@include grid-media($sba-grid-small){
-		display: none;
-	}
-	@include grid-media($sba-grid-medium){
-		display: none;
-	}
-	@include grid-media($sba-grid-large){
-		position: absolute;
-		height: 100% !important;
-		display: block;
-		min-height: 300px;
-		@include grid-column(6, $desktop-0gutter)
-	}
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    height: 100% !important;
+    display: block;
+    min-height: 300px;
+    @include grid-column(6, $desktop-0gutter)
+  }
 }
 
 .contentContainer {
-	@include grid-media($sba-grid-small){
-		text-align: center;
-		@include grid-column(6);
-		padding: 30px 0 30px 0;
-	}
-	@include grid-media($sba-grid-medium){
-		@include grid-column(12);
-		padding: 30px 0 30px 0;
-	}
-	@include grid-media($sba-grid-large){
-		@include grid-column(6);
-		@include grid-push(6);
-		padding: 30px;
-	}
+  @include grid-media($sba-grid-small) {
+    text-align: center;
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(6);
+    @include grid-push(6);
+  }
 }
 
 .headline {
-	@include grid-media($sba-grid-large){
-		font-size: 1.05em;
-	}
-	@include grid-media($sba-grid-large){
-		font-size: 2em;
-	}
-	@include grid-media($sba-grid-medium){
-		font-size: 1.5em;
-	}
+  @include grid-media($sba-grid-large) {
+    font-size: 1.05em;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 2em;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 1.5em;
+  }
 }
 
 .blurb {
-	@include grid-media($sba-grid-small){
-		display: none;
-	}
-	@include grid-media($sba-grid-medium){
-		font-size: 1.38em;
-		line-height: 30px;
-		font-weight: 300;
-	}
-	@include grid-media($sba-grid-large){
-		font-size: 1.38em;
-		line-height: 30px;
-		font-weight: 300;
-	}
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 1.38em;
+    line-height: 30px;
+    font-weight: 300;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 1.38em;
+    line-height: 30px;
+    font-weight: 300;
+  }
 }
 
 .btn {
-	@include grid-media($sba-grid-small){
-		margin-top: 20px;
-	}
-	@include grid-media($sba-grid-medium){
-		margin-top: 10px;
-	}
+  @include grid-media($sba-grid-small) {
+    margin-top: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    margin-top: 10px;
+  }
 }
 
 
