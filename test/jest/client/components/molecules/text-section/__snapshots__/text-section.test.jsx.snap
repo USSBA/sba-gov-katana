@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextSection renders a simple paragraph 1`] = `
+exports[`TextSection should render a simple paragraph 1`] = `
 <div
   className="textSection"
   dangerouslySetInnerHTML={
@@ -11,7 +11,7 @@ exports[`TextSection renders a simple paragraph 1`] = `
 />
 `;
 
-exports[`TextSection renders several paragraph 1`] = `
+exports[`TextSection should render several paragraphs 1`] = `
 <div
   className="textSection"
   dangerouslySetInnerHTML={
@@ -22,7 +22,7 @@ exports[`TextSection renders several paragraph 1`] = `
 />
 `;
 
-exports[`TextSection renders several paragraphs with an unordered list in the middle 1`] = `
+exports[`TextSection should render several paragraphs with an unordered list in the middle 1`] = `
 <div
   className="textSection"
   dangerouslySetInnerHTML={

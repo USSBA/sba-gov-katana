@@ -1,9 +1,6 @@
-import React from "react"
+import React from "react";
 import styles from "./text-section.scss";
 import cheerio from "cheerio";
-
-
-
 
 class TextSection extends React.Component{
 	parseTables() {
@@ -63,7 +60,7 @@ class TextSection extends React.Component{
   }
 }
 
-TextSection.propTypes ={
+TextSection.propTypes = {
     text: React.PropTypes.string.isRequired
 }
 
