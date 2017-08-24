@@ -48,7 +48,7 @@ class BasicPage extends React.Component {
       textSection: styles.textSection,
       textReadMoreSection: "none",
       sectionHeader: styles.sectionHeader,
-      subsectionHeader: styles.textSection,
+      subsectionHeader: styles.subsectionHeader,
       image: styles.image,
       lookup: styles.lookup,
       callToAction: styles.callToAction,
