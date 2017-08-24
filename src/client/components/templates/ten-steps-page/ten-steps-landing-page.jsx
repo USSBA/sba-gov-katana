@@ -201,7 +201,7 @@ class TenStepsLandingPage extends React.Component {
                 {
                     counsellorCta ? <div className={styles.counsellorCtaContainer}>
                         <CallToAction
-                                      size={counsellorCta.style}
+                                      size={counsellorCta.size}
                                       headline={counsellorCta.headline}
                                       blurb={counsellorCta.blurb}
                                       image={counsellorCta.image}

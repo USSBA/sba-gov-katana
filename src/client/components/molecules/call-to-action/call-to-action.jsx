@@ -15,7 +15,7 @@ class CallToAction extends React.Component {
 
   ctaSize() {
 
-      const size = this.props.size.toLowerCase()
+      const size = this.props.size ? this.props.size.toLowerCase() : "";
       let css = {}
 
       if(size === 'button only') {
@@ -23,7 +23,7 @@ class CallToAction extends React.Component {
       } else {
         css = styles[size] || null
       }
-      
+
       return css
 
   }
