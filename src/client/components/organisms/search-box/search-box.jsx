@@ -6,7 +6,7 @@ import {
 	Multiselect,
 	TextInput,
 	SearchIcon,
-	SmallInversePrimaryButton
+	LargeInversePrimaryButton
 } from "../../atoms";
 
 const createSlug = (str) => {
@@ -138,7 +138,7 @@ class SearchBox extends React.Component {
 			<div className={styles.container}>
 				<div className={styles.greyParagraph}>
 					<h2>{this.props.sectionHeaderText}</h2>
-					<p>Quickly find the {this.props.documentType}s you regularly use as a CDC lender. </p>
+					<p>Quickly find the {this.props.documentType}s you regularly use as a {this.props.documentProgram} lender. </p>
 					<div className={styles.searchBox}>
 						<TextInput
 							placeholder="Search by title or number"
@@ -154,12 +154,12 @@ class SearchBox extends React.Component {
 					</div>
 					{this.renderMultiSelect()}
 					<div className={styles.clear} />
-					<SmallInversePrimaryButton
+					<LargeInversePrimaryButton
 						onClick={() => {
 							this.submit();
 						}}
 						className={styles.submitButton}
-						text="Submit"
+						text="Search"
 					/>
 				</div>
 			</div>
