@@ -48,6 +48,7 @@ class DropdownMenu extends React.Component {
 
   render() {
     let sizingStyle = "";
+    let indent=false;
     let menuId = this.props.menuId;
     let smallInverseCta = false;
     if (menuId === 0) {
@@ -56,6 +57,7 @@ class DropdownMenu extends React.Component {
     }
     if (menuId === 1) {
       sizingStyle = styles.two;
+      indent = true;
     }
     if (menuId === 2) {
       sizingStyle = styles.three;
@@ -84,7 +86,7 @@ class DropdownMenu extends React.Component {
         let mappedChildren = children.map(function(item) {
           return {url: item.link, text: item.linkTitle}
         });
-        return <PageLinkGroup key={index} id={this.props.id + "-group-" + index} title={data.linkTitle} titleLink={data.link} onBlur={this.handleLeafBlur.bind(this)} links={mappedChildren} indent/>;
+        return <PageLinkGroup key={index} id={this.props.id + "-group-" + index} title={data.linkTitle} titleLink={data.link} onBlur={this.handleLeafBlur.bind(this)} links={mappedChildren} indent={false}/>;
       });
       const goToNextButton = this.props.hasNext
         ? <ul className={styles.skipLink}><UtilityLink id={this.props.id + "-go-to-next"} visible={this.state.goToNextSectionShown} text="Go to Next Section" onKeyDown={(event) => this.handleSkipLinkKeyDown(event)} onFocus={(event) => this.handleGoToNextFocus(event)} onBlur={(event) => this.handleGoToNextBlur(event)}/></ul>
