@@ -30,7 +30,6 @@
   .btnSecondary {
     display: block;
     margin: 30px auto 30px auto;
-
   }
 }
 
@@ -58,14 +57,12 @@
       padding: 30px 0 30px 0;
     }
   }
-
   .headline {
     @include grid-media($sba-grid-large) {
       margin: 0;
       margin-right: 30px;
     }
   }
-
   .btn {
     @include grid-media($sba-grid-large) {
       margin: 0;
@@ -90,7 +87,6 @@
   .contentContainer {
     padding: 100px 30px;
   }
-
 }
 
 .cornerGraphicLarge {
@@ -189,9 +185,3 @@
     margin-top: 10px;
   }
 }
-
-
-
-
-
-
