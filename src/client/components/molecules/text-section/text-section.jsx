@@ -15,36 +15,9 @@ class TextSection extends React.Component{
 				const tds = $(trow).find("td");
 
 				tds.each((index, tdata) => {
-					
-					/*
 						
-						since the last row of content is a body of link tags
-						with comma separators,
-						place a space after each comma so that the links have space
-						after it's preceding comma
-						ie:
-
-						change
-						<a href="#">Link 1</a>,<a href="#">Link 2</a>
-						(no space after comma ",")
-
-						to 
-						<a href="#">Link 1</a>, <a href="#">Link 2</a>
-						(has space after comma ", ")
-
-					*/
-
-					if (index === tds.length - 1) {
-						
-						const html = $(tdata).html().replace(new RegExp(",", "g"), ", ");
-						$(tdata).html(html);
-
-					} else {
-						
-						const wrapper = "<div class='table-data-wrapper'></div>";
-						$(tdata).contents().wrap(wrapper);
-
-					}
+					const html = "<div class='table-data-wrapper'>" + $(tdata).html() + "</div>";
+					$(tdata).html(html);
 
 					const label = "<div class='table-header-label'>" + headers[index] + ":</div>";
 					$(tdata).prepend(label);
