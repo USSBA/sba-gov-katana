@@ -97,6 +97,10 @@
       display: block;
       @include grid-column(4)
       }
+    & :global(.show-mobile){
+      display: block;
+    }
+
   }
   @include grid-media($sba-grid-medium){
     & table {
@@ -122,6 +126,9 @@
       border: 0px;
     }
     & :global(.table-header-label) {
+      display: none;
+    }
+    & :global(.show-mobile) {
       display: none;
     }
   }
