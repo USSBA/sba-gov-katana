@@ -2,6 +2,9 @@ var path = require('path');
 var webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const sharedConfig = require('./webpack.config.shared.js');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var CompressionPlugin = require("compression-webpack-plugin");
+
 
 module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
@@ -13,9 +16,15 @@ module.exports = function(env) {
     output: {
       path: path.join(__dirname, 'public', "build"),
       filename: 'bundle.js',
-      publicPath: '/public/'
+      publicPath: '/build/'
     },
     plugins: [
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: 'report.html',
+        generateStatsFile: true,
+        statsFilename: 'stats.json'
+      }),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false
@@ -27,15 +36,22 @@ module.exports = function(env) {
         }
       }),
       new webpack.optimize.UglifyJsPlugin({
-        sourceMap: false
+        extractComments: true
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.optimize.OccurrenceOrderPlugin(true),
+        new CompressionPlugin({
+          asset: "[path].gz[query]",
+          algorithm: "gzip",
+          test: /\.js$|\.css$|\.html$/,
+          threshold: 10240,
+          minRatio: 0.8
+        })
     ],
     module: {
       rules: [{
         test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
-        loader: 'url-loader?limit=400000'
+        loader: 'url-loader?limit=3000'
       }]
     }
   });
