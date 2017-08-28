@@ -1,9 +1,5 @@
 import React from 'react';
 
-import * as NavigationActions from "../../../actions/navigation.js";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-
 class ButtonBase extends React.Component {
   render() {
     const buttonProps = {
@@ -18,8 +14,6 @@ class ButtonBase extends React.Component {
           ? "_blank"
           : "_self",
         onTouchTap: this.props.onClick
-          ? this.props.onClick
-          : () => {this.props.actions.locationChange(this.props.URL || this.props.url);}
       }
     ;
     return (
@@ -28,10 +22,8 @@ class ButtonBase extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(NavigationActions, dispatch)
-  };
+ButtonBase.propTypes = {
+  onClick: React.PropTypes.func.isRequired
 }
 
-export default connect(null, mapDispatchToProps)(ButtonBase);
+export default ButtonBase;

@@ -3,6 +3,12 @@ import {LargeInversePrimaryButton} from "atoms";
 import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
 import styles from "./front-page-lady.scss";
 
+import * as NavigationActions from "../../../../actions/navigation.js";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {navigate} from "../../../../services/navigation";
+
+
 class FrontPageLady extends React.Component {
   render() {
     return (
@@ -17,7 +23,7 @@ class FrontPageLady extends React.Component {
               Start and grow your business.</div>
             <div className={styles.text}>
               Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
-            <LargeInversePrimaryButton text="LET'S GO" URL="/business-guide"/>
+            <LargeInversePrimaryButton text="LET'S GO" onClick={navigate("/business-guide", this)} />
             <img alt="" src={Triangle} className={styles.triangle}/>
           </div>
         </div>
@@ -26,4 +32,10 @@ class FrontPageLady extends React.Component {
   }
 }
 
-export default FrontPageLady;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(NavigationActions, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(FrontPageLady);
