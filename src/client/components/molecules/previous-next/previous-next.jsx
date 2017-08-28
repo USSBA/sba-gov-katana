@@ -88,8 +88,8 @@ class PreviousNextSection extends React.Component {
             {
               previousArticle !== null ?
                 <div id="previousContainerId" className={styles.previousContainer}>
-                  <a className={"previousnext-previous-url"} href={previousArticle.fullUrl}><SmallSecondaryButton
-                    text={previousArticle.title}/></a>
+                  <div className={"previousnext-previous-url"} href={previousArticle.fullUrl}><SmallSecondaryButton
+                    text={previousArticle.title} onClick={navigate(previousArticle.fullUrl)}/></div>
                   <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
                 </div>
                 :
@@ -137,5 +137,11 @@ class PreviousNextSection extends React.Component {
 PreviousNextSection.propTypes = {
   lineage: React.PropTypes.array.isRequired
 };
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(NavigationActions, dispatch)
+  };
+}
 
 export default PreviousNextSection;

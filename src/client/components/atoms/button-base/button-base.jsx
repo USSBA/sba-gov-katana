@@ -1,4 +1,5 @@
 import React from 'react';
+import {navigate} from "../../../actions/navigation";
 
 class ButtonBase extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class ButtonBase extends React.Component {
         formTarget: this.props.newWindow
           ? "_blank"
           : "_self",
-        onTouchTap: this.props.onClick
+        onTouchTap: navigate(this.props.url)
       }
     ;
     return (
@@ -23,7 +24,7 @@ class ButtonBase extends React.Component {
 }
 
 ButtonBase.propTypes = {
-  onClick: React.PropTypes.func.isRequired
+  url: React.PropTypes.string.isRequired
 }
 
 export default ButtonBase;
