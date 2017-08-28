@@ -37,9 +37,7 @@ class MobileNav extends React.Component {
     return (
       <div>
         <div className={styles.mobileHeader}>
-          <div className={ styles.logoNew } >
-            <a tabIndex="-1" href="/"><img alt="Small Business Administration" src={ sbaLogo } /></a>
-          </div>
+          <MainLogo />
           <span>
             <a id="mobile-navigation-button" className={this.state.expanded ? styles.menuButtonOpen :  styles.menuButtonClosed} onClick={this.toggleNav.bind(this)}>
                 <HamburgerIcon isOpen={this.state.expanded} />

@@ -6,22 +6,3 @@
     padding: 25px 0 10px;
   }
 }
-.logoNew {
-  img {
-    width: 110px;
-  }
-  a {
-    vertical-align: none;
-  }
-  display: inline;
-  float: left;
-
-  @include grid-media($sba-grid-medium) {
-    img {
-      width: 128px;
-    }
-    a {
-      vertical-align: none;
-    }
-  }
-}
