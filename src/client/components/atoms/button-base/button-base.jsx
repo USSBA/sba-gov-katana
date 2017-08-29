@@ -1,5 +1,5 @@
 import React from 'react';
-import {navigate} from "../../../actions/navigation";
+import {navigateOnClick} from "../../../services/navigation";
 
 class ButtonBase extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class ButtonBase extends React.Component {
         formTarget: this.props.newWindow
           ? "_blank"
           : "_self",
-        onTouchTap: navigate(this.props.url)
+        onTouchTap: navigateOnClick(this.props.url)
       }
     ;
     return (
@@ -25,6 +25,7 @@ class ButtonBase extends React.Component {
 
 ButtonBase.propTypes = {
   url: React.PropTypes.string.isRequired
+  //TODO: Require one or the other of url or onClick
 }
 
 export default ButtonBase;
