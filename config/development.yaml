@@ -27,4 +27,4 @@ linc:
     sendToLincPasswordUpdateEnabled: false
 oca:
     soap:
-        wsdlUrl: https://catweb2.sba.gov/lendermatch/ws/linc.wsdl
+        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl
