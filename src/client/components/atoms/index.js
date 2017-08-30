@@ -32,10 +32,16 @@ import SmallSecondaryButton from "./small-secondary-button/small-secondary-butto
 import SocialMediaLink from "./social-media-link/social-media-link.jsx";
 import SubtitleText from "./subtitle-text/subtitle-text.jsx";
 import TextInput from "./text-input/text-input.jsx";
-import Textarea from "./textarea/textarea.jsx";
+import TextArea from "./textarea/textarea.jsx";
 import UtilityLink from "./utility-link/utility-link.jsx";
+import DocumentType from "./document-type/document-type.jsx";
 import ValidationIcon from "./validation-icon/validation-icon.jsx";
 import SearchIcon from "./icons/search.jsx";
 import ApplyButton from "./apply-button/apply-button.jsx";
+import CaretIcon from "./icons/caret-down.jsx";
+import CloseIcon from "./icons/close.jsx";
+import HomeIcon from "./icons/home.jsx";
+import FailureIcon from "./icons/failure.jsx";
+import SuccessIcon from "./icons/success.jsx";
 
-export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, Textarea, UtilityLink, ValidationIcon, SearchIcon, ApplyButton };
+export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, TextArea, UtilityLink, ValidationIcon, SearchIcon, ApplyButton, DocumentType, CaretIcon, CloseIcon, HomeIcon, FailureIcon, SuccessIcon };
