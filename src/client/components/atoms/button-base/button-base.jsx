@@ -14,7 +14,7 @@ class ButtonBase extends React.Component {
         formTarget: this.props.newWindow
           ? "_blank"
           : "_self",
-        onTouchTap: createNavigation(this.props.url)
+        onTouchTap: this.props.onClick ? this.props.onClick : createNavigation(this.props.url)
       }
     ;
     return (
@@ -24,7 +24,8 @@ class ButtonBase extends React.Component {
 }
 
 ButtonBase.propTypes = {
-  url: React.PropTypes.string.isRequired
+  url: React.PropTypes.string,
+  onClick: React.PropTypes.func
   //TODO: Require one or the other of url or onClick
 }
 

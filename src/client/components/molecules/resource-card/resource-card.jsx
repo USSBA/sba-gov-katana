@@ -14,7 +14,7 @@ class ResourceCard extends React.Component{
             <p>
               {this.props.description}
             </p>
-            <SmallPrimaryButton text={this.props.buttonText} URL={this.props.buttonURL} newWindow />
+            <SmallPrimaryButton text={this.props.buttonText} url={this.props.buttonURL} newWindow />
           </div>
       );
     }

@@ -10,12 +10,9 @@ import * as NavigationActions from "../../../actions/navigation.js";
 import styles from "./call-to-action.scss";
 import cornerGraphicLarge from "./corner-graphic-large.png";
 import cornerGraphicSmall from "./corner-graphic-small.png";
+import {createCtaNavigation} from "../../../services/navigation";
 
 class CallToAction extends React.Component {
-
-  handleClick() {
-    this.props.actions.callToAction(this.props.btnUrl, this.props.title, this.props.size, 1);
-  }
 
   ctaSize() {
 
@@ -61,9 +58,8 @@ class CallToAction extends React.Component {
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
             <p className={styles.blurb}>{this.props.blurb}</p>
-            <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle} onClick={() => {
-              this.handleClick();
-            }}/>
+            <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle}
+                                       onClick={createCtaNavigation(this.props.btnUrl, this.props.title, this.props.size, 1)}/>
           </div>
           <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge} alt=""/>
           <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall} alt=""/>

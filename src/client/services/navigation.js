@@ -1,12 +1,12 @@
 import { browserHistory } from "react-router";
 import { logEvent } from "../services/analytics.js";
 
-function callToAction(targetLocation, category, action, value) {
-  navigateNow(targetLocation, {
+function createCtaNavigation(targetLocation, category, action, value) {
+  return createNavigation(targetLocation, {
     category: category,
     action: action,
     value: value,
-    label: window.location.pathname
+    label: browserHistory.getCurrentLocation().pathname
   });
 }
 
@@ -46,4 +46,4 @@ function goBackNow() {
   });
 }
 
-export { callToAction, goBackNow, navigateNow, createNavigation };
+export { createCtaNavigation, goBackNow, navigateNow, createNavigation };
