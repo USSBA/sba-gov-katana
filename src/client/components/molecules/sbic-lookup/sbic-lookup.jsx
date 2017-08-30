@@ -1,9 +1,9 @@
-import React from "react"
-import s from "./sbic-lookup.scss";
-import {SmallInverseSecondaryButton, Multiselect} from '../../atoms';
+import React from "react";
+import {SmallInverseSecondaryButton, Multiselect} from "atoms";
 import json2csv from "json2csv";
 import {pick} from "lodash";
-import Paginator from "../../molecules/paginator/paginator.jsx";
+import Paginator from "../paginator/paginator.jsx";
+import s from "./sbic-lookup.scss";
 
 var pageSize = 10;
 class SbicLookup extends React.Component {

@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from "./resource-card.scss"
-import SmallPrimaryButton from "../../atoms/small-primary-button/small-primary-button.jsx"
+import React from "react";
+import {SmallPrimaryButton} from "atoms";
+import styles from "./resource-card.scss";
 
 class ResourceCard extends React.Component{
     render(){

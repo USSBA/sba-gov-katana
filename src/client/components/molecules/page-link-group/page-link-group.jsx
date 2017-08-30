@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./page-link-group.scss"
-import PageLink from "../../atoms/page-link/page-link.jsx";
+import {PageLink} from "atoms";
+import styles from "./page-link-group.scss";
 
 class PageLinkGroup extends React.Component {
 

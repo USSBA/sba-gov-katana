@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./text-section.scss";
 import cheerio from "cheerio";
+import styles from "./text-section.scss";
 
 class TextSection extends React.Component{
 	parseTables() {

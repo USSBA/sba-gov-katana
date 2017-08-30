@@ -1,8 +1,8 @@
 import React from "react";
 import _ from "lodash";
+import {MultiSelect} from "atoms";
 import styles from "./contact-card-lookup.scss";
 import states from "../../../services/us-states.json";
-import MultiSelect from "../../atoms/multiselect/multiselect.jsx";
 
 class ContactCardLookup extends React.Component {
 

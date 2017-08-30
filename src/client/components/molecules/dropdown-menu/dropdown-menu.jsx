@@ -1,14 +1,13 @@
-import React from 'react';
+import React from "react";
 import styles from './dropdown-menu.scss';
 import {isEmpty} from "lodash";
-import constants from "../../../services/constants.js"
-import clientConfig from "../../../services/client-config.js"
+import {UtilityLink} from "atoms";
+import constants from "../../../services/constants.js";
+import clientConfig from "../../../services/client-config.js";
 
-import PageLinkGroup from "../page-link-group/page-link-group.jsx"
-import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
-
-import FeaturedCallout from "../featured-callout/featured-callout.jsx"
-import SmallInverseCta from "../../molecules/small-inverse-cta/small-inverse-cta.jsx"
+import PageLinkGroup from "../page-link-group/page-link-group.jsx";
+import FeaturedCallout from "../featured-callout/featured-callout.jsx";
+import SmallInverseCta from "../small-inverse-cta/small-inverse-cta.jsx";
 
 class DropdownMenu extends React.Component {
   constructor(props) {

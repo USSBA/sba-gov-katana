@@ -1,6 +1,6 @@
-import React from "react"
+import React from "react";
 import styles from "./readmore.scss";
-import {SmallSecondaryButton} from "../../atoms";
+import {SmallSecondaryButton} from "atoms";
 
 class ReadMore extends React.Component{
 

@@ -1,9 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {
+  SmallInversePrimaryButton,
+  SmallInverseSecondaryButton,
+  LargePrimaryButton
+} from "atoms";
 import * as NavigationActions from "../../../actions/navigation.js";
 import styles from "./call-to-action.scss";
-import {SmallInversePrimaryButton, SmallInverseSecondaryButton, LargePrimaryButton} from "../../atoms";
 import cornerGraphicLarge from "./corner-graphic-large.png";
 import cornerGraphicSmall from "./corner-graphic-small.png";
 

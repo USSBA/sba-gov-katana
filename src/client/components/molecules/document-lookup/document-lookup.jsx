@@ -4,19 +4,17 @@ import _ from "lodash";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import querystring from "querystring";
-
-import * as ContentActions from "../../../actions/content.js";
-import styles from "./document-lookup.scss";
-
 import {
 	ApplyButton,
 	Multiselect,
 	TextInput,
 	SearchIcon,
 	SmallInverseSecondaryButton
-} from "../../atoms";
+} from "atoms";
+import * as ContentActions from "../../../actions/content.js";
 import {Paginator} from "../../molecules/";
 import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
+import styles from "./document-lookup.scss";
 
 
 const config = {

@@ -1,15 +1,18 @@
 import React from 'react'
-import s from './document-article.scss'
-
-import DocumentType from '../../atoms/document-type/document-type.jsx'
-import TextSection from '../text-section/text-section.jsx'
-import DecorativeDash from '../../atoms/decorative-dash/decorative-dash.jsx'
-import Button from '../../atoms/large-primary-button/large-primary-button.jsx'
-import moment from 'moment'
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as NavigationActions from "../../../actions/navigation.js";
+import moment from "moment";
 import queryString from "querystring";
+import {
+  DocumentType,
+  DecorativeDash,
+  Button
+} from "atoms";
+
+import * as NavigationActions from "../../../actions/navigation.js";
+
+import TextSection from "../text-section/text-section.jsx";
+import s from "./document-article.scss";
 
 export class DocumentArticle extends React.Component {
 
