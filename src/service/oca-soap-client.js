@@ -140,6 +140,7 @@ function createSoapEnvelopeForPasswordUpdate(userName, password, newPassword) {
 
 
 function parseResponse(xmlBody) {
+  console.log("Full Response from OCA", xmlBody);
   let errorMessageTechnical = "";
   let errorMessageEnglish = "";
 

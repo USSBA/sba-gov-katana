@@ -86,8 +86,9 @@ function sendPasswordUpdateRequest() {
     .then((response) => {
       if (response) {
         if (moment().unix() >= response.expiry) {
-          const newPassword = encryptPassword(generateOcaPassword());
-          return sendPasswordUpdateToOca(response.username, response.password, newPassword).then((result) => {
+          let newPlainTextPassword = generateOcaPassword();
+          const newPassword = encryptPassword(newPlainTextPassword);
+          return sendPasswordUpdateToOca(response.username, decryptPassword(response.password), newPlainTextPassword).then((result) => {
             if (result.responseCode === "0" && result.comment === "Password changed.") { //eslint-disable-line no-magic-numbers
               return updateLincPassword(response, newPassword);
             }
