@@ -7,8 +7,10 @@ import {
 } from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./happening-now.scss";
+import {createNavigation} from "../../../../services/navigation";
 
 const contentProperty = "happeningNow";
+
 
 class HappeningNow extends React.Component {
   constructor() {
@@ -22,7 +24,7 @@ class HappeningNow extends React.Component {
   makeDesktopImage(item, index, desktopStyle) {
     return (
       <div key={index} className={desktopStyle}>
-        <a href={item.url}>
+        <a onTouchTap={createNavigation(item.url)}>
           <img src={item.image} alt={item.imageAlt}></img>
         </a>
       </div>
