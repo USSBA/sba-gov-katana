@@ -5,6 +5,7 @@ import moment from "moment";
 import {SmallPrimaryButton} from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./blog.scss";
+import {createNavigation} from "../../../../services/navigation";
 
 class Blog extends React.Component {
   constructor() {
@@ -38,7 +39,7 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogTitleContainer}>
-                  <a className={styles.blogTitle} href={item.url}>
+                  <a className={styles.blogTitle} onTouchTap={createNavigation(item.url)}>
                     {item.title}
                   </a>
                 </div>
@@ -76,7 +77,7 @@ class Blog extends React.Component {
       <div className={styles.containerMobile}>
         {items.map(function(item, i) {
           return (
-            <a href={item.url} key={i}>
+            <a onTouchTap={createNavigation(item.url)} key={i}>
               <div className={styles.singleBlog}>
                 <div className={styles.blogTitle}>
                   {item.title}
