@@ -1,7 +1,7 @@
 import React from "react";
 import {shallow} from "enzyme";
 
-import {ApplyButton} from "client/components/atoms/";
+import {ApplyButton} from "atoms";
 
 describe("ApplyButton", () => {
 
