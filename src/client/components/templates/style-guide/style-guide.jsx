@@ -3,7 +3,7 @@ import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-
 import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx';
 import CaptionText from '../../atoms/caption-text/caption-text.jsx';
 
-import LargePrimaryButton from '../../atoms/large-primary-button/large-primary-button.jsx';
+import {LargePrimaryButton} from "atoms";
 import LargeSecondaryButton from '../../atoms/large-secondary-button/large-secondary-button.jsx';
 import LargeInversePrimaryButton from '../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx';
 import LargeInverseSecondaryButton from '../../atoms/large-inverse-secondary-button/large-inverse-secondary-button.jsx';
