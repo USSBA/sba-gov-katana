@@ -2,28 +2,21 @@ import { browserHistory } from "react-router";
 import { logEvent } from "../services/analytics.js";
 
 function callToAction(targetLocation, category, action, value) {
-  navigate(targetLocation, {
+  navigateNow(targetLocation, {
     category: category,
     action: action,
     value: value,
     label: window.location.pathname
   });
-// logEvent({
-//   category: category,
-//   action: action,
-//   label: window.location.pathname,
-//   value: value
-// });
-// // browserHistory.push(targetLocation);
-// document.location = targetLocation;
 }
 
 
-function navigate(targetLocation, eventConfig) {
-  if(targetLocation){
+// eslint-disable-next-line complexity
+function navigateNow(targetLocation, eventConfig) {
+  if (targetLocation) {
     browserHistory.push(targetLocation);
   } else {
-    console.log(`WARNING: navigate passed a null target location`);
+    console.log("WARNING: navigateNow passed a null target location");
   }
 
   //TODO: Unsure of this;  what happens with anchor tags?
@@ -38,13 +31,13 @@ function navigate(targetLocation, eventConfig) {
   }
 }
 
-function navigateOnClick(targetLocation, eventConfig){
+function createNavigation(targetLocation, eventConfig) {
   return () => {
-    navigate(targetLocation, eventConfig);
-  }
+    navigateNow(targetLocation, eventConfig);
+  };
 }
 
-function goBack() {
+function goBackNow() {
   browserHistory.goBack();
   logEvent({
     category: "Navigation",
@@ -53,4 +46,4 @@ function goBack() {
   });
 }
 
-export { callToAction, goBack, navigate, navigateOnClick };
+export { callToAction, goBackNow, navigateNow, createNavigation };

@@ -61,7 +61,7 @@ class Blog extends React.Component {
           {items.map(function(item, i) {
             return (
               <div key={i} className={styles.blogColumn}>
-                <SmallPrimaryButton text="READ MORE" URL={item.url}/>
+                <SmallPrimaryButton text="READ MORE" url={item.url}/>
               </div>
             );
           })}

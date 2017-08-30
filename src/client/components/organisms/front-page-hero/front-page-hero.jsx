@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './front-page-hero.scss'
 import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
 
+import {createNavigation} from "../../../services/navigation";
+
 class FrontPageHero extends React.Component {
 
   render() {
@@ -18,13 +20,13 @@ class FrontPageHero extends React.Component {
         <div className={styles.boxContainer}>
           <div className={styles.AccentBox}>
             <ul>
-              <a href={this.props.links[0].link}>
+              <a onTouchTap={createNavigation(this.props.links[0].link)}>
                 <li className={styles.borderBox}>{this.props.links[0].title}</li>
               </a>
-              <a href={this.props.links[1].link}>
+              <a onTouchTap={createNavigation(this.props.links[1].link)}>
                 <li className={styles.borderBox}>{this.props.links[1].title}</li>
               </a>
-              <a href={this.props.links[2].link}>
+              <a onTouchTap={createNavigation(this.props.links[2].link)}>
                 <li>{this.props.links[2].title}</li>
               </a>
             </ul>

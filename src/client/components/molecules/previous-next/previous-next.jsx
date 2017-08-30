@@ -88,8 +88,8 @@ class PreviousNextSection extends React.Component {
             {
               previousArticle !== null ?
                 <div id="previousContainerId" className={styles.previousContainer}>
-                  <div className={"previousnext-previous-url"} href={previousArticle.fullUrl}><SmallSecondaryButton
-                    text={previousArticle.title} onClick={navigate(previousArticle.fullUrl)}/></div>
+                  <div className={"previousnext-previous-url"}><SmallSecondaryButton
+                    text={previousArticle.title} url={previousArticle.fullUrl}/></div>
                   <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
                 </div>
                 :
@@ -100,8 +100,8 @@ class PreviousNextSection extends React.Component {
             {
               nextArticle !== null ?
                 <div id="nextContainerDesktopId" className={styles.nextContainer}>
-                  <a className={"previousnext-next-url"} href={nextArticle.fullUrl}><SmallSecondaryButton
-                    text={nextArticle.title}/></a>
+                  <div className={"previousnext-next-url"} ><SmallSecondaryButton
+                    text={nextArticle.title} url={nextArticle.fullUrl}/></div>
                   <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
                 </div>
                 :
