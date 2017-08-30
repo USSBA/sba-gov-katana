@@ -1,9 +1,10 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-
-import Slider from '../../../atoms/carousel/carousel.jsx';
-import SmallPrimaryButton from '../../../atoms/small-primary-button/small-primary-button.jsx';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {
+  Slider,
+  SmallPrimaryButton
+} from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./happening-now.scss";
 

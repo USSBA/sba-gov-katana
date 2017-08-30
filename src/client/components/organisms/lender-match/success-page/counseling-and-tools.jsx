@@ -1,15 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import *  as ContentActions from '../../../../actions/content.js';
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import {SmallPrimaryButton} from "atoms";
+import *  as ContentActions from "../../../../actions/content.js";
 import { logEvent } from "../../../../services/analytics.js";
-import SmallPrimaryButton from "../../../atoms/small-primary-button/small-primary-button.jsx"
-
-
-import CounselorMap from './counselor-map.jsx';
-import styles from './counseling-and-tools.scss';
-
+import CounselorMap from "./counselor-map.jsx";
+import styles from "./counseling-and-tools.scss";
 
 export class DynamicCounselingAndTools extends React.Component {
   constructor() {

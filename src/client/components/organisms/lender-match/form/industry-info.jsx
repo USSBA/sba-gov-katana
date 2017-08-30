@@ -1,20 +1,18 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {includes, map} from "lodash";
-
-
-import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getSelectBoxValidationState, containsErrorOrNull} from '../../../../services/form-validation-helpers.js';
+import {
+  MultiSelect,
+  Radio
+} from "atoms";
+import * as LenderMatchActions from "../../../../actions/lender-match.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
+import {getSelectBoxValidationState, containsErrorOrNull} from "../../../../services/form-validation-helpers.js";
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
-
-
-import styles from './lender-match.scss';
-import MultiSelect from '../../../atoms/multiselect/multiselect.jsx';
-import RadioButtonGroup from '../../../atoms/radio/radio.jsx';
-import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
+import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
+import styles from "./lender-match.scss";
 
 class IndustryInfoForm extends React.Component {
   constructor(props) {
@@ -145,7 +143,7 @@ class IndustryInfoForm extends React.Component {
       <div>
         <form id={id} ref={(form) => this.industryInfoForm = form} onSubmit={(e) => this.handleSubmit(e)}>
           <MultiSelect id={id+"-name"} errorText={constants.messages.validation.invalidIndustry} label="In what industry is your business?" name="industryType" onChange={this.handleSelectChange.bind(this)} validationState={this.state.validStates.industryType} value={this.state.industryType} options={industryTypeOptions} onBlur={this.handleIndustryTypeBlur.bind(this)} autoFocus maxValues={3} onFocus={this.handleFocus.bind(this)}></MultiSelect>
-          <RadioButtonGroup id={id+"-experience"} errorText={constants.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
+          <Radio id={id+"-experience"} errorText={constants.messages.validation.invalidIndustryExperience} label="How much experience do you have?" name="industryExperience" onChange={this.handleChange.bind(this)} validationState={this.state.validStates.industryExperience} value={this.state.industryExperience} options={radioButtonOptions} onBlur={this.handleIndustryExperienceBlur.bind(this)} onFocus={this.handleFocus.bind(this)}/>
           <FormPageButtons parentId={id} backButtonHandler={this.props.locationActions.goBack} continueButtonHandler={this.handleSubmit.bind(this)} continueButtonDisabled={!(this.isValidForm())}/>
         </form>
       </div>

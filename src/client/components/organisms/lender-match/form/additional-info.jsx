@@ -1,15 +1,13 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-
-import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/navigation.js';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {CheckBox} from "atoms";
+import * as LenderMatchActions from "../../../../actions/lender-match.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
 import {logEvent} from "../../../../services/analytics.js";
-
-import CheckBox from '../../../atoms/checkbox/checkbox.jsx';
-import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
-import styles from './lender-match.scss';
-import addInfoStyles from './additional-info.scss'
+import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
+import styles from "./lender-match.scss";
+import addInfoStyles from "./additional-info.scss";
 
 export class AdditionalInfoForm extends React.Component {
   constructor(props) {

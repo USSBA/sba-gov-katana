@@ -1,18 +1,19 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {includes, pick} from 'lodash';
-
-import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from '../../../../services/form-validation-helpers.js';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {includes, pick} from "lodash";
+import {
+  TextInput,
+  TextArea
+} from "atoms";
+import * as LenderMatchActions from "../../../../actions/lender-match.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
+import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from "../../../../services/form-validation-helpers.js";
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
-import styles from './lender-match.scss';
-import TextInput from '../../../atoms/text-input/text-input.jsx';
-import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
-import TextArea from "../../../atoms/textarea/textarea.jsx";
+import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
+import styles from "./lender-match.scss";
 
 class BusinessInfoForm extends React.Component {
   static requiredFields = ["businessInfoName", "businessInfoZipcode", "businessInfoDescription"]
