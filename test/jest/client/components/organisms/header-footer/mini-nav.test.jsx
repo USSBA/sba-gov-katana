@@ -9,12 +9,6 @@ import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 import _ from 'lodash';
 
-jest.mock("client/services/client-config.js", function(){
-    return {
-        isUserLoggedIn: false
-    };
-});
-
 // revist after DT-1655
 test.skip('Enter on Search Toggle should open the search bar', () => {
     const component = shallow(

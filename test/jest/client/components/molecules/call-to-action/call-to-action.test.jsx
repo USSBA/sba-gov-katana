@@ -5,14 +5,6 @@ import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
 
-jest.mock("client/services/client-config.js", function(){
-  return {
-    googleAnalytics: {
-      enabled: false
-    }
-  };
-});
-
 describe("CallToAction", () => {
   const ctaOptions = {
     btnUrl: "http://www.example.com/",

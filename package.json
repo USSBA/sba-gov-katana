@@ -166,9 +166,10 @@
       "<rootDir>/src/client/components/"
     ],
     "globals": {
-      "window": {
-        "CONFIG": {
-          "isUserLoggedIn": false
+      "CONFIG": {
+        "isUserLoggedIn": false,
+        "googleAnalytics": {
+          "enabled": false
         }
       }
     }

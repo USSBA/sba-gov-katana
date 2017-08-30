@@ -42,20 +42,19 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
         className="previousContainer"
         id="previousContainerId"
       >
-        <a
+        <div
           className="previousnext-previous-url"
-          href="/business-guide/launch/pick-your-business-location-zoning-laws"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Pick your business location
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-left chevronPrevious"
@@ -65,20 +64,19 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
         className="nextContainer"
         id="nextContainerDesktopId"
       >
-        <a
+        <div
           className="previousnext-next-url"
-          href="/business-guide/launch/choose-your-business-name-register"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Choose your business name
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-right chevronNext"
@@ -113,7 +111,7 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           Choose your business name
         </button>
@@ -169,20 +167,19 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
         className="previousContainer"
         id="previousContainerId"
       >
-        <a
+        <div
           className="previousnext-previous-url"
-          href="/business-guide/plan/buy-existing-business-franchise"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Buy an existing business or franchise
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-left chevronPrevious"
@@ -192,20 +189,19 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
         className="nextContainer"
         id="nextContainerDesktopId"
       >
-        <a
+        <div
           className="previousnext-next-url"
-          href="/business-guide/launch/choose-business-structure-types-chart"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Choose a business structure
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-right chevronNext"
@@ -240,7 +236,7 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           Choose a business structure
         </button>
@@ -299,7 +295,7 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           No previous article
         </button>
@@ -308,20 +304,19 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
         className="nextContainer"
         id="nextContainerDesktopId"
       >
-        <a
+        <div
           className="previousnext-next-url"
-          href="/business-guide/plan/write-your-business-plan-template"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Write your business plan
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-right chevronNext"
@@ -356,7 +351,7 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           Write your business plan
         </button>
@@ -412,20 +407,19 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
         className="previousContainer"
         id="previousContainerId"
       >
-        <a
+        <div
           className="previousnext-previous-url"
-          href="/business-guide/launch/open-business-bank-account-fees-benefits"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Open a business bank account
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-left chevronPrevious"
@@ -435,20 +429,19 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
         className="nextContainer"
         id="nextContainerDesktopId"
       >
-        <a
+        <div
           className="previousnext-next-url"
-          href="/business-guide/manage/manage-your-finances-business-credit"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Manage your finances
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-right chevronNext"
@@ -483,7 +476,7 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           Manage your finances
         </button>
@@ -530,20 +523,19 @@ exports[`PreviousNext Business Guide When in the last article of the last sectio
         className="previousContainer"
         id="previousContainerId"
       >
-        <a
+        <div
           className="previousnext-previous-url"
-          href="/business-guide/grow/native-american-owned-businesses-programs"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Native American-owned businesses
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-left chevronPrevious"
@@ -604,20 +596,19 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
         className="previousContainer"
         id="previousContainerId"
       >
-        <a
+        <div
           className="previousnext-previous-url"
-          href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Operate as a 7(a) Lender
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-left chevronPrevious"
@@ -627,20 +618,19 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
         className="nextContainer"
         id="nextContainerDesktopId"
       >
-        <a
+        <div
           className="previousnext-next-url"
-          href="/for-partners/lenders/7a-loans/training-and-courses"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Training and Courses
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-right chevronNext"
@@ -675,7 +665,7 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           Training and Courses
         </button>
@@ -734,7 +724,7 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           No previous article
         </button>
@@ -743,20 +733,19 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
         className="nextContainer"
         id="nextContainerDesktopId"
       >
-        <a
+        <div
           className="previousnext-next-url"
-          href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Operate as a 7(a) Lender
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-right chevronNext"
@@ -791,7 +780,7 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
           disabled={undefined}
           formTarget="_self"
           id={undefined}
-          onClick={[Function]}
+          onTouchTap={[Function]}
         >
           Operate as a 7(a) Lender
         </button>
@@ -838,20 +827,19 @@ exports[`PreviousNext For Partners When in the last article of a section it rend
         className="previousContainer"
         id="previousContainerId"
       >
-        <a
+        <div
           className="previousnext-previous-url"
-          href="/for-partners/lenders/7a-loans/training-and-courses"
         >
           <button
             className="SmallSecondaryButton  "
             disabled={undefined}
             formTarget="_self"
             id={undefined}
-            onClick={[Function]}
+            onTouchTap={[Function]}
           >
             Training and Courses
           </button>
-        </a>
+        </div>
         <i
           aria-hidden="true"
           className="fa fa-chevron-left chevronPrevious"
