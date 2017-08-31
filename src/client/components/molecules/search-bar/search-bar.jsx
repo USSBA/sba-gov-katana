@@ -1,7 +1,9 @@
-import React from 'react';
-import SmallIcon from "../../atoms/small-icon/small-icon.jsx";
-import TextInput from "../../atoms/text-input/text-input.jsx"
-import styles from "./search-bar.scss"
+import React from "react";
+import {
+  SmallIcon,
+  TextInput
+} from "atoms";
+import styles from "./search-bar.scss";
 
 class SearchBar extends React.Component {
   constructor(props) {

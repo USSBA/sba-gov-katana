@@ -1,14 +1,16 @@
 import React from "react";
-var Waypoint = require("react-waypoint");
-import styles from "./section-nav.scss";
-import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
-import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
-import whiteIconManage from "../../atoms/icons/white-manage.jsx";
-import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
-import * as ModalActions from "../../../actions/show-modal.js";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import _ from "lodash";
+import {
+  whiteIconLaunch,
+  whiteIconPlan,
+  whiteIconManage,
+  whiteIconGrow
+} from "atoms";
+import * as ModalActions from "../../../actions/show-modal.js";
+import styles from "./section-nav.scss";
+var Waypoint = require("react-waypoint");
 
 const businessGuideFullUrl = "/business-guide";
 

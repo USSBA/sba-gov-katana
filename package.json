@@ -161,7 +161,8 @@
       "\\.(css|scss|less)$": "identity-obj-proxy"
     },
     "modulePaths": [
-      "<rootDir>/src/"
+      "<rootDir>/src/",
+      "<rootDir>/src/client/components/"
     ],
     "globals": {
       "window": {

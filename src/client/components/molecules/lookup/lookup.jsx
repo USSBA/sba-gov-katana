@@ -1,15 +1,15 @@
-import React from "react"
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ContentActions from "../../../actions/content.js"
-import {filter} from "lodash"
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as ContentActions from "../../../actions/content.js";
+import {filter} from "lodash";
 import {logEvent} from "../../../services/analytics.js";
 
-import styles from "./lookup.scss";
-import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx"
+import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx";
 import SbicLookup from "../sbic-lookup/sbic-lookup.jsx";
-import DocumentLookup from "../document-lookup/document-lookup.jsx"
+import DocumentLookup from "../document-lookup/document-lookup.jsx";
 import SuretyLookup from "../surety-lookup/surety-lookup.jsx";
+import styles from "./lookup.scss";
 
 class Lookup extends React.Component {
 

@@ -74,6 +74,11 @@ module.exports = function(styleNamingFormat) {
           loader: 'json-loader'
         }
       ]
+    },
+    resolve: {
+      alias: {
+        atoms: path.resolve(__dirname, "src/client/components/atoms")
+      }
     }
   };
 };

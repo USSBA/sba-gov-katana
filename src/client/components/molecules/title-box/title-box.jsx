@@ -1,9 +1,11 @@
-import React from 'react';
-import styles from './title-box.scss'
-import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
-import diagonalLinesMobile from '../../../../../public/assets/images/homepage/diagonal-lines-mobile.png';
-import LargeSecondaryButton from "../../atoms/large-secondary-button/large-secondary-button.jsx";
-import LargeInversePrimaryButton from "../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx";
+import React from "react";
+import {
+    LargeInversePrimaryButton,
+    LargeSecondaryButton
+} from "atoms";
+import diagonalLines from "../../../../../public/assets/images/homepage/diagonal-lines.png";
+import diagonalLinesMobile from "../../../../../public/assets/images/homepage/diagonal-lines-mobile.png";
+import styles from "./title-box.scss";
 
 class TitleBox extends React.Component {
 

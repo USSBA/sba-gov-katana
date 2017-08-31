@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './image-section.scss'
+import React from "react";
+import styles from "./image-section.scss";
 
 class ImageSection extends React.Component {
 

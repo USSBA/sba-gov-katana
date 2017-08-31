@@ -1,6 +1,6 @@
-import React from 'react'
-import styles from './breadcrumb.scss'
-import {SmallIcon} from "../../atoms";
+import React from "react";
+import styles from "./breadcrumb.scss";
+import {SmallIcon} from "atoms";
 import _ from "lodash";
 
 class Breadcrumb extends React.Component {

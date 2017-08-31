@@ -1,8 +1,11 @@
 import React from "react";
-import {DecorativeDash, PdfIcon} from "../../atoms";
+import _ from "lodash";
+import {
+  DecorativeDash,
+  DocumentType,
+  PdfIcon
+} from "atoms";
 import s from "./document-card.scss";
-import DocumentType from "../../atoms/document-type/document-type.jsx";
-import _ from 'lodash'
 
 class DocumentCard extends React.Component {
   getLatestFile() {

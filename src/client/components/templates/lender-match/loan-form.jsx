@@ -1,12 +1,12 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {indexOf} from 'lodash';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {indexOf} from "lodash";
+import {ProgressBar} from "atoms";
 
-import * as LenderMatchActions from '../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../actions/navigation.js';
-import styles from './loan-form.scss';
-import ProgressBar from '../../atoms/progress-bar/progress-bar.jsx'
+import * as LenderMatchActions from "../../../actions/lender-match.js";
+import * as LocationChangeActions from "../../../actions/navigation.js";
+import styles from "./loan-form.scss";
 
 class LoanForm extends React.Component {
   render() {

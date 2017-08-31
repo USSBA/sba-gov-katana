@@ -1,9 +1,11 @@
-import React from 'react';
-import styles from './text-input.scss';
-import ValidationIcon from '../validation-icon/validation-icon.jsx';
-import FormErrorMessage from "../form-error-message/form-error-message.jsx";
-import SuccessIcon from "../../atoms/icons/success.jsx"
-import FailureIcon from "../../atoms/icons/failure.jsx"
+import React from "react";
+import {
+  ValidationIcon,
+  FormErrorMessage,
+  SuccessIcon,
+  FailureIcon
+} from "atoms";
+import styles from "./text-input.scss";
 
 class TextInput extends React.Component {
   iconValidation(validationState) {

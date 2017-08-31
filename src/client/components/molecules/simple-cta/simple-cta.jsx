@@ -1,10 +1,10 @@
-import React from "react"
-import styles from "./simple-cta.scss";
-import {SmallSecondaryButton} from "../../atoms";
-import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-light.png";
+import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {SmallSecondaryButton} from "atoms";
 import * as NavigationActions from "../../../actions/navigation.js";
+import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-light.png";
+import styles from "./simple-cta.scss";
 
 class SimpleCta extends React.Component{
     handleClick() {

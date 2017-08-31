@@ -1,12 +1,12 @@
-import React from "react"
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import _ from "lodash";
+import {Multiselect} from "atoms";
+import * as ContentActions from "../../../actions/content.js";
+import Paginator from "../paginator/paginator.jsx";
+import CardGrid from "../card-grid/card-grid.jsx";
 import s from "./surety-lookup.scss";
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ContentActions from "../../../actions/content.js"
-import {Multiselect} from '../../atoms';
-import _ from 'lodash';
-import Paginator from "../../molecules/paginator/paginator.jsx";
-import CardGrid from "../../molecules/card-grid/card-grid.jsx"
 
 var pageSize = 9;
 var dataProp = "statesTaxonomy";

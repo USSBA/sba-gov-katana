@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './front-page-lady.scss';
-import LargeInversePrimaryButton from '../../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx'
-import Triangle from '../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png';
+import React from "react";
+import {LargeInversePrimaryButton} from "atoms";
+import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
+import styles from "./front-page-lady.scss";
 
 class FrontPageLady extends React.Component {
   render() {

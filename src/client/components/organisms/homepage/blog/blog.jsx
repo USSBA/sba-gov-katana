@@ -1,11 +1,10 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import moment from "moment";
+import {SmallPrimaryButton} from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./blog.scss";
-import moment from 'moment';
-
-import SmallPrimaryButton from '../../../atoms/small-primary-button/small-primary-button.jsx';
 
 class Blog extends React.Component {
   constructor() {

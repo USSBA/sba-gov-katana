@@ -1,12 +1,14 @@
-import React from 'react';
-import styles from "./mobile-nav.scss";
-import HamburgerIcon from "../../../atoms/hamburger-icon/hamburger-icon.jsx";
-import MainLogo from "../../../atoms/main-logo/main-logo.jsx";
-import SectionLink from "../../../atoms/section-link/section-link.jsx";
+import React from "react";
+import {
+  HamburgerIcon,
+  MainLogo,
+  SectionLink
+} from "atoms";
 
 import searchIcon from '../../../../../../public/assets/svg/mobile-menu/search-icon.svg';
 import nearyouIcon from '../../../../../../public/assets/svg/mobile-menu/near-you-icon.svg';
 import calendarIcon from '../../../../../../public/assets/svg/mobile-menu/calendar-icon.svg';
+import styles from "./mobile-nav.scss";
 
 class MobileNav extends React.Component {
   constructor(props) {

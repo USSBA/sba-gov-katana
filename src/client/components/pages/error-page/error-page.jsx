@@ -1,8 +1,10 @@
-import React from 'react';
-import styles from './error-page.scss';
+import React from "react";
+import {
+    SmallIcon,
+    TextInput
+} from "atoms";
 import errorImg from "../../../../../public/assets/images/error-page/SBA_404.png";
-import SmallIcon from "../../atoms/small-icon/small-icon.jsx";
-import TextInput from "../../atoms/text-input/text-input.jsx";
+import styles from "./error-page.scss";
 
 class ErrorPage extends React.Component {
     constructor(props) {

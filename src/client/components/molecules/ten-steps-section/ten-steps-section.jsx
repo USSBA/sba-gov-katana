@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './ten-steps-section.scss';
+import React from "react";
+import Waypoint from "react-waypoint";
 import TitleBox from "../title-box/title-box.jsx";
-import Waypoint from "react-waypoint"
+import styles from "./ten-steps-section.scss";
 
 class TenStepsSection extends React.Component {
     calculateSectionStyle(){

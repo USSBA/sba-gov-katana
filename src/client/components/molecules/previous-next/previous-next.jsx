@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 import styles from "./previous-next.scss";
 import _ from "lodash";
-import SmallSecondaryButton from "../../atoms/small-secondary-button/small-secondary-button.jsx";
+import {SmallSecondaryButton} from "atoms";
 
 const businessGuideUrl = "/business-guide";
 

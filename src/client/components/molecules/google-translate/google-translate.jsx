@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './google-translate.scss';
-import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
+import React from "react";
+import styles from "./google-translate.scss";
+import {UtilityLink} from "atoms";
 
 class GoogleTranslate extends React.Component {
 

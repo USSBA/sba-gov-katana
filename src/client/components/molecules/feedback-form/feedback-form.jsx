@@ -1,11 +1,14 @@
-import React from 'react';
+import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import styles from './feedback-form.scss'
-import SmallPrimaryButton from "../../atoms/small-primary-button/small-primary-button.jsx"
-import TextArea from "../../atoms/textarea/textarea.jsx";
-import * as FeedbackActions from "../../../actions/feedback.js";
 import uuid from "uuid";
+import styles from "./feedback-form.scss";
+import {
+  SmallPrimaryButton,
+  TextArea
+} from "atoms";
+import * as FeedbackActions from "../../../actions/feedback.js";
+
 
 let question = "Was this article helpful?";
 let firstThankYou = "Thanks for your feedback!";

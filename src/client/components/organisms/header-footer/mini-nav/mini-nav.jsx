@@ -1,12 +1,12 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import {UtilityLink} from "atoms";
 import * as ModalActions from "../../../../actions/show-modal.js";
 import * as ContentActions from "../../../../actions/content.js";
 import clientConfig from "../../../../services/client-config.js";
 import SearchBar from "../../../molecules/search-bar/search-bar.jsx";
-import GoogleTranslate from "../../../molecules/google-translate/google-translate.jsx"
-import UtilityLink from "../../../atoms/utility-link/utility-link.jsx"
+import GoogleTranslate from "../../../molecules/google-translate/google-translate.jsx";
 import config from "../../../../services/client-config.js";
 
 import styles from './mini-nav.scss';

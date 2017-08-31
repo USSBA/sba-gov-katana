@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
+import {ArrowButton} from "atoms";
 import s from "./paginator.scss";
-import {ArrowButton} from "../../atoms";
 
 class Paginator extends React.Component {
   render() {
