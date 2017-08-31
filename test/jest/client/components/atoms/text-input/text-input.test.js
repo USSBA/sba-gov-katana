@@ -1,7 +1,7 @@
 /*global expect*/
 
 import React from "react";
-import {TextInput} from "atoms";
+import { TextInput } from "atoms";
 import { shallow } from "enzyme";
 
 

@@ -4,7 +4,7 @@
 import React from "react";
 /*eslint-enable no-unused-vars*/
 import ReactSelect from "react-select";
-import {Multiselect} from "atoms";
+import { Multiselect } from "atoms";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
