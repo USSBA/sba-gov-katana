@@ -5,6 +5,7 @@ import HappeningNow from "../../organisms/homepage/happening-now/happening-now.j
 import FrontPageHero from "../../organisms/front-page-hero/front-page-hero.jsx"
 import Blog from '../../organisms/homepage/blog/blog.jsx';
 import styles from "./homepage.scss";
+import MainLoaderTrigger from "../../molecules/main-loader/main-loader-trigger.jsx"
 
 class Homepage extends React.Component {
   render() {
@@ -46,6 +47,7 @@ class Homepage extends React.Component {
     ];
     return (
       <div className={styles.container}>
+        <MainLoaderTrigger />
         <div className={styles.section}><FrontPageLady/></div>
         <div className={styles.sectionWithPadding}><HappeningNow/></div>
         <div className={styles.section}><FrontPageHero color="purple" title="Start your business." image="assets/images/homepage/start-image.jpg" imageAlt="Start your own business." links={startLinks}/></div>
