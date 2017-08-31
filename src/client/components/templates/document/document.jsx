@@ -1,8 +1,7 @@
-import React from 'react'
-import s from './document.scss'
-
-import DocumentArticle from '../../molecules/document-article/document-article.jsx'
+import React from "react";
+import {DocumentArticle} from "molecules";
 import RelatedDocumentCards from "../../organisms/related-document-cards/related-document-cards.jsx";
+import s from "./document.scss";
 
 class DocumentPage extends React.Component {
 

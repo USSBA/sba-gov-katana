@@ -1,9 +1,9 @@
 import React from "react";
-import SbaModal from '../../../molecules/modal.jsx';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ModalActions from '../../../../actions/show-modal.js'
-import styles from './leave-sba-modal.scss'
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {SbaModal} from "molecules";
+import * as ModalActions from "../../../../actions/show-modal.js";
+import styles from "./leave-sba-modal.scss";
 
 class LeaveSbaModal extends React.Component {
 

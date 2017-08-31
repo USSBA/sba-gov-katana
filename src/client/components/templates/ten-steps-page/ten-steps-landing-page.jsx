@@ -1,15 +1,18 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ContentActions from "../../../actions/content.js";
-import _ from 'lodash';
-import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
-import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
-import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
-import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
-import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import Waypoint from "react-waypoint";
-import CallToAction from "../../molecules/call-to-action/call-to-action.jsx";
+import * as ContentActions from "../../../actions/content.js";
+import _ from "lodash";
+import {
+    TenStepsSection,
+    TenStepsNav,
+    CallToAction
+} from "molecules";
+import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
+import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
+import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
+
 
 class TenStepsLandingPage extends React.Component {
     constructor(){

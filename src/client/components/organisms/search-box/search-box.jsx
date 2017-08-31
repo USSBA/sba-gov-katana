@@ -1,13 +1,12 @@
 import React from "react";
 import _ from "lodash";
-import styles from "./search-box.scss";
-import SearchBar from "./search-box.scss";
 import {
 	Multiselect,
 	TextInput,
 	SearchIcon,
 	LargeInversePrimaryButton
-} from "../../atoms";
+} from "atoms";
+import styles from "./search-box.scss";
 
 const createSlug = (str) => {
 

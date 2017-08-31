@@ -1,12 +1,12 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {Resource} from "molecules";
 
-import * as ConfirmationEmailActions from '../../../../actions/confirmation-email.js';
+import * as ConfirmationEmailActions from "../../../../actions/confirmation-email.js";
 import {logEvent} from "../../../../services/analytics.js";
 
-import styles from './confirm-section.scss';
-import Resource from "../../../molecules/resource-card/resource-card.jsx"
+import styles from "./confirm-section.scss";
 
 
 class ConfirmSection extends React.Component {

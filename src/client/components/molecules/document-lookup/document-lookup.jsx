@@ -11,8 +11,8 @@ import {
 	SearchIcon,
 	SmallInverseSecondaryButton
 } from "atoms";
+import {Paginator} from "molecules";
 import * as ContentActions from "../../../actions/content.js";
-import {Paginator} from "../../molecules/";
 import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
 import styles from "./document-lookup.scss";
 

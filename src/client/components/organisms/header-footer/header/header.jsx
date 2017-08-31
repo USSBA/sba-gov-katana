@@ -1,12 +1,12 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 
 import DesktopNav from "../desktop-nav/desktop-nav.jsx";
 import MobileNav from "../mobile-nav/mobile-nav.jsx";
-import * as ContentActions from '../../../../actions/content.js';
+import * as ContentActions from "../../../../actions/content.js";
 
-import styles from './header.scss';
+import styles from "./header.scss";
 
 class Header extends React.Component {
 

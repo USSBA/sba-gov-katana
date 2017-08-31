@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import _ from "lodash";
+import {DocumentCard} from "molecules";
+import DocumentPage from "../../pages/document-page/document-page.jsx";
 import styles from "./developer-tester.scss";
 
-import DocumentCard from "../../molecules/document-card/document-card.jsx";
-import DocumentPage from "../../pages/document-page/document-page.jsx";
-import _ from "lodash";
 
 export class DeveloperTester extends React.Component {
   constructor() {

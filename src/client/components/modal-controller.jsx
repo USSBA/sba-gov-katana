@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+import {SbaNewsModal} from "molecules";
 import LeaveSbaModal from "./organisms/modals/leave-sba-modal/leave-sba-modal.jsx";
-import SbaNewsModal from "./molecules/news-modal.jsx";
 import MobileSectionNav from "./organisms/modals/mobile-section-nav/mobile-section-nav.jsx";
 
 const modalTypes = {

@@ -1,9 +1,9 @@
 import React from "react";
-import * as ContentActions from "../../../actions/content.js";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {Lookup} from "molecules";
+import * as ContentActions from "../../../actions/content.js";
 import style from "./document-lookup-page.scss";
-import Lookup from "../../molecules/lookup/lookup.jsx";
 
 class DocumentLookupPage extends React.Component {
 
