@@ -111,7 +111,8 @@ function resetPassword(req, res) {
         if (error.message === "FORBIDDEN") {
           res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator");
         } else {
-          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving executing action");
+          console.error(error);
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error executing action");
         }
       });
   } else {
