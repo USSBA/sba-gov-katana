@@ -4,12 +4,15 @@ import styles from "./basic-page.scss";
 import {listenForOverlap} from "element-overlap";
 import _ from "lodash";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
-
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as LoadingActions from "../../../actions/loading.js";
 import TitleSection from "../../molecules/title-section/title-section.jsx";
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
 import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
+import MainLoaderTrigger from "../../molecules/main-loader/main-loader-trigger.jsx"
 
 
 class BasicPage extends React.Component {
@@ -114,6 +117,7 @@ class BasicPage extends React.Component {
 
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
+        <MainLoaderTrigger />
         <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter}
                   onLeave={this.handleTopWaypointLeave}/>
         <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
@@ -141,4 +145,10 @@ BasicPage.defaultProps = {
   paragraphs: []
 };
 
-export default BasicPage;
+function mapDispatchToProps(dispatch) {
+  return {
+    loadingActions: bindActionCreators(LoadingActions, dispatch)
+  };
+}
+
+export default connect(null, mapDispatchToProps)(BasicPage);
