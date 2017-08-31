@@ -8,9 +8,11 @@ import NotificationBar from '../organisms/header-footer/notification-bar.jsx'
 
 import ModalController from '../modal-controller.jsx';
 import * as ContentActions from "../../actions/content.js";
+import * as LoadingActions from "../../actions/loading.js";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import styles from '../organisms/header-footer/header/header.scss';
+import MainLoader from '../molecules/main-loader/main-loader.jsx';
 
 const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePresent) => {
 
@@ -110,7 +112,6 @@ class Main extends React.Component {
   }
 
   render() {
-    
     const visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent;
     const {
       notificationDescription,
@@ -142,7 +143,9 @@ class Main extends React.Component {
         />
         
         <Header />
-        
+
+        <MainLoader />
+
         <div className={styles.mainContent}>{this.props.children}</div>
 
         { showNotificationBar &&
@@ -170,7 +173,7 @@ function mapReduxStateToProps(reduxState) {
 
   const data = {};
   const { disaster, notification } = reduxState.contentReducer;
-
+  const loadingState = reduxState.loading;
   if (disaster) {
 
     data.disasterAlertVisible = disaster.visible;
@@ -184,6 +187,10 @@ function mapReduxStateToProps(reduxState) {
     data.notificationDescription = notification.title;
     data.notificationUrl = notification.url;
 
+  }
+
+  if (loadingState) {
+    data.loadingState = loadingState;
   }
 
   return data;
