@@ -63,18 +63,16 @@ import {
   Paginator
 } from "molecules";
 
+// organisms
+import {
+  Hero,
+  CardCollection
+} from "organisms";
+
 import styles from "./style-guide.scss";
-
-// to be organized
-
-import Hero from '../../organisms/hero/hero.jsx';
-import CardCollection from '../../organisms/card-collection/card-collection.jsx'
 
 import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
-
-
-// / to be organized
 
 class StyleGuide extends React.Component {
   constructor() {
