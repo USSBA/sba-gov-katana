@@ -11,6 +11,7 @@ import {
 import * as ModalActions from "../../../actions/show-modal.js";
 import styles from "./section-nav.scss";
 var Waypoint = require("react-waypoint");
+import {createNavigation} from "../../../services/navigation";
 
 const businessGuideFullUrl = "/business-guide";
 
@@ -35,7 +36,7 @@ class SectionNav extends React.Component {
       return (
         <li key={index}>
           <a className={"article-navigation-article-link-desktop " + currentLinkClass}
-             id={"desktop-article-link-" + index} href={item.fullUrl}>{item.title}</a>
+             id={"desktop-article-link-" + index} onTouchTap={createNavigation(item.fullUrl)}>{item.title}</a>
         </li>
       );
     });
@@ -103,7 +104,7 @@ class SectionNav extends React.Component {
              className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
           <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
           <a id="article-navigation-back-button-desktop" className={styles.backLink}
-             href={this.getBacklinkUrl()}>{this.getBacklinkText()}</a>
+             onTouchTap={createNavigation(this.getBacklinkUrl())}>{this.getBacklinkText()}</a>
           {navigationTitle}
           <ul>{navLinks}</ul>
         </div>
