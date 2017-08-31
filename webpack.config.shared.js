@@ -77,7 +77,8 @@ module.exports = function(styleNamingFormat) {
     },
     resolve: {
       alias: {
-        atoms: path.resolve(__dirname, "src/client/components/atoms")
+        atoms: path.resolve(__dirname, "src/client/components/atoms"),
+        molecules: path.resolve(__dirname, "src/client/components/molecules")
       }
     }
   };
