@@ -138,10 +138,4 @@ PreviousNextSection.propTypes = {
   lineage: React.PropTypes.array.isRequired
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(NavigationActions, dispatch)
-  };
-}
-
 export default PreviousNextSection;

@@ -1,6 +1,7 @@
 import React from "react";
 import {PageLink} from "atoms";
 import styles from "./page-link-group.scss";
+import {createNavigation} from "../../../services/navigation";
 
 class PageLinkGroup extends React.Component {
 
@@ -11,7 +12,7 @@ class PageLinkGroup extends React.Component {
     let header = this.props.title
       ? (
         <li key={0}>
-            <a tabIndex="0" href={this.props.titleLink} onBlur={this.props.onBlur} id={this.props.id+"-title"}>{this.props.title}</a>
+            <a tabIndex="0" onTouchTap={createNavigation(this.props.titleLink)} onBlur={this.props.onBlur} id={this.props.id+"-title"}>{this.props.title}</a>
         </li>
       )
       : undefined;
