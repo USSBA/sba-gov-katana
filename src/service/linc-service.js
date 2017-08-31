@@ -12,6 +12,7 @@ import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import EmailConfirmation from "../models/email-confirmation.js";
 import * as htmlToText from "html-to-text";
 import { sendDataToOca, handleSoapResponse, sendPasswordUpdateToOca, handlePasswordUpdateResponse } from "./oca-service.js";
+import UserService from "./user-service.js";
 
 function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString;
@@ -254,5 +255,18 @@ function resendConfirmationEmail(emailAddress) {
     .spread(createConfirmationEmail);
 }
 
+function resetLincPassword(sessionId) {
+  // the user authorization is here for now; move it to the global ACL when one is implemented
+  return UserService.isAdministrator(sessionId)
+    .then((isAdmin) => {
+      if (isAdmin) {
+        console.log("Reseting the LINC Password");
+        return Promise.resolve("Success!");
+      // return sendPasswordUpdateToOca();
+      }
+      throw new Error("FORBIDDEN");
+    });
+}
 
-export { findConfirmedEmails, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData };
+
+export { findConfirmedEmails, createLenderMatchRegistration, sendDataToOcaJob, findFailedOrPendingMessages, sendMessagesToOca, confirmEmail, followupEmailJob, resendConfirmationEmail, createLenderMatchRegistrationData, resetLincPassword };

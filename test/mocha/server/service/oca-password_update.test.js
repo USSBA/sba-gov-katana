@@ -8,7 +8,7 @@ import { getEndPointUrl, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdat
 
 import lincPasswordUpdate from "../../../../src/models/linc-password-update.js";
 
-describe('linc soap password update request test', function() {
+describe('LINC Soap Password updater', function() {
 
   describe('response handling tests', function() {
     let findOneSuccessfulStub,
@@ -53,36 +53,69 @@ describe('linc soap password update request test', function() {
 
   });
 
-  describe('response for password update test', function() {
-    it('should receive given response in case of success', function() {
-      let responseObj = {
-        passwordUpdateRequired: "No",
-        errorMessageEnglish: "",
-        comment: "Password changed.",
-        errorMessageTechnical: "",
-        responseCode: "0"
-      };
-      let successXmlResponse = fs.readFileSync(path.join(__dirname, "./data/oca/oca-password-update-success-response.xml"), "utf-8").trim();
-      let result = parsePasswordUpdateResponse(successXmlResponse);
+  it('should parse the success response properly ', function(done) {
+    let expectedResult = {
+      errorMessageTechnical: "",
+      responseCode: "0",
+      passwordUpdateRequired: "No",
+      errorMessageEnglish: "",
+      comment: "Password changed."
+    };
+    let successXmlResponse = fs.readFileSync(path.join(__dirname, "./data/oca/oca-password-update-success-response.xml"), "utf-8").trim();
+    parsePasswordUpdateResponse(successXmlResponse).then((result) => {
       result.should.not.be.null;
-      JSON.stringify(result).should.equal(JSON.stringify(responseObj));
+      result.should.eql(expectedResult);
+    })
+      .then(_ => done())
+      .catch(done);
+  });
 
-    });
-
-    it('should receive given response in case of error', function() {
-      let responseObj = {
-        passwordUpdateRequired: "Unknown",
-        errorMessageEnglish: "The attempt to update password failed. (-15)",
-        comment: "Password not changed.",
-        errorMessageTechnical: "The stored procedure to update the password did not return the expected response. Your account has been locked. Please call CLS at 571.419.6359 to unlock your account.",
-        responseCode: "-15"
-      };
-      let failedXmlResponse = fs.readFileSync(path.join(__dirname, "./data/oca/oca-password-update-failure-response.xml"), "utf-8").trim();
-      let result = parsePasswordUpdateResponse(failedXmlResponse);
+  it('should parse the success response properly (new version 2017-08-30)', function(done) {
+    let expectedResult = {
+      errorMessageTechnical: "",
+      responseCode: "0",
+      passwordUpdateRequired: "No",
+      errorMessageEnglish: "",
+      comment: "Password changed."
+    };
+    let successXmlResponse = fs.readFileSync(path.join(__dirname, "./data/oca/oca-password-update-success-response-new-20170830.xml"), "utf-8").trim();
+    parsePasswordUpdateResponse(successXmlResponse).then((result) => {
       result.should.not.be.null;
-      JSON.stringify(result).should.equal(JSON.stringify(responseObj));
+      result.should.eql(expectedResult);
+    })
+      .then(_ => done())
+      .catch(done);
+  });
 
-    });
+  it('should parse the error response properly ', function(done) {
+    let expectedResult = {
+      passwordUpdateRequired: "Unknown",
+      errorMessageEnglish: "The attempt to update password failed. (-15)",
+      comment: "Password not changed.",
+      errorMessageTechnical: "The stored procedure to update the password did not return the expected response. Your account has been locked. Please call CLS at 571.419.6359 to unlock your account.",
+      responseCode: "-15"
+    };
+    let failedXmlResponse = fs.readFileSync(path.join(__dirname, "./data/oca/oca-password-update-failure-response.xml"), "utf-8").trim();
+    parsePasswordUpdateResponse(failedXmlResponse).then(result => {
+      result.should.not.be.null;
+      result.should.eql(expectedResult);
+    }).then(_ => done()).catch(done);
+  });
+
+
+  it('should parse the error response properly  (new version 2017-08-30)', function(done) {
+    let expectedResult = {
+      passwordUpdateRequired: "Unknown",
+      errorMessageEnglish: "The attempt to update password failed. (-15)",
+      comment: "Password not changed.",
+      errorMessageTechnical: "The stored procedure to update the password did not return the expected response. Your account has been locked. Please call CLS at 571.419.6359 to unlock your account.",
+      responseCode: "-15"
+    };
+    let failedXmlResponse = fs.readFileSync(path.join(__dirname, "./data/oca/oca-password-update-failure-response-new-20170830.xml"), "utf-8").trim();
+    parsePasswordUpdateResponse(failedXmlResponse).then(result => {
+      result.should.not.be.null;
+      result.should.eql(expectedResult);
+    }).then(_ => done()).catch(done);
   });
 
   describe('create soap envelope for password update test', function() {

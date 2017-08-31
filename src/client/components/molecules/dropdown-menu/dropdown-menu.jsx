@@ -97,6 +97,9 @@ class DropdownMenu extends React.Component {
           : styles.hide)}>
           {goToNextButton}
           {pageLinkGroups}
+      {this.props.featuredCallout
+          ? <FeaturedCallout {...this.props.featuredCallout}/>
+          : undefined}
         {smallInverseCta
           ? <div className={styles.businessGuideCTA}><SmallInverseCta {...businessGuideCtaData}/></div>
           : undefined}
