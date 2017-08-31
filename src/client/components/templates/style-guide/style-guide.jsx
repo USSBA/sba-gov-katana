@@ -57,9 +57,8 @@ import {
 import {
   SbaModal,
   Callout,
-  Hero,
   SimpleCta,
-  CTA,
+  CallToAction as CTA,
   TextSection,
   Paginator
 } from "molecules";
@@ -68,10 +67,12 @@ import styles from "./style-guide.scss";
 
 // to be organized
 
-import HeroDesktopImage from "./hero.jpg";
-import HeroMobileImage from "./hero-mobile.jpg";
+import Hero from '../../organisms/hero/hero.jsx';
+import CardCollection from '../../organisms/card-collection/card-collection.jsx'
 
-import CardCollection from "../../organisms/card-collection/card-collection.jsx";
+import HeroDesktopImage from './hero.jpg'
+import HeroMobileImage from './hero-mobile.jpg'
+
 
 // / to be organized
 
