@@ -1,5 +1,5 @@
 import config from "config";
-import { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate } from "./oca-soap-client.js";
+import { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parseResponseText } from "./oca-soap-client.js";
 import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import emailConfirmation from "../models/email-confirmation.js";
@@ -104,12 +104,13 @@ function sendPasswordUpdateRequest() {
 
 
 function handleSoapResponse(soapResponse) {
-  if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
+  const finalResultCode = soapResponse.responseText.Enquiry.Result;
+  if (finalResultCode === "P" || finalResultCode === "F") {
     return createLenderMatchSoapResponseData(soapResponse);
-  } else if (soapResponse.responseCode === "S") {
+  } else if (finalResultCode === "S") {
     return deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
   }
-  throw new Error("Unknown Response Code receieved from OCA.");
+  throw new Error("Unknown Response Code receieved from OCA: " + finalResultCode);
 }
 
 function getCredentials() {
@@ -145,9 +146,15 @@ function sendDataToOca(lenderMatchRegistrationData) {
     })
     .then(function(response) {
       console.log("Parsed response from OCA", response);
-      return _.merge({}, response, {
-        lenderMatchRegistrationId: lenderMatchRegistrationData.id
-      });
+
+      return parseResponseText(response.response)
+        .then((parsedReponseText) => {
+          return _.merge({}, response, {
+            lenderMatchRegistrationId: lenderMatchRegistrationData.id,
+            responseText: parsedReponseText
+          });
+        });
+
     })
     .catch((error) => {
       console.log("Unable to send data to OCA.");

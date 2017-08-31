@@ -175,6 +175,16 @@ function parsePasswordUpdateResponse(xmlBody) {
 }
 
 
+function parseResponseText(responseText) {
+  return xml2js.parseStringAsync(responseText, {
+    ignoreAttrs: true,
+    explicitArray: false
+  }).then((r) => {
+    let data = r.SBALincResponse;
+    return data;
+  })
+}
+
 function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
   console.log("Sending Data to OCA", bodyXml);
@@ -223,4 +233,4 @@ function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
 
 
-export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parsePasswordUpdateResponse };
+export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parsePasswordUpdateResponse, parseResponseText };
