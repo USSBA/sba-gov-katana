@@ -18,10 +18,4 @@ class DesktopNav extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(NavigationActions, dispatch)
-  };
-}
-
-export default connect(null, mapDispatchToProps)(DesktopNav);
+export default DesktopNav;
