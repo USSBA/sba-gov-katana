@@ -11,10 +11,10 @@ import * as ContentActions from "../../../../actions/content.js";
 import clientConfig from "../../../../services/client-config.js";
 import config from "../../../../services/client-config.js";
 
-import styles from "./mini-nav.scss";
 import cookie from "react-cookie";
+import styles from "./mini-nav.scss";
 
-export class MiniNav extends React.Component {
+class MiniNav extends React.Component {
   timerId = null;
 
   constructor(props) {
@@ -106,3 +106,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav);
+
+export {MiniNav}
