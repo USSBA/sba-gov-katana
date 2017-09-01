@@ -14,8 +14,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
   />
   <a
     className="backLink"
-    href="/business-guide"
     id="article-navigation-back-button-desktop"
+    onTouchTap={[Function]}
   >
     Back to all topics
   </a>
@@ -33,8 +33,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/pick-your-business-location-zoning-laws"
         id="desktop-article-link-0"
+        onTouchTap={[Function]}
       >
         Pick your business location
       </a>
@@ -42,8 +42,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop currentNavLink"
-        href="/business-guide/launch/choose-business-structure-types-chart"
         id="desktop-article-link-1"
+        onTouchTap={[Function]}
       >
         Choose a business structure
       </a>
@@ -51,8 +51,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/choose-your-business-name-register"
         id="desktop-article-link-2"
+        onTouchTap={[Function]}
       >
         Choose your business name
       </a>
@@ -60,8 +60,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/register-your-business-federal-state-agency"
         id="desktop-article-link-3"
+        onTouchTap={[Function]}
       >
         Register your business
       </a>
@@ -69,8 +69,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/get-federal-state-tax-id-number-ein"
         id="desktop-article-link-4"
+        onTouchTap={[Function]}
       >
         Get federal and state tax ID numbers
       </a>
@@ -78,8 +78,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/apply-for-licenses-permits-federal-state"
         id="desktop-article-link-5"
+        onTouchTap={[Function]}
       >
         Apply for licenses and permits
       </a>
@@ -87,8 +87,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/open-business-bank-account-fees-benefits"
         id="desktop-article-link-6"
+        onTouchTap={[Function]}
       >
         Open a business bank account
       </a>
@@ -96,8 +96,8 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/get-business-insurance-assets-liability"
         id="desktop-article-link-7"
+        onTouchTap={[Function]}
       >
         Get business insurance
       </a>
@@ -120,8 +120,8 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
   />
   <a
     className="backLink"
-    href="/for-partners/lenders/7a-loans"
     id="article-navigation-back-button-desktop"
+    onTouchTap={[Function]}
   >
     Back to 7(a) Loans
   </a>
@@ -136,8 +136,8 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/types-of-7a-loans"
         id="desktop-article-link-0"
+        onTouchTap={[Function]}
       >
         Types of 7(a) Loans
       </a>
@@ -145,8 +145,8 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
         id="desktop-article-link-1"
+        onTouchTap={[Function]}
       >
         Operate as a 7(a) Lender
       </a>
@@ -154,8 +154,8 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop currentNavLink"
-        href="/for-partners/lenders/7a-loans/secondary-markets"
         id="desktop-article-link-2"
+        onTouchTap={[Function]}
       >
         Secondary Markets
       </a>
@@ -163,8 +163,8 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/training-and-courses"
         id="desktop-article-link-3"
+        onTouchTap={[Function]}
       >
         Training and Courses
       </a>
@@ -172,8 +172,8 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/terms-and-eligibility"
         id="desktop-article-link-4"
+        onTouchTap={[Function]}
       >
         Terms and Eligibility
       </a>

@@ -10,7 +10,19 @@ import _ from "lodash";
 import lineageBusinessGuide from "../../test-data/lineage-business-guide.json";
 import lineageForPartners from "../../test-data/lineage-for-partners.json";
 
+// Mock createNavigation
+jest.mock("../../../../../../src/client/services/navigation");
+import {createNavigation} from "../../../../../../src/client/services/navigation";
+createNavigation.mockImplementation((url) => {
+  return () => {
+    return url;
+  };
+});
+
 describe("SectionNav", () => {
+  beforeEach( () => {
+    createNavigation.mockClear();
+  });
   describe("Business Guide", () => {
     test("Renders a Third-level Section Navigation", () => {
       const component = renderer.create(<SectionNav lineage={lineageBusinessGuide} />);
@@ -22,7 +34,8 @@ describe("SectionNav", () => {
       const modifiedBacklinkUrl = "/business-guide";
       const lineage = _.merge(_.cloneDeep(lineageBusinessGuide), [{fullUrl: modifiedBacklinkUrl}]);
       const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-back-button-desktop").props().href).toBe(modifiedBacklinkUrl);
+      expect(createNavigation).toBeCalledWith(modifiedBacklinkUrl);
+      expect(component.find("#article-navigation-back-button-desktop").props().onTouchTap()).toBe(modifiedBacklinkUrl);
     });
 
     test("Backlink text is 'Back to all topics'", () => {
@@ -51,7 +64,8 @@ describe("SectionNav", () => {
       const modifiedBacklinkUrl = "/my/back/url";
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{},{fullUrl: modifiedBacklinkUrl}]);
       const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-back-button-desktop").props().href).toBe(modifiedBacklinkUrl);
+      expect(createNavigation).toBeCalledWith(modifiedBacklinkUrl);
+      expect(component.find("#article-navigation-back-button-desktop").props().onTouchTap()).toBe(modifiedBacklinkUrl);
     });
     test("Backlink text is third-level title", () => {
       const modifiedTitle = "My Third Level Title";
