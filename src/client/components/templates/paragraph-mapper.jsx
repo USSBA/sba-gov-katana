@@ -14,8 +14,10 @@ import {
   ButtonCta,
   QuickLinks
 } from "molecules";
-import CardCollection from "../organisms/card-collection/card-collection.jsx";
-import SearchBox from "../organisms/search-box/search-box.jsx";
+import {
+  CardCollection,
+  SearchBox
+} from "organisms";
 
 function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
   let paragraphs = [];

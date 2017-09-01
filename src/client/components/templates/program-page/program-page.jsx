@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './program-page.scss';
+import React from "react";
+import {Hero} from "organisms";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
-import Hero from '../../organisms/hero/hero.jsx';
+import styles from "./program-page.scss";
 
 class ProgramPage extends React.Component {
 

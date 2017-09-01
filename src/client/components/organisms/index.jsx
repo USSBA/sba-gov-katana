@@ -7,6 +7,7 @@ import DeveloperTester from "./developer-tester/developer-tester.jsx";
 import DocumentCardCollection from "./document-card-collection/document-card-collection.jsx";
 import FrontPageHero from "./front-page-hero/front-page-hero.jsx";
 import FundingProgramsTileCollection from "./funding-programs-tile-collection/funding-programs-tile-collection.jsx";
+import DisasterAlerts from "./header-footer/disaster-alerts.jsx";
 import NotificationBar from "./header-footer/notification-bar.jsx";
 import Hero from "./hero/hero.jsx";
 import RelatedDocumentCards from "./related-document-cards/related-document-cards.jsx";
@@ -14,13 +15,8 @@ import SearchBox from "./search-box/search-box.jsx";
 import SectionNav from "./section-nav/section-nav.jsx";
 
 // header-footer organisms
-import DesktopNav from "./header-footer/desktop-nav/desktop-nav.jsx";
 import Footer from "./header-footer/footer/footer.jsx";
 import Header from "./header-footer/header/header.jsx";
-import MainMenu from "./header-footer/main-menu/main-menu.jsx";
-import MiniNav from "./header-footer/mini-nav/mini-nav.jsx";
-import MobileNav from "./header-footer/mobile-nav/mobile-nav.jsx";
-import DisasterAlerts from "./header-footer/disaster-alerts.jsx";
 
 // homepage organisms
 import Blog from "./homepage/blog/blog.jsx";
@@ -71,12 +67,8 @@ export {
 
 // header-footer organisms
 export {
-	DesktopNav,
 	Footer,
-	Header,
-	MainMenu,
-	MiniNav,
-	MobileNav
+	Header
 };
 
 // homepage organisms

@@ -4,6 +4,7 @@ import {bindActionCreators} from "redux";
 
 import DesktopNav from "../desktop-nav/desktop-nav.jsx";
 import MobileNav from "../mobile-nav/mobile-nav.jsx";
+
 import * as ContentActions from "../../../../actions/content.js";
 
 import styles from "./header.scss";

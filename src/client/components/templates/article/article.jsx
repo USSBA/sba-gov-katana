@@ -1,6 +1,6 @@
 import React from "react";
 import {DocumentArticle} from "molecules";
-import RelatedDocumentCards from "../../organisms/related-document-cards/related-document-cards.jsx";
+import {RelatedDocumentCards} from "organisms";
 import s from "./article.scss";
 
 class Article extends React.Component {

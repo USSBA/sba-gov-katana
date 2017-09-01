@@ -9,7 +9,7 @@ import {
     TenStepsNav,
     CallToAction
 } from "molecules";
-import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
+import {BusinessGuideTileCollection} from "organisms";
 import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
 import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
 

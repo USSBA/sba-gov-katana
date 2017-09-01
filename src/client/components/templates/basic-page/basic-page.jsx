@@ -8,7 +8,7 @@ import {
   PreviousNextSection,
   FeedbackForm
 } from "molecules";
-import SectionNav from "../../organisms/section-nav/section-nav.jsx";
+import {SectionNav} from "organisms";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
 import styles from "./basic-page.scss";
 

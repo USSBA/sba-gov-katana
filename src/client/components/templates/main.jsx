@@ -1,16 +1,17 @@
 import React from 'react';
 import _ from "lodash";
-import Header from '../organisms/header-footer/header/header.jsx';
-import Footer from '../organisms/header-footer/footer/footer.jsx';
 import cookie from 'react-cookie';
-import DisasterAlerts from '../organisms/header-footer/disaster-alerts.jsx'
-import NotificationBar from '../organisms/header-footer/notification-bar.jsx'
-
-import ModalController from '../modal-controller.jsx';
-import * as ContentActions from "../../actions/content.js";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import styles from '../organisms/header-footer/header/header.scss';
+import {
+  Header,
+  Footer,
+  DisasterAlerts,
+  NotificationBar
+} from "organisms";
+import ModalController from '../modal-controller.jsx';
+import * as ContentActions from "../../actions/content.js";
+import styles from "../organisms/header-footer/header/header.scss";
 
 const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePresent) => {
 
