@@ -6,7 +6,7 @@ import * as LoadingActions from '../../../actions/loading.js';
 class MainLoaderTrigger extends React.Component {
 	//when this component mounts, it will fire an action that removes the main loader from main.jsx
 	componentDidMount() {
-		this.props.loadingActions.loaded();
+		this.props.loadingActions.removeLoader();
 	}
 
 	render() {

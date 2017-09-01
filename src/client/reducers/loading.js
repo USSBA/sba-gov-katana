@@ -1,7 +1,7 @@
 const loadingReducer = (state = {}, action) => {
-  if (action.type === "LOADED") {
+  if (action.type === "REMOVE_LOADER") {
     return {
-      loaded: true
+      displayLoader: false
     };
   }
   return state;
