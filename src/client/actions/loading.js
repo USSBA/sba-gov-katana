@@ -1,5 +1,5 @@
-export function loaded() {
+export function removeLoader() {
   return {
-    type: "LOADED"
+    type: "REMOVE_LOADER"
   };
 }
