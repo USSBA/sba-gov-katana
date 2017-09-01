@@ -1,11 +1,12 @@
 import React from 'react';
 import {createNavigation} from "../../../services/navigation";
+import {BasicLink} from "../../atoms";
 
 class ButtonBase extends React.Component {
   render() {
     const buttonProps = {
         id: this.props.id,
-        className: this.props.buttonClassName + " " + (this.props.extraClassName
+        myClassName: this.props.buttonClassName + " " + (this.props.extraClassName
           ? this.props.extraClassName
           : "") + " " + (this.props.className
           ? this.props.className
@@ -14,11 +15,14 @@ class ButtonBase extends React.Component {
         formTarget: this.props.newWindow
           ? "_blank"
           : "_self",
-        onTouchTap: this.props.onClick ? this.props.onClick : createNavigation(this.props.url)
+        onClick: this.props.onClick,
+        url: this.props.url,
+        content: this.props.text,
+        htmlElement: "button",
       }
     ;
     return (
-      <button {...buttonProps}>{this.props.text}</button>
+      <BasicLink {...buttonProps} />
     );
   }
 }
@@ -26,7 +30,6 @@ class ButtonBase extends React.Component {
 ButtonBase.propTypes = {
   url: React.PropTypes.string,
   onClick: React.PropTypes.func
-  //TODO: Require one or the other of url or onClick
-}
+};
 
 export default ButtonBase;
