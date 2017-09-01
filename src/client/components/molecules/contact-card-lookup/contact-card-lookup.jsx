@@ -1,8 +1,9 @@
 import React from "react";
 import _ from "lodash";
-import {MultiSelect} from "atoms";
 import styles from "./contact-card-lookup.scss";
 import states from "../../../services/us-states.json";
+import {MultiSelect} from "atoms";
+import LinkCard from "../link-card/link-card.jsx"
 
 class ContactCardLookup extends React.Component {
 
@@ -18,18 +19,25 @@ class ContactCardLookup extends React.Component {
 
   handleChange(selectValue) {
     let newValueLabel = selectValue.label;
-    let newDisplayedItems = _.filter(this.props.items, {stateServed:newValueLabel });
+    let newDisplayedItems = [];
+    if(this.props.items && this.props.items.length > 0 && this.props.items[0].stateServed && typeof this.props.items[0].stateServed === "array"){
+        newDisplayedItems = _.filter(this.props.items, (item)=>{
+            return _.includes(item.stateServed, newValueLabel);
+        });
+    }else{
+        newDisplayedItems = _.filter(this.props.items, {stateServed: newValueLabel});
+    }
     this.setState({
       value: selectValue.value,
       displayedItems: newDisplayedItems,
-      numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState+1
+      numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState + 1
     }, () => {
       this.state.displayedItems.length < 1
         ? this.setState({noContacts: true})
         : this.setState({noContacts: false});
-        if(this.props.afterChange){
-          this.props.afterChange("state-lookup", newValueLabel, this.state.numberOfTimesUserHasSelectedAState);
-        }
+      if (this.props.afterChange) {
+        this.props.afterChange("state-lookup", newValueLabel, this.state.numberOfTimesUserHasSelectedAState);
+      }
     });
   }
 
@@ -58,27 +66,13 @@ class ContactCardLookup extends React.Component {
     return (
       <div>
         <div className={styles.container}>
-          <h4 key={6} className={styles.title}>{this.props.title || "Look up your state"}</h4>
+          <div className={styles.titleContainer}>
+            <h4 key={6} className={styles.title}>{this.props.title || "Look up your state"}</h4>
+          </div>
           <div key={1} className={styles.selectContainer}>
             <MultiSelect {...multiselectProps}></MultiSelect>
           </div>
-          <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(function(item, index) {
-              return (
-                <div key={index} id={"card-" + index} className={styles.card}>
-                  {item.link
-                    ? <a className={styles.itemLink} href={item.link}>{item.title}
-                        <i className="fa fa-external-link-square" aria-hidden="true"></i>
-                      </a>
-                    : null}
-                  {item.streetAddress
-                    ? <div className={styles.itemData}>{item.streetAddress}</div>
-                    : null}
-                  {item.city && item.state && item.zipCode
-                    ? <div className={styles.itemData}>{item.city}, {item.state}{" "}{item.zipCode}</div>
-                    : null}
-                </div>
-              );
-            })}</div>
+          <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(this.props.cardRenderer)}</div>
 
           {this.state.noContacts
             ? <div key={5} className={styles.noContacts}>No contacts found for this State</div>
@@ -93,12 +87,20 @@ class ContactCardLookup extends React.Component {
 ContactCardLookup.propTypes = {
   title: React.PropTypes.string,
   items: React.PropTypes.array,
-  afterChange: React.PropTypes.func
+  afterChange: React.PropTypes.func,
+  cardRenderer: React.PropTypes.func
 };
 
 ContactCardLookup.defaultProps = {
   title: "Lookup Title",
   items: [],
-  afterChange: () => {}
+  afterChange: () => {},
+  cardRenderer: (item, index) => {
+    return (
+      <div key={index}>
+        <LinkCard {...item}/>
+      </div>
+    );
+  }
 };
 export default ContactCardLookup;

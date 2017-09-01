@@ -10,7 +10,7 @@ function isEnabled() {
 if (isEnabled()) {
   reactGa.initialize(config.googleAnalytics.accountId);
   reactGa.plugin.require(config.googleAnalytics.optimizeContainerId);
-} else {
+} else if (config.debug) {
   console.log("GA in Development Mode");
 }
 

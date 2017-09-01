@@ -1,6 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import styles from "./developer-tester.scss";
 
 import { Loader } from "../../atoms/index.js";
@@ -21,8 +21,10 @@ export class DeveloperTester extends React.Component {
 }
 
 const Divider = (props) => {
-  return(
-    <div className={styles.divider}> COMPONENT DIVIDER  </div>
+  return (
+    <div className={styles.divider}>
+      COMPONENT DIVIDER
+    </div>
   )
 }
 
@@ -33,6 +35,4 @@ function mapReduxStateToProps(reduxState) {
 function mapDispatchToProps(dispatch) {
   return {};
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(
-  DeveloperTester
-);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(DeveloperTester);
