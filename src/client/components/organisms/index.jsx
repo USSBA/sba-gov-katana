@@ -16,6 +16,7 @@ import SectionNav from "./section-nav/section-nav.jsx";
 
 // header-footer organisms
 import Footer from "./header-footer/footer/footer.jsx";
+import MobileNav from "./header-footer/mobile-nav/mobile-nav.jsx";
 import Header from "./header-footer/header/header.jsx";
 
 // homepage organisms
@@ -68,6 +69,7 @@ export {
 // header-footer organisms
 export {
 	Footer,
+	MobileNav,
 	Header
 };
 

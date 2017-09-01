@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars,no-undef */
 import React from "react";
 /*eslint-enable no-unused-vars*/
-import {SectionNav} from "client/components/organisms/section-nav/section-nav.jsx";
+import {SectionNav} from "organisms/section-nav/section-nav.jsx";
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
