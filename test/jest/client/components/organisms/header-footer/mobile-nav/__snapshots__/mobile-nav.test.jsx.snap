@@ -9,7 +9,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       className="logoNew"
     >
       <a
-        href="/"
+        onTouchTap={[Function]}
         tabIndex="-1"
       >
         <img

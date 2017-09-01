@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ModalActions from '../../../actions/show-modal.js'
 import * as LocationChangeActions from '../../../actions/navigation.js';
+import {createNavigation} from "../../../services/navigation";
 
 import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
 
@@ -183,7 +184,7 @@ class HoverLink extends React.Component {
       <div className={s.linkContainer} onClick={() => {
         this.props.handleClick(this.props.link)
       }}>
-        <a id={this.props.id} className={s.link} href={this.props.link.fullUrl} ref={(me) => {
+        <a id={this.props.id} className={s.link} onTouchTap={createNavigation(this.props.link.fullUrl)} ref={(me) => {
           this.me = me;
         }}>
           {this.props.link.title}

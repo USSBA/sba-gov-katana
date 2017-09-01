@@ -12,14 +12,6 @@ import _ from "lodash";
 import lineageBusinessGuide from "../../test-data/lineage-business-guide.json";
 import lineageForPartners from "../../test-data/lineage-for-partners.json";
 
-jest.mock("client/services/client-config.js", function(){
-  return {
-    googleAnalytics: {
-      enabled: false
-    }
-  };
-});
-
 describe("SectionNav", () => {
   describe("Business Guide", () => {
     test("Third-level taxonomy renders BasicPage", () => {

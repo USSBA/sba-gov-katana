@@ -19,10 +19,11 @@ export function callToAction(targetLocation, category, action, value) {
 export function locationChange(targetLocation, eventConfig) {
   return function(dispatch) {
     browserHistory.push(targetLocation);
+    window.scrollTo(0, 0);
     logEvent({
       category: "Navigation",
-      action: eventConfig.action || "Location Change",
-      label: eventConfig.label || ""
+      action: (eventConfig && eventConfig.action) || "Location Change",
+      label: (eventConfig && eventConfig.label) || ""
     });
   };
 }

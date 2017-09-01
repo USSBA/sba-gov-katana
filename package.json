@@ -90,6 +90,7 @@
     "react-router": "3.0.5",
     "react-router-redux": "4.0.7",
     "react-select": "1.0.0-rc.3",
+    "react-tap-event-plugin": "^2.0.1",
     "react-waypoint": "7.0.4",
     "redux": "3.6.0",
     "request": "2.79.0",
@@ -165,9 +166,10 @@
       "<rootDir>/src/client/components/"
     ],
     "globals": {
-      "window": {
-        "CONFIG": {
-          "isUserLoggedIn": false
+      "CONFIG": {
+        "isUserLoggedIn": false,
+        "googleAnalytics": {
+          "enabled": false
         }
       }
     }

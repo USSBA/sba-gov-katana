@@ -23,8 +23,17 @@ function fetchContent(type, id) {
 }
 
 function shouldFetchContent(state, type, id) {
-  return true; // TODO check current state
+  // Always use preexisting restContent if we have it; consider expiring data in the future
+  try {
+    if (state.restContent[type][id]) {
+      return false;
+    }
+  } catch (error) {
+    /*Do nothing*/
+  }
+  return true;
 }
+
 export function fetchContentIfNeeded(type, id) {
   return (dispatch, getState) => {
     if (type && id && shouldFetchContent(getState(), type, id)) {

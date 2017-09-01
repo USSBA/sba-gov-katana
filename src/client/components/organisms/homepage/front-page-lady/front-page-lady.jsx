@@ -17,7 +17,7 @@ class FrontPageLady extends React.Component {
               Start and grow your business.</div>
             <div className={styles.text}>
               Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
-            <LargeInversePrimaryButton text="LET'S GO" URL="./starting-managing-business"/>
+            <LargeInversePrimaryButton text="LET'S GO" url="/business-guide" />
             <img alt="" src={Triangle} className={styles.triangle}/>
           </div>
         </div>

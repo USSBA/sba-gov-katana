@@ -13,7 +13,10 @@ import _ from 'lodash';
 
 jest.mock("client/services/client-config.js", function() {
   return {
-    isUserLoggedIn: false
+    isUserLoggedIn: false,
+    googleAnalytics: {
+      enabled: false
+    }
   };
 });
 

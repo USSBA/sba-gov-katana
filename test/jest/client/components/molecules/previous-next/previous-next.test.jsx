@@ -30,17 +30,17 @@ describe("PreviousNext", () => {
       test("it sets the desktop previous url appropriately", () => {
         const expectedUrl = "/business-guide/launch/pick-your-business-location-zoning-laws";
         const component = shallow(<PreviousNext lineage={lineageBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-previous-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-previous-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it sets the desktop next url appropriately", () => {
         const expectedUrl = "/business-guide/launch/choose-your-business-name-register";
         const component = shallow(<PreviousNext lineage={lineageBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it sets the mobile next url appropriately", () => {
         const expectedUrl = "/business-guide/launch/choose-your-business-name-register";
         const component = shallow(<PreviousNext lineage={lineageBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
     });
     describe("When in the first article of a middle section", () => {
@@ -53,7 +53,7 @@ describe("PreviousNext", () => {
       test("it assigns Previous Article to the last article of the previous section", () => {
         const expectedUrl = "/business-guide/plan/buy-existing-business-franchise";
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-previous-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-previous-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
     });
     describe("When in the last article of a middle section", () => {
@@ -66,7 +66,7 @@ describe("PreviousNext", () => {
       test("it assigns Next Article to the first article of the next section", () => {
         const expectedUrl = "/business-guide/manage/manage-your-finances-business-credit";
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
     });
     describe("When in the first article of the first section", () => {
@@ -83,12 +83,12 @@ describe("PreviousNext", () => {
       test("it sets the desktop next url appropriately", () => {
         const expectedUrl = "/business-guide/plan/write-your-business-plan-template";
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it sets the mobile next url appropriately", () => {
         const expectedUrl = "/business-guide/plan/write-your-business-plan-template";
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it does not have a desktop Previous Article element", () => {
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
@@ -109,7 +109,7 @@ describe("PreviousNext", () => {
       test("it sets the desktop previous url appropriately", () => {
         const expectedUrl = "/business-guide/grow/native-american-owned-businesses-programs";
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
-        expect(component.find("#desktopDivId .previousnext-previous-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-previous-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it does not have a Next Article element", () => {
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />);
@@ -127,12 +127,12 @@ describe("PreviousNext", () => {
       test("it sets the desktop previous url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/operate-as-a-7a-lender";
         const component = shallow(<PreviousNext lineage={lineageForPartners} />);
-        expect(component.find("#desktopDivId .previousnext-previous-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-previous-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it sets the desktop next url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/training-and-courses";
         const component = shallow(<PreviousNext lineage={lineageForPartners} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it sets the mobile next url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/training-and-courses";
@@ -154,7 +154,7 @@ describe("PreviousNext", () => {
       test("it sets the desktop next url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/operate-as-a-7a-lender";
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />);
-        expect(component.find("#desktopDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
       test("it sets the mobile next url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/operate-as-a-7a-lender";
@@ -176,7 +176,7 @@ describe("PreviousNext", () => {
       test("it sets the desktop previous url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/training-and-courses";
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />);
-        expect(component.find("#desktopDivId .previousnext-previous-url").props().href).toBe(expectedUrl);
+        expect(component.find("#desktopDivId .previousnext-previous-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
     });
   });

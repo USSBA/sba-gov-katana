@@ -2,12 +2,13 @@ import React from "react";
 import styles from "./breadcrumb.scss";
 import {SmallIcon} from "atoms";
 import _ from "lodash";
+import {createNavigation} from "../../../services/navigation";
 
 class Breadcrumb extends React.Component {
   makeLastAnchor(tail) {
     return (
       <span className={styles.last} key={20}>
-        <a id="breadcrumb-current" href={tail.url+"/"}>{tail.title}</a>
+        <a id="breadcrumb-current" onTouchTap={createNavigation(`${tail.url}/`)}>{tail.title}</a>
       </span>
     );
   }
@@ -22,7 +23,7 @@ class Breadcrumb extends React.Component {
           <span className={styles.slash}>/</span>
           {rest
             ? rest.map((item, index) => {
-              return [(<a id={"breadcrumb-level"+index} href={item.url+"/"}>{item.title}</a>),(
+              return [(<a id={"breadcrumb-level"+index} onTouchTap={createNavigation(`${item.url}/`)}>{item.title}</a>),(
                   <span className={styles.slash}>/</span>
               )];
             })
