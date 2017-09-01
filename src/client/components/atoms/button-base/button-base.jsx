@@ -17,7 +17,7 @@ class ButtonBase extends React.Component {
           : "_self",
         onClick: this.props.onClick,
         url: this.props.url,
-        content: this.props.text,
+        text: this.props.text,
         htmlElement: "button",
       }
     ;

@@ -13,7 +13,7 @@ class BasicLink extends React.Component {
   }
 
   render() {
-    const linkProps = _.omit(this.props, ["onClick", "url", "content", "myClassName", "htmlElement"]);
+    const linkProps = _.omit(this.props, ["onClick", "url", "text", "myClassName", "htmlElement"]);
     if (this.props.onClick) {
       _.merge(linkProps, {
         onTouchTap: this.props.onClick,
@@ -27,12 +27,12 @@ class BasicLink extends React.Component {
     }
     _.merge(linkProps, {className: this.props.myClassName});
     if(this.props.htmlElement === "button"){
-      return (<button {...linkProps}>{this.props.content}</button>);
+      return (<button {...linkProps}>{this.props.text}</button>);
     } else {
       if(this.props.htmlElement !== "a"){
         console.log("WARNING: BasicLink told to render an unexpected element with htmlElement prop. Rendering <a instead");
       }
-      return (<a {...linkProps}>{this.props.content}</a>);
+      return (<a {...linkProps}>{this.props.text}</a>);
     }
   }
 }
@@ -41,14 +41,14 @@ BasicLink.propTypes = {
   url: React.PropTypes.string,
   onClick: React.PropTypes.func,
   tabIndex: React.PropTypes.string,
-  content: React.PropTypes.string,
+  text: React.PropTypes.string,
   myClassName: React.PropTypes.string,
   htmlElement: React.PropTypes.string
 };
 
 BasicLink.defaultProps = {
   tabIndex: "0",
-  content: "",
+  text: "",
   htmlElement: "a",
   myClassName: ""
 };
