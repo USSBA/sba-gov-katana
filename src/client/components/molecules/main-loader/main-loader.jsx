@@ -7,24 +7,17 @@ import { Loader } from '../../atoms/index.js';
 import { browserHistory } from 'react-router';
 
 class MainLoader extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			browserHistory: null,
-		};
-	}
 
-	componentDidMount(){
+	componentDidMount() {
 		browserHistory.listen(location => {
-			console.log("removeLoaderOnLocationChange", location)
-			this.setState({ browserHistory: location });
+			this.props.loadingActions.showLoader()
 		});
 	}
 
 	shouldLoaderDisplay() {
 		const allowedPages = ['', 'business-guide'];
 		const currentPagePath = window.location.pathname.split('/')[1];
-		return this.props.displayLoader && allowedPages.includes(currentPagePath);
+		return this.props.displayLoader !== false && allowedPages.includes(currentPagePath);
 	}
 
 	render() {
@@ -41,9 +34,16 @@ class MainLoader extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
+	console.log(reduxState);
 	return {
 		displayLoader: reduxState.loading.displayLoader,
 	};
 }
 
-export default connect(mapReduxStateToProps)(MainLoader);
+function mapDispatchToProps(dispatch) {
+	return {
+		loadingActions: bindActionCreators(LoadingActions, dispatch),
+	};
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(MainLoader);

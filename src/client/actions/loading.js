@@ -3,3 +3,9 @@ export function removeLoader() {
     type: "REMOVE_LOADER"
   };
 }
+
+export function showLoader() {
+	return {
+		type: "SHOW_LOADER"
+	}
+}
