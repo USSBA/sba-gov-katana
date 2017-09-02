@@ -34,7 +34,6 @@ class MainLoader extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
-	console.log(reduxState);
 	return {
 		displayLoader: reduxState.loading.displayLoader,
 	};

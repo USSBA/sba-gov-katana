@@ -5,6 +5,7 @@ import {
 } from "atoms";
 import errorImg from "../../../../../public/assets/images/error-page/SBA_404.png";
 import styles from "./error-page.scss";
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 class ErrorPage extends React.Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class ErrorPage extends React.Component {
     render() {
         return (
             <div className={styles.errorContainer}>
+                <RemoveMainLoader />
                 <img src={errorImg} alt="Error Image"/>
                 <div className={styles.formContainer}>
                     <h1 className={styles.title}>

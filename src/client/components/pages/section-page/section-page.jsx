@@ -5,7 +5,7 @@ import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
 import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
 import FundingProgramsTileCollection from "../../organisms/funding-programs-tile-collection/funding-programs-tile-collection.jsx";
 import constants from "../../../services/constants.js"
-import MainLoaderTrigger from "../../molecules/main-loader/main-loader-trigger.jsx"
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 class SectionPage extends React.Component {
 
@@ -34,7 +34,7 @@ class SectionPage extends React.Component {
 
       return (
         <div className={styles.container}>
-          <MainLoaderTrigger />
+          <RemoveMainLoader />
           <div className={styles.tiles}>
             {tileCollection}
           </div>

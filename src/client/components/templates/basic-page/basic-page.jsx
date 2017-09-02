@@ -12,7 +12,7 @@ import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
 import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
 import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
-import MainLoaderTrigger from "../../molecules/main-loader/main-loader-trigger.jsx"
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 
 class BasicPage extends React.Component {
@@ -117,7 +117,7 @@ class BasicPage extends React.Component {
 
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
-        <MainLoaderTrigger />
+        <RemoveMainLoader />
         <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter}
                   onLeave={this.handleTopWaypointLeave}/>
         <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
