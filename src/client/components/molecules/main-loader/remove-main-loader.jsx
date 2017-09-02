@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as LoadingActions from '../../../actions/loading.js';
 
-class MainLoaderTrigger extends React.Component {
+class RemoveMainLoader extends React.Component {
 	//when this component mounts, it will fire an action that removes the main loader from main.jsx
 	componentDidMount() {
 		this.props.loadingActions.removeLoader();
@@ -20,4 +20,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(null, mapDispatchToProps)(MainLoaderTrigger);
+export default connect(null, mapDispatchToProps)(RemoveMainLoader);
