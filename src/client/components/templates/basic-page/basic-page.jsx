@@ -4,9 +4,6 @@ import styles from "./basic-page.scss";
 import {listenForOverlap} from "element-overlap";
 import _ from "lodash";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import * as LoadingActions from "../../../actions/loading.js";
 import TitleSection from "../../molecules/title-section/title-section.jsx";
 import SectionNav from "../../organisms/section-nav/section-nav.jsx";
 import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
@@ -145,10 +142,4 @@ BasicPage.defaultProps = {
   paragraphs: []
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loadingActions: bindActionCreators(LoadingActions, dispatch)
-  };
-}
-
-export default connect(null, mapDispatchToProps)(BasicPage);
+export default BasicPage;
