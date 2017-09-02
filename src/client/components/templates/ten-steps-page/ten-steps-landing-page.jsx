@@ -10,7 +10,7 @@ import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
 import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
 import Waypoint from "react-waypoint";
 import CallToAction from "../../molecules/call-to-action/call-to-action.jsx";
-import MainLoaderTrigger from "../../molecules/main-loader/main-loader-trigger.jsx"
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 class TenStepsLandingPage extends React.Component {
     constructor(){
@@ -169,7 +169,7 @@ class TenStepsLandingPage extends React.Component {
 
         return (
             <div className={styles.tenStepsLandingPage}>
-                <MainLoaderTrigger />
+                <RemoveMainLoader />
                 { this.state.navType === 'center' ? <TenStepsNav navType='center' section={this.state.section}/> : null}
 
                     <div className={styles.titleSection}>
