@@ -4,9 +4,9 @@ import {
   SmallGreySecondaryButton,
   SmallPrimaryButton
 } from "atoms";
-import sbaLogo from "../../../../public/assets/images/logo.png";
-import ModalCloseIcon from "../../../../public/assets/svg/modal-close-icon.svg";
-import styles from "./modal.scss";
+import sbaLogo from "../../../../../public/assets/images/logo.png";
+import ModalCloseIcon from "../../../../../public/assets/svg/modal-close-icon.svg";
+import styles from "./sba-modal.scss";
 
 class SbaModal extends React.Component {
 

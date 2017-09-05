@@ -121,8 +121,9 @@ class PreviousNextSection extends React.Component {
           {
             nextArticle !== null ?
               <div id="nextContainerMobileId" className={styles.nextContainer}>
-                <a className={"previousnext-next-url"} href={nextArticle.fullUrl}><SmallSecondaryButton
-                  text={nextArticle.title}/></a>
+                <a className={"previousnext-next-url"}>
+                    <SmallSecondaryButton text={nextArticle.title} url={nextArticle.fullUrl} />
+                </a>
                 <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
               </div>
               :

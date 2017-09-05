@@ -93,7 +93,7 @@ class Tile extends React.Component {
       <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
         ? s.tileFive
         : s.tileFour)} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
-        <a className={s.tabDisplayMenu} href="" onClick={(e) => {
+        <a className={s.tabDisplayMenu} onClick={(e) => {
           e.preventDefault()
         }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this.handleBlur.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
           toggle {this.props.data.title}

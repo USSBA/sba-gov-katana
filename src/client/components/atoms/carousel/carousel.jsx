@@ -1,6 +1,7 @@
 import styles from './styles.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BasicLink} from 'atoms';
 
 var Slider = React.createClass({
   getDefaultProps() {
@@ -148,9 +149,9 @@ var Slider = React.createClass({
 
   makeItem(item, index) {
     return <div key={ "slider-item-" + (index + 1) }>
-             <a href={ item.url }>
+             <BasicLink url={ item.url }>
                <img className={ styles.SliderItemImage } src={ item.image } alt={ item.imageAlt }></img>
-             </a>
+             </BasicLink>
            </div>;
   },
 
@@ -193,11 +194,11 @@ var Slider = React.createClass({
           <div className={ slidesClasses } style={ slidesStyles }>
             { children }
           </div>
-          <a className={ styles.SliderItemAnchor } href={ activeItem.url }>
+          <BasicLink myClassName={ styles.SliderItemAnchor } url={ activeItem.url }>
             <p className={ styles.SliderItemTitle }>
               { activeItem.title }
             </p>
-          </a>
+          </BasicLink>
         </div>
         { showNav ? this.renderNav() : null }
       </div>

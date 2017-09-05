@@ -14,21 +14,26 @@ function createCtaNavigation(targetLocation, category, action, value) {
 // eslint-disable-next-line complexity
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
-    browserHistory.push(targetLocation);
+    if (targetLocation === "/" || targetLocation.match(/\/business-guide/) || targetLocation.match(/\/funding-programs/) || targetLocation.match(/\/for-partners/)) {
+      browserHistory.push(targetLocation);
+      if (targetLocation.indexOf("#") !== -1) { //eslint-disable-line no-magic-numbers
+        window.scrollTo(0, 0);
+      }
+      if (eventConfig) {
+        logEvent({
+          category: eventConfig.category || "Navigation",
+          action: eventConfig.action || "Location Change",
+          label: eventConfig.label || "",
+          value: eventConfig.value || null
+        });
+      }
+    } else {
+      document.location = targetLocation;
+    }
   } else {
     console.log("WARNING: navigateNow passed a null target location");
   }
 
-  //TODO: Unsure of this;  what happens with anchor tags?
-  window.scrollTo(0, 0);
-  if (eventConfig) {
-    logEvent({
-      category: eventConfig.category || "Navigation",
-      action: eventConfig.action || "Location Change",
-      label: eventConfig.label || "",
-      value: eventConfig.value || null
-    });
-  }
 }
 
 function createNavigation(targetLocation, eventConfig) {

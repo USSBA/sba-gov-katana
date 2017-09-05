@@ -35,10 +35,7 @@ class ProgramPage extends React.Component {
     const _formattedButtons = buttons === undefined ? [] : (
         buttons.map((button, index) => {
            return {
-            onClickHandler: function(e) {
-              e.preventDefault()
-              window.location.href = button.url
-            },
+            url: button.url,
             btnText: button.title,
             btnType: index === 0 ? "LargeInversePrimaryButton" : "LargePrimaryButton"
           };

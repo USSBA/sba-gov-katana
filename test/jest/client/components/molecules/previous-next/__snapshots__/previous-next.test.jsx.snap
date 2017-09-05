@@ -108,7 +108,6 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
     >
       <a
         className="previousnext-next-url"
-        href="/business-guide/launch/choose-your-business-name-register"
       >
         <button
           className="SmallSecondaryButton  "
@@ -239,7 +238,6 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
     >
       <a
         className="previousnext-next-url"
-        href="/business-guide/launch/choose-business-structure-types-chart"
       >
         <button
           className="SmallSecondaryButton  "
@@ -360,7 +358,6 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
     >
       <a
         className="previousnext-next-url"
-        href="/business-guide/plan/write-your-business-plan-template"
       >
         <button
           className="SmallSecondaryButton  "
@@ -491,7 +488,6 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
     >
       <a
         className="previousnext-next-url"
-        href="/business-guide/manage/manage-your-finances-business-credit"
       >
         <button
           className="SmallSecondaryButton  "
@@ -688,7 +684,6 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
     >
       <a
         className="previousnext-next-url"
-        href="/for-partners/lenders/7a-loans/training-and-courses"
       >
         <button
           className="SmallSecondaryButton  "
@@ -809,7 +804,6 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
     >
       <a
         className="previousnext-next-url"
-        href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
       >
         <button
           className="SmallSecondaryButton  "

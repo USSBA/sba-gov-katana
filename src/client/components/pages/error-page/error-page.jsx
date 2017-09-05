@@ -1,5 +1,6 @@
 import React from "react";
 import {
+    BasicLink,
     SmallIcon,
     TextInput
 } from "atoms";
@@ -38,7 +39,7 @@ class ErrorPage extends React.Component {
                         Just like a business on the moon, the page you're looking for doesn't exist.
                     </h3>
                     <p>
-                        Return to the <a href="/">home page</a>, or search for what you're trying to find.
+                        Return to the <BasicLink url="/" text="home page"/>, or search for what you're trying to find.
                     </p>
                     <form key={2} id="error-form" className={styles.errorPageSearch} onSubmit={this.submitSearch.bind(this)}>
                         <TextInput aria-label="search sba.gov" id="error-page-search-input" placeholder='Search' onChange={this.handleSearchChange.bind(this)} autoFocus/>
