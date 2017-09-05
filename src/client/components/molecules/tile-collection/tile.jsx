@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ModalActions from '../../../actions/show-modal.js'
 import * as LocationChangeActions from '../../../actions/navigation.js';
-import {createNavigation} from "../../../services/navigation";
+import {BasicLink} from "../../atoms";
 
 import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-grey.png"
 
@@ -93,11 +93,9 @@ class Tile extends React.Component {
       <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
         ? s.tileFive
         : s.tileFour)} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
-        <a className={s.tabDisplayMenu} onClick={(e) => {
-          e.preventDefault()
-        }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this.handleBlur.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>
-          toggle {this.props.data.title}
-          menu</a>
+      <BasicLink text={`toggle ${this.props.data.title} menu`} myClassName={s.tabDisplayMenu} onClick={(e) => {
+        e.preventDefault()
+      }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this.handleBlur.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}/>
         {this.props.showHover
           ? hoverTile
           : (<StaticTile id={this.props.id + '-static'} {...baseTileData}/>)}
@@ -156,6 +154,7 @@ class HoverTileWithHoverLinks extends React.Component {
     });
   }
 
+
   render() {
     return (
       <div id={this.props.id} className={s.tileHover}>
@@ -165,7 +164,7 @@ class HoverTileWithHoverLinks extends React.Component {
         {this.props.data.children.map((object, index) => {
           let autoFocusOnMe = this.props.autoFocusOnLast && index === (this.props.data.children.length - 1);
 
-          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)} autoFocus={autoFocusOnMe}/>
+          return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}  autoFocus={autoFocusOnMe}/>
         })
 }
       </div>
@@ -179,16 +178,21 @@ class HoverLink extends React.Component {
       this.me.focus();
     }
   }
+
+  _handleKeyDown(e){
+      if (e.keyCode == 13) {
+        this.props.handleClick(this.props.link)
+      }
+  }
+
   render() {
     return (
       <div className={s.linkContainer} onClick={() => {
         this.props.handleClick(this.props.link)
       }}>
-        <a id={this.props.id} className={s.link} onTouchTap={createNavigation(this.props.link.fullUrl)} ref={(me) => {
+        <BasicLink text={this.props.link.title} id={this.props.id} myClassName={s.link} onKeyDown={this._handleKeyDown.bind(this)} ref={(me) => {
           this.me = me;
-        }}>
-          {this.props.link.title}
-        </a>
+        }} />
       </div>
     );
   }

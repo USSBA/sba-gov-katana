@@ -2,12 +2,12 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {
+  BasicLink,
   Carousel,
   SmallPrimaryButton
 } from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./happening-now.scss";
-import {createNavigation} from "../../../../services/navigation";
 
 const contentProperty = "happeningNow";
 
@@ -24,9 +24,9 @@ class HappeningNow extends React.Component {
   makeDesktopImage(item, index, desktopStyle) {
     return (
       <div key={index} className={desktopStyle}>
-        <a onTouchTap={createNavigation(item.url)}>
-          <img src={item.image} alt={item.imageAlt}></img>
-        </a>
+          <BasicLink url={item.url}>
+              <img src={item.image} alt={item.imageAlt}></img>
+          </BasicLink>
       </div>
     );
   }

@@ -12,7 +12,6 @@ import {
 import * as ModalActions from "../../../actions/show-modal.js";
 import styles from "./section-nav.scss";
 var Waypoint = require("react-waypoint");
-import {createNavigation} from "../../../services/navigation";
 
 const businessGuideFullUrl = "/business-guide";
 

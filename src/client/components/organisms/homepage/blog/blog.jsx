@@ -2,10 +2,9 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import moment from "moment";
-import {SmallPrimaryButton} from "atoms";
+import {SmallPrimaryButton, BasicLink} from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./blog.scss";
-import {createNavigation} from "../../../../services/navigation";
 
 class Blog extends React.Component {
   constructor() {
@@ -39,9 +38,7 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogTitleContainer}>
-                  <a className={styles.blogTitle} onTouchTap={createNavigation(item.url)}>
-                    {item.title}
-                  </a>
+                    <BasicLink myClassName={styles.blogTitle} url={item.url} text={item.title}/>
                 </div>
               </div>
             );
@@ -77,16 +74,16 @@ class Blog extends React.Component {
       <div className={styles.containerMobile}>
         {items.map(function(item, i) {
           return (
-            <a onTouchTap={createNavigation(item.url)} key={i}>
-              <div className={styles.singleBlog}>
-                <div className={styles.blogTitle}>
-                  {item.title}
+            <BasicLink  key={i} url={item.url}>
+                <div className={styles.singleBlog}>
+                    <div className={styles.blogTitle}>
+                        {item.title}
+                    </div>
+                    <div className={styles.blogInfo}>
+                        {blogThis.returnFormatedDate(item.date)}
+                    </div>
                 </div>
-                <div className={styles.blogInfo}>
-                  {blogThis.returnFormatedDate(item.date)}
-                </div>
-              </div>
-            </a>
+            </BasicLink>
           );
         })}
       </div>

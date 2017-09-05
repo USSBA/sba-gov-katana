@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./breadcrumb.scss";
-import {SmallIcon} from "atoms";
+import {SmallIcon, BasicLink} from "atoms";
 import _ from "lodash";
-import {createNavigation} from "../../../services/navigation";
 
 class Breadcrumb extends React.Component {
   makeLastAnchor(tail) {
     return (
       <span className={styles.last} key={20}>
-        <a id="breadcrumb-current" onTouchTap={createNavigation(`${tail.url}/`)}>{tail.title}</a>
+        <BasicLink id={"breadcrumb-current"} text={tail.title} url={tail.url}/>
       </span>
     );
   }
@@ -19,13 +18,13 @@ class Breadcrumb extends React.Component {
       let rest = _.take(this.props.items, this.props.items.length - 1);
       return (
         <div>
-          <SmallIcon fontAwesomeIconClassName="home" onClick={()=>{}}/>
+          <SmallIcon fontAwesomeIconClassName="home" onClick={() => {}}/>
           <span className={styles.slash}>/</span>
           {rest
             ? rest.map((item, index) => {
-              return [(<a id={"breadcrumb-level"+index} onTouchTap={createNavigation(`${item.url}/`)}>{item.title}</a>),(
+              return [(<BasicLink id={"breadcrumb-level" + index} text={item.title} url={item.url}/>), (
                   <span className={styles.slash}>/</span>
-              )];
+                )];
             })
             : <div/>}
           {tailAnchor}

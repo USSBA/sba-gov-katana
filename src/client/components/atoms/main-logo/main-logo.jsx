@@ -1,13 +1,15 @@
 import React from 'react';
 import sbaLogo from '../../../../../public/assets/images/logo.png';
 import styles from "./main-logo.scss"
-import {createNavigation} from "../../../services/navigation";
+import {BasicLink} from "atoms"
 
 class MainLogo extends React.Component{
     render(){
         return(
             <div className={ styles.logoNew } >
-             <a tabIndex="-1" onTouchTap={createNavigation("/")}><img alt="Small Business Administration" src={ sbaLogo } /></a>
+                <BasicLink tabIndex="-1" url="/">
+                    <img alt="Small Business Administration" src={ sbaLogo } />
+                </BasicLink>
              </div>
         );
     }
