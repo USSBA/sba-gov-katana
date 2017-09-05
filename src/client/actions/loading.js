@@ -5,7 +5,7 @@ export function removeLoader() {
 }
 
 export function showLoader() {
-	return {
-		type: "SHOW_LOADER"
-	}
+  return {
+    type: "SHOW_LOADER"
+  };
 }
