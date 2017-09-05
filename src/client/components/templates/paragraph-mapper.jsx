@@ -20,23 +20,6 @@ import {
   SearchBox
 } from "organisms";
 
-
-/*import TextSection from "../molecules/text-section/text-section.jsx";
-import SectionHeader from "../molecules/section-header/section-header.jsx";
-import SubsectionHeader from "../molecules/subsection-header/subsection-header.jsx"
-import ImageSection from "../molecules/image-section/image-section.jsx";
-import TextReadMoreSection from "../molecules/text-readmore-section/text-readmore-section.jsx";
-import Lookup from "../molecules/lookup/lookup.jsx"
-import CallToAction from "../molecules/call-to-action/call-to-action.jsx"
-//import CardCollection from "../organisms/card-collection/card-collection.jsx";
-import ParagraphPlaceholder from "../molecules/paragraph-placeholder/paragraph-placeholder.jsx";
-import StyleGrayBackground from "../molecules/style-gray-background/style-gray-background.jsx";
-import ReadMoreSection from "../molecules/readmore-section/readmore-section.jsx";
-import ButtonCta from "../molecules/button-cta/button-cta.jsx";
-import QuickLinks from "../molecules/quick-links/quick-links.jsx";
-//import SearchBox from "../organisms/search-box/search-box.jsx";
-*/
-
 function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
   let paragraphs = [];
   let skipNextReadmore = false;
