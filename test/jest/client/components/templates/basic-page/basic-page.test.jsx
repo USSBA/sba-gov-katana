@@ -1,9 +1,10 @@
 /*global expect*/
 
-import React from 'react';
-import BasicPage from 'client/components/templates/basic-page/basic-page.jsx';
-import { TitleSection, Breadcrumb } from 'client/components/molecules';
-import {shallow} from 'enzyme';
+import React from "react";
+import {shallow} from "enzyme";
+import { TitleSection, Breadcrumb } from "molecules";
+import BasicPage from "templates/basic-page/basic-page.jsx";
+
 
 const title = "My Basic Page";
 const summary = "My Basic Page Summary";

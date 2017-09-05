@@ -4,7 +4,7 @@
 import React from "react";
 /*eslint-enable no-unused-vars*/
 import ReactSelect from "react-select";
-import { Multiselect } from "atoms";
+import { MultiSelect } from "atoms";
 import { shallow } from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
@@ -50,9 +50,9 @@ test('MultiSelect maximum values', () => {
   }
 
   const component = shallow(
-    <Multiselect label="Some Label" name="somename" onChange={ handleChange } getValidationState={ "success" } value={ lastValue } options={ ["A", "B", "C", "D", "E", "F", "G", "H"] }
+    <MultiSelect label="Some Label" name="somename" onChange={ handleChange } getValidationState={ "success" } value={ lastValue } options={ ["A", "B", "C", "D", "E", "F", "G", "H"] }
       autoFocus required maxValues={ 3 }>
-    </Multiselect>
+    </MultiSelect>
   );
   simulateChange(component, ['B']);
   expect(lastValue).toEqual("B");

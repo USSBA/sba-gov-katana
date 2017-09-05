@@ -1,4 +1,6 @@
 developmentOptions:
+    client:
+        logging: true
     redux:
         logging: true
     webpack:

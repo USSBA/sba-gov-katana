@@ -1,9 +1,17 @@
 /*global expect*/
 
 import React from "react";
-import {TextSection} from "client/components/molecules/";
+import {TextSection} from "molecules";
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
+
+jest.mock("client/services/client-config.js", function(){
+    return {
+      googleAnalytics: {
+        enabled: false
+      }
+    };
+});
 
 describe("TextSection", () => {
 

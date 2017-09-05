@@ -53,24 +53,26 @@ import {
   DocumentType
 } from "atoms";
 
-import styles from "./style-guide.scss";
+// molecules
+import {
+  SbaModal,
+  Callout,
+  SimpleCta,
+  CallToAction as CTA,
+  TextSection,
+  Paginator
+} from "molecules";
 
-// to be organized
-import SbaModal from '../../molecules/modal.jsx';
-import Callout from '../../molecules/callout/callout.jsx';
-import Hero from '../../organisms/hero/hero.jsx';
+// organisms
+import {
+  Hero,
+  CardCollection
+} from "organisms";
+
+import styles from "./style-guide.scss";
 
 import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
-
-import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
-import CTA from "../../molecules/call-to-action/call-to-action.jsx"
-
-import CardCollection from '../../organisms/card-collection/card-collection.jsx'
-
-import TextSection from '../../molecules/text-section/text-section.jsx'
-import Paginator from "../../molecules/paginator/paginator.jsx"
-// / to be organized
 
 class StyleGuide extends React.Component {
   constructor() {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import moment from "moment";
@@ -8,10 +8,10 @@ import {
   DecorativeDash,
   Button
 } from "atoms";
+import {TextSection} from "molecules";
 
 import * as NavigationActions from "../../../actions/navigation.js";
 
-import TextSection from "../text-section/text-section.jsx";
 import s from "./document-article.scss";
 
 export class DocumentArticle extends React.Component {

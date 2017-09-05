@@ -6,12 +6,12 @@ import {
   MultiSelect,
   Radio
 } from "atoms";
+import {FormPageButtons} from "molecules";
 import * as LenderMatchActions from "../../../../actions/lender-match.js";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
 import {getSelectBoxValidationState, containsErrorOrNull} from "../../../../services/form-validation-helpers.js";
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
-import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
 import styles from "./lender-match.scss";
 
 class IndustryInfoForm extends React.Component {

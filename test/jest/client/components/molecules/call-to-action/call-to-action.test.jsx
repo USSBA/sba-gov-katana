@@ -1,6 +1,6 @@
 
 import React from "react";
-import {CallToAction} from "client/components/molecules/call-to-action/call-to-action.jsx";
+import {CallToAction} from "molecules/call-to-action/call-to-action.jsx";
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";

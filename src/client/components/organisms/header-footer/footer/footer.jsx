@@ -1,7 +1,7 @@
 import React from "react";
-
 import {SocialMediaLink} from "atoms";
-import PageLinkGroup from "../../../molecules/page-link-group/page-link-group.jsx";
+import {PageLinkGroup} from "molecules";
+
 import constants from "../../../../services/constants.js";
 
 import facebookThumbnail from "../../../../../../public/assets/images/footer/facebook.png"

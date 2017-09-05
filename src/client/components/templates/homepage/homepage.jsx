@@ -1,10 +1,12 @@
 import React from 'react';
-
-import FrontPageLady from '../../organisms/homepage/front-page-lady/front-page-lady.jsx';
-import HappeningNow from "../../organisms/homepage/happening-now/happening-now.jsx";
-import FrontPageHero from "../../organisms/front-page-hero/front-page-hero.jsx"
-import Blog from '../../organisms/homepage/blog/blog.jsx';
+import {
+  FrontPageLady,
+  HappeningNow,
+  FrontPageHero,
+  Blog
+} from "organisms";
 import styles from "./homepage.scss";
+import MainLoaderTrigger from "../../molecules/main-loader/main-loader.jsx"
 
 class Homepage extends React.Component {
   render() {
@@ -46,6 +48,7 @@ class Homepage extends React.Component {
     ];
     return (
       <div className={styles.container}>
+        <MainLoaderTrigger />
         <div className={styles.section}><FrontPageLady/></div>
         <div className={styles.sectionWithPadding}><HappeningNow/></div>
         <div className={styles.section}><FrontPageHero color="purple" title="Start your business." image="assets/images/homepage/start-image.jpg" imageAlt="Start your own business." links={startLinks}/></div>

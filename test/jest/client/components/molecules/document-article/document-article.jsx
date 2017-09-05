@@ -2,7 +2,7 @@ import React from "react";
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 
-import {DocumentArticle} from "client/components/molecules/document-article/document-article.jsx";
+import {DocumentArticle} from "molecules";
 
 describe("DocumentArticle", () => {
   describe("Render", () => {

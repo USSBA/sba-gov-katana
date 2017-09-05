@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './disaster-alerts.scss'
-import exitIcon from '../../../../../public/assets/svg/exit-modal-close.svg';
+import React from "react";
+import styles from "./disaster-alerts.scss";
+import exitIcon from "../../../../../public/assets/svg/exit-modal-close.svg";
 
 class DisasterAlerts extends React.Component {
 

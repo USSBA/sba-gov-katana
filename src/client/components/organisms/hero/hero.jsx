@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './hero.scss';
-import Callout from '../../molecules/callout/callout.jsx'
+import React from "react";
+import {Callout} from "molecules";
+import styles from "./hero.scss";
 
 class Hero extends React.Component {
 

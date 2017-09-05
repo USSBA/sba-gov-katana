@@ -2,7 +2,15 @@ import React from "react";
 import {shallow} from "enzyme";
 let sinon = require('sinon');
 
-import SearchBox from "client/components/organisms/search-box/search-box.jsx";
+import {SearchBox} from "organisms";
+
+jest.mock("client/services/client-config.js", function(){
+    return {
+		googleAnalytics: {
+			enabled: false
+		}
+    };
+});
 
 describe("searchBox", () => {
 

@@ -1,9 +1,9 @@
-import React from 'react';
-import styles from './how-it-works.scss';
-import howItWorksImg1 from '../../../../../../public/assets/images/lender-match/howItWorksImg1.jpg';
-import howItWorksImg2 from '../../../../../../public/assets/images/lender-match/howItWorksImg2.jpg';
-import howItWorksImg3 from '../../../../../../public/assets/images/lender-match/howItWorksImg3.jpg';
-import howItWorksImg4 from '../../../../../../public/assets/images/lender-match/howItWorksImg4.jpg';
+import React from "react";
+import styles from "./how-it-works.scss";
+import howItWorksImg1 from "../../../../../../public/assets/images/lender-match/howItWorksImg1.jpg";
+import howItWorksImg2 from "../../../../../../public/assets/images/lender-match/howItWorksImg2.jpg";
+import howItWorksImg3 from "../../../../../../public/assets/images/lender-match/howItWorksImg3.jpg";
+import howItWorksImg4 from "../../../../../../public/assets/images/lender-match/howItWorksImg4.jpg";
 
 
 export const HowItWorksSection = (props) => <div className={ styles.section }>
