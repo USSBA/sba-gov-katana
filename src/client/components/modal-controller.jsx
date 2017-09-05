@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import {SbaNewsModal} from "molecules";
 import {
   LeaveSbaModal,
-  MobileSectionNav
+  MobileSectionNavModal
 } from "organisms";
 
 const modalTypes = {
   "LEAVE_SBA": LeaveSbaModal,
   "SBA_NEWSLETTER": SbaNewsModal,
-  "MOBILE_SECTION_NAV": MobileSectionNav
+  "MOBILE_SECTION_NAV": MobileSectionNavModal
 };
 
 const ModalController = ({modalType, modalProps}) => {

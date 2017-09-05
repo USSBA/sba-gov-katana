@@ -23,7 +23,7 @@ class Tile extends React.Component {
     return arr.join(" ")
   }
 
-  _openNavMenu(link) {
+  _openNavMenu() {
     if (this.props.topLevelLinks) {
       this.props.locationActions.locationChange(this.props.data.fullUrl, {
         action: "Landing Page Panel Pushed",
