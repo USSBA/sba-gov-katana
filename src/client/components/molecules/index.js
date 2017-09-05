@@ -31,11 +31,12 @@ import StyleGrayBackground from "./style-gray-background/style-gray-background.j
 import SubMenu from "./sub-menu/sub-menu.jsx";
 import SubsectionHeader from "./subsection-header/subsection-header.jsx";
 import SuretyLookup from "./surety-lookup/surety-lookup.jsx";
-import TenStepsNav from "./ten-steps-section/ten-steps-section.jsx";
+import TenStepsNav from "./ten-steps-nav/ten-steps-nav.jsx";
+import TenStepsSection from "./ten-steps-section/ten-steps-section.jsx";
 import TextReadMoreSection from "./text-readmore-section/text-readmore-section.jsx";
 import TileCollection from "./tile-collection/tile-collection.jsx";
 import TitleBox from "./title-box/title-box.jsx";
 import TitleSection from "./title-section/title-section.jsx";
 import TextSection from "./text-section/text-section.jsx";
 
-export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection, QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection };
+export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection, QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TenStepsSection, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection };

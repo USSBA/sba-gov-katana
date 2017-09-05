@@ -4,6 +4,7 @@ import {bindActionCreators} from "redux";
 import Waypoint from "react-waypoint";
 import * as ContentActions from "../../../actions/content.js";
 import _ from "lodash";
+import {BasicLink} from 'atoms';
 import {
     TenStepsSection,
     TenStepsNav,
@@ -183,7 +184,7 @@ class TenStepsLandingPage extends React.Component {
                         </Waypoint>
                         </div>
                         <a className={styles.scrollButton} aria-hidden="true" href="#step-1"><i className={" fa fa-angle-down"}></i></a>
-                        <a className={styles.backLink} href="/business-guide">Back to all topics</a>
+                        <BasicLink myClassName={styles.backLink} url="/business-guide" text="Back to all topics"/>
                     </div>
 
                 <span id="step-1" className={styles.anchor}></span>

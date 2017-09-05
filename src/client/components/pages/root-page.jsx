@@ -30,7 +30,7 @@ class RootPage extends React.Component {
       const subSectionData = findSubSection(this.props.menu, first, second);
       if (subSectionData && subSectionData.children && subSectionData.children[0]) {
         const page = subSectionData.children[0].url;
-        this.props.navigationActions.locationChange(path.join("/", first, second, third), {});
+        this.props.navigationActions.locationChange(path.join("/", first, second, page), {});
       }
     }
   }
