@@ -50,7 +50,9 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Pick your business location
           </button>
@@ -72,7 +74,9 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Choose your business name
           </button>
@@ -111,7 +115,9 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           Choose your business name
         </button>
@@ -175,7 +181,9 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Buy an existing business or franchise
           </button>
@@ -197,7 +205,9 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Choose a business structure
           </button>
@@ -236,7 +246,9 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           Choose a business structure
         </button>
@@ -295,7 +307,9 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           No previous article
         </button>
@@ -312,7 +326,9 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Write your business plan
           </button>
@@ -351,7 +367,9 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           Write your business plan
         </button>
@@ -415,7 +433,9 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Open a business bank account
           </button>
@@ -437,7 +457,9 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Manage your finances
           </button>
@@ -476,7 +498,9 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           Manage your finances
         </button>
@@ -531,7 +555,9 @@ exports[`PreviousNext Business Guide When in the last article of the last sectio
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Native American-owned businesses
           </button>
@@ -604,7 +630,9 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Operate as a 7(a) Lender
           </button>
@@ -626,7 +654,9 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Training and Courses
           </button>
@@ -665,7 +695,9 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           Training and Courses
         </button>
@@ -724,7 +756,9 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           No previous article
         </button>
@@ -741,7 +775,9 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Operate as a 7(a) Lender
           </button>
@@ -780,7 +816,9 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
           disabled={undefined}
           formTarget="_self"
           id={undefined}
+          onKeyPress={[Function]}
           onTouchTap={[Function]}
+          tabIndex="0"
         >
           Operate as a 7(a) Lender
         </button>
@@ -835,7 +873,9 @@ exports[`PreviousNext For Partners When in the last article of a section it rend
             disabled={undefined}
             formTarget="_self"
             id={undefined}
+            onKeyPress={[Function]}
             onTouchTap={[Function]}
+            tabIndex="0"
           >
             Training and Courses
           </button>

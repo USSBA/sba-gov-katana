@@ -41,7 +41,9 @@ exports[`CallToAction renders a button only 1`] = `
         disabled={undefined}
         formTarget="_self"
         id={undefined}
+        onKeyPress={[Function]}
         onTouchTap={[Function]}
+        tabIndex="0"
       >
         Call To Action
       </button>
@@ -62,7 +64,9 @@ exports[`CallToAction renders a button only 1`] = `
     disabled={undefined}
     formTarget="_self"
     id={undefined}
+    onKeyPress={[Function]}
     onTouchTap={[Function]}
+    tabIndex="0"
   >
     Call To Action
   </button>
@@ -110,7 +114,9 @@ exports[`CallToAction renders a large size 1`] = `
         disabled={undefined}
         formTarget="_self"
         id={undefined}
+        onKeyPress={[Function]}
         onTouchTap={[Function]}
+        tabIndex="0"
       >
         Call To Action
       </button>
@@ -131,7 +137,9 @@ exports[`CallToAction renders a large size 1`] = `
     disabled={undefined}
     formTarget="_self"
     id={undefined}
+    onKeyPress={[Function]}
     onTouchTap={[Function]}
+    tabIndex="0"
   >
     Call To Action
   </button>
@@ -179,7 +187,9 @@ exports[`CallToAction renders a medium size 1`] = `
         disabled={undefined}
         formTarget="_self"
         id={undefined}
+        onKeyPress={[Function]}
         onTouchTap={[Function]}
+        tabIndex="0"
       >
         Call To Action
       </button>
@@ -200,7 +210,9 @@ exports[`CallToAction renders a medium size 1`] = `
     disabled={undefined}
     formTarget="_self"
     id={undefined}
+    onKeyPress={[Function]}
     onTouchTap={[Function]}
+    tabIndex="0"
   >
     Call To Action
   </button>
@@ -248,7 +260,9 @@ exports[`CallToAction renders a small size 1`] = `
         disabled={undefined}
         formTarget="_self"
         id={undefined}
+        onKeyPress={[Function]}
         onTouchTap={[Function]}
+        tabIndex="0"
       >
         Call To Action
       </button>
@@ -269,7 +283,9 @@ exports[`CallToAction renders a small size 1`] = `
     disabled={undefined}
     formTarget="_self"
     id={undefined}
+    onKeyPress={[Function]}
     onTouchTap={[Function]}
+    tabIndex="0"
   >
     Call To Action
   </button>

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicLink button link Renders as expected 1`] = `
+<button
+  className=""
+  onKeyPress={[Function]}
+  onTouchTap={[Function]}
+  tabIndex="0"
+>
+  Hello, World!
+</button>
+`;
+
+exports[`BasicLink normal link Renders as expected 1`] = `
+<a
+  className=""
+  onKeyPress={[Function]}
+  onTouchTap={[Function]}
+  tabIndex="0"
+>
+  Hello, World!
+</a>
+`;
