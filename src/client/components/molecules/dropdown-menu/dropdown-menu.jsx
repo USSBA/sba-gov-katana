@@ -51,7 +51,6 @@ class DropdownMenu extends React.Component {
     let indent=false;
     let menuId = this.props.menuId;
     let smallInverseCta = false;
-    let indent = false;
     if (menuId === 0) {
       sizingStyle = styles.one;
       smallInverseCta = true;
