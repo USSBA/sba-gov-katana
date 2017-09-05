@@ -6,7 +6,7 @@ import {
   Blog
 } from "organisms";
 import styles from "./homepage.scss";
-import MainLoaderTrigger from "../../molecules/main-loader/main-loader-trigger.jsx"
+import MainLoaderTrigger from "../../molecules/main-loader/main-loader.jsx"
 
 class Homepage extends React.Component {
   render() {
