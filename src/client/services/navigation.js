@@ -16,7 +16,7 @@ function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
     if (targetLocation === "/" || targetLocation.match(/\/business-guide/) || targetLocation.match(/\/funding-programs/) || targetLocation.match(/\/for-partners/)) {
       browserHistory.push(targetLocation);
-      if (targetLocation.indexOf("#") !== -1) { //eslint-disable-line no-magic-numbers
+      if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
       }
       if (eventConfig) {
