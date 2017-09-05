@@ -1,17 +1,19 @@
 import React from 'react';
 import styles from "./page-link.scss"
+import {BasicLink} from "atoms"
 
 class PageLink extends React.Component {
 
   render() {
-    let anchorClass = styles.link + " " + (this.props.visible ?
-      "" :
-      styles.hidden) 
+    let anchorClass = styles.link + " " + (this.props.visible
+      ? ""
+      : styles.hidden)
+    const picked = (({id, text, url, onClick, onBlur}) => ({id, text, url, onClick, onBlur}))(this.props);
     return (
-      <li className={ styles.pageLink + " " + (this.props.indent ? styles.indent : "")}>
-        <a href={this.props.url} tabIndex="0" className={anchorClass } id={this.props.id} onClick={this.props.onClick} onBlur={this.props.onBlur} >
-          {this.props.text}
-        </a>
+      <li className={styles.pageLink + " " + (this.props.indent
+        ? styles.indent
+        : "")}>
+        <BasicLink {...picked} myClassName={anchorClass}/>
       </li>
     )
   }
