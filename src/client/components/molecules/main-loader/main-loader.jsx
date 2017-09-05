@@ -9,9 +9,18 @@ import { browserHistory } from 'react-router';
 class MainLoader extends React.Component {
 
 	componentDidMount() {
-		browserHistory.listen(location => {
-			this.props.loadingActions.showLoader()
+
+		// if the current pathname doesn't equal the next location pathname
+			// show loader
+
+		browserHistory.listenBefore((location) => {
+
+			if (window.location.pathname !== location.pathname){
+				this.props.loadingActions.showLoader();
+			}
+
 		});
+
 	}
 
 	shouldLoaderDisplay() {
