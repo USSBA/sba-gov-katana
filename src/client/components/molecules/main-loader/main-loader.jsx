@@ -24,7 +24,7 @@ class MainLoader extends React.Component {
 	}
 
 	shouldLoaderDisplay() {
-		const allowedPages = [ 'business-guide'];
+		const allowedPages = [ '','business-guide'];
 		const currentPagePath = window.location.pathname.split('/')[1];
 		return this.props.displayLoader !== false && allowedPages.includes(currentPagePath);
 	}

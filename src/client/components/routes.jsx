@@ -21,7 +21,7 @@ let AdditionalInfo = (props) => <Async componentProps={props} load={import("./or
 let ReviewSubmitInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/review-submit-info.jsx")} />
 let DeveloperTester = (props) => <Async componentProps={props} load={import("./organisms/developer-tester/developer-tester.jsx")} />
 let TenStepsLandingPage = (props) => <Async componentProps={props} load={import("./templates/ten-steps-page/ten-steps-landing-page.jsx")} />
-let Homepage = (props) => <Async componentProps={props} load={import("./templates/homepage/homepage.jsx")} />
+let HomepageContainer = (props) => <Async componentProps={props} load={import("./templates/homepage/homepage-container.jsx")} />
 let SamplePage = (props) => <Async componentProps={props} load={import("./pages/sample.jsx")} />
 let RootPage = (props) => <Async componentProps={props} load={import("./pages/root-page.jsx")} />
 let DocumentLookupPage = (props) => <Async componentProps={props} load={import("./pages/document-lookup-page/document-lookup-page.jsx")} />
@@ -48,7 +48,7 @@ import MaintenancePage from "./pages/maintenance-page/maintenance-page.jsx"
 
 
 const mainRoutes = [
-  (<IndexRoute key={1} component={Homepage}/>),
+  (<IndexRoute key={1} component={HomepageContainer}/>),
   (<Route key={2} path="/lendermatch" component={MaintenancePage}/>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
