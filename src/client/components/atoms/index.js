@@ -13,7 +13,7 @@ import LargeInverseSecondaryButton from "./large-inverse-secondary-button/large-
 import LargePrimaryButton from "./large-primary-button/large-primary-button.jsx";
 import LargeSecondaryButton from "./large-secondary-button/large-secondary-button.jsx";
 import MainLogo from "./main-logo/main-logo.jsx";
-import Multiselect from "./multiselect/multiselect.jsx";
+import MultiSelect from "./multiselect/multiselect.jsx";
 import NewsletterSmallPrimaryButton from "./newsletter-small-primary-button/newsletter-small-primary-button.jsx";
 import PageLink from "./page-link/page-link.jsx";
 import PdfIcon from "./icons/pdf.jsx";
@@ -44,4 +44,4 @@ import HomeIcon from "./icons/home.jsx";
 import FailureIcon from "./icons/failure.jsx";
 import SuccessIcon from "./icons/success.jsx";
 import Loader from "./loader/loader.jsx";
-export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, Loader, MainLogo, Multiselect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, TextArea, UtilityLink, ValidationIcon, SearchIcon, ApplyButton, DocumentType, CaretIcon, CloseIcon, HomeIcon, FailureIcon, SuccessIcon };
+export { ArrowButton, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, Loader, MainLogo, MultiSelect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, TextArea, UtilityLink, ValidationIcon, SearchIcon, ApplyButton, DocumentType, CaretIcon, CloseIcon, HomeIcon, FailureIcon, SuccessIcon };

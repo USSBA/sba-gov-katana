@@ -20,7 +20,7 @@ class ContactCardLookup extends React.Component {
   handleChange(selectValue) {
     let newValueLabel = selectValue.label;
     let newDisplayedItems = [];
-    if(this.props.items && this.props.items.length > 0 && this.props.items[0].stateServed && typeof this.props.items[0].stateServed === "array"){
+    if(this.props.items && this.props.items.length > 0 && this.props.items[0].stateServed && _.isArray(this.props.items[0].stateServed)){
         newDisplayedItems = _.filter(this.props.items, (item)=>{
             return _.includes(item.stateServed, newValueLabel);
         });
