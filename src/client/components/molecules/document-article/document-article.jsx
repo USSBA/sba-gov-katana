@@ -6,7 +6,8 @@ import queryString from "querystring";
 import {
   DocumentType,
   DecorativeDash,
-  Button
+  Button,
+  BasicLink
 } from "atoms";
 import {TextSection} from "molecules";
 
@@ -67,7 +68,7 @@ export class DocumentArticle extends React.Component {
             {newestFile.effectiveDate ? <span className={s.date}>Effective {this.formatDate(newestFile.effectiveDate)}</span> : null}
             </p>
           <div className={s.office}>By{" "}
-            <a href={data.officeLink.url}>{data.officeLink.title}</a>
+            <BasicLink url={data.officeLink.url} text={data.officeLink.title}/>
           </div>
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
