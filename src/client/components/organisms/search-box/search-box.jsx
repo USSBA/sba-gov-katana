@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import {
-	Multiselect,
+	MultiSelect,
 	TextInput,
 	SearchIcon,
 	LargeInversePrimaryButton
@@ -17,7 +17,7 @@ const createSlug = (str) => {
 };
 
 const createCamelCase = (str) => {
-  
+
   const sliceIndex = 1;
   const _str = str[0].toLowerCase() + str.slice(sliceIndex);
   return _str.replace(" ", "");
@@ -38,7 +38,7 @@ class SearchBox extends React.Component {
 	renderMultiSelect() {
 
 		const documentActivity = this.props.documentActivity.slice();
-		
+
 		const name = "documentActivity";
 		const id = `${createSlug(name)}-select`;
 		const stateName = createCamelCase(name);
@@ -75,7 +75,7 @@ class SearchBox extends React.Component {
 		return (
 
 			<div className={styles.multiSelect}>
-				<Multiselect
+				<MultiSelect
 					{...multiSelectProps}
 					onBlur={returnNull}
 					onFocus={returnNull}
@@ -177,4 +177,3 @@ SearchBox.defaultProps = {
 };
 
 export default SearchBox;
-

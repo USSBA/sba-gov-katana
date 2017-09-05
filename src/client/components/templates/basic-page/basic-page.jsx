@@ -11,6 +11,8 @@ import {
 import {SectionNav} from "organisms";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
 import styles from "./basic-page.scss";
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
+
 
 class BasicPage extends React.Component {
 
@@ -114,6 +116,7 @@ class BasicPage extends React.Component {
 
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
+        <RemoveMainLoader />
         <Waypoint topOffset="30px" onEnter={this.handleTopWaypointEnter}
                   onLeave={this.handleTopWaypointLeave}/>
         <div className="basicpage-sectionnavigation">{sectionNavigation}</div>

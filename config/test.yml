@@ -1,3 +1,6 @@
+developmentOptions:
+    client:
+        logging: false
 googleAnalytics:
     enabled: false
 oca:

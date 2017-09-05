@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkCard should render with all the information 1`] = `
+<div
+  className="link-card card"
+>
+  <a
+    className="link-card-link itemLink"
+    href="http://starwars.wikia.com/wiki/Wilhuff_Tarkin"
+  >
+    Grand Moff Tarkin
+    <i
+      aria-hidden="true"
+      className="fa fa-external-link-square"
+    />
+  </a>
+  <div
+    className="link-card-streetAddress itemData"
+  >
+    123 Death Star Street, Suite 1
+  </div>
+  <div
+    className="link-card-citystatezip itemData"
+  >
+    Galactic City
+    , 
+    MD
+     
+    12345
+  </div>
+</div>
+`;

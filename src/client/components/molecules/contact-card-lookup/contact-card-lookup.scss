@@ -3,19 +3,29 @@
   overflow: visible;
 }
 
-.selectContainer{
-    margin: auto;
-    width: 42%;
-    margin-bottom: 30px;
+.titleContainer{
+    @include grid-media($sba-grid-small) {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    @include grid-media($sba-grid-medium) {
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
 }
 
-.title{
+.title {
     text-align: center;
     margin-top: $margin-30;
 }
 
-.itemLink {
-    font-weight: bold;
+
+.selectContainer{
+    margin: auto;
+    width: 42%;
+    margin-bottom: 30px;
 }
 
 .dataContainer {
@@ -25,15 +35,4 @@
 .noContacts {
 	padding: 20px;
 	text-align: center;
-}
-
-.card {
-	border: 2px solid #C4C4C4;
-    width: 85%;
-	padding: 20px;
-	margin: 30px auto;
-
-}
-.card i{
-    margin-left: 5px;
 }

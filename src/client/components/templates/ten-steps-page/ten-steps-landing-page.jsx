@@ -12,7 +12,7 @@ import {
 import {BusinessGuideTileCollection} from "organisms";
 import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
 import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
-
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 class TenStepsLandingPage extends React.Component {
     constructor(){
@@ -171,6 +171,7 @@ class TenStepsLandingPage extends React.Component {
 
         return (
             <div className={styles.tenStepsLandingPage}>
+                <RemoveMainLoader />
                 { this.state.navType === 'center' ? <TenStepsNav navType='center' section={this.state.section}/> : null}
 
                     <div className={styles.titleSection}>

@@ -8,9 +8,10 @@ import {
   SuretyLookup
 } from "molecules";
 import * as ContentActions from "../../../actions/content.js";
-import {filter} from "lodash";
+import {filter, assign} from "lodash";
 import {logEvent} from "../../../services/analytics.js";
 
+import ContactCard from "../contact-card/contact-card.jsx";
 import styles from "./lookup.scss";
 
 class Lookup extends React.Component {
@@ -23,14 +24,14 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-      if(this.props.type !== "documents"){
-          let queryArgs = this.props.subtype
-          ? {
-              category: this.props.subtype
-          }
-          : null;
-          this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
-      }
+    if (this.props.type !== "documents") {
+      let queryArgs = this.props.subtype
+        ? {
+          category: this.props.subtype
+        }
+        : null;
+      this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
+    }
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -53,9 +54,20 @@ class Lookup extends React.Component {
     if (this.props.type === "contacts") {
 
       switch (this.props.subtype) {
-        case "CDC/504 lender":
         case "State registration":
           SelectedLookup = <ContactCardLookup {..._props}/>
+
+          break;
+        case "CDC/504":
+          let cardRendererFunction = (item, index) => {
+            return (
+              <div key={index}>
+                <ContactCard {...item}/>
+              </div>
+            );
+          };
+          let cdcProps = assign({}, _props, {cardRenderer: cardRendererFunction});
+          SelectedLookup = <ContactCardLookup {...cdcProps}/>
 
           break;
 

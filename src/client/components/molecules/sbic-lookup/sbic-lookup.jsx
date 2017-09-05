@@ -1,5 +1,5 @@
 import React from "react";
-import {SmallInverseSecondaryButton, Multiselect} from "atoms";
+import {SmallInverseSecondaryButton, MultiSelect} from "atoms";
 import json2csv from "json2csv";
 import {pick} from "lodash";
 import Paginator from "../paginator/paginator.jsx";
@@ -157,11 +157,11 @@ class SbicLookup extends React.Component {
     return specificMultiSelectProps.map((multiSelectProps, index) => {
       return (
         <div className={s.multiSelect} key={index}>
-          <Multiselect {...multiSelectProps} onBlur={() => {
+          <MultiSelect {...multiSelectProps} onBlur={() => {
             return null
           }} onFocus={() => {
             return null
-          }} validationState="" errorText="" autoFocus={false} multi={false}></Multiselect>
+          }} validationState="" errorText="" autoFocus={false} multi={false}></MultiSelect>
         </div>
       )
     })

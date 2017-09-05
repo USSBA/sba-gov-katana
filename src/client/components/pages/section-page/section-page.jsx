@@ -7,6 +7,7 @@ import {
   FundingProgramsTileCollection
 } from "organisms";
 import constants from "../../../services/constants.js"
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 class SectionPage extends React.Component {
 
@@ -35,6 +36,7 @@ class SectionPage extends React.Component {
 
       return (
         <div className={styles.container}>
+          <RemoveMainLoader />
           <div className={styles.tiles}>
             {tileCollection}
           </div>
