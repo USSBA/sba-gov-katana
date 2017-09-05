@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {
-  Slider,
+  Carousel,
   SmallPrimaryButton
 } from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
@@ -82,7 +82,7 @@ class HappeningNow extends React.Component {
         <div className={styles.containerMobile}>
           <h2 className={styles.titleMobile}>{title}</h2>
           <div className={styles.itemsMobile}>
-            <Slider items={items}/>
+            <Carousel items={items}/>
           </div>
         </div>
       </div>
