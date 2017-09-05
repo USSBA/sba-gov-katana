@@ -11,11 +11,10 @@ import {
 	SearchIcon,
 	SmallInverseSecondaryButton
 } from "atoms";
+import {Paginator} from "molecules";
+import {DocumentCardCollection} from "organisms";
 import * as ContentActions from "../../../actions/content.js";
-import {Paginator} from "../../molecules/";
-import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
 import styles from "./document-lookup.scss";
-
 
 const config = {
 	pageSize: 30,

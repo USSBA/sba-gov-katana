@@ -6,13 +6,13 @@ import {
   TextInput,
   TextArea
 } from "atoms";
+import {FormPageButtons} from "molecules";
 import * as LenderMatchActions from "../../../../actions/lender-match.js";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
 import {getTextAlphanumeicValidationState, getZipcodeValidationState, getWebsiteValidationState, containsErrorOrNull, containsError} from "../../../../services/form-validation-helpers.js";
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
-import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
 import styles from "./lender-match.scss";
 
 class BusinessInfoForm extends React.Component {

@@ -5,7 +5,7 @@ import {CheckBox} from "atoms";
 import * as LenderMatchActions from "../../../../actions/lender-match.js";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
 import {logEvent} from "../../../../services/analytics.js";
-import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
+import {FormPageButtons} from "molecules";
 import styles from "./lender-match.scss";
 import addInfoStyles from "./additional-info.scss";
 

@@ -2,17 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {UtilityLink} from "atoms";
+import {
+  SearchBar,
+  GoogleTranslate
+} from "molecules";
 import * as ModalActions from "../../../../actions/show-modal.js";
 import * as ContentActions from "../../../../actions/content.js";
 import clientConfig from "../../../../services/client-config.js";
-import SearchBar from "../../../molecules/search-bar/search-bar.jsx";
-import GoogleTranslate from "../../../molecules/google-translate/google-translate.jsx";
 import config from "../../../../services/client-config.js";
 
-import styles from './mini-nav.scss';
-import cookie from 'react-cookie';
+import cookie from "react-cookie";
+import styles from "./mini-nav.scss";
 
-export class MiniNav extends React.Component {
+class MiniNav extends React.Component {
   timerId = null;
 
   constructor(props) {
@@ -104,3 +106,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav);
+
+export {MiniNav}

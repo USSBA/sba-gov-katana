@@ -7,6 +7,7 @@ import {
   TextArea,
   MultiSelectBox
 } from "atoms";
+import {FormPageButtons} from "molecules";
 import * as LenderMatchActions from "../../../../actions/lender-match.js";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
 import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from "../../../../services/form-validation-helpers.js";
@@ -14,7 +15,6 @@ import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
 import styles from "./lender-match.scss";
-import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
 
 class LoanInfo extends React.Component {
   constructor(props) {

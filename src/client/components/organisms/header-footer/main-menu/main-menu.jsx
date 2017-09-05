@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import styles from './main-menu.scss';
-import SubMenu from '../../../molecules/sub-menu/sub-menu.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import {SubMenu} from "molecules";
+import styles from "./main-menu.scss";
 
 class MainMenu extends React.Component {
 

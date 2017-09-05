@@ -12,7 +12,7 @@ import cornerGraphicLarge from "./corner-graphic-large.png";
 import cornerGraphicSmall from "./corner-graphic-small.png";
 import {createCtaNavigation} from "../../../services/navigation";
 
-class CallToAction extends React.Component {
+export class CallToAction extends React.Component {
 
   ctaSize() {
 
@@ -78,5 +78,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(null, mapDispatchToProps)(CallToAction);
-
-export {CallToAction};

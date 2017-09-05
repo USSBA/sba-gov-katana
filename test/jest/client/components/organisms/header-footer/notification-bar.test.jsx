@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {shallow} from "enzyme";
-import NotificationBar from "client/components/organisms/header-footer/notification-bar.jsx";
+import {NotificationBar} from "organisms";
 
 describe("NotificationBar", () => {
 

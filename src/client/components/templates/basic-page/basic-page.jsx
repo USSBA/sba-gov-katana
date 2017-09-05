@@ -1,14 +1,16 @@
 import React from "react";
 import Waypoint from "react-waypoint";
-import styles from "./basic-page.scss";
 import {listenForOverlap} from "element-overlap";
 import _ from "lodash";
+import {
+  TitleSection,
+  Breadcrumb,
+  PreviousNextSection,
+  FeedbackForm
+} from "molecules";
+import {SectionNav} from "organisms";
 import * as paragraphMapper from "../paragraph-mapper.jsx";
-import TitleSection from "../../molecules/title-section/title-section.jsx";
-import SectionNav from "../../organisms/section-nav/section-nav.jsx";
-import Breadcrumb from "../../molecules/breadcrumb/breadcrumb.jsx";
-import PreviousNextSection from "../../molecules/previous-next/previous-next.jsx";
-import FeedbackForm from "../../molecules/feedback-form/feedback-form.jsx";
+import styles from "./basic-page.scss";
 import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 

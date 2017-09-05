@@ -1,14 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {
+  ContactCardLookup,
+  SbicLookup,
+  DocumentLookup,
+  SuretyLookup
+} from "molecules";
 import * as ContentActions from "../../../actions/content.js";
 import {filter, assign} from "lodash";
 import {logEvent} from "../../../services/analytics.js";
 
-import ContactCardLookup from "../contact-card-lookup/contact-card-lookup.jsx";
-import SbicLookup from "../sbic-lookup/sbic-lookup.jsx";
-import DocumentLookup from "../document-lookup/document-lookup.jsx";
-import SuretyLookup from "../surety-lookup/surety-lookup.jsx";
 import ContactCard from "../contact-card/contact-card.jsx";
 import styles from "./lookup.scss";
 

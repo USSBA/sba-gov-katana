@@ -3,14 +3,22 @@
 /* eslint-disable no-unused-vars,no-undef */
 import React from "react";
 /*eslint-enable no-unused-vars*/
-import PreviousNext from "client/components/molecules/previous-next/previous-next.jsx";
+
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
 import util from "util";
-
+import {PreviousNextSection as PreviousNext} from "molecules";
 import lineageBusinessGuide from "../../test-data/lineage-business-guide.json";
 import lineageForPartners from "../../test-data/lineage-for-partners.json";
+
+jest.mock("client/services/client-config.js", function(){
+  return {
+    googleAnalytics: {
+      enabled: false
+    }
+  };
+});
 
 describe("PreviousNext", () => {
   test("Won't render without a lineage", () => {

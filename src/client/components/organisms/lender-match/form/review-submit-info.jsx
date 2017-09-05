@@ -3,12 +3,13 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {startCase} from "lodash";
 import {SmallGreySecondaryButton} from "atoms";
+import {FormPageButtons} from "molecules";
+
 import * as LenderMatchActions from "../../../../actions/lender-match.js";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
 
 import styles from "./review-submit.scss";
 import ReviewSection from "./review-page-helpers.jsx";
-import FormPageButtons from "../../../molecules/form-page-buttons/form-page-buttons.jsx";
 
 class ReviewSubmitInfoForm extends React.Component {
   constructor() {

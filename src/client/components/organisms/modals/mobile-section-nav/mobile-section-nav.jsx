@@ -1,11 +1,11 @@
-import React from 'react'
-import s from "./mobile-section-nav.scss"
-import * as ModalActions from '../../../../actions/show-modal.js'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as ModalActions from "../../../../actions/show-modal.js";
 import {
   navigateNow
 } from "../../../../services/navigation";
+import s from "./mobile-section-nav.scss";
 
 class MobileNav extends React.Component {
   constructor(props) {

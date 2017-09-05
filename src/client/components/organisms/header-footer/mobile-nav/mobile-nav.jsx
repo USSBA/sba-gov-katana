@@ -5,9 +5,9 @@ import {
   SectionLink
 } from "atoms";
 
-import searchIcon from '../../../../../../public/assets/svg/mobile-menu/search-icon.svg';
-import nearyouIcon from '../../../../../../public/assets/svg/mobile-menu/near-you-icon.svg';
-import calendarIcon from '../../../../../../public/assets/svg/mobile-menu/calendar-icon.svg';
+import searchIcon from "../../../../../../public/assets/svg/mobile-menu/search-icon.svg";
+import nearyouIcon from "../../../../../../public/assets/svg/mobile-menu/near-you-icon.svg";
+import calendarIcon from "../../../../../../public/assets/svg/mobile-menu/calendar-icon.svg";
 import styles from "./mobile-nav.scss";
 
 class MobileNav extends React.Component {

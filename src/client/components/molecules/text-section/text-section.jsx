@@ -58,3 +58,5 @@ TextSection.propTypes = {
 }
 
 export default TextSection;
+
+export {TextSection}

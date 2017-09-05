@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './front-page-hero.scss'
-import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
+import React from "react";
+import styles from "./front-page-hero.scss";
+import diagonalLines from "../../../../../public/assets/images/homepage/diagonal-lines.png";
 
 import {createNavigation} from "../../../services/navigation";
 

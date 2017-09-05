@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
+import {TileCollection} from "molecules";
 import FundingProgramsIcons from "./icons.jsx";
-import TileCollection from "../../molecules/tile-collection/tile-collection.jsx";
 
 class FundingProgramsTileCollection extends React.Component {
 
