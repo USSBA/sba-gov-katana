@@ -59,6 +59,7 @@ class Lookup extends React.Component {
 
           break;
         case "CDC/504":
+        case "Microloan":
           let cardRendererFunction = (item, index) => {
             return (
               <div key={index}>
