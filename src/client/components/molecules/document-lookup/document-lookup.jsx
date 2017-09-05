@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import querystring from "querystring";
 import {
 	ApplyButton,
-	Multiselect,
+	MultiSelect,
 	TextInput,
 	SearchIcon,
 	SmallInverseSecondaryButton
@@ -200,7 +200,7 @@ export class DocumentLookup extends React.PureComponent {
 
 			return (
 				<div className={styles.multiSelect} key={index}>
-					<Multiselect
+					<MultiSelect
 						{...multiSelectProps}
 						onBlur={returnNull}
 						onFocus={returnNull}
@@ -345,9 +345,9 @@ export class DocumentLookup extends React.PureComponent {
 
 
 		this.setState(config.originalState, () => {
-			
+
 			this.submit();
-			
+
 		});
 
 	}
