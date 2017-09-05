@@ -8,31 +8,25 @@ class NotificationBar extends React.Component {
 		return (
 
 			<div className={styles.wrapper}>
-				
+
 				<div className={styles.alert}>
-				
+
 					<div className={styles.description}>
 						{this.props.description}
 					</div>
-				
+
 					<img
 						className={styles.alertClose}
 						onClick={this.props.onClose}
 						src={exitIcon}
 						alt="Close"
 					/>
-				
+
 					<div>
 					
-						<a
-							href={this.props.url}
-							title="Learn More"
-							className={styles.alertButton}>
-							LEARN MORE
-						</a>
-					
+						<BasicLink htmlElement="button" url={this.props.url} text="LEARN MORE" myClassName={styles.alertButton}/>
 					</div>
-				
+
 				</div>
 
             </div>
