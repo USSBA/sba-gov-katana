@@ -32,7 +32,7 @@ class BasicLink extends React.Component {
       if(this.props.htmlElement !== "a"){
         console.log("WARNING: BasicLink told to render an unexpected element with htmlElement prop. Rendering <a instead");
       }
-      return (<a {...linkProps}>{this.props.text}</a>);
+      return (<a {...linkProps}>{this.props.text || this.props.children}</a>);
     }
   }
 }
