@@ -1,7 +1,9 @@
+/* eslint-disable */
+import Promise from "bluebird";
 import axios from "axios";
 import { formatMessage } from "../service/linc-message-formatter.js";
 const request = require("request");
-const xmlToJs = require("xml2js");
+const xml2js = Promise.promisifyAll(require("xml2js"));
 const DOMParser = require("xmldom").DOMParser; // eslint-disable-line id-match
 const XmlSerializer = require("xmldom").XMLSerializer; // eslint-disable-line id-match
 import config from "config";
@@ -36,7 +38,7 @@ function convertFormDataToXml(userInfo, lenderMatchRegistration) {
     }
   };
 
-  const builder = new xmlToJs.Builder({
+  const builder = new xml2js.Builder({
     "headless": true
   });
 
@@ -138,71 +140,50 @@ function createSoapEnvelopeForPasswordUpdate(userName, password, newPassword) {
   return domSerializer.serializeToString(xmlDoc);
 }
 
+function convertItemsToObject(itemList) {
+  const mapped = _.map(itemList, function(item) {
+    return {
+      key: item.key[0],
+      value: item.value[0]
+    };
+  });
+  const keyed = _.keyBy(mapped, "key");
+  const remapped = _.mapValues(keyed, "value");
+  const mappedKeys = _.mapKeys(remapped, (value, key) => {
+    let newBaseKey = key.replace("Result", "Response");
+    return _.camelCase(newBaseKey);
+  })
+  return mappedKeys;
+}
+
+function parseOcaXmlResponseBody(xmlBody, firstBodyElementTag, secondBodyElementTag) {
+  return xml2js.parseStringAsync(xmlBody, {
+    ignoreAttrs: true
+  }).then((r) => {
+    const itemList = r["soapenv:Envelope"]["soapenv:Body"][0][firstBodyElementTag][0][secondBodyElementTag][0].item;
+    return convertItemsToObject(itemList);
+  });
+}
+
 
 function parseResponse(xmlBody) {
-  let errorMessageTechnical = "";
-  let errorMessageEnglish = "";
-
-  let retVal = "F";
-  const parser = new DOMParser();
-  const xmlRespDoc = parser.parseFromString(xmlBody);
-  const passwordUpdateRequired = xmlRespDoc.getElementsByTagName("item")[0].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-
-  //this element can be empty
-  const secondItemChildren = xmlRespDoc.getElementsByTagName("item")[1].getElementsByTagName("value")[0].childNodes;
-  if (secondItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
-    errorMessageEnglish = secondItemChildren[0].nodeValue;
-  }
-  const response = xmlRespDoc.getElementsByTagName("item")[2].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-
-  //this element can be empty
-  const fourthItemChildren = xmlRespDoc.getElementsByTagName("item")[3].getElementsByTagName("value")[0].childNodes;
-  if (fourthItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
-    errorMessageTechnical = fourthItemChildren[0].nodeValue;
-  }
-  const responseCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-  if (responseCode === "0") {
-    const lincRespXmlDoc = parser.parseFromString(response);
-    retVal = lincRespXmlDoc.getElementsByTagName("Result")[0].childNodes[0].nodeValue;
-  }
-  return {
-    responseCode: retVal,
-    errorMessageEnglish: errorMessageEnglish,
-    errorMessageTechnical: errorMessageTechnical
-  };
+  return parseOcaXmlResponseBody(xmlBody, "SBA_LINCResponse", "SBA_LINCReturn");
 }
 
 function parsePasswordUpdateResponse(xmlBody) {
-  let errorMessageTechnical = "";
-  let errorMessageEnglish = "";
-
-  const parser = new DOMParser();
-  const xmlRespDoc = parser.parseFromString(xmlBody);
-  const passwordUpdateRequired = xmlRespDoc.getElementsByTagName("item")[0].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-
-  //this element can be empty
-  const secondItemChildren = xmlRespDoc.getElementsByTagName("item")[1].getElementsByTagName("value")[0].childNodes;
-  if (secondItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
-    errorMessageEnglish = secondItemChildren[0].nodeValue;
-  }
-  const response = xmlRespDoc.getElementsByTagName("item")[2].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-
-  //this element can be empty
-  const fourthItemChildren = xmlRespDoc.getElementsByTagName("item")[3].getElementsByTagName("value")[0].childNodes;
-  if (fourthItemChildren.length > 0) { // eslint-disable-line no-magic-numbers
-    errorMessageTechnical = fourthItemChildren[0].nodeValue;
-  }
-  const resultCode = xmlRespDoc.getElementsByTagName("item")[4].getElementsByTagName("value")[0].childNodes[0].nodeValue;
-
-  return {
-    passwordUpdateRequired: passwordUpdateRequired,
-    errorMessageEnglish: errorMessageEnglish,
-    comment: response,
-    errorMessageTechnical: errorMessageTechnical,
-    responseCode: resultCode
-  };
+  return parseOcaXmlResponseBody(xmlBody, "PasswordUpdateResponse", "PasswordUpdateReturn");
 }
 
+
+function parseResponseText(responseText) {
+  return xml2js.parseStringAsync(responseText, {
+    ignoreAttrs: true,
+    explicitArray: false
+  }).then((r) => {
+    let data = r.SBALincResponse;
+    return data;
+  })
+}
 
 function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
@@ -229,8 +210,22 @@ function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
         console.log(error);
         reject(error);
       } else {
-        const resp = lincRequest ? parseResponse(body) : parsePasswordUpdateResponse(body);
-        resolve(resp);
+        console.log("Full Response from OCA\n", body);
+        let resp = "";
+        try {
+          resp = lincRequest ? parseResponse(body) : parsePasswordUpdateResponse(body);
+          resolve(resp);
+        } catch (error) {
+          console.error("Error parsing response", error);
+          resp = "Failed to parse response";
+          resolve({
+            errorMessageTechnical: "Failed to parse the XML response from OCA",
+            responseCode: "-999",
+            passwordUpdateRequired: "Unknown",
+            errorMessageEnglish: "Failed to parse the XML response from OCA",
+            comment: "See logs for details"
+          });
+        }
       }
     });
   });
@@ -238,4 +233,4 @@ function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
 
 
 
-export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parsePasswordUpdateResponse };
+export { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parsePasswordUpdateResponse, parseResponseText };

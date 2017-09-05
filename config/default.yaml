@@ -58,4 +58,4 @@ oca:
     soap:
         username: placeholder
         passwordDecryptionKey: placeholderDecryptionKey
-        wsdlUrl: https://catweb.sba.gov/linc/ws/linc.wsdl
+        wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl

@@ -1,5 +1,5 @@
 import config from "config";
-import { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate } from "./oca-soap-client.js";
+import { getEndPointUrl, convertFormDataToXml, createSoapEnvelope, sendLincSoapRequest, createSoapEnvelopeForPasswordUpdate, parseResponseText } from "./oca-soap-client.js";
 import lenderMatchRegistration from "../models/lender-match-registration.js";
 import lenderMatchSoapResponse from "../models/lender-match-soap-response.js";
 import emailConfirmation from "../models/email-confirmation.js";
@@ -56,19 +56,19 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
 }
 
 
-function updateLincPassword(updateInfo, newPassword) {
-  const newExpiry = moment().add(updateInfo.schedule * 60, "seconds").unix(); //eslint-disable-line no-magic-numbers
+function updateLincPassword(record, newPassword) {
+  const newExpiry = moment().add(record.schedule * 60, "seconds").unix(); //eslint-disable-line no-magic-numbers
   return lincPasswordUpdate.update({
     expiry: newExpiry,
     password: newPassword,
     encrypted: true
   }, {
     where: {
-      id: updateInfo.id
+      id: record.id
     }
   })
     .catch((err) => {
-      console.log("EXCEPTION: Problem updating lincPasswordUpdate table.");
+      console.error("EXCEPTION: Problem updating lincPasswordUpdate table.");
       throw err;
     });
 }
@@ -82,51 +82,49 @@ function sendPasswordUpdateToOca(userName, password, newPassword) {
 }
 
 function sendPasswordUpdateRequest() {
-  return lincPasswordUpdate.findOne()
-    .then((response) => {
-      if (response) {
-        if (moment().unix() >= response.expiry) {
-          const newPassword = encryptPassword(generateOcaPassword());
-          return sendPasswordUpdateToOca(response.username, response.password, newPassword).then((result) => {
-            if (result.responseCode === "0" && result.comment === "Password changed.") { //eslint-disable-line no-magic-numbers
-              return updateLincPassword(response, newPassword);
-            }
-            console.log("Unable to reset or update OCA password.");
-            return Promise.reject("Unable to reset or update OCA password.");
-          });
-        }
-        return Promise.resolve(null);
-      } else {
-        return Promise.reject("No password configuration found");
-      }
+  return getCredentials()
+    .then((credentials) => {
+      const newPlainTextPassword = generateOcaPassword();
+      const newEncryptedPassword = encryptPassword(newPlainTextPassword);
+      return sendPasswordUpdateToOca(credentials.username, credentials.password, newPlainTextPassword)
+        .then((result) => {
+          console.log("Parsed response from OCA", result);
+          if (result.responseCode === "0") {
+            return updateLincPassword(credentials.record, newEncryptedPassword);
+          } else {
+            console.error("Receieved a non-zero response code from OCA during Password reset");
+            throw new Error("Error updating password: ", JSON.stringify(result));
+          }
+        });
     })
     .catch((error) => {
-      console.log("EXCEPTION: Error building Password Update Request.");
-      throw error;
+      console.error("Error updating password: ", error);
     });
 }
 
 
 function handleSoapResponse(soapResponse) {
-  if (soapResponse.responseCode === "P" || soapResponse.responseCode === "F") {
+  const finalResultCode = soapResponse.responseText.Enquiry.Result;
+  if (finalResultCode === "P" || finalResultCode === "F") {
     return createLenderMatchSoapResponseData(soapResponse);
-  } else if (soapResponse.responseCode === "S") {
+  } else if (finalResultCode === "S") {
     return deleteLenderMatchRegistration(soapResponse.lenderMatchRegistrationId);
   }
-  throw new Error("Unknown Response Code receieved from OCA.");
+  throw new Error("Unknown Response Code receieved from OCA: " + finalResultCode);
 }
 
 function getCredentials() {
   return lincPasswordUpdate.findOne()
-    .then((resp) => {
-      if (resp && resp.username && resp.password) {
-        const password = resp.encrypted ? decryptPassword(resp.password) : resp.password;
+    .then((record) => {
+      if (record && record.username && record.password) {
+        const password = record.encrypted ? decryptPassword(record.password) : record.password;
         return {
-          username: resp.username,
-          password: password
+          username: record.username,
+          password: password,
+          record: record
         };
       } else {
-        throw new Error("Unable to retrieve Username and Password from database.");
+        throw new Error("Unknown error retrieving username and password from database.");
       }
     });
 }
@@ -147,9 +145,16 @@ function sendDataToOca(lenderMatchRegistrationData) {
         });
     })
     .then(function(response) {
-      return _.merge({}, response, {
-        lenderMatchRegistrationId: lenderMatchRegistrationData.id
-      });
+      console.log("Parsed response from OCA", response);
+
+      return parseResponseText(response.response)
+        .then((parsedReponseText) => {
+          return _.merge({}, response, {
+            lenderMatchRegistrationId: lenderMatchRegistrationData.id,
+            responseText: parsedReponseText
+          });
+        });
+
     })
     .catch((error) => {
       console.log("Unable to send data to OCA.");

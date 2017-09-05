@@ -48,6 +48,7 @@ class DropdownMenu extends React.Component {
 
   render() {
     let sizingStyle = "";
+    let indent=false;
     let menuId = this.props.menuId;
     let smallInverseCta = false;
     let indent = false;
@@ -97,6 +98,9 @@ class DropdownMenu extends React.Component {
           : styles.hide)}>
           {goToNextButton}
           {pageLinkGroups}
+      {this.props.featuredCallout
+          ? <FeaturedCallout {...this.props.featuredCallout}/>
+          : undefined}
         {smallInverseCta
           ? <div className={styles.businessGuideCTA}><SmallInverseCta {...businessGuideCtaData}/></div>
           : undefined}

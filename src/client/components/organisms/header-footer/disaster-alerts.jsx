@@ -17,7 +17,7 @@ class DisasterAlerts extends React.Component {
                 </div>
                 <img className={styles.alertClose} onClick={this.props.onClose} src={exitIcon} alt="Close"/>
                 <div>
-                    <BasicLink url='https://disasterloan.sba.gov/ela/' text='APPLY FOR DISASTER LOAN' myClassName={styles.alertButton}/>
+                    <BasicLink url='https://www.sba.gov/harvey' text='LEARN MORE' myClassName={styles.alertButton}/>
                 </div>
               </div>
             </div>
