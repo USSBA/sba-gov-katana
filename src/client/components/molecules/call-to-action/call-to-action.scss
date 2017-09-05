@@ -54,7 +54,7 @@
       align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
-      padding: 30px 0 30px 0;
+      padding: 30px;
     }
   }
   .headline {
@@ -75,10 +75,10 @@
     display: none;
   }
   .contentContainer {
+    padding: 30px;
     @include grid-media($sba-grid-large) {
       text-align: left;
       @include grid-column(12);
-      padding: 30px 0 30px 0;
     }
   }
 }
