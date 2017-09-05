@@ -1,10 +1,11 @@
-import React from "react"
-import styles from "./simple-cta.scss";
-import {SmallSecondaryButton} from "../../atoms";
-import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-light.png";
+import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {SmallSecondaryButton} from "atoms";
 import * as NavigationActions from "../../../actions/navigation.js";
+import cornerLines from "../../../../../public/assets/images/corner-diagonal-lines-light.png";
+import styles from "./simple-cta.scss";
+import {createCtaNavigation} from "../../../services/navigation";
 
 class SimpleCta extends React.Component{
     handleClick() {
@@ -14,7 +15,8 @@ class SimpleCta extends React.Component{
         return (
             <div id={this.props.id} className={styles.container}>
                 <p>{this.props.actionText}</p>
-                <SmallSecondaryButton onClick={this.handleClick.bind(this)} text={this.props.buttonText}/>
+                <SmallSecondaryButton onClick={createCtaNavigation(this.props.url, this.props.eventCategory, this.props.eventLabel, 1)}
+                              text={this.props.buttonText}/>
                 <img alt="" className={styles.cornerLines} src={cornerLines}/>
             </div>
         );

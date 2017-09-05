@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './footer.scss';
+import React from "react";
+import {SocialMediaLink} from "atoms";
+import {PageLinkGroup} from "molecules";
 
-import SocialMediaLink from "../../../atoms/social-media-link/social-media-link.jsx";
-import PageLinkGroup from "../../../molecules/page-link-group/page-link-group.jsx";
 import constants from "../../../../services/constants.js";
 
 import facebookThumbnail from "../../../../../../public/assets/images/footer/facebook.png"
@@ -11,6 +10,8 @@ import googlePlusThumbnail from "../../../../../../public/assets/images/footer/g
 import youtubeThumbnail from "../../../../../../public/assets/images/footer/youtube-play.png"
 import linkedInThumbnail from "../../../../../../public/assets/images/footer/linkedin.png"
 import instagramThumbnail from "../../../../../../public/assets/images/footer/instagram.png"
+
+import styles from "./footer.scss";
 
 const SocialMediaLinkSet = () => {
   return (

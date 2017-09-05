@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars,no-undef */
 import React from "react";
 /*eslint-enable no-unused-vars*/
-import {SectionNav} from "client/components/organisms/section-nav/section-nav.jsx";
+import {SectionNav} from "organisms/section-nav/section-nav.jsx";
 import {shallow} from "enzyme";
 import renderer from "react-test-renderer";
 import _ from "lodash";
@@ -22,12 +22,12 @@ describe("SectionNav", () => {
       const modifiedBacklinkUrl = "/business-guide";
       const lineage = _.merge(_.cloneDeep(lineageBusinessGuide), [{fullUrl: modifiedBacklinkUrl}]);
       const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-back-button-desktop").props().href).toBe(modifiedBacklinkUrl);
+      expect(component.find("#article-navigation-back-button-desktop").props().url).toBe(modifiedBacklinkUrl);
     });
 
     test("Backlink text is 'Back to all topics'", () => {
       const component = shallow(<SectionNav lineage={lineageBusinessGuide} />);
-      expect(component.find("#article-navigation-back-button-desktop").text()).toBe("Back to all topics");
+      expect(component.find("#article-navigation-back-button-desktop").props().text).toBe("Back to all topics");
     });
 
     test("Navigation title uses first word of second-level as an H2 and the rest as H4", () => {
@@ -51,13 +51,13 @@ describe("SectionNav", () => {
       const modifiedBacklinkUrl = "/my/back/url";
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{},{fullUrl: modifiedBacklinkUrl}]);
       const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-back-button-desktop").props().href).toBe(modifiedBacklinkUrl);
+      expect(component.find("#article-navigation-back-button-desktop").props().url).toBe(modifiedBacklinkUrl);
     });
     test("Backlink text is third-level title", () => {
       const modifiedTitle = "My Third Level Title";
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{},{},{title: modifiedTitle}]);
       const component = shallow(<SectionNav lineage={lineage} />);
-      expect(component.find("#article-navigation-back-button-desktop").text()).toBe(`Back to ${modifiedTitle}`);
+      expect(component.find("#article-navigation-back-button-desktop").props().text).toBe(`Back to ${modifiedTitle}`);
     });
     test("Navigation title has all content in an h3", () => {
       const navigationTitle = "Firstwordof My Third Level Title";

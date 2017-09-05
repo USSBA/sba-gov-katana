@@ -1,8 +1,8 @@
-import React from "react"
-import styles from "./text-readmore-section.scss";
+import React from "react";
+import {reverse, debounce} from "lodash";
 import TextSection from "../text-section/text-section.jsx";
 import ReadMore from "../readmore/readmore.jsx";
-import {reverse, debounce} from "lodash";
+import styles from "./text-readmore-section.scss";
 
 class TextReadMoreSection extends React.Component {
 

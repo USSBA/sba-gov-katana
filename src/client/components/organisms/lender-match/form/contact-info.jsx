@@ -1,17 +1,17 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {includes} from 'lodash';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {includes} from "lodash";
+import {TextInput} from "atoms";
+import {FormPageButtons} from "molecules";
 
-import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/navigation.js';
+import * as LenderMatchActions from "../../../../actions/lender-match.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 import {getNameValidationState, getPhoneValidationState, getEmailValidationState, getAlwaysValidValidationState, containsErrorOrNull} from '../../../../services/form-validation-helpers.js';
 
-import TextInput from '../../../atoms/text-input/text-input.jsx';
-import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
-import styles from './lender-match.scss';
+import styles from "./lender-match.scss";
 
 class ContactInfoForm extends React.Component {
   constructor(props) {

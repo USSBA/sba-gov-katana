@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 import styles from './dropdown-menu.scss';
 import {isEmpty} from "lodash";
-import constants from "../../../services/constants.js"
-import clientConfig from "../../../services/client-config.js"
-
-import PageLinkGroup from "../page-link-group/page-link-group.jsx"
-import UtilityLink from "../../atoms/utility-link/utility-link.jsx"
-
-import FeaturedCallout from "../featured-callout/featured-callout.jsx"
-import SmallInverseCta from "../../molecules/small-inverse-cta/small-inverse-cta.jsx"
+import {UtilityLink} from "atoms";
+import {
+  PageLinkGroup,
+  FeaturedCallout,
+  SmallInverseCta
+} from "molecules";
+import constants from "../../../services/constants.js";
+import clientConfig from "../../../services/client-config.js";
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -51,6 +51,7 @@ class DropdownMenu extends React.Component {
     let indent=false;
     let menuId = this.props.menuId;
     let smallInverseCta = false;
+    let indent = false;
     if (menuId === 0) {
       sizingStyle = styles.one;
       smallInverseCta = true;
@@ -86,7 +87,7 @@ class DropdownMenu extends React.Component {
         let mappedChildren = children.map(function(item) {
           return {url: item.link, text: item.linkTitle}
         });
-        return <PageLinkGroup key={index} id={this.props.id + "-group-" + index} title={data.linkTitle} titleLink={data.link} onBlur={this.handleLeafBlur.bind(this)} links={mappedChildren} indent={false}/>;
+        return <PageLinkGroup key={index} id={this.props.id + "-group-" + index} title={data.linkTitle} titleLink={data.link} onBlur={this.handleLeafBlur.bind(this)} links={mappedChildren} indent={indent}/>;
       });
       const goToNextButton = this.props.hasNext
         ? <ul className={styles.skipLink}><UtilityLink id={this.props.id + "-go-to-next"} visible={this.state.goToNextSectionShown} text="Go to Next Section" onKeyDown={(event) => this.handleSkipLinkKeyDown(event)} onFocus={(event) => this.handleGoToNextFocus(event)} onBlur={(event) => this.handleGoToNextBlur(event)}/></ul>

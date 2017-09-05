@@ -1,7 +1,7 @@
-import React from 'react';
-import styles from './front-page-lady.scss';
-import LargeInversePrimaryButton from '../../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx'
-import Triangle from '../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png';
+import React from "react";
+import {LargeInversePrimaryButton} from "atoms";
+import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
+import styles from "./front-page-lady.scss";
 
 class FrontPageLady extends React.Component {
   render() {
@@ -17,7 +17,7 @@ class FrontPageLady extends React.Component {
               Start and grow your business.</div>
             <div className={styles.text}>
               Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
-            <LargeInversePrimaryButton text="LET'S GO" URL="./starting-managing-business"/>
+            <LargeInversePrimaryButton text="LET'S GO" url="/business-guide" />
             <img alt="" src={Triangle} className={styles.triangle}/>
           </div>
         </div>

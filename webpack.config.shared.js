@@ -74,6 +74,13 @@ module.exports = function(styleNamingFormat) {
           loader: 'json-loader'
         }
       ]
+    },
+    resolve: {
+      alias: {
+        atoms: path.resolve(__dirname, "src/client/components/atoms"),
+        molecules: path.resolve(__dirname, "src/client/components/molecules"),
+        organisms: path.resolve(__dirname, "src/client/components/organisms/index.jsx") // for some reason this specifice path will not resolve without index.jsx
+      }
     }
   };
 };

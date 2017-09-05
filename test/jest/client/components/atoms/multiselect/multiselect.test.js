@@ -1,13 +1,13 @@
 /*global expect*/
 
 /*eslint-disable no-unused-vars*/
-import React from 'react';
+import React from "react";
 /*eslint-enable no-unused-vars*/
-import ReactSelect from 'react-select';
-import MultiSelect from 'client/components/atoms/multiselect/multiselect.jsx';
-import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
-import _ from 'lodash';
+import ReactSelect from "react-select";
+import { MultiSelect } from "atoms";
+import { shallow } from "enzyme";
+import renderer from "react-test-renderer";
+import _ from "lodash";
 
 
 // Does not appear to work with React-Select

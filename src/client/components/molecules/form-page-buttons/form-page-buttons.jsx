@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 import _ from "lodash";
-import SmallPrimaryFormButton from '../../atoms/small-primary-form-button/small-primary-form-button.jsx';
-import SmallGraySecondaryFormButton from '../../atoms/small-grey-secondary-form-button/small-grey-secondary-form-button.jsx';
+import {
+  SmallPrimaryFormButton,
+  SmallGraySecondaryFormButton
+} from "atoms";
 
 
-import styles from './form-page-buttons.scss';
+import styles from "./form-page-buttons.scss";
 
 class FormPageButtons extends React.Component {
   render() {

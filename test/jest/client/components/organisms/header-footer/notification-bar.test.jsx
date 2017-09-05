@@ -1,13 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {shallow} from "enzyme";
-import NotificationBar from "client/components/organisms/header-footer/notification-bar.jsx";
-
-jest.mock("client/services/client-config.js", function(){
-    return {
-        isUserLoggedIn: false
-    };
-});
+import {shallow, mount} from "enzyme";
+import {NotificationBar} from "organisms";
 
 describe("NotificationBar", () => {
 
@@ -36,8 +30,7 @@ describe("NotificationBar", () => {
 
 		const mockLabel = "LEARN MORE";
 		const component = shallow(<NotificationBar />);
-
-		expect(component.find("a").first().text()).toBe(mockLabel);
+		expect(component.find("BasicLink").props().text).toBe(mockLabel);
 
 	});
 
@@ -46,7 +39,7 @@ describe("NotificationBar", () => {
 		const mockUrl = "#";
 		const component = shallow(<NotificationBar url={mockUrl} />);
 
-		expect(component.find("a").first().props().href).toBe(mockUrl);
+		expect(component.find("BasicLink").props().url).toBe(mockUrl);
 
 	});
 

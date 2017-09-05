@@ -2,18 +2,20 @@ import React from "react";
 import ReactModal from "react-modal";
 import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
+import {includes} from "lodash";
 import * as ModalActions from "../../actions/show-modal.js";
 import * as ContentActions from "../../actions/content.js";
-import styles from "./news-modal.scss";
-import TextInput from "../atoms/text-input/text-input.jsx";
-import exitIcon from "../../../../public/assets/svg/close_button.svg";
+import {
+    TextInput,
+    NewsletterSmallPrimaryButton
+} from "atoms";
 import {logEvent} from "../../services/analytics.js";
 import constants from "../../services/constants.js";
 import config from "../../services/client-config.js";
 import {getEmailValidationState, getZipcodeValidationState, containsErrorOrNull} from "../../services/form-validation-helpers.js";
-import {includes} from "lodash";
+import exitIcon from "../../../../public/assets/svg/close_button.svg";
 import envelopeIcon from '../../../../public/assets/svg/envelope.svg';
-import NewsletterSmallPrimaryButton from "../atoms/newsletter-small-primary-button/newsletter-small-primary-button.jsx";
+import styles from "./news-modal.scss";
 
 class SbaNewsModal extends React.Component {
     timerId = null;

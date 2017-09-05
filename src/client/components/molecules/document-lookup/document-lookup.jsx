@@ -4,20 +4,17 @@ import _ from "lodash";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import querystring from "querystring";
-
-import * as ContentActions from "../../../actions/content.js";
-import styles from "./document-lookup.scss";
-
 import {
 	ApplyButton,
-	Multiselect,
+	MultiSelect,
 	TextInput,
 	SearchIcon,
 	SmallInverseSecondaryButton
-} from "../../atoms";
-import {Paginator} from "../../molecules/";
-import DocumentCardCollection from "../../organisms/document-card-collection/document-card-collection.jsx";
-
+} from "atoms";
+import {Paginator} from "molecules";
+import {DocumentCardCollection} from "organisms";
+import * as ContentActions from "../../../actions/content.js";
+import styles from "./document-lookup.scss";
 
 const config = {
 	pageSize: 30,
@@ -202,7 +199,7 @@ export class DocumentLookup extends React.PureComponent {
 
 			return (
 				<div className={styles.multiSelect} key={index}>
-					<Multiselect
+					<MultiSelect
 						{...multiSelectProps}
 						onBlur={returnNull}
 						onFocus={returnNull}
@@ -345,8 +342,11 @@ export class DocumentLookup extends React.PureComponent {
 
 	reset() {
 
+
 		this.setState(config.originalState, () => {
+
 			this.submit();
+
 		});
 
 	}
@@ -422,13 +422,14 @@ export class DocumentLookup extends React.PureComponent {
 						<div className={styles.searchBox}>
 							<TextInput
 								placeholder="Search by title or number"
-								id="document-lookup"
+								id="document-lookup-text-input"
 								errorText={"Please enter the correct thing."}
 								label="Search"
 								validationState={""}
 								onKeyUp={(e) => this.handleKeyUp(e)}
 								onChange={(e) => this.updateSearchTerm(e)}
 								defaultValue={this.state.searchTerm}
+								value={this.state.searchTerm}
 							/>
 							<div className={styles.searchIcon}>
 								<SearchIcon aria-hidden="true" />

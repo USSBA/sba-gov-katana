@@ -1,12 +1,12 @@
-import React from "react"
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import _ from "lodash";
+import {MultiSelect} from "atoms";
+import * as ContentActions from "../../../actions/content.js";
+import Paginator from "../paginator/paginator.jsx";
+import CardGrid from "../card-grid/card-grid.jsx";
 import s from "./surety-lookup.scss";
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ContentActions from "../../../actions/content.js"
-import {Multiselect} from '../../atoms';
-import _ from 'lodash';
-import Paginator from "../../molecules/paginator/paginator.jsx";
-import CardGrid from "../../molecules/card-grid/card-grid.jsx"
 
 var pageSize = 9;
 var dataProp = "statesTaxonomy";
@@ -108,7 +108,7 @@ class SuretyLookup extends React.Component {
           <h2>Contact a surety bond agency</h2>
           <p className={s.blurb}>Check the database of surety agencies that offer SBA-guranteed bonds. Contact a surety agency in your state to get started with the application process.</p>
           <div className={s.multiSelect}>
-            <Multiselect {...this.multiSelectProps()} onChange={(e) => this.handleSelect(e)} value={this.state.suretyState} onBlur={() => {
+            <MultiSelect {...this.multiSelectProps()} onChange={(e) => this.handleSelect(e)} value={this.state.suretyState} onBlur={() => {
               return null
             }} onFocus={() => {
               return null

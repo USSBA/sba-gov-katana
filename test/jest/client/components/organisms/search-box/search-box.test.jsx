@@ -2,7 +2,15 @@ import React from "react";
 import {shallow} from "enzyme";
 let sinon = require('sinon');
 
-import SearchBox from "client/components/organisms/search-box/search-box.jsx";
+import {SearchBox} from "organisms";
+
+jest.mock("client/services/client-config.js", function(){
+    return {
+		googleAnalytics: {
+			enabled: false
+		}
+    };
+});
 
 describe("searchBox", () => {
 
@@ -37,15 +45,15 @@ describe("searchBox", () => {
 	test("has 1 Submit Button Component", () => {
 
 		const component = shallow(<SearchBox />);
-		expect(component.find("SmallInversePrimaryButton")).toHaveLength(1);
+		expect(component.find("LargeInversePrimaryButton")).toHaveLength(1);
 
 	});
 
-	test("Submit Button Component reads, 'Submit'", () => {
+	test("Submit Button Component reads, 'Search'", () => {
 
-		const mockText = "Submit";
+		const mockText = "Search";
 		const component = shallow(<SearchBox />);
-		const expectedText = component.find("SmallInversePrimaryButton").first().props().text;
+		const expectedText = component.find("LargeInversePrimaryButton").first().props().text;
 		expect(expectedText).toBe(mockText);
 
 	});
@@ -64,7 +72,7 @@ describe("searchBox", () => {
 		const instance = component.instance();
 		const spy = sinon.spy(instance, "submit");
 		instance.forceUpdate();
-		component.find("SmallInversePrimaryButton").first().simulate("click", { preventDefault });		
+		component.find("LargeInversePrimaryButton").first().simulate("click", { preventDefault });		
 
 		sinon.assert.calledOnce(spy);
 

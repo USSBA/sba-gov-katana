@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./section-link.scss";
+import {BasicLink} from "../../atoms";
 
 class SectionLink extends React.Component {
   render() {
@@ -11,7 +12,7 @@ class SectionLink extends React.Component {
       "";
     return (
       <span id={this.props.id + "-container"} className={styles.link + underlineStyle} onMouseOver={this.props.onMouseOver} onMouseOut={this.props.onMouseOut}>
-        <a id={this.props.id} className={styles.sectionLink} href={this.props.url} onKeyDown={this.props.onKeyDown}>{this.props.text}</a>
+        <BasicLink text={this.props.text} id={this.props.id} myClassName={styles.sectionLink} url={this.props.url} onKeyDown={this.props.onKeyDown}/>
         <div className={styles.triangle + triangleColor}></div>
         {this.props.children}
       </span>

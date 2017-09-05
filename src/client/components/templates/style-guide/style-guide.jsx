@@ -1,52 +1,78 @@
-import React from 'react';
-import ExtraLargeTitleText from '../../atoms/extra-large-title-text/extra-large-title-text.jsx';
-import SubtitleText from '../../atoms/subtitle-text/subtitle-text.jsx';
-import CaptionText from '../../atoms/caption-text/caption-text.jsx';
+import React from "react";
 
-import LargePrimaryButton from '../../atoms/large-primary-button/large-primary-button.jsx';
-import LargeSecondaryButton from '../../atoms/large-secondary-button/large-secondary-button.jsx';
-import LargeInversePrimaryButton from '../../atoms/large-inverse-primary-button/large-inverse-primary-button.jsx';
-import LargeInverseSecondaryButton from '../../atoms/large-inverse-secondary-button/large-inverse-secondary-button.jsx';
+// typography atoms
+import {
+  ExtraLargeTitleText,
+  SubtitleText,
+  CaptionText
+} from "atoms";
 
-import SmallPrimaryButton from '../../atoms/small-primary-button/small-primary-button.jsx';
-import SmallSecondaryButton from '../../atoms/small-secondary-button/small-secondary-button.jsx';
-import SmallInversePrimaryButton from '../../atoms/small-inverse-primary-button/small-inverse-primary-button.jsx';
-import SmallInverseSecondaryButton from '../../atoms/small-inverse-secondary-button/small-inverse-secondary-button.jsx';
+// large button atoms
+import {
+  LargePrimaryButton,
+  LargeSecondaryButton,
+  LargeInversePrimaryButton,
+  LargeInverseSecondaryButton
+} from "atoms";
 
-import LargeGreySecondaryButton from '../../atoms/large-grey-secondary-button/large-grey-secondary-button.jsx';
-import SmallGreySecondaryButton from '../../atoms/small-grey-secondary-button/small-grey-secondary-button.jsx';
+// small button atoms
+import {
+  SmallPrimaryButton,
+  SmallSecondaryButton,
+  SmallInversePrimaryButton,
+  SmallInverseSecondaryButton
+} from "atoms";
 
-import SbaModal from '../../molecules/modal.jsx';
-import Callout from '../../molecules/callout/callout.jsx';
-import Hero from '../../organisms/hero/hero.jsx';
-import styles from './style-guide.scss';
+// grey button atoms
+import {
+  LargeGreySecondaryButton,
+  SmallGreySecondaryButton
+} from "atoms";
 
-import TextInput from '../../atoms/text-input/text-input.jsx';
-import TextArea from "../../atoms/textarea/textarea.jsx";
-import RadioBtnGroup from "../../atoms/radio/radio.jsx";
-import Checkbox from "../../atoms/checkbox/checkbox.jsx";
+// form control atoms
+import {
+  TextInput,
+  TextArea,
+  Radio,
+  Checkbox
+} from "atoms";
+
+// icon atoms
+import {
+  CaretIcon,
+  CloseIcon,
+  HomeIcon,
+  SearchIcon,
+  FailureIcon,
+  SuccessIcon
+} from "atoms";
+
+// miscellaneous atoms
+import {
+  DecorativeDash,
+  DocumentType
+} from "atoms";
+
+// molecules
+import {
+  SbaModal,
+  Callout,
+  SimpleCta,
+  CallToAction as CTA,
+  TextSection,
+  Paginator
+} from "molecules";
+
+// organisms
+import {
+  Hero,
+  CardCollection
+} from "organisms";
+
+import styles from "./style-guide.scss";
 
 import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
-
-import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
-import CTA from "../../molecules/call-to-action/call-to-action.jsx"
-
-import CaretIcon from "../../atoms/icons/caret-down.jsx"
-import CloseIcon from "../../atoms/icons/close.jsx"
-import HomeIcon from "../../atoms/icons/home.jsx"
-import SearchIcon from "../../atoms/icons/search.jsx"
-import FailureIcon from "../../atoms/icons/failure.jsx"
-import SuccessIcon from "../../atoms/icons/success.jsx"
-
-import DecorativeDash from "../../atoms/decorative-dash/decorative-dash.jsx"
-
-import CardCollection from '../../organisms/card-collection/card-collection.jsx'
-
-import TextSection from '../../molecules/text-section/text-section.jsx'
-import Paginator from "../../molecules/paginator/paginator.jsx"
-
-import DocumentType from '../../atoms/document-type/document-type.jsx'
 
 class StyleGuide extends React.Component {
   constructor() {
@@ -548,7 +574,7 @@ class FormElements extends React.Component {
             this.handleTextAreaChange(e)
           }} value={this.state.textAreaValue} label="TextArea with error" name="loanDescription" validationState={"error"} placeholder="Notice the error state"/>
 
-          <RadioBtnGroup gropuId="lender-match-radio-1" errorText={"Please enter the correct thing."} onChange={(e) => {
+          <Radio gropuId="lender-match-radio-1" errorText={"Please enter the correct thing."} onChange={(e) => {
             this.handleRadioBtnChange(e)
           }} value={this.state.radioBtnValue} label="How much experience do you have?" name="industryExperience" validationState={""} options={radioButtonOptions}/>
           <label style={{

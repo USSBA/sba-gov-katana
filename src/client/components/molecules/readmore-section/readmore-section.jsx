@@ -1,6 +1,6 @@
-import React from "react"
-import styles from "./readmore-section.scss";
+import React from "react";
 import ReadMore from "../readmore/readmore.jsx";
+import styles from "./readmore-section.scss";
 
 class ReadMoreSection extends React.Component {
 

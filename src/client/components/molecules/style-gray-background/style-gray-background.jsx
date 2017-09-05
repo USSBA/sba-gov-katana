@@ -1,9 +1,9 @@
-import React from 'react';
-import styles from './style-gray-background.scss';
-import TextSection from "../../molecules/text-section/text-section.jsx";
-import SectionHeader from "../../molecules/section-header/section-header.jsx";
-import CardCollection from "../../organisms/card-collection/card-collection.jsx";
+import React from "react";
+import TextSection from "../text-section/text-section.jsx";
+import SectionHeader from "../section-header/section-header.jsx";
 import * as paragraphMapper from "../../templates/paragraph-mapper.jsx";
+import {CardCollection} from "organisms";
+import styles from "./style-gray-background.scss";
 
 class StyleGrayBackground extends React.Component {
   makeParagraphs(paragraphData) {

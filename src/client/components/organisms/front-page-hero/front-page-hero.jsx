@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from './front-page-hero.scss'
-import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png';
+import React from "react";
+import styles from "./front-page-hero.scss";
+import diagonalLines from "../../../../../public/assets/images/homepage/diagonal-lines.png";
+import {BasicLink} from "atoms"
 
 class FrontPageHero extends React.Component {
 
@@ -18,15 +19,15 @@ class FrontPageHero extends React.Component {
         <div className={styles.boxContainer}>
           <div className={styles.AccentBox}>
             <ul>
-              <a href={this.props.links[0].link}>
-                <li className={styles.borderBox}>{this.props.links[0].title}</li>
-              </a>
-              <a href={this.props.links[1].link}>
-                <li className={styles.borderBox}>{this.props.links[1].title}</li>
-              </a>
-              <a href={this.props.links[2].link}>
-                <li>{this.props.links[2].title}</li>
-              </a>
+               <BasicLink url={this.props.links[0].link}>
+                   <li className={styles.borderBox}>{this.props.links[0].title}</li>
+               </BasicLink>
+               <BasicLink url={this.props.links[1].link}>
+                   <li className={styles.borderBox}>{this.props.links[1].title}</li>
+               </BasicLink>
+               <BasicLink url={this.props.links[2].link}>
+                   <li className={styles.borderBox}>{this.props.links[2].title}</li>
+               </BasicLink>
             </ul>
             <img src={diagonalLines} alt=""/>
           </div>

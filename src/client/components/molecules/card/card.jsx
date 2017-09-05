@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import styles from "./card.scss";
 
 class Card extends React.Component {

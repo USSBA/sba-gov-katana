@@ -1,28 +1,31 @@
+import Async from 'react-code-splitting'
+
 import React from 'react';
 
-import Main from "./templates/main.jsx";
-import LenderMatchMain from './templates/lender-match/lender-match-main.jsx';
+let Main = (props) => <Async componentProps={props} load={import("./templates/main.jsx")} />
+let LenderMatchMain = (props) => <Async componentProps={props} load={import("./templates/lender-match/lender-match-main.jsx")} />
 
-import StyleGuide from './templates/style-guide/style-guide.jsx'
+let StyleGuide = (props) => <Async componentProps={props} load={import("./templates/style-guide/style-guide.jsx")} />
 
-import LandingPage from './templates/lender-match/landing-page.jsx';
-import SuccessPage from './templates/lender-match/success-page.jsx';
-import EmailConfirmedPage from './organisms/lender-match/success-page/email-confirmed-page.jsx';
-import EmailConfirmationInvalid from './organisms/lender-match/success-page/email-confirmation-invalid.jsx';
+let LandingPage = (props) => <Async componentProps={props} load={import("./templates/lender-match/landing-page.jsx")} />
+let SuccessPage = (props) => <Async componentProps={props} load={import("./templates/lender-match/success-page.jsx")} />
+let EmailConfirmedPage = (props) => <Async componentProps={props} load={import("./organisms/lender-match/success-page/email-confirmed-page.jsx")} />
+let EmailConfirmationInvalid = (props) => <Async componentProps={props} load={import("./organisms/lender-match/success-page/email-confirmation-invalid.jsx")} />
 
-import LoanForm from './templates/lender-match/loan-form.jsx';
-import ContactInfo from './organisms/lender-match/form/contact-info.jsx';
-import LoanInfo from './organisms/lender-match/form/loan-info.jsx';
-import BusinessInfo from './organisms/lender-match/form/business-info.jsx';
-import IndustryInfo from './organisms/lender-match/form/industry-info.jsx';
-import AdditionalInfo from './organisms/lender-match/form/additional-info.jsx';
-import ReviewSubmitInfo from './organisms/lender-match/form/review-submit-info.jsx';
-import DeveloperTester from './organisms/developer-tester/developer-tester.jsx';
-import TenStepsLandingPage from './templates/ten-steps-page/ten-steps-landing-page.jsx';
-import Homepage from './templates/homepage/homepage.jsx';
-import SamplePage from './pages/sample.jsx';
-import RootPage from './pages/root-page.jsx';
-import DocumentLookupPage from "./pages/document-lookup-page/document-lookup-page.jsx"
+let LoanForm = (props) => <Async componentProps={props} load={import("./templates/lender-match/loan-form.jsx")} />
+let ContactInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/contact-info.jsx")} />
+let LoanInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/loan-info.jsx")} />
+let BusinessInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/business-info.jsx")} />
+let IndustryInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/industry-info.jsx")} />
+let AdditionalInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/additional-info.jsx")} />
+let ReviewSubmitInfo = (props) => <Async componentProps={props} load={import("./organisms/lender-match/form/review-submit-info.jsx")} />
+let DeveloperTester = (props) => <Async componentProps={props} load={import("./organisms/developer-tester/developer-tester.jsx")} />
+let TenStepsLandingPage = (props) => <Async componentProps={props} load={import("./templates/ten-steps-page/ten-steps-landing-page.jsx")} />
+let Homepage = (props) => <Async componentProps={props} load={import("./templates/homepage/homepage.jsx")} />
+let SamplePage = (props) => <Async componentProps={props} load={import("./pages/sample.jsx")} />
+let RootPage = (props) => <Async componentProps={props} load={import("./pages/root-page.jsx")} />
+let DocumentLookupPage = (props) => <Async componentProps={props} load={import("./pages/document-lookup-page/document-lookup-page.jsx")} />
+
 import {Route, IndexRoute, IndexRedirect} from 'react-router';
 import constants from "../services/constants.js"
 import MaintenancePage from "./pages/maintenance-page/maintenance-page.jsx"
@@ -64,7 +67,8 @@ const mainRoutes = [
   (<Route key={21} path="/:first/:second/:third/:fourth/:fifth/" component={RootPage}/>)
 ];
 
-const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>), (<Route key={3} path="/devtest" component={DeveloperTester}/>),(
+const routes = [(<Route key={2} path="/styleguide" component={StyleGuide}/>),
+ (<Route key={3} path="/devtest" component={DeveloperTester}/>),(
     <Route key={1} path="/" component={Main}>
       {mainRoutes}
     </Route>

@@ -1,15 +1,19 @@
-import React from 'react'
-import s from './document-article.scss'
-
-import DocumentType from '../../atoms/document-type/document-type.jsx'
-import TextSection from '../text-section/text-section.jsx'
-import DecorativeDash from '../../atoms/decorative-dash/decorative-dash.jsx'
-import Button from '../../atoms/large-primary-button/large-primary-button.jsx'
-import moment from 'moment'
+import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as NavigationActions from "../../../actions/navigation.js";
+import moment from "moment";
 import queryString from "querystring";
+import {
+  DocumentType,
+  DecorativeDash,
+  Button,
+  BasicLink
+} from "atoms";
+import {TextSection} from "molecules";
+
+import * as NavigationActions from "../../../actions/navigation.js";
+
+import s from "./document-article.scss";
 
 export class DocumentArticle extends React.Component {
 
@@ -64,7 +68,7 @@ export class DocumentArticle extends React.Component {
             {newestFile.effectiveDate ? <span className={s.date}>Effective {this.formatDate(newestFile.effectiveDate)}</span> : null}
             </p>
           <div className={s.office}>By{" "}
-            <a href={data.officeLink.url}>{data.officeLink.title}</a>
+            <BasicLink url={data.officeLink.url} text={data.officeLink.title}/>
           </div>
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>

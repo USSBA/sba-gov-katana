@@ -26,6 +26,21 @@
     @include grid-push(0);
 }
 
+.subsectionHeader {
+    @include grid-media($sba-grid-small) {
+         @include grid-column(6);
+        @include grid-push(0);
+    }
+    @include grid-media($sba-grid-medium) {
+        @include grid-column(12);
+        @include grid-push(0);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(7);
+        @include grid-push(4);
+    }
+}
+
 .image {
     @include grid-media($sba-grid-medium){
 

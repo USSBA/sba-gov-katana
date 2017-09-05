@@ -1,11 +1,11 @@
 import React from "react";
-import s from "./related-document-cards.scss";
 import _ from "lodash";
-import DocumentCardCollection from "../document-card-collection/document-card-collection.jsx";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import {DocumentCardCollection} from "organisms";
 import * as NavigationActions from "../../../actions/navigation.js";
 import queryString from "querystring";
+import s from "./related-document-cards.scss";
 
 class RelatedDocumentCards extends React.Component {
 	constructor() {

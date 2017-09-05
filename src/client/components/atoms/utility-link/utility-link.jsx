@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "./utility-link.scss"
+import {BasicLink} from "atoms"
 
 class UtilityLink extends React.Component {
 
@@ -7,11 +8,11 @@ class UtilityLink extends React.Component {
     let anchorClass = styles.link + " " + (this.props.visible
       ? ""
       : styles.hidden)
+
+    const picked = (({id, text, url, onClick, onBlur, onFocus, onKeyDown}) => ({id, text, url, onClick, onBlur, onFocus, onKeyDown}))(this.props);
     return (
       <li className={styles.UtilityLink}>
-        <a href={this.props.url} tabIndex="0" className={anchorClass} id={this.props.id} onClick={this.props.onClick} onBlur={this.props.onBlur} onFocus={this.props.onFocus} onKeyDown={this.props.onKeyDown}>
-          {this.props.text}
-        </a>
+          <BasicLink {...picked} myClassName={anchorClass}/>
       </li>
     )
   }

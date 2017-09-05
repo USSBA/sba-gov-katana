@@ -1,14 +1,17 @@
 import React from "react";
-var Waypoint = require("react-waypoint");
-import styles from "./section-nav.scss";
-import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
-import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
-import whiteIconManage from "../../atoms/icons/white-manage.jsx";
-import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
-import * as ModalActions from "../../../actions/show-modal.js";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import _ from "lodash";
+import {
+  BasicLink,
+  whiteIconLaunch,
+  whiteIconPlan,
+  whiteIconManage,
+  whiteIconGrow
+} from "atoms";
+import * as ModalActions from "../../../actions/show-modal.js";
+import styles from "./section-nav.scss";
+var Waypoint = require("react-waypoint");
 
 const businessGuideFullUrl = "/business-guide";
 
@@ -32,8 +35,8 @@ class SectionNav extends React.Component {
       }
       return (
         <li key={index}>
-          <a className={"article-navigation-article-link-desktop " + currentLinkClass}
-             id={"desktop-article-link-" + index} href={item.fullUrl}>{item.title}</a>
+          <BasicLink myClassName={"article-navigation-article-link-desktop " + currentLinkClass}
+             id={"desktop-article-link-" + index} url={item.fullUrl} text={item.title} />
         </li>
       );
     });
@@ -100,8 +103,8 @@ class SectionNav extends React.Component {
         <div id="article-navigation-desktop"
              className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
           <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
-          <a id="article-navigation-back-button-desktop" className={styles.backLink}
-             href={this.getBacklinkUrl()}>{this.getBacklinkText()}</a>
+          <BasicLink id="article-navigation-back-button-desktop" myClassName={styles.backLink}
+             url={this.getBacklinkUrl()} text={this.getBacklinkText()} />
           {navigationTitle}
           <ul>{navLinks}</ul>
         </div>

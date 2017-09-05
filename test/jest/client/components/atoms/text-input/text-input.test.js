@@ -1,8 +1,8 @@
 /*global expect*/
 
-import React from 'react';
-import TextInput from 'client/components/atoms/text-input/text-input.jsx';
-import { shallow } from 'enzyme';
+import React from "react";
+import { TextInput } from "atoms";
+import { shallow } from "enzyme";
 
 
 test('TextInput', () => {

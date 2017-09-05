@@ -4,14 +4,6 @@ import renderer from "react-test-renderer";
 
 import DocumentPage from "client/components/templates/document/document.jsx";
 
-jest.mock("client/services/client-config.js", function(){
-  return {
-    googleAnalytics: {
-      enabled: false
-    }
-  };
-});
-
 describe("Document", () => {
 
 	describe("All Versions", () => {

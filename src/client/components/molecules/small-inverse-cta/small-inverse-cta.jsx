@@ -1,9 +1,10 @@
-import React from "react"
+import React from "react";
 import styles from "./small-inverse-cta.scss";
-import {SmallPrimaryButton} from "../../atoms";
+import {SmallPrimaryButton} from "atoms";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as NavigationActions from "../../../actions/navigation.js";
+import {createCtaNavigation} from "../../../services/navigation";
 
 class SmallInverseCta extends React.Component{
 
@@ -14,7 +15,8 @@ class SmallInverseCta extends React.Component{
         return (
             <div id="small-inverse-cta" className={styles.smallInverseCta}>
                 <p>{this.props.actionText}</p>
-                <SmallPrimaryButton onClick={this.handleClick.bind(this)} text={this.props.buttonText}/>
+                <SmallPrimaryButton onClick={createCtaNavigation(this.props.url, this.props.eventCategory, this.props.eventLabel, 1)}
+                            text={this.props.buttonText}/>
             </div>
         );
     }

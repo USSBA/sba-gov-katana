@@ -11,6 +11,7 @@ import feedbackReducer from "./feedback.js";
 import restContentReducer from "./rest-content.js";
 import confirmationEmailReducer from "./confirmation-email.js";
 import displayReducer from "./display.js";
+import loadingReducer from "./loading.js";
 
 // combine the custom reducers with the routing reducer
 const rootReducer = combineReducers({
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
   restContent: restContentReducer,
   feedback: feedbackReducer,
   display: displayReducer,
-  navigation: navigationReducer
+  navigation: navigationReducer,
+  loading: loadingReducer
 });
 
 export default rootReducer;
