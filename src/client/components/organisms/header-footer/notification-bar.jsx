@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./notification-bar.scss";
 import exitIcon from "../../../../../public/assets/svg/exit-modal-close-white.svg";
+import {BasicLink} from "atoms"
 
 class NotificationBar extends React.Component {
 
@@ -23,7 +24,7 @@ class NotificationBar extends React.Component {
 					/>
 
 					<div>
-					
+
 						<BasicLink htmlElement="button" url={this.props.url} text="LEARN MORE" myClassName={styles.alertButton}/>
 					</div>
 

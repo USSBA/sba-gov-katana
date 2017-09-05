@@ -25,7 +25,7 @@ import ResourceCard from "./resource-card/resource-card.jsx";
 import SbicLookup from "./sbic-lookup/sbic-lookup.jsx";
 import SearchBar from "./search-bar/search-bar.jsx";
 import SectionHeader from "./section-header/section-header.jsx";
-import SbaModal from "./sba-modal/sba-modal.jsx"
+import SbaModal from "./sba-modal/sba-modal.jsx";
 import SimpleCta from "./simple-cta/simple-cta.jsx";
 import SmallInverseCta from "./small-inverse-cta/small-inverse-cta.jsx";
 import StyleGrayBackground from "./style-gray-background/style-gray-background.jsx";

@@ -1,9 +1,5 @@
-import {
-  browserHistory
-} from "react-router";
-import {
-  logEvent
-} from "../services/analytics.js";
+import { browserHistory } from "react-router";
+import { logEvent } from "../services/analytics.js";
 
 function createCtaNavigation(targetLocation, category, action, value) {
   return createNavigation(targetLocation, {
@@ -20,7 +16,7 @@ function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
     if (targetLocation === "/" || targetLocation.match(/\/business-guide/) || targetLocation.match(/\/funding-programs/) || targetLocation.match(/\/for-partners/)) {
       browserHistory.push(targetLocation);
-      if (targetLocation.indexOf("#") !== -1) {
+      if (targetLocation.indexOf("#") !== -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
       }
       if (eventConfig) {
@@ -55,9 +51,4 @@ function goBackNow() {
   });
 }
 
-export {
-  createCtaNavigation,
-  goBackNow,
-  navigateNow,
-  createNavigation
-};
+export { createCtaNavigation, goBackNow, navigateNow, createNavigation };

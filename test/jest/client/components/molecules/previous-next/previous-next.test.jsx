@@ -145,7 +145,7 @@ describe("PreviousNext", () => {
       test("it sets the mobile next url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/training-and-courses";
         const component = shallow(<PreviousNext lineage={lineageForPartners} />);
-        expect(component.find("#mobileDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#mobileDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
     });
     describe("When in the first article of a section", () => {
@@ -167,7 +167,7 @@ describe("PreviousNext", () => {
       test("it sets the mobile next url appropriately", () => {
         const expectedUrl = "/for-partners/lenders/7a-loans/operate-as-a-7a-lender";
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />);
-        expect(component.find("#mobileDivId .previousnext-next-url").props().href).toBe(expectedUrl);
+        expect(component.find("#mobileDivId .previousnext-next-url SmallSecondaryButton").props().url).toBe(expectedUrl);
       });
     });
     describe("When in the last article of a section", () => {
