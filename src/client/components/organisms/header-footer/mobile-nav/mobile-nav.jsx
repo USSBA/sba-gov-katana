@@ -23,11 +23,14 @@ class MobileNav extends React.Component {
       expanded: !this.state.expanded
     });
   }
+
+
   render() {
       let menuItems = [];
+      let me = this;
       if (this.props.mainMenuData) {
           menuItems = this.props.mainMenuData.map((item, index) => {
-              return <div key={index} className={styles.menuLinkSection}><SectionLink id={"main-menu-link-" + index} url={item.link} text={item.linkTitle}/></div>
+              return <div key={index} className={styles.menuLinkSection} onClick={me.toggleNav.bind(me)}><SectionLink id={"main-menu-link-" + index} url={item.link} text={item.linkTitle}/></div>
           });
       } else {
           menuItems.push(

@@ -32,16 +32,16 @@ import MaintenancePage from "./pages/maintenance-page/maintenance-page.jsx"
 
 
 const LenderMatchRoutes = [
-      (<IndexRoute component={LandingPage}/>),
+      (<IndexRoute key={999} component={LandingPage}/>),
       (<Route key={1} path="landing" component={LandingPage}/>),
       (<Route key={2} path="form" component={LoanForm}>
             (<IndexRedirect to='contact'/>)
-            (<Route path="contact" component={ContactInfo}/>)
-            (<Route path="business" component={BusinessInfo}/>)
-            (<Route path="industry" component={IndustryInfo}/>)
-            (<Route path="loan" component={LoanInfo}/>)
-            (<Route path="additional" component={AdditionalInfo}/>)
-            (<Route path="review" component={ReviewSubmitInfo}/>)
+            (<Route key={1}path="contact" component={ContactInfo}/>)
+            (<Route key={2}path="business" component={BusinessInfo}/>)
+            (<Route key={3}path="industry" component={IndustryInfo}/>)
+            (<Route key={4}path="loan" component={LoanInfo}/>)
+            (<Route key={5}path="additional" component={AdditionalInfo}/>)
+            (<Route key={6}path="review" component={ReviewSubmitInfo}/>)
       </Route>),
       (<Route key={3} path="success" component={SuccessPage}/>),
       (<Route key={4} path="emailconfirmed" component={EmailConfirmedPage}/>),
@@ -51,19 +51,19 @@ const LenderMatchRoutes = [
 const mainRoutes = [
   (<IndexRoute key={1} component={HomepageContainer}/>),
   (<Route key={2} path="/lendermatch">{LenderMatchRoutes}</Route>),
-  (<Route key={4} path="/samples/:id" component={SamplePage}/>),
-  (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
-  (<Route key={4} path="/document" component={DocumentLookupPage}/>),
-  (<Route key={14} path="/document/" component={DocumentLookupPage}/>),
-  (<Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
-  (<Route key={6} path="/:first" component={RootPage}/>),
-  (<Route key={7} path="/:first/" component={RootPage}/>),
-  (<Route key={8} path="/:first/:second" component={RootPage}/>),
-  (<Route key={9} path="/:first/:second/" component={RootPage}/>),
-  (<Route key={10} path="/:first/:second/:third" component={RootPage}/>),
-  (<Route key={11} path="/:first/:second/:third/" component={RootPage}/>),
-  (<Route key={18} path="/:first/:second/:third/:fourth" component={RootPage}/>),
-  (<Route key={19} path="/:first/:second/:third/:fourth/" component={RootPage}/>),
+  (<Route key={3} path="/samples/:id" component={SamplePage}/>),
+  (<Route key={4} path="/samples/:id/" component={SamplePage}/>),
+  (<Route key={5} path="/document" component={DocumentLookupPage}/>),
+  (<Route key={6} path="/document/" component={DocumentLookupPage}/>),
+  (<Route key={7} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
+  (<Route key={8} path="/:first" component={RootPage}/>),
+  (<Route key={9} path="/:first/" component={RootPage}/>),
+  (<Route key={10} path="/:first/:second" component={RootPage}/>),
+  (<Route key={11} path="/:first/:second/" component={RootPage}/>),
+  (<Route key={12} path="/:first/:second/:third" component={RootPage}/>),
+  (<Route key={13} path="/:first/:second/:third/" component={RootPage}/>),
+  (<Route key={14} path="/:first/:second/:third/:fourth" component={RootPage}/>),
+  (<Route key={15} path="/:first/:second/:third/:fourth/" component={RootPage}/>),
   (<Route key={20} path="/:first/:second/:third/:fourth/:fifth" component={RootPage}/>),
   (<Route key={21} path="/:first/:second/:third/:fourth/:fifth/" component={RootPage}/>)
 ];
