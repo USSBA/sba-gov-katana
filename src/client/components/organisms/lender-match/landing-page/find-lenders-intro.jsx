@@ -12,9 +12,7 @@ class FindLendersIntro extends React.Component {
         this.handleTellMeHowClicked = this.handleTellMeHowClicked.bind(this);
     }
   handleLenderMatchClicked() {
-    this.props.actions.locationChange('/lendermatch/form/contact', {
-      label: "Find Lenders #1"
-    });
+    document.location = "/linc";
   }
 
   handleTellMeHowClicked(){

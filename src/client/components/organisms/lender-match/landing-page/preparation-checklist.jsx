@@ -15,9 +15,7 @@ import SmallPrimaryButton from "../../../atoms/small-primary-button/small-primar
 
 class PreparationChecklist extends React.Component{
     handleLenderMatchBtnClick() {
-        this.props.actions.locationChange('/lendermatch/form/contact', {
-            label: "Find Lenders #3"
-        });
+        document.location = "/linc";
     }
     render(){
        return(
