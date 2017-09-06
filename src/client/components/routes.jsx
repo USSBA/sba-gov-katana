@@ -30,32 +30,15 @@ import {Route, IndexRoute, IndexRedirect} from 'react-router';
 import constants from "../services/constants.js"
 import MaintenancePage from "./pages/maintenance-page/maintenance-page.jsx"
 
-
-const LenderMatchRoutes = [
-      (<IndexRoute key={999} component={LandingPage}/>),
-      (<Route key={1} path="landing" component={LandingPage}/>),
-      (<Route key={2} path="form" component={LoanForm}>
-            (<IndexRedirect to='contact'/>)
-            (<Route key={1}path="contact" component={ContactInfo}/>)
-            (<Route key={2}path="business" component={BusinessInfo}/>)
-            (<Route key={3}path="industry" component={IndustryInfo}/>)
-            (<Route key={4}path="loan" component={LoanInfo}/>)
-            (<Route key={5}path="additional" component={AdditionalInfo}/>)
-            (<Route key={6}path="review" component={ReviewSubmitInfo}/>)
-      </Route>),
-      (<Route key={3} path="success" component={SuccessPage}/>),
-      (<Route key={4} path="emailconfirmed" component={EmailConfirmedPage}/>),
-      (<Route key={5} path="emailinvalid" component={EmailConfirmationInvalid}/>)
-];
-
 const mainRoutes = [
   (<IndexRoute key={1} component={HomepageContainer}/>),
-  (<Route key={2} path="/lendermatch">{LenderMatchRoutes}</Route>),
+  (<Route key={2} path="/lendermatch" component={LandingPage}></Route>),
   (<Route key={3} path="/samples/:id" component={SamplePage}/>),
   (<Route key={4} path="/samples/:id/" component={SamplePage}/>),
   (<Route key={5} path="/document" component={DocumentLookupPage}/>),
   (<Route key={6} path="/document/" component={DocumentLookupPage}/>),
-  (<Route key={7} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
+  (<Route key={6} path="/document/" component={DocumentLookupPage}/>),
+  (<Route key={7} path="/funding-programs/loans/lendermatch" component={LandingPage}/>),
   (<Route key={8} path="/:first" component={RootPage}/>),
   (<Route key={9} path="/:first/" component={RootPage}/>),
   (<Route key={10} path="/:first/:second" component={RootPage}/>),

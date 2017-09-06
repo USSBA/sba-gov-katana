@@ -16,9 +16,7 @@ import styles from "./preparation-checklist.scss";
 
 class PreparationChecklist extends React.Component{
     handleLenderMatchBtnClick() {
-        this.props.actions.locationChange('/lendermatch/form/contact', {
-            label: "Find Lenders #3"
-        });
+        document.location = '/linc';
     }
     render(){
        return(
