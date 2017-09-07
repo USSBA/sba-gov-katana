@@ -15,7 +15,7 @@ import ArticlePage from "../pages/article-page/article-page.jsx";
 class RootPage extends React.Component {
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded("menu", "menu");
+    this.props.actions.fetchContentIfNeeded("siteMap", "siteMap");
   }
 
   componentDidUpdate() {
@@ -99,7 +99,7 @@ class RootPage extends React.Component {
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
-    menu: _.get(reduxState, "contentReducer.menu")
+    menu: _.get(reduxState, "contentReducer.siteMap")
   };
 }
 
