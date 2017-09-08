@@ -119,7 +119,6 @@ class SectionNav extends React.Component {
         <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
             <a id="article-navigation-back-button-desktop" className={styles.backLink}
                href={this.getBacklinkUrl()}>{this.getBacklinkText()}</a>
-        />
         {navigationTitle}
         <ul>{navLinks}</ul>
       </div>
