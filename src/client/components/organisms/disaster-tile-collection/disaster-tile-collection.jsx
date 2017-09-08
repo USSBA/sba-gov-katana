@@ -1,5 +1,5 @@
 import React from "react";
-import {TileCollection} from "molecules";
+import TileCollection from "../../molecules/tile-collection/tile-collection.jsx";
 import icons from "./icons.jsx";
 import s from "./disaster-tile-collection.scss"
 

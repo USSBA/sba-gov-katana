@@ -3,7 +3,7 @@ import _ from "lodash";
 import Header from '../organisms/header-footer/header/header.jsx';
 import Footer from '../organisms/header-footer/footer/footer.jsx';
 import cookie from 'react-cookie';
-import DisasterAlerts from '../organisms/header-footer/disaster-alerts.jsx'
+import DisasterAlerts from '../organisms/header-footer/disaster-alert/disaster-alert.jsx'
 import NotificationBar from '../organisms/header-footer/notification-bar.jsx'
 
 import ModalController from '../modal-controller.jsx';
@@ -110,7 +110,7 @@ class Main extends React.Component {
   }
 
   render() {
-    
+
     const visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent;
     const {
       notificationDescription,
@@ -144,7 +144,7 @@ class Main extends React.Component {
         />
 
         <Header />
-        
+
         <div className={styles.mainContent}>{this.props.children}</div>
 
         { showNotificationBar &&

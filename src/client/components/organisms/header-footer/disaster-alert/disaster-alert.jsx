@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./disaster-alert.scss";
 import exitIcon from "../../../../../../public/assets/svg/exit-modal-close.svg";
-import {BasicLink} from "atoms"
 
 class DisasterAlerts extends React.Component {
 
@@ -18,7 +17,7 @@ class DisasterAlerts extends React.Component {
                 </div>
                 <img className={styles.alertClose} onClick={this.props.onClose} src={exitIcon} alt="Close"/>
                 <div>
-                    <BasicLink url={this.props.link} text={this.props.buttonText} myClassName={styles.alertButton}/>
+                    <a href={this.props.link} title={this.props.buttonText} className={styles.alertButton}>{this.props.buttonText}</a>
                 </div>
               </div>
             </div>
