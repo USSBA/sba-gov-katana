@@ -37,7 +37,7 @@ class Page extends React.Component {
             bannerImage: this.props.data.bannerImage
           };
         }
-        return (<ProgramPage heroData={heroData} title={this.props.data.title} paragraphs={this.props.data.paragraphs} lineage={this.props.lineage}/>);
+        return (<ProgramPage lineage={this.props.lineage[0][0]} heroData={heroData} title={this.props.data.title} paragraphs={this.props.data.paragraphs} lineage={this.props.lineage}/>);
       }
     }
     return (<div/>);

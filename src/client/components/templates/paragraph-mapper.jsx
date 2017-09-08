@@ -21,7 +21,7 @@ import {
   ProgramDetailsCardCollection
 } from "organisms";
 
-function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
+function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, lineage) {
 
   let paragraphs = [];
   let skipNextReadmore = false;
@@ -90,7 +90,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
           
       } else if (item.type === "childPageMenu" && item.pagesInclude === "All child pages") {
 
-          paragraph = <ProgramDetailsCardCollection />;
+        const cards = lineage[0].children;
+        paragraph = <ProgramDetailsCardCollection cards={cards} />;
 
       }
     }

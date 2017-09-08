@@ -59,18 +59,14 @@ class ProgramDetailsCardCollection extends Component {
 
 }
 
-const mockCardsData = [{
-    "title": "Types of (7) a loans",
-    "url": "types-7-loans",
-    "fullUrl": "/for-partners/7-page/types-7-loans",
-    "children": null,
-    "description": "Test page for 7(a) program page",
-    "node": "3411",
-    "weight": 0
+const defaultCardsData = [{
+    "title": "Test Title A",
+    "fullUrl": "/my-path/my-page",
+    "description": "Test page"
 }];
 
 ProgramDetailsCardCollection.defaultProps = {
-	"cards": mockCardsData
+	"cards": defaultCardsData
 };
 
 export default ProgramDetailsCardCollection;

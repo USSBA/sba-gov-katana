@@ -6,7 +6,7 @@ import styles from "./program-page.scss";
 class ProgramPage extends React.Component {
 
   makeParagraphs(paragraphData) {
-    let paragraphList = paragraphMapper.makeParagraphs(paragraphData);
+    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, null, this.props.lineage);
     let wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,

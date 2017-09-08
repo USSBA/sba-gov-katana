@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {DecorativeDash} from "atoms";
+import {BasicLink, DecorativeDash} from "atoms";
 import styles from "./program-details-card.scss";
 
 class ProgramDetailsCard extends Component {
@@ -11,7 +11,7 @@ class ProgramDetailsCard extends Component {
 				<h4>{this.props.title}</h4>
 				<DecorativeDash aria-hidden="true" className={styles.decorativeDash} />
 				<p>{this.props.description}</p>
-				<p><a href={this.props.learnMoreUrl}>Learn More</a></p>
+				<p><BasicLink text="Learn More" url={this.props.fullUrl} /></p>
 			</div>
 		);
 
