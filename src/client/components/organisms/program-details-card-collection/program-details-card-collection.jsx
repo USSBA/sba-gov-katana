@@ -60,27 +60,27 @@ class ProgramDetailsCardCollection extends Component {
 }
 
 const defaultCardsData = [{
-    "title": "Test Title A",
+    "title": "Title A",
     "fullUrl": "/my-path/my-page",
     "description": "Lorem ipsum dolor sit amet."
 },{
-    "title": "Test Title B",
+    "title": "Title B",
     "fullUrl": "/my-path/my-page",
     "description": "Lorem ipsum dolor sit amet."
 },{
-    "title": "Test Title C",
+    "title": "Title C",
     "fullUrl": "/my-path/my-page",
     "description": "Lorem ipsum dolor sit amet."
 },{
-    "title": "Test Title D",
+    "title": "Title D",
     "fullUrl": "/my-path/my-page",
     "description": "Lorem ipsum dolor sit amet."
 },{
-    "title": "Test Title E",
+    "title": "Title E",
     "fullUrl": "/my-path/my-page",
     "description": "Lorem ipsum dolor sit amet."
 },{
-    "title": "Test Title F",
+    "title": "Title F",
     "fullUrl": "/my-path/my-page",
     "description": "Lorem ipsum dolor sit amet."
 }];
