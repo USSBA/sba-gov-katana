@@ -35,7 +35,7 @@ class SectionNav extends React.Component {
         sectionNavIcon = whiteIconGrow;
       }
       this.props.actions.showMobileSectionNav(
-        this.getNthLineage(1),
+        this.getNthLineage(-2),
         sectionNavIcon,
         this.getBacklinkUrl()
       );
@@ -110,7 +110,6 @@ class SectionNav extends React.Component {
     const navLinks = this.makeNavLinks();
     const sectionTitle = this.getNthLineage(-2).title;
     const navigationTitle = this.makeNavigationTitle(sectionTitle);
-
     return (
       <div
         id="article-navigation-desktop"
