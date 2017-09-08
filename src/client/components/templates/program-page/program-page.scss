@@ -24,6 +24,16 @@
   @include grid-column(12, $sba-grid-large);
 }
 
+.childPageMenu {
+ 	
+ 	margin: 0 20px 50px;
+
+ 	@include grid-media($sba-grid-small) {
+ 		margin: 10px 30px 50px;
+  	}
+
+}
+
 .lookup {
 	@include grid-column(12, $desktop-0gutter)
 }

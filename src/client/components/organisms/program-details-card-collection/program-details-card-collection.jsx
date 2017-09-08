@@ -43,15 +43,15 @@ class ProgramDetailsCardCollection extends Component {
 
 	}
 
-
-
 	render() {
+
+		const renderedCards = this.props.cards.map(this.renderCard.bind(this));
 
 		return (
 			<div>
-				<h3>Program Details</h3>
 				<div className={styles.cardCollection}>
-					{this.renderCards()}
+					{renderedCards}
+					<hr />
 				</div>
 			</div>
 		);
@@ -62,7 +62,27 @@ class ProgramDetailsCardCollection extends Component {
 const defaultCardsData = [{
     "title": "Test Title A",
     "fullUrl": "/my-path/my-page",
-    "description": "Test page"
+    "description": "Lorem ipsum dolor sit amet."
+},{
+    "title": "Test Title B",
+    "fullUrl": "/my-path/my-page",
+    "description": "Lorem ipsum dolor sit amet."
+},{
+    "title": "Test Title C",
+    "fullUrl": "/my-path/my-page",
+    "description": "Lorem ipsum dolor sit amet."
+},{
+    "title": "Test Title D",
+    "fullUrl": "/my-path/my-page",
+    "description": "Lorem ipsum dolor sit amet."
+},{
+    "title": "Test Title E",
+    "fullUrl": "/my-path/my-page",
+    "description": "Lorem ipsum dolor sit amet."
+},{
+    "title": "Test Title F",
+    "fullUrl": "/my-path/my-page",
+    "description": "Lorem ipsum dolor sit amet."
 }];
 
 ProgramDetailsCardCollection.defaultProps = {

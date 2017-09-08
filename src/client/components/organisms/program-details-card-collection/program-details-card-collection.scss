@@ -1,5 +1,12 @@
 .cardCollection {
     clear: left;
+
+    > hr {
+        clear: both;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #bebdbd;
+        margin-left: 20px;
+    }
 }
 
 .cardRow {
@@ -12,18 +19,37 @@
 }
 
 .card {
-	
-    @include grid-media($sba-grid-medium-and-small) {
-        height: auto;
+
+    @include grid-media($sba-grid-small) {
         margin-bottom: 30px;
-        padding: 30px;
-        border: 1px solid #bebdbd;
-        @include grid-column(6, $sba-grid-medium-and-small);
     }
+	
+    @include grid-media($sba-grid-medium) {
+        height: 200px;
+        width: 50%;
+        float: left;
+        padding: 15px;
+    }
+
     @include grid-media($sba-grid-large) {
         @include grid-column(4, $sba-grid-large);
+        height: 250px;
         margin-left: 0;
         width:33%;
+    }
+
+}
+
+.card:before {
+
+    @include grid-media($sba-grid-large) {
+        @include grid-column(4, $sba-grid-large);
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        margin-left: -20px;
     }
 
 }
