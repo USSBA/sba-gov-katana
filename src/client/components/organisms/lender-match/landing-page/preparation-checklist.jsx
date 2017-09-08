@@ -16,7 +16,7 @@ import styles from "./preparation-checklist.scss";
 
 class PreparationChecklist extends React.Component{
     handleLenderMatchBtnClick() {
-        document.location = '/linc';
+        document.location = "https://catran.sba.gov/lendermatch/form/contact.cfm";
     }
     render(){
        return(
