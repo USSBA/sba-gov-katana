@@ -1,10 +1,12 @@
 import React from "react";
-import Modal from 'react-modal'
-import styles from './modal.scss'
-import sbaLogo from '../../../../public/assets/images/logo.png';
-import ModalCloseIcon from '../../../../public/assets/svg/modal-close-icon.svg';
-import SmallGreySecondaryButton from '../atoms/small-grey-secondary-button/small-grey-secondary-button.jsx';
-import SmallPrimaryButton from '../atoms/small-primary-button/small-primary-button.jsx';
+import Modal from "react-modal";
+import {
+  SmallGreySecondaryButton,
+  SmallPrimaryButton
+} from "atoms";
+import sbaLogo from "../../../../../public/assets/images/logo.png";
+import ModalCloseIcon from "../../../../../public/assets/svg/modal-close-icon.svg";
+import styles from "./sba-modal.scss";
 
 class SbaModal extends React.Component {
 
@@ -18,8 +20,8 @@ class SbaModal extends React.Component {
     let logo = this.props.showLogo ? (<img className={styles.logo} src={sbaLogo}/>) : undefined;
     return (
       <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
-        {logo}
         <img tabIndex={0} onClick={this.props.onClose} onKeyDown={(e) => {this.handleEnter(e)}} className={styles.closeIcon} src={ModalCloseIcon}/>
+        {logo}
         <h3 className={styles.title}>{this.props.title}</h3>
         <div className={styles.divider}></div>
         <p className={styles.text}>{this.props.text}</p>

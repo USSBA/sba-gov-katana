@@ -10,7 +10,6 @@ import config from "../services/client-config.js";
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import HaxRouter from './hax-router.jsx';
-
 import Themer from './templates/themer/themer.jsx'
 
 

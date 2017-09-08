@@ -1,12 +1,15 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {
+  SmallSecondaryButton,
+  SmallPrimaryButton
+} from "atoms";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
-import styles from './helpful-questions.scss';
-import thumbNail from '../../../../../../public/assets/images/placeholder370x170.png';
-import {SmallSecondaryButton, SmallPrimaryButton} from "../../../atoms";
+import styles from "./helpful-questions.scss";
+import thumbNail from "../../../../../../public/assets/images/placeholder370x170.png";
 
-import '../../../../styles/common/collapse.scss';
+import "../../../../styles/common/collapse.scss";
 var Collapse = require('rc-collapse');
 var Panel = Collapse.Panel;
 

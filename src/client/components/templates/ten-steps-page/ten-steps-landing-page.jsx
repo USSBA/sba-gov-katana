@@ -1,15 +1,19 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as ContentActions from "../../../actions/content.js";
-import _ from 'lodash';
-import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
-import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
-import TenStepsSection from "../../molecules/ten-steps-section/ten-steps-section.jsx";
-import TenStepsNav from "../../molecules/ten-steps-nav/ten-steps-nav.jsx";
-import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import Waypoint from "react-waypoint";
-import CallToAction from "../../molecules/call-to-action/call-to-action.jsx";
+import * as ContentActions from "../../../actions/content.js";
+import _ from "lodash";
+import {BasicLink} from 'atoms';
+import {
+    TenStepsSection,
+    TenStepsNav,
+    CallToAction
+} from "molecules";
+import {BusinessGuideTileCollection} from "organisms";
+import {findPageLineage, findSubSection, findSection} from "../../../services/menu.js";
+import styles from "../../templates/ten-steps-page/ten-steps-landing-page.scss";
+import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
 
 class TenStepsLandingPage extends React.Component {
     constructor(){
@@ -168,6 +172,7 @@ class TenStepsLandingPage extends React.Component {
 
         return (
             <div className={styles.tenStepsLandingPage}>
+                <RemoveMainLoader />
                 { this.state.navType === 'center' ? <TenStepsNav navType='center' section={this.state.section}/> : null}
 
                     <div className={styles.titleSection}>
@@ -179,7 +184,7 @@ class TenStepsLandingPage extends React.Component {
                         </Waypoint>
                         </div>
                         <a className={styles.scrollButton} aria-hidden="true" href="#step-1"><i className={" fa fa-angle-down"}></i></a>
-                        <a className={styles.backLink} href="/business-guide">Back to all topics</a>
+                        <BasicLink myClassName={styles.backLink} url="/business-guide" text="Back to all topics"/>
                     </div>
 
                 <span id="step-1" className={styles.anchor}></span>
@@ -201,7 +206,7 @@ class TenStepsLandingPage extends React.Component {
                 {
                     counsellorCta ? <div className={styles.counsellorCtaContainer}>
                         <CallToAction
-                                      size={counsellorCta.style}
+                                      size={counsellorCta.size}
                                       headline={counsellorCta.headline}
                                       blurb={counsellorCta.blurb}
                                       image={counsellorCta.image}

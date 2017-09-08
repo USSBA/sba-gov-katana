@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import styles from './main-menu.scss';
-import SubMenu from '../../../molecules/sub-menu/sub-menu.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import {SubMenu} from "molecules";
+import styles from "./main-menu.scss";
 
 class MainMenu extends React.Component {
 
@@ -85,9 +85,9 @@ class MainMenu extends React.Component {
         <div key={1}></div>
       );
     }
-
+// the onClick below will hide the menu when anything is clicked
     return (
-      <div id="main-menu" role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainMenu}>
+      <div id="main-menu" role="menubar" aria-label="main navigation bar with dropdown submenus" className={styles.mainMenu} onClick={()=>{this.onMenuMouseOut()}}>
         <ul >
           {menuItems}
         </ul>

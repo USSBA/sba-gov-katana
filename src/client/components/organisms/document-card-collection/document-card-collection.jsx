@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./document-card-collection.scss";
 import _ from "lodash";
-import DocumentCard from "../../molecules/document-card/document-card.jsx";
+import {DocumentCard} from "molecules";
+import styles from "./document-card-collection.scss";
 
 class DocumentCardCollection extends React.Component {
 

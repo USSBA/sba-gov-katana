@@ -14,8 +14,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
   />
   <a
     className="backLink"
-    href="/business-guide"
     id="article-navigation-back-button-desktop"
+    onKeyPress={[Function]}
+    onTouchTap={[Function]}
+    tabIndex="0"
   >
     Back to all topics
   </a>
@@ -33,8 +35,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/pick-your-business-location-zoning-laws"
         id="desktop-article-link-0"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Pick your business location
       </a>
@@ -42,8 +46,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop currentNavLink"
-        href="/business-guide/launch/choose-business-structure-types-chart"
         id="desktop-article-link-1"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Choose a business structure
       </a>
@@ -51,8 +57,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/choose-your-business-name-register"
         id="desktop-article-link-2"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Choose your business name
       </a>
@@ -60,8 +68,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/register-your-business-federal-state-agency"
         id="desktop-article-link-3"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Register your business
       </a>
@@ -69,8 +79,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/get-federal-state-tax-id-number-ein"
         id="desktop-article-link-4"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Get federal and state tax ID numbers
       </a>
@@ -78,8 +90,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/apply-for-licenses-permits-federal-state"
         id="desktop-article-link-5"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Apply for licenses and permits
       </a>
@@ -87,8 +101,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/open-business-bank-account-fees-benefits"
         id="desktop-article-link-6"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Open a business bank account
       </a>
@@ -96,8 +112,10 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/business-guide/launch/get-business-insurance-assets-liability"
         id="desktop-article-link-7"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Get business insurance
       </a>
@@ -120,8 +138,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
   />
   <a
     className="backLink"
-    href="/for-partners/lenders/7a-loans"
     id="article-navigation-back-button-desktop"
+    onKeyPress={[Function]}
+    onTouchTap={[Function]}
+    tabIndex="0"
   >
     Back to 7(a) Loans
   </a>
@@ -136,8 +156,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/types-of-7a-loans"
         id="desktop-article-link-0"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Types of 7(a) Loans
       </a>
@@ -145,8 +167,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/operate-as-a-7a-lender"
         id="desktop-article-link-1"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Operate as a 7(a) Lender
       </a>
@@ -154,8 +178,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop currentNavLink"
-        href="/for-partners/lenders/7a-loans/secondary-markets"
         id="desktop-article-link-2"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Secondary Markets
       </a>
@@ -163,8 +189,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/training-and-courses"
         id="desktop-article-link-3"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Training and Courses
       </a>
@@ -172,8 +200,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     <li>
       <a
         className="article-navigation-article-link-desktop "
-        href="/for-partners/lenders/7a-loans/terms-and-eligibility"
         id="desktop-article-link-4"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
       >
         Terms and Eligibility
       </a>

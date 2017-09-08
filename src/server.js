@@ -65,11 +65,6 @@ app.use(function(req, res, next) {
 });
 
 
-
-app.get("/funding-programs/loans/lendermatch/", function(req, res) {
-  res.redirect("/lendermatch");
-});
-
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
 app.post("/lendermatch/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
 app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);

@@ -4,6 +4,8 @@ import * as ModalActions from '../../../actions/show-modal.js'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
+import {BasicLink} from "atoms"
+
 class SocialMediaLink extends React.Component {
   handleSocialMediaClick(e) {
     e.preventDefault();
@@ -12,9 +14,7 @@ class SocialMediaLink extends React.Component {
 
   render() {
     return (
-      <a href={this.props.url} onClick={this.handleSocialMediaClick.bind(this)}>
-        <img src={this.props.image} alt={this.props.altText}/>
-      </a>
+      <BasicLink onClick={this.handleSocialMediaClick.bind(this)}><img src={this.props.image} alt={this.props.altText}/></BasicLink>
     );
   }
 }
@@ -25,7 +25,6 @@ SocialMediaLink.propTypes = {
   url: React.PropTypes.string.isRequired
 };
 
-    
 function mapReduxStateToProps(reduxState) {
   return {};
 }

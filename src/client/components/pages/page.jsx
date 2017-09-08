@@ -15,6 +15,13 @@ class Page extends React.Component {
     }
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    const id = nextProps.nodeId;
+    if (id > 0) {
+      nextProps.actions.fetchContentIfNeeded("node", id);
+    }
+  }
+
   render() {
     const section = this.props.lineage[0].url;
     if (this.props.data && this.props.lineage) {

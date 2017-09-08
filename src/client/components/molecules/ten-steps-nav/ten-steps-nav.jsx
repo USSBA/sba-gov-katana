@@ -1,5 +1,5 @@
-import React from 'react';
-import s from './ten-steps-nav.scss'
+import React from "react";
+import s from "./ten-steps-nav.scss";
 
 class TenStepsNav extends React.Component {
 

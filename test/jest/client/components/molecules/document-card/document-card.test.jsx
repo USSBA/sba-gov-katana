@@ -1,9 +1,17 @@
 /*global expect*/
 
-import React from 'react';
-import DocumentCard from 'client/components/molecules/document-card/document-card.jsx';
-import {shallow} from 'enzyme';
-import renderer from 'react-test-renderer';
+import React from "react";
+import {shallow} from "enzyme";
+import renderer from "react-test-renderer";
+import {DocumentCard} from "molecules";
+
+jest.mock("client/services/client-config.js", function(){
+  return {
+    googleAnalytics: {
+      enabled: false
+    }
+  };
+});
 
 test('DocumentCard renders default data', () => {
   const component = renderer.create(<DocumentCard />);

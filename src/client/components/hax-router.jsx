@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Router } from 'react-router'
+import React, {Component} from 'react'
+import {Router} from 'react-router'
 
 class HaxRouter extends Component {
 
@@ -16,10 +16,34 @@ class HaxRouter extends Component {
     }
   }
 
+  checkForHash(hash) {
+    const id = hash.replace('#', '');
+    const element = document.getElementById(id);
+    console.log("element", element)
+    if (element) {
+      element.scrollIntoView();
+    } else {
+      setTimeout(()=>{this.checkForHash(hash)}, 400);
+    }
+  }
+
+  handleUpdate() {
+    const {hash} = window.location;
+    if (hash !== '') {
+      console.log("hash", hash)
+      // Push onto callback queue so it runs after the DOM is updated,
+      // this is required when navigating from a different page so that
+      // the element is rendered on the page before trying to getElementById.
+      setTimeout(()=>this.checkForHash(hash), 400);
+    }
+  }
+
   render() {
-    return <Router ref={ ref => this.router = ref } onUpdate={ this.props.onUpdate } history={ this.props.history }>
-             { this.props.children }
-           </Router>
+    return (
+      <Router ref={ref => this.router = ref} onUpdate={this.handleUpdate.bind(this)} history={this.props.history}>
+        {this.props.children}
+      </Router>
+    )
   }
 }
 

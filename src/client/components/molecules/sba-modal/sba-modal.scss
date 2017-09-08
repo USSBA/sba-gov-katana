@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: center;
     @include grid-media( $sba-grid-small) {
-    padding: 0 19px;
+        padding: 0 19px;
     }
 }
 
@@ -22,21 +22,25 @@
     @include grid-media( $sba-grid-medium) {
         width: 556px;
     }
+
     &:focus {
         outline: none;
     }
-
 }
 
 .logo {
     display: block;
-    margin: auto;
-    margin-bottom: 25px;
-
-    @media screen and (max-width: 767px) {
+    margin: auto auto 25px;
+    height: auto;
+    @include grid-media( $sba-grid-medium) {
+        width: 18vw;
+    }
+    @include grid-media( $sba-grid-large) {
+        width: 10vw;
+    }
+    @include grid-media( $sba-grid-small) {
         width: 26.7vw;
         margin-bottom: 6.7vw;
-        height: auto;
     }
 }
 
@@ -51,15 +55,12 @@
     margin-bottom: 22px;
     text-align: center;
     padding: 0 30px;
-
 }
 
 .divider {
     width: 160px;
     border: 2px solid #0B97DD;
-    margin: auto;
-    margin-bottom: 22px;
-
+    margin: auto auto 22px;
     @media screen and (max-width: 767px) {
         width: 100px;
     }
@@ -68,7 +69,6 @@
 .text {
     text-align: center;
     margin-bottom: 30px;
-
 }
 
 .btnContainer {
@@ -76,19 +76,18 @@
     @include grid-media($sba-grid-small) {
         button {
             width: 100%;
-            &:first-child {
-            margin-bottom: 20px;
-            }
+
+            &:first-child {}
         }
     }
     @include grid-media($sba-grid-medium) {
-    max-width: 305px;
+        max-width: 325px;
+
         button {
-            width: 135px;
             &:first-child {
-            margin-left: 30px;
-            float: right;
+                margin-left: 30px;
+                float: right;
+            }
         }
-      }
     }
 }

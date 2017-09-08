@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 import styles from "./previous-next.scss";
 import _ from "lodash";
-import SmallSecondaryButton from "../../atoms/small-secondary-button/small-secondary-button.jsx";
+import {SmallSecondaryButton} from "atoms";
 
 const businessGuideUrl = "/business-guide";
 
@@ -88,8 +88,8 @@ class PreviousNextSection extends React.Component {
             {
               previousArticle !== null ?
                 <div id="previousContainerId" className={styles.previousContainer}>
-                  <a className={"previousnext-previous-url"} href={previousArticle.fullUrl}><SmallSecondaryButton
-                    text={previousArticle.title}/></a>
+                  <div className={"previousnext-previous-url"}><SmallSecondaryButton
+                    text={previousArticle.title} url={previousArticle.fullUrl}/></div>
                   <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
                 </div>
                 :
@@ -100,8 +100,8 @@ class PreviousNextSection extends React.Component {
             {
               nextArticle !== null ?
                 <div id="nextContainerDesktopId" className={styles.nextContainer}>
-                  <a className={"previousnext-next-url"} href={nextArticle.fullUrl}><SmallSecondaryButton
-                    text={nextArticle.title}/></a>
+                  <div className={"previousnext-next-url"} ><SmallSecondaryButton
+                    text={nextArticle.title} url={nextArticle.fullUrl}/></div>
                   <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
                 </div>
                 :
@@ -121,8 +121,9 @@ class PreviousNextSection extends React.Component {
           {
             nextArticle !== null ?
               <div id="nextContainerMobileId" className={styles.nextContainer}>
-                <a className={"previousnext-next-url"} href={nextArticle.fullUrl}><SmallSecondaryButton
-                  text={nextArticle.title}/></a>
+                <a className={"previousnext-next-url"}>
+                    <SmallSecondaryButton text={nextArticle.title} url={nextArticle.fullUrl} />
+                </a>
                 <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
               </div>
               :

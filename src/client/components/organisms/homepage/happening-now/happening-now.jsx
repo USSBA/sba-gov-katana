@@ -1,13 +1,16 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-
-import Slider from '../../../atoms/carousel/carousel.jsx';
-import SmallPrimaryButton from '../../../atoms/small-primary-button/small-primary-button.jsx';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {
+  BasicLink,
+  Carousel,
+  SmallPrimaryButton
+} from "atoms";
 import * as ContentActions from "../../../../actions/content.js";
 import styles from "./happening-now.scss";
 
 const contentProperty = "happeningNow";
+
 
 class HappeningNow extends React.Component {
   constructor() {
@@ -21,9 +24,9 @@ class HappeningNow extends React.Component {
   makeDesktopImage(item, index, desktopStyle) {
     return (
       <div key={index} className={desktopStyle}>
-        <a href={item.url}>
-          <img src={item.image} alt={item.imageAlt}></img>
-        </a>
+          <BasicLink url={item.url}>
+              <img src={item.image} alt={item.imageAlt}></img>
+          </BasicLink>
       </div>
     );
   }
@@ -79,7 +82,7 @@ class HappeningNow extends React.Component {
         <div className={styles.containerMobile}>
           <h2 className={styles.titleMobile}>{title}</h2>
           <div className={styles.itemsMobile}>
-            <Slider items={items}/>
+            <Carousel items={items}/>
           </div>
         </div>
       </div>

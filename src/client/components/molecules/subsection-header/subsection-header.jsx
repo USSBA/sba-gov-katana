@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './subsection-header.scss';
+import React from "react";
+import styles from "./subsection-header.scss";
 
 class SubsectionHeader extends React.Component {
 

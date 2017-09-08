@@ -1,19 +1,20 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import {includes, map, pickBy, keys} from "lodash";
-
-import * as LenderMatchActions from '../../../../actions/lender-match.js';
-import * as LocationChangeActions from '../../../../actions/navigation.js';
-import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from '../../../../services/form-validation-helpers.js'
+import {
+  TextInput,
+  TextArea,
+  MultiSelectBox
+} from "atoms";
+import {FormPageButtons} from "molecules";
+import * as LenderMatchActions from "../../../../actions/lender-match.js";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
+import {getSelectBoxValidationState, getCurrencyValidationState, containsErrorOrNull, getTextAlphanumeicValidationState} from "../../../../services/form-validation-helpers.js";
 import constants from "../../../../services/constants.js";
 import {logEvent} from "../../../../services/analytics.js";
 
-import styles from './lender-match.scss';
-import TextInput from '../../../atoms/text-input/text-input.jsx';
-import TextArea from "../../../atoms/textarea/textarea.jsx";
-import MultiSelectBox from '../../../atoms/multiselect/multiselect.jsx';
-import FormPageButtons from '../../../molecules/form-page-buttons/form-page-buttons.jsx';
+import styles from "./lender-match.scss";
 
 class LoanInfo extends React.Component {
   constructor(props) {

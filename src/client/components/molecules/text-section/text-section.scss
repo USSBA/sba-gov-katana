@@ -28,6 +28,10 @@
 .textSection dd {
 	margin-left: 2em;
 }
+
+.textSection ul li p {
+  padding-left: 2em;
+}
 // formatting for the unordered list bullets
 .textSection dl dt::before, .textSection ul li::before {
 	padding-right: 0.5em;
@@ -97,6 +101,10 @@
       display: block;
       @include grid-column(4)
       }
+    & :global(.show-mobile){
+      display: block;
+    }
+
   }
   @include grid-media($sba-grid-medium){
     & table {
@@ -122,6 +130,9 @@
       border: 0px;
     }
     & :global(.table-header-label) {
+      display: none;
+    }
+    & :global(.show-mobile) {
       display: none;
     }
   }

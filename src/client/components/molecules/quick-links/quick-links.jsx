@@ -1,14 +1,14 @@
 import React from "react";
-import s from "./quick-links.scss";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as ContentActions from "../../../actions/content.js";
-import { DecorativeDash } from "../../atoms/index.js";
-import * as NavigationActions from "../../../actions/navigation.js";
+import _ from "lodash";
 import queryString from "querystring";
 import moment from "moment";
 import Promise from "bluebird";
-import _ from "lodash";
+import { DecorativeDash } from "atoms";
+import * as ContentActions from "../../../actions/content.js";
+import * as NavigationActions from "../../../actions/navigation.js";
+import s from "./quick-links.scss";
 
 class QuickLinks extends React.Component {
 

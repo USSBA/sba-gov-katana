@@ -1,9 +1,8 @@
-import React from 'react';
-import styles from './sub-menu.scss';
+import React from "react";
 import {isEmpty} from "lodash";
-
-import {SectionLink} from "../../atoms"
-import DropdownMenu from "../dropdown-menu/dropdown-menu.jsx"
+import {SectionLink} from "atoms";
+import DropdownMenu from "../dropdown-menu/dropdown-menu.jsx";
+import styles from "./sub-menu.scss";
 
 class SubMenu extends React.Component {
 

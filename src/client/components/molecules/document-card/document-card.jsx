@@ -1,8 +1,12 @@
 import React from "react";
-import {DecorativeDash, PdfIcon} from "../../atoms";
+import _ from "lodash";
+import {
+  DecorativeDash,
+  DocumentType,
+  PdfIcon,
+  BasicLink
+} from "atoms";
 import s from "./document-card.scss";
-import DocumentType from "../../atoms/document-type/document-type.jsx";
-import _ from 'lodash'
 
 class DocumentCard extends React.Component {
   getLatestFile() {
@@ -80,11 +84,11 @@ class DocumentCard extends React.Component {
             </div>
             <div>
             </div>
-            <a href={"/document/"+doc.url}>
+            <BasicLink url={"/document/"+doc.url}>
                 <h6 className={"document-card-title " + s.title}>
-                  {doc.title}
+                    {doc.title}
                 </h6>
-            </a>
+            </BasicLink>
             {this.props.showDetails
               ? this.makeTable(this.props.doc)
               : null}

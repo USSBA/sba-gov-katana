@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './section-header.scss';
+import React from "react";
+import styles from "./section-header.scss";
 
 class SectionHeader extends React.Component {
 

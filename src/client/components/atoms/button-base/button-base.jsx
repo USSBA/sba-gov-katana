@@ -1,29 +1,34 @@
 import React from 'react';
+import {BasicLink} from "../../atoms";
 
 class ButtonBase extends React.Component {
-  handleClick() {
-    document.location.href = this.props.URL || this.props.url;
-  }
   render() {
-    let buttonProps = {
-      id: this.props.id,
-      className: this.props.buttonClassName + " " + (this.props.extraClassName
-        ? this.props.extraClassName
-        : "") + " " + (this.props.className
+    const buttonProps = {
+        id: this.props.id,
+        myClassName: this.props.buttonClassName + " " + (this.props.extraClassName
+          ? this.props.extraClassName
+          : "") + " " + (this.props.className
           ? this.props.className
           : ""),
-      disabled: this.props.disabled,
-      formTarget: this.props.newWindow
-        ? "_blank"
-        : "_self",
-      onClick: this.props.onClick
-        ? this.props.onClick
-        : this.handleClick.bind(this)
-    };
+        disabled: this.props.disabled,
+        formTarget: this.props.newWindow
+          ? "_blank"
+          : "_self",
+        onClick: this.props.onClick,
+        url: this.props.url,
+        text: this.props.text,
+        htmlElement: "button",
+      }
+    ;
     return (
-      <button {...buttonProps}>{this.props.text}</button>
+      <BasicLink {...buttonProps} />
     );
   }
 }
+
+ButtonBase.propTypes = {
+  url: React.PropTypes.string,
+  onClick: React.PropTypes.func
+};
 
 export default ButtonBase;

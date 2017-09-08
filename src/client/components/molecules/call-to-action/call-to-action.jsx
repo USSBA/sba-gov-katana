@@ -1,30 +1,31 @@
-import React from 'react';
+import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
+import {
+  SmallInversePrimaryButton,
+  SmallInverseSecondaryButton,
+  LargePrimaryButton
+} from "atoms";
 import * as NavigationActions from "../../../actions/navigation.js";
-import styles from './call-to-action.scss';
-import {SmallInversePrimaryButton, SmallInverseSecondaryButton, LargePrimaryButton} from "../../atoms";
-import cornerGraphicLarge from './corner-graphic-large.png';
-import cornerGraphicSmall from './corner-graphic-small.png';
+import styles from "./call-to-action.scss";
+import cornerGraphicLarge from "./corner-graphic-large.png";
+import cornerGraphicSmall from "./corner-graphic-small.png";
+import {createCtaNavigation} from "../../../services/navigation";
 
-class CallToAction extends React.Component {
-
-  handleClick() {
-    this.props.actions.callToAction(this.props.btnUrl, this.props.title, this.props.size, 1);
-  }
+export class CallToAction extends React.Component {
 
   ctaSize() {
 
-      const size = this.props.size.toLowerCase()
-      let css = {}
+    const size = this.props.size ? this.props.size.toLowerCase() : "";
+    let css = {};
 
-      if(size === 'button only') {
-        css = styles.btnOnly
-      } else {
-        css = styles[size] || null
-      }
-      
-      return css
+    if (size === "button only") {
+      css = styles.btnOnly;
+    } else {
+      css = styles[size] || null;
+    }
+
+    return css;
 
   }
 
@@ -34,18 +35,18 @@ class CallToAction extends React.Component {
       "backgroundSize": "cover",
       "width": "100%",
       "height": "100%"
-    }
+    };
   }
 
   render() {
-    let secondaryButtonProps = {
+    const secondaryButtonProps = {
       className: styles.btnSecondary,
       text: this.props.btnTitle,
       onClick: () => {
-        this.handleClick()
+        this.handleClick();
       }
     };
-    let secondaryButton = this.props.size === "Button only"
+    const secondaryButton = this.props.size === "Button only"
       ? <LargePrimaryButton {...secondaryButtonProps}/>
       : <SmallInverseSecondaryButton {...secondaryButtonProps}/>;
     return (
@@ -57,9 +58,8 @@ class CallToAction extends React.Component {
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
             <p className={styles.blurb}>{this.props.blurb}</p>
-            <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle} onClick={() => {
-              this.handleClick()
-            }}/>
+            <SmallInversePrimaryButton className={styles.btn} text={this.props.btnTitle}
+                                       onClick={createCtaNavigation(this.props.btnUrl, this.props.title, this.props.size, 1)}/>
           </div>
           <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge} alt=""/>
           <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall} alt=""/>
@@ -76,4 +76,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(NavigationActions, dispatch)
   };
 }
+
 export default connect(null, mapDispatchToProps)(CallToAction);

@@ -1,9 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as LocationChangeActions from '../../../../actions/navigation.js';
-import Hero from "../../hero/hero.jsx";
-
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import {Hero} from "organisms";
+import * as LocationChangeActions from "../../../../actions/navigation.js";
 
 class FindLendersIntro extends React.Component {
     constructor(props) {

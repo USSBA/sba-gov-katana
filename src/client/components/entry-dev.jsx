@@ -6,6 +6,9 @@ import { AppContainer } from 'react-hot-loader';
 import App from "./app.jsx";
 let root = document.getElementById('root');
 
+import injectTapEventPlugin from "react-tap-event-plugin";
+injectTapEventPlugin();
+
 ReactDOM.render((
   <AppContainer>
     <App routes={ routes } />

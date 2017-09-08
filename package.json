@@ -81,6 +81,7 @@
     "rc-collapse": "1.6.12",
     "rc-progress": "2.0.3",
     "react": "15.4.1",
+    "react-code-splitting": "^1.2.0",
     "react-cookie": "1.0.5",
     "react-dom": "15.4.1",
     "react-ga": "2.1.2",
@@ -89,6 +90,7 @@
     "react-router": "3.0.5",
     "react-router-redux": "4.0.7",
     "react-select": "1.0.0-rc.3",
+    "react-tap-event-plugin": "^2.0.1",
     "react-waypoint": "7.0.4",
     "redux": "3.6.0",
     "request": "2.79.0",
@@ -100,7 +102,7 @@
     "transliteration": "^1.6.2",
     "url-loader": "0.5.7",
     "uuid": "3.0.1",
-    "webpack": "2.2.1",
+    "webpack": "2.3.0",
     "winston": "2.3.1",
     "xml2js": "0.4.17",
     "xmldom": "0.1.27"
@@ -119,6 +121,7 @@
     "babel-register": "6.24.1",
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
+    "compression-webpack-plugin": "^1.0.0",
     "enzyme": "2.7.1",
     "esformatter": "0.10.0",
     "esformatter-ignore": "0.1.3",
@@ -159,12 +162,14 @@
       "\\.(css|scss|less)$": "identity-obj-proxy"
     },
     "modulePaths": [
-      "<rootDir>/src/"
+      "<rootDir>/src/",
+      "<rootDir>/src/client/components/"
     ],
     "globals": {
-      "window": {
-        "CONFIG": {
-          "isUserLoggedIn": false
+      "CONFIG": {
+        "isUserLoggedIn": false,
+        "googleAnalytics": {
+          "enabled": false
         }
       }
     }
