@@ -19,7 +19,8 @@ class ProgramPage extends React.Component {
       styleGrayBackground: styles.styleGrayBackground,
       button: styles.button,
       quickLinks: styles.quickLinks,
-      searchBox: styles.searchBox
+      searchBox: styles.searchBox,
+      childPageMenu:styles.childPageMenu
     };
     let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped;

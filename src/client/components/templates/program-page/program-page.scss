@@ -19,7 +19,8 @@
 .breadcrumb,
 .callToAction,
 .cardCollection,
-.styleGrayBackground {
+.styleGrayBackground,
+.childPageMenu {
   @include grid-column(12, $sba-grid-large);
 }
 

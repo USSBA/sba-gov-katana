@@ -1,0 +1,15 @@
+.container {
+    //border: 1px solid #bebdbd;
+    //background-color: #fff;
+    @include grid-media($sba-grid-medium-and-small) {
+        padding: 15px;
+    }
+    @include grid-media($sba-grid-large) {
+        padding: 20px;
+    }
+}
+
+.decorativeDash {
+	width: 35px;
+	margin: 1em 0;
+}

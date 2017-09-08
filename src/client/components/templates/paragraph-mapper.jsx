@@ -17,10 +17,12 @@ import {
 
 import {
   CardCollection,
-  SearchBox
+  SearchBox,
+  ProgramDetailsCardCollection
 } from "organisms";
 
 function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
+
   let paragraphs = [];
   let skipNextReadmore = false;
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
@@ -85,6 +87,11 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction) {
           };
 
           paragraph = <SearchBox {...searchBoxProps} />;
+          
+      } else if (item.type === "childPageMenu" && item.pagesInclude === "All child pages") {
+
+          paragraph = <ProgramDetailsCardCollection />;
+
       }
     }
     return {

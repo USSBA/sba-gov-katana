@@ -1,0 +1,29 @@
+.cardCollection {
+    clear: left;
+}
+
+.cardRow {
+
+    overflow: hidden;
+    position: relative;
+    @include grid-media($sba-grid-large) {
+        margin-bottom: 30px;
+    }
+}
+
+.card {
+	
+    @include grid-media($sba-grid-medium-and-small) {
+        height: auto;
+        margin-bottom: 30px;
+        padding: 30px;
+        border: 1px solid #bebdbd;
+        @include grid-column(6, $sba-grid-medium-and-small);
+    }
+    @include grid-media($sba-grid-large) {
+        @include grid-column(4, $sba-grid-large);
+        margin-left: 0;
+        width:33%;
+    }
+
+}

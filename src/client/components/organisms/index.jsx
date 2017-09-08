@@ -13,6 +13,7 @@ import Hero from "./hero/hero.jsx";
 import RelatedDocumentCards from "./related-document-cards/related-document-cards.jsx";
 import SearchBox from "./search-box/search-box.jsx";
 import SectionNav from "./section-nav/section-nav.jsx";
+import ProgramDetailsCardCollection from "./program-details-card-collection/program-details-card-collection.jsx";
 
 // header-footer organisms
 import Footer from "./header-footer/footer/footer.jsx";
@@ -63,7 +64,8 @@ export {
 	Hero,
 	RelatedDocumentCards,
 	SearchBox,
-	SectionNav
+	SectionNav,
+	ProgramDetailsCardCollection
 };
 
 // header-footer organisms
