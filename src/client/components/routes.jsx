@@ -29,22 +29,7 @@ import constants from "../services/constants.js"
 
 const mainRoutes = [
   (<IndexRoute key={1} component={Homepage}/>),
-  (<Route key={2} path="/lendermatch" component={LenderMatchMain}>
-      (<IndexRoute component={LandingPage}/>),
-      (<Route key={1} path="landing" component={LandingPage}/>)
-      (<Route key={2} path="form" component={LoanForm}>
-            (<IndexRedirect to='contact'/>)
-            (<Route path="contact" component={ContactInfo}/>)
-            (<Route path="business" component={BusinessInfo}/>)
-            (<Route path="industry" component={IndustryInfo}/>)
-            (<Route path="loan" component={LoanInfo}/>)
-            (<Route path="additional" component={AdditionalInfo}/>)
-            (<Route path="review" component={ReviewSubmitInfo}/>)
-      </Route>)
-      (<Route key={3} path="success" component={SuccessPage}/>)
-      (<Route key={4} path="emailconfirmed" component={EmailConfirmedPage}/>)
-      (<Route key={5} path="emailinvalid" component={EmailConfirmationInvalid}/>)
-    </Route>),
+  (<Route key={2} path="/lendermatch" component={LandingPage}/>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
   (<Route key={4} path="/document" component={DocumentLookupPage}/>),

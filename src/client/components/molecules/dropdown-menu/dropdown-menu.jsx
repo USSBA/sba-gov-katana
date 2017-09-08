@@ -55,7 +55,7 @@ class DropdownMenu extends React.Component {
       smallInverseCta = true;
     }
     if (menuId === 1) {
-      sizingStyle = styles.two;
+      sizingStyle = this.props.featuredCallout ? styles. twoWithFeaturedCallout : styles.two;
     }
     if (menuId === 2) {
       sizingStyle = styles.three;

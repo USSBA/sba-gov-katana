@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 import HttpStatus from "http-status-codes";
-import { createLenderMatchRegistration, confirmEmail, resendConfirmationEmail } from "../service/linc-service.js";
+import { createLenderMatchRegistration, confirmEmail, resendConfirmationEmail, resetLincPassword } from "../service/linc-service.js";
 
 
 function handleLenderMatchSubmission(req, res) { //eslint-disable-line complexity
@@ -101,4 +101,23 @@ function handleResendEmailConfirmation(req, res) {
   }
 }
 
-export { handleLenderMatchSubmission, handleEmailConfirmation, handleResendEmailConfirmation };
+function resetPassword(req, res) {
+  if (req && req.sessionInfo) {
+    resetLincPassword(req.sessionInfo)
+      .then(function(results) {
+        res.status(HttpStatus.OK).send(results);
+      })
+      .catch((error) => {
+        if (error.message === "FORBIDDEN") {
+          res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator");
+        } else {
+          console.error(error);
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error executing action");
+        }
+      });
+  } else {
+    res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator");
+  }
+}
+
+export { handleLenderMatchSubmission, handleEmailConfirmation, handleResendEmailConfirmation, resetPassword };

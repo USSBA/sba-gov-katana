@@ -21,7 +21,7 @@ let answer5 = "More than 800 lenders participate in Lender Match throughout all 
 
 class HelpfulQuestions extends React.Component {
   handleLenderMatchBtnClick() {
-    this.props.actions.locationChange('/lendermatch/form/contact', {label: "Find Lenders #2"});
+    document.location = "https://catran.sba.gov/lendermatch/form/contact.cfm";
   }
   render() {
     return (

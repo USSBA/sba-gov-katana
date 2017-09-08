@@ -2,7 +2,7 @@ import Feedback from "../models/feedback.js";
 import _ from "lodash";
 import moment from "moment";
 import uuid from "uuid";
-import UserService from "../service/user-service.js";
+import { isAdministrator } from "../service/user-service.js";
 import { formatFeedbackData } from "../util/formatter.js";
 
 function saveFeedback(feedback) {
@@ -33,7 +33,7 @@ function saveFeedbackText(id, feedbackText, honeyPotText) {
 
 function getFeedback(sessionId) {
   // the user authorization is here for now; move it to the global ACL when one is implemented
-  return UserService.isAdministrator(sessionId)
+  return isAdministrator(sessionId)
     .then((isAdmin) => {
       if (isAdmin) {
         return Feedback.findAll({

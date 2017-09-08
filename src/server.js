@@ -74,6 +74,7 @@ import * as lenderMatchController from "./controllers/lender-match-controller.js
 app.post("/lendermatch/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
 app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);
 app.post("/lendermatch/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
+app.get("/actions/lendermatch/resetPassword", lenderMatchController.resetPassword);
 app.get("/api/content/counselors-redirect.json", function(req, res) {
   const zipStr = "zip:" + req.query.zip + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
