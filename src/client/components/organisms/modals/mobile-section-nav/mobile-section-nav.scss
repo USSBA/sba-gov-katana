@@ -1,106 +1,138 @@
+$section-nav-color-map: (
+        'sba-blue': $sba-blue-dark,
+        'byzantine': $byzantine,
+        'money-green': $money-green-dark,
+        'cobalt-blue': $cobalt-blue
+);
+$section-nav-dark-color-map: (
+        'sba-blue': $sba-blue-darkest,
+        'byzantine': $byzantine-dark,
+        'money-green': $money-green-darkest,
+        'cobalt-blue': $cobalt-blue-dark
+);
+
+@each $name, $value in $section-nav-color-map {
+    @include theme($name, '.navMenu', $value, null, null);
+}
+
+@each $name, $value in $section-nav-dark-color-map {
+    @include theme-hover($name, '.navLinkContainer', $value, null, null);
+}
+
 .navMenu {
-	display: block;
-	z-index: 9999999999 !important;
-	background-color: $byzantine;
-	position: fixed;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	@include grid-media($sba-grid-large){
-		display: none;
-	}
+    position: fixed;
+    z-index: 9999999999 !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+
+    @include grid-media($sba-grid-large) {
+        display: none;
+    }
 }
 
 .navMenuOpen {
-	composes: navMenu;
-	-webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
-	-ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
-	-o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
-	animation: slideLeft 1s ease-out;
+    -webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
+        -ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
+         -o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
+            animation: slideLeft 1s ease-out;
 
-	@keyframes slideLeft {
-		from {
-			margin-left: 2000px;
-			margin-right: -4000px;
-			opacity: 1;
-		}
-		to {
-			margin-left: 0px;
-			margin-right: 0px;
-		}
-	}
+    composes: navMenu;
+    @keyframes slideLeft {
+        from {
+            margin-right: -4000px;
+            margin-left: 2000px;
+
+            opacity: 1;
+        }
+        to {
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
 }
 
 .navMenuClose {
-	composes: navMenu;
-	-webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
-	-moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
-	-ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
-	-o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
-	animation: slideRight 1s ease-in forwards;
+    -webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
+        -ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
+         -o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
+            animation: slideRight 1s ease-in forwards;
 
-	@keyframes slideRight {
-		0% {
-			margin-left: 0px;
-			margin-right: 0px;
-		}
-		99% {
-			margin-left: 2000px;
-			margin-right: -4000px;
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
+    composes: navMenu;
+    @keyframes slideRight {
+        0% {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        99% {
+            margin-right: -4000px;
+            margin-left: 2000px;
+
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
 }
 
-// .navMenuInitial {
-// 	display: none;
-// }
 
 .navHeader {
-	display: block;
-	position: relative;
-	height: 70px;
+    position: relative;
+
+    display: block;
+
+    height: 70px;
 }
 
 .navTitleContainer {
-	display: block;
-	position: absolute;
-	top: 50%;
-  transform: translateY(-50%);
-  left: 100px;
+    position: absolute;
+    top: 50%;
+    left: 100px;
+
+    display: block;
+
+    transform: translateY(-50%);
 }
 
 .navLargeTitle {
-	font-weight: 900;
-	color: $base-font-color;
-	text-transform: uppercase;
-	font-size: 34px;
-	margin: 0px;
-	color: white;
+    font-size: 34px;
+    font-weight: 900;
+
+    margin: 0;
+
+    text-transform: uppercase;
+
+    color: $base-font-color;
+    color: white;
 }
 
 .navSmallTitle {
-	font-weight: bold;
-	color: $base-font-color;
-	text-transform: uppercase;
-	font-size: 20px;
-	color: white;
-	margin: 0px;
+    font-size: 20px;
+    font-weight: bold;
+
+    margin: 0;
+
+    text-transform: uppercase;
+
+    color: $base-font-color;
+    color: white;
 }
 
 .navIcon {
-	position: absolute;
-	top: 50%;
-  transform: translateY(-50%);
-	height: 40px;
-	width: 40px;
-	left: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50px;
 
+    width: 40px;
+    height: 40px;
+
+    transform: translateY(-50%);
 }
 
 // .navRightArrow {
@@ -120,40 +152,48 @@
 // }
 
 .navLeftArrow {
-		font-size: 30px !important;
-		line-height: 30px !important;
-		color: white;
-		position: absolute;
-		top: 50%;
-  	transform: translateY(-50%);
-  	left: 20px;
+    font-size: 30px !important;
+    line-height: 30px !important;
+
+    position: absolute;
+    top: 50%;
+    left: 20px;
+
+    transform: translateY(-50%);
+
+    color: white;
 }
 
 .navLinkContainer {
-	position: relative;
-	cursor: pointer;
-	padding: 10px 35px 10px 15px;
-	border-bottom: 1px solid rgba(255,255,255, 0.5);
-	z-index: 9999 !important;
-	&:hover {
-		background: $byzantine-dark;
-	}
-	cursor: pointer;
+    position: relative;
+    z-index: 9999 !important;
+
+    padding: 10px 35px 10px 15px;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid rgba(255,255,255, .5);
+    // &:hover {
+    //     background: $byzantine-dark;
+    // }
 }
 
 .navLink {
-	font-size: 18px !important;
-	color: white !important;
-	text-decoration: none !important;
-	font-weight: 300 !important;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+
+    text-decoration: none !important;
+
+    color: white !important;
 }
 
 .navTopLine {
-	margin-top: 20px;
-	background-color: rgba(255,255,255, 0.5);
-	height: 1px;
-	width: 100%;
-	margin: 0px;
-	display: block;
+    display: block;
 
+    width: 100%;
+    height: 1px;
+    margin: 0;
+    margin-top: 20px;
+
+    background-color: rgba(255,255,255, .5);
 }
