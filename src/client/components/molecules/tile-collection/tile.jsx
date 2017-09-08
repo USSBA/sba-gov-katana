@@ -88,10 +88,16 @@ class Tile extends React.Component {
       ? (<StaticTile {...baseTileData} inverse id={this.props.id + '-hover'}/>)
       : (<HoverTileWithHoverLinks {...baseTileData} id={this.props.id + '-hover'} locationActions={this.props.locationActions} autoFocusOnLast={this.props.enteringInReverse}/>);
 
+
+    let widthStyle = null;
+    switch(this.props.size){
+        case 3: widthStyle = s.tileThree; break;
+        case 5:widthStyle = s.tileFive; break;
+        default: widthStyle = s.tileFour;
+    }
+
     return (
-      <div id={this.props.id} className={s.tile + " " + (this.props.size === 5
-        ? s.tileFive
-        : s.tileFour)} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
+      <div id={this.props.id} className={s.tile + " " + widthStyle} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
         <a className={s.tabDisplayMenu} href="" onClick={(e) => {
           e.preventDefault()
         }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this.handleBlur.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}>

@@ -4,6 +4,7 @@ import path from 'path';
 import SimpleCta from "../../molecules/simple-cta/simple-cta.jsx"
 import BusinessGuideTileCollection from "../../organisms/business-guide-tile-collection/business-guide-tile-collection.jsx";
 import FundingProgramsTileCollection from "../../organisms/funding-programs-tile-collection/funding-programs-tile-collection.jsx";
+import DisasterTileCollection from "../../organisms/disaster-tile-collection/disaster-tile-collection.jsx";
 import constants from "../../../services/constants.js"
 
 class SectionPage extends React.Component {
@@ -27,6 +28,8 @@ class SectionPage extends React.Component {
         tileCollection = (<BusinessGuideTileCollection sectionData={sectionData}/>);
       } else if (sectionName === constants.sections.fundingPrograms) {
         tileCollection = (<FundingProgramsTileCollection sectionData={sectionData}/>);
+    } else if (sectionName === constants.sections.disaster) {
+        tileCollection = (<DisasterTileCollection sectionData={sectionData}/>);
       } else {
         console.error("Unable to find matching section");
       }

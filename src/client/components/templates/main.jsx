@@ -26,16 +26,16 @@ const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePre
         // show NotificationBar (if cookie is NOT set)
 
   if (listOfUrls) {
-    
+
     for (let index = 0; index < listOfUrls.length; index++) {
-      
+
       const whiteLabeledUrl = listOfUrls[index];
 
       if (_.startsWith(currentPathname, whiteLabeledUrl)) {
-      
+
         boolean = !isCookiePresent;
         break;
-      
+
       }
 
     }
@@ -62,7 +62,7 @@ class Main extends React.Component {
   }
 
   componentWillMount() {
-    
+
     const updatedState = {
       disasterAlertHidingCookieIsPresent: cookie.load("close_disaster_loan_parature") ? true : false,
       notificationBarHidingCookieIsPresent: cookie.load("close_notification_bar") ? true : false
@@ -130,23 +130,25 @@ class Main extends React.Component {
     );
 
     return (
-      
+
       <div className={visible ? styles.alertIsActive : ""}>
-        
+
         <DisasterAlerts
           description={this.props.disasterAlertDescription}
           visible={visible}
+          buttonText={this.props.disasterAlertButtonText}
+          link={this.props.disasterAlertLink}
           onClose={() => {
             this.handleClose("DISASTER");
           }}
         />
-        
+
         <Header />
         
         <div className={styles.mainContent}>{this.props.children}</div>
 
         { showNotificationBar &&
-          
+
           <NotificationBar
             description={notificationDescription}
             url={notificationUrl}
@@ -175,6 +177,8 @@ function mapReduxStateToProps(reduxState) {
 
     data.disasterAlertVisible = disaster.visible;
     data.disasterAlertDescription = disaster.description;
+    data.disasterAlertButtonText = disaster.buttonText;
+    data.disasterAlertLink= disaster.link;
 
   }
 

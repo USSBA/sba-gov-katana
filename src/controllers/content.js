@@ -18,6 +18,7 @@ const fetchContentTypeFunctions = {
   frontpageslides: fetchFrontPageSlidesFromDrupal,
   "main-menu": fetchMainMenu,
   menu: fetchFormattedMenu,
+  siteMap: fetchFormattedMenu,
   counsellorCta: fetchCounsellorCta,
   documents: fetchDocuments,
   articles: fetchArticles,
