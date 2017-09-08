@@ -4,6 +4,7 @@ import path from "path";
 import _ from "lodash";
 /*Contains express server setup*/
 import express from "express";
+import accepts from "accepts";
 import config from "config";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -37,6 +38,8 @@ const metaVariables = {
 };
 
 app.use(function(req, res, next) {
+  // handle Accept-Language header
+  req.preferredLanguage = accepts(req).languages()[0]; //eslint-disable-line no-param-assign
   const sessionCookie = _.find(_.keys(req.cookies), (key) => {
     return _.startsWith(key, "SSESS");
   });
@@ -121,6 +124,7 @@ app.get("/api/content/:type.json", fetchContentByType);
 
 app.get(["/", "/*"], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
+    lang: req.preferredLanguage,
     config: JSON.stringify(req.sessionAndConfig),
     optimizeContainerId: config.get("googleAnalytics.optimizeContainerId"),
     tagManagerAccountId: config.get("googleAnalytics.tagManagerAccountId"),
