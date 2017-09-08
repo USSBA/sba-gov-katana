@@ -15,7 +15,7 @@ import SmallPrimaryButton from "../../../atoms/small-primary-button/small-primar
 
 class PreparationChecklist extends React.Component{
     handleLenderMatchBtnClick() {
-        document.location = "/linc";
+        document.location = "https://catran.sba.gov/lendermatch/form/contact.cfm";
     }
     render(){
        return(

@@ -12,7 +12,7 @@ class FindLendersIntro extends React.Component {
         this.handleTellMeHowClicked = this.handleTellMeHowClicked.bind(this);
     }
   handleLenderMatchClicked() {
-    document.location = "/linc";
+    document.location = "https://catran.sba.gov/lendermatch/form/contact.cfm";
   }
 
   handleTellMeHowClicked(){
