@@ -114,10 +114,6 @@ class Main extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
-=======
-
->>>>>>> RELEASE-18
     const visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent;
     const {
       notificationDescription,
@@ -140,7 +136,7 @@ class Main extends React.Component {
 
       <div className={visible ? styles.alertIsActive : ""}>
 
-        <DisasterAlerts
+        <DisasterAlert
           description={this.props.disasterAlertDescription}
           visible={visible}
           buttonText={this.props.disasterAlertButtonText}
@@ -152,11 +148,8 @@ class Main extends React.Component {
 
         <Header />
 
-<<<<<<< HEAD
         <MainLoader />
 
-=======
->>>>>>> RELEASE-18
         <div className={styles.mainContent}>{this.props.children}</div>
 
         { showNotificationBar &&

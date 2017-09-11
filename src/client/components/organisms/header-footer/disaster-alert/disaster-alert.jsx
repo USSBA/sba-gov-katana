@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./disaster-alerts.scss";
-import exitIcon from "../../../../../public/assets/svg/exit-modal-close.svg";
+import styles from "./disaster-alert.scss";
+import exitIcon from "../../../../../../public/assets/svg/exit-modal-close.svg";
 import {BasicLink} from "atoms"
 
 class DisasterAlert extends React.Component {
