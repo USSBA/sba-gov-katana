@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./card.scss";
+import {BasicLink} from "atoms";
 
 class Card extends React.Component {
 
@@ -41,7 +42,7 @@ class Card extends React.Component {
     }
 
     render() {
-        let cardStyle = this.computeCardStyle();
+        let cardStyle = this.computeCardStyle() + " "+ (this.props.leftAligned ? styles.leftAligned: styles.centerAligned );
         return (
             <div id={"card-" + this.props.parentIndex + "-" + this.props.index} className={cardStyle}>
                 {this.props.item.image && this.props.item.image.url
@@ -54,6 +55,7 @@ class Card extends React.Component {
                 {this.props.item.subtitleText
                     ? <p id={"subtitle-text-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
                     : null}
+                {this.props.item.link ? <p><BasicLink text="Learn More" url={this.props.fullUrl} /></p> : null}
             </div>
         );
     }
