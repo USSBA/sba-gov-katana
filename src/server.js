@@ -39,7 +39,7 @@ const metaVariables = {
 
 app.use(function(req, res, next) {
   // handle Accept-Language header
-  req.preferredLanguage = accepts(req).languages()[0]; //eslint-disable-line no-param-assign
+  req.preferredLanguage = accepts(req).languages()[0]; //eslint-disable-line no-param-reassign
   const sessionCookie = _.find(_.keys(req.cookies), (key) => {
     return _.startsWith(key, "SSESS");
   });
