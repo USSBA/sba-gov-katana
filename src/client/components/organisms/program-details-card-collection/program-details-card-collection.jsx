@@ -45,14 +45,15 @@ class ProgramDetailsCardCollection extends Component {
 
 	render() {
 
-		const renderedCards = this.props.cards.map(this.renderCard.bind(this));
-
+		const {cards} = this.props;
+		
 		return (
 			<div>
+				{ cards !== null && 
 				<div className={styles.cardCollection}>
-					{renderedCards}
+					{cards.map(this.renderCard.bind(this))}
 					<hr />
-				</div>
+				</div>}
 			</div>
 		);
 	}
