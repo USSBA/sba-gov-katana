@@ -90,7 +90,7 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
           
       } else if (item.type === "childPageMenu" && item.pagesInclude === "All child pages") {
 
-        const cards = lineage[0].children;
+        const cards = lineage[lineage.length - 1].children;
         paragraph = <ProgramDetailsCardCollection cards={cards} />;
 
       }
