@@ -13,11 +13,36 @@ import * as ModalActions from "../../../actions/show-modal.js";
 import styles from "./section-nav.scss";
 var Waypoint = require("react-waypoint");
 
-const businessGuideFullUrl = "/business-guide";
+
+
+const businessGuideFullUrl = '/business-guide';
 
 class SectionNav extends React.Component {
 
-  isBusinessGuide(){
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.displayMobileNav) {
+      let sectionNavIcon;
+      const sectionTitle = this.getNthLineage(-2).title;
+      if (sectionTitle === 'Plan your business') {
+        sectionNavIcon = whiteIconPlan;
+      } else if (sectionTitle === 'Launch your business') {
+        sectionNavIcon = whiteIconLaunch;
+      } else if (sectionTitle === 'Manage your business') {
+        sectionNavIcon = whiteIconManage;
+      } else if (sectionTitle === 'Grow your business') {
+        sectionNavIcon = whiteIconGrow;
+      } else {
+        sectionNavIcon = whiteIconGrow;
+      }
+      this.props.actions.showMobileSectionNav(
+        this.getNthLineage(1),
+        sectionNavIcon,
+        this.getBacklinkUrl()
+      );
+    }
+  }
+
+  isBusinessGuide() {
     return this.getNthLineage(0).fullUrl === businessGuideFullUrl;
   }
 
@@ -28,9 +53,9 @@ class SectionNav extends React.Component {
   makeNavLinks() {
     const section = this.getNthLineage(-2);
     const currentPage = this.getNthLineage(-1);
-    const navLinks = section.children.map(function (item, index) {
-      let currentLinkClass = "";
-      if(item.fullUrl === currentPage.fullUrl){
+    const navLinks = section.children.map(function(item, index) {
+      let currentLinkClass = '';
+      if (item.fullUrl === currentPage.fullUrl) {
         currentLinkClass = styles.currentNavLink;
       }
       return (
@@ -45,34 +70,39 @@ class SectionNav extends React.Component {
 
   makeNavigationTitle(sectionTitle) {
     const baseSection = this.getNthLineage(0);
-    if(this.isBusinessGuide()){
+    if (this.isBusinessGuide()) {
       const titleArray = _.words(sectionTitle, /[^ ]+/g);
       const firstWord = _.slice(titleArray, 0, 1);
-      const remainingTitle = _.replace(sectionTitle, firstWord, "");
-      return (<span id="article-navigation-title-desktop"><h2>{firstWord}</h2>
-              <h4>{remainingTitle}</h4>
-            </span>);
+      const remainingTitle = _.replace(sectionTitle, firstWord, '');
+      return (
+        <span id="article-navigation-title-desktop">
+          <h2>{firstWord}</h2>
+          <h4>{remainingTitle}</h4>
+        </span>
+      );
     } else {
-      return (<span id="article-navigation-title-desktop"><h3>{sectionTitle}</h3></span>);
+      return (
+        <span id="article-navigation-title-desktop">
+          <h3>{sectionTitle}</h3>
+        </span>
+      );
     }
   }
 
-
-  stickyFunctionTop(){
-    return this.props.position === "middle" ? styles.stickyTop : null;
+  stickyFunctionTop() {
+    return this.props.position === 'middle' ? styles.stickyTop : null;
   }
 
-  stickyFunctionBottom(){
-    return this.props.position === "bottom" ? styles.stickyBottom : null;
+  stickyFunctionBottom() {
+    return this.props.position === 'bottom' ? styles.stickyBottom : null;
   }
 
-  getBacklinkUrl(){
+  getBacklinkUrl() {
     return (this.isBusinessGuide() ? this.getNthLineage(0) : this.getNthLineage(-2)).fullUrl;
   }
 
-
-  getBacklinkText(){
-    const backText = this.isBusinessGuide() ? "all topics" : this.getNthLineage(-2).title;
+  getBacklinkText() {
+    const backText = this.isBusinessGuide() ? 'all topics' : this.getNthLineage(-2).title;
     return `Back to ${backText}`;
   }
 
@@ -81,35 +111,19 @@ class SectionNav extends React.Component {
     const sectionTitle = this.getNthLineage(-2).title;
     const navigationTitle = this.makeNavigationTitle(sectionTitle);
 
-    let sectionNavIcon;
-
-    if (sectionTitle === "Plan your business") {
-      sectionNavIcon = whiteIconPlan;
-    } else if (sectionTitle === "Launch your business") {
-      sectionNavIcon = whiteIconLaunch;
-    } else if (sectionTitle === "Manage your business") {
-      sectionNavIcon = whiteIconManage;
-    } else if (sectionTitle === "Grow your business") {
-      sectionNavIcon = whiteIconGrow;
-    } else {
-      sectionNavIcon = whiteIconGrow;
-    }
-
-    if(this.props.displayMobileNav) {
-      this.props.actions.showMobileSectionNav(this.getNthLineage(1), sectionNavIcon, this.getBacklinkUrl());
-      return (<div></div>);
-    } else {
-      return (
-        <div id="article-navigation-desktop"
-             className={styles.sectionNav + " " + this.stickyFunctionTop() + " " + this.stickyFunctionBottom()}>
-          <Waypoint topOffset="30px" onEnter={this.props.onTopEnter}/>
-          <BasicLink id="article-navigation-back-button-desktop" myClassName={styles.backLink}
-             url={this.getBacklinkUrl()} text={this.getBacklinkText()} />
-          {navigationTitle}
-          <ul>{navLinks}</ul>
-        </div>
-      );
-    }
+    return (
+      <div
+        id="article-navigation-desktop"
+        className={
+          styles.sectionNav + ' ' + this.stickyFunctionTop() + ' ' + this.stickyFunctionBottom()
+        }>
+        <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
+           <BasicLink id="article-navigation-back-button-desktop" myClassName={styles.backLink}
+              url={this.getBacklinkUrl()} text={this.getBacklinkText()} />
+        {navigationTitle}
+        <ul>{navLinks}</ul>
+      </div>
+    );
   }
 }
 
@@ -119,8 +133,8 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ModalActions, dispatch)
+    actions: bindActionCreators(ModalActions, dispatch),
   };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav);
-export {SectionNav};
+export { SectionNav };

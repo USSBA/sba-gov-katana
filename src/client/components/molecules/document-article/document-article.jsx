@@ -62,14 +62,15 @@ export class DocumentArticle extends React.Component {
           <h1 className={"document-article-title " + s.title + " " + (documentTypeString? s.marginTop:"")}>{data.title}</h1>
           <p className={s.dates}>
             {data.updated ? <span className={s.date}>Last Updated {moment.unix(data.updated).format('MMM D, YYYY')}</span> : null}
-            {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
+            {!newestFile.expirationDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
             {newestFile.expirationDate ? <span className={s.date}>Expiration {this.formatDate(newestFile.expirationDate)}</span> : null}
-            {!newestFile.expirationDate || !newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
+            {!newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
             {newestFile.effectiveDate ? <span className={s.date}>Effective {this.formatDate(newestFile.effectiveDate)}</span> : null}
             </p>
-          <div className={s.office}>By{" "}
+          {data.officeLink.url ? <div className={s.office}>By{" "}
             <BasicLink url={data.officeLink.url} text={data.officeLink.title}/>
-          </div>
+          </div> : <span/>
+          }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
             <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>

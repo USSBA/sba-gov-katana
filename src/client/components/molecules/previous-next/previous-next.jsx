@@ -11,7 +11,8 @@ class PreviousNextSection extends React.Component {
   }
 
   getSections() {
-    return _.nth(this.props.lineage, -3).children;
+    let thirdToLast = _.nth(this.props.lineage, -3);
+    return thirdToLast? thirdToLast.children : null;
   }
 
   getArticlesFromSections(sections) {

@@ -3,7 +3,8 @@ const constants = {
   address: "409 3rd St, SW. Washington DC 20416",
   sections: {
     businessGuide: "Business Guide",
-    fundingPrograms: "Funding Programs"
+    fundingPrograms: "Funding Programs",
+    disaster: "Disaster Assistance"
   },
   routes: {
     confirmationEmail: "/lendermatch/resend",

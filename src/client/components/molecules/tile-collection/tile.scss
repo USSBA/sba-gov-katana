@@ -22,6 +22,14 @@
 	margin-bottom: 20px;
 }
 
+
+.tileThree {
+	@include grid-media($sba-grid-large) {
+		 @include grid-column(4, $sba-grid-large);
+		height: 677px;
+	}
+}
+
 .tileFour {
 	@include grid-media($sba-grid-large) {
 		 @include grid-column(3, $sba-grid-large);

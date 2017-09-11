@@ -7,7 +7,7 @@ import DeveloperTester from "./developer-tester/developer-tester.jsx";
 import DocumentCardCollection from "./document-card-collection/document-card-collection.jsx";
 import FrontPageHero from "./front-page-hero/front-page-hero.jsx";
 import FundingProgramsTileCollection from "./funding-programs-tile-collection/funding-programs-tile-collection.jsx";
-import DisasterAlerts from "./header-footer/disaster-alerts.jsx";
+import DisasterAlert from "./header-footer/disaster-alert/disaster-alert.jsx";
 import NotificationBar from "./header-footer/notification-bar.jsx";
 import Hero from "./hero/hero.jsx";
 import RelatedDocumentCards from "./related-document-cards/related-document-cards.jsx";
@@ -58,7 +58,7 @@ export {
 	DocumentCardCollection,
 	FrontPageHero,
 	FundingProgramsTileCollection,
-	DisasterAlerts,
+	DisasterAlert,
 	NotificationBar,
 	Hero,
 	RelatedDocumentCards,

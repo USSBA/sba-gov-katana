@@ -65,7 +65,6 @@ class QuickLinks extends React.Component {
 }
 
 const LatestDocumentsCard = props => {
-	console.log(props)
 	return (
 		<div className={props.classname}>
 			<div className={s.titleContainer}>
