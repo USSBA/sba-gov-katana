@@ -24,13 +24,13 @@ class Tile extends React.Component {
   }
 
   _openNavMenu() {
-    if (this.props.topLevelLinks) {
+    if (window.innerWidth <= 1080) {
+      this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
+    } else if (this.props.topLevelLinks) {
       this.props.locationActions.locationChange(this.props.data.fullUrl, {
         action: "Landing Page Panel Pushed",
         label: document.location.pathname
       });
-    } else if (window.innerWidth <= 1080) {
-      this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     }
 
   }
