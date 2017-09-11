@@ -6,7 +6,8 @@ import styles from "./program-page.scss";
 class ProgramPage extends React.Component {
 
   makeParagraphs(paragraphData) {
-    let paragraphList = paragraphMapper.makeParagraphs(paragraphData);
+
+    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, null, this.props.lineage);
     let wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
@@ -19,7 +20,8 @@ class ProgramPage extends React.Component {
       styleGrayBackground: styles.styleGrayBackground,
       button: styles.button,
       quickLinks: styles.quickLinks,
-      searchBox: styles.searchBox
+      searchBox: styles.searchBox,
+      childPageMenu:styles.childPageMenu
     };
     let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped;
