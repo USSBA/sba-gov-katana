@@ -7,14 +7,33 @@ import styles from "./program-details-card-collection.scss";
 class ProgramDetailsCardCollection extends Component {
 
   render() {
-    const remappedData = this.props.cards.map((item) => {
-      return {titleText: item.title, subtitleText: item.description, link: item.fullUrl}
-    });
+
+    const {cards} = this.props;
+    const remapData = () => {
+      
+      return (
+
+        cards.map((item) => {
+
+          return {
+            titleText: item.title,
+            subtitleText: item.description,
+            link: item.fullUrl
+          };
+
+        })
+
+      );
+      
+    };
+
     return (
       <div>
-        <CardCollection cards={remappedData} leftAligned/>
+        {cards !== null &&
+          <CardCollection cards={remapData()} leftAligned/>}
       </div>
     );
+
   }
   
 }
