@@ -1,8 +1,18 @@
+.centerAligned{
+    text-align: center;
+    .itemHr{
+      margin: 10px auto;
+    }
+}
+
+.leftAligned{
+    text-align: left;
+}
+
 .twoColumn{
   @include grid-column(6);
   margin-bottom: 10px;
   height: auto;
-  text-align: center;
 
   .itemTitle{
     @include font-size($h4-font-sizes);
@@ -11,7 +21,6 @@
     font-weight: bold;
   }
   .itemHr{
-    margin: 10px auto;
     box-sizing: border-box;
     height: 2px;
     width: 60px;
@@ -35,7 +44,6 @@
   @include grid-column(4);
   margin-bottom: 10px;
   height: auto;
-  text-align: center;
 
   .itemTitle{
     @include font-size($h4-font-sizes);
@@ -44,7 +52,6 @@
     font-weight: bold;
   }
   .itemHr{
-    margin: 10px auto;
     box-sizing: border-box;
     height: 2px;
     width: 30px;
@@ -63,7 +70,6 @@
   @include grid-column(3);
   margin-bottom: 10px;
   height: auto;
-  text-align: center;
 
   .itemTitle{
     @include font-size($h4-font-sizes);
@@ -72,7 +78,6 @@
     font-weight: bold;
   }
   .itemHr{
-    margin: 10px auto;
     box-sizing: border-box;
     height: 2px;
     width: 30px;
@@ -92,7 +97,6 @@
   @include grid-column(2);
   margin-bottom: 10px;
   height: auto;
-  text-align: center;
 
   .itemTitle{
     @include font-size($h4-font-sizes);
@@ -101,7 +105,6 @@
     font-weight: bold;
   }
   .itemHr{
-    margin: 10px auto;
     box-sizing: border-box;
     height: 2px;
     width: 30px;
