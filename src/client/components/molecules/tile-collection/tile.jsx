@@ -82,7 +82,8 @@ class Tile extends React.Component {
       smallTitle: this.props.splitTitle
         ? this._formatSmallTitle()
         : "",
-      uppercaseFirstWord: this.props.uppercaseFirstWord
+      uppercaseFirstWord: this.props.uppercaseFirstWord,
+      onOpen: this._openNavMenu.bind(this)
     };
 
     let hoverTile = this.props.hoverShowsInverseOnly
@@ -100,7 +101,7 @@ class Tile extends React.Component {
     return (
       <div id={this.props.id} className={s.tile + " " + widthStyle} onClick={this._openNavMenu.bind(this)} onMouseEnter={this._mouseEnterTile.bind(this)} onMouseLeave={this._mouseExitTile.bind(this)}>
       <BasicLink text={`toggle ${this.props.data.title} menu`} myClassName={s.tabDisplayMenu} onClick={(e) => {
-        e.preventDefault()
+        e? e.preventDefault() : ""
       }} onFocus={this._mouseEnterTile.bind(this)} onBlur={this.handleBlur.bind(this)} onKeyDown={this.handleKeyDown.bind(this)}/>
         {this.props.showHover
           ? hoverTile
@@ -115,6 +116,16 @@ class Tile extends React.Component {
 
 class StaticTile extends React.Component {
 
+    onKeyDown(event){
+        console.log(event)
+        let code = (event.keyCode
+          ? event.keyCode
+          : event.which);
+        if (code == 13) {
+          this.props.onOpen();
+        }
+    }
+
   render() {
     let smallTitleComponent = this.props.smallTitle
       ? (
@@ -126,7 +137,7 @@ class StaticTile extends React.Component {
     return (
       <div id={this.props.id} className={s.tileNormal + " " + (this.props.inverse
         ? s.tileInverse
-        : "")}>
+        : "")} tabIndex="0" onKeyDown={this.onKeyDown.bind(this)}>
         <img id={this.props.id + "-icon"} className={s.icon} src={this.props.inverse
           ? this.props.iconWhite
           : this.props.icon} alt=""/>
@@ -167,12 +178,12 @@ class HoverTileWithHoverLinks extends React.Component {
         <h2 className={s.largeTitleHover}>{this.props.largeTitle}</h2>
         <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         <div className={s.topLine}></div>
-        {this.props.data.children.map((object, index) => {
+        {this.props.data.children ? this.props.data.children.map((object, index) => {
           let autoFocusOnMe = this.props.autoFocusOnLast && index === (this.props.data.children.length - 1);
 
           return <HoverLink id={this.props.id + "-link-" + index} key={index} link={object} handleClick={this._handleClick.bind(this)}  autoFocus={autoFocusOnMe}/>
         })
-}
+: null}
       </div>
     );
   }
@@ -180,7 +191,7 @@ class HoverTileWithHoverLinks extends React.Component {
 
 class HoverLink extends React.Component {
   componentDidMount() {
-    if (this.props.autoFocus) {
+    if (this.props.autoFocus && this.me.focus) {
       this.me.focus();
     }
   }

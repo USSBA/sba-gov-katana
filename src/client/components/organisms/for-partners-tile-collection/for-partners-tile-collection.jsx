@@ -8,7 +8,7 @@ class ForPartnersTileCollection extends React.Component {
     if (!this.props.sectionData || !this.props.sectionData.children) {
       return <div/>
     }
-    return (<TileCollection data={this.props.sectionData.children} icons={ForPartnersIcons} hoverShowsInverseOnly topLevelLinks/>);
+    return (<TileCollection data={this.props.sectionData.children} icons={ForPartnersIcons} topLevelLinks/>);
   }
 }
 
