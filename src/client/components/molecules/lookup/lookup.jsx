@@ -1,12 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-import {
-  ContactCardLookup,
-  SbicLookup,
-  DocumentLookup,
-  SuretyLookup
-} from "molecules";
+import {ContactCardLookup, SbicLookup, SuretyLookup} from "molecules";
 import * as ContentActions from "../../../actions/content.js";
 import {filter, assign} from "lodash";
 import {logEvent} from "../../../services/analytics.js";
@@ -24,14 +19,12 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.type !== "documents") {
-      let queryArgs = this.props.subtype
-        ? {
-          category: this.props.subtype
-        }
-        : null;
-      this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
-    }
+    let queryArgs = this.props.subtype
+      ? {
+        category: this.props.subtype
+      }
+      : null;
+    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -86,10 +79,8 @@ class Lookup extends React.Component {
 
       }
 
-    } else if (this.props.type === "documents") {
-
-      SelectedLookup = <DocumentLookup {..._props}/>
-
+    } else {
+      console.error("Unknown Lookup Type");
     }
 
     return (

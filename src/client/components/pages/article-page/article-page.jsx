@@ -41,11 +41,11 @@ ArticlePage.defaultProps = {
 };
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  if (reduxState.contentReducer["articles"] === null) {
+  let articleStoreValue = reduxState.contentReducer["articles"];
+  if (articleStoreValue && articleStoreValue.count === 0) {
     return {article: null};
-  } else if (reduxState.contentReducer["articles"] && reduxState.contentReducer["articles"].length > 0) {
-    return {article: reduxState.contentReducer["articles"][0]
-    };
+  } else if (articleStoreValue && articleStoreValue.items && articleStoreValue.items.length > 0) {
+    return {article: articleStoreValue.items[0]};
   } else {
     return {};
   }

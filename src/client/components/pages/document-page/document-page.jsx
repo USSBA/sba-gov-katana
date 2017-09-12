@@ -42,7 +42,7 @@ DocumentPage.defaultProps = {
 
 function mapReduxStateToProps(reduxState, ownProps) {
   let documentStoreValue = reduxState.contentReducer["documents"];
-  if (documentStoreValue === null && !this.props.document) {
+  if (documentStoreValue  && documentStoreValue.count === 0) {
     return {document: null};
   } else if (documentStoreValue && documentStoreValue.items && documentStoreValue.items.length > 0) {
     return {document: documentStoreValue.items[0]};

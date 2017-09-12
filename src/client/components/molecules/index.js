@@ -7,7 +7,7 @@ import CardGrid from "./card-grid/card-grid.jsx";
 import ContactCardLookup from "./contact-card-lookup/contact-card-lookup.jsx";
 import DocumentArticle from "./document-article/document-article.jsx";
 import DocumentCard from "./document-card/document-card.jsx";
-import DocumentLookup from "./document-lookup/document-lookup.jsx";
+import DocumentArticleLookup from "./document-article-lookup/document-article-lookup.jsx";
 import DropdownMenu from "./dropdown-menu/dropdown-menu.jsx";
 import FeaturedCallout from "./featured-callout/featured-callout.jsx";
 import FeedbackForm from "./feedback-form/feedback-form.jsx";
@@ -40,5 +40,6 @@ import TileCollection from "./tile-collection/tile-collection.jsx";
 import TitleBox from "./title-box/title-box.jsx";
 import TitleSection from "./title-section/title-section.jsx";
 import TextSection from "./text-section/text-section.jsx";
+import PagingLookup from "./paging-lookup/paging-lookup.jsx";
 
-export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection, QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TenStepsSection, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection, SbaModal, ReadMoreSection };
+export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DocumentArticleLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection,  QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TenStepsSection, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection, SbaModal, ReadMoreSection, PagingLookup };
