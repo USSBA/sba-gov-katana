@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import _ from "lodash";
-import {ProgramDetailsCard} from "molecules";
 import {CardCollection} from "organisms";
 import styles from "./program-details-card-collection.scss";
 
