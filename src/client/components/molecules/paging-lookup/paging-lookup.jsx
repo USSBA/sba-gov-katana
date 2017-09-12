@@ -75,7 +75,7 @@ class PagingLookup extends React.Component {
       // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
       rearrangedTaxonomyOrder.push({
         "name": "Sort By",
-        "terms": ["Last Updated", "Title", "Number"]
+        "terms": this.props.sortByOptions
       });
 
       updatedProps.taxonomies = rearrangedTaxonomyOrder;

@@ -11,7 +11,8 @@ class DocumentLookupPage extends React.Component {
       taxonomyFilters: [
         "documentType", "program", "documentActivity"
       ],
-      fieldsToShowInDetails: ["Activity", "Program", "Summary"]
+      fieldsToShowInDetails: ["Activity", "Program", "Summary"],
+      sortByOptions: ["Last Updated", "Title", "Number"]
     };
     return (<PagingLookup {...documentProps}/>);
   }

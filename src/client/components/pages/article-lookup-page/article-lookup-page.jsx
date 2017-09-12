@@ -11,7 +11,8 @@ class ArticleLookupPage extends React.Component {
       taxonomyFilters: [
         "articleType", "program"
       ],
-      fieldsToShowInDetails: ["Program", "Published", "Summary"]
+      fieldsToShowInDetails: ["Program", "Published", "Summary"],
+      sortByOptions: ["Last Updated", "Title"]
     };
     return (<PagingLookup {...articleProps}/>);
   }
