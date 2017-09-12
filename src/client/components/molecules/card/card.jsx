@@ -55,7 +55,7 @@ class Card extends React.Component {
                 {this.props.item.subtitleText
                     ? <p id={"subtitle-text-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
                     : null}
-                {this.props.item.link ? <p><BasicLink text="Learn More" url={this.props.fullUrl} /></p> : null}
+                {this.props.item.link ? <p><BasicLink text="Learn More" url={this.props.item.link} /></p> : null}
             </div>
         );
     }

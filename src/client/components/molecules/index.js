@@ -19,7 +19,6 @@ import PageLinkGroup from "./page-link-group/page-link-group.jsx";
 import Paginator from "./paginator/paginator.jsx";
 import ParagraphPlaceholder from "./paragraph-placeholder/paragraph-placeholder.jsx";
 import PreviousNextSection from "./previous-next/previous-next.jsx";
-import ProgramDetailsCard from "./program-details-card/program-details-card.jsx";
 import QuickLinks from "./quick-links/quick-links.jsx";
 import ReadMore from "./readmore/readmore.jsx";
 import ReadMoreSection from "./readmore-section/readmore-section.jsx";
@@ -42,4 +41,4 @@ import TitleBox from "./title-box/title-box.jsx";
 import TitleSection from "./title-section/title-section.jsx";
 import TextSection from "./text-section/text-section.jsx";
 
-export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection, ProgramDetailsCard, QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TenStepsSection, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection, SbaModal, ReadMoreSection };
+export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection, QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TenStepsSection, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection, SbaModal, ReadMoreSection };
