@@ -58,6 +58,11 @@ class MobileNav extends React.Component {
           </form>
             {menuItems}
           <div className={styles.menuLinkSection}>
+            <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/partners">
+              For Partners
+            </a>
+          </div>
+          <div className={styles.menuLinkSection}>
             <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/tools/local-assistance#locations-page">
               <img className={styles.linkIcon} src={nearyouIcon} alt=""/>
               SBA Near You
