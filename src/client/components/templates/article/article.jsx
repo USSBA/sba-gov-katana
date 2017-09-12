@@ -12,7 +12,7 @@ class Article extends React.Component {
     if (this.props.article) {
       return (
         <div>
-          <DocumentArticle data={this.props.article}/>
+          <DocumentArticle data={this.props.article} type="article"/>
           <RelatedDocumentCards data={this.props.article}/>
         </div>
       );

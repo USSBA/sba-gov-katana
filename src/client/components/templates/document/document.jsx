@@ -28,7 +28,7 @@ class DocumentPage extends React.Component {
 
       return (
         <div>
-          <DocumentArticle data={this.props.document}/>
+          <DocumentArticle data={this.props.document} type="document"/>
           <div className={s.allVersionsList}>
             <h3>All versions</h3>
             <ul>

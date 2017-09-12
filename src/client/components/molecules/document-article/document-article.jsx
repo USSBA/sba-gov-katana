@@ -6,7 +6,7 @@ import queryString from "querystring";
 import {
   DocumentType,
   DecorativeDash,
-  Button,
+  LargePrimaryButton,
   BasicLink
 } from "atoms";
 import {TextSection} from "molecules";
@@ -39,7 +39,7 @@ export class DocumentArticle extends React.Component {
 
   handleRelatedPrograms(program){
     let params = {program: program}
-    this.props.actions.locationChange("/document/?" + queryString.stringify(params))
+    this.props.actions.locationChange("/"+this.props.type+"/?" + queryString.stringify(params))
   }
 
   render() {
@@ -73,7 +73,7 @@ export class DocumentArticle extends React.Component {
           }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>
+            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
