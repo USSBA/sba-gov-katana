@@ -25,6 +25,7 @@ let HomepageContainer = (props) => <Async componentProps={props} load={import(".
 let SamplePage = (props) => <Async componentProps={props} load={import("./pages/sample.jsx")} />
 let RootPage = (props) => <Async componentProps={props} load={import("./pages/root-page.jsx")} />
 let DocumentLookupPage = (props) => <Async componentProps={props} load={import("./pages/document-lookup-page/document-lookup-page.jsx")} />
+let ArticleLookupPage = (props) => <Async componentProps={props} load={import("./pages/article-lookup-page/article-lookup-page.jsx")} />
 
 import {Route, IndexRoute, IndexRedirect} from 'react-router';
 import constants from "../services/constants.js"
@@ -37,6 +38,8 @@ const mainRoutes = [
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
   (<Route key={4} path="/document" component={DocumentLookupPage}/>),
   (<Route key={14} path="/document/" component={DocumentLookupPage}/>),
+  (<Route key={40} path="/article" component={ArticleLookupPage}/>),
+  (<Route key={45} path="/article/" component={ArticleLookupPage}/>),
   (<Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
   (<Route key={6} path="/:first" component={RootPage}/>),
   (<Route key={7} path="/:first/" component={RootPage}/>),
