@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentLookupPage renders a page lookup with the correct attributes 1`] = `
+<Connect(PagingLookup)
+  fieldsToShowInDetails={
+    Array [
+      "Activity",
+      "Program",
+      "Summary",
+    ]
+  }
+  sortByOptions={
+    Array [
+      "Last Updated",
+      "Title",
+      "Number",
+    ]
+  }
+  taxonomyFilters={
+    Array [
+      "documentType",
+      "program",
+      "documentActivity",
+    ]
+  }
+  title="Documentation Lookup"
+  type="documents"
+/>
+`;
