@@ -15,6 +15,8 @@ import FormPageButtons from "./form-page-buttons/form-page-buttons.jsx";
 import GoogleTranslate from "./google-translate/google-translate.jsx";
 import ImageSection from "./image-section/image-section.jsx";
 import Lookup from "./lookup/lookup.jsx";
+import MenuTile from "./menu-tile/menu-tile.jsx"
+import MenuTileWithLinks from "./menu-tile-with-links/menu-tile-with-links.jsx"
 import PageLinkGroup from "./page-link-group/page-link-group.jsx";
 import Paginator from "./paginator/paginator.jsx";
 import ParagraphPlaceholder from "./paragraph-placeholder/paragraph-placeholder.jsx";
@@ -36,10 +38,55 @@ import SuretyLookup from "./surety-lookup/surety-lookup.jsx";
 import TenStepsNav from "./ten-steps-nav/ten-steps-nav.jsx";
 import TenStepsSection from "./ten-steps-section/ten-steps-section.jsx";
 import TextReadMoreSection from "./text-readmore-section/text-readmore-section.jsx";
-import TileCollection from "./tile-collection/tile-collection.jsx";
+
 import TitleBox from "./title-box/title-box.jsx";
 import TitleSection from "./title-section/title-section.jsx";
 import TextSection from "./text-section/text-section.jsx";
 import PagingLookup from "./paging-lookup/paging-lookup.jsx";
 
-export { Breadcrumb, ButtonCta, CallToAction, Callout, Card, CardGrid, ContactCardLookup, DocumentArticle, DocumentCard, DocumentLookup, DocumentArticleLookup, DropdownMenu, FeaturedCallout, FeedbackForm, FormPageButtons, GoogleTranslate, ImageSection, Lookup, PageLinkGroup, Paginator, ParagraphPlaceholder, PreviousNextSection,  QuickLinks, ReadMore, ResourceCard, SbicLookup, SearchBar, SectionHeader, SimpleCta, SmallInverseCta, StyleGrayBackground, SubMenu, SubsectionHeader, SuretyLookup, TenStepsNav, TenStepsSection, TextReadMoreSection, TextSection, TileCollection, TitleBox, TitleSection, SbaModal, ReadMoreSection, PagingLookup };
+export {
+  Breadcrumb,
+  ButtonCta,
+  CallToAction,
+  Callout,
+  Card,
+  CardGrid,
+  ContactCardLookup,
+  DocumentArticle,
+  DocumentCard,
+  DocumentArticleLookup,
+  DropdownMenu,
+  FeaturedCallout,
+  FeedbackForm,
+  FormPageButtons,
+  GoogleTranslate,
+  ImageSection,
+  Lookup,
+  MenuTile,
+  MenuTileWithLinks,
+  PageLinkGroup,
+  Paginator,
+  ParagraphPlaceholder,
+  PreviousNextSection,
+  QuickLinks,
+  ReadMore,
+  ReadMoreSection,
+  ResourceCard,
+  SbicLookup,
+  SearchBar,
+  SectionHeader,
+  SbaModal,
+  SimpleCta,
+  SmallInverseCta,
+  StyleGrayBackground,
+  SubMenu,
+  SubsectionHeader,
+  SuretyLookup,
+  TenStepsNav,
+  TenStepsSection,
+  TextReadMoreSection,
+  TitleBox,
+  TitleSection,
+  TextSection,
+  PagingLookup
+};

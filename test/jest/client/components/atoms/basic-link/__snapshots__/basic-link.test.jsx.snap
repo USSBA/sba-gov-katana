@@ -2,6 +2,7 @@
 
 exports[`BasicLink button link Renders as expected 1`] = `
 <button
+  autoFocus={false}
   className=""
   onKeyPress={[Function]}
   onTouchTap={[Function]}
@@ -13,6 +14,7 @@ exports[`BasicLink button link Renders as expected 1`] = `
 
 exports[`BasicLink normal link Renders as expected 1`] = `
 <a
+  autoFocus={false}
   className=""
   onKeyPress={[Function]}
   onTouchTap={[Function]}
