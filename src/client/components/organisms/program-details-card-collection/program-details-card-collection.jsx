@@ -66,7 +66,8 @@ const defaultCardsData = [
 ];
 
 ProgramDetailsCardCollection.defaultProps = {
-  "cards": defaultCardsData
+  "cards": defaultCardsData,
+  "leftAligned": true
 };
 
 export default ProgramDetailsCardCollection;
