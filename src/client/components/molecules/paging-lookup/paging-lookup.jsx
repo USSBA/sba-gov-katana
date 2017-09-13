@@ -173,7 +173,8 @@ PagingLookup.propTypes = {
   title: React.PropTypes.string,
   type: React.PropTypes.string,
   taxonomyFilters: React.PropTypes.array,
-  fieldsToShowInDetails: React.PropTypes.array
+  fieldsToShowInDetails: React.PropTypes.array,
+  sortByOptions: React.PropTypes.array
 }
 
 PagingLookup.defaultProps = {
@@ -181,6 +182,7 @@ PagingLookup.defaultProps = {
   type: "",
   taxonomyFilters: [],
   fieldsToShowInDetails: [],
+  sortByOptions: [],
   itemReponse: {
     items: undefined,
     count: 0
