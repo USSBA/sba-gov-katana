@@ -13,6 +13,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     }
   />
   <a
+    autoFocus={false}
     className="backLink"
     id="article-navigation-back-button-desktop"
     onKeyPress={[Function]}
@@ -34,6 +35,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
   <ul>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-0"
         onKeyPress={[Function]}
@@ -45,6 +47,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop currentNavLink"
         id="desktop-article-link-1"
         onKeyPress={[Function]}
@@ -56,6 +59,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-2"
         onKeyPress={[Function]}
@@ -67,6 +71,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-3"
         onKeyPress={[Function]}
@@ -78,6 +83,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-4"
         onKeyPress={[Function]}
@@ -89,6 +95,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-5"
         onKeyPress={[Function]}
@@ -100,6 +107,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-6"
         onKeyPress={[Function]}
@@ -111,6 +119,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-7"
         onKeyPress={[Function]}
@@ -137,6 +146,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     }
   />
   <a
+    autoFocus={false}
     className="backLink"
     id="article-navigation-back-button-desktop"
     onKeyPress={[Function]}
@@ -155,6 +165,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
   <ul>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-0"
         onKeyPress={[Function]}
@@ -166,6 +177,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-1"
         onKeyPress={[Function]}
@@ -177,6 +189,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop currentNavLink"
         id="desktop-article-link-2"
         onKeyPress={[Function]}
@@ -188,6 +201,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-3"
         onKeyPress={[Function]}
@@ -199,6 +213,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     </li>
     <li>
       <a
+        autoFocus={false}
         className="article-navigation-article-link-desktop "
         id="desktop-article-link-4"
         onKeyPress={[Function]}

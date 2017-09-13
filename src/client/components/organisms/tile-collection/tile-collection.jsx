@@ -23,6 +23,8 @@ class TileCollection extends React.Component {
   }
 
   onTabBackwards(index, recentlyEnteringInReverse) {
+      console.log("index", index);
+      console.log("recentlyEnteringInReverse", recentlyEnteringInReverse);
     this.setState({panelShowingHoverState: index, markAsEnteringInReverse: true});
   }
 
@@ -35,11 +37,9 @@ class TileCollection extends React.Component {
       icon: iconElement.icon,
       backgroundLines: iconElement.background,
       iconWhite: iconElement.iconWhite,
-      hoverShowsInverseOnly: this.props.hoverShowsInverseOnly,
       size: this.props.icons.length,
       uppercaseFirstWord: this.props.uppercaseFirstWord,
       splitTitle: this.props.splitTitle,
-      topLevelLinks: this.props.topLevelLinks,
       onFocus: () => {
         this.onFocus(index)
       },
@@ -53,7 +53,8 @@ class TileCollection extends React.Component {
         this.onTabBackwards(index)
       },
       enteringInReverse: this.state.enteringInReverse,
-      showHover: index === this.state.panelShowingHoverState
+      showHover: index === this.state.panelShowingHoverState,
+      neverDisplayChildrenOnHoverOverride: this.props.neverDisplayChildrenOnHoverOverride
     };
     return (<Tile {...tileProps}/>);
   }
@@ -78,7 +79,7 @@ class TileCollection extends React.Component {
 TileCollection.defaultProps = {
   data: [],
   icons: {},
-  hoverShowsInverseOnly: false,
+  neverDisplayChildrenOnHoverOverride: false,
   uppercaseFirstWord: false,
   splitTitle: false
 }

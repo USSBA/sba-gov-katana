@@ -4,6 +4,12 @@ import _ from "lodash";
 
 class BasicLink extends React.Component {
 
+  componentDidMount() {
+    if (this.props.autoFocus && this.me.focus) {
+      this.me.focus();
+    }
+  }
+
   createKeypressHandler(onClick){
     return (event) => {
       if (event.key === "Enter") {
@@ -27,12 +33,16 @@ class BasicLink extends React.Component {
     }
     _.merge(linkProps, {className: this.props.myClassName});
     if(this.props.htmlElement === "button"){
-      return (<button {...linkProps}>{this.props.text}</button>);
+      return (<button {...linkProps} ref={(me) => {
+        this.me = me;
+      }}>{this.props.text}</button>);
     } else {
       if(this.props.htmlElement !== "a"){
         console.log("WARNING: BasicLink told to render an unexpected element with htmlElement prop. Rendering <a instead");
       }
-      return (<a {...linkProps}>{this.props.text || this.props.children}</a>);
+      return (<a {...linkProps} ref={(me) => {
+        this.me = me;
+      }}>{this.props.text || this.props.children}</a>);
     }
   }
 }
@@ -43,14 +53,16 @@ BasicLink.propTypes = {
   tabIndex: React.PropTypes.string,
   text: React.PropTypes.string,
   myClassName: React.PropTypes.string,
-  htmlElement: React.PropTypes.string
+  htmlElement: React.PropTypes.string,
+  autoFocus: React.PropTypes.bool
 };
 
 BasicLink.defaultProps = {
   tabIndex: "0",
   text: "",
   htmlElement: "a",
-  myClassName: ""
+  myClassName: "",
+  autoFocus: false
 };
 
 export default BasicLink;

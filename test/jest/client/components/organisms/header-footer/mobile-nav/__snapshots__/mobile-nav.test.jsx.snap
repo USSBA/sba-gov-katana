@@ -9,6 +9,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       className="logoNew"
     >
       <a
+        autoFocus={false}
         className=""
         onKeyPress={[Function]}
         onTouchTap={[Function]}
