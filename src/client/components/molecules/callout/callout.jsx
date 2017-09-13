@@ -27,12 +27,12 @@ class Callout extends React.Component {
               {
                 this.props.buttons.map((item, index) => {
                   if (item.btnType === "LargePrimaryButton") {
-                    return (<LargePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/>);
+                    return (<LargePrimaryButton text={item.btnText} key={index} url={item.url}/>);
                   } else if (item.btnType === "LargeInversePrimaryButton") {
-                    return (<LargeInversePrimaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/>);
+                    return (<LargeInversePrimaryButton text={item.btnText} key={index} url={item.url}/>);
                   } else if (item.btnType === "LargeInverseSecondaryButton") {
                     return (
-                      <LargeInverseSecondaryButton text={item.btnText} key={index} onClick={item.onClickHandler}/>);
+                      <LargeInverseSecondaryButton text={item.btnText} key={index} url={item.url}/>);
                   }
                 })
               }
