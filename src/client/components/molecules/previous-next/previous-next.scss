@@ -105,6 +105,17 @@
   transform: translateY(-50%);
 }
 
+.previousContainer,
+.nextContainer {
+
+  &:hover {
+    i {
+      color: #ffffff;
+    }
+  }
+
+}
+
 .mobile{
   @include grid-media($sba-grid-large){
      display: none;
