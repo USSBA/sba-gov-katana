@@ -164,7 +164,9 @@ export class DocumentArticleLookup extends React.PureComponent {
           {this.props.taxonomies.length > 0 && <div>
             {this.renderSearchInput()}
             {this.renderMultiSelects()}
-            <ApplyButton submit={this.props.onSubmit}/>
+            <div className={styles.applyButton}>
+              <ApplyButton submit={this.props.onSubmit} />
+            </div>
           </div>}
         </div>
         <div>
