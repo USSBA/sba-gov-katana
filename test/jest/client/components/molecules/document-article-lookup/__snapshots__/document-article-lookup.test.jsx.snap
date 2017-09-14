@@ -1,0 +1,530 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentArticleLookup should render with all the information 1`] = `
+<div>
+  <div
+    className="banner"
+  >
+    <h2
+      className="header"
+    >
+      This is a title
+    </h2>
+    <div>
+      <div
+        className="searchBox"
+      >
+        <div
+          className="inputContainer"
+          hidden={undefined}
+          id="document-lookup-text-input-container"
+        >
+          <label
+            className="controlLabel"
+            htmlFor="document-lookup-text-input"
+          >
+            Search
+          </label>
+          <div
+            className="textInputContainer"
+          >
+            <input
+              className="textInput"
+              id="document-lookup-text-input"
+              onChange={[Function]}
+              onKeyUp={[Function]}
+              placeholder="Search by title or number"
+              value={undefined}
+            />
+          </div>
+        </div>
+        <div
+          className="searchIcon"
+        >
+          <i
+            className="search fa fa-search"
+          />
+        </div>
+      </div>
+      <div
+        className="multiSelect"
+      >
+        <div
+          id="title-select-container"
+        >
+          <label>
+            Title
+          </label>
+          <div
+            className="errorClass"
+            id="title-select"
+          >
+            <div
+              className="Select  myselect Select--single"
+              style={undefined}
+            >
+              <div
+                className="Select-control"
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                style={undefined}
+              >
+                <span
+                  className="Select-multi-value-wrapper"
+                  id="react-select-2--value"
+                >
+                  <div
+                    className="Select-placeholder"
+                  >
+                    Select...
+                  </div>
+                  <div
+                    aria-activedescendant="react-select-2--value"
+                    aria-expanded={false}
+                    aria-owns="react-select-2--value"
+                    aria-readonly="false"
+                    className="Select-input"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    role="combobox"
+                    style={
+                      Object {
+                        "border": 0,
+                        "display": "inline-block",
+                        "width": 1,
+                      }
+                    }
+                    tabIndex={0}
+                  />
+                </span>
+                <span
+                  className="Select-arrow-zone"
+                  onMouseDown={[Function]}
+                >
+                  <img
+                    alt="dropdown arrow"
+                    className="chevronIcon"
+                    src="test-file-stub"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="multiSelect"
+      >
+        <div
+          id="lightsabercolor-select-container"
+        >
+          <label>
+            Lightsaber Color
+          </label>
+          <div
+            className="errorClass"
+            id="lightsabercolor-select"
+          >
+            <div
+              className="Select  myselect Select--single"
+              style={undefined}
+            >
+              <div
+                className="Select-control"
+                onKeyDown={[Function]}
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                style={undefined}
+              >
+                <span
+                  className="Select-multi-value-wrapper"
+                  id="react-select-3--value"
+                >
+                  <div
+                    className="Select-placeholder"
+                  >
+                    Select...
+                  </div>
+                  <div
+                    aria-activedescendant="react-select-3--value"
+                    aria-expanded={false}
+                    aria-owns="react-select-3--value"
+                    aria-readonly="false"
+                    className="Select-input"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    role="combobox"
+                    style={
+                      Object {
+                        "border": 0,
+                        "display": "inline-block",
+                        "width": 1,
+                      }
+                    }
+                    tabIndex={0}
+                  />
+                </span>
+                <span
+                  className="Select-arrow-zone"
+                  onMouseDown={[Function]}
+                >
+                  <img
+                    alt="dropdown arrow"
+                    className="chevronIcon"
+                    src="test-file-stub"
+                  />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          autoFocus={false}
+          className="SmallInverseSecondaryButton applyFiltersBtn "
+          disabled={undefined}
+          formTarget="_self"
+          id={undefined}
+          onKeyPress={[Function]}
+          onTouchTap={[Function]}
+          tabIndex="0"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="paginator"
+    >
+      <div
+        className="container"
+        id={undefined}
+      >
+        <p>
+          <span>
+            Showing  
+          </span>
+          <span
+            className="bold"
+          >
+            5
+              - 
+            8
+              
+          </span>
+          <span>
+            of  
+          </span>
+          <span
+            className="bold"
+          >
+            42
+          </span>
+        </p>
+        <a
+          className="ArrowButton "
+          id={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex="0"
+        >
+          <i
+            alt="previous page"
+            aria-hidden="true"
+            className=" fa fa-chevron-left"
+          />
+        </a>
+        <a
+          className="ArrowButton noLeftBorder"
+          id={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex="0"
+        >
+          <i
+            alt="next page"
+            aria-hidden="true"
+            className=" fa fa-chevron-right"
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      className="documentCardCollection"
+    >
+      <div
+        className="document-card-collection cardCollection"
+      >
+        <div
+          className="cardRow"
+        >
+          <div
+            className="card-container card"
+          >
+            <div
+              className="document-card-container "
+            >
+              <div>
+                <div
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      MEMO
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  autoFocus={false}
+                  className=""
+                  onKeyPress={[Function]}
+                  onTouchTap={[Function]}
+                  tabIndex="0"
+                >
+                  <h6
+                    className="document-card-title title"
+                  >
+                    Master
+                  </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="decorativeDash"
+                    />
+                  </div>
+                  <table>
+                    <tbody />
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="card-container card"
+          >
+            <div
+              className="document-card-container "
+            >
+              <div>
+                <div
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      MEMO
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  autoFocus={false}
+                  className=""
+                  onKeyPress={[Function]}
+                  onTouchTap={[Function]}
+                  tabIndex="0"
+                >
+                  <h6
+                    className="document-card-title title"
+                  >
+                    Knight
+                  </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="decorativeDash"
+                    />
+                  </div>
+                  <table>
+                    <tbody />
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="card-container card"
+          >
+            <div
+              className="document-card-container "
+            >
+              <div>
+                <div
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      MEMO
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  autoFocus={false}
+                  className=""
+                  onKeyPress={[Function]}
+                  onTouchTap={[Function]}
+                  tabIndex="0"
+                >
+                  <h6
+                    className="document-card-title title"
+                  >
+                    Master
+                  </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="decorativeDash"
+                    />
+                  </div>
+                  <table>
+                    <tbody />
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="cardRow"
+        >
+          <div
+            className="card-container card"
+          >
+            <div
+              className="document-card-container "
+            >
+              <div>
+                <div
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      MEMO
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  autoFocus={false}
+                  className=""
+                  onKeyPress={[Function]}
+                  onTouchTap={[Function]}
+                  tabIndex="0"
+                >
+                  <h6
+                    className="document-card-title title"
+                  >
+                    Knight
+                  </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="decorativeDash"
+                    />
+                  </div>
+                  <table>
+                    <tbody />
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="paginator"
+    >
+      <div
+        className="container"
+        id={undefined}
+      >
+        <p>
+          <span>
+            Showing  
+          </span>
+          <span
+            className="bold"
+          >
+            5
+              - 
+            8
+              
+          </span>
+          <span>
+            of  
+          </span>
+          <span
+            className="bold"
+          >
+            42
+          </span>
+        </p>
+        <a
+          className="ArrowButton "
+          id={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex="0"
+        >
+          <i
+            alt="previous page"
+            aria-hidden="true"
+            className=" fa fa-chevron-left"
+          />
+        </a>
+        <a
+          className="ArrowButton noLeftBorder"
+          id={undefined}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex="0"
+        >
+          <i
+            alt="next page"
+            aria-hidden="true"
+            className=" fa fa-chevron-right"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
