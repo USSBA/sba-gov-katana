@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import styles from "./card.scss";
 import {BasicLink} from "atoms";
 
@@ -55,7 +56,7 @@ class Card extends React.Component {
                 {this.props.item.subtitleText
                     ? <p id={"subtitle-text-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
                     : null}
-                {this.props.item.link ? <p><BasicLink text="Learn More" url={this.props.item.link} /></p> : null}
+                {!_.isEmpty(this.props.item.link) && <p><BasicLink text="Learn More" url={this.props.item.link} /></p>}
             </div>
         );
     }
