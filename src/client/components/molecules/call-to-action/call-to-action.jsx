@@ -42,9 +42,7 @@ export class CallToAction extends React.Component {
     const secondaryButtonProps = {
       className: styles.btnSecondary,
       text: this.props.btnTitle,
-      onClick: () => {
-        this.handleClick();
-      }
+      url: this.props.btnUrl
     };
     const secondaryButton = this.props.size === "Button only"
       ? <LargePrimaryButton {...secondaryButtonProps}/>
