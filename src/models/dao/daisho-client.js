@@ -6,19 +6,21 @@ import _ from "lodash";
 import winston from "winston";
 
 
-function get(resource, query) {
-  const options = {
+function get(resource, options) {
+  const formattedOptions = {
     url: "/api/content/" + resource + ".json",
-    params: query,
+    params: options && options.query,
     baseURL: config.get("daisho.hostname") + (config.has("daisho.port") ? ":" + config.get("daisho.port") : ""),
     headers: {
-      "Accepts": "application/json"
+      "Accepts": "application/json",
+      ...(options && options.headers)
     }
   };
-  winston.info("Submitting request to ", options);
+  console.log("OPTIONS", formattedOptions);
+  winston.info("Submitting request to ", formattedOptions);
 
   return Promise.resolve().then(() => {
-    return axios.request(options)
+    return axios.request(formattedOptions)
       .then(function(response) {
         if (response && response.data) {
           //   winston.info("Response from Daisho ", response.data);
