@@ -1,0 +1,72 @@
+.tile {
+	position: relative;
+	overflow: hidden;
+	@include grid-media($sba-grid-small) {
+		 @include grid-column(6, $sba-grid-small) margin-top: 20px;
+	}
+	@include grid-media($sba-grid-medium) {
+		 @include grid-column(6, $sba-grid-medium);
+		height: 450px;
+		margin-top: 20px;
+	}
+	@include grid-media($sba-grid-large) {
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+}
+
+.tile:last-of-type {
+	margin-bottom: 20px;
+}
+
+.tileThree {
+	@include grid-media($sba-grid-large) {
+		 @include grid-column(4, $sba-grid-large);
+		height: 677px;
+	}
+}
+
+.tileFour {
+	@include grid-media($sba-grid-large) {
+		 @include grid-column(3, $sba-grid-large);
+		height: 677px;
+	}
+}
+
+.tileFive {
+	@include grid-media($sba-grid-large) {
+		 @include grid-column(2.4, $sba-grid-large);
+		height: 677px;
+	}
+}
+
+.backgroundLines {
+	display: none;
+	@include grid-media($sba-grid-large) {
+		display: block;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+	}
+}
+
+.tabDisplayMenu {
+	display: none;
+	@include grid-media($sba-grid-large) {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+		cursor: default;
+		opacity: 0;
+	}
+}
+
+.tileFive .largeTitle {
+	@include grid-media($sba-grid-large) {
+		font-size: 2.0em;
+	}
+}

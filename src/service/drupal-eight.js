@@ -102,17 +102,26 @@ function filterAndSortDocuments(params, docs) {
 function filterDocuments(params, docs) {
   return docs.filter((doc, index) => {
     const matchesUrl = params.url === "all" || doc.url === params.url;
-    const matchesActivity = params.activity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
-    const matchesProgram = params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
+    const matchesActivity = !params.documentActivity || params.documentActivity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity));
+    const matchesProgram = !params.program || params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
     return (
-      (params.type === "all" || doc.documentIdType === params.type) &&
+      (!params.documentType || params.documentType === "all" || doc.documentIdType === params.documentType) &&
       (matchesProgram) &&
       (matchesActivity) &&
       (matchesUrl) &&
-      (params.search === "all" ||
-      doc.title.toLowerCase().includes(params.search.toLowerCase()) ||
-      (!_.isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.search)))
+      (!params.searchTerm || params.searchTerm === "all" ||
+      doc.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
+      (!_.isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.searchTerm)))
     );
+  });
+}
+function filterArticles(params, allArticles) {
+  return allArticles.filter((article, index) => {
+    const matchesUrl = !params.url || params.url === "all" || article.url === params.url;
+    const matchesProgram = !params.program || params.program === "all" || (!_.isEmpty(article.programs) && article.programs.includes(params.program));
+    const matchesTitle = !params.searchTerm || params.searchTerm === "all" || article.title.toLowerCase().includes(params.searchTerm.toLowerCase());
+    const matchesType = !params.articleType || params.articleType === "all" || article.type === params.articleType;
+    return matchesUrl && matchesProgram && matchesTitle && matchesType;
   });
 }
 /* eslint-enable complexity */
@@ -155,8 +164,26 @@ function fetchTaxonomyVocabulary(queryParams) {
 
 }
 
+
 function fetchArticles(queryParams) {
-  return get("collection/articles", queryParams);
+  let sortOrder = "";
+  let sortField;
+  if (queryParams.sortBy === "Title") {
+    sortField = "title";
+  } else if (queryParams.sortBy === "Last Updated") {
+    sortField = "updated";
+    sortOrder = "-";
+  }
+
+  return get("collection/articles", {
+    sortBy: sortOrder + sortField
+  }).then((results) => {
+    const filteredArticles = filterArticles(queryParams, results);
+    return {
+      items: (queryParams.start === "all" || queryParams.end === "all") ? filteredArticles : filteredArticles.slice(queryParams.start, queryParams.end),
+      count: filteredArticles.length
+    };
+  });
 }
 
 function fetchAnnouncements() {

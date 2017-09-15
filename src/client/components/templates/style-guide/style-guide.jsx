@@ -66,7 +66,8 @@ import {
 // organisms
 import {
   Hero,
-  CardCollection
+  CardCollection,
+  ProgramDetailsCardCollection
 } from "organisms";
 
 import styles from "./style-guide.scss";
@@ -161,6 +162,32 @@ class StyleGuide extends React.Component {
            "titleText":"Lean startup plan"
         }
       ];
+
+    const programDetailsCardCollectionMockData = [{
+        "title": "Title A1",
+        "fullUrl": "/my-path/my-page",
+        "description": "Integer commodo velit ut dui pellentesque sagittis"
+    },{
+        "title": "Title B1",
+        "fullUrl": "/my-path/my-page",
+        "description": "Lorem ipsum dolor sit amet."
+    },{
+        "title": "Title C1",
+        "fullUrl": "/my-path/my-page",
+        "description": "Neque porro quisquam est qui dolorem ipsum quia."
+    },{
+        "title": "Title D1",
+        "fullUrl": "/my-path/my-page",
+        "description": "Suspendisse rutrum viverra nibh, non interdum felis"
+    },{
+        "title": "Title E1",
+        "fullUrl": "/my-path/my-page",
+        "description": "Uia dolor sit amet, consectetur, adipisci velit."
+    },{
+        "title": "Title F1",
+        "fullUrl": "/my-path/my-page",
+        "description": "Cras eget lorem auctor ex commodo."
+    }];
 
     const tableMockData = "<table>"
       + "<thead>"
@@ -294,6 +321,9 @@ class StyleGuide extends React.Component {
         <CardCollection parentIndex={0} cards={cardCollectionMockData}/>
 
         <div className={styles.clear} />
+
+        <h1>Program Details Card Collection</h1>
+        <ProgramDetailsCardCollection cards={programDetailsCardCollectionMockData} />;
 
         <h1>Table</h1>
         <TextSection text={tableMockData} />

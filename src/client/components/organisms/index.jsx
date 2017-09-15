@@ -6,6 +6,7 @@ import CardCollection from "./card-collection/card-collection.jsx";
 import DeveloperTester from "./developer-tester/developer-tester.jsx";
 import DocumentCardCollection from "./document-card-collection/document-card-collection.jsx";
 import FrontPageHero from "./front-page-hero/front-page-hero.jsx";
+import ForPartnersTileCollection from "./for-partners-tile-collection/for-partners-tile-collection.jsx"
 import FundingProgramsTileCollection from "./funding-programs-tile-collection/funding-programs-tile-collection.jsx";
 import DisasterAlert from "./header-footer/disaster-alert/disaster-alert.jsx";
 import NotificationBar from "./header-footer/notification-bar.jsx";
@@ -13,6 +14,8 @@ import Hero from "./hero/hero.jsx";
 import RelatedDocumentCards from "./related-document-cards/related-document-cards.jsx";
 import SearchBox from "./search-box/search-box.jsx";
 import SectionNav from "./section-nav/section-nav.jsx";
+import ProgramDetailsCardCollection from "./program-details-card-collection/program-details-card-collection.jsx";
+import TileCollection from "./tile-collection/tile-collection.jsx";
 
 // header-footer organisms
 import Footer from "./header-footer/footer/footer.jsx";
@@ -58,12 +61,15 @@ export {
 	DocumentCardCollection,
 	FrontPageHero,
 	FundingProgramsTileCollection,
+	ForPartnersTileCollection,
 	DisasterAlert,
 	NotificationBar,
 	Hero,
 	RelatedDocumentCards,
 	SearchBox,
-	SectionNav
+	SectionNav,
+	TileCollection,
+	ProgramDetailsCardCollection
 };
 
 // header-footer organisms

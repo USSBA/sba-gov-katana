@@ -400,6 +400,18 @@ $darkest-color-map:(
   }
 }
 
+@mixin background-color-theme-hover($component, $color-map : $primary-color-map) {
+  @each $name, $value in $color-map {
+     :global(.#{$name}) {
+      #{$component} {
+          &:hover {
+              background-color: $value;
+          }
+      }
+    }
+  }
+}
+
 @mixin color-theme($component, $color-map : $primary-color-map) {
   @each $name, $value in $color-map {
      :global(.#{$name}) {

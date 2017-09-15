@@ -63,8 +63,9 @@ class MobileNav extends React.Component {
       return s.navMenuClose
     }
   }
-  
+
   render() {
+    let children = this.props.menuData.children || [];
     return(
       <div className={this._navMenuClassname()}>
         <div className={s.navHeader} onClick={() => {this._handleBackBtn()}}>
@@ -72,12 +73,12 @@ class MobileNav extends React.Component {
           <img className={s.navIcon} src={this.props.icon} alt=""/>
           <div className={s.navTitleContainer}>
             <h2 className={s.navLargeTitle}>{this._formatLargeTitle()}</h2>
-            <h4 className={s.navSmallTitle}>{this._formatSmallTitle()}</h4> 
+            <h4 className={s.navSmallTitle}>{this._formatSmallTitle()}</h4>
           </div>
         </div>
         <div className={s.navTopLine}></div>
         {
-          this.props.menuData.children.map((linkObject, index) => {
+          children.map((linkObject, index) => {
             return <NavLink key={index} link={linkObject} handleClick={this._handleClick}/>
           })
         }

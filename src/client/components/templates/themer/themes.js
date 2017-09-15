@@ -7,7 +7,12 @@ const themes = {
   "cobalt-blue": []
 };
 
-
+function getPaths() {
+  return _.chain(themes)
+    .values()
+    .flatten()
+    .value();
+}
 
 function getTheme() {
   const theme = "sba-blue";
@@ -17,5 +22,5 @@ function getTheme() {
   });
 }
 
-export { getTheme };
+export { getTheme, getPaths };
 export default themes;

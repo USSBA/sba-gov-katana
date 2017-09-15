@@ -25,11 +25,12 @@ class CardCollection extends React.Component {
         }
     }
     render() {
+        let leftAligned = this.props.leftAligned;
         let numCards = _.size(this.props.cards);
         let parentIndex = this.props.parentIndex;
         let cards = this.props.cards.map(function(item, index) {
             return (
-                <Card parentIndex={parentIndex} key={index} item={item} index={index} numCards={numCards} />
+                <Card parentIndex={parentIndex} key={index} item={item} index={index} numCards={numCards} leftAligned={leftAligned} />
             );
         });
         let cardsPerRow = cardsPerRowMap[cards.length];

@@ -9,6 +9,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       className="logoNew"
     >
       <a
+        autoFocus={false}
         className=""
         onKeyPress={[Function]}
         onTouchTap={[Function]}
@@ -99,6 +100,17 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       />
     </form>
     <div />
+    <div
+      className="menuLinkSection"
+    >
+      <a
+        className="navLinkSpecialNew"
+        href="/partners"
+        id="mobile-nav-near-you"
+      >
+        For Partners
+      </a>
+    </div>
     <div
       className="menuLinkSection"
     >

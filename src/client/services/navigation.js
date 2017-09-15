@@ -1,5 +1,7 @@
 import { browserHistory } from "react-router";
 import { logEvent } from "../services/analytics.js";
+import { getPaths } from "../components/templates/themer/themes.js";
+import _ from "lodash";
 
 function createCtaNavigation(targetLocation, category, action, value) {
   return createNavigation(targetLocation, {
@@ -11,10 +13,16 @@ function createCtaNavigation(targetLocation, category, action, value) {
 }
 
 
+const matchingLocations = [];
+
 // eslint-disable-next-line complexity
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
-    if (targetLocation === "/" || targetLocation.match(/\/business-guide/) || targetLocation.match(/\/funding-programs/) || targetLocation.match(/\/for-partners/)) {
+    const mapped = _.map(getPaths(), (path) => {
+      return targetLocation.indexOf(path) !== -1; //eslint-disable-line no-magic-numbers
+    });
+    const isHandledRoute = _.compact(mapped).length > 0;
+    if (targetLocation === "/" || isHandledRoute) {
       browserHistory.push(targetLocation);
       if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);

@@ -1,5 +1,5 @@
 import React from "react";
-import {TileCollection} from "molecules";
+import {TileCollection} from "organisms";
 import BusinessGuideIcons from "./icons.jsx";
 
 class BusinessGuideTileCollection extends React.Component {

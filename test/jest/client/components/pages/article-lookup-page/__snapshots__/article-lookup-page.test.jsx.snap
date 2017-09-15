@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleLookupPage renders a page lookup with the correct attributes 1`] = `
+<Connect(PagingLookup)
+  fieldsToShowInDetails={
+    Array [
+      "Program",
+      "Published",
+      "Summary",
+    ]
+  }
+  sortByOptions={
+    Array [
+      "Last Updated",
+      "Title",
+    ]
+  }
+  taxonomyFilters={
+    Array [
+      "articleType",
+      "program",
+    ]
+  }
+  title="Article Lookup"
+  type="articles"
+/>
+`;

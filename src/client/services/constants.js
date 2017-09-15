@@ -4,6 +4,7 @@ const constants = {
   sections: {
     businessGuide: "Business Guide",
     fundingPrograms: "Funding Programs",
+    forPartners: "For partners",
     disaster: "Disaster Assistance"
   },
   routes: {

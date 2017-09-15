@@ -10,8 +10,8 @@ import s from "./document-card.scss";
 
 class DocumentCard extends React.Component {
   getLatestFile() {
-    if (this.props.doc && this.props.doc.files) {
-      return _.chain(this.props.doc.files).sortBy(['version']).head().value();
+    if (this.props.data && this.props.data.files) {
+      return _.chain(this.props.data.files).sortBy(['version']).head().value();
     } else {
       return null;
     }
@@ -35,13 +35,19 @@ class DocumentCard extends React.Component {
 
   makeTable(doc) {
     let rows = [];
-    if (doc.activities && doc.activities.length > 0) {
+    if (doc.activities && doc.activities.length > 0 && _.includes(this.props.fieldsToShowInDetails, "Activity")) {
       rows.push({name: "Activity:", value: doc.activities.join(", ")});
     }
-    if (doc.programs) {
+    if (doc.programs && _.includes(this.props.fieldsToShowInDetails, "Program")) {
       rows.push({name: "Program:", value: doc.programs.join(", ")});
     }
-    if (doc.summary) {
+
+    if (doc.published && _.includes(this.props.fieldsToShowInDetails, "Published")) {
+        let publishedDate = new Date(doc.updated);
+        let publisheDateString = publishedDate.getMonth() + "/" + publishedDate.getDate() + "/" + publishedDate.getYear();
+        rows.push({name: "Published:", value: publisheDateString});
+    }
+    if (doc.summary && _.includes(this.props.fieldsToShowInDetails, "Summary")) {
       rows.push({name: "Summary:", value: doc.summary});
     }
 
@@ -67,7 +73,7 @@ class DocumentCard extends React.Component {
   }
 
   render() {
-    const doc = this.props.doc;
+    const doc = this.props.data;
     if (doc) {
       const idData = doc.documents && doc.documents.length > 0
         ? doc.documents[0]
@@ -84,13 +90,13 @@ class DocumentCard extends React.Component {
             </div>
             <div>
             </div>
-            <BasicLink url={"/document/"+doc.url}>
+            <BasicLink url={"/"+this.props.type.substring(0,this.props.type.length-1)+"/"+doc.url}>
                 <h6 className={"document-card-title " + s.title}>
                     {doc.title}
                 </h6>
             </BasicLink>
             {this.props.showDetails
-              ? this.makeTable(this.props.doc)
+              ? this.makeTable(this.props.data)
               : null}
             {this.makeDownloadLink()}
           </div>
