@@ -7,7 +7,8 @@ import {
   whiteIconLaunch,
   whiteIconPlan,
   whiteIconManage,
-  whiteIconGrow
+  whiteIconGrow,
+  hurricaneIcon
 } from "atoms";
 import * as ModalActions from "../../../actions/show-modal.js";
 import styles from "./section-nav.scss";
@@ -31,8 +32,10 @@ class SectionNav extends React.Component {
         sectionNavIcon = whiteIconManage;
       } else if (sectionTitle === 'Grow your business') {
         sectionNavIcon = whiteIconGrow;
+      } else if (sectionTitle === 'Disaster assistance') {
+	 sectionNavIcon = hurricaneIcon;
       } else {
-        sectionNavIcon = whiteIconGrow;
+         sectionNavIcon = whiteIconGrow;
       }
       this.props.actions.showMobileSectionNav(
         this.getNthLineage(1),
