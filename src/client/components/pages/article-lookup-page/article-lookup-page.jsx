@@ -6,7 +6,7 @@ class ArticleLookupPage extends React.Component {
 
   render() {
     let articleProps = {
-      title: "Article Lookup",
+      title: "Article lookup",
       type: "articles",
       taxonomyFilters: [
         "articleType", "program"

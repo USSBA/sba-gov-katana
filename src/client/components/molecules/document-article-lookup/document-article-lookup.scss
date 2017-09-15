@@ -95,22 +95,13 @@
 
 }
 
-.applyFiltersBtn {
-    font-size: 19px;
+.applyButton {
+    
+    display: inline-block;
+    margin-top: 33px;
+    vertical-align: top;
 
-    position: absolute;
-    right: 28px;
-    bottom: 20px;
-
-    max-width: 200px;
-    height: 48px;
-    margin: inherit;
-
-    @include grid-media($sba-grid-medium-and-small) {
-        display: none;
-    }
 }
-
 
 .table {
     border-bottom: 1px solid #dadada;

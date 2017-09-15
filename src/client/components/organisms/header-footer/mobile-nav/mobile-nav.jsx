@@ -58,7 +58,7 @@ class MobileNav extends React.Component {
           </form>
             {menuItems}
           <div className={styles.menuLinkSection}>
-            <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/partners">
+            <a className={styles.navLinkSpecialNew} href="/partners">
               For Partners
             </a>
           </div>
