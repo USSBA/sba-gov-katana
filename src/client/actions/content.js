@@ -34,6 +34,7 @@ function shouldFetchContent(state, prop, type, query) {
 }
 export function fetchContentIfNeeded(prop, type, query) {
   return (dispatch, getState) => {
+    // 
     if (prop && type && shouldFetchContent(getState(), prop, type, query)) {
       return dispatch(fetchContent(prop, type, query));
     }

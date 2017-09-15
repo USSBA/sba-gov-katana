@@ -16,8 +16,8 @@ const localDataMap = {
 
 
 
-function fetchFormattedNode(nodeId) {
-  return get("node/" + nodeId);
+function fetchFormattedNode(nodeId, options) {
+  return get("node/" + nodeId, options);
 }
 
 function fetchContacts(queryParams) {
@@ -27,7 +27,9 @@ function fetchContacts(queryParams) {
     return Promise.resolve(localDataMap[category] || []);
   }
 
-  return get("collection/contacts", queryParams);
+  return get("collection/contacts", {
+    query: queryParams
+  });
 }
 
 
