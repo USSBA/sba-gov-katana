@@ -16,8 +16,6 @@ function get(resource, options) {
       ...(options && options.headers)
     }
   };
-  console.log("OPTIONS", formattedOptions);
-  winston.info("Submitting request to ", formattedOptions);
 
   return Promise.resolve().then(() => {
     return axios.request(formattedOptions)
