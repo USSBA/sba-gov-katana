@@ -11,7 +11,8 @@ class Page extends React.Component {
   componentWillMount() {
     const id = this.props.nodeId;
     if (id > 0) {
-      this.props.actions.fetchContentIfNeeded("node", id);
+      console.log('doc.ele.lang = ', document.documentElement.lang);
+      this.props.actions.fetchContentIfNeeded('node', id, { lang: "suh" });
     }
   }
 

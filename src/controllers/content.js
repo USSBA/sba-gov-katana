@@ -31,7 +31,9 @@ function fetchContentById(req, res) {
     const type = req.params.type;
     const id = req.params.id;
     const fetchFunction = fetchFunctions[type];
-    fetchFunction(id).then(function(data) {
+    fetchFunction(id, {
+      headers: req.headers
+    }).then(function(data) {
       res.status(HttpStatus.OK).send(data);
     })
       .catch((error) => {
