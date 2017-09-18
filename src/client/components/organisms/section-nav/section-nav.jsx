@@ -2,16 +2,17 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import _ from "lodash";
-import {
-  BasicLink,
-  whiteIconLaunch,
-  whiteIconPlan,
-  whiteIconManage,
-  whiteIconGrow
-} from "atoms";
+import { BasicLink } from "atoms";
 import * as ModalActions from "../../../actions/show-modal.js";
 import styles from "./section-nav.scss";
 var Waypoint = require("react-waypoint");
+
+import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
+import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
+import whiteIconManage from "../../atoms/icons/white-manage.jsx";
+import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
+import hurricaneIcon from "../../../../../public/assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png";
+
 
 
 
@@ -31,11 +32,13 @@ class SectionNav extends React.Component {
         sectionNavIcon = whiteIconManage;
       } else if (sectionTitle === 'Grow your business') {
         sectionNavIcon = whiteIconGrow;
+      } else if (sectionTitle === 'Disaster assistance') {
+        sectionNavIcon = hurricaneIcon;
       } else {
         sectionNavIcon = whiteIconGrow;
       }
       this.props.actions.showMobileSectionNav(
-        this.getNthLineage(1),
+        this.getNthLineage(-2),
         sectionNavIcon,
         this.getBacklinkUrl()
       );
