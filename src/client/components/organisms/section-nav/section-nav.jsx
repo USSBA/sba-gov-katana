@@ -7,12 +7,15 @@ import * as ModalActions from "../../../actions/show-modal.js";
 import styles from "./section-nav.scss";
 var Waypoint = require("react-waypoint");
 
+import constants from "../../../services/constants.js";
+
 import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
 import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
 import whiteIconManage from "../../atoms/icons/white-manage.jsx";
 import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
 import hurricaneIcon from "../../../../../public/assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png";
-
+import whiteIconSuretyProviders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png";    
+import whiteIconLenders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Lenders_white.png";
 
 
 
@@ -24,16 +27,21 @@ class SectionNav extends React.Component {
     if (nextProps.displayMobileNav) {
       let sectionNavIcon;
       const sectionTitle = this.getNthLineage(-2).title;
-      if (sectionTitle === 'Plan your business') {
+      const titleConstants = constants.sectionTitles
+      if (sectionTitle === titleConstants.planYourBusiness) {
         sectionNavIcon = whiteIconPlan;
-      } else if (sectionTitle === 'Launch your business') {
+      } else if (sectionTitle === titleConstants.launchYourBusiness) {
         sectionNavIcon = whiteIconLaunch;
-      } else if (sectionTitle === 'Manage your business') {
+      } else if (sectionTitle === titleConstants.manageYourBusiness) {
         sectionNavIcon = whiteIconManage;
-      } else if (sectionTitle === 'Grow your business') {
+      } else if (sectionTitle === titleConstants.growYourBusiness) {
         sectionNavIcon = whiteIconGrow;
-      } else if (sectionTitle === 'Disaster assistance') {
+      } else if (sectionTitle === titleConstants.disasterAssistance) {
         sectionNavIcon = hurricaneIcon;
+      } else if (sectionTitle === titleConstants.suretyProviders) {
+        sectionNavIcon = whiteIconSuretyProviders
+      } else if (sectionTitle === titleConstants.lenders) {
+        sectionNavIcon = whiteIconLenders
       } else {
         sectionNavIcon = whiteIconGrow;
       }
