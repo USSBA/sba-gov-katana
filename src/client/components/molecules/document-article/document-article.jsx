@@ -6,7 +6,7 @@ import queryString from "querystring";
 import {
   DocumentType,
   DecorativeDash,
-  Button,
+  ButtonBase,
   BasicLink
 } from "atoms";
 import {TextSection} from "molecules";
@@ -73,7 +73,7 @@ export class DocumentArticle extends React.Component {
           }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <Button className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>
+            <ButtonBase className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
