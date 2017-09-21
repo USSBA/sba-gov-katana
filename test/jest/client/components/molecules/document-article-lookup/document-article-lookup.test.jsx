@@ -73,12 +73,12 @@ describe("DocumentArticleLookup", () => {
     component.find("ApplyButton").prop("submit")();
     expect(submit).toBeCalled();
   });
-
-  test('should show important data properly ', () => {
-    let props = _.clone(lookupProps);
-    const component = shallow(<DocumentArticleLookup {...props}/>);
-    expect(component.find("Paginator").prop("pageNumber")).toEqual(props.pageNumber);
-  });
+  //
+  // test('should show important data properly ', () => {
+  //   let props = _.clone(lookupProps);
+  //   const component = shallow(<DocumentArticleLookup {...props}/>);
+  //   expect(component.find("Paginator").prop("pageNumber")).toEqual(props.pageNumber);
+  // });
 
   // test('should render without a zip code ', () => {
   //   let cardData = _.omit(card, "zipCode");
