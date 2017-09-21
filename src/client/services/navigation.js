@@ -22,7 +22,8 @@ function navigateNow(targetLocation, eventConfig) {
       return targetLocation.indexOf(path) !== -1; //eslint-disable-line no-magic-numbers
     });
     const isHandledRoute = _.compact(mapped).length > 0;
-    if (targetLocation === "/" || isHandledRoute) {
+    let startsWithHttps = _.startsWith(targetLocation, "http");
+    if ((targetLocation === "/" || isHandledRoute) && !startsWithHttps) {
       browserHistory.push(targetLocation);
       if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
