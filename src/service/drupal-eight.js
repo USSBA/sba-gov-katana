@@ -17,7 +17,7 @@ const localDataMap = {
 
 
 function fetchFormattedNode(nodeId, options) {
-  return get("node/" + nodeId, options);
+  return get("node/" + nodeId, null, options.headers);
 }
 
 function fetchContacts(queryParams) {

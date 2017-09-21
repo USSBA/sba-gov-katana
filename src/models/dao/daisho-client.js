@@ -6,14 +6,14 @@ import _ from "lodash";
 import winston from "winston";
 
 
-function get(resource, options) {
+function get(resource, query, headers) {
   const formattedOptions = {
     url: "/api/content/" + resource + ".json",
-    params: options && options.query,
+    params: query,
     baseURL: config.get("daisho.hostname") + (config.has("daisho.port") ? ":" + config.get("daisho.port") : ""),
     headers: {
       "Accepts": "application/json",
-      ...(options && options.headers)
+      ...headers
     }
   };
 
