@@ -1,3 +1,7 @@
+@include theme(sba-blue, '.chevronNext, .chevronPrevious', #fff, $sba-blue, null);
+@include theme(byzantine, '.chevronNext, .chevronPrevious', #fff, $byzantine, null);
+@include theme(money-green, '.chevronNext, .chevronPrevious', #fff, $money-green, null);
+@include theme(cobalt-blue, '.chevronNext, .chevronPrevious', #fff, $cobalt-blue, null);
 
 .previousNextContainer{
   @include grid-column(12, $desktop-0gutter);
@@ -91,7 +95,6 @@
 
 .chevronNext{
   position: absolute;
-  color: #AB3EA0;
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
@@ -99,7 +102,6 @@
 
 .chevronPrevious{
   position: absolute;
-  color: #AB3EA0;
   top: 50%;
   left: 15px;
   transform: translateY(-50%);
@@ -108,9 +110,14 @@
 .previousContainer,
 .nextContainer {
 
+  i {
+    pointer-events: none;
+  }
+
   &:hover {
     i {
-      color: #ffffff;
+      color: #fff;
+      background: none;
     }
   }
 
