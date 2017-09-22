@@ -19,30 +19,30 @@ class BasicLink extends React.Component {
   }
 
   render() {
-    const linkProps = _.omit(this.props, ["onClick", "url", "text", "myClassName", "htmlElement", "eventConfig"]);
-    if (this.props.onClick) {
+    const {onClick, url, text, myClassName, htmlElement, eventConfig, children, ...linkProps} = this.props;
+    if (onClick) {
       _.merge(linkProps, {
-        onTouchTap: this.props.onClick,
-        onKeyPress: this.createKeypressHandler(this.props.onClick)
+        onTouchTap: onClick,
+        onKeyPress: this.createKeypressHandler(onClick)
       });
     } else {
       _.merge(linkProps, {
-        onTouchTap: createNavigation(this.props.url, this.props.eventConfig),
-        onKeyPress: this.createKeypressHandler(createNavigation(this.props.url, this.props.eventConfig))
+        onTouchTap: createNavigation(url, eventConfig),
+        onKeyPress: this.createKeypressHandler(createNavigation(url, eventConfig))
       });
     }
-    _.merge(linkProps, {className: this.props.myClassName});
-    if(this.props.htmlElement === "button"){
+    _.merge(linkProps, {className: myClassName});
+    if(htmlElement === "button"){
       return (<button {...linkProps} ref={(me) => {
         this.me = me;
-      }}>{this.props.text}</button>);
+      }}>{text}</button>);
     } else {
-      if(this.props.htmlElement !== "a"){
+      if(htmlElement !== "a"){
         console.log("WARNING: BasicLink told to render an unexpected element with htmlElement prop. Rendering <a instead");
       }
       return (<a {...linkProps} ref={(me) => {
         this.me = me;
-      }}>{this.props.text || this.props.children}</a>);
+      }}>{text || children}</a>);
     }
   }
 }

@@ -24,10 +24,6 @@ function navigateNow(targetLocation, eventConfig) {
     const isHandledRoute = _.compact(mapped).length > 0;
     const startsWithHttp = _.startsWith(targetLocation, "http");
     if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp) {
-      browserHistory.push(targetLocation);
-      if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
-        window.scrollTo(0, 0);
-      }
       if (eventConfig) {
         logEvent({
           category: eventConfig.category || "Navigation",
