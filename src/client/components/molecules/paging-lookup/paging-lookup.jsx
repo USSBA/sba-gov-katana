@@ -109,12 +109,12 @@ class PagingLookup extends React.Component {
   }
 
   handleSubmit() {
+    this.fireDocumentationLookupEvent("Apply: CTA");
     this.setState({
       items: undefined,
       pageNumber: 1
     }, () => {
       this.submit();
-      this.fireDocumentationLookupEvent("Apply: CTA");
     });
   }
 
