@@ -25,7 +25,7 @@ class DocumentCard extends React.Component {
       return (
         <div className={"document-card-download " + s.download}>
           <a onClick={() => {
-            logPageEvent({category: "Document-Download-Module", action: `docname${title}: Download PDF`});
+            logPageEvent({category: "Document-Download-Module", action: `docname - ${title}: Download PDF`});
             window.open(latestFile.fileUrl, "_blank");
           }} className={s.link}>
             Download PDF
@@ -89,7 +89,7 @@ class DocumentCard extends React.Component {
 
       const titleClickEventConfig = {
         category: "Document-Download-Module",
-        action: `docname${doc.title}: Document Landing Page`
+        action: `docname - ${doc.title}: Document Landing Page`
       };
 
       return (
