@@ -98,7 +98,7 @@ class PagingLookup extends React.Component {
   }
 
   handleReset() {
-    this.fireDocumentationLookupEvent("clearFilters", null);
+    this.fireDocumentationLookupEvent("clearFilters");
     this.setState(_.assign(this.createOriginalState(this.props),{taxonomies: this.state.taxonomies}), ()=>{
         this.submit();
     });
@@ -114,6 +114,7 @@ class PagingLookup extends React.Component {
       pageNumber: 1
     }, () => {
       this.submit();
+      this.fireDocumentationLookupEvent("Apply: CTA");
     });
   }
 
@@ -132,9 +133,6 @@ class PagingLookup extends React.Component {
       const queryTerms = _.assign({}, remappedState, {start, end});
 
       this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryTerms);
-
-      this.fireDocumentationLookupEvent("Apply", JSON.stringify(this.state.query));
-
     });
   }
 
@@ -142,12 +140,12 @@ class PagingLookup extends React.Component {
     logEvent({category: category, action: action, label: window.location.pathname, value: value})
   }
 
-  fireDocumentationLookupEvent(action, value){
+  fireDocumentationLookupEvent(action, value = null){
     this.fireEvent("documentation-lookup", action, value);
   }
 
   handleQueryChange(field, value) {
-    this.fireDocumentationLookupEvent(fieldNameMap[field] || field, value);
+    this.fireDocumentationLookupEvent(`${fieldNameMap[field] || field}: ${value}`);
     let newQueryFieldValue = {};
     newQueryFieldValue[field] = value;
     let currentQuery = this.state.query;
