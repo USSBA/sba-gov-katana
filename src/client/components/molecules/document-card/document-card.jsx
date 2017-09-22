@@ -7,6 +7,7 @@ import {
   BasicLink
 } from "atoms";
 import s from "./document-card.scss";
+import {logPageEvent} from "../../../services/analytics.js";
 
 class DocumentCard extends React.Component {
   getLatestFile() {
@@ -18,11 +19,15 @@ class DocumentCard extends React.Component {
   }
 
   makeDownloadLink() {
-    let latestFile = this.getLatestFile();
+    const latestFile = this.getLatestFile();
+    const title = this.props.data.title;
     if (latestFile) {
       return (
         <div className={"document-card-download " + s.download}>
-          <a onClick={() => window.open(latestFile.fileUrl, "_blank")} className={s.link}>
+          <a onClick={() => {
+            logPageEvent({category: "Document-Download-Module", action: `docname${title}: Download PDF`});
+            window.open(latestFile.fileUrl, "_blank");
+          }} className={s.link}>
             Download PDF
           </a>
           <PdfIcon/>
@@ -82,6 +87,11 @@ class DocumentCard extends React.Component {
           number: "UNK"
         };
 
+      const titleClickEventConfig = {
+        category: "Document-Download-Module",
+        action: `docname${doc.title}: Document Landing Page`
+      };
+
       return (
         <div className={"document-card-container " + (this.props.showBorder ? " " + s.container : "")}>
           <div>
@@ -90,7 +100,7 @@ class DocumentCard extends React.Component {
             </div>
             <div>
             </div>
-            <BasicLink url={"/"+this.props.type.substring(0,this.props.type.length-1)+"/"+doc.url}>
+            <BasicLink url={"/"+this.props.type.substring(0,this.props.type.length-1)+"/"+doc.url} eventConfig={titleClickEventConfig}>
                 <h6 className={"document-card-title " + s.title}>
                     {doc.title}
                 </h6>

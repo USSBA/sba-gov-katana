@@ -19,7 +19,7 @@ class BasicLink extends React.Component {
   }
 
   render() {
-    const linkProps = _.omit(this.props, ["onClick", "url", "text", "myClassName", "htmlElement"]);
+    const linkProps = _.omit(this.props, ["onClick", "url", "text", "myClassName", "htmlElement", "eventConfig"]);
     if (this.props.onClick) {
       _.merge(linkProps, {
         onTouchTap: this.props.onClick,
@@ -27,8 +27,8 @@ class BasicLink extends React.Component {
       });
     } else {
       _.merge(linkProps, {
-        onTouchTap: createNavigation(this.props.url),
-        onKeyPress: this.createKeypressHandler(createNavigation(this.props.url))
+        onTouchTap: createNavigation(this.props.url, this.props.eventConfig),
+        onKeyPress: this.createKeypressHandler(createNavigation(this.props.url, this.props.eventConfig))
       });
     }
     _.merge(linkProps, {className: this.props.myClassName});
@@ -54,7 +54,8 @@ BasicLink.propTypes = {
   text: React.PropTypes.string,
   myClassName: React.PropTypes.string,
   htmlElement: React.PropTypes.string,
-  autoFocus: React.PropTypes.bool
+  autoFocus: React.PropTypes.bool,
+  eventConfig: React.PropTypes.object
 };
 
 BasicLink.defaultProps = {
@@ -62,7 +63,8 @@ BasicLink.defaultProps = {
   text: "",
   htmlElement: "a",
   myClassName: "",
-  autoFocus: false
+  autoFocus: false,
+  eventConfig: null //Google Analytics event hash
 };
 
 export default BasicLink;

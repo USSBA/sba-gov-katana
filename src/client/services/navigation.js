@@ -1,5 +1,5 @@
 import { browserHistory } from "react-router";
-import { logEvent } from "../services/analytics.js";
+import { logEvent, logPageEvent} from "../services/analytics.js";
 import { getPaths } from "../components/templates/themer/themes.js";
 import _ from "lodash";
 
@@ -31,10 +31,14 @@ function navigateNow(targetLocation, eventConfig) {
       if (eventConfig) {
         logEvent({
           category: eventConfig.category || "Navigation",
-          action: eventConfig.action || "Location Change",
-          label: eventConfig.label || "",
+          action: eventConfig.action || `Location Change Request: ${targetLocation}`,
+          label: eventConfig.label || browserHistory.getCurrentLocation().pathname,
           value: eventConfig.value || null
         });
+      }
+      browserHistory.push(targetLocation);
+      if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
+        window.scrollTo(0, 0);
       }
     } else {
       document.location = targetLocation;
