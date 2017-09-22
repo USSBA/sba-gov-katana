@@ -7,6 +7,34 @@
 .textSection ul {
 	list-style: none;
 }
+
+.textSection > ul ul {
+  
+  margin-left: 65px;
+  margin-bottom: 20px;
+
+  li {
+
+    color: #333333;
+
+    &::before {
+
+      content: "";
+      height: 12px;
+      width: 12px;
+      border: 3px solid #333333;
+      border-radius: 12px;
+      display: inline-block;
+      margin-right: 20px;
+
+    }
+
+  }
+
+}
+
+
+
 // override the normalize removal
 
 .textSection ol {
@@ -33,7 +61,7 @@
   padding-left: 2em;
 }
 // formatting for the unordered list bullets
-.textSection dl dt::before, .textSection ul li::before {
+.textSection dl dt::before, .textSection > ul > li::before {
 	padding-right: 0.5em;
 	content: "";
 	height: 1em;
@@ -41,7 +69,7 @@
 	display: block;
 	float: left;
 	margin-top: 0.20em;
-	margin-left: 0.5em;
+	margin-left: 0;
 	margin-right: 0.50em;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -56,7 +84,7 @@
 		}
 	}
 }
-@include primary-color-theme-for-color( '.textSection ul li::before');
+@include primary-color-theme-for-color( '.textSection > ul > li::before');
 @include primary-color-theme-for-color( '.textSection dl dt::before');
 
 
@@ -66,12 +94,15 @@
 @include theme(byzantine, '.textSection th', $byzantine, $white, $byzantine)
 @include theme(cobalt-blue, '.textSection th', $cobalt-blue, $white, $cobalt-blue)
 
-
-
 @include theme(sba-blue, ':global(.table-header-label)', none, $sba-blue, none)
 @include theme(money-green, ':global(.table-header-label)', none, $money-green, none)
 @include theme(byzantine, ':global(.table-header-label)', none, $byzantine, none)
 @include theme(cobalt-blue, ':global(.table-header-label)', none, $cobalt-blue, none)
+
+@include theme(sba-blue, '.textSection > ul ul li::before', null, null, $sba-blue)
+@include theme(money-green, '.textSection > ul ul li::before', null, null, $money-green)
+@include theme(byzantine, '.textSection > ul ul li::before', $byzantine, $white, $byzantine)
+@include theme(cobalt-blue, '.textSection > ul ul li::before', $cobalt-blue, $white, $cobalt-blue)
 
 
 .textSection {
