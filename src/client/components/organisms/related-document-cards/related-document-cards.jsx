@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import {DocumentCardCollection} from "organisms";
 import * as NavigationActions from "../../../actions/navigation.js";
 import queryString from "querystring";
+import {logPageEvent} from "../../../services/analytics";
 import s from "./related-document-cards.scss";
 
 class RelatedDocumentCards extends React.Component {
@@ -39,6 +40,7 @@ class RelatedDocumentCards extends React.Component {
 	}
 
 	handleBrowseAll(documentType){
+		logPageEvent({category: "Browse-all", action: documentType});
 		let params = {type: documentType}
 		this.props.actions.locationChange("/document/?" + queryString.stringify(params))
 	}
