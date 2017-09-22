@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import {logPageEvent} from "../../../services/analytics.js";
 import moment from "moment";
 import queryString from "querystring";
 import {
@@ -28,9 +29,10 @@ export class DocumentArticle extends React.Component {
   }
 
   downloadClick(newestFile) {
-      if(newestFile && newestFile.fileUrl){
-          window.open(newestFile.fileUrl, '_blank')
-      }
+    if(newestFile && newestFile.fileUrl){
+      logPageEvent({category: "Download-PDF-CTA", action: "Click"});
+      window.open(newestFile.fileUrl, '_blank')
+    }
   }
 
   formatDate(date) {
@@ -38,6 +40,7 @@ export class DocumentArticle extends React.Component {
   }
 
   handleRelatedPrograms(program){
+    logPageEvent({category: "Related-Programs", action: `program${program}`})
     let params = {program: program}
     this.props.actions.locationChange("/"+this.props.type+"/?" + queryString.stringify(params))
   }

@@ -1,4 +1,5 @@
 import config from "./client-config.js";
+import _ from "lodash";
 
 var reactGa = require("react-ga");
 
@@ -35,6 +36,15 @@ function logEvent(eventToLog) {
   }
 }
 
+// Default "label" to window.location.pathname; value to null
+function logPageEvent(eventToLog) {
+  const defaultValues = {
+    label: window.location.pathname,
+    value: null
+  };
+  logEvent(_.merge(defaultValues, eventToLog));
+}
+
 /* eslint-disable callback-return */
 function googleAnalyticsMiddleware({getState}) {
   return (next) => {
@@ -48,4 +58,4 @@ function googleAnalyticsMiddleware({getState}) {
 }
 /* eslint-enable callback-return */
 
-export { logPageView, googleAnalyticsMiddleware, logEvent };
+export { logPageView, googleAnalyticsMiddleware, logEvent, logPageEvent };
