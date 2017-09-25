@@ -77,6 +77,22 @@ class DocumentCard extends React.Component {
     );
   }
 
+  makeTitle(){
+    const doc = this.props.data;
+    const eventConfig = {
+      category: "Document-Download-Module",
+      action: `docname - ${doc.title}: Document Landing Page`
+    };
+    const url = `/${this.props.type.replace(/s$/,"")}/${doc.url}`;
+    return (
+      <BasicLink url={url} eventConfig={eventConfig}>
+        <h6 className={"document-card-title " + s.title}>
+          {doc.title}
+        </h6>
+      </BasicLink>
+    );
+  }
+
   render() {
     const doc = this.props.data;
     if (doc) {
@@ -87,10 +103,6 @@ class DocumentCard extends React.Component {
           number: "UNK"
         };
 
-      const titleClickEventConfig = {
-        category: "Document-Download-Module",
-        action: `docname - ${doc.title}: Document Landing Page`
-      };
 
       return (
         <div className={"document-card-container " + (this.props.showBorder ? " " + s.container : "")}>
@@ -100,11 +112,7 @@ class DocumentCard extends React.Component {
             </div>
             <div>
             </div>
-            <BasicLink url={"/"+this.props.type.substring(0,this.props.type.length-1)+"/"+doc.url} eventConfig={titleClickEventConfig}>
-                <h6 className={"document-card-title " + s.title}>
-                    {doc.title}
-                </h6>
-            </BasicLink>
+            {this.makeTitle()}
             {this.props.showDetails
               ? this.makeTable(this.props.data)
               : null}
@@ -121,11 +129,13 @@ class DocumentCard extends React.Component {
 }
 
 DocumentCard.propTypes = {
-  showBorder: React.PropTypes.bool
+  showBorder: React.PropTypes.bool,
+  type: React.PropTypes.string
 };
 
 DocumentCard.defaultProps = {
-  showBorder: true
+  showBorder: true,
+  type: "documents"
 };
 
 export default DocumentCard;
