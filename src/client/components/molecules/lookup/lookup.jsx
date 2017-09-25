@@ -41,6 +41,7 @@ class Lookup extends React.Component {
     let _props = {
       items: this.state.filteredItems,
       title: this.props.title,
+      name: this.props.subtype,
       afterChange: this.fireEvent.bind(this)
     }
 
