@@ -5,7 +5,7 @@
 This is for the development/build setup guide
 
 1. Install NVM (https://github.com/creationix/nvm)
-1. Download and use Node Version 7.1 `nvm install 7.1 && nvm use 7.1`
+1. Download and use Node Version 7.0 `nvm install 7.0 && nvm use`
 1. Install ESLint: `npm install -g eslint`
 1. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
 
