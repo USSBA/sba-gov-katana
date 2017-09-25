@@ -81,7 +81,7 @@ class DropdownMenu extends React.Component {
           return {url: item.link, text: item.linkTitle}
         });
 
-        const isLastGroup = index === this.props.links.length - 1;
+        const isLastGroup = (index === this.props.links.length - 1) && !smallInverseCta;
 
         return (
           
@@ -98,6 +98,7 @@ class DropdownMenu extends React.Component {
 
         );
       });
+
       const goToNextButton = this.props.hasNext
         ? <ul className={styles.skipLink}><UtilityLink id={this.props.id + "-go-to-next"} visible={this.state.goToNextSectionShown} text="Go to Next Section" onKeyDown={(event) => this.handleSkipLinkKeyDown(event)} onFocus={(event) => this.handleGoToNextFocus(event)} onBlur={(event) => this.handleGoToNextBlur(event)}/></ul>
         : undefined;
