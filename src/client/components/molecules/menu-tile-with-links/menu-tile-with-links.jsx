@@ -18,7 +18,11 @@ class MenuTileWithLinks extends React.Component {
         {this.props.children
           ? this.props.children.map((object, index) => {
             let autoFocusOnMe = this.props.autoFocusOnLast && index === (this.props.children.length - 1);
-            return <HoverLink id={this.props.id + "-link-" + index} key={index} title={object.title} link={object.fullUrl} autoFocus={autoFocusOnMe}/>
+            let eventConfig = {
+                category: "Main-Menu",
+                action: this.props.largeTitle + (this.props.smallTitle ? " "+ this.props.smallTitle : "") + ":" + object.title
+            };
+            return <HoverLink id={this.props.id + "-link-" + index} key={index} title={object.title} link={object.fullUrl} autoFocus={autoFocusOnMe} eventConfig={eventConfig}/>
           })
           : null}
       </div>
@@ -30,7 +34,7 @@ class HoverLink extends React.Component {
   render() {
     return (
       <div className={s.linkContainer}>
-        <BasicLink text={this.props.title} id={this.props.id} myClassName={s.link} url={this.props.link} autoFocus={this.props.autoFocus}/>
+        <BasicLink text={this.props.title} id={this.props.id} myClassName={s.link} url={this.props.link} autoFocus={this.props.autoFocus} eventConfig={this.props.eventConfig}/>
       </div>
     );
   }

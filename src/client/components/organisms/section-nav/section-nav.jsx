@@ -14,7 +14,7 @@ import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
 import whiteIconManage from "../../atoms/icons/white-manage.jsx";
 import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
 import hurricaneIcon from "../../../../../public/assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png";
-import whiteIconSuretyProviders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png";    
+import whiteIconSuretyProviders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png";
 import whiteIconLenders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Lenders_white.png";
 
 
@@ -69,10 +69,14 @@ class SectionNav extends React.Component {
       if (item.fullUrl === currentPage.fullUrl) {
         currentLinkClass = styles.currentNavLink;
       }
+      const eventConfig = {
+          category: "Menu-Rail",
+          action: section.title + " " + item.title
+      };
       return (
         <li key={index}>
           <BasicLink myClassName={"article-navigation-article-link-desktop " + currentLinkClass}
-             id={"desktop-article-link-" + index} url={item.fullUrl} text={item.title} />
+             id={"desktop-article-link-" + index} url={item.fullUrl} text={item.title}  eventConfig={eventConfig}/>
         </li>
       );
     });
@@ -121,6 +125,10 @@ class SectionNav extends React.Component {
     const navLinks = this.makeNavLinks();
     const sectionTitle = this.getNthLineage(-2).title;
     const navigationTitle = this.makeNavigationTitle(sectionTitle);
+    const eventConfig = {
+        category: "Menu-Rail",
+        action: sectionTitle
+    };
     return (
       <div
         id="article-navigation-desktop"
@@ -129,7 +137,7 @@ class SectionNav extends React.Component {
         }>
         <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
            <BasicLink id="article-navigation-back-button-desktop" myClassName={styles.backLink}
-              url={this.getBacklinkUrl()} text={this.getBacklinkText()} />
+              url={this.getBacklinkUrl()} text={this.getBacklinkText()} eventConfig={eventConfig} />
         {navigationTitle}
         <ul>{navLinks}</ul>
       </div>
