@@ -3,7 +3,7 @@ import s from "./tile.scss"
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ModalActions from '../../../actions/show-modal.js'
-import * as LocationChangeActions from '../../../actions/navigation.js';
+import {navigateNow} from "../../../services/navigation.js"
 import {BasicLink} from "atoms";
 import {MenuTile, MenuTileWithLinks} from "molecules"
 
@@ -26,8 +26,9 @@ class Tile extends React.Component {
     if (!this.isLinkToPage() && window.innerWidth <= 1080) {
       this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     } else if (this.isLinkToPage()) {
-      this.props.locationActions.locationChange(this.props.data.fullUrl, {
-        action: "Landing Page Panel Pushed",
+      navigateNow(this.props.data.fullUrl, {
+        category: "Menu-Menu",
+        action: this.props.data.title,
         label: document.location.pathname
       });
     }
@@ -140,8 +141,7 @@ function mapReduxStateToProps(reduxState) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ModalActions, dispatch),
-    locationActions: bindActionCreators(LocationChangeActions, dispatch)
+    actions: bindActionCreators(ModalActions, dispatch)
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile);
