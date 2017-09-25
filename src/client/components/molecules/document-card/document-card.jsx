@@ -83,7 +83,7 @@ class DocumentCard extends React.Component {
       category: "Document-Download-Module",
       action: `docname - ${doc.title}: Document Landing Page`
     };
-    const url = `/${this.props.type.replace(/s$/,"")}/${doc.url}`;
+    const url = `/${doc.type.replace(/s$/,"")}/${doc.url}`;
     return (
       <BasicLink url={url} eventConfig={eventConfig}>
         <h6 className={"document-card-title " + s.title}>
@@ -130,7 +130,7 @@ class DocumentCard extends React.Component {
 
 DocumentCard.propTypes = {
   showBorder: React.PropTypes.bool,
-  type: React.PropTypes.string
+  type: React.PropTypes.string.isRequired
 };
 
 DocumentCard.defaultProps = {
