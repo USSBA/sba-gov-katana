@@ -36,7 +36,7 @@ class ContactCardLookup extends React.Component {
         ? this.setState({noContacts: true})
         : this.setState({noContacts: false});
       if (this.props.afterChange) {
-        this.props.afterChange("state-lookup", newValueLabel, this.state.numberOfTimesUserHasSelectedAState);
+        this.props.afterChange(this.props.name, newValueLabel, this.state.numberOfTimesUserHasSelectedAState);
       }
     });
   }
@@ -88,6 +88,7 @@ ContactCardLookup.propTypes = {
   title: React.PropTypes.string,
   items: React.PropTypes.array,
   afterChange: React.PropTypes.func,
+  name: React.PropTypes.string,
   cardRenderer: React.PropTypes.func
 };
 
@@ -95,6 +96,7 @@ ContactCardLookup.defaultProps = {
   title: "Lookup Title",
   items: [],
   afterChange: () => {},
+  name: "state-lookup",
   cardRenderer: (item, index) => {
     return (
       <div key={index}>
