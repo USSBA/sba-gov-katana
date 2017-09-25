@@ -7,13 +7,13 @@ class SectionLink extends React.Component {
     let underlineStyle = this.props.showUnderline ?
       " " + styles.underline :
       "";
-    let triangleColor = this.props.showTriangleMarker ?
+    let triangleColor = this.props.enableTriangleMarker ?
       " " + styles.triangleTheme :
       "";
     return (
       <span id={this.props.id + "-container"} className={styles.link + underlineStyle} onMouseOver={this.props.onMouseOver} onMouseOut={this.props.onMouseOut}>
         <BasicLink text={this.props.text} id={this.props.id} myClassName={styles.sectionLink} url={this.props.url} onKeyDown={this.props.onKeyDown}/>
-        <div className={styles.triangle + triangleColor}></div>
+        <div className={styles.triangle + triangleColor + (this.props.shouldForceTriangleMarkerVisibility ? " " + styles.visible : "")}></div>
         {this.props.children}
       </span>
     )
@@ -21,15 +21,17 @@ class SectionLink extends React.Component {
 }
 
 SectionLink.defaultProps = {
-  showTriangleMarker: false
-}
+  enableTriangleMarker: false,
+  shouldForceTriangleMarkerVisibility: false
+};
 
 SectionLink.propTypes = {
   text: React.PropTypes.string.isRequired,
   url: React.PropTypes.string.isRequired,
-  showTriangleMarker: React.PropTypes.bool,
+  enableTriangleMarker: React.PropTypes.bool,
+  shouldForceTriangleMarkerVisibility: React.PropTypes.bool,
   showUnderline: React.PropTypes.bool,
-  onKeyDown: React.PropTypes.func
+  onKeyDown: React.PropTypes.func,
 };
 
 export default SectionLink;
