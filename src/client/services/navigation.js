@@ -1,5 +1,5 @@
 import { browserHistory } from "react-router";
-import { logEvent, logPageEvent} from "../services/analytics.js";
+import { logEvent, logPageEvent } from "../services/analytics.js";
 import { getPaths } from "../components/templates/themer/themes.js";
 import _ from "lodash";
 

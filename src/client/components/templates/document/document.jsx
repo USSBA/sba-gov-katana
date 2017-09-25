@@ -2,6 +2,7 @@ import React from "react";
 import {DocumentArticle} from "molecules";
 import {RelatedDocumentCards} from "organisms";
 import s from "./document.scss";
+import {logPageEvent} from "../../../services/analytics.js";
 
 class DocumentPage extends React.Component {
 
@@ -13,13 +14,17 @@ class DocumentPage extends React.Component {
           ? `Version ${file.version}`
           : "Version: N/A";
         const effectiveDateMessage = "Effective: " + (file.effectiveDate || "N/A");
+        const eventConfig = {
+          category: "Document-Version",
+          action: `docname - ${this.props.document.title}: previous version #${file.version || "N/A"}`
+        }
 
         return (
           <li key={index}>
             <strong>{versionMessage}</strong>
             <strong>|</strong>
             {effectiveDateMessage}.
-            <a href={file.fileUrl} target="_blank">Download PDF
+            <a href={file.fileUrl} onClick={() => {logPageEvent(eventConfig)}} target="_blank">Download PDF
               <i className="fa fa-file-pdf-o" aria-hidden="true"/>
             </a>
           </li>
