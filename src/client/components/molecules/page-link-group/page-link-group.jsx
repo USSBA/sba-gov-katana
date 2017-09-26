@@ -5,23 +5,68 @@ import {BasicLink} from "../../atoms";
 
 class PageLinkGroup extends React.Component {
 
-  makePageLink(item, index) {
-    return (<PageLink id={this.props.id+"-"+index} key={index+1} text={item.text} url={item.url} onBlur={this.props.onBlur} indent={this.props.indent}/>);
-  }
   render() {
-    let header = this.props.title
-      ? (
-        <li key={0}>
-            <BasicLink url={this.props.titleLink}  onBlur={this.props.onBlur} id={this.props.id+"-title"} text={this.props.title}/>
-        </li>
-      )
-      : undefined;
-    let links = this.props.links.map(this.makePageLink.bind(this));
+
+    const {
+      id,
+      links,
+      title,
+      titleLink,
+      indent,
+      isLastGroup,
+      onFinalBlur
+    } = this.props;
+
+    const renderedLinks = links.map((item, index) => {
+
+      const isLastLink = index === links.length - 1;
+
+      return (
+        
+        <PageLink
+          key={index + 1}
+          id={this.props.id + "-" + index}
+          text={item.text}
+          url={item.url}
+          onBlur={() => {
+
+            if (isLastGroup && isLastLink) {
+              onFinalBlur();
+            }
+
+          }}
+          indent={indent}
+        />
+
+      );
+
+    });
+
     return (
-      <ul id={this.props.id} className={styles.pageLinkGroup}>
-        {header}
-        {links}
+
+      <ul id={id} className={styles.pageLinkGroup}>
+        
+        {title &&
+          <li key={0}>
+            <BasicLink
+              id={id + "-title"}
+              text={title}
+              url={titleLink}
+              onBlur={() => {
+
+                if (isLastGroup && links.length === 0) {
+                  onFinalBlur();
+                }
+
+              }}
+            />
+          </li>
+        }
+
+        {renderedLinks}
+
       </ul>
+
     );
   }
 }
@@ -30,7 +75,6 @@ PageLinkGroup.propTypes = {
   title: React.PropTypes.string,
   titleLink: React.PropTypes.string,
   links: React.PropTypes.array.isRequired,
-  onBlur: React.PropTypes.func
-}
+};
 
 export default PageLinkGroup;
