@@ -19,22 +19,26 @@ let lookupProps = {
       name: "Obi-Wan Kenobi",
       title: "Master",
       lightsaberColor: "Green",
-      age: "40"
+      age: "40",
+      type: "jedi"
     }, {
       name: "Luke Skywalker",
       title: "Knight",
       lightsaberColor: "Blue",
-      age: "20"
+      age: "20",
+      type: "jedi"
     }, {
       name: "Yoda",
       title: "Master",
       lightsaberColor: "Green",
-      age: "900"
+      age: "900",
+      type: "jedi"
     }, {
       name: "Bastilla Shan",
       title: "Knight",
       lightsaberColor: "Yellow",
-      age: "24"
+      age: "24",
+      type: "jedi"
     }
   ],
   itemCount: 42,
