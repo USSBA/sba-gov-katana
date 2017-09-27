@@ -1,4 +1,7 @@
 .cardCollection{
+
+	@include grid-collapse;
+
 }
 
 .cardRow{
