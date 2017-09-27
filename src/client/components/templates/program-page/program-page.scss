@@ -4,7 +4,12 @@
 .sectionHeader,
 .textSection,
 .image {
-  @include grid-column(8, $sba-grid-large);
+	@include grid-media($sba-grid-medium-and-small){
+		@include grid-column(6, $sba-grid-medium-and-small);
+	}
+  @include grid-media($sba-grid-large){
+  	@include grid-column(8, $sba-grid-large)
+  }
 }
 
 .sectionHeader {
