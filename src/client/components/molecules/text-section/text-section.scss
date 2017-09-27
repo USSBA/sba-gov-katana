@@ -8,11 +8,18 @@
 	list-style: none;
 }
 
-.textSection > ul ul {
-  
-  margin-left: 65px;
-  margin-bottom: 20px;
+.textSection ul,
+.textSection ol {
+  li {
+    margin: 10px 0;
+  }
+}
 
+.textSection > ul ul,
+.textSection > ol ul {
+
+  margin-left: 65px;
+  
   li {
 
     color: #333333;
@@ -25,25 +32,41 @@
       border: 3px solid #333333;
       border-radius: 12px;
       display: inline-block;
+      float: left;
+      margin-top:8px;
       margin-right: 20px;
 
+    }
+
+    p {
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
   }
 
 }
 
+.textSection > ol ul {
+    
+    margin-left: 30px;
 
+    ul {
+      margin-left: 50px;
+    }
+}
 
 // override the normalize removal
 
 .textSection ol {
 	list-style: decimal;
 }
+
 // indents the ordered list items
 
 .textSection ol li {
-	margin-left: 1.75em;
+	margin-left: 0.75em;
 }
 
 
@@ -60,8 +83,10 @@
 .textSection ul li p {
   padding-left: 2em;
 }
+
 // formatting for the unordered list bullets
-.textSection dl dt::before, .textSection > ul > li::before {
+.textSection dl dt::before,
+.textSection > ul > li::before {
 	padding-right: 0.5em;
 	content: "";
 	height: 1em;
@@ -75,6 +100,7 @@
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
+
 @mixin primary-color-theme-for-color($component) {
 	 @each $name, $value in $primary-color-map{
 		:global(.#{$name}) {
@@ -84,9 +110,9 @@
 		}
 	}
 }
+
 @include primary-color-theme-for-color( '.textSection > ul > li::before');
 @include primary-color-theme-for-color( '.textSection dl dt::before');
-
 
 //TABLE
 @include theme(sba-blue, '.textSection th', $sba-blue, $white, $sba-blue)
@@ -101,12 +127,19 @@
 
 @include theme(sba-blue, '.textSection > ul ul li::before', null, null, $sba-blue)
 @include theme(money-green, '.textSection > ul ul li::before', null, null, $money-green)
-@include theme(byzantine, '.textSection > ul ul li::before', $byzantine, $white, $byzantine)
-@include theme(cobalt-blue, '.textSection > ul ul li::before', $cobalt-blue, $white, $cobalt-blue)
+@include theme(byzantine, '.textSection > ul ul li::before', null, null, $byzantine)
+@include theme(cobalt-blue, '.textSection > ul ul li::before', null, null, $cobalt-blue)
+
+@include theme(sba-blue, '.textSection > ol ul li::before', null, null, $sba-blue)
+@include theme(money-green, '.textSection > ol ul li::before', null, null, $money-green)
+@include theme(byzantine, '.textSection > ol ul li::before', null, null, $byzantine)
+@include theme(cobalt-blue, '.textSection > ol ul li::before', null, null, $cobalt-blue)
 
 
 .textSection {
+  
   //LARGE
+  
   @include grid-media($sba-grid-small){
     & thead > tr {
       display: none;
@@ -137,6 +170,7 @@
     }
 
   }
+
   @include grid-media($sba-grid-medium){
     & table {
       table-layout: auto;
