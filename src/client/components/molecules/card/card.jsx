@@ -43,7 +43,7 @@ class Card extends React.Component {
     }
 
     render() {
-        let cardStyle = this.computeCardStyle() + " "+ (this.props.leftAligned ? styles.leftAligned : styles.centerAligned );
+        let cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
         return (
             <div id={'card-' + this.props.parentIndex + '-' + this.props.index} className={cardStyle}>
                 {this.props.item.image && this.props.item.image.url ? (
