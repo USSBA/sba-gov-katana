@@ -35,14 +35,15 @@ class ProgramPage extends React.Component {
     const hasBannerImage = bannerImage.hasOwnProperty('image')
 
     const _formattedButtons = buttons === undefined ? [] : (
-        buttons.map((button, index) => {
-           return {
-            url: button.url,
-            btnText: button.title,
-            btnType: index === 0 ? "LargeInversePrimaryButton" : "LargePrimaryButton"
-          };
-        })
-      )
+      buttons.map((button, index) => {
+        return {
+          url: button.url,
+          btnText: button.title,
+          btnType: index === 0 ? "LargeInversePrimaryButton" : "LargePrimaryButton",
+          eventConfig: {category: "Program-Landing-CTA", action: button.title}
+        };
+      })
+    )
 
     return (
       <div>

@@ -18,6 +18,7 @@ class ButtonBase extends React.Component {
         url: this.props.url,
         text: this.props.text,
         htmlElement: "button",
+        eventConfig: this.props.eventConfig || null
       }
     ;
     return (

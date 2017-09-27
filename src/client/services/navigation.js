@@ -23,15 +23,15 @@ function navigateNow(targetLocation, eventConfig) {
     });
     const isHandledRoute = _.compact(mapped).length > 0;
     const startsWithHttp = _.startsWith(targetLocation, "http");
+    if (eventConfig) {
+      logEvent({
+        category: eventConfig.category || "Navigation",
+        action: eventConfig.action || `Location Change Request: ${targetLocation}`,
+        label: eventConfig.label || browserHistory.getCurrentLocation().pathname,
+        value: eventConfig.value || null
+      });
+    }
     if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp) {
-      if (eventConfig) {
-        logEvent({
-          category: eventConfig.category || "Navigation",
-          action: eventConfig.action || `Location Change Request: ${targetLocation}`,
-          label: eventConfig.label || browserHistory.getCurrentLocation().pathname,
-          value: eventConfig.value || null
-        });
-      }
       browserHistory.push(targetLocation);
       if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
