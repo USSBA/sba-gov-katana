@@ -40,7 +40,7 @@ function navigateNow(targetLocation, eventConfig) {
       document.location = targetLocation;
     }
   } else {
-    console.log("WARNING: navigateNow passed a null target location");
+    console.log("WARNING: navigateNow passed a null target location; here's the eventConfig", eventConfig);
   }
 
 }

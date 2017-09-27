@@ -77,7 +77,7 @@ class Card extends React.Component {
                 ) : null}
                 {!_.isEmpty(this.props.item.link) && (
                     <p>
-                        <BasicLink text={linkText} url={this.props.item.link} />
+                        <BasicLink text={linkText} url={this.props.item.link} eventConfig={this.props.item.eventConfig}/>
                     </p>
                 )}
             </div>

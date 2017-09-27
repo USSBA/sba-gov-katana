@@ -7,17 +7,28 @@ class ProgramDetailsCardCollection extends Component {
 
   render() {
 
+    const defaultCategoryConfig = {category: "Program-Details-Card"};
     const {cards} = this.props;
     const remapData = () => {
-      
+
       return (
 
         cards.map((item) => {
 
+          let eventConfig = null;
+          if (this.props.eventConfig) {
+            const actionConfig = {action: item.title};
+            eventConfig = {
+              ...defaultCategoryConfig,
+              ...this.props.eventConfig,
+              ...actionConfig
+            };
+          }
           return {
             titleText: item.title,
             subtitleText: item.description,
-            link: item.fullUrl
+            link: item.fullUrl,
+            eventConfig: eventConfig
           };
 
         })

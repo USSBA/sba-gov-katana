@@ -7,7 +7,18 @@ class ProgramPage extends React.Component {
 
   makeParagraphs(paragraphData) {
 
-    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, null, this.props.lineage);
+    const paragraphEventConfig = {
+      callToAction: {
+        category: "Program-Page-Paragraph-CTA"
+      },
+      button: {
+        category: "Program-Page-Paragraph-ButtonCTA"
+      },
+      childPageMenu: {
+        category: "Program-Details-Learn-More"
+      }
+    };
+    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, null, this.props.lineage, paragraphEventConfig);
     let wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
