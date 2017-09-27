@@ -45,18 +45,40 @@ class Card extends React.Component {
     render() {
         let cardStyle = this.computeCardStyle() + " "+ (this.props.leftAligned ? styles.leftAligned : styles.centerAligned );
         return (
-            <div id={"card-" + this.props.parentIndex + "-" + this.props.index} className={cardStyle}>
-                {this.props.item.image && this.props.item.image.url
-                    ? <img id={"image-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemImage} src={this.props.item.image.url} alt={this.props.item.image.alt}/>
-                    : null}
-                {this.props.item.titleText
-                    ? <p id={"title-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemTitle}>{this.props.item.titleText}</p>
-                    : null}
-                <hr id={"hr-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemHr} />
-                {this.props.item.subtitleText
-                    ? <p id={"subtitle-text-" + this.props.parentIndex + "-" + this.props.index} className={styles.itemSubTitle}>{this.props.item.subtitleText}</p>
-                    : null}
-                {!_.isEmpty(this.props.item.link) && <p><BasicLink text="Learn More" url={this.props.item.link} /></p>}
+            <div id={'card-' + this.props.parentIndex + '-' + this.props.index} className={cardStyle}>
+                {this.props.item.image && this.props.item.image.url ? (
+                    <img
+                        id={'image-' + this.props.parentIndex + '-' + this.props.index}
+                        className={styles.itemImage}
+                        src={this.props.item.image.url}
+                        alt={this.props.item.image.alt}
+                    />
+                ) : null}
+                {this.props.item.titleText ? (
+                    <p
+                        id={'title-' + this.props.parentIndex + '-' + this.props.index}
+                        className={styles.itemTitle}>
+                        {this.props.item.titleText}
+                    </p>
+                ) : null}
+                {this.props.item.subtitleText ? (
+                    <div>
+                        <hr
+                            id={'hr-' + this.props.parentIndex + '-' + this.props.index}
+                            className={styles.itemHr}
+                        />
+                        <p
+                            id={'subtitle-text-' + this.props.parentIndex + '-' + this.props.index}
+                            className={styles.itemSubTitle}>
+                            {this.props.item.subtitleText}
+                        </p>
+                    </div>
+                ) : null}
+                {!_.isEmpty(this.props.item.link) && (
+                    <p>
+                        <BasicLink text="Learn More" url={this.props.item.link} />
+                    </p>
+                )}
             </div>
         );
     }
