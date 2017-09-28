@@ -38,22 +38,21 @@ class PagingLookup extends React.Component {
     let defaults = _.chain(propsSource.taxonomyFilters).keyBy().mapValues(_ => "All").value();
 
     let queryParams = getQueryParams();
-
     // look for aliases in the query params, but filter out any that are undefined
-    let aliasMapping = _.filter({
+    let aliasMapping = _.pickBy({
       searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity
-    }, value => value)
+    })
 
-    let filteredQueryParams = _.filter(queryParams, (value, key) => {
+    let filteredQueryParams = _.pickBy(queryParams, (value, key) => {
       return _.includes(propsSource.taxonomyFilters, key)
     })
 
-    let finalQuery = _.assign({
+    const finalQuery = _.assign({
       sortBy: "Last Updated",
       searchTerm: ""
-    }, defaults, queryParams, aliasMapping)
+    }, defaults, filteredQueryParams, aliasMapping);
     return finalQuery;
   }
 
@@ -215,3 +214,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(PagingLookup);
+
+export {PagingLookup};

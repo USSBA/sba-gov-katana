@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PagingLookup should render with all the information 1`] = `
+<div>
+  <div
+    className="banner"
+  >
+    <h2
+      className="header"
+    >
+      My Documents
+    </h2>
+  </div>
+  <div>
+    <div />
+    <div
+      className="documentCardCollection"
+    >
+      Loading...
+    </div>
+    <div />
+  </div>
+</div>
+`;
