@@ -108,7 +108,7 @@ class PagingLookup extends React.Component {
   }
 
   handleSubmit() {
-    this.fireDocumentationLookupEvent("Apply: CTA");
+    this.fireDocumentationLookupEvent(`Apply CTA: Term: ${this.state.query.searchTerm}`);
     this.setState({
       items: undefined,
       pageNumber: 1
@@ -144,7 +144,10 @@ class PagingLookup extends React.Component {
   }
 
   handleQueryChange(field, value) {
-    this.fireDocumentationLookupEvent(`${fieldNameMap[field] || field}: ${value}`);
+    if(field !== "searchTerm") {
+      // Log Analytic Event, but not for search term
+      this.fireDocumentationLookupEvent(`${fieldNameMap[field] || field}: ${value}`);
+    }
     let newQueryFieldValue = {};
     newQueryFieldValue[field] = value;
     let currentQuery = this.state.query;
