@@ -63,7 +63,7 @@ class Card extends React.Component {
                 ) : null}
                 {this.props.item.subtitleText ? (
                     <div>
-                        <hr
+                        <DecorativeDash
                             id={'hr-' + this.props.parentIndex + '-' + this.props.index}
                             className={styles.itemHr}
                         />
