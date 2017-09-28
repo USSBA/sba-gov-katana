@@ -5,7 +5,10 @@ import _ from "lodash";
 import queryString from "querystring";
 import moment from "moment";
 import Promise from "bluebird";
-import { DecorativeDash } from "atoms";
+import {
+	DecorativeDash,
+	BasicLink
+} from "atoms";
 import * as ContentActions from "../../../actions/content.js";
 import * as NavigationActions from "../../../actions/navigation.js";
 import s from "./quick-links.scss";
@@ -65,32 +68,28 @@ class QuickLinks extends React.Component {
 }
 
 const LatestDocumentsCard = props => {
+  const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`;
 	return (
 		<div className={props.classname}>
 			<div className={s.titleContainer}>
 				<h3 className={s.title}>
 					{props.sectionHeaderText}
 				</h3>
-				<a
-					className={s.seeAll}
-					onClick={() => {
-						props.locationChange("/document?" + queryString.stringify({type: props.documentType, program: props.documentProgram}))
-					}}>
-					See all
-				</a>
+				<BasicLink url={`/document?${queryString.stringify({type: props.documentType, program: props.documentProgram})}`}
+                   text={"See all"} myClassName={s.seeAll}
+                   eventConfig={{category: eventCategory, action: "See All"}}/>
 			</div>
 			<DecorativeDash className={s.dash} />
 			<div>
 				{props.documents && props.documents.items.length
-					? props.documents.items.map((doc, index) => {
+          ? props.documents.items.map((doc, index) => {
+				    const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title;
 							return (
 								<div key={index}>
-									<a
-										onClick={() => {
-											props.locationChange("/document/" + doc.url);
-										}}>
-										{doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title}
-									</a>
+									<BasicLink url={`/document/${doc.url}`}
+                             text={linkTitle}
+                             eventConfig={{category: eventCategory, action: `DocumentLink: ${linkTitle}`}}
+                  />
 									<div className={s.date}>
 										{moment.unix(doc.updated).format("MMM D, YYYY")}
 									</div>
