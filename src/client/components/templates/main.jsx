@@ -189,7 +189,7 @@ function mapReduxStateToProps(reduxState) {
 
   if (notification) {
 
-    data.notificationWhiteLabelUrls = notification.visibleOnUrls.split("\r\n");
+    data.notificationWhiteLabelUrls = notification.visibleOnUrls && notification.visibleOnUrls.split ? notification.visibleOnUrls.split("\r\n") : [] ;
     data.notificationDescription = notification.title;
     data.notificationUrl = notification.url;
 
