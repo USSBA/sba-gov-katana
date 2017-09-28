@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import styles from "./card.scss";
-import {BasicLink} from "atoms";
+import { BasicLink, DecorativeDash } from "atoms";
 
 class Card extends React.Component {
 
