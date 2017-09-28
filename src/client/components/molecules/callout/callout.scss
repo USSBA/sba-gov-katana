@@ -18,7 +18,7 @@
 	@include font-size($low-contrast-font-sizes);
 	margin-bottom: 30px;
 	font-family: "Source Sans Pro";
-	line-height: 25px;
+	line-height: 30px;
 	@include grid-media($sba-grid-small){
 		font-style: normal;
 	}
