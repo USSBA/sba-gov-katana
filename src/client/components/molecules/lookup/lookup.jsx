@@ -72,7 +72,7 @@ class Lookup extends React.Component {
 
           break;
 
-        case "Surety bond agency":
+        case "Surety bond company":
 
           SelectedLookup = <SuretyLookup {..._props}/>
 
