@@ -1,7 +1,6 @@
 .largeTitle {
     font-weight: 900;
     @include grid-media($sba-grid-small) {
-        font-size: 34px;
         margin-bottom: 0;
     }
     @include grid-media($sba-grid-medium) {
@@ -9,7 +8,6 @@
         margin-top: 12px;
         margin-bottom: 0;
         line-height: 50px;
-        font-size: 2.7em;
     }
 }
 

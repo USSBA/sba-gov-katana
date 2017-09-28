@@ -37,7 +37,7 @@ class MenuTile extends React.Component {
       <div id={this.props.id} className={tileClass}>
         <img id={this.props.id + "-icon"} className={s.icon} src={iconSource} alt=""/>
         <div id={this.props.id + "-title"} className={titleContainerClass}>
-          <h2 className={largeTitleClass}>{this.props.largeTitle}</h2>
+          <h3 className={largeTitleClass}>{this.props.largeTitle}</h3>
           {smallTitleComponent}
         </div>
         <i className={s.rightArrow + " fa fa-angle-right"}></i>
