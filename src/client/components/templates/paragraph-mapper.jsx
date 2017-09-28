@@ -39,7 +39,7 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
           let readmoreProps = {
             parentId: "-read-more",
             readMoreSectionItem: item
-          }
+          };
           paragraph = (<ReadMoreSection {...readmoreProps}/>);
         }
       } else if (item.type === "textSection") {
@@ -61,11 +61,14 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
       } else if (item.type === "image") {
         paragraph = (<ImageSection imageObj={item.image} captionText={item.captionText}/>);
       } else if (item.type === "lookup") {
-        paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
+        paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory}
+                             display={item.display} eventConfig={eventConfig}/>);
       } else if (item.type === "callToAction") {
         if(eventConfig)
           eventConfig.action = item.btnTitle;
-        paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl} title={item.title} eventConfig={eventConfig}/>)
+        paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image}
+                                   imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}
+                                   title={item.title} eventConfig={eventConfig}/>);
       } else if (item.type === "cardCollection") {
         paragraph = (<CardCollection parentIndex={index} cards={item.cards} />);
       } else if (item.type === "styleGrayBackground") {
@@ -75,7 +78,7 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
           eventConfig.action = item.link.title;
         paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title} eventConfig={eventConfig}/>);
       } else if (item.type === "quickLinks") {
-        paragraph = (<QuickLinks data={item}/>)
+        paragraph = (<QuickLinks data={item}/>);
       } else if (item.type === "searchBox") {
 
           const {
@@ -95,10 +98,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
           paragraph = <SearchBox {...searchBoxProps} />;
           
       } else if (item.type === "childPageMenu" && item.pagesInclude === "All child pages") {
-
         const cards = lineage[lineage.length - 1].children;
         paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig}/>;
-
       }
     }
     return {
