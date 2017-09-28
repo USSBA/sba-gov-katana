@@ -43,6 +43,7 @@ class Card extends React.Component {
     }
 
     render() {
+        let linkText = "Learn more";
         let cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
         return (
             <div id={'card-' + this.props.parentIndex + '-' + this.props.index} className={cardStyle}>
@@ -76,7 +77,7 @@ class Card extends React.Component {
                 ) : null}
                 {!_.isEmpty(this.props.item.link) && (
                     <p>
-                        <BasicLink text="Learn More" url={this.props.item.link} />
+                        <BasicLink text={linkText} url={this.props.item.link} />
                     </p>
                 )}
             </div>
