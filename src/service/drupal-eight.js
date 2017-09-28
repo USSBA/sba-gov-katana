@@ -27,9 +27,7 @@ function fetchContacts(queryParams) {
     return Promise.resolve(localDataMap[category] || []);
   }
 
-  return get("collection/contacts", {
-    query: queryParams
-  });
+  return get("collection/contacts", queryParams);
 }
 
 
