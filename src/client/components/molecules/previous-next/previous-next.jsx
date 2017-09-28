@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./previous-next.scss";
 import _ from "lodash";
 import {SmallSecondaryButton} from "atoms";
+import {logPageEvent} from "../../../services/analytics.js";
 
 const businessGuideUrl = "/business-guide";
 
@@ -89,8 +90,11 @@ class PreviousNextSection extends React.Component {
             {
               previousArticle !== null ?
                 <div id="previousContainerId" className={styles.previousContainer}>
-                  <div className={"previousnext-previous-url"}><SmallSecondaryButton
-                    text={previousArticle.title} url={previousArticle.fullUrl}/></div>
+                  <div className={"previousnext-previous-url"}>
+                    <SmallSecondaryButton text={previousArticle.title} url={previousArticle.fullUrl}
+                                          eventConfig={{category: "Previous-Next-Page", action: `Previous page: ${previousArticle.title}`}}
+                    />
+                  </div>
                   <i className={"fa fa-chevron-left " + styles.chevronPrevious} aria-hidden="true"></i>
                 </div>
                 :
@@ -101,8 +105,11 @@ class PreviousNextSection extends React.Component {
             {
               nextArticle !== null ?
                 <div id="nextContainerDesktopId" className={styles.nextContainer}>
-                  <div className={"previousnext-next-url"} ><SmallSecondaryButton
-                    text={nextArticle.title} url={nextArticle.fullUrl}/></div>
+                  <div className={"previousnext-next-url"} >
+                    <SmallSecondaryButton text={nextArticle.title} url={nextArticle.fullUrl}
+                                          eventConfig={{category: "Previous-Next-Page", action: `Next page: ${nextArticle.title}`}}
+                    />
+                  </div>
                   <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
                 </div>
                 :
@@ -123,7 +130,9 @@ class PreviousNextSection extends React.Component {
             nextArticle !== null ?
               <div id="nextContainerMobileId" className={styles.nextContainer}>
                 <a className={"previousnext-next-url"}>
-                    <SmallSecondaryButton text={nextArticle.title} url={nextArticle.fullUrl} />
+                    <SmallSecondaryButton text={nextArticle.title} url={nextArticle.fullUrl}
+                                          eventConfig={{category: "Previous-Next-Page", action:`Next page: ${nextArticle.title}`}}
+                    />
                 </a>
                 <i className={"fa fa-chevron-right " + styles.chevronNext} aria-hidden="true"></i>
               </div>
