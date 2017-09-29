@@ -32,7 +32,7 @@
 @include theme(money-green, '.menuButtonOpen', null, $money-green-dark, $money-green-dark);
 @include theme(cobalt-blue, '.menuButtonOpen', null, $cobalt-blue-dark, $cobalt-blue-dark);
 
-.mainNavNew .menuLinkSection {
+.mainNavNew .mobileNavMenuLink {
     border-bottom: 1px solid #DBDBDB;
     display: block;
     padding: 20px 50px;
@@ -51,6 +51,10 @@
 
 .mainNavNewShow{
     display: inherit;
+}
+
+.mobileNavMenuLinks {
+    overflow-y: scroll;
 }
 
 .mobileSearchContainerNew {
