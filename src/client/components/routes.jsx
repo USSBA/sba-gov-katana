@@ -27,12 +27,13 @@ let RootPage = (props) => <Async componentProps={props} load={import("./pages/ro
 let DocumentLookupPage = (props) => <Async componentProps={props} load={import("./pages/document-lookup-page/document-lookup-page.jsx")} />
 let ArticleLookupPage = (props) => <Async componentProps={props} load={import("./pages/article-lookup-page/article-lookup-page.jsx")} />
 
-import {Route, IndexRoute, IndexRedirect} from 'react-router';
+import {Route, IndexRoute, IndexRedirect, Redirect} from 'react-router';
 import constants from "../services/constants.js"
 import MaintenancePage from "./pages/maintenance-page/maintenance-page.jsx"
 
 const mainRoutes = [
   (<IndexRoute key={1} component={HomepageContainer}/>),
+  (<Redirect  key={27} from="/funding-programs/loans/lendermatch" to="/lendermatch" />),
   (<Route key={2} path="/lendermatch" component={LandingPage}/>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
