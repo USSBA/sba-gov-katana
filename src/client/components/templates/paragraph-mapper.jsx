@@ -64,8 +64,9 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
         paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory}
                              display={item.display} eventConfig={eventConfig}/>);
       } else if (item.type === "callToAction") {
-        if(eventConfig)
+        if (eventConfig) {
           eventConfig.action = item.btnTitle;
+        }
         paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image}
                                    imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}
                                    title={item.title} eventConfig={eventConfig}/>);
@@ -74,8 +75,9 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
       } else if (item.type === "styleGrayBackground") {
         paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>);
       } else if (item.type === "button") {
-        if(eventConfig)
+        if(eventConfig) {
           eventConfig.action = item.link.title;
+        }
         paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title} eventConfig={eventConfig}/>);
       } else if (item.type === "quickLinks") {
         paragraph = (<QuickLinks data={item}/>);

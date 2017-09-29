@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./previous-next.scss";
 import _ from "lodash";
 import {SmallSecondaryButton} from "atoms";
-import {logPageEvent} from "../../../services/analytics.js";
 
 const businessGuideUrl = "/business-guide";
 
