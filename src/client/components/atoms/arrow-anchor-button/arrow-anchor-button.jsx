@@ -1,5 +1,4 @@
 import React from 'react';
-import { CaretIcon } from 'atoms';
 import s from './arrow-anchor-button.scss';
 
 class ArrowAnchorButton extends React.Component {
