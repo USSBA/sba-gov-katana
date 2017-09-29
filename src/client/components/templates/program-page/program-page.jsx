@@ -7,7 +7,12 @@ class ProgramPage extends React.Component {
 
   makeParagraphs(paragraphData) {
 
-    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, null, this.props.lineage);
+    const paragraphEventConfig = {
+      callToAction: {category: "Program-Page-Paragraph-CTA"},
+      button: {category: "Program-Page-Paragraph-ButtonCTA"},
+      childPageMenu: {category: "Program-Details-Learn-More"}
+    };
+    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, null, this.props.lineage, paragraphEventConfig);
     let wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
@@ -35,14 +40,15 @@ class ProgramPage extends React.Component {
     const hasBannerImage = bannerImage.hasOwnProperty('image')
 
     const _formattedButtons = buttons === undefined ? [] : (
-        buttons.map((button, index) => {
-           return {
-            url: button.url,
-            btnText: button.title,
-            btnType: index === 0 ? "LargeInversePrimaryButton" : "LargePrimaryButton"
-          };
-        })
-      )
+      buttons.map((button, index) => {
+        return {
+          url: button.url,
+          btnText: button.title,
+          btnType: index === 0 ? "LargeInversePrimaryButton" : "LargePrimaryButton",
+          eventConfig: {category: "Program-Landing-CTA", action: button.title}
+        };
+      })
+    )
 
     return (
       <div>

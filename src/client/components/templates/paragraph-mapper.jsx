@@ -21,7 +21,7 @@ import {
   ProgramDetailsCardCollection
 } from "organisms";
 
-function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, lineage) {
+function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, lineage, paragraphEventConfig = {}) {
 
   let paragraphs = [];
   let skipNextReadmore = false;
@@ -29,6 +29,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
     let paragraph = (<ParagraphPlaceholder data={item} index={index}/>);
     let paragraphType = item.type;
     if (item && item.type) {
+      // Google Analytics Event
+      const eventConfig = paragraphEventConfig[item.type];
       if (item.type === "readMore") {
         if (skipNextReadmore) {
           skipNextReadmore = false;
@@ -37,7 +39,7 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
           let readmoreProps = {
             parentId: "-read-more",
             readMoreSectionItem: item
-          }
+          };
           paragraph = (<ReadMoreSection {...readmoreProps}/>);
         }
       } else if (item.type === "textSection") {
@@ -59,17 +61,26 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
       } else if (item.type === "image") {
         paragraph = (<ImageSection imageObj={item.image} captionText={item.captionText}/>);
       } else if (item.type === "lookup") {
-        paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory} display={item.display}/>);
+        paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory}
+                             display={item.display} eventConfig={eventConfig}/>);
       } else if (item.type === "callToAction") {
-        paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image} imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl} title={item.title}/>)
+        if (eventConfig) {
+          eventConfig.action = item.btnTitle;
+        }
+        paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image}
+                                   imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}
+                                   title={item.title} eventConfig={eventConfig}/>);
       } else if (item.type === "cardCollection") {
-        paragraph = (<CardCollection parentIndex={index} cards={item.cards}/>);
+        paragraph = (<CardCollection parentIndex={index} cards={item.cards} />);
       } else if (item.type === "styleGrayBackground") {
         paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>);
       } else if (item.type === "button") {
-        paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title}/>)
+        if(eventConfig) {
+          eventConfig.action = item.link.title;
+        }
+        paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title} eventConfig={eventConfig}/>);
       } else if (item.type === "quickLinks") {
-        paragraph = (<QuickLinks data={item}/>)
+        paragraph = (<QuickLinks data={item}/>);
       } else if (item.type === "searchBox") {
 
           const {
@@ -89,10 +100,8 @@ function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, linea
           paragraph = <SearchBox {...searchBoxProps} />;
           
       } else if (item.type === "childPageMenu" && item.pagesInclude === "All child pages") {
-
         const cards = lineage[lineage.length - 1].children;
-        paragraph = <ProgramDetailsCardCollection cards={cards} />;
-
+        paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig}/>;
       }
     }
     return {

@@ -7,6 +7,8 @@ import {
 	LargeInversePrimaryButton
 } from "atoms";
 import styles from "./search-box.scss";
+import {logPageEvent} from "../../../services/analytics.js";
+import {navigateNow} from "../../../services/navigation.js";
 
 const createSlug = (str) => {
 
@@ -90,31 +92,34 @@ class SearchBox extends React.Component {
 	}
 
 	handleChange(event) {
-
 		this.setState({
 			selectedDocumentActivity: event.value
 		});
-
 	}
 
 	handleKeyUp(event) {
-
 		const returnKeyCode = 13;
-
 		if (event.keyCode === returnKeyCode) {
-
+			logPageEvent({
+				category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
+				action: `Search Enter-Button: Activity: ${this.state.selectedDocumentActivity}; Term: ${this.state.searchTerm}`
+			});
 			this.submit();
-
 		}
+	}
 
+	handleOnClick(){
+		logPageEvent({
+			category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
+			action: `Search CTA-Click: Activity: ${this.state.selectedDocumentActivity}; Term: ${this.state.searchTerm}`
+		});
+		this.submit();
 	}
 
 	updateSearchTerm(event) {
-
 		this.setState({
 			"searchTerm": event.target.value
 		});
-
 	}
 
 	submit() {
@@ -126,8 +131,7 @@ class SearchBox extends React.Component {
 		queryString += `&program=${this.props.documentProgram}`;
 		queryString += `&activity=${this.state.selectedDocumentActivity}`;
 
-		document.location = `/document/?${queryString}`;
-
+		navigateNow(`/document/?${queryString}`);
 	}
 
 	render() {
@@ -154,9 +158,7 @@ class SearchBox extends React.Component {
 					{this.renderMultiSelect()}
 					<div className={styles.clear} />
 					<LargeInversePrimaryButton
-						onClick={() => {
-							this.submit();
-						}}
+						onClick={this.handleOnClick.bind(this)}
 						className={styles.submitButton}
 						text="Search"
 					/>

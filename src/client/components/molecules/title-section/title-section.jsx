@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./title-section.scss";
+import {BasicLink} from "atoms";
 
 
 class TitleSection extends React.Component{
@@ -8,7 +9,10 @@ class TitleSection extends React.Component{
         let titleLinks = [];
         titleLinks = sectionHeaders.map(function(item, index) {
             return (
-                <li id={"titleSectionLinkId" + index} key={index}><a className={styles.titleLink} href={"#" + item.id}>{item.text}</a></li>
+                <li id={"titleSectionLinkId" + index} key={index}>
+                  <BasicLink myClassName={styles.titleLink} url={`#${item.id}`} text={item.text}
+                  eventConfig={{category: "Anchor-Links", action: `Click #${item.id}`}}/>
+                </li>
             );
         });
         return titleLinks;
