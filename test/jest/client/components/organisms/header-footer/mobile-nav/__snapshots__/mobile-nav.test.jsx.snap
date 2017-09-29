@@ -99,48 +99,58 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         type="text"
       />
     </form>
-    <div />
     <div
-      className="menuLinkSection"
+      className="mobileNavMenuLinks"
+      style={
+        Object {
+          "height": 638,
+          "maxHeight": 312,
+        }
+      }
     >
-      <a
-        className="navLinkSpecialNew"
-        href="/partners"
+      <div />
+      <div
+        className="mobileNavMenuLink"
       >
-        For Partners
-      </a>
-    </div>
-    <div
-      className="menuLinkSection"
-    >
-      <a
-        className="navLinkSpecialNew"
-        href="/tools/local-assistance#locations-page"
-        id="mobile-nav-near-you"
+        <a
+          className="navLinkSpecialNew"
+          href="/partners"
+        >
+          For Partners
+        </a>
+      </div>
+      <div
+        className="mobileNavMenuLink"
       >
-        <img
-          alt=""
-          className="linkIcon"
-          src="test-file-stub"
-        />
-        SBA Near You
-      </a>
-    </div>
-    <div
-      className="menuLinkSection"
-    >
-      <a
-        className="navLinkSpecialNew"
-        href="/tools/events#events-page"
-        id="mobile-nav-events"
+        <a
+          className="navLinkSpecialNew"
+          href="/tools/local-assistance#locations-page"
+          id="mobile-nav-near-you"
+        >
+          <img
+            alt=""
+            className="linkIcon"
+            src="test-file-stub"
+          />
+          SBA Near You
+        </a>
+      </div>
+      <div
+        className="mobileNavMenuLink"
       >
-        <img
-          alt=""
-          className="linkIcon"
-          src="test-file-stub"
-        />
-        Small Business Events
-      </a>
+        <a
+          className="navLinkSpecialNew"
+          href="/tools/events#events-page"
+          id="mobile-nav-events"
+        >
+          <img
+            alt=""
+            className="linkIcon"
+            src="test-file-stub"
+          />
+          Small Business Events
+        </a>
+      </div>
     </div>
   </div>
 </div>
