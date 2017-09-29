@@ -18,7 +18,7 @@ class Header extends React.Component {
   render() {
     return (
       <nav className={styles.navbar}>
-        <MobileNav mainMenuData={this.props.mainMenuData}/>
+        <MobileNav additionalMenuOffset={this.props.additionalMenuOffset} mainMenuData={this.props.mainMenuData}/>
         <DesktopNav mainMenuData={this.props.mainMenuData}/>
       </nav>
     );
@@ -26,7 +26,8 @@ class Header extends React.Component {
 }
 
 Header.defaultProps = {
-  mainMenuData: null
+  mainMenuData: null,
+  additionalMenuOffset: 0
 };
 
 function mapStateToProps(reduxState) {
