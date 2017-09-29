@@ -146,7 +146,7 @@ class Main extends React.Component {
           }}
         />
 
-        <Header />
+        <Header additionalMenuOffset={visible ? 53 : 0}/>
 
         <MainLoader />
 

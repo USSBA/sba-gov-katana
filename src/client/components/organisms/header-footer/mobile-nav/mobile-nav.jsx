@@ -27,7 +27,7 @@ class MobileNav extends React.Component {
   }
 
   updateNavHeight() {
-    const heightOffset = 130;
+    const heightOffset = 130 + this.props.additionalMenuOffset;
     const newHeight = window.innerHeight - heightOffset;
     this.setState({ navHeight: newHeight });
   }
@@ -114,4 +114,9 @@ class MobileNav extends React.Component {
     );
   }
 }
+
+MobileNav.defaultProps = {
+  additionalMenuOffset: 0
+};
+
 export default MobileNav;
