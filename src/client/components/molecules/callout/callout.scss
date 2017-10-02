@@ -68,6 +68,14 @@ $buttonPadding: 15px;
     padding-right: 50px;
 }
 
+.buttonContainer {
+	
+	button {
+    	margin-left: 0;
+    }
+    
+}
+
 .buttonContainer button:nth-child(1){
 	@include grid-media($sba-grid-small){
 		margin-bottom: 15px;
