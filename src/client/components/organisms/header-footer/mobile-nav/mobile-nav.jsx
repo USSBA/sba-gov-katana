@@ -5,6 +5,7 @@ import {
   SectionLink
 } from "atoms";
 
+import clientConfig from "../../../../services/client-config.js"
 import searchIcon from "../../../../../../public/assets/svg/mobile-menu/search-icon.svg";
 import nearyouIcon from "../../../../../../public/assets/svg/mobile-menu/near-you-icon.svg";
 import calendarIcon from "../../../../../../public/assets/svg/mobile-menu/calendar-icon.svg";
@@ -58,13 +59,15 @@ class MobileNav extends React.Component {
       );
     }
 
-    menuItems.push(
-      <div className={styles.mobileNavMenuLink}>
-        <a className={styles.navLinkSpecialNew} href="/partners">
-          For Partners
-        </a>
-      </div>
-    );
+    if(clientConfig.forPartners){
+        menuItems.push(
+          <div className={styles.mobileNavMenuLink}>
+            <a className={styles.navLinkSpecialNew} href="/partners">
+              For Partners
+            </a>
+          </div>
+        );
+    }
     menuItems.push(
       <div className={styles.mobileNavMenuLink}>
         <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/tools/local-assistance#locations-page">
