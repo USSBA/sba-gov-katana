@@ -3,8 +3,8 @@ FROM node:7.0.0
 WORKDIR /tmp
 COPY package.json /tmp/
 RUN npm config set registry http://registry.npmjs.org/
-RUN npm install node-sass
-RUN npm install
+RUN npm install node-sass --silent
+RUN npm install --silent
 
 WORKDIR /usr/src/app
 RUN mv /tmp/node_modules /usr/src/app/

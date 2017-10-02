@@ -19,9 +19,10 @@ branches:
   - RELEASE-\d+
 
 install:
-  - npm install
+  - npm install --silent
 script:
   - npm test
+  - npm build
 
 after_success:
   - ./scripts/travis-docker-build.sh
