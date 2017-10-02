@@ -1,31 +1,19 @@
-## Required ENV variables
-## AWS_ACCOUNT_ID
-## AWS_ACCESS_KEY_ID
-## AWS_SECRET_ACCESS_KEY
-
 sudo: required
-
 language: node_js
-
 services:
   - docker
-
-# node_js:
-#   - READ FROM .nvmrc
-
 branches:
   only:
-  - master
-  - RELEASE-\d+
-
+    - master
+    - RELEASE-\d+
 install:
   - npm install --silent
 script:
   - npm test
-  - ./scripts/build.sh
-
+  - "./scripts/build.sh"
 after_success:
-  - ./scripts/travis-docker-build.sh
+  - "./scripts/travis-docker-build.sh"
 notifications:
   email: false
-  slack: sbadigitalservices:$SLACK_KEY
+  slack:
+    secure: cWs6aSffgbSn6sQtWCGQYg+WAHIX7AiC2YtDiYVx2TcYovo7El39Ibiw1Ozc8SwvwW+olSjg1BVBVGwUFR2RGaY5WU9sZeU+gbIgNRuVHvLXla7I/0tTt5Xpn4gZShkP+Vp4HwtkKPwrXdQ+eWvvvKdTrHVjRbdYPNsq0xH1gP8os90NWoTUm42NJagvfLjy587bx+f7qNS6j6br/PN2Dxz6JmowM92kDfBbgTt1fXCWlKnDitR1V3aszMxXBycZr48T7hxR5cFYGRMCUhpoqBhZE0FcWit0QWgMIUkVtEEtod/9L+fxCLp7uzxafrmS5cyAyse3Th71sCC9se/CcjVjf3Y2EnDNQjjjiBsA5yy3PlzPjBJQfGWl1gVhAfnvo1vCEwVwlcBeOId+HNi/huPR3DHpyjenVcSqjPhzBidxGt+FqwdQe9XeRp24aSDX6WrbimJGqVEpo7Muta9qi4bH+1i1Ucxs4XvPxxmk0zMTkD1vP7yk5arzJws1ZSUf3CS7Dqg7xDv9Ao1EHZ6EqbarBH6NxJcZhb3bWCxgDnrdjn4a7ZhOZJyrAVi9SM3b/XAEIlgcQzQEmx7P3XrFy68SHIR6g+cMBQXyAlj9MqZxybFUl/DCIduqT3rx/5bLRtUZ8NW8dh1GyQkbbFxynAqfrFpIPmotjLrENqGHBlY=
