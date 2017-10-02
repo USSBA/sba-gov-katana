@@ -21,12 +21,7 @@ class Hero extends React.Component {
             <div className={styles.heroMobileImageContainer}>
               <div className="hero-image-mobile" title={this.props.alt} style={this.imgStyles()} />
             </div>
-            {/* <img className={`hero-image-desktop ${styles.heroDesktopImage}`} src={this.props.imageUrl} alt={this.props.alt}/> */}
-            <img
-              className={`hero-image-desktop ${styles.heroDesktopImage}`}
-              src="http://ll-c.ooyala.com/e1/MyOTRuYjE6Zudy0Sz1U7BtPHK4l96dIv/promo322253740"
-              alt={this.props.alt}
-            />
+            <img className={`hero-image-desktop ${styles.heroDesktopImage}`} src={this.props.imageUrl} alt={this.props.alt}/>
             <div className={`hero-callout ${styles.callout}`}>
               <Callout
                 title={this.props.title}
