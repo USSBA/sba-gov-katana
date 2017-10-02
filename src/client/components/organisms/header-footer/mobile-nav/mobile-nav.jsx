@@ -61,7 +61,7 @@ class MobileNav extends React.Component {
 
     if(clientConfig.forPartners){
         menuItems.push(
-          <div className={styles.mobileNavMenuLink}>
+          <div key={this.props.mainMenuData.length+1} className={styles.mobileNavMenuLink}>
             <a className={styles.navLinkSpecialNew} href="/partners">
               For Partners
             </a>
@@ -69,7 +69,7 @@ class MobileNav extends React.Component {
         );
     }
     menuItems.push(
-      <div className={styles.mobileNavMenuLink}>
+      <div key={this.props.mainMenuData.length+2} className={styles.mobileNavMenuLink}>
         <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/tools/local-assistance#locations-page">
           <img className={styles.linkIcon} src={nearyouIcon} alt=""/>
           SBA Near You
@@ -77,7 +77,7 @@ class MobileNav extends React.Component {
       </div>
     );
     menuItems.push(
-      <div className={styles.mobileNavMenuLink}>
+      <div key={this.props.mainMenuData.length+3} className={styles.mobileNavMenuLink}>
         <a id="mobile-nav-events" className={styles.navLinkSpecialNew} href="/tools/events#events-page">
           <img className={styles.linkIcon} src={calendarIcon} alt=""/>
           Small Business Events
@@ -119,7 +119,8 @@ class MobileNav extends React.Component {
 }
 
 MobileNav.defaultProps = {
-  additionalMenuOffset: 0
+  additionalMenuOffset: 0,
+  mainMenuData: []
 };
 
 export default MobileNav;
