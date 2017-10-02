@@ -22,7 +22,7 @@ install:
   - npm install --silent
 script:
   - npm test
-  - npm build
+  - ./scripts/build.sh
 
 after_success:
   - ./scripts/travis-docker-build.sh
