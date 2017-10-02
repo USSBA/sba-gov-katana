@@ -28,3 +28,4 @@ after_success:
   - ./scripts/travis-docker-build.sh
 notifications:
   email: false
+  slack: sbadigitalservices:$SLACK_KEY
