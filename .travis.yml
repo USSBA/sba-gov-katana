@@ -1,0 +1,29 @@
+## Required ENV variables
+## AWS_ACCOUNT_ID
+## AWS_ACCESS_KEY_ID
+## AWS_SECRET_ACCESS_KEY
+
+sudo: required
+
+language: node_js
+
+services:
+  - docker
+
+# node_js:
+#   - READ FROM .nvmrc
+
+branches:
+  only:
+  - master
+  - RELEASE-\d+
+
+install:
+  - npm install
+script:
+  - npm test
+
+after_success:
+  - ./scripts/travis-docker-build.sh
+notifications:
+  email: false
