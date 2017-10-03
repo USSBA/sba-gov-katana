@@ -27,7 +27,7 @@ class Tile extends React.Component {
       this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     } else if (this.isLinkToPage()) {
       navigateNow(this.props.data.fullUrl, {
-        category: "Menu-Menu",
+        category: "Main-Menu",
         action: this.props.data.title,
         label: document.location.pathname
       });
