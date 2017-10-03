@@ -85,22 +85,6 @@ $hero-container-grid: (
 	}
 }
 
-
-// .heroDesktopImageContainer {
-// 	@include grid-media($sba-grid-small){
-// 		min-height: 350px;
-// 	}
-// 	@include grid-media($sba-grid-medium){
-// 		@include grid-column(11);
-// 		@include grid-push(1)
-// 	}
-// 	@include grid-media($sba-grid-large){
-// 		@include grid-column(10);
-// 		@include grid-push(2)
-// 		height: 1000px;
-// 	}
-// }
-
 .heroMobileImage {
 	@include grid-media($sba-grid-small){
 		width: 100%;
