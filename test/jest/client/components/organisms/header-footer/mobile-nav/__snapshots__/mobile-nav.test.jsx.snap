@@ -109,7 +109,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       }
     >
       <div
-        className="mobileNavMenuLink"
+        className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
           className="navLinkSpecialNew"
@@ -125,7 +125,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         </a>
       </div>
       <div
-        className="mobileNavMenuLink"
+        className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
           className="navLinkSpecialNew"
