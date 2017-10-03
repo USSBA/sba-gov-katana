@@ -5,7 +5,11 @@ class ArrowAnchorButton extends React.Component {
   render() {
     return (
       <div>
-        <a href="#paragraph-1">
+        <a
+          href="#paragraph-1"
+          onClick={() => {
+            this.props.onClick();
+          }}>
           <div className={s.container}>
             <i className={`fa fa-angle-down ${s.arrow}`} aria-hidden="true" />
           </div>

@@ -2,8 +2,21 @@ import React from 'react';
 import { Callout } from 'molecules';
 import styles from './hero.scss';
 import { ArrowAnchorButton } from 'atoms';
+import Waypoint from 'react-waypoint';
 
 class Hero extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      anchorButton: true,
+    };
+  }
+
+  componentDidMount() {
+    this.props.anchorButton &&
+      window.addEventListener('scroll', this.removeAnchorButton.bind(this));
+  }
+
   imgStyles() {
     return {
       background: 'url(' + this.props.imageUrl + ') no-repeat center center',
@@ -11,6 +24,13 @@ class Hero extends React.Component {
       width: '100%',
       height: '100%',
     };
+  }
+
+  removeAnchorButton() {
+    this.state.anchorButton &&
+      this.setState({ anchorButton: false }, () => {
+        window.removeEventListener('scroll', this.removeAnchorButton.bind(this));
+      });
   }
 
   render() {
@@ -43,11 +63,21 @@ class Hero extends React.Component {
             </div>
           </div>
         )}
-        {this.props.anchorButton && (
-          <div className={styles.anchorButton}>
-            <ArrowAnchorButton />
-          </div>
-        )}
+        {this.props.anchorButton &&
+          (this.state.anchorButton && (
+            <div className={styles.anchorButton}>
+              <ArrowAnchorButton
+                onClick={() => {
+                  this.removeAnchorButton();
+                }}
+              />
+            </div>
+          ))}
+        <Waypoint
+          onLeave={() => {
+            this.removeAnchorButton();
+          }}
+        />
       </div>
     );
   }

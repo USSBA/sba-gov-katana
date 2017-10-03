@@ -11,11 +11,17 @@
     height: 36px;
     margin: auto;
 
-    border: 2px solid;
     text-align: center;
+
+    border: 2px solid;
+    background-color: white;
+}
+
+.container:hover {
+    // opacity: .8;
 }
 
 .arrow {
-	font-size: 35px;
-	line-height: 32px;
+    font-size: 35px;
+    line-height: 32px;
 }
