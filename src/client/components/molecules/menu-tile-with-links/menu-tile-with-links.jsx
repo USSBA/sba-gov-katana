@@ -8,7 +8,7 @@ class MenuTileWithLinks extends React.Component {
   render() {
       let eventConfig = {
           category: "Main-Menu",
-          action: this.props.largeTitle + " " + this.props.smallTitle
+          action: (this.props.largeTitle || "") + (this.props.largeTitle && this.props.smallTitle ? " ":"") + (this.props.smallTitle || "")
       }
     return (
       <div id={this.props.id} className={s.tileHover}>
