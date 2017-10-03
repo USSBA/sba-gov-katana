@@ -59,10 +59,11 @@ class MobileNav extends React.Component {
       );
     }
 
-console.log("clientConfig",clientConfig)
+
+    let baseLength = this.props.mainMenuData? this.props.mainMenuData.length : 0;
     if(clientConfig.forPartners){
         menuItems.push(
-          <div key={this.props.mainMenuData.length+1} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
+          <div key={baseLength+1} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
             <a className={styles.navLinkSpecialNew} href="/partners">
               For Partners
             </a>
@@ -70,7 +71,7 @@ console.log("clientConfig",clientConfig)
         );
     }
     menuItems.push(
-      <div key={this.props.mainMenuData.length+2} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
+      <div key={baseLength+2} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
         <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/tools/local-assistance#locations-page">
           <img className={styles.linkIcon} src={nearyouIcon} alt=""/>
           SBA Near You
@@ -78,7 +79,7 @@ console.log("clientConfig",clientConfig)
       </div>
     );
     menuItems.push(
-      <div key={this.props.mainMenuData.length+3} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
+      <div key={baseLength+3} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
         <a id="mobile-nav-events" className={styles.navLinkSpecialNew} href="/tools/events#events-page">
           <img className={styles.linkIcon} src={calendarIcon} alt=""/>
           Small Business Events
