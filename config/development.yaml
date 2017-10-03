@@ -30,3 +30,5 @@ linc:
 oca:
     soap:
         wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl
+features:
+    forPartners: true

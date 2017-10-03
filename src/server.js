@@ -56,7 +56,8 @@ app.use(function(req, res, next) {
     isUserLoggedIn: hasSessionCookie || false,
     googleAnalytics: config.get("googleAnalytics"),
     debug: config.get("developmentOptions.client.logging"),
-    govdelivery: config.get("govdelivery.popupEnabled")
+    govdelivery: config.get("govdelivery.popupEnabled"),
+    forPartners: config.get("features.forPartners")
   };
   req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
   next();
