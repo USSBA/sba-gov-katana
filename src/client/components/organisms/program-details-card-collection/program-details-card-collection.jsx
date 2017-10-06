@@ -26,7 +26,7 @@ class ProgramDetailsCardCollection extends Component {
           }
           return {
             titleText: item.title,
-            subtitleText: item.description,
+            subtitleText: item.summary,
             link: item.fullUrl,
             eventConfig: eventConfig
           };
