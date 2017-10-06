@@ -32,7 +32,7 @@ function fetchContacts(queryParams) {
 
 
 function fetchFormattedMenu() {
-  return get("menu");
+  return get("siteMap");
 }
 
 function fetchCounsellorCta() {
