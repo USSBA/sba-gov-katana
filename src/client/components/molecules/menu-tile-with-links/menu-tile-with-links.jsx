@@ -6,12 +6,16 @@ import {BasicLink} from "atoms";
 class MenuTileWithLinks extends React.Component {
 
   render() {
+      let eventConfig = {
+          category: "Main-Menu",
+          action: (this.props.largeTitle || "") + (this.props.largeTitle && this.props.smallTitle ? " ":"") + (this.props.smallTitle || "")
+      }
     return (
       <div id={this.props.id} className={s.tileHover}>
-        <BasicLink url={this.props.link} myClassName={s.noUnderline}>
+        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
               <h2 className={s.largeTitleHover}>{this.props.largeTitle}</h2>
         </BasicLink>
-        <BasicLink url={this.props.link} myClassName={s.noUnderline}>
+        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
             <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         </BasicLink>
         <div className={s.topLine}></div>

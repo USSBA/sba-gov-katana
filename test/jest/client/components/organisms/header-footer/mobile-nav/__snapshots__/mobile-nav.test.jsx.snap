@@ -104,23 +104,12 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       style={
         Object {
           "height": 638,
-          "maxHeight": 312,
+          "maxHeight": 156,
         }
       }
     >
-      <div />
       <div
-        className="mobileNavMenuLink"
-      >
-        <a
-          className="navLinkSpecialNew"
-          href="/partners"
-        >
-          For Partners
-        </a>
-      </div>
-      <div
-        className="mobileNavMenuLink"
+        className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
           className="navLinkSpecialNew"
@@ -136,7 +125,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         </a>
       </div>
       <div
-        className="mobileNavMenuLink"
+        className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
           className="navLinkSpecialNew"

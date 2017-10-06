@@ -5,6 +5,7 @@ import {
   SectionLink
 } from "atoms";
 
+import clientConfig from "../../../../services/client-config.js"
 import searchIcon from "../../../../../../public/assets/svg/mobile-menu/search-icon.svg";
 import nearyouIcon from "../../../../../../public/assets/svg/mobile-menu/near-you-icon.svg";
 import calendarIcon from "../../../../../../public/assets/svg/mobile-menu/calendar-icon.svg";
@@ -47,7 +48,7 @@ class MobileNav extends React.Component {
     if (this.props.mainMenuData) {
       menuItems = this.props.mainMenuData.map((item, index) => {
         return (
-          <div key={index} className={styles.mobileNavMenuLink} onClick={me.toggleNav.bind(me)}>
+          <div key={index} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink} onClick={me.toggleNav.bind(me)}>
             <SectionLink id={"main-menu-link-" + index} url={item.link} text={item.linkTitle}/>
           </div>
         );
@@ -58,15 +59,19 @@ class MobileNav extends React.Component {
       );
     }
 
+
+    let baseLength = this.props.mainMenuData? this.props.mainMenuData.length : 0;
+    if(clientConfig.forPartners){
+        menuItems.push(
+          <div key={baseLength+1} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
+            <a className={styles.navLinkSpecialNew} href="/partners">
+              For Partners
+            </a>
+          </div>
+        );
+    }
     menuItems.push(
-      <div className={styles.mobileNavMenuLink}>
-        <a className={styles.navLinkSpecialNew} href="/partners">
-          For Partners
-        </a>
-      </div>
-    );
-    menuItems.push(
-      <div className={styles.mobileNavMenuLink}>
+      <div key={baseLength+2} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
         <a id="mobile-nav-near-you" className={styles.navLinkSpecialNew} href="/tools/local-assistance#locations-page">
           <img className={styles.linkIcon} src={nearyouIcon} alt=""/>
           SBA Near You
@@ -74,7 +79,7 @@ class MobileNav extends React.Component {
       </div>
     );
     menuItems.push(
-      <div className={styles.mobileNavMenuLink}>
+      <div key={baseLength+3} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
         <a id="mobile-nav-events" className={styles.navLinkSpecialNew} href="/tools/events#events-page">
           <img className={styles.linkIcon} src={calendarIcon} alt=""/>
           Small Business Events
@@ -116,7 +121,8 @@ class MobileNav extends React.Component {
 }
 
 MobileNav.defaultProps = {
-  additionalMenuOffset: 0
+  additionalMenuOffset: 0,
+  mainMenuData: []
 };
 
 export default MobileNav;
