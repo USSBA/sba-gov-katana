@@ -1,0 +1,39 @@
+# Resource Center ETL Script
+
+This script will take the "CSV" files of the resource center locations and convert them into a single JSON file.
+
+## Usage
+
+Drop files in ./raw-data/
+
+```
+.
+├── raw-data
+│   ├── PrtData.txt
+│   ├── SBDC.txt
+│   ├── SCORE.txt
+│   ├── VET.txt
+│   └── WBC.txt
+└── rc-etl.js
+```
+
+Then run `node rc-etl.js`
+
+Output will be `./output.json`
+
+This file should be moved to `src/client/services/resource-centers.json`
+
+## Input Formats
+
+### SBDC, SCORE, VET, WBC
+
+This is the ordered list of column names, renamed for convenience:
+
+> ["Validprtprimcattyp","Validprtsubcattyp","Prtid","id","name1","name2","Validloctyp","street1","street2","city","state","zip","Geolattude","Geolngtude","phone","Fax","Web","Email","Lastupdtdt"]
+
+### PrtData
+
+The example file given did not provide a header, so some assumptions were made regarding column content.  For the purpose of this script, we can ignore the fields not pertaining to address/phone
+
+> ["ignore1","ignore2","ignore3","ignore4","ignore5","name1","name2","ignore6","street1","street2","city","state","zip","ignore7","ignore8","phone","fax","ignoreTheRest"];//,"","N","N","Y","Y","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N","N"]
+
