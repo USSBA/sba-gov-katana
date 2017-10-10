@@ -1,5 +1,6 @@
 #!/bin/bash
 if [ $TRAVIS_PULL_REQUEST == "false" ]; then
+    ./scripts/build.sh
     docker --version  # document the version travis is using
     pip install --user awscli # install aws cli w/o sudo
     export PATH=$PATH:$HOME/.local/bin # put aws in the path
