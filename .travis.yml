@@ -5,7 +5,7 @@ services:
 branches:
   only:
     - master
-    - RELEASE-\d+
+    - /RELEASE-\d+/
 install:
   - npm install --silent
 script:
