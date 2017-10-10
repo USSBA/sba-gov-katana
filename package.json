@@ -121,7 +121,6 @@
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
     "compression-webpack-plugin": "^1.0.0",
-    "csvtojson": "^1.1.8",
     "enzyme": "2.7.1",
     "esformatter": "0.10.0",
     "esformatter-ignore": "0.1.3",
