@@ -9,7 +9,7 @@ class ArticleLookupPage extends React.Component {
       title: "Article lookup",
       type: "articles",
       taxonomyFilters: [
-        "articleType", "program"
+        "articleCategory", "program"
       ],
       fieldsToShowInDetails: ["Program", "Published", "Summary"],
       sortByOptions: ["Last Updated", "Title"]
