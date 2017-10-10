@@ -9,7 +9,7 @@ const getPartnerOffices = (partner) => {
   return resourceCenters[partner];
 };
 
-const getPartnersByZip = (partner, zip) => {
+const getOfficesByZip = (partner, zip) => {
   return _.filter(
     module.exports.getPartnerOffices(partner), // We use the module.exports version to ensure it can be mocked
     (office) => {
@@ -18,4 +18,13 @@ const getPartnersByZip = (partner, zip) => {
   );
 };
 
-export { getPartners, getPartnerOffices, getPartnersByZip };
+const getOfficesByState = (partner, state) => {
+  return _.filter(
+    module.exports.getPartnerOffices(partner), // We use the module.exports version to ensure it can be mocked
+    (office) => {
+      return office.state === state;
+    }
+  );
+};
+
+export { getPartners, getPartnerOffices, getOfficesByZip, getOfficesByState };

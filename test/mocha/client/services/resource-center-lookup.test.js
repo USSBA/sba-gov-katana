@@ -10,7 +10,7 @@ describe("#ResourceCenterLookup", function() {
       partners.should.have.all.members(expectedPartners);
     });
   });
-  describe("#getPartnersByZip", function() {
+  describe("#getOfficesByZip", function() {
     let gpoStub;
     before(() => {
       gpoStub = sinon.stub(resourceCenterLookup, "getPartnerOffices").returns([
@@ -25,19 +25,46 @@ describe("#ResourceCenterLookup", function() {
       gpoStub.restore();
     });
     it("with one match, returns a list of a single office", () => {
-      const prtPartners = resourceCenterLookup.getPartnersByZip("PrtData", "12345");
+      const prtPartners = resourceCenterLookup.getOfficesByZip("PrtData", "12345");
       prtPartners.should.have.length(1);
       prtPartners[0].name1.should.equal("First Office");
     });
 
     it("with two matches, returns a list of a two offices", () => {
-      const prtPartners = resourceCenterLookup.getPartnersByZip("PrtData", "22222");
+      const prtPartners = resourceCenterLookup.getOfficesByZip("PrtData", "22222");
       prtPartners.should.have.length(2);
       prtPartners[0].name1.should.equal("Fourth Office");
       prtPartners[1].name1.should.equal("Fifth Office");
     });
     it("with partial matches, returns the expected matches", () => {
-      const prtPartners = resourceCenterLookup.getPartnersByZip("PrtData", "11111");
+      const prtPartners = resourceCenterLookup.getOfficesByZip("PrtData", "11111");
+      prtPartners.should.have.length(2);
+      prtPartners[0].name1.should.equal("Second Office");
+      prtPartners[1].name1.should.equal("Third Office");
+    });
+  });
+  describe("#getOfficesByState", function() {
+    let gpoStub;
+    before(() => {
+      gpoStub = sinon.stub(resourceCenterLookup, "getPartnerOffices").returns([
+        {state: "MD", name1: "First Office"},
+        {state: "DC", name1: "Second Office"},
+        {state: "DC", name1: "Third Office"},
+        {state: "VA", name1: "Fourth Office"},
+        {state: "VA", name1: "Fifth Office"},
+      ]);
+    });
+    after(() => {
+      gpoStub.restore();
+    });
+    it("with one match, returns a list of a single office", () => {
+      const prtPartners = resourceCenterLookup.getOfficesByState("PrtData", "MD");
+      prtPartners.should.have.length(1);
+      prtPartners[0].name1.should.equal("First Office");
+    });
+
+    it("with two matches, returns a list of a two offices", () => {
+      const prtPartners = resourceCenterLookup.getOfficesByState("PrtData", "DC");
       prtPartners.should.have.length(2);
       prtPartners[0].name1.should.equal("Second Office");
       prtPartners[1].name1.should.equal("Third Office");
