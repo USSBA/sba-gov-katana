@@ -1,3 +1,4 @@
+import ArrowAnchorButton from "./arrow-anchor-button/arrow-anchor-button.jsx";
 import ArrowButton from "./arrow-button/arrow-button.jsx";
 import BasicLink from "./basic-link/basic-link.jsx";
 import ButtonBase from "./button-base/button-base.jsx";
@@ -45,4 +46,4 @@ import HomeIcon from "./icons/home.jsx";
 import FailureIcon from "./icons/failure.jsx";
 import SuccessIcon from "./icons/success.jsx";
 import Loader from "./loader/loader.jsx";
-export { ArrowButton, BasicLink, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, Loader, MainLogo, MultiSelect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, TextArea, UtilityLink, ValidationIcon, SearchIcon, ApplyButton, DocumentType, CaretIcon, CloseIcon, HomeIcon, FailureIcon, SuccessIcon };
+export { ArrowAnchorButton, ArrowButton, BasicLink, ButtonBase, CaptionText, Carousel, Checkbox, DecorativeDash, ExtraLargeTitleText, FormErrorMessage, HamburgerIcon, LargeGreySecondaryButton, LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton, LargeSecondaryButton, Loader, MainLogo, MultiSelect, NewsletterSmallPrimaryButton, PageLink, PdfIcon, ProgressBar, Radio, SectionLink, SimpleSelect, SmallGreySecondaryButton, SmallIcon, SmallInversePrimaryButton, SmallInverseSecondaryButton, SmallPrimaryButton, SmallSecondaryButton, SocialMediaLink, SubtitleText, TextInput, TextArea, UtilityLink, ValidationIcon, SearchIcon, ApplyButton, DocumentType, CaretIcon, CloseIcon, HomeIcon, FailureIcon, SuccessIcon };

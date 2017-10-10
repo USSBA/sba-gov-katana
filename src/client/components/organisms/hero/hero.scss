@@ -109,3 +109,13 @@ $hero-container-grid: (
 		display: none;
 	}
 }
+
+.anchorButton {
+	margin-top: 6px;
+	@include grid-media($sba-grid-medium-and-small){
+		@include grid-column(6)
+	}
+	@include grid-media($sba-grid-large){
+		@include grid-column(12)
+	}
+}
