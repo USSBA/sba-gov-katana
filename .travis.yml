@@ -10,7 +10,6 @@ install:
   - npm install --silent
 script:
   - npm test
-  - "./scripts/build.sh"
 after_success:
   - "./scripts/travis-docker-build.sh"
 notifications:
