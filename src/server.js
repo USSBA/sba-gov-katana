@@ -93,6 +93,10 @@ app.post("/actions/feedback", feedbackController.handleFeedback);
 app.get("/api/content/feedback.csv", feedbackController.retrieveFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
 
+import * as resourceCenterProfileController from "./controllers/resource-center-profile.js";
+app.post("/actions/resourceCenterProfile", jsonParser, resourceCenterProfileController.handleProfileSubmission);
+app.get("/api/content/resourceCenterProfile.json", resourceCenterProfileController.retrieveProfiles);
+
 import * as cacheController from "./controllers/cache.js";
 app.get("/actions/clearCache/collection/:type.json", cacheController.clearContentCollectionCacheByType);
 app.get("/actions/clearCache/:type/:id.json", cacheController.clearContentCacheById);
