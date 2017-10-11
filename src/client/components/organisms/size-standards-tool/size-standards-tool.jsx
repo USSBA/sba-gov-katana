@@ -9,6 +9,7 @@ import {
 import sizeStandardsGraphic from "../../../../../public/assets/images/tools/size-standards-tool/Size_standards_graphic.png";
 import styles from "./size-standards-tool.scss";
 
+
 class SizeStandardsTool extends PureComponent {
 
 	constructor() {
@@ -17,31 +18,38 @@ class SizeStandardsTool extends PureComponent {
 
 		this.state = {
 			"section": "NAICS",
+			"subSection": "ADD_NAICS",
 			"isNaicsCodeInputEnabled": false,
-			"naicsCodes": []
+			"naicsCodesList": []
 		};
 
+		this.origState = Object.assign({}, this.state);
 	}
 
-	gotoSection(section) {
+	gotoSection(data) {
 
-		this.setState({section}, () => {
+		let _data = data;
+
+		if (_data.section === "START") {
+			_data = Object.assign({}, this.origState);
+		}
+
+		this.setState(_data, () => {
 
 			window.scrollTo(0, 0);
 
 		});
 	}
 
-	onInputChange() {
+	onInputChange(data) {
 
-		const {section} = this.state;
+		const {section, value} = data;
 
 		switch(section) {
 
 			case "NAICS":
 
-				const naicsCodeInputValue = document.getElementById("naics-code").value;
-				const isNaicsCodeInputEnabled = (naicsCodeInputValue.length === 6);
+				const isNaicsCodeInputEnabled = (value.length === 6);
 
 				this.setState({isNaicsCodeInputEnabled});
 
@@ -53,15 +61,65 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
-	addNaicsCode(){
+	addNaicsCode(code){
 
-		console.log("BB")
+		const naicsCodesList = this.state.naicsCodesList.slice();
+		const {naicsCodes} = this.props;
+
+		const selectedCode = naicsCodes.find((object) => {
+
+			let result;
+
+			if (object.code === code) {
+				result = object;
+			}
+
+			return result;
+
+		});
+
+		if (selectedCode) {
+			naicsCodesList.push(selectedCode);
+		}
+
+
+		this.setState({
+			naicsCodesList,
+			subSection: "NAICS_LIST"
+		});
+
+	}
+
+	renderNaicsList() {
+
+		const {naicsCodesList} = this.state;
+		
+		const html = naicsCodesList.map((object, index) => {
+
+			const {code, description} = object;
+
+			return (
+
+				<li key={index}>
+					<div><span>{code}</span>{description}</div>
+				</li>
+
+			);
+
+		});
+
+		return html;
 
 	}
 	
 	render() {
 
-		const {section, isNaicsCodeInputEnabled} = this.state;
+		const {
+			section,
+			subSection,
+			isNaicsCodeInputEnabled,
+			naicsCodesList
+		} = this.state;
 
 		return (
 
@@ -79,7 +137,13 @@ class SizeStandardsTool extends PureComponent {
 						className={styles.button}
 						text="Start"
 						onClick={() => {
-							this.gotoSection("NAICS");
+							
+							const data = {
+								"section": "NAICS",
+								"subSection": "ADD_NAICS"
+							};
+
+							this.gotoSection(data);
 						}}
 					/>
 
@@ -89,49 +153,81 @@ class SizeStandardsTool extends PureComponent {
 					
 					<h2>What's your industry?</h2>
 					
-					<div className={styles.naicsCodeInput}>
-						
-						<TextInput
-							id="naics-code"
-							errorText={"Please enter a correct NAICS Code."}
-							label="Your 6-digit NAICS code"
-							validationState={""}
-							onChange={() => {
-								
-								this.onInputChange();
-								
-							}}
-						/>
-
-						<SmallPrimaryButton
+					{subSection === "ADD_NAICS" && <div>
+						<div className={styles.naicsCodeInput}>
 							
-							onClick={() => {
-								this.addNaicsCode();
-							}}
-							disabled={!isNaicsCodeInputEnabled}
-							text="Add"
+							<TextInput
+								id="naics-code"
+								errorText={"Please enter a correct NAICS Code."}
+								label="Your 6-digit NAICS code"
+								validationState={""}
+								onChange={() => {
+									
+									const data = {
+										section: section,
+										value: document.getElementById("naics-code").value
+									};
 
+									this.onInputChange(data);
+									
+								}}
+							/>
+
+							<SmallPrimaryButton
+								onClick={() => {
+
+									const naicsCode = document.getElementById("naics-code").value;
+									this.addNaicsCode(naicsCode);
+
+								}}
+								disabled={!isNaicsCodeInputEnabled}
+								text="Add"
+							/>
+
+						</div>
+
+						<p>The North American Industry Classification System or NAICS <br />classifies  businesses according to type of economic activity.</p>
+						<p><a href="https://www.census.gov/eos/www/naics/" target="_blank"><SearchIcon aria-hidden="true" />Find your NAICS code</a></p>
+
+					</div>}
+
+					{subSection === "NAICS_LIST" && <div> 
+
+					{this.renderNaicsList()}
+
+					<p><a onClick={() => {
+						
+						this.gotoSection({
+							"section": "NAICS",
+							"subSection":"ADD_NAICS"
+						});
+
+					}}><SearchIcon aria-hidden="true" />Add another industry</a></p>
+
+					</div>}
+
+					{naicsCodesList.length > 0 && <div>
+						
+						<LargePrimaryButton
+							className={styles.button}
+							text="Next"
+							onClick={() => {
+								this.gotoSection({
+									"section": "EMPLOYEES"
+								});
+							}}
 						/>
 
-					</div>
-
-					<p>The North American Industry Classification System or NAICS <br />classifies  businesses according to type of economic activity.</p>
-					<p><a href="https://www.census.gov/eos/www/naics/" target="_blank"><SearchIcon aria-hidden="true" />Find your NAICS code</a></p>
-
-					<LargePrimaryButton
-						className={styles.button}
-						text="Next"
-						onClick={() => {
-							this.gotoSection("EMPLOYEES");
-						}}
-					/>
+					</div>}
 
 					<div className={styles.appBar}>
 
 						<SmallInversePrimaryButton
 							text="BACK"
 							onClick={() => {
-								this.gotoSection("START");
+								this.gotoSection({
+									"section": "START"
+								});
 							}}
 						/>
 
@@ -161,7 +257,9 @@ class SizeStandardsTool extends PureComponent {
 						className={styles.button}
 						text="Next"
 						onClick={() => {
-							this.gotoSection("RESULTS");
+							this.gotoSection({
+								"section": "RESULTS"
+							});
 						}}
 					/>
 
@@ -170,7 +268,9 @@ class SizeStandardsTool extends PureComponent {
 						<SmallInversePrimaryButton
 							text="BACK"
 							onClick={() => {
-								this.gotoSection("NAICS");
+								this.gotoSection({
+									"section": "NAICS"
+								});
 							}}
 						/>
 
@@ -200,7 +300,9 @@ class SizeStandardsTool extends PureComponent {
 						className={styles.button}
 						text="Next"
 						onClick={() => {
-							this.gotoSection("RESULTS");
+							this.gotoSection({
+								"section": "RESULTS"
+							});
 						}}
 					/>
 
@@ -209,7 +311,9 @@ class SizeStandardsTool extends PureComponent {
 						<SmallInversePrimaryButton
 							text="BACK"
 							onClick={() => {
-								this.gotoSection("NAICS");
+								this.gotoSection({
+									"section": "NAICS"
+								});
 							}}
 						/>
 
@@ -226,7 +330,9 @@ class SizeStandardsTool extends PureComponent {
 						<SmallInversePrimaryButton
 							text="START OVER"
 							onClick={() => {
-								this.gotoSection("START");
+								this.gotoSection({
+									"section": "START"
+								});
 							}}
 						/>
 
@@ -241,5 +347,44 @@ class SizeStandardsTool extends PureComponent {
 	}
 
 }
+
+SizeStandardsTool.defaultProps = {
+	naicsCodes: [{
+        "code": "111110",
+        "description": "Soybean Farming",
+        "sectorId": "11",
+        "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+        "subsectorId": "111",
+        "subsectorDescription": "Crop Production",
+        "revenueLimit": 0.75,
+        "employeeCount": null,
+        "footnote": null,
+        "parent": null
+    },
+    {
+        "code": "111120",
+        "description": "Oilseed (except Soybean) Farming",
+        "sectorId": "11",
+        "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+        "subsectorId": "111",
+        "subsectorDescription": "Crop Production",
+        "revenueLimit": 0.75,
+        "employeeCount": null,
+        "footnote": null,
+        "parent": null
+    },
+    {
+        "code": "111130",
+        "description": "Dry Pea and Bean Farming",
+        "sectorId": "11",
+        "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+        "subsectorId": "111",
+        "subsectorDescription": "Crop Production",
+        "revenueLimit": 0.75,
+        "employeeCount": null,
+        "footnote": null,
+        "parent": null
+    }]
+};
 
 export default SizeStandardsTool;
