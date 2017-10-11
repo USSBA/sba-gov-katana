@@ -14,6 +14,7 @@ import {TextSection} from "molecules";
 
 import * as NavigationActions from "../../../actions/navigation.js";
 
+import _ from "lodash";
 import s from "./document-article.scss";
 
 export class DocumentArticle extends React.Component {
@@ -52,7 +53,7 @@ export class DocumentArticle extends React.Component {
       const newestFile = this.getNewestFile()
       let newestFileExtension = "pdf";
       if(newestFile && newestFile.fileUrl){
-          newestFileExtension = newestFile.fileUrl.split(".")[1];
+          newestFileExtension = _.last(newestFile.fileUrl.split("."));
       }
       let documentTypeString = null;
       switch(data.type){
