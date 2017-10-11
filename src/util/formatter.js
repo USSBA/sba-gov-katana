@@ -16,6 +16,15 @@ function formatFeedbackData(data) {
     }) + "\n";
 }
 
+function formatResourceCenterData(data) {
+  return _.map(data, function(item) {
+    return _.merge(
+      item,
+      {
+        timestamp: moment.unix(item.timestamp).tz("UTC").format("YYYY-MM-DD HH:mm:SS")
+      });
+  });
+}
 
 
-export { formatFeedbackData };
+export { formatFeedbackData, formatResourceCenterData };
