@@ -1,0 +1,99 @@
+.sizeStandardsTool {
+	
+	margin-bottom:50px;
+	border: 2px solid #000;
+	box-shadow: 2px 2px 15px #888888;
+	text-align: center;
+	position: relative;
+
+	> div {
+
+		padding: 50px 32px 150px;
+
+		&.start {
+
+			padding-bottom: 50px;
+
+			p {
+
+				font-size: 26px;
+
+			}
+
+		}
+
+	}
+
+}
+
+.appBar {
+	
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #cccccc;
+	padding: 20px 30px;
+	text-align: left;
+
+}
+
+img {
+	
+	display: block;
+	width: 100%;
+
+	@include grid-media($sba-grid-medium) {
+		
+		margin: -70px auto -30px;
+
+	}
+	
+}
+
+.naicsCodeInput {
+	
+	width: 35%;
+	margin: 0 auto;
+	position: relative;
+
+	input {
+
+		line-height: 37px;
+
+	}
+
+	button {
+
+		position: absolute;
+		top: 34px;
+	    right: 0;
+
+	}
+
+}
+
+i {
+	
+	margin-right: 10px;
+	
+}
+
+.button {
+
+	padding: .75em 4.25em
+
+}
+
+.revenueInput {
+	
+	width: 25%;
+	margin: 0 auto;
+
+	input {
+
+		line-height: 37px;
+
+	}
+
+}
