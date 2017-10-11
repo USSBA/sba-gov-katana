@@ -60,7 +60,7 @@ class MobileNav extends React.Component {
     }
 
 
-    let baseLength = this.props.mainMenuData? this.props.mainMenuData.length : 0;
+    let baseLength = this.props.mainMenuData? this.props.mainMenuData.length : 2;
     if(clientConfig.forPartners){
         menuItems.push(
           <div key={baseLength+1} className={"mobile-nav-menu-item " +styles.mobileNavMenuLink}>
@@ -94,7 +94,7 @@ class MobileNav extends React.Component {
     const menuMaxHeight = menuItems.length * 78;
     return (
       <div>
-        <div className={styles.mobileHeader}>
+        <div key={4} className={styles.mobileHeader}>
           <MainLogo />
           <span>
             <a id="mobile-navigation-button" className={this.state.expanded ? styles.menuButtonOpen :  styles.menuButtonClosed} onClick={this.toggleNav.bind(this)}>
@@ -102,7 +102,7 @@ class MobileNav extends React.Component {
             </a>
           </span>
         </div>
-        <div className={styles.mainNavNew + " " + (this.state.expanded
+        <div key={7} className={styles.mainNavNew + " " + (this.state.expanded
           ? styles.mainNavNewShow
           : "")}>
           <form className={styles.mobileSearchContainerNew}>

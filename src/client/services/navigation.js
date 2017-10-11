@@ -2,6 +2,7 @@ import { browserHistory } from "react-router";
 import { logEvent, logPageEvent } from "../services/analytics.js";
 import { getPaths } from "../components/templates/themer/themes.js";
 import _ from "lodash";
+import clientConfig from "./client-config.js"
 
 function createCtaNavigation(targetLocation, category, action, value) {
   return createNavigation(targetLocation, {
@@ -23,6 +24,7 @@ function navigateNow(targetLocation, eventConfig) {
     });
     const isHandledRoute = _.compact(mapped).length > 0;
     const startsWithHttp = _.startsWith(targetLocation, "http");
+    const sbicSpecialCase = targetLocation === "/partners/sbic" && !clientConfig.showSbic;
     if (eventConfig) {
       logEvent({
         category: eventConfig.category || "Navigation",
@@ -31,7 +33,7 @@ function navigateNow(targetLocation, eventConfig) {
         value: eventConfig.value || null
       });
     }
-    if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp) {
+    if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp && !sbicSpecialCase) {
       browserHistory.push(targetLocation);
       if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
