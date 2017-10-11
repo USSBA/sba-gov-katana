@@ -17,7 +17,6 @@ const fetchContentTypeFunctions = {
   disaster: fetchDisasterFromDrupalDatabase,
   frontpageslides: fetchFrontPageSlidesFromDrupal,
   "main-menu": fetchMainMenu,
-  menu: fetchFormattedMenu,
   siteMap: fetchFormattedMenu,
   counsellorCta: fetchCounsellorCta,
   documents: fetchDocuments,
