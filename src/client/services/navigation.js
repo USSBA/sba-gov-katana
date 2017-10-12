@@ -24,7 +24,7 @@ function navigateNow(targetLocation, eventConfig) {
     });
     const isHandledRoute = _.compact(mapped).length > 0;
     const startsWithHttp = _.startsWith(targetLocation, "http");
-    const sbicSpecialCase = targetLocation === "/partners/sbic" && !clientConfig.showSbic;
+    const sbicSpecialCaseToAllowServerRedirect = targetLocation === "/partners/sbic" && !clientConfig.showSbic;
     if (eventConfig) {
       logEvent({
         category: eventConfig.category || "Navigation",
@@ -33,7 +33,7 @@ function navigateNow(targetLocation, eventConfig) {
         value: eventConfig.value || null
       });
     }
-    if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp && !sbicSpecialCase) {
+    if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp && !sbicSpecialCaseToAllowServerRedirect) {
       browserHistory.push(targetLocation);
       if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
