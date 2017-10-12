@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, {PureComponent} from "react";
 import {
 	LargePrimaryButton,
@@ -17,45 +18,93 @@ class SizeStandardsTool extends PureComponent {
 		super();
 
 		this.state = {
-			"section": "NAICS",
-			"subSection": "ADD_NAICS",
+			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
+			"shouldShowNaicsInput": true,
 			"isNaicsCodeInputEnabled": false,
-			"naicsCodesList": []
+			"naicsCodesList": [], // 
+			"shouldShowRevenueSection": false,
+			"shouldShowEmployeesSection": false,
+			"revenueTotal": null,
+			"employeeCount": null
 		};
 
 		this.origState = Object.assign({}, this.state);
+	
 	}
 
-	gotoSection(data) {
+	gotoSection(section) {
 
-		let _data = data;
+		let data = {
+			section
+		};
 
-		if (_data.section === "START") {
-			_data = Object.assign({}, this.origState);
+		switch (section) {
+
+			case "START":
+
+				data = Object.assign({}, this.origState);
+
+				break;
+
+			case "NAICS":
+
+				data.isNaicsCodeInputEnabled = false;
+
+				break;
+
+			default:
+				break;
 		}
 
-		this.setState(_data, () => {
+		this.setState(data, () => {
 
 			window.scrollTo(0, 0);
 
 		});
+
 	}
+
+	showNaicsInput(shouldShowNaicsInput) {
+
+		const updatedState = {shouldShowNaicsInput};
+
+		if (shouldShowNaicsInput === true) {
+			updatedState.isNaicsCodeInputEnabled = false;
+		}
+
+		this.setState(updatedState);
+
+	} 
 
 	onInputChange(data) {
 
 		const {section, value} = data;
 
-		switch(section) {
+		switch (section) {
 
 			case "NAICS":
 
-				const isNaicsCodeInputEnabled = (value.length === 6);
+				const validLength = 6;
+				const isNaicsCodeInputEnabled = (value.length === validLength);
 
 				this.setState({isNaicsCodeInputEnabled});
 
-			break;
+				break;
+
+			case "REVENUE":
+
+				this.setState({ revenueTotal: value });
+
+				break;
+
+			case "EMPLOYEES":
+
+				this.setState({ employeeCount: value });
+
+				break;
 
 			default:
+				break;
 
 		}
 
@@ -82,33 +131,88 @@ class SizeStandardsTool extends PureComponent {
 			naicsCodesList.push(selectedCode);
 		}
 
+		const updatedState = {
+			naicsCodesList
+		};
 
-		this.setState({
-			naicsCodesList,
-			subSection: "NAICS_LIST"
+		if (selectedCode.revenueLimit !== null) {
+			updatedState.shouldShowRevenueSection = true;
+		}
+
+		if (selectedCode.employeeCount !== null) {
+			updatedState.shouldShowEmployeesSection = true;
+		}
+
+		this.setState(updatedState);
+
+	}
+
+	removeNaicsCode(code) {
+
+		const filteredList = this.state.naicsCodesList.filter((object) => {
+
+			let result;
+
+			if (object.code !== code) {
+				result = object;
+			}
+
+			return result;
+
 		});
 
+		this.setState({ naicsCodesList: filteredList});
+		
 	}
 
 	renderNaicsList() {
 
 		const {naicsCodesList} = this.state;
 		
-		const html = naicsCodesList.map((object, index) => {
+		const listItems = naicsCodesList.map((object, index) => {
 
 			const {code, description} = object;
 
 			return (
 
 				<li key={index}>
-					<div><span>{code}</span>{description}</div>
+					<div><span>{code} </span>{description}<a onClick={() => {
+						this.removeNaicsCode(code);
+					}}><i className="fa fa-times" aria-hidden="true"></i></a></div>
 				</li>
 
 			);
 
 		});
 
-		return html;
+		return (
+
+			<ul className={styles.naicsCodesList}>
+				{listItems}
+			</ul>
+
+		);
+
+	}
+
+	renderAppBar(data) {
+
+		const {buttonText, sectionTarget} = data;
+
+		return (
+
+			<div className={styles.appBar}>
+
+				<SmallInversePrimaryButton
+					text={buttonText}
+					onClick={() => {
+						this.gotoSection(sectionTarget);
+					}}
+				/>
+
+			</div>
+
+		);
 
 	}
 	
@@ -116,15 +220,21 @@ class SizeStandardsTool extends PureComponent {
 
 		const {
 			section,
-			subSection,
+			shouldShowNaicsInput,
 			isNaicsCodeInputEnabled,
-			naicsCodesList
+			naicsCodesList,
+			employeeCount,
+			revenueTotal,
+			shouldShowRevenueSection,
+			shouldShowEmployeesSection
 		} = this.state;
 
 		return (
 
 			<div className={styles.sizeStandardsTool}>
 				
+
+
 				{section === "START" && <div className={styles.start}>
 					
 					<h2>Size Standards Tool</h2>
@@ -137,23 +247,27 @@ class SizeStandardsTool extends PureComponent {
 						className={styles.button}
 						text="Start"
 						onClick={() => {
-							
-							const data = {
-								"section": "NAICS",
-								"subSection": "ADD_NAICS"
-							};
-
-							this.gotoSection(data);
+							this.gotoSection("NAICS");
 						}}
 					/>
 
 				</div>}
 
+
+
+
 				{section === "NAICS" && <div>
 					
 					<h2>What's your industry?</h2>
-					
-					{subSection === "ADD_NAICS" && <div>
+
+					{naicsCodesList.length > 0 && <div> 
+
+					{this.renderNaicsList()}
+
+					</div>}
+
+					{shouldShowNaicsInput ? (<div>
+
 						<div className={styles.naicsCodeInput}>
 							
 							<TextInput
@@ -164,7 +278,7 @@ class SizeStandardsTool extends PureComponent {
 								onChange={() => {
 									
 									const data = {
-										section: section,
+										section,
 										value: document.getElementById("naics-code").value
 									};
 
@@ -178,6 +292,7 @@ class SizeStandardsTool extends PureComponent {
 
 									const naicsCode = document.getElementById("naics-code").value;
 									this.addNaicsCode(naicsCode);
+									this.showNaicsInput(false);
 
 								}}
 								disabled={!isNaicsCodeInputEnabled}
@@ -189,22 +304,15 @@ class SizeStandardsTool extends PureComponent {
 						<p>The North American Industry Classification System or NAICS <br />classifies  businesses according to type of economic activity.</p>
 						<p><a href="https://www.census.gov/eos/www/naics/" target="_blank"><SearchIcon aria-hidden="true" />Find your NAICS code</a></p>
 
-					</div>}
+					</div>) : (<div>
 
-					{subSection === "NAICS_LIST" && <div> 
+						<p><a onClick={() => {
+							
+							this.showNaicsInput(true);
 
-					{this.renderNaicsList()}
-
-					<p><a onClick={() => {
-						
-						this.gotoSection({
-							"section": "NAICS",
-							"subSection":"ADD_NAICS"
-						});
-
-					}}><SearchIcon aria-hidden="true" />Add another industry</a></p>
-
-					</div>}
+						}}><i className="fa fa-plus" aria-hidden="true"></i>Add another industry</a></p>
+					
+					</div>)}
 
 					{naicsCodesList.length > 0 && <div>
 						
@@ -212,28 +320,30 @@ class SizeStandardsTool extends PureComponent {
 							className={styles.button}
 							text="Next"
 							onClick={() => {
-								this.gotoSection({
-									"section": "EMPLOYEES"
-								});
+
+								let sectionTarget = "NO_SECTION_SET";
+
+								if (shouldShowRevenueSection === true) {
+									sectionTarget = "REVENUE";
+								} else if (shouldShowEmployeesSection === true) {
+									sectionTarget = "EMPLOYEES";
+								}
+
+								this.gotoSection(sectionTarget);
 							}}
 						/>
 
 					</div>}
 
-					<div className={styles.appBar}>
-
-						<SmallInversePrimaryButton
-							text="BACK"
-							onClick={() => {
-								this.gotoSection({
-									"section": "START"
-								});
-							}}
-						/>
-
-					</div>
+					{this.renderAppBar({
+						buttonText: "BACK",
+						sectionTarget:"START"
+					})}
 
 				</div>}
+
+
+
 
 				{section === "REVENUE" && <div>
 
@@ -247,6 +357,16 @@ class SizeStandardsTool extends PureComponent {
 							label="Annual Revenue"
 							type="number"
 							validationState={""}
+							onChange={() => {
+
+								const data = {
+									section,
+									value: Number(document.getElementById("revenue").value)
+								};
+
+								this.onInputChange(data);
+
+							}}
 						/>
 
 					</div>
@@ -255,41 +375,47 @@ class SizeStandardsTool extends PureComponent {
 
 					<LargePrimaryButton
 						className={styles.button}
-						text="Next"
+						text={shouldShowEmployeesSection ? "NEXT" : "SEE RESULTS"}
+						disabled={!(revenueTotal > 0)}
 						onClick={() => {
-							this.gotoSection({
-								"section": "RESULTS"
-							});
+
+							this.gotoSection(shouldShowEmployeesSection ? "EMPLOYEES" : "RESULTS");
+
 						}}
 					/>
 
-					<div className={styles.appBar}>
-
-						<SmallInversePrimaryButton
-							text="BACK"
-							onClick={() => {
-								this.gotoSection({
-									"section": "NAICS"
-								});
-							}}
-						/>
-
-					</div>
+					{this.renderAppBar({
+						buttonText: "BACK",
+						sectionTarget:"NAICS"
+					})}
 
 				</div>}
+
+
+
 
 				{section === "EMPLOYEES" && <div>
 
 					<h2>How many employees?</h2>
 
-					<div className={styles.revenueInput}>
+					<div className={styles.employeesInput}>
 						
 						<TextInput
-							id="totalEmployees"
+							id="employees"
 							errorText={"Please enter a correct number."}
 							label="Number of employees"
 							type="number"
 							validationState={""}
+							onChange={() => {
+
+								const data = {
+									section,
+									value: Number(document.getElementById("employees").value)
+								};
+
+								this.onInputChange(data);
+
+							}}
 						/>
 
 					</div>
@@ -298,47 +424,40 @@ class SizeStandardsTool extends PureComponent {
 
 					<LargePrimaryButton
 						className={styles.button}
-						text="Next"
+						text="SEE RESULTS"
+						disabled={!(employeeCount > 0)}
 						onClick={() => {
-							this.gotoSection({
-								"section": "RESULTS"
-							});
+							this.gotoSection("RESULTS");
 						}}
 					/>
 
-					<div className={styles.appBar}>
-
-						<SmallInversePrimaryButton
-							text="BACK"
-							onClick={() => {
-								this.gotoSection({
-									"section": "NAICS"
-								});
-							}}
-						/>
-
-					</div>
+					{this.renderAppBar({
+						buttonText: "BACK",
+						sectionTarget: shouldShowRevenueSection ? "REVENUE" : "NAICS"
+					})}
 
 				</div>}
+
+
+
 
 				{section === "RESULTS" && <div>
 
 					<h2>Are you a small business?</h2>
 
-					<div className={styles.appBar}>
-
-						<SmallInversePrimaryButton
-							text="START OVER"
-							onClick={() => {
-								this.gotoSection({
-									"section": "START"
-								});
-							}}
-						/>
-
+					<div>
+						Results here...
 					</div>
 
+					{this.renderAppBar({
+						buttonText: "START OVER",
+						sectionTarget:"START"
+					})}
+
 				</div>}
+
+
+
 
 			</div>
 
@@ -380,8 +499,8 @@ SizeStandardsTool.defaultProps = {
         "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
         "subsectorId": "111",
         "subsectorDescription": "Crop Production",
-        "revenueLimit": 0.75,
-        "employeeCount": null,
+        "revenueLimit": null,
+        "employeeCount": 100,
         "footnote": null,
         "parent": null
     }]

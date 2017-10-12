@@ -85,9 +85,40 @@ i {
 
 }
 
-.revenueInput {
+.naicsCodesList {
 	
-	width: 25%;
+	border-top: 1px solid #05183A;
+	width: 470px;
+	margin: 0 auto 10px;
+
+	li {
+		border-bottom: 1px solid #05183A;
+		padding: 15px 20px;
+		text-align: left;
+	}
+
+	span {
+		display: block;
+		color: #333333;
+		font-size: 75%;
+	    font-weight: bold;
+	    line-height: 1;
+	}
+
+	i {
+	    float: right;
+	    padding: 20px;
+    	margin-right: -20px;
+    	margin-top: -20px;
+    	color: #757575;
+	}
+
+}
+
+.revenueInput,
+.employeesInput {
+	
+	width: 35%;
 	margin: 0 auto;
 
 	input {
