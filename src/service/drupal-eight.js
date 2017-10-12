@@ -102,11 +102,16 @@ function filterAndSortDocuments(params, docs) {
 function filterDocuments(params, docs) {
   return docs.filter((doc, index) => {
     const matchesUrl = params.url === "all" || doc.url === params.url;
-    const matchesActivity = !params.documentActivity || params.documentActivity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity));
+    const matchesActivitys = !params.documentActivity || params.documentActivity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity));
+    const matchesActivity = !params.activity || params.activity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
     const matchesProgram = !params.program || params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
+    const matchesType = !params.type || params.type === "all" || doc.documentIdType === params.type;
+    const matchesDocumentType = !params.documentType || params.documentType === "all" || doc.documentIdType === params.documentType;
     return (
-      (!params.documentType || params.documentType === "all" || doc.documentIdType === params.documentType) &&
+      (matchesType) &&
+      (matchesDocumentType) &&
       (matchesProgram) &&
+      (matchesActivitys) &&
       (matchesActivity) &&
       (matchesUrl) &&
       (!params.searchTerm || params.searchTerm === "all" ||

@@ -2,7 +2,7 @@ import { browserHistory } from "react-router";
 import { logEvent, logPageEvent } from "../services/analytics.js";
 import { getPaths } from "../components/templates/themer/themes.js";
 import _ from "lodash";
-import clientConfig from "./client-config.js"
+import clientConfig from "./client-config.js";
 
 function createCtaNavigation(targetLocation, category, action, value) {
   return createNavigation(targetLocation, {
