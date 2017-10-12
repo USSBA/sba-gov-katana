@@ -51,9 +51,9 @@ export class DocumentArticle extends React.Component {
     const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
       const newestFile = this.getNewestFile()
-      let newestFileExtension = "pdf";
-      if(newestFile && newestFile.fileUrl){
-          newestFileExtension = _.last(newestFile.fileUrl.split("."));
+      let newestFileExtension = "";
+      if(newestFile && newestFile.fileUrl && newestFile.fileUrl.includes && newestFile.fileUrl.includes(".")){
+          newestFileExtension = "." + _.last(newestFile.fileUrl.split("."));
       }
       let documentTypeString = null;
       switch(data.type){
@@ -77,7 +77,7 @@ export class DocumentArticle extends React.Component {
           }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} text={"download ."+newestFileExtension}/>
+            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} disabled={_.isEmpty(newestFile.fileUrl)} text={"download "+newestFileExtension}/>
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
