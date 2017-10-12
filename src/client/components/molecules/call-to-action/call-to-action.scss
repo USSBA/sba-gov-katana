@@ -54,8 +54,8 @@
       align-items: center;
       -webkit-justify-content: center;
       justify-content: center;
-      padding: 30px;
     }
+    padding: 30px;
   }
   .headline {
     @include grid-media($sba-grid-large) {
