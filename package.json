@@ -80,6 +80,7 @@
     "rc-collapse": "1.6.12",
     "rc-progress": "2.0.3",
     "react": "15.4.1",
+    "react-autosuggest": "^9.3.2",
     "react-code-splitting": "^1.2.0",
     "react-cookie": "1.0.5",
     "react-dom": "15.4.1",
