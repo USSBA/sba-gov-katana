@@ -3,17 +3,17 @@ $boulder: #757575;
 $iconColor: $boulder;
 
 .icon {
-  color: $iconColor !important;
-  font-size: 16px;
   position: absolute;
   top: 10px;
   right: 16px;
+  color: $iconColor !important;
+  font-size: 16px;
 }
 
 .entryCode {
   margin-bottom: -4px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .entryDescription {

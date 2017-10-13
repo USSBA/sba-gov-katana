@@ -45,7 +45,7 @@ class NaicsLookup extends React.Component {
               code,
               description
             }]
-          }
+          };
         } else {
           industriesMap[industryCode].entries.push({
             code,
@@ -113,30 +113,32 @@ class NaicsLookup extends React.Component {
     } = this.props;
 
     const escapedValue = escapeRegexCharacters(value.trim());
+    const parsedValue = parseInt(escapedValue);
 
     if (escapedValue === '') {
       return [];
     }
 
-    if (isInteger(value) && value > 0) {
+    // Check if the entire input string is a valid integer 1 or greater.
+    if (!isNaN(escapedValue) && parsedValue > 0) {
       const sections = map(naics, section => {
         return {
           description: section.description,
-          entries: filter(section.entries, entry => startsWith(entry.code, escapedValue))
-        }
+          entries: filter(section.entries, entry => startsWith(entry.code, parsedValue))
+        };
       });
 
       return filter(sections, section => section.entries.length > 0)
     } else {
-      const regex = new RegExp(`${escapedValue}`, 'i')
+      const regex = new RegExp(`${escapedValue}`, 'i');
       const sections = map(naics, section => {
         return {
           description: section.description,
           entries: filter(section.entries, entry => regex.test(entry.description))
-        }
+        };
       });
 
-      return filter(sections, section => section.entries.length > 0)
+      return filter(sections, section => section.entries.length > 0);
     }
   };
 
@@ -161,20 +163,20 @@ class NaicsLookup extends React.Component {
       <p className={styles.entryDescription}>{suggestion.description}</p>
     </div>
   );
-  renderSectionTitle = section => (<strong><small>{section.description}</small></strong>);
+  renderSectionTitle = section => (<span>{section.description}</span>);
 
   // ## React Autosuggest event handlers
 
   onChange = (e, { newValue }) => {
     this.setState({
       value: newValue
-    })
+    });
   };
 
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: this.getSuggestions(value)
-    })
+    });
   };
 
   // call every time suggestions need to be cleared

@@ -11,8 +11,8 @@ $labelColor: $mine-shaft;
 $horizontal-padding: 20px;
 
 .container {
-  width: 804px;
   margin: 4em auto;
+  width: 804px;
 }
 
 .suggestionsContainerOpen {
@@ -24,7 +24,7 @@ $horizontal-padding: 20px;
 }
 
 .suggestion {
-  $vertical-padding: 10px;
+  $vertical-padding: 8px;
   padding: $vertical-padding $horizontal-padding;
   font-size: 18px;
 }
@@ -37,5 +37,7 @@ $horizontal-padding: 20px;
   padding-left: $horizontal-padding;
   padding-right: $horizontal-padding;
   color: $categoryColor;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
 }
