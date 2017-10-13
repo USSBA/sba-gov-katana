@@ -14,11 +14,26 @@ describe("#ResourceCenterLookup", function() {
     let gpoStub;
     before(() => {
       gpoStub = sinon.stub(resourceCenterLookup, "getPartnerOffices").returns([
-        {zip: "12345", name1: "First Office"},
-        {zip: "11111", name1: "Second Office"},
-        {zip: "11111-1234", name1: "Third Office"},
-        {zip: "22222", name1: "Fourth Office"},
-        {zip: "22222", name1: "Fifth Office"},
+        {
+          zip: "12345",
+          name1: "First Office"
+        },
+        {
+          zip: "11111",
+          name1: "Second Office"
+        },
+        {
+          zip: "11111-1234",
+          name1: "Third Office"
+        },
+        {
+          zip: "22222",
+          name1: "Fourth Office"
+        },
+        {
+          zip: "22222",
+          name1: "Fifth Office"
+        },
       ]);
     });
     after(() => {
@@ -47,11 +62,26 @@ describe("#ResourceCenterLookup", function() {
     let gpoStub;
     before(() => {
       gpoStub = sinon.stub(resourceCenterLookup, "getPartnerOffices").returns([
-        {state: "MD", name1: "First Office"},
-        {state: "DC", name1: "Second Office"},
-        {state: "DC", name1: "Third Office"},
-        {state: "VA", name1: "Fourth Office"},
-        {state: "VA", name1: "Fifth Office"},
+        {
+          state: "MD",
+          name1: "First Office"
+        },
+        {
+          state: "DC",
+          name1: "Second Office"
+        },
+        {
+          state: "DC",
+          name1: "Third Office"
+        },
+        {
+          state: "VA",
+          name1: "Fourth Office"
+        },
+        {
+          state: "VA",
+          name1: "Fifth Office"
+        },
       ]);
     });
     after(() => {
