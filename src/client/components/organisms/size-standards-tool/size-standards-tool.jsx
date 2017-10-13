@@ -5,7 +5,8 @@ import {
 	SearchIcon,
 	SmallPrimaryButton,
 	SmallInversePrimaryButton,
-	TextInput
+	TextInput,
+	BasicLink
 } from "atoms";
 import sizeStandardsGraphic from "../../../../../public/assets/images/tools/size-standards-tool/Size_standards_graphic.png";
 import styles from "./size-standards-tool.scss";
@@ -19,13 +20,14 @@ class SizeStandardsTool extends PureComponent {
 
 		this.state = {
 			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
+			"isNaicsInputEnabled": false,
 			"shouldShowNaicsInput": true,
-			"isNaicsCodeInputEnabled": false,
 			"naicsCodesList": [], // 
 			"shouldShowRevenueSection": false,
-			"shouldShowEmployeesSection": false,
 			"revenueTotal": null,
-			"employeeCount": null
+			"shouldShowEmployeesSection": false,
+			"employeeTotal": null,
+			"exceptionsList": []
 		};
 
 		this.origState = Object.assign({}, this.state);
@@ -48,7 +50,7 @@ class SizeStandardsTool extends PureComponent {
 
 			case "NAICS":
 
-				data.isNaicsCodeInputEnabled = false;
+				data.isNaicsInputEnabled = false;
 
 				break;
 
@@ -69,7 +71,7 @@ class SizeStandardsTool extends PureComponent {
 		const updatedState = {shouldShowNaicsInput};
 
 		if (shouldShowNaicsInput === true) {
-			updatedState.isNaicsCodeInputEnabled = false;
+			updatedState.isNaicsInputEnabled = false;
 		}
 
 		this.setState(updatedState);
@@ -85,9 +87,9 @@ class SizeStandardsTool extends PureComponent {
 			case "NAICS":
 
 				const validLength = 6;
-				const isNaicsCodeInputEnabled = (value.length === validLength);
+				const isNaicsInputEnabled = (value.length === validLength);
 
-				this.setState({isNaicsCodeInputEnabled});
+				this.setState({isNaicsInputEnabled});
 
 				break;
 
@@ -99,7 +101,7 @@ class SizeStandardsTool extends PureComponent {
 
 			case "EMPLOYEES":
 
-				this.setState({ employeeCount: value });
+				this.setState({ employeeTotal: value });
 
 				break;
 
@@ -149,11 +151,16 @@ class SizeStandardsTool extends PureComponent {
 
 	removeNaicsCode(code) {
 
+		let shouldShowRevenueSection, shouldShowEmployeesSection;
+
 		const filteredList = this.state.naicsCodesList.filter((object) => {
 
 			let result;
 
 			if (object.code !== code) {
+
+				shouldShowRevenueSection = object.revenueLimit !== null;
+				shouldShowEmployeesSection = object.employeeCount !== null;
 				result = object;
 			}
 
@@ -161,11 +168,15 @@ class SizeStandardsTool extends PureComponent {
 
 		});
 
-		this.setState({ naicsCodesList: filteredList});
+		this.setState({
+			naicsCodesList: filteredList,
+			shouldShowRevenueSection,
+			shouldShowEmployeesSection
+		});
 		
 	}
 
-	renderNaicsList() {
+	renderNaicsList(section) {
 
 		const {naicsCodesList} = this.state;
 		
@@ -176,9 +187,64 @@ class SizeStandardsTool extends PureComponent {
 			return (
 
 				<li key={index}>
-					<div><span>{code} </span>{description}<a onClick={() => {
-						this.removeNaicsCode(code);
-					}}><i className="fa fa-times" aria-hidden="true"></i></a></div>
+
+					<div>
+						
+						{section === "NAICS" && <div>
+
+							<p><span>{code} </span></p>
+							<p>
+								{description}
+								<a
+								className={styles.remove}
+								onClick={() => {
+									this.removeNaicsCode(code);
+								}}>
+								<i className="fa fa-times" aria-hidden="true"></i></a>
+							</p>
+						
+						</div>}
+
+
+						{section === "RESULTS" && <div className={styles.results}>
+
+							<div className={styles.left}>
+								
+								<p><span>{code} </span></p>
+								<div>
+									<p>{description}</p>
+								</div>
+
+							</div>
+							
+							<div className={styles.middle}>
+							
+								<p><span>Small Business Size Standards </span></p>
+
+								{object.revenueLimit !== null ? (<div>
+
+									<p>$750 thousand annual revenue</p>
+									
+								</div>) : (<div>
+									
+									<p>500 employees</p>
+
+								</div>)}
+
+							</div>
+
+							<div className={styles.right}>
+
+								<div className={styles.no}>
+									<p><i className="fa fa-times-circle" aria-hidden="true"></i>NO</p>
+								</div>
+
+							</div>
+
+						</div>}
+
+					</div>
+
 				</li>
 
 			);
@@ -221,12 +287,13 @@ class SizeStandardsTool extends PureComponent {
 		const {
 			section,
 			shouldShowNaicsInput,
-			isNaicsCodeInputEnabled,
+			isNaicsInputEnabled,
 			naicsCodesList,
-			employeeCount,
+			employeeTotal,
 			revenueTotal,
 			shouldShowRevenueSection,
-			shouldShowEmployeesSection
+			shouldShowEmployeesSection,
+			exceptionsList
 		} = this.state;
 
 		return (
@@ -235,7 +302,7 @@ class SizeStandardsTool extends PureComponent {
 				
 
 
-				{section === "START" && <div className={styles.start}>
+				{section === "START" && <div className={styles.startSection}>
 					
 					<h2>Size Standards Tool</h2>
 
@@ -262,7 +329,7 @@ class SizeStandardsTool extends PureComponent {
 
 					{naicsCodesList.length > 0 && <div> 
 
-					{this.renderNaicsList()}
+						{this.renderNaicsList(section)}
 
 					</div>}
 
@@ -295,7 +362,7 @@ class SizeStandardsTool extends PureComponent {
 									this.showNaicsInput(false);
 
 								}}
-								disabled={!isNaicsCodeInputEnabled}
+								disabled={!isNaicsInputEnabled}
 								text="Add"
 							/>
 
@@ -425,7 +492,7 @@ class SizeStandardsTool extends PureComponent {
 					<LargePrimaryButton
 						className={styles.button}
 						text="SEE RESULTS"
-						disabled={!(employeeCount > 0)}
+						disabled={!(employeeTotal > 0)}
 						onClick={() => {
 							this.gotoSection("RESULTS");
 						}}
@@ -441,18 +508,23 @@ class SizeStandardsTool extends PureComponent {
 
 
 
-				{section === "RESULTS" && <div>
+				{section === "RESULTS" && <div className={styles.resultsSection}>
 
 					<h2>Are you a small business?</h2>
 
-					<div>
-						Results here...
-					</div>
+					{this.renderNaicsList(section)}
+
+					<p>You may be eligible to participate in <BasicLink url="#">SBA contracting programs</BasicLink>.</p>
 
 					{this.renderAppBar({
 						buttonText: "START OVER",
 						sectionTarget:"START"
 					})}
+
+
+					{exceptionsList.length > 0 && <div>
+
+					</div>}
 
 				</div>}
 
