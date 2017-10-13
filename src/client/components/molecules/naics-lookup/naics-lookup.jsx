@@ -11,9 +11,13 @@ import {
   zip
 } from 'lodash';
 
-import { container } from './naics-lookup.scss';
-
 import _naics from '../../../../models/dao/sample-data/naics';
+import styles from './naics-lookup.scss';
+
+import {
+  SmallIcon,
+  TextInput
+} from 'atoms';
 
 // // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(string) {
@@ -84,20 +88,20 @@ class NaicsLookup extends React.Component {
 
     // 804px
     return (
-      <div className={container}>
-        <AutoSuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          getSuggestionValue={this.getSuggestionValue}
-          renderSuggestion={this.renderSuggestion}
-          inputProps={inputProps}
-          highlightFirstSuggestion={true}
-          multiSection={true}
-          renderSectionTitle={this.renderSectionTitle}
-          getSectionSuggestions={this.getSectionSuggestions}
-        />
-      </div>
+      <AutoSuggest
+        theme={styles}
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        getSuggestionValue={this.getSuggestionValue}
+        renderSuggestion={this.renderSuggestion}
+        inputProps={inputProps}
+        highlightFirstSuggestion={true}
+        multiSection={true}
+        renderSectionTitle={this.renderSectionTitle}
+        getSectionSuggestions={this.getSectionSuggestions}
+        renderInputComponent={this.renderInputComponent}
+      />
     );
   }
 
@@ -138,13 +142,38 @@ class NaicsLookup extends React.Component {
   };
 
   getSectionSuggestions = section => section.entries;
-
   // input value shown when suggestion is selected
   getSuggestionValue = suggestion => suggestion.description;
 
+  // ## Render methods
 
-  renderSuggestion = suggestion => (<span>{suggestion.description}</span>);
-  renderSectionTitle = section => (<strong>{section.description}</strong>);
+  renderInputComponent = inputProps => (
+    <div style={{
+      position: 'relative',
+    }}>
+      <TextInput {...inputProps} />
+      <SmallIcon style= {{
+        color: '#757575',
+        position: 'absolute',
+        top: '16px',
+        right: '16px'
+      }} alt="search icon" fontAwesomeIconClassName="search" />
+    </div>
+  );
+
+  // Rely on inline styles because Autosuggest takes in a theme
+  // (react-themeable) which overrides regular styles
+  renderSuggestion = suggestion => (
+    <div>
+      <p style={{
+        marginBottom: '-4px',
+        fontSize: '12px',
+        fontWeight: 'bold'
+      }}>{suggestion.code}</p>
+    <p style={{ marginBottom: 0 }}>{suggestion.description}</p>
+    </div>
+  );
+  renderSectionTitle = section => (<strong><small>{section.description}</small></strong>);
 
   // ## React Autosuggest event handlers
 
