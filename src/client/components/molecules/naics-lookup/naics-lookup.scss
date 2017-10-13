@@ -1,44 +1,21 @@
 $boulder: #757575;
-$mine-shaft: #333333;
-$tory-blue: #0f48aa;
-$tropical-blue: #c8dafa;
 
-$borderColor: $tory-blue;
-$categoryColor: $boulder;
-$highlightColor: $tropical-blue;
-$labelColor: $mine-shaft;
+$iconColor: $boulder;
 
-$horizontal-padding: 20px;
-
-.container {
-  width: 804px;
-  margin: 4em auto;
+.icon {
+  color: $iconColor !important;
+  font-size: 16px;
+  position: absolute;
+  top: 10px;
+  right: 16px;
 }
 
-.suggestionsContainerOpen {
-  $vertical-padding: 6px;
-  margin-top: -15px;
-  padding-top: $vertical-padding;
-  padding-bottom: $vertical-padding;
-  border: 1px solid $borderColor;
+.entryCode {
+  margin-bottom: -4px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.suggestionsList {
-}
-
-.suggestion {
-  $vertical-padding: 10px;
-  padding: $vertical-padding $horizontal-padding;
-  font-size: 18px;
-}
-
-.suggestionHighlighted {
-  background-color: $highlightColor;
-}
-
-.sectionTitle {
-  padding-left: $horizontal-padding;
-  padding-right: $horizontal-padding;
-  color: $categoryColor;
-  text-transform: uppercase;
+.entryDescription {
+  margin-bottom: 0;
 }

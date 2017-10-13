@@ -11,8 +11,9 @@ import {
   zip
 } from 'lodash';
 
-import _naics from '../../../../models/dao/sample-data/naics';
-import styles from './naics-lookup.scss';
+import naics from '../../../../models/dao/sample-data/naics';
+import styles from './naics-lookup.scss'
+import theme from './theme.scss';
 
 import {
   SmallIcon,
@@ -27,8 +28,6 @@ function escapeRegexCharacters(string) {
 class NaicsLookup extends React.Component {
   static defaultProps = {
     naics: (() => {
-      const naics = _naics;
-      // const naics = _naics.slice(0, 1);
       const industriesMap = {};
       for (let i = 0; i < naics.length; i++) {
         const {
@@ -89,7 +88,7 @@ class NaicsLookup extends React.Component {
     // 804px
     return (
       <AutoSuggest
-        theme={styles}
+        theme={theme}
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -142,7 +141,7 @@ class NaicsLookup extends React.Component {
   };
 
   getSectionSuggestions = section => section.entries;
-  // input value shown when suggestion is selected
+  // Set the value to show in the input when a suggestion is selected.
   getSuggestionValue = suggestion => suggestion.description;
 
   // ## Render methods
@@ -152,25 +151,14 @@ class NaicsLookup extends React.Component {
       position: 'relative',
     }}>
       <TextInput {...inputProps} />
-      <SmallIcon style= {{
-        color: '#757575',
-        position: 'absolute',
-        top: '16px',
-        right: '16px'
-      }} alt="search icon" fontAwesomeIconClassName="search" />
+      <SmallIcon extraClassName={styles.icon} alt="search icon" fontAwesomeIconClassName="search" />
     </div>
   );
 
-  // Rely on inline styles because Autosuggest takes in a theme
-  // (react-themeable) which overrides regular styles
   renderSuggestion = suggestion => (
     <div>
-      <p style={{
-        marginBottom: '-4px',
-        fontSize: '12px',
-        fontWeight: 'bold'
-      }}>{suggestion.code}</p>
-    <p style={{ marginBottom: 0 }}>{suggestion.description}</p>
+      <p className={styles.entryCode}>{suggestion.code}</p>
+      <p className={styles.entryDescription}>{suggestion.description}</p>
     </div>
   );
   renderSectionTitle = section => (<strong><small>{section.description}</small></strong>);
@@ -189,13 +177,12 @@ class NaicsLookup extends React.Component {
     })
   };
 
-  // called everytime suggestions need to be cleared
+  // call every time suggestions need to be cleared
   onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: []
     });
   };
-
 }
 
 export default NaicsLookup;
