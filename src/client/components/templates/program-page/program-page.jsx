@@ -59,6 +59,7 @@ class ProgramPage extends React.Component {
             buttons={_formattedButtons}
             imageUrl={bannerImage.image.url}
             alt={bannerImage.image.alt}
+            anchorButton={true}
           />
         }
         { !hasBannerImage &&
@@ -66,6 +67,7 @@ class ProgramPage extends React.Component {
             title={title}
             message={summary}
             buttons={_formattedButtons}
+            anchorButton={true}
           />
         }
         <div className={styles.container}>
