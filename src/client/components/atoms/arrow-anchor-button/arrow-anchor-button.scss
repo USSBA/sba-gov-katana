@@ -1,0 +1,21 @@
+@each $name, $value in $primary-color-map {
+    @include theme($name, '.container', null, null, $value);
+}
+
+@each $name, $value in $primary-color-map {
+    @include theme($name, '.arrow', null, $value, null);
+}
+
+.container {
+    width: 56px;
+    height: 36px;
+    margin: auto;
+
+    border: 2px solid;
+    text-align: center;
+}
+
+.arrow {
+	font-size: 35px;
+	line-height: 32px;
+}
