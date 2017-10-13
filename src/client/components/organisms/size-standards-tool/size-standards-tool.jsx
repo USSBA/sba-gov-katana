@@ -19,7 +19,7 @@ class SizeStandardsTool extends PureComponent {
 		super();
 
 		this.state = {
-			"section": "NAICS", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
+			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
 			"isNaicsInputEnabled": false,
 			"shouldShowNaicsInput": true,
 			"naicsCodesList": [], // 
