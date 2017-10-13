@@ -22,23 +22,58 @@
 
 		}
 
-		&.resultsSection {
+	}
 
-			a {
-				
-				font-weight: bold;
+}
+
+.resultsSection {
+
+	ul {
+
+		margin: 20px auto 40px;
+
+	}
+
+	.cards {
+	
+		margin-top: 50px;
+		text-align: center;
+
+	}
+
+	.card {
+
+		border: 1px solid #05183A;
+		padding: 25px;
+		text-align: left;
+
+		ul {
+
+			margin: 0;
+
+			li:last-child p {
+				margin: 0;
+			}
+
+		}
+		
+		@media (min-width:768px) {
+			
+			display: inline-block;
+			width: 278px;
+			margin-right: 40px;
+
+			&:last-child {
+
+				margin-right: 0;
 
 			}
 
-			ul {
-
-				margin: 20px auto 40px;
-
-			}
 
 		}
 
 	}
+
 
 }
 
@@ -67,6 +102,18 @@ img {
 	
 }
 
+i {
+	
+	margin-right: 10px;
+	
+}
+
+.button {
+
+	padding: .75em 4.25em
+
+}
+
 .naicsCodeInput {
 	
 	width: 35%;
@@ -89,17 +136,6 @@ img {
 
 }
 
-i {
-	
-	margin-right: 10px;
-	
-}
-
-.button {
-
-	padding: .75em 4.25em
-
-}
 
 .naicsCodesList {
 	
@@ -237,6 +273,19 @@ i {
 		.yes i {
 
 			color: #609F00;
+
+		}
+
+	}
+
+	.exceptionsList {
+
+		margin: 0;
+
+		li {
+
+			padding: 15px 0;
+			border-bottom: 0;
 
 		}
 

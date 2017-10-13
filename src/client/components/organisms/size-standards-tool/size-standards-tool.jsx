@@ -19,15 +19,14 @@ class SizeStandardsTool extends PureComponent {
 		super();
 
 		this.state = {
-			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
+			"section": "NAICS", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
 			"isNaicsInputEnabled": false,
 			"shouldShowNaicsInput": true,
 			"naicsCodesList": [], // 
 			"shouldShowRevenueSection": false,
 			"revenueTotal": null,
 			"shouldShowEmployeesSection": false,
-			"employeeTotal": null,
-			"exceptionsList": []
+			"employeeTotal": null
 		};
 
 		this.origState = Object.assign({}, this.state);
@@ -206,13 +205,93 @@ class SizeStandardsTool extends PureComponent {
 						</div>}
 
 
-						{section === "RESULTS" && <div className={styles.results}>
+						{section === "RESULTS" && <div>
+							
+							<div className={styles.results}>
+
+								<div className={styles.left}>
+									
+									<p><span>{code} </span></p>
+									<div>
+										<p>{description}</p>
+									</div>
+
+								</div>
+								
+								<div className={styles.middle}>
+								
+									<p><span>Small Business Size Standards </span></p>
+
+									{object.revenueLimit !== null ? (<div>
+
+										<p>$750 thousand annual revenue</p>
+										
+									</div>) : (<div>
+										
+										<p>500 employees</p>
+
+									</div>)}
+
+								</div>
+
+								<div className={styles.right}>
+
+									<div className={styles.no}>
+										<p><i className="fa fa-times-circle" aria-hidden="true"></i>NO</p>
+									</div>
+
+								</div>
+
+							</div>
+
+							{this.renderExceptions(code)}
+
+						</div>}
+
+					</div>
+
+				</li>
+
+			);
+
+		});
+
+		return (
+
+			<ul className={styles.naicsCodesList}>
+				{listItems}
+			</ul>
+
+		);
+
+	}
+
+	renderExceptions(code) {
+
+		const {naicsCodes} = this.props;
+
+		let index = 0;
+
+		const exceptions = naicsCodes.map((object) => {
+
+			const {parent} = object;
+
+			let result;
+
+			if (parent === code) {
+
+				index++;
+
+				result = (
+
+					<li key={index}>
+						<div className={styles.results}>
 
 							<div className={styles.left}>
 								
-								<p><span>{code} </span></p>
+								<p><span>Exception #{index} </span></p>
 								<div>
-									<p>{description}</p>
+									<p>{object.description}</p>
 								</div>
 
 							</div>
@@ -241,24 +320,18 @@ class SizeStandardsTool extends PureComponent {
 
 							</div>
 
-						</div>}
+						</div>
+					</li>
 
-					</div>
+				);
 
-				</li>
+			}
 
-			);
+			return result;
 
 		});
 
-		return (
-
-			<ul className={styles.naicsCodesList}>
-				{listItems}
-			</ul>
-
-		);
-
+		return <ul className={styles.exceptionsList}>{exceptions}</ul>;
 	}
 
 	renderAppBar(data) {
@@ -281,6 +354,7 @@ class SizeStandardsTool extends PureComponent {
 		);
 
 	}
+
 	
 	render() {
 
@@ -514,17 +588,36 @@ class SizeStandardsTool extends PureComponent {
 
 					{this.renderNaicsList(section)}
 
-					<p>You may be eligible to participate in <BasicLink url="#">SBA contracting programs</BasicLink>.</p>
+					<p>You may be eligible to participate in <BasicLink url="#"><strong>SBA contracting programs</strong></BasicLink>.</p>
 
 					{this.renderAppBar({
 						buttonText: "START OVER",
 						sectionTarget:"START"
 					})}
 
+					<div className={styles.cards}>
 
-					{exceptionsList.length > 0 && <div>
+						<div className={styles.card}>
+							<p>Learn more about <BasicLink url="#">SBA small business size standards</BasicLink>.</p>
+							<p><strong>SBA Office of Size Standards</strong></p>
+							<ul>
+								<li><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+								<li><p>202-205-6618</p></li>
+								<li><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
+							</ul>
+						</div>
 
-					</div>}
+						<div className={styles.card}>
+							<p>Find out <BasicLink url="#">how you can sell to the Federal Government</BasicLink>.</p>
+							<p><strong>SBA Office of Contracting</strong></p>
+							<ul>
+								<li><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+								<li><p>202-205-6621</p></li>
+								<li><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
+							</ul>
+						</div>
+
+					</div>
 
 				</div>}
 
@@ -575,6 +668,41 @@ SizeStandardsTool.defaultProps = {
         "employeeCount": 100,
         "footnote": null,
         "parent": null
+    },{
+        "code": "541715_a_Except",
+        "description": "Aircraft, Aircraft Engine and Engine Parts11",
+        "sectorId": "54",
+        "sectorDescription": "Professional, Scientific and Technical Services",
+        "subsectorId": "541",
+        "subsectorDescription": "Professional, Scientific and Technical Services",
+        "revenueLimit": null,
+        "employeeCount": 1500,
+        "footnote": "NAICS Codes 541713, 541714 and 541715",
+        "parent": "111110"
+    },
+    {
+        "code": "541715_b_Except",
+        "description": "Other Aircraft Parts and Auxiliary Equipment11",
+        "sectorId": "54",
+        "sectorDescription": "Professional, Scientific and Technical Services",
+        "subsectorId": "541",
+        "subsectorDescription": "Professional, Scientific and Technical Services",
+        "revenueLimit": null,
+        "employeeCount": 1250,
+        "footnote": "NAICS Codes 541713, 541714 and 541715",
+        "parent": "111120"
+    },
+    {
+        "code": "541715_c_Except",
+        "description": "Guided Missiles and Space Vehicles, Their Propulsion Units and Propulsion Parts11",
+        "sectorId": "54",
+        "sectorDescription": "Professional, Scientific and Technical Services",
+        "subsectorId": "541",
+        "subsectorDescription": "Professional, Scientific and Technical Services",
+        "revenueLimit": null,
+        "employeeCount": 1250,
+        "footnote": "NAICS Codes 541713, 541714 and 541715",
+        "parent": "111120"
     }]
 };
 

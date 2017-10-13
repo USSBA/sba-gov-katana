@@ -6,9 +6,7 @@ const sizeStandardsToolPage = () => {
 	
 	return (
 
-		<div className={styles.container}>
-			<SizeStandardsTool />
-		</div>
+		<div />
 
 	);
 
