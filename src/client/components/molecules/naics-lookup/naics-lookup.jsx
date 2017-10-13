@@ -8,6 +8,7 @@ import {
   map,
   reduce,
   startsWith,
+  take,
   zip
 } from 'lodash';
 
@@ -39,7 +40,6 @@ class NaicsLookup extends React.Component {
 
         if (!industriesMap.hasOwnProperty(industryCode)) {
           industriesMap[industryCode] = {
-            code: industryCode,
             description: industryDescription,
             entries: [{
               code,
@@ -56,7 +56,6 @@ class NaicsLookup extends React.Component {
 
       const formattedNaics = reduce(industriesMap, (acc, val, key) => {
         acc.push({
-          code: val.code,
           description: val.description,
           entries: val.entries
         });
@@ -119,27 +118,51 @@ class NaicsLookup extends React.Component {
       return [];
     }
 
+    let sections;
     // Check if the entire input string is a valid integer 1 or greater.
     if (!isNaN(escapedValue) && parsedValue > 0) {
-      const sections = map(naics, section => {
+      sections = map(naics, section => {
         return {
           description: section.description,
           entries: filter(section.entries, entry => startsWith(entry.code, parsedValue))
         };
       });
-
-      return filter(sections, section => section.entries.length > 0)
     } else {
       const regex = new RegExp(`${escapedValue}`, 'i');
-      const sections = map(naics, section => {
+      sections = map(naics, section => {
         return {
           description: section.description,
           entries: filter(section.entries, entry => regex.test(entry.description))
         };
       });
-
-      return filter(sections, section => section.entries.length > 0);
     }
+
+    const LIMIT = 5;
+    let entriesCount = 0;
+    const filteredSections = filter(sections, section => section.entries.length > 0);
+    let limitedSections = [];
+    for (let i = 0; i < filteredSections.length; i++) {
+      const section = filteredSections[i];
+      const {
+        description,
+        entries
+      } = section;
+      const entriesLength = entries.length;
+
+      if (entriesCount + entriesLength < LIMIT) {
+        limitedSections.push(section);
+      } else {
+        limitedSections.push({
+          description,
+          entries: take(entries, LIMIT - entriesCount)
+        })
+        break;
+      }
+
+      entriesCount += entries.length;
+    }
+
+    return limitedSections;
   };
 
   getSectionSuggestions = section => section.entries;
