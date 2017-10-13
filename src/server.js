@@ -69,6 +69,12 @@ app.use(function(req, res, next) {
 });
 
 
+import * as sizeStandardsController from "./controllers/size-standards.js";
+app.get("/naics", sizeStandardsController.getNaics);
+app.get("/naics/:id", sizeStandardsController.getNaicsById);
+app.get("/naics/:id/:property", sizeStandardsController.getNaicsPropertyById);
+app.get("/smallbusiness", sizeStandardsController.determineIfSmallBusiness);
+
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
 app.post("/lendermatch/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
 app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);
