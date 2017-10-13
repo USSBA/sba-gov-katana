@@ -1,0 +1,308 @@
+.sizeStandardsTool {
+	
+	margin-bottom:50px;
+	border: 2px solid #000;
+	box-shadow: 2px 2px 15px #888888;
+	text-align: center;
+	position: relative;
+
+	> div {
+
+		padding: 50px 32px 150px;
+
+		&.startSection {
+
+			padding-bottom: 50px;
+
+			p {
+
+				font-size: 26px;
+
+			}
+
+		}
+
+	}
+
+}
+
+.resultsSection {
+
+	ul {
+
+		margin: 20px auto 40px;
+
+	}
+
+	.cards {
+	
+		margin-top: 50px;
+		text-align: center;
+
+	}
+
+	.card {
+
+		border: 1px solid #05183A;
+		padding: 25px;
+		text-align: left;
+
+		ul {
+
+			margin: 0;
+
+			li:last-child p {
+				margin: 0;
+			}
+
+		}
+		
+		@media (min-width:768px) {
+			
+			display: inline-block;
+			width: 278px;
+			margin-right: 40px;
+
+			&:last-child {
+
+				margin-right: 0;
+
+			}
+
+
+		}
+
+	}
+
+
+}
+
+.appBar {
+	
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #cccccc;
+	padding: 20px 30px;
+	text-align: left;
+
+}
+
+img {
+	
+	display: block;
+	width: 100%;
+
+	@include grid-media($sba-grid-medium) {
+		
+		margin: -70px auto -30px;
+
+	}
+	
+}
+
+i {
+	
+	margin-right: 10px;
+	
+}
+
+.button {
+
+	padding: .75em 4.25em
+
+}
+
+.naicsCodeInput {
+	
+	width: 35%;
+	margin: 0 auto;
+	position: relative;
+
+	input {
+
+		line-height: 37px;
+
+	}
+
+	button {
+
+		position: absolute;
+		top: 34px;
+	    right: 0;
+
+	}
+
+}
+
+
+.naicsCodesList {
+	
+	border-top: 1px solid #05183A;
+	max-width: 470px;
+	margin: 0 auto 10px;
+
+	@media(max-width: 768px) {
+
+		margin-top: 20px;
+
+	}
+
+	li {
+		
+		border-bottom: 1px solid #05183A;
+		padding: 15px 20px;
+		text-align: left;
+
+	}
+
+	p {
+		margin: 0;
+	}
+
+	span {
+		display: block;
+		color: #333333;
+		font-size: 75%;
+	    font-weight: bold;
+	    line-height: 1.2;
+	}
+
+	.remove {
+	    
+	    float: right;
+	    padding: 22px 10px;
+    	margin-right: -10px;
+    	margin-top: -28px;
+    	text-align: center;
+
+    	i {
+    	
+    		margin-right: 0;
+    		color: #757575;
+    	
+    	}
+	}
+
+	.results {
+
+		@media (min-width: 768px) {
+			
+			display: flex;
+			padding: 5px 0;
+
+		}
+
+
+		.left {
+
+			margin: auto 0;
+
+			@media (max-width: 767px) {
+
+				margin-bottom: 10px;
+				width: 80%;
+
+			}
+
+			@media (min-width: 768px) {
+				display: inline-block;
+				margin-right: 5%;
+				width: 40%;
+			}
+
+			> div {
+				line-height: 1;
+			}
+
+		}
+
+		.middle {
+
+			margin: auto 0;
+
+			@media (max-width: 767px) {
+
+				width: 80%;
+
+			}
+
+			@media (min-width: 768px) {
+				
+				width: 50%;
+
+			}
+
+			> div {
+				line-height: 1.2;
+			}
+
+		}
+
+		.right {
+
+			margin: auto;
+
+			font-size: 100%;
+			font-weight: bold;
+			text-align: center;
+
+			@media (max-width: 767px) {
+
+				margin-top: -60px;
+
+			}
+			
+			i {
+
+				display: block;
+		    	margin-right: 0;
+		    	margin-bottom: -2px;
+
+			}
+
+		}
+
+		.no i {
+
+			color: #E21234;
+
+		}
+
+		.yes i {
+
+			color: #609F00;
+
+		}
+
+	}
+
+	.exceptionsList {
+
+		margin: 0;
+
+		li {
+
+			padding: 15px 0;
+			border-bottom: 0;
+
+		}
+
+	}
+
+}
+
+.revenueInput,
+.employeesInput {
+	
+	width: 35%;
+	margin: 0 auto;
+
+	input {
+
+		line-height: 37px;
+
+	}
+
+}
