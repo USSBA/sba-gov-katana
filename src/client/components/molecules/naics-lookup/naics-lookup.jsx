@@ -1,15 +1,14 @@
 import React from 'react';
 import AutoSuggest from 'react-autosuggest';
+import isMobile from 'ismobilejs';
 
 import {
   filter,
-  isArray,
   isInteger,
   map,
   reduce,
   startsWith,
   take,
-  zip
 } from 'lodash';
 
 import naics from '../../../../models/dao/sample-data/naics';
@@ -19,11 +18,6 @@ import theme from './theme.scss';
 import {
   SmallIcon
 } from 'atoms';
-
-// https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
-function escapeRegexCharacters(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
 
 // Format the list of naics from the API into a structure suitable for React
 // Autosuggest, i.e. into a list of sections (naics categories/industries) that
@@ -65,8 +59,9 @@ class NaicsLookup extends React.PureComponent {
   constructor(props) {
     super();
 
+    const { naics } = props;
+
     this.state = {
-      isSuggestionsContainerOpen: false,
       suggestions: [],
       suggestionsContainerOpenHeight: 0,
       value: '',
@@ -91,7 +86,10 @@ class NaicsLookup extends React.PureComponent {
         getSuggestionValue={this.getSuggestionValue}
         renderSuggestion={this.renderSuggestion}
         inputProps={inputProps}
+        onSuggestionSelected={this.onSuggestionSelected}
+        alwaysRenderSuggestions={true}
         highlightFirstSuggestion={true}
+        focusInputOnSuggestionClick={!isMobile}
         multiSection={true}
         renderSectionTitle={this.renderSectionTitle}
         getSectionSuggestions={this.getSectionSuggestions}
@@ -100,6 +98,21 @@ class NaicsLookup extends React.PureComponent {
       />
     );
   }
+
+  onChange = (e, { newValue }) => {
+    this.setState({
+      value: newValue
+    });
+  };
+
+  onCloseIconSelect = e => {
+    const { key } = e;
+    if (key && key !== 'Enter') return;
+
+    this.setState({
+      suggestions: []
+    });
+  };
 
   // # React-Autosuggest-specific
 
@@ -147,14 +160,20 @@ class NaicsLookup extends React.PureComponent {
   // ## Render methods
 
   renderInputComponent = inputProps => {
-    const { isSuggestionsContainerOpen } = this.state;
+    const { suggestions } = this.state;
     return (
       <div style={{
         position: 'relative',
       }}>
         <input {...inputProps} />
-        {isSuggestionsContainerOpen
-          ? <SmallIcon extraClassName={`${styles.icon} ${styles.closeIcon}`} alt="close icon" fontAwesomeIconClassName="times" />
+        {suggestions.length > 0
+            ? <SmallIcon
+                alt="close icon"
+                extraClassName={`${styles.icon} ${styles.closeIcon}`}
+                fontAwesomeIconClassName="times"
+                onClick={this.onCloseIconSelect}
+                onKeyDown={this.onCloseIconSelect}
+              />
           : <i className={`fa fa-search ${styles.icon} ${styles.searchIcon}`} alt="search icon"></i>}
       </div>
     );
@@ -171,7 +190,6 @@ class NaicsLookup extends React.PureComponent {
 
   renderSuggestionsContainer = ({ containerProps, children, query }) => {
     const { suggestionsContainerOpenHeight } = this.state;
-    console.log(containerProps);
     return (
       <div style={{
         maxHeight: `${suggestionsContainerOpenHeight}px`
@@ -183,19 +201,19 @@ class NaicsLookup extends React.PureComponent {
 
   // ## Event handlers
 
-  onChange = (e, { newValue }) => {
-    this.setState({
-      value: newValue
-    });
-  };
+  onSuggestionsClearRequested = () => { /* no-op */ };
 
-  onSuggestionsFetchRequested = ({ value }) => {
+  onSuggestionsFetchRequested = ({ value, reason }) => {
+    // If input was changed because user selected a suggestion, do not update
+    // the suggestions.
+    if (reason === 'suggestion-selected') return;
+
     const suggestions = this.getSuggestions(value);
 
     // The suggestions container should expand to show up to LIMIT entries,
     // considering the height of each entry and the height of any included
     // categories.
-    const LIMIT = 10;
+    const LIMIT = 5;
     let entriesCount = 0;
     // add extra top padding + extra bottom padding to container height
     let suggestionsContainerOpenHeight = 8 + 6;
@@ -218,17 +236,15 @@ class NaicsLookup extends React.PureComponent {
 
     if (suggestions.length > 0) {
       this.setState({
-        isSuggestionsContainerOpen: true,
         suggestions,
         suggestionsContainerOpenHeight
       });
     }
   };
 
-  onSuggestionsClearRequested = () => {
+  onSuggestionSelected = e => {
     this.setState({
-      isSuggestionsContainerOpen: false,
-      suggestions: []
+      suggestions: [],
     });
   };
 }
