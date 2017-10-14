@@ -9,6 +9,117 @@ import {
   NaicsLookup
 } from "molecules";
 
+const naics = [
+  {
+    "code": "111110",
+    "description": "Soybean Farming",
+    "sectorId": "11",
+    "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+    "subsectorId": "111",
+    "subsectorDescription": "Crop Production",
+    "revenueLimit": 0.75,
+    "employeeCount": null,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "111120",
+    "description": "Oilseed (except Soybean) Farming",
+    "sectorId": "11",
+    "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+    "subsectorId": "111",
+    "subsectorDescription": "Crop Production",
+    "revenueLimit": 0.75,
+    "employeeCount": null,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "111130",
+    "description": "Dry Pea and Bean Farming",
+    "sectorId": "11",
+    "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+    "subsectorId": "111",
+    "subsectorDescription": "Crop Production",
+    "revenueLimit": 0.75,
+    "employeeCount": null,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "211120",
+    "description": "Crude Petroleum Extraction",
+    "sectorId": "21",
+    "sectorDescription": "Mining, Quarrying, and Oil and Gas Extraction",
+    "subsectorId": "211",
+    "subsectorDescription": "Oil and Gas Extraction",
+    "revenueLimit": null,
+    "employeeCount": 1250,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "211130",
+    "description": "Natural Gas Extraction",
+    "sectorId": "21",
+    "sectorDescription": "Mining, Quarrying, and Oil and Gas Extraction",
+    "subsectorId": "211",
+    "subsectorDescription": "Oil and Gas Extraction",
+    "revenueLimit": null,
+    "employeeCount": 1250,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "212111",
+    "description": "Bituminous Coal and Lignite Surface Mining",
+    "sectorId": "21",
+    "sectorDescription": "Mining, Quarrying, and Oil and Gas Extraction",
+    "subsectorId": "212",
+    "subsectorDescription": "Mining (except Oil and Gas)",
+    "revenueLimit": null,
+    "employeeCount": 1250,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "221111",
+    "description": "Hydroelectric Power Generation",
+    "sectorId": "22",
+    "sectorDescription": "Utilities",
+    "subsectorId": "221",
+    "subsectorDescription": "Utilities",
+    "revenueLimit": null,
+    "employeeCount": 500,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "221112",
+    "description": "Fossil Fuel Electric Power Generation",
+    "sectorId": "22",
+    "sectorDescription": "Utilities",
+    "subsectorId": "221",
+    "subsectorDescription": "Utilities",
+    "revenueLimit": null,
+    "employeeCount": 750,
+    "footnote": null,
+    "parent": null
+  },
+  {
+    "code": "221113",
+    "description": "Nuclear Electric Power Generation",
+    "sectorId": "22",
+    "sectorDescription": "Utilities",
+    "subsectorId": "221",
+    "subsectorDescription": "Utilities",
+    "revenueLimit": null,
+    "employeeCount": 750,
+    "footnote": null,
+    "parent": null
+  }
+];
+
 // Format the list of naics from the API into a structure suitable for React
 // Autosuggest, i.e. into a list of sections (naics categories/industries) that
 // contain entries (naics codes and descriptions).
@@ -48,127 +159,16 @@ function formatNaics (naics) {
 
 export class DeveloperTester extends React.Component {
   render() {
-    const naics = [
-      {
-          "code": "111110",
-          "description": "Soybean Farming",
-          "sectorId": "11",
-          "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
-          "subsectorId": "111",
-          "subsectorDescription": "Crop Production",
-          "revenueLimit": 0.75,
-          "employeeCount": null,
-          "footnote": null,
-          "parent": null
-      },
-      {
-          "code": "111120",
-          "description": "Oilseed (except Soybean) Farming",
-          "sectorId": "11",
-          "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
-          "subsectorId": "111",
-          "subsectorDescription": "Crop Production",
-          "revenueLimit": 0.75,
-          "employeeCount": null,
-          "footnote": null,
-          "parent": null
-      },
-      {
-        "code": "111130",
-        "description": "Dry Pea and Bean Farming",
-        "sectorId": "11",
-        "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
-        "subsectorId": "111",
-        "subsectorDescription": "Crop Production",
-        "revenueLimit": 0.75,
-        "employeeCount": null,
-        "footnote": null,
-        "parent": null
-      },
-      {
-        "code": "211120",
-        "description": "Crude Petroleum Extraction",
-        "sectorId": "21",
-        "sectorDescription": "Mining, Quarrying, and Oil and Gas Extraction",
-        "subsectorId": "211",
-        "subsectorDescription": "Oil and Gas Extraction",
-        "revenueLimit": null,
-        "employeeCount": 1250,
-        "footnote": null,
-        "parent": null
-      },
-      {
-        "code": "211130",
-        "description": "Natural Gas Extraction",
-        "sectorId": "21",
-        "sectorDescription": "Mining, Quarrying, and Oil and Gas Extraction",
-        "subsectorId": "211",
-        "subsectorDescription": "Oil and Gas Extraction",
-        "revenueLimit": null,
-        "employeeCount": 1250,
-        "footnote": null,
-        "parent": null
-      },
-      {
-        "code": "212111",
-        "description": "Bituminous Coal and Lignite Surface Mining",
-        "sectorId": "21",
-        "sectorDescription": "Mining, Quarrying, and Oil and Gas Extraction",
-        "subsectorId": "212",
-        "subsectorDescription": "Mining (except Oil and Gas)",
-        "revenueLimit": null,
-        "employeeCount": 1250,
-        "footnote": null,
-        "parent": null
-      },
-      {
-        "code": "221111",
-        "description": "Hydroelectric Power Generation",
-        "sectorId": "22",
-        "sectorDescription": "Utilities",
-        "subsectorId": "221",
-        "subsectorDescription": "Utilities",
-        "revenueLimit": null,
-        "employeeCount": 500,
-        "footnote": null,
-        "parent": null
-      },
-      {
-        "code": "221112",
-        "description": "Fossil Fuel Electric Power Generation",
-        "sectorId": "22",
-        "sectorDescription": "Utilities",
-        "subsectorId": "221",
-        "subsectorDescription": "Utilities",
-        "revenueLimit": null,
-        "employeeCount": 750,
-        "footnote": null,
-        "parent": null
-      },
-      {
-        "code": "221113",
-        "description": "Nuclear Electric Power Generation",
-        "sectorId": "22",
-        "sectorDescription": "Utilities",
-        "subsectorId": "221",
-        "subsectorDescription": "Utilities",
-        "revenueLimit": null,
-        "employeeCount": 750,
-        "footnote": null,
-        "parent": null
-      }
-    ];
-
     return (
       <NaicsLookup
-        onSelect={suggestion => {
+        onSelect={selection => {
           // const {
           //   code,
           //   description,
           //   industryCode,
           //   industryDescription
-          // } = suggestion;
-          console.log(suggestion);
+          // } = selection;
+          console.log(selection);
         }}
         naics={formatNaics(naics)}
         visibleSuggestions={5}
