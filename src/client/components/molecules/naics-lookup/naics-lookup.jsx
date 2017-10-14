@@ -11,7 +11,6 @@ import {
   take,
 } from 'lodash';
 
-import naics from '../../../../models/dao/sample-data/naics';
 import styles from './naics-lookup.scss'
 import theme from './theme.scss';
 
@@ -19,53 +18,23 @@ import {
   SmallIcon
 } from 'atoms';
 
-// Format the list of naics from the API into a structure suitable for React
-// Autosuggest, i.e. into a list of sections (naics categories/industries) that
-// contain entries (naics codes and descriptions).
-function formatNaics (naics) {
-  const industriesMap = {};
-  for (let i = 0; i < naics.length; i++) {
-    const {
-      code,
-      description,
-      sectorDescription: industryDescription,
-      sectorId: industryCode,
-    } = naics[i];
-
-    if (!industriesMap.hasOwnProperty(industryCode)) {
-      industriesMap[industryCode] = {
-        description: industryDescription,
-        entries: []
-      };
-    }
-
-    industriesMap[industryCode].entries.push({ code, description, industryDescription });
-  }
-
-  return reduce(industriesMap, (acc, val, key) => {
-    acc.push({
-      description: val.description,
-      entries: val.entries
-    });
-    return acc;
-  }, []);
-}
-
 class NaicsLookup extends React.PureComponent {
   static defaultProps = {
-    naics: formatNaics(naics)
+    visibleSuggestions: 5
   };
 
   constructor(props) {
     super();
-
-    const { naics } = props;
 
     this.state = {
       suggestions: [],
       suggestionsContainerOpenHeight: 0,
       value: '',
     };
+  }
+
+  componentWillReceiveProps (nextProps) {
+    console.log('props');
   }
 
   render() {
@@ -89,7 +58,7 @@ class NaicsLookup extends React.PureComponent {
         onSuggestionSelected={this.onSuggestionSelected}
         alwaysRenderSuggestions={true}
         highlightFirstSuggestion={true}
-        focusInputOnSuggestionClick={!isMobile}
+        focusInputOnSuggestionClick={!isMobile /* On mobile devices, lose focus when suggestion is tapped to hide the keyboard. */}
         multiSection={true}
         renderSectionTitle={this.renderSectionTitle}
         getSectionSuggestions={this.getSectionSuggestions}
@@ -152,6 +121,7 @@ class NaicsLookup extends React.PureComponent {
     return filter(sections, section => section.entries.length > 0);
   };
 
+  // Let React Autosuggest know where to find suggestions within sections.
   getSectionSuggestions = section => section.entries;
 
   // Set the value to show in the input when a suggestion is selected.
@@ -208,12 +178,12 @@ class NaicsLookup extends React.PureComponent {
     // the suggestions.
     if (reason === 'suggestion-selected') return;
 
+    const { visibleSuggestions } = this.props;
     const suggestions = this.getSuggestions(value);
 
-    // The suggestions container should expand to show up to LIMIT entries,
-    // considering the height of each entry and the height of any included
-    // categories.
-    const LIMIT = 5;
+    // The suggestions container should expand to show up to visibleSuggestions
+    // entries, considering the height of each entry and the height of any
+    // included categories.
     let entriesCount = 0;
     // add extra top padding + extra bottom padding to container height
     let suggestionsContainerOpenHeight = 8 + 6;
@@ -226,10 +196,10 @@ class NaicsLookup extends React.PureComponent {
 
         const { entries } = suggestions[i];
         for (let j = 0; j < entries.length; j++) {
-          // Add height of suggestion (entry) to container height
+          // add height of suggestion (entry) to container height
           suggestionsContainerOpenHeight += 57;
           entriesCount++;
-          if (entriesCount >= LIMIT) return;
+          if (entriesCount >= visibleSuggestions) return;
         }
       }
     })();
