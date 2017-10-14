@@ -18,6 +18,7 @@ import { SmallIcon } from 'atoms';
 
 class NaicsLookup extends React.PureComponent {
   static defaultProps = {
+    onSelect: () => {},
     visibleSuggestions: 5
   };
 
@@ -205,7 +206,13 @@ class NaicsLookup extends React.PureComponent {
     });
   };
 
-  onSuggestionSelected = e => {
+  onSuggestionSelected = (e, { sectionIndex, suggestionIndex }) => {
+    // Call onSelect with the selected suggestion data.
+    const { onSelect } = this.props;
+    const { suggestions } = this.state;
+    onSelect.call(null, suggestions[sectionIndex].entries[suggestionIndex]);
+
+    // Reset the suggestions.
     this.setState({
       suggestions: [],
     });
