@@ -14,9 +14,7 @@ import {
 import styles from './naics-lookup.scss'
 import theme from './theme.scss';
 
-import {
-  SmallIcon
-} from 'atoms';
+import { SmallIcon } from 'atoms';
 
 class NaicsLookup extends React.PureComponent {
   static defaultProps = {
@@ -24,17 +22,13 @@ class NaicsLookup extends React.PureComponent {
   };
 
   constructor(props) {
-    super();
+    super(props);
 
     this.state = {
       suggestions: [],
       suggestionsContainerOpenHeight: 0,
       value: '',
     };
-  }
-
-  componentWillReceiveProps (nextProps) {
-    console.log('props');
   }
 
   render() {
@@ -178,9 +172,10 @@ class NaicsLookup extends React.PureComponent {
     // the suggestions.
     if (reason === 'suggestion-selected') return;
 
-    const { visibleSuggestions } = this.props;
     const suggestions = this.getSuggestions(value);
+    if (suggestions.length === 0) return;
 
+    const { visibleSuggestions } = this.props;
     // The suggestions container should expand to show up to visibleSuggestions
     // entries, considering the height of each entry and the height of any
     // included categories.
@@ -204,12 +199,10 @@ class NaicsLookup extends React.PureComponent {
       }
     })();
 
-    if (suggestions.length > 0) {
-      this.setState({
-        suggestions,
-        suggestionsContainerOpenHeight
-      });
-    }
+    this.setState({
+      suggestions,
+      suggestionsContainerOpenHeight
+    });
   };
 
   onSuggestionSelected = e => {
