@@ -42,7 +42,7 @@ describe("Document", () => {
       const fileIndex = 0;
       const file = files[fileIndex];
 
-      let mockHtml = `<li><strong>Version ${documentIdNumber}: N/A</strong>`;
+      let mockHtml = `<li><strong>Version: N/A</strong>`;
       mockHtml += `<strong>|</strong>`;
       mockHtml += `Effective: N/A.`;
       mockHtml += `<a href="${file.fileUrl}" target="_blank">Download PDF`;
