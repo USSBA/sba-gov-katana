@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _,{ reduce } from "lodash";
 import React, {PureComponent} from "react";
 import {
 	LargePrimaryButton,
@@ -8,9 +8,9 @@ import {
 	TextInput,
 	BasicLink
 } from "atoms";
+import { NaicsLookup } from "molecules";
 import sizeStandardsGraphic from "../../../../../public/assets/images/tools/size-standards-tool/Size_standards_graphic.png";
 import styles from "./size-standards-tool.scss";
-
 
 class SizeStandardsTool extends PureComponent {
 
@@ -20,7 +20,6 @@ class SizeStandardsTool extends PureComponent {
 
 		this.state = {
 			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
-			"isNaicsInputEnabled": false,
 			"shouldShowNaicsInput": true,
 			"naicsCodesList": [], // 
 			"shouldShowRevenueSection": false,
@@ -47,12 +46,6 @@ class SizeStandardsTool extends PureComponent {
 
 				break;
 
-			case "NAICS":
-
-				data.isNaicsInputEnabled = false;
-
-				break;
-
 			default:
 				break;
 		}
@@ -65,13 +58,104 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
+	renderNaicsAutoSuggest() {
+
+		// Format the list of naics from the API into a structure suitable for React
+		// Autosuggest, i.e. into a list of sections (naics categories/industries) that
+		// contain entries (naics codes and descriptions).
+		function formatNaics (naics) {
+			
+			const industriesMap = {};
+			for (let index = 0; index < naics.length; index++) {
+				
+				const {
+					code,
+					description,
+					sectorDescription: industryDescription,
+					sectorId: industryCode
+				} = naics[index];
+
+				if (!industriesMap.hasOwnProperty(industryCode)) {
+					industriesMap[industryCode] = {
+						description: industryDescription,
+						entries: []
+					};
+
+				}
+
+				industriesMap[industryCode].entries.push({
+					code,
+					description,
+					industryCode,
+					industryDescription
+				});
+
+			}
+
+			return reduce(industriesMap, (acc, val, key) => {
+				
+				acc.push({
+					description: val.description,
+					entries: val.entries
+				});
+				
+				return acc;
+				
+				},
+			[]);
+
+		}
+
+		// filter out exceptions and then format naics objects
+		const naics = formatNaics(this.props.naicsCodes.filter((object) => {
+
+			let result;
+			const validLength = 6;
+
+			if (object.code.length === validLength) {
+				result = object;
+			}
+
+			return result;
+
+		}));
+
+		const inputProps = {
+			id: "naics-lookup",
+			name: "naics"
+			// onBlur,
+			// onFocus
+		};
+
+		return (
+			<NaicsLookup
+				naics={naics}
+				onSelect={(selection) => {
+					
+					// const {
+					//   code,
+					//   description,
+					//   industryCode,
+					//   industryDescription
+					// } = selection;
+					console.log(selection);
+
+					const naicsCode = selection.code;
+					this.addNaicsCode(naicsCode);
+					this.showNaicsInput(false);
+
+				}}
+
+				inputProps={inputProps}
+				maxVisibleSuggestions={5}
+			/>
+		);
+
+	}
+
 	showNaicsInput(shouldShowNaicsInput) {
 
 		const updatedState = {shouldShowNaicsInput};
-
-		if (shouldShowNaicsInput === true) {
-			updatedState.isNaicsInputEnabled = false;
-		}
 
 		this.setState(updatedState);
 
@@ -82,15 +166,6 @@ class SizeStandardsTool extends PureComponent {
 		const {section, value} = data;
 
 		switch (section) {
-
-			case "NAICS":
-
-				const validLength = 6;
-				const isNaicsInputEnabled = (value.length === validLength);
-
-				this.setState({isNaicsInputEnabled});
-
-				break;
 
 			case "REVENUE":
 
@@ -199,7 +274,7 @@ class SizeStandardsTool extends PureComponent {
 								onClick={() => {
 									this.removeNaicsCode(code);
 								}}>
-								<i className="fa fa-times" aria-hidden="true"></i></a>
+								<i className="fa fa-times" aria-hidden="true" /></a>
 							</p>
 						
 						</div>}
@@ -237,14 +312,14 @@ class SizeStandardsTool extends PureComponent {
 								<div className={styles.right}>
 
 									<div className={styles.no}>
-										<p><i className="fa fa-times-circle" aria-hidden="true"></i>NO</p>
+										<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
 									</div>
 
 								</div>
 
 							</div>
 
-							{this.renderExceptions(code)}
+							{this.renderNaicsExceptionsList(code)}
 
 						</div>}
 
@@ -266,7 +341,7 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
-	renderExceptions(code) {
+	renderNaicsExceptionsList(code) {
 
 		const {naicsCodes} = this.props;
 
@@ -278,6 +353,7 @@ class SizeStandardsTool extends PureComponent {
 
 			let result;
 
+			// exceptions are naics codes with parents
 			if (parent === code) {
 
 				index++;
@@ -315,7 +391,7 @@ class SizeStandardsTool extends PureComponent {
 							<div className={styles.right}>
 
 								<div className={styles.no}>
-									<p><i className="fa fa-times-circle" aria-hidden="true"></i>NO</p>
+									<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
 								</div>
 
 							</div>
@@ -361,7 +437,6 @@ class SizeStandardsTool extends PureComponent {
 		const {
 			section,
 			shouldShowNaicsInput,
-			isNaicsInputEnabled,
 			naicsCodesList,
 			employeeTotal,
 			revenueTotal,
@@ -410,40 +485,14 @@ class SizeStandardsTool extends PureComponent {
 					{shouldShowNaicsInput ? (<div>
 
 						<div className={styles.naicsCodeInput}>
-							
-							<TextInput
-								id="naics-code"
-								errorText={"Please enter a correct NAICS Code."}
-								label="Your 6-digit NAICS code"
-								validationState={""}
-								onChange={() => {
-									
-									const data = {
-										section,
-										value: document.getElementById("naics-code").value
-									};
 
-									this.onInputChange(data);
-									
-								}}
-							/>
+							<p>Select your 6-digit NAICS code</p>
 
-							<SmallPrimaryButton
-								onClick={() => {
+							{this.renderNaicsAutoSuggest()}
 
-									const naicsCode = document.getElementById("naics-code").value;
-									this.addNaicsCode(naicsCode);
-									this.showNaicsInput(false);
-
-								}}
-								disabled={!isNaicsInputEnabled}
-								text="Add"
-							/>
+							<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
 
 						</div>
-
-						<p>The North American Industry Classification System or NAICS <br />classifies  businesses according to type of economic activity.</p>
-						<p><a href="https://www.census.gov/eos/www/naics/" target="_blank"><SearchIcon aria-hidden="true" />Find your NAICS code</a></p>
 
 					</div>) : (<div>
 
@@ -451,7 +500,7 @@ class SizeStandardsTool extends PureComponent {
 							
 							this.showNaicsInput(true);
 
-						}}><i className="fa fa-plus" aria-hidden="true"></i>Add another industry</a></p>
+						}}><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
 					
 					</div>)}
 
@@ -601,9 +650,9 @@ class SizeStandardsTool extends PureComponent {
 							<p>Learn more about <BasicLink url="#">SBA small business size standards</BasicLink>.</p>
 							<p><strong>SBA Office of Size Standards</strong></p>
 							<ul>
-								<li><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-								<li><p>202-205-6618</p></li>
-								<li><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
+								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+								<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
+								<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
 							</ul>
 						</div>
 
@@ -611,9 +660,9 @@ class SizeStandardsTool extends PureComponent {
 							<p>Find out <BasicLink url="#">how you can sell to the Federal Government</BasicLink>.</p>
 							<p><strong>SBA Office of Contracting</strong></p>
 							<ul>
-								<li><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-								<li><p>202-205-6621</p></li>
-								<li><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
+								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+								<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
+								<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
 							</ul>
 						</div>
 
