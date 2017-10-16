@@ -11,9 +11,7 @@ import {
   take,
 } from 'lodash';
 
-import styles from './naics-lookup.scss'
-import theme from './theme.scss';
-
+import theme, * as styles from './naics-lookup.scss';
 import { SmallIcon } from 'atoms';
 
 class NaicsLookup extends React.PureComponent {
@@ -33,10 +31,11 @@ class NaicsLookup extends React.PureComponent {
   }
 
   render() {
+    const { inputProps: extraInputProps } = this.props;
     const { value, suggestions } = this.state;
 
     const inputProps = {
-      type: 'search',
+      ...extraInputProps,
       value,
       onChange: this.onChange
     };
@@ -135,12 +134,12 @@ class NaicsLookup extends React.PureComponent {
         {suggestions.length > 0
             ? <SmallIcon
                 alt="close icon"
-                extraClassName={`${styles.icon} ${styles.closeIcon}`}
+                extraClassName={styles.closeIcon}
                 fontAwesomeIconClassName="times"
                 onClick={this.onCloseIconSelect}
                 onKeyDown={this.onCloseIconSelect}
               />
-          : <i className={`fa fa-search ${styles.icon} ${styles.searchIcon}`} alt="search icon"></i>}
+          : <i className={`fa fa-search ${styles.searchIcon}`} alt="search icon"></i>}
       </div>
     );
   }

@@ -4,10 +4,7 @@ import { bindActionCreators } from "redux";
 import { reduce } from 'lodash';
 
 import styles from "./developer-tester.scss";
-
-import {
-  NaicsLookup
-} from "molecules";
+import { NaicsLookup } from "molecules";
 
 const naics = [
   {
@@ -159,8 +156,16 @@ function formatNaics (naics) {
 
 export class DeveloperTester extends React.Component {
   render() {
+    const inputProps = {
+      id: 'naics-lookup',
+      name: 'naics',
+      // onBlur,
+      // onFocus
+    };
+
     return (
       <NaicsLookup
+        naics={formatNaics(naics)}
         onSelect={selection => {
           // const {
           //   code,
@@ -170,7 +175,7 @@ export class DeveloperTester extends React.Component {
           // } = selection;
           console.log(selection);
         }}
-        naics={formatNaics(naics)}
+        inputProps={inputProps}
         visibleSuggestions={5}
       />
     );

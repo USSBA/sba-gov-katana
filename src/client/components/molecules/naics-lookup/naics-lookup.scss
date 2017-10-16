@@ -1,6 +1,48 @@
+@import "base/_variables";
+
 $boulder: #757575;
 
+$borderColor: $cobalt-blue;
+$categoryColor: $boulder;
+$highlightColor: $cobalt-blue-lightest;
 $iconColor: $boulder;
+
+$horizontal-padding: 20px;
+
+.input {
+  padding-left: $horizontal-padding;
+  padding-right: $horizontal-padding;
+  height: 49px;
+}
+
+.suggestionsContainerOpen {
+  $vertical-padding: 6px;
+  margin-top: -21px;
+  padding-top: $vertical-padding;
+  padding-bottom: $vertical-padding;
+  border: 1px solid $borderColor;
+  overflow-y: scroll;
+}
+
+.suggestion {
+  $vertical-padding: 8px;
+  padding: $vertical-padding $horizontal-padding;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.suggestionHighlighted {
+  background-color: $highlightColor;
+}
+
+.sectionTitle {
+  padding-left: $horizontal-padding;
+  padding-right: $horizontal-padding;
+  color: $categoryColor;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
 .icon {
   position: absolute;
@@ -9,12 +51,14 @@ $iconColor: $boulder;
 }
 
 .searchIcon {
-  top: 16px;
+  composes: icon;
+  bottom: 16px;
   color: $iconColor;
 }
 
 .closeIcon {
-  top: 12px;
+  composes: icon;
+  bottom: 12px;
   color: $iconColor !important;
 }
 
