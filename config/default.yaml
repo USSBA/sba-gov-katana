@@ -62,3 +62,4 @@ oca:
 features:
     forPartners: false
     showSbic: false
+    moon: false
