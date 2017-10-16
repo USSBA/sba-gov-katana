@@ -7,6 +7,7 @@ import {
 import errorImg from "../../../../../public/assets/images/error-page/SBA_404.png";
 import styles from "./error-page.scss";
 import RemoveMainLoader from "../../molecules/main-loader/remove-main-loader.jsx"
+import clientConfig from "../../../services/client-config.js";
 
 class ErrorPage extends React.Component {
     constructor(props) {
@@ -27,16 +28,17 @@ class ErrorPage extends React.Component {
         document.location = uri;
     }
     render() {
+        let text = clientConfig.moon ?  "Just like a business on the moon, the page you're looking for doesn't exist." :"The page you're looking for doesn't exist.  Return to the home page, or search for what you're trying to find.";
         return (
             <div className={styles.errorContainer}>
                 <RemoveMainLoader />
-                <img src={errorImg} alt="Error Image"/>
-                <div className={styles.formContainer}>
+                { clientConfig.moon ? <img src={errorImg} alt="Error Image"/> : undefined }
+                <div className={styles.formContainer + " " + ( clientConfig.moon ? styles.moon : styles.noMoon)}>
                     <h1 className={styles.title}>
                         404
                     </h1>
                     <h3 className={styles.subTitle}>
-                        Just like a business on the moon, the page you're looking for doesn't exist.
+                        {text}
                     </h3>
                     <p>
                         Return to the <BasicLink url="/" text="home page"/>, or search for what you're trying to find.

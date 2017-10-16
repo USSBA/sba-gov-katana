@@ -58,6 +58,7 @@ app.use(function(req, res, next) {
     debug: config.get("developmentOptions.client.logging"),
     govdelivery: config.get("govdelivery.popupEnabled"),
     showSbic: config.get("features.showSbic"),
+    moon: config.get("features.moon"),
     forPartners: config.get("features.forPartners")
   };
   req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
