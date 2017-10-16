@@ -176,7 +176,7 @@ export class DeveloperTester extends React.Component {
           console.log(selection);
         }}
         inputProps={inputProps}
-        visibleSuggestions={5}
+        maxVisibleSuggestions={5}
       />
     );
   }

@@ -52,7 +52,7 @@ class NaicsLookup extends React.PureComponent {
         onSuggestionSelected={this.onSuggestionSelected}
         alwaysRenderSuggestions={true}
         highlightFirstSuggestion={true}
-        focusInputOnSuggestionClick={!isMobile /* On mobile devices, lose focus when suggestion is tapped to hide the keyboard. */}
+        focusInputOnSuggestionClick={!isMobile.any /* On mobile devices, lose focus when a suggestion is tapped to hide the keyboard. */}
         multiSection={true}
         renderSectionTitle={this.renderSectionTitle}
         getSectionSuggestions={this.getSectionSuggestions}
@@ -172,21 +172,22 @@ class NaicsLookup extends React.PureComponent {
     // If the input was changed because the user selected a suggestion, do not
     // update the suggestions.
     if (reason === 'suggestion-selected') return;
-    if (reason === 'escape-pressed') {
+
+    const suggestions = this.getSuggestions(value);
+    if (suggestions.length === 0
+      || value === ''
+      || reason === 'escape-pressed') {
       this.setState({
         suggestions: []
       });
       return;
     }
 
-    const suggestions = this.getSuggestions(value);
-    if (suggestions.length === 0) return;
-
-    const { visibleSuggestions } = this.props;
-    // The suggestions container should expand to show up to visibleSuggestions
-    // entries, considering the height of each entry and the height of any
-    // included categories.
-    let entriesCount = 0;
+    // The suggestions container should expand to show up to
+    // maxVisibleSuggestions entries, considering the height of each entry and
+    // the height of any included categories.
+    const { maxVisibleSuggestions } = this.props;
+    let visibleSuggestions = 0;
     // add extra top padding + extra bottom padding to container height
     let suggestionsContainerOpenHeight = 8 + 6;
     // Declare an anonymous function, and `return` to break from the nested
@@ -200,8 +201,8 @@ class NaicsLookup extends React.PureComponent {
         for (let j = 0; j < entries.length; j++) {
           // add height of suggestion (entry) to container height
           suggestionsContainerOpenHeight += 57;
-          entriesCount++;
-          if (entriesCount >= visibleSuggestions) return;
+          visibleSuggestions++;
+          if (visibleSuggestions >= maxVisibleSuggestions) return;
         }
       }
     })();
