@@ -639,11 +639,6 @@ class SizeStandardsTool extends PureComponent {
 
 					<p>You may be eligible to participate in <BasicLink url="#"><strong>SBA contracting programs</strong></BasicLink>.</p>
 
-					{this.renderAppBar({
-						buttonText: "START OVER",
-						sectionTarget:"START"
-					})}
-
 					<div className={styles.cards}>
 
 						<div className={styles.card}>
@@ -667,6 +662,11 @@ class SizeStandardsTool extends PureComponent {
 						</div>
 
 					</div>
+
+					{this.renderAppBar({
+						buttonText: "START OVER",
+						sectionTarget:"START"
+					})}
 
 				</div>}
 
