@@ -14,7 +14,7 @@ class DocumentPage extends React.Component {
     if (doc) {
       const allVersionsList = doc.files.map((file, index) => {
         const { effectiveDate, fileUrl, version } = file;
-        const versionMessage =`Version ${doc.documentIdNumber || ''}${version ? ' ' : ': '}${version || 'N/A'}`;
+        const versionMessage =`Version${version ? ` ${doc.documentIdNumber} ${version}` : ': N/A'}`;
         const effectiveDateMessage = `Effective: ${effectiveDate || 'N/A'}`;
         const eventConfig = {
           category: 'Document-Version',
