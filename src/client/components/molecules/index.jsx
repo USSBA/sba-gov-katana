@@ -15,8 +15,9 @@ import FormPageButtons from "./form-page-buttons/form-page-buttons.jsx";
 import GoogleTranslate from "./google-translate/google-translate.jsx";
 import ImageSection from "./image-section/image-section.jsx";
 import Lookup from "./lookup/lookup.jsx";
-import MenuTile from "./menu-tile/menu-tile.jsx"
-import MenuTileWithLinks from "./menu-tile-with-links/menu-tile-with-links.jsx"
+import MenuTile from "./menu-tile/menu-tile.jsx";
+import MenuTileWithLinks from "./menu-tile-with-links/menu-tile-with-links.jsx";
+import NaicsLookup from "./naics-lookup/naics-lookup.jsx";
 import PageLinkGroup from "./page-link-group/page-link-group.jsx";
 import Paginator from "./paginator/paginator.jsx";
 import ParagraphPlaceholder from "./paragraph-placeholder/paragraph-placeholder.jsx";
@@ -63,6 +64,7 @@ export {
   Lookup,
   MenuTile,
   MenuTileWithLinks,
+  NaicsLookup,
   PageLinkGroup,
   Paginator,
   ParagraphPlaceholder,
