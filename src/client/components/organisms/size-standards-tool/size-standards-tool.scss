@@ -45,12 +45,41 @@
 			padding: 25px;
 			text-align: left;
 
+			&:last-child {
+
+				@media (max-width:767px) {
+
+					border-top: 0;	
+
+				}
+
+			}
+
 			ul {
 
 				margin: 0;
 
-				li:last-child p {
-					margin: 0;
+				li {
+
+					display: flex;
+					margin-bottom: 10px;
+
+					i {
+						
+						margin: auto 11px auto 0;
+					    font-size: 1.2em;
+					    width: 25px;
+					    text-align: center;
+
+					}
+
+					p {
+						
+						margin: 0;
+    					line-height: 1.1;
+
+					}
+
 				}
 
 			}
@@ -114,9 +143,10 @@
 
 	.naicsCodeInput {
 		
-		width: 35%;
+		max-width: 470px;
 		margin: 0 auto;
 		position: relative;
+		text-align: left;
 
 		input {
 
@@ -185,13 +215,8 @@
 
 		.results {
 
-			@media (min-width: 768px) {
-				
-				display: flex;
-				padding: 5px 0;
-
-			}
-
+			display: flex;
+			padding: 5px 0;
 
 			.left {
 
@@ -200,6 +225,7 @@
 				@media (max-width: 767px) {
 
 					margin-bottom: 10px;
+					margin-right: 10px;
 					width: 80%;
 
 				}
@@ -246,12 +272,6 @@
 				font-weight: bold;
 				text-align: center;
 
-				@media (max-width: 767px) {
-
-					margin-top: -60px;
-
-				}
-				
 				i {
 
 					display: block;
@@ -306,4 +326,7 @@
 	}
 
 }
+
+@include theme(cobalt-blue, '.appBar', $cobalt-blue, null, null);
+@include theme(cobalt-blue, '.cards i', null, $cobalt-blue, null);
 
