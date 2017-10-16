@@ -19,20 +19,27 @@ import s from "./document-article.scss";
 
 export class DocumentArticle extends React.Component {
 
-  getNewestFile() {
-    return this.props.data.files
-      ? this.props.data.files.reduce((acc, file) => {
-        return file.version > acc.version
-          ? file
-          : acc
-      })
-      : {fileUrl: this.props.data.file};
+  getCurrentFile() {
+    let found = null;
+    let files = this.props.data.files;
+    if (files) {
+      found = _.chain(files)
+        .filter(item => moment(item.effectiveDate).isSameOrBefore(moment()))
+        .sortBy("effectiveDate")
+        .last()
+        .value();
+    } else if (this.props.data.file) {
+      found = {
+        fileUrl: this.props.data.file
+      };
+    }
+    return found;
   }
 
-  downloadClick(newestFile) {
-    if(newestFile && newestFile.fileUrl){
+  downloadClick(currentFile) {
+    if(currentFile && currentFile.fileUrl){
       logPageEvent({category: "Download-PDF-CTA", action: "Click"});
-      window.open(newestFile.fileUrl, '_blank')
+      window.open(currentFile.fileUrl, '_blank')
     }
   }
 
@@ -50,10 +57,10 @@ export class DocumentArticle extends React.Component {
     const data = this.props.data
     const body = data.body && typeof data.body === "string" ? data.body: "";
     if (data) {
-      const newestFile = this.getNewestFile()
-      let newestFileExtension = "";
-      if(newestFile && newestFile.fileUrl && newestFile.fileUrl.includes && newestFile.fileUrl.includes(".")){
-          newestFileExtension = "." + _.last(newestFile.fileUrl.split("."));
+      const currentFile = this.getCurrentFile()
+      let currentFileExtension = "";
+      if(currentFile && currentFile.fileUrl && currentFile.fileUrl.includes && currentFile.fileUrl.includes(".")){
+          currentFileExtension = "." + _.last(currentFile.fileUrl.split("."));
       }
       let documentTypeString = null;
       switch(data.type){
@@ -66,10 +73,10 @@ export class DocumentArticle extends React.Component {
           <h1 className={"document-article-title " + s.title + " " + (documentTypeString? s.marginTop:"")}>{data.title}</h1>
           <p className={s.dates}>
             {data.updated ? <span className={s.date}>Last Updated {moment.unix(data.updated).format('MMM D, YYYY')}</span> : null}
-            {!newestFile.expirationDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
-            {newestFile.expirationDate ? <span className={s.date}>Expiration {this.formatDate(newestFile.expirationDate)}</span> : null}
-            {!newestFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
-            {newestFile.effectiveDate ? <span className={s.date}>Effective {this.formatDate(newestFile.effectiveDate)}</span> : null}
+            {!currentFile || !currentFile.expirationDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
+            {currentFile && currentFile.expirationDate ? <span className={s.date}>Expiration {this.formatDate(currentFile.expirationDate)}</span> : null}
+            {!currentFile || !currentFile.effectiveDate ? null : <span className={s.dateSeperator}>{" "}|{" "}</span>}
+            {currentFile && currentFile.effectiveDate ? <span className={s.date}>Effective {this.formatDate(currentFile.effectiveDate)}</span> : null}
             </p>
           {data.officeLink.url ? <div className={s.office}>By{" "}
             <BasicLink url={data.officeLink.url} text={data.officeLink.title}/>
@@ -77,7 +84,7 @@ export class DocumentArticle extends React.Component {
           }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(newestFile)} disabled={_.isEmpty(newestFile.fileUrl)} text={"download "+newestFileExtension}/>
+            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(currentFile)} disabled={!currentFile || _.isEmpty(currentFile.fileUrl)} text={"download "+currentFileExtension}/>
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
