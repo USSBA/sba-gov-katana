@@ -36,7 +36,7 @@ class NaicsLookup extends React.PureComponent {
     const { value, suggestions } = this.state;
 
     const inputProps = {
-      placeholder: '',
+      type: 'search',
       value,
       onChange: this.onChange
     };
@@ -71,9 +71,10 @@ class NaicsLookup extends React.PureComponent {
 
   onCloseIconSelect = e => {
     const { key } = e;
-    if (key && key !== 'Enter') return;
+    if (key && key !== 'Enter' && key !== 'Escape') return;
 
     this.setState({
+      value: '',
       suggestions: []
     });
   };
@@ -169,9 +170,15 @@ class NaicsLookup extends React.PureComponent {
   onSuggestionsClearRequested = () => { /* no-op */ };
 
   onSuggestionsFetchRequested = ({ value, reason }) => {
-    // If input was changed because user selected a suggestion, do not update
-    // the suggestions.
+    // If the input was changed because the user selected a suggestion, do not
+    // update the suggestions.
     if (reason === 'suggestion-selected') return;
+    if (reason === 'escape-pressed') {
+      this.setState({
+        suggestions: []
+      });
+      return;
+    }
 
     const suggestions = this.getSuggestions(value);
     if (suggestions.length === 0) return;
