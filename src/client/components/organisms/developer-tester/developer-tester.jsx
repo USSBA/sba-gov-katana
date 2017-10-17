@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { reduce } from 'lodash';
 
+// import naics from "./naics";
 import styles from "./developer-tester.scss";
 import { NaicsLookup } from "molecules";
 
@@ -165,6 +166,9 @@ export class DeveloperTester extends React.Component {
 
     return (
       <NaicsLookup
+        inputLengthToGetSuggestions={3}
+        inputProps={inputProps}
+        maxVisibleSuggestions={5}
         naics={formatNaics(naics)}
         onSelect={selection => {
           // const {
@@ -175,8 +179,6 @@ export class DeveloperTester extends React.Component {
           // } = selection;
           console.log(selection);
         }}
-        inputProps={inputProps}
-        maxVisibleSuggestions={5}
       />
     );
   }
