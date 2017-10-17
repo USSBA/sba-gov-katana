@@ -1,5 +1,6 @@
 import _,{ reduce } from "lodash";
 import React, {PureComponent} from "react";
+import axios from "axios";
 import {
 	LargePrimaryButton,
 	SearchIcon,
@@ -21,6 +22,7 @@ class SizeStandardsTool extends PureComponent {
 		this.state = {
 			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
 			"shouldShowNaicsInput": true,
+			"naicsCodes": [],
 			"naicsCodesList": [], // 
 			"shouldShowRevenueSection": false,
 			"revenueTotal": null,
@@ -32,10 +34,32 @@ class SizeStandardsTool extends PureComponent {
 	
 	}
 
+	componentDidMount() {
+
+		axios.get("/naics").then((response) => {
+
+			const naicsCodes = response.data;
+
+			this.setState({naicsCodes});
+
+		});
+
+	}
+
 	gotoSection(section) {
 
 		let data = {
 			section
+		};
+
+		const go = (d) => {
+
+			this.setState(d, () => {
+
+				window.scrollTo(0, 0);
+
+			});
+
 		};
 
 		switch (section) {
@@ -44,17 +68,66 @@ class SizeStandardsTool extends PureComponent {
 
 				data = Object.assign({}, this.origState);
 
+				// carry over already cached naics codes
+				data.naicsCodes = this.state.naicsCodes.slice();
+
+				go(data);
+
+				break;
+
+			case "RESULTS":
+
+				const naicsCodesList = this.state.naicsCodesList.slice();
+
+				const {
+					revenueTotal,
+					employeeTotal
+				} = this.state;
+
+				console.log("A naicsCodesList: ", naicsCodesList);
+
+				const promises = naicsCodesList.map((object, index) => {
+
+					const params = {
+						
+						code: object.code,
+						revenueTotal,
+						employeeTotal
+
+					};
+
+					return (
+						
+						axios.get("/smallbusiness", {
+							params
+						}).then((response) => {
+
+							// map small business result to it's
+							// corresponding naicsCodeList member
+
+							naicsCodesList[index].isSmallBusiness = response.data;
+
+						})
+					);
+
+				});
+
+				Promise.all(promises).then((response) => {
+
+					data.naicsCodesList = naicsCodesList;
+
+					go(data);
+
+				});
+
 				break;
 
 			default:
+
+				go(data);
+
 				break;
 		}
-
-		this.setState(data, () => {
-
-			window.scrollTo(0, 0);
-
-		});
 
 	}
 
@@ -107,7 +180,7 @@ class SizeStandardsTool extends PureComponent {
 		}
 
 		// filter out exceptions and then format naics objects
-		const naics = formatNaics(this.props.naicsCodes.filter((object) => {
+		const naics = formatNaics(this.state.naicsCodes.filter((object) => {
 
 			let result;
 			const validLength = 6;
@@ -189,38 +262,54 @@ class SizeStandardsTool extends PureComponent {
 
 	addNaicsCode(code){
 
+		const {naicsCodes} = this.state;
 		const naicsCodesList = this.state.naicsCodesList.slice();
-		const {naicsCodes} = this.props;
 
-		const selectedCode = naicsCodes.find((object) => {
+		let isNaicsCodeInList;
 
-			let result;
+		naicsCodesList.find((object) => {
 
 			if (object.code === code) {
-				result = object;
+				isNaicsCodeInList = true;
 			}
 
-			return result;
+			return false;
 
 		});
 
-		if (selectedCode) {
-			naicsCodesList.push(selectedCode);
+		if (!isNaicsCodeInList) {
+
+			const selectedCode = naicsCodes.find((object) => {
+
+				let result;
+
+				if (object.code === code) {
+					result = object;
+				}
+
+				return result;
+
+			});
+
+			if (selectedCode) {
+				naicsCodesList.push(selectedCode);
+			}
+
+			const updatedState = {
+				naicsCodesList
+			};
+
+			if (selectedCode.revenueLimit !== null) {
+				updatedState.shouldShowRevenueSection = true;
+			}
+
+			if (selectedCode.employeeCount !== null) {
+				updatedState.shouldShowEmployeesSection = true;
+			}
+
+			this.setState(updatedState);
+
 		}
-
-		const updatedState = {
-			naicsCodesList
-		};
-
-		if (selectedCode.revenueLimit !== null) {
-			updatedState.shouldShowRevenueSection = true;
-		}
-
-		if (selectedCode.employeeCount !== null) {
-			updatedState.shouldShowEmployeesSection = true;
-		}
-
-		this.setState(updatedState);
 
 	}
 
@@ -312,9 +401,19 @@ class SizeStandardsTool extends PureComponent {
 
 								<div className={styles.right}>
 
-									<div className={styles.no}>
-										<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
-									</div>
+									{object.isSmallBusiness ? (<div>
+										
+										<div className={styles.yes}>
+											<p><i className="fa fa-check-circle" aria-hidden="true" />YES</p>
+										</div>
+
+									</div>) : (<div>
+										
+										<div className={styles.no}>
+											<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
+										</div>
+
+									</div>)}
 
 								</div>
 
@@ -344,7 +443,7 @@ class SizeStandardsTool extends PureComponent {
 
 	renderNaicsExceptionsList(code) {
 
-		const {naicsCodes} = this.props;
+		const {naicsCodes} = this.state;
 
 		let index = 0;
 
@@ -438,6 +537,7 @@ class SizeStandardsTool extends PureComponent {
 		const {
 			section,
 			shouldShowNaicsInput,
+			naicsCodes,
 			naicsCodesList,
 			employeeTotal,
 			revenueTotal,
@@ -499,11 +599,19 @@ class SizeStandardsTool extends PureComponent {
 
 						<div className={styles.naicsCodeInput}>
 
-							<p>Select your 6-digit NAICS code</p>
+							{!_.isEmpty(naicsCodes) ? (<div>
 
-							{this.renderNaicsAutoSuggest()}
+								<p>Select your 6-digit NAICS code</p>
+								
+								{this.renderNaicsAutoSuggest()}
 
-							<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
+								<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
+
+							</div>) : (<div className={styles.loading}>
+
+								<p>...loading suggestions...</p>
+
+							</div>)}
 
 						</div>
 
@@ -659,7 +767,7 @@ class SizeStandardsTool extends PureComponent {
 					<div className={styles.cards}>
 
 						<div className={styles.card}>
-							<p>Learn more about <BasicLink url="#">SBA small business size standards</BasicLink>.</p>
+							<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
 							<p><strong>SBA Office of Size Standards</strong></p>
 							<ul>
 								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
@@ -669,7 +777,7 @@ class SizeStandardsTool extends PureComponent {
 						</div>
 
 						<div className={styles.card}>
-							<p>Find out <BasicLink url="#">how you can sell to the Federal Government</BasicLink>.</p>
+							<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
 							<p><strong>SBA Office of Contracting</strong></p>
 							<ul>
 								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
@@ -698,32 +806,10 @@ class SizeStandardsTool extends PureComponent {
 
 }
 
+// mock data
+
 SizeStandardsTool.defaultProps = {
 	naicsCodes: [{
-        "code": "111110",
-        "description": "Soybean Farming",
-        "sectorId": "11",
-        "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
-        "subsectorId": "111",
-        "subsectorDescription": "Crop Production",
-        "revenueLimit": 0.75,
-        "employeeCount": null,
-        "footnote": null,
-        "parent": null
-    },
-    {
-        "code": "111120",
-        "description": "Oilseed (except Soybean) Farming",
-        "sectorId": "11",
-        "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
-        "subsectorId": "111",
-        "subsectorDescription": "Crop Production",
-        "revenueLimit": 0.75,
-        "employeeCount": null,
-        "footnote": null,
-        "parent": null
-    },
-    {
         "code": "111130",
         "description": "Dry Pea and Bean Farming",
         "sectorId": "11",
@@ -745,30 +831,6 @@ SizeStandardsTool.defaultProps = {
         "employeeCount": 1500,
         "footnote": "NAICS Codes 541713, 541714 and 541715",
         "parent": "111110"
-    },
-    {
-        "code": "541715_b_Except",
-        "description": "Other Aircraft Parts and Auxiliary Equipment11",
-        "sectorId": "54",
-        "sectorDescription": "Professional, Scientific and Technical Services",
-        "subsectorId": "541",
-        "subsectorDescription": "Professional, Scientific and Technical Services",
-        "revenueLimit": null,
-        "employeeCount": 1250,
-        "footnote": "NAICS Codes 541713, 541714 and 541715",
-        "parent": "111120"
-    },
-    {
-        "code": "541715_c_Except",
-        "description": "Guided Missiles and Space Vehicles, Their Propulsion Units and Propulsion Parts11",
-        "sectorId": "54",
-        "sectorDescription": "Professional, Scientific and Technical Services",
-        "subsectorId": "541",
-        "subsectorDescription": "Professional, Scientific and Technical Services",
-        "revenueLimit": null,
-        "employeeCount": 1250,
-        "footnote": "NAICS Codes 541713, 541714 and 541715",
-        "parent": "111120"
     }]
 };
 
