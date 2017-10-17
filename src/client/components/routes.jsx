@@ -26,6 +26,7 @@ let SamplePage = (props) => <Async componentProps={props} load={import("./pages/
 let RootPage = (props) => <Async componentProps={props} load={import("./pages/root-page.jsx")} />
 let DocumentLookupPage = (props) => <Async componentProps={props} load={import("./pages/document-lookup-page/document-lookup-page.jsx")} />
 let ArticleLookupPage = (props) => <Async componentProps={props} load={import("./pages/article-lookup-page/article-lookup-page.jsx")} />
+let SizeStandardsToolPage = (props) => <Async componentProps={props} load={import("./pages/size-standards-tool-page/size-standards-tool-page.jsx")} />
 
 import {Route, IndexRoute, IndexRedirect, Redirect} from 'react-router';
 import constants from "../services/constants.js"
@@ -33,7 +34,7 @@ import MaintenancePage from "./pages/maintenance-page/maintenance-page.jsx"
 
 const mainRoutes = [
   (<IndexRoute key={1} component={HomepageContainer}/>),
-  (<Redirect  key={27} from="/funding-programs/loans/lendermatch" to="/lendermatch" />),
+  (<Redirect key={27} from="/funding-programs/loans/lendermatch" to="/lendermatch" />),
   (<Route key={2} path="/lendermatch" component={LandingPage}/>),
   (<Route key={4} path="/samples/:id" component={SamplePage}/>),
   (<Route key={5} path="/samples/:id/" component={SamplePage}/>),
@@ -41,6 +42,8 @@ const mainRoutes = [
   (<Route key={14} path="/document/" component={DocumentLookupPage}/>),
   (<Route key={40} path="/article" component={ArticleLookupPage}/>),
   (<Route key={45} path="/article/" component={ArticleLookupPage}/>),
+  (<Route key={46} path="/tools/size-standards-tool/" component={SizeStandardsToolPage}/>),
+  (<Redirect key={47} from="/tools/size-standards-tool" to="/tools/size-standards-tool/" />),
   (<Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage}/>),
   (<Route key={6} path="/:first" component={RootPage}/>),
   (<Route key={7} path="/:first/" component={RootPage}/>),
