@@ -108,7 +108,6 @@ class SizeStandardsTool extends PureComponent {
 
 			}
 
-
 		},
 		delay);
 
