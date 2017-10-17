@@ -60,17 +60,8 @@ export class DocumentArticle extends React.Component {
 
     const dates = [];
 
-    if (expirationDate) {
-      
-      dates.push({
-        title: "Expiration",
-        date: this.formatDate(expirationDate)
-      });
-
-    }
-
     if (effectiveDate) {
-      
+
       dates.push({
         title: "Effective",
         date: this.formatDate(effectiveDate)
@@ -79,7 +70,7 @@ export class DocumentArticle extends React.Component {
     }
 
     if (data) {
-      
+
       dates.push({
         title: "Last Updated",
         date: moment.unix(data.updated).format("MMM D, YYYY")
@@ -89,18 +80,15 @@ export class DocumentArticle extends React.Component {
 
     const dateLine = dates.map((object, index) => {
 
-      return ( <p className={s.dates}>
-
+      return (<span key={index}>
           {index > 0 && <span className={s.dateSeperator}>{" "}|{" "}</span>}
           <span className={s.date}>{object.title} {object.date}</span>
-
-        </p>
-
+          </span>
       );
 
     });
 
-    return dateLine;
+    return ( <p className={s.dates}> {dateLine} </p>);
 
   }
 
@@ -122,7 +110,7 @@ export class DocumentArticle extends React.Component {
         <div className={"document-article " + s.page}>
           {documentTypeString ? <DocumentType type={documentTypeString} number={data.documentIdNumber}/> : undefined}
           <h1 className={"document-article-title " + s.title + " " + (documentTypeString? s.marginTop:"")}>{data.title}</h1>
-          
+
           {!_.isEmpty(currentFile) && <div>
             {this.renderDateLine(currentFile)}
           </div>}
