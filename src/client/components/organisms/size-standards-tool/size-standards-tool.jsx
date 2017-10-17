@@ -128,27 +128,28 @@ class SizeStandardsTool extends PureComponent {
 		};
 
 		return (
-			<NaicsLookup
-				naics={naics}
-				onSelect={(selection) => {
-					
-					// const {
-					//   code,
-					//   description,
-					//   industryCode,
-					//   industryDescription
-					// } = selection;
-					console.log(selection);
+			<div className={styles.naicsLookup}>
+				<NaicsLookup
+					naics={naics}
+					onSelect={(selection) => {
+						
+						// const {
+						//   code,
+						//   description,
+						//   industryCode,
+						//   industryDescription
+						// } = selection;
 
-					const naicsCode = selection.code;
-					this.addNaicsCode(naicsCode);
-					this.showNaicsInput(false);
+						const naicsCode = selection.code;
+						this.addNaicsCode(naicsCode);
+						this.showNaicsInput(false);
 
-				}}
+					}}
 
-				inputProps={inputProps}
-				maxVisibleSuggestions={5}
-			/>
+					inputProps={inputProps}
+					maxVisibleSuggestions={5}
+				/>
+			</div>
 		);
 
 	}
@@ -445,6 +446,18 @@ class SizeStandardsTool extends PureComponent {
 			exceptionsList
 		} = this.state;
 
+
+		let revenueInputValidationState = "";
+
+		if (revenueTotal !== null) {
+			revenueInputValidationState = revenueTotal > 0 ? "success" : "error";
+		}
+
+		let employeesInputValidationState = "";
+		if (employeeTotal !== null) {
+			employeesInputValidationState = employeeTotal > 0 ? "success" : "error";
+		}
+
 		return (
 
 			<div className={styles.sizeStandardsTool}>
@@ -546,7 +559,7 @@ class SizeStandardsTool extends PureComponent {
 							errorText={"Please enter a correct number."}
 							label="Annual Revenue"
 							type="number"
-							validationState={""}
+							validationState={revenueInputValidationState}
 							onChange={() => {
 
 								const data = {
@@ -557,6 +570,8 @@ class SizeStandardsTool extends PureComponent {
 								this.onInputChange(data);
 
 							}}
+							showSuccessIcon={false}
+							showErrorIcon={false}
 						/>
 
 					</div>
@@ -595,7 +610,7 @@ class SizeStandardsTool extends PureComponent {
 							errorText={"Please enter a correct number."}
 							label="Number of employees"
 							type="number"
-							validationState={""}
+							validationState={employeesInputValidationState}
 							onChange={() => {
 
 								const data = {
@@ -606,6 +621,8 @@ class SizeStandardsTool extends PureComponent {
 								this.onInputChange(data);
 
 							}}
+							showSuccessIcon={false}
+							showErrorIcon={false}
 						/>
 
 					</div>
