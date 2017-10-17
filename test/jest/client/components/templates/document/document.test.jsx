@@ -42,7 +42,7 @@ describe("Document", () => {
       const fileIndex = 0;
       const file = files[fileIndex];
 
-      let mockHtml = `<li><strong>Version: N/A</strong>`;
+      let mockHtml = `<li><strong>${documentIdNumber} N/A</strong>`;
       mockHtml += `<strong>|</strong>`;
       mockHtml += `Effective: N/A.`;
       mockHtml += `<a href="${file.fileUrl}" target="_blank">Download PDF`;
@@ -59,7 +59,7 @@ describe("Document", () => {
       const fileIndex = 1;
       const file = files[fileIndex];
 
-      let mockHtml = `<li><strong>Version ${documentIdNumber} ${file.version}</strong>`;
+      let mockHtml = `<li><strong>${documentIdNumber} ${file.version}</strong>`;
       mockHtml += `<strong>|</strong>`;
       mockHtml += `Effective: ${file.effectiveDate}.`;
       mockHtml += `<a href="${mockDocumentData.files[fileIndex].fileUrl}" target="_blank">Download PDF`;

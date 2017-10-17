@@ -3,6 +3,8 @@ import {DocumentArticle} from "molecules";
 import {RelatedDocumentCards} from "organisms";
 import s from "./document.scss";
 import {logPageEvent} from "../../../services/analytics.js";
+import moment from "moment";
+import _ from "lodash"
 
 class DocumentPage extends React.Component {
 
@@ -14,8 +16,11 @@ class DocumentPage extends React.Component {
     if (doc) {
       const allVersionsList = doc.files.map((file, index) => {
         const { effectiveDate, fileUrl, version } = file;
-        const versionMessage =`Version${version ? ` ${doc.documentIdNumber} ${version}` : ': N/A'}`;
+        console.log("documentIdNumber", doc.documentIdNumber)
+        console.log("isEmpty", _.isEmpty(doc.documentIdNumber))
+        const versionMessage = (doc.documentIdNumber && (!_.isObject(doc.documentIdNumber) || !_.isEmpty(doc.documentIdNumber)) ? doc.documentIdNumber : "Version") + " " +(version ? version : "N/A");
         const effectiveDateMessage = `Effective: ${effectiveDate || 'N/A'}`;
+        const effectiveDateInTheFuture = moment(effectiveDate).isAfter(moment())
         const eventConfig = {
           category: 'Document-Version',
           action: `docname - ${doc.title}: previous version #${version || 'N/A'}`
@@ -29,6 +34,7 @@ class DocumentPage extends React.Component {
             <a href={fileUrl} onClick={() => {logPageEvent(eventConfig)}} target="_blank">Download PDF
               <i className="fa fa-file-pdf-o" aria-hidden="true"/>
             </a>
+            {effectiveDateInTheFuture ?   <strong className={s.future} key={30}>Future Document</strong> : undefined}
           </li>
         );
       });
