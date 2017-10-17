@@ -55,7 +55,7 @@ export class DocumentArticle extends React.Component {
 
   renderDateLine(file) {
 
-    const {expirationDate, effectiveDate} = file;
+    const {effectiveDate} = file;
     const {data} = this.props;
 
     const dates = [];
