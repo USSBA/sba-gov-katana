@@ -831,12 +831,13 @@ class ResultsScreen extends PureComponent {
 					// map small business result to it's
 					// corresponding naicsCodeList member
 
-					naicsCodesList[index].isSmallBusiness = JSON.parse(response.data) === "true";
+					naicsCodesList[index].isSmallBusiness = response.data === "true";
 
 				})
 			);
 
 		});
+
 
 		Promise.all(promises).then((response) => {
 
@@ -1057,7 +1058,6 @@ class ResultsScreen extends PureComponent {
 						</ul>
 					</div>
 
-<<<<<<< HEAD
 					<div className={styles.card}>
 						<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
 						<p><strong>SBA Office of Contracting</strong></p>
@@ -1069,70 +1069,6 @@ class ResultsScreen extends PureComponent {
 					</div>
 
 				</div>
-=======
-					<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
-
-					<LargePrimaryButton
-						className={styles.button}
-						text="SEE RESULTS"
-						disabled={!(employeeTotal > 0)}
-						onClick={() => {
-							this.gotoSection("RESULTS");
-						}}
-					/>
-
-					{this.renderAppBar({
-						buttonText: "BACK",
-						sectionTarget: shouldShowRevenueSection ? "REVENUE" : "NAICS"
-					})}
-
-				</div>}
-
-
-
-
-				{section === "RESULTS" && <div className={styles.resultsSection}>
-
-					<h2>Are you a small business?</h2>
-
-					{this.renderNaicsList(section)}
-
-					<p>You may be eligible to participate in <BasicLink url="#"><strong>SBA contracting programs</strong></BasicLink>.</p>
-
-					<div className={styles.cards}>
-
-						<div className={styles.card}>
-							<p>Learn more about <BasicLink url="#">SBA small business size standards</BasicLink>.</p>
-							<p><strong>SBA Office of Size Standards</strong></p>
-							<ul>
-								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-								<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
-								<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
-							</ul>
-						</div>
-
-						<div className={styles.card}>
-							<p>Find out <BasicLink url="#">how you can sell to the Federal Government</BasicLink>.</p>
-							<p><strong>SBA Office of Contracting</strong></p>
-							<ul>
-								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-								<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
-								<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
-							</ul>
-						</div>
-
-					</div>
-
-					{this.renderAppBar({
-						buttonText: "START OVER",
-						sectionTarget:"START"
-					})}
-
-				</div>}
-
-
-
->>>>>>> DT-3165-fixed-2 updated layout
 
 			</div>
 
