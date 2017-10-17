@@ -145,8 +145,22 @@
 		
 		max-width: 470px;
 		margin: 0 auto;
-		position: relative;
 		text-align: left;
+
+		.naicsLookup {
+
+			position: relative;
+
+			> div > div:last-child {
+
+			    position: absolute;
+			    right: 0;
+			    left: 0;
+			    background: #fff;
+
+			}
+
+		}
 
 		input {
 
@@ -319,6 +333,7 @@
 
 		input {
 
+			text-align: center;
 			line-height: 37px;
 
 		}
