@@ -86,6 +86,8 @@ class SizeStandardsTool extends PureComponent {
 
 				console.log("A naicsCodesList: ", naicsCodesList);
 
+				// push every exception related to each naicsCode in list to list
+				
 				const promises = naicsCodesList.map((object, index) => {
 
 					const params = {
