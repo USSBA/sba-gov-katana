@@ -206,6 +206,9 @@ class SizeStandardsTool extends PureComponent {
 			<div className={styles.naicsLookup}>
 				<NaicsLookup
 					naics={naics}
+					inputProps={inputProps}
+					inputLengthToGetSuggestions={3}
+					maxVisibleSuggestions={5}
 					onSelect={(selection) => {
 						
 						// const {
@@ -220,9 +223,6 @@ class SizeStandardsTool extends PureComponent {
 						this.showNaicsInput(false);
 
 					}}
-
-					inputProps={inputProps}
-					maxVisibleSuggestions={5}
 				/>
 			</div>
 		);
