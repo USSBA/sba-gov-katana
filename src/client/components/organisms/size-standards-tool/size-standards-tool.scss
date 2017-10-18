@@ -28,6 +28,23 @@
 
 		}
 
+		.screen {
+
+			@media (max-width: 767px) {
+
+				padding: 0 30px;
+
+				br {
+
+					display: none;
+
+				}
+
+
+			}
+
+		}
+
 	}
 
 	.resultsSection {
@@ -146,6 +163,12 @@
 		max-width: 470px;
 		margin: 0 auto;
 		text-align: left;
+
+		@media (max-width: 767px) {
+
+			text-align: center;
+
+		}
 
 		.naicsLookup {
 
@@ -338,6 +361,12 @@
 		
 		width: 35%;
 		margin: 0 auto;
+
+		@media (max-width: 767px) {
+
+			width: 60%;
+
+		}
 
 		input {
 

@@ -588,65 +588,69 @@ class SizeStandardsTool extends PureComponent {
 
 
 				{section === "NAICS" && <div>
+
+					<div className={styles.screen}>
 					
-					<h2>What's your industry?</h2>
+						<h2>What's your industry?</h2>
 
-					{naicsCodesList.length > 0 && <div> 
+						{naicsCodesList.length > 0 && <div> 
 
-						{this.renderNaicsList(section)}
+							{this.renderNaicsList(section)}
 
-					</div>}
+						</div>}
 
-					{shouldShowNaicsInput ? (<div>
+						{shouldShowNaicsInput ? (<div>
 
-						<div className={styles.naicsCodeInput}>
+							<div className={styles.naicsCodeInput}>
 
-							{!_.isEmpty(naicsCodes) ? (<div>
+								{!_.isEmpty(naicsCodes) ? (<div>
 
-								<p>Select your 6-digit NAICS code</p>
+									<p>Select your 6-digit NAICS code</p>
+									
+									{this.renderNaicsAutoSuggest()}
+
+									<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
+
+								</div>) : (<div className={styles.loading}>
+
+									<p>...loading suggestions...</p>
+
+								</div>)}
+
+							</div>
+
+						</div>) : (<div>
+
+							<p><a onClick={() => {
 								
-								{this.renderNaicsAutoSuggest()}
+								this.showNaicsInput(true);
 
-								<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
-
-							</div>) : (<div className={styles.loading}>
-
-								<p>...loading suggestions...</p>
-
-							</div>)}
-
-						</div>
-
-					</div>) : (<div>
-
-						<p><a onClick={() => {
-							
-							this.showNaicsInput(true);
-
-						}}><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
-					
-					</div>)}
-
-					{naicsCodesList.length > 0 && <div>
+							}}><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
 						
-						<LargePrimaryButton
-							className={styles.button}
-							text="Next"
-							onClick={() => {
+						</div>)}
 
-								let sectionTarget = "NO_SECTION_SET";
+						{naicsCodesList.length > 0 && <div>
+							
+							<LargePrimaryButton
+								className={styles.button}
+								text="Next"
+								onClick={() => {
 
-								if (shouldShowRevenueSection === true) {
-									sectionTarget = "REVENUE";
-								} else if (shouldShowEmployeesSection === true) {
-									sectionTarget = "EMPLOYEES";
-								}
+									let sectionTarget = "NO_SECTION_SET";
 
-								this.gotoSection(sectionTarget);
-							}}
-						/>
+									if (shouldShowRevenueSection === true) {
+										sectionTarget = "REVENUE";
+									} else if (shouldShowEmployeesSection === true) {
+										sectionTarget = "EMPLOYEES";
+									}
 
-					</div>}
+									this.gotoSection(sectionTarget);
+								}}
+							/>
+
+						</div>}
+
+					</div>
 
 					{this.renderAppBar({
 						buttonText: "BACK",
@@ -660,44 +664,48 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "REVENUE" && <div>
 
-					<h2>How much revenue?</h2>
+					<div className={styles.screen}>
 
-					<div className={styles.revenueInput}>
-						
-						<TextInput
-							id="revenue"
-							errorText={"Please enter a correct number."}
-							label="Annual Revenue"
-							type="number"
-							validationState={revenueInputValidationState}
-							onChange={() => {
+						<h2>How much revenue?</h2>
 
-								const data = {
-									section,
-									value: Number(document.getElementById("revenue").value)
-								};
+						<div className={styles.revenueInput}>
+							
+							<TextInput
+								id="revenue"
+								errorText={"Please enter a correct number."}
+								label="Annual Revenue"
+								type="number"
+								validationState={revenueInputValidationState}
+								onChange={() => {
 
-								this.onInputChange(data);
+									const data = {
+										section,
+										value: Number(document.getElementById("revenue").value)
+									};
+
+									this.onInputChange(data);
+
+								}}
+								showSuccessIcon={false}
+								showErrorIcon={false}
+							/>
+
+						</div>
+
+						<p>This caption will help a small business understand <br />what information we're looking for.</p>
+
+						<LargePrimaryButton
+							className={styles.button}
+							text={shouldShowEmployeesSection ? "NEXT" : "SEE RESULTS"}
+							disabled={!(revenueTotal > 0)}
+							onClick={() => {
+
+								this.gotoSection(shouldShowEmployeesSection ? "EMPLOYEES" : "RESULTS");
 
 							}}
-							showSuccessIcon={false}
-							showErrorIcon={false}
 						/>
 
 					</div>
-
-					<p>This caption will help a small business understand <br />what information we're looking for.</p>
-
-					<LargePrimaryButton
-						className={styles.button}
-						text={shouldShowEmployeesSection ? "NEXT" : "SEE RESULTS"}
-						disabled={!(revenueTotal > 0)}
-						onClick={() => {
-
-							this.gotoSection(shouldShowEmployeesSection ? "EMPLOYEES" : "RESULTS");
-
-						}}
-					/>
 
 					{this.renderAppBar({
 						buttonText: "BACK",
@@ -711,42 +719,46 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "EMPLOYEES" && <div>
 
-					<h2>How many employees?</h2>
+					<div className={styles.screen}>
 
-					<div className={styles.employeesInput}>
-						
-						<TextInput
-							id="employees"
-							errorText={"Please enter a correct number."}
-							label="Number of employees"
-							type="number"
-							validationState={employeesInputValidationState}
-							onChange={() => {
+						<h2>How many employees?</h2>
 
-								const data = {
-									section,
-									value: Number(document.getElementById("employees").value)
-								};
+						<div className={styles.employeesInput}>
+							
+							<TextInput
+								id="employees"
+								errorText={"Please enter a correct number."}
+								label="Number of employees"
+								type="number"
+								validationState={employeesInputValidationState}
+								onChange={() => {
 
-								this.onInputChange(data);
+									const data = {
+										section,
+										value: Number(document.getElementById("employees").value)
+									};
 
+									this.onInputChange(data);
+
+								}}
+								showSuccessIcon={false}
+								showErrorIcon={false}
+							/>
+
+						</div>
+
+						<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
+
+						<LargePrimaryButton
+							className={styles.button}
+							text="SEE RESULTS"
+							disabled={!(employeeTotal > 0)}
+							onClick={() => {
+								this.gotoSection("RESULTS");
 							}}
-							showSuccessIcon={false}
-							showErrorIcon={false}
 						/>
 
 					</div>
-
-					<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
-
-					<LargePrimaryButton
-						className={styles.button}
-						text="SEE RESULTS"
-						disabled={!(employeeTotal > 0)}
-						onClick={() => {
-							this.gotoSection("RESULTS");
-						}}
-					/>
 
 					{this.renderAppBar({
 						buttonText: "BACK",
@@ -760,32 +772,36 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "RESULTS" && <div className={styles.resultsSection}>
 
-					<h2>Are you a small business?</h2>
+					<div className={styles.screen}>
 
-					{this.renderNaicsList(section)}
+						<h2>Are you a small business?</h2>
 
-					<p>You may be eligible to participate in <BasicLink url="#"><strong>SBA contracting programs</strong></BasicLink>.</p>
+						{this.renderNaicsList(section)}
 
-					<div className={styles.cards}>
+						<p>You may be eligible to participate in <BasicLink url="#"><strong>SBA contracting programs</strong></BasicLink>.</p>
 
-						<div className={styles.card}>
-							<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
-							<p><strong>SBA Office of Size Standards</strong></p>
-							<ul>
-								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-								<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
-								<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
-							</ul>
-						</div>
+						<div className={styles.cards}>
 
-						<div className={styles.card}>
-							<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
-							<p><strong>SBA Office of Contracting</strong></p>
-							<ul>
-								<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-								<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
-								<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
-							</ul>
+							<div className={styles.card}>
+								<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
+								<p><strong>SBA Office of Size Standards</strong></p>
+								<ul>
+									<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+									<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
+									<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
+								</ul>
+							</div>
+
+							<div className={styles.card}>
+								<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
+								<p><strong>SBA Office of Contracting</strong></p>
+								<ul>
+									<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+									<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
+									<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
+								</ul>
+							</div>
+
 						</div>
 
 					</div>
