@@ -91,7 +91,7 @@ class QuickLinks extends React.Component {
 const LatestDocumentsCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`;
 
-  	let itemsSortedByEffectiveDate;
+  	/*let itemsSortedByEffectiveDate;
 
   	if (props.documents && props.documents.items.length) {
 
@@ -116,6 +116,7 @@ const LatestDocumentsCard = props => {
 		});
 
 	}
+	*/
 
 	return (
 		<div className={props.classname}>
@@ -130,7 +131,7 @@ const LatestDocumentsCard = props => {
 			<DecorativeDash className={s.dash} />
 			<div>
 				{props.documents && props.documents.items.length
-			          ? itemsSortedByEffectiveDate.map((doc, index) => {
+			          ? props.documents.items.map((doc, index) => {
 
 			          			const currentFile = getCurrentFile(doc.files);
 			          			let effectiveDate;
