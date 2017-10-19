@@ -61,3 +61,5 @@ oca:
         wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
 features:
     forPartners: false
+    showSbic: false
+    moon: false

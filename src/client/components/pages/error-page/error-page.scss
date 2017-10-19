@@ -32,12 +32,19 @@
 }
 
 .formContainer{
-  width: 48%;
   float: right;
   margin-top: 5%;
   form{
-    width: 80%;
+      width: 80%;
   }
+}
+
+.moon{
+    width: 48%;
+}
+
+.noMoon{
+    width: 96%;
 }
 
 .errorContainer:after{

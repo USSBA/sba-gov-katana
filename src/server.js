@@ -57,6 +57,8 @@ app.use(function(req, res, next) {
     googleAnalytics: config.get("googleAnalytics"),
     debug: config.get("developmentOptions.client.logging"),
     govdelivery: config.get("govdelivery.popupEnabled"),
+    showSbic: config.get("features.showSbic"),
+    moon: config.get("features.moon"),
     forPartners: config.get("features.forPartners")
   };
   req.sessionAndConfig = clientConfig; //eslint-disable-line no-param-reassign
@@ -98,6 +100,10 @@ import * as feedbackController from "./controllers/feedback-controller.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
 app.get("/api/content/feedback.csv", feedbackController.retrieveFeedback);
 app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
+
+import * as resourceCenterProfileController from "./controllers/resource-center-profile.js";
+app.post("/actions/resourceCenterProfile", jsonParser, resourceCenterProfileController.handleProfileSubmission);
+app.get("/api/content/resourceCenterProfile.json", resourceCenterProfileController.retrieveProfiles);
 
 import * as cacheController from "./controllers/cache.js";
 app.get("/actions/clearCache/collection/:type.json", cacheController.clearContentCollectionCacheByType);
