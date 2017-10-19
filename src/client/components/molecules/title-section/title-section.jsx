@@ -15,23 +15,25 @@ class TitleSection extends React.Component{
                 </li>
             );
         });
-        return titleLinks;
+        return (<div>
+                    <p id="titleSectionContentId" className={styles.content}>Content</p>
+                    <ul>{titleLinks}</ul>
+                </div>);
     }
 
     render(){
-        let titleLinks = this.makeTitleLinks(this.props.sectionHeaders);
+        const titleLinks = this.makeTitleLinks(this.props.sectionHeaders);
         return (<div id="titleSectionId" className={styles.titleSection + " " + this.props.gridClass}>
                     <h1 id="titleSectionTitleId" className={styles.title}>{this.props.title}</h1>
                     <h5 id="titleSectionSummaryId" className={styles.summary}>{this.props.summary}</h5>
                     <hr className={styles.lineCopy}/>
-                    <p id="titleSectionContentId" className={styles.content}>Content</p>
-                    <ul>{titleLinks}</ul>
+                    {this.props.sectionHeaders.length > 0 ? titleLinks : ""}
                     <hr className={styles.hrLine}/>
                 </div>);
     }
 }
 
-TitleSection.propTypes ={
+TitleSection.propTypes = {
     title: React.PropTypes.string.isRequired,
     summary: React.PropTypes.string.isRequired
 };
