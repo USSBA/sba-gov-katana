@@ -41,7 +41,6 @@
     "bluebird": "3.4.6",
     "body-parser": "1.15.2",
     "cheerio": "0.22.0",
-    "classnames": "2.2.5",
     "config": "1.24.0",
     "cookie-parser": "1.4.3",
     "cron": "1.2.1",
