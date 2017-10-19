@@ -71,7 +71,6 @@
     "querystring": "0.2.0",
     "rc-checkbox": "2.0.1",
     "rc-collapse": "1.6.12",
-    "rc-progress": "2.0.3",
     "react": "15.4.1",
     "react-autosuggest": "^9.3.2",
     "react-code-splitting": "^1.2.0",
