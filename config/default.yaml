@@ -63,3 +63,5 @@ features:
     forPartners: false
     showSbic: false
     moon: false
+sizestandards:
+    endpoint: nhhr22yl13.execute-api.us-east-1.amazonaws.com/LATEST
