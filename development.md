@@ -22,3 +22,17 @@ This is for the development/build setup guide
 1. `npm install`
 1. `npm test` to execute the tests
 1. `npm run build` to build the docker image
+
+## Local Docker Process
+1. Prereqs
+    - Access to Daisho-as-a-Service
+    - Install [docker-compose](https://docs.docker.com/compose/install/)
+    - AWS credentials configured
+1. `cd scripts/db/ && ./download-katana-sql.sh`
+1. `npm run build` to package up the data
+1. `docker-compose up` #May see a database error, but this is just a race condition; ctrl-c and run again if there's a problem
+1. Browse to localhost:3000
+1. Kill with ctrl-c
+1. `docker-compose down` to remove containers
+1. `npm run build && docker-compose build katana` to rebuild local image
+
