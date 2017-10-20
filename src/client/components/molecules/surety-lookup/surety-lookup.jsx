@@ -47,9 +47,15 @@ class SuretyLookup extends React.Component {
   }
 
   filterContacts() {
-    let filteredContacts = _.filter(this.props.items, (agency) => {
-      return !_.isEmpty(_.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState)))
-    })
+    let filteredContacts;
+      if(this.state.suretyState === 'All'){
+        filteredContacts = this.props.items
+      } else {
+        filteredContacts = _.filter(this.props.items, (agency) => {
+          return !_.isEmpty(_.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState)))
+        })
+      }
+    filteredContacts = _.sortBy(filteredContacts, ['title'])
     this.setState({filteredContacts: filteredContacts})
   }
 
@@ -58,6 +64,7 @@ class SuretyLookup extends React.Component {
       return {label: state, value: state}
     })
     options.push({label: "", value: null})
+    options.unshift({label: "All", value: "All"})
     return {id: "surety-state-select", label: "Show surety agencies licensed in", name: "surety-state-select", options: options}
   }
 
