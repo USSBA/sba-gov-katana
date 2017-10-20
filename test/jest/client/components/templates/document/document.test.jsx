@@ -6,67 +6,103 @@ import DocumentPage from "client/components/templates/document/document.jsx";
 
 describe("Document", () => {
 
-	describe("All Versions", () => {
+  describe("All Versions", () => {
 
-		const mockDocumentData = {
-			"files": [{
-				"type": "docFile",
-				"effectiveDate": null,
-				"expirationDate": null,
-				"fileUrl": "#",
-				"version": null
-			},
-			{
-				"type": "docFile",
-				"effectiveDate": "October 25, 2015",
-				"expirationDate": null,
-				"fileUrl": "https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/Special%20Text%20Document_1.txt",
-				"version": "2.5"
-			}]
-		};
+    const mockDocumentData = {
+      "documentIdNumber": 123,
+      "files": [
+        {
+          "type": "docFile",
+          "effectiveDate": null,
+          "expirationDate": null,
+          "fileUrl": "#",
+          "version": null
+        },
+        {
+          "type": "docFile",
+          "effectiveDate": "October 25, 2015",
+          "expirationDate": null,
+          "fileUrl": "https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/Special%20Text%20Document_1.txt",
+          "version": "2.5"
+        }
+      ]
+    };
 
-		const component = shallow(
-			<DocumentPage document={mockDocumentData} />
-		);
+    const mockSopData = {
+      "documentIdNumber": 321,
+      "documentIdType": "SOP",
+      "files": [
+        {
+          "type": "docFile",
+          "effectiveDate": "October 25, 2015",
+          "expirationDate": null,
+          "fileUrl": "https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/Special%20Text%20Document_1.txt",
+          "version": "2.5"
+        }
+      ]
+    };
 
-		test("properly maps files array members to subsequent li tags", () => {
+    const component = shallow(
+      <DocumentPage document={mockDocumentData} />
+    );
 
-			expect(component.find(".allVersionsList li")).toHaveLength(mockDocumentData.files.length);
+    const componentWithSop = shallow(
+      <DocumentPage document={mockSopData} />
+    );
 
-		});
+    test("properly maps files array members to subsequent li tags", () => {
 
-		test("file array member is rendered as html structure when version, effectiveDate ARE NOT available, ", function() {
+      expect(component.find(".allVersionsList li")).toHaveLength(mockDocumentData.files.length);
+    });
 
-			const fileIndex = 0;
-			const file = mockDocumentData.files[fileIndex];
+    test("file array member is rendered as html structure when version, effectiveDate ARE NOT available, ", function() {
 
-			let mockHtml = `<li><strong>Version: N/A</strong>`;
-            mockHtml += `<strong>|</strong>`;
-            mockHtml += `Effective: N/A.`;
-            mockHtml += `<a href="${file.fileUrl}" target="_blank">Download PDF`;
-            mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
-            mockHtml += `</a></li>`;
+      const { documentIdNumber, files } = mockDocumentData;
+      const fileIndex = 0;
+      const file = files[fileIndex];
 
-			expect(component.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
+      let mockHtml = `<li><strong>Version N/A</strong>`;
+      mockHtml += `<strong>|</strong>`;
+      mockHtml += `Effective: N/A.`;
+      mockHtml += `<a href="${file.fileUrl}" target="_blank">Download PDF`;
+      mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
+      mockHtml += `</a></li>`;
 
-		});
+      expect(component.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
+    });
 
-		test("file array member is rendered as html structure when a version, effectiveDate ARE available, ", function() {
+    test("file array member is rendered as html structure when a version, effectiveDate ARE available, ", function() {
 
-			const fileIndex = 1;
-			const file = mockDocumentData.files[fileIndex];
+      const { documentIdNumber, files } = mockDocumentData;
+      const fileIndex = 1;
+      const file = files[fileIndex];
 
-			let mockHtml = `<li><strong>Version ${file.version}</strong>`;
-            mockHtml += `<strong>|</strong>`;
-            mockHtml += `Effective: ${file.effectiveDate}.`;
-            mockHtml += `<a href="${mockDocumentData.files[fileIndex].fileUrl}" target="_blank">Download PDF`;
-            mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
-            mockHtml += `</a></li>`;
+      let mockHtml = `<li><strong>Version ${file.version}</strong>`;
+      mockHtml += `<strong>|</strong>`;
+      mockHtml += `Effective: ${file.effectiveDate}.`;
+      mockHtml += `<a href="${files[fileIndex].fileUrl}" target="_blank">Download PDF`;
+      mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
+      mockHtml += `</a></li>`;
 
-			expect(component.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
+      expect(component.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
 
-		});
+    });
 
-	});
+    test('file array member is rendered as html structure with the correct version label when the document type is "SOP"', function() {
+      const { documentIdNumber, files } = mockSopData;
+      const fileIndex = 0;
+      const file = files[fileIndex];
+
+      let mockHtml = `<li><strong>${documentIdNumber} ${file.version}</strong>`;
+      mockHtml += `<strong>|</strong>`;
+      mockHtml += `Effective: ${file.effectiveDate}.`;
+      mockHtml += `<a href="${files[fileIndex].fileUrl}" target="_blank">Download PDF`;
+      mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`;
+      mockHtml += `</a></li>`;
+
+      expect(componentWithSop.find(".allVersionsList li").at(fileIndex).html()).toBe(mockHtml);
+    });
+
+  });
 
 });

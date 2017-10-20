@@ -13,6 +13,27 @@ import * as ContentActions from "../../../actions/content.js";
 import * as NavigationActions from "../../../actions/navigation.js";
 import s from "./quick-links.scss";
 
+function getCurrentFile(files) {
+	
+	let found = null;
+	
+	if (files) {
+		found = _.chain(files)
+			.filter(item => moment(item.effectiveDate).isSameOrBefore(moment()))
+			.sortBy("effectiveDate")
+			.last()
+			.value();
+	}
+
+	return found;
+}
+
+function formatDate(date) {
+
+	return moment(date).format('MMM D, YYYY');
+
+}
+
 class QuickLinks extends React.Component {
 
 	componentWillMount() {
@@ -69,6 +90,34 @@ class QuickLinks extends React.Component {
 
 const LatestDocumentsCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`;
+
+  	/*let itemsSortedByEffectiveDate;
+
+  	if (props.documents && props.documents.items.length) {
+
+		itemsSortedByEffectiveDate = props.documents.items.sort((a, b) => {
+
+			const aCurrentFile = getCurrentFile(a.files);
+			const bCurrentFile = getCurrentFile(b.files);
+
+			let aEffectiveDate;
+			let bEffectiveDate;
+
+			if (aCurrentFile !== undefined && aCurrentFile.effectiveDate !== undefined) {
+				aEffectiveDate = aCurrentFile.effectiveDate;
+			}
+
+			if (bCurrentFile !== undefined && bCurrentFile.effectiveDate !== undefined) {
+				bEffectiveDate = bCurrentFile.effectiveDate;
+			}
+
+			return new Date(bEffectiveDate) - new Date(aEffectiveDate);
+
+		});
+
+	}
+	*/
+
 	return (
 		<div className={props.classname}>
 			<div className={s.titleContainer}>
@@ -82,22 +131,32 @@ const LatestDocumentsCard = props => {
 			<DecorativeDash className={s.dash} />
 			<div>
 				{props.documents && props.documents.items.length
-          ? props.documents.items.map((doc, index) => {
-				    const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title;
-							return (
-								<div key={index}>
-									<BasicLink url={`/document/${doc.url}`}
-                             text={linkTitle}
-                             eventConfig={{category: eventCategory, action: `DocumentLink: ${linkTitle}`}}
-                  />
-									<div className={s.date}>
-										{moment.unix(doc.updated).format("MMM D, YYYY")}
-									</div>
-								</div>
-							);
-						})
-					: <div>loading</div>}
-			</div>
+			          ? props.documents.items.map((doc, index) => {
+
+			          			const currentFile = getCurrentFile(doc.files);
+			          			let effectiveDate;
+
+			          			if (currentFile !== undefined && currentFile.effectiveDate !== undefined) {
+			          				effectiveDate = currentFile.effectiveDate; 						
+			 					}
+
+							    const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title;
+										return (
+											<div key={index}>
+												<BasicLink url={`/document/${doc.url}`}
+			                             text={linkTitle}
+			                             eventConfig={{category: eventCategory, action: `DocumentLink: ${linkTitle}`}}
+			                  />
+
+			                  					{effectiveDate && <div className={s.date}>
+													{formatDate(effectiveDate)}
+												</div>}
+
+											</div>
+										);
+									})
+								: <div>loading</div>}
+						</div>
 		</div>
 	);
 };
