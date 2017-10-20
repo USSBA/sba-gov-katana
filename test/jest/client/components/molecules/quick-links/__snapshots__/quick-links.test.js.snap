@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuickLinks to match snapshot 1`] = `
+<div
+  className="collection"
+>
+  <div
+    className="card manyCards"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        SOPs
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        loading
+      </div>
+    </div>
+  </div>
+  <div
+    className="card manyCards"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        Policy guidance
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        loading
+      </div>
+    </div>
+  </div>
+  <div
+    className="card manyCards"
+  >
+    <h3
+      className="title"
+    >
+      Rates
+    </h3>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div
+      className="rateContainer"
+    >
+      SBA LIBOR Base Rate
+      <div
+        className="rate"
+      >
+        4.08
+        %
+      </div>
+    </div>
+    <div
+      className="rateContainer"
+    >
+      SBA Peg Rate
+      <div
+        className="rate"
+      >
+        6.08
+        %
+      </div>
+    </div>
+    <div
+      className="rateContainer"
+    >
+      SBA FIXED Base Rate
+      <div
+        className="rate"
+      >
+        2.625
+        %
+      </div>
+    </div>
+  </div>
+  <div
+    className="card manyCards"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        Articles
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        loading
+      </div>
+    </div>
+  </div>
+</div>
+`;
