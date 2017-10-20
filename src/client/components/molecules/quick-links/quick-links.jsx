@@ -34,7 +34,7 @@ function formatDate(date) {
 
 }
 
-class QuickLinks extends React.Component {
+class QuickLinks extends PureComponent {
 
 	componentWillMount() {
 		this.fetchDocuments();
@@ -60,7 +60,7 @@ class QuickLinks extends React.Component {
 		this.props.data.typeOfLinks.map((quickLink, index) => {
 			if (quickLink.type === "articleLookup") {
 				this.props.actions.fetchContentIfNeeded("articles-" + index, "articles", {
-					sortBy: "Last Updated",
+					sortBy: "Authored On",
 					type: "all",
 					start: 0,
 					end: 3
