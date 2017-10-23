@@ -35,13 +35,13 @@ function getNaicsPropertyById(req, res, next) {
 
 
 function determineIfSmallBusiness(req, res, next) {
-  if (req.query && req.query.code) {
+  if (req.query && req.query.id) {
     get("isSmallBusiness/", req.query)
       .then(responseWithResultAsJson(res))
       .catch(next);
 
   } else {
-    res.status(HttpStatus.BAD_REQUEST).send("Missing query param code");
+    res.status(HttpStatus.BAD_REQUEST).send("Missing query param id)");
   }
 }
 
