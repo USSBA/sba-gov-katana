@@ -47,7 +47,7 @@ class RootPage extends React.Component {
   renderPage(first, second, third, fourth, fifth) {
     const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third, fourth, fifth]));
     if (first === "document") {
-      return (<DocumentPage url={second}/>);
+      return <DocumentPage location={this.props.location} />;
     } else if (first === "article") {
       const year = second;
       const month = third;
