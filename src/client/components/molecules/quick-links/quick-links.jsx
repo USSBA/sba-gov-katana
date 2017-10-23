@@ -60,7 +60,7 @@ class QuickLinks extends PureComponent {
 		this.props.data.typeOfLinks.map((quickLink, index) => {
 			if (quickLink.type === "articleLookup") {
 				this.props.actions.fetchContentIfNeeded("articles-" + index, "articles", {
-					sortBy: "Authored On",
+					sortBy: "Created",
 					type: "all",
 					start: 0,
 					end: 3
