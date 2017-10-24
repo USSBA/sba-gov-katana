@@ -1,6 +1,6 @@
 import React from "react";
 
-// import styles from "./document.scss";
+import styles from "./document.scss";
 import { VersionsList } from "atoms";
 import { DocumentArticle } from "molecules";
 import { RelatedDocumentCards } from "organisms";
@@ -15,7 +15,7 @@ class DocumentPage extends React.Component {
     } = this.props;
     if (!doc) return <div></div>;
     return (
-      <div>
+      <div className={styles.document}>
         <DocumentArticle
           data={doc}
           type="document"
