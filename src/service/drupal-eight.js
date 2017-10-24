@@ -132,6 +132,7 @@ function filterArticles(params, allArticles) {
 /* eslint-enable complexity */
 
 function sortDocuments(params, docs) {
+
   let sortOrder = ["asc"];
   let sortItems;
   if (params.sortBy === "Title") {
@@ -191,6 +192,7 @@ function fetchTaxonomyVocabulary(queryParams) {
 
 
 function fetchArticles(queryParams) {
+
   let sortOrder = "";
   let sortField;
   if (queryParams.sortBy === "Title") {
@@ -198,12 +200,18 @@ function fetchArticles(queryParams) {
   } else if (queryParams.sortBy === "Last Updated") {
     sortField = "updated";
     sortOrder = "-";
+  } else if (queryParams.sortBy === "Created") {
+
+    sortField = "created";
+    sortOrder = "-";
+
   }
 
   return get("collection/articles", {
     sortBy: sortOrder + sortField
   }).then((results) => {
     const filteredArticles = filterArticles(queryParams, results);
+
     return {
       items: (queryParams.start === "all" || queryParams.end === "all") ? filteredArticles : filteredArticles.slice(queryParams.start, queryParams.end),
       count: filteredArticles.length

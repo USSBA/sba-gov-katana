@@ -17,6 +17,7 @@ function fetchContent(prop, type, query) {
   return (dispatch) => {
     dispatch(receiveContent(prop, type, query));
     const url = "/api/content/" + type + ".json" + (query ? "?" + queryString.stringify(query) : "");
+
     return axios.get(url).then((response) => {
       return response.data;
     }).then((data) => {
