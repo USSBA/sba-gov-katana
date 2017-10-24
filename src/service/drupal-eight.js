@@ -83,7 +83,6 @@ function sanitizeDocumentParams(params) {
 }
 
 function filterAndSortDocuments(params, docs) {
-
   const filteredDocuments = filterDocuments(params, docs);
   const sortedDocuments = sortDocuments(params, filteredDocuments);
 
@@ -141,6 +140,11 @@ function sortDocuments(params, docs) {
   } else if (params.sortBy === "Last Updated") {
     sortItems = ["updated"];
     sortOrder = ["desc"];
+  } else if (params.sortBy === "Effective Date") {
+    return  _.orderBy(docs, [(doc) => {
+      const latestFile = _.maxBy(doc.files, 'effectiveDate')
+      return latestFile ? latestFile.effectiveDate : ""
+    }], ['desc'])
   } else {
     return docs;
   }
