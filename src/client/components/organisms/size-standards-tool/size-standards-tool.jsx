@@ -1,12 +1,13 @@
 import _,{ reduce } from "lodash";
 import React, {PureComponent} from "react";
 import axios from "axios";
-import {
+import { 
 	LargePrimaryButton,
 	SearchIcon,
 	SmallPrimaryButton,
 	SmallInversePrimaryButton,
 	TextInput,
+	FormattedNumberInput,
 	BasicLink
 } from "atoms";
 import { NaicsLookup } from "molecules";
@@ -38,7 +39,15 @@ class SizeStandardsTool extends PureComponent {
 
 		axios.get("/naics").then((response) => {
 
-			const naicsCodes = response.data;
+			const naicsCodes = response.data.map((object) => {
+
+				// create code property that matches id property
+				const result = object;
+				result.code = result.id;
+
+				return result;
+
+			});
 
 			this.setState({naicsCodes});
 
@@ -84,23 +93,21 @@ class SizeStandardsTool extends PureComponent {
 					employeeTotal
 				} = this.state;
 
-				console.log("A naicsCodesList: ", naicsCodesList);
-
 				// push every exception related to each naicsCode in list to list
 				
 				const promises = naicsCodesList.map((object, index) => {
 
 					const params = {
 						
-						code: object.code,
-						revenueTotal,
-						employeeTotal
+						id: object.id,
+						revenue: revenueTotal,
+						employeeCount: employeeTotal
 
 					};
 
 					return (
 						
-						axios.get("/smallbusiness", {
+						axios.get("/isSmallBusiness", {
 							params
 						}).then((response) => {
 
@@ -305,7 +312,7 @@ class SizeStandardsTool extends PureComponent {
 				updatedState.shouldShowRevenueSection = true;
 			}
 
-			if (selectedCode.employeeCount !== null) {
+			if (selectedCode.employeeCountLimit !== null) {
 				updatedState.shouldShowEmployeesSection = true;
 			}
 
@@ -326,7 +333,7 @@ class SizeStandardsTool extends PureComponent {
 			if (object.code !== code) {
 
 				shouldShowRevenueSection = object.revenueLimit !== null;
-				shouldShowEmployeesSection = object.employeeCount !== null;
+				shouldShowEmployeesSection = object.employeeCountLimit !== null;
 				result = object;
 			}
 
@@ -349,6 +356,8 @@ class SizeStandardsTool extends PureComponent {
 		const listItems = naicsCodesList.map((object, index) => {
 
 			const {code, description} = object;
+
+			console.log("A", object);
 
 			return (
 
@@ -670,11 +679,12 @@ class SizeStandardsTool extends PureComponent {
 
 						<div className={styles.revenueInput}>
 							
-							<TextInput
+							<FormattedNumberInput
+								min="0"
+								format="$0,0[.]00"
 								id="revenue"
 								errorText={"Please enter a correct number."}
 								label="Annual Revenue"
-								type="number"
 								validationState={revenueInputValidationState}
 								onChange={() => {
 
@@ -725,11 +735,12 @@ class SizeStandardsTool extends PureComponent {
 
 						<div className={styles.employeesInput}>
 							
-							<TextInput
+							<FormattedNumberInput
+								min="0"
+								format="0,0"
 								id="employees"
 								errorText={"Please enter a correct number."}
 								label="Number of employees"
-								type="number"
 								validationState={employeesInputValidationState}
 								onChange={() => {
 
@@ -778,7 +789,7 @@ class SizeStandardsTool extends PureComponent {
 
 						{this.renderNaicsList(section)}
 
-						<p>You may be eligible to participate in <BasicLink url="#"><strong>SBA contracting programs</strong></BasicLink>.</p>
+						<p>You may be eligible to participate in <a href="/contracting" target="_blank"><strong>SBA contracting programs</strong></a>.</p>
 
 						<div className={styles.cards}>
 
@@ -828,25 +839,25 @@ class SizeStandardsTool extends PureComponent {
 
 SizeStandardsTool.defaultProps = {
 	naicsCodes: [{
-        "code": "111130",
+        "id": "111130",
         "description": "Dry Pea and Bean Farming",
         "sectorId": "11",
         "sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
         "subsectorId": "111",
         "subsectorDescription": "Crop Production",
         "revenueLimit": null,
-        "employeeCount": 100,
+        "employeeCountLimit": 100,
         "footnote": null,
         "parent": null
     },{
-        "code": "541715_a_Except",
+        "id": "541715_a_Except",
         "description": "Aircraft, Aircraft Engine and Engine Parts11",
         "sectorId": "54",
         "sectorDescription": "Professional, Scientific and Technical Services",
         "subsectorId": "541",
         "subsectorDescription": "Professional, Scientific and Technical Services",
         "revenueLimit": null,
-        "employeeCount": 1500,
+        "employeeCountLimit": 1500,
         "footnote": "NAICS Codes 541713, 541714 and 541715",
         "parent": "111110"
     }]
