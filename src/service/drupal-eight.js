@@ -1,6 +1,7 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import config from "config";
+import moment from "moment";
 
 import { get } from "../models/dao/daisho-client.js";
 import localContacts from "../models/dao/sample-data/contacts.js";
@@ -141,10 +142,7 @@ function sortDocuments(params, docs) {
     sortItems = ["updated"];
     sortOrder = ["desc"];
   } else if (params.sortBy === "Effective Date") {
-    return  _.orderBy(docs, [(doc) => {
-      const latestFile = _.maxBy(doc.files, 'effectiveDate')
-      return latestFile ? latestFile.effectiveDate : ""
-    }], ['desc'])
+    return sortDocumentsByDate(docs)
   } else {
     return docs;
   }
@@ -154,6 +152,24 @@ function sortDocuments(params, docs) {
     }],
     sortOrder
   );
+}
+
+function sortDocumentsByDate(docs) {
+  let sortedDocs = _.orderBy(docs, [(doc) => {
+    const latestFile = _.maxBy(doc.files, 'effectiveDate')
+    return latestFile ? latestFile.effectiveDate : ""
+  }], ['desc'])
+  // loop sorted docs and remove future docs until current docs are reached
+  for (let i = 0; i < sortedDocs.length; i++) {
+    const latestFile = _.maxBy(sortedDocs[0].files, 'effectiveDate')
+    const {effectiveDate} = latestFile
+    if (moment(effectiveDate).isAfter(moment())) {
+      sortedDocs.shift()
+    } else {
+      break
+    }
+  }
+  return sortedDocs
 }
 
 function fetchTaxonomyVocabulary(queryParams) {
