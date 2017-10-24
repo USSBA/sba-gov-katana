@@ -114,7 +114,7 @@ class SizeStandardsTool extends PureComponent {
 							// map small business result to it's
 							// corresponding naicsCodeList member
 
-							naicsCodesList[index].isSmallBusiness = response.data;
+							naicsCodesList[index].isSmallBusiness = response.data === "true";
 
 						})
 					);
@@ -349,6 +349,16 @@ class SizeStandardsTool extends PureComponent {
 		
 	}
 
+	formatRevenueLimit(revenueLimit) {
+
+		const annualRevenueConstant = 1000000;
+		let result = (Number(revenueLimit) * annualRevenueConstant).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",");
+		result = "$" + result;
+
+		return result;
+
+	}
+
 	renderNaicsList(section) {
 
 		const {naicsCodesList} = this.state;
@@ -365,23 +375,37 @@ class SizeStandardsTool extends PureComponent {
 						
 						{section === "NAICS" && <div>
 
-							<p><span>{code} </span></p>
-							<p>
-								{description}
-								<a
-								className={styles.remove}
-								onClick={() => {
-									this.removeNaicsCode(code);
-								}}>
-								<i className="fa fa-times" aria-hidden="true" /></a>
-							</p>
+							<div className={styles.naicsSection}>
+
+								<div className={styles.left}>
+
+									<p><span>{code} </span></p>
+									<p>
+										{description}
+									</p>
+
+								</div>
+
+								<div className={styles.right}>
+
+									<a
+										className={styles.remove}
+										onClick={() => {
+											this.removeNaicsCode(code);
+										}}
+									>
+									<i className="fa fa-times" aria-hidden="true" /></a>
+
+								</div>
+
+							</div>
 						
 						</div>}
 
 
 						{section === "RESULTS" && <div>
 							
-							<div className={styles.results}>
+							<div className={styles.resultsSection}>
 
 								<div className={styles.left}>
 									
@@ -398,11 +422,11 @@ class SizeStandardsTool extends PureComponent {
 
 									{object.revenueLimit !== null ? (<div>
 
-										<p>$750 thousand annual revenue</p>
+										<p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
 										
 									</div>) : (<div>
 										
-										<p>500 employees</p>
+										<p>{object.employeeCountLimit} employees</p>
 
 									</div>)}
 

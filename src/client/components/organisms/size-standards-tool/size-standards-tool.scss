@@ -242,13 +242,29 @@
 		    line-height: 1.2;
 		}
 
+		.naicsSection {
+
+			display: flex;
+			padding: 5px 0;
+
+
+			.left {
+
+				margin: auto 0;
+
+			}
+
+			.right {
+
+				margin: auto 0 auto auto;
+
+			}
+
+		}
+
 		.remove {
 		    
-		    float: right;
 		    padding: 22px 10px;
-	    	margin-right: -10px;
-	    	margin-top: -28px;
-	    	text-align: center;
 
 	    	i {
 	    	
@@ -258,7 +274,7 @@
 	    	}
 		}
 
-		.results {
+		.resultsSection {
 
 			display: flex;
 			padding: 5px 0;
