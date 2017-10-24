@@ -140,7 +140,7 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
-	renderNaicsAutoSuggest() {
+	renderNaicsLookup() {
 
 		// Format the list of naics from the API into a structure suitable for React
 		// Autosuggest, i.e. into a list of sections (naics categories/industries) that
@@ -228,11 +228,34 @@ class SizeStandardsTool extends PureComponent {
 						const naicsCode = selection.code;
 						this.addNaicsCode(naicsCode);
 						this.showNaicsInput(false);
+						this.setFocusTo("add-another-industry");
 
 					}}
 				/>
 			</div>
 		);
+
+	}
+
+	setFocusTo(id) {
+
+		const duration = 300;
+		const interval = setInterval(() => {
+			
+			const el = document.getElementById(id);
+
+			if (!_.isEmpty(el)) {
+				
+				el.focus();
+
+				clearInterval(interval);
+
+			}
+
+
+		},
+		duration);
+
 
 	}
 
@@ -242,7 +265,7 @@ class SizeStandardsTool extends PureComponent {
 
 		this.setState(updatedState);
 
-	} 
+	}
 
 	onInputChange(data) {
 
@@ -393,6 +416,18 @@ class SizeStandardsTool extends PureComponent {
 										onClick={() => {
 											this.removeNaicsCode(code);
 										}}
+										onKeyPress={(obj) => {
+
+											const enterKeyCode = 0;
+
+											if (obj.keyCode === enterKeyCode) {
+
+												this.removeNaicsCode(code);
+
+											}
+
+										}}
+										tabIndex="0"
 									>
 									<i className="fa fa-times" aria-hidden="true" /></a>
 
@@ -593,7 +628,7 @@ class SizeStandardsTool extends PureComponent {
 
 		return (
 
-			<div className={styles.sizeStandardsTool}>
+			<div className={styles.sizeStandardsTool} id="size-standards-tool" tabIndex="-1">
 				
 
 
@@ -630,15 +665,18 @@ class SizeStandardsTool extends PureComponent {
 
 						</div>}
 
-						{shouldShowNaicsInput ? (<div>
+						{shouldShowNaicsInput || naicsCodesList.length === 0 ? (<div>
 
 							<div className={styles.naicsCodeInput}>
 
 								{!_.isEmpty(naicsCodes) ? (<div>
 
-									<p>Select your 6-digit NAICS code</p>
+									<div className={styles.instructions}>
+										<p>Select your 6-digit NAICS code</p>
+									</div>
 									
-									{this.renderNaicsAutoSuggest()}
+									{this.renderNaicsLookup()}
+									{this.setFocusTo("naics-lookup")}
 
 									<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
 
@@ -652,11 +690,26 @@ class SizeStandardsTool extends PureComponent {
 
 						</div>) : (<div>
 
-							<p><a onClick={() => {
+							<p><a
+								id="add-another-industry"
+								onClick={() => {
 								
-								this.showNaicsInput(true);
+									this.showNaicsInput(true);
 
-							}}><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
+								}}
+								onKeyPress={(obj) => {
+
+									const enterKeyCode = 0;
+
+									if (obj.keyCode === enterKeyCode) {
+
+										this.showNaicsInput(true);
+
+									}
+
+								}}
+								tabIndex="0"
+							><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
 						
 						</div>)}
 
@@ -722,6 +775,8 @@ class SizeStandardsTool extends PureComponent {
 								showErrorIcon={false}
 							/>
 
+							{this.setFocusTo("revenue")}
+
 						</div>
 
 						<p>This caption will help a small business understand <br />what information we're looking for.</p>
@@ -778,6 +833,8 @@ class SizeStandardsTool extends PureComponent {
 								showErrorIcon={false}
 							/>
 
+							{this.setFocusTo("employees")}
+
 						</div>
 
 						<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
@@ -810,8 +867,9 @@ class SizeStandardsTool extends PureComponent {
 						<h2>Are you a small business?</h2>
 
 						{this.renderNaicsList(section)}
+						{this.setFocusTo("size-standards-tool")}
 
-						<p>You may be eligible to participate in <a href="/contracting" target="_blank"><strong>SBA contracting programs</strong></a>.</p>
+						<p>You may be eligible to participate in <a href="/contracting" target="_blank" tabIndex="0"><strong>SBA contracting programs</strong></a>.</p>
 
 						<div className={styles.cards}>
 
