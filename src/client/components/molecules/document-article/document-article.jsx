@@ -24,7 +24,12 @@ export class DocumentArticle extends React.Component {
     let files = this.props.data.files;
     if (files) {
       found = _.chain(files)
-        .filter(item => moment(item.effectiveDate).isSameOrBefore(moment()))
+        .filter(item => {
+          const { effectiveDate } = item;
+          return moment(effectiveDate).isSameOrBefore(moment())
+            // The current file can have a nil effective date.
+            || _.isNil(effectiveDate)
+        })
         .sortBy("effectiveDate")
         .last()
         .value();
@@ -121,7 +126,12 @@ export class DocumentArticle extends React.Component {
           }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(currentFile)} disabled={!currentFile || _.isEmpty(currentFile.fileUrl)} text={"download "+currentFileExtension}/>
+            <LargePrimaryButton
+              className={"document-article-pdf-download-btn " + s.downloadButton}
+              onClick={(e) => this.downloadClick(currentFile)}
+              disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
+              text={"download "+currentFileExtension}
+            />
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>
