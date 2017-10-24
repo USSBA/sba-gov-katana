@@ -50,7 +50,7 @@ class PagingLookup extends React.Component {
     })
 
     const finalQuery = _.assign({
-      sortBy: "Last Updated",
+      sortBy: "Effective Date",
       searchTerm: ""
     }, defaults, filteredQueryParams, aliasMapping);
     return finalQuery;
