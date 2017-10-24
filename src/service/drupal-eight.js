@@ -142,7 +142,7 @@ function sortDocuments(params, docs) {
     sortOrder = ["desc"];
   } else if (params.sortBy === "Effective Date") {
     return  _.orderBy(docs, [(doc) => {
-      let latestFile = _.maxBy(doc.files, 'effectiveDate')
+      const latestFile = _.maxBy(doc.files, 'effectiveDate')
       return latestFile ? latestFile.effectiveDate : ""
     }], ['desc'])
   } else {
