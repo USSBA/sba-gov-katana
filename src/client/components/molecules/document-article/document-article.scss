@@ -1,5 +1,6 @@
 .page {
     margin-top: 50px;
+    margin-bottom: 10px;
 
     @include grid-media($sba-grid-medium-and-small) {
         @include grid-column(6);
