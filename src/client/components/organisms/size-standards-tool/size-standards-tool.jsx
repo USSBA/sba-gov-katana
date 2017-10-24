@@ -1,7 +1,7 @@
 import _,{ reduce } from "lodash";
 import React, {PureComponent} from "react";
 import axios from "axios";
-import { 
+import {
 	LargePrimaryButton,
 	SearchIcon,
 	SmallPrimaryButton,
@@ -98,7 +98,7 @@ class SizeStandardsTool extends PureComponent {
 				const promises = naicsCodesList.map((object, index) => {
 
 					const params = {
-						
+
 						id: object.id,
 						revenue: revenueTotal,
 						employeeCount: employeeTotal
@@ -356,8 +356,6 @@ class SizeStandardsTool extends PureComponent {
 		const listItems = naicsCodesList.map((object, index) => {
 
 			const {code, description} = object;
-
-			console.log("A", object);
 
 			return (
 
