@@ -26,7 +26,8 @@ export class DocumentArticle extends React.Component {
       found = _.chain(files)
         .filter(file => {
           const { effectiveDate } = file;
-          return moment(effectiveDate).isSameOrBefore(moment());
+          const date = moment(effectiveDate);
+          return date.isValid && date.isSameOrBefore(moment());
         })
         .sortBy("effectiveDate")
         .last()
