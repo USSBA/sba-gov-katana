@@ -66,74 +66,23 @@ class SizeStandardsTool extends PureComponent {
 
 		// if going to the START Section
 			// carry over already cached naics codes
+		// else if going to RSULTS section
+			// set focus to application level
 
 		if (section === "START") {
 
 			data = Object.assign({}, this.origState);
 			data.naicsCodes = this.state.naicsCodes.slice();
 
+		} else if (section === "RESULTS") {
+				
+			this.setFocusTo("size-standards-tool");
+			
 		}
 
 		this.setState(data, () => {
 
 			window.scrollTo(0, 0);
-
-		});
-
-	}
-
-	getResults() {
-
-		// caculate results for every entry in naicsCodeList
-
-		const naicsCodesList = this.state.naicsCodesList.slice();
-
-		const {
-			revenueTotal,
-			employeeTotal
-		} = this.state;
-
-		// push every exception related to each naicsCode in list to list
-		
-		const promises = naicsCodesList.map((object, index) => {
-
-			const params = {
-
-				id: object.id,
-				revenue: revenueTotal,
-				employeeCount: employeeTotal
-
-			};
-
-			return (
-				
-				axios.get("/isSmallBusiness", {
-					params
-				}).then((response) => {
-
-					// map small business result to it's
-					// corresponding naicsCodeList member
-
-					naicsCodesList[index].isSmallBusiness = response.data === "true";
-
-				})
-			);
-
-		});
-
-
-		Promise.all(promises).then((response) => {
-
-			// delay call for user feedback
-
-			const delay = 2000;
-			const timeout = setTimeout(() => {
-
-				this.setState({naicsCodesList});
-
-				clearTimeout(timeout);
-
-			}, delay);
 
 		});
 
@@ -162,7 +111,6 @@ class SizeStandardsTool extends PureComponent {
 
 		},
 		delay);
-
 
 	}
 
@@ -271,212 +219,6 @@ class SizeStandardsTool extends PureComponent {
 		
 	}
 
-	formatRevenueLimit(revenueLimit) {
-
-		const annualRevenueConstant = 1000000;
-		let result = (Number(revenueLimit) * annualRevenueConstant).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",");
-		result = "$" + result;
-
-		return result;
-
-	}
-
-	renderNaicsList(section) {
-
-		const {naicsCodesList} = this.state;
-		
-		const listItems = naicsCodesList.map((object, index) => {
-
-			const {code, description} = object;
-
-			return (
-
-				<li key={index}>
-
-					<div>
-						
-						{section === "NAICS" && <div>
-
-							<div className={styles.naicsSection}>
-
-								<div className={styles.left}>
-
-									<p><span>{code} </span></p>
-									<p>
-										{description}
-									</p>
-
-								</div>
-
-								<div className={styles.right}>
-
-									<a
-										className={styles.remove}
-										onClick={() => {
-											this.removeNaicsCode(code);
-										}}
-										onKeyPress={(obj) => {
-
-											const enterKeyCode = 0;
-
-											if (obj.keyCode === enterKeyCode) {
-
-												this.removeNaicsCode(code);
-
-											}
-
-										}}
-										tabIndex="0"
-									>
-									<i className="fa fa-times" aria-hidden="true" /></a>
-
-								</div>
-
-							</div>
-						
-						</div>}
-
-
-						{section === "RESULTS" && <div>
-							
-							<div className={styles.resultsSection}>
-
-								<div className={styles.left}>
-									
-									<p><span>{code} </span></p>
-									<div>
-										<p>{description}</p>
-									</div>
-
-								</div>
-								
-								<div className={styles.middle}>
-								
-									<p><span>Small Business Size Standards </span></p>
-
-									{object.revenueLimit !== null ? (<div>
-
-										<p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
-										
-									</div>) : (<div>
-										
-										<p>{object.employeeCountLimit} employees</p>
-
-									</div>)}
-
-								</div>
-
-								<div className={styles.right}>
-
-									{object.isSmallBusiness ? (<div>
-										
-										<div className={styles.yes}>
-											<p><i className="fa fa-check-circle" aria-hidden="true" />YES</p>
-										</div>
-
-									</div>) : (<div>
-										
-										<div className={styles.no}>
-											<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
-										</div>
-
-									</div>)}
-
-								</div>
-
-							</div>
-
-							{this.renderNaicsExceptionsList(code)}
-
-						</div>}
-
-					</div>
-
-				</li>
-
-			);
-
-		});
-
-		return (
-
-			<ul className={styles.naicsCodesList}>
-				{listItems}
-			</ul>
-
-		);
-
-	}
-
-	renderNaicsExceptionsList(code) {
-
-		const {naicsCodes} = this.state;
-
-		let index = 0;
-
-		const exceptions = naicsCodes.map((object) => {
-
-			const {parent} = object;
-
-			let result;
-
-			// exceptions are naics codes with parents
-			if (parent === code) {
-
-				index++;
-
-				result = (
-
-					<li key={index}>
-						<div className={styles.results}>
-
-							<div className={styles.left}>
-								
-								<p><span>Exception #{index} </span></p>
-								<div>
-									<p>{object.description}</p>
-								</div>
-
-							</div>
-							
-							<div className={styles.middle}>
-							
-								<p><span>Small Business Size Standards </span></p>
-
-								{object.revenueLimit !== null ? (<div>
-
-									<p>$750 thousand annual revenue</p>
-									
-								</div>) : (<div>
-									
-									<p>500 employees</p>
-
-								</div>)}
-
-							</div>
-
-							<div className={styles.right}>
-
-								<div className={styles.no}>
-									<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
-								</div>
-
-							</div>
-
-						</div>
-					</li>
-
-				);
-
-			}
-
-			return result;
-
-		});
-
-		return <ul className={styles.exceptionsList}>{exceptions}</ul>;
-	}
-
 	renderAppBar(data) {
 
 		const {buttonText, sectionTarget} = data;
@@ -488,7 +230,7 @@ class SizeStandardsTool extends PureComponent {
 				<SmallInversePrimaryButton
 					text={buttonText}
 					onClick={() => {
-						
+
 						this.gotoSection(sectionTarget);
 						this.setFocusTo("size-standards-tool");
 
@@ -508,15 +250,12 @@ class SizeStandardsTool extends PureComponent {
 			section,
 			naicsCodes,
 			naicsCodesList,
-			shouldShowRevenueSection,
-			exceptionsList
+			shouldShowRevenueSection
 		} = this.state;
 
 		return (
 
 			<div className={styles.sizeStandardsTool} id="size-standards-tool" tabIndex="-1">
-				
-
 
 				{section === "START" && <div className={styles.startSection}>
 
@@ -524,17 +263,14 @@ class SizeStandardsTool extends PureComponent {
 
 				</div>}
 
-
-
-
 				{section === "NAICS" && <div>
 
-
 					<NaicsScreen
+						// expose applicaton state
 						{...this.state}
 						// expose the following methods
-						renderNaicsList={this.renderNaicsList.bind(this)}
 						addNaicsCode={this.addNaicsCode.bind(this)}
+						removeNaicsCode={this.removeNaicsCode.bind(this)}
 						setFocusTo={this.setFocusTo.bind(this)}
 						gotoSection={this.gotoSection.bind(this)}
 					/>
@@ -546,13 +282,12 @@ class SizeStandardsTool extends PureComponent {
 
 				</div>}
 
-
-
-
 				{section === "REVENUE" && <div>
 
 					<RevenueScreen
+						// expose applicaton state
 						{...this.state}
+						// expose the following methods
 						onInputChange={this.onInputChange.bind(this)}
 						setFocusTo={this.setFocusTo.bind(this)}
 						gotoSection={this.gotoSection.bind(this)}
@@ -565,13 +300,12 @@ class SizeStandardsTool extends PureComponent {
 
 				</div>}
 
-
-
-
 				{section === "EMPLOYEES" && <div>
 
 					<EmployeesScreen
+						// expose applicaton state
 						{...this.state}
+						// expose the following methods
 						onInputChange={this.onInputChange.bind(this)}
 						setFocusTo={this.setFocusTo.bind(this)}
 						gotoSection={this.gotoSection.bind(this)}
@@ -584,17 +318,12 @@ class SizeStandardsTool extends PureComponent {
 
 				</div>}
 
-
-
-
 				{section === "RESULTS" && <div className={styles.resultsSection}>
 
 					<ResultsScreen
+						// expose applicaton state
 						{...this.state}
-						renderNaicsList={this.renderNaicsList.bind(this)}
-						getResults={this.getResults.bind(this)}
 					/>
-
 
 					{this.renderAppBar({
 						buttonText: "START OVER",
@@ -602,8 +331,6 @@ class SizeStandardsTool extends PureComponent {
 					})}
 
 				</div>}
-
-
 
 
 			</div>
@@ -758,6 +485,73 @@ class NaicsScreen extends PureComponent {
 
 	}
 
+	renderNaicsList() {
+
+		const {naicsCodesList} = this.props;
+		
+		const listItems = naicsCodesList.map((object, index) => {
+
+			const {code, description} = object;
+
+			return (
+
+				<li key={index}>
+
+					<div className={styles.naicsSection}>
+
+						<div className={styles.left}>
+
+							<p><span>{code} </span></p>
+							<p>
+								{description}
+							</p>
+
+						</div>
+
+						<div className={styles.right}>
+
+							<a
+								className={styles.remove}
+								onClick={() => {
+									
+									this.props.removeNaicsCode(code);
+
+								}}
+								onKeyPress={(obj) => {
+
+									const enterKeyCode = 0;
+
+									if (obj.keyCode === enterKeyCode) {
+
+										this.props.removeNaicsCode(code);
+
+									}
+
+								}}
+								tabIndex="0"
+							>
+							<i className="fa fa-times" aria-hidden="true" /></a>
+
+						</div>
+
+					</div>
+
+				</li>
+
+			);
+
+		});
+
+		return (
+
+			<ul className={styles.naicsCodesList}>
+				{listItems}
+			</ul>
+
+		);
+
+	}
+
 	render() {
 
 		const {
@@ -778,7 +572,7 @@ class NaicsScreen extends PureComponent {
 
 				{naicsCodesList.length > 0 && <div> 
 
-					{this.props.renderNaicsList(section)}
+					{this.renderNaicsList()}
 
 				</div>}
 
@@ -859,7 +653,7 @@ class NaicsScreen extends PureComponent {
 
 }
 
-// "Revenue" Screen (stateless)
+// "REVENUE" Screen (stateless)
 const RevenueScreen = (props) => {
 
 	const {
@@ -927,7 +721,7 @@ const RevenueScreen = (props) => {
 
 };
 
-// "Employees" Screen (stateless)
+// "EMPLOYEES" Screen (stateless)
 const EmployeesScreen = (props) => {
 
 	const {
@@ -981,7 +775,9 @@ const EmployeesScreen = (props) => {
 				text="SEE RESULTS"
 				disabled={!(employeeTotal > 0)}
 				onClick={() => {
+					
 					props.gotoSection("RESULTS");
+
 				}}
 			/>
 
@@ -991,67 +787,296 @@ const EmployeesScreen = (props) => {
 
 };
 
-// "RESULTS" Screen (stateless)
-const ResultsScreen = (props) => {
+// "RESULTS" Screen (holds state of a copy of naicsCodesList)
+class ResultsScreen extends PureComponent {
 
-	const {
-		section,
-		naicsCodesList
-	} = props;
+	constructor() {
 
-	return (
+		super();
 
-		<div className={styles.screen}>
+		this.state = {
+			naicsCodesList: []
+		};
+	}
 
-			<h2>Are you a small business?</h2>
+	getResults() {
 
-			{naicsCodesList[0].hasOwnProperty("isSmallBusiness") ? (<div>
+		// caculate results for every entry in naicsCodeList
+
+		const naicsCodesList = this.props.naicsCodesList.slice();
+
+		const {
+			revenueTotal,
+			employeeTotal
+		} = this.props;
+
+		// push every exception related to each naicsCode in list to list
+		
+		const promises = naicsCodesList.map((object, index) => {
+
+			const params = {
+
+				id: object.id,
+				revenue: revenueTotal,
+				employeeCount: employeeTotal
+
+			};
+
+			return (
 				
-				{props.renderNaicsList(section)}
+				axios.get("/isSmallBusiness", {
+					params
+				}).then((response) => {
 
-			</div>) : (<div>
+					// map small business result to it's
+					// corresponding naicsCodeList member
 
-				{props.getResults()}
+					naicsCodesList[index].isSmallBusiness = response.data === "true";
 
-				<div className={styles.loading}>
+				})
+			);
 
-					<p>...now analyzing your business...</p>
+		});
 
-				</div>
 
-			</div>)}
+		Promise.all(promises).then((response) => {
 
-			<p>You may be eligible to participate in <a href="/contracting" target="_blank" tabIndex="0"><strong>SBA contracting programs</strong></a>.</p>
+			// delay call for user feedback
 
-			<div className={styles.cards}>
+			const delay = 2000;
+			const timeout = setTimeout(() => {
 
-				<div className={styles.card}>
-					<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
-					<p><strong>SBA Office of Size Standards</strong></p>
-					<ul>
-						<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-						<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
-						<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
-					</ul>
-				</div>
+				this.setState({naicsCodesList});
 
-				<div className={styles.card}>
-					<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
-					<p><strong>SBA Office of Contracting</strong></p>
-					<ul>
-						<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-						<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
-						<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
-					</ul>
+				clearTimeout(timeout);
+
+			}, delay);
+
+		});
+
+	}
+
+	renderNaicsExceptionsList(code) {
+
+		const {naicsCodes} = this.props;
+
+		let index = 0;
+
+		const exceptions = naicsCodes.map((object) => {
+
+			const {parent} = object;
+
+			let result;
+
+			// exceptions are naics codes with parents
+			if (parent === code) {
+
+				index++;
+
+				result = (
+
+					<li key={index}>
+					
+						<div className={styles.results}>
+
+							<div className={styles.left}>
+								
+								<p><span>Exception #{index} </span></p>
+								<div>
+									<p>{object.description}</p>
+								</div>
+
+							</div>
+							
+							<div className={styles.middle}>
+							
+								<p><span>Small Business Size Standards </span></p>
+
+								{object.revenueLimit !== null ? (<div>
+
+									<p>$750 thousand annual revenue</p>
+									
+								</div>) : (<div>
+									
+									<p>500 employees</p>
+
+								</div>)}
+
+							</div>
+
+							<div className={styles.right}>
+
+								<div className={styles.no}>
+									<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
+								</div>
+
+							</div>
+
+						</div>
+
+					</li>
+
+				);
+
+			}
+
+			return result;
+
+		});
+
+		return <ul className={styles.exceptionsList}>{exceptions}</ul>;
+	}
+
+	formatRevenueLimit(revenueLimit) {
+
+		const annualRevenueConstant = 1000000;
+		let result = (Number(revenueLimit) * annualRevenueConstant).toString().split(/(?=(?:\d{3})+(?:\.|$))/g).join(",");
+		result = "$" + result;
+
+		return result;
+
+	}
+
+	renderNaicsList() {
+		
+		const listItems = this.state.naicsCodesList.map((object, index) => {
+
+			const {code, description} = object;
+
+			return (
+
+				<li key={index}>
+
+					<div>
+	
+						<div className={styles.resultsSection}>
+
+							<div className={styles.left}>
+								
+								<p><span>{code} </span></p>
+								<div>
+									<p>{description}</p>
+								</div>
+
+							</div>
+							
+							<div className={styles.middle}>
+							
+								<p><span>Small Business Size Standards </span></p>
+
+								{object.revenueLimit !== null ? (<div>
+
+									<p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
+									
+								</div>) : (<div>
+									
+									<p>{object.employeeCountLimit} employees</p>
+
+								</div>)}
+
+							</div>
+
+							<div className={styles.right}>
+
+								{object.isSmallBusiness ? (<div>
+									
+									<div className={styles.yes}>
+										<p><i className="fa fa-check-circle" aria-hidden="true" />YES</p>
+									</div>
+
+								</div>) : (<div>
+									
+									<div className={styles.no}>
+										<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
+									</div>
+
+								</div>)}
+
+							</div>
+
+						</div>
+
+						{this.renderNaicsExceptionsList(code)}
+
+					</div>
+
+				</li>
+
+			);
+
+		});
+
+		return (
+
+			<ul className={styles.naicsCodesList}>
+				{listItems}
+			</ul>
+
+		);
+	}
+
+	render() {
+
+		const {
+			section,
+			naicsCodesList
+		} = this.props;
+
+		return (
+
+			<div className={styles.screen}>
+
+				<h2>Are you a small business?</h2>
+
+				{naicsCodesList[0].hasOwnProperty("isSmallBusiness") ? (<div>
+					
+					{this.renderNaicsList()}
+
+				</div>) : (<div>
+
+					{this.getResults()}
+
+					<div className={styles.loading}>
+
+						<p>...now analyzing your business...</p>
+
+					</div>
+
+				</div>)}
+
+				<p>You may be eligible to participate in <a href="/contracting" target="_blank" tabIndex="0"><strong>SBA contracting programs</strong></a>.</p>
+
+				<div className={styles.cards}>
+
+					<div className={styles.card}>
+						<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
+						<p><strong>SBA Office of Size Standards</strong></p>
+						<ul>
+							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+							<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
+							<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
+						</ul>
+					</div>
+
+					<div className={styles.card}>
+						<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
+						<p><strong>SBA Office of Contracting</strong></p>
+						<ul>
+							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+							<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
+							<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
+						</ul>
+					</div>
+
 				</div>
 
 			</div>
 
-		</div>
+		);
 
-	);
+	}
 
-};
+}
 
 // mock data
 
@@ -1081,4 +1106,6 @@ SizeStandardsTool.defaultProps = {
     }]
 };
 
+export { SizeStandardsTool, StartScreen, NaicsScreen, RevenueScreen, EmployeesScreen, ResultsScreen};
 export default SizeStandardsTool;
+
