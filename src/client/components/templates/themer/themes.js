@@ -4,7 +4,7 @@ const themes = {
   "sba-blue": ["styleguide"],
   "byzantine": ["guide", "business-guide"],
   "money-green": ["lendermatch", "funding-programs", "document", "article", "partners", "disaster-assistance"],
-  "cobalt-blue": ["tools/size-standards-tool/"]
+  "cobalt-blue": ["size-standards"]
 };
 
 function getPaths() {
