@@ -1,6 +1,7 @@
 import _ from "lodash";
 import Promise from "bluebird";
 import config from "config";
+import moment from "moment";
 
 import { get } from "../models/dao/daisho-client.js";
 import localContacts from "../models/dao/sample-data/contacts.js";
@@ -83,7 +84,6 @@ function sanitizeDocumentParams(params) {
 }
 
 function filterAndSortDocuments(params, docs) {
-
   const filteredDocuments = filterDocuments(params, docs);
   const sortedDocuments = sortDocuments(params, filteredDocuments);
 
@@ -141,6 +141,8 @@ function sortDocuments(params, docs) {
   } else if (params.sortBy === "Last Updated") {
     sortItems = ["updated"];
     sortOrder = ["desc"];
+  } else if (params.sortBy === "Effective Date") {
+    return sortDocumentsByDate(docs)
   } else {
     return docs;
   }
@@ -150,6 +152,18 @@ function sortDocuments(params, docs) {
     }],
     sortOrder
   );
+}
+
+function sortDocumentsByDate(docs) {
+  let sortedDocs = _.orderBy(docs, [(doc) => {
+    let files = _.filter(doc.files, (file) => {
+      let date = moment(file.effectiveDate)
+      return date.isValid() && date.isSameOrBefore(moment())
+    })
+    let latestFile = _.maxBy(files, 'effectiveDate')
+    return latestFile ? latestFile.effectiveDate : ""
+  }], ['desc'])
+  return sortedDocs
 }
 
 function fetchTaxonomyVocabulary(queryParams) {
@@ -171,12 +185,16 @@ function fetchTaxonomyVocabulary(queryParams) {
 
 
 function fetchArticles(queryParams) {
+
   let sortOrder = "";
   let sortField;
   if (queryParams.sortBy === "Title") {
     sortField = "title";
   } else if (queryParams.sortBy === "Last Updated") {
     sortField = "updated";
+    sortOrder = "-";
+  } else if (queryParams.sortBy === "Created") {
+    sortField = "created";
     sortOrder = "-";
   }
 
@@ -195,4 +213,4 @@ function fetchAnnouncements() {
   return get("collection/announcements");
 }
 
-export { fetchFormattedNode, fetchContacts, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles, fetchAnnouncements };
+export { fetchFormattedNode, fetchContacts, sortDocumentsByDate, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles, fetchAnnouncements };

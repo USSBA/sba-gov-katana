@@ -30,15 +30,20 @@ function fetchContentById(req, res) {
     const type = req.params.type;
     const id = req.params.id;
     const fetchFunction = fetchFunctions[type];
-    fetchFunction(id, {
-      headers: req.headers
-    }).then(function(data) {
-      res.status(HttpStatus.OK).send(data);
-    })
-      .catch((error) => {
-        console.error(error);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
-      });
+    if (fetchFunction) {
+      fetchFunction(id, {
+        headers: req.headers
+      }).then(function(data) {
+        res.status(HttpStatus.OK).send(data);
+      })
+        .catch((error) => {
+          console.error(error);
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
+        });
+    } else {
+      console.error("fetchContentById encountered an unknown type " + type);
+      res.status(HttpStatus.BAD_REQUEST).send("Unknown Content Type: " + type);
+    }
   } else {
     res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type or id");
   }
@@ -48,13 +53,18 @@ function fetchContentByType(req, res) {
   if (req.params && req.params.type) {
     const type = req.params.type;
     const fetchFunction = fetchContentTypeFunctions[type];
-    fetchFunction(req.query).then(function(data) {
-      res.status(HttpStatus.OK).send(data);
-    })
-      .catch((error) => {
-        console.error(error);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
-      });
+    if (fetchFunction) {
+      fetchFunction(req.query).then(function(data) {
+        res.status(HttpStatus.OK).send(data);
+      })
+        .catch((error) => {
+          console.error(error);
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving content");
+        });
+    } else {
+      console.error("fetchContentById encountered an unknown type " + type);
+      res.status(HttpStatus.BAD_REQUEST).send("Unknown Content Type: " + type);
+    }
   } else {
     res.status(HttpStatus.BAD_REQUEST).send("Incorrect request format missing type.");
   }

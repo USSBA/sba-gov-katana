@@ -10,6 +10,16 @@ services:
     - ./config:/usr/src/app/config
     depends_on:
     - mysql
+    command: >
+      /bin/bash -c "
+        while ! nc -z mysql 3306;
+        do
+          echo waiting for mysql;
+          sleep 1;
+        done;
+        echo Connected to mysql!;
+        node app.js
+      "
   mysql:
     image: "mysql:5.6"
     volumes:

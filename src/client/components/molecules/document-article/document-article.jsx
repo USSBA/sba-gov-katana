@@ -22,12 +22,18 @@ export class DocumentArticle extends React.Component {
   getCurrentFile() {
     let found = null;
     let files = this.props.data.files;
-    if (files) {
+    if (files && files.length > 0) {
       found = _.chain(files)
-        .filter(item => moment(item.effectiveDate).isSameOrBefore(moment()))
+        .filter(file => {
+          const { effectiveDate } = file;
+          const date = moment(effectiveDate);
+          return date.isValid && date.isSameOrBefore(moment());
+        })
         .sortBy("effectiveDate")
         .last()
         .value();
+
+      if (!found) found = files[0];
     } else if (this.props.data.file) {
       found = {
         fileUrl: this.props.data.file
@@ -55,7 +61,7 @@ export class DocumentArticle extends React.Component {
 
   renderDateLine(file) {
 
-    const {effectiveDate} = file;
+    const {effectiveDate, updated} = file;
     const {data} = this.props;
 
     const dates = [];
@@ -69,11 +75,11 @@ export class DocumentArticle extends React.Component {
 
     }
 
-    if (data) {
+    if (updated) {
 
       dates.push({
         title: "Last Updated",
-        date: moment.unix(data.updated).format("MMM D, YYYY")
+        date: moment.unix(updated).format("MMM D, YYYY")
       });
 
     }
@@ -121,7 +127,12 @@ export class DocumentArticle extends React.Component {
           }
           <hr className={s.hr}/>
           <div className={s.summaryContainer}>
-            <LargePrimaryButton className={"document-article-pdf-download-btn " + s.downloadButton} onClick={(e) => this.downloadClick(currentFile)} disabled={!currentFile || _.isEmpty(currentFile.fileUrl)} text={"download "+currentFileExtension}/>
+            <LargePrimaryButton
+              className={"document-article-pdf-download-btn " + s.downloadButton}
+              onClick={(e) => this.downloadClick(currentFile)}
+              disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
+              text={"download "+currentFileExtension}
+            />
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}><DecorativeDash className={s.dash}/></div>

@@ -1,5 +1,8 @@
 FROM node:7.0.0
 
+ENV PACKAGES netcat
+RUN apt-get update && apt-get install -qq -y $PACKAGES --fix-missing --no-install-recommends
+
 WORKDIR /tmp
 COPY package.json /tmp/
 RUN npm config set registry http://registry.npmjs.org/

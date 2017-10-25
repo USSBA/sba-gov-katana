@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
@@ -34,10 +34,11 @@ function formatDate(date) {
 
 }
 
-class QuickLinks extends React.Component {
+class QuickLinks extends PureComponent {
 
 	componentWillMount() {
-		this.fetchDocuments()
+		this.fetchDocuments();
+		this.fetchArticles();
 	}
 
 	fetchDocuments() {
@@ -55,14 +56,29 @@ class QuickLinks extends React.Component {
 		})
 	}
 
+	fetchArticles() {
+		this.props.data.typeOfLinks.map((quickLink, index) => {
+			if (quickLink.type === "articleLookup") {
+				this.props.actions.fetchContentIfNeeded("articles-" + index, "articles", {
+					sortBy: "Created",
+					type: "all",
+					start: 0,
+					end: 3
+				});
+			}
+		});
+	}
+
 	generateGrid(length) {
 		let gridClass = { 1: s.oneCard, 2: s.twoCards };
 		return length > 2 ? s.manyCards : gridClass[length];
 	}
 
 	renderQuickLinks() {
+
 		let gridClass = this.generateGrid(this.props.data.typeOfLinks.length);
 		return this.props.data.typeOfLinks.map((quickLink, index) => {
+
 			if (quickLink.type === "documentLookup") {
 				return (
 					<LatestDocumentsCard
@@ -75,6 +91,19 @@ class QuickLinks extends React.Component {
 				);
 			} else if (quickLink.type === "ratesList") {
 				return <RatesCard key={index} {...quickLink} classname={s.card + " " + gridClass} />;
+			} else if (quickLink.type === "articleLookup") {
+				
+				return (
+
+					<ArticlesCard
+						key={index}
+						classname={s.card + " " + gridClass}
+						articles={this.props["articles-" + index]}
+						{...quickLink}
+					/>
+				
+				);
+
 			}
 		});
 	}
@@ -180,6 +209,63 @@ const RatesCard = props => {
 	);
 };
 
+const ArticlesCard = (props) => {
+
+	const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`;
+	const {articles} = props;
+
+	return (
+
+		<div className={props.classname}>
+			<div className={s.titleContainer}>
+				<h3 className={s.title}>
+					{props.sectionHeaderText}
+				</h3>
+				<BasicLink url={`/article?${queryString.stringify({program: props.articleProgram})}`}
+					text={"See all"} myClassName={s.seeAll}
+					eventConfig={{
+						category: eventCategory,
+						action: "See All"
+					}}
+				/>
+			</div>
+			<DecorativeDash className={s.dash} />
+			<div>
+				
+				{articles && articles.items.length ? (<div>
+
+					{
+						articles.items.map((doc, index) => {
+
+							const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title;
+							
+							return (
+								<div key={index}>
+									<BasicLink
+										url={`/article/${doc.url}`}
+										text={linkTitle}
+										eventConfig={{
+											category: eventCategory,
+											action: `ArticleLink: ${linkTitle}`
+										}}
+									/>
+									<div className={s.date}>
+										{moment.unix(doc.updated).format("MMM D, YYYY")}
+									</div>
+								</div>
+							);
+						})
+
+					}
+
+					</div>) : <div>loading</div>}
+			</div>
+		</div>
+
+	);
+
+};
+
 QuickLinks.defaultProps = {
 	data: {
 		type: "quickLinks",
@@ -218,15 +304,21 @@ QuickLinks.defaultProps = {
 					}
 				],
 				sectionHeaderText: "Rates"
+			}, {
+				type: "articleLookup",
+				articleProgram: null, 
+				sectionHeaderText: "Articles"
 			}
 		]
 	}
 };
 
 function mapReduxStateToProps(reduxState) {
+
 	return {
 		"documents-0": reduxState.contentReducer["documents-0"],
-		"documents-1": reduxState.contentReducer["documents-1"]
+		"documents-1": reduxState.contentReducer["documents-1"],
+		"articles-2": reduxState.contentReducer["articles-2"]
 	};
 }
 
@@ -236,4 +328,7 @@ function mapDispatchToProps(dispatch) {
 		navigation: bindActionCreators(NavigationActions, dispatch)
 	};
 }
+
+export {QuickLinks};
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(QuickLinks);

@@ -1,63 +1,63 @@
 .title {
 
-	@include grid-media($sba-grid-medium-and-small) {
-		margin-top: 30px;
-		margin-bottom: 20px;
+  @include grid-media($sba-grid-medium-and-small) {
+    margin-top: 10px;
+    margin-bottom: 20px;
 
-		@include grid-column(5);
-	}
-	@include grid-media($sba-grid-large) {
-		margin-top: 50px;
-		margin-bottom: 40px;
+    @include grid-column(5);
+  }
+  @include grid-media($sba-grid-large) {
+    margin-top: 30px;
+    margin-bottom: 40px;
 
-		@include grid-column(11);
-	}
+    @include grid-column(11);
+  }
 }
 
 .sectionTitle {
-	position: relative;
-	top: 50%;
+  position: relative;
+  top: 50%;
 
-	transform: translateY(-50%);
+  transform: translateY(-50%);
 
-	@include grid-media($sba-grid-medium-and-small) {
-		@include grid-column(4);
-	}
-	@include grid-media($desktop-0gutter) {
-		@include grid-column(10);
-	}
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(4);
+  }
+  @include grid-media($desktop-0gutter) {
+    @include grid-column(10);
+  }
 }
 
 .sectionHeader {
-	position: relative;
+  position: relative;
 
-	@include grid-container;
-	@include grid-media($tablet-mobile-0gutter) {
-		height: 90px;
+  @include grid-container;
+  @include grid-media($tablet-mobile-0gutter) {
+    height: 90px;
 
-		@include grid-column(6);
-	}
-	@include grid-media($sba-grid-large) {
-		height: 126px;
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-large) {
+    height: 126px;
 
-		@include grid-column(12);
-	}
+    @include grid-column(12);
+  }
 }
 
 .browseAll {
-	font-weight: normal;
-	cursor: pointer;
-	text-align: right;
-	position: relative;
-	top: 50%;
+  font-weight: normal;
+  cursor: pointer;
+  text-align: right;
+  position: relative;
+  top: 50%;
 
-	transform: translateY(-50%);
+  transform: translateY(-50%);
 
-	@include font-size($paragraph-font-sizes);
-	@include grid-media($sba-grid-medium-and-small) {
-		@include grid-column(2);
-	}
-	@include grid-media($sba-grid-large) {
-		@include grid-column(2);
-	}
+  @include font-size($paragraph-font-sizes);
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(2);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(2);
+  }
 }
