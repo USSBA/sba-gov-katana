@@ -1,0 +1,102 @@
+let sinon = require('sinon');
+import chai from "chai";
+
+import * as Drupal8 from "../../../../src/service/drupal-eight.js";
+import dummyDocs from "../../../../src/models/dao/sample-data/documents.js";
+
+let testDocs = [
+  {
+    files: [
+      {
+        effectiveDate: "2018-01-01"
+      },
+      {
+        effectiveDate: "2017-01-01"
+      }
+    ]
+  },
+
+  {
+    files: [
+      {
+        effectiveDate: "1990-01-01"
+      },
+      {
+        effectiveDate: "2016-01-01"
+      }
+    ]
+  },
+
+  {
+    files: [
+      {
+        effectiveDate: "2020-01-01"
+      },
+      {
+        effectiveDate: "2015-01-01"
+      }
+    ]
+  },
+
+  {
+    files: [
+      {
+        effectiveDate: null
+      },
+      {
+        effectiveDate: null
+      }
+    ]
+  },
+
+  {
+    files: [
+      {
+        effectiveDate: "2050-01-01"
+      },
+      {
+        effectiveDate: "2090-04-05"
+      }
+    ]
+  }
+]
+
+let sortedDocs = [{
+  "files": [{
+    "effectiveDate": "2018-01-01"
+  }, {
+    "effectiveDate": "2017-01-01"
+  }]
+}, {
+  "files": [{
+    "effectiveDate": "1990-01-01"
+  }, {
+    "effectiveDate": "2016-01-01"
+  }]
+}, {
+  "files": [{
+    "effectiveDate": "2020-01-01"
+  }, {
+    "effectiveDate": "2015-01-01"
+  }]
+}, {
+  "files": [{
+    "effectiveDate": null
+  }, {
+    "effectiveDate": null
+  }]
+}, {
+  "files": [{
+    "effectiveDate": "2050-01-01"
+  }, {
+    "effectiveDate": "2090-04-05"
+  }]
+}]
+
+describe("Document sorting", () => {
+  it("should sort and filter documents by effective date", (done) => {
+    let docs = Drupal8.sortDocumentsByDate(testDocs)
+    chai.expect(docs).to.deep.equal(sortedDocs)
+    done()
+  });
+});
