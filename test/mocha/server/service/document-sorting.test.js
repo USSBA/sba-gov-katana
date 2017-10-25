@@ -1,8 +1,7 @@
 let sinon = require('sinon');
 import chai from "chai";
 
-import * as Drupal8 from "../../../../src/service/drupal-eight.js";
-import dummyDocs from "../../../../src/models/dao/sample-data/documents.js";
+import { sortDocumentsByDate } from "../../../../src/service/drupal-eight.js";
 
 let testDocs = [
   {
@@ -95,7 +94,7 @@ let sortedDocs = [{
 
 describe("Document sorting", () => {
   it("should sort and filter documents by effective date", (done) => {
-    let docs = Drupal8.sortDocumentsByDate(testDocs)
+    let docs = sortDocumentsByDate(testDocs)
     chai.expect(docs).to.deep.equal(sortedDocs)
     done()
   });
