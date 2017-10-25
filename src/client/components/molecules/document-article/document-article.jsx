@@ -22,17 +22,18 @@ export class DocumentArticle extends React.Component {
   getCurrentFile() {
     let found = null;
     let files = this.props.data.files;
-    if (files) {
+    if (files && files.length > 0) {
       found = _.chain(files)
-        .filter(item => {
-          const { effectiveDate } = item;
-          return moment(effectiveDate).isSameOrBefore(moment())
-            // The current file can have a nil effective date.
-            || _.isNil(effectiveDate)
+        .filter(file => {
+          const { effectiveDate } = file;
+          const date = moment(effectiveDate);
+          return date.isValid && date.isSameOrBefore(moment());
         })
         .sortBy("effectiveDate")
         .last()
         .value();
+
+      if (!found) found = files[0];
     } else if (this.props.data.file) {
       found = {
         fileUrl: this.props.data.file
@@ -60,7 +61,7 @@ export class DocumentArticle extends React.Component {
 
   renderDateLine(file) {
 
-    const {effectiveDate} = file;
+    const {effectiveDate, updated} = file;
     const {data} = this.props;
 
     const dates = [];
@@ -74,11 +75,11 @@ export class DocumentArticle extends React.Component {
 
     }
 
-    if (data) {
+    if (updated) {
 
       dates.push({
         title: "Last Updated",
-        date: moment.unix(data.updated).format("MMM D, YYYY")
+        date: moment.unix(updated).format("MMM D, YYYY")
       });
 
     }
