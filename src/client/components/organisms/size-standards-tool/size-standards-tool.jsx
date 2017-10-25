@@ -24,7 +24,6 @@ class SizeStandardsTool extends PureComponent {
 			
 			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
 			
-			"shouldShowNaicsInput": true,
 			"naicsCodes": [],
 			"naicsCodesList": [], // 
 			
@@ -140,103 +139,6 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
-	renderNaicsLookup() {
-
-		// Format the list of naics from the API into a structure suitable for React
-		// Autosuggest, i.e. into a list of sections (naics categories/industries) that
-		// contain entries (naics codes and descriptions).
-		function formatNaics (naics) {
-			
-			const industriesMap = {};
-			for (let index = 0; index < naics.length; index++) {
-				
-				const {
-					code,
-					description,
-					sectorDescription: industryDescription,
-					sectorId: industryCode
-				} = naics[index];
-
-				if (!industriesMap.hasOwnProperty(industryCode)) {
-					industriesMap[industryCode] = {
-						description: industryDescription,
-						entries: []
-					};
-
-				}
-
-				industriesMap[industryCode].entries.push({
-					code,
-					description,
-					industryCode,
-					industryDescription
-				});
-
-			}
-
-			return reduce(industriesMap, (acc, val, key) => {
-				
-				acc.push({
-					description: val.description,
-					entries: val.entries
-				});
-				
-				return acc;
-				
-				},
-			[]);
-
-		}
-
-		// filter out exceptions and then format naics objects
-		const naics = formatNaics(this.state.naicsCodes.filter((object) => {
-
-			let result;
-			const validLength = 6;
-
-			if (object.code.length === validLength) {
-				result = object;
-			}
-
-			return result;
-
-		}));
-
-		const inputProps = {
-			id: "naics-lookup",
-			name: "naics"
-			// onBlur,
-			// onFocus
-		};
-
-		return (
-			<div className={styles.naicsLookup}>
-				<NaicsLookup
-					naics={naics}
-					inputProps={inputProps}
-					inputLengthToGetSuggestions={3}
-					maxVisibleSuggestions={5}
-					onSelect={(selection) => {
-						
-						// const {
-						//   code,
-						//   description,
-						//   industryCode,
-						//   industryDescription
-						// } = selection;
-
-						const naicsCode = selection.code;
-						this.addNaicsCode(naicsCode);
-						this.showNaicsInput(false);
-						this.setFocusTo("add-another-industry");
-
-					}}
-				/>
-			</div>
-		);
-
-	}
-
 	setFocusTo(id, delay = 0) {
 
 		const interval = setInterval(() => {
@@ -261,14 +163,6 @@ class SizeStandardsTool extends PureComponent {
 		},
 		delay);
 
-
-	}
-
-	showNaicsInput(shouldShowNaicsInput) {
-
-		const updatedState = {shouldShowNaicsInput};
-
-		this.setState(updatedState);
 
 	}
 
@@ -612,27 +506,11 @@ class SizeStandardsTool extends PureComponent {
 
 		const {
 			section,
-			shouldShowNaicsInput,
 			naicsCodes,
 			naicsCodesList,
-			employeeTotal,
-			revenueTotal,
 			shouldShowRevenueSection,
-			shouldShowEmployeesSection,
 			exceptionsList
 		} = this.state;
-
-
-		let revenueInputValidationState = "";
-
-		if (revenueTotal !== null) {
-			revenueInputValidationState = revenueTotal > 0 ? "success" : "error";
-		}
-
-		let employeesInputValidationState = "";
-		if (employeeTotal !== null) {
-			employeesInputValidationState = employeeTotal > 0 ? "success" : "error";
-		}
 
 		return (
 
@@ -641,20 +519,8 @@ class SizeStandardsTool extends PureComponent {
 
 
 				{section === "START" && <div className={styles.startSection}>
-					
-					<h2>Size Standards Tool</h2>
 
-					<img src={sizeStandardsGraphic} />
-
-					<p>Do you qualify as a small business?</p>
-
-					<LargePrimaryButton
-						className={styles.button}
-						text="Start"
-						onClick={() => {
-							this.gotoSection("NAICS");
-						}}
-					/>
+					<StartScreen gotoSection={this.gotoSection.bind(this)} />
 
 				</div>}
 
@@ -663,86 +529,15 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "NAICS" && <div>
 
-					<div className={styles.screen}>
-					
-						<h2>What's your industry?</h2>
 
-						{naicsCodesList.length > 0 && <div> 
-
-							{this.renderNaicsList(section)}
-
-						</div>}
-
-						{shouldShowNaicsInput || naicsCodesList.length === 0 ? (<div>
-
-							<div className={styles.naicsCodeInput}>
-
-								{!_.isEmpty(naicsCodes) ? (<div>
-
-									<div className={styles.instructions}>
-										<p>Select your 6-digit NAICS code</p>
-									</div>
-									
-									{this.renderNaicsLookup()}
-									{this.setFocusTo("naics-lookup", 300)}
-
-									<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
-
-								</div>) : (<div className={styles.loading}>
-
-									<p>...loading suggestions...</p>
-
-								</div>)}
-
-							</div>
-
-						</div>) : (<div>
-
-							<p><a
-								id="add-another-industry"
-								onClick={() => {
-								
-									this.showNaicsInput(true);
-
-								}}
-								onKeyPress={(obj) => {
-
-									const enterKeyCode = 0;
-
-									if (obj.keyCode === enterKeyCode) {
-
-										this.showNaicsInput(true);
-
-									}
-
-								}}
-								tabIndex="0"
-							><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
-						
-						</div>)}
-
-						{naicsCodesList.length > 0 && <div>
-							
-							<LargePrimaryButton
-								className={styles.button}
-								text="Next"
-								onClick={() => {
-
-									let sectionTarget = "NO_SECTION_SET";
-
-									if (shouldShowRevenueSection === true) {
-										sectionTarget = "REVENUE";
-									} else if (shouldShowEmployeesSection === true) {
-										sectionTarget = "EMPLOYEES";
-									}
-
-									this.gotoSection(sectionTarget);
-								}}
-							/>
-
-						</div>}
-
-					</div>
+					<NaicsScreen
+						{...this.state}
+						// expose the following methods
+						renderNaicsList={this.renderNaicsList.bind(this)}
+						addNaicsCode={this.addNaicsCode.bind(this)}
+						setFocusTo={this.setFocusTo.bind(this)}
+						gotoSection={this.gotoSection.bind(this)}
+					/>
 
 					{this.renderAppBar({
 						buttonText: "BACK",
@@ -756,52 +551,12 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "REVENUE" && <div>
 
-					<div className={styles.screen}>
-
-						<h2>How much revenue?</h2>
-
-						<div className={styles.revenueInput}>
-							
-							<FormattedNumberInput
-								min="0"
-								format="$0,0[.]00"
-								id="revenue"
-								value={revenueTotal}
-								errorText={"Please enter a correct number."}
-								label="Annual Revenue"
-								validationState={revenueInputValidationState}
-								onChange={() => {
-
-									const data = {
-										section,
-										value: Number(document.getElementById("revenue").value)
-									};
-
-									this.onInputChange(data);
-
-								}}
-								showSuccessIcon={false}
-								showErrorIcon={false}
-							/>
-
-							{this.setFocusTo("revenue")}
-
-						</div>
-
-						<p>This caption will help a small business understand <br />what information we're looking for.</p>
-
-						<LargePrimaryButton
-							className={styles.button}
-							text={shouldShowEmployeesSection ? "NEXT" : "SEE RESULTS"}
-							disabled={!(revenueTotal > 0)}
-							onClick={() => {
-
-								this.gotoSection(shouldShowEmployeesSection ? "EMPLOYEES" : "RESULTS");
-
-							}}
-						/>
-
-					</div>
+					<RevenueScreen
+						{...this.state}
+						onInputChange={this.onInputChange.bind(this)}
+						setFocusTo={this.setFocusTo.bind(this)}
+						gotoSection={this.gotoSection.bind(this)}
+					/>
 
 					{this.renderAppBar({
 						buttonText: "BACK",
@@ -815,50 +570,12 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "EMPLOYEES" && <div>
 
-					<div className={styles.screen}>
-
-						<h2>How many employees?</h2>
-
-						<div className={styles.employeesInput}>
-							
-							<FormattedNumberInput
-								min="0"
-								format="0,0"
-								id="employees"
-								value={employeeTotal}
-								errorText={"Please enter a correct number."}
-								label="Number of employees"
-								validationState={employeesInputValidationState}
-								onChange={() => {
-
-									const data = {
-										section,
-										value: Number(document.getElementById("employees").value)
-									};
-
-									this.onInputChange(data);
-
-								}}
-								showSuccessIcon={false}
-								showErrorIcon={false}
-							/>
-
-							{this.setFocusTo("employees")}
-
-						</div>
-
-						<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
-
-						<LargePrimaryButton
-							className={styles.button}
-							text="SEE RESULTS"
-							disabled={!(employeeTotal > 0)}
-							onClick={() => {
-								this.gotoSection("RESULTS");
-							}}
-						/>
-
-					</div>
+					<EmployeesScreen
+						{...this.state}
+						onInputChange={this.onInputChange.bind(this)}
+						setFocusTo={this.setFocusTo.bind(this)}
+						gotoSection={this.gotoSection.bind(this)}
+					/>
 
 					{this.renderAppBar({
 						buttonText: "BACK",
@@ -872,53 +589,12 @@ class SizeStandardsTool extends PureComponent {
 
 				{section === "RESULTS" && <div className={styles.resultsSection}>
 
-					<div className={styles.screen}>
+					<ResultsScreen
+						{...this.state}
+						renderNaicsList={this.renderNaicsList.bind(this)}
+						getResults={this.getResults.bind(this)}
+					/>
 
-						<h2>Are you a small business?</h2>
-
-						{naicsCodesList[0].hasOwnProperty("isSmallBusiness") ? (<div>
-							
-							{this.renderNaicsList(section)}
-
-						</div>) : (<div>
-
-							{this.getResults()}
-
-							<div className={styles.loading}>
-
-								<p>...now analyzing your business...</p>
-
-							</div>
-
-						</div>)}
-
-						<p>You may be eligible to participate in <a href="/contracting" target="_blank" tabIndex="0"><strong>SBA contracting programs</strong></a>.</p>
-
-						<div className={styles.cards}>
-
-							<div className={styles.card}>
-								<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
-								<p><strong>SBA Office of Size Standards</strong></p>
-								<ul>
-									<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-									<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
-									<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
-								</ul>
-							</div>
-
-							<div className={styles.card}>
-								<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
-								<p><strong>SBA Office of Contracting</strong></p>
-								<ul>
-									<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
-									<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
-									<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
-								</ul>
-							</div>
-
-						</div>
-
-					</div>
 
 					{this.renderAppBar({
 						buttonText: "START OVER",
@@ -937,6 +613,445 @@ class SizeStandardsTool extends PureComponent {
 	}
 
 }
+
+// "START" Screen (stateless)
+const StartScreen = (props) => {
+	
+	return (
+
+		<div>
+					
+			<h2>Size Standards Tool</h2>
+
+			<img src={sizeStandardsGraphic} />
+
+			<p>Do you qualify as a small business?</p>
+
+			<LargePrimaryButton
+				className={styles.button}
+				text="Start"
+				onClick={() => {
+					props.gotoSection("NAICS");
+				}}
+			/>
+
+		</div>
+
+	);
+
+};
+
+// "NAICS" Screen (holds state for "shouldShowNaicsInput")
+class NaicsScreen extends PureComponent {
+
+	constructor() {
+
+		super();
+
+		this.state = {
+			"shouldShowNaicsInput": true
+		};
+	}
+
+	showNaicsInput(shouldShowNaicsInput) {
+
+		const updatedState = {shouldShowNaicsInput};
+
+		this.setState(updatedState);
+
+	}
+
+	renderNaicsLookup() {
+
+		// Format the list of naics from the API into a structure suitable for React
+		// Autosuggest, i.e. into a list of sections (naics categories/industries) that
+		// contain entries (naics codes and descriptions).
+		function formatNaics (naics) {
+			
+			const industriesMap = {};
+			for (let index = 0; index < naics.length; index++) {
+				
+				const {
+					code,
+					description,
+					sectorDescription: industryDescription,
+					sectorId: industryCode
+				} = naics[index];
+
+				if (!industriesMap.hasOwnProperty(industryCode)) {
+					industriesMap[industryCode] = {
+						description: industryDescription,
+						entries: []
+					};
+
+				}
+
+				industriesMap[industryCode].entries.push({
+					code,
+					description,
+					industryCode,
+					industryDescription
+				});
+
+			}
+
+			return reduce(industriesMap, (acc, val, key) => {
+				
+				acc.push({
+					description: val.description,
+					entries: val.entries
+				});
+				
+				return acc;
+				
+				},
+			[]);
+
+		}
+
+		// filter out exceptions and then format naics objects
+		const naics = formatNaics(this.props.naicsCodes.filter((object) => {
+
+			let result;
+			const validLength = 6;
+
+			if (object.code.length === validLength) {
+				result = object;
+			}
+
+			return result;
+
+		}));
+
+		const inputProps = {
+			id: "naics-lookup",
+			name: "naics"
+			// onBlur,
+			// onFocus
+		};
+
+		return (
+			<div className={styles.naicsLookup}>
+				<NaicsLookup
+					naics={naics}
+					inputProps={inputProps}
+					inputLengthToGetSuggestions={3}
+					maxVisibleSuggestions={5}
+					onSelect={(selection) => {
+						
+						// const {
+						//   code,
+						//   description,
+						//   industryCode,
+						//   industryDescription
+						// } = selection;
+
+						const naicsCode = selection.code;
+						this.props.addNaicsCode(naicsCode);
+						this.showNaicsInput(false);
+						this.props.setFocusTo("add-another-industry");
+
+					}}
+				/>
+			</div>
+		);
+
+	}
+
+	render() {
+
+		const {
+			section,
+			naicsCodesList,
+			naicsCodes,
+			shouldShowRevenueSection,
+			shouldShowEmployeesSection
+		} = this.props;
+
+		const {shouldShowNaicsInput} = this.state;
+		
+		return (
+
+			<div className={styles.screen}>
+			
+				<h2>What's your industry?</h2>
+
+				{naicsCodesList.length > 0 && <div> 
+
+					{this.props.renderNaicsList(section)}
+
+				</div>}
+
+				{shouldShowNaicsInput || naicsCodesList.length === 0 ? (<div>
+
+					<div className={styles.naicsCodeInput}>
+
+						{!_.isEmpty(naicsCodes) ? (<div>
+
+							<div className={styles.instructions}>
+								<p>Select your 6-digit NAICS code</p>
+							</div>
+							
+							{this.renderNaicsLookup()}
+							{this.props.setFocusTo("naics-lookup", 300)}
+
+							<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
+
+						</div>) : (<div className={styles.loading}>
+
+							<p>...loading suggestions...</p>
+
+						</div>)}
+
+					</div>
+
+				</div>) : (<div>
+
+					<p><a
+						id="add-another-industry"
+						onClick={() => {
+						
+							this.showNaicsInput(true);
+
+						}}
+						onKeyPress={(obj) => {
+
+							const enterKeyCode = 0;
+
+							if (obj.keyCode === enterKeyCode) {
+
+								this.showNaicsInput(true);
+
+							}
+
+						}}
+						tabIndex="0"
+					><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
+				
+				</div>)}
+
+				{naicsCodesList.length > 0 && <div>
+					
+					<LargePrimaryButton
+						className={styles.button}
+						text="Next"
+						onClick={() => {
+
+							let sectionTarget = "NO_SECTION_SET";
+
+							if (shouldShowRevenueSection === true) {
+								sectionTarget = "REVENUE";
+							} else if (shouldShowEmployeesSection === true) {
+								sectionTarget = "EMPLOYEES";
+							}
+
+							this.props.gotoSection(sectionTarget);
+						}}
+					/>
+
+				</div>}
+
+			</div>
+
+		);
+
+	}
+
+}
+
+// "Revenue" Screen (stateless)
+const RevenueScreen = (props) => {
+
+	const {
+		section,
+		revenueTotal,
+		shouldShowEmployeesSection
+	} = props;
+
+	let revenueInputValidationState = "";
+
+	if (revenueTotal !== null) {
+		revenueInputValidationState = revenueTotal > 0 ? "success" : "error";
+	}
+
+	return (
+
+		<div className={styles.screen}>
+
+			<h2>How much revenue?</h2>
+
+			<div className={styles.revenueInput}>
+				
+				<FormattedNumberInput
+					min="0"
+					format="$0,0[.]00"
+					id="revenue"
+					value={revenueTotal}
+					errorText={"Please enter a correct number."}
+					label="Annual Revenue"
+					validationState={revenueInputValidationState}
+					onChange={() => {
+
+						const data = {
+							section,
+							value: Number(document.getElementById("revenue").value)
+						};
+
+						props.onInputChange(data);
+
+					}}
+					showSuccessIcon={false}
+					showErrorIcon={false}
+				/>
+
+				{props.setFocusTo("revenue")}
+
+			</div>
+
+			<p>This caption will help a small business understand <br />what information we're looking for.</p>
+
+			<LargePrimaryButton
+				className={styles.button}
+				text={shouldShowEmployeesSection ? "NEXT" : "SEE RESULTS"}
+				disabled={!(revenueTotal > 0)}
+				onClick={() => {
+
+					props.gotoSection(shouldShowEmployeesSection ? "EMPLOYEES" : "RESULTS");
+
+				}}
+			/>
+
+		</div>
+
+	);
+
+};
+
+// "Employees" Screen (stateless)
+const EmployeesScreen = (props) => {
+
+	const {
+		section,
+		employeeTotal
+	} = props;
+
+	let employeesInputValidationState = "";
+	if (employeeTotal !== null) {
+		employeesInputValidationState = employeeTotal > 0 ? "success" : "error";
+	}
+
+	return (
+
+		<div className={styles.screen}>
+
+			<h2>How many employees?</h2>
+
+			<div className={styles.employeesInput}>
+				
+				<FormattedNumberInput
+					min="0"
+					format="0,0"
+					id="employees"
+					value={employeeTotal}
+					errorText={"Please enter a correct number."}
+					label="Number of employees"
+					validationState={employeesInputValidationState}
+					onChange={() => {
+
+						const data = {
+							section,
+							value: Number(document.getElementById("employees").value)
+						};
+
+						props.onInputChange(data);
+
+					}}
+					showSuccessIcon={false}
+					showErrorIcon={false}
+				/>
+
+				{props.setFocusTo("employees")}
+
+			</div>
+
+			<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
+
+			<LargePrimaryButton
+				className={styles.button}
+				text="SEE RESULTS"
+				disabled={!(employeeTotal > 0)}
+				onClick={() => {
+					props.gotoSection("RESULTS");
+				}}
+			/>
+
+		</div>
+
+	);
+
+};
+
+// "RESULTS" Screen (stateless)
+const ResultsScreen = (props) => {
+
+	const {
+		section,
+		naicsCodesList
+	} = props;
+
+	return (
+
+		<div className={styles.screen}>
+
+			<h2>Are you a small business?</h2>
+
+			{naicsCodesList[0].hasOwnProperty("isSmallBusiness") ? (<div>
+				
+				{props.renderNaicsList(section)}
+
+			</div>) : (<div>
+
+				{props.getResults()}
+
+				<div className={styles.loading}>
+
+					<p>...now analyzing your business...</p>
+
+				</div>
+
+			</div>)}
+
+			<p>You may be eligible to participate in <a href="/contracting" target="_blank" tabIndex="0"><strong>SBA contracting programs</strong></a>.</p>
+
+			<div className={styles.cards}>
+
+				<div className={styles.card}>
+					<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
+					<p><strong>SBA Office of Size Standards</strong></p>
+					<ul>
+						<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+						<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
+						<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
+					</ul>
+				</div>
+
+				<div className={styles.card}>
+					<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
+					<p><strong>SBA Office of Contracting</strong></p>
+					<ul>
+						<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+						<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
+						<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+
+	);
+
+};
 
 // mock data
 
