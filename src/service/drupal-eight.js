@@ -132,7 +132,6 @@ function filterArticles(params, allArticles) {
 /* eslint-enable complexity */
 
 function sortDocuments(params, docs) {
-
   let sortOrder = ["asc"];
   let sortItems;
   if (params.sortBy === "Title") {
@@ -143,7 +142,7 @@ function sortDocuments(params, docs) {
     sortItems = ["updated"];
     sortOrder = ["desc"];
   } else if (params.sortBy === "Effective Date") {
-    return sortDocumentsByDate(docs);
+    return sortDocumentsByDate(docs)
   } else {
     return docs;
   }
@@ -156,15 +155,15 @@ function sortDocuments(params, docs) {
 }
 
 function sortDocumentsByDate(docs) {
-  const sortedDocs = _.orderBy(docs, [(doc) => {
-    const files = _.filter(doc.files, (file) => {
-      const date = moment(file.effectiveDate);
-      return date.isSameOrBefore(moment());
-    });
-    const latestFile = _.maxBy(files, "effectiveDate");
-    return latestFile ? latestFile.effectiveDate : "";
-  }], ["desc"]);
-  return sortedDocs;
+  let sortedDocs = _.orderBy(docs, [(doc) => {
+    let files = _.filter(doc.files, (file) => {
+      let date = moment(file.effectiveDate)
+      return date.isValid() && date.isSameOrBefore(moment())
+    })
+    let latestFile = _.maxBy(files, 'effectiveDate')
+    return latestFile ? latestFile.effectiveDate : ""
+  }], ['desc'])
+  return sortedDocs
 }
 
 function fetchTaxonomyVocabulary(queryParams) {
@@ -186,7 +185,6 @@ function fetchTaxonomyVocabulary(queryParams) {
 
 
 function fetchArticles(queryParams) {
-
   let sortOrder = "";
   let sortField;
   if (queryParams.sortBy === "Title") {
@@ -194,18 +192,12 @@ function fetchArticles(queryParams) {
   } else if (queryParams.sortBy === "Last Updated") {
     sortField = "updated";
     sortOrder = "-";
-  } else if (queryParams.sortBy === "Created") {
-
-    sortField = "created";
-    sortOrder = "-";
-
   }
 
   return get("collection/articles", {
     sortBy: sortOrder + sortField
   }).then((results) => {
     const filteredArticles = filterArticles(queryParams, results);
-
     return {
       items: (queryParams.start === "all" || queryParams.end === "all") ? filteredArticles : filteredArticles.slice(queryParams.start, queryParams.end),
       count: filteredArticles.length
