@@ -21,12 +21,16 @@ class SizeStandardsTool extends PureComponent {
 		super();
 
 		this.state = {
+			
 			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
+			
 			"shouldShowNaicsInput": true,
 			"naicsCodes": [],
 			"naicsCodesList": [], // 
+			
 			"shouldShowRevenueSection": false,
 			"revenueTotal": null,
+			
 			"shouldShowEmployeesSection": false,
 			"employeeTotal": null
 		};
@@ -61,82 +65,78 @@ class SizeStandardsTool extends PureComponent {
 			section
 		};
 
-		const go = (d) => {
+		// if going to the START Section
+			// carry over already cached naics codes
 
-			this.setState(d, () => {
+		if (section === "START") {
 
-				window.scrollTo(0, 0);
+			data = Object.assign({}, this.origState);
+			data.naicsCodes = this.state.naicsCodes.slice();
 
-			});
-
-		};
-
-		switch (section) {
-
-			case "START":
-
-				data = Object.assign({}, this.origState);
-
-				// carry over already cached naics codes
-				data.naicsCodes = this.state.naicsCodes.slice();
-
-				go(data);
-
-				break;
-
-			case "RESULTS":
-
-				const naicsCodesList = this.state.naicsCodesList.slice();
-
-				const {
-					revenueTotal,
-					employeeTotal
-				} = this.state;
-
-				// push every exception related to each naicsCode in list to list
-				
-				const promises = naicsCodesList.map((object, index) => {
-
-					const params = {
-
-						id: object.id,
-						revenue: revenueTotal,
-						employeeCount: employeeTotal
-
-					};
-
-					return (
-						
-						axios.get("/isSmallBusiness", {
-							params
-						}).then((response) => {
-
-							// map small business result to it's
-							// corresponding naicsCodeList member
-
-							naicsCodesList[index].isSmallBusiness = response.data === "true";
-
-						})
-					);
-
-				});
-
-				Promise.all(promises).then((response) => {
-
-					data.naicsCodesList = naicsCodesList;
-
-					go(data);
-
-				});
-
-				break;
-
-			default:
-
-				go(data);
-
-				break;
 		}
+
+		this.setState(data, () => {
+
+			window.scrollTo(0, 0);
+
+		});
+
+	}
+
+	getResults() {
+
+		// caculate results for every entry in naicsCodeList
+
+		const naicsCodesList = this.state.naicsCodesList.slice();
+
+		const {
+			revenueTotal,
+			employeeTotal
+		} = this.state;
+
+		// push every exception related to each naicsCode in list to list
+		
+		const promises = naicsCodesList.map((object, index) => {
+
+			const params = {
+
+				id: object.id,
+				revenue: revenueTotal,
+				employeeCount: employeeTotal
+
+			};
+
+			return (
+				
+				axios.get("/isSmallBusiness", {
+					params
+				}).then((response) => {
+
+					// map small business result to it's
+					// corresponding naicsCodeList member
+
+					naicsCodesList[index].isSmallBusiness = response.data === "true";
+
+				})
+			);
+
+		});
+
+
+		Promise.all(promises).then((response) => {
+
+			// delay call for user feedback
+
+			const delay = 2000;
+			const timeout = setTimeout(() => {
+
+				this.setState({naicsCodesList});
+
+				clearTimeout(timeout);
+
+			}, delay);
+
+		});
 
 	}
 
@@ -237,9 +237,8 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
-	setFocusTo(id) {
+	setFocusTo(id, delay = 0) {
 
-		const duration = 300;
 		const interval = setInterval(() => {
 			
 			const el = document.getElementById(id);
@@ -248,13 +247,19 @@ class SizeStandardsTool extends PureComponent {
 				
 				el.focus();
 
+				if (id === "size-standards-tool") {
+
+					window.scrollTo(0, 0);
+
+				}
+
 				clearInterval(interval);
 
 			}
 
 
 		},
-		duration);
+		delay);
 
 
 	}
@@ -589,7 +594,10 @@ class SizeStandardsTool extends PureComponent {
 				<SmallInversePrimaryButton
 					text={buttonText}
 					onClick={() => {
+						
 						this.gotoSection(sectionTarget);
+						this.setFocusTo("size-standards-tool");
+
 					}}
 				/>
 
@@ -676,7 +684,7 @@ class SizeStandardsTool extends PureComponent {
 									</div>
 									
 									{this.renderNaicsLookup()}
-									{this.setFocusTo("naics-lookup")}
+									{this.setFocusTo("naics-lookup", 300)}
 
 									<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
 
@@ -758,6 +766,7 @@ class SizeStandardsTool extends PureComponent {
 								min="0"
 								format="$0,0[.]00"
 								id="revenue"
+								value={revenueTotal}
 								errorText={"Please enter a correct number."}
 								label="Annual Revenue"
 								validationState={revenueInputValidationState}
@@ -816,6 +825,7 @@ class SizeStandardsTool extends PureComponent {
 								min="0"
 								format="0,0"
 								id="employees"
+								value={employeeTotal}
 								errorText={"Please enter a correct number."}
 								label="Number of employees"
 								validationState={employeesInputValidationState}
@@ -866,8 +876,21 @@ class SizeStandardsTool extends PureComponent {
 
 						<h2>Are you a small business?</h2>
 
-						{this.renderNaicsList(section)}
-						{this.setFocusTo("size-standards-tool")}
+						{naicsCodesList[0].hasOwnProperty("isSmallBusiness") ? (<div>
+							
+							{this.renderNaicsList(section)}
+
+						</div>) : (<div>
+
+							{this.getResults()}
+
+							<div className={styles.loading}>
+
+								<p>...now analyzing your business...</p>
+
+							</div>
+
+						</div>)}
 
 						<p>You may be eligible to participate in <a href="/contracting" target="_blank" tabIndex="0"><strong>SBA contracting programs</strong></a>.</p>
 
