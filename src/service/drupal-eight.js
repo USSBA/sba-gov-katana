@@ -185,12 +185,16 @@ function fetchTaxonomyVocabulary(queryParams) {
 
 
 function fetchArticles(queryParams) {
+
   let sortOrder = "";
   let sortField;
   if (queryParams.sortBy === "Title") {
     sortField = "title";
   } else if (queryParams.sortBy === "Last Updated") {
     sortField = "updated";
+    sortOrder = "-";
+  } else if (queryParams.sortBy === "Created") {
+    sortField = "created";
     sortOrder = "-";
   }
 
