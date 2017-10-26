@@ -16,6 +16,7 @@ import SearchBox from "./search-box/search-box.jsx";
 import SectionNav from "./section-nav/section-nav.jsx";
 import ProgramDetailsCardCollection from "./program-details-card-collection/program-details-card-collection.jsx";
 import TileCollection from "./tile-collection/tile-collection.jsx";
+import SizeStandardsTool from "./size-standards-tool/size-standards-tool.jsx";
 
 // header-footer organisms
 import Footer from "./header-footer/footer/footer.jsx";
@@ -69,7 +70,8 @@ export {
 	SearchBox,
 	SectionNav,
 	TileCollection,
-	ProgramDetailsCardCollection
+	ProgramDetailsCardCollection,
+	SizeStandardsTool
 };
 
 // header-footer organisms

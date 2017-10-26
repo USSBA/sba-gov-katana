@@ -4,7 +4,7 @@ const themes = {
   "sba-blue": ["styleguide"],
   "byzantine": ["guide", "business-guide"],
   "money-green": ["lendermatch", "funding-programs", "document", "article", "partners", "disaster-assistance"],
-  "cobalt-blue": []
+  "cobalt-blue": ["size-standards"]
 };
 
 function getPaths() {
@@ -16,7 +16,16 @@ function getPaths() {
 
 function getTheme() {
   const theme = "sba-blue";
-  const path = window.location.pathname.split("/")[1];
+
+  const {pathname} = window.location;
+  let path;
+
+  if (pathname.startsWith("/tools")) {
+    path = pathname.slice(1);
+  } else {
+    path = window.location.pathname.split("/")[1];
+  }
+
   return _.findKey(themes, function(object) {
     return _.includes(object, path);
   });

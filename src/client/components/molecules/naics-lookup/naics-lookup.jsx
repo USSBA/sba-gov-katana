@@ -16,6 +16,8 @@ import { SmallIcon } from 'atoms';
 
 class NaicsLookup extends React.PureComponent {
   static defaultProps = {
+    // Begin getting suggestions at character n of the input.
+    inputLengthToGetSuggestions: 0,
     onSelect: () => {},
     visibleSuggestions: 5
   };
@@ -82,10 +84,13 @@ class NaicsLookup extends React.PureComponent {
 
   // Filter the list of NAICS codes against the input.
   getSuggestions = value => {
-    const { naics } = this.props;
+    const { inputLengthToGetSuggestions, naics } = this.props;
     const sanitizedValue = value.trim().toLowerCase();
 
-    if (sanitizedValue === '') {
+    if (
+      sanitizedValue === ''
+      || sanitizedValue.length < inputLengthToGetSuggestions
+    ) {
       return [];
     }
 

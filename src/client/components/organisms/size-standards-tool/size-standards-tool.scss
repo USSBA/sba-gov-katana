@@ -1,0 +1,400 @@
+.sizeStandardsTool {
+	
+	margin-bottom:50px;
+	border: 2px solid #000;
+	box-shadow: 2px 2px 15px #888888;
+	text-align: center;
+	position: relative;
+
+	> div {
+
+		padding-top: 70px;
+
+		&.startSection {
+
+			padding: 50px 32px 70px;
+
+			p {
+
+				font-size: 26px;
+
+			}
+
+			button {
+
+				margin-top: 0;
+
+			}
+
+		}
+
+		.screen {
+
+			@media (max-width: 767px) {
+
+				padding: 0 30px;
+
+				br {
+
+					display: none;
+
+				}
+
+
+			}
+
+		}
+
+	}
+
+	.resultsSection {
+
+		ul {
+
+			margin: 20px auto 40px;
+
+		}
+
+		.cards {
+		
+			margin-top: 50px;
+			text-align: center;
+
+		}
+
+		.card {
+
+			border: 1px solid #05183A;
+			padding: 25px;
+			text-align: left;
+
+			@media (max-width:767px) {
+
+				margin: 25px;
+
+			}
+
+			ul {
+
+				margin: 0;
+
+				li {
+
+					display: flex;
+					margin-bottom: 10px;
+
+					i {
+						
+						margin: auto 11px auto 0;
+					    font-size: 1.2em;
+					    width: 25px;
+					    text-align: center;
+
+					}
+
+					p {
+						
+						margin: 0;
+    					line-height: 1.1;
+
+					}
+
+				}
+
+			}
+			
+			@media (min-width:768px) {
+				
+				display: inline-block;
+				width: 278px;
+				margin-right: 40px;
+
+				&:last-child {
+
+					margin-right: 0;
+
+				}
+
+
+			}
+
+		}
+
+
+	}
+
+	.appBar {
+		
+		margin-top: 70px;
+		background: #cccccc;
+		padding: 20px 30px;
+		text-align: left;
+
+	}
+
+	img {
+		
+		display: block;
+		width: 100%;
+
+		@include grid-media($sba-grid-medium) {
+			
+			margin: -70px auto -30px;
+
+		}
+		
+	}
+
+	i {
+		
+		margin-right: 10px;
+		
+	}
+
+	.button {
+
+		margin-top: 50px;
+		padding: .75em 4.25em
+
+	}
+
+	.naicsCodeInput {
+		
+		max-width: 470px;
+		margin: 0 auto;
+		text-align: left;
+
+		.instructions {
+
+			text-align: center;
+
+		}
+
+		.naicsLookup {
+
+			position: relative;
+
+			> div > div:last-child {
+
+			    position: absolute;
+			    right: 0;
+			    left: 0;
+			    background: #fff;
+
+			}
+
+		}
+
+		input {
+
+			line-height: 37px;
+
+		}
+
+		button {
+
+			position: absolute;
+			top: 34px;
+		    right: 0;
+
+		}
+
+		.loading {
+
+			text-align: center;
+
+			height: 200px;
+
+		}
+
+	}
+
+
+	.naicsCodesList {
+		
+		border-top: 1px solid #05183A;
+		max-width: 470px;
+		margin: 0 auto 10px;
+
+		@media(max-width: 768px) {
+
+			margin-top: 20px;
+
+		}
+
+		li {
+			
+			border-bottom: 1px solid #05183A;
+			padding: 15px 20px;
+			text-align: left;
+
+		}
+
+		p {
+			margin: 0;
+		}
+
+		span {
+			display: block;
+			color: #333333;
+			font-size: 75%;
+		    font-weight: bold;
+		    line-height: 1.2;
+		}
+
+		.naicsSection {
+
+			display: flex;
+			padding: 5px 0;
+
+
+			.left {
+
+				margin: auto 0;
+
+			}
+
+			.right {
+
+				margin: auto 0 auto auto;
+
+			}
+
+		}
+
+		.remove {
+		    
+		    padding: 22px 10px;
+
+	    	i {
+	    	
+	    		margin-right: 0;
+	    		color: #757575;
+	    	
+	    	}
+		}
+
+		.resultsSection {
+
+			display: flex;
+			padding: 5px 0;
+
+			.left {
+
+				margin: auto 0;
+
+				@media (max-width: 767px) {
+
+					margin-bottom: 10px;
+					margin-right: 10px;
+					width: 80%;
+
+				}
+
+				@media (min-width: 768px) {
+					display: inline-block;
+					margin-right: 5%;
+					width: 40%;
+				}
+
+				> div {
+					line-height: 1;
+				}
+
+			}
+
+			.middle {
+
+				margin: auto 0;
+
+				@media (max-width: 767px) {
+
+					width: 80%;
+
+				}
+
+				@media (min-width: 768px) {
+					
+					width: 50%;
+
+				}
+
+				> div {
+					line-height: 1.2;
+				}
+
+			}
+
+			.right {
+
+				margin: auto;
+
+				font-size: 100%;
+				font-weight: bold;
+				text-align: center;
+
+				i {
+
+					display: block;
+			    	margin-right: 0;
+			    	margin-bottom: -2px;
+
+				}
+
+			}
+
+			.no i {
+
+				color: #E21234;
+
+			}
+
+			.yes i {
+
+				color: #609F00;
+
+			}
+
+		}
+
+		.exceptionsList {
+
+			margin: 0;
+
+			li {
+
+				padding: 15px 0;
+				border-bottom: 0;
+
+			}
+
+		}
+
+	}
+
+	.revenueInput,
+	.employeesInput {
+		
+		width: 35%;
+		margin: 0 auto;
+
+		@media (max-width: 767px) {
+
+			width: 60%;
+
+		}
+
+		input {
+
+			text-align: center;
+			line-height: 37px;
+
+		}
+
+	}
+
+}
+
+@include theme(cobalt-blue, '.appBar', $cobalt-blue, null, null);
+@include theme(cobalt-blue, '.cards i', null, $cobalt-blue, null);
+
