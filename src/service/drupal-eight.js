@@ -193,11 +193,10 @@ function fetchArticles(queryParams) {
   } else if (queryParams.sortBy === "Last Updated") {
     sortField = "updated";
     sortOrder = "-";
-  } else if (queryParams.sortBy === "Created") {
+  } else if (queryParams.sortBy === "Authored on Date") {
     sortField = "created";
     sortOrder = "-";
   }
-
   return get("collection/articles", {
     sortBy: sortOrder + sortField
   }).then((results) => {
