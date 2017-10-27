@@ -4,7 +4,7 @@ import { get } from "../models/dao/size-standards-client.js";
 
 function responseWithResultAsJson(res) {
   return (data) => {
-    return res.status(HttpStatus.OK).send(JSON.stringify(data));
+    return res.status(HttpStatus.OK).json(JSON.stringify(data));
   };
 }
 
