@@ -42,7 +42,7 @@ class SizeStandardsTool extends PureComponent {
 
 		axios.get("/naics").then((response) => {
 
-			const naicsCodes = JSON.parse(response.data).map((object) => {
+			const naicsCodes = response.data.map((object) => {
 
 				// create code property that matches id property
 				const result = object;
