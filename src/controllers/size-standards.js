@@ -35,7 +35,13 @@ function getNaicsPropertyById(req, res, next) {
 
 
 function determineIfSmallBusiness(req, res, next) {
+
+  console.log("AA");
+
   if (req.query && req.query.id) {
+
+    console.log("BB");
+
     get("isSmallBusiness/", req.query)
       .then(responseWithResultAsJson(res))
       .catch(next);

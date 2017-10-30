@@ -42,7 +42,7 @@ class SizeStandardsTool extends PureComponent {
 
 		axios.get("/naics").then((response) => {
 
-			const naicsCodes = response.data.map((object) => {
+			const naicsCodes = JSON.parse(response.data).map((object) => {
 
 				// create code property that matches id property
 				const result = object;
@@ -72,7 +72,17 @@ class SizeStandardsTool extends PureComponent {
 		if (section === "START") {
 
 			data = Object.assign({}, this.origState);
-			data.naicsCodes = this.state.naicsCodes.slice();
+			data.naicsCodes = this.state.naicsCodes.map((object) => {
+
+				const _object = object;
+
+				if (_object.hasOwnProperty("isSmallBusiness")) {
+					delete _object.isSmallBusiness;
+				}
+
+				return _object;
+
+			});
 
 		} else if (section === "RESULTS") {
 				
@@ -828,10 +838,12 @@ class ResultsScreen extends PureComponent {
 					params
 				}).then((response) => {
 
+					console.log("A", response.data, JSON.parse(response.data))
+
 					// map small business result to it's
 					// corresponding naicsCodeList member
 
-					naicsCodesList[index].isSmallBusiness = response.data === "true";
+					naicsCodesList[index].isSmallBusiness = JSON.parse(response.data) === "true";
 
 				})
 			);
@@ -843,7 +855,7 @@ class ResultsScreen extends PureComponent {
 
 			// delay call for user feedback
 
-			const delay = 2000;
+			const delay = 1000;
 			const timeout = setTimeout(() => {
 
 				this.setState({naicsCodesList});
