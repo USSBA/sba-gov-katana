@@ -1062,7 +1062,7 @@ class ResultsScreen extends PureComponent {
 						<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
 						<p><strong>SBA Office of Size Standards</strong></p>
 						<ul>
-							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span className={styles.comma}>,</span> DC 2041</p></li>
 							<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
 							<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
 						</ul>
@@ -1072,7 +1072,7 @@ class ResultsScreen extends PureComponent {
 						<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
 						<p><strong>SBA Office of Contracting</strong></p>
 						<ul>
-							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span className={styles.comma}>,</span> DC 2041</p></li>
 							<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
 							<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
 						</ul>

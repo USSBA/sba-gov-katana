@@ -82,6 +82,20 @@
 
 					display: flex;
 					margin-bottom: 10px;
+					
+
+					@media (max-width: 767px) {
+						
+						word-break: break-all;
+
+						.comma {
+
+							display: none;
+
+						}
+
+					}
+
 
 					i {
 						
@@ -96,6 +110,7 @@
 						
 						margin: 0;
     					line-height: 1.1;
+
 
 					}
 
@@ -154,7 +169,14 @@
 	.button {
 
 		margin-top: 50px;
-		padding: .75em 4.25em
+		padding: .75em 4.25em;
+
+		@media(max-width: 768px) {
+
+			width: 100%;
+			padding: .75em 0;
+
+		}
 
 	}
 
@@ -279,82 +301,6 @@
 			display: flex;
 			padding: 5px 0;
 
-			.left {
-
-				margin: auto 0;
-
-				@media (max-width: 767px) {
-
-					margin-bottom: 10px;
-					margin-right: 10px;
-					width: 80%;
-
-				}
-
-				@media (min-width: 768px) {
-					display: inline-block;
-					margin-right: 5%;
-					width: 40%;
-				}
-
-				> div {
-					line-height: 1;
-				}
-
-			}
-
-			.middle {
-
-				margin: auto 0;
-
-				@media (max-width: 767px) {
-
-					width: 80%;
-
-				}
-
-				@media (min-width: 768px) {
-					
-					width: 50%;
-
-				}
-
-				> div {
-					line-height: 1.2;
-				}
-
-			}
-
-			.right {
-
-				margin: auto;
-
-				font-size: 100%;
-				font-weight: bold;
-				text-align: center;
-
-				i {
-
-					display: block;
-			    	margin-right: 0;
-			    	margin-bottom: -2px;
-
-				}
-
-			}
-
-			.no i {
-
-				color: #E21234;
-
-			}
-
-			.yes i {
-
-				color: #609F00;
-
-			}
-
 		}
 
 		.exceptionsList {
@@ -365,6 +311,93 @@
 
 				padding: 15px 0;
 				border-bottom: 0;
+
+				> div {
+
+					display: flex;
+
+				}
+
+			}
+
+		}
+
+		.left {
+
+			margin: auto 0;
+
+			@media (max-width: 767px) {
+
+				margin-bottom: 10px;
+				margin-right: 10px;
+				width: 80%;
+
+			}
+
+			@media (min-width: 768px) {
+				display: inline-block;
+				margin-right: 5%;
+				width: 40%;
+			}
+
+			> div {
+				line-height: 1;
+			}
+
+		}
+
+		.middle {
+
+			margin: auto 0;
+
+			@media (max-width: 767px) {
+
+				width: 80%;
+
+			}
+
+			@media (min-width: 768px) {
+				
+				width: 50%;
+
+			}
+
+			> div {
+				line-height: 1.2;
+			}
+
+		}
+
+		.right {
+
+			margin: auto;
+
+			font-size: 100%;
+			font-weight: bold;
+			text-align: center;
+
+			i {
+
+				display: block;
+		    	margin-right: 0;
+		    	margin-bottom: -2px;
+
+			}
+
+		}
+
+		.resultsSection,
+		.exceptionsList {
+
+			.no i {
+
+				color: #E21234;
+
+			}
+
+			.yes i {
+
+				color: #609F00;
 
 			}
 
