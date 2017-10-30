@@ -82,7 +82,7 @@
 
 					display: flex;
 					margin-bottom: 10px;
-					
+				
 
 					@media (max-width: 767px) {
 						
@@ -95,7 +95,6 @@
 						}
 
 					}
-
 
 					i {
 						
@@ -110,7 +109,6 @@
 						
 						margin: 0;
     					line-height: 1.1;
-
 
 					}
 
@@ -430,3 +428,4 @@
 
 @include theme(cobalt-blue, '.appBar', $cobalt-blue, null, null);
 @include theme(cobalt-blue, '.cards i', null, $cobalt-blue, null);
+

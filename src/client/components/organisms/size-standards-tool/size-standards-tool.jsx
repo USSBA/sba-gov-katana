@@ -84,6 +84,7 @@ class SizeStandardsTool extends PureComponent {
 
 			});
 
+
 		} else if (section === "RESULTS") {
 				
 			this.setFocusTo("size-standards-tool");
