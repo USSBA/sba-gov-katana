@@ -192,9 +192,21 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             className="fa fa-map-marker"
           />
           <p>
-            409 3rd Street, SW
+            409 3rd Street
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             SW 
             <br />
-            Washington, DC 2041
+            Washington
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             DC 2041
           </p>
         </li>
         <li>
@@ -246,9 +258,21 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             className="fa fa-map-marker"
           />
           <p>
-            409 3rd Street, SW
+            409 3rd Street
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             SW 
             <br />
-            Washington, DC 2041
+            Washington
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             DC 2041
           </p>
         </li>
         <li>
