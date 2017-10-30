@@ -838,8 +838,6 @@ class ResultsScreen extends PureComponent {
 					params
 				}).then((response) => {
 
-					console.log("A", response.data, JSON.parse(response.data))
-
 					// map small business result to it's
 					// corresponding naicsCodeList member
 
