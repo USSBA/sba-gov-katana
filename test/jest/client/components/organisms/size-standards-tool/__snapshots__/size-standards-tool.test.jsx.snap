@@ -10,38 +10,21 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
   <div
     className="employeesInput"
   >
-    <div
-      className="inputContainer"
-      hidden={undefined}
-      id="employees-container"
+    <label
+      htmlFor="employees"
     >
-      <label
-        className="controlLabel"
-        htmlFor="employees"
-      >
-        Number of employees
-      </label>
-      <div
-        className="textInputContainer"
-      >
-        <input
-          className="textInputInvalid"
-          id="employees"
-          min="0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          type="tel"
-          value=""
-        />
-      </div>
-      <p
-        className="errorText"
-        id="employees-error"
-      >
-        Please enter a correct number.
-      </p>
-    </div>
+      Number of employees
+    </label>
+    <input
+      id="employees"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseUp={[Function]}
+      type="text"
+      value=""
+    />
   </div>
   <p>
     This should be the average number of full-time or part-time 
@@ -139,170 +122,6 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
 </div>
 `;
 
-exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
-<div
-  className="screen"
->
-  <h2>
-    Are you a small business?
-  </h2>
-  <div>
-    <ul
-      className="naicsCodesList"
-    />
-  </div>
-  <p>
-    You may be eligible to participate in 
-    <a
-      href="/contracting"
-      tabIndex="0"
-      target="_blank"
-    >
-      <strong>
-        SBA contracting programs
-      </strong>
-    </a>
-    .
-  </p>
-  <div
-    className="cards"
-  >
-    <div
-      className="card"
-    >
-      <p>
-        Learn more about 
-        <a
-          href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards"
-          target="_blank"
-        >
-          SBA small business size standards
-        </a>
-        .
-      </p>
-      <p>
-        <strong>
-          SBA Office of Size Standards
-        </strong>
-      </p>
-      <ul>
-        <li>
-          <i
-            aria-hidden="true"
-            className="fa fa-map-marker"
-          />
-          <p>
-            409 3rd Street
-            <span
-              className="comma"
-            >
-              ,
-            </span>
-             SW 
-            <br />
-            Washington
-            <span
-              className="comma"
-            >
-              ,
-            </span>
-             DC 2041
-          </p>
-        </li>
-        <li>
-          <i
-            aria-hidden="true"
-            className="fa fa-phone"
-          />
-          <p>
-            202-205-6618
-          </p>
-        </li>
-        <li>
-          <i
-            aria-hidden="true"
-            className="fa fa-envelope"
-          />
-          <p>
-            <a
-              href="mailto:sizestandards@sba.gov"
-            >
-              sizestandards@sba.gov
-            </a>
-          </p>
-        </li>
-      </ul>
-    </div>
-    <div
-      className="card"
-    >
-      <p>
-        Find out 
-        <a
-          href="/contracting"
-          target="_blank"
-        >
-          how you can sell to the Federal Government
-        </a>
-        .
-      </p>
-      <p>
-        <strong>
-          SBA Office of Contracting
-        </strong>
-      </p>
-      <ul>
-        <li>
-          <i
-            aria-hidden="true"
-            className="fa fa-map-marker"
-          />
-          <p>
-            409 3rd Street
-            <span
-              className="comma"
-            >
-              ,
-            </span>
-             SW 
-            <br />
-            Washington
-            <span
-              className="comma"
-            >
-              ,
-            </span>
-             DC 2041
-          </p>
-        </li>
-        <li>
-          <i
-            aria-hidden="true"
-            className="fa fa-phone"
-          />
-          <p>
-            202-205-6621
-          </p>
-        </li>
-        <li>
-          <i
-            aria-hidden="true"
-            className="fa fa-envelope"
-          />
-          <p>
-            <a
-              href="mailto:contracting@sba.gov"
-            >
-              contracting@sba.gov
-            </a>
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
 <div
   className="screen"
@@ -313,38 +132,22 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
   <div
     className="revenueInput"
   >
-    <div
-      className="inputContainer"
-      hidden={undefined}
-      id="revenue-container"
+    <label
+      htmlFor="revenue"
     >
-      <label
-        className="controlLabel"
-        htmlFor="revenue"
-      >
-        Annual Revenue
-      </label>
-      <div
-        className="textInputContainer"
-      >
-        <input
-          className="textInputInvalid"
-          id="revenue"
-          min="0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          type="tel"
-          value=""
-        />
-      </div>
-      <p
-        className="errorText"
-        id="revenue-error"
-      >
-        Please enter a correct number.
-      </p>
-    </div>
+      Annual Revenue
+    </label>
+    <input
+      id="revenue"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseUp={[Function]}
+      placeholder="$"
+      type="text"
+      value=""
+    />
   </div>
   <p>
     This caption will help a small business understand 
