@@ -42,7 +42,7 @@ class SizeStandardsTool extends PureComponent {
 
 		axios.get("/naics").then((response) => {
 
-			const naicsCodes = JSON.parse(response.data).map((object) => {
+			const naicsCodes = response.data.map((object) => {
 
 				// create code property that matches id property
 				const result = object;
@@ -399,7 +399,7 @@ class NaicsScreen extends PureComponent {
 
 	}
 
-	renderNaicsLookup() {
+	renderNaicsLookup({label}) {
 
 		// Format the list of naics from the API into a structure suitable for React
 		// Autosuggest, i.e. into a list of sections (naics categories/industries) that
@@ -463,7 +463,9 @@ class NaicsScreen extends PureComponent {
 
 		const inputProps = {
 			id: "naics-lookup",
-			name: "naics"
+			name: "naics",
+      "aria-labelledby": label,
+      placeholder: "Search by NAICS code, industry or keyword"
 			// onBlur,
 			// onFocus
 		};
@@ -574,7 +576,9 @@ class NaicsScreen extends PureComponent {
 		} = this.props;
 
 		const {shouldShowNaicsInput} = this.state;
-		
+
+		const label = "Select your 6-digit NAICS code";
+
 		return (
 
 			<div className={styles.screen}>
@@ -594,10 +598,12 @@ class NaicsScreen extends PureComponent {
 						{!_.isEmpty(naicsCodes) ? (<div>
 
 							<div className={styles.instructions}>
-								<p>Select your 6-digit NAICS code</p>
+								<p>{label}</p>
 							</div>
-							
-							{this.renderNaicsLookup()}
+
+
+							{this.renderNaicsLookup({label})}
+
 							{this.props.setFocusTo("naics-lookup", 300)}
 
 							<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
