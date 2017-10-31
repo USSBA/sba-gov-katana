@@ -17,25 +17,25 @@ import styles from "./size-standards-tool.scss";
 class SizeStandardsTool extends PureComponent {
 
 	constructor() {
-
+		
 		super();
 
 		this.state = {
-
+			
 			"section": "START", // START | NAICS | REVENUE | EMPLOYEES | RESULTS
-
+			
 			"naicsCodes": [],
-			"naicsCodesList": [], //
-
+			"naicsCodesList": [], // 
+			
 			"shouldShowRevenueSection": false,
 			"revenueTotal": null,
-
+			
 			"shouldShowEmployeesSection": false,
 			"employeeTotal": null
 		};
 
 		this.origState = Object.assign({}, this.state);
-
+	
 	}
 
 	componentDidMount() {
@@ -72,12 +72,23 @@ class SizeStandardsTool extends PureComponent {
 		if (section === "START") {
 
 			data = Object.assign({}, this.origState);
-			data.naicsCodes = this.state.naicsCodes.slice();
+			data.naicsCodes = this.state.naicsCodes.map((object) => {
+
+				const _object = object;
+
+				if (_object.hasOwnProperty("isSmallBusiness")) {
+					delete _object.isSmallBusiness;
+				}
+
+				return _object;
+
+			});
+
 
 		} else if (section === "RESULTS") {
-
+				
 			this.setFocusTo("size-standards-tool");
-
+			
 		}
 
 		this.setState(data, () => {
@@ -91,11 +102,11 @@ class SizeStandardsTool extends PureComponent {
 	setFocusTo(id, delay = 0) {
 
 		const interval = setInterval(() => {
-
+			
 			const el = document.getElementById(id);
 
 			if (!_.isEmpty(el)) {
-
+				
 				el.focus();
 
 				if (id === "size-standards-tool") {
@@ -216,7 +227,7 @@ class SizeStandardsTool extends PureComponent {
 			shouldShowRevenueSection,
 			shouldShowEmployeesSection
 		});
-
+		
 	}
 
 	renderAppBar(data) {
@@ -243,7 +254,7 @@ class SizeStandardsTool extends PureComponent {
 
 	}
 
-
+	
 	render() {
 
 		const {
@@ -343,11 +354,11 @@ class SizeStandardsTool extends PureComponent {
 
 // "START" Screen (stateless)
 const StartScreen = (props) => {
-
+	
 	return (
 
 		<div>
-
+					
 			<h2>Size Standards Tool</h2>
 
 			<img src={sizeStandardsGraphic} />
@@ -394,10 +405,10 @@ class NaicsScreen extends PureComponent {
 		// Autosuggest, i.e. into a list of sections (naics categories/industries) that
 		// contain entries (naics codes and descriptions).
 		function formatNaics (naics) {
-
+			
 			const industriesMap = {};
 			for (let index = 0; index < naics.length; index++) {
-
+				
 				const {
 					code,
 					description,
@@ -423,14 +434,14 @@ class NaicsScreen extends PureComponent {
 			}
 
 			return reduce(industriesMap, (acc, val, key) => {
-
+				
 				acc.push({
 					description: val.description,
 					entries: val.entries
 				});
-
+				
 				return acc;
-
+				
 				},
 			[]);
 
@@ -467,7 +478,7 @@ class NaicsScreen extends PureComponent {
 					inputLengthToGetSuggestions={3}
 					maxVisibleSuggestions={5}
 					onSelect={(selection) => {
-
+						
 						// const {
 						//   code,
 						//   description,
@@ -490,7 +501,7 @@ class NaicsScreen extends PureComponent {
 	renderNaicsList() {
 
 		const {naicsCodesList} = this.props;
-
+		
 		const listItems = naicsCodesList.map((object, index) => {
 
 			const {code, description} = object;
@@ -515,7 +526,7 @@ class NaicsScreen extends PureComponent {
 							<a
 								className={styles.remove}
 								onClick={() => {
-
+									
 									this.props.removeNaicsCode(code);
 
 								}}
@@ -565,15 +576,16 @@ class NaicsScreen extends PureComponent {
 		} = this.props;
 
 		const {shouldShowNaicsInput} = this.state;
+
 		const label = "Select your 6-digit NAICS code";
 
 		return (
 
 			<div className={styles.screen}>
-
+			
 				<h2>What's your industry?</h2>
 
-				{naicsCodesList.length > 0 && <div>
+				{naicsCodesList.length > 0 && <div> 
 
 					{this.renderNaicsList()}
 
@@ -589,7 +601,9 @@ class NaicsScreen extends PureComponent {
 								<p>{label}</p>
 							</div>
 
+
 							{this.renderNaicsLookup({label})}
+
 							{this.props.setFocusTo("naics-lookup", 300)}
 
 							<p>The North American Industry Classification System or NAICS classifies  businesses according to type of economic activity.</p>
@@ -607,7 +621,7 @@ class NaicsScreen extends PureComponent {
 					<p><a
 						id="add-another-industry"
 						onClick={() => {
-
+						
 							this.showNaicsInput(true);
 
 						}}
@@ -624,11 +638,11 @@ class NaicsScreen extends PureComponent {
 						}}
 						tabIndex="0"
 					><i className="fa fa-plus" aria-hidden="true" />Add another industry</a></p>
-
+				
 				</div>)}
 
 				{naicsCodesList.length > 0 && <div>
-
+					
 					<LargePrimaryButton
 						className={styles.button}
 						text="Next"
@@ -678,7 +692,7 @@ const RevenueScreen = (props) => {
 			<h2>How much revenue?</h2>
 
 			<div className={styles.revenueInput}>
-
+				
 				<FormattedNumberInput
 					min="0"
 					format="$0,0[.]00"
@@ -744,7 +758,7 @@ const EmployeesScreen = (props) => {
 			<h2>How many employees?</h2>
 
 			<div className={styles.employeesInput}>
-
+				
 				<FormattedNumberInput
 					min="0"
 					format="0,0"
@@ -778,7 +792,7 @@ const EmployeesScreen = (props) => {
 				text="SEE RESULTS"
 				disabled={!(employeeTotal > 0)}
 				onClick={() => {
-
+					
 					props.gotoSection("RESULTS");
 
 				}}
@@ -814,7 +828,7 @@ class ResultsScreen extends PureComponent {
 		} = this.props;
 
 		// push every exception related to each naicsCode in list to list
-
+		
 		const promises = naicsCodesList.map((object, index) => {
 
 			const params = {
@@ -826,7 +840,7 @@ class ResultsScreen extends PureComponent {
 			};
 
 			return (
-
+				
 				axios.get("/isSmallBusiness", {
 					params
 				}).then((response) => {
@@ -834,7 +848,7 @@ class ResultsScreen extends PureComponent {
 					// map small business result to it's
 					// corresponding naicsCodeList member
 
-					naicsCodesList[index].isSmallBusiness = response.data === "true";
+					naicsCodesList[index].isSmallBusiness = JSON.parse(response.data) === "true";
 
 				})
 			);
@@ -846,7 +860,7 @@ class ResultsScreen extends PureComponent {
 
 			// delay call for user feedback
 
-			const delay = 2000;
+			const delay = 1000;
 			const timeout = setTimeout(() => {
 
 				this.setState({naicsCodesList});
@@ -879,28 +893,28 @@ class ResultsScreen extends PureComponent {
 				result = (
 
 					<li key={index}>
-
+					
 						<div className={styles.results}>
 
 							<div className={styles.left}>
-
+								
 								<p><span>Exception #{index} </span></p>
 								<div>
 									<p>{object.description}</p>
 								</div>
 
 							</div>
-
+							
 							<div className={styles.middle}>
-
+							
 								<p><span>Small Business Size Standards </span></p>
 
 								{object.revenueLimit !== null ? (<div>
 
 									<p>$750 thousand annual revenue</p>
-
+									
 								</div>) : (<div>
-
+									
 									<p>500 employees</p>
 
 								</div>)}
@@ -941,7 +955,7 @@ class ResultsScreen extends PureComponent {
 	}
 
 	renderNaicsList() {
-
+		
 		const listItems = this.state.naicsCodesList.map((object, index) => {
 
 			const {code, description} = object;
@@ -951,28 +965,28 @@ class ResultsScreen extends PureComponent {
 				<li key={index}>
 
 					<div>
-
+	
 						<div className={styles.resultsSection}>
 
 							<div className={styles.left}>
-
+								
 								<p><span>{code} </span></p>
 								<div>
 									<p>{description}</p>
 								</div>
 
 							</div>
-
+							
 							<div className={styles.middle}>
-
+							
 								<p><span>Small Business Size Standards </span></p>
 
 								{object.revenueLimit !== null ? (<div>
 
 									<p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
-
+									
 								</div>) : (<div>
-
+									
 									<p>{object.employeeCountLimit} employees</p>
 
 								</div>)}
@@ -982,13 +996,13 @@ class ResultsScreen extends PureComponent {
 							<div className={styles.right}>
 
 								{object.isSmallBusiness ? (<div>
-
+									
 									<div className={styles.yes}>
 										<p><i className="fa fa-check-circle" aria-hidden="true" />YES</p>
 									</div>
 
 								</div>) : (<div>
-
+									
 									<div className={styles.no}>
 										<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
 									</div>
@@ -1032,7 +1046,7 @@ class ResultsScreen extends PureComponent {
 				<h2>Are you a small business?</h2>
 
 				{naicsCodesList[0].hasOwnProperty("isSmallBusiness") ? (<div>
-
+					
 					{this.renderNaicsList()}
 
 				</div>) : (<div>
@@ -1055,7 +1069,7 @@ class ResultsScreen extends PureComponent {
 						<p>Learn more about <a href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards" target="_blank">SBA small business size standards</a>.</p>
 						<p><strong>SBA Office of Size Standards</strong></p>
 						<ul>
-							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span className={styles.comma}>,</span> DC 2041</p></li>
 							<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6618</p></li>
 							<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a></p></li>
 						</ul>
@@ -1065,7 +1079,7 @@ class ResultsScreen extends PureComponent {
 						<p>Find out <a href="/contracting" target="_blank">how you can sell to the Federal Government</a>.</p>
 						<p><strong>SBA Office of Contracting</strong></p>
 						<ul>
-							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street, SW<br />Washington, DC 2041</p></li>
+							<li><i className="fa fa-map-marker" aria-hidden="true" /><p>409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span className={styles.comma}>,</span> DC 2041</p></li>
 							<li><i className="fa fa-phone" aria-hidden="true" /><p>202-205-6621</p></li>
 							<li><i className="fa fa-envelope" aria-hidden="true" /><p><a href="mailto:contracting@sba.gov">contracting@sba.gov</a></p></li>
 						</ul>
