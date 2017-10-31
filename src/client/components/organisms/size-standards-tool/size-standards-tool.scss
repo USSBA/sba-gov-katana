@@ -184,12 +184,6 @@
 		margin: 0 auto;
 		text-align: left;
 
-		.instructions {
-
-			text-align: center;
-
-		}
-
 		.naicsLookup {
 
 			position: relative;
@@ -271,6 +265,7 @@
 			.left {
 
 				margin: auto 0;
+				width: 80%;
 
 			}
 
@@ -285,6 +280,7 @@
 		.remove {
 		    
 		    padding: 22px 10px;
+		    text-decoration: none;
 
 	    	i {
 	    	
@@ -408,6 +404,7 @@
 		
 		width: 35%;
 		margin: 0 auto;
+		text-align: left;
 
 		@media (max-width: 767px) {
 
@@ -417,7 +414,6 @@
 
 		input {
 
-			text-align: center;
 			line-height: 37px;
 
 		}
