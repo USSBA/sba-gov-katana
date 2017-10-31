@@ -12,6 +12,7 @@ class ArticleLookupPage extends React.Component {
         "articleCategory", "program"
       ],
       fieldsToShowInDetails: ["Program", "Published", "Summary"],
+      defaultSortBy: "Authored on Date",
       sortByOptions: ["Authored on Date","Last Updated", "Title"]
     };
     return (<PagingLookup {...articleProps}/>);

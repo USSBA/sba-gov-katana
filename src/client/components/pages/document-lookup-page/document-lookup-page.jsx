@@ -12,6 +12,7 @@ class DocumentLookupPage extends React.Component {
         "documentType", "program", "documentActivity"
       ],
       fieldsToShowInDetails: ["Activity", "Program", "Summary"],
+      defaultSortBy: "Effective Date",
       sortByOptions: ["Effective Date", "Last Updated", "Title", "Number"]
     };
     return (<PagingLookup {...documentProps}/>);
