@@ -7,13 +7,13 @@ if [ $TRAVIS_PULL_REQUEST == "false" ]; then
     eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
     docker build -t katana .
     if [ ${TRAVIS_BRANCH} = "master" ]; then
-      docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sba-gov-katana:latest
-      docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sba-gov-katana:latest
+      docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/katana:latest
+      docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/katana:latest
     fi
-    docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sba-gov-katana:${TRAVIS_BUILD_NUMBER}
-    docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sba-gov-katana:${TRAVIS_BUILD_NUMBER}
+    docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/${AWS_ECR_REPOSITORY}:${TRAVIS_BUILD_NUMBER}
+    docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/${AWS_ECR_REPOSITORY}:${TRAVIS_BUILD_NUMBER}
     if [ ${TRAVIS_BRANCH} != "master" ]; then
-        docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sba-gov-katana:${TRAVIS_BRANCH}
-        docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/sba-gov-katana:${TRAVIS_BRANCH}
+        docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/${AWS_ECR_REPOSITORY}:${TRAVIS_BRANCH}
+        docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/${AWS_ECR_REPOSITORY}:${TRAVIS_BRANCH}
     fi
 fi
