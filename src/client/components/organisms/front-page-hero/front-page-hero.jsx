@@ -1,11 +1,15 @@
 import React from "react";
+import { kebabCase } from "lodash";
+
 import styles from "./front-page-hero.scss";
 import diagonalLines from "../../../../../public/assets/images/homepage/diagonal-lines.png";
-import {BasicLink} from "atoms"
+import { BasicLink } from "atoms"
+import { eventCategories } from  "../../../services/constants";
 
 class FrontPageHero extends React.Component {
 
   render() {
+    const { links } = this.props;
     return (
       <div className={styles.container + " " + styles[this.props.color] + " " + (this.props.reverse
         ? styles.reverse
@@ -19,15 +23,18 @@ class FrontPageHero extends React.Component {
         <div className={styles.boxContainer}>
           <div className={styles.AccentBox}>
             <ul>
-               <BasicLink url={this.props.links[0].link}>
-                   <li className={styles.borderBox}>{this.props.links[0].title}</li>
-               </BasicLink>
-               <BasicLink url={this.props.links[1].link}>
-                   <li className={styles.borderBox}>{this.props.links[1].title}</li>
-               </BasicLink>
-               <BasicLink url={this.props.links[2].link}>
-                   <li className={styles.borderBox}>{this.props.links[2].title}</li>
-               </BasicLink>
+              {links.map(({ link, title }, index) => (
+                <BasicLink
+                  eventConfig={{
+                    category: kebabCase(`${eventCategories.frontPage} Non-Featured-Hero`),
+                    action: `Click: ${title}`
+                  }}
+                  key={index}
+                  url={link}
+                >
+                    <li className={styles.borderBox}>{title}</li>
+                </BasicLink>
+              ))}
             </ul>
             <img src={diagonalLines} alt=""/>
           </div>

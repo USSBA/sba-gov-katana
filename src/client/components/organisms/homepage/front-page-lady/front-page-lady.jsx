@@ -1,10 +1,14 @@
 import React from "react";
-import {LargeInversePrimaryButton} from "atoms";
-import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
+import { kebabCase } from "lodash";
+
 import styles from "./front-page-lady.scss";
+import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
+import { LargeInversePrimaryButton } from "atoms";
+import { eventCategories } from "../../../../services/constants";
 
 class FrontPageLady extends React.Component {
   render() {
+    const buttonText = "LET'S GO";
     return (
       <div className={styles.container}>
         <div className={styles.imageContainer}>
@@ -17,7 +21,14 @@ class FrontPageLady extends React.Component {
               Start and grow your business.</div>
             <div className={styles.text}>
               Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
-            <LargeInversePrimaryButton text="LET'S GO" url="/business-guide" />
+            <LargeInversePrimaryButton
+              eventConfig={{
+                category: kebabCase(`${eventCategories.frontPage} Featured-Hero`),
+                action: `Click: ${buttonText}`
+              }}
+              text={buttonText}
+              url="/business-guide"
+            />
             <img alt="" src={Triangle} className={styles.triangle}/>
           </div>
         </div>
