@@ -1,13 +1,16 @@
 import React from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { kebabCase } from 'lodash';
+
+import styles from "./happening-now.scss";
+import * as ContentActions from "../../../../actions/content";
 import {
   BasicLink,
   Carousel,
   SmallPrimaryButton
 } from "atoms";
-import * as ContentActions from "../../../../actions/content.js";
-import styles from "./happening-now.scss";
+import { eventCategories } from "../../../../services/constants";
 
 const contentProperty = "happeningNow";
 
@@ -23,9 +26,15 @@ class HappeningNow extends React.Component {
 
   makeDesktopImage(item, index, desktopStyle) {
     return (
-      <div key={index} className={desktopStyle}>
+      <div
+        className={desktopStyle}
+        key={index}
+      >
           <BasicLink url={item.url}>
-              <img src={item.image} alt={item.imageAlt}></img>
+            <img
+              alt={item.imageAlt}
+              src={item.image}
+            ></img>
           </BasicLink>
       </div>
     );
@@ -33,16 +42,36 @@ class HappeningNow extends React.Component {
 
   makeDeskopTitle(item, index, desktopStyle) {
     return (
-      <div key={index} className={desktopStyle}>
-        <p className={styles.itemTitleDesktop} key={index}>
+      <div
+        className={desktopStyle}
+        key={index}
+      >
+        <p
+          className={styles.itemTitleDesktop}
+          key={index}
+        >
           {item.title}
         </p>
       </div>
     );
   }
   makeDesktopButton(item, index, desktopStyle) {
+    const buttonText = "Learn more".toUpperCase();
     return (
-      <div key={index} className={desktopStyle}><SmallPrimaryButton key={index} extraClassName={styles.buttonDesktop} url={item.url} text="LEARN MORE"/></div>
+      <div
+        key={index}
+        className={desktopStyle}>
+        <SmallPrimaryButton
+          eventConfig={{
+            category: kebabCase(`${eventCategories.frontPage} Happening-Now`),
+            action: `Click: ${buttonText} ${index}`
+          }}
+          extraClassName={styles.buttonDesktop}
+          key={index}
+          text={buttonText}
+          url={item.url}
+        />
+      </div>
     );
   }
 

@@ -295,7 +295,13 @@ const constants = {
         ]
       }
     ]
+  },
+  eventCategories: {
+    frontPage: "Front-Page"
   }
 };
 
 export default constants;
+
+const {address, eventCategories, footer, messages, name, routes, sectionTitles, sections} = constants;
+export { address, eventCategories, footer, messages, name, routes, sectionTitles, sections };
