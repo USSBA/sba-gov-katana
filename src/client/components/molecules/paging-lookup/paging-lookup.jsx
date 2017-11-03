@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import _ from "lodash";
+import { browserHistory } from "react-router";
 
 import styles from "./paging-lookup.scss";
 
@@ -20,7 +21,7 @@ const fieldNameMap = {
   program: "Program",
   documentActivity: "Activity",
   sortBy: "sortBy"
-}
+};
 
 class PagingLookup extends React.Component {
 
@@ -34,23 +35,25 @@ class PagingLookup extends React.Component {
   }
 
   createQueryFromProps(ownProps) {
-    let propsSource = ownProps;
-    let defaults = _.chain(propsSource.taxonomyFilters).keyBy().mapValues(_ => "All").value();
+    const propsSource = ownProps;
+    const defaults = _.chain(propsSource.taxonomyFilters).keyBy().mapValues((_) => {
+      return "All";
+    }).value();
 
-    let queryParams = getQueryParams();
+    const queryParams = getQueryParams();
     // look for aliases in the query params, but filter out any that are undefined
-    let aliasMapping = _.pickBy({
-      searchTerm: queryParams.search || queryParams.q,
+    const aliasMapping = _.pickBy({
+      searchTerm: queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity
-    })
+    });
 
-    let filteredQueryParams = _.pickBy(queryParams, (value, key) => {
-      return _.includes(propsSource.taxonomyFilters, key)
-    })
+    const filteredQueryParams = _.pickBy(queryParams, (value, key) => {
+      return _.includes(propsSource.taxonomyFilters, key);
+    });
 
     const finalQuery = _.assign({
-      sortBy: ownProps.defaultSortBy,
+      sortBy: queryParams.sortBy || ownProps.defaultSortBy,
       searchTerm: ""
     }, defaults, filteredQueryParams, aliasMapping);
     return finalQuery;
@@ -76,8 +79,8 @@ class PagingLookup extends React.Component {
       }
 
       const rearrangedTaxonomyOrder = _.map(this.props.taxonomyFilters, (taxonomyVocabularyName) => {
-        return _.find(taxonomies, {name: taxonomyVocabularyName})
-      })
+        return _.find(taxonomies, {name: taxonomyVocabularyName});
+      });
 
       // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
       rearrangedTaxonomyOrder.push({
@@ -98,7 +101,7 @@ class PagingLookup extends React.Component {
 
   handleReset() {
     this.fireDocumentationLookupEvent("clearFilters");
-    this.setState(_.assign(this.createOriginalState(this.props),{taxonomies: this.state.taxonomies}), ()=>{
+    this.setState(_.assign(this.createOriginalState(this.props),{taxonomies: this.state.taxonomies}), () => {
         this.submit();
     });
   }
@@ -128,7 +131,7 @@ class PagingLookup extends React.Component {
         return value === "All"
           ? "all"
           : value;
-      })
+      });
       const queryTerms = _.assign({}, remappedState, {start, end});
 
       this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryTerms);
@@ -136,7 +139,7 @@ class PagingLookup extends React.Component {
   }
 
   fireEvent(category, action, value) {
-    logEvent({category: category, action: action, label: window.location.pathname, value: value})
+    logEvent({category: category, action: action, label: window.location.pathname, value: value});
   }
 
   fireDocumentationLookupEvent(action, value = null){
@@ -148,21 +151,24 @@ class PagingLookup extends React.Component {
       // Log Analytic Event, but not for search term
       this.fireDocumentationLookupEvent(`${fieldNameMap[field] || field}: ${value}`);
     }
-    let newQueryFieldValue = {};
+    const newQueryFieldValue = {};
     newQueryFieldValue[field] = value;
-    let currentQuery = this.state.query;
-    let newQuery = _.assign({}, currentQuery, newQueryFieldValue);
+    const currentQuery = this.state.query;
+    const newQuery = _.assign({}, currentQuery, newQueryFieldValue);
     this.setState({query: newQuery});
   }
 
   handlePageChange(newPageNumber) {
     this.setState({
       pageNumber: newPageNumber
-    }, _ => this.submit());
+    }, (_) => {
+return this.submit()
+;
+});
   }
 
   render() {
-    let lookupProps = {
+    const lookupProps = {
       title: this.props.title,
       queryState: this.state.query,
       items: this.props.itemReponse.items,
@@ -177,8 +183,8 @@ class PagingLookup extends React.Component {
       isFetching: this.state.isFetching,
       fieldsToShowInDetails: this.props.fieldsToShowInDetails,
       type: this.props.type
-    }
-    return (<DocumentArticleLookup {...lookupProps}/>)
+    };
+    return (<DocumentArticleLookup {...lookupProps}/>);
 
   }
 }
@@ -189,7 +195,7 @@ PagingLookup.propTypes = {
   taxonomyFilters: React.PropTypes.array,
   fieldsToShowInDetails: React.PropTypes.array,
   sortByOptions: React.PropTypes.array
-}
+};
 
 PagingLookup.defaultProps = {
   title: "",
@@ -201,7 +207,7 @@ PagingLookup.defaultProps = {
     items: undefined,
     count: 0
   }
-}
+};
 
 function mapReduxStateToProps(reduxState, ownProps) {
   const {taxonomies} = reduxState.contentReducer;
@@ -214,7 +220,7 @@ function mapReduxStateToProps(reduxState, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ContentActions, dispatch)
-  }
+  };
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(PagingLookup);
 
