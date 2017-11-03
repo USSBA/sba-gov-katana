@@ -10,38 +10,21 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
   <div
     className="employeesInput"
   >
-    <div
-      className="inputContainer"
-      hidden={undefined}
-      id="employees-container"
+    <label
+      htmlFor="employees"
     >
-      <label
-        className="controlLabel"
-        htmlFor="employees"
-      >
-        Number of employees
-      </label>
-      <div
-        className="textInputContainer"
-      >
-        <input
-          className="textInputInvalid"
-          id="employees"
-          min="0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          type="tel"
-          value=""
-        />
-      </div>
-      <p
-        className="errorText"
-        id="employees-error"
-      >
-        Please enter a correct number.
-      </p>
-    </div>
+      Number of employees
+    </label>
+    <input
+      id="employees"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseUp={[Function]}
+      type="text"
+      value=""
+    />
   </div>
   <p>
     This should be the average number of full-time or part-time 
@@ -147,23 +130,14 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
     Are you a small business?
   </h2>
   <div>
-    <ul
-      className="naicsCodesList"
-    />
-  </div>
-  <p>
-    You may be eligible to participate in 
-    <a
-      href="/contracting"
-      tabIndex="0"
-      target="_blank"
+    <div
+      className="loading"
     >
-      <strong>
-        SBA contracting programs
-      </strong>
-    </a>
-    .
-  </p>
+      <p>
+        ...now analyzing your business...
+      </p>
+    </div>
+  </div>
   <div
     className="cards"
   >
@@ -192,9 +166,21 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             className="fa fa-map-marker"
           />
           <p>
-            409 3rd Street, SW
+            409 3rd Street
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             SW 
             <br />
-            Washington, DC 2041
+            Washington
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             DC 2041
           </p>
         </li>
         <li>
@@ -246,9 +232,21 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             className="fa fa-map-marker"
           />
           <p>
-            409 3rd Street, SW
+            409 3rd Street
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             SW 
             <br />
-            Washington, DC 2041
+            Washington
+            <span
+              className="comma"
+            >
+              ,
+            </span>
+             DC 2041
           </p>
         </li>
         <li>
@@ -289,38 +287,22 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
   <div
     className="revenueInput"
   >
-    <div
-      className="inputContainer"
-      hidden={undefined}
-      id="revenue-container"
+    <label
+      htmlFor="revenue"
     >
-      <label
-        className="controlLabel"
-        htmlFor="revenue"
-      >
-        Annual Revenue
-      </label>
-      <div
-        className="textInputContainer"
-      >
-        <input
-          className="textInputInvalid"
-          id="revenue"
-          min="0"
-          onBlur={[Function]}
-          onChange={[Function]}
-          onFocus={[Function]}
-          type="tel"
-          value=""
-        />
-      </div>
-      <p
-        className="errorText"
-        id="revenue-error"
-      >
-        Please enter a correct number.
-      </p>
-    </div>
+      Annual Revenue
+    </label>
+    <input
+      id="revenue"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseUp={[Function]}
+      placeholder="$"
+      type="text"
+      value=""
+    />
   </div>
   <p>
     This caption will help a small business understand 

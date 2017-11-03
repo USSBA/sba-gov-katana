@@ -34,7 +34,7 @@ describe("SizeStandardsTool", () => {
 	describe("NaicsScreen", () => {
 
 		const testProps = {
-			naicsCodesList: [{
+			selectedNaicsCodes: [{
 				"id": "111130",
 				"description": "Dry Pea and Bean Farming",
 				"sectorId": "11",
@@ -94,7 +94,42 @@ describe("SizeStandardsTool", () => {
 	describe("ResultsScreen", () => {
 
 		const testProps = {
-			naicsCodesList: [{
+			naicsCodes: [{
+				"id": "111130",
+					"description": "Dry Pea and Bean Farming",
+					"sectorId": "11",
+					"sectorDescription": "Agriculture, Forestry, Fishing and Hunting",
+					"subsectorId": "111",
+					"subsectorDescription": "Crop Production",
+					"revenueLimit": null,
+					"employeeCountLimit": 100,
+					"footnote": null,
+					"parent": null
+				},{
+					"id": "541715",
+					"description": "Research and Development in the Physical, Engineering, and Life Sciences (except Nanotechnology and Biotechnology) ",
+					"sectorId": "54",
+					"sectorDescription": "Professional, Scientific and Technical Services",
+					"subsectorId": "541",
+					"subsectorDescription": "Professional, Scientific and Technical Services",
+					"revenueLimit": null,
+					"employeeCountLimit": 1000,
+					"footnote": [],
+					"parent": null,
+					"assetLimit": null
+					},{
+					"id": "541715_a_Except",
+					"description": "Aircraft, Aircraft Engine and Engine Parts11",
+					"sectorId": "54",
+					"sectorDescription": "Professional, Scientific and Technical Services",
+					"subsectorId": "541",
+					"subsectorDescription": "Professional, Scientific and Technical Services",
+					"revenueLimit": null,
+					"employeeCountLimit": 1500,
+					"footnote": "NAICS Codes 541713, 541714 and 541715",
+					"parent": "111110"
+				}],
+			selectedNaicsCodes: [{
 				"id": "111130",
 				"description": "Dry Pea and Bean Farming",
 				"sectorId": "11",
@@ -105,7 +140,8 @@ describe("SizeStandardsTool", () => {
 				"employeeCountLimit": 100,
 				"footnote": null,
 				"parent": null,
-				"isSmallBusiness": true
+				"isSmallBusiness": true,
+				"code": "111130"
 			}]
 		};
 
