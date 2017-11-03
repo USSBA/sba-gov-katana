@@ -43,6 +43,7 @@ import TitleBox from "./title-box/title-box.jsx";
 import TitleSection from "./title-section/title-section.jsx";
 import TextSection from "./text-section/text-section.jsx";
 import PagingLookup from "./paging-lookup/paging-lookup.jsx";
+import RemoveMainLoader from "./main-loader/remove-main-loader.jsx";
 
 export {
   Breadcrumb,
@@ -89,5 +90,6 @@ export {
   TitleBox,
   TitleSection,
   TextSection,
-  PagingLookup
+  PagingLookup,
+  RemoveMainLoader
 };
