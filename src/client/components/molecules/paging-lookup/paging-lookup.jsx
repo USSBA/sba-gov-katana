@@ -43,7 +43,7 @@ class PagingLookup extends React.Component {
     const queryParams = getQueryParams();
     // look for aliases in the query params, but filter out any that are undefined
     const aliasMapping = _.pickBy({
-      searchTerm: queryParams.q,
+      searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity
     });
@@ -118,6 +118,29 @@ class PagingLookup extends React.Component {
     }, () => {
       this.submit();
     });
+    this.setUrlParams(this.state.query);
+  }
+
+  setUrlParams(query) {
+    const type = this.props.type;
+
+    if (query) {
+      let searchParams = "";
+
+      for (const key in query) {
+        if (key === "searchTerm") {
+          searchParams += `search=${query[key]}&`;
+        } else {
+        searchParams += `${key}=${query[key]}&`;
+        }
+      }
+
+      browserHistory.push({
+        pathname: `/${type.slice(0,-1)}`,
+        search: `?${searchParams.slice(0, -1)}`
+      });
+      searchParams = "";
+    }
   }
 
   submit() {
