@@ -12,7 +12,9 @@ import DropdownMenu from "./dropdown-menu/dropdown-menu.jsx";
 import FeaturedCallout from "./featured-callout/featured-callout.jsx";
 import FeedbackForm from "./feedback-form/feedback-form.jsx";
 import FormPageButtons from "./form-page-buttons/form-page-buttons.jsx";
+import FrontPageLady from "../organisms/homepage/front-page-lady/front-page-lady.jsx";
 import GoogleTranslate from "./google-translate/google-translate.jsx";
+import HappeningNow from "../organisms/homepage/happening-now/happening-now.jsx";
 import ImageSection from "./image-section/image-section.jsx";
 import Lookup from "./lookup/lookup.jsx";
 import MenuTile from "./menu-tile/menu-tile.jsx";
@@ -59,7 +61,9 @@ export {
   FeaturedCallout,
   FeedbackForm,
   FormPageButtons,
+  FrontPageLady,
   GoogleTranslate,
+  HappeningNow,
   ImageSection,
   Lookup,
   MenuTile,

@@ -1,5 +1,4 @@
 import React from "react";
-import { kebabCase } from "lodash";
 
 import styles from "./front-page-hero.scss";
 import diagonalLines from "../../../../../public/assets/images/homepage/diagonal-lines.png";
@@ -26,7 +25,7 @@ class FrontPageHero extends React.Component {
               {links.map(({ link, title }, index) => (
                 <BasicLink
                   eventConfig={{
-                    category: kebabCase(`${eventCategories.frontPage} Non-Featured-Hero`),
+                    category: [eventCategories.frontPage, 'Non-Featured-Hero'].join('-'),
                     action: `Click: ${title}`
                   }}
                   key={index}
