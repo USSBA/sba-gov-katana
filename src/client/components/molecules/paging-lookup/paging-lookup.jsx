@@ -118,29 +118,34 @@ class PagingLookup extends React.Component {
     }, () => {
       this.submit();
     });
-    this.setUrlParams(this.state.query);
+    this.convertAndSetQueryObjectToString(this.state.query);
   }
 
-  setUrlParams(query) {
+  convertAndSetQueryObjectToString(queryObject) {
+    const queryString = this.convertQueryObjectToString(queryObject);
+    this.setQueryStringToUrl(queryString);
+  }
+
+  convertQueryObjectToString(query) {
+    let queryString = "";
+
+    for (const key in query) {
+      if (key === "searchTerm") {
+        queryString += `search=${query[key]}&`;
+      } else {
+        queryString += `${key}=${query[key]}&`;
+      }
+    }
+    return queryString;
+  }
+
+  setQueryStringToUrl(queryString) {
     const type = this.props.type;
 
-    if (query) {
-      let searchParams = "";
-
-      for (const key in query) {
-        if (key === "searchTerm") {
-          searchParams += `search=${query[key]}&`;
-        } else {
-        searchParams += `${key}=${query[key]}&`;
-        }
-      }
-
-      browserHistory.push({
-        pathname: `/${type.slice(0,-1)}`,
-        search: `?${searchParams.slice(0, -1)}`
-      });
-      searchParams = "";
-    }
+    browserHistory.push({
+      pathname: `/${type.slice(0,-1)}`,
+      search: `?${queryString.slice(0, -1)}`
+    });
   }
 
   submit() {
