@@ -239,6 +239,7 @@ class SizeStandardsTool extends PureComponent {
 			<div className={styles.appBar}>
 
 				<SmallInversePrimaryButton
+					className={"back-button"}
 					text={buttonText}
 					onClick={() => {
 
@@ -357,7 +358,7 @@ const StartScreen = (props) => {
 	
 	return (
 
-		<div>
+		<div id="start-screen">
 					
 			<h2>Size Standards Tool</h2>
 
@@ -366,7 +367,7 @@ const StartScreen = (props) => {
 			<p>Do you qualify as a small business?</p>
 
 			<LargePrimaryButton
-				className={styles.button}
+				className={styles.button + " submit-button"}
 				text="Start"
 				onClick={() => {
 					props.gotoSection("NAICS");
@@ -511,7 +512,7 @@ class NaicsScreen extends PureComponent {
 
 					<div className={styles.naicsSection}>
 
-						<div className={styles.left}>
+						<div className={styles.left + " left"}>
 
 							<p><span>{code} </span></p>
 							<p>
@@ -520,10 +521,10 @@ class NaicsScreen extends PureComponent {
 
 						</div>
 
-						<div className={styles.right}>
+						<div className={styles.right + " right"}>
 
 							<a
-								className={styles.remove}
+								className={styles.remove + " remove"}
 								onClick={() => {
 									
 									this.props.removeNaicsCode(code);
@@ -556,7 +557,7 @@ class NaicsScreen extends PureComponent {
 
 		return (
 
-			<ul className={styles.naicsCodesList}>
+			<ul className={styles.naicsCodesList + " naics-codes-list"}>
 				{listItems}
 			</ul>
 
@@ -578,7 +579,7 @@ class NaicsScreen extends PureComponent {
 		
 		return (
 
-			<div className={styles.screen}>
+			<div id="naics-screen" className={styles.screen}>
 			
 				<h2>What's your industry?</h2>
 
@@ -639,7 +640,7 @@ class NaicsScreen extends PureComponent {
 				{selectedNaicsCodes.length > 0 && <div>
 					
 					<LargePrimaryButton
-						className={styles.button}
+						className={styles.button + " submit-button"}
 						text="Next"
 						onClick={() => {
 
@@ -682,7 +683,7 @@ const RevenueScreen = (props) => {
 
 	return (
 
-		<div className={styles.screen}>
+		<div id="revenue-screen" className={styles.screen}>
 
 			<h2>How much revenue?</h2>
 
@@ -716,7 +717,7 @@ const RevenueScreen = (props) => {
 			<p>This caption will help a small business understand <br />what information we're looking for.</p>
 
 			<LargePrimaryButton
-				className={styles.button}
+				className={styles.button + " submit-button"}
 				text={shouldShowEmployeesSection ? "NEXT" : "SEE RESULTS"}
 				disabled={!(revenueTotal > 0)}
 				onClick={() => {
@@ -747,7 +748,7 @@ const EmployeesScreen = (props) => {
 
 	return (
 
-		<div className={styles.screen}>
+		<div id="employees-screen" className={styles.screen}>
 
 			<h2>How many employees?</h2>
 
@@ -779,7 +780,7 @@ const EmployeesScreen = (props) => {
 			<p>This should be the average number of full-time or part-time <br />employees over the last 12 months.</p>
 
 			<LargePrimaryButton
-				className={styles.button}
+				className={styles.button + " submit-button"}
 				text="SEE RESULTS"
 				disabled={!(employeeTotal > 0)}
 				onClick={() => {
@@ -919,9 +920,9 @@ class ResultsScreen extends PureComponent {
 
 					<li key={index}>
 					
-						<div className={styles.results}>
+						<div>
 
-							<div className={styles.left}>
+							<div className={styles.left + " left"}>
 								
 								<p><span>Exception #{index} </span></p>
 								<div>
@@ -930,7 +931,7 @@ class ResultsScreen extends PureComponent {
 
 							</div>
 							
-							<div className={styles.middle}>
+							<div className={styles.middle + " middle"}>
 							
 								<p><span>Small Business Size Standards </span></p>
 
@@ -946,17 +947,17 @@ class ResultsScreen extends PureComponent {
 
 							</div>
 
-							<div className={styles.right}>
+							<div className={styles.right + " right"}>
 
 								{object.isSmallBusiness ? (<div>
 									
-									<div className={styles.yes}>
+									<div className={styles.yes + " yes"}>
 										<p><i className="fa fa-check-circle" aria-hidden="true" />YES</p>
 									</div>
 
 								</div>) : (<div>
 									
-									<div className={styles.no}>
+									<div className={styles.no + " no"}>
 										<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
 									</div>
 
@@ -976,7 +977,7 @@ class ResultsScreen extends PureComponent {
 
 		});
 
-		return <ul className={styles.exceptionsList}>{exceptions}</ul>;
+		return <ul className={styles.exceptionsList + " exceptions-list"}>{exceptions}</ul>;
 	}
 
 	formatRevenueLimit(revenueLimit) {
@@ -1007,7 +1008,7 @@ class ResultsScreen extends PureComponent {
 		
 							<div className={styles.resultsSection}>
 
-								<div className={styles.left}>
+								<div className={styles.left + " left"}>
 									
 									<p><span>{code} </span></p>
 									<div>
@@ -1016,7 +1017,7 @@ class ResultsScreen extends PureComponent {
 
 								</div>
 								
-								<div className={styles.middle}>
+								<div className={styles.middle + " middle"}>
 								
 									<p><span>Small Business Size Standards </span></p>
 
@@ -1032,17 +1033,17 @@ class ResultsScreen extends PureComponent {
 
 								</div>
 
-								<div className={styles.right}>
+								<div className={styles.right + " right"}>
 
 									{object.isSmallBusiness ? (<div>
 										
-										<div className={styles.yes}>
+										<div className={styles.yes + " yes"}>
 											<p><i className="fa fa-check-circle" aria-hidden="true" />YES</p>
 										</div>
 
 									</div>) : (<div>
 										
-										<div className={styles.no}>
+										<div className={styles.no + " no"}>
 											<p><i className="fa fa-times-circle" aria-hidden="true" />NO</p>
 										</div>
 
@@ -1067,7 +1068,7 @@ class ResultsScreen extends PureComponent {
 
 		return (
 
-			<ul className={styles.naicsCodesList}>
+			<ul className={styles.naicsCodesList + " naics-codes-list"}>
 				{listItems}
 			</ul>
 
@@ -1085,7 +1086,7 @@ class ResultsScreen extends PureComponent {
 
 		return (
 
-			<div className={styles.screen}>
+			<div id="results-screen" className={styles.screen}>
 
 				<h2>Are you a small business?</h2>
 
