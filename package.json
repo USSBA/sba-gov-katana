@@ -4,32 +4,35 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development babel-node src/app.js --presets es2015 || true",
+    "start":
+      "NODE_ENV=development babel-node src/app.js --presets es2015 || true",
     "nodemonstart": "nodemon src/app.js --exec babel-node  --presets es2015",
     "prestart": "npm run clean && npm run lint && npm run format",
     "build": "scripts/build.sh",
-    "test": "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
+    "test":
+      "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
     "test-jest": "NODE_ENV=test jest test/jest/",
-    "test-mocha": "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
+    "test-mocha":
+      "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
     "lint": "eslint src --fix",
     "lint-check": "eslint src",
     "format": "esformatter -i 'src/**/*.js' && esformatter -i 'test/**/*.js'",
-    "format-check": "esformatter --diff 'src/**/*.js' && esformatter --diff 'test/**/*.js'",
+    "format-check":
+      "esformatter --diff 'src/**/*.js' && esformatter --diff 'test/**/*.js'",
     "clean": "rm -rf dist && rm -rf public/build",
-    "precommit": "npm run lint && npm run format && npm run test",
+    "precommit":
+      "npm run lint && npm run format && npm run test && lint-staged",
     "precheck": "npm run lint-check && npm run format-check && npm run test",
     "clear-cache": "curl localhost:3000/actions/clearcache"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,scss}": ["prettier --write", "git add"]
   },
   "repository": {
     "url": "git+https://github.com/sba-ds/sba-gov.git",
     "type": "git"
   },
-  "keywords": [
-    "sba",
-    "ds",
-    "node",
-    "react"
-  ],
+  "keywords": ["sba", "ds", "node", "react"],
   "author": "SBA Digital Services",
   "license": "ISC",
   "bugs": {
@@ -118,15 +121,18 @@
     "esformatter-jsx": "8.0.0",
     "eslint": "3.10.1",
     "eslint-plugin-react": "7.0.1",
+    "husky": "^0.14.3",
     "identity-obj-proxy": "3.0.0",
     "ignore-styles": "5.0.1",
     "jest": "20.0.3",
     "jest-enzyme": "3.0.0",
     "jsdom": "11.0.0",
+    "lint-staged": "^4.3.0",
     "mocha": "3.2.0",
     "node-sass": "^4.5.3",
     "nodemon": "1.11.0",
     "postcss-loader": "2.0.5",
+    "prettier": "^1.7.4",
     "pretty-data": "^0.40.0",
     "react-addons-test-utils": "15.4.1",
     "react-hot-loader": "3.0.0-beta.6",
@@ -144,18 +150,13 @@
     "webpack-merge": "4.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      ".c9"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", ".c9"],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/jest/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/test/jest/__mocks__/fileMock.js",
       "\\.(css|scss|less)$": "identity-obj-proxy"
     },
-    "modulePaths": [
-      "<rootDir>/src/",
-      "<rootDir>/src/client/components/"
-    ],
+    "modulePaths": ["<rootDir>/src/", "<rootDir>/src/client/components/"],
     "globals": {
       "CONFIG": {
         "isUserLoggedIn": false,
