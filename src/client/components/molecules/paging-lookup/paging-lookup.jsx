@@ -111,14 +111,16 @@ class PagingLookup extends React.Component {
   }
 
   handleSubmit() {
-    this.fireDocumentationLookupEvent(`Apply CTA: Term: ${this.state.query.searchTerm}`);
+    const queryObject = this.state.query;
+
+    this.fireDocumentationLookupEvent(`Apply CTA: Term: ${queryObject.searchTerm}`);
     this.setState({
       items: undefined,
       pageNumber: 1
     }, () => {
       this.submit();
     });
-    this.convertAndSetQueryObjectToString(this.state.query);
+    this.convertAndSetQueryObjectToString(queryObject);
   }
 
   convertAndSetQueryObjectToString(queryObject) {
