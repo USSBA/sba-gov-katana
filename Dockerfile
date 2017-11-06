@@ -1,4 +1,4 @@
-FROM node:8.3.0
+FROM node:8.6.0
 
 ENV PACKAGES netcat
 RUN apt-get update && apt-get install -qq -y $PACKAGES --fix-missing --no-install-recommends
