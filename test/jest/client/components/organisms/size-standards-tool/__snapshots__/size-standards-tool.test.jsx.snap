@@ -3,6 +3,7 @@
 exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
 <div
   className="screen"
+  id="employees-screen"
 >
   <h2>
     How many employees?
@@ -33,7 +34,7 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
   </p>
   <button
     autoFocus={false}
-    className="LargePrimaryButton  button"
+    className="LargePrimaryButton  button submit-button"
     disabled={true}
     formTarget="_self"
     id={undefined}
@@ -49,20 +50,21 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
 exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
 <div
   className="screen"
+  id="naics-screen"
 >
   <h2>
     What's your industry?
   </h2>
   <div>
     <ul
-      className="naicsCodesList"
+      className="naicsCodesList naics-codes-list"
     >
       <li>
         <div
           className="naicsSection"
         >
           <div
-            className="left"
+            className="left left"
           >
             <p>
               <span>
@@ -74,10 +76,10 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
             </p>
           </div>
           <div
-            className="right"
+            className="right right"
           >
             <a
-              className="remove"
+              className="remove remove"
               onClick={[Function]}
               onKeyPress={[Function]}
               tabIndex="0"
@@ -108,7 +110,7 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
   <div>
     <button
       autoFocus={false}
-      className="LargePrimaryButton  button"
+      className="LargePrimaryButton  button submit-button"
       disabled={undefined}
       formTarget="_self"
       id={undefined}
@@ -125,6 +127,7 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
 exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
 <div
   className="screen"
+  id="results-screen"
 >
   <h2>
     Are you a small business?
@@ -280,6 +283,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
 exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
 <div
   className="screen"
+  id="revenue-screen"
 >
   <h2>
     How much revenue?
@@ -311,7 +315,7 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
   </p>
   <button
     autoFocus={false}
-    className="LargePrimaryButton  button"
+    className="LargePrimaryButton  button submit-button"
     disabled={true}
     formTarget="_self"
     id={undefined}
@@ -325,7 +329,9 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
 `;
 
 exports[`SizeStandardsTool StartScreen should match snapshot 1`] = `
-<div>
+<div
+  id="start-screen"
+>
   <h2>
     Size Standards Tool
   </h2>
@@ -337,7 +343,7 @@ exports[`SizeStandardsTool StartScreen should match snapshot 1`] = `
   </p>
   <button
     autoFocus={false}
-    className="LargePrimaryButton  button"
+    className="LargePrimaryButton  button submit-button"
     disabled={undefined}
     formTarget="_self"
     id={undefined}
@@ -359,7 +365,9 @@ exports[`SizeStandardsTool should match snapshot 1`] = `
   <div
     className="startSection"
   >
-    <div>
+    <div
+      id="start-screen"
+    >
       <h2>
         Size Standards Tool
       </h2>
@@ -371,7 +379,7 @@ exports[`SizeStandardsTool should match snapshot 1`] = `
       </p>
       <button
         autoFocus={false}
-        className="LargePrimaryButton  button"
+        className="LargePrimaryButton  button submit-button"
         disabled={undefined}
         formTarget="_self"
         id={undefined}
