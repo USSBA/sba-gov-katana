@@ -1,5 +1,4 @@
 import React from "react";
-import { kebabCase } from "lodash";
 
 import styles from "./front-page-lady.scss";
 import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
@@ -23,7 +22,7 @@ class FrontPageLady extends React.Component {
               Whether you're already up and running or just getting started, we can help. Come take a look how.</div>
             <LargeInversePrimaryButton
               eventConfig={{
-                category: kebabCase(`${eventCategories.frontPage} Featured-Hero`),
+                category: [eventCategories.frontPage, 'Lady'].join('-'),
                 action: `Click: ${buttonText}`
               }}
               text={buttonText}

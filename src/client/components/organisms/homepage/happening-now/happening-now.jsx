@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { kebabCase } from 'lodash';
 
 import styles from "./happening-now.scss";
 import * as ContentActions from "../../../../actions/content";
@@ -63,7 +62,7 @@ class HappeningNow extends React.Component {
         className={desktopStyle}>
         <SmallPrimaryButton
           eventConfig={{
-            category: kebabCase(`${eventCategories.frontPage} Happening-Now`),
+            category: [eventCategories.frontPage, 'Happening-Now'].join('-'),
             action: `Click: ${buttonText} ${index}`
           }}
           extraClassName={styles.buttonDesktop}
@@ -130,4 +129,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   };
 }
+export { HappeningNow };
 export default connect(mapReduxStateToProps, mapDispatchToProps)(HappeningNow);

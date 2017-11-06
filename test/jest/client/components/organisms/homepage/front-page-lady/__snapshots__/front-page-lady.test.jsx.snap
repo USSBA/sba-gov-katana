@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`front page lady renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="imageContainer"
+  >
+    <img
+      alt="banner image of small business owner"
+      className="hero"
+      src="assets/images/homepage/primarylanding-hero.jpg"
+    />
+    <img
+      alt="banner image of small business owner"
+      className="mobileHero"
+      src="assets/images/homepage/primarylanding-mobile-hero.png"
+    />
+  </div>
+  <div
+    className="boxContainer"
+  >
+    <div
+      className="box"
+    >
+      <div
+        className="title"
+      >
+        Start and grow your business.
+      </div>
+      <div
+        className="text"
+      >
+        Whether you're already up and running or just getting started, we can help. Come take a look how.
+      </div>
+      <button
+        autoFocus={false}
+        className="LargeInversePrimaryButton  "
+        disabled={undefined}
+        formTarget="_self"
+        id={undefined}
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        LET'S GO
+      </button>
+      <img
+        alt=""
+        className="triangle"
+        src="test-file-stub"
+      />
+    </div>
+  </div>
+</div>
+`;
