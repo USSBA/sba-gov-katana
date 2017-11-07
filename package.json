@@ -10,7 +10,7 @@
     "prestart": "npm run clean && npm run lint && npm run format",
     "build": "scripts/build.sh",
     "clean": "rm -rf dist && rm -rf public/build",
-    "format": "prettier --write '{src,test}/**/*.js'",
+    "format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "lint": "eslint src --fix",
     "lint-check": "eslint src",
     "test":
@@ -21,9 +21,6 @@
     "precommit": "npm run lint && npm run test && lint-staged",
     "precheck": "npm run lint-check && npm run test",
     "clear-cache": "curl localhost:3000/actions/clearcache"
-  },
-  "lint-staged": {
-    "*.{js,jsx,json,scss}": ["prettier --write", "git add"]
   },
   "repository": {
     "url": "git+https://github.com/sba-ds/sba-gov.git",
