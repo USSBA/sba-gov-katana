@@ -524,6 +524,7 @@ class NaicsScreen extends PureComponent {
 						<div className={styles.right + " right"}>
 
 							<a
+								aria-label={"Remove NAICS code " + code + "."}
 								className={styles.remove + " remove"}
 								onClick={() => {
 									
