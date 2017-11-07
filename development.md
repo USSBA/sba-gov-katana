@@ -1,13 +1,15 @@
-# Development guide
+# Katana development guide
+Katana serves as the presentation layer for sba.gov. It is a React-Redux/Node application.
 
 ## Environment Setup
-
-This is for the development/build setup guide
-
 1. Install NVM (https://github.com/creationix/nvm)
-1. Download and use Node Version 7.0 `nvm install 7.0 && nvm use`
-1. Install ESLint: `npm install -g eslint`
-1. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
+      * NVM is our node version manager of choice. Please follow the steps detailed on their repo.
+2. Download and use the Node version specified in the [Dockerfile](https://github.com/USSBA/sba-gov-katana/blob/master/Dockerfile#L1)
+```sh
+nvm install 8.6.0 && nvm use
+```
+3. Install ESLint: `npm install -g eslint`
+4. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
 
 ## Development Process
 1. `npm install`
