@@ -448,12 +448,15 @@ class NaicsScreen extends PureComponent {
 
 		}
 
-		// filter out exceptions and then format naics objects
+		// filter out the NAICS Codes:
+		// - with assetLimits
+		// - that are exceptions
+		// then format the remaining objects
 		const naics = formatNaics(this.props.naicsCodes.filter((object) => {
 
 			let result;
 
-			if (!_.endsWith(object.code, "_Except")) {
+			if (_.isEmpty(object.assetLimit) && !_.endsWith(object.code, "_Except")) {
 				result = object;
 			}
 
