@@ -138,6 +138,7 @@ class NaicsLookup extends React.PureComponent {
         <input {...inputProps} />
         {suggestions.length > 0
             ? <SmallIcon
+                aria-label="Remove entered text."
                 alt="close icon"
                 extraClassName={styles.closeIcon}
                 fontAwesomeIconClassName="times"
