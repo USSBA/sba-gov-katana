@@ -45,7 +45,8 @@ class PagingLookup extends React.Component {
     const aliasMapping = _.pickBy({
       searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
-      documentActivity: queryParams.activity
+      documentActivity: queryParams.activity,
+      page: queryParams.page || 1
     });
 
     const filteredQueryParams = _.pickBy(queryParams, (value, key) => {
@@ -108,6 +109,8 @@ class PagingLookup extends React.Component {
 
   componentDidMount() {
     this.submit();
+    this.convertAndSetQueryObjectToString(this.state.query);
+    this.handlePageChange(Number(this.state.query.page));
   }
 
   handleSubmit() {
@@ -121,6 +124,7 @@ class PagingLookup extends React.Component {
       this.submit();
     });
     this.convertAndSetQueryObjectToString(queryObject);
+    this.handlePageChange(Number(queryObject.page));
   }
 
   convertAndSetQueryObjectToString(queryObject) {
@@ -128,14 +132,14 @@ class PagingLookup extends React.Component {
     this.setQueryStringToUrl(queryString);
   }
 
-  convertQueryObjectToString(query) {
+  convertQueryObjectToString(queryObject) {
     let queryString = "";
 
-    for (const key in query) {
+    for (const key in queryObject) {
       if (key === "searchTerm") {
-        queryString += `search=${query[key]}&`;
+        queryString += `search=${queryObject[key]}&`;
       } else {
-        queryString += `${key}=${query[key]}&`;
+        queryString += `${key}=${queryObject[key]}&`;
       }
     }
     return queryString;
@@ -188,13 +192,19 @@ class PagingLookup extends React.Component {
     this.setState({query: newQuery});
   }
 
+  updatePageNumberinQueryObject(newPageNumber) {
+    const queryObject = this.state.query;
+    const queryObjectWithUpdatedPageNumber = Object.assign(queryObject, {page: newPageNumber});
+    this.convertAndSetQueryObjectToString(queryObjectWithUpdatedPageNumber);
+  }
+
   handlePageChange(newPageNumber) {
     this.setState({
       pageNumber: newPageNumber
     }, (_) => {
-return this.submit()
-;
-});
+      this.updatePageNumberinQueryObject(newPageNumber);
+      return this.submit();
+    });
   }
 
   render() {
