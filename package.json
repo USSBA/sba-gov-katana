@@ -18,7 +18,7 @@
     "test-jest": "NODE_ENV=test jest test/jest/",
     "test-mocha":
       "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
-    "precommit": "npm run lint && npm run test && lint-staged",
+    "precommit": "npm run lint && npm run test #&& lint-staged",
     "precheck": "npm run lint-check && npm run test",
     "clear-cache": "curl localhost:3000/actions/clearcache"
   },
