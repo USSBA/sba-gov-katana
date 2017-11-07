@@ -362,7 +362,7 @@ const StartScreen = (props) => {
 					
 			<h2>Size Standards Tool</h2>
 
-			<img src={sizeStandardsGraphic} />
+			<img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
 
 			<p>Do you qualify as a small business?</p>
 
