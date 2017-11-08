@@ -123,7 +123,6 @@ class PagingLookup extends React.Component {
     }, () => {
       this.submit();
     });
-    this.convertAndSetQueryObjectToString(queryObject);
     this.handlePageChange(Number(queryObject.page));
   }
 
