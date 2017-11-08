@@ -46,7 +46,7 @@ class PagingLookup extends React.Component {
       searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity,
-      page: queryParams.page || 1
+      page: Number(queryParams.page) || 1
     });
 
     const filteredQueryParams = _.pickBy(queryParams, (value, key) => {
@@ -109,7 +109,6 @@ class PagingLookup extends React.Component {
 
   componentDidMount() {
     this.submit();
-    this.handlePageChange(Number(this.state.query.page));
   }
 
   handleSubmit() {
@@ -156,7 +155,7 @@ class PagingLookup extends React.Component {
     this.setState({
       isFetching: true
     }, () => {
-      const start = ((this.state.pageNumber - 1) * config.pageSize);
+      const start = ((this.state.query.page - 1) * config.pageSize);
       const end = start + config.pageSize;
 
       const remappedState = _.mapValues(this.state.query, (value) => {
@@ -197,12 +196,8 @@ class PagingLookup extends React.Component {
   }
 
   handlePageChange(newPageNumber) {
-    this.setState({
-      pageNumber: newPageNumber
-    }, (_) => {
-      this.updatePageNumberinQueryObject(newPageNumber);
-      return this.submit();
-    });
+    this.updatePageNumberinQueryObject(newPageNumber);
+    return this.submit();
   }
 
   render() {
@@ -211,7 +206,7 @@ class PagingLookup extends React.Component {
       queryState: this.state.query,
       items: this.props.itemReponse.items,
       itemCount: this.props.itemReponse.count,
-      pageNumber: this.state.pageNumber,
+      pageNumber: this.state.query.page,
       pageSize: config.pageSize,
       taxonomies: this.state.taxonomies,
       onSubmit: this.handleSubmit.bind(this),
