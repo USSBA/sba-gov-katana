@@ -14,6 +14,7 @@ RUN mv /tmp/node_modules /usr/src/app/
 COPY src/views /usr/src/app/views
 COPY public /usr/src/app/public
 COPY dist /usr/src/app/
+COPY config/custom-environment-variables.yaml config/default.yaml /usr/src/app/config/
 
 EXPOSE 3000
 
