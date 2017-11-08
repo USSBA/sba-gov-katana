@@ -79,6 +79,7 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
             className="right right"
           >
             <a
+              aria-label="Remove NAICS code undefined."
               className="remove remove"
               onClick={[Function]}
               onKeyPress={[Function]}
@@ -336,6 +337,7 @@ exports[`SizeStandardsTool StartScreen should match snapshot 1`] = `
     Size Standards Tool
   </h2>
   <img
+    alt="Illustration of a business being measured by rulers."
     src="test-file-stub"
   />
   <p>
@@ -372,6 +374,7 @@ exports[`SizeStandardsTool should match snapshot 1`] = `
         Size Standards Tool
       </h2>
       <img
+        alt="Illustration of a business being measured by rulers."
         src="test-file-stub"
       />
       <p>

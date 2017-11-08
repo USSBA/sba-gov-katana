@@ -64,31 +64,61 @@ class SizeStandardsTool extends PureComponent {
 			section
 		};
 
-		// if going to the START Section
+		// switch section
+
+		// case START
 			// carry over already cached naics codes
-		// else if going to RSULTS section
+		// case REVENUE
+			// reset revenueTotal value to null
+		// case EMPLOYEES
+			// reset employeeTotal value to null
+		// case RESULTS section
 			// set focus to application level
 
-		if (section === "START") {
+		switch (section) {
 
-			data = Object.assign({}, this.origState);
-			data.naicsCodes = this.state.naicsCodes.map((object) => {
+			case "START":
 
-				const _object = object;
+				data = Object.assign({}, this.origState);
+				data.naicsCodes = this.state.naicsCodes.map((object) => {
 
-				if (_object.hasOwnProperty("isSmallBusiness")) {
-					delete _object.isSmallBusiness;
-				}
+					const _object = object;
 
-				return _object;
+					// remove any "isSmallBusiness" mutations
+					if (_object.hasOwnProperty("isSmallBusiness")) {
+						delete _object.isSmallBusiness;
+					}
 
-			});
+					return _object;
+
+				});
 
 
-		} else if (section === "RESULTS") {
-				
-			this.setFocusTo("size-standards-tool");
-			
+				break;
+
+			case "REVENUE":
+
+				data.revenueTotal = null;
+
+				break;
+
+			case "EMPLOYEES":
+
+				data.employeeTotal = null;
+
+				break;
+
+			case "RESULTS":
+
+
+				this.setFocusTo("size-standards-tool");
+
+
+				break;
+
+			default:
+				break;
+
 		}
 
 		this.setState(data, () => {
@@ -362,7 +392,7 @@ const StartScreen = (props) => {
 					
 			<h2>Size Standards Tool</h2>
 
-			<img src={sizeStandardsGraphic} />
+			<img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
 
 			<p>Do you qualify as a small business?</p>
 
@@ -448,12 +478,15 @@ class NaicsScreen extends PureComponent {
 
 		}
 
-		// filter out exceptions and then format naics objects
+		// filter out the NAICS Codes:
+		// - with assetLimits
+		// - that are exceptions
+		// then format the remaining objects
 		const naics = formatNaics(this.props.naicsCodes.filter((object) => {
 
 			let result;
 
-			if (!_.endsWith(object.code, "_Except")) {
+			if (_.isEmpty(object.assetLimit) && !_.endsWith(object.code, "_Except")) {
 				result = object;
 			}
 
@@ -524,6 +557,7 @@ class NaicsScreen extends PureComponent {
 						<div className={styles.right + " right"}>
 
 							<a
+								aria-label={"Remove NAICS code " + code + "."}
 								className={styles.remove + " remove"}
 								onClick={() => {
 									
