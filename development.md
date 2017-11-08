@@ -6,7 +6,7 @@ Katana serves as the presentation layer for sba.gov. It is a React-Redux/Node ap
       * NVM is our node version manager of choice. Please follow the steps detailed on their repo.
 2. Download and use the Node version specified in the [Dockerfile](https://github.com/USSBA/sba-gov-katana/blob/master/Dockerfile#L1)
 ```sh
-nvm install 8.6.0 && nvm use
+nvm install <node-version> && nvm use
 ```
 3. Install ESLint: `npm install -g eslint`
 4. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
