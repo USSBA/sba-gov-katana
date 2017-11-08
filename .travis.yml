@@ -6,6 +6,10 @@ branches:
   only:
     - master
     - /RELEASE-\d+/
+    - teamf-integration
+    - team1-integration
+    - master-integration
+    - /feature-DT-\d+/
 install:
   - npm install --silent
 script:
