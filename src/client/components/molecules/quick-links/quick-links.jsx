@@ -146,7 +146,7 @@ const LatestDocumentsCard = props => {
 
 	}
 	*/
-
+	console.log(props);
 	return (
 		<div className={props.classname}>
 			<div className={s.titleContainer}>
@@ -167,9 +167,18 @@ const LatestDocumentsCard = props => {
 
 			          			if (currentFile !== undefined && currentFile.effectiveDate !== undefined) {
 			          				effectiveDate = currentFile.effectiveDate; 						
-			 					}
-
-							    const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title;
+								 }
+								
+								// Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
+								let titlePrefix = "";
+								if ( doc.documentIdType === "SOP" && doc.documentIdNumber ) {
+									titlePrefix = doc.documentIdType + " " + doc.documentIdNumber + " ";
+									if (doc.files[0] && doc.files[0].version) {
+										titlePrefix += "(" + doc.files[0].version + ") ";
+									}
+									titlePrefix += titlePrefix ? "- " : "";
+								}
+								const linkTitle = titlePrefix + (doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title);
 										return (
 											<div key={index}>
 												<BasicLink url={`/document/${doc.url}`}
