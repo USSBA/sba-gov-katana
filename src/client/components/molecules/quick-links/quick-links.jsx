@@ -75,7 +75,7 @@ class QuickLinks extends PureComponent {
 	}
 
 	renderQuickLinks() {
-
+console.log(this.props)
 		let gridClass = this.generateGrid(this.props.data.typeOfLinks.length);
 		return this.props.data.typeOfLinks.map((quickLink, index) => {
 
@@ -173,8 +173,8 @@ const LatestDocumentsCard = props => {
 								let titlePrefix = "";
 								if ( doc.documentIdType === "SOP" && doc.documentIdNumber ) {
 									titlePrefix = doc.documentIdType + " " + doc.documentIdNumber + " ";
-									if (doc.files[0] && doc.files[0].version) {
-										titlePrefix += "(" + doc.files[0].version + ") ";
+									if (currentFile && currentFile.version) {
+										titlePrefix += "(" + currentFile.version + ") ";
 									}
 									titlePrefix += titlePrefix ? "- " : "";
 								}

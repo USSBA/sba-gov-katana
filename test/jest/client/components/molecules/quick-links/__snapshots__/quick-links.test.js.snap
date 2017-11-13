@@ -1,5 +1,155 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`QuickLinks SOP number and most recent version displayed 1`] = `
+<div
+  className="collection"
+>
+  <div
+    className="card oneCard"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        SOPs
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        <a
+          autoFocus={false}
+          className=""
+          onKeyPress={[Function]}
+          onTouchTap={[Function]}
+          tabIndex="0"
+        >
+          SOP 873 (2) - Document Title 1
+        </a>
+        <div
+          className="date"
+        >
+          Sep 4, 2016
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuickLinks SOP number and no future version 1`] = `
+<div
+  className="collection"
+>
+  <div
+    className="card oneCard"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        SOPs
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        <a
+          autoFocus={false}
+          className=""
+          onKeyPress={[Function]}
+          onTouchTap={[Function]}
+          tabIndex="0"
+        >
+          SOP 691 (1) - Document Title 2
+        </a>
+        <div
+          className="date"
+        >
+          Mar 26, 1991
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuickLinks SOP number and no version 1`] = `
+<div
+  className="collection"
+>
+  <div
+    className="card oneCard"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        SOPs
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        <a
+          autoFocus={false}
+          className=""
+          onKeyPress={[Function]}
+          onTouchTap={[Function]}
+          tabIndex="0"
+        >
+          SOP 42 - Document Title 3
+        </a>
+        <div
+          className="date"
+        >
+          Sep 4, 2013
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`QuickLinks to match snapshot 1`] = `
 <div
   className="collection"
