@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuickLinks No SOP number and latest version 1`] = `
+exports[`QuickLinks Future effective date is not displayed 1`] = `
 <div
   className="collection"
 >
@@ -37,12 +37,12 @@ exports[`QuickLinks No SOP number and latest version 1`] = `
           onTouchTap={[Function]}
           tabIndex="0"
         >
-          Document Title 3
+          SOP 691 - Document Title 2
         </a>
         <div
           className="date"
         >
-          Sep 4, 1992
+          Mar 26, 1991
         </div>
       </div>
     </div>
@@ -50,7 +50,57 @@ exports[`QuickLinks No SOP number and latest version 1`] = `
 </div>
 `;
 
-exports[`QuickLinks No SOP number and no version 1`] = `
+exports[`QuickLinks Most recent effective date displayed 1`] = `
+<div
+  className="collection"
+>
+  <div
+    className="card oneCard"
+  >
+    <div
+      className="titleContainer"
+    >
+      <h3
+        className="title"
+      >
+        SOPs
+      </h3>
+      <a
+        autoFocus={false}
+        className="seeAll"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See all
+      </a>
+    </div>
+    <hr
+      className="decorativeDash dash"
+    />
+    <div>
+      <div>
+        <a
+          autoFocus={false}
+          className=""
+          onKeyPress={[Function]}
+          onTouchTap={[Function]}
+          tabIndex="0"
+        >
+          SOP 873 - Document Title 1
+        </a>
+        <div
+          className="date"
+        >
+          Sep 4, 2016
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`QuickLinks No SOP number so it is not displayed 1`] = `
 <div
   className="collection"
 >
@@ -100,107 +150,7 @@ exports[`QuickLinks No SOP number and no version 1`] = `
 </div>
 `;
 
-exports[`QuickLinks SOP number and most recent version displayed 1`] = `
-<div
-  className="collection"
->
-  <div
-    className="card oneCard"
-  >
-    <div
-      className="titleContainer"
-    >
-      <h3
-        className="title"
-      >
-        SOPs
-      </h3>
-      <a
-        autoFocus={false}
-        className="seeAll"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
-      >
-        See all
-      </a>
-    </div>
-    <hr
-      className="decorativeDash dash"
-    />
-    <div>
-      <div>
-        <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
-        >
-          SOP 873 2 - Document Title 1
-        </a>
-        <div
-          className="date"
-        >
-          Sep 4, 2016
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`QuickLinks SOP number and no future version 1`] = `
-<div
-  className="collection"
->
-  <div
-    className="card oneCard"
-  >
-    <div
-      className="titleContainer"
-    >
-      <h3
-        className="title"
-      >
-        SOPs
-      </h3>
-      <a
-        autoFocus={false}
-        className="seeAll"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
-      >
-        See all
-      </a>
-    </div>
-    <hr
-      className="decorativeDash dash"
-    />
-    <div>
-      <div>
-        <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
-        >
-          SOP 691 1 - Document Title 2
-        </a>
-        <div
-          className="date"
-        >
-          Mar 26, 1991
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`QuickLinks SOP number and no version 1`] = `
+exports[`QuickLinks SOP number exists and is displayed 1`] = `
 <div
   className="collection"
 >
