@@ -306,4 +306,123 @@ describe("QuickLinks", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  test("No SOP number and no version", () => {
+    const mockData = {
+    type: "quickLinks",
+    typeOfLinks: [
+      {
+        type: "documentLookup",
+        documentActivity: [],
+        documentProgram: ["CDC/504"],
+        documentType: ["SOP"],
+        sectionHeaderText: "SOPs"
+      }
+    ]};
+    const mockDocuments = {
+      count: 5,
+      items: [
+        {
+          activitys: ["Authorization", "General", "Closing", "Credit and risk", "Investment and transactions"],
+          documentIdNumber: "",
+          documentIdType: "SOP",
+          files: [{
+            type: "docFile",
+            effectiveDate: "1991-03-26",
+            expirationDate: "1992-09-03",
+            fileUrl: "",
+            version: ""
+          }],
+          id: 3444,
+          officeLink: {
+            url: "",
+            title: "Office Title"},
+          ombNumber: "97",
+          programs: ["Contracting", "7(a)", "CDC/504", "SBA operations", "SBIC", "Surety Bonds", "Disaster assistance"],
+          summary: "This is the summary of the third document",
+          title: "Document Title 4",
+          type: "document",
+          updated: 1501764139,
+          url: "sop-42-document-title-4"
+        }
+      ]
+  };
+  const testProps = {
+    actions: {
+      fetchContentIfNeeded: fetchContentIfNeeded
+    },
+    navigation: {
+      locationChange: {}
+    },
+    data: mockData,
+    "documents-0": mockDocuments
+  };
+
+  const component = renderer.create(<QuickLinks {...testProps} />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+test("No SOP number and latest version", () => {
+  const mockData = {
+  type: "quickLinks",
+  typeOfLinks: [
+    {
+      type: "documentLookup",
+      documentActivity: [],
+      documentProgram: ["CDC/504"],
+      documentType: ["SOP"],
+      sectionHeaderText: "SOPs"
+    }
+  ]};
+  const mockDocuments = {
+    count: 5,
+    items: [
+      {
+        activitys: ["Authorization", "General", "Closing", "Credit and risk", "Investment and transactions"],
+        documentIdNumber: "",
+        documentIdType: "SOP",
+        files: [{
+          type: "docFile",
+          effectiveDate: "1991-03-26",
+          expirationDate: "1992-09-03",
+          fileUrl: "",
+          version: "A"
+        },
+        {
+          type: "docFile",
+          effectiveDate: "1992-09-04", 
+          expirationDate: "1993-09-03",
+          fileUrl: "",
+          version: "B"
+        }],
+        id: 3399,
+        officeLink: {
+          url: "",
+          title: "Office Title"},
+        ombNumber: "97",
+        programs: ["Contracting", "7(a)", "CDC/504", "SBA operations", "SBIC", "Surety Bonds", "Disaster assistance"],
+        summary: "This is the summary of the third document",
+        title: "Document Title 3",
+        type: "document",
+        updated: 1501764139,
+        url: "sop-42-document-title-3"
+      }
+    ]
+};
+const testProps = {
+  actions: {
+    fetchContentIfNeeded: fetchContentIfNeeded
+  },
+  navigation: {
+    locationChange: {}
+  },
+  data: mockData,
+  "documents-0": mockDocuments
+};
+
+const component = renderer.create(<QuickLinks {...testProps} />);
+const tree = component.toJSON();
+expect(tree).toMatchSnapshot();
+});
+
 });

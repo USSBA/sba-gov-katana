@@ -144,7 +144,7 @@ const LatestDocumentsCard = props => {
 						if ( doc.documentIdType === "SOP" && doc.documentIdNumber ) {
 							titlePrefix = doc.documentIdType + " " + doc.documentIdNumber + " ";
 							if (currentFile && currentFile.version) {
-								titlePrefix += "(" + currentFile.version + ") ";
+								titlePrefix += currentFile.version + " ";
 							}
 							titlePrefix += titlePrefix ? "- " : "";
 						}
