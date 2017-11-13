@@ -23,7 +23,6 @@ class DocumentCard extends React.Component {
     const latestFile = this.getLatestFile();
     const title = this.props.data.title;
     if (latestFile) {
-      console.log("LATESTFILE",latestFile);
       return (
         <div className={"document-card-download " + s.download}>
           <a onClick={() => {

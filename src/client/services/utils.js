@@ -26,29 +26,6 @@ function getCurrentFile(files, oneFile) {
   return found;
 }
 
-// getCurrentFile() {
-//   let found = null;
-//   let files = this.props.data.files;
-//   if (files && files.length > 0) {
-//     found = _.chain(files)
-//       .filter(file => {
-//         const { effectiveDate } = file;
-//         const date = moment(effectiveDate);
-//         return date.isValid && date.isSameOrBefore(moment());
-//       })
-//       .sortBy("effectiveDate")
-//       .last()
-//       .value();
-
-//     if (!found) found = files[0];
-//   } else if (this.props.data.file) {
-//     found = {
-//       fileUrl: this.props.data.file
-//     };
-//   }
-//   return found;
-// }
-
 function getQueryParams() {
   let queryParams = {};
   const {search} = window.location;

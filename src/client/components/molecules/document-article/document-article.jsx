@@ -78,7 +78,6 @@ export class DocumentArticle extends React.Component {
   }
 
   render() {
-    console.log("HERE", this.props.data.files, this.props.data.file);
     const data = this.props.data;
     const body = data.body && typeof data.body === "string" ? data.body : "";
     if (data) {
