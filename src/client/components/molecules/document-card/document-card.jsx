@@ -8,11 +8,12 @@ import {
 } from "atoms";
 import s from "./document-card.scss";
 import {logPageEvent} from "../../../services/analytics.js";
+import { getCurrentFile } from "../../../services/utils.js";
 
 class DocumentCard extends React.Component {
   getLatestFile() {
     if (this.props.data && this.props.data.files) {
-      return _.chain(this.props.data.files).sortBy(['version']).head().value();
+      return getCurrentFile(this.props.data.files);
     } else {
       return null;
     }
@@ -39,7 +40,7 @@ class DocumentCard extends React.Component {
   }
 
   makeTable(doc) {
-    let rows = [];
+    const rows = [];
     if (doc.activities && doc.activities.length > 0 && _.includes(this.props.fieldsToShowInDetails, "Activity")) {
       rows.push({name: "Activity:", value: doc.activities.join(", ")});
     }
@@ -48,8 +49,8 @@ class DocumentCard extends React.Component {
     }
 
     if (doc.published && _.includes(this.props.fieldsToShowInDetails, "Published")) {
-        let publishedDate = new Date(doc.updated);
-        let publisheDateString = publishedDate.getMonth() + "/" + publishedDate.getDate() + "/" + publishedDate.getYear();
+        const publishedDate = new Date(doc.updated);
+        const publisheDateString = publishedDate.getMonth() + "/" + publishedDate.getDate() + "/" + publishedDate.getYear();
         rows.push({name: "Published:", value: publisheDateString});
     }
     if (doc.summary && _.includes(this.props.fieldsToShowInDetails, "Summary")) {
