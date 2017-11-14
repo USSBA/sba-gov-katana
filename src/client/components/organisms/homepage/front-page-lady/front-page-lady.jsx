@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./front-page-lady.scss";
-import Triangle from "../../../../../../public/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
+import Triangle from "/assets/images/homepage/primary-landing/desktop-corner-graphic.png";
 import { LargeInversePrimaryButton } from "atoms";
 import { eventCategories } from "../../../../services/constants";
 

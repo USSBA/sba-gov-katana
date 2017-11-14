@@ -4,12 +4,12 @@ import {PageLinkGroup} from "molecules";
 
 import constants from "../../../../services/constants.js";
 
-import facebookThumbnail from "../../../../../../public/assets/images/footer/facebook.png"
-import twitterThumbnail from "../../../../../../public/assets/images/footer/twitter.png"
-import googlePlusThumbnail from "../../../../../../public/assets/images/footer/googleplus.png"
-import youtubeThumbnail from "../../../../../../public/assets/images/footer/youtube-play.png"
-import linkedInThumbnail from "../../../../../../public/assets/images/footer/linkedin.png"
-import instagramThumbnail from "../../../../../../public/assets/images/footer/instagram.png"
+import facebookThumbnail from "assets/images/footer/facebook.png"
+import twitterThumbnail from "assets/images/footer/twitter.png"
+import googlePlusThumbnail from "assets/images/footer/googleplus.png"
+import youtubeThumbnail from "assets/images/footer/youtube-play.png"
+import linkedInThumbnail from "assets/images/footer/linkedin.png"
+import instagramThumbnail from "assets/images/footer/instagram.png"
 
 import styles from "./footer.scss";
 

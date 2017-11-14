@@ -3,8 +3,8 @@ import {
     LargeInversePrimaryButton,
     LargeSecondaryButton
 } from "atoms";
-import diagonalLines from "../../../../../public/assets/images/homepage/diagonal-lines.png";
-import diagonalLinesMobile from "../../../../../public/assets/images/homepage/diagonal-lines-mobile.png";
+import diagonalLines from "assets/images/homepage/diagonal-lines.png";
+import diagonalLinesMobile from "assets/images/homepage/diagonal-lines-mobile.png";
 import styles from "./title-box.scss";
 
 class TitleBox extends React.Component {
