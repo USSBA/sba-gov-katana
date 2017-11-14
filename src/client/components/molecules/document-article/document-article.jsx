@@ -17,46 +17,25 @@ import * as NavigationActions from "../../../actions/navigation.js";
 
 import s from "./document-article.scss";
 
+import { getCurrentFile } from "../../../services/utils.js";
+
 export class DocumentArticle extends React.Component {
-
-  getCurrentFile() {
-    let found = null;
-    let files = this.props.data.files;
-    if (files && files.length > 0) {
-      found = _.chain(files)
-        .filter(file => {
-          const { effectiveDate } = file;
-          const date = moment(effectiveDate);
-          return date.isValid && date.isSameOrBefore(moment());
-        })
-        .sortBy("effectiveDate")
-        .last()
-        .value();
-
-      if (!found) found = files[0];
-    } else if (this.props.data.file) {
-      found = {
-        fileUrl: this.props.data.file
-      };
-    }
-    return found;
-  }
 
   downloadClick(currentFile) {
     if(currentFile && currentFile.fileUrl){
       logPageEvent({category: "Download-PDF-CTA", action: "Click"});
-      window.open(currentFile.fileUrl, '_blank')
+      window.open(currentFile.fileUrl, "_blank");
     }
   }
 
   formatDate(date) {
-    return moment(date).format('MMM D, YYYY')
+    return moment(date).format("MMM D, YYYY");
   }
 
   handleRelatedPrograms(program){
-    logPageEvent({category: "Related-Programs", action: `program${program}`})
-    let params = {program: program}
-    this.props.actions.locationChange("/"+this.props.type+"/?" + queryString.stringify(params))
+    logPageEvent({category: "Related-Programs", action: `program${program}`});
+    const params = {program: program};
+    this.props.actions.locationChange("/" + this.props.type + "/?" + queryString.stringify(params));
   }
 
   renderDateLine(file) {
@@ -99,10 +78,10 @@ export class DocumentArticle extends React.Component {
   }
 
   render() {
-    const data = this.props.data
-    const body = data.body && typeof data.body === "string" ? data.body: "";
+    const data = this.props.data;
+    const body = data.body && typeof data.body === "string" ? data.body : "";
     if (data) {
-      const currentFile = this.getCurrentFile()
+      const currentFile = getCurrentFile(this.props.data.files, this.props.data.file);
       let currentFileExtension = "";
       if(currentFile && currentFile.fileUrl && currentFile.fileUrl.includes && currentFile.fileUrl.includes(".")){
           currentFileExtension = "." + _.last(currentFile.fileUrl.split("."));
@@ -115,7 +94,7 @@ export class DocumentArticle extends React.Component {
       return (
         <div className={"document-article " + s.page}>
           {documentTypeString ? <DocumentType type={documentTypeString} number={data.documentIdNumber}/> : undefined}
-          <h1 className={"document-article-title " + s.title + " " + (documentTypeString? s.marginTop:"")}>{data.title}</h1>
+          <h1 className={"document-article-title " + s.title + " " + (documentTypeString ? s.marginTop : "")}>{data.title}</h1>
 
           {!_.isEmpty(currentFile) && <div>
             {this.renderDateLine(currentFile)}
@@ -129,9 +108,12 @@ export class DocumentArticle extends React.Component {
           <div className={s.summaryContainer}>
             <LargePrimaryButton
               className={"document-article-pdf-download-btn " + s.downloadButton}
-              onClick={(e) => this.downloadClick(currentFile)}
+              onClick={(e) => {
+return this.downloadClick(currentFile)
+;
+}}
               disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
-              text={"download "+currentFileExtension}
+              text={"download " + currentFileExtension}
             />
             <p className={"document-article-summary " + s.summary}>{data.summary}</p>
           </div>
@@ -144,9 +126,11 @@ export class DocumentArticle extends React.Component {
 
             {data.programs.map((program, index) => {
               return <span className="document-article-related-programs-link" key={index}>
-                <a onClick={() => this.handleRelatedPrograms(program)}>{program}</a>{index == data.programs.length - 1
+                <a onClick={() => {
+return this.handleRelatedPrograms(program);
+}}>{program}</a>{index == data.programs.length - 1
                   ? null
-                  : ", "}</span>
+                  : ", "}</span>;
             })}
             <hr className={s.hr}/>
 
