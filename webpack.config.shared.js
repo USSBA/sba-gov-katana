@@ -79,7 +79,8 @@ module.exports = function(styleNamingFormat) {
       alias: {
         atoms: path.resolve(__dirname, "src/client/components/atoms"),
         molecules: path.resolve(__dirname, "src/client/components/molecules/index.jsx"),
-        organisms: path.resolve(__dirname, "src/client/components/organisms/index.jsx") // for some reason this specifice path will not resolve without index.jsx
+        organisms: path.resolve(__dirname, "src/client/components/organisms/index.jsx"), // for some reason this specifice path will not resolve without index.jsx
+        assets: path.resolve(__dirname, "public/assets")
       }
     }
   };
