@@ -75,7 +75,6 @@ class QuickLinks extends PureComponent {
 	}
 
 	renderQuickLinks() {
-
 		let gridClass = this.generateGrid(this.props.data.typeOfLinks.length);
 		return this.props.data.typeOfLinks.map((quickLink, index) => {
 
@@ -120,33 +119,6 @@ class QuickLinks extends PureComponent {
 const LatestDocumentsCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`;
 
-  	/*let itemsSortedByEffectiveDate;
-
-  	if (props.documents && props.documents.items.length) {
-
-		itemsSortedByEffectiveDate = props.documents.items.sort((a, b) => {
-
-			const aCurrentFile = getCurrentFile(a.files);
-			const bCurrentFile = getCurrentFile(b.files);
-
-			let aEffectiveDate;
-			let bEffectiveDate;
-
-			if (aCurrentFile !== undefined && aCurrentFile.effectiveDate !== undefined) {
-				aEffectiveDate = aCurrentFile.effectiveDate;
-			}
-
-			if (bCurrentFile !== undefined && bCurrentFile.effectiveDate !== undefined) {
-				bEffectiveDate = bCurrentFile.effectiveDate;
-			}
-
-			return new Date(bEffectiveDate) - new Date(aEffectiveDate);
-
-		});
-
-	}
-	*/
-
 	return (
 		<div className={props.classname}>
 			<div className={s.titleContainer}>
@@ -160,32 +132,33 @@ const LatestDocumentsCard = props => {
 			<DecorativeDash className={s.dash} />
 			<div>
 				{props.documents && props.documents.items.length
-			          ? props.documents.items.map((doc, index) => {
-
-			          			const currentFile = getCurrentFile(doc.files);
-			          			let effectiveDate;
-
-			          			if (currentFile !== undefined && currentFile.effectiveDate !== undefined) {
-			          				effectiveDate = currentFile.effectiveDate; 						
-			 					}
-
-							    const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title;
-										return (
-											<div key={index}>
-												<BasicLink url={`/document/${doc.url}`}
-			                             text={linkTitle}
-			                             eventConfig={{category: eventCategory, action: `DocumentLink: ${linkTitle}`}}
-			                  />
-
-			                  					{effectiveDate && <div className={s.date}>
-													{formatDate(effectiveDate)}
-												</div>}
-
-											</div>
-										);
-									})
-								: <div>loading</div>}
-						</div>
+					? props.documents.items.map((doc, index) => {
+						const currentFile = getCurrentFile(doc.files);
+						let effectiveDate;
+						if (currentFile !== undefined && currentFile.effectiveDate !== undefined) {
+							effectiveDate = currentFile.effectiveDate; 						
+						}
+						
+						// Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
+						let titlePrefix = "";
+						if ( doc.documentIdType === "SOP" && !_.isEmpty(doc.documentIdNumber) ) {
+							titlePrefix = doc.documentIdType + " " + doc.documentIdNumber + " - ";
+						}
+						const linkTitle = titlePrefix + (doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title);
+						return (
+							<div key={index}>
+								<BasicLink url={`/document/${doc.url}`}
+											text={linkTitle}
+											eventConfig={{category: eventCategory, action: `DocumentLink: ${linkTitle}`}}
+								/>
+								
+								{effectiveDate && <div className={s.date}>
+									{formatDate(effectiveDate)}
+								</div>}
+							</div>
+							);
+						}) : <div>loading</div> }
+			</div>
 		</div>
 	);
 };
