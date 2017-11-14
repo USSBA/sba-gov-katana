@@ -1,77 +1,77 @@
 .collection {
-    overflow: auto;
+  overflow: auto;
 
-    margin-bottom: 30px !important;
+  margin-bottom: 30px !important;
 
-    @include grid-media($sba-grid-large){
-        display: flex;
-    }
+  @include grid-media($sba-grid-large) {
+    display: flex;
+  }
 }
 
 .card {
-    background-color: $grey-lighter;
+  background-color: $grey-lighter;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        margin-top: 20px;
-        padding: 20px;
+  @include grid-media($sba-grid-medium-and-small) {
+    margin-top: 20px;
+    padding: 20px;
 
-        @include grid-column(6);
-    }
-    @include grid-media($sba-grid-large) {
-        margin-top: 30px;
-        padding: 30px;
-    }
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-large) {
+    margin-top: 30px;
+    padding: 30px;
+  }
 
-    & a {
-    	color: $base-font-color !important;
-    }
+  & a {
+    color: $base-font-color !important;
+  }
 }
 
 .oneCard {
-    @include grid-media($sba-grid-large) {
-        @include grid-column(12);
-    }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+  }
 }
 .twoCards {
-    @include grid-media($sba-grid-large) {
-        @include grid-column(6);
-    }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(6);
+  }
 }
 .manyCards {
-    @include grid-media($sba-grid-large) {
-        @include grid-column(4);
-    }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(4);
+  }
 }
 
 .titleContainer {
-	position: relative;
+  position: relative;
 }
 
 .title {
-	display: inline-block;
-	margin-bottom: 0px;
+  display: inline-block;
+  margin-bottom: 0px;
 }
 
 .dash {
-	margin: 16px 0 16px 0;
-	width: 30px;
+  margin: 16px 0 16px 0;
+  width: 30px;
 }
 
 .seeAll {
-	position: absolute;
-	right: 0;
-	bottom: 1px;
+  position: absolute;
+  right: 0;
+  bottom: 1px;
 }
 
 .date {
-	font-style: italic;
+  font-style: italic;
 }
 
 .rateContainer {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .rate {
-	display: inline-block;
-	float: right;
+  display: inline-block;
+  float: right;
 }

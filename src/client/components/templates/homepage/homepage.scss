@@ -1,36 +1,36 @@
 .container {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  float: left;
+}
+
+.section,
+.sectionWithPadding {
+  width: 100%;
+  @include grid-media($sba-grid-small) {
+    margin-bottom: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    margin-bottom: 50px;
+  }
+}
+
+.last {
+  margin-bottom: 50px;
+}
+.section,
+.sectionWithPadding {
+  @include clearFix;
+}
+
+.sectionWithPadding {
+  @include grid-media($sba-grid-small) {
     padding-left: 0;
     padding-right: 0;
-    width: 100%;
-    float: left;
-}
-
-.section,
-.sectionWithPadding {
-    width: 100%;
-    @include grid-media($sba-grid-small) {
-        margin-bottom: 20px;
-    }
-    @include grid-media($sba-grid-medium) {
-        margin-bottom: 50px;
-    }
-}
-
-.last{
-    margin-bottom: 50px;
-}
-.section,
-.sectionWithPadding {
-    @include clearFix;
-}
-
-.sectionWithPadding {
-    @include grid-media($sba-grid-small) {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding-left: $homepage-gutter-size;
-        padding-right: $homepage-gutter-size;
-    }
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+  }
 }

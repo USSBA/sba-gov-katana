@@ -3,18 +3,18 @@
   height: calc(100vh - 115px);
   position: relative;
   background-color: $byzantine;
-  background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
+  background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
   background-position: 90% 100%;
   background-repeat: no-repeat;
   background-size: contain;
-  @include grid-media($sba-grid-small){
-    background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern-mobile.png");
+  @include grid-media($sba-grid-small) {
+    background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern-mobile.png');
     background-position: 100% 100%;
     height: 550px;
   }
   h1 {
     @include font-size($extra-large-title-font-sizes);
-    margin-bottom: .4em;
+    margin-bottom: 0.4em;
     @include grid-media($sba-grid-small) {
       max-width: 70%;
     }
@@ -30,13 +30,13 @@
   top: 50%;
   transform: translateY(-50%);
   max-width: 900px;
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     @include grid-column(6);
   }
-  @include grid-media($sba-grid-medium){
+  @include grid-media($sba-grid-medium) {
     @include grid-column(12);
   }
-  @include grid-media($sba-grid-large){
+  @include grid-media($sba-grid-large) {
     margin-left: 80px;
   }
 }
@@ -45,55 +45,54 @@
   color: #fff;
   padding: 30px;
   background-color: $byzantine;
-  background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern.png");
+  background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
   background-position: right;
   background-repeat: no-repeat;
   //background-size: contain;
   background-attachment: local;
   background-size: 30%;
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     transform: translateY(-25%);
-    background-image: url("../../../../../public/assets/images/tensteps/title-section-pattern-mobile.png");
+    background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern-mobile.png');
     background-position: 100% 100%;
   }
   h1 {
     @include font-size($extra-large-title-font-sizes);
-    margin-bottom: .2em;
+    margin-bottom: 0.2em;
     @include grid-media($sba-grid-small) {
-      margin-top: .2em;
+      margin-top: 0.2em;
       max-width: 70%;
     }
   }
   p {
     @include font-size($h5-font-sizes);
     font-family: $serif-font;
-    @include grid-media($sba-grid-small){
+    @include grid-media($sba-grid-small) {
       margin-top: 2em;
     }
   }
 }
 
-@media screen and (min-width:1080px) {
+@media screen and (min-width: 1080px) {
   .lastSection {
-    padding-left:220px;
+    padding-left: 220px;
   }
 }
 
 .lastSectionText {
   max-width: 900px;
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     @include grid-column(6);
     float: none;
   }
-  @include grid-media($sba-grid-medium){
+  @include grid-media($sba-grid-medium) {
     @include grid-column(12);
     float: none;
   }
-  @include grid-media($sba-grid-large){
+  @include grid-media($sba-grid-large) {
     width: auto;
     float: none;
   }
-  
 }
 
 .scrollButton {
@@ -106,26 +105,26 @@
   text-align: center;
   transform: translateX(-50%);
   width: 68px;
-  &:hover{
+  &:hover {
     background-color: $byzantine-lightest;
     color: $byzantine-darkest;
   }
 }
 
-.anchor{
-  @include grid-media($sba-grid-small){
+.anchor {
+  @include grid-media($sba-grid-small) {
     display: block;
     height: 70px;
     margin-top: -70px;
     visibility: hidden;
   }
-  @include grid-media($sba-grid-medium){
+  @include grid-media($sba-grid-medium) {
     display: block;
     height: 115px;
     margin-top: -115px;
     visibility: hidden;
   }
-    @include grid-media($sba-grid-large){
+  @include grid-media($sba-grid-large) {
     height: 0;
     margin-top: 0;
   }
@@ -141,10 +140,10 @@ a.backLink {
   left: 0;
   text-decoration: none;
   top: 20px;
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     padding-left: 20px;
   }
-  @include grid-media($sba-grid-medium){
+  @include grid-media($sba-grid-medium) {
     padding-left: 30px;
   }
   &:hover {
@@ -153,17 +152,17 @@ a.backLink {
 }
 
 a.backLink:before {
-    content: "\F104";
-    font-family: FontAwesome;
-    font-size: 30px;
-    vertical-align: sub;
-    margin-right: 15px;
-      &:hover {
+  content: '\F104';
+  font-family: FontAwesome;
+  font-size: 30px;
+  vertical-align: sub;
+  margin-right: 15px;
+  &:hover {
     text-decoration: none;
   }
 }
 
-.bizguideContainer{
+.bizguideContainer {
   position: relative;
   h1 {
     margin-top: 40px;
@@ -172,6 +171,6 @@ a.backLink:before {
   }
 }
 
-.counsellorCtaContainer{
+.counsellorCtaContainer {
   @include grid-column(12, $sba-grid-large);
 }

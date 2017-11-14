@@ -14,8 +14,10 @@ const navigationReducer = (state, action) => {
   } else if (action.type === types.navigation.callToAction) {
     return Object.assign({}, state);
   }
-  return state || {
+  return (
+    state || {
       currentPage: "landingPage"
-    };
+    }
+  );
 };
 export default navigationReducer;

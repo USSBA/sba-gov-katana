@@ -11,5 +11,4 @@ const feedbackReducer = (state = {}, action) => {
   return state;
 };
 
-
 export default feedbackReducer;

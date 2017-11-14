@@ -7,7 +7,7 @@
     position: absolute;
     @include grid-column(3, $sba-grid-large);
   }
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     display: none;
   }
 
@@ -22,11 +22,13 @@
   a.currentNavLink {
     font-weight: bold;
   }
-  h2, h3 , h4 {
+  h2,
+  h3,
+  h4 {
     text-align: left;
     padding: 0 30px;
   }
-  h2{
+  h2 {
     margin-bottom: 0;
   }
   li {
@@ -40,12 +42,12 @@
     margin-bottom: 20px;
   }
 
-  a.backLink{
+  a.backLink {
     padding: 20px 30px 20px 55px;
     position: relative;
   }
   .backLink:before {
-    content: "\f104";
+    content: '\f104';
     font-family: FontAwesome;
     font-size: 30px;
     margin-right: 15px;
@@ -65,26 +67,30 @@
   bottom: 518px;
 }
 
-.animateLeftNav{
+.animateLeftNav {
   animation: slideNavIn 3s forwards;
 }
 
 @keyframes slideNavIn {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(0%); }
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 $section-nav-color-map: (
-        "sba-blue": $sba-blue-dark,
-        "byzantine": $byzantine,
-        "money-green": $money-green-dark,
-        "cobalt-blue": $cobalt-blue
+  'sba-blue': $sba-blue-dark,
+  'byzantine': $byzantine,
+  'money-green': $money-green-dark,
+  'cobalt-blue': $cobalt-blue
 );
 $section-nav-dark-color-map: (
-        "sba-blue": $sba-blue-darkest,
-        "byzantine": $byzantine-dark,
-        "money-green": $money-green-darkest,
-        "cobalt-blue": $cobalt-blue-dark
+  'sba-blue': $sba-blue-darkest,
+  'byzantine': $byzantine-dark,
+  'money-green': $money-green-darkest,
+  'cobalt-blue': $cobalt-blue-dark
 );
 
 @each $name, $value in $section-nav-color-map {
@@ -94,7 +100,7 @@ $section-nav-dark-color-map: (
 
 @each $name, $value in $section-nav-dark-color-map {
   @include theme($name, '.currentNavLink', $value, #fff, $value);
-  @include theme-hover($name, ".sectionNav li a, .sectionNav li, .backLink", $value, #fff, $value);
+  @include theme-hover($name, '.sectionNav li a, .sectionNav li, .backLink', $value, #fff, $value);
   @include theme-active($name, '.sectionNav li a', $value, #fff, $value);
   :global(.#{$name}) {
     .sectionNav li:hover + li {

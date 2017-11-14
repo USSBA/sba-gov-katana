@@ -1,4 +1,5 @@
-[{
+[
+  {
     "id": "362d1f0d-651c-48de-a1a5-48cb0bee2cbf",
     "result": "no",
     "timestamp": 1494442795,
@@ -8,7 +9,8 @@
     "sourceLocation": "http://localhost:65097/samples/0/",
     "createdAt": "2017-05-10T18:59:55.000Z",
     "updatedAt": "2017-05-10T19:00:10.000Z"
-}, {
+  },
+  {
     "id": "ebaf5a6d-7742-4d5d-9592-fcce36543223",
     "result": "yes",
     "timestamp": 1494448800,
@@ -18,7 +20,8 @@
     "sourceLocation": "http://localhost:65097/samples/26/",
     "createdAt": "2017-05-10T20:40:00.000Z",
     "updatedAt": "2017-05-10T20:40:00.000Z"
-}, {
+  },
+  {
     "id": "f47f0577-ad13-42ff-bdc3-318678aa23f7",
     "result": "yes",
     "timestamp": 1494442734,
@@ -28,4 +31,5 @@
     "sourceLocation": "http://localhost:65097/samples/0/",
     "createdAt": "2017-05-10T18:58:54.000Z",
     "updatedAt": "2017-05-10T18:58:59.000Z"
-}]
+  }
+]

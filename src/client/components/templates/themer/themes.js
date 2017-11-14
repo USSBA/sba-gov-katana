@@ -2,8 +2,15 @@ import _ from "lodash";
 
 const themes = {
   "sba-blue": ["styleguide"],
-  "byzantine": ["guide", "business-guide"],
-  "money-green": ["lendermatch", "funding-programs", "document", "article", "partners", "disaster-assistance"],
+  byzantine: ["guide", "business-guide"],
+  "money-green": [
+    "lendermatch",
+    "funding-programs",
+    "document",
+    "article",
+    "partners",
+    "disaster-assistance"
+  ],
   "cobalt-blue": ["size-standards"]
 };
 
@@ -17,7 +24,7 @@ function getPaths() {
 function getTheme() {
   const theme = "sba-blue";
 
-  const {pathname} = window.location;
+  const { pathname } = window.location;
   let path;
 
   if (pathname.startsWith("/tools")) {

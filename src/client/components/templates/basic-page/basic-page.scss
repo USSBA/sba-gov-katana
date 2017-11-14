@@ -6,142 +6,141 @@
 .titleSection,
 .previousNext,
 .breadcrumb {
-    margin-bottom: 30px;
-    @include grid-media($sba-grid-small) {
-         @include grid-column(6);
-        @include grid-push(0);
-    }
-    @include grid-media($sba-grid-medium) {
-        @include grid-column(12);
-        @include grid-push(0);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(7);
-        @include grid-push(4);
-    }
-}
-
-.articleContainer > span{
+  margin-bottom: 30px;
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-medium) {
     @include grid-column(12);
     @include grid-push(0);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7);
+    @include grid-push(4);
+  }
+}
+
+.articleContainer > span {
+  @include grid-column(12);
+  @include grid-push(0);
 }
 
 .subsectionHeader {
-    @include grid-media($sba-grid-small) {
-         @include grid-column(6);
-        @include grid-push(0);
-    }
-    @include grid-media($sba-grid-medium) {
-        @include grid-column(12);
-        @include grid-push(0);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(7);
-        @include grid-push(4);
-    }
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7);
+    @include grid-push(4);
+  }
 }
 
 .image {
-    @include grid-media($sba-grid-medium){
-
-    }
-    @include grid-media($sba-grid-large){
-        @include grid-column(9, $sba-grid-large);
-        @include grid-push(3);
-        padding-bottom: 30px;
-    }
+  @include grid-media($sba-grid-medium) {
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(9, $sba-grid-large);
+    @include grid-push(3);
+    padding-bottom: 30px;
+  }
 }
 
 .callToAction {
-    @include grid-media($sba-grid-small) {
-        @include grid-column(6, $mobile-0gutter)
-    }
-    @include grid-media($sba-grid-medium) {
-        @include grid-column(12, $sba-grid-medium)
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(7, $sba-grid-large);
-        @include grid-push(4);
-    }
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12, $sba-grid-medium);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7, $sba-grid-large);
+    @include grid-push(4);
+  }
 }
 
-.breadcrumb{
-    @include grid-media($sba-grid-small) {
-        display: none;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding: 15px 0;
-        margin-bottom: 50px;
-        border-bottom: 1px solid $grey-light;
-    }
-    @include grid-media($sba-grid-large) {
-        border-top: 1px solid $grey-light;
-    }
+.breadcrumb {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 15px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid $grey-light;
+  }
+  @include grid-media($sba-grid-large) {
+    border-top: 1px solid $grey-light;
+  }
 }
 
-.backLinkMobile{
-    position: relative;
-    @include grid-media($sba-grid-small){
-        height: 60px;
-        margin-bottom: 30px;
-    }
+.backLinkMobile {
+  position: relative;
+  @include grid-media($sba-grid-small) {
+    height: 60px;
+    margin-bottom: 30px;
+  }
 
-    @include grid-media($sba-grid-large) {
-        display: none;
-    }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
 }
 
 .backLinkMobile a:before {
-    // @include grid-media($sba-grid-small){
-        content: "\f104";
-        font-family: FontAwesome;
-        font-size: 30px;
-        margin-right: 15px;
-        position: absolute;
-        top: 50%;
-        left: 30px;
-        transform: translateY(-50%);
-    // }
+  // @include grid-media($sba-grid-small){
+  content: '\f104';
+  font-family: FontAwesome;
+  font-size: 30px;
+  margin-right: 15px;
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  // }
 }
 
 .backLinkMobile a {
-    @include grid-media($sba-grid-small){
-        display: block;
-        font-size: 18px;
-        font-weight: 300;
-        line-height: 1.2;
-        padding: 20px 60px 10px;
-        text-decoration: none;
-    }
+  @include grid-media($sba-grid-small) {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+    padding: 20px 60px 10px;
+    text-decoration: none;
+  }
 
-    @include grid-media($sba-grid-medium) {
-        display: block;
-        font-size: 18px;
-        font-weight: 300;
-        line-height: 1.2;
-        padding: 20px 60px 15px;
-        text-decoration: none;
+  @include grid-media($sba-grid-medium) {
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.2;
+    padding: 20px 60px 15px;
+    text-decoration: none;
+  }
+  .backLinkMobile {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    .backLinkMobile {
+      display: none;
     }
-    .backLinkMobile{
-        display: none;
-    }
-    @include grid-media($sba-grid-large) {
-        .backLinkMobile{
-            display: none;
-        }
-    }
+  }
 }
 
-.hideContainer{
-    display: none;
-    @include grid-media($sba-grid-large){
-        display: block;
-    }
+.hideContainer {
+  display: none;
+  @include grid-media($sba-grid-large) {
+    display: block;
+  }
 }
 
 .sticky {
-    position: fixed;
-    top: 30px;
+  position: fixed;
+  top: 30px;
 }
 
 @include theme(sba-blue, '.backLinkMobile', $sba-blue, $sba-blue, $sba-blue);

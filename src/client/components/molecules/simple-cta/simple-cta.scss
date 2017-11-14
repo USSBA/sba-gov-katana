@@ -1,23 +1,23 @@
 .container {
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
 }
 
 @include theme(byzantine, '.container', $byzantine-dark, #fff , null);
 
 .container p {
-    color: $white;
-    text-align: center;
-    @include font-size($h6-font-sizes);
-    font-weight: 600;
-    @include grid-media($sba-grid-medium) {
-      display: inline;
-      margin-right: 30px
-    }
-    @include grid-media($sba-grid-large) {
-      margin-right: 0;
-      display: block;
+  color: $white;
+  text-align: center;
+  @include font-size($h6-font-sizes);
+  font-weight: 600;
+  @include grid-media($sba-grid-medium) {
+    display: inline;
+    margin-right: 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    margin-right: 0;
+    display: block;
   }
 }
 

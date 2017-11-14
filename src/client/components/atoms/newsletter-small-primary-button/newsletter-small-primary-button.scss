@@ -8,12 +8,9 @@
 @include theme-hover(money-green, '.NewsletterSmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
 @include theme-hover(cobalt-blue, '.NewsletterSmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
 
+@include small-button('.NewsletterSmallPrimaryButton');
 
-
-
-@include small-button(".NewsletterSmallPrimaryButton");
-
-.NewsletterSmallPrimaryButton{
+.NewsletterSmallPrimaryButton {
   height: 40px;
   width: 134px;
   text-align: center;

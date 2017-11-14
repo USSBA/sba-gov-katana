@@ -1,158 +1,177 @@
-import React from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import _ from "lodash";
-import { BasicLink } from "atoms";
-import * as ModalActions from "../../../actions/show-modal.js";
-import styles from "./section-nav.scss";
-var Waypoint = require("react-waypoint");
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import _ from 'lodash'
+import { BasicLink } from 'atoms'
+import * as ModalActions from '../../../actions/show-modal.js'
+import styles from './section-nav.scss'
+var Waypoint = require('react-waypoint')
 
-import constants from "../../../services/constants.js";
+import constants from '../../../services/constants.js'
 
-import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
-import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
-import whiteIconManage from "../../atoms/icons/white-manage.jsx";
-import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
-import hurricaneIcon from "../../../../../public/assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png";
-import whiteIconSuretyProviders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png";
-import whiteIconLenders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Lenders_white.png";
+import whiteIconLaunch from '../../atoms/icons/white-launch.jsx'
+import whiteIconPlan from '../../atoms/icons/white-plan.jsx'
+import whiteIconManage from '../../atoms/icons/white-manage.jsx'
+import whiteIconGrow from '../../atoms/icons/white-grow.jsx'
+import hurricaneIcon from '../../../../../public/assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
+import whiteIconSuretyProviders from '../../../../../public/assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
+import whiteIconLenders from '../../../../../public/assets/images/for-partners/For_Partners_Icon_Lenders_white.png'
 
-
-
-const businessGuideFullUrl = '/business-guide';
+const businessGuideFullUrl = '/business-guide'
 
 class SectionNav extends React.Component {
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayMobileNav) {
-      let sectionNavIcon;
-      const sectionTitle = this.getNthLineage(-2).title;
+      let sectionNavIcon
+      const sectionTitle = this.getNthLineage(-2).title
       const titleConstants = constants.sectionTitles
       if (sectionTitle === titleConstants.planYourBusiness) {
-        sectionNavIcon = whiteIconPlan;
+        sectionNavIcon = whiteIconPlan
       } else if (sectionTitle === titleConstants.launchYourBusiness) {
-        sectionNavIcon = whiteIconLaunch;
+        sectionNavIcon = whiteIconLaunch
       } else if (sectionTitle === titleConstants.manageYourBusiness) {
-        sectionNavIcon = whiteIconManage;
+        sectionNavIcon = whiteIconManage
       } else if (sectionTitle === titleConstants.growYourBusiness) {
-        sectionNavIcon = whiteIconGrow;
+        sectionNavIcon = whiteIconGrow
       } else if (sectionTitle === titleConstants.disasterAssistance) {
-        sectionNavIcon = hurricaneIcon;
+        sectionNavIcon = hurricaneIcon
       } else if (sectionTitle === titleConstants.suretyProviders) {
         sectionNavIcon = whiteIconSuretyProviders
       } else if (sectionTitle === titleConstants.lenders) {
         sectionNavIcon = whiteIconLenders
       } else {
-        sectionNavIcon = whiteIconGrow;
+        sectionNavIcon = whiteIconGrow
       }
       this.props.actions.showMobileSectionNav(
         this.getNthLineage(-2),
         sectionNavIcon,
         this.getBacklinkUrl()
-      );
+      )
     }
   }
 
   isBusinessGuide() {
-    return this.getNthLineage(0).fullUrl === businessGuideFullUrl;
+    return this.getNthLineage(0).fullUrl === businessGuideFullUrl
   }
 
   getNthLineage(n) {
-    return _.nth(this.props.lineage, n);
+    return _.nth(this.props.lineage, n)
   }
 
   makeNavLinks() {
-    const section = this.getNthLineage(-2);
-    const currentPage = this.getNthLineage(-1);
+    const section = this.getNthLineage(-2)
+    const currentPage = this.getNthLineage(-1)
     const navLinks = section.children.map(function(item, index) {
-      let currentLinkClass = '';
+      let currentLinkClass = ''
       if (item.fullUrl === currentPage.fullUrl) {
-        currentLinkClass = styles.currentNavLink;
+        currentLinkClass = styles.currentNavLink
       }
       const eventConfig = {
-          category: "Menu-Rail",
-          action: section.title + " " + item.title
-      };
+        category: 'Menu-Rail',
+        action: section.title + ' ' + item.title
+      }
       return (
         <li key={index}>
-          <BasicLink myClassName={"article-navigation-article-link-desktop " + currentLinkClass}
-             id={"desktop-article-link-" + index} url={item.fullUrl} text={item.title}  eventConfig={eventConfig}/>
+          <BasicLink
+            myClassName={
+              'article-navigation-article-link-desktop ' + currentLinkClass
+            }
+            id={'desktop-article-link-' + index}
+            url={item.fullUrl}
+            text={item.title}
+            eventConfig={eventConfig}
+          />
         </li>
-      );
-    });
-    return navLinks;
+      )
+    })
+    return navLinks
   }
 
   makeNavigationTitle(sectionTitle) {
-    const baseSection = this.getNthLineage(0);
+    const baseSection = this.getNthLineage(0)
     if (this.isBusinessGuide()) {
-      const titleArray = _.words(sectionTitle, /[^ ]+/g);
-      const firstWord = _.slice(titleArray, 0, 1);
-      const remainingTitle = _.replace(sectionTitle, firstWord, '');
+      const titleArray = _.words(sectionTitle, /[^ ]+/g)
+      const firstWord = _.slice(titleArray, 0, 1)
+      const remainingTitle = _.replace(sectionTitle, firstWord, '')
       return (
         <span id="article-navigation-title-desktop">
           <h2>{firstWord}</h2>
           <h4>{remainingTitle}</h4>
         </span>
-      );
+      )
     } else {
       return (
         <span id="article-navigation-title-desktop">
           <h3>{sectionTitle}</h3>
         </span>
-      );
+      )
     }
   }
 
   stickyFunctionTop() {
-    return this.props.position === 'middle' ? styles.stickyTop : null;
+    return this.props.position === 'middle' ? styles.stickyTop : null
   }
 
   stickyFunctionBottom() {
-    return this.props.position === 'bottom' ? styles.stickyBottom : null;
+    return this.props.position === 'bottom' ? styles.stickyBottom : null
   }
 
   getBacklinkUrl() {
-    return (this.isBusinessGuide() ? this.getNthLineage(0) : this.getNthLineage(-2)).fullUrl;
+    return (this.isBusinessGuide()
+      ? this.getNthLineage(0)
+      : this.getNthLineage(-2)
+    ).fullUrl
   }
 
   getBacklinkText() {
-    const backText = this.isBusinessGuide() ? 'all topics' : this.getNthLineage(-2).title;
-    return `Back to ${backText}`;
+    const backText = this.isBusinessGuide()
+      ? 'all topics'
+      : this.getNthLineage(-2).title
+    return `Back to ${backText}`
   }
 
   render() {
-    const navLinks = this.makeNavLinks();
-    const sectionTitle = this.getNthLineage(-2).title;
-    const navigationTitle = this.makeNavigationTitle(sectionTitle);
+    const navLinks = this.makeNavLinks()
+    const sectionTitle = this.getNthLineage(-2).title
+    const navigationTitle = this.makeNavigationTitle(sectionTitle)
     const eventConfig = {
-        category: "Menu-Rail",
-        action: sectionTitle
-    };
+      category: 'Menu-Rail',
+      action: sectionTitle
+    }
     return (
       <div
         id="article-navigation-desktop"
         className={
-          styles.sectionNav + ' ' + this.stickyFunctionTop() + ' ' + this.stickyFunctionBottom()
-        }>
+          styles.sectionNav +
+          ' ' +
+          this.stickyFunctionTop() +
+          ' ' +
+          this.stickyFunctionBottom()
+        }
+      >
         <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
-           <BasicLink id="article-navigation-back-button-desktop" myClassName={styles.backLink}
-              url={this.getBacklinkUrl()} text={this.getBacklinkText()} eventConfig={eventConfig} />
+        <BasicLink
+          id="article-navigation-back-button-desktop"
+          myClassName={styles.backLink}
+          url={this.getBacklinkUrl()}
+          text={this.getBacklinkText()}
+          eventConfig={eventConfig}
+        />
         {navigationTitle}
         <ul>{navLinks}</ul>
       </div>
-    );
+    )
   }
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {};
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ModalActions, dispatch),
-  };
+    actions: bindActionCreators(ModalActions, dispatch)
+  }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav);
-export { SectionNav };
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav)
+export { SectionNav }

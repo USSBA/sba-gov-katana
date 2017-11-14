@@ -16,5 +16,4 @@ const restContentReducer = (state = {}, action) => {
   return state;
 };
 
-
 export default restContentReducer;

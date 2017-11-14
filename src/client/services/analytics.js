@@ -3,7 +3,6 @@ import _ from "lodash";
 
 var reactGa = require("react-ga");
 
-
 function isEnabled() {
   return config.googleAnalytics.enabled;
 }
@@ -23,7 +22,10 @@ function logPageView() {
     reactGa.pageview(window.location.pathname);
     console.log("Posting Location Change to GA:", window.location.pathname);
   } else {
-    console.log("Would have posted location change to GA:", window.location.pathname);
+    console.log(
+      "Would have posted location change to GA:",
+      window.location.pathname
+    );
   }
 }
 
@@ -46,7 +48,7 @@ function logPageEvent(eventToLog) {
 }
 
 /* eslint-disable callback-return */
-function googleAnalyticsMiddleware({getState}) {
+function googleAnalyticsMiddleware({ getState }) {
   return (next) => {
     return (action) => {
       if (action.type === "@@router/LOCATION_CHANGE") {

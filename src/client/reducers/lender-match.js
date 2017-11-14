@@ -23,5 +23,4 @@ const lenderMatchReducer = (state = {}, action) => {
   return state;
 };
 
-
 export default lenderMatchReducer;

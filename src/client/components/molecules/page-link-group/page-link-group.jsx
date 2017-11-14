@@ -1,12 +1,10 @@
-import React from "react";
-import {PageLink} from "atoms";
-import styles from "./page-link-group.scss";
-import {BasicLink} from "../../atoms";
+import React from 'react'
+import { PageLink } from 'atoms'
+import styles from './page-link-group.scss'
+import { BasicLink } from '../../atoms'
 
 class PageLinkGroup extends React.Component {
-
   render() {
-
     const {
       id,
       links,
@@ -15,66 +13,54 @@ class PageLinkGroup extends React.Component {
       indent,
       isLastGroup,
       onFinalBlur
-    } = this.props;
+    } = this.props
 
     const renderedLinks = links.map((item, index) => {
-
-      const isLastLink = index === links.length - 1;
+      const isLastLink = index === links.length - 1
 
       return (
-        
         <PageLink
           key={index + 1}
-          id={this.props.id + "-" + index}
+          id={this.props.id + '-' + index}
           text={item.text}
           url={item.url}
           onBlur={() => {
-
             if (isLastGroup && isLastLink) {
-              onFinalBlur();
+              onFinalBlur()
             }
-
           }}
           indent={indent}
         />
-
-      );
-
-    });
+      )
+    })
 
     return (
-
       <ul id={id} className={styles.pageLinkGroup}>
-        
-        {title &&
+        {title && (
           <li key={0}>
             <BasicLink
-              id={id + "-title"}
+              id={id + '-title'}
               text={title}
               url={titleLink}
               onBlur={() => {
-
                 if (isLastGroup && links.length === 0) {
-                  onFinalBlur();
+                  onFinalBlur()
                 }
-
               }}
             />
           </li>
-        }
+        )}
 
         {renderedLinks}
-
       </ul>
-
-    );
+    )
   }
 }
 
 PageLinkGroup.propTypes = {
   title: React.PropTypes.string,
   titleLink: React.PropTypes.string,
-  links: React.PropTypes.array.isRequired,
-};
+  links: React.PropTypes.array.isRequired
+}
 
-export default PageLinkGroup;
+export default PageLinkGroup

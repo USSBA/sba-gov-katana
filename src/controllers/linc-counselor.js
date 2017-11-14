@@ -9,11 +9,9 @@ function getCounselorsByLocation(req, res) {
     .catch((error) => {
       console.log("controller error");
       console.log(error);
-      res
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .send({
-          error: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR)
-        });
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+        error: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR)
+      });
     });
 }
 

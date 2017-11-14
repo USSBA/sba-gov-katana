@@ -1,3 +1,3 @@
-import whiteIconGrow from '../../../../../public/assets/svg/business-guide-icon-white-grow.svg';
+import whiteIconGrow from '../../../../../public/assets/svg/business-guide-icon-white-grow.svg'
 
-export default whiteIconGrow;
+export default whiteIconGrow

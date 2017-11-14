@@ -1,5 +1,4 @@
 .allVersionsList {
-
   clear: both;
   padding: 1px 30px;
 
@@ -28,9 +27,7 @@
   }
 }
 
-
 .hr {
-
   border: 1px solid #dadada;
 
   @include grid-media($sba-grid-medium-and-small) {

@@ -1,17 +1,17 @@
 .failure {
-	color: #E21234;
+  color: #e21234;
 }
 
 .search {
-	color: #757575;
+  color: #757575;
 }
 
 .success {
-	color: #609F00;
+  color: #609f00;
 }
 
 .home {
-	color: #666;
+  color: #666;
 }
 
 @include theme(sba-blue, '.home', null, $sba-blue, null);

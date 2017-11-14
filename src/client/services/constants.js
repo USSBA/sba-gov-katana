@@ -74,7 +74,8 @@ const constants = {
       },
       {
         text: "Privacy Policy",
-        url: "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy"
+        url:
+          "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy"
       },
       {
         text: "Blog",
@@ -104,7 +105,8 @@ const constants = {
       },
       {
         text: "Privacy Policy",
-        url: "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy"
+        url:
+          "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy"
       },
       {
         text: "SBA News Room",
@@ -157,27 +159,33 @@ const constants = {
             text: "Site Map"
           },
           {
-            url: "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
+            url:
+              "/about-sba/sba-performance/open-government/about-sbagov-website/privacy-policy",
             text: "Privacy Policy"
           },
           {
-            url: "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
+            url:
+              "/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy",
             text: "Linking Policy"
           },
           {
-            url: "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
+            url:
+              "/about-sba/sba-performance/open-government/about-sbagov-website/accessibility",
             text: "Accessibility"
           },
           {
-            url: "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
+            url:
+              "/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer",
             text: "Disclaimers"
           },
           {
-            url: "/about-sba/sba-performance/open-government/about-sbagov-website/social-media",
+            url:
+              "/about-sba/sba-performance/open-government/about-sbagov-website/social-media",
             text: "Social Media"
           },
           {
-            url: "/about-sba/sba-performance/open-government/digital-sba/open-data",
+            url:
+              "/about-sba/sba-performance/open-government/digital-sba/open-data",
             text: "Data Store"
           },
           {
@@ -194,11 +202,13 @@ const constants = {
             text: "Freedom of Information Act"
           },
           {
-            url: "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
+            url:
+              "/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act",
             text: "No Fear Act"
           },
           {
-            url: "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
+            url:
+              "/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse",
             text: "Report Fraud, Waste and Abuse"
           },
           {
@@ -206,7 +216,8 @@ const constants = {
             text: "Initiatives"
           },
           {
-            url: "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
+            url:
+              "/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page",
             text: "Plain Language"
           }
         ]
@@ -231,7 +242,8 @@ const constants = {
             text: "Policy and Regulations"
           },
           {
-            url: "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
+            url:
+              "/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse",
             text: "Eliminating Fraud, Waste, and Abuse "
           }
         ]
@@ -303,5 +315,23 @@ const constants = {
 
 export default constants;
 
-const {address, eventCategories, footer, messages, name, routes, sectionTitles, sections} = constants;
-export { address, eventCategories, footer, messages, name, routes, sectionTitles, sections };
+const {
+  address,
+  eventCategories,
+  footer,
+  messages,
+  name,
+  routes,
+  sectionTitles,
+  sections
+} = constants;
+export {
+  address,
+  eventCategories,
+  footer,
+  messages,
+  name,
+  routes,
+  sectionTitles,
+  sections
+};

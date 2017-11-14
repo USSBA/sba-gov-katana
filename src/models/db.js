@@ -7,7 +7,8 @@ import emailConfirmation from "./email-confirmation.js";
 import feedback from "./feedback.js";
 
 function init() {
-  return nonDrupal.sync()
+  return nonDrupal
+    .sync()
     .then(() => {
       console.log("Database sync complete");
     })

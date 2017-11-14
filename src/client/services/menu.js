@@ -14,7 +14,6 @@ function findSection(menu, section) {
   return findByUrl(menu, section);
 }
 
-
 function findSubSection(menu, section, subsection) {
   if (!menu) {
     return null;
@@ -45,6 +44,5 @@ function findPageLineage(menu, urlFragments) {
   const result = _.compact([child].concat(descendants));
   return result;
 }
-
 
 export { findPage, findSubSection, findSection, findPageLineage };

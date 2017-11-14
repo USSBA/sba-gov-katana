@@ -9,7 +9,10 @@ import config from "config";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import HttpStatus from "http-status-codes";
-import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from "./util/dev.js";
+import {
+  enableWebpackHotModuleReplacement,
+  addDevelopmentErrorHandler
+} from "./util/dev.js";
 
 const app = express();
 app.use(cookieParser());
@@ -24,7 +27,10 @@ app.use(jsonParser);
 app.use(express.static("public"));
 
 if (config.get("developmentOptions.webpack.enabled")) {
-  enableWebpackHotModuleReplacement(app, config.get("developmentOptions.webpack.silent"));
+  enableWebpackHotModuleReplacement(
+    app,
+    config.get("developmentOptions.webpack.silent")
+  );
 }
 
 if (config.get("newrelic.enabled")) {
@@ -33,7 +39,8 @@ if (config.get("newrelic.enabled")) {
 }
 
 const metaVariables = {
-  description: "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
+  description:
+    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
   title: "Small Business Administration"
 };
 
@@ -70,7 +77,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 import * as sizeStandardsController from "./controllers/size-standards.js";
 app.get("/naics", sizeStandardsController.getNaics);
 app.get("/naics/:id", sizeStandardsController.getNaicsById);
@@ -78,10 +84,24 @@ app.get("/naics/:id/:property", sizeStandardsController.getNaicsPropertyById);
 app.get("/isSmallBusiness", sizeStandardsController.determineIfSmallBusiness);
 
 import * as lenderMatchController from "./controllers/lender-match-controller.js";
-app.post("/lendermatch/matchFormData", jsonParser, lenderMatchController.handleLenderMatchSubmission);
-app.get("/actions/lendermatch/confirmEmail", lenderMatchController.handleEmailConfirmation);
-app.post("/lendermatch/resend", jsonParser, lenderMatchController.handleResendEmailConfirmation);
-app.get("/actions/lendermatch/resetPassword", lenderMatchController.resetPassword);
+app.post(
+  "/lendermatch/matchFormData",
+  jsonParser,
+  lenderMatchController.handleLenderMatchSubmission
+);
+app.get(
+  "/actions/lendermatch/confirmEmail",
+  lenderMatchController.handleEmailConfirmation
+);
+app.post(
+  "/lendermatch/resend",
+  jsonParser,
+  lenderMatchController.handleResendEmailConfirmation
+);
+app.get(
+  "/actions/lendermatch/resetPassword",
+  lenderMatchController.resetPassword
+);
 app.get("/api/content/counselors-redirect.json", function(req, res) {
   const zipStr = "zip:" + req.query.zip + ":distance:50";
   zlib.deflate(zipStr, function(err, buffer) {
@@ -99,23 +119,48 @@ app.get("/api/content/counselors-redirect.json", function(req, res) {
 import * as feedbackController from "./controllers/feedback-controller.js";
 app.post("/actions/feedback", feedbackController.handleFeedback);
 app.get("/api/content/feedback.csv", feedbackController.retrieveFeedback);
-app.put("/actions/feedback/:id/text", jsonParser, feedbackController.handleFeedbackText);
+app.put(
+  "/actions/feedback/:id/text",
+  jsonParser,
+  feedbackController.handleFeedbackText
+);
 
 import * as resourceCenterProfileController from "./controllers/resource-center-profile.js";
-app.post("/actions/resourceCenterProfile", jsonParser, resourceCenterProfileController.handleProfileSubmission);
-app.get("/api/content/resourceCenterProfile.json", resourceCenterProfileController.retrieveProfiles);
+app.post(
+  "/actions/resourceCenterProfile",
+  jsonParser,
+  resourceCenterProfileController.handleProfileSubmission
+);
+app.get(
+  "/api/content/resourceCenterProfile.json",
+  resourceCenterProfileController.retrieveProfiles
+);
 
 import * as cacheController from "./controllers/cache.js";
-app.get("/actions/clearCache/collection/:type.json", cacheController.clearContentCollectionCacheByType);
-app.get("/actions/clearCache/:type/:id.json", cacheController.clearContentCacheById);
-app.get("/actions/clearCache/:type.json", cacheController.clearContentCacheByType);
-app.delete("/api/content/collection/:type.json", cacheController.clearContentCollectionCacheByType);
+app.get(
+  "/actions/clearCache/collection/:type.json",
+  cacheController.clearContentCollectionCacheByType
+);
+app.get(
+  "/actions/clearCache/:type/:id.json",
+  cacheController.clearContentCacheById
+);
+app.get(
+  "/actions/clearCache/:type.json",
+  cacheController.clearContentCacheByType
+);
+app.delete(
+  "/api/content/collection/:type.json",
+  cacheController.clearContentCollectionCacheByType
+);
 app.delete("/api/content/:type/:id.json", cacheController.clearContentCacheById);
 app.delete("/api/content/:type.json", cacheController.clearContentCacheByType);
 
 import * as lincCounselorController from "./controllers/linc-counselor.js";
-app.get("/api/content/counselors-by-location.json", lincCounselorController.getCounselorsByLocation);
-
+app.get(
+  "/api/content/counselors-by-location.json",
+  lincCounselorController.getCounselorsByLocation
+);
 
 import { getUserRoles } from "./controllers/user-roles.js";
 app.get("/api/content/:userId/roles.json", getUserRoles);
@@ -149,7 +194,8 @@ if (config.get("developmentOptions.webpack.enabled")) {
 } else {
   // production error handler
   // no stacktraces leaked to user
-  app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
+  app.use(function(err, req, res, next) {
+    // eslint-disable-line no-unused-vars
     if (err) {
       console.log(err);
       if (req.xhr) {
@@ -166,7 +212,6 @@ if (config.get("developmentOptions.webpack.enabled")) {
     }
   });
 }
-
 
 //listen to port
 const port = config.get("server.port");

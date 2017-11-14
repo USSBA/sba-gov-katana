@@ -38,34 +38,95 @@ export function zipCodeValidation(value) {
 }
 
 export function domainNameValidation(value) {
-  const websiteRegex = new RegExp(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/);
+  const websiteRegex = new RegExp(
+    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/
+  );
   return websiteRegex.test(value);
 }
 
-
 export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, nameValidation);
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    nameValidation
+  );
 }
 export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, phoneValidation);
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    phoneValidation
+  );
 }
 export function getEmailValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, emailValidation);
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    emailValidation
+  );
 }
-export function getTextAlphanumeicValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero);
+export function getTextAlphanumeicValidationState(
+  name,
+  value,
+  defaultWhenNotSuccessful
+) {
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    hasLengthGreaterThanZero
+  );
 }
-export function getZipcodeValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, zipCodeValidation);
+export function getZipcodeValidationState(
+  name,
+  value,
+  defaultWhenNotSuccessful
+) {
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    zipCodeValidation
+  );
 }
-export function getWebsiteValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, domainNameValidation);
+export function getWebsiteValidationState(
+  name,
+  value,
+  defaultWhenNotSuccessful
+) {
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    domainNameValidation
+  );
 }
-export function getSelectBoxValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero);
+export function getSelectBoxValidationState(
+  name,
+  value,
+  defaultWhenNotSuccessful
+) {
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    hasLengthGreaterThanZero
+  );
 }
-export function getCurrencyValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero);
+export function getCurrencyValidationState(
+  name,
+  value,
+  defaultWhenNotSuccessful
+) {
+  return executeValidation(
+    name,
+    value,
+    defaultWhenNotSuccessful,
+    hasLengthGreaterThanZero
+  );
 }
 
 export function getAlwaysValidValidationState(name, value) {

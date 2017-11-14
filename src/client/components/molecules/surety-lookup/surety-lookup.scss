@@ -4,93 +4,93 @@
 @include theme(cobalt-blue, '.banner', $cobalt-blue, #fff, #fff);
 
 .banner {
-    width: 100%;
-    @include grid-media($sba-grid-small) {
-        padding: 20px;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding: 20px 30px;
-    }
-    @include grid-media($sba-grid-large) {
-        height: 349px;
-        padding: 40px 28px 20px;
-        background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
-        background-repeat: no-repeat;
-        background-position: right;
-        background-size: 40%;
-    }
+  width: 100%;
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    height: 349px;
+    padding: 40px 28px 20px;
+    background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 40%;
+  }
 }
 
 .blurb {
-    font-size: 24px;
-    line-height: 34px;
-    width: 1012px;
-    height: 68px;
-    color: white;
-    @include grid-media($sba-grid-medium-and-small) {
-        display: none;
-    }
+  font-size: 24px;
+  line-height: 34px;
+  width: 1012px;
+  height: 68px;
+  color: white;
+  @include grid-media($sba-grid-medium-and-small) {
+    display: none;
+  }
 }
 
 .multiSelect {
-    @include grid-media($sba-grid-small) {
-        width: 100%;
-    }
-    @include grid-media($sba-grid-large) {
-        display: inline-block;
-        width: 387px;
-        margin-right: 20px;
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-large) {
+    display: inline-block;
+    width: 387px;
+    margin-right: 20px;
 
-        & label {
-            font-size: 27px;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
+    & label {
+      font-size: 27px;
     }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 .cardContainer {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 .card {
-    visibility: visible;
+  visibility: visible;
 }
 
 .phoneContainer {
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 }
 
 .phoneIcon {
-    font-size: 24px !important;
-    float: left;
-    margin: 2px 6px 0 3px;
-    color: #666;
+  font-size: 24px !important;
+  float: left;
+  margin: 2px 6px 0 3px;
+  color: #666;
 }
 
 .phoneNumber {
-    font-size: 18px;
-    line-height: 23px;
-    margin-left: 9px;
-    color: #333;
+  font-size: 18px;
+  line-height: 23px;
+  margin-left: 9px;
+  color: #333;
 }
 
 .emailIcon {
-    font-size: 24px !important;
-    float: left;
-    margin: 2px 6px 0 3px;
-    color: #336200;
+  font-size: 24px !important;
+  float: left;
+  margin: 2px 6px 0 3px;
+  color: #336200;
 }
 
 .emptyContacts {
-    text-align: center;
-    font-weight: bold;
-    font-size: 48px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 48px;
 }
 
 .paginator {
-    float: right;
-    margin-right: 30px;
+  float: right;
+  margin-right: 30px;
 }

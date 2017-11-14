@@ -1,13 +1,12 @@
-import React from "react";
-import {isEmpty} from "lodash";
-import {SectionLink} from "atoms";
-import {DropdownMenu} from "molecules";
-import styles from "./sub-menu.scss";
+import React from 'react'
+import { isEmpty } from 'lodash'
+import { SectionLink } from 'atoms'
+import { DropdownMenu } from 'molecules'
+import styles from './sub-menu.scss'
 
 class SubMenu extends React.Component {
-
   constructor() {
-    super();
+    super()
 
     this.state = {
       showTriangleMarker: false
@@ -15,38 +14,37 @@ class SubMenu extends React.Component {
   }
 
   handleFocus(event) {
-    event.preventDefault();
-    this.props.onFocus(this.props.menuId);
+    event.preventDefault()
+    this.props.onFocus(this.props.menuId)
   }
 
   componentWillReceiveProps() {
-    
     this.setState({
       showTriangleMarker: true
-    });
-
+    })
   }
 
   setShouldForceTab(bool) {
-
-    console.log("A:", bool)
+    console.log('A:', bool)
     this.setState({
       shouldForceTab: bool
-    });
+    })
   }
 
   render() {
-    let {
-      data,
-      ...rest
-    } = this.props;
+    let { data, ...rest } = this.props
 
-    const enableTriangleMarker = data.children && !isEmpty(data.children);
+    const enableTriangleMarker = data.children && !isEmpty(data.children)
 
     return (
-      <li className={styles.subMenu} key={this.props.menuId} onFocus={(event) => this.handleFocus(event, this.props.menuId)} onMouseOut={this.props.onMenuMouseOut}>
+      <li
+        className={styles.subMenu}
+        key={this.props.menuId}
+        onFocus={event => this.handleFocus(event, this.props.menuId)}
+        onMouseOut={this.props.onMenuMouseOut}
+      >
         <SectionLink
-          id={this.props.id+"-title"}
+          id={this.props.id + '-title'}
           url={data.link}
           text={data.linkTitle}
           showUnderline={this.props.showUnderline}
@@ -55,16 +53,14 @@ class SubMenu extends React.Component {
           onMouseOver={this.props.onTitleMouseOver}
           onKeyDown={this.props.onSectionLinkKeyDown}
         >
-          
           <DropdownMenu
             links={data.children}
             {...rest}
             featuredCallout={data.featuredCallout}
           />
-
         </SectionLink>
       </li>
-    );
+    )
   }
 }
 
@@ -80,7 +76,7 @@ SubMenu.defaultProps = {
   onTitleMouseOver: function() {},
   onMenuMouseOut: function() {},
   onSectionLinkKeyDown: function() {},
-  showUnderline:false,
+  showUnderline: false,
   enableTabbing: false
 }
-export default SubMenu;
+export default SubMenu

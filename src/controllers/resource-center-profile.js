@@ -47,19 +47,28 @@ import HttpStatus from "http-status-codes";
 
 function handleProfileSubmission(req, res) {
   if (_.has(req, "body.profile")) {
-    const profile = _.assign({
-      sourceIpAddress: req.ip
-    }, req.body.profile);
+    const profile = _.assign(
+      {
+        sourceIpAddress: req.ip
+      },
+      req.body.profile
+    );
     saveProfile(profile, req.body.honeyPotText)
       .then(function() {
         res.status(HttpStatus.NO_CONTENT).send();
       })
       .catch((error) => {
         console.error(error);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error saving resource center profile.");
+        res
+          .status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .send("Error saving resource center profile.");
       });
   } else {
-    res.status(HttpStatus.BAD_REQUEST).send("Profile missing from body.  Please check that the HTTP request includes a profile value");
+    res
+      .status(HttpStatus.BAD_REQUEST)
+      .send(
+        "Profile missing from body.  Please check that the HTTP request includes a profile value"
+      );
   }
 }
 
@@ -68,18 +77,29 @@ function retrieveProfiles(req, res) {
   if (req) {
     getProfiles(req.sessionInfo)
       .then(function(results) {
-        res.header("Content-Type", "application/json").status(HttpStatus.OK).send(results);
+        res
+          .header("Content-Type", "application/json")
+          .status(HttpStatus.OK)
+          .send(results);
       })
       .catch((error) => {
         if (error.message === "FORBIDDEN") {
-          res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator before requesting this data");
+          res
+            .status(HttpStatus.FORBIDDEN)
+            .send(
+              "Please log in as an Administrator before requesting this data"
+            );
         } else {
           console.log("Error Thrown during Profile Retrieval", error);
-          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error retrieving Resource Center Profiles");
+          res
+            .status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .send("Error retrieving Resource Center Profiles");
         }
       });
   } else {
-    res.status(HttpStatus.FORBIDDEN).send("Please log in as an Administrator before requesting this data.");
+    res
+      .status(HttpStatus.FORBIDDEN)
+      .send("Please log in as an Administrator before requesting this data.");
   }
 }
 

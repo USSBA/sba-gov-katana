@@ -4,10 +4,8 @@ function fetchBlogsFromDrupal() {
   return get("blogs");
 }
 
-
 function fetchFrontPageSlidesFromDrupal() {
   return get("frontpageslides");
 }
-
 
 export { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal };

@@ -1,13 +1,13 @@
 @mixin theme($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}){
-    #{$component}{
+  :global(.#{$theme}) {
+    #{$component} {
       background-color: $background-color;
       color: $text-color;
       border-color: $border-color;
       &:disabled {
         cursor: not-allowed;
-        background-color: #C4C4C4;
-        border-color: #C4C4C4;
+        background-color: #c4c4c4;
+        border-color: #c4c4c4;
         color: #fff;
       }
     }
@@ -21,28 +21,27 @@
 // @include theme(cobalt-blue, '.LargeInversePrimaryButton', #fff, $cobalt-blue, #fff);
 
 @mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}){
-    #{$component}{
+  :global(.#{$theme}) {
+    #{$component} {
       &:hover,
       &:focus {
         background-color: $background-color;
         color: $text-color;
         border-color: $border-color;
-          &:disabled {
-            cursor: not-allowed;
-            background-color: #C4C4C4;
-            color: #fff;
-            border-color: #C4C4C4;
-          }
+        &:disabled {
+          cursor: not-allowed;
+          background-color: #c4c4c4;
+          color: #fff;
+          border-color: #c4c4c4;
+        }
       }
-
     }
   }
 }
 
 @mixin theme-focus($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}){
-    #{$component}{
+  :global(.#{$theme}) {
+    #{$component} {
       &:focus {
         background-color: $background-color;
         color: $text-color;
@@ -53,8 +52,8 @@
 }
 
 @mixin theme-active($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}){
-    #{$component}{
+  :global(.#{$theme}) {
+    #{$component} {
       &:active {
         background-color: $background-color;
         color: $text-color;
@@ -76,78 +75,78 @@ $max-screen: 1440px;
 $sba-grid-max: (
   columns: 12,
   gutter: 30px,
-  media: "(min-width: $max-screen)",
+  media: '(min-width: $max-screen)'
 );
 
 $sba-grid-large: (
   columns: 12,
   gutter: 30px,
-  media: "(min-width: $large-screen)",
+  media: '(min-width: $large-screen)'
 );
 
 $sba-grid-medium: (
   columns: 12,
   gutter: 30px,
-  media: "(min-width: $medium-screen)",
+  media: '(min-width: $medium-screen)'
 );
 
 $sba-grid-medium-and-small: (
   columns: 6,
   gutter: 20px,
-  media: "(min-width: 0px) and (max-width: 1079px)",
+  media: '(min-width: 0px) and (max-width: 1079px)'
 );
 
 $sba-grid-small: (
   columns: 6,
   gutter: 20px,
-  media: "(max-width: $small-screen)",
+  media: '(max-width: $small-screen)'
 );
 
 $desktop-0gutter: (
   columns: 12,
   gutter: 0px,
-  media: "(min-width: $large-screen)",
+  media: '(min-width: $large-screen)'
 );
 
 $tablet-0gutter: (
   columns: 12,
   gutter: 0,
-  media: "(min-width: $medium-screen) and (max-width: 1079px)",
+  media: '(min-width: $medium-screen) and (max-width: 1079px)'
 );
 
 $tablet-mobile-0gutter: (
   columns: 6,
   gutter: 0,
-  media: "(min-width: 0px) and (max-width: 1079px)",
+  media: '(min-width: 0px) and (max-width: 1079px)'
 );
 
 $mobile-0gutter: (
   columns: 6,
   gutter: 0,
-  media: "(max-width: 768px)",
+  media: '(max-width: 768px)'
 );
 
 $desktop-nav: (
   columns: 12,
   gutter: 0,
-  media: "(min-width: $large-screen)",
+  media: '(min-width: $large-screen)'
 );
 
 $tablet-nav: (
   columns: 12,
   gutter: 0,
-  media: "(min-width: $medium-screen) and (max-width: 1079px)",
+  media: '(min-width: $medium-screen) and (max-width: 1079px)'
 );
 
 $mobile-nav: (
   columns: 6,
   gutter: 0,
-  media: "(max-width: 768px)",
+  media: '(max-width: 768px)'
 );
 
 // Typography
-$san-serif-font: "Source Sans Pro", $font-stack-helvetica;
-$serif-font: "Merriweather Regular", $font-stack-georgia;
+$san-serif-font: 'Source Sans Pro', $font-stack-helvetica;
+$serif-font: 'Merriweather Regular', $font-stack-georgia;
 $base-font-family: $san-serif-font;
 $heading-font-family: $base-font-family;
 
@@ -156,8 +155,7 @@ $heading-font-family: $base-font-family;
   @each $fs-breakpoint, $fs-font-size in $fs-map {
     @if $fs-breakpoint == null {
       font-size: $fs-font-size;
-    }
-    @else {
+    } @else {
       // If $fs-font-size is a key that exists in
       // $fs-breakpoints, use the value
       @if map-has-key($fs-breakpoints, $fs-breakpoint) {
@@ -180,62 +178,62 @@ $base-font-sizes: (
   null: 16px,
   medium: 18px,
   large: 18px
-  );
+);
 
-$extra-large-title-font-sizes:  (
+$extra-large-title-font-sizes: (
   null: 2.875rem,
   medium: 5rem,
   large: 6.66rem
-  );
+);
 
 $h1-font-sizes: (
   null: 2rem,
   medium: 3rem,
   large: 4rem
-  );
+);
 
 $h2-font-sizes: (
   null: 1.5rem,
   medium: 2rem,
   large: 3rem
-  );
+);
 
 $h3-font-sizes: (
   null: 1.25rem,
   medium: 1.5rem,
   large: 2rem
-  );
+);
 
 $h4-font-sizes: (
   null: 1.1rem,
   medium: 1.25rem,
   large: 1.5rem
-  );
+);
 
 $h5-font-sizes: (
   null: 1rem,
   medium: 1rem,
   large: 1.2rem
-  );
+);
 
 $h6-font-sizes: (
   null: 1rem,
   medium: 1rem,
   large: 1rem
-  );
+);
 
 $paragraph-font-sizes: (
   null: 1rem,
   medium: 1rem,
   large: 1rem
-  );
+);
 
 // 508 requires minimum of 25px in low contrast ratio non-bold text
 $low-contrast-font-sizes: (
   null: 25px,
   medium: 25px,
   large: 25px
-  );
+);
 
 // Line height
 $base-line-height: 1.5;
@@ -253,59 +251,59 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
-$white: #FFFFFF;
+$white: #ffffff;
 $blue: #1565c0;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
-$error: #E21C3D;
+$error: #e21c3d;
 
 // Font Colors
 $base-font-color: #333333;
-$action-color: #0B97DD;
+$action-color: #0b97dd;
 
 // Colors
-$sba-blue: #0B97DD;
+$sba-blue: #0b97dd;
 $sba-blue-darkest: #004265;
-$sba-blue-dark: #006BA2;
-$sba-blue-light: #9DDDFF;
-$sba-blue-lightest: #D6ECFC;
+$sba-blue-dark: #006ba2;
+$sba-blue-light: #9dddff;
+$sba-blue-lightest: #d6ecfc;
 
-$byzantine: #AB3EA0;
-$byzantine-darkest: #511D4C;
-$byzantine-dark: #7E2E76;
-$byzantine-light: #C661BB;
-$byzantine-lightest: #E7BEE3;
+$byzantine: #ab3ea0;
+$byzantine-darkest: #511d4c;
+$byzantine-dark: #7e2e76;
+$byzantine-light: #c661bb;
+$byzantine-lightest: #e7bee3;
 
-$money-green: #609F00;
-$money-green-darkest: #1F3A00;
+$money-green: #609f00;
+$money-green-darkest: #1f3a00;
 $money-green-dark: #336200;
-$money-green-light: #8BC03B;
-$money-green-lightest: #DBEDC0;
+$money-green-light: #8bc03b;
+$money-green-lightest: #dbedc0;
 
-$cobalt-blue: #0F48AA;
-$cobalt-blue-darkest: #05183A;
-$cobalt-blue-dark: #0A3072;
-$cobalt-blue-light: #4E89EF;
-$cobalt-blue-lightest: #C8DAFA;
+$cobalt-blue: #0f48aa;
+$cobalt-blue-darkest: #05183a;
+$cobalt-blue-dark: #0a3072;
+$cobalt-blue-light: #4e89ef;
+$cobalt-blue-lightest: #c8dafa;
 
 $grey: #666666;
 $grey-dark: #333333;
-$grey-light: #C4C4C4;
-$grey-lighter: #EBEBEB;
-$grey-lightest: #F7F7F7;
+$grey-light: #c4c4c4;
+$grey-lighter: #ebebeb;
+$grey-lightest: #f7f7f7;
 
-$crimson: #E21234;
+$crimson: #e21234;
 
 // SBA
-$sba-blue: #0B97DD;
-$byzantine: #AB3EA0;
-$money-green: #609F00;
-$cobalt-blue: #0F48AA;
-$sba-blue-dark: #006BA2;
-$byzantine-dark: #7E2E76;
+$sba-blue: #0b97dd;
+$byzantine: #ab3ea0;
+$money-green: #609f00;
+$cobalt-blue: #0f48aa;
+$sba-blue-dark: #006ba2;
+$byzantine-dark: #7e2e76;
 $money-green-dark: #336200;
-$cobalt-blue-dark: #0A3072;
+$cobalt-blue-dark: #0a3072;
 
 // Font Colors
 $text-grey: #333333;
@@ -328,61 +326,61 @@ $form-box-shadow-focus: none;
 $base-duration: 150ms;
 $base-timing: ease;
 
-$primary-color-map:(
-	"sba-blue": $sba-blue,
-	"byzantine": $byzantine,
-	"money-green": $money-green,
-	"cobalt-blue": $cobalt-blue
+$primary-color-map: (
+  'sba-blue': $sba-blue,
+  'byzantine': $byzantine,
+  'money-green': $money-green,
+  'cobalt-blue': $cobalt-blue
 );
 
-$lightest-color-map:(
-	"sba-blue": $sba-blue-lightest,
-	"byzantine": $byzantine-lightest,
-	"money-green": $money-green-lightest,
-	"cobalt-blue": $cobalt-blue-lightest
+$lightest-color-map: (
+  'sba-blue': $sba-blue-lightest,
+  'byzantine': $byzantine-lightest,
+  'money-green': $money-green-lightest,
+  'cobalt-blue': $cobalt-blue-lightest
 );
-$dark-color-map:(
-	"sba-blue": $sba-blue-dark,
-	"byzantine": $byzantine-dark,
-	"money-green": $money-green-dark,
-	"cobalt-blue": $cobalt-blue-dark
+$dark-color-map: (
+  'sba-blue': $sba-blue-dark,
+  'byzantine': $byzantine-dark,
+  'money-green': $money-green-dark,
+  'cobalt-blue': $cobalt-blue-dark
 );
-$darkest-color-map:(
-	"sba-blue": $sba-blue-darkest,
-	"byzantine": $byzantine-darkest,
-	"money-green": $money-green-darkest,
-	"cobalt-blue": $cobalt-blue-darkest
+$darkest-color-map: (
+  'sba-blue': $sba-blue-darkest,
+  'byzantine': $byzantine-darkest,
+  'money-green': $money-green-darkest,
+  'cobalt-blue': $cobalt-blue-darkest
 );
 
-@mixin small-button($component){
-    #{$component} {
-      font-size: 1.2em;
-      font-weight: 700;
-    }
+@mixin small-button($component) {
+  #{$component} {
+    font-size: 1.2em;
+    font-weight: 700;
+  }
 }
 
 @mixin single-color-button($component, $my-color) {
-     @each $name, $value in $primary-color-map{
-        :global(.#{$name}) {
-            #{$component} {
-                background-color: #fff;
-                color: $my-color;
-                border-color: null;
+  @each $name, $value in $primary-color-map {
+    :global(.#{$name}) {
+      #{$component} {
+        background-color: #fff;
+        color: $my-color;
+        border-color: null;
 
-                &:focus,
-                &:hover {
-                    background-color: $my-color;
-                    color: #fff;
-                    border-color: my-color;
-                }
-            }
+        &:focus,
+        &:hover {
+          background-color: $my-color;
+          color: #fff;
+          border-color: my-color;
         }
+      }
     }
+  }
 }
 
 @mixin border-color-theme($component, $color-map : $primary-color-map) {
   @each $name, $value in $color-map {
-     :global(.#{$name}) {
+    :global(.#{$name}) {
       #{$component} {
         border-color: $value;
       }
@@ -392,7 +390,7 @@ $darkest-color-map:(
 
 @mixin background-color-theme($component, $color-map : $primary-color-map) {
   @each $name, $value in $color-map {
-     :global(.#{$name}) {
+    :global(.#{$name}) {
       #{$component} {
         background-color: $value;
       }
@@ -402,11 +400,11 @@ $darkest-color-map:(
 
 @mixin background-color-theme-hover($component, $color-map : $primary-color-map) {
   @each $name, $value in $color-map {
-     :global(.#{$name}) {
+    :global(.#{$name}) {
       #{$component} {
-          &:hover {
-              background-color: $value;
-          }
+        &:hover {
+          background-color: $value;
+        }
       }
     }
   }
@@ -414,21 +412,21 @@ $darkest-color-map:(
 
 @mixin color-theme($component, $color-map : $primary-color-map) {
   @each $name, $value in $color-map {
-     :global(.#{$name}) {
+    :global(.#{$name}) {
       #{$component} {
         color: $value;
       }
     }
   }
 }
-@mixin clearFix{
-  &:after{
-      content: " ";
-      /* Older browser do not support empty content */
-      visibility: hidden;
-      display: block;
-      height: 0;
-      clear: both;
+@mixin clearFix {
+  &:after {
+    content: ' ';
+    /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
   }
 }
 

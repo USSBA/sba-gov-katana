@@ -1,7 +1,6 @@
 import types from "../actions/types.js";
 import constants from "../services/constants.js";
 
-
 const displayReducer = (state = {}, action) => {
   if (action.type === types.display.theme) {
     return Object.assign({}, state, {
@@ -10,6 +9,5 @@ const displayReducer = (state = {}, action) => {
   }
   return state;
 };
-
 
 export default displayReducer;

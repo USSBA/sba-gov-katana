@@ -45,7 +45,7 @@ textarea {
     border-color: $action-color;
     box-shadow: $form-box-shadow-focus;
     outline: none;
-    background: #D6ECFC;
+    background: #d6ecfc;
   }
 
   &:disabled {
@@ -66,13 +66,13 @@ textarea {
   resize: none;
 }
 
-[type="checkbox"],
-[type="radio"] {
+[type='checkbox'],
+[type='radio'] {
   display: inline;
   margin-right: $small-spacing / 2;
 }
 
-[type="file"] {
+[type='file'] {
   margin-bottom: $small-spacing;
   width: 100%;
 }

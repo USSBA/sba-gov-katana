@@ -9,14 +9,14 @@
 @include theme-hover(cobalt-blue, '.ArrowButton', #fff, $cobalt-blue-dark, $cobalt-blue-dark);
 
 .ArrowButton {
-    border-width: 2px;
-    border-style: solid;
-    display: inline;
-    padding: 10px 16px;
-    @include font-size($h5-font-sizes);
-    cursor: pointer;
+  border-width: 2px;
+  border-style: solid;
+  display: inline;
+  padding: 10px 16px;
+  @include font-size($h5-font-sizes);
+  cursor: pointer;
 }
 
-.noLeftBorder{
-    border-left-width: 0px;
+.noLeftBorder {
+  border-left-width: 0px;
 }

@@ -1,63 +1,63 @@
 .card {
-    border: 2px solid #C4C4C4;
-    width: 85%;
-    padding: 20px;
-    margin: 30px auto;
-    display: block;
+  border: 2px solid #c4c4c4;
+  width: 85%;
+  padding: 20px;
+  margin: 30px auto;
+  display: block;
 }
 
 .container {
-    display: table;
+  display: table;
 }
 
 .line {
-    height: 100%;
-    display: table-row;
+  height: 100%;
+  display: table-row;
 }
 
 .icon {
-    display: table-cell;
-    width: 33px;
-    height: 100%;
-    position: relative;
+  display: table-cell;
+  width: 33px;
+  height: 100%;
+  position: relative;
 }
 
 .text {
-    display: inline-block;
+  display: inline-block;
 }
 
 .title {
-    @include font-size($h6-font-sizes);
-    font-weight: bold;
+  @include font-size($h6-font-sizes);
+  font-weight: bold;
 }
 
 .address {
-    @include font-size($h6-font-sizes);
+  @include font-size($h6-font-sizes);
 }
 
 .citystatezip {
-    @include font-size($h6-font-sizes);
+  @include font-size($h6-font-sizes);
 }
 
 .link {
-    @include font-size($h6-font-sizes);
+  @include font-size($h6-font-sizes);
 }
 
 .card i {
-    margin-left: 5px;
-    position: absolute;
-    top: 50%;
-    margin-top: -25%;
-    height: 100%;
-    @include font-size($h5-font-sizes);
+  margin-left: 5px;
+  position: absolute;
+  top: 50%;
+  margin-top: -25%;
+  height: 100%;
+  @include font-size($h5-font-sizes);
 }
 
 .card a :global(.fa-map-marker) {
-    font-size: 1.4rem;
-    top: 40%;
+  font-size: 1.4rem;
+  top: 40%;
 }
 
 .card a :global(.fa-phone) {
-    font-size: 1.3rem;
-    top: 40%;
+  font-size: 1.3rem;
+  top: 40%;
 }

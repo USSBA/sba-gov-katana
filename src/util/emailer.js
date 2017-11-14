@@ -23,7 +23,8 @@ var transporter = nodemailer.createTransport(sesConnectionOptions);
 
 function sendConfirmationEmail(options) {
   return new Promise((resolve, reject) => {
-    var defaultMailOptions = { from : config.get("email.sender"),
+    var defaultMailOptions = {
+      from: config.get("email.sender"),
       to: config.get("email.sender"),
       subject: "SBA Test Email",
       text: "Test Email",
@@ -31,7 +32,9 @@ function sendConfirmationEmail(options) {
     };
     var mailOptions = _.assign({}, defaultMailOptions, options);
     if (config.get("email.debugEmailOnly")) {
-      console.log("Email sender would have sent:" + JSON.stringify(mailOptions, 0, 4)); //eslint-disable-line no-magic-numbers
+      console.log(
+        "Email sender would have sent:" + JSON.stringify(mailOptions, 0, 4)
+      ); //eslint-disable-line no-magic-numbers
       resolve();
     } else {
       // send mail with defined transport object

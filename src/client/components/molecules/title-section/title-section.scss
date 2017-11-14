@@ -13,7 +13,7 @@
   border: 3px solid;
   text-align: left;
   @include grid-media($sba-grid-small) {
-    width: 4.0em;
+    width: 4em;
   }
 }
 
@@ -22,14 +22,13 @@
 @include theme(money-green, '.lineCopy', $money-green, $money-green, $money-green);
 @include theme(cobalt-blue, '.lineCopy', $cobalt-blue, $cobalt-blue, $cobalt-blue);
 
-.hrLine{
+.hrLine {
   box-sizing: border-box;
   height: 1px;
-  border: 1px solid #DADADA;
-
+  border: 1px solid #dadada;
 }
 
-.summary{
+.summary {
   @include font-size($h4-font-sizes);
   margin-bottom: 51.5px;
   @include grid-media($sba-grid-small) {
@@ -37,7 +36,7 @@
   }
 }
 
-.content{
+.content {
   @include font-size($h4-font-sizes);
   font-weight: 700;
   margin-bottom: 20px;
@@ -47,7 +46,7 @@
   }
 }
 
-.titleLink{
+.titleLink {
   @include font-size($paragraph-font-sizes);
   line-height: 30px;
   @include grid-media($sba-grid-small) {
@@ -55,18 +54,17 @@
   }
 }
 
-.titleSection ul{
+.titleSection ul {
   margin-bottom: 51.5px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 30px;
   }
 }
 
-.title{
+.title {
   @include font-size($h1-font-sizes);
   margin-bottom: 30px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 19px;
   }
 }
-

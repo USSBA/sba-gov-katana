@@ -1,20 +1,20 @@
-import React from 'react';
-import styles from './textarea.scss';
-import FormErrorMessage from "../form-error-message/form-error-message.jsx";
-import ValidationIcon from '../validation-icon/validation-icon.jsx';
+import React from 'react'
+import styles from './textarea.scss'
+import FormErrorMessage from '../form-error-message/form-error-message.jsx'
+import ValidationIcon from '../validation-icon/validation-icon.jsx'
 
 class TextArea extends React.Component {
-
   inputValidation(validationState) {
-    return validationState == 'error'
-      ? styles.textAreaInvalid
-      : styles.textArea
+    return validationState == 'error' ? styles.textAreaInvalid : styles.textArea
   }
 
   errorMessage(validationState, errorText) {
-    return validationState == 'error'
-      ? <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText}/>
-      : null
+    return validationState == 'error' ? (
+      <FormErrorMessage
+        errorFor={this.props.id}
+        errorText={this.props.errorText}
+      />
+    ) : null
   }
 
   render() {
@@ -31,22 +31,40 @@ class TextArea extends React.Component {
       showSuccessIcon,
       showErrorIcon,
       ...rest
-    } = this.props;
+    } = this.props
     return (
-      <div id={id + "-container"} className={styles.inputContainer} hidden={hidden}>
+      <div
+        id={id + '-container'}
+        className={styles.inputContainer}
+        hidden={hidden}
+      >
         <label htmlFor={this.props.id} className={styles.controlLabel}>
           {label}
         </label>
         <div className={styles.textAreaContainer}>
-          <textarea {...rest} id={id} className={this.inputValidation(validationState)} onChange={onChange} maxLength="250" value={value} />
-          <ValidationIcon validationState={this.props.validationState} showSuccessIcon={this.props.showSuccessIcon} showErrorIcon={this.props.showErrorIcon} extraClassName={styles.validationIcon}/>
+          <textarea
+            {...rest}
+            id={id}
+            className={this.inputValidation(validationState)}
+            onChange={onChange}
+            maxLength="250"
+            value={value}
+          />
+          <ValidationIcon
+            validationState={this.props.validationState}
+            showSuccessIcon={this.props.showSuccessIcon}
+            showErrorIcon={this.props.showErrorIcon}
+            extraClassName={styles.validationIcon}
+          />
         </div>
-        {showCounter
-          ? <span className={styles.textAreaCounter}>{value.length}/250</span>
-          : <div/>}
+        {showCounter ? (
+          <span className={styles.textAreaCounter}>{value.length}/250</span>
+        ) : (
+          <div />
+        )}
         {this.errorMessage(validationState, errorText)}
       </div>
-    );
+    )
   }
 }
 
@@ -56,4 +74,4 @@ TextArea.defaultProps = {
   showErrorIcon: false
 }
 
-export default TextArea;
+export default TextArea

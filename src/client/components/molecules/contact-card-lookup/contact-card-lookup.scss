@@ -1,38 +1,36 @@
-.container{
+.container {
   border: 2px solid $grey-light;
   overflow: visible;
 }
 
-.titleContainer{
-    @include grid-media($sba-grid-small) {
-        width: 80%;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-    @include grid-media($sba-grid-medium) {
-        width: 50%;
-        margin-left: 25%;
-        margin-right: 25%;
-    }
+.titleContainer {
+  @include grid-media($sba-grid-small) {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
 }
 
 .title {
-    text-align: center;
-    margin-top: $margin-30;
+  text-align: center;
+  margin-top: $margin-30;
 }
 
-
-.selectContainer{
-    margin: auto;
-    width: 42%;
-    margin-bottom: 30px;
+.selectContainer {
+  margin: auto;
+  width: 42%;
+  margin-bottom: 30px;
 }
 
 .dataContainer {
-
 }
 
 .noContacts {
-	padding: 20px;
-	text-align: center;
+  padding: 20px;
+  text-align: center;
 }

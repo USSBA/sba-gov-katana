@@ -1,66 +1,57 @@
 .section {
-    @include grid-column(12, $desktop-nav)
-    margin-bottom: 50px;
-    @include grid-media ($sba-grid-medium) {
-        margin-top: 50px;
-    }
+  @include grid-column(12, $desktop-nav) margin-bottom: 50px;
+  @include grid-media ($sba-grid-medium) {
+    margin-top: 50px;
+  }
 }
 
 .title {
-    @include grid-column(12)
+  @include grid-column(12);
 }
 
 .step {
-     position: relative;
-    @include grid-media($sba-grid-small) {
-        @include grid-column(6)
-        margin-top: 83px;
+  position: relative;
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6) margin-top: 83px;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(3) margin-top: 83px;
+    &:nth-child(odd) {
+      margin-top: 183px;
     }
-    @include grid-media($sba-grid-medium) {
-        @include grid-column(3)
-        margin-top: 83px;
-        &:nth-child(odd){
-            margin-top: 183px;
-        }
-    }
+  }
 }
 
 .img {
-    width: 100%
+  width: 100%;
 }
 
 .header {
-    margin: 0.8em 0;
+  margin: 0.8em 0;
 }
 
 .line {
-    width: 25px;
-    border-top: 2px solid #609F00;
-    border-bottom: none;
-    margin: 0.8em 0;
-    text-align: left;
+  width: 25px;
+  border-top: 2px solid #609f00;
+  border-bottom: none;
+  margin: 0.8em 0;
+  text-align: left;
 }
 
 .blurb {
-    margin: 0.8em 0;
+  margin: 0.8em 0;
 }
 
 .numbers {
-    font-size: 7.5em;
-    opacity: 0.4;
-    color: #609F00;
-    font-weight: 900;
-    position: absolute;
-    line-height: 75px;
-    top: -59px;
-    left: 30px;
+  font-size: 7.5em;
+  opacity: 0.4;
+  color: #609f00;
+  font-weight: 900;
+  position: absolute;
+  line-height: 75px;
+  top: -59px;
+  left: 30px;
 }
-
-
-
-
-
-
 
 // .section {
 //     position: relative;

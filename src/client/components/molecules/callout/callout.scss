@@ -4,86 +4,84 @@
 @include theme(cobalt-blue, '.callout', $cobalt-blue, #fff, #fff);
 
 .callout {
-    background-image: url('./corner-graphic.png');
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    padding: 40px 40px 40px 40px;
+  background-image: url('./corner-graphic.png');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  padding: 40px 40px 40px 40px;
 }
 
 .noDecoration {
-	background-image: none;
+  background-image: none;
 }
 
 .message {
-	@include font-size($low-contrast-font-sizes);
-	margin-bottom: 30px;
-	font-family: "Source Sans Pro";
-	line-height: 30px;
-	@include grid-media($sba-grid-small){
-		font-style: normal;
-	}
+  @include font-size($low-contrast-font-sizes);
+  margin-bottom: 30px;
+  font-family: 'Source Sans Pro';
+  line-height: 30px;
+  @include grid-media($sba-grid-small) {
+    font-style: normal;
+  }
 }
 
 .title {
-	@include font-size($h1-font-sizes);
+  @include font-size($h1-font-sizes);
 }
 
-@media screen and (max-width: 1260px) and (min-width: 1077px){
-	.title {
-		@include font-size($h2-font-sizes);
-	}
+@media screen and (max-width: 1260px) and (min-width: 1077px) {
+  .title {
+    @include font-size($h2-font-sizes);
+  }
 }
 
-@media screen and (max-width: 930px) and (min-width: 768px){
-	.title {
-		@include font-size($h2-font-sizes);
-	}
+@media screen and (max-width: 930px) and (min-width: 768px) {
+  .title {
+    @include font-size($h2-font-sizes);
+  }
 }
 
 .button {
-	float: left;
-	@include grid-media($sba-grid-small){
-		width: 100%;
-	}
+  float: left;
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
 }
 
 $buttonPadding: 15px;
 
 .noFloat {
-	float: none;
-	margin-left: -#{$buttonPadding}; // This prevents the buttons from becoming off-centered
+  float: none;
+  margin-left: -#{$buttonPadding}; // This prevents the buttons from becoming off-centered
 }
 
-.button > button{
-	margin-bottom: 10px;
-	margin-left: $buttonPadding;
-	margin-right: $buttonPadding;
-	@include grid-media($sba-grid-small){
-		width: 100%;
-	}
+.button > button {
+  margin-bottom: 10px;
+  margin-left: $buttonPadding;
+  margin-right: $buttonPadding;
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
 }
 
-.wideButtons > button{
-    padding-left: 50px;
-    padding-right: 50px;
+.wideButtons > button {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .buttonContainer {
-	
-	button {
-    	margin-left: 0;
-    }
-    
+  button {
+    margin-left: 0;
+  }
 }
 
-.buttonContainer button:nth-child(1){
-	@include grid-media($sba-grid-small){
-		margin-bottom: 15px;
-	}
+.buttonContainer button:nth-child(1) {
+  @include grid-media($sba-grid-small) {
+    margin-bottom: 15px;
+  }
 }
 
-.buttonContainer:after{
-	content: "";
-	display: block;
-	clear: both;
+.buttonContainer:after {
+  content: '';
+  display: block;
+  clear: both;
 }

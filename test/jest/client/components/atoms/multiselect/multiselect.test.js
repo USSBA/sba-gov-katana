@@ -1,14 +1,13 @@
 /*global expect*/
 
 /*eslint-disable no-unused-vars*/
-import React from "react";
+import React from 'react'
 /*eslint-enable no-unused-vars*/
-import ReactSelect from "react-select";
-import { MultiSelect } from "atoms";
-import { shallow } from "enzyme";
-import renderer from "react-test-renderer";
-import _ from "lodash";
-
+import ReactSelect from 'react-select'
+import { MultiSelect } from 'atoms'
+import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
+import _ from 'lodash'
 
 // Does not appear to work with React-Select
 // test('MultiSelect render', () => {
@@ -32,34 +31,44 @@ import _ from "lodash";
 // });
 
 function makeValueLikeReactSelectReturnsIt(x) {
-  return _.map(x, (item) => {
+  return _.map(x, item => {
     return {
       value: item
-    };
-  });
+    }
+  })
 }
 
 test('MultiSelect maximum values', () => {
-  let lastValue = "A,B,C";
+  let lastValue = 'A,B,C'
   function handleChange(newValue) {
-    lastValue = newValue;
+    lastValue = newValue
   }
 
   function simulateChange(component, value) {
-    component.find(ReactSelect).simulate('change', makeValueLikeReactSelectReturnsIt(value));
+    component
+      .find(ReactSelect)
+      .simulate('change', makeValueLikeReactSelectReturnsIt(value))
   }
 
   const component = shallow(
-    <MultiSelect label="Some Label" name="somename" onChange={ handleChange } getValidationState={ "success" } value={ lastValue } options={ ["A", "B", "C", "D", "E", "F", "G", "H"] }
-      autoFocus required maxValues={ 3 }>
-    </MultiSelect>
-  );
-  simulateChange(component, ['B']);
-  expect(lastValue).toEqual("B");
-  simulateChange(component, ['A', 'B']);
-  expect(lastValue).toEqual("A,B");
-  simulateChange(component, ['A', 'B', 'C']);
-  expect(lastValue).toEqual("A,B,C");
-  simulateChange(component, ['A', 'B', 'C', 'D']);
-  expect(lastValue).toEqual("A,B,C");
-});
+    <MultiSelect
+      label="Some Label"
+      name="somename"
+      onChange={handleChange}
+      getValidationState={'success'}
+      value={lastValue}
+      options={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
+      autoFocus
+      required
+      maxValues={3}
+    />
+  )
+  simulateChange(component, ['B'])
+  expect(lastValue).toEqual('B')
+  simulateChange(component, ['A', 'B'])
+  expect(lastValue).toEqual('A,B')
+  simulateChange(component, ['A', 'B', 'C'])
+  expect(lastValue).toEqual('A,B,C')
+  simulateChange(component, ['A', 'B', 'C', 'D'])
+  expect(lastValue).toEqual('A,B,C')
+})

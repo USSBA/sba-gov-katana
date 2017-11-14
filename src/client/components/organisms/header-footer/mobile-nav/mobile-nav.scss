@@ -1,25 +1,26 @@
 .mobileHeader {
-    display: none;
-    background-color: #ffffff;
-    height: 53px;
-    margin: 10px 20px;
-    @include grid-media( $tablet-nav) {
-      display: block;
-    }
-    @include grid-media( $mobile-nav) {
-      display: block;
-    }
+  display: none;
+  background-color: #ffffff;
+  height: 53px;
+  margin: 10px 20px;
+  @include grid-media( $tablet-nav) {
+    display: block;
+  }
+  @include grid-media( $mobile-nav) {
+    display: block;
+  }
 }
 
-.menuButtonOpen, .menuButtonClosed {
-    float: right;
-    border: 2px solid;
-    width: 110px;
-    padding: 10px 13px 11px;
+.menuButtonOpen,
+.menuButtonClosed {
+  float: right;
+  border: 2px solid;
+  width: 110px;
+  padding: 10px 13px 11px;
+  text-decoration: none;
+  &:hover {
     text-decoration: none;
-    &:hover {
-        text-decoration: none;
-    }
+  }
 }
 
 @include theme(sba-blue, '.menuButtonClosed', null, $sba-blue, $sba-blue);
@@ -33,60 +34,60 @@
 @include theme(cobalt-blue, '.menuButtonOpen', null, $cobalt-blue-dark, $cobalt-blue-dark);
 
 .mainNavNew .mobileNavMenuLink {
-    border-bottom: 1px solid #DBDBDB;
-    display: block;
-    padding: 20px 50px;
+  border-bottom: 1px solid #dbdbdb;
+  display: block;
+  padding: 20px 50px;
 }
 
-.mobile-search-new{
-    width: 100%;
+.mobile-search-new {
+  width: 100%;
 }
 
 .mainNavNew {
-    width: 100%;
-    display: none;
-    background-color: #ffffff;
-    overflow: auto;
+  width: 100%;
+  display: none;
+  background-color: #ffffff;
+  overflow: auto;
 }
 
-.mainNavNewShow{
-    display: inherit;
+.mainNavNewShow {
+  display: inherit;
 }
 
 .mobileNavMenuLinks {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .mobileSearchContainerNew {
-    background-color: #EBEBEB;
-    height: 60px;
-    padding: 10px 0;
-    position: relative;
-    width: 100%;
+  background-color: #ebebeb;
+  height: 60px;
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
 }
 
 .searchIconContainerNew {
-    position: absolute;
-    left: 10%;
-    top: 33%;
-    z-index: 1;
+  position: absolute;
+  left: 10%;
+  top: 33%;
+  z-index: 1;
 }
 
 .searchIconNew {
-    width: 15px;
+  width: 15px;
 }
 
 input.searchInputFieldNew {
-    position: relative;
-    height: 40px;
-    width: 90vw;
-    font-size: 16px;
-    color: #666666;
-    text-indent: 10%;
-    border: 1px solid #C4C4C4;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0 auto;
+  position: relative;
+  height: 40px;
+  width: 90vw;
+  font-size: 16px;
+  color: #666666;
+  text-indent: 10%;
+  border: 1px solid #c4c4c4;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 auto;
 }
 
 @include theme(sba-blue, 'a.navLinkSpecialNew', null, $grey, null);
@@ -95,9 +96,9 @@ input.searchInputFieldNew {
 @include theme(cobalt-blue, 'a.navLinkSpecialNew', null, $grey, null);
 
 .linkIcon {
-    height: 18px;
-    width: 17px;
-    vertical-align: middle;
-    margin-top: -2px;
-    margin-right: 12px;
+  height: 18px;
+  width: 17px;
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-right: 12px;
 }

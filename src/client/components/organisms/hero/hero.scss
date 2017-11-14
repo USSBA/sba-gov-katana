@@ -1,49 +1,46 @@
 $hero-container-grid: (
   columns: 12,
-  gutter: 0px,
+  gutter: 0px
 );
 
 .heroContainer {
-	@include grid-column(12, $hero-container-grid);
-	position: relative;
+  @include grid-column(12, $hero-container-grid);
+  position: relative;
 }
 
 .callout {
-	@include grid-media($sba-grid-small){
-		@include grid-column(6);
-		position: relative;
-		bottom: 100px;
-	}
-	@include grid-media($sba-grid-medium){
-		@include grid-column(6);
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-
-	}
-	@include grid-media($sba-grid-large){
-		@include grid-column(5);
-	}
-
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    position: relative;
+    bottom: 100px;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(6);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(5);
+  }
 }
 
 .inHeroWithNoImage {
+  text-align: center;
 
-	text-align: center;
-
-	@include grid-media($sba-grid-small){
-		margin: 0;
-    	width: 100%;
-	}
-	@include grid-media($sba-grid-medium){
-    	width: 100%;
-        padding-top: 20px;
-        padding-bottom: 20px;
-	}
+  @include grid-media($sba-grid-small) {
+    margin: 0;
+    width: 100%;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 .inHeroWithNoImage p {
-    font-weight: lighter;
+  font-weight: lighter;
 }
 
 @include theme(sba-blue, '.inHeroWithNoImage', $sba-blue, #fff, #fff);
@@ -52,39 +49,36 @@ $hero-container-grid: (
 @include theme(cobalt-blue, '.inHeroWithNoImage', $cobalt-blue, #fff, #fff);
 
 .calloutContainer {
-    @include grid-media($sba-grid-medium){
-        width: 60%;
-        margin-left: 20%;
-        margin-right: 20%;
-    }
+  @include grid-media($sba-grid-medium) {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
 }
 
-
-
 .heroDesktopImage {
-	@include grid-media($sba-grid-small){
-		display: none;
-	}
-	@include grid-media($sba-grid-medium){
-		@include grid-column(11);
-		@include grid-push(1)
-	}
-	@include grid-media($sba-grid-large){
-		@include grid-column(10);
-		@include grid-push(2)
-	}
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(11);
+    @include grid-push(1);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(10);
+    @include grid-push(2);
+  }
 }
 
 .heroMobileImageContainer {
-	@include grid-media($sba-grid-small){
-		width: 100%;
-		height: 350px;
-	}
-	@include grid-media($sba-grid-medium){
-		display: none;
-	}
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+    height: 350px;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
 }
-
 
 // .heroDesktopImageContainer {
 // 	@include grid-media($sba-grid-small){
@@ -102,10 +96,10 @@ $hero-container-grid: (
 // }
 
 .heroMobileImage {
-	@include grid-media($sba-grid-small){
-		width: 100%;
-	}
-	@include grid-media($sba-grid-medium){
-		display: none;
-	}
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
 }

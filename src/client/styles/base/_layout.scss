@@ -1,21 +1,21 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body,
 html {
-    //body was messed up with this set - zander
-    //height: 100%;
+  //body was messed up with this set - zander
+  //height: 100%;
 }
 
 body {
-    // @include grid-visual;
-    @include grid-container;
-    margin: 0px;
+  // @include grid-visual;
+  @include grid-container;
+  margin: 0px;
 }

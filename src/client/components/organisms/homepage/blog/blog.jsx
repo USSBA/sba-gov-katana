@@ -1,36 +1,40 @@
-import React from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import moment from "moment";
-import {SmallPrimaryButton, BasicLink} from "atoms";
-import * as ContentActions from "../../../../actions/content.js";
-import styles from "./blog.scss";
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import moment from 'moment'
+import { SmallPrimaryButton, BasicLink } from 'atoms'
+import * as ContentActions from '../../../../actions/content.js'
+import styles from './blog.scss'
 
 class Blog extends React.Component {
   constructor() {
-    super();
-    this.state = {};
+    super()
+    this.state = {}
   }
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("blogs", "blogs");
+    this.props.actions.fetchContentIfNeeded('blogs', 'blogs')
   }
 
   returnFormatedDate(date) {
-    return moment(date, "X").format("MMMM D, YYYY");
+    return moment(date, 'X').format('MMMM D, YYYY')
   }
 
   itemMapperDesktop(items) {
-    var blogThis = this;
+    var blogThis = this
     return (
       <div className={styles.containerDesktop}>
         <div>
           {items.map(function(item, i) {
             return (
               <div key={i} className={styles.blogColumn}>
-                <img className={styles.blogsImage} src={item.imageUrl} alt={item.title}/>
+                <img
+                  className={styles.blogsImage}
+                  src={item.imageUrl}
+                  alt={item.title}
+                />
               </div>
-            );
+            )
           })}
         </div>
         <div>
@@ -38,10 +42,14 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogTitleContainer}>
-                    <BasicLink myClassName={styles.blogTitle} url={item.url} text={item.title}/>
+                  <BasicLink
+                    myClassName={styles.blogTitle}
+                    url={item.url}
+                    text={item.title}
+                  />
                 </div>
               </div>
-            );
+            )
           })}
         </div>
         <div>
@@ -49,73 +57,71 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogInfo}>
-                  {"By " + item.name + " on " + blogThis.returnFormatedDate(item.date)}
+                  {'By ' +
+                    item.name +
+                    ' on ' +
+                    blogThis.returnFormatedDate(item.date)}
                 </div>
               </div>
-            );
+            )
           })}
         </div>
         <div>
           {items.map(function(item, i) {
             return (
               <div key={i} className={styles.blogColumn}>
-                <SmallPrimaryButton text="READ MORE" url={item.url}/>
+                <SmallPrimaryButton text="READ MORE" url={item.url} />
               </div>
-            );
+            )
           })}
         </div>
       </div>
-    );
+    )
   }
 
   itemMapperMobile(items) {
-    var blogThis = this;
+    var blogThis = this
     return (
       <div className={styles.containerMobile}>
         {items.map(function(item, i) {
           return (
-            <BasicLink  key={i} url={item.url}>
-                <div className={styles.singleBlog}>
-                    <div className={styles.blogTitle}>
-                        {item.title}
-                    </div>
-                    <div className={styles.blogInfo}>
-                        {blogThis.returnFormatedDate(item.date)}
-                    </div>
+            <BasicLink key={i} url={item.url}>
+              <div className={styles.singleBlog}>
+                <div className={styles.blogTitle}>{item.title}</div>
+                <div className={styles.blogInfo}>
+                  {blogThis.returnFormatedDate(item.date)}
                 </div>
+              </div>
             </BasicLink>
-          );
+          )
         })}
       </div>
-    );
+    )
   }
 
   render() {
-    let items = [];
+    let items = []
     if (this.props.blog) {
-      items = this.props.blog;
+      items = this.props.blog
     }
 
     return (
       <div className={styles.blogSection}>
-        <div className={styles.sectionTitle}>
-          From the blog.
-        </div>
+        <div className={styles.sectionTitle}>From the blog.</div>
         {this.itemMapperDesktop(items)}
         {this.itemMapperMobile(items)}
       </div>
-    );
+    )
   }
-
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {blog: reduxState.contentReducer.blogs};
+  return { blog: reduxState.contentReducer.blogs }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ContentActions, dispatch)
-  };
+  }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Blog);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Blog)

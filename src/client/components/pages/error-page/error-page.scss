@@ -1,7 +1,6 @@
-.errorPageSearch{
+.errorPageSearch {
   position: relative;
   display: inline-block;
-
 }
 
 .errorPageSearch input {
@@ -18,12 +17,12 @@
   top: 12px;
 }
 
-.errorPageSearchIcon{
+.errorPageSearchIcon {
   cursor: pointer;
 }
 
-.errorContainer{
-  img{
+.errorContainer {
+  img {
     width: 48%;
     float: left;
   }
@@ -31,42 +30,41 @@
   margin-bottom: 10%;
 }
 
-.formContainer{
+.formContainer {
   float: right;
   margin-top: 5%;
-  form{
-      width: 80%;
+  form {
+    width: 80%;
   }
 }
 
-.moon{
-    width: 48%;
+.moon {
+  width: 48%;
 }
 
-.noMoon{
-    width: 96%;
+.noMoon {
+  width: 96%;
 }
 
-.errorContainer:after{
+.errorContainer:after {
   clear: both;
   content: '';
   display: block;
 }
 
-.title{
+.title {
   color: #888888;
 }
 
-.subTitle{
-
+.subTitle {
 }
 
-@include theme("sba-blue", '.errorPageSearchIcon i', null, #757575, null);
-@include theme("byzantine", '.errorPageSearchIcon i', null, #757575, null);
-@include theme("money-green", '.errorPageSearchIcon i', null, #757575, null);
-@include theme("cobalt-blue", '.errorPageSearchIcon i', null, #757575, null);
+@include theme('sba-blue', '.errorPageSearchIcon i', null, #757575, null);
+@include theme('byzantine', '.errorPageSearchIcon i', null, #757575, null);
+@include theme('money-green', '.errorPageSearchIcon i', null, #757575, null);
+@include theme('cobalt-blue', '.errorPageSearchIcon i', null, #757575, null);
 
-@include theme-hover("sba-blue", '.errorPageSearchIcon i', null, $grey-dark, null);
-@include theme-hover("byzantine", '.errorPageSearchIcon i', null, $grey-dark, null);
-@include theme-hover("money-green", '.errorPageSearchIcon i', null, $grey-dark, null);
-@include theme-hover("cobalt-blue", '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover('sba-blue', '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover('byzantine', '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover('money-green', '.errorPageSearchIcon i', null, $grey-dark, null);
+@include theme-hover('cobalt-blue', '.errorPageSearchIcon i', null, $grey-dark, null);

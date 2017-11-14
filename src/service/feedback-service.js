@@ -10,10 +10,9 @@ function saveFeedback(feedback) {
     id: uuid.v4(),
     timestamp: moment().unix()
   });
-  return Feedback.create(newFeedback)
-    .then(function(result) {
-      return result.id;
-    });
+  return Feedback.create(newFeedback).then(function(result) {
+    return result.id;
+  });
 }
 
 function saveFeedbackText(id, feedbackText, honeyPotText) {
@@ -21,35 +20,33 @@ function saveFeedbackText(id, feedbackText, honeyPotText) {
     console.log("Detected submission with honeypot field filled.");
     return Promise.resolve();
   }
-  return Feedback.update({
-    text: feedbackText
-  }, {
-    where: {
-      id: id
+  return Feedback.update(
+    {
+      text: feedbackText
+    },
+    {
+      where: {
+        id: id
+      }
     }
-  });
-
+  );
 }
 
 function getFeedback(sessionId) {
   // the user authorization is here for now; move it to the global ACL when one is implemented
-  return isAdministrator(sessionId)
-    .then((isAdmin) => {
-      if (isAdmin) {
-        return Feedback.findAll({
-          raw: true
-        }).then((data) => {
-          if (data && data.length > 0) {
-            return formatFeedbackData(data);
-          }
-          return "";
-
-        });
-      }
-      throw new Error("FORBIDDEN");
-
-    });
+  return isAdministrator(sessionId).then((isAdmin) => {
+    if (isAdmin) {
+      return Feedback.findAll({
+        raw: true
+      }).then((data) => {
+        if (data && data.length > 0) {
+          return formatFeedbackData(data);
+        }
+        return "";
+      });
+    }
+    throw new Error("FORBIDDEN");
+  });
 }
-
 
 export { saveFeedback, saveFeedbackText, getFeedback };

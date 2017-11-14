@@ -1,15 +1,14 @@
 /*global expect*/
 
-import React from "react";
-import { TextInput } from "atoms";
-import { shallow } from "enzyme";
-
+import React from 'react'
+import { TextInput } from 'atoms'
+import { shallow } from 'enzyme'
 
 test('TextInput', () => {
-  let lastValue = "";
+  let lastValue = ''
   function handleChange(newValue) {
     // console.log(lastValue);
-    lastValue = newValue;
+    lastValue = newValue
   }
   function onBlur(newValue) {
     // console.log("onBlur");
@@ -18,9 +17,19 @@ test('TextInput', () => {
     // console.log("onFocus");
   }
   const component = shallow(
-    <TextInput id="lender-match-name" errorText={ "Error Thing" } label="What is your full name?" name="contactFullName" onChange={ handleChange } value={ lastValue }
-      validationState={ null } autoFocus onBlur={ onBlur } onFocus={ onFocus } />
-  );
-  component.find("input").simulate('change', "Han Solo");
-  expect(lastValue).toEqual("Han Solo");
-});
+    <TextInput
+      id="lender-match-name"
+      errorText={'Error Thing'}
+      label="What is your full name?"
+      name="contactFullName"
+      onChange={handleChange}
+      value={lastValue}
+      validationState={null}
+      autoFocus
+      onBlur={onBlur}
+      onFocus={onFocus}
+    />
+  )
+  component.find('input').simulate('change', 'Han Solo')
+  expect(lastValue).toEqual('Han Solo')
+})

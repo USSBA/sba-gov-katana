@@ -1,11 +1,12 @@
 .bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
-.container {}
+.container {
+}
 
 .container p {
-    display: inline;
-    @include font-size($h5-font-sizes);
-    margin-right: 0.5em;
+  display: inline;
+  @include font-size($h5-font-sizes);
+  margin-right: 0.5em;
 }

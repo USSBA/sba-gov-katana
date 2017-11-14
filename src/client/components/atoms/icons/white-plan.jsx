@@ -1,3 +1,3 @@
-import whiteIconPlan from '../../../../../public/assets/svg/business-guide-icon-white-plan.svg';
+import whiteIconPlan from '../../../../../public/assets/svg/business-guide-icon-white-plan.svg'
 
-export default whiteIconPlan;
+export default whiteIconPlan

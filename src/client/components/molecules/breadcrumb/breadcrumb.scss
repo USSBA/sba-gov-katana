@@ -1,12 +1,12 @@
 .slash {
-    margin-right: 5px;
-    margin-left: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
-@include color-theme(".container a");
+@include color-theme('.container a');
 
 .last a {
-    font-weight: bold;
-    text-decoration: none;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 @include theme(sba-blue, '.last a', null, $base-font-color, $base-font-color);

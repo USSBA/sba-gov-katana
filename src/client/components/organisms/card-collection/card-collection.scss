@@ -1,9 +1,7 @@
-.cardCollection{
-
-	@include grid-collapse;
-
+.cardCollection {
+  @include grid-collapse;
 }
 
-.cardRow{
-    overflow: hidden;
+.cardRow {
+  overflow: hidden;
 }

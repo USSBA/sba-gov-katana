@@ -1,11 +1,7 @@
-import React from "react";
+import React from 'react'
 
 // typography atoms
-import {
-  ExtraLargeTitleText,
-  SubtitleText,
-  CaptionText
-} from "atoms";
+import { ExtraLargeTitleText, SubtitleText, CaptionText } from 'atoms'
 
 // large button atoms
 import {
@@ -13,7 +9,7 @@ import {
   LargeSecondaryButton,
   LargeInversePrimaryButton,
   LargeInverseSecondaryButton
-} from "atoms";
+} from 'atoms'
 
 // small button atoms
 import {
@@ -21,21 +17,13 @@ import {
   SmallSecondaryButton,
   SmallInversePrimaryButton,
   SmallInverseSecondaryButton
-} from "atoms";
+} from 'atoms'
 
 // grey button atoms
-import {
-  LargeGreySecondaryButton,
-  SmallGreySecondaryButton
-} from "atoms";
+import { LargeGreySecondaryButton, SmallGreySecondaryButton } from 'atoms'
 
 // form control atoms
-import {
-  TextInput,
-  TextArea,
-  Radio,
-  Checkbox
-} from "atoms";
+import { TextInput, TextArea, Radio, Checkbox } from 'atoms'
 
 // icon atoms
 import {
@@ -45,13 +33,10 @@ import {
   SearchIcon,
   FailureIcon,
   SuccessIcon
-} from "atoms";
+} from 'atoms'
 
 // miscellaneous atoms
-import {
-  DecorativeDash,
-  DocumentType
-} from "atoms";
+import { DecorativeDash, DocumentType } from 'atoms'
 
 // molecules
 import {
@@ -61,181 +46,184 @@ import {
   CallToAction as CTA,
   TextSection,
   Paginator
-} from "molecules";
+} from 'molecules'
 
 // organisms
-import {
-  Hero,
-  CardCollection,
-  ProgramDetailsCardCollection
-} from "organisms";
+import { Hero, CardCollection, ProgramDetailsCardCollection } from 'organisms'
 
-import styles from "./style-guide.scss";
+import styles from './style-guide.scss'
 
 import HeroDesktopImage from './hero.jpg'
 import HeroMobileImage from './hero-mobile.jpg'
 
 class StyleGuide extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       exampleModalIsOpen: false,
-      paginator:{
-          start: 0,
-          end: 10
+      paginator: {
+        start: 0,
+        end: 10
       },
       paginatorTotal: 98
-    };
+    }
   }
   handleModalExampleClick(e) {
-    e.preventDefault();
+    e.preventDefault()
     this.setState({
       exampleModalIsOpen: !this.state.exampleModalIsOpen
-    });
+    })
   }
 
   handleLargeBtnClicked(e) {
-      e.preventDefault();
+    e.preventDefault()
   }
 
   render() {
+    const oneButtonArray = [
+      {
+        onClickHandler: this.handleLargeBtnClicked,
+        btnText: 'Single Button',
+        btnType: 'LargeInversePrimaryButton'
+      }
+    ]
 
-      const oneButtonArray = [
+    const twoButtonsArray = [
+      {
+        onClickHandler: this.handleLargeBtnClicked,
+        btnText: 'First Button',
+        btnType: 'LargeInversePrimaryButton'
+      },
+      {
+        onClickHandler: this.handleLargeBtnClicked,
+        btnText: 'Second Button',
+        btnType: 'LargeInversePrimaryButton'
+      }
+    ]
 
-        {
-          onClickHandler: this.handleLargeBtnClicked,
-          btnText: "Single Button",
-          btnType: "LargeInversePrimaryButton"
-        }
-      ];
-
-      const twoButtonsArray = [
-          {
-              onClickHandler: this.handleLargeBtnClicked,
-              btnText: "First Button",
-              btnType: "LargeInversePrimaryButton"
-          },
-          {
-              onClickHandler: this.handleLargeBtnClicked,
-              btnText: "Second Button",
-              btnType: "LargeInversePrimaryButton"
-          }
-      ];
-
-
-      const heroMockData = {
-        "summary":"The summary field of a program page will have the text show up here.",
-        "bannerImage":{
-          "type":"bannerImage",
-          "image":{
-            "url":"http://content.sbagov.fearlesstesters.com/sites/default/files/2017-05/sbic-hero-min%20%281%29.jpg",
-            "alt":"The alt text of a banner_image will be here."
-          },
-          "captionText":null,
-          "link":{}
-        }
-      };
-
-      const cardCollectionMockData = [
-        {
-           "type":"card",
-           "image":{
-              "url":"http://images.bigcartel.com/product_images/199085200/Scan309.jpg?auto=format&fit=max&h=300&w=300",
-              "alt":"Business plan"
-           },
-           "link":{
-
-           },
-           "subtitleText":"This type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.",
-           "titleText":"Traditional business plan"
+    const heroMockData = {
+      summary:
+        'The summary field of a program page will have the text show up here.',
+      bannerImage: {
+        type: 'bannerImage',
+        image: {
+          url:
+            'http://content.sbagov.fearlesstesters.com/sites/default/files/2017-05/sbic-hero-min%20%281%29.jpg',
+          alt: 'The alt text of a banner_image will be here.'
         },
-        {
-           "type":"card",
-           "image":{
-              "url":"http://images.bigcartel.com/product_images/192360211/Dexter___Dee_Dee.jpg?auto=format&fit=max&h=300&w=300",
-              "alt":"Business plan"
-           },
-           "link":{
+        captionText: null,
+        link: {}
+      }
+    }
 
-           },
-           "subtitleText":"This type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.",
-           "titleText":"Lean startup plan"
-        }
-      ];
+    const cardCollectionMockData = [
+      {
+        type: 'card',
+        image: {
+          url:
+            'http://images.bigcartel.com/product_images/199085200/Scan309.jpg?auto=format&fit=max&h=300&w=300',
+          alt: 'Business plan'
+        },
+        link: {},
+        subtitleText:
+          'This type of plan is very detailed, takes more time to write, and is comprehensive. Lenders and investors commonly request this plan.',
+        titleText: 'Traditional business plan'
+      },
+      {
+        type: 'card',
+        image: {
+          url:
+            'http://images.bigcartel.com/product_images/192360211/Dexter___Dee_Dee.jpg?auto=format&fit=max&h=300&w=300',
+          alt: 'Business plan'
+        },
+        link: {},
+        subtitleText:
+          'This type of plan is high-level focus, fast to write, and contains key elements only. Some lenders and investors may ask for more information.',
+        titleText: 'Lean startup plan'
+      }
+    ]
 
-    const programDetailsCardCollectionMockData = [{
-        "title": "Title A1",
-        "fullUrl": "/my-path/my-page",
-        "description": "Integer commodo velit ut dui pellentesque sagittis"
-    },{
-        "title": "Title B1",
-        "fullUrl": "/my-path/my-page",
-        "description": "Lorem ipsum dolor sit amet."
-    },{
-        "title": "Title C1",
-        "fullUrl": "/my-path/my-page",
-        "description": "Neque porro quisquam est qui dolorem ipsum quia."
-    },{
-        "title": "Title D1",
-        "fullUrl": "/my-path/my-page",
-        "description": "Suspendisse rutrum viverra nibh, non interdum felis"
-    },{
-        "title": "Title E1",
-        "fullUrl": "/my-path/my-page",
-        "description": "Uia dolor sit amet, consectetur, adipisci velit."
-    },{
-        "title": "Title F1",
-        "fullUrl": "/my-path/my-page",
-        "description": "Cras eget lorem auctor ex commodo."
-    }];
+    const programDetailsCardCollectionMockData = [
+      {
+        title: 'Title A1',
+        fullUrl: '/my-path/my-page',
+        description: 'Integer commodo velit ut dui pellentesque sagittis'
+      },
+      {
+        title: 'Title B1',
+        fullUrl: '/my-path/my-page',
+        description: 'Lorem ipsum dolor sit amet.'
+      },
+      {
+        title: 'Title C1',
+        fullUrl: '/my-path/my-page',
+        description: 'Neque porro quisquam est qui dolorem ipsum quia.'
+      },
+      {
+        title: 'Title D1',
+        fullUrl: '/my-path/my-page',
+        description: 'Suspendisse rutrum viverra nibh, non interdum felis'
+      },
+      {
+        title: 'Title E1',
+        fullUrl: '/my-path/my-page',
+        description: 'Uia dolor sit amet, consectetur, adipisci velit.'
+      },
+      {
+        title: 'Title F1',
+        fullUrl: '/my-path/my-page',
+        description: 'Cras eget lorem auctor ex commodo.'
+      }
+    ]
 
-    const tableMockData = "<table>"
-      + "<thead>"
-      + " <tr>"
-      + "   <th>Thing 1</th>"
-      + "   <th>Thing 2</th>"
-      + "   <th>Thing 3</th>"
-      + "   <th>Thing 4</th>"
-      + " </tr>"
-      + "</thead>"
-      + "<tbody>"
-      + "  <tr>"
-      + "    <td><strong>Lorem ipsum dolor</strong></td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
-      + "  </tr>"
-      + "  <tr>"
-      + "    <td><strong>Lorem ipsum dolor</strong></td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
-      + "  </tr>"
-      + "  <tr>"
-      + "    <td><strong>Lorem ipsum dolor</strong></td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
-      + "  </tr>"
-      + "  <tr>"
-      + "    <td><strong>Lorem ipsum dolor</strong></td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>"
-      + "    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>"
-      + "  </tr>"
-      + "</tbody>"
-      + "</table>";
+    const tableMockData =
+      '<table>' +
+      '<thead>' +
+      ' <tr>' +
+      '   <th>Thing 1</th>' +
+      '   <th>Thing 2</th>' +
+      '   <th>Thing 3</th>' +
+      '   <th>Thing 4</th>' +
+      ' </tr>' +
+      '</thead>' +
+      '<tbody>' +
+      '  <tr>' +
+      '    <td><strong>Lorem ipsum dolor</strong></td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>' +
+      '  </tr>' +
+      '  <tr>' +
+      '    <td><strong>Lorem ipsum dolor</strong></td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>' +
+      '  </tr>' +
+      '  <tr>' +
+      '    <td><strong>Lorem ipsum dolor</strong></td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>' +
+      '  </tr>' +
+      '  <tr>' +
+      '    <td><strong>Lorem ipsum dolor</strong></td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>' +
+      '    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer risus magna, blandit quis tempus sed, consequat ut lorem.</td>' +
+      '  </tr>' +
+      '</tbody>' +
+      '</table>'
 
     return (
       <div>
-        <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)}/>
-        <ButtonGroup/>
-        <ColorPalette/>
+        <Typography
+          onModalExampleClick={this.handleModalExampleClick.bind(this)}
+        />
+        <ButtonGroup />
+        <ColorPalette />
         <h1>Form Inputs</h1>
-        <FormElements/>
-
+        <FormElements />
         <div>
-
           <h1>Heros</h1>
 
           <Hero
@@ -247,29 +235,25 @@ class StyleGuide extends React.Component {
           />
 
           <Hero
-            title={"Hero with Button No-Image"}
+            title={'Hero with Button No-Image'}
             message={heroMockData.summary}
             buttons={oneButtonArray}
           />
           <Hero
-            title={"Hero with Two Buttons"}
+            title={'Hero with Two Buttons'}
             message={heroMockData.summary}
             buttons={twoButtonsArray}
             imageUrl={heroMockData.bannerImage.image.url}
             alt={heroMockData.bannerImage.image.alt}
           />
           <Hero
-            title={"Hero with Two Buttons No Image"}
+            title={'Hero with Two Buttons No Image'}
             message={heroMockData.summary}
             buttons={twoButtonsArray}
           />
-
         </div>
-
         <h1>Calls to Action</h1>
-
         <div className={styles.ctaContainer}>
-
           <CTA
             size="large"
             btnUrl="http://www.example.com/"
@@ -279,11 +263,8 @@ class StyleGuide extends React.Component {
             headline="This is the headline for the Large CTA."
             blurb="This is the blurb for the large CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
           />
-
         </div>
-
         <div className={styles.ctaContainer}>
-
           <CTA
             size="medium"
             btnUrl="http://www.example.com/"
@@ -291,11 +272,8 @@ class StyleGuide extends React.Component {
             headline="This is the headline for the Medium CTA."
             blurb="This is the blurb for the medium CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
           />
-
         </div>
-
         <div className={styles.ctaContainer}>
-
           <CTA
             size="small"
             btnUrl="http://www.example.com/"
@@ -303,264 +281,458 @@ class StyleGuide extends React.Component {
             headline="This is the headline for the Small CTA."
             blurb="This is the blurb for the small CTA. I am not sure how many characters are allowed in here and I am too lazy to count them so I will just put in a bunch. Ok I think this is enough for now."
           />
-
         </div>
-
         <div className={styles.clear} />
-
         <div className={styles.simpleCtaContainer}>
-            <SimpleCta/>
+          <SimpleCta />
         </div>
-
         <h1>Icons (WIP)</h1>
         <Icons />
-
         <div className={styles.clear} />
-
         <h1>Card Collection</h1>
-        <CardCollection parentIndex={0} cards={cardCollectionMockData}/>
-
+        <CardCollection parentIndex={0} cards={cardCollectionMockData} />
         <div className={styles.clear} />
-
         <h1>Program Details Card Collection</h1>
-        <ProgramDetailsCardCollection cards={programDetailsCardCollectionMockData} />;
-
+        <ProgramDetailsCardCollection
+          cards={programDetailsCardCollectionMockData}
+        />;
         <h1>Table</h1>
         <TextSection text={tableMockData} />
-
         <h1>Paginator</h1>
-
-
-        <Paginator id="my-paginator" start={this.state.paginator.start} end={this.state.paginator.end}
-            total={this.state.paginatorTotal}
-            onBack={()=> {this.setState({paginator:{ start: Math.max(0,this.state.paginator.start -10), end: Math.max(0,this.state.paginator.end -10)}})}}
-            onForward={()=> {this.setState({paginator:{ start: Math.min(this.state.paginator.start +10,this.state.paginatorTotal -10), end: Math.min(this.state.paginator.end+10,this.state.paginatorTotal)}})}}/>
-
-
+        <Paginator
+          id="my-paginator"
+          start={this.state.paginator.start}
+          end={this.state.paginator.end}
+          total={this.state.paginatorTotal}
+          onBack={() => {
+            this.setState({
+              paginator: {
+                start: Math.max(0, this.state.paginator.start - 10),
+                end: Math.max(0, this.state.paginator.end - 10)
+              }
+            })
+          }}
+          onForward={() => {
+            this.setState({
+              paginator: {
+                start: Math.min(
+                  this.state.paginator.start + 10,
+                  this.state.paginatorTotal - 10
+                ),
+                end: Math.min(
+                  this.state.paginator.end + 10,
+                  this.state.paginatorTotal
+                )
+              }
+            })
+          }}
+        />
         <h1>Document Type</h1>
         <DocumentType type="sop" number="10 17 6(a)" />
-        
         <div className={styles.clear} />
         <h1>Future components...</h1>
-        {this.state.exampleModalIsOpen
-          ? <SbaModal onClose={() => {
-              this.setState({exampleModalIsOpen: false})
-            }} onClickOk={() => {
-              document.location = "http://www.example.com/"
-            }}/>
-          : <div/>}
+        {this.state.exampleModalIsOpen ? (
+          <SbaModal
+            onClose={() => {
+              this.setState({ exampleModalIsOpen: false })
+            }}
+            onClickOk={() => {
+              document.location = 'http://www.example.com/'
+            }}
+          />
+        ) : (
+          <div />
+        )}
       </div>
-    );
+    )
   }
 }
 
-export default StyleGuide;
+export default StyleGuide
 
-const Typography = ({onModalExampleClick}) => <div className={styles.typography}>
-  <ExtraLargeTitleText text="XL:h1 Source Sans Pro Black"/>
-  <h1>h1 Source Sans Pro Black</h1>
-  <h2>h2 Source Sans Pro Black</h2>
-  <h3>h3 Source Sans Pro Black</h3>
-  <h4>h4 Source Sans Pro Bold</h4>
-  <h5>h5 Merriweather Regular</h5>
-  <SubtitleText text="h5:subtitle Merriweather Regular Italic"/>
-  <h6>h6 Source Sans Pro Bold 18px</h6>
-  <p>Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim. Fusce mattis justo vitae congue varius. Suspendisse auctor dapibus ornare. Praesent venenatis lacus a sem interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur malesuada scelerisque massa varius volutpat.
-  </p>
-  <p>This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus egestas dignissim.</p>
-  <CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor."/>
-  <LargeSecondaryButton text="Click for Modal" onClick={onModalExampleClick}/>
-</div>;
-
-const Buttons = () => <div className={styles.buttons}>
-  <p>
-    <a href="#">Link</a>
-  </p>
-  <br/>
-
-  <h4>Primary</h4>
-  <LargePrimaryButton text="Large Button"/>
-  <br/>
-  <br/>
-  <SmallPrimaryButton text="Small Button"/>
-  <br/>
-  <br/>
-
-  <h4>Secondary</h4>
-  <LargeSecondaryButton text="Large Button"/>
-  <br/>
-  <br/>
-  <SmallSecondaryButton text="Small Button"/>
-  <br/>
-  <br/>
-
-  <h4>Inverse Primary</h4>
-  <div className={styles.background}>
-    <LargeInversePrimaryButton text="Large Button"/>
-    <br/>
-    <br/>
-    <SmallInversePrimaryButton text="Small Button"/>
+const Typography = ({ onModalExampleClick }) => (
+  <div className={styles.typography}>
+    <ExtraLargeTitleText text="XL:h1 Source Sans Pro Black" />
+    <h1>h1 Source Sans Pro Black</h1>
+    <h2>h2 Source Sans Pro Black</h2>
+    <h3>h3 Source Sans Pro Black</h3>
+    <h4>h4 Source Sans Pro Bold</h4>
+    <h5>h5 Merriweather Regular</h5>
+    <SubtitleText text="h5:subtitle Merriweather Regular Italic" />
+    <h6>h6 Source Sans Pro Bold 18px</h6>
+    <p>
+      Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur
+      adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis,
+      lacus tortor posuere nulla, vel sagittis risus mauris ac tortor.
+      Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod
+      lacus ornare risus egestas dignissim. Fusce mattis justo vitae congue
+      varius. Suspendisse auctor dapibus ornare. Praesent venenatis lacus a sem
+      interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur
+      malesuada scelerisque massa varius volutpat.
+    </p>
+    <p>
+      This is just to show spacing between paragraphcs: ipsum dolor sit amet,
+      consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque
+      vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris
+      ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam
+      euismod lacus ornare risus egestas dignissim.
+    </p>
+    <CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor." />
+    <LargeSecondaryButton
+      text="Click for Modal"
+      onClick={onModalExampleClick}
+    />
   </div>
+)
 
-  <h4>Inverse Secondary</h4>
-  <div className={styles.background}>
-    <LargeInverseSecondaryButton text="Large Button"/>
-    <br/>
-    <br/>
-    <SmallInverseSecondaryButton text="Small Button"/>
-  </div>
+const Buttons = () => (
+  <div className={styles.buttons}>
+    <p>
+      <a href="#">Link</a>
+    </p>
+    <br />
 
-  <h4>Grey Secondary</h4>
-  <LargeGreySecondaryButton text="Large Button"/>
-  <br/>
-  <br/>
-  <SmallGreySecondaryButton disabled text="Small Button"/>
-  <br/>
-  <br/>
+    <h4>Primary</h4>
+    <LargePrimaryButton text="Large Button" />
+    <br />
+    <br />
+    <SmallPrimaryButton text="Small Button" />
+    <br />
+    <br />
 
-  <h4>Disabled</h4>
-  <button disabled>Nope</button>
-  <br/>
-  <br/>
-  <br/>
-</div>;
+    <h4>Secondary</h4>
+    <LargeSecondaryButton text="Large Button" />
+    <br />
+    <br />
+    <SmallSecondaryButton text="Small Button" />
+    <br />
+    <br />
 
-const ButtonGroup = () => <div>
-  <div className="sba-blue">
-    <Buttons className={styles.buttons}/>
-  </div>
-  <div className="byzantine">
-    <Buttons className={styles.buttons}/>
-  </div>
-  <div className="money-green">
-    <Buttons className={styles.buttons}/>
-  </div>
-  <div className="cobalt-blue">
-    <Buttons className={styles.buttons}/>
-
-  </div>
-</div>;
-
-const ColorPalette = () => <div>
-  <div className={styles.column}>
-    <h4>SBA Blue</h4>
-    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue}>
-      <p className={styles.colorName}>$sba-blue</p>
-      <p className={styles.colorHex}>#0b97DD</p>
+    <h4>Inverse Primary</h4>
+    <div className={styles.background}>
+      <LargeInversePrimaryButton text="Large Button" />
+      <br />
+      <br />
+      <SmallInversePrimaryButton text="Small Button" />
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedarkest}>
-      <p className={styles.colorName}>$sba-blue-darkest</p>
-      <p className={styles.colorHex}>#004265</p>
+
+    <h4>Inverse Secondary</h4>
+    <div className={styles.background}>
+      <LargeInverseSecondaryButton text="Large Button" />
+      <br />
+      <br />
+      <SmallInverseSecondaryButton text="Small Button" />
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark}>
-      <p className={styles.colorName}>$sba-blue-dark</p>
-      <p className={styles.colorHex}>#006BA2</p>
+
+    <h4>Grey Secondary</h4>
+    <LargeGreySecondaryButton text="Large Button" />
+    <br />
+    <br />
+    <SmallGreySecondaryButton disabled text="Small Button" />
+    <br />
+    <br />
+
+    <h4>Disabled</h4>
+    <button disabled>Nope</button>
+    <br />
+    <br />
+    <br />
+  </div>
+)
+
+const ButtonGroup = () => (
+  <div>
+    <div className="sba-blue">
+      <Buttons className={styles.buttons} />
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelight + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$sba-blue-light</p>
-      <p className={styles.colorHex}>#9DDDFF</p>
+    <div className="byzantine">
+      <Buttons className={styles.buttons} />
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelightest + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$sba-blue-lightest</p>
-      <p className={styles.colorHex}>#D6ECFC</p>
+    <div className="money-green">
+      <Buttons className={styles.buttons} />
+    </div>
+    <div className="cobalt-blue">
+      <Buttons className={styles.buttons} />
     </div>
   </div>
-  <div className={styles.column}>
-    <h4>Byzantine</h4>
-    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine}>
-      <p className={styles.colorName}>$byzantine</p>
-      <p className={styles.colorHex}>#AB3EA0</p>
+)
+
+const ColorPalette = () => (
+  <div>
+    <div className={styles.column}>
+      <h4>SBA Blue</h4>
+      <div
+        className={
+          styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue
+        }
+      >
+        <p className={styles.colorName}>$sba-blue</p>
+        <p className={styles.colorHex}>#0b97DD</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.sbabluedarkest
+        }
+      >
+        <p className={styles.colorName}>$sba-blue-darkest</p>
+        <p className={styles.colorHex}>#004265</p>
+      </div>
+      <div
+        className={
+          styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark
+        }
+      >
+        <p className={styles.colorName}>$sba-blue-dark</p>
+        <p className={styles.colorHex}>#006BA2</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.sbabluelight +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$sba-blue-light</p>
+        <p className={styles.colorHex}>#9DDDFF</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.sbabluelightest +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$sba-blue-lightest</p>
+        <p className={styles.colorHex}>#D6ECFC</p>
+      </div>
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedarkest}>
-      <p className={styles.colorName}>$byzantine-darkest</p>
-      <p className={styles.colorHex}>#511D4C</p>
+    <div className={styles.column}>
+      <h4>Byzantine</h4>
+      <div
+        className={
+          styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine
+        }
+      >
+        <p className={styles.colorName}>$byzantine</p>
+        <p className={styles.colorHex}>#AB3EA0</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.byzantinedarkest
+        }
+      >
+        <p className={styles.colorName}>$byzantine-darkest</p>
+        <p className={styles.colorHex}>#511D4C</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.byzantinedark
+        }
+      >
+        <p className={styles.colorName}>$byzantine-dark</p>
+        <p className={styles.colorHex}>#7E2E76</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.byzantinelight
+        }
+      >
+        <p className={styles.colorName}>$byzantine-light</p>
+        <p className={styles.colorHex}>#C661BB</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.byzantinelightest +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$byzantine-lightest</p>
+        <p className={styles.colorHex}>#C661BB</p>
+      </div>
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedark}>
-      <p className={styles.colorName}>$byzantine-dark</p>
-      <p className={styles.colorHex}>#7E2E76</p>
+    <div className={styles.column}>
+      <h4>Money Green</h4>
+      <div
+        className={
+          styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen
+        }
+      >
+        <p className={styles.colorName}>$money-green</p>
+        <p className={styles.colorHex}>#609F00</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.moneygreendarkest
+        }
+      >
+        <p className={styles.colorName}>$money-green-darkest</p>
+        <p className={styles.colorHex}>#1F3A00</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.moneygreendark
+        }
+      >
+        <p className={styles.colorName}>$money-green-dark</p>
+        <p className={styles.colorHex}>#336200</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.moneygreenlight +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$money-green-light</p>
+        <p className={styles.colorHex}>#8BC03B</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.moneygreenlightest +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$money-green-lightest</p>
+        <p className={styles.colorHex}>#DBEDC0</p>
+      </div>
     </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelight}>
-      <p className={styles.colorName}>$byzantine-light</p>
-      <p className={styles.colorHex}>#C661BB</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelightest + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$byzantine-lightest</p>
-      <p className={styles.colorHex}>#C661BB</p>
+    <div className={styles.column}>
+      <h4>Cobalt Blue</h4>
+      <div
+        className={
+          styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue
+        }
+      >
+        <p className={styles.colorName}>$cobalt-blue</p>
+        <p className={styles.colorHex}>#609F00</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.cobaltbluedarkest
+        }
+      >
+        <p className={styles.colorName}>$cobalt-blue-darkest</p>
+        <p className={styles.colorHex}>#1F3A00</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.cobaltbluedark
+        }
+      >
+        <p className={styles.colorName}>$cobalt-blue-dark</p>
+        <p className={styles.colorHex}>#336200</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.cobaltbluelight +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$cobalt-blue-light</p>
+        <p className={styles.colorHex}>#8BC03B</p>
+      </div>
+      <div
+        className={
+          styles.color +
+          ' ' +
+          styles.colorsecondary +
+          ' ' +
+          styles.cobaltbluelightest +
+          ' ' +
+          styles.textblack
+        }
+      >
+        <p className={styles.colorName}>$cobalt-blue-lightest</p>
+        <p className={styles.colorHex}>#DBEDC0</p>
+      </div>
     </div>
   </div>
-  <div className={styles.column}>
-    <h4>Money Green</h4>
-    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen}>
-      <p className={styles.colorName}>$money-green</p>
-      <p className={styles.colorHex}>#609F00</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendarkest}>
-      <p className={styles.colorName}>$money-green-darkest</p>
-      <p className={styles.colorHex}>#1F3A00</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendark}>
-      <p className={styles.colorName}>$money-green-dark</p>
-      <p className={styles.colorHex}>#336200</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlight + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$money-green-light</p>
-      <p className={styles.colorHex}>#8BC03B</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlightest + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$money-green-lightest</p>
-      <p className={styles.colorHex}>#DBEDC0</p>
-    </div>
-  </div>
-  <div className={styles.column}>
-    <h4>Cobalt Blue</h4>
-    <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue}>
-      <p className={styles.colorName}>$cobalt-blue</p>
-      <p className={styles.colorHex}>#609F00</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedarkest}>
-      <p className={styles.colorName}>$cobalt-blue-darkest</p>
-      <p className={styles.colorHex}>#1F3A00</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedark}>
-      <p className={styles.colorName}>$cobalt-blue-dark</p>
-      <p className={styles.colorHex}>#336200</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelight + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$cobalt-blue-light</p>
-      <p className={styles.colorHex}>#8BC03B</p>
-    </div>
-    <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelightest + ' ' + styles.textblack}>
-      <p className={styles.colorName}>$cobalt-blue-lightest</p>
-      <p className={styles.colorHex}>#DBEDC0</p>
-    </div>
-  </div>
-</div>;
+)
 
 class FormElements extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      textAreaValue: "",
-      radioBtnValue: "",
+      textAreaValue: '',
+      radioBtnValue: '',
       checkBoxFields: {
         checkbox1: false,
         checkbox2: false,
         checkbox3: false
       }
-    };
+    }
   }
 
   handleTextAreaChange(e) {
-    this.setState({textAreaValue: e.target.value})
+    this.setState({ textAreaValue: e.target.value })
   }
 
   handleRadioBtnChange(newValue) {
-    this.setState({radioBtnValue: newValue})
+    this.setState({ radioBtnValue: newValue })
   }
 
   handleCheckBoxChange(e) {
-    let newState = {};
-    newState[e.target.name] = e.target.checked;
+    let newState = {}
+    newState[e.target.name] = e.target.checked
     this.setState({
       checkBoxFields: {
         ...this.state.checkBoxFields,
@@ -572,92 +744,208 @@ class FormElements extends React.Component {
   render() {
     let radioButtonOptions = [
       {
-        value: "Less than 1 year",
-        text: "Less than 1 year"
-      }, {
-        value: "1-2 years",
-        text: "1-2 years"
-      }, {
-        value: "2-5 years",
-        text: "2-5 years"
-      }, {
-        value: "5+ years",
-        text: "5+ years"
+        value: 'Less than 1 year',
+        text: 'Less than 1 year'
+      },
+      {
+        value: '1-2 years',
+        text: '1-2 years'
+      },
+      {
+        value: '2-5 years',
+        text: '2-5 years'
+      },
+      {
+        value: '5+ years',
+        text: '5+ years'
       }
     ]
 
     return (
       <div className={styles.formElements}>
         <div className={styles.inputContainer}>
-          <TextInput id="lender-match-zero" errorText={"Please enter the correct thing."} label="What is the normal state?" validationState={""}/>
-          <TextInput id="lender-match-one" errorText={"Please enter the correct thing."} label="What is the success state?" validationState={"success"} value="Good Data" onChange={() => {}}/>
-          <TextInput id="lender-match-four" errorText={"Please enter the correct thing."} label="What does it look like without a success icon?" validationState={"success"} showSuccessIcon={false} value="Good Data" onChange={() => {}}/>
-          <TextInput id="lender-match-two" errorText={"Please enter the correct thing."} label="What does the error state look like?" validationState={"error"} value="Bad Data" onChange={() => {}}/>
-          <TextInput id="lender-match-three" errorText={"Please enter the correct thing."} label="What does it look like with an error icon?" validationState={"error"} showErrorIcon={true} value="Bad Data" onChange={() => {}}/>
-          <TextArea id="lender-match-textarea-1" errorText={"Please enter the correct thing."} onChange={(e) => {
-            this.handleTextAreaChange(e)
-          }} value={this.state.textAreaValue} label="Describe how you plan to use these funds" name="loanDescription" validationState={""} placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."/>
-          <TextArea id="lender-match-textarea-2" errorText={"Please enter the correct thing."} onChange={(e) => {
-            this.handleTextAreaChange(e)
-          }} value={this.state.textAreaValue} label="TextArea with success" name="loanDescription" validationState={"success"} placeholder="Notice the success state"/>
-          <TextArea id="lender-match-textarea-3" errorText={"Please enter the correct thing."} onChange={(e) => {
-            this.handleTextAreaChange(e)
-          }} value={this.state.textAreaValue} label="TextArea with error" name="loanDescription" validationState={"error"} placeholder="Notice the error state"/>
+          <TextInput
+            id="lender-match-zero"
+            errorText={'Please enter the correct thing.'}
+            label="What is the normal state?"
+            validationState={''}
+          />
+          <TextInput
+            id="lender-match-one"
+            errorText={'Please enter the correct thing.'}
+            label="What is the success state?"
+            validationState={'success'}
+            value="Good Data"
+            onChange={() => {}}
+          />
+          <TextInput
+            id="lender-match-four"
+            errorText={'Please enter the correct thing.'}
+            label="What does it look like without a success icon?"
+            validationState={'success'}
+            showSuccessIcon={false}
+            value="Good Data"
+            onChange={() => {}}
+          />
+          <TextInput
+            id="lender-match-two"
+            errorText={'Please enter the correct thing.'}
+            label="What does the error state look like?"
+            validationState={'error'}
+            value="Bad Data"
+            onChange={() => {}}
+          />
+          <TextInput
+            id="lender-match-three"
+            errorText={'Please enter the correct thing.'}
+            label="What does it look like with an error icon?"
+            validationState={'error'}
+            showErrorIcon={true}
+            value="Bad Data"
+            onChange={() => {}}
+          />
+          <TextArea
+            id="lender-match-textarea-1"
+            errorText={'Please enter the correct thing.'}
+            onChange={e => {
+              this.handleTextAreaChange(e)
+            }}
+            value={this.state.textAreaValue}
+            label="Describe how you plan to use these funds"
+            name="loanDescription"
+            validationState={''}
+            placeholder="I plan to purchase a larger oven to double the number of pizzas I can serve in an hour..."
+          />
+          <TextArea
+            id="lender-match-textarea-2"
+            errorText={'Please enter the correct thing.'}
+            onChange={e => {
+              this.handleTextAreaChange(e)
+            }}
+            value={this.state.textAreaValue}
+            label="TextArea with success"
+            name="loanDescription"
+            validationState={'success'}
+            placeholder="Notice the success state"
+          />
+          <TextArea
+            id="lender-match-textarea-3"
+            errorText={'Please enter the correct thing.'}
+            onChange={e => {
+              this.handleTextAreaChange(e)
+            }}
+            value={this.state.textAreaValue}
+            label="TextArea with error"
+            name="loanDescription"
+            validationState={'error'}
+            placeholder="Notice the error state"
+          />
 
-          <Radio gropuId="lender-match-radio-1" errorText={"Please enter the correct thing."} onChange={(e) => {
-            this.handleRadioBtnChange(e)
-          }} value={this.state.radioBtnValue} label="How much experience do you have?" name="industryExperience" validationState={""} options={radioButtonOptions}/>
-          <label style={{
-            marginTop: "40px"
-          }}>Select all that apply to you:</label>
-          <Checkbox id="lender-match-checkbox-1" name="checkbox1" label="This is the first checkbox" handleChange={(e) => {
-            this.handleCheckBoxChange(e)
-          }} checked={this.state.checkBoxFields.checkbox1}/>
-          <Checkbox id="lender-match-checkbox-2" name="checkbox2" label="This is the second checkbox" handleChange={(e) => {
-            this.handleCheckBoxChange(e)
-          }} checked={this.state.checkBoxFields.checkbox2}/>
-          <Checkbox id="lender-match-checkbox-3" name="checkbox3" label="This is the third checkbox" handleChange={(e) => {
-            this.handleCheckBoxChange(e)
-          }} checked={this.state.checkBoxFields.checkbox3}/>
+          <Radio
+            gropuId="lender-match-radio-1"
+            errorText={'Please enter the correct thing.'}
+            onChange={e => {
+              this.handleRadioBtnChange(e)
+            }}
+            value={this.state.radioBtnValue}
+            label="How much experience do you have?"
+            name="industryExperience"
+            validationState={''}
+            options={radioButtonOptions}
+          />
+          <label
+            style={{
+              marginTop: '40px'
+            }}
+          >
+            Select all that apply to you:
+          </label>
+          <Checkbox
+            id="lender-match-checkbox-1"
+            name="checkbox1"
+            label="This is the first checkbox"
+            handleChange={e => {
+              this.handleCheckBoxChange(e)
+            }}
+            checked={this.state.checkBoxFields.checkbox1}
+          />
+          <Checkbox
+            id="lender-match-checkbox-2"
+            name="checkbox2"
+            label="This is the second checkbox"
+            handleChange={e => {
+              this.handleCheckBoxChange(e)
+            }}
+            checked={this.state.checkBoxFields.checkbox2}
+          />
+          <Checkbox
+            id="lender-match-checkbox-3"
+            name="checkbox3"
+            label="This is the third checkbox"
+            handleChange={e => {
+              this.handleCheckBoxChange(e)
+            }}
+            checked={this.state.checkBoxFields.checkbox3}
+          />
         </div>
       </div>
-    );
+    )
   }
 }
 
-const Icons = () => <div className={styles.columnHalf}>
-      <ul className={styles.icons}>
-        <li>
-          <div><FailureIcon aria-hidden="true" /></div>
-          <p>Failure</p>
-          </li>
-        <li>
-          <div><SuccessIcon aria-hidden="true" /></div>
-          <p>Success</p>
-        </li>
-        <li>
-          <div><CaretIcon aria-hidden="true" /></div>
-          <p>Caret (can be rotated/flipped to different directions. Used in dropdown, etc)</p>
-        </li>
-        <li>
-          <div><SearchIcon aria-hidden="true" /></div>
-          <p>Search</p>
-        </li>
-        <li>
-          <div><CloseIcon aria-hidden="true" /></div>
-          <p>Close button (modal)</p>
-        </li>
-        <li>
-          <div><HomeIcon aria-hidden="true" /></div>
-          <p>Home icon in breadcrumbs (Changes to theme color)</p>
-        </li>
-        <li>
-          <div>
-            <DecorativeDash aria-hidden="true" />
-          </div>
-            <p>Decorative dash that goes between title and blurb in Cards (Changes to theme color)</p>
-        </li>
-      </ul>
-    </div>
+const Icons = () => (
+  <div className={styles.columnHalf}>
+    <ul className={styles.icons}>
+      <li>
+        <div>
+          <FailureIcon aria-hidden="true" />
+        </div>
+        <p>Failure</p>
+      </li>
+      <li>
+        <div>
+          <SuccessIcon aria-hidden="true" />
+        </div>
+        <p>Success</p>
+      </li>
+      <li>
+        <div>
+          <CaretIcon aria-hidden="true" />
+        </div>
+        <p>
+          Caret (can be rotated/flipped to different directions. Used in
+          dropdown, etc)
+        </p>
+      </li>
+      <li>
+        <div>
+          <SearchIcon aria-hidden="true" />
+        </div>
+        <p>Search</p>
+      </li>
+      <li>
+        <div>
+          <CloseIcon aria-hidden="true" />
+        </div>
+        <p>Close button (modal)</p>
+      </li>
+      <li>
+        <div>
+          <HomeIcon aria-hidden="true" />
+        </div>
+        <p>Home icon in breadcrumbs (Changes to theme color)</p>
+      </li>
+      <li>
+        <div>
+          <DecorativeDash aria-hidden="true" />
+        </div>
+        <p>
+          Decorative dash that goes between title and blurb in Cards (Changes to
+          theme color)
+        </p>
+      </li>
+    </ul>
+  </div>
+)
 
-export {FormElements}
+export { FormElements }

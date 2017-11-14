@@ -1,9 +1,12 @@
-const reviewSubmitInfoReducer = (state = {
+const reviewSubmitInfoReducer = (
+  state = {
     matching: false,
     matched: false,
     matchedResponse: [],
     error: null
-  }, action) => {
+  },
+  action
+) => {
   switch (action.type) {
     case "MATCH_FORM_DATA_START": {
       return {
@@ -31,6 +34,5 @@ const reviewSubmitInfoReducer = (state = {
     }
   }
 };
-
 
 export default reviewSubmitInfoReducer;

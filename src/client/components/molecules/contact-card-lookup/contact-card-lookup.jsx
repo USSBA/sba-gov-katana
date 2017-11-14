@@ -1,44 +1,58 @@
-import React from "react";
-import _ from "lodash";
-import styles from "./contact-card-lookup.scss";
-import states from "../../../services/us-states.json";
-import {MultiSelect} from "atoms";
-import LinkCard from "../link-card/link-card.jsx"
+import React from 'react'
+import _ from 'lodash'
+import styles from './contact-card-lookup.scss'
+import states from '../../../services/us-states.json'
+import { MultiSelect } from 'atoms'
+import LinkCard from '../link-card/link-card.jsx'
 
 class ContactCardLookup extends React.Component {
-
   constructor() {
-    super();
+    super()
     this.state = {
       displayedItems: [],
       noContacts: false,
       value: null,
       numberOfTimesUserHasSelectedAState: 0
-    };
+    }
   }
 
   handleChange(selectValue) {
-    let newValueLabel = selectValue.label;
-    let newDisplayedItems = [];
-    if(this.props.items && this.props.items.length > 0 && this.props.items[0].stateServed && _.isArray(this.props.items[0].stateServed)){
-        newDisplayedItems = _.filter(this.props.items, (item)=>{
-            return _.includes(item.stateServed, newValueLabel);
-        });
-    }else{
-        newDisplayedItems = _.filter(this.props.items, {stateServed: newValueLabel});
+    let newValueLabel = selectValue.label
+    let newDisplayedItems = []
+    if (
+      this.props.items &&
+      this.props.items.length > 0 &&
+      this.props.items[0].stateServed &&
+      _.isArray(this.props.items[0].stateServed)
+    ) {
+      newDisplayedItems = _.filter(this.props.items, item => {
+        return _.includes(item.stateServed, newValueLabel)
+      })
+    } else {
+      newDisplayedItems = _.filter(this.props.items, {
+        stateServed: newValueLabel
+      })
     }
-    this.setState({
-      value: selectValue.value,
-      displayedItems: newDisplayedItems,
-      numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState + 1
-    }, () => {
-      this.state.displayedItems.length < 1
-        ? this.setState({noContacts: true})
-        : this.setState({noContacts: false});
-      if (this.props.afterChange) {
-        this.props.afterChange(this.props.name, newValueLabel, this.state.numberOfTimesUserHasSelectedAState);
+    this.setState(
+      {
+        value: selectValue.value,
+        displayedItems: newDisplayedItems,
+        numberOfTimesUserHasSelectedAState:
+          this.state.numberOfTimesUserHasSelectedAState + 1
+      },
+      () => {
+        this.state.displayedItems.length < 1
+          ? this.setState({ noContacts: true })
+          : this.setState({ noContacts: false })
+        if (this.props.afterChange) {
+          this.props.afterChange(
+            this.props.name,
+            newValueLabel,
+            this.state.numberOfTimesUserHasSelectedAState
+          )
+        }
       }
-    });
+    )
   }
 
   handleFocus() {}
@@ -47,40 +61,45 @@ class ContactCardLookup extends React.Component {
 
   render() {
     let statesMap = _.map(states, function(item) {
-      return {label: item.name, value: item.value};
-    });
+      return { label: item.name, value: item.value }
+    })
     let multiselectProps = {
-      id: "lookup-select",
-      errorText: "Please select a state",
-      label: "",
-      name: "state-lookup",
+      id: 'lookup-select',
+      errorText: 'Please select a state',
+      label: '',
+      name: 'state-lookup',
       onChange: this.handleChange.bind(this),
-      validationState: "",
+      validationState: '',
       value: this.state.value,
       options: statesMap,
       onBlur: this.handleBlur.bind(this),
       autoFocus: false,
       multi: false,
       onFocus: this.handleFocus.bind(this)
-    };
+    }
     return (
       <div>
         <div className={styles.container}>
           <div className={styles.titleContainer}>
-            <h4 key={6} className={styles.title}>{this.props.title || "Look up your state"}</h4>
+            <h4 key={6} className={styles.title}>
+              {this.props.title || 'Look up your state'}
+            </h4>
           </div>
           <div key={1} className={styles.selectContainer}>
-            <MultiSelect {...multiselectProps}></MultiSelect>
+            <MultiSelect {...multiselectProps} />
           </div>
-          <div key={2} className={styles.dataContainer}>{this.state.displayedItems.map(this.props.cardRenderer)}</div>
+          <div key={2} className={styles.dataContainer}>
+            {this.state.displayedItems.map(this.props.cardRenderer)}
+          </div>
 
-          {this.state.noContacts
-            ? <div key={5} className={styles.noContacts}>No contacts found for this State</div>
-            : null}
-
+          {this.state.noContacts ? (
+            <div key={5} className={styles.noContacts}>
+              No contacts found for this State
+            </div>
+          ) : null}
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -90,19 +109,19 @@ ContactCardLookup.propTypes = {
   afterChange: React.PropTypes.func,
   name: React.PropTypes.string,
   cardRenderer: React.PropTypes.func
-};
+}
 
 ContactCardLookup.defaultProps = {
-  title: "Lookup Title",
+  title: 'Lookup Title',
   items: [],
   afterChange: () => {},
-  name: "state-lookup",
+  name: 'state-lookup',
   cardRenderer: (item, index) => {
     return (
       <div key={index}>
-        <LinkCard {...item}/>
+        <LinkCard {...item} />
       </div>
-    );
+    )
   }
-};
-export default ContactCardLookup;
+}
+export default ContactCardLookup

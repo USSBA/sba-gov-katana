@@ -1,21 +1,21 @@
-.container{
-    margin-top: 100px;
-    background-color: white;
-    @include grid-column(3, $sba-grid-large);
-    @include grid-push(3);
+.container {
+  margin-top: 100px;
+  background-color: white;
+  @include grid-column(3, $sba-grid-large);
+  @include grid-push(3);
 }
 
-.imageThing{
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    background-color: purple;
+.imageThing {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-color: purple;
 }
 
 .divider {
-	display: inline-block;
-	width: 100%;
-	height: 200px;
-	background-color: grey;
-	color: white;
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  background-color: grey;
+  color: white;
 }

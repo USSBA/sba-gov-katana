@@ -9,7 +9,9 @@ function registerUserForNewsletter(req, res) {
       })
       .catch((error) => {
         console.error(error);
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send("Error registering user for newsletter.");
+        res
+          .status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .send("Error registering user for newsletter.");
       });
   } else {
     res.status(HttpStatus.BAD_REQUEST).send("Error registering user.");

@@ -5,20 +5,22 @@ import HttpStatus from "http-status-codes";
 import _ from "lodash";
 import winston from "winston";
 
-
 function get(resource, query, headers) {
   const formattedOptions = {
     url: "/api/content/" + resource + ".json",
     params: query,
-    baseURL: config.get("daisho.hostname") + (config.has("daisho.port") ? ":" + config.get("daisho.port") : ""),
+    baseURL:
+      config.get("daisho.hostname") +
+      (config.has("daisho.port") ? ":" + config.get("daisho.port") : ""),
     headers: {
-      "Accepts": "application/json",
+      Accepts: "application/json",
       ...headers
     }
   };
 
   return Promise.resolve().then(() => {
-    return axios.request(formattedOptions)
+    return axios
+      .request(formattedOptions)
       .then(function(response) {
         if (response && response.data) {
           //   winston.info("Response from Daisho ", response.data);
@@ -38,18 +40,24 @@ function del(resource) {
   const options = {
     method: "delete",
     url: "/api/content/" + resource + ".json",
-    baseURL: config.get("daisho.hostname") + (config.has("daisho.port") ? ":" + config.get("daisho.port") : "")
+    baseURL:
+      config.get("daisho.hostname") +
+      (config.has("daisho.port") ? ":" + config.get("daisho.port") : "")
   };
   winston.info("Submitting request to ", options);
 
   return Promise.resolve().then(() => {
-    return axios.request(options)
+    return axios
+      .request(options)
       .then(function(response) {
         if (response && response.status === HttpStatus.NO_CONTENT) {
           winston.info("Response from Daisho ", response.data);
           return response.data;
         } else {
-          throw new Error("Error encountered contacting the daisho client, recieved " + response.status);
+          throw new Error(
+            "Error encountered contacting the daisho client, recieved " +
+              response.status
+          );
         }
       })
       .catch(function(error) {
@@ -58,6 +66,5 @@ function del(resource) {
       });
   });
 }
-
 
 export { get, del };

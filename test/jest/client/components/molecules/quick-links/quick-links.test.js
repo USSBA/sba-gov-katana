@@ -1,22 +1,20 @@
-import React from "react";
-import { QuickLinks } from "client/components/molecules/quick-links/quick-links.jsx";
-import { shallow } from "enzyme";
-import renderer from "react-test-renderer";
+import React from 'react'
+import { QuickLinks } from 'client/components/molecules/quick-links/quick-links.jsx'
+import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
-jest.mock("client/services/client-config.js", function() {
+jest.mock('client/services/client-config.js', function() {
   return {
     googleAnalytics: {
       enabled: false
     }
-  };
-});
+  }
+})
 
-const fetchContentIfNeeded = jest.fn();
+const fetchContentIfNeeded = jest.fn()
 
-describe("QuickLinks", () => {
-
-  test("to match snapshot", () => {
-
+describe('QuickLinks', () => {
+  test('to match snapshot', () => {
     const testProps = {
       actions: {
         fetchContentIfNeeded: fetchContentIfNeeded
@@ -24,57 +22,58 @@ describe("QuickLinks", () => {
       navigation: {
         locationChange: {}
       }
-    };
+    }
 
     const mockItem = {
-      type: "quickLinks",
+      type: 'quickLinks',
       typeOfLinks: [
         {
-          type: "documentLookup",
+          type: 'documentLookup',
           documentActivity: [],
-          documentProgram: ["CDC/504"],
-          documentType: ["SOP"],
-          sectionHeaderText: "SOPs"
+          documentProgram: ['CDC/504'],
+          documentType: ['SOP'],
+          sectionHeaderText: 'SOPs'
         },
         {
-          type: "documentLookup",
+          type: 'documentLookup',
           documentActivity: [],
-          documentProgram: ["7(a)"],
-          documentType: ["Information notice"],
-          sectionHeaderText: "Policy guidance"
+          documentProgram: ['7(a)'],
+          documentType: ['Information notice'],
+          sectionHeaderText: 'Policy guidance'
         },
         {
-          type: "ratesList",
+          type: 'ratesList',
           rate: [
             {
-              type: "rate",
-              name: "SBA LIBOR Base Rate",
+              type: 'rate',
+              name: 'SBA LIBOR Base Rate',
               percent: 4.08
             },
             {
-              type: "rate",
-              name: "SBA Peg Rate",
+              type: 'rate',
+              name: 'SBA Peg Rate',
               percent: 6.08
             },
             {
-              type: "rate",
-              name: "SBA FIXED Base Rate",
+              type: 'rate',
+              name: 'SBA FIXED Base Rate',
               percent: 2.625
             }
           ],
-          sectionHeaderText: "Rates"
-        }, {
-          type: "articleLookup",
+          sectionHeaderText: 'Rates'
+        },
+        {
+          type: 'articleLookup',
           articleProgram: null,
-          sectionHeaderText: "Articles"
+          sectionHeaderText: 'Articles'
         }
       ]
-    };
+    }
 
-    const component = renderer.create(<QuickLinks data={ mockItem } {...testProps} />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-
-  });
-
-});
+    const component = renderer.create(
+      <QuickLinks data={mockItem} {...testProps} />
+    )
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+})

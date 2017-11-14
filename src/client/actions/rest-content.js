@@ -14,11 +14,14 @@ function receiveContent(type, id, data) {
 function fetchContent(type, id) {
   return (dispatch) => {
     dispatch(receiveContent(type, id));
-    return axios.get("/api/content/" + type + (id ? "/" + id : "") + ".json").then((response) => {
-      return response.data;
-    }).then((data) => {
-      return dispatch(receiveContent(type, id, data));
-    });
+    return axios
+      .get("/api/content/" + type + (id ? "/" + id : "") + ".json")
+      .then((response) => {
+        return response.data;
+      })
+      .then((data) => {
+        return dispatch(receiveContent(type, id, data));
+      });
   };
 }
 

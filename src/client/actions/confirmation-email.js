@@ -10,9 +10,10 @@ export function resendConfirmationEmail(emailAddress) {
       action: "Resend Email Button Pushed",
       label: ""
     });
-    axios.post(constants.routes.confirmationEmail, {
-      emailAddress: emailAddress
-    })
+    axios
+      .post(constants.routes.confirmationEmail, {
+        emailAddress: emailAddress
+      })
       .then((response) => {
         dispatch({
           type: "RESEND_CONFIRMATION_EMAIL_SUCCESS",

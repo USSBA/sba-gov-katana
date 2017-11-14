@@ -13,7 +13,6 @@ function createCtaNavigation(targetLocation, category, action, value) {
   });
 }
 
-
 const matchingLocations = [];
 
 // eslint-disable-next-line complexity
@@ -24,27 +23,37 @@ function navigateNow(targetLocation, eventConfig) {
     });
     const isHandledRoute = _.compact(mapped).length > 0;
     const startsWithHttp = _.startsWith(targetLocation, "http");
-    const sbicSpecialCaseToAllowServerRedirect = targetLocation === "/partners/sbic" && !clientConfig.showSbic;
+    const sbicSpecialCaseToAllowServerRedirect =
+      targetLocation === "/partners/sbic" && !clientConfig.showSbic;
     if (eventConfig) {
       logEvent({
         category: eventConfig.category || "Navigation",
-        action: eventConfig.action || `Location Change Request: ${targetLocation}`,
-        label: eventConfig.label || browserHistory.getCurrentLocation().pathname,
+        action:
+          eventConfig.action || `Location Change Request: ${targetLocation}`,
+        label:
+          eventConfig.label || browserHistory.getCurrentLocation().pathname,
         value: eventConfig.value || null
       });
     }
-    if ((targetLocation === "/" || isHandledRoute) && !startsWithHttp && !sbicSpecialCaseToAllowServerRedirect) {
+    if (
+      (targetLocation === "/" || isHandledRoute) &&
+      !startsWithHttp &&
+      !sbicSpecialCaseToAllowServerRedirect
+    ) {
       browserHistory.push(targetLocation);
-      if (targetLocation.indexOf("#") === -1) { //eslint-disable-line no-magic-numbers
+      if (targetLocation.indexOf("#") === -1) {
+        //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
       }
     } else {
       document.location = targetLocation;
     }
   } else {
-    console.log("WARNING: navigateNow passed a null target location; here's the eventConfig", eventConfig);
+    console.log(
+      "WARNING: navigateNow passed a null target location; here's the eventConfig",
+      eventConfig
+    );
   }
-
 }
 
 function createNavigation(targetLocation, eventConfig) {

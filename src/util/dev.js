@@ -5,17 +5,20 @@ export function enableWebpackHotModuleReplacement(app, silent) {
   const webpack = require("webpack"); // eslint-disable-line global-require
   const webpackConfig = require("../../webpack.config.development")(); // eslint-disable-line global-require
   const compiler = webpack(webpackConfig);
-  app.use(require("webpack-dev-middleware")(compiler, { // eslint-disable-line global-require
-    publicPath: webpackConfig.output.publicPath,
-    noInfo: silent
-  }));
+  app.use(
+    require("webpack-dev-middleware")(compiler, {
+      // eslint-disable-line global-require
+      publicPath: webpackConfig.output.publicPath,
+      noInfo: silent
+    })
+  );
 
   app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
 }
 
-
 export function addDevelopmentErrorHandler(app) {
-  app.use(function(err, req, res, next) { // eslint-disable-line no-unused-vars
+  app.use(function(err, req, res, next) {
+    // eslint-disable-line no-unused-vars
     if (err) {
       console.log(err);
       if (req.xhr) {

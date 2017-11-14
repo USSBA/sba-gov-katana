@@ -1,7 +1,6 @@
 import HttpStatus from "http-status-codes";
 import { get } from "../models/dao/size-standards-client.js";
 
-
 function responseWithResultAsJson(res) {
   return (data) => {
     return res.status(HttpStatus.OK).json(data);
@@ -22,7 +21,6 @@ function getNaicsById(req, res, next) {
   }
 }
 
-
 function getNaicsPropertyById(req, res, next) {
   if (req.params && req.params.id && req.params.property) {
     get("naics/" + req.params.id + "/" + req.params.property)
@@ -33,17 +31,19 @@ function getNaicsPropertyById(req, res, next) {
   }
 }
 
-
 function determineIfSmallBusiness(req, res, next) {
   if (req.query && req.query.id) {
     get("isSmallBusiness/", req.query)
       .then(responseWithResultAsJson(res))
       .catch(next);
-
   } else {
     res.status(HttpStatus.BAD_REQUEST).send("Missing query param id)");
   }
 }
 
-
-export { getNaics, getNaicsById, getNaicsPropertyById, determineIfSmallBusiness };
+export {
+  getNaics,
+  getNaicsById,
+  getNaicsPropertyById,
+  determineIfSmallBusiness
+};

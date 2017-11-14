@@ -1,4 +1,4 @@
-#{$all-buttons}{
+#{$all-buttons} {
   appearance: none;
   background-color: $sba-blue;
   border: 2px solid;
@@ -10,7 +10,7 @@
   -webkit-font-smoothing: antialiased;
   font-weight: 900;
   line-height: 1;
-  padding: .75em 1.25em;
+  padding: 0.75em 1.25em;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -28,7 +28,7 @@
 
   &:disabled {
     cursor: not-allowed;
-    background-color: #C4C4C4;
+    background-color: #c4c4c4;
     color: #fff;
   }
 }

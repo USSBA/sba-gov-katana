@@ -15,7 +15,6 @@ export function callToAction(targetLocation, category, action, value) {
   };
 }
 
-
 export function locationChange(targetLocation, eventConfig) {
   return function(dispatch) {
     browserHistory.push(targetLocation);

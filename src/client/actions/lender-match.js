@@ -42,7 +42,8 @@ export function matchFormData(reviewSubmitInfoData) {
     dispatch({
       type: "MATCH_FORM_DATA_START"
     });
-    axios.post(constants.routes.submitForm, reviewSubmitInfoData)
+    axios
+      .post(constants.routes.submitForm, reviewSubmitInfoData)
       .then((response) => {
         dispatch({
           type: "MATCH_FORM_DATA_SUCCESS",

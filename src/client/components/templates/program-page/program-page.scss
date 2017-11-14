@@ -4,18 +4,17 @@
 .sectionHeader,
 .textSection,
 .image {
-	@include grid-media($sba-grid-medium-and-small){
-		@include grid-column(6, $sba-grid-medium-and-small);
-	}
-  @include grid-media($sba-grid-large){
-  	@include grid-column(8, $sba-grid-large)
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $sba-grid-medium-and-small);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8, $sba-grid-large);
   }
 }
 
 .sectionHeader {
-	margin-top:25px;
+  margin-top: 25px;
 }
-
 
 .feedback,
 .readMore,
@@ -30,43 +29,41 @@
 }
 
 .childPageMenu {
- 	
- 	margin: 0 20px 50px;
+  margin: 0 20px 50px;
 
- 	@include grid-media($sba-grid-small) {
- 		margin: 10px 30px 50px;
-  	}
-
+  @include grid-media($sba-grid-small) {
+    margin: 10px 30px 50px;
+  }
 }
 
 .lookup {
-	@include grid-column(12, $desktop-0gutter)
+  @include grid-column(12, $desktop-0gutter);
 }
 
 .previousVersionsList {
-	li {
-		margin-bottom: 5px;
-	}
+  li {
+    margin-bottom: 5px;
+  }
 
-	strong {
-		margin-right:10px;
-	}
+  strong {
+    margin-right: 10px;
+  }
 
-	i {
-	    margin-left: 10px;
-	}
+  i {
+    margin-left: 10px;
+  }
 }
 
 .button {
-	 @include grid-column(12, $sba-grid-large);
-	 text-align: center;
+  @include grid-column(12, $sba-grid-large);
+  text-align: center;
 }
 
 .quickLinks {
-	@include grid-column(12, $desktop-0gutter);
+  @include grid-column(12, $desktop-0gutter);
 }
 
 .searchBox {
-	clear: both;
-	margin: 20px;
+  clear: both;
+  margin: 20px;
 }

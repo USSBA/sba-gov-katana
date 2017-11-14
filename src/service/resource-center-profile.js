@@ -8,7 +8,9 @@ import { formatResourceCenterData } from "../util/formatter.js";
 
 function saveProfile(profile, honeyPotText) {
   if (honeyPotText) {
-    console.log("Detected submission with honeypot field filled. Dropping save.");
+    console.log(
+      "Detected submission with honeypot field filled. Dropping save."
+    );
     return Promise.resolve();
   }
   const newProfile = _.assign({}, profile, {
@@ -42,39 +44,65 @@ function saveProfile(profile, honeyPotText) {
 }
 
 function getProfiles(sessionId) {
-  return ResourceCenterModel.resourceCenterProfile.findAll({
-    order: [["timestamp", "DESC"]],
-    attributes: ["name", "address", "type", "timestamp", "businessStage", "serviceArea", "url", "phone"],
-    include: [
-      {
-        model: ResourceCenterModel.resourceCenterHours,
-        as: "hours",
-        attributes: ["mondayOpen", "mondayClose", "mondayOpen", "mondayClose", "tuesdayOpen", "tuesdayClose", "wednesdayOpen",
-          "wednesdayClose", "thursdayOpen", "thursdayClose", "fridayOpen", "fridayClose", "saturdayOpen",
-          "saturdayClose", "sundayOpen", "sundayClose"]
-      },
-      {
-        association: ResourceCenterModel.expertise,
-        as: "expertise",
-        attributes: ["expertise"]
-      },
-      {
-        association: ResourceCenterModel.services,
-        as: "services",
-        attributes: ["service"]
-      },
-      {
-        association: ResourceCenterModel.languages,
-        as: "languages",
-        attributes: ["language"]
+  return ResourceCenterModel.resourceCenterProfile
+    .findAll({
+      order: [["timestamp", "DESC"]],
+      attributes: [
+        "name",
+        "address",
+        "type",
+        "timestamp",
+        "businessStage",
+        "serviceArea",
+        "url",
+        "phone"
+      ],
+      include: [
+        {
+          model: ResourceCenterModel.resourceCenterHours,
+          as: "hours",
+          attributes: [
+            "mondayOpen",
+            "mondayClose",
+            "mondayOpen",
+            "mondayClose",
+            "tuesdayOpen",
+            "tuesdayClose",
+            "wednesdayOpen",
+            "wednesdayClose",
+            "thursdayOpen",
+            "thursdayClose",
+            "fridayOpen",
+            "fridayClose",
+            "saturdayOpen",
+            "saturdayClose",
+            "sundayOpen",
+            "sundayClose"
+          ]
+        },
+        {
+          association: ResourceCenterModel.expertise,
+          as: "expertise",
+          attributes: ["expertise"]
+        },
+        {
+          association: ResourceCenterModel.services,
+          as: "services",
+          attributes: ["service"]
+        },
+        {
+          association: ResourceCenterModel.languages,
+          as: "languages",
+          attributes: ["language"]
+        }
+      ]
+    })
+    .then((data) => {
+      if (data && data.length > 0) {
+        return formatResourceCenterData(data);
       }
-    ]
-  }).then((data) => {
-    if (data && data.length > 0) {
-      return formatResourceCenterData(data);
-    }
-    return "";
-  });
+      return "";
+    });
 }
 
 function formatArray(elements, fieldName) {

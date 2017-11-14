@@ -1,42 +1,42 @@
 // Color Palette
 .color {
-    background: #666666;
-    color: #fff;
-    font-family: "Helvetica", sans-serif;
+  background: #666666;
+  color: #fff;
+  font-family: 'Helvetica', sans-serif;
 }
 
 .colorprimary {
-    padding: 45px 0 15px 20px;
-    margin-bottom: 12px;
+  padding: 45px 0 15px 20px;
+  margin-bottom: 12px;
 }
 
 .colorsecondary {
-    padding: 15px 0 15px 20px;
+  padding: 15px 0 15px 20px;
 }
 
 .color p.colorname,
 .color p.colorhex {
-    margin: 0;
-    line-height: 22px;
-    font-weight: bold;
+  margin: 0;
+  line-height: 22px;
+  font-weight: bold;
 }
 
 .colorname {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .colorhex {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 .textblack {
-    color: #000;
+  color: #000;
 }
 
 // Buttons
 .background {
-    margin: 0 auto 25px;
-    padding: 25px;
+  margin: 0 auto 25px;
+  padding: 25px;
 }
 
 @include theme(sba-blue, '.background', $sba-blue, null, null);
@@ -46,167 +46,163 @@
 
 // SBA Blues
 .sbablue {
-    background: $sba-blue;
+  background: $sba-blue;
 }
 
 .sbabluedarkest {
-    background: $sba-blue-darkest;
+  background: $sba-blue-darkest;
 }
 
 .sbabluedark {
-    background: $sba-blue-dark;
+  background: $sba-blue-dark;
 }
 
 .sbabluelight {
-    background: $sba-blue-light;
+  background: $sba-blue-light;
 }
 
 .sbabluelightest {
-    background: $sba-blue-lightest;
+  background: $sba-blue-lightest;
 }
 
 // Byzantines
 .byzantine {
-    background: $byzantine;
+  background: $byzantine;
 }
 
 .byzantinedarkest {
-    background: $byzantine-darkest;
+  background: $byzantine-darkest;
 }
 
 .byzantinedark {
-    background: $byzantine-dark;
+  background: $byzantine-dark;
 }
 
 .byzantinelight {
-    background: $byzantine-light;
+  background: $byzantine-light;
 }
 
 .byzantinelightest {
-    background: $byzantine-lightest;
+  background: $byzantine-lightest;
 }
 
 // Money Greens
 .moneygreen {
-    background: $money-green;
+  background: $money-green;
 }
 
 .moneygreendarkest {
-    background: $money-green-darkest;
+  background: $money-green-darkest;
 }
 
 .moneygreendark {
-    background: $money-green-dark;
+  background: $money-green-dark;
 }
 
 .moneygreenlight {
-    background: $money-green-light;
+  background: $money-green-light;
 }
 
 .moneygreenlightest {
-    background: $money-green-lightest;
+  background: $money-green-lightest;
 }
 
 // Cobalt Blues
 .cobaltblue {
-    background: $cobalt-blue;
+  background: $cobalt-blue;
 }
 
 .cobaltbluedarkest {
-    background: $cobalt-blue-darkest;
+  background: $cobalt-blue-darkest;
 }
 
 .cobaltbluedark {
-    background: $cobalt-blue-dark;
+  background: $cobalt-blue-dark;
 }
 
 .cobaltbluelight {
-    background: $cobalt-blue-light;
+  background: $cobalt-blue-light;
 }
 
 .cobaltbluelightest {
-    background: $cobalt-blue-lightest;
+  background: $cobalt-blue-lightest;
 }
 
 // White and Text Grey
 .text-grey {
-    background-color: $base-font-color;
+  background-color: $base-font-color;
 }
 
 .white {
-    background-color: #fff;
-    border: 1px solid #979797;
-    color: $base-font-color;
+  background-color: #fff;
+  border: 1px solid #979797;
+  color: $base-font-color;
 }
 
 // Grid
 .typography {
-    margin-bottom: $margin-30;
-    @include grid-column(6, $sba-grid-small);
-    @include grid-media( $sba-grid-medium) {
+  margin-bottom: $margin-30;
+  @include grid-column(6, $sba-grid-small);
+  @include grid-media( $sba-grid-medium) {
     @include grid-column(12);
   }
 }
 
-.column, .buttons {
-    @include grid-column(6, $sba-grid-small);
-    @include grid-media( $sba-grid-medium) {
+.column,
+.buttons {
+  @include grid-column(6, $sba-grid-small);
+  @include grid-media( $sba-grid-medium) {
     @include grid-column(3);
   }
 }
 
 .formElements {
-    @include grid-column(12);
-    margin: 40px 0 40px 0;
+  @include grid-column(12);
+  margin: 40px 0 40px 0;
 }
 
 .inputContainer {
-    @include grid-media( $sba-grid-small ){
-        @include grid-column(6);
-    }
-    @include grid-media( $sba-grid-medium ){
-        @include grid-column(6);
-    }
-    @include grid-media( $sba-grid-large ){
-        @include grid-column(4);
-    }
+  @include grid-media( $sba-grid-small ) {
+    @include grid-column(6);
+  }
+  @include grid-media( $sba-grid-medium ) {
+    @include grid-column(6);
+  }
+  @include grid-media( $sba-grid-large ) {
+    @include grid-column(4);
+  }
 }
 
-
-.simpleCtaContainer{
-    width: 25%;
+.simpleCtaContainer {
+  width: 25%;
 }
-
 
 .ctaContainer {
-    @include grid-column(12, $sba-grid-large)
+  @include grid-column(12, $sba-grid-large);
 }
 
 .columnHalf {
-    @include grid-column(12);
-    clear: both !important;
+  @include grid-column(12);
+  clear: both !important;
 }
 
-@media (min-width:768px) {
-
-    .columnHalf {
-        @include grid-column(6);
-    }
-
+@media (min-width: 768px) {
+  .columnHalf {
+    @include grid-column(6);
+  }
 }
 
 .icons li {
-    div {
-        float: left;
-        width: 40px;
-    }
+  div {
+    float: left;
+    width: 40px;
+  }
 
-    p {
-        margin-left: 50px;
-    }
+  p {
+    margin-left: 50px;
+  }
 }
 
 .clear {
-    clear: both;
+  clear: both;
 }
-

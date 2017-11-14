@@ -4,19 +4,19 @@ nav {
   z-index: 10000000;
   a {
     text-decoration: none;
-    }
+  }
   @include grid-media( $sba-grid-large) {
     height: 116px;
   }
   @include grid-media( $tablet-nav) {
     top: 0;
     position: fixed;
-    box-shadow: 0 1px 0 0 #EBEBEB;
+    box-shadow: 0 1px 0 0 #ebebeb;
   }
   @include grid-media( $mobile-nav) {
     top: 0;
     position: fixed;
-    box-shadow: 0 1px 0 0 #EBEBEB;
+    box-shadow: 0 1px 0 0 #ebebeb;
   }
 }
 
@@ -43,12 +43,12 @@ nav {
 }
 
 .mainContent {
-    @include grid-media( $tablet-nav) {
-      padding-top: 74px;
-    }
-    @include grid-media( $mobile-nav) {
-      padding-top: 74px;
-    }
+  @include grid-media( $tablet-nav) {
+    padding-top: 74px;
+  }
+  @include grid-media( $mobile-nav) {
+    padding-top: 74px;
+  }
 }
 
 .alertIsActive .mainContent {

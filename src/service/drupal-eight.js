@@ -11,11 +11,9 @@ import documents from "../models/dao/sample-data/documents.js";
 import articlesData from "../models/dao/sample-data/articles.js";
 const localDataMap = {
   "State registration": localContacts,
-  "SBIC": sbicContacts,
+  SBIC: sbicContacts,
   "Surety bond agency": suretyContacts
 };
-
-
 
 function fetchFormattedNode(nodeId, options) {
   return get("node/" + nodeId, null, options.headers);
@@ -31,7 +29,6 @@ function fetchContacts(queryParams) {
   return get("collection/contacts", queryParams);
 }
 
-
 function fetchFormattedMenu() {
   return get("siteMap");
 }
@@ -45,18 +42,17 @@ function fetchCounsellorCta() {
   });
 }
 
-
-
 function fetchDocuments(queryParams) {
   if (config.get("developmentOptions.useLocalDataNotDaisho")) {
     console.log("Using Development Documents information");
-    return Promise.resolve(filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents));
+    return Promise.resolve(
+      filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents)
+    );
   }
 
-  return get("collection/documents")
-    .then((data) => {
-      return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
-    });
+  return get("collection/documents").then((data) => {
+    return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data);
+  });
 }
 
 function sanitizeDocumentParams(params) {
@@ -89,43 +85,72 @@ function filterAndSortDocuments(params, docs) {
 
   const result = {
     count: sortedDocuments.length,
-    items: (params.start === "all" || params.end === "all") ? sortedDocuments : sortedDocuments.slice(params.start, params.end)
+    items:
+      params.start === "all" || params.end === "all"
+        ? sortedDocuments
+        : sortedDocuments.slice(params.start, params.end)
   };
 
   return result;
-
 }
-
-
 
 /* eslint-disable complexity */
 function filterDocuments(params, docs) {
   return docs.filter((doc, index) => {
     const matchesUrl = params.url === "all" || doc.url === params.url;
-    const matchesActivitys = !params.documentActivity || params.documentActivity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity));
-    const matchesActivity = !params.activity || params.activity === "all" || (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
-    const matchesProgram = !params.program || params.program === "all" || (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
-    const matchesType = !params.type || params.type === "all" || doc.documentIdType === params.type;
-    const matchesDocumentType = !params.documentType || params.documentType === "all" || doc.documentIdType === params.documentType;
+    const matchesActivitys =
+      !params.documentActivity ||
+      params.documentActivity === "all" ||
+      (!_.isEmpty(doc.activitys) &&
+        doc.activitys.includes(params.documentActivity));
+    const matchesActivity =
+      !params.activity ||
+      params.activity === "all" ||
+      (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity));
+    const matchesProgram =
+      !params.program ||
+      params.program === "all" ||
+      (!_.isEmpty(doc.programs) && doc.programs.includes(params.program));
+    const matchesType =
+      !params.type ||
+      params.type === "all" ||
+      doc.documentIdType === params.type;
+    const matchesDocumentType =
+      !params.documentType ||
+      params.documentType === "all" ||
+      doc.documentIdType === params.documentType;
     return (
-      (matchesType) &&
-      (matchesDocumentType) &&
-      (matchesProgram) &&
-      (matchesActivitys) &&
-      (matchesActivity) &&
-      (matchesUrl) &&
-      (!params.searchTerm || params.searchTerm === "all" ||
-      doc.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
-      (!_.isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.searchTerm)))
+      matchesType &&
+      matchesDocumentType &&
+      matchesProgram &&
+      matchesActivitys &&
+      matchesActivity &&
+      matchesUrl &&
+      (!params.searchTerm ||
+        params.searchTerm === "all" ||
+        doc.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
+        (!_.isEmpty(doc.documentIdNumber) &&
+          doc.documentIdNumber.includes(params.searchTerm)))
     );
   });
 }
 function filterArticles(params, allArticles) {
   return allArticles.filter((article, index) => {
-    const matchesUrl = !params.url || params.url === "all" || article.url === params.url;
-    const matchesProgram = !params.program || params.program === "all" || (!_.isEmpty(article.programs) && article.programs.includes(params.program));
-    const matchesTitle = !params.searchTerm || params.searchTerm === "all" || article.title.toLowerCase().includes(params.searchTerm.toLowerCase());
-    const matchesType = !params.articleType || params.articleType === "all" || article.type === params.articleType;
+    const matchesUrl =
+      !params.url || params.url === "all" || article.url === params.url;
+    const matchesProgram =
+      !params.program ||
+      params.program === "all" ||
+      (!_.isEmpty(article.programs) &&
+        article.programs.includes(params.program));
+    const matchesTitle =
+      !params.searchTerm ||
+      params.searchTerm === "all" ||
+      article.title.toLowerCase().includes(params.searchTerm.toLowerCase());
+    const matchesType =
+      !params.articleType ||
+      params.articleType === "all" ||
+      article.type === params.articleType;
     return matchesUrl && matchesProgram && matchesTitle && matchesType;
   });
 }
@@ -147,45 +172,52 @@ function sortDocuments(params, docs) {
     return docs;
   }
   return _.orderBy(
-    docs, [(doc) => {
-      return (typeof doc[sortItems] === "string" ? doc[sortItems].toLowerCase() : doc[sortItems]);
-    }],
+    docs,
+    [
+      (doc) => {
+        return typeof doc[sortItems] === "string"
+          ? doc[sortItems].toLowerCase()
+          : doc[sortItems];
+      }
+    ],
     sortOrder
   );
 }
 
 function sortDocumentsByDate(docs) {
-  const sortedDocs = _.orderBy(docs, [(doc) => {
-    const files = _.filter(doc.files, (file) => {
-      const date = moment(file.effectiveDate);
-      return date.isValid() && date.isSameOrBefore(moment());
-    });
-    const latestFile = _.maxBy(files, "effectiveDate");
-    return latestFile ? latestFile.effectiveDate : "";
-  }], ["desc"]);
+  const sortedDocs = _.orderBy(
+    docs,
+    [
+      (doc) => {
+        const files = _.filter(doc.files, (file) => {
+          const date = moment(file.effectiveDate);
+          return date.isValid() && date.isSameOrBefore(moment());
+        });
+        const latestFile = _.maxBy(files, "effectiveDate");
+        return latestFile ? latestFile.effectiveDate : "";
+      }
+    ],
+    ["desc"]
+  );
   return sortedDocs;
 }
 
 function fetchTaxonomyVocabulary(queryParams) {
-  return get("collection/taxonomys")
-    .then((data) => {
-      let names = _.map(data, "name");
-      if (queryParams.names) {
-        names = queryParams.names.split(",");
-      }
-      return Promise.resolve(data) // TODO remove unnessary promise wrapper
-        .then((results) => {
-          return _.filter(results, (item) => {
-            return _.includes(names, item.name);
-          });
+  return get("collection/taxonomys").then((data) => {
+    let names = _.map(data, "name");
+    if (queryParams.names) {
+      names = queryParams.names.split(",");
+    }
+    return Promise.resolve(data) // TODO remove unnessary promise wrapper
+      .then((results) => {
+        return _.filter(results, (item) => {
+          return _.includes(names, item.name);
         });
-    });
-
+      });
+  });
 }
 
-
 function fetchArticles(queryParams) {
-
   let sortOrder = "";
   let sortField;
   if (queryParams.sortBy === "Title") {
@@ -202,7 +234,10 @@ function fetchArticles(queryParams) {
   }).then((results) => {
     const filteredArticles = filterArticles(queryParams, results);
     return {
-      items: (queryParams.start === "all" || queryParams.end === "all") ? filteredArticles : filteredArticles.slice(queryParams.start, queryParams.end),
+      items:
+        queryParams.start === "all" || queryParams.end === "all"
+          ? filteredArticles
+          : filteredArticles.slice(queryParams.start, queryParams.end),
       count: filteredArticles.length
     };
   });
@@ -212,4 +247,14 @@ function fetchAnnouncements() {
   return get("collection/announcements");
 }
 
-export { fetchFormattedNode, fetchContacts, sortDocumentsByDate, fetchFormattedMenu, fetchCounsellorCta, fetchDocuments, fetchTaxonomyVocabulary, fetchArticles, fetchAnnouncements };
+export {
+  fetchFormattedNode,
+  fetchContacts,
+  sortDocumentsByDate,
+  fetchFormattedMenu,
+  fetchCounsellorCta,
+  fetchDocuments,
+  fetchTaxonomyVocabulary,
+  fetchArticles,
+  fetchAnnouncements
+};
