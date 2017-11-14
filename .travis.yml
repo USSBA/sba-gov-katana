@@ -9,8 +9,8 @@ branches:
     - teamf-integration
     - team1-integration
     - master-integration
-    - /feature-\w+-\d+/
-    - /Feature-\w+-\d+/
+    - /feature-\w+-\d+[-\w]*/
+    - /Feature-\w+-\d+[-\w]*/
 install:
   - npm install --silent
 script:
