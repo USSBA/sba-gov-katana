@@ -1,6 +1,6 @@
-import { browserHistory } from "react-router";
-import { logEvent } from "../services/analytics.js";
-import types from "./types.js";
+import { browserHistory } from 'react-router'
+import { logEvent } from '../services/analytics.js'
+import types from './types.js'
 
 export function callToAction(targetLocation, category, action, value) {
   return function(dispatch) {
@@ -9,31 +9,31 @@ export function callToAction(targetLocation, category, action, value) {
       action: action,
       label: window.location.pathname,
       value: value
-    });
+    })
     // browserHistory.push(targetLocation);
-    document.location = targetLocation;
-  };
+    document.location = targetLocation
+  }
 }
 
 export function locationChange(targetLocation, eventConfig) {
   return function(dispatch) {
-    browserHistory.push(targetLocation);
-    window.scrollTo(0, 0);
+    browserHistory.push(targetLocation)
+    window.scrollTo(0, 0)
     logEvent({
-      category: "Navigation",
-      action: (eventConfig && eventConfig.action) || "Location Change",
-      label: (eventConfig && eventConfig.label) || ""
-    });
-  };
+      category: 'Navigation',
+      action: (eventConfig && eventConfig.action) || 'Location Change',
+      label: (eventConfig && eventConfig.label) || ''
+    })
+  }
 }
 
 export function goBack() {
   return function(dispatch) {
-    browserHistory.goBack();
+    browserHistory.goBack()
     logEvent({
-      category: "Navigation",
-      action: "Back Button Pushed",
+      category: 'Navigation',
+      action: 'Back Button Pushed',
       label: browserHistory.getCurrentLocation().pathname
-    });
-  };
+    })
+  }
 }

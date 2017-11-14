@@ -1,12 +1,12 @@
-import querystring from "querystring";
+import querystring from 'querystring'
 
 function getQueryParams() {
-  let queryParams = {};
-  const { search } = window.location;
-  if (search && search !== "") {
-    queryParams = querystring.decode(search.replace("?", ""));
+  let queryParams = {}
+  const { search } = window.location
+  if (search && search !== '') {
+    queryParams = querystring.decode(search.replace('?', ''))
   }
-  return queryParams;
+  return queryParams
 }
 
-export { getQueryParams };
+export { getQueryParams }

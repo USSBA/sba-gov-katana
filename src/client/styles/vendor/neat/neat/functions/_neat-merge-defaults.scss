@@ -12,6 +12,7 @@
 
 @function _neat-merge-defaults($grid) {
   $_merged-grid: map-merge(
+
     (
       columns: 12,
       gutter: 20px,

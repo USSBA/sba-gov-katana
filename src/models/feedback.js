@@ -1,8 +1,8 @@
-import { nonDrupal } from "./db-connect.js";
-import * as Sequelize from "sequelize";
+import { nonDrupal } from './db-connect.js'
+import * as Sequelize from 'sequelize'
 
 var feedback = nonDrupal.define(
-  "feedback",
+  'feedback',
   {
     id: {
       type: Sequelize.UUID,
@@ -34,6 +34,6 @@ var feedback = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
-export default feedback;
+export default feedback

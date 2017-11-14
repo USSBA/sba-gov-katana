@@ -1,6 +1,6 @@
-import axios from "axios";
-import types from "./types.js";
-import constants from "../services/constants.js";
+import axios from 'axios'
+import types from './types.js'
+import constants from '../services/constants.js'
 
 export function submitResults(results, id) {
   return function(dispatch) {
@@ -9,38 +9,38 @@ export function submitResults(results, id) {
         result: results,
         id: id
       })
-      .then((response) => {
+      .then(response => {
         dispatch({
           type: types.feedback.submitResults,
           payload: response.data
-        });
+        })
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({
           type: types.feedback.submitResults,
           payload: error
-        });
-      });
-  };
+        })
+      })
+  }
 }
 
 export function submitText(id, text) {
   return function(dispatch) {
     axios
-      .put(constants.routes.submitFeedbackText.replace("{id}", id), {
+      .put(constants.routes.submitFeedbackText.replace('{id}', id), {
         text
       })
-      .then((response) => {
+      .then(response => {
         dispatch({
           type: types.feedback.submitText,
           payload: response.data
-        });
+        })
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({
           type: types.feedback.submitText,
           payload: error
-        });
-      });
-  };
+        })
+      })
+  }
 }

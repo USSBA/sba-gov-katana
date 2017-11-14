@@ -8,31 +8,31 @@ const reviewSubmitInfoReducer = (
   action
 ) => {
   switch (action.type) {
-    case "MATCH_FORM_DATA_START": {
+    case 'MATCH_FORM_DATA_START': {
       return {
         ...state,
         matching: true
-      };
+      }
     }
-    case "MATCH_FORM_DATA_SUCCESS": {
+    case 'MATCH_FORM_DATA_SUCCESS': {
       return {
         ...state,
         matching: false,
         matched: true,
         matchedResponse: action.payload
-      };
+      }
     }
-    case "MATCH_FORM_DATA_ERROR": {
+    case 'MATCH_FORM_DATA_ERROR': {
       return {
         ...state,
         matching: false,
         error: action.payload
-      };
+      }
     }
     default: {
-      return state;
+      return state
     }
   }
-};
+}
 
-export default reviewSubmitInfoReducer;
+export default reviewSubmitInfoReducer

@@ -1,30 +1,30 @@
-import axios from "axios";
-import queryString from "querystring";
-import constants from "../services/constants.js";
-import { logEvent } from "../services/analytics.js";
+import axios from 'axios'
+import queryString from 'querystring'
+import constants from '../services/constants.js'
+import { logEvent } from '../services/analytics.js'
 
 export function resendConfirmationEmail(emailAddress) {
   return function(dispatch) {
     logEvent({
-      category: "Email",
-      action: "Resend Email Button Pushed",
-      label: ""
-    });
+      category: 'Email',
+      action: 'Resend Email Button Pushed',
+      label: ''
+    })
     axios
       .post(constants.routes.confirmationEmail, {
         emailAddress: emailAddress
       })
-      .then((response) => {
+      .then(response => {
         dispatch({
-          type: "RESEND_CONFIRMATION_EMAIL_SUCCESS",
+          type: 'RESEND_CONFIRMATION_EMAIL_SUCCESS',
           payload: response.data
-        });
+        })
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({
-          type: "RESEND_CONFIRMATION_EMAIL_ERROR",
+          type: 'RESEND_CONFIRMATION_EMAIL_ERROR',
           payload: error
-        });
-      });
-  };
+        })
+      })
+  }
 }

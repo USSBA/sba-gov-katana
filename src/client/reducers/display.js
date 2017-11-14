@@ -1,13 +1,13 @@
-import types from "../actions/types.js";
-import constants from "../services/constants.js";
+import types from '../actions/types.js'
+import constants from '../services/constants.js'
 
 const displayReducer = (state = {}, action) => {
   if (action.type === types.display.theme) {
     return Object.assign({}, state, {
       theme: action.themeName
-    });
+    })
   }
-  return state;
-};
+  return state
+}
 
-export default displayReducer;
+export default displayReducer

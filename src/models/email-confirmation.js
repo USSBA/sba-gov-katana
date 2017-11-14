@@ -1,16 +1,16 @@
-import { nonDrupal } from "./db-connect.js";
-import uuid from "uuid";
-import * as Sequelize from "sequelize";
-import lenderMatchRegistration from "./lender-match-registration.js";
+import { nonDrupal } from './db-connect.js'
+import uuid from 'uuid'
+import * as Sequelize from 'sequelize'
+import lenderMatchRegistration from './lender-match-registration.js'
 
 const emailConfirmation = nonDrupal.define(
-  "emailConfirmation",
+  'emailConfirmation',
   {
     id: {
       //eslint-disable-line id-length
       type: Sequelize.UUID,
       defaultValue: function() {
-        return uuid.v4();
+        return uuid.v4()
       },
       primaryKey: true
     },
@@ -30,8 +30,8 @@ const emailConfirmation = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
-emailConfirmation.belongsTo(lenderMatchRegistration);
+emailConfirmation.belongsTo(lenderMatchRegistration)
 
-export default emailConfirmation;
+export default emailConfirmation

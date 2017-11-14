@@ -1,15 +1,15 @@
-import { nonDrupal } from "./db-connect.js";
-import uuid from "uuid";
-import * as Sequelize from "sequelize";
+import { nonDrupal } from './db-connect.js'
+import uuid from 'uuid'
+import * as Sequelize from 'sequelize'
 
 const lenderMatchRegistration = nonDrupal.define(
-  "lenderMatchRegistration",
+  'lenderMatchRegistration',
   {
     id: {
       //eslint-disable-line id-length
       type: Sequelize.UUID,
       defaultValue: function() {
-        return uuid.v4();
+        return uuid.v4()
       },
       primaryKey: true
     },
@@ -65,5 +65,5 @@ const lenderMatchRegistration = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
-export default lenderMatchRegistration;
+)
+export default lenderMatchRegistration

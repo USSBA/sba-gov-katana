@@ -1,42 +1,42 @@
-import _ from "lodash";
+import _ from 'lodash'
 
 const themes = {
-  "sba-blue": ["styleguide"],
-  byzantine: ["guide", "business-guide"],
-  "money-green": [
-    "lendermatch",
-    "funding-programs",
-    "document",
-    "article",
-    "partners",
-    "disaster-assistance"
+  'sba-blue': ['styleguide'],
+  byzantine: ['guide', 'business-guide'],
+  'money-green': [
+    'lendermatch',
+    'funding-programs',
+    'document',
+    'article',
+    'partners',
+    'disaster-assistance'
   ],
-  "cobalt-blue": ["size-standards"]
-};
+  'cobalt-blue': ['size-standards']
+}
 
 function getPaths() {
   return _.chain(themes)
     .values()
     .flatten()
-    .value();
+    .value()
 }
 
 function getTheme() {
-  const theme = "sba-blue";
+  const theme = 'sba-blue'
 
-  const { pathname } = window.location;
-  let path;
+  const { pathname } = window.location
+  let path
 
-  if (pathname.startsWith("/tools")) {
-    path = pathname.slice(1);
+  if (pathname.startsWith('/tools')) {
+    path = pathname.slice(1)
   } else {
-    path = window.location.pathname.split("/")[1];
+    path = window.location.pathname.split('/')[1]
   }
 
   return _.findKey(themes, function(object) {
-    return _.includes(object, path);
-  });
+    return _.includes(object, path)
+  })
 }
 
-export { getTheme, getPaths };
-export default themes;
+export { getTheme, getPaths }
+export default themes

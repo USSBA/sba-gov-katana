@@ -1,9 +1,9 @@
 /* eslint-disable id-length */
-import { nonDrupal } from "./db-connect.js";
-import * as Sequelize from "sequelize";
+import { nonDrupal } from './db-connect.js'
+import * as Sequelize from 'sequelize'
 
 var resourceCenterProfile = nonDrupal.define(
-  "resourceCenterProfile",
+  'resourceCenterProfile',
   {
     id: {
       type: Sequelize.UUID,
@@ -43,10 +43,10 @@ var resourceCenterProfile = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
 var resourceCenterLanguages = nonDrupal.define(
-  "resourceCenterLanguages",
+  'resourceCenterLanguages',
   {
     language: {
       type: Sequelize.STRING,
@@ -56,10 +56,10 @@ var resourceCenterLanguages = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
 var resourceCenterHours = nonDrupal.define(
-  "resourceCenterHours",
+  'resourceCenterHours',
   {
     mondayOpen: {
       type: Sequelize.STRING
@@ -107,10 +107,10 @@ var resourceCenterHours = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
 var resourceCenterServices = nonDrupal.define(
-  "resourceCenterServices",
+  'resourceCenterServices',
   {
     service: {
       type: Sequelize.STRING,
@@ -120,10 +120,10 @@ var resourceCenterServices = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
 var resourceCenterExpertise = nonDrupal.define(
-  "resourceCenterExpertise",
+  'resourceCenterExpertise',
   {
     expertise: {
       type: Sequelize.STRING,
@@ -133,20 +133,20 @@ var resourceCenterExpertise = nonDrupal.define(
   {
     freezeTableName: true // Model tableName will be the same as the model name
   }
-);
+)
 
 resourceCenterProfile.hasOne(resourceCenterHours, {
-  as: "hours"
-});
+  as: 'hours'
+})
 const expertise = resourceCenterProfile.hasMany(resourceCenterExpertise, {
-  as: "expertise"
-});
+  as: 'expertise'
+})
 const services = resourceCenterProfile.hasMany(resourceCenterServices, {
-  as: "services"
-});
+  as: 'services'
+})
 const languages = resourceCenterProfile.hasMany(resourceCenterLanguages, {
-  as: "languages"
-});
+  as: 'languages'
+})
 
 export {
   resourceCenterProfile,
@@ -154,4 +154,4 @@ export {
   expertise,
   languages,
   resourceCenterHours
-};
+}
