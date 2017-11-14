@@ -4,7 +4,8 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development babel-node src/app.js --presets es2015 || true",
+    "start":
+      "NODE_ENV=development babel-node src/app.js --presets es2015 || true",
     "nodemonstart": "nodemon src/app.js --exec babel-node  --presets es2015",
     "prestart": "npm run clean && npm run lint",
     "build": "scripts/build.sh",
@@ -12,10 +13,12 @@
     "format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "lint": "eslint src --fix",
     "lint-check": "eslint src",
-    "test": "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
+    "test":
+      "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
     "test-jest": "NODE_ENV=test jest test/jest/",
-    "test-mocha": "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
-    "precommit": "#npm run lint && npm run test && lint-staged",
+    "test-mocha":
+      "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
+    "precommit": "npm run lint && npm run test && lint-staged",
     "precheck": "npm run lint-check && npm run test",
     "clear-cache": "curl localhost:3000/actions/clearcache"
   },
@@ -23,12 +26,7 @@
     "url": "git+https://github.com/sba-ds/sba-gov.git",
     "type": "git"
   },
-  "keywords": [
-    "sba",
-    "ds",
-    "node",
-    "react"
-  ],
+  "keywords": ["sba", "ds", "node", "react"],
   "author": "SBA Digital Services",
   "license": "ISC",
   "bugs": {
@@ -145,18 +143,13 @@
     "webpack-merge": "4.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      ".c9"
-    ],
+    "testPathIgnorePatterns": ["/node_modules/", ".c9"],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/jest/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/test/jest/__mocks__/fileMock.js",
       "\\.(css|scss|less)$": "identity-obj-proxy"
     },
-    "modulePaths": [
-      "<rootDir>/src/",
-      "<rootDir>/src/client/components/"
-    ],
+    "modulePaths": ["<rootDir>/src/", "<rootDir>/src/client/components/"],
     "globals": {
       "CONFIG": {
         "isUserLoggedIn": false,

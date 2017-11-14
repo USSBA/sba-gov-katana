@@ -19,7 +19,8 @@ const matchingLocations = [];
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
     const mapped = _.map(getPaths(), (path) => {
-      return targetLocation.indexOf(path) !== -1; //eslint-disable-line no-magic-numbers
+      // eslint-disable-next-line no-magic-numbers
+      return targetLocation.indexOf(path) !== -1;
     });
     const isHandledRoute = _.compact(mapped).length > 0;
     const startsWithHttp = _.startsWith(targetLocation, "http");
@@ -41,8 +42,8 @@ function navigateNow(targetLocation, eventConfig) {
       !sbicSpecialCaseToAllowServerRedirect
     ) {
       browserHistory.push(targetLocation);
+        // eslint-disable-next-line no-magic-numbers
       if (targetLocation.indexOf("#") === -1) {
-        //eslint-disable-line no-magic-numbers
         window.scrollTo(0, 0);
       }
     } else {

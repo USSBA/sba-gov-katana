@@ -2,18 +2,21 @@ import HttpStatus from "http-status-codes";
 
 export function enableWebpackHotModuleReplacement(app, silent) {
   console.log("Enabling Webpack");
-  const webpack = require("webpack"); // eslint-disable-line global-require
-  const webpackConfig = require("../../webpack.config.development")(); // eslint-disable-line global-require
+  // eslint-disable-next-line global-require
+  const webpack = require("webpack");
+  // eslint-disable-next-line global-require
+  const webpackConfig = require("../../webpack.config.development")();
   const compiler = webpack(webpackConfig);
   app.use(
+    // eslint-disable-next-line global-require
     require("webpack-dev-middleware")(compiler, {
-      // eslint-disable-line global-require
       publicPath: webpackConfig.output.publicPath,
       noInfo: silent
     })
   );
 
-  app.use(require("webpack-hot-middleware")(compiler)); // eslint-disable-line global-require
+  // eslint-disable-next-line global-require
+  app.use(require("webpack-hot-middleware")(compiler));
 }
 
 export function addDevelopmentErrorHandler(app) {

@@ -5,8 +5,8 @@ const textUpperLimit = 255;
 function lProceedTypCd(loanUsage) {
   return loanUsage
     .split(",")
+      // eslint-disable-next-line complexity
     .map(function(loanUsageItem) {
-      // eslint-disable-line complexity
       const strLoanDesc = loanUsageItem.trim(" ").toUpperCase();
       let retLoanDescCd = "";
       switch (strLoanDesc) {
@@ -63,8 +63,8 @@ function lProceedTypCd(loanUsage) {
 function bDtlTypCd(industryType) {
   return industryType
     .split(",")
+      //eslint-disable-next-line complexity
     .map(function(industryTypeItem) {
-      //eslint-disable-line complexity
       const strIndustryType = industryTypeItem.trim(" ").toUpperCase();
       let retIndustryTypeCd = "";
       switch (strIndustryType) {
@@ -181,8 +181,8 @@ function formatMoment() {
   );
 }
 
+// eslint-disable-next-line complexity
 function reqAmtRangeCd(loanAmount) {
-  //eslint-disable-line complexity
 
   let retVal = "";
   const fiftyThousand = 50000;

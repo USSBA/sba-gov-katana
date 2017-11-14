@@ -8,8 +8,8 @@ import {
   resetLincPassword
 } from "../service/linc-service.js";
 
+// eslint-disable-next-line complexity
 function handleLenderMatchSubmission(req, res) {
-  //eslint-disable-line complexity
   if ("contactSecondaryEmailAddress" in req.body.contactInfoData) {
     console.log(
       "honeypot form element was filled.  This was probably submitted by a bot."

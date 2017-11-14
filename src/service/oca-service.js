@@ -71,8 +71,9 @@ function deleteLenderMatchRegistration(lenderMatchRegistrationId) {
 
 function updateLincPassword(record, newPassword) {
   const newExpiry = moment()
+    // eslint-disable-next-line no-magic-numbers
     .add(record.schedule * 60, "seconds")
-    .unix(); //eslint-disable-line no-magic-numbers
+    .unix();
   return lincPasswordUpdate
     .update(
       {
