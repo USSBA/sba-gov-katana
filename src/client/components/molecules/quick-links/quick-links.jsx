@@ -141,7 +141,7 @@ const LatestDocumentsCard = props => {
 						
 						// Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
 						let titlePrefix = "";
-						if ( doc.documentIdType === "SOP" && doc.documentIdNumber ) {
+						if ( doc.documentIdType === "SOP" && !_.isEmpty(doc.documentIdNumber) ) {
 							titlePrefix = doc.documentIdType + " " + doc.documentIdNumber + " - ";
 						}
 						const linkTitle = titlePrefix + (doc.title.length > 80 ? doc.title.slice(0, 90) + "..." : doc.title);
