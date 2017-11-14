@@ -6,12 +6,12 @@ import {
   SmallPrimaryButton
 } from "atoms";
 import * as LocationChangeActions from "../../../../actions/navigation.js";
-import planIcon from "../../../../../../public/assets/images/lender-match/business-plan.png";
-import fundsIcon from "../../../../../../public/assets/images/lender-match/use-of-funds.png";
-import creditIcon from "../../../../../../public/assets/images/lender-match/credit-history.png";
-import projectionsIcon from "../../../../../../public/assets/images/lender-match/financial-projections.png";
-import collateralIcon from "../../../../../../public/assets/images/lender-match/collateral.png";
-import industryIcon from "../../../../../../public/assets/images/lender-match/industry-experience.png";
+import planIcon from "assets/images/lender-match/business-plan.png";
+import fundsIcon from "assets/images/lender-match/use-of-funds.png";
+import creditIcon from "assets/images/lender-match/credit-history.png";
+import projectionsIcon from "assets/images/lender-match/financial-projections.png";
+import collateralIcon from "assets/images/lender-match/collateral.png";
+import industryIcon from "assets/images/lender-match/industry-experience.png";
 import styles from "./preparation-checklist.scss";
 
 class PreparationChecklist extends React.Component{

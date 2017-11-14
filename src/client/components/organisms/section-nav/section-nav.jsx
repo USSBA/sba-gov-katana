@@ -13,9 +13,9 @@ import whiteIconLaunch from "../../atoms/icons/white-launch.jsx";
 import whiteIconPlan from "../../atoms/icons/white-plan.jsx";
 import whiteIconManage from "../../atoms/icons/white-manage.jsx";
 import whiteIconGrow from "../../atoms/icons/white-grow.jsx";
-import hurricaneIcon from "../../../../../public/assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png";
-import whiteIconSuretyProviders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png";
-import whiteIconLenders from "../../../../../public/assets/images/for-partners/For_Partners_Icon_Lenders_white.png";
+import hurricaneIcon from "assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png";
+import whiteIconSuretyProviders from "assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png";
+import whiteIconLenders from "assets/images/for-partners/For_Partners_Icon_Lenders_white.png";
 
 
 
