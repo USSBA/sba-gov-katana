@@ -6,7 +6,7 @@ class FeaturedCallout extends React.Component {
     return (
         <div className={styles.menuCallToAction}>
           <a href={this.props.target} title={this.props.title}>
-            <img src="/assets/images/disaster.png" alt={this.props.text} title={this.props.title}/>
+            <img src="assets/images/disaster.png" alt={this.props.text} title={this.props.title}/>
             <p>
               {this.props.text}
             </p>
