@@ -1,48 +1,46 @@
-@import "../menu-tile/menu-tile-shared.scss";
+@import '../menu-tile/menu-tile-shared.scss';
 
 .tileHover {
-	height: 100%;
-	width: 100%;
-	padding-top: 20px;
+  height: 100%;
+  width: 100%;
+  padding-top: 20px;
 }
-@include background-color-theme(".tileHover");
+@include background-color-theme('.tileHover');
 
-.noUnderline{
-	text-decoration: none !important;
+.noUnderline {
+  text-decoration: none !important;
 }
 
 .largeTitleHover {
-	composes: largeTitle;
-	color: white;
+  composes: largeTitle;
+  color: white;
 }
 
 .smallTitleHover {
-	composes: smallTitle;
-	color: white;
+  composes: smallTitle;
+  color: white;
 }
 
 .topLine {
-	margin-top: 20px;
-	background-color: rgba(255,255,255, 0.5);
-	height: 1px;
-	width: 100%;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 1px;
+  width: 100%;
 }
 
 .linkContainer {
-	position: relative;
-	cursor: pointer;
-	padding: 5px 0 5px 15px;
-	border-bottom: 1px solid rgba(255,255,255, 0.5);
-	z-index: 9999 !important;
-
+  position: relative;
+  cursor: pointer;
+  padding: 5px 0 5px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 9999 !important;
 }
 
-
-@include background-color-theme-hover(".linkContainer", $dark-color-map);
+@include background-color-theme-hover('.linkContainer', $dark-color-map);
 
 .link {
-	font-size: 18px !important;
-	color: white !important;
-	text-decoration: none !important;
-	font-weight: 300 !important;
+  font-size: 18px !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 300 !important;
 }

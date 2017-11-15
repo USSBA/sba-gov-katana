@@ -1,151 +1,148 @@
 .page {
-    margin-top: 50px;
-    margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(12);
-    }
-    & a {
-        cursor: pointer;
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+  }
+  & a {
+    cursor: pointer;
+  }
 }
 
-.marginTop{
-    margin-top: 30px;
-
+.marginTop {
+  margin-top: 30px;
 }
 
 .title {
-
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(4, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(8, $desktop-0gutter);
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(4, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8, $desktop-0gutter);
+  }
 }
 
 .dates {
-    font-family: Merriweather;
+  font-family: Merriweather;
 
-    color: $grey;
+  color: $grey;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(4, $mobile-0gutter);
-        & .dateSeperator {
-            display: none;
-        }
-        & .date {
-            display: block;
-        }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(4, $mobile-0gutter);
+    & .dateSeperator {
+      display: none;
     }
-    @include grid-media($sba-grid-large) {
-        font-size: 24px;
-
-        @include grid-column(8, $desktop-0gutter);
-        & div {
-            display: none;
-        }
+    & .date {
+      display: block;
     }
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 24px;
+
+    @include grid-column(8, $desktop-0gutter);
+    & div {
+      display: none;
+    }
+  }
 }
 
 .office {
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(4, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(8, $desktop-0gutter);
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(4, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8, $desktop-0gutter);
+  }
 }
 
 .hr {
-    border: 1px solid #dadada;
+  border: 1px solid #dadada;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(12, $desktop-0gutter);
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12, $desktop-0gutter);
+  }
 }
 
 .summaryContainer {
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include font-size($h4-font-sizes);
-        @include grid-column(12, $desktop-0gutter);
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include font-size($h4-font-sizes);
+    @include grid-column(12, $desktop-0gutter);
+  }
 }
 
 .summary {
-    font-family: Merriweather;
+  font-family: Merriweather;
 
-    margin-bottom: 0;
+  margin-bottom: 0;
 
-    color: $grey;
+  color: $grey;
 
-    @include grid-media($sba-grid-large) {
-        @include font-size($h4-font-sizes);
-        @include grid-column(8, $desktop-0gutter);
-        @include grid-shift(-4);
-    }
+  @include grid-media($sba-grid-large) {
+    @include font-size($h4-font-sizes);
+    @include grid-column(8, $desktop-0gutter);
+    @include grid-shift(-4);
+  }
 }
 
 .downloadButton {
-    margin-bottom: 20px;
-    padding: 12px;
+  margin-bottom: 20px;
+  padding: 12px;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        float: right;
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    float: right;
 
-        @include grid-column(4)
-        @include grid-shift(8);
-        // width: 335px;
-    }
+    @include grid-column(4) @include grid-shift(8);
+    // width: 335px;
+  }
 }
 
 .body {
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(8, $desktop-0gutter);
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8, $desktop-0gutter);
+  }
 }
 
 .dashContainer {
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(8, $desktop-0gutter);
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8, $desktop-0gutter);
+  }
 }
 
 .dash {
-    width: 77px;
+  width: 77px;
 }
 
 .relatedProgramsContainer {
-    @include grid-media($sba-grid-medium-and-small) {
-        @include grid-column(6, $mobile-0gutter);
-    }
-    @include grid-media($sba-grid-large) {
-        @include grid-column(12, $desktop-0gutter);
-    }
-    & hr {
-        margin: 10px 0 10px 0;
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6, $mobile-0gutter);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12, $desktop-0gutter);
+  }
+  & hr {
+    margin: 10px 0 10px 0;
+  }
 }
 
 .relatedPrograms {
-    font-weight: bold;
+  font-weight: bold;
 }

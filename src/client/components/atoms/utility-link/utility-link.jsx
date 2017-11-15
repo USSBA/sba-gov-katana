@@ -1,25 +1,31 @@
-import React from 'react';
-import styles from "./utility-link.scss"
-import {BasicLink} from "atoms"
+import React from 'react'
+import styles from './utility-link.scss'
+import { BasicLink } from 'atoms'
 
 class UtilityLink extends React.Component {
-
   render() {
-    let anchorClass = styles.link + " " + (this.props.visible
-      ? ""
-      : styles.hidden)
+    let anchorClass =
+      styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
 
-    const picked = (({id, text, url, onClick, onBlur, onFocus, onKeyDown}) => ({id, text, url, onClick, onBlur, onFocus, onKeyDown}))(this.props);
+    const picked = (({
+      id,
+      text,
+      url,
+      onClick,
+      onBlur,
+      onFocus,
+      onKeyDown
+    }) => ({ id, text, url, onClick, onBlur, onFocus, onKeyDown }))(this.props)
     return (
       <li className={styles.UtilityLink}>
-          <BasicLink {...picked} myClassName={anchorClass}/>
+        <BasicLink {...picked} myClassName={anchorClass} />
       </li>
     )
   }
 }
 
 UtilityLink.defaultProps = {
-  url: "#",
+  url: '#',
   visible: true
 }
 
@@ -33,6 +39,6 @@ UtilityLink.propTypes = {
   onKeyDown: React.PropTypes.func,
   onFocus: React.PropTypes.func,
   onBlur: React.PropTypes.func
-};
+}
 
-export default UtilityLink;
+export default UtilityLink

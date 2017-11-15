@@ -1,5 +1,5 @@
-import React from "react";
-import _ from "lodash";
+import React from 'react'
+import _ from 'lodash'
 import {
   TextSection,
   SectionHeader,
@@ -13,121 +13,180 @@ import {
   ReadMoreSection,
   ButtonCta,
   QuickLinks
-} from "molecules";
+} from 'molecules'
 
 import {
   CardCollection,
   SearchBox,
   ProgramDetailsCardCollection
-} from "organisms";
+} from 'organisms'
 
-function makeParagraphs(paragraphData = [], optionalSectionHeaderFunction, lineage, paragraphEventConfig = {}) {
-
-  let paragraphs = [];
-  let skipNextReadmore = false;
+function makeParagraphs(
+  paragraphData = [],
+  optionalSectionHeaderFunction,
+  lineage,
+  paragraphEventConfig = {}
+) {
+  let paragraphs = []
+  let skipNextReadmore = false
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
-    let paragraph = (<ParagraphPlaceholder data={item} index={index}/>);
-    let paragraphType = item.type;
+    let paragraph = <ParagraphPlaceholder data={item} index={index} />
+    let paragraphType = item.type
     if (item && item.type) {
       // Google Analytics Event
-      const eventConfig = paragraphEventConfig[item.type];
-      if (item.type === "readMore") {
+      const eventConfig = paragraphEventConfig[item.type]
+      if (item.type === 'readMore') {
         if (skipNextReadmore) {
-          skipNextReadmore = false;
-          return null;
+          skipNextReadmore = false
+          return null
         } else {
           let readmoreProps = {
-            parentId: "-read-more",
+            parentId: '-read-more',
             readMoreSectionItem: item
-          };
-          paragraph = (<ReadMoreSection {...readmoreProps}/>);
+          }
+          paragraph = <ReadMoreSection {...readmoreProps} />
         }
-      } else if (item.type === "textSection") {
-        let next = paragraphArray.length >= index + 1
-          ? paragraphArray[index + 1]
-          : null;
-        if (next && next.type === "readMore") {
-          paragraphType = "textReadMoreSection";
-          paragraph = (<TextReadMoreSection parentId={"text-readmore-section-" + index} textSectionItem={item} readMoreSectionItem={next}/>);
+      } else if (item.type === 'textSection') {
+        let next =
+          paragraphArray.length >= index + 1 ? paragraphArray[index + 1] : null
+        if (next && next.type === 'readMore') {
+          paragraphType = 'textReadMoreSection'
+          paragraph = (
+            <TextReadMoreSection
+              parentId={'text-readmore-section-' + index}
+              textSectionItem={item}
+              readMoreSectionItem={next}
+            />
+          )
           skipNextReadmore = true
         } else {
-          paragraph = (<TextSection text={item.text}/>);
+          paragraph = <TextSection text={item.text} />
         }
-      } else if (item.type === "sectionHeader") {
-        let sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId;
-        paragraph = (<SectionHeader refId={sectionHeaderFunction(index)} text={item.text}/>);
-      } else if (item.type === "subsectionHeader") {
-        paragraph = (<SubsectionHeader text={item.text}/>);
-      } else if (item.type === "image") {
-        paragraph = (<ImageSection imageObj={item.image} captionText={item.captionText}/>);
-      } else if (item.type === "lookup") {
-        paragraph = (<Lookup title={item.sectionHeaderText} type="contacts" subtype={item.contactCategory}
-                             display={item.display} eventConfig={eventConfig}/>);
-      } else if (item.type === "callToAction") {
+      } else if (item.type === 'sectionHeader') {
+        let sectionHeaderFunction =
+          optionalSectionHeaderFunction || makeSectionHeaderId
+        paragraph = (
+          <SectionHeader
+            refId={sectionHeaderFunction(index)}
+            text={item.text}
+          />
+        )
+      } else if (item.type === 'subsectionHeader') {
+        paragraph = <SubsectionHeader text={item.text} />
+      } else if (item.type === 'image') {
+        paragraph = (
+          <ImageSection imageObj={item.image} captionText={item.captionText} />
+        )
+      } else if (item.type === 'lookup') {
+        paragraph = (
+          <Lookup
+            title={item.sectionHeaderText}
+            type="contacts"
+            subtype={item.contactCategory}
+            display={item.display}
+            eventConfig={eventConfig}
+          />
+        )
+      } else if (item.type === 'callToAction') {
         if (eventConfig) {
-          eventConfig.action = item.btnTitle;
+          eventConfig.action = item.btnTitle
         }
-        paragraph = (<CallToAction size={item.style} headline={item.headline} blurb={item.blurb} image={item.image}
-                                   imageAlt={item.imageAlt} btnTitle={item.btnTitle} btnUrl={item.btnUrl}
-                                   title={item.title} eventConfig={eventConfig}/>);
-      } else if (item.type === "cardCollection") {
-        paragraph = (<CardCollection parentIndex={index} cards={item.cards} />);
-      } else if (item.type === "styleGrayBackground") {
-        paragraph = (<StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs}/>);
-      } else if (item.type === "button") {
-        if(eventConfig) {
-          eventConfig.action = item.link.title;
+        paragraph = (
+          <CallToAction
+            size={item.style}
+            headline={item.headline}
+            blurb={item.blurb}
+            image={item.image}
+            imageAlt={item.imageAlt}
+            btnTitle={item.btnTitle}
+            btnUrl={item.btnUrl}
+            title={item.title}
+            eventConfig={eventConfig}
+          />
+        )
+      } else if (item.type === 'cardCollection') {
+        paragraph = <CardCollection parentIndex={index} cards={item.cards} />
+      } else if (item.type === 'styleGrayBackground') {
+        paragraph = (
+          <StyleGrayBackground
+            parentIndex={index}
+            key={index}
+            paragraphs={item.paragraphs}
+          />
+        )
+      } else if (item.type === 'button') {
+        if (eventConfig) {
+          eventConfig.action = item.link.title
         }
-        paragraph = (<ButtonCta key={index} url={item.link.url} title={item.link.title} eventConfig={eventConfig}/>);
-      } else if (item.type === "quickLinks") {
-        paragraph = (<QuickLinks data={item}/>);
-      } else if (item.type === "searchBox") {
+        paragraph = (
+          <ButtonCta
+            key={index}
+            url={item.link.url}
+            title={item.link.title}
+            eventConfig={eventConfig}
+          />
+        )
+      } else if (item.type === 'quickLinks') {
+        paragraph = <QuickLinks data={item} />
+      } else if (item.type === 'searchBox') {
+        const {
+          documentActivity,
+          documentProgram,
+          documentType,
+          sectionHeaderText
+        } = item.searchType[0]
 
-          const {
-            documentActivity,
-            documentProgram,
-            documentType,
-            sectionHeaderText
-          } = item.searchType[0];
+        const searchBoxProps = {
+          documentActivity,
+          documentProgram,
+          documentType,
+          sectionHeaderText
+        }
 
-          const searchBoxProps = {
-            documentActivity,
-            documentProgram,
-            documentType,
-            sectionHeaderText
-          };
-
-          paragraph = <SearchBox {...searchBoxProps} />;
-          
-      } else if (item.type === "childPageMenu" && item.pagesInclude === "All child pages") {
-        const cards = lineage[lineage.length - 1].children;
-        paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig}/>;
+        paragraph = <SearchBox {...searchBoxProps} />
+      } else if (
+        item.type === 'childPageMenu' &&
+        item.pagesInclude === 'All child pages'
+      ) {
+        const cards = lineage[lineage.length - 1].children
+        paragraph = (
+          <ProgramDetailsCardCollection
+            cards={cards}
+            eventConfig={eventConfig}
+          />
+        )
       }
     }
     return {
       type: paragraphType,
       paragraph: paragraph
-    };
-  });
+    }
+  })
 
-  return _.compact(paragraphs);
+  return _.compact(paragraphs)
 }
 
 function wrapParagraphs(paragraphsList, wrapperClassMapping) {
   return paragraphsList.map((item, index) => {
-    let paragraphGridStyle = wrapperClassMapping[item.type];
+    let paragraphGridStyle = wrapperClassMapping[item.type]
     if (!paragraphGridStyle) {
-      paragraphGridStyle = wrapperClassMapping["other"]
+      paragraphGridStyle = wrapperClassMapping['other']
     }
     return (
-      <div key={index} id={item.type + "-" + index} className={paragraphGridStyle}><div id={"paragraph-"+ (index+1)}>{item.paragraph}</div></div>
-    );
-  });
+      <div
+        key={index}
+        id={item.type + '-' + index}
+        className={paragraphGridStyle}
+      >
+        <div id={'paragraph-' + (index + 1)}>{item.paragraph}</div>
+      </div>
+    )
+  })
 }
 
 function makeSectionHeaderId(index) {
-  let sectionHeaderId = "section-header-" + index;
-  return sectionHeaderId;
+  let sectionHeaderId = 'section-header-' + index
+  return sectionHeaderId
 }
 
-export {makeParagraphs, wrapParagraphs, makeSectionHeaderId};
+export { makeParagraphs, wrapParagraphs, makeSectionHeaderId }

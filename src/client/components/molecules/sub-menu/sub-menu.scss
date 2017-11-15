@@ -1,26 +1,26 @@
 li.subMenu {
-    display: inline-block;
-    padding-left: 25px;
+  display: inline-block;
+  padding-left: 25px;
 }
 
 li.subMenu:first-child {
-    padding-left: 0;
+  padding-left: 0;
 }
 
 .show {
-    visibility: visible;
+  visibility: visible;
 }
 
 .hide {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .showVisible {
-    opacity: 1;
-    height: auto;
+  opacity: 1;
+  height: auto;
 }
 
 .hideVisible {
-    opacity: 0;
-    height: 0;
+  opacity: 0;
+  height: 0;
 }

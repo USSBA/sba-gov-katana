@@ -1,3 +1,3 @@
-import whiteIconLaunch from '../../../../../public/assets/svg/business-guide-icon-white-launch.svg';
+import whiteIconLaunch from '../../../../../public/assets/svg/business-guide-icon-white-launch.svg'
 
-export default whiteIconLaunch;
+export default whiteIconLaunch

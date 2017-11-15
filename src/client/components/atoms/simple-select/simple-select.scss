@@ -1,36 +1,36 @@
-.selectContainer{
-
+.selectContainer {
 }
 
-
-.innerContainer{
-    position: relative;
+.innerContainer {
+  position: relative;
 }
 
-.myselect{
-    @include font-size($paragraph-font-sizes);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 1px solid $grey;
-    border-radius: 0;
-    height: 48px;
-    background: url("../../../../../public/assets/svg/chevron.svg") no-repeat 95% 50%;
-    padding-left: 14px;
+.myselect {
+  @include font-size($paragraph-font-sizes);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid $grey;
+  border-radius: 0;
+  height: 48px;
+  background: url('../../../../../public/assets/svg/chevron.svg') no-repeat 95%
+    50%;
+  padding-left: 14px;
 }
 
-.myselect::-ms-expand { /* for IE 11 */
-    display: none;
+.myselect::-ms-expand {
+  /* for IE 11 */
+  display: none;
 }
 
-.myoption{
-    @include font-size($paragraph-font-sizes);
-    border: 1px solid $grey;
-    border-radius: 0;
+.myoption {
+  @include font-size($paragraph-font-sizes);
+  border: 1px solid $grey;
+  border-radius: 0;
 }
 
-.validationIcon{
-    right: 30px;
+.validationIcon {
+  right: 30px;
 }
 
 // .innerContainer::after {
@@ -47,7 +47,6 @@
 //   // margin: -300px 0 0 -200px;
 //   z-index: 1;
 // }
-
 
 // @include theme-focus('money-green', '.myselect', $money-green);
 // @include theme-focus('sba-blue', '.myselect', $sba-blue);

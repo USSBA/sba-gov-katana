@@ -1,179 +1,178 @@
-
 .section {
+  width: 84vw;
+  margin: 0 auto 70px;
+  left: 1.4vw;
+  position: relative;
+  @include grid-container;
+  .counselingRow {
+    display: flex;
     width: 84vw;
-    margin: 0 auto 70px;
-    left: 1.4vw;
-    position: relative;
-    @include grid-container;
-    .counselingRow {
-        display: flex;
-        width: 84vw;
-    }
-    // Mobile
+  }
+  // Mobile
+  h2 {
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  h4 {
+    font-size: 21px;
+    font-weight: 900;
+    margin-bottom: 9px;
+  }
+  h5 {
+    color: #666666;
+    font-family: Merriweather;
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 17.6px;
+  }
+  // Tablet
+  @media (min-width: 768px) {
     h2 {
-        font-size: 34px;
-        font-weight: 900;
-        margin-bottom: 12px;
+      font-size: 56px;
+      margin-bottom: 18px;
     }
     h4 {
-        font-size: 21px;
-        font-weight: 900;
-        margin-bottom: 9px;
+      font-size: 21px;
+      margin-bottom: 11px;
     }
     h5 {
-        color: #666666;
-        font-family: Merriweather;
-        font-size: 16px;
-        font-style: italic;
-        margin-bottom: 32px;
+      font-size: 18px;
+      margin-bottom: 36px;
     }
     p {
-        font-size: 18px;
-        margin-bottom: 17.6px;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
-    // Tablet
-    @media (min-width: 768px) {
-        h2 {
-            font-size: 56px;
-            margin-bottom: 18px;
-        }
-        h4 {
-            font-size: 21px;
-            margin-bottom: 11px;
-        }
-        h5 {
-            font-size: 18px;
-            margin-bottom: 36px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+  }
+  // Desktop
+  @media (min-width: 1080px) {
+    h2 {
+      font-size: 75px;
+      margin-bottom: 30px;
     }
-    // Desktop
-    @media (min-width: 1080px) {
-        h2 {
-            font-size: 75px;
-            margin-bottom: 30px;
-        }
-        h4 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        h5 {
-            font-size: 24px;
-            margin-bottom: 50px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+    h4 {
+      font-size: 24px;
+      margin-bottom: 15px;
     }
-    h2,
     h5 {
-        @include grid-column(12);
+      font-size: 24px;
+      margin-bottom: 50px;
     }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+  h2,
+  h5 {
+    @include grid-column(12);
+  }
 }
 
 .counselorContainer {
-    @include grid-column(12);
-    counter-reset: section;
-    h4::before {
-        display: inline-block;
-        top: 0;
-        left: 0;
-        background-color: #609F00;
-        border-radius: 100%;
-        font-size: 24px;
-        color: #fff;
-        text-align: center;
-        width: 32px;
-        height: 32px;
-        font-weight: 600;
-        line-height: 32px;
-        content: counter(section, upper-alpha);
-        counter-increment: section;
-        margin-right: 12px;
-    }
-    .seeMoreBtn {
-        font-size: 17px;
-        font-weight: 600;
-        padding: 10px 50px;
-    }
+  @include grid-column(12);
+  counter-reset: section;
+  h4::before {
+    display: inline-block;
+    top: 0;
+    left: 0;
+    background-color: #609f00;
+    border-radius: 100%;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    font-weight: 600;
+    line-height: 32px;
+    content: counter(section, upper-alpha);
+    counter-increment: section;
+    margin-right: 12px;
+  }
+  .seeMoreBtn {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px 50px;
+  }
 }
 
 .counselorBox {
-    margin-bottom: 30px;
-    p {
-        margin-bottom: 0;
-    }
+  margin-bottom: 30px;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 767px) {
-    .Counseling {
-        display: flex;
-    }
-    .mapContainer {
-        display: none;
-    }
+  .Counseling {
+    display: flex;
+  }
+  .mapContainer {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
-    .mapContainer {
-        @include grid-column(7);
-        @include grid-push(1);
-        .mapPlaceholder {
-            background: red;
-            width: 100%;
-            height: 100%;
-        }
+  .mapContainer {
+    @include grid-column(7);
+    @include grid-push(1);
+    .mapPlaceholder {
+      background: red;
+      width: 100%;
+      height: 100%;
     }
-    .counselorContainer {
-        @include grid-column(4);
-    }
+  }
+  .counselorContainer {
+    @include grid-column(4);
+  }
 }
 
 @media (min-width: 1000px) {
-    .mapContainer {
-        position: relative;
-        width: 100%;
-        height: auto;
-        .mapPlaceholder {
-            background: white;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
+  .mapContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    .mapPlaceholder {
+      background: white;
+      position: absolute;
+      width: 100%;
+      height: 100%;
     }
+  }
 }
 
 @media (max-width: 999px) {
-    .mapContainer {
-        .mapPlaceholder {
-            background: white;
-            width: 100%;
-            height: 100%;
-        }
+  .mapContainer {
+    .mapPlaceholder {
+      background: white;
+      width: 100%;
+      height: 100%;
     }
+  }
 }
 
 // Loader
 .loader {
-    display: inline-block;
-    text-align: center;
-    border: 16px solid #f3f3f3;
-    border-top: 16px solid #4A4A4A;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+  display: inline-block;
+  text-align: center;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #4a4a4a;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

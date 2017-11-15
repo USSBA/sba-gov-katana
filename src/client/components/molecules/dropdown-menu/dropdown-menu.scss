@@ -1,14 +1,14 @@
 .show {
-    visibility: visible;
+  visibility: visible;
 }
 
 .hide {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .dropdownMenu {
   border-top: 5px solid;
-  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.3);
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   left: -48%;
   background-color: #fff;
@@ -24,13 +24,13 @@
 }
 
 .two {
-    height: 450px;
-    width: auto;
-    left: 10%;
+  height: 450px;
+  width: auto;
+  left: 10%;
 }
 
 .twoWithFeaturedCallout {
-    height: 530px;
+  height: 530px;
 }
 
 .three {
@@ -63,10 +63,10 @@
 }
 
 .businessGuideCTA {
-    left: 4%;
-    bottom: 60px;
-    position: absolute;
-    width: 92%;
+  left: 4%;
+  bottom: 60px;
+  position: absolute;
+  width: 92%;
 }
 
 @include theme(sba-blue, '.skipLink a', null, #fff, null);

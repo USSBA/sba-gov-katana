@@ -1,11 +1,11 @@
 export function removeLoader() {
   return {
-    type: "REMOVE_LOADER"
-  };
+    type: 'REMOVE_LOADER'
+  }
 }
 
 export function showLoader() {
   return {
-    type: "SHOW_LOADER"
-  };
+    type: 'SHOW_LOADER'
+  }
 }

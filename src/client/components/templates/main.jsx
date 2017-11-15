@@ -1,128 +1,119 @@
-import React from 'react';
-import _ from "lodash";
-import cookie from 'react-cookie';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {
-  Header,
-  Footer,
-  DisasterAlert,
-  NotificationBar
-} from "organisms";
-import ModalController from '../modal-controller.jsx';
-import * as ContentActions from "../../actions/content.js";
-import styles from "../organisms/header-footer/header/header.scss";
+import React from 'react'
+import _ from 'lodash'
+import cookie from 'react-cookie'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Header, Footer, DisasterAlert, NotificationBar } from 'organisms'
+import ModalController from '../modal-controller.jsx'
+import * as ContentActions from '../../actions/content.js'
+import styles from '../organisms/header-footer/header/header.scss'
 
-import * as LoadingActions from "../../actions/loading.js";
-import MainLoader from '../molecules/main-loader/main-loader.jsx';
+import * as LoadingActions from '../../actions/loading.js'
+import MainLoader from '../molecules/main-loader/main-loader.jsx'
 
-const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePresent) => {
-
-  let boolean;
+const shouldNotificationBarBeVisible = (
+  listOfUrls,
+  currentPathname,
+  isCookiePresent
+) => {
+  let boolean
 
   // if location pathname MATCHES a whitelabelurl
-    // show NotificationBar (if cookie is NOT set)
+  // show NotificationBar (if cookie is NOT set)
   // else split whiteLabelUrl by slash-asterisk ("/*")
-    // if contains asterisk
-      // split whiteLabelUrl by slash
-      // split location pathname by slash
-      // if whiteLabelUrl[0] is equal to location pathname[0]
-        // show NotificationBar (if cookie is NOT set)
+  // if contains asterisk
+  // split whiteLabelUrl by slash
+  // split location pathname by slash
+  // if whiteLabelUrl[0] is equal to location pathname[0]
+  // show NotificationBar (if cookie is NOT set)
 
   if (listOfUrls) {
-
     for (let index = 0; index < listOfUrls.length; index++) {
-
-      const whiteLabeledUrl = listOfUrls[index];
+      const whiteLabeledUrl = listOfUrls[index]
 
       if (_.startsWith(currentPathname, whiteLabeledUrl)) {
-
-        boolean = !isCookiePresent;
-        break;
-
+        boolean = !isCookiePresent
+        break
       }
-
     }
-
   }
 
-  return boolean;
-
-};
-
+  return boolean
+}
 
 class Main extends React.Component {
   constructor(props) {
-    super();
+    super()
     this.state = {
       disasterAlertHidingCookieIsPresent: false,
       notificationBarHidingCookieIsPresent: false
-    };
+    }
   }
 
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded("disaster", "disaster");
-    this.props.actions.fetchContentIfNeeded("notification", "notification");
+    this.props.actions.fetchContentIfNeeded('disaster', 'disaster')
+    this.props.actions.fetchContentIfNeeded('notification', 'notification')
   }
 
   componentWillMount() {
-
     const updatedState = {
-      disasterAlertHidingCookieIsPresent: cookie.load("close_disaster_loan_parature") ? true : false,
-      notificationBarHidingCookieIsPresent: cookie.load("close_notification_bar") ? true : false
-    };
+      disasterAlertHidingCookieIsPresent: cookie.load(
+        'close_disaster_loan_parature'
+      )
+        ? true
+        : false,
+      notificationBarHidingCookieIsPresent: cookie.load(
+        'close_notification_bar'
+      )
+        ? true
+        : false
+    }
 
-    this.setState(updatedState);
+    this.setState(updatedState)
   }
 
   handleClose(type) {
-
-    const updatedState = {};
-    let cookieBoolean = "";
-    let cookieName = "";
+    const updatedState = {}
+    let cookieBoolean = ''
+    let cookieName = ''
 
     switch (type) {
+      case 'DISASTER':
+        cookieBoolean = 'disasterAlertHidingCookieIsPresent'
+        cookieName = 'close_disaster_loan_parature'
 
-      case "DISASTER":
+        break
 
-        cookieBoolean = "disasterAlertHidingCookieIsPresent";
-        cookieName = "close_disaster_loan_parature";
+      case 'NOTIFICATION':
+        cookieBoolean = 'notificationBarHidingCookieIsPresent'
+        cookieName = 'close_notification_bar'
 
-        break;
-
-      case "NOTIFICATION":
-
-        cookieBoolean = "notificationBarHidingCookieIsPresent";
-        cookieName = "close_notification_bar";
-
-        break;
+        break
 
       default:
-
-        return;
+        return
     }
 
-    updatedState[cookieBoolean] = true;
+    updatedState[cookieBoolean] = true
 
-    this.setState(updatedState);
+    this.setState(updatedState)
 
-    cookie.save(cookieName, "1", {
-      path: "/",
+    cookie.save(cookieName, '1', {
+      path: '/',
       secure: true
-    });
-
+    })
   }
 
   render() {
-    const visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent;
+    const visible =
+      this.props.disasterAlertVisible &&
+      !this.state.disasterAlertHidingCookieIsPresent
     const {
       notificationDescription,
       notificationUrl,
       notificationWhiteLabelUrls,
-      location: {
-        pathname
-      }
-    } = this.props;
+      location: { pathname }
+    } = this.props
 
     // determine visibility
 
@@ -130,83 +121,74 @@ class Main extends React.Component {
       notificationWhiteLabelUrls,
       pathname,
       this.state.notificationBarHidingCookieIsPresent
-    );
+    )
 
     return (
-
-      <div className={visible ? styles.alertIsActive : ""}>
-
+      <div className={visible ? styles.alertIsActive : ''}>
         <DisasterAlert
           description={this.props.disasterAlertDescription}
           visible={visible}
           buttonText={this.props.disasterAlertButtonText}
           link={this.props.disasterAlertLink}
           onClose={() => {
-            this.handleClose("DISASTER");
+            this.handleClose('DISASTER')
           }}
         />
 
-        <Header additionalMenuOffset={visible ? 53 : 0}/>
+        <Header additionalMenuOffset={visible ? 53 : 0} />
 
         <MainLoader />
 
         <div className={styles.mainContent}>{this.props.children}</div>
 
-        { showNotificationBar &&
-
+        {showNotificationBar && (
           <NotificationBar
             description={notificationDescription}
             url={notificationUrl}
             onClose={() => {
-              this.handleClose("NOTIFICATION");
+              this.handleClose('NOTIFICATION')
             }}
           />
-
-        }
+        )}
 
         <Footer />
         <ModalController />
-
       </div>
-
-    );
+    )
   }
 }
 
 function mapReduxStateToProps(reduxState) {
-
-  const data = {};
-  const { disaster, notification } = reduxState.contentReducer;
-  const loadingState = reduxState.loading;
+  const data = {}
+  const { disaster, notification } = reduxState.contentReducer
+  const loadingState = reduxState.loading
   if (disaster) {
-
-    data.disasterAlertVisible = disaster.visible;
-    data.disasterAlertDescription = disaster.description;
-    data.disasterAlertButtonText = disaster.buttonText;
-    data.disasterAlertLink= disaster.link;
-
+    data.disasterAlertVisible = disaster.visible
+    data.disasterAlertDescription = disaster.description
+    data.disasterAlertButtonText = disaster.buttonText
+    data.disasterAlertLink = disaster.link
   }
 
   if (notification) {
-
-    data.notificationWhiteLabelUrls = notification.visibleOnUrls && notification.visibleOnUrls.split ? notification.visibleOnUrls.split("\r\n") : [] ;
-    data.notificationDescription = notification.title;
-    data.notificationUrl = notification.url;
-
+    data.notificationWhiteLabelUrls =
+      notification.visibleOnUrls && notification.visibleOnUrls.split
+        ? notification.visibleOnUrls.split('\r\n')
+        : []
+    data.notificationDescription = notification.title
+    data.notificationUrl = notification.url
   }
 
   if (loadingState) {
-    data.loadingState = loadingState;
+    data.loadingState = loadingState
   }
 
-  return data;
-
+  return data
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ContentActions, dispatch)
-  };
+  }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Main);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Main)

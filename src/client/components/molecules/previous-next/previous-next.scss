@@ -3,28 +3,27 @@
 @include theme(money-green, '.chevronNext, .chevronPrevious', #fff, $money-green, null);
 @include theme(cobalt-blue, '.chevronNext, .chevronPrevious', #fff, $cobalt-blue, null);
 
-.previousNextContainer{
+.previousNextContainer {
   @include grid-column(12, $desktop-0gutter);
-
 }
 
-.prevNextButtonsContainer{
+.prevNextButtonsContainer {
   @include grid-column(12, $desktop-0gutter);
-  div{
-   height: 75px !important;
+  div {
+    height: 75px !important;
   }
 }
 
-.prevNextTitleContainer{
-   @include grid-column(12, $desktop-0gutter);
+.prevNextTitleContainer {
+  @include grid-column(12, $desktop-0gutter);
 }
 
-.previousContainer{
+.previousContainer {
   @include grid-column(5.8, $desktop-0gutter);
   position: relative;
   height: 100% !important;
 
-  button{
+  button {
     text-transform: none;
     font-size: 18px;
     text-align: right;
@@ -35,11 +34,11 @@
   }
 }
 
-.previousContainerHide{
+.previousContainerHide {
   @include grid-column(5.8, $desktop-0gutter);
   visibility: hidden;
 
-  button{
+  button {
     text-transform: none;
     font-size: 18px;
     text-align: right;
@@ -48,12 +47,12 @@
   }
 }
 
-.nextContainer{
+.nextContainer {
   @include grid-column(5.8, $desktop-0gutter);
   @include grid-shift(0.46);
   height: 100% !important;
 
-  button{
+  button {
     text-transform: none;
     font-size: 18px;
     text-align: left;
@@ -63,44 +62,43 @@
     padding-right: 10%;
   }
 
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     @include grid-column(12, $desktop-0gutter);
     @include grid-shift(-0.02);
   }
 }
 
-.previousTitle{
+.previousTitle {
   @include grid-column(5.8, $desktop-0gutter);
   text-align: right;
-  h6{
+  h6 {
     width: 100%;
   }
-
 }
 
-.nextTitle{
+.nextTitle {
   @include grid-column(5.8, $desktop-0gutter);
   @include grid-shift(0.3);
 
-  @include grid-media($sba-grid-small){
+  @include grid-media($sba-grid-small) {
     @include grid-column(12, $desktop-0gutter);
-    @include grid-shift(-.01);
+    @include grid-shift(-0.01);
   }
 }
 
-.titleHide{
+.titleHide {
   @include grid-column(5.8, $desktop-0gutter);
   visibility: hidden;
 }
 
-.chevronNext{
+.chevronNext {
   position: absolute;
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
 }
 
-.chevronPrevious{
+.chevronPrevious {
   position: absolute;
   top: 50%;
   left: 15px;
@@ -109,7 +107,6 @@
 
 .previousContainer,
 .nextContainer {
-
   i {
     pointer-events: none;
   }
@@ -120,23 +117,22 @@
       background: none;
     }
   }
-
 }
 
-.mobile{
-  @include grid-media($sba-grid-large){
-     display: none;
-   }
+.mobile {
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
 
-  @include grid-media($sba-grid-medium){
+  @include grid-media($sba-grid-medium) {
     display: none;
   }
 
   @include grid-column(12, $desktop-0gutter);
 }
 
-.desktop{
-  @include grid-media($sba-grid-small){
+.desktop {
+  @include grid-media($sba-grid-small) {
     display: none;
   }
 }

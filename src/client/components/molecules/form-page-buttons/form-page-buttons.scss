@@ -1,15 +1,16 @@
-.container{
-    margin-top: 40px;
+.container {
+  margin-top: 40px;
 }
-.container button{
-    display: inline;
-}
-
-.container button:last-child{
-    display: inline;
-    float: right;
+.container button {
+  display: inline;
 }
 
-.oneButton button, .oneButton div{
-    width: 100%;
+.container button:last-child {
+  display: inline;
+  float: right;
+}
+
+.oneButton button,
+.oneButton div {
+  width: 100%;
 }

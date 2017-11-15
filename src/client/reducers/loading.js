@@ -1,14 +1,14 @@
 const loadingReducer = (state = {}, action) => {
-  if (action.type === "REMOVE_LOADER") {
+  if (action.type === 'REMOVE_LOADER') {
     return {
       displayLoader: false
-    };
-  } else if (action.type === "SHOW_LOADER") {
+    }
+  } else if (action.type === 'SHOW_LOADER') {
     return {
       displayLoader: true
-    };
+    }
   }
-  return state;
-};
+  return state
+}
 
-export default loadingReducer;
+export default loadingReducer

@@ -1,95 +1,97 @@
-.emailConfirmationText{
-    min-height: 600px;
-    padding: 10% 10%;
+.emailConfirmationText {
+  min-height: 600px;
+  padding: 10% 10%;
 }
 
 .section {
-    width: 84vw;
-    margin: 0 auto 90px;
-    left: 1.4vw;
-    position: relative;
-    top: 30px;
-    @include grid-container;
-    // Mobile
-    h1, h5, .title {
-        text-align: center;
-    }
+  width: 84vw;
+  margin: 0 auto 90px;
+  left: 1.4vw;
+  position: relative;
+  top: 30px;
+  @include grid-container;
+  // Mobile
+  h1,
+  h5,
+  .title {
+    text-align: center;
+  }
 
+  h1 {
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  h4 {
+    font-size: 21px;
+    font-weight: 900;
+    margin-bottom: 9px;
+  }
+  h5 {
+    color: #666666;
+    font-family: Merriweather;
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+  p {
+    font-size: 18px;
+    margin-bottom: 17.6px;
+  }
+
+  a.resendLink {
+    color: #609f00;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  // Tablet
+  @media (min-width: 768px) {
     h1 {
-        font-size: 34px;
-        font-weight: 900;
-        margin-bottom: 12px;
+      font-size: 56px;
+      margin-bottom: 18px;
+      margin-top: 50px;
     }
     h4 {
-        font-size: 21px;
-        font-weight: 900;
-        margin-bottom: 9px;
+      font-size: 21px;
+      margin-bottom: 11px;
     }
     h5 {
-        color: #666666;
-        font-family: Merriweather;
-        font-size: 16px;
-        font-style: italic;
-        margin-bottom: 32px;
+      font-size: 18px;
+      margin-bottom: 125px;
     }
     p {
-        font-size: 18px;
-        margin-bottom: 17.6px;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
-
-    a.resendLink {
-        color: #609F00;
-        text-decoration: underline;
-        &:hover {
-            text-decoration: none;
-        }
+    .resources {
+      display: flex;
+      width: 100%;
     }
-    // Tablet
-    @media (min-width: 768px) {
-        h1 {
-            font-size: 56px;
-            margin-bottom: 18px;
-            margin-top: 50px;
-        }
-        h4 {
-            font-size: 21px;
-            margin-bottom: 11px;
-        }
-        h5 {
-            font-size: 18px;
-            margin-bottom: 125px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .resources {
-            display: flex;
-            width: 100%;
-        }
+  }
+  // Desktop
+  @media (min-width: 1080px) {
+    h1 {
+      font-size: 75px;
+      margin-bottom: 30px;
+      margin-top: 50px;
     }
-    // Desktop
-    @media (min-width: 1080px) {
-        h1 {
-            font-size: 75px;
-            margin-bottom: 30px;
-            margin-top: 50px;
-        }
-        h4 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        h5 {
-            font-size: 24px;
-            margin-bottom: 125px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
+    h4 {
+      font-size: 24px;
+      margin-bottom: 15px;
     }
-    h1,
     h5 {
-        @include grid-column(12);
+      font-size: 24px;
+      margin-bottom: 125px;
     }
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  }
+  h1,
+  h5 {
+    @include grid-column(12);
+  }
 }

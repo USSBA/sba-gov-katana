@@ -45,7 +45,7 @@
 /// @since 5.0.0
 
 @mixin hide-visually($toggle: hide) {
-  @if $toggle == "hide" {
+  @if $toggle == 'hide' {
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: circle(1% at 1% 1%);
@@ -55,7 +55,7 @@
     position: absolute;
     white-space: nowrap;
     width: 1px;
-  } @else if $toggle == "unhide" {
+  } @else if $toggle == 'unhide' {
     clip: auto;
     clip-path: none;
     height: auto;

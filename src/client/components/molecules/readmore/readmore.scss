@@ -1,7 +1,7 @@
 .readMoreSection {
   padding: 40px;
   margin-bottom: 40px;
-  background-color: #EBEBEB;
+  background-color: #ebebeb;
 }
 
 .lineCopy {
@@ -21,21 +21,21 @@
 @include theme(money-green, '.lineCopy', $money-green, $money-green, $money-green);
 @include theme(cobalt-blue, '.lineCopy', $cobalt-blue, $cobalt-blue, $cobalt-blue);
 
-.title{
+.title {
   color: #333333;
   font-size: 24px;
   font-weight: bold;
   line-height: 26px;
 }
 
-.preview{
+.preview {
   color: #333333;
   font-size: 18px;
   font-style: italic;
   line-height: 27px;
 }
 
-.expandedCopyText{
+.expandedCopyText {
   color: #333333;
   font-size: 18px;
   line-height: 27px;
@@ -51,10 +51,10 @@
 @include theme-hover(money-green, '.readMore', $money-green-dark, #fff, $money-green-dark);
 @include theme-hover(cobalt-blue, '.readMore', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
 
-@include small-button(".readMore");
+@include small-button('.readMore');
 
 @include grid-media( $sba-grid-small) {
   .readMore {
     width: 100%;
   }
-  }
+}

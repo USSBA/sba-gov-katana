@@ -1,50 +1,50 @@
-$sba-red: #F0415E;
-@include single-color-button(".RedButton", $sba-red);
-@include single-color-button(".GreenButton", $money-green);
+$sba-red: #f0415e;
+@include single-color-button('.RedButton', $sba-red);
+@include single-color-button('.GreenButton', $money-green);
 
 .question {
-    font-size: 1.3rem;
-    margin-bottom: $margin-30;
+  font-size: 1.3rem;
+  margin-bottom: $margin-30;
 }
-@include small-button(".GreenButton");
-@include small-button(".RedButton");
+@include small-button('.GreenButton');
+@include small-button('.RedButton');
 
 .GreenButton {
-    margin-right: $margin-30;
+  margin-right: $margin-30;
 }
 
 .GreenButton,
 .RedButton {
-    padding-left: $margin-30;
-    padding-right: $margin-30;
+  padding-left: $margin-30;
+  padding-right: $margin-30;
 }
 
 .QuestionContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .InputContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .InputContainer button {
-    float: right;
+  float: right;
 }
 
 .ThankYouContainer {
-    text-align: center;
+  text-align: center;
 }
 
 .checkIcon {
-    color: $money-green;
-    font-size: 1.8rem;
+  color: $money-green;
+  font-size: 1.8rem;
 }
 
 .thanksAgain {
-    margin-left: $margin-10;
-    display: inline;
+  margin-left: $margin-10;
+  display: inline;
 }
 
-.maidenNameContainer{
-    display: none;
+.maidenNameContainer {
+  display: none;
 }

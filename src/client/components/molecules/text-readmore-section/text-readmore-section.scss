@@ -1,44 +1,44 @@
 .textReadMoreSection {
-	display: block;
+  display: block;
 }
 
 .textSection {
-	display: block;
-	@include grid-media($sba-grid-small) {
-		@include grid-column(6, $sba-grid-small);
-	}
-	@include grid-media($sba-grid-medium) {
-		@include grid-column(12)
-	}
-	 @include grid-media($sba-grid-large){
-		@include grid-column(5);
-		@include grid-push(4);
-	}
+  display: block;
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6, $sba-grid-small);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(5);
+    @include grid-push(4);
+  }
 }
 
 .expanded .textSection {
-	@include grid-media($sba-grid-large) {
-		@include grid-column(7);
-		@include grid-push(4);
-	}
+  @include grid-media($sba-grid-large) {
+    @include grid-column(7);
+    @include grid-push(4);
+  }
 }
 
 .readMoreSection {
-	display: block;
-	@include grid-media($sba-grid-small) {
-		@include grid-column(6, $sba-grid-small);
-	}
-	@include grid-media($sba-grid-medium) {
-		@include grid-column(12);
-	}
-	@include grid-media($sba-grid-large) {
-		@include grid-column(3);
-	}
+  display: block;
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6, $sba-grid-small);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(3);
+  }
 }
 
 .expanded .readMoreSection {
-	@include grid-media($sba-grid-large) {
-		@include grid-column(8);
-		@include grid-push(4);
-	}
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+    @include grid-push(4);
+  }
 }

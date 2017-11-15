@@ -30,7 +30,6 @@
     $value,
     $prefixes: ()
   ) {
-
   @each $prefix in $prefixes {
     #{"-" + $prefix + "-" + $property}: $value;
   }

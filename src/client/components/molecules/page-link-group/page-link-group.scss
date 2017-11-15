@@ -4,7 +4,7 @@ nav .pageLinkGroup {
 }
 
 .pageLinkGroup li:first-child {
-  @include grid-media($sba-grid-large){
+  @include grid-media($sba-grid-large) {
     font-weight: 700;
     font-size: 18px;
     padding-bottom: 15px;

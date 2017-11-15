@@ -1,14 +1,14 @@
 export default {
-  restContent: "REST_CONTENT",
-  siteContent: "SITE_CONTENT",
+  restContent: 'REST_CONTENT',
+  siteContent: 'SITE_CONTENT',
   feedback: {
-    submitResults: "SUBMIT_RESULT",
-    submitText: "SUBMIT_TEXT"
+    submitResults: 'SUBMIT_RESULT',
+    submitText: 'SUBMIT_TEXT'
   },
   display: {
-    theme: "THEME"
+    theme: 'THEME'
   },
   navigation: {
-    callToAction: "CALL_TO_ACTION"
+    callToAction: 'CALL_TO_ACTION'
   }
-};
+}

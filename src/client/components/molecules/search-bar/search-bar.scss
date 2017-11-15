@@ -20,35 +20,34 @@
 // }
 
 .searchBar {
-    position: relative;
-    display: inline-block;
-    margin-left: 10px;
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .searchBar input {
-    height: 40px;
-    display: inline;
-    border-radius: 5px;
-    border-color: $grey-light;
-    width: 12vw;
+  height: 40px;
+  display: inline;
+  border-radius: 5px;
+  border-color: $grey-light;
+  width: 12vw;
 }
 
 .searchBar a {
-    position: absolute;
-    right: 0.5vw;
-    top: 12px;
+  position: absolute;
+  right: 0.5vw;
+  top: 12px;
 }
 
-.searchIcon{
-
+.searchIcon {
 }
 
-@include theme("sba-blue", '.searchIcon i', null, #757575, null);
-@include theme("byzantine", '.searchIcon i', null, #757575, null);
-@include theme("money-green", '.searchIcon i', null, #757575, null);
-@include theme("cobalt-blue", '.searchIcon i', null, #757575, null);
+@include theme('sba-blue', '.searchIcon i', null, #757575, null);
+@include theme('byzantine', '.searchIcon i', null, #757575, null);
+@include theme('money-green', '.searchIcon i', null, #757575, null);
+@include theme('cobalt-blue', '.searchIcon i', null, #757575, null);
 
-@include theme-hover("sba-blue", '.searchIcon i', null, $grey-dark, null);
-@include theme-hover("byzantine", '.searchIcon i', null, $grey-dark, null);
-@include theme-hover("money-green", '.searchIcon i', null, $grey-dark, null);
-@include theme-hover("cobalt-blue", '.searchIcon i', null, $grey-dark, null);
+@include theme-hover('sba-blue', '.searchIcon i', null, $grey-dark, null);
+@include theme-hover('byzantine', '.searchIcon i', null, $grey-dark, null);
+@include theme-hover('money-green', '.searchIcon i', null, $grey-dark, null);
+@include theme-hover('cobalt-blue', '.searchIcon i', null, $grey-dark, null);

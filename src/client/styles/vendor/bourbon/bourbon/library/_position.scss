@@ -44,14 +44,13 @@
     $position,
     $box-edge-values
   ) {
-
   $box-edge-values: _unpack-shorthand($box-edge-values);
 
   $offsets: (
-    top:    nth($box-edge-values, 1),
-    right:  nth($box-edge-values, 2),
+    top: nth($box-edge-values, 1),
+    right: nth($box-edge-values, 2),
     bottom: nth($box-edge-values, 3),
-    left:   nth($box-edge-values, 4),
+    left: nth($box-edge-values, 4)
   );
 
   position: $position;

@@ -1,14 +1,13 @@
-
 .subTitle {
-    margin-top:4px;
-    font-size: 13px;
-    font-weight:bold;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .subText {
-    font-size: 13px;
+  font-size: 13px;
 }
 
-.landingPage{
-    @include grid-container($sba-grid-medium);
+.landingPage {
+  @include grid-container($sba-grid-medium);
 }

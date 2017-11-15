@@ -3,7 +3,7 @@
   border-color: #fff;
   color: #fff;
   padding: 15px 50px 50px;
-  background-image: url("../../../../../public/assets/images/homepage/diagonal-lines.png");
+  background-image: url('../../../../../public/assets/images/homepage/diagonal-lines.png');
   background-position: bottom right;
   background-repeat: no-repeat;
   @include grid-media($sba-grid-small) {
@@ -16,7 +16,7 @@
   border-bottom: 4px solid;
   display: inline-block;
   font-weight: 900;
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 .transparentBox .sectionNum {
@@ -25,7 +25,7 @@
 
 h2.sectionTitle {
   @include font-size($h1-font-sizes);
-  margin-bottom: .45em;
+  margin-bottom: 0.45em;
 }
 
 p.sectionText {

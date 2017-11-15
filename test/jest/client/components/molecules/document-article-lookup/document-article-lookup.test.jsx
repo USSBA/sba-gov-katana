@@ -1,44 +1,47 @@
 /*global expect*/
 
-import React from 'react';
-import DocumentArticleLookup from 'client/components/molecules/document-article-lookup/document-article-lookup.jsx';
-import {shallow} from 'enzyme';
-import renderer from 'react-test-renderer';
-import _ from "lodash";
+import React from 'react'
+import DocumentArticleLookup from 'client/components/molecules/document-article-lookup/document-article-lookup.jsx'
+import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
+import _ from 'lodash'
 
-const submit = jest.fn();
-const reset = jest.fn();
-const queryChange = jest.fn();
-const pageChange = jest.fn();
+const submit = jest.fn()
+const reset = jest.fn()
+const queryChange = jest.fn()
+const pageChange = jest.fn()
 
 let lookupProps = {
-  title: "This is a title",
+  title: 'This is a title',
   queryState: {},
   items: [
     {
-      name: "Obi-Wan Kenobi",
-      title: "Master",
-      lightsaberColor: "Green",
-      age: "40",
-      type: "jedi"
-    }, {
-      name: "Luke Skywalker",
-      title: "Knight",
-      lightsaberColor: "Blue",
-      age: "20",
-      type: "jedi"
-    }, {
-      name: "Yoda",
-      title: "Master",
-      lightsaberColor: "Green",
-      age: "900",
-      type: "jedi"
-    }, {
-      name: "Bastilla Shan",
-      title: "Knight",
-      lightsaberColor: "Yellow",
-      age: "24",
-      type: "jedi"
+      name: 'Obi-Wan Kenobi',
+      title: 'Master',
+      lightsaberColor: 'Green',
+      age: '40',
+      type: 'jedi'
+    },
+    {
+      name: 'Luke Skywalker',
+      title: 'Knight',
+      lightsaberColor: 'Blue',
+      age: '20',
+      type: 'jedi'
+    },
+    {
+      name: 'Yoda',
+      title: 'Master',
+      lightsaberColor: 'Green',
+      age: '900',
+      type: 'jedi'
+    },
+    {
+      name: 'Bastilla Shan',
+      title: 'Knight',
+      lightsaberColor: 'Yellow',
+      age: '24',
+      type: 'jedi'
     }
   ],
   itemCount: 42,
@@ -46,11 +49,12 @@ let lookupProps = {
   pageSize: 4,
   taxonomies: [
     {
-      name: "Title",
-      terms: ["Padawan", "Knight", "Master"]
-    }, {
-      name: "LightsaberColor",
-      terms: ["Red", "Green", "Blue", "Yellow"]
+      name: 'Title',
+      terms: ['Padawan', 'Knight', 'Master']
+    },
+    {
+      name: 'LightsaberColor',
+      terms: ['Red', 'Green', 'Blue', 'Yellow']
     }
   ],
   onSubmit: submit,
@@ -58,25 +62,23 @@ let lookupProps = {
   onQueryChange: queryChange,
   onPageChange: pageChange,
   isFetching: false,
-  fieldsToShowInDetails: [
-    "Name", "LightsaberColor"
-  ],
-  type: "jedi"
+  fieldsToShowInDetails: ['Name', 'LightsaberColor'],
+  type: 'jedi'
 }
-describe("DocumentArticleLookup", () => {
+describe('DocumentArticleLookup', () => {
   test('should render with all the information', () => {
-    let props = _.clone(lookupProps);
-    const component = renderer.create(<DocumentArticleLookup {...props}/>);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
+    let props = _.clone(lookupProps)
+    const component = renderer.create(<DocumentArticleLookup {...props} />)
+    let tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 
   test('should fire the submit when the apply button is pressed ', () => {
-    let props = _.clone(lookupProps);
-    const component = shallow(<DocumentArticleLookup {...props}/>);
-    component.find("ApplyButton").prop("submit")();
-    expect(submit).toBeCalled();
-  });
+    let props = _.clone(lookupProps)
+    const component = shallow(<DocumentArticleLookup {...props} />)
+    component.find('ApplyButton').prop('submit')()
+    expect(submit).toBeCalled()
+  })
   //
   // test('should show important data properly ', () => {
   //   let props = _.clone(lookupProps);
@@ -95,5 +97,4 @@ describe("DocumentArticleLookup", () => {
   //   const component = shallow(<LinkCard {...cardData}/>);
   //   expect(component.find(".document-article-lookup-link")).toHaveLength(0);
   // });
-
 })

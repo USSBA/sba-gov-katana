@@ -43,7 +43,7 @@
   cursor: auto;
 
   &::after {
-    background: #C4C4C4;
+    background: #c4c4c4;
     border-radius: 50%;
     content: '';
     display: block;
@@ -55,35 +55,33 @@
 
 .SliderNavButtonActive {
   &::after {
-    background: #0B97DD ;
+    background: #0b97dd;
   }
 }
 
-.SliderInner{
+.SliderInner {
   width: 100%;
 }
 
-
-.SliderItemImage{
-    margin: auto;
-    width: 95%;
-    height: auto;
+.SliderItemImage {
+  margin: auto;
+  width: 95%;
+  height: auto;
 }
 
-
-.SliderItemTitle{
-    text-align: left;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.2rem;
-    background-color: white;
-    margin-top: 4.2vw;
-    margin-bottom: 8vw;
-    margin-left: 12.5vw;
-    margin-right: 12.5vw;
+.SliderItemTitle {
+  text-align: left;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2rem;
+  background-color: white;
+  margin-top: 4.2vw;
+  margin-bottom: 8vw;
+  margin-left: 12.5vw;
+  margin-right: 12.5vw;
 }
 
-.SliderItemAnchor{
-    text-decoration: none;
+.SliderItemAnchor {
+  text-decoration: none;
 }

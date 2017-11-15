@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   color: $base-font-color;
   font-family: $base-font-family;
   @include font-size($base-font-sizes);
@@ -11,7 +12,7 @@ input,
 optgroup,
 select,
 textarea {
-   letter-spacing: -0.4px;  // must be explicitly declare this even though it is declared on the body because a browser's "user agent styelsheet" might override the body declaration
+  letter-spacing: -0.4px; // must be explicitly declare this even though it is declared on the body because a browser's "user agent styelsheet" might override the body declaration
 }
 
 body {
@@ -25,31 +26,31 @@ h4,
 h5,
 h6 {
   line-height: $heading-line-height;
-  font-style: normal;;
+  font-style: normal;
 }
 
 h1 {
   @include font-size($h1-font-sizes);
   font-weight: 900;
-  margin: 0 0 .6em 0;
+  margin: 0 0 0.6em 0;
 }
 
 h2 {
   @include font-size($h2-font-sizes);
   font-weight: 900;
-  margin: 0 0 .5em 0;
+  margin: 0 0 0.5em 0;
 }
 
 h3 {
   @include font-size($h3-font-sizes);
   font-weight: 900;
-  margin: 0 0 .5em 0;
+  margin: 0 0 0.5em 0;
 }
 
 h4 {
   @include font-size($h4-font-sizes);
   font-weight: 700;
-  margin: 0 0 .5em 0;
+  margin: 0 0 0.5em 0;
 }
 
 h5 {
@@ -64,7 +65,7 @@ h5 {
 h6 {
   @include font-size($h6-font-sizes);
   font-weight: 700;
-  margin: 0 0 .5em 0;
+  margin: 0 0 0.5em 0;
 }
 
 p {
@@ -94,8 +95,6 @@ a {
 @include theme-hover(money-green, a, null, $money-green-darkest, null);
 @include theme-hover(cobalt-blue, a, null, $cobalt-blue-dark, null);
 
-
-
 hr {
   border-bottom: $base-border;
   border-left: 0;
@@ -104,6 +103,6 @@ hr {
   margin: $base-spacing 0;
 }
 
-em{
-    font-style: italic;
+em {
+  font-style: italic;
 }

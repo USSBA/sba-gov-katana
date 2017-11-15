@@ -1,7 +1,7 @@
-import { get } from "./daisho-client.js";
+import { get } from './daisho-client.js'
 
 function fetchMainMenu(userId) {
-  return get("mainMenu");
+  return get('mainMenu')
 }
 
-export { fetchMainMenu };
+export { fetchMainMenu }

@@ -1,18 +1,17 @@
-import React from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import {ContactCardLookup, SbicLookup, SuretyLookup} from "molecules";
-import * as ContentActions from "../../../actions/content.js";
-import {filter, assign} from "lodash";
-import {logEvent} from "../../../services/analytics.js";
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { ContactCardLookup, SbicLookup, SuretyLookup } from 'molecules'
+import * as ContentActions from '../../../actions/content.js'
+import { filter, assign } from 'lodash'
+import { logEvent } from '../../../services/analytics.js'
 
-import ContactCard from "../contact-card/contact-card.jsx";
-import styles from "./lookup.scss";
+import ContactCard from '../contact-card/contact-card.jsx'
+import styles from './lookup.scss'
 
 class Lookup extends React.Component {
-
   constructor() {
-    super();
+    super()
     this.state = {
       filteredItems: []
     }
@@ -21,23 +20,31 @@ class Lookup extends React.Component {
   componentWillMount() {
     let queryArgs = this.props.subtype
       ? {
-        category: this.props.subtype
-      }
-      : null;
-    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs);
+          category: this.props.subtype
+        }
+      : null
+    this.props.actions.fetchContentIfNeeded(
+      this.props.type,
+      this.props.type,
+      queryArgs
+    )
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
-    this.setState({filteredItems: nextProps.items});
+    this.setState({ filteredItems: nextProps.items })
   }
 
   fireEvent(category, action, value) {
-    logEvent({category: category, action: action, label: window.location.pathname, value: value})
+    logEvent({
+      category: category,
+      action: action,
+      label: window.location.pathname,
+      value: value
+    })
   }
 
   render() {
-
-    let SelectedLookup = <div/>
+    let SelectedLookup = <div />
     let _props = {
       items: this.state.filteredItems,
       title: this.props.title,
@@ -45,53 +52,43 @@ class Lookup extends React.Component {
       afterChange: this.fireEvent.bind(this)
     }
 
-    if (this.props.type === "contacts") {
-
+    if (this.props.type === 'contacts') {
       switch (this.props.subtype) {
-        case "State registration":
-          SelectedLookup = <ContactCardLookup {..._props}/>
+        case 'State registration':
+          SelectedLookup = <ContactCardLookup {..._props} />
 
-          break;
-        case "CDC/504":
-        case "Microloan":
+          break
+        case 'CDC/504':
+        case 'Microloan':
           let cardRendererFunction = (item, index) => {
             return (
               <div key={index}>
-                <ContactCard {...item}/>
+                <ContactCard {...item} />
               </div>
-            );
-          };
-          let cdcProps = assign({}, _props, {cardRenderer: cardRendererFunction});
-          SelectedLookup = <ContactCardLookup {...cdcProps}/>
+            )
+          }
+          let cdcProps = assign({}, _props, {
+            cardRenderer: cardRendererFunction
+          })
+          SelectedLookup = <ContactCardLookup {...cdcProps} />
 
-          break;
+          break
 
-        case "SBIC":
+        case 'SBIC':
+          SelectedLookup = <SbicLookup {..._props} />
 
-          SelectedLookup = <SbicLookup {..._props}/>
+          break
 
-          break;
+        case 'Surety bond company':
+          SelectedLookup = <SuretyLookup {..._props} />
 
-        case "Surety bond company":
-
-          SelectedLookup = <SuretyLookup {..._props}/>
-
-          break;
-
+          break
       }
-
     } else {
-      console.error("Unknown Lookup Type");
+      console.error('Unknown Lookup Type')
     }
 
-    return (
-
-      <div>
-        {SelectedLookup}
-      </div>
-
-    )
-
+    return <div>{SelectedLookup}</div>
   }
 }
 
@@ -102,17 +99,17 @@ Lookup.propTypes = {
 }
 
 Lookup.defaultProps = {
-  title: "Lookup Title",
-  type: "contacts",
-  subtype: "",
-  display: "cards",
+  title: 'Lookup Title',
+  type: 'contacts',
+  subtype: '',
+  display: 'cards',
   items: []
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
     items: reduxState.contentReducer[ownProps.type]
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -120,4 +117,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Lookup);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Lookup)

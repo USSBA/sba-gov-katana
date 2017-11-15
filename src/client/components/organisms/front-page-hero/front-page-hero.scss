@@ -1,160 +1,158 @@
 .container {
-    width: 100%;
-    @include grid-media($sba-grid-small) {}
-    @include grid-media($sba-grid-medium) {
-        position: relative;}
+  width: 100%;
+  @include grid-media($sba-grid-small) {
+  }
+  @include grid-media($sba-grid-medium) {
+    position: relative;
+  }
 }
 
 .imageContainer {
-    @include grid-media($sba-grid-small) {
-        display: none;
-    }
-    width: 100%;
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  width: 100%;
 }
 
 .titleContainer {
-    @include grid-media($sba-grid-small) {
-        visibility: visible;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding-left: $homepage-gutter-size;
-        padding-right: $homepage-gutter-size;
-    }
+  @include grid-media($sba-grid-small) {
+    visibility: visible;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+  }
 }
 
 .boxContainer {
-    @include grid-media($sba-grid-small) {
-        visibility: visible;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding-left: $homepage-gutter-size;
-        padding-right: $homepage-gutter-size;
-        position: relative;
-    }
+  @include grid-media($sba-grid-small) {
+    visibility: visible;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+    position: relative;
+  }
 }
 
 .title {
-    @include grid-media($sba-grid-small) {
-        font-size: 7.47vw;
-        font-weight: bold;
-        padding-bottom: 2vw;
-        padding-left: 7vw;
-        @include grid-column(6);
-        margin-bottom: 0;
-    }
-    @include grid-media($sba-grid-medium) {
-        font-size: 5.2vw;
-        font-weight: 900;
-        padding-bottom: 2vw;
-        @include grid-column(12);
-        margin-bottom: 0;
-    }
+  @include grid-media($sba-grid-small) {
+    font-size: 7.47vw;
+    font-weight: bold;
+    padding-bottom: 2vw;
+    padding-left: 7vw;
+    @include grid-column(6);
+    margin-bottom: 0;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 5.2vw;
+    font-weight: 900;
+    padding-bottom: 2vw;
+    @include grid-column(12);
+    margin-bottom: 0;
+  }
 }
 
 .purple .AccentBox {
-    background: #AB3EA0;
+  background: #ab3ea0;
 }
 
 .green .AccentBox {
-    background: #609F00;
+  background: #609f00;
 }
 
 .blue .AccentBox {
-    background: #0F48AA;
+  background: #0f48aa;
 }
 
+@media screen and (min-width: 768px) {
+  .Banner {
+    width: 85%;
+    height: 40vw;
+  }
 
+  .reverse .Banner {
+    position: relative;
+    width: 82%;
+    height: 40vw;
+    left: 18vw;
+  }
 
+  .AccentBox {
+    @include grid-column(7, $sba-grid-medium);
+    @include grid-push(5, $sba-grid-medium);
+    position: relative;
+    background: #0f48aa;
+    height: 18vw;
+    top: -33vw;
+    margin-bottom: -33vw;
+    z-index: 0;
+  }
 
-@media screen and (min-width:768px) {
-
-    .Banner {
-        width: 85%;
-        height: 40vw;
-    }
-
-    .reverse .Banner {
-        position: relative;
-        width: 82%;
-        height: 40vw;
-        left: 18vw;
-    }
-
-    .AccentBox {
-        @include grid-column(7, $sba-grid-medium);
-        @include grid-push(5, $sba-grid-medium);
-        position: relative;
-        background: #0F48AA;
-        height: 18vw;
-        top: -33vw;
-        margin-bottom: -33vw;
-        z-index: 0;
-    }
-
-    .reverse .AccentBox {
-        @include grid-push(0, $sba-grid-medium);
-    }
-
+  .reverse .AccentBox {
+    @include grid-push(0, $sba-grid-medium);
+  }
 }
 
 .AccentBox {
-    @include grid-media($sba-grid-small) {
-        position: relative;
-        background: #0F48AA;
-        @include grid-column(6);
-        height: 48vw;
-        z-index: 0;
-    }
-    @include grid-media($sba-grid-medium) {}
+  @include grid-media($sba-grid-small) {
+    position: relative;
+    background: #0f48aa;
+    @include grid-column(6);
+    height: 48vw;
+    z-index: 0;
+  }
+  @include grid-media($sba-grid-medium) {
+  }
 }
 
 .AccentBox ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .AccentBox li {
-    @include grid-media($sba-grid-small) {
-        text-decoration: none;
-        height: 16vw;
-        padding-left: 7vw;
-        font-size: 5vw;
-        line-height: 16vw;
-        color: white;
-    }
-    @include grid-media($sba-grid-medium) {
-        height: 6vw;
-        padding-left: 2vw;
-        font-size: 1.66vw;
-        line-height: 6vw;
-        color: white;
-    }
+  @include grid-media($sba-grid-small) {
+    text-decoration: none;
+    height: 16vw;
+    padding-left: 7vw;
+    font-size: 5vw;
+    line-height: 16vw;
+    color: white;
+  }
+  @include grid-media($sba-grid-medium) {
+    height: 6vw;
+    padding-left: 2vw;
+    font-size: 1.66vw;
+    line-height: 6vw;
+    color: white;
+  }
 }
 
 .AccentBox img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-    @include grid-media($sba-grid-small) {
-        width: 25.9vw;
-        height: 25.9vw;
-    }
-    @include grid-media($sba-grid-medium) {
-        width: 8.5vw;
-        height: 8.5vw;
-    }
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  @include grid-media($sba-grid-small) {
+    width: 25.9vw;
+    height: 25.9vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 8.5vw;
+    height: 8.5vw;
+  }
 }
 
 .AccentBox a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
 }
 
 .borderBox {
-    border-bottom: 0.3vw solid rgba(51,51,51,0.3);
-    @include grid-media($sba-grid-medium) {
-        border-bottom-width: 0.1vw;
-    }
+  border-bottom: 0.3vw solid rgba(51, 51, 51, 0.3);
+  @include grid-media($sba-grid-medium) {
+    border-bottom-width: 0.1vw;
+  }
 }

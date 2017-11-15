@@ -1,2 +1,2 @@
-const config = window.CONFIG;
-export default config;
+const config = window.CONFIG
+export default config

@@ -1,104 +1,104 @@
 .container,
 .imageContainer {
-    width: 100%;
-    @include grid-media($sba-grid-small){
-        // height: 160vw;
-    }
+  width: 100%;
+  @include grid-media($sba-grid-small) {
+    // height: 160vw;
+  }
 }
 
 .boxContainer {
-    @include grid-media($sba-grid-small) {
-        visibility: visible;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding-left: $homepage-gutter-size;
-        padding-right: $homepage-gutter-size;
-        position: relative;
-    }
+  @include grid-media($sba-grid-small) {
+    visibility: visible;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+    position: relative;
+  }
 }
 
 .hero {
-    @include grid-media($sba-grid-small) {
-        display: none;
-    }
-    @include grid-media($sba-grid-medium) {
-        width: 100%;
-    }
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 100%;
+  }
 }
 
 .mobileHero {
-    @include grid-media($sba-grid-small) {
-        width: 100%;
-    }
-    @include grid-media($sba-grid-medium) {
-        display: none;
-        height: 90vw;
-    }
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+    height: 90vw;
+  }
 }
 
 .triangle {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    @include grid-media($sba-grid-small) {
-        z-index: -1;
-        width: 25.9vw;
-        height: 25.9vw;
-    }
-    @include grid-media($sba-grid-medium) {
-        width: 11.6vw;
-        height: 11.6vw;
-    }
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  @include grid-media($sba-grid-small) {
+    z-index: -1;
+    width: 25.9vw;
+    height: 25.9vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 11.6vw;
+    height: 11.6vw;
+  }
 }
 
 .box {
-    background: $sba-blue;
-    @include grid-media($sba-grid-small) {
-        z-index: 0;
-        width: 90vw;
-        height: 90vw;
-        position: relative;
-        top: -29vw;
-        margin-bottom: -29vw;
-        padding: 6.9vw 8.5vw 8.5vw;
-        @include grid-column(6);
-    }
-    @include grid-media($sba-grid-medium) {
-        position: relative;
-        @include grid-column(6);
-        padding: 40px 4vw 50px;
-        top: -43vw;
-        margin-bottom: -43vw;
-    }
+  background: $sba-blue;
+  @include grid-media($sba-grid-small) {
+    z-index: 0;
+    width: 90vw;
+    height: 90vw;
+    position: relative;
+    top: -29vw;
+    margin-bottom: -29vw;
+    padding: 6.9vw 8.5vw 8.5vw;
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium) {
+    position: relative;
+    @include grid-column(6);
+    padding: 40px 4vw 50px;
+    top: -43vw;
+    margin-bottom: -43vw;
+  }
 }
 
 .title {
-    color: #FFFFFF;
-    @include grid-media($sba-grid-small) {
-        font-size: 12vw;
-        font-weight: 900;
-        line-height: 12vw;
-        margin-bottom: 3vw;
-    }
-    @include grid-media($sba-grid-medium) {
-        font-size: 5vw;
-        font-weight: 900;
-        line-height: 5vw;
-        margin-bottom: 1.4vw;
-    }
+  color: #ffffff;
+  @include grid-media($sba-grid-small) {
+    font-size: 12vw;
+    font-weight: 900;
+    line-height: 12vw;
+    margin-bottom: 3vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 5vw;
+    font-weight: 900;
+    line-height: 5vw;
+    margin-bottom: 1.4vw;
+  }
 }
 
 .text {
-    color: #FFFFFF;
-    @include grid-media($sba-grid-small) {
-        font-size: 4.3vw;
-        margin-bottom: 4.3vw;
-        line-height: 6vw;
-    }
-    @include grid-media($sba-grid-medium) {
-        font-size: 1.3vw;
-        line-height: 1.9vw;
-        font-weight: 700;
-        margin-bottom: 2.2vw;
-    }
+  color: #ffffff;
+  @include grid-media($sba-grid-small) {
+    font-size: 4.3vw;
+    margin-bottom: 4.3vw;
+    line-height: 6vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 1.3vw;
+    line-height: 1.9vw;
+    font-weight: 700;
+    margin-bottom: 2.2vw;
+  }
 }

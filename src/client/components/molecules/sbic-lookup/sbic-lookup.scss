@@ -4,194 +4,194 @@
 @include theme(cobalt-blue, '.banner', $cobalt-blue, #fff, #fff);
 
 .banner {
-    position: relative;
+  position: relative;
 
-    width: 100%;
+  width: 100%;
 
-    @include grid-media($sba-grid-small) {
-        padding: 20px;
-    }
-    @include grid-media($sba-grid-medium) {
-        padding: 20px 30px 20px 30px;
-    }
-    @include grid-media($sba-grid-large) {
-        height: 220px;
-        padding: 40px 28px 20px 28px;
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 30px 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    height: 220px;
+    padding: 40px 28px 20px 28px;
 
-        background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
-        background-repeat: no-repeat;
-        background-position: right;
-        background-size: 40%;
-    }
+    background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 40%;
+  }
 }
 
 .header {
-    margin: 0 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
 .multiSelect {
-    @include grid-media($sba-grid-small) {
-        width: 100%;
-    }
-    @include grid-media($sba-grid-large) {
-        display: inline-block;
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-large) {
+    display: inline-block;
 
-        width: 200px;
-        margin-right: 20px;
-        &:last-child {
-            margin-right: 0;
-        }
+    width: 200px;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
     }
+  }
 }
-
 
 .downloadBtn {
-    font-size: 19px;
+  font-size: 19px;
 
-    position: absolute;
-    right: 28px;
-    bottom: 20px;
+  position: absolute;
+  right: 28px;
+  bottom: 20px;
 
-    width: 260px;
-    height: 48px;
-    margin: inherit;
+  width: 260px;
+  height: 48px;
+  margin: inherit;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        display: none;
-    }
+  @include grid-media($sba-grid-medium-and-small) {
+    display: none;
+  }
 }
 
-
 .table {
-    border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
 
-    @include grid-media($sba-grid-medium-and-small) {
-        display: block;
-        overflow-y: auto;
+  @include grid-media($sba-grid-medium-and-small) {
+    display: block;
+    overflow-y: auto;
 
-        & thead {
-            display: none;
-        }
-        & tbody, tr, td {
-            display: block;
-        }
-        & tr {
-            border-bottom: 1px solid #dadada;
-        }
-        & td {
-            overflow: auto;
-
-            border: none;
-        }
-        & .mobileHeader {
-            font-weight: bold;
-
-            float: left;
-
-            width: 23%;
-            margin-left: 2%;
-            margin-right: 5%;
-        }
-        & .investorNameAndTitle {
-            display: inline-block;
-
-            width: 70%;
-        }
-        & .contactInfo {
-            display: inline-block;
-
-            min-width: 150px;
-        }
+    & thead {
+      display: none;
     }
-    @include grid-media($sba-grid-large) {
-        & .mobileHeader {
-            display: none;
-        }
-        & .nameAndAddressCol {
-            width: 27vw !important;
-        }
-        & .nameAndAddressHead {
-            width: 26.40vw !important;
-        }
-        & .activeSinceCol {
-            width: 10vw !important;
-        }
-        & .activeSinceHead {
-            width: 9.9vw !important;
-        }
-        & .contactInfoHead {
-            width: 10vw !important;
-        }
-        & tbody, thead {
-            display: block;
-        }
-        & tbody {
-            overflow-x: hidden;
-            overflow-y: auto;
-
-        }
-        & tbody td {
-            width: 21% !important;
-            padding: 10px;
-
-            border: none;
-        }
-        & thead {
-            display: block;
-
-            width: 100%;
-        }
-        & thead tr {
-            display: block;
-
-            width: 100%;
-        }
-        & thead th {
-            display: inline-block;
-
-            width: 20.5vw !important;
-            padding: 10px;
-
-            border: none;
-        }
-        & tr {
-            border-bottom: 1px solid #dadada;
-        }
+    & tbody,
+    tr,
+    td {
+      display: block;
     }
+    & tr {
+      border-bottom: 1px solid #dadada;
+    }
+    & td {
+      overflow: auto;
+
+      border: none;
+    }
+    & .mobileHeader {
+      font-weight: bold;
+
+      float: left;
+
+      width: 23%;
+      margin-left: 2%;
+      margin-right: 5%;
+    }
+    & .investorNameAndTitle {
+      display: inline-block;
+
+      width: 70%;
+    }
+    & .contactInfo {
+      display: inline-block;
+
+      min-width: 150px;
+    }
+  }
+  @include grid-media($sba-grid-large) {
+    & .mobileHeader {
+      display: none;
+    }
+    & .nameAndAddressCol {
+      width: 27vw !important;
+    }
+    & .nameAndAddressHead {
+      width: 26.4vw !important;
+    }
+    & .activeSinceCol {
+      width: 10vw !important;
+    }
+    & .activeSinceHead {
+      width: 9.9vw !important;
+    }
+    & .contactInfoHead {
+      width: 10vw !important;
+    }
+    & tbody,
+    thead {
+      display: block;
+    }
+    & tbody {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    & tbody td {
+      width: 21% !important;
+      padding: 10px;
+
+      border: none;
+    }
+    & thead {
+      display: block;
+
+      width: 100%;
+    }
+    & thead tr {
+      display: block;
+
+      width: 100%;
+    }
+    & thead th {
+      display: inline-block;
+
+      width: 20.5vw !important;
+      padding: 10px;
+
+      border: none;
+    }
+    & tr {
+      border-bottom: 1px solid #dadada;
+    }
+  }
 }
 
 .investorTitle {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .mapIcon {
-    font-size: 26px !important;
+  font-size: 26px !important;
 
-    float: left;
+  float: left;
 
-    margin-top: 12px;
+  margin-top: 12px;
 
-    color: #666;
+  color: #666;
 }
 
 .addressContainer {
-    display: inline-block;
+  display: inline-block;
 
-    padding-left: 8px;
+  padding-left: 8px;
 }
 
 .phoneIcon {
-    font-size: 24px !important;
+  font-size: 24px !important;
 
-    float: left;
+  float: left;
 
-    margin: 2px 6px 0 3px;
+  margin: 2px 6px 0 3px;
 
-    color: #666;
+  color: #666;
 }
 
-.paginator{
-    margin-top: 15px;
-    float: right;
-    margin-right: 30px;
+.paginator {
+  margin-top: 15px;
+  float: right;
+  margin-right: 30px;
 }

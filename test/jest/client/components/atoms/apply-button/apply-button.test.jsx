@@ -1,30 +1,29 @@
-import React from "react";
-import {shallow} from "enzyme";
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import {ApplyButton} from "atoms";
+import { ApplyButton } from 'atoms'
 
-describe("ApplyButton", () => {
+describe('ApplyButton', () => {
+  test("the label should read, 'Apply'", () => {
+    const mockText = 'Apply'
+    const component = shallow(<ApplyButton />)
+    const expectedText = component
+      .find('SmallInverseSecondaryButton')
+      .first()
+      .props().text
 
-	test("the label should read, 'Apply'", () => {
+    expect(expectedText).toBe(mockText)
+  })
 
-		const mockText = "Apply";
-		const component = shallow(<ApplyButton />);
-		const expectedText = component.find("SmallInverseSecondaryButton").first().props().text;
+  test('expect mockSubmit to have been called once', () => {
+    const mockSubmit = jest.fn()
+    const component = shallow(<ApplyButton submit={mockSubmit} />)
 
-		expect(expectedText).toBe(mockText);
+    component
+      .find('SmallInverseSecondaryButton')
+      .first()
+      .simulate('click')
 
-	});
-
-	test("expect mockSubmit to have been called once", () => {
-
-		const mockSubmit = jest.fn();
-		const component = shallow(<ApplyButton submit={mockSubmit} />);
-
-		component.find("SmallInverseSecondaryButton").first().simulate("click");
-		
-		expect(mockSubmit).toHaveBeenCalledTimes(1);
-
-	});
-
-});
-
+    expect(mockSubmit).toHaveBeenCalledTimes(1)
+  })
+})

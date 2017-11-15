@@ -1,11 +1,11 @@
-import { get } from "./daisho-client.js";
+import { get } from './daisho-client.js'
 
 function fetchCounselorsByLocation(zip) {
-  return get("counselors-by-location", {
+  return get('counselors-by-location', {
     query: {
       zip
     }
-  });
+  })
 }
 
-export { fetchCounselorsByLocation };
+export { fetchCounselorsByLocation }

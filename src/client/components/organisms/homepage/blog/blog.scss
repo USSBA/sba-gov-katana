@@ -1,109 +1,109 @@
 .containerDesktop {
-    @include grid-media($sba-grid-small) {
-        display: none;
-    }
-    @include grid-media($sba-grid-medium) {
-        display: block;
-    }
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: block;
+  }
 }
 
 .blogColumn {
-    @include grid-media($sba-grid-small) {
-        display: none;
-    }
-    @include grid-media($sba-grid-medium) {
-         @include grid-column(6);
-    }
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(6);
+  }
 }
 
 .containerMobile {
-    @include grid-media($sba-grid-small) {
-        display: block;
-    }
-    @include grid-media($sba-grid-medium) {
-        display: none;
-    }
+  @include grid-media($sba-grid-small) {
+    display: block;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
 }
 
 .sectionTitle {
-    font-size: 7.47vw;
-    line-height: 8vw;
-    color: #333333;
-    @include grid-media($sba-grid-small) {
-        font-weight: bold;
-        padding-left: 10vw;
-        height: 8vw;
-    }
-    @include grid-media($sba-grid-medium) {
-        font-size: 5.2vw;
-        line-height: normal;
-        font-weight: 900;
-        margin-bottom: 2vw;
-        @include grid-column(12);
-    }
+  font-size: 7.47vw;
+  line-height: 8vw;
+  color: #333333;
+  @include grid-media($sba-grid-small) {
+    font-weight: bold;
+    padding-left: 10vw;
+    height: 8vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 5.2vw;
+    line-height: normal;
+    font-weight: 900;
+    margin-bottom: 2vw;
+    @include grid-column(12);
+  }
 }
 
 .blogTitle {
-    @include grid-media($sba-grid-small) {
-        color: #333333;
-        font-size: 5.06vw;
-        line-height: 5.867vw;
-        font-weight: bold;
-        margin-left: auto;
-        margin-right: auto;
-        width: 79vw;
-        margin-top: 4vw;
-        text-decoration: none;
-    }
-    @include grid-media($sba-grid-medium) {
-        font-size: 2.5vw;
-        font-weight: 900;
-        line-height: 2.78vw;
-        color: #333333 !important;
-        text-decoration: none;
-    }
+  @include grid-media($sba-grid-small) {
+    color: #333333;
+    font-size: 5.06vw;
+    line-height: 5.867vw;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    width: 79vw;
+    margin-top: 4vw;
+    text-decoration: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 2.5vw;
+    font-weight: 900;
+    line-height: 2.78vw;
+    color: #333333 !important;
+    text-decoration: none;
+  }
 }
 
 .blogInfo {
-    @include grid-media($sba-grid-small) {
-        text-decoration: none;
-        color: #333333;
-        font-size: 3.73vw;
-        line-height: 5.867vw;
-        margin-top: 1.067vw;
-        margin-left: auto;
-        margin-right: auto;
-        width: 79vw;
-        margin-bottom: 4vw;
-    }
-    @include grid-media($sba-grid-medium) {
-        margin-top: 1.5vw;
-        color: #666666;
-        font-weight: normal;
-        font-size: 1.25vw;
-        line-height: 1.88vw;
-        margin-bottom: $margin-20;
-        text-decoration: none;
-    }
+  @include grid-media($sba-grid-small) {
+    text-decoration: none;
+    color: #333333;
+    font-size: 3.73vw;
+    line-height: 5.867vw;
+    margin-top: 1.067vw;
+    margin-left: auto;
+    margin-right: auto;
+    width: 79vw;
+    margin-bottom: 4vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    margin-top: 1.5vw;
+    color: #666666;
+    font-weight: normal;
+    font-size: 1.25vw;
+    line-height: 1.88vw;
+    margin-bottom: $margin-20;
+    text-decoration: none;
+  }
 }
 
 .whiteSpace {
-    height: 16vw;
+  height: 16vw;
 }
 
 .containerMobile a {
-    text-decoration: none;
-    color: #333333;
+  text-decoration: none;
+  color: #333333;
 }
 
 .containerMobile a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .containerMobile .singleBlog {
-    border: 1px solid #C4C4C4;
-    width: 91.4vw;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4.267vw;
+  border: 1px solid #c4c4c4;
+  width: 91.4vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4.267vw;
 }

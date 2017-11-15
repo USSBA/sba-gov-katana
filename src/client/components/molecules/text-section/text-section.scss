@@ -1,11 +1,10 @@
 .textSection {
-	margin-bottom: 2.1vw;
+  margin-bottom: 2.1vw;
 }
-
 
 // redundant with normalize css, but better to be explicit
 .textSection ul {
-	list-style: none;
+  list-style: none;
 }
 
 .textSection ul,
@@ -17,25 +16,21 @@
 
 .textSection > ul ul,
 .textSection > ol ul {
-
   margin-left: 65px;
-  
-  li {
 
+  li {
     color: #333333;
 
     &::before {
-
-      content: "";
+      content: '';
       height: 12px;
       width: 12px;
       border: 3px solid #333333;
       border-radius: 12px;
       display: inline-block;
       float: left;
-      margin-top:8px;
+      margin-top: 8px;
       margin-right: 20px;
-
     }
 
     p {
@@ -43,41 +38,37 @@
       padding-top: 0;
       padding-bottom: 0;
     }
-
   }
-
 }
 
 .textSection > ol ul {
-    
-    margin-left: 30px;
+  margin-left: 30px;
 
-    ul {
-      margin-left: 50px;
-    }
+  ul {
+    margin-left: 50px;
+  }
 }
 
 // override the normalize removal
 
 .textSection ol {
-	list-style: decimal;
+  list-style: decimal;
 }
 
 // indents the ordered list items
 
 .textSection ol li {
-	margin-left: 0.75em;
+  margin-left: 0.75em;
 }
 
-
 .textSection ol li::before {
-	content: "";
-	width: 0.20em;
-	display: inline-block;
+  content: '';
+  width: 0.2em;
+  display: inline-block;
 }
 
 .textSection dd {
-	margin-left: 2em;
+  margin-left: 2em;
 }
 
 .textSection ul li p {
@@ -87,96 +78,74 @@
 // formatting for the unordered list bullets
 .textSection dl dt::before,
 .textSection > ul > li::before {
-	padding-right: 0.5em;
-	content: "";
-	height: 1em;
-	width: 1em;
-	display: block;
-	float: left;
-	margin-top: 0.20em;
-	margin-left: 0;
-	margin-right: 0.50em;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 100%;
+  padding-right: 0.5em;
+  content: '';
+  height: 1em;
+  width: 1em;
+  display: block;
+  float: left;
+  margin-top: 0.2em;
+  margin-left: 0;
+  margin-right: 0.5em;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 @mixin primary-color-theme-for-color($component) {
-	 @each $name, $value in $primary-color-map{
-		:global(.#{$name}) {
-			#{$component} {
-				background: url("../../../../../public/assets/svg/circle/circle-#{$name}.svg") no-repeat;
-			}
-		}
-	}
+  @each $name, $value in $primary-color-map {
+    :global(.#{$name}) {
+      #{$component} {
+        background: url('../../../../../public/assets/svg/circle/circle-#{$name}.svg')
+          no-repeat;
+      }
+    }
+  }
 }
 
 @include primary-color-theme-for-color( '.textSection > ul > li::before');
 @include primary-color-theme-for-color( '.textSection dl dt::before');
 
 //TABLE
-@include theme(sba-blue, '.textSection th', $sba-blue, $white, $sba-blue)
-@include theme(money-green, '.textSection th', $money-green, $white, $money-green)
-@include theme(byzantine, '.textSection th', $byzantine, $white, $byzantine)
-@include theme(cobalt-blue, '.textSection th', $cobalt-blue, $white, $cobalt-blue)
-
-@include theme(sba-blue, ':global(.table-header-label)', none, $sba-blue, none)
-@include theme(money-green, ':global(.table-header-label)', none, $money-green, none)
-@include theme(byzantine, ':global(.table-header-label)', none, $byzantine, none)
-@include theme(cobalt-blue, ':global(.table-header-label)', none, $cobalt-blue, none)
-
-@include theme(sba-blue, '.textSection > ul ul li::before', null, null, $sba-blue)
-@include theme(money-green, '.textSection > ul ul li::before', null, null, $money-green)
-@include theme(byzantine, '.textSection > ul ul li::before', null, null, $byzantine)
-@include theme(cobalt-blue, '.textSection > ul ul li::before', null, null, $cobalt-blue)
-
-@include theme(sba-blue, '.textSection > ol ul li::before', null, null, $sba-blue)
-@include theme(money-green, '.textSection > ol ul li::before', null, null, $money-green)
-@include theme(byzantine, '.textSection > ol ul li::before', null, null, $byzantine)
-@include theme(cobalt-blue, '.textSection > ol ul li::before', null, null, $cobalt-blue)
-
-
-.textSection {
-  
+@include theme(sba-blue, '.textSection th', $sba-blue, $white, $sba-blue) @include theme(money-green, '.textSection th', $money-green, $white, $money-green) @include theme(byzantine, '.textSection th', $byzantine, $white, $byzantine) @include theme(cobalt-blue, '.textSection th', $cobalt-blue, $white, $cobalt-blue) @include theme(sba-blue, ':global(.table-header-label)', none, $sba-blue, none) @include theme(money-green, ':global(.table-header-label)', none, $money-green, none) @include theme(byzantine, ':global(.table-header-label)', none, $byzantine, none) @include theme(cobalt-blue, ':global(.table-header-label)', none, $cobalt-blue, none) @include theme(sba-blue, '.textSection > ul ul li::before', null, null, $sba-blue) @include theme(money-green, '.textSection > ul ul li::before', null, null, $money-green) @include theme(byzantine, '.textSection > ul ul li::before', null, null, $byzantine) @include theme(cobalt-blue, '.textSection > ul ul li::before', null, null, $cobalt-blue) @include theme(sba-blue, '.textSection > ol ul li::before', null, null, $sba-blue) @include theme(money-green, '.textSection > ol ul li::before', null, null, $money-green) @include theme(byzantine, '.textSection > ol ul li::before', null, null, $byzantine) @include theme(cobalt-blue, '.textSection > ol ul li::before', null, null, $cobalt-blue) .textSection {
   //LARGE
-  
-  @include grid-media($sba-grid-small){
+
+  @include grid-media($sba-grid-small) {
     & thead > tr {
       display: none;
     }
     & tr {
-      border: 2px solid #EBEBEB;
+      border: 2px solid #ebebeb;
       margin-top: 20px;
       margin-bottom: 20px;
     }
-    & td:nth-child(even){
-      background-color: #EBEBEB;
+    & td:nth-child(even) {
+      background-color: #ebebeb;
     }
     & td {
       overflow: auto;
       border: 0px;
     }
-    & :global(.table-header-label){
+    & :global(.table-header-label) {
       display: block;
       @include grid-column(2);
       font-weight: bold;
     }
-    & :global(.table-data-wrapper){
+    & :global(.table-data-wrapper) {
       display: block;
-      @include grid-column(4)
-      }
-    & :global(.show-mobile){
+      @include grid-column(4);
+    }
+    & :global(.show-mobile) {
       display: block;
     }
-
   }
 
-  @include grid-media($sba-grid-medium){
+  @include grid-media($sba-grid-medium) {
     & table {
       table-layout: auto;
     }
     & tbody {
-      border: 2px solid #EBEBEB;
+      border: 2px solid #ebebeb;
     }
     & th {
       text-align: center;
@@ -187,7 +156,7 @@
       padding-left: 15px;
     }
     & tr:nth-child(even) {
-      background-color: #EBEBEB;
+      background-color: #ebebeb;
     }
     & td {
       padding-right: 15px;
@@ -202,8 +171,13 @@
     }
   }
 
-  @include grid-media($sba-grid-small){
-    table, thead, tbody, th, td, tr {
+  @include grid-media($sba-grid-small) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
       display: block;
     }
   }
