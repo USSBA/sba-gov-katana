@@ -1,10 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { browserHistory } from 'react-router'
+import { bindActionCreators } from 'redux'
+
 import s from './main-loader.scss'
 import * as LoadingActions from '../../../actions/loading.js'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { Loader } from '../../atoms/index.js'
-import { browserHistory } from 'react-router'
+import { Loader } from 'atoms'
 
 class MainLoader extends React.Component {
   componentDidMount() {

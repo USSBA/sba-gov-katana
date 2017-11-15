@@ -1,10 +1,11 @@
 /*global expect*/
 
 import React from 'react'
-import LinkCard from 'client/components/molecules/link-card/link-card.jsx'
-import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import _ from 'lodash'
+import { shallow } from 'enzyme'
+
+import { LinkCard } from 'atoms'
 
 const card = {
   title: 'Grand Moff Tarkin',

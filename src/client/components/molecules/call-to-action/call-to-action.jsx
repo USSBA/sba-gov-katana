@@ -1,13 +1,14 @@
 import React from 'react'
 import _ from 'lodash'
-import {
-  SmallInversePrimaryButton,
-  SmallInverseSecondaryButton,
-  LargePrimaryButton
-} from 'atoms'
 import styles from './call-to-action.scss'
+
 import cornerGraphicLarge from './corner-graphic-large.png'
 import cornerGraphicSmall from './corner-graphic-small.png'
+import {
+  LargePrimaryButton,
+  SmallInversePrimaryButton,
+  SmallInverseSecondaryButton
+} from 'atoms'
 import { createCtaNavigation } from '../../../services/navigation'
 
 export class CallToAction extends React.Component {

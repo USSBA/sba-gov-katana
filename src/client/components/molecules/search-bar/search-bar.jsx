@@ -1,6 +1,7 @@
 import React from 'react'
-import { SmallIcon, TextInput } from 'atoms'
+
 import styles from './search-bar.scss'
+import { SmallIcon, TextInput } from 'atoms'
 
 class SearchBar extends React.Component {
   constructor(props) {

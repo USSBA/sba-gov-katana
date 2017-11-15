@@ -1,19 +1,19 @@
 import React from 'react'
+import Waypoint from 'react-waypoint'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Waypoint from 'react-waypoint'
+
+import styles from '../../templates/ten-steps-page/ten-steps-landing-page.scss'
 import * as ContentActions from '../../../actions/content.js'
-import _ from 'lodash'
 import { BasicLink } from 'atoms'
-import { TenStepsSection, TenStepsNav, CallToAction } from 'molecules'
-import { BusinessGuideTileCollection } from 'organisms'
+import { CallToAction, RemoveMainLoader, TenStepsNav } from 'molecules'
+import { BusinessGuideTileCollection, TenStepsSection } from 'organisms'
 import {
   findPageLineage,
   findSubSection,
   findSection
 } from '../../../services/menu.js'
-import styles from '../../templates/ten-steps-page/ten-steps-landing-page.scss'
-import RemoveMainLoader from '../../molecules/main-loader/remove-main-loader.jsx'
 
 class TenStepsLandingPage extends React.Component {
   constructor() {

@@ -1,24 +1,21 @@
 import React from 'react'
 import _ from 'lodash'
-import {
-  TextSection,
-  SectionHeader,
-  SubsectionHeader,
-  ImageSection,
-  TextReadMoreSection,
-  Lookup,
-  CallToAction,
-  ParagraphPlaceholder,
-  StyleGrayBackground,
-  ReadMoreSection,
-  ButtonCta,
-  QuickLinks
-} from 'molecules'
 
 import {
+  ImageSection,
+  ParagraphPlaceholder,
+  SectionHeader,
+  TextSection
+} from 'atoms'
+import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
+import {
   CardCollection,
+  Lookup,
+  ProgramDetailsCardCollection,
   SearchBox,
-  ProgramDetailsCardCollection
+  StyleGrayBackground,
+  SubsectionHeader,
+  TextReadMoreSection
 } from 'organisms'
 
 function makeParagraphs(

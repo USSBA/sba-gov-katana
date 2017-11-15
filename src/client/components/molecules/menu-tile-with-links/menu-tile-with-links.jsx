@@ -1,6 +1,6 @@
 import React from 'react'
-import s from './menu-tile-with-links.scss'
 
+import s from './menu-tile-with-links.scss'
 import { BasicLink } from 'atoms'
 
 class MenuTileWithLinks extends React.Component {

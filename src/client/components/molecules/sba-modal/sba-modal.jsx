@@ -1,9 +1,10 @@
-import React from 'react'
 import Modal from 'react-modal'
-import { SmallGreySecondaryButton, SmallPrimaryButton } from 'atoms'
-import sbaLogo from '../../../../../public/assets/images/logo.png'
-import ModalCloseIcon from '../../../../../public/assets/svg/modal-close-icon.svg'
+import React from 'react'
+
+import ModalCloseIcon from 'assets/svg/modal-close-icon.svg'
+import sbaLogo from 'assets/images/logo.png'
 import styles from './sba-modal.scss'
+import { SmallPrimaryButton, SmallGreySecondaryButton } from 'atoms'
 
 class SbaModal extends React.Component {
   handleEnter(e) {

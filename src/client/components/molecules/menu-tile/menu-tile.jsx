@@ -1,9 +1,9 @@
 import React from 'react'
+
+import cornerLines from 'assets/images/corner-diagonal-lines-grey.png'
 import s from './menu-tile.scss'
 import sharedStyles from './menu-tile-shared.scss'
-
 import { BasicLink } from 'atoms'
-import cornerLines from '../../../../../public/assets/images/corner-diagonal-lines-grey.png'
 
 class MenuTile extends React.Component {
   render() {

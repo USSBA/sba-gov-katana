@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './front-page-hero.scss'
-import diagonalLines from '../../../../../public/assets/images/homepage/diagonal-lines.png'
+import diagonalLines from 'assets/images/homepage/diagonal-lines.png'
 import { BasicLink } from 'atoms'
 import { eventCategories } from '../../../services/constants'
 

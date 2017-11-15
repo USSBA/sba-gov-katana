@@ -1,5 +1,3 @@
-/* IMPORTS */
-
 // miscellaenous organisms
 import BusinessGuideTileCollection from './business-guide-tile-collection/business-guide-tile-collection.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
@@ -17,6 +15,18 @@ import SectionNav from './section-nav/section-nav.jsx'
 import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
 import TileCollection from './tile-collection/tile-collection.jsx'
 import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
+import DocumentArticle from './document-article/document-article.jsx'
+import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
+import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
+import Lookup from './lookup/lookup.jsx'
+import ModalController from './modal-controller/modal-controller.jsx'
+import PagingLookup from './paging-lookup/paging-lookup.jsx'
+import SbicLookup from './sbic-lookup/sbic-lookup'
+import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
+import SubMenu from './sub-menu/sub-menu'
+import SuretyLookup from './surety-lookup/surety-lookup'
+import TenStepsSection from './ten-steps-section/ten-steps-section'
+import TextReadMoreSection from './text-readmore-section/text-readmore-section'
 
 // header-footer organisms
 import Footer from './header-footer/footer/footer.jsx'
@@ -71,7 +81,19 @@ export {
   SectionNav,
   TileCollection,
   ProgramDetailsCardCollection,
-  SizeStandardsTool
+  SizeStandardsTool,
+  DocumentArticle,
+  DocumentArticleLookup,
+  DropdownMenu,
+  Lookup,
+  ModalController,
+  PagingLookup,
+  SbicLookup,
+  StyleGrayBackground,
+  SubMenu,
+  SuretyLookup,
+  TenStepsSection,
+  TextReadMoreSection
 }
 
 // header-footer organisms

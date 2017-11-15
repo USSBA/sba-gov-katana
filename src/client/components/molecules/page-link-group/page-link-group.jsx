@@ -1,7 +1,7 @@
 import React from 'react'
-import { PageLink } from 'atoms'
+
 import styles from './page-link-group.scss'
-import { BasicLink } from '../../atoms'
+import { BasicLink, PageLink } from 'atoms'
 
 class PageLinkGroup extends React.Component {
   render() {

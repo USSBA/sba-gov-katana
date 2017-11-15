@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
+
 import styles from './card.scss'
 import { BasicLink, DecorativeDash } from 'atoms'
 

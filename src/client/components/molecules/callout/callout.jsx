@@ -1,8 +1,9 @@
 import React from 'react'
+
 import styles from './callout.scss'
 import {
-  LargeInverseSecondaryButton,
   LargeInversePrimaryButton,
+  LargeInverseSecondaryButton,
   LargePrimaryButton
 } from 'atoms'
 

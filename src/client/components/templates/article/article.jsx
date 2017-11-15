@@ -1,6 +1,5 @@
 import React from 'react'
-import { DocumentArticle } from 'molecules'
-import { RelatedDocumentCards } from 'organisms'
+import { DocumentArticle, RelatedDocumentCards } from 'organisms'
 import s from './article.scss'
 
 class Article extends React.Component {

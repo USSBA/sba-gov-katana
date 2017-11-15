@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 import { connect } from 'react-redux'
 
-import { HappeningNow } from '../../../../../../../src/client/components/organisms/homepage/happening-now/happening-now.jsx'
+import { HappeningNow } from 'organisms/homepage/happening-now/happening-now'
 
 const items = [
   {

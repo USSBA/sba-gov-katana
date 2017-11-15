@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
 import * as LoadingActions from '../../../actions/loading.js'
 
 class RemoveMainLoader extends React.Component {

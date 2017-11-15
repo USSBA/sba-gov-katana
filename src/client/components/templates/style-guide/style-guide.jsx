@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { TextSection } from 'atoms'
+
 // typography atoms
 import { ExtraLargeTitleText, SubtitleText, CaptionText } from 'atoms'
 
@@ -44,7 +46,6 @@ import {
   Callout,
   SimpleCta,
   CallToAction as CTA,
-  TextSection,
   Paginator
 } from 'molecules'
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { SmallSecondaryButton } from 'atoms'
-import * as NavigationActions from '../../../actions/navigation.js'
-import cornerLines from '../../../../../public/assets/images/corner-diagonal-lines-light.png'
+
+import cornerLines from 'assets/images/corner-diagonal-lines-light.png'
 import styles from './simple-cta.scss'
+import * as NavigationActions from '../../../actions/navigation.js'
+import { SmallSecondaryButton } from 'atoms'
 import { createCtaNavigation } from '../../../services/navigation'
 
 class SimpleCta extends React.Component {

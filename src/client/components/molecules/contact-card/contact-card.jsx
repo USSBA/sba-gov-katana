@@ -1,6 +1,7 @@
 import React from 'react'
+
 import styles from './contact-card.scss'
-import { SmallIcon } from '../../atoms'
+import { SmallIcon } from 'atoms'
 
 class ContactCard extends React.Component {
   constructor() {

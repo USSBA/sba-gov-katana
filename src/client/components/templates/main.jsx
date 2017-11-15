@@ -8,9 +8,14 @@ import { bindActionCreators } from 'redux'
 import styles from '../organisms/header-footer/header/header.scss'
 import * as ContentActions from '../../actions/content.js'
 import * as LoadingActions from '../../actions/loading.js'
-import { ModalController } from 'molecules'
-import MainLoader from '../molecules/main-loader/main-loader.jsx'
-import { Header, Footer, DisasterAlert, NotificationBar } from 'organisms'
+import { MainLoader } from 'molecules'
+import {
+  DisasterAlert,
+  Footer,
+  Header,
+  ModalController,
+  NotificationBar
+} from 'organisms'
 
 const shouldNotificationBarBeVisible = (
   listOfUrls,
