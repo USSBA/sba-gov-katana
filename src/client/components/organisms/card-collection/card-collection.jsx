@@ -1,7 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
-import { Card } from 'molecules'
+
 import styles from './card-collection.scss'
+import { Card } from 'molecules'
 
 let cardsPerRowMap = {
   '2': 2,

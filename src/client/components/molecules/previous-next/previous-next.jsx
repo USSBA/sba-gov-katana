@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from './previous-next.scss'
 import _ from 'lodash'
+
+import styles from './previous-next.scss'
 import { SmallSecondaryButton } from 'atoms'
 
 const businessGuideUrl = '/business-guide'

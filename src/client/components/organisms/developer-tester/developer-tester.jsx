@@ -1,7 +1,7 @@
 import React from 'react'
+import { reduce } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { reduce } from 'lodash'
 
 // import naics from "./naics";
 import styles from './developer-tester.scss'

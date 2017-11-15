@@ -2,8 +2,7 @@ import React from 'react'
 
 import styles from './document.scss'
 import { VersionsList } from 'atoms'
-import { DocumentArticle } from 'molecules'
-import { RelatedDocumentCards } from 'organisms'
+import { DocumentArticle, RelatedDocumentCards } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
 
 class DocumentPage extends React.Component {

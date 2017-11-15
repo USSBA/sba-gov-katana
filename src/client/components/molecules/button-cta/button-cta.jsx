@@ -1,7 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
-import { LargePrimaryButton } from 'atoms'
+
 import styles from './button-cta.scss'
+import { LargePrimaryButton } from 'atoms'
 
 const ButtonCta = props => {
   let eventConfig = {

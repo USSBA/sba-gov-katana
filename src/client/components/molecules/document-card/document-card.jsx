@@ -1,7 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
-import { DecorativeDash, DocumentType, PdfIcon, BasicLink } from 'atoms'
+
 import s from './document-card.scss'
+import { BasicLink, DecorativeDash, DocumentType, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 

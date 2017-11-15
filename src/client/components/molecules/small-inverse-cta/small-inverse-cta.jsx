@@ -1,9 +1,10 @@
 import React from 'react'
-import styles from './small-inverse-cta.scss'
-import { SmallPrimaryButton } from 'atoms'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
+import styles from './small-inverse-cta.scss'
 import * as NavigationActions from '../../../actions/navigation.js'
+import { SmallPrimaryButton } from 'atoms'
 import { createCtaNavigation } from '../../../services/navigation'
 
 class SmallInverseCta extends React.Component {

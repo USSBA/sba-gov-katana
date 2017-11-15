@@ -1,6 +1,7 @@
 import React from 'react'
-import { Callout } from 'molecules'
+
 import styles from './hero.scss'
+import { Callout } from 'molecules'
 
 class Hero extends React.Component {
   imgStyles() {

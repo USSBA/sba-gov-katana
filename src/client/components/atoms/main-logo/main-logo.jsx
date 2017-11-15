@@ -1,5 +1,6 @@
 import React from 'react'
-import sbaLogo from '../../../../../public/assets/images/logo.png'
+
+import sbaLogo from 'assets/images/logo.png'
 import styles from './main-logo.scss'
 import { BasicLink } from 'atoms'
 

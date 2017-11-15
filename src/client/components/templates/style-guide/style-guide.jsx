@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { TextSection } from 'atoms'
+
 // typography atoms
 import { ExtraLargeTitleText, SubtitleText, CaptionText } from 'atoms'
 
@@ -27,7 +29,7 @@ import { TextInput, TextArea, Radio, Checkbox } from 'atoms'
 
 // icon atoms
 import {
-  CaretIcon,
+  CaretDownIcon,
   CloseIcon,
   HomeIcon,
   SearchIcon,
@@ -44,7 +46,6 @@ import {
   Callout,
   SimpleCta,
   CallToAction as CTA,
-  TextSection,
   Paginator
 } from 'molecules'
 
@@ -910,7 +911,7 @@ const Icons = () => (
       </li>
       <li>
         <div>
-          <CaretIcon aria-hidden="true" />
+          <CaretDownIcon aria-hidden="true" />
         </div>
         <p>
           Caret (can be rotated/flipped to different directions. Used in

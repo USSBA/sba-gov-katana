@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './radio.scss'
 import _ from 'lodash'
-import FormErrorMessage from '../form-error-message/form-error-message.jsx'
+
+import styles from './radio.scss'
+import { FormErrorMessage } from 'atoms'
 
 class RadioButtonGroup extends React.Component {
   constructor(props) {

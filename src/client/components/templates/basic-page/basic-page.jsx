@@ -1,17 +1,18 @@
 import React from 'react'
 import Waypoint from 'react-waypoint'
-import { listenForOverlap } from 'element-overlap'
 import _ from 'lodash'
+import { listenForOverlap } from 'element-overlap'
+
+import styles from './basic-page.scss'
+import * as paragraphMapper from '../paragraph-mapper.jsx'
 import {
-  TitleSection,
   Breadcrumb,
+  FeedbackForm,
   PreviousNextSection,
-  FeedbackForm
+  RemoveMainLoader,
+  TitleSection
 } from 'molecules'
 import { SectionNav } from 'organisms'
-import * as paragraphMapper from '../paragraph-mapper.jsx'
-import styles from './basic-page.scss'
-import RemoveMainLoader from '../../molecules/main-loader/remove-main-loader.jsx'
 
 class BasicPage extends React.Component {
   constructor(props) {

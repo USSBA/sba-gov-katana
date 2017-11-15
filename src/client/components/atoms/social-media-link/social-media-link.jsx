@@ -1,9 +1,8 @@
 import React from 'react'
-
-import * as ModalActions from '../../../actions/show-modal.js'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import * as ModalActions from '../../../actions/show-modal.js'
 import { BasicLink } from 'atoms'
 
 class SocialMediaLink extends React.Component {

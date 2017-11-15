@@ -1,7 +1,8 @@
 import React from 'react'
-import TileCollection from '../../molecules/tile-collection/tile-collection.jsx'
+
 import icons from './icons.jsx'
 import s from './disaster-tile-collection.scss'
+import { TileCollection } from 'organisms'
 
 class DisasterTileCollection extends React.Component {
   render() {

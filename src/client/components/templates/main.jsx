@@ -1,15 +1,21 @@
 import React from 'react'
-import _ from 'lodash'
 import cookie from 'react-cookie'
+import _ from 'lodash'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Header, Footer, DisasterAlert, NotificationBar } from 'organisms'
-import ModalController from '../modal-controller.jsx'
-import * as ContentActions from '../../actions/content.js'
-import styles from '../organisms/header-footer/header/header.scss'
 
+import styles from '../organisms/header-footer/header/header.scss'
+import * as ContentActions from '../../actions/content.js'
 import * as LoadingActions from '../../actions/loading.js'
-import MainLoader from '../molecules/main-loader/main-loader.jsx'
+import { MainLoader } from 'molecules'
+import {
+  DisasterAlert,
+  Footer,
+  Header,
+  ModalController,
+  NotificationBar
+} from 'organisms'
 
 const shouldNotificationBarBeVisible = (
   listOfUrls,

@@ -1,6 +1,7 @@
 import React from 'react'
-import s from './card-grid.scss'
 import _ from 'lodash'
+
+import s from './card-grid.scss'
 
 class CardGrid extends React.Component {
   renderCard(item, index) {

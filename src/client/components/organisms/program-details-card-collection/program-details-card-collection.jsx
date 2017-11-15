@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { CardCollection } from 'organisms'
+
 import styles from './program-details-card-collection.scss'
+import { CardCollection } from 'organisms'
 
 class ProgramDetailsCardCollection extends Component {
   render() {

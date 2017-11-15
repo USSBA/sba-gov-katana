@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactSelect from 'react-select'
-import 'react-select/dist/react-select.css'
-import FormErrorMessage from '../form-error-message/form-error-message.jsx'
-import styles from './multiselect.scss'
 import _ from 'lodash'
-import chevron from '../../../../../public/assets/svg/chevron.svg'
+import 'react-select/dist/react-select.css'
+
+import chevron from 'assets/svg/chevron.svg'
+import styles from './multiselect.scss'
+import { FormErrorMessage } from 'atoms'
 
 class MultiSelectBox extends React.Component {
   handleChange(newValue) {

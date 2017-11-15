@@ -1,6 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
-import { SmallPrimaryFormButton, SmallGraySecondaryFormButton } from 'atoms'
+
+import { SmallGraySecondaryFormButton, SmallPrimaryFormButton } from 'atoms'
 
 import styles from './form-page-buttons.scss'
 

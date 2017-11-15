@@ -1,5 +1,5 @@
-import React from 'react'
 import AutoSuggest from 'react-autosuggest'
+import React from 'react'
 import isMobile from 'ismobilejs'
 
 import { filter, isInteger, map, reduce, startsWith, take } from 'lodash'

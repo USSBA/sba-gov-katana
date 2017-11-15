@@ -1,6 +1,7 @@
 import React from 'react'
-import ButtonBase from '../button-base/button-base.jsx'
+
 import styles from './large-inverse-primary-button.scss'
+import { ButtonBase } from 'atoms'
 
 const LargeInversePrimaryButton = props => (
   <ButtonBase {...props} buttonClassName={styles.LargeInversePrimaryButton} />

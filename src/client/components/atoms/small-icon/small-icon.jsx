@@ -1,5 +1,6 @@
-import _ from 'lodash'
 import React from 'react'
+import _ from 'lodash'
+
 import styles from './small-icon.scss'
 
 class SmallIcon extends React.Component {

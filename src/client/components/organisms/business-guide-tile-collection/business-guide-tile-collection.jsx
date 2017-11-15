@@ -1,6 +1,7 @@
 import React from 'react'
-import { TileCollection } from 'organisms'
+
 import BusinessGuideIcons from './icons.jsx'
+import { TileCollection } from 'organisms'
 
 class BusinessGuideTileCollection extends React.Component {
   render() {

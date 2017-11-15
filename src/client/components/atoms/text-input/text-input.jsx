@@ -1,11 +1,12 @@
 import React from 'react'
+
+import styles from './text-input.scss'
 import {
-  ValidationIcon,
+  FailureIcon,
   FormErrorMessage,
   SuccessIcon,
-  FailureIcon
+  ValidationIcon
 } from 'atoms'
-import styles from './text-input.scss'
 
 class TextInput extends React.Component {
   iconValidation(validationState) {

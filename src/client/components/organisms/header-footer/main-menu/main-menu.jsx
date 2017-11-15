@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { SubMenu } from 'molecules'
+
 import styles from './main-menu.scss'
+import { SubMenu } from 'organisms'
 
 class MainMenu extends React.Component {
   constructor(props) {

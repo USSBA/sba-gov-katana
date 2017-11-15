@@ -1,14 +1,15 @@
+import Promise from 'bluebird'
 import React, { PureComponent } from 'react'
+import moment from 'moment'
+import queryString from 'querystring'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import _ from 'lodash'
-import queryString from 'querystring'
-import moment from 'moment'
-import Promise from 'bluebird'
-import { DecorativeDash, BasicLink } from 'atoms'
+
+import s from './quick-links.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
-import s from './quick-links.scss'
+import { BasicLink, DecorativeDash } from 'atoms'
 
 function getCurrentFile(files) {
   let found = null

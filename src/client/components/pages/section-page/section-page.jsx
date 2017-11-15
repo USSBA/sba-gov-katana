@@ -1,14 +1,14 @@
 import React from 'react'
-import styles from './section-page.scss'
 import path from 'path'
-import { SimpleCta } from 'molecules'
+
+import constants from '../../../services/constants.js'
+import styles from './section-page.scss'
+import { RemoveMainLoader, SimpleCta } from 'molecules'
 import {
   BusinessGuideTileCollection,
-  FundingProgramsTileCollection,
-  ForPartnersTileCollection
+  ForPartnersTileCollection,
+  FundingProgramsTileCollection
 } from 'organisms'
-import constants from '../../../services/constants.js'
-import RemoveMainLoader from '../../molecules/main-loader/remove-main-loader.jsx'
 
 class SectionPage extends React.Component {
   equalsIgnoreCase(first, second) {

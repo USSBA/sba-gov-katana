@@ -2,7 +2,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import { FrontPageLady } from 'molecules'
+import { FrontPageLady } from 'organisms'
 
 describe('front page lady', () => {
   test('renders correctly', () => {

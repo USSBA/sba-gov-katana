@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './breadcrumb.scss'
-import { SmallIcon, BasicLink } from 'atoms'
 import _ from 'lodash'
+
+import styles from './breadcrumb.scss'
+import { BasicLink, SmallIcon } from 'atoms'
 
 class Breadcrumb extends React.Component {
   makeLastAnchor(tail) {
