@@ -149,7 +149,8 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
       className="card"
     >
       <p>
-        Learn more about 
+        Learn more about
+         
         <a
           href="/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards"
           target="_blank"
@@ -176,7 +177,8 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             SW 
+             SW
+             
             <br />
             Washington
             <span
@@ -215,7 +217,8 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
       className="card"
     >
       <p>
-        Find out 
+        Find out
+         
         <a
           href="/contracting"
           target="_blank"
@@ -242,7 +245,8 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             SW 
+             SW
+             
             <br />
             Washington
             <span
