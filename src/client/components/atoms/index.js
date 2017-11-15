@@ -53,6 +53,10 @@ import TextSection from './text-section/text-section'
 import UtilityLink from './utility-link/utility-link'
 import ValidationIcon from './validation-icon/validation-icon'
 import VersionsList from './versions-list/versions-list'
+import WhiteIconGrow from './icons/white-grow'
+import WhiteIconLaunch from './icons/white-launch'
+import WhiteIconManage from './icons/white-manage'
+import WhiteIconPlan from './icons/white-plan'
 
 export {
   ApplyButton,
@@ -107,5 +111,9 @@ export {
   TextSection,
   UtilityLink,
   ValidationIcon,
-  VersionsList
+  VersionsList,
+  WhiteIconGrow,
+  WhiteIconLaunch,
+  WhiteIconManage,
+  WhiteIconPlan
 }

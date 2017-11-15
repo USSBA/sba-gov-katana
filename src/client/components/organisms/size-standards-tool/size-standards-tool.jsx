@@ -1,18 +1,19 @@
-import _, { reduce } from 'lodash'
 import React, { PureComponent } from 'react'
 import NumberFormat from 'react-number-format'
+import _, { reduce } from 'lodash'
 import axios from 'axios'
+
+import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/Size_standards_graphic.png'
+import styles from './size-standards-tool.scss'
 import {
+  BasicLink,
   LargePrimaryButton,
   SearchIcon,
-  SmallPrimaryButton,
   SmallInversePrimaryButton,
-  TextInput,
-  BasicLink
+  SmallPrimaryButton,
+  TextInput
 } from 'atoms'
 import { NaicsLookup } from 'molecules'
-import sizeStandardsGraphic from '../../../../../public/assets/images/tools/size-standards-tool/Size_standards_graphic.png'
-import styles from './size-standards-tool.scss'
 
 class SizeStandardsTool extends PureComponent {
   constructor() {

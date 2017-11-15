@@ -1,21 +1,22 @@
 import React from 'react'
+import Waypoint from 'react-waypoint'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import _ from 'lodash'
-import { BasicLink } from 'atoms'
-import * as ModalActions from '../../../actions/show-modal.js'
-import styles from './section-nav.scss'
-var Waypoint = require('react-waypoint')
 
 import constants from '../../../services/constants.js'
-
-import whiteIconLaunch from '../../atoms/icons/white-launch.jsx'
-import whiteIconPlan from '../../atoms/icons/white-plan.jsx'
-import whiteIconManage from '../../atoms/icons/white-manage.jsx'
-import whiteIconGrow from '../../atoms/icons/white-grow.jsx'
 import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
-import whiteIconSuretyProviders from 'assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
+import styles from './section-nav.scss'
 import whiteIconLenders from 'assets/images/for-partners/For_Partners_Icon_Lenders_white.png'
+import whiteIconSuretyProviders from 'assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
+import * as ModalActions from '../../../actions/show-modal.js'
+import {
+  BasicLink,
+  WhiteIconGrow,
+  WhiteIconLaunch,
+  WhiteIconManage,
+  WhiteIconPlan
+} from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
 
@@ -26,13 +27,13 @@ class SectionNav extends React.Component {
       const sectionTitle = this.getNthLineage(-2).title
       const titleConstants = constants.sectionTitles
       if (sectionTitle === titleConstants.planYourBusiness) {
-        sectionNavIcon = whiteIconPlan
+        sectionNavIcon = WhiteIconPlan
       } else if (sectionTitle === titleConstants.launchYourBusiness) {
-        sectionNavIcon = whiteIconLaunch
+        sectionNavIcon = WhiteIconLaunch
       } else if (sectionTitle === titleConstants.manageYourBusiness) {
-        sectionNavIcon = whiteIconManage
+        sectionNavIcon = WhiteIconManage
       } else if (sectionTitle === titleConstants.growYourBusiness) {
-        sectionNavIcon = whiteIconGrow
+        sectionNavIcon = WhiteIconGrow
       } else if (sectionTitle === titleConstants.disasterAssistance) {
         sectionNavIcon = hurricaneIcon
       } else if (sectionTitle === titleConstants.suretyProviders) {
@@ -40,7 +41,7 @@ class SectionNav extends React.Component {
       } else if (sectionTitle === titleConstants.lenders) {
         sectionNavIcon = whiteIconLenders
       } else {
-        sectionNavIcon = whiteIconGrow
+        sectionNavIcon = WhiteIconGrow
       }
       this.props.actions.showMobileSectionNav(
         this.getNthLineage(-2),

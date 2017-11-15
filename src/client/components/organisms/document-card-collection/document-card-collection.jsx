@@ -1,7 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
-import { DocumentCard } from 'molecules'
+
 import styles from './document-card-collection.scss'
+import { DocumentCard } from 'molecules'
 
 class DocumentCardCollection extends React.Component {
   renderCard(item, index) {

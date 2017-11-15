@@ -1,6 +1,7 @@
 import React from 'react'
-import { TileCollection } from 'organisms'
+
 import ForPartnersIcons from './icons.jsx'
+import { TileCollection } from 'organisms'
 
 class ForPartnersTileCollection extends React.Component {
   render() {

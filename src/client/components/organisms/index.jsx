@@ -2,36 +2,36 @@
 import BusinessGuideTileCollection from './business-guide-tile-collection/business-guide-tile-collection.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
 import DeveloperTester from './developer-tester/developer-tester.jsx'
-import DocumentCardCollection from './document-card-collection/document-card-collection.jsx'
-import FrontPageHero from './front-page-hero/front-page-hero.jsx'
-import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
-import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
-import NotificationBar from './header-footer/notification-bar.jsx'
-import Hero from './hero/hero.jsx'
-import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
-import SearchBox from './search-box/search-box.jsx'
-import SectionNav from './section-nav/section-nav.jsx'
-import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
-import TileCollection from './tile-collection/tile-collection.jsx'
-import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
+import DocumentCardCollection from './document-card-collection/document-card-collection.jsx'
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
+import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
+import FrontPageHero from './front-page-hero/front-page-hero.jsx'
+import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
+import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
+import NotificationBar from './header-footer/notification-bar.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
+import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
+import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
 import SbicLookup from './sbic-lookup/sbic-lookup'
+import SearchBox from './search-box/search-box.jsx'
+import SectionNav from './section-nav/section-nav.jsx'
+import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
 import SubMenu from './sub-menu/sub-menu'
 import SuretyLookup from './surety-lookup/surety-lookup'
 import TenStepsSection from './ten-steps-section/ten-steps-section'
 import TextReadMoreSection from './text-readmore-section/text-readmore-section'
+import TileCollection from './tile-collection/tile-collection.jsx'
 
 // header-footer organisms
 import Footer from './header-footer/footer/footer.jsx'
-import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
 import Header from './header-footer/header/header.jsx'
+import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
 
 // homepage organisms
 import Blog from './homepage/blog/blog.jsx'
@@ -69,35 +69,35 @@ export {
   BusinessGuideTileCollection,
   CardCollection,
   DeveloperTester,
-  DocumentCardCollection,
-  FrontPageHero,
-  FundingProgramsTileCollection,
-  ForPartnersTileCollection,
   DisasterAlert,
-  NotificationBar,
-  Hero,
-  RelatedDocumentCards,
-  SearchBox,
-  SectionNav,
-  TileCollection,
-  ProgramDetailsCardCollection,
-  SizeStandardsTool,
   DocumentArticle,
   DocumentArticleLookup,
+  DocumentCardCollection,
   DropdownMenu,
+  ForPartnersTileCollection,
+  FrontPageHero,
+  FundingProgramsTileCollection,
+  Hero,
   Lookup,
   ModalController,
+  NotificationBar,
   PagingLookup,
+  ProgramDetailsCardCollection,
+  RelatedDocumentCards,
   SbicLookup,
+  SearchBox,
+  SectionNav,
+  SizeStandardsTool,
   StyleGrayBackground,
   SubMenu,
   SuretyLookup,
   TenStepsSection,
-  TextReadMoreSection
+  TextReadMoreSection,
+  TileCollection
 }
 
 // header-footer organisms
-export { Footer, MobileNav, Header }
+export { Footer, Header, MobileNav }
 
 // homepage organisms
 export { Blog, FrontPageLady, HappeningNow }
@@ -106,19 +106,19 @@ export { Blog, FrontPageLady, HappeningNow }
 export {
   AdditionalInfoForm,
   BusinessInfoForm,
+  ConfirmSection,
   ContactInfoForm,
-  IndustryInfoForm,
-  LoanInfo,
-  ReviewSection,
-  ReviewSubmitInfoForm,
+  CounselorMap,
+  DynamicCounselingAndTools,
+  EmailConfirmationInvalid,
   FindLendersIntro,
   HelpfulQuestions,
   HowItWorksSection,
+  IndustryInfoForm,
+  LoanInfo,
   PreparationChecklist,
-  ConfirmSection,
-  DynamicCounselingAndTools,
-  CounselorMap,
-  EmailConfirmationInvalid
+  ReviewSection,
+  ReviewSubmitInfoForm
 }
 
 // modal organisms

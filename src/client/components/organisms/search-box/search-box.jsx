@@ -1,10 +1,11 @@
 import React from 'react'
 import _ from 'lodash'
+
 import {
+  LargeInversePrimaryButton,
   MultiSelect,
-  TextInput,
   SearchIcon,
-  LargeInversePrimaryButton
+  TextInput
 } from 'atoms'
 import styles from './search-box.scss'
 import { logPageEvent } from '../../../services/analytics.js'
