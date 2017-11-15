@@ -1,6 +1,7 @@
 import React from 'react'
-import ButtonBase from '../button-base/button-base.jsx'
+
 import styles from './large-primary-button.scss'
+import { ButtonBase } from 'atoms'
 
 const LargePrimaryButton = props => (
   <ButtonBase {...props} buttonClassName={styles.LargePrimaryButton} />

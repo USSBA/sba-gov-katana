@@ -1,6 +1,7 @@
 import React from 'react'
-import { createNavigation } from '../../../services/navigation'
 import _ from 'lodash'
+
+import { createNavigation } from '../../../services/navigation'
 
 class BasicLink extends React.Component {
   componentDidMount() {

@@ -1,3 +1,3 @@
-import whiteIconManage from '../../../../../public/assets/svg/business-guide-icon-white-manage.svg'
+import whiteIconManage from 'assets/svg/business-guide-icon-white-manage.svg'
 
 export default whiteIconManage

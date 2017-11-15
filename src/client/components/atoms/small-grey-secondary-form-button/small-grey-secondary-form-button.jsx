@@ -1,6 +1,7 @@
 import React from 'react'
-import ButtonBase from '../button-base/button-base.jsx'
+
 import styles from './small-grey-secondary-form-button.scss'
+import { ButtonBase } from 'atoms'
 
 const SmallGreySecondaryFormButton = props => (
   <ButtonBase

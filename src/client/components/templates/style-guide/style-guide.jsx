@@ -27,7 +27,7 @@ import { TextInput, TextArea, Radio, Checkbox } from 'atoms'
 
 // icon atoms
 import {
-  CaretIcon,
+  CaretDownIcon,
   CloseIcon,
   HomeIcon,
   SearchIcon,
@@ -910,7 +910,7 @@ const Icons = () => (
       </li>
       <li>
         <div>
-          <CaretIcon aria-hidden="true" />
+          <CaretDownIcon aria-hidden="true" />
         </div>
         <p>
           Caret (can be rotated/flipped to different directions. Used in

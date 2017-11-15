@@ -1,7 +1,8 @@
 import React from 'react'
+
 import styles from './textarea.scss'
-import FormErrorMessage from '../form-error-message/form-error-message.jsx'
-import ValidationIcon from '../validation-icon/validation-icon.jsx'
+import { FormErrorMessage } from 'atoms'
+import { ValidationIcon } from 'atoms'
 
 class TextArea extends React.Component {
   inputValidation(validationState) {

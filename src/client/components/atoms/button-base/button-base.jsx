@@ -1,5 +1,5 @@
 import React from 'react'
-import { BasicLink } from '../../atoms'
+import { BasicLink } from 'atoms'
 
 class ButtonBase extends React.Component {
   render() {

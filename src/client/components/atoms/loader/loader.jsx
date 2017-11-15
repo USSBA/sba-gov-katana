@@ -1,6 +1,7 @@
 import React from 'react'
+
+import logo from 'assets/images/logo-no-text.png'
 import s from './loader.scss'
-import logo from '../../../../../public/assets/images/logo-no-text.png'
 
 const Loader = props => {
   return (

@@ -1,22 +1,26 @@
-var path = require('path');
-var webpack = require('webpack');
-
+var path = require('path')
+var webpack = require('webpack')
 
 var sassResources = {
   loader: 'sass-resources-loader',
   options: {
-    resources: [path.join(__dirname, 'src', 'client', 'styles', "global.scss"), path.join(__dirname, 'src', 'client', 'styles', 'base', "_variables.scss")]
+    resources: [
+      path.join(__dirname, 'src', 'client', 'styles', 'global.scss'),
+      path.join(__dirname, 'src', 'client', 'styles', 'base', '_variables.scss')
+    ]
   }
-};
+}
 
 module.exports = function(styleNamingFormat) {
   return {
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.js$/,
           loaders: ['babel-loader'],
           include: path.join(__dirname, 'src')
-        }, {
+        },
+        {
           test: /\.jsx?$/,
           loaders: ['babel-loader'],
           exclude: /node_modules/
@@ -25,49 +29,60 @@ module.exports = function(styleNamingFormat) {
           test: /\.css$/,
           loader: 'style-loader!css-loader?modules&',
           exclude: [
-            path.resolve(__dirname, "node_modules/react-select"),
-            path.resolve(__dirname, "src/client/components/atoms/multiselect/react-select-helpers.css")
+            path.resolve(__dirname, 'node_modules/react-select'),
+            path.resolve(
+              __dirname,
+              'src/client/components/atoms/multiselect/react-select-helpers.css'
+            )
           ]
         },
         {
           test: /.*react-select.*\.css$/,
-          loader: 'style-loader!css-loader?outputStyle=expanded&' + 'includePaths[]=' +
-            (path.resolve(__dirname, './node_modules'))
+          loader:
+            'style-loader!css-loader?outputStyle=expanded&' +
+            'includePaths[]=' +
+            path.resolve(__dirname, './node_modules')
         },
         {
           test: /\.scss$/,
-          use: ["style-loader", {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: styleNamingFormat || '[hash:base64]'
-            }
-          }, {
-            loader: "sass-loader",
-            options: {
-              includePaths: [
-                path.join(__dirname, 'src', 'client', 'styles')
-              ]
-            }
-          }, sassResources],
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: styleNamingFormat || '[hash:base64]'
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                includePaths: [path.join(__dirname, 'src', 'client', 'styles')]
+              }
+            },
+            sassResources
+          ],
           exclude: [
-            path.resolve(__dirname, "src/client/styles/common/collapse.scss")
+            path.resolve(__dirname, 'src/client/styles/common/collapse.scss')
           ]
         },
         {
           test: /.*collapse\.scss$/,
-          loaders: ["style-loader", "css-loader", {
-            loader: "sass-loader",
-            options: {
-              includePaths: [
-                path.join(__dirname, 'src', 'client', 'styles')
-              ]
-            }
-          }, sassResources]
+          loaders: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                includePaths: [path.join(__dirname, 'src', 'client', 'styles')]
+              }
+            },
+            sassResources
+          ]
         },
         {
           test: /\.less$/,
-          loader: "style-loader!css-loader!less-loader"
+          loader: 'style-loader!css-loader!less-loader'
         },
         {
           test: /\.json$/,
@@ -77,11 +92,16 @@ module.exports = function(styleNamingFormat) {
     },
     resolve: {
       alias: {
-        assets: path.resolve(__dirname, "public/assets"),
-        atoms: path.resolve(__dirname, "src/client/components/atoms"),
-        molecules: path.resolve(__dirname, "src/client/components/molecules/index.jsx"),
-        organisms: path.resolve(__dirname, "src/client/components/organisms/index.jsx") // for some reason this specifice path will not resolve without index.jsx
-      }
+        assets: path.resolve(__dirname, 'public/assets'),
+        atoms: path.resolve(__dirname, 'src/client/components/atoms'),
+        molecules: path.resolve(__dirname, 'src/client/components/molecules'),
+        // for some reason this specifice path will not resolve without index.jsx
+        organisms: path.resolve(
+          __dirname,
+          'src/client/components/organisms/index.jsx'
+        )
+      },
+      extensions: ['*', '.js', '.jsx']
     }
-  };
-};
+  }
+}

@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './simple-select.scss'
-import ValidationIcon from '../validation-icon/validation-icon.jsx'
 import _ from 'lodash'
+
+import styles from './simple-select.scss'
+import { ValidationIcon } from 'atoms'
 
 class SimpleSelect extends React.Component {
   getValidationIcon() {
