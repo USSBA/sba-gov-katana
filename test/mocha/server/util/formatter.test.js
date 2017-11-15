@@ -1,9 +1,6 @@
 import feedbackData from './feedback.json'
 import fs from 'fs'
-let formattedFeedbackData = fs.readFileSync(
-  'test/mocha/server/util/formatted-feedback.csv',
-  'utf-8'
-)
+let formattedFeedbackData = fs.readFileSync('test/mocha/server/util/formatted-feedback.csv', 'utf-8')
 
 import { formatFeedbackData } from '../../../../src/util/formatter.js'
 

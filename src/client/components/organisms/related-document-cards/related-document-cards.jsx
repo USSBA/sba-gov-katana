@@ -29,10 +29,7 @@ class RelatedDocumentCards extends React.Component {
           return relatedDocument.documentIdType
         })
       ).map(docType => {
-        let filteredDocuments = _.filter(relatedDocuments, [
-          'documentIdType',
-          docType
-        ])
+        let filteredDocuments = _.filter(relatedDocuments, ['documentIdType', docType])
         let sortedDocuments = filteredDocuments.sort((a, b) => {
           return a.title.toLowerCase() > b.title.toLowerCase()
         })
@@ -45,9 +42,7 @@ class RelatedDocumentCards extends React.Component {
   handleBrowseAll(documentType) {
     logPageEvent({ category: 'Browse-all', action: documentType })
     let params = { type: documentType }
-    this.props.actions.locationChange(
-      '/document/?' + queryString.stringify(params)
-    )
+    this.props.actions.locationChange('/document/?' + queryString.stringify(params))
   }
 
   renderRelatedDocumentSections() {
@@ -58,23 +53,14 @@ class RelatedDocumentCards extends React.Component {
         let documents = sortedDouments[documentType]
         return (
           <div className={'related-document-section'} key={index}>
-            <div
-              className={'related-document-section-header ' + s.sectionHeader}
-            >
+            <div className={'related-document-section-header ' + s.sectionHeader}>
               <h3 className={s.sectionTitle}>{documentType} </h3>
-              <a
-                className={s.browseAll}
-                onClick={() => this.handleBrowseAll(documentType)}
-              >
+              <a className={s.browseAll} onClick={() => this.handleBrowseAll(documentType)}>
                 Browse all
               </a>
             </div>
             <div>
-              <DocumentCardCollection
-                showDetails={false}
-                cards={documents}
-                type={documentType}
-              />
+              <DocumentCardCollection showDetails={false} cards={documents} type={documentType} />
             </div>
           </div>
         )

@@ -37,8 +37,7 @@ class ContactCardLookup extends React.Component {
       {
         value: selectValue.value,
         displayedItems: newDisplayedItems,
-        numberOfTimesUserHasSelectedAState:
-          this.state.numberOfTimesUserHasSelectedAState + 1
+        numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState + 1
       },
       () => {
         this.state.displayedItems.length < 1

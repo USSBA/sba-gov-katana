@@ -7,13 +7,7 @@ import { bindActionCreators } from 'redux'
 
 import s from './document-article.scss'
 import * as NavigationActions from '../../../actions/navigation.js'
-import {
-  BasicLink,
-  DecorativeDash,
-  DocumentType,
-  LargePrimaryButton,
-  TextSection
-} from 'atoms'
+import { BasicLink, DecorativeDash, DocumentType, LargePrimaryButton, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
@@ -32,9 +26,7 @@ export class DocumentArticle extends React.Component {
   handleRelatedPrograms(program) {
     logPageEvent({ category: 'Related-Programs', action: `program${program}` })
     const params = { program: program }
-    this.props.actions.locationChange(
-      '/' + this.props.type + '/?' + queryString.stringify(params)
-    )
+    this.props.actions.locationChange('/' + this.props.type + '/?' + queryString.stringify(params))
   }
 
   renderDateLine(file) {
@@ -75,10 +67,7 @@ export class DocumentArticle extends React.Component {
     const data = this.props.data
     const body = data.body && typeof data.body === 'string' ? data.body : ''
     if (data) {
-      const currentFile = getCurrentFile(
-        this.props.data.files,
-        this.props.data.file
-      )
+      const currentFile = getCurrentFile(this.props.data.files, this.props.data.file)
       let currentFileExtension = ''
       if (
         currentFile &&
@@ -100,35 +89,21 @@ export class DocumentArticle extends React.Component {
       return (
         <div className={'document-article ' + s.page}>
           {documentTypeString ? (
-            <DocumentType
-              type={documentTypeString}
-              number={data.documentIdNumber}
-            />
+            <DocumentType type={documentTypeString} number={data.documentIdNumber} />
           ) : (
             undefined
           )}
           <h1
-            className={
-              'document-article-title ' +
-              s.title +
-              ' ' +
-              (documentTypeString ? s.marginTop : '')
-            }
+            className={'document-article-title ' + s.title + ' ' + (documentTypeString ? s.marginTop : '')}
           >
             {data.title}
           </h1>
 
-          {!_.isEmpty(currentFile) && (
-            <div>{this.renderDateLine(currentFile)}</div>
-          )}
+          {!_.isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
           {data.officeLink.url ? (
             <div className={s.office}>
-              By{' '}
-              <BasicLink
-                url={data.officeLink.url}
-                text={data.officeLink.title}
-              />
+              By <BasicLink url={data.officeLink.url} text={data.officeLink.title} />
             </div>
           ) : (
             <span />
@@ -136,38 +111,26 @@ export class DocumentArticle extends React.Component {
           <hr className={s.hr} />
           <div className={s.summaryContainer}>
             <LargePrimaryButton
-              className={
-                'document-article-pdf-download-btn ' + s.downloadButton
-              }
+              className={'document-article-pdf-download-btn ' + s.downloadButton}
               onClick={e => {
                 return this.downloadClick(currentFile)
               }}
               disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
               text={'download ' + currentFileExtension}
             />
-            <p className={'document-article-summary ' + s.summary}>
-              {data.summary}
-            </p>
+            <p className={'document-article-summary ' + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}>
             <DecorativeDash className={s.dash} />
           </div>
           <TextSection className={s.body} text={body} />
-          <div
-            className={
-              'document-article-related-programs-container ' +
-              s.relatedProgramsContainer
-            }
-          >
+          <div className={'document-article-related-programs-container ' + s.relatedProgramsContainer}>
             <hr className={s.hr} />
             <span className={s.relatedPrograms}>Related programs: </span>
 
             {data.programs.map((program, index) => {
               return (
-                <span
-                  className="document-article-related-programs-link"
-                  key={index}
-                >
+                <span className="document-article-related-programs-link" key={index}>
                   <a
                     onClick={() => {
                       return this.handleRelatedPrograms(program)

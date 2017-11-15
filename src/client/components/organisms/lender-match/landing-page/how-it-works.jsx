@@ -10,11 +10,7 @@ export const HowItWorksSection = props => (
     <h2 className={styles.title}>How it works.</h2>
     <div className={styles.step}>
       <span className={styles.numbers}>1</span>
-      <img
-        className={styles.img}
-        src={howItWorksImg1}
-        alt="Hands typing on a laptop."
-      />
+      <img className={styles.img} src={howItWorksImg1} alt="Hands typing on a laptop." />
       <h3 className={styles.header}>Describe your needs</h3>
       <hr className={styles.line} />
       <p className={styles.blurb}>
@@ -27,8 +23,7 @@ export const HowItWorksSection = props => (
       <h3 className={styles.header}>Get matched in 2 days</h3>
       <hr className={styles.line} />
       <p className={styles.blurb}>
-        Receive an email with contact information of lenders who express
-        interest in your loan.
+        Receive an email with contact information of lenders who express interest in your loan.
       </p>
     </div>
     <div className={styles.step}>
@@ -48,8 +43,7 @@ export const HowItWorksSection = props => (
       <h3 className={styles.header}>Apply for a loan</h3>
       <hr className={styles.line} />
       <p className={styles.blurb}>
-        Submit loan applications and paperwork. You're well on your way to
-        securing a business loan!
+        Submit loan applications and paperwork. You're well on your way to securing a business loan!
       </p>
     </div>
   </div>

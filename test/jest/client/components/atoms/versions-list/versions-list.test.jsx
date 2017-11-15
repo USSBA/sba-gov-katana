@@ -68,9 +68,7 @@ describe('All Versions', () => {
   const componentWithSop = shallow(<VersionsList doc={mockSopData} />)
 
   test('properly maps files array members to subsequent li tags', () => {
-    expect(component.find('.allVersionsList li')).toHaveLength(
-      mockDocumentData.files.length
-    )
+    expect(component.find('.allVersionsList li')).toHaveLength(mockDocumentData.files.length)
   })
 
   test('file array member is rendered as html structure when version, effectiveDate ARE NOT available, ', function() {
@@ -101,9 +99,7 @@ describe('All Versions', () => {
     let mockHtml = `<li><strong>Version ${file.version}</strong>`
     mockHtml += `<strong>|</strong>`
     mockHtml += `Effective: ${file.effectiveDate}.`
-    mockHtml += `<a href="${
-      files[fileIndex].fileUrl
-    }" target="_blank">Download PDF`
+    mockHtml += `<a href="${files[fileIndex].fileUrl}" target="_blank">Download PDF`
     mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`
     mockHtml += `</a></li>`
 
@@ -124,9 +120,7 @@ describe('All Versions', () => {
     let mockHtml = `<li><strong>${documentIdNumber} ${file.version}</strong>`
     mockHtml += `<strong>|</strong>`
     mockHtml += `Effective: ${file.effectiveDate}.`
-    mockHtml += `<a href="${
-      files[fileIndex].fileUrl
-    }" target="_blank">Download PDF`
+    mockHtml += `<a href="${files[fileIndex].fileUrl}" target="_blank">Download PDF`
     mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`
     mockHtml += `</a></li>`
 
@@ -146,9 +140,7 @@ describe('All Versions', () => {
     let mockHtml = `<li><strong>Version ${file.version}</strong>`
     mockHtml += `<strong>|</strong>`
     mockHtml += `Effective: ${file.effectiveDate}.`
-    mockHtml += `<a href="${
-      files[fileIndex].fileUrl
-    }" target="_blank">Download PDF`
+    mockHtml += `<a href="${files[fileIndex].fileUrl}" target="_blank">Download PDF`
     mockHtml += `<i class="fa fa-file-pdf-o" aria-hidden="true"></i>`
     mockHtml += `</a></li>`
 

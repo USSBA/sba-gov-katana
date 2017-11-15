@@ -26,8 +26,8 @@ class FrontPageLady extends React.Component {
           <div className={styles.box}>
             <div className={styles.title}>Start and grow your business.</div>
             <div className={styles.text}>
-              Whether you're already up and running or just getting started, we
-              can help. Come take a look how.
+              Whether you're already up and running or just getting started, we can help. Come take a look
+              how.
             </div>
             <LargeInversePrimaryButton
               eventConfig={{

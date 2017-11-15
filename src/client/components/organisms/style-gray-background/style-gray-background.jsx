@@ -16,10 +16,7 @@ class StyleGrayBackground extends React.Component {
       sectionHeader: styles.sectionHeader,
       cardCollection: styles.cardCollection
     }
-    let wrapped = paragraphMapper.wrapParagraphs(
-      paragraphList,
-      wrapperClassMapping
-    )
+    let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped
   }
 

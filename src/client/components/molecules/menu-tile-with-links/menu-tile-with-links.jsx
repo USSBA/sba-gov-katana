@@ -14,26 +14,16 @@ class MenuTileWithLinks extends React.Component {
     }
     return (
       <div id={this.props.id} className={s.tileHover}>
-        <BasicLink
-          url={this.props.link}
-          myClassName={s.noUnderline}
-          eventConfig={eventConfig}
-        >
+        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
           <h2 className={s.largeTitleHover}>{this.props.largeTitle}</h2>
         </BasicLink>
-        <BasicLink
-          url={this.props.link}
-          myClassName={s.noUnderline}
-          eventConfig={eventConfig}
-        >
+        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
           <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
         </BasicLink>
         <div className={s.topLine} />
         {this.props.children
           ? this.props.children.map((object, index) => {
-              let autoFocusOnMe =
-                this.props.autoFocusOnLast &&
-                index === this.props.children.length - 1
+              let autoFocusOnMe = this.props.autoFocusOnLast && index === this.props.children.length - 1
               let eventConfig = {
                 category: 'Main-Menu',
                 action:

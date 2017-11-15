@@ -63,8 +63,7 @@ class TileCollection extends React.Component {
       },
       enteringInReverse: this.state.enteringInReverse,
       showHover: index === this.state.panelShowingHoverState,
-      neverDisplayChildrenOnHoverOverride: this.props
-        .neverDisplayChildrenOnHoverOverride
+      neverDisplayChildrenOnHoverOverride: this.props.neverDisplayChildrenOnHoverOverride
     }
     return <Tile {...tileProps} />
   }

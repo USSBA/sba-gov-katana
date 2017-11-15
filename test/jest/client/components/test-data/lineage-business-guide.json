@@ -12,8 +12,7 @@
           {
             "title": "Market research and competitive analysis",
             "url": "market-research-competitive-analysis",
-            "fullUrl":
-              "/business-guide/plan/market-research-competitive-analysis",
+            "fullUrl": "/business-guide/plan/market-research-competitive-analysis",
             "children": null,
             "description": null,
             "node": "47",
@@ -31,8 +30,7 @@
           {
             "title": "Calculate your startup costs",
             "url": "calculate-startup-costs-small-business",
-            "fullUrl":
-              "/business-guide/plan/calculate-startup-costs-small-business",
+            "fullUrl": "/business-guide/plan/calculate-startup-costs-small-business",
             "children": null,
             "description": null,
             "node": "49",
@@ -57,8 +55,7 @@
             "weight": -46
           }
         ],
-        "description":
-          "You've got a great idea. Now, make a plan to turn it into a great business. ",
+        "description": "You've got a great idea. Now, make a plan to turn it into a great business. ",
         "weight": -50
       },
       {
@@ -69,8 +66,7 @@
           {
             "title": "Pick your business location",
             "url": "pick-your-business-location-zoning-laws",
-            "fullUrl":
-              "/business-guide/launch/pick-your-business-location-zoning-laws",
+            "fullUrl": "/business-guide/launch/pick-your-business-location-zoning-laws",
             "children": null,
             "description": null,
             "node": "48",
@@ -79,8 +75,7 @@
           {
             "title": "Choose a business structure",
             "url": "choose-business-structure-types-chart",
-            "fullUrl":
-              "/business-guide/launch/choose-business-structure-types-chart",
+            "fullUrl": "/business-guide/launch/choose-business-structure-types-chart",
             "children": null,
             "description": null,
             "node": "59",
@@ -89,8 +84,7 @@
           {
             "title": "Choose your business name",
             "url": "choose-your-business-name-register",
-            "fullUrl":
-              "/business-guide/launch/choose-your-business-name-register",
+            "fullUrl": "/business-guide/launch/choose-your-business-name-register",
             "children": null,
             "description": null,
             "node": "5",
@@ -99,8 +93,7 @@
           {
             "title": "Register your business",
             "url": "register-your-business-federal-state-agency",
-            "fullUrl":
-              "/business-guide/launch/register-your-business-federal-state-agency",
+            "fullUrl": "/business-guide/launch/register-your-business-federal-state-agency",
             "children": null,
             "description": null,
             "node": "51",
@@ -109,8 +102,7 @@
           {
             "title": "Get federal and state tax ID numbers",
             "url": "get-federal-state-tax-id-number-ein",
-            "fullUrl":
-              "/business-guide/launch/get-federal-state-tax-id-number-ein",
+            "fullUrl": "/business-guide/launch/get-federal-state-tax-id-number-ein",
             "children": null,
             "description": null,
             "node": "53",
@@ -119,8 +111,7 @@
           {
             "title": "Apply for licenses and permits",
             "url": "apply-for-licenses-permits-federal-state",
-            "fullUrl":
-              "/business-guide/launch/apply-for-licenses-permits-federal-state",
+            "fullUrl": "/business-guide/launch/apply-for-licenses-permits-federal-state",
             "children": null,
             "description": null,
             "node": "66",
@@ -129,8 +120,7 @@
           {
             "title": "Open a business bank account",
             "url": "open-business-bank-account-fees-benefits",
-            "fullUrl":
-              "/business-guide/launch/open-business-bank-account-fees-benefits",
+            "fullUrl": "/business-guide/launch/open-business-bank-account-fees-benefits",
             "children": null,
             "description": null,
             "node": "52",
@@ -139,16 +129,14 @@
           {
             "title": "Get business insurance",
             "url": "get-business-insurance-assets-liability",
-            "fullUrl":
-              "/business-guide/launch/get-business-insurance-assets-liability",
+            "fullUrl": "/business-guide/launch/get-business-insurance-assets-liability",
             "children": null,
             "description": null,
             "node": "61",
             "weight": -42
           }
         ],
-        "description":
-          "Turn your business into a reality. Register, file, and start doing business.",
+        "description": "Turn your business into a reality. Register, file, and start doing business.",
         "weight": -49
       },
       {
@@ -159,8 +147,7 @@
           {
             "title": "Manage your finances",
             "url": "manage-your-finances-business-credit",
-            "fullUrl":
-              "/business-guide/manage/manage-your-finances-business-credit",
+            "fullUrl": "/business-guide/manage/manage-your-finances-business-credit",
             "children": null,
             "description": null,
             "node": "65",
@@ -169,8 +156,7 @@
           {
             "title": "Hire and manage employees",
             "url": "hire-manage-employees-benefits-contractors",
-            "fullUrl":
-              "/business-guide/manage/hire-manage-employees-benefits-contractors",
+            "fullUrl": "/business-guide/manage/hire-manage-employees-benefits-contractors",
             "children": null,
             "description": null,
             "node": "69",
@@ -179,8 +165,7 @@
           {
             "title": "Pay taxes",
             "url": "pay-taxes-business-state-federal",
-            "fullUrl":
-              "/business-guide/manage/pay-taxes-business-state-federal",
+            "fullUrl": "/business-guide/manage/pay-taxes-business-state-federal",
             "children": null,
             "description": null,
             "node": "13",
@@ -189,8 +174,7 @@
           {
             "title": "Stay legally compliant",
             "url": "stay-legally-compliant-business-laws",
-            "fullUrl":
-              "/business-guide/manage/stay-legally-compliant-business-laws",
+            "fullUrl": "/business-guide/manage/stay-legally-compliant-business-laws",
             "children": null,
             "description": null,
             "node": "55",
@@ -199,8 +183,7 @@
           {
             "title": "Buy assets and equipment",
             "url": "buy-assets-equipment-government-surplus",
-            "fullUrl":
-              "/business-guide/manage/buy-assets-equipment-government-surplus",
+            "fullUrl": "/business-guide/manage/buy-assets-equipment-government-surplus",
             "children": null,
             "description": null,
             "node": "57",
@@ -218,8 +201,7 @@
           {
             "title": "Prepare for emergencies",
             "url": "prepare-emergencies-disaster-assistance",
-            "fullUrl":
-              "/business-guide/manage/prepare-emergencies-disaster-assistance",
+            "fullUrl": "/business-guide/manage/prepare-emergencies-disaster-assistance",
             "children": null,
             "description": null,
             "node": "72",
@@ -228,8 +210,7 @@
           {
             "title": "Close or sell your business",
             "url": "close-sell-your-business-transfer-ownership",
-            "fullUrl":
-              "/business-guide/manage/close-sell-your-business-transfer-ownership",
+            "fullUrl": "/business-guide/manage/close-sell-your-business-transfer-ownership",
             "children": null,
             "description": null,
             "node": "70",
@@ -248,8 +229,7 @@
           {
             "title": "Get more funding",
             "url": "get-more-funding-loans-credit-lenders",
-            "fullUrl":
-              "/business-guide/grow/get-more-funding-loans-credit-lenders",
+            "fullUrl": "/business-guide/grow/get-more-funding-loans-credit-lenders",
             "children": null,
             "description": null,
             "node": "64",
@@ -267,8 +247,7 @@
           {
             "title": "Merge and acquire businesses",
             "url": "merge-acquire-businesses-valuation",
-            "fullUrl":
-              "/business-guide/grow/merge-acquire-businesses-valuation",
+            "fullUrl": "/business-guide/grow/merge-acquire-businesses-valuation",
             "children": null,
             "description": null,
             "node": "63",
@@ -277,8 +256,7 @@
           {
             "title": "Become a federal contractor",
             "url": "federal-contracting-rules-size-standards",
-            "fullUrl":
-              "/business-guide/grow/federal-contracting-rules-size-standards",
+            "fullUrl": "/business-guide/grow/federal-contracting-rules-size-standards",
             "children": null,
             "description": null,
             "node": "75",
@@ -287,8 +265,7 @@
           {
             "title": "Export and import products",
             "url": "export-import-products-trade-international",
-            "fullUrl":
-              "/business-guide/grow/export-import-products-trade-international",
+            "fullUrl": "/business-guide/grow/export-import-products-trade-international",
             "children": null,
             "description": null,
             "node": "77",
@@ -306,8 +283,7 @@
           {
             "title": "Native American-owned businesses",
             "url": "native-american-owned-businesses-programs",
-            "fullUrl":
-              "/business-guide/grow/native-american-owned-businesses-programs",
+            "fullUrl": "/business-guide/grow/native-american-owned-businesses-programs",
             "children": null,
             "description": null,
             "node": "74",
@@ -339,8 +315,7 @@
       {
         "title": "Pick your business location",
         "url": "pick-your-business-location-zoning-laws",
-        "fullUrl":
-          "/business-guide/launch/pick-your-business-location-zoning-laws",
+        "fullUrl": "/business-guide/launch/pick-your-business-location-zoning-laws",
         "children": null,
         "description": null,
         "node": "48",
@@ -349,8 +324,7 @@
       {
         "title": "Choose a business structure",
         "url": "choose-business-structure-types-chart",
-        "fullUrl":
-          "/business-guide/launch/choose-business-structure-types-chart",
+        "fullUrl": "/business-guide/launch/choose-business-structure-types-chart",
         "children": null,
         "description": null,
         "node": "59",
@@ -368,8 +342,7 @@
       {
         "title": "Register your business",
         "url": "register-your-business-federal-state-agency",
-        "fullUrl":
-          "/business-guide/launch/register-your-business-federal-state-agency",
+        "fullUrl": "/business-guide/launch/register-your-business-federal-state-agency",
         "children": null,
         "description": null,
         "node": "51",
@@ -387,8 +360,7 @@
       {
         "title": "Apply for licenses and permits",
         "url": "apply-for-licenses-permits-federal-state",
-        "fullUrl":
-          "/business-guide/launch/apply-for-licenses-permits-federal-state",
+        "fullUrl": "/business-guide/launch/apply-for-licenses-permits-federal-state",
         "children": null,
         "description": null,
         "node": "66",
@@ -397,8 +369,7 @@
       {
         "title": "Open a business bank account",
         "url": "open-business-bank-account-fees-benefits",
-        "fullUrl":
-          "/business-guide/launch/open-business-bank-account-fees-benefits",
+        "fullUrl": "/business-guide/launch/open-business-bank-account-fees-benefits",
         "children": null,
         "description": null,
         "node": "52",
@@ -407,16 +378,14 @@
       {
         "title": "Get business insurance",
         "url": "get-business-insurance-assets-liability",
-        "fullUrl":
-          "/business-guide/launch/get-business-insurance-assets-liability",
+        "fullUrl": "/business-guide/launch/get-business-insurance-assets-liability",
         "children": null,
         "description": null,
         "node": "61",
         "weight": -42
       }
     ],
-    "description":
-      "Turn your business into a reality. Register, file, and start doing business.",
+    "description": "Turn your business into a reality. Register, file, and start doing business.",
     "weight": -49
   },
   {

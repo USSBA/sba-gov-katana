@@ -9,9 +9,7 @@ function getDrupalUserEmail(req, res) {
       })
       .catch(error => {
         console.error(error)
-        res
-          .status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .send('Error retrieving user email')
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving user email')
       })
   } else {
     res.status(HttpStatus.BAD_REQUEST).send('Missing user id.')

@@ -19,11 +19,7 @@ class Hero extends React.Component {
         {this.props.imageUrl && (
           <div className="hero">
             <div className={styles.heroMobileImageContainer}>
-              <div
-                className="hero-image-mobile"
-                title={this.props.alt}
-                style={this.imgStyles()}
-              />
+              <div className="hero-image-mobile" title={this.props.alt} style={this.imgStyles()} />
             </div>
             <img
               className={`hero-image-desktop ${styles.heroDesktopImage}`}
@@ -31,11 +27,7 @@ class Hero extends React.Component {
               alt={this.props.alt}
             />
             <div className={`hero-callout ${styles.callout}`}>
-              <Callout
-                title={this.props.title}
-                message={this.props.message}
-                buttons={this.props.buttons}
-              />
+              <Callout title={this.props.title} message={this.props.message} buttons={this.props.buttons} />
             </div>
           </div>
         )}

@@ -211,25 +211,13 @@ function reqAmtRangeCd(loanAmount) {
   const intLoanAmt = parseInt(loanAmt, 10)
   if (intLoanAmt <= fiftyThousand) {
     retVal = '01'
-  } else if (
-    intLoanAmt >= fiftyThousandAndOne &&
-    intLoanAmt <= oneFiftyThousand
-  ) {
+  } else if (intLoanAmt >= fiftyThousandAndOne && intLoanAmt <= oneFiftyThousand) {
     retVal = '02'
-  } else if (
-    intLoanAmt >= oneFiftyThousandAndOne &&
-    intLoanAmt <= twoFiftyThousand
-  ) {
+  } else if (intLoanAmt >= oneFiftyThousandAndOne && intLoanAmt <= twoFiftyThousand) {
     retVal = '03'
-  } else if (
-    intLoanAmt >= twoFiftyThousandAndOne &&
-    intLoanAmt <= threeHundredAndFiftyThousand
-  ) {
+  } else if (intLoanAmt >= twoFiftyThousandAndOne && intLoanAmt <= threeHundredAndFiftyThousand) {
     retVal = '04'
-  } else if (
-    intLoanAmt >= threeHundredAndFiftyThousandAndOne &&
-    intLoanAmt <= oneMillion
-  ) {
+  } else if (intLoanAmt >= threeHundredAndFiftyThousandAndOne && intLoanAmt <= oneMillion) {
     retVal = '05'
   } else if (intLoanAmt >= oneMillionAndOne && intLoanAmt <= fiveMillion) {
     retVal = '06'
@@ -308,9 +296,7 @@ function formatMessage(userId, lenderMatchRegistration) {
     //BusinessWebsite <= 255 chars
     BusinessWebsite: lenderMatchRegistration.businessWebsite,
     //FinancialInd <=
-    FinancialInd: booleanToChar(
-      lenderMatchRegistration.hasFinancialProjections
-    ),
+    FinancialInd: booleanToChar(lenderMatchRegistration.hasFinancialProjections),
     //RevenueInd
     RevenueInd: booleanToChar(lenderMatchRegistration.isGeneratingRevenue),
     //PrimaryEmail <= 255 chars
@@ -330,9 +316,7 @@ function formatMessage(userId, lenderMatchRegistration) {
     //RequestedAmtRangeCd = decimal
     RequestedLoanAmount: toNumber(lenderMatchRegistration.loanAmount),
     //BusinessAdvisoryInd Y for Yes or N for No
-    BusinessAdvisoryInd: booleanToChar(
-      lenderMatchRegistration.hasFinancialProjections
-    ),
+    BusinessAdvisoryInd: booleanToChar(lenderMatchRegistration.hasFinancialProjections),
     //BusinessPlanInd Y for Yes or N for No
     BusinessPlanInd: booleanToChar(lenderMatchRegistration.hasWrittenPlan),
     //Veteran = unsignedByte means 6 for Yes 1 for No

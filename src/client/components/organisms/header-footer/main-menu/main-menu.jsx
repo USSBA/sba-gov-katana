@@ -18,8 +18,7 @@ class MainMenu extends React.Component {
 
   handleSkipToNext(menuId, event) {
     let nextAnchor =
-      event.target.parentNode.parentNode.parentNode.parentNode.parentNode
-        .nextSibling.firstChild.firstChild
+      event.target.parentNode.parentNode.parentNode.parentNode.parentNode.nextSibling.firstChild.firstChild
     this.setState(
       {
         currentlyFocusedTopLevelMenu: menuId + 1

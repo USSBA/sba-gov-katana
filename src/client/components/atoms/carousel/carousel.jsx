@@ -136,13 +136,7 @@ var Slider = React.createClass({
         i === lastIndex
           ? styles.SliderNavButton + ' ' + styles.SliderNavButtonActive
           : styles.SliderNavButton
-      return (
-        <button
-          className={buttonClasses}
-          key={i}
-          onClick={event => this.goToSlide(i, event)}
-        />
-      )
+      return <button className={buttonClasses} key={i} onClick={event => this.goToSlide(i, event)} />
     })
 
     return <div className={styles.SliderNav}>{nav}</div>
@@ -152,11 +146,7 @@ var Slider = React.createClass({
     return (
       <div key={'slider-item-' + (index + 1)}>
         <BasicLink url={item.url}>
-          <img
-            className={styles.SliderItemImage}
-            src={item.image}
-            alt={item.imageAlt}
-          />
+          <img className={styles.SliderItemImage} src={item.image} alt={item.imageAlt} />
         </BasicLink>
       </div>
     )
@@ -168,9 +158,7 @@ var Slider = React.createClass({
     const children = items.map(this.makeItem)
     const newFirstItem = this.makeItem(items[items.length - 1], -1)
     const newLastItem = this.makeItem(items[0], items.length)
-    const childrenLoopable = [newFirstItem]
-      .concat(children.slice(0))
-      .concat([newLastItem])
+    const childrenLoopable = [newFirstItem].concat(children.slice(0)).concat([newLastItem])
     return childrenLoopable
   },
 
@@ -179,10 +167,7 @@ var Slider = React.createClass({
   },
 
   calculateTranslation(numberOfChildren, index) {
-    return (
-      -1 * (numberOfChildren === 6 ? 14 : 16.5) +
-      -1 * index * (100 / numberOfChildren)
-    )
+    return -1 * (numberOfChildren === 6 ? 14 : 16.5) + -1 * index * (100 / numberOfChildren)
   },
 
   render() {
@@ -194,10 +179,7 @@ var Slider = React.createClass({
 
     const slidesStyles = {
       width: `${this.calculateTotalWidth(children.length)}%`,
-      transform: `translateX(${this.calculateTranslation(
-        children.length,
-        index
-      )}%)`
+      transform: `translateX(${this.calculateTranslation(children.length, index)}%)`
     }
     const slidesClasses = transition
       ? styles.SliderSlides + ' ' + styles.SliderSlidesTransition

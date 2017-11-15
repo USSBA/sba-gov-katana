@@ -19,11 +19,7 @@ import { logEvent } from '../../../../services/analytics.js'
 import styles from './lender-match.scss'
 
 class BusinessInfoForm extends React.Component {
-  static requiredFields = [
-    'businessInfoName',
-    'businessInfoZipcode',
-    'businessInfoDescription'
-  ]
+  static requiredFields = ['businessInfoName', 'businessInfoZipcode', 'businessInfoDescription']
 
   constructor(props) {
     super()
@@ -91,11 +87,7 @@ class BusinessInfoForm extends React.Component {
     if (includes(fields, 'businessInfoZipcode')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getZipcodeValidationState,
-          'businessInfoZipcode',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getZipcodeValidationState, 'businessInfoZipcode', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'businessInfoDescription')) {
@@ -111,11 +103,7 @@ class BusinessInfoForm extends React.Component {
     if (includes(fields, 'businessInfoWebsite')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getWebsiteValidationState,
-          'businessInfoWebsite',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getWebsiteValidationState, 'businessInfoWebsite', defaultWhenNotSuccessful)
       )
     }
     this.setState({ validStates: validStates })
@@ -123,9 +111,8 @@ class BusinessInfoForm extends React.Component {
 
   isValidForm() {
     return (
-      !containsErrorOrNull(
-        pick(this.state.validStates, BusinessInfoForm.requiredFields)
-      ) && !containsError(pick(this.state.validStates, ['businessInfoWebsite']))
+      !containsErrorOrNull(pick(this.state.validStates, BusinessInfoForm.requiredFields)) &&
+      !containsError(pick(this.state.validStates, ['businessInfoWebsite']))
     )
   }
 
@@ -154,11 +141,7 @@ class BusinessInfoForm extends React.Component {
       newValue = newValue.replace(/[\D]/g, '')
       newValue = newValue.substring(0, 5)
     }
-    if (
-      name === 'businessInfoDescription' &&
-      newValue &&
-      newValue.length > 250
-    ) {
+    if (name === 'businessInfoDescription' && newValue && newValue.length > 250) {
       newValue = newValue.substring(0, 250)
     }
     newState[name] = newValue
@@ -173,9 +156,7 @@ class BusinessInfoForm extends React.Component {
 
   handleFocus(nameOrEvent) {
     let name =
-      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
-        ? nameOrEvent.target.name
-        : nameOrEvent
+      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
     logEvent({
       category: 'Lender Match Form',
       action: 'Focus Event',
@@ -187,11 +168,7 @@ class BusinessInfoForm extends React.Component {
     let id = 'lender-match-business-info-form'
     return (
       <div>
-        <form
-          id={id}
-          ref={input => (this.businessInfoForm = input)}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+        <form id={id} ref={input => (this.businessInfoForm = input)} onSubmit={e => this.handleSubmit(e)}>
           <TextInput
             id={id + '-name'}
             label="What is the name of your business?"

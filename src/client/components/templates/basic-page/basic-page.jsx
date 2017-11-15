@@ -5,13 +5,7 @@ import { listenForOverlap } from 'element-overlap'
 
 import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
-import {
-  Breadcrumb,
-  FeedbackForm,
-  PreviousNextSection,
-  RemoveMainLoader,
-  TitleSection
-} from 'molecules'
+import { Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
 import { SectionNav } from 'organisms'
 
 class BasicPage extends React.Component {
@@ -23,9 +17,7 @@ class BasicPage extends React.Component {
       displayMobileNav: false,
       currentPosition: 'top'
     }
-    this.handleSectionNavigationEnter = this.handleSectionNavigationEnter.bind(
-      this
-    )
+    this.handleSectionNavigationEnter = this.handleSectionNavigationEnter.bind(this)
     this.handleTopWaypointEnter = this.handleTopWaypointEnter.bind(this)
     this.handleTopWaypointLeave = this.handleTopWaypointLeave.bind(this)
     this.handleBackLinkClicked = this.handleBackLinkClicked.bind(this)
@@ -35,11 +27,7 @@ class BasicPage extends React.Component {
   // componentWillMount() {}
 
   makeSectionHeaders(paragraphData) {
-    const sectionHeaders = paragraphData.map(function(
-      item,
-      index,
-      paragraphArray
-    ) {
+    const sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
       if (item && item.type && item.type === 'sectionHeader') {
         return {
           id: paragraphMapper.makeSectionHeaderId(index),
@@ -65,10 +53,7 @@ class BasicPage extends React.Component {
       cardCollection: styles.cardCollection,
       styleGrayBackground: styles.textSection
     }
-    const wrapped = paragraphMapper.wrapParagraphs(
-      paragraphList,
-      wrapperClassMapping
-    )
+    const wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped
   }
 
@@ -110,12 +95,9 @@ class BasicPage extends React.Component {
   }
 
   componentDidMount() {
-    listenForOverlap(
-      '#article-navigation-desktop',
-      '#sba-footer',
-      this.handleOverlap,
-      { listenOn: 'scroll' }
-    )
+    listenForOverlap('#article-navigation-desktop', '#sba-footer', this.handleOverlap, {
+      listenOn: 'scroll'
+    })
   }
 
   render() {
@@ -156,17 +138,11 @@ class BasicPage extends React.Component {
         <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
         <div
           className={`basicpage-mobilenav ${
-            this.state.displayMobileNav
-              ? styles.hideContainer
-              : styles.container
+            this.state.displayMobileNav ? styles.hideContainer : styles.container
           }`}
         >
           <div className={`basicpage-backlinkmobile ${styles.backLinkMobile}`}>
-            <a
-              id="backToallTopicsMobile"
-              href=""
-              onClick={this.handleBackLinkClicked}
-            >
+            <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked}>
               Back to all topics
             </a>
           </div>

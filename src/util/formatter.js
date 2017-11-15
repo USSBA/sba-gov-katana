@@ -3,12 +3,7 @@ import moment from 'moment-timezone'
 import jsonToCsv from 'json2csv'
 
 function formatFeedbackData(data) {
-  const fields = _.without(
-    _.keys(data[0]),
-    'sourceIpAddress',
-    'createdAt',
-    'updatedAt'
-  )
+  const fields = _.without(_.keys(data[0]), 'sourceIpAddress', 'createdAt', 'updatedAt')
   var newData = _.map(data, function(item) {
     return _.merge({}, item, {
       timestamp: moment

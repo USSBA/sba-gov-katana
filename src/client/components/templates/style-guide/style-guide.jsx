@@ -28,26 +28,13 @@ import { LargeGreySecondaryButton, SmallGreySecondaryButton } from 'atoms'
 import { TextInput, TextArea, Radio, Checkbox } from 'atoms'
 
 // icon atoms
-import {
-  CaretDownIcon,
-  CloseIcon,
-  HomeIcon,
-  SearchIcon,
-  FailureIcon,
-  SuccessIcon
-} from 'atoms'
+import { CaretDownIcon, CloseIcon, HomeIcon, SearchIcon, FailureIcon, SuccessIcon } from 'atoms'
 
 // miscellaneous atoms
 import { DecorativeDash, DocumentType } from 'atoms'
 
 // molecules
-import {
-  SbaModal,
-  Callout,
-  SimpleCta,
-  CallToAction as CTA,
-  Paginator
-} from 'molecules'
+import { SbaModal, Callout, SimpleCta, CallToAction as CTA, Paginator } from 'molecules'
 
 // organisms
 import { Hero, CardCollection, ProgramDetailsCardCollection } from 'organisms'
@@ -103,8 +90,7 @@ class StyleGuide extends React.Component {
     ]
 
     const heroMockData = {
-      summary:
-        'The summary field of a program page will have the text show up here.',
+      summary: 'The summary field of a program page will have the text show up here.',
       bannerImage: {
         type: 'bannerImage',
         image: {
@@ -217,9 +203,7 @@ class StyleGuide extends React.Component {
 
     return (
       <div>
-        <Typography
-          onModalExampleClick={this.handleModalExampleClick.bind(this)}
-        />
+        <Typography onModalExampleClick={this.handleModalExampleClick.bind(this)} />
         <ButtonGroup />
         <ColorPalette />
         <h1>Form Inputs</h1>
@@ -294,9 +278,7 @@ class StyleGuide extends React.Component {
         <CardCollection parentIndex={0} cards={cardCollectionMockData} />
         <div className={styles.clear} />
         <h1>Program Details Card Collection</h1>
-        <ProgramDetailsCardCollection
-          cards={programDetailsCardCollectionMockData}
-        />;
+        <ProgramDetailsCardCollection cards={programDetailsCardCollectionMockData} />;
         <h1>Table</h1>
         <TextSection text={tableMockData} />
         <h1>Paginator</h1>
@@ -316,14 +298,8 @@ class StyleGuide extends React.Component {
           onForward={() => {
             this.setState({
               paginator: {
-                start: Math.min(
-                  this.state.paginator.start + 10,
-                  this.state.paginatorTotal - 10
-                ),
-                end: Math.min(
-                  this.state.paginator.end + 10,
-                  this.state.paginatorTotal
-                )
+                start: Math.min(this.state.paginator.start + 10, this.state.paginatorTotal - 10),
+                end: Math.min(this.state.paginator.end + 10, this.state.paginatorTotal)
               }
             })
           }}
@@ -362,27 +338,21 @@ const Typography = ({ onModalExampleClick }) => (
     <SubtitleText text="h5:subtitle Merriweather Regular Italic" />
     <h6>h6 Source Sans Pro Bold 18px</h6>
     <p>
-      Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur
-      adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis,
-      lacus tortor posuere nulla, vel sagittis risus mauris ac tortor.
-      Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod
-      lacus ornare risus egestas dignissim. Fusce mattis justo vitae congue
-      varius. Suspendisse auctor dapibus ornare. Praesent venenatis lacus a sem
-      interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur
-      malesuada scelerisque massa varius volutpat.
+      Body style Source Sans Pro Regular 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+      vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris
+      ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus ornare risus
+      egestas dignissim. Fusce mattis justo vitae congue varius. Suspendisse auctor dapibus ornare. Praesent
+      venenatis lacus a sem interdum tempor et vitae magna. Aenean vel consectetur odio. Curabitur malesuada
+      scelerisque massa varius volutpat.
     </p>
     <p>
-      This is just to show spacing between paragraphcs: ipsum dolor sit amet,
-      consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque
-      vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris
-      ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam
-      euismod lacus ornare risus egestas dignissim.
+      This is just to show spacing between paragraphcs: ipsum dolor sit amet, consectetur adipiscing elit.
+      Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis
+      risus mauris ac tortor. Vestibulum et lacus a tellus sodales iaculis id vel dui. Etiam euismod lacus
+      ornare risus egestas dignissim.
     </p>
     <CaptionText text="Image Caption: Source Sans Pro Regular Italic 18px. ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum, nibh pellentesque vestibulum mattis, lacus tortor posuere nulla, vel sagittis risus mauris ac tortor." />
-    <LargeSecondaryButton
-      text="Click for Modal"
-      onClick={onModalExampleClick}
-    />
+    <LargeSecondaryButton text="Click for Modal" onClick={onModalExampleClick} />
   </div>
 )
 
@@ -462,43 +432,21 @@ const ColorPalette = () => (
   <div>
     <div className={styles.column}>
       <h4>SBA Blue</h4>
-      <div
-        className={
-          styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.sbablue}>
         <p className={styles.colorName}>$sba-blue</p>
         <p className={styles.colorHex}>#0b97DD</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.sbabluedarkest
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedarkest}>
         <p className={styles.colorName}>$sba-blue-darkest</p>
         <p className={styles.colorHex}>#004265</p>
       </div>
-      <div
-        className={
-          styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluedark}>
         <p className={styles.colorName}>$sba-blue-dark</p>
         <p className={styles.colorHex}>#006BA2</p>
       </div>
       <div
         className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.sbabluelight +
-          ' ' +
-          styles.textblack
+          styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelight + ' ' + styles.textblack
         }
       >
         <p className={styles.colorName}>$sba-blue-light</p>
@@ -506,13 +454,7 @@ const ColorPalette = () => (
       </div>
       <div
         className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.sbabluelightest +
-          ' ' +
-          styles.textblack
+          styles.color + ' ' + styles.colorsecondary + ' ' + styles.sbabluelightest + ' ' + styles.textblack
         }
       >
         <p className={styles.colorName}>$sba-blue-lightest</p>
@@ -521,47 +463,19 @@ const ColorPalette = () => (
     </div>
     <div className={styles.column}>
       <h4>Byzantine</h4>
-      <div
-        className={
-          styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.byzantine}>
         <p className={styles.colorName}>$byzantine</p>
         <p className={styles.colorHex}>#AB3EA0</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.byzantinedarkest
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedarkest}>
         <p className={styles.colorName}>$byzantine-darkest</p>
         <p className={styles.colorHex}>#511D4C</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.byzantinedark
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinedark}>
         <p className={styles.colorName}>$byzantine-dark</p>
         <p className={styles.colorHex}>#7E2E76</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.byzantinelight
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.byzantinelight}>
         <p className={styles.colorName}>$byzantine-light</p>
         <p className={styles.colorHex}>#C661BB</p>
       </div>
@@ -582,47 +496,21 @@ const ColorPalette = () => (
     </div>
     <div className={styles.column}>
       <h4>Money Green</h4>
-      <div
-        className={
-          styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.moneygreen}>
         <p className={styles.colorName}>$money-green</p>
         <p className={styles.colorHex}>#609F00</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.moneygreendarkest
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendarkest}>
         <p className={styles.colorName}>$money-green-darkest</p>
         <p className={styles.colorHex}>#1F3A00</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.moneygreendark
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreendark}>
         <p className={styles.colorName}>$money-green-dark</p>
         <p className={styles.colorHex}>#336200</p>
       </div>
       <div
         className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.moneygreenlight +
-          ' ' +
-          styles.textblack
+          styles.color + ' ' + styles.colorsecondary + ' ' + styles.moneygreenlight + ' ' + styles.textblack
         }
       >
         <p className={styles.colorName}>$money-green-light</p>
@@ -645,47 +533,21 @@ const ColorPalette = () => (
     </div>
     <div className={styles.column}>
       <h4>Cobalt Blue</h4>
-      <div
-        className={
-          styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorprimary + ' ' + styles.cobaltblue}>
         <p className={styles.colorName}>$cobalt-blue</p>
         <p className={styles.colorHex}>#609F00</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.cobaltbluedarkest
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedarkest}>
         <p className={styles.colorName}>$cobalt-blue-darkest</p>
         <p className={styles.colorHex}>#1F3A00</p>
       </div>
-      <div
-        className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.cobaltbluedark
-        }
-      >
+      <div className={styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluedark}>
         <p className={styles.colorName}>$cobalt-blue-dark</p>
         <p className={styles.colorHex}>#336200</p>
       </div>
       <div
         className={
-          styles.color +
-          ' ' +
-          styles.colorsecondary +
-          ' ' +
-          styles.cobaltbluelight +
-          ' ' +
-          styles.textblack
+          styles.color + ' ' + styles.colorsecondary + ' ' + styles.cobaltbluelight + ' ' + styles.textblack
         }
       >
         <p className={styles.colorName}>$cobalt-blue-light</p>
@@ -913,10 +775,7 @@ const Icons = () => (
         <div>
           <CaretDownIcon aria-hidden="true" />
         </div>
-        <p>
-          Caret (can be rotated/flipped to different directions. Used in
-          dropdown, etc)
-        </p>
+        <p>Caret (can be rotated/flipped to different directions. Used in dropdown, etc)</p>
       </li>
       <li>
         <div>
@@ -940,10 +799,7 @@ const Icons = () => (
         <div>
           <DecorativeDash aria-hidden="true" />
         </div>
-        <p>
-          Decorative dash that goes between title and blurb in Cards (Changes to
-          theme color)
-        </p>
+        <p>Decorative dash that goes between title and blurb in Cards (Changes to theme color)</p>
       </li>
     </ul>
   </div>

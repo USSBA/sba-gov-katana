@@ -1,8 +1,6 @@
 /* eslint-disable */
 import config from 'config'
-var encryptor = require('simple-encryptor')(
-  config.get('oca.soap.passwordDecryptionKey')
-)
+var encryptor = require('simple-encryptor')(config.get('oca.soap.passwordDecryptionKey'))
 var generatePassword = require('password-generator')
 var _ = require('lodash')
 
@@ -29,11 +27,7 @@ function generateOcaPassword() {
   let number = generatePassword(numberMinCount, false, NUMBER_RE)
   let special = generatePassword(specialMinCount, false, SPECIAL_CHAR_RE)
   let rest = generatePassword(
-    length -
-      uppercaseMinCount -
-      lowercaseMinCount -
-      numberMinCount -
-      specialMinCount,
+    length - uppercaseMinCount - lowercaseMinCount - numberMinCount - specialMinCount,
     false,
     ALL_CHAR_RE
   )

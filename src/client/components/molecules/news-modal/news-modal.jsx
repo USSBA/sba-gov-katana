@@ -42,11 +42,7 @@ class SbaNewsModal extends React.Component {
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    let validationState = validationFunction(
-      name,
-      this.state[name],
-      defaultWhenNotSuccessful || null
-    )
+    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Newsletter Modal',
@@ -63,21 +59,13 @@ class SbaNewsModal extends React.Component {
     if (includes(fields, 'userEmailAddress')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getEmailValidationState,
-          'userEmailAddress',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getEmailValidationState, 'userEmailAddress', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'userZipCode')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getZipcodeValidationState,
-          'userZipCode',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getZipcodeValidationState, 'userZipCode', defaultWhenNotSuccessful)
       )
     }
     this.setState({ validStates: validStates })
@@ -89,14 +77,10 @@ class SbaNewsModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.actions.fetchContentIfNeeded(
-      'newsletterRegistration',
-      'newsletter-registration',
-      {
-        userEmailAddress: this.state.userEmailAddress,
-        userZipCode: this.state.userZipCode
-      }
-    )
+    this.props.actions.fetchContentIfNeeded('newsletterRegistration', 'newsletter-registration', {
+      userEmailAddress: this.state.userEmailAddress,
+      userZipCode: this.state.userZipCode
+    })
 
     this.setState({ displayForm: false })
     this.timerId = setTimeout(() => {
@@ -131,9 +115,7 @@ class SbaNewsModal extends React.Component {
 
   handleFocus(nameOrEvent) {
     let name =
-      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
-        ? nameOrEvent.target.name
-        : nameOrEvent
+      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
     logEvent({
       category: 'Newsletter Modal',
       action: 'Focus Event',
@@ -156,19 +138,11 @@ class SbaNewsModal extends React.Component {
         aria-labelledby="dialogTitle"
         contentLabel="Modal"
       >
-        <div
-          className={
-            this.state.displayForm ? styles.titleWrapper : styles.hideForm
-          }
-        >
+        <div className={this.state.displayForm ? styles.titleWrapper : styles.hideForm}>
           <h2 id="dialogTitle" className={styles.title}>
             Get business advice and invitations to local business events.
           </h2>
-          <a
-            className={styles.imgContainer}
-            onClick={this.handleClose.bind(this)}
-            href=""
-          >
+          <a className={styles.imgContainer} onClick={this.handleClose.bind(this)} href="">
             <img
               className={styles.exitIcon}
               src={exitIcon}
@@ -176,11 +150,7 @@ class SbaNewsModal extends React.Component {
             />
           </a>
         </div>
-        <div
-          className={
-            this.state.displayForm ? styles.showForm : styles.removeForm
-          }
-        >
+        <div className={this.state.displayForm ? styles.showForm : styles.removeForm}>
           <form
             id="newsletter-modal-form"
             ref={input => (this.newsletterModalForm = input)}
@@ -201,9 +171,7 @@ class SbaNewsModal extends React.Component {
               <div className={styles.zipTextBox}>
                 <TextInput
                   name="userZipCode"
-                  errorText={
-                    constants.messages.validation.invalidNewsLetterZipCode
-                  }
+                  errorText={constants.messages.validation.invalidNewsLetterZipCode}
                   placeholder="Zip code"
                   onChange={this.handleChange.bind(this)}
                   value={this.state.userZipCode}
@@ -232,11 +200,7 @@ class SbaNewsModal extends React.Component {
             </p>
           </form>
         </div>
-        <div
-          className={
-            this.state.displayForm ? styles.hideForm : styles.byeContainer
-          }
-        >
+        <div className={this.state.displayForm ? styles.hideForm : styles.byeContainer}>
           <a onClick={this.handleClose.bind(this)}>
             <img className={styles.exitIconBye} src={exitIcon} />
           </a>

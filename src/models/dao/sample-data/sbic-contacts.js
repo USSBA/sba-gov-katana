@@ -1760,8 +1760,7 @@ export default [
     investingStatus: 'notinvesting',
     phoneNumber: '732-640-2061',
     state: 'NJ',
-    streetAddress:
-      'c/o New Jersey Community Capital 108 Church Street, 3rd Floor',
+    streetAddress: 'c/o New Jersey Community Capital 108 Church Street, 3rd Floor',
     zipCode: 8901,
     title: 'Deerpath Funding Advantage IV, L.P.'
   },

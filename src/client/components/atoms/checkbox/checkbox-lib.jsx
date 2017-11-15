@@ -93,12 +93,7 @@ export default class Checkbox extends React.Component {
     const checkedClass = checked ? styles['rc-checkbox-checked'] : ' '
 
     return (
-      <span
-        className={
-          styles['rc-checkbox'] + ' ' + disabledClass + ' ' + checkedClass
-        }
-        style={style}
-      >
+      <span className={styles['rc-checkbox'] + ' ' + disabledClass + ' ' + checkedClass} style={style}>
         <input
           id={id}
           name={name}

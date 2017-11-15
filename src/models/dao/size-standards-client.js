@@ -28,9 +28,7 @@ function get(resource, query) {
       })
       .catch(function(error) {
         winston.error(error)
-        throw new Error(
-          'Error encountered contacting the SizeStandards client in get'
-        )
+        throw new Error('Error encountered contacting the SizeStandards client in get')
       })
   })
 }

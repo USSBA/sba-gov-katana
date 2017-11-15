@@ -28,11 +28,7 @@ class ProgramDetailsCardCollection extends Component {
       })
     }
 
-    return (
-      <div>
-        {cards !== null && <CardCollection cards={remapData()} leftAligned />}
-      </div>
-    )
+    return <div>{cards !== null && <CardCollection cards={remapData()} leftAligned />}</div>
   }
 }
 

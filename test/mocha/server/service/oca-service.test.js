@@ -1,9 +1,6 @@
 let sinon = require('sinon')
 import chai from 'chai'
-import {
-  handleSoapResponse,
-  getCredentials
-} from '../../../../src/service/oca-service.js'
+import { handleSoapResponse, getCredentials } from '../../../../src/service/oca-service.js'
 import lenderMatchRegistration from '../../../../src/models/lender-match-registration.js'
 import lenderMatchSoapResponse from '../../../../src/models/lender-match-soap-response.js'
 import lincPasswordUpdate from '../../../../src/models/linc-password-update.js'
@@ -42,10 +39,7 @@ describe('linc soap request test', function() {
 
       handleSoapResponse(fakeFailureResponse)
         .then(() => {
-          sinon.assert.calledWith(
-            lenderMatchSoapResponseCreateStub,
-            fakeFailureResponse
-          )
+          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakeFailureResponse)
           lenderMatchSoapResponseCreateStub.restore()
         })
         .then(_ => done())
@@ -77,19 +71,14 @@ describe('linc soap request test', function() {
       }
       handleSoapResponse(fakePendingResponse)
         .then(() => {
-          sinon.assert.calledWith(
-            lenderMatchSoapResponseCreateStub,
-            fakePendingResponse
-          )
+          sinon.assert.calledWith(lenderMatchSoapResponseCreateStub, fakePendingResponse)
           lenderMatchSoapResponseCreateStub.restore()
         })
         .then(_ => done())
         .catch(done)
     })
 
-    it('should result in deleting all related objects when responseCode is S', function(
-      done
-    ) {
+    it('should result in deleting all related objects when responseCode is S', function(done) {
       lenderMatchRegistrationDeleteStub = sinon
         .stub(lenderMatchRegistration, 'destroy')
         .returns(Promise.resolve(1))
@@ -121,14 +110,12 @@ describe('linc soap request test', function() {
         .then(function() {
           sinon.assert.calledWith(lenderMatchEmailConfirmationDeleteStub, {
             where: {
-              lenderMatchRegistrationId:
-                fakeSuccessResponse.lenderMatchRegistrationId
+              lenderMatchRegistrationId: fakeSuccessResponse.lenderMatchRegistrationId
             }
           })
           sinon.assert.calledWith(lenderMatchSoapResponseDeleteStub, {
             where: {
-              lenderMatchRegistrationId:
-                fakeSuccessResponse.lenderMatchRegistrationId
+              lenderMatchRegistrationId: fakeSuccessResponse.lenderMatchRegistrationId
             }
           })
           sinon.assert.calledWith(lenderMatchRegistrationDeleteStub, {

@@ -29,11 +29,7 @@ class ConfirmSection extends React.Component {
     let resendLink = this.state.resendClicked ? (
       <span className={styles.resendLink}>Email was re-sent.</span>
     ) : (
-      <a
-        lassName={styles.resendLink}
-        onClick={this.handleClick.bind(this)}
-        href=""
-      >
+      <a lassName={styles.resendLink} onClick={this.handleClick.bind(this)} href="">
         Click here to resend.
       </a>
     )

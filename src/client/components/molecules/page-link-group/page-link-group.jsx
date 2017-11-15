@@ -5,15 +5,7 @@ import { BasicLink, PageLink } from 'atoms'
 
 class PageLinkGroup extends React.Component {
   render() {
-    const {
-      id,
-      links,
-      title,
-      titleLink,
-      indent,
-      isLastGroup,
-      onFinalBlur
-    } = this.props
+    const { id, links, title, titleLink, indent, isLastGroup, onFinalBlur } = this.props
 
     const renderedLinks = links.map((item, index) => {
       const isLastLink = index === links.length - 1

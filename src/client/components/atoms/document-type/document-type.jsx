@@ -11,9 +11,7 @@ const DocumentType = props => {
 
   return (
     <div className={props.className}>
-      <div className={s.type}>
-        {props.type ? props.type.toUpperCase() : null}
-      </div>
+      <div className={s.type}>{props.type ? props.type.toUpperCase() : null}</div>
       {numberDiv}
     </div>
   )

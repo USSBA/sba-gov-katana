@@ -11,9 +11,7 @@ import {
 // eslint-disable-next-line complexity
 function handleLenderMatchSubmission(req, res) {
   if ('contactSecondaryEmailAddress' in req.body.contactInfoData) {
-    console.log(
-      'honeypot form element was filled.  This was probably submitted by a bot.'
-    )
+    console.log('honeypot form element was filled.  This was probably submitted by a bot.')
   }
   const errors = []
   const requiredProperties = [
@@ -71,8 +69,7 @@ function handleLenderMatchSubmission(req, res) {
       loanAmount: req.body.loanData.loanAmount,
       loanDescription: req.body.loanData.loanDescription,
       loanUsage:
-        req.body.hasOwnProperty('loanData') &&
-        req.body.loanData.hasOwnProperty('loanUsage')
+        req.body.hasOwnProperty('loanData') && req.body.loanData.hasOwnProperty('loanUsage')
           ? req.body.loanData.loanUsage
           : '',
       businessWebsite:
@@ -110,9 +107,7 @@ function handleLenderMatchSubmission(req, res) {
     })
   } else {
     console.log(errors)
-    res
-      .status(HttpStatus.BAD_REQUEST)
-      .send('Error during validation: ' + errors.join(','))
+    res.status(HttpStatus.BAD_REQUEST).send('Error during validation: ' + errors.join(','))
   }
 }
 
@@ -141,15 +136,10 @@ function handleResendEmailConfirmation(req, res) {
       .catch(error => {
         res
           .status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .send(
-            'The server encountered an error.  Please try again later or contact the helpdesk.'
-          )
+          .send('The server encountered an error.  Please try again later or contact the helpdesk.')
       })
   } else {
-    res.status(
-      HttpStatus.BAD_REQUEST,
-      'Email Address is required to resend confirmation email'
-    )
+    res.status(HttpStatus.BAD_REQUEST, 'Email Address is required to resend confirmation email')
   }
 }
 
@@ -161,14 +151,10 @@ function resetPassword(req, res) {
       })
       .catch(error => {
         if (error.message === 'FORBIDDEN') {
-          res
-            .status(HttpStatus.FORBIDDEN)
-            .send('Please log in as an Administrator')
+          res.status(HttpStatus.FORBIDDEN).send('Please log in as an Administrator')
         } else {
           console.error(error)
-          res
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .send('Error executing action')
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error executing action')
         }
       })
   } else {

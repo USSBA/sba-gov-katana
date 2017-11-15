@@ -96,8 +96,7 @@
   @each $name, $value in $primary-color-map {
     :global(.#{$name}) {
       #{$component} {
-        background: url('../../../../../public/assets/svg/circle/circle-#{$name}.svg')
-          no-repeat;
+        background: url('../../../../../public/assets/svg/circle/circle-#{$name}.svg') no-repeat;
       }
     }
   }

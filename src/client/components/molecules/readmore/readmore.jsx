@@ -28,21 +28,13 @@ class ReadMore extends React.Component {
     let expandedTextSection = this.props.expanded
       ? this.makeExpanded(this.props.readMoreSectionItem.expandedCopyText)
       : ''
-    let expandedHr = this.props.expanded ? (
-      <hr className={styles.lineCopy} />
-    ) : (
-      ''
-    )
+    let expandedHr = this.props.expanded ? <hr className={styles.lineCopy} /> : ''
     return (
       <div className={styles.readMoreSection}>
         <h3 id={this.props.parentId + '-title'} className={styles.title}>
           {this.props.readMoreSectionItem.titleText}
         </h3>
-        <p
-          key={50}
-          id={this.props.parentId + '-preview'}
-          className={styles.preview}
-        >
+        <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
           {this.props.readMoreSectionItem.preview}
         </p>
         {expandedHr}

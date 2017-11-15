@@ -45,88 +45,28 @@ export function domainNameValidation(value) {
 }
 
 export function getNameValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    nameValidation
-  )
+  return executeValidation(name, value, defaultWhenNotSuccessful, nameValidation)
 }
 export function getPhoneValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    phoneValidation
-  )
+  return executeValidation(name, value, defaultWhenNotSuccessful, phoneValidation)
 }
 export function getEmailValidationState(name, value, defaultWhenNotSuccessful) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    emailValidation
-  )
+  return executeValidation(name, value, defaultWhenNotSuccessful, emailValidation)
 }
-export function getTextAlphanumeicValidationState(
-  name,
-  value,
-  defaultWhenNotSuccessful
-) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    hasLengthGreaterThanZero
-  )
+export function getTextAlphanumeicValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero)
 }
-export function getZipcodeValidationState(
-  name,
-  value,
-  defaultWhenNotSuccessful
-) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    zipCodeValidation
-  )
+export function getZipcodeValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, zipCodeValidation)
 }
-export function getWebsiteValidationState(
-  name,
-  value,
-  defaultWhenNotSuccessful
-) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    domainNameValidation
-  )
+export function getWebsiteValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, domainNameValidation)
 }
-export function getSelectBoxValidationState(
-  name,
-  value,
-  defaultWhenNotSuccessful
-) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    hasLengthGreaterThanZero
-  )
+export function getSelectBoxValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero)
 }
-export function getCurrencyValidationState(
-  name,
-  value,
-  defaultWhenNotSuccessful
-) {
-  return executeValidation(
-    name,
-    value,
-    defaultWhenNotSuccessful,
-    hasLengthGreaterThanZero
-  )
+export function getCurrencyValidationState(name, value, defaultWhenNotSuccessful) {
+  return executeValidation(name, value, defaultWhenNotSuccessful, hasLengthGreaterThanZero)
 }
 
 export function getAlwaysValidValidationState(name, value) {

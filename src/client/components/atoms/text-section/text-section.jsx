@@ -37,12 +37,10 @@ class TextSection extends React.Component {
         tds = $(trow).find('td')
 
         tds.each((index, tdata) => {
-          const html =
-            "<div class='table-data-wrapper'>" + $(tdata).html() + '</div>'
+          const html = "<div class='table-data-wrapper'>" + $(tdata).html() + '</div>'
           $(tdata).html(html)
 
-          const label =
-            "<div class='table-header-label'>" + headers[index] + ':</div>'
+          const label = "<div class='table-header-label'>" + headers[index] + ':</div>'
           $(tdata).prepend(label)
         })
       })
@@ -53,10 +51,7 @@ class TextSection extends React.Component {
   render() {
     return (
       <div
-        className={
-          styles.textSection +
-          (this.props.className ? ' ' + this.props.className : '')
-        }
+        className={styles.textSection + (this.props.className ? ' ' + this.props.className : '')}
         dangerouslySetInnerHTML={{ __html: this.parseTables() }}
       />
     )

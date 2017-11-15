@@ -225,19 +225,10 @@ class SizeStandardsTool extends PureComponent {
   }
 
   render() {
-    const {
-      section,
-      naicsCodes,
-      selectedNaicsCodes,
-      shouldShowRevenueSection
-    } = this.state
+    const { section, naicsCodes, selectedNaicsCodes, shouldShowRevenueSection } = this.state
 
     return (
-      <div
-        className={styles.sizeStandardsTool}
-        id="size-standards-tool"
-        tabIndex="-1"
-      >
+      <div className={styles.sizeStandardsTool} id="size-standards-tool" tabIndex="-1">
         {section === 'START' && (
           <div className={styles.startSection}>
             <StartScreen gotoSection={this.gotoSection.bind(this)} />
@@ -323,10 +314,7 @@ const StartScreen = props => {
     <div id="start-screen">
       <h2>Size Standards Tool</h2>
 
-      <img
-        src={sizeStandardsGraphic}
-        alt="Illustration of a business being measured by rulers."
-      />
+      <img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
 
       <p>Do you qualify as a small business?</p>
 
@@ -364,12 +352,9 @@ class NaicsScreen extends PureComponent {
     function formatNaics(naics) {
       const industriesMap = {}
       for (let index = 0; index < naics.length; index++) {
-        const {
-          code,
-          description,
-          sectorDescription: industryDescription,
-          sectorId: industryCode
-        } = naics[index]
+        const { code, description, sectorDescription: industryDescription, sectorId: industryCode } = naics[
+          index
+        ]
 
         if (!industriesMap.hasOwnProperty(industryCode)) {
           industriesMap[industryCode] = {
@@ -408,10 +393,7 @@ class NaicsScreen extends PureComponent {
       this.props.naicsCodes.filter(object => {
         let result
 
-        if (
-          _.isEmpty(object.assetLimit) &&
-          !_.endsWith(object.code, '_Except')
-        ) {
+        if (_.isEmpty(object.assetLimit) && !_.endsWith(object.code, '_Except')) {
           result = object
         }
 
@@ -493,11 +475,7 @@ class NaicsScreen extends PureComponent {
       )
     })
 
-    return (
-      <ul className={styles.naicsCodesList + ' naics-codes-list'}>
-        {listItems}
-      </ul>
-    )
+    return <ul className={styles.naicsCodesList + ' naics-codes-list'}>{listItems}</ul>
   }
 
   render() {
@@ -530,9 +508,8 @@ class NaicsScreen extends PureComponent {
                   {this.props.setFocusTo('naics-lookup', 300)}
 
                   <p>
-                    The North American Industry Classification System or NAICS
-                    classifies businesses according to type of economic
-                    activity.
+                    The North American Industry Classification System or NAICS classifies businesses
+                    according to type of economic activity.
                   </p>
                 </div>
               ) : (
@@ -559,8 +536,7 @@ class NaicsScreen extends PureComponent {
                 }}
                 tabIndex="0"
               >
-                <i className="fa fa-plus" aria-hidden="true" />Add another
-                industry
+                <i className="fa fa-plus" aria-hidden="true" />Add another industry
               </a>
             </p>
           </div>
@@ -626,8 +602,7 @@ const RevenueScreen = props => {
       </div>
 
       <p>
-        This caption will help a small business understand <br />what
-        information we're looking for.
+        This caption will help a small business understand <br />what information we're looking for.
       </p>
 
       <LargePrimaryButton
@@ -635,9 +610,7 @@ const RevenueScreen = props => {
         text={shouldShowEmployeesSection ? 'NEXT' : 'SEE RESULTS'}
         disabled={!(revenueTotal > 0)}
         onClick={() => {
-          props.gotoSection(
-            shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS'
-          )
+          props.gotoSection(shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS')
         }}
       />
     </div>
@@ -677,8 +650,7 @@ const EmployeesScreen = props => {
       </div>
 
       <p>
-        This should be the average number of full-time or part-time <br />employees
-        over the last 12 months.
+        This should be the average number of full-time or part-time <br />employees over the last 12 months.
       </p>
 
       <LargePrimaryButton
@@ -800,10 +772,7 @@ class ResultsScreen extends PureComponent {
 
                 {object.revenueLimit !== null ? (
                   <div>
-                    <p>
-                      {this.formatRevenueLimit(object.revenueLimit)} annual
-                      revenue
-                    </p>
+                    <p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
                   </div>
                 ) : (
                   <div>
@@ -839,11 +808,7 @@ class ResultsScreen extends PureComponent {
       return result
     })
 
-    return (
-      <ul className={styles.exceptionsList + ' exceptions-list'}>
-        {exceptions}
-      </ul>
-    )
+    return <ul className={styles.exceptionsList + ' exceptions-list'}>{exceptions}</ul>
   }
 
   formatRevenueLimit(revenueLimit) {
@@ -884,10 +849,7 @@ class ResultsScreen extends PureComponent {
 
                   {object.revenueLimit !== null ? (
                     <div>
-                      <p>
-                        {this.formatRevenueLimit(object.revenueLimit)} annual
-                        revenue
-                      </p>
+                      <p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
                     </div>
                   ) : (
                     <div>
@@ -901,10 +863,7 @@ class ResultsScreen extends PureComponent {
                     <div>
                       <div className={styles.yes + ' yes'}>
                         <p>
-                          <i
-                            className="fa fa-check-circle"
-                            aria-hidden="true"
-                          />YES
+                          <i className="fa fa-check-circle" aria-hidden="true" />YES
                         </p>
                       </div>
                     </div>
@@ -912,10 +871,7 @@ class ResultsScreen extends PureComponent {
                     <div>
                       <div className={styles.no + ' no'}>
                         <p>
-                          <i
-                            className="fa fa-times-circle"
-                            aria-hidden="true"
-                          />NO
+                          <i className="fa fa-times-circle" aria-hidden="true" />NO
                         </p>
                       </div>
                     </div>
@@ -932,11 +888,7 @@ class ResultsScreen extends PureComponent {
       return result
     })
 
-    return (
-      <ul className={styles.naicsCodesList + ' naics-codes-list'}>
-        {listItems}
-      </ul>
-    )
+    return <ul className={styles.naicsCodesList + ' naics-codes-list'}>{listItems}</ul>
   }
 
   render() {
@@ -990,9 +942,12 @@ class ResultsScreen extends PureComponent {
               <li>
                 <i className="fa fa-map-marker" aria-hidden="true" />
                 <p>
-                  409 3rd Street<span className={styles.comma}>,</span> SW{' '}
-                  <br />Washington<span className={styles.comma}>,</span> DC
-                  2041
+                  409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span
+                    className={styles.comma}
+                  >
+                    ,
+                  </span>{' '}
+                  DC 2041
                 </p>
               </li>
               <li>
@@ -1002,9 +957,7 @@ class ResultsScreen extends PureComponent {
               <li>
                 <i className="fa fa-envelope" aria-hidden="true" />
                 <p>
-                  <a href="mailto:sizestandards@sba.gov">
-                    sizestandards@sba.gov
-                  </a>
+                  <a href="mailto:sizestandards@sba.gov">sizestandards@sba.gov</a>
                 </p>
               </li>
             </ul>
@@ -1024,9 +977,12 @@ class ResultsScreen extends PureComponent {
               <li>
                 <i className="fa fa-map-marker" aria-hidden="true" />
                 <p>
-                  409 3rd Street<span className={styles.comma}>,</span> SW{' '}
-                  <br />Washington<span className={styles.comma}>,</span> DC
-                  2041
+                  409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span
+                    className={styles.comma}
+                  >
+                    ,
+                  </span>{' '}
+                  DC 2041
                 </p>
               </li>
               <li>
@@ -1078,12 +1034,5 @@ SizeStandardsTool.defaultProps = {
   ]
 }
 
-export {
-  SizeStandardsTool,
-  StartScreen,
-  NaicsScreen,
-  RevenueScreen,
-  EmployeesScreen,
-  ResultsScreen
-}
+export { SizeStandardsTool, StartScreen, NaicsScreen, RevenueScreen, EmployeesScreen, ResultsScreen }
 export default SizeStandardsTool

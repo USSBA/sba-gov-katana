@@ -32,10 +32,7 @@ class CounselorMap extends Component {
   fitMarkers() {
     if (this.state.zoom == null && this.state.center == null) {
       const size = { width: 600, height: 490 }
-      let zoomAndCenter = findZoomAndCenter(
-        { size },
-        this.props.markerLocations
-      )
+      let zoomAndCenter = findZoomAndCenter({ size }, this.props.markerLocations)
       this.setState({ zoom: zoomAndCenter.zoom, center: zoomAndCenter.center })
       // let bounds = new google.maps.LatLngBounds();
       // this.props.markerLocations.forEach((marker) => {
@@ -57,14 +54,7 @@ class CounselorMap extends Component {
   displayMarkers() {
     let letter = ['A', 'B', 'C']
     return this.props.markerLocations.map((marker, index) => {
-      return (
-        <MapMarker
-          key={index}
-          lat={marker.lat}
-          lng={marker.lng}
-          text={letter[index]}
-        />
-      )
+      return <MapMarker key={index} lat={marker.lat} lng={marker.lng} text={letter[index]} />
     })
   }
 
@@ -74,13 +64,9 @@ class CounselorMap extends Component {
         ref="googlemapreacttest"
         apiKey={'AIzaSyCKowpuwSs7kT_N_cYKdihQ0VdtizEM-hk'}
         zoom={this.state.zoom ? this.state.zoom : this.props.defaultZoom}
-        center={
-          this.state.center ? this.state.center : this.props.defaultCenter
-        }
+        center={this.state.center ? this.state.center : this.props.defaultCenter}
       >
-        {this.props.markerLocations && this.state.center && this.state.zoom
-          ? this.displayMarkers()
-          : null}
+        {this.props.markerLocations && this.state.center && this.state.zoom ? this.displayMarkers() : null}
         {this.props.markerLocations ? this.fitMarkers() : null}
       </GoogleMapReact>
     )

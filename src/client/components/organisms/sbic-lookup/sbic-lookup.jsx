@@ -47,13 +47,7 @@ class SbicLookup extends React.Component {
           this.props.afterChange(
             'sbic-lookup',
             'Filter Status : ' +
-              JSON.stringify(
-                pick(this.state, [
-                  'sortByValue',
-                  'industryValue',
-                  'investingStatusValue'
-                ])
-              ),
+              JSON.stringify(pick(this.state, ['sortByValue', 'industryValue', 'investingStatusValue'])),
             null
           )
         }
@@ -88,10 +82,7 @@ class SbicLookup extends React.Component {
     if (this.state.industryValue !== 'All') {
       filteredContacts = _.filter(contacts, contact => {
         return !_.isEmpty(
-          _.intersection(
-            _.castArray(contact.industry),
-            _.castArray(this.state.industryValue)
-          )
+          _.intersection(_.castArray(contact.industry), _.castArray(this.state.industryValue))
         )
       })
     }
@@ -112,10 +103,7 @@ class SbicLookup extends React.Component {
   }
 
   createDownloadHref() {
-    return (
-      'data:text/plain;charset=utf-8,' +
-      encodeURIComponent(this.state.contactsCsv)
-    )
+    return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv)
   }
 
   renderMultiSelects() {
@@ -241,9 +229,7 @@ class SbicLookup extends React.Component {
           </td>
           <td className={s.industryCol}>
             <div className={s.mobileHeader}>Industry</div>
-            {contact.industry === 'ImpactDiversified'
-              ? 'Impact Diversified'
-              : contact.industry}
+            {contact.industry === 'ImpactDiversified' ? 'Impact Diversified' : contact.industry}
           </td>
           <td className={s.activeSinceCol}>
             <div className={s.mobileHeader}>Active since</div>
@@ -251,9 +237,7 @@ class SbicLookup extends React.Component {
           </td>
           <td className={s.investingStatusCol}>
             <div className={s.mobileHeader}>Investing status</div>
-            {contact.investingStatus === 'investing'
-              ? 'Likely still investing'
-              : 'Not likely investing'}
+            {contact.investingStatus === 'investing' ? 'Likely still investing' : 'Not likely investing'}
           </td>
           <td className={s.contactInfoCol}>
             <div className={s.mobileHeader}>Contact info</div>
@@ -291,11 +275,7 @@ class SbicLookup extends React.Component {
               <th className={s.contactInfoHead}>Contact info</th>
             </tr>
           </thead>
-          {this.state.contacts ? (
-            <tbody>{this.renderContacts()}</tbody>
-          ) : (
-            <tbody>loading</tbody>
-          )}
+          {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
         </table>
         <div className={s.paginator}>
           <Paginator

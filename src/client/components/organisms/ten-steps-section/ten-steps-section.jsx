@@ -7,23 +7,16 @@ import { TitleBox } from 'molecules'
 class TenStepsSection extends React.Component {
   calculateSectionStyle() {
     if (this.props.sectionItem.leftAlignBox) {
-      return this.props.sectionItem.solidBox
-        ? styles.leftAlignedHero
-        : styles.leftAligned
+      return this.props.sectionItem.solidBox ? styles.leftAlignedHero : styles.leftAligned
     } else {
-      return this.props.sectionItem.solidBox
-        ? styles.rightAlignedHero
-        : styles.rightAligned
+      return this.props.sectionItem.solidBox ? styles.rightAlignedHero : styles.rightAligned
     }
   }
 
   render() {
     let sectionStyle = this.calculateSectionStyle()
     return (
-      <div
-        id={'step-' + this.props.index + 1}
-        className={sectionStyle + ' ' + styles.stepSection}
-      >
+      <div id={'step-' + this.props.index + 1} className={sectionStyle + ' ' + styles.stepSection}>
         <img
           id={'section-image-' + this.props.index}
           className={styles.Banner}
@@ -39,10 +32,7 @@ class TenStepsSection extends React.Component {
           }}
           onPositionChange={() => {}}
         >
-          <div
-            id={'section-title-box-' + this.props.index}
-            className={styles.titleBox}
-          >
+          <div id={'section-title-box-' + this.props.index} className={styles.titleBox}>
             <TitleBox
               index={this.props.index}
               solidBox={this.props.sectionItem.solidBox}

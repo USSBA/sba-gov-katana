@@ -17,10 +17,7 @@ class DocumentPage extends React.Component {
   }
 
   componentWillMount() {
-    const {
-      actions: { fetchContentIfNeeded },
-      location: { pathname }
-    } = this.props
+    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
 
     if (pathname) {
       fetchContentIfNeeded('documents', 'documents', {
@@ -30,10 +27,7 @@ class DocumentPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const {
-      actions: { fetchContentIfNeeded },
-      location: { pathname }
-    } = this.props
+    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
     const { location: { pathname: nextPathname } } = nextProps
 
     // Re-render the page with new document data when we remain on `/documents`

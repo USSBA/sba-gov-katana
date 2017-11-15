@@ -83,25 +83,10 @@ export class DynamicCounselingAndTools extends React.Component {
           <p key={2} className={styles.counselorAttr}>
             {counselor['name'] || 'Not Available'}
           </p>
-          <p key={3}>
-            {counselor['street'] + ', ' + counselor['additional'] ||
-              'Not Available'}
-          </p>
-          <p key={4}>
-            {counselor['city'] +
-              ', ' +
-              counselor['province'] +
-              ' ' +
-              counselor['postal_code']}
-          </p>
-          <p key={5}>
-            {this.getMiles(counselor['location_distance']) + ' miles away'}
-          </p>
-          <p key={6}>
-            {counselor['phone']
-              ? 'Phone: ' + counselor['phone']
-              : 'Not Available'}
-          </p>
+          <p key={3}>{counselor['street'] + ', ' + counselor['additional'] || 'Not Available'}</p>
+          <p key={4}>{counselor['city'] + ', ' + counselor['province'] + ' ' + counselor['postal_code']}</p>
+          <p key={5}>{this.getMiles(counselor['location_distance']) + ' miles away'}</p>
+          <p key={6}>{counselor['phone'] ? 'Phone: ' + counselor['phone'] : 'Not Available'}</p>
         </div>
       )
     })
@@ -130,23 +115,17 @@ export class DynamicCounselingAndTools extends React.Component {
       <div className={styles.section}>
         <h2>Free local counseling.</h2>
         <h5>
-          Local counselors can offer free, personalized help with preparing your
-          loan application. Some counseling offices can also introduce you to
-          additional lenders.
+          Local counselors can offer free, personalized help with preparing your loan application. Some
+          counseling offices can also introduce you to additional lenders.
         </h5>
         <div className={styles.counselingRow}>
           <div className={styles.counselorContainer}>
             {this.displayCounselors()}
-            <SmallPrimaryButton
-              onClick={() => this.redirectLocalAssistance()}
-              text="SEE MORE"
-            />
+            <SmallPrimaryButton onClick={() => this.redirectLocalAssistance()} text="SEE MORE" />
           </div>
           <div className={styles.mapContainer}>
             <div className={styles.mapPlaceholder}>
-              {this.state.counselors ? (
-                <CounselorMap markerLocations={this.formatMapObjects()} />
-              ) : null}
+              {this.state.counselors ? <CounselorMap markerLocations={this.formatMapObjects()} /> : null}
             </div>
           </div>
         </div>
@@ -168,6 +147,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  DynamicCounselingAndTools
-)
+export default connect(mapStateToProps, mapDispatchToProps)(DynamicCounselingAndTools)

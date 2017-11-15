@@ -10,24 +10,16 @@ class TitleBox extends React.Component {
     return (
       <div
         id={'title-box-container-' + this.props.index}
-        className={
-          this.props.solidBox ? styles.solidBox : styles.transparentBox
-        }
+        className={this.props.solidBox ? styles.solidBox : styles.transparentBox}
       >
         <div id={'title-box-elements-' + this.props.index}>
           <span id={'span-' + this.props.index} className={styles.sectionNum}>
             {this.props.sectionNum}
           </span>
-          <h2
-            id={'heading2-' + this.props.index}
-            className={styles.sectionTitle}
-          >
+          <h2 id={'heading2-' + this.props.index} className={styles.sectionTitle}>
             {this.props.title}
           </h2>
-          <p
-            id={'paragraph-' + this.props.index}
-            className={styles.sectionText}
-          >
+          <p id={'paragraph-' + this.props.index} className={styles.sectionText}>
             {this.props.text}
           </p>
           {this.props.solidBox ? (

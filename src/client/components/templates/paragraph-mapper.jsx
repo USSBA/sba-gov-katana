@@ -1,12 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import {
-  ImageSection,
-  ParagraphPlaceholder,
-  SectionHeader,
-  TextSection
-} from 'atoms'
+import { ImageSection, ParagraphPlaceholder, SectionHeader, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
@@ -44,8 +39,7 @@ function makeParagraphs(
           paragraph = <ReadMoreSection {...readmoreProps} />
         }
       } else if (item.type === 'textSection') {
-        let next =
-          paragraphArray.length >= index + 1 ? paragraphArray[index + 1] : null
+        let next = paragraphArray.length >= index + 1 ? paragraphArray[index + 1] : null
         if (next && next.type === 'readMore') {
           paragraphType = 'textReadMoreSection'
           paragraph = (
@@ -60,20 +54,12 @@ function makeParagraphs(
           paragraph = <TextSection text={item.text} />
         }
       } else if (item.type === 'sectionHeader') {
-        let sectionHeaderFunction =
-          optionalSectionHeaderFunction || makeSectionHeaderId
-        paragraph = (
-          <SectionHeader
-            refId={sectionHeaderFunction(index)}
-            text={item.text}
-          />
-        )
+        let sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId
+        paragraph = <SectionHeader refId={sectionHeaderFunction(index)} text={item.text} />
       } else if (item.type === 'subsectionHeader') {
         paragraph = <SubsectionHeader text={item.text} />
       } else if (item.type === 'image') {
-        paragraph = (
-          <ImageSection imageObj={item.image} captionText={item.captionText} />
-        )
+        paragraph = <ImageSection imageObj={item.image} captionText={item.captionText} />
       } else if (item.type === 'lookup') {
         paragraph = (
           <Lookup
@@ -104,34 +90,18 @@ function makeParagraphs(
       } else if (item.type === 'cardCollection') {
         paragraph = <CardCollection parentIndex={index} cards={item.cards} />
       } else if (item.type === 'styleGrayBackground') {
-        paragraph = (
-          <StyleGrayBackground
-            parentIndex={index}
-            key={index}
-            paragraphs={item.paragraphs}
-          />
-        )
+        paragraph = <StyleGrayBackground parentIndex={index} key={index} paragraphs={item.paragraphs} />
       } else if (item.type === 'button') {
         if (eventConfig) {
           eventConfig.action = item.link.title
         }
         paragraph = (
-          <ButtonCta
-            key={index}
-            url={item.link.url}
-            title={item.link.title}
-            eventConfig={eventConfig}
-          />
+          <ButtonCta key={index} url={item.link.url} title={item.link.title} eventConfig={eventConfig} />
         )
       } else if (item.type === 'quickLinks') {
         paragraph = <QuickLinks data={item} />
       } else if (item.type === 'searchBox') {
-        const {
-          documentActivity,
-          documentProgram,
-          documentType,
-          sectionHeaderText
-        } = item.searchType[0]
+        const { documentActivity, documentProgram, documentType, sectionHeaderText } = item.searchType[0]
 
         const searchBoxProps = {
           documentActivity,
@@ -141,17 +111,9 @@ function makeParagraphs(
         }
 
         paragraph = <SearchBox {...searchBoxProps} />
-      } else if (
-        item.type === 'childPageMenu' &&
-        item.pagesInclude === 'All child pages'
-      ) {
+      } else if (item.type === 'childPageMenu' && item.pagesInclude === 'All child pages') {
         const cards = lineage[lineage.length - 1].children
-        paragraph = (
-          <ProgramDetailsCardCollection
-            cards={cards}
-            eventConfig={eventConfig}
-          />
-        )
+        paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig} />
       }
     }
     return {
@@ -170,11 +132,7 @@ function wrapParagraphs(paragraphsList, wrapperClassMapping) {
       paragraphGridStyle = wrapperClassMapping['other']
     }
     return (
-      <div
-        key={index}
-        id={item.type + '-' + index}
-        className={paragraphGridStyle}
-      >
+      <div key={index} id={item.type + '-' + index} className={paragraphGridStyle}>
         <div id={'paragraph-' + (index + 1)}>{item.paragraph}</div>
       </div>
     )

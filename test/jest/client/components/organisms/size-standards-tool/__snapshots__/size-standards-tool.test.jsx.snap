@@ -177,8 +177,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             SW
-             
+             SW 
             <br />
             Washington
             <span
@@ -186,7 +185,8 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             DC 2041
+             
+            DC 2041
           </p>
         </li>
         <li>
@@ -245,8 +245,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             SW
-             
+             SW 
             <br />
             Washington
             <span
@@ -254,7 +253,8 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
             >
               ,
             </span>
-             DC 2041
+             
+            DC 2041
           </p>
         </li>
         <li>

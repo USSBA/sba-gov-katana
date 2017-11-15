@@ -2,10 +2,7 @@ let sinon = require('sinon')
 import fs from 'fs'
 import path from 'path'
 import chai from 'chai'
-import {
-  sendPasswordUpdateRequest,
-  generatePassword
-} from '../../../../src/service/oca-service.js'
+import { sendPasswordUpdateRequest, generatePassword } from '../../../../src/service/oca-service.js'
 
 import {
   getEndPointUrl,
@@ -18,10 +15,7 @@ import lincPasswordUpdate from '../../../../src/models/linc-password-update.js'
 
 describe('LINC Soap Password updater', function() {
   describe('response handling tests', function() {
-    let findOneSuccessfulStub,
-      getEndPointUrlStub,
-      sendLincSoapRequestStub,
-      lincPasswordUpdateStub
+    let findOneSuccessfulStub, getEndPointUrlStub, sendLincSoapRequestStub, lincPasswordUpdateStub
 
     it('should result in error if no lincPasswordUpdate record in DB', function() {
       let fakePasswordUpdateData = {
@@ -54,9 +48,7 @@ describe('LINC Soap Password updater', function() {
       sendLincSoapRequestStub = sinon
         .stub(myObj, 'sendLincSoapRequest')
         .returns(Promise.resolve(fakeSoapResponse))
-      lincPasswordUpdateStub = sinon
-        .stub(lincPasswordUpdate, 'update')
-        .returns(Promise.resolve(1))
+      lincPasswordUpdateStub = sinon.stub(lincPasswordUpdate, 'update').returns(Promise.resolve(1))
       sendPasswordUpdateRequest()
       sinon.assert.called(findOneSuccessfulStub)
       findOneSuccessfulStub.restore()
@@ -75,13 +67,7 @@ describe('LINC Soap Password updater', function() {
       comment: 'Password changed.'
     }
     let successXmlResponse = fs
-      .readFileSync(
-        path.join(
-          __dirname,
-          './data/oca/oca-password-update-success-response.xml'
-        ),
-        'utf-8'
-      )
+      .readFileSync(path.join(__dirname, './data/oca/oca-password-update-success-response.xml'), 'utf-8')
       .trim()
     parsePasswordUpdateResponse(successXmlResponse)
       .then(result => {
@@ -92,9 +78,7 @@ describe('LINC Soap Password updater', function() {
       .catch(done)
   })
 
-  it('should parse the success response properly (new version 2017-08-30)', function(
-    done
-  ) {
+  it('should parse the success response properly (new version 2017-08-30)', function(done) {
     let expectedResult = {
       errorMessageTechnical: '',
       responseCode: '0',
@@ -104,10 +88,7 @@ describe('LINC Soap Password updater', function() {
     }
     let successXmlResponse = fs
       .readFileSync(
-        path.join(
-          __dirname,
-          './data/oca/oca-password-update-success-response-new-20170830.xml'
-        ),
+        path.join(__dirname, './data/oca/oca-password-update-success-response-new-20170830.xml'),
         'utf-8'
       )
       .trim()
@@ -130,13 +111,7 @@ describe('LINC Soap Password updater', function() {
       responseCode: '-15'
     }
     let failedXmlResponse = fs
-      .readFileSync(
-        path.join(
-          __dirname,
-          './data/oca/oca-password-update-failure-response.xml'
-        ),
-        'utf-8'
-      )
+      .readFileSync(path.join(__dirname, './data/oca/oca-password-update-failure-response.xml'), 'utf-8')
       .trim()
     parsePasswordUpdateResponse(failedXmlResponse)
       .then(result => {
@@ -147,9 +122,7 @@ describe('LINC Soap Password updater', function() {
       .catch(done)
   })
 
-  it('should parse the error response properly  (new version 2017-08-30)', function(
-    done
-  ) {
+  it('should parse the error response properly  (new version 2017-08-30)', function(done) {
     let expectedResult = {
       passwordUpdateRequired: 'Unknown',
       errorMessageEnglish: 'The attempt to update password failed. (-15)',
@@ -160,10 +133,7 @@ describe('LINC Soap Password updater', function() {
     }
     let failedXmlResponse = fs
       .readFileSync(
-        path.join(
-          __dirname,
-          './data/oca/oca-password-update-failure-response-new-20170830.xml'
-        ),
+        path.join(__dirname, './data/oca/oca-password-update-failure-response-new-20170830.xml'),
         'utf-8'
       )
       .trim()
@@ -178,18 +148,11 @@ describe('LINC Soap Password updater', function() {
 
   describe('create soap envelope for password update test', function() {
     it('should wrap the given data in the proper soap envelope', function() {
-      let result = createSoapEnvelopeForPasswordUpdate(
-        'Username_1',
-        'Password_1',
-        'NewPassword_1'
-      )
+      let result = createSoapEnvelopeForPasswordUpdate('Username_1', 'Password_1', 'NewPassword_1')
       result.should.not.be.null
       let expected = fs
         .readFileSync(
-          path.join(
-            __dirname,
-            './data/oca/expected-password-update-soap-envelope.xml'
-          ),
+          path.join(__dirname, './data/oca/expected-password-update-soap-envelope.xml'),
           'utf-8'
         )
         .trim()

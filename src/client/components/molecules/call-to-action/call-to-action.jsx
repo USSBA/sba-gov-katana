@@ -4,11 +4,7 @@ import styles from './call-to-action.scss'
 
 import cornerGraphicLarge from './corner-graphic-large.png'
 import cornerGraphicSmall from './corner-graphic-small.png'
-import {
-  LargePrimaryButton,
-  SmallInversePrimaryButton,
-  SmallInverseSecondaryButton
-} from 'atoms'
+import { LargePrimaryButton, SmallInversePrimaryButton, SmallInverseSecondaryButton } from 'atoms'
 import { createCtaNavigation } from '../../../services/navigation'
 
 export class CallToAction extends React.Component {
@@ -35,12 +31,7 @@ export class CallToAction extends React.Component {
   }
 
   createOnClick() {
-    return createCtaNavigation(
-      this.props.btnUrl,
-      this.props.title,
-      this.props.size,
-      1
-    )
+    return createCtaNavigation(this.props.btnUrl, this.props.title, this.props.size, 1)
   }
 
   render() {
@@ -71,10 +62,7 @@ export class CallToAction extends React.Component {
       <div className={this.getCssClassNameBySize()}>
         <div id="call-to-action" className={styles.ctaContainer}>
           <div className={styles.image}>
-            <div
-              title={this.props.imageAlt}
-              style={this.backgroundImageStyles()}
-            />
+            <div title={this.props.imageAlt} style={this.backgroundImageStyles()} />
           </div>
           <div className={styles.contentContainer}>
             <h4 className={styles.headline}>{this.props.headline}</h4>
@@ -87,16 +75,8 @@ export class CallToAction extends React.Component {
               eventConfig={eventConfig}
             />
           </div>
-          <img
-            className={styles.cornerGraphicLarge}
-            src={cornerGraphicLarge}
-            alt=""
-          />
-          <img
-            className={styles.cornerGraphicSmall}
-            src={cornerGraphicSmall}
-            alt=""
-          />
+          <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge} alt="" />
+          <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall} alt="" />
         </div>
         {secondaryButton}
       </div>

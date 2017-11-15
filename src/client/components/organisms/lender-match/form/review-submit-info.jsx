@@ -65,10 +65,7 @@ class ReviewSubmitInfoForm extends React.Component {
           industryInfoData={this.props.industryInfoData}
           onEditClick={() => this.handleEditClick('industry')}
         />
-        <LoanSection
-          loanData={this.props.loanData}
-          onEditClick={() => this.handleEditClick('loan')}
-        />
+        <LoanSection loanData={this.props.loanData} onEditClick={() => this.handleEditClick('loan')} />
         <AdditionalSection
           additionalInfoData={this.props.additionalInfoData}
           onEditClick={() => this.handleEditClick('additional')}
@@ -112,11 +109,7 @@ const ContactSection = props => {
       <p className={styles.field}>{contact.contactFullName}</p>
       <p className={styles.field}>{contact.contactPhoneNumber}</p>
       <p className={styles.field}>{contact.contactEmailAddress}</p>
-      <EditButton
-        parentId={id}
-        autofocus={true}
-        onEditClick={props.onEditClick}
-      />
+      <EditButton parentId={id} autofocus={true} onEditClick={props.onEditClick} />
     </div>
   )
 }
@@ -186,9 +179,7 @@ const AdditionalSection = props => {
           {additionalInfo.hasFinancialProjections ? (
             <p className={styles.field}>I have financial projections</p>
           ) : null}
-          {additionalInfo.isVeteran ? (
-            <p className={styles.field}>I'm a veteran</p>
-          ) : null}
+          {additionalInfo.isVeteran ? <p className={styles.field}>I'm a veteran</p> : null}
           <EditButton parentId={id} onEditClick={props.onEditClick} />
         </div>
       ) : null}
@@ -213,6 +204,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  ReviewSubmitInfoForm
-)
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewSubmitInfoForm)

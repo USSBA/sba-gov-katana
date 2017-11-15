@@ -45,9 +45,7 @@ function fetchCounsellorCta() {
 function fetchDocuments(queryParams) {
   if (config.get('developmentOptions.useLocalDataNotDaisho')) {
     console.log('Using Development Documents information')
-    return Promise.resolve(
-      filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents)
-    )
+    return Promise.resolve(filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents))
   }
 
   return get('collection/documents').then(data => {
@@ -101,8 +99,7 @@ function filterDocuments(params, docs) {
     const matchesActivitys =
       !params.documentActivity ||
       params.documentActivity === 'all' ||
-      (!_.isEmpty(doc.activitys) &&
-        doc.activitys.includes(params.documentActivity))
+      (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity))
     const matchesActivity =
       !params.activity ||
       params.activity === 'all' ||
@@ -111,14 +108,9 @@ function filterDocuments(params, docs) {
       !params.program ||
       params.program === 'all' ||
       (!_.isEmpty(doc.programs) && doc.programs.includes(params.program))
-    const matchesType =
-      !params.type ||
-      params.type === 'all' ||
-      doc.documentIdType === params.type
+    const matchesType = !params.type || params.type === 'all' || doc.documentIdType === params.type
     const matchesDocumentType =
-      !params.documentType ||
-      params.documentType === 'all' ||
-      doc.documentIdType === params.documentType
+      !params.documentType || params.documentType === 'all' || doc.documentIdType === params.documentType
     return (
       matchesType &&
       matchesDocumentType &&
@@ -129,28 +121,23 @@ function filterDocuments(params, docs) {
       (!params.searchTerm ||
         params.searchTerm === 'all' ||
         doc.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
-        (!_.isEmpty(doc.documentIdNumber) &&
-          doc.documentIdNumber.includes(params.searchTerm)))
+        (!_.isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.searchTerm)))
     )
   })
 }
 function filterArticles(params, allArticles) {
   return allArticles.filter((article, index) => {
-    const matchesUrl =
-      !params.url || params.url === 'all' || article.url === params.url
+    const matchesUrl = !params.url || params.url === 'all' || article.url === params.url
     const matchesProgram =
       !params.program ||
       params.program === 'all' ||
-      (!_.isEmpty(article.programs) &&
-        article.programs.includes(params.program))
+      (!_.isEmpty(article.programs) && article.programs.includes(params.program))
     const matchesTitle =
       !params.searchTerm ||
       params.searchTerm === 'all' ||
       article.title.toLowerCase().includes(params.searchTerm.toLowerCase())
     const matchesType =
-      !params.articleType ||
-      params.articleType === 'all' ||
-      article.type === params.articleType
+      !params.articleType || params.articleType === 'all' || article.type === params.articleType
     return matchesUrl && matchesProgram && matchesTitle && matchesType
   })
 }
@@ -175,9 +162,7 @@ function sortDocuments(params, docs) {
     docs,
     [
       doc => {
-        return typeof doc[sortItems] === 'string'
-          ? doc[sortItems].toLowerCase()
-          : doc[sortItems]
+        return typeof doc[sortItems] === 'string' ? doc[sortItems].toLowerCase() : doc[sortItems]
       }
     ],
     sortOrder

@@ -58,18 +58,13 @@ class FeedbackForm extends React.Component {
             onChange={this.handleChange.bind(this)}
           />
           <div className={styles.maidenNameContainer}>
-            <input
-              id="maiden-name"
-              onChange={this.handleMaidenNameChange.bind(this)}
-            />
+            <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
           </div>
           <SmallPrimaryButton
             id="feedback-submit-button"
             text="SUBMIT"
             onClick={this.handleSubmit.bind(this)}
-            disabled={
-              !this.state.feedbackText || this.state.feedbackText.length === 0
-            }
+            disabled={!this.state.feedbackText || this.state.feedbackText.length === 0}
           />
         </div>
       )

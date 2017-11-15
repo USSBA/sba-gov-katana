@@ -1,10 +1,7 @@
 import sinon from 'sinon'
 import Promise from 'bluebird'
 import * as feedbackService from '../../../../src/service/feedback-service.js'
-import {
-  handleFeedback,
-  handleFeedbackText
-} from '../../../../src/controllers/feedback-controller.js'
+import { handleFeedback, handleFeedbackText } from '../../../../src/controllers/feedback-controller.js'
 
 describe('#Feedback Controller', function() {
   let saveFeedbackStub, saveFeedbackTextStub

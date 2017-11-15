@@ -22,10 +22,7 @@ function logPageView() {
     reactGa.pageview(window.location.pathname)
     console.log('Posting Location Change to GA:', window.location.pathname)
   } else {
-    console.log(
-      'Would have posted location change to GA:',
-      window.location.pathname
-    )
+    console.log('Would have posted location change to GA:', window.location.pathname)
   }
 }
 

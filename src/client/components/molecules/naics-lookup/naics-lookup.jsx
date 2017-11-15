@@ -82,10 +82,7 @@ class NaicsLookup extends React.PureComponent {
     const { inputLengthToGetSuggestions, naics } = this.props
     const sanitizedValue = value.trim().toLowerCase()
 
-    if (
-      sanitizedValue === '' ||
-      sanitizedValue.length < inputLengthToGetSuggestions
-    ) {
+    if (sanitizedValue === '' || sanitizedValue.length < inputLengthToGetSuggestions) {
       return []
     }
 
@@ -105,8 +102,7 @@ class NaicsLookup extends React.PureComponent {
       // the input.
       const filterFunction = !isNaN(sanitizedValue)
         ? entry => startsWith(entry.code, sanitizedValue)
-        : entry =>
-            entry.description.toLowerCase().indexOf(sanitizedValue) !== -1
+        : entry => entry.description.toLowerCase().indexOf(sanitizedValue) !== -1
 
       return {
         description,
@@ -144,10 +140,7 @@ class NaicsLookup extends React.PureComponent {
             onKeyDown={this.onCloseIconSelect}
           />
         ) : (
-          <i
-            className={`fa fa-search ${styles.searchIcon}`}
-            alt="search icon"
-          />
+          <i className={`fa fa-search ${styles.searchIcon}`} alt="search icon" />
         )}
       </div>
     )
@@ -188,11 +181,7 @@ class NaicsLookup extends React.PureComponent {
     if (reason === 'suggestion-selected') return
 
     const suggestions = this.getSuggestions(value)
-    if (
-      suggestions.length === 0 ||
-      value === '' ||
-      reason === 'escape-pressed'
-    ) {
+    if (suggestions.length === 0 || value === '' || reason === 'escape-pressed') {
       this.setState({
         suggestions: []
       })

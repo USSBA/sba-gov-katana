@@ -28,11 +28,7 @@ class LeaveSbaModal extends React.Component {
         <div className={styles.linkContainer}>
           <span>Link to website:</span>
           <br />
-          <a
-            className={styles.link}
-            tabIndex="0"
-            onClick={this.continueLink.bind(this)}
-          >
+          <a className={styles.link} tabIndex="0" onClick={this.continueLink.bind(this)}>
             {this.props.url}
           </a>
         </div>

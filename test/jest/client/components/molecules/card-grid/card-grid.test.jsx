@@ -19,9 +19,7 @@ test('CardGrid renders a simple 3x3 grid', () => {
     return { text: 'this is card #' + index }
   })
   let renderCard = (data, index) => <p>{data.text}</p>
-  const component = renderer.create(
-    <CardGrid cards={cards} renderCard={renderCard} />
-  )
+  const component = renderer.create(<CardGrid cards={cards} renderCard={renderCard} />)
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

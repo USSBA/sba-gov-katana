@@ -14,17 +14,9 @@ class SbaModal extends React.Component {
   }
 
   render() {
-    let logo = this.props.showLogo ? (
-      <img className={styles.logo} src={sbaLogo} />
-    ) : (
-      undefined
-    )
+    let logo = this.props.showLogo ? <img className={styles.logo} src={sbaLogo} /> : undefined
     return (
-      <Modal
-        isOpen={true}
-        className={styles.content}
-        overlayClassName={styles.overlay}
-      >
+      <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
         <img
           tabIndex={0}
           onClick={this.props.onClose}
@@ -40,14 +32,8 @@ class SbaModal extends React.Component {
         <p className={styles.text}>{this.props.text}</p>
         {this.props.children}
         <div className={styles.btnContainer}>
-          <SmallPrimaryButton
-            onClick={this.props.onClickOk}
-            text={this.props.okButtonText}
-          />
-          <SmallGreySecondaryButton
-            onClick={this.props.onClose}
-            text={this.props.cancelButtonText}
-          />
+          <SmallPrimaryButton onClick={this.props.onClickOk} text={this.props.okButtonText} />
+          <SmallGreySecondaryButton onClick={this.props.onClose} text={this.props.cancelButtonText} />
         </div>
       </Modal>
     )

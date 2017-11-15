@@ -19,11 +19,7 @@ class TextReadMoreSection extends React.Component {
 
   makeTextSection() {
     return (
-      <div
-        key={2}
-        className={styles.textSection}
-        id={this.props.parentId + '-text-section'}
-      >
+      <div key={2} className={styles.textSection} id={this.props.parentId + '-text-section'}>
         <TextSection text={this.props.textSectionItem.text} />
       </div>
     )
@@ -69,11 +65,7 @@ class TextReadMoreSection extends React.Component {
       subcomponents = reverse(subcomponents)
     }
 
-    return (
-      <div className={expandedStyle + ' ' + styles.textReadMoreSection}>
-        {subcomponents}
-      </div>
-    )
+    return <div className={expandedStyle + ' ' + styles.textReadMoreSection}>{subcomponents}</div>
   }
 }
 

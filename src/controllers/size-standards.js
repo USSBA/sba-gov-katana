@@ -41,9 +41,4 @@ function determineIfSmallBusiness(req, res, next) {
   }
 }
 
-export {
-  getNaics,
-  getNaicsById,
-  getNaicsPropertyById,
-  determineIfSmallBusiness
-}
+export { getNaics, getNaicsById, getNaicsPropertyById, determineIfSmallBusiness }

@@ -45,16 +45,9 @@ class MultiSelectBox extends React.Component {
       ) : (
         undefined
       )
-    let errorClass =
-      this.props.validationState == 'error' ? styles.redBorder : ''
+    let errorClass = this.props.validationState == 'error' ? styles.redBorder : ''
     let arrowRenderer = () => {
-      return (
-        <img
-          alt="dropdown arrow"
-          className={styles.chevronIcon}
-          src={chevron}
-        />
-      )
+      return <img alt="dropdown arrow" className={styles.chevronIcon} src={chevron} />
     }
     let clearRenderer = this.props.multi
       ? undefined

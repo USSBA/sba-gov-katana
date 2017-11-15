@@ -33,16 +33,10 @@ class MiniNav extends React.Component {
 
   componentDidMount() {
     if (this.state.userId) {
-      this.props.actions.fetchContentIfNeeded(
-        'userRoles',
-        this.state.userId + '/roles'
-      )
+      this.props.actions.fetchContentIfNeeded('userRoles', this.state.userId + '/roles')
       if (this.state.userLoggedOn) {
         //check whether email is already provided
-        this.props.actions.fetchContentIfNeeded(
-          'userEmail',
-          this.state.userId + '/email'
-        )
+        this.props.actions.fetchContentIfNeeded('userEmail', this.state.userId + '/email')
       }
     }
     if (!this.state.userEmail && config.govdelivery) {
@@ -63,12 +57,7 @@ class MiniNav extends React.Component {
     if (this.state.userLoggedOn) {
       if (this.props.userRoles && this.props.userRoles.length > 0) {
         links.push(
-          <UtilityLink
-            id="deskop-mini-nav-admintool"
-            key={11}
-            url="/admintool"
-            text="Admin Tool"
-          />
+          <UtilityLink id="deskop-mini-nav-admintool" key={11} url="/admintool" text="Admin Tool" />
         )
       }
       links.push(
@@ -79,68 +68,29 @@ class MiniNav extends React.Component {
           text="My Account"
         />
       )
-      links.push(
-        <UtilityLink
-          id="deskop-mini-nav-logout"
-          key={13}
-          url="/user/logout"
-          text="Log Out"
-        />
-      )
+      links.push(<UtilityLink id="deskop-mini-nav-logout" key={13} url="/user/logout" text="Log Out" />)
     } else {
       links.push(
-        <UtilityLink
-          id="deskop-mini-nav-register"
-          key={14}
-          url="/user/register"
-          text="Register"
-        />
+        <UtilityLink id="deskop-mini-nav-register" key={14} url="/user/register" text="Register" />
       )
-      links.push(
-        <UtilityLink
-          id="deskop-mini-nav-login"
-          key={15}
-          url="/user/login"
-          text="Log In"
-        />
-      )
+      links.push(<UtilityLink id="deskop-mini-nav-login" key={15} url="/user/login" text="Log In" />)
     }
     return links
   }
 
   render() {
     let forPartnersOrLenders = config.forPartners ? (
-      <UtilityLink
-        id="deskop-mini-nav-2"
-        key={2}
-        url="/partners"
-        text="For Partners"
-      />
+      <UtilityLink id="deskop-mini-nav-2" key={2} url="/partners" text="For Partners" />
     ) : (
-      <UtilityLink
-        id="deskop-mini-nav-2"
-        key={2}
-        url="/for-lenders"
-        text="For Lenders"
-      />
+      <UtilityLink id="deskop-mini-nav-2" key={2} url="/for-lenders" text="For Lenders" />
     )
     return (
       <div className={styles.miniNav}>
         <ul id="deskop-mini-nav" aria-label="mini-navigation">
           <GoogleTranslate />
-          <UtilityLink
-            id="deskop-mini-nav-1"
-            key={1}
-            url="https://es.sba.gov/"
-            text="SBA en español"
-          />
+          <UtilityLink id="deskop-mini-nav-1" key={1} url="https://es.sba.gov/" text="SBA en español" />
           {forPartnersOrLenders}
-          <UtilityLink
-            id="deskop-mini-nav-3"
-            key={3}
-            url="/about-sba/sba-newsroom"
-            text="Newsroom"
-          />
+          <UtilityLink id="deskop-mini-nav-3" key={3} url="/about-sba/sba-newsroom" text="Newsroom" />
           <UtilityLink
             id="deskop-mini-nav-4"
             key={4}

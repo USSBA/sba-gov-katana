@@ -54,11 +54,7 @@ class SubMenu extends React.Component {
           onMouseOver={this.props.onTitleMouseOver}
           onKeyDown={this.props.onSectionLinkKeyDown}
         >
-          <DropdownMenu
-            links={data.children}
-            {...rest}
-            featuredCallout={data.featuredCallout}
-          />
+          <DropdownMenu links={data.children} {...rest} featuredCallout={data.featuredCallout} />
         </SectionLink>
       </li>
     )

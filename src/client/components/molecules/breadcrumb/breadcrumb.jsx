@@ -24,11 +24,7 @@ class Breadcrumb extends React.Component {
           {rest ? (
             rest.map((item, index) => {
               return [
-                <BasicLink
-                  id={'breadcrumb-level' + index}
-                  text={item.title}
-                  url={item.url}
-                />,
+                <BasicLink id={'breadcrumb-level' + index} text={item.title} url={item.url} />,
                 <span className={styles.slash}>/</span>
               ]
             })

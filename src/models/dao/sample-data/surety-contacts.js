@@ -776,13 +776,6 @@ export default [
     email: 'jobeth@valleysurety.com',
     phoneNumber: '916-567-6676',
     singleContactCategory: 'Surety bond agency',
-    stateServed: [
-      'Arizona',
-      'California',
-      'Idaho',
-      'Nevada',
-      'Oregon',
-      'Wyoming'
-    ]
+    stateServed: ['Arizona', 'California', 'Idaho', 'Nevada', 'Oregon', 'Wyoming']
   }
 ]

@@ -38,24 +38,14 @@ class QuickLinks extends PureComponent {
   fetchDocuments() {
     this.props.data.typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'documentLookup') {
-        this.props.actions.fetchContentIfNeeded(
-          'documents-' + index,
-          'documents',
-          {
-            sortBy: 'Last Updated',
-            type: _.isEmpty(quickLink.documentType[0])
-              ? 'all'
-              : quickLink.documentType[0],
-            program: _.isEmpty(quickLink.documentProgram[0])
-              ? 'all'
-              : quickLink.documentProgram[0],
-            activity: _.isEmpty(quickLink.documentActivity[0])
-              ? 'all'
-              : quickLink.documentActivity[0],
-            start: 0,
-            end: 3
-          }
-        )
+        this.props.actions.fetchContentIfNeeded('documents-' + index, 'documents', {
+          sortBy: 'Last Updated',
+          type: _.isEmpty(quickLink.documentType[0]) ? 'all' : quickLink.documentType[0],
+          program: _.isEmpty(quickLink.documentProgram[0]) ? 'all' : quickLink.documentProgram[0],
+          activity: _.isEmpty(quickLink.documentActivity[0]) ? 'all' : quickLink.documentActivity[0],
+          start: 0,
+          end: 3
+        })
       }
     })
   }
@@ -63,16 +53,12 @@ class QuickLinks extends PureComponent {
   fetchArticles() {
     this.props.data.typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'articleLookup') {
-        this.props.actions.fetchContentIfNeeded(
-          'articles-' + index,
-          'articles',
-          {
-            sortBy: 'Created',
-            type: 'all',
-            start: 0,
-            end: 3
-          }
-        )
+        this.props.actions.fetchContentIfNeeded('articles-' + index, 'articles', {
+          sortBy: 'Created',
+          type: 'all',
+          start: 0,
+          end: 3
+        })
       }
     })
   }
@@ -96,13 +82,7 @@ class QuickLinks extends PureComponent {
           />
         )
       } else if (quickLink.type === 'ratesList') {
-        return (
-          <RatesCard
-            key={index}
-            {...quickLink}
-            classname={s.card + ' ' + gridClass}
-          />
-        )
+        return <RatesCard key={index} {...quickLink} classname={s.card + ' ' + gridClass} />
       } else if (quickLink.type === 'articleLookup') {
         return (
           <ArticlesCard
@@ -118,9 +98,7 @@ class QuickLinks extends PureComponent {
 
   render() {
     return (
-      <div className={s.collection}>
-        {this.props.data ? this.renderQuickLinks() : <div>loading</div>}
-      </div>
+      <div className={s.collection}>{this.props.data ? this.renderQuickLinks() : <div>loading</div>}</div>
     )
   }
 }
@@ -148,27 +126,17 @@ const LatestDocumentsCard = props => {
           props.documents.items.map((doc, index) => {
             const currentFile = getCurrentFile(doc.files)
             let effectiveDate
-            if (
-              currentFile !== undefined &&
-              currentFile.effectiveDate !== undefined
-            ) {
+            if (currentFile !== undefined && currentFile.effectiveDate !== undefined) {
               effectiveDate = currentFile.effectiveDate
             }
 
             // Add a prefix to SOPs with the format {DOC_TYPE} {DOC_NUMBER} ({DOC_VERSION}) - {DOC_TITLE}
             let titlePrefix = ''
-            if (
-              doc.documentIdType === 'SOP' &&
-              !_.isEmpty(doc.documentIdNumber)
-            ) {
-              titlePrefix =
-                doc.documentIdType + ' ' + doc.documentIdNumber + ' - '
+            if (doc.documentIdType === 'SOP' && !_.isEmpty(doc.documentIdNumber)) {
+              titlePrefix = doc.documentIdType + ' ' + doc.documentIdNumber + ' - '
             }
             const linkTitle =
-              titlePrefix +
-              (doc.title.length > 80
-                ? doc.title.slice(0, 90) + '...'
-                : doc.title)
+              titlePrefix + (doc.title.length > 80 ? doc.title.slice(0, 90) + '...' : doc.title)
             return (
               <div key={index}>
                 <BasicLink
@@ -180,9 +148,7 @@ const LatestDocumentsCard = props => {
                   }}
                 />
 
-                {effectiveDate && (
-                  <div className={s.date}>{formatDate(effectiveDate)}</div>
-                )}
+                {effectiveDate && <div className={s.date}>{formatDate(effectiveDate)}</div>}
               </div>
             )
           })
@@ -236,10 +202,7 @@ const ArticlesCard = props => {
         {articles && articles.items.length ? (
           <div>
             {articles.items.map((doc, index) => {
-              const linkTitle =
-                doc.title.length > 80
-                  ? doc.title.slice(0, 90) + '...'
-                  : doc.title
+              const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + '...' : doc.title
 
               return (
                 <div key={index}>
@@ -251,9 +214,7 @@ const ArticlesCard = props => {
                       action: `ArticleLink: ${linkTitle}`
                     }}
                   />
-                  <div className={s.date}>
-                    {moment.unix(doc.updated).format('MMM D, YYYY')}
-                  </div>
+                  <div className={s.date}>{moment.unix(doc.updated).format('MMM D, YYYY')}</div>
                 </div>
               )
             })}

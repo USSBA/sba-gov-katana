@@ -3,10 +3,7 @@ import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers/index.js'
-import {
-  logPageView,
-  googleAnalyticsMiddleware
-} from '../services/analytics.js'
+import { logPageView, googleAnalyticsMiddleware } from '../services/analytics.js'
 import logging from '../services/logger.js'
 import config from '../services/client-config.js'
 

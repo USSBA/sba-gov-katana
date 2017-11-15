@@ -148,10 +148,4 @@ const languages = resourceCenterProfile.hasMany(resourceCenterLanguages, {
   as: 'languages'
 })
 
-export {
-  resourceCenterProfile,
-  services,
-  expertise,
-  languages,
-  resourceCenterHours
-}
+export { resourceCenterProfile, services, expertise, languages, resourceCenterHours }

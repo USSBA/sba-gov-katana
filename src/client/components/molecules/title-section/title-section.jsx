@@ -34,10 +34,7 @@ class TitleSection extends React.Component {
   render() {
     const titleLinks = this.makeTitleLinks(this.props.sectionHeaders)
     return (
-      <div
-        id="titleSectionId"
-        className={styles.titleSection + ' ' + this.props.gridClass}
-      >
+      <div id="titleSectionId" className={styles.titleSection + ' ' + this.props.gridClass}>
         <h1 id="titleSectionTitleId" className={styles.title}>
           {this.props.title}
         </h1>

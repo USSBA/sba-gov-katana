@@ -17,8 +17,6 @@ describe('front page lady', () => {
     }
 
     const component = shallow(<FrontPageLady />)
-    expect(
-      component.find('LargeInversePrimaryButton').props().eventConfig
-    ).toEqual(eventConfig)
+    expect(component.find('LargeInversePrimaryButton').props().eventConfig).toEqual(eventConfig)
   })
 })

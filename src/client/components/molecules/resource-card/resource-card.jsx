@@ -11,11 +11,7 @@ class ResourceCard extends React.Component {
         <p>{this.props.duration}</p>
         <hr />
         <p>{this.props.description}</p>
-        <SmallPrimaryButton
-          text={this.props.buttonText}
-          url={this.props.buttonURL}
-          newWindow
-        />
+        <SmallPrimaryButton text={this.props.buttonText} url={this.props.buttonURL} newWindow />
       </div>
     )
   }

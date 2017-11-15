@@ -26,9 +26,7 @@ class CardGrid extends React.Component {
   }
 
   render() {
-    return (
-      <div className={'card-grid ' + s.container}>{this.renderCards()}</div>
-    )
+    return <div className={'card-grid ' + s.container}>{this.renderCards()}</div>
   }
 }
 export default CardGrid

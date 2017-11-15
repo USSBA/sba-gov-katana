@@ -21,9 +21,7 @@ class ErrorPage extends React.Component {
 
   submitSearch(e) {
     e.preventDefault()
-    let uri = encodeURI(
-      '/tools/search-result-page?search=' + this.state.searchValue
-    )
+    let uri = encodeURI('/tools/search-result-page?search=' + this.state.searchValue)
     document.location = uri
   }
   render() {
@@ -33,23 +31,12 @@ class ErrorPage extends React.Component {
     return (
       <div className={styles.errorContainer}>
         <RemoveMainLoader />
-        {clientConfig.moon ? (
-          <img src={errorImg} alt="Error Image" />
-        ) : (
-          undefined
-        )}
-        <div
-          className={
-            styles.formContainer +
-            ' ' +
-            (clientConfig.moon ? styles.moon : styles.noMoon)
-          }
-        >
+        {clientConfig.moon ? <img src={errorImg} alt="Error Image" /> : undefined}
+        <div className={styles.formContainer + ' ' + (clientConfig.moon ? styles.moon : styles.noMoon)}>
           <h1 className={styles.title}>404</h1>
           <h3 className={styles.subTitle}>{text}</h3>
           <p>
-            Return to the <BasicLink url="/" text="home page" />, or search for
-            what you're trying to find.
+            Return to the <BasicLink url="/" text="home page" />, or search for what you're trying to find.
           </p>
           <form
             key={2}

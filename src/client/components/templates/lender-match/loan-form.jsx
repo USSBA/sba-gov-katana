@@ -10,14 +10,7 @@ import styles from './loan-form.scss'
 
 class LoanForm extends React.Component {
   render() {
-    let pages = [
-      'contact',
-      'business',
-      'industry',
-      'loan',
-      'additional',
-      'review'
-    ] // TODO make this static or configuration
+    let pages = ['contact', 'business', 'industry', 'loan', 'additional', 'review'] // TODO make this static or configuration
     let page = this.props.location.replace('/lendermatch/form/', '')
     let locationIndex = indexOf(pages, page)
     let title = locationIndex === 5 ? 'Review and Submit' : 'Lender Match'
@@ -25,10 +18,7 @@ class LoanForm extends React.Component {
       <div className={styles.formContainer}>
         <main className={styles.formPanel}>
           <h1 className={styles.title}>{title}</h1>
-          <ProgressBar
-            pages={pages.length + 1}
-            locationIndex={locationIndex + 1}
-          />
+          <ProgressBar pages={pages.length + 1} locationIndex={locationIndex + 1} />
           {this.props.children}
         </main>
       </div>
