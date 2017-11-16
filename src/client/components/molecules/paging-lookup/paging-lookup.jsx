@@ -69,7 +69,6 @@ class PagingLookup extends React.Component {
       filteredQueryParams,
       aliasMapping
     )
-    console.log('FINAL QUERY', finalQuery)
     return finalQuery
   }
 
