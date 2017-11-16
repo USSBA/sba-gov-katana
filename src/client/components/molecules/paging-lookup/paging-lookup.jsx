@@ -69,6 +69,7 @@ class PagingLookup extends React.Component {
       filteredQueryParams,
       aliasMapping
     )
+    console.log('FINAL QUERY', finalQuery)
     return finalQuery
   }
 
@@ -124,11 +125,16 @@ class PagingLookup extends React.Component {
   handleReset() {
     this.fireDocumentationLookupEvent('clearFilters')
     this.setState(
-      _.assign(this.createOriginalState(this.props), {
-        taxonomies: this.state.taxonomies
-      }),
+      _.assign(this.createOriginalState(this.props),
+      {
+        query: {},
+        taxonomies: [],
+        pageNumber: 1,
+        isFetching: false
+      }
+    ),
       () => {
-        this.submit()
+        this.handleSubmit()
       }
     )
   }
