@@ -33,11 +33,7 @@ class DocumentCardCollection extends React.Component {
   }
 
   render() {
-    return (
-      <div className={'document-card-collection ' + styles.cardCollection}>
-        {this.renderCards()}
-      </div>
-    )
+    return <div className={'document-card-collection ' + styles.cardCollection}>{this.renderCards()}</div>
   }
 }
 

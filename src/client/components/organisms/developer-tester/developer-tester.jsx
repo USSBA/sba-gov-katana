@@ -124,12 +124,7 @@ const naics = [
 function formatNaics(naics) {
   const industriesMap = {}
   for (let i = 0; i < naics.length; i++) {
-    const {
-      code,
-      description,
-      sectorDescription: industryDescription,
-      sectorId: industryCode
-    } = naics[i]
+    const { code, description, sectorDescription: industryDescription, sectorId: industryCode } = naics[i]
 
     if (!industriesMap.hasOwnProperty(industryCode)) {
       industriesMap[industryCode] = {
@@ -196,6 +191,4 @@ function mapDispatchToProps(dispatch) {
   return {}
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(
-  DeveloperTester
-)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(DeveloperTester)

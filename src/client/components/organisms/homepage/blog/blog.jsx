@@ -28,11 +28,7 @@ class Blog extends React.Component {
           {items.map(function(item, i) {
             return (
               <div key={i} className={styles.blogColumn}>
-                <img
-                  className={styles.blogsImage}
-                  src={item.imageUrl}
-                  alt={item.title}
-                />
+                <img className={styles.blogsImage} src={item.imageUrl} alt={item.title} />
               </div>
             )
           })}
@@ -42,11 +38,7 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogTitleContainer}>
-                  <BasicLink
-                    myClassName={styles.blogTitle}
-                    url={item.url}
-                    text={item.title}
-                  />
+                  <BasicLink myClassName={styles.blogTitle} url={item.url} text={item.title} />
                 </div>
               </div>
             )
@@ -57,10 +49,7 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogInfo}>
-                  {'By ' +
-                    item.name +
-                    ' on ' +
-                    blogThis.returnFormatedDate(item.date)}
+                  {'By ' + item.name + ' on ' + blogThis.returnFormatedDate(item.date)}
                 </div>
               </div>
             )
@@ -88,9 +77,7 @@ class Blog extends React.Component {
             <BasicLink key={i} url={item.url}>
               <div className={styles.singleBlog}>
                 <div className={styles.blogTitle}>{item.title}</div>
-                <div className={styles.blogInfo}>
-                  {blogThis.returnFormatedDate(item.date)}
-                </div>
+                <div className={styles.blogInfo}>{blogThis.returnFormatedDate(item.date)}</div>
               </div>
             </BasicLink>
           )

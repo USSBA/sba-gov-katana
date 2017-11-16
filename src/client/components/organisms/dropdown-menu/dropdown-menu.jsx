@@ -45,9 +45,7 @@ class DropdownMenu extends React.Component {
       smallInverseCta = true
     }
     if (menuId === 1) {
-      sizingStyle = this.props.featuredCallout
-        ? styles.twoWithFeaturedCallout
-        : styles.two
+      sizingStyle = this.props.featuredCallout ? styles.twoWithFeaturedCallout : styles.two
       indent = this.props.featuredCallout ? false : true
     }
     if (menuId === 2) {
@@ -78,8 +76,7 @@ class DropdownMenu extends React.Component {
           return { url: item.link, text: item.linkTitle }
         })
 
-        const isLastGroup =
-          index === this.props.links.length - 1 && !smallInverseCta
+        const isLastGroup = index === this.props.links.length - 1 && !smallInverseCta
 
         return (
           <PageLinkGroup
@@ -115,20 +112,12 @@ class DropdownMenu extends React.Component {
           key={1}
           aria-label="submenu"
           className={
-            styles.dropdownMenu +
-            ' ' +
-            sizingStyle +
-            ' ' +
-            (this.props.shown ? styles.show : styles.hide)
+            styles.dropdownMenu + ' ' + sizingStyle + ' ' + (this.props.shown ? styles.show : styles.hide)
           }
         >
           {goToNextButton}
           {pageLinkGroups}
-          {this.props.featuredCallout ? (
-            <FeaturedCallout {...this.props.featuredCallout} />
-          ) : (
-            undefined
-          )}
+          {this.props.featuredCallout ? <FeaturedCallout {...this.props.featuredCallout} /> : undefined}
           {smallInverseCta ? (
             <div className={styles.businessGuideCTA}>
               <SmallInverseCta {...businessGuideCtaData} />

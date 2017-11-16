@@ -20,8 +20,8 @@ class PreparationChecklist extends React.Component {
       <div id={this.props.tellMeHowAnchor} className={styles.section}>
         <h2>Get ready.</h2>
         <h5>
-          Before you start talking to lenders, have a look at the abbreviated
-          checklist to see if youre ready.
+          Before you start talking to lenders, have a look at the abbreviated checklist to see if youre
+          ready.
         </h5>
         <div className={styles.checklist}>
           <ToDo
@@ -56,18 +56,11 @@ class PreparationChecklist extends React.Component {
           />
         </div>
         <p className={styles.CallToAction}>
-          Have questions or need help getting prepared? Take advantage of free,
-          local counseling.
+          Have questions or need help getting prepared? Take advantage of free, local counseling.
         </p>
         <div className={styles.ButtonGroup}>
-          <SmallSecondaryButton
-            url="/tools/local-assistance"
-            text="EXPERT HELP"
-          />
-          <SmallPrimaryButton
-            text="FIND LENDERS"
-            onClick={this.handleLenderMatchBtnClick.bind(this)}
-          />
+          <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP" />
+          <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)} />
         </div>
       </div>
     )
@@ -92,6 +85,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(
-  PreparationChecklist
-)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(PreparationChecklist)

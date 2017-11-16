@@ -24,11 +24,7 @@ class Tile extends React.Component {
 
   _openNavMenu() {
     if (!this.isLinkToPage() && window.innerWidth <= 1080) {
-      this.props.actions.showMobileSectionNav(
-        this.props.data,
-        this.props.iconWhite,
-        false
-      )
+      this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     } else if (this.isLinkToPage()) {
       navigateNow(this.props.data.fullUrl, {
         category: 'Main-Menu',
@@ -79,10 +75,7 @@ class Tile extends React.Component {
   }
 
   isLinkToPage() {
-    return (
-      !this.props.data.children ||
-      this.props.neverDisplayChildrenOnHoverOverride
-    )
+    return !this.props.data.children || this.props.neverDisplayChildrenOnHoverOverride
   }
 
   render() {
@@ -92,9 +85,7 @@ class Tile extends React.Component {
       description: this.props.data.description,
       icon: this.props.icon,
       iconWhite: this.props.iconWhite,
-      largeTitle: this.props.splitTitle
-        ? this._formatLargeTitle()
-        : this.props.data.title,
+      largeTitle: this.props.splitTitle ? this._formatLargeTitle() : this.props.data.title,
       smallTitle: this.props.splitTitle ? this._formatSmallTitle() : '',
       uppercaseFirstWord: this.props.uppercaseFirstWord
     }
@@ -145,17 +136,9 @@ class Tile extends React.Component {
         onKeyDown={this.handleTileKeyDown.bind(this)}
       >
         {toggleMenuLink}
-        {this.props.showHover ? (
-          hoverTile
-        ) : (
-          <MenuTile id={this.props.id + '-static'} {...baseTileData} />
-        )}
+        {this.props.showHover ? hoverTile : <MenuTile id={this.props.id + '-static'} {...baseTileData} />}
         {this.props.backgroundLines ? (
-          <img
-            className={s.backgroundLines}
-            src={this.props.backgroundLines}
-            alt=""
-          />
+          <img className={s.backgroundLines} src={this.props.backgroundLines} alt="" />
         ) : (
           undefined
         )}

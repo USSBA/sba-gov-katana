@@ -49,18 +49,14 @@ describe('PagingLookup', () => {
       return { search: 'My Search Term' }
     })
     const component = shallow(<PagingLookup {...testProps} />)
-    expect(component.first().props().queryState.searchTerm).toBe(
-      'My Search Term'
-    )
+    expect(component.first().props().queryState.searchTerm).toBe('My Search Term')
   })
   test("should accept a 'q' term", () => {
     getQueryParams.mockImplementationOnce(() => {
       return { q: 'My Q Search Term' }
     })
     const component = shallow(<PagingLookup {...testProps} />)
-    expect(component.first().props().queryState.searchTerm).toBe(
-      'My Q Search Term'
-    )
+    expect(component.first().props().queryState.searchTerm).toBe('My Q Search Term')
   })
   test("should accept 'type' from the query string, converting it to documentType", () => {
     getQueryParams.mockImplementationOnce(() => {
@@ -81,18 +77,14 @@ describe('PagingLookup', () => {
       return { validTaxonomyFilter: 'My Taxonomy Filter' }
     })
     const component = shallow(<PagingLookup {...testProps} />)
-    expect(component.first().props().queryState.validTaxonomyFilter).toBe(
-      'My Taxonomy Filter'
-    )
+    expect(component.first().props().queryState.validTaxonomyFilter).toBe('My Taxonomy Filter')
   })
   test("should reject 'arbitraryNonsense' from the query string if NOT in the taxonomyFilter", () => {
     getQueryParams.mockImplementationOnce(() => {
       return { arbitraryNonsense: 'My Arbitrary Nonsense' }
     })
     const component = shallow(<PagingLookup {...testProps} />)
-    expect(
-      component.first().props().queryState.arbitraryNonsense
-    ).toBeUndefined()
+    expect(component.first().props().queryState.arbitraryNonsense).toBeUndefined()
   })
 
   // test('should render without an address ', () => {

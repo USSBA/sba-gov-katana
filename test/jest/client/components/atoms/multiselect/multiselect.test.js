@@ -45,9 +45,7 @@ test('MultiSelect maximum values', () => {
   }
 
   function simulateChange(component, value) {
-    component
-      .find(ReactSelect)
-      .simulate('change', makeValueLikeReactSelectReturnsIt(value))
+    component.find(ReactSelect).simulate('change', makeValueLikeReactSelectReturnsIt(value))
   }
 
   const component = shallow(

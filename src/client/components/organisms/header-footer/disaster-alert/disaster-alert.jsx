@@ -10,19 +10,9 @@ class DisasterAlert extends React.Component {
         {this.props.visible ? (
           <div className={styles.wrapper}>
             <div className={styles.alert}>
-              <div
-                className={styles.alertIcon + ' fa fa-exclamation-triangle'}
-                aria-hidden="true"
-              />
-              <div className={styles.disasterDescription}>
-                {this.props.description}
-              </div>
-              <img
-                className={styles.alertClose}
-                onClick={this.props.onClose}
-                src={exitIcon}
-                alt="Close"
-              />
+              <div className={styles.alertIcon + ' fa fa-exclamation-triangle'} aria-hidden="true" />
+              <div className={styles.disasterDescription}>{this.props.description}</div>
+              <img className={styles.alertClose} onClick={this.props.onClose} src={exitIcon} alt="Close" />
               <div>
                 <BasicLink
                   url={this.props.link}

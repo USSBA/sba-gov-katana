@@ -65,11 +65,7 @@ export class AdditionalInfoForm extends React.Component {
     let id = 'lender-match-additional-info-form'
     return (
       <div>
-        <form
-          id={id}
-          ref={input => (this.addInfoForm = input)}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+        <form id={id} ref={input => (this.addInfoForm = input)} onSubmit={e => this.handleSubmit(e)}>
           <h6 className={addInfoStyles.label}>Select all that apply to you:</h6>
           <CheckBox
             id={id + '-plan'}
@@ -114,6 +110,4 @@ function mapDispatchToProps(dispatch) {
     locationActions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(
-  AdditionalInfoForm
-)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(AdditionalInfoForm)

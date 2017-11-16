@@ -96,8 +96,7 @@ describe('SizeStandardsTool', () => {
           sectorId: '54',
           sectorDescription: 'Professional, Scientific and Technical Services',
           subsectorId: '541',
-          subsectorDescription:
-            'Professional, Scientific and Technical Services',
+          subsectorDescription: 'Professional, Scientific and Technical Services',
           revenueLimit: null,
           employeeCountLimit: 1000,
           footnote: [],
@@ -110,8 +109,7 @@ describe('SizeStandardsTool', () => {
           sectorId: '54',
           sectorDescription: 'Professional, Scientific and Technical Services',
           subsectorId: '541',
-          subsectorDescription:
-            'Professional, Scientific and Technical Services',
+          subsectorDescription: 'Professional, Scientific and Technical Services',
           revenueLimit: null,
           employeeCountLimit: 1500,
           footnote: 'NAICS Codes 541713, 541714 and 541715',

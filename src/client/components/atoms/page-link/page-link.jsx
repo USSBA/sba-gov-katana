@@ -5,8 +5,7 @@ import { BasicLink } from 'atoms'
 
 class PageLink extends React.Component {
   render() {
-    let anchorClass =
-      styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
+    let anchorClass = styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
     const picked = (({ id, text, url, onClick, onBlur }) => ({
       id,
       text,
@@ -15,11 +14,7 @@ class PageLink extends React.Component {
       onBlur
     }))(this.props)
     return (
-      <li
-        className={
-          styles.pageLink + ' ' + (this.props.indent ? styles.indent : '')
-        }
-      >
+      <li className={styles.pageLink + ' ' + (this.props.indent ? styles.indent : '')}>
         <BasicLink {...picked} myClassName={anchorClass} />
       </li>
     )

@@ -157,20 +157,14 @@ function convertItemsToObject(itemList) {
   return mappedKeys
 }
 
-function parseOcaXmlResponseBody(
-  xmlBody,
-  firstBodyElementTag,
-  secondBodyElementTag
-) {
+function parseOcaXmlResponseBody(xmlBody, firstBodyElementTag, secondBodyElementTag) {
   return xml2js
     .parseStringAsync(xmlBody, {
       ignoreAttrs: true
     })
     .then(r => {
       const itemList =
-        r['soapenv:Envelope']['soapenv:Body'][0][firstBodyElementTag][0][
-          secondBodyElementTag
-        ][0].item
+        r['soapenv:Envelope']['soapenv:Body'][0][firstBodyElementTag][0][secondBodyElementTag][0].item
       return convertItemsToObject(itemList)
     })
 }
@@ -180,11 +174,7 @@ function parseResponse(xmlBody) {
 }
 
 function parsePasswordUpdateResponse(xmlBody) {
-  return parseOcaXmlResponseBody(
-    xmlBody,
-    'PasswordUpdateResponse',
-    'PasswordUpdateReturn'
-  )
+  return parseOcaXmlResponseBody(xmlBody, 'PasswordUpdateResponse', 'PasswordUpdateReturn')
 }
 
 function parseResponseText(responseText) {
@@ -225,9 +215,7 @@ function sendLincSoapRequest(endpoint, bodyXml, lincRequest) {
         console.log('Full Response from OCA\n', body)
         let resp = ''
         try {
-          resp = lincRequest
-            ? parseResponse(body)
-            : parsePasswordUpdateResponse(body)
+          resp = lincRequest ? parseResponse(body) : parsePasswordUpdateResponse(body)
           resolve(resp)
         } catch (error) {
           console.error('Error parsing response', error)

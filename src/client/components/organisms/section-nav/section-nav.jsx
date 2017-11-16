@@ -10,13 +10,7 @@ import styles from './section-nav.scss'
 import whiteIconLenders from 'assets/images/for-partners/For_Partners_Icon_Lenders_white.png'
 import whiteIconSuretyProviders from 'assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
 import * as ModalActions from '../../../actions/show-modal.js'
-import {
-  BasicLink,
-  WhiteIconGrow,
-  WhiteIconLaunch,
-  WhiteIconManage,
-  WhiteIconPlan
-} from 'atoms'
+import { BasicLink, WhiteIconGrow, WhiteIconLaunch, WhiteIconManage, WhiteIconPlan } from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
 
@@ -43,11 +37,7 @@ class SectionNav extends React.Component {
       } else {
         sectionNavIcon = WhiteIconGrow
       }
-      this.props.actions.showMobileSectionNav(
-        this.getNthLineage(-2),
-        sectionNavIcon,
-        this.getBacklinkUrl()
-      )
+      this.props.actions.showMobileSectionNav(this.getNthLineage(-2), sectionNavIcon, this.getBacklinkUrl())
     }
   }
 
@@ -74,9 +64,7 @@ class SectionNav extends React.Component {
       return (
         <li key={index}>
           <BasicLink
-            myClassName={
-              'article-navigation-article-link-desktop ' + currentLinkClass
-            }
+            myClassName={'article-navigation-article-link-desktop ' + currentLinkClass}
             id={'desktop-article-link-' + index}
             url={item.fullUrl}
             text={item.title}
@@ -118,16 +106,11 @@ class SectionNav extends React.Component {
   }
 
   getBacklinkUrl() {
-    return (this.isBusinessGuide()
-      ? this.getNthLineage(0)
-      : this.getNthLineage(-2)
-    ).fullUrl
+    return (this.isBusinessGuide() ? this.getNthLineage(0) : this.getNthLineage(-2)).fullUrl
   }
 
   getBacklinkText() {
-    const backText = this.isBusinessGuide()
-      ? 'all topics'
-      : this.getNthLineage(-2).title
+    const backText = this.isBusinessGuide() ? 'all topics' : this.getNthLineage(-2).title
     return `Back to ${backText}`
   }
 
@@ -142,13 +125,7 @@ class SectionNav extends React.Component {
     return (
       <div
         id="article-navigation-desktop"
-        className={
-          styles.sectionNav +
-          ' ' +
-          this.stickyFunctionTop() +
-          ' ' +
-          this.stickyFunctionBottom()
-        }
+        className={styles.sectionNav + ' ' + this.stickyFunctionTop() + ' ' + this.stickyFunctionBottom()}
       >
         <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
         <BasicLink

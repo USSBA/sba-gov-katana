@@ -38,18 +38,13 @@ class SuretyLookup extends React.Component {
     this.setState(
       {
         suretyState: e.value,
-        numberOfTimesUserHasSelectedAState:
-          this.state.numberOfTimesUserHasSelectedAState + 1,
+        numberOfTimesUserHasSelectedAState: this.state.numberOfTimesUserHasSelectedAState + 1,
         pageNumber: 1
       },
       () => {
         this.filterContacts()
         if (this.props.afterChange) {
-          this.props.afterChange(
-            'surety-lookup',
-            newValue,
-            this.state.numberOfTimesUserHasSelectedAState
-          )
+          this.props.afterChange('surety-lookup', newValue, this.state.numberOfTimesUserHasSelectedAState)
         }
       }
     )
@@ -62,10 +57,7 @@ class SuretyLookup extends React.Component {
     } else {
       filteredContacts = _.filter(this.props.items, agency => {
         return !_.isEmpty(
-          _.intersection(
-            _.castArray(agency.stateServed),
-            _.castArray(this.state.suretyState)
-          )
+          _.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState))
         )
       })
     }
@@ -112,11 +104,7 @@ class SuretyLookup extends React.Component {
         </div>
         <div>
           <i className={s.emailIcon + ' fa fa-envelope-o'} aria-hidden="true" />
-          <a
-            href={'mailto:' + data.email + '?subject=The subject for the email'}
-          >
-            Email
-          </a>
+          <a href={'mailto:' + data.email + '?subject=The subject for the email'}>Email</a>
         </div>
       </div>
     )
@@ -140,9 +128,8 @@ class SuretyLookup extends React.Component {
         <div className={s.banner}>
           <h2>Contact a surety bond agency</h2>
           <p className={s.blurb}>
-            Check the database of surety agencies that offer SBA-guranteed
-            bonds. Contact a surety agency in your state to get started with the
-            application process.
+            Check the database of surety agencies that offer SBA-guranteed bonds. Contact a surety agency in
+            your state to get started with the application process.
           </p>
           <div className={s.multiSelect}>
             <MultiSelect

@@ -51,10 +51,7 @@ class HelpfulQuestions extends React.Component {
             </Panel>
           </Collapse>
           <Collapse accordion={false}>
-            <Panel
-              showArrow={false}
-              header="Why am I asked my personal information?"
-            >
+            <Panel showArrow={false} header="Why am I asked my personal information?">
               <hr />
               {answer4}
             </Panel>
@@ -66,25 +63,14 @@ class HelpfulQuestions extends React.Component {
             </Panel>
           </Collapse>
           <Collapse accordion={false}>
-            <Panel
-              showArrow={false}
-              header="Where can I learn more about loans?"
-            >
+            <Panel showArrow={false} header="Where can I learn more about loans?">
               <hr />
               <span>
-                Were glad you asked! You can learn about our loan programs in
-                more detail&nbsp;
-                <a
-                  target="_blank"
-                  href="/loans-grants/see-what-sba-offers/sba-loan-programs"
-                >
+                Were glad you asked! You can learn about our loan programs in more detail&nbsp;
+                <a target="_blank" href="/loans-grants/see-what-sba-offers/sba-loan-programs">
                   online
-                </a>. If you need to talk to someone about Lender Match, you
-                can&nbsp;
-                <a
-                  target="_blank"
-                  href="https://www.sba.gov/about-sba/what-we-do/contact-sba"
-                >
+                </a>. If you need to talk to someone about Lender Match, you can&nbsp;
+                <a target="_blank" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">
                   contact us
                 </a>
                 &nbsp;or email us at&nbsp;
@@ -101,66 +87,38 @@ class HelpfulQuestions extends React.Component {
             </Panel>
           </Collapse>
           <Collapse accordion={false} defaultActiveKey="2">
-            <Panel
-              showArrow={false}
-              header="Am I guaranteed to get matched?"
-              key="2"
-            >
+            <Panel showArrow={false} header="Am I guaranteed to get matched?" key="2">
               <hr />
               {answer2}
             </Panel>
           </Collapse>
           <Collapse accordion={false} defaultActiveKey="3">
-            <Panel
-              showArrow={false}
-              header="What should I ask a lender?"
-              key="3"
-            >
+            <Panel showArrow={false} header="What should I ask a lender?" key="3">
               <hr />
               {answer3}
             </Panel>
           </Collapse>
           <Collapse accordion={false} defaultActiveKey="4">
-            <Panel
-              showArrow={false}
-              header="Why am I asked my personal information?"
-              key="4"
-            >
+            <Panel showArrow={false} header="Why am I asked my personal information?" key="4">
               <hr />
               {answer4}
             </Panel>
           </Collapse>
           <Collapse accordion={false} defaultActiveKey="5">
-            <Panel
-              showArrow={false}
-              header="How many lenders participate?"
-              key="5"
-            >
+            <Panel showArrow={false} header="How many lenders participate?" key="5">
               <hr />
               {answer5}
             </Panel>
           </Collapse>
           <Collapse accordion={false} defaultActiveKey="6">
-            <Panel
-              showArrow={false}
-              header="Where can I learn more about loans?"
-              key="6"
-            >
+            <Panel showArrow={false} header="Where can I learn more about loans?" key="6">
               <hr />
               <span>
-                We're glad you asked! You can learn about our loan programs in
-                more detail&nbsp;
-                <a
-                  target="_blank"
-                  href="/loans-grants/see-what-sba-offers/sba-loan-programs"
-                >
+                We're glad you asked! You can learn about our loan programs in more detail&nbsp;
+                <a target="_blank" href="/loans-grants/see-what-sba-offers/sba-loan-programs">
                   online
-                </a>. If you need to talk to someone about Lender Match, you
-                can&nbsp;
-                <a
-                  target="_blank"
-                  href="https://www.sba.gov/about-sba/what-we-do/contact-sba"
-                >
+                </a>. If you need to talk to someone about Lender Match, you can&nbsp;
+                <a target="_blank" href="https://www.sba.gov/about-sba/what-we-do/contact-sba">
                   contact us
                 </a>
                 &nbsp;or email us at&nbsp;
@@ -171,14 +129,8 @@ class HelpfulQuestions extends React.Component {
         </div>
         <div className={styles.CallToAction}>
           <div className={styles.ButtonGroup}>
-            <SmallSecondaryButton
-              url="/tools/local-assistance"
-              text="EXPERT HELP"
-            />
-            <SmallPrimaryButton
-              text="FIND LENDERS"
-              onClick={this.handleLenderMatchBtnClick.bind(this)}
-            />
+            <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP" />
+            <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)} />
           </div>
         </div>
       </div>
@@ -195,6 +147,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(LocationChangeActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(
-  HelpfulQuestions
-)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(HelpfulQuestions)

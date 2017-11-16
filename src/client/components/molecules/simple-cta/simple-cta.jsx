@@ -10,24 +10,14 @@ import { createCtaNavigation } from '../../../services/navigation'
 
 class SimpleCta extends React.Component {
   handleClick() {
-    this.props.actions.callToAction(
-      this.props.url,
-      this.props.eventCategory,
-      this.props.eventLabel,
-      1
-    )
+    this.props.actions.callToAction(this.props.url, this.props.eventCategory, this.props.eventLabel, 1)
   }
   render() {
     return (
       <div id={this.props.id} className={styles.container}>
         <p>{this.props.actionText}</p>
         <SmallSecondaryButton
-          onClick={createCtaNavigation(
-            this.props.url,
-            this.props.eventCategory,
-            this.props.eventLabel,
-            1
-          )}
+          onClick={createCtaNavigation(this.props.url, this.props.eventCategory, this.props.eventLabel, 1)}
           text={this.props.buttonText}
         />
         <img alt="" className={styles.cornerLines} src={cornerLines} />

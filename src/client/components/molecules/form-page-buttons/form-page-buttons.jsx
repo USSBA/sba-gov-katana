@@ -9,17 +9,11 @@ class FormPageButtons extends React.Component {
   render() {
     return (
       <div
-        className={
-          styles.container +
-          ' ' +
-          (this.props.continueButtonFullWidth ? styles.oneButton : '')
-        }
+        className={styles.container + ' ' + (this.props.continueButtonFullWidth ? styles.oneButton : '')}
       >
         {this.props.showBackButton ? (
           <SmallGraySecondaryFormButton
-            id={
-              this.props.parentId + '-' + _.kebabCase(this.props.backButtonText)
-            }
+            id={this.props.parentId + '-' + _.kebabCase(this.props.backButtonText)}
             text={this.props.backButtonText}
             onClick={this.props.backButtonHandler}
           />
@@ -27,11 +21,7 @@ class FormPageButtons extends React.Component {
           ''
         )}
         <SmallPrimaryFormButton
-          id={
-            this.props.parentId +
-            '-' +
-            _.kebabCase(this.props.continueButtonText)
-          }
+          id={this.props.parentId + '-' + _.kebabCase(this.props.continueButtonText)}
           text={this.props.continueButtonText}
           disabled={this.props.continueButtonDisabled}
           onClick={this.props.continueButtonHandler}

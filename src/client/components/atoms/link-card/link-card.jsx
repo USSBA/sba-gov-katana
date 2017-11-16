@@ -11,18 +11,13 @@ class LinkCard extends React.Component {
     return (
       <div className={'link-card ' + styles.card}>
         {this.props.link ? (
-          <a
-            className={'link-card-link ' + styles.itemLink}
-            href={this.props.link}
-          >
+          <a className={'link-card-link ' + styles.itemLink} href={this.props.link}>
             {this.props.title}
             <i className="fa fa-external-link-square" aria-hidden="true" />
           </a>
         ) : null}
         {this.props.streetAddress ? (
-          <div className={'link-card-streetAddress ' + styles.itemData}>
-            {this.props.streetAddress}
-          </div>
+          <div className={'link-card-streetAddress ' + styles.itemData}>{this.props.streetAddress}</div>
         ) : null}
         {this.props.city && this.props.state && this.props.zipCode ? (
           <div className={'link-card-citystatezip ' + styles.itemData}>

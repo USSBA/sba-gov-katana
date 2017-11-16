@@ -19,16 +19,7 @@ class BasicLink extends React.Component {
   }
 
   render() {
-    const {
-      onClick,
-      url,
-      text,
-      myClassName,
-      htmlElement,
-      eventConfig,
-      children,
-      ...linkProps
-    } = this.props
+    const { onClick, url, text, myClassName, htmlElement, eventConfig, children, ...linkProps } = this.props
     if (onClick) {
       _.merge(linkProps, {
         onTouchTap: onClick,
@@ -37,9 +28,7 @@ class BasicLink extends React.Component {
     } else {
       _.merge(linkProps, {
         onTouchTap: createNavigation(url, eventConfig),
-        onKeyPress: this.createKeypressHandler(
-          createNavigation(url, eventConfig)
-        )
+        onKeyPress: this.createKeypressHandler(createNavigation(url, eventConfig))
       })
     }
     _.merge(linkProps, { className: myClassName })

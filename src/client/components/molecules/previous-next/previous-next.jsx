@@ -26,9 +26,7 @@ class PreviousNextSection extends React.Component {
 
   getCurrentArticleIndex(articles, currentArticle) {
     return _.findIndex(articles, article => {
-      return (
-        article && article.fullUrl && article.fullUrl === currentArticle.fullUrl
-      )
+      return article && article.fullUrl && article.fullUrl === currentArticle.fullUrl
     })
   }
 
@@ -36,31 +34,21 @@ class PreviousNextSection extends React.Component {
     if (!this.props.lineage) {
       return null
     }
-    const includeAdjacentSections =
-      this.props.lineage[0].fullUrl === businessGuideUrl
+    const includeAdjacentSections = this.props.lineage[0].fullUrl === businessGuideUrl
     const currentArticle = this.getCurrentArticle(this.props.lineage)
     const sections = this.getSections()
     const articles = includeAdjacentSections
       ? this.getArticlesFromSections(sections)
       : _.nth(this.props.lineage, -2).children
-    const currentArticleIndex = this.getCurrentArticleIndex(
-      articles,
-      currentArticle
-    )
+    const currentArticleIndex = this.getCurrentArticleIndex(articles, currentArticle)
     if (indexDifference > 0) {
-      if (
-        currentArticleIndex < 0 ||
-        currentArticleIndex >= articles.length - indexDifference
-      ) {
+      if (currentArticleIndex < 0 || currentArticleIndex >= articles.length - indexDifference) {
         return null
       }
       return articles[currentArticleIndex + indexDifference]
     } else {
       // indexDifference negative
-      if (
-        currentArticleIndex < indexDifference * -1 ||
-        currentArticleIndex >= articles.length
-      ) {
+      if (currentArticleIndex < indexDifference * -1 || currentArticleIndex >= articles.length) {
         return null
       }
       return articles[currentArticleIndex + indexDifference]
@@ -82,10 +70,7 @@ class PreviousNextSection extends React.Component {
     return (
       <div id="previousNextSectionId" className={styles.previousNextContainer}>
         <div id="desktopDivId" className={styles.desktop}>
-          <div
-            id="prevNextTitleContainerId"
-            className={styles.prevNextTitleContainer}
-          >
+          <div id="prevNextTitleContainerId" className={styles.prevNextTitleContainer}>
             {previousArticle !== null ? (
               <div id="previousTitleId" className={styles.previousTitle}>
                 <h6 className={styles.previousTitle}>Previous</h6>
@@ -103,15 +88,9 @@ class PreviousNextSection extends React.Component {
               <div />
             )}
           </div>
-          <div
-            id="prevNextButtonsContainerId"
-            className={styles.prevNextButtonsContainer}
-          >
+          <div id="prevNextButtonsContainerId" className={styles.prevNextButtonsContainer}>
             {previousArticle !== null ? (
-              <div
-                id="previousContainerId"
-                className={styles.previousContainer}
-              >
+              <div id="previousContainerId" className={styles.previousContainer}>
                 <div className={'previousnext-previous-url'}>
                   <SmallSecondaryButton
                     text={previousArticle.title}
@@ -122,10 +101,7 @@ class PreviousNextSection extends React.Component {
                     }}
                   />
                 </div>
-                <i
-                  className={'fa fa-chevron-left ' + styles.chevronPrevious}
-                  aria-hidden="true"
-                />
+                <i className={'fa fa-chevron-left ' + styles.chevronPrevious} aria-hidden="true" />
               </div>
             ) : (
               <div className={styles.previousContainerHide}>
@@ -144,10 +120,7 @@ class PreviousNextSection extends React.Component {
                     }}
                   />
                 </div>
-                <i
-                  className={'fa fa-chevron-right ' + styles.chevronNext}
-                  aria-hidden="true"
-                />
+                <i className={'fa fa-chevron-right ' + styles.chevronNext} aria-hidden="true" />
               </div>
             ) : (
               <div />
@@ -174,10 +147,7 @@ class PreviousNextSection extends React.Component {
                   }}
                 />
               </a>
-              <i
-                className={'fa fa-chevron-right ' + styles.chevronNext}
-                aria-hidden="true"
-              />
+              <i className={'fa fa-chevron-right ' + styles.chevronNext} aria-hidden="true" />
             </div>
           ) : (
             <div />

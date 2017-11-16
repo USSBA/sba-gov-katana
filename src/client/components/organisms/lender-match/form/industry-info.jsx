@@ -34,11 +34,7 @@ class IndustryInfoForm extends React.Component {
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    let validationState = validationFunction(
-      name,
-      this.state[name],
-      defaultWhenNotSuccessful || null
-    )
+    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Lender Match Form',
@@ -54,11 +50,7 @@ class IndustryInfoForm extends React.Component {
     if (includes(fields, 'industryType')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getSelectBoxValidationState,
-          'industryType',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getSelectBoxValidationState, 'industryType', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'industryExperience')) {
@@ -120,9 +112,7 @@ class IndustryInfoForm extends React.Component {
 
   handleFocus(nameOrEvent) {
     let name =
-      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
-        ? nameOrEvent.target.name
-        : nameOrEvent
+      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
     logEvent({
       category: 'Lender Match Form',
       action: 'Focus Event',
@@ -183,11 +173,7 @@ class IndustryInfoForm extends React.Component {
     let id = 'lender-match-industry-info-form'
     return (
       <div>
-        <form
-          id={id}
-          ref={form => (this.industryInfoForm = form)}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+        <form id={id} ref={form => (this.industryInfoForm = form)} onSubmit={e => this.handleSubmit(e)}>
           <MultiSelect
             id={id + '-name'}
             errorText={constants.messages.validation.invalidIndustry}

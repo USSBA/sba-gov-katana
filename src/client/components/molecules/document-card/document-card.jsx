@@ -50,30 +50,17 @@ class DocumentCard extends React.Component {
     ) {
       rows.push({ name: 'Activity:', value: doc.activities.join(', ') })
     }
-    if (
-      doc.programs &&
-      _.includes(this.props.fieldsToShowInDetails, 'Program')
-    ) {
+    if (doc.programs && _.includes(this.props.fieldsToShowInDetails, 'Program')) {
       rows.push({ name: 'Program:', value: doc.programs.join(', ') })
     }
 
-    if (
-      doc.published &&
-      _.includes(this.props.fieldsToShowInDetails, 'Published')
-    ) {
+    if (doc.published && _.includes(this.props.fieldsToShowInDetails, 'Published')) {
       const publishedDate = new Date(doc.updated)
       const publisheDateString =
-        publishedDate.getMonth() +
-        '/' +
-        publishedDate.getDate() +
-        '/' +
-        publishedDate.getYear()
+        publishedDate.getMonth() + '/' + publishedDate.getDate() + '/' + publishedDate.getYear()
       rows.push({ name: 'Published:', value: publisheDateString })
     }
-    if (
-      doc.summary &&
-      _.includes(this.props.fieldsToShowInDetails, 'Summary')
-    ) {
+    if (doc.summary && _.includes(this.props.fieldsToShowInDetails, 'Summary')) {
       rows.push({ name: 'Summary:', value: doc.summary })
     }
 
@@ -124,12 +111,7 @@ class DocumentCard extends React.Component {
             }
 
       return (
-        <div
-          className={
-            'document-card-container ' +
-            (this.props.showBorder ? ' ' + s.container : '')
-          }
-        >
+        <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
           <div>
             <div className={s.documentTypeContainer}>
               <DocumentType

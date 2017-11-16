@@ -6,27 +6,14 @@ class ValidationIcon extends React.Component {
     if (this.props.showSuccessIcon && this.props.validationState == 'success') {
       return (
         <i
-          className={
-            'fa fa-check-circle ' +
-            styles.success +
-            ' ' +
-            this.props.extraClassName
-          }
+          className={'fa fa-check-circle ' + styles.success + ' ' + this.props.extraClassName}
           aria-hidden="true"
         />
       )
-    } else if (
-      this.props.showErrorIcon &&
-      this.props.validationState == 'error'
-    ) {
+    } else if (this.props.showErrorIcon && this.props.validationState == 'error') {
       return (
         <i
-          className={
-            'fa fa-exclamation-circle ' +
-            styles.error +
-            ' ' +
-            this.props.extraClassName
-          }
+          className={'fa fa-exclamation-circle ' + styles.error + ' ' + this.props.extraClassName}
           aria-hidden="true"
         />
       )

@@ -40,28 +40,19 @@ describe('#ResourceCenterLookup', function() {
       gpoStub.restore()
     })
     it('with one match, returns a list of a single office', () => {
-      const prtPartners = resourceCenterLookup.getOfficesByZip(
-        'PrtData',
-        '12345'
-      )
+      const prtPartners = resourceCenterLookup.getOfficesByZip('PrtData', '12345')
       prtPartners.should.have.length(1)
       prtPartners[0].name1.should.equal('First Office')
     })
 
     it('with two matches, returns a list of a two offices', () => {
-      const prtPartners = resourceCenterLookup.getOfficesByZip(
-        'PrtData',
-        '22222'
-      )
+      const prtPartners = resourceCenterLookup.getOfficesByZip('PrtData', '22222')
       prtPartners.should.have.length(2)
       prtPartners[0].name1.should.equal('Fourth Office')
       prtPartners[1].name1.should.equal('Fifth Office')
     })
     it('with partial matches, returns the expected matches', () => {
-      const prtPartners = resourceCenterLookup.getOfficesByZip(
-        'PrtData',
-        '11111'
-      )
+      const prtPartners = resourceCenterLookup.getOfficesByZip('PrtData', '11111')
       prtPartners.should.have.length(2)
       prtPartners[0].name1.should.equal('Second Office')
       prtPartners[1].name1.should.equal('Third Office')
@@ -97,19 +88,13 @@ describe('#ResourceCenterLookup', function() {
       gpoStub.restore()
     })
     it('with one match, returns a list of a single office', () => {
-      const prtPartners = resourceCenterLookup.getOfficesByState(
-        'PrtData',
-        'MD'
-      )
+      const prtPartners = resourceCenterLookup.getOfficesByState('PrtData', 'MD')
       prtPartners.should.have.length(1)
       prtPartners[0].name1.should.equal('First Office')
     })
 
     it('with two matches, returns a list of a two offices', () => {
-      const prtPartners = resourceCenterLookup.getOfficesByState(
-        'PrtData',
-        'DC'
-      )
+      const prtPartners = resourceCenterLookup.getOfficesByState('PrtData', 'DC')
       prtPartners.should.have.length(2)
       prtPartners[0].name1.should.equal('Second Office')
       prtPartners[1].name1.should.equal('Third Office')

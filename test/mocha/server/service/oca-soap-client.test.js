@@ -25,18 +25,14 @@ describe('OCA SOAP Client', function() {
     let badWdslUrl = 'http://placehold.it/350x150'
 
     before(function() {
-      let wsdl = fs
-        .readFileSync(path.join(__dirname, './data/oca/linc.wsdl'), 'utf-8')
-        .trim()
+      let wsdl = fs.readFileSync(path.join(__dirname, './data/oca/linc.wsdl'), 'utf-8').trim()
       wsdlStub = sinon.stub(axios, 'get')
       wsdlStub.withArgs(fakeWdslUrl).returns(
         Promise.resolve({
           data: wsdl
         })
       )
-      wsdlStub
-        .withArgs(badWdslUrl)
-        .returns(Promise.resolve('<html><body>Hello World!</body><html>'))
+      wsdlStub.withArgs(badWdslUrl).returns(Promise.resolve('<html><body>Hello World!</body><html>'))
       wsdlStub.rejects('TypeError')
     })
 
@@ -61,17 +57,12 @@ describe('OCA SOAP Client', function() {
   })
   describe('#convertFormDataToXml', function() {
     it('should convert a lender match registration to proper xml', function() {
-      let result = pd.xml(
-        convertFormDataToXml('newUser', exampleLenderMatchRegistration)
-      )
+      let result = pd.xml(convertFormDataToXml('newUser', exampleLenderMatchRegistration))
       result.should.not.be.null
       let expected = pd
         .xml(
           fs.readFileSync(
-            path.join(
-              __dirname,
-              './data/oca/expected-lender-match-registration.xml'
-            ),
+            path.join(__dirname, './data/oca/expected-lender-match-registration.xml'),
             'utf-8'
           )
         )
@@ -84,10 +75,7 @@ describe('OCA SOAP Client', function() {
       let result = createSoapEnvelope('user1', 'password1', '<SomeXml/>')
       result.should.not.be.null
       let expected = fs
-        .readFileSync(
-          path.join(__dirname, './data/oca/expected-soap-envelope.xml'),
-          'utf-8'
-        )
+        .readFileSync(path.join(__dirname, './data/oca/expected-soap-envelope.xml'), 'utf-8')
         .trim()
       result.should.equal(expected)
     })

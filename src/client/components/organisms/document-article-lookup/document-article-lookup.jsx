@@ -2,13 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import styles from './document-article-lookup.scss'
-import {
-  ApplyButton,
-  MultiSelect,
-  SearchIcon,
-  SmallInverseSecondaryButton,
-  TextInput
-} from 'atoms'
+import { ApplyButton, MultiSelect, SearchIcon, SmallInverseSecondaryButton, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { DocumentCardCollection } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
@@ -144,10 +138,7 @@ export class DocumentArticleLookup extends React.PureComponent {
 
   handleForward() {
     const { itemCount, pageNumber, onPageChange } = this.props
-    let newPageNumber = Math.min(
-      Math.max(1, Math.ceil(itemCount / this.props.pageSize)),
-      pageNumber + 1
-    )
+    let newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: 'Show-More-Results', action: 'Next' })
   }

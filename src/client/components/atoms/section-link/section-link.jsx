@@ -6,9 +6,7 @@ import { BasicLink } from '../../atoms'
 class SectionLink extends React.Component {
   render() {
     let underlineStyle = this.props.showUnderline ? ' ' + styles.underline : ''
-    let triangleColor = this.props.enableTriangleMarker
-      ? ' ' + styles.triangleTheme
-      : ''
+    let triangleColor = this.props.enableTriangleMarker ? ' ' + styles.triangleTheme : ''
     return (
       <span
         id={this.props.id + '-container'}
@@ -27,9 +25,7 @@ class SectionLink extends React.Component {
           className={
             styles.triangle +
             triangleColor +
-            (this.props.shouldForceTriangleMarkerVisibility
-              ? ' ' + styles.visible
-              : '')
+            (this.props.shouldForceTriangleMarkerVisibility ? ' ' + styles.visible : '')
           }
         />
         {this.props.children}

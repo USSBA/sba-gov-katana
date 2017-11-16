@@ -19,13 +19,7 @@ import {
 } from './oca-service.js'
 import { isAdministrator } from './user-service.js'
 
-function createConfirmationEmail(
-  name,
-  emailAddress,
-  lenderMatchRegistrationId,
-  tokenString,
-  followup
-) {
+function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, tokenString, followup) {
   let token = tokenString
   if (!token) {
     token = uuid.v4()
@@ -35,9 +29,7 @@ function createConfirmationEmail(
     '/actions/lendermatch/confirmEmail?token=' + token
   )
 
-  const pugTemplate = followup
-    ? '../views/followup-email.pug'
-    : '../views/confirmation-email.pug'
+  const pugTemplate = followup ? '../views/followup-email.pug' : '../views/confirmation-email.pug'
   const subject = followup
     ? 'Reminder: Confirm your email to find lenders'
     : 'Almost done! Confirm your email to find lenders'
@@ -84,10 +76,7 @@ function createLenderMatchRegistrationData(data) {
 
 function findUnconfirmedRegistrations() {
   const soonest = moment().subtract(config.get('linc.lookback'), 'seconds')
-  const earliest = moment().subtract(
-    config.get('linc.numberOfSecondsForWhichEmailIsValid'),
-    'seconds'
-  )
+  const earliest = moment().subtract(config.get('linc.numberOfSecondsForWhichEmailIsValid'), 'seconds')
   return EmailConfirmation.findAll({
     where: {
       sent: {
@@ -111,13 +100,7 @@ function sendFollowupConfirmations(emailConfirmations) {
       .then(function(lenderMatchRegistrationData) {
         const name = lenderMatchRegistrationData.name
         const emailAddress = lenderMatchRegistrationData.emailAddress
-        return [
-          name,
-          emailAddress,
-          lenderMatchRegistrationData.id,
-          emailConfirmation.token,
-          true
-        ]
+        return [name, emailAddress, lenderMatchRegistrationData.id, emailConfirmation.token, true]
       })
       .spread(createConfirmationEmail)
       .then(function(result) {
@@ -150,12 +133,9 @@ function findLenderMatchRegistrations(emailConfirmation) {
       const maxRetries = 5
       if (!_.isEmpty(lenderMatchSoapResponses)) {
         //filter out the processed responses
-        const unprocessedResponses = _.filter(
-          lenderMatchSoapResponses,
-          lenderMatchResponse => {
-            return !lenderMatchResponse.processed
-          }
-        )
+        const unprocessedResponses = _.filter(lenderMatchSoapResponses, lenderMatchResponse => {
+          return !lenderMatchResponse.processed
+        })
         if (!_.isEmpty(unprocessedResponses)) {
           if (_.size(unprocessedResponses) < maxRetries) {
             const firstResponse = _.head(unprocessedResponses)

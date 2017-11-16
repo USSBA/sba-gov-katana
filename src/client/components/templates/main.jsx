@@ -9,19 +9,9 @@ import styles from '../organisms/header-footer/header/header.scss'
 import * as ContentActions from '../../actions/content.js'
 import * as LoadingActions from '../../actions/loading.js'
 import { MainLoader } from 'molecules'
-import {
-  DisasterAlert,
-  Footer,
-  Header,
-  ModalController,
-  NotificationBar
-} from 'organisms'
+import { DisasterAlert, Footer, Header, ModalController, NotificationBar } from 'organisms'
 
-const shouldNotificationBarBeVisible = (
-  listOfUrls,
-  currentPathname,
-  isCookiePresent
-) => {
+const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePresent) => {
   let boolean
 
   // if location pathname MATCHES a whitelabelurl
@@ -63,16 +53,8 @@ class Main extends React.Component {
 
   componentWillMount() {
     const updatedState = {
-      disasterAlertHidingCookieIsPresent: cookie.load(
-        'close_disaster_loan_parature'
-      )
-        ? true
-        : false,
-      notificationBarHidingCookieIsPresent: cookie.load(
-        'close_notification_bar'
-      )
-        ? true
-        : false
+      disasterAlertHidingCookieIsPresent: cookie.load('close_disaster_loan_parature') ? true : false,
+      notificationBarHidingCookieIsPresent: cookie.load('close_notification_bar') ? true : false
     }
 
     this.setState(updatedState)
@@ -111,9 +93,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const visible =
-      this.props.disasterAlertVisible &&
-      !this.state.disasterAlertHidingCookieIsPresent
+    const visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent
     const {
       notificationDescription,
       notificationUrl,

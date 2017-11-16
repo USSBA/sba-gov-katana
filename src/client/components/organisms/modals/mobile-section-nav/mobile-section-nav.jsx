@@ -87,13 +87,7 @@ class MobileNav extends React.Component {
         </div>
         <div className={s.navTopLine} />
         {children.map((linkObject, index) => {
-          return (
-            <NavLink
-              key={index}
-              link={linkObject}
-              handleClick={this._handleClick}
-            />
-          )
+          return <NavLink key={index} link={linkObject} handleClick={this._handleClick} />
         })}
       </div>
     )

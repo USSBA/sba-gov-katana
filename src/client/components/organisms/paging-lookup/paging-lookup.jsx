@@ -72,11 +72,9 @@ class PagingLookup extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded(
-      'taxonomies',
-      'taxonomyVocabulary',
-      { names: this.props.taxonomyFilters.join(',') }
-    )
+    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomyVocabulary', {
+      names: this.props.taxonomyFilters.join(',')
+    })
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -85,11 +83,7 @@ class PagingLookup extends React.Component {
     // set the taxomonies object when
     // nextProps.items array is populated, AND state.taxonomies array is NOT populated
 
-    if (
-      nextProps.taxonomies &&
-      nextProps.taxonomies.length > 0 &&
-      this.state.taxonomies.length === 0
-    ) {
+    if (nextProps.taxonomies && nextProps.taxonomies.length > 0 && this.state.taxonomies.length === 0) {
       const taxonomies = nextProps.taxonomies.slice()
 
       // add an "All" filter option to dynamic taxonomies
@@ -97,12 +91,9 @@ class PagingLookup extends React.Component {
         taxonomies[index].terms.unshift('All')
       }
 
-      const rearrangedTaxonomyOrder = _.map(
-        this.props.taxonomyFilters,
-        taxonomyVocabularyName => {
-          return _.find(taxonomies, { name: taxonomyVocabularyName })
-        }
-      )
+      const rearrangedTaxonomyOrder = _.map(this.props.taxonomyFilters, taxonomyVocabularyName => {
+        return _.find(taxonomies, { name: taxonomyVocabularyName })
+      })
 
       // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
       rearrangedTaxonomyOrder.push({
@@ -139,9 +130,7 @@ class PagingLookup extends React.Component {
   handleSubmit() {
     const queryObject = this.state.query
 
-    this.fireDocumentationLookupEvent(
-      `Apply CTA: Term: ${queryObject.searchTerm}`
-    )
+    this.fireDocumentationLookupEvent(`Apply CTA: Term: ${queryObject.searchTerm}`)
     this.setState(
       {
         items: undefined,
@@ -195,11 +184,7 @@ class PagingLookup extends React.Component {
         })
         const queryTerms = _.assign({}, remappedState, { start, end })
 
-        this.props.actions.fetchContentIfNeeded(
-          this.props.type,
-          this.props.type,
-          queryTerms
-        )
+        this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryTerms)
       }
     )
   }
@@ -220,9 +205,7 @@ class PagingLookup extends React.Component {
   handleQueryChange(field, value) {
     if (field !== 'searchTerm') {
       // Log Analytic Event, but not for search term
-      this.fireDocumentationLookupEvent(
-        `${fieldNameMap[field] || field}: ${value}`
-      )
+      this.fireDocumentationLookupEvent(`${fieldNameMap[field] || field}: ${value}`)
     }
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value

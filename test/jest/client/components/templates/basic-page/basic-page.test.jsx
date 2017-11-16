@@ -44,9 +44,7 @@ describe('BasicPage', () => {
       <BasicPage
         title={title}
         summary={summary}
-        lineage={[
-          { title: 'lineage1', fullUrl: 'http://example.com/lineage1' }
-        ]}
+        lineage={[{ title: 'lineage1', fullUrl: 'http://example.com/lineage1' }]}
       />
     )
     expect(

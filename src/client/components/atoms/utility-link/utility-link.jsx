@@ -5,10 +5,9 @@ import { BasicLink } from 'atoms'
 
 class UtilityLink extends React.Component {
   render() {
-    let anchorClass =
-      styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
+    let anchorClass = styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
 
-    const picked = (({
+    const picked = (({ id, text, url, onClick, onBlur, onFocus, onKeyDown }) => ({
       id,
       text,
       url,
@@ -16,7 +15,7 @@ class UtilityLink extends React.Component {
       onBlur,
       onFocus,
       onKeyDown
-    }) => ({ id, text, url, onClick, onBlur, onFocus, onKeyDown }))(this.props)
+    }))(this.props)
     return (
       <li className={styles.UtilityLink}>
         <BasicLink {...picked} myClassName={anchorClass} />

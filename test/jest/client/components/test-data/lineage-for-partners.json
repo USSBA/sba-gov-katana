@@ -33,8 +33,7 @@
               {
                 "title": "Operate as a 7(a) Lender",
                 "url": "operate-as-a-7a-lender",
-                "fullUrl":
-                  "/for-partners/lenders/7a-loans/operate-as-a-7a-lender",
+                "fullUrl": "/for-partners/lenders/7a-loans/operate-as-a-7a-lender",
                 "children": null,
                 "description": null,
                 "weight": -10
@@ -51,8 +50,7 @@
               {
                 "title": "Training and Courses",
                 "url": "training-and-courses",
-                "fullUrl":
-                  "/for-partners/lenders/7a-loans/training-and-courses",
+                "fullUrl": "/for-partners/lenders/7a-loans/training-and-courses",
                 "children": null,
                 "description": null,
                 "weight": 10
@@ -60,8 +58,7 @@
               {
                 "title": "Terms and Eligibility",
                 "url": "terms-and-eligibility",
-                "fullUrl":
-                  "/for-partners/lenders/7a-loans/terms-and-eligibility",
+                "fullUrl": "/for-partners/lenders/7a-loans/terms-and-eligibility",
                 "children": null,
                 "description": null,
                 "weight": 20
@@ -99,8 +96,7 @@
           {
             "title": "Pre 7(a) Loans Article",
             "url": "pre-7a-loans-article",
-            "fullUrl":
-              "/for-partners/lenders/pre-7a-loans/pre-7a-loans-article",
+            "fullUrl": "/for-partners/lenders/pre-7a-loans/pre-7a-loans-article",
             "children": null,
             "description": null,
             "weight": -20
@@ -167,8 +163,7 @@
           {
             "title": "Post 7(a) Loans Article",
             "url": "post-7a-loans-article",
-            "fullUrl":
-              "/for-partners/lenders/post-7a-loans/post-7a-loans-article",
+            "fullUrl": "/for-partners/lenders/post-7a-loans/post-7a-loans-article",
             "children": null,
             "description": null,
             "weight": -20

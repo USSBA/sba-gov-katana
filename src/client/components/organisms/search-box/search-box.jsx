@@ -1,12 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import {
-  LargeInversePrimaryButton,
-  MultiSelect,
-  SearchIcon,
-  TextInput
-} from 'atoms'
+import { LargeInversePrimaryButton, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import styles from './search-box.scss'
 import { logPageEvent } from '../../../services/analytics.js'
 import { navigateNow } from '../../../services/navigation.js'
@@ -95,9 +90,9 @@ class SearchBox extends React.Component {
     if (event.keyCode === returnKeyCode) {
       logPageEvent({
         category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
-        action: `Search Enter-Button: Activity: ${
-          this.state.selectedDocumentActivity
-        }; Term: ${this.state.searchTerm}`
+        action: `Search Enter-Button: Activity: ${this.state.selectedDocumentActivity}; Term: ${
+          this.state.searchTerm
+        }`
       })
       this.submit()
     }
@@ -106,9 +101,9 @@ class SearchBox extends React.Component {
   handleOnClick() {
     logPageEvent({
       category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
-      action: `Search CTA-Click: Activity: ${
-        this.state.selectedDocumentActivity
-      }; Term: ${this.state.searchTerm}`
+      action: `Search CTA-Click: Activity: ${this.state.selectedDocumentActivity}; Term: ${
+        this.state.searchTerm
+      }`
     })
     this.submit()
   }
@@ -136,8 +131,8 @@ class SearchBox extends React.Component {
         <div className={styles.greyParagraph}>
           <h2>{this.props.sectionHeaderText}</h2>
           <p>
-            Quickly find the {this.props.documentType}s you regularly use as a{' '}
-            {this.props.documentProgram} lender.{' '}
+            Quickly find the {this.props.documentType}s you regularly use as a {this.props.documentProgram}{' '}
+            lender.{' '}
           </p>
           <div className={styles.searchBox}>
             <TextInput

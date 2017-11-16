@@ -31,10 +31,7 @@ class ProgramPage extends React.Component {
       searchBox: styles.searchBox,
       childPageMenu: styles.childPageMenu
     }
-    let wrapped = paragraphMapper.wrapParagraphs(
-      paragraphList,
-      wrapperClassMapping
-    )
+    let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped
   }
 
@@ -51,10 +48,7 @@ class ProgramPage extends React.Component {
             return {
               url: button.url,
               btnText: button.title,
-              btnType:
-                index === 0
-                  ? 'LargeInversePrimaryButton'
-                  : 'LargePrimaryButton',
+              btnType: index === 0 ? 'LargeInversePrimaryButton' : 'LargePrimaryButton',
               eventConfig: {
                 category: 'Program-Landing-CTA',
                 action: button.title
@@ -73,9 +67,7 @@ class ProgramPage extends React.Component {
             alt={bannerImage.image.alt}
           />
         )}
-        {!hasBannerImage && (
-          <Hero title={title} message={summary} buttons={_formattedButtons} />
-        )}
+        {!hasBannerImage && <Hero title={title} message={summary} buttons={_formattedButtons} />}
         <div className={styles.container}>{paragraphs}</div>
       </div>
     )

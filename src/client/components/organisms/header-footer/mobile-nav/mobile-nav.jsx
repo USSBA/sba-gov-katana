@@ -49,11 +49,7 @@ class MobileNav extends React.Component {
             className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}
             onClick={me.toggleNav.bind(me)}
           >
-            <SectionLink
-              id={'main-menu-link-' + index}
-              url={item.link}
-              text={item.linkTitle}
-            />
+            <SectionLink id={'main-menu-link-' + index} url={item.link} text={item.linkTitle} />
           </div>
         )
       })
@@ -61,15 +57,10 @@ class MobileNav extends React.Component {
       menuItems.push(<div key={1} />)
     }
 
-    let baseLength = this.props.mainMenuData
-      ? this.props.mainMenuData.length
-      : 2
+    let baseLength = this.props.mainMenuData ? this.props.mainMenuData.length : 2
     if (clientConfig.forPartners) {
       menuItems.push(
-        <div
-          key={baseLength + 1}
-          className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}
-        >
+        <div key={baseLength + 1} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
           <a className={styles.navLinkSpecialNew} href="/partners">
             For Partners
           </a>
@@ -77,10 +68,7 @@ class MobileNav extends React.Component {
       )
     }
     menuItems.push(
-      <div
-        key={baseLength + 2}
-        className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}
-      >
+      <div key={baseLength + 2} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
         <a
           id="mobile-nav-near-you"
           className={styles.navLinkSpecialNew}
@@ -92,15 +80,8 @@ class MobileNav extends React.Component {
       </div>
     )
     menuItems.push(
-      <div
-        key={baseLength + 3}
-        className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}
-      >
-        <a
-          id="mobile-nav-events"
-          className={styles.navLinkSpecialNew}
-          href="/tools/events#events-page"
-        >
+      <div key={baseLength + 3} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
+        <a id="mobile-nav-events" className={styles.navLinkSpecialNew} href="/tools/events#events-page">
           <img className={styles.linkIcon} src={calendarIcon} alt="" />
           Small Business Events
         </a>
@@ -119,11 +100,7 @@ class MobileNav extends React.Component {
           <span>
             <a
               id="mobile-navigation-button"
-              className={
-                this.state.expanded
-                  ? styles.menuButtonOpen
-                  : styles.menuButtonClosed
-              }
+              className={this.state.expanded ? styles.menuButtonOpen : styles.menuButtonClosed}
               onClick={this.toggleNav.bind(this)}
             >
               <HamburgerIcon isOpen={this.state.expanded} />
@@ -132,25 +109,13 @@ class MobileNav extends React.Component {
         </div>
         <div
           key={7}
-          className={
-            styles.mainNavNew +
-            ' ' +
-            (this.state.expanded ? styles.mainNavNewShow : '')
-          }
+          className={styles.mainNavNew + ' ' + (this.state.expanded ? styles.mainNavNewShow : '')}
         >
           <form className={styles.mobileSearchContainerNew}>
             <div className={styles.searchIconContainerNew}>
-              <img
-                className={styles.searchIconNew}
-                alt="Search"
-                src={searchIcon}
-              />
+              <img className={styles.searchIconNew} alt="Search" src={searchIcon} />
             </div>
-            <input
-              type="text"
-              className={styles.searchInputFieldNew}
-              placeholder="Search SBA.gov"
-            />
+            <input type="text" className={styles.searchInputFieldNew} placeholder="Search SBA.gov" />
           </form>
           <div
             className={styles.mobileNavMenuLinks}

@@ -45,9 +45,7 @@ class RadioButtonGroup extends React.Component {
         <div
           id={id + '-item'}
           className={
-            styles.radioItem +
-            ' ' +
-            (isChecked ? styles.radioItemSelected : styles.radioItemNotSelected)
+            styles.radioItem + ' ' + (isChecked ? styles.radioItemSelected : styles.radioItemNotSelected)
           }
           onClick={event => me.handleClick(index, me)}
           key={index}

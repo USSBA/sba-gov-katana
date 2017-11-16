@@ -63,8 +63,7 @@ class HappeningNow extends React.Component {
       return <div />
     }
 
-    let desktopStyle =
-      size === 3 ? styles.itemDesktopThree : styles.itemDesktopFour
+    let desktopStyle = size === 3 ? styles.itemDesktopThree : styles.itemDesktopFour
     let me = this
     let title = "What's happening now."
     return (

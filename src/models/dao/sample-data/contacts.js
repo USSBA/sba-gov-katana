@@ -22,8 +22,7 @@ export default [
   },
   {
     city: 'Perryville',
-    link:
-      'https://www.bankofmissouri.com/locations-perryville-north-kingshighway',
+    link: 'https://www.bankofmissouri.com/locations-perryville-north-kingshighway',
     state: 'MO',
     streetAddress: '916 N Kingshighway',
     zipCode: 63775,
@@ -53,8 +52,7 @@ export default [
   },
   {
     city: 'Gahanna',
-    link:
-      'http://www.heartlandbank.com/heartland-bank-office-locations/gahanna',
+    link: 'http://www.heartlandbank.com/heartland-bank-office-locations/gahanna',
     state: 'OH',
     streetAddress: '850 N Hamilton Rd',
     zipCode: 43230,
@@ -124,8 +122,7 @@ export default [
   },
   {
     city: 'Carson City',
-    link:
-      'https://www.gncu.org/Contact/Locations/Branches/Carson-City-Eagle-Station',
+    link: 'https://www.gncu.org/Contact/Locations/Branches/Carson-City-Eagle-Station',
     state: 'NV',
     streetAddress: '451 Eagle Station Ln',
     zipCode: 89701,
@@ -285,8 +282,7 @@ export default [
   },
   {
     city: 'South Weymouth',
-    link:
-      'https://www.southshorebank.com/about/locations/?branch=weymouth_-_main_st',
+    link: 'https://www.southshorebank.com/about/locations/?branch=weymouth_-_main_st',
     state: 'MA',
     streetAddress: '1530 Main St',
     zipCode: 2190,
@@ -326,8 +322,7 @@ export default [
   },
   {
     city: 'Jefferson City',
-    link:
-      'https://www.hawthornbank.com/location_JeffersonCityMainBankingCenter',
+    link: 'https://www.hawthornbank.com/location_JeffersonCityMainBankingCenter',
     state: 'MO',
     streetAddress: '132 E High St',
     zipCode: 65101,
@@ -378,8 +373,7 @@ export default [
   },
   {
     city: 'Honolulu',
-    link:
-      'https://www.hawaiiusafcu.com/About-Us/Get-In-Touch/Branch-ATM-Locations/Main-Branch',
+    link: 'https://www.hawaiiusafcu.com/About-Us/Get-In-Touch/Branch-ATM-Locations/Main-Branch',
     state: 'HI',
     streetAddress: '1226 College Walk',
     zipCode: 96817,
@@ -529,8 +523,7 @@ export default [
   },
   {
     city: 'Wilmington',
-    link:
-      'https://www.tdbank.com/net/absearch/LocationDetails.aspx?branchID=B1601',
+    link: 'https://www.tdbank.com/net/absearch/LocationDetails.aspx?branchID=B1601',
     state: 'DE',
     streetAddress: '2035 Limestone Rd',
     zipCode: 19808,
@@ -560,8 +553,7 @@ export default [
   },
   {
     city: 'Cincinnati',
-    link:
-      'https://www.usbank.com/locations/locator-results.html?stringquery=45202',
+    link: 'https://www.usbank.com/locations/locator-results.html?stringquery=45202',
     state: 'OH',
     streetAddress: '425 Walnut St',
     zipCode: 45202,
@@ -623,8 +615,7 @@ export default [
   },
   {
     city: 'Cleveland',
-    link:
-      'https://locations.key.com/oh/cleveland/2051896-127-public-square.html',
+    link: 'https://locations.key.com/oh/cleveland/2051896-127-public-square.html',
     state: 'OH',
     streetAddress: '127 Public Square',
     zipCode: 44114,
@@ -744,8 +735,7 @@ export default [
   },
   {
     city: 'Los Angeles',
-    link:
-      'https://www.calbanktrust.com/contact-us/international-banking-group-directory.html',
+    link: 'https://www.calbanktrust.com/contact-us/international-banking-group-directory.html',
     state: 'CA',
     streetAddress: '550 South Hope St. 3rd Floor',
     zipCode: 90071,
@@ -785,8 +775,7 @@ export default [
   },
   {
     city: 'Centerville',
-    link:
-      'https://www.oneamericanbank.com/your-bank/your-bank/locations-hours.html',
+    link: 'https://www.oneamericanbank.com/your-bank/your-bank/locations-hours.html',
     state: 'SD',
     streetAddress: '549 Broadway',
     zipCode: 57014,
@@ -876,8 +865,7 @@ export default [
   },
   {
     city: 'Hannaford',
-    link:
-      'https://www.bankforward.com/locations/search/search&category=hannaford/',
+    link: 'https://www.bankforward.com/locations/search/search&category=hannaford/',
     state: 'ND',
     streetAddress: '390 Wheat St',
     zipCode: 58448,
@@ -907,8 +895,7 @@ export default [
   },
   {
     city: 'Farmington Hills',
-    link:
-      'https://www.levelonebank.com/Resources/Contact-Us/Locations-Hours#Corporate-Office',
+    link: 'https://www.levelonebank.com/Resources/Contact-Us/Locations-Hours#Corporate-Office',
     state: 'MI',
     streetAddress: '32991 Hamilton Ct',
     zipCode: 48334,
@@ -918,8 +905,7 @@ export default [
   },
   {
     city: 'Farmington Hills',
-    link:
-      'https://www.levelonebank.com/Resources/Contact-Us/Locations-Hours#Corporate-Office',
+    link: 'https://www.levelonebank.com/Resources/Contact-Us/Locations-Hours#Corporate-Office',
     state: 'MI',
     streetAddress: '32991 Hamilton Ct.',
     zipCode: 48334,
@@ -1029,8 +1015,7 @@ export default [
   },
   {
     city: 'Baltimore',
-    link:
-      'https://locations.mtb.com/md/baltimore/bank-branches-and-atms-baltimore-md-6443.html',
+    link: 'https://locations.mtb.com/md/baltimore/bank-branches-and-atms-baltimore-md-6443.html',
     state: 'MD',
     streetAddress: '25 South Charles Street, 19th Floor',
     zipCode: 21212,
@@ -1141,8 +1126,7 @@ export default [
   },
   {
     city: 'Dallas',
-    link:
-      'https://www.texascapitalbank.com/about-us/get-to-know-us/locations/dallas',
+    link: 'https://www.texascapitalbank.com/about-us/get-to-know-us/locations/dallas',
     state: 'TX',
     streetAddress: '2000 McKinney Avenue, Suite 700',
     zipCode: 75201,
@@ -1162,8 +1146,7 @@ export default [
   },
   {
     city: 'Winston Salem',
-    link:
-      'https://www.bbt.com/bbtdotcom/locator/details/200_W_2ND_ST__WINSTON_SALEM__NC__27101',
+    link: 'https://www.bbt.com/bbtdotcom/locator/details/200_W_2ND_ST__WINSTON_SALEM__NC__27101',
     state: 'NC',
     streetAddress: '200 W Second St',
     zipCode: 27101,
@@ -1193,8 +1176,7 @@ export default [
   },
   {
     city: 'Mclean',
-    link:
-      'https://www.us.hsbc.com/1/2/home/customer-service/hsbc-locations/branch',
+    link: 'https://www.us.hsbc.com/1/2/home/customer-service/hsbc-locations/branch',
     state: 'VA',
     streetAddress: '1800 Tysons Blvd, Suite 50',
     zipCode: 22102,
@@ -1364,8 +1346,7 @@ export default [
   },
   {
     city: 'Mount Pleasant',
-    link:
-      'https://www.gnty.com/locations/LocationInfo.aspx?id=Mt.-Pleasant-~-Downtown',
+    link: 'https://www.gnty.com/locations/LocationInfo.aspx?id=Mt.-Pleasant-~-Downtown',
     state: 'TX',
     streetAddress: '100 W Arkansas',
     zipCode: 75455,
@@ -1375,8 +1356,7 @@ export default [
   },
   {
     city: 'Kansas City',
-    link:
-      'https://www.commercebank.com/locations/commercial/MO/Kansas-City/922-walnut-street.asp',
+    link: 'https://www.commercebank.com/locations/commercial/MO/Kansas-City/922-walnut-street.asp',
     state: 'MO',
     streetAddress: '1000 Walnut St',
     zipCode: 64106,
@@ -2138,8 +2118,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.business4wv.com/b4wvpublic/default.aspx?pagename=applyforlicense#resultsBookmark',
+    link: 'http://www.business4wv.com/b4wvpublic/default.aspx?pagename=applyforlicense#resultsBookmark',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2199,8 +2178,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.sdreadytowork.com/Build-Your-Business/Start-Your-Business.aspx',
+    link: 'http://www.sdreadytowork.com/Build-Your-Business/Start-Your-Business.aspx',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2210,8 +2188,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'https://www.tn.gov/revenue/article/business-tax-registration-and-licensing',
+    link: 'https://www.tn.gov/revenue/article/business-tax-registration-and-licensing',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2231,8 +2208,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.ri.gov/business/index.php?subcategory=17&amp;linkgroup=75',
+    link: 'http://www.ri.gov/business/index.php?subcategory=17&amp;linkgroup=75',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2302,8 +2278,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'https://edpnc.com/start-or-grow-a-business/start-a-business/license-permits/',
+    link: 'https://edpnc.com/start-or-grow-a-business/start-a-business/license-permits/',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2433,8 +2408,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.mass.gov/dor/businesses/help-and-resources/licensing-and-regulation.html',
+    link: 'http://www.mass.gov/dor/businesses/help-and-resources/licensing-and-regulation.html',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2444,8 +2418,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.michigan.gov/statelicensesearch/0,4671,7-180-24786---,00.html',
+    link: 'http://www.michigan.gov/statelicensesearch/0,4671,7-180-24786---,00.html',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2635,8 +2608,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.arkansas.gov/services/list/category/business-professional-licensing',
+    link: 'http://www.arkansas.gov/services/list/category/business-professional-licensing',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2777,8 +2749,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'https://sosenterprise.sd.gov/BusinessServices/Business/RegistrationInstr.aspx',
+    link: 'https://sosenterprise.sd.gov/BusinessServices/Business/RegistrationInstr.aspx',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2798,8 +2769,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www2.pr.gov/pages/servicefilter.aspx?cat=registro&type=empresa',
+    link: 'http://www2.pr.gov/pages/servicefilter.aspx?cat=registro&type=empresa',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2839,8 +2809,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.sos.state.oh.us/sos/upload/business/filingformsfeeschedule.aspx?page=251',
+    link: 'http://www.sos.state.oh.us/sos/upload/business/filingformsfeeschedule.aspx?page=251',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2870,8 +2839,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.nc.gov/services/starting-business-nc/business-registration',
+    link: 'http://www.nc.gov/services/starting-business-nc/business-registration',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2951,8 +2919,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.sos.state.mn.us/business-liens/start-a-business/how-to-register-your-business/',
+    link: 'http://www.sos.state.mn.us/business-liens/start-a-business/how-to-register-your-business/',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2982,8 +2949,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.mass.gov/hed/business/start-business/new-business-steps.html',
+    link: 'http://www.mass.gov/hed/business/start-business/new-business-steps.html',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -2993,8 +2959,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.michigan.gov/business/0,4539,7-255-49232_49433---,00.html',
+    link: 'http://www.michigan.gov/business/0,4539,7-255-49232_49433---,00.html',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -3205,8 +3170,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'https://www.commerce.alaska.gov/web/cbpl/Corporations/ReservingRegisteringBusinessName.aspx',
+    link: 'https://www.commerce.alaska.gov/web/cbpl/Corporations/ReservingRegisteringBusinessName.aspx',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -3216,8 +3180,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://tax.wv.gov/Business/BusinessRegistration/Pages/BusinessRegistration.aspx',
+    link: 'http://tax.wv.gov/Business/BusinessRegistration/Pages/BusinessRegistration.aspx',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -3287,8 +3250,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://tax.vermont.gov/business-and-corp/register-renew-close-business',
+    link: 'http://tax.vermont.gov/business-and-corp/register-renew-close-business',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -3378,8 +3340,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'https://www.doreservices.state.pa.us/BusinessTax/PA100/FormatSelection.htm',
+    link: 'https://www.doreservices.state.pa.us/BusinessTax/PA100/FormatSelection.htm',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -3519,8 +3480,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'http://www.revenue.state.mn.us/businesses/Pages/Business-Registration.aspx',
+    link: 'http://www.revenue.state.mn.us/businesses/Pages/Business-Registration.aspx',
     state: '',
     streetAddress: '',
     zipCode: '',
@@ -3530,8 +3490,7 @@ export default [
   },
   {
     city: '',
-    link:
-      'https://interactive.marylandtaxes.com/webapps/comptrollercra/entrance.asp',
+    link: 'https://interactive.marylandtaxes.com/webapps/comptrollercra/entrance.asp',
     state: '',
     streetAddress: '',
     zipCode: '',

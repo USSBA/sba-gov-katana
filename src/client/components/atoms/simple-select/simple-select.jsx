@@ -7,17 +7,12 @@ import { ValidationIcon } from 'atoms'
 class SimpleSelect extends React.Component {
   getValidationIcon() {
     return this.props.validationState == 'success' ? (
-      <i
-        className={'fa fa-check-circle ' + styles.textInputIconValid}
-        aria-hidden="true"
-      />
+      <i className={'fa fa-check-circle ' + styles.textInputIconValid} aria-hidden="true" />
     ) : null
   }
 
   getValidationStyle() {
-    return this.props.validationState == 'error'
-      ? styles.textInputInvalid
-      : styles.textInput
+    return this.props.validationState == 'error' ? styles.textInputInvalid : styles.textInput
   }
 
   getErrorMessage() {
@@ -50,11 +45,7 @@ class SimpleSelect extends React.Component {
     let labelTag = this.getLabel()
 
     return (
-      <div
-        id={this.props.id + '-container'}
-        className={styles.selectContainer}
-        hidden={this.props.hidden}
-      >
+      <div id={this.props.id + '-container'} className={styles.selectContainer} hidden={this.props.hidden}>
         {labelTag}
         <div className={styles.innerContainer}>
           <select
@@ -68,11 +59,7 @@ class SimpleSelect extends React.Component {
             </option>
             {this.props.options.map(function(item, index) {
               return (
-                <option
-                  key={index}
-                  value={item.value}
-                  className={styles.myoption}
-                >
+                <option key={index} value={item.value} className={styles.myoption}>
                   {item.name}
                 </option>
               )

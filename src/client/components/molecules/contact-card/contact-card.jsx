@@ -15,12 +15,7 @@ class ContactCard extends React.Component {
     return (
       <div className={'contact-card-link-line ' + styles.line} key={index}>
         <div className={styles.icon}>
-          <SmallIcon
-            fontAwesomeIconClassName={icon}
-            altText={text}
-            tabbable={false}
-            href={href || text}
-          />
+          <SmallIcon fontAwesomeIconClassName={icon} altText={text} tabbable={false} href={href || text} />
         </div>
         <div className={styles.text}>
           <a className={style} href={href || text} target="_blank">
@@ -55,10 +50,7 @@ class ContactCard extends React.Component {
 
   render() {
     let address =
-      this.props.streetAddress &&
-      this.props.city &&
-      this.props.state &&
-      this.props.zipCode
+      this.props.streetAddress && this.props.city && this.props.state && this.props.zipCode
         ? this.props.streetAddress +
           '\n' +
           this.props.city +
@@ -93,9 +85,7 @@ class ContactCard extends React.Component {
                 'tel:' + this.props.phoneNumber
               )
             : null}
-          {this.props.fax
-            ? this.renderIconWithText(4, this.props.fax, styles.fax, 'fax')
-            : null}
+          {this.props.fax ? this.renderIconWithText(4, this.props.fax, styles.fax, 'fax') : null}
           {this.props.email
             ? this.renderLinkableIconWithText(
                 5,

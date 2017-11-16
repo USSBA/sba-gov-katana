@@ -16,13 +16,7 @@ const links = [
 ]
 
 const jsx = (
-  <FrontPageHero
-    color="blue"
-    image="image.png"
-    imageAlt="some image"
-    links={links}
-    title="Title"
-  />
+  <FrontPageHero color="blue" image="image.png" imageAlt="some image" links={links} title="Title" />
 )
 
 describe('front page hero', () => {

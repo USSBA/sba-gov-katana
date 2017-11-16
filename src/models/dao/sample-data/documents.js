@@ -68,8 +68,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1974-10-03',
         expirationDate: '2000-08-24',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -98,12 +97,7 @@ export default [
     url: 'procedural-notice-752-sunt-nostrum-pariatur-totam-eos'
   },
   {
-    activitys: [
-      'Litigation',
-      'Guaranty purchase',
-      'Credit and risk',
-      'Periodic reporting'
-    ],
+    activitys: ['Litigation', 'Guaranty purchase', 'Credit and risk', 'Periodic reporting'],
     body: ' ',
     documentIdType: 'Policy Guidance',
     documentIdNumber: '707',
@@ -112,8 +106,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2005-05-15',
         expirationDate: '2016-08-14',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -122,13 +115,7 @@ export default [
       title: 'Esse, reprehenderit.'
     },
     ombNumber: '827',
-    programs: [
-      'Lending programs',
-      '7(a)',
-      'CDC/504',
-      'Microloans',
-      'Surety Bonds'
-    ],
+    programs: ['Lending programs', '7(a)', 'CDC/504', 'Microloans', 'Surety Bonds'],
     summary:
       'Repudiandae in nihil maiores consequatur officia excepturi iusto et consequatur Exercitationem aut mollit aspernatur quo',
     type: 'document',
@@ -155,8 +142,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1974-01-26',
         expirationDate: '2000-08-19',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -197,8 +183,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1983-06-22',
         expirationDate: '2012-07-23',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -233,8 +218,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1982-07-20',
         expirationDate: '2014-08-02',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -244,8 +228,7 @@ export default [
     },
     ombNumber: '859',
     programs: ['8(a)', 'Lending programs', 'CDC/504', 'SBIC', 'HUBZone'],
-    summary:
-      'Minus sint in mollit non ratione consectetur et minima aut amet et dolores omnis illo',
+    summary: 'Minus sint in mollit non ratione consectetur et minima aut amet et dolores omnis illo',
     type: 'document',
     title: 'Ipsum.',
     id: 3393,
@@ -272,8 +255,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1986-10-18',
         expirationDate: '1973-04-09',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -291,8 +273,7 @@ export default [
       'SBIC',
       'Disaster assistance'
     ],
-    summary:
-      'In tenetur corporis aut vel libero distinctio Praesentium illo maxime ab id',
+    summary: 'In tenetur corporis aut vel libero distinctio Praesentium illo maxime ab id',
     type: 'document',
     title: 'Minima dolorem rem porro rerum.',
     id: 3392,
@@ -317,8 +298,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1991-10-23',
         expirationDate: '1991-09-09',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -361,8 +341,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1991-03-26',
         expirationDate: '2013-09-03',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -406,8 +385,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1978-11-04',
         expirationDate: '2015-08-22',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -416,15 +394,7 @@ export default [
       title: 'Amet, officia consequat. Non tempor Nam.'
     },
     ombNumber: '699',
-    programs: [
-      '8(a)',
-      'Contracting',
-      'Lending programs',
-      '7(a)',
-      'Microloans',
-      'SBIC',
-      'HUBZone'
-    ],
+    programs: ['8(a)', 'Contracting', 'Lending programs', '7(a)', 'Microloans', 'SBIC', 'HUBZone'],
     summary: 'Distinctio Eveniet minima non voluptas odit culpa nisi officiis',
     type: 'document',
     title: 'Corrupti, id, molestias aperiam totam.',
@@ -450,8 +420,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1981-06-14',
         expirationDate: '2009-08-21',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -460,14 +429,7 @@ export default [
       title: 'Libero sit.'
     },
     ombNumber: '760',
-    programs: [
-      'CDC/504',
-      'Microloans',
-      'SBIC',
-      'Surety Bonds',
-      'HUBZone',
-      'Disaster assistance'
-    ],
+    programs: ['CDC/504', 'Microloans', 'SBIC', 'Surety Bonds', 'HUBZone', 'Disaster assistance'],
     summary:
       'Autem possimus voluptatem sed quo et reprehenderit nobis quis sed eum sit quam ipsam nihil quibusdam qui amet tempore',
     type: 'document',
@@ -495,8 +457,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1999-09-02',
         expirationDate: '1973-11-17',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -530,8 +491,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1992-09-18',
         expirationDate: '1978-08-28',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -574,8 +534,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2002-07-17',
         expirationDate: '1975-10-23',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -584,14 +543,7 @@ export default [
       title: 'Sit, asperiores.'
     },
     ombNumber: '549',
-    programs: [
-      'Contracting',
-      'Lending programs',
-      '7(a)',
-      'CDC/504',
-      'Microloans',
-      'HUBZone'
-    ],
+    programs: ['Contracting', 'Lending programs', '7(a)', 'CDC/504', 'Microloans', 'HUBZone'],
     summary:
       'Commodi sed qui occaecat quisquam similique dolore sapiente quia quae provident aut recusandae Magni non molestiae',
     type: 'document',
@@ -617,8 +569,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2001-04-10',
         expirationDate: '2008-01-01',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -662,8 +613,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1984-02-27',
         expirationDate: '1997-05-12',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -706,8 +656,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2011-11-21',
         expirationDate: '1988-12-14',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -749,8 +698,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1987-06-04',
         expirationDate: '1997-06-16',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -797,8 +745,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1971-10-10',
         expirationDate: '1991-04-01',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -816,8 +763,7 @@ export default [
       'SBIC',
       'Surety Bonds'
     ],
-    summary:
-      'Quia incidunt autem est et error dolore nemo quis veniam unde voluptatem ad aperiam',
+    summary: 'Quia incidunt autem est et error dolore nemo quis veniam unde voluptatem ad aperiam',
     type: 'document',
     title: 'Tempore, modi et enim veniam.',
     id: 3408,
@@ -844,8 +790,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1999-04-03',
         expirationDate: '1973-03-05',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -854,15 +799,8 @@ export default [
       title: 'Voluptatem inventore.'
     },
     ombNumber: '973',
-    programs: [
-      'Contracting',
-      'Microloans',
-      'SBIC',
-      'Surety Bonds',
-      'Disaster assistance'
-    ],
-    summary:
-      'Est vero aut quae ex aliquid nesciunt officia nulla facilis non in totam',
+    programs: ['Contracting', 'Microloans', 'SBIC', 'Surety Bonds', 'Disaster assistance'],
+    summary: 'Est vero aut quae ex aliquid nesciunt officia nulla facilis non in totam',
     type: 'document',
     title: 'Facilis ut quasi reprehenderit.',
     id: 3389,
@@ -886,8 +824,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1970-02-11',
         expirationDate: '1999-09-07',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -927,8 +864,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1982-11-09',
         expirationDate: '1979-05-10',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -937,13 +873,7 @@ export default [
       title: 'Optio, sed saepe.'
     },
     ombNumber: '686',
-    programs: [
-      'Contracting',
-      'Lending programs',
-      'Microloans',
-      'Surety Bonds',
-      'HUBZone'
-    ],
+    programs: ['Contracting', 'Lending programs', 'Microloans', 'Surety Bonds', 'HUBZone'],
     summary:
       'Sed excepturi rerum consectetur in esse rem architecto in consequatur tempore in voluptate quis minus nesciunt velit',
     type: 'document',
@@ -971,8 +901,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1975-08-27',
         expirationDate: '1989-08-07',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -981,15 +910,7 @@ export default [
       title: 'Sit, excepturi amet, officia quia dolores.'
     },
     ombNumber: '584',
-    programs: [
-      '8(a)',
-      'Contracting',
-      'Lending programs',
-      '7(a)',
-      'CDC/504',
-      'Surety Bonds',
-      'HUBZone'
-    ],
+    programs: ['8(a)', 'Contracting', 'Lending programs', '7(a)', 'CDC/504', 'Surety Bonds', 'HUBZone'],
     summary:
       'Quam est et tempore nostrud nisi natus perferendis debitis quos repudiandae commodo aperiam quaerat magna',
     type: 'document',
@@ -1015,8 +936,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1988-02-06',
         expirationDate: '1994-03-06',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1025,15 +945,8 @@ export default [
       title: 'Sed suscipit reprehenderit quibusdam sapiente.'
     },
     ombNumber: '521',
-    programs: [
-      'Contracting',
-      'Microloans',
-      'SBA operations',
-      'Surety Bonds',
-      'HUBZone'
-    ],
-    summary:
-      'Animi ut tempore esse sint sed omnis non et atque voluptate aliqua Iste et velit in aperiam',
+    programs: ['Contracting', 'Microloans', 'SBA operations', 'Surety Bonds', 'HUBZone'],
+    summary: 'Animi ut tempore esse sint sed omnis non et atque voluptate aliqua Iste et velit in aperiam',
     type: 'document',
     title: 'In alias omnis alias et.',
     id: 3381,
@@ -1059,8 +972,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2012-05-10',
         expirationDate: '2003-10-10',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1087,12 +999,7 @@ export default [
     url: 'sop-484-aliquam-ex-et-excepturi-pariatur-et'
   },
   {
-    activitys: [
-      'General',
-      'Closing',
-      'Guaranty purchase',
-      'Licensing and organizational'
-    ],
+    activitys: ['General', 'Closing', 'Guaranty purchase', 'Licensing and organizational'],
     body: {},
     documentIdType: 'Policy Guidance',
     documentIdNumber: '289',
@@ -1101,8 +1008,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1978-05-06',
         expirationDate: '2000-03-04',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1144,8 +1050,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2004-05-26',
         expirationDate: '1993-05-13',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1167,8 +1072,7 @@ export default [
       'HUBZone',
       'Disaster assistance'
     ],
-    summary:
-      'Vel et asperiores illum irure porro saepe aperiam est distinctio Sequi accusamus laboris',
+    summary: 'Vel et asperiores illum irure porro saepe aperiam est distinctio Sequi accusamus laboris',
     type: 'document',
     title: 'Fugiat.',
     id: 3384,
@@ -1194,8 +1098,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1989-05-23',
         expirationDate: '1978-04-21',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1242,8 +1145,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2017-01-03',
         expirationDate: '1972-04-02',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1284,8 +1186,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1991-12-03',
         expirationDate: '2002-09-26',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_6.pdf',
         version: '1'
       }
     ],
@@ -1304,12 +1205,7 @@ export default [
     url: 'public-law-pl-994-aut-est'
   },
   {
-    activitys: [
-      'Processing',
-      'Closing',
-      'Liquidation',
-      'Licensing and organizational'
-    ],
+    activitys: ['Processing', 'Closing', 'Liquidation', 'Licensing and organizational'],
     body: {},
     documentIdType: 'Public Law (PL)',
     documentIdNumber: '746',
@@ -1318,8 +1214,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2004-06-23',
         expirationDate: '1977-06-24',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_4.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_4.pdf',
         version: '1'
       }
     ],
@@ -1328,16 +1223,8 @@ export default [
       title: 'Et suscipit saepe corporis.'
     },
     ombNumber: '74',
-    programs: [
-      'Lending programs',
-      '7(a)',
-      'Microloans',
-      'Surety Bonds',
-      'HUBZone',
-      'Disaster assistance'
-    ],
-    summary:
-      'Et consequatur Omnis ut ex vel ut ut labore voluptatem officiis enim',
+    programs: ['Lending programs', '7(a)', 'Microloans', 'Surety Bonds', 'HUBZone', 'Disaster assistance'],
+    summary: 'Et consequatur Omnis ut ex vel ut ut labore voluptatem officiis enim',
     type: 'document',
     title: 'Voluptates deleniti dolores labore.',
     id: 3379,
@@ -1365,8 +1252,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2001-03-06',
         expirationDate: '1997-10-12',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_1.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_1.pdf',
         version: '1'
       }
     ],
@@ -1385,12 +1271,7 @@ export default [
     url: 'policy-guidance-970-eos-qui-sit'
   },
   {
-    activitys: [
-      'Authorization',
-      'Processing',
-      'Servicing',
-      'Licensing and organizational'
-    ],
+    activitys: ['Authorization', 'Processing', 'Servicing', 'Licensing and organizational'],
     body: {},
     documentIdType: 'Support',
     documentIdNumber: '513',
@@ -1399,8 +1280,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2017-01-14',
         expirationDate: '1976-05-20',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_0.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample_0.pdf',
         version: '1'
       }
     ],
@@ -1409,13 +1289,7 @@ export default [
       title: 'Est.'
     },
     ombNumber: '95',
-    programs: [
-      '8(a)',
-      'CDC/504',
-      'Microloans',
-      'SBA operations',
-      'Disaster assistance'
-    ],
+    programs: ['8(a)', 'CDC/504', 'Microloans', 'SBA operations', 'Disaster assistance'],
     summary:
       'Quibusdam aliquam qui quasi dicta laboriosam officiis sint quis quas aliquid necessitatibus aliquid culpa aut dolorum',
     type: 'document',
@@ -1442,8 +1316,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2011-02-05',
         expirationDate: '1971-07-03',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
         version: '1'
       }
     ],
@@ -1479,8 +1352,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2014-07-04',
         expirationDate: '1990-04-14',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
         version: '1'
       }
     ],
@@ -1489,16 +1361,8 @@ export default [
       title: 'Lorem earum voluptatum labore.'
     },
     ombNumber: '202',
-    programs: [
-      '8(a)',
-      'Contracting',
-      '7(a)',
-      'CDC/504',
-      'SBA operations',
-      'SBIC'
-    ],
-    summary:
-      'Perferendis non qui veniam culpa sint consequuntur aut molestiae incidunt officiis est',
+    programs: ['8(a)', 'Contracting', '7(a)', 'CDC/504', 'SBA operations', 'SBIC'],
+    summary: 'Perferendis non qui veniam culpa sint consequuntur aut molestiae incidunt officiis est',
     type: 'document',
     title: 'Commodo est, irure.',
     id: 3370,
@@ -1523,8 +1387,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1999-07-21',
         expirationDate: '2015-07-05',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
         version: '1'
       }
     ],
@@ -1600,13 +1463,7 @@ export default [
     url: 'code-of-federal-regulations-cfr-149-123-a-test-document-is-test'
   },
   {
-    activitys: [
-      'Authorization',
-      'General',
-      'Closing',
-      'Investment and transactions',
-      'Periodic reporting'
-    ],
+    activitys: ['Authorization', 'General', 'Closing', 'Investment and transactions', 'Periodic reporting'],
     body: {},
     documentIdType: 'SBA form',
     documentIdNumber: '725',
@@ -1615,8 +1472,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1991-05-10',
         expirationDate: '1979-09-27',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
         version: '1'
       }
     ],
@@ -1659,8 +1515,7 @@ export default [
         type: 'docFile',
         effectiveDate: '1985-10-04',
         expirationDate: '2014-05-02',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
         version: '1'
       }
     ],
@@ -1669,15 +1524,7 @@ export default [
       title: 'Exercitationem in at.'
     },
     ombNumber: '599',
-    programs: [
-      'Contracting',
-      'Lending programs',
-      '7(a)',
-      'CDC/504',
-      'Microloans',
-      'SBIC',
-      'Surety Bonds'
-    ],
+    programs: ['Contracting', 'Lending programs', '7(a)', 'CDC/504', 'Microloans', 'SBIC', 'Surety Bonds'],
     summary:
       'Ut eos consequuntur ipsum aut distinctio Blanditiis voluptas qui amet dolorem adipisci aut a est modi ut quo',
     type: 'document',
@@ -1702,8 +1549,7 @@ export default [
         type: 'docFile',
         effectiveDate: '2013-12-09',
         expirationDate: '1984-07-19',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-08/pdf-sample.pdf',
         version: '1'
       }
     ],
@@ -1712,16 +1558,8 @@ export default [
       title: 'Alston Velez Associates'
     },
     ombNumber: '532',
-    programs: [
-      '8(a)',
-      'Microloans',
-      'SBA operations',
-      'SBIC',
-      'Surety Bonds',
-      'HUBZone'
-    ],
-    summary:
-      'Architecto sequi adipisicing adipisicing reprehenderit provident obcaecati voluptatem',
+    programs: ['8(a)', 'Microloans', 'SBA operations', 'SBIC', 'Surety Bonds', 'HUBZone'],
+    summary: 'Architecto sequi adipisicing adipisicing reprehenderit provident obcaecati voluptatem',
     type: 'document',
     title: 'Bright and Roth Traders',
     id: 3376,
@@ -1738,16 +1576,14 @@ export default [
         type: 'docFile',
         effectiveDate: null,
         expirationDate: null,
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-07/NCC-1701_1.txt',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-07/NCC-1701_1.txt',
         version: 'NCC-1701-B'
       },
       {
         type: 'docFile',
         effectiveDate: '2017-07-18',
         expirationDate: '2017-07-31',
-        fileUrl:
-          'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-07/NCC-1701_0.txt',
+        fileUrl: 'https://content.sbagov.fearlesstesters.com/sites/default/files/2017-07/NCC-1701_0.txt',
         version: null
       }
     ],

@@ -46,11 +46,7 @@ class ContactInfoForm extends React.Component {
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    let validationState = validationFunction(
-      name,
-      this.state[name],
-      defaultWhenNotSuccessful || null
-    )
+    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Lender Match Form',
@@ -66,31 +62,19 @@ class ContactInfoForm extends React.Component {
     if (includes(fields, 'contactFullName')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getNameValidationState,
-          'contactFullName',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getNameValidationState, 'contactFullName', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'contactPhoneNumber')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getPhoneValidationState,
-          'contactPhoneNumber',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getPhoneValidationState, 'contactPhoneNumber', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'contactEmailAddress')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getEmailValidationState,
-          'contactEmailAddress',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getEmailValidationState, 'contactEmailAddress', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'contactSecondaryEmailAddress')) {
@@ -141,9 +125,7 @@ class ContactInfoForm extends React.Component {
 
   handleFocus(nameOrEvent) {
     let name =
-      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
-        ? nameOrEvent.target.name
-        : nameOrEvent
+      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
     logEvent({
       category: 'Lender Match Form',
       action: 'Focus Event',
@@ -155,11 +137,7 @@ class ContactInfoForm extends React.Component {
     let id = 'lender-match-contact-info-form'
     return (
       <div>
-        <form
-          id={id}
-          ref={input => (this.contactInfoForm = input)}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+        <form id={id} ref={input => (this.contactInfoForm = input)} onSubmit={e => this.handleSubmit(e)}>
           <TextInput
             id={id + '-name'}
             errorText={constants.messages.validation.invalidName}
@@ -202,9 +180,7 @@ class ContactInfoForm extends React.Component {
             name="contactSecondaryEmailAddress"
             tabIndex={-1}
             onChange={this.handleChange.bind(this)}
-            validationState={
-              this.state.validStates.contactSecondaryEmailAddress
-            }
+            validationState={this.state.validStates.contactSecondaryEmailAddress}
           />
           <FormPageButtons
             parentId={id}

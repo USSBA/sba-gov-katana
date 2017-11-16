@@ -1,8 +1,4 @@
-import {
-  saveFeedback,
-  saveFeedbackText,
-  getFeedback
-} from '../service/feedback-service.js'
+import { saveFeedback, saveFeedbackText, getFeedback } from '../service/feedback-service.js'
 import _ from 'lodash'
 import HttpStatus from 'http-status-codes'
 
@@ -22,9 +18,7 @@ function handleFeedback(req, res) {
       })
       .catch(error => {
         console.error(error)
-        res
-          .status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .send('Error saving feedback.')
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error saving feedback.')
       })
   } else {
     res
@@ -36,26 +30,14 @@ function handleFeedback(req, res) {
 }
 
 function handleFeedbackText(req, res) {
-  if (
-    req &&
-    req.body &&
-    req.body.text.feedbackText &&
-    req.params &&
-    req.params.id
-  ) {
-    saveFeedbackText(
-      req.params.id,
-      req.body.text.feedbackText,
-      req.body.text.honeyPotText
-    )
+  if (req && req.body && req.body.text.feedbackText && req.params && req.params.id) {
+    saveFeedbackText(req.params.id, req.body.text.feedbackText, req.body.text.honeyPotText)
       .then(function() {
         res.status(HttpStatus.NO_CONTENT).send()
       })
       .catch(error => {
         console.error(error)
-        res
-          .status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .send('Error saving feedback.')
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error saving feedback.')
       })
   } else {
     res
@@ -79,19 +61,13 @@ function retrieveFeedback(req, res) {
         if (error.message === 'FORBIDDEN') {
           res
             .status(HttpStatus.FORBIDDEN)
-            .send(
-              'Please log in as an Administrator before requesting this data'
-            )
+            .send('Please log in as an Administrator before requesting this data')
         } else {
-          res
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .send('Error retrieving feedback')
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving feedback')
         }
       })
   } else {
-    res
-      .status(HttpStatus.FORBIDDEN)
-      .send('Please log in as an Administrator before requesting this data')
+    res.status(HttpStatus.FORBIDDEN).send('Please log in as an Administrator before requesting this data')
   }
 }
 

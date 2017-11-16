@@ -39,11 +39,7 @@ class LoanInfo extends React.Component {
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    let validationState = validationFunction(
-      name,
-      this.state[name],
-      defaultWhenNotSuccessful || null
-    )
+    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Lender Match Form',
@@ -59,21 +55,13 @@ class LoanInfo extends React.Component {
     if (includes(fields, 'loanAmount')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          this.getLoanAmountValidationState,
-          'loanAmount',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(this.getLoanAmountValidationState, 'loanAmount', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'loanUsage')) {
       validStates = Object.assign(
         validStates,
-        this.validateSingleField(
-          getSelectBoxValidationState,
-          'loanUsage',
-          defaultWhenNotSuccessful
-        )
+        this.validateSingleField(getSelectBoxValidationState, 'loanUsage', defaultWhenNotSuccessful)
       )
     }
     if (includes(fields, 'loanDescription')) {
@@ -94,17 +82,10 @@ class LoanInfo extends React.Component {
   }
 
   getLoanAmountValidationState(name, value, defaultWhenNotSuccessful) {
-    let validFormat = getCurrencyValidationState(
-      name,
-      value,
-      defaultWhenNotSuccessful
-    )
+    let validFormat = getCurrencyValidationState(name, value, defaultWhenNotSuccessful)
     let amountWithoutCommas = value.replace(/(\$|,)/g, '')
     let validAmount = Number(amountWithoutCommas) > 499
-    let valid =
-      validFormat[name] === 'success' && validAmount
-        ? 'success'
-        : defaultWhenNotSuccessful
+    let valid = validFormat[name] === 'success' && validAmount ? 'success' : defaultWhenNotSuccessful
     let newState = {}
     newState[name] = valid
     return newState
@@ -178,9 +159,7 @@ class LoanInfo extends React.Component {
 
   handleFocus(nameOrEvent) {
     let name =
-      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name
-        ? nameOrEvent.target.name
-        : nameOrEvent
+      nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
     logEvent({
       category: 'Lender Match Form',
       action: 'Focus Event',
@@ -213,11 +192,7 @@ class LoanInfo extends React.Component {
     let id = 'lender-match-loan-info-form'
     return (
       <div>
-        <form
-          id={id}
-          ref={input => (this.loanForm = input)}
-          onSubmit={e => this.handleSubmit(e)}
-        >
+        <form id={id} ref={input => (this.loanForm = input)} onSubmit={e => this.handleSubmit(e)}>
           <TextInput
             id={id + '-funding'}
             errorText={constants.messages.validation.invalidLoanAmount}

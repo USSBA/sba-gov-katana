@@ -9,24 +9,14 @@ import { createCtaNavigation } from '../../../services/navigation'
 
 class SmallInverseCta extends React.Component {
   handleClick() {
-    this.props.actions.callToAction(
-      this.props.url,
-      this.props.eventCategory,
-      this.props.eventLabel,
-      1
-    )
+    this.props.actions.callToAction(this.props.url, this.props.eventCategory, this.props.eventLabel, 1)
   }
   render() {
     return (
       <div id="small-inverse-cta" className={styles.smallInverseCta}>
         <p>{this.props.actionText}</p>
         <SmallPrimaryButton
-          onClick={createCtaNavigation(
-            this.props.url,
-            this.props.eventCategory,
-            this.props.eventLabel,
-            1
-          )}
+          onClick={createCtaNavigation(this.props.url, this.props.eventCategory, this.props.eventLabel, 1)}
           text={this.props.buttonText}
         />
       </div>

@@ -22,11 +22,7 @@ class FrontPageHero extends React.Component {
           <p className={styles.title}>{this.props.title}</p>
         </div>
         <div className={styles.imageContainer}>
-          <img
-            className={styles.Banner}
-            src={this.props.image}
-            alt={this.props.imageAlt}
-          />
+          <img className={styles.Banner} src={this.props.image} alt={this.props.imageAlt} />
         </div>
         <div className={styles.boxContainer}>
           <div className={styles.AccentBox}>
@@ -34,10 +30,7 @@ class FrontPageHero extends React.Component {
               {links.map(({ link, title }, index) => (
                 <BasicLink
                   eventConfig={{
-                    category: [
-                      eventCategories.frontPage,
-                      'Non-Featured-Hero'
-                    ].join('-'),
+                    category: [eventCategories.frontPage, 'Non-Featured-Hero'].join('-'),
                     action: `Click: ${title}`
                   }}
                   key={index}

@@ -11,10 +11,7 @@ class TextArea extends React.Component {
 
   errorMessage(validationState, errorText) {
     return validationState == 'error' ? (
-      <FormErrorMessage
-        errorFor={this.props.id}
-        errorText={this.props.errorText}
-      />
+      <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText} />
     ) : null
   }
 
@@ -34,11 +31,7 @@ class TextArea extends React.Component {
       ...rest
     } = this.props
     return (
-      <div
-        id={id + '-container'}
-        className={styles.inputContainer}
-        hidden={hidden}
-      >
+      <div id={id + '-container'} className={styles.inputContainer} hidden={hidden}>
         <label htmlFor={this.props.id} className={styles.controlLabel}>
           {label}
         </label>
@@ -58,11 +51,7 @@ class TextArea extends React.Component {
             extraClassName={styles.validationIcon}
           />
         </div>
-        {showCounter ? (
-          <span className={styles.textAreaCounter}>{value.length}/250</span>
-        ) : (
-          <div />
-        )}
+        {showCounter ? <span className={styles.textAreaCounter}>{value.length}/250</span> : <div />}
         {this.errorMessage(validationState, errorText)}
       </div>
     )

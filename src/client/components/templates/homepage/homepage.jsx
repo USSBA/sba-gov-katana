@@ -6,8 +6,7 @@ class Homepage extends React.Component {
   render() {
     let startLinks = [
       {
-        link:
-          '/starting-business/how-start-business/10-steps-starting-business',
+        link: '/starting-business/how-start-business/10-steps-starting-business',
         title: '10 steps to get started'
       },
       {
@@ -21,8 +20,7 @@ class Homepage extends React.Component {
     ]
     let financeLinks = [
       {
-        link:
-          '/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow',
+        link: '/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow',
         title: 'What SBA offers'
       },
       {
@@ -40,8 +38,7 @@ class Homepage extends React.Component {
         title: 'Is government contracting for me?'
       },
       {
-        link:
-          '/contracting/resources-small-businesses/government-contracting-classroom',
+        link: '/contracting/resources-small-businesses/government-contracting-classroom',
         title: 'Contracting classroom'
       },
       {

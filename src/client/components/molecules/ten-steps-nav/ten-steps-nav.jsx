@@ -12,13 +12,7 @@ class TenStepsNav extends React.Component {
         </div>
       )
     } else {
-      return (
-        <div
-          className={
-            this.props.navType === 'center' ? s.circleNegative : s.circle
-          }
-        />
-      )
+      return <div className={this.props.navType === 'center' ? s.circleNegative : s.circle} />
     }
   }
 
@@ -64,9 +58,7 @@ class TenStepsNav extends React.Component {
       <div
         id="ten-steps-nav"
         aria-hidden="true"
-        className={
-          this.props.navType === 'center' ? s.containerCenter : s.containerTop
-        }
+        className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}
       >
         {steps.map((step, index) => {
           return (

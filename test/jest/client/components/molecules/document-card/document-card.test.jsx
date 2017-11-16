@@ -20,17 +20,13 @@ test('DocumentCard renders default data', () => {
 })
 
 test('DocumentCard renders the title', () => {
-  const component = renderer.create(
-    <DocumentCard title={'This is a different title'} />
-  )
+  const component = renderer.create(<DocumentCard title={'This is a different title'} />)
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('DocumentCard renders the summary', () => {
-  const component = renderer.create(
-    <DocumentCard summary={'This is a different summary'} />
-  )
+  const component = renderer.create(<DocumentCard summary={'This is a different summary'} />)
   let tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

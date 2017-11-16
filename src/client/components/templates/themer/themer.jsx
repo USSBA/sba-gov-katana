@@ -18,10 +18,7 @@ class Themer extends React.Component {
 
   render() {
     const theme = this.props.theme
-    if (
-      document.body.className &&
-      document.body.className.indexOf(theme) === -1
-    ) {
+    if (document.body.className && document.body.className.indexOf(theme) === -1) {
       document.body.className = document.body.className + ' ' + theme
     }
     return <div className={theme}>{this.props.children}</div>

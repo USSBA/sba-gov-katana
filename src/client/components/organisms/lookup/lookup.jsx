@@ -23,11 +23,7 @@ class Lookup extends React.Component {
           category: this.props.subtype
         }
       : null
-    this.props.actions.fetchContentIfNeeded(
-      this.props.type,
-      this.props.type,
-      queryArgs
-    )
+    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs)
   }
 
   componentWillReceiveProps(nextProps, ownProps) {

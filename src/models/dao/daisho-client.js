@@ -10,8 +10,7 @@ function get(resource, query, headers) {
     url: '/api/content/' + resource + '.json',
     params: query,
     baseURL:
-      config.get('daisho.hostname') +
-      (config.has('daisho.port') ? ':' + config.get('daisho.port') : ''),
+      config.get('daisho.hostname') + (config.has('daisho.port') ? ':' + config.get('daisho.port') : ''),
     headers: {
       Accepts: 'application/json',
       ...headers
@@ -41,8 +40,7 @@ function del(resource) {
     method: 'delete',
     url: '/api/content/' + resource + '.json',
     baseURL:
-      config.get('daisho.hostname') +
-      (config.has('daisho.port') ? ':' + config.get('daisho.port') : '')
+      config.get('daisho.hostname') + (config.has('daisho.port') ? ':' + config.get('daisho.port') : '')
   }
   winston.info('Submitting request to ', options)
 
@@ -54,10 +52,7 @@ function del(resource) {
           winston.info('Response from Daisho ', response.data)
           return response.data
         } else {
-          throw new Error(
-            'Error encountered contacting the daisho client, recieved ' +
-              response.status
-          )
+          throw new Error('Error encountered contacting the daisho client, recieved ' + response.status)
         }
       })
       .catch(function(error) {

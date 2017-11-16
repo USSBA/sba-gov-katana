@@ -8,9 +8,7 @@ import { formatResourceCenterData } from '../util/formatter.js'
 
 function saveProfile(profile, honeyPotText) {
   if (honeyPotText) {
-    console.log(
-      'Detected submission with honeypot field filled. Dropping save.'
-    )
+    console.log('Detected submission with honeypot field filled. Dropping save.')
     return Promise.resolve()
   }
   const newProfile = _.assign({}, profile, {
@@ -47,16 +45,7 @@ function getProfiles(sessionId) {
   return ResourceCenterModel.resourceCenterProfile
     .findAll({
       order: [['timestamp', 'DESC']],
-      attributes: [
-        'name',
-        'address',
-        'type',
-        'timestamp',
-        'businessStage',
-        'serviceArea',
-        'url',
-        'phone'
-      ],
+      attributes: ['name', 'address', 'type', 'timestamp', 'businessStage', 'serviceArea', 'url', 'phone'],
       include: [
         {
           model: ResourceCenterModel.resourceCenterHours,

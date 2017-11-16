@@ -109,9 +109,7 @@ describe('LINC Message Formatter', function() {
     })
 
     it('should accept a bDtlTypCd that has multiple items in the list', function() {
-      let retVal = bDtlTypCd(
-        'ENTERTAINMENT/RECREATION,NON-PROFIT,MANUFACTURING,RETAIL'
-      )
+      let retVal = bDtlTypCd('ENTERTAINMENT/RECREATION,NON-PROFIT,MANUFACTURING,RETAIL')
       retVal.should.equal('14,20,02,04')
     })
 
@@ -133,9 +131,7 @@ describe('LINC Message Formatter', function() {
     })
 
     it('should accept lProceedTypCd that has multiple items in the list', function() {
-      let retVal = lProceedTypCd(
-        'REFINANCING DEBT,REMODELING/EXPANSION,HIRING EMPLOYEES'
-      )
+      let retVal = lProceedTypCd('REFINANCING DEBT,REMODELING/EXPANSION,HIRING EMPLOYEES')
       retVal.should.equal('04,03,05')
     })
 
@@ -234,12 +230,8 @@ describe('LINC Message Formatter', function() {
     })
 
     it('should accept an arbitrary string between length of 0 and 255', function() {
-      let retVal = trimToSize(
-        'We build shopping malls in all states for several years.'
-      )
-      retVal.should.equal(
-        'We build shopping malls in all states for several years.'
-      )
+      let retVal = trimToSize('We build shopping malls in all states for several years.')
+      retVal.should.equal('We build shopping malls in all states for several years.')
     })
 
     it('should trim a string of length greater than 255', function() {

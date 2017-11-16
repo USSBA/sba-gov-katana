@@ -37,21 +37,11 @@ class SectionPage extends React.Component {
       }
 
       let tileCollection = undefined
-      if (
-        this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)
-      ) {
-        tileCollection = (
-          <BusinessGuideTileCollection sectionData={sectionData} />
-        )
-      } else if (
-        this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)
-      ) {
-        tileCollection = (
-          <FundingProgramsTileCollection sectionData={sectionData} />
-        )
-      } else if (
-        this.equalsIgnoreCase(sectionName, constants.sections.forPartners)
-      ) {
+      if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
+        tileCollection = <BusinessGuideTileCollection sectionData={sectionData} />
+      } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
+        tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
+      } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
         tileCollection = <ForPartnersTileCollection sectionData={sectionData} />
       } else {
         console.error('Unable to find matching section')

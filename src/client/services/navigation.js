@@ -29,10 +29,8 @@ function navigateNow(targetLocation, eventConfig) {
     if (eventConfig) {
       logEvent({
         category: eventConfig.category || 'Navigation',
-        action:
-          eventConfig.action || `Location Change Request: ${targetLocation}`,
-        label:
-          eventConfig.label || browserHistory.getCurrentLocation().pathname,
+        action: eventConfig.action || `Location Change Request: ${targetLocation}`,
+        label: eventConfig.label || browserHistory.getCurrentLocation().pathname,
         value: eventConfig.value || null
       })
     }
@@ -50,10 +48,7 @@ function navigateNow(targetLocation, eventConfig) {
       document.location = targetLocation
     }
   } else {
-    console.log(
-      "WARNING: navigateNow passed a null target location; here's the eventConfig",
-      eventConfig
-    )
+    console.log("WARNING: navigateNow passed a null target location; here's the eventConfig", eventConfig)
   }
 }
 

@@ -44,11 +44,7 @@ function mapReduxStateToProps(reduxState, ownProps) {
   let articleStoreValue = reduxState.contentReducer['articles']
   if (articleStoreValue && articleStoreValue.count === 0) {
     return { article: null }
-  } else if (
-    articleStoreValue &&
-    articleStoreValue.items &&
-    articleStoreValue.items.length > 0
-  ) {
+  } else if (articleStoreValue && articleStoreValue.items && articleStoreValue.items.length > 0) {
     return { article: articleStoreValue.items[0] }
   } else {
     return {}

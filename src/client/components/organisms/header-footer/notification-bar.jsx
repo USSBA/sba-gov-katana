@@ -10,12 +10,7 @@ class NotificationBar extends React.Component {
         <div className={styles.alert}>
           <div className={styles.description}>{this.props.description}</div>
 
-          <img
-            className={styles.alertClose}
-            onClick={this.props.onClose}
-            src={exitIcon}
-            alt="Close"
-          />
+          <img className={styles.alertClose} onClick={this.props.onClose} src={exitIcon} alt="Close" />
 
           <div>
             <BasicLink

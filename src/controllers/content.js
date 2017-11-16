@@ -1,7 +1,4 @@
-import {
-  fetchFrontPageSlidesFromDrupal,
-  fetchBlogsFromDrupal
-} from '../util/drupal-rest.js'
+import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from '../util/drupal-rest.js'
 import { fetchDisasterFromDrupalDatabase } from '../models/dao/disaster.js'
 import { fetchMainMenu } from '../models/dao/main-menu.js'
 import {
@@ -50,18 +47,14 @@ function fetchContentById(req, res) {
         })
         .catch(error => {
           console.error(error)
-          res
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .send('Error retrieving content')
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
         })
     } else {
       console.error('fetchContentById encountered an unknown type ' + type)
       res.status(HttpStatus.BAD_REQUEST).send('Unknown Content Type: ' + type)
     }
   } else {
-    res
-      .status(HttpStatus.BAD_REQUEST)
-      .send('Incorrect request format missing type or id')
+    res.status(HttpStatus.BAD_REQUEST).send('Incorrect request format missing type or id')
   }
 }
 
@@ -76,18 +69,14 @@ function fetchContentByType(req, res) {
         })
         .catch(error => {
           console.error(error)
-          res
-            .status(HttpStatus.INTERNAL_SERVER_ERROR)
-            .send('Error retrieving content')
+          res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
         })
     } else {
       console.error('fetchContentById encountered an unknown type ' + type)
       res.status(HttpStatus.BAD_REQUEST).send('Unknown Content Type: ' + type)
     }
   } else {
-    res
-      .status(HttpStatus.BAD_REQUEST)
-      .send('Incorrect request format missing type.')
+    res.status(HttpStatus.BAD_REQUEST).send('Incorrect request format missing type.')
   }
 }
 

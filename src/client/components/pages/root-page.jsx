@@ -4,11 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as ContentActions from '../../actions/content.js'
 import * as NavigationActions from '../../actions/navigation.js'
 import _ from 'lodash'
-import {
-  findPageLineage,
-  findSubSection,
-  findSection
-} from '../../services/menu.js'
+import { findPageLineage, findSubSection, findSection } from '../../services/menu.js'
 import Page from './page.jsx'
 import SectionPage from './section-page/section-page.jsx'
 import path from 'path'
@@ -31,16 +27,9 @@ class RootPage extends React.Component {
     const third = this.props.params.third
     if (first && second && !third && first === 'business-guide') {
       const subSectionData = findSubSection(this.props.menu, first, second)
-      if (
-        subSectionData &&
-        subSectionData.children &&
-        subSectionData.children[0]
-      ) {
+      if (subSectionData && subSectionData.children && subSectionData.children[0]) {
         const page = subSectionData.children[0].url
-        this.props.navigationActions.locationChange(
-          path.join('/', first, second, page),
-          {}
-        )
+        this.props.navigationActions.locationChange(path.join('/', first, second, page), {})
       }
     }
   }
@@ -55,10 +44,7 @@ class RootPage extends React.Component {
   }
 
   renderPage(first, second, third, fourth, fifth) {
-    const pageLineage = findPageLineage(
-      this.props.menu,
-      _.compact([first, second, third, fourth, fifth])
-    )
+    const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third, fourth, fifth]))
     if (first === 'document') {
       return <DocumentPage location={this.props.location} />
     } else if (first === 'article') {

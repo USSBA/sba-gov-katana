@@ -11,11 +11,7 @@ const ButtonCta = props => {
   }
   return (
     <div className={styles.buttonCTA}>
-      <LargePrimaryButton
-        text={props.title}
-        url={props.url}
-        eventConfig={eventConfig}
-      />
+      <LargePrimaryButton text={props.title} url={props.url} eventConfig={eventConfig} />
     </div>
   )
 }

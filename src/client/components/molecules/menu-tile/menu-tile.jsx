@@ -8,37 +8,21 @@ import { BasicLink } from 'atoms'
 class MenuTile extends React.Component {
   render() {
     let smallTitleComponent = this.props.smallTitle ? (
-      <h4
-        className={
-          sharedStyles.smallTitle +
-          ' ' +
-          (this.props.uppercaseFirstWord ? s.upperCase : '')
-        }
-      >
+      <h4 className={sharedStyles.smallTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')}>
         {this.props.smallTitle}
       </h4>
     ) : (
       undefined
     )
-    let tileClass =
-      s.tileNormal + ' ' + (this.props.inverse ? s.tileInverse : '')
-    let titleContainerClass =
-      s.titleContainer + ' ' + (this.props.inverse ? s.titleInverse : '')
-    let largeTitleClass =
-      sharedStyles.largeTitle +
-      ' ' +
-      (this.props.uppercaseFirstWord ? s.upperCase : '')
+    let tileClass = s.tileNormal + ' ' + (this.props.inverse ? s.tileInverse : '')
+    let titleContainerClass = s.titleContainer + ' ' + (this.props.inverse ? s.titleInverse : '')
+    let largeTitleClass = sharedStyles.largeTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')
     let lineClass = s.line + ' ' + (this.props.inverse ? s.lineInverse : '')
     let blurbClass = s.blurb + ' ' + (this.props.inverse ? s.blurbInverse : '')
     let iconSource = this.props.inverse ? this.props.iconWhite : this.props.icon
     return (
       <div id={this.props.id} className={tileClass}>
-        <img
-          id={this.props.id + '-icon'}
-          className={s.icon}
-          src={iconSource}
-          alt=""
-        />
+        <img id={this.props.id + '-icon'} className={s.icon} src={iconSource} alt="" />
         <div id={this.props.id + '-title'} className={titleContainerClass}>
           <h3 className={largeTitleClass}>{this.props.largeTitle}</h3>
           {smallTitleComponent}

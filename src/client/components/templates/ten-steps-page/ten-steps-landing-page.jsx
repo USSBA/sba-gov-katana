@@ -9,11 +9,7 @@ import * as ContentActions from '../../../actions/content.js'
 import { BasicLink } from 'atoms'
 import { CallToAction, RemoveMainLoader, TenStepsNav } from 'molecules'
 import { BusinessGuideTileCollection, TenStepsSection } from 'organisms'
-import {
-  findPageLineage,
-  findSubSection,
-  findSection
-} from '../../../services/menu.js'
+import { findPageLineage, findSubSection, findSection } from '../../../services/menu.js'
 
 class TenStepsLandingPage extends React.Component {
   constructor() {
@@ -133,8 +129,7 @@ class TenStepsLandingPage extends React.Component {
         solidBox: true,
         image: '/assets/images/tensteps/register.jpg',
         imageAlt: 'Choose your business name.',
-        link:
-          '/business-guide/launch/register-your-business-federal-state-agency',
+        link: '/business-guide/launch/register-your-business-federal-state-agency',
         text:
           'Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.'
       },
@@ -189,8 +184,7 @@ class TenStepsLandingPage extends React.Component {
     })
 
     let sectionData =
-      findSection(this.props.menu, 'guide') ||
-      findSection(this.props.menu, 'business-guide')
+      findSection(this.props.menu, 'guide') || findSection(this.props.menu, 'business-guide')
     let counsellorCta = this.props.counsellorCta
 
     return (
@@ -213,27 +207,19 @@ class TenStepsLandingPage extends React.Component {
               }}
             >
               <p>
-                Starting a business involves planning, making key financial
-                decisions, and completing a series of legal activities. Scroll
-                down to learn about each step.
+                Starting a business involves planning, making key financial decisions, and completing a
+                series of legal activities. Scroll down to learn about each step.
               </p>
             </Waypoint>
           </div>
           <a className={styles.scrollButton} aria-hidden="true" href="#step-1">
             <i className={' fa fa-angle-down'} />
           </a>
-          <BasicLink
-            myClassName={styles.backLink}
-            url="/business-guide"
-            text="Back to all topics"
-          />
+          <BasicLink myClassName={styles.backLink} url="/business-guide" text="Back to all topics" />
         </div>
 
         <span id="step-1" className={styles.anchor} />
-        <div
-          id="tensteps-landing-page-id"
-          className={styles.tenStepsLandingPage}
-        >
+        <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
           {tenstepSectionItems}
         </div>
         <div className={styles.lastSection}>
@@ -245,9 +231,8 @@ class TenStepsLandingPage extends React.Component {
               }}
             >
               <p>
-                Congratulations! It's time to cut the big ribbon. Your business
-                is officially open. Now, focus on managing and growing your
-                business.
+                Congratulations! It's time to cut the big ribbon. Your business is officially open. Now,
+                focus on managing and growing your business.
               </p>
             </Waypoint>
           </div>
@@ -294,6 +279,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(
-  TenStepsLandingPage
-)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(TenStepsLandingPage)
