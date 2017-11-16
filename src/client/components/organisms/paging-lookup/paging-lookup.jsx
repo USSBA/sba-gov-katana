@@ -111,14 +111,23 @@ class PagingLookup extends React.Component {
     this.setState(updatedProps)
   }
 
-  handleReset() {
+  handleReset(ownProps) {
     this.fireDocumentationLookupEvent('clearFilters')
     this.setState(
       _.assign(this.createOriginalState(this.props), {
-        taxonomies: this.state.taxonomies
+        query: {
+          searchTerm: "",
+          documentActivity: "All",
+          documentType: "All",
+          program: "All",
+          sortBy: this.props.defaultSortBy
+        },
+        taxonomies: this.state.taxonomies,
+        pageNumber: 1,
+        isFetching: false
       }),
       () => {
-        this.submit()
+        this.handleSubmit()
       }
     )
   }
