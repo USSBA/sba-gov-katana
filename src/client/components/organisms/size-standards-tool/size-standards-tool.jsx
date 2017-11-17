@@ -535,8 +535,15 @@ class NaicsScreen extends PureComponent {
                   {this.props.setFocusTo('naics-lookup', 300)}
 
                   <p>
-                    The North American Industry Classification System or NAICS classifies businesses
+                    The North American Industry Classification System (NAICS) classifies businesses
                     according to type of economic activity.
+                  </p>
+                  <p>
+                    If you don't know which NAICS code to select, visit{' '}
+                    <a href="https://census.gov/eos/www/naics/" target="_blank" rel="noopener">
+                      census.gov
+                    </a>{' '}
+                    for a comprehensive search and listing.
                   </p>
                 </div>
               ) : (
