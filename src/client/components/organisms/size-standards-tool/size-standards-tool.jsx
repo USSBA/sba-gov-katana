@@ -37,10 +37,38 @@ class SizeStandardsTool extends PureComponent {
 
   componentDidMount() {
     axios.get('/naics').then(response => {
-      const naicsCodes = response.data.map(object => {
-        // create code property that matches id property
-        const result = object
-        result.code = result.id
+      const naicsCodes = response.data.filter(object => {
+        let result
+        let isDisabled
+        const { id, assetLimit } = object
+        const { disabledNaicsCodes } = this.props
+
+        // if
+        // - this naicsCode is not in the disabled list
+        // - assetLimit is NOT set
+        // - - create code property that matches id property
+        // - - return result
+
+        if (
+          disabledNaicsCodes.find(disabledCode => {
+            let bln
+
+            if (id === disabledCode) {
+              bln = true
+            }
+
+            return bln
+          })
+        ) {
+          isDisabled = true
+        } else if (!_.isEmpty(assetLimit)) {
+          isDisabled = true
+        }
+
+        if (!isDisabled) {
+          result = object
+          result.code = id
+        }
 
         return result
       })
@@ -385,15 +413,14 @@ class NaicsScreen extends PureComponent {
       )
     }
 
-    // filter out the NAICS Codes:
-    // - with assetLimits
+    // do not allow NAICS Codes:
     // - that are exceptions
     // then format the remaining objects
     const naics = formatNaics(
       this.props.naicsCodes.filter(object => {
         let result
 
-        if (_.isEmpty(object.assetLimit) && !_.endsWith(object.code, '_Except')) {
+        if (!_.endsWith(object.code, '_Except')) {
           result = object
         }
 
@@ -1031,7 +1058,8 @@ SizeStandardsTool.defaultProps = {
       footnote: 'NAICS Codes 541713, 541714 and 541715',
       parent: '111110'
     }
-  ]
+  ],
+  disabledNaicsCodes: ['324110', '541519', '562910'] // specified by stakeholder
 }
 
 export { SizeStandardsTool, StartScreen, NaicsScreen, RevenueScreen, EmployeesScreen, ResultsScreen }
