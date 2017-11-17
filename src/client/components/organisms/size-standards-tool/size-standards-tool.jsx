@@ -810,7 +810,7 @@ class ResultsScreen extends PureComponent {
                   </div>
                 ) : (
                   <div>
-                    <p>{object.employeeCountLimit} employees</p>
+                    <p>{this.formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
                   </div>
                 )}
               </div>
@@ -856,6 +856,15 @@ class ResultsScreen extends PureComponent {
     return result
   }
 
+  formatEmployeeCountLimit(employeeCountLimit) {
+    const result = Number(employeeCountLimit)
+      .toString()
+      .split(/(?=(?:\d{3})+(?:\.|$))/g)
+      .join(',')
+
+    return result
+  }
+
   renderNaicsList() {
     const listItems = this.state.selectedNaicsCodes.map((object, index) => {
       const { code, description } = object
@@ -887,7 +896,7 @@ class ResultsScreen extends PureComponent {
                     </div>
                   ) : (
                     <div>
-                      <p>{object.employeeCountLimit} employees</p>
+                      <p>{this.formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
                     </div>
                   )}
                 </div>
