@@ -344,7 +344,7 @@ const StartScreen = props => {
 
       <img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
 
-      <p>Do you qualify as a small business?</p>
+      <p>Do you qualify as a small business for government contracting purposes?</p>
 
       <LargePrimaryButton
         className={styles.button + ' submit-button'}
@@ -925,7 +925,7 @@ class ResultsScreen extends PureComponent {
 
     return (
       <div id="results-screen" className={styles.screen}>
-        <h2>Are you a small business?</h2>
+        <h2>Are you a small business eligible for government contracting?</h2>
 
         {!_.isEmpty(this.state.selectedNaicsCodes) ? (
           <div>{this.renderNaicsList()}</div>
