@@ -15,6 +15,26 @@ import {
 } from 'atoms'
 import { NaicsLookup } from 'molecules'
 
+const formatRevenueLimit = revenueLimit => {
+  const annualRevenueConstant = 1000000
+  let result = (Number(revenueLimit) * annualRevenueConstant)
+    .toString()
+    .split(/(?=(?:\d{3})+(?:\.|$))/g)
+    .join(',')
+  result = '$' + result
+
+  return result
+}
+
+const formatEmployeeCountLimit = employeeCountLimit => {
+  const result = Number(employeeCountLimit)
+    .toString()
+    .split(/(?=(?:\d{3})+(?:\.|$))/g)
+    .join(',')
+
+  return result
+}
+
 class SizeStandardsTool extends PureComponent {
   constructor() {
     super()
@@ -806,11 +826,11 @@ class ResultsScreen extends PureComponent {
 
                 {object.revenueLimit !== null ? (
                   <div>
-                    <p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
+                    <p>{formatRevenueLimit(object.revenueLimit)} annual revenue</p>
                   </div>
                 ) : (
                   <div>
-                    <p>{this.formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
+                    <p>{formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
                   </div>
                 )}
               </div>
@@ -845,26 +865,6 @@ class ResultsScreen extends PureComponent {
     return <ul className={styles.exceptionsList + ' exceptions-list'}>{exceptions}</ul>
   }
 
-  formatRevenueLimit(revenueLimit) {
-    const annualRevenueConstant = 1000000
-    let result = (Number(revenueLimit) * annualRevenueConstant)
-      .toString()
-      .split(/(?=(?:\d{3})+(?:\.|$))/g)
-      .join(',')
-    result = '$' + result
-
-    return result
-  }
-
-  formatEmployeeCountLimit(employeeCountLimit) {
-    const result = Number(employeeCountLimit)
-      .toString()
-      .split(/(?=(?:\d{3})+(?:\.|$))/g)
-      .join(',')
-
-    return result
-  }
-
   renderNaicsList() {
     const listItems = this.state.selectedNaicsCodes.map((object, index) => {
       const { code, description } = object
@@ -892,11 +892,11 @@ class ResultsScreen extends PureComponent {
 
                   {object.revenueLimit !== null ? (
                     <div>
-                      <p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
+                      <p>{formatRevenueLimit(object.revenueLimit)} annual revenue</p>
                     </div>
                   ) : (
                     <div>
-                      <p>{this.formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
+                      <p>{formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
                     </div>
                   )}
                 </div>
@@ -1078,5 +1078,6 @@ SizeStandardsTool.defaultProps = {
   disabledNaicsCodes: ['324110', '541519', '562910'] // specified by stakeholder
 }
 
+export { formatRevenueLimit, formatEmployeeCountLimit }
 export { SizeStandardsTool, StartScreen, NaicsScreen, RevenueScreen, EmployeesScreen, ResultsScreen }
 export default SizeStandardsTool

@@ -6,7 +6,9 @@ import {
   NaicsScreen,
   RevenueScreen,
   EmployeesScreen,
-  ResultsScreen
+  ResultsScreen,
+  formatRevenueLimit,
+  formatEmployeeCountLimit
 } from 'organisms/size-standards-tool/size-standards-tool.jsx'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
@@ -15,6 +17,20 @@ describe('SizeStandardsTool', () => {
   test('should match snapshot', () => {
     const tree = renderer.create(<SizeStandardsTool />).toJSON()
     expect(tree).toMatchSnapshot()
+  })
+
+  test('formatRevenueLimit() should format 0.75 to $750,000', () => {
+    const revenueLimit = 0.75
+    const expectedResult = '$750,000'
+
+    expect(formatRevenueLimit(revenueLimit)).toEqual(expectedResult)
+  })
+
+  test('formatEmployeeCountLimit() should format 1000 to 1,000', () => {
+    const employeeCountLimit = 1000
+    const expectedResult = '1,000'
+
+    expect(formatEmployeeCountLimit(employeeCountLimit)).toEqual(expectedResult)
   })
 
   describe('StartScreen', () => {
@@ -137,6 +153,24 @@ describe('SizeStandardsTool', () => {
     test('should match snapshot', () => {
       const tree = renderer.create(<ResultsScreen {...testProps} />).toJSON()
       expect(tree).toMatchSnapshot()
+    })
+
+    test('addresses in cards should match', () => {
+      const component = shallow(<ResultsScreen {...testProps} />)
+      const firstAddress = component
+        .find('.card')
+        .at(0)
+        .find('li')
+        .at(0)
+        .text()
+      const secondAddress = component
+        .find('.card')
+        .at(1)
+        .find('li')
+        .at(0)
+        .text()
+
+      expect(firstAddress).toEqual(secondAddress)
     })
   })
 })
