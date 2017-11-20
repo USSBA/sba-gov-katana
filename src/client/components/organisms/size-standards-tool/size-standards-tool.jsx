@@ -655,9 +655,7 @@ const RevenueScreen = props => {
         {props.setFocusTo('revenue')}
       </div>
 
-      <p>
-        This caption will help a small business understand <br />what information we're looking for.
-      </p>
+      <p>Your revenue is determined by your annual receipts, or total income plus cost of goods sold.</p>
 
       <LargePrimaryButton
         className={styles.button + ' submit-button'}

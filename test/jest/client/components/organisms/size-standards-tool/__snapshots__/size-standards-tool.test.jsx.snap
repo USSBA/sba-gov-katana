@@ -314,9 +314,7 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
     />
   </div>
   <p>
-    This caption will help a small business understand 
-    <br />
-    what information we're looking for.
+    Your revenue is determined by your annual receipts, or total income plus cost of goods sold.
   </p>
   <button
     autoFocus={false}
