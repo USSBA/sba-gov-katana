@@ -15,6 +15,26 @@ import {
 } from 'atoms'
 import { NaicsLookup } from 'molecules'
 
+const formatRevenueLimit = revenueLimit => {
+  const annualRevenueConstant = 1000000
+  let result = (Number(revenueLimit) * annualRevenueConstant)
+    .toString()
+    .split(/(?=(?:\d{3})+(?:\.|$))/g)
+    .join(',')
+  result = '$' + result
+
+  return result
+}
+
+const formatEmployeeCountLimit = employeeCountLimit => {
+  const result = Number(employeeCountLimit)
+    .toString()
+    .split(/(?=(?:\d{3})+(?:\.|$))/g)
+    .join(',')
+
+  return result
+}
+
 class SizeStandardsTool extends PureComponent {
   constructor() {
     super()
@@ -37,10 +57,38 @@ class SizeStandardsTool extends PureComponent {
 
   componentDidMount() {
     axios.get('/naics').then(response => {
-      const naicsCodes = response.data.map(object => {
-        // create code property that matches id property
-        const result = object
-        result.code = result.id
+      const naicsCodes = response.data.filter(object => {
+        let result
+        let isDisabled
+        const { id, assetLimit } = object
+        const { disabledNaicsCodes } = this.props
+
+        // if
+        // - this naicsCode is not in the disabled list
+        // - assetLimit is NOT set
+        // - - create code property that matches id property
+        // - - return result
+
+        if (
+          disabledNaicsCodes.find(disabledCode => {
+            let bln
+
+            if (id === disabledCode) {
+              bln = true
+            }
+
+            return bln
+          })
+        ) {
+          isDisabled = true
+        } else if (!_.isEmpty(assetLimit)) {
+          isDisabled = true
+        }
+
+        if (!isDisabled) {
+          result = object
+          result.code = id
+        }
 
         return result
       })
@@ -316,7 +364,7 @@ const StartScreen = props => {
 
       <img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
 
-      <p>Do you qualify as a small business?</p>
+      <p>Do you qualify as a small business for government contracting purposes?</p>
 
       <LargePrimaryButton
         className={styles.button + ' submit-button'}
@@ -385,15 +433,14 @@ class NaicsScreen extends PureComponent {
       )
     }
 
-    // filter out the NAICS Codes:
-    // - with assetLimits
+    // do not allow NAICS Codes:
     // - that are exceptions
     // then format the remaining objects
     const naics = formatNaics(
       this.props.naicsCodes.filter(object => {
         let result
 
-        if (_.isEmpty(object.assetLimit) && !_.endsWith(object.code, '_Except')) {
+        if (!_.endsWith(object.code, '_Except')) {
           result = object
         }
 
@@ -508,8 +555,15 @@ class NaicsScreen extends PureComponent {
                   {this.props.setFocusTo('naics-lookup', 300)}
 
                   <p>
-                    The North American Industry Classification System or NAICS classifies businesses
+                    The North American Industry Classification System (NAICS) classifies businesses
                     according to type of economic activity.
+                  </p>
+                  <p>
+                    If you don't know which NAICS code to select, visit{' '}
+                    <a href="https://census.gov/eos/www/naics/" target="_blank" rel="noopener">
+                      census.gov
+                    </a>{' '}
+                    for a comprehensive search and listing.
                   </p>
                 </div>
               ) : (
@@ -772,11 +826,11 @@ class ResultsScreen extends PureComponent {
 
                 {object.revenueLimit !== null ? (
                   <div>
-                    <p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
+                    <p>{formatRevenueLimit(object.revenueLimit)} annual revenue</p>
                   </div>
                 ) : (
                   <div>
-                    <p>{object.employeeCountLimit} employees</p>
+                    <p>{formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
                   </div>
                 )}
               </div>
@@ -811,17 +865,6 @@ class ResultsScreen extends PureComponent {
     return <ul className={styles.exceptionsList + ' exceptions-list'}>{exceptions}</ul>
   }
 
-  formatRevenueLimit(revenueLimit) {
-    const annualRevenueConstant = 1000000
-    let result = (Number(revenueLimit) * annualRevenueConstant)
-      .toString()
-      .split(/(?=(?:\d{3})+(?:\.|$))/g)
-      .join(',')
-    result = '$' + result
-
-    return result
-  }
-
   renderNaicsList() {
     const listItems = this.state.selectedNaicsCodes.map((object, index) => {
       const { code, description } = object
@@ -849,11 +892,11 @@ class ResultsScreen extends PureComponent {
 
                   {object.revenueLimit !== null ? (
                     <div>
-                      <p>{this.formatRevenueLimit(object.revenueLimit)} annual revenue</p>
+                      <p>{formatRevenueLimit(object.revenueLimit)} annual revenue</p>
                     </div>
                   ) : (
                     <div>
-                      <p>{object.employeeCountLimit} employees</p>
+                      <p>{formatEmployeeCountLimit(object.employeeCountLimit)} employees</p>
                     </div>
                   )}
                 </div>
@@ -898,7 +941,7 @@ class ResultsScreen extends PureComponent {
 
     return (
       <div id="results-screen" className={styles.screen}>
-        <h2>Are you a small business?</h2>
+        <h2>Are you a small business eligible for government contracting?</h2>
 
         {!_.isEmpty(this.state.selectedNaicsCodes) ? (
           <div>{this.renderNaicsList()}</div>
@@ -947,7 +990,7 @@ class ResultsScreen extends PureComponent {
                   >
                     ,
                   </span>{' '}
-                  DC 2041
+                  DC 20416
                 </p>
               </li>
               <li>
@@ -982,7 +1025,7 @@ class ResultsScreen extends PureComponent {
                   >
                     ,
                   </span>{' '}
-                  DC 2041
+                  DC 20416
                 </p>
               </li>
               <li>
@@ -1031,8 +1074,10 @@ SizeStandardsTool.defaultProps = {
       footnote: 'NAICS Codes 541713, 541714 and 541715',
       parent: '111110'
     }
-  ]
+  ],
+  disabledNaicsCodes: ['324110', '541519', '562910'] // specified by stakeholder
 }
 
+export { formatRevenueLimit, formatEmployeeCountLimit }
 export { SizeStandardsTool, StartScreen, NaicsScreen, RevenueScreen, EmployeesScreen, ResultsScreen }
 export default SizeStandardsTool

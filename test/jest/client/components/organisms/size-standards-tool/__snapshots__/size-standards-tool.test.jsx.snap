@@ -131,7 +131,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
   id="results-screen"
 >
   <h2>
-    Are you a small business?
+    Are you a small business eligible for government contracting?
   </h2>
   <div>
     <div
@@ -186,7 +186,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
               ,
             </span>
              
-            DC 2041
+            DC 20416
           </p>
         </li>
         <li>
@@ -254,7 +254,7 @@ exports[`SizeStandardsTool ResultsScreen should match snapshot 1`] = `
               ,
             </span>
              
-            DC 2041
+            DC 20416
           </p>
         </li>
         <li>
@@ -345,7 +345,7 @@ exports[`SizeStandardsTool StartScreen should match snapshot 1`] = `
     src="test-file-stub"
   />
   <p>
-    Do you qualify as a small business?
+    Do you qualify as a small business for government contracting purposes?
   </p>
   <button
     autoFocus={false}
@@ -382,7 +382,7 @@ exports[`SizeStandardsTool should match snapshot 1`] = `
         src="test-file-stub"
       />
       <p>
-        Do you qualify as a small business?
+        Do you qualify as a small business for government contracting purposes?
       </p>
       <button
         autoFocus={false}
