@@ -1,11 +1,7 @@
-import Checkbox from '../../atoms/checkbox/checkbox-lib';
 import React from 'react'
-import { basename } from 'path'
-import { connect } from 'react-redux'
+import { CheckBox, Radio, Checkbox, MultiSelect, TextInput} from 'atoms'
 import _ from 'lodash'
-import { bindActionCreators } from 'redux'
-import { FormErrorMessage, MultiSelectBox, TextInput, Radio, CheckBox } from 'atoms'
-import {SelectRangeGroup } from 'molecules'
+//import {SelectRangeGroup } from 'molecules'
 
 import style from './resource-center-profile-page.scss'
 
@@ -28,11 +24,53 @@ class ResourceCenterProfilePage extends React.Component {
     }
   }
 
-    handleSubmit(){
+    static handleSubmit(){
       console.log('submit')
     }
+    static handleClick(e){console.log(e)}
+
+    static renderExpertiseCheckboxes() {
+        const expertiseOptions = _.map([
+            'Creating a plan',
+            'Getting a loan',
+            'Business finances',
+            'Marketing and sales',
+            'Government contracting',
+            'Legal issues',
+            'International trade',
+            'Networking'
+        ], expertise => {
+            return <Checkbox
+            id={expertise}
+            name={expertise}
+            label={expertise}
+            key={expertise}
+          /> 
+        });
+        return expertiseOptions;
+    }
+    static renderServiceCheckboxes() {
+        const serviceOptions = _.map([
+            'Walk-ins',
+            'Appointments',
+            'In-person',
+            'By phone',
+            'By video chat or online',
+            'Trainings or workshops',
+            'Certifications',
+            'Night or weekend availability'],
+            service => {
+                return <Checkbox
+                id={service}
+                name={service}
+                label={service}
+                key={service}
+              />
+            });
+        return serviceOptions;
+    }
     
-    renderLanguageCheckboxes() {
+    static renderLanguageCheckboxes() {
         const languageOptions = _.map(
             [
                 'Spanish',
@@ -46,9 +84,16 @@ class ResourceCenterProfilePage extends React.Component {
                 'Russian',
                 'Other'
             ],
-            language => {
-              return <CheckBox id={language} label={language} name={language} />
-          });
+                language => {
+                return <Checkbox
+                id={language}
+                name={language}
+                label={language}
+                key={language}
+              />
+        });
+
+        return languageOptions;
     }
 
 
@@ -57,22 +102,22 @@ class ResourceCenterProfilePage extends React.Component {
       const updateContactInfoOptions = [
         {
           value: true, //todo: check needed value
-          label: 'Yes'
+          text: 'Yes'
         },
         {
           value: false, //todo: check needed value
-          label: 'No, it needs to be updated'
+          text: 'No, it needs to be updated'
         }
       ];
 
       const businessStageOptions = [
         {
             value: true, //todo: check value
-            label: 'New and early stage businesses'
+            text: 'New and early stage businesses'
         },
         {
             value: false, //todo: check value
-            label: 'Established businesses'
+            text: 'Established businesses'
         }
       ];
 
@@ -151,7 +196,7 @@ class ResourceCenterProfilePage extends React.Component {
             <h2>Resource Center Profile</h2>
             <p>Answer the following questions about your office's expertise to be better matched with your ideal clients</p>
             <form id={id} >
-               
+            <MultiSelect id="test" options={hours} multi={false}/>
                 <label>Is this your office address and phone number?</label>
                 <Radio
                     id={id + '-should-update-contact-info'}
@@ -177,32 +222,18 @@ class ResourceCenterProfilePage extends React.Component {
                     //onBlur={this.handleBlur.bind(this)}
                     //onFocus={this.handleFocus.bind(this)}
                 />
-                {/* <SelectRangeGroup {...officeHoursProps}/> 
-                <label>What services does your office provide?</label>*/}
-                <Checkbox label="Walk-ins"/>
-                <Checkbox label="Appointments"/>
-                <Checkbox label="In-person"/>
-                <Checkbox label="By phone"/>
-                <Checkbox label="By video chat or online"/>
-                <Checkbox label="Trainings or workshops"/>
-                <Checkbox label="Certifications"/>
-                <Checkbox label="Night or weekend availability"/>
+                {/* <SelectRangeGroup {...officeHoursProps}/> */}
+                <label>What services does your office provide?</label>
+                {ResourceCenterProfilePage.renderServiceCheckboxes()}
 
                 <label>In which three topic areas does your office have the most expertise?</label>
-                <Checkbox label="Creating a plan"/>
-                <Checkbox label="Getting a loan"/>
-                <Checkbox label="Business finances"/>
-                <Checkbox label="Marketing and sales"/>
-                <Checkbox label="Government contracting"/>
-                <Checkbox label="Legal issues"/>
-                <Checkbox label="International trade"/>
-                <Checkbox label="Networking"/>
-            
+                {ResourceCenterProfilePage.renderExpertiseCheckboxes()}
+
                 <label>Which business stage does your office best serve?</label>
                 <Radio options={businessStageOptions} value=""/> 
 
                 <label>In which languages other than English can your office provide counseling</label>
-                {this.renderLanguageCheckboxes()}
+                {ResourceCenterProfilePage.renderLanguageCheckboxes()}
                 
             </form>
         </div>
