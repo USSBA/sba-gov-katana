@@ -2,11 +2,18 @@
 /*global expect*/
 
 import React from 'react'
-import { PagingLookup } from '../../../../../../src/client/components/organisms/paging-lookup/paging-lookup.jsx'
-// import { PagingLookup } from 'client/components/molecules/paging-lookup/paging-lookup.jsx'
+import { PagingLookup } from 'organisms/paging-lookup/paging-lookup.jsx'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import _ from 'lodash'
+
+jest.mock('react-router', () => {
+  return ({
+    browserHistory: {
+      push: () => {}
+    }
+  })
+});
 
 jest.mock('../../../../../../src/client/services/utils.js')
 getQueryParams.mockImplementation(() => {
@@ -94,7 +101,7 @@ describe('PagingLookup', () => {
       component.first().props().queryState.arbitraryNonsense
     ).toBeUndefined()
   })
-  test.skip("should reset query string to default", () => {
+  test("should reset query string to default", () => {
     getQueryParams.mockImplementationOnce(() => {
       return {
         search: 'check',
@@ -102,7 +109,7 @@ describe('PagingLookup', () => {
         program: 'SBIC',
         activity: 'Authorization',
         sortBy: 'Last Updated',
-        page: 1
+        page: 2
       }
     })
     const component = shallow(<PagingLookup {...testProps} />)
@@ -111,8 +118,6 @@ describe('PagingLookup', () => {
     expect(component.first().props().queryState.documentType).toBe('All')
     expect(component.first().props().queryState.program).toBe('All')
     expect(component.first().props().queryState.documentActivity).toBe('All')
-    expect(component.first().props().queryState.sortBy).toBe('Effective Date')
-    expect(component.first().props().queryState.validTaxonomyFilter).toBe('All')
     expect(component.first().props().queryState.page).toBe(1)
   })
   // test('should render without an address ', () => {
