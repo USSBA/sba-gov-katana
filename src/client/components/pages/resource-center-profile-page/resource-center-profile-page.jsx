@@ -2,104 +2,111 @@ import Checkbox from '../../atoms/checkbox/checkbox-lib';
 import React from 'react'
 import { basename } from 'path'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 import { bindActionCreators } from 'redux'
-import { FormErrorMessage, MultiSelectBox, TextInput } from 'atoms'
+import { FormErrorMessage, MultiSelectBox, TextInput, Radio, CheckBox } from 'atoms'
 import {SelectRangeGroup } from 'molecules'
 
 import style from './resource-center-profile-page.scss'
 
 class ResourceCenterProfilePage extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      loading: false
+    constructor() {
+        super()
+        this.state = {
+        loading: false,
+        shouldUpdateContact: 'false',
+        websiteUrl: '',
+        type: '',
+        office: 'adsfadfa',
+        loanUsage: 'wearaer',
+        validStates: {
+            loanAmount: null,
+            loanDescription: null,
+            loanUsage: null
+        }
+
     }
   }
 
-  componentWillMount() {
-  }
+    handleSubmit(){
+      console.log('submit')
+    }
+    
+    renderLanguageCheckboxes() {
+        const languageOptions = _.map(
+            [
+                'Spanish',
+                'Chinese',
+                'Tagalog',
+                'Vietnamese',
+                'French',
+                'German',
+                'Korean',
+                'Arabic',
+                'Russian',
+                'Other'
+            ],
+            language => {
+              return <CheckBox id={language} label={language} name={language} />
+          });
+    }
 
-  componentWillReceiveProps(nextProps) {
-  }
-
-  handleSubmit() {
-
-  }
 
   render() {
       const id = 'resource-center-profile-form';
       const updateContactInfoOptions = [
         {
           value: true, //todo: check needed value
-          text: 'Yes'
+          label: 'Yes'
         },
         {
           value: false, //todo: check needed value
-          text: 'No, it needs to be updated'
+          label: 'No, it needs to be updated'
         }
       ];
 
       const businessStageOptions = [
         {
             value: true, //todo: check value
-            text: 'New and early stage businesses'
+            label: 'New and early stage businesses'
         },
         {
             value: false, //todo: check value
-            text: 'Established businesses'
+            label: 'Established businesses'
         }
       ];
 
-      const hours = [
-          {value: 'Closed',
-          text: 'Closed'},
-          {value: '8:00 am',
-          text: '8:00 am'},
-          {value: '8:30 am',
-          text: '8:30 am'},
-          {value: '9:00 am',
-          text: '9:00 am'},
-          {value: '9:30 am',
-          text: '9:30 am'},
-          {value: '10:00 am',
-          text: '10:00 am'},
-          {value: '10:30 am',
-          text: '10:30 am'},
-          {value: '11:00 am',
-          text: '11:00 am'},
-          {value: '11:30 am',
-          text: '11:30 am'},
-          {value: '12:00 pm',
-          text: '12:00 pm'},
-          {value: '12:30 pm',
-          text: '12:30 pm'},
-          {value: '1:00 pm',
-          text: '1:00 pm'},
-          {value: '1:30 pm',
-          text: '1:30 pm'},
-          {value: '2:00 pm',
-          text: '2:00 pm'},
-          {value: '2:30 pm',
-          text: '2:30 pm'},
-          {value: '3:00 pm',
-          text: '3:00 pm'},
-          {value: '3:30 pm',
-          text: '3:30 pm'},
-          {value: '4:00 pm',
-          text: '4:00 pm'},
-          {value: '4:30 pm',
-          text: '4:30 pm'},
-          {value: '5:00 pm',
-          text: '5:00 pm'},
-          {value: '5:30 pm',
-          text: '5:30 pm'},
-          {value: '6:00 pm',
-          text: '6:00 pm'}
-      ]
+      const hours = _.map([
+        'Closed',
+        '8:00 am',
+        '8:30 am',
+        '9:00 am',
+        '9:30 am',
+        '10:00 am',
+        '10:30 am',
+        '11:00 am',
+        '11:30 am',
+        '12:00 pm',
+        '12:30 pm',
+        '1:00 pm',
+        '1:30 pm',
+        '2:00 pm',
+        '2:30 pm',
+        '3:00 pm',
+        '3:30 pm',
+        '4:00 pm',
+        '4:30 pm',
+        '5:00 pm',
+        '5:30 pm',
+        '6:00 pm'
+      ], hour => {
+          return {value: hour,
+            label: hour};
+      });
 
       const officeHoursProps = {
           id: 'office-hours',
-          label: 'What are yournormal office hours?',
+          label: 'What are your normal office hours?',
           items: [
             {
                 label: 'Monday',
@@ -136,53 +143,42 @@ class ResourceCenterProfilePage extends React.Component {
             }
         ]
       };
+
+      
+  
       return (
         <div>
             <h2>Resource Center Profile</h2>
             <p>Answer the following questions about your office's expertise to be better matched with your ideal clients</p>
-            <form id={id} onSubmit={this.handleSubmit} >
-                <MultiSelectBox
-                    id={id + '-type'} 
-                    errorText={''}
-                    label="Which resource partner do you represent?"
-                    name="type"
-                    value="type" //todo: determine prop name
-                    
-                />
-                <MultiSelectBox
-                    id={id + '-name'}
-                    errorText={''}
-                    label="Which office?"
-                    name="name"
-                    value="name" //todo: determine prop name
-                />
+            <form id={id} >
+               
                 <label>Is this your office address and phone number?</label>
                 <Radio
                     id={id + '-should-update-contact-info'}
                     //errorText={constants.messages.validation.invalidIndustryExperience}
                     label=""
                     name="shouldUpdateContactInfo"
-                    onChange={this.handleChange.bind(this)}
+                    //onChange={this.handleChange.bind(this)}
                     //validationState={this.state.validStates.industryExperience}
-                    //value={this.state.industryExperience}
+                    value="yes"
                     options={updateContactInfoOptions}
                     //onBlur={this.handleIndustryExperienceBlur.bind(this)}
-                    onFocus={this.handleFocus.bind(this)}
+                    //onFocus={this.handleFocus.bind(this)}
                 />
                 <TextInput
                     id={id + '-website-url'}
                     //errorText={constants.messages.validation.invalidName}
                     label="What's your website URL?"
                     name="websiteUrl"
-                    onChange={this.handleChange.bind(this)}
-                    value={this.state.contactFullName}
+                    //onChange={this.handleChange.bind(this)}
+                    value=""
                     //validationState={this.state.validStates.contactFullName}
                     autoFocus
-                    onBlur={this.handleBlur.bind(this)}
-                    onFocus={this.handleFocus.bind(this)}
+                    //onBlur={this.handleBlur.bind(this)}
+                    //onFocus={this.handleFocus.bind(this)}
                 />
-                <SelectRangeGroup {...officeHoursProps}/>
-                <label>What services does your office provide?</label>
+                {/* <SelectRangeGroup {...officeHoursProps}/> 
+                <label>What services does your office provide?</label>*/}
                 <Checkbox label="Walk-ins"/>
                 <Checkbox label="Appointments"/>
                 <Checkbox label="In-person"/>
@@ -201,22 +197,12 @@ class ResourceCenterProfilePage extends React.Component {
                 <Checkbox label="Legal issues"/>
                 <Checkbox label="International trade"/>
                 <Checkbox label="Networking"/>
-                
+            
                 <label>Which business stage does your office best serve?</label>
-                <Radio options={businessStageOptions} />
+                <Radio options={businessStageOptions} value=""/> 
 
                 <label>In which languages other than English can your office provide counseling</label>
-                <Checkbox label="Spanish"/>
-                <Checkbox label="Chinese"/>
-                <Checkbox label="Tagalog"/>
-                <Checkbox label="Vietnamese"/>
-                <Checkbox label="French"/>
-                <Checkbox label="German"/>
-                <Checkbox label="Korean"/>
-                <Checkbox label="Arabic"/>
-                <Checkbox label="Russian"/>
-                <Checkbox label="Italian"/>
-                <Checkbox label="Other"/>
+                {this.renderLanguageCheckboxes()}
                 
             </form>
         </div>

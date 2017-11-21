@@ -74,6 +74,9 @@ let SizeStandardsToolPage = props => (
     load={import('./pages/size-standards-tool-page/size-standards-tool-page.jsx')}
   />
 )
+let ResourceCenterProfilePage = props => (
+  <Async componentProps={props} load={import('./pages/resource-center-profile-page/resource-center-profile-page.jsx')} />
+)
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
