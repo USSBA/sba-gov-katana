@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './readmore-section.scss'
-import { ReadMore } from 'atoms'
+import { ReadMore } from 'molecules'
 
 class ReadMoreSection extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { ImageSection, ParagraphPlaceholder, SectionHeader, TextSection } from 'atoms'
+import { ImageSection, ParagraphPlaceholder, SectionHeader, SubsectionHeader, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
@@ -9,7 +9,6 @@ import {
   ProgramDetailsCardCollection,
   SearchBox,
   StyleGrayBackground,
-  SubsectionHeader,
   TextReadMoreSection
 } from 'organisms'
 
