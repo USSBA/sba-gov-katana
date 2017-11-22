@@ -4,19 +4,16 @@ import { connect } from 'react-redux'
 import { SbaNewsModal } from 'molecules'
 import { LeaveSbaModal, MobileSectionNavModal } from 'organisms'
 
-const modalTypes = {
-  LEAVE_SBA: LeaveSbaModal,
-  SBA_NEWSLETTER: SbaNewsModal,
-  MOBILE_SECTION_NAV: MobileSectionNavModal
-}
-
 const ModalController = ({ modalType, modalProps }) => {
   if (!modalType) {
     return <div />
   } else {
-    const ModalClass = modalTypes[modalType]
-    if (ModalClass) {
-      return <ModalClass {...modalProps} />
+    if (modalType === 'MOBILE_SECTION_NAV') {
+      return <MobileSectionNavModal {...modalProps} />
+    } else if (modalType === 'LEAVE_SBA'){
+      return <LeaveSbaModal {...modalProps} />
+    } else if (modalType === 'SBA_NEWSLETTER') {
+      return <SbaNewsModal {...modalProps} />
     } else {
       return <div />
     }
