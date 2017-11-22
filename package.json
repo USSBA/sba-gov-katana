@@ -46,7 +46,6 @@
     "font-awesome": "4.7.0",
     "font-awesome-webpack2": "0.0.6",
     "google-map-react": "0.24.0",
-    "html-to-text": "3.0.0",
     "http-status-codes": "1.0.6",
     "ismobilejs": "^0.4.1",
     "jquery": "3.1.1",
@@ -61,7 +60,6 @@
     "newrelic": "1.36.2",
     "node-sass": "4.5.3",
     "nodemailer": "4.0.1",
-    "password-generator": "^2.1.0",
     "pug": "2.0.0-beta11",
     "querystring": "0.2.0",
     "rc-checkbox": "2.0.1",
@@ -81,16 +79,12 @@
     "react-tap-event-plugin": "^2.0.1",
     "react-waypoint": "7.0.4",
     "redux": "3.6.0",
-    "request": "2.79.0",
     "sass-loader": "6.0.5",
     "sequelize": "3.30.2",
-    "simple-encryptor": "^1.1.0",
     "url-loader": "0.5.7",
     "uuid": "3.0.1",
     "webpack": "2.3.0",
-    "winston": "2.3.1",
-    "xml2js": "0.4.17",
-    "xmldom": "0.1.27"
+    "winston": "2.3.1"
   },
   "devDependencies": {
     "axios-mock-adapter": "1.8.1",
