@@ -114,29 +114,6 @@ class QuickLinks extends PureComponent {
       }
 
       return component
-
-      /*if (quickLink.type === 'documentLookup') {
-        return (
-          <LatestDocumentsCard
-            key={index}
-            classname={s.card + ' ' + gridClass}
-            documents={this.props['documents-' + index]}
-            {...quickLink}
-            locationChange={this.props.navigation.locationChange}
-          />
-        )
-      } else if (quickLink.type === 'ratesList') {
-        return <RatesCard key={index} {...quickLink} classname={s.card + ' ' + gridClass} />
-      } else if (quickLink.type === 'articleLookup') {
-        return (
-          <ArticlesCard
-            key={index}
-            classname={s.card + ' ' + gridClass}
-            articles={this.props['articles-' + index]}
-            {...quickLink}
-          />
-        )
-      }*/
     })
   }
 

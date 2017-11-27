@@ -116,10 +116,10 @@ class PagingLookup extends React.Component {
     this.setState(
       _.assign(this.createOriginalState(this.props), {
         query: {
-          searchTerm: "",
-          documentActivity: "All",
-          documentType: "All",
-          program: "All",
+          searchTerm: '',
+          documentActivity: 'All',
+          documentType: 'All',
+          program: 'All',
           sortBy: this.props.defaultSortBy
         },
         taxonomies: this.state.taxonomies,
