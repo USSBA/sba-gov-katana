@@ -29,6 +29,14 @@ function formatDate(date) {
   return moment(date).format('MMM D, YYYY')
 }
 
+function generateGrid(length) {
+  const gridClass = {
+    1: s.oneCard,
+    2: s.twoCards
+  }
+  return length > 2 ? s.manyCards : gridClass[length]
+}
+
 class QuickLinks extends PureComponent {
   componentWillMount() {
     this.fetchDocuments()
@@ -54,8 +62,9 @@ class QuickLinks extends PureComponent {
     this.props.data.typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'articleLookup') {
         this.props.actions.fetchContentIfNeeded('articles-' + index, 'articles', {
-          sortBy: 'Created',
+          sortBy: 'Last Updated',
           type: 'all',
+          program: '7(a)',
           start: 0,
           end: 3
         })
@@ -63,15 +72,50 @@ class QuickLinks extends PureComponent {
     })
   }
 
-  generateGrid(length) {
-    let gridClass = { 1: s.oneCard, 2: s.twoCards }
-    return length > 2 ? s.manyCards : gridClass[length]
-  }
-
   renderQuickLinks() {
-    let gridClass = this.generateGrid(this.props.data.typeOfLinks.length)
+    const gridClass = generateGrid(this.props.data.typeOfLinks.length)
     return this.props.data.typeOfLinks.map((quickLink, index) => {
-      if (quickLink.type === 'documentLookup') {
+      const { type } = quickLink
+      let component
+
+      switch (type) {
+        case 'documentLookup':
+          component = (
+            <LatestDocumentsCard
+              key={index}
+              {...quickLink}
+              classname={s.card + ' ' + gridClass}
+              documents={this.props['documents-' + index]}
+              locationChange={this.props.navigation.locationChange}
+            />
+          )
+
+          break
+
+        case 'ratesList':
+          component = <RatesCard key={index} {...quickLink} classname={s.card + ' ' + gridClass} />
+
+          break
+
+        case 'articleLookup':
+          component = (
+            <ArticlesCard
+              key={index}
+              {...quickLink}
+              classname={s.card + ' ' + gridClass}
+              articles={this.props['articles-' + index]}
+            />
+          )
+
+          break
+
+        default:
+          break
+      }
+
+      return component
+
+      /*if (quickLink.type === 'documentLookup') {
         return (
           <LatestDocumentsCard
             key={index}
@@ -92,7 +136,7 @@ class QuickLinks extends PureComponent {
             {...quickLink}
           />
         )
-      }
+      }*/
     })
   }
 
