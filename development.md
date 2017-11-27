@@ -1,23 +1,26 @@
 # Katana development guide
-Katana serves as the presentation layer for sba.gov. It is a React-Redux/Node application. Katana must connect to the data cacheing layer [Daisho](https://github.com/USSBA/sba-gov-daisho) to run properly. So please ensure you have set it up before attempting to run Katana.
+Katana serves as the presentation layer for sba.gov. It is a React-Redux/Node application. Katana must connect to the data cacheing layer [Daisho](https://github.com/USSBA/sba-gov-daisho) to run properly. **So please ensure you have set it up before attempting to run Katana.**
 
 ## Environment Setup
-1. Install NVM (https://github.com/creationix/nvm)
+1. Install [NVM](https://github.com/creationix/nvm)
       * NVM is our node version manager of choice. Please follow the steps detailed on their repo.
 2. Download and use the Node version specified in the [Dockerfile](https://github.com/USSBA/sba-gov-katana/blob/master/Dockerfile#L1)
 ```sh
-nvm install <node-version> && nvm use
+nvm install && nvm use
 ```
+Normally you would provide a version number to these commands, but in this project, the appropriate version is supplied to them by the .nvmrc
 3. Install ESLint: `npm install -g eslint`
-4. Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
+4. [OPTIONAL] Setup a git precommit client hook `cp scripts/check-commit-message.sh .git/hooks/commit-msg && chmod 700 .git/hooks/commit-msg`
+5. Setup AWS credentials in ~/.aws according to http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html
 
 ## Development Process
-1. `npm install` ensure you are using the correct node version
+1. `npm install` to install the dependencies
 2. Download mysql seed data
-    - Setup AWS credentials in ~/.aws
     - execute `./scripts/db/sql/download-sql.sh`
 3. `./scripts/db/run-db.sh` to execute a local mysql
-4. Create a [local-development.yaml](#local-development-yaml) file based upon the sample provided. Place it in `config/`
+4. Create a [local-development.yaml](#local-development-yaml) file based upon the sample provided.
+      * Place it in `config/`
+      * Replace any placeholders with the correct values
       * This sets configuration properties for the application ( database connections / daisho connections / feature flagging ) and is different for each environment. Your [local-development.yaml](#local-development-yaml) will override any properties you need to override (probably the database properties).
 5. `npm start` to run the server/hot-reloader
 
@@ -47,11 +50,11 @@ daisho:
 database:
   drupal:
     databaseName: sba_prod
-    host: db2.sba.fun
+    host: placeholder
     password: placeholder
     user: root
   nonDrupal:
-    host: db2.sba.fun
+    host: placeholder
     password: placeholder
     user: root
 developmentOptions:
@@ -65,4 +68,3 @@ drupal8:
   useLocalContacts: true
 
 ```
-
