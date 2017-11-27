@@ -1,0 +1,64 @@
+.hoursRow {
+    margin-bottom: 0.375em;
+}
+.hoursRow .Select{
+    display: inline-block;
+}
+
+.hoursRow > div{
+    display: inline-block;
+    max-width: 40%;
+    min-width: 8em;
+    margin-left: 10px;
+    margin-right: 10px;    
+    vertical-align:middle;
+}
+.hoursRow label {
+    margin-bottom: 0px;
+}
+.hoursLabel {
+    width: 3em !important;
+    margin-bottom: 0px;
+}
+
+.backgroundContainer {
+    background: $sba-blue-lightest;
+    margin: 0px 0px;
+    padding: 20px 20px;
+    @include grid-media($sba-grid-small) {
+        @include grid-column(6, $mobile-0gutter);
+      }
+      @include grid-media($sba-grid-medium) {
+        @include grid-column(12, $tablet-0gutter);
+      }
+      @include grid-media($sba-grid-large) {
+        @include grid-column(12, $desktop-0gutter);
+      }
+}
+
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
+    background: white;
+    box-shadow: 2px 2px 15px #888888;
+    @include grid-media($sba-grid-small) {
+      @include grid-column(6);
+      margin-top: 20px;
+      margin-bottom: 40px;
+      padding-top: 20px;
+    }
+    @include grid-media($sba-grid-medium) {
+      @include grid-column(12);
+      margin-top: 20px;
+      margin-bottom: 30px;
+      padding: 5%;
+    }
+    @include grid-media($sba-grid-large) {
+      @include grid-column(8);
+      @include grid-push(2);
+      margin-top: 20px;
+      margin-bottom: 30px;
+      padding: 5%;
+    }
+  }
+  
