@@ -40,6 +40,7 @@ class RadioButtonGroup extends React.Component {
     let radioButtons = this.props.options.map(function(item, index) {
       let id = me.props.id + '-radio' + index
       let isChecked = item.value === me.props.value
+      const textStyle = me.props.textStyle || styles.defaultRadioText
 
       return (
         <div
@@ -65,7 +66,7 @@ class RadioButtonGroup extends React.Component {
             value={item.value}
           />
           <label className={styles.myLabel} htmlFor={id} />
-          <span className={styles.radioText}>{item.text}</span>
+          <span className={styles.radioText + ' ' + textStyle}>{item.text}</span>
         </div>
       )
     })
