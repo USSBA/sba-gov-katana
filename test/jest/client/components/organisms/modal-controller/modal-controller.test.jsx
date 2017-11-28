@@ -5,10 +5,11 @@ import { shallow, mount} from 'enzyme'
 
 import { ModalController } from 'organisms/modal-controller/modal-controller.jsx'
 import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-section-nav/mobile-section-nav.jsx'
-import { LeaveSbaModal } from 'organisms/modals/leave-sba-modal/leave-sba-modal.jsx'
+import LeaveSbaModal from 'organisms/modals/leave-sba-modal/leave-sba-modal.jsx'
+import { SbaNewsModal } from 'molecules/news-modal/news-modal.jsx'
 
-
-const modalInfo = {
+const mobileSectionNavProps = {
+  modalType: 'MOBILE_SECTION_NAV',
   modalProps: {
     backUrl: false,
     icon: "build/img/img-ed52b1.png",
@@ -88,10 +89,23 @@ const modalInfo = {
   }
 }
 
-describe('ModalController', () => {
-  test('should render mobile section navigation modalType', () => {
-    const props = _.merge(modalInfo, { modalType: 'MOBILE_SECTION_NAV' })
+const leaveSbaModalProps = {
+  modalType: "LEAVE_SBA",
+  modalProps: {
+    targetUrl: "https://testing.testing"
+  }
+}
 
+const SbaNewsModalProps = {
+  modalType: "SBA_NEWSLETTER",
+  modalProps: {
+    userEmailAddress: "user@user.com"
+  }
+}
+
+describe('ModalController', () => {
+  test('should render mobile section navigation modal', () => {
+    const props = _.clone(mobileSectionNavProps)
     props.modalProps.store = {
       getState: () => {
         return false
@@ -103,30 +117,20 @@ describe('ModalController', () => {
         return false
       }
     }
-
   const component = mount(<ModalController {...props} />)
   expect(component.find('MobileNav')).toHaveLength(1)
   })
 
-//   test('should render LeaveSba modalType', () => {
-//     const props = {
-//       modalType: 'LEAVE_SBA',
-//       modalProps: { url: 'https://testing.com' }
-//     }
-
-//     props.modalProps.store = {
-//       getState: () => {
-//         return false
-//       },
-//       subscribe: () => {
-//         return false
-//       },
-//       dispatch: () => {
-//         return false
-//       }
-//     }
-
-//     const component = mount(<ModalController {...props} />)
-//     expect(component.find('LeaveSbaModal')).toHaveLength(1)
-//   })
-})
+  test('should render LeaveSba modal', () => {
+    const expectedValue = 'Invariant Violation'
+    let returnedValue
+    try {
+      const props = _.clone(leaveSbaModalProps)
+      const component = mount(<ModalController {...props} />)
+    } catch(e) {
+      returnedValue = e.name
+    }
+    // checks to make sure an error about the store is given,
+    // which means LeaveSbaModal is executed
+    expect(returnedValue).toEqual(expectedValue)
+  })
