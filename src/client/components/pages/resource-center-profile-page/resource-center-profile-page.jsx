@@ -264,38 +264,28 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   renderHourDropdowns() {
-    const hours = _.map(
-      [
-        'Closed',
-        '8:00 am',
-        '8:30 am',
-        '9:00 am',
-        '9:30 am',
-        '10:00 am',
-        '10:30 am',
-        '11:00 am',
-        '11:30 am',
-        '12:00 pm',
-        '12:30 pm',
-        '1:00 pm',
-        '1:30 pm',
-        '2:00 pm',
-        '2:30 pm',
-        '3:00 pm',
-        '3:30 pm',
-        '4:00 pm',
-        '4:30 pm',
-        '5:00 pm',
-        '5:30 pm',
-        '6:00 pm'
-      ],
-      hour => {
-        return {
-          value: hour,
-          label: hour
-        }
+    const hourArray = ['Closed']
+    // generate hours from 12:00 am to 11:30 pm
+    for (let i = 0; i < 48; i++) {
+      let hour = Math.floor(i / 2) % 12
+      if (hour === 0) hour = 12
+      let minutes = ':00'
+      if (i % 2 > 0) {
+        minutes = ':30'
       }
-    )
+      let suffix = ' am'
+      if (i >= 24) {
+        suffix = ' pm'
+      }
+      const timeString = hour + minutes + suffix
+      hourArray.push(timeString)
+    }
+    const hours = _.map(hourArray, hour => {
+      return {
+        value: hour,
+        label: hour
+      }
+    })
     const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     const hoursOptions = _.map(dayOfTheWeek, day => {
       const dayOpen = day.toLowerCase() + 'Open'
