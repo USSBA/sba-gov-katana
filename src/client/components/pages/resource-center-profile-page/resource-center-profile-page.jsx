@@ -1,3 +1,7 @@
+import PageLink from '../../atoms/page-link/page-link'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { submitProfile } from '../../../actions/resource-center-profile'
 import React from 'react'
 import {
   CheckBox,
@@ -83,12 +87,9 @@ class ResourceCenterProfilePage extends React.Component {
         return _.isEmpty(office)
       })
     })
-    console.log(partner)
-    console.log(getPartnerOffices(partner))
   }
 
   handleRadio(value, propName) {
-    console.log(value)
     const newProfile = _.cloneDeep(this.state.profile)
     newProfile[propName] = value
     this.setState({ profile: newProfile })
@@ -111,7 +112,6 @@ class ResourceCenterProfilePage extends React.Component {
   handleSelect(newSelection, propName) {
     const value = newSelection.value
     const newProfile = _.cloneDeep(this.state.profile)
-    console.log(propName)
     if (_.endsWith(propName, 'Open') || _.endsWith(propName, 'Close')) {
       newProfile.hours[propName] = value
     } else {
@@ -131,33 +131,26 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   handleChange(event, propName) {
-    console.log(event)
     const newProfile = _.cloneDeep(this.state.profile)
     newProfile[event.target.name] = event.target.value
     this.setState({ profile: newProfile })
   }
 
   formatAddress(address) {
-    console.log(address)
     if (!address) {
       return 'Please select your office'
     }
     const addressPartList = [address.street1, address.street2, address.city, address.state, address.zip]
-    console.log(addressPartList)
     const addressString = _.join(
       _.filter(addressPartList, addressPart => {
-        console.log(addressPart)
-        console.log(!_.isEmpty(addressPart))
         return !_.isEmpty(addressPart)
       }),
       ', '
     )
-    console.log(addressString)
     return addressString
   }
 
   handleOfficeSelect(newSelection) {
-    console.log(newSelection)
     const newOffice = newSelection.value
     const newProfile = _.cloneDeep(this.state.profile)
     newProfile.name = newOffice.name1
@@ -204,10 +197,7 @@ class ResourceCenterProfilePage extends React.Component {
       if (profile.serviceArea === 'Other' && this.state.otherServiceArea) {
         profile.serviceArea = this.state.otherServiceArea
       }
-      console.log(profile)
-      //todo: submit profile
-      this.setState({ submitted: true })
-      window.scrollTo(0, 0)
+      this.props.submitProfile(profile)
     }
   }
 
@@ -506,6 +496,22 @@ class ResourceCenterProfilePage extends React.Component {
     )
   }
 
+  renderSubmissionComplete() {
+    return (
+      <div>
+        <h1>One Last Step</h1>
+        <p>
+          Thanks for completing this form. Your submission will help us better match you with your ideal
+          clients.
+        </p>
+        <p>
+          To update your office address and phone number, contact SBA's{' '}
+          <a href="mailto:edmis@sba.gov">Office of Entrepreneurial Development</a>
+        </p>
+      </div>
+    )
+  }
+
   render() {
     const id = 'resource-center-profile-form'
     const selectedOffice = this.state.selectedOffice
@@ -592,29 +598,39 @@ class ResourceCenterProfilePage extends React.Component {
               <LargePrimaryButton id="feedback-submit-button" text="SUBMIT" url="" />
             </div>
             {_.some(isFieldValid, field => {
-              console.log(field)
               return field === false
             }) && (
               <div className={style.submitButton}>
                 <FormErrorMessage errorText="Please answer all required questions before submitting." />
               </div>
             )}
+            {this.props.hadSubmitErrors && (
+              <div className={style.submitButton}>
+                <FormErrorMessage errorText="There was an error submitting the form." />
+              </div>
+            )}
           </form>
-          <div className={this.state.submitted ? style.submissionMessage : style.hidden}>
-            <h1>One Last Step</h1>
-            <p>
-              Thanks for completing this form. Your submission will help us better match you with your ideal
-              clients.
-            </p>
-            <p>
-              To update your office address and phone number, contact SBA's{' '}
-              <a href="mailto:edmis@sba.gov">Office of Entrepreneurial Development</a>
-            </p>
-          </div>
+          {this.props.isSubmitComplete && this.renderSubmissionComplete()}
         </div>
       </div>
     )
   }
 }
 
-export default ResourceCenterProfilePage
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    {
+      submitProfile: submitProfile
+    },
+    dispatch
+  )
+}
+
+function mapStateToProps(state) {
+  return {
+    isSubmitComplete: state.isSubmitComplete,
+    hadSubmitErrors: state.hadSubmitErrors
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceCenterProfilePage)

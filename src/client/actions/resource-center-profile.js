@@ -10,35 +10,16 @@ export function submitProfile(profile) {
       })
       .then(response => {
         dispatch({
-          type: types.resouceCenterProfile.submitProfile,
-          payload: response.data
+          type: types.resouceCenterProfile.submitComplete,
+          payload: response.data,
+          isSubmitComplete: true
         })
       })
       .catch(error => {
         dispatch({
-          type: types.resouceCenterProfile.submitProfile,
-          payload: error
-        })
-      })
-  }
-}
-
-export function submitText(id, text) {
-  return function(dispatch) {
-    axios
-      .put(constants.routes.submitFeedbackText.replace('{id}', id), {
-        text
-      })
-      .then(response => {
-        dispatch({
-          type: types.feedback.submitText,
-          payload: response.data
-        })
-      })
-      .catch(error => {
-        dispatch({
-          type: types.feedback.submitText,
-          payload: error
+          type: types.resouceCenterProfile.submitError,
+          payload: error,
+          hadSubmitError: true
         })
       })
   }
