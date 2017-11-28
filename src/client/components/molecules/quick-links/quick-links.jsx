@@ -64,7 +64,7 @@ class QuickLinks extends PureComponent {
         this.props.actions.fetchContentIfNeeded('articles-' + index, 'articles', {
           sortBy: 'Last Updated',
           type: 'all',
-          program: quickLink.articleProgram,
+          program: '7(a)',
           start: 0,
           end: 3
         })
