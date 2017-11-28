@@ -115,7 +115,8 @@ div.hoursSelect {
     display: none;
   }
 
-  form {
+  form,
+  .submissionMessage {
     @include grid-media($sba-grid-small) {
       max-width: 100%;
     }
@@ -147,5 +148,13 @@ div.hoursSelect {
 
   .invalid::before {
     content: '* ';
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  h1 {
+    @include font-size($h3-font-sizes);
   }
 }

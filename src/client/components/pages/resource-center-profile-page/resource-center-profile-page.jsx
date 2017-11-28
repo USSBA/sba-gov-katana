@@ -13,7 +13,7 @@ class ResourceCenterProfilePage extends React.Component {
   constructor() {
     super()
     this.state = {
-      loading: false,
+      submitted: false,
       shouldUpdateContact: '',
       partners: getPartners(),
       offices: null,
@@ -26,6 +26,7 @@ class ResourceCenterProfilePage extends React.Component {
         phone: null,
         businessStage: null,
         serviceArea: null,
+        shouldUpdateContact: null,
         url: null,
         hours: true, // optional so always valid
         expertise: null,
@@ -158,37 +159,38 @@ class ResourceCenterProfilePage extends React.Component {
       profile: newProfile,
       selectedOffice: newOffice,
       selectedOfficeOption: newSelection
-      // shouldUpdateContact: this.state.shouldUpdateContact || !newProfile.phone || !newProfile.address
     })
   }
 
   validateFields() {
-    const requiredFields = [
-      'type',
-      'name',
-      'address',
-      'phone',
-      'businessStage',
-      'serviceArea',
-      'url',
-      'expertise',
-      'services'
-    ]
+    let allFieldsValid = true
+    const requiredFields = ['type', 'name', 'businessStage', 'serviceArea', 'url', 'expertise', 'services']
     const newValidationState = _.cloneDeep(this.state.isFieldValid)
     _.forEach(requiredFields, field => {
       newValidationState[field] = !_.isEmpty(this.state.profile[field])
+      if (!newValidationState[field]) {
+        allFieldsValid = false
+      }
     })
+    console.log('should update ' + this.state.shouldUpdateContact)
+    newValidationState.shouldUpdateContact = this.state.shouldUpdateContact !== ''
+    console.log('new validation state: ' + newValidationState.shouldUpdateContact)
+    if (newValidationState.shouldUpdateContact === false) {
+      allFieldsValid = false
+    }
     this.setState({
-      isFieldValid: newValidationState,
-      shouldUpdateContact:
-        this.props.shouldUpdateContact || !newValidationState.address || !newValidationState.phone
+      isFieldValid: newValidationState
     })
+    return allFieldsValid
   }
   handleSubmit(event) {
     event.preventDefault()
     console.log('submit')
     console.log(this.state.profile)
-    this.validateFields()
+    const allFieldsValid = this.validateFields()
+    if (allFieldsValid) {
+      this.setState({ submitted: true })
+    }
   }
 
   renderPartnerSelect() {
@@ -456,7 +458,9 @@ class ResourceCenterProfilePage extends React.Component {
         //errorText={constants.messages.validation.invalidIndustryExperience}
         label=""
         name="shouldUpdateContactInfo"
-        onChange={e => this.setState({ shouldUpdateContact: e === 'true' })}
+        onChange={e => {
+          this.setState({ shouldUpdateContact: e === 'true' })
+        }}
         //validationState={this.state.validStates.industryExperience}
         value={this.state.shouldUpdateContact.toString()}
         options={updateContactInfoOptions}
@@ -475,8 +479,8 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <div className={style.backgroundContainer}>
         <div className={style.container}>
-          <form id={id} className={style.form}>
-            <h2>Resource Center Profile</h2>
+          <form id={id} className={this.state.submitted ? style.hidden : style.form}>
+            <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
               ideal clients
@@ -489,7 +493,11 @@ class ResourceCenterProfilePage extends React.Component {
               <label className={isFieldValid.name === false ? style.invalid : ''}>Which office?</label>
             )}
             {this.state.profile.type && this.renderOfficeSelect()}
-            {selectedOffice && <label>Is this your office address and phone number?</label>}
+            {selectedOffice && (
+              <label className={isFieldValid.shouldUpdateContact === false ? style.invalid : ''}>
+                Is this your office address and phone number?
+              </label>
+            )}
             {selectedOffice && (
               <div>
                 <div>{selectedOffice.street1}</div>
@@ -501,48 +509,16 @@ class ResourceCenterProfilePage extends React.Component {
                 </div>
                 <div>{selectedOffice.phone}</div>
                 {this.renderShouldUpdateAddressRadios()}
-                {this.state.shouldUpdateContact && (
-                  <div>
-                    <label className={isFieldValid.address === false ? style.invalid : style.formLabel}>
-                      What's your address?
-                    </label>
-                    <TextInput
-                      id={id + '-address'}
-                      name="address"
-                      value={this.state.profile.address}
-                      onChange={this.handleChange.bind(this)}
-                      autoFocus={false}
-                      onBlur={this.onBlur.bind(this)}
-                      onFocus={this.onFocus.bind(this)}
-                    />
-
-                    <label className={isFieldValid.phone === false ? style.invalid : style.formLabel}>
-                      What's your phone number?
-                    </label>
-                    <TextInput
-                      id={id + '-phone'}
-                      name="phone"
-                      value={this.state.profile.phone}
-                      onChange={this.handleChange.bind(this)}
-                      autoFocus={false}
-                      onBlur={this.onBlur.bind(this)}
-                      onFocus={this.onFocus.bind(this)}
-                    />
-                  </div>
-                )}
               </div>
             )}
             <label className={isFieldValid.url === false ? style.invalid : ''}>
               What's your website URL?
             </label>
             <TextInput
-              id={id + '-website-url'}
-              //errorText={constants.messages.validation.invalidName}
-
-              name="websiteUrl"
+              id={id + '-url'}
+              name="url"
               onChange={this.handleChange.bind(this)}
-              value={this.state.profile.websiteUrl}
-              //validationState={this.state.validStates.contactFullName}
+              value={this.state.profile.url}
               autoFocus={false}
               onBlur={this.onBlur.bind(this)}
               onFocus={this.onFocus.bind(this)}
@@ -589,6 +565,17 @@ class ResourceCenterProfilePage extends React.Component {
               </div>
             )}
           </form>
+          <div className={this.state.submitted ? style.submissionMessage : style.hidden}>
+            <h1>One Last Step</h1>
+            <p>
+              Thanks for completing this form. Your submission will help us better match you with your ideal
+              clients.
+            </p>
+            <p>
+              To update your office address and phone number, contact SBA's{' '}
+              <a href="mailto:edmis@sba.gov">Office of Entrepreneurial Development</a>
+            </p>
+          </div>
         </div>
       </div>
     )
@@ -596,45 +583,3 @@ class ResourceCenterProfilePage extends React.Component {
 }
 
 export default ResourceCenterProfilePage
-/***************
- Expected POST Body Sample:
- {
-   "profile": {
-     "type": "WBC",
-     "name": "My WBC Center",
-     "address": "8 Market Place, Baltimore, MD 21202",
-     "phone": "123-456-7890",
-     "businessStage": "Stage51",
-     "serviceArea": "Area51",
-     "url": "www.example.com",
-     "hours": {
-       "mondayOpen": "9:00 am",
-       "mondayClose": "5:00 pm",
-       "tuesdayOpen": "9:00 am",
-       "tuesdayClose": "5:00 pm",
-       "wednesdayOpen": "9:00 am",
-       "wednesdayClose": "5:00 pm",
-       "thursdayOpen": "9:00 am",
-       "thursdayClose": "5:00 pm",
-       "fridayOpen": "9:00 am",
-       "fridayClose": "5:00 pm",
-       "saturdayOpen": "9:00 am",
-       "saturdayClose": "5:00 pm",
-       "sundayOpen": "9:00 am",
-       "sundayClose": "5:00 pm"
-     },
-     "expertise": [
-       "Being Cool",
-       "Being Rad"
-     ],
-     "services": [
-       "Cool Consultancy",
-       "Rad Consultancy"
-     ],
-     "languages": [
-       "Skater",
-       "Surfer"
-     ]
-   }
- }
- */
