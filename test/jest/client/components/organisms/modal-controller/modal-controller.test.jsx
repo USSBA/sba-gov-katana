@@ -1,7 +1,6 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
 import _ from 'lodash'
-import { shallow, mount} from 'enzyme'
+import { mount } from 'enzyme'
 
 import { ModalController } from 'organisms/modal-controller/modal-controller.jsx'
 import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-section-nav/mobile-section-nav.jsx'
@@ -104,7 +103,7 @@ const SbaNewsModalProps = {
 }
 
 describe('ModalController', () => {
-  test('should render mobile section navigation modal', () => {
+  test('should render MobileSectionNav', () => {
     const props = _.clone(mobileSectionNavProps)
     props.modalProps.store = {
       getState: () => {
@@ -121,7 +120,7 @@ describe('ModalController', () => {
   expect(component.find('MobileNav')).toHaveLength(1)
   })
 
-  test('should render LeaveSba modal', () => {
+  test('should render LeaveSbaModal', () => {
     const expectedValue = 'Invariant Violation'
     let returnedValue
     try {
@@ -132,5 +131,19 @@ describe('ModalController', () => {
     }
     // checks to make sure an error about the store is given,
     // which means LeaveSbaModal is executed
+    // This makes sure the component is not null
     expect(returnedValue).toEqual(expectedValue)
   })
+
+  test('should render SbaNewsModal', () => {
+    const expectedValue = 'Invariant Violation'
+    let returnedValue
+    try {
+      const props = _.clone(SbaNewsModalProps)
+      const component = mount(<ModalController {...props} />)
+    } catch(e) {
+      returnedValue = e.name
+    }
+    expect(returnedValue).toEqual(expectedValue)
+  })
+})
