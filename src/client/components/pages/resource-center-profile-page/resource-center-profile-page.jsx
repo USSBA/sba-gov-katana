@@ -1,6 +1,13 @@
-import FormErrorMessage from '../../atoms/form-error-message/form-error-message'
 import React from 'react'
-import { CheckBox, Radio, Checkbox, MultiSelect, TextInput, LargePrimaryButton } from 'atoms'
+import {
+  CheckBox,
+  Radio,
+  Checkbox,
+  MultiSelect,
+  TextInput,
+  LargePrimaryButton,
+  FormErrorMessage
+} from 'atoms'
 import _ from 'lodash'
 import {
   getPartners,
@@ -19,6 +26,7 @@ class ResourceCenterProfilePage extends React.Component {
       offices: null,
       selectedOfficeOption: null,
       selectedOffice: null,
+      otherServiceArea: '',
       isFieldValid: {
         type: null,
         name: null,
@@ -172,10 +180,14 @@ class ResourceCenterProfilePage extends React.Component {
         allFieldsValid = false
       }
     })
-    console.log('should update ' + this.state.shouldUpdateContact)
+    // make sure that one of the update contact options is clicked ('' is the default value)
     newValidationState.shouldUpdateContact = this.state.shouldUpdateContact !== ''
-    console.log('new validation state: ' + newValidationState.shouldUpdateContact)
     if (newValidationState.shouldUpdateContact === false) {
+      allFieldsValid = false
+    }
+    // if someone selects other for the service area make sure it's filled out
+    if (this.state.profile.serviceArea === 'Other' && !this.state.otherServiceArea) {
+      newValidationState.serviceArea = false
       allFieldsValid = false
     }
     this.setState({
@@ -185,11 +197,17 @@ class ResourceCenterProfilePage extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault()
-    console.log('submit')
-    console.log(this.state.profile)
     const allFieldsValid = this.validateFields()
     if (allFieldsValid) {
+      const profile = _.cloneDeep(this.state.profile)
+      // if the service area is specified as other, replace the value in the other text field
+      if (profile.serviceArea === 'Other' && this.state.otherServiceArea) {
+        profile.serviceArea = this.state.otherServiceArea
+      }
+      console.log(profile)
+      //todo: submit profile
       this.setState({ submitted: true })
+      window.scrollTo(0, 0)
     }
   }
 
@@ -253,15 +271,32 @@ class ResourceCenterProfilePage extends React.Component {
     })
 
     return (
-      <MultiSelect
-        id="serviceArea"
-        value={this.state.profile.serviceArea}
-        options={areas}
-        multi={false}
-        onChange={e => this.handleSelect(e, 'serviceArea')}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-      />
+      <div>
+        <MultiSelect
+          id="serviceArea"
+          value={this.state.profile.serviceArea}
+          options={areas}
+          multi={false}
+          onChange={e => {
+            this.handleSelect(e, 'serviceArea')
+            this.setState({ otherServiceArea: '' })
+          }}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+        />
+        {this.state.profile.serviceArea === 'Other' && (
+          <TextInput
+            id={'serviceArea'}
+            name="serviceArea"
+            placeholder="Custom other value"
+            onChange={e => this.setState({ otherServiceArea: e.target.value })}
+            value={this.state.otherServiceArea}
+            autoFocus={false}
+            onBlur={this.onBlur.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+          />
+        )}
+      </div>
     )
   }
 

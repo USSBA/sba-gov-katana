@@ -5,6 +5,9 @@ export default {
     submitResults: 'SUBMIT_RESULT',
     submitText: 'SUBMIT_TEXT'
   },
+  resouceCenterProfile: {
+    submitProfile: 'SUBMIT_PROFILE'
+  },
   display: {
     theme: 'THEME'
   },
