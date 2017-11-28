@@ -12,8 +12,8 @@ class LeaveSbaModal extends React.Component {
   }
 
   render() {
-    let title = "You're leaving the Small Business Administration website."
-    let text =
+    const title = "You're leaving the Small Business Administration website."
+    const text =
       'This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy of information provided by third-parties and other linked sites.'
     return (
       <SbaModal
@@ -47,3 +47,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(LeaveSbaModal)
+
+export { LeaveSbaModal }
