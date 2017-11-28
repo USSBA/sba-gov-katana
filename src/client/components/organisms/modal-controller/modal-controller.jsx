@@ -7,8 +7,7 @@ import { LeaveSbaModal, MobileSectionNavModal } from 'organisms'
 const ModalController = ({ modalType, modalProps }) => {
   if (!modalType) {
     return <div />
-  } else {
-    if (modalType === 'MOBILE_SECTION_NAV') {
+  } else if (modalType === 'MOBILE_SECTION_NAV') {
       return <MobileSectionNavModal {...modalProps} />
     } else if (modalType === 'LEAVE_SBA'){
       return <LeaveSbaModal {...modalProps} />
@@ -17,9 +16,10 @@ const ModalController = ({ modalType, modalProps }) => {
     } else {
       return <div />
     }
-  }
 }
 
 export default connect(state => {
   return state.modalReducer
 })(ModalController)
+
+export { ModalController }
