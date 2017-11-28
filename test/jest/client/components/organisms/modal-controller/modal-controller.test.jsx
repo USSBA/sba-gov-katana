@@ -1,11 +1,12 @@
 import React from 'react'
 import _ from 'lodash'
+import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
 
 import { ModalController } from 'organisms/modal-controller/modal-controller.jsx'
 import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-section-nav/mobile-section-nav.jsx'
 import LeaveSbaModal from 'organisms/modals/leave-sba-modal/leave-sba-modal.jsx'
-import { SbaNewsModal } from 'molecules/news-modal/news-modal.jsx'
+import SbaNewsModal from 'molecules/news-modal/news-modal.jsx'
 
 const mobileSectionNavProps = {
   modalType: 'MOBILE_SECTION_NAV',
@@ -103,7 +104,7 @@ const SbaNewsModalProps = {
 }
 
 describe('ModalController', () => {
-  test('should render MobileSectionNav', () => {
+  test('should render MobileSectionNav component', () => {
     const props = _.clone(mobileSectionNavProps)
     props.modalProps.store = {
       getState: () => {
@@ -120,7 +121,25 @@ describe('ModalController', () => {
   expect(component.find('MobileNav')).toHaveLength(1)
   })
 
-  test('should render LeaveSbaModal', () => {
+  test('should render MobileSectionNav page', () => {
+    const props = _.clone(mobileSectionNavProps)
+    props.modalProps.store = {
+      getState: () => {
+        return false
+      },
+      subscribe: () => {
+        return false
+      },
+      dispatch: () => {
+        return false
+      }
+    }
+    const component = renderer.create(<ModalController {...props} />)
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  test('should invoke LeaveSbaModal and show store error', () => {
     const expectedValue = 'Invariant Violation'
     let returnedValue
     try {
@@ -135,7 +154,7 @@ describe('ModalController', () => {
     expect(returnedValue).toEqual(expectedValue)
   })
 
-  test('should render SbaNewsModal', () => {
+  test('should invoke SbaNewsProps and show store error', () => {
     const expectedValue = 'Invariant Violation'
     let returnedValue
     try {
