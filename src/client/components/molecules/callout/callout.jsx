@@ -15,7 +15,7 @@ class Callout extends React.Component {
 
     return (
       <div className={`callout ${calloutStyles}`}>
-        <h2 className={`callout-title ${styles.title}`}>{this.props.title}</h2>
+        <h1 className={`callout-title ${styles.title}`}>{this.props.title}</h1>
         <p className={`callout-message ${styles.message}`}>{this.props.message}</p>
         <div className={`callout-buttons ${styles.buttonContainer}`}>
           <div className={`callout-button ${buttonStyles}`}>
