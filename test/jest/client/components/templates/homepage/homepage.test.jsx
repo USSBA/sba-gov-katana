@@ -6,8 +6,8 @@ import { shallow } from 'enzyme'
 import HomePage from 'templates/homepage/homepage'
 import { HappeningNow } from 'organisms/homepage/happening-now/happening-now'
 
-describe('Homepage', () => {
-  test('should render homepage', () => {
+describe('HomePage', () => {
+  test('should render HomePage', () => {
     const component = shallow(<HomePage />)
     expect(component).toMatchSnapshot()
   })
