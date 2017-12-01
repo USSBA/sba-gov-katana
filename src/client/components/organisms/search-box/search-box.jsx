@@ -26,24 +26,26 @@ class SearchBox extends React.Component {
 
     this.state = {
       searchTerm: '',
+      selectedDocumentType: 'All',
+      selectedProgram: 'All',
       selectedDocumentActivity: 'All'
     }
   }
 
-  renderMultiSelect() {
-    const documentActivity = this.props.documentActivity.slice()
+  renderMultiSelect(taxonomyFilter) {
+    const taxonomy = this.props[taxonomyFilter].slice()
 
-    const name = 'documentActivity'
+    const name = taxonomyFilter
     const id = `${createSlug(name)}-select`
-    const stateName = createCamelCase(name)
+    const firstLetterUpperCaseStateName = taxonomyFilter[0].toUpperCase() + taxonomyFilter.slice(1)
 
     // add an "All" filter option to list
-    documentActivity.unshift('All')
+    taxonomy.unshift('All')
 
-    const options = documentActivity.map(entry => {
+    const options = taxonomy.map(entry => {
       // customize the "All" entry label
       const result = {
-        label: entry === 'All' ? this.props.multiSelectDefaultLabel : entry,
+        label: entry === 'All' ? this.props[`multiSelect${firstLetterUpperCaseStateName}DefaultLabel`] : entry,
         value: entry
       }
 
@@ -56,7 +58,7 @@ class SearchBox extends React.Component {
         this.handleChange(event)
       },
       name: id,
-      value: this.state.selectedDocumentActivity,
+      value: this.state[`selected${firstLetterUpperCaseStateName}`],
       options
     }
 
@@ -90,9 +92,9 @@ class SearchBox extends React.Component {
     if (event.keyCode === returnKeyCode) {
       logPageEvent({
         category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
-        action: `Search Enter-Button: Activity: ${this.state.selectedDocumentActivity}; Term: ${
-          this.state.searchTerm
-        }`
+        action: `Search Enter-Button:
+          Activity: ${this.state.selectedDocumentActivity};
+          Term: ${this.state.searchTerm}`
       })
       this.submit()
     }
@@ -101,9 +103,9 @@ class SearchBox extends React.Component {
   handleOnClick() {
     logPageEvent({
       category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
-      action: `Search CTA-Click: Activity: ${this.state.selectedDocumentActivity}; Term: ${
-        this.state.searchTerm
-      }`
+      action: `Search CTA-Click:
+        Activity: ${this.state.selectedDocumentActivity};
+        Term: ${this.state.searchTerm}`
     })
     this.submit()
   }
@@ -126,6 +128,7 @@ class SearchBox extends React.Component {
   }
 
   render() {
+    const filterNames = ['documentType', 'program', 'documentActivity'];
     return (
       <div className={styles.container}>
         <div className={styles.greyParagraph}>
@@ -140,14 +143,22 @@ class SearchBox extends React.Component {
               id="document-lookup"
               errorText={'Please enter the correct thing.'}
               validationState={''}
-              onKeyUp={e => this.handleKeyUp(e)}
-              onChange={e => this.updateSearchTerm(e)}
+              onKeyUp={e => {
+                return this.handleKeyUp(e)
+              }}
+              onChange={e => {
+                return this.updateSearchTerm(e)
+              }}
             />
             <div className={styles.searchIcon}>
               <SearchIcon aria-hidden="true" />
             </div>
           </div>
-          {this.renderMultiSelect()}
+          {
+            filterNames.map(filterName => {
+              return this.renderMultiSelect(filterName)
+            })
+          }
           <div className={styles.clear} />
           <LargeInversePrimaryButton
             onClick={this.handleOnClick.bind(this)}
@@ -161,11 +172,13 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.defaultProps = {
-  multiSelectDefaultLabel: 'All document activity',
-  documentActivity: ['test 1', 'test two'],
-  documentProgram: ['8(a)'],
-  documentType: ['SBA form'],
-  sectionHeaderText: 'Forms'
+  multiSelectDocumentTypeDefaultLabel: 'All document types',
+  documentType: ['SBA form', 'SOP', 'Policy Guidance', 'TechNote', 'Procedural notice', 'Information notice', 'Policy notice', 'Support'],
+  multiSelectProgramDefaultLabel: 'All programs',
+  program: ['SBIC', 'Surety Bonds', '7(a)', 'CDC/504', 'Microlending', 'HUBZone', 'Disaster', '8(a)', 'SBA operations', 'Contracting', 'Community Advantage'],
+  multiSelectDocumentActivityDefaultLabel: 'All document activity',
+  documentActivity: ['Authorization', 'Servicing', 'Liquidation', 'Litiation', 'Guaranty purchase', 'Licensing and organizational', 'Credit and risk', 'Investment and transactions', 'Leverage commitments and draws', 'Periodic reporting', 'General', 'Processing', 'Secondary market'],
+  sectionHeaderText: 'Search for SOPs, notices and forms.'
 }
 
 export default SearchBox
