@@ -98,7 +98,7 @@ const mainRoutes = [
   <Route key={46} path="/size-standards/" component={SizeStandardsToolPage} />,
   <Redirect key={47} from="/size-standards" to="/size-standards/" />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
-  <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey" />,
+  <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,
