@@ -365,7 +365,8 @@ class ResourceCenterProfilePage extends React.Component {
         'Government contracting',
         'Legal issues',
         'International trade',
-        'Networking'
+        'Networking',
+        'Business management'
       ],
       expertise => {
         return (
