@@ -12,6 +12,7 @@ import restContentReducer from './rest-content.js'
 import confirmationEmailReducer from './confirmation-email.js'
 import displayReducer from './display.js'
 import loadingReducer from './loading.js'
+import resourceCenterProfileReducer from '../reducers/resource-center-profile.js'
 
 // combine the custom reducers with the routing reducer
 const rootReducer = combineReducers({
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   feedback: feedbackReducer,
   display: displayReducer,
   navigation: navigationReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  resourceCenterProfile: resourceCenterProfileReducer
 })
 
 export default rootReducer

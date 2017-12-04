@@ -77,6 +77,9 @@ class ResourceCenterProfilePage extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+  }
   onFocus() {}
 
   onBlur() {}
@@ -507,7 +510,7 @@ class ResourceCenterProfilePage extends React.Component {
         </p>
         <p>
           To update your office address and phone number, contact SBA's{' '}
-          <a href="mailto:edmis@sba.gov">Office of Entrepreneurial Development</a>
+          <a href="mailto:anna.kojzar@sba.gov">Office of Entrepreneurial Development</a>
         </p>
       </div>
     )
@@ -521,7 +524,7 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <div className={style.backgroundContainer}>
         <div className={style.container}>
-          <form id={id} className={this.state.submitted ? style.hidden : style.form}>
+          <form id={id} className={!this.props.isSubmitComplete ? style.hidden : style.form}>
             <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
@@ -628,9 +631,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
+  console.log('STATE')
+  console.log(state)
   return {
-    isSubmitComplete: state.isSubmitComplete,
-    hadSubmitErrors: state.hadSubmitErrors
+    isSubmitComplete: state.resourceCenterProfile.isSubmitComplete,
+    hadSubmitErrors: state.resourceCenterProfile.hadSubmitErrors
   }
 }
 
