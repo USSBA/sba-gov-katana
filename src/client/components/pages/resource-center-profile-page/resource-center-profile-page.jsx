@@ -77,18 +77,18 @@ class ResourceCenterProfilePage extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-  }
   onFocus() {}
 
   onBlur() {}
 
   updateOffices(partner) {
+    let offices = _.reject(getPartnerOffices(partner), office => {
+      return _.isEmpty(office)
+    })
+    offices = _.orderBy(offices, [office => office.name2.toLowerCase()])
+    console.log(offices)
     this.setState({
-      offices: _.reject(getPartnerOffices(partner), office => {
-        return _.isEmpty(office)
-      })
+      offices: offices
     })
   }
 
@@ -156,7 +156,7 @@ class ResourceCenterProfilePage extends React.Component {
   handleOfficeSelect(newSelection) {
     const newOffice = newSelection.value
     const newProfile = _.cloneDeep(this.state.profile)
-    newProfile.name = newOffice.name1
+    newProfile.name = newOffice.name1 + '|' + newOffice.name2
     newProfile.phone = newOffice.phone
     newProfile.address = this.formatAddress(newOffice)
     this.setState({
@@ -426,6 +426,7 @@ class ResourceCenterProfilePage extends React.Component {
         'Korean',
         'Arabic',
         'Russian',
+        'Italian',
         'Other'
       ],
       language => {
@@ -631,8 +632,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  console.log('STATE')
-  console.log(state)
   return {
     isSubmitComplete: state.resourceCenterProfile.isSubmitComplete,
     hadSubmitErrors: state.resourceCenterProfile.hadSubmitErrors
