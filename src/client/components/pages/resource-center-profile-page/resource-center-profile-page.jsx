@@ -524,7 +524,7 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <div className={style.backgroundContainer}>
         <div className={style.container}>
-          <form id={id} className={!this.props.isSubmitComplete ? style.hidden : style.form}>
+          <form id={id} className={this.props.isSubmitComplete ? style.hidden : style.form}>
             <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
