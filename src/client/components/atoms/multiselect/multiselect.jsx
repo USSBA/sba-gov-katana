@@ -75,6 +75,7 @@ class MultiSelectBox extends React.Component {
             arrowRenderer={arrowRenderer}
             clearRenderer={clearRenderer}
             searchable={this.props.multi}
+            placeholder={this.props.placeholder ? this.props.placeholder : 'Select...'}
           />
         </div>
         {errorMessage}
