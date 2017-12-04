@@ -319,7 +319,10 @@ class ResourceCenterProfilePage extends React.Component {
     const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     const hoursOptions = _.map(dayOfTheWeek, day => {
       const dayOpen = day.toLowerCase() + 'Open'
+      const dayOpenPlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '8:00 am'
       const dayClose = day.toLowerCase() + 'Close'
+      const dayClosePlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '5:00 pm'
+
       return (
         <div className={style.hoursRow} key={day + '-container'}>
           <div className={style.hoursLabel}>
@@ -333,6 +336,7 @@ class ResourceCenterProfilePage extends React.Component {
               options={hours}
               multi={false}
               key={dayOpen}
+              placeholder={dayOpenPlaceholder}
               onChange={e => this.handleSelect(e, dayOpen)}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
@@ -347,6 +351,7 @@ class ResourceCenterProfilePage extends React.Component {
               options={hours}
               multi={false}
               key={dayClose}
+              placeholder={dayClosePlaceholder}
               onChange={e => this.handleSelect(e, dayClose)}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
@@ -566,6 +571,7 @@ class ResourceCenterProfilePage extends React.Component {
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.url}
               autoFocus={false}
+              placeholder="http://"
               onBlur={this.onBlur.bind(this)}
               onFocus={this.onFocus.bind(this)}
             />
