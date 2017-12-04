@@ -82,10 +82,13 @@ class ResourceCenterProfilePage extends React.Component {
   onBlur() {}
 
   updateOffices(partner) {
+    let offices = _.reject(getPartnerOffices(partner), office => {
+      return _.isEmpty(office)
+    })
+    offices = _.orderBy(offices, [office => office.name2.toLowerCase()])
+    console.log(offices)
     this.setState({
-      offices: _.reject(getPartnerOffices(partner), office => {
-        return _.isEmpty(office)
-      })
+      offices: offices
     })
   }
 
@@ -153,7 +156,7 @@ class ResourceCenterProfilePage extends React.Component {
   handleOfficeSelect(newSelection) {
     const newOffice = newSelection.value
     const newProfile = _.cloneDeep(this.state.profile)
-    newProfile.name = newOffice.name1
+    newProfile.name = newOffice.name1 + '|' + newOffice.name2
     newProfile.phone = newOffice.phone
     newProfile.address = this.formatAddress(newOffice)
     this.setState({
@@ -316,7 +319,9 @@ class ResourceCenterProfilePage extends React.Component {
     const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     const hoursOptions = _.map(dayOfTheWeek, day => {
       const dayOpen = day.toLowerCase() + 'Open'
+      const dayOpenPlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '8:00 am'
       const dayClose = day.toLowerCase() + 'Close'
+      const dayClosePlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '5:00 pm'
       return (
         <div className={style.hoursRow} key={day + '-container'}>
           <div className={style.hoursLabel}>
@@ -330,6 +335,7 @@ class ResourceCenterProfilePage extends React.Component {
               options={hours}
               multi={false}
               key={dayOpen}
+              placeholder={dayOpenPlaceholder}
               onChange={e => this.handleSelect(e, dayOpen)}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
@@ -344,6 +350,7 @@ class ResourceCenterProfilePage extends React.Component {
               options={hours}
               multi={false}
               key={dayClose}
+              placeholder={dayClosePlaceholder}
               onChange={e => this.handleSelect(e, dayClose)}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
@@ -365,7 +372,8 @@ class ResourceCenterProfilePage extends React.Component {
         'Government contracting',
         'Legal issues',
         'International trade',
-        'Networking'
+        'Networking',
+        'Business management'
       ],
       expertise => {
         return (
@@ -422,6 +430,7 @@ class ResourceCenterProfilePage extends React.Component {
         'Korean',
         'Arabic',
         'Russian',
+        'Italian',
         'Other'
       ],
       language => {
@@ -506,7 +515,7 @@ class ResourceCenterProfilePage extends React.Component {
         </p>
         <p>
           To update your office address and phone number, contact SBA's{' '}
-          <a href="mailto:edmis@sba.gov">Office of Entrepreneurial Development</a>
+          <a href="mailto:anna.kojzar@sba.gov">Office of Entrepreneurial Development</a>
         </p>
       </div>
     )
@@ -520,7 +529,7 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <div className={style.backgroundContainer}>
         <div className={style.container}>
-          <form id={id} className={this.state.submitted ? style.hidden : style.form}>
+          <form id={id} className={this.props.isSubmitComplete ? style.hidden : style.form}>
             <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
@@ -561,6 +570,7 @@ class ResourceCenterProfilePage extends React.Component {
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.url}
               autoFocus={false}
+              placeholder="http://"
               onBlur={this.onBlur.bind(this)}
               onFocus={this.onFocus.bind(this)}
             />
@@ -628,8 +638,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    isSubmitComplete: state.isSubmitComplete,
-    hadSubmitErrors: state.hadSubmitErrors
+    isSubmitComplete: state.resourceCenterProfile.isSubmitComplete,
+    hadSubmitErrors: state.resourceCenterProfile.hadSubmitErrors
   }
 }
 

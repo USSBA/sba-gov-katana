@@ -1,10 +1,10 @@
 import types from '../actions/types.js'
 
-const resourceCenterProfileReducer = (state = true, action) => {
+const resourceCenterProfileReducer = (state = {}, action) => {
   if (action.type === types.resouceCenterProfile.submitComplete) {
-    return action.isSubmitComplete
+    return { isSubmitComplete: action.isSubmitComplete }
   } else if (action.type === types.resouceCenterProfile.submitError) {
-    return action.hadSubmitError
+    return { hadSubmitError: action.hadSubmitError }
   }
   return state
 }
