@@ -322,7 +322,6 @@ class ResourceCenterProfilePage extends React.Component {
       const dayOpenPlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '8:00 am'
       const dayClose = day.toLowerCase() + 'Close'
       const dayClosePlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '5:00 pm'
-
       return (
         <div className={style.hoursRow} key={day + '-container'}>
           <div className={style.hoursLabel}>
