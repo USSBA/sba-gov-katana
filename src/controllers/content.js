@@ -8,7 +8,8 @@ import {
   fetchCounsellorCta,
   fetchDocuments,
   fetchTaxonomyVocabulary,
-  fetchArticles
+  fetchArticles,
+  fetchOffices
 } from '../service/drupal-eight.js'
 import { fetchNotification } from '../service/notification.js'
 import HttpStatus from 'http-status-codes'
@@ -30,7 +31,8 @@ const fetchContentTypeFunctions = {
   documents: fetchDocuments,
   articles: fetchArticles,
   taxonomyVocabulary: fetchTaxonomyVocabulary,
-  notification: fetchNotification
+  notification: fetchNotification,
+  offices: fetchOffices
 }
 
 function fetchContentById(req, res) {
