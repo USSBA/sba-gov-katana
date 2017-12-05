@@ -6,8 +6,6 @@ import _ from 'lodash'
 import winston from 'winston'
 
 function get(resource, query, headers) {
-  console.log('AAA', resource)
-
   const formattedOptions = {
     url: '/api/content/' + resource + '.json',
     params: query,
@@ -20,8 +18,6 @@ function get(resource, query, headers) {
   }
 
   return Promise.resolve().then(() => {
-    console.log('BBB', formattedOptions.baseURL + formattedOptions.url)
-
     return axios
       .request(formattedOptions)
       .then(function(response) {
