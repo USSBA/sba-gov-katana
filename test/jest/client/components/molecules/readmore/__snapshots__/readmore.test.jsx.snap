@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ReadMore should render ReadMore component 1`] = `
+exports[`ReadMore should render expanded ReadMore component 1`] = `
 <div
   className="readMoreSection"
 >
