@@ -16,7 +16,7 @@ const testProps = {
 }
 
 describe('ReadMore', () => {
-  test('should render ReadMore component', () => {
+  test('should render expanded ReadMore component', () => {
     const props = _.clone(testProps)
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
