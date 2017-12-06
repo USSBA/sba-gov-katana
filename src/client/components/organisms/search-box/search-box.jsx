@@ -82,9 +82,25 @@ class SearchBox extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
-      selectedDocumentActivity: event.value
-    })
+    const documentTypeFilter = this.props.documentType
+    const documentActivityFilter = this.props.documentActivity
+    const programFilter = this.props.program
+
+    if (documentTypeFilter.includes(event.value)) {
+      this.setState({
+        selectedDocumentType: event.value
+      })
+    }
+    if (documentActivityFilter.includes(event.value)) {
+      this.setState({
+        selectedDocumentActivity: event.value
+      })
+    }
+    if (programFilter.includes(event.value)) {
+      this.setState({
+        selectedProgram: event.value
+      })
+    }
   }
 
   handleKeyUp(event) {
@@ -120,9 +136,9 @@ class SearchBox extends React.Component {
     // ? html encode each term on this page and then decode on target page ?
 
     let queryString = `search=${this.state.searchTerm}`
-    queryString += `&type=${this.props.documentType}`
-    queryString += `&program=${this.props.documentProgram}`
-    queryString += `&activity=${this.state.selectedDocumentActivity}`
+    queryString += `&documentType=${this.state.selectedDocumentType}`
+    queryString += `&program=${this.state.selectedProgram}`
+    queryString += `&documentActivity=${this.state.selectedDocumentActivity}`
 
     navigateNow(`/document/?${queryString}`)
   }
