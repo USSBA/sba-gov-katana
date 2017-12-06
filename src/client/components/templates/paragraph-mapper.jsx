@@ -31,14 +31,14 @@ function makeParagraphs(
           skipNextReadmore = false
           return null
         } else {
-          let readmoreProps = {
+          const readmoreProps = {
             parentId: '-read-more',
             readMoreSectionItem: item
           }
           paragraph = <ReadMoreSection {...readmoreProps} />
         }
       } else if (item.type === 'textSection') {
-        let next = paragraphArray.length >= index + 1 ? paragraphArray[index + 1] : null
+        const next = paragraphArray.length >= index + 1 ? paragraphArray[index + 1] : null
         if (next && next.type === 'readMore') {
           paragraphType = 'textReadMoreSection'
           paragraph = (
@@ -53,7 +53,7 @@ function makeParagraphs(
           paragraph = <TextSection text={item.text} />
         }
       } else if (item.type === 'sectionHeader') {
-        let sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId
+        const sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId
         paragraph = <SectionHeader refId={sectionHeaderFunction(index)} text={item.text} />
       } else if (item.type === 'subsectionHeader') {
         paragraph = <SubsectionHeader text={item.text} />
@@ -100,16 +100,16 @@ function makeParagraphs(
       } else if (item.type === 'quickLinks') {
         paragraph = <QuickLinks data={item} />
       } else if (item.type === 'searchBox') {
-        const { documentActivity, documentProgram, documentType, sectionHeaderText } = item.searchType[0]
+        // const { documentActivity, documentProgram, documentType, sectionHeaderText } = item.searchType[0]
 
-        const searchBoxProps = {
-          documentActivity,
-          documentProgram,
-          documentType,
-          sectionHeaderText
-        }
+        // const searchBoxProps = {
+        //   documentActivity,
+        //   documentProgram,
+        //   documentType,
+        //   sectionHeaderText
+        // }
 
-        paragraph = <SearchBox {...searchBoxProps} />
+        paragraph = <SearchBox />
       } else if (item.type === 'childPageMenu' && item.pagesInclude === 'All child pages') {
         const cards = lineage[lineage.length - 1].children
         paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig} />
@@ -128,7 +128,7 @@ function wrapParagraphs(paragraphsList, wrapperClassMapping) {
   return paragraphsList.map((item, index) => {
     let paragraphGridStyle = wrapperClassMapping[item.type]
     if (!paragraphGridStyle) {
-      paragraphGridStyle = wrapperClassMapping['other']
+      paragraphGridStyle = wrapperClassMapping.other
     }
     return (
       <div key={index} id={item.type + '-' + index} className={paragraphGridStyle}>
@@ -139,7 +139,7 @@ function wrapParagraphs(paragraphsList, wrapperClassMapping) {
 }
 
 function makeSectionHeaderId(index) {
-  let sectionHeaderId = 'section-header-' + index
+  const sectionHeaderId = 'section-header-' + index
   return sectionHeaderId
 }
 
