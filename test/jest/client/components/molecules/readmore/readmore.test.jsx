@@ -8,20 +8,39 @@ import { ReadMore } from 'molecules'
 const testProps = {
   parentId: "text-readmore-section-3-read-more",
   expanded: true,
-  readMoreSectionItem: "This is a test.\r\nYes, this is the test.\r\nThree new lines.\r\nIt is good."
+  onToggleStatus: () => {},
+  readMoreSectionItem: {
+    expandedCopyText: "This is a test.\r\nYes, this is the test.\r\nFour new lines.\r\nIt is good.",
+    titleText: "This is a title"
+  }
 }
 
 describe('ReadMore', () => {
   test('should render ReadMore component', () => {
     const props = _.clone(testProps)
-    const component = shallow(<ReadMore {...props} />)
-    expect(component).toMatchSnapshot()
+    const component = renderer.create(<ReadMore {...props} />)
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
+    expect(tree.children[0].props.className).toBe('title')
+    expect(tree.children[0].children[0]).toBe('This is a title')
+    expect(tree.children[3].type).toBe('p')
+    expect(tree.children[3].children[0]).toBe('This is a test.\r')
+    expect(tree.children[4].type).toBe('p')
+    expect(tree.children[4].children[0]).toBe('Yes, this is the test.\r')
+    expect(tree.children[5].type).toBe('p')
+    expect(tree.children[5].children[0]).toBe('Four new lines.\r')
+    expect(tree.children[6].type).toBe('p')
+    expect(tree.children[6].children[0]).toBe('It is good.')
+    expect(tree.children[7].type).toBe('button')
+    expect(tree.children[7].children[0]).toBe('CLOSE')
   })
 
-  test('should render close ReadMore component link when expanded', () => {
+  test('should render read more button when not expanded', () => {
     const props = _.clone(testProps)
-    const component = shallow(<ReadMore {...props} />)
-    component.instance().makeExpanded(props.readMoreSectionItem)
-    expect(component.first().props().children[4].props.text).toBe('CLOSE')
+    props.expanded = false
+    const component = renderer.create(<ReadMore {...props} />)
+    const tree = component.toJSON()
+    expect(tree.children[4].type).toBe('button')
+    expect(tree.children[4].children[0]).toBe('READ MORE')
   })
 })
