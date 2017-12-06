@@ -11,6 +11,7 @@ import HttpStatus from 'http-status-codes'
      "address": "8 Market Place, Baltimore, MD 21202",
      "phone": "123-456-7890",
      "businessStage": "Stage51",
+     "needsUpdating": true,
      "serviceArea": "Area51",
      "url": "www.example.com",
      "hours": {

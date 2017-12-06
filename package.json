@@ -4,16 +4,14 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start":
-      "NODE_ENV=development babel-node src/app.js --presets es2015 || true",
+    "start": "NODE_ENV=development babel-node src/app.js --presets es2015 || true",
     "nodemonstart": "nodemon src/app.js --exec babel-node  --presets es2015",
     "prestart": "npm run clean && npm run lint",
     "build": "scripts/build.sh",
     "clean": "rm -rf dist && rm -rf public/build",
     "format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "lint": "eslint src",
-    "test":
-      "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
+    "test": "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
     "test-jest": "NODE_ENV=test jest test/jest/",
     "test-mocha":
       "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
