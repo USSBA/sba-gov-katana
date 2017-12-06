@@ -45,7 +45,17 @@ function getProfiles(sessionId) {
   return ResourceCenterModel.resourceCenterProfile
     .findAll({
       order: [['timestamp', 'DESC']],
-      attributes: ['name', 'address', 'type', 'timestamp', 'businessStage', 'serviceArea', 'url', 'phone'],
+      attributes: [
+        'name',
+        'address',
+        'type',
+        'timestamp',
+        'businessStage',
+        'serviceArea',
+        'url',
+        'phone',
+        'needsUpdating'
+      ],
       include: [
         {
           model: ResourceCenterModel.resourceCenterHours,
