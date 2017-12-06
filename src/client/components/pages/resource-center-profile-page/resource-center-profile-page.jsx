@@ -25,8 +25,8 @@ class ResourceCenterProfilePage extends React.Component {
     super()
     this.state = {
       submitted: false,
-      shouldUpdateContact: '',
       partners: getPartners(),
+      honeyPotText: '',
       offices: null,
       selectedOfficeOption: null,
       selectedOffice: null,
@@ -38,7 +38,7 @@ class ResourceCenterProfilePage extends React.Component {
         phone: null,
         businessStage: null,
         serviceArea: null,
-        shouldUpdateContact: null,
+        needsUpdating: null,
         url: null,
         hours: true, // optional so always valid
         expertise: null,
@@ -53,6 +53,7 @@ class ResourceCenterProfilePage extends React.Component {
         phone: null,
         businessStage: '',
         serviceArea: null,
+        needsUpdating: '',
         url: '',
         hours: {
           mondayOpen: null,
@@ -156,7 +157,7 @@ class ResourceCenterProfilePage extends React.Component {
   handleOfficeSelect(newSelection) {
     const newOffice = newSelection.value
     const newProfile = _.cloneDeep(this.state.profile)
-    newProfile.name = newOffice.name1 + '|' + newOffice.name2
+    newProfile.name = newOffice.name1 + ' | ' + newOffice.name2
     newProfile.phone = newOffice.phone
     newProfile.address = this.formatAddress(newOffice)
     this.setState({
@@ -166,21 +167,33 @@ class ResourceCenterProfilePage extends React.Component {
     })
   }
 
+  handleMaidenNameChange(e) {
+    this.setState({ honeyPotText: e.target.value })
+  }
+
   validateFields() {
     let allFieldsValid = true
-    const requiredFields = ['type', 'name', 'businessStage', 'serviceArea', 'url', 'expertise', 'services']
+    const requiredFields = [
+      'type',
+      'name',
+      'businessStage',
+      'serviceArea',
+      'url',
+      'expertise',
+      'services',
+      'needsUpdating'
+    ]
     const newValidationState = _.cloneDeep(this.state.isFieldValid)
     _.forEach(requiredFields, field => {
       newValidationState[field] = !_.isEmpty(this.state.profile[field])
+      // make sure that one of the update contact options is clicked ('' is the default value)
+      if (field === 'needsUpdating') {
+        newValidationState[field] = this.state.profile[field] !== ''
+      }
       if (!newValidationState[field]) {
         allFieldsValid = false
       }
     })
-    // make sure that one of the update contact options is clicked ('' is the default value)
-    newValidationState.shouldUpdateContact = this.state.shouldUpdateContact !== ''
-    if (newValidationState.shouldUpdateContact === false) {
-      allFieldsValid = false
-    }
     // if someone selects other for the service area make sure it's filled out
     if (this.state.profile.serviceArea === 'Other' && !this.state.otherServiceArea) {
       newValidationState.serviceArea = false
@@ -200,7 +213,7 @@ class ResourceCenterProfilePage extends React.Component {
       if (profile.serviceArea === 'Other' && this.state.otherServiceArea) {
         profile.serviceArea = this.state.otherServiceArea
       }
-      this.props.submitProfile(profile)
+      this.props.submitProfile(profile, this.state.honeyPotText)
     }
   }
 
@@ -489,14 +502,12 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <Radio
         id={id + '-should-update-contact-info'}
-        //errorText={constants.messages.validation.invalidIndustryExperience}
         label=""
-        name="shouldUpdateContactInfo"
-        onChange={e => {
-          this.setState({ shouldUpdateContact: e === 'true' })
+        name="shouldUpdateInfo"
+        onChange={value => {
+          this.handleRadio(value === 'true', 'needsUpdating')
         }}
-        //validationState={this.state.validStates.industryExperience}
-        value={this.state.shouldUpdateContact.toString()}
+        value={this.state.profile.needsUpdating.toString()}
         options={updateContactInfoOptions}
         textStyle={style.radioText}
         onBlur={this.onBlur}
@@ -533,7 +544,7 @@ class ResourceCenterProfilePage extends React.Component {
             <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
-              ideal clients
+              ideal clients. Thank you for your time and insight!
             </p>
             <label className={isFieldValid.type === false ? style.invalid : ''}>
               Which resource partner do you represent?
@@ -544,7 +555,7 @@ class ResourceCenterProfilePage extends React.Component {
             )}
             {this.state.profile.type && this.renderOfficeSelect()}
             {selectedOffice && (
-              <label className={isFieldValid.shouldUpdateContact === false ? style.invalid : ''}>
+              <label className={isFieldValid.needsUpdating === false ? style.invalid : ''}>
                 Is this your office address and phone number?
               </label>
             )}
@@ -619,6 +630,9 @@ class ResourceCenterProfilePage extends React.Component {
                 <FormErrorMessage errorText="There was an error submitting the form." />
               </div>
             )}
+            <div className={style.maidenNameContainer} aria-hidden="true">
+              <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
+            </div>
           </form>
           {this.props.isSubmitComplete && this.renderSubmissionComplete()}
         </div>

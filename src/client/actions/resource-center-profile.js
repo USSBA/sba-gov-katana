@@ -2,11 +2,12 @@ import axios from 'axios'
 import types from './types.js'
 import constants from '../services/constants.js'
 
-export function submitProfile(profile) {
+export function submitProfile(profile, honeyPotText) {
   return function(dispatch) {
     axios
       .post(constants.routes.submitProfile, {
-        profile: profile
+        profile: profile,
+        honeyPotText: honeyPotText
       })
       .then(response => {
         dispatch({

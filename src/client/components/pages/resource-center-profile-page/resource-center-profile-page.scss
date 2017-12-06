@@ -78,6 +78,7 @@ div.hoursSelect {
   padding: 20px 20px;
   @include grid-media($sba-grid-small) {
     @include grid-column(6, $mobile-0gutter);
+    padding: 0px;
   }
   @include grid-media($sba-grid-medium) {
     @include grid-column(12, $tablet-0gutter);
@@ -93,9 +94,8 @@ div.hoursSelect {
   background: white;
   box-shadow: 2px 2px 15px #888888;
   @include grid-media($sba-grid-small) {
-    @include grid-column(6);
-    margin-top: 20px;
-    margin-bottom: 40px;
+    width: 100%;
+    margin: 0px;
     padding-top: 20px;
   }
   @include grid-media($sba-grid-medium) {
@@ -157,7 +157,12 @@ div.hoursSelect {
   h1 {
     @include font-size($h3-font-sizes);
   }
+
   .submissionMessage > h1 {
     text-align: center;
+  }
+
+  .maidenNameContainer {
+    display: none;
   }
 }
