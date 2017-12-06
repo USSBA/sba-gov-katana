@@ -533,7 +533,7 @@ class ResourceCenterProfilePage extends React.Component {
             <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
-              ideal clients
+              ideal clients. Thank you for your time and insight!
             </p>
             <label className={isFieldValid.type === false ? style.invalid : ''}>
               Which resource partner do you represent?
