@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-let sinon = require('sinon')
+const sinon = require('sinon')
 
 import { SearchBox } from 'organisms'
 
@@ -30,9 +30,9 @@ describe('searchBox', () => {
     expect(component.find('TextInput')).toHaveLength(1)
   })
 
-  test('has 1 Multiselect Component', () => {
+  test('has 3 Multiselect Component', () => {
     const component = shallow(<SearchBox />)
-    expect(component.find('.multiSelect')).toHaveLength(1)
+    expect(component.find('.multiSelect')).toHaveLength(3)
   })
 
   test('has 1 Submit Button Component', () => {
@@ -64,7 +64,7 @@ describe('searchBox', () => {
 		const instance = component.instance();
 		const spy = sinon.spy(instance, "submit");
 		instance.forceUpdate();
-		component.find("LargeInversePrimaryButton").first().simulate("click", { preventDefault });		
+		component.find("LargeInversePrimaryButton").first().simulate("click", { preventDefault });
 
 		sinon.assert.calledOnce(spy);
 
