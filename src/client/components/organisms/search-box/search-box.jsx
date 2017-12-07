@@ -107,6 +107,8 @@ class SearchBox extends React.Component {
       logPageEvent({
         category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
         action: `Search Enter-Button:
+          Type: ${this.state.selectedDocumentType};
+          Program: ${this.state.selectedProgram};
           Activity: ${this.state.selectedDocumentActivity};
           Term: ${this.state.searchTerm}`
       })
@@ -118,6 +120,8 @@ class SearchBox extends React.Component {
     logPageEvent({
       category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
       action: `Search CTA-Click:
+        Type: ${this.state.selectedDocumentType};
+        Program: ${this.state.selectedProgram};
         Activity: ${this.state.selectedDocumentActivity};
         Term: ${this.state.searchTerm}`
     })
