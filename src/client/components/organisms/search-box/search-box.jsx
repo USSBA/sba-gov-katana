@@ -90,13 +90,11 @@ class SearchBox extends React.Component {
       this.setState({
         selectedDocumentType: event.value
       })
-    }
-    if (documentActivityFilter.includes(event.value)) {
+    } else if (documentActivityFilter.includes(event.value)) {
       this.setState({
         selectedDocumentActivity: event.value
       })
-    }
-    if (programFilter.includes(event.value)) {
+    } else if (programFilter.includes(event.value)) {
       this.setState({
         selectedProgram: event.value
       })
