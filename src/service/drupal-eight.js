@@ -232,6 +232,10 @@ function fetchAnnouncements() {
   return get('collection/announcements')
 }
 
+function fetchOffices() {
+  return get('collection/offices')
+}
+
 export {
   fetchFormattedNode,
   fetchContacts,
@@ -241,5 +245,6 @@ export {
   fetchDocuments,
   fetchTaxonomyVocabulary,
   fetchArticles,
-  fetchAnnouncements
+  fetchAnnouncements,
+  fetchOffices
 }
