@@ -23,7 +23,6 @@ const createCamelCase = str => {
 class SearchBox extends React.Component {
   constructor() {
     super()
-
     this.state = {
       searchTerm: '',
       selectedDocumentType: 'All',
@@ -187,13 +186,14 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.defaultProps = {
+  sectionHeaderText: 'Search documents, forms, and SOPs',
+  subtitleText: 'Search by title or document number',
   multiSelectDocumentTypeDefaultLabel: 'All document types',
   documentType: ['SBA form', 'SOP', 'Policy Guidance', 'TechNote', 'Procedural notice', 'Information notice', 'Policy notice', 'Support'],
   multiSelectProgramDefaultLabel: 'All programs',
   program: ['SBIC', 'Surety Bonds', '7(a)', 'CDC/504', 'Microlending', 'HUBZone', 'Disaster', '8(a)', 'SBA operations', 'Contracting', 'Community Advantage'],
   multiSelectDocumentActivityDefaultLabel: 'All document activity',
-  documentActivity: ['Authorization', 'Servicing', 'Liquidation', 'Litiation', 'Guaranty purchase', 'Licensing and organizational', 'Credit and risk', 'Investment and transactions', 'Leverage commitments and draws', 'Periodic reporting', 'General', 'Processing', 'Secondary market'],
-  sectionHeaderText: 'Search for SOPs, notices and forms.'
+  documentActivity: ['Authorization', 'Servicing', 'Liquidation', 'Litiation', 'Guaranty purchase', 'Licensing and organizational', 'Credit and risk', 'Investment and transactions', 'Leverage commitments and draws', 'Periodic reporting', 'General', 'Processing', 'Secondary market']
 }
 
 export default SearchBox
