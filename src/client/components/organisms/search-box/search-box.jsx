@@ -193,7 +193,7 @@ SearchBox.defaultProps = {
   multiSelectProgramDefaultLabel: 'All programs',
   program: ['SBIC', 'Surety Bonds', '7(a)', 'CDC/504', 'Microlending', 'HUBZone', 'Disaster', '8(a)', 'SBA operations', 'Contracting', 'Community Advantage'],
   multiSelectDocumentActivityDefaultLabel: 'All document activity',
-  documentActivity: ['Authorization', 'Servicing', 'Liquidation', 'Litiation', 'Guaranty purchase', 'Licensing and organizational', 'Credit and risk', 'Investment and transactions', 'Leverage commitments and draws', 'Periodic reporting', 'General', 'Processing', 'Secondary market']
+  documentActivity: ['Authorization', 'Servicing', 'Liquidation', 'Litigation', 'Guaranty purchase', 'Licensing and organizational', 'Credit and risk', 'Investment and transactions', 'Leverage commitments and draws', 'Periodic reporting', 'General', 'Processing', 'Secondary market']
 }
 
 export default SearchBox
