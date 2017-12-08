@@ -66,7 +66,9 @@ class SearchBox extends React.Component {
     }
 
     return (
-      <div className={styles.multiSelect}>
+      <div
+        key={id}
+        className={styles.multiSelect}>
         <MultiSelect
           {...multiSelectProps}
           onBlur={returnNull}
