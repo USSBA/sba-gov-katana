@@ -146,7 +146,6 @@ class SearchBox extends React.Component {
   }
 
   render() {
-    console.log('propss', this.props)
     const filterNames = ['documentType', 'program', 'documentActivity'];
     return (
       <div className={styles.container}>
