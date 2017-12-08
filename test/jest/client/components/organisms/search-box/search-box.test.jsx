@@ -70,16 +70,20 @@ describe('searchBox', () => {
     }
     const component = renderer.create(<SearchBox />)
     const tree = component.toJSON()
+    const documentTypeDropDownProperties = tree.children[0].children[3].children[0].children[1].children[0].children[0]
+    const programDropDownProperties = tree.children[0].children[4].children[0].children[1].children[0].children[0]
+    const documentActivityProperties = tree.children[0].children[5].children[0].children[1].children[0].children[0]
+
     expect(tree).toMatchSnapshot()
-    expect(tree.children[0].children[3].children[0].children[1].children[0].children[0].props.name).toBe('documenttype-select')
-    expect(tree.children[0].children[3].children[0].children[1].children[0].children[0].type).toBe('input')
-    expect(tree.children[0].children[3].children[0].children[1].children[0].children[0].props.value).toBe('All')
-    expect(tree.children[0].children[4].children[0].children[1].children[0].children[0].props.name).toBe('program-select')
-    expect(tree.children[0].children[4].children[0].children[1].children[0].children[0].type).toBe('input')
-    expect(tree.children[0].children[4].children[0].children[1].children[0].children[0].props.value).toBe('All')
-    expect(tree.children[0].children[5].children[0].children[1].children[0].children[0].props.name).toBe('documentactivity-select')
-    expect(tree.children[0].children[5].children[0].children[1].children[0].children[0].type).toBe('input')
-    expect(tree.children[0].children[5].children[0].children[1].children[0].children[0].props.value).toBe('All')
+    expect(documentTypeDropDownProperties.props.name).toBe('documenttype-select')
+    expect(documentTypeDropDownProperties.type).toBe('input')
+    expect(documentTypeDropDownProperties.props.value).toBe('All')
+    expect(programDropDownProperties.props.name).toBe('program-select')
+    expect(programDropDownProperties.type).toBe('input')
+    expect(programDropDownProperties.props.value).toBe('All')
+    expect(documentActivityProperties.props.name).toBe('documentactivity-select')
+    expect(documentActivityProperties.type).toBe('input')
+    expect(documentActivityProperties.props.value).toBe('All')
   })
 
   test("should have default props for document type, program and document activity, and its default labels", () => {
