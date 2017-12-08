@@ -2,6 +2,7 @@
 import BusinessGuideTileCollection from './business-guide-tile-collection/business-guide-tile-collection.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
 import DeveloperTester from './developer-tester/developer-tester.jsx'
+import CounselingEventsSearchBar from './counseling-events-search-bar/counseling-events-search-bar.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
@@ -68,6 +69,7 @@ import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-na
 export {
   BusinessGuideTileCollection,
   CardCollection,
+  CounselingEventsSearchBar,
   DeveloperTester,
   DisasterAlert,
   DocumentArticle,
