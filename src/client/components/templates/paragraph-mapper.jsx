@@ -100,16 +100,13 @@ function makeParagraphs(
       } else if (item.type === 'quickLinks') {
         paragraph = <QuickLinks data={item} />
       } else if (item.type === 'searchBox') {
-        // const { documentActivity, documentProgram, documentType, sectionHeaderText } = item.searchType[0]
+        const { sectionHeaderText, subtitleText } = item
+        const searchBoxProps = {
+          sectionHeaderText,
+          subtitleText
+        }
 
-        // const searchBoxProps = {
-        //   documentActivity,
-        //   documentProgram,
-        //   documentType,
-        //   sectionHeaderText
-        // }
-
-        paragraph = <SearchBox />
+        paragraph = <SearchBox {...searchBoxProps} />
       } else if (item.type === 'childPageMenu' && item.pagesInclude === 'All child pages') {
         const cards = lineage[lineage.length - 1].children
         paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig} />

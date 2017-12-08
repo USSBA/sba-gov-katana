@@ -146,15 +146,13 @@ class SearchBox extends React.Component {
   }
 
   render() {
+    console.log('propss', this.props)
     const filterNames = ['documentType', 'program', 'documentActivity'];
     return (
       <div className={styles.container}>
         <div className={styles.greyParagraph}>
           <h2>{this.props.sectionHeaderText}</h2>
-          <p>
-            Quickly find the {this.props.documentType}s you regularly use as a {this.props.documentProgram}{' '}
-            lender.{' '}
-          </p>
+          <p>{this.props.subtitleText}</p>
           <div className={styles.searchBox}>
             <TextInput
               placeholder="Search by title or number"
