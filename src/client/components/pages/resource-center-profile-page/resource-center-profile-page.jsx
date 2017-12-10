@@ -439,7 +439,17 @@ class ResourceCenterProfilePage extends React.Component {
         )
       }
     )
-    return expertiseOptions
+    return (
+      <div role="group" aria-labelledby={idPrefix + 'expertise-label'}>
+        <label
+          id={idPrefix + 'expertise-label'}
+          className={this.isFieldInvalid('expertise') ? style.invalid : style.formLabel}
+        >
+          In which three topic areas does your office have the most expertise?
+        </label>
+        {expertiseOptions}
+      </div>
+    )
   }
   renderServiceCheckboxes() {
     const serviceOptions = _.map(
@@ -466,7 +476,17 @@ class ResourceCenterProfilePage extends React.Component {
         )
       }
     )
-    return serviceOptions
+    return (
+      <div role="group" aria-labelledby={idPrefix + 'services-label'}>
+        <label
+          id={idPrefix + 'services-label'}
+          className={this.isFieldInvalid('services') ? style.invalid : style.formLabel}
+        >
+          What services does your office provide?
+        </label>
+        {serviceOptions}
+      </div>
+    )
   }
 
   renderLanguageCheckboxes() {
@@ -498,7 +518,15 @@ class ResourceCenterProfilePage extends React.Component {
       }
     )
 
-    return languageOptions
+    return (
+      <div role="group" aria-labelledby={idPrefix + 'languages-label'}>
+        <label id={idPrefix + 'languages-label'} className={style.formLabel}>
+          In which languages other than English can your office provide counseling
+          <span className={style.optional}>(optional)</span>
+        </label>
+        {languageOptions}
+      </div>
+    )
   }
 
   renderBusinessStageRadios() {
@@ -629,22 +657,12 @@ class ResourceCenterProfilePage extends React.Component {
 
             {this.renderAreaSelect()}
 
-            <label className={isFieldValid.services === false ? style.invalid : ''}>
-              What services does your office provide?
-            </label>
             {this.renderServiceCheckboxes()}
 
-            <label className={isFieldValid.expertise === false ? style.invalid : ''}>
-              In which three topic areas does your office have the most expertise?
-            </label>
             {this.renderExpertiseCheckboxes()}
 
             {this.renderBusinessStageRadios()}
 
-            <label>
-              In which languages other than English can your office provide counseling{' '}
-              <span className={style.optional}>(optional)</span>
-            </label>
             {this.renderLanguageCheckboxes()}
             <div className={style.submitButton} onClick={this.handleSubmit.bind(this)}>
               <LargePrimaryButton id={idPrefix + 'form-submit-button'} text="SUBMIT" url="" />
@@ -652,12 +670,12 @@ class ResourceCenterProfilePage extends React.Component {
             {_.some(isFieldValid, field => {
               return field === false
             }) && (
-              <div className={style.submitButton}>
+              <div className={style.submitButton} role="alert">
                 <FormErrorMessage errorText="Please answer all required questions before submitting." />
               </div>
             )}
             {this.props.hadSubmitErrors && (
-              <div className={style.submitButton}>
+              <div className={style.submitButton} role="alert">
                 <FormErrorMessage errorText="There was an error submitting the form." />
               </div>
             )}
