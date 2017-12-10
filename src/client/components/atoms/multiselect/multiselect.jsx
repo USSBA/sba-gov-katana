@@ -57,11 +57,11 @@ class MultiSelectBox extends React.Component {
 
     const inputProps = {}
     if (this.props['aria-labelledby']) {
-      this.props['aria-labelledby'] = this.props['aria-labelledby']
+      inputProps['aria-labelledby'] = this.props['aria-labelledby']
     }
     if (this.props['aria-label']) {
       //todo: consider setting this value to this.props.label when this.props.aria-label is undefined (will break snapshots)
-      this.props['aria-label'] = this.props['aria-label']
+      inputProps['aria-label'] = this.props['aria-label']
     }
 
     return (
