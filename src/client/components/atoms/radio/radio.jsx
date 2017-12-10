@@ -54,6 +54,8 @@ class RadioButtonGroup extends React.Component {
           onKeyPress={event => me.handleKeyPress(event, index, me)}
           onFocus={me.handleFocus.bind(me)}
           onBlur={e => me.handleBlur(index)}
+          role="radio"
+          aria-checked={isChecked}
         >
           <input
             className={styles.regularRadio}
@@ -81,7 +83,13 @@ class RadioButtonGroup extends React.Component {
     return (
       <div id={this.props.id + '-container'}>
         <label>{this.props.label}</label>
-        <div>{radioButtons}</div>
+        <div
+          role="radiogroup"
+          aria-label={this.props['aria-label']}
+          aria-labelledby={this.props['aria-labelledby']}
+        >
+          {radioButtons}
+        </div>
         {errorMessage}
       </div>
     )

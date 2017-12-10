@@ -20,6 +20,8 @@ import {
 } from '../../../services/resource-center-lookup.js'
 import style from './resource-center-profile-page.scss'
 
+const idPrefix = 'resource-center-profile-'
+
 class ResourceCenterProfilePage extends React.Component {
   constructor() {
     super()
@@ -78,6 +80,9 @@ class ResourceCenterProfilePage extends React.Component {
     }
   }
 
+  isFieldInvalid(field) {
+    return this.state.isFieldValid[field] === false
+  }
   onFocus() {}
 
   onBlur() {}
@@ -226,15 +231,24 @@ class ResourceCenterProfilePage extends React.Component {
     })
 
     return (
-      <MultiSelect
-        id="partner"
-        value={this.state.profile.type}
-        options={partners}
-        multi={false}
-        onChange={e => this.handleSelect(e, 'type')}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-      />
+      <div>
+        <label
+          id={idPrefix + 'partner-label'}
+          className={this.isFieldInvalid('type') ? style.invalid : style.formLabel}
+        >
+          Which resource partner do you represent?
+        </label>
+        <MultiSelect
+          id={idPrefix + 'partner'}
+          value={this.state.profile.type}
+          options={partners}
+          multi={false}
+          onChange={e => this.handleSelect(e, 'type')}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          aria-labelledby={idPrefix + 'partner-label'}
+        />
+      </div>
     )
   }
 
@@ -257,15 +271,24 @@ class ResourceCenterProfilePage extends React.Component {
     })
 
     return (
-      <MultiSelect
-        id="office"
-        value={this.state.selectedOfficeOption}
-        options={offices}
-        multi={false}
-        onChange={this.handleOfficeSelect.bind(this)}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-      />
+      <div>
+        <label
+          id={idPrefix + 'office-label'}
+          className={this.isFieldInvalid('name') ? style.invalid : style.formLabel}
+        >
+          Which office?
+        </label>
+        <MultiSelect
+          id={idPrefix + 'office'}
+          value={this.state.selectedOfficeOption}
+          options={offices}
+          multi={false}
+          onChange={this.handleOfficeSelect.bind(this)}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          aria-labelledby={idPrefix + 'office-label'}
+        />
+      </div>
     )
   }
   renderAreaSelect() {
@@ -278,8 +301,14 @@ class ResourceCenterProfilePage extends React.Component {
 
     return (
       <div>
+        <label
+          id={idPrefix + 'service-area-label'}
+          className={this.isFieldInvalid('serviceArea') ? style.invalid : style.formLabel}
+        >
+          What area does your office serve?
+        </label>
         <MultiSelect
-          id="serviceArea"
+          id={idPrefix + 'service-area'}
           value={this.state.profile.serviceArea}
           options={areas}
           multi={false}
@@ -289,15 +318,15 @@ class ResourceCenterProfilePage extends React.Component {
           }}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          aria-labelledby={idPrefix + 'service-area-label'}
         />
         {this.state.profile.serviceArea === 'Other' && (
           <TextInput
-            id={'serviceArea'}
+            id={idPrefix + 'service-area-other'}
             name="serviceArea"
             placeholder="Custom other value"
             onChange={e => this.setState({ otherServiceArea: e.target.value })}
             value={this.state.otherServiceArea}
-            autoFocus={false}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
           />
@@ -343,7 +372,7 @@ class ResourceCenterProfilePage extends React.Component {
           <div className={style.hoursSelect}>
             <MultiSelect
               className={style.hoursSelect}
-              id={dayOpen}
+              id={idPrefix + dayOpen}
               value={this.state.profile.hours[dayOpen]}
               options={hours}
               multi={false}
@@ -352,13 +381,14 @@ class ResourceCenterProfilePage extends React.Component {
               onChange={e => this.handleSelect(e, dayOpen)}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
+              aria-label={'Select your normal ' + day + ' opening time'}
             />
           </div>
           <div className={style.hoursTo}>to</div>
           <div className={style.hoursSelect}>
             <MultiSelect
               className={style.hoursSelect}
-              id={dayClose}
+              id={idPrefix + dayClose}
               value={this.state.profile.hours[dayClose]}
               options={hours}
               multi={false}
@@ -367,12 +397,20 @@ class ResourceCenterProfilePage extends React.Component {
               onChange={e => this.handleSelect(e, dayClose)}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
+              aria-label={'Select your normal ' + day + ' closing time'}
             />
           </div>
         </div>
       )
     })
-    return <div>{hoursOptions}</div>
+    return (
+      <div>
+        <label className={style.formLabel}>
+          What are your normal office hours? <span className={style.optional}>(optional)</span>
+        </label>
+        {hoursOptions}
+      </div>
+    )
   }
 
   renderExpertiseCheckboxes() {
@@ -475,20 +513,28 @@ class ResourceCenterProfilePage extends React.Component {
       }
     ]
     return (
-      <Radio
-        options={businessStageOptions}
-        value={this.state.profile.businessStage}
-        onChange={e => this.handleRadio(e, 'businessStage')}
-        textStyle={style.radioText}
-        onBlur={this.onBlur}
-        onFocus={this.onFocus}
-      />
+      <div>
+        <label
+          id={idPrefix + 'business-stage-label'}
+          className={this.isFieldInvalid('businessStage') ? style.invalid : style.formLabel}
+        >
+          Which business stage does your office best serve?
+        </label>
+        <Radio
+          options={businessStageOptions}
+          value={this.state.profile.businessStage}
+          onChange={e => this.handleRadio(e, 'businessStage')}
+          textStyle={style.radioText}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+          aria-labelledby={idPrefix + 'business-stage-label'}
+        />
+      </div>
     )
   }
 
   renderShouldUpdateAddressRadios() {
-    const id = 'resource-center-profile-form'
-
+    const selectedOffice = this.state.selectedOffice
     const updateContactInfoOptions = [
       {
         value: 'false',
@@ -500,19 +546,32 @@ class ResourceCenterProfilePage extends React.Component {
       }
     ]
     return (
-      <Radio
-        id={id + '-should-update-contact-info'}
-        label=""
-        name="shouldUpdateInfo"
-        onChange={value => {
-          this.handleRadio(value === 'true', 'needsUpdating')
-        }}
-        value={this.state.profile.needsUpdating.toString()}
-        options={updateContactInfoOptions}
-        textStyle={style.radioText}
-        onBlur={this.onBlur}
-        onFocus={this.onFocus}
-      />
+      <div>
+        <label className={this.isFieldInvalid('needsUpdating') ? style.invalid : style.formLabel}>
+          Is this your office address and phone number?
+        </label>
+        <div>{selectedOffice.street1}</div>
+        <div>{selectedOffice.street2}</div>
+        <div>
+          {selectedOffice.city ? selectedOffice.city + ', ' : ''}
+          {selectedOffice.state ? selectedOffice.state + ', ' : ''}
+          {selectedOffice.zip ? selectedOffice.zip : ''}
+        </div>
+        <div>{selectedOffice.phone}</div>
+        <Radio
+          id={idPrefix + 'should-update-contact-info'}
+          label=""
+          name="shouldUpdateInfo"
+          onChange={value => {
+            this.handleRadio(value === 'true', 'needsUpdating')
+          }}
+          value={this.state.profile.needsUpdating.toString()}
+          options={updateContactInfoOptions}
+          textStyle={style.radioText}
+          onBlur={this.onBlur}
+          onFocus={this.onFocus}
+        />
+      </div>
     )
   }
 
@@ -533,50 +592,28 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   render() {
-    const id = 'resource-center-profile-form'
     const selectedOffice = this.state.selectedOffice
+    const selectedPartner = this.state.profile.type
     const isFieldValid = this.state.isFieldValid
 
     return (
       <div className={style.backgroundContainer}>
         <div className={style.container}>
-          <form id={id} className={this.props.isSubmitComplete ? style.hidden : style.form}>
+          <form id={idPrefix + 'form'} className={this.props.isSubmitComplete ? style.hidden : style.form}>
             <h1>Resource Center Profile</h1>
             <p>
               Answer the following questions about your office's expertise to be better matched with your
               ideal clients. Thank you for your time and insight!
             </p>
-            <label className={isFieldValid.type === false ? style.invalid : ''}>
-              Which resource partner do you represent?
-            </label>
+
             {this.renderPartnerSelect()}
-            {this.state.profile.type && (
-              <label className={isFieldValid.name === false ? style.invalid : ''}>Which office?</label>
-            )}
-            {this.state.profile.type && this.renderOfficeSelect()}
-            {selectedOffice && (
-              <label className={isFieldValid.needsUpdating === false ? style.invalid : ''}>
-                Is this your office address and phone number?
-              </label>
-            )}
-            {selectedOffice && (
-              <div>
-                <div>{selectedOffice.street1}</div>
-                <div>{selectedOffice.street2}</div>
-                <div>
-                  {selectedOffice.city ? selectedOffice.city + ', ' : ''}
-                  {selectedOffice.state ? selectedOffice.state + ', ' : ''}
-                  {selectedOffice.zip ? selectedOffice.zip : ''}
-                </div>
-                <div>{selectedOffice.phone}</div>
-                {this.renderShouldUpdateAddressRadios()}
-              </div>
-            )}
-            <label className={isFieldValid.url === false ? style.invalid : ''}>
-              What's your website URL?
-            </label>
+
+            {selectedPartner && this.renderOfficeSelect()}
+
+            {selectedOffice && this.renderShouldUpdateAddressRadios()}
+
             <TextInput
-              id={id + '-url'}
+              id={idPrefix + 'url'}
               name="url"
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.url}
@@ -584,15 +621,12 @@ class ResourceCenterProfilePage extends React.Component {
               placeholder="http://"
               onBlur={this.onBlur.bind(this)}
               onFocus={this.onFocus.bind(this)}
+              label="What's your website URL?"
+              labelStyle={this.isFieldInvalid('url') ? style.invalid : style.formLabel}
             />
-            <label>
-              What are your normal office hours? <span className={style.optional}>(optional)</span>
-            </label>
+
             <div className={style.grid}>{this.renderHourDropdowns()}</div>
 
-            <label className={isFieldValid.serviceArea === false ? style.invalid : ''}>
-              What area does your office serve?
-            </label>
             {this.renderAreaSelect()}
 
             <label className={isFieldValid.services === false ? style.invalid : ''}>
@@ -605,9 +639,6 @@ class ResourceCenterProfilePage extends React.Component {
             </label>
             {this.renderExpertiseCheckboxes()}
 
-            <label className={isFieldValid.businessStage === false ? style.invalid : ''}>
-              Which business stage does your office best serve?
-            </label>
             {this.renderBusinessStageRadios()}
 
             <label>
@@ -616,7 +647,7 @@ class ResourceCenterProfilePage extends React.Component {
             </label>
             {this.renderLanguageCheckboxes()}
             <div className={style.submitButton} onClick={this.handleSubmit.bind(this)}>
-              <LargePrimaryButton id="feedback-submit-button" text="SUBMIT" url="" />
+              <LargePrimaryButton id={idPrefix + 'form-submit-button'} text="SUBMIT" url="" />
             </div>
             {_.some(isFieldValid, field => {
               return field === false
@@ -631,7 +662,7 @@ class ResourceCenterProfilePage extends React.Component {
               </div>
             )}
             <div className={style.maidenNameContainer} aria-hidden="true">
-              <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
+              <input id={idPrefix + 'maiden-name'} onChange={this.handleMaidenNameChange.bind(this)} />
             </div>
           </form>
           {this.props.isSubmitComplete && this.renderSubmissionComplete()}
