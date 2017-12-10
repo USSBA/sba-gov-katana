@@ -247,6 +247,7 @@ class ResourceCenterProfilePage extends React.Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           aria-labelledby={idPrefix + 'partner-label'}
+          required={true}
         />
       </div>
     )
@@ -287,6 +288,7 @@ class ResourceCenterProfilePage extends React.Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           aria-labelledby={idPrefix + 'office-label'}
+          required={true}
         />
       </div>
     )
@@ -319,6 +321,7 @@ class ResourceCenterProfilePage extends React.Component {
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           aria-labelledby={idPrefix + 'service-area-label'}
+          required={true}
         />
         {this.state.profile.serviceArea === 'Other' && (
           <TextInput
@@ -329,6 +332,7 @@ class ResourceCenterProfilePage extends React.Component {
             value={this.state.otherServiceArea}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
+            required={this.state.profile.serviceArea === 'Other'}
           />
         )}
       </div>
@@ -429,7 +433,7 @@ class ResourceCenterProfilePage extends React.Component {
       expertise => {
         return (
           <Checkbox
-            id={expertise}
+            id={idPrefix + expertise}
             name={expertise}
             label={expertise}
             key={expertise}
@@ -466,7 +470,7 @@ class ResourceCenterProfilePage extends React.Component {
       service => {
         return (
           <Checkbox
-            id={service}
+            id={idPrefix + service}
             name={service}
             label={service}
             key={service}
@@ -507,7 +511,7 @@ class ResourceCenterProfilePage extends React.Component {
       language => {
         return (
           <Checkbox
-            id={language}
+            id={idPrefix + language}
             name={language}
             label={language}
             key={language}
@@ -549,6 +553,7 @@ class ResourceCenterProfilePage extends React.Component {
           Which business stage does your office best serve?
         </label>
         <Radio
+          id={idPrefix + 'business-stage'}
           options={businessStageOptions}
           value={this.state.profile.businessStage}
           onChange={e => this.handleRadio(e, 'businessStage')}
@@ -575,17 +580,22 @@ class ResourceCenterProfilePage extends React.Component {
     ]
     return (
       <div>
-        <label className={this.isFieldInvalid('needsUpdating') ? style.invalid : style.formLabel}>
-          Is this your office address and phone number?
-        </label>
-        <div>{selectedOffice.street1}</div>
-        <div>{selectedOffice.street2}</div>
-        <div>
-          {selectedOffice.city ? selectedOffice.city + ', ' : ''}
-          {selectedOffice.state ? selectedOffice.state + ', ' : ''}
-          {selectedOffice.zip ? selectedOffice.zip : ''}
+        <div id={idPrefix + 'contact-info'}>
+          <label
+            id={idPrefix + 'needs-updating-label'}
+            className={this.isFieldInvalid('needsUpdating') ? style.invalid : style.formLabel}
+          >
+            Is this your office address and phone number?
+          </label>
+          <div>{selectedOffice.street1}</div>
+          <div>{selectedOffice.street2}</div>
+          <div>
+            {selectedOffice.city ? selectedOffice.city + ', ' : ''}
+            {selectedOffice.state ? selectedOffice.state + ', ' : ''}
+            {selectedOffice.zip ? selectedOffice.zip : ''}
+          </div>
+          <div>{selectedOffice.phone}</div>
         </div>
-        <div>{selectedOffice.phone}</div>
         <Radio
           id={idPrefix + 'should-update-contact-info'}
           label=""
@@ -598,6 +608,7 @@ class ResourceCenterProfilePage extends React.Component {
           textStyle={style.radioText}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
+          aria-labelledby={idPrefix + 'contact-info'}
         />
       </div>
     )
@@ -651,6 +662,7 @@ class ResourceCenterProfilePage extends React.Component {
               onFocus={this.onFocus.bind(this)}
               label="What's your website URL?"
               labelStyle={this.isFieldInvalid('url') ? style.invalid : style.formLabel}
+              required={true}
             />
 
             <div className={style.grid}>{this.renderHourDropdowns()}</div>

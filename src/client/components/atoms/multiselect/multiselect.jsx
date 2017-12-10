@@ -55,14 +55,13 @@ class MultiSelectBox extends React.Component {
           return <div />
         }
 
+    const inputPropFields = ['aria-labelledby', 'aria-label', 'required']
     const inputProps = {}
-    if (this.props['aria-labelledby']) {
-      inputProps['aria-labelledby'] = this.props['aria-labelledby']
-    }
-    if (this.props['aria-label']) {
-      //todo: consider setting this value to this.props.label when this.props.aria-label is undefined (will break snapshots)
-      inputProps['aria-label'] = this.props['aria-label']
-    }
+    _.forEach(inputPropFields, field => {
+      if (this.props[field]) {
+        inputProps[field] = this.props[field]
+      }
+    })
 
     return (
       <div id={this.props.id + '-container'}>
@@ -76,7 +75,6 @@ class MultiSelectBox extends React.Component {
             autoBlur={true}
             onChange={this.handleChange.bind(this)}
             name={this.props.name}
-            require={this.props.required}
             autofocus={this.props.autoFocus}
             value={myValue}
             options={this.props.options}
