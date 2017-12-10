@@ -54,6 +54,16 @@ class MultiSelectBox extends React.Component {
       : () => {
           return <div />
         }
+
+    const inputProps = {}
+    if (this.props['aria-labelledby']) {
+      this.props['aria-labelledby'] = this.props['aria-labelledby']
+    }
+    if (this.props['aria-label']) {
+      //todo: consider setting this value to this.props.label when this.props.aria-label is undefined (will break snapshots)
+      this.props['aria-label'] = this.props['aria-label']
+    }
+
     return (
       <div id={this.props.id + '-container'}>
         <label>{this.props.label}</label>
@@ -76,6 +86,7 @@ class MultiSelectBox extends React.Component {
             clearRenderer={clearRenderer}
             searchable={this.props.multi}
             placeholder={this.props.placeholder ? this.props.placeholder : 'Select...'}
+            inputProps={inputProps}
           />
         </div>
         {errorMessage}
