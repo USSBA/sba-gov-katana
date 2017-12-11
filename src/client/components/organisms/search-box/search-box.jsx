@@ -188,8 +188,8 @@ class SearchBox extends React.Component {
 }
 
 SearchBox.defaultProps = {
-  sectionHeaderText: 'Search',
-  subtitleText: '',
+  sectionHeaderText: 'Search documents, forms, and SOPs',
+  subtitleText: 'Search by title or document number',
   multiSelectDocumentTypeDefaultLabel: 'All document types',
   documentType: ['SBA form', 'SOP', 'Policy Guidance', 'TechNote', 'Procedural notice', 'Information notice', 'Policy notice', 'Support'],
   multiSelectProgramDefaultLabel: 'All programs',
