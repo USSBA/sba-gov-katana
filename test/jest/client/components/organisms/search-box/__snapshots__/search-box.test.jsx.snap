@@ -15,9 +15,11 @@ ShallowWrapper {
         className="greyParagraph"
     >
         <h2>
-            Search
+            Search documents, forms, and SOPs
         </h2>
-        <p />
+        <p>
+            Search by title or document number
+        </p>
         <div
             className="searchBox"
         >
@@ -260,9 +262,11 @@ ShallowWrapper {
             className="greyParagraph"
       >
             <h2>
-                  Search
+                  Search documents, forms, and SOPs
             </h2>
-            <p />
+            <p>
+                  Search by title or document number
+            </p>
             <div
                   className="searchBox"
             >
@@ -552,8 +556,8 @@ ShallowWrapper {
                         "Community Advantage",
                       ]
         }
-        sectionHeaderText="Search"
-        subtitleText=""
+        sectionHeaderText="Search documents, forms, and SOPs"
+        subtitleText="Search by title or document number"
 />,
       "_debugID": 11,
       "_hostContainerInfo": null,
@@ -603,8 +607,8 @@ ShallowWrapper {
             "Contracting",
             "Community Advantage",
           ],
-          "sectionHeaderText": "Search",
-          "subtitleText": "",
+          "sectionHeaderText": "Search documents, forms, and SOPs",
+          "subtitleText": "Search by title or document number",
         },
         "refs": Object {},
         "state": Object {
@@ -638,9 +642,11 @@ ShallowWrapper {
                     className="greyParagraph"
           >
                     <h2>
-                              Search
+                              Search documents, forms, and SOPs
                     </h2>
-                    <p />
+                    <p>
+                              Search by title or document number
+                    </p>
                     <div
                               className="searchBox"
                     >
@@ -883,9 +889,11 @@ ShallowWrapper {
                     className="greyParagraph"
           >
                     <h2>
-                              Search
+                              Search documents, forms, and SOPs
                     </h2>
-                    <p />
+                    <p>
+                              Search by title or document number
+                    </p>
                     <div
                               className="searchBox"
                     >
@@ -1179,8 +1187,8 @@ ShallowWrapper {
             "Community Advantage",
           ]
     }
-    sectionHeaderText="Search"
-    subtitleText=""
+    sectionHeaderText="Search documents, forms, and SOPs"
+    subtitleText="Search by title or document number"
 />,
 }
 `;
@@ -1200,9 +1208,11 @@ ShallowWrapper {
         className="greyParagraph"
     >
         <h2>
-            Search
+            Search documents, forms, and SOPs
         </h2>
-        <p />
+        <p>
+            Search by title or document number
+        </p>
         <div
             className="searchBox"
         >
@@ -1445,9 +1455,11 @@ ShallowWrapper {
             className="greyParagraph"
       >
             <h2>
-                  Search
+                  Search documents, forms, and SOPs
             </h2>
-            <p />
+            <p>
+                  Search by title or document number
+            </p>
             <div
                   className="searchBox"
             >
@@ -1737,8 +1749,8 @@ ShallowWrapper {
                         "Community Advantage",
                       ]
         }
-        sectionHeaderText="Search"
-        subtitleText=""
+        sectionHeaderText="Search documents, forms, and SOPs"
+        subtitleText="Search by title or document number"
 />,
       "_debugID": 90,
       "_hostContainerInfo": null,
@@ -1788,8 +1800,8 @@ ShallowWrapper {
             "Contracting",
             "Community Advantage",
           ],
-          "sectionHeaderText": "Search",
-          "subtitleText": "",
+          "sectionHeaderText": "Search documents, forms, and SOPs",
+          "subtitleText": "Search by title or document number",
         },
         "refs": Object {},
         "state": Object {
@@ -1823,9 +1835,11 @@ ShallowWrapper {
                     className="greyParagraph"
           >
                     <h2>
-                              Search
+                              Search documents, forms, and SOPs
                     </h2>
-                    <p />
+                    <p>
+                              Search by title or document number
+                    </p>
                     <div
                               className="searchBox"
                     >
@@ -2068,9 +2082,11 @@ ShallowWrapper {
                     className="greyParagraph"
           >
                     <h2>
-                              Search
+                              Search documents, forms, and SOPs
                     </h2>
-                    <p />
+                    <p>
+                              Search by title or document number
+                    </p>
                     <div
                               className="searchBox"
                     >
@@ -2364,8 +2380,8 @@ ShallowWrapper {
             "Community Advantage",
           ]
     }
-    sectionHeaderText="Search"
-    subtitleText=""
+    sectionHeaderText="Search documents, forms, and SOPs"
+    subtitleText="Search by title or document number"
 />,
 }
 `;
@@ -2378,10 +2394,10 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
     className="greyParagraph"
   >
     <h2>
-      Search
+      Search documents, forms, and SOPs
     </h2>
     <p>
-      
+      Search by title or document number
     </p>
     <div
       className="searchBox"
@@ -3921,9 +3937,11 @@ ShallowWrapper {
         className="greyParagraph"
     >
         <h2>
-            Search
+            Search documents, forms, and SOPs
         </h2>
-        <p />
+        <p>
+            Search by title or document number
+        </p>
         <div
             className="searchBox"
         >
@@ -4166,9 +4184,11 @@ ShallowWrapper {
             className="greyParagraph"
       >
             <h2>
-                  Search
+                  Search documents, forms, and SOPs
             </h2>
-            <p />
+            <p>
+                  Search by title or document number
+            </p>
             <div
                   className="searchBox"
             >
@@ -4458,8 +4478,8 @@ ShallowWrapper {
                         "Community Advantage",
                       ]
         }
-        sectionHeaderText="Search"
-        subtitleText=""
+        sectionHeaderText="Search documents, forms, and SOPs"
+        subtitleText="Search by title or document number"
 />,
       "_debugID": 88,
       "_hostContainerInfo": null,
@@ -4509,8 +4529,8 @@ ShallowWrapper {
             "Contracting",
             "Community Advantage",
           ],
-          "sectionHeaderText": "Search",
-          "subtitleText": "",
+          "sectionHeaderText": "Search documents, forms, and SOPs",
+          "subtitleText": "Search by title or document number",
         },
         "refs": Object {},
         "state": Object {
@@ -4544,9 +4564,11 @@ ShallowWrapper {
                     className="greyParagraph"
           >
                     <h2>
-                              Search
+                              Search documents, forms, and SOPs
                     </h2>
-                    <p />
+                    <p>
+                              Search by title or document number
+                    </p>
                     <div
                               className="searchBox"
                     >
@@ -4789,9 +4811,11 @@ ShallowWrapper {
                     className="greyParagraph"
           >
                     <h2>
-                              Search
+                              Search documents, forms, and SOPs
                     </h2>
-                    <p />
+                    <p>
+                              Search by title or document number
+                    </p>
                     <div
                               className="searchBox"
                     >
@@ -5085,8 +5109,8 @@ ShallowWrapper {
             "Community Advantage",
           ]
     }
-    sectionHeaderText="Search"
-    subtitleText=""
+    sectionHeaderText="Search documents, forms, and SOPs"
+    subtitleText="Search by title or document number"
 />,
 }
 `;

@@ -57,9 +57,9 @@ describe('searchBox', () => {
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
     expect(tree.children[0].children[0].type).toBe('h2')
-    expect(tree.children[0].children[0].children[0]).toBe('Search')
+    expect(tree.children[0].children[0].children[0]).toBe('Search documents, forms, and SOPs')
     expect(tree.children[0].children[1].type).toBe('p')
-    expect(tree.children[0].children[1].children[0]).toBe('')
+    expect(tree.children[0].children[1].children[0]).toBe('Search by title or document number')
   })
 
   test("should have default props for document type, program and document activity, and its default labels", () => {
