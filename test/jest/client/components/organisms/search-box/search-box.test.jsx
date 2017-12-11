@@ -1,6 +1,6 @@
 import React from 'react'
 import { clone } from 'lodash'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 const sinon = require('sinon')
 
@@ -57,33 +57,9 @@ describe('searchBox', () => {
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
     expect(tree.children[0].children[0].type).toBe('h2')
-    expect(tree.children[0].children[0].children[0]).toBe('Search documents, forms, and SOPs')
+    expect(tree.children[0].children[0].children[0]).toBe('Search')
     expect(tree.children[0].children[1].type).toBe('p')
-    expect(tree.children[0].children[1].children[0]).toBe('Search by title or document number')
-  })
-
-  test("should render documentType, program and documentActivity as input type and 'All' as its default value", () => {
-    const testProps = {
-      documentType: 'TechNote',
-      program: 'HUBZone',
-      documentActivity: 'Authorization'
-    }
-    const component = renderer.create(<SearchBox />)
-    const tree = component.toJSON()
-    const documentTypeDropDownProperties = tree.children[0].children[3].children[0].children[1].children[0].children[0]
-    const programDropDownProperties = tree.children[0].children[4].children[0].children[1].children[0].children[0]
-    const documentActivityProperties = tree.children[0].children[5].children[0].children[1].children[0].children[0]
-
-    expect(tree).toMatchSnapshot()
-    expect(documentTypeDropDownProperties.props.name).toBe('documenttype-select')
-    expect(documentTypeDropDownProperties.type).toBe('input')
-    expect(documentTypeDropDownProperties.props.value).toBe('All')
-    expect(programDropDownProperties.props.name).toBe('program-select')
-    expect(programDropDownProperties.type).toBe('input')
-    expect(programDropDownProperties.props.value).toBe('All')
-    expect(documentActivityProperties.props.name).toBe('documentactivity-select')
-    expect(documentActivityProperties.type).toBe('input')
-    expect(documentActivityProperties.props.value).toBe('All')
+    expect(tree.children[0].children[1].children[0]).toBe('')
   })
 
   test("should have default props for document type, program and document activity, and its default labels", () => {
@@ -95,6 +71,14 @@ describe('searchBox', () => {
     expect(component.instance().props.documentType).toEqual(["SBA form", "SOP", "Policy Guidance", "TechNote", "Procedural notice", "Information notice", "Policy notice", "Support"])
     expect(component.instance().props.program).toEqual(["SBIC", "Surety Bonds", "7(a)", "CDC/504", "Microlending", "HUBZone", "Disaster", "8(a)", "SBA operations", "Contracting", "Community Advantage"])
     expect(component.instance().props.documentActivity).toEqual(["Authorization", "Servicing", "Liquidation", "Litigation", "Guaranty purchase", "Licensing and organizational", "Credit and risk", "Investment and transactions", "Leverage commitments and draws", "Periodic reporting", "General", "Processing", "Secondary market"])
+  })
+
+  test("should render documentType, program and documentActivity as 'All' as its default value and empty string for search term", () => {
+    const component = mount(<SearchBox />)
+    expect(component.state().searchTerm).toBe('')
+    expect(component.state().selectedDocumentType).toBe('All')
+    expect(component.state().selectedProgram).toBe('All')
+    expect(component.state().selectedDocumentActivity).toBe('All')
   })
 
   test("should update state for document type, program, document acitivity and search term", () => {
