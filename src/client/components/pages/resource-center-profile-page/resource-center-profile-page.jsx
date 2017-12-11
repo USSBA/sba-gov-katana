@@ -332,6 +332,7 @@ class ResourceCenterProfilePage extends React.Component {
             value={this.state.otherServiceArea}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
+            autoFocus={true}
             required={this.state.profile.serviceArea === 'Other'}
           />
         )}
@@ -656,7 +657,6 @@ class ResourceCenterProfilePage extends React.Component {
               name="url"
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.url}
-              autoFocus={false}
               placeholder="http://"
               onBlur={this.onBlur.bind(this)}
               onFocus={this.onFocus.bind(this)}
@@ -676,7 +676,11 @@ class ResourceCenterProfilePage extends React.Component {
             {this.renderBusinessStageRadios()}
 
             {this.renderLanguageCheckboxes()}
-            <div className={style.submitButton} onClick={this.handleSubmit.bind(this)}>
+            <div
+              id={idPrefix + 'submit'}
+              className={style.submitButton}
+              onClick={this.handleSubmit.bind(this)}
+            >
               <LargePrimaryButton id={idPrefix + 'form-submit-button'} text="SUBMIT" url="" />
             </div>
             {_.some(isFieldValid, field => {
@@ -719,3 +723,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceCenterProfilePage)
+export { ResourceCenterProfilePage }
