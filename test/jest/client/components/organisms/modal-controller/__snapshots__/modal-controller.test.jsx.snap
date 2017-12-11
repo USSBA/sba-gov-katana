@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalController should render MobileSectionNav page 1`] = `
+<div
+  className="navMenuOpen"
+>
+  <div
+    className="navHeader"
+    onClick={[Function]}
+  >
+    <i
+      className="navLeftArrow fa fa-angle-left"
+    />
+    <img
+      alt=""
+      className="navIcon"
+      src="build/img/img-ed52b1.png"
+    />
+    <div
+      className="navTitleContainer"
+    >
+      <h2
+        className="navLargeTitle"
+      >
+        Lender
+      </h2>
+      <h4
+        className="navSmallTitle"
+      >
+        
+      </h4>
+    </div>
+  </div>
+  <div
+    className="navTopLine"
+  />
+  <div
+    className="navLinkContainer"
+    onTouchTap={[Function]}
+  >
+    <a
+      className="navLink"
+      id={undefined}
+      onTouchTap={[Function]}
+    >
+      CDC/504 program
+    </a>
+  </div>
+  <div
+    className="navLinkContainer"
+    onTouchTap={[Function]}
+  >
+    <a
+      className="navLink"
+      id={undefined}
+      onTouchTap={[Function]}
+    >
+      CDC/504 program
+    </a>
+  </div>
+</div>
+`;
