@@ -1,5 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './card.scss'
 import { BasicLink, DecorativeDash } from 'atoms'
@@ -41,46 +42,49 @@ class Card extends React.Component {
   }
 
   render() {
-    let linkText = 'Learn more'
     let cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
+
+    const { index, item: { eventConfig, image, link, subtitleText, titleText }, parentIndex } = this.props
+    const { title, url } = link
+
+    let imageMarkup = null
+    if (image && image.url) {
+      imageMarkup = (
+        <img
+          id={'image-' + parentIndex + '-' + index}
+          className={styles.itemImage}
+          src={image.url}
+          alt={image.alt}
+        />
+      )
+
+      if (!isEmpty(link) && url) {
+        imageMarkup = <BasicLink url={url}>{imageMarkup}</BasicLink>
+      }
+    }
+
     return (
-      <div id={'card-' + this.props.parentIndex + '-' + this.props.index} className={cardStyle}>
-        {this.props.item.image && this.props.item.image.url ? (
-          <img
-            id={'image-' + this.props.parentIndex + '-' + this.props.index}
-            className={styles.itemImage}
-            src={this.props.item.image.url}
-            alt={this.props.item.image.alt}
-          />
-        ) : null}
-        {this.props.item.titleText ? (
-          <p id={'title-' + this.props.parentIndex + '-' + this.props.index} className={styles.itemTitle}>
-            {this.props.item.titleText}
+      <div id={'card-' + parentIndex + '-' + index} className={cardStyle}>
+        {imageMarkup}
+        {titleText ? (
+          <p id={'title-' + parentIndex + '-' + index} className={styles.itemTitle}>
+            {titleText}
           </p>
         ) : null}
-        {this.props.item.subtitleText ? (
+        {subtitleText ? (
           <div>
-            <DecorativeDash
-              id={'hr-' + this.props.parentIndex + '-' + this.props.index}
-              className={styles.itemHr}
-            />
-            <p
-              id={'subtitle-text-' + this.props.parentIndex + '-' + this.props.index}
-              className={styles.itemSubTitle}
-            >
-              {this.props.item.subtitleText}
+            <DecorativeDash id={'hr-' + parentIndex + '-' + index} className={styles.itemHr} />
+            <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
+              {subtitleText}
             </p>
           </div>
         ) : null}
-        {!_.isEmpty(this.props.item.link) && (
-          <p>
-            <BasicLink
-              text={linkText}
-              url={this.props.item.link}
-              eventConfig={this.props.item.eventConfig}
-            />
-          </p>
-        )}
+        {!isEmpty(link) &&
+          url && (
+            <p>
+              <BasicLink text={title || 'Learn more'} url={url} eventConfig={eventConfig} />
+            </p>
+          )}
       </div>
     )
   }
