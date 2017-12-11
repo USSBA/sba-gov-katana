@@ -55,10 +55,10 @@ class TenStepsLandingPage extends React.Component {
   }
 
   render() {
-    let titleBoxDataArray = [
+    const titleBoxDataArray = [
       {
         sectionNum: 1,
-        title: 'Conduct market research.',
+        title: 'Conduct market research',
         leftAlignBox: true,
         solidBox: false,
         image: '/assets/images/tensteps/research.png',
@@ -69,7 +69,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 2,
-        title: 'Write your business plan.',
+        title: 'Write your business plan',
         leftAlignBox: false,
         solidBox: true,
         image: '/assets/images/tensteps/plan.jpg',
@@ -80,7 +80,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 3,
-        title: 'Fund your business.',
+        title: 'Fund your business',
         leftAlignBox: true,
         solidBox: false,
         image: '/assets/images/tensteps/fund.jpg',
@@ -91,7 +91,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 4,
-        title: 'Pick your business location.',
+        title: 'Pick your business location',
         leftAlignBox: false,
         solidBox: true,
         image: '/assets/images/tensteps/location.jpg',
@@ -102,7 +102,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 5,
-        title: 'Choose a business structure.',
+        title: 'Choose a business structure',
         leftAlignBox: true,
         solidBox: false,
         image: '/assets/images/tensteps/business-structure-scrabble.png',
@@ -113,7 +113,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 6,
-        title: 'Choose your business name.',
+        title: 'Choose your business name',
         leftAlignBox: true,
         solidBox: true,
         image: '/assets/images/tensteps/name.jpg',
@@ -124,7 +124,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 7,
-        title: 'Register your business.',
+        title: 'Register your business',
         leftAlignBox: false,
         solidBox: true,
         image: '/assets/images/tensteps/register.jpg',
@@ -135,7 +135,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 8,
-        title: 'Get federal and state tax IDs.',
+        title: 'Get federal and state tax IDs',
         leftAlignBox: true,
         solidBox: false,
         image: '/assets/images/tensteps/tax-ids.png',
@@ -146,7 +146,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 9,
-        title: 'Apply for licenses and permits.',
+        title: 'Apply for licenses and permits',
         leftAlignBox: false,
         solidBox: true,
         image: '/assets/images/tensteps/license.jpg',
@@ -157,7 +157,7 @@ class TenStepsLandingPage extends React.Component {
       },
       {
         sectionNum: 10,
-        title: 'Open a business bank account.',
+        title: 'Open a business bank account',
         leftAlignBox: true,
         solidBox: false,
         image: '/assets/images/tensteps/bank.png',
@@ -183,9 +183,9 @@ class TenStepsLandingPage extends React.Component {
       )
     })
 
-    let sectionData =
+    const sectionData =
       findSection(this.props.menu, 'guide') || findSection(this.props.menu, 'business-guide')
-    let counsellorCta = this.props.counsellorCta
+    const counsellorCta = this.props.counsellorCta
 
     return (
       <div className={styles.tenStepsLandingPage}>
@@ -197,7 +197,7 @@ class TenStepsLandingPage extends React.Component {
         <div className={styles.titleSection}>
           {this.state.navType === 'top' ? <TenStepsNav navType="top" /> : null}
           <div className={styles.titleSectionText}>
-            <h1>10 steps to start your business.</h1>
+            <h1>10 steps to start your business</h1>
             <Waypoint
               onEnter={() => {
                 this.handleTitleSectionEnter()
@@ -224,7 +224,7 @@ class TenStepsLandingPage extends React.Component {
         </div>
         <div className={styles.lastSection}>
           <div className={styles.lastSectionText}>
-            <h1>Open shop.</h1>
+            <h1>Open shop</h1>
             <Waypoint
               onEnter={() => {
                 this.handleCalloutEnter()
@@ -239,7 +239,7 @@ class TenStepsLandingPage extends React.Component {
         </div>
         {sectionData ? (
           <div className={styles.bizguideContainer}>
-            <h1>Explore more topics.</h1>
+            <h1>Explore more topics</h1>
             <BusinessGuideTileCollection sectionData={sectionData} />
           </div>
         ) : (
