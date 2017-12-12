@@ -24,7 +24,7 @@ class MobileNav extends React.Component {
   }
 
   _formatSmallTitle() {
-    let arr = this.props.menuData.title.split(' ')
+    const arr = this.props.menuData.title.split(' ')
     arr.shift()
     return arr.join(' ')
   }
@@ -69,7 +69,7 @@ class MobileNav extends React.Component {
   }
 
   render() {
-    let children = this.props.menuData.children || []
+    const children = this.props.menuData.children || []
     return (
       <div className={this._navMenuClassname()}>
         <div
@@ -94,7 +94,7 @@ class MobileNav extends React.Component {
   }
 }
 
-const NavLink = props => (
+const NavLink = props => {return (
   <div
     className={s.navLinkContainer}
     onTouchTap={() => {
@@ -112,7 +112,7 @@ const NavLink = props => (
     </a>
     {/*<i className={s.navRightArrow + " fa fa-angle-right"}></i>*/}
   </div>
-)
+)}
 
 function mapReduxStateToProps(reduxState) {
   return {}
@@ -125,3 +125,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MobileNav)
+
+export { MobileNav }
