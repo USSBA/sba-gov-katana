@@ -42,7 +42,7 @@ class Homepage extends React.Component {
         title: 'Contracting classroom'
       },
       {
-        link: '/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards',
+        link: '/size-standards',
         title: 'Qualify for government contracts'
       }
     ]
