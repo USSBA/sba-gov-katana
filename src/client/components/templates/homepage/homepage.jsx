@@ -4,7 +4,7 @@ import styles from './homepage.scss'
 
 class Homepage extends React.Component {
   render() {
-    let startLinks = [
+    const startLinks = [
       {
         link: '/starting-business/how-start-business/10-steps-starting-business',
         title: '10 steps to get started'
@@ -18,7 +18,7 @@ class Homepage extends React.Component {
         title: 'Create a business plan'
       }
     ]
-    let financeLinks = [
+    const financeLinks = [
       {
         link: '/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow',
         title: 'What SBA offers'
@@ -32,7 +32,7 @@ class Homepage extends React.Component {
         title: 'Connect with SBA lenders'
       }
     ]
-    let sellLinks = [
+    const sellLinks = [
       {
         link: '/contracting/getting-started-contractor',
         title: 'Is government contracting for me?'
@@ -42,7 +42,7 @@ class Homepage extends React.Component {
         title: 'Contracting classroom'
       },
       {
-        link: '/tools/size-standards-tool',
+        link: '/size-standards',
         title: 'Qualify for government contracts'
       }
     ]

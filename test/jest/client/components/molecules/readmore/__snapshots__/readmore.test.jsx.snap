@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadMore should render expanded ReadMore component 1`] = `
+<div
+  className="readMoreSection"
+>
+  <h3
+    className="title"
+    id="text-readmore-section-3-read-more-title"
+  >
+    This is a title
+  </h3>
+  <p
+    className="preview"
+    id="text-readmore-section-3-read-more-preview"
+  />
+  <hr
+    className="lineCopy"
+  />
+  <p
+    className="expandedCopyText"
+  >
+    This is a test.
+     
+  </p>
+  <p
+    className="expandedCopyText"
+  >
+    Yes, this is the test.
+     
+  </p>
+  <p
+    className="expandedCopyText"
+  >
+    Four new lines.
+     
+  </p>
+  <p
+    className="expandedCopyText"
+  >
+    It is good.
+     
+  </p>
+  <button
+    autoFocus={false}
+    className="SmallSecondaryButton readMore "
+    disabled={undefined}
+    formTarget="_self"
+    id="text-readmore-section-3-read-more-btn"
+    onKeyPress={[Function]}
+    onTouchTap={[Function]}
+    tabIndex="0"
+  >
+    CLOSE
+  </button>
+</div>
+`;
