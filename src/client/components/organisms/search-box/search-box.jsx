@@ -36,7 +36,7 @@ class SearchBox extends React.Component {
 
     const name = taxonomyFilter
     const id = `${createSlug(name)}-select`
-    const firstLetterUpperCaseStateName = taxonomyFilter[0].toUpperCase() + taxonomyFilter.slice(1)
+    const capitalizedStateName = taxonomyFilter[0].toUpperCase() + taxonomyFilter.slice(1)
 
     // add an "All" filter option to list
     taxonomy.unshift('All')
@@ -44,7 +44,7 @@ class SearchBox extends React.Component {
     const options = taxonomy.map(entry => {
       // customize the "All" entry label
       const result = {
-        label: entry === 'All' ? this.props[`multiSelect${firstLetterUpperCaseStateName}DefaultLabel`] : entry,
+        label: entry === 'All' ? this.props[`multiSelect${capitalizedStateName}DefaultLabel`] : entry,
         value: entry
       }
 
@@ -57,7 +57,7 @@ class SearchBox extends React.Component {
         this.handleChange(event)
       },
       name: id,
-      value: this.state[`selected${firstLetterUpperCaseStateName}`],
+      value: this.state[`selected${capitalizedStateName}`],
       options
     }
 
@@ -83,21 +83,20 @@ class SearchBox extends React.Component {
   }
 
   handleChange(event) {
-    const documentTypeFilter = this.props.documentType
-    const documentActivityFilter = this.props.documentActivity
-    const programFilter = this.props.program
+    const { documentType, documentActivity, program } = this.props
+    const { value } = event
 
-    if (documentTypeFilter.includes(event.value)) {
+    if (documentType.includes(value)) {
       this.setState({
-        selectedDocumentType: event.value
+        selectedDocumentType: value
       })
-    } else if (documentActivityFilter.includes(event.value)) {
+    } else if (documentActivity.includes(value)) {
       this.setState({
-        selectedDocumentActivity: event.value
+        selectedDocumentActivity: value
       })
-    } else if (programFilter.includes(event.value)) {
+    } else if (program.includes(value)) {
       this.setState({
-        selectedProgram: event.value
+        selectedProgram: value
       })
     }
   }
