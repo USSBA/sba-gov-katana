@@ -286,7 +286,7 @@ const constants = {
             text: 'Find Events'
           },
           {
-            url: '/tools/size-standards-tool',
+            url: '/size-standards',
             text: 'Qualify for Government Contracts'
           },
           {
