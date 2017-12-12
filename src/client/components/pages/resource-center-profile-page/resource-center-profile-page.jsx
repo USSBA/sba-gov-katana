@@ -332,6 +332,7 @@ class ResourceCenterProfilePage extends React.Component {
             value={this.state.otherServiceArea}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
+            autoFocus={true}
             required={this.state.profile.serviceArea === 'Other'}
           />
         )}
@@ -656,7 +657,6 @@ class ResourceCenterProfilePage extends React.Component {
               name="url"
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.url}
-              autoFocus={false}
               placeholder="http://"
               onBlur={this.onBlur.bind(this)}
               onFocus={this.onFocus.bind(this)}
