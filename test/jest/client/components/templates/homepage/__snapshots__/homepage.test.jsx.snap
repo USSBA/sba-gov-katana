@@ -92,7 +92,7 @@ ShallowWrapper {
                       "title": "Contracting classroom",
                     },
                     Object {
-                      "link": "/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards",
+                      "link": "/size-standards",
                       "title": "Qualify for government contracts",
                     },
                   ]
@@ -191,7 +191,7 @@ ShallowWrapper {
                                 "title": "Contracting classroom",
                               },
                               Object {
-                                "link": "/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards",
+                                "link": "/size-standards",
                                 "title": "Qualify for government contracts",
                               },
                             ]
@@ -324,7 +324,7 @@ ShallowWrapper {
                                                     "title": "Contracting classroom",
                                                   },
                                                   Object {
-                                                    "link": "/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards",
+                                                    "link": "/size-standards",
                                                     "title": "Qualify for government contracts",
                                                   },
                                                 ]
@@ -423,7 +423,7 @@ ShallowWrapper {
                                                     "title": "Contracting classroom",
                                                   },
                                                   Object {
-                                                    "link": "/contracting/getting-started-contractor/make-sure-you-meet-sba-size-standards",
+                                                    "link": "/size-standards",
                                                     "title": "Qualify for government contracts",
                                                   },
                                                 ]
