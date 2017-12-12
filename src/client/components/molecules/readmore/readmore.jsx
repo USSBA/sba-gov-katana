@@ -10,7 +10,7 @@ class ReadMore extends React.Component {
   }
   makeExpanded(text) {
     if (text) {
-      let split = text.split('<br/>')
+      const split = text.split('\n')
       return split.map(function(item, index) {
         return (
           <p key={index} className={styles.expandedCopyText}>
@@ -24,11 +24,11 @@ class ReadMore extends React.Component {
   }
 
   render() {
-    let btnText = this.props.expanded ? 'CLOSE' : 'READ MORE'
-    let expandedTextSection = this.props.expanded
+    const btnText = this.props.expanded ? 'CLOSE' : 'READ MORE'
+    const expandedTextSection = this.props.expanded
       ? this.makeExpanded(this.props.readMoreSectionItem.expandedCopyText)
       : ''
-    let expandedHr = this.props.expanded ? <hr className={styles.lineCopy} /> : ''
+    const expandedHr = this.props.expanded ? <hr className={styles.lineCopy} /> : ''
     return (
       <div className={styles.readMoreSection}>
         <h3 id={this.props.parentId + '-title'} className={styles.title}>
