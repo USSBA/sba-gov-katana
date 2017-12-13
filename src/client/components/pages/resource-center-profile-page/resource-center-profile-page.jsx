@@ -1,3 +1,4 @@
+import resourceCenterProfileReducer from '../../../reducers/resource-center-profile'
 import PageLink from '../../atoms/page-link/page-link'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -719,3 +720,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResourceCenterProfilePage)
+export { ResourceCenterProfilePage }
