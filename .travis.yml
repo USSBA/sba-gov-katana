@@ -1,4 +1,5 @@
 sudo: required
+group: deprecated-2017Q4
 language: node_js
 services:
   - docker
@@ -6,8 +7,7 @@ branches:
   only:
     - master
     - /RELEASE-\d+/
-    - teamf-integration
-    - team1-integration
+    - integration
     - master-integration
     - /feature-\w+-\d+[-\w]*/
     - /Feature-\w+-\d+[-\w]*/
