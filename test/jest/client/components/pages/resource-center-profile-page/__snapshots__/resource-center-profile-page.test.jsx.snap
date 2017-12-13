@@ -36,7 +36,29 @@ Object {
 }
 `;
 
-exports[`ResourceCenterProfilePage Missing required fields cause error to show 1`] = `
+exports[`ResourceCenterProfilePage Getting isSubmitted=true response causes message to display 1`] = `
+<div
+  id="resource-center-profile-submission-complete"
+>
+  <h1>
+    One Last Step
+  </h1>
+  <p>
+    Thanks for completing this form. Your submission will help us better match you with your ideal clients.
+  </p>
+  <p>
+    To update your office address and phone number, contact SBA's
+     
+    <a
+      href="mailto:anna.kojzar@sba.gov"
+    >
+      Office of Entrepreneurial Development
+    </a>
+  </p>
+</div>
+`;
+
+exports[`ResourceCenterProfilePage Missing required fields causes error to show 1`] = `
 <FormErrorMessage
   errorText="Please answer all required questions before submitting."
 />

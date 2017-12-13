@@ -13,36 +13,6 @@ jest.mock('../../../../../../src/client/services/resource-center-lookup.js')
 jest.mock('../../../../../../src/client/actions/resource-center-profile')
 
 const idPrefix = 'resource-center-profile-'
-const blankProfileData = {
-  type: null,
-  name: null,
-  address: null,
-  phone: null,
-  businessStage: '',
-  serviceArea: null,
-  needsUpdating: '',
-  url: '',
-  hours: {
-    mondayOpen: null,
-    mondayClose: null,
-    tuesdayOpen: null,
-    tuesdayClose: null,
-    wednesdayOpen: null,
-    wednesdayClose: null,
-    thursdayOpen: null,
-    thursdayClose: null,
-    fridayOpen: null,
-    fridayClose: null,
-    saturdayOpen: null,
-    saturdayClose: null,
-    sundayOpen: null,
-    sundayClose: null
-  },
-  expertise: [],
-  services: [],
-  languages: []
-}
-
 const partners = {
   partner1: [
     {
@@ -141,7 +111,7 @@ describe('ResourceCenterProfilePage', () => {
     expect(component.instance().state.profile).toMatchSnapshot()
   })
 
-  test('Missing required fields cause error to show', () => {
+  test('Missing required fields causes error to show', () => {
     const component = shallow(<ResourceCenterProfilePage />)
 
     const submit = component.find('#' + idPrefix + 'form-submit-button').parent()
@@ -149,5 +119,12 @@ describe('ResourceCenterProfilePage', () => {
     const errorMsg = component.find('FormErrorMessage')
     expect(errorMsg.node).toBeDefined()
     expect(errorMsg.node).toMatchSnapshot()
+  })
+
+  test('Getting isSubmitted=true response causes message to display', () => {
+    const component = shallow(<ResourceCenterProfilePage isSubmitComplete={true} />)
+    const submissionMsg = component.find('#' + idPrefix + 'submission-complete')
+    expect(submissionMsg.node).toBeDefined()
+    expect(submissionMsg.node).toMatchSnapshot()
   })
 })

@@ -618,7 +618,7 @@ class ResourceCenterProfilePage extends React.Component {
 
   renderSubmissionComplete() {
     return (
-      <div>
+      <div id={idPrefix + 'submission-complete'}>
         <h1>One Last Step</h1>
         <p>
           Thanks for completing this form. Your submission will help us better match you with your ideal
