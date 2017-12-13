@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResourceCenterProfilePage Entering non-optional fields allows form to be submitted 1`] = `
+Object {
+  "address": "1675 W Garden of the Gods Rd, El Paso County Citizen's Center, Colorado Springs, CO, 80907",
+  "businessStage": "New and early stage businesses",
+  "expertise": Array [
+    "Networking",
+  ],
+  "hours": Object {
+    "fridayClose": null,
+    "fridayOpen": null,
+    "mondayClose": null,
+    "mondayOpen": null,
+    "saturdayClose": null,
+    "saturdayOpen": null,
+    "sundayClose": null,
+    "sundayOpen": null,
+    "thursdayClose": null,
+    "thursdayOpen": null,
+    "tuesdayClose": null,
+    "tuesdayOpen": null,
+    "wednesdayClose": null,
+    "wednesdayOpen": null,
+  },
+  "languages": Array [],
+  "name": "Colorado Small Business Development Center ~ State of Colorado | Colorado Small Business Development Center ~ Pikes Peak Small Business Development Center",
+  "needsUpdating": false,
+  "phone": "",
+  "serviceArea": "Entire Nation",
+  "services": Array [
+    "Appointments",
+  ],
+  "type": "partner2",
+  "url": "http://www.google.com",
+}
+`;
+
+exports[`ResourceCenterProfilePage Missing required fields cause error to show 1`] = `
+<FormErrorMessage
+  errorText="Please answer all required questions before submitting."
+/>
+`;
