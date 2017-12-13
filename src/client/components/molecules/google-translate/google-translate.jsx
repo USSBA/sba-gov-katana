@@ -12,7 +12,6 @@ class GoogleTranslate extends React.Component {
   }
 
   handleGoogleTranslateClick(e) {
-    event.preventDefault()
     this.setState({
       expanded: !this.state.expanded
     })
