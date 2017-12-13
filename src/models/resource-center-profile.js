@@ -38,6 +38,9 @@ var resourceCenterProfile = nonDrupal.define(
     },
     phone: {
       type: Sequelize.STRING
+    },
+    needsUpdating: {
+      type: Sequelize.BOOLEAN
     }
   },
   {

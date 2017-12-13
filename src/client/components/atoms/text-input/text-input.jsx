@@ -24,7 +24,7 @@ class TextInput extends React.Component {
     ) : null
   }
   render() {
-    let {
+    const {
       label,
       hidden,
       onChange,
@@ -34,13 +34,15 @@ class TextInput extends React.Component {
       showValidationIcon,
       showSuccessIcon,
       showErrorIcon,
+      labelStyle,
       ...rest
     } = this.props
-    let validationIcon = this.iconValidation(validationState)
-    let errorMessage = this.errorMessage(validationState)
+    const validationIcon = this.iconValidation(validationState)
+    const errorMessage = this.errorMessage(validationState)
+    //todo: use aria-labelledby in the input instead of htmlFor in the label
     return (
       <div id={id + '-container'} className={styles.inputContainer} hidden={hidden}>
-        <label htmlFor={this.props.id} className={styles.controlLabel}>
+        <label htmlFor={this.props.id} className={labelStyle ? labelStyle : styles.controlLabel}>
           {label}
         </label>
         <div className={styles.textInputContainer}>
