@@ -75,6 +75,10 @@ let SizeStandardsToolPage = props => (
   />
 )
 
+let SearchPage = props => (
+  <Async componentProps={props} load={import('./pages/search-page/search-page.jsx')} />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import MaintenancePage from './pages/maintenance-page/maintenance-page.jsx'
@@ -91,6 +95,8 @@ const mainRoutes = [
   <Route key={45} path="/article/" component={ArticleLookupPage} />,
   <Route key={46} path="/size-standards/" component={SizeStandardsToolPage} />,
   <Redirect key={47} from="/size-standards" to="/size-standards/" />,
+  <Route key={50} path="/search/" component={SearchPage} />,
+  <Redirect key={51} from="/search" to="/search/" />,
   <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,
