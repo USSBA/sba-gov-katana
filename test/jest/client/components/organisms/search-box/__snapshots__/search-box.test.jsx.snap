@@ -195,6 +195,10 @@ ShallowWrapper {
                           "value": "Servicing",
                         },
                         Object {
+                          "label": "Closing",
+                          "value": "Closing",
+                        },
+                        Object {
                           "label": "Liquidation",
                           "value": "Liquidation",
                         },
@@ -442,6 +446,10 @@ ShallowWrapper {
                                       "value": "Servicing",
                                     },
                                     Object {
+                                      "label": "Closing",
+                                      "value": "Closing",
+                                    },
+                                    Object {
                                       "label": "Liquidation",
                                       "value": "Liquidation",
                                     },
@@ -513,6 +521,7 @@ ShallowWrapper {
                 Array [
                         "Authorization",
                         "Servicing",
+                        "Closing",
                         "Liquidation",
                         "Litigation",
                         "Guaranty purchase",
@@ -569,6 +578,7 @@ ShallowWrapper {
           "documentActivity": Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -822,6 +832,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -1069,6 +1083,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -1144,6 +1162,7 @@ ShallowWrapper {
         Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -1386,6 +1405,10 @@ ShallowWrapper {
                         Object {
                           "label": "Servicing",
                           "value": "Servicing",
+                        },
+                        Object {
+                          "label": "Closing",
+                          "value": "Closing",
                         },
                         Object {
                           "label": "Liquidation",
@@ -1635,6 +1658,10 @@ ShallowWrapper {
                                       "value": "Servicing",
                                     },
                                     Object {
+                                      "label": "Closing",
+                                      "value": "Closing",
+                                    },
+                                    Object {
                                       "label": "Liquidation",
                                       "value": "Liquidation",
                                     },
@@ -1706,6 +1733,7 @@ ShallowWrapper {
                 Array [
                         "Authorization",
                         "Servicing",
+                        "Closing",
                         "Liquidation",
                         "Litigation",
                         "Guaranty purchase",
@@ -1762,6 +1790,7 @@ ShallowWrapper {
           "documentActivity": Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -2015,6 +2044,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -2262,6 +2295,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -2337,6 +2374,7 @@ ShallowWrapper {
         Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -2924,6 +2962,10 @@ ShallowWrapper {
                           "value": "Servicing",
                         },
                         Object {
+                          "label": "Closing",
+                          "value": "Closing",
+                        },
+                        Object {
                           "label": "Liquidation",
                           "value": "Liquidation",
                         },
@@ -3171,6 +3213,10 @@ ShallowWrapper {
                                       "value": "Servicing",
                                     },
                                     Object {
+                                      "label": "Closing",
+                                      "value": "Closing",
+                                    },
+                                    Object {
                                       "label": "Liquidation",
                                       "value": "Liquidation",
                                     },
@@ -3242,6 +3288,7 @@ ShallowWrapper {
                 Array [
                         "Authorization",
                         "Servicing",
+                        "Closing",
                         "Liquidation",
                         "Litigation",
                         "Guaranty purchase",
@@ -3298,6 +3345,7 @@ ShallowWrapper {
           "documentActivity": Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -3551,6 +3599,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -3798,6 +3850,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -3873,6 +3929,7 @@ ShallowWrapper {
         Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -4115,6 +4172,10 @@ ShallowWrapper {
                         Object {
                           "label": "Servicing",
                           "value": "Servicing",
+                        },
+                        Object {
+                          "label": "Closing",
+                          "value": "Closing",
                         },
                         Object {
                           "label": "Liquidation",
@@ -4364,6 +4425,10 @@ ShallowWrapper {
                                       "value": "Servicing",
                                     },
                                     Object {
+                                      "label": "Closing",
+                                      "value": "Closing",
+                                    },
+                                    Object {
                                       "label": "Liquidation",
                                       "value": "Liquidation",
                                     },
@@ -4435,6 +4500,7 @@ ShallowWrapper {
                 Array [
                         "Authorization",
                         "Servicing",
+                        "Closing",
                         "Liquidation",
                         "Litigation",
                         "Guaranty purchase",
@@ -4491,6 +4557,7 @@ ShallowWrapper {
           "documentActivity": Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",
@@ -4744,6 +4811,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -4991,6 +5062,10 @@ ShallowWrapper {
                                                               "value": "Servicing",
                                                             },
                                                             Object {
+                                                              "label": "Closing",
+                                                              "value": "Closing",
+                                                            },
+                                                            Object {
                                                               "label": "Liquidation",
                                                               "value": "Liquidation",
                                                             },
@@ -5066,6 +5141,7 @@ ShallowWrapper {
         Array [
             "Authorization",
             "Servicing",
+            "Closing",
             "Liquidation",
             "Litigation",
             "Guaranty purchase",

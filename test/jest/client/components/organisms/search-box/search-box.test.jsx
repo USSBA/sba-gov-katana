@@ -70,7 +70,7 @@ describe('searchBox', () => {
     expect(component.instance().props.multiSelectDocumentActivityDefaultLabel).toBe('All document activity')
     expect(component.instance().props.documentType).toEqual(["SBA form", "SOP", "Policy Guidance", "TechNote", "Procedural notice", "Information notice", "Policy notice", "Support"])
     expect(component.instance().props.program).toEqual(["SBIC", "Surety Bonds", "7(a)", "CDC/504", "Microlending", "HUBZone", "Disaster", "8(a)", "SBA operations", "Contracting", "Community Advantage"])
-    expect(component.instance().props.documentActivity).toEqual(["Authorization", "Servicing", "Liquidation", "Litigation", "Guaranty purchase", "Licensing and organizational", "Credit and risk", "Investment and transactions", "Leverage commitments and draws", "Periodic reporting", "General", "Processing", "Secondary market"])
+    expect(component.instance().props.documentActivity).toEqual(["Authorization", "Servicing", "Closing", "Liquidation", "Litigation", "Guaranty purchase", "Licensing and organizational", "Credit and risk", "Investment and transactions", "Leverage commitments and draws", "Periodic reporting", "General", "Processing", "Secondary market"])
   })
 
   test("should render documentType, program and documentActivity as 'All' as its default value and empty string for search term", () => {
