@@ -15,13 +15,13 @@ class ErrorPage extends React.Component {
   }
 
   handleSearchChange(e) {
-    event.preventDefault()
+    e.preventDefault()
     this.setState({ searchValue: e.target.value })
   }
 
   submitSearch(e) {
     e.preventDefault()
-    let uri = encodeURI('/tools/search-result-page?search=' + this.state.searchValue)
+    let uri = encodeURI('/search/?q=' + this.state.searchValue)
     document.location = uri
   }
   render() {
