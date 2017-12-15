@@ -83,6 +83,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
   >
     <form
       className="mobileSearchContainerNew"
+      onSubmit={[Function]}
     >
       <div
         className="searchIconContainerNew"
@@ -95,6 +96,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       </div>
       <input
         className="searchInputFieldNew"
+        onChange={[Function]}
         placeholder="Search SBA.gov"
         type="text"
       />
