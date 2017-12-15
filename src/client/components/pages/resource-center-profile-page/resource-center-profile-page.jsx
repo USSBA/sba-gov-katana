@@ -93,7 +93,6 @@ class ResourceCenterProfilePage extends React.Component {
       return _.isEmpty(office)
     })
     offices = _.orderBy(offices, [office => office.name2.toLowerCase()])
-    console.log(offices)
     this.setState({
       offices: offices
     })
