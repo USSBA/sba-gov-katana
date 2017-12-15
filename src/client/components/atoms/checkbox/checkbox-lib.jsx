@@ -113,6 +113,8 @@ export default class Checkbox extends React.Component {
           onFocus={onFocus}
           onBlur={onBlur}
           onChange={this.handleChange}
+          role="checkbox"
+          aria-checked={checked}
         />
         <span className={styles['rc-checkbox-inner']} />
       </span>
