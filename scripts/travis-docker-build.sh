@@ -4,7 +4,7 @@ if [ $TRAVIS_PULL_REQUEST == "false" ]; then
     docker --version  # document the version travis is using
     pip install --user awscli # install aws cli w/o sudo
     export PATH=$PATH:$HOME/.local/bin # put aws in the path
-    eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+    eval $(aws ecr get-login --region us-east-1  --no-include-email) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
     docker build -t katana .
     if [ ${TRAVIS_BRANCH} = "master" ]; then
       docker tag katana:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/katana:latest

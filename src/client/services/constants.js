@@ -21,7 +21,8 @@ const constants = {
     submitForm: '/lendermatch/matchFormData',
     submitFeedbackResults: '/actions/feedback/',
     submitFeedbackText: '/actions/feedback/{id}/text',
-    tenSteps: '/business-guide/10-steps-start-your-business/'
+    tenSteps: '/business-guide/10-steps-start-your-business/',
+    submitProfile: '/actions/resourceCenterProfile'
   },
   messages: {
     validation: {
