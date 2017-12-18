@@ -12,7 +12,8 @@ class MobileNav extends React.Component {
     super()
     this.state = {
       expanded: false,
-      navHeight: 450
+      navHeight: 450,
+      searchValue: ''
     }
     this.updateNavHeight = this.updateNavHeight.bind(this)
   }
@@ -90,6 +91,17 @@ class MobileNav extends React.Component {
     return menuItems
   }
 
+  handleSearchChange(e) {
+    e.preventDefault()
+    this.setState({ searchValue: e.target.value })
+  }
+
+  submitSearch(e) {
+    e.preventDefault()
+    let uri = encodeURI('/search/?q=' + this.state.searchValue)
+    document.location = uri
+  }
+
   render() {
     const menuItems = this.createMenuItems()
     const menuMaxHeight = menuItems.length * 78
@@ -111,11 +123,16 @@ class MobileNav extends React.Component {
           key={7}
           className={styles.mainNavNew + ' ' + (this.state.expanded ? styles.mainNavNewShow : '')}
         >
-          <form className={styles.mobileSearchContainerNew}>
+          <form className={styles.mobileSearchContainerNew} onSubmit={this.submitSearch.bind(this)}>
             <div className={styles.searchIconContainerNew}>
               <img className={styles.searchIconNew} alt="Search" src={searchIcon} />
             </div>
-            <input type="text" className={styles.searchInputFieldNew} placeholder="Search SBA.gov" />
+            <input
+              type="text"
+              className={styles.searchInputFieldNew}
+              placeholder="Search SBA.gov"
+              onChange={this.handleSearchChange.bind(this)}
+            />
           </form>
           <div
             className={styles.mobileNavMenuLinks}
