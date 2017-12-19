@@ -23,7 +23,12 @@
     "url": "git+https://github.com/sba-ds/sba-gov.git",
     "type": "git"
   },
-  "keywords": ["sba", "ds", "node", "react"],
+  "keywords": [
+    "sba",
+    "ds",
+    "node",
+    "react"
+  ],
   "author": "SBA Digital Services",
   "license": "ISC",
   "bugs": {
@@ -31,6 +36,7 @@
   },
   "homepage": "https://github.com/sba-ds/sba-gov#readme",
   "dependencies": {
+    "aws-sdk": "^2.171.0",
     "axios": "0.16.1",
     "bluebird": "3.4.6",
     "body-parser": "1.15.2",
@@ -140,13 +146,18 @@
     "webpack-merge": "4.1.0"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", ".c9"],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      ".c9"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/test/jest/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/jest/__mocks__/fileMock.js",
       "\\.(css|scss|less)$": "identity-obj-proxy"
     },
-    "modulePaths": ["<rootDir>/src/", "<rootDir>/src/client/components/"],
+    "modulePaths": [
+      "<rootDir>/src/",
+      "<rootDir>/src/client/components/"
+    ],
     "globals": {
       "CONFIG": {
         "isUserLoggedIn": false,

@@ -3,30 +3,24 @@ import Promise from 'bluebird'
 import config from 'config'
 import moment from 'moment'
 
-import { get } from '../models/dao/daisho-client.js'
-import localContacts from '../models/dao/sample-data/contacts.js'
-import sbicContacts from '../models/dao/sample-data/sbic-contacts.js'
-import suretyContacts from '../models/dao/sample-data/surety-contacts.js'
-import documents from '../models/dao/sample-data/documents.js'
-import articlesData from '../models/dao/sample-data/articles.js'
-const localDataMap = {
-  'State registration': localContacts,
-  SBIC: sbicContacts,
-  'Surety bond agency': suretyContacts
+import { getKey } from '../util/s3-cache-reader.js'
+import * as daishoClient from '../models/dao/daisho-client.js'
+
+function get(resource) {
+  if (config.get('cache.useS3')) {
+    return getKey(resource)
+  } else {
+    return daishoClient.get(resource)
+  }
 }
 
 function fetchFormattedNode(nodeId, options) {
-  return get('node/' + nodeId, null, options.headers)
+  return get(nodeId, null, options.headers)
 }
 
 function fetchContacts(queryParams) {
   const category = queryParams.category
-  if (config.get('developmentOptions.useLocalDataNotDaisho')) {
-    console.log('Using Development Contacts information')
-    return Promise.resolve(localDataMap[category] || [])
-  }
-
-  return get('collection/contacts', queryParams)
+  return get('contacts', queryParams)
 }
 
 function fetchFormattedMenu() {
@@ -35,7 +29,7 @@ function fetchFormattedMenu() {
 
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get('counsellorCta.nodeId')
-  return get('node/' + counsellorCtaNodeId).then(data => {
+  return get(counsellorCtaNodeId).then(data => {
     return _.assign({}, data, {
       size: 'Large'
     })
@@ -43,12 +37,7 @@ function fetchCounsellorCta() {
 }
 
 function fetchDocuments(queryParams) {
-  if (config.get('developmentOptions.useLocalDataNotDaisho')) {
-    console.log('Using Development Documents information')
-    return Promise.resolve(filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents))
-  }
-
-  return get('collection/documents').then(data => {
+  return get('documents').then(data => {
     return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data)
   })
 }
@@ -188,7 +177,7 @@ function sortDocumentsByDate(docs) {
 }
 
 function fetchTaxonomyVocabulary(queryParams) {
-  return get('collection/taxonomys').then(data => {
+  return get('taxonomys').then(data => {
     let names = _.map(data, 'name')
     if (queryParams.names) {
       names = queryParams.names.split(',')
@@ -214,7 +203,7 @@ function fetchArticles(queryParams) {
     sortField = 'created'
     sortOrder = '-'
   }
-  return get('collection/articles', {
+  return get('articles', {
     sortBy: sortOrder + sortField
   }).then(results => {
     const filteredArticles = filterArticles(queryParams, results)
@@ -229,7 +218,10 @@ function fetchArticles(queryParams) {
 }
 
 function fetchAnnouncements() {
-  return get('collection/announcements')
+  return get('announcements').then(result => {
+    console.log('announcements', result)
+    return result
+  })
 }
 
 export {
