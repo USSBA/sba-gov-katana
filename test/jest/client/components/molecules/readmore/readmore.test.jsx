@@ -6,12 +6,12 @@ import _ from 'lodash'
 import { ReadMore } from 'molecules'
 
 const testProps = {
-  parentId: "text-readmore-section-3-read-more",
+  parentId: 'text-readmore-section-3-read-more',
   expanded: true,
   onToggleStatus: () => {},
   readMoreSectionItem: {
-    expandedCopyText: "This is a test.\r\nYes, this is the test.\r\nFour new lines.\r\nIt is good.",
-    titleText: "This is a title"
+    expandedCopyText: 'This is a test.\r\nYes, this is the test.\r\nFour new lines.\r\nIt is good.',
+    titleText: 'This is a title'
   }
 }
 
