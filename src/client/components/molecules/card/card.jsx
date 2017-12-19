@@ -68,7 +68,12 @@ class Card extends React.Component {
         {imageMarkup}
         {titleText ? (
           <p id={'title-' + parentIndex + '-' + index} className={styles.itemTitle}>
-            {titleText}
+            <BasicLink
+              myClassName={styles.unstyledLink}
+              text={titleText}
+              url={url}
+              eventConfig={eventConfig}
+            />
           </p>
         ) : null}
         {subtitleText ? (

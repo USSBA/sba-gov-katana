@@ -1,3 +1,5 @@
+@import 'base/variables';
+
 .centerAligned {
   text-align: center;
   .itemHr {
@@ -123,4 +125,9 @@
     @include grid-column(6);
     height: auto;
   }
+}
+
+.unstyledLink {
+  text-decoration: none !important;
+  color: $text-grey !important;
 }
