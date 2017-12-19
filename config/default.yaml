@@ -1,4 +1,5 @@
 developmentOptions:
+    devMode: false
     client:
         logging: false
     redux:
@@ -6,7 +7,6 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
-    useLocalDataNotDaisho: false
 govdelivery:
     popupEnabled: true
 foresee:
@@ -65,3 +65,9 @@ features:
     moon: false
 sizestandards:
     endpoint: nhhr22yl13.execute-api.us-east-1.amazonaws.com/LATEST
+cache:
+  s3BucketName: dev-content-sba-gov
+  useS3: true
+aws:
+  access: placeholder
+  secret: placeholder

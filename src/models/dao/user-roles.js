@@ -1,7 +1,12 @@
+import config from "config"
 import { get } from './daisho-client.js'
 
 function fetchUserRoles(userId) {
-  return get(userId + '/roles')
+  if (config.get('developmentOptions.devMode')) {
+    return Promise.resolve(['Administrator'])
+  } else {
+    return get(userId + '/roles')
+  }
 }
 
 export { fetchUserRoles }
