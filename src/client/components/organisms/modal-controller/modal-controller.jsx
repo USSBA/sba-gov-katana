@@ -8,14 +8,14 @@ const ModalController = ({ modalType, modalProps }) => {
   if (!modalType) {
     return <div />
   } else if (modalType === 'MOBILE_SECTION_NAV') {
-      return <MobileSectionNavModal {...modalProps} />
-    } else if (modalType === 'LEAVE_SBA'){
-      return <LeaveSbaModal {...modalProps} />
-    } else if (modalType === 'SBA_NEWSLETTER') {
-      return <SbaNewsModal {...modalProps} />
-    } else {
-      return <div />
-    }
+    return <MobileSectionNavModal {...modalProps} />
+  } else if (modalType === 'LEAVE_SBA') {
+    return <LeaveSbaModal {...modalProps} />
+  } else if (modalType === 'SBA_NEWSLETTER') {
+    return <SbaNewsModal {...modalProps} />
+  } else {
+    return <div />
+  }
 }
 
 export default connect(state => {
