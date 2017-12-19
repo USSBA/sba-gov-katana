@@ -2,6 +2,44 @@
 
 exports[`SearchPage to match snapshot 1`] = `
 <div>
-  Search Page
+  <h1>
+    Search
+  </h1>
+  <div>
+    <div
+      className="inputContainer"
+      hidden={undefined}
+      id="search-container"
+    >
+      <label
+        className="controlLabel"
+        htmlFor="search"
+      >
+        What are you looking for?
+      </label>
+      <div
+        className="textInputContainer"
+      >
+        <input
+          className="textInput"
+          id="search"
+          onChange={undefined}
+          value={undefined}
+        />
+      </div>
+    </div>
+    <button
+      autoFocus={false}
+      className="SmallInverseSecondaryButton  "
+      disabled={undefined}
+      formTarget="_self"
+      id={undefined}
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Search
+    </button>
+  </div>
 </div>
 `;
