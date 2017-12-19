@@ -23,7 +23,15 @@ exports[`Card does not error check malformed link 1`] = `
     className="itemTitle"
     id="title-4-0"
   >
-    Kitten
+    <a
+      autoFocus={false}
+      className="unstyledLink"
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Kitten
+    </a>
   </p>
   <div>
     <hr
@@ -73,7 +81,15 @@ exports[`Card to render correctly 1`] = `
     className="itemTitle"
     id="title-4-0"
   >
-    Kitten
+    <a
+      autoFocus={false}
+      className="unstyledLink"
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Kitten
+    </a>
   </p>
   <div>
     <hr
@@ -115,7 +131,15 @@ exports[`Card to render correctly with null link 1`] = `
     className="itemTitle"
     id="title-4-0"
   >
-    Kitten
+    <a
+      autoFocus={false}
+      className="unstyledLink"
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Kitten
+    </a>
   </p>
   <div>
     <hr
