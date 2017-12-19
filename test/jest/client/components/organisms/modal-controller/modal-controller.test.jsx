@@ -12,7 +12,7 @@ const mobileSectionNavProps = {
   modalType: 'MOBILE_SECTION_NAV',
   modalProps: {
     backUrl: false,
-    icon: "build/img/img-ed52b1.png",
+    icon: 'build/img/img-ed52b1.png',
     menuData: {
       description: 'Partner with the SBA',
       fullUrl: 'partners/lenders',
@@ -27,28 +27,28 @@ const mobileSectionNavProps = {
           fulUrl: '/partners/lendrs/cdc-504-program',
           node: 2966,
           summary: 'If your organization is designated by the SBA',
-          title: "CDC/504 program",
-          url: "cdc-504-program",
+          title: 'CDC/504 program',
+          url: 'cdc-504-program',
           weight: -50,
           children: [
             {
               children: null,
               description: null,
-              fullUrl: "partners/lenders/7a-loan-program/types-7a-loans",
-              node: "2938",
-              summary: "7(a) loan program",
-              title: "Types of 7(a) loans",
-              url: "types-of-7(a)",
+              fullUrl: 'partners/lenders/7a-loan-program/types-7a-loans',
+              node: '2938',
+              summary: '7(a) loan program',
+              title: 'Types of 7(a) loans',
+              url: 'types-of-7(a)',
               weight: -50
             },
             {
               children: null,
               description: null,
-              fullUrl: "partners/lenders/7a-loan-program/community-advantage-loans",
-              node: "2944",
-              summary: "The SBA Community Advantage",
-              title: "Community Loan",
-              url: "community-advantage-loans",
+              fullUrl: 'partners/lenders/7a-loan-program/community-advantage-loans',
+              node: '2944',
+              summary: 'The SBA Community Advantage',
+              title: 'Community Loan',
+              url: 'community-advantage-loans',
               weight: -50
             }
           ]
@@ -58,8 +58,8 @@ const mobileSectionNavProps = {
           fulUrl: '/partners/lendrs/cdc-504-program',
           node: 2966,
           summary: 'If your organization is designated by the SBA',
-          title: "CDC/504 program",
-          url: "cdc-504-program",
+          title: 'CDC/504 program',
+          url: 'cdc-504-program',
           weight: -50,
           children: [
             {
@@ -68,8 +68,8 @@ const mobileSectionNavProps = {
               fulUrl: '/partners/lendrs/cdc-504-program/secondary-market',
               node: 2964,
               summary: 'There it is',
-              title: "Secondary market",
-              url: "secondary-market",
+              title: 'Secondary market',
+              url: 'secondary-market',
               weight: 0
             },
             {
@@ -78,8 +78,8 @@ const mobileSectionNavProps = {
               fulUrl: '/partners/lendrs/cdc-504-program/operate-cdc',
               node: 2956,
               summary: 'Streamlined the lending process',
-              title: "Operate as a CDC",
-              url: "operate-cdc",
+              title: 'Operate as a CDC',
+              url: 'operate-cdc',
               weight: 0
             }
           ]
@@ -90,16 +90,16 @@ const mobileSectionNavProps = {
 }
 
 const leaveSbaModalProps = {
-  modalType: "LEAVE_SBA",
+  modalType: 'LEAVE_SBA',
   modalProps: {
-    targetUrl: "https://testing.testing"
+    targetUrl: 'https://testing.testing'
   }
 }
 
 const SbaNewsModalProps = {
-  modalType: "SBA_NEWSLETTER",
+  modalType: 'SBA_NEWSLETTER',
   modalProps: {
-    userEmailAddress: "user@user.com"
+    userEmailAddress: 'user@user.com'
   }
 }
 
@@ -117,8 +117,8 @@ describe('ModalController', () => {
         return false
       }
     }
-  const component = mount(<ModalController {...props} />)
-  expect(component.find('MobileNav')).toHaveLength(1)
+    const component = mount(<ModalController {...props} />)
+    expect(component.find('MobileNav')).toHaveLength(1)
   })
 
   test('should render MobileSectionNav page', () => {
@@ -145,7 +145,7 @@ describe('ModalController', () => {
     try {
       const props = _.clone(leaveSbaModalProps)
       const component = mount(<ModalController {...props} />)
-    } catch(e) {
+    } catch (e) {
       returnedValue = e.name
     }
     // checks to make sure an error about the store is given,
@@ -160,7 +160,7 @@ describe('ModalController', () => {
     try {
       const props = _.clone(SbaNewsModalProps)
       const component = mount(<ModalController {...props} />)
-    } catch(e) {
+    } catch (e) {
       returnedValue = e.name
     }
     expect(returnedValue).toEqual(expectedValue)

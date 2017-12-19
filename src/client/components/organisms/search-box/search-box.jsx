@@ -66,9 +66,7 @@ class SearchBox extends React.Component {
     }
 
     return (
-      <div
-        key={id}
-        className={styles.multiSelect}>
+      <div key={id} className={styles.multiSelect}>
         <MultiSelect
           {...multiSelectProps}
           onBlur={returnNull}
@@ -146,7 +144,7 @@ class SearchBox extends React.Component {
   }
 
   render() {
-    const filterNames = ['documentType', 'program', 'documentActivity'];
+    const filterNames = ['documentType', 'program', 'documentActivity']
     return (
       <div className={styles.container}>
         <div className={styles.greyParagraph}>
@@ -169,11 +167,9 @@ class SearchBox extends React.Component {
               <SearchIcon aria-hidden="true" />
             </div>
           </div>
-          {
-            filterNames.map(filterName => {
-              return this.renderMultiSelect(filterName)
-            })
-          }
+          {filterNames.map(filterName => {
+            return this.renderMultiSelect(filterName)
+          })}
           <div className={styles.clear} />
           <LargeInversePrimaryButton
             onClick={this.handleOnClick.bind(this)}
@@ -190,11 +186,47 @@ SearchBox.defaultProps = {
   sectionHeaderText: 'Search documents, forms, and SOPs',
   subtitleText: 'Search by title or document number',
   multiSelectDocumentTypeDefaultLabel: 'All document types',
-  documentType: ['SBA form', 'SOP', 'Policy Guidance', 'TechNote', 'Procedural notice', 'Information notice', 'Policy notice', 'Support'],
+  documentType: [
+    'SBA form',
+    'SOP',
+    'Policy Guidance',
+    'TechNote',
+    'Procedural notice',
+    'Information notice',
+    'Policy notice',
+    'Support'
+  ],
   multiSelectProgramDefaultLabel: 'All programs',
-  program: ['SBIC', 'Surety Bonds', '7(a)', 'CDC/504', 'Microlending', 'HUBZone', 'Disaster', '8(a)', 'SBA operations', 'Contracting', 'Community Advantage'],
+  program: [
+    'SBIC',
+    'Surety Bonds',
+    '7(a)',
+    'CDC/504',
+    'Microlending',
+    'HUBZone',
+    'Disaster',
+    '8(a)',
+    'SBA operations',
+    'Contracting',
+    'Community Advantage'
+  ],
   multiSelectDocumentActivityDefaultLabel: 'All document activity',
-  documentActivity: ['Authorization', 'Servicing', 'Closing', 'Liquidation', 'Litigation', 'Guaranty purchase', 'Licensing and organizational', 'Credit and risk', 'Investment and transactions', 'Leverage commitments and draws', 'Periodic reporting', 'General', 'Processing', 'Secondary market']
+  documentActivity: [
+    'Authorization',
+    'Servicing',
+    'Closing',
+    'Liquidation',
+    'Litigation',
+    'Guaranty purchase',
+    'Licensing and organizational',
+    'Credit and risk',
+    'Investment and transactions',
+    'Leverage commitments and draws',
+    'Periodic reporting',
+    'General',
+    'Processing',
+    'Secondary market'
+  ]
 }
 
 export default SearchBox

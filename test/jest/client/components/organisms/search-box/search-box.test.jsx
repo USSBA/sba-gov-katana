@@ -52,7 +52,7 @@ describe('searchBox', () => {
     expect(expectedText).toBe(mockText)
   })
 
-  test("should render default sectionHeaderText and subtitleText, h2 and p respectively", () => {
+  test('should render default sectionHeaderText and subtitleText, h2 and p respectively', () => {
     const component = renderer.create(<SearchBox />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
@@ -62,15 +62,51 @@ describe('searchBox', () => {
     expect(tree.children[0].children[1].children[0]).toBe('Search by title or document number')
   })
 
-  test("should have default props for document type, program and document activity, and its default labels", () => {
+  test('should have default props for document type, program and document activity, and its default labels', () => {
     const component = shallow(<SearchBox />)
     expect(component).toMatchSnapshot()
     expect(component.instance().props.multiSelectDocumentTypeDefaultLabel).toBe('All document types')
     expect(component.instance().props.multiSelectProgramDefaultLabel).toBe('All programs')
     expect(component.instance().props.multiSelectDocumentActivityDefaultLabel).toBe('All document activity')
-    expect(component.instance().props.documentType).toEqual(["SBA form", "SOP", "Policy Guidance", "TechNote", "Procedural notice", "Information notice", "Policy notice", "Support"])
-    expect(component.instance().props.program).toEqual(["SBIC", "Surety Bonds", "7(a)", "CDC/504", "Microlending", "HUBZone", "Disaster", "8(a)", "SBA operations", "Contracting", "Community Advantage"])
-    expect(component.instance().props.documentActivity).toEqual(["Authorization", "Servicing", "Closing", "Liquidation", "Litigation", "Guaranty purchase", "Licensing and organizational", "Credit and risk", "Investment and transactions", "Leverage commitments and draws", "Periodic reporting", "General", "Processing", "Secondary market"])
+    expect(component.instance().props.documentType).toEqual([
+      'SBA form',
+      'SOP',
+      'Policy Guidance',
+      'TechNote',
+      'Procedural notice',
+      'Information notice',
+      'Policy notice',
+      'Support'
+    ])
+    expect(component.instance().props.program).toEqual([
+      'SBIC',
+      'Surety Bonds',
+      '7(a)',
+      'CDC/504',
+      'Microlending',
+      'HUBZone',
+      'Disaster',
+      '8(a)',
+      'SBA operations',
+      'Contracting',
+      'Community Advantage'
+    ])
+    expect(component.instance().props.documentActivity).toEqual([
+      'Authorization',
+      'Servicing',
+      'Closing',
+      'Liquidation',
+      'Litigation',
+      'Guaranty purchase',
+      'Licensing and organizational',
+      'Credit and risk',
+      'Investment and transactions',
+      'Leverage commitments and draws',
+      'Periodic reporting',
+      'General',
+      'Processing',
+      'Secondary market'
+    ])
   })
 
   test("should render documentType, program and documentActivity as 'All' as its default value and empty string for search term", () => {
@@ -81,7 +117,7 @@ describe('searchBox', () => {
     expect(component.state().selectedDocumentActivity).toBe('All')
   })
 
-  test("should update state for document type, program, document acitivity and search term", () => {
+  test('should update state for document type, program, document acitivity and search term', () => {
     const props = {
       documentType: { value: 'TechNote' },
       program: { value: 'SBIC' },
@@ -100,7 +136,7 @@ describe('searchBox', () => {
     expect(component.instance().state.searchTerm).toBe('newWord')
   })
 
-  test("should not update state for document type, program and document acitivity", () => {
+  test('should not update state for document type, program and document acitivity', () => {
     const props = {
       selectedLabel: { value: 'itis' }
     }
@@ -112,13 +148,13 @@ describe('searchBox', () => {
     expect(component.instance().state.selectedDocumentActivity).not.toBe('itis')
   })
 
-  test("should update default props for sectionHeaderText and subtitleText", () => {
+  test('should update default props for sectionHeaderText and subtitleText', () => {
     const testProps = {
       sectionHeaderText: 'new title',
       subtitleText: 'new subtitle'
     }
     const props = clone(testProps)
-    const component = shallow(<SearchBox {...props}/>)
+    const component = shallow(<SearchBox {...props} />)
     expect(component).toMatchSnapshot()
     expect(component.instance().props.sectionHeaderText).toBe('new title')
     expect(component.instance().props.subtitleText).toBe('new subtitle')

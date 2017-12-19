@@ -625,7 +625,9 @@ class ResourceCenterProfilePage extends React.Component {
         </p>
         <p>
           To update your office address and phone number, contact SBA's{' '}
-          <a href="mailto:anna.kojzar@sba.gov">Office of Entrepreneurial Development</a>
+          <a href="mailto:anna.kojzar@sba.gov?subject=Resource Center Profile- updates">
+            Office of Entrepreneurial Development
+          </a>
         </p>
       </div>
     )

@@ -5,7 +5,7 @@ import _ from 'lodash'
 describe('#ResourceCenterLookup', function() {
   describe('#getPartners', function() {
     it('should get a list of resource partners', function() {
-      const expectedPartners = ['WBC', 'SBDC', 'SCORE', 'VET', 'PrtData']
+      const expectedPartners = ['WBC', 'SBDC', 'SCORE', 'VBOC', 'PrtData']
       const partners = resourceCenterLookup.getPartners()
       partners.should.have.all.members(expectedPartners)
     })

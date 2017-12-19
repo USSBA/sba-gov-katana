@@ -50,7 +50,7 @@ exports[`ResourceCenterProfilePage Getting isSubmitted=true response causes mess
     To update your office address and phone number, contact SBA's
      
     <a
-      href="mailto:anna.kojzar@sba.gov"
+      href="mailto:anna.kojzar@sba.gov?subject=Resource Center Profile- updates"
     >
       Office of Entrepreneurial Development
     </a>
