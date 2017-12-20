@@ -23,7 +23,7 @@ describe('SearchPage', () => {
   describe('SmallInverseSecondaryButton', () => {
     it('has one submit button', () => {
       const component = mount(<SearchPage />)
-      const result = component.find('SmallInverseSecondaryButton').length
+      const result = component.find('SmallPrimaryButton').length
       const expected = 1
 
       expect(result).toEqual(expected)
@@ -31,10 +31,20 @@ describe('SearchPage', () => {
 
     it('the submit button has a label of "Search"', () => {
       const component = mount(<SearchPage />)
-      const result = component.find('SmallInverseSecondaryButton').props().text
+      const result = component.find('SmallPrimaryButton').props().text
       const expected = 'Search'
 
       expect(result).toEqual(expected)
+    })
+
+    describe('Paginator', () => {
+      it('has two paginator instances', () => {
+        const component = mount(<SearchPage />)
+        const result = component.find('Paginator').length
+        const expected = 2
+
+        expect(result).toEqual(expected)
+      })
     })
   })
 })
