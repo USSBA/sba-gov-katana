@@ -58,12 +58,14 @@ class SearchPage extends PureComponent {
     const searchTerm = getSearchTerm(nextProps.location.search)
 
     this.setState({ searchTerm }, () => {
-      // after the search term state has been updated
-      // show it's value in the input field
-      // --
-      // this enables the input field to update itself
-      // when a browser history is navigated
-      this.updateSearchInputValue(searchTerm)
+      if (!_.isEmpty(nextProps.location.search)) {
+        // after the search term state has been updated
+        // show it's value in the input field
+        // --
+        // this enables the input field to update itself
+        // when a browser history is navigated
+        this.updateSearchInputValue(searchTerm)
+      }
     })
   }
 
