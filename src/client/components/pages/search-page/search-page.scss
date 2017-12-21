@@ -37,10 +37,17 @@
 .searchTerm {
   float: left;
   margin-top: 15px;
+  word-wrap: break-word;
+  width: 100%;
 
   span {
     font-weight: bold;
     font-size: 120%;
+  }
+
+  @media (min-width: 768px) {
+    width: 50%;
+    margin-bottom: 30px;
   }
 }
 

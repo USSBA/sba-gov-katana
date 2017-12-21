@@ -1,7 +1,15 @@
+import _ from 'lodash'
 import React, { PureComponent } from 'react'
+import { browserHistory } from 'react-router'
 import { BasicLink, SmallPrimaryButton, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import styles from './search-page.scss'
+
+const getSearchTerm = search => {
+  const decoded = decodeURIComponent(search)
+  const formatted = decoded.replace(/\+/g, ' ')
+  return formatted.split('?q=')[1]
+}
 
 class SearchPage extends PureComponent {
   constructor() {
@@ -9,12 +17,13 @@ class SearchPage extends PureComponent {
 
     this.state = {
       searchTerm: '',
+      newSearchTerm: '',
       paginator: {
         start: 0,
         end: 10
       },
       paginatorTotal: 98,
-      results: [
+      list: [
         {
           title: 'Title',
           description: 'Description',
@@ -25,53 +34,81 @@ class SearchPage extends PureComponent {
   }
 
   componentWillMount() {
-    const searchTerm = document.location.search.split('?q=')[1]
+    // on componentMount, pull search term from url
+    const searchTerm = getSearchTerm(document.location.search)
+
+    // also, match the new search term to this current search term
+    // this enables the input field and the submit button to function
+    // as expected when the browser refreshes the page
+    const newSearchTerm = searchTerm
 
     this.setState({
       searchTerm,
-      results
+      newSearchTerm,
+      list: resultsList
     })
   }
 
+  componentWillReceiveProps(nextProps) {
+    // The SearchBar child component's browserHistory.push() call
+    // triggers this componentWillReceiveProps() lifecyle method
+
+    // on componentWillReceiveProps
+    // get the search term from the React Router url
+    const searchTerm = getSearchTerm(nextProps.location.search)
+
+    this.setState({ searchTerm }, () => {
+      // after the search term state has been updated
+      // show it's value in the input field
+      // --
+      // this enables the input field to update itself
+      // when a browser history is navigated
+      this.updateSearchInputValue(searchTerm)
+    })
+  }
+
+  updateSearchInputValue(value) {
+    const input = document.getElementById('search')
+    input.value = value
+  }
+
+  onSearchInputChange(newSearchTerm) {
+    const encoded = encodeURIComponent(newSearchTerm)
+    this.setState({ newSearchTerm: encoded })
+  }
+
   render() {
-    const { searchTerm, list } = this.state
+    const { searchTerm, list, newSearchTerm } = this.state
 
     return (
       <div className={styles.container}>
         <h1>Search</h1>
-        <SearchBar searchTerm={searchTerm} />
-        <hr />
-        <div>
-          <div className={styles.searchTerm}>
-            <span>"{searchTerm}"</span>
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchInputChange={this.onSearchInputChange.bind(this)}
+          newSearchTerm={newSearchTerm}
+        />
+        {!_.isEmpty(searchTerm) && (
+          <div>
+            <hr />
+            <ResultsList {...this.state} />
           </div>
-          <div className={styles.paginator}>
-            <Paginator
-              start={this.state.paginator.start}
-              end={this.state.paginator.end}
-              total={this.state.paginatorTotal}
-              onBack={() => true}
-              onForward={() => true}
-            />
-          </div>
-        </div>
-        <ResultsList list={results} />
-        <div className={styles.paginator}>
-          <Paginator
-            start={this.state.paginator.start}
-            end={this.state.paginator.end}
-            total={this.state.paginatorTotal}
-            onBack={() => true}
-            onForward={() => true}
-          />
-        </div>
+        )}
       </div>
     )
   }
 }
 
 const SearchBar = props => {
-  const { searchTerm } = props
+  const { searchTerm, onSearchInputChange, newSearchTerm } = props
+
+  const submit = term => {
+    // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
+    browserHistory.push({
+      pathname: '/search',
+      search: '?q=' + term
+    })
+  }
 
   return (
     <div>
@@ -82,16 +119,34 @@ const SearchBar = props => {
           label="What are you looking for?"
           validationState={''}
           defaultValue={searchTerm}
+          onChange={obj => {
+            onSearchInputChange(obj.target.value)
+          }}
+          onKeyDown={obj => {
+            const enterKeyCode = 13
+            if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
+              submit(newSearchTerm)
+            }
+          }}
         />
       </div>
       <div className={styles.searchButton}>
-        <SmallPrimaryButton url="#" text="Search" />
+        <SmallPrimaryButton
+          text="Search"
+          onClick={() => {
+            if (searchTerm !== decodeURIComponent(newSearchTerm)) {
+              submit(newSearchTerm)
+            }
+          }}
+        />
       </div>
     </div>
   )
 }
 
 const ResultsList = props => {
+  const { searchTerm, paginator, paginatorTotal } = props
+
   const list = props.list.map((item, index) => {
     return (
       <div key={index} className={styles.result}>
@@ -106,10 +161,35 @@ const ResultsList = props => {
     )
   })
 
-  return <div className={styles.results}>{list}</div>
+  const renderPaginator = () => {
+    return (
+      <div className={styles.paginator}>
+        <Paginator
+          start={paginator.start}
+          end={paginator.end}
+          total={paginatorTotal}
+          onBack={() => true}
+          onForward={() => true}
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <div>
+        <div className={styles.searchTerm}>
+          <span>"{searchTerm}"</span>
+        </div>
+        {renderPaginator()}
+      </div>
+      <div className={styles.results}>{list}</div>
+      {renderPaginator()}
+    </div>
+  )
 }
 
-const results = [
+const resultsList = [
   {
     title: 'Title',
     description:
@@ -179,3 +259,5 @@ const results = [
 ]
 
 export default SearchPage
+
+export { SearchBar, ResultsList }
