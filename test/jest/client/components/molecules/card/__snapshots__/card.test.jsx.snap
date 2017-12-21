@@ -131,15 +131,7 @@ exports[`Card to render correctly with null link 1`] = `
     className="itemTitle"
     id="title-4-0"
   >
-    <a
-      autoFocus={false}
-      className="unstyledLink"
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
-    >
-      Kitten
-    </a>
+    Kitten
   </p>
   <div>
     <hr

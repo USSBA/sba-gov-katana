@@ -63,17 +63,19 @@ class Card extends React.Component {
       }
     }
 
+    let titleMarkup =
+      !isEmpty(link) && url ? (
+        <BasicLink myClassName={styles.unstyledLink} text={titleText} url={url} eventConfig={eventConfig} />
+      ) : (
+        titleText
+      )
+
     return (
       <div id={'card-' + parentIndex + '-' + index} className={cardStyle}>
         {imageMarkup}
         {titleText ? (
           <p id={'title-' + parentIndex + '-' + index} className={styles.itemTitle}>
-            <BasicLink
-              myClassName={styles.unstyledLink}
-              text={titleText}
-              url={url}
-              eventConfig={eventConfig}
-            />
+            {titleMarkup}
           </p>
         ) : null}
         {subtitleText ? (
