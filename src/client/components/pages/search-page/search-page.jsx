@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import { BasicLink, SmallPrimaryButton, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import styles from './search-page.scss'
+import { logPageEvent } from '../../../services/analytics.js'
 import * as ContentActions from '../../../actions/content.js'
 
 const getSearchTerm = search => {
@@ -21,18 +22,15 @@ class SearchPage extends PureComponent {
     this.state = {
       searchTerm: '',
       newSearchTerm: '',
-      paginator: {
-        start: 0,
-        end: 10
-      },
-      paginatorTotal: 98,
-      list: [
+      searchResults: [
         {
           title: 'Title',
           description: 'Description',
           url: '#'
         }
-      ]
+      ],
+      pageNumber: 1,
+      pageSize: 5
     }
   }
 
@@ -47,8 +45,7 @@ class SearchPage extends PureComponent {
 
     this.setState({
       searchTerm,
-      newSearchTerm,
-      list: resultsList
+      newSearchTerm
     })
 
     this.props.actions.fetchContentIfNeeded('search', 'search', {
@@ -64,16 +61,27 @@ class SearchPage extends PureComponent {
     // get the search term from the React Router url
     const searchTerm = getSearchTerm(nextProps.location.search)
 
-    this.setState({ searchTerm }, () => {
-      if (!_.isEmpty(nextProps.location.search)) {
-        // after the search term state has been updated
-        // show it's value in the input field
-        // --
-        // this enables the input field to update itself
-        // when a browser history is navigated
-        this.updateSearchInputValue(searchTerm)
+    // update search results
+    const { searchResults } = nextProps
+
+    this.setState(
+      {
+        searchTerm,
+        searchResults
+      },
+      () => {
+        if (!_.isEmpty(nextProps.location.search)) {
+          // after the search term state has been updated
+          // show it's value in the input field
+          // --
+          // this enables the input field to update itself
+          // when a browser history is navigated
+          this.updateSearchInputValue(searchTerm)
+        } else {
+          this.updateSearchInputValue('')
+        }
       }
-    })
+    )
   }
 
   updateSearchInputValue(value) {
@@ -87,7 +95,7 @@ class SearchPage extends PureComponent {
   }
 
   render() {
-    const { searchTerm, list, newSearchTerm } = this.state
+    const { searchTerm, searchResults, newSearchTerm } = this.state
 
     return (
       <div className={styles.container}>
@@ -96,11 +104,22 @@ class SearchPage extends PureComponent {
           searchTerm={searchTerm}
           onSearchInputChange={this.onSearchInputChange.bind(this)}
           newSearchTerm={newSearchTerm}
+          actions={this.props.actions}
         />
         {!_.isEmpty(searchTerm) && (
           <div>
             <hr />
-            <ResultsList {...this.state} />
+            {searchResults !== undefined ? (
+              <div>
+                {searchResults.length > 0 ? (
+                  <ResultsList {...this.state} />
+                ) : (
+                  <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
+                )}
+              </div>
+            ) : (
+              <p className="results-message">...loading...</p>
+            )}
           </div>
         )}
       </div>
@@ -112,7 +131,12 @@ const SearchBar = props => {
   const { searchTerm, onSearchInputChange, newSearchTerm } = props
 
   const submit = term => {
+    props.actions.fetchContentIfNeeded('search', 'search', {
+      term
+    })
+
     // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
+
     browserHistory.push({
       pathname: '/search',
       search: '?q=' + term
@@ -154,32 +178,57 @@ const SearchBar = props => {
 }
 
 const ResultsList = props => {
-  const { searchTerm, paginator, paginatorTotal } = props
+  const { searchTerm, pageNumber, pageSize, searchResults } = props
+  const itemCount = searchResults.length
 
-  const list = props.list.map((item, index) => {
-    return (
-      <div key={index} className={styles.result}>
-        <div className={styles.title}>
-          <BasicLink url={item.url}>{item.title}</BasicLink>
-        </div>
-        <div className={styles.description}>{item.description}</div>
-        <div className={styles.url}>
-          <BasicLink url={item.url}>{item.url}</BasicLink>
-        </div>
-      </div>
-    )
-  })
+  const handleBack = () => {
+    //const { pageNumber, onPageChange } = props
+    //const newPageNumber = Math.max(1, pageNumber - 1)
+    //onPageChange(newPageNumber)
+    //logPageEvent({ category: 'Show-More-Results', action: 'Previous' })
+  }
+
+  const handleForward = () => {
+    //const { itemCount, pageNumber, onPageChange } = props
+    //const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / props.pageSize)), pageNumber + 1)
+    //onPageChange(newPageNumber)
+    //logPageEvent({ category: 'Show-More-Results', action: 'Next' })
+  }
 
   const renderPaginator = () => {
     return (
       <div className={styles.paginator}>
         <Paginator
-          start={paginator.start}
-          end={paginator.end}
-          total={paginatorTotal}
-          onBack={() => true}
-          onForward={() => true}
+          pageNumber={pageNumber}
+          pageSize={pageSize}
+          total={itemCount}
+          onBack={() => {
+            handleBack()
+          }}
+          onForward={() => {
+            handleForward()
+          }}
         />
+      </div>
+    )
+  }
+
+  const renderList = () => {
+    return (
+      <div className={styles.results}>
+        {searchResults.map((item, index) => {
+          return (
+            <div key={index} className={styles.result}>
+              <div className={styles.title}>
+                <BasicLink url={item.url}>{item.title}</BasicLink>
+              </div>
+              <div className={styles.description}>{item.description}</div>
+              <div className={styles.url}>
+                <BasicLink url={item.url}>{item.url}</BasicLink>
+              </div>
+            </div>
+          )
+        })}
       </div>
     )
   }
@@ -192,87 +241,16 @@ const ResultsList = props => {
         </div>
         {renderPaginator()}
       </div>
-      <div className={styles.results}>{list}</div>
+      <div>{renderList()}</div>
       {renderPaginator()}
     </div>
   )
 }
 
-const resultsList = [
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  },
-  {
-    title: 'Title',
-    description:
-      'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-    url: 'https://sba.gov/lorem-ipsum/'
-  }
-]
-
 function mapReduxStateToProps(reduxState, ownProps) {
-  const { search } = reduxState.contentReducer
+  const searchResults = reduxState.contentReducer.search
 
-  console.log('EE-----', search)
-
-  return { search }
+  return { searchResults }
 }
 
 function mapDispatchToProps(dispatch) {
