@@ -13,7 +13,6 @@ function receiveContent(prop, type, query, data) {
 }
 
 function fetchContent(prop, type, query) {
-  console.log('CC-------')
   return dispatch => {
     dispatch(receiveContent(prop, type, query))
     const url = '/api/content/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
@@ -37,7 +36,6 @@ function shouldFetchContent(state, prop, type, query) {
   return true // TODO check current state
 }
 export function fetchContentIfNeeded(prop, type, query) {
-  console.log('BB-------', query)
   return (dispatch, getState) => {
     //
     if (prop && type && shouldFetchContent(getState(), prop, type, query)) {
