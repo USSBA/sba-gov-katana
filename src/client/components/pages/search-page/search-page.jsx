@@ -1,9 +1,12 @@
 import _ from 'lodash'
 import React, { PureComponent } from 'react'
 import { browserHistory } from 'react-router'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { BasicLink, SmallPrimaryButton, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import styles from './search-page.scss'
+import * as ContentActions from '../../../actions/content.js'
 
 const getSearchTerm = search => {
   const decoded = decodeURIComponent(search)
@@ -46,6 +49,10 @@ class SearchPage extends PureComponent {
       searchTerm,
       newSearchTerm,
       list: resultsList
+    })
+
+    this.props.actions.fetchContentIfNeeded('search', 'search', {
+      term: searchTerm
     })
   }
 
@@ -136,7 +143,7 @@ const SearchBar = props => {
         <SmallPrimaryButton
           text="Search"
           onClick={() => {
-            if (searchTerm !== decodeURIComponent(newSearchTerm)) {
+            if (!_.isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
               submit(newSearchTerm)
             }
           }}
@@ -260,6 +267,20 @@ const resultsList = [
   }
 ]
 
-export default SearchPage
+function mapReduxStateToProps(reduxState, ownProps) {
+  const { search } = reduxState.contentReducer
 
-export { SearchBar, ResultsList }
+  console.log('EE-----', search)
+
+  return { search }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  }
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchPage)
+
+export { SearchPage, SearchBar, ResultsList }

@@ -1,11 +1,19 @@
 import React from 'react'
-import SearchPage, { SearchBar, ResultsList } from 'client/components/pages/search-page/search-page.jsx'
+import { SearchPage, SearchBar, ResultsList } from 'client/components/pages/search-page/search-page.jsx'
 import renderer from 'react-test-renderer'
 import { shallow, mount } from 'enzyme'
 
 describe('SearchPage', () => {
   test('to match snapshot', () => {
-    const component = renderer.create(<SearchPage />)
+    const mockFunction = jest.fn()
+
+    const testProps = {
+      actions: {
+        fetchContentIfNeeded: mockFunction
+      }
+    }
+
+    const component = renderer.create(<SearchPage {...testProps} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
