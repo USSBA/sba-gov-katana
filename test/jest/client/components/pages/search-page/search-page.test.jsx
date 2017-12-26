@@ -60,7 +60,8 @@ describe('SearchPage', () => {
             }
           ],
           pageNumber: 1,
-          pageSize: 5
+          pageSize: 5,
+          itemCount: 1
         }
         const component = mount(<ResultsList {...props} />)
         const result = component.find('Paginator').length

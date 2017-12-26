@@ -22,15 +22,10 @@ class SearchPage extends PureComponent {
     this.state = {
       searchTerm: '',
       newSearchTerm: '',
-      searchResults: [
-        {
-          title: 'Title',
-          description: 'Description',
-          url: '#'
-        }
-      ],
+      searchResults: [],
       pageNumber: 1,
-      pageSize: 5
+      pageSize: 5,
+      itemCount: 0
     }
   }
 
@@ -62,12 +57,13 @@ class SearchPage extends PureComponent {
     const searchTerm = getSearchTerm(nextProps.location.search)
 
     // update search results
-    const { searchResults } = nextProps
+    const { searchResults, itemCount } = nextProps
 
     this.setState(
       {
         searchTerm,
-        searchResults
+        searchResults,
+        itemCount
       },
       () => {
         if (!_.isEmpty(nextProps.location.search)) {
@@ -96,6 +92,8 @@ class SearchPage extends PureComponent {
 
   render() {
     const { searchTerm, searchResults, newSearchTerm } = this.state
+
+    console.log('A', searchResults)
 
     return (
       <div className={styles.container}>
@@ -178,8 +176,7 @@ const SearchBar = props => {
 }
 
 const ResultsList = props => {
-  const { searchTerm, pageNumber, pageSize, searchResults } = props
-  const itemCount = searchResults.length
+  const { searchTerm, pageNumber, pageSize, searchResults, itemCount } = props
 
   const handleBack = () => {
     //const { pageNumber, onPageChange } = props
@@ -217,14 +214,24 @@ const ResultsList = props => {
     return (
       <div className={styles.results}>
         {searchResults.map((item, index) => {
+          let title
+          let description
+          let url
+
+          if (!_.isEmpty(item.fields)) {
+            title = item.fields.title
+            description = item.fields.description
+            url = item.fields.url
+          }
+
           return (
             <div key={index} className={styles.result}>
               <div className={styles.title}>
-                <BasicLink url={item.url}>{item.title}</BasicLink>
+                <BasicLink url={url}>{title}</BasicLink>
               </div>
-              <div className={styles.description}>{item.description}</div>
+              <div className={styles.description}>{description}</div>
               <div className={styles.url}>
-                <BasicLink url={item.url}>{item.url}</BasicLink>
+                <BasicLink url={url}>{url}</BasicLink>
               </div>
             </div>
           )
@@ -248,9 +255,18 @@ const ResultsList = props => {
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  const searchResults = reduxState.contentReducer.search
+  let searchResults = []
+  let itemCount = 0
 
-  return { searchResults }
+  if (!_.isEmpty(reduxState.contentReducer.search)) {
+    searchResults = reduxState.contentReducer.search[0].hits.hit
+    itemCount = reduxState.contentReducer.search[0].hits.found
+  }
+
+  return {
+    searchResults,
+    itemCount
+  }
 }
 
 function mapDispatchToProps(dispatch) {
