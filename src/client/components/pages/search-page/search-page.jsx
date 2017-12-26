@@ -93,8 +93,6 @@ class SearchPage extends PureComponent {
   render() {
     const { searchTerm, searchResults, newSearchTerm } = this.state
 
-    console.log('A', searchResults)
-
     return (
       <div className={styles.container}>
         <h1>Search</h1>
