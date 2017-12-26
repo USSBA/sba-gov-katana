@@ -7,13 +7,13 @@ describe('SearchPage', () => {
   test('to match snapshot', () => {
     const mockFunction = jest.fn()
 
-    const testProps = {
+    const props = {
       actions: {
         fetchContentIfNeeded: mockFunction
       }
     }
 
-    const component = renderer.create(<SearchPage {...testProps} />)
+    const component = renderer.create(<SearchPage {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
@@ -52,19 +52,15 @@ describe('SearchPage', () => {
     describe('Paginator', () => {
       it('has two paginator instances', () => {
         const props = {
-          paginator: {
-            start: 0,
-            end: 10
-          },
-          paginatorTotal: 98,
-          list: [
+          searchResults: [
             {
               title: 'Title',
-              description:
-                'Excepturi quod vel dignissimos. Aut ut eligendi repellendus. Necessitatibus dicta commodi voluptatem molestiae praesentium hic accusamus cupiditate. Nesciunt at ab est. Voluptate et enim nisi voluptates aliquam magnam.',
-              url: 'https://sba.gov/lorem-ipsum/'
+              description: 'Description',
+              url: '#'
             }
-          ]
+          ],
+          pageNumber: 1,
+          pageSize: 5
         }
         const component = mount(<ResultsList {...props} />)
         const result = component.find('Paginator').length
