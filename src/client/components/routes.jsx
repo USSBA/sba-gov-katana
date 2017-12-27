@@ -105,7 +105,7 @@ const mainRoutes = [
   <Route
     key={50}
     path={
-      clientConfig.search === '/search/?q='
+      clientConfig.searchUrl === '/search/?q='
         ? '/search/'
         : '/someplaceholderforsearchthatnoonewilleverreach/'
     }
@@ -114,10 +114,10 @@ const mainRoutes = [
   <Redirect
     key={51}
     from={
-      clientConfig.search === '/search/?q=' ? '/search' : '/someplaceholderforsearchthatnoonewilleverreach'
+      clientConfig.searchUrl === '/search/?q=' ? '/search' : '/someplaceholderforsearchthatnoonewilleverreach'
     }
     to={
-      clientConfig.search === '/search/?q='
+      clientConfig.searchUrl === '/search/?q='
         ? '/search/'
         : '/someplaceholderforsearchthatnoonewilleverreach/'
     }
