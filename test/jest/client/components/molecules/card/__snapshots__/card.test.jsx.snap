@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card does not error check malformed link 1`] = `
+<div
+  className="twoColumn leftAligned"
+  id="card-4-0"
+>
+  <a
+    autoFocus={false}
+    className=""
+    onKeyPress={[Function]}
+    onTouchTap={[Function]}
+    tabIndex="0"
+  >
+    <img
+      alt="kitten"
+      className="itemImage"
+      id="image-4-0"
+      src="https://placekitten.com/588/364"
+    />
+  </a>
+  <p
+    className="itemTitle"
+    id="title-4-0"
+  >
+    <a
+      autoFocus={false}
+      className="unstyledLink"
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Kitten
+    </a>
+  </p>
+  <div>
+    <hr
+      className="decorativeDash itemHr"
+    />
+    <p
+      className="itemSubTitle"
+      id="subtitle-text-4-0"
+    >
+      A kitten, also known as a kitty or kitty cat, is a juvenile cat
+    </p>
+  </div>
+  <p>
+    <a
+      autoFocus={false}
+      className=""
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      dogs
+    </a>
+  </p>
+</div>
+`;
+
+exports[`Card to render correctly 1`] = `
+<div
+  className="twoColumn leftAligned"
+  id="card-4-0"
+>
+  <a
+    autoFocus={false}
+    className=""
+    onKeyPress={[Function]}
+    onTouchTap={[Function]}
+    tabIndex="0"
+  >
+    <img
+      alt="kitten"
+      className="itemImage"
+      id="image-4-0"
+      src="https://placekitten.com/588/364"
+    />
+  </a>
+  <p
+    className="itemTitle"
+    id="title-4-0"
+  >
+    <a
+      autoFocus={false}
+      className="unstyledLink"
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Kitten
+    </a>
+  </p>
+  <div>
+    <hr
+      className="decorativeDash itemHr"
+    />
+    <p
+      className="itemSubTitle"
+      id="subtitle-text-4-0"
+    >
+      A kitten, also known as a kitty or kitty cat, is a juvenile cat
+    </p>
+  </div>
+  <p>
+    <a
+      autoFocus={false}
+      className=""
+      onKeyPress={[Function]}
+      onTouchTap={[Function]}
+      tabIndex="0"
+    >
+      Learn more about kittens
+    </a>
+  </p>
+</div>
+`;
+
+exports[`Card to render correctly with null link 1`] = `
+<div
+  className="twoColumn leftAligned"
+  id="card-4-0"
+>
+  <img
+    alt="kitten"
+    className="itemImage"
+    id="image-4-0"
+    src="https://placekitten.com/588/364"
+  />
+  <p
+    className="itemTitle"
+    id="title-4-0"
+  >
+    Kitten
+  </p>
+  <div>
+    <hr
+      className="decorativeDash itemHr"
+    />
+    <p
+      className="itemSubTitle"
+      id="subtitle-text-4-0"
+    >
+      A kitten, also known as a kitty or kitty cat, is a juvenile cat
+    </p>
+  </div>
+</div>
+`;
