@@ -2,6 +2,7 @@ import React from 'react'
 
 import styles from './search-bar.scss'
 import { SmallIcon, TextInput } from 'atoms'
+import clientConfig from '../../../services/client-config.js'
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class SearchBar extends React.Component {
 
   submitSearch(e) {
     e.preventDefault()
-    let uri = encodeURI('/search/?q=' + this.state.searchValue)
+    let uri = encodeURI(clientConfig.search + this.state.searchValue)
     document.location = uri
   }
 

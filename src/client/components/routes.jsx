@@ -87,6 +87,7 @@ let SearchPage = props => (
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
+import clientConfig from '../services/client-config.js'
 import MaintenancePage from './pages/maintenance-page/maintenance-page.jsx'
 
 const mainRoutes = [
@@ -101,8 +102,26 @@ const mainRoutes = [
   <Route key={45} path="/article/" component={ArticleLookupPage} />,
   <Route key={46} path="/size-standards/" component={SizeStandardsToolPage} />,
   <Redirect key={47} from="/size-standards" to="/size-standards/" />,
-  <Route key={50} path="/search/" component={SearchPage} />,
-  <Redirect key={51} from="/search" to="/search/" />,
+  <Route
+    key={50}
+    path={
+      clientConfig.search === '/search/?q='
+        ? '/search/'
+        : '/someplaceholderforsearchthatnoonewilleverreach/'
+    }
+    component={SearchPage}
+  />,
+  <Redirect
+    key={51}
+    from={
+      clientConfig.search === '/search/?q=' ? '/search' : '/someplaceholderforsearchthatnoonewilleverreach'
+    }
+    to={
+      clientConfig.search === '/search/?q='
+        ? '/search/'
+        : '/someplaceholderforsearchthatnoonewilleverreach/'
+    }
+  />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
