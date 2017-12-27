@@ -60,7 +60,7 @@ app.use(function(req, res, next) {
     govdelivery: config.get('govdelivery.popupEnabled'),
     showSbic: config.get('features.showSbic'),
     moon: config.get('features.moon'),
-    search: config.get('features.searchUrl'),
+    searchUrl: config.get('features.searchUrl'),
     forPartners: config.get('features.forPartners')
   }
   req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign

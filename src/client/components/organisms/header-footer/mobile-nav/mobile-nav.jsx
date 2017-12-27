@@ -98,7 +98,7 @@ class MobileNav extends React.Component {
 
   submitSearch(e) {
     e.preventDefault()
-    let uri = encodeURI(clientConfig.search + this.state.searchValue)
+    let uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
     document.location = uri
   }
 
