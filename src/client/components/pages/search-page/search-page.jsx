@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 import React, { PureComponent } from 'react'
 import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
@@ -14,14 +14,14 @@ const getQueryParams = search => {
   const formatted = decoded.replace(/\+/g, ' ')
 
   let searchTerm = formatted.split('q=')[1]
-  if (!_.isEmpty(searchTerm)) {
+  if (!isEmpty(searchTerm)) {
     searchTerm = searchTerm.indexOf('&') !== -1 ? searchTerm.split('&')[0] : searchTerm
   } else {
     searchTerm = ''
   }
 
   let pageNumber = formatted.split('p=')[1]
-  if (!_.isEmpty(pageNumber) && typeof pageNumber === 'number') {
+  if (!isEmpty(pageNumber) && typeof pageNumber === 'number') {
     pageNumber = pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber
   } else {
     pageNumber = 1
@@ -49,7 +49,7 @@ class SearchPage extends PureComponent {
 
   componentWillMount() {
     // if there is are parameters
-    if (!_.isEmpty(document.location.search)) {
+    if (!isEmpty(document.location.search)) {
       // on componentMount, pull search term from url
       const { searchTerm, pageNumber } = getQueryParams(document.location.search)
 
@@ -92,7 +92,7 @@ class SearchPage extends PureComponent {
         itemCount
       },
       () => {
-        if (!_.isEmpty(nextProps.location.search)) {
+        if (!isEmpty(nextProps.location.search)) {
           // after the search term state has been updated
           // show it's value in the input field
           // --
@@ -156,7 +156,7 @@ class SearchPage extends PureComponent {
           onSearchInputChange={this.onSearchInputChange.bind(this)}
           onSubmit={this.onSubmit.bind(this)}
         />
-        {!_.isEmpty(searchTerm) && (
+        {!isEmpty(searchTerm) && (
           <div>
             <hr />
             <div>
@@ -224,7 +224,7 @@ const SearchBar = props => {
         <SmallPrimaryButton
           text="Search"
           onClick={() => {
-            if (!_.isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
+            if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
               onSubmit()
             }
           }}
@@ -281,7 +281,7 @@ const ResultsList = props => {
           let description
           let url
 
-          if (!_.isEmpty(item.fields)) {
+          if (!isEmpty(item.fields)) {
             title = item.fields.title
             description = item.fields.description
             url = item.fields.url
@@ -322,7 +322,7 @@ function mapReduxStateToProps(reduxState, ownProps) {
   let itemCount = 0
   let hasNoResults = false
 
-  if (!_.isEmpty(reduxState.contentReducer.search)) {
+  if (!isEmpty(reduxState.contentReducer.search)) {
     searchResults = reduxState.contentReducer.search[0].hits.hit
     itemCount = reduxState.contentReducer.search[0].hits.found
     hasNoResults = reduxState.contentReducer.search[0].hasNoResults
