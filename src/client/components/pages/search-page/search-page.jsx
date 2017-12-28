@@ -21,8 +21,9 @@ const getQueryParams = search => {
   }
 
   let pageNumber = formatted.split('p=')[1]
-  if (!isEmpty(pageNumber) && typeof pageNumber === 'number') {
-    pageNumber = pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber
+  if (!isEmpty(pageNumber)) {
+    pageNumber = Number(pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber)
+    pageNumber = isNaN(pageNumber) ? 1 : pageNumber
   } else {
     pageNumber = 1
   }
@@ -144,8 +145,6 @@ class SearchPage extends PureComponent {
     const { searchTerm, newSearchTerm, searchResults } = this.state
 
     const { hasNoResults } = this.props
-
-    console.log('AA hasNoResults', hasNoResults)
 
     return (
       <div className={styles.container}>
