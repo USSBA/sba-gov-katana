@@ -1,8 +1,6 @@
 function search(req, res) {
   // query search results
 
-  console.log('AA', req)
-
   let result = [
     {
       hits: {
@@ -54,6 +52,10 @@ function search(req, res) {
         }
       }
     ]
+  }
+
+  if (result[0].hits.hit.length === 0) {
+    result[0].hasNoResults = true
   }
 
   return Promise.resolve(JSON.stringify(result))

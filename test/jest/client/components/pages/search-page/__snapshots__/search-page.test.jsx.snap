@@ -27,7 +27,7 @@ exports[`SearchPage to match snapshot 1`] = `
         >
           <input
             className="textInput"
-            defaultValue={undefined}
+            defaultValue=""
             id="search"
             onChange={[Function]}
             onKeyDown={[Function]}

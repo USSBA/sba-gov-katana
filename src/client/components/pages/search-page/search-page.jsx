@@ -9,10 +9,28 @@ import styles from './search-page.scss'
 import { logPageEvent } from '../../../services/analytics.js'
 import * as ContentActions from '../../../actions/content.js'
 
-const getSearchTerm = search => {
+const getQueryParams = search => {
   const decoded = decodeURIComponent(search)
   const formatted = decoded.replace(/\+/g, ' ')
-  return formatted.split('?q=')[1]
+
+  let searchTerm = formatted.split('q=')[1]
+  if (!_.isEmpty(searchTerm)) {
+    searchTerm = searchTerm.indexOf('&') !== -1 ? searchTerm.split('&')[0] : searchTerm
+  } else {
+    searchTerm = ''
+  }
+
+  let pageNumber = formatted.split('p=')[1]
+  if (!_.isEmpty(pageNumber) && typeof pageNumber === 'number') {
+    pageNumber = pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber
+  } else {
+    pageNumber = 1
+  }
+
+  return {
+    searchTerm,
+    pageNumber
+  }
 }
 
 class SearchPage extends PureComponent {
@@ -24,28 +42,36 @@ class SearchPage extends PureComponent {
       newSearchTerm: '',
       searchResults: [],
       pageNumber: 1,
-      pageSize: 5,
+      pageSize: 2,
       itemCount: 0
     }
   }
 
   componentWillMount() {
-    // on componentMount, pull search term from url
-    const searchTerm = getSearchTerm(document.location.search)
+    // if there is are parameters
+    if (!_.isEmpty(document.location.search)) {
+      // on componentMount, pull search term from url
+      const { searchTerm, pageNumber } = getQueryParams(document.location.search)
 
-    // also, match the new search term to this current search term
-    // this enables the input field and the submit button to function
-    // as expected when the browser refreshes the page
-    const newSearchTerm = searchTerm
+      // also, match the new search term to this current search term
+      // this enables the input field and the submit button to function
+      // as expected when the browser refreshes the page
+      const newSearchTerm = searchTerm
 
-    this.setState({
-      searchTerm,
-      newSearchTerm
-    })
-
-    this.props.actions.fetchContentIfNeeded('search', 'search', {
-      term: searchTerm
-    })
+      this.setState(
+        {
+          searchTerm,
+          newSearchTerm,
+          pageNumber
+        },
+        () => {
+          this.props.actions.fetchContentIfNeeded('search', 'search', {
+            term: searchTerm,
+            pageNumber: pageNumber
+          })
+        }
+      )
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -54,7 +80,7 @@ class SearchPage extends PureComponent {
 
     // on componentWillReceiveProps
     // get the search term from the React Router url
-    const searchTerm = getSearchTerm(nextProps.location.search)
+    const { searchTerm } = getQueryParams(nextProps.location.search)
 
     // update search results
     const { searchResults, itemCount } = nextProps
@@ -90,32 +116,67 @@ class SearchPage extends PureComponent {
     this.setState({ newSearchTerm: encoded })
   }
 
+  onPageNumberChange(pageNumber) {
+    this.setState({ pageNumber }, () => {
+      this.onSubmit(true)
+    })
+  }
+
+  onSubmit() {
+    const { newSearchTerm: term, pageNumber } = this.state
+
+    const data = {
+      term,
+      pageNumber
+    }
+
+    this.props.actions.fetchContentIfNeeded('search', 'search', data)
+
+    // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
+
+    browserHistory.push({
+      pathname: '/search',
+      search: '?q=' + term + '&p=' + pageNumber
+    })
+  }
+
   render() {
-    const { searchTerm, searchResults, newSearchTerm } = this.state
+    const { searchTerm, newSearchTerm, searchResults } = this.state
+
+    const { hasNoResults } = this.props
+
+    console.log('AA hasNoResults', hasNoResults)
 
     return (
       <div className={styles.container}>
         <h1>Search</h1>
         <SearchBar
           searchTerm={searchTerm}
-          onSearchInputChange={this.onSearchInputChange.bind(this)}
           newSearchTerm={newSearchTerm}
-          actions={this.props.actions}
+          onSearchInputChange={this.onSearchInputChange.bind(this)}
+          onSubmit={this.onSubmit.bind(this)}
         />
         {!_.isEmpty(searchTerm) && (
           <div>
             <hr />
-            {searchResults !== undefined ? (
-              <div>
-                {searchResults.length > 0 ? (
-                  <ResultsList {...this.state} />
-                ) : (
-                  <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
+            <div>
+              {searchResults.length > 0 && (
+                <div>
+                  <ResultsList {...this.state} onPageNumberChange={this.onPageNumberChange.bind(this)} />
+                </div>
+              )}
+              {!hasNoResults &&
+                searchResults.length === 0 && (
+                  <div>
+                    <p className="results-message">loading...</p>
+                  </div>
                 )}
-              </div>
-            ) : (
-              <p className="results-message">...loading...</p>
-            )}
+              {hasNoResults && (
+                <div>
+                  <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -124,7 +185,7 @@ class SearchPage extends PureComponent {
 }
 
 const SearchBar = props => {
-  const { searchTerm, onSearchInputChange, newSearchTerm } = props
+  const { searchTerm, newSearchTerm, onSearchInputChange, onSubmit } = props
 
   const submit = term => {
     props.actions.fetchContentIfNeeded('search', 'search', {
@@ -154,7 +215,7 @@ const SearchBar = props => {
           onKeyDown={obj => {
             const enterKeyCode = 13
             if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              submit(newSearchTerm)
+              onSubmit()
             }
           }}
         />
@@ -164,7 +225,7 @@ const SearchBar = props => {
           text="Search"
           onClick={() => {
             if (!_.isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              submit(newSearchTerm)
+              onSubmit()
             }
           }}
         />
@@ -174,20 +235,24 @@ const SearchBar = props => {
 }
 
 const ResultsList = props => {
-  const { searchTerm, pageNumber, pageSize, searchResults, itemCount } = props
+  const { searchTerm, pageNumber, pageSize, searchResults, itemCount, onPageNumberChange } = props
 
   const handleBack = () => {
-    //const { pageNumber, onPageChange } = props
-    //const newPageNumber = Math.max(1, pageNumber - 1)
-    //onPageChange(newPageNumber)
-    //logPageEvent({ category: 'Show-More-Results', action: 'Previous' })
+    const newPageNumber = Math.max(1, pageNumber - 1)
+    onPageNumberChange(newPageNumber)
+    logPageEvent({
+      category: 'Show-More-Results',
+      action: 'Previous'
+    })
   }
 
   const handleForward = () => {
-    //const { itemCount, pageNumber, onPageChange } = props
-    //const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / props.pageSize)), pageNumber + 1)
-    //onPageChange(newPageNumber)
-    //logPageEvent({ category: 'Show-More-Results', action: 'Next' })
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / pageSize)), pageNumber + 1)
+    onPageNumberChange(newPageNumber)
+    logPageEvent({
+      category: 'Show-More-Results',
+      action: 'Next'
+    })
   }
 
   const renderPaginator = () => {
@@ -255,15 +320,18 @@ const ResultsList = props => {
 function mapReduxStateToProps(reduxState, ownProps) {
   let searchResults = []
   let itemCount = 0
+  let hasNoResults = false
 
   if (!_.isEmpty(reduxState.contentReducer.search)) {
     searchResults = reduxState.contentReducer.search[0].hits.hit
     itemCount = reduxState.contentReducer.search[0].hits.found
+    hasNoResults = reduxState.contentReducer.search[0].hasNoResults
   }
 
   return {
     searchResults,
-    itemCount
+    itemCount,
+    hasNoResults
   }
 }
 
