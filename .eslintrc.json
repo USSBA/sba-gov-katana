@@ -51,10 +51,7 @@
     "no-labels": ["warn"],
     "no-lone-blocks": ["warn"],
     "no-loop-func": ["error"],
-    "no-magic-numbers": [
-      "error",
-      { "ignoreArrayIndexes": true, "enforceConst": true, "ignore": [0, 1] }
-    ],
+    "no-magic-numbers": ["error", { "ignoreArrayIndexes": true, "enforceConst": true, "ignore": [0, 1] }],
     "no-multi-spaces": ["warn"],
     "no-multi-str": ["warn"],
     "no-new-func": ["error"],
@@ -101,7 +98,7 @@
     "no-mixed-requires": ["error"],
     "no-new-require": ["error"],
     "no-path-concat": ["error"],
-    "no-process-env": ["error"],
+    "no-process-env": ["off"],
     "no-process-exit": ["error"],
     "no-restricted-modules": ["off"],
     "no-sync": ["error"],
@@ -122,11 +119,7 @@
     "func-style": ["off"],
     "id-blacklist": ["off"],
     "id-length": ["error", { "min": 3, "exceptions": ["_", "to", "id"] }],
-    "id-match": [
-      "error",
-      "^[a-z_]+([A-Z][a-z]+)*$",
-      { "onlyDeclarations": true }
-    ],
+    "id-match": ["error", "^[a-z_]+([A-Z][a-z]+)*$", { "onlyDeclarations": true }],
     "indent": ["off"],
     "jsx-quotes": ["error"],
     "key-spacing": ["off"],
@@ -137,10 +130,7 @@
     "lines-around-directive": ["off"],
     "max-depth": ["error", 6],
     "max-len": ["off"],
-    "max-lines": [
-      "error",
-      { "max": 600, "skipBlankLines": true, "skipComments": true }
-    ],
+    "max-lines": ["error", { "max": 600, "skipBlankLines": true, "skipComments": true }],
     "max-nested-callbacks": ["error"],
     "max-params": ["error", 6],
     "max-statements-per-line": ["error"],

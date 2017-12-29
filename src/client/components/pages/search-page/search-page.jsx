@@ -68,7 +68,8 @@ class SearchPage extends PureComponent {
         () => {
           this.props.actions.fetchContentIfNeeded('search', 'search', {
             term: searchTerm,
-            pageNumber: pageNumber
+            pageNumber: pageNumber,
+            pageSize: this.state.pageSize
           })
         }
       )
@@ -124,11 +125,12 @@ class SearchPage extends PureComponent {
   }
 
   onSubmit() {
-    const { newSearchTerm: term, pageNumber } = this.state
+    const { newSearchTerm: term, pageNumber, pageSize } = this.state
 
     const data = {
       term,
-      pageNumber
+      pageNumber,
+      pageSize
     }
 
     this.props.actions.fetchContentIfNeeded('search', 'search', data)
@@ -327,9 +329,9 @@ function mapReduxStateToProps(reduxState, ownProps) {
   let hasNoResults = false
 
   if (!isEmpty(reduxState.contentReducer.search)) {
-    searchResults = reduxState.contentReducer.search[0].hits.hit
-    itemCount = reduxState.contentReducer.search[0].hits.found
-    hasNoResults = reduxState.contentReducer.search[0].hasNoResults
+    searchResults = reduxState.contentReducer.search.hits.hit
+    itemCount = reduxState.contentReducer.search.hits.found
+    hasNoResults = reduxState.contentReducer.search.hasNoResults
   }
 
   return {
