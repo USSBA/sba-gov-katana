@@ -217,16 +217,19 @@ const SearchBar = props => {
               onSubmit()
             }
           }}
+          aria-controls="results-list"
         />
       </div>
       <div className={styles.searchButton}>
         <SmallPrimaryButton
+          id="submit-button"
           text="Search"
           onClick={() => {
             if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
               onSubmit()
             }
           }}
+          aria-controls="results-list"
         />
       </div>
     </div>
@@ -310,7 +313,9 @@ const ResultsList = props => {
         </div>
         {renderPaginator()}
       </div>
-      <div>{renderList()}</div>
+      <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
+        {renderList()}
+      </div>
       {renderPaginator()}
     </div>
   )
