@@ -47,6 +47,7 @@ jspm_packages
 # local configuration
 config/*local*
 config/*production*
+.env
 
 # DS_Store
 .DS_Store
