@@ -26,6 +26,7 @@ exports[`SearchPage to match snapshot 1`] = `
           className="textInputContainer"
         >
           <input
+            aria-controls="results-list"
             className="textInput"
             defaultValue=""
             id="search"
@@ -43,7 +44,7 @@ exports[`SearchPage to match snapshot 1`] = `
         className="SmallPrimaryButton  "
         disabled={undefined}
         formTarget="_self"
-        id={undefined}
+        id="submit-button"
         onKeyPress={[Function]}
         onTouchTap={[Function]}
         tabIndex="0"
