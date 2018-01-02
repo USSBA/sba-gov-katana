@@ -70,3 +70,6 @@ features:
     searchUrl: "/tools/search-result-page?search="
 sizestandards:
     endpoint: placeholder
+aws:
+  cloudsearch:
+    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
