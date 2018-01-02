@@ -1,17 +1,9 @@
-require('dotenv').config()
-
+import config from 'config'
 const aws = require('aws-sdk')
-
-aws.config.update({
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY
-})
-
-aws.config.update({ region: 'us-east-1' })
-aws.config.apiVersions = { cloudsearchdomain: '2013-01-01' }
-
 const csd = new aws.CloudSearchDomain({
-  endpoint: 'search-testing1-5vjiwj6xij2n5ww6wnwtozyrwa.us-east-1.cloudsearch.amazonaws.com'
+  endpoint: config.get('aws.cloudsearch.endpoint'),
+  region: 'us-east-1',
+  apiVersions: '2013-01-01'
 })
 
 function search(req, res) {
