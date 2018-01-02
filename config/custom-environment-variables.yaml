@@ -9,3 +9,6 @@ database:
     host: DATABASE_HOST
     password: DATABASE_PASSWORD
     user: DATABASE_USER
+aws:
+  accessKey: ACCESS_KEY_ID
+  secretKey: SECRET_ACCESS_KEY
