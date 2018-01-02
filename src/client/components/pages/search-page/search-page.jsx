@@ -282,12 +282,12 @@ const ResultsList = props => {
       <div className={styles.results}>
         {searchResults.map((item, index) => {
           let title
-          let description
+          let summary
           let url
 
           if (!isEmpty(item.fields)) {
             title = item.fields.title
-            description = item.fields.description
+            summary = item.fields.summary
             url = item.fields.url
           }
 
@@ -296,7 +296,7 @@ const ResultsList = props => {
               <div className={styles.title}>
                 <BasicLink url={url}>{title}</BasicLink>
               </div>
-              <div className={styles.description}>{description}</div>
+              <div className={styles.summary}>{summary}</div>
               <div className={styles.url}>
                 <BasicLink url={url}>{url}</BasicLink>
               </div>
