@@ -14,18 +14,19 @@ function get(resource) {
   }
 }
 
-async function fetchFormattedNode(nodeId, options) {
+function fetchFormattedNode(nodeId, options) {
   let langCode = langParser
     .parse(options.headers['accept-language'])
     .filter(lang => langCodes.hasOwnProperty(lang.code))
   langCode = _.isEmpty(langCode) ? 'en' : langCode[0].code
-  let result = await get(nodeId)
-  let spanishResult = result[0] && result[0].spanishTranslation
-  if (spanishResult && langCode === langCodes.es) {
-    return _.castArray(spanishResult)
-  } else {
-    return result
-  }
+  return get(nodeId).then(result => {
+    let spanishResult = result[0] && result[0].spanishTranslation
+    if (spanishResult && langCode === langCodes.es) {
+      return _.castArray(spanishResult)
+    } else {
+      return result
+    }
+  })
 }
 
 function fetchContacts(queryParams) {
