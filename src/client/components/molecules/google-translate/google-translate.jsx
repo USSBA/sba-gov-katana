@@ -11,14 +11,15 @@ class GoogleTranslate extends React.Component {
     }
   }
 
-  handleGoogleTranslateClick(e) {
+  handleGoogleTranslateClick(event) {
+    event.preventDefault()
     this.setState({
       expanded: !this.state.expanded
     })
   }
 
   render() {
-    let googleTranslateClass = this.state.expanded
+    const googleTranslateClass = this.state.expanded
       ? styles.googleTranslateElementVisible
       : styles.googleTranslateElement
     return (
