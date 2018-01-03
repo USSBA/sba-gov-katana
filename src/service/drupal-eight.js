@@ -14,13 +14,23 @@ function get(resource) {
   }
 }
 
-function fetchFormattedNode(nodeId, options) {
-  return get(nodeId, null, options.headers)
+async function fetchFormattedNode(nodeId, options) {
+  let langCode = langParser
+    .parse(options.headers['accept-language'])
+    .filter(lang => langCodes.hasOwnProperty(lang.code))
+  langCode = _.isEmpty(langCode) ? 'en' : langCode[0].code
+  let result = await get(nodeId)
+  let spanishResult = result[0] && result[0].spanishTranslation
+  if (spanishResult && langCode === langCodes.es) {
+    return _.castArray(spanishResult)
+  } else {
+    return result
+  }
 }
 
 function fetchContacts(queryParams) {
   const category = queryParams.category
-  return get('contacts', queryParams)
+  return get('contacts').then(result => _filter(result, queryParams))
 }
 
 function fetchFormattedMenu() {
@@ -192,29 +202,32 @@ function fetchTaxonomyVocabulary(queryParams) {
 }
 
 function fetchArticles(queryParams) {
-  let sortOrder = ''
+  let sortOrder = 'asc'
   let sortField
   if (queryParams.sortBy === 'Title') {
     sortField = 'title'
   } else if (queryParams.sortBy === 'Last Updated') {
     sortField = 'updated'
-    sortOrder = '-'
+    sortOrder = 'desc'
   } else if (queryParams.sortBy === 'Authored on Date') {
     sortField = 'created'
-    sortOrder = '-'
+    sortOrder = 'desc'
   }
-  return get('articles', {
-    sortBy: sortOrder + sortField
-  }).then(results => {
-    const filteredArticles = filterArticles(queryParams, results)
-    return {
-      items:
-        queryParams.start === 'all' || queryParams.end === 'all'
-          ? filteredArticles
-          : filteredArticles.slice(queryParams.start, queryParams.end),
-      count: filteredArticles.length
-    }
-  })
+
+  return get('articles')
+    .then(result => {
+      return _.orderBy(collection, sortField, sortOrder)
+    })
+    .then(results => {
+      const filteredArticles = filterArticles(queryParams, results)
+      return {
+        items:
+          queryParams.start === 'all' || queryParams.end === 'all'
+            ? filteredArticles
+            : filteredArticles.slice(queryParams.start, queryParams.end),
+        count: filteredArticles.length
+      }
+    })
 }
 
 function fetchAnnouncements() {
