@@ -1,7 +1,10 @@
+/* eslint-disable id-length,space-infix-ops */
 import _ from 'lodash'
 import Promise from 'bluebird'
 import config from 'config'
 import moment from 'moment'
+const langParser = require('accept-language-parser')
+const langCodes = { es: 'es', en: 'en' }
 
 import { getKey } from '../util/s3-cache-reader.js'
 import * as daishoClient from '../models/dao/daisho-client.js'
@@ -15,12 +18,12 @@ function get(resource) {
 }
 
 function fetchFormattedNode(nodeId, options) {
-  let langCode = langParser
-    .parse(options.headers['accept-language'])
-    .filter(lang => langCodes.hasOwnProperty(lang.code))
+  let langCode = langParser.parse(options.headers['accept-language']).filter(lang => {
+    return langCodes.hasOwnProperty(lang.code)
+  })
   langCode = _.isEmpty(langCode) ? 'en' : langCode[0].code
   return get(nodeId).then(result => {
-    let spanishResult = result[0] && result[0].spanishTranslation
+    const spanishResult = result[0] && result[0].spanishTranslation
     if (spanishResult && langCode === langCodes.es) {
       return _.castArray(spanishResult)
     } else {
@@ -31,7 +34,9 @@ function fetchFormattedNode(nodeId, options) {
 
 function fetchContacts(queryParams) {
   const category = queryParams.category
-  return get('contacts').then(result => _filter(result, queryParams))
+  return get('contacts').then(result => {
+    return _.filter(result, queryParams)
+  })
 }
 
 function fetchFormattedMenu() {
@@ -125,6 +130,7 @@ function filterDocuments(params, docs) {
     )
   })
 }
+
 function filterArticles(params, allArticles) {
   return allArticles.filter((article, index) => {
     const matchesUrl = !params.url || params.url === 'all' || article.url === params.url
@@ -217,7 +223,7 @@ function fetchArticles(queryParams) {
 
   return get('articles')
     .then(result => {
-      return _.orderBy(collection, sortField, sortOrder)
+      return _.orderBy(result, sortField, sortOrder)
     })
     .then(results => {
       const filteredArticles = filterArticles(queryParams, results)
