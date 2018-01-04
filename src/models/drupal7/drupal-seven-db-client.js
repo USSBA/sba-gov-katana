@@ -17,10 +17,10 @@ if (config.get('developmentOptions.devMode')) {
   }
 } else {
   drupalSeven = new Sequelize(
-    config.get('database.drupalSeven.databaseName'),
-    config.get('database.drupalSeven.user'),
-    config.get('database.drupalSeven.password'), {
-      host: config.get('database.drupalSeven.host'),
+    config.get('database.drupal.databaseName'),
+    config.get('database.drupal.user'),
+    config.get('database.drupal.password'), {
+      host: config.get('database.drupal.host'),
       dialect: 'mysql',
       pool: config.get('database.pool')
     }
