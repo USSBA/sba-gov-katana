@@ -15,7 +15,7 @@ describe('Google Translate link', () => {
   test('to expand on click event', () => {
     const component = shallow(<GoogleTranslate />)
     expect(component.state().expanded).toEqual(false)
-    component.find('#translate-toggle-new').simulate('click')
+    component.find('#translate-toggle-new').simulate('click', { preventDefault() {} })
     expect(component.state().expanded).toEqual(true)
   })
 })
