@@ -4,17 +4,13 @@ const executeDrupalSevenQuery = require('../drupal7/drupal-seven-db-client.js').
 const users = require('../drupal7/drupal-users')
 
 function findDrupalUser(userId) {
-  if (config.get('developmentOptions.devMode')) {
-    return Promise.resolve(['Administrator'])
-  } else {
-    return users.findOne({
-      where: {
-        uid: {
-          $eq: userId
-        }
+  return users.findOne({
+    where: {
+      uid: {
+        $eq: userId
       }
-    })
-  }
+    }
+  })
 }
 
 function fetchDrupalUserEmail(userId) {
@@ -44,5 +40,4 @@ function fetchUserRoles(userId) {
 }
 
 module.exports.fetchUserRoles = fetchUserRoles
-module.exports.findDrupalUser = findDrupalUser
 module.exports.fetchDrupalUserEmail = fetchDrupalUserEmail
