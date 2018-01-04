@@ -193,7 +193,7 @@ function sortDocumentsByDate(docs) {
   return sortedDocs
 }
 
-function fetchTaxonomyVocabulary(queryParams) {
+function fetchTaxonomys(queryParams) {
   return get('taxonomys').then(data => {
     let names = _.map(data, 'name')
     if (queryParams.names) {
@@ -244,14 +244,20 @@ function fetchAnnouncements() {
   })
 }
 
+function fetchNodes() {
+  return get('nodes')
+}
+
 export {
-  fetchFormattedNode,
+  fetchAnnouncements,
+  fetchArticles,
   fetchContacts,
-  sortDocumentsByDate,
-  fetchFormattedMenu,
   fetchCounsellorCta,
   fetchDocuments,
-  fetchTaxonomyVocabulary,
-  fetchArticles,
-  fetchAnnouncements
+  fetchFormattedMenu,
+  fetchFormattedNode,
+  fetchNodes,
+  fetchTaxonomys,
+  get,
+  sortDocumentsByDate
 }
