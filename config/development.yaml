@@ -22,6 +22,11 @@ database:
         host: localhost
         password: password123
         user: root
+    drupalSeven:
+        databaseName: sba_prod
+        host: localhost
+        password: password123
+        user: root
 linc:
     confirmationEmailBase: http://localhost:3000
     resendEmailJobEnabled: false

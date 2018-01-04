@@ -54,6 +54,11 @@ database:
         host: placeholder
         password: placeholder
         user: placeholder
+    drupalSeven:
+        databaseName: sba
+        host: placeholder
+        password: placeholder
+        user: placeholder
 oca:
     soap:
         username: placeholder

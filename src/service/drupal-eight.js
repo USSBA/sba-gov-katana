@@ -239,7 +239,6 @@ function fetchArticles(queryParams) {
 
 function fetchAnnouncements() {
   return get('announcements').then(result => {
-    console.log('announcements', result)
     return result
   })
 }
