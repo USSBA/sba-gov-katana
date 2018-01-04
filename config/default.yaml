@@ -54,7 +54,7 @@ database:
         password: placeholder
         user: placeholder
     drupal:
-        databaseName: placeholder
+        databaseName: sba
         host: placeholder
         password: placeholder
         user: placeholder

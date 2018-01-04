@@ -1,5 +1,5 @@
 import HttpStatus from 'http-status-codes'
-import { fetchUserRoles } from '../models/dao/user-roles.js'
+import { fetchUserRoles } from '../models/dao/drupal-user.js'
 
 function getUserRoles(req, res) {
   if (req.params) {

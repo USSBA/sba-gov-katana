@@ -2,7 +2,7 @@ import HttpStatus from 'http-status-codes'
 import { fetchDrupalUserEmail } from '../models/dao/drupal-user.js'
 
 function getDrupalUserEmail(req, res) {
-  if (req.params && req.params.type && req.params.userId) {
+  if (req.params && req.params.userId) {
     fetchDrupalUserEmail(req.params.userId)
       .then(function(data) {
         res.status(HttpStatus.OK).send(JSON.stringify(data))
