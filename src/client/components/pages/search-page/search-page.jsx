@@ -43,7 +43,7 @@ class SearchPage extends PureComponent {
       newSearchTerm: '',
       searchResults: [],
       pageNumber: 1,
-      pageSize: 2,
+      pageSize: 10,
       itemCount: 0
     }
   }
@@ -255,6 +255,7 @@ const ResultsList = props => {
   }
 
   const handleForward = () => {
+    console.log('PAGESIZEEE',pageSize)
     const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / pageSize)), pageNumber + 1)
     onPageNumberChange(newPageNumber)
     logPageEvent({
