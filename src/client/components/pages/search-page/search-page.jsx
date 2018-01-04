@@ -267,6 +267,7 @@ const ResultsList = props => {
     return (
       <div className={styles.paginator}>
         <Paginator
+          id={"current-total-result-number"}
           pageNumber={pageNumber}
           pageSize={pageSize}
           total={itemCount}
@@ -296,15 +297,15 @@ const ResultsList = props => {
           }
 
           // only show results with URL
-          if(url) {
+          if (url) {
             return (
-              <div key={index} className={styles.result}>
+              <div key={index} className={`${styles.result}  result-box`}>
                 <div className={styles.title}>
-                  <BasicLink url={url}>{title}</BasicLink>
+                  <BasicLink url={url} myClassName={"result-title"}>{title}</BasicLink>
                 </div>
-                <div className={styles.summary}>{summary}</div>
+                <div className={`${styles.summary} result-summary`}>{summary}</div>
                 <div className={styles.url}>
-                  <BasicLink url={url}>{url}</BasicLink>
+                  <BasicLink url={url} myClassName={"result-url"}>{url}</BasicLink>
                 </div>
               </div>
             )
@@ -318,7 +319,7 @@ const ResultsList = props => {
     <div>
       <div>
         <div className={styles.searchTerm}>
-          <span>"{searchTerm}"</span>
+          <span id="search-term-title">"{searchTerm}"</span>
         </div>
         {renderPaginator()}
       </div>
