@@ -295,17 +295,20 @@ const ResultsList = props => {
             url = item.fields.url
           }
 
-          return (
-            <div key={index} className={styles.result}>
-              <div className={styles.title}>
-                <BasicLink url={url}>{title}</BasicLink>
+          // only show results with URL
+          if(url) {
+            return (
+              <div key={index} className={styles.result}>
+                <div className={styles.title}>
+                  <BasicLink url={url}>{title}</BasicLink>
+                </div>
+                <div className={styles.summary}>{summary}</div>
+                <div className={styles.url}>
+                  <BasicLink url={url}>{url}</BasicLink>
+                </div>
               </div>
-              <div className={styles.summary}>{summary}</div>
-              <div className={styles.url}>
-                <BasicLink url={url}>{url}</BasicLink>
-              </div>
-            </div>
-          )
+            )
+          }
         })}
       </div>
     )
