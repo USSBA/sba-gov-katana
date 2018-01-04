@@ -124,8 +124,12 @@ class SearchPage extends PureComponent {
     })
   }
 
-  onSubmit() {
+  onSubmit(resetPageNumber) {
     const { newSearchTerm: term, pageNumber, pageSize } = this.state
+
+    if (resetPageNumber === 1) {
+      this.setState({ pageNumber: 1})
+    }
 
     const data = {
       term,
@@ -216,7 +220,7 @@ const SearchBar = props => {
           onKeyDown={obj => {
             const enterKeyCode = 13
             if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit()
+              onSubmit(1)
             }
           }}
           aria-controls="results-list"
@@ -228,7 +232,7 @@ const SearchBar = props => {
           text="Search"
           onClick={() => {
             if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit()
+              onSubmit(1)
             }
           }}
           aria-controls="results-list"
