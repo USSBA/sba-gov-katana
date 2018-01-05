@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 rm -rf public/build
 rm -rf dist
 NODE_ENV=production $(npm bin)/babel src -d dist --ignore client/*
