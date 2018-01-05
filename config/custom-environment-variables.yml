@@ -1,0 +1,26 @@
+server:
+  port: PORT
+  fqdn: FQDN
+daisho:
+  hostname: DAISHO_HOSTNAME
+  port: DAISHO_PORT
+database:
+  nonDrupal:
+    databaseName: DATABASE_NAME
+    host: DATABASE_HOST
+    password: DATABASE_PASSWORD
+    user: DATABASE_USER
+  drupal:
+    databaseName: DATABASE_NAME_DRUPAL7
+    host: DATABASE_HOST
+    password: DATABASE_PASSWORD_DRUPAL7
+    user: DATABASE_PASSWORD_DRUPAL7
+email:
+  password: SMTP_PASSWORD
+  username: SMTP_USERNAME
+oca:
+  soap:
+    username: OCA_SOAP_USER
+    passwordDecryptionKey: OCA_SOAP_DECRYPTION_KEY
+sizestandards:
+    endpoint: SIZE_STANDARDS_ENDPOINT
