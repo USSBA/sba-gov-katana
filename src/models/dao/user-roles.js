@@ -1,4 +1,4 @@
-import config from "config"
+import config from 'config'
 import { get } from './daisho-client.js'
 
 function fetchUserRoles(userId) {

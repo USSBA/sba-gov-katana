@@ -94,25 +94,27 @@ class MobileNav extends React.Component {
   }
 }
 
-const NavLink = props => {return (
-  <div
-    className={s.navLinkContainer}
-    onTouchTap={() => {
-      props.handleClick(props.link)
-    }}
-  >
-    <a
-      id={props.iD}
-      className={s.navLink}
+const NavLink = props => {
+  return (
+    <div
+      className={s.navLinkContainer}
       onTouchTap={() => {
         props.handleClick(props.link)
       }}
     >
-      {props.link.title}
-    </a>
-    {/*<i className={s.navRightArrow + " fa fa-angle-right"}></i>*/}
-  </div>
-)}
+      <a
+        id={props.iD}
+        className={s.navLink}
+        onTouchTap={() => {
+          props.handleClick(props.link)
+        }}
+      >
+        {props.link.title}
+      </a>
+      {/*<i className={s.navRightArrow + " fa fa-angle-right"}></i>*/}
+    </div>
+  )
+}
 
 function mapReduxStateToProps(reduxState) {
   return {}
