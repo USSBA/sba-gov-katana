@@ -19,7 +19,7 @@
 version: 2
 workflows:
   version: 2
-  test-branch:
+  test-build-deploy:
     jobs:
     - cache-dependencies
     - test-jest:
@@ -34,6 +34,28 @@ workflows:
         requires: [test-jest, test-mocha, test-lint, test-format]
     - build-push-image:
         requires: [build-webpack]
+    #TODO: When katana service is deployed to ECS, re-enable these steps
+    #- deploy-mint-containers:
+    #    requires: [build-push-image]
+    #    filters:
+    #      branches: {only: [master-integration]}
+    #- deploy-qint-containers:
+    #    requires: [build-push-image]
+    #    filters:
+    #      branches: {only: [integration]}
+    #- deploy-stge-containers:
+    #    requires: [build-push-image]
+    #    filters:
+    #      branches: {only: [staging]}
+    #- hold-prod-deploy:
+    #    type: approval
+    #    requires: [build-push-image]
+    #    filters:
+    #      branches: {only: [master]}
+    #- deploy-prod-containers:
+    #    requires: [hold-prod-deploy]
+    #    filters:
+    #      branches: {only: [master]}
 
 jobs:
   cache-dependencies:
@@ -156,3 +178,71 @@ jobs:
           tagpush ${CIRCLE_SHA1}
           tagpush ${CIRCLE_BRANCH}
           tagpush circle-${CIRCLE_BUILD_NUM}
+  deploy-mint-containers:
+    docker:
+    - image: ussba/cc-docker-git-aws:latest
+    steps:
+    - deploy:
+        name: Update mint katana ECS Task Definition and roll out new containers
+        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
+        shell: /bin/bash
+        no_output_timeout: '30m'
+        command: |
+          ecs-deploy -k ${LOWER_AWS_KEY} \
+                     -s ${LOWER_AWS_SECRET} \
+                     -r us-east-1 -c mint-ecs \
+                     -n mint-katana \
+                     --timeout 1200 \
+                     --enable-rollback \
+                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
+  deploy-qint-containers:
+    docker:
+    - image: ussba/cc-docker-git-aws:latest
+    steps:
+    - deploy:
+        name: Update qint katana ECS Task Definition and roll out new containers
+        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
+        shell: /bin/bash
+        no_output_timeout: '30m'
+        command: |
+          ecs-deploy -k ${LOWER_AWS_KEY} \
+                     -s ${LOWER_AWS_SECRET} \
+                     -r us-east-1 -c qint-ecs \
+                     -n qint-katana \
+                     --timeout 1200 \
+                     --enable-rollback \
+                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
+  deploy-stge-containers:
+    docker:
+    - image: ussba/cc-docker-git-aws:latest
+    steps:
+    - deploy:
+        name: Update stge katana ECS Task Definition and roll out new containers
+        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
+        shell: /bin/bash
+        no_output_timeout: '30m'
+        command: |
+          ecs-deploy -k ${LOWER_AWS_KEY} \
+                     -s ${LOWER_AWS_SECRET} \
+                     -r us-east-1 -c stge-ecs \
+                     -n stge-katana \
+                     --timeout 1200 \
+                     --enable-rollback \
+                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
+  deploy-prod-containers:
+    docker:
+    - image: ussba/cc-docker-git-aws:latest
+    steps:
+    - deploy:
+        name: Update prod katana ECS Task Definition and roll out new containers
+        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
+        shell: /bin/bash
+        no_output_timeout: '30m'
+        command: |
+          ecs-deploy -k ${LOWER_AWS_KEY} \
+                     -s ${LOWER_AWS_SECRET} \
+                     -r us-east-1 -c prod-ecs \
+                     -n prod-katana \
+                     --timeout 1200 \
+                     --enable-rollback \
+                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
