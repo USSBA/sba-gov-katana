@@ -1,9 +1,11 @@
+import Promise from 'bluebird'
 import React from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { DocumentCardCollection } from 'organisms'
-import * as NavigationActions from '../../../actions/navigation.js'
+import * as ContentActions from '../../../actions/content'
+import * as NavigationActions from '../../../actions/navigation'
 import queryString from 'querystring'
 import { logPageEvent } from '../../../services/analytics'
 import s from './related-document-cards.scss'
@@ -16,12 +18,22 @@ class RelatedDocumentCards extends React.Component {
     }
   }
 
-  componentWillMount() {
-    this.sortRelatedDocuments()
+  componentDidMount() {
+    const { data: { relatedDocuments }, fetchContentIfNeeded } = this.props
+
+    Promise.all(
+      relatedDocuments.map(documentId => fetchContentIfNeeded('node', `node/${documentId}`))
+    ).then(relatedDocumentsData =>
+      this.sortRelatedDocuments(
+        relatedDocumentsData
+          .map(({ data }) => data)
+          // Gracefully handle related documents that have been deleted.
+          .filter(data => data)
+      )
+    )
   }
 
-  sortRelatedDocuments() {
-    let relatedDocuments = this.props.data.relatedDocuments
+  sortRelatedDocuments(relatedDocuments) {
     if (relatedDocuments) {
       let sortedAndFilteredDocuments = {}
       _.uniq(
@@ -40,9 +52,10 @@ class RelatedDocumentCards extends React.Component {
   }
 
   handleBrowseAll(documentType) {
+    const { locationChange } = this.props
     logPageEvent({ category: 'Browse-all', action: documentType })
     let params = { type: documentType }
-    this.props.actions.locationChange('/document/?' + queryString.stringify(params))
+    locationChange('/document/?' + queryString.stringify(params))
   }
 
   renderRelatedDocumentSections() {
@@ -84,6 +97,11 @@ class RelatedDocumentCards extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { actions: bindActionCreators(NavigationActions, dispatch) }
+  return {
+    ...bindActionCreators(NavigationActions, dispatch),
+    ...bindActionCreators(ContentActions, dispatch)
+  }
 }
+
 export default connect(null, mapDispatchToProps)(RelatedDocumentCards)
+export { RelatedDocumentCards }
