@@ -8,17 +8,17 @@ developmentOptions:
         silent: false
     useLocalDataNotDaisho: false
 govdelivery:
-    popupEnabled: true
+    popupEnabled: false
 foresee:
     environment: staging
-    enabled: true
+    enabled: false
 newrelic:
     enabled: false
 googleAnalytics:
-    enabled: true
-    accountId: "UA-19362636-5"
-    optimizeContainerId: "GTM-NPDXPPF"
-    tagManagerAccountId: "GTM-MSNZZ6M"
+    enabled: false
+    accountId: UA-96147768-1
+    optimizeContainerId: GTM-NPDXPPF
+    tagManagerAccountId: GTM-WN49BK2
     debug: false
 server:
     port: 3000
@@ -31,12 +31,11 @@ email:
     password: placeholder
     username: placeholder
 linc:
-    confirmationEmailBase: http://sbagov.fearlesstesters.com
     resendEmailJobEnabled: false
     resendEmailCron: '0 0 * * * *'
-    sendToOcaJobEnabled: true
+    sendToOcaJobEnabled: false
     ocaSoapCron: '0 * * * * *'
-    sendToLincPasswordUpdateEnabled: true
+    sendToLincPasswordUpdateEnabled: false
     ocaPasswordUpdateCron: '0 0 0 * * *'
     ocaVersion: 2
     lookback: 86400
@@ -54,15 +53,20 @@ database:
         host: placeholder
         password: placeholder
         user: placeholder
+    drupal:
+        databaseName: placeholder
+        host: placeholder
+        password: placeholder
+        user: placeholder
 oca:
     soap:
         username: placeholder
-        passwordDecryptionKey: placeholderDecryptionKey
-        wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
+        passwordDecryptionKey: placeholderDecryptionKeyMustBeAtLeast16Characters
+        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl
 features:
     forPartners: false
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
 sizestandards:
-    endpoint: nhhr22yl13.execute-api.us-east-1.amazonaws.com/LATEST
+    endpoint: placeholder

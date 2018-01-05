@@ -25,7 +25,7 @@ function createConfirmationEmail(name, emailAddress, lenderMatchRegistrationId, 
     token = uuid.v4()
   }
   const link = url.resolve(
-    config.get('linc.confirmationEmailBase'),
+    "https://" + config.get('server.fqdn'),
     '/actions/lendermatch/confirmEmail?token=' + token
   )
 

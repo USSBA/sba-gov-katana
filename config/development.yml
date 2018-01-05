@@ -1,0 +1,22 @@
+server:
+  fqdn: localhost
+developmentOptions:
+    client:
+        logging: true
+    redux:
+        logging: true
+    webpack:
+        enabled: true
+        silent: false
+govdelivery:
+    popupEnabled: false
+foresee:
+    enabled: false
+googleAnalytics:
+    debug: true
+database:
+    nonDrupal:
+        databaseName: sba_katana
+        host: localhost
+        password: password123
+        user: root
