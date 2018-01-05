@@ -23,9 +23,9 @@ const getQueryParams = search => {
   let pageNumber = formatted.split('p=')[1]
   if (!isEmpty(pageNumber)) {
     pageNumber = Number(pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber)
-    pageNumber = isNaN(pageNumber) ? 1 : pageNumber
+    pageNumber = isNaN(pageNumber) ? 0 : pageNumber
   } else {
-    pageNumber = 1
+    pageNumber = 0
   }
 
   return {
@@ -42,7 +42,7 @@ class SearchPage extends PureComponent {
       searchTerm: '',
       newSearchTerm: '',
       searchResults: [],
-      pageNumber: 1,
+      pageNumber: 0,
       pageSize: 10,
       itemCount: 0
     }
@@ -127,8 +127,8 @@ class SearchPage extends PureComponent {
   onSubmit(resetPageNumber) {
     const { newSearchTerm: term, pageNumber, pageSize } = this.state
 
-    if (resetPageNumber === 1) {
-      this.setState({ pageNumber: 1})
+    if (resetPageNumber === 0) {
+      this.setState({ pageNumber: 0})
     }
 
     const data = {
@@ -220,7 +220,7 @@ const SearchBar = props => {
           onKeyDown={obj => {
             const enterKeyCode = 13
             if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit(1)
+              onSubmit(0)
             }
           }}
           aria-controls="results-list"
@@ -232,7 +232,7 @@ const SearchBar = props => {
           text="Search"
           onClick={() => {
             if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit(1)
+              onSubmit(0)
             }
           }}
           aria-controls="results-list"
@@ -297,7 +297,7 @@ const ResultsList = props => {
           }
 
           // only show results with URL
-          if (url) {
+          // if (url) {
             return (
               <div key={index} className={`${styles.result}  result-box`}>
                 <div className={styles.title}>
@@ -309,7 +309,7 @@ const ResultsList = props => {
                 </div>
               </div>
             )
-          }
+          // }
         })}
       </div>
     )
