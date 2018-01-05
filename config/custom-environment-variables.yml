@@ -1,9 +1,6 @@
 server:
   port: PORT
   fqdn: FQDN
-daisho:
-  hostname: DAISHO_HOSTNAME
-  port: DAISHO_PORT
 database:
   nonDrupal:
     databaseName: DATABASE_NAME
@@ -12,7 +9,7 @@ database:
     user: DATABASE_USER
   drupal:
     databaseName: DATABASE_NAME_DRUPAL7
-    host: DATABASE_HOST
+    host: DATABASE_HOST_DRUPAL7
     password: DATABASE_PASSWORD_DRUPAL7
     user: DATABASE_PASSWORD_DRUPAL7
 email:
