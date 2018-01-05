@@ -1,0 +1,158 @@
+# Environment Variables required to be set in circleci web config
+#
+# AMAZON_ECR_ENDPOINT_LOWER=url-for-lower-ECR
+# AMAZON_ECR_REPO=repo-name-within-ECR
+# LOWER_AWS_KEY=
+# LOWER_AWS_SECRET=
+#
+#
+### Deployment Workflows:
+#
+# Push to Branch     | Deploy to Environment
+# ------------------ | ---------------------
+# integration        | qint
+# master-integration | mint
+# staging            | staging
+# master             | HOLD -> prod
+#
+
+version: 2
+workflows:
+  version: 2
+  test-branch:
+    jobs:
+    - cache-dependencies
+    - test-jest:
+        requires: [cache-dependencies]
+    - test-mocha:
+        requires: [cache-dependencies]
+    - test-lint:
+        requires: [cache-dependencies]
+    - test-format:
+        requires: [cache-dependencies]
+    - build-webpack:
+        requires: [test-jest, test-mocha, test-lint, test-format]
+    - build-push-image:
+        requires: [build-webpack]
+
+jobs:
+  cache-dependencies:
+    docker:
+    - image: circleci/node:8.6
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: install dependencies
+          command: |
+            npm install --silent --no-save
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}
+  test-jest:
+    docker:
+    - image: circleci/node:8.6
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: run jest
+          command: |
+            npm run test-jest
+  test-mocha:
+    docker:
+    - image: circleci/node:8.6
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: run mocha
+          command: |
+            npm run test-mocha
+  test-lint:
+    docker:
+    - image: circleci/node:8.6
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: run lint
+          command: |
+            npm run lint
+  test-format:
+    docker:
+    - image: circleci/node:8.6
+    steps:
+    - checkout
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v2-dependencies-{{ checksum "package.json" }}
+    - run:
+        name: run prettier format check
+        command: |
+          npm run test-format
+  build-webpack:
+    docker:
+    - image: circleci/node:8.6
+    steps:
+    - checkout
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - v2-dependencies-{{ checksum "package.json" }}
+    - run:
+        name: build webpack
+        command: |
+          npm run build
+    - save_cache:
+        paths:
+        - ./public/build
+        - ./dist
+        key: v1-webpack-{{ .Revision }}
+  build-push-image:
+    working_directory: /home/circleci/project
+    docker:
+    - image: ussba/cc-docker-git-aws
+    steps:
+    - checkout
+    - setup_remote_docker:
+        docker_layer_caching: true
+    - restore_cache:
+        keys:
+        - v1-webpack-{{ .Revision }}
+    - run:
+        name: Build application Docker image
+        command: |
+          stat ./dist
+          stat ./public/build
+          docker build -t ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_SHA1} .
+    - deploy:
+        name: Push application Docker image tagged with Git Commit to ECR
+        command: |
+          function tagpush() {
+            ${loginlower}
+            docker tag ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
+            docker push "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
+            #${loginupper}
+            #docker tag ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
+            #docker push "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
+          }
+          loginlower="$(export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
+          #loginupper="$(export AWS_ACCESS_KEY_ID=${UPPER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${UPPER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
+          tagpush ${CIRCLE_SHA1}
+          tagpush ${CIRCLE_BRANCH}
+          tagpush circle-${CIRCLE_BUILD_NUM}
