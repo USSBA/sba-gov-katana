@@ -6,9 +6,9 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
 server:
-    fqdn: kevin.sba.fun
+    fqdn: devf.sba.fun
 features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: /search?q=
+    searchUrl: "/tools/search-result-page?search="
