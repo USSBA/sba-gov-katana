@@ -25,7 +25,7 @@ const getQueryParams = search => {
     pageNumber = Number(pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber)
     pageNumber = isNaN(pageNumber) ? 0 : pageNumber
   } else {
-    pageNumber = 0
+    pageNumber = 1
   }
 
   return {
@@ -42,9 +42,10 @@ class SearchPage extends PureComponent {
       searchTerm: '',
       newSearchTerm: '',
       searchResults: [],
-      pageNumber: 0,
+      pageNumber: 1,
       pageSize: 10,
-      itemCount: 0
+      itemCount: 0,
+      start: 0
     }
   }
 
@@ -66,10 +67,14 @@ class SearchPage extends PureComponent {
           pageNumber
         },
         () => {
+          let newStartValue = 0
+          pageNumber > 1 ? newStartValue = (pageNumber - 1) * 10 : newStartValue = 0
+
           this.props.actions.fetchContentIfNeeded('search', 'search', {
             term: searchTerm,
             pageNumber: pageNumber,
-            pageSize: this.state.pageSize
+            pageSize: this.state.pageSize,
+            start: newStartValue
           })
         }
       )
@@ -119,22 +124,36 @@ class SearchPage extends PureComponent {
   }
 
   onPageNumberChange(pageNumber) {
-    this.setState({ pageNumber }, () => {
+    if (pageNumber > 1) {
+      this.setState({
+        start: (pageNumber - 1) * 10
+      })
+    } else {
+      this.setState({
+        start: 0
+      })
+    }
+    this.setState({
+      pageNumber
+    }, () => {
       this.onSubmit(true)
     })
   }
 
   onSubmit(resetPageNumber) {
-    const { newSearchTerm: term, pageNumber, pageSize } = this.state
+    const { newSearchTerm: term, pageNumber, pageSize, start } = this.state
 
-    if (resetPageNumber === 0) {
-      this.setState({ pageNumber: 0})
+    if (resetPageNumber === 1) {
+      this.setState({
+        start: 0
+      })
     }
 
     const data = {
       term,
       pageNumber,
-      pageSize
+      pageSize,
+      start
     }
 
     this.props.actions.fetchContentIfNeeded('search', 'search', data)
@@ -220,7 +239,7 @@ const SearchBar = props => {
           onKeyDown={obj => {
             const enterKeyCode = 13
             if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit(0)
+              onSubmit(1)
             }
           }}
           aria-controls="results-list"
@@ -232,7 +251,7 @@ const SearchBar = props => {
           text="Search"
           onClick={() => {
             if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit(0)
+              onSubmit(1)
             }
           }}
           aria-controls="results-list"
