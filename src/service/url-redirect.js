@@ -13,7 +13,11 @@ function fetchNodeDataById(nodeId) {
   }
   // TODO: remove the manual promise creation have this return the get promise instead
   const promise = new Promise((resolve, reject) => {
-    resolve(node)
+    if (nodeId) {
+      resolve(node)
+    } else {
+      reject('invalid node id')
+    }
   })
   return promise
 }
