@@ -261,18 +261,6 @@ const SearchBar = props => {
   )
 }
 
-const ResultsList = props => {
-  const { searchTerm, pageNumber, pageSize, searchResults, itemCount, onPageNumberChange } = props
-
-  const handleBack = () => {
-    const newPageNumber = Math.max(1, pageNumber - 1)
-    onPageNumberChange(newPageNumber)
-    logPageEvent({
-      category: 'Show-More-Results',
-      action: 'Previous'
-    })
-  }
-
   const handleForward = () => {
     const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / pageSize)), pageNumber + 1)
     onPageNumberChange(newPageNumber)
