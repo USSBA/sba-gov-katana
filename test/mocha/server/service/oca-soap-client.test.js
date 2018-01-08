@@ -40,9 +40,12 @@ describe('OCA SOAP Client', function() {
       wsdlStub.restore()
     })
 
-    it('should retrieve the wsdl and parse the proper soap endpoint', function() {
+    it('should retrieve the wsdl and parse the proper soap endpoint', function(done) {
       let result = getEndPointUrl(fakeWdslUrl)
-      result.should.eventually.equal('https://catweb2.sba.gov/linc/ws/linc.cfc')
+      // 1/8/18 this teset wasn't properly asserting. now that I've changed it the expected seems to have changed
+      // the old expected url was 'https://catweb2.sba.gov/linc/ws/linc.cfc'
+      const expected = 'https://catweb2.sba.gov/lendermatch/ws/linc.cfc'
+      result.should.eventually.equal(expected).notify(done)
     })
 
     it('should fire an error if no wsdl endpoint is configured', function() {
