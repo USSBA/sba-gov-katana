@@ -1,0 +1,80 @@
+.container {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+    @include grid-push(2);
+  }
+}
+
+.textInput {
+  width: 60%;
+  display: inline-block;
+
+  input {
+    height: 53px;
+  }
+}
+
+.searchButton {
+  display: inline-block;
+
+  button {
+    margin-top: -4px;
+    font-size: 22px;
+    line-height: 0.75;
+  }
+}
+
+.searchTerm {
+  float: left;
+  margin-top: 15px;
+  word-wrap: break-word;
+  width: 100%;
+
+  span {
+    font-weight: bold;
+    font-size: 120%;
+  }
+
+  @media (min-width: 768px) {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+.paginator {
+  float: right;
+  margin: 30px 0;
+}
+
+.results {
+  clear: both;
+}
+
+.result {
+  border: 1px solid #bebdbd;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.url a {
+  $action-color: #8a8787;
+  color: $action-color;
+
+  &:hover {
+    color: shade($action-color, 25%);
+  }
+}
+
+.results-message {
+  text-align: center;
+}

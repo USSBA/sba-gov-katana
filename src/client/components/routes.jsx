@@ -104,25 +104,13 @@ const mainRoutes = [
   <Redirect key={47} from="/size-standards" to="/size-standards/" />,
   <Route
     key={50}
-    path={
-      clientConfig.searchUrl === '/search/?q='
-        ? '/search/'
-        : '/someplaceholderforsearchthatnoonewilleverreach/'
-    }
+    path="/search/"
     component={SearchPage}
   />,
   <Redirect
     key={51}
-    from={
-      clientConfig.searchUrl === '/search/?q='
-        ? '/search'
-        : '/someplaceholderforsearchthatnoonewilleverreach'
-    }
-    to={
-      clientConfig.searchUrl === '/search/?q='
-        ? '/search/'
-        : '/someplaceholderforsearchthatnoonewilleverreach/'
-    }
+    from="/search"
+    to="/search/"
   />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,

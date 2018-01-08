@@ -67,7 +67,7 @@ features:
     forPartners: false
     showSbic: false
     moon: false
-    searchUrl: "/tools/search-result-page?search="
+    searchUrl: "/search/?q="
 sizestandards:
     endpoint: placeholder
 cache:
@@ -76,3 +76,5 @@ cache:
 aws:
   access: placeholder
   secret: placeholder
+  cloudsearch:
+    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
