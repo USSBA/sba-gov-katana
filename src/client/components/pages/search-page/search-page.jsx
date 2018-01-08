@@ -368,8 +368,6 @@ function mapReduxStateToProps(reduxState, ownProps) {
   }
 }
 
-}
-
 const ResultsList = props => {
   const { searchTerm, pageNumber, pageSize, searchResults, itemCount, onPageNumberChange } = props
 
