@@ -21,3 +21,8 @@ oca:
     passwordDecryptionKey: OCA_SOAP_DECRYPTION_KEY
 sizestandards:
     endpoint: SIZE_STANDARDS_ENDPOINT
+aws:
+  accessKey: ACCESS_KEY_ID
+  secretKey: SECRET_ACCESS_KEY
+  cloudsearch:
+    endpoint: AWS_CLOUDSEARCH_ENDPOINT

@@ -23,7 +23,7 @@ const getQueryParams = search => {
   let pageNumber = formatted.split('p=')[1]
   if (!isEmpty(pageNumber)) {
     pageNumber = Number(pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber)
-    pageNumber = isNaN(pageNumber) ? 0 : pageNumber
+    pageNumber = isNaN(pageNumber) ? 1 : pageNumber
   } else {
     pageNumber = 1
   }
@@ -339,6 +339,112 @@ const ResultsList = props => {
       <div>
         <div className={styles.searchTerm}>
           <span id="search-term-title">"{searchTerm}"</span>
+        </div>
+        {renderPaginator()}
+      </div>
+      <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
+        {renderList()}
+      </div>
+      {renderPaginator()}
+    </div>
+  )
+}
+
+function mapReduxStateToProps(reduxState, ownProps) {
+  let searchResults = []
+  let itemCount = 0
+  let hasNoResults = false
+
+  if (!isEmpty(reduxState.contentReducer.search)) {
+    searchResults = reduxState.contentReducer.search.hits.hit
+    itemCount = reduxState.contentReducer.search.hits.found
+    hasNoResults = reduxState.contentReducer.search.hasNoResults
+  }
+
+  return {
+    searchResults,
+    itemCount,
+    hasNoResults
+  }
+}
+
+=======
+}
+
+const ResultsList = props => {
+  const { searchTerm, pageNumber, pageSize, searchResults, itemCount, onPageNumberChange } = props
+
+  const handleBack = () => {
+    const newPageNumber = Math.max(1, pageNumber - 1)
+    onPageNumberChange(newPageNumber)
+    logPageEvent({
+      category: 'Show-More-Results',
+      action: 'Previous'
+    })
+  }
+
+  const handleForward = () => {
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / pageSize)), pageNumber + 1)
+    onPageNumberChange(newPageNumber)
+    logPageEvent({
+      category: 'Show-More-Results',
+      action: 'Next'
+    })
+  }
+
+  const renderPaginator = () => {
+    return (
+      <div className={styles.paginator}>
+        <Paginator
+          pageNumber={pageNumber}
+          pageSize={pageSize}
+          total={itemCount}
+          onBack={() => {
+            handleBack()
+          }}
+          onForward={() => {
+            handleForward()
+          }}
+        />
+      </div>
+    )
+  }
+
+  const renderList = () => {
+    return (
+      <div className={styles.results}>
+        {searchResults.map((item, index) => {
+          let title
+          let summary
+          let url
+
+          if (!isEmpty(item.fields)) {
+            title = item.fields.title
+            summary = item.fields.summary
+            url = item.fields.url
+          }
+
+          return (
+            <div key={index} className={styles.result}>
+              <div className={styles.title}>
+                <BasicLink url={url}>{title}</BasicLink>
+              </div>
+              <div className={styles.summary}>{summary}</div>
+              <div className={styles.url}>
+                <BasicLink url={url}>{url}</BasicLink>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <div>
+        <div className={styles.searchTerm}>
+          <span>"{searchTerm}"</span>
         </div>
         {renderPaginator()}
       </div>
