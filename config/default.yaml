@@ -1,4 +1,5 @@
 developmentOptions:
+    devMode: false
     client:
         logging: false
     redux:
@@ -6,7 +7,6 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
-    useLocalDataNotDaisho: false
 govdelivery:
     popupEnabled: false
 foresee:
@@ -54,7 +54,7 @@ database:
         password: placeholder
         user: placeholder
     drupal:
-        databaseName: placeholder
+        databaseName: sba
         host: placeholder
         password: placeholder
         user: placeholder
@@ -70,3 +70,9 @@ features:
     searchUrl: "/tools/search-result-page?search="
 sizestandards:
     endpoint: placeholder
+cache:
+  s3BucketName: dev-content-sba-gov
+  useS3: true
+aws:
+  access: placeholder
+  secret: placeholder

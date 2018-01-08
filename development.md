@@ -66,5 +66,8 @@ drupal:
 drupal8:
   hostname: "http://content.sba.fun/"
   useLocalContacts: true
+aws:
+  access: placeholder
+  secret: placeholder
 
 ```

@@ -1,11 +1,3 @@
-developmentOptions:
-    client:
-        logging: false
-    redux:
-        logging: false
-    webpack:
-        enabled: false
-        silent: false
 database:
     nonDrupal:
         databaseName: sba_katana

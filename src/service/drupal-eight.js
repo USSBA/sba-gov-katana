@@ -1,32 +1,42 @@
+/* eslint-disable id-length,space-infix-ops */
 import _ from 'lodash'
 import Promise from 'bluebird'
 import config from 'config'
 import moment from 'moment'
+const langParser = require('accept-language-parser')
+const langCodes = { es: 'es', en: 'en' }
 
-import { get } from '../models/dao/daisho-client.js'
-import localContacts from '../models/dao/sample-data/contacts.js'
-import sbicContacts from '../models/dao/sample-data/sbic-contacts.js'
-import suretyContacts from '../models/dao/sample-data/surety-contacts.js'
-import documents from '../models/dao/sample-data/documents.js'
-import articlesData from '../models/dao/sample-data/articles.js'
-const localDataMap = {
-  'State registration': localContacts,
-  SBIC: sbicContacts,
-  'Surety bond agency': suretyContacts
+import { getKey } from '../util/s3-cache-reader.js'
+import * as daishoClient from '../models/dao/daisho-client.js'
+
+function get(resource) {
+  if (config.get('cache.useS3')) {
+    return getKey(resource)
+  } else {
+    return daishoClient.get(resource)
+  }
 }
 
 function fetchFormattedNode(nodeId, options) {
-  return get('node/' + nodeId, null, options.headers)
+  let langCode = langParser.parse(options.headers['accept-language']).filter(lang => {
+    return langCodes.hasOwnProperty(lang.code)
+  })
+  langCode = _.isEmpty(langCode) ? 'en' : langCode[0].code
+  return get(nodeId).then(result => {
+    const spanishResult = result[0] && result[0].spanishTranslation
+    if (spanishResult && langCode === langCodes.es) {
+      return _.castArray(spanishResult)
+    } else {
+      return result
+    }
+  })
 }
 
 function fetchContacts(queryParams) {
   const category = queryParams.category
-  if (config.get('developmentOptions.useLocalDataNotDaisho')) {
-    console.log('Using Development Contacts information')
-    return Promise.resolve(localDataMap[category] || [])
-  }
-
-  return get('collection/contacts', queryParams)
+  return get('contacts').then(result => {
+    return _.filter(result, queryParams)
+  })
 }
 
 function fetchFormattedMenu() {
@@ -35,7 +45,7 @@ function fetchFormattedMenu() {
 
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get('counsellorCta.nodeId')
-  return get('node/' + counsellorCtaNodeId).then(data => {
+  return get(counsellorCtaNodeId).then(data => {
     return _.assign({}, data, {
       size: 'Large'
     })
@@ -43,12 +53,7 @@ function fetchCounsellorCta() {
 }
 
 function fetchDocuments(queryParams) {
-  if (config.get('developmentOptions.useLocalDataNotDaisho')) {
-    console.log('Using Development Documents information')
-    return Promise.resolve(filterAndSortDocuments(sanitizeDocumentParams(queryParams), documents))
-  }
-
-  return get('collection/documents').then(data => {
+  return get('documents').then(data => {
     return filterAndSortDocuments(sanitizeDocumentParams(queryParams), data)
   })
 }
@@ -125,6 +130,7 @@ function filterDocuments(params, docs) {
     )
   })
 }
+
 function filterArticles(params, allArticles) {
   return allArticles.filter((article, index) => {
     const matchesUrl = !params.url || params.url === 'all' || article.url === params.url
@@ -188,7 +194,7 @@ function sortDocumentsByDate(docs) {
 }
 
 function fetchTaxonomyVocabulary(queryParams) {
-  return get('collection/taxonomys').then(data => {
+  return get('taxonomys').then(data => {
     let names = _.map(data, 'name')
     if (queryParams.names) {
       names = queryParams.names.split(',')
@@ -203,33 +209,38 @@ function fetchTaxonomyVocabulary(queryParams) {
 }
 
 function fetchArticles(queryParams) {
-  let sortOrder = ''
+  let sortOrder = 'asc'
   let sortField
   if (queryParams.sortBy === 'Title') {
     sortField = 'title'
   } else if (queryParams.sortBy === 'Last Updated') {
     sortField = 'updated'
-    sortOrder = '-'
+    sortOrder = 'desc'
   } else if (queryParams.sortBy === 'Authored on Date') {
     sortField = 'created'
-    sortOrder = '-'
+    sortOrder = 'desc'
   }
-  return get('collection/articles', {
-    sortBy: sortOrder + sortField
-  }).then(results => {
-    const filteredArticles = filterArticles(queryParams, results)
-    return {
-      items:
-        queryParams.start === 'all' || queryParams.end === 'all'
-          ? filteredArticles
-          : filteredArticles.slice(queryParams.start, queryParams.end),
-      count: filteredArticles.length
-    }
-  })
+
+  return get('articles')
+    .then(result => {
+      return _.orderBy(result, sortField, sortOrder)
+    })
+    .then(results => {
+      const filteredArticles = filterArticles(queryParams, results)
+      return {
+        items:
+          queryParams.start === 'all' || queryParams.end === 'all'
+            ? filteredArticles
+            : filteredArticles.slice(queryParams.start, queryParams.end),
+        count: filteredArticles.length
+      }
+    })
 }
 
 function fetchAnnouncements() {
-  return get('collection/announcements')
+  return get('announcements').then(result => {
+    return result
+  })
 }
 
 export {
