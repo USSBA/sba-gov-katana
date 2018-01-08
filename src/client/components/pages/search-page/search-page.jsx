@@ -368,7 +368,6 @@ function mapReduxStateToProps(reduxState, ownProps) {
   }
 }
 
-=======
 }
 
 const ResultsList = props => {
