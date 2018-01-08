@@ -308,15 +308,12 @@ const ResultsList = props => {
           let title
           let summary
           let url
-
           if (!isEmpty(item.fields)) {
             title = item.fields.title
             summary = item.fields.summary
             url = item.fields.url
           }
 
-          // only show results with URL
-          // if (url) {
             return (
               <div key={index} className={`${styles.result}  result-box`}>
                 <div className={styles.title}>
@@ -328,7 +325,6 @@ const ResultsList = props => {
                 </div>
               </div>
             )
-          // }
         })}
       </div>
     )

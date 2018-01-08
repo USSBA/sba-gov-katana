@@ -72,4 +72,8 @@ sizestandards:
     endpoint: nhhr22yl13.execute-api.us-east-1.amazonaws.com/LATEST
 aws:
     cloudsearch:
+<<<<<<< HEAD
         endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+=======
+    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+>>>>>>> f74559f6a2358d3298bd3f9de938a594fcfc7f85
