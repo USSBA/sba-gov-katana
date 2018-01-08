@@ -2,8 +2,7 @@
 import Sequelize from 'sequelize'
 const config = require('config')
 
-
-var drupalSeven;
+var drupalSeven
 if (config.get('developmentOptions.devMode')) {
   drupalSeven = {
     define: () => {
@@ -19,14 +18,14 @@ if (config.get('developmentOptions.devMode')) {
   drupalSeven = new Sequelize(
     config.get('database.drupal.databaseName'),
     config.get('database.drupal.user'),
-    config.get('database.drupal.password'), {
+    config.get('database.drupal.password'),
+    {
       host: config.get('database.drupal.host'),
       dialect: 'mysql',
       pool: config.get('database.pool')
     }
   )
 }
-
 
 function executeDrupalSevenQuery(query) {
   return drupalSeven.query(query, {

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import config from "config";
+import config from 'config'
 const govDeliveryCountyZip = require('../drupal7/drupal-govdelivery-county-zip.js').govDeliveryCountyZip
 const govDeliveryDistrictCounty = require('../drupal7/drupal-govdelivery-district-county.js')
   .govDeliveryDistrictCounty
@@ -44,6 +44,4 @@ function registerForNewsletter(userEmailAddress, userZipCode) {
   }
 }
 
-export {
-  registerForNewsletter
-}
+export { registerForNewsletter }

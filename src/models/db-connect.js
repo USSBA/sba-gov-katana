@@ -2,7 +2,7 @@
 import config from 'config'
 import Sequelize from 'sequelize'
 
-var nonDrupal;
+var nonDrupal
 if (config.get('developmentOptions.devMode')) {
   nonDrupal = {
     sync: () => {
@@ -23,7 +23,8 @@ if (config.get('developmentOptions.devMode')) {
   nonDrupal = new Sequelize(
     config.get('database.nonDrupal.databaseName'),
     config.get('database.nonDrupal.user'),
-    config.get('database.nonDrupal.password'), {
+    config.get('database.nonDrupal.password'),
+    {
       host: config.get('database.nonDrupal.host'),
       dialect: 'mysql',
       pool: config.get('database.pool')
@@ -31,6 +32,4 @@ if (config.get('developmentOptions.devMode')) {
   )
 }
 
-export {
-  nonDrupal
-}
+export { nonDrupal }
