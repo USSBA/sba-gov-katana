@@ -43,8 +43,9 @@ class SearchPage extends PureComponent {
       newSearchTerm: '',
       searchResults: [],
       pageNumber: 1,
-      pageSize: 2,
-      itemCount: 0
+      pageSize: 10,
+      itemCount: 0,
+      start: 0
     }
   }
 
@@ -66,10 +67,14 @@ class SearchPage extends PureComponent {
           pageNumber
         },
         () => {
+          let newStartValue = 0
+          pageNumber > 1 ? newStartValue = (pageNumber - 1) * 10 : newStartValue = 0
+
           this.props.actions.fetchContentIfNeeded('search', 'search', {
             term: searchTerm,
             pageNumber: pageNumber,
-            pageSize: this.state.pageSize
+            pageSize: this.state.pageSize,
+            start: newStartValue
           })
         }
       )
@@ -119,18 +124,36 @@ class SearchPage extends PureComponent {
   }
 
   onPageNumberChange(pageNumber) {
-    this.setState({ pageNumber }, () => {
+    if (pageNumber > 1) {
+      this.setState({
+        start: (pageNumber - 1) * 10
+      })
+    } else {
+      this.setState({
+        start: 0
+      })
+    }
+    this.setState({
+      pageNumber
+    }, () => {
       this.onSubmit(true)
     })
   }
 
-  onSubmit() {
-    const { newSearchTerm: term, pageNumber, pageSize } = this.state
+  onSubmit(resetPageNumber) {
+    const { newSearchTerm: term, pageNumber, pageSize, start } = this.state
+
+    if (resetPageNumber === 1) {
+      this.setState({
+        start: 0
+      })
+    }
 
     const data = {
       term,
       pageNumber,
-      pageSize
+      pageSize,
+      start
     }
 
     this.props.actions.fetchContentIfNeeded('search', 'search', data)
@@ -216,7 +239,7 @@ const SearchBar = props => {
           onKeyDown={obj => {
             const enterKeyCode = 13
             if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit()
+              onSubmit(1)
             }
           }}
           aria-controls="results-list"
@@ -228,7 +251,7 @@ const SearchBar = props => {
           text="Search"
           onClick={() => {
             if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
-              onSubmit()
+              onSubmit(1)
             }
           }}
           aria-controls="results-list"
@@ -236,6 +259,116 @@ const SearchBar = props => {
       </div>
     </div>
   )
+}
+
+const ResultsList = props => {
+  const { searchTerm, pageNumber, pageSize, searchResults, itemCount, onPageNumberChange } = props
+
+  const handleBack = () => {
+    const newPageNumber = Math.max(1, pageNumber - 1)
+    onPageNumberChange(newPageNumber)
+    logPageEvent({
+      category: 'Show-More-Results',
+      action: 'Previous'
+    })
+  }
+
+  const handleForward = () => {
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / pageSize)), pageNumber + 1)
+    onPageNumberChange(newPageNumber)
+    logPageEvent({
+      category: 'Show-More-Results',
+      action: 'Next'
+    })
+  }
+
+  const renderPaginator = () => {
+    return (
+      <div className={styles.paginator}>
+        <Paginator
+          id={"current-total-result-number"}
+          pageNumber={pageNumber}
+          pageSize={pageSize}
+          total={itemCount}
+          onBack={() => {
+            handleBack()
+          }}
+          onForward={() => {
+            handleForward()
+          }}
+        />
+      </div>
+    )
+  }
+
+  const renderList = () => {
+    return (
+      <div className={styles.results}>
+        {searchResults.map((item, index) => {
+          let title
+          let summary
+          let url
+
+          if (!isEmpty(item.fields)) {
+            title = item.fields.title
+            summary = item.fields.summary
+            url = item.fields.url
+          }
+
+          // only show results with URL
+          // if (url) {
+            return (
+              <div key={index} className={`${styles.result}  result-box`}>
+                <div className={styles.title}>
+                  <BasicLink url={url} myClassName={"result-title"}>{title}</BasicLink>
+                </div>
+                <div className={`${styles.summary} result-summary`}>{summary}</div>
+                <div className={styles.url}>
+                  <BasicLink url={url} myClassName={"result-url"}>{url}</BasicLink>
+                </div>
+              </div>
+            )
+          // }
+        })}
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <div>
+        <div className={styles.searchTerm}>
+          <span id="search-term-title">"{searchTerm}"</span>
+        </div>
+        {renderPaginator()}
+      </div>
+      <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
+        {renderList()}
+      </div>
+      {renderPaginator()}
+    </div>
+  )
+}
+
+function mapReduxStateToProps(reduxState, ownProps) {
+  let searchResults = []
+  let itemCount = 0
+  let hasNoResults = false
+
+  if (!isEmpty(reduxState.contentReducer.search)) {
+    searchResults = reduxState.contentReducer.search.hits.hit
+    itemCount = reduxState.contentReducer.search.hits.found
+    hasNoResults = reduxState.contentReducer.search.hasNoResults
+  }
+
+  return {
+    searchResults,
+    itemCount,
+    hasNoResults
+  }
+}
+
+=======
 }
 
 const ResultsList = props => {

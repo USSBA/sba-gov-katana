@@ -69,7 +69,7 @@ features:
     moon: false
     searchUrl: "/tools/search-result-page?search="
 sizestandards:
-    endpoint: placeholder
+    endpoint: nhhr22yl13.execute-api.us-east-1.amazonaws.com/LATEST
 aws:
-  cloudsearch:
+    cloudsearch:
     endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'

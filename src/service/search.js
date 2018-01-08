@@ -7,7 +7,7 @@ const csd = new aws.CloudSearchDomain({
 })
 
 function search(req, res) {
-  const { term, pageSize, pageNumber } = req
+  const { term, pageSize, start } = req
 
   const params = {
     query: term /* required */,
@@ -22,7 +22,7 @@ function search(req, res) {
     //return: 'STRING_VALUE',
     size: pageSize,
     //sort: 'STRING_VALUE',
-    start: pageNumber
+    start: start
   }
 
   return new Promise((resolve, reject) => {
