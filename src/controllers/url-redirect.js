@@ -15,9 +15,7 @@ function handleUrlRedirect(req, res) {
       })
     }
   } else {
-    res
-      .status(HttpStatus.BAD_REQUEST)
-      .send('Query is missing valid parameters. Current valid parameters are: url')
+    res.status(HttpStatus.NOT_FOUND)
   }
 }
 

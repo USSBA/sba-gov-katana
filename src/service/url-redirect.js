@@ -1,3 +1,7 @@
+import config from 'config'
+const aws = require('aws-sdk')
+aws.config.update({ region: 'us-east-1' })
+
 function findNodeIdByUrl(url) {
   let nodeId = null
   // TODO: logic to find nodeId by the url
@@ -21,4 +25,41 @@ function fetchNodeDataById(nodeId) {
   })
   return promise
 }
-export { findNodeIdByUrl, fetchNodeDataById }
+
+function addUrlNodeMapping(nodeId, url, timestamp) {
+  var params = mapUrlNodeParameters(nodeId, url, timestamp)
+  const dynamodb = new aws.DynamoDB({
+    apiVersion: '2012-10-08',
+    region: 'us-east-1',
+    endpoint: config.get('aws.dynamodb.endpoint')
+  })
+  return dynamodb.putItem(params).promise()
+}
+
+function mapUrlNodeParameters(nodeId, url, timestamp) {
+  const tableName = config.get('features.urlRedirect.tableName')
+  const sortKey = nodeId + '#' + timestamp
+  /* eslint-disable id-length */
+  const params = {
+    Item: {
+      NodeId: {
+        S: nodeId.toString()
+      },
+      Timestamp: {
+        S: timestamp.toString()
+      },
+      Url: {
+        S: url
+      },
+      SortKey: {
+        S: sortKey
+      }
+    },
+    ReturnConsumedCapacity: 'TOTAL',
+    TableName: tableName
+  }
+  /* eslint-enable id-length */
+  return params
+}
+
+export { findNodeIdByUrl, fetchNodeDataById, addUrlNodeMapping, mapUrlNodeParameters }

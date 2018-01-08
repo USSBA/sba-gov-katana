@@ -32,7 +32,7 @@
   "homepage": "https://github.com/sba-ds/sba-gov#readme",
   "dependencies": {
     "accept-language-parser": "^1.4.1",
-    "aws-sdk": "^2.175.0",
+    "aws-sdk": "^2.177.0",
     "axios": "0.16.1",
     "bluebird": "3.4.6",
     "body-parser": "1.15.2",

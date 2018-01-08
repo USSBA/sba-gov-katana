@@ -109,10 +109,6 @@ const mainRoutes = [
   />,
   <Redirect
     key={51}
-<<<<<<< HEAD
-    from="/search"
-    to="/search/"
-=======
     from={
       clientConfig.searchUrl === '/search/?q='
         ? '/search'
@@ -123,7 +119,6 @@ const mainRoutes = [
         ? '/search/'
         : '/someplaceholderforsearchthatnoonewilleverreach/'
     }
->>>>>>> DTT-3 Adding endpoint and redirect stubs
   />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
