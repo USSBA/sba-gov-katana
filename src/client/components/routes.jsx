@@ -109,8 +109,16 @@ const mainRoutes = [
   />,
   <Redirect
     key={51}
-    from="/search"
-    to="/search/"
+    from={
+      clientConfig.searchUrl === '/search/?q='
+        ? '/search'
+        : '/someplaceholderforsearchthatnoonewilleverreach'
+    }
+    to={
+      clientConfig.searchUrl === '/search/?q='
+        ? '/search/'
+        : '/someplaceholderforsearchthatnoonewilleverreach/'
+    }
   />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
