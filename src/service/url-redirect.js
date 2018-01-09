@@ -30,8 +30,7 @@ function addUrlNodeMapping(nodeId, url, timestamp) {
   var params = mapUrlNodeParameters(nodeId, url, timestamp)
   const dynamodb = new aws.DynamoDB({
     apiVersion: '2012-10-08',
-    region: 'us-east-1',
-    endpoint: config.get('aws.dynamodb.endpoint')
+    region: 'us-east-1'
   })
   return dynamodb.putItem(params).promise()
 }
