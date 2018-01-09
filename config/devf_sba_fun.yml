@@ -11,4 +11,4 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: /search?q=
+    searchUrl: "/search?q="
