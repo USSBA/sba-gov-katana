@@ -72,7 +72,7 @@ class PagingLookup extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomyVocabulary', {
+    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
       names: this.props.taxonomyFilters.join(',')
     })
   }
