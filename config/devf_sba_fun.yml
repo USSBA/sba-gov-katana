@@ -12,6 +12,3 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/search/?q="
-aws:
-    cloudsearch:
-        enabled: true
