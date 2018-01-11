@@ -68,8 +68,6 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/search/?q="
-    urlRedirect:
-        tableName: placeholder
 sizestandards:
     endpoint: placeholder
 cache:
