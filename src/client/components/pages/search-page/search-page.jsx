@@ -92,25 +92,28 @@ class SearchPage extends PureComponent {
     // update search results
     const { searchResults, itemCount } = nextProps
 
-    this.setState(
-      {
-        searchTerm,
-        searchResults,
-        itemCount
-      },
-      () => {
-        if (!isEmpty(nextProps.location.search)) {
-          // after the search term state has been updated
-          // show it's value in the input field
-          // --
-          // this enables the input field to update itself
-          // when a browser history is navigated
-          this.updateSearchInputValue(searchTerm)
-        } else {
-          this.updateSearchInputValue('')
-        }
+    const data = {
+      searchTerm,
+      searchResults,
+      itemCount
+    }
+
+    if (nextProps.location.action === 'POP') {
+      data.newSearchTerm = searchTerm
+    }
+
+    this.setState(data, () => {
+      if (!isEmpty(nextProps.location.search)) {
+        // after the search term state has been updated
+        // show it's value in the input field
+        // --
+        // this enables the input field to update itself
+        // when a browser history is navigated
+        this.updateSearchInputValue(searchTerm)
+      } else {
+        this.updateSearchInputValue('')
       }
-    )
+    })
   }
 
   updateSearchInputValue(value) {
