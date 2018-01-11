@@ -9,8 +9,10 @@ const csd = new aws.CloudSearchDomain({
 function search(req, res) {
   const { term, pageSize, start } = req
 
+  const fixedTerm = term.replace(/%20/g, ' ')
+
   const params = {
-    query: term /* required */,
+    query: fixedTerm /* required */,
     //cursor: 'STRING_VALUE',
     //expr: 'STRING_VALUE',
     //facet: 'STRING_VALUE',

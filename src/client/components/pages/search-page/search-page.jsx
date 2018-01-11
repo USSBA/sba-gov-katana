@@ -23,7 +23,7 @@ const getQueryParams = search => {
   let pageNumber = formatted.split('p=')[1]
   if (!isEmpty(pageNumber)) {
     pageNumber = Number(pageNumber.indexOf('&') !== -1 ? pageNumber.split('&')[0] : pageNumber)
-    pageNumber = isNaN(pageNumber) ? 0 : pageNumber
+    pageNumber = isNaN(pageNumber) ? 1 : pageNumber
   } else {
     pageNumber = 1
   }
@@ -168,7 +168,7 @@ class SearchPage extends PureComponent {
 
     browserHistory.push({
       pathname: '/search',
-      search: '?q=' + term + '&p=' + pageNumber
+      search: `?q=${term}&p=${pageNumber}`
     })
   }
 
@@ -226,7 +226,7 @@ const SearchBar = props => {
 
     browserHistory.push({
       pathname: '/search',
-      search: '?q=' + term
+      search: `?q=${term}`
     })
   }
 

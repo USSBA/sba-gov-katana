@@ -78,3 +78,5 @@ aws:
   secret: placeholder
   cloudsearch:
     endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+  dynamodb: 
+    endpoint: placeholder
