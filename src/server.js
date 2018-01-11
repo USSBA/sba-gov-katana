@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
   const sessionCookie = _.find(_.keys(req.cookies), key => {
     return _.startsWith(key, 'SSESS')
   })
-  console.log('Session cookie: ', sessionCookie)
+  // console.log('Session cookie: ', sessionCookie)
   let hasSessionCookie = false
   if (sessionCookie) {
     hasSessionCookie = true
@@ -133,6 +133,9 @@ app.get('/api/content/newsletter-registration.json', registerUserForNewsletter)
 import { fetchContentById, fetchContentByType } from './controllers/content.js'
 app.get('/api/content/:type/:id.json', fetchContentById)
 app.get('/api/content/:type.json', fetchContentByType)
+
+import { handleUrlRedirect } from './controllers/url-redirect.js'
+app.get('/api/content', handleUrlRedirect)
 
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {

@@ -32,8 +32,26 @@ workflows:
         requires: [cache-dependencies]
     - build-webpack:
         requires: [test-jest, test-mocha, test-lint, test-format]
+        filters:
+          branches:
+            only:
+            - master
+            - integration
+            - master-integration
+            - staging
+            - /RELEASE-\d+/
+            - /[Ff]eature-\w+-\d+[-\w]*/
     - build-push-image:
         requires: [build-webpack]
+        filters:
+          branches:
+            only:
+            - master
+            - integration
+            - master-integration
+            - staging
+            - /RELEASE-\d+/
+            - /[Ff]eature-\w+-\d+[-\w]*/
     #TODO: When katana service is deployed to ECS, re-enable these steps
     #- deploy-mint-containers:
     #    requires: [build-push-image]

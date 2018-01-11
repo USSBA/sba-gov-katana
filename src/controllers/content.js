@@ -11,6 +11,7 @@ import {
   fetchArticles
 } from '../service/drupal-eight.js'
 import { fetchNotification } from '../service/notification.js'
+import { search } from '../service/search.js'
 import HttpStatus from 'http-status-codes'
 import _ from 'lodash'
 import querystring from 'querystring'
@@ -30,7 +31,8 @@ const fetchContentTypeFunctions = {
   documents: fetchDocuments,
   articles: fetchArticles,
   taxonomyVocabulary: fetchTaxonomyVocabulary,
-  notification: fetchNotification
+  notification: fetchNotification,
+  search: search
 }
 
 function fetchContentById(req, res) {

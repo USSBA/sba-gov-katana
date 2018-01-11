@@ -15,7 +15,7 @@
     "test-jest": "NODE_ENV=test jest test/jest/",
     "test-mocha":
       "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
-    "test-format": "prettier --list-different '{src,test}/**/*.{js,json,jsx,scss}'",
+    "test-format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "precommit": "npm run lint && npm run test && lint-staged",
     "clear-cache": "curl localhost:3000/actions/clearcache"
   },
@@ -31,6 +31,8 @@
   },
   "homepage": "https://github.com/sba-ds/sba-gov#readme",
   "dependencies": {
+    "accept-language-parser": "^1.4.1",
+    "aws-sdk": "^2.177.0",
     "axios": "0.16.1",
     "bluebird": "3.4.6",
     "body-parser": "1.15.2",
@@ -39,6 +41,7 @@
     "cookie-parser": "1.4.3",
     "cron": "1.2.1",
     "css-loader": "0.28.2",
+    "dotenv": "^4.0.0",
     "element-overlap": "1.0.1",
     "express": "4.14.0",
     "file-loader": "0.11.1",
@@ -57,6 +60,7 @@
     "moment": "2.17.1",
     "moment-timezone": "0.5.13",
     "mysql": "2.12.0",
+    "mysql2": "^1.5.1",
     "newrelic": "1.36.2",
     "node-sass": "4.5.3",
     "nodemailer": "4.0.1",

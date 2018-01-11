@@ -1,7 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchPage to match snapshot 1`] = `
-<div>
-  Search Page
+<div
+  className="container"
+>
+  <h1>
+    Search
+  </h1>
+  <div>
+    <div
+      className="textInput"
+    >
+      <div
+        className="inputContainer"
+        hidden={undefined}
+        id="search-container"
+      >
+        <label
+          className="controlLabel"
+          htmlFor="search"
+        >
+          What are you looking for?
+        </label>
+        <div
+          className="textInputContainer"
+        >
+          <input
+            aria-controls="results-list"
+            className="textInput"
+            defaultValue=""
+            id="search"
+            onChange={[Function]}
+            onKeyDown={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="searchButton"
+    >
+      <button
+        autoFocus={false}
+        className="SmallPrimaryButton  "
+        disabled={undefined}
+        formTarget="_self"
+        id="submit-button"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        Search
+      </button>
+    </div>
+  </div>
 </div>
 `;

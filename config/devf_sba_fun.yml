@@ -11,4 +11,7 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: "/tools/search-result-page?search="
+    searchUrl: "/search/?q="
+cache:
+  s3BucketName: devf-content-sba-gov
+  useS3: true
