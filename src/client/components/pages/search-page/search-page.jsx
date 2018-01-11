@@ -68,7 +68,7 @@ class SearchPage extends PureComponent {
         },
         () => {
           let newStartValue = 0
-          pageNumber > 1 ? newStartValue = (pageNumber - 1) * 10 : newStartValue = 0
+          pageNumber > 1 ? (newStartValue = (pageNumber - 1) * 10) : (newStartValue = 0)
 
           this.props.actions.fetchContentIfNeeded('search', 'search', {
             term: searchTerm,
@@ -92,25 +92,28 @@ class SearchPage extends PureComponent {
     // update search results
     const { searchResults, itemCount } = nextProps
 
-    this.setState(
-      {
-        searchTerm,
-        searchResults,
-        itemCount
-      },
-      () => {
-        if (!isEmpty(nextProps.location.search)) {
-          // after the search term state has been updated
-          // show it's value in the input field
-          // --
-          // this enables the input field to update itself
-          // when a browser history is navigated
-          this.updateSearchInputValue(searchTerm)
-        } else {
-          this.updateSearchInputValue('')
-        }
+    const data = {
+      searchTerm,
+      searchResults,
+      itemCount
+    }
+
+    if (nextProps.location.action === 'POP') {
+      data.newSearchTerm = searchTerm
+    }
+
+    this.setState(data, () => {
+      if (!isEmpty(nextProps.location.search)) {
+        // after the search term state has been updated
+        // show it's value in the input field
+        // --
+        // this enables the input field to update itself
+        // when a browser history is navigated
+        this.updateSearchInputValue(searchTerm)
+      } else {
+        this.updateSearchInputValue('')
       }
-    )
+    })
   }
 
   updateSearchInputValue(value) {
@@ -133,11 +136,14 @@ class SearchPage extends PureComponent {
         start: 0
       })
     }
-    this.setState({
-      pageNumber
-    }, () => {
-      this.onSubmit(true)
-    })
+    this.setState(
+      {
+        pageNumber
+      },
+      () => {
+        this.onSubmit(true)
+      }
+    )
   }
 
   onSubmit(resetPageNumber) {
@@ -286,7 +292,7 @@ const ResultsList = props => {
     return (
       <div className={styles.paginator}>
         <Paginator
-          id={"current-total-result-number"}
+          id={'current-total-result-number'}
           pageNumber={pageNumber}
           pageSize={pageSize}
           total={itemCount}
@@ -317,17 +323,21 @@ const ResultsList = props => {
 
           // only show results with URL
           // if (url) {
-            return (
-              <div key={index} className={`${styles.result}  result-box`}>
-                <div className={styles.title}>
-                  <BasicLink url={url} myClassName={"result-title"}>{title}</BasicLink>
-                </div>
-                <div className={`${styles.summary} result-summary`}>{summary}</div>
-                <div className={styles.url}>
-                  <BasicLink url={url} myClassName={"result-url"}>{url}</BasicLink>
-                </div>
+          return (
+            <div key={index} className={`${styles.result}  result-box`}>
+              <div className={styles.title}>
+                <BasicLink url={url} myClassName={'result-title'}>
+                  {title}
+                </BasicLink>
               </div>
-            )
+              <div className={`${styles.summary} result-summary`}>{summary}</div>
+              <div className={styles.url}>
+                <BasicLink url={url} myClassName={'result-url'}>
+                  {url}
+                </BasicLink>
+              </div>
+            </div>
+          )
           // }
         })}
       </div>
