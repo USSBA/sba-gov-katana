@@ -11,7 +11,7 @@ database:
     databaseName: DATABASE_NAME_DRUPAL7
     host: DATABASE_HOST_DRUPAL7
     password: DATABASE_PASSWORD_DRUPAL7
-    user: DATABASE_PASSWORD_DRUPAL7
+    user: DATABASE_USER_DRUPAL7
 email:
   password: SMTP_PASSWORD
   username: SMTP_USERNAME
