@@ -9,42 +9,25 @@ const dynamodb = new aws.DynamoDB({
 
 function fetchNewUrlByOldUrl(oldUrl) {
   const params = mapUrlRedirectQueryParameters(oldUrl)
-  return dynamodb
-    .query(params)
-    .promise()
-    .then(result => {
-      return getMostRecentUrlFromResults(result)
-    })
+  return dynamodb.getItem(params).promise()
 }
 
-function getMostRecentUrlFromResults(resultSet) {
-  if (resultSet.Count < 1) {
-    return null
-  } else {
-    let mostRecentItem
-    for (const item of resultSet.Items) {
-      const oldDate = new Date(mostRecentItem.LastModified.N)
-      const newDate = new Date(item.LastModified.N)
-      if (newDate > oldDate) {
-        mostRecentItem = item
-      }
-    }
-    return mostRecentItem.newUrl
-  }
-}
-
+/*eslint-disable id-length*/
 function mapUrlRedirectQueryParameters(oldUrl) {
   const tableName = config.get('features.drupalRedirect.tableName')
   var params = {
     TableName: tableName,
     ProjectionExpression: 'OldUrl, NewUrl, LastModified, LastModifiedBy',
-    KeyConditionExpression: 'OldUrl = :oldUrl',
-    ExpressionAttributeValues: {
-      ':oldUrl': oldUrl
+    ConsistentRead: true,
+    Key: {
+      OldUrl: {
+        S: oldUrl
+      }
     }
   }
   return params
 }
+/*eslint-enable id-length */
 
 function addUrRedirectMapping(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy) {
   var params = mapUrlRedirectPutParameters(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy)
@@ -80,6 +63,5 @@ export {
   fetchNewUrlByOldUrl,
   mapUrlRedirectQueryParameters,
   addUrRedirectMapping,
-  mapUrlRedirectPutParameters,
-  getMostRecentUrlFromResults
+  mapUrlRedirectPutParameters
 }

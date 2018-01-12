@@ -134,6 +134,9 @@ import { fetchContentById, fetchContentByType } from './controllers/content.js'
 app.get('/api/content/:type/:id.json', fetchContentById)
 app.get('/api/content/:type.json', fetchContentByType)
 
+import { redirectIfFound } from './controllers/drupal-url-redirect.js'
+app.get('/*', redirectIfFound)
+
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     lang: req.preferredLanguage,
