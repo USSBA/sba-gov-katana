@@ -1,4 +1,4 @@
-/* eslint-disable id-length,space-infix-ops */
+/* eslint-disable id-length,space-infix-ops, object-property-newline */
 import _ from 'lodash'
 import Promise from 'bluebird'
 import config from 'config'
