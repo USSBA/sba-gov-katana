@@ -1,6 +1,5 @@
 import { isEmpty } from 'lodash'
 import React, { PureComponent } from 'react'
-import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BasicLink, SmallPrimaryButton, TextInput } from 'atoms'
@@ -92,25 +91,13 @@ class SearchPage extends PureComponent {
     // update search results
     const { searchResults, itemCount } = nextProps
 
-    this.setState(
-      {
-        searchTerm,
-        searchResults,
-        itemCount
-      },
-      () => {
-        if (!isEmpty(nextProps.location.search)) {
-          // after the search term state has been updated
-          // show it's value in the input field
-          // --
-          // this enables the input field to update itself
-          // when a browser history is navigated
-          this.updateSearchInputValue(searchTerm)
-        } else {
-          this.updateSearchInputValue('')
-        }
-      }
-    )
+    const data = {
+      searchTerm,
+      searchResults,
+      itemCount
+    }
+
+    this.setState(data)
   }
 
   updateSearchInputValue(value) {
@@ -159,14 +146,17 @@ class SearchPage extends PureComponent {
       start
     }
 
-    this.props.actions.fetchContentIfNeeded('search', 'search', data)
+    //this.props.actions.fetchContentIfNeeded('search', 'search', data)
 
     // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
 
+    /*
     browserHistory.push({
       pathname: '/search',
       search: `?q=${term}&p=${pageNumber}`
-    })
+    })*/
+
+    window.location.href = `/search?q=${term}&p=${pageNumber}`
   }
 
   render() {
@@ -221,10 +211,12 @@ const SearchBar = props => {
 
     // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
 
-    browserHistory.push({
+    /*browserHistory.push({
       pathname: '/search',
       search: `?q=${term}`
-    })
+    })*/
+
+    window.location.href = `/search?q=${term}`
   }
 
   return (
