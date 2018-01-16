@@ -72,6 +72,10 @@ app.use(function(req, res, next) {
   next()
 })
 
+app.get('/health', (req, res, next) => {
+  res.status(HttpStatus.OK).send()
+})
+
 import * as sizeStandardsController from './controllers/size-standards.js'
 app.get('/naics', sizeStandardsController.getNaics)
 app.get('/naics/:id', sizeStandardsController.getNaicsById)
