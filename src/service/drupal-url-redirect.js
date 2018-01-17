@@ -12,9 +12,7 @@ function fetchNewUrlByOldUrl(oldUrl) {
     .getItem(params)
     .promise()
     .then(response => {
-      console.log(response)
       const url = response.Item ? response.Item.NewUrl.S : null
-      console.log(url)
       return url
     })
 }
