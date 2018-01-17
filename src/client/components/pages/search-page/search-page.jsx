@@ -233,7 +233,7 @@ const SearchBar = props => {
           }}
           onKeyDown={obj => {
             const enterKeyCode = 13
-            if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
+            if (obj.keyCode === enterKeyCode && newSearchTerm.length > 0) {
               onSubmit(1)
             }
           }}
@@ -245,7 +245,7 @@ const SearchBar = props => {
           id="submit-button"
           text="Search"
           onClick={() => {
-            if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
+            if (newSearchTerm.length > 0) {
               onSubmit(1)
             }
           }}
