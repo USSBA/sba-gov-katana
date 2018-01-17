@@ -1,6 +1,5 @@
 import config from 'config'
 const aws = require('aws-sdk')
-aws.config.update({ region: 'us-east-1' })
 
 const dynamodb = new aws.DynamoDB({
   apiVersion: '2012-10-08',
@@ -9,7 +8,15 @@ const dynamodb = new aws.DynamoDB({
 
 function fetchNewUrlByOldUrl(oldUrl) {
   const params = mapUrlRedirectQueryParameters(oldUrl)
-  return dynamodb.getItem(params).promise()
+  return dynamodb
+    .getItem(params)
+    .promise()
+    .then(response => {
+      console.log(response)
+      const url = response.Item ? response.Item.NewUrl.S : null
+      console.log(url)
+      return url
+    })
 }
 
 /*eslint-disable id-length*/

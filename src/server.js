@@ -134,19 +134,26 @@ import { fetchContentById, fetchContentByType } from './controllers/content.js'
 app.get('/api/content/:type/:id.json', fetchContentById)
 app.get('/api/content/:type.json', fetchContentByType)
 
-import { redirectIfFound } from './controllers/drupal-url-redirect.js'
-app.get('/*', redirectIfFound)
+import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 
 app.get(['/', '/*'], function(req, res, next) {
-  const pugVariables = _.merge({}, metaVariables, {
-    lang: req.preferredLanguage,
-    config: JSON.stringify(req.sessionAndConfig),
-    optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
-    tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
-    foreseeEnabled: config.get('foresee.enabled'),
-    foreseeEnvironment: config.get('foresee.environment')
+  const url = req.url
+  fetchNewUrlByOldUrl(url).then(newUrl => {
+    if (newUrl) {
+      console.log('Redirecting to ' + newUrl)
+      res.redirect(newUrl)
+    } else {
+      const pugVariables = _.merge({}, metaVariables, {
+        lang: req.preferredLanguage,
+        config: JSON.stringify(req.sessionAndConfig),
+        optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
+        tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
+        foreseeEnabled: config.get('foresee.enabled'),
+        foreseeEnvironment: config.get('foresee.environment')
+      })
+      res.render('main', pugVariables)
+    }
   })
-  res.render('main', pugVariables)
 })
 
 // development error handler
