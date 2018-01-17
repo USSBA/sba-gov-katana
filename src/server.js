@@ -137,23 +137,27 @@ app.get('/api/content/:type.json', fetchContentByType)
 import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 
 app.get(['/', '/*'], function(req, res, next) {
-  const url = req.url
-  fetchNewUrlByOldUrl(url).then(newUrl => {
-    if (newUrl) {
-      console.log('Redirecting to ' + newUrl)
-      res.redirect(newUrl)
-    } else {
-      const pugVariables = _.merge({}, metaVariables, {
-        lang: req.preferredLanguage,
-        config: JSON.stringify(req.sessionAndConfig),
-        optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
-        tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
-        foreseeEnabled: config.get('foresee.enabled'),
-        foreseeEnvironment: config.get('foresee.environment')
-      })
-      res.render('main', pugVariables)
-    }
+  const pugVariables = _.merge({}, metaVariables, {
+    lang: req.preferredLanguage,
+    config: JSON.stringify(req.sessionAndConfig),
+    optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
+    tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
+    foreseeEnabled: config.get('foresee.enabled'),
+    foreseeEnvironment: config.get('foresee.environment')
   })
+  const url = req.url
+  if (config.get('features.drupalRedirect.enabled')) {
+    fetchNewUrlByOldUrl(url).then(newUrl => {
+      if (newUrl) {
+        console.log('Redirecting to ' + newUrl)
+        res.redirect(newUrl)
+      } else {
+        res.render('main', pugVariables)
+      }
+    })
+  } else {
+    res.render('main', pugVariables)
+  }
 })
 
 // development error handler
