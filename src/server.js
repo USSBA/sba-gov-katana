@@ -140,6 +140,7 @@ app.get('/api/content/:type.json', fetchContentByType)
 
 import { handleUrlRedirect } from './controllers/url-redirect.js'
 app.get('/api/content', handleUrlRedirect)
+import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
@@ -150,7 +151,19 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnabled: config.get('foresee.enabled'),
     foreseeEnvironment: config.get('foresee.environment')
   })
-  res.render('main', pugVariables)
+  const url = req.url
+  if (config.get('features.drupalRedirect.enabled')) {
+    fetchNewUrlByOldUrl(url).then(newUrl => {
+      if (newUrl) {
+        console.log('Redirecting to ' + newUrl)
+        res.redirect(newUrl)
+      } else {
+        res.render('main', pugVariables)
+      }
+    })
+  } else {
+    res.render('main', pugVariables)
+  }
 })
 
 // development error handler

@@ -70,6 +70,9 @@ features:
     searchUrl: "/search/?q="
     urlRedirect:
         tableName: placeholder
+    drupalRedirect:
+        enabled: true
+        tableName: DrupalUrlRedirect
 sizestandards:
     endpoint: placeholder
 cache:
