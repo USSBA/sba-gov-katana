@@ -4,7 +4,7 @@ import chai from 'chai'
 import {
   fetchNewUrlByOldUrl,
   mapUrlRedirectQueryParameters,
-  addUrRedirectMapping,
+  addUrlRedirectMapping,
   mapUrlRedirectPutParameters
 } from '../../../../src/service/drupal-url-redirect.js'
 

@@ -33,7 +33,7 @@ function mapUrlRedirectQueryParameters(oldUrl) {
 }
 /*eslint-enable id-length */
 
-function addUrRedirectMapping(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy) {
+function addUrlRedirectMapping(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy) {
   var params = mapUrlRedirectPutParameters(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy)
   return dynamodb.putItem(params).promise()
 }
@@ -66,6 +66,6 @@ function mapUrlRedirectPutParameters(oldUrl, newUrl, lastModifiedInEpochMiliseco
 export {
   fetchNewUrlByOldUrl,
   mapUrlRedirectQueryParameters,
-  addUrRedirectMapping,
+  addUrlRedirectMapping,
   mapUrlRedirectPutParameters
 }
