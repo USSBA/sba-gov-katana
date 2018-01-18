@@ -9,7 +9,7 @@ class Paginator extends React.Component {
     let end = Math.min(start + this.props.pageSize - 1, this.props.total)
     return (
       <div id={this.props.id} className={s.container}>
-        <p>
+        <p className="pagination-status">
           <span>Showing&nbsp;&nbsp;</span>
           <span className={s.bold}>
             {start}&nbsp; -&nbsp;{end}&nbsp;&nbsp;
@@ -17,8 +17,12 @@ class Paginator extends React.Component {
           <span>of&nbsp;&nbsp;</span>
           <span className={s.bold}>{this.props.total}</span>
         </p>
-        <ArrowButton isBack onActivate={this.props.onBack} />
-        <ArrowButton noLeftBorder onActivate={this.props.onForward} />
+        <span className="previous-arrow">
+          <ArrowButton isBack onActivate={this.props.onBack} />
+        </span>
+        <span className="next-arrow">
+          <ArrowButton noLeftBorder onActivate={this.props.onForward} />
+        </span>
       </div>
     )
   }

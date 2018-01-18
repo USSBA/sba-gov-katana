@@ -277,11 +277,11 @@ const ResultsList = props => {
     })
   }
 
-  const renderPaginator = () => {
+  const renderPaginator = section => {
     return (
       <div className={styles.paginator}>
         <Paginator
-          id={'current-total-result-number'}
+          id={`current-total-result-number-${section}`}
           pageNumber={pageNumber}
           pageSize={pageSize}
           total={itemCount}
@@ -339,12 +339,12 @@ const ResultsList = props => {
         <div className={styles.searchTerm}>
           <span id="search-term-title">"{searchTerm}"</span>
         </div>
-        {renderPaginator()}
+        {renderPaginator('top')}
       </div>
       <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
         {renderList()}
       </div>
-      {renderPaginator()}
+      {renderPaginator('bottom')}
     </div>
   )
 }

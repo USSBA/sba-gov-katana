@@ -212,7 +212,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="container"
         id={undefined}
       >
-        <p>
+        <p
+          className="pagination-status"
+        >
           <span>
             Showing  
           </span>
@@ -233,32 +235,40 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             42
           </span>
         </p>
-        <a
-          className="ArrowButton "
-          id={undefined}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex="0"
+        <span
+          className="previous-arrow"
         >
-          <i
-            alt="previous page"
-            aria-hidden="true"
-            className=" fa fa-chevron-left"
-          />
-        </a>
-        <a
-          className="ArrowButton noLeftBorder"
-          id={undefined}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex="0"
+          <a
+            className="ArrowButton "
+            id={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="0"
+          >
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className=" fa fa-chevron-left"
+            />
+          </a>
+        </span>
+        <span
+          className="next-arrow"
         >
-          <i
-            alt="next page"
-            aria-hidden="true"
-            className=" fa fa-chevron-right"
-          />
-        </a>
+          <a
+            className="ArrowButton noLeftBorder"
+            id={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="0"
+          >
+            <i
+              alt="next page"
+              aria-hidden="true"
+              className=" fa fa-chevron-right"
+            />
+          </a>
+        </span>
       </div>
     </div>
     <div
@@ -480,7 +490,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="container"
         id={undefined}
       >
-        <p>
+        <p
+          className="pagination-status"
+        >
           <span>
             Showing  
           </span>
@@ -501,32 +513,40 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             42
           </span>
         </p>
-        <a
-          className="ArrowButton "
-          id={undefined}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex="0"
+        <span
+          className="previous-arrow"
         >
-          <i
-            alt="previous page"
-            aria-hidden="true"
-            className=" fa fa-chevron-left"
-          />
-        </a>
-        <a
-          className="ArrowButton noLeftBorder"
-          id={undefined}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          tabIndex="0"
+          <a
+            className="ArrowButton "
+            id={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="0"
+          >
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className=" fa fa-chevron-left"
+            />
+          </a>
+        </span>
+        <span
+          className="next-arrow"
         >
-          <i
-            alt="next page"
-            aria-hidden="true"
-            className=" fa fa-chevron-right"
-          />
-        </a>
+          <a
+            className="ArrowButton noLeftBorder"
+            id={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="0"
+          >
+            <i
+              alt="next page"
+              aria-hidden="true"
+              className=" fa fa-chevron-right"
+            />
+          </a>
+        </span>
       </div>
     </div>
   </div>
