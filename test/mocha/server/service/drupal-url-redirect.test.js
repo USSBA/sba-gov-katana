@@ -44,7 +44,6 @@ describe('#Drupal Url Redirect Service', () => {
     it('correctly maps parameters', () => {
       const params = mapUrlRedirectQueryParameters('http://www.oldurl.com')
       const expectedResult = {
-        ConsistentRead: true,
         Key: {
           OldUrl: {
             S: 'http://www.oldurl.com'
