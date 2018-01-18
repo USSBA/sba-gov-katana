@@ -23,7 +23,6 @@ function mapUrlRedirectQueryParameters(oldUrl) {
   var params = {
     TableName: tableName,
     ProjectionExpression: 'OldUrl, NewUrl, LastModified, LastModifiedBy',
-    ConsistentRead: true,
     Key: {
       OldUrl: {
         S: oldUrl
