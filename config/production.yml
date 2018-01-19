@@ -17,7 +17,7 @@ features:
     urlRedirect:
         tableName: UrlToNodeProduction
     drupalRedirect:
-        enabled: true
+        enabled: false
         tableName: UrlToUrlRedirectProduction
 linc:
   resendEmailJobEnabled: false
