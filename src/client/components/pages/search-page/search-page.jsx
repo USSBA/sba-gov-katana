@@ -134,12 +134,17 @@ class SearchPage extends PureComponent {
     const { newSearchTerm: term, pageNumber, pageSize, start } = this.state
 
     if (resetPageNumber === 1) {
-      this.setState({
-        start: 0
-      })
+      this.setState(
+        {
+          pageNumber: 1
+        },
+        function() {
+          window.location.href = `/search/?p=${this.state.pageNumber}&q=${term}`
+        }
+      )
     }
 
-    const data = {
+    /*const data = {
       term,
       pageNumber,
       pageSize,
@@ -150,13 +155,12 @@ class SearchPage extends PureComponent {
 
     // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
 
-    /*
     browserHistory.push({
       pathname: '/search',
       search: `?q=${term}&p=${pageNumber}`
     })*/
 
-    window.location.href = `/search?q=${term}&p=${pageNumber}`
+    window.location.href = `/search/?p=${pageNumber}&q=${term}`
   }
 
   render() {
