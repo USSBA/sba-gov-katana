@@ -1,0 +1,28 @@
+foresee:
+    environment: production
+newrelic:
+    enabled: true
+googleAnalytics:
+    enabled: true
+    accountId: UA-19362636-5
+    optimizeContainerId: GTM-NPDXPPF
+    tagManagerAccountId: GTM-MSNZZ6M
+server:
+    fqdn: sba.gov
+features:
+    forPartners: true
+    showSbic: false
+    moon: false
+    searchUrl: "/tools/search-result-page?search="
+linc:
+  resendEmailJobEnabled: false
+  sendToOcaJobEnabled: false
+  sendToLincPasswordUpdateEnabled: false
+oca:
+    soap:
+        wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
+cache:
+  s3BucketName: content-sba-gov
+aws:
+  cloudsearch:
+    endpoint: 'doc-sba-gov-production-vnhuuhtvgjbc2s7ddz42nhmbge.us-east-1.cloudsearch.amazonaws.com'
