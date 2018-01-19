@@ -12,6 +12,11 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
+    urlRedirect:
+        tableName: UrlToNodeIntegration
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectIntegration
 cache:
   s3BucketName: qint-content-sba-gov
   useS3: true

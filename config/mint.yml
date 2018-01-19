@@ -12,6 +12,11 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
+    urlRedirect:
+        tableName: UrlToNodeStaging
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectStaging
 cache:
   s3BucketName: mint-content-sba-gov
   useS3: true

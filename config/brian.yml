@@ -12,6 +12,11 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
+    urlRedirect:
+        tableName: UrlToNodeBrian
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectBrian
 cache:
   s3BucketName: brian-content-sba-gov
   useS3: true
