@@ -12,6 +12,10 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
+    urlRedirect:
+        tableName: UrlToNodeStaging
+    drupalRedirect:
+        tableName: UrlToUrlRedirectStaging
 cache:
   s3BucketName: staging-content-sba-gov
   useS3: true

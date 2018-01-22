@@ -13,10 +13,10 @@ features:
     moon: false
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
-        tableName: UrlToNodeStaging
+        tableName: UrlToNodeIntegration
     drupalRedirect:
         enabled: true
-        tableName: UrlToUrlRedirectStaging
+        tableName: UrlToUrlRedirectIntegration
 cache:
   s3BucketName: mint-content-sba-gov
   useS3: true

@@ -71,7 +71,7 @@ features:
     urlRedirect:
         tableName: placeholder
     drupalRedirect:
-        enabled: true
+        enabled: false
         tableName: DrupalUrlRedirect
 sizestandards:
     endpoint: placeholder
