@@ -140,6 +140,7 @@ app.get('/api/content/:type.json', fetchContentByType)
 
 import { handleUrlRedirect } from './controllers/url-redirect.js'
 app.get('/api/content', handleUrlRedirect)
+import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 
 import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
@@ -151,15 +152,27 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnabled: config.get('foresee.enabled'),
     foreseeEnvironment: config.get('foresee.environment')
   })
-
-  findMostRecentUrlRedirect(req.url).then(url => {
-    if (url && url !== req.url) {
-      console.log('Redirecting to ' + url)
-      res.redirect(HttpStatus.MOVED_PERMANENTLY, url)
+  
+  const url = req.url
+  findMostRecentUrlRedirect(url).then(newUrl => {
+    if (newUrl && newUrl !== url) {
+      console.log('Redirecting to ' + newUrl)
+      res.redirect(HttpStatus.MOVED_PERMANENTLY, newUrl)
+    }
+  }).then(() => {
+    if (config.get('features.drupalRedirect.enabled')) {
+      fetchNewUrlByOldUrl(url).then(newUrl => {
+        if (newUrl && newUrl != url) {
+          console.log('Redirecting to ' + newUrl)
+          res.redirect(newUrl)
+        } else {
+          res.render('main', pugVariables)
+        }
+      })
     } else {
       res.render('main', pugVariables)
     }
-  })
+  }
 })
 
 // development error handler
