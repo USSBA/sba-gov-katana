@@ -5,6 +5,7 @@ const dynamodb = new aws.DynamoDB({
   region: 'us-east-1'
 })
 const tableName = config.get('features.urlRedirect.tableName')
+/* eslint-disable id-length */
 
 function mapUrlQueryParameters(url) {
   const params = {
@@ -74,6 +75,15 @@ function mapNodeIdQueryParams(nodeId) {
   return params
 }
 
+function findMostRecentUrlRedirect(url) {
+  return findNodeIdByUrl(url).then(nodeId => {
+    if (nodeId) {
+      return findMostRecentUrlByNodeId(nodeId)
+    }
+    return null
+  })
+}
+
 function findMostRecentUrlByNodeId(nodeId) {
   const params = mapNodeIdQueryParams(nodeId)
   return dynamodb
@@ -99,8 +109,6 @@ function addUrlNodeMapping(nodeId, url, timestamp) {
 }
 
 function mapUrlNodeParameters(nodeId, url, timestamp) {
-  const sortKey = nodeId + '#' + timestamp
-  /* eslint-disable id-length */
   const params = {
     Item: {
       NodeId: {
@@ -111,17 +119,14 @@ function mapUrlNodeParameters(nodeId, url, timestamp) {
       },
       Url: {
         S: url
-      },
-      SortKey: {
-        S: sortKey
       }
     },
     ReturnConsumedCapacity: 'TOTAL',
     TableName: tableName
   }
-  /* eslint-enable id-length */
   return params
 }
+/* eslint-enable id-length */
 
 export {
   findNodeIdByUrl,
@@ -130,5 +135,6 @@ export {
   mapUrlNodeParameters,
   mapUrlQueryParameters,
   mapNodeIdQueryParams,
-  findMostRecentItem
+  findMostRecentItem,
+  findMostRecentUrlRedirect
 }

@@ -141,6 +141,7 @@ app.get('/api/content/:type.json', fetchContentByType)
 import { handleUrlRedirect } from './controllers/url-redirect.js'
 app.get('/api/content', handleUrlRedirect)
 
+import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     lang: req.preferredLanguage,
@@ -150,7 +151,15 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnabled: config.get('foresee.enabled'),
     foreseeEnvironment: config.get('foresee.environment')
   })
-  res.render('main', pugVariables)
+
+  findMostRecentUrlRedirect(req.url).then(url => {
+    if (url && url !== req.url) {
+      console.log('Redirecting to ' + url)
+      res.redirect(HttpStatus.MOVED_PERMANENTLY, url)
+    } else {
+      res.render('main', pugVariables)
+    }
+  })
 })
 
 // development error handler

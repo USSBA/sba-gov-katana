@@ -16,7 +16,7 @@ describe('URL Redirect Service', function() {
   // instead of mocking out the query function.
   describe.skip('#findNodeIdByUrl', function() {
     it('should return a node matching the given url', function(done) {
-      const result = findNodeIdByUrl('http://www.google.com')
+      const result = findNodeIdByUrl('/lendermatch/laura')
       result.should.eventually.equal('1').notify(done)
     })
 
@@ -46,10 +46,9 @@ describe('URL Redirect Service', function() {
     it('should return the correct node data with the given id', function(done) {
       const result = findMostRecentUrlByNodeId('1')
       result.should.eventually.be.ok
-      result.should.eventually.equal('http://www.google.com').notify(done)
+      result.should.eventually.equal('/partners').notify(done)
     })
 
-    // TODO: Update test once logic is filled in
     it('should reject invalid node ids', function(done) {
       const result = findMostRecentUrlByNodeId(null)
       result.should.eventually.be.rejected.notify(done)
@@ -61,8 +60,7 @@ describe('URL Redirect Service', function() {
         Item: {
           NodeId: { S: '1' },
           Timestamp: { S: 'Mon Jan 08 2018 15:16:15 GMT-0500 (EST)' },
-          Url: { S: 'http://myurl.com' },
-          SortKey: { S: '1#Mon Jan 08 2018 15:16:15 GMT-0500 (EST)' }
+          Url: { S: 'http://myurl.com' }
         },
         ReturnConsumedCapacity: 'TOTAL',
         TableName: 'placeholder'
@@ -110,7 +108,7 @@ describe('URL Redirect Service', function() {
         TableName: 'placeholder'
       }
       const result = mapNodeIdQueryParams('32')
-      result.should.deep.equal(result)
+      result.should.deep.equal(expected)
     })
   })
 
