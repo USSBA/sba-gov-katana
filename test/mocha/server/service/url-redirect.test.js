@@ -59,17 +59,13 @@ describe('URL Redirect Service', function() {
       const expected = {
         Item: {
           NodeId: { S: '1' },
-          Timestamp: { S: 'Mon Jan 08 2018 15:16:15 GMT-0500 (EST)' },
+          Timestamp: { S: 'Mon Jan 08 2018 20:16:15 GMT+0000 (UTC)' },
           Url: { S: 'http://myurl.com' }
         },
         ReturnConsumedCapacity: 'TOTAL',
         TableName: 'placeholder'
       }
-      const result = mapUrlNodeParameters(
-        1,
-        'http://myurl.com',
-        new Date('Mon Jan 08 2018 15:16:15 GMT-0500 (EST)')
-      )
+      const result = mapUrlNodeParameters(1, 'http://myurl.com', 'Mon Jan 08 2018 20:16:15 GMT+0000 (UTC)')
       result.should.deep.equal(expected)
     })
   })
