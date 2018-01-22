@@ -76,8 +76,10 @@ function mapNodeIdQueryParams(nodeId) {
 }
 
 function findMostRecentUrlRedirect(url) {
+  console.log('searching for url ' + url)
   return findNodeIdByUrl(url).then(nodeId => {
     if (nodeId) {
+      console.log('found nodeId ' + nodeId)
       return findMostRecentUrlByNodeId(nodeId)
     }
     return null
@@ -95,6 +97,7 @@ function findMostRecentUrlByNodeId(nodeId) {
         const mostRecentItem = findMostRecentItem(result.Items)
         url = mostRecentItem.Url.S
       }
+      console.log('found url ' + url)
       return url
     })
     .catch(error => {
