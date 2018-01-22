@@ -154,15 +154,17 @@ app.get(['/', '/*'], function(req, res, next) {
   })
 
   const url = req.url
+  let shouldRedirect = false
   findMostRecentUrlRedirect(url)
     .then(newUrl => {
       if (newUrl && newUrl !== url) {
         console.log('Redirecting to ' + newUrl)
+        shouldRedirect = true
         res.redirect(HttpStatus.MOVED_PERMANENTLY, newUrl)
       }
     })
     .then(() => {
-      if (config.get('features.drupalRedirect.enabled')) {
+      if (!shouldRedirect && config.get('features.drupalRedirect.enabled')) {
         fetchNewUrlByOldUrl(url).then(newUrl => {
           if (newUrl && newUrl !== url) {
             console.log('Redirecting to ' + newUrl)
