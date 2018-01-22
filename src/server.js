@@ -142,6 +142,7 @@ import { handleUrlRedirect } from './controllers/url-redirect.js'
 app.get('/api/content', handleUrlRedirect)
 import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 
+import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     lang: req.preferredLanguage,
@@ -151,19 +152,29 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnabled: config.get('foresee.enabled'),
     foreseeEnvironment: config.get('foresee.environment')
   })
+
   const url = req.url
-  if (config.get('features.drupalRedirect.enabled')) {
-    fetchNewUrlByOldUrl(url).then(newUrl => {
-      if (newUrl) {
+  findMostRecentUrlRedirect(url)
+    .then(newUrl => {
+      if (newUrl && newUrl !== url) {
         console.log('Redirecting to ' + newUrl)
-        res.redirect(newUrl)
+        res.redirect(HttpStatus.MOVED_PERMANENTLY, newUrl)
+      }
+    })
+    .then(() => {
+      if (config.get('features.drupalRedirect.enabled')) {
+        fetchNewUrlByOldUrl(url).then(newUrl => {
+          if (newUrl && newUrl !== url) {
+            console.log('Redirecting to ' + newUrl)
+            res.redirect(newUrl)
+          } else {
+            res.render('main', pugVariables)
+          }
+        })
       } else {
         res.render('main', pugVariables)
       }
     })
-  } else {
-    res.render('main', pugVariables)
-  }
 })
 
 // development error handler
