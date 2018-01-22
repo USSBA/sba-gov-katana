@@ -152,27 +152,29 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnabled: config.get('foresee.enabled'),
     foreseeEnvironment: config.get('foresee.environment')
   })
-  
+
   const url = req.url
-  findMostRecentUrlRedirect(url).then(newUrl => {
-    if (newUrl && newUrl !== url) {
-      console.log('Redirecting to ' + newUrl)
-      res.redirect(HttpStatus.MOVED_PERMANENTLY, newUrl)
-    }
-  }).then(() => {
-    if (config.get('features.drupalRedirect.enabled')) {
-      fetchNewUrlByOldUrl(url).then(newUrl => {
-        if (newUrl && newUrl != url) {
-          console.log('Redirecting to ' + newUrl)
-          res.redirect(newUrl)
-        } else {
-          res.render('main', pugVariables)
-        }
-      })
-    } else {
-      res.render('main', pugVariables)
-    }
-  }
+  findMostRecentUrlRedirect(url)
+    .then(newUrl => {
+      if (newUrl && newUrl !== url) {
+        console.log('Redirecting to ' + newUrl)
+        res.redirect(HttpStatus.MOVED_PERMANENTLY, newUrl)
+      }
+    })
+    .then(() => {
+      if (config.get('features.drupalRedirect.enabled')) {
+        fetchNewUrlByOldUrl(url).then(newUrl => {
+          if (newUrl && newUrl !== url) {
+            console.log('Redirecting to ' + newUrl)
+            res.redirect(newUrl)
+          } else {
+            res.render('main', pugVariables)
+          }
+        })
+      } else {
+        res.render('main', pugVariables)
+      }
+    })
 })
 
 // development error handler
