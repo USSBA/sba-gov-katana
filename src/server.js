@@ -155,7 +155,6 @@ app.get(['/', '/*'], function(req, res, next) {
 
   const url = req.url
   let shouldRedirect = false
-  console.log('attempting redirect')
   findMostRecentUrlRedirect(url)
     .then(newUrl => {
       if (newUrl && newUrl !== url) {
