@@ -38,6 +38,7 @@ const metaVariables = {
   title: 'Small Business Administration'
 }
 
+import { findNodeIdByUrl } from './service/url-redirect.js'
 app.use(function(req, res, next) {
   // handle Accept-Language header
   req.preferredLanguage = accepts(req).languages()[0] //eslint-disable-line no-param-reassign
@@ -53,7 +54,14 @@ app.use(function(req, res, next) {
       console.log('Session info: ', req.sessionInfo)
     }
   }
+  const nodeId = findNodeIdByUrl(req.path)
+  let responseStatus = HttpStatus.OK
+  if (!nodeId) {
+    responseStatus = HttpStatus.NOT_FOUND
+  }
+
   const clientConfig = {
+    responseStatus: responseStatus,
     isUserLoggedIn: hasSessionCookie || false,
     googleAnalytics: config.get('googleAnalytics'),
     debug: config.get('developmentOptions.client.logging'),
@@ -158,11 +166,11 @@ app.get(['/', '/*'], function(req, res, next) {
         console.log('Redirecting to ' + newUrl)
         res.redirect(newUrl)
       } else {
-        res.render('main', pugVariables)
+        res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
       }
     })
   } else {
-    res.render('main', pugVariables)
+    res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
   }
 })
 

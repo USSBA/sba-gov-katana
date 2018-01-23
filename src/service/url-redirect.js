@@ -3,9 +3,13 @@ const aws = require('aws-sdk')
 aws.config.update({ region: 'us-east-1' })
 
 function findNodeIdByUrl(url) {
-  let nodeId = null
+  console.log('Finding Node Id for ', url)
+  let nodeId = 1
   // TODO: logic to find nodeId by the url
-  nodeId = 1 //dummy value
+  if (url === '/business-guide/somenonexistenturl') {
+    nodeId = null
+  }
+  // return null if no node is found for the given url
   return nodeId
 }
 

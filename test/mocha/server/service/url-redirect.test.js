@@ -1,4 +1,5 @@
 import chai from 'chai'
+let expect = chai.expect
 import {
   findNodeIdByUrl,
   fetchNodeDataById,
@@ -10,16 +11,15 @@ describe('URL Redirect Service', function() {
   describe('#findNodeIdByUrl', function() {
     // TODO: Update test once logic is filled in
     it('should return a node matching the given url', function() {
-      const result = findNodeIdByUrl('http://www.google.com')
-      result.should.equal(1)
+      const result = findNodeIdByUrl('/helloworld')
+      expect(result).to.equal(1)
     })
 
     // TODO: Update test once logic is filled in
     it('should return null if there is no node matching the url', function() {
-      let result = findNodeIdByUrl('some non existent url')
+      const result = findNodeIdByUrl('/business-guide/somenonexistenturl')
       // TODO: Remove this line once logic is functional
-      result = null
-      //should.be.null(result)
+      expect(result).to.be.null
     })
   })
   describe('#fetchNodeDataById', function() {
