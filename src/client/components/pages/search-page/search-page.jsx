@@ -1,6 +1,5 @@
 import { isEmpty } from 'lodash'
 import React, { PureComponent } from 'react'
-import { browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { BasicLink, SmallPrimaryButton, TextInput } from 'atoms'
@@ -92,25 +91,13 @@ class SearchPage extends PureComponent {
     // update search results
     const { searchResults, itemCount } = nextProps
 
-    this.setState(
-      {
-        searchTerm,
-        searchResults,
-        itemCount
-      },
-      () => {
-        if (!isEmpty(nextProps.location.search)) {
-          // after the search term state has been updated
-          // show it's value in the input field
-          // --
-          // this enables the input field to update itself
-          // when a browser history is navigated
-          this.updateSearchInputValue(searchTerm)
-        } else {
-          this.updateSearchInputValue('')
-        }
-      }
-    )
+    const data = {
+      searchTerm,
+      searchResults,
+      itemCount
+    }
+
+    this.setState(data)
   }
 
   updateSearchInputValue(value) {
@@ -147,26 +134,33 @@ class SearchPage extends PureComponent {
     const { newSearchTerm: term, pageNumber, pageSize, start } = this.state
 
     if (resetPageNumber === 1) {
-      this.setState({
-        start: 0
-      })
+      this.setState(
+        {
+          pageNumber: 1
+        },
+        function() {
+          window.location.href = `/search/?p=${this.state.pageNumber}&q=${term}`
+        }
+      )
     }
 
-    const data = {
+    /*const data = {
       term,
       pageNumber,
       pageSize,
       start
     }
 
-    this.props.actions.fetchContentIfNeeded('search', 'search', data)
+    //this.props.actions.fetchContentIfNeeded('search', 'search', data)
 
     // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
 
     browserHistory.push({
       pathname: '/search',
       search: `?q=${term}&p=${pageNumber}`
-    })
+    })*/
+
+    window.location.href = `/search/?p=${pageNumber}&q=${term}`
   }
 
   render() {
@@ -221,10 +215,12 @@ const SearchBar = props => {
 
     // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
 
-    browserHistory.push({
+    /*browserHistory.push({
       pathname: '/search',
       search: `?q=${term}`
-    })
+    })*/
+
+    window.location.href = `/search?q=${term}`
   }
 
   return (
@@ -241,7 +237,7 @@ const SearchBar = props => {
           }}
           onKeyDown={obj => {
             const enterKeyCode = 13
-            if (obj.keyCode === enterKeyCode && searchTerm !== decodeURIComponent(newSearchTerm)) {
+            if (obj.keyCode === enterKeyCode && newSearchTerm.length > 0) {
               onSubmit(1)
             }
           }}
@@ -253,7 +249,7 @@ const SearchBar = props => {
           id="submit-button"
           text="Search"
           onClick={() => {
-            if (!isEmpty(searchTerm) && searchTerm !== decodeURIComponent(newSearchTerm)) {
+            if (newSearchTerm.length > 0) {
               onSubmit(1)
             }
           }}
@@ -285,11 +281,11 @@ const ResultsList = props => {
     })
   }
 
-  const renderPaginator = () => {
+  const renderPaginator = section => {
     return (
       <div className={styles.paginator}>
         <Paginator
-          id={'current-total-result-number'}
+          id={`current-total-result-number-${section}`}
           pageNumber={pageNumber}
           pageSize={pageSize}
           total={itemCount}
@@ -347,12 +343,12 @@ const ResultsList = props => {
         <div className={styles.searchTerm}>
           <span id="search-term-title">"{searchTerm}"</span>
         </div>
-        {renderPaginator()}
+        {renderPaginator('top')}
       </div>
       <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
         {renderList()}
       </div>
-      {renderPaginator()}
+      {renderPaginator('bottom')}
     </div>
   )
 }
