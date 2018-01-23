@@ -79,9 +79,7 @@ cache:
   s3BucketName: dev-content-sba-gov
   useS3: true
 aws:
-  access: placeholder
-  secret: placeholder
   cloudsearch:
     endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
-  dynamodb: 
+  dynamodb:
     endpoint: placeholder

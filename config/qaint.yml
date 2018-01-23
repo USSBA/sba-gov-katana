@@ -20,3 +20,6 @@ features:
 cache:
   s3BucketName: qint-content-sba-gov
   useS3: true
+aws:
+  cloudsearch:
+    endpoint: 'doc-qaint-6x5ozxz66ceh74wz3bdbacbl2e.us-east-1.cloudsearch.amazonaws.com'
