@@ -2,13 +2,15 @@ import { fetchFrontPageSlidesFromDrupal, fetchBlogsFromDrupal } from '../util/dr
 import { fetchDisasterFromDrupalDatabase } from '../models/dao/disaster.js'
 import { fetchMainMenu } from '../models/dao/main-menu.js'
 import {
-  fetchFormattedNode,
+  fetchAnnouncements,
+  fetchArticles,
   fetchContacts,
-  fetchFormattedMenu,
   fetchCounsellorCta,
   fetchDocuments,
-  fetchTaxonomyVocabulary,
-  fetchArticles
+  fetchFormattedMenu,
+  fetchFormattedNode,
+  fetchNodes,
+  fetchTaxonomys
 } from '../service/drupal-eight.js'
 import { fetchNotification } from '../service/notification.js'
 import { search } from '../service/search.js'
@@ -21,18 +23,20 @@ const fetchFunctions = {
 }
 
 const fetchContentTypeFunctions = {
-  contacts: fetchContacts,
-  blogs: fetchBlogsFromDrupal,
-  disaster: fetchDisasterFromDrupalDatabase,
-  frontpageslides: fetchFrontPageSlidesFromDrupal,
-  'main-menu': fetchMainMenu,
-  siteMap: fetchFormattedMenu,
-  counsellorCta: fetchCounsellorCta,
-  documents: fetchDocuments,
+  announcements: fetchAnnouncements,
   articles: fetchArticles,
-  taxonomyVocabulary: fetchTaxonomyVocabulary,
+  blogs: fetchBlogsFromDrupal,
+  contacts: fetchContacts,
+  counsellorCta: fetchCounsellorCta,
+  disaster: fetchDisasterFromDrupalDatabase,
+  documents: fetchDocuments,
+  frontPageSlides: fetchFrontPageSlidesFromDrupal,
+  mainMenu: fetchMainMenu,
+  nodes: fetchNodes,
   notification: fetchNotification,
-  search: search
+  search: search,
+  siteMap: fetchFormattedMenu,
+  taxonomys: fetchTaxonomys
 }
 
 function fetchContentById(req, res) {

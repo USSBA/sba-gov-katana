@@ -12,6 +12,11 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
+    urlRedirect:
+        tableName: UrlToNodeLaura
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectLaura
 cache:
   s3BucketName: laura-content-sba-gov
   useS3: true

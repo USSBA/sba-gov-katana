@@ -11,7 +11,7 @@ import styles from './header.scss'
 
 class Header extends React.Component {
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('mainMenu', 'main-menu')
+    this.props.actions.fetchContentIfNeeded('mainMenu', 'mainMenu')
   }
 
   render() {

@@ -12,6 +12,11 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/search/?q="
+    urlRedirect:
+        tableName: UrlToNodeDevF
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectDevF
 cache:
   s3BucketName: devf-content-sba-gov
   useS3: true

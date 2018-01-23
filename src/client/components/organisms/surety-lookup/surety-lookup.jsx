@@ -22,7 +22,7 @@ class SuretyLookup extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded(dataProp, 'taxonomyVocabulary', {
+    this.props.actions.fetchContentIfNeeded(dataProp, 'taxonomys', {
       names: 'state'
     })
   }

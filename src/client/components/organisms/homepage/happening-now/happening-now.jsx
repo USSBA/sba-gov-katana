@@ -15,7 +15,7 @@ class HappeningNow extends React.Component {
     this.state = {}
   }
   componentDidMount() {
-    this.props.actions.fetchContentIfNeeded(contentProperty, 'frontpageslides')
+    this.props.actions.fetchContentIfNeeded(contentProperty, 'frontPageSlides')
   }
 
   makeDesktopImage(item, index, desktopStyle) {
