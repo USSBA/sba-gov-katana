@@ -103,7 +103,7 @@ class SearchBox extends React.Component {
     const returnKeyCode = 13
     if (event.keyCode === returnKeyCode) {
       logPageEvent({
-        category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
+        category: _.kebabCase('Documentation-Lookup-Ancillary'),
         action: `Search Enter-Button:
           Type: ${this.state.selectedDocumentType};
           Program: ${this.state.selectedProgram};
@@ -116,7 +116,7 @@ class SearchBox extends React.Component {
 
   handleOnClick() {
     logPageEvent({
-      category: _.kebabCase(`${this.props.sectionHeaderText}-lookup`),
+      category: _.kebabCase('Documentation-Lookup-Ancillary'),
       action: `Search CTA-Click:
         Type: ${this.state.selectedDocumentType};
         Program: ${this.state.selectedProgram};
