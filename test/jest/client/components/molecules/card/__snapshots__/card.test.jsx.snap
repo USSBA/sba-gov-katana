@@ -44,17 +44,7 @@ exports[`Card does not error check malformed link 1`] = `
       A kitten, also known as a kitty or kitty cat, is a juvenile cat
     </p>
   </div>
-  <p>
-    <a
-      autoFocus={false}
-      className=""
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
-    >
-      dogs
-    </a>
-  </p>
+  https:\\dogs
 </div>
 `;
 
@@ -102,17 +92,7 @@ exports[`Card to render correctly 1`] = `
       A kitten, also known as a kitty or kitty cat, is a juvenile cat
     </p>
   </div>
-  <p>
-    <a
-      autoFocus={false}
-      className=""
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
-    >
-      Learn more about kittens
-    </a>
-  </p>
+  https://en.wikipedia.org/wiki/Kitten
 </div>
 `;
 

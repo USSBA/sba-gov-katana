@@ -42,7 +42,7 @@ class Card extends React.Component {
   }
 
   render() {
-    let cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
+    const cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
 
     const { index, item: { eventConfig, image, link, subtitleText, titleText }, parentIndex } = this.props
     const { title, url } = link
@@ -63,7 +63,7 @@ class Card extends React.Component {
       }
     }
 
-    let titleMarkup =
+    const titleMarkup =
       !isEmpty(link) && url ? (
         <BasicLink myClassName={styles.unstyledLink} text={titleText} url={url} eventConfig={eventConfig} />
       ) : (
@@ -86,10 +86,10 @@ class Card extends React.Component {
             </p>
           </div>
         ) : null}
-        {!isEmpty(link) &&
-          url && (
+        {(!isEmpty(link) && url) ||
+          (typeof link === 'string') && (
             <p>
-              <BasicLink text={title || 'Learn more'} url={url} eventConfig={eventConfig} />
+              <BasicLink text={title || 'Learn more'} url={link || url} eventConfig={eventConfig} />
             </p>
           )}
       </div>
