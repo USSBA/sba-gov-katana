@@ -85,11 +85,8 @@ let SearchPage = props => (
   <Async componentProps={props} load={import('./pages/search-page/search-page.jsx')} />
 )
 
-let LearningCenterCoursePage = props => (
-  <Async
-    componentProps={props}
-    load={import('./pages/learning-center-course-page/learning-center-course-page.jsx')}
-  />
+let GlobalSearchPage = props => (
+  <Async componentProps={props} load={import('./pages/global-search-page/global-search-page.jsx')} />
 )
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
@@ -131,8 +128,8 @@ const mainRoutes = [
         : '/someplaceholderforsearchthatnoonewilleverreach/'
     }
   />,
-  <Route key={52} path="/learning-center-course/" component={LearningCenterCoursePage} />,
-  <Redirect key={53} from="/learning-center-course" to="/learning-center-course/" />,
+  <Route key={52} path="/global-search/" component={GlobalSearchPage} />,
+  <Redirect key={53} from="/global-search" to="/global-search/" />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
