@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { assign, camelCase, chain, includes, pickBy, startCase } from 'lodash'
+import { bindActionCreators } from 'redux'
 
 import styles from './global-search.scss'
-import { ApplyButton, MultiSelect, SearchIcon, SmallInverseSecondaryButton, TextInput } from 'atoms'
+import { ApplyButton, MultiSelect } from 'atoms'
 import * as ContentActions from '../../../actions/content.js'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getQueryParams } from '../../../services/utils.js'
+import { logEvent } from '../../../services/analytics.js'
 
 const createSlug = str => {
   return str
@@ -17,43 +19,39 @@ const createSlug = str => {
 }
 
 export class GlobalSearch extends React.PureComponent {
-  createQueryFromProps(ownProps) {
-    const propsSource = ownProps
-    const defaults = chain(propsSource.taxonomyFilters)
-      .keyBy()
-      .mapValues(_ => {
-        return 'All'
-      })
-      .value()
-
-    const queryParams = getQueryParams()
-    // look for aliases in the query params, but filter out any that are undefined
-    const aliasMapping = pickBy({
-      courseTopic: queryParams.courseTopic
-    })
-
-    const filteredQueryParams = pickBy(queryParams, (value, key) => {
-      return includes(propsSource.taxonomyFilters, key)
-    })
-
-    const finalQuery = assign(defaults, filteredQueryParams, aliasMapping)
-    console.log('A', finalQuery)
-    return finalQuery
+  constructor(ownProps) {
+    super()
+    this.state = {
+      query: ''
+    }
   }
 
-  renderMultiSelects() {
-    const _multiselects = this.props.taxonomies.map(taxonomy => {
+  componentWillMount() {
+    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
+      names: this.props.taxonomyFilters.join(',')
+    })
+  }
+
+  renderMultiSelects(taxonomies) {
+    const _multiselects = taxonomies.map(taxonomy => {
       const { name } = taxonomy
+      let newName
       const id = `${createSlug(name)}-select`
       const stateName = camelCase(name)
-      const options = taxonomy.terms.map(entry => {
+      const includesAllInTaxonomy = ['All', ...taxonomy.terms]
+      const options = includesAllInTaxonomy.map(entry => {
         return { label: entry, value: entry }
       })
 
+      name === 'businessStage' ? (newName = 'courseTopic') : newName
+
       const _ms = {
         id: id,
+        onChange: event => {
+          this.handleChange(event, stateName)
+        },
         name: id,
-        label: startCase(name),
+        label: startCase(newName || name),
         options: options
       }
 
@@ -61,7 +59,6 @@ export class GlobalSearch extends React.PureComponent {
     })
 
     return _multiselects.map((multiSelectProps, index) => {
-      console.log('MULTI', multiSelectProps)
       const returnNull = () => {
         return null
       }
@@ -82,10 +79,6 @@ export class GlobalSearch extends React.PureComponent {
     })
   }
 
-  handleChange(event, selectStateKey) {
-    this.props.onQueryChange(selectStateKey, event.value)
-  }
-
   fireEvent(category, action, value) {
     logEvent({
       category: category,
@@ -95,18 +88,39 @@ export class GlobalSearch extends React.PureComponent {
     })
   }
 
+  handleChange(event, selectStateKey) {
+    this.handleQueryChange(selectStateKey, event.value)
+  }
+
   fireDocumentationLookupEvent(action, value = null) {
-    this.fireEvent('documentation-lookup', action, value)
+    this.fireEvent('course-topic-lookup', action, value)
+  }
+
+  handleQueryChange(field, value) {
+    if (field !== 'searchTerm') {
+      // Log Analytic Event, but not for search term
+      this.fireDocumentationLookupEvent(`${field}: ${value}`)
+    }
+    const newQueryFieldValue = {}
+    newQueryFieldValue[field] = value
+    const currentQuery = this.state.query
+    const newQuery = _.assign({}, currentQuery, newQueryFieldValue)
+    console.log('CHANGES', newQuery)
+    this.setState({ query: newQuery })
+    console.log('state', this.state.query)
   }
 
   render() {
+    const lookupProps = {
+      onQueryChange: this.handleQueryChange.bind(this)
+    }
     return (
       <div>
         <div className={styles.banner}>
           <h2 className={styles.header}>{this.props.title}</h2>
-          {this.props.taxonomies.length > 0 && (
+          {this.props.taxonomies && (
             <div>
-              {this.renderMultiSelects()}
+              {this.renderMultiSelects(this.props.taxonomies)}
               <div className={styles.applyButton}>
                 <ApplyButton submit={this.props.onSubmit} />
               </div>
@@ -119,4 +133,16 @@ export class GlobalSearch extends React.PureComponent {
   }
 }
 
-export default connect()(GlobalSearch)
+function mapReduxStateToProps(reduxState) {
+  return {
+    taxonomies: reduxState.contentReducer.taxonomies
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch)
+  }
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(GlobalSearch)
