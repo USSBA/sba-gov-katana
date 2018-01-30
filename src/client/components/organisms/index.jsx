@@ -11,6 +11,7 @@ import ForPartnersTileCollection from './for-partners-tile-collection/for-partne
 import FrontPageHero from './front-page-hero/front-page-hero.jsx'
 import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
 import Hero from './hero/hero.jsx'
+import GlobalSearch from './global-search/global-search.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
@@ -78,6 +79,7 @@ export {
   FrontPageHero,
   FundingProgramsTileCollection,
   Hero,
+  GlobalSearch,
   Lookup,
   ModalController,
   NotificationBar,
