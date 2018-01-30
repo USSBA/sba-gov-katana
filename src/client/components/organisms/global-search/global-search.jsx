@@ -22,7 +22,7 @@ export class GlobalSearch extends React.PureComponent {
   constructor(ownProps) {
     super()
     this.state = {
-      query: ''
+      query: {}
     }
   }
 
@@ -52,6 +52,7 @@ export class GlobalSearch extends React.PureComponent {
         },
         name: id,
         label: startCase(newName || name),
+        value: this.state.query[name] || 'All',
         options: options
       }
 
@@ -79,21 +80,8 @@ export class GlobalSearch extends React.PureComponent {
     })
   }
 
-  fireEvent(category, action, value) {
-    logEvent({
-      category: category,
-      action: action,
-      label: window.location.pathname,
-      value: value
-    })
-  }
-
   handleChange(event, selectStateKey) {
     this.handleQueryChange(selectStateKey, event.value)
-  }
-
-  fireDocumentationLookupEvent(action, value = null) {
-    this.fireEvent('course-topic-lookup', action, value)
   }
 
   handleQueryChange(field, value) {
@@ -107,13 +95,22 @@ export class GlobalSearch extends React.PureComponent {
     const newQuery = _.assign({}, currentQuery, newQueryFieldValue)
     console.log('CHANGES', newQuery)
     this.setState({ query: newQuery })
-    console.log('state', this.state.query)
+  }
+
+  fireDocumentationLookupEvent(action, value = null) {
+    this.fireEvent('course-topic-lookup', action, value)
+  }
+
+  fireEvent(category, action, value) {
+    logEvent({
+      category: category,
+      action: action,
+      label: window.location.pathname,
+      value: value
+    })
   }
 
   render() {
-    const lookupProps = {
-      onQueryChange: this.handleQueryChange.bind(this)
-    }
     return (
       <div>
         <div className={styles.banner}>
