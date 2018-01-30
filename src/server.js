@@ -140,8 +140,8 @@ app.get('/api/content/:type.json', fetchContentByType)
 
 import { handleUrlRedirect } from './controllers/url-redirect.js'
 app.get('/api/content', handleUrlRedirect)
-import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 
+import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
@@ -153,30 +153,28 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnvironment: config.get('foresee.environment')
   })
 
-  const url = req.url
-  let shouldRedirect = false
-  findMostRecentUrlRedirect(url)
-    .then(newUrl => {
-      if (newUrl && newUrl !== url) {
-        console.log('Redirecting to ' + newUrl)
-        shouldRedirect = true
-        res.redirect(HttpStatus.MOVED_PERMANENTLY, newUrl)
-      }
-    })
-    .then(() => {
-      if (!shouldRedirect && config.get('features.drupalRedirect.enabled')) {
-        fetchNewUrlByOldUrl(url).then(newUrl => {
-          if (newUrl && newUrl !== url) {
-            console.log('Redirecting to ' + newUrl)
-            res.redirect(newUrl)
-          } else {
-            res.render('main', pugVariables)
-          }
-        })
-      } else {
-        res.render('main', pugVariables)
-      }
-    })
+  const handleRedirects = async function() {
+    const url = req.url
+    let redirectUrl
+    let redirectCode
+    //url to node to newest url redirect
+    redirectUrl = await findMostRecentUrlRedirect(url)
+    if (redirectUrl) {
+      redirectCode = HttpStatus.MOVED_PERMANENTLY
+    } else {
+      //url to url redirect
+      redirectUrl = await fetchNewUrlByOldUrl(url)
+      redirectCode = HttpStatus.MOVED_TEMPORARILY
+    }
+    if (redirectUrl && redirectUrl !== url) {
+      console.log('Redirecting to ' + redirectUrl)
+      res.redirect(redirectCode, redirectUrl)
+    } else {
+      res.render('main', pugVariables)
+    }
+  }
+
+  handleRedirects()
 })
 
 // development error handler
