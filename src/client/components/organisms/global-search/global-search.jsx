@@ -43,7 +43,9 @@ export class GlobalSearch extends React.PureComponent {
         return { label: entry, value: entry }
       })
 
-      name === 'businessStage' ? (newName = 'courseTopic') : newName
+      if (name === 'businessStage') {
+        newName = 'courseTopic'
+      }
 
       const _ms = {
         id: id,
@@ -93,7 +95,6 @@ export class GlobalSearch extends React.PureComponent {
     newQueryFieldValue[field] = value
     const currentQuery = this.state.query
     const newQuery = _.assign({}, currentQuery, newQueryFieldValue)
-    console.log('CHANGES', newQuery)
     this.setState({ query: newQuery })
   }
 
