@@ -94,7 +94,7 @@ export class GlobalSearch extends React.PureComponent {
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value
     const currentQuery = this.state.query
-    const newQuery = _.assign({}, currentQuery, newQueryFieldValue)
+    const newQuery = assign({}, currentQuery, newQueryFieldValue)
     this.setState({ query: newQuery })
   }
 
