@@ -5,11 +5,11 @@ import { GlobalSearch } from 'organisms'
 
 class GlobalSearchPage extends React.Component {
   render() {
-    const documentProps = {
+    const courseProps = {
       title: 'Learning Center',
       taxonomyFilters: ['businessStage']
     }
-    return <GlobalSearch {...documentProps} />
+    return <GlobalSearch {...courseProps} />
   }
 }
 
