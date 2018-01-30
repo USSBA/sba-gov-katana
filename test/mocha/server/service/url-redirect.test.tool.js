@@ -10,7 +10,7 @@ import {
 describe('URL Redirect Service', function() {
   describe('#addUrlNodeMapping', function() {
     it('should successfully return from aws', function(done) {
-      const result = addUrlNodeMapping(1, 'http://www.google.com', new Date())
+      const result = addUrlNodeMapping(1, '/partners', new Date())
       result.should.be.fulfilled.notify(done)
       result.then(response => {
         console.log(response)
@@ -22,7 +22,7 @@ describe('URL Redirect Service', function() {
       const result = addUrlNodeMapping(2, 'http://www.myurl.com' + date, date)
       const result2 = addUrlNodeMapping(2, 'http://www.myurl.com' + date, date)
 
-      result.should.be.fulfilled.notify(done)
+      result.should.be.fulfilled
       result2.should.be.fulfilled.notify(done)
 
       result.then(response => {
