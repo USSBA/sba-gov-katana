@@ -45,7 +45,14 @@ class Card extends React.Component {
     const cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
 
     const { index, item: { eventConfig, image, link, subtitleText, titleText }, parentIndex } = this.props
-    const { title, url } = link
+    let title = 'Learn more'
+    let url = ''
+    if (typeof link === 'string') {
+      url = link
+    } else {
+      url = link.url
+      title = link.title
+    }
 
     let imageMarkup = null
     if (image && image.url) {
@@ -63,12 +70,19 @@ class Card extends React.Component {
       }
     }
 
-    const titleMarkup =
-      !isEmpty(link) && url ? (
-        <BasicLink myClassName={styles.unstyledLink} text={titleText} url={url} eventConfig={eventConfig} />
-      ) : (
-        titleText
-      )
+    const titleMarkup = url ? (
+      <BasicLink myClassName={styles.unstyledLink} text={titleText} url={url} eventConfig={eventConfig} />
+    ) : (
+      titleText
+    )
+
+    const learnMoreMarkup = url ? (
+      <p>
+        <BasicLink text={title} url={url} eventConfig={eventConfig} />
+      </p>
+    ) : (
+      undefined
+    )
 
     return (
       <div id={'card-' + parentIndex + '-' + index} className={cardStyle}>
@@ -86,12 +100,7 @@ class Card extends React.Component {
             </p>
           </div>
         ) : null}
-        {(!isEmpty(link) && url) ||
-          (typeof link === 'string') && (
-            <p>
-              <BasicLink text={title || 'Learn more'} url={link || url} eventConfig={eventConfig} />
-            </p>
-          )}
+        {learnMoreMarkup}
       </div>
     )
   }
