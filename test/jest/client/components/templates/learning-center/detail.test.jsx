@@ -2,9 +2,22 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
-import LearningCenterDetailTemplate from 'templates/learning-center/detail.jsx'
+import LearningCenterDetailTemplate, {
+  TableOfContents,
+  Summary
+} from 'templates/learning-center/detail.jsx'
 
 describe('LearningCenterDetailTemplate', () => {
+  describe('Breadcrumb', () => {
+    test('has a breadcrumb trail', () => {
+      const component = shallow(<LearningCenterDetailTemplate />)
+      const result = component.find('Breadcrumb').length
+      const expected = 1
+
+      expect(result).toEqual(expected)
+    })
+  })
+
   describe('Title', () => {
     test('has a title', () => {
       const props = {
@@ -20,7 +33,54 @@ describe('LearningCenterDetailTemplate', () => {
   })
 
   describe('Summary', () => {
-    test('has a summary', () => {})
+    test('has a summary', () => {
+      const props = {
+        summary: 'test summary'
+      }
+
+      const component = shallow(<Summary {...props} />)
+      const result = component.find('p').text()
+      const expected = 'test summary'
+
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('TableOfContents', () => {
+    test('has a table of contents', () => {
+      const props = {
+        tableOfContents: [
+          {
+            url: '#',
+            title: 'contents link'
+          },
+          {
+            url: '#',
+            title: 'contents link'
+          },
+          {
+            url: '#',
+            title: 'contents link'
+          }
+        ]
+      }
+
+      const component = shallow(<TableOfContents {...props} />)
+      const result = component.find('li').length
+      const expected = 3
+
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('DownloadFlash', () => {
+    test('has a mobile message that course is unavailable', () => {
+      const component = shallow(<LearningCenterDetailTemplate />)
+      const result = component.find('DownloadFlash').length
+      const expected = 1
+
+      expect(result).toEqual(expected)
+    })
   })
 
   describe('Course', () => {
@@ -37,13 +97,5 @@ describe('LearningCenterDetailTemplate', () => {
 
   describe('RelatedArticles', () => {
     test('has related articles', () => {})
-  })
-
-  describe('Breadcrumb', () => {
-    test('has a breadcrumb trail', () => {})
-  })
-
-  describe('Mobile', () => {
-    test('has a mobile message that course is unavailable', () => {})
   })
 })
