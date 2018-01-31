@@ -17,8 +17,16 @@ describe('LearningCenterDetailTemplate', () => {
     test('has a course link', () => {})
   })
 
-  describe('Download Link', () => {
+  describe('DownloadableItems', () => {
     test('has a download link', () => {})
+  })
+
+  describe('RelatedCourses', () => {
+    test('has related courses', () => {})
+  })
+
+  describe('RelatedArticles', () => {
+    test('has related articles', () => {})
   })
 
   describe('Breadcrumb', () => {
