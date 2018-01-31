@@ -58,4 +58,9 @@ describe('Card', () => {
       .toJSON()
     expect(tree).toMatchSnapshot()
   })
+
+  test('to render correctly if the link is just a string', () => {
+    const tree = renderer.create(component('/my-path/my-page')).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 })
