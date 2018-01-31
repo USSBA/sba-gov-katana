@@ -6,7 +6,17 @@ import LearningCenterDetailTemplate from 'templates/learning-center/detail.jsx'
 
 describe('LearningCenterDetailTemplate', () => {
   describe('Title', () => {
-    test('has a title', () => {})
+    test('has a title', () => {
+      const props = {
+        title: 'How to write a business plan'
+      }
+
+      const component = shallow(<LearningCenterDetailTemplate {...props} />)
+      const result = component.find('h1').text()
+      const expected = 'How to write a business plan'
+
+      expect(result).toEqual(expected)
+    })
   })
 
   describe('Summary', () => {

@@ -1,9 +1,20 @@
 import React, { PureComponent } from 'react'
+import styles from './detail.scss'
 
 class LearningCenterDetailTemplate extends PureComponent {
   render() {
-    return <div>A</div>
+    const { title } = this.props
+
+    return (
+      <div className={styles.container}>
+        <h1>{title}</h1>
+      </div>
+    )
   }
+}
+
+LearningCenterDetailTemplate.defaultProps = {
+  title: 'test'
 }
 
 const Summary = props => {
