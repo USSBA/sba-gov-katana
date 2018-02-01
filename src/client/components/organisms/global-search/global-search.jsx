@@ -127,9 +127,6 @@ export class GlobalSearch extends React.PureComponent {
 
   handleChange(event, selectStateKey) {
     this.handleQueryChange(selectStateKey, event.value)
-    this.setState({
-      lastChangedOption: event.value
-    })
   }
 
   handleQueryChange(field, value) {
@@ -159,8 +156,8 @@ export class GlobalSearch extends React.PureComponent {
 
   renderMultiSelects(taxonomies) {
     const _multiselects = taxonomies.map(taxonomy => {
-      const { name } = taxonomy
       let newName
+      const { name } = taxonomy
       const id = `${createSlug(name)}-select`
       const stateName = camelCase(name)
       const includesAllInTaxonomy = ['All', ...taxonomy.terms]
@@ -208,16 +205,16 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   onSubmit() {
-    this.filterAndRenderItems(this.state.lastChangedOption)
+    this.filterAndRenderItems(this.state.query.businessStage)
   }
 
   filterAndRenderItems(filterValue) {
-    if (filterValue === undefined && isEmpty(this.state.query)) {
-      this.state.items.map((item, index) => {
+    if ((filterValue === undefined && isEmpty(this.state.query)) || filterValue === 'All') {
+      return this.state.items.map((item, index) => {
         return this.renderItems(item, index)
       })
     } else {
-      this.state.items.map((item, index) => {
+      return this.state.items.map((item, index) => {
         if (item.courseCategory.includes(filterValue)) {
           return this.renderItems(item, index)
         }
@@ -226,7 +223,7 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   renderItems(item, index) {
-    // console.log('item', item.title)
+    console.log('ITEM', item)
     return (
       <div>
         <p>{item.title}</p>
@@ -248,7 +245,7 @@ export class GlobalSearch extends React.PureComponent {
             </div>
           )}
         </div>
-        {this.filterAndRenderItems()}
+        <div>{this.filterAndRenderItems()}</div>
       </div>
     )
   }
