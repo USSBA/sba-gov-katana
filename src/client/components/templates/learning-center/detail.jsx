@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { DecorativeDash, SmallSecondaryButton } from 'atoms'
+import { DecorativeDash, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
 import { Breadcrumb } from 'molecules'
 import { CardCollection } from 'organisms'
 import styles from './detail.scss'
@@ -24,12 +24,9 @@ class LearningCenterDetailTemplate extends PureComponent {
           <TableOfContents {...this.props} />
           <DownloadFlash />
           <Course {...this.props} />
-          <p>
-            Course tags: <a href="#">Planning your business</a>
-          </p>
+          <Tagcloud {...this.props} />
           <Worksheets {...this.props} />
           <RelatedCourses {...this.props} />
-          <p>SEE ALL COURSES</p>
         </div>
       </div>
     )
@@ -89,6 +86,16 @@ LearningCenterDetailTemplate.defaultProps = {
       }
     ]
   },
+  tags: [
+    {
+      description: 'Planning your business',
+      url: '#'
+    },
+    {
+      description: 'Planning your estate',
+      url: '#'
+    }
+  ],
   relatedCourses: [
     {
       type: 'card',
@@ -197,6 +204,36 @@ const Course = props => {
   )
 }
 
+const Tagcloud = props => {
+  const renderTags = () => {
+    const { length } = props.tags
+
+    const tags = props.tags.map((item, i) => {
+      const { url, description } = item
+      let result = (
+        <a key={i} href={url}>
+          {description}
+        </a>
+      )
+      if (i < props.tags.length - 1) {
+        result = <span>{result}, </span>
+      }
+
+      return result
+    })
+
+    return <span>{tags}</span>
+  }
+
+  return (
+    <div className={styles.tagcloud + ' tagcloud'}>
+      <p>
+        <strong>Course tags:</strong> {renderTags()}
+      </p>
+    </div>
+  )
+}
+
 const Worksheets = props => {
   const renderList = () => {
     const list = props.course.worksheets.map((item, i) => {
@@ -232,6 +269,9 @@ const RelatedCourses = props => {
     <div className={styles.relatedCourses + ' related-courses'}>
       <h3>Related Courses</h3>
       <CardCollection parentIndex={0} cards={props.relatedCourses} />
+      <a href="#">
+        <LargeSecondaryButton className={styles.button} text="See All Courses" />
+      </a>
     </div>
   )
 }
@@ -242,4 +282,4 @@ const RelatedArticles = props => {
 
 export default LearningCenterDetailTemplate
 
-export { Summary, TableOfContents, Course, Worksheets, RelatedCourses, RelatedArticles }
+export { Summary, TableOfContents, Course, Tagcloud, Worksheets, RelatedCourses, RelatedArticles }

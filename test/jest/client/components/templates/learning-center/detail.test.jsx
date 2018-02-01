@@ -6,6 +6,7 @@ import LearningCenterDetailTemplate, {
   TableOfContents,
   Summary,
   Course,
+  Tagcloud,
   Worksheets,
   RelatedCourses
 } from 'templates/learning-center/detail.jsx'
@@ -128,6 +129,33 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
+  describe('Tagcloud', () => {
+    test('has a tag cloud', () => {
+      const props = {
+        tags: [
+          {
+            description: 'tag a',
+            url: '#'
+          },
+          {
+            description: 'tag b',
+            url: '#'
+          },
+          {
+            description: 'tag c',
+            url: '#'
+          }
+        ]
+      }
+
+      const component = shallow(<Tagcloud {...props} />)
+      const result = component.find('a').length
+      const expected = 3
+
+      expect(result).toEqual(expected)
+    })
+  })
+
   describe('Worksheets', () => {
     test('has a collection of worksheet links', () => {
       const props = {
@@ -154,25 +182,33 @@ describe('LearningCenterDetailTemplate', () => {
   })
 
   describe('RelatedCourses', () => {
-    test('has related courses', () => {
-      const props = {
-        relatedCourses: [
-          {
-            type: 'card',
-            image: {
-              url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
-              alt: 'Intro to accounting'
-            },
-            link: {},
-            subtitleText:
-              'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
-            titleText: 'Intro to accounting'
-          }
-        ]
-      }
+    const props = {
+      relatedCourses: [
+        {
+          type: 'card',
+          image: {
+            url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
+            alt: 'Intro to accounting'
+          },
+          link: {},
+          subtitleText:
+            'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+          titleText: 'Intro to accounting'
+        }
+      ]
+    }
 
+    test('has related courses', () => {
       const component = shallow(<RelatedCourses {...props} />)
       const result = component.find('CardCollection').length
+      const expected = 1
+
+      expect(result).toEqual(expected)
+    })
+
+    test('has "See All Courses" button', () => {
+      const component = shallow(<RelatedCourses {...props} />)
+      const result = component.find('LargeSecondaryButton').length
       const expected = 1
 
       expect(result).toEqual(expected)

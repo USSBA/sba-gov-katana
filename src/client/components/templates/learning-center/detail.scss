@@ -144,12 +144,28 @@
   }
 }
 
+.tagcloud {
+  margin-top: 30px;
+  padding: 10px 0;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  p {
+    margin: 0;
+    display: inline-block;
+  }
+}
+
 .relatedCourses {
   margin-top: 30px;
   border-top: 1px solid #dadada;
 
   h3 {
     margin: 30px 0;
+  }
+
+  a {
+    text-align: center;
+    display: block;
   }
 }
 
