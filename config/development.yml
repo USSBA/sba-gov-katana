@@ -28,3 +28,13 @@ database:
         host: localhost
         password: password123
         user: root
+aws:
+  cloudsearch:
+    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+  dynamodb:
+    endpoint: UrlToNodeDev1
+features:
+  urlRedirect:
+    tableName: UrlToNodeDev1
+  drupalRedirect:
+    tableName: UrlToUrlRedirectDev1
