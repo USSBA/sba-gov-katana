@@ -23,7 +23,7 @@ export function addDevelopmentErrorHandler(app) {
   app.use(function(err, req, res, next) {
     // eslint-disable-line no-unused-vars
     if (err) {
-      console.log(err)
+      console.error(err)
       if (req.xhr) {
         res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
           error: 'Something went wrong! Oh no!'
