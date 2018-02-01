@@ -22,6 +22,7 @@ class LearningCenterDetailTemplate extends PureComponent {
         <div className={styles.container + ' ' + styles.midContainer}>
           <TableOfContents {...this.props} />
           <DownloadFlash />
+          <Course {...this.props} />
         </div>
       </div>
     )
@@ -55,7 +56,14 @@ LearningCenterDetailTemplate.defaultProps = {
       url: '#',
       title: 'Worksheets'
     }
-  ]
+  ],
+  course: {
+    url: 'https://www.youtube.com/embed/owsfdh4gxyc',
+    transcript: {
+      url: '#',
+      summary: 'View the full text-accessible transcript for this course.'
+    }
+  }
 }
 
 const Summary = props => {
@@ -82,7 +90,7 @@ const TableOfContents = props => {
   }
 
   return (
-    <div>
+    <div className="table-of-contents">
       <h2>Content</h2>
       {renderList()}
     </div>
@@ -91,7 +99,7 @@ const TableOfContents = props => {
 
 const DownloadFlash = props => {
   return (
-    <div className={styles.downloadFlash}>
+    <div className={styles.downloadFlash + ' download-flash'}>
       <div className={styles.icon}>
         <i className="fa fa-exclamation-triangle" />
       </div>
@@ -104,7 +112,18 @@ const DownloadFlash = props => {
 }
 
 const Course = props => {
-  return <div className="course">Course</div>
+  return (
+    <div className={styles.course + ' course'}>
+      <iframe src={props.course.url} frameborder="0" allowfullscreen />
+      <div className={styles.transcriptBox + ' transcript-box'}>
+        <h2>Course Transcript</h2>
+        <p>{props.course.transcript.summary}</p>
+        <a href={props.course.transcript.url}>
+          <SmallSecondaryButton className={styles.button} text="View" />
+        </a>
+      </div>
+    </div>
+  )
 }
 
 const RelatedCourses = props => {

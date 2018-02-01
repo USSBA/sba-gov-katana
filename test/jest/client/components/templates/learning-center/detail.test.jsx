@@ -4,7 +4,8 @@ import renderer from 'react-test-renderer'
 
 import LearningCenterDetailTemplate, {
   TableOfContents,
-  Summary
+  Summary,
+  Course
 } from 'templates/learning-center/detail.jsx'
 
 describe('LearningCenterDetailTemplate', () => {
@@ -84,7 +85,45 @@ describe('LearningCenterDetailTemplate', () => {
   })
 
   describe('Course', () => {
-    test('has a course link', () => {})
+    const props = {
+      course: {
+        url: '#',
+        transcript: {
+          url: '#',
+          summary: 'abcde'
+        }
+      }
+    }
+
+    const component = shallow(<Course {...props} />)
+
+    test('has a course with an iframe source set', () => {
+      const result = component.find('iframe').prop('src')
+      const expected = '#'
+
+      expect(result).toEqual(expected)
+    })
+
+    test('has a course with a transcript summary', () => {
+      const result = component.find('.transcript-box p').text()
+      const expected = 'abcde'
+
+      expect(result).toEqual(expected)
+    })
+
+    test('has a course with a transcript button', () => {
+      const result = component.find('SmallSecondaryButton').length
+      const expected = 1
+
+      expect(result).toEqual(expected)
+    })
+
+    test('has a course with a transcript link', () => {
+      const result = component.find('a').prop('href')
+      const expected = '#'
+
+      expect(result).toEqual(expected)
+    })
   })
 
   describe('DownloadableItems', () => {
