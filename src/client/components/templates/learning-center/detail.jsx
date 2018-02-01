@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { DecorativeDash, SmallSecondaryButton } from 'atoms'
 import { Breadcrumb } from 'molecules'
+import { CardCollection } from 'organisms'
 import styles from './detail.scss'
 
 class LearningCenterDetailTemplate extends PureComponent {
@@ -23,6 +24,12 @@ class LearningCenterDetailTemplate extends PureComponent {
           <TableOfContents {...this.props} />
           <DownloadFlash />
           <Course {...this.props} />
+          <p>
+            Course tags: <a href="#">Planning your business</a>
+          </p>
+          <Worksheets {...this.props} />
+          <RelatedCourses {...this.props} />
+          <p>SEE ALL COURSES</p>
         </div>
       </div>
     )
@@ -62,8 +69,72 @@ LearningCenterDetailTemplate.defaultProps = {
     transcript: {
       url: '#',
       summary: 'View the full text-accessible transcript for this course.'
+    },
+    worksheets: [
+      {
+        description: 'How to write a business plan checklist',
+        url: '#'
+      },
+      {
+        description: 'Balance sheet template',
+        url: '#'
+      },
+      {
+        description: 'Income statement template',
+        url: '#'
+      },
+      {
+        description: 'Cash flow statement template',
+        url: '#'
+      }
+    ]
+  },
+  relatedCourses: [
+    {
+      type: 'card',
+      image: {
+        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
+        alt: 'Intro to accounting'
+      },
+      link: {},
+      subtitleText:
+        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+      titleText: 'Intro to accounting'
+    },
+    {
+      type: 'card',
+      image: {
+        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
+        alt: 'How to prepare a loan package'
+      },
+      link: {},
+      subtitleText:
+        'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
+      titleText: 'How to prepare a loan package'
+    },
+    {
+      type: 'card',
+      image: {
+        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
+        alt: 'Understanding your customer'
+      },
+      link: {},
+      subtitleText:
+        'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
+      titleText: 'Understanding your customer'
+    },
+    {
+      type: 'card',
+      image: {
+        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
+        alt: 'How to prepare a loan package'
+      },
+      link: {},
+      subtitleText:
+        'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
+      titleText: 'Strategic Planning'
     }
-  }
+  ]
 }
 
 const Summary = props => {
@@ -126,18 +197,49 @@ const Course = props => {
   )
 }
 
+const Worksheets = props => {
+  const renderList = () => {
+    const list = props.course.worksheets.map((item, i) => {
+      const { url, description } = item
+
+      return (
+        <li key={i} className={`worksheet-${i}`}>
+          <div className={styles.worksheetDescription}>
+            <p>{description}</p>
+          </div>
+          <div className={styles.worksheetUrl}>
+            <p>
+              <a href={url}>Download .ext</a>
+            </p>
+          </div>
+        </li>
+      )
+    })
+
+    return <ul>{list}</ul>
+  }
+
+  return (
+    <div className={styles.worksheets + ' worksheets'}>
+      <h3>Course Worksheets</h3>
+      {renderList()}
+    </div>
+  )
+}
+
 const RelatedCourses = props => {
-  return <div className="related-courses">RelatedCourses</div>
+  return (
+    <div className={styles.relatedCourses + ' related-courses'}>
+      <h3>Related Courses</h3>
+      <CardCollection parentIndex={0} cards={props.relatedCourses} />
+    </div>
+  )
 }
 
 const RelatedArticles = props => {
   return <div className="related-articles">RelatedCourses</div>
 }
 
-const DownloadableItems = props => {
-  return <div className="downloadable-items">DownloadableItems</div>
-}
-
 export default LearningCenterDetailTemplate
 
-export { Summary, TableOfContents, Course, RelatedCourses, RelatedArticles, DownloadableItems }
+export { Summary, TableOfContents, Course, Worksheets, RelatedCourses, RelatedArticles }

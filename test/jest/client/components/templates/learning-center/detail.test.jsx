@@ -5,7 +5,9 @@ import renderer from 'react-test-renderer'
 import LearningCenterDetailTemplate, {
   TableOfContents,
   Summary,
-  Course
+  Course,
+  Worksheets,
+  RelatedCourses
 } from 'templates/learning-center/detail.jsx'
 
 describe('LearningCenterDetailTemplate', () => {
@@ -126,12 +128,55 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('DownloadableItems', () => {
-    test('has a download link', () => {})
+  describe('Worksheets', () => {
+    test('has a collection of worksheet links', () => {
+      const props = {
+        course: {
+          worksheets: [
+            {
+              description: 'How to write a business plan checklist',
+              url: '#'
+            },
+            {
+              description: 'Balance sheet template',
+              url: '#'
+            }
+          ]
+        }
+      }
+
+      const component = shallow(<Worksheets {...props} />)
+      const result = component.find('li').length
+      const expected = 2
+
+      expect(result).toEqual(expected)
+    })
   })
 
   describe('RelatedCourses', () => {
-    test('has related courses', () => {})
+    test('has related courses', () => {
+      const props = {
+        relatedCourses: [
+          {
+            type: 'card',
+            image: {
+              url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
+              alt: 'Intro to accounting'
+            },
+            link: {},
+            subtitleText:
+              'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+            titleText: 'Intro to accounting'
+          }
+        ]
+      }
+
+      const component = shallow(<RelatedCourses {...props} />)
+      const result = component.find('CardCollection').length
+      const expected = 1
+
+      expect(result).toEqual(expected)
+    })
   })
 
   describe('RelatedArticles', () => {
