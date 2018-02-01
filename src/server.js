@@ -174,7 +174,7 @@ app.get(['/', '/*'], function(req, res, next) {
     }
   }
 
-  handleRedirects()
+  handleRedirects().catch(next)
 })
 
 // development error handler
