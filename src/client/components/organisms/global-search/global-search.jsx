@@ -10,7 +10,6 @@ import { logPageEvent } from '../../../services/analytics.js'
 import { getQueryParams } from '../../../services/utils.js'
 import { logEvent } from '../../../services/analytics.js'
 import { CardCollection } from 'organisms'
-import { Baby } from 'organisms'
 
 const createSlug = str => {
   return str
