@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 import LearningCenterDetailTemplate, {
@@ -8,10 +8,12 @@ import LearningCenterDetailTemplate, {
   Course,
   Tagcloud,
   Worksheets,
-  RelatedCourses
+  RelatedCourses,
+  RelatedArticles,
+  CTA
 } from 'templates/learning-center/detail.jsx'
 
-describe('LearningCenterDetailTemplate', () => {
+describe('<LearningCenterDetailTemplate />', () => {
   describe('Breadcrumb', () => {
     test('has a breadcrumb trail', () => {
       const component = shallow(<LearningCenterDetailTemplate />)
@@ -22,7 +24,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('Title', () => {
+  describe('<h1>Title</h1>', () => {
     test('has a title', () => {
       const props = {
         title: 'How to write a business plan'
@@ -36,7 +38,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('Summary', () => {
+  describe('<Summary />', () => {
     test('has a summary', () => {
       const props = {
         summary: 'test summary'
@@ -50,7 +52,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('TableOfContents', () => {
+  describe('<TableOfContents />', () => {
     test('has a table of contents', () => {
       const props = {
         tableOfContents: [
@@ -77,7 +79,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('DownloadFlash', () => {
+  describe('<DownloadFlash />', () => {
     test('has a mobile message that course is unavailable', () => {
       const component = shallow(<LearningCenterDetailTemplate />)
       const result = component.find('DownloadFlash').length
@@ -87,7 +89,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('Course', () => {
+  describe('<Course />', () => {
     const props = {
       course: {
         url: '#',
@@ -129,7 +131,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('Tagcloud', () => {
+  describe('<Tagcloud />', () => {
     test('has a tag cloud', () => {
       const props = {
         tags: [
@@ -156,7 +158,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('Worksheets', () => {
+  describe('<Worksheets />', () => {
     test('has a collection of worksheet links', () => {
       const props = {
         course: {
@@ -181,7 +183,7 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('RelatedCourses', () => {
+  describe('<RelatedCourses />', () => {
     const props = {
       relatedCourses: [
         {
@@ -215,7 +217,48 @@ describe('LearningCenterDetailTemplate', () => {
     })
   })
 
-  describe('RelatedArticles', () => {
-    test('has related articles', () => {})
+  describe('<RelatedArticles />', () => {
+    test('has related articles', () => {
+      const props = {
+        relatedArticles: [
+          {
+            type: 'card',
+            link: {
+              url: '#',
+              title: 'Read More'
+            },
+            subtitleText:
+              'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+            titleText: 'Write your business plan'
+          },
+          {
+            type: 'card',
+            link: {
+              url: '#',
+              title: 'Read More'
+            },
+            subtitleText:
+              'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+            titleText: 'Calculate your startup costs'
+          }
+        ]
+      }
+
+      const component = mount(<RelatedArticles {...props} />)
+      const result = component.find('Card').length
+      const expected = 2
+
+      expect(result).toEqual(expected)
+    })
+  })
+
+  describe('<CTA />', () => {
+    test('has a call to action component', () => {
+      const component = shallow(<CTA />)
+      const result = component.find('CallToAction').length
+      const expected = 1
+
+      expect(result).toEqual(expected)
+    })
   })
 })

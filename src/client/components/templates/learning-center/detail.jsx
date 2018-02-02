@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { DecorativeDash, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
-import { Breadcrumb } from 'molecules'
+import { Breadcrumb, CallToAction } from 'molecules'
 import { CardCollection } from 'organisms'
 import styles from './detail.scss'
 
@@ -27,6 +27,8 @@ class LearningCenterDetailTemplate extends PureComponent {
           <Tagcloud {...this.props} />
           <Worksheets {...this.props} />
           <RelatedCourses {...this.props} />
+          <RelatedArticles {...this.props} />
+          <CTA {...this.props} />
         </div>
       </div>
     )
@@ -140,6 +142,38 @@ LearningCenterDetailTemplate.defaultProps = {
       subtitleText:
         'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
       titleText: 'Strategic Planning'
+    }
+  ],
+  relatedArticles: [
+    {
+      type: 'card',
+      link: {
+        url: '#',
+        title: 'Read More'
+      },
+      subtitleText:
+        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+      titleText: 'Write your business plan'
+    },
+    {
+      type: 'card',
+      link: {
+        url: '#',
+        title: 'Read More'
+      },
+      subtitleText:
+        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+      titleText: 'Calculate your startup costs'
+    },
+    {
+      type: 'card',
+      link: {
+        url: '#',
+        title: 'Read More'
+      },
+      subtitleText:
+        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
+      titleText: 'Market research and competitive analysis'
     }
   ]
 }
@@ -277,9 +311,28 @@ const RelatedCourses = props => {
 }
 
 const RelatedArticles = props => {
-  return <div className="related-articles">RelatedCourses</div>
+  return (
+    <div className={styles.relatedArticles + ' related-articles'}>
+      <h3>Related Articles</h3>
+      <CardCollection parentIndex={0} cards={props.relatedArticles} />
+    </div>
+  )
+}
+
+const CTA = props => {
+  return (
+    <CallToAction
+      size="large"
+      btnUrl="#"
+      btnTitle="Find Counselors"
+      image="/assets/images/learning-center/woman-man-chatting.png"
+      imageAlt="woman chatting with man"
+      headline="Need help? Get free business counseling."
+      blurb="Get advice from partner organizations like SCORE mentors, Small Business Development Centers, and Women’s Business Centers."
+    />
+  )
 }
 
 export default LearningCenterDetailTemplate
 
-export { Summary, TableOfContents, Course, Tagcloud, Worksheets, RelatedCourses, RelatedArticles }
+export { Summary, TableOfContents, Course, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
