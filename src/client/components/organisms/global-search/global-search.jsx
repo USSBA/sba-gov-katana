@@ -23,7 +23,8 @@ export class GlobalSearch extends React.PureComponent {
   constructor(ownProps) {
     super()
     this.state = {
-      query: {},
+      searchValues: {},
+      filterValues: {},
       items: [
         {
           body:
@@ -68,7 +69,8 @@ export class GlobalSearch extends React.PureComponent {
             '<p><strong>How to Write a Business Plan</strong></p>\r\n\r\n<p><strong>1 Course Introduction</strong></p>\r\n\r\n<p><strong>1.1 Course Purpose</strong><br />\r\nWelcome to the How to Write a Business Plan course.</p>\r\n\r\n<p>Produced by the SBA’s Office of Entrepreneurship Education, the How to Write a Business Plan<br />\r\ncourse expands on topics relevant to those individuals who are planning to write a business plan</p>\r\n\r\n<p>The How to Write a Business Plan course is comprised of two topics.</p>\r\n\r\n<p>The course begins and sets the tone by defining a business plan as well as appropriate audiences<br />\r\nand its importance to business success.</p>\r\n\r\n<p>The course continues by explaining in detail the contents of each section within a business plan.</p>\r\n\r\n<p>We recommend completing the Course Introduction and Topic 1: What is a Business Plan?<br />\r\nbefore proceeding to other topics.</p>\r\n\r\n<p>Click the Next button below to get started; use this button to navigate through the course Or, to<br />\r\ngo directly to a specific topic, select the desired topic from the menu to the right.</p>\r\n\r\n<p><strong>Click here to learn more. (link opens in a new window)</p>\r\n',
           id: 5880,
           updated: 1516916588,
-          created: 1516892830
+          created: 1516892830,
+          program: ['Microlending']
         },
         {
           body:
@@ -112,10 +114,11 @@ export class GlobalSearch extends React.PureComponent {
             '<p><strong>Transcript - Introduction to Accounting </strong></p>\r\n\r\n<p>Course Introduction</p>\r\n\r\n<p><strong>Welcome to the Introduction to Accounting Training for Entrepreneurs </strong></p>\r\n\r\n<p>The SBA Learning Center presents: Introduction to Accounting.</p>\r\n\r\n<p>Produced by the SBA’s Office of Entrepreneurship Education, this self-paced course will demystify accounting concepts and terminology.</p>\r\n\r\n<p>This training course takes approximately 30 minutes to complete. Additional time will be needed to review the provided resources and to complete the next step exercises at the end of the course. After you complete the course, you will have the option to receive a printed Certificate of Completion from SBA.</p>\r\n\r\n<p>Select next to get started.</p>\r\n\r\n<p><strong>Course Overview </strong></p>\r\n\r\n<p>Did you know that about fifty percent of small businesses fail in the first four years? (Source: http://www.bls.gov/bdm/entrepreneurship/entrepreneurship.htm)</p>\r\n\r\n<p>Accounting skills are essential when starting and operating a new business, so it is important that you understand basic accounting concepts and terminology to ensure you do not fall in that fifty percentile. This course introduces key concepts and principles for accounting and provides an overview of the different types of financial statements available for entrepreneurs to make [good business] decisions.</p>\r\n\r\n<p>In lesson one, we will define accounting and describe basic accounting concepts such as the importance of accounting, the uses and users of accounting, as well as types of accounting.</p>\r\n\r\n<p>Next, in lesson two, we will explain the basics of bookkeeping, the importance of keeping accurate books, the accounting life cycle, and the types of bookkeeping systems available.</p>\r\n\r\n<p>In lesson three, we will describe the differences between income and expenses.</p>\r\n\r\n<p>Then for lessons four, five, and six, we will define and describe the components for the balance sheet, the income statement, and the cash flow statement.</p>\r\n\r\n<p>Finally, in lesson seven, we will explain the importance of hiring a professional and provide tips for finding the right accounting software.</p>\r\n\r\n<p>You can quickly navigate to any of these lessons by selecting the dropdown menu. Select the lesson title to jump to the desired lesson.</p>\r\n\r\n<p>Select next to go over the course objectives.</p>\r\n\r\n<p><strong>Legal Requirements for Small Business </em>course will give you an overview of the legal requirements of small business owners.</p>\r\n\r\n<p><strong>Try a Tool. </strong></p>\r\n\r\n<p>SBA’s partner, SCORE, has created a Business Planning &amp; Financial Statements Template Gallery that may help you get started.</p>\r\n\r\n<p><strong>Find local assistance! </strong></p>\r\n\r\n<p>SBA has a broad network of skilled counselors and business development specialists that can be located using our zip-code tool.</p>\r\n',
           id: 5886,
           updated: 1516915956,
-          created: 1516900929
+          created: 1516900929,
+          program: ['SBIC']
         }
       ],
-      filteredData: []
+      filteredItems: []
     }
   }
 
@@ -124,13 +127,6 @@ export class GlobalSearch extends React.PureComponent {
       names: this.props.taxonomyFilters.join(',')
     })
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if(this.state.query != nextState.query) {
-  //     return false
-  //   }
-  //   return true
-  // }
 
   handleChange(event, selectStateKey) {
     this.handleQueryChange(selectStateKey, event.value)
@@ -144,9 +140,9 @@ export class GlobalSearch extends React.PureComponent {
     }
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value
-    const currentQuery = this.state.query
+    const currentQuery = this.state.searchValues
     const newQuery = assign({}, currentQuery, newQueryFieldValue)
-    this.setState({ query: newQuery })
+    this.setState({ searchValues: newQuery })
   }
 
   fireDocumentationLookupEvent(action, value = null) {
@@ -184,7 +180,7 @@ export class GlobalSearch extends React.PureComponent {
         },
         name: id,
         label: startCase(newName || name),
-        value: this.state.query[name] || 'All',
+        value: this.state.searchValues[name] || 'All',
         options: options
       }
 
@@ -213,11 +209,14 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   onSubmit() {
-    this.filterAndRenderItems(this.state.query.businessStage)
+    this.setState({
+      filterValues: this.state.searchValues
+    })
+    this.filterAndRenderItems(this.state.filterValues.businessStage)
   }
 
   filterAndRenderItems(filterValue = 'All') {
-    if ((filterValue === undefined && isEmpty(this.state.query)) || filterValue === 'All') {
+    if ((filterValue === undefined && isEmpty(this.state.filteredValues)) || filterValue === 'All') {
       return this.state.items.map((item, index) => {
         return <div>{this.renderItem(item, index)}</div>
       })
@@ -231,10 +230,9 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   renderItem(item, index) {
-    console.log('ITEM', item)
     return (
       <div>
-        <p>{item.title}</p>
+        <p key={index}>{item.title}</p>
       </div>
     )
   }
@@ -253,7 +251,7 @@ export class GlobalSearch extends React.PureComponent {
             </div>
           )}
         </div>
-        <div>{this.filterAndRenderItems(this.state.query.businessStage)}</div>
+        <div>{this.filterAndRenderItems(this.state.filterValues.businessStage)}</div>
       </div>
     )
   }
@@ -272,3 +270,59 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(GlobalSearch)
+
+// filterAndRenderItems(filterValues) {
+//   const filteredData = this.filterItems(filterValues)
+//   return filteredData.map((item, index) => {
+//     return this.renderItem(item, index)
+//   })
+// }
+
+// filterAndRenderItems(filteredValues) {
+//   // for(const filterValue in filteredValues) {
+
+//   // }
+//   if ((filteredValues === undefined && isEmpty(this.state.filteredValues)) || filterValue === 'All') {
+//     return this.state.items.map((item, index) => {
+//       return <div>{this.renderItem(item, index)}</div>
+//     })
+//   } else {
+//     for(const filterValue in filteredValues) {
+//       return this.state.items.map((item, index) => {
+//         if (item.courseCategory.includes(filterValue) && this.state.items.indexOf(item.id)) {
+//           return this.renderItem(item, index)
+//         }
+//       })
+//     }
+//   }
+// }
+
+//   filterItems(filterValues) {
+//     const filteredData = []
+// if (filterValues === undefined ||
+//     Object.values(filterValues).every(value => {
+//       return value === 'All'
+//     })) {
+//         console.log('GO')
+//         this.state.items.map((item) => {
+//           filteredData.push(item)
+//         })
+//     } else {
+
+//       console.log('STOP')
+//       this.state.items.map((item) => {
+//         if (item.includes(filterValues[filterValue])) {
+//           filteredData.push(item)
+//         }
+//       })
+//       for(const filterValue in filterValues) {
+//         this.state.items.map((item) => {
+//           console.log('ITEM',item)
+//           if (item.filterValue.includes(filterValues[filterValue])) {
+//             filteredData.push(item)
+//           }
+//         })
+//       }
+//     }
+//     return filteredData
+//   }
