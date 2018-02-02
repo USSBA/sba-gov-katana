@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
-import CourseDetailTemplate, {
+import CourseView, {
   TableOfContents,
   Summary,
   Course,
@@ -11,12 +11,12 @@ import CourseDetailTemplate, {
   RelatedCourses,
   RelatedArticles,
   CTA
-} from 'templates/course/detail.jsx'
+} from 'templates/course/course.view.jsx'
 
-describe('<CourseDetailTemplate />', () => {
+describe('<CourseView />', () => {
   describe('Breadcrumb', () => {
     test('has a breadcrumb trail', () => {
-      const component = shallow(<CourseDetailTemplate />)
+      const component = shallow(<CourseView />)
       const result = component.find('Breadcrumb').length
       const expected = 1
 
@@ -30,7 +30,7 @@ describe('<CourseDetailTemplate />', () => {
         title: 'How to write a business plan'
       }
 
-      const component = shallow(<CourseDetailTemplate {...props} />)
+      const component = shallow(<CourseView {...props} />)
       const result = component.find('h1').text()
       const expected = 'How to write a business plan'
 
@@ -54,26 +54,9 @@ describe('<CourseDetailTemplate />', () => {
 
   describe('<TableOfContents />', () => {
     test('has a table of contents', () => {
-      const props = {
-        tableOfContents: [
-          {
-            url: '#',
-            title: 'contents link'
-          },
-          {
-            url: '#',
-            title: 'contents link'
-          },
-          {
-            url: '#',
-            title: 'contents link'
-          }
-        ]
-      }
-
-      const component = shallow(<TableOfContents {...props} />)
+      const component = shallow(<TableOfContents />)
       const result = component.find('li').length
-      const expected = 3
+      const expected = 2
 
       expect(result).toEqual(expected)
     })
@@ -81,7 +64,7 @@ describe('<CourseDetailTemplate />', () => {
 
   describe('<DownloadFlash />', () => {
     test('has a mobile message that course is unavailable', () => {
-      const component = shallow(<CourseDetailTemplate />)
+      const component = shallow(<CourseView />)
       const result = component.find('DownloadFlash').length
       const expected = 1
 

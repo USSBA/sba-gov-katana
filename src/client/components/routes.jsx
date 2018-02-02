@@ -85,8 +85,8 @@ let SearchPage = props => (
   <Async componentProps={props} load={import('./pages/search-page/search-page.jsx')} />
 )
 
-let CourseDetailTemplate = props => (
-  <Async componentProps={props} load={import('./templates/course/detail.jsx')} />
+let CourseTemplate = props => (
+  <Async componentProps={props} load={import('./templates/course/course.jsx')} />
 )
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
@@ -130,7 +130,7 @@ const mainRoutes = [
   />,
   <Route key={50} path="/search/" component={SearchPage} />,
   <Redirect key={51} from="/search" to="/search/" />,
-  <Route key={52} path="/course/:first/" component={CourseDetailTemplate} />,
+  <Route key={52} path="/course/:first/" component={CourseTemplate} />,
   <Redirect key={53} from="/course/:first" to="/course/:first/" />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
