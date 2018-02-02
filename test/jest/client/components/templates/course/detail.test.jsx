@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
-import LearningCenterDetailTemplate, {
+import CourseDetailTemplate, {
   TableOfContents,
   Summary,
   Course,
@@ -11,12 +11,12 @@ import LearningCenterDetailTemplate, {
   RelatedCourses,
   RelatedArticles,
   CTA
-} from 'templates/learning-center/detail.jsx'
+} from 'templates/course/detail.jsx'
 
-describe('<LearningCenterDetailTemplate />', () => {
+describe('<CourseDetailTemplate />', () => {
   describe('Breadcrumb', () => {
     test('has a breadcrumb trail', () => {
-      const component = shallow(<LearningCenterDetailTemplate />)
+      const component = shallow(<CourseDetailTemplate />)
       const result = component.find('Breadcrumb').length
       const expected = 1
 
@@ -30,7 +30,7 @@ describe('<LearningCenterDetailTemplate />', () => {
         title: 'How to write a business plan'
       }
 
-      const component = shallow(<LearningCenterDetailTemplate {...props} />)
+      const component = shallow(<CourseDetailTemplate {...props} />)
       const result = component.find('h1').text()
       const expected = 'How to write a business plan'
 
@@ -81,7 +81,7 @@ describe('<LearningCenterDetailTemplate />', () => {
 
   describe('<DownloadFlash />', () => {
     test('has a mobile message that course is unavailable', () => {
-      const component = shallow(<LearningCenterDetailTemplate />)
+      const component = shallow(<CourseDetailTemplate />)
       const result = component.find('DownloadFlash').length
       const expected = 1
 

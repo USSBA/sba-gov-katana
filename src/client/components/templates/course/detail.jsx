@@ -4,7 +4,7 @@ import { Breadcrumb, CallToAction } from 'molecules'
 import { CardCollection } from 'organisms'
 import styles from './detail.scss'
 
-class LearningCenterDetailTemplate extends PureComponent {
+class CourseDetailTemplate extends PureComponent {
   render() {
     const { title, breadcrumbs } = this.props
 
@@ -35,7 +35,7 @@ class LearningCenterDetailTemplate extends PureComponent {
   }
 }
 
-LearningCenterDetailTemplate.defaultProps = {
+CourseDetailTemplate.defaultProps = {
   breadcrumbs: [
     {
       url: '#',
@@ -333,6 +333,6 @@ const CTA = props => {
   )
 }
 
-export default LearningCenterDetailTemplate
+export default CourseDetailTemplate
 
 export { Summary, TableOfContents, Course, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
