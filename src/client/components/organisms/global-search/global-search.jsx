@@ -10,6 +10,7 @@ import { logPageEvent } from '../../../services/analytics.js'
 import { getQueryParams } from '../../../services/utils.js'
 import { logEvent } from '../../../services/analytics.js'
 import { CardCollection } from 'organisms'
+import { Baby } from 'organisms'
 
 const createSlug = str => {
   return str
@@ -125,8 +126,16 @@ export class GlobalSearch extends React.PureComponent {
     })
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if(this.state.query != nextState.query) {
+  //     return false
+  //   }
+  //   return true
+  // }
+
   handleChange(event, selectStateKey) {
     this.handleQueryChange(selectStateKey, event.value)
+    this.setState({})
   }
 
   handleQueryChange(field, value) {
@@ -208,21 +217,21 @@ export class GlobalSearch extends React.PureComponent {
     this.filterAndRenderItems(this.state.query.businessStage)
   }
 
-  filterAndRenderItems(filterValue) {
+  filterAndRenderItems(filterValue = 'All') {
     if ((filterValue === undefined && isEmpty(this.state.query)) || filterValue === 'All') {
       return this.state.items.map((item, index) => {
-        return this.renderItems(item, index)
+        return <div>{this.renderItem(item, index)}</div>
       })
     } else {
       return this.state.items.map((item, index) => {
         if (item.courseCategory.includes(filterValue)) {
-          return this.renderItems(item, index)
+          return this.renderItem(item, index)
         }
       })
     }
   }
 
-  renderItems(item, index) {
+  renderItem(item, index) {
     console.log('ITEM', item)
     return (
       <div>
@@ -245,7 +254,7 @@ export class GlobalSearch extends React.PureComponent {
             </div>
           )}
         </div>
-        <div>{this.filterAndRenderItems()}</div>
+        <div>{this.filterAndRenderItems(this.state.query.businessStage)}</div>
       </div>
     )
   }
