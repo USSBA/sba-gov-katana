@@ -282,6 +282,6 @@ jobs:
         command: |
           loginlower="$(export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
           ${loginlower}
-          docker pull ${AMAZON_ECR_REPO}:${CIRCLE_SHA1}
-          docker tag ${AMAZON_ECR_REPO}:${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
+          docker pull "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
+          docker tag "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}" "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
           docker push "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
