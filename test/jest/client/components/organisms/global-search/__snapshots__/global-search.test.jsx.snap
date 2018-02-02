@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalSearch should render with one taxonomyFilter 1`] = `
+<div>
+  <div
+    className="banner"
+  >
+    <h2
+      className="header"
+    >
+      My Courses
+    </h2>
+  </div>
+  <div>
+    <div>
+      <div>
+        <p>
+          How to Write a Business Plan
+        </p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>
+          Introduction to Accounting
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`GlobalSearch should render with two taxonomyFilter 1`] = `
+<div>
+  <div
+    className="banner"
+  >
+    <h2
+      className="header"
+    >
+      My Courses
+    </h2>
+  </div>
+  <div>
+    <div>
+      <div>
+        <p>
+          How to Write a Business Plan
+        </p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>
+          Introduction to Accounting
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -117,8 +117,7 @@ export class GlobalSearch extends React.PureComponent {
           created: 1516900929,
           program: ['SBIC']
         }
-      ],
-      filteredItems: []
+      ]
     }
   }
 
