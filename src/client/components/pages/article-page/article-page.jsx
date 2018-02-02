@@ -1,10 +1,11 @@
 import React from 'react'
-import s from './article-page.scss'
-import * as ContentActions from '../../../actions/content.js'
-import ErrorPage from '../error-page/error-page.jsx'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
 import Article from '../../templates/article/article.jsx'
+import ErrorPage from '../error-page/error-page.jsx'
+import s from './article-page.scss'
+import * as ContentActions from '../../../actions/content.js'
 
 class ArticlePage extends React.Component {
   constructor() {
@@ -15,20 +16,22 @@ class ArticlePage extends React.Component {
   }
 
   componentWillMount() {
-    let url = this.props.url
-    if (url) {
-      this.props.actions.fetchContentIfNeeded('articles', 'articles', {
-        url: url
+    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
+
+    if (pathname) {
+      fetchContentIfNeeded('articles', 'articles', {
+        url: pathname
       })
     }
   }
 
   render() {
-    if (this.props.url && this.props.article !== null) {
-      if (this.props.article) {
-        return <Article article={this.props.article} />
+    const { article, location: { pathname } } = this.props
+    if (pathname && document !== null) {
+      if (article) {
+        return <Article article={article} />
       } else {
-        return <div>Loading Article....</div>
+        return <div>Loading Article...</div>
       }
     } else {
       return <ErrorPage />
@@ -36,18 +39,26 @@ class ArticlePage extends React.Component {
   }
 }
 
-ArticlePage.defaultProps = {
-  url: {}
-}
-
 function mapReduxStateToProps(reduxState, ownProps) {
-  let articleStoreValue = reduxState.contentReducer['articles']
-  if (articleStoreValue && articleStoreValue.count === 0) {
-    return { article: null }
-  } else if (articleStoreValue && articleStoreValue.items && articleStoreValue.items.length > 0) {
-    return { article: articleStoreValue.items[0] }
-  } else {
-    return {}
+  const { contentReducer: { articles } } = reduxState
+
+  let articleProp = {}
+  if (articles) {
+    const { items } = articles
+    if (articles.count === 0) {
+      articleProp = {
+        article: null
+      }
+    } else if (items && items.length > 0) {
+      articleProp = {
+        article: items[0]
+      }
+    }
+  }
+
+  return {
+    ...articleProp,
+    location: ownProps.location
   }
 }
 
