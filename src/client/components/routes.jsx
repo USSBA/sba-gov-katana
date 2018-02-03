@@ -89,6 +89,13 @@ let CourseTemplate = props => (
   <Async componentProps={props} load={import('./templates/course/course.jsx')} />
 )
 
+let LearningCenterLookupPage = props => (
+  <Async
+    componentProps={props}
+    load={import('./pages/learning-center-lookup-page/learning-center-lookup-page.jsx')}
+  />
+)
+
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'
@@ -132,6 +139,8 @@ const mainRoutes = [
   <Redirect key={51} from="/search" to="/search/" />,
   <Route key={52} path="/course/:first/" component={CourseTemplate} />,
   <Redirect key={53} from="/course/:first" to="/course/:first/" />,
+  <Route key={54} path="/course/" component={LearningCenterLookupPage} />,
+  <Redirect key={55} from="/course" to="/course/" />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
