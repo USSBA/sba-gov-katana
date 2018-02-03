@@ -1,7 +1,7 @@
 foresee:
     environment: staging
 googleAnalytics:
-    enabled: true
+    enabled: false
     accountId: UA-96147768-1
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
@@ -12,6 +12,11 @@ features:
     showSbic: false
     moon: false
     searchUrl: "/tools/search-result-page?search="
+    urlRedirect:
+        tableName: UrlToNodeDemo
+    drupalRedirect:
+        enabled: true
+        tableName: UrlToUrlRedirectDemo
 cache:
-  s3BucketName: dev-content-sba-gov
+  s3BucketName: demo-content-sba-gov
   useS3: true
