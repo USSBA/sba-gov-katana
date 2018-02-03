@@ -23,8 +23,8 @@ export class GlobalSearch extends React.PureComponent {
   constructor(ownProps) {
     super()
     this.state = {
-      searchValues: {},
-      filterValues: {},
+      onChangeValues: {},
+      onSubmitValues: {},
       items: [
         {
           body:
@@ -139,9 +139,9 @@ export class GlobalSearch extends React.PureComponent {
     }
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value
-    const currentQuery = this.state.searchValues
+    const currentQuery = this.state.onChangeValues
     const newQuery = assign({}, currentQuery, newQueryFieldValue)
-    this.setState({ searchValues: newQuery })
+    this.setState({ onChangeValues: newQuery })
   }
 
   fireDocumentationLookupEvent(action, value = null) {
@@ -179,7 +179,7 @@ export class GlobalSearch extends React.PureComponent {
         },
         name: id,
         label: startCase(newName || name),
-        value: this.state.searchValues[name] || 'All',
+        value: this.state.onChangeValues[name] || 'All',
         options: options
       }
 
@@ -209,9 +209,9 @@ export class GlobalSearch extends React.PureComponent {
 
   onSubmit() {
     this.setState({
-      filterValues: this.state.searchValues
+      onSubmitValues: this.state.onChangeValues
     })
-    this.filterAndRenderItems(this.state.filterValues.businessStage)
+    this.filterAndRenderItems(this.state.onSubmitValues.businessStage)
   }
 
   filterAndRenderItems(filterValue = 'All') {
@@ -250,7 +250,7 @@ export class GlobalSearch extends React.PureComponent {
             </div>
           )}
         </div>
-        <div>{this.filterAndRenderItems(this.state.filterValues.businessStage)}</div>
+        <div>{this.filterAndRenderItems(this.state.onSubmitValues.businessStage)}</div>
       </div>
     )
   }
@@ -269,59 +269,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(GlobalSearch)
-
-// filterAndRenderItems(filterValues) {
-//   const filteredData = this.filterItems(filterValues)
-//   return filteredData.map((item, index) => {
-//     return this.renderItem(item, index)
-//   })
-// }
-
-// filterAndRenderItems(filteredValues) {
-//   // for(const filterValue in filteredValues) {
-
-//   // }
-//   if ((filteredValues === undefined && isEmpty(this.state.filteredValues)) || filterValue === 'All') {
-//     return this.state.items.map((item, index) => {
-//       return <div>{this.renderItem(item, index)}</div>
-//     })
-//   } else {
-//     for(const filterValue in filteredValues) {
-//       return this.state.items.map((item, index) => {
-//         if (item.courseCategory.includes(filterValue) && this.state.items.indexOf(item.id)) {
-//           return this.renderItem(item, index)
-//         }
-//       })
-//     }
-//   }
-// }
-
-//   filterItems(filterValues) {
-//     const filteredData = []
-// if (filterValues === undefined ||
-//     Object.values(filterValues).every(value => {
-//       return value === 'All'
-//     })) {
-//         console.log('GO')
-//         this.state.items.map((item) => {
-//           filteredData.push(item)
-//         })
-//     } else {
-
-//       console.log('STOP')
-//       this.state.items.map((item) => {
-//         if (item.includes(filterValues[filterValue])) {
-//           filteredData.push(item)
-//         }
-//       })
-//       for(const filterValue in filterValues) {
-//         this.state.items.map((item) => {
-//           console.log('ITEM',item)
-//           if (item.filterValue.includes(filterValues[filterValue])) {
-//             filteredData.push(item)
-//           }
-//         })
-//       }
-//     }
-//     return filteredData
-//   }
