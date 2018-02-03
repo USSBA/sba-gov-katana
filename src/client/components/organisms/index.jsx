@@ -1,6 +1,8 @@
 // miscellaenous organisms
 import BusinessGuideTileCollection from './business-guide-tile-collection/business-guide-tile-collection.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
+import ClientPagingMultiviewLayout from './client-paging-multiview-layout/client-paging-multiview-layout.jsx'
+import CoursesLayout from './courses-layout/courses-layout.jsx'
 import DeveloperTester from './developer-tester/developer-tester.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
@@ -15,6 +17,7 @@ import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
+import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
 import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
 import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
 import SbicLookup from './sbic-lookup/sbic-lookup'
@@ -68,6 +71,8 @@ import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-na
 export {
   BusinessGuideTileCollection,
   CardCollection,
+  ClientPagingMultiviewLayout,
+  CoursesLayout,
   DeveloperTester,
   DisasterAlert,
   DocumentArticle,
@@ -82,6 +87,7 @@ export {
   ModalController,
   NotificationBar,
   PagingLookup,
+  PagingMultiviewLayout,
   ProgramDetailsCardCollection,
   RelatedDocumentCards,
   SbicLookup,
