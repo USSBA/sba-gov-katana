@@ -16,9 +16,14 @@ function fetchCourse(params) {
   // be sure to catch the query params for the pathname from the invoking api call route
 
   return get('courses').then(courses => {
-    console.log('D', params.pathname)
+    const result = courses.find((course, index) => {
+      let _result
 
-    const result = courses[1]
+      if (course.url === params.pathname) {
+        return course
+      }
+      return _result
+    })
 
     return result
   })
