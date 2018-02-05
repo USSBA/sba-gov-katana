@@ -1,5 +1,9 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import CourseView from './course.view.jsx'
+import * as ContentActions from '../../../actions/content.js'
+import * as NavigationActions from '../../../actions/navigation.js'
 
 class Course extends PureComponent {
   constructor() {
@@ -11,6 +15,14 @@ class Course extends PureComponent {
   }
 
   getCourseData() {
+    const { pathname } = this.props.location
+
+    console.log('A', pathname)
+    // fetch course
+    this.props.actions.fetchContentIfNeeded('courses', 'courses', {
+      pathname
+    })
+
     const data = [
       {
         body:
@@ -133,6 +145,10 @@ class Course extends PureComponent {
     this.setState(props)
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('B', nextProps.course)
+  }
+
   render() {
     return (
       <div>
@@ -142,4 +158,21 @@ class Course extends PureComponent {
   }
 }
 
-export default Course
+function mapReduxStateToProps(reduxState) {
+  const { course } = reduxState.contentReducer
+
+  const data = {
+    course
+  }
+
+  return data
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(ContentActions, dispatch),
+    navigation: bindActionCreators(NavigationActions, dispatch)
+  }
+}
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Course)
