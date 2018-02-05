@@ -55,7 +55,7 @@ app.use(function(req, res, next) {
     }
   }
   const requestPath = req.path
-  const requestPathWithoutTraillingSlack = _.trimEnd(requestPath, '/')
+  const requestPathWithoutTraillingSlack = requestPath !== '/' ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(nodeId => {
       let responseStatus = HttpStatus.OK
