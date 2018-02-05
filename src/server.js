@@ -56,7 +56,7 @@ app.use(function(req, res, next) {
   }
   const requestPath = req.path
   console.log("requestPath",requestPath)
-  const requestPathWithoutTraillingSlack = requestPath !== '/' ? _.trimEnd(requestPath, '/') : requestPath
+  const requestPathWithoutTraillingSlack = requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   console.log("requestPathWithoutTraillingSlack",requestPathWithoutTraillingSlack)
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(nodeId => {
