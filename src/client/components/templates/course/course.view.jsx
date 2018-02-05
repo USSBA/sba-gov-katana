@@ -157,7 +157,7 @@ const Worksheets = props => {
           </div>
           <div className={styles.worksheetUrl}>
             <p>
-              <a href={url} target="_blank">
+              <a href={url} download>
                 Download <span className={styles.ext}>.{ext}</span>
               </a>
             </p>
