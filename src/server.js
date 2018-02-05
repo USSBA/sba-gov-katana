@@ -56,26 +56,28 @@ app.use(function(req, res, next) {
   }
   const requestPath = req.path
   const requestPathWithoutTraillingSlack = _.trimEnd(requestPath, '/')
-  findNodeIdByUrl(requestPathWithoutTraillingSlack).then(nodeId => {
-    let responseStatus = HttpStatus.OK
-    if (!nodeId) {
-      responseStatus = HttpStatus.NOT_FOUND
-    }
+  findNodeIdByUrl(requestPathWithoutTraillingSlack)
+    .then(nodeId => {
+      let responseStatus = HttpStatus.OK
+      if (!nodeId) {
+        responseStatus = HttpStatus.NOT_FOUND
+      }
 
-    const clientConfig = {
-      responseStatus: responseStatus,
-      isUserLoggedIn: hasSessionCookie || false,
-      googleAnalytics: config.get('googleAnalytics'),
-      debug: config.get('developmentOptions.client.logging'),
-      govdelivery: config.get('govdelivery.popupEnabled'),
-      showSbic: config.get('features.showSbic'),
-      moon: config.get('features.moon'),
-      searchUrl: config.get('features.searchUrl'),
-      forPartners: config.get('features.forPartners')
-    }
-    req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
-    next()
-  })
+      const clientConfig = {
+        responseStatus: responseStatus,
+        isUserLoggedIn: hasSessionCookie || false,
+        googleAnalytics: config.get('googleAnalytics'),
+        debug: config.get('developmentOptions.client.logging'),
+        govdelivery: config.get('govdelivery.popupEnabled'),
+        showSbic: config.get('features.showSbic'),
+        moon: config.get('features.moon'),
+        searchUrl: config.get('features.searchUrl'),
+        forPartners: config.get('features.forPartners')
+      }
+      req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
+      next()
+    })
+    .catch(next)
 })
 
 app.use(function(req, res, next) {
