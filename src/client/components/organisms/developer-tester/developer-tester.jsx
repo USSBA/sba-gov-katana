@@ -191,12 +191,28 @@ export class DeveloperTester extends React.Component {
   render() {
     const manyCourses = _.concat(courses, courses, courses)
     return (
-      <CoursesLayout
-        items={manyCourses}
-        onReset={_ => {
-          console.log('Reset')
-        }}
-      />
+      <div>
+        <div className={styles.container}>
+          <hr />
+          <p>The content is the five courses in the system right now repeated three times</p>
+          <CoursesLayout
+            items={manyCourses}
+            onReset={_ => {
+              window.alert('You hit reset')
+            }}
+          />
+        </div>
+        <div className={styles.container}>
+          <hr />
+          <p>The version below was given no items</p>
+          <CoursesLayout
+            items={[]}
+            onReset={_ => {
+              window.alert('You hit reset')
+            }}
+          />
+        </div>
+      </div>
     )
   }
 }
