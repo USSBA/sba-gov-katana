@@ -75,11 +75,7 @@ describe('<CourseView />', () => {
   describe('<Course />', () => {
     const props = {
       course: {
-        url: '#',
-        transcript: {
-          url: '#',
-          summary: 'abcde'
-        }
+        url: '#'
       }
     }
 
@@ -92,23 +88,9 @@ describe('<CourseView />', () => {
       expect(result).toEqual(expected)
     })
 
-    test('has a course with a transcript summary', () => {
-      const result = component.find('.transcript-box p').text()
-      const expected = 'abcde'
-
-      expect(result).toEqual(expected)
-    })
-
-    test('has a course with a transcript button', () => {
-      const result = component.find('SmallSecondaryButton').length
+    test('has a course ReadMore component', () => {
+      const result = component.find('ReadMore').length
       const expected = 1
-
-      expect(result).toEqual(expected)
-    })
-
-    test('has a course with a transcript link', () => {
-      const result = component.find('a').prop('href')
-      const expected = '#'
 
       expect(result).toEqual(expected)
     })

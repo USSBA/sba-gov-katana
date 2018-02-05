@@ -15,13 +15,14 @@ class Course extends PureComponent {
   }
 
   getCourseData() {
-    const { pathname } = this.props.location
+    /*const { pathname } = this.props.location
 
     console.log('A', pathname)
     // fetch course
-    this.props.actions.fetchContentIfNeeded('courses', 'courses', {
+    this.props.actions.fetchContentIfNeeded('course', 'course', {
       pathname
-    })
+    })*/
+    /*
 
     const data = [
       {
@@ -107,46 +108,68 @@ class Course extends PureComponent {
 			"updated": 1516915956,
 			"created": 1516900929
 		}*/
-    ]
-
-    return data
+    //]
+    //return data
   }
 
   componentWillMount() {
-    const data = this.getCourseData()[0]
+    const { first } = this.props.params
+
+    console.log('A', first)
+    // fetch course
+    this.props.actions.fetchContentIfNeeded('course', 'course', {
+      pathname: first
+    })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    //console.log('B', nextProps.course)
+
+    const data = nextProps.course
 
     const props = {
       title: data.title,
       summary: data.summary,
       course: {
-        url: data.courseUrl.url, //'https://www.sba.gov/media/training/howtowriteabusinessplan_02022017/story.html',
-        transcript: {
-          url: '#',
-          summary: 'View the full text-accessible transcript for this course.'
-        }
+        url: data.courseUrl.url //'https://www.sba.gov/media/training/howtowriteabusinessplan_02022017/story.html'
       }
     }
 
-    // set tags
-    props.tags = [
+    // add breadcrumbs
+    props.breadcrumbs = [
       {
-        description: 'Planning your business',
-        url: '#'
+        url: '/learning-center',
+        title: 'Learning Center'
       },
       {
-        description: 'Planning your estate',
-        url: '#'
+        url: '/course/',
+        title: 'Search results'
+      },
+      {
+        url: this.location,
+        title: data.title
       }
     ]
+
+    // set tags
+    props.tags = data.courseCategory.map(category => {
+      return {
+        description: category,
+        url: '/course/?topic=' + encodeURI(category)
+      }
+    })
 
     // add worksheets
     props.course.worksheets = data.courseMaterials.slice()
 
-    this.setState(props)
-  }
+    // add readMoreSectionItem object for "View Transcripts" area
+    props.readMoreSectionItem = {
+      expandedCopyText: data.transcript,
+      titleText: 'Course Transcript',
+      preview: data.body
+    }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('B', nextProps.course)
+    this.setState(props)
   }
 
   render() {

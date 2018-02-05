@@ -133,12 +133,7 @@
   margin-top: 30px;
   background: #ebebeb;
   width: 100%;
-  padding: 32px;
   text-align: left;
-
-  p {
-    font-style: italic;
-  }
 
   .button {
     background: #ebebeb;
@@ -153,6 +148,13 @@
   p {
     margin: 0;
     display: inline-block;
+  }
+}
+
+.expanded .readMoreSection {
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+    @include grid-push(4);
   }
 }
 

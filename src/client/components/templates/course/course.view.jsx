@@ -1,10 +1,22 @@
 import React, { PureComponent } from 'react'
 import { DecorativeDash, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
-import { Breadcrumb, CallToAction } from 'molecules'
+import { Breadcrumb, CallToAction, ReadMore } from 'molecules'
 import { CardCollection } from 'organisms'
 import styles from './course.view.scss'
 
 class CourseView extends PureComponent {
+  constructor() {
+    super()
+
+    this.state = {
+      readMoreExpanded: false
+    }
+  }
+
+  handleReadMoreStatus(readMoreStatus) {
+    this.setState({ readMoreExpanded: readMoreStatus })
+  }
+
   render() {
     const { title, breadcrumbs } = this.props
 
@@ -31,7 +43,11 @@ class CourseView extends PureComponent {
         <div className={styles.container + ' ' + styles.midContainer}>
           <TableOfContents />
           <DownloadFlash />
-          <Course {...this.props} />
+          <Course
+            {...this.props}
+            onToggleStatus={this.handleReadMoreStatus.bind(this)}
+            readMoreExpanded={this.state.readMoreExpanded}
+          />
           {this.props.tags && <Tagcloud {...this.props} />}
           {this.props.course.worksheets && <Worksheets {...this.props} />}
           <RelatedCourses {...this.props} />
@@ -86,11 +102,13 @@ const Course = props => {
     <div id="course" className={styles.course + ' course'}>
       <iframe src={props.course.url} frameborder="0" allowfullscreen />
       <div className={styles.transcriptBox + ' transcript-box'}>
-        <h2>Course Transcript</h2>
-        <p>{props.course.transcript.summary}</p>
-        <a href={props.course.transcript.url}>
-          <SmallSecondaryButton className={styles.button} text="View" />
-        </a>
+        <ReadMore
+          parentId={10000}
+          onToggleStatus={props.onToggleStatus}
+          expanded={props.readMoreExpanded}
+          readMoreSectionItem={props.readMoreSectionItem}
+          isHTML={true}
+        />
       </div>
     </div>
   )
@@ -164,7 +182,7 @@ const RelatedCourses = props => {
     <div className={styles.relatedCourses + ' related-courses'}>
       <h3>Related Courses</h3>
       <CardCollection parentIndex={0} cards={props.relatedCourses} />
-      <a href="#">
+      <a href="/course/">
         <LargeSecondaryButton className={styles.button} text="See All Courses" />
       </a>
     </div>
@@ -214,10 +232,6 @@ CourseView.defaultProps = {
     'Learn the importance of business planning, the components of a business plan, and see sample plans.',
   course: {
     url: 'https://www.youtube.com/embed/owsfdh4gxyc',
-    transcript: {
-      url: '#',
-      summary: 'View the full text-accessible transcript for this course.'
-    },
     worksheets: [
       {
         description: 'How to write a business plan checklist',
@@ -236,6 +250,11 @@ CourseView.defaultProps = {
         url: '#'
       }
     ]
+  },
+  readMoreSectionItem: {
+    expandedCopyText: 'expanded text',
+    titleText: 'title text',
+    preview: 'preview text'
   },
   tags: [
     {
