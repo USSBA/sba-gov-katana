@@ -22,10 +22,7 @@ class PagingMultiviewLayout extends React.PureComponent {
     } else {
       result = (
         <div className={`no-results-message-container ${styles.noResults}`}>
-          <p className={styles.noResultsMessage}>
-            Sorry, we couldn't find any {type}
-            matching that query.
-          </p>
+          <p className={styles.noResultsMessage}>Sorry, we couldn't find any {type} matching that query.</p>
           <p>
             <a onClick={onReset}>Clear all search filters</a>
           </p>
