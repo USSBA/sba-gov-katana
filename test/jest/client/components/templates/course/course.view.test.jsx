@@ -16,7 +16,7 @@ import CourseView, {
 describe('<CourseView />', () => {
   describe('Breadcrumb', () => {
     test('has a breadcrumb trail', () => {
-      const component = shallow(<CourseView />)
+      const component = shallow(<CourseView isLoaded={true} />)
       const result = component.find('Breadcrumb').length
       const expected = 1
 
@@ -27,6 +27,7 @@ describe('<CourseView />', () => {
   describe('<h1>Title</h1>', () => {
     test('has a title', () => {
       const props = {
+        isLoaded: true,
         title: 'How to write a business plan'
       }
 
@@ -64,7 +65,7 @@ describe('<CourseView />', () => {
 
   describe('<DownloadFlash />', () => {
     test('has a mobile message that course is unavailable', () => {
-      const component = shallow(<CourseView />)
+      const component = shallow(<CourseView isLoaded={true} />)
       const result = component.find('DownloadFlash').length
       const expected = 1
 
