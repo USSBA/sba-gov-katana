@@ -71,6 +71,10 @@ class Course extends PureComponent {
         preview: data.body
       }
 
+      // disable relatedCourses and relatedArticles
+      props.relatedCourses = []
+      props.relatedArticles = []
+
       this.setState(props)
     }
   }

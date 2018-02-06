@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import _ from 'lodash'
 import { DecorativeDash, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
 import { Breadcrumb, CallToAction, ReadMore } from 'molecules'
 import { CardCollection } from 'organisms'
@@ -52,8 +53,8 @@ class CourseView extends PureComponent {
               />
               {this.props.tags && <Tagcloud {...this.props} />}
               {this.props.course.worksheets && <Worksheets {...this.props} />}
-              <RelatedCourses {...this.props} />
-              <RelatedArticles {...this.props} />
+              {!_.isEmpty(this.props.relatedCourses) && <RelatedCourses {...this.props} />}
+              {!_.isEmpty(this.props.relatedArticles) && <RelatedArticles {...this.props} />}
               <CTA {...this.props} />
             </div>
           </div>
@@ -78,12 +79,12 @@ const Summary = props => {
 const TableOfContents = props => {
   return (
     <div className="table-of-contents">
-      <h2>Content</h2>
-      <ul>
-        <li>
+      <h2 id="contentLabel">Content</h2>
+      <ul role="menu" aria-labelledby="contentLabel">
+        <li role="menuitem">
           <a href="#course">Course</a>
         </li>
-        <li>
+        <li role="menuitem">
           <a href="#worksheets">Worksheets</a>
         </li>
       </ul>
@@ -159,7 +160,7 @@ const Worksheets = props => {
       const ext = url.split('.').pop()
 
       return (
-        <li key={i} className={`worksheet-${i}`}>
+        <li role="menuitem" key={i} className={`worksheet-${i}`}>
           <div className={styles.worksheetDescription}>
             <p>{description}</p>
           </div>
@@ -174,12 +175,16 @@ const Worksheets = props => {
       )
     })
 
-    return <ul>{list}</ul>
+    return (
+      <ul role="menu" aria-labelledby="courseWorksheetsLabel">
+        {list}
+      </ul>
+    )
   }
 
   return (
     <div id="worksheets" className={styles.worksheets + ' worksheets'}>
-      <h3>Course Worksheets</h3>
+      <h3 id="courseWorksheetsLabel">Course Worksheets</h3>
       {renderList()}
     </div>
   )
