@@ -40,13 +40,18 @@ class ReadMore extends React.Component {
         <h3 id={this.props.parentId + '-title'} className={styles.title}>
           {this.props.readMoreSectionItem.titleText}
         </h3>
-        <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
-          {this.props.isHTML ? (
-            <div dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }} />
-          ) : (
-            this.props.readMoreSectionItem.preview
-          )}
-        </p>
+        {this.props.isHTML ? (
+          <div
+            dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}
+            key={50}
+            id={this.props.parentId + '-preview'}
+            className={styles.preview}
+          />
+        ) : (
+          <p key={50} id={this.props.parentId + '-preview'} className={styles.preview}>
+            {this.props.readMoreSectionItem.preview}
+          </p>
+        )}
         {expandedHr}
         {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
         <SmallSecondaryButton

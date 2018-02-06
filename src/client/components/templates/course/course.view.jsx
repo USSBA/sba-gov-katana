@@ -18,42 +18,50 @@ class CourseView extends PureComponent {
   }
 
   render() {
-    const { title, breadcrumbs } = this.props
+    const { title, breadcrumbs, isLoaded } = this.props
 
     return (
       <div>
-        {this.props.breadcrumbs && (
+        {isLoaded ? (
           <div>
-            <div className={styles.container + ' ' + styles.breadcrumbContainer}>
-              <div className={styles.breadcrumb}>
-                <Breadcrumb items={breadcrumbs} />
+            {this.props.breadcrumbs && (
+              <div>
+                <div className={styles.container + ' ' + styles.breadcrumbContainer}>
+                  <div className={styles.breadcrumb}>
+                    <Breadcrumb items={breadcrumbs} />
+                  </div>
+                </div>
               </div>
+            )}
+            {this.props.title && (
+              <div>
+                <div className={styles.container + ' ' + styles.topContainer}>
+                  <h1>{title}</h1>
+                  {this.props.summary && <Summary {...this.props} />}
+                  <DecorativeDash className={styles.decorativeDash} aria-hidden="true" />
+                </div>
+              </div>
+            )}
+            <div className={styles.container + ' ' + styles.midContainer}>
+              <TableOfContents />
+              <DownloadFlash />
+              <Course
+                {...this.props}
+                onToggleStatus={this.handleReadMoreStatus.bind(this)}
+                readMoreExpanded={this.state.readMoreExpanded}
+              />
+              {this.props.tags && <Tagcloud {...this.props} />}
+              {this.props.course.worksheets && <Worksheets {...this.props} />}
+              <RelatedCourses {...this.props} />
+              <RelatedArticles {...this.props} />
+              <CTA {...this.props} />
             </div>
           </div>
-        )}
-        {this.props.title && (
-          <div>
-            <div className={styles.container + ' ' + styles.topContainer}>
-              <h1>{title}</h1>
-              {this.props.summary && <Summary {...this.props} />}
-              <DecorativeDash className={styles.decorativeDash} aria-hidden="true" />
-            </div>
+        ) : (
+          <div className={styles.container + ' ' + styles.midContainer}>
+            <p>loading...</p>
           </div>
         )}
-        <div className={styles.container + ' ' + styles.midContainer}>
-          <TableOfContents />
-          <DownloadFlash />
-          <Course
-            {...this.props}
-            onToggleStatus={this.handleReadMoreStatus.bind(this)}
-            readMoreExpanded={this.state.readMoreExpanded}
-          />
-          {this.props.tags && <Tagcloud {...this.props} />}
-          {this.props.course.worksheets && <Worksheets {...this.props} />}
-          <RelatedCourses {...this.props} />
-          <RelatedArticles {...this.props} />
-          <CTA {...this.props} />
-        </div>
       </div>
     )
   }
@@ -100,10 +108,10 @@ const DownloadFlash = props => {
 const Course = props => {
   return (
     <div id="course" className={styles.course + ' course'}>
-      <iframe src={props.course.url} frameborder="0" allowfullscreen />
+      <iframe src={props.course.url} frameBorder="0" allowFullScreen />
       <div className={styles.transcriptBox + ' transcript-box'}>
         <ReadMore
-          parentId={10000}
+          parentId="01-read-more"
           onToggleStatus={props.onToggleStatus}
           expanded={props.readMoreExpanded}
           readMoreSectionItem={props.readMoreSectionItem}

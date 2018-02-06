@@ -151,13 +151,6 @@
   }
 }
 
-.expanded .readMoreSection {
-  @include grid-media($sba-grid-large) {
-    @include grid-column(8);
-    @include grid-push(4);
-  }
-}
-
 .worksheets {
   margin-top: 30px;
 }

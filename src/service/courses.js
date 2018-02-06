@@ -10,19 +10,15 @@ function fetchCourses() {
 }
 
 function fetchCourse(params) {
-  // avery changes
-  // add optional filtering based on pathname query
-  // may have to use helper function to map pathname to course id or something
-  // be sure to catch the query params for the pathname from the invoking api call route
-
   return get('courses').then(courses => {
     const result = courses.find((course, index) => {
-      let _result
+      let item
 
       if (course.url === params.pathname) {
-        return course
+        item = course
+        item.isFound = true
       }
-      return _result
+      return item
     })
 
     return result
