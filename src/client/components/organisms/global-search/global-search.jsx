@@ -6,9 +6,9 @@ import { bindActionCreators } from 'redux'
 
 import styles from './global-search.scss'
 import { ApplyButton, MultiSelect } from 'atoms'
+import { CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'
 import { logPageEvent } from '../../../services/analytics.js'
-import { getQueryParams } from '../../../services/utils.js'
 import { logEvent } from '../../../services/analytics.js'
 
 const createSlug = str => {
@@ -123,8 +123,16 @@ export class GlobalSearch extends React.PureComponent {
     })
   }
 
+  onReset() {
+    if (this.props.type === 'courses') {
+      this.setState({ filterValues: { businessStage: 'All' } }, () => {
+        this.onSubmit()
+      })
+    }
+  }
+
   onSubmit() {
-    const queryParams = getQueryParams()
+    const queryParams = this.props.location.query
     let query
 
     if (
@@ -147,14 +155,23 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   renderItems(items) {
-    if (items) {
-      return items.map((item, index) => {
-        return (
-          <div>
-            <p key={index}>{item.title}</p>
-          </div>
-        )
+    if (this.props.type === 'courses') {
+      const courses = this.props.items.map(item => {
+        const course = item
+        course.url = `/${item.url}`
+        return course
       })
+
+      return (
+        <div className={styles.container}>
+          <CoursesLayout
+            items={courses}
+            onReset={_ => {
+              this.onReset()
+            }}
+          />
+        </div>
+      )
     }
   }
 
@@ -177,6 +194,10 @@ export class GlobalSearch extends React.PureComponent {
     )
   }
 }
+
+// const Grid = props => {
+
+// }
 
 function mapReduxStateToProps(reduxState, props) {
   return {
