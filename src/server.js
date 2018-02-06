@@ -38,6 +38,7 @@ const metaVariables = {
   title: 'Small Business Administration'
 }
 
+import { findNodeIdByUrl } from './service/url-redirect.js'
 app.use(function(req, res, next) {
   // handle Accept-Language header
   req.preferredLanguage = accepts(req).languages()[0] //eslint-disable-line no-param-reassign
@@ -53,18 +54,30 @@ app.use(function(req, res, next) {
       console.log('Session info: ', req.sessionInfo)
     }
   }
-  const clientConfig = {
-    isUserLoggedIn: hasSessionCookie || false,
-    googleAnalytics: config.get('googleAnalytics'),
-    debug: config.get('developmentOptions.client.logging'),
-    govdelivery: config.get('govdelivery.popupEnabled'),
-    showSbic: config.get('features.showSbic'),
-    moon: config.get('features.moon'),
-    searchUrl: config.get('features.searchUrl'),
-    forPartners: config.get('features.forPartners')
-  }
-  req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
-  next()
+  const requestPath = req.path
+  const requestPathWithoutTraillingSlack = requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
+  findNodeIdByUrl(requestPathWithoutTraillingSlack)
+    .then(nodeId => {
+      let responseStatus = HttpStatus.OK
+      if (!nodeId) {
+        responseStatus = HttpStatus.NOT_FOUND
+      }
+
+      const clientConfig = {
+        responseStatus: responseStatus,
+        isUserLoggedIn: hasSessionCookie || false,
+        googleAnalytics: config.get('googleAnalytics'),
+        debug: config.get('developmentOptions.client.logging'),
+        govdelivery: config.get('govdelivery.popupEnabled'),
+        showSbic: config.get('features.showSbic'),
+        moon: config.get('features.moon'),
+        searchUrl: config.get('features.searchUrl'),
+        forPartners: config.get('features.forPartners')
+      }
+      req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
+      next()
+    })
+    .catch(next)
 })
 
 app.use(function(req, res, next) {
@@ -152,7 +165,6 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnabled: config.get('foresee.enabled'),
     foreseeEnvironment: config.get('foresee.environment')
   })
-
   const handleRedirects = async function() {
     const url = req.url
     let redirectUrl
@@ -170,7 +182,7 @@ app.get(['/', '/*'], function(req, res, next) {
       console.log('Redirecting to ' + redirectUrl)
       res.redirect(redirectCode, redirectUrl)
     } else {
-      res.render('main', pugVariables)
+      res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
     }
   }
 

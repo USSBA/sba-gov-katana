@@ -91,9 +91,8 @@ class DocumentCard extends React.Component {
       category: 'Document-Download-Module',
       action: `docname - ${doc.title}: Document Landing Page`
     }
-    const url = `/${doc.type.replace(/s$/, '')}/${doc.url}`
     return (
-      <BasicLink url={url} eventConfig={eventConfig}>
+      <BasicLink url={doc.url} eventConfig={eventConfig}>
         <h6 className={'document-card-title ' + s.title}>{doc.title}</h6>
       </BasicLink>
     )

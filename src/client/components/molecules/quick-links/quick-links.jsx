@@ -140,7 +140,7 @@ const LatestDocumentsCard = props => {
             return (
               <div key={index}>
                 <BasicLink
-                  url={`/document/${doc.url}`}
+                  url={doc.url}
                   text={linkTitle}
                   eventConfig={{
                     category: eventCategory,
@@ -201,20 +201,21 @@ const ArticlesCard = props => {
       <div>
         {articles && articles.items.length ? (
           <div>
-            {articles.items.map((doc, index) => {
-              const linkTitle = doc.title.length > 80 ? doc.title.slice(0, 90) + '...' : doc.title
+            {articles.items.map((article, index) => {
+              const linkTitle =
+                article.title.length > 80 ? article.title.slice(0, 90) + '...' : article.title
 
               return (
                 <div key={index}>
                   <BasicLink
-                    url={`/article/${doc.url}`}
+                    url={article.url}
                     text={linkTitle}
                     eventConfig={{
                       category: eventCategory,
                       action: `ArticleLink: ${linkTitle}`
                     }}
                   />
-                  <div className={s.date}>{moment.unix(doc.updated).format('MMM D, YYYY')}</div>
+                  <div className={s.date}>{moment.unix(article.updated).format('MMM D, YYYY')}</div>
                 </div>
               )
             })}
