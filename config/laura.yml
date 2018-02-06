@@ -11,12 +11,12 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: "/tools/search-result-page?search="
+    searchUrl: /search/?q=
     urlRedirect:
-        tableName: UrlToNodeLaura
+        tableName: UrlToNodeKevin
     drupalRedirect:
         enabled: true
-        tableName: UrlToUrlRedirectLaura
+        tableName: UrlToUrlRedirectKevin
 cache:
-  s3BucketName: laura-content-sba-gov
-  useS3: true
+    s3BucketName: dev1-content-sba-gov
+useS3: true
