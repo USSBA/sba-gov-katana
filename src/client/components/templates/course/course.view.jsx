@@ -215,7 +215,7 @@ const CTA = props => {
   return (
     <CallToAction
       size="large"
-      btnUrl="#"
+      btnUrl="/tools/local-assistance"
       btnTitle="Find Counselors"
       image="/assets/images/learning-center/woman-man-chatting.png"
       imageAlt="woman chatting with man"
