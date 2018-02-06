@@ -11,8 +11,9 @@ import path from 'path'
 import ErrorPage from '../pages/error-page/error-page.jsx'
 import DocumentPage from '../pages/document-page/document-page.jsx'
 import ArticlePage from '../pages/article-page/article-page.jsx'
+import { getConfig } from '../../services/client-config.js'
 
-class RootPage extends React.Component {
+export class RootPage extends React.Component {
   componentWillMount() {
     this.props.actions.fetchContentIfNeeded('siteMap', 'siteMap')
   }
@@ -45,14 +46,16 @@ class RootPage extends React.Component {
 
   renderPage(first, second, third, fourth, fifth) {
     const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third, fourth, fifth]))
-    if (first === 'document') {
+    if (getConfig('responseStatus') === 404) {
+      return <ErrorPage />
+    } else if (first === 'document') {
       return <DocumentPage location={this.props.location} />
     } else if (first === 'article') {
       const year = second
       const month = third
       const day = fourth
       const title = fifth
-      return <ArticlePage url={year + '/' + month + '/' + day + '/' + title} />
+      return <ArticlePage location={this.props.location} />
     } else if (this.props.menu) {
       if (first && second && third && fourth && fifth) {
         if (pageLineage && pageLineage.length === 5) {

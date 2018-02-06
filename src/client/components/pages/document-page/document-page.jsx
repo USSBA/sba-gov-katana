@@ -1,5 +1,4 @@
 import React from 'react'
-import { basename } from 'path'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -21,7 +20,7 @@ class DocumentPage extends React.Component {
 
     if (pathname) {
       fetchContentIfNeeded('documents', 'documents', {
-        url: basename(pathname)
+        url: pathname
       })
     }
   }
@@ -34,7 +33,7 @@ class DocumentPage extends React.Component {
     // and the DocumentPage but the location has changed.
     if (pathname !== nextPathname) {
       fetchContentIfNeeded('documents', 'documents', {
-        url: basename(nextPathname)
+        url: nextPathname
       })
     }
   }
@@ -45,7 +44,7 @@ class DocumentPage extends React.Component {
       if (document) {
         return <Document document={document} />
       } else {
-        return <div>Loading Document....</div>
+        return <div>Loading Document...</div>
       }
     } else {
       return <ErrorPage />
