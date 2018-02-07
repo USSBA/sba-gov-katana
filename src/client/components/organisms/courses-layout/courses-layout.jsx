@@ -22,9 +22,9 @@ class CoursesLayout extends React.PureComponent {
     })
     return (
       <div>
-        <CardCollection cards={mappedItems.slice(0, 4)} parentIndex={1} />
-        <CardCollection cards={mappedItems.slice(4, 8)} parentIndex={2} />
-        <CardCollection cards={mappedItems.slice(8, 12)} parentIndex={3} />
+        <CardCollection cards={mappedItems.slice(0, 4)} parentIndex={1} numberOverride={4} />
+        <CardCollection cards={mappedItems.slice(4, 8)} parentIndex={2} numberOverride={4} />
+        <CardCollection cards={mappedItems.slice(8, 12)} parentIndex={3} numberOverride={4} />
       </div>
     )
   }

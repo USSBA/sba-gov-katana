@@ -156,16 +156,10 @@ export class GlobalSearch extends React.PureComponent {
 
   renderItems(items) {
     if (this.props.type === 'courses') {
-      const courses = this.props.items.map(item => {
-        const course = item
-        course.url = `/${item.url}`
-        return course
-      })
-
       return (
         <div className={styles.container}>
           <CoursesLayout
-            items={courses}
+            items={items}
             onReset={_ => {
               this.onReset()
             }}
