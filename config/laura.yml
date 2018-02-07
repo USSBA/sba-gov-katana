@@ -13,10 +13,10 @@ features:
     moon: false
     searchUrl: /search/?q=
     urlRedirect:
-        tableName: UrlToNodeKevin
+        tableName: UrlToNodeLaura
     drupalRedirect:
         enabled: true
-        tableName: UrlToUrlRedirectKevin
+        tableName: UrlToUrlRedirectLaura
 cache:
-    s3BucketName: dev1-content-sba-gov
+    s3BucketName: laura-content-sba-gov
 useS3: true
