@@ -20,7 +20,7 @@ class Course extends PureComponent {
 
     // fetch course
     this.props.actions.fetchContentIfNeeded('course', 'course', {
-      pathname: pathname.slice(1, -1)
+      pathname
     })
   }
 
