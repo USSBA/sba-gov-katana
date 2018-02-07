@@ -20,3 +20,6 @@ features:
 cache:
   s3BucketName: mint-content-sba-gov
   useS3: true
+aws:
+  cloudsearch:
+    endpoint: 'doc-integration-l3hya3o2kdvr3gpbxb33qznllm.us-east-1.cloudsearch.amazonaws.com'
