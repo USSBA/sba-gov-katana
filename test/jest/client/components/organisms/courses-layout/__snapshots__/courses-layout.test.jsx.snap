@@ -1,0 +1,516 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoursesLayout should render the first page properly 1`] = `
+<div
+  className="courses-layout container"
+>
+  <div
+    className="client-paging-multiview-layout container"
+  >
+    <div>
+      <div />
+      <div
+        className="paginator"
+      >
+        <div
+          className="container"
+          id={undefined}
+        >
+          <p
+            className="pagination-status"
+          >
+            <span>
+              Showing  
+            </span>
+            <span
+              className="bold"
+            >
+              1
+                - 
+              12
+                
+            </span>
+            <span>
+              of  
+            </span>
+            <span
+              className="bold"
+            >
+              25
+            </span>
+          </p>
+          <span
+            className="previous-arrow"
+          >
+            <a
+              className="ArrowButton "
+              id={undefined}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              tabIndex="0"
+            >
+              <i
+                alt="previous page"
+                aria-hidden="true"
+                className=" fa fa-chevron-left"
+              />
+            </a>
+          </span>
+          <span
+            className="next-arrow"
+          >
+            <a
+              className="ArrowButton noLeftBorder"
+              id={undefined}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              tabIndex="0"
+            >
+              <i
+                alt="next page"
+                aria-hidden="true"
+                className=" fa fa-chevron-right"
+              />
+            </a>
+          </span>
+        </div>
+      </div>
+      <div
+        className="itemContainer"
+      >
+        <div>
+          <div
+            className="cardCollection"
+          >
+            <div
+              className="cardRow"
+              id="card-row-1-0"
+            >
+              <div
+                className="fourColumn leftAligned"
+                id="card-1-0"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-1-0"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-1-0"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-1-0"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-1-1"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-1-1"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-1-1"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-1-1"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-1-2"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-1-2"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-1-2"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-1-2"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-1-3"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-1-3"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-1-3"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-1-3"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="cardCollection"
+          >
+            <div
+              className="cardRow"
+              id="card-row-2-0"
+            >
+              <div
+                className="fourColumn leftAligned"
+                id="card-2-0"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-2-0"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-2-0"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-2-0"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-2-1"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-2-1"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-2-1"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-2-1"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-2-2"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-2-2"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-2-2"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-2-2"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-2-3"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-2-3"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-2-3"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-2-3"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="cardCollection"
+          >
+            <div
+              className="cardRow"
+              id="card-row-3-0"
+            >
+              <div
+                className="fourColumn leftAligned"
+                id="card-3-0"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-3-0"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-3-0"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-3-0"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-3-1"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-3-1"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-3-1"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-3-1"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-3-2"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-3-2"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-3-2"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-3-2"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+              <div
+                className="fourColumn leftAligned"
+                id="card-3-3"
+              >
+                <img
+                  alt="How to Write a Business Plan"
+                  className="itemImage"
+                  id="image-3-3"
+                  src="/sites/default/files/2018-01/2-plan_500.jpg"
+                />
+                <p
+                  className="itemTitle"
+                  id="title-3-3"
+                >
+                  How to Write a Business Plan
+                </p>
+                <div>
+                  <hr
+                    className="decorativeDash itemHr"
+                  />
+                  <p
+                    className="itemSubTitle"
+                    id="subtitle-text-3-3"
+                  >
+                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="paginator"
+      >
+        <div
+          className="container"
+          id={undefined}
+        >
+          <p
+            className="pagination-status"
+          >
+            <span>
+              Showing  
+            </span>
+            <span
+              className="bold"
+            >
+              1
+                - 
+              12
+                
+            </span>
+            <span>
+              of  
+            </span>
+            <span
+              className="bold"
+            >
+              25
+            </span>
+          </p>
+          <span
+            className="previous-arrow"
+          >
+            <a
+              className="ArrowButton "
+              id={undefined}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              tabIndex="0"
+            >
+              <i
+                alt="previous page"
+                aria-hidden="true"
+                className=" fa fa-chevron-left"
+              />
+            </a>
+          </span>
+          <span
+            className="next-arrow"
+          >
+            <a
+              className="ArrowButton noLeftBorder"
+              id={undefined}
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              tabIndex="0"
+            >
+              <i
+                alt="next page"
+                aria-hidden="true"
+                className=" fa fa-chevron-right"
+              />
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

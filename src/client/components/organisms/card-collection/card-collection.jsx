@@ -24,10 +24,9 @@ class CardCollection extends React.Component {
     this.state = {}
   }
   render() {
-    let leftAligned = this.props.leftAligned
-    let numCards = _.size(this.props.cards)
-    let parentIndex = this.props.parentIndex
-    let cards = this.props.cards.map(function(item, index) {
+    const { leftAligned, parentIndex, cards, numberOverride } = this.props
+    let numCards = numberOverride ? numberOverride : _.size(this.props.cards)
+    let cardComponents = cards.map(function(item, index) {
       return (
         <Card
           parentIndex={parentIndex}
@@ -39,8 +38,8 @@ class CardCollection extends React.Component {
         />
       )
     })
-    let cardsPerRow = cardsPerRowMap[cards.length]
-    let rows = _.chunk(cards, cardsPerRow)
+    let cardsPerRow = cardsPerRowMap[cardComponents.length]
+    let rows = _.chunk(cardComponents, cardsPerRow)
     return (
       <div className={styles.cardCollection}>
         {rows.map(function(item, index) {
@@ -57,11 +56,15 @@ class CardCollection extends React.Component {
 
 CardCollection.propTypes = {
   cards: React.PropTypes.array,
-  parentIndex: React.PropTypes.number
+  numberOverride: React.PropTypes.number,
+  parentIndex: React.PropTypes.number,
+  leftAligned: React.PropTypes.bool
 }
 
 CardCollection.defaultProps = {
   cards: [],
-  parentIndex: -1
+  numberOverride: null,
+  parentIndex: -1,
+  leftAligned: false
 }
 export default CardCollection

@@ -11,7 +11,7 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: "/tools/search-result-page?search="
+    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeIntegration
     drupalRedirect:

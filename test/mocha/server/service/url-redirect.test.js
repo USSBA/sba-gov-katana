@@ -1,6 +1,7 @@
 import chai from 'chai'
 import sinon from 'sinon'
 import AWS from 'aws-sdk'
+let expect = chai.expect
 import {
   findNodeIdByUrl,
   findMostRecentUrlByNodeId,
@@ -21,7 +22,7 @@ describe('URL Redirect Service', function() {
     })
 
     it('should return null if there is no node matching the url', function(done) {
-      let result = findNodeIdByUrl('some non existent url').then(nodeId => {
+      let result = findNodeIdByUrl('/business-guide/somenonexistenturl').then(nodeId => {
         chai.assert.isNull(nodeId)
         done()
       })

@@ -74,7 +74,13 @@ workflows:
     #    requires: [hold-prod-deploy]
     #    filters:
     #      branches: {only: [master]}
-
+  push-dev-tag-workflow:
+    jobs:
+    - push-tag:
+        filters:
+          branches: {ignore: /.*/}
+          tags:
+            only: [ avery, brian, laura, kevin ]
 jobs:
   cache-dependencies:
     docker:
@@ -179,16 +185,16 @@ jobs:
         command: |
           stat ./dist
           stat ./public/build
-          docker build -t ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_SHA1} .
+          docker build -t ${AMAZON_ECR_REPO}:${CIRCLE_SHA1} .
     - deploy:
         name: Push application Docker image tagged with Git Commit to ECR
         command: |
           function tagpush() {
             ${loginlower}
-            docker tag ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
+            docker tag ${AMAZON_ECR_REPO}:${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
             docker push "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
             #${loginupper}
-            #docker tag ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
+            #docker tag ${AMAZON_ECR_REPO}/${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
             #docker push "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
           }
           loginlower="$(export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
@@ -264,3 +270,18 @@ jobs:
                      --timeout 1200 \
                      --enable-rollback \
                      -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
+  push-tag:
+    working_directory: /home/circleci/project
+    docker:
+    - image: ussba/cc-docker-git-aws
+    steps:
+    - setup_remote_docker:
+        docker_layer_caching: true
+    - deploy:
+        name: Pull existing docker image, push to ECR with new tag
+        command: |
+          loginlower="$(export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
+          ${loginlower}
+          docker pull "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
+          docker tag "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}" "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
+          docker push "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
