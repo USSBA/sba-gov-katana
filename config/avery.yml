@@ -18,5 +18,5 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectAvery
 cache:
-  s3BucketName: avery-content-sba-gov
+  s3BucketName: dev1-content-sba-gov
   useS3: true

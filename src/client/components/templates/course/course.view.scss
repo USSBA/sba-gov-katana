@@ -1,0 +1,193 @@
+.container {
+  margin-bottom: 50px;
+
+  @include grid-media($sba-grid-medium-and-small) {
+    @include grid-column(6);
+  }
+
+  & a {
+    cursor: pointer;
+  }
+}
+
+.breadcrumbContainer {
+  margin-bottom: 0;
+
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+  }
+}
+
+.breadcrumb {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 15px 0;
+    border-bottom: 1px solid $grey-light;
+  }
+  @include grid-media($sba-grid-large) {
+    border-top: 1px solid $grey-light;
+  }
+}
+
+.topContainer {
+  margin-top: 50px;
+  margin-bottom: 0;
+
+  @include grid-media($sba-grid-large) {
+    @include grid-column(10);
+
+    p {
+      margin-right: 50px;
+    }
+  }
+}
+
+.midContainer {
+  h2 {
+    font-size: 24px;
+  }
+
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+  }
+}
+
+.summary {
+  font-family: 'Merriweather Regular', 'Georgia', 'Times', 'Times New Roman', serif;
+  color: #666666;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+.decorativeDash {
+  width: 80px;
+}
+
+.downloadFlash {
+  margin-top: 50px;
+  padding: 15px;
+  vertical-align: middle;
+  text-align: center;
+  background: #d6ecfc;
+
+  .icon {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    width: 28px;
+    height: 28px;
+  }
+
+  i {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    font-size: 1.6rem;
+  }
+
+  p {
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+
+  .button {
+    background: #d6ecfc;
+    display: inline-block;
+    border-color: #333333;
+    color: #333333;
+    font-size: 0.9rem;
+  }
+
+  @include grid-media($sba-grid-medium-and-small) {
+    p {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  @include grid-media($sba-grid-large) {
+    p {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.course {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+
+  iframe {
+    background: #e8e8e8;
+    width: 95vw;
+    height: 64.25vw; /* 100/56.25 = 560/315 = 1.778 */
+    border: none;
+  }
+}
+
+.transcriptBox {
+  margin-top: 30px;
+  background: #ebebeb;
+  width: 100%;
+  text-align: left;
+
+  .button {
+    background: #ebebeb;
+  }
+}
+
+.tagcloud {
+  margin-top: 30px;
+  padding: 10px 0;
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  p {
+    margin: 0;
+    display: inline-block;
+  }
+}
+
+.worksheets {
+  margin-top: 30px;
+}
+
+.worksheetDescription {
+  display: inline-block;
+  width: 350px;
+  vertical-align: top;
+}
+
+.worksheetUrl {
+  display: inline-block;
+}
+
+.ext {
+  text-transform: uppercase;
+}
+
+.relatedCourses {
+  margin-top: 30px;
+  border-top: 1px solid #dadada;
+
+  h3 {
+    margin: 30px 0;
+  }
+
+  a {
+    text-align: center;
+    display: block;
+  }
+}
+
+.relatedArticles {
+  margin-top: 30px;
+  border-top: 1px solid #dadada;
+
+  h3 {
+    margin: 30px 0;
+  }
+}

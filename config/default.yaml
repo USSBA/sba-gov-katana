@@ -76,7 +76,7 @@ features:
 sizestandards:
     endpoint: placeholder
 cache:
-  s3BucketName: dev-content-sba-gov
+  s3BucketName: dev1-content-sba-gov
   useS3: true
 aws:
   cloudsearch:
