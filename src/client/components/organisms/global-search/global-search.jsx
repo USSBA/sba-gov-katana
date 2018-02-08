@@ -189,10 +189,6 @@ export class GlobalSearch extends React.PureComponent {
   }
 }
 
-// const Grid = props => {
-
-// }
-
 function mapReduxStateToProps(reduxState, props) {
   return {
     taxonomies: reduxState.contentReducer.taxonomies,
