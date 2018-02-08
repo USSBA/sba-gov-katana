@@ -11,6 +11,7 @@ features:
     forPartners: true
     showSbic: false
     moon: false
+
     searchUrl: /search/?q=
     urlRedirect:
         tableName: UrlToNodeLaura
@@ -18,5 +19,9 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectLaura
 cache:
-    s3BucketName: laura-content-sba-gov
-useS3: true
+  s3BucketName: laura-content-sba-gov
+  useS3: true
+aws:
+  cloudsearch:
+    endpoint: 'doc-laura-26evoc5xorgki5mbhdiktpp7q4.us-east-1.cloudsearch.amazonaws.com'
+

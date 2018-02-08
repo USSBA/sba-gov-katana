@@ -55,8 +55,7 @@ app.use(function(req, res, next) {
     }
   }
   const requestPath = req.path
-  const requestPathWithoutTraillingSlack =
-    requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
+  const requestPathWithoutTraillingSlack = requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(nodeId => {
       let responseStatus = HttpStatus.OK
@@ -186,7 +185,6 @@ app.get(['/', '/*'], function(req, res, next) {
       res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
     }
   }
-
   handleRedirects().catch(next)
 })
 
