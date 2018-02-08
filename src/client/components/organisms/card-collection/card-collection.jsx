@@ -24,8 +24,8 @@ class CardCollection extends React.Component {
     this.state = {}
   }
   render() {
-    const { leftAligned, parentIndex, cards } = this.props
-    let numCards = _.size(this.props.cards)
+    const { leftAligned, parentIndex, cards, numberOverride } = this.props
+    let numCards = numberOverride ? numberOverride : _.size(this.props.cards)
     let cardComponents = cards.map(function(item, index) {
       return (
         <Card
@@ -56,12 +56,14 @@ class CardCollection extends React.Component {
 
 CardCollection.propTypes = {
   cards: React.PropTypes.array,
+  numberOverride: React.PropTypes.number,
   parentIndex: React.PropTypes.number,
   leftAligned: React.PropTypes.bool
 }
 
 CardCollection.defaultProps = {
   cards: [],
+  numberOverride: null,
   parentIndex: -1,
   leftAligned: false
 }

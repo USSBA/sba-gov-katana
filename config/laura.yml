@@ -11,7 +11,8 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: "/search/?q="
+
+    searchUrl: /search/?q=
     urlRedirect:
         tableName: UrlToNodeLaura
     drupalRedirect:
@@ -23,4 +24,4 @@ cache:
 aws:
   cloudsearch:
     endpoint: 'doc-laura-26evoc5xorgki5mbhdiktpp7q4.us-east-1.cloudsearch.amazonaws.com'
-    
+

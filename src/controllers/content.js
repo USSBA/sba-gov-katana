@@ -13,6 +13,7 @@ import {
   fetchTaxonomys
 } from '../service/drupal-eight.js'
 import { fetchNotification } from '../service/notification.js'
+import { fetchCourses, fetchCourse } from '../service/courses.js'
 import { search } from '../service/search.js'
 import HttpStatus from 'http-status-codes'
 import _ from 'lodash'
@@ -28,6 +29,8 @@ const fetchContentTypeFunctions = {
   blogs: fetchBlogsFromDrupal,
   contacts: fetchContacts,
   counsellorCta: fetchCounsellorCta,
+  courses: fetchCourses,
+  course: fetchCourse,
   disaster: fetchDisasterFromDrupalDatabase,
   documents: fetchDocuments,
   frontPageSlides: fetchFrontPageSlidesFromDrupal,
