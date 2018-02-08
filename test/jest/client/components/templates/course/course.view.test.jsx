@@ -13,10 +13,38 @@ import CourseView, {
   CTA
 } from 'templates/course/course.view.jsx'
 
+const sharedProps = {
+  isLoaded: true,
+  title: 'How to write a business plan',
+  course: {
+    url: 'https://www.youtube.com/embed/owsfdh4gxyc',
+    worksheets: [
+      {
+        description: 'How to write a business plan checklist',
+        url: '#'
+      }
+    ]
+  },
+  breadcrumbs: [
+    {
+      url: '#',
+      title: 'Learning Center'
+    },
+    {
+      url: '#',
+      title: 'Search results'
+    },
+    {
+      url: '#',
+      title: 'How to write a business plan'
+    }
+  ]
+}
+
 describe('<CourseView />', () => {
   describe('Breadcrumb', () => {
     test('has a breadcrumb trail', () => {
-      const component = shallow(<CourseView isLoaded={true} />)
+      const component = shallow(<CourseView {...sharedProps} />)
       const result = component.find('Breadcrumb').length
       const expected = 1
 
@@ -26,12 +54,7 @@ describe('<CourseView />', () => {
 
   describe('<h1>Title</h1>', () => {
     test('has a title', () => {
-      const props = {
-        isLoaded: true,
-        title: 'How to write a business plan'
-      }
-
-      const component = shallow(<CourseView {...props} />)
+      const component = shallow(<CourseView {...sharedProps} />)
       const result = component.find('h1').text()
       const expected = 'How to write a business plan'
 
@@ -65,7 +88,7 @@ describe('<CourseView />', () => {
 
   describe('<DownloadFlash />', () => {
     test('has a mobile message that course is unavailable', () => {
-      const component = shallow(<CourseView isLoaded={true} />)
+      const component = shallow(<CourseView {...sharedProps} />)
       const result = component.find('DownloadFlash').length
       const expected = 1
 

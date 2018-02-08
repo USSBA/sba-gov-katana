@@ -225,138 +225,15 @@ const CTA = props => {
   )
 }
 
-CourseView.defaultProps = {
-  breadcrumbs: [
-    {
-      url: '#',
-      title: 'Learning Center'
-    },
-    {
-      url: '#',
-      title: 'Search results'
-    },
-    {
-      url: '#',
-      title: 'How to write a business plan'
-    }
-  ],
-  title: 'How to write a business plan',
-  summary:
-    'Learn the importance of business planning, the components of a business plan, and see sample plans.',
-  course: {
-    url: 'https://www.youtube.com/embed/owsfdh4gxyc',
-    worksheets: [
-      {
-        description: 'How to write a business plan checklist',
-        url: '#'
-      },
-      {
-        description: 'Balance sheet template',
-        url: '#'
-      },
-      {
-        description: 'Income statement template',
-        url: '#'
-      },
-      {
-        description: 'Cash flow statement template',
-        url: '#'
-      }
-    ]
-  },
-  readMoreSectionItem: {
-    expandedCopyText: 'expanded text',
-    titleText: 'title text',
-    preview: 'preview text'
-  },
-  tags: [
-    {
-      description: 'Planning your business',
-      url: '#'
-    },
-    {
-      description: 'Planning your estate',
-      url: '#'
-    }
-  ],
-  relatedCourses: [
-    {
-      type: 'card',
-      image: {
-        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
-        alt: 'Intro to accounting'
-      },
-      link: {},
-      subtitleText:
-        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
-      titleText: 'Intro to accounting'
-    },
-    {
-      type: 'card',
-      image: {
-        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
-        alt: 'How to prepare a loan package'
-      },
-      link: {},
-      subtitleText:
-        'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
-      titleText: 'How to prepare a loan package'
-    },
-    {
-      type: 'card',
-      image: {
-        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
-        alt: 'Understanding your customer'
-      },
-      link: {},
-      subtitleText:
-        'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
-      titleText: 'Understanding your customer'
-    },
-    {
-      type: 'card',
-      image: {
-        url: 'https://www.sba.gov/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg',
-        alt: 'How to prepare a loan package'
-      },
-      link: {},
-      subtitleText:
-        'Paragraph - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultricies mauris vitae quam faucibus ultricies. ',
-      titleText: 'Strategic Planning'
-    }
-  ],
-  relatedArticles: [
-    {
-      type: 'card',
-      link: {
-        url: '#',
-        title: 'Read More'
-      },
-      subtitleText:
-        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
-      titleText: 'Write your business plan'
-    },
-    {
-      type: 'card',
-      link: {
-        url: '#',
-        title: 'Read More'
-      },
-      subtitleText:
-        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
-      titleText: 'Calculate your startup costs'
-    },
-    {
-      type: 'card',
-      link: {
-        url: '#',
-        title: 'Read More'
-      },
-      subtitleText:
-        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
-      titleText: 'Market research and competitive analysis'
-    }
-  ]
+CourseView.propTypes = {
+  breadcrumbs: React.PropTypes.arrayOf(React.PropTypes.object),
+  title: React.PropTypes.string,
+  summary: React.PropTypes.string,
+  course: React.PropTypes.object,
+  readMoreSectionItem: React.PropTypes.object,
+  tags: React.PropTypes.arrayOf(React.PropTypes.object),
+  relatedCourses: React.PropTypes.arrayOf(React.PropTypes.object),
+  relatedArticles: React.PropTypes.arrayOf(React.PropTypes.object)
 }
 
 export default CourseView
