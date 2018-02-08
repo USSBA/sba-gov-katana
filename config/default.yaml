@@ -70,6 +70,7 @@ features:
     searchUrl: "/search/?q="
     urlRedirect:
         tableName: placeholder
+        enabled: false
     drupalRedirect:
         enabled: false
         tableName: DrupalUrlRedirect

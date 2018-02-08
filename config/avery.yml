@@ -14,6 +14,7 @@ features:
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeAvery
+        enabled: true
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectAvery

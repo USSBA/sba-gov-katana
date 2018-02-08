@@ -36,5 +36,6 @@ aws:
 features:
   urlRedirect:
     tableName: UrlToNodeDev1
+    enabled: true
   drupalRedirect:
     tableName: UrlToUrlRedirectDev1

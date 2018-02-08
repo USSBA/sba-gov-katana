@@ -55,7 +55,8 @@ app.use(function(req, res, next) {
     }
   }
   const requestPath = req.path
-  const requestPathWithoutTraillingSlack = requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
+  const requestPathWithoutTraillingSlack =
+    requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(nodeId => {
       let responseStatus = HttpStatus.OK
@@ -172,7 +173,7 @@ app.get(['/', '/*'], function(req, res, next) {
     //url to node to newest url redirect
     redirectUrl = await findMostRecentUrlRedirect(url)
     if (redirectUrl) {
-      redirectCode = HttpStatus.MOVED_PERMANENTLY
+      redirectCode = HttpStatus.MOVED_TEMPORARILY
     } else {
       //url to url redirect
       redirectUrl = await fetchNewUrlByOldUrl(url)
@@ -185,7 +186,12 @@ app.get(['/', '/*'], function(req, res, next) {
       res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
     }
   }
-  handleRedirects().catch(next)
+
+  if (config.get('features.urlRedirect.enabled')) {
+    handleRedirects().catch(next)
+  } else {
+    res.render('main', pugVariables)
+  }
 })
 
 // development error handler
