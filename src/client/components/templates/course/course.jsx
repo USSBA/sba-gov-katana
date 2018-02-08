@@ -18,7 +18,9 @@ class Course extends PureComponent {
   componentWillMount() {
     let pathname = this.props.location.pathname
 
-    pathname = pathname.slice(0, pathname.length - 1)
+    if (pathname.slice(-1) === '/') {
+      pathname = pathname.slice(0, pathname.length - 1)
+    }
 
     // fetch course
     this.props.actions.fetchContentIfNeeded('course', 'course', {
