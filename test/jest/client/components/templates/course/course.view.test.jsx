@@ -38,7 +38,16 @@ const sharedProps = {
       url: '#',
       title: 'How to write a business plan'
     }
-  ]
+  ],
+  readMoreSectionItem: {
+    expandedCopyText: 'expanded text',
+    titleText: 'title text',
+    preview: 'preview text'
+  },
+  readMoreExpanded: true,
+  onToggleStatus: () => {
+    return false
+  }
 }
 
 describe('<CourseView />', () => {
@@ -97,17 +106,11 @@ describe('<CourseView />', () => {
   })
 
   describe('<Course />', () => {
-    const props = {
-      course: {
-        url: '#'
-      }
-    }
-
-    const component = shallow(<Course {...props} />)
+    const component = shallow(<Course {...sharedProps} />)
 
     test('has a course with an iframe source set', () => {
       const result = component.find('iframe').prop('src')
-      const expected = '#'
+      const expected = 'https://www.youtube.com/embed/owsfdh4gxyc'
 
       expect(result).toEqual(expected)
     })
