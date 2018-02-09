@@ -107,8 +107,15 @@ export class GlobalSearch extends React.PureComponent {
         return null
       }
 
+      let multiSelectStyle
+      if (this.props.type === 'courses') {
+        multiSelectStyle = styles.courseMultiSelect
+      } else {
+        multiSelectStyle = styles.multiSelect
+      }
+
       return (
-        <div className={styles.multiSelect} key={index}>
+        <div className={multiSelectStyle} key={index}>
           <MultiSelect
             {...multiSelectProps}
             onBlur={returnNull}

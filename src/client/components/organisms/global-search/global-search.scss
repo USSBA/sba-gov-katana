@@ -43,14 +43,13 @@
   margin: 0 0 20px 0;
 }
 
-.multiSelect {
+.multiSelect,
+.courseMultiSelect {
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
   @include grid-media($sba-grid-large) {
     display: inline-block;
-
-    width: 140px;
     margin-right: 20px;
     &:last-child {
       margin-right: 0;
@@ -58,9 +57,24 @@
   }
 }
 
+.multiSelect {
+  @include grid-media($sba-grid-large) {
+    width: 140px;
+  }
+}
+
+.courseMultiSelect {
+  @include grid-media($sba-grid-large) {
+    width: 200px;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .multiSelect {
     width: 13%;
+  }
+  .courseMultiSelect {
+    width: 18%;
   }
 }
 
