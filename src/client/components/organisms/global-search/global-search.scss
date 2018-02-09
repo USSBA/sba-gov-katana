@@ -45,6 +45,7 @@
 
 .multiSelect,
 .courseMultiSelect {
+  z-index: 500;
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
@@ -61,19 +62,16 @@
   @include grid-media($sba-grid-large) {
     width: 140px;
   }
+  @media screen and (min-width: 1200px) {
+    width: 13%;
+  }
 }
 
 .courseMultiSelect {
   @include grid-media($sba-grid-large) {
     width: 200px;
   }
-}
-
-@media screen and (min-width: 1200px) {
-  .multiSelect {
-    width: 13%;
-  }
-  .courseMultiSelect {
+  @media screen and (min-width: 1200px) {
     width: 18%;
   }
 }
