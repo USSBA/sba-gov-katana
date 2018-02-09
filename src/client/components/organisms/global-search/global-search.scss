@@ -45,7 +45,6 @@
 
 .multiSelect,
 .courseMultiSelect {
-  z-index: 500;
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
