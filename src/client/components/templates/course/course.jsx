@@ -35,6 +35,7 @@ class Course extends PureComponent {
       const props = {
         title: data.title,
         summary: data.summary,
+        description: data.body,
         course: {
           url: data.courseUrl.url //'https://www.sba.gov/media/training/howtowriteabusinessplan_02022017/story.html'
         },

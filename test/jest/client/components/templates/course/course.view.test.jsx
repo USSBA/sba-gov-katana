@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme'
 
 import CourseView, {
   TableOfContents,
-  Summary,
+  Description,
   Course,
   Tagcloud,
   Worksheets,
@@ -71,17 +71,16 @@ describe('<CourseView />', () => {
     })
   })
 
-  describe('<Summary />', () => {
-    test('has a summary', () => {
+  describe('<Description />', () => {
+    test('has a description with html tags', () => {
       const props = {
-        summary: 'test summary'
+        description: '<p>test description</p>'
       }
 
-      const component = shallow(<Summary {...props} />)
-      const result = component.find('p').text()
-      const expected = 'test summary'
+      const component = shallow(<Description {...props} />)
+      const result = component.find('p').prop('dangerouslySetInnerHTML')
 
-      expect(result).toEqual(expected)
+      expect(result).toEqual({ __html: '<p>test description</p>' })
     })
   })
 
