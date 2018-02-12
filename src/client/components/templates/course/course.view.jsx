@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
 import _ from 'lodash'
-import { DecorativeDash, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
+
+import CourseContent from './course-content'
+import styles from './course.view.scss'
+import { DecorativeDash, LargePrimaryButton, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
 import { Breadcrumb, CallToAction, ReadMore } from 'molecules'
 import { CardCollection } from 'organisms'
-import styles from './course.view.scss'
 
 class CourseView extends PureComponent {
   constructor() {
@@ -46,7 +48,7 @@ class CourseView extends PureComponent {
             <div className={styles.container + ' ' + styles.midContainer}>
               <TableOfContents />
               <DownloadFlash />
-              <Course
+              <CourseContent
                 {...this.props}
                 onToggleStatus={this.handleReadMoreStatus.bind(this)}
                 readMoreExpanded={this.state.readMoreExpanded}
@@ -102,23 +104,6 @@ const DownloadFlash = props => {
       <a href="https://get.adobe.com/flashplayer/" target="_blank">
         <SmallSecondaryButton className={styles.button} text="Learn How" />
       </a>
-    </div>
-  )
-}
-
-const Course = props => {
-  return (
-    <div id="course" className={styles.course + ' course'}>
-      <iframe src={props.course.url} frameBorder="0" allowFullScreen />
-      <div className={styles.transcriptBox + ' transcript-box'}>
-        <ReadMore
-          parentId="01-read-more"
-          onToggleStatus={props.onToggleStatus}
-          expanded={props.readMoreExpanded}
-          readMoreSectionItem={props.readMoreSectionItem}
-          isHTML={true}
-        />
-      </div>
     </div>
   )
 }
@@ -238,4 +223,4 @@ CourseView.propTypes = {
 
 export default CourseView
 
-export { Summary, TableOfContents, Course, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
+export { Summary, TableOfContents, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }

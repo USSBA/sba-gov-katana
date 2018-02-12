@@ -116,30 +116,6 @@
   }
 }
 
-.course {
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-
-  iframe {
-    background: #e8e8e8;
-    width: 95vw;
-    height: 64.25vw; /* 100/56.25 = 560/315 = 1.778 */
-    border: none;
-  }
-}
-
-.transcriptBox {
-  margin-top: 30px;
-  background: #ebebeb;
-  width: 100%;
-  text-align: left;
-
-  .button {
-    background: #ebebeb;
-  }
-}
-
 .tagcloud {
   margin-top: 30px;
   padding: 10px 0;

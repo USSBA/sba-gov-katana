@@ -300,7 +300,8 @@ const constants = {
     ]
   },
   eventCategories: {
-    frontPage: 'Front-Page'
+    frontPage: 'Front-Page',
+    learningCenter: 'Learning Center'
   }
 }
 
