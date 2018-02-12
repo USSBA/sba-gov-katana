@@ -1,6 +1,6 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
+import { shallow, mount } from 'enzyme'
 
 import CourseView, {
   TableOfContents,
@@ -99,24 +99,6 @@ describe('<CourseView />', () => {
     test('has a mobile message that course is unavailable', () => {
       const component = shallow(<CourseView {...sharedProps} />)
       const result = component.find('DownloadFlash').length
-      const expected = 1
-
-      expect(result).toEqual(expected)
-    })
-  })
-
-  describe('<Course />', () => {
-    const component = shallow(<Course {...sharedProps} />)
-
-    test('has a course with an iframe source set', () => {
-      const result = component.find('iframe').prop('src')
-      const expected = 'https://www.youtube.com/embed/owsfdh4gxyc'
-
-      expect(result).toEqual(expected)
-    })
-
-    test('has a course ReadMore component', () => {
-      const result = component.find('ReadMore').length
       const expected = 1
 
       expect(result).toEqual(expected)
