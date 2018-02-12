@@ -13,7 +13,7 @@ class CoursesLayout extends React.PureComponent {
       return {
         image: item.image,
         link: {
-          title: item.title,
+          title: 'View More',
           url: item.url
         },
         titleText: item.title,
