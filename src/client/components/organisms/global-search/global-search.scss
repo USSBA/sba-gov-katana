@@ -67,14 +67,14 @@
 }
 
 .courseMultiSelect {
+  :global .Select-menu {
+    max-height: 130px;
+  }
   @include grid-media($sba-grid-large) {
     width: 200px;
   }
   @media screen and (min-width: 1200px) {
     width: 18%;
-    :global .Select-menu {
-      max-height: 130px;
-    }
   }
 }
 
