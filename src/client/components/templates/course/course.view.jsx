@@ -21,13 +21,22 @@ class CourseView extends PureComponent {
   }
 
   render() {
-    const { title, breadcrumbs, isLoaded } = this.props
+    const {
+      breadcrumbs,
+      course,
+      description,
+      isLoaded,
+      relatedCourses,
+      relatedArticles,
+      tags,
+      title
+    } = this.props
 
     return (
       <div>
         {isLoaded ? (
           <div>
-            {this.props.breadcrumbs && (
+            {breadcrumbs && (
               <div>
                 <div className={styles.container + ' ' + styles.breadcrumbContainer}>
                   <div className={styles.breadcrumb}>
@@ -36,11 +45,11 @@ class CourseView extends PureComponent {
                 </div>
               </div>
             )}
-            {this.props.title && (
+            {title && (
               <div>
                 <div className={styles.container + ' ' + styles.topContainer}>
                   <h1>{title}</h1>
-                  {this.props.summary && <Summary {...this.props} />}
+                  {description && <Description {...this.props} />}
                   <DecorativeDash className={styles.decorativeDash} aria-hidden="true" />
                 </div>
               </div>
@@ -53,10 +62,10 @@ class CourseView extends PureComponent {
                 onToggleStatus={this.handleReadMoreStatus.bind(this)}
                 readMoreExpanded={this.state.readMoreExpanded}
               />
-              {this.props.tags && <Tagcloud {...this.props} />}
-              {this.props.course.worksheets && <Worksheets {...this.props} />}
-              {!_.isEmpty(this.props.relatedCourses) && <RelatedCourses {...this.props} />}
-              {!_.isEmpty(this.props.relatedArticles) && <RelatedArticles {...this.props} />}
+              {tags && <Tagcloud {...this.props} />}
+              {course.worksheets && <Worksheets {...this.props} />}
+              {!_.isEmpty(relatedCourses) && <RelatedCourses {...this.props} />}
+              {!_.isEmpty(relatedArticles) && <RelatedArticles {...this.props} />}
               <CTA {...this.props} />
             </div>
           </div>
@@ -70,10 +79,10 @@ class CourseView extends PureComponent {
   }
 }
 
-const Summary = props => {
+const Description = props => {
   return (
-    <div className="summary">
-      <p className={styles.summary}>{props.summary}</p>
+    <div className="description">
+      <p className={styles.description} dangerouslySetInnerHTML={{ __html: props.description }} />
     </div>
   )
 }
@@ -223,4 +232,4 @@ CourseView.propTypes = {
 
 export default CourseView
 
-export { Summary, TableOfContents, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
+export { Description, TableOfContents, DownloadFlash, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
