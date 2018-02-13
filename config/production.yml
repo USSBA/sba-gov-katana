@@ -16,6 +16,7 @@ features:
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeProduction
+        enabled: false
     drupalRedirect:
         tableName: UrlToUrlRedirectProduction
 linc:

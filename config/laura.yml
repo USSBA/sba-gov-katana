@@ -15,6 +15,7 @@ features:
     searchUrl: /search/?q=
     urlRedirect:
         tableName: UrlToNodeLaura
+        enabled: true
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectLaura

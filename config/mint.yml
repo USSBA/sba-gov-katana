@@ -14,9 +14,11 @@ features:
     searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeIntegration
+        enabled: true
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectIntegration
+    true404: true
 cache:
   s3BucketName: mint-content-sba-gov
   useS3: true
