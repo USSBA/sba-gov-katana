@@ -60,7 +60,7 @@ app.use(function(req, res, next) {
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(nodeId => {
       let responseStatus = HttpStatus.OK
-      if (!nodeId && config.get('features.true404.enabled')) {
+      if (!nodeId && config.get('features.true404')) {
         responseStatus = HttpStatus.NOT_FOUND
       }
 
