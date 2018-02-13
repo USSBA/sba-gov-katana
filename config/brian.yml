@@ -14,6 +14,7 @@ features:
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeBrian
+        enabled: true
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectBrian

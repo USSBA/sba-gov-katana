@@ -14,6 +14,7 @@ features:
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeDemo
+        enabled: false
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectDemo

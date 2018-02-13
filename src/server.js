@@ -60,7 +60,7 @@ app.use(function(req, res, next) {
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(nodeId => {
       let responseStatus = HttpStatus.OK
-      if (!nodeId) {
+      if (!nodeId && config.get('features.true404.enabled')) {
         responseStatus = HttpStatus.NOT_FOUND
       }
 
@@ -170,12 +170,15 @@ app.get(['/', '/*'], function(req, res, next) {
     const url = req.url
     let redirectUrl
     let redirectCode
-    //url to node to newest url redirect
-    redirectUrl = await findMostRecentUrlRedirect(url)
+
+    // this section of code could be refactored since both types of redirects return the
+    // same HTTP 302 now; however, it might be worth leaving it in case we elect to
+    // change them separately in the future (more than likely the first one with be changed
+    // to HTTP 301 in the future)
     if (redirectUrl) {
-      redirectCode = HttpStatus.MOVED_PERMANENTLY
-    } else {
-      //url to url redirect
+      redirectUrl = await findMostRecentUrlRedirect(url)
+      redirectCode = HttpStatus.MOVED_TEMPORARILY
+    } else if (config.get('features.drupalRedirect.enabled')) {
       redirectUrl = await fetchNewUrlByOldUrl(url)
       redirectCode = HttpStatus.MOVED_TEMPORARILY
     }
@@ -186,6 +189,7 @@ app.get(['/', '/*'], function(req, res, next) {
       res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
     }
   }
+
   handleRedirects().catch(next)
 })
 
