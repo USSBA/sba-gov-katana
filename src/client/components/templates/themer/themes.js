@@ -11,7 +11,7 @@ const themes = {
     'partners',
     'disaster-assistance'
   ],
-  'cobalt-blue': ['size-standards']
+  'cobalt-blue': ['size-standards', 'federal-contracting']
 }
 
 function getPaths() {
