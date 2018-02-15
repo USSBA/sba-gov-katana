@@ -14,8 +14,11 @@ features:
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeStaging
+        enabled: false
     drupalRedirect:
         tableName: UrlToUrlRedirectStaging
+        enabled: false
+    true404: false
 cache:
   s3BucketName: staging-content-sba-gov
   useS3: true
