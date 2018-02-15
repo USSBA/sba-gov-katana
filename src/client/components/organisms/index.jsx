@@ -10,6 +10,7 @@ import DocumentArticleLookup from './document-article-lookup/document-article-lo
 import DocumentCardCollection from './document-card-collection/document-card-collection.jsx'
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
 import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
+import FederalContractingTileCollection from './federal-contracting-tile-collection/federal-contracting-tile-collection.jsx'
 import FrontPageHero from './front-page-hero/front-page-hero.jsx'
 import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
 import Hero from './hero/hero.jsx'
@@ -81,6 +82,7 @@ export {
   DocumentCardCollection,
   DropdownMenu,
   ForPartnersTileCollection,
+  FederalContractingTileCollection,
   FrontPageHero,
   FundingProgramsTileCollection,
   Hero,
