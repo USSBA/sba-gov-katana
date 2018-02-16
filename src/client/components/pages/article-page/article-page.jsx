@@ -1,11 +1,13 @@
 import React from 'react'
+import { basename } from 'path'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import Article from '../../templates/article/article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import s from './article-page.scss'
-import * as ContentActions from '../../../actions/content.js'
+import * as ContentActions from '../../../actions/content'
+import { getConfig } from '../../../services/client-config'
 
 class ArticlePage extends React.Component {
   constructor() {
@@ -18,10 +20,10 @@ class ArticlePage extends React.Component {
   componentWillMount() {
     const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
 
+    const url = config.get('urlRedirect') ? pathname : basename(pathname)
+
     if (pathname) {
-      fetchContentIfNeeded('articles', 'articles', {
-        url: pathname
-      })
+      fetchContentIfNeeded('articles', 'articles', { url })
     }
   }
 

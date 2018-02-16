@@ -69,8 +69,8 @@ features:
     moon: false
     searchUrl: "/search/?q="
     urlRedirect:
-        tableName: placeholder
         enabled: false
+        tableName: placeholder
     drupalRedirect:
         enabled: false
         tableName: DrupalUrlRedirect

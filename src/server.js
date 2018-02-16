@@ -65,15 +65,16 @@ app.use(function(req, res, next) {
       }
 
       const clientConfig = {
-        responseStatus: responseStatus,
-        isUserLoggedIn: hasSessionCookie || false,
-        googleAnalytics: config.get('googleAnalytics'),
         debug: config.get('developmentOptions.client.logging'),
+        forPartners: config.get('features.forPartners'),
+        googleAnalytics: config.get('googleAnalytics'),
         govdelivery: config.get('govdelivery.popupEnabled'),
-        showSbic: config.get('features.showSbic'),
+        isUserLoggedIn: hasSessionCookie || false,
         moon: config.get('features.moon'),
+        responseStatus: responseStatus,
         searchUrl: config.get('features.searchUrl'),
-        forPartners: config.get('features.forPartners')
+        showSbic: config.get('features.showSbic'),
+        urlRedirect: config.get('features.urlRedirect.enabled')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       next()

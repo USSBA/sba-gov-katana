@@ -3,8 +3,9 @@ import _ from 'lodash'
 
 import s from './document-card.scss'
 import { BasicLink, DecorativeDash, DocumentType, PdfIcon } from 'atoms'
-import { logPageEvent } from '../../../services/analytics.js'
-import { getCurrentFile } from '../../../services/utils.js'
+import { logPageEvent } from '../../../services/analytics'
+import { getConfig } from '../../../services/client-config'
+import { getCurrentFile } from '../../../services/utils'
 
 class DocumentCard extends React.Component {
   getLatestFile() {
@@ -86,14 +87,16 @@ class DocumentCard extends React.Component {
   }
 
   makeTitle() {
-    const doc = this.props.data
+    const { data: { title, type, url } } = this.props
     const eventConfig = {
       category: 'Document-Download-Module',
-      action: `docname - ${doc.title}: Document Landing Page`
+      action: `docname - ${title}: Document Landing Page`
     }
+    const href = getConfig('urlRedirect') ? `/${type.replace(/s$/, '')}/${url}` : url
+
     return (
-      <BasicLink url={doc.url} eventConfig={eventConfig}>
-        <h6 className={'document-card-title ' + s.title}>{doc.title}</h6>
+      <BasicLink url={href} eventConfig={eventConfig}>
+        <h6 className={'document-card-title ' + s.title}>{title}</h6>
       </BasicLink>
     )
   }

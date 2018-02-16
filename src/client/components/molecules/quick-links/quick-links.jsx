@@ -7,9 +7,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import s from './quick-links.scss'
-import * as ContentActions from '../../../actions/content.js'
-import * as NavigationActions from '../../../actions/navigation.js'
+import * as ContentActions from '../../../actions/content'
+import * as NavigationActions from '../../../actions/navigation'
 import { BasicLink, DecorativeDash } from 'atoms'
+import { getConfig } from '../../../services/client-config'
 
 function getCurrentFile(files) {
   let found = null
@@ -137,10 +138,12 @@ const LatestDocumentsCard = props => {
             }
             const linkTitle =
               titlePrefix + (doc.title.length > 80 ? doc.title.slice(0, 90) + '...' : doc.title)
+            const url = getConfig('urlRedirect') ? doc.url : `/document/${doc.url}`
+
             return (
               <div key={index}>
                 <BasicLink
-                  url={doc.url}
+                  url={url}
                   text={linkTitle}
                   eventConfig={{
                     category: eventCategory,
@@ -204,11 +207,12 @@ const ArticlesCard = props => {
             {articles.items.map((article, index) => {
               const linkTitle =
                 article.title.length > 80 ? article.title.slice(0, 90) + '...' : article.title
+              const url = getConfig('urlRedirect') ? article.url : `/article/${article.url}`
 
               return (
                 <div key={index}>
                   <BasicLink
-                    url={article.url}
+                    url={url}
                     text={linkTitle}
                     eventConfig={{
                       category: eventCategory,
