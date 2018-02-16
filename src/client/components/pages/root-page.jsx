@@ -85,8 +85,7 @@ export class RootPage extends React.Component {
         const sectionData = findSection(this.props.menu, first)
         if (
           first === 'disaster-assistance' ||
-          first === 'learning-center' ||
-          first === 'federal-contracting'
+          first === 'learning-center'
         ) {
           return this.renderPageOnLineage(pageLineage)
         } else if (sectionData) {
