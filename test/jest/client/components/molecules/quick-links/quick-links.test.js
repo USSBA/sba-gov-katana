@@ -5,6 +5,11 @@ import renderer from 'react-test-renderer'
 
 jest.mock('client/services/client-config.js', function() {
   return {
+    getConfig(config) {
+      if (config === 'urlRedirect') {
+        return false
+      }
+    },
     googleAnalytics: {
       enabled: false
     }
