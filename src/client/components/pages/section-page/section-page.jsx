@@ -7,7 +7,8 @@ import { RemoveMainLoader, SimpleCta } from 'molecules'
 import {
   BusinessGuideTileCollection,
   ForPartnersTileCollection,
-  FundingProgramsTileCollection
+  FundingProgramsTileCollection,
+  FederalContractingTileCollection
 } from 'organisms'
 
 class SectionPage extends React.Component {
@@ -17,10 +18,10 @@ class SectionPage extends React.Component {
 
   render() {
     if (this.props.sectionData) {
-      let sectionData = this.props.sectionData
-      let sectionName = this.props.sectionData.title
+      const sectionData = this.props.sectionData
+      const sectionName = this.props.sectionData.title
 
-      let tenSteps = undefined
+      let tenSteps
       if (sectionName === constants.sections.businessGuide) {
         tenSteps = (
           <div className={styles.nineStepsCtaContainer}>
@@ -36,13 +37,15 @@ class SectionPage extends React.Component {
         )
       }
 
-      let tileCollection = undefined
+      let tileCollection
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
         tileCollection = <BusinessGuideTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
         tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
         tileCollection = <ForPartnersTileCollection sectionData={sectionData} />
+      } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
+        tileCollection = <FederalContractingTileCollection sectionData={sectionData} />
       } else {
         console.error('Unable to find matching section')
       }

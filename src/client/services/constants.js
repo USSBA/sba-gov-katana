@@ -5,7 +5,8 @@ const constants = {
     businessGuide: 'Business Guide',
     fundingPrograms: 'Funding Programs',
     forPartners: 'For partners',
-    disaster: 'Disaster Assistance'
+    disaster: 'Disaster Assistance',
+    federalContracting: 'Federal Contracting'
   },
   sectionTitles: {
     planYourBusiness: 'Plan your business',
