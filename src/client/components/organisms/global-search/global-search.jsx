@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty, sortBy } from 'lodash'
+import { camelCase, chain, includes, pickBy, startCase, isEmpty, sortBy } from 'lodash'
 import { bindActionCreators } from 'redux'
 
 import styles from './global-search.scss'
