@@ -12,7 +12,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    background: #e8e8e8;
+    background: $grey-lighter;
     border: none;
   }
 }
@@ -23,9 +23,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #e8e8e8;
+  background: $grey-lighter;
 
-  button {
+  button,
+  h2 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -37,11 +38,11 @@
 
 .transcriptBox {
   margin-top: 30px;
-  background: #ebebeb;
+  background: $grey-lighter;
   width: 100%;
   text-align: left;
 
   .button {
-    background: #ebebeb;
+    background: $grey-lighter;
   }
 }
