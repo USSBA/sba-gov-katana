@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty } from 'lodash'
+import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty, sortBy } from 'lodash'
 import { bindActionCreators } from 'redux'
 
 import styles from './global-search.scss'
@@ -34,9 +34,11 @@ export class GlobalSearch extends React.PureComponent {
     })
 
     if (this.props.type === 'courses' && topicQuery) {
-      this.setState({ filterValues: { businessStage: topicQuery } })
-      return this.getContent({ businessStage: topicQuery })
+      this.setState({ filterValues: { businessStage: topicQuery } }, () => {
+        this.getContent(this.state.filterValues)
+      })
     }
+    const newQuery = assign(this.state.filterValues, { sortBy: this.props.defaultSortBy })
     this.getContent(this.state.filterValues)
   }
 
