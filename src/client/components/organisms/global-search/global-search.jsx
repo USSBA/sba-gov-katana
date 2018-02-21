@@ -34,12 +34,15 @@ export class GlobalSearch extends React.PureComponent {
     })
 
     if (this.props.type === 'courses' && topicQuery) {
-      this.setState({ filterValues: { businessStage: topicQuery } }, () => {
-        this.getContent(this.state.filterValues)
-      })
+      this.setState(
+        { filterValues: { businessStage: topicQuery, sortBy: this.props.defaultSortBy } },
+        () => {
+          this.getContent(this.state.filterValues)
+        }
+      )
     }
-    const newQuery = assign(this.state.filterValues, { sortBy: this.props.defaultSortBy })
-    this.getContent(this.state.filterValues)
+    const filterValuesWithSortBy = assign(this.state.filterValues, { sortBy: this.props.defaultSortBy })
+    this.getContent(filterValuesWithSortBy)
   }
 
   getContent(filters) {
