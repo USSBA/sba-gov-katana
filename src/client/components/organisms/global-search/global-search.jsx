@@ -42,13 +42,14 @@ export class GlobalSearch extends React.PureComponent {
       )
     }
 
-    const filterValuesWithSortBy = assign({}, this.state.filterValues, {
+    const filterValuesWithSortByOption = Object.assign({}, this.state.filterValues, {
       sortBy: this.props.defaultSortBy
     })
-    return this.getContent(filterValuesWithSortBy)
+    return this.getContent(filterValuesWithSortByOption)
   }
 
   getContent(filters) {
+    console.log('FILTERS', filters)
     this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, filters)
   }
 
@@ -153,7 +154,9 @@ export class GlobalSearch extends React.PureComponent {
       queryParams.topic &&
       this.props.taxonomies.indexOf(queryParams.topic) >= 0
     ) {
-      this.setState({ filterValues: { businessStage: queryParams.topic } })
+      this.setState({
+        filterValues: { businessStage: queryParams.topic, sortBy: this.props.defaultSortBy }
+      })
       query = { businessStage: queryParams.topic }
     } else if (this.props.taxonomies.indexOf(queryParams.topic) < 0) {
       query = this.state.filterValues
@@ -164,7 +167,10 @@ export class GlobalSearch extends React.PureComponent {
       search: `?topic=${query.businessStage}`
     })
 
-    this.getContent(query)
+    const filterValuesWithSortByOption = Object.assign({}, this.state.filterValues, {
+      sortBy: this.props.defaultSortBy
+    })
+    this.getContent(filterValuesWithSortByOption)
   }
 
   renderItems(items) {
