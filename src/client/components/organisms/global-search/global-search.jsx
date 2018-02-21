@@ -41,7 +41,9 @@ export class GlobalSearch extends React.PureComponent {
         }
       )
     }
-    const filterValuesWithSortBy = assign(this.state.filterValues, { sortBy: this.props.defaultSortBy })
+    const filterValuesWithSortBy = Object.assign(this.state.filterValues, {
+      sortBy: this.props.defaultSortBy
+    })
     this.getContent(filterValuesWithSortBy)
   }
 
@@ -61,7 +63,7 @@ export class GlobalSearch extends React.PureComponent {
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value
     const currentQuery = this.state.filterValues
-    const newQuery = assign({}, currentQuery, newQueryFieldValue)
+    const newQuery = Object.assign(currentQuery, newQueryFieldValue)
     this.setState({ filterValues: newQuery })
   }
 
