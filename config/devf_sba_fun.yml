@@ -14,7 +14,7 @@ features:
     searchUrl: "/search/?q="
     urlRedirect:
         tableName: UrlToNodeDevF
-        enabled: false
+        enabled: true
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectDevF
