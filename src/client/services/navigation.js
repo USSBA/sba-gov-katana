@@ -18,9 +18,10 @@ const matchingLocations = []
 // eslint-disable-next-line complexity
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
+    console.log('targetLocation', targetLocation)
     const mapped = _.map(getPaths(), path => {
       // eslint-disable-next-line no-magic-numbers
-      return targetLocation.indexOf(path) !== -1
+      return _.startsWith(path, '/' + targetLocation)
     })
     const isHandledRoute = _.compact(mapped).length > 0
     const startsWithHttp = _.startsWith(targetLocation, 'http')
