@@ -29,6 +29,7 @@ oca:
         wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
 cache:
   s3BucketName: blue-content-sba-gov
+  useS3: true
 aws:
   cloudsearch:
     endpoint: 'doc-sba-gov-production-vnhuuhtvgjbc2s7ddz42nhmbge.us-east-1.cloudsearch.amazonaws.com'
