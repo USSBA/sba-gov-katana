@@ -2,18 +2,37 @@ import { get } from './drupal-eight.js'
 
 function fetchCourses(params) {
   return get('courses').then(result => {
-    const filteredResult = []
+    const filteredItems = []
     if (!params.businessStage || params.businessStage === 'All') {
-      return result
+      const sortedItems = sortItems(result, params.sortBy)
+      return sortedItems
     } else {
       result.forEach(item => {
         if (item.courseCategory.includes(params.businessStage)) {
-          filteredResult.push(item)
+          filteredItems.push(item)
         }
       })
-      return filteredResult
+      const sortedAndFilteredItems = sortItems(filteredItems, params.sortBy)
+      return sortedAndFilteredItems
     }
   })
+}
+
+function sortItems(items, sortBy) {
+  if (sortBy === 'Title') {
+    const sortedItems = [].concat(items).sort((itemA, itemB) => {
+      if (itemA.title < itemB.title) {
+        return -1
+      }
+      if (itemA.title > itemB.title) {
+        return 1
+      }
+      return 0
+    })
+    return sortedItems
+  } else {
+    return items
+  }
 }
 
 function fetchCourse(params) {

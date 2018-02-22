@@ -8,7 +8,8 @@ class LearningCenterLookupPage extends React.Component {
     const courseProps = {
       title: 'Learning Center',
       taxonomyFilters: ['businessStage'],
-      type: 'courses'
+      type: 'courses',
+      defaultSortBy: 'Title'
     }
     return <GlobalSearch {...courseProps} location={this.props.location} />
   }

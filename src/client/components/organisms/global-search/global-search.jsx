@@ -34,10 +34,18 @@ export class GlobalSearch extends React.PureComponent {
     })
 
     if (this.props.type === 'courses' && topicQuery) {
-      this.setState({ filterValues: { businessStage: topicQuery } })
-      return this.getContent({ businessStage: topicQuery })
+      return this.setState(
+        { filterValues: { businessStage: topicQuery, sortBy: this.props.defaultSortBy } },
+        () => {
+          this.getContent(this.state.filterValues)
+        }
+      )
     }
-    this.getContent(this.state.filterValues)
+
+    const filterValuesWithSortByOption = Object.assign({}, this.state.filterValues, {
+      sortBy: this.props.defaultSortBy
+    })
+    return this.getContent(filterValuesWithSortByOption)
   }
 
   getContent(filters) {
@@ -56,7 +64,7 @@ export class GlobalSearch extends React.PureComponent {
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value
     const currentQuery = this.state.filterValues
-    const newQuery = assign({}, currentQuery, newQueryFieldValue)
+    const newQuery = Object.assign({}, currentQuery, newQueryFieldValue)
     this.setState({ filterValues: newQuery })
   }
 
@@ -145,7 +153,9 @@ export class GlobalSearch extends React.PureComponent {
       queryParams.topic &&
       this.props.taxonomies.indexOf(queryParams.topic) >= 0
     ) {
-      this.setState({ filterValues: { businessStage: queryParams.topic } })
+      this.setState({
+        filterValues: { businessStage: queryParams.topic, sortBy: this.props.defaultSortBy }
+      })
       query = { businessStage: queryParams.topic }
     } else if (this.props.taxonomies.indexOf(queryParams.topic) < 0) {
       query = this.state.filterValues
@@ -156,7 +166,10 @@ export class GlobalSearch extends React.PureComponent {
       search: `?topic=${query.businessStage}`
     })
 
-    this.getContent(query)
+    const filterValuesWithSortByOption = Object.assign({}, this.state.filterValues, {
+      sortBy: this.props.defaultSortBy
+    })
+    this.getContent(filterValuesWithSortByOption)
   }
 
   renderItems(items) {
