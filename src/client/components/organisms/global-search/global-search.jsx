@@ -49,7 +49,6 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   getContent(filters) {
-    console.log('FILTERS', filters)
     this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, filters)
   }
 
