@@ -12,11 +12,6 @@ govdelivery:
     popupEnabled: false
 foresee:
     enabled: false
-googleAnalytics:
-    accountId: UA-96147768-1
-    optimizeContainerId: GTM-NPDXPPF
-    tagManagerAccountId: GTM-WN49BK2
-    debug: true
 database:
     nonDrupal:
         databaseName: sba_katana
