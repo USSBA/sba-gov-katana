@@ -232,4 +232,13 @@ CourseView.propTypes = {
 
 export default CourseView
 
-export { Description, TableOfContents, DownloadFlash, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
+export {
+  Description,
+  TableOfContents,
+  DownloadFlash,
+  Tagcloud,
+  Worksheets,
+  RelatedCourses,
+  RelatedArticles,
+  CTA
+}
