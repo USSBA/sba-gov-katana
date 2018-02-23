@@ -1,7 +1,9 @@
 import React from 'react'
 import _ from 'lodash'
-import Tile from 'organisms'
+import Tile from './tile'
 import s from './menu-tile-collection.scss'
+import icons from './BusinessGuideIcons'
+import data from './business-guide-json'
 
 class MenuTileCollection extends React.Component {
   constructor() {
@@ -38,7 +40,8 @@ class MenuTileCollection extends React.Component {
   }
 
   makeTile(object, index) {
-    const iconElement = this.props.icons[index]
+    // const iconElement = this.props.icons[index]
+    const iconElement = icons[index]
     const tileProps = {
       id: 'tile-' + index,
       key: index,
@@ -46,8 +49,9 @@ class MenuTileCollection extends React.Component {
       icon: iconElement.icon,
       backgroundLines: iconElement.background,
       iconWhite: iconElement.iconWhite,
-      size: this.props.icons.length,
+      size: icons.length,
       uppercaseFirstWord: this.props.uppercaseFirstWord,
+      smallTile: this.props.smallTile,
       splitTitle: this.props.splitTitle,
       onFocus: () => {
         this.onFocus(index)
@@ -68,16 +72,28 @@ class MenuTileCollection extends React.Component {
     return <Tile {...tileProps} />
   }
 
+  // render() {
+  //   if (!this.props.data) {
+  //     return <div />
+  //   } else if (this.props.data.length !== this.props.icons.length) {
+  //     console.error('Invalid number of icons provided to tile collection')
+  //     console.error(this.props.data)
+  //     console.error(this.props.icons)
+  //     return <div />
+  //   }
+  //   return <div>{this.props.data.map(this.makeTile.bind(this))}</div>
+  // }
+
   render() {
-    if (!this.props.data) {
+    if (!data) {
       return <div />
-    } else if (this.props.data.length !== this.props.icons.length) {
+    } else if (data.length !== icons.length) {
       console.error('Invalid number of icons provided to tile collection')
-      console.error(this.props.data)
-      console.error(this.props.icons)
+      console.error(data)
+      console.error(icons)
       return <div />
     }
-    return <div>{this.props.data.map(this.makeTile.bind(this))}</div>
+    return <div>{data.map(this.makeTile.bind(this))}</div>
   }
 }
 
