@@ -11,7 +11,7 @@ import iconWhiteLaunch from 'assets/svg/business-guide-icon-white-launch.svg'
 import iconWhiteManage from 'assets/svg/business-guide-icon-white-manage.svg'
 import iconWhiteGrow from 'assets/svg/business-guide-icon-white-grow.svg'
 
-const businessGuideIcons = [
+const homePageBusinessGuideIcons = [
   {
     icon: iconPlan,
     iconWhite: iconWhitePlan
@@ -30,4 +30,4 @@ const businessGuideIcons = [
   }
 ]
 
-export default businessGuideIcons
+export default homePageBusinessGuideIcons

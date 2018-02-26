@@ -1,8 +1,8 @@
 import React from 'react'
 import _ from 'lodash'
-import Tile from './tile'
+import { Tile } from 'organisms'
 import s from './menu-tile-collection.scss'
-import icons from './BusinessGuideIcons'
+import icons from './homePageBusinessGuideIcons'
 import data from './business-guide-json'
 
 class MenuTileCollection extends React.Component {
@@ -49,6 +49,7 @@ class MenuTileCollection extends React.Component {
       icon: iconElement.icon,
       backgroundLines: iconElement.background,
       iconWhite: iconElement.iconWhite,
+      pathname: this.props.pathname,
       size: icons.length,
       uppercaseFirstWord: this.props.uppercaseFirstWord,
       smallTile: this.props.smallTile,

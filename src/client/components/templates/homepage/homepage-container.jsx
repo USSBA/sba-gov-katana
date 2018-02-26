@@ -10,7 +10,7 @@ class HomepageContainer extends React.Component {
   }
 
   render() {
-    return <Homepage />
+    return <Homepage location={this.props.location} />
   }
 }
 
