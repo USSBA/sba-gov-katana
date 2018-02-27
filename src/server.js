@@ -27,11 +27,6 @@ if (config.get('developmentOptions.webpack.enabled')) {
   enableWebpackHotModuleReplacement(app, config.get('developmentOptions.webpack.silent'))
 }
 
-if (config.get('newrelic.enabled')) {
-  console.log('Starting NewRelic')
-  require('newrelic') // eslint-disable-line global-require
-}
-
 const metaVariables = {
   description:
     "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",

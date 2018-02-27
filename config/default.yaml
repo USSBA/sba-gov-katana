@@ -12,8 +12,6 @@ govdelivery:
 foresee:
     environment: staging
     enabled: false
-newrelic:
-    enabled: false
 googleAnalytics:
     enabled: false
     accountId: UA-96147768-1
