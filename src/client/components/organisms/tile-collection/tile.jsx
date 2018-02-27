@@ -17,7 +17,7 @@ class Tile extends React.Component {
   }
 
   _formatSmallTitle() {
-    let arr = this.props.data.title.split(' ')
+    const arr = this.props.data.title.split(' ')
     arr.shift()
     return arr.join(' ')
   }
@@ -61,14 +61,14 @@ class Tile extends React.Component {
   }
 
   handleKeyDown(event) {
-    let code = event.keyCode ? event.keyCode : event.which
+    const code = event.keyCode ? event.keyCode : event.which
     if (code == 9 && event.shiftKey) {
       this.props.onTabBackwards(this.props.enteringInReverse)
     }
   }
 
   handleTileKeyDown(event) {
-    let code = event.keyCode ? event.keyCode : event.which
+    const code = event.keyCode ? event.keyCode : event.which
     if (code == 13) {
       this._openNavMenu()
     }
@@ -79,7 +79,7 @@ class Tile extends React.Component {
   }
 
   render() {
-    let baseTileData = {
+    const baseTileData = {
       link: this.props.data.fullUrl,
       children: this.props.data.children,
       description: this.props.data.description,
@@ -90,7 +90,7 @@ class Tile extends React.Component {
       uppercaseFirstWord: this.props.uppercaseFirstWord
     }
 
-    let hoverTile = this.isLinkToPage() ? (
+    const hoverTile = this.isLinkToPage() ? (
       <MenuTile {...baseTileData} inverse id={this.props.id + '-hover'} />
     ) : (
       <MenuTileWithLinks
@@ -102,18 +102,21 @@ class Tile extends React.Component {
     )
 
     let widthStyle = null
-    switch (this.props.size) {
-      case 3:
+    switch (this.props.size && this.props.pathname) {
+      case 3 && undefined:
         widthStyle = s.tileThree
         break
-      case 5:
+      case 4 && undefined:
+        widthStyle = s.tileFour
+        break
+      case 5 && undefined:
         widthStyle = s.tileFive
         break
-      default:
-        widthStyle = s.tileFour
+      case 4 && '/':
+        widthStyle = s.homePageTileFour
     }
 
-    let toggleMenuLink = (
+    const toggleMenuLink = (
       <BasicLink
         text={`toggle ${this.props.data.title} menu`}
         myClassName={s.tabDisplayMenu}
@@ -136,7 +139,11 @@ class Tile extends React.Component {
         onKeyDown={this.handleTileKeyDown.bind(this)}
       >
         {toggleMenuLink}
-        {this.props.showHover ? hoverTile : <MenuTile id={this.props.id + '-static'} {...baseTileData} />}
+        {this.props.showHover ? (
+          hoverTile
+        ) : (
+          <MenuTile id={this.props.id + '-static'} pathname={this.props.pathname} {...baseTileData} />
+        )}
         {this.props.backgroundLines ? (
           <img className={s.backgroundLines} src={this.props.backgroundLines} alt="" />
         ) : (

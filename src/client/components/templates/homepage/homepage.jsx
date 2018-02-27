@@ -1,5 +1,5 @@
 import React from 'react'
-import { FrontPageLady, HappeningNow, FrontPageHero, Blog } from 'organisms'
+import { FrontPageLady, HappeningNow, FrontPageHero, Blog, MenuTileCollection } from 'organisms'
 import styles from './homepage.scss'
 
 class Homepage extends React.Component {
@@ -52,6 +52,7 @@ class Homepage extends React.Component {
           <FrontPageLady />
         </div>
         <div className={styles.sectionWithPadding}>
+          <MenuTileCollection pathname={this.props.location.pathname} splitTitle />
           <HappeningNow />
         </div>
         <div className={styles.section}>

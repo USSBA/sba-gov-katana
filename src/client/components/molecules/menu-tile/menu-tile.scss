@@ -1,8 +1,11 @@
+@include theme(sba-blue-dark, '.homepageTile', null, null, null);
+
 .upperCase {
   text-transform: uppercase;
 }
 
-.tileNormal {
+.tileNormal,
+.homepageTile {
   height: 100%;
   width: 100%;
   background-color: $grey-lighter;
@@ -12,11 +15,20 @@
   @include grid-media($sba-grid-medium) {
     padding-top: 71px;
   }
+}
+@include background-color-theme('.tileInverse');
+
+.tileNormal {
   @include grid-media($sba-grid-large) {
     padding-top: 133px;
   }
 }
-@include background-color-theme('.tileInverse');
+
+.homepageTile {
+  @include grid-media($sba-grid-large) {
+    padding-top: 100px;
+  }
+}
 
 .icon {
   @include grid-media($sba-grid-small) {

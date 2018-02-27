@@ -7,19 +7,25 @@ import { BasicLink } from 'atoms'
 
 class MenuTile extends React.Component {
   render() {
-    let smallTitleComponent = this.props.smallTitle ? (
+    let tileStyle = s.tileNormal
+    if (this.props.pathname === '/') {
+      tileStyle = s.homepageTile
+    }
+
+    const smallTitleComponent = this.props.smallTitle ? (
       <h4 className={sharedStyles.smallTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')}>
         {this.props.smallTitle}
       </h4>
     ) : (
       undefined
     )
-    let tileClass = s.tileNormal + ' ' + (this.props.inverse ? s.tileInverse : '')
-    let titleContainerClass = s.titleContainer + ' ' + (this.props.inverse ? s.titleInverse : '')
-    let largeTitleClass = sharedStyles.largeTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')
-    let lineClass = s.line + ' ' + (this.props.inverse ? s.lineInverse : '')
-    let blurbClass = s.blurb + ' ' + (this.props.inverse ? s.blurbInverse : '')
-    let iconSource = this.props.inverse ? this.props.iconWhite : this.props.icon
+    const tileClass = tileStyle + ' ' + (this.props.inverse ? s.tileInverse : '')
+    const titleContainerClass = s.titleContainer + ' ' + (this.props.inverse ? s.titleInverse : '')
+    const largeTitleClass =
+      sharedStyles.largeTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')
+    const lineClass = s.line + ' ' + (this.props.inverse ? s.lineInverse : '')
+    const blurbClass = s.blurb + ' ' + (this.props.inverse ? s.blurbInverse : '')
+    const iconSource = this.props.inverse ? this.props.iconWhite : this.props.icon
     return (
       <div id={this.props.id} className={tileClass}>
         <img id={this.props.id + '-icon'} className={s.icon} src={iconSource} alt="" />
@@ -46,7 +52,8 @@ MenuTile.propTypes = {
   uppercaseFirstWord: React.PropTypes.bool,
   icon: React.PropTypes.string,
   iconWhite: React.PropTypes.string,
-  description: React.PropTypes.string
+  description: React.PropTypes.string,
+  pathname: React.PropTypes.string
 }
 
 MenuTile.defaultProps = {}

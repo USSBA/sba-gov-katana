@@ -40,6 +40,13 @@
   }
 }
 
+.homePageTileFour {
+  @include grid-media($sba-grid-large) {
+    @include grid-column(3, $sba-grid-large);
+    height: 600px;
+  }
+}
+
 .backgroundLines {
   display: none;
   @include grid-media($sba-grid-large) {
