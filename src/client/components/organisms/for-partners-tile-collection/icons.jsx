@@ -19,12 +19,11 @@ let fundingProgramIcons = [
   {
     icon: forPartnersIconSuretyProvidersColor,
     iconWhite: forPartnersIconSuretyProvidersWhite
+  },
+  {
+    icon: forPartnersIconContractingOfficialsColor,
+    iconWhite: forPartnersIconContractingOfficialsWhite
   }
-  // ,
-  // {
-  //   icon: forPartnersIconContractingOfficialsColor,
-  //   iconWhite: forPartnersIconContractingOfficialsWhite
-  // }
 ]
 
 export default fundingProgramIcons
