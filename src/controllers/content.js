@@ -15,6 +15,7 @@ import {
 import { fetchNotification } from '../service/notification.js'
 import { fetchCourses, fetchCourse } from '../service/courses.js'
 import { search } from '../service/search.js'
+import { offices } from '../service/offices.js'
 import HttpStatus from 'http-status-codes'
 import _ from 'lodash'
 import querystring from 'querystring'
@@ -39,7 +40,8 @@ const fetchContentTypeFunctions = {
   notification: fetchNotification,
   search: search,
   siteMap: fetchFormattedMenu,
-  taxonomys: fetchTaxonomys
+  taxonomys: fetchTaxonomys,
+  offices
 }
 
 function fetchContentById(req, res) {
