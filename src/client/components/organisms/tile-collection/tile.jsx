@@ -165,4 +165,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile)
