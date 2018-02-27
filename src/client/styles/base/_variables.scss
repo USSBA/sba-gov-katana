@@ -330,26 +330,30 @@ $primary-color-map: (
   'sba-blue': $sba-blue,
   'byzantine': $byzantine,
   'money-green': $money-green,
-  'cobalt-blue': $cobalt-blue
+  'cobalt-blue': $cobalt-blue,
+  'sba-blue-dark': $sba-blue-dark
 );
 
 $lightest-color-map: (
   'sba-blue': $sba-blue-lightest,
   'byzantine': $byzantine-lightest,
   'money-green': $money-green-lightest,
-  'cobalt-blue': $cobalt-blue-lightest
+  'cobalt-blue': $cobalt-blue-lightest,
+  'sba-blue-dark': $sba-blue
 );
 $dark-color-map: (
   'sba-blue': $sba-blue-dark,
   'byzantine': $byzantine-dark,
   'money-green': $money-green-dark,
-  'cobalt-blue': $cobalt-blue-dark
+  'cobalt-blue': $cobalt-blue-dark,
+  'sba-blue-dark': $sba-blue-darkest
 );
 $darkest-color-map: (
   'sba-blue': $sba-blue-darkest,
   'byzantine': $byzantine-darkest,
   'money-green': $money-green-darkest,
-  'cobalt-blue': $cobalt-blue-darkest
+  'cobalt-blue': $cobalt-blue-darkest,
+  'sba-blue-dark': $sba-blue-darkest
 );
 
 @mixin small-button($component) {

@@ -2,8 +2,8 @@ import React from 'react'
 import _ from 'lodash'
 import { Tile } from 'organisms'
 import s from './menu-tile-collection.scss'
-import icons from './homePageBusinessGuideIcons'
-import data from './business-guide-json'
+import icons from '../../templates/homepage/businessGuideTileIcons'
+import data from '../../templates/homepage/business-guide-json'
 
 class MenuTileCollection extends React.Component {
   constructor() {
@@ -72,18 +72,6 @@ class MenuTileCollection extends React.Component {
     }
     return <Tile {...tileProps} />
   }
-
-  // render() {
-  //   if (!this.props.data) {
-  //     return <div />
-  //   } else if (this.props.data.length !== this.props.icons.length) {
-  //     console.error('Invalid number of icons provided to tile collection')
-  //     console.error(this.props.data)
-  //     console.error(this.props.icons)
-  //     return <div />
-  //   }
-  //   return <div>{this.props.data.map(this.makeTile.bind(this))}</div>
-  // }
 
   render() {
     if (!data) {

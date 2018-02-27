@@ -11,7 +11,8 @@ const themes = {
     'partners',
     'disaster-assistance'
   ],
-  'cobalt-blue': ['size-standards', 'federal-contracting']
+  'cobalt-blue': ['size-standards', 'federal-contracting'],
+  'sba-blue-dark': ['/']
 }
 
 function getPaths() {
@@ -27,7 +28,9 @@ function getTheme() {
   const { pathname } = window.location
   let path
 
-  if (pathname.startsWith('/tools')) {
+  if (pathname.startsWith('/')) {
+    path = pathname.slice(0, 1)
+  } else if (pathname.startsWith('/tools')) {
     path = pathname.slice(1)
   } else {
     path = window.location.pathname.split('/')[1]
