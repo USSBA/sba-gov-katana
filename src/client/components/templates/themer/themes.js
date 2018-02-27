@@ -28,7 +28,7 @@ function getTheme() {
   const { pathname } = window.location
   let path
 
-  if (pathname.startsWith('/')) {
+  if (pathname[0] === '/' && !pathname[1]) {
     path = pathname.slice(0, 1)
   } else if (pathname.startsWith('/tools')) {
     path = pathname.slice(1)

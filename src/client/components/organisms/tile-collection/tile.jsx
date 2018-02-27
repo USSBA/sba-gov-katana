@@ -101,19 +101,31 @@ class Tile extends React.Component {
       />
     )
 
+    // let widthStyle = null
+    // switch (this.props.size && this.props.pathname) {
+    //   case 3 && undefined:
+    //   console.log('info', this.props.size, this.props.pathname)
+    //     widthStyle = s.tileThree
+    //     break
+    //   case 4 && undefined:
+    //     widthStyle = s.tileFour
+    //     break
+    //   case 5 && undefined:
+    //     widthStyle = s.tileFive
+    //     break
+    //   case 4 && '/':
+    //     widthStyle = s.homePageTileFour
+    // }
+
     let widthStyle = null
-    switch (this.props.size && this.props.pathname) {
-      case 3 && undefined:
-        widthStyle = s.tileThree
-        break
-      case 4 && undefined:
-        widthStyle = s.tileFour
-        break
-      case 5 && undefined:
-        widthStyle = s.tileFive
-        break
-      case 4 && '/':
-        widthStyle = s.homePageTileFour
+    if (this.props.size === 3 && this.props.pathname === undefined) {
+      widthStyle = s.tileThree
+    } else if (this.props.size === 4 && this.props.pathname === undefined) {
+      widthStyle = s.tileFour
+    } else if (this.props.size === 5 && this.props.pathname === undefined) {
+      widthStyle = s.tileFive
+    } else if (this.props.size === 4 && this.props.pathname === '/') {
+      widthStyle = s.homePageTileFour
     }
 
     const toggleMenuLink = (
