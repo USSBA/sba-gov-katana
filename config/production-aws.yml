@@ -1,7 +1,5 @@
 foresee:
     environment: production
-newrelic:
-    enabled: true
 googleAnalytics:
     enabled: true
     accountId: UA-19362636-5
