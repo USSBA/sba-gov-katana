@@ -3,6 +3,9 @@ import { mount } from 'enzyme'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import { TitleSection } from 'molecules'
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 describe('Content section', () => {
   test("should render 'Content' word and subject header link texts", () => {
