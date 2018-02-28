@@ -10,11 +10,7 @@ class LearningCenterLookupPage extends React.Component {
       taxonomyFilters: ['businessStage'],
       type: 'courses'
     }
-    return (
-      <GlobalSearch {...courseProps} location={this.props.location}>
-        <CoursesLayout />
-      </GlobalSearch>
-    )
+    return <GlobalSearch {...courseProps} location={this.props.location} />
   }
 }
 
