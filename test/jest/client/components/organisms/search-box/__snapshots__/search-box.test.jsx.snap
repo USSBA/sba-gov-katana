@@ -2441,7 +2441,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="searchBox"
     >
       <div
-        className="inputContainer"
+        className="inputContainer "
         hidden={undefined}
         id="document-lookup-container"
       >
@@ -2453,7 +2453,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           className="textInputContainer"
         >
           <input
-            className="textInput"
+            className="textInput "
             id="document-lookup"
             onChange={[Function]}
             onKeyUp={[Function]}
@@ -2477,7 +2477,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       >
         <label />
         <div
-          className="errorClass"
+          className="errorClass "
           id="documenttype-select"
         >
           <div
@@ -2570,7 +2570,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       >
         <label />
         <div
-          className="errorClass"
+          className="errorClass "
           id="program-select"
         >
           <div
@@ -2663,7 +2663,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       >
         <label />
         <div
-          className="errorClass"
+          className="errorClass "
           id="documentactivity-select"
         >
           <div

@@ -26,6 +26,7 @@ import ProgramDetailsCardCollection from './program-details-card-collection/prog
 import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
 import SbicLookup from './sbic-lookup/sbic-lookup'
 import SearchBox from './search-box/search-box.jsx'
+import SecondarySearchBar from './secondary-search-bar/secondary-search-bar.jsx'
 import SectionNav from './section-nav/section-nav.jsx'
 import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
@@ -100,6 +101,7 @@ export {
   RelatedDocumentCards,
   SbicLookup,
   SearchBox,
+  SecondarySearchBar,
   SectionNav,
   SizeStandardsTool,
   StyleGrayBackground,

@@ -15,7 +15,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="searchBox"
       >
         <div
-          className="inputContainer"
+          className="inputContainer "
           hidden={undefined}
           id="document-lookup-text-input-container"
         >
@@ -29,7 +29,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             className="textInputContainer"
           >
             <input
-              className="textInput"
+              className="textInput "
               id="document-lookup-text-input"
               onChange={[Function]}
               onKeyUp={[Function]}
@@ -56,7 +56,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Title
           </label>
           <div
-            className="errorClass"
+            className="errorClass "
             id="title-select"
           >
             <div
@@ -125,7 +125,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             Lightsaber Color
           </label>
           <div
-            className="errorClass"
+            className="errorClass "
             id="lightsabercolor-select"
           >
             <div

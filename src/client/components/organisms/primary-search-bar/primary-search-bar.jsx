@@ -5,17 +5,27 @@ import styles from './primary-search-bar.scss'
 import { ApplyButton, SearchIcon } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
-  onFieldChange() {
-    this.props.onFieldChange()
+  onFieldChange(newValue) {
+    if (this.props.onFieldChange) {
+      this.props.onFieldChange()
+    }
+
+    console.log('newvalue', newValue)
   }
 
   onSearch() {
-    this.props.onSearch()
+    if (this.props.onSearch) {
+      this.props.onSearch()
+    }
+    console.log('onsearch')
   }
 
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, { onChange: this.onFieldChange })
+      console.log('CHILD', child)
+      const clonedChild = React.cloneElement(child, { onChange: this.onFieldChange.bind(this) })
+      console.log('CLONED CHILD', clonedChild)
+      return clonedChild
     })
     return (
       <div>
@@ -28,7 +38,7 @@ export class PrimarySearchBar extends React.PureComponent {
             <div className={styles.applyButton}>
               <ApplyButton
                 id="primary-search-bar-search-button"
-                submit={this.onSearch}
+                submit={this.onSearch.bind(this)}
                 text={this.props.searchButtonText}
               />
             </div>

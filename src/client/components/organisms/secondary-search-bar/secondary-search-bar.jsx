@@ -1,0 +1,49 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import styles from './secondary-search-bar.scss'
+import { ApplyButton, SearchIcon } from 'atoms'
+
+export class SecondarySearchBar extends React.PureComponent {
+  onFieldChange(newValue) {
+    if (this.props.onFieldChange) {
+      this.props.onFieldChange()
+    }
+
+    console.log('newvalue', newValue)
+  }
+
+  onSearch() {
+    if (this.props.onSearch) {
+      this.props.onSearch()
+    }
+    console.log('onsearch')
+  }
+
+  render() {
+    const childrenWithProps = React.Children.map(this.props.children, child => {
+      const clonedChild = React.cloneElement(child, {
+        onChange: this.onFieldChange.bind(this),
+        labelStyle: styles.inlineLabel
+      })
+      return clonedChild
+    })
+    return <div className={styles.container}>{childrenWithProps}</div>
+  }
+}
+
+SecondarySearchBar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  onFieldChange: PropTypes.func.isRequired,
+  searchButtonText: PropTypes.string,
+  title: PropTypes.string
+}
+
+SecondarySearchBar.defaultProps = {
+  onSearch: () => {},
+  onFieldChange: () => {},
+  searchButtonText: 'Search',
+  title: 'Search'
+}
+
+export default SecondarySearchBar

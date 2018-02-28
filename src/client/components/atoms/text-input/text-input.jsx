@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './text-input.scss'
-import { FailureIcon, FormErrorMessage, SuccessIcon, ValidationIcon } from 'atoms'
+import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
 
 class TextInput extends React.Component {
   iconValidation(validationState) {
@@ -31,17 +31,23 @@ class TextInput extends React.Component {
       id,
       validationState,
       errorText,
+      showSearchIcon,
       showValidationIcon,
       showSuccessIcon,
       showErrorIcon,
       labelStyle,
+      className,
       ...rest
     } = this.props
     const validationIcon = this.iconValidation(validationState)
     const errorMessage = this.errorMessage(validationState)
     //todo: use aria-labelledby in the input instead of htmlFor in the label
     return (
-      <div id={id + '-container'} className={styles.inputContainer} hidden={hidden}>
+      <div
+        id={id + '-container'}
+        className={`${styles.inputContainer} ${className ? className : ''}`}
+        hidden={hidden}
+      >
         <label htmlFor={this.props.id} className={labelStyle ? labelStyle : styles.controlLabel}>
           {label}
         </label>
@@ -49,9 +55,16 @@ class TextInput extends React.Component {
           <input
             id={this.props.id}
             {...rest}
-            className={this.inputValidation(validationState)}
+            className={`${this.inputValidation(validationState)} ${
+              showSearchIcon ? styles.searchIconPadding : ''
+            }`}
             onChange={onChange}
           />
+          {showSearchIcon ? (
+            <div className={styles.searchIcon}>
+              <SearchIcon aria-hidden="true" />
+            </div>
+          ) : null}
           <ValidationIcon
             validationState={this.props.validationState}
             showSuccessIcon={this.props.showSuccessIcon}

@@ -47,6 +47,7 @@ import SocialMediaLink from './social-media-link/social-media-link'
 import SubsectionHeader from './subsection-header/subsection-header'
 import SubtitleText from './subtitle-text/subtitle-text'
 import SuccessIcon from './icons/success'
+import TaxonomyMultiSelect from './multiselect/taxonomy-multiselect'
 import TextArea from './textarea/textarea'
 import TextInput from './text-input/text-input'
 import TextSection from './text-section/text-section'
@@ -106,6 +107,7 @@ export {
   SubsectionHeader,
   SubtitleText,
   SuccessIcon,
+  TaxonomyMultiSelect,
   TextArea,
   TextInput,
   TextSection,

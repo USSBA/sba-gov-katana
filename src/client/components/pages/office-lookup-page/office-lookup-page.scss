@@ -1,0 +1,81 @@
+@include theme(sba-blue, '.banner', $sba-blue, #fff, #fff);
+
+// .container {
+//   @include grid-media($sba-grid-small) {
+//     @include grid-column(6);
+//     margin-top: 20px;
+//     margin-bottom: 40px;
+//   }
+//   @include grid-media($sba-grid-medium) {
+//     @include grid-column(12);
+//     margin-top: 20px;
+//     margin-bottom: 30px;
+//   }
+//   @include grid-media($sba-grid-large) {
+//     @include grid-column(12);
+//     //    @include grid-push(2);
+//   }
+// }
+
+// .zip {
+//     width: 10%;
+//     position
+//   }
+.search {
+  position: relative;
+
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+
+  @include grid-media($sba-grid-large) {
+    float: left;
+    display: inline-block;
+
+    width: 300px;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  input {
+    line-height: 34px;
+    height: 48px;
+    padding-right: 40px !important;
+  }
+}
+.zip {
+  position: relative;
+
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+
+  @include grid-media($sba-grid-large) {
+    float: left;
+    display: inline-block;
+
+    width: 150px;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  input {
+    line-height: 34px;
+    height: 48px;
+    // padding-right: 40px !important;
+  }
+}
+
+// .searchIcon {
+//   position: absolute;
+//   top: 42px;
+//   right: 15px;
+
+//   @media screen and (min-width: 768px) {
+//     top: 44px;
+//   }
+// }

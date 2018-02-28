@@ -66,7 +66,10 @@ class MultiSelectBox extends React.Component {
     return (
       <div id={this.props.id + '-container'}>
         <label>{this.props.label}</label>
-        <div id={this.props.id} className={styles.errorClass}>
+        <div
+          id={this.props.id}
+          className={`${styles.errorClass} ${this.props.className ? this.props.className : ''}`}
+        >
           <ReactSelect
             className={errorClass + ' ' + styles.myselect}
             menuBuffer={10}
@@ -95,7 +98,10 @@ class MultiSelectBox extends React.Component {
 
 MultiSelectBox.defaultProps = {
   multi: true,
-  maxValues: 3
+  maxValues: 3,
+  onBlur: () => {},
+  onFocus: () => {},
+  onChange: () => {}
 }
 
 export default MultiSelectBox
