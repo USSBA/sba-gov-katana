@@ -10,6 +10,7 @@ import {
   fetchFormattedMenu,
   fetchFormattedNode,
   fetchNodes,
+  fetchOffices,
   fetchTaxonomys
 } from '../service/drupal-eight.js'
 import { fetchNotification } from '../service/notification.js'
@@ -34,6 +35,7 @@ const fetchContentTypeFunctions = {
   disaster: fetchDisasterFromDrupalDatabase,
   documents: fetchDocuments,
   frontPageSlides: fetchFrontPageSlidesFromDrupal,
+  offices: fetchOffices,
   mainMenu: fetchMainMenu,
   nodes: fetchNodes,
   notification: fetchNotification,

@@ -12,11 +12,19 @@ class ApplyButton extends React.Component {
             this.props.submit()
           }}
           extraClassName={s.applyButton}
-          text="Apply"
+          text={this.props.text}
         />
       </div>
     )
   }
+}
+
+ApplyButton.defaultProps = {
+  text: 'Apply'
+}
+
+ApplyButton.propTypes = {
+  text: React.PropTypes.string
 }
 
 export default ApplyButton

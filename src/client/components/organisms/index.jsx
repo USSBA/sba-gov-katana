@@ -18,8 +18,10 @@ import GlobalSearch from './global-search/global-search.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
+import OfficesLayout from './offices-layout/offices-layout.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
 import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
+import PrimarySearchBar from './primary-search-bar/primary-search-bar.jsx'
 import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
 import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
 import SbicLookup from './sbic-lookup/sbic-lookup'
@@ -90,8 +92,10 @@ export {
   Lookup,
   ModalController,
   NotificationBar,
+  OfficesLayout,
   PagingLookup,
   PagingMultiviewLayout,
+  PrimarySearchBar,
   ProgramDetailsCardCollection,
   RelatedDocumentCards,
   SbicLookup,
