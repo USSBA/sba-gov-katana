@@ -51,6 +51,7 @@ import TaxonomyMultiSelect from './multiselect/taxonomy-multiselect'
 import TextArea from './textarea/textarea'
 import TextInput from './text-input/text-input'
 import TextSection from './text-section/text-section'
+import Toggle from './toggle/toggle'
 import UtilityLink from './utility-link/utility-link'
 import ValidationIcon from './validation-icon/validation-icon'
 import VersionsList from './versions-list/versions-list'
@@ -111,6 +112,7 @@ export {
   TextArea,
   TextInput,
   TextSection,
+  Toggle,
   UtilityLink,
   ValidationIcon,
   VersionsList,

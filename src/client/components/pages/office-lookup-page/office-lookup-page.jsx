@@ -5,8 +5,15 @@ import * as ContentActions from '../../../actions/content.js'
 import { find, cloneDeep } from 'lodash'
 
 import style from './office-lookup-page.scss'
-import { TaxonomyMultiSelect, MultiSelect, TextInput } from 'atoms'
-import { GlobalSearch, OfficesLayout, PrimarySearchBar, SecondarySearchBar } from 'organisms'
+import { TaxonomyMultiSelect, MultiSelect, TextInput, Toggle } from 'atoms'
+import {
+  GlobalSearch,
+  OfficesLayout,
+  PrimarySearchBar,
+  SecondarySearchBar,
+  Results,
+  OfficeResult
+} from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
@@ -26,12 +33,43 @@ class OfficeLookupPage extends React.Component {
     console.log('TAXONOMY', taxonomy)
     return taxonomy
   }
+
+  //todo: replace with actual search service reference
+  onSearch(query) {
+    return [
+      {
+        location: [
+          {
+            type: 'location',
+            city: 'Columbia',
+            email: 'mce@hceda.org',
+            fax: null,
+            hoursOfOperation: 'Monday through Friday from 9 a.m. to 5 p.m.',
+            name: 'Maryland Center for Entrepreneurship',
+            phoneNumber: '410-313-6550',
+            state: 'MD',
+            streetAddress: '9250 Bendix Road',
+            zipCode: 21045
+          }
+        ],
+        officeType: 'Startup accelerator',
+        relatedDisaster: {},
+        summary: {},
+        website: null,
+        type: 'office',
+        title: 'Accelerator for the Commercialization of Technology (ACT)',
+        id: 5667,
+        updated: 1512767105,
+        created: 1511914016
+      }
+    ]
+  }
   render() {
-    const officeTaxonomy = this.getTaxonomy('officeType') //{name:'officeType', terms: ['term1','term2','term3']}//this.getTaxonomy('officeType')
+    const officeTaxonomy = this.getTaxonomy('officeType')
     console.log('OFFICELOOKP', officeTaxonomy)
     return (
-      <SearchTemplate>
-        <PrimarySearchBar title="Find local assistance" onSearch={() => {}} onFieldChange={() => {}}>
+      <SearchTemplate searchType="offices">
+        <PrimarySearchBar title="Find local assistance">
           <TextInput
             id="search"
             className={style.search}
@@ -49,8 +87,21 @@ class OfficeLookupPage extends React.Component {
           />
         </PrimarySearchBar>
         <SecondarySearchBar>
-          <TaxonomyMultiSelect taxonomy={officeTaxonomy} label="Organization:" multi={false} />
+          <TaxonomyMultiSelect
+            id="resource-type"
+            taxonomy={officeTaxonomy}
+            label="Resource Type:"
+            multi={false}
+            className={style.search}
+          />
+          <Toggle
+            id="allOffices"
+            options={[{ name: 'All Offices', value: true }, { name: 'SBA Offices', value: false }]}
+          />
         </SecondarySearchBar>
+        <Results id="office-results">
+          <OfficeResult />
+        </Results>
       </SearchTemplate>
     )
   }
@@ -59,7 +110,6 @@ class OfficeLookupPage extends React.Component {
 function mapReduxStateToProps(reduxState, props) {
   return {
     taxonomies: reduxState.contentReducer.taxonomies,
-    items: reduxState.contentReducer[props.type],
     location: props.location
   }
 }

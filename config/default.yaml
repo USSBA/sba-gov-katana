@@ -82,6 +82,7 @@ cache:
   useS3: true
 aws:
   cloudsearch:
-    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+    search-endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+    office-endpoint: 'doc-sba-gov-dev-offices-owb6n33f3b7y5u4y3mtlsiuzsa.us-east-1.cloudsearch.amazonaws.com'
   dynamodb:
     endpoint: placeholder

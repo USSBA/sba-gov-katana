@@ -40,8 +40,9 @@ class TaxonomyMultiSelect extends React.Component {
 }
 
 TaxonomyMultiSelect.propTypes = {
-  // taxonomy: PropTypes.object.required,
-  // label: PropTypes.string.required,
+  // taxonomy: PropTypes.object.isRequired,
+  // label: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
   includeAllOption: PropTypes.bool,
   filterValues: PropTypes.object
 }

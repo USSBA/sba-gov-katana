@@ -10,12 +10,12 @@ import {
   fetchFormattedMenu,
   fetchFormattedNode,
   fetchNodes,
-  fetchOffices,
   fetchTaxonomys
 } from '../service/drupal-eight.js'
 import { fetchNotification } from '../service/notification.js'
 import { fetchCourses, fetchCourse } from '../service/courses.js'
 import { search } from '../service/search.js'
+import { officeSearch } from '../service/office-search.js'
 import HttpStatus from 'http-status-codes'
 import _ from 'lodash'
 import querystring from 'querystring'
@@ -35,7 +35,7 @@ const fetchContentTypeFunctions = {
   disaster: fetchDisasterFromDrupalDatabase,
   documents: fetchDocuments,
   frontPageSlides: fetchFrontPageSlidesFromDrupal,
-  offices: fetchOffices,
+  offices: officeSearch,
   mainMenu: fetchMainMenu,
   nodes: fetchNodes,
   notification: fetchNotification,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty } from 'lodash'
+import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty, cloneDeep } from 'lodash'
 import { bindActionCreators } from 'redux'
 
 //import styles from './global-search.scss'
@@ -21,210 +21,99 @@ const createSlug = str => {
     .replace(/^-+|-+$/g, '')
 }
 export class SearchTemplate extends React.PureComponent {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     filterValues: {}
-  //   }
-  // }
-
-  componentWillMount() {
-    // const topicQuery = this.props.location.query.topic
-    //if (this.props.necessaryTaxonomies) {
-    // this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
-    //   names: this.props.necessaryTaxonomies.join(',')
-    // })
-    //}
-    // if (this.props.type === 'courses' && topicQuery) {
-    //   this.setState({ filterValues: { businessStage: topicQuery } })
-    //   return this.getContent({ businessStage: topicQuery })
-    // }
-    // return this.getContent(this.state.filterValues)
+  constructor() {
+    super()
+    this.state = {
+      searchParams: {},
+      results: []
+    }
   }
 
-  // getContent(filters) {
-  //   this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, filters)
-  // }
+  onChange(propName, value) {
+    /// console.log(field,value)
+    this.setState(prevState => {
+      const searchParamsClone = cloneDeep(prevState.searchParams)
+      //to handle the fact that dropdowns return an object instead of one value
+      searchParamsClone[propName] = value.value ? value.value : value
+      return { searchParams: searchParamsClone }
+    })
+  }
 
-  // handleChange(event, selectStateKey) {
-  //   this.handleQueryChange(selectStateKey, event.value)
-  // }
+  generateQuery() {
+    //const queryParams = this.props.location.query
+    const { searchParams } = this.state
+    const queryTermArray = []
+    for (const paramName in searchParams) {
+      if (searchParams.hasOwnProperty(paramName)) {
+        const value = searchParams[paramName]
+        if (value && value !== 'All') {
+          queryTermArray.push(`${paramName}=${value}`)
+        }
+      }
+    }
 
-  // handleQueryChange(field, value) {
-  //   if (field !== 'searchTerm') {
-  //     // Log Analytic Event, but not for search term
-  //     this.fireDocumentationLookupEvent(`${field}: ${value}`)
-  //   }
-  //   const newQueryFieldValue = {}
-  //   newQueryFieldValue[field] = value
-  //   const currentQuery = this.state.filterValues
-  //   const newQuery = assign({}, currentQuery, newQueryFieldValue)
-  //   this.setState({ filterValues: newQuery })
-  // }
+    let search = ''
+    if (queryTermArray.length) {
+      search += `?${queryTermArray.join('&')}`
+    }
+    console.log('SEARCHURL!!!!', search)
+    //   let query
 
-  // fireDocumentationLookupEvent(action, value = null) {
-  //   this.fireEvent('course-topic-lookup', action, value)
-  // }
+    //   if (
+    //     this.props.type === 'courses' &&
+    //     queryParams.topic &&
+    //     this.props.taxonomies.indexOf(queryParams.topic) >= 0
+    //   ) {
+    //     this.setState({ filterValues: { businessStage: queryParams.topic } })
+    //     query = { businessStage: queryParams.topic }
+    //   } else if (this.props.taxonomies.indexOf(queryParams.topic) < 0) {
+    //     query = this.state.filterValues
+    //   }
 
-  // fireEvent(category, action, value) {
-  //   logEvent({
-  //     category: category,
-  //     action: action,
-  //     label: window.location.pathname,
-  //     value: value
-  //   })
-  // }
+    //   browserHistory.push({
+    //     pathname: `/course/`,
+    //     search: `?topic=${query.businessStage}`
+    //   })
+    return ''
+  }
 
-  // renderSearchInput() {
-  //   const { searchInputProps } = this.props;
-  //   //searchInputProps.value = this.props.queryState.searchTerm
-  //   //searchInputProps.onKeyUp =
-  //   //searchInputProps.onChange =
-
-  //   return (
-  //     <div className={styles.searchBox}>
-  //       <TextInput {...searchInputProps} />
-  //       <div className={styles.searchIcon}>
-  //         <SearchIcon aria-hidden="true" />
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
-  // renderMultiSelects(taxonomies) {
-  //   const _multiselects = taxonomies.map(taxonomy => {
-  //     let newName
-  //     const { name } = taxonomy
-  //     const id = `${createSlug(name)}-select`
-  //     const stateName = camelCase(name)
-  //     const includesAllInTaxonomy = ['All', ...taxonomy.terms]
-  //     const options = includesAllInTaxonomy.map(entry => {
-  //       return { label: entry, value: entry }
-  //     })
-
-  //     //todo: this may be an issue for actual businessStage taxonomies e..g in office lookup
-  //     if (name === 'businessStage') {
-  //       newName = 'courseTopic'
-  //     }
-
-  //     const _ms = {
-  //       id: id,
-  //       onChange: event => {
-  //         this.handleChange(event, stateName)
-  //       },
-  //       name: id,
-  //       label: startCase(newName || name),
-  //       value: this.state.filterValues[name] || 'All',
-  //       options: options
-  //     }
-
-  //     return _ms
-  //   })
-
-  //   return _multiselects.map((multiSelectProps, index) => {
-  //     const returnNull = () => {
-  //       return null
-  //     }
-
-  //     let multiSelectStyle = styles.multiSelect
-  //     if (this.props.type === 'courses') {
-  //       multiSelectStyle = styles.courseMultiSelect
-  //     }
-
-  //     return (
-  //       <div className={multiSelectStyle} key={index}>
-  //         <MultiSelect
-  //           {...multiSelectProps}
-  //           onBlur={returnNull}
-  //           onFocus={returnNull}
-  //           validationState=""
-  //           errorText=""
-  //           autoFocus={false}
-  //           multi={false}
-  //         />
-  //       </div>
-  //     )
-  //   })
-  // }
-
-  // onReset() {
-  //   if (this.props.type === 'courses') {
-  //     this.setState({ filterValues: { businessStage: 'All' } }, () => {
-  //       this.onSubmit()
-  //     })
-  //   }
-  // }
-
-  // onSubmit() {
-  //   const queryParams = this.props.location.query
-  //   let query
-
-  //   if (
-  //     this.props.type === 'courses' &&
-  //     queryParams.topic &&
-  //     this.props.taxonomies.indexOf(queryParams.topic) >= 0
-  //   ) {
-  //     this.setState({ filterValues: { businessStage: queryParams.topic } })
-  //     query = { businessStage: queryParams.topic }
-  //   } else if (this.props.taxonomies.indexOf(queryParams.topic) < 0) {
-  //     query = this.state.filterValues
-  //   }
-
-  //   browserHistory.push({
-  //     pathname: `/course/`,
-  //     search: `?topic=${query.businessStage}`
-  //   })
-
-  //   this.getContent(query)
-  // }
-
-  // renderItems(items) {
-  //   console.log('LS@', this.props.children)
-  //   return (
-  //     <div className={styles.container}>
-  //       {React.cloneElement(React.Children.only(this.props.children), {
-  //         items: items,
-  //         onReset: this.onReset
-  //       })}
-  //     </div>
-  //   )
-  // }
+  onSearch() {
+    const query = this.generateQuery()
+    console.log('search.jsx onsearch', this.props.onSearch)
+    const { searchType } = this.props
+    this.props.actions.fetchContentIfNeeded(searchType, searchType, query)
+  }
 
   render() {
-    console.log('CHILLDRENS', this.props.children)
+    // console.log('CHILLDRENS', this.props.children)
     console.log('PROSPAS', this.props)
+    const { children, items } = this.props
+    const childrenWithProps = React.Children.map(children, child => {
+      return React.cloneElement(child, {
+        items: items,
+        onSearch: this.onSearch.bind(this),
+        onFieldChange: this.onChange.bind(this)
+      })
+    })
 
-    return (
-      <div>
-        {this.props.children}
-        {this.props.items && <div>{this.renderItems(this.props.items)}</div>}
-      </div>
-    )
+    return <div>{childrenWithProps}</div>
   }
 }
 
 SearchTemplate.propTypes = {
+  searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
-  getResults: PropTypes.func.isRequired,
-  necessaryTaxonomies: PropTypes.array,
-  taxonomies: PropTypes.array,
   items: PropTypes.array,
-  location: PropTypes.string,
-  actions: PropTypes.any
-  // text: React.PropTypes.string.isRequired,
-  // target: React.PropTypes.string.isRequired,
-  // title: React.PropTypes.string.isRequired,
-  // image: React.PropTypes.string.isRequired
+  location: PropTypes.string
 }
 
 SearchTemplate.defaultProps = {
-  getResults: () => {}
+  items: []
 }
 
 function mapReduxStateToProps(reduxState, props) {
   return {
-    taxonomies: reduxState.contentReducer.taxonomies,
-    items: reduxState.contentReducer[props.type],
+    items: reduxState.contentReducer[props.searchType],
     location: props.location
   }
 }

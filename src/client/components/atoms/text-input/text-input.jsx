@@ -4,6 +4,11 @@ import styles from './text-input.scss'
 import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
 
 class TextInput extends React.Component {
+  onChange(event) {
+    if (this.props.onChange) {
+      this.props.onChange(event.target.value)
+    }
+  }
   iconValidation(validationState) {
     if (this.props.showSuccessIcon && validationState == 'success') {
       return <SuccessIcon aria-hidden="true" />
@@ -27,7 +32,6 @@ class TextInput extends React.Component {
     const {
       label,
       hidden,
-      onChange,
       id,
       validationState,
       errorText,
@@ -58,7 +62,7 @@ class TextInput extends React.Component {
             className={`${this.inputValidation(validationState)} ${
               showSearchIcon ? styles.searchIconPadding : ''
             }`}
-            onChange={onChange}
+            onChange={this.onChange.bind(this)}
           />
           {showSearchIcon ? (
             <div className={styles.searchIcon}>

@@ -5,12 +5,11 @@ import styles from './primary-search-bar.scss'
 import { ApplyButton, SearchIcon } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
-  onFieldChange(newValue) {
+  onFieldChange(fieldName, value) {
+    console.log(fieldName, value)
     if (this.props.onFieldChange) {
-      this.props.onFieldChange()
+      this.props.onFieldChange(fieldName, value)
     }
-
-    console.log('newvalue', newValue)
   }
 
   onSearch() {
@@ -22,9 +21,12 @@ export class PrimarySearchBar extends React.PureComponent {
 
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
-      console.log('CHILD', child)
-      const clonedChild = React.cloneElement(child, { onChange: this.onFieldChange.bind(this) })
-      console.log('CLONED CHILD', clonedChild)
+      const clonedChild = React.cloneElement(child, {
+        onChange: value => {
+          this.onFieldChange.bind(this)
+          this.onFieldChange(child.props.id, value)
+        }
+      })
       return clonedChild
     })
     return (
