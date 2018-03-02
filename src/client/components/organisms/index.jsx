@@ -11,10 +11,9 @@ import DocumentCardCollection from './document-card-collection/document-card-col
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
 import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
 import FederalContractingTileCollection from './federal-contracting-tile-collection/federal-contracting-tile-collection.jsx'
-import FrontPageHero from './front-page-hero/front-page-hero.jsx'
 import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
-import Hero from './hero/hero.jsx'
 import GlobalSearch from './global-search/global-search.jsx'
+import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
@@ -42,7 +41,7 @@ import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
 
 // homepage organisms
 import Blog from './homepage/blog/blog.jsx'
-import FrontPageLady from './homepage/front-page-lady/front-page-lady.jsx'
+import FrontPageHero from '../templates/homepage/front-page-hero/front-page-hero.jsx'
 import HappeningNow from './homepage/happening-now/happening-now.jsx'
 
 // lender match organisms
@@ -85,10 +84,9 @@ export {
   DropdownMenu,
   ForPartnersTileCollection,
   FederalContractingTileCollection,
-  FrontPageHero,
   FundingProgramsTileCollection,
-  Hero,
   GlobalSearch,
+  Hero,
   Lookup,
   ModalController,
   NotificationBar,
@@ -114,7 +112,7 @@ export {
 export { Footer, Header, MobileNav }
 
 // homepage organisms
-export { Blog, FrontPageLady, HappeningNow }
+export { Blog, FrontPageHero, HappeningNow }
 
 // lender match organisms
 export {
