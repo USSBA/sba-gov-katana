@@ -29,17 +29,18 @@ export class PrimarySearchBar extends React.PureComponent {
       })
       return clonedChild
     })
+    const { id } = this.props
     return (
-      <div>
+      <div id={id}>
         <div className={styles.banner}>
-          <h2 id="primary-search-bar-title" className={styles.header}>
+          <h2 id={`${id ? id : 'primary-search-bar'}-title`} className={styles.header}>
             {this.props.title}
           </h2>
           <div>
             {childrenWithProps}
             <div className={styles.applyButton}>
               <ApplyButton
-                id="primary-search-bar-search-button"
+                id={`${id ? id : 'primary-search-bar'}-search-button`}
                 submit={this.onSearch.bind(this)}
                 text={this.props.searchButtonText}
               />
@@ -55,14 +56,16 @@ PrimarySearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
   onFieldChange: PropTypes.func.isRequired,
   searchButtonText: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  id: PropTypes.string
 }
 
 PrimarySearchBar.defaultProps = {
   onSearch: () => {},
   onFieldChange: () => {},
   searchButtonText: 'Search',
-  title: 'Search'
+  title: 'Search',
+  id: null
 }
 
 export default PrimarySearchBar

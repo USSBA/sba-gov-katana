@@ -5,26 +5,35 @@ import PropTypes from 'prop-types'
 
 class Results extends React.PureComponent {
   render() {
-    const { children, id } = this.props
+    const { children, id, resultId } = this.props
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
-        return React.cloneElement(child, { item: item, id: index.toString() })
+        return React.cloneElement(child, {
+          item: item,
+          id: `${resultId}-${index.toString()}`
+        })
       })
       return mappedChildren
     })
 
-    return <div className={styles.container}>{childrenWithProps}</div>
+    return (
+      <div id={id} className={styles.container}>
+        {childrenWithProps}
+      </div>
+    )
   }
 }
 
 Results.defaultProps = {
   items: [],
-  id: 'result'
+  id: null,
+  resultId: 'result'
 }
 
 Results.propTypes = {
   items: PropTypes.array,
-  id: PropTypes.string //.isRequired
+  id: PropTypes.string, //.isRequired,
+  resultId: PropTypes.string
 }
 
 export default Results

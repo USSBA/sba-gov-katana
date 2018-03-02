@@ -24,13 +24,17 @@ export class SecondarySearchBar extends React.PureComponent {
       const clonedChild = React.cloneElement(child, {
         onChange: value => {
           this.onFieldChange.bind(this)
-          this.onFieldChange(child.props.id, value)
+          this.onFieldChange(child.props.queryParamName, value)
         },
         labelStyle: styles.inlineLabel
       })
       return clonedChild
     })
-    return <div className={styles.container}>{childrenWithProps}</div>
+    return (
+      <div id={this.props.id} className={styles.container}>
+        {childrenWithProps}
+      </div>
+    )
   }
 }
 
@@ -38,14 +42,16 @@ SecondarySearchBar.propTypes = {
   onSearch: PropTypes.func.isRequired,
   onFieldChange: PropTypes.func.isRequired,
   searchButtonText: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  id: PropTypes.string
 }
 
 SecondarySearchBar.defaultProps = {
   onSearch: () => {},
   onFieldChange: () => {},
   searchButtonText: 'Search',
-  title: 'Search'
+  title: 'Search',
+  id: null
 }
 
 export default SecondarySearchBar

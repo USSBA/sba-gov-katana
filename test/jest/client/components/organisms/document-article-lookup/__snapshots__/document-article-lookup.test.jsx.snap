@@ -189,7 +189,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       <div
         className="applyButton"
       >
-        <div>
+        <div
+          id={null}
+        >
           <button
             autoFocus={false}
             className="SmallInverseSecondaryButton applyButton "

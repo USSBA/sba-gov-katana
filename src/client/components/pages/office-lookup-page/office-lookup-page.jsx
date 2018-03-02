@@ -68,7 +68,7 @@ class OfficeLookupPage extends React.Component {
     const officeTaxonomy = this.getTaxonomy('officeType')
     return (
       <SearchTemplate searchType="offices">
-        <PrimarySearchBar title="Find local assistance">
+        <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
           <TextInput
             id="search"
             className={style.search}
@@ -88,9 +88,9 @@ class OfficeLookupPage extends React.Component {
           /> */}
         </PrimarySearchBar>
         {/*Uncomment for the secondary search bar- still needs styling*/}
-        {/* <SecondarySearchBar>
+        {/* <SecondarySearchBar id="office-secondary-search-bar">
           <TaxonomyMultiSelect
-            id="resource-type"
+            queryParamName="office_type"
             taxonomy={officeTaxonomy}
             label="Resource Type:"
             multi={false}
@@ -98,7 +98,7 @@ class OfficeLookupPage extends React.Component {
           />
           <Toggle
             id="allOffices"
-            options={[{ name: 'All Offices', value: true }, { name: 'SBA Offices', value: false }]}
+            options={[{ name: 'All Offices', value: 'All' }, { name: 'SBA Offices', value: 'SBA', icon: '' }]}
           />
         </SecondarySearchBar> */}
         <Results id="office-results">
