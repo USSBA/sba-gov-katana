@@ -5,8 +5,8 @@ import Triangle from 'assets/images/homepage/primary-landing/desktop-corner-grap
 import { LargeInversePrimaryButton } from 'atoms'
 import { eventCategories } from '../../../../services/constants'
 
-import homepageProps from './homepageProps'
-import homepageProps2 from './homepageProps2'
+import homepageProps from './homepageProps.json'
+import homepageProps2 from './homepageProps2.json'
 
 class FrontPageHero extends React.Component {
   render() {
