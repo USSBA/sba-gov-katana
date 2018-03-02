@@ -2,8 +2,15 @@
 @include theme(byzantine, '.LargeInversePrimaryButton', #fff, $byzantine, #fff);
 @include theme(money-green, '.LargeInversePrimaryButton', #fff, $money-green, #fff);
 @include theme(cobalt-blue, '.LargeInversePrimaryButton', #fff, $cobalt-blue, #fff);
+@include grid-media($sba-grid-small) {
+  @include theme(sba-blue-dark, '.LargeInversePrimaryButton', #fff, $sba-blue, $sba-blue);
+}
+@include grid-media($sba-grid-medium) {
+  @include theme(sba-blue-dark, '.LargeInversePrimaryButton', $sba-blue, #fff, $sba-blue);
+}
 
 @include theme-hover(sba-blue, '.LargeInversePrimaryButton', $sba-blue-lightest, $sba-blue, $sba-blue-lightest);
 @include theme-hover(byzantine, '.LargeInversePrimaryButton', $byzantine-lightest, $byzantine, $byzantine-lightest);
 @include theme-hover(money-green, '.LargeInversePrimaryButton', $money-green-lightest, $money-green, $money-green-lightest);
 @include theme-hover(cobalt-blue, '.LargeInversePrimaryButton', $cobalt-blue-lightest, $cobalt-blue, $cobalt-blue-lightest);
+@include theme-hover(sba-blue-dark, '.LargeInversePrimaryButton', $sba-blue-lightest, $sba-blue, $sba-blue-lightest);

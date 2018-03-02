@@ -2,21 +2,21 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
 
-import { FrontPageLady } from 'organisms'
+import { FrontPageHero } from 'organisms'
 
-describe('front page lady', () => {
-  test('renders correctly', () => {
-    const tree = renderer.create(<FrontPageLady />).toJSON()
+describe('Front Page Hero', () => {
+  test('should render correctly', () => {
+    const tree = renderer.create(<FrontPageHero />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   test('callout button renders correct event config', () => {
     const eventConfig = {
-      category: 'Front-Page-Lady',
-      action: "Click: LET'S GO"
+      category: 'Front-Page-Hero',
+      action: 'Click: See the guide'
     }
 
-    const component = shallow(<FrontPageLady />)
+    const component = shallow(<FrontPageHero />)
     expect(component.find('LargeInversePrimaryButton').props().eventConfig).toEqual(eventConfig)
   })
 })

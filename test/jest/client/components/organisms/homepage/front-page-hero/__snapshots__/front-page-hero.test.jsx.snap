@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Front Page Hero should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="imageContainer"
+  >
+    <img
+      alt="Start and grow your business"
+      className="heroLarge"
+      src="http://kevin-content.sba.fun/sites/default/files/2018-02/homepage-lady-large.jpg"
+    />
+    <img
+      alt="Start and grow your business"
+      className="heroMedium"
+      src="http://kevin-content.sba.fun/sites/default/files/2018-02/homepage-lady-medium.jpg"
+    />
+    <img
+      alt="Start and grow your business"
+      className="heroSmall"
+      src="http://kevin-content.sba.fun/sites/default/files/2018-02/homepage-lady-small.jpg"
+    />
+  </div>
+  <div
+    className="boxContainer"
+  >
+    <div
+      className="box"
+    >
+      <div
+        className="title"
+      >
+        Start and grow your business
+      </div>
+      <div
+        className="text"
+      >
+        Want to be an entrepreneur? Learn how to get started on your business in 10 steps.
+      </div>
+      <button
+        autoFocus={false}
+        className="LargeInversePrimaryButton  "
+        disabled={undefined}
+        formTarget="_self"
+        id="hero-button"
+        onKeyPress={[Function]}
+        onTouchTap={[Function]}
+        tabIndex="0"
+      >
+        See the guide
+      </button>
+    </div>
+  </div>
+</div>
+`;
