@@ -82,7 +82,8 @@ export class SearchTemplate extends React.PureComponent {
     const query = this.generateQuery()
     console.log('search.jsx onsearch', this.props.onSearch)
     const { searchType } = this.props
-    this.props.actions.fetchContentIfNeeded(searchType, searchType, query)
+    const { searchParams } = this.state
+    this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
   }
 
   render() {

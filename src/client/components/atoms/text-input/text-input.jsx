@@ -41,6 +41,7 @@ class TextInput extends React.Component {
       showErrorIcon,
       labelStyle,
       className,
+      queryParamName,
       ...rest
     } = this.props
     const validationIcon = this.iconValidation(validationState)
@@ -83,7 +84,8 @@ class TextInput extends React.Component {
 
 TextInput.defaultProps = {
   showSuccessIcon: true,
-  showErrorIcon: false
+  showErrorIcon: false,
+  id: null
 }
 
 export default TextInput

@@ -24,7 +24,7 @@ class OfficeResult extends React.PureComponent {
             city={item.location_city[0]}
             state={item.location_state[0]}
             /*todo: fix zipcode once not null from cloudsearch*/
-            zipCode={item.location_zipcode ? item.location_zipcode[0] : '21222'}
+            zipCode={item.location_zipcode ? item.location_zipcode[0] : '-'}
           />
           {item.location_phone_number ? (
             <PhoneNumber id={`office-phone-${id}`} phoneNumber={item.location_phone_number[0]} />

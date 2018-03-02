@@ -71,6 +71,7 @@ class OfficeLookupPage extends React.Component {
         <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
           <TextInput
             id="search"
+            queryParamName="term"
             className={style.search}
             label="Find"
             placeholder="Counseling, training, mentoring..."
@@ -81,6 +82,7 @@ class OfficeLookupPage extends React.Component {
           {/*           
           <TextInput
             id="zip"
+            queryParamName="location_zipcode"
             className={style.zip}
             label="Near"
             placeholder="Zip Code"
