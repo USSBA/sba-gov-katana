@@ -9,9 +9,9 @@ const csd = new aws.CloudSearchDomain({
 function officeSearch(req, res) {
   //todo: there will need to be logic to map out the query string to the correct cloudsearch params
   const { term, pageSize, start } = req
-
-  const fixedTerm = term.replace(/%20/g, ' ')
-
+  const fixedTerm = term ? term.replace(/%20/g, ' ') : 'office'
+  const defaultPageSize = 20
+  const defaultStart = 0
   const params = {
     query: fixedTerm /* required */,
     //cursor: 'STRING_VALUE',
@@ -23,62 +23,58 @@ function officeSearch(req, res) {
     //queryOptions: 'STRING_VALUE',
     //queryParser: 'simple | structured | lucene | dismax',
     //return: 'STRING_VALUE',
-    size: pageSize,
+    size: pageSize | defaultPageSize,
     //sort: 'STRING_VALUE',
-    start: start
+    start: start | defaultStart
   }
 
   return new Promise((resolve, reject) => {
-    // csd.search(params, function(err, data) {
-    //   if (err) {
-    //     // an error occurred
+    csd.search(params, function(err, data) {
+      if (err) {
+        // an error occurred
 
-    //     console.log(err, err.stack)
+        console.log(err, err.stack)
 
-    //     reject(err)
-    //   } else {
-    //     // successful response
+        reject(err)
+      } else {
+        // successful response
 
-    //     console.log(data)
+        console.log(data)
 
-    //     const result = data
+        const result = data
 
-    //     if (result.hits.hit.length === 0) {
-    //       result.hasNoResults = true
-    //     }
-
-    //     resolve(JSON.stringify(data))
-    //   }
-    // })
-    const results = [
-      {
-        location: [
-          {
-            type: 'location',
-            city: 'Columbia',
-            email: 'mce@hceda.org',
-            fax: null,
-            hoursOfOperation: 'Monday through Friday from 9 a.m. to 5 p.m.',
-            name: 'Maryland Center for Entrepreneurship',
-            phoneNumber: '410-313-6550',
-            state: 'MD',
-            streetAddress: '9250 Bendix Road',
-            zipCode: 21045
-          }
-        ],
-        officeType: 'Startup accelerator',
-        relatedDisaster: {},
-        summary: {},
-        website: null,
-        type: 'office',
-        title: 'Accelerator for the Commercialization of Technology (ACT)',
-        id: 5667,
-        updated: 1512767105,
-        created: 1511914016
+        resolve(result.hits.hit)
       }
-    ]
+    })
+    // const results = [
+    //   {
+    //     location: [
+    //       {
+    //         type: 'location',
+    //         city: 'Columbia',
+    //         email: 'mce@hceda.org',
+    //         fax: null,
+    //         hoursOfOperation: 'Monday through Friday from 9 a.m. to 5 p.m.',
+    //         name: 'Maryland Center for Entrepreneurship',
+    //         phoneNumber: '410-313-6550',
+    //         state: 'MD',
+    //         streetAddress: '9250 Bendix Road',
+    //         zipCode: 21045
+    //       }
+    //     ],
+    //     officeType: 'Startup accelerator',
+    //     relatedDisaster: {},
+    //     summary: {},
+    //     website: null,
+    //     type: 'office',
+    //     title: 'Accelerator for the Commercialization of Technology (ACT)',
+    //     id: 5667,
+    //     updated: 1512767105,
+    //     created: 1511914016
+    //   }
+    // ]
 
-    resolve(JSON.stringify(results))
+    // resolve(JSON.stringify(results))
   })
 }
 

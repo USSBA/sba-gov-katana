@@ -33,8 +33,7 @@ export class SearchTemplate extends React.PureComponent {
     /// console.log(field,value)
     this.setState(prevState => {
       const searchParamsClone = cloneDeep(prevState.searchParams)
-      //to handle the fact that dropdowns return an object instead of one value
-      searchParamsClone[propName] = value.value ? value.value : value
+      searchParamsClone[propName] = value
       return { searchParams: searchParamsClone }
     })
   }
@@ -45,7 +44,9 @@ export class SearchTemplate extends React.PureComponent {
     const queryTermArray = []
     for (const paramName in searchParams) {
       if (searchParams.hasOwnProperty(paramName)) {
-        const value = searchParams[paramName]
+        let value = searchParams[paramName]
+        //to handle the fact that dropdowns return an object instead of one value
+        value = value.value ? value.value : value
         if (value && value !== 'All') {
           queryTermArray.push(`${paramName}=${value}`)
         }
@@ -92,7 +93,8 @@ export class SearchTemplate extends React.PureComponent {
       return React.cloneElement(child, {
         items: items,
         onSearch: this.onSearch.bind(this),
-        onFieldChange: this.onChange.bind(this)
+        onFieldChange: this.onChange.bind(this),
+        fieldValues: this.state.searchParams
       })
     })
 

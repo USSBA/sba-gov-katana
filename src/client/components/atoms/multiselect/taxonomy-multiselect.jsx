@@ -25,8 +25,8 @@ class TaxonomyMultiSelect extends React.Component {
     const multiselectProps = {
       id: id,
       name: id,
-      value: this.props.filterValues[name] || 'All',
-      options: options
+      options: options,
+      value: options.length ? options[0].value : ''
     }
 
     return multiselectProps

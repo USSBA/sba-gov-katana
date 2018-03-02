@@ -66,7 +66,6 @@ class OfficeLookupPage extends React.Component {
   }
   render() {
     const officeTaxonomy = this.getTaxonomy('officeType')
-    console.log('OFFICELOOKP', officeTaxonomy)
     return (
       <SearchTemplate searchType="offices">
         <PrimarySearchBar title="Find local assistance">
@@ -78,15 +77,18 @@ class OfficeLookupPage extends React.Component {
             validationState={''}
             showSearchIcon={true}
           />
+          {/*Uncomment for the zip search field*/}
+          {/*           
           <TextInput
             id="zip"
             className={style.zip}
             label="Near"
             placeholder="Zip Code"
             validationState={''}
-          />
+          /> */}
         </PrimarySearchBar>
-        <SecondarySearchBar>
+        {/*Uncomment for the secondary search bar- still needs styling*/}
+        {/* <SecondarySearchBar>
           <TaxonomyMultiSelect
             id="resource-type"
             taxonomy={officeTaxonomy}
@@ -98,7 +100,7 @@ class OfficeLookupPage extends React.Component {
             id="allOffices"
             options={[{ name: 'All Offices', value: true }, { name: 'SBA Offices', value: false }]}
           />
-        </SecondarySearchBar>
+        </SecondarySearchBar> */}
         <Results id="office-results">
           <OfficeResult />
         </Results>
