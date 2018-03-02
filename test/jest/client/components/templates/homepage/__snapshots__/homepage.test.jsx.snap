@@ -14,7 +14,7 @@ ShallowWrapper {
     <div
         className="section"
     >
-        <FrontPageLady />
+        <FrontPageHero />
     </div>
     <div
         className="sectionWithPadding"
@@ -30,85 +30,6 @@ ShallowWrapper {
         <Connect(HappeningNow) />
     </div>
     <div
-        className="section"
-    >
-        <FrontPageHero
-            color="purple"
-            image="assets/images/homepage/start-image.jpg"
-            imageAlt="Start your own business."
-            links={
-                Array [
-                    Object {
-                      "link": "/starting-business/how-start-business/10-steps-starting-business",
-                      "title": "10 steps to get started",
-                    },
-                    Object {
-                      "link": "/tools/local-assistance#locations-page",
-                      "title": "Find local mentoring and support",
-                    },
-                    Object {
-                      "link": "/tools/business-plan/1?from_mobile=true",
-                      "title": "Create a business plan",
-                    },
-                  ]
-            }
-            title="Start your business."
-        />
-    </div>
-    <div
-        className="section"
-    >
-        <FrontPageHero
-            color="green"
-            image="assets/images/homepage/finance.jpg"
-            imageAlt="Finance your business."
-            links={
-                Array [
-                    Object {
-                      "link": "/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow",
-                      "title": "What SBA offers",
-                    },
-                    Object {
-                      "link": "/loans-grants/see-what-sba-offers/sba-loan-programs",
-                      "title": "Loan programs",
-                    },
-                    Object {
-                      "link": "/lendermatch",
-                      "title": "Connect with SBA lenders",
-                    },
-                  ]
-            }
-            reverse={true}
-            title="Finance your business."
-        />
-    </div>
-    <div
-        className="section"
-    >
-        <FrontPageHero
-            color="blue"
-            image="assets/images/homepage/contract.jpg"
-            imageAlt="Sell to the government."
-            links={
-                Array [
-                    Object {
-                      "link": "/contracting/getting-started-contractor",
-                      "title": "Is government contracting for me?",
-                    },
-                    Object {
-                      "link": "/contracting/resources-small-businesses/government-contracting-classroom",
-                      "title": "Contracting classroom",
-                    },
-                    Object {
-                      "link": "/size-standards",
-                      "title": "Qualify for government contracts",
-                    },
-                  ]
-            }
-            title="Sell to the government."
-        />
-    </div>
-    <div
         className="sectionWithPadding last"
     >
         <Connect(Blog) />
@@ -121,7 +42,7 @@ ShallowWrapper {
       <div
             className="section"
       >
-            <FrontPageLady />
+            <FrontPageHero />
       </div>
       <div
             className="sectionWithPadding"
@@ -135,85 +56,6 @@ ShallowWrapper {
                   uppercaseFirstWord={false}
             />
             <Connect(HappeningNow) />
-      </div>
-      <div
-            className="section"
-      >
-            <FrontPageHero
-                  color="purple"
-                  image="assets/images/homepage/start-image.jpg"
-                  imageAlt="Start your own business."
-                  links={
-                        Array [
-                              Object {
-                                "link": "/starting-business/how-start-business/10-steps-starting-business",
-                                "title": "10 steps to get started",
-                              },
-                              Object {
-                                "link": "/tools/local-assistance#locations-page",
-                                "title": "Find local mentoring and support",
-                              },
-                              Object {
-                                "link": "/tools/business-plan/1?from_mobile=true",
-                                "title": "Create a business plan",
-                              },
-                            ]
-                  }
-                  title="Start your business."
-            />
-      </div>
-      <div
-            className="section"
-      >
-            <FrontPageHero
-                  color="green"
-                  image="assets/images/homepage/finance.jpg"
-                  imageAlt="Finance your business."
-                  links={
-                        Array [
-                              Object {
-                                "link": "/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow",
-                                "title": "What SBA offers",
-                              },
-                              Object {
-                                "link": "/loans-grants/see-what-sba-offers/sba-loan-programs",
-                                "title": "Loan programs",
-                              },
-                              Object {
-                                "link": "/lendermatch",
-                                "title": "Connect with SBA lenders",
-                              },
-                            ]
-                  }
-                  reverse={true}
-                  title="Finance your business."
-            />
-      </div>
-      <div
-            className="section"
-      >
-            <FrontPageHero
-                  color="blue"
-                  image="assets/images/homepage/contract.jpg"
-                  imageAlt="Sell to the government."
-                  links={
-                        Array [
-                              Object {
-                                "link": "/contracting/getting-started-contractor",
-                                "title": "Is government contracting for me?",
-                              },
-                              Object {
-                                "link": "/contracting/resources-small-businesses/government-contracting-classroom",
-                                "title": "Contracting classroom",
-                              },
-                              Object {
-                                "link": "/size-standards",
-                                "title": "Qualify for government contracts",
-                              },
-                            ]
-                  }
-                  title="Sell to the government."
-            />
       </div>
       <div
             className="sectionWithPadding last"
@@ -272,7 +114,7 @@ ShallowWrapper {
           <div
                     className="section"
           >
-                    <FrontPageLady />
+                    <FrontPageHero />
           </div>
           <div
                     className="sectionWithPadding"
@@ -286,85 +128,6 @@ ShallowWrapper {
                               uppercaseFirstWord={false}
                     />
                     <Connect(HappeningNow) />
-          </div>
-          <div
-                    className="section"
-          >
-                    <FrontPageHero
-                              color="purple"
-                              image="assets/images/homepage/start-image.jpg"
-                              imageAlt="Start your own business."
-                              links={
-                                        Array [
-                                                  Object {
-                                                    "link": "/starting-business/how-start-business/10-steps-starting-business",
-                                                    "title": "10 steps to get started",
-                                                  },
-                                                  Object {
-                                                    "link": "/tools/local-assistance#locations-page",
-                                                    "title": "Find local mentoring and support",
-                                                  },
-                                                  Object {
-                                                    "link": "/tools/business-plan/1?from_mobile=true",
-                                                    "title": "Create a business plan",
-                                                  },
-                                                ]
-                              }
-                              title="Start your business."
-                    />
-          </div>
-          <div
-                    className="section"
-          >
-                    <FrontPageHero
-                              color="green"
-                              image="assets/images/homepage/finance.jpg"
-                              imageAlt="Finance your business."
-                              links={
-                                        Array [
-                                                  Object {
-                                                    "link": "/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow",
-                                                    "title": "What SBA offers",
-                                                  },
-                                                  Object {
-                                                    "link": "/loans-grants/see-what-sba-offers/sba-loan-programs",
-                                                    "title": "Loan programs",
-                                                  },
-                                                  Object {
-                                                    "link": "/lendermatch",
-                                                    "title": "Connect with SBA lenders",
-                                                  },
-                                                ]
-                              }
-                              reverse={true}
-                              title="Finance your business."
-                    />
-          </div>
-          <div
-                    className="section"
-          >
-                    <FrontPageHero
-                              color="blue"
-                              image="assets/images/homepage/contract.jpg"
-                              imageAlt="Sell to the government."
-                              links={
-                                        Array [
-                                                  Object {
-                                                    "link": "/contracting/getting-started-contractor",
-                                                    "title": "Is government contracting for me?",
-                                                  },
-                                                  Object {
-                                                    "link": "/contracting/resources-small-businesses/government-contracting-classroom",
-                                                    "title": "Contracting classroom",
-                                                  },
-                                                  Object {
-                                                    "link": "/size-standards",
-                                                    "title": "Qualify for government contracts",
-                                                  },
-                                                ]
-                              }
-                              title="Sell to the government."
-                    />
           </div>
           <div
                     className="sectionWithPadding last"
@@ -379,7 +142,7 @@ ShallowWrapper {
           <div
                     className="section"
           >
-                    <FrontPageLady />
+                    <FrontPageHero />
           </div>
           <div
                     className="sectionWithPadding"
@@ -393,85 +156,6 @@ ShallowWrapper {
                               uppercaseFirstWord={false}
                     />
                     <Connect(HappeningNow) />
-          </div>
-          <div
-                    className="section"
-          >
-                    <FrontPageHero
-                              color="purple"
-                              image="assets/images/homepage/start-image.jpg"
-                              imageAlt="Start your own business."
-                              links={
-                                        Array [
-                                                  Object {
-                                                    "link": "/starting-business/how-start-business/10-steps-starting-business",
-                                                    "title": "10 steps to get started",
-                                                  },
-                                                  Object {
-                                                    "link": "/tools/local-assistance#locations-page",
-                                                    "title": "Find local mentoring and support",
-                                                  },
-                                                  Object {
-                                                    "link": "/tools/business-plan/1?from_mobile=true",
-                                                    "title": "Create a business plan",
-                                                  },
-                                                ]
-                              }
-                              title="Start your business."
-                    />
-          </div>
-          <div
-                    className="section"
-          >
-                    <FrontPageHero
-                              color="green"
-                              image="assets/images/homepage/finance.jpg"
-                              imageAlt="Finance your business."
-                              links={
-                                        Array [
-                                                  Object {
-                                                    "link": "/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow",
-                                                    "title": "What SBA offers",
-                                                  },
-                                                  Object {
-                                                    "link": "/loans-grants/see-what-sba-offers/sba-loan-programs",
-                                                    "title": "Loan programs",
-                                                  },
-                                                  Object {
-                                                    "link": "/lendermatch",
-                                                    "title": "Connect with SBA lenders",
-                                                  },
-                                                ]
-                              }
-                              reverse={true}
-                              title="Finance your business."
-                    />
-          </div>
-          <div
-                    className="section"
-          >
-                    <FrontPageHero
-                              color="blue"
-                              image="assets/images/homepage/contract.jpg"
-                              imageAlt="Sell to the government."
-                              links={
-                                        Array [
-                                                  Object {
-                                                    "link": "/contracting/getting-started-contractor",
-                                                    "title": "Is government contracting for me?",
-                                                  },
-                                                  Object {
-                                                    "link": "/contracting/resources-small-businesses/government-contracting-classroom",
-                                                    "title": "Contracting classroom",
-                                                  },
-                                                  Object {
-                                                    "link": "/size-standards",
-                                                    "title": "Qualify for government contracts",
-                                                  },
-                                                ]
-                              }
-                              title="Sell to the government."
-                    />
           </div>
           <div
                     className="sectionWithPadding last"
