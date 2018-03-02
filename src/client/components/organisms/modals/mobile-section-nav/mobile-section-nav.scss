@@ -2,13 +2,15 @@ $section-nav-color-map: (
   'sba-blue': $sba-blue-dark,
   'byzantine': $byzantine,
   'money-green': $money-green-dark,
-  'cobalt-blue': $cobalt-blue
+  'cobalt-blue': $cobalt-blue,
+  'sba-blue-dark': $sba-blue-dark
 );
 $section-nav-dark-color-map: (
   'sba-blue': $sba-blue-darkest,
   'byzantine': $byzantine-dark,
   'money-green': $money-green-darkest,
-  'cobalt-blue': $cobalt-blue-dark
+  'cobalt-blue': $cobalt-blue-dark,
+  'sba-blue-dark': $sba-blue-darkest
 );
 
 @each $name, $value in $section-nav-color-map {

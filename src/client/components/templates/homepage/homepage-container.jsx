@@ -10,7 +10,8 @@ class HomepageContainer extends React.Component {
   }
 
   render() {
-    return <Homepage />
+    // the location property no longer needs to be shared with Homepage and MenuTileCollection components once sba-blue-dark becomes the primary color
+    return <Homepage location={this.props.location} />
   }
 }
 

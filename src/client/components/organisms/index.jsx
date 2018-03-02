@@ -31,7 +31,9 @@ import SubMenu from './sub-menu/sub-menu'
 import SuretyLookup from './surety-lookup/surety-lookup'
 import TenStepsSection from './ten-steps-section/ten-steps-section'
 import TextReadMoreSection from './text-readmore-section/text-readmore-section'
+import Tile from './tile-collection/tile.jsx'
 import TileCollection from './tile-collection/tile-collection.jsx'
+import MenuTileCollection from './menu-tile-collection/menu-tile-collection.jsx'
 
 // header-footer organisms
 import Footer from './header-footer/footer/footer.jsx'
@@ -103,7 +105,9 @@ export {
   SuretyLookup,
   TenStepsSection,
   TextReadMoreSection,
-  TileCollection
+  TileCollection,
+  Tile,
+  MenuTileCollection
 }
 
 // header-footer organisms
