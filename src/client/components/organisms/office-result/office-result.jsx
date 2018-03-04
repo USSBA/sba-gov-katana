@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './office-result.scss'
 import { Address, PhoneNumber } from 'molecules'
+import { LargePrimaryButton } from 'atoms'
 import PropTypes from 'prop-types'
 
 class OfficeResult extends React.PureComponent {
@@ -28,6 +29,19 @@ class OfficeResult extends React.PureComponent {
           />
           {item.location_phone_number ? (
             <PhoneNumber id={`office-phone-${id}`} phoneNumber={item.location_phone_number[0]} />
+          ) : null}
+          {item.office_service ? (
+            <div>
+              {' '}
+              Services
+              <div>{item.office_service.join(',')}</div>
+            </div>
+          ) : null}
+
+          {item.office_website ? (
+            <div id={`office-website-button-${id}`}>
+              <LargePrimaryButton url={item.office_website} text="View Website" />
+            </div>
           ) : null}
           <hr />
         </div>
