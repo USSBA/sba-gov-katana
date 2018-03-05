@@ -38,9 +38,9 @@ class OfficeResult extends React.PureComponent {
             </div>
           ) : null}
 
-          {item.office_website ? (
+          {item.office_website && item.office_website.length ? (
             <div id={`office-website-button-${id}`}>
-              <LargePrimaryButton url={item.office_website} text="View Website" />
+              <LargePrimaryButton url={item.office_website[0]} text="View Website" />
             </div>
           ) : null}
           <hr />
