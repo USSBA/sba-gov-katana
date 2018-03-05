@@ -1,0 +1,109 @@
+{
+  "buttons": [{ "url": "/business-guide", "title": "See the guide" }],
+  "hero": {
+    "type": "hero",
+    "caption": "Want to be an entrepreneur? Learn how to get started on your business in 10 steps.",
+    "imageLarge": {
+      "url": "/sites/default/files/2018-02/homepage-lady-large.jpg",
+      "alt": "Start and grow your business",
+      "width": 1920,
+      "height": 768
+    },
+    "imageMedium": {
+      "url": "/sites/default/files/2018-02/homepage-lady-medium.jpg",
+      "alt": "Start and grow your business",
+      "width": 1446,
+      "height": 768
+    },
+    "imageSmall": {
+      "url": "/sites/default/files/2018-02/homepage-lady-small.jpg",
+      "alt": "Start and grow your business",
+      "width": 1149,
+      "height": 1149
+    },
+    "link": {},
+    "title": "Start and grow your business"
+  },
+  "paragraphs": [
+    { "type": "sectionHeader", "text": "Browse business topics" },
+    { "type": "panelMenu", "siteSection": "Business Guide" },
+    { "type": "sectionHeader", "text": "How we help small businesses" },
+    {
+      "type": "cardCollection",
+      "cards": [
+        {
+          "type": "card",
+          "image": {
+            "url": "/sites/default/files/2018-02/counseling2.jpg",
+            "alt": "People in business counseling session",
+            "width": 1000,
+            "height": 667
+          },
+          "link": { "url": "https://www.sba.gov/tools/local-assistance", "title": "Find counselors" },
+          "subtitleText": "Get business advice from our partnering organizations and experts.",
+          "titleText": "Free business counseling"
+        },
+        {
+          "type": "card",
+          "image": {
+            "url": "/sites/default/files/2018-02/handshake.jpg",
+            "alt": "People shaking hands",
+            "width": 1000,
+            "height": 667
+          },
+          "link": { "url": "https://www.sba.gov/funding-programs/loans", "title": "Use Lendermatch" },
+          "subtitleText": "Find an SBA lender near you to help fund your business.",
+          "titleText": "SBA guaranteed business loans"
+        },
+        {
+          "type": "card",
+          "image": {
+            "url": "/sites/default/files/2018-02/disaster2.jpg",
+            "alt": "Rescuing after a disaster",
+            "width": 1000,
+            "height": 667
+          },
+          "link": {
+            "url": "https://www.sba.gov/funding-programs/disaster-assistance",
+            "title": "Apply for assistance"
+          },
+          "subtitleText": "Apply for a low-interest disaster loan to help recover from declared disasters.",
+          "titleText": "Home & business disaster loans"
+        },
+        {
+          "type": "card",
+          "image": {
+            "url": "/sites/default/files/2018-02/contracting.jpg",
+            "alt": "United States Capitol",
+            "width": 1000,
+            "height": 667
+          },
+          "link": { "url": "https://certify.sba.gov/", "title": "Get certified" },
+          "subtitleText": "Qualify to win small business government contracts.",
+          "titleText": "Federal government contracting"
+        }
+      ]
+    },
+    {
+      "style": "Medium",
+      "type": "callToAction",
+      "id": 6136,
+      "headline": "National Small Business Week 2018",
+      "blurb":
+        "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
+      "image": "/sites/default/files/2018-02/counseling2_0.jpg",
+      "imageAlt": "National Small Business Week",
+      "title": "National Small Business Week CTA",
+      "langCode": "en",
+      "btnTitle": "Learn More",
+      "btnUrl": "/nsbw/"
+    }
+  ],
+  "summary":
+    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
+  "type": "homePage",
+  "title": "Small Business Administration",
+  "id": 6134,
+  "updated": 1519417789,
+  "created": 1519329217
+}

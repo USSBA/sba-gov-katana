@@ -1,6 +1,7 @@
 import React from 'react'
 import { FrontPageHero, HappeningNow, Blog, MenuTileCollection } from 'organisms'
 import styles from './homepage.scss'
+import homepageJson from './homepage.json'
 
 class Homepage extends React.Component {
   render() {
@@ -49,7 +50,7 @@ class Homepage extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.section}>
-          <FrontPageHero />
+          <FrontPageHero hero={homepageJson.hero} button={homepageJson.buttons[0]} />
         </div>
         <div className={styles.sectionWithPadding}>
           <MenuTileCollection pathname={this.props.location.pathname} splitTitle />

@@ -10,17 +10,17 @@ exports[`Front Page Hero should render correctly 1`] = `
     <img
       alt="Start and grow your business"
       className="heroLarge"
-      src="http://kevin-content.sba.fun/sites/default/files/2018-02/homepage-lady-large.jpg"
+      src="/largeImage.jpg"
     />
     <img
-      alt="Start and grow your business"
+      alt="medium image"
       className="heroMedium"
-      src="http://kevin-content.sba.fun/sites/default/files/2018-02/homepage-lady-medium.jpg"
+      src="/mediumImage.jpg"
     />
     <img
-      alt="Start and grow your business"
+      alt="small image"
       className="heroSmall"
-      src="http://kevin-content.sba.fun/sites/default/files/2018-02/homepage-lady-small.jpg"
+      src="/smallImage.jpg"
     />
   </div>
   <div
@@ -37,19 +37,19 @@ exports[`Front Page Hero should render correctly 1`] = `
       <div
         className="text"
       >
-        Want to be an entrepreneur? Learn how to get started on your business in 10 steps.
+        Want to be an entrepreneur?
       </div>
       <button
         autoFocus={false}
         className="LargeInversePrimaryButton  "
         disabled={undefined}
         formTarget="_self"
-        id="hero-button"
+        id="frontpage-hero-button"
         onKeyPress={[Function]}
         onTouchTap={[Function]}
         tabIndex="0"
       >
-        See the guide
+        This is a button
       </button>
     </div>
   </div>
