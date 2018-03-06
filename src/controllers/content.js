@@ -41,7 +41,8 @@ const fetchContentTypeFunctions = {
   notification: fetchNotification,
   search: search,
   siteMap: fetchFormattedMenu,
-  taxonomys: fetchTaxonomys
+  taxonomys: fetchTaxonomys,
+  offices
 }
 
 function fetchContentById(req, res) {
