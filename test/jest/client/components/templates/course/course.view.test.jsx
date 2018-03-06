@@ -1,6 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow, mount } from 'enzyme'
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 import CourseView, {
   TableOfContents,

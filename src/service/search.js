@@ -1,7 +1,7 @@
 import config from 'config'
 const aws = require('aws-sdk')
 const csd = new aws.CloudSearchDomain({
-  endpoint: config.get('aws.cloudsearch.endpoint'),
+  endpoint: config.get('aws.cloudsearch.searchEndpoint'),
   region: 'us-east-1',
   apiVersions: '2013-01-01'
 })

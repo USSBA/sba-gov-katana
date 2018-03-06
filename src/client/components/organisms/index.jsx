@@ -17,12 +17,17 @@ import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
+import OfficesLayout from './offices-layout/offices-layout.jsx'
+import OfficeResult from './office-result/office-result.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
 import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
+import PrimarySearchBar from './primary-search-bar/primary-search-bar.jsx'
 import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
 import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
+import Results from './results/results.jsx'
 import SbicLookup from './sbic-lookup/sbic-lookup'
 import SearchBox from './search-box/search-box.jsx'
+import SecondarySearchBar from './secondary-search-bar/secondary-search-bar.jsx'
 import SectionNav from './section-nav/section-nav.jsx'
 import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
@@ -90,12 +95,17 @@ export {
   Lookup,
   ModalController,
   NotificationBar,
+  OfficeResult,
+  OfficesLayout,
   PagingLookup,
   PagingMultiviewLayout,
+  PrimarySearchBar,
   ProgramDetailsCardCollection,
   RelatedDocumentCards,
+  Results,
   SbicLookup,
   SearchBox,
+  SecondarySearchBar,
   SectionNav,
   SizeStandardsTool,
   StyleGrayBackground,
