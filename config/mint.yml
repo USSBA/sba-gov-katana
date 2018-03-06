@@ -25,3 +25,4 @@ cache:
 aws:
   cloudsearch:
     searchEndpoint: 'doc-integration-l3hya3o2kdvr3gpbxb33qznllm.us-east-1.cloudsearch.amazonaws.com'
+    officeEndpoint: 'doc-mint-offices-mjhazqnua7k5nqkxojddfhkrw4.us-east-1.cloudsearch.amazonaws.com'
