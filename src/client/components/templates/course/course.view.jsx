@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import isMobile from 'ismobilejs'
 import _ from 'lodash'
 
 import CourseContent from './course-content'
@@ -104,17 +105,21 @@ const TableOfContents = props => {
 }
 
 const DownloadFlash = props => {
-  return (
-    <div className={styles.downloadFlash + ' download-flash'}>
-      <div className={styles.icon}>
-        <i className="fa fa-exclamation-triangle" />
+  if (!isMobile.any) {
+    return (
+      <div className={styles.downloadFlash + ' download-flash'}>
+        <div className={styles.icon}>
+          <i className="fa fa-exclamation-triangle" />
+        </div>
+        <p>You need to enable Flash to view this course.</p>
+        <a href="https://get.adobe.com/flashplayer/" target="_blank">
+          <SmallSecondaryButton className={styles.button} text="Learn How" />
+        </a>
       </div>
-      <p>You need to enable Flash to view this course.</p>
-      <a href="https://get.adobe.com/flashplayer/" target="_blank">
-        <SmallSecondaryButton className={styles.button} text="Learn How" />
-      </a>
-    </div>
-  )
+    )
+  }
+
+  return null
 }
 
 const Tagcloud = props => {
@@ -232,4 +237,13 @@ CourseView.propTypes = {
 
 export default CourseView
 
-export { Description, TableOfContents, DownloadFlash, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
+export {
+  Description,
+  TableOfContents,
+  DownloadFlash,
+  Tagcloud,
+  Worksheets,
+  RelatedCourses,
+  RelatedArticles,
+  CTA
+}

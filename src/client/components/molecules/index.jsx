@@ -1,3 +1,4 @@
+import Address from './address/address'
 import Breadcrumb from './breadcrumb/breadcrumb'
 import ButtonCta from './button-cta/button-cta'
 import CallToAction from './call-to-action/call-to-action'
@@ -16,6 +17,7 @@ import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
 import NaicsLookup from './naics-lookup/naics-lookup'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
+import PhoneNumber from './phone-number/phone-number'
 import PreviousNextSection from './previous-next/previous-next'
 import QuickLinks from './quick-links/quick-links'
 import ReadMore from './readmore/readmore'
@@ -32,6 +34,7 @@ import TitleBox from './title-box/title-box'
 import TitleSection from './title-section/title-section'
 
 export {
+  Address,
   Breadcrumb,
   ButtonCta,
   CallToAction,
@@ -50,6 +53,7 @@ export {
   NaicsLookup,
   PageLinkGroup,
   Paginator,
+  PhoneNumber,
   PreviousNextSection,
   QuickLinks,
   ReadMore,

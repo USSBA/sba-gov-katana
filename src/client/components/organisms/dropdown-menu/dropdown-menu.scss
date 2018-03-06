@@ -49,11 +49,13 @@
 @include theme(byzantine, '.dropdownMenu', null, $byzantine, null);
 @include theme(money-green, '.dropdownMenu', null, $money-green, null);
 @include theme(cobalt-blue, '.dropdownMenu', null, $cobalt-blue, null);
+@include theme(sba-blue-dark, '.dropdownMenu', null, $sba-blue, null);
 
 @include theme-hover(sba-blue, '.dropdownMenu', null, $sba-blue, null);
 @include theme-hover(byzantine, '.dropdownMenu', null, $byzantine, null);
 @include theme-hover(money-green, '.dropdownMenu', null, $money-green, null);
 @include theme-hover(cobalt-blue, '.dropdownMenu', null, $cobalt-blue, null);
+@include theme-hover(sba-blue-dark, '.dropdownMenu', null, $sba-blue, null);
 
 .skipLink {
   pointer-events: none;
@@ -73,8 +75,10 @@
 @include theme(byzantine, '.skipLink a', null, #fff, null);
 @include theme(money-green, '.skipLink a', null, #fff, null);
 @include theme(cobalt-blue, '.skipLink a', null, #fff, null);
+@include theme(sba-blue-dark, '.skipLink a', null, #fff, null);
 
 @include theme-focus(sba-blue, '.skipLink a', null, $grey-dark, null);
 @include theme-focus(byzantine, '.skipLink a', null, $grey-dark, null);
 @include theme-focus(money-green, '.skipLink a', null, $grey-dark, null);
 @include theme-focus(cobalt-blue, '.skipLink a', null, $grey-dark, null);
+@include theme-focus(sba-blue-dark, '.skipLink a', null, $grey-dark, null);

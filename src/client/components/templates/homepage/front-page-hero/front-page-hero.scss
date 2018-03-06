@@ -1,0 +1,128 @@
+@include grid-media($sba-grid-small) {
+  button {
+    padding: 0.75em 3em;
+  }
+}
+
+.container,
+.imageContainer {
+  width: 100%;
+}
+
+.boxContainer {
+  @include grid-media($sba-grid-small) {
+    visibility: visible;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+    position: relative;
+  }
+}
+
+.heroLarge {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: block !important;
+    width: 100%;
+  }
+}
+
+.heroMedium {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
+}
+
+.heroSmall {
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
+}
+
+.box {
+  @include grid-media($sba-grid-small) {
+    background: $sba-blue;
+    z-index: 0;
+    width: 90vw;
+    height: 80vw;
+    position: relative;
+    top: -29vw;
+    margin-bottom: -29vw;
+    padding: 6.9vw 8.5vw 8.5vw;
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium) {
+    position: relative;
+    @include grid-column(6);
+    padding: 60px 4vw 50px;
+    top: -54vw;
+    margin-left: -8vw;
+    margin-bottom: -43vw;
+  }
+  @include grid-media($sba-grid-large) {
+    position: relative;
+    @include grid-column(8);
+    padding: 60px 4vw 50px;
+    top: -40vw;
+    margin-left: -3vw;
+    margin-bottom: -43vw;
+  }
+}
+
+.title {
+  color: #000000;
+  @include grid-media($sba-grid-small) {
+    color: #fff;
+    font-size: 10vw;
+    font-weight: 900;
+    line-height: 10vw;
+    margin-bottom: 5vw;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 6vw;
+    font-weight: 900;
+    line-height: 6vw;
+    margin-bottom: 2vw;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 6vw;
+    font-weight: 900;
+    line-height: 6vw;
+    margin-bottom: 2vw;
+  }
+}
+
+.text {
+  color: #000000;
+  @include grid-media($sba-grid-small) {
+    color: #fff;
+    font-size: 4.3vw;
+    margin-bottom: 4.3vw;
+    line-height: 6vw;
+    font-weight: 340;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 2.1vw;
+    line-height: 2.8vw;
+    font-weight: 400;
+    margin-bottom: 3vw;
+  }
+}

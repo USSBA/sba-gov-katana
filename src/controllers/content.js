@@ -15,7 +15,7 @@ import {
 import { fetchNotification } from '../service/notification.js'
 import { fetchCourses, fetchCourse } from '../service/courses.js'
 import { search } from '../service/search.js'
-import { offices } from '../service/offices.js'
+import { officeSearch } from '../service/office-search.js'
 import HttpStatus from 'http-status-codes'
 import _ from 'lodash'
 import querystring from 'querystring'
@@ -35,6 +35,7 @@ const fetchContentTypeFunctions = {
   disaster: fetchDisasterFromDrupalDatabase,
   documents: fetchDocuments,
   frontPageSlides: fetchFrontPageSlidesFromDrupal,
+  offices: officeSearch,
   mainMenu: fetchMainMenu,
   nodes: fetchNodes,
   notification: fetchNotification,

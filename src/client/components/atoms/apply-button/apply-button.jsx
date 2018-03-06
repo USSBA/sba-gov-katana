@@ -6,17 +6,27 @@ import { SmallInverseSecondaryButton } from 'atoms'
 class ApplyButton extends React.Component {
   render() {
     return (
-      <div>
+      <div id={this.props.id}>
         <SmallInverseSecondaryButton
           onClick={() => {
             this.props.submit()
           }}
           extraClassName={s.applyButton}
-          text="Apply"
+          text={this.props.text}
         />
       </div>
     )
   }
+}
+
+ApplyButton.defaultProps = {
+  text: 'Apply',
+  id: null
+}
+
+ApplyButton.propTypes = {
+  text: React.PropTypes.string,
+  id: React.PropTypes.string
 }
 
 export default ApplyButton

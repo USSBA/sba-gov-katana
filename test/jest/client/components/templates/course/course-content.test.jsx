@@ -1,48 +1,16 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 
 import CourseContent from 'templates/course/course-content'
+import sharedProps from './course-test-props'
 
-const sharedProps = {
-  isLoaded: true,
-  title: 'How to write a business plan',
-  course: {
-    url: 'https://www.youtube.com/embed/owsfdh4gxyc',
-    worksheets: [
-      {
-        description: 'How to write a business plan checklist',
-        url: '#'
-      }
-    ]
-  },
-  breadcrumbs: [
-    {
-      url: '#',
-      title: 'Learning Center'
-    },
-    {
-      url: '#',
-      title: 'Search results'
-    },
-    {
-      url: '#',
-      title: 'How to write a business plan'
-    }
-  ],
-  readMoreSectionItem: {
-    expandedCopyText: 'expanded text',
-    titleText: 'title text',
-    preview: 'preview text'
-  },
-  readMoreExpanded: true,
-  onToggleStatus: () => {
-    return false
-  }
-}
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 describe('<CourseContent />', () => {
-  const component = shallow(<CourseContent {...sharedProps} />)
+  const component = mount(<CourseContent {...sharedProps} />)
 
   test('initially has a button in an overlay', () => {
     const result = component.find('.course-overlay LargePrimaryButton').length
@@ -58,7 +26,7 @@ describe('<CourseContent />', () => {
     expect(result).toEqual(expected)
   })
 
-  test('when user clicks starts course, iframe is set', () => {
+  test('when user clicks to start the course, iframe is set', () => {
     const expected = 'https://www.youtube.com/embed/owsfdh4gxyc'
     component.find('.course-overlay').simulate('click')
     const result = component.find('iframe').prop('src')

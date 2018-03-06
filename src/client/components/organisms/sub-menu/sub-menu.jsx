@@ -26,7 +26,6 @@ class SubMenu extends React.Component {
   }
 
   setShouldForceTab(bool) {
-    console.log('A:', bool)
     this.setState({
       shouldForceTab: bool
     })
