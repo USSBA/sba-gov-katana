@@ -14,7 +14,7 @@ class MultiSelectBox extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.state.value) {
+    if (this.state.value !== nextProps.value) {
       this.setState({ value: nextProps.value })
     }
   }
