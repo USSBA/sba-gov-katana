@@ -72,7 +72,7 @@
   @include grid-media($sba-grid-medium) {
     position: relative;
     @include grid-column(6);
-    padding: 40px 4vw 50px;
+    padding: 60px 4vw 50px;
     top: -54vw;
     margin-left: -8vw;
     margin-bottom: -43vw;
@@ -80,7 +80,7 @@
   @include grid-media($sba-grid-large) {
     position: relative;
     @include grid-column(8);
-    padding: 40px 4vw 50px;
+    padding: 60px 4vw 50px;
     top: -40vw;
     margin-left: -3vw;
     margin-bottom: -43vw;
