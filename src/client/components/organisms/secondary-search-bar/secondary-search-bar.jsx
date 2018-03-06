@@ -20,8 +20,9 @@ export class SecondarySearchBar extends React.PureComponent {
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
       const clonedChild = React.cloneElement(child, {
-        onChange: value => {
+        onChange: valueOrEvent => {
           this.onFieldChange.bind(this)
+          const value = valueOrEvent.target ? valueOrEvent.target.value : value
           this.onFieldChange(child.props.queryParamName, value)
         },
         labelStyle: styles.inlineLabel

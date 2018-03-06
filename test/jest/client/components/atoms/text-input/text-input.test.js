@@ -30,11 +30,6 @@ test('TextInput', () => {
       onFocus={onFocus}
     />
   )
-  const event = {
-    target: {
-      value: 'Han Solo'
-    }
-  }
-  component.find('input').simulate('change', event)
+  component.find('input').simulate('change', 'Han Solo')
   expect(lastValue).toEqual('Han Solo')
 })
