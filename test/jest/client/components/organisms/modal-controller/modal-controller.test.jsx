@@ -8,6 +8,10 @@ import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-sect
 import LeaveSbaModal from 'organisms/modals/leave-sba-modal/leave-sba-modal.jsx'
 import SbaNewsModal from 'molecules/news-modal/news-modal.jsx'
 
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 const mobileSectionNavProps = {
   modalType: 'MOBILE_SECTION_NAV',
   modalProps: {

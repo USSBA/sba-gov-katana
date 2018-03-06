@@ -15,7 +15,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="searchBox"
       >
         <div
-          className="inputContainer"
+          className="inputContainer "
           hidden={undefined}
           id="document-lookup-text-input-container"
         >
@@ -29,7 +29,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             className="textInputContainer"
           >
             <input
-              className="textInput"
+              className="textInput "
               id="document-lookup-text-input"
               onChange={[Function]}
               onKeyUp={[Function]}
@@ -50,6 +50,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="multiSelect"
       >
         <div
+          className=""
           id="title-select-container"
         >
           <label>
@@ -119,6 +120,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="multiSelect"
       >
         <div
+          className=""
           id="lightsabercolor-select-container"
         >
           <label>
@@ -187,7 +189,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       <div
         className="applyButton"
       >
-        <div>
+        <div
+          id={null}
+        >
           <button
             autoFocus={false}
             className="SmallInverseSecondaryButton applyButton "

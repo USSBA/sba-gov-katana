@@ -1,0 +1,11 @@
+.container {
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 30px 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 20px 28px 15px 28px;
+  }
+}
