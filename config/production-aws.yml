@@ -30,4 +30,4 @@ cache:
   s3BucketName: production-aws-content-sba-gov
 aws:
   cloudsearch:
-    search-endpoint: 'doc-sba-gov-production-vnhuuhtvgjbc2s7ddz42nhmbge.us-east-1.cloudsearch.amazonaws.com'
+    searchEndpoint: 'doc-sba-gov-production-vnhuuhtvgjbc2s7ddz42nhmbge.us-east-1.cloudsearch.amazonaws.com'
