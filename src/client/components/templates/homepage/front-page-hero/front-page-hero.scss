@@ -1,9 +1,12 @@
+@include grid-media($sba-grid-small) {
+  button {
+    padding: 0.75em 3em;
+  }
+}
+
 .container,
 .imageContainer {
   width: 100%;
-  @include grid-media($sba-grid-small) {
-    // height: 160vw;
-  }
 }
 
 .boxContainer {
@@ -17,46 +20,49 @@
   }
 }
 
-.hero {
+.heroLarge {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: block !important;
+    width: 100%;
+  }
+}
+
+.heroMedium {
   @include grid-media($sba-grid-small) {
     display: none;
   }
   @include grid-media($sba-grid-medium) {
     width: 100%;
   }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
 }
 
-.mobileHero {
+.heroSmall {
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
   @include grid-media($sba-grid-medium) {
     display: none;
-    height: 90vw;
   }
-}
-
-.triangle {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  @include grid-media($sba-grid-small) {
-    z-index: -1;
-    width: 25.9vw;
-    height: 25.9vw;
-  }
-  @include grid-media($sba-grid-medium) {
-    width: 11.6vw;
-    height: 11.6vw;
+  @include grid-media($sba-grid-large) {
+    display: none;
   }
 }
 
 .box {
-  background: $sba-blue;
   @include grid-media($sba-grid-small) {
+    background: $sba-blue;
     z-index: 0;
     width: 90vw;
-    height: 90vw;
+    height: 80vw;
     position: relative;
     top: -29vw;
     margin-bottom: -29vw;
@@ -67,38 +73,56 @@
     position: relative;
     @include grid-column(6);
     padding: 40px 4vw 50px;
-    top: -43vw;
+    top: -54vw;
+    margin-left: -8vw;
+    margin-bottom: -43vw;
+  }
+  @include grid-media($sba-grid-large) {
+    position: relative;
+    @include grid-column(8);
+    padding: 40px 4vw 50px;
+    top: -40vw;
+    margin-left: -3vw;
     margin-bottom: -43vw;
   }
 }
 
 .title {
-  color: #ffffff;
+  color: #000000;
   @include grid-media($sba-grid-small) {
-    font-size: 12vw;
+    color: #fff;
+    font-size: 10vw;
     font-weight: 900;
-    line-height: 12vw;
-    margin-bottom: 3vw;
+    line-height: 10vw;
+    margin-bottom: 5vw;
   }
   @include grid-media($sba-grid-medium) {
-    font-size: 5vw;
+    font-size: 6vw;
     font-weight: 900;
-    line-height: 5vw;
-    margin-bottom: 1.4vw;
+    line-height: 6vw;
+    margin-bottom: 2vw;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 6vw;
+    font-weight: 900;
+    line-height: 6vw;
+    margin-bottom: 2vw;
   }
 }
 
 .text {
-  color: #ffffff;
+  color: #000000;
   @include grid-media($sba-grid-small) {
+    color: #fff;
     font-size: 4.3vw;
     margin-bottom: 4.3vw;
     line-height: 6vw;
+    font-weight: 340;
   }
   @include grid-media($sba-grid-medium) {
-    font-size: 1.3vw;
-    line-height: 1.9vw;
-    font-weight: 700;
-    margin-bottom: 2.2vw;
+    font-size: 2.1vw;
+    line-height: 2.8vw;
+    font-weight: 400;
+    margin-bottom: 3vw;
   }
 }
