@@ -88,7 +88,7 @@ class OfficeLookupPage extends React.Component {
           /> */}
         </PrimarySearchBar>
         {/*Uncomment for the secondary search bar- still needs styling*/}
-        <SecondarySearchBar id="office-secondary-search-bar">
+        {/* <SecondarySearchBar id="office-secondary-search-bar">
           <TaxonomyMultiSelect
             queryParamName="office_type"
             taxonomy={officeTaxonomy}
@@ -103,7 +103,7 @@ class OfficeLookupPage extends React.Component {
               { name: 'SBA Offices', value: 'SBA', icon: '' }
             ]}
           />
-        </SecondarySearchBar>
+        </SecondarySearchBar> */}
         <Results id="office-results">
           <OfficeResult />
         </Results>
