@@ -10,6 +10,10 @@ import { mount } from 'enzyme'
 import CourseContent from 'templates/course/course-content'
 import props from './course-test-props'
 
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 describe('<CourseContent /> on mobile', () => {
   const component = mount(<CourseContent {...props} />)
 

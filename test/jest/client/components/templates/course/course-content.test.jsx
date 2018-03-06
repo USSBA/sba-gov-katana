@@ -5,6 +5,10 @@ import { mount, shallow } from 'enzyme'
 import CourseContent from 'templates/course/course-content'
 import sharedProps from './course-test-props'
 
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 describe('<CourseContent />', () => {
   const component = mount(<CourseContent {...sharedProps} />)
 

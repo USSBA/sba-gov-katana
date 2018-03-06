@@ -32,36 +32,6 @@ class OfficeLookupPage extends React.Component {
     return taxonomy
   }
 
-  //todo: replace with actual search service reference
-  onSearch(query) {
-    return [
-      {
-        location: [
-          {
-            type: 'location',
-            city: 'Columbia',
-            email: 'mce@hceda.org',
-            fax: null,
-            hoursOfOperation: 'Monday through Friday from 9 a.m. to 5 p.m.',
-            name: 'Maryland Center for Entrepreneurship',
-            phoneNumber: '410-313-6550',
-            state: 'MD',
-            streetAddress: '9250 Bendix Road',
-            zipCode: 21045
-          }
-        ],
-        officeType: 'Startup accelerator',
-        relatedDisaster: {},
-        summary: {},
-        website: null,
-        type: 'office',
-        title: 'Accelerator for the Commercialization of Technology (ACT)',
-        id: 5667,
-        updated: 1512767105,
-        created: 1511914016
-      }
-    ]
-  }
   render() {
     const officeTaxonomy = this.getTaxonomy('officeType')
     return (
