@@ -8,7 +8,6 @@ class OfficeResult extends React.PureComponent {
   render() {
     const id = this.props.id
     const item = this.props.item.fields
-    console.log('ITEM!!!', this.props.item.fields)
     if (!item) {
       return null
     }

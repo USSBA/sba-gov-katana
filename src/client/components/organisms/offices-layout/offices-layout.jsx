@@ -36,7 +36,6 @@ class OfficesLayout extends React.PureComponent {
 
   render() {
     const { onReset, items } = this.props
-    console.log('LS!!!!', this.props)
 
     return (
       <div className={`card-layout `}>

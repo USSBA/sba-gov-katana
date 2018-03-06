@@ -6,7 +6,6 @@ import { ApplyButton, SearchIcon } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
-    console.log(fieldName, value)
     if (this.props.onFieldChange) {
       this.props.onFieldChange(fieldName, value)
     }
@@ -16,7 +15,6 @@ export class PrimarySearchBar extends React.PureComponent {
     if (this.props.onSearch) {
       this.props.onSearch()
     }
-    console.log('onsearch')
   }
 
   render() {

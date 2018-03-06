@@ -30,7 +30,6 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   onChange(propName, value) {
-    /// console.log(field,value)
     this.setState(prevState => {
       const searchParamsClone = cloneDeep(prevState.searchParams)
       searchParamsClone[propName] = value
@@ -57,20 +56,7 @@ export class SearchTemplate extends React.PureComponent {
     if (queryTermArray.length) {
       search += `?${queryTermArray.join('&')}`
     }
-    console.log('SEARCHURL!!!!', search)
-    //   let query
-
-    //   if (
-    //     this.props.type === 'courses' &&
-    //     queryParams.topic &&
-    //     this.props.taxonomies.indexOf(queryParams.topic) >= 0
-    //   ) {
-    //     this.setState({ filterValues: { businessStage: queryParams.topic } })
-    //     query = { businessStage: queryParams.topic }
-    //   } else if (this.props.taxonomies.indexOf(queryParams.topic) < 0) {
-    //     query = this.state.filterValues
-    //   }
-
+    // todo:
     //   browserHistory.push({
     //     pathname: `/course/`,
     //     search: `?topic=${query.businessStage}`
@@ -80,15 +66,12 @@ export class SearchTemplate extends React.PureComponent {
 
   onSearch() {
     const query = this.generateQuery()
-    console.log('search.jsx onsearch', this.props.onSearch)
     const { searchType } = this.props
     const { searchParams } = this.state
     this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
   }
 
   render() {
-    // console.log('CHILLDRENS', this.props.children)
-    console.log('PROSPAS', this.props)
     const { children, items } = this.props
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {

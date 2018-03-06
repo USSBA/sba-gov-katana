@@ -13,7 +13,6 @@ class Toggle extends React.Component {
     if (this.props.onClick) {
       this.props.onClick(option.name, option.value)
     }
-    console.log('handling toggle click', option)
   }
   getSelectedOptionIndex() {
     if (this.state && this.state.selectedOptionIndex) {
