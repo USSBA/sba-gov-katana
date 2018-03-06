@@ -29,11 +29,11 @@ exports[`Front Page Hero should render correctly 1`] = `
     <div
       className="box"
     >
-      <div
+      <h1
         className="title"
       >
         Start and grow your business
-      </div>
+      </h1>
       <div
         className="text"
       >

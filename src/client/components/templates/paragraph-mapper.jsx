@@ -1,22 +1,26 @@
 import React from 'react'
-import _ from 'lodash'
+import { compact } from 'lodash'
 
 import { ImageSection, ParagraphPlaceholder, SectionHeader, SubsectionHeader, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
   Lookup,
+  MenuTileCollection,
   ProgramDetailsCardCollection,
   SearchBox,
   StyleGrayBackground,
   TextReadMoreSection
 } from 'organisms'
+import { panelMenuContainer } from './homepage/homepage.scss'
 
 function makeParagraphs(
   paragraphData = [],
   optionalSectionHeaderFunction,
   lineage,
-  paragraphEventConfig = {}
+  paragraphEventConfig = {},
+  // TODO: organize parameters to make sense
+  sectionData = {}
 ) {
   let paragraphs = []
   let skipNextReadmore = false
@@ -110,6 +114,13 @@ function makeParagraphs(
       } else if (item.type === 'childPageMenu' && item.pagesInclude === 'All child pages') {
         const cards = lineage[lineage.length - 1].children
         paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig} />
+      } else if (item.type === 'panelMenu') {
+        // TODO: fix hard-coding of pathname
+        paragraph = (
+          <div className={panelMenuContainer}>
+            <MenuTileCollection data={sectionData.children} pathname="/" splitTitle />
+          </div>
+        )
       }
     }
     return {
@@ -118,7 +129,7 @@ function makeParagraphs(
     }
   })
 
-  return _.compact(paragraphs)
+  return compact(paragraphs)
 }
 
 function wrapParagraphs(paragraphsList, wrapperClassMapping) {

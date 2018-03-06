@@ -1,19 +1,26 @@
 import React from 'react'
+import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
-import clone from 'lodash'
 
-import { HomePage } from 'templates/homepage/homepage'
+import { Homepage } from 'client/components/templates/homepage/homepage.jsx'
+import data from './homepage-test-data.json'
+import siteMap from './site-map-test-data.json'
+
+console.log('HOMEPAGE', Homepage)
 
 const testProps = {
   location: {
     pathname: '/'
-  }
+  },
+  data,
+  fetchContentIfNeeded: () => {},
+  removeLoader: () => {},
+  siteMap
 }
 
 describe('Homepage', () => {
-  test('should render Homepage', () => {
-    // const props = clone(testProps)
-    // const component = shallow(<HomePage {...testProps} />)
-    // expect(component).toMatchSnapshot()
+  test('should render', () => {
+    const tree = shallow(<Homepage {...testProps} />)
+    expect(tree).toMatchSnapshot()
   })
 })

@@ -89,7 +89,7 @@ a {
 @include theme(byzantine, a, null, $byzantine, #fff);
 @include theme(money-green, a, null, $money-green-dark, #fff);
 @include theme(cobalt-blue, a, null, $cobalt-blue, #fff);
-@include theme(sba-blue-dark, a, null, $sba-blue-darkest, #fff);
+@include theme(sba-blue-dark, a, null, $sba-blue-dark, #fff);
 
 @include theme-hover(sba-blue, a, null, $sba-blue-darkest, null);
 @include theme-hover(byzantine, a, null, $byzantine-dark, null);
