@@ -7,7 +7,8 @@ import { eventCategories } from '../../../../services/constants'
 
 class FrontPageHero extends React.Component {
   render() {
-    const { caption, imageLarge, imageMedium, imageSmall, title } = this.props.hero
+    const { button, hero: { caption, imageLarge, imageMedium, imageSmall, title } } = this.props
+
     return (
       <div className={styles.container}>
         <div className={styles.imageContainer}>
@@ -17,16 +18,17 @@ class FrontPageHero extends React.Component {
         </div>
         <div className={styles.boxContainer}>
           <div className={styles.box}>
-            <div className={styles.title}>{title}</div>
+            <h1 className={styles.title}>{title}</h1>
+            {/* <div className={styles.title}>{title}</div> */}
             <div className={styles.text}>{caption}</div>
             <LargeInversePrimaryButton
               id="frontpage-hero-button"
               eventConfig={{
                 category: [eventCategories.frontPage, 'Hero'].join('-'),
-                action: `Click: ${this.props.button.title}`
+                action: `Click: ${button.title}`
               }}
-              text={this.props.button.title}
-              url={this.props.button.url}
+              text={button.title}
+              url={button.url}
             />
           </div>
         </div>

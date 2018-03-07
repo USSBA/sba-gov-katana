@@ -3,7 +3,6 @@ import _ from 'lodash'
 import { Tile } from 'organisms'
 import s from './menu-tile-collection.scss'
 import icons from '../../templates/homepage/businessGuideTileIcons'
-import data from '../../templates/homepage/business-guide-json'
 
 class MenuTileCollection extends React.Component {
   constructor() {
@@ -74,6 +73,8 @@ class MenuTileCollection extends React.Component {
   }
 
   render() {
+    const { data } = this.props
+
     if (!data) {
       return <div />
     } else if (data.length !== icons.length) {

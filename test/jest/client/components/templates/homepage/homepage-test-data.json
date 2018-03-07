@@ -1,5 +1,10 @@
 {
-  "buttons": [{ "url": "/business-guide", "title": "See the guide" }],
+  "buttons": [
+    {
+      "url": "/business-guide",
+      "title": "See the guide"
+    }
+  ],
   "hero": {
     "type": "hero",
     "caption": "Want to be an entrepreneur? Learn how to get started on your business in 10 steps.",
@@ -25,9 +30,18 @@
     "title": "Start and grow your business"
   },
   "paragraphs": [
-    { "type": "sectionHeader", "text": "Browse business topics" },
-    { "type": "panelMenu", "siteSection": "Business Guide" },
-    { "type": "sectionHeader", "text": "How we help small businesses" },
+    {
+      "type": "sectionHeader",
+      "text": "Browse business topics"
+    },
+    {
+      "type": "panelMenu",
+      "siteSection": "Business Guide"
+    },
+    {
+      "type": "sectionHeader",
+      "text": "How we help small businesses"
+    },
     {
       "type": "cardCollection",
       "cards": [
@@ -39,7 +53,10 @@
             "width": 1000,
             "height": 667
           },
-          "link": { "url": "https://www.sba.gov/tools/local-assistance", "title": "Find counselors" },
+          "link": {
+            "url": "https://www.sba.gov/tools/local-assistance",
+            "title": "Find counselors"
+          },
           "subtitleText": "Get business advice from our partnering organizations and experts.",
           "titleText": "Free business counseling"
         },
@@ -51,7 +68,10 @@
             "width": 1000,
             "height": 667
           },
-          "link": { "url": "https://www.sba.gov/funding-programs/loans", "title": "Use Lendermatch" },
+          "link": {
+            "url": "https://www.sba.gov/funding-programs/loans",
+            "title": "Use Lendermatch"
+          },
           "subtitleText": "Find an SBA lender near you to help fund your business.",
           "titleText": "SBA guaranteed business loans"
         },
@@ -78,7 +98,10 @@
             "width": 1000,
             "height": 667
           },
-          "link": { "url": "https://certify.sba.gov/", "title": "Get certified" },
+          "link": {
+            "url": "https://certify.sba.gov/",
+            "title": "Get certified"
+          },
           "subtitleText": "Qualify to win small business government contracts.",
           "titleText": "Federal government contracting"
         }

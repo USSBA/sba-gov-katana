@@ -1,27 +1,26 @@
-// import React from 'react'
-// import { shallow } from 'enzyme'
-// import clone from 'lodash'
-// import renderer from 'react-test-renderer'
+import React from 'react'
+import renderer from 'react-test-renderer'
+import { shallow } from 'enzyme'
 
-// import HomePage from 'templates/homepage/homepage'
+import { Homepage } from 'client/components/templates/homepage/homepage.jsx'
+import data from './homepage-test-data.json'
+import siteMap from './site-map-test-data.json'
 
-// const testProps = {
-//   location: {
-//     pathname: '/'
-//   }
-// }
+console.log('HOMEPAGE', Homepage)
 
-// describe('HomePage', () => {
-//   test('should render HomePage', () => {
-//     const props = clone(testProps)
-//     const component = renderer.create(<HomePage {...testProps} />)
-//     expect(component).toMatchSnapshot()
-//   })
-// })
+const testProps = {
+  location: {
+    pathname: '/'
+  },
+  data,
+  fetchContentIfNeeded: () => {},
+  removeLoader: () => {},
+  siteMap
+}
 
-// Will be replaced when before merging to integration
-describe('HomePage', () => {
-  test('should render HomePage', () => {
-    return undefined
+describe('Homepage', () => {
+  test('should render', () => {
+    const tree = shallow(<Homepage {...testProps} />)
+    expect(tree).toMatchSnapshot()
   })
 })

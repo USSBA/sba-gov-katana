@@ -47,6 +47,7 @@
 @include theme(byzantine, '.itemHr', $byzantine, $byzantine, $byzantine);
 @include theme(money-green, '.itemHr', $money-green, $money-green, $money-green);
 @include theme(cobalt-blue, '.itemHr', $cobalt-blue, $cobalt-blue, $cobalt-blue);
+@include theme(sba-blue-dark, '.itemHr', $sba-blue, $sba-blue, $sba-blue);
 
 .threeColumn {
   @include grid-column(4);

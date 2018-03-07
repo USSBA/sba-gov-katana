@@ -2,6 +2,8 @@
 @include theme(byzantine, '.ctaContainer', $byzantine, #fff, #fff);
 @include theme(money-green, '.ctaContainer', $money-green, #fff, #fff);
 @include theme(cobalt-blue, '.ctaContainer', $cobalt-blue, #fff, #fff);
+// TODO: only for the homepage, which will be changed soon
+@include theme(sba-blue-dark, '.ctaContainer', $sba-blue, #fff, #fff);
 
 .ctaContainer {
   position: relative;
