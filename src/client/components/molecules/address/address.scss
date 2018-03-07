@@ -1,0 +1,14 @@
+.smallIcon {
+  @include grid-media($sba-grid-small) {
+    i {
+      font-size: 25px;
+      vertical-align: middle;
+    }
+  }
+  @include grid-media($sba-grid-medium) {
+    i {
+      font-size: 25px;
+      vertical-align: middle;
+    }
+  }
+}

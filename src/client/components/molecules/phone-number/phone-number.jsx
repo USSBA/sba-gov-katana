@@ -1,6 +1,7 @@
 import React from 'react'
 //todo: use own style sheet
 import styles from '../contact-card/contact-card.scss'
+import addressStyles from '../address/address.scss'
 import { SmallIcon } from 'atoms'
 
 class PhoneNumber extends React.Component {
@@ -19,9 +20,9 @@ class PhoneNumber extends React.Component {
       return null
     }
     return (
-      <div className={styles.container}>
+      <div className={styles.container + ' phone-number'}>
         {iconName ? (
-          <div className={styles.icon}>
+          <div className={styles.icon + ' ' + addressStyles.smallIcon}>
             <SmallIcon
               fontAwesomeIconClassName={iconName}
               altText={phoneNumber}
