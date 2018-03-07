@@ -29,6 +29,16 @@ export class SearchTemplate extends React.PureComponent {
     }
   }
 
+  componentWillMount() {
+    if (this.props.defaultSearchParams) {
+      this.setState({ searchParams: this.props.defaultSearchParams })
+    }
+
+    if (this.props.loadDefaultResults === true) {
+      this.onSearch()
+    }
+  }
+
   onChange(propName, value) {
     this.setState(prevState => {
       const searchParamsClone = cloneDeep(prevState.searchParams)
@@ -51,7 +61,6 @@ export class SearchTemplate extends React.PureComponent {
         }
       }
     }
-
     let search = ''
     if (queryTermArray.length) {
       search += `?${queryTermArray.join('&')}`
@@ -61,13 +70,15 @@ export class SearchTemplate extends React.PureComponent {
     //     pathname: `/course/`,
     //     search: `?topic=${query.businessStage}`
     //   })
-    return ''
+
+    return search
   }
 
   onSearch() {
     const query = this.generateQuery()
     const { searchType } = this.props
     const { searchParams } = this.state
+    console.log('!!!!!!!!!!!!!SEARCH', searchParams)
     this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
   }
 
