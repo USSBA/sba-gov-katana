@@ -1,1 +1,85 @@
+.officeResult {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    margin-top: 15px;
+    margin-bottom: 15px;
 
+    h2 {
+      font-size: 27px;
+    }
+  }
+
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+    margin-bottom: 15px;
+
+    h2 {
+      font-size: 27px;
+    }
+  }
+
+  hr {
+    clear: both;
+    margin: 0;
+    border: 1px solid #dadada;
+
+    @include grid-media($sba-grid-small) {
+      margin: 20px 0 10px;
+    }
+  }
+}
+
+.col {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(6);
+    margin-bottom: 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(6);
+    margin-bottom: 30px;
+  }
+}
+
+.officeType {
+  color: #6a6a6a;
+  font-family: 'Merriweather Regular', 'Georgia', 'Times', 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 2.5;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.fa {
+  display: inline-block;
+  @include grid-media($sba-grid-small) {
+    font-size: 20px;
+    vertical-align: middle;
+    width: 22px;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 20px;
+    vertical-align: middle;
+    width: 20px;
+  }
+}
+
+.officeWebsiteButton {
+  @include grid-media($sba-grid-small) {
+    margin: 30px 0;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  @include grid-media($sba-grid-medium) {
+    float: right;
+    margin-top: 40px;
+  }
+  @include grid-media($sba-grid-large) {
+    float: right;
+    margin-top: 40px;
+  }
+}
