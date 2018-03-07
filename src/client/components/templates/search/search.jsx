@@ -35,7 +35,7 @@ export class SearchTemplate extends React.PureComponent {
     }
 
     if (this.props.loadDefaultResults === true) {
-      this.onSearch()
+      this.doSearch(this.props.searchType, this.props.defaultSearchParams)
     }
   }
 
@@ -48,7 +48,6 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   generateQuery() {
-    //const queryParams = this.props.location.query
     const { searchParams } = this.state
     const queryTermArray = []
     for (const paramName in searchParams) {
@@ -75,10 +74,14 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   onSearch() {
+    //doesn't do anything yet but will post query string to history
     const query = this.generateQuery()
     const { searchType } = this.props
     const { searchParams } = this.state
-    console.log('!!!!!!!!!!!!!SEARCH', searchParams)
+    this.doSearch(searchType, searchParams)
+  }
+
+  doSearch(searchType, searchParams) {
     this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
   }
 
