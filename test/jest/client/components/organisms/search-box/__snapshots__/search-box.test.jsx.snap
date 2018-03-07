@@ -2473,7 +2473,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
-        className=""
         id="documenttype-select-container"
       >
         <label />
@@ -2541,7 +2540,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
-        className=""
         id="program-select-container"
       >
         <label />
@@ -2609,7 +2607,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
-        className=""
         id="documentactivity-select-container"
       >
         <label />
