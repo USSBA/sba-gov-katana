@@ -27,8 +27,3 @@
   line-height: 18px;
   color: #666666;
 }
-
-@include theme-focus('money-green', '.textArea',null, null, $money-green);
-@include theme-focus('sba-blue', '.textArea', null, null, $sba-blue);
-@include theme-focus('cobalt-blue', '.textArea', null, null, $cobalt-blue);
-@include theme-focus('byzantine', '.textArea', null, null, $byzantine);

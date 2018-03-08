@@ -130,9 +130,6 @@
   }
 }
 
-@include theme(byzantine, '.backLink', null, #fff, null);
-@include theme-hover(byzantine, '.backLink', null, $byzantine-lightest, null);
-
 a.backLink {
   position: absolute;
   font-size: 18px;

@@ -8,19 +8,7 @@ li.pageLink {
   margin-left: 20px;
 }
 
-@include theme(sba-blue, 'li.pageLink a', null, $base-font-color, null);
-@include theme(byzantine, 'li.pageLink a', null, $base-font-color, null);
-@include theme(money-green, 'li.pageLink a', null, $base-font-color, null);
-@include theme(cobalt-blue, 'li.pageLink a', null, $base-font-color, null);
-@include theme(sba-blue-dark, 'li.pageLink a', null, $base-font-color, null);
-
 li.pageLink a:hover,
 li.pageLink a:focus {
   text-decoration: underline;
 }
-
-@include theme-hover(sba-blue, 'li.pageLink a', null, null, $base-font-color);
-@include theme-hover(byzantine, 'li.pageLink a', null, null, $base-font-color);
-@include theme-hover(money-green, 'li.pageLink a', null, null, $base-font-color);
-@include theme-hover(cobalt-blue, 'li.pageLink a', null, null, $base-font-color);
-@include theme-hover(sba-blue-dark, 'li.pageLink a', null, null, $base-font-color);

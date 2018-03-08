@@ -4,8 +4,6 @@
   position: relative;
 }
 
-@include theme(byzantine, '.container', $byzantine-dark, #fff , null);
-
 .container p {
   color: $white;
   text-align: center;
@@ -20,9 +18,6 @@
     display: block;
   }
 }
-
-@include theme(byzantine, '.container button', $white, $byzantine , $white);
-@include theme-hover(byzantine, '.container button', $byzantine-lightest, $byzantine, $byzantine-lightest);
 
 .cornerLines {
   position: absolute;

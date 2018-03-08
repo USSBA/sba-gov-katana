@@ -2,14 +2,9 @@
   margin-right: 5px;
   margin-left: 5px;
 }
-@include color-theme('.container a');
+// @include color-theme('.container a');
 
 .last a {
   font-weight: bold;
   text-decoration: none;
 }
-
-@include theme(sba-blue, '.last a', null, $base-font-color, $base-font-color);
-@include theme(byzantine, '.last a', null, $base-font-color, $base-font-color);
-@include theme(money-green, '.last a', null, $base-font-color, $base-font-color);
-@include theme(cobalt-blue, '.last a', null, $base-font-color, $base-font-color);

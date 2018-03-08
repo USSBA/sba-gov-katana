@@ -89,10 +89,6 @@
   background-color: inherit;
 }
 
-@include border-color-theme('.myselect :global(.Select-menu-outer)');
-@include border-color-theme('.myselect:global(.is-open) :global(.Select-control)');
-@include border-color-theme('.myselect:global(.is-focused) :global(.Select-control)');
-
 .myselect :global(.Select-input) input[role='combobox'] {
   border: 0px;
 }
