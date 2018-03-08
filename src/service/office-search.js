@@ -10,6 +10,7 @@ function officeSearch(req, res) {
   //todo: there will need to be logic to map out the query string to the correct cloudsearch params
   const { term, zipCode, pageSize, start } = req
   const fixedTerm = term ? decodeURIComponent(term) : 'office'
+  console.log('searching for term ', fixedTerm)
   const filterQuery = zipCode ? `(and location_zipcode:'${zipCode}')` : ''
   const defaultPageSize = 20
   const defaultStart = 0
