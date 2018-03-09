@@ -16,9 +16,10 @@ features:
     searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeProduction
-        enabled: false
+        enabled: true
     drupalRedirect:
         tableName: UrlToUrlRedirectProduction
+        enabled: true
 linc:
   resendEmailJobEnabled: false
   sendToOcaJobEnabled: false
@@ -27,7 +28,8 @@ oca:
     soap:
         wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
 cache:
-  s3BucketName: production-aws-content-sba-gov
+  s3BucketName: production-aws-content-sba-
+  useS3: true
 aws:
   cloudsearch:
     endpoint: 'doc-sba-gov-production-vnhuuhtvgjbc2s7ddz42nhmbge.us-east-1.cloudsearch.amazonaws.com'
