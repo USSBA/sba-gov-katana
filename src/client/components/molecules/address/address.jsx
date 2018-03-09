@@ -32,14 +32,14 @@ class Address extends React.Component {
     link = link ? link : this.generateGoogleMapsLink(address)
 
     return (
-      <div className={styles.container + ' office-address'}>
+      <div className={'office-address'}>
         {iconName ? (
-          <div className={styles.icon + ' ' + addressStyles.smallIcon}>
+          <div className={styles.icon + ' ' + addressStyles.smallIcon + ' ' + addressStyles.iconMarginTop}>
             <SmallIcon fontAwesomeIconClassName={iconName} altText={address} tabbable={false} href={link} />
           </div>
         ) : null}
         <a href={link}>
-          <div className={styles.address}>
+          <div className={addressStyles.address}>
             {streetAddress ? <div className={styles.streetAddress}>{this.props.streetAddress}</div> : null}
             {city && state && zipCode ? (
               <div className={styles.cityStateZip}>
