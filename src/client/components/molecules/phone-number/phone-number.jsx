@@ -20,7 +20,7 @@ class PhoneNumber extends React.Component {
       return null
     }
     return (
-      <div className={styles.container + ' phone-number'}>
+      <div className={'phone-number ' + addressStyles.phoneMarginTop}>
         {iconName ? (
           <div className={styles.icon + ' ' + addressStyles.smallIcon}>
             <SmallIcon
@@ -32,7 +32,7 @@ class PhoneNumber extends React.Component {
           </div>
         ) : null}
         <a href={link}>
-          <div className={styles.address}>{phoneNumber ? <div>{phoneNumber}</div> : null}</div>
+          <div className={addressStyles.address}>{phoneNumber ? <div>{phoneNumber}</div> : null}</div>
         </a>
       </div>
     )

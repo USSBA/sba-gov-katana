@@ -14,11 +14,17 @@ class OfficeResult extends React.PureComponent {
 
     const officeType = item.office_type[0].toLowerCase()
     const isOfficialOffice = officeType === 'local sba office'
+    const isFirstResult = id === 'result-0'
 
     //elasticsearch returns all single value elements as an array *sigh*
     return (
       <div className={`card-layout`}>
         <div id={`office-result-${id}`} className={styles.officeResult}>
+          {isFirstResult && (
+            <div className={styles.firstResult}>
+              <hr />
+            </div>
+          )}
           <div className={styles.col}>
             <div id={`office-type-${id}`}>
               <div className={styles.officeType}>
@@ -41,14 +47,14 @@ class OfficeResult extends React.PureComponent {
               <PhoneNumber id={`office-phone-${id}`} phoneNumber={item.location_phone_number[0]} />
             ) : null}
           </div>
-          <div className={styles.col + ' service-list'}>
-            {/* {item.office_service ? (
-              <div>
+          <div className={styles.col}>
+            {item.office_service ? (
+              <div className={styles.serviceList + ' service-list'}>
                 {' '}
-                Services
+                <h3>Services</h3>
                 <div>{item.office_service.join(',')}</div>
               </div>
-            ) : null} */}
+            ) : null}
 
             {item.office_website && item.office_website.length ? (
               <div

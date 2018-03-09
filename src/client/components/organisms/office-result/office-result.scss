@@ -1,7 +1,16 @@
 .officeResult {
+  h2,
+  h3 {
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
   @include grid-media($sba-grid-medium) {
     @include grid-column(12);
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 15px;
 
     h2 {
@@ -65,6 +74,25 @@
   }
 }
 
+.serviceList {
+  @include grid-media($sba-grid-small) {
+    margin: 30px 0;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  @include grid-media($sba-grid-medium) {
+    float: left;
+    margin-top: 40px;
+  }
+  @include grid-media($sba-grid-large) {
+    float: left;
+    margin-top: 40px;
+  }
+}
+
 .officeWebsiteButton {
   @include grid-media($sba-grid-small) {
     margin: 30px 0;
@@ -81,5 +109,11 @@
   @include grid-media($sba-grid-large) {
     float: right;
     margin-top: 40px;
+  }
+}
+
+.firstResult {
+  hr {
+    margin: 15px 0 18px;
   }
 }
