@@ -28,7 +28,7 @@ oca:
     soap:
         wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
 cache:
-  s3BucketName: production-aws-content-sba-
+  s3BucketName: production-aws-content-sba-gov
   useS3: true
 aws:
   cloudsearch:
