@@ -15,8 +15,7 @@ const paths = [
   'partners',
   'disaster-assistance',
   'size-standards',
-  'federal-contracting',
-  '/'
+  'federal-contracting'
 ]
 
 function createCtaNavigation(targetLocation, category, action, value) {
