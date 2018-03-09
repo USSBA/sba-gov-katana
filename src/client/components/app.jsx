@@ -10,9 +10,8 @@ import config from '../services/client-config.js'
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import HaxRouter from './hax-router.jsx'
-import Themer from './templates/themer/themer.jsx'
 
-let middlewareList = []
+const middlewareList = []
 middlewareList.push(thunk)
 if (config.debug) {
   middlewareList.push(logging)
@@ -32,9 +31,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Themer>
-          <HaxRouter history={history}>{this.props.routes}</HaxRouter>
-        </Themer>
+        <HaxRouter history={history}>{this.props.routes}</HaxRouter>
       </Provider>
     )
   }

@@ -1,8 +1,22 @@
 import { browserHistory } from 'react-router'
 import { logEvent, logPageEvent } from '../services/analytics.js'
-import { getPaths } from '../components/templates/themer/themes.js'
 import _ from 'lodash'
 import clientConfig from './client-config.js'
+
+const paths = [
+  'styleguide',
+  'learning-center',
+  'guide',
+  'business-guide',
+  'lendermatch',
+  'funding-programs',
+  'document',
+  'article',
+  'partners',
+  'disaster-assistance',
+  'size-standards',
+  'federal-contracting'
+]
 
 function createCtaNavigation(targetLocation, category, action, value) {
   return createNavigation(targetLocation, {
@@ -19,7 +33,7 @@ const matchingLocations = []
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
     console.log('targetLocation', targetLocation)
-    const mapped = _.map(getPaths(), path => {
+    const mapped = _.map(paths, path => {
       // eslint-disable-next-line no-magic-numbers
       return _.startsWith(path, '/' + targetLocation)
     })

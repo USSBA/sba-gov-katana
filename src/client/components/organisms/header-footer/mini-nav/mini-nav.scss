@@ -14,15 +14,3 @@
   font-size: 14px;
   color: #757575;
 }
-
-@include theme(sba-blue, '.miniNav li a', null, #757575, null);
-@include theme(byzantine, '.miniNav li a', null, #757575, null);
-@include theme(money-green, '.miniNav li a', null, #757575, null);
-@include theme(cobalt-blue, '.miniNav li a', null, #757575, null);
-@include theme(sba-blue-dark, '.miniNav li a', null, #757575, null);
-
-@include theme-hover(sba-blue, '.miniNav li a', null, $grey-dark, null);
-@include theme-hover(byzantine, '.miniNav li a', null, $grey-dark, null);
-@include theme-hover(money-green, '.miniNav li a', null, $grey-dark, null);
-@include theme-hover(cobalt-blue, '.miniNav li a', null, $grey-dark, null);
-@include theme-hover(sba-blue-dark, '.miniNav li a', null, $grey-dark, null);

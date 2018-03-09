@@ -16,11 +16,6 @@
   }
 }
 
-@include theme(sba-blue, '.lineCopy', $sba-blue, $sba-blue, $sba-blue);
-@include theme(byzantine, '.lineCopy', $byzantine, $byzantine, $byzantine);
-@include theme(money-green, '.lineCopy', $money-green, $money-green, $money-green);
-@include theme(cobalt-blue, '.lineCopy', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
 .title {
   color: #333333;
   font-size: 24px;
@@ -40,16 +35,6 @@
   font-size: 18px;
   line-height: 27px;
 }
-
-@include theme(sba-blue, '.readMore', #EBEBEB, $sba-blue,  null);
-@include theme(byzantine, '.readMore', #EBEBEB, $byzantine,  null);
-@include theme(money-green, '.readMore', #EBEBEB, $money-green,  null);
-@include theme(cobalt-blue, '.readMore', #EBEBEB, $cobalt-blue,  null);
-
-@include theme-hover(sba-blue, '.readMore', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.readMore', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.readMore', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.readMore', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
 
 @include small-button('.readMore');
 

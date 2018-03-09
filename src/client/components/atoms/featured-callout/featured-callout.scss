@@ -3,19 +3,6 @@
   display: block;
 }
 
-:global(.sba-blue) .menuCallToAction {
-  background-color: $sba-blue;
-}
-:global(.byzantine) .menuCallToAction {
-  background-color: $byzantine;
-}
-:global(.money-green) .menuCallToAction {
-  background-color: $money-green;
-}
-:global(.cobalt-blue) .menuCallToAction {
-  background-color: $cobalt-blue;
-}
-
 .menuCallToAction img {
   width: 100%;
 }
