@@ -27,8 +27,6 @@ function createCtaNavigation(targetLocation, category, action, value) {
   })
 }
 
-const matchingLocations = []
-
 // eslint-disable-next-line complexity
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
