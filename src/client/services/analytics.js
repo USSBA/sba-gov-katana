@@ -8,8 +8,9 @@ function isEnabled() {
 }
 
 if (isEnabled()) {
-  reactGa.initialize(config.googleAnalytics.accountId)
-  reactGa.plugin.require(config.googleAnalytics.optimizeContainerId)
+  // TODO: will completely remove in future story
+  // reactGa.initialize(config.googleAnalytics.accountId)
+  // reactGa.plugin.require(config.googleAnalytics.optimizeContainerId)
 } else if (config.debug) {
   console.log('GA in Development Mode')
 }
@@ -21,7 +22,7 @@ function logPageView() {
     })
     reactGa.pageview(window.location.pathname)
     console.log('Posting Location Change to GA:', window.location.pathname)
-  } else {
+  } else if (config.debug) {
     console.log('Would have posted location change to GA:', window.location.pathname)
   }
 }
@@ -30,7 +31,7 @@ function logEvent(eventToLog) {
   if (isEnabled()) {
     console.log('Posting Event to GA:', eventToLog)
     reactGa.event(eventToLog)
-  } else {
+  } else if (config.debug) {
     console.log('Would have posted event to GA if enabled:', eventToLog)
   }
 }

@@ -1,10 +1,5 @@
 foresee:
     environment: staging
-googleAnalytics:
-    enabled: false
-    accountId: UA-96147768-1
-    optimizeContainerId: GTM-NPDXPPF
-    tagManagerAccountId: GTM-WN49BK2
 server:
     fqdn: demo.sba.fun
 features:
