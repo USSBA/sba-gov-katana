@@ -45,8 +45,12 @@
 
 .applyButton {
   display: inline-block;
-  margin-top: 33px;
   vertical-align: top;
+  margin-top: 10px;
+
+  @include grid-media($sba-grid-large) {
+    margin-top: 34px;
+  }
 }
 
 .table {
