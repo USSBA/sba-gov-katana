@@ -52,7 +52,7 @@ class OfficeResult extends React.PureComponent {
               <div className={styles.serviceList + ' service-list'}>
                 {' '}
                 <h3>Services</h3>
-                <div>{item.office_service.join(',')}</div>
+                <div>{item.office_service.join(', ')}</div>
               </div>
             ) : null}
 

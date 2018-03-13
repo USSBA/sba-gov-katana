@@ -85,11 +85,13 @@
 
   @include grid-media($sba-grid-medium) {
     float: left;
-    margin-top: 40px;
+    margin: 40px 0 10px;
+    width: 50%;
   }
   @include grid-media($sba-grid-large) {
     float: left;
-    margin-top: 40px;
+    margin: 40px 0 10px;
+    width: 50%;
   }
 }
 
