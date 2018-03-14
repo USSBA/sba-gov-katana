@@ -7,7 +7,7 @@ import { BasicLink } from 'atoms'
 class MainLogo extends React.Component {
   render() {
     return (
-      <div className={styles.logoNew}>
+      <div className={styles.logo}>
         <BasicLink tabIndex="-1" url="/">
           <img alt="Small Business Administration" src={sbaLogo} />
         </BasicLink>

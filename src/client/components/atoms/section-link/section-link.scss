@@ -24,7 +24,7 @@ $triangle-size: 0.722rem;
   z-index: 100000000000;
   border-bottom: $triangle-size solid white;
   @include grid-media($sba-grid-medium-and-small) {
-    border-bottom: 0rem;
+    border-bottom: 0;
   }
 }
 
@@ -51,6 +51,6 @@ $triangle-size: 0.722rem;
 .link {
   border-bottom-color: transparent;
   padding-bottom: 0.111rem;
-  border-bottom-width: 0.167rem;
+  border-bottom-width: 3px;
   border-bottom-style: solid;
 }
