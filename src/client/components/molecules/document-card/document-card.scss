@@ -15,16 +15,13 @@
 
 .documentType > div {
   padding: 5px 10px;
-  @include font-size($h6-font-sizes);
+  // @include font-size($h6-font-sizes);
 }
 
 .title {
   text-decoration: underline;
   color: #333333;
 }
-@include background-color-theme( '.type', $lightest-color-map);
-@include border-color-theme( '.type', $lightest-color-map);
-@include border-color-theme( '.id', $lightest-color-map);
 
 .row {
   width: 100%;
@@ -56,10 +53,9 @@
 .link {
   cursor: pointer;
   margin-right: 10px;
-  @include font-size($h6-font-sizes);
+  // @include font-size($h6-font-sizes);
 }
-@include color-theme( '.link');
 
 .container hr {
-  border-color: $grey-light !important;
+  border-color: $sba-gray-light !important;
 }

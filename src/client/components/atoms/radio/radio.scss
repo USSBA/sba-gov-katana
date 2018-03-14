@@ -36,7 +36,7 @@
 }
 
 .regularRadio:checked + label:after {
-  background: none repeat scroll 0 0 $money-green;
+  background: none repeat scroll 0 0 $secondary-green;
   border-radius: 50px;
   content: ' ';
   font-size: 36px;

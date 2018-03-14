@@ -2,7 +2,7 @@
   color: #fff;
   height: calc(100vh - 115px);
   position: relative;
-  background-color: $byzantine;
+  background-color: $sba-blue;
   background-image: url('assets/images/tensteps/title-section-pattern.png');
   background-position: 90% 100%;
   background-repeat: no-repeat;
@@ -13,15 +13,15 @@
     height: 550px;
   }
   h1 {
-    @include font-size($extra-large-title-font-sizes);
+    // @include font-size($extra-large-title-font-sizes);
     margin-bottom: 0.4em;
     @include grid-media($sba-grid-small) {
       max-width: 70%;
     }
   }
   p {
-    @include font-size($h5-font-sizes);
-    font-family: $serif-font;
+    // @include font-size($h5-font-sizes);
+    font-family: $serif-font-family;
   }
 }
 
@@ -44,7 +44,7 @@
 .lastSection {
   color: #fff;
   padding: 30px;
-  background-color: $byzantine;
+  background-color: $sba-blue;
   background-image: url('assets/images/tensteps/title-section-pattern.png');
   background-position: right;
   background-repeat: no-repeat;
@@ -57,7 +57,7 @@
     background-position: 100% 100%;
   }
   h1 {
-    @include font-size($extra-large-title-font-sizes);
+    // @include font-size($extra-large-title-font-sizes);
     margin-bottom: 0.2em;
     @include grid-media($sba-grid-small) {
       margin-top: 0.2em;
@@ -65,8 +65,8 @@
     }
   }
   p {
-    @include font-size($h5-font-sizes);
-    font-family: $serif-font;
+    // @include font-size($h5-font-sizes);
+    font-family: $serif-font-family;
     @include grid-media($sba-grid-small) {
       margin-top: 2em;
     }
@@ -106,8 +106,8 @@
   transform: translateX(-50%);
   width: 68px;
   &:hover {
-    background-color: $byzantine-lightest;
-    color: $byzantine-darkest;
+    background-color: $sba-blue-light;
+    color: $sba-blue-dark;
   }
 }
 

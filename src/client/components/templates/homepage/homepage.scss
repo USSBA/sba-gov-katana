@@ -1,3 +1,5 @@
+$homepage-gutter-size: 5.333vw;
+
 .container {
   padding-left: 0;
   padding-right: 0;
@@ -21,7 +23,7 @@
 }
 .section,
 .sectionWithPadding {
-  @include clearFix;
+  @include clearfix;
 }
 
 .sectionWithPadding {

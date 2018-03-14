@@ -24,7 +24,7 @@ $triangle-size: 13px;
   border-left: $triangle-size solid transparent;
   border-top: 0;
   z-index: 100000000000;
-  border-bottom: $triangle-size solid $white;
+  border-bottom: $triangle-size solid white;
 }
 
 .link:hover .triangle,

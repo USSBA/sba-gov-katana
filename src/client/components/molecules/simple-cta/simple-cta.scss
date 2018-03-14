@@ -5,9 +5,9 @@
 }
 
 .container p {
-  color: $white;
+  color: white;
   text-align: center;
-  @include font-size($h6-font-sizes);
+  // @include font-size($h6-font-sizes);
   font-weight: 600;
   @include grid-media($sba-grid-medium) {
     display: inline;

@@ -1,3 +1,5 @@
+$homepage-gutter-size: 5.333vw;
+
 @include grid-media($sba-grid-small) {
   button {
     padding: 0.75em 3em;

@@ -18,15 +18,15 @@
 
 .textInputInvalid {
   composes: textInput;
-  border: 1px solid $error !important;
-  box-shadow: inset 0px 0px 0px 1px $error !important;
+  border: 1px solid $sba-red-light !important;
+  box-shadow: inset 0px 0px 0px 1px $sba-red-light !important;
 }
 
 .searchBar input {
   height: 40px;
   display: inline;
   border-radius: 5px;
-  border-color: $grey-light;
+  border-color: $sba-gray-light;
   width: 12vw;
 }
 

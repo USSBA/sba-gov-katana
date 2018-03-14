@@ -36,8 +36,6 @@
   line-height: 27px;
 }
 
-@include small-button('.readMore');
-
 @include grid-media( $sba-grid-small) {
   .readMore {
     width: 100%;

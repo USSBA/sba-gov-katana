@@ -13,8 +13,8 @@
 }
 
 .myoption {
-  @include font-size($paragraph-font-sizes);
-  border: 1px solid $grey;
+  // @include font-size($paragraph-font-sizes);
+  border: 1px solid $sba-gray;
   border-radius: 0;
 }
 
@@ -33,12 +33,12 @@
 }
 
 .redBorder :global(.Select-control) {
-  border-color: $crimson;
+  border-color: $sba-red;
 }
 
 .myselect :global(.Select-control:focus) {
   outline: none !important;
-  border: 1px solid $grey !important;
+  border: 1px solid $sba-gray !important;
   border-radius: 0px;
   box-shadow: none !important;
 }
@@ -56,7 +56,7 @@
 }
 
 .myselect:global(.Select--multi) :global(.Select-value) {
-  background-color: $grey-lighter;
+  background-color: $sba-gray-lighter;
   border: 1px solid #666666 !important;
   color: #333333 !important;
 }
@@ -78,11 +78,11 @@
 }
 
 .myselect :global(.Select-menu-outer) div:hover {
-  background-color: $grey-lighter;
+  background-color: $sba-gray-lighter;
 }
 
 .myselect :global(.Select-menu-outer) div :global(.is-focused) {
-  background-color: $grey-lighter;
+  background-color: $sba-gray-lighter;
 }
 
 .myselect :global(.Select-option):global(.is-focused) {

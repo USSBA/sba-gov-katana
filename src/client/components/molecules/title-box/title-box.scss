@@ -1,5 +1,5 @@
 .solidBox {
-  background-color: $byzantine;
+  background-color: $sba-blue;
   border-color: #fff;
   color: #fff;
   padding: 15px 50px 50px;
@@ -12,7 +12,7 @@
 }
 
 .sectionNum {
-  @include font-size($h1-font-sizes);
+  // @include font-size($h1-font-sizes);
   border-bottom: 4px solid;
   display: inline-block;
   font-weight: 900;
@@ -20,14 +20,14 @@
 }
 
 .transparentBox .sectionNum {
-  color: $byzantine;
+  color: $sba-blue;
 }
 
 h2.sectionTitle {
-  @include font-size($h1-font-sizes);
+  // @include font-size($h1-font-sizes);
   margin-bottom: 0.45em;
 }
 
 p.sectionText {
-  @include font-size($h5-font-sizes);
+  // @include font-size($h5-font-sizes);
 }

@@ -24,7 +24,7 @@
 }
 
 .summary {
-  @include font-size($h4-font-sizes);
+  // @include font-size($h4-font-sizes);
   margin-bottom: 51.5px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 33.5px;
@@ -32,7 +32,7 @@
 }
 
 .content {
-  @include font-size($h4-font-sizes);
+  // @include font-size($h4-font-sizes);
   font-weight: 700;
   margin-bottom: 20px;
   margin-top: 18.5px;
@@ -42,7 +42,7 @@
 }
 
 .titleLink {
-  @include font-size($paragraph-font-sizes);
+  // @include font-size($paragraph-font-sizes);
   line-height: 30px;
   @include grid-media($sba-grid-small) {
     line-height: 40px;
@@ -57,7 +57,7 @@
 }
 
 .title {
-  @include font-size($h1-font-sizes);
+  // @include font-size($h1-font-sizes);
   margin-bottom: 30px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 19px;
