@@ -1,6 +1,3 @@
-$sba-gray-light: #c5c5c5;
-$sba-gray-dark: #686868;
-
 .footer {
   height: 0.111rem;
   width: 100%;
@@ -56,7 +53,7 @@ $sba-gray-dark: #686868;
 
 .footer hr {
   display: none;
-  border-bottom: 0.056rem solid #c4c4c4;
+  border-bottom: 0.056rem solid $sba-gray-light;
   &.desktopRule {
     @include grid-media($sba-grid-medium) {
       display: inline-block;
@@ -106,7 +103,7 @@ $sba-gray-dark: #686868;
     .name {
       margin-right: 0.389rem;
       padding-right: 0.333rem;
-      border-right: 0.0556rem solid #333;
+      border-right: 0.0556rem solid $sba-gray-dark;
     }
   }
   @include grid-media($desktop-nav) {
@@ -115,7 +112,7 @@ $sba-gray-dark: #686868;
     .name {
       margin-right: 0.278rem;
       padding-right: 0.278rem;
-      border-right: 0.111rem solid #c4c4c4;
+      border-right: 0.111rem solid $sba-gray-light;
     }
   }
 }

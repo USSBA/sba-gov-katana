@@ -1,11 +1,8 @@
-$sba-gray-light: #c5c5c5;
-$sba-gray-lighter: #f5f5f5;
-
 .mobileHeaderOpen,
 .mobileHeaderClosed {
   display: none;
   background-color: white;
-  border: #c5c5c5 0.889rem solid;
+  border: $sba-gray-light 0.889rem solid;
   height: 2.944rem;
   padding: 10px 1.111rem 3rem 1.111rem;
   @include grid-media($sba-grid-medium) {
@@ -36,7 +33,7 @@ $sba-gray-lighter: #f5f5f5;
 }
 
 .mainNavNew .mobileNavMenuLink {
-  border-bottom: 0.111rem solid #dbdbdb;
+  border-bottom: 0.111rem solid $sba-gray-light;
   display: block;
   padding: 1.389rem 2.778rem;
   font-size: 1rem;
@@ -90,9 +87,9 @@ input.searchInputFieldNew {
   height: 2.222rem;
   width: 85vw;
   font-size: 1rem;
-  color: #666666;
+  color: $sba-gray-dark;
   text-indent: 2%;
-  border: 0.056rem solid #c4c4c4;
+  border: 0.056rem solid $sba-gray-light;
   border-radius: 0;
   box-shadow: none;
   margin: 0 auto;
