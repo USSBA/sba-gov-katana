@@ -1,12 +1,17 @@
 .footer {
+  height: 2px;
   width: 100%;
   float: left;
   padding: 30px 0;
-  background-color: #e8e8e8;
+  border-top: 1px solid #c5c5c5;
   @include grid-container;
   a {
     text-decoration: none;
   }
+}
+
+.footer::after {
+  padding-bottom: 18px;
 }
 
 .footerLinksGroup {
@@ -84,7 +89,8 @@
 }
 
 .address {
-  font-size: 16px;
+  font-size: 14px;
+  color: #686868;
   @include grid-media( $mobile-nav) {
     text-align: center;
     span {
@@ -109,7 +115,4 @@
       border-right: 2px solid #c4c4c4;
     }
   }
-  // @include grid-media( $sba-grid-medium) {
-  //   @include grid-column(9);
-  // }
 }

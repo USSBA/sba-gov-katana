@@ -3,10 +3,37 @@ nav .pageLinkGroup {
   margin-bottom: 15px;
 }
 
-.pageLinkGroup li:first-child {
-  @include grid-media($sba-grid-large) {
-    font-weight: 700;
-    font-size: 18px;
+.pageLinkGroup li {
+  font-size: 16px !important;
+  // this might need to be added to _variables.scss
+  a {
+    color: #1b1e29;
+  }
+}
+
+@include grid-media($sba-grid-large) {
+  .pageLinkGroup li:first-child {
+    font-weight: 600;
+    font-size: 18px !important;
     padding-bottom: 15px;
+    a {
+      // change to variable
+      color: #002e6d;
+    }
+  }
+  .pageLinkGroup li:not(:first-child) {
+    [id^='footer'] {
+      // change to variable
+      color: #686868;
+    }
+  }
+}
+
+@include grid-media($sba-grid-medium-and-small) {
+  .pageLinkGroup li {
+    a {
+      // change to variable
+      color: #686868;
+    }
   }
 }

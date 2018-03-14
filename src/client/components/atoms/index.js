@@ -26,7 +26,6 @@ import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
 import MultiSelect from './multiselect/multiselect'
 import NewsletterSmallPrimaryButton from './newsletter-small-primary-button/newsletter-small-primary-button'
-import PageLink from './page-link/page-link'
 import ParagraphPlaceholder from './paragraph-placeholder/paragraph-placeholder'
 import PdfIcon from './icons/pdf'
 import ProgressBar from './progress-bar/progress-bar'
@@ -89,7 +88,6 @@ export {
   MainLogo,
   MultiSelect,
   NewsletterSmallPrimaryButton,
-  PageLink,
   ParagraphPlaceholder,
   PdfIcon,
   ProgressBar,

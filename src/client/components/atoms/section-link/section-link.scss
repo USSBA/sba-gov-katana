@@ -1,13 +1,13 @@
 a.sectionLink {
   display: inline-block;
-  font-size: 19px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   position: relative;
 
   &:hover {
     text-decoration: none;
   }
-  @include grid-media( $sba-grid-medium) {
+  @include grid-media($sba-grid-medium) {
   }
 }
 
@@ -24,7 +24,21 @@ $triangle-size: 13px;
   border-left: $triangle-size solid transparent;
   border-top: 0;
   z-index: 100000000000;
-  border-bottom: $triangle-size solid $white;
+  border-bottom: $triangle-size #ffffff solid;
+  @include grid-media($sba-grid-medium-and-small) {
+    border-bottom: 0px;
+  }
+}
+
+.link:hover .triangleTheme {
+  border-bottom: $triangle-size #002e6d solid;
+}
+
+.link.highlightLink {
+  border-bottom-color: #cc0000;
+  a.highlightLink {
+    color: #cc0000;
+  }
 }
 
 .link:hover .triangle,

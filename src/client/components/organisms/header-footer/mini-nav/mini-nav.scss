@@ -8,9 +8,15 @@
   float: right;
 }
 
-.miniNav li {
-  display: inline-block;
-  margin-right: 12px;
-  font-size: 14px;
-  color: #757575;
+.miniNav {
+  li,
+  a {
+    // use variable when updated
+    color: #686868;
+  }
+  li {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 14px;
+  }
 }
