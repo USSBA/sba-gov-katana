@@ -1,10 +1,5 @@
 foresee:
     environment: staging
-googleAnalytics:
-    enabled: true
-    accountId: UA-96147768-1
-    optimizeContainerId: GTM-NPDXPPF
-    tagManagerAccountId: GTM-WN49BK2
 server:
     fqdn: mint.sba.fun
 features:

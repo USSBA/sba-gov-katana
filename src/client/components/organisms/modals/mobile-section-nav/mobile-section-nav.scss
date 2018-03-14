@@ -114,19 +114,19 @@
 }
 
 // .navRightArrow {
-// 	@include grid-media($sba-grid-small){
-// 		display: none !important;
-// 	}
-// 	@include grid-media($sba-grid-medium){
-// 		display: block !important;
-// 		font-size: 30px !important;
-// 		line-height: 30px !important;
-// 		color: white;
-// 		position: absolute;
-// 		top: 50%;
-//   	transform: translateY(-50%);
-//   	right: 20px;
-// 	}
+//   @include grid-media($sba-grid-small){
+//     display: none !important;
+//   }
+//   @include grid-media($sba-grid-medium){
+//     display: block !important;
+//     font-size: 30px !important;
+//     line-height: 30px !important;
+//     color: white;
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     right: 20px;
+//   }
 // }
 
 .navLeftArrow {

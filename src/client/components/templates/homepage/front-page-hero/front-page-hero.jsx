@@ -12,9 +12,21 @@ class FrontPageHero extends React.Component {
     return (
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <img alt={imageLarge.alt} className={styles.heroLarge} src={imageLarge.url} />
-          <img alt={imageMedium.alt} className={styles.heroMedium} src={imageMedium.url} />
-          <img alt={imageSmall.alt} className={styles.heroSmall} src={imageSmall.url} />
+          <img
+            alt={imageLarge.alt}
+            className={styles.heroLarge}
+            src={'http://kevin.sba.fun' + imageLarge.url}
+          />
+          <img
+            alt={imageMedium.alt}
+            className={styles.heroMedium}
+            src={'http://kevin.sba.fun' + imageMedium.url}
+          />
+          <img
+            alt={imageSmall.alt}
+            className={styles.heroSmall}
+            src={'http://kevin.sba.fun' + imageSmall.url}
+          />
         </div>
         <div className={styles.boxContainer}>
           <div className={styles.box}>

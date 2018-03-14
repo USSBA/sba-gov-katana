@@ -1,12 +1,42 @@
+$sba-blue: #002e6d;
+$sba-gray-dark: #686868;
+
 nav .pageLinkGroup {
-  width: 238px;
-  margin-bottom: 15px;
+  width: 13.222rem;
+  margin-bottom: 0.833rem;
 }
 
-.pageLinkGroup li:first-child {
-  @include grid-media($sba-grid-large) {
-    font-weight: 700;
-    font-size: 18px;
-    padding-bottom: 15px;
+.pageLinkGroup li {
+  font-size: 0.8889rem !important;
+  // this might need to be added to _variables.scss
+  a {
+    color: #1b1e29;
+  }
+}
+
+@include grid-media($sba-grid-large) {
+  .pageLinkGroup li:first-child {
+    font-weight: 600;
+    font-size: 1rem !important;
+    padding-bottom: 0.833rem;
+    a {
+      // change to variable
+      color: $sba-blue;
+    }
+  }
+  .pageLinkGroup li:not(:first-child) {
+    [id^='footer'] {
+      // change to variable
+      color: $sba-gray-dark;
+    }
+  }
+}
+
+@include grid-media($sba-grid-medium-and-small) {
+  .pageLinkGroup li {
+    a {
+      // change to variable
+      color: $sba-gray-dark;
+    }
   }
 }

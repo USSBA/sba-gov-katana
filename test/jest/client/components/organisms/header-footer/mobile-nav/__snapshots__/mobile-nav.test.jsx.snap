@@ -3,7 +3,7 @@
 exports[`Mobile Navigation has the correct structure 1`] = `
 <div>
   <div
-    className="mobileHeader"
+    className="mobileHeaderClosed"
   >
     <div
       className="logoNew"

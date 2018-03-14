@@ -1,11 +1,13 @@
 li.pageLink {
   display: list-item;
-  font-size: 16px;
-  margin-bottom: 15px;
+  font-size: 1rem;
+  margin-bottom: 0.833rem;
+  // change to base color
+  color: #1b1e29;
 }
 
 .indent {
-  margin-left: 20px;
+  margin-left: 1.111rem;
 }
 
 li.pageLink a:hover,

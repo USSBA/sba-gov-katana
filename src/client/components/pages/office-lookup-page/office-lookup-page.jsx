@@ -33,9 +33,17 @@ class OfficeLookupPage extends React.Component {
   }
 
   render() {
+    const defaultZipCode = 20024
+    const defaultSearchParams = {
+      zipCode: defaultZipCode
+    }
     const officeTaxonomy = this.getTaxonomy('officeType')
     return (
-      <SearchTemplate searchType="offices">
+      <SearchTemplate
+        searchType="offices"
+        defaultSearchParams={defaultSearchParams}
+        loadDefaultResults={true}
+      >
         <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
           <TextInput
             id="search"
@@ -46,16 +54,16 @@ class OfficeLookupPage extends React.Component {
             validationState={''}
             showSearchIcon={true}
           />
-          {/*Uncomment for the zip search field*/}
-          {/*           
+
           <TextInput
             id="zip"
-            queryParamName="location_zipcode"
+            queryParamName="zipCode"
             className={style.zip}
             label="Near"
             placeholder="Zip Code"
+            defaultValue={defaultZipCode}
             validationState={''}
-          /> */}
+          />
         </PrimarySearchBar>
         {/*Uncomment for the secondary search bar- still needs styling*/}
         {/* <SecondarySearchBar id="office-secondary-search-bar">

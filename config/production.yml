@@ -1,7 +1,7 @@
 foresee:
     environment: production
 googleAnalytics:
-    enabled: true
+    enabled: false
     accountId: UA-19362636-5
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-MSNZZ6M
