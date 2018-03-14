@@ -1,9 +1,12 @@
+$sba-gray-light: #c5c5c5;
+$sba-gray-dark: #686868;
+
 .footer {
-  height: 2px;
+  height: 0.111rem;
   width: 100%;
   float: left;
-  padding: 30px 0;
-  border-top: 1px solid #c5c5c5;
+  padding: 1.667rem 0;
+  border-top: 0.056rem solid $sba-gray-light;
   @include grid-container;
   a {
     text-decoration: none;
@@ -11,7 +14,7 @@
 }
 
 .footer::after {
-  padding-bottom: 18px;
+  padding-bottom: 1rem;
 }
 
 .footerLinksGroup {
@@ -20,7 +23,7 @@
 
 .desktopFooterLinks {
   display: none;
-  margin-bottom: 15px;
+  margin-bottom: 0.833rem;
   @include grid-media( $sba-grid-large) {
     @include grid-column(2);
     display: block;
@@ -29,90 +32,90 @@
 
 .tabletFooterLinks {
   display: none;
-  margin-bottom: 20px;
+  margin-bottom: 1.111rem;
   @include grid-container;
   ul {
     @include grid-column(4, $sba-grid-medium);
   }
-  @include grid-media( $tablet-nav) {
+  @include grid-media($tablet-nav) {
     display: block;
   }
 }
 
 .mobileFooterLinks {
   display: none;
-  margin-bottom: 20px;
+  margin-bottom: 1.111rem;
   @include grid-container;
   ul {
     @include grid-column(3, $sba-grid-small);
   }
-  @include grid-media( $mobile-nav) {
+  @include grid-media($mobile-nav) {
     display: block;
   }
 }
 
 .footer hr {
   display: none;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 0.056rem solid #c4c4c4;
   &.desktopRule {
-    @include grid-media( $sba-grid-medium) {
+    @include grid-media($sba-grid-medium) {
       display: inline-block;
-      width: calc(100% - 60px);
-      margin: 0 30px 20px 30px;
+      width: calc(100% - 3.333rem);
+      margin: 0 1.667rem 1.111rem 1.667rem;
     }
   }
   &.mobileRule {
-    @include grid-media( $sba-grid-small) {
+    @include grid-media($sba-grid-small) {
       display: inline-block;
       width: calc(100% - 40px);
-      margin: 0 20px 20px 20px;
+      margin: 0 1.111rem 1.111rem 1.111rem;
     }
   }
 }
 
 .SocialMediaLinkSet {
   img {
-    width: 35px;
-    margin-right: 15px;
+    width: 1.944rem;
+    margin-right: 0.8333rem;
   }
-  @include grid-media( $sba-grid-small) {
-    max-width: 300px;
-    margin: 0 auto 20px;
+  @include grid-media($sba-grid-small) {
+    max-width: 16.67rem;
+    margin: 0 auto 1.111rem auto;
   }
-  @include grid-media( $sba-grid-medium) {
+  @include grid-media($sba-grid-medium) {
     img {
-      width: 25px;
-      margin-right: 10px;
+      width: 1.389rem;
+      margin-right: 0.556rem;
     }
     @include grid-column(4);
   }
 }
 
 .address {
-  font-size: 14px;
-  color: #686868;
-  @include grid-media( $mobile-nav) {
+  font-size: 0.778rem;
+  color: $sba-gray-dark;
+  @include grid-media($mobile-nav) {
     text-align: center;
     span {
       display: block;
     }
   }
-  @include grid-media( $tablet-nav) {
+  @include grid-media($tablet-nav) {
     float: right;
-    margin-right: 30px;
+    margin-right: 1.667rem;
     .name {
-      margin-right: 7px;
-      padding-right: 6px;
-      border-right: 1px solid #333;
+      margin-right: 0.389rem;
+      padding-right: 0.333rem;
+      border-right: 0.0556rem solid #333;
     }
   }
-  @include grid-media( $desktop-nav) {
+  @include grid-media($desktop-nav) {
     float: right;
-    margin-right: 30px;
+    margin-right: 1.667rem;
     .name {
-      margin-right: 5px;
-      padding-right: 5px;
-      border-right: 2px solid #c4c4c4;
+      margin-right: 0.278rem;
+      padding-right: 0.278rem;
+      border-right: 0.111rem solid #c4c4c4;
     }
   }
 }

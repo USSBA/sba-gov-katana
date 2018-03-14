@@ -1,17 +1,18 @@
+$sba-blue: #002e6d;
+$sba-red: #cc0000;
+
 a.sectionLink {
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.111rem;
   font-weight: 600;
   position: relative;
 
   &:hover {
     text-decoration: none;
   }
-  @include grid-media($sba-grid-medium) {
-  }
 }
 
-$triangle-size: 13px;
+$triangle-size: 0.722rem;
 .triangle {
   visibility: hidden;
   position: relative;
@@ -19,25 +20,25 @@ $triangle-size: 13px;
   width: 0;
   left: 40%;
   right: 60%;
-  bottom: -3px;
+  bottom: -0.167rem;
   border-right: $triangle-size solid transparent;
   border-left: $triangle-size solid transparent;
   border-top: 0;
   z-index: 100000000000;
-  border-bottom: $triangle-size #ffffff solid;
+  border-bottom: $triangle-size white solid;
   @include grid-media($sba-grid-medium-and-small) {
-    border-bottom: 0px;
+    border-bottom: 0rem;
   }
 }
 
 .link:hover .triangleTheme {
-  border-bottom: $triangle-size #002e6d solid;
+  border-bottom: $triangle-size $sba-blue solid;
 }
 
 .link.highlightLink {
-  border-bottom-color: #cc0000;
+  border-bottom-color: $sba-red;
   a.highlightLink {
-    color: #cc0000;
+    color: $sba-red;
   }
 }
 
@@ -52,7 +53,7 @@ $triangle-size: 13px;
 
 .link {
   border-bottom-color: transparent;
-  padding-bottom: 2px;
-  border-bottom-width: 3px;
+  padding-bottom: 0.111rem;
+  border-bottom-width: 0.167rem;
   border-bottom-style: solid;
 }

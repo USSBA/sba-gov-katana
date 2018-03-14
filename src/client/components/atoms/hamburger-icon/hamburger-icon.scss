@@ -1,6 +1,6 @@
 .textOpen,
 .textClosed {
-  font-size: 18px;
+  font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;
   display: inline;
@@ -8,17 +8,17 @@
 
 .menuIconHamburger,
 .menuIconClose {
-  width: 14px;
+  width: 0.778rem;
   float: right;
   display: inline;
 }
 
 .menuIconHamburger {
-  margin-top: 8px;
+  margin-top: 0.444rem;
 }
 
 .menuIconClose {
-  margin-top: 2px;
+  margin-top: 0.111rem;
 }
 
 .menuIconContainer {

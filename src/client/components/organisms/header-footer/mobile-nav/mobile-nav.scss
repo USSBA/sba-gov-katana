@@ -1,12 +1,15 @@
+$sba-gray-light: #c5c5c5;
+$sba-gray-lighter: #f5f5f5;
+
 .mobileHeaderOpen,
 .mobileHeaderClosed {
   display: none;
-  background-color: #ffffff;
-  border: #c5c5c5 16px solid;
-  height: 53px;
-  padding: 10px 20px 54px;
+  background-color: white;
+  border: #c5c5c5 0.889rem solid;
+  height: 2.944rem;
+  padding: 10px 1.111rem 3rem 1.111rem;
   @include grid-media($sba-grid-medium) {
-    padding-bottom: 63px;
+    padding-bottom: 3.5rem;
   }
   @include grid-media( $tablet-nav) {
     display: block;
@@ -23,9 +26,9 @@
 .menuButtonOpen,
 .menuButtonClosed {
   float: right;
-  border: 2px solid;
-  width: 110px;
-  padding: 5px 13px 6px;
+  border: 0.111rem solid;
+  width: 6.111rem;
+  padding: 0.278rem 0.722rem 0.333rem 0.722rem;
   text-decoration: none;
   &:hover {
     text-decoration: none;
@@ -33,10 +36,10 @@
 }
 
 .mainNavNew .mobileNavMenuLink {
-  border-bottom: 2px solid #dbdbdb;
+  border-bottom: 0.111rem solid #dbdbdb;
   display: block;
-  padding: 25px 50px;
-  font-size: 18px;
+  padding: 1.389rem 2.778rem;
+  font-size: 1rem;
 }
 
 .mobile-search-new {
@@ -45,12 +48,12 @@
 
 .mainNavNew {
   // use base color
-  border: #c5c5c5 16px solid;
-  border-bottom: #c5c5c5 24px solid;
+  border: $sba-gray-light 0.889rem solid;
+  border-bottom: $sba-gray-light 1.333rem solid;
   border-top: hidden;
   width: 100%;
   display: none;
-  background-color: #ffffff;
+  background-color: white;
   overflow: auto;
 }
 
@@ -64,9 +67,9 @@
 
 .mobileSearchContainerNew {
   // should use from base color
-  background-color: #f5f5f5;
-  height: 60px;
-  padding: 10px 0;
+  background-color: $sba-gray-lighter;
+  height: 3.333rem;
+  padding: 0.556rem 0;
   position: relative;
   width: 100%;
 }
@@ -79,26 +82,26 @@
 }
 
 .searchIconNew {
-  width: 15px;
+  width: 0.833rem;
 }
 
 input.searchInputFieldNew {
   position: relative;
-  height: 40px;
+  height: 2.222rem;
   width: 85vw;
-  font-size: 18px;
+  font-size: 1rem;
   color: #666666;
   text-indent: 2%;
-  border: 1px solid #c4c4c4;
+  border: 0.056rem solid #c4c4c4;
   border-radius: 0;
   box-shadow: none;
   margin: 0 auto;
 }
 
 .linkIcon {
-  height: 18px;
-  width: 17px;
+  height: 1rem;
+  width: 0.944rem;
   vertical-align: middle;
-  margin-top: -2px;
-  margin-right: 12px;
+  margin-top: -0.111rem;
+  margin-right: 0.667rem;
 }
