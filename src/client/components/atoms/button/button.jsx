@@ -23,7 +23,8 @@ Button.propTypes = {
   },
 
   // Style button in its alternate form, i.e. primary-alt with a different coloring.
-  alternate: PropTypes.bool
+  alternate: PropTypes.bool,
+  id: PropTypes.string
 
   // icon: Prop,
 
