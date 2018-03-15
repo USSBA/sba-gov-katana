@@ -110,7 +110,6 @@
     font-weight: 300;
     line-height: 1.2;
     padding: 20px 60px 10px;
-    text-decoration: none;
   }
 
   @include grid-media($sba-grid-medium) {
@@ -119,7 +118,6 @@
     font-weight: 300;
     line-height: 1.2;
     padding: 20px 60px 15px;
-    text-decoration: none;
   }
   .backLinkMobile {
     display: none;

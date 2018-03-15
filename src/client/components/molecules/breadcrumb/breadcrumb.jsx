@@ -14,11 +14,11 @@ class Breadcrumb extends React.Component {
   }
   render() {
     if (this.props.items && this.props.items.length > 0) {
-      let tail = _.last(this.props.items)
-      let tailAnchor = this.makeLastAnchor(tail)
-      let rest = _.take(this.props.items, this.props.items.length - 1)
+      const tail = _.last(this.props.items)
+      const tailAnchor = this.makeLastAnchor(tail)
+      const rest = _.take(this.props.items, this.props.items.length - 1)
       return (
-        <div>
+        <div className={styles.breadcrumb}>
           <SmallIcon fontAwesomeIconClassName="home" onClick={() => {}} />
           <span className={styles.slash}>/</span>
           {rest ? (

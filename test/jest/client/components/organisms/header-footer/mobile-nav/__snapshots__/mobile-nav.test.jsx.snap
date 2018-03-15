@@ -6,7 +6,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
     className="mobileHeaderClosed"
   >
     <div
-      className="logoNew"
+      className="logo"
     >
       <a
         autoFocus={false}
