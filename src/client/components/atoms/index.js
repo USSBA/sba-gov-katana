@@ -1,6 +1,7 @@
 import ApplyButton from './apply-button/apply-button'
 import ArrowButton from './arrow-button/arrow-button'
 import BasicLink from './basic-link/basic-link'
+import Button from './button/button'
 import ButtonBase from './button-base/button-base'
 import CaptionText from './caption-text/caption-text'
 import CaretDownIcon from './icons/caret-down'
@@ -63,6 +64,7 @@ export {
   ApplyButton,
   ArrowButton,
   BasicLink,
+  Button,
   ButtonBase,
   CaptionText,
   CaretDownIcon,

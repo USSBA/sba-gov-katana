@@ -1,0 +1,49 @@
+.button {
+  appearance: none;
+  background-color: $sba-blue;
+  border: 2px solid;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $sans-serif-font-family;
+  font-size: 1.222rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 900;
+  line-height: 1;
+  padding: 100px 50px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color $base-duration $base-timing;
+  transition: color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: normal;
+
+  &:hover,
+  &:focus {
+    background-color: shade($action-color, 20%);
+    color: #fff;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $sba-gray-light;
+    color: #fff;
+  }
+}
+
+.primary {
+  background-color: $sba-red;
+}
+
+.secondary {
+}
+
+.alternate {
+}
+// button-filled
+// button-filled-disabled
+// button-outline-disabled
+// button-outline
+// plain-button-backdrop

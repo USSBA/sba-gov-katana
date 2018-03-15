@@ -1,10 +1,11 @@
 import React from 'react'
 import { reduce } from 'lodash'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
-// import naics from "./naics";
 import styles from './developer-tester.scss'
+import { Button } from 'atoms'
 
 export class DeveloperTester extends React.Component {
   render() {
@@ -19,7 +20,10 @@ export class DeveloperTester extends React.Component {
         <hr />
         <hr id="alt" />
         <p>This is some example text. This is some example text.</p>
-        <p>This is some example text. This is some exmaple text.</p>
+        <p>
+          This is some example text. This is some example text with a <a href="https://google.com">link</a>.
+        </p>
+        <Button primary>Click me!</Button>
       </div>
     )
   }
