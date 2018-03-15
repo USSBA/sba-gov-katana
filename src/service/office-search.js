@@ -43,9 +43,10 @@ function officeSearch(req, res) {
         reject(err)
       } else {
         // successful response
+
         const result = data
 
-        resolve(result.hits.hit)
+        resolve(result.hits)
       }
     })
   })

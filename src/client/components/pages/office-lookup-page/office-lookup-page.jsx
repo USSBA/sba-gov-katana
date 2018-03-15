@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as ContentActions from '../../../actions/content.js'
-import { find, cloneDeep } from 'lodash'
+import { find, cloneDeep, isEmpty } from 'lodash'
 
 import style from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, MultiSelect, TextInput, Toggle } from 'atoms'
@@ -35,9 +35,11 @@ class OfficeLookupPage extends React.Component {
   render() {
     const defaultZipCode = 20024
     const defaultSearchParams = {
-      zipCode: defaultZipCode
+      zipCode: defaultZipCode,
+      pageSize: 20
     }
     const officeTaxonomy = this.getTaxonomy('officeType')
+
     return (
       <SearchTemplate
         searchType="offices"
