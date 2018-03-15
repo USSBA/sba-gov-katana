@@ -26,7 +26,10 @@ class OfficeLookupPage extends React.Component {
 
   getTaxonomy(name) {
     if (!this.props.taxonomies) {
-      return { name: '', terms: [] }
+      return {
+        name: '',
+        terms: []
+      }
     }
     const taxonomy = find(this.props.taxonomies, { name: name }) || { name: '', terms: [] }
     return taxonomy
