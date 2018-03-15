@@ -1,5 +1,16 @@
+.closeIcon {
+  stroke: $sba-blue;
+}
+
+.hamburgerIcon {
+  fill: $sba-blue;
+  height: 12px;
+  width: 14px;
+}
+
 .textOpen,
 .textClosed {
+  color: $sba-blue;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;
@@ -8,7 +19,6 @@
 
 .menuIconHamburger,
 .menuIconClose {
-  width: 0.778rem;
   float: right;
   display: inline;
 }
@@ -18,7 +28,9 @@
 }
 
 .menuIconClose {
-  margin-top: 0.111rem;
+  // height: auto;
+  // width: 100%;
+  margin-top: 0.0546rem;
 }
 
 .menuIconContainer {
