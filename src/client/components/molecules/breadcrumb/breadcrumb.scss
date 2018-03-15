@@ -1,9 +1,18 @@
-.slash {
-  margin-right: 5px;
-  margin-left: 5px;
+.breadcrumb a {
+  color: $sba-blue;
+  font-size: 0.889rem;
+  text-decoration: underline;
 }
 
 .last a {
-  font-weight: bold;
+  color: $secondary-black-ish;
+  cursor: default;
+  pointer-events: none;
   text-decoration: none;
+}
+
+.slash {
+  font-size: 0.889rem;
+  margin-right: 0.278rem;
+  margin-left: 0.278rem;
 }
