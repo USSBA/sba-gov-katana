@@ -1,7 +1,7 @@
 import React from 'react'
 import { compact } from 'lodash'
 
-import { ImageSection, ParagraphPlaceholder, SectionHeader, SubsectionHeader, TextSection } from 'atoms'
+import { ImageSection, SectionHeader, SubsectionHeader, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
@@ -25,7 +25,7 @@ function makeParagraphs(
   let paragraphs = []
   let skipNextReadmore = false
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
-    let paragraph = <ParagraphPlaceholder data={item} index={index} />
+    let paragraph = <p>{JSON.stringify(item)}</p>
     let paragraphType = item.type
     if (item && item.type) {
       // Google Analytics Event
