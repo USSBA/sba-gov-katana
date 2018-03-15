@@ -25,7 +25,7 @@ class OfficeResult extends React.PureComponent {
               <hr />
             </div>
           )}
-          <div className={styles.col}>
+          <div className={styles.colA}>
             <div id={`office-type-${id}`}>
               <div className={styles.officeType}>
                 {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
@@ -47,7 +47,7 @@ class OfficeResult extends React.PureComponent {
               <PhoneNumber id={`office-phone-${id}`} phoneNumber={item.location_phone_number[0]} />
             ) : null}
           </div>
-          <div className={styles.col}>
+          <div className={styles.colB}>
             {item.office_service ? (
               <div className={styles.serviceList + ' service-list'}>
                 {' '}
@@ -55,7 +55,8 @@ class OfficeResult extends React.PureComponent {
                 <div>{item.office_service.join(', ')}</div>
               </div>
             ) : null}
-
+          </div>
+          <div className={styles.colC}>
             {item.office_website && item.office_website.length ? (
               <div
                 id={`office-website-button-${id}`}
