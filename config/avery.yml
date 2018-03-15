@@ -16,3 +16,6 @@ features:
 cache:
   s3BucketName: avery-content-sba-gov
   useS3: true
+aws:
+  cloudsearch:
+    officeEndpoint: 'doc-avery-offices-urmxhlkolhldwzpm3fgicypdbe.us-east-1.cloudsearch.amazonaws.com'

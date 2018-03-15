@@ -1,7 +1,16 @@
 .officeResult {
+  h2,
+  h3 {
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
   @include grid-media($sba-grid-medium) {
     @include grid-column(12);
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 15px;
 
     h2 {
@@ -29,13 +38,35 @@
   }
 }
 
-.col {
+.colA {
   @include grid-media($sba-grid-medium) {
     @include grid-column(6);
     margin-bottom: 30px;
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(6);
+    margin-bottom: 30px;
+  }
+}
+
+.colB {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(3);
+    margin-bottom: 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(3);
+    margin-bottom: 30px;
+  }
+}
+
+.colC {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(3);
+    margin-bottom: 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(3);
     margin-bottom: 30px;
   }
 }
@@ -65,6 +96,18 @@
   }
 }
 
+.serviceList {
+  margin: 40px 0 10px;
+
+  @include grid-media($sba-grid-small) {
+    margin: 30px 0;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
 .officeWebsiteButton {
   @include grid-media($sba-grid-small) {
     margin: 30px 0;
@@ -81,5 +124,11 @@
   @include grid-media($sba-grid-large) {
     float: right;
     margin-top: 40px;
+  }
+}
+
+.firstResult {
+  hr {
+    margin: 15px 0 18px;
   }
 }
