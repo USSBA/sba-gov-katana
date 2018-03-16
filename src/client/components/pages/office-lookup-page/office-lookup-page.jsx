@@ -34,9 +34,10 @@ class OfficeLookupPage extends React.Component {
 
   render() {
     const defaultZipCode = 20024
+    const pageSize = 5
     const defaultSearchParams = {
       zipCode: defaultZipCode,
-      pageSize: 20
+      pageSize
     }
     const officeTaxonomy = this.getTaxonomy('officeType')
 
