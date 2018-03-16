@@ -6,7 +6,7 @@ $serif-font-family: 'Merriweather Regular', $font-stack-georgia;
 $base-font-size: 18px;
 
 $base-line-height: 1.5;
-$header-line-height: 1.1;
+$heading-line-height: 1.1;
 
 // for compatibility with Bourbon
 $base-font-family: $sans-serif-font-family;
@@ -57,13 +57,14 @@ $base-font-color: $secondary-black-ish;
 
 // # Box model and spacing ----------------------------------------------------
 
+// TODO: standardize spacing
 $base-spacing: $base-line-height * 1em;
 $base-z-index: 0;
 $small-spacing: $base-spacing / 2;
 
 // # Borders, outlines and shadows --------------------------------------------
 
-$base-border-color: $sba-gray;
+$base-border-color: $sba-gray-dark;
 $base-border-radius: 0;
 $base-border: 1px solid $base-border-color;
 

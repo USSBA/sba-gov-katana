@@ -24,6 +24,17 @@ export class DeveloperTester extends React.Component {
           This is some example text. This is some example text with a <a href="https://google.com">link</a>.
         </p>
         <Button primary>Click me!</Button>
+        <input style={{ margin: '1rem' }} type="text" placeholder="Insert text" />
+        <input type="text" placeholder="Insert text" disabled />
+        <input type="checkbox" />
+        <input type="checkbox" />
+        <input type="radio" />
+        <input type="radio" />
+        <input type="file" />
+        <select>
+          <option selected>apple</option>
+          <option>banana</option>
+        </select>
       </div>
     )
   }

@@ -32,3 +32,48 @@
 //     color: #fff;
 //   }
 // }
+//
+$_button-background-color: white;
+$_button-background-color-hover: $sba-gray-lighter;
+
+#{$all-buttons} {
+  appearance: none;
+  // background-color: $_button-background-color;
+  border: 0;
+  border-radius: $base-border-radius;
+  // color: contrast-switch($_button-background-color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: 1.222rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1;
+  // padding: $small-spacing $base-spacing;
+  padding: 1.063rem 1.375rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover {
+    // background-color: $_button-background-color-hover;
+    // color: contrast-switch($_button-background-color-hover);
+  }
+
+  &:focus {
+    outline: $focus-outline;
+    outline-offset: $focus-outline-offset;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    // opacity: 0.5;
+
+    &:hover {
+      // background-color: $_button-background-color;
+    }
+  }
+}
