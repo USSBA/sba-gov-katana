@@ -10,17 +10,17 @@
   align-items: center;
   justify-content: center;
   @include grid-media( $sba-grid-small) {
-    padding: 0 19px;
+    padding: 0 1.056rem;
   }
 }
 
 .content {
   background-color: #fff;
   position: relative;
-  padding: 30px;
-  width: calc(100% - 38px);
+  padding: 1.667rem;
+  width: calc(100% - 2.111rem);
   @include grid-media( $sba-grid-medium) {
-    width: 556px;
+    width: 30.889rem;
   }
 
   &:focus {
@@ -30,7 +30,7 @@
 
 .logo {
   display: block;
-  margin: auto auto 25px;
+  margin: auto auto 1.389rem;
   height: auto;
   @include grid-media( $sba-grid-medium) {
     width: 18vw;
@@ -47,28 +47,29 @@
 .closeIcon {
   position: absolute;
   cursor: pointer;
-  right: 30px;
-  width: 21px;
+  right: 1.667rem;
+  width: 1.667rem;
+  height: 1.611rem;
 }
 
 .title {
-  margin-bottom: 22px;
+  color: $sba-blue;
+  margin: 0.222rem 0 1.222rem 0;
   text-align: center;
-  padding: 0 30px;
+  padding: 0 1.667rem;
 }
 
 .divider {
-  width: 160px;
-  border: 2px solid #0b97dd;
-  margin: auto auto 22px;
-  @media screen and (max-width: 767px) {
-    width: 100px;
+  width: 8.889rem;
+  border: 1.5px solid $sba-red;
+  margin: auto auto 1.222rem auto;
+  @media screen and (max-width: 42.611rem) {
+    width: 5.556rem;
   }
 }
 
 .text {
-  text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 1.667rem;
 }
 
 .btnContainer {
@@ -82,11 +83,11 @@
     }
   }
   @include grid-media($sba-grid-medium) {
-    max-width: 325px;
+    max-width: 18.056rem;
 
     button {
       &:first-child {
-        margin-left: 30px;
+        margin-left: 1.667rem;
         float: right;
       }
     }
