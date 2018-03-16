@@ -30,18 +30,9 @@
 
 .logo {
   display: block;
-  margin: auto auto 1.389rem;
+  margin: 1.778rem auto 1.778rem auto;
   height: auto;
-  @include grid-media( $sba-grid-small) {
-    width: 26.7vw;
-    margin-bottom: 6.7vw;
-  }
-  @include grid-media( $sba-grid-medium) {
-    width: 165px;
-  }
-  @include grid-media( $sba-grid-large) {
-    width: 165px;
-  }
+  width: 9.167rem;
 }
 
 .closeIcon {
