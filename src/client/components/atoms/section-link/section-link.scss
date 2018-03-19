@@ -3,6 +3,7 @@ a.sectionLink {
   display: inline-block;
   font-size: 1.111rem;
   font-weight: 600;
+  margin-bottom: 0;
   position: relative;
 
   &:hover {
@@ -18,7 +19,7 @@ $triangle-size: 0.722rem;
   width: 0;
   left: 40%;
   right: 60%;
-  bottom: 0.556rem;
+  bottom: -0.167rem;
   border-right: $triangle-size solid transparent;
   border-left: $triangle-size solid transparent;
   border-top: 0;
@@ -51,7 +52,5 @@ $triangle-size: 0.722rem;
 
 .link {
   border-bottom-color: transparent;
-  padding-bottom: 0.111rem;
-  border-bottom-width: 3px;
   border-bottom-style: solid;
 }

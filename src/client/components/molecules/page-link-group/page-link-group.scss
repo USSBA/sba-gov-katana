@@ -1,6 +1,13 @@
 nav .pageLinkGroup {
   width: 13.222rem;
-  margin-bottom: 0.833rem;
+  padding-bottom: 0.833rem;
+}
+
+.pageLinkGroup {
+  ul [id^='sub-menu'] {
+    padding-bottom: 0;
+    margin-bottom: 0.833rem;
+  }
 }
 
 .pageLinkGroup li {
@@ -8,6 +15,7 @@ nav .pageLinkGroup {
   // this might need to be added to _variables.scss
   a {
     color: #1b1e29;
+    margin-bottom: 0;
   }
 }
 
