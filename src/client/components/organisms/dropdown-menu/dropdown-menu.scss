@@ -7,7 +7,7 @@
 }
 
 .dropdownMenu {
-  border-top: 0.278rem solid $sba-blue;
+  border-top: 5px solid $sba-blue;
   box-shadow: 0.111rem 0.111rem 0.222rem 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   left: -36%;
@@ -17,6 +17,7 @@
   z-index: 10000000000;
   display: flex;
   flex-flow: column wrap;
+  top: 2.278rem;
 }
 
 .one {
