@@ -21,13 +21,11 @@ class SectionLink extends React.Component {
           url={this.props.url}
           onKeyDown={this.props.onKeyDown}
         />
-        <div
-          className={
-            styles.triangle +
-            triangleColor +
-            (this.props.shouldForceTriangleMarkerVisibility ? ' ' + styles.visible : '')
-          }
-        />
+        {this.props.shouldForceTriangleMarkerVisibility && this.props.enableTriangleMarker ? (
+          <div className={styles.triangle + triangleColor + ' ' + styles.visible} />
+        ) : (
+          ''
+        )}
         {this.props.children}
       </span>
     )
