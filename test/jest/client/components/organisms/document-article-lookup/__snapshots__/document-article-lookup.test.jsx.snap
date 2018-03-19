@@ -211,7 +211,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="paginator"
     >
       <div
-        className="container"
+        className="container paginator"
         id={undefined}
       >
         <p
@@ -489,7 +489,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="paginator"
     >
       <div
-        className="container"
+        className="container paginator"
         id={undefined}
       >
         <p

@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty, cloneDeep } from 'lodash'
+import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty, cloneDeep, merge } from 'lodash'
 import { bindActionCreators } from 'redux'
 
-//import styles from './global-search.scss'
 import { ApplyButton, MultiSelect, TextInput, SearchIcon } from 'atoms'
+import { Paginator } from 'molecules'
 import { PrimarySearchBar, CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'
 import { logPageEvent } from '../../../services/analytics.js'
 import { logEvent } from '../../../services/analytics.js'
 import PropTypes from 'prop-types'
+import styles from './search.scss'
 
-const styles = {}
 const createSlug = str => {
   return str
     .toLowerCase()
@@ -20,12 +20,14 @@ const createSlug = str => {
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, '')
 }
+
 export class SearchTemplate extends React.PureComponent {
   constructor() {
     super()
     this.state = {
       searchParams: {},
-      results: []
+      results: [],
+      pageNumber: 1
     }
   }
 
@@ -39,12 +41,39 @@ export class SearchTemplate extends React.PureComponent {
     }
   }
 
-  onChange(propName, value) {
-    this.setState(prevState => {
-      const searchParamsClone = cloneDeep(prevState.searchParams)
-      searchParamsClone[propName] = value
-      return { searchParams: searchParamsClone }
-    })
+  componentWillReceiveProps(nextProps) {
+    const { items: results } = nextProps
+    const newState = {
+      results
+    }
+
+    this.setState(newState)
+  }
+
+  onChange(propName, value, options = {}) {
+    const _options = merge(
+      {
+        shouldTriggerSearch: false,
+        shouldResetPageNumber: false
+      },
+      options
+    )
+
+    this.setState(
+      prevState => {
+        const searchParamsClone = cloneDeep(prevState.searchParams)
+        searchParamsClone[propName] = value
+        return { searchParams: searchParamsClone }
+      },
+      () => {
+        if (_options.shouldTriggerSearch === true) {
+          this.onSearch(options)
+        }
+        if (!isEmpty(window)) {
+          window.scrollTo(0, 0)
+        }
+      }
+    )
   }
 
   generateQuery() {
@@ -73,16 +102,79 @@ export class SearchTemplate extends React.PureComponent {
     return search
   }
 
-  onSearch() {
+  onSearch(options = {}) {
+    const _options = merge(
+      {
+        shouldResetPageNumber: true
+      },
+      options
+    )
+
     //doesn't do anything yet but will post query string to history
     const query = this.generateQuery()
     const { searchType } = this.props
-    const { searchParams } = this.state
-    this.doSearch(searchType, searchParams)
+    const searchParams = cloneDeep(this.state.searchParams)
+
+    const data = {}
+    if (_options.shouldResetPageNumber === true) {
+      searchParams.start = 0
+      data.pageNumber = 1
+      data.searchParams = searchParams
+    }
+
+    this.setState(data, () => {
+      this.doSearch(searchType, searchParams)
+    })
   }
 
   doSearch(searchType, searchParams) {
     this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
+  }
+
+  renderPaginator() {
+    const { count, defaultSearchParams: { pageSize } } = this.props
+    const { results, pageNumber } = this.state
+
+    let result = <div />
+
+    if (!isEmpty(results)) {
+      result = (
+        <div className={styles.paginator}>
+          <Paginator
+            pageNumber={pageNumber}
+            pageSize={pageSize}
+            total={count}
+            onBack={this.handleBack.bind(this)}
+            onForward={this.handleForward.bind(this)}
+          />
+        </div>
+      )
+    }
+    return result
+  }
+
+  handleBack() {
+    const { defaultSearchParams: { pageSize } } = this.props
+    const { pageNumber } = this.state
+    const newPageNumber = Math.max(1, pageNumber - 1)
+    this.setState({ pageNumber: newPageNumber }, () => {
+      this.onChange('start', (newPageNumber - 1) * pageSize, {
+        shouldTriggerSearch: true,
+        shouldResetPageNumber: false
+      })
+    })
+  }
+
+  handleForward() {
+    const { count, defaultSearchParams: { pageSize } } = this.props
+    const { pageNumber } = this.state
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(count / pageSize)), pageNumber + 1)
+    this.setState({ pageNumber: newPageNumber }, () => {
+      this.onChange('start', (newPageNumber - 1) * pageSize, {
+        shouldTriggerSearch: true,
+        shouldResetPageNumber: false
+      })
+    })
   }
 
   render() {
@@ -96,7 +188,12 @@ export class SearchTemplate extends React.PureComponent {
       })
     })
 
-    return <div>{childrenWithProps}</div>
+    return (
+      <div>
+        <div>{childrenWithProps}</div>
+        {this.renderPaginator()}
+      </div>
+    )
   }
 }
 
@@ -112,9 +209,12 @@ SearchTemplate.defaultProps = {
 }
 
 function mapReduxStateToProps(reduxState, props) {
+  const hits = reduxState.contentReducer[props.searchType]
+
   return {
-    items: reduxState.contentReducer[props.searchType],
-    location: props.location
+    items: !isEmpty(hits) ? hits.hit : [],
+    location: props.location,
+    count: !isEmpty(hits) ? hits.found : 0
   }
 }
 

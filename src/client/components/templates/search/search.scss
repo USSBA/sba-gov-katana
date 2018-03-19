@@ -1,0 +1,10 @@
+.paginator {
+  margin-top: 15px;
+  float: right;
+  margin: 30px 30px 50px 0;
+  clear: both;
+
+  @include grid-media($sba-grid-small) {
+    margin-bottom: 60px;
+  }
+}

@@ -24,9 +24,9 @@ function officeSearch(req, res) {
     //queryOptions: 'STRING_VALUE',
     //queryParser: 'simple | structured | lucene | dismax',
     //return: 'STRING_VALUE',
-    size: pageSize | defaultPageSize,
+    size: pageSize || defaultPageSize,
     //sort: 'STRING_VALUE',
-    start: start | defaultStart
+    start: start || defaultStart
   }
 
   if (filterQuery) {
@@ -43,9 +43,10 @@ function officeSearch(req, res) {
         reject(err)
       } else {
         // successful response
+
         const result = data
 
-        resolve(result.hits.hit)
+        resolve(result.hits)
       }
     })
   })
