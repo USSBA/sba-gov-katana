@@ -5,12 +5,13 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import styles from './developer-tester.scss'
-import { Button } from 'atoms'
+import { Button, Loader } from 'atoms'
 
 export class DeveloperTester extends React.Component {
   render() {
     return (
       <div>
+        <Loader />
         <h1>Hello</h1>
         <h2>Hello</h2>
         <h3>Hello</h3>
@@ -24,15 +25,17 @@ export class DeveloperTester extends React.Component {
           This is some example text. This is some example text with a <a href="https://google.com">link</a>.
         </p>
 
-        <Button primary disabled>
-          primary button
+        <Button primary>primary button</Button>
+        <Button secondary>secondary button</Button>
+        <Button primary alternate>
+          primary alternate button
         </Button>
-        {/* <Button secondary>secondary button</Button> */}
-        {/* <Button secondary disabled>disabled button</Button> */}
-        {/* <Button primary alternate>primary alternate button</Button> */}
-        {/* <Button primary fullWidth>primary full-width button</Button> */}
-        {/* <Button secondary fullWidth>secondary full-width button</Button> */}
-        {/* <Button primary disabled fullWidth>disabled button</Button> */}
+        <Button primary fullWidth>
+          primary full-width button
+        </Button>
+        <Button secondary fullWidth>
+          secondary full-width button
+        </Button>
 
         <input style={{ margin: '1rem' }} type="text" placeholder="Insert text" />
         <input type="text" placeholder="Insert text" disabled />

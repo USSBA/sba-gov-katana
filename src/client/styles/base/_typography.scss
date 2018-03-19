@@ -2,6 +2,7 @@ html {
   color: $secondary-black-ish;
   font-family: $sans-serif-font-family;
   font-size: $base-font-size;
+  letter-spacing: -0.4px;
   line-height: $base-line-height;
   text-rendering: optimizeLegibility;
 
@@ -30,6 +31,18 @@ h6 {
   font-weight: 600;
 }
 
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.3px;
+}
+
+h1,
+h2 {
+  letter-spacing: 0;
+}
+
 h2,
 h5 {
   font-weight: normal;
@@ -44,10 +57,10 @@ h1 {
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: 1.777rem;
 
   @include for-large-up {
-    font-size: 1.777rem;
+    font-size: 2.25rem;
   }
 }
 
@@ -102,7 +115,8 @@ a {
   }
 
   &:focus {
-    outline: $focus-outline;
+    // TODO: convert to mixin
+    outline: $focus-outline-width dotted $sba-gray-light;
     outline-offset: $focus-outline-offset;
   }
 }
