@@ -32,14 +32,16 @@ const createSlug = str => {
     .replace(/^-+|-+$/g, '')
 }
 
+const origState = {
+  searchParams: {},
+  results: [],
+  pageNumber: 1
+}
+
 export class SearchTemplate extends React.PureComponent {
   constructor() {
     super()
-    this.state = {
-      searchParams: {},
-      results: [],
-      pageNumber: 1
-    }
+    this.state = Object.assign({}, origState)
   }
 
   componentWillMount() {
@@ -54,6 +56,9 @@ export class SearchTemplate extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { items: results } = nextProps
+
+    console.log()
+
     const newState = {
       results
     }
@@ -200,8 +205,14 @@ export class SearchTemplate extends React.PureComponent {
     })
   }
 
+  onReset() {
+    this.setState(origState, () => {
+      this.onSearch()
+    })
+  }
+
   render() {
-    const { children, items } = this.props
+    const { children, items, hasNoResults, loadDefaultResults } = this.props
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
         items: items,
@@ -213,8 +224,32 @@ export class SearchTemplate extends React.PureComponent {
 
     return (
       <div>
-        <div>{childrenWithProps}</div>
-        {this.renderPaginator()}
+        {items.length > 0 && (
+          <div>
+            <div>{childrenWithProps}</div>
+            {this.renderPaginator()}
+          </div>
+        )}
+        {!hasNoResults &&
+          items.length === 0 && (
+            <div>
+              <div>{childrenWithProps}</div>
+              <div className={styles.container}>
+                <p className="results-message">loading...</p>
+              </div>
+            </div>
+          )}
+        {hasNoResults && (
+          <div>
+            <div>{childrenWithProps}</div>
+            <div className={styles.container}>
+              <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
+              <p>
+                <a onClick={this.onReset.bind(this)}>Clear all search filters</a>
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     )
   }
@@ -232,12 +267,21 @@ SearchTemplate.defaultProps = {
 }
 
 function mapReduxStateToProps(reduxState, props) {
-  const hits = reduxState.contentReducer[props.searchType]
+  let items = []
+  let count = 0
+  let hasNoResults
+
+  if (reduxState.contentReducer[props.searchType]) {
+    items = reduxState.contentReducer[props.searchType].hit
+    count = reduxState.contentReducer[props.searchType].found
+    hasNoResults = count === 0
+  }
 
   return {
-    items: !isEmpty(hits) ? hits.hit : [],
+    items,
     location: props.location,
-    count: !isEmpty(hits) ? hits.found : 0
+    count,
+    hasNoResults
   }
 }
 
