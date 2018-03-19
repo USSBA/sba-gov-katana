@@ -47,10 +47,8 @@ textarea {
 
   &:focus {
     border-color: $secondary-blue;
-    // box-shadow: $_form-box-shadow-focus;
-    // outline: none;
-    outline: 2px dotted $secondary-blue-light;
-    outline-offset: 3px;
+    outline: $focus-outline;
+    outline-offset: $focus-outline-offset;
   }
 
   &:disabled {

@@ -1,67 +1,23 @@
-// #{$all-buttons} {
-//   appearance: none;
-//   background-color: $sba-blue;
-//   border: 2px solid;
-//   color: #fff;
-//   cursor: pointer;
-//   display: inline-block;
-//   font-family: $sans-serif-font-family;
-//   font-size: 1.222rem;
-//   -webkit-font-smoothing: antialiased;
-//   font-weight: 900;
-//   line-height: 1;
-//   padding: 0.75em 1.25em;
-//   text-align: center;
-//   text-decoration: none;
-//   text-transform: uppercase;
-//   transition: background-color $base-duration $base-timing;
-//   transition: color $base-duration $base-timing;
-//   user-select: none;
-//   vertical-align: middle;
-//   white-space: normal;
-//
-//   &:hover,
-//   &:focus {
-//     background-color: shade($action-color, 20%);
-//     color: #fff;
-//   }
-//
-//   &:disabled {
-//     cursor: not-allowed;
-//     background-color: $sba-gray-light;
-//     color: #fff;
-//   }
-// }
-//
-$_button-background-color: white;
-$_button-background-color-hover: $sba-gray-lighter;
-
 #{$all-buttons} {
   appearance: none;
-  // background-color: $_button-background-color;
   border: 0;
   border-radius: $base-border-radius;
-  // color: contrast-switch($_button-background-color);
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
   font-size: 1.222rem;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
+  letter-spacing: 0.6;
   line-height: 1;
-  // padding: $small-spacing $base-spacing;
   padding: 1.063rem 1.375rem;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   transition: background-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-
-  &:hover {
-    // background-color: $_button-background-color-hover;
-    // color: contrast-switch($_button-background-color-hover);
-  }
 
   &:focus {
     outline: $focus-outline;
@@ -69,11 +25,8 @@ $_button-background-color-hover: $sba-gray-lighter;
   }
 
   &:disabled {
+    background-color: $sba-gray-light;
+    color: white;
     cursor: not-allowed;
-    // opacity: 0.5;
-
-    &:hover {
-      // background-color: $_button-background-color;
-    }
   }
 }

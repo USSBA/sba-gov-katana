@@ -23,7 +23,17 @@ export class DeveloperTester extends React.Component {
         <p>
           This is some example text. This is some example text with a <a href="https://google.com">link</a>.
         </p>
-        <Button primary>Click me!</Button>
+
+        <Button primary disabled>
+          primary button
+        </Button>
+        {/* <Button secondary>secondary button</Button> */}
+        {/* <Button secondary disabled>disabled button</Button> */}
+        {/* <Button primary alternate>primary alternate button</Button> */}
+        {/* <Button primary fullWidth>primary full-width button</Button> */}
+        {/* <Button secondary fullWidth>secondary full-width button</Button> */}
+        {/* <Button primary disabled fullWidth>disabled button</Button> */}
+
         <input style={{ margin: '1rem' }} type="text" placeholder="Insert text" />
         <input type="text" placeholder="Insert text" disabled />
         <input type="checkbox" />
@@ -32,7 +42,7 @@ export class DeveloperTester extends React.Component {
         <input type="radio" />
         <input type="file" />
         <select>
-          <option selected>apple</option>
+          <option defaultValue>apple</option>
           <option>banana</option>
         </select>
       </div>
