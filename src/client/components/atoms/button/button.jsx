@@ -12,13 +12,18 @@ const Button = props => {
     [styles.button]: true,
     [styles.fullWidth]: fullWidth,
     [styles.primary]: primary,
-    [styles.secondary]: secondary
+    [styles.secondary]: secondary,
+    [styles.spacing]: true
   })
 
+  // return (
+  //   <button type="button" {...nativeProps} className={className}>{children}</button>
+  // )
+
   return (
-    <button {...nativeProps} className={className}>
+    <a href="javascript:;" {...nativeProps} className={className}>
       {children}
-    </button>
+    </a>
   )
 }
 
