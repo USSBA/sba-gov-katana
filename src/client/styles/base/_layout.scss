@@ -10,12 +10,10 @@ html {
 
 body,
 html {
-  //body was messed up with this set - zander
-  //height: 100%;
+  height: 100%;
 }
 
 body {
-  // @include grid-visual;
   @include grid-container;
-  margin: 0px;
+  margin: 0;
 }

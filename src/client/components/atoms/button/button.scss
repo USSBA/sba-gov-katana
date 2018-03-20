@@ -1,0 +1,64 @@
+.button {
+  @include button;
+}
+
+.spacing {
+  // horizontally space adjacent buttons
+  + .button:not(.fullWidth) {
+    margin-left: 1.667rem;
+  }
+
+  // vertically space adjacent full-width buttons
+  + .fullWidth {
+    margin-top: $small-spacing;
+  }
+}
+
+.fullWidth {
+  display: block;
+  margin-left: 0;
+  width: 100%;
+}
+
+.primary {
+  background-color: $sba-red;
+  color: white;
+
+  &:hover {
+    background-color: $sba-red-light;
+    // NOTE: to override base link styles for link buttons
+    color: white;
+  }
+}
+
+.primary.alternate {
+  background-color: $secondary-blue;
+
+  &:hover {
+    background-color: $secondary-blue-light;
+  }
+}
+
+// simulate inner border with box shadow
+@mixin inner-border($color) {
+  box-shadow: inset 0 0 0 2px $color;
+}
+
+.secondary {
+  @include inner-border($sba-blue) background-color: transparent;
+  color: $sba-blue;
+
+  &:hover {
+    @include inner-border($secondary-blue-light) color: $secondary-blue-light;
+    color: $secondary-blue-light;
+  }
+}
+
+// NOTE: This combination doesn't actually exist in the style guide.
+.secondary.alternate {
+  @include inner-border($sba-red) color: $sba-red;
+
+  &:hover {
+    @include inner-border($sba-red-light) color: $sba-red-light;
+  }
+}

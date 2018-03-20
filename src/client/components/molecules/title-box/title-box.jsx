@@ -3,7 +3,7 @@ import React from 'react'
 import diagonalLines from 'assets/images/homepage/diagonal-lines.png'
 import diagonalLinesMobile from 'assets/images/homepage/diagonal-lines-mobile.png'
 import styles from './title-box.scss'
-import { LargeInversePrimaryButton, LargeSecondaryButton } from 'atoms'
+import { Button } from 'atoms'
 
 class TitleBox extends React.Component {
   render() {
@@ -22,18 +22,15 @@ class TitleBox extends React.Component {
           <p id={'paragraph-' + this.props.index} className={styles.sectionText}>
             {this.props.text}
           </p>
+          {/* TODO: clean up */}
           {this.props.solidBox ? (
-            <LargeInversePrimaryButton
-              id={'large-inverse-primary-btn-' + this.props.index}
-              text={'LEARN MORE'}
-              url={this.props.link}
-            />
+            <Button primary id={'large-inverse-primary-btn-' + this.props.index} url={this.props.link}>
+              Learn more
+            </Button>
           ) : (
-            <LargeSecondaryButton
-              id={'large-secondary-btn-' + this.props.index}
-              text={'LEARN MORE'}
-              url={this.props.link}
-            />
+            <Button secondary id={'large-secondary-btn-' + this.props.index} url={this.props.link}>
+              Learn more
+            </Button>
           )}
           {this.props.solidBox ? <div /> : ''}
         </div>

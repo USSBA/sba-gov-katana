@@ -1,8 +1,3 @@
-@include theme(sba-blue, '.callout', $sba-blue, #fff, #fff);
-@include theme(byzantine, '.callout', $byzantine, #fff, #fff);
-@include theme(money-green, '.callout', $money-green, #fff, #fff);
-@include theme(cobalt-blue, '.callout', $cobalt-blue, #fff, #fff);
-
 .callout {
   background-image: url('./corner-graphic.png');
   background-position: bottom right;
@@ -15,7 +10,7 @@
 }
 
 .message {
-  @include font-size($low-contrast-font-sizes);
+  // @include font-size($low-contrast-font-sizes);
   margin-bottom: 30px;
   font-family: 'Source Sans Pro';
   line-height: 30px;
@@ -26,13 +21,13 @@
 
 @media screen and (max-width: 1260px) and (min-width: 1077px) {
   .title {
-    @include font-size($h2-font-sizes);
+    // @include font-size($h2-font-sizes);
   }
 }
 
 @media screen and (max-width: 930px) and (min-width: 768px) {
   .title {
-    @include font-size($h2-font-sizes);
+    // @include font-size($h2-font-sizes);
   }
 }
 

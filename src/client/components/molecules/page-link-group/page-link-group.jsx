@@ -1,8 +1,11 @@
 import React from 'react'
 
 import styles from './page-link-group.scss'
-import { BasicLink, PageLink } from 'atoms'
+import { BasicLink } from 'atoms'
+import PageLink from './page-link'
 
+// TODO: PageLinkGroup is styled differently on header submenu nav and footer
+// May consider refactoring
 class PageLinkGroup extends React.Component {
   render() {
     const { id, links, title, titleLink, indent, isLastGroup, onFinalBlur } = this.props

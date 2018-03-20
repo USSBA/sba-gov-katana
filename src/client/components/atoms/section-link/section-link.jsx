@@ -5,19 +5,19 @@ import { BasicLink } from '../../atoms'
 
 class SectionLink extends React.Component {
   render() {
-    let underlineStyle = this.props.showUnderline ? ' ' + styles.underline : ''
-    let triangleColor = this.props.enableTriangleMarker ? ' ' + styles.triangleTheme : ''
+    const highlightLink = this.props.showUnderline ? ' ' + styles.highlightLink : ''
+    const triangleColor = this.props.enableTriangleMarker ? ' ' + styles.triangleTheme : ''
     return (
       <span
         id={this.props.id + '-container'}
-        className={styles.link + underlineStyle}
+        className={styles.link + highlightLink}
         onMouseOver={this.props.onMouseOver}
         onMouseOut={this.props.onMouseOut}
       >
         <BasicLink
           text={this.props.text}
           id={this.props.id}
-          myClassName={styles.sectionLink}
+          myClassName={styles.sectionLink + highlightLink}
           url={this.props.url}
           onKeyDown={this.props.onKeyDown}
         />

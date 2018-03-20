@@ -1,13 +1,3 @@
-@include theme(sba-blue, '.SmallGreySecondaryButton', #fff, $grey,  $grey);
-@include theme(byzantine, '.SmallGreySecondaryButton', #fff, $grey,  $grey);
-@include theme(money-green, '.SmallGreySecondaryButton', #fff, $grey,  $grey);
-@include theme(cobalt-blue, '.SmallGreySecondaryButton', #fff, $grey,  $grey);
-
-@include theme-hover(sba-blue, '.SmallGreySecondaryButton', $grey-dark, #fff, $grey-dark);
-@include theme-hover(byzantine, '.SmallGreySecondaryButton', $grey-dark, #fff, $grey-dark);
-@include theme-hover(money-green, '.SmallGreySecondaryButton', $grey-dark, #fff, $grey-dark);
-@include theme-hover(cobalt-blue, '.SmallGreySecondaryButton', $grey-dark, #fff, $grey-dark);
-
 .SmallGreySecondaryButton {
   font-size: 1.2em;
   font-weight: 700;

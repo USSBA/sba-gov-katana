@@ -5,7 +5,6 @@
   width: 100%;
   padding-top: 20px;
 }
-@include background-color-theme('.tileHover');
 
 .noUnderline {
   text-decoration: none !important;
@@ -35,8 +34,6 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   z-index: 9999 !important;
 }
-
-@include background-color-theme-hover('.linkContainer', $dark-color-map);
 
 .link {
   font-size: 18px !important;

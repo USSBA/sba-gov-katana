@@ -4,12 +4,10 @@
   position: relative;
 }
 
-@include theme(byzantine, '.container', $byzantine-dark, #fff , null);
-
 .container p {
-  color: $white;
+  color: white;
   text-align: center;
-  @include font-size($h6-font-sizes);
+  // @include font-size($h6-font-sizes);
   font-weight: 600;
   @include grid-media($sba-grid-medium) {
     display: inline;
@@ -20,9 +18,6 @@
     display: block;
   }
 }
-
-@include theme(byzantine, '.container button', $white, $byzantine , $white);
-@include theme-hover(byzantine, '.container button', $byzantine-lightest, $byzantine, $byzantine-lightest);
 
 .cornerLines {
   position: absolute;

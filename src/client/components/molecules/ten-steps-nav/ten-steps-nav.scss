@@ -1,5 +1,5 @@
 $circleColor: #e7bee3;
-$circleColorNegative: $byzantine;
+$circleColorNegative: $sba-blue;
 
 .containerCenter {
   display: none;
@@ -69,7 +69,7 @@ $circleColorNegative: $byzantine;
   top: 50%;
   transform: translateY(-50%);
   height: 42px;
-  background-color: $byzantine-dark;
+  background-color: $sba-blue-dark;
 }
 
 .activeCircleContainer {
@@ -87,7 +87,7 @@ $circleColorNegative: $byzantine;
   width: 30px;
   margin: auto;
   border-radius: 50%;
-  border: 1px solid $byzantine-dark;
+  border: 1px solid $sba-blue-dark;
   background-color: white;
 }
 
@@ -103,7 +103,7 @@ $circleColorNegative: $byzantine;
   transform: translateY(-50%);
   font-size: 18px;
   font-weight: bold;
-  color: $byzantine-dark;
+  color: $sba-blue-dark;
 }
 
 .title {

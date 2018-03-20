@@ -10,17 +10,17 @@ exports[`Front Page Hero should render correctly 1`] = `
     <img
       alt="Start and grow your business"
       className="heroLarge"
-      src="/largeImage.jpg"
+      src="http://kevin.sba.fun/largeImage.jpg"
     />
     <img
       alt="medium image"
       className="heroMedium"
-      src="/mediumImage.jpg"
+      src="http://kevin.sba.fun/mediumImage.jpg"
     />
     <img
       alt="small image"
       className="heroSmall"
-      src="/smallImage.jpg"
+      src="http://kevin.sba.fun/smallImage.jpg"
     />
   </div>
   <div
@@ -39,18 +39,13 @@ exports[`Front Page Hero should render correctly 1`] = `
       >
         Want to be an entrepreneur?
       </div>
-      <button
-        autoFocus={false}
-        className="LargeInversePrimaryButton  "
-        disabled={undefined}
-        formTarget="_self"
-        id="frontpage-hero-button"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="button primary spacing"
+        onClick={[Function]}
+        style={Object {}}
       >
         This is a button
-      </button>
+      </a>
     </div>
   </div>
 </div>

@@ -1,26 +1,3 @@
-$section-nav-color-map: (
-  'sba-blue': $sba-blue-dark,
-  'byzantine': $byzantine,
-  'money-green': $money-green-dark,
-  'cobalt-blue': $cobalt-blue,
-  'sba-blue-dark': $sba-blue-dark
-);
-$section-nav-dark-color-map: (
-  'sba-blue': $sba-blue-darkest,
-  'byzantine': $byzantine-dark,
-  'money-green': $money-green-darkest,
-  'cobalt-blue': $cobalt-blue-dark,
-  'sba-blue-dark': $sba-blue-darkest
-);
-
-@each $name, $value in $section-nav-color-map {
-  @include theme($name, '.navMenu', $value, null, null);
-}
-
-@each $name, $value in $section-nav-dark-color-map {
-  @include theme-hover($name, '.navLinkContainer', $value, null, null);
-}
-
 .navMenu {
   position: fixed;
   z-index: 9999999999 !important;
@@ -109,7 +86,7 @@ $section-nav-dark-color-map: (
 
   text-transform: uppercase;
 
-  color: $base-font-color;
+  color: $secondary-black-ish;
   color: white;
 }
 
@@ -121,7 +98,7 @@ $section-nav-dark-color-map: (
 
   text-transform: uppercase;
 
-  color: $base-font-color;
+  color: $secondary-black-ish;
   color: white;
 }
 
@@ -137,19 +114,19 @@ $section-nav-dark-color-map: (
 }
 
 // .navRightArrow {
-// 	@include grid-media($sba-grid-small){
-// 		display: none !important;
-// 	}
-// 	@include grid-media($sba-grid-medium){
-// 		display: block !important;
-// 		font-size: 30px !important;
-// 		line-height: 30px !important;
-// 		color: white;
-// 		position: absolute;
-// 		top: 50%;
-//   	transform: translateY(-50%);
-//   	right: 20px;
-// 	}
+//   @include grid-media($sba-grid-small){
+//     display: none !important;
+//   }
+//   @include grid-media($sba-grid-medium){
+//     display: block !important;
+//     font-size: 30px !important;
+//     line-height: 30px !important;
+//     color: white;
+//     position: absolute;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     right: 20px;
+//   }
 // }
 
 .navLeftArrow {
@@ -175,7 +152,7 @@ $section-nav-dark-color-map: (
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   // &:hover {
-  //     background: $byzantine-dark;
+  //     background: $sba-blue;
   // }
 }
 

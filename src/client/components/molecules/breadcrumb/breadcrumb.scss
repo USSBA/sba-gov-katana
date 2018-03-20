@@ -1,15 +1,22 @@
-.slash {
-  margin-right: 5px;
-  margin-left: 5px;
+.breadcrumb {
+  line-height: 0.611rem;
 }
-@include color-theme('.container a');
+
+.breadcrumb a {
+  color: $sba-blue;
+  font-size: 0.889rem;
+  text-decoration: underline;
+}
 
 .last a {
-  font-weight: bold;
+  color: $secondary-black-ish;
+  cursor: default;
+  pointer-events: none;
   text-decoration: none;
 }
 
-@include theme(sba-blue, '.last a', null, $base-font-color, $base-font-color);
-@include theme(byzantine, '.last a', null, $base-font-color, $base-font-color);
-@include theme(money-green, '.last a', null, $base-font-color, $base-font-color);
-@include theme(cobalt-blue, '.last a', null, $base-font-color, $base-font-color);
+.slash {
+  font-size: 0.889rem;
+  margin-right: 0.278rem;
+  margin-left: 0.278rem;
+}

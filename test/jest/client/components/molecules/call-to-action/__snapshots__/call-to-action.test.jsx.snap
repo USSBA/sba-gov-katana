@@ -36,18 +36,13 @@ exports[`CallToAction renders a button only 1`] = `
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="alternate button primary spacing"
+        onClick={[Function]}
+        style={Object {}}
       >
         Call To Action
-      </button>
+      </a>
     </div>
     <img
       alt=""
@@ -60,18 +55,6 @@ exports[`CallToAction renders a button only 1`] = `
       src="test-file-stub"
     />
   </div>
-  <button
-    autoFocus={false}
-    className="LargePrimaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;
 
@@ -111,18 +94,13 @@ exports[`CallToAction renders a large size 1`] = `
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="alternate button primary spacing"
+        onClick={[Function]}
+        style={Object {}}
       >
         Call To Action
-      </button>
+      </a>
     </div>
     <img
       alt=""
@@ -135,18 +113,6 @@ exports[`CallToAction renders a large size 1`] = `
       src="test-file-stub"
     />
   </div>
-  <button
-    autoFocus={false}
-    className="SmallInverseSecondaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;
 
@@ -186,18 +152,13 @@ exports[`CallToAction renders a medium size 1`] = `
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="alternate button primary spacing"
+        onClick={[Function]}
+        style={Object {}}
       >
         Call To Action
-      </button>
+      </a>
     </div>
     <img
       alt=""
@@ -210,18 +171,6 @@ exports[`CallToAction renders a medium size 1`] = `
       src="test-file-stub"
     />
   </div>
-  <button
-    autoFocus={false}
-    className="SmallInverseSecondaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;
 
@@ -261,18 +210,13 @@ exports[`CallToAction renders a small size 1`] = `
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="alternate button primary spacing"
+        onClick={[Function]}
+        style={Object {}}
       >
         Call To Action
-      </button>
+      </a>
     </div>
     <img
       alt=""
@@ -285,17 +229,5 @@ exports[`CallToAction renders a small size 1`] = `
       src="test-file-stub"
     />
   </div>
-  <button
-    autoFocus={false}
-    className="SmallInverseSecondaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;

@@ -1,8 +1,22 @@
 import { browserHistory } from 'react-router'
 import { logEvent, logPageEvent } from '../services/analytics.js'
-import { getPaths } from '../components/templates/themer/themes.js'
 import _ from 'lodash'
 import clientConfig from './client-config.js'
+
+const paths = [
+  'styleguide',
+  'learning-center',
+  'guide',
+  'business-guide',
+  'lendermatch',
+  'funding-programs',
+  'document',
+  'article',
+  'partners',
+  'disaster-assistance',
+  'size-standards',
+  'federal-contracting'
+]
 
 function createCtaNavigation(targetLocation, category, action, value) {
   return createNavigation(targetLocation, {
@@ -13,16 +27,16 @@ function createCtaNavigation(targetLocation, category, action, value) {
   })
 }
 
-const matchingLocations = []
-
 // eslint-disable-next-line complexity
 function navigateNow(targetLocation, eventConfig) {
   if (targetLocation) {
     console.log('targetLocation', targetLocation)
-    const mapped = _.map(getPaths(), path => {
+
+    const mapped = _.map(paths, path => {
       // eslint-disable-next-line no-magic-numbers
       return _.startsWith(path, '/' + targetLocation)
     })
+
     const isHandledRoute = _.compact(mapped).length > 0
     const startsWithHttp = _.startsWith(targetLocation, 'http')
     const sbicSpecialCaseToAllowServerRedirect =
@@ -35,11 +49,7 @@ function navigateNow(targetLocation, eventConfig) {
         value: eventConfig.value || null
       })
     }
-    if (
-      (targetLocation === '/' || isHandledRoute) &&
-      !startsWithHttp &&
-      !sbicSpecialCaseToAllowServerRedirect
-    ) {
+    if (targetLocation === '/' && !startsWithHttp && !sbicSpecialCaseToAllowServerRedirect) {
       browserHistory.push(targetLocation)
       // eslint-disable-next-line no-magic-numbers
       if (targetLocation.indexOf('#') === -1) {

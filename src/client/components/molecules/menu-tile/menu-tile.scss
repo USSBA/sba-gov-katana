@@ -6,7 +6,7 @@
 .homepageTile {
   height: 100%;
   width: 100%;
-  background-color: $grey-lighter;
+  background-color: $sba-gray-lighter;
   @include grid-media($sba-grid-small) {
     padding: 27px;
   }
@@ -14,7 +14,6 @@
     padding-top: 71px;
   }
 }
-@include background-color-theme('.tileInverse');
 
 .tileNormal {
   @include grid-media($sba-grid-large) {
@@ -54,11 +53,11 @@
     width: 65%;
     display: inline-block;
   }
-  color: $base-font-color;
+  color: $secondary-black-ish;
 }
 
 .titleInverse {
-  color: $white;
+  color: white;
 }
 
 .rightArrow {
@@ -71,7 +70,6 @@
     right: 15px;
   }
 }
-@include color-theme('.rightArrow');
 
 .line {
   border-style: solid;
@@ -87,10 +85,9 @@
     margin: 21px auto 19px;
   }
 }
-@include border-color-theme('.line');
 
 .lineInverse {
-  border-color: $white !important;
+  border-color: white !important;
 }
 
 .blurb {
@@ -105,7 +102,7 @@
 }
 
 .blurbInverse {
-  color: $white;
+  color: white;
 }
 
 .cornerLines {

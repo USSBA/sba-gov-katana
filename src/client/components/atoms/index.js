@@ -1,6 +1,7 @@
 import ApplyButton from './apply-button/apply-button'
 import ArrowButton from './arrow-button/arrow-button'
 import BasicLink from './basic-link/basic-link'
+import Button from './button/button'
 import ButtonBase from './button-base/button-base'
 import CaptionText from './caption-text/caption-text'
 import CaretDownIcon from './icons/caret-down'
@@ -26,8 +27,6 @@ import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
 import MultiSelect from './multiselect/multiselect'
 import NewsletterSmallPrimaryButton from './newsletter-small-primary-button/newsletter-small-primary-button'
-import PageLink from './page-link/page-link'
-import ParagraphPlaceholder from './paragraph-placeholder/paragraph-placeholder'
 import PdfIcon from './icons/pdf'
 import ProgressBar from './progress-bar/progress-bar'
 import Radio from './radio/radio'
@@ -64,6 +63,7 @@ export {
   ApplyButton,
   ArrowButton,
   BasicLink,
+  Button,
   ButtonBase,
   CaptionText,
   CaretDownIcon,
@@ -89,8 +89,6 @@ export {
   MainLogo,
   MultiSelect,
   NewsletterSmallPrimaryButton,
-  PageLink,
-  ParagraphPlaceholder,
   PdfIcon,
   ProgressBar,
   Radio,
