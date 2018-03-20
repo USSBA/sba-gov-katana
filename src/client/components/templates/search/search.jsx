@@ -55,8 +55,6 @@ export class SearchTemplate extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     const { items: results } = nextProps
 
-    console.log()
-
     const newState = {
       results
     }
