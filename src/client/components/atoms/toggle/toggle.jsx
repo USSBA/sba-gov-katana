@@ -9,9 +9,9 @@ class Toggle extends React.Component {
     super()
   }
   handleClick(option, index) {
-    // this.setState({selectedOptionIndex: index})
-    if (this.props.onClick) {
-      this.props.onClick(option.name, option.value)
+    this.setState({ selectedOptionIndex: index })
+    if (index !== this.getSelectedOptionIndex() && this.props.onChange) {
+      this.props.onChange(option.value)
     }
   }
   getSelectedOptionIndex() {
@@ -26,9 +26,16 @@ class Toggle extends React.Component {
       return (
         <li key={`${this.props.id}-toggle-option-${index}`}>
           {this.getSelectedOptionIndex() === index ? (
-            <span className={styles.selected}>{option.name}</span>
+            <span className={styles.selected}> {option.name}</span>
           ) : (
-            <a onClick={this.handleClick.bind(this)(option)}> {option.name} </a>
+            <a
+              onClick={event => {
+                this.handleClick(option, index)
+              }}
+            >
+              {' '}
+              {option.name}
+            </a>
           )}
         </li>
       )

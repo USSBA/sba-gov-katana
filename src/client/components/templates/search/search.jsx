@@ -1,7 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty, cloneDeep, merge } from 'lodash'
+import {
+  assign,
+  filter,
+  camelCase,
+  chain,
+  includes,
+  pickBy,
+  startCase,
+  isEmpty,
+  cloneDeep,
+  merge
+} from 'lodash'
 import { bindActionCreators } from 'redux'
 
 import { ApplyButton, MultiSelect, TextInput, SearchIcon } from 'atoms'
@@ -76,17 +87,12 @@ export class SearchTemplate extends React.PureComponent {
     )
   }
 
-  generateQuery() {
-    const { searchParams } = this.state
+  generateQueryString(filteredParams) {
     const queryTermArray = []
-    for (const paramName in searchParams) {
-      if (searchParams.hasOwnProperty(paramName)) {
-        let value = searchParams[paramName]
-        //to handle the fact that dropdowns return an object instead of one value
-        value = value.value ? value.value : value
-        if (value && value !== 'All') {
-          queryTermArray.push(`${paramName}=${value}`)
-        }
+    for (const paramName in filteredParams) {
+      if (filteredParams.hasOwnProperty(paramName)) {
+        const value = filteredParams[paramName]
+        queryTermArray.push(`${paramName}=${value}`)
       }
     }
     let search = ''
@@ -102,7 +108,24 @@ export class SearchTemplate extends React.PureComponent {
     return search
   }
 
-  onSearch(options = {}) {
+  filterSearchParams(searchParams) {
+    const filteredSearchParams = {}
+    for (const paramName in searchParams) {
+      if (searchParams.hasOwnProperty(paramName)) {
+        let value = searchParams[paramName]
+        if (value) {
+          //item.value to handle objects returned from multiselects
+          value = value.value || value
+          if (value !== 'All') {
+            filteredSearchParams[paramName] = value
+          }
+        }
+      }
+    }
+    return filteredSearchParams
+  }
+
+  onSearch(options = {}, searchParams = this.state.searchParams) {
     const _options = merge(
       {
         shouldResetPageNumber: true
@@ -110,20 +133,20 @@ export class SearchTemplate extends React.PureComponent {
       options
     )
 
-    //doesn't do anything yet but will post query string to history
-    const query = this.generateQuery()
     const { searchType } = this.props
-    const searchParams = cloneDeep(this.state.searchParams)
 
     const data = {}
     if (_options.shouldResetPageNumber === true) {
-      searchParams.start = 0
+      searchParams.start = 0 //eslint-disable-line no-param-reassign
       data.pageNumber = 1
       data.searchParams = searchParams
     }
+    const filteredSearchParams = this.filterSearchParams(searchParams)
+    //todo: doesn't do anything yet but could post query string to history
+    const query = this.generateQueryString(filteredSearchParams)
 
     this.setState(data, () => {
-      this.doSearch(searchType, searchParams)
+      this.doSearch(searchType, filteredSearchParams)
     })
   }
 
