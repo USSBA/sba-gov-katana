@@ -18,7 +18,7 @@ import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
   componentWillMount() {
-    const necessaryTaxonomies = ['officeType']
+    const necessaryTaxonomies = ['officeType', 'officeService']
     this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
       names: necessaryTaxonomies.join(',')
     })
@@ -28,7 +28,7 @@ class OfficeLookupPage extends React.Component {
     if (!this.props.taxonomies) {
       return { name: '', terms: [] }
     }
-    const taxonomy = find(this.props.taxonomies, { name: name })
+    const taxonomy = find(this.props.taxonomies, { name: name }) || { name: '', terms: [] }
     return taxonomy
   }
 
@@ -39,8 +39,8 @@ class OfficeLookupPage extends React.Component {
       zipCode: defaultZipCode,
       pageSize
     }
-    const officeTaxonomy = this.getTaxonomy('officeType')
-
+    const officeTypeTaxonomy = this.getTaxonomy('officeType')
+    const officeServiceTaxonomy = this.getTaxonomy('officeService')
     return (
       <SearchTemplate
         searchType="offices"
@@ -68,23 +68,30 @@ class OfficeLookupPage extends React.Component {
             validationState={''}
           />
         </PrimarySearchBar>
-        {/*Uncomment for the secondary search bar- still needs styling*/}
-        {/* <SecondarySearchBar id="office-secondary-search-bar">
+        <SecondarySearchBar id="office-secondary-search-bar">
           <TaxonomyMultiSelect
-            queryParamName="office_type"
-            taxonomy={officeTaxonomy}
+            taxonomy={officeServiceTaxonomy}
+            queryParamName="service"
+            label="Service:"
+            multi={false}
+            className={style.search}
+          />
+          <TaxonomyMultiSelect
+            taxonomy={officeTypeTaxonomy}
             label="Resource Type:"
+            queryParamName="type"
             multi={false}
             className={style.search}
           />
           <Toggle
             id="allOffices"
+            queryParamName="isSbaOffice"
             options={[
               { name: 'All Offices', value: 'All' },
-              { name: 'SBA Offices', value: 'SBA', icon: '' }
+              { name: 'SBA Offices', value: 'true', fontAwesomeIconClassName: 'shield' }
             ]}
           />
-        </SecondarySearchBar> */}
+        </SecondarySearchBar>
         <Results id="office-results">
           <OfficeResult />
         </Results>

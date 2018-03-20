@@ -3,6 +3,7 @@ import styles from './office-result.scss'
 import { Address, PhoneNumber } from 'molecules'
 import { SmallSecondaryButton } from 'atoms'
 import PropTypes from 'prop-types'
+import clientConfig from '../../../services/client-config.js'
 
 class OfficeResult extends React.PureComponent {
   render() {
@@ -12,8 +13,9 @@ class OfficeResult extends React.PureComponent {
       return null
     }
 
-    const officeType = item.office_type[0].toLowerCase()
-    const isOfficialOffice = officeType === 'local sba office'
+    const sbaOfficeNames = clientConfig.sbaOfficeNames
+    const officeType = item.office_type[0]
+    const isOfficialOffice = sbaOfficeNames.includes(officeType)
     const isFirstResult = id === 'result-0'
 
     //elasticsearch returns all single value elements as an array *sigh*

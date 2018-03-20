@@ -20,5 +20,5 @@ cache:
 aws:
   cloudsearch:
     searchEndpoint: 'doc-laura-26evoc5xorgki5mbhdiktpp7q4.us-east-1.cloudsearch.amazonaws.com'
-    officeEndpoint: 'doc-mint-offices-mjhazqnua7k5nqkxojddfhkrw4.us-east-1.cloudsearch.amazonaws.com'
+    officeEndpoint: 'doc-avery-offices-urmxhlkolhldwzpm3fgicypdbe.us-east-1.cloudsearch.amazonaws.com'
 

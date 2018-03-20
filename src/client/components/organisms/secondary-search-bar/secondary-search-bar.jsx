@@ -7,7 +7,7 @@ import { ApplyButton, SearchIcon } from 'atoms'
 export class SecondarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
     if (this.props.onFieldChange) {
-      this.props.onFieldChange(fieldName, value)
+      this.props.onFieldChange(fieldName, value, true)
     }
   }
 
@@ -22,7 +22,7 @@ export class SecondarySearchBar extends React.PureComponent {
       const clonedChild = React.cloneElement(child, {
         onChange: valueOrEvent => {
           this.onFieldChange.bind(this)
-          const value = valueOrEvent.target ? valueOrEvent.target.value : value
+          const value = valueOrEvent.target ? valueOrEvent.target.value : valueOrEvent
           this.onFieldChange(child.props.queryParamName, value)
         },
         labelStyle: styles.inlineLabel
@@ -30,7 +30,7 @@ export class SecondarySearchBar extends React.PureComponent {
       return clonedChild
     })
     return (
-      <div id={this.props.id} className={styles.container}>
+      <div id={this.props.id} className={styles.secondarySearchBar}>
         {childrenWithProps}
       </div>
     )

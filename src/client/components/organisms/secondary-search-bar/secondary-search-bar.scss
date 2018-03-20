@@ -1,49 +1,80 @@
-.inlineLabel {
-  display: inline-block;
-}
-.container {
+.secondarySearchBar {
   position: relative;
   width: 100%;
-  :global(.Select-value) {
-    text-overflow: none !important;
-  }
 
   @include grid-media($sba-grid-small) {
     padding: 20px;
   }
+
   @include grid-media($sba-grid-medium) {
     padding: 20px 30px 20px 30px;
   }
+
   @include grid-media($sba-grid-large) {
-    padding: 20px 28px 15px 28px;
-    height: 75px;
     display: flex;
+    justify-content: space-between;
+    height: 75px;
+    padding: 20px 28px 15px 28px;
+
     ul {
       float: right;
     }
-    justify-content: space-between;
+
     > div {
       width: 100% !important;
       float: none !important;
     }
-    :global(.Select-control) {
-      border: 0px !important;
-      padding-right: 40px !important;
-      width: max-content !important;
-    }
-    :global(.Select-value) {
-      font-weight: bold !important;
-      text-overflow: none !important;
-    }
-    :global(.Select-arrow-zone) {
-      width: 45px !important;
-      padding-left: 5px !important;
-    }
+
     label {
       float: left;
-      margin-top: 0.42em;
       font-weight: normal;
+      margin-top: 0.42em;
       margin-right: 10px;
+    }
+
+    :global(.Select-control) {
+      background: none !important;
+      border: hidden !important;
+      box-shadow: none;
+      border-bottom-color: #fff;
+      display: inline;
+      padding-right: 40px !important;
+      text-decoration: none !important;
+      width: max-content !important;
+      &:focus {
+        background-color: #fff !important;
+        border: hidden !important;
+        box-shadow: none;
+        text-decoration: none !important;
+      }
+    }
+
+    :global(.Select--single > .Select-control .Select-value) {
+      font-weight: bold !important;
+      line-height: 27px;
+      overflow: visible !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      &:after {
+        content: '\f078';
+        font-family: FontAwesome;
+        font-size: 12px;
+        left: 10px;
+        position: relative;
+      }
+    }
+
+    :global(.Select-arrow-zone) {
+      display: none;
+    }
+
+    :global(.Select-arrow) {
+      display: none;
+    }
+
+    :global(.Select-menu-outer) {
+      background-color: #fff;
+      border: 1px solid #ccc;
     }
   }
 }

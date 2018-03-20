@@ -22,7 +22,7 @@ export class PrimarySearchBar extends React.PureComponent {
       const clonedChild = React.cloneElement(child, {
         onChange: valueOrEvent => {
           this.onFieldChange.bind(this)
-          const value = valueOrEvent.target ? valueOrEvent.target.value : value
+          const value = valueOrEvent.target ? valueOrEvent.target.value : valueOrEvent
           this.onFieldChange(child.props.queryParamName, value)
         }
       })

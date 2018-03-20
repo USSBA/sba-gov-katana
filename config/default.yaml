@@ -73,6 +73,8 @@ features:
         enabled: false
         tableName: DrupalUrlRedirect
     true404: false
+    office:
+        sbaOfficeNames: ['SBA district office', 'SBA regional office']
 sizestandards:
     endpoint: placeholder
 cache:

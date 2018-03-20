@@ -68,7 +68,8 @@ app.use(function(req, res, next) {
         showSbic: config.get('features.showSbic'),
         moon: config.get('features.moon'),
         searchUrl: config.get('features.searchUrl'),
-        forPartners: config.get('features.forPartners')
+        forPartners: config.get('features.forPartners'),
+        sbaOfficeNames: config.get('features.office.sbaOfficeNames')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       next()
