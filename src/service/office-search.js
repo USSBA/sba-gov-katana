@@ -24,7 +24,7 @@ function buildIsSbaOfficeFilterQuery(isSbaOffice) {
   if (isSbaOffice && (isSbaOffice === true || isSbaOffice.toLowerCase() === 'true')) {
     const sbaOfficeNames = config.get('features.office.sbaOfficeNames')
     const sbaSearchStrings = sbaOfficeNames.map(officeName => {
-      return `office_type: '${officeName}'`
+      return `office_type: '${formatString(officeName)}'`
     })
     if (sbaOfficeNames.length === 1) {
       sbaOfficeString = sbaSearchStrings[0]
@@ -35,12 +35,20 @@ function buildIsSbaOfficeFilterQuery(isSbaOffice) {
   return sbaOfficeString
 }
 
+function formatString(string) {
+  let result = decodeURI(string)
+  //cloudsearch requires us to escape backslashes and quotes
+  result = result.replace(/\\/g, '\\\\')
+  result = result.replace(/'/g, "\\'")
+  return result
+}
+
 function buildFilters(req) {
   const { zipCode, service, type, isSbaOffice } = req
   const filters = [
-    zipCode ? `location_zipcode: '${decodeURI(zipCode)}'` : '',
-    service ? `office_service: '${decodeURI(service)}'` : '',
-    type ? `office_type: '${decodeURI(type)}'` : '',
+    zipCode ? `location_zipcode: '${formatString(zipCode)}'` : '',
+    service ? `office_service: '${formatString(service)}'` : '',
+    type ? `office_type: '${formatString(type)}'` : '',
     buildIsSbaOfficeFilterQuery(isSbaOffice)
   ]
   return filters
