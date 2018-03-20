@@ -6,8 +6,12 @@ import { ApplyButton, SearchIcon } from 'atoms'
 
 export class SecondarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
+    const onChangeOptions = {
+      shouldTriggerSearch: true,
+      shouldResetPageNumber: true
+    }
     if (this.props.onFieldChange) {
-      this.props.onFieldChange(fieldName, value, true)
+      this.props.onFieldChange(fieldName, value, onChangeOptions)
     }
   }
 

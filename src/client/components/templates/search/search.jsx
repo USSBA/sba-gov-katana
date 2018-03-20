@@ -134,9 +134,6 @@ export class SearchTemplate extends React.PureComponent {
     )
 
     const { searchType } = this.props
-    const filteredSearchParams = this.filterSearchParams(searchParams)
-    //todo: doesn't do anything yet but could post query string to history
-    const query = this.generateQueryString(filteredSearchParams)
 
     const data = {}
     if (_options.shouldResetPageNumber === true) {
@@ -144,6 +141,9 @@ export class SearchTemplate extends React.PureComponent {
       data.pageNumber = 1
       data.searchParams = searchParams
     }
+    const filteredSearchParams = this.filterSearchParams(searchParams)
+    //todo: doesn't do anything yet but could post query string to history
+    const query = this.generateQueryString(filteredSearchParams)
 
     this.setState(data, () => {
       this.doSearch(searchType, filteredSearchParams)
