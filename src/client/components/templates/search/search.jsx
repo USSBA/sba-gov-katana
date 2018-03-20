@@ -188,6 +188,10 @@ export class SearchTemplate extends React.PureComponent {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
       })
+      logPageEvent({
+        category: 'Show-More-Results',
+        action: 'Previous'
+      })
     })
   }
 
@@ -199,6 +203,10 @@ export class SearchTemplate extends React.PureComponent {
       this.onChange('start', (newPageNumber - 1) * pageSize, {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
+      })
+      logPageEvent({
+        category: 'Show-More-Results',
+        action: 'Next'
       })
     })
   }
@@ -257,6 +265,11 @@ const LoadingView = props => {
 }
 
 const NoResultsView = props => {
+  logPageEvent({
+    category: 'No-Office-Search-Results',
+    action: 'NoOfficeSearchResults'
+  })
+
   return (
     <div className="no-results-view">
       <div className={styles.container + ' ' + styles.emptyDocuments}>
