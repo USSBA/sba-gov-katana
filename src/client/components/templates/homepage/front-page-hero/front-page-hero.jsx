@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from './front-page-hero.scss'
 import Triangle from 'assets/images/homepage/primary-landing/desktop-corner-graphic.png'
-import { LargeInversePrimaryButton } from 'atoms'
+import { Button } from 'atoms'
 import { eventCategories } from '../../../../services/constants'
 
 class FrontPageHero extends React.Component {
@@ -31,17 +31,10 @@ class FrontPageHero extends React.Component {
         <div className={styles.boxContainer}>
           <div className={styles.box}>
             <h1 className={styles.title}>{title}</h1>
-            {/* <div className={styles.title}>{title}</div> */}
             <div className={styles.text}>{caption}</div>
-            <LargeInversePrimaryButton
-              id="frontpage-hero-button"
-              eventConfig={{
-                category: [eventCategories.frontPage, 'Hero'].join('-'),
-                action: `Click: ${button.title}`
-              }}
-              text={button.title}
-              url={button.url}
-            />
+            <Button primary url={button.url}>
+              {button.title}
+            </Button>
           </div>
         </div>
       </div>

@@ -42,13 +42,13 @@ describe('Front Page Hero', () => {
     expect(tree).toMatchSnapshot()
   })
 
-  test('callout button renders correctly', () => {
-    const component = shallow(<FrontPageHero hero={heroProps} button={buttonProps[0]} />)
-
-    expect(component.find('LargeInversePrimaryButton').props().id).toEqual('frontpage-hero-button')
-    expect(component.find('LargeInversePrimaryButton').props().text).toEqual('This is a button')
-    expect(component.find('LargeInversePrimaryButton').props().url).toEqual('/button-url')
-  })
+  // test('callout button renders correctly', () => {
+  //   const component = shallow(<FrontPageHero hero={heroProps} button={buttonProps[0]} />)
+  //
+  //   expect(component.find('LargeInversePrimaryButton').props().id).toEqual('frontpage-hero-button')
+  //   expect(component.find('LargeInversePrimaryButton').props().text).toEqual('This is a button')
+  //   expect(component.find('LargeInversePrimaryButton').props().url).toEqual('/button-url')
+  // })
 
   test('should load correct elements before rendering', () => {
     const component = shallow(<FrontPageHero hero={heroProps} button={buttonProps[0]} />)

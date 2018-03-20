@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router'
 
 import classNames from 'classnames'
 import styles from './button.scss'
 import { BasicLink } from 'atoms'
 
 const Button = props => {
-  const { alternate, children, fullWidth, icon, id, primary, secondary, ...nativeProps } = props
+  const { alternate, children, fullWidth, icon, id, url, primary, secondary, ...nativeProps } = props
 
+  // TODO: make full width based on media query based on prop
   const className = classNames({
     [styles.alternate]: alternate,
     [styles.button]: true,
@@ -16,14 +18,15 @@ const Button = props => {
     [styles.spacing]: true
   })
 
-  // return (
-  //   <button type="button" {...nativeProps} className={className}>{children}</button>
-  // )
-
-  return (
-    <a href="javascript:;" {...nativeProps} className={className}>
+  // TODO: check native props map correctly to anchor or button
+  return url ? (
+    <Link {...nativeProps} to={url} className={className}>
       {children}
-    </a>
+    </Link>
+  ) : (
+    <button {...nativeProps} className={className}>
+      {children}
+    </button>
   )
 }
 

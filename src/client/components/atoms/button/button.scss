@@ -2,12 +2,6 @@
   @include button;
 }
 
-// a.button {
-//   &:hover {
-//     color: initial;
-//   }
-// }
-
 .spacing {
   // horizontally space adjacent buttons
   + .button:not(.fullWidth) {
@@ -56,7 +50,7 @@
 
   &:hover {
     @include inner-border($secondary-blue-light) color: $secondary-blue-light;
-    color: $sba-blue;
+    color: $secondary-blue-light;
   }
 }
 
