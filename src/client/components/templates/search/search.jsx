@@ -32,16 +32,14 @@ const createSlug = str => {
     .replace(/^-+|-+$/g, '')
 }
 
-const origState = {
-  searchParams: {},
-  results: [],
-  pageNumber: 1
-}
-
 export class SearchTemplate extends React.PureComponent {
   constructor() {
     super()
-    this.state = Object.assign({}, origState)
+    this.state = {
+      searchParams: {},
+      results: [],
+      pageNumber: 1
+    }
   }
 
   componentWillMount() {
@@ -205,12 +203,6 @@ export class SearchTemplate extends React.PureComponent {
     })
   }
 
-  onReset() {
-    this.setState(origState, () => {
-      this.onSearch()
-    })
-  }
-
   render() {
     const { children, items, hasNoResults, loadDefaultResults } = this.props
     const childrenWithProps = React.Children.map(children, child => {
@@ -222,37 +214,75 @@ export class SearchTemplate extends React.PureComponent {
       })
     })
 
+    let viewState, curViewComponentNeeded
+
+    if (items.length > 0) {
+      viewState = 'IS_LOADED_WITH_RESULTS'
+    } else if (!hasNoResults && items.length === 0) {
+      viewState = 'IS_LOADING'
+    } else if (hasNoResults) {
+      viewState = 'IS_LOADED_WITH_NO_RESULTS'
+    }
+
+    switch (viewState) {
+      case 'IS_LOADED_WITH_RESULTS':
+        curViewComponentNeeded = <div> {this.renderPaginator()} </div>
+        break
+      case 'IS_LOADING':
+        curViewComponentNeeded = <LoadingView />
+        break
+      case 'IS_LOADED_WITH_NO_RESULTS':
+        curViewComponentNeeded = <NoResultsView />
+        break
+      default:
+    }
+
     return (
       <div>
-        {items.length > 0 && (
-          <div>
-            <div>{childrenWithProps}</div>
-            {this.renderPaginator()}
-          </div>
-        )}
-        {!hasNoResults &&
-          items.length === 0 && (
-            <div>
-              <div>{childrenWithProps}</div>
-              <div className={styles.container}>
-                <p className="results-message">loading...</p>
-              </div>
-            </div>
-          )}
-        {hasNoResults && (
-          <div>
-            <div>{childrenWithProps}</div>
-            <div className={styles.container}>
-              <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
-              <p>
-                <a onClick={this.onReset.bind(this)}>Clear all search filters</a>
-              </p>
-            </div>
-          </div>
-        )}
+        <div>{childrenWithProps}</div>
+        <div>{curViewComponentNeeded}</div>
       </div>
     )
   }
+}
+
+const LoadingView = props => {
+  return (
+    <div className="loading-view">
+      <div className={styles.container}>
+        <p>loading...</p>
+      </div>
+    </div>
+  )
+}
+
+const NoResultsView = props => {
+  return (
+    <div className="no-results-view">
+      <div className={styles.container + ' ' + styles.emptyDocuments}>
+        <p className={styles.emptyDocumentsMessage}>No results found</p>
+        <div className={styles.resultsMessage}>
+          <p>
+            <strong>Search tips:</strong>
+          </p>
+          <ul>
+            <li>
+              <div className={styles.bullet} />
+              <p>Try a different search term, like “counseling” instead of "counselor".</p>
+            </li>
+            <li>
+              <div className={styles.bullet} />
+              <p>Try searching with different ZIP code.</p>
+            </li>
+            <li>
+              <div className={styles.bullet} />
+              <p>Try filtering by a different service, resource type or distance.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 SearchTemplate.propTypes = {
