@@ -1,5 +1,5 @@
 import React from 'react'
-import { MultiSelect } from 'atoms'
+import { MultiSelect, SmallIcon } from 'atoms'
 import { camelCase, startCase } from 'lodash'
 import PropTypes from 'prop-types'
 import styles from './toggle.scss'
@@ -25,6 +25,9 @@ class Toggle extends React.Component {
     return this.props.options.map((option, index) => {
       return (
         <li key={`${this.props.id}-toggle-option-${index}`}>
+          {option.fontAwesomeIconClassName ? (
+            <SmallIcon fontAwesomeIconClassName={option.fontAwesomeIconClassName} />
+          ) : null}
           {this.getSelectedOptionIndex() === index ? (
             <span className={styles.selected}> {option.name}</span>
           ) : (
