@@ -240,7 +240,7 @@ export class SearchTemplate extends React.PureComponent {
         curViewComponentNeeded = <LoadingView />
         break
       case 'IS_LOADED_WITH_NO_RESULTS':
-        curViewComponentNeeded = <NoResultsView />
+        curViewComponentNeeded = <NoResultsView term={this.state.searchParams.term} />
         break
       default:
     }
@@ -267,7 +267,8 @@ const LoadingView = props => {
 const NoResultsView = props => {
   logPageEvent({
     category: 'No-Office-Search-Results',
-    action: 'NoOfficeSearchResults'
+    action: 'NoOfficeSearchResults',
+    label: props.term
   })
 
   return (
