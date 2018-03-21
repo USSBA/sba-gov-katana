@@ -12,7 +12,7 @@
     "format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "lint": "eslint src",
     "test": "NODE_ENV=test npm run test-jest && NODE_ENV=test npm run test-mocha",
-    "test-jest": "NODE_ENV=test jest test/jest/",
+    "test-jest": "NODE_ENV=test jest -w 1 test/jest/",
     "test-mocha": "NODE_ENV=test mocha --compilers js:babel-core/register  --require  ignore-styles ./test/mocha/helpers/globals.js test/mocha/**/*.test.js",
     "test-format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "precommit": "npm run lint && npm run test && lint-staged",
