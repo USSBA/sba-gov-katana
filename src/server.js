@@ -157,6 +157,7 @@ app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     lang: req.preferredLanguage,
     config: JSON.stringify(req.sessionAndConfig),
+    cdnPathFromBackend: config.get('publicPath'),
     optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
     tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
     foreseeEnabled: config.get('foresee.enabled'),

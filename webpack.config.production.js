@@ -5,6 +5,7 @@ const sharedConfig = require('./webpack.config.shared.js')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var CompressionPlugin = require('compression-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const DynamicPublicPathPlugin = require("dynamic-public-path-webpack-plugin")
 
 module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
@@ -13,9 +14,13 @@ module.exports = function(env) {
     output: {
       path: path.join(__dirname, 'public', 'build'),
       filename: 'bundle.js',
-      publicPath: '/build/'
+      publicPath: 'http://this-is-my-public-path.com' // Mandatory!
     },
     plugins: [
+      new DynamicPublicPathPlugin({
+        externalGlobal: 'window.cdnPathFromBackend', //Your global variable name.
+        chunkName: 'main' // Chunk name from "entry".
+      }),
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: 'report.html',
@@ -46,12 +51,10 @@ module.exports = function(env) {
       })
     ],
     module: {
-      rules: [
-        {
-          test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
-          loader: 'url-loader?limit=3000'
-        }
-      ]
+      rules: [{
+        test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
+        loader: 'url-loader?limit=3000'
+      }]
     }
   })
 }
