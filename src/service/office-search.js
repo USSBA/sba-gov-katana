@@ -93,9 +93,9 @@ function officeSearch(req, res) {
       } else {
         // successful response
 
-        const result = data
+        const result = data.hits
 
-        resolve(result.hits)
+        resolve(result)
       }
     })
   })

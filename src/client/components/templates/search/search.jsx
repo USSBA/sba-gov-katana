@@ -19,8 +19,6 @@ import { ApplyButton, MultiSelect, TextInput, SearchIcon } from 'atoms'
 import { Paginator } from 'molecules'
 import { PrimarySearchBar, CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'
-import { logPageEvent } from '../../../services/analytics.js'
-import { logEvent } from '../../../services/analytics.js'
 import PropTypes from 'prop-types'
 import styles from './search.scss'
 
@@ -54,6 +52,7 @@ export class SearchTemplate extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { items: results } = nextProps
+
     const newState = {
       results
     }
@@ -201,7 +200,7 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { children, items } = this.props
+    const { children, items, hasNoResults, loadDefaultResults } = this.props
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
         items: items,
@@ -211,13 +210,75 @@ export class SearchTemplate extends React.PureComponent {
       })
     })
 
+    let viewState, curViewComponentNeeded
+
+    if (items.length > 0) {
+      viewState = 'IS_LOADED_WITH_RESULTS'
+    } else if (!hasNoResults && items.length === 0) {
+      viewState = 'IS_LOADING'
+    } else if (hasNoResults) {
+      viewState = 'IS_LOADED_WITH_NO_RESULTS'
+    }
+
+    switch (viewState) {
+      case 'IS_LOADED_WITH_RESULTS':
+        curViewComponentNeeded = <div> {this.renderPaginator()} </div>
+        break
+      case 'IS_LOADING':
+        curViewComponentNeeded = <LoadingView />
+        break
+      case 'IS_LOADED_WITH_NO_RESULTS':
+        curViewComponentNeeded = <NoResultsView term={this.state.searchParams.term} />
+        break
+      default:
+    }
+
     return (
       <div>
         <div>{childrenWithProps}</div>
-        {this.renderPaginator()}
+        <div>{curViewComponentNeeded}</div>
       </div>
     )
   }
+}
+
+const LoadingView = props => {
+  return (
+    <div className="loading-view">
+      <div className={styles.container}>
+        <p>loading...</p>
+      </div>
+    </div>
+  )
+}
+
+const NoResultsView = props => {
+  return (
+    <div className="no-results-view">
+      <div className={styles.container + ' ' + styles.emptyDocuments}>
+        <p className={styles.emptyDocumentsMessage}>No results found</p>
+        <div className={styles.resultsMessage}>
+          <p>
+            <strong>Search tips:</strong>
+          </p>
+          <ul>
+            <li>
+              <div className={styles.bullet} />
+              <p>Try a different search term, like “counseling” instead of "counselor".</p>
+            </li>
+            <li>
+              <div className={styles.bullet} />
+              <p>Try searching with different ZIP code.</p>
+            </li>
+            <li>
+              <div className={styles.bullet} />
+              <p>Try filtering by a different service, resource type or distance.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 SearchTemplate.propTypes = {
@@ -232,12 +293,21 @@ SearchTemplate.defaultProps = {
 }
 
 function mapReduxStateToProps(reduxState, props) {
-  const hits = reduxState.contentReducer[props.searchType]
+  let items = []
+  let count = 0
+  let hasNoResults
+
+  if (reduxState.contentReducer[props.searchType]) {
+    items = reduxState.contentReducer[props.searchType].hit
+    count = reduxState.contentReducer[props.searchType].found
+    hasNoResults = count === 0
+  }
 
   return {
-    items: !isEmpty(hits) ? hits.hit : [],
+    items,
     location: props.location,
-    count: !isEmpty(hits) ? hits.found : 0
+    count,
+    hasNoResults
   }
 }
 
