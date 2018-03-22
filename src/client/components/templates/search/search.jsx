@@ -19,8 +19,6 @@ import { ApplyButton, MultiSelect, TextInput, SearchIcon } from 'atoms'
 import { Paginator } from 'molecules'
 import { PrimarySearchBar, CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'
-import { logPageEvent } from '../../../services/analytics.js'
-import { logEvent } from '../../../services/analytics.js'
 import PropTypes from 'prop-types'
 import styles from './search.scss'
 
@@ -186,10 +184,6 @@ export class SearchTemplate extends React.PureComponent {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
       })
-      logPageEvent({
-        category: 'Show-More-Results',
-        action: 'Previous'
-      })
     })
   }
 
@@ -201,10 +195,6 @@ export class SearchTemplate extends React.PureComponent {
       this.onChange('start', (newPageNumber - 1) * pageSize, {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
-      })
-      logPageEvent({
-        category: 'Show-More-Results',
-        action: 'Next'
       })
     })
   }
@@ -263,12 +253,6 @@ const LoadingView = props => {
 }
 
 const NoResultsView = props => {
-  logPageEvent({
-    category: 'No-Office-Search-Results',
-    action: 'NoOfficeSearchResults',
-    label: props.term
-  })
-
   return (
     <div className="no-results-view">
       <div className={styles.container + ' ' + styles.emptyDocuments}>
