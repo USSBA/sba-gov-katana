@@ -412,7 +412,8 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <div>
         <label className={style.formLabel}>
-          What are your normal office hours? <span className={style.optional}>(optional)</span>
+          What are your normal office hours?{' '}
+          <span className={style.optional}>(optional, some are open occasional Sat or Thurs.. etc)</span>
         </label>
         {hoursOptions}
       </div>
@@ -430,7 +431,10 @@ class ResourceCenterProfilePage extends React.Component {
         'Legal issues',
         'International trade',
         'Networking',
-        'Business management'
+        'Business management',
+        'Technology development',
+        'Disaster preparedness',
+        'Access & Capital'
       ],
       expertise => {
         return (
