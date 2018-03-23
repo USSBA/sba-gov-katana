@@ -1,8 +1,16 @@
 import _ from 'lodash'
 import resourceCenters from './resource-centers.json'
 
-const getPartners = () => {
-  return Object.keys(resourceCenters)
+const getPartners = (partnersList = []) => {
+  let keys = Object.keys(resourceCenters)
+  if (!_.isEmpty(partnersList)) {
+    keys = partnersList.filter(partner => {
+      return keys.find(key => {
+        return key === partner ? key : false
+      })
+    })
+  }
+  return keys
 }
 
 const getPartnerOffices = partner => {
