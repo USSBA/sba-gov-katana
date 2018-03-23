@@ -11,7 +11,8 @@ import {
   MultiSelect,
   TextInput,
   LargePrimaryButton,
-  FormErrorMessage
+  FormErrorMessage,
+  TextArea
 } from 'atoms'
 import _ from 'lodash'
 import {
@@ -184,9 +185,11 @@ class ResourceCenterProfilePage extends React.Component {
       'name',
       'businessStage',
       'serviceArea',
+      'email',
       'url',
       'expertise',
       'services',
+      'furtherDescription',
       'needsUpdating'
     ]
     const newValidationState = _.cloneDeep(this.state.isFieldValid)
@@ -412,8 +415,7 @@ class ResourceCenterProfilePage extends React.Component {
     return (
       <div>
         <label className={style.formLabel}>
-          What are your normal office hours?{' '}
-          <span className={style.optional}>(optional, some are open occasional Sat or Thurs.. etc)</span>
+          What are your normal office hours? <span className={style.optional}>(optional)</span>
         </label>
         {hoursOptions}
       </div>
@@ -424,7 +426,7 @@ class ResourceCenterProfilePage extends React.Component {
     const expertiseOptions = _.map(
       [
         'Creating a plan',
-        'Getting a loan',
+        'Access & Capital',
         'Business finances',
         'Marketing and sales',
         'Government contracting',
@@ -434,7 +436,7 @@ class ResourceCenterProfilePage extends React.Component {
         'Business management',
         'Technology development',
         'Disaster preparedness',
-        'Access & Capital'
+        'HR/hiring'
       ],
       expertise => {
         return (
@@ -556,7 +558,7 @@ class ResourceCenterProfilePage extends React.Component {
           id={idPrefix + 'business-stage-label'}
           className={this.isFieldInvalid('businessStage') ? style.invalid : style.formLabel}
         >
-          Which business stage does your office best serve?
+          Which business stage does your office primarily serve?
         </label>
         <Radio
           id={idPrefix + 'business-stage'}
@@ -591,7 +593,7 @@ class ResourceCenterProfilePage extends React.Component {
             id={idPrefix + 'needs-updating-label'}
             className={this.isFieldInvalid('needsUpdating') ? style.invalid : style.formLabel}
           >
-            Is this your office address and phone number?
+            Is this your physical office address and phone number?
           </label>
           <div>{selectedOffice.street1}</div>
           <div>{selectedOffice.street2}</div>
@@ -630,7 +632,7 @@ class ResourceCenterProfilePage extends React.Component {
         </p>
         <p>
           To update your office address and phone number, contact SBA's{' '}
-          <a href="mailto:anna.kojzar@sba.gov?subject=Resource Center Profile- updates">
+          <a href="mailto:edmis@sba.gov?subject=Resource Center Profile- updates">
             Office of Entrepreneurial Development
           </a>
         </p>
@@ -660,6 +662,19 @@ class ResourceCenterProfilePage extends React.Component {
             {selectedOffice && this.renderShouldUpdateAddressRadios()}
 
             <TextInput
+              id={idPrefix + 'email'}
+              name="email"
+              onChange={this.handleChange.bind(this)}
+              value={this.state.profile.email}
+              placeholder="me@myemaildomain.com"
+              onBlur={this.onBlur.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              label="What's your office email?"
+              labelStyle={this.isFieldInvalid('email') ? style.invalid : style.formLabel}
+              required={true}
+            />
+
+            <TextInput
               id={idPrefix + 'url'}
               name="url"
               onChange={this.handleChange.bind(this)}
@@ -673,6 +688,20 @@ class ResourceCenterProfilePage extends React.Component {
             />
 
             <div className={style.grid}>{this.renderHourDropdowns()}</div>
+
+            <TextArea
+              id={idPrefix + 'furtherDescription'}
+              name="furtherDescription"
+              onChange={this.handleChange.bind(this)}
+              value={this.state.profile.furtherDescription}
+              label="Please indicate any special/ or occasional hours outside of regular operation. i.e. (open every other Saturday)"
+              labelStyle={
+                this.isFieldInvalid('furtherDescription')
+                  ? style.invalid
+                  : style.formLabel + ' ' + style.paddingTop20
+              }
+              placeholder="Open every first Saturday of month"
+            />
 
             {this.renderAreaSelect()}
 
