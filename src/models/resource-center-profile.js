@@ -33,10 +33,16 @@ var resourceCenterProfile = nonDrupal.define(
     serviceArea: {
       type: Sequelize.STRING
     },
+    email: {
+      type: Sequelize.STRING
+    },
     url: {
       type: Sequelize.STRING
     },
     phone: {
+      type: Sequelize.STRING
+    },
+    furtherDescription: {
       type: Sequelize.STRING
     },
     needsUpdating: {

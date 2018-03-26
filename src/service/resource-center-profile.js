@@ -52,8 +52,10 @@ function getProfiles(sessionId) {
         'timestamp',
         'businessStage',
         'serviceArea',
+        'email',
         'url',
         'phone',
+        'furtherDescription',
         'needsUpdating'
       ],
       include: [
