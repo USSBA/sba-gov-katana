@@ -10,8 +10,8 @@ server:
 features:
     forPartners: true
     showSbic: false
-    moon: false
-    searchUrl: "/tools/search-result-page?search="
+    moon: true
+    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeProduction
         enabled: true

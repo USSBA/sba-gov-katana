@@ -6,17 +6,18 @@ googleAnalytics:
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-MSNZZ6M
 server:
-    fqdn: production.sba.fun
+    fqdn: sba.gov
 features:
     forPartners: true
     showSbic: false
-    moon: false
-    searchUrl: "/tools/search-result-page?search="
+    moon: true
+    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeProduction
-        enabled: false
+        enabled: true
     drupalRedirect:
         tableName: UrlToUrlRedirectProduction
+        enabled: true
 linc:
   resendEmailJobEnabled: false
   sendToOcaJobEnabled: false
@@ -26,6 +27,7 @@ oca:
         wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
 cache:
   s3BucketName: production-aws-content-sba-gov
+  useS3: true
 aws:
   cloudsearch:
     searchEndpoint: 'doc-sba-gov-production-vnhuuhtvgjbc2s7ddz42nhmbge.us-east-1.cloudsearch.amazonaws.com'

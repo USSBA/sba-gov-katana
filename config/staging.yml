@@ -1,12 +1,12 @@
 foresee:
     environment: staging
 server:
-    fqdn: staging-www.sba.gov
+    fqdn: staging.sba.gov
 features:
     forPartners: true
     showSbic: false
-    moon: false
-    searchUrl: "/tools/search-result-page?search="
+    moon: true
+    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeStaging
         enabled: true

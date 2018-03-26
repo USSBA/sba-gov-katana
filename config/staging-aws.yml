@@ -1,16 +1,19 @@
 foresee:
     environment: staging
 server:
-    fqdn: staging.sba.fun
+    fqdn: staging.sba.gov
 features:
     forPartners: true
     showSbic: false
-    moon: false
-    searchUrl: "/tools/search-result-page?search="
+    moon: true
+    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeStaging
+        enabled: true
     drupalRedirect:
         tableName: UrlToUrlRedirectStaging
+        enabled: true
+    true404: true
 cache:
   s3BucketName: staging-aws-content-sba-gov
   useS3: true
