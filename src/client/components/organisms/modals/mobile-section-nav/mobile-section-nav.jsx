@@ -11,23 +11,23 @@ class MobileNav extends React.Component {
     this.state = {
       navMenu: 'open'
     }
-    this._formatLargeTitle = this._formatLargeTitle.bind(this)
-    this._formatSmallTitle = this._formatSmallTitle.bind(this)
+    // this._formatLargeTitle = this._formatLargeTitle.bind(this)
+    // this._formatSmallTitle = this._formatSmallTitle.bind(this)
     this._animationTimer = this._animationTimer.bind(this)
     this._handleBackBtn = this._handleBackBtn.bind(this)
     this._handleClick = this._handleClick.bind(this)
     this._navMenuClassname = this._navMenuClassname.bind(this)
   }
 
-  _formatLargeTitle() {
-    return this.props.menuData.title.split(' ')[0]
-  }
+  // _formatLargeTitle() {
+  //   return this.props.menuData.title.split(' ')[0]
+  // }
 
-  _formatSmallTitle() {
-    const arr = this.props.menuData.title.split(' ')
-    arr.shift()
-    return arr.join(' ')
-  }
+  // _formatSmallTitle() {
+  //   const arr = this.props.menuData.title.split(' ')
+  //   arr.shift()
+  //   return arr.join(' ')
+  // }
 
   _animationTimer() {
     setTimeout(() => {
@@ -79,10 +79,8 @@ class MobileNav extends React.Component {
           }}
         >
           <i className={s.navLeftArrow + ' fa fa-angle-left'} />
-          <img className={s.navIcon} src={this.props.icon} alt="" />
           <div className={s.navTitleContainer}>
-            <h2 className={s.navLargeTitle}>{this._formatLargeTitle()}</h2>
-            <h4 className={s.navSmallTitle}>{this._formatSmallTitle()}</h4>
+            <h3 className={s.navTitle}>{this.props.menuData.title}</h3>
           </div>
         </div>
         <div className={s.navTopLine} />
