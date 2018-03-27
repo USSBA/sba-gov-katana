@@ -42,9 +42,6 @@ var resourceCenterProfile = nonDrupal.define(
     phone: {
       type: Sequelize.STRING
     },
-    furtherDescription: {
-      type: Sequelize.STRING
-    },
     needsUpdating: {
       type: Sequelize.BOOLEAN
     }
@@ -110,6 +107,9 @@ var resourceCenterHours = nonDrupal.define(
       type: Sequelize.STRING
     },
     sundayClose: {
+      type: Sequelize.STRING
+    },
+    furtherDescription: {
       type: Sequelize.STRING
     }
   },

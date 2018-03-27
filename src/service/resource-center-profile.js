@@ -55,7 +55,6 @@ function getProfiles(sessionId) {
         'email',
         'url',
         'phone',
-        'furtherDescription',
         'needsUpdating'
       ],
       include: [
@@ -78,7 +77,8 @@ function getProfiles(sessionId) {
             'saturdayOpen',
             'saturdayClose',
             'sundayOpen',
-            'sundayClose'
+            'sundayClose',
+            'furtherDescription'
           ]
         },
         {

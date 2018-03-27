@@ -44,6 +44,7 @@ class ResourceCenterProfilePage extends React.Component {
         businessStage: null,
         serviceArea: null,
         needsUpdating: null,
+        email: null,
         url: null,
         hours: true, // optional so always valid
         expertise: null,
@@ -59,6 +60,7 @@ class ResourceCenterProfilePage extends React.Component {
         businessStage: '',
         serviceArea: null,
         needsUpdating: '',
+        email: '',
         url: '',
         hours: {
           mondayOpen: null,
@@ -74,7 +76,8 @@ class ResourceCenterProfilePage extends React.Component {
           saturdayOpen: null,
           saturdayClose: null,
           sundayOpen: null,
-          sundayClose: null
+          sundayClose: null,
+          furtherDescription: null
         },
         expertise: [],
         services: [],
@@ -189,7 +192,6 @@ class ResourceCenterProfilePage extends React.Component {
       'url',
       'expertise',
       'services',
-      'furtherDescription',
       'needsUpdating'
     ]
     const newValidationState = _.cloneDeep(this.state.isFieldValid)
@@ -693,13 +695,9 @@ class ResourceCenterProfilePage extends React.Component {
               id={idPrefix + 'furtherDescription'}
               name="furtherDescription"
               onChange={this.handleChange.bind(this)}
-              value={this.state.profile.furtherDescription}
+              value={this.state.profile.hours.furtherDescription}
               label="Please indicate any special/ or occasional hours outside of regular operation. i.e. (open every other Saturday)"
-              labelStyle={
-                this.isFieldInvalid('furtherDescription')
-                  ? style.invalid
-                  : style.formLabel + ' ' + style.paddingTop20
-              }
+              labelStyle={style.formLabel + ' ' + style.paddingTop20}
               placeholder="Open every first Saturday of month"
             />
 

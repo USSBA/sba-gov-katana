@@ -4,12 +4,14 @@ exports[`ResourceCenterProfilePage Entering non-optional fields allows form to b
 Object {
   "address": "1675 W Garden of the Gods Rd, El Paso County Citizen's Center, Colorado Springs, CO, 80907",
   "businessStage": "New and early stage businesses",
+  "email": "",
   "expertise": Array [
     "Networking",
   ],
   "hours": Object {
     "fridayClose": null,
     "fridayOpen": null,
+    "furtherDescription": null,
     "mondayClose": null,
     "mondayOpen": null,
     "saturdayClose": null,
