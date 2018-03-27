@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: $secondary-blue;
+  background-color: $sba-blue;
   display: block;
 
   @include grid-media($sba-grid-large) {
@@ -67,37 +67,33 @@
 
 .navTitleContainer {
   position: absolute;
-  top: 50%;
-  left: 5.556rem;
+  top: 60%;
+  left: 3.111rem;
   display: block;
   transform: translateY(-50%);
 }
 
-.navLargeTitle {
-  font-size: 1.889rem;
-  font-weight: 900;
-  margin: 0;
-  text-transform: uppercase;
-  color: $secondary-black-ish;
-  color: white;
-}
+// .navLargeTitle {
+//   font-size: 1.889rem;
+//   font-weight: 900;
+//   margin: 0;
+//   text-transform: uppercase;
+//   color: $secondary-black-ish;
+//   color: white;
+// }
 
-.navSmallTitle {
-  font-size: 1.111rem;
-  font-weight: bold;
-  margin: 0;
-  text-transform: uppercase;
-  color: $secondary-black-ish;
-  color: white;
-}
+// .navSmallTitle {
+//   font-size: 1.111rem;
+//   font-weight: bold;
+//   margin: 0;
+//   text-transform: uppercase;
+//   color: $secondary-black-ish;
+//   color: white;
+// }
 
-.navIcon {
-  position: absolute;
-  top: 50%;
-  left: 2.778rem;
-  width: 2.222rem;
-  height: 2.222rem;
-  transform: translateY(-50%);
+.navTitle {
+  margin: 0;
+  color: white;
 }
 
 // .navRightArrow {
@@ -116,22 +112,33 @@
 //   }
 // }
 
+// .navLeftArrow {
+//   font-size: 1.667rem !important;
+//   line-height: 1.667rem !important;
+//   position: absolute;
+//   top: 50%;
+//   left: 1.111rem;
+//   transform: translateY(-50%);
+//   color: white;
+// }
+
 .navLeftArrow {
   font-size: 1.667rem !important;
   line-height: 1.667rem !important;
+  font-weight: bold;
   position: absolute;
-  top: 50%;
-  left: 1.111rem;
+  top: 60%;
+  left: 1.722rem;
   transform: translateY(-50%);
-  color: white;
+  color: $sba-gray;
 }
 
 .navLinkContainer {
   position: relative;
   z-index: 9999 !important;
-  padding: 0.556rem 1.944rem 0.556rem 0.833rem;
+  padding: 0.556rem 1.944rem 0.556rem 1.667rem;
   cursor: pointer;
-  border-bottom: 0.056rem solid rgba(255, 255, 255, 0.5);
+  border-bottom: 0.056rem solid rgba(255, 255, 255, 0.2);
 }
 
 .navLink {
@@ -147,5 +154,5 @@
   height: 0.056rem;
   margin: 0;
   margin-top: 1.111rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
 }

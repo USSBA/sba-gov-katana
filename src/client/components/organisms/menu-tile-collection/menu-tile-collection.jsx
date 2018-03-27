@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import { Tile } from 'organisms'
 import s from './menu-tile-collection.scss'
-import icons from '../../templates/homepage/businessGuideTileIcons'
+import icons from '../business-guide-tile-collection/icons'
 
 class MenuTileCollection extends React.Component {
   constructor() {
@@ -39,7 +39,6 @@ class MenuTileCollection extends React.Component {
   }
 
   makeTile(object, index) {
-    // const iconElement = this.props.icons[index]
     const iconElement = icons[index]
     const tileProps = {
       id: 'tile-' + index,
