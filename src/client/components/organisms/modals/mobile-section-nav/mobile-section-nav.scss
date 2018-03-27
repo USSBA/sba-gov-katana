@@ -25,7 +25,6 @@
     from {
       margin-right: -4000px;
       margin-left: 2000px;
-
       opacity: 1;
     }
     to {
@@ -62,9 +61,7 @@
 
 .navHeader {
   position: relative;
-
   display: block;
-
   height: 3.889rem;
 }
 
@@ -72,20 +69,15 @@
   position: absolute;
   top: 50%;
   left: 5.556rem;
-
   display: block;
-
   transform: translateY(-50%);
 }
 
 .navLargeTitle {
   font-size: 1.889rem;
   font-weight: 900;
-
   margin: 0;
-
   text-transform: uppercase;
-
   color: $secondary-black-ish;
   color: white;
 }
@@ -93,11 +85,8 @@
 .navSmallTitle {
   font-size: 1.111rem;
   font-weight: bold;
-
   margin: 0;
-
   text-transform: uppercase;
-
   color: $secondary-black-ish;
   color: white;
 }
@@ -106,10 +95,8 @@
   position: absolute;
   top: 50%;
   left: 2.778rem;
-
   width: 2.222rem;
   height: 2.222rem;
-
   transform: translateY(-50%);
 }
 
@@ -132,13 +119,10 @@
 .navLeftArrow {
   font-size: 1.667rem !important;
   line-height: 1.667rem !important;
-
   position: absolute;
   top: 50%;
   left: 1.111rem;
-
   transform: translateY(-50%);
-
   color: white;
 }
 
@@ -153,19 +137,15 @@
 .navLink {
   font-size: 1rem !important;
   font-weight: 300 !important;
-
   text-decoration: none !important;
-
   color: white !important;
 }
 
 .navTopLine {
   display: block;
-
   width: 100%;
   height: 0.056rem;
   margin: 0;
   margin-top: 1.111rem;
-
   background-color: rgba(255, 255, 255, 0.5);
 }
