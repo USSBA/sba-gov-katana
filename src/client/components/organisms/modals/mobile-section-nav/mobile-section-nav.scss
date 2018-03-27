@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-
+  background-color: $secondary-blue;
   display: block;
 
   @include grid-media($sba-grid-large) {
@@ -25,7 +25,6 @@
     from {
       margin-right: -4000px;
       margin-left: 2000px;
-
       opacity: 1;
     }
     to {
@@ -49,8 +48,8 @@
       margin-left: 0;
     }
     99% {
-      margin-right: -4000px;
-      margin-left: 2000px;
+      margin-right: -222.222rem;
+      margin-left: 111.111rem;
 
       opacity: 1;
     }
@@ -62,42 +61,32 @@
 
 .navHeader {
   position: relative;
-
   display: block;
-
-  height: 70px;
+  height: 3.889rem;
 }
 
 .navTitleContainer {
   position: absolute;
   top: 50%;
-  left: 100px;
-
+  left: 5.556rem;
   display: block;
-
   transform: translateY(-50%);
 }
 
 .navLargeTitle {
-  font-size: 34px;
+  font-size: 1.889rem;
   font-weight: 900;
-
   margin: 0;
-
   text-transform: uppercase;
-
   color: $secondary-black-ish;
   color: white;
 }
 
 .navSmallTitle {
-  font-size: 20px;
+  font-size: 1.111rem;
   font-weight: bold;
-
   margin: 0;
-
   text-transform: uppercase;
-
   color: $secondary-black-ish;
   color: white;
 }
@@ -105,11 +94,9 @@
 .navIcon {
   position: absolute;
   top: 50%;
-  left: 50px;
-
-  width: 40px;
-  height: 40px;
-
+  left: 2.778rem;
+  width: 2.222rem;
+  height: 2.222rem;
   transform: translateY(-50%);
 }
 
@@ -130,48 +117,35 @@
 // }
 
 .navLeftArrow {
-  font-size: 30px !important;
-  line-height: 30px !important;
-
+  font-size: 1.667rem !important;
+  line-height: 1.667rem !important;
   position: absolute;
   top: 50%;
-  left: 20px;
-
+  left: 1.111rem;
   transform: translateY(-50%);
-
   color: white;
 }
 
 .navLinkContainer {
   position: relative;
   z-index: 9999 !important;
-
-  padding: 10px 35px 10px 15px;
-
+  padding: 0.556rem 4.5rem 0.556rem 2.667rem;
   cursor: pointer;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  // &:hover {
-  //     background: $sba-blue;
-  // }
+  border-bottom: 0.056rem solid rgba(255, 255, 255, 0.5);
 }
 
 .navLink {
-  font-size: 18px !important;
+  font-size: 1rem !important;
   font-weight: 300 !important;
-
   text-decoration: none !important;
-
   color: white !important;
 }
 
 .navTopLine {
   display: block;
-
   width: 100%;
-  height: 1px;
+  height: 0.056rem;
   margin: 0;
-  margin-top: 20px;
-
+  margin-top: 1.111rem;
   background-color: rgba(255, 255, 255, 0.5);
 }
