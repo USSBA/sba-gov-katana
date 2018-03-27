@@ -1,0 +1,22 @@
+.toggle {
+  float: right;
+  margin-top: 0.42em;
+
+  .selected {
+    font-weight: bold;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    display: inline;
+  }
+
+  li:not(:first-child):before {
+    content: ' | ';
+  }
+}

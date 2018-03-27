@@ -17,7 +17,7 @@ class Tile extends React.Component {
   }
 
   _formatSmallTitle() {
-    let arr = this.props.data.title.split(' ')
+    const arr = this.props.data.title.split(' ')
     arr.shift()
     return arr.join(' ')
   }
@@ -61,14 +61,14 @@ class Tile extends React.Component {
   }
 
   handleKeyDown(event) {
-    let code = event.keyCode ? event.keyCode : event.which
+    const code = event.keyCode ? event.keyCode : event.which
     if (code == 9 && event.shiftKey) {
       this.props.onTabBackwards(this.props.enteringInReverse)
     }
   }
 
   handleTileKeyDown(event) {
-    let code = event.keyCode ? event.keyCode : event.which
+    const code = event.keyCode ? event.keyCode : event.which
     if (code == 13) {
       this._openNavMenu()
     }
@@ -79,43 +79,56 @@ class Tile extends React.Component {
   }
 
   render() {
-    let baseTileData = {
-      link: this.props.data.fullUrl,
-      children: this.props.data.children,
-      description: this.props.data.description,
-      icon: this.props.icon,
-      iconWhite: this.props.iconWhite,
-      largeTitle: this.props.splitTitle ? this._formatLargeTitle() : this.props.data.title,
-      smallTitle: this.props.splitTitle ? this._formatSmallTitle() : '',
-      uppercaseFirstWord: this.props.uppercaseFirstWord
+    const {
+      backgroundLines,
+      data,
+      enteringInReverse,
+      icon,
+      iconWhite,
+      id,
+      pathname,
+      showHover,
+      size,
+      splitTitle,
+      locationActions,
+      uppercaseFirstWord
+    } = this.props
+    const baseTileData = {
+      link: data.fullUrl,
+      children: data.children,
+      description: data.description,
+      icon: icon,
+      iconWhite: iconWhite,
+      largeTitle: splitTitle ? this._formatLargeTitle() : this.props.data.title,
+      smallTitle: splitTitle ? this._formatSmallTitle() : '',
+      uppercaseFirstWord: uppercaseFirstWord
     }
 
-    let hoverTile = this.isLinkToPage() ? (
-      <MenuTile {...baseTileData} inverse id={this.props.id + '-hover'} />
+    const hoverTile = this.isLinkToPage() ? (
+      <MenuTile {...baseTileData} inverse id={id + '-hover'} />
     ) : (
       <MenuTileWithLinks
         {...baseTileData}
-        id={this.props.id + '-hover'}
-        locationActions={this.props.locationActions}
-        autoFocusOnLast={this.props.enteringInReverse}
+        id={id + '-hover'}
+        locationActions={locationActions}
+        autoFocusOnLast={enteringInReverse}
       />
     )
 
     let widthStyle = null
-    switch (this.props.size) {
-      case 3:
-        widthStyle = s.tileThree
-        break
-      case 5:
-        widthStyle = s.tileFive
-        break
-      default:
-        widthStyle = s.tileFour
+    if (size === 3 && pathname === undefined) {
+      widthStyle = s.tileThree
+    } else if (size === 4 && pathname === undefined) {
+      widthStyle = s.tileFour
+    } else if (size === 5 && pathname === undefined) {
+      widthStyle = s.tileFive
+    } else if (size === 4 && pathname === '/') {
+      widthStyle = s.homePageTileFour
     }
 
-    let toggleMenuLink = (
+    const toggleMenuLink = (
       <BasicLink
-        text={`toggle ${this.props.data.title} menu`}
+        text={`toggle ${data.title} menu`}
         myClassName={s.tabDisplayMenu}
         onClick={e => {
           e ? e.preventDefault() : ''
@@ -128,7 +141,7 @@ class Tile extends React.Component {
 
     return (
       <div
-        id={this.props.id}
+        id={id}
         className={s.tile + ' ' + widthStyle}
         onClick={this._openNavMenu.bind(this)}
         onMouseEnter={this._mouseEnterTile.bind(this)}
@@ -136,12 +149,8 @@ class Tile extends React.Component {
         onKeyDown={this.handleTileKeyDown.bind(this)}
       >
         {toggleMenuLink}
-        {this.props.showHover ? hoverTile : <MenuTile id={this.props.id + '-static'} {...baseTileData} />}
-        {this.props.backgroundLines ? (
-          <img className={s.backgroundLines} src={this.props.backgroundLines} alt="" />
-        ) : (
-          undefined
-        )}
+        {showHover ? hoverTile : <MenuTile id={id + '-static'} pathname={pathname} {...baseTileData} />}
+        {backgroundLines ? <img className={s.backgroundLines} src={backgroundLines} alt="" /> : undefined}
       </div>
     )
   }
@@ -156,4 +165,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile)

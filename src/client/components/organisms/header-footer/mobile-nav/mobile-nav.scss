@@ -27,11 +27,13 @@
 @include theme(byzantine, '.menuButtonClosed', null, $byzantine, $byzantine);
 @include theme(money-green, '.menuButtonClosed', null, $money-green, $money-green);
 @include theme(cobalt-blue, '.menuButtonClosed', null, $cobalt-blue, $cobalt-blue);
+@include theme(sba-blue-dark, '.menuButtonClosed', null, $sba-blue, $sba-blue);
 
 @include theme(sba-blue, '.menuButtonOpen', null, $sba-blue-dark, $sba-blue-dark);
 @include theme(byzantine, '.menuButtonOpen', null, $byzantine-dark, $byzantine-dark);
 @include theme(money-green, '.menuButtonOpen', null, $money-green-dark, $money-green-dark);
 @include theme(cobalt-blue, '.menuButtonOpen', null, $cobalt-blue-dark, $cobalt-blue-dark);
+@include theme(sba-blue-dark, '.menuButtonOpen', null, $sba-blue-dark, $sba-blue-dark);
 
 .mainNavNew .mobileNavMenuLink {
   border-bottom: 1px solid #dbdbdb;
@@ -94,6 +96,7 @@ input.searchInputFieldNew {
 @include theme(byzantine, 'a.navLinkSpecialNew', null, $grey, null);
 @include theme(money-green, 'a.navLinkSpecialNew', null, $grey, null);
 @include theme(cobalt-blue, 'a.navLinkSpecialNew', null, $grey, null);
+@include theme(sba-blue-dark, 'a.navLinkSpecialNew', null, $grey, null);
 
 .linkIcon {
   height: 18px;

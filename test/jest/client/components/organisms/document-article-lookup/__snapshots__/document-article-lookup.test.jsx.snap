@@ -15,7 +15,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="searchBox"
       >
         <div
-          className="inputContainer"
+          className="inputContainer "
           hidden={undefined}
           id="document-lookup-text-input-container"
         >
@@ -29,7 +29,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             className="textInputContainer"
           >
             <input
-              className="textInput"
+              className="textInput "
               id="document-lookup-text-input"
               onChange={[Function]}
               onKeyUp={[Function]}
@@ -187,7 +187,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       <div
         className="applyButton"
       >
-        <div>
+        <div
+          id={null}
+        >
           <button
             autoFocus={false}
             className="SmallInverseSecondaryButton applyButton "
@@ -209,7 +211,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="paginator"
     >
       <div
-        className="container"
+        className="container paginator"
         id={undefined}
       >
         <p
@@ -487,7 +489,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="paginator"
     >
       <div
-        className="container"
+        className="container paginator"
         id={undefined}
       >
         <p

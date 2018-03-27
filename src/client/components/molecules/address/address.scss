@@ -1,0 +1,28 @@
+.smallIcon {
+  float: left;
+  display: block;
+
+  @include grid-media($sba-grid-small) {
+    i {
+      font-size: 25px;
+    }
+  }
+  @include grid-media($sba-grid-medium) {
+    i {
+      font-size: 25px;
+    }
+  }
+}
+
+.address {
+  display: inline-block;
+  text-decoration: underline;
+}
+
+.iconMarginTop {
+  margin-top: 15px;
+}
+
+.phoneMarginTop {
+  margin-top: 8px;
+}

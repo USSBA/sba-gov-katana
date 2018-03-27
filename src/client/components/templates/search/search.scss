@@ -1,0 +1,73 @@
+.paginator {
+  margin-top: 15px;
+  float: right;
+  margin: 30px 30px 50px 0;
+  clear: both;
+
+  @include grid-media($sba-grid-small) {
+    margin-bottom: 60px;
+  }
+}
+
+.container {
+  text-align: center;
+
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+    text-align: left;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 30px 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 20px 28px 15px 28px;
+  }
+}
+
+.emptyDocuments {
+  p {
+    margin: 0 0 20px;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  .emptyDocumentsMessage {
+    font-weight: bold;
+
+    @include grid-media($sba-grid-medium) {
+      font-size: 72px;
+      font-weight: 900;
+    }
+    @include grid-media($sba-grid-large) {
+      font-size: 72px;
+      font-weight: 900;
+    }
+  }
+}
+
+.resultsMessage {
+  text-align: left;
+  width: 510px;
+  margin: 0 auto 100px;
+
+  .bullet {
+    margin-top: 10px;
+    background-color: #0b97dd;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    float: left;
+  }
+
+  li p {
+    display: block;
+    margin: 0;
+    margin-left: 25px;
+  }
+
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+}

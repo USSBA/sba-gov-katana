@@ -1780,7 +1780,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
 />,
-      "_debugID": 90,
+      "_debugID": 75,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -1850,7 +1850,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 26,
+      "_mountOrder": 23,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -2107,7 +2107,7 @@ ShallowWrapper {
                     />
           </div>
 </div>,
-        "_debugID": 91,
+        "_debugID": 76,
         "_renderedOutput": <div
           className="container"
 >
@@ -2441,7 +2441,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="searchBox"
     >
       <div
-        className="inputContainer"
+        className="inputContainer "
         hidden={undefined}
         id="document-lookup-container"
       >
@@ -2453,7 +2453,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           className="textInputContainer"
         >
           <input
-            className="textInput"
+            className="textInput "
             id="document-lookup"
             onChange={[Function]}
             onKeyUp={[Function]}
@@ -2481,15 +2481,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           id="documenttype-select"
         >
           <div
-            className="Select  myselect Select--single has-value"
+            className="Select  myselect Select--single"
             style={undefined}
           >
-            <input
-              disabled={false}
-              name="documenttype-select"
-              type="hidden"
-              value="All"
-            />
             <div
               className="Select-control"
               onKeyDown={[Function]}
@@ -2504,18 +2498,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
                 id="react-select-2--value"
               >
                 <div
-                  className="Select-value"
-                  style={undefined}
-                  title={undefined}
+                  className="Select-placeholder"
                 >
-                  <span
-                    aria-selected="true"
-                    className="Select-value-label"
-                    id="react-select-2--value-item"
-                    role="option"
-                  >
-                    All document types
-                  </span>
+                  Select...
                 </div>
                 <div
                   aria-activedescendant="react-select-2--value"
@@ -2535,17 +2520,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
                   }
                   tabIndex={0}
                 />
-              </span>
-              <span
-                aria-label="Clear value"
-                className="Select-clear-zone"
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                title="Clear value"
-              >
-                <div />
               </span>
               <span
                 className="Select-arrow-zone"
@@ -2574,15 +2548,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           id="program-select"
         >
           <div
-            className="Select  myselect Select--single has-value"
+            className="Select  myselect Select--single"
             style={undefined}
           >
-            <input
-              disabled={false}
-              name="program-select"
-              type="hidden"
-              value="All"
-            />
             <div
               className="Select-control"
               onKeyDown={[Function]}
@@ -2597,18 +2565,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
                 id="react-select-3--value"
               >
                 <div
-                  className="Select-value"
-                  style={undefined}
-                  title={undefined}
+                  className="Select-placeholder"
                 >
-                  <span
-                    aria-selected="true"
-                    className="Select-value-label"
-                    id="react-select-3--value-item"
-                    role="option"
-                  >
-                    All programs
-                  </span>
+                  Select...
                 </div>
                 <div
                   aria-activedescendant="react-select-3--value"
@@ -2628,17 +2587,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
                   }
                   tabIndex={0}
                 />
-              </span>
-              <span
-                aria-label="Clear value"
-                className="Select-clear-zone"
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                title="Clear value"
-              >
-                <div />
               </span>
               <span
                 className="Select-arrow-zone"
@@ -2667,15 +2615,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           id="documentactivity-select"
         >
           <div
-            className="Select  myselect Select--single has-value"
+            className="Select  myselect Select--single"
             style={undefined}
           >
-            <input
-              disabled={false}
-              name="documentactivity-select"
-              type="hidden"
-              value="All"
-            />
             <div
               className="Select-control"
               onKeyDown={[Function]}
@@ -2690,18 +2632,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
                 id="react-select-4--value"
               >
                 <div
-                  className="Select-value"
-                  style={undefined}
-                  title={undefined}
+                  className="Select-placeholder"
                 >
-                  <span
-                    aria-selected="true"
-                    className="Select-value-label"
-                    id="react-select-4--value-item"
-                    role="option"
-                  >
-                    All document activity
-                  </span>
+                  Select...
                 </div>
                 <div
                   aria-activedescendant="react-select-4--value"
@@ -2721,17 +2654,6 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
                   }
                   tabIndex={0}
                 />
-              </span>
-              <span
-                aria-label="Clear value"
-                className="Select-clear-zone"
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                title="Clear value"
-              >
-                <div />
               </span>
               <span
                 className="Select-arrow-zone"
@@ -3335,7 +3257,7 @@ ShallowWrapper {
         sectionHeaderText="new title"
         subtitleText="new subtitle"
 />,
-      "_debugID": 92,
+      "_debugID": 77,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -3405,7 +3327,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 27,
+      "_mountOrder": 24,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -3662,7 +3584,7 @@ ShallowWrapper {
                     />
           </div>
 </div>,
-        "_debugID": 93,
+        "_debugID": 78,
         "_renderedOutput": <div
           className="container"
 >
@@ -4547,7 +4469,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
 />,
-      "_debugID": 88,
+      "_debugID": 73,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -4617,7 +4539,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 25,
+      "_mountOrder": 22,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -4874,7 +4796,7 @@ ShallowWrapper {
                     />
           </div>
 </div>,
-        "_debugID": 89,
+        "_debugID": 74,
         "_renderedOutput": <div
           className="container"
 >

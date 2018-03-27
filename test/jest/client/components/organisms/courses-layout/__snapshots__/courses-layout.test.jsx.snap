@@ -13,7 +13,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
-          className="container"
+          className="container paginator"
           id={undefined}
         >
           <p
@@ -448,7 +448,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
-          className="container"
+          className="container paginator"
           id={undefined}
         >
           <p

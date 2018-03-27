@@ -61,7 +61,6 @@
     "moment-timezone": "0.5.13",
     "mysql": "2.12.0",
     "mysql2": "^1.5.1",
-    "newrelic": "1.36.2",
     "node-sass": "4.5.3",
     "nodemailer": "4.0.1",
     "password-generator": "^2.1.0",

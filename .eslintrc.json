@@ -52,7 +52,10 @@
     "no-labels": ["warn"],
     "no-lone-blocks": ["warn"],
     "no-loop-func": ["error"],
-    "no-magic-numbers": ["error", { "ignoreArrayIndexes": true, "enforceConst": true, "ignore": [0, 1] }],
+    "no-magic-numbers": [
+      "error",
+      { "ignoreArrayIndexes": true, "enforceConst": true, "ignore": [0, 1, -1] }
+    ],
     "no-multi-spaces": ["warn"],
     "no-multi-str": ["warn"],
     "no-new-func": ["error"],
