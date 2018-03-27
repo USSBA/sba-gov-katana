@@ -10,16 +10,6 @@ a.sectionLink {
   @include grid-media( $sba-grid-medium) {
   }
 }
-@include theme(sba-blue, 'a.sectionLink', null, $sba-blue, null);
-@include theme(byzantine, 'a.sectionLink', null, $byzantine, null);
-@include theme(money-green, 'a.sectionLink', null, $money-green, null);
-@include theme(cobalt-blue, 'a.sectionLink', null, $cobalt-blue, null);
-@include theme(sba-blue-dark, 'a.sectionLink', null, $sba-blue, null);
-@include theme-hover(sba-blue, 'a.sectionLink', null, $sba-blue, null);
-@include theme-hover(byzantine, 'a.sectionLink', null, $byzantine, null);
-@include theme-hover(money-green, 'a.sectionLink', null, $money-green, null);
-@include theme-hover(cobalt-blue, 'a.sectionLink', null, $cobalt-blue, null);
-@include theme-hover(sba-blue-dark, 'a.sectionLink', null, $sba-blue, null);
 
 $triangle-size: 13px;
 .triangle {
@@ -37,26 +27,6 @@ $triangle-size: 13px;
   border-bottom: $triangle-size solid $white;
 }
 
-:global(.sba-blue) .triangleTheme {
-  border-bottom: $triangle-size solid $sba-blue;
-}
-
-:global(.byzantine) .triangleTheme {
-  border-bottom: $triangle-size solid $byzantine;
-}
-
-:global(.money-green) .triangleTheme {
-  border-bottom: $triangle-size solid $money-green;
-}
-
-:global(.cobalt-blue) .triangleTheme {
-  border-bottom: $triangle-size solid $cobalt-blue;
-}
-
-:global(.sba-blue-dark) .triangleTheme {
-  border-bottom: $triangle-size solid $sba-blue;
-}
-
 .link:hover .triangle,
 .link:focus .triangle {
   visibility: visible;
@@ -72,5 +42,3 @@ $triangle-size: 13px;
   border-bottom-width: 3px;
   border-bottom-style: solid;
 }
-
-@include border-color-theme('.underline');

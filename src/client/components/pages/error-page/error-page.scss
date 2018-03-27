@@ -58,13 +58,3 @@
 
 .subTitle {
 }
-
-@include theme('sba-blue', '.errorPageSearchIcon i', null, #757575, null);
-@include theme('byzantine', '.errorPageSearchIcon i', null, #757575, null);
-@include theme('money-green', '.errorPageSearchIcon i', null, #757575, null);
-@include theme('cobalt-blue', '.errorPageSearchIcon i', null, #757575, null);
-
-@include theme-hover('sba-blue', '.errorPageSearchIcon i', null, $grey-dark, null);
-@include theme-hover('byzantine', '.errorPageSearchIcon i', null, $grey-dark, null);
-@include theme-hover('money-green', '.errorPageSearchIcon i', null, $grey-dark, null);
-@include theme-hover('cobalt-blue', '.errorPageSearchIcon i', null, $grey-dark, null);

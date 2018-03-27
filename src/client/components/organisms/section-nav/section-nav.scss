@@ -79,32 +79,3 @@
     transform: translateX(0%);
   }
 }
-
-$section-nav-color-map: (
-  'sba-blue': $sba-blue-dark,
-  'byzantine': $byzantine,
-  'money-green': $money-green-dark,
-  'cobalt-blue': $cobalt-blue
-);
-$section-nav-dark-color-map: (
-  'sba-blue': $sba-blue-darkest,
-  'byzantine': $byzantine-dark,
-  'money-green': $money-green-darkest,
-  'cobalt-blue': $cobalt-blue-dark
-);
-
-@each $name, $value in $section-nav-color-map {
-  @include theme($name, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-  @include theme($name, '.sectionNav', $value, null, null);
-}
-
-@each $name, $value in $section-nav-dark-color-map {
-  @include theme($name, '.currentNavLink', $value, #fff, $value);
-  @include theme-hover($name, '.sectionNav li a, .sectionNav li, .backLink', $value, #fff, $value);
-  @include theme-active($name, '.sectionNav li a', $value, #fff, $value);
-  :global(.#{$name}) {
-    .sectionNav li:hover + li {
-      border-top: 1px solid $value;
-    }
-  }
-}

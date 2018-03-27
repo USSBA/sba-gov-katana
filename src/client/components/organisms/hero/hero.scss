@@ -43,11 +43,6 @@ $hero-container-grid: (
   font-weight: lighter;
 }
 
-@include theme(sba-blue, '.inHeroWithNoImage', $sba-blue, #fff, #fff);
-@include theme(byzantine, '.inHeroWithNoImage', $byzantine, #fff, #fff);
-@include theme(money-green, '.inHeroWithNoImage', $money-green, #fff, #fff);
-@include theme(cobalt-blue, '.inHeroWithNoImage', $cobalt-blue, #fff, #fff);
-
 .calloutContainer {
   @include grid-media($sba-grid-medium) {
     width: 60%;

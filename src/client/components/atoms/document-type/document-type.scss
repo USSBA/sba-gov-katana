@@ -1,13 +1,3 @@
-@include theme(sba-blue, '.type', $sba-blue-lightest, black, $sba-blue-lightest);
-@include theme(byzantine, '.type', $byzantine-lightest, black, $byzantine-lightest);
-@include theme(money-green, '.type', $money-green-lightest, black, $money-green-lightest);
-@include theme(cobalt-blue, '.type', $cobalt-blue-lightest, black, $cobalt-blue-lightest);
-
-@include theme(sba-blue, '.number', #fff, black, $sba-blue-lightest);
-@include theme(byzantine, '.number', #fff, black, $byzantine-lightest);
-@include theme(money-green, '.number', #fff, black, $money-green-lightest);
-@include theme(cobalt-blue, '.number', #fff, black, $cobalt-blue-lightest);
-
 .type,
 .number {
   font-size: 25px;

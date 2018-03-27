@@ -13,14 +13,6 @@ $section-nav-dark-color-map: (
   'sba-blue-dark': $sba-blue-darkest
 );
 
-@each $name, $value in $section-nav-color-map {
-  @include theme($name, '.navMenu', $value, null, null);
-}
-
-@each $name, $value in $section-nav-dark-color-map {
-  @include theme-hover($name, '.navLinkContainer', $value, null, null);
-}
-
 .navMenu {
   position: fixed;
   z-index: 9999999999 !important;

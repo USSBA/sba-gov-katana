@@ -17,11 +17,6 @@
   }
 }
 
-@include theme(sba-blue, '.lineCopy', $sba-blue, $sba-blue, $sba-blue);
-@include theme(byzantine, '.lineCopy', $byzantine, $byzantine, $byzantine);
-@include theme(money-green, '.lineCopy', $money-green, $money-green, $money-green);
-@include theme(cobalt-blue, '.lineCopy', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
 .hrLine {
   box-sizing: border-box;
   height: 1px;

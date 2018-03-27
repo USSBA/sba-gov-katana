@@ -142,18 +142,3 @@
   position: fixed;
   top: 30px;
 }
-
-@include theme(sba-blue, '.backLinkMobile', $sba-blue, $sba-blue, $sba-blue);
-@include theme(byzantine, '.backLinkMobile', $byzantine, $byzantine, $byzantine);
-@include theme(money-green, '.backLinkMobile', $money-green, $money-green, $money-green);
-@include theme(cobalt-blue, '.backLinkMobile', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
-@include theme(sba-blue, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(byzantine, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(money-green, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(cobalt-blue, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-
-@include theme-hover(sba-blue, '.backLinkMobile a, .backLinkMobile', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.backLinkMobile a, .backLinkMobile', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.backLinkMobile a, .backLinkMobile', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.backLinkMobile a, .backLinkMobile', $cobalt-blue-dark, #fff, $cobalt-blue-dark);

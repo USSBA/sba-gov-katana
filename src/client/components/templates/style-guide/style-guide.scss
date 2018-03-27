@@ -39,11 +39,6 @@
   padding: 25px;
 }
 
-@include theme(sba-blue, '.background', $sba-blue, null, null);
-@include theme(byzantine, '.background', $byzantine, null, null);
-@include theme(money-green, '.background', $money-green, null, null);
-@include theme(cobalt-blue, '.background', $cobalt-blue, null, null);
-
 // SBA Blues
 .sbablue {
   background: $sba-blue;
