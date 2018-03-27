@@ -1,10 +1,14 @@
 import _ from 'lodash'
 import resourceCenters from './resource-centers.json'
 
-const getPartners = (partnersList = []) => {
+const getPartners = (enableResourceCenterOverride = []) => {
+  // if enableResourceCenterOverride array is empty
+  // return all keys
+  // else
+  // return filtered keys based on the enableResourceCenterOverride array
   let keys = Object.keys(resourceCenters)
-  if (!_.isEmpty(partnersList)) {
-    keys = partnersList.filter(partner => {
+  if (!_.isEmpty(enableResourceCenterOverride)) {
+    keys = enableResourceCenterOverride.filter(partner => {
       return keys.find(key => {
         return key === partner ? key : false
       })

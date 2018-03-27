@@ -23,14 +23,14 @@ import {
 import style from './resource-center-profile-page.scss'
 
 const idPrefix = 'resource-center-profile-'
-const enabledPartnersList = ['SBDC', 'VBOC', 'SCORE', 'WBC']
+const enableResourceCenterOverride = ['SBDC', 'VBOC', 'SCORE', 'WBC']
 
 class ResourceCenterProfilePage extends React.Component {
   constructor() {
     super()
     this.state = {
       submitted: false,
-      partners: getPartners(enabledPartnersList),
+      partners: getPartners(enableResourceCenterOverride),
       honeyPotText: '',
       offices: null,
       selectedOfficeOption: null,
