@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-
+  background-color: $secondary-blue;
   display: block;
 
   @include grid-media($sba-grid-large) {
@@ -145,15 +145,9 @@
 .navLinkContainer {
   position: relative;
   z-index: 9999 !important;
-
-  padding: 10px 35px 10px 15px;
-
+  padding: 10px 81px 10px 48px;
   cursor: pointer;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  // &:hover {
-  //     background: $sba-blue;
-  // }
 }
 
 .navLink {
