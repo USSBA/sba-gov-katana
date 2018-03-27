@@ -77,7 +77,7 @@ class ResourceCenterProfilePage extends React.Component {
           saturdayClose: null,
           sundayOpen: null,
           sundayClose: null,
-          furtherDescription: null
+          furtherDescription: ''
         },
         expertise: [],
         services: [],
@@ -179,6 +179,12 @@ class ResourceCenterProfilePage extends React.Component {
 
   handleMaidenNameChange(e) {
     this.setState({ honeyPotText: e.target.value })
+  }
+
+  handleFurtherDescription(event) {
+    const newProfile = _.cloneDeep(this.state.profile)
+    newProfile.hours.furtherDescription = event.target.value
+    this.setState({ profile: newProfile })
   }
 
   validateFields() {
@@ -694,7 +700,7 @@ class ResourceCenterProfilePage extends React.Component {
             <TextArea
               id={idPrefix + 'furtherDescription'}
               name="furtherDescription"
-              onChange={this.handleChange.bind(this)}
+              onChange={this.handleFurtherDescription.bind(this)}
               value={this.state.profile.hours.furtherDescription}
               label="Please indicate any special/ or occasional hours outside of regular operation. i.e. (open every other Saturday)"
               labelStyle={style.formLabel + ' ' + style.paddingTop20}

@@ -1,6 +1,4 @@
 import React from 'react'
-import { isEmpty } from 'lodash'
-
 import styles from './textarea.scss'
 import { FormErrorMessage } from 'atoms'
 import { ValidationIcon } from 'atoms'
@@ -32,6 +30,7 @@ class TextArea extends React.Component {
       labelStyle,
       ...rest
     } = this.props
+
     return (
       <div id={id + '-container'} className={styles.inputContainer} hidden={hidden}>
         <label htmlFor={this.props.id} className={labelStyle ? labelStyle : styles.controlLabel}>
@@ -53,11 +52,7 @@ class TextArea extends React.Component {
             extraClassName={styles.validationIcon}
           />
         </div>
-        {showCounter ? (
-          <span className={styles.textAreaCounter}>{!isEmpty(value) ? value.length : 0}/250</span>
-        ) : (
-          <div />
-        )}
+        {showCounter ? <span className={styles.textAreaCounter}>{value.length}/250</span> : <div />}
         {this.errorMessage(validationState, errorText)}
       </div>
     )
@@ -67,7 +62,8 @@ class TextArea extends React.Component {
 TextArea.defaultProps = {
   showCounter: true,
   showSuccessIcon: true,
-  showErrorIcon: false
+  showErrorIcon: false,
+  value: ''
 }
 
 export default TextArea

@@ -11,7 +11,7 @@ Object {
   "hours": Object {
     "fridayClose": null,
     "fridayOpen": null,
-    "furtherDescription": null,
+    "furtherDescription": "",
     "mondayClose": null,
     "mondayOpen": null,
     "saturdayClose": null,
