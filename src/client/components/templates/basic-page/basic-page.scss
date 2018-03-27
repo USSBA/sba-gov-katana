@@ -79,7 +79,19 @@
 }
 
 .backLinkMobile {
+  background-color: $sba-blue;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
   position: relative;
+
+  &:hover {
+    background-color: $secondary-blue;
+  }
+
   @include grid-media($sba-grid-small) {
     height: 60px;
     margin-bottom: 30px;
