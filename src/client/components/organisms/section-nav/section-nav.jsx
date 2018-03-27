@@ -2,6 +2,7 @@ import React from 'react'
 import Waypoint from 'react-waypoint'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import constants from '../../../services/constants.js'
@@ -62,14 +63,14 @@ class SectionNav extends React.Component {
         action: section.title + ' ' + item.title
       }
       return (
-        <li key={index}>
-          <BasicLink
-            myClassName={'article-navigation-article-link-desktop ' + currentLinkClass}
+        <li className={currentLinkClass} key={index}>
+          <Link
+            className="article-navigation-article-link-desktop"
             id={'desktop-article-link-' + index}
-            url={item.fullUrl}
-            text={item.title}
-            eventConfig={eventConfig}
-          />
+            to={item.fullUrl}
+          >
+            {item.title}
+          </Link>
         </li>
       )
     })
@@ -77,24 +78,11 @@ class SectionNav extends React.Component {
   }
 
   makeNavigationTitle(sectionTitle) {
-    const baseSection = this.getNthLineage(0)
-    if (this.isBusinessGuide()) {
-      const titleArray = _.words(sectionTitle, /[^ ]+/g)
-      const firstWord = _.slice(titleArray, 0, 1)
-      const remainingTitle = _.replace(sectionTitle, firstWord, '')
-      return (
-        <span id="article-navigation-title-desktop">
-          <h2>{firstWord}</h2>
-          <h4>{remainingTitle}</h4>
-        </span>
-      )
-    } else {
-      return (
-        <span id="article-navigation-title-desktop">
-          <h3>{sectionTitle}</h3>
-        </span>
-      )
-    }
+    return (
+      <span id="article-navigation-title-desktop">
+        <h3>{sectionTitle}</h3>
+      </span>
+    )
   }
 
   stickyFunctionTop() {
@@ -128,13 +116,13 @@ class SectionNav extends React.Component {
         className={styles.sectionNav + ' ' + this.stickyFunctionTop() + ' ' + this.stickyFunctionBottom()}
       >
         <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
-        <BasicLink
+        <Link
           id="article-navigation-back-button-desktop"
-          myClassName={styles.backLink}
-          url={this.getBacklinkUrl()}
-          text={this.getBacklinkText()}
-          eventConfig={eventConfig}
-        />
+          className={styles.backLink}
+          to={this.getBacklinkUrl()}
+        >
+          {this.getBacklinkText()}
+        </Link>
         {navigationTitle}
         <ul>{navLinks}</ul>
       </div>
