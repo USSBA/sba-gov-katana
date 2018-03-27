@@ -73,7 +73,7 @@ function officeSearch(req, res) {
     //queryParser: 'simple | structured | lucene | dismax',
     //return: 'STRING_VALUE',
     size: pageSize || defaultPageSize,
-    //sort: 'STRING_VALUE',
+    sort: 'title asc',
     start: start || defaultStart
   }
 
