@@ -11,24 +11,14 @@ exports[`ModalController should render MobileSectionNav page 1`] = `
     <i
       className="navLeftArrow fa fa-angle-left"
     />
-    <img
-      alt=""
-      className="navIcon"
-      src="build/img/img-ed52b1.png"
-    />
     <div
       className="navTitleContainer"
     >
-      <h2
-        className="navLargeTitle"
+      <h3
+        className="navTitle"
       >
         Lender
-      </h2>
-      <h4
-        className="navSmallTitle"
-      >
-        
-      </h4>
+      </h3>
     </div>
   </div>
   <div
