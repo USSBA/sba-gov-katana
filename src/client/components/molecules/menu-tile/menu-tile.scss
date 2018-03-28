@@ -8,9 +8,11 @@
   width: 100%;
   background-color: $sba-gray-lighter;
   @include grid-media($sba-grid-small) {
+    cursor: pointer;
     padding: 27px;
   }
   @include grid-media($sba-grid-medium) {
+    cursor: pointer;
     padding-top: 71px;
   }
 }
