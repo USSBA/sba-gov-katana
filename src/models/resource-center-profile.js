@@ -33,6 +33,9 @@ var resourceCenterProfile = nonDrupal.define(
     serviceArea: {
       type: Sequelize.STRING
     },
+    email: {
+      type: Sequelize.STRING
+    },
     url: {
       type: Sequelize.STRING
     },
@@ -104,6 +107,9 @@ var resourceCenterHours = nonDrupal.define(
       type: Sequelize.STRING
     },
     sundayClose: {
+      type: Sequelize.STRING
+    },
+    furtherDescription: {
       type: Sequelize.STRING
     }
   },
