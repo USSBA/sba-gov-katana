@@ -127,10 +127,6 @@
   }
 }
 
-.dash {
-  width: 77px;
-}
-
 .relatedProgramsContainer {
   @include grid-media($sba-grid-medium-and-small) {
     @include grid-column(6, $mobile-0gutter);

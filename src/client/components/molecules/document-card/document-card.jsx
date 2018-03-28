@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router'
 import _ from 'lodash'
 
 import s from './document-card.scss'
-import { BasicLink, DecorativeDash, DocumentType, PdfIcon } from 'atoms'
+import { DecorativeDash, DocumentType, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
@@ -92,9 +93,9 @@ class DocumentCard extends React.Component {
       action: `docname - ${doc.title}: Document Landing Page`
     }
     return (
-      <BasicLink url={doc.url} eventConfig={eventConfig}>
+      <Link to={doc.url}>
         <h6 className={'document-card-title ' + s.title}>{doc.title}</h6>
-      </BasicLink>
+      </Link>
     )
   }
 

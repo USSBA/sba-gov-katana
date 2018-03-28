@@ -1,3 +1,6 @@
-.decorativeDash {
-  border-top: 3px solid #666;
+.dash {
+  border-top: 2px solid $sba-red;
+  margin-bottom: -0.5rem;
+  margin-left: 0;
+  margin-top: 0.2rem;
 }

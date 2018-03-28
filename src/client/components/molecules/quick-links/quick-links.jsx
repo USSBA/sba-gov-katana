@@ -4,12 +4,13 @@ import moment from 'moment'
 import queryString from 'querystring'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import s from './quick-links.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { BasicLink, DecorativeDash } from 'atoms'
+import { DecorativeDash } from 'atoms'
 
 function getCurrentFile(files) {
   let found = null
@@ -110,17 +111,17 @@ const LatestDocumentsCard = props => {
     <div className={props.classname}>
       <div className={s.titleContainer}>
         <h3 className={s.title}>{props.sectionHeaderText}</h3>
-        <BasicLink
-          url={`/document?${queryString.stringify({
+        <Link
+          to={`/document?${queryString.stringify({
             type: props.documentType,
             program: props.documentProgram
           })}`}
-          text={'See all'}
-          myClassName={s.seeAll}
-          eventConfig={{ category: eventCategory, action: 'See All' }}
-        />
+          className={s.seeAll}
+        >
+          See all
+        </Link>
       </div>
-      <DecorativeDash className={s.dash} />
+      <DecorativeDash width={1.667} />
       <div>
         {props.documents && props.documents.items.length ? (
           props.documents.items.map((doc, index) => {
@@ -139,14 +140,7 @@ const LatestDocumentsCard = props => {
               titlePrefix + (doc.title.length > 80 ? doc.title.slice(0, 90) + '...' : doc.title)
             return (
               <div key={index}>
-                <BasicLink
-                  url={doc.url}
-                  text={linkTitle}
-                  eventConfig={{
-                    category: eventCategory,
-                    action: `DocumentLink: ${linkTitle}`
-                  }}
-                />
+                <Link to={doc.url}>{linkTitle}</Link>
 
                 {effectiveDate && <div className={s.date}>{formatDate(effectiveDate)}</div>}
               </div>
@@ -164,7 +158,7 @@ const RatesCard = props => {
   return (
     <div className={props.classname}>
       <h3 className={s.title}>Rates</h3>
-      <DecorativeDash className={s.dash} />
+      <DecorativeDash width={1.667} />
       {props.rate.map((rate, index) => {
         return (
           <div key={index} className={s.rateContainer}>
@@ -185,19 +179,16 @@ const ArticlesCard = props => {
     <div className={props.classname}>
       <div className={s.titleContainer}>
         <h3 className={s.title}>{props.sectionHeaderText}</h3>
-        <BasicLink
-          url={`/article?${queryString.stringify({
+        <Link
+          to={`/article?${queryString.stringify({
             program: props.articleProgram
           })}`}
-          text={'See all'}
-          myClassName={s.seeAll}
-          eventConfig={{
-            category: eventCategory,
-            action: 'See All'
-          }}
-        />
+          className={s.seeAll}
+        >
+          See all
+        </Link>
       </div>
-      <DecorativeDash className={s.dash} />
+      <DecorativeDash />
       <div>
         {articles && articles.items.length ? (
           <div>
@@ -207,14 +198,7 @@ const ArticlesCard = props => {
 
               return (
                 <div key={index}>
-                  <BasicLink
-                    url={article.url}
-                    text={linkTitle}
-                    eventConfig={{
-                      category: eventCategory,
-                      action: `ArticleLink: ${linkTitle}`
-                    }}
-                  />
+                  <Link to={article.url}>{linkTitle}</Link>
                   <div className={s.date}>{moment.unix(article.updated).format('MMM D, YYYY')}</div>
                 </div>
               )

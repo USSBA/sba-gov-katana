@@ -1,14 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router'
 import _ from 'lodash'
 
 import styles from './breadcrumb.scss'
-import { BasicLink, SmallIcon } from 'atoms'
+import { SmallIcon } from 'atoms'
 
 class Breadcrumb extends React.Component {
   makeLastAnchor(tail) {
     return (
       <span className={styles.last} key={20}>
-        <BasicLink id={'breadcrumb-current'} text={tail.title} url={tail.url} />
+        <Link id={'breadcrumb-current'} to={tail.url}>
+          {tail.title}
+        </Link>
       </span>
     )
   }
@@ -24,7 +27,9 @@ class Breadcrumb extends React.Component {
           {rest ? (
             rest.map((item, index) => {
               return [
-                <BasicLink id={'breadcrumb-level' + index} text={item.title} url={item.url} />,
+                <Link id={'breadcrumb-level' + index} to={item.url}>
+                  {item.title}
+                </Link>,
                 <span className={styles.slash}>/</span>
               ]
             })

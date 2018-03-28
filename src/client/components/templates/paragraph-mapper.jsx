@@ -1,7 +1,7 @@
 import React from 'react'
 import { compact } from 'lodash'
 
-import { ImageSection, SectionHeader, SubsectionHeader, TextSection } from 'atoms'
+import { ImageSection, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
@@ -58,11 +58,12 @@ function makeParagraphs(
         }
       } else if (item.type === 'sectionHeader') {
         const sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId
-        paragraph = <SectionHeader refId={sectionHeaderFunction(index)} text={item.text} />
+        paragraph = <h2 id={sectionHeaderFunction(index)}>{item.text}</h2>
       } else if (item.type === 'subsectionHeader') {
-        paragraph = <SubsectionHeader text={item.text} />
+        paragraph = <h3>{item.text}</h3>
       } else if (item.type === 'image') {
-        paragraph = <ImageSection imageObj={item.image} captionText={item.captionText} />
+        const { alt, url } = item.image
+        paragraph = <ImageSection alt={alt} src={url} caption={item.captionText} />
       } else if (item.type === 'lookup') {
         paragraph = (
           <Lookup

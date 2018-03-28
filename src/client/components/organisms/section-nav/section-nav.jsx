@@ -11,7 +11,7 @@ import styles from './section-nav.scss'
 import whiteIconLenders from 'assets/images/for-partners/For_Partners_Icon_Lenders_white.png'
 import whiteIconSuretyProviders from 'assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { BasicLink, WhiteIconGrow, WhiteIconLaunch, WhiteIconManage, WhiteIconPlan } from 'atoms'
+import { WhiteIconGrow, WhiteIconLaunch, WhiteIconManage, WhiteIconPlan } from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
 

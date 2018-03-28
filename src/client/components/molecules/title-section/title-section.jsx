@@ -1,23 +1,24 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router'
 
 import styles from './title-section.scss'
-import { BasicLink } from 'atoms'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {
+    const { location: { pathname } } = this.props
     let titleLinks = []
     titleLinks = sectionHeaders.map(function(item, index) {
       return (
         <li id={'titleSectionLinkId' + index} key={index}>
-          <BasicLink
-            myClassName={styles.titleLink}
-            url={`#${item.id}`}
-            text={item.text}
-            eventConfig={{
-              category: 'Anchor-Links',
-              action: `Click #${item.id}`
+          <Link
+            to={{
+              hash: `#${item.id}`,
+              pathname
             }}
-          />
+          >
+            {item.text}
+          </Link>
         </li>
       )
     })
@@ -49,9 +50,17 @@ class TitleSection extends React.Component {
   }
 }
 
+function mapStateToProps(state, ownProps) {
+  return {
+    location: ownProps.location
+  }
+}
+
 TitleSection.propTypes = {
   title: React.PropTypes.string.isRequired,
   summary: React.PropTypes.string.isRequired
 }
 
-export default TitleSection
+export { TitleSection }
+
+export default withRouter(connect(mapStateToProps, null)(TitleSection))

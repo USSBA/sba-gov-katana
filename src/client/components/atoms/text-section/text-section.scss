@@ -92,19 +92,6 @@
   background-size: 100%;
 }
 
-// @mixin primary-color-theme-for-color($component) {
-//   @each $name, $value in $primary-color-map {
-//     :global(.#{$name}) {
-//       #{$component} {
-//         background: url('../../../../../public/assets/svg/circle/circle-#{$name}.svg') no-repeat;
-//       }
-//     }
-//   }
-// }
-
-//TABLE
-//LARGE
-
 @include grid-media($sba-grid-small) {
   & thead > tr {
     display: none;

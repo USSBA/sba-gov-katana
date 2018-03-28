@@ -40,7 +40,7 @@ exports[`Front Page Hero should render correctly 1`] = `
         Want to be an entrepreneur?
       </div>
       <a
-        className="button primary spacing"
+        className="primary link spacing"
         onClick={[Function]}
         style={Object {}}
       >

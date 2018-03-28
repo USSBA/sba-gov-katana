@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import styles from './decorative-dash.scss'
 
-class DecorativeDash extends React.Component {
-  render() {
-    return (
-      <hr className={styles.decorativeDash + (this.props.className ? ' ' + this.props.className : '')} />
-    )
-  }
+const Dash = ({ width, ...nativeProps }) => (
+  <hr className={styles.dash} style={{ width: `${width}rem` }} {...nativeProps} />
+)
+
+Dash.propTypes = {
+  // The width of the dash in rems
+  width: PropTypes.number
 }
 
-export default DecorativeDash
+Dash.defaultProps = {
+  width: 18.667
+}
+
+export default Dash

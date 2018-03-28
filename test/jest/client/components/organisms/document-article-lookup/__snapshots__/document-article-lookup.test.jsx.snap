@@ -304,11 +304,8 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  onClick={[Function]}
+                  style={Object {}}
                 >
                   <h6
                     className="document-card-title title"
@@ -321,7 +318,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -353,11 +355,8 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  onClick={[Function]}
+                  style={Object {}}
                 >
                   <h6
                     className="document-card-title title"
@@ -370,7 +369,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -402,11 +406,8 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  onClick={[Function]}
+                  style={Object {}}
                 >
                   <h6
                     className="document-card-title title"
@@ -419,7 +420,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -455,11 +461,8 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  onClick={[Function]}
+                  style={Object {}}
                 >
                   <h6
                     className="document-card-title title"
@@ -472,7 +475,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>

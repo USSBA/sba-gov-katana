@@ -34,7 +34,7 @@ h6 {
 
 h3,
 h4,
-h5,
+//h5,
 h6 {
   letter-spacing: -0.3px;
 }
@@ -42,11 +42,6 @@ h6 {
 h1,
 h2 {
   letter-spacing: 0;
-}
-
-h2,
-h5 {
-  font-weight: normal;
 }
 
 h1 {
@@ -59,6 +54,7 @@ h1 {
 
 h2 {
   font-size: 1.777rem;
+  font-weight: 400;
 
   @include for-large-up {
     font-size: 2.25rem;
@@ -74,13 +70,7 @@ h4 {
 }
 
 h5 {
-  color: $sba-gray-dark;
-  font-family: $serif-font-family;
-  font-size: 1.167rem;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 1.1rem;
+  @include lede-type;
 }
 
 h6 {
@@ -95,6 +85,10 @@ p {
   margin-bottom: 1.1rem;
 }
 
+.lede {
+  @include lede-type;
+}
+
 // # Inline elements ----------------------------------------------------------
 
 em {
@@ -103,15 +97,14 @@ em {
 
 // # Links --------------------------------------------------------------------
 
-// TODO: with icon
 a {
-  color: $secondary-blue;
   cursor: pointer;
   text-decoration-skip-ink: auto;
   transition: color $base-duration $base-timing;
 
-  &:hover {
-    color: $secondary-blue-light;
+  &:active,
+  &:visited {
+    color: inherit;
   }
 
   &:focus {
@@ -121,19 +114,21 @@ a {
   }
 }
 
+a:not([class]) {
+  color: $secondary-blue;
+
+  &:hover {
+    color: $secondary-blue-light;
+  }
+}
+
 // # Header rule --------------------------------------------------------------
 
 hr {
-  border-bottom: 2px solid $sba-gray-light;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  margin-bottom: 2.8rem;
+  border: 0;
 }
 
-// TODO: not working
-hr.alt {
-  border-color: $sba-red !important;
-  margin-top: 0.2rem;
-  width: 18.667;
+hr:not([class]) {
+  border-top: 1px solid $sba-gray-light;
+  margin-bottom: 2.8rem;
 }

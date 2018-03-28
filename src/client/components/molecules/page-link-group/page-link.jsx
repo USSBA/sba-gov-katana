@@ -1,23 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import styles from './page-link.scss'
-import { BasicLink } from 'atoms'
 
 class PageLink extends React.Component {
   render() {
-    const anchorClass = styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
-    const picked = (({ id, text, url, onClick, onBlur }) => {
-      return {
-        id,
-        text,
-        url,
-        onClick,
-        onBlur
-      }
-    })(this.props)
+    const { indent, text, url, visible, ...linkProps } = this.props
+    const anchorClass = styles.link + ' ' + (visible ? '' : styles.hidden)
+
     return (
-      <li className={styles.pageLink + ' ' + (this.props.indent ? styles.indent : '')}>
-        <BasicLink {...picked} myClassName={anchorClass} />
+      <li className={styles.pageLink + ' ' + (indent ? styles.indent : '')}>
+        <Link className={anchorClass} to={url} {...linkProps}>
+          {text}
+        </Link>
       </li>
     )
   }

@@ -31,7 +31,6 @@ import PdfIcon from './icons/pdf'
 import ProgressBar from './progress-bar/progress-bar'
 import Radio from './radio/radio'
 import SearchIcon from './icons/search'
-import SectionHeader from './section-header/section-header'
 import SectionLink from './section-link/section-link'
 import SimpleSelect from './simple-select/simple-select'
 import SmallGreySecondaryButton from './small-grey-secondary-button/small-grey-secondary-button'
@@ -43,8 +42,6 @@ import SmallPrimaryButton from './small-primary-button/small-primary-button'
 import SmallPrimaryFormButton from './small-primary-form-button/small-primary-form-button'
 import SmallSecondaryButton from './small-secondary-button/small-secondary-button'
 import SocialMediaLink from './social-media-link/social-media-link'
-import SubsectionHeader from './subsection-header/subsection-header'
-import SubtitleText from './subtitle-text/subtitle-text'
 import SuccessIcon from './icons/success'
 import TaxonomyMultiSelect from './multiselect/taxonomy-multiselect'
 import TextArea from './textarea/textarea'
@@ -93,7 +90,6 @@ export {
   ProgressBar,
   Radio,
   SearchIcon,
-  SectionHeader,
   SectionLink,
   SimpleSelect,
   SmallGreySecondaryButton,
@@ -103,8 +99,6 @@ export {
   SmallPrimaryButton,
   SmallSecondaryButton,
   SocialMediaLink,
-  SubsectionHeader,
-  SubtitleText,
   SuccessIcon,
   TaxonomyMultiSelect,
   TextArea,

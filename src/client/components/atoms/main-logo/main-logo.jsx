@@ -1,16 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import sbaLogo from 'assets/images/logo.png'
 import styles from './main-logo.scss'
-import { BasicLink } from 'atoms'
 
 class MainLogo extends React.Component {
   render() {
     return (
       <div className={styles.logo}>
-        <BasicLink tabIndex="-1" url="/">
+        <Link tabIndex="-1" to="/">
           <img alt="Small Business Administration" src={sbaLogo} />
-        </BasicLink>
+        </Link>
       </div>
     )
   }

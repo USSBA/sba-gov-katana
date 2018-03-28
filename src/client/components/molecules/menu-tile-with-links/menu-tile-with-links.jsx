@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import s from './menu-tile-with-links.scss'
-import { BasicLink } from 'atoms'
 
 class MenuTileWithLinks extends React.Component {
   render() {
@@ -14,12 +14,12 @@ class MenuTileWithLinks extends React.Component {
     }
     return (
       <div id={this.props.id} className={s.tileHover}>
-        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
+        <Link to={this.props.link} className={s.noUnderline}>
           <h2 className={s.largeTitleHover}>{this.props.largeTitle}</h2>
-        </BasicLink>
-        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
+        </Link>
+        <Link to={this.props.link} className={s.noUnderline}>
           <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
-        </BasicLink>
+        </Link>
         <div className={s.topLine} />
         {this.props.children
           ? this.props.children.map((object, index) => {
@@ -53,14 +53,9 @@ class HoverLink extends React.Component {
   render() {
     return (
       <div className={s.linkContainer}>
-        <BasicLink
-          text={this.props.title}
-          id={this.props.id}
-          myClassName={s.link}
-          url={this.props.link}
-          autoFocus={this.props.autoFocus}
-          eventConfig={this.props.eventConfig}
-        />
+        <Link id={this.props.id} className={s.link} to={this.props.link} autoFocus={this.props.autoFocus}>
+          {this.props.title}
+        </Link>
       </div>
     )
   }

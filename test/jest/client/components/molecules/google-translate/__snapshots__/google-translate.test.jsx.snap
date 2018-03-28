@@ -12,15 +12,10 @@ exports[`Google Translate link to render correctly 1`] = `
     className="UtilityLink"
   >
     <a
-      autoFocus={false}
       className="link "
       id="translate-toggle-new"
-      onBlur={undefined}
-      onFocus={undefined}
-      onKeyDown={undefined}
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       Translate
     </a>

@@ -19,18 +19,33 @@ export class DeveloperTester extends React.Component {
         <h5>Hello</h5>
         <h6>Hello</h6>
         <hr />
-        <hr id="alt" />
+        <hr className="alternate" />
         <p>This is some example text. This is some example text.</p>
         <p style={{ width: '100px' }}>
           This is some example text. This is some example text with a <a href="https://google.com">link</a>.
           This is some example text.
         </p>
 
-        <Button primary url="/">
+        <Button primary>
+          <i className="fa fa-fw fa-search" />
+        </Button>
+        <Button secondary>
+          Search <i className="fa fa-fw fa-search" />
+        </Button>
+        <Button primary>
+          <i className="fa fa-fw fa-search" /> Search
+        </Button>
+        <Button primary alternate>
+          <i className="fa fa-fw fa-search" /> Search
+        </Button>
+        <Button disabled>disabled button</Button>
+        <Button primary alternate disabled>
+          secondary disabled button
+        </Button>
+        <Button primary url="/partners/sbic">
           primary button
         </Button>
-        <Button secondary>secondary button</Button>
-        <Button secondary alternate url="/">
+        <Button secondary url="/article">
           secondary button
         </Button>
         <Button primary alternate>

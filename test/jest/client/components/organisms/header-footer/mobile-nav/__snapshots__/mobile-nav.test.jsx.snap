@@ -9,10 +9,8 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       className="logo"
     >
       <a
-        autoFocus={false}
-        className=""
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
+        onClick={[Function]}
+        style={Object {}}
         tabIndex="-1"
       >
         <img
