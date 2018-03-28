@@ -104,7 +104,7 @@ em {
 // # Links --------------------------------------------------------------------
 
 // TODO: with icon
-a {
+a:not([class]) {
   color: $secondary-blue;
   cursor: pointer;
   text-decoration-skip-ink: auto;
