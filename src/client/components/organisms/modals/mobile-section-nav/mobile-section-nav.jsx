@@ -11,23 +11,11 @@ class MobileNav extends React.Component {
     this.state = {
       navMenu: 'open'
     }
-    // this._formatLargeTitle = this._formatLargeTitle.bind(this)
-    // this._formatSmallTitle = this._formatSmallTitle.bind(this)
     this._animationTimer = this._animationTimer.bind(this)
     this._handleBackBtn = this._handleBackBtn.bind(this)
     this._handleClick = this._handleClick.bind(this)
     this._navMenuClassname = this._navMenuClassname.bind(this)
   }
-
-  // _formatLargeTitle() {
-  //   return this.props.menuData.title.split(' ')[0]
-  // }
-
-  // _formatSmallTitle() {
-  //   const arr = this.props.menuData.title.split(' ')
-  //   arr.shift()
-  //   return arr.join(' ')
-  // }
 
   _animationTimer() {
     setTimeout(() => {
@@ -50,7 +38,6 @@ class MobileNav extends React.Component {
   }
 
   _handleClick(linkObject) {
-    // this.props.actions.closeMobileNav();
     this.setState(
       {
         navMenu: 'close'
@@ -109,7 +96,6 @@ const NavLink = props => {
       >
         {props.link.title}
       </a>
-      {/*<i className={s.navRightArrow + " fa fa-angle-right"}></i>*/}
     </div>
   )
 }

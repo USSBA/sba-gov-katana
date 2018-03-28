@@ -1,6 +1,6 @@
 .navMenu {
   position: fixed;
-  z-index: 9999999999 !important;
+  z-index: 9999999999;
   top: 0;
   right: 0;
   bottom: 0;
@@ -80,9 +80,8 @@
 }
 
 .navLeftArrow {
-  font-size: 1.667rem !important;
-  line-height: 1.667rem !important;
-  font-weight: bold;
+  font-size: 1.667rem;
+  font-weight: 700;
   position: absolute;
   top: 60%;
   left: 1.722rem;
@@ -92,17 +91,14 @@
 
 .navLinkContainer {
   position: relative;
-  z-index: 9999 !important;
   padding: 0.556rem 1.944rem 0.556rem 1.667rem;
   cursor: pointer;
-  border-bottom: 0.056rem solid rgba(255, 255, 255, 0.2);
+  border-bottom: 0.056rem solid rgba(white, 0.2);
   line-height: 1.6;
 }
 
 .navLink {
-  font-size: 1rem !important;
-  font-weight: 300 !important;
-  text-decoration: none !important;
+  font-weight: 300;
   color: white !important;
 }
 
