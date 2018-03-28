@@ -1,9 +1,9 @@
 import React from 'react'
 
-import cornerLines from 'assets/images/corner-diagonal-lines-grey.png'
 import s from './menu-tile.scss'
 import sharedStyles from './menu-tile-shared.scss'
 import { BasicLink } from 'atoms'
+import scrollIcon from 'assets/svg/scroll.svg'
 
 class MenuTile extends React.Component {
   render() {
@@ -33,12 +33,11 @@ class MenuTile extends React.Component {
           <h3 className={largeTitleClass}>{this.props.largeTitle}</h3>
           {smallTitleComponent}
         </div>
-        <i className={s.rightArrow + ' fa fa-angle-right'} />
+        <img className={s.rightArrow} src={scrollIcon} />
         <div className={lineClass} />
         <p id={this.props.id + '-blurb'} className={blurbClass}>
           {this.props.description}
         </p>
-        <img className={s.cornerLines} src={cornerLines} alt="" />
       </div>
     )
   }

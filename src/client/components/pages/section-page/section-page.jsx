@@ -5,7 +5,7 @@ import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
 import { RemoveMainLoader, SimpleCta } from 'molecules'
 import {
-  BusinessGuideTileCollection,
+  MenuTileCollection,
   ForPartnersTileCollection,
   FundingProgramsTileCollection,
   FederalContractingTileCollection
@@ -39,7 +39,7 @@ class SectionPage extends React.Component {
 
       let tileCollection
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
-        tileCollection = <BusinessGuideTileCollection sectionData={sectionData} />
+        tileCollection = <MenuTileCollection data={sectionData.children} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
         tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {

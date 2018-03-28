@@ -6,7 +6,7 @@
 .homepageTile {
   height: 100%;
   width: 100%;
-  background-color: $sba-gray-lighter;
+  border-top: 5px solid $sba-blue;
   @include grid-media($sba-grid-small) {
     cursor: pointer;
     padding: 27px;
@@ -70,21 +70,16 @@
     position: absolute;
     top: 27px;
     right: 15px;
+    transform: rotate(270deg);
   }
 }
 
 .line {
-  border-style: solid;
-  @include grid-media($sba-grid-small) {
-    border-width: 2px;
-    width: 49px;
-  }
-  @include grid-media($sba-grid-medium) {
-    height: 1px;
-    width: 90px;
-    border-width: 3px;
-    display: block;
-    margin: 21px auto 19px;
+  border-top: 2px solid $sba-red;
+  width: 50px;
+  margin: 14px auto 0px auto;
+  @include for-small-only {
+    margin: 0;
   }
 }
 
@@ -99,20 +94,10 @@
   }
   @include grid-media($sba-grid-medium) {
     text-align: center;
-    margin: 20px 40px;
+    margin: 14px 40px;
   }
 }
 
 .blurbInverse {
   color: white;
-}
-
-.cornerLines {
-  display: none;
-  @include grid-media($sba-grid-small) {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
 }

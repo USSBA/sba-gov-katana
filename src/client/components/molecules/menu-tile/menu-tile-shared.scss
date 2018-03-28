@@ -1,5 +1,4 @@
 .largeTitle {
-  font-weight: 900;
   @include grid-media($sba-grid-small) {
     margin-bottom: 0;
   }
@@ -7,7 +6,7 @@
     text-align: center;
     margin-top: 12px;
     margin-bottom: 0;
-    line-height: 50px;
+    line-height: 30px;
   }
 }
 
