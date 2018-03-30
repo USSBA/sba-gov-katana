@@ -1,23 +1,36 @@
+@mixin fullWidth {
+  display: block;
+  margin-left: 0;
+  width: 100%;
+}
+
 .link {
   @include button;
 }
 
+.responsive {
+  @include for-small-only {
+    @include fullWidth;
+  }
+}
+
 .spacing {
-  // horizontally space adjacent buttons
-  + .spacing:not(.fullWidth) {
-    margin-left: 1.667rem;
+  @include for-medium-up {
+    // horizontally space adjacent buttons
+    + .spacing:not(.fullWidth) {
+      margin-left: 1.667rem;
+    }
   }
 
   // vertically space adjacent full-width buttons
-  + .fullWidth {
+  + .fullWidth,
+  + .responsive {
     margin-top: $small-spacing;
   }
 }
 
 .fullWidth {
-  display: block;
-  margin-left: 0;
-  width: 100%;
+  @include fullWidth;
 }
 
 .primary:not([disabled]) {

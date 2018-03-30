@@ -37,7 +37,7 @@ exports[`CallToAction renders a button only 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="alternate primary link spacing"
+        className="alternate link primary responsive spacing"
         onClick={[Function]}
         style={Object {}}
       >
@@ -95,7 +95,7 @@ exports[`CallToAction renders a large size 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="alternate primary link spacing"
+        className="alternate link primary responsive spacing"
         onClick={[Function]}
         style={Object {}}
       >
@@ -153,7 +153,7 @@ exports[`CallToAction renders a medium size 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="alternate primary link spacing"
+        className="alternate link primary responsive spacing"
         onClick={[Function]}
         style={Object {}}
       >
@@ -211,7 +211,7 @@ exports[`CallToAction renders a small size 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="alternate primary link spacing"
+        className="alternate link primary responsive spacing"
         onClick={[Function]}
         style={Object {}}
       >

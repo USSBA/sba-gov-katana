@@ -10,7 +10,7 @@ class PageLink extends React.Component {
 
     return (
       <li className={styles.pageLink + ' ' + (indent ? styles.indent : '')}>
-        <Link className={anchorClass} to={url} {...linkProps}>
+        <Link {...linkProps} className={anchorClass} to={url}>
           {text}
         </Link>
       </li>

@@ -10,7 +10,7 @@ class UtilityLink extends React.Component {
 
     return (
       <li className={styles.UtilityLink}>
-        <Link className={anchorClass} to={url} {...linkProps}>
+        <Link {...linkProps} className={anchorClass} to={url}>
           {text}
         </Link>
       </li>

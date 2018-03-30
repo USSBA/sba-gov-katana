@@ -82,37 +82,6 @@ $breakpoint-small: 0px;
 $breakpoint-medium: 768px;
 $breakpoint-large: 1200px;
 
-@mixin for-small-only {
-  @media (max-width: $breakpoint-medium - 1) {
-    @content;
-  }
-}
-
-// TODO: do we need this?
-@mixin for-small-up {
-  @media (min-width: $breakpoint-small) {
-    @content;
-  }
-}
-
-@mixin for-medium-only {
-  @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large - 1) {
-    @content;
-  }
-}
-
-@mixin for-medium-up {
-  @media (min-width: $breakpoint-medium) {
-    @content;
-  }
-}
-
-@mixin for-large-up {
-  @media (min-width: $breakpoint-large) {
-    @content;
-  }
-}
-
 // # Animations ---------------------------------------------------------------
 
 $base-duration: 150ms;

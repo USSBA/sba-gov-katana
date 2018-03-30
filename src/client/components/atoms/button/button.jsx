@@ -11,8 +11,9 @@ const Button = props => {
   const className = classNames({
     [styles.alternate]: alternate,
     [styles.fullWidth]: fullWidth,
-    [styles.primary]: primary,
     [styles.link]: url,
+    [styles.primary]: primary,
+    [styles.responsive]: true,
     [styles.secondary]: secondary,
     [styles.spacing]: true
   })
