@@ -94,7 +94,7 @@ const TableOfContents = props => {
       <h2 id="contentLabel">Content</h2>
       <ul role="menu" aria-labelledby="contentLabel">
         <li role="menuitem">
-          <a href="#course">Course</a>
+          <a href="#course-content">Course</a>
         </li>
         <li role="menuitem">
           <a href="#worksheets">Worksheets</a>
@@ -109,11 +109,13 @@ const DownloadFlash = props => {
     return (
       <div className={styles.downloadFlash + ' download-flash'}>
         <div className={styles.icon}>
-          <i className="fa fa-exclamation-triangle" />
+          <i className="fa fa-info-circle" />
         </div>
-        <p>You need to enable Flash to view this course.</p>
+        <p>
+          This course uses Adobe Flash. Please make sure you have it installed and enabled before beginning.
+        </p>
         <a href="https://get.adobe.com/flashplayer/" target="_blank">
-          <SmallSecondaryButton className={styles.button} text="Learn How" />
+          <SmallSecondaryButton className={styles.button} text="Install Flash" />
         </a>
       </div>
     )
