@@ -71,7 +71,7 @@
   }
 }
 
-div[id^='card'] p[id^='title'] {
+.container div[id^='card'] p[id^='title'] {
   line-height: 1.1;
 }
 
@@ -80,6 +80,6 @@ div[id^='card'] p[id^='title'] {
   @include grid-column(12, $sba-grid-large);
 }
 
-div[id^='call-to-action'] {
+.container div[id^='call-to-action'] {
   margin-top: -30px;
 }
