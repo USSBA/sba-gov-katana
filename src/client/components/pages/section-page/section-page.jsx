@@ -37,7 +37,7 @@ class SectionPage extends React.Component {
 
       let tileCollection
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
-        tileCollection = <MenuTileCollection data={sectionData.children} />
+        tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
         tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {

@@ -39,6 +39,7 @@ class MenuTileCollection extends React.Component {
   }
 
   makeTile(object, index) {
+    console.log('HUH', this.props.splitTitle)
     const iconElement = icons[index]
     const tileProps = {
       id: 'tile-' + index,

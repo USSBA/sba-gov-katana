@@ -18,7 +18,7 @@ class MenuTileWithLinks extends React.Component {
           <h3 className={s.largeTitleHover}>{this.props.largeTitle}</h3>
         </BasicLink>
         <BasicLink url={this.props.link} eventConfig={eventConfig}>
-          <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
+          <h3 className={s.smallTitleHover}>{this.props.smallTitle}</h3>
         </BasicLink>
         <div className={s.topLine} />
         {this.props.children
@@ -39,7 +39,7 @@ class MenuTileWithLinks extends React.Component {
                   title={object.title}
                   link={object.fullUrl}
                   autoFocus={autoFocusOnMe}
-                  eventConfig={eventConfig}
+                  // eventConfig={eventConfig}
                 />
               )
             })
