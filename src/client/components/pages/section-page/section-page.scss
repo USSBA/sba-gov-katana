@@ -1,34 +1,11 @@
-.container {
-  position: relative;
-  display: block;
+.tiles {
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: $sba-gray-lighter;
-  padding: 18px 0;
 }
 
 .tiles:after {
   content: '';
   display: table;
   clear: both;
-}
-
-.nineStepsCtaContainer {
-  @include grid-media($sba-grid-small) {
-    @include grid-container;
-    @include grid-column(6);
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-container;
-    @include grid-column(12);
-    margin-top: 20px;
-    margin-bottom: 30px;
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(3, $sba-grid-large);
-    padding: 0 10px;
-    display: inherit;
-    position: relative;
-    margin-top: -115px;
-  }
 }

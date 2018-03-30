@@ -38,8 +38,8 @@ class TileCollection extends React.Component {
   }
 
   makeTile(object, index) {
-    let iconElement = this.props.icons[index]
-    let tileProps = {
+    const iconElement = this.props.icons[index]
+    const tileProps = {
       id: 'tile-' + index,
       key: index,
       data: object,
