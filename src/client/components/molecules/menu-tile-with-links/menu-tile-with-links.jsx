@@ -5,33 +5,17 @@ import { BasicLink } from 'atoms'
 
 class MenuTileWithLinks extends React.Component {
   render() {
-    const eventConfig = {
-      category: 'Main-Menu',
-      action:
-        (this.props.largeTitle || '') +
-        (this.props.largeTitle && this.props.smallTitle ? ' ' : '') +
-        (this.props.smallTitle || '')
-    }
     return (
       <div id={this.props.id} className={s.tileHover}>
-        <BasicLink url={this.props.link} eventConfig={eventConfig}>
-          <h3 className={s.largeTitleHover}>{this.props.largeTitle}</h3>
-        </BasicLink>
-        <BasicLink url={this.props.link} eventConfig={eventConfig}>
-          <h3 className={s.smallTitleHover}>{this.props.smallTitle}</h3>
+        <BasicLink url={this.props.link}>
+          <h3 className={s.titleHover}>
+            {this.props.largeTitle} {this.props.smallTitle}
+          </h3>
         </BasicLink>
         <div className={s.topLine} />
         {this.props.children
           ? this.props.children.map((object, index) => {
               const autoFocusOnMe = this.props.autoFocusOnLast && index === this.props.children.length - 1
-              const eventConfig = {
-                category: 'Main-Menu',
-                action:
-                  this.props.largeTitle +
-                  (this.props.smallTitle ? ' ' + this.props.smallTitle : '') +
-                  ':' +
-                  object.title
-              }
               return (
                 <HoverLink
                   id={this.props.id + '-link-' + index}
@@ -39,7 +23,6 @@ class MenuTileWithLinks extends React.Component {
                   title={object.title}
                   link={object.fullUrl}
                   autoFocus={autoFocusOnMe}
-                  // eventConfig={eventConfig}
                 />
               )
             })
@@ -59,7 +42,6 @@ class HoverLink extends React.Component {
           myClassName={s.link}
           url={this.props.link}
           autoFocus={this.props.autoFocus}
-          eventConfig={this.props.eventConfig}
         />
       </div>
     )

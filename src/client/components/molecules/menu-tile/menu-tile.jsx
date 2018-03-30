@@ -13,9 +13,9 @@ class MenuTile extends React.Component {
     }
 
     const smallTitleComponent = this.props.smallTitle ? (
-      <h4 className={sharedStyles.smallTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')}>
+      <h3 className={sharedStyles.smallTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')}>
         {this.props.smallTitle}
-      </h4>
+      </h3>
     ) : (
       undefined
     )

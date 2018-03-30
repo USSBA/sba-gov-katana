@@ -9,7 +9,7 @@
   border-top: 5px solid $sba-blue;
   @include grid-media($sba-grid-small) {
     cursor: pointer;
-    padding: 27px;
+    padding: 0px 27px 27px 27px;
   }
   @include grid-media($sba-grid-medium) {
     cursor: pointer;
@@ -68,7 +68,7 @@
     font-size: 48px !important;
     display: block !important;
     position: absolute;
-    top: 35%;
+    top: 24%;
     right: 15px;
     transform: rotate(270deg);
   }
