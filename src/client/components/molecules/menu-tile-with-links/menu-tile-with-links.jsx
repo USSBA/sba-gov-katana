@@ -7,7 +7,7 @@ class MenuTileWithLinks extends React.Component {
   render() {
     return (
       <div id={this.props.id} className={s.tileHover}>
-        <Link to={this.props.link} className={s.noUnderline}>
+        <Link to={this.props.link}>
           <h3 className={s.titleHover}>
             {this.props.largeTitle} {this.props.smallTitle}
           </h3>

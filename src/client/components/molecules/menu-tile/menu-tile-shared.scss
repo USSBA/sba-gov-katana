@@ -1,5 +1,6 @@
 .largeTitle {
   @include grid-media($sba-grid-small) {
+    margin-top: 1.56rem;
     margin-bottom: 0;
   }
   @include grid-media($sba-grid-medium) {
@@ -12,7 +13,6 @@
 
 .smallTitle {
   @include grid-media($sba-grid-small) {
-    // font-size: 1.5rem;
     margin-top: 4px;
   }
   @include grid-media($sba-grid-medium) {
