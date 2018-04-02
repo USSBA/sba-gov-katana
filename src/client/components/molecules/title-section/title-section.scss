@@ -4,25 +4,6 @@
   }
 }
 
-.lineCopy {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 3px;
-  width: 5.5em;
-  border: 3px solid;
-  text-align: left;
-  @include grid-media($sba-grid-small) {
-    width: 4em;
-  }
-}
-
-.hrLine {
-  box-sizing: border-box;
-  height: 1px;
-  border: 1px solid #dadada;
-}
-
 .summary {
   // @include font-size($h4-font-sizes);
   margin-bottom: 51.5px;

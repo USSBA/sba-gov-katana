@@ -6,7 +6,7 @@
 .titleSection,
 .previousNext,
 .breadcrumb {
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
     @include grid-push(0);
@@ -19,6 +19,11 @@
     @include grid-column(7);
     @include grid-push(4);
   }
+}
+
+.textSection,
+.cardCollection {
+  margin-bottom: 30px;
 }
 
 .articleContainer > span {

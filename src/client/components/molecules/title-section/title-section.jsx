@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router'
 
 import styles from './title-section.scss'
+import { DecorativeDash } from 'atoms'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {
@@ -42,9 +43,9 @@ class TitleSection extends React.Component {
         <h5 id="titleSectionSummaryId" className={styles.summary}>
           {this.props.summary}
         </h5>
-        <hr className={styles.lineCopy} />
+        <DecorativeDash width="5.5" />
         {this.props.sectionHeaders.length > 0 ? titleLinks : ''}
-        <hr className={styles.hrLine} />
+        <hr />
       </div>
     )
   }
