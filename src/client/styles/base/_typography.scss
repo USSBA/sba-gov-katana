@@ -111,10 +111,10 @@ a {
   text-decoration-skip-ink: auto;
   transition: color $base-duration $base-timing;
 
-  &:active,
-  &:visited {
-    color: inherit;
-  }
+  // &:active,
+  // &:visited {
+  //   color: inherit;
+  // }
 
   &:focus {
     // TODO: convert to mixin
