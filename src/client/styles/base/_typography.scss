@@ -107,14 +107,11 @@ em {
 // # Links --------------------------------------------------------------------
 
 a {
+  color: inherit;
   cursor: pointer;
+  text-decoration: none;
   text-decoration-skip-ink: auto;
   transition: color $base-duration $base-timing;
-
-  // &:active,
-  // &:visited {
-  //   color: inherit;
-  // }
 
   &:focus {
     // TODO: convert to mixin

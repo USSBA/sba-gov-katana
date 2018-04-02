@@ -5,7 +5,7 @@ import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
 import { RemoveMainLoader, SimpleCta } from 'molecules'
 import {
-  BusinessGuideTileCollection,
+  MenuTileCollection,
   ForPartnersTileCollection,
   FundingProgramsTileCollection,
   FederalContractingTileCollection
@@ -24,22 +24,20 @@ class SectionPage extends React.Component {
       let tenSteps
       if (sectionName === constants.sections.businessGuide) {
         tenSteps = (
-          <div className={styles.nineStepsCtaContainer}>
-            <SimpleCta
-              id="business-guide-panel-10-steps-callout"
-              actionText="Start your business in 10 steps"
-              buttonText="SEE THE GUIDE"
-              url={constants.routes.tenSteps}
-              eventCategory="Ten Steps CTA"
-              labelCategory="Small"
-            />
-          </div>
+          <SimpleCta
+            id="business-guide-panel-10-steps-callout"
+            actionText="Start your business in 10 steps"
+            buttonText="SEE THE GUIDE"
+            url={constants.routes.tenSteps}
+            eventCategory="Ten Steps CTA"
+            labelCategory="Small"
+          />
         )
       }
 
       let tileCollection
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
-        tileCollection = <BusinessGuideTileCollection sectionData={sectionData} />
+        tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
         tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
@@ -51,10 +49,12 @@ class SectionPage extends React.Component {
       }
 
       return (
-        <div className={styles.container}>
+        <div>
           <RemoveMainLoader />
-          <div className={styles.tiles}>{tileCollection}</div>
-          {tenSteps}
+          <div className={styles.tiles}>
+            {tileCollection}
+            {tenSteps}
+          </div>
         </div>
       )
     }

@@ -393,7 +393,7 @@ ShallowWrapper {
                         icons={Object {}}
                         neverDisplayChildrenOnHoverOverride={false}
                         pathname="/"
-                        splitTitle={true}
+                        splitTitle={false}
                         uppercaseFirstWord={false}
                     />
                 </div>
@@ -911,7 +911,7 @@ ShallowWrapper {
                                     icons={Object {}}
                                     neverDisplayChildrenOnHoverOverride={false}
                                     pathname="/"
-                                    splitTitle={true}
+                                    splitTitle={false}
                                     uppercaseFirstWord={false}
                               />
                         </div>
@@ -3061,7 +3061,7 @@ ShallowWrapper {
                                                             icons={Object {}}
                                                             neverDisplayChildrenOnHoverOverride={false}
                                                             pathname="/"
-                                                            splitTitle={true}
+                                                            splitTitle={false}
                                                             uppercaseFirstWord={false}
                                                   />
                                         </div>
@@ -3579,7 +3579,7 @@ ShallowWrapper {
                                                             icons={Object {}}
                                                             neverDisplayChildrenOnHoverOverride={false}
                                                             pathname="/"
-                                                            splitTitle={true}
+                                                            splitTitle={false}
                                                             uppercaseFirstWord={false}
                                                   />
                                         </div>

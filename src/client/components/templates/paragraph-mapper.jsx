@@ -119,7 +119,7 @@ function makeParagraphs(
         // TODO: fix hard-coding of pathname
         paragraph = (
           <div className={panelMenuContainer}>
-            <MenuTileCollection data={sectionData.children} pathname="/" splitTitle />
+            <MenuTileCollection data={sectionData.children} pathname="/" />
           </div>
         )
       }

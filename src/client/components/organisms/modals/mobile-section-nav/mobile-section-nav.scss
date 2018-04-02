@@ -89,9 +89,6 @@
   color: white;
 }
 
-.navLinkContainer {
-}
-
 .navLink {
   display: block;
   border-bottom: 0.056rem solid rgba(white, 0.2);
@@ -101,16 +98,11 @@
   padding: 0.556rem 1.944rem 0.556rem 1.667rem;
   position: relative;
 
-  // &:link,
-  // &:visited,
-  // &:active {
-  //   color: white;
-  //   text-decoration: none;
-  // }
-  //
-  // &:hover {
-  //   color: white !important;
-  // }
+  &:link,
+  &:active,
+  &:visited {
+    color: white;
+  }
 }
 
 .navTopLine {

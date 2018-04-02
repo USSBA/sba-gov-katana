@@ -87,10 +87,10 @@
   background-color: $sba-blue;
 
   a {
-    color: white;
-    text-decoration: none;
-
-    &:hover {
+    &:active,
+    &:link,
+    &:hover,
+    &:visited {
       color: white;
     }
   }
