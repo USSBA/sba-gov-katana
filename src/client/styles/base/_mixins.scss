@@ -75,3 +75,11 @@
   line-height: 1.667;
   margin-bottom: 1.1rem;
 }
+
+// ---
+@mixin call-to-action {
+  background-color: white;
+  border-top: 5px solid $sba-blue;
+  box-shadow: 6px 7px 20px 0 rgba(black, 0.1);
+  padding: 3rem;
+}

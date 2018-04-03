@@ -2,7 +2,7 @@ import React from 'react'
 import Waypoint from 'react-waypoint'
 
 import styles from './ten-steps-section.scss'
-import { TitleBox } from 'molecules'
+import { NumberedCalloutBlock } from 'molecules'
 
 class TenStepsSection extends React.Component {
   calculateSectionStyle() {
@@ -33,7 +33,7 @@ class TenStepsSection extends React.Component {
           onPositionChange={() => {}}
         >
           <div id={'section-title-box-' + this.props.index} className={styles.titleBox}>
-            <TitleBox
+            <NumberedCalloutBlock
               index={this.props.index}
               solidBox={this.props.sectionItem.solidBox}
               sectionNum={this.props.sectionItem.sectionNum}

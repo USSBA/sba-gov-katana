@@ -15,6 +15,7 @@ import MainLoader from './main-loader/main-loader'
 import MenuTile from './menu-tile/menu-tile'
 import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
 import NaicsLookup from './naics-lookup/naics-lookup'
+import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-block'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
 import PhoneNumber from './phone-number/phone-number'
@@ -30,7 +31,6 @@ import SearchBar from './search-bar/search-bar'
 import SimpleCta from './simple-cta/simple-cta'
 import SmallInverseCta from './small-inverse-cta/small-inverse-cta'
 import TenStepsNav from './ten-steps-nav/ten-steps-nav'
-import TitleBox from './title-box/title-box'
 import TitleSection from './title-section/title-section'
 
 export {
@@ -51,6 +51,7 @@ export {
   MenuTile,
   MenuTileWithLinks,
   NaicsLookup,
+  NumberedCalloutBlock,
   PageLinkGroup,
   Paginator,
   PhoneNumber,
@@ -66,6 +67,5 @@ export {
   SimpleCta,
   SmallInverseCta,
   TenStepsNav,
-  TitleBox,
   TitleSection
 }
