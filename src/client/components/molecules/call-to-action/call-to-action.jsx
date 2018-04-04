@@ -4,7 +4,7 @@ import styles from './call-to-action.scss'
 
 import cornerGraphicLarge from './corner-graphic-large.png'
 import cornerGraphicSmall from './corner-graphic-small.png'
-import { Button } from 'atoms'
+import { Button, DecorativeDash } from 'atoms'
 import { createCtaNavigation } from '../../../services/navigation'
 
 export class CallToAction extends React.Component {
@@ -43,14 +43,13 @@ export class CallToAction extends React.Component {
             <div title={imageAlt} style={this.backgroundImageStyles()} />
           </div>
           <div className={styles.contentContainer}>
-            <h4 className={styles.headline}>{headline}</h4>
+            <h3 className={styles.headline}>{headline}</h3>
+            <DecorativeDash width="2" />
             <p className={styles.blurb}>{this.props.blurb}</p>
             <Button primary alternate url={btnUrl}>
               {btnTitle}
             </Button>
           </div>
-          <img className={styles.cornerGraphicLarge} src={cornerGraphicLarge} alt="" />
-          <img className={styles.cornerGraphicSmall} src={cornerGraphicSmall} alt="" />
         </div>
       </div>
     )

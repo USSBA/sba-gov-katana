@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './callout.scss'
-import { Button } from 'atoms'
+import { Button, DecorativeDash } from 'atoms'
 
 class Callout extends React.Component {
   render() {

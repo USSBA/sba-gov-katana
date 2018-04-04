@@ -26,11 +26,19 @@ exports[`CallToAction renders a button only 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
@@ -44,16 +52,6 @@ exports[`CallToAction renders a button only 1`] = `
         Call To Action
       </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
 </div>
 `;
@@ -84,11 +82,19 @@ exports[`CallToAction renders a large size 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
@@ -102,16 +108,6 @@ exports[`CallToAction renders a large size 1`] = `
         Call To Action
       </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
 </div>
 `;
@@ -142,11 +138,19 @@ exports[`CallToAction renders a medium size 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
@@ -160,16 +164,6 @@ exports[`CallToAction renders a medium size 1`] = `
         Call To Action
       </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
 </div>
 `;
@@ -200,11 +194,19 @@ exports[`CallToAction renders a small size 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
@@ -218,16 +220,6 @@ exports[`CallToAction renders a small size 1`] = `
         Call To Action
       </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
 </div>
 `;

@@ -1,16 +1,31 @@
 // TODO: only for the homepage, which will be changed soon
 
 .blurb {
+  color: white;
+  font-family: $sans-serif-font-family;
   font-size: 1rem;
   font-style: italic;
+  font-weight: 300;
+}
+
+.headline {
+  color: white;
+
+  @include for-small-only {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .ctaContainer {
-  border-top: 5px solid $sba-blue;
-  box-shadow: 0 5px 10px 10px rgba(black, 0.03);
+  background-color: $sba-blue;
   position: relative;
+  padding: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
+
+  @include for-medium-up {
+    padding: 50px;
+  }
 
   @include grid-media($sba-grid-small) {
     @include grid-column(6, $mobile-0gutter);
@@ -60,12 +75,10 @@
       -webkit-justify-content: center;
       justify-content: center;
     }
-    padding: 30px;
   }
   .headline {
     @include grid-media($sba-grid-large) {
       margin: 0;
-      margin-right: 30px;
     }
   }
   .btn {
@@ -80,7 +93,6 @@
     display: none;
   }
   .contentContainer {
-    padding: 30px;
     @include grid-media($sba-grid-large) {
       text-align: left;
       @include grid-column(12);
@@ -90,37 +102,7 @@
 
 .large {
   .contentContainer {
-    padding: 100px 30px;
-  }
-}
-
-.cornerGraphicLarge {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  @include grid-media($sba-grid-small) {
-    display: none;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-  @include grid-media($sba-grid-large) {
-    display: block;
-  }
-}
-
-.cornerGraphicSmall {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  @include grid-media($sba-grid-small) {
-    display: block;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: block;
-  }
-  @include grid-media($sba-grid-large) {
-    display: none;
+    padding: 100px 50px;
   }
 }
 
@@ -154,39 +136,8 @@
   }
 }
 
-.headline {
-  @include grid-media($sba-grid-large) {
-    font-size: 1.05em;
-  }
-  @include grid-media($sba-grid-large) {
-    font-size: 2em;
-  }
-  @include grid-media($sba-grid-medium) {
-    font-size: 1.5em;
-  }
-}
-
 .blurb {
   @include grid-media($sba-grid-small) {
     display: none;
-  }
-  @include grid-media($sba-grid-medium) {
-    font-size: 1.38em;
-    line-height: 30px;
-    font-weight: 300;
-  }
-  @include grid-media($sba-grid-large) {
-    font-size: 1.38em;
-    line-height: 30px;
-    font-weight: 300;
-  }
-}
-
-.btn {
-  @include grid-media($sba-grid-small) {
-    margin-top: 20px;
-  }
-  @include grid-media($sba-grid-medium) {
-    margin-top: 10px;
   }
 }
