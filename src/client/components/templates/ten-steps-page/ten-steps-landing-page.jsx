@@ -193,7 +193,6 @@ class TenStepsLandingPage extends React.Component {
         {this.state.navType === 'center' ? (
           <TenStepsNav navType="center" section={this.state.section} />
         ) : null}
-
         <div className={styles.titleSection}>
           {this.state.navType === 'top' ? <TenStepsNav navType="top" /> : null}
           <div className={styles.titleSectionText}>
@@ -219,7 +218,6 @@ class TenStepsLandingPage extends React.Component {
             Back to all topics
           </Link>
         </div>
-
         <span id="step-1" className={styles.anchor} />
         <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
           {tenstepSectionItems}
@@ -239,14 +237,16 @@ class TenStepsLandingPage extends React.Component {
             </Waypoint>
           </div>
         </div>
-        {sectionData ? (
+        {/*
+          This will need to be updated with MenuTileCollection. Need to do more research on this.props.menu.
+          sectionData ? (
           <div className={styles.bizguideContainer}>
             <h1>Explore more topics</h1>
             <BusinessGuideTileCollection sectionData={sectionData} />
           </div>
         ) : (
           <div />
-        )}
+        )*/}{' '}
         {counsellorCta ? (
           <div className={styles.counsellorCtaContainer}>
             <CallToAction
