@@ -7,11 +7,11 @@ exports[`callout component renders a message 1`] = `
   <h1
     className="callout-title title"
   />
-  <p
+  <h5
     className="callout-message message"
   >
     This is a message
-  </p>
+  </h5>
   <div
     className="callout-buttons buttonContainer"
   >
@@ -31,7 +31,7 @@ exports[`callout component renders a title 1`] = `
   >
     This is a title
   </h1>
-  <p
+  <h5
     className="callout-message message"
   />
   <div
@@ -51,7 +51,7 @@ exports[`callout component renders one button 1`] = `
   <h1
     className="callout-title title"
   />
-  <p
+  <h5
     className="callout-message message"
   />
   <div
@@ -61,14 +61,7 @@ exports[`callout component renders one button 1`] = `
       className="callout-button button"
     >
       <button
-        autoFocus={false}
-        className="LargeInversePrimaryButton  "
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        className="primary responsive spacing"
       >
         Single Button
       </button>
@@ -84,7 +77,7 @@ exports[`callout component renders two buttons 1`] = `
   <h1
     className="callout-title title"
   />
-  <p
+  <h5
     className="callout-message message"
   />
   <div
@@ -94,26 +87,12 @@ exports[`callout component renders two buttons 1`] = `
       className="callout-button button"
     >
       <button
-        autoFocus={false}
-        className="LargeInversePrimaryButton  "
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        className="primary responsive spacing"
       >
         First Button
       </button>
       <button
-        autoFocus={false}
-        className="LargeInversePrimaryButton  "
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        className="primary responsive spacing"
       >
         Second Button
       </button>

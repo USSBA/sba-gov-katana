@@ -4,15 +4,20 @@
 
 // redundant with normalize css, but better to be explicit
 .textSection ul {
-  list-style: none;
+  list-style: disc;
 }
 
-.textSection ul,
-.textSection ol {
-  li {
-    margin: 10px 0;
-  }
+.textSection ul > li {
+  margin-left: 1.5rem;
+  padding-left: 0;
 }
+
+// .textSection ul,
+// .textSection ol {
+//   li {
+//     margin: 10px 0;
+//   }
+// }
 
 .textSection > ul ul,
 .textSection > ol ul {
@@ -30,7 +35,7 @@
       display: inline-block;
       float: left;
       margin-top: 8px;
-      margin-right: 20px;
+      // margin-right: 20px;
     }
 
     p {
@@ -52,13 +57,13 @@
 // override the normalize removal
 
 .textSection ol {
-  list-style: decimal;
+  list-style: decimal !important;
 }
 
 // indents the ordered list items
 
 .textSection ol li {
-  margin-left: 0.75em;
+  // margin-left: 0.75em;
 }
 
 .textSection ol li::before {
@@ -78,17 +83,17 @@
 // formatting for the unordered list bullets
 .textSection dl dt::before,
 .textSection > ul > li::before {
-  padding-right: 0.5em;
-  content: '';
-  height: 1em;
-  width: 1em;
-  display: block;
-  float: left;
-  margin-top: 0.2em;
-  margin-left: 0;
-  margin-right: 0.5em;
-  background-position: center;
-  background-repeat: no-repeat;
+  // padding-right: 0.5em;
+  // content: '';
+  // height: 1em;
+  // width: 1em;
+  // display: block;
+  // float: left;
+  // margin-top: 0.2em;
+  // margin-left: 0;
+  // margin-right: 0.5em;
+  // background-position: center;
+  // background-repeat: no-repeat;
   background-size: 100%;
 }
 

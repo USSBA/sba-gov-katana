@@ -10,9 +10,6 @@ html {
   //-moz-osx-font-smoothing: grayscale;
 }
 
-body {
-}
-
 // # Headings -----------------------------------------------------------------
 
 h1,
@@ -31,7 +28,7 @@ h4,
 h6 {
   color: $sba-blue;
   line-height: $heading-line-height;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 
 h1,

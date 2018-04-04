@@ -1,9 +1,17 @@
 // TODO: only for the homepage, which will be changed soon
 
+.blurb {
+  font-size: 1rem;
+  font-style: italic;
+}
+
 .ctaContainer {
+  border-top: 5px solid $sba-blue;
+  box-shadow: 0 5px 10px 10px rgba(black, 0.03);
   position: relative;
   margin-top: 30px;
   margin-bottom: 30px;
+
   @include grid-media($sba-grid-small) {
     @include grid-column(6, $mobile-0gutter);
   }

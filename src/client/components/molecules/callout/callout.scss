@@ -1,23 +1,21 @@
 .callout {
-  background-image: url('./corner-graphic.png');
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  padding: 40px 40px 40px 40px;
+  border-top: 5px solid $sba-blue;
+  padding: 50px;
 }
 
 .noDecoration {
   background-image: none;
 }
 
-.message {
-  // @include font-size($low-contrast-font-sizes);
-  margin-bottom: 30px;
-  font-family: 'Source Sans Pro';
-  line-height: 30px;
-  @include grid-media($sba-grid-small) {
-    font-style: normal;
-  }
-}
+// .message {
+//   // @include font-size($low-contrast-font-sizes);
+//   margin-bottom: 30px;
+//   font-family: 'Source Sans Pro';
+//   line-height: 30px;
+//   @include grid-media($sba-grid-small) {
+//     font-style: normal;
+//   }
+// }
 
 @media screen and (max-width: 1260px) and (min-width: 1077px) {
   .title {

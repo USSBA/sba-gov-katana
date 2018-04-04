@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './callout.scss'
-import { LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton } from 'atoms'
+import { Button } from 'atoms'
 
 class Callout extends React.Component {
   render() {
@@ -16,36 +16,27 @@ class Callout extends React.Component {
     return (
       <div className={`callout ${calloutStyles}`}>
         <h1 className={`callout-title ${styles.title}`}>{this.props.title}</h1>
-        <p className={`callout-message ${styles.message}`}>{this.props.message}</p>
+        <h5 className={`callout-message ${styles.message}`}>{this.props.message}</h5>
         <div className={`callout-buttons ${styles.buttonContainer}`}>
           <div className={`callout-button ${buttonStyles}`}>
             {this.props.buttons.map((item, index) => {
               if (item.btnType === 'LargePrimaryButton') {
                 return (
-                  <LargePrimaryButton
-                    text={item.btnText}
-                    key={index}
-                    url={item.url}
-                    eventConfig={item.eventConfig}
-                  />
+                  <Button primary url={item.url}>
+                    {item.btnText}
+                  </Button>
                 )
               } else if (item.btnType === 'LargeInversePrimaryButton') {
                 return (
-                  <LargeInversePrimaryButton
-                    text={item.btnText}
-                    key={index}
-                    url={item.url}
-                    eventConfig={item.eventConfig}
-                  />
+                  <Button primary url={item.url}>
+                    {item.btnText}
+                  </Button>
                 )
               } else if (item.btnType === 'LargeInverseSecondaryButton') {
                 return (
-                  <LargeInverseSecondaryButton
-                    text={item.btnText}
-                    key={index}
-                    url={item.url}
-                    eventConfig={item.eventConfig}
-                  />
+                  <Button secondary url={item.url}>
+                    {item.btnText}
+                  </Button>
                 )
               }
             })}
