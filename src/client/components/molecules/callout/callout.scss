@@ -8,16 +8,6 @@
   background-image: none;
 }
 
-// .message {
-//   // @include font-size($low-contrast-font-sizes);
-//   margin-bottom: 30px;
-//   font-family: 'Source Sans Pro';
-//   line-height: 30px;
-//   @include grid-media($sba-grid-small) {
-//     font-style: normal;
-//   }
-// }
-
 @media screen and (max-width: 1260px) and (min-width: 1077px) {
   .title {
     // @include font-size($h2-font-sizes);
