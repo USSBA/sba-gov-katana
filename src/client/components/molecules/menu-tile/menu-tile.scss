@@ -59,7 +59,9 @@
 }
 
 .titleInverse {
-  color: white;
+  h3 {
+    color: white;
+  }
 }
 
 .rightArrow {
@@ -81,10 +83,6 @@
   @include for-small-only {
     margin: 0;
   }
-}
-
-.lineInverse {
-  border-color: white !important;
 }
 
 .blurb {
