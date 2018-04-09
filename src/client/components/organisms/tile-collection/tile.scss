@@ -17,6 +17,9 @@
   @include for-large-up {
     margin-top: 10px;
     margin-bottom: 30px;
+    &:hover {
+      background-color: $sba-blue;
+    }
   }
 }
 

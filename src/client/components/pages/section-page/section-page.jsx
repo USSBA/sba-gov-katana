@@ -1,5 +1,6 @@
 import React from 'react'
 import path from 'path'
+import { camelCase } from 'lodash'
 
 import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
@@ -37,9 +38,11 @@ class SectionPage extends React.Component {
 
       let tileCollection
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
-        tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
+        tileCollection = (
+          <MenuTileCollection data={sectionData.children} section={camelCase(sectionName)} splitTitle />
+        )
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
-        tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
+        tileCollection = <MenuTileCollection data={sectionData.children} section={camelCase(sectionName)} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
         tileCollection = <ForPartnersTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
