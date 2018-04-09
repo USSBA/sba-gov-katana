@@ -39,7 +39,11 @@ class MenuTileCollection extends React.Component {
   }
 
   makeTile(object, index) {
-    const iconElement = icons[index]
+    const sectionName = object.fullUrl.slice(
+      1,
+      object.fullUrl.indexOf('/', object.fullUrl.indexOf('/') + 1)
+    )
+    const iconElement = icons[sectionName][index]
     const tileProps = {
       id: 'tile-' + index,
       key: index,
@@ -48,7 +52,7 @@ class MenuTileCollection extends React.Component {
       backgroundLines: iconElement.background,
       iconWhite: iconElement.iconWhite,
       pathname: this.props.pathname,
-      size: icons.length,
+      size: icons[sectionName].length,
       uppercaseFirstWord: this.props.uppercaseFirstWord,
       smallTile: this.props.smallTile,
       splitTitle: this.props.splitTitle,
@@ -76,12 +80,13 @@ class MenuTileCollection extends React.Component {
 
     if (!data) {
       return <div />
-    } else if (data.length !== icons.length) {
-      console.error('Invalid number of icons provided to tile collection')
-      console.error(data)
-      console.error(icons)
-      return <div />
     }
+    // else if (data.length !== icons.length) {
+    //   console.error('Invalid number of icons provided to tile collection')
+    //   console.error(data)
+    //   console.error(icons)
+    //   return <div />
+    // }
     return <div>{data.map(this.makeTile.bind(this))}</div>
   }
 }

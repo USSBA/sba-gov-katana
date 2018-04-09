@@ -1,12 +1,12 @@
 import React from 'react'
 import path from 'path'
+import { camelCase } from 'lodash'
 
 import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
 import { RemoveMainLoader, SimpleCta } from 'molecules'
 import {
   MenuTileCollection,
-  ForPartnersTileCollection,
   FundingProgramsTileCollection,
   FederalContractingTileCollection
 } from 'organisms'
@@ -41,7 +41,7 @@ class SectionPage extends React.Component {
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
         tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
-        tileCollection = <ForPartnersTileCollection sectionData={sectionData} />
+        tileCollection = <MenuTileCollection data={sectionData.children} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
         tileCollection = <FederalContractingTileCollection sectionData={sectionData} />
       } else {
