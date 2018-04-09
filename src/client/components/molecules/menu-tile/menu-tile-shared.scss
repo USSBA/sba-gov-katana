@@ -1,4 +1,5 @@
 .largeTitle {
+  padding: 0 20px;
   @include grid-media($sba-grid-small) {
     margin-top: 1.56rem;
     margin-bottom: 0;
