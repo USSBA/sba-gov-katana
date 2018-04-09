@@ -10,8 +10,7 @@
 #
 # Push to Branch     | Deploy to Environment
 # ------------------ | ---------------------
-# integration        | qint
-# master-integration | mint
+# integration        | mint
 # staging            | staging
 # master             | HOLD -> prod
 #
@@ -37,7 +36,6 @@ workflows:
             only:
             - master
             - integration
-            - master-integration
             - staging
             - /RELEASE-\d+/
             - /[Ff]eature-\w+-\d+[-\w]*/
@@ -48,14 +46,13 @@ workflows:
             only:
             - master
             - integration
-            - master-integration
             - staging
             - /RELEASE-\d+/
             - /[Ff]eature-\w+-\d+[-\w]*/
     - force-mint-redeploy:
         requires: [build-push-image]
         filters:
-          branches: {only: [master-integration]}
+          branches: {only: [integration]}
     #- deploy-qint-containers:
     #    requires: [build-push-image]
     #    filters:
