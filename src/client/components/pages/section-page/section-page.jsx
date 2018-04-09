@@ -7,7 +7,6 @@ import styles from './section-page.scss'
 import { RemoveMainLoader, SimpleCta } from 'molecules'
 import {
   MenuTileCollection,
-  ForPartnersTileCollection,
   FundingProgramsTileCollection,
   FederalContractingTileCollection
 } from 'organisms'
@@ -38,13 +37,11 @@ class SectionPage extends React.Component {
 
       let tileCollection
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
-        tileCollection = (
-          <MenuTileCollection data={sectionData.children} section={camelCase(sectionName)} splitTitle />
-        )
+        tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
-        tileCollection = <MenuTileCollection data={sectionData.children} section={camelCase(sectionName)} />
+        tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
-        tileCollection = <ForPartnersTileCollection sectionData={sectionData} />
+        tileCollection = <MenuTileCollection data={sectionData.children} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
         tileCollection = <FederalContractingTileCollection sectionData={sectionData} />
       } else {

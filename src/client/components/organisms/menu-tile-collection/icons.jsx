@@ -13,7 +13,7 @@ const icons = {
       icon: require('assets/images/business-guide/Business_Guide_Icon_Grow_color.png')
     }
   ],
-  'for-partners': [
+  partners: [
     {
       icon: require('assets/images/for-partners/For_Partners_Icon_Lenders_color.png')
     },
