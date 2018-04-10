@@ -86,3 +86,4 @@ aws:
     officeEndpoint: 'doc-sba-gov-dev-offices-owb6n33f3b7y5u4y3mtlsiuzsa.us-east-1.cloudsearch.amazonaws.com'
   dynamodb:
     endpoint: placeholder
+publicPath: "/build/"
