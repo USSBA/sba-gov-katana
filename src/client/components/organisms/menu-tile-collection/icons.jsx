@@ -27,6 +27,28 @@ const icons = {
     {
       icon: require('assets/images/for-partners/For_Partners_Icon_Contracting_Officials_color.png')
     }
+  ],
+  'funding-programs': [
+    {
+      icon: require('assets/images/funding-programs/Funding_Programs_Icon_Loans_color.png'),
+      iconWhite: require('assets/images/funding-programs/Funding_Programs_Icon_Loans_white.png')
+    },
+    {
+      icon: require('assets/images/funding-programs/Funding_Programs_Icon_Investment_color.png'),
+      iconWhite: require('assets/images/funding-programs/Funding_Programs_Icon_Investment_white.png')
+    },
+    {
+      icon: require('assets/images/funding-programs/Funding_Programs_Icon_Disaster_color.png'),
+      iconWhite: require('assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png')
+    },
+    {
+      icon: require('assets/images/funding-programs/Funding_Programs_Icon_Surety_color.png'),
+      iconWhite: require('assets/images/funding-programs/Funding_Programs_Icon_Surety_white.png')
+    },
+    {
+      icon: require('assets/images/funding-programs/Funding_Programs_Icon_Grants_color.png'),
+      iconWhite: require('assets/images/funding-programs/Funding_Programs_Icon_Grants_white.png')
+    }
   ]
 }
 

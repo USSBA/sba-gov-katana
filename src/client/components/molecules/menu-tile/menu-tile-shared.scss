@@ -1,22 +1,24 @@
 .largeTitle {
-  padding: 0 20px;
-  @include grid-media($sba-grid-small) {
+  @include for-small-only {
     margin-top: 1.56rem;
     margin-bottom: 0;
   }
-  @include grid-media($sba-grid-medium) {
+  @include for-medium-up {
     text-align: center;
     margin-top: 12px;
     margin-bottom: 0;
     line-height: 30px;
   }
+  @include for-large-up {
+    padding: 0 20px;
+  }
 }
 
 .smallTitle {
-  @include grid-media($sba-grid-small) {
+  @include for-small-only {
     margin-top: 4px;
   }
-  @include grid-media($sba-grid-medium) {
+  @include for-medium-up {
     text-align: center;
     margin-top: 4px;
     margin-bottom: 0;
