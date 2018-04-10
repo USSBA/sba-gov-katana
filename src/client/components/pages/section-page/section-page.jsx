@@ -34,7 +34,9 @@ class SectionPage extends React.Component {
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
         tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
-        tileCollection = <MenuTileCollection data={sectionData.children} />
+        tileCollection = (
+          <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
+        )
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
         tileCollection = <MenuTileCollection data={sectionData.children} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
