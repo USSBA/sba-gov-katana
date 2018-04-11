@@ -44,7 +44,7 @@ export class CallToAction extends React.Component {
           </div>
           <div className={styles.contentContainer}>
             <h3 className={styles.headline}>{headline}</h3>
-            <DecorativeDash width="2" />
+            <DecorativeDash width={2} />
             <p className={styles.blurb}>{this.props.blurb}</p>
             <Button primary alternate url={btnUrl}>
               {btnTitle}

@@ -66,9 +66,12 @@ class Hero extends React.Component {
   }
 
   onResize = () => {
+    const nav = document.getElementById('nav')
+    const heroScroll = document.getElementById('hero-scroll')
+
     this.setState({
-      navHeight: document.getElementById('nav').clientHeight,
-      scrollHeight: document.getElementById('hero-scroll').clientHeight
+      navHeight: nav && nav.clientHeight,
+      scrollHeight: heroScroll && heroScroll.clientHeight
     })
   }
 
