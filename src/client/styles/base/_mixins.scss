@@ -50,7 +50,6 @@
   transition: all $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
-  white-space: nowrap;
 
   &:focus {
     outline: $focus-outline;

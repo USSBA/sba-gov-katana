@@ -1,13 +1,14 @@
 # Button
 
-| Prop | Type | Description |
-| --- | --- | ---
-| `alternate` | `boolean` | Can only be used when button is also `primary`. `primary`, `alternate` buttons are for secondary actions, e.g. in search boxes.
-| `children`* | `array` \| `element` \| `string` \| | **Required**. Sets the content inside the button
-| `disabled` | `boolean` | Disables the button, preventing any interaction
-| `fullWidth` | `boolean` | Spans the button to the full width of its parent
-| `primary`* \| `secondary`* | `boolean` | If the button is not `disabled`, one of `primary` or `secondary` is **required**.<br><br> Sets the visual weight of the button: <ul><li>`primary` (filled) buttons are for primary actions, e.g. in heros</li><li>`secondary` (outlined) buttons are for lower priority actions, if there are already `primary` or `secondary` buttons nearby</li></ul>
-| `url` | `string` | Sets the location to navigate to when the button is activated. Setting this prop will render the button as an `<a>` internally.
+| Prop | Type | Description | Default
+| --- | --- | --- | ---
+| `alternate` | `boolean` | Can only be used when button is also `primary`. `primary`, `alternate` buttons are for secondary actions, e.g. in search boxes. | -
+| `children`* | `array` \| `element` \| `string` \| | **Required**. Sets the content inside the button | -
+| `disabled` | `boolean` | Disables the button, preventing any interaction | -
+| `fullWidth` | `boolean` | Spans the button to the full width of its parent | -
+| `primary`* \| `secondary`* | `boolean` | If the button is not `disabled`, one of `primary` or `secondary` is **required**.<br><br> Sets the visual weight of the button: <ul><li>`primary` (*filled*) buttons are for primary actions, e.g. in heros</li><li>`secondary` (*outlined*) buttons are for lower priority actions, if there are already `primary` or `secondary` buttons nearby</li></ul> | -
+| `spacing` | `boolean` | Adds (*horizontal* or *vertical*) spacing to sibling (*default* or `fullWidth`) buttons | `true`
+| `url` | `string` | Sets the location to navigate to when the button is activated. Setting this prop will render the button as an `<a>` internally. | -
 
 ## Examples
 

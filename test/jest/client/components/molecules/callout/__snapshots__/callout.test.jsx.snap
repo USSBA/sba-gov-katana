@@ -4,21 +4,10 @@ exports[`callout component renders a message 1`] = `
 <div
   className="callout callout"
 >
-  <h1
-    className="callout-title title"
-  />
-  <h5
-    className="callout-message message"
-  >
+  <h1 />
+  <h5>
     This is a message
   </h5>
-  <div
-    className="callout-buttons buttonContainer"
-  >
-    <div
-      className="callout-button button"
-    />
-  </div>
 </div>
 `;
 
@@ -26,21 +15,10 @@ exports[`callout component renders a title 1`] = `
 <div
   className="callout callout"
 >
-  <h1
-    className="callout-title title"
-  >
+  <h1>
     This is a title
   </h1>
-  <h5
-    className="callout-message message"
-  />
-  <div
-    className="callout-buttons buttonContainer"
-  >
-    <div
-      className="callout-button button"
-    />
-  </div>
+  <h5 />
 </div>
 `;
 
@@ -48,24 +26,16 @@ exports[`callout component renders one button 1`] = `
 <div
   className="callout callout"
 >
-  <h1
-    className="callout-title title"
-  />
-  <h5
-    className="callout-message message"
-  />
+  <h1 />
+  <h5 />
   <div
-    className="callout-buttons buttonContainer"
+    className="buttons"
   >
-    <div
-      className="callout-button button"
+    <button
+      className="primary responsive"
     >
-      <button
-        className="primary responsive spacing"
-      >
-        Single Button
-      </button>
-    </div>
+      Single Button
+    </button>
   </div>
 </div>
 `;
@@ -74,29 +44,21 @@ exports[`callout component renders two buttons 1`] = `
 <div
   className="callout callout"
 >
-  <h1
-    className="callout-title title"
-  />
-  <h5
-    className="callout-message message"
-  />
+  <h1 />
+  <h5 />
   <div
-    className="callout-buttons buttonContainer"
+    className="buttons"
   >
-    <div
-      className="callout-button button"
+    <button
+      className="primary responsive"
     >
-      <button
-        className="primary responsive spacing"
-      >
-        First Button
-      </button>
-      <button
-        className="primary responsive spacing"
-      >
-        Second Button
-      </button>
-    </div>
+      First Button
+    </button>
+    <button
+      className="responsive secondary"
+    >
+      Second Button
+    </button>
   </div>
 </div>
 `;

@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import styles from './button.scss'
 
 const Button = props => {
-  const { alternate, children, fullWidth, icon, url, primary, secondary, ...nativeProps } = props
+  const { alternate, children, fullWidth, icon, spacing, primary, secondary, url, ...nativeProps } = props
 
   // TODO: make full width based on media query based on prop
   const className = classNames({
@@ -15,7 +15,7 @@ const Button = props => {
     [styles.primary]: primary,
     [styles.responsive]: true,
     [styles.secondary]: secondary,
-    [styles.spacing]: true
+    [styles.spacing]: spacing
   })
 
   // TODO: check native props map correctly to anchor or button
@@ -28,6 +28,10 @@ const Button = props => {
       {children}
     </button>
   )
+}
+
+Button.defaultProps = {
+  spacing: true
 }
 
 Button.propTypes = {
@@ -62,6 +66,9 @@ Button.propTypes = {
 
   // Span button to the full width of its parent
   fullWidth: PropTypes.bool,
+
+  // Adds spacing to sibling buttons depending on context. Set to true by default.
+  spacing: PropTypes.bool,
 
   // The location to navigate to when the button is activated. Setting this
   // prop will render the button as an anchor internally.
