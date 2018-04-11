@@ -4,12 +4,7 @@ import path from 'path'
 import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
 import { RemoveMainLoader, SimpleCta } from 'molecules'
-import {
-  MenuTileCollection,
-  ForPartnersTileCollection,
-  FundingProgramsTileCollection,
-  FederalContractingTileCollection
-} from 'organisms'
+import { MenuTileCollection, FederalContractingTileCollection } from 'organisms'
 
 class SectionPage extends React.Component {
   equalsIgnoreCase(first, second) {
@@ -39,9 +34,11 @@ class SectionPage extends React.Component {
       if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
         tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
-        tileCollection = <FundingProgramsTileCollection sectionData={sectionData} />
+        tileCollection = (
+          <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
+        )
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
-        tileCollection = <ForPartnersTileCollection sectionData={sectionData} />
+        tileCollection = <MenuTileCollection data={sectionData.children} />
       } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
         tileCollection = <FederalContractingTileCollection sectionData={sectionData} />
       } else {
