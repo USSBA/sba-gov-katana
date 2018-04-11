@@ -1,17 +1,12 @@
 import React from 'react'
 
 import styles from './callout.scss'
-import { Button, DecorativeDash } from 'atoms'
+import { Button } from 'atoms'
 
 class Callout extends React.Component {
   render() {
     let calloutStyles = styles.callout
     let buttonStyles = styles.button
-
-    if (this.props.inHeroWithNoImage) {
-      calloutStyles += ' ' + styles.noDecoration
-      buttonStyles += ' ' + styles.noFloat + ' ' + styles.wideButtons
-    }
 
     return (
       <div className={`callout ${calloutStyles}`}>
@@ -22,19 +17,19 @@ class Callout extends React.Component {
             {this.props.buttons.map((item, index) => {
               if (item.btnType === 'LargePrimaryButton') {
                 return (
-                  <Button primary url={item.url}>
+                  <Button secondary url={item.url} key={index}>
                     {item.btnText}
                   </Button>
                 )
               } else if (item.btnType === 'LargeInversePrimaryButton') {
                 return (
-                  <Button primary url={item.url}>
+                  <Button primary url={item.url} key={index}>
                     {item.btnText}
                   </Button>
                 )
               } else if (item.btnType === 'LargeInverseSecondaryButton') {
                 return (
-                  <Button secondary url={item.url}>
+                  <Button secondary url={item.url} key={index}>
                     {item.btnText}
                   </Button>
                 )
