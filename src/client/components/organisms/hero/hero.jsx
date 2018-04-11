@@ -11,8 +11,9 @@ class Hero extends React.Component {
     super(props)
 
     this.state = {
+      disasterAlertHeight: 0,
       navHeight: 0,
-      scrollHeight: 0
+      heroScrollHeight: 0
     }
   }
 
@@ -27,7 +28,7 @@ class Hero extends React.Component {
 
   render() {
     const { alt, buttons, imageUrl, message, title } = this.props
-    const { navHeight, scrollHeight } = this.state
+    const { disasterAlertHeight, navHeight, heroScrollHeight } = this.state
 
     const className = classNames({
       [styles.hero]: true,
@@ -45,7 +46,9 @@ class Hero extends React.Component {
                 title={alt}
                 style={{
                   backgroundImage: `url('${imageUrl}')`,
-                  height: `calc(100vh - (${navHeight}px + ${scrollHeight}px))`
+                  height: `calc(100vh - (${disasterAlertHeight}px + ${navHeight}px + ${
+                    heroScrollHeight
+                  }px))`
                 }}
               />
               <div className={`hero-callout ${styles.callout}`}>
@@ -66,12 +69,14 @@ class Hero extends React.Component {
   }
 
   onResize = () => {
+    const disasterAlert = document.getElementById('disaster-alert')
     const nav = document.getElementById('nav')
     const heroScroll = document.getElementById('hero-scroll')
 
     this.setState({
+      disasterAlertHeight: disasterAlert && disasterAlert.clientHeight,
       navHeight: nav && nav.clientHeight,
-      scrollHeight: heroScroll && heroScroll.clientHeight
+      heroScrollHeight: heroScroll && heroScroll.clientHeight
     })
   }
 

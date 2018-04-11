@@ -7,7 +7,7 @@ import exitIcon from '../../../../../../public/assets/svg/exit-modal-close.svg'
 class DisasterAlert extends React.Component {
   render() {
     return (
-      <div>
+      <div id="disaster-alert">
         {this.props.visible ? (
           <div className={styles.wrapper}>
             <div className={styles.alert}>
