@@ -34,10 +34,6 @@
 .image {
   $gutter-width: 30px;
 
-  $for-small-only-grid: (gutter: 0);
-
-  $for-medium-only-grid: (gutter: $gutter-width);
-
   background-repeat: no-repeat top center;
   background-size: cover;
   width: 100%;

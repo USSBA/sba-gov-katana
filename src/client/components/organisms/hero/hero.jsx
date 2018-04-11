@@ -44,7 +44,7 @@ class Hero extends React.Component {
                 className={styles.image}
                 title={alt}
                 style={{
-                  backgroundImage: `url('https://brian.sba.fun${imageUrl}')`,
+                  backgroundImage: `url('${imageUrl}')`,
                   height: `calc(100vh - (${navHeight}px + ${scrollHeight}px))`
                 }}
               />
