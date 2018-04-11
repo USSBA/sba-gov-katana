@@ -23,14 +23,9 @@
   }
 
   // vertically space adjacent full-width buttons
-  + .fullWidth {
-    margin-top: $small-spacing;
-  }
-
+  + .fullWidth,
   + .responsive {
-    @include for-small-only {
-      margin-top: $small-spacing;
-    }
+    margin-top: $small-spacing;
   }
 }
 
