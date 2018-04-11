@@ -75,8 +75,7 @@
   width: 100%;
 
   // hide the second button on small screens
-  a:nth-child(2),
-  button:nth-child(2) {
+  *[class~='button']:nth-child(2) {
     @include for-small-only {
       display: none;
     }

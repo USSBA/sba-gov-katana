@@ -11,10 +11,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
 
-    > a:not(:last-child),
-    button:not(:last-child) {
-      margin-bottom: $small-spacing;
-    }
+  *[class~='button']:not(:last-child) {
+    margin-bottom: $small-spacing;
   }
 }

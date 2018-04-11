@@ -7,8 +7,7 @@ import styles from './button.scss'
 const Button = props => {
   const { alternate, children, fullWidth, icon, spacing, primary, secondary, url, ...nativeProps } = props
 
-  // TODO: make full width based on media query based on prop
-  const className = classNames({
+  const className = `button ${classNames({
     [styles.alternate]: alternate,
     [styles.fullWidth]: fullWidth,
     [styles.link]: url,
@@ -16,7 +15,7 @@ const Button = props => {
     [styles.responsive]: true,
     [styles.secondary]: secondary,
     [styles.spacing]: spacing
-  })
+  })}`
 
   // TODO: check native props map correctly to anchor or button
   return url ? (

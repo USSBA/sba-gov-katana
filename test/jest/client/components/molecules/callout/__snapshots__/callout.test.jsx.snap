@@ -32,7 +32,7 @@ exports[`callout component renders one button 1`] = `
     className="buttons"
   >
     <button
-      className="primary responsive"
+      className="button primary responsive"
     >
       Single Button
     </button>
@@ -50,12 +50,12 @@ exports[`callout component renders two buttons 1`] = `
     className="buttons"
   >
     <button
-      className="primary responsive"
+      className="button primary responsive"
     >
       First Button
     </button>
     <button
-      className="responsive secondary"
+      className="button responsive secondary"
     >
       Second Button
     </button>
