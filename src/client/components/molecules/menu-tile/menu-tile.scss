@@ -58,12 +58,6 @@
   color: $secondary-black-ish;
 }
 
-.titleInverse {
-  h3 {
-    color: white;
-  }
-}
-
 .rightArrow {
   display: none !important;
   @include grid-media($sba-grid-small) {
@@ -96,6 +90,14 @@
   }
 }
 
-.blurbInverse {
-  color: white;
+@include grid-media($sba-grid-large) {
+  .titleInverse {
+    h3 {
+      color: white;
+    }
+  }
+
+  .blurbInverse {
+    color: white;
+  }
 }
