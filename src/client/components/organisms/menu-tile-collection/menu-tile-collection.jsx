@@ -81,12 +81,6 @@ class MenuTileCollection extends React.Component {
     if (!data) {
       return <div />
     }
-    // else if (data.length !== icons.length) {
-    //   console.error('Invalid number of icons provided to tile collection')
-    //   console.error(data)
-    //   console.error(icons)
-    //   return <div />
-    // }
     return <div>{data.map(this.makeTile.bind(this))}</div>
   }
 }
