@@ -1,31 +1,34 @@
 import React, { PropTypes } from 'react'
 import path from 'path'
-import { startsWith } from 'lodash'
+import { isEmpty, isString, startsWith } from 'lodash'
 import { Link as ReactRouterLink } from 'react-router'
 
 import config from '../../../services/client-config'
 
 const Link = props => {
   const { to } = props
-  const redirectPaths = config.katanaRedirectPaths
 
-  // If the link is relative does not point to a url handled by React Router,
-  // i.e. a non-D8 url
-  if (
-    !startsWith(to, 'http') &&
-    Array.isArray(redirectPaths) &&
-    redirectPaths.includes(
-      path
-        .dirname(to)
-        .split('/')
-        .pop()
-    )
-  ) {
-    // Adding a `target` forces react-router to send a request to the server.
-    return <ReactRouterLink target="_self" {...props} />
+  if (!to) {
+    return <ReactRouterLink {...props} />
   }
 
-  return <ReactRouterLink {...props} />
+  const redirectPaths = config.katanaRedirectPaths
+  const location = isString(to) ? to : to.pathname
+
+  // If the link does not point to a url that can be handled by React Router,
+  // i.e. a non-D8 url
+  if (
+    startsWith(location, '/') &&
+    // TODO: This check simply exists to stop code path for jest tests when
+    // client config is undefined.
+    !isEmpty(redirectPaths) &&
+    !redirectPaths.includes(location.split('/')[1])
+  ) {
+    // Adding a `target` forces react-router to send a request to the server.
+    return <ReactRouterLink target="_blank" {...props} />
+  } else {
+    return <ReactRouterLink {...props} />
+  }
 }
 
 export default Link
