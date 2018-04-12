@@ -17,8 +17,7 @@ exports[`happening now section renders correctly 1`] = `
         className="itemDesktopFour"
       >
         <a
-          onClick={[Function]}
-          style={Object {}}
+          href="https://sba.gov"
         >
           <img
             alt="some image"
@@ -88,8 +87,7 @@ exports[`happening now section renders correctly 1`] = `
           >
             <div>
               <a
-                onClick={[Function]}
-                style={Object {}}
+                href="https://sba.gov"
               >
                 <img
                   alt="some image"
@@ -100,8 +98,7 @@ exports[`happening now section renders correctly 1`] = `
             </div>
             <div>
               <a
-                onClick={[Function]}
-                style={Object {}}
+                href="https://sba.gov"
               >
                 <img
                   alt="some image"
@@ -112,8 +109,7 @@ exports[`happening now section renders correctly 1`] = `
             </div>
             <div>
               <a
-                onClick={[Function]}
-                style={Object {}}
+                href="https://sba.gov"
               >
                 <img
                   alt="some image"
@@ -125,8 +121,7 @@ exports[`happening now section renders correctly 1`] = `
           </div>
           <a
             className="SliderItemAnchor"
-            onClick={[Function]}
-            style={Object {}}
+            href="https://sba.gov"
           >
             <p
               className="SliderItemTitle"

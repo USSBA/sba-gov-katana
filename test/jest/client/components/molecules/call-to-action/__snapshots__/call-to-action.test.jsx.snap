@@ -46,8 +46,7 @@ exports[`CallToAction renders a button only 1`] = `
       </p>
       <a
         className="button alternate link primary responsive spacing"
-        onClick={[Function]}
-        style={Object {}}
+        href="http://www.example.com/"
       >
         Call To Action
       </a>
@@ -102,8 +101,7 @@ exports[`CallToAction renders a large size 1`] = `
       </p>
       <a
         className="button alternate link primary responsive spacing"
-        onClick={[Function]}
-        style={Object {}}
+        href="http://www.example.com/"
       >
         Call To Action
       </a>
@@ -158,8 +156,7 @@ exports[`CallToAction renders a medium size 1`] = `
       </p>
       <a
         className="button alternate link primary responsive spacing"
-        onClick={[Function]}
-        style={Object {}}
+        href="http://www.example.com/"
       >
         Call To Action
       </a>
@@ -214,8 +211,7 @@ exports[`CallToAction renders a small size 1`] = `
       </p>
       <a
         className="button alternate link primary responsive spacing"
-        onClick={[Function]}
-        style={Object {}}
+        href="http://www.example.com/"
       >
         Call To Action
       </a>

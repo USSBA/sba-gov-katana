@@ -29,6 +29,7 @@ class HaxRouter extends Component {
 
   handleUpdate() {
     const { hash } = window.location
+
     if (hash !== '') {
       // Push onto callback queue so it runs after the DOM is updated,
       // this is required when navigating from a different page so that

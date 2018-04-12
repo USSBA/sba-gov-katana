@@ -19,6 +19,7 @@ export class DeveloperTester extends React.Component {
         <h6>Hello</h6>
         <hr />
         <hr className="alternate" />
+        <Link to="https://google.com">Google</Link>
         <p>This is some example text. This is some example text.</p>
         <p style={{ width: '100px' }}>
           This is some example text. This is some example text with a <a href="https://google.com">link</a>.

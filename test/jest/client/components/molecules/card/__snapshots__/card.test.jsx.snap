@@ -62,8 +62,7 @@ exports[`Card to render correctly 1`] = `
   id="card-4-0"
 >
   <a
-    onClick={[Function]}
-    style={Object {}}
+    href="https://en.wikipedia.org/wiki/Kitten"
   >
     <img
       alt="kitten"
@@ -78,8 +77,7 @@ exports[`Card to render correctly 1`] = `
   >
     <a
       className="unstyledLink"
-      onClick={[Function]}
-      style={Object {}}
+      href="https://en.wikipedia.org/wiki/Kitten"
     >
       Kitten
     </a>
@@ -103,8 +101,7 @@ exports[`Card to render correctly 1`] = `
   </div>
   <p>
     <a
-      onClick={[Function]}
-      style={Object {}}
+      href="https://en.wikipedia.org/wiki/Kitten"
     >
       Learn more about kittens
     </a>
