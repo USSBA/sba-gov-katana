@@ -16,7 +16,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <nav className={styles.navbar} id="nav">
+      <nav className={styles.navbar}>
         <MobileNav
           additionalMenuOffset={this.props.additionalMenuOffset}
           mainMenuData={this.props.mainMenuData}

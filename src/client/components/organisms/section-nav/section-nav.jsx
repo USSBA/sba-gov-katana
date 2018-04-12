@@ -8,10 +8,7 @@ import { bindActionCreators } from 'redux'
 import constants from '../../../services/constants.js'
 import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
 import styles from './section-nav.scss'
-import whiteIconLenders from 'assets/images/for-partners/For_Partners_Icon_Lenders_white.png'
-import whiteIconSuretyProviders from 'assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { WhiteIconGrow, WhiteIconLaunch, WhiteIconManage, WhiteIconPlan } from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
 
@@ -21,22 +18,8 @@ class SectionNav extends React.Component {
       let sectionNavIcon
       const sectionTitle = this.getNthLineage(-2).title
       const titleConstants = constants.sectionTitles
-      if (sectionTitle === titleConstants.planYourBusiness) {
-        sectionNavIcon = WhiteIconPlan
-      } else if (sectionTitle === titleConstants.launchYourBusiness) {
-        sectionNavIcon = WhiteIconLaunch
-      } else if (sectionTitle === titleConstants.manageYourBusiness) {
-        sectionNavIcon = WhiteIconManage
-      } else if (sectionTitle === titleConstants.growYourBusiness) {
-        sectionNavIcon = WhiteIconGrow
-      } else if (sectionTitle === titleConstants.disasterAssistance) {
+      if (sectionTitle === titleConstants.disasterAssistance) {
         sectionNavIcon = hurricaneIcon
-      } else if (sectionTitle === titleConstants.suretyProviders) {
-        sectionNavIcon = whiteIconSuretyProviders
-      } else if (sectionTitle === titleConstants.lenders) {
-        sectionNavIcon = whiteIconLenders
-      } else {
-        sectionNavIcon = WhiteIconGrow
       }
       this.props.actions.showMobileSectionNav(this.getNthLineage(-2), sectionNavIcon, this.getBacklinkUrl())
     }
@@ -139,5 +122,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav)
 export { SectionNav }
