@@ -19,13 +19,13 @@ const Link = props => {
   // i.e. a non-D8 url
   if (
     startsWith(location, '/') &&
-    // TODO: This check simply exists to stop code path for jest tests when
+    // TODO: This check simply exists to block code path for jest tests when
     // client config is undefined.
     !isEmpty(redirectPaths) &&
     !redirectPaths.includes(location.split('/')[1])
   ) {
     // Adding a `target` forces react-router to send a request to the server.
-    return <ReactRouterLink target="_blank" {...props} />
+    return <ReactRouterLink target="_self" {...props} />
   } else {
     return <ReactRouterLink {...props} />
   }
