@@ -49,6 +49,20 @@ const icons = {
       icon: require('assets/images/funding-programs/Funding_Programs_Icon_Grants_color.png'),
       iconWhite: require('assets/images/funding-programs/Funding_Programs_Icon_Grants_white.png')
     }
+  ],
+  'federal-contracting': [
+    {
+      icon: require('assets/images/federal-contracting/Understanding_Federal_Contracts_color.png'),
+      iconWhite: require('assets/images/federal-contracting/Understanding_Federal_Contracts_white.png')
+    },
+    {
+      icon: require('assets/images/federal-contracting/SBA_Contracting_Assistance_Programs_color.png'),
+      iconWhite: require('assets/images/federal-contracting/SBA_Contracting_Assistance_Programs_white.png')
+    },
+    {
+      icon: require('assets/images/federal-contracting/Counseling_and_Help_color.png'),
+      iconWhite: require('assets/images/federal-contracting/Counseling_and_Help_white.png')
+    }
   ]
 }
 

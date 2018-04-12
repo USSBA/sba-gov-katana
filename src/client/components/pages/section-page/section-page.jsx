@@ -4,7 +4,7 @@ import path from 'path'
 import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
 import { RemoveMainLoader, SimpleCta } from 'molecules'
-import { MenuTileCollection, FederalContractingTileCollection } from 'organisms'
+import { MenuTileCollection } from 'organisms'
 
 class SectionPage extends React.Component {
   equalsIgnoreCase(first, second) {
@@ -37,10 +37,11 @@ class SectionPage extends React.Component {
         tileCollection = (
           <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
         )
-      } else if (this.equalsIgnoreCase(sectionName, constants.sections.forPartners)) {
+      } else if (
+        this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
+        this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)
+      ) {
         tileCollection = <MenuTileCollection data={sectionData.children} />
-      } else if (this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)) {
-        tileCollection = <FederalContractingTileCollection sectionData={sectionData} />
       } else {
         console.error('Unable to find matching section')
       }
