@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <title>close-icon</title>
+<svg width="30px" height="31px" viewBox="0 0 30 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>atoms/icon/close</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Organisms" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Organisms-768-to-1079px" transform="translate(-601.000000, -1095.000000)" fill="#C4C4C4">
-            <g id="Group-6" transform="translate(-16.000000, 917.000000)">
-                <g id="blue-modal" transform="translate(121.000000, 148.000000)">
-                    <g id="modal-window">
-                        <path d="M511,43.2352941 L498.647059,30.8823529 L497.764706,30 L496,31.7647059 L496.882353,32.6470588 L509.235294,45 L496.882353,57.3529412 L496,58.2352941 L497.764706,60 L498.647059,59.1176471 L511,46.7647059 L523.352941,59.1176471 L524.235294,60 L526,58.2352941 L525.117647,57.3529412 L512.764706,45 L525.117647,32.6470588 L526,31.7647059 L524.235294,30 L523.352941,30.8823529 L511,43.2352941 Z" id="close-icon"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
+    <g id="atoms/icon/close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M15,13.7240629 L27.3529412,1.37112175 L28.2352941,0.48876881 L30,2.25347469 L29.1176471,3.13582763 L16.7647059,15.4887688 L29.1176471,27.84171 L30,28.7240629 L28.2352941,30.4887688 L27.3529412,29.6064159 L15,17.2534747 L2.64705882,29.6064159 L1.76470588,30.4887688 L0,28.7240629 L0.882352941,27.84171 L13.2352941,15.4887688 L0.882352941,3.13582763 L0,2.25347469 L1.76470588,0.48876881 L2.64705882,1.37112175 L15,13.7240629 Z" id="Combined-Shape" fill="#969696"></path>
     </g>
 </svg>

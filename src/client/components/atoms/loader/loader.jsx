@@ -1,6 +1,6 @@
 import React from 'react'
 
-import logo from 'assets/images/logo-no-text.png'
+import logo from 'assets/images/logo-no-text.svg'
 import s from './loader.scss'
 
 const Loader = props => {

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="17px" viewBox="0 0 27 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>atoms/graphic-element/caret/scroll</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="atoms/graphic-element/caret/scroll" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="scroll-arrow" transform="translate(13.000000, 8.000000) scale(-1, 1) translate(-13.000000, -8.000000) translate(1.000000, 1.000000)" stroke-width="4">
+            <path d="M11,0.0898438957 L23.0450057,12.1348496" id="Path-2-Copy" stroke="#CC0000" transform="translate(17.500000, 6.589844) scale(1, -1) translate(-17.500000, -6.589844) "></path>
+            <path d="M0,1 L12.9612673,13.9612673" id="Path-2" stroke="#002E6D"></path>
+        </g>
+    </g>
+</svg>

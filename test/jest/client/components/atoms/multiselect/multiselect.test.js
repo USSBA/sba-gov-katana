@@ -33,6 +33,7 @@ import _ from 'lodash'
 function makeValueLikeReactSelectReturnsIt(x) {
   return _.map(x, item => {
     return {
+      name: item,
       value: item
     }
   })

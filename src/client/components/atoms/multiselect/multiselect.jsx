@@ -8,13 +8,35 @@ import styles from './multiselect.scss'
 import { FormErrorMessage } from 'atoms'
 
 class MultiSelectBox extends React.Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      !this.state.value ||
+      (this.props.value !== nextProps.value && this.state.value !== nextProps.value)
+    ) {
+      this.setState({ value: nextProps.value })
+    }
+  }
+
   handleChange(newValue) {
+    let value
     if (this.props.multi) {
       if (newValue.length <= this.props.maxValues) {
-        this.props.onChange(_.map(newValue, 'value').join(','))
+        value = _.map(newValue, 'value').join(',')
       }
     } else {
-      this.props.onChange(newValue)
+      value = newValue
+    }
+
+    if (value && value !== this.state.value) {
+      if (this.props.onChange) {
+        this.props.onChange(value)
+      }
+      this.setState({ value: value })
     }
   }
   handleBlur() {
@@ -36,21 +58,18 @@ class MultiSelectBox extends React.Component {
     return <i src={chevron} />
   }
   render() {
-    let myValue = this.props.multi
-      ? this.props.value ? this.props.value.split(',') : []
-      : this.props.value
-    let errorMessage =
-      this.props.validationState == 'error' ? (
-        <FormErrorMessage errorText={this.props.errorText} />
-      ) : (
-        undefined
-      )
-    let errorClass = this.props.validationState == 'error' ? styles.redBorder : ''
-    let arrowRenderer = () => {
+    const myValue = this.props.multi
+      ? this.state.value ? this.state.value.split(',') : []
+      : this.state.value
+
+    const errorMessage =
+      this.props.validationState === 'error' ? <FormErrorMessage errorText={this.props.errorText} /> : null
+    const errorClass = this.props.validationState === 'error' ? styles.redBorder : ''
+    const arrowRenderer = () => {
       return <img alt="dropdown arrow" className={styles.chevronIcon} src={chevron} />
     }
-    let clearRenderer = this.props.multi
-      ? undefined
+    const clearRenderer = this.props.multi
+      ? null
       : () => {
           return <div />
         }
@@ -95,7 +114,10 @@ class MultiSelectBox extends React.Component {
 
 MultiSelectBox.defaultProps = {
   multi: true,
-  maxValues: 3
+  maxValues: 3,
+  onBlur: () => {},
+  onFocus: () => {},
+  onChange: () => {}
 }
 
 export default MultiSelectBox

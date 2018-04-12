@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router'
 
 import styles from './styles.scss'
-import { BasicLink } from 'atoms'
 
 var Slider = React.createClass({
   getDefaultProps() {
@@ -145,9 +145,9 @@ var Slider = React.createClass({
   makeItem(item, index) {
     return (
       <div key={'slider-item-' + (index + 1)}>
-        <BasicLink url={item.url}>
+        <Link to={item.url}>
           <img className={styles.SliderItemImage} src={item.image} alt={item.imageAlt} />
-        </BasicLink>
+        </Link>
       </div>
     )
   },
@@ -198,9 +198,9 @@ var Slider = React.createClass({
           <div className={slidesClasses} style={slidesStyles}>
             {children}
           </div>
-          <BasicLink myClassName={styles.SliderItemAnchor} url={activeItem.url}>
+          <Link className={styles.SliderItemAnchor} to={activeItem.url}>
             <p className={styles.SliderItemTitle}>{activeItem.title}</p>
-          </BasicLink>
+          </Link>
         </div>
         {showNav ? this.renderNav() : null}
       </div>

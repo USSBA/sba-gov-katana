@@ -1,7 +1,8 @@
 import React from 'react'
+
 import styles from './notification-bar.scss'
 import exitIcon from '../../../../../public/assets/svg/exit-modal-close-white.svg'
-import { BasicLink } from 'atoms'
+import { Button } from 'atoms'
 
 class NotificationBar extends React.Component {
   render() {
@@ -13,12 +14,9 @@ class NotificationBar extends React.Component {
           <img className={styles.alertClose} onClick={this.props.onClose} src={exitIcon} alt="Close" />
 
           <div>
-            <BasicLink
-              htmlElement="button"
-              url={this.props.url}
-              text="LEARN MORE"
-              myClassName={styles.alertButton}
-            />
+            <Button secondary url={this.props.url}>
+              Learn more
+            </Button>
           </div>
         </div>
       </div>

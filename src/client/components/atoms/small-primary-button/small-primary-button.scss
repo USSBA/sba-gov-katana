@@ -1,11 +1,1 @@
-@include theme(sba-blue, '.SmallPrimaryButton', $sba-blue, #fff, $sba-blue);
-@include theme(byzantine, '.SmallPrimaryButton', $byzantine, #fff, $byzantine);
-@include theme(money-green, '.SmallPrimaryButton', $money-green, #fff, $money-green);
-@include theme(cobalt-blue, '.SmallPrimaryButton', $cobalt-blue, #fff, $cobalt-blue);
 
-@include theme-hover(sba-blue, '.SmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.SmallPrimaryButton', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.SmallPrimaryButton', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.SmallPrimaryButton', $cobalt-blue-dark, #fff, $cobalt-blue-dark);
-
-@include small-button('.SmallPrimaryButton');

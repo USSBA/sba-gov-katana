@@ -1,0 +1,33 @@
+.box {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  @include for-small-only {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.alternateBox {
+  @include call-to-action;
+
+  @include for-small-only {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.number {
+  border-bottom: 2px solid;
+  color: $sba-red;
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.text {
+  margin-bottom: 30px;
+  margin-top: 32px;
+}

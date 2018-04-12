@@ -4,8 +4,6 @@ database:
         host: mysql
         password: password123
         user: root
-googleAnalytics:
-    enabled: false
 foresee:
     enabled: false
 linc:

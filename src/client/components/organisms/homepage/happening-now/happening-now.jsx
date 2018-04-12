@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import styles from './happening-now.scss'
 import * as ContentActions from '../../../../actions/content'
-import { BasicLink, Carousel, SmallPrimaryButton } from 'atoms'
+import { Carousel, SmallPrimaryButton } from 'atoms'
 import { eventCategories } from '../../../../services/constants'
 
 const contentProperty = 'happeningNow'
@@ -21,9 +22,9 @@ class HappeningNow extends React.Component {
   makeDesktopImage(item, index, desktopStyle) {
     return (
       <div className={desktopStyle} key={index}>
-        <BasicLink url={item.url}>
+        <Link to={item.url}>
           <img alt={item.imageAlt} src={item.image} />
-        </BasicLink>
+        </Link>
       </div>
     )
   }

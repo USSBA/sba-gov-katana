@@ -59,15 +59,17 @@ class Course extends PureComponent {
       ]
 
       // set tags
-      props.tags = data.courseCategory.map(category => {
-        return {
-          description: category,
-          url: '/course/?topic=' + encodeURI(category)
-        }
-      })
+      props.tags = data.courseCategory.map
+        ? data.courseCategory.map(category => {
+            return {
+              description: category,
+              url: '/course/?topic=' + encodeURI(category)
+            }
+          })
+        : []
 
       // add worksheets
-      props.course.worksheets = data.courseMaterials.slice()
+      props.course.worksheets = data.courseMaterials.slice ? data.courseMaterials.slice() : []
 
       // add readMoreSectionItem object for "View Transcripts" area
       props.readMoreSectionItem = {

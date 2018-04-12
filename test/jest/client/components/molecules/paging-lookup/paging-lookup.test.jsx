@@ -2,7 +2,7 @@
 /*global expect*/
 
 import React from 'react'
-import { PagingLookup } from 'organisms/paging-lookup/paging-lookup.jsx'
+import { PagingLookup } from 'organisms/paging-lookup/paging-lookup'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import _ from 'lodash'
@@ -11,7 +11,8 @@ jest.mock('react-router', () => {
   return {
     browserHistory: {
       push: () => {}
-    }
+    },
+    withRouter: () => {}
   }
 })
 
@@ -112,21 +113,21 @@ describe('PagingLookup', () => {
     expect(component.first().props().queryState.documentActivity).toBe('All')
     expect(component.first().props().queryState.page).toBe(1)
   })
-  // test('should render without an address ', () => {
-  //   let cardData = _.omit(card, "streetAddress");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".paging-lookup-streetAddress")).toHaveLength(0);
-  // });
+  //   test('should render without an address ', () => {
+  //     let cardData = _.omit(card, "streetAddress");
+  //     const component = shallow(<LinkCard {...cardData}/>)
+  //     expect(component.find(".paging-lookup-streetAddress")).toHaveLength(0);
+  //   });
   //
-  // test('should render without a zip code ', () => {
-  //   let cardData = _.omit(card, "zipCode");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".paging-lookup-citystatezip")).toHaveLength(0);
-  // });
+  //   test('should render without a zip code ', () => {
+  //     let cardData = _.omit(card, "zipCode");
+  //     const component = shallow(<LinkCard {...cardData}/>)
+  //     expect(component.find(".paging-lookup-citystatezip")).toHaveLength(0);
+  //   });
   //
-  // test('should render without the link', () => {
-  //   let cardData = _.omit(card, "link");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".paging-lookup-link")).toHaveLength(0);
-  // });
+  //   test('should render without the link', () => {
+  //     let cardData = _.omit(card, "link");
+  //     const component = shallow(<LinkCard {...cardData}/>)
+  //     expect(component.find(".paging-lookup-link")).toHaveLength(0);
+  //   });
 })

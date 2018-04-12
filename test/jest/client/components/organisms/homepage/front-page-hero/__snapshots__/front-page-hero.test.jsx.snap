@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Front Page Hero should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="imageContainer"
+  >
+    <img
+      alt="Start and grow your business"
+      className="heroLarge"
+      src="http://kevin.sba.fun/largeImage.jpg"
+    />
+    <img
+      alt="medium image"
+      className="heroMedium"
+      src="http://kevin.sba.fun/mediumImage.jpg"
+    />
+    <img
+      alt="small image"
+      className="heroSmall"
+      src="http://kevin.sba.fun/smallImage.jpg"
+    />
+  </div>
+  <div
+    className="boxContainer"
+  >
+    <div
+      className="box"
+    >
+      <h1
+        className="title"
+      >
+        Start and grow your business
+      </h1>
+      <div
+        className="text"
+      >
+        Want to be an entrepreneur?
+      </div>
+      <a
+        className="link primary responsive spacing"
+        onClick={[Function]}
+        style={Object {}}
+      >
+        This is a button
+      </a>
+    </div>
+  </div>
+</div>
+`;

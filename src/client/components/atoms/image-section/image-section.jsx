@@ -1,24 +1,17 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import styles from './image-section.scss'
 
-class ImageSection extends React.Component {
-  render() {
-    return (
-      <div>
-        <img
-          id={'image-header-' + this.props.index}
-          className={styles.imageSection}
-          alt={this.props.imageObj.alt}
-          src={this.props.imageObj.url}
-        />
-        <p className={styles.captionText}>{this.props.captionText}</p>
-      </div>
-    )
-  }
-}
+const ImageSection = ({ alt, caption, src }) => (
+  <div>
+    <img className={styles.imageSection} alt={alt} src={src} />
+    <p className={styles.caption}>{caption}</p>
+  </div>
+)
 
-// SectionHeader.propTypes = {
-// 	text: React.PropTypes.string
-// }
+ImageSection.propTypes = {
+  alt: PropTypes.string.isRequired,
+  caption: PropTypes.string,
+  src: PropTypes.string.isRequired
+}
 
 export default ImageSection

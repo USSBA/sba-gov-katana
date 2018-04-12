@@ -1,37 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import s from './menu-tile-with-links.scss'
-import { BasicLink } from 'atoms'
 
 class MenuTileWithLinks extends React.Component {
   render() {
-    let eventConfig = {
-      category: 'Main-Menu',
-      action:
-        (this.props.largeTitle || '') +
-        (this.props.largeTitle && this.props.smallTitle ? ' ' : '') +
-        (this.props.smallTitle || '')
-    }
     return (
       <div id={this.props.id} className={s.tileHover}>
-        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
-          <h2 className={s.largeTitleHover}>{this.props.largeTitle}</h2>
-        </BasicLink>
-        <BasicLink url={this.props.link} myClassName={s.noUnderline} eventConfig={eventConfig}>
-          <h4 className={s.smallTitleHover}>{this.props.smallTitle}</h4>
-        </BasicLink>
+        <Link to={this.props.link}>
+          <h3 className={s.titleHover}>
+            {this.props.largeTitle} {this.props.smallTitle}
+          </h3>
+        </Link>
         <div className={s.topLine} />
         {this.props.children
           ? this.props.children.map((object, index) => {
-              let autoFocusOnMe = this.props.autoFocusOnLast && index === this.props.children.length - 1
-              let eventConfig = {
-                category: 'Main-Menu',
-                action:
-                  this.props.largeTitle +
-                  (this.props.smallTitle ? ' ' + this.props.smallTitle : '') +
-                  ':' +
-                  object.title
-              }
+              const autoFocusOnMe = this.props.autoFocusOnLast && index === this.props.children.length - 1
               return (
                 <HoverLink
                   id={this.props.id + '-link-' + index}
@@ -39,7 +23,6 @@ class MenuTileWithLinks extends React.Component {
                   title={object.title}
                   link={object.fullUrl}
                   autoFocus={autoFocusOnMe}
-                  eventConfig={eventConfig}
                 />
               )
             })
@@ -53,14 +36,9 @@ class HoverLink extends React.Component {
   render() {
     return (
       <div className={s.linkContainer}>
-        <BasicLink
-          text={this.props.title}
-          id={this.props.id}
-          myClassName={s.link}
-          url={this.props.link}
-          autoFocus={this.props.autoFocus}
-          eventConfig={this.props.eventConfig}
-        />
+        <Link id={this.props.id} className={s.link} to={this.props.link} autoFocus={this.props.autoFocus}>
+          {this.props.title}
+        </Link>
       </div>
     )
   }

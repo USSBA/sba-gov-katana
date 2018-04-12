@@ -5,6 +5,9 @@ import renderer from 'react-test-renderer'
 const sinon = require('sinon')
 
 import { SearchBox } from 'organisms'
+// Quiet warnings about OnTouchTap
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
 jest.mock('client/services/client-config.js', function() {
   return {

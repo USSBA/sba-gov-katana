@@ -1,10 +1,5 @@
 foresee:
     environment: staging
-googleAnalytics:
-    enabled: true
-    accountId: UA-96147768-1
-    optimizeContainerId: GTM-NPDXPPF
-    tagManagerAccountId: GTM-WN49BK2
 server:
     fqdn: laura.sba.fun
 features:
@@ -24,5 +19,6 @@ cache:
   useS3: true
 aws:
   cloudsearch:
-    endpoint: 'doc-laura-26evoc5xorgki5mbhdiktpp7q4.us-east-1.cloudsearch.amazonaws.com'
+    searchEndpoint: 'doc-laura-26evoc5xorgki5mbhdiktpp7q4.us-east-1.cloudsearch.amazonaws.com'
+    officeEndpoint: 'doc-mint-offices-mjhazqnua7k5nqkxojddfhkrw4.us-east-1.cloudsearch.amazonaws.com'
 

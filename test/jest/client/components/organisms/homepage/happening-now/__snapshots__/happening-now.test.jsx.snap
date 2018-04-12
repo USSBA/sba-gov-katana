@@ -17,11 +17,8 @@ exports[`happening now section renders correctly 1`] = `
         className="itemDesktopFour"
       >
         <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          onClick={[Function]}
+          style={Object {}}
         >
           <img
             alt="some image"
@@ -91,11 +88,8 @@ exports[`happening now section renders correctly 1`] = `
           >
             <div>
               <a
-                autoFocus={false}
-                className=""
-                onKeyPress={[Function]}
-                onTouchTap={[Function]}
-                tabIndex="0"
+                onClick={[Function]}
+                style={Object {}}
               >
                 <img
                   alt="some image"
@@ -106,11 +100,8 @@ exports[`happening now section renders correctly 1`] = `
             </div>
             <div>
               <a
-                autoFocus={false}
-                className=""
-                onKeyPress={[Function]}
-                onTouchTap={[Function]}
-                tabIndex="0"
+                onClick={[Function]}
+                style={Object {}}
               >
                 <img
                   alt="some image"
@@ -121,11 +112,8 @@ exports[`happening now section renders correctly 1`] = `
             </div>
             <div>
               <a
-                autoFocus={false}
-                className=""
-                onKeyPress={[Function]}
-                onTouchTap={[Function]}
-                tabIndex="0"
+                onClick={[Function]}
+                style={Object {}}
               >
                 <img
                   alt="some image"
@@ -136,11 +124,9 @@ exports[`happening now section renders correctly 1`] = `
             </div>
           </div>
           <a
-            autoFocus={false}
             className="SliderItemAnchor"
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+            onClick={[Function]}
+            style={Object {}}
           >
             <p
               className="SliderItemTitle"

@@ -1,10 +1,5 @@
 //lendermatch FORM INPUTS
 
-@include theme-focus('money-green', '.textInput', null, null, $money-green);
-@include theme-focus('sba-blue', '.textInput', null, null, $sba-blue);
-@include theme-focus('cobalt-blue', '.textInput', null, null, $cobalt-blue);
-@include theme-focus('byzantine', '.textInput', null, null, $byzantine);
-
 //COMMON INPUT STYLES
 
 .inputContainer {
@@ -23,6 +18,31 @@
 
 .textInputInvalid {
   composes: textInput;
-  border: 1px solid $error !important;
-  box-shadow: inset 0px 0px 0px 1px $error !important;
+  border: 1px solid $sba-red-light !important;
+  box-shadow: inset 0px 0px 0px 1px $sba-red-light !important;
+}
+
+.searchBar input {
+  height: 40px;
+  display: inline;
+  border-radius: 5px;
+  border-color: $sba-gray-light;
+  width: 12vw;
+}
+
+.searchBar a {
+  position: absolute;
+  right: 0.5vw;
+  top: 12px;
+}
+
+.searchIconPadding {
+  padding-right: 40px !important;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
 }

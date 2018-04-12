@@ -3,11 +3,12 @@ import moment from 'moment'
 import queryString from 'querystring'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import s from './document-article.scss'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { BasicLink, DecorativeDash, DocumentType, LargePrimaryButton, TextSection } from 'atoms'
+import { DecorativeDash, DocumentType, LargePrimaryButton, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
@@ -103,7 +104,7 @@ export class DocumentArticle extends React.Component {
 
           {data.officeLink.url ? (
             <div className={s.office}>
-              By <BasicLink url={data.officeLink.url} text={data.officeLink.title} />
+              By <Link to={data.officeLink.url}>{data.officeLink.title}</Link>
             </div>
           ) : (
             <span />
@@ -121,8 +122,9 @@ export class DocumentArticle extends React.Component {
             <p className={'document-article-summary ' + s.summary}>{data.summary}</p>
           </div>
           <div className={s.dashContainer}>
-            <DecorativeDash className={s.dash} />
+            <DecorativeDash width={4.278} />
           </div>
+          {/* TODO: body style for grid media queries should be baked into text section? */}
           <TextSection className={s.body} text={body} />
           <div className={'document-article-related-programs-container ' + s.relatedProgramsContainer}>
             <hr className={s.hr} />

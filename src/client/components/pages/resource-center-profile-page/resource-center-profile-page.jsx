@@ -1,5 +1,4 @@
 import resourceCenterProfileReducer from '../../../reducers/resource-center-profile'
-import PageLink from '../../atoms/page-link/page-link'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { submitProfile } from '../../../actions/resource-center-profile'
@@ -92,7 +91,11 @@ class ResourceCenterProfilePage extends React.Component {
     let offices = _.reject(getPartnerOffices(partner), office => {
       return _.isEmpty(office)
     })
-    offices = _.orderBy(offices, [office => office.name2.toLowerCase()])
+    offices = _.orderBy(offices, [
+      office => {
+        return office.name2.toLowerCase()
+      }
+    ])
     this.setState({
       offices: offices
     })
@@ -243,7 +246,9 @@ class ResourceCenterProfilePage extends React.Component {
           value={this.state.profile.type}
           options={partners}
           multi={false}
-          onChange={e => this.handleSelect(e, 'type')}
+          onChange={e => {
+            return this.handleSelect(e, 'type')
+          }}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           aria-labelledby={idPrefix + 'partner-label'}
@@ -328,7 +333,9 @@ class ResourceCenterProfilePage extends React.Component {
             id={idPrefix + 'service-area-other'}
             name="serviceArea"
             placeholder="Custom other value"
-            onChange={e => this.setState({ otherServiceArea: e.target.value })}
+            onChange={e => {
+              return this.setState({ otherServiceArea: e.target.value })
+            }}
             value={this.state.otherServiceArea}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
@@ -345,7 +352,9 @@ class ResourceCenterProfilePage extends React.Component {
     // generate hours from 12:00 am to 11:30 pm
     for (let i = 0; i < 48; i++) {
       let hour = Math.floor(i / 2) % 12
-      if (hour === 0) hour = 12
+      if (hour === 0) {
+        hour = 12
+      }
       let minutes = ':00'
       if (i % 2 > 0) {
         minutes = ':30'
@@ -383,7 +392,9 @@ class ResourceCenterProfilePage extends React.Component {
               multi={false}
               key={dayOpen}
               placeholder={dayOpenPlaceholder}
-              onChange={e => this.handleSelect(e, dayOpen)}
+              onChange={e => {
+                return this.handleSelect(e, dayOpen)
+              }}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               aria-label={'Select your normal ' + day + ' opening time'}
@@ -399,7 +410,9 @@ class ResourceCenterProfilePage extends React.Component {
               multi={false}
               key={dayClose}
               placeholder={dayClosePlaceholder}
-              onChange={e => this.handleSelect(e, dayClose)}
+              onChange={e => {
+                return this.handleSelect(e, dayClose)
+              }}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
               aria-label={'Select your normal ' + day + ' closing time'}
@@ -438,7 +451,9 @@ class ResourceCenterProfilePage extends React.Component {
             name={expertise}
             label={expertise}
             key={expertise}
-            handleChange={e => this.handleCheckbox(e, 'expertise')}
+            handleChange={e => {
+              return this.handleCheckbox(e, 'expertise')
+            }}
             checked={this.state.profile.expertise.includes(expertise)}
           />
         )
@@ -475,7 +490,9 @@ class ResourceCenterProfilePage extends React.Component {
             name={service}
             label={service}
             key={service}
-            handleChange={e => this.handleCheckbox(e, 'services')}
+            handleChange={e => {
+              return this.handleCheckbox(e, 'services')
+            }}
             checked={this.state.profile.services.includes(service)}
           />
         )
@@ -517,7 +534,9 @@ class ResourceCenterProfilePage extends React.Component {
             label={language}
             key={language}
             checked={this.state.profile.languages.includes(language)}
-            handleChange={e => this.handleCheckbox(e, 'languages')}
+            handleChange={e => {
+              return this.handleCheckbox(e, 'languages')
+            }}
           />
         )
       }
@@ -557,7 +576,9 @@ class ResourceCenterProfilePage extends React.Component {
           id={idPrefix + 'business-stage'}
           options={businessStageOptions}
           value={this.state.profile.businessStage}
-          onChange={e => this.handleRadio(e, 'businessStage')}
+          onChange={e => {
+            return this.handleRadio(e, 'businessStage')
+          }}
           textStyle={style.radioText}
           onBlur={this.onBlur}
           onFocus={this.onFocus}

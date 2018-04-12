@@ -6,11 +6,8 @@ exports[`Card does not error check malformed link 1`] = `
   id="card-4-0"
 >
   <a
-    autoFocus={false}
-    className=""
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+    onClick={[Function]}
+    style={Object {}}
   >
     <img
       alt="kitten"
@@ -24,18 +21,22 @@ exports[`Card does not error check malformed link 1`] = `
     id="title-4-0"
   >
     <a
-      autoFocus={false}
       className="unstyledLink"
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       Kitten
     </a>
   </p>
   <div>
     <hr
-      className="decorativeDash itemHr"
+      className="dash"
+      id="hr-4-0"
+      style={
+        Object {
+          "width": "3.333rem",
+        }
+      }
     />
     <p
       className="itemSubTitle"
@@ -46,11 +47,8 @@ exports[`Card does not error check malformed link 1`] = `
   </div>
   <p>
     <a
-      autoFocus={false}
-      className=""
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       dogs
     </a>
@@ -64,11 +62,8 @@ exports[`Card to render correctly 1`] = `
   id="card-4-0"
 >
   <a
-    autoFocus={false}
-    className=""
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+    onClick={[Function]}
+    style={Object {}}
   >
     <img
       alt="kitten"
@@ -82,18 +77,22 @@ exports[`Card to render correctly 1`] = `
     id="title-4-0"
   >
     <a
-      autoFocus={false}
       className="unstyledLink"
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       Kitten
     </a>
   </p>
   <div>
     <hr
-      className="decorativeDash itemHr"
+      className="dash"
+      id="hr-4-0"
+      style={
+        Object {
+          "width": "3.333rem",
+        }
+      }
     />
     <p
       className="itemSubTitle"
@@ -104,11 +103,8 @@ exports[`Card to render correctly 1`] = `
   </div>
   <p>
     <a
-      autoFocus={false}
-      className=""
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       Learn more about kittens
     </a>
@@ -122,11 +118,8 @@ exports[`Card to render correctly if the link is just a string 1`] = `
   id="card-4-0"
 >
   <a
-    autoFocus={false}
-    className=""
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+    onClick={[Function]}
+    style={Object {}}
   >
     <img
       alt="kitten"
@@ -140,18 +133,22 @@ exports[`Card to render correctly if the link is just a string 1`] = `
     id="title-4-0"
   >
     <a
-      autoFocus={false}
       className="unstyledLink"
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       Kitten
     </a>
   </p>
   <div>
     <hr
-      className="decorativeDash itemHr"
+      className="dash"
+      id="hr-4-0"
+      style={
+        Object {
+          "width": "3.333rem",
+        }
+      }
     />
     <p
       className="itemSubTitle"
@@ -162,11 +159,8 @@ exports[`Card to render correctly if the link is just a string 1`] = `
   </div>
   <p>
     <a
-      autoFocus={false}
-      className=""
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      onClick={[Function]}
+      style={Object {}}
     >
       Learn more
     </a>
@@ -193,7 +187,13 @@ exports[`Card to render correctly with null link 1`] = `
   </p>
   <div>
     <hr
-      className="decorativeDash itemHr"
+      className="dash"
+      id="hr-4-0"
+      style={
+        Object {
+          "width": "3.333rem",
+        }
+      }
     />
     <p
       className="itemSubTitle"

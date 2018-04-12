@@ -1,3 +1,4 @@
+import Address from './address/address'
 import Breadcrumb from './breadcrumb/breadcrumb'
 import ButtonCta from './button-cta/button-cta'
 import CallToAction from './call-to-action/call-to-action'
@@ -14,8 +15,10 @@ import MainLoader from './main-loader/main-loader'
 import MenuTile from './menu-tile/menu-tile'
 import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
 import NaicsLookup from './naics-lookup/naics-lookup'
+import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-block'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
+import PhoneNumber from './phone-number/phone-number'
 import PreviousNextSection from './previous-next/previous-next'
 import QuickLinks from './quick-links/quick-links'
 import ReadMore from './readmore/readmore'
@@ -28,10 +31,10 @@ import SearchBar from './search-bar/search-bar'
 import SimpleCta from './simple-cta/simple-cta'
 import SmallInverseCta from './small-inverse-cta/small-inverse-cta'
 import TenStepsNav from './ten-steps-nav/ten-steps-nav'
-import TitleBox from './title-box/title-box'
 import TitleSection from './title-section/title-section'
 
 export {
+  Address,
   Breadcrumb,
   ButtonCta,
   CallToAction,
@@ -48,8 +51,10 @@ export {
   MenuTile,
   MenuTileWithLinks,
   NaicsLookup,
+  NumberedCalloutBlock,
   PageLinkGroup,
   Paginator,
+  PhoneNumber,
   PreviousNextSection,
   QuickLinks,
   ReadMore,
@@ -62,6 +67,5 @@ export {
   SimpleCta,
   SmallInverseCta,
   TenStepsNav,
-  TitleBox,
   TitleSection
 }

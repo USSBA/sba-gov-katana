@@ -13,118 +13,113 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     }
   />
   <a
-    autoFocus={false}
     className="backLink"
     id="article-navigation-back-button-desktop"
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+    onClick={[Function]}
+    style={Object {}}
   >
     Back to all topics
   </a>
   <span
     id="article-navigation-title-desktop"
   >
-    <h2>
-      Launch
-    </h2>
-    <h4>
-       your business
-    </h4>
+    <h3>
+      Launch your business
+    </h3>
   </span>
   <ul>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-0"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Pick your business location
       </a>
     </li>
-    <li>
+    <li
+      className="currentNavLink"
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop currentNavLink"
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-1"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Choose a business structure
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-2"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Choose your business name
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-3"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Register your business
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-4"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Get federal and state tax ID numbers
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-5"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Apply for licenses and permits
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-6"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Open a business bank account
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-7"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Get business insurance
       </a>
@@ -146,12 +141,10 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     }
   />
   <a
-    autoFocus={false}
     className="backLink"
     id="article-navigation-back-button-desktop"
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+    onClick={[Function]}
+    style={Object {}}
   >
     Back to 7(a) Loans
   </a>
@@ -163,62 +156,62 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     </h3>
   </span>
   <ul>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-0"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Types of 7(a) Loans
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-1"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Operate as a 7(a) Lender
       </a>
     </li>
-    <li>
+    <li
+      className="currentNavLink"
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop currentNavLink"
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-2"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Secondary Markets
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-3"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Training and Courses
       </a>
     </li>
-    <li>
+    <li
+      className=""
+    >
       <a
-        autoFocus={false}
-        className="article-navigation-article-link-desktop "
+        className="article-navigation-article-link-desktop"
         id="desktop-article-link-4"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
       >
         Terms and Eligibility
       </a>

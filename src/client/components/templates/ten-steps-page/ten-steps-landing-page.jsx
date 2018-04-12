@@ -2,11 +2,11 @@ import React from 'react'
 import Waypoint from 'react-waypoint'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import styles from '../../templates/ten-steps-page/ten-steps-landing-page.scss'
 import * as ContentActions from '../../../actions/content.js'
-import { BasicLink } from 'atoms'
 import { CallToAction, RemoveMainLoader, TenStepsNav } from 'molecules'
 import { BusinessGuideTileCollection, TenStepsSection } from 'organisms'
 import { findPageLineage, findSubSection, findSection } from '../../../services/menu.js'
@@ -193,7 +193,6 @@ class TenStepsLandingPage extends React.Component {
         {this.state.navType === 'center' ? (
           <TenStepsNav navType="center" section={this.state.section} />
         ) : null}
-
         <div className={styles.titleSection}>
           {this.state.navType === 'top' ? <TenStepsNav navType="top" /> : null}
           <div className={styles.titleSectionText}>
@@ -215,9 +214,10 @@ class TenStepsLandingPage extends React.Component {
           <a className={styles.scrollButton} aria-hidden="true" href="#step-1">
             <i className={' fa fa-angle-down'} />
           </a>
-          <BasicLink myClassName={styles.backLink} url="/business-guide" text="Back to all topics" />
+          <Link className={styles.backLink} to="/business-guide">
+            Back to all topics
+          </Link>
         </div>
-
         <span id="step-1" className={styles.anchor} />
         <div id="tensteps-landing-page-id" className={styles.tenStepsLandingPage}>
           {tenstepSectionItems}
@@ -237,14 +237,16 @@ class TenStepsLandingPage extends React.Component {
             </Waypoint>
           </div>
         </div>
-        {sectionData ? (
+        {/*
+          This will need to be updated with MenuTileCollection. Need to do more research on this.props.menu.
+          sectionData ? (
           <div className={styles.bizguideContainer}>
             <h1>Explore more topics</h1>
             <BusinessGuideTileCollection sectionData={sectionData} />
           </div>
         ) : (
           <div />
-        )}
+        )*/}{' '}
         {counsellorCta ? (
           <div className={styles.counsellorCtaContainer}>
             <CallToAction

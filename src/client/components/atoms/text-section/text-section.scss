@@ -4,15 +4,20 @@
 
 // redundant with normalize css, but better to be explicit
 .textSection ul {
-  list-style: none;
+  list-style: disc;
 }
 
-.textSection ul,
-.textSection ol {
-  li {
-    margin: 10px 0;
-  }
+.textSection ul > li {
+  margin-left: 1.5rem;
+  padding-left: 0;
 }
+
+// .textSection ul,
+// .textSection ol {
+//   li {
+//     margin: 10px 0;
+//   }
+// }
 
 .textSection > ul ul,
 .textSection > ol ul {
@@ -30,7 +35,7 @@
       display: inline-block;
       float: left;
       margin-top: 8px;
-      margin-right: 20px;
+      // margin-right: 20px;
     }
 
     p {
@@ -52,13 +57,13 @@
 // override the normalize removal
 
 .textSection ol {
-  list-style: decimal;
+  list-style: decimal !important;
 }
 
 // indents the ordered list items
 
 .textSection ol li {
-  margin-left: 0.75em;
+  // margin-left: 0.75em;
 }
 
 .textSection ol li::before {
@@ -78,106 +83,93 @@
 // formatting for the unordered list bullets
 .textSection dl dt::before,
 .textSection > ul > li::before {
-  padding-right: 0.5em;
-  content: '';
-  height: 1em;
-  width: 1em;
-  display: block;
-  float: left;
-  margin-top: 0.2em;
-  margin-left: 0;
-  margin-right: 0.5em;
-  background-position: center;
-  background-repeat: no-repeat;
+  // padding-right: 0.5em;
+  // content: '';
+  // height: 1em;
+  // width: 1em;
+  // display: block;
+  // float: left;
+  // margin-top: 0.2em;
+  // margin-left: 0;
+  // margin-right: 0.5em;
+  // background-position: center;
+  // background-repeat: no-repeat;
   background-size: 100%;
 }
 
-@mixin primary-color-theme-for-color($component) {
-  @each $name, $value in $primary-color-map {
-    :global(.#{$name}) {
-      #{$component} {
-        background: url('../../../../../public/assets/svg/circle/circle-#{$name}.svg') no-repeat;
-      }
-    }
+@include grid-media($sba-grid-small) {
+  & thead > tr {
+    display: none;
+  }
+  & tr {
+    border: 2px solid #ebebeb;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  & td:nth-child(even) {
+    background-color: #ebebeb;
+  }
+  & td {
+    overflow: auto;
+    border: 0px;
+  }
+  & :global(.table-header-label) {
+    display: block;
+    @include grid-column(2);
+    font-weight: bold;
+  }
+  & :global(.table-data-wrapper) {
+    display: block;
+    @include grid-column(4);
+  }
+  & :global(.show-mobile) {
+    display: block;
   }
 }
 
-@include primary-color-theme-for-color( '.textSection > ul > li::before');
-@include primary-color-theme-for-color( '.textSection dl dt::before');
-
-//TABLE
-@include theme(sba-blue, '.textSection th', $sba-blue, $white, $sba-blue) @include theme(money-green, '.textSection th', $money-green, $white, $money-green) @include theme(byzantine, '.textSection th', $byzantine, $white, $byzantine) @include theme(cobalt-blue, '.textSection th', $cobalt-blue, $white, $cobalt-blue) @include theme(sba-blue, ':global(.table-header-label)', none, $sba-blue, none) @include theme(money-green, ':global(.table-header-label)', none, $money-green, none) @include theme(byzantine, ':global(.table-header-label)', none, $byzantine, none) @include theme(cobalt-blue, ':global(.table-header-label)', none, $cobalt-blue, none) @include theme(sba-blue, '.textSection > ul ul li::before', null, null, $sba-blue) @include theme(money-green, '.textSection > ul ul li::before', null, null, $money-green) @include theme(byzantine, '.textSection > ul ul li::before', null, null, $byzantine) @include theme(cobalt-blue, '.textSection > ul ul li::before', null, null, $cobalt-blue) @include theme(sba-blue, '.textSection > ol ul li::before', null, null, $sba-blue) @include theme(money-green, '.textSection > ol ul li::before', null, null, $money-green) @include theme(byzantine, '.textSection > ol ul li::before', null, null, $byzantine) @include theme(cobalt-blue, '.textSection > ol ul li::before', null, null, $cobalt-blue) .textSection {
-  //LARGE
-
-  @include grid-media($sba-grid-small) {
-    & thead > tr {
-      display: none;
-    }
-    & tr {
-      border: 2px solid #ebebeb;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    & td:nth-child(even) {
-      background-color: #ebebeb;
-    }
-    & td {
-      overflow: auto;
-      border: 0px;
-    }
-    & :global(.table-header-label) {
-      display: block;
-      @include grid-column(2);
-      font-weight: bold;
-    }
-    & :global(.table-data-wrapper) {
-      display: block;
-      @include grid-column(4);
-    }
-    & :global(.show-mobile) {
-      display: block;
-    }
+@include grid-media($sba-grid-medium) {
+  & table {
+    table-layout: auto;
   }
-
-  @include grid-media($sba-grid-medium) {
-    & table {
-      table-layout: auto;
-    }
-    & tbody {
-      border: 2px solid #ebebeb;
-    }
-    & th {
-      text-align: center;
-      border: 2px solid;
-    }
-    & tr {
-      padding-right: 15px;
-      padding-left: 15px;
-    }
-    & tr:nth-child(even) {
-      background-color: #ebebeb;
-    }
-    & td {
-      padding-right: 15px;
-      padding-left: 15px;
-      border: 0px;
-    }
-    & :global(.table-header-label) {
-      display: none;
-    }
-    & :global(.show-mobile) {
-      display: none;
-    }
+  & tbody {
+    border: 2px solid #ebebeb;
   }
-
-  @include grid-media($sba-grid-small) {
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-      display: block;
-    }
+  & th {
+    text-align: center;
+    border: 2px solid;
   }
+  & tr {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  & tr:nth-child(even) {
+    background-color: #ebebeb;
+  }
+  & td {
+    padding-right: 15px;
+    padding-left: 15px;
+    border: 0px;
+  }
+  & :global(.table-header-label) {
+    display: none;
+  }
+  & :global(.show-mobile) {
+    display: none;
+  }
+}
+
+@include grid-media($sba-grid-small) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+}
+
+// override
+.textSection h4 strong {
+  font-weight: 600;
 }

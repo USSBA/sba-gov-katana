@@ -1,26 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import styles from './section-link.scss'
-import { BasicLink } from '../../atoms'
 
 class SectionLink extends React.Component {
   render() {
-    let underlineStyle = this.props.showUnderline ? ' ' + styles.underline : ''
-    let triangleColor = this.props.enableTriangleMarker ? ' ' + styles.triangleTheme : ''
+    const highlightLink = this.props.showUnderline ? ' ' + styles.highlightLink : ''
+    const triangleColor = this.props.enableTriangleMarker ? ' ' + styles.triangleTheme : ''
     return (
       <span
         id={this.props.id + '-container'}
-        className={styles.link + underlineStyle}
+        className={styles.link + highlightLink}
         onMouseOver={this.props.onMouseOver}
         onMouseOut={this.props.onMouseOut}
       >
-        <BasicLink
-          text={this.props.text}
+        <Link
           id={this.props.id}
-          myClassName={styles.sectionLink}
-          url={this.props.url}
+          className={styles.sectionLink + highlightLink}
+          to={this.props.url}
           onKeyDown={this.props.onKeyDown}
-        />
+        >
+          {this.props.text}
+        </Link>
         <div
           className={
             styles.triangle +

@@ -1,0 +1,49 @@
+.inlineLabel {
+  display: inline-block;
+}
+.container {
+  position: relative;
+  width: 100%;
+  :global(.Select-value) {
+    text-overflow: none !important;
+  }
+
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 20px 30px 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 20px 28px 15px 28px;
+    height: 75px;
+    display: flex;
+    ul {
+      float: right;
+    }
+    justify-content: space-between;
+    > div {
+      width: 100% !important;
+      float: none !important;
+    }
+    :global(.Select-control) {
+      border: 0px !important;
+      padding-right: 40px !important;
+      width: max-content !important;
+    }
+    :global(.Select-value) {
+      font-weight: bold !important;
+      text-overflow: none !important;
+    }
+    :global(.Select-arrow-zone) {
+      width: 45px !important;
+      padding-left: 5px !important;
+    }
+    label {
+      float: left;
+      margin-top: 0.42em;
+      font-weight: normal;
+      margin-right: 10px;
+    }
+  }
+}

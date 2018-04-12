@@ -1,19 +1,25 @@
-.logoNew {
+.logo {
+  display: inline;
+  float: left;
   img {
-    width: 110px;
+    height: auto;
+    width: 7.111rem;
+    padding-top: 0.167rem;
   }
   a {
     vertical-align: none;
   }
-  display: inline;
-  float: left;
 
-  @include grid-media( $sba-grid-medium) {
+  @include for-medium-only {
     img {
-      width: 128px;
+      padding-top: 0.389rem;
     }
-    a {
-      vertical-align: none;
+  }
+
+  @include for-large-up {
+    img {
+      height: auto;
+      width: 10.722rem;
     }
   }
 }

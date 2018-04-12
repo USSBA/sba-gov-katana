@@ -12,8 +12,6 @@ govdelivery:
 foresee:
     environment: staging
     enabled: false
-newrelic:
-    enabled: false
 googleAnalytics:
     enabled: false
     accountId: UA-96147768-1
@@ -82,6 +80,7 @@ cache:
   useS3: true
 aws:
   cloudsearch:
-    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+    searchEndpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+    officeEndpoint: 'doc-sba-gov-dev-offices-owb6n33f3b7y5u4y3mtlsiuzsa.us-east-1.cloudsearch.amazonaws.com'
   dynamodb:
     endpoint: placeholder

@@ -1,10 +1,33 @@
 import React, { PropTypes, PureComponent } from 'react'
+import isMobile from 'ismobilejs'
 
 import styles from './course-content.scss'
 import { LargePrimaryButton } from 'atoms'
 import { ReadMore } from 'molecules'
 import { logEvent } from '../../../services/analytics'
 import { eventCategories } from '../../../services/constants'
+
+const Overlay = ({ isStarted, onClick }) => {
+  const buttonText = 'Start course'
+
+  const renderOverlay = child => (
+    <div className={`course-overlay ${styles.courseOverlay}`} onClick={isMobile.any ? null : onClick}>
+      {child}
+    </div>
+  )
+
+  if (isMobile.any) {
+    return renderOverlay(<h2>This course is not supported on mobile devices.</h2>)
+  } else {
+    if (!isStarted) {
+      return renderOverlay(
+        <LargePrimaryButton text={buttonText} url="javascript:;" ariaLabel={buttonText} />
+      )
+    }
+
+    return null
+  }
+}
 
 class CourseContent extends React.PureComponent {
   constructor(props) {
@@ -21,16 +44,11 @@ class CourseContent extends React.PureComponent {
     const { onToggleStatus, readMoreExpanded, readMoreSectionItem } = this.props
 
     const { isStarted, src } = this.state
-    const buttonText = 'Start course'
 
     return (
       <div id="course-content" className={styles.courseContent + ' course'}>
         <div className={styles.courseEmbed}>
-          {!isStarted ? (
-            <div className={`course-overlay ${styles.courseOverlay}`} onClick={this.onClick.bind(this)}>
-              <LargePrimaryButton text={buttonText} url="javascript:;" ariaLabel={buttonText} />
-            </div>
-          ) : null}
+          <Overlay isStarted={isStarted} onClick={this.onClick.bind(this)} />
           <iframe className={styles.iframe} src={src} allowFullScreen frameBorder="0" />
         </div>
         <div className={styles.transcriptBox + ' transcript-box'}>

@@ -4,32 +4,8 @@
   }
 }
 
-.lineCopy {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 3px;
-  width: 5.5em;
-  border: 3px solid;
-  text-align: left;
-  @include grid-media($sba-grid-small) {
-    width: 4em;
-  }
-}
-
-@include theme(sba-blue, '.lineCopy', $sba-blue, $sba-blue, $sba-blue);
-@include theme(byzantine, '.lineCopy', $byzantine, $byzantine, $byzantine);
-@include theme(money-green, '.lineCopy', $money-green, $money-green, $money-green);
-@include theme(cobalt-blue, '.lineCopy', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
-.hrLine {
-  box-sizing: border-box;
-  height: 1px;
-  border: 1px solid #dadada;
-}
-
 .summary {
-  @include font-size($h4-font-sizes);
+  // @include font-size($h4-font-sizes);
   margin-bottom: 51.5px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 33.5px;
@@ -37,7 +13,7 @@
 }
 
 .content {
-  @include font-size($h4-font-sizes);
+  // @include font-size($h4-font-sizes);
   font-weight: 700;
   margin-bottom: 20px;
   margin-top: 18.5px;
@@ -47,7 +23,7 @@
 }
 
 .titleLink {
-  @include font-size($paragraph-font-sizes);
+  // @include font-size($paragraph-font-sizes);
   line-height: 30px;
   @include grid-media($sba-grid-small) {
     line-height: 40px;
@@ -62,7 +38,7 @@
 }
 
 .title {
-  @include font-size($h1-font-sizes);
+  // @include font-size($h1-font-sizes);
   margin-bottom: 30px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 19px;

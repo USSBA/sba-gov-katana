@@ -1,62 +1,38 @@
+.closeIcon {
+  stroke: $sba-blue;
+}
+
+.hamburgerIcon {
+  fill: $sba-blue;
+  height: 0.667rem;
+  width: 0.778rem;
+}
+
 .textOpen,
 .textClosed {
-  font-size: 19px;
+  color: $sba-blue;
+  font-size: 1rem;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
   display: inline;
 }
 
 .menuIconHamburger,
 .menuIconClose {
-  width: 25px;
   float: right;
   display: inline;
 }
 
 .menuIconHamburger {
-  margin-top: 8px;
+  margin-top: 0.444rem;
 }
 
 .menuIconClose {
-  margin-top: 2px;
+  margin-top: 0.0546rem;
+  width: 1.111rem;
+  height: 1.111rem;
 }
 
 .menuIconContainer {
   display: inline;
-}
-
-@include theme(sba-blue, '.textClosed', null, $sba-blue, null);
-@include theme(byzantine, '.textClosed', null, $byzantine, null);
-@include theme(money-green, '.textClosed', null, $money-green, null);
-@include theme(cobalt-blue, '.textClosed', null, $cobalt-blue, null);
-
-@include theme(sba-blue, '.textOpen', null, $sba-blue-dark, null);
-@include theme(byzantine, '.textOpen', null, $byzantine-dark, null);
-@include theme(money-green, '.textOpen', null, $money-green-dark, null);
-@include theme(cobalt-blue, '.textOpen', null, $cobalt-blue-dark, null);
-
-:global(.sba-blue) .hamburgerIcon {
-  fill: $sba-blue !important;
-}
-:global(.byzantine) .hamburgerIcon {
-  fill: $byzantine !important;
-}
-:global(.money-green) .hamburgerIcon {
-  fill: $money-green !important;
-}
-:global(.cobalt-blue) .hamburgerIcon {
-  fill: $cobalt-blue !important;
-}
-
-:global(.sba-blue) .closeIcon {
-  stroke: $sba-blue-dark !important;
-}
-:global(.byzantine) .closeIcon {
-  stroke: $byzantine-dark !important;
-}
-:global(.money-green) .closeIcon {
-  stroke: $money-green-dark !important;
-}
-:global(.cobalt-blue) .closeIcon {
-  stroke: $cobalt-blue-dark !important;
 }

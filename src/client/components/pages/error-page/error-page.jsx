@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 import clientConfig from '../../../services/client-config.js'
 import errorImg from 'assets/images/error-page/SBA_404.png'
 import styles from './error-page.scss'
-import { BasicLink, SmallIcon, TextInput } from 'atoms'
+import { SmallIcon, TextInput } from 'atoms'
 import { RemoveMainLoader } from 'molecules'
 
 class ErrorPage extends React.Component {
@@ -36,7 +37,7 @@ class ErrorPage extends React.Component {
           <h1 className={styles.title}>404</h1>
           <h3 className={styles.subTitle}>{text}</h3>
           <p>
-            Return to the <BasicLink url="/" text="home page" />, or search for what you're trying to find.
+            Return to the <Link to="/">home page</Link>, or search for what you're trying to find.
           </p>
           <form
             key={2}
