@@ -3,12 +3,11 @@ import moment from 'moment'
 import queryString from 'querystring'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import s from './document-article.scss'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { DecorativeDash, DocumentType, LargePrimaryButton, TextSection } from 'atoms'
+import { DecorativeDash, DocumentType, LargePrimaryButton, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 

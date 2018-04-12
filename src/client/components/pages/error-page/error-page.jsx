@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import clientConfig from '../../../services/client-config.js'
 import errorImg from 'assets/images/error-page/SBA_404.png'
 import styles from './error-page.scss'
-import { SmallIcon, TextInput } from 'atoms'
+import { Link, SmallIcon, TextInput } from 'atoms'
 import { RemoveMainLoader } from 'molecules'
 
 class ErrorPage extends React.Component {

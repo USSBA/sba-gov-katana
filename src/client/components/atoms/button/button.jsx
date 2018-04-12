@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
 
 import classNames from 'classnames'
 import styles from './button.scss'
+import { Link } from 'atoms'
 
 const Button = props => {
   const { alternate, children, fullWidth, icon, spacing, primary, secondary, url, ...nativeProps } = props

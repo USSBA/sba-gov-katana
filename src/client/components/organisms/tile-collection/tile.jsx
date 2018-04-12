@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import s from './tile.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
+import { Link } from 'atoms'
 import { MenuTile, MenuTileWithLinks } from 'molecules'
 import { navigateNow } from '../../../services/navigation.js'
 

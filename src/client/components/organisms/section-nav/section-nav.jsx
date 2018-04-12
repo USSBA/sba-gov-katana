@@ -2,13 +2,13 @@ import React from 'react'
 import Waypoint from 'react-waypoint'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import constants from '../../../services/constants.js'
 import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
 import styles from './section-nav.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
+import { Link } from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
 

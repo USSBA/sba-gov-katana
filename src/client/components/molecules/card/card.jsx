@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router'
 import { isEmpty } from 'lodash'
 
 import styles from './card.scss'
-import { DecorativeDash } from 'atoms'
+import { DecorativeDash, Link } from 'atoms'
 
 class Card extends React.Component {
   constructor() {

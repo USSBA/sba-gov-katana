@@ -50,3 +50,5 @@ Buttons should use grammatically-sensible casing. The buttons styling will autom
 ---
 
 ## Related components
+
+* [Link](/components/atom/link) ([atom](/components/atom))

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import styles from './disaster-alert.scss'
 import exitIcon from '../../../../../../public/assets/svg/exit-modal-close.svg'
+import { Link } from 'atoms'
 
 class DisasterAlert extends React.Component {
   render() {

@@ -84,3 +84,5 @@ aws:
     officeEndpoint: 'doc-sba-gov-dev-offices-owb6n33f3b7y5u4y3mtlsiuzsa.us-east-1.cloudsearch.amazonaws.com'
   dynamodb:
     endpoint: placeholder
+nginx:
+  katanaRedirectPaths: 'api|assets|build|lendermatch|actions|styleguide|business-guide|funding-programs|document|article|disaster-assistance|partners|naics|isSmallBusiness|size-standards|resource-partner-survey|learning-center|course|federal-contracting|search|national-small-business-week|nsbw'

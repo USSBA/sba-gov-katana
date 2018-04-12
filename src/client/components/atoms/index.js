@@ -22,6 +22,7 @@ import LargeInversePrimaryButton from './large-inverse-primary-button/large-inve
 import LargeInverseSecondaryButton from './large-inverse-secondary-button/large-inverse-secondary-button'
 import LargePrimaryButton from './large-primary-button/large-primary-button'
 import LargeSecondaryButton from './large-secondary-button/large-secondary-button'
+import Link from './link/link'
 import LinkCard from './link-card/link-card'
 import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
@@ -77,6 +78,7 @@ export {
   LargeInverseSecondaryButton,
   LargePrimaryButton,
   LargeSecondaryButton,
+  Link,
   LinkCard,
   Loader,
   MainLogo,

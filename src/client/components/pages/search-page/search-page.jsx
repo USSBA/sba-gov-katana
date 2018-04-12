@@ -1,13 +1,13 @@
-import { isEmpty } from 'lodash'
 import React, { PureComponent } from 'react'
+import { isEmpty } from 'lodash'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
-import { SmallPrimaryButton, TextInput } from 'atoms'
-import { Paginator } from 'molecules'
+
 import styles from './search-page.scss'
-import { logPageEvent } from '../../../services/analytics.js'
 import * as ContentActions from '../../../actions/content.js'
+import { Link, SmallPrimaryButton, TextInput } from 'atoms'
+import { Paginator } from 'molecules'
+import { logPageEvent } from '../../../services/analytics.js'
 
 const getQueryParams = search => {
   const decoded = decodeURIComponent(search)

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import styles from './page-link-group.scss'
 import PageLink from './page-link'
+import { Link } from 'atoms'
 
 // TODO: PageLinkGroup is styled differently on header submenu nav and footer
 // May consider refactoring

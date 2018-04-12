@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import styles from './happening-now.scss'
 import * as ContentActions from '../../../../actions/content'
-import { Carousel, SmallPrimaryButton } from 'atoms'
+import { Carousel, Link, SmallPrimaryButton } from 'atoms'
 import { eventCategories } from '../../../../services/constants'
 
 const contentProperty = 'happeningNow'

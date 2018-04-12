@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router'
 
 import styles from './styles.scss'
+import { Link } from 'atoms'
 
 var Slider = React.createClass({
   getDefaultProps() {

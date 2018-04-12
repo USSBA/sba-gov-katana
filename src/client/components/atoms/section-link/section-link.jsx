@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import styles from './section-link.scss'
+import { Link } from 'atoms'
 
 class SectionLink extends React.Component {
   render() {

@@ -1,8 +1,9 @@
 import React from 'react'
+import moment from 'moment'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import moment from 'moment'
-import { SmallPrimaryButton } from 'atoms'
+
+import { Link, SmallPrimaryButton } from 'atoms'
 import * as ContentActions from '../../../../actions/content.js'
 import styles from './blog.scss'
 

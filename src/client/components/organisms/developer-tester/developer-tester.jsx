@@ -1,11 +1,10 @@
 import React from 'react'
 import { reduce } from 'lodash'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import styles from './developer-tester.scss'
-import { Button, Loader } from 'atoms'
+import { Button, Link, Loader } from 'atoms'
 
 export class DeveloperTester extends React.Component {
   render() {

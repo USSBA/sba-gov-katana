@@ -91,8 +91,7 @@ module.exports = function(styleNamingFormat) {
         assets: path.resolve(__dirname, 'public/assets'),
         atoms: path.resolve(__dirname, 'src/client/components/atoms'),
         molecules: path.resolve(__dirname, 'src/client/components/molecules'),
-        // for some reason this specific path will not resolve without index.jsx
-        organisms: path.resolve(__dirname, 'src/client/components/organisms/index.jsx')
+        organisms: path.resolve(__dirname, 'src/client/components/organisms')
       },
       extensions: ['*', '.js', '.jsx']
     }

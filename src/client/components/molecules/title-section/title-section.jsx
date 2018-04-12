@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router'
+import { withRouter } from 'react-router'
 
 import styles from './title-section.scss'
-import { DecorativeDash } from 'atoms'
+import { DecorativeDash, Link } from 'atoms'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {

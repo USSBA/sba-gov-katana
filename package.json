@@ -157,7 +157,8 @@
         "isUserLoggedIn": false,
         "googleAnalytics": {
           "enabled": false
-        }
+        },
+        "katanaRedirectPaths": []
       }
     }
   }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import styles from './page-link.scss'
+import { Link } from 'atoms'
 
 class PageLink extends React.Component {
   render() {

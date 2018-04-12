@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as ModalActions from '../../../actions/show-modal.js'
 import styles from './social-media-link.scss'
+import { Link } from 'atoms'
 
 class SocialMediaLink extends React.Component {
   handleSocialMediaClick(e) {
