@@ -10,4 +10,4 @@ Use this component anywhere you would use [React Router's](https://github.com/Re
 
 ## Related components
 
-* [Button](/src/client/components/atoms/button) ([atom](src/client/components/atoms))
+* [Button](/src/client/components/atoms/button) ([atom](/src/client/components/atoms))
