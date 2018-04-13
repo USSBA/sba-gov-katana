@@ -30,7 +30,7 @@ import SbaNewsModal from './news-modal/news-modal'
 import SearchBar from './search-bar/search-bar'
 import SimpleCta from './simple-cta/simple-cta'
 import SmallInverseCta from './small-inverse-cta/small-inverse-cta'
-import TenStepsNav from './ten-steps-nav/ten-steps-nav'
+import LongScrollNav from './long-scroll-nav/long-scroll-nav'
 import TitleSection from './title-section/title-section'
 
 export {
@@ -66,6 +66,6 @@ export {
   SearchBar,
   SimpleCta,
   SmallInverseCta,
-  TenStepsNav,
+  LongScrollNav,
   TitleSection
 }
