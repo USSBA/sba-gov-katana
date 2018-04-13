@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
-import styles from '../../templates/ten-steps-page/ten-steps-landing-page.scss'
+import styles from './ten-steps-landing-page.scss'
 import * as ContentActions from '../../../actions/content.js'
 import { CallToAction, RemoveMainLoader, LongScrollNav } from 'molecules'
 import { BusinessGuideTileCollection, LongScrollSection } from 'organisms'
