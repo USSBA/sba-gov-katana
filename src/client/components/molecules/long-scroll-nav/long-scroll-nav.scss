@@ -1,4 +1,4 @@
-$circleColor: #e7bee3;
+$circleColor: $secondary-blue-light;
 $circleColorNegative: $sba-blue;
 
 .containerCenter {
@@ -69,7 +69,11 @@ $circleColorNegative: $sba-blue;
   top: 50%;
   transform: translateY(-50%);
   height: 42px;
-  background-color: $sba-blue-dark;
+  background-color: $sba-red;
+  border: 1px solid $sba-red;
+  .activeCircle {
+    border: 1px solid $sba-red;
+  }
 }
 
 .activeCircleContainer {
@@ -87,7 +91,7 @@ $circleColorNegative: $sba-blue;
   width: 30px;
   margin: auto;
   border-radius: 50%;
-  border: 1px solid $sba-blue-dark;
+  border: 1px solid $sba-blue;
   background-color: white;
 }
 
@@ -99,20 +103,18 @@ $circleColorNegative: $sba-blue;
   display: table;
   margin: 0 auto;
   position: relative;
-  top: 50%;
+  top: 46%;
   transform: translateY(-50%);
   font-size: 18px;
-  font-weight: bold;
   color: $sba-blue-dark;
 }
 
 .title {
   display: inline-block;
   position: relative;
-  top: 50%;
+  top: 46%;
   transform: translateY(-50%);
   float: left;
-  font-weight: bold;
   color: white;
   margin: 0 5px 0 15px;
 }

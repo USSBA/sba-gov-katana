@@ -1,10 +1,10 @@
 import React from 'react'
 import Waypoint from 'react-waypoint'
 
-import styles from './ten-steps-section.scss'
+import styles from './long-scroll-section.scss'
 import { NumberedCalloutBlock } from 'molecules'
 
-class TenStepsSection extends React.Component {
+class LongScrollSection extends React.Component {
   calculateSectionStyle() {
     if (this.props.sectionItem.leftAlignBox) {
       return this.props.sectionItem.solidBox ? styles.leftAlignedHero : styles.leftAligned
@@ -14,7 +14,7 @@ class TenStepsSection extends React.Component {
   }
 
   render() {
-    let sectionStyle = this.calculateSectionStyle()
+    const sectionStyle = this.calculateSectionStyle()
     return (
       <div id={'step-' + this.props.index + 1} className={sectionStyle + ' ' + styles.stepSection}>
         <img
@@ -48,12 +48,12 @@ class TenStepsSection extends React.Component {
   }
 }
 
-TenStepsSection.propTypes = {
+LongScrollSection.propTypes = {
   sectionItem: React.PropTypes.object
 }
 
-TenStepsSection.defaultProps = {
+LongScrollSection.defaultProps = {
   sectionItem: {}
 }
 
-export default TenStepsSection
+export default LongScrollSection
