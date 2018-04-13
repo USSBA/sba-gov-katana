@@ -108,7 +108,7 @@ class TenStepsLandingPage extends React.Component {
         solidBox: false,
         image: '/assets/images/tensteps/business-structure-scrabble.png',
         imageAlt: 'Fund your business.',
-        link: '/business-guide/launch/choose-business-structure-types-chart',
+        link: '/business-guide/launch-your-business/choose-business-structure',
         text:
           'The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.'
       },
