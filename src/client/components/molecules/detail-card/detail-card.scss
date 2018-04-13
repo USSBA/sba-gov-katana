@@ -1,3 +1,15 @@
+tbody {
+  border: none;
+}
+
+tr {
+  border-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
 .container {
   border: 1px solid #bebdbd;
   background-color: #fff;
@@ -20,7 +32,8 @@
 
 .title {
   text-decoration: underline;
-  color: #333333;
+  color: $sba-blue;
+  padding-top: 0px;
 }
 
 .row {
@@ -30,32 +43,37 @@
 .columnOne,
 .columnTwo {
   border: none;
-  padding: 0px;
 }
 
 .columnOne {
-  font-weight: 700;
-  width: 100px;
-  vertical-align: top;
+  color: $sba-blue;
+  padding: 0px;
+  // font-weight: 700;
+  // width: 100px;
+  // vertical-align: top;
 }
 
 .columnTwo {
+  padding: 0px;
 }
 
 .dash {
-  width: 50px;
+  hr {
+    width: 30px !important;
+  }
 }
 
 .download {
   margin-top: 42px;
+  i {
+    color: $secondary-blue;
+  }
 }
 
 .link {
+  color: $secondary-blue;
   cursor: pointer;
   margin-right: 10px;
+  text-decoration: underline;
   // @include font-size($h6-font-sizes);
-}
-
-.container hr {
-  border-color: $sba-gray-light !important;
 }

@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from 'react-router'
 import _ from 'lodash'
 
-import s from './document-card.scss'
+import s from './detail-card.scss'
 import { DecorativeDash, DocumentType, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
-class DocumentCard extends React.Component {
+class DetailCard extends React.Component {
   getLatestFile() {
     if (this.props.data && this.props.data.files) {
       return getCurrentFile(this.props.data.files)
@@ -75,7 +75,9 @@ class DocumentCard extends React.Component {
             {rows.map((row, index) => {
               return (
                 <tr key={index}>
-                  <td className={s.columnOne}>{row.name}</td>
+                  <td className={s.columnOne}>
+                    <h6>{row.name}</h6>
+                  </td>
                   <td className={s.columnTwo}>{row.value}</td>
                 </tr>
               )
@@ -133,14 +135,14 @@ class DocumentCard extends React.Component {
   }
 }
 
-DocumentCard.propTypes = {
+DetailCard.propTypes = {
   showBorder: React.PropTypes.bool,
   type: React.PropTypes.string.isRequired
 }
 
-DocumentCard.defaultProps = {
+DetailCard.defaultProps = {
   showBorder: true,
   type: 'documents'
 }
 
-export default DocumentCard
+export default DetailCard

@@ -7,7 +7,7 @@ import Card from './card/card'
 import CardGrid from './card-grid/card-grid'
 import ContactCard from './contact-card/contact-card'
 import ContactCardLookup from './contact-card-lookup/contact-card-lookup'
-import DocumentCard from './document-card/document-card'
+import DetailCard from './detail-card/detail-card'
 import FeedbackForm from './feedback-form/feedback-form'
 import FormPageButtons from './form-page-buttons/form-page-buttons'
 import GoogleTranslate from './google-translate/google-translate'
@@ -43,7 +43,7 @@ export {
   CardGrid,
   ContactCard,
   ContactCardLookup,
-  DocumentCard,
+  DetailCard,
   FeedbackForm,
   FormPageButtons,
   GoogleTranslate,

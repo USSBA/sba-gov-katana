@@ -1,5 +1,6 @@
 .cardCollection {
   clear: left;
+  // background-color: $sba-gray-lighter;
 }
 
 .cardRow {
@@ -32,7 +33,7 @@
     top: 0;
     bottom: 0;
     z-index: -1;
-    border: 1px solid #bebdbd;
+    border-top: 3px solid $sba-blue;
     margin-left: -20px;
   }
 }

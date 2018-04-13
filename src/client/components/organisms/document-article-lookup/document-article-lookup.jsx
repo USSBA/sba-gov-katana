@@ -4,7 +4,7 @@ import _ from 'lodash'
 import styles from './document-article-lookup.scss'
 import { ApplyButton, MultiSelect, SearchIcon, SmallInverseSecondaryButton, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
-import { DocumentCardCollection } from 'organisms'
+import { DetailCardCollection } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
 
 const createSlug = str => {
@@ -88,7 +88,7 @@ export class DocumentArticleLookup extends React.PureComponent {
     const { items, pageNumber, isFetching } = this.props
     if (!_.isEmpty(items)) {
       result = (
-        <DocumentCardCollection
+        <DetailCardCollection
           type={this.props.type}
           cards={items}
           fieldsToShowInDetails={this.props.fieldsToShowInDetails}
@@ -131,27 +131,31 @@ export class DocumentArticleLookup extends React.PureComponent {
 
   handleBack() {
     const { pageNumber, onPageChange } = this.props
-    let newPageNumber = Math.max(1, pageNumber - 1)
+    const newPageNumber = Math.max(1, pageNumber - 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: 'Show-More-Results', action: 'Previous' })
   }
 
   handleForward() {
     const { itemCount, pageNumber, onPageChange } = this.props
-    let newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: 'Show-More-Results', action: 'Next' })
   }
 
   renderSearchInput() {
-    let textInputProps = {
+    const textInputProps = {
       placeholder: 'Search by title or number',
       id: 'document-lookup-text-input',
       errorText: 'Please enter the correct thing.',
       label: 'Search',
       validationState: '',
-      onKeyUp: e => this.handleKeyUp(e),
-      onChange: e => this.updateSearchTerm(e),
+      onKeyUp: e => {
+        return this.handleKeyUp(e)
+      },
+      onChange: e => {
+        return this.updateSearchTerm(e)
+      },
       value: this.props.queryState.searchTerm
     }
     return (

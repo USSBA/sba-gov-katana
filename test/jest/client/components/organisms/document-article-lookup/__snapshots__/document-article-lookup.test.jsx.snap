@@ -298,7 +298,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -349,7 +351,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -400,7 +404,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -455,7 +461,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
