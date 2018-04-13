@@ -1,25 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 
 import styles from './title-section.scss'
 import { DecorativeDash, Link } from 'atoms'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {
-    const { location: { pathname } } = this.props
     let titleLinks = []
     titleLinks = sectionHeaders.map(function(item, index) {
       return (
         <li id={'titleSectionLinkId' + index} key={index}>
-          <Link
-            to={{
-              hash: `#${item.id}`,
-              pathname
-            }}
-          >
-            {item.text}
-          </Link>
+          <Link to={`#${item.id}`}>{item.text}</Link>
         </li>
       )
     })
@@ -51,12 +42,6 @@ class TitleSection extends React.Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    location: ownProps.location
-  }
-}
-
 TitleSection.propTypes = {
   title: React.PropTypes.string.isRequired,
   summary: React.PropTypes.string.isRequired
@@ -64,4 +49,4 @@ TitleSection.propTypes = {
 
 export { TitleSection }
 
-export default withRouter(connect(mapStateToProps, null)(TitleSection))
+export default TitleSection

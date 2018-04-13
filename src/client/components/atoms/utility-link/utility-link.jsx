@@ -19,7 +19,7 @@ class UtilityLink extends React.Component {
 }
 
 UtilityLink.defaultProps = {
-  url: '#',
+  url: 'javascript:;',
   visible: true
 }
 
