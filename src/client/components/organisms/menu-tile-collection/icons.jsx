@@ -52,16 +52,13 @@ const icons = {
   ],
   'federal-contracting': [
     {
-      icon: require('assets/images/federal-contracting/Understanding_Federal_Contracts_color.png'),
-      iconWhite: require('assets/images/federal-contracting/Understanding_Federal_Contracts_white.png')
+      icon: require('assets/images/federal-contracting/Contracting_Guide_color.png')
     },
     {
-      icon: require('assets/images/federal-contracting/SBA_Contracting_Assistance_Programs_color.png'),
-      iconWhite: require('assets/images/federal-contracting/SBA_Contracting_Assistance_Programs_white.png')
+      icon: require('assets/images/federal-contracting/Contracting_Assistance_Programs_color.png')
     },
     {
-      icon: require('assets/images/federal-contracting/Counseling_and_Help_color.png'),
-      iconWhite: require('assets/images/federal-contracting/Counseling_and_Help_white.png')
+      icon: require('assets/images/federal-contracting/Counseling_and_Help_color.png')
     }
   ]
 }
