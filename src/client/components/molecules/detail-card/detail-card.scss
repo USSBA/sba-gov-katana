@@ -22,8 +22,8 @@ tr:nth-child(even) {
   }
 }
 
-.cardContainer {
-  min-height: 23.75rem;
+.innerContainer {
+  min-height: 19.5rem;
 }
 
 .documentTypeContainer {
@@ -32,7 +32,6 @@ tr:nth-child(even) {
 
 .documentType > div {
   padding: 5px 10px;
-  // @include font-size($h6-font-sizes);
 }
 
 .title {
@@ -54,9 +53,7 @@ tr:nth-child(even) {
 .columnOne {
   color: $sba-blue;
   padding: 0px;
-  // font-weight: 700;
-  // width: 100px;
-  // vertical-align: top;
+
   h6 {
     line-height: 1.4;
   }
@@ -85,5 +82,4 @@ tr:nth-child(even) {
   cursor: pointer;
   margin-right: 10px;
   text-decoration: underline;
-  // @include font-size($h6-font-sizes);
 }

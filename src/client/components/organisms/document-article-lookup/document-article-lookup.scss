@@ -1,6 +1,7 @@
 .banner {
+  background-color: $sba-blue;
+  color: white;
   position: relative;
-
   width: 100%;
 
   @include grid-media($sba-grid-small) {
@@ -12,19 +13,19 @@
   @include grid-media($sba-grid-large) {
     height: 220px;
     padding: 40px 28px 20px 28px;
-
-    background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 40%;
   }
 }
 
 .header {
+  color: white;
   margin: 0 0 20px 0;
 }
 
 .multiSelect {
+  label {
+    font-weight: 400;
+  }
+
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
@@ -86,12 +87,19 @@
 
 .applyButton {
   display: inline-block;
-  margin-top: 33px;
+  font-size: 22px;
+  margin-top: 34px;
   vertical-align: top;
+
+  > button {
+    padding: 13px 26px;
+  }
 }
 
 .result {
   background-color: $sba-gray-lighter;
+  padding-top: 50px;
+
   @include clearfix;
 }
 
@@ -222,9 +230,8 @@
 }
 
 .paginator {
-  margin-top: 15px;
   float: right;
-  margin: 30px 30px 30px 0;
+  margin: 10px 30px 30px 0;
   clear: both;
 }
 

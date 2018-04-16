@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import styles from './document-article-lookup.scss'
-import { ApplyButton, MultiSelect, SearchIcon, SmallInverseSecondaryButton, TextInput } from 'atoms'
+import { Button, MultiSelect, SearchIcon, SmallInverseSecondaryButton, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { DetailCardCollection } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
@@ -178,13 +178,14 @@ export class DocumentArticleLookup extends React.PureComponent {
               {this.renderSearchInput()}
               {this.renderMultiSelects()}
               <div className={styles.applyButton}>
-                <ApplyButton submit={this.props.onSubmit} />
+                <Button primary alternate onClick={this.props.onSubmit}>
+                  Apply
+                </Button>
               </div>
             </div>
           )}
         </div>
         <div className={styles.result}>
-          {this.renderPaginator()}
           {this.renderCards()}
           {this.renderPaginator()}
         </div>

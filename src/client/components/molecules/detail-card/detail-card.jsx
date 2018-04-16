@@ -113,14 +113,8 @@ class DetailCard extends React.Component {
             }
 
       return (
-        <div
-          className={
-            'document-card-container ' +
-            ` ${s.cardContainer} ` +
-            (this.props.showBorder ? ' ' + s.container : '')
-          }
-        >
-          <div>
+        <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
+          <div className={s.innerContainer}>
             <div className={s.documentTypeContainer}>
               <DocumentType
                 className={s.documentType}
@@ -131,8 +125,8 @@ class DetailCard extends React.Component {
             <div />
             {this.makeTitle()}
             {this.props.showDetails ? this.makeTable(this.props.data) : null}
-            {this.makeDownloadLink()}
           </div>
+          {this.makeDownloadLink()}
         </div>
       )
     } else {
