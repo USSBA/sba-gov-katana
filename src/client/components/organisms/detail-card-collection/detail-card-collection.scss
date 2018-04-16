@@ -11,6 +11,7 @@
 }
 
 .card {
+  background-color: white;
   border-top: 3px solid $sba-blue;
   @include grid-media($sba-grid-medium-and-small) {
     height: auto;

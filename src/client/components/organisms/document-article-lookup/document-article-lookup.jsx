@@ -183,7 +183,7 @@ export class DocumentArticleLookup extends React.PureComponent {
             </div>
           )}
         </div>
-        <div>
+        <div className={styles.result}>
           {this.renderPaginator()}
           {this.renderCards()}
           {this.renderPaginator()}
