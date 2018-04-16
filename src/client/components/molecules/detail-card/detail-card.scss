@@ -13,12 +13,17 @@ tr:nth-child(even) {
 .container {
   border: 1px solid #bebdbd;
   background-color: white;
+
   @include grid-media($sba-grid-medium-and-small) {
     padding: 15px;
   }
   @include grid-media($sba-grid-large) {
     padding: 20px;
   }
+}
+
+.cardContainer {
+  min-height: 23.75rem;
 }
 
 .documentTypeContainer {

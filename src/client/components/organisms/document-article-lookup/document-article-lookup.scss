@@ -92,6 +92,7 @@
 
 .result {
   background-color: $sba-gray-lighter;
+  @include clearfix;
 }
 
 .table {
@@ -203,27 +204,20 @@
 
 .mapIcon {
   font-size: 26px !important;
-
   float: left;
-
   margin-top: 12px;
-
   color: #666;
 }
 
 .addressContainer {
   display: inline-block;
-
   padding-left: 8px;
 }
 
 .phoneIcon {
   font-size: 24px !important;
-
   float: left;
-
   margin: 2px 6px 0 3px;
-
   color: #666;
 }
 

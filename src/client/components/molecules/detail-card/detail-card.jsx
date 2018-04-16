@@ -113,7 +113,13 @@ class DetailCard extends React.Component {
             }
 
       return (
-        <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
+        <div
+          className={
+            'document-card-container ' +
+            ` ${s.cardContainer} ` +
+            (this.props.showBorder ? ' ' + s.container : '')
+          }
+        >
           <div>
             <div className={s.documentTypeContainer}>
               <DocumentType
