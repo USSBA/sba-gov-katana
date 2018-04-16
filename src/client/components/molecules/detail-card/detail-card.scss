@@ -1,6 +1,19 @@
+tbody {
+  border: none;
+}
+
+tr {
+  border-color: white;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+}
+
 .container {
   border: 1px solid #bebdbd;
-  background-color: #fff;
+  background-color: white;
+
   @include grid-media($sba-grid-medium-and-small) {
     padding: 15px;
   }
@@ -9,18 +22,22 @@
   }
 }
 
+.innerContainer {
+  min-height: 19.5rem;
+}
+
 .documentTypeContainer {
   margin-bottom: 20px;
 }
 
 .documentType > div {
   padding: 5px 10px;
-  // @include font-size($h6-font-sizes);
 }
 
 .title {
   text-decoration: underline;
-  color: #333333;
+  color: $sba-blue;
+  padding-top: 0px;
 }
 
 .row {
@@ -29,33 +46,40 @@
 
 .columnOne,
 .columnTwo {
+  background-color: white !important;
   border: none;
-  padding: 0px;
 }
 
 .columnOne {
-  font-weight: 700;
-  width: 100px;
-  vertical-align: top;
+  color: $sba-blue;
+  padding: 0px;
+
+  h6 {
+    line-height: 1.4;
+  }
 }
 
 .columnTwo {
+  padding: 0 0 0 5px;
 }
 
 .dash {
-  width: 50px;
+  hr {
+    margin-top: 0.8rem;
+    width: 30px !important;
+  }
 }
 
 .download {
   margin-top: 42px;
+  i {
+    color: $secondary-blue;
+  }
 }
 
 .link {
+  color: $secondary-blue;
   cursor: pointer;
   margin-right: 10px;
-  // @include font-size($h6-font-sizes);
-}
-
-.container hr {
-  border-color: $sba-gray-light !important;
+  text-decoration: underline;
 }

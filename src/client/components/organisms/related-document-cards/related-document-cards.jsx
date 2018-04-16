@@ -3,7 +3,7 @@ import React from 'react'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { DocumentCardCollection } from 'organisms'
+import { DetailCardCollection } from 'organisms'
 import * as ContentActions from '../../../actions/content'
 import * as NavigationActions from '../../../actions/navigation'
 import queryString from 'querystring'
@@ -22,27 +22,29 @@ class RelatedDocumentCards extends React.Component {
     const { data: { relatedDocuments }, fetchContentIfNeeded } = this.props
 
     Promise.all(
-      relatedDocuments.map(documentId => fetchContentIfNeeded('node', `node/${documentId}`))
-    ).then(relatedDocumentsData =>
-      this.sortRelatedDocuments(
+      relatedDocuments.map(documentId => {
+        return fetchContentIfNeeded('node', `node/${documentId}`)
+      })
+    ).then(relatedDocumentsData => {
+      return this.sortRelatedDocuments(
         relatedDocumentsData
           .map(({ data }) => data)
           // Gracefully handle related documents that have been deleted.
           .filter(data => data)
       )
-    )
+    })
   }
 
   sortRelatedDocuments(relatedDocuments) {
     if (relatedDocuments) {
-      let sortedAndFilteredDocuments = {}
+      const sortedAndFilteredDocuments = {}
       _.uniq(
         relatedDocuments.map(relatedDocument => {
           return relatedDocument.documentIdType
         })
       ).map(docType => {
-        let filteredDocuments = _.filter(relatedDocuments, ['documentIdType', docType])
-        let sortedDocuments = filteredDocuments.sort((a, b) => {
+        const filteredDocuments = _.filter(relatedDocuments, ['documentIdType', docType])
+        const sortedDocuments = filteredDocuments.sort((a, b) => {
           return a.title.toLowerCase() > b.title.toLowerCase()
         })
         sortedAndFilteredDocuments[docType] = sortedDocuments
@@ -54,26 +56,31 @@ class RelatedDocumentCards extends React.Component {
   handleBrowseAll(documentType) {
     const { locationChange } = this.props
     logPageEvent({ category: 'Browse-all', action: documentType })
-    let params = { type: documentType }
+    const params = { type: documentType }
     locationChange('/document/?' + queryString.stringify(params))
   }
 
   renderRelatedDocumentSections() {
-    let sortedDouments = this.state.sortedDocuments
+    const sortedDouments = this.state.sortedDocuments
     return _.keys(this.state.sortedDocuments)
       .sort()
       .map((documentType, index) => {
-        let documents = sortedDouments[documentType]
+        const documents = sortedDouments[documentType]
         return (
           <div className={'related-document-section'} key={index}>
             <div className={'related-document-section-header ' + s.sectionHeader}>
               <h3 className={s.sectionTitle}>{documentType} </h3>
-              <a className={s.browseAll} onClick={() => this.handleBrowseAll(documentType)}>
+              <a
+                className={s.browseAll}
+                onClick={() => {
+                  return this.handleBrowseAll(documentType)
+                }}
+              >
                 Browse all
               </a>
             </div>
             <div>
-              <DocumentCardCollection showDetails={false} cards={documents} type={documentType} />
+              <DetailCardCollection showDetails={false} cards={documents} type={documentType} />
             </div>
           </div>
         )

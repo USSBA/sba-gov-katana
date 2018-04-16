@@ -1,14 +1,14 @@
 import React from 'react'
 import _ from 'lodash'
 
-import styles from './document-card-collection.scss'
-import { DocumentCard } from 'molecules'
+import styles from './detail-card-collection.scss'
+import { DetailCard } from 'molecules'
 
-class DocumentCardCollection extends React.Component {
+class DetailCardCollection extends React.Component {
   renderCard(item, index) {
     return (
       <div className={'card-container ' + styles.card} key={index}>
-        <DocumentCard
+        <DetailCard
           type={this.props.type}
           data={item}
           showDetails={this.props.showDetails}
@@ -37,14 +37,14 @@ class DocumentCardCollection extends React.Component {
   }
 }
 
-DocumentCardCollection.propTypes = {
+DetailCardCollection.propTypes = {
   cards: React.PropTypes.array,
   fieldsToShowInDetails: React.PropTypes.array
 }
 
-DocumentCardCollection.defaultProps = {
+DetailCardCollection.defaultProps = {
   showDetails: true,
   fieldsToShowInDetails: []
 }
 
-export default DocumentCardCollection
+export default DetailCardCollection

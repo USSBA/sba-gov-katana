@@ -7,7 +7,7 @@ import DeveloperTester from './developer-tester/developer-tester.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
-import DocumentCardCollection from './document-card-collection/document-card-collection.jsx'
+import DetailCardCollection from './detail-card-collection/detail-card-collection.jsx'
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
 import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
 import FederalContractingTileCollection from './federal-contracting-tile-collection/federal-contracting-tile-collection.jsx'
@@ -85,7 +85,7 @@ export {
   DisasterAlert,
   DocumentArticle,
   DocumentArticleLookup,
-  DocumentCardCollection,
+  DetailCardCollection,
   DropdownMenu,
   ForPartnersTileCollection,
   FederalContractingTileCollection,

@@ -2,14 +2,20 @@
 .number {
   font-size: 25px;
   font-weight: bold;
-
   display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  h6 {
+    color: $secondary-black-ish !important;
+    padding-top: 6px;
+  }
+}
 
-  padding: 5px 10px 5px 10px;
-
-  border: 2px solid #bcbcbc;
+.number {
+  border: 2px solid $sba-gray-lighter;
 }
 
 .type {
-  background-color: #bcbcbc;
+  background-color: $sba-gray-lighter;
+  border: 2px solid $sba-gray-lighter;
 }

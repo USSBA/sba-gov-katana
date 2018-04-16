@@ -187,92 +187,18 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       <div
         className="applyButton"
       >
-        <div
-          id={null}
+        <button
+          className="button alternate primary responsive spacing"
+          onClick={[Function]}
         >
-          <button
-            autoFocus={false}
-            className="SmallInverseSecondaryButton applyButton "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
-          >
-            Apply
-          </button>
-        </div>
+          Apply
+        </button>
       </div>
     </div>
   </div>
-  <div>
-    <div
-      className="paginator"
-    >
-      <div
-        className="container"
-        id={undefined}
-      >
-        <p
-          className="pagination-status"
-        >
-          <span>
-            Showing  
-          </span>
-          <span
-            className="bold"
-          >
-            5
-              - 
-            8
-              
-          </span>
-          <span>
-            of  
-          </span>
-          <span
-            className="bold"
-          >
-            42
-          </span>
-        </p>
-        <span
-          className="previous-arrow"
-        >
-          <a
-            className="ArrowButton "
-            id={undefined}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            tabIndex="0"
-          >
-            <i
-              alt="previous page"
-              aria-hidden="true"
-              className=" fa fa-chevron-left"
-            />
-          </a>
-        </span>
-        <span
-          className="next-arrow"
-        >
-          <a
-            className="ArrowButton noLeftBorder"
-            id={undefined}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            tabIndex="0"
-          >
-            <i
-              alt="next page"
-              aria-hidden="true"
-              className=" fa fa-chevron-right"
-            />
-          </a>
-        </span>
-      </div>
-    </div>
+  <div
+    className="result"
+  >
     <div
       className="documentCardCollection"
     >
@@ -288,7 +214,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -298,7 +226,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -338,7 +268,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -348,7 +280,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -388,7 +322,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -398,7 +334,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -442,7 +380,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -452,7 +392,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>

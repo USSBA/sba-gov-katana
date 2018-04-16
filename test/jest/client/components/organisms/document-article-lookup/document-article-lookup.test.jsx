@@ -77,7 +77,7 @@ describe('DocumentArticleLookup', () => {
   test('should fire the submit when the apply button is pressed ', () => {
     let props = _.clone(lookupProps)
     const component = shallow(<DocumentArticleLookup {...props} />)
-    component.find('ApplyButton').prop('submit')()
+    component.find('Button').simulate('click')
     expect(submit).toBeCalled()
   })
   //
