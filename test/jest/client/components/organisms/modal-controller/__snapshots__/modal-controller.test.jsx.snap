@@ -26,19 +26,17 @@ exports[`ModalController should render MobileSectionNav page 1`] = `
   />
   <a
     className="navLink"
+    href="javascript:;"
     id={undefined}
-    onClick={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     CDC/504 program
   </a>
   <a
     className="navLink"
+    href="javascript:;"
     id={undefined}
-    onClick={[Function]}
     onMouseUp={[Function]}
-    style={Object {}}
   >
     CDC/504 program
   </a>

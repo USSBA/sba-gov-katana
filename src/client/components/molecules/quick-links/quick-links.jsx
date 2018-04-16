@@ -4,13 +4,12 @@ import moment from 'moment'
 import queryString from 'querystring'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import s from './quick-links.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { DecorativeDash } from 'atoms'
+import { DecorativeDash, Link } from 'atoms'
 
 function getCurrentFile(files) {
   let found = null

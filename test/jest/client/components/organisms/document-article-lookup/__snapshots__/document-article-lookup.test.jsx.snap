@@ -304,8 +304,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  onClick={[Function]}
-                  style={Object {}}
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -355,8 +354,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  onClick={[Function]}
-                  style={Object {}}
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -406,8 +404,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  onClick={[Function]}
-                  style={Object {}}
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -461,8 +458,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 </div>
                 <div />
                 <a
-                  onClick={[Function]}
-                  style={Object {}}
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"

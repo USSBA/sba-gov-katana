@@ -1,11 +1,10 @@
 import React from 'react'
 import { reduce } from 'lodash'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import styles from './developer-tester.scss'
-import { Button, Loader } from 'atoms'
+import { Button, Link, Loader } from 'atoms'
 
 export class DeveloperTester extends React.Component {
   render() {
@@ -20,12 +19,16 @@ export class DeveloperTester extends React.Component {
         <h6>Hello</h6>
         <hr />
         <hr className="alternate" />
+        <Link to="https://google.com">Google</Link> <br />
+        <Link to="#hash">Hash, no pathname</Link> <br />
+        <Link to={{ pathname: 'hey', hash: '#hello', search: '?query=query' }}>Pathname</Link> <br />
+        <Link>Broken link</Link> <br />
+        <Link to={{ pathname: 'https://yahoo.com', query: '?data=nada' }}>Yahoo with object</Link> <br />
         <p>This is some example text. This is some example text.</p>
         <p style={{ width: '100px' }}>
           This is some example text. This is some example text with a <a href="https://google.com">link</a>.
           This is some example text.
         </p>
-
         <Button primary>
           <i className="fa fa-fw fa-search" />
         </Button>
@@ -57,7 +60,6 @@ export class DeveloperTester extends React.Component {
         <Button secondary fullWidth>
           secondary full-width button
         </Button>
-
         <input style={{ margin: '1rem' }} type="text" placeholder="Insert text" />
         <input type="text" placeholder="Insert text" disabled />
         <input type="checkbox" />

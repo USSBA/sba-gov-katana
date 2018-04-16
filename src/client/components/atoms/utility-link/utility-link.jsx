@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import styles from './utility-link.scss'
+import { Link } from 'atoms'
 
 class UtilityLink extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class UtilityLink extends React.Component {
 }
 
 UtilityLink.defaultProps = {
-  url: '#',
+  url: 'javascript:;',
   visible: true
 }
 

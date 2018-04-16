@@ -1,15 +1,15 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import rootReducer from '../reducers/index.js'
-import { logPageView, googleAnalyticsMiddleware } from '../services/analytics.js'
-import logging from '../services/logger.js'
-import config from '../services/client-config.js'
-
+import { Provider } from 'react-redux'
 import { Route, browserHistory, IndexRoute, IndexRedirect } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
+import { applyMiddleware, createStore } from 'redux'
+
 import HaxRouter from './hax-router.jsx'
+import config from '../services/client-config.js'
+import logging from '../services/logger.js'
+import rootReducer from '../reducers/index.js'
+import { logPageView, googleAnalyticsMiddleware } from '../services/analytics.js'
 
 const middlewareList = []
 middlewareList.push(thunk)

@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router'
 import _ from 'lodash'
 
 import s from './document-card.scss'
-import { DecorativeDash, DocumentType, PdfIcon } from 'atoms'
+import { DecorativeDash, DocumentType, Link, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 

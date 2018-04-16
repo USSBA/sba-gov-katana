@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import s from './menu-tile-with-links.scss'
+import { Link } from 'atoms'
 
 class MenuTileWithLinks extends React.Component {
   render() {
