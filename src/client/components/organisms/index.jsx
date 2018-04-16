@@ -33,7 +33,7 @@ import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
 import SubMenu from './sub-menu/sub-menu'
 import SuretyLookup from './surety-lookup/surety-lookup'
-import TenStepsSection from './ten-steps-section/ten-steps-section'
+import LongScrollSection from './long-scroll-section/long-scroll-section'
 import TextReadMoreSection from './text-readmore-section/text-readmore-section'
 import Tile from './tile-collection/tile.jsx'
 import TileCollection from './tile-collection/tile-collection.jsx'
@@ -111,7 +111,7 @@ export {
   StyleGrayBackground,
   SubMenu,
   SuretyLookup,
-  TenStepsSection,
+  LongScrollSection,
   TextReadMoreSection,
   TileCollection,
   Tile,

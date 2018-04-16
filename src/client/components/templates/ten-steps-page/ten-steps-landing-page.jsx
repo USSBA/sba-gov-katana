@@ -5,11 +5,12 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
-import styles from '../../templates/ten-steps-page/ten-steps-landing-page.scss'
+import styles from './ten-steps-landing-page.scss'
 import * as ContentActions from '../../../actions/content.js'
-import { CallToAction, RemoveMainLoader, TenStepsNav } from 'molecules'
-import { BusinessGuideTileCollection, TenStepsSection } from 'organisms'
+import { CallToAction, RemoveMainLoader, LongScrollNav } from 'molecules'
+import { BusinessGuideTileCollection, LongScrollSection } from 'organisms'
 import { findPageLineage, findSubSection, findSection } from '../../../services/menu.js'
+import scrollIcon from 'assets/svg/scroll.svg'
 
 class TenStepsLandingPage extends React.Component {
   constructor() {
@@ -107,7 +108,7 @@ class TenStepsLandingPage extends React.Component {
         solidBox: false,
         image: '/assets/images/tensteps/business-structure-scrabble.png',
         imageAlt: 'Fund your business.',
-        link: '/business-guide/launch/choose-business-structure-types-chart',
+        link: '/business-guide/launch-your-business/choose-business-structure',
         text:
           'The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.'
       },
@@ -169,7 +170,7 @@ class TenStepsLandingPage extends React.Component {
     ]
     const tenstepSectionItems = titleBoxDataArray.map((item, index) => {
       return (
-        <TenStepsSection
+        <LongScrollSection
           index={index}
           key={index}
           sectionItem={item}
@@ -191,10 +192,10 @@ class TenStepsLandingPage extends React.Component {
       <div className={styles.tenStepsLandingPage}>
         <RemoveMainLoader />
         {this.state.navType === 'center' ? (
-          <TenStepsNav navType="center" section={this.state.section} />
+          <LongScrollNav navType="center" section={this.state.section} />
         ) : null}
         <div className={styles.titleSection}>
-          {this.state.navType === 'top' ? <TenStepsNav navType="top" /> : null}
+          {this.state.navType === 'top' ? <LongScrollNav navType="top" /> : null}
           <div className={styles.titleSectionText}>
             <h1>10 steps to start your business</h1>
             <Waypoint
@@ -211,8 +212,8 @@ class TenStepsLandingPage extends React.Component {
               </p>
             </Waypoint>
           </div>
-          <a className={styles.scrollButton} aria-hidden="true" href="#step-1">
-            <i className={' fa fa-angle-down'} />
+          <a aria-hidden="true" href="#step-1">
+            <img className={styles.scrollButton} src={scrollIcon} />
           </a>
           <Link className={styles.backLink} to="/business-guide">
             Back to all topics

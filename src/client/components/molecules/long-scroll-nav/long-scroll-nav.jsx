@@ -1,7 +1,7 @@
 import React from 'react'
-import s from './ten-steps-nav.scss'
+import s from './long-scroll-nav.scss'
 
-class TenStepsNav extends React.Component {
+class LongScrollNav extends React.Component {
   renderStep(index) {
     if (this.props.section == index) {
       return (
@@ -21,7 +21,7 @@ class TenStepsNav extends React.Component {
   }
 
   render() {
-    let steps = [
+    const steps = [
       {
         title: 'Research'
       },
@@ -85,4 +85,4 @@ class TenStepsNav extends React.Component {
   }
 }
 
-export default TenStepsNav
+export default LongScrollNav
