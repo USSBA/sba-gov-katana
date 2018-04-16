@@ -12,7 +12,7 @@ tr:nth-child(even) {
 
 .container {
   border: 1px solid #bebdbd;
-  background-color: #fff;
+  background-color: white;
   @include grid-media($sba-grid-medium-and-small) {
     padding: 15px;
   }
@@ -42,6 +42,7 @@ tr:nth-child(even) {
 
 .columnOne,
 .columnTwo {
+  background-color: white !important;
   border: none;
 }
 
@@ -51,14 +52,18 @@ tr:nth-child(even) {
   // font-weight: 700;
   // width: 100px;
   // vertical-align: top;
+  h6 {
+    line-height: 1.4;
+  }
 }
 
 .columnTwo {
-  padding: 0px;
+  padding: 0 0 0 5px;
 }
 
 .dash {
   hr {
+    margin-top: 0.8rem;
     width: 30px !important;
   }
 }
