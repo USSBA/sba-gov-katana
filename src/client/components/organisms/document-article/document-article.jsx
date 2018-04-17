@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 
 import s from './document-article.scss'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { DecorativeDash, DocumentType, LargePrimaryButton, Link, TextSection } from 'atoms'
+import { Button, DecorativeDash, DocumentType, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
@@ -110,15 +110,13 @@ export class DocumentArticle extends React.Component {
           )}
           <hr className={s.hr} />
           <div className={s.summaryContainer}>
-            <LargePrimaryButton
-              className={'document-article-pdf-download-btn ' + s.downloadButton}
-              onClick={e => {
-                return this.downloadClick(currentFile)
-              }}
+            <h5 className={s.summary}>{data.summary}</h5>
+            <Button
+              className="document-article-pdf-download-btn"
+              onClick={e => this.downloadClick(currentFile)}
               disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
-              text={'download ' + currentFileExtension}
-            />
-            <p className={'document-article-summary ' + s.summary}>{data.summary}</p>
+              primary
+            >{`Download ${currentFileExtension}`}</Button>
           </div>
           <div className={s.dashContainer}>
             <DecorativeDash width={4.278} />
