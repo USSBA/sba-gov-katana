@@ -200,6 +200,72 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
     className="result"
   >
     <div
+      className="paginator"
+    >
+      <div
+        className="container"
+        id={undefined}
+      >
+        <p
+          className="pagination-status"
+        >
+          <span>
+            Showing  
+          </span>
+          <span
+            className="bold"
+          >
+            5
+              - 
+            8
+              
+          </span>
+          <span>
+            of  
+          </span>
+          <span
+            className="bold"
+          >
+            42
+          </span>
+        </p>
+        <span
+          className="previous-arrow"
+        >
+          <a
+            className="ArrowButton "
+            id={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="0"
+          >
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className=" fa fa-chevron-left"
+            />
+          </a>
+        </span>
+        <span
+          className="next-arrow"
+        >
+          <a
+            className="ArrowButton noLeftBorder"
+            id={undefined}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="0"
+          >
+            <i
+              alt="next page"
+              aria-hidden="true"
+              className=" fa fa-chevron-right"
+            />
+          </a>
+        </span>
+      </div>
+    </div>
+    <div
       className="documentCardCollection"
     >
       <div

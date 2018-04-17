@@ -14,6 +14,7 @@ exports[`PagingLookup should render with all the information 1`] = `
   <div
     className="result"
   >
+    <div />
     <div
       className="documentCardCollection"
     >
