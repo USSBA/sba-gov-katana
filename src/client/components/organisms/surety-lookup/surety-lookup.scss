@@ -1,27 +1,27 @@
 .banner {
+  background-color: $sba-blue;
   width: 100%;
+
   @include grid-media($sba-grid-small) {
     padding: 20px;
   }
+
   @include grid-media($sba-grid-medium) {
     padding: 20px 30px;
   }
+
   @include grid-media($sba-grid-large) {
-    height: 349px;
-    padding: 40px 28px 20px;
-    background-image: url('../../../../../public/assets/images/tensteps/title-section-pattern.png');
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: 40%;
+    padding: 40px 28px;
+  }
+
+  > h2 {
+    color: white;
   }
 }
 
 .blurb {
-  font-size: 24px;
-  line-height: 34px;
-  width: 1012px;
-  height: 68px;
   color: white;
+
   @include grid-media($sba-grid-medium-and-small) {
     display: none;
   }
@@ -31,6 +31,7 @@
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
+
   @include grid-media($sba-grid-large) {
     display: inline-block;
     width: 387px;
@@ -43,6 +44,15 @@
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  label {
+    // TODO: These are h5 styles.
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
   }
 }
 
