@@ -12,6 +12,7 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         onClick={[Function]}
         style={Object {}}
         tabIndex="-1"
+        target="_self"
       >
         <img
           alt="Small Business Administration"

@@ -34,6 +34,11 @@ const Link = (props, context) => {
     href = `${router.createHref(router.getCurrentLocation().pathname)}${href}`
   }
 
+  // TODO: Adding a `target` forces react-router to send a request to the
+  // server. For now, route all links through the server, since client-side
+  // routing will be removed in the future.
+  return <ReactRouterLink target="_self" {...props} to={href} />
+
   const redirectPaths = config.katanaRedirectPaths
 
   // If the link does not point to a url that can be handled by React Router,
@@ -45,7 +50,6 @@ const Link = (props, context) => {
     !isEmpty(redirectPaths) &&
     !redirectPaths.includes(href.split('/')[1])
   ) {
-    // Adding a `target` forces react-router to send a request to the server.
     return <ReactRouterLink target="_self" {...props} to={href} />
   } else {
     return <ReactRouterLink {...props} to={href} />
