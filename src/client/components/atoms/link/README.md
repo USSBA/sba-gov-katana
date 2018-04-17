@@ -8,6 +8,7 @@ Use this component anywhere you would use [React Router's](https://github.com/Re
 
 | Prop | Type | Description | Default
 | --- | --- | --- | ---
+| `forceClientRouting` | `boolean` | <blockquote>**Note**: This is a stopgap measure that should rarely be used, since (as of now) all links route through the server.</blockquote> Force client-side routing, *except for* urls that are not defined in `katanaRedirectPaths` in the configuration. | `false`
 | `to` | `{ pathname: string }` \| `string` | If passed as an `object`, the `pathname` key is **required**. A url to a linked resource or location. | -
 
 ---

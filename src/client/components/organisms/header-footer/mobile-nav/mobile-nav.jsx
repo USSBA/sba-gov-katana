@@ -45,11 +45,7 @@ class MobileNav extends React.Component {
     if (this.props.mainMenuData) {
       menuItems = this.props.mainMenuData.map((item, index) => {
         return (
-          <div
-            key={index}
-            className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}
-            onClick={me.toggleNav.bind(me)}
-          >
+          <div key={index} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
             <SectionLink id={'main-menu-link-' + index} url={item.link} text={item.linkTitle} />
           </div>
         )

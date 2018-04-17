@@ -17,8 +17,9 @@ class SectionLink extends React.Component {
         <Link
           id={this.props.id}
           className={styles.sectionLink + highlightLink}
-          to={this.props.url}
+          onClick={this.props.onClick}
           onKeyDown={this.props.onKeyDown}
+          to={this.props.url}
         >
           {this.props.text}
         </Link>
