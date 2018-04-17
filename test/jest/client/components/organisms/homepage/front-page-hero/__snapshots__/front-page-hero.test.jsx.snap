@@ -10,17 +10,17 @@ exports[`Front Page Hero should render correctly 1`] = `
     <img
       alt="Start and grow your business"
       className="heroLarge"
-      src="http://kevin.sba.fun/largeImage.jpg"
+      src="/largeImage.jpg"
     />
     <img
       alt="medium image"
       className="heroMedium"
-      src="http://kevin.sba.fun/mediumImage.jpg"
+      src="/mediumImage.jpg"
     />
     <img
       alt="small image"
       className="heroSmall"
-      src="http://kevin.sba.fun/smallImage.jpg"
+      src="/smallImage.jpg"
     />
   </div>
   <div
