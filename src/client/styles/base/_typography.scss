@@ -1,23 +1,16 @@
-html,
-body {
-  color: $base-font-color;
-  font-family: $base-font-family;
-  @include font-size($base-font-sizes);
-  line-height: $base-line-height;
+html {
+  color: $secondary-black-ish;
+  font-family: $sans-serif-font-family;
+  font-size: $base-font-size;
   letter-spacing: -0.4px;
+  line-height: $base-line-height;
+  text-rendering: optimizeLegibility;
+
+  //--webkit-font-smoothing: antialiased;
+  //-moz-osx-font-smoothing: grayscale;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-  letter-spacing: -0.4px; // must be explicitly declare this even though it is declared on the body because a browser's "user agent styelsheet" might override the body declaration
-}
-
-body {
-  font-size: 1em;
-}
+// # Headings -----------------------------------------------------------------
 
 h1,
 h2,
@@ -25,86 +18,120 @@ h3,
 h4,
 h5,
 h6 {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h6 {
+  color: $sba-blue;
   line-height: $heading-line-height;
-  font-style: normal;
+  margin-bottom: 0.5em;
+}
+
+h1,
+h3,
+h4,
+h6 {
+  font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.3px;
+}
+
+h1,
+h2 {
+  letter-spacing: 0;
 }
 
 h1 {
-  @include font-size($h1-font-sizes);
-  font-weight: 900;
-  margin: 0 0 0.6em 0;
-}
+  font-size: 2.667rem;
 
-h2 {
-  @include font-size($h2-font-sizes);
-  font-weight: 900;
-  margin: 0 0 0.5em 0;
-}
-
-h3 {
-  @include font-size($h3-font-sizes);
-  font-weight: 900;
-  margin: 0 0 0.5em 0;
-}
-
-h4 {
-  @include font-size($h4-font-sizes);
-  font-weight: 700;
-  margin: 0 0 0.5em 0;
-}
-
-h5 {
-  @include font-size($h5-font-sizes);
-  color: #666666;
-  font-family: $serif-font;
-  font-weight: 400;
-  margin: 0 0 2em 0;
-  line-height: 1.5;
-}
-
-h6 {
-  @include font-size($h6-font-sizes);
-  font-weight: 700;
-  margin: 0 0 0.5em 0;
-}
-
-p {
-  @include font-size($paragraph-font-sizes);
-  margin: 0 0 1.1em 0;
-}
-
-a {
-  color: $sba-blue;
-  text-decoration: underline;
-  transition: color $base-duration $base-timing;
-  cursor: pointer;
-  &:active,
-  &:focus,
-  &:hover {
-    color: shade($action-color, 25%);
+  @include for-large-up {
+    font-size: 3.375rem;
   }
 }
 
-@include theme(sba-blue, a, null, $sba-blue-dark, #fff);
-@include theme(byzantine, a, null, $byzantine, #fff);
-@include theme(money-green, a, null, $money-green-dark, #fff);
-@include theme(cobalt-blue, a, null, $cobalt-blue, #fff);
-@include theme(sba-blue-dark, a, null, $sba-blue-dark, #fff);
+h2 {
+  font-size: 1.777rem;
+  font-weight: 400;
 
-@include theme-hover(sba-blue, a, null, $sba-blue-darkest, null);
-@include theme-hover(byzantine, a, null, $byzantine-dark, null);
-@include theme-hover(money-green, a, null, $money-green-darkest, null);
-@include theme-hover(cobalt-blue, a, null, $cobalt-blue-dark, null);
-@include theme-hover(sba-blue-dark, a, null, $sba-blue-darkest, null);
-
-hr {
-  border-bottom: $base-border;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  margin: $base-spacing 0;
+  @include for-large-up {
+    font-size: 2.25rem;
+  }
 }
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.23rem;
+}
+
+h5 {
+  @include lede-type;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+// # Block elements -----------------------------------------------------------
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.1rem;
+}
+
+.lede {
+  @include lede-type;
+}
+
+// # Inline elements ----------------------------------------------------------
 
 em {
   font-style: italic;
+}
+
+// # Links --------------------------------------------------------------------
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  transition: color $base-duration $base-timing;
+
+  &:focus {
+    // TODO: convert to mixin
+    outline: $focus-outline-width dotted $sba-gray-light;
+    outline-offset: $focus-outline-offset;
+  }
+}
+
+a:not([class]) {
+  color: $secondary-blue;
+
+  &:hover {
+    color: $secondary-blue-light;
+  }
+}
+
+// # Header rule --------------------------------------------------------------
+
+hr {
+  border: 0;
+}
+
+hr:not([class]) {
+  border-top: 1px solid $sba-gray-light;
+  margin-bottom: 2.8rem;
 }

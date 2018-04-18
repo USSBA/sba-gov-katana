@@ -22,39 +22,20 @@ describe('SectionNav', () => {
       const modifiedBacklinkUrl = '/business-guide'
       const lineage = _.merge(_.cloneDeep(lineageBusinessGuide), [{ fullUrl: modifiedBacklinkUrl }])
       const component = shallow(<SectionNav lineage={lineage} />)
-      expect(component.find('#article-navigation-back-button-desktop').props().url).toBe(
-        modifiedBacklinkUrl
-      )
+      expect(component.find('#article-navigation-back-button-desktop').props().to).toBe(modifiedBacklinkUrl)
     })
 
     test("Backlink text is 'Back to all topics'", () => {
       const component = shallow(<SectionNav lineage={lineageBusinessGuide} />)
-      expect(component.find('#article-navigation-back-button-desktop').props().text).toBe(
-        'Back to all topics'
-      )
-    })
-
-    test('Navigation title uses first word of second-level as an H2 and the rest as H4', () => {
-      const firstWord = 'Firstwordof'
-      const otherWords = ' My Second Level Title'
-      const modifiedSecondLevelTitle = `${firstWord}${otherWords}`
-      const lineage = _.cloneDeep(lineageBusinessGuide)
-      lineage[1].title = modifiedSecondLevelTitle
-      const component = shallow(<SectionNav lineage={lineage} />)
       expect(
         component
-          .find('#article-navigation-title-desktop')
-          .find('h2')
+          .find('#article-navigation-back-button-desktop')
+          .childAt(0)
           .text()
-      ).toBe(firstWord)
-      expect(
-        component
-          .find('#article-navigation-title-desktop')
-          .find('h4')
-          .text()
-      ).toBe(otherWords)
+      ).toBe('Back to all topics')
     })
   })
+
   describe('For Partners', () => {
     test('Renders a Fourth-level Section Navigation', () => {
       const component = renderer.create(<SectionNav lineage={lineageForPartners} />)
@@ -65,17 +46,18 @@ describe('SectionNav', () => {
       const modifiedBacklinkUrl = '/my/back/url'
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{}, {}, { fullUrl: modifiedBacklinkUrl }])
       const component = shallow(<SectionNav lineage={lineage} />)
-      expect(component.find('#article-navigation-back-button-desktop').props().url).toBe(
-        modifiedBacklinkUrl
-      )
+      expect(component.find('#article-navigation-back-button-desktop').props().to).toBe(modifiedBacklinkUrl)
     })
     test('Backlink text is third-level title', () => {
       const modifiedTitle = 'My Third Level Title'
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{}, {}, { title: modifiedTitle }])
       const component = shallow(<SectionNav lineage={lineage} />)
-      expect(component.find('#article-navigation-back-button-desktop').props().text).toBe(
-        `Back to ${modifiedTitle}`
-      )
+      expect(
+        component
+          .find('#article-navigation-back-button-desktop')
+          .childAt(0)
+          .text()
+      ).toEqual(`Back to ${modifiedTitle}`)
     })
     test('Navigation title has all content in an h3', () => {
       const navigationTitle = 'Firstwordof My Third Level Title'

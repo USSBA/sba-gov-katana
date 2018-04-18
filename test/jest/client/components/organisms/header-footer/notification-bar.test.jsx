@@ -23,16 +23,21 @@ describe('NotificationBar', () => {
     expect(mockFunction).toHaveBeenCalledTimes(1)
   })
 
-  test("a tag should read, 'LEARN MORE'", function() {
-    const mockLabel = 'LEARN MORE'
+  test("a tag should read, 'Learn more'", function() {
+    const mockLabel = 'Learn more'
     const component = shallow(<NotificationBar />)
-    expect(component.find('BasicLink').props().text).toBe(mockLabel)
+    expect(
+      component
+        .find('Button')
+        .childAt(0)
+        .text()
+    ).toBe(mockLabel)
   })
 
   test('a tag url should be value of mockUrl value', function() {
     const mockUrl = '#'
     const component = shallow(<NotificationBar url={mockUrl} />)
 
-    expect(component.find('BasicLink').props().url).toBe(mockUrl)
+    expect(component.find('Button').props().url).toBe(mockUrl)
   })
 })

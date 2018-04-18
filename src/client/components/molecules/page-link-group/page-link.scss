@@ -1,0 +1,16 @@
+li.pageLink {
+  display: list-item;
+  font-size: 1rem;
+  margin-bottom: 0.833rem;
+  // change to base color
+  color: $secondary-black-ish;
+}
+
+.indent {
+  margin-left: 1.111rem;
+}
+
+li.pageLink a:hover,
+li.pageLink a:focus {
+  text-decoration: underline;
+}

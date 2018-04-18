@@ -2,16 +2,20 @@ import React from 'react'
 import s from './document-type.scss'
 
 const DocumentType = props => {
-  let numberDiv =
+  const numberDiv =
     props.number && typeof props.number === 'string' ? (
-      <div className={s.number}>{props.number}</div>
+      <div className={s.number}>
+        <h6>{props.number}</h6>
+      </div>
     ) : (
       undefined
     )
 
   return (
     <div className={props.className}>
-      <div className={s.type}>{props.type ? props.type.toUpperCase() : null}</div>
+      <div className={s.type}>
+        <h6>{props.type ? props.type.toUpperCase() : null}</h6>
+      </div>
       {numberDiv}
     </div>
   )

@@ -51,7 +51,7 @@ class CourseView extends PureComponent {
                 <div className={styles.container + ' ' + styles.topContainer}>
                   <h1>{title}</h1>
                   {description && <Description {...this.props} />}
-                  <DecorativeDash className={styles.decorativeDash} aria-hidden="true" />
+                  <DecorativeDash aria-hidden="true" width={4.444} />
                 </div>
               </div>
             )}

@@ -1,9 +1,1 @@
-@include theme(sba-blue, '.LargeSecondaryButton', #fff, $sba-blue,  null-dark);
-@include theme(byzantine, '.LargeSecondaryButton', #fff, $byzantine,  null-dark);
-@include theme(money-green, '.LargeSecondaryButton', #fff, $money-green,  null-dark);
-@include theme(cobalt-blue, '.LargeSecondaryButton', #fff, $cobalt-blue,  null-dark);
 
-@include theme-hover(sba-blue, '.LargeSecondaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.LargeSecondaryButton', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.LargeSecondaryButton', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.LargeSecondaryButton', $cobalt-blue-dark, #fff, $cobalt-blue-dark);

@@ -7,10 +7,8 @@ import { bindActionCreators } from 'redux'
 import constants from '../../../services/constants.js'
 import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
 import styles from './section-nav.scss'
-import whiteIconLenders from 'assets/images/for-partners/For_Partners_Icon_Lenders_white.png'
-import whiteIconSuretyProviders from 'assets/images/for-partners/For_Partners_Icon_Surety_Providers_white.png'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { BasicLink, WhiteIconGrow, WhiteIconLaunch, WhiteIconManage, WhiteIconPlan } from 'atoms'
+import { Link } from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
 
@@ -20,22 +18,8 @@ class SectionNav extends React.Component {
       let sectionNavIcon
       const sectionTitle = this.getNthLineage(-2).title
       const titleConstants = constants.sectionTitles
-      if (sectionTitle === titleConstants.planYourBusiness) {
-        sectionNavIcon = WhiteIconPlan
-      } else if (sectionTitle === titleConstants.launchYourBusiness) {
-        sectionNavIcon = WhiteIconLaunch
-      } else if (sectionTitle === titleConstants.manageYourBusiness) {
-        sectionNavIcon = WhiteIconManage
-      } else if (sectionTitle === titleConstants.growYourBusiness) {
-        sectionNavIcon = WhiteIconGrow
-      } else if (sectionTitle === titleConstants.disasterAssistance) {
+      if (sectionTitle === titleConstants.disasterAssistance) {
         sectionNavIcon = hurricaneIcon
-      } else if (sectionTitle === titleConstants.suretyProviders) {
-        sectionNavIcon = whiteIconSuretyProviders
-      } else if (sectionTitle === titleConstants.lenders) {
-        sectionNavIcon = whiteIconLenders
-      } else {
-        sectionNavIcon = WhiteIconGrow
       }
       this.props.actions.showMobileSectionNav(this.getNthLineage(-2), sectionNavIcon, this.getBacklinkUrl())
     }
@@ -62,14 +46,14 @@ class SectionNav extends React.Component {
         action: section.title + ' ' + item.title
       }
       return (
-        <li key={index}>
-          <BasicLink
-            myClassName={'article-navigation-article-link-desktop ' + currentLinkClass}
+        <li className={currentLinkClass} key={index}>
+          <Link
+            className="article-navigation-article-link-desktop"
             id={'desktop-article-link-' + index}
-            url={item.fullUrl}
-            text={item.title}
-            eventConfig={eventConfig}
-          />
+            to={item.fullUrl}
+          >
+            {item.title}
+          </Link>
         </li>
       )
     })
@@ -77,24 +61,11 @@ class SectionNav extends React.Component {
   }
 
   makeNavigationTitle(sectionTitle) {
-    const baseSection = this.getNthLineage(0)
-    if (this.isBusinessGuide()) {
-      const titleArray = _.words(sectionTitle, /[^ ]+/g)
-      const firstWord = _.slice(titleArray, 0, 1)
-      const remainingTitle = _.replace(sectionTitle, firstWord, '')
-      return (
-        <span id="article-navigation-title-desktop">
-          <h2>{firstWord}</h2>
-          <h4>{remainingTitle}</h4>
-        </span>
-      )
-    } else {
-      return (
-        <span id="article-navigation-title-desktop">
-          <h3>{sectionTitle}</h3>
-        </span>
-      )
-    }
+    return (
+      <span id="article-navigation-title-desktop">
+        <h3>{sectionTitle}</h3>
+      </span>
+    )
   }
 
   stickyFunctionTop() {
@@ -128,13 +99,13 @@ class SectionNav extends React.Component {
         className={styles.sectionNav + ' ' + this.stickyFunctionTop() + ' ' + this.stickyFunctionBottom()}
       >
         <Waypoint topOffset="30px" onEnter={this.props.onTopEnter} />
-        <BasicLink
+        <Link
           id="article-navigation-back-button-desktop"
-          myClassName={styles.backLink}
-          url={this.getBacklinkUrl()}
-          text={this.getBacklinkText()}
-          eventConfig={eventConfig}
-        />
+          className={styles.backLink}
+          to={this.getBacklinkUrl()}
+        >
+          {this.getBacklinkText()}
+        </Link>
         {navigationTitle}
         <ul>{navLinks}</ul>
       </div>
@@ -151,5 +122,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav)
 export { SectionNav }

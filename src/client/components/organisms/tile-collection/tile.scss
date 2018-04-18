@@ -1,17 +1,25 @@
 .tile {
   position: relative;
   overflow: hidden;
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6, $sba-grid-small) margin-top: 20px;
+  background-color: white;
+  -webkit-box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 7px 15px 0px rgba(0, 0, 0, 0.1);
+  @include for-small-only {
+    @include grid-column(6, $sba-grid-small);
+    margin-top: 20px;
   }
-  @include grid-media($sba-grid-medium) {
+  @include for-medium-only {
     @include grid-column(6, $sba-grid-medium);
     height: 450px;
     margin-top: 20px;
   }
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     margin-top: 10px;
     margin-bottom: 30px;
+    &:hover {
+      background-color: $sba-blue;
+    }
   }
 }
 
@@ -20,28 +28,28 @@
 }
 
 .tileThree {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(4, $sba-grid-large);
     height: 677px;
   }
 }
 
 .tileFour {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(3, $sba-grid-large);
-    height: 677px;
+    height: 640px;
   }
 }
 
 .tileFive {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(2.4, $sba-grid-large);
     height: 677px;
   }
 }
 
 .homePageTileFour {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(3, $sba-grid-large);
     height: 600px;
   }
@@ -49,7 +57,7 @@
 
 .backgroundLines {
   display: none;
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     display: block;
     position: absolute;
     bottom: 0;
@@ -61,7 +69,7 @@
 
 .tabDisplayMenu {
   display: none;
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     display: block;
     position: absolute;
     top: 0;
@@ -73,7 +81,7 @@
 }
 
 .tileFive .largeTitle {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     font-size: 2em;
   }
 }

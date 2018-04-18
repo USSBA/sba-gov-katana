@@ -1,5 +1,3 @@
-@include theme(sba-blue, '.banner', $sba-blue, #fff, #fff);
-
 .container {
   @include grid-media($sba-grid-small) {
     @include grid-column(6);

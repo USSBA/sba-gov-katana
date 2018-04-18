@@ -1,11 +1,12 @@
 import React from 'react'
-import s from './tile.scss'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
+import s from './tile.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { navigateNow } from '../../../services/navigation.js'
-import { BasicLink } from 'atoms'
+import { Link } from 'atoms'
 import { MenuTile, MenuTileWithLinks } from 'molecules'
+import { navigateNow } from '../../../services/navigation.js'
 
 class Tile extends React.Component {
   constructor() {
@@ -127,16 +128,17 @@ class Tile extends React.Component {
     }
 
     const toggleMenuLink = (
-      <BasicLink
-        text={`toggle ${data.title} menu`}
-        myClassName={s.tabDisplayMenu}
+      <Link
+        className={s.tabDisplayMenu}
         onClick={e => {
           e ? e.preventDefault() : ''
         }}
         onFocus={this._mouseEnterTile.bind(this)}
         onBlur={this.handleBlur.bind(this)}
         onKeyDown={this.handleKeyDown.bind(this)}
-      />
+      >
+        toggle {data.title} menu
+      </Link>
     )
 
     return (

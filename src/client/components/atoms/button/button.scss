@@ -1,0 +1,77 @@
+@mixin fullWidth {
+  display: block;
+  margin-left: 0;
+  width: 100%;
+}
+
+.link {
+  @include button;
+}
+
+.responsive {
+  @include for-small-only {
+    @include fullWidth;
+  }
+}
+
+.spacing {
+  @include for-medium-up {
+    // horizontally space adjacent buttons
+    + .spacing:not(.fullWidth) {
+      margin-left: 1.667rem;
+    }
+  }
+
+  // vertically space adjacent full-width buttons
+  + .fullWidth,
+  + .responsive {
+    margin-top: $small-spacing;
+  }
+}
+
+.fullWidth {
+  @include fullWidth;
+}
+
+.primary:not([disabled]) {
+  background-color: $sba-red;
+  color: white;
+
+  &:hover {
+    background-color: $sba-red-light;
+  }
+}
+
+.primary.alternate:not([disabled]) {
+  background-color: $secondary-blue;
+
+  &:hover {
+    background-color: $secondary-blue-light;
+  }
+}
+
+// simulate inner border with box shadow
+@mixin inner-border($color) {
+  box-shadow: inset 0 0 0 2px $color;
+}
+
+.secondary:not([disabled]) {
+  @include inner-border($sba-blue) background-color: transparent;
+  color: $sba-blue;
+
+  &:hover {
+    @include inner-border($secondary-blue-light) color: $secondary-blue-light;
+    color: $secondary-blue-light;
+  }
+}
+
+// NOTE: This combination doesn't actually exist in the style guide.
+.secondary.alternate:not([disabled]) {
+  @include inner-border($sba-red);
+  color: $sba-red;
+
+  &:hover {
+    @include inner-border($sba-red-light);
+    color: $sba-red-light;
+  }
+}

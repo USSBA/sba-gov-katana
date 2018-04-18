@@ -1,8 +1,3 @@
-@include theme(sba-blue, '.banner', $sba-blue, #fff, #fff);
-@include theme(byzantine, '.banner', $byzantine, #fff, #fff);
-@include theme(money-green, '.banner', $money-green, #fff, #fff);
-@include theme(cobalt-blue, '.banner', $cobalt-blue, #fff, #fff);
-
 .banner {
   position: relative;
 

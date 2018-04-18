@@ -1,62 +1,32 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import styles from './callout.scss'
-import { LargeInversePrimaryButton, LargeInverseSecondaryButton, LargePrimaryButton } from 'atoms'
+import { Button } from 'atoms'
 
-class Callout extends React.Component {
-  render() {
-    let calloutStyles = styles.callout
-    let buttonStyles = styles.button
-
-    if (this.props.inHeroWithNoImage) {
-      calloutStyles += ' ' + styles.noDecoration
-      buttonStyles += ' ' + styles.noFloat + ' ' + styles.wideButtons
-    }
-
-    return (
-      <div className={`callout ${calloutStyles}`}>
-        <h1 className={`callout-title ${styles.title}`}>{this.props.title}</h1>
-        <p className={`callout-message ${styles.message}`}>{this.props.message}</p>
-        <div className={`callout-buttons ${styles.buttonContainer}`}>
-          <div className={`callout-button ${buttonStyles}`}>
-            {this.props.buttons.map((item, index) => {
-              if (item.btnType === 'LargePrimaryButton') {
-                return (
-                  <LargePrimaryButton
-                    text={item.btnText}
-                    key={index}
-                    url={item.url}
-                    eventConfig={item.eventConfig}
-                  />
-                )
-              } else if (item.btnType === 'LargeInversePrimaryButton') {
-                return (
-                  <LargeInversePrimaryButton
-                    text={item.btnText}
-                    key={index}
-                    url={item.url}
-                    eventConfig={item.eventConfig}
-                  />
-                )
-              } else if (item.btnType === 'LargeInverseSecondaryButton') {
-                return (
-                  <LargeInverseSecondaryButton
-                    text={item.btnText}
-                    key={index}
-                    url={item.url}
-                    eventConfig={item.eventConfig}
-                  />
-                )
-              }
-            })}
-          </div>
-        </div>
+const Callout = ({ buttons, inHeroWithNoImage, message, title }) => (
+  <div className={`callout ${styles.callout}`}>
+    <h1>{title}</h1>
+    <h5>{message}</h5>
+    {buttons && (
+      <div className={!inHeroWithNoImage && styles.buttons}>
+        {buttons.map((item, index) => (
+          <Button
+            key={index}
+            primary={index === 0}
+            secondary={index > 0}
+            spacing={!!inHeroWithNoImage}
+            url={item.url}
+          >
+            {item.btnText}
+          </Button>
+        ))}
       </div>
-    )
-  }
-}
-export default Callout
+    )}
+  </div>
+)
 
-Callout.defaultProps = {
-  buttons: []
+React.propTypes = {
+  buttons: PropTypes.array
 }
+
+export default Callout

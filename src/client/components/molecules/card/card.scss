@@ -1,5 +1,3 @@
-@import 'base/variables';
-
 .centerAligned {
   text-align: center;
   .itemHr {
@@ -23,31 +21,17 @@
   height: auto;
 
   .itemTitle {
-    @include font-size($h4-font-sizes);
+    // @include font-size($h4-font-sizes);
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
   }
-  .itemHr {
-    box-sizing: border-box;
-    height: 2px;
-    width: 60px;
-    border: 2px solid;
-  }
-  .itemSubTitle {
-    @include font-size($paragraph-font-sizes);
-  }
+
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
     height: auto;
   }
 }
-
-@include theme(sba-blue, '.itemHr', $sba-blue, $sba-blue, $sba-blue);
-@include theme(byzantine, '.itemHr', $byzantine, $byzantine, $byzantine);
-@include theme(money-green, '.itemHr', $money-green, $money-green, $money-green);
-@include theme(cobalt-blue, '.itemHr', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-@include theme(sba-blue-dark, '.itemHr', $sba-blue, $sba-blue, $sba-blue);
 
 .threeColumn {
   @include grid-column(4);
@@ -55,7 +39,7 @@
   height: auto;
 
   .itemTitle {
-    @include font-size($h4-font-sizes);
+    // @include font-size($h4-font-sizes);
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
@@ -67,7 +51,7 @@
     border: 2px solid;
   }
   .itemSubTitle {
-    @include font-size($paragraph-font-sizes);
+    // @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
@@ -81,7 +65,7 @@
   height: auto;
 
   .itemTitle {
-    @include font-size($h4-font-sizes);
+    // @include font-size($h4-font-sizes);
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
@@ -94,7 +78,7 @@
   }
 
   .itemSubTitle {
-    @include font-size($paragraph-font-sizes);
+    // @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
@@ -108,7 +92,7 @@
   height: auto;
 
   .itemTitle {
-    @include font-size($h4-font-sizes);
+    // @include font-size($h4-font-sizes);
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
@@ -120,7 +104,7 @@
     border: 2px solid;
   }
   .itemSubTitle {
-    @include font-size($paragraph-font-sizes);
+    // @include font-size($paragraph-font-sizes);
   }
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
@@ -130,5 +114,5 @@
 
 .unstyledLink {
   text-decoration: none !important;
-  color: $text-grey !important;
+  color: $secondary-black-ish !important;
 }

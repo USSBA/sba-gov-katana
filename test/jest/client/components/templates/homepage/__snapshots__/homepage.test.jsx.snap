@@ -59,10 +59,11 @@ ShallowWrapper {
             <div
                 id="paragraph-1"
             >
-                <SectionHeader
-                    refId="section-header-0"
-                    text="Browse business topics"
-                />
+                <h2
+                    id="section-header-0"
+                >
+                    Browse business topics
+                </h2>
             </div>
         </div>
     </div>
@@ -409,10 +410,11 @@ ShallowWrapper {
             <div
                 id="paragraph-3"
             >
-                <SectionHeader
-                    refId="section-header-2"
-                    text="How we help small businesses"
-                />
+                <h2
+                    id="section-header-2"
+                >
+                    How we help small businesses
+                </h2>
             </div>
         </div>
     </div>
@@ -575,10 +577,11 @@ ShallowWrapper {
                   <div
                         id="paragraph-1"
                   >
-                        <SectionHeader
-                              refId="section-header-0"
-                              text="Browse business topics"
-                        />
+                        <h2
+                              id="section-header-0"
+                        >
+                              Browse business topics
+                        </h2>
                   </div>
             </div>
       </div>
@@ -925,10 +928,11 @@ ShallowWrapper {
                   <div
                         id="paragraph-3"
                   >
-                        <SectionHeader
-                              refId="section-header-2"
-                              text="How we help small businesses"
-                        />
+                        <h2
+                              id="section-header-2"
+                        >
+                              How we help small businesses
+                        </h2>
                   </div>
             </div>
       </div>
@@ -2723,10 +2727,11 @@ ShallowWrapper {
                               <div
                                         id="paragraph-1"
                               >
-                                        <SectionHeader
-                                                  refId="section-header-0"
-                                                  text="Browse business topics"
-                                        />
+                                        <h2
+                                                  id="section-header-0"
+                                        >
+                                                  Browse business topics
+                                        </h2>
                               </div>
                     </div>
           </div>
@@ -3073,10 +3078,11 @@ ShallowWrapper {
                               <div
                                         id="paragraph-3"
                               >
-                                        <SectionHeader
-                                                  refId="section-header-2"
-                                                  text="How we help small businesses"
-                                        />
+                                        <h2
+                                                  id="section-header-2"
+                                        >
+                                                  How we help small businesses
+                                        </h2>
                               </div>
                     </div>
           </div>
@@ -3239,10 +3245,11 @@ ShallowWrapper {
                               <div
                                         id="paragraph-1"
                               >
-                                        <SectionHeader
-                                                  refId="section-header-0"
-                                                  text="Browse business topics"
-                                        />
+                                        <h2
+                                                  id="section-header-0"
+                                        >
+                                                  Browse business topics
+                                        </h2>
                               </div>
                     </div>
           </div>
@@ -3589,10 +3596,11 @@ ShallowWrapper {
                               <div
                                         id="paragraph-3"
                               >
-                                        <SectionHeader
-                                                  refId="section-header-2"
-                                                  text="How we help small businesses"
-                                        />
+                                        <h2
+                                                  id="section-header-2"
+                                        >
+                                                  How we help small businesses
+                                        </h2>
                               </div>
                     </div>
           </div>

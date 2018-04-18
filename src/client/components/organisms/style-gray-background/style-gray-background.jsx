@@ -2,9 +2,10 @@ import React from 'react'
 
 import styles from './style-gray-background.scss'
 import * as paragraphMapper from '../../templates/paragraph-mapper.jsx'
-import { SectionHeader, TextSection } from 'atoms'
 import { CardCollection } from 'organisms'
 
+// TODO: is using pararapher mapper here the right abstraction for code re-use?
+// should probably just use a render prop
 class StyleGrayBackground extends React.Component {
   makeParagraphs(paragraphData) {
     let paragraphList = paragraphMapper.makeParagraphs(paragraphData, index => {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import renderer from 'react-test-renderer'
 import { shallow, mount } from 'enzyme'
 // Quiet warnings about OnTouchTap
@@ -16,6 +16,24 @@ import CourseView, {
   CTA
 } from 'templates/course/course.view.jsx'
 import sharedProps from './course-test-props'
+
+const f = () => {}
+const options = {
+  context: {
+    router: {
+      createHref: f,
+      getCurrentLocation: () => ({ pathname: '' }),
+      go: f,
+      goBack: f,
+      goForward: f,
+      isActive: f,
+      push: f,
+      replace: f,
+      setRouteLeaveHook: f
+    }
+  },
+  childContextTypes: { router: PropTypes.object }
+}
 
 describe('<CourseView />', () => {
   describe('Breadcrumb', () => {
@@ -184,7 +202,7 @@ describe('<CourseView />', () => {
         ]
       }
 
-      const component = mount(<RelatedArticles {...props} />)
+      const component = mount(<RelatedArticles {...props} />, options)
       const result = component.find('Card').length
       const expected = 2
 

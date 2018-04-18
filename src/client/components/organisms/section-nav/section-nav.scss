@@ -1,44 +1,54 @@
 .sectionNav {
+  background-color: $sba-blue;
+  color: white;
   display: none;
+  width: 16.111rem;
 
   @include grid-media( $sba-grid-large) {
-    color: #fff;
+    color: white;
     display: block;
     position: absolute;
+
     @include grid-column(3, $sba-grid-large);
-  }
-  @include grid-media($sba-grid-small) {
-    display: none;
   }
 
   a {
     display: block;
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 1.2;
-    padding: 8px 30px 10px;
+    line-height: 1.1;
+    padding: 0.556rem 1.667rem;
     text-decoration: none;
   }
-  a.currentNavLink {
-    font-weight: bold;
+
+  .currentNavLink {
+    background-color: $secondary-blue;
+    border-top-color: $secondary-blue;
+    border-bottom-color: $secondary-blue;
+    color: white;
+    font-weight: 500;
   }
-  h2,
-  h3,
-  h4 {
+
+  .currentNavLink + li {
+    border-top-color: $secondary-blue;
+  }
+
+  h3 {
+    color: white;
+    font-weight: 500;
     text-align: left;
     padding: 0 30px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
-  h2 {
-    margin-bottom: 0;
-  }
+
   li {
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    border-top: 1px solid rgba(white, 0.25);
   }
-  li:last-child {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  }
+
   .backLink {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border-bottom: 1px solid rgba(white, 0.25);
+    color: white;
     margin-bottom: 20px;
   }
 
@@ -46,6 +56,7 @@
     padding: 20px 30px 20px 55px;
     position: relative;
   }
+
   .backLink:before {
     content: '\f104';
     font-family: FontAwesome;
@@ -54,6 +65,10 @@
     position: absolute;
     top: 12px;
     left: 30px;
+  }
+
+  @include grid-media($sba-grid-small) {
+    display: none;
   }
 }
 
@@ -80,31 +95,19 @@
   }
 }
 
-$section-nav-color-map: (
-  'sba-blue': $sba-blue-dark,
-  'byzantine': $byzantine,
-  'money-green': $money-green-dark,
-  'cobalt-blue': $cobalt-blue
-);
-$section-nav-dark-color-map: (
-  'sba-blue': $sba-blue-darkest,
-  'byzantine': $byzantine-dark,
-  'money-green': $money-green-darkest,
-  'cobalt-blue': $cobalt-blue-dark
-);
+.sectionNav li a,
+.sectionNav li,
+.backLink,
+#article-navigation-title-desktop.title {
+  color: white !important;
 
-@each $name, $value in $section-nav-color-map {
-  @include theme($name, '.sectionNav li a, .backLink', null, #fff, rgba(255, 255, 255, 0.25));
-  @include theme($name, '.sectionNav', $value, null, null);
+  &:hover {
+    background-color: $secondary-blue;
+    border-top-color: $secondary-blue;
+    border-bottom-color: $secondary-blue;
+  }
 }
 
-@each $name, $value in $section-nav-dark-color-map {
-  @include theme($name, '.currentNavLink', $value, #fff, $value);
-  @include theme-hover($name, '.sectionNav li a, .sectionNav li, .backLink', $value, #fff, $value);
-  @include theme-active($name, '.sectionNav li a', $value, #fff, $value);
-  :global(.#{$name}) {
-    .sectionNav li:hover + li {
-      border-top: 1px solid $value;
-    }
-  }
+.sectionNav li:hover + li {
+  border-top-color: $secondary-blue;
 }

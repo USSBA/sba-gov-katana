@@ -3,17 +3,16 @@
 exports[`Mobile Navigation has the correct structure 1`] = `
 <div>
   <div
-    className="mobileHeader"
+    className="mobileHeaderClosed"
   >
     <div
-      className="logoNew"
+      className="logo"
     >
       <a
-        autoFocus={false}
-        className=""
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
+        onClick={[Function]}
+        style={Object {}}
         tabIndex="-1"
+        target="_self"
       >
         <img
           alt="Small Business Administration"

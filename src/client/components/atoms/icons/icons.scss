@@ -13,11 +13,3 @@
 .home {
   color: #666;
 }
-
-@include theme(sba-blue, '.home', null, $sba-blue, null);
-@include theme(byzantine, '.home', null, $byzantine, null);
-@include theme(money-green, '.home', null, $money-green, null);
-@include theme(cobalt-blue, '.home', null, $cobalt-blue, null);
-@include theme(sba-blue-dark, '.home', null, $sba-blue, null);
-
-@include color-theme( '.pdf');

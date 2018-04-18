@@ -6,8 +6,6 @@ import { Homepage } from 'client/components/templates/homepage/homepage.jsx'
 import data from './homepage-test-data.json'
 import siteMap from './site-map-test-data.json'
 
-console.log('HOMEPAGE', Homepage)
-
 const testProps = {
   location: {
     pathname: '/'

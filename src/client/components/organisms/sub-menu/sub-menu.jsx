@@ -8,7 +8,6 @@ import { DropdownMenu } from 'organisms'
 class SubMenu extends React.Component {
   constructor() {
     super()
-
     this.state = {
       showTriangleMarker: false
     }
@@ -40,7 +39,9 @@ class SubMenu extends React.Component {
       <li
         className={styles.subMenu}
         key={this.props.menuId}
-        onFocus={event => this.handleFocus(event, this.props.menuId)}
+        onFocus={event => {
+          return this.handleFocus(event, this.props.menuId)
+        }}
         onMouseOut={this.props.onMenuMouseOut}
       >
         <SectionLink

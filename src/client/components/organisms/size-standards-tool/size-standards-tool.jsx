@@ -6,7 +6,6 @@ import axios from 'axios'
 import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/Size_standards_graphic.png'
 import styles from './size-standards-tool.scss'
 import {
-  BasicLink,
   LargePrimaryButton,
   SearchIcon,
   SmallInversePrimaryButton,
