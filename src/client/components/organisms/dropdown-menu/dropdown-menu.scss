@@ -51,6 +51,9 @@
   height: 0;
   position: absolute;
   top: 0;
+  a:focus {
+    color: $sba-blue;
+  }
 }
 
 .businessGuideCTA {
