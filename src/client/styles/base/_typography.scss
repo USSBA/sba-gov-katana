@@ -111,8 +111,7 @@ a {
   transition: color $base-duration $base-timing;
 
   &:focus {
-    // TODO: convert to mixin
-    outline: $focus-outline-width dotted $sba-gray-light;
+    outline: $focus-outline;
     outline-offset: $focus-outline-offset;
   }
 }

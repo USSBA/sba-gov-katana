@@ -20,6 +20,7 @@
 
   @include for-medium-up {
     position: absolute;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
 
@@ -36,6 +37,8 @@
 
   background-repeat: no-repeat top center;
   background-size: cover;
+  // TODO: calc
+  min-height: 356px;
   width: 100%;
 
   @include for-small-only {

@@ -50,9 +50,10 @@ class Hero extends React.Component {
                     heroScrollHeight
                   }px))`
                 }}
-              />
-              <div className={`hero-callout ${styles.callout}`}>
-                <Callout title={title} message={message} buttons={buttons} />
+              >
+                <div className={`hero-callout ${styles.callout}`}>
+                  <Callout title={title} message={message} buttons={buttons} />
+                </div>
               </div>
             </div>
           ) : (
