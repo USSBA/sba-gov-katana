@@ -17,7 +17,6 @@ $homepage-gutter-size: 5.333vw;
   @include grid-media($sba-grid-medium) {
     padding-left: $homepage-gutter-size;
     padding-right: $homepage-gutter-size;
-    // position: relative;
     position: absolute;
     left: 0;
     top: 45%;
