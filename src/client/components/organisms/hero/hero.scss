@@ -1,78 +1,50 @@
-.hero {
-  height: calc(100% - 85px);
-  position: relative;
+@value breakpointMedium: calc(#{$breakpoint-medium} - 1px);
 
-  @include grid-column(12, (gutter: 0));
-}
-
-/*.hero*/
-.dark {
-  background-color: $sba-gray-lighter;
-}
-
-.callout {
+.image {
   @include for-small-only {
-    margin-top: -85px;
-    position: relative;
-
-    @include grid-column(12);
+    align-items: end;
+    justify-content: center;
+    max-height: 369px;
+    min-height: 200px;
   }
 
   @include for-medium-up {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-
-    @include grid-column(6, (gutter: 30px));
+    align-items: center;
+    margin-left: 135px;
+    // This also prevents the callout from overlapping with the nav.
+    min-height: 542px;
   }
-
-  @include for-large-up {
-    @include grid-column(5, (gutter: 30px));
-  }
-}
-
-.image {
-  $gutter-width: 30px;
 
   background-repeat: no-repeat top center;
   background-size: cover;
-  // TODO: calc
-  min-height: 356px;
-  width: 100%;
+  display: flex;
 
-  @include for-small-only {
-    max-height: 369px;
+  > .callout {
+    @include for-small-only {
+      align-self: flex-end;
+      margin-left: 20px;
+      margin-right: 20px;
+      transform: translateY(75%);
+      width: 100%;
+    }
 
-    @include grid-column(12, (gutter: 0));
-  }
+    @include for-medium-only {
+      @include grid-column(6, (gutter: 30px)) min-width: 339px;
+    }
 
-  @include for-medium-only {
-    max-height: 584px;
+    @include for-large-up {
+      @include grid-column(5, (gutter: 30px)) min-width: 500px;
+    }
 
-    @include grid-column(10, (gutter: $gutter-width));
-    @include grid-push(2);
-  }
-
-  @include for-large-up {
-    $left-margin: 105px;
-
-    height: 100%;
-    float: left;
-    margin-left: $left-margin;
-    width: calc(100% - (#{$left-margin} + #{$gutter-width}));
+    // Override grid column left margin.
+    @include for-medium-up {
+      margin-left: -60px;
+    }
   }
 }
 
-.scroll {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-
-.inHeroWithNoImage {
+.noImage {
+  background-color: $sba-gray-lighter;
   padding: 30px;
   text-align: center;
   width: 100%;
@@ -83,4 +55,20 @@
       display: none;
     }
   }
+}
+
+.arrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.callout {
+  background-color: white;
+  border-top: 5px solid $sba-blue;
+  // TODO: DRY
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
+  padding: 50px;
 }

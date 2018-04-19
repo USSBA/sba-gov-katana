@@ -4,22 +4,27 @@ import { debounce } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
+import { Button } from 'atoms'
 import { Callout } from 'molecules'
 
 class Hero extends React.Component {
   constructor(props) {
     super(props)
 
+    // TODO: This should be moved to redux state so that other components can
+    // use it.
     this.state = {
-      disasterAlertHeight: 0,
-      navHeight: 0,
-      heroScrollHeight: 0
+      calloutHeight: 0,
+      imageHeight: 0,
+      isSmallOnly: false
     }
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.onResizeDebounced)
+    // Force the resize on page load (without a delay).
     this.onResize()
+
+    window.addEventListener('resize', this.onResizeDebounced)
   }
 
   componentWillUnmount() {
@@ -28,60 +33,58 @@ class Hero extends React.Component {
 
   render() {
     const { alt, buttons, imageUrl, message, title } = this.props
-    const { disasterAlertHeight, navHeight, heroScrollHeight } = this.state
+    const { calloutHeight, imageHeight, isSmallOnly } = this.state
 
     const className = classNames({
-      [styles.hero]: true,
-      [styles.dark]: !imageUrl
+      hero: true,
+      [styles.image]: imageUrl,
+      [styles.noImage]: !imageUrl
     })
+
+    const style = {
+      // We use a background image to take advantage of `background-size: cover`.
+      backgroundImage: `url('${imageUrl}')`,
+      height: imageUrl && `calc(100vh - ${imageHeight}px)`,
+      marginBottom: imageUrl && isSmallOnly && `${calloutHeight * 0.75}px`
+    }
 
     return (
       <div>
-        <div className={className}>
-          {imageUrl ? (
-            <div>
-              <div
-                aria-label={alt}
-                className={styles.image}
-                title={alt}
-                style={{
-                  backgroundImage: `url('${imageUrl}')`,
-                  height: `calc(100vh - (${disasterAlertHeight}px + ${navHeight}px + ${
-                    heroScrollHeight
-                  }px))`
-                }}
-              >
-                <div className={`hero-callout ${styles.callout}`}>
-                  <Callout title={title} message={message} buttons={buttons} />
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className={`hero-noimage ${styles.inHeroWithNoImage}`}>
-              <div className={`hero-callout ${styles.calloutContainer}`}>
-                <Callout inHeroWithNoImage={true} title={title} message={message} buttons={buttons} />
-              </div>
-            </div>
-          )}
+        <div aria-label={alt} className={className} style={style}>
+          <div className={styles.callout} ref={ref => (this.callout = ref)}>
+            <h1>{title}</h1>
+            <h5>{message}</h5>
+            {buttons &&
+              buttons.map((item, index) => (
+                <Button key={index} primary={index === 0} secondary={index > 0} url={item.url}>
+                  {item.btnText}
+                </Button>
+              ))}
+          </div>
         </div>
-        {imageUrl && <img className={styles.scroll} id="hero-scroll" src={scrollIcon} />}
+        {imageUrl && <img className={styles.arrow} ref={ref => (this.arrow = ref)} src={scrollIcon} />}
       </div>
     )
   }
 
   onResize = () => {
+    const arrow = this.arrow
+    const callout = this.callout
     const disasterAlert = document.getElementById('disaster-alert')
     const nav = document.getElementById('nav')
-    const heroScroll = document.getElementById('hero-scroll')
 
     this.setState({
-      disasterAlertHeight: disasterAlert && disasterAlert.clientHeight,
-      navHeight: nav && nav.clientHeight,
-      heroScrollHeight: heroScroll && heroScroll.clientHeight
+      calloutHeight: callout && callout.clientHeight,
+      imageHeight:
+        (disasterAlert && disasterAlert.clientHeight) +
+        (nav && nav.clientHeight) +
+        (arrow && arrow.clientHeight),
+      isSmallOnly: window && window.matchMedia(`(max-width: ${styles.breakpointMedium})`).matches
     })
   }
 
-  onResizeDebounced = debounce(this.onResize, 500)
+  // Debounce onResize() before hooking onto event listeners for performance.
+  onResizeDebounced = debounce(this.onResize, 250)
 }
 
 export default Hero

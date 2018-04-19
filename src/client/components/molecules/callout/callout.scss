@@ -1,19 +1,1 @@
-.callout {
-  background-color: white;
-  border-top: 5px solid $sba-blue;
-  // TODO: DRY
-  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
-  padding: 50px;
-}
 
-.buttons {
-  @include for-medium-up {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  *[class~='button']:not(:last-child) {
-    margin-bottom: $small-spacing;
-  }
-}

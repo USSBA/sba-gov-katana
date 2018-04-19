@@ -11,6 +11,10 @@
 .responsive {
   @include for-small-only {
     @include fullWidth;
+
+    + .responsive {
+      margin-top: $small-spacing;
+    }
   }
 }
 
@@ -23,8 +27,7 @@
   }
 
   // vertically space adjacent full-width buttons
-  + .fullWidth,
-  + .responsive {
+  + .fullWidth {
     margin-top: $small-spacing;
   }
 }
