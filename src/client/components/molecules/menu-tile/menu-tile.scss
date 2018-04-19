@@ -6,15 +6,16 @@
 .homepageTile {
   height: 100%;
   width: 100%;
-  background-color: $grey-lighter;
+  border-top: 5px solid $sba-blue;
   @include grid-media($sba-grid-small) {
-    padding: 27px;
+    cursor: pointer;
+    padding: 0px 27px 27px 27px;
   }
   @include grid-media($sba-grid-medium) {
+    cursor: pointer;
     padding-top: 71px;
   }
 }
-@include background-color-theme('.tileInverse');
 
 .tileNormal {
   @include grid-media($sba-grid-large) {
@@ -54,11 +55,7 @@
     width: 65%;
     display: inline-block;
   }
-  color: $base-font-color;
-}
-
-.titleInverse {
-  color: $white;
+  color: $secondary-black-ish;
 }
 
 .rightArrow {
@@ -67,30 +64,19 @@
     font-size: 48px !important;
     display: block !important;
     position: absolute;
-    top: 27px;
+    top: 24%;
     right: 15px;
+    transform: rotate(270deg);
   }
 }
-@include color-theme('.rightArrow');
 
 .line {
-  border-style: solid;
-  @include grid-media($sba-grid-small) {
-    border-width: 2px;
-    width: 49px;
+  border-top: 2px solid $sba-red;
+  width: 50px;
+  margin: 14px auto 0px auto;
+  @include for-small-only {
+    margin: 0;
   }
-  @include grid-media($sba-grid-medium) {
-    height: 1px;
-    width: 90px;
-    border-width: 3px;
-    display: block;
-    margin: 21px auto 19px;
-  }
-}
-@include border-color-theme('.line');
-
-.lineInverse {
-  border-color: $white !important;
 }
 
 .blurb {
@@ -100,20 +86,18 @@
   }
   @include grid-media($sba-grid-medium) {
     text-align: center;
-    margin: 20px 40px;
+    margin: 14px 40px;
   }
 }
 
-.blurbInverse {
-  color: $white;
-}
+@include grid-media($sba-grid-large) {
+  .titleInverse {
+    h3 {
+      color: white;
+    }
+  }
 
-.cornerLines {
-  display: none;
-  @include grid-media($sba-grid-small) {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  .blurbInverse {
+    color: white;
   }
 }

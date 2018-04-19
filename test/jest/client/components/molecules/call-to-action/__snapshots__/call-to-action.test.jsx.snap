@@ -26,52 +26,32 @@ exports[`CallToAction renders a button only 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="button alternate link primary responsive spacing"
+        href="http://www.example.com/"
       >
         Call To Action
-      </button>
+      </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
-  <button
-    autoFocus={false}
-    className="LargePrimaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;
 
@@ -101,52 +81,32 @@ exports[`CallToAction renders a large size 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="button alternate link primary responsive spacing"
+        href="http://www.example.com/"
       >
         Call To Action
-      </button>
+      </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
-  <button
-    autoFocus={false}
-    className="SmallInverseSecondaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;
 
@@ -176,52 +136,32 @@ exports[`CallToAction renders a medium size 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="button alternate link primary responsive spacing"
+        href="http://www.example.com/"
       >
         Call To Action
-      </button>
+      </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
-  <button
-    autoFocus={false}
-    className="SmallInverseSecondaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;
 
@@ -251,51 +191,31 @@ exports[`CallToAction renders a small size 1`] = `
     <div
       className="contentContainer"
     >
-      <h4
+      <h3
         className="headline"
       >
         This is the headline for the CTA.
-      </h4>
+      </h3>
+      <hr
+        className="dash"
+        style={
+          Object {
+            "width": "2rem",
+          }
+        }
+      />
       <p
         className="blurb"
       >
         This is the blurb for the CTA.
       </p>
-      <button
-        autoFocus={false}
-        className="SmallInversePrimaryButton  btn"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="button alternate link primary responsive spacing"
+        href="http://www.example.com/"
       >
         Call To Action
-      </button>
+      </a>
     </div>
-    <img
-      alt=""
-      className="cornerGraphicLarge"
-      src="test-file-stub"
-    />
-    <img
-      alt=""
-      className="cornerGraphicSmall"
-      src="test-file-stub"
-    />
   </div>
-  <button
-    autoFocus={false}
-    className="SmallInverseSecondaryButton  btnSecondary"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
-  >
-    Call To Action
-  </button>
 </div>
 `;

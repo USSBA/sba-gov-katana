@@ -1,27 +1,6 @@
 .greyParagraph {
-  background-color: $grey;
-  color: #fff;
-  padding: 50px;
-  margin-bottom: 50px;
-  h2 {
-    @include font-size($h3-font-sizes);
-  }
-
-  a,
-  a:hover,
-  a:active,
-  a:visited {
-    color: #fff;
-  }
+  background-color: $sba-gray-lighter;
+  padding: 4rem 2.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2.8rem;
 }
-
-// .sectionHeader,
-// .textSection{
-//   @include grid-column(7, $sba-grid-large);
-//   @include grid-push(4);
-//   @include grid-media($sba-grid-small) {
-//     @include grid-column(6);
-//     @include grid-push(0);
-//   }
-//   padding-bottom: 40px;
-// }

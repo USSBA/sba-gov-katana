@@ -87,3 +87,5 @@ aws:
   dynamodb:
     endpoint: placeholder
 publicPath: "/build/"
+nginx:
+  katanaRedirectPaths: 'api|assets|build|lendermatch|actions|styleguide|business-guide|funding-programs|document|article|disaster-assistance|partners|naics|isSmallBusiness|size-standards|resource-partner-survey|learning-center|course|federal-contracting|search|national-small-business-week|nsbw'

@@ -1,105 +1,86 @@
-$hero-container-grid: (
-  columns: 12,
-  gutter: 0px
-);
-
-.heroContainer {
-  @include grid-column(12, $hero-container-grid);
+.hero {
+  height: calc(100% - 85px);
   position: relative;
+
+  @include grid-column(12, (gutter: 0));
+}
+
+/*.hero*/
+.dark {
+  background-color: $sba-gray-lighter;
 }
 
 .callout {
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6);
+  @include for-small-only {
+    margin-top: -85px;
     position: relative;
-    bottom: 100px;
+
+    @include grid-column(12);
   }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(6);
+
+  @include for-medium-up {
     position: absolute;
+    left: 0;
     top: 50%;
     transform: translateY(-50%);
+
+    @include grid-column(6, (gutter: 30px));
   }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(5);
+
+  @include for-large-up {
+    @include grid-column(5, (gutter: 30px));
   }
+}
+
+.image {
+  $gutter-width: 30px;
+
+  background-repeat: no-repeat top center;
+  background-size: cover;
+  // TODO: calc
+  min-height: 356px;
+  width: 100%;
+
+  @include for-small-only {
+    max-height: 369px;
+
+    @include grid-column(12, (gutter: 0));
+  }
+
+  @include for-medium-only {
+    max-height: 584px;
+
+    @include grid-column(10, (gutter: $gutter-width));
+    @include grid-push(2);
+  }
+
+  @include for-large-up {
+    $left-margin: 105px;
+
+    height: 100%;
+    float: left;
+    margin-left: $left-margin;
+    width: calc(100% - (#{$left-margin} + #{$gutter-width}));
+  }
+}
+
+.scroll {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .inHeroWithNoImage {
+  padding: 30px;
   text-align: center;
+  width: 100%;
 
-  @include grid-media($sba-grid-small) {
-    margin: 0;
-    width: 100%;
-  }
-  @include grid-media($sba-grid-medium) {
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-}
-
-.inHeroWithNoImage p {
-  font-weight: lighter;
-}
-
-@include theme(sba-blue, '.inHeroWithNoImage', $sba-blue, #fff, #fff);
-@include theme(byzantine, '.inHeroWithNoImage', $byzantine, #fff, #fff);
-@include theme(money-green, '.inHeroWithNoImage', $money-green, #fff, #fff);
-@include theme(cobalt-blue, '.inHeroWithNoImage', $cobalt-blue, #fff, #fff);
-
-.calloutContainer {
-  @include grid-media($sba-grid-medium) {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-}
-
-.heroDesktopImage {
-  @include grid-media($sba-grid-small) {
-    display: none;
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(11);
-    @include grid-push(1);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(10);
-    @include grid-push(2);
-  }
-}
-
-.heroMobileImageContainer {
-  @include grid-media($sba-grid-small) {
-    width: 100%;
-    height: 350px;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-}
-
-// .heroDesktopImageContainer {
-// 	@include grid-media($sba-grid-small){
-// 		min-height: 350px;
-// 	}
-// 	@include grid-media($sba-grid-medium){
-// 		@include grid-column(11);
-// 		@include grid-push(1)
-// 	}
-// 	@include grid-media($sba-grid-large){
-// 		@include grid-column(10);
-// 		@include grid-push(2)
-// 		height: 1000px;
-// 	}
-// }
-
-.heroMobileImage {
-  @include grid-media($sba-grid-small) {
-    width: 100%;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
+  // hide the second button on small screens
+  *[class~='button']:nth-child(2) {
+    @include for-small-only {
+      display: none;
+    }
   }
 }

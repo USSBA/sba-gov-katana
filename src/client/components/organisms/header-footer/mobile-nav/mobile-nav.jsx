@@ -41,15 +41,11 @@ class MobileNav extends React.Component {
 
   createMenuItems() {
     let menuItems = []
-    let me = this
+    const me = this
     if (this.props.mainMenuData) {
       menuItems = this.props.mainMenuData.map((item, index) => {
         return (
-          <div
-            key={index}
-            className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}
-            onClick={me.toggleNav.bind(me)}
-          >
+          <div key={index} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
             <SectionLink id={'main-menu-link-' + index} url={item.link} text={item.linkTitle} />
           </div>
         )
@@ -58,7 +54,7 @@ class MobileNav extends React.Component {
       menuItems.push(<div key={1} />)
     }
 
-    let baseLength = this.props.mainMenuData ? this.props.mainMenuData.length : 2
+    const baseLength = this.props.mainMenuData ? this.props.mainMenuData.length : 2
     if (clientConfig.forPartners) {
       menuItems.push(
         <div key={baseLength + 1} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
@@ -98,7 +94,7 @@ class MobileNav extends React.Component {
 
   submitSearch(e) {
     e.preventDefault()
-    let uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
+    const uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
     document.location = uri
   }
 
@@ -107,7 +103,7 @@ class MobileNav extends React.Component {
     const menuMaxHeight = menuItems.length * 78
     return (
       <div>
-        <div key={4} className={styles.mobileHeader}>
+        <div key={4} className={this.state.expanded ? styles.mobileHeaderOpen : styles.mobileHeaderClosed}>
           <MainLogo />
           <span>
             <a

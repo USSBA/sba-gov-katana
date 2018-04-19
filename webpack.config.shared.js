@@ -6,6 +6,7 @@ var sassResources = {
   options: {
     resources: [
       path.join(__dirname, 'src', 'client', 'styles', 'global.scss'),
+      path.join(__dirname, 'src', 'client', 'styles', 'base', '_mixins.scss'),
       path.join(__dirname, 'src', 'client', 'styles', 'base', '_variables.scss')
     ]
   }
@@ -30,10 +31,7 @@ module.exports = function(styleNamingFormat) {
           loader: 'style-loader!css-loader?modules&',
           exclude: [
             path.resolve(__dirname, 'node_modules/react-select'),
-            path.resolve(
-              __dirname,
-              'src/client/components/atoms/multiselect/react-select-helpers.css'
-            )
+            path.resolve(__dirname, 'src/client/components/atoms/multiselect/react-select-helpers.css')
           ]
         },
         {
@@ -62,9 +60,7 @@ module.exports = function(styleNamingFormat) {
             },
             sassResources
           ],
-          exclude: [
-            path.resolve(__dirname, 'src/client/styles/common/collapse.scss')
-          ]
+          exclude: [path.resolve(__dirname, 'src/client/styles/common/collapse.scss')]
         },
         {
           test: /.*collapse\.scss$/,
@@ -95,11 +91,7 @@ module.exports = function(styleNamingFormat) {
         assets: path.resolve(__dirname, 'public/assets'),
         atoms: path.resolve(__dirname, 'src/client/components/atoms'),
         molecules: path.resolve(__dirname, 'src/client/components/molecules'),
-        // for some reason this specifice path will not resolve without index.jsx
-        organisms: path.resolve(
-          __dirname,
-          'src/client/components/organisms/index.jsx'
-        )
+        organisms: path.resolve(__dirname, 'src/client/components/organisms')
       },
       extensions: ['*', '.js', '.jsx']
     }

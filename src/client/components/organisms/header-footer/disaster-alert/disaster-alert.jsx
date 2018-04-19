@@ -1,12 +1,13 @@
 import React from 'react'
+
 import styles from './disaster-alert.scss'
 import exitIcon from '../../../../../../public/assets/svg/exit-modal-close.svg'
-import { BasicLink } from 'atoms'
+import { Link } from 'atoms'
 
 class DisasterAlert extends React.Component {
   render() {
     return (
-      <div>
+      <div id="disaster-alert">
         {this.props.visible ? (
           <div className={styles.wrapper}>
             <div className={styles.alert}>
@@ -14,11 +15,9 @@ class DisasterAlert extends React.Component {
               <div className={styles.disasterDescription}>{this.props.description}</div>
               <img className={styles.alertClose} onClick={this.props.onClose} src={exitIcon} alt="Close" />
               <div>
-                <BasicLink
-                  url={this.props.link}
-                  text={this.props.buttonText}
-                  myClassName={styles.alertButton}
-                />
+                <Link className={styles.alertButton} to={this.props.link}>
+                  {this.props.buttonText}
+                </Link>
               </div>
             </div>
           </div>

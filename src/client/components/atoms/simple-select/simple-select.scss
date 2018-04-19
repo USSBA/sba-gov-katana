@@ -1,16 +1,13 @@
-.selectContainer {
-}
-
 .innerContainer {
   position: relative;
 }
 
 .myselect {
-  @include font-size($paragraph-font-sizes);
+  // @include font-size($paragraph-font-sizes);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border: 1px solid $grey;
+  border: 1px solid $sba-gray;
   border-radius: 0;
   height: 48px;
   background: url('../../../../../public/assets/svg/chevron.svg') no-repeat 95% 50%;
@@ -23,8 +20,8 @@
 }
 
 .myoption {
-  @include font-size($paragraph-font-sizes);
-  border: 1px solid $grey;
+  // @include font-size($paragraph-font-sizes);
+  border: 1px solid $sba-gray;
   border-radius: 0;
 }
 
@@ -40,14 +37,9 @@
 //   text-decoration: inherit;
 //   position: absolute;
 //   font-size: 20px;
-//   color: $grey-light;
+//   color: $sba-gray-light;
 //   top: 20%;
 //   left: 90%;
 //   // margin: -300px 0 0 -200px;
 //   z-index: 1;
 // }
-
-// @include theme-focus('money-green', '.myselect', $money-green);
-// @include theme-focus('sba-blue', '.myselect', $sba-blue);
-// @include theme-focus('cobalt-blue', '.myselect', $cobalt-blue);
-// @include theme-focus('byzantine', '.myselect', $byzantine);

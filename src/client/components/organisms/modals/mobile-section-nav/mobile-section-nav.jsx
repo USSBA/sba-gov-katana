@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as ModalActions from '../../../../actions/show-modal.js'
-import { navigateNow } from '../../../../services/navigation'
+
 import s from './mobile-section-nav.scss'
+import * as ModalActions from '../../../../actions/show-modal.js'
+import { Link } from 'atoms'
+import { navigateNow } from '../../../../services/navigation'
 
 class MobileNav extends React.Component {
   constructor(props) {
@@ -11,22 +13,10 @@ class MobileNav extends React.Component {
     this.state = {
       navMenu: 'open'
     }
-    this._formatLargeTitle = this._formatLargeTitle.bind(this)
-    this._formatSmallTitle = this._formatSmallTitle.bind(this)
     this._animationTimer = this._animationTimer.bind(this)
     this._handleBackBtn = this._handleBackBtn.bind(this)
     this._handleClick = this._handleClick.bind(this)
     this._navMenuClassname = this._navMenuClassname.bind(this)
-  }
-
-  _formatLargeTitle() {
-    return this.props.menuData.title.split(' ')[0]
-  }
-
-  _formatSmallTitle() {
-    const arr = this.props.menuData.title.split(' ')
-    arr.shift()
-    return arr.join(' ')
   }
 
   _animationTimer() {
@@ -50,14 +40,13 @@ class MobileNav extends React.Component {
   }
 
   _handleClick(linkObject) {
-    // this.props.actions.closeMobileNav();
     this.setState(
       {
         navMenu: 'close'
       },
       this._animationTimer
     )
-    navigateNow(linkObject.fullUrl)
+    // navigateNow(linkObject.fullUrl)
   }
 
   _navMenuClassname() {
@@ -79,10 +68,8 @@ class MobileNav extends React.Component {
           }}
         >
           <i className={s.navLeftArrow + ' fa fa-angle-left'} />
-          <img className={s.navIcon} src={this.props.icon} alt="" />
           <div className={s.navTitleContainer}>
-            <h2 className={s.navLargeTitle}>{this._formatLargeTitle()}</h2>
-            <h4 className={s.navSmallTitle}>{this._formatSmallTitle()}</h4>
+            <h3 className={s.navTitle}>{this.props.menuData.title}</h3>
           </div>
         </div>
         <div className={s.navTopLine} />
@@ -96,23 +83,21 @@ class MobileNav extends React.Component {
 
 const NavLink = props => {
   return (
-    <div
-      className={s.navLinkContainer}
-      onTouchTap={() => {
+    <Link
+      className={s.navLink}
+      id={props.iD}
+      to={props.link.fullUrl}
+      onMouseUp={() => {
         props.handleClick(props.link)
       }}
     >
-      <a
-        id={props.iD}
-        className={s.navLink}
-        onTouchTap={() => {
-          props.handleClick(props.link)
-        }}
-      >
-        {props.link.title}
-      </a>
-      {/*<i className={s.navRightArrow + " fa fa-angle-right"}></i>*/}
-    </div>
+      {/* <a */}
+      {/*   id={props.iD} */}
+      {/*   className={s.navLink} */}
+      {/* > */}
+      {props.link.title}
+      {/* </a> */}
+    </Link>
   )
 }
 

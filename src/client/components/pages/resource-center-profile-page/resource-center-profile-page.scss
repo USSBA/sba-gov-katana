@@ -74,7 +74,7 @@ label,
   columns: 12;
 }
 .backgroundContainer {
-  background: $sba-blue-lightest;
+  background: $sba-gray-lighter;
   margin: 0px 0px;
   padding: 20px 20px;
   @include grid-media($sba-grid-small) {
@@ -144,7 +144,7 @@ label,
   label.invalid {
     font-weight: bold;
     margin-top: 2em;
-    color: $error;
+    color: $sba-red-light;
   }
 
   .invalid::before {
@@ -156,7 +156,7 @@ label,
   }
 
   h1 {
-    @include font-size($h3-font-sizes);
+    // @include font-size($h3-font-sizes);
   }
 
   .submissionMessage > h1 {

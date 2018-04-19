@@ -6,7 +6,7 @@
 .titleSection,
 .previousNext,
 .breadcrumb {
-  margin-bottom: 30px;
+  // margin-bottom: 30px;
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
     @include grid-push(0);
@@ -19,6 +19,11 @@
     @include grid-column(7);
     @include grid-push(4);
   }
+}
+
+.textSection,
+.cardCollection {
+  margin-bottom: 30px;
 }
 
 .articleContainer > span {
@@ -71,15 +76,31 @@
   @include grid-media($sba-grid-medium) {
     padding: 15px 0;
     margin-bottom: 50px;
-    border-bottom: 1px solid $grey-light;
+    border-bottom: 1px solid $sba-gray-light;
   }
   @include grid-media($sba-grid-large) {
-    border-top: 1px solid $grey-light;
+    border-top: 1px solid $sba-gray-light;
   }
 }
 
 .backLinkMobile {
+  background-color: $sba-blue;
+
+  a {
+    &:active,
+    &:link,
+    &:hover,
+    &:visited {
+      color: white;
+    }
+  }
+
   position: relative;
+
+  &:hover {
+    background-color: $secondary-blue;
+  }
+
   @include grid-media($sba-grid-small) {
     height: 60px;
     margin-bottom: 30px;
@@ -110,7 +131,6 @@
     font-weight: 300;
     line-height: 1.2;
     padding: 20px 60px 10px;
-    text-decoration: none;
   }
 
   @include grid-media($sba-grid-medium) {
@@ -119,7 +139,6 @@
     font-weight: 300;
     line-height: 1.2;
     padding: 20px 60px 15px;
-    text-decoration: none;
   }
   .backLinkMobile {
     display: none;
@@ -142,18 +161,3 @@
   position: fixed;
   top: 30px;
 }
-
-@include theme(sba-blue, '.backLinkMobile', $sba-blue, $sba-blue, $sba-blue);
-@include theme(byzantine, '.backLinkMobile', $byzantine, $byzantine, $byzantine);
-@include theme(money-green, '.backLinkMobile', $money-green, $money-green, $money-green);
-@include theme(cobalt-blue, '.backLinkMobile', $cobalt-blue, $cobalt-blue, $cobalt-blue);
-
-@include theme(sba-blue, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(byzantine, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(money-green, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-@include theme(cobalt-blue, '.backLinkMobile a, .backLinkMobile', null, #fff, rgba(255, 255, 255, 0.25));
-
-@include theme-hover(sba-blue, '.backLinkMobile a, .backLinkMobile', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.backLinkMobile a, .backLinkMobile', $byzantine-dark, #fff, $byzantine-dark);
-@include theme-hover(money-green, '.backLinkMobile a, .backLinkMobile', $money-green-dark, #fff, $money-green-dark);
-@include theme-hover(cobalt-blue, '.backLinkMobile a, .backLinkMobile', $cobalt-blue-dark, #fff, $cobalt-blue-dark);

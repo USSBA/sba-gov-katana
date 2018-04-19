@@ -7,78 +7,58 @@
 }
 
 .dropdownMenu {
-  border-top: 5px solid;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  border-top: 5px solid $sba-blue;
+  box-shadow: 0.111rem 0.111rem 0.222rem 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   left: -36%;
-  background-color: #fff;
+  background-color: white;
   width: 136%;
-  padding: 60px 50px;
+  padding: 3.333rem 2.778rem;
   z-index: 10000000000;
   display: flex;
   flex-flow: column wrap;
+  top: 2.278rem;
 }
 
 .one {
-  height: 640px;
+  height: 35.556rem;
 }
 
 .two {
-  height: 450px;
+  height: 25rem;
   width: auto;
   left: 10%;
 }
 
 .twoWithFeaturedCallout {
-  height: 530px;
+  height: 29.444rem;
 }
 
 .three {
-  height: 510px;
+  height: 28.333rem;
 }
 
 .five {
-  height: 650px;
+  height: 36.111rem;
 }
 
 .six {
-  height: 550px;
+  height: 30.556rem;
 }
-
-@include theme(sba-blue, '.dropdownMenu', null, $sba-blue, null);
-@include theme(byzantine, '.dropdownMenu', null, $byzantine, null);
-@include theme(money-green, '.dropdownMenu', null, $money-green, null);
-@include theme(cobalt-blue, '.dropdownMenu', null, $cobalt-blue, null);
-@include theme(sba-blue-dark, '.dropdownMenu', null, $sba-blue, null);
-
-@include theme-hover(sba-blue, '.dropdownMenu', null, $sba-blue, null);
-@include theme-hover(byzantine, '.dropdownMenu', null, $byzantine, null);
-@include theme-hover(money-green, '.dropdownMenu', null, $money-green, null);
-@include theme-hover(cobalt-blue, '.dropdownMenu', null, $cobalt-blue, null);
-@include theme-hover(sba-blue-dark, '.dropdownMenu', null, $sba-blue, null);
 
 .skipLink {
   pointer-events: none;
   height: 0;
   position: absolute;
   top: 0;
+  a:focus {
+    color: $sba-blue;
+  }
 }
 
 .businessGuideCTA {
   left: 4%;
-  bottom: 60px;
+  bottom: 3.333rem;
   position: absolute;
   width: 92%;
 }
-
-@include theme(sba-blue, '.skipLink a', null, #fff, null);
-@include theme(byzantine, '.skipLink a', null, #fff, null);
-@include theme(money-green, '.skipLink a', null, #fff, null);
-@include theme(cobalt-blue, '.skipLink a', null, #fff, null);
-@include theme(sba-blue-dark, '.skipLink a', null, #fff, null);
-
-@include theme-focus(sba-blue, '.skipLink a', null, $grey-dark, null);
-@include theme-focus(byzantine, '.skipLink a', null, $grey-dark, null);
-@include theme-focus(money-green, '.skipLink a', null, $grey-dark, null);
-@include theme-focus(cobalt-blue, '.skipLink a', null, $grey-dark, null);
-@include theme-focus(sba-blue-dark, '.skipLink a', null, $grey-dark, null);

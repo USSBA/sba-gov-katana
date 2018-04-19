@@ -1,15 +1,3 @@
-@include theme(sba-blue, '.NewsletterSmallPrimaryButton', $sba-blue, #fff, $sba-blue);
-@include theme(byzantine, '.NewsletterSmallPrimaryButton', $sba-blue, #fff, $sba-blue);
-@include theme(money-green, '.NewsletterSmallPrimaryButton', $sba-blue, #fff, $sba-blue);
-@include theme(cobalt-blue, '.NewsletterSmallPrimaryButton', $sba-blue, #fff, $sba-blue);
-
-@include theme-hover(sba-blue, '.NewsletterSmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(byzantine, '.NewsletterSmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(money-green, '.NewsletterSmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
-@include theme-hover(cobalt-blue, '.NewsletterSmallPrimaryButton', $sba-blue-dark, #fff, $sba-blue-dark);
-
-@include small-button('.NewsletterSmallPrimaryButton');
-
 .NewsletterSmallPrimaryButton {
   height: 40px;
   width: 134px;

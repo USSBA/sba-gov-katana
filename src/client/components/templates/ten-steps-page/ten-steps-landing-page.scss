@@ -1,8 +1,8 @@
 .titleSection {
-  color: #fff;
+  color: white;
   height: calc(100vh - 115px);
   position: relative;
-  background-color: $byzantine;
+  background-color: $sba-blue;
   background-image: url('assets/images/tensteps/title-section-pattern.png');
   background-position: 90% 100%;
   background-repeat: no-repeat;
@@ -13,15 +13,19 @@
     height: 550px;
   }
   h1 {
-    @include font-size($extra-large-title-font-sizes);
+    // @include font-size($extra-large-title-font-sizes);
+    color: white;
     margin-bottom: 0.4em;
     @include grid-media($sba-grid-small) {
       max-width: 70%;
     }
   }
   p {
-    @include font-size($h5-font-sizes);
-    font-family: $serif-font;
+    // @include font-size($h5-font-sizes);
+    font-family: $serif-font-family;
+    font-style: italic;
+    line-height: 35px;
+    font-size: 1.167rem;
   }
 }
 
@@ -42,9 +46,9 @@
 }
 
 .lastSection {
-  color: #fff;
+  color: white;
   padding: 30px;
-  background-color: $byzantine;
+  background-color: $sba-blue;
   background-image: url('assets/images/tensteps/title-section-pattern.png');
   background-position: right;
   background-repeat: no-repeat;
@@ -57,7 +61,8 @@
     background-position: 100% 100%;
   }
   h1 {
-    @include font-size($extra-large-title-font-sizes);
+    // @include font-size($extra-large-title-font-sizes);
+    color: white;
     margin-bottom: 0.2em;
     @include grid-media($sba-grid-small) {
       margin-top: 0.2em;
@@ -65,8 +70,8 @@
     }
   }
   p {
-    @include font-size($h5-font-sizes);
-    font-family: $serif-font;
+    // @include font-size($h5-font-sizes);
+    font-family: $serif-font-family;
     @include grid-media($sba-grid-small) {
       margin-top: 2em;
     }
@@ -96,19 +101,16 @@
 }
 
 .scrollButton {
-  background-color: #fff;
+  background-color: white;
   bottom: 0;
   font-size: 36px;
-  height: 50px;
+  height: 64px;
   left: 50%;
   position: absolute;
   text-align: center;
   transform: translateX(-50%);
-  width: 68px;
-  &:hover {
-    background-color: $byzantine-lightest;
-    color: $byzantine-darkest;
-  }
+  width: auto;
+  padding: 23px 25px;
 }
 
 .anchor {
@@ -130,21 +132,20 @@
   }
 }
 
-@include theme(byzantine, '.backLink', null, #fff, null);
-@include theme-hover(byzantine, '.backLink', null, $byzantine-lightest, null);
-
 a.backLink {
   position: absolute;
-  font-size: 18px;
   font-weight: 300;
   left: 0;
   text-decoration: none;
   top: 20px;
   @include grid-media($sba-grid-small) {
-    padding-left: 20px;
+    margin-left: 20px;
   }
   @include grid-media($sba-grid-medium) {
-    padding-left: 30px;
+    margin-left: 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    margin-left: 80px;
   }
   &:hover {
     text-decoration: none;

@@ -39,18 +39,14 @@ exports[`Front Page Hero should render correctly 1`] = `
       >
         Want to be an entrepreneur?
       </div>
-      <button
-        autoFocus={false}
-        className="LargeInversePrimaryButton  "
-        disabled={undefined}
-        formTarget="_self"
-        id="frontpage-hero-button"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <a
+        className="button link primary responsive spacing"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
       >
         This is a button
-      </button>
+      </a>
     </div>
   </div>
 </div>

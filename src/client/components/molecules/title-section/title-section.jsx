@@ -1,7 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import styles from './title-section.scss'
-import { BasicLink } from 'atoms'
+import { DecorativeDash, Link } from 'atoms'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {
@@ -9,15 +10,7 @@ class TitleSection extends React.Component {
     titleLinks = sectionHeaders.map(function(item, index) {
       return (
         <li id={'titleSectionLinkId' + index} key={index}>
-          <BasicLink
-            myClassName={styles.titleLink}
-            url={`#${item.id}`}
-            text={item.text}
-            eventConfig={{
-              category: 'Anchor-Links',
-              action: `Click #${item.id}`
-            }}
-          />
+          <Link to={`#${item.id}`}>{item.text}</Link>
         </li>
       )
     })
@@ -41,9 +34,9 @@ class TitleSection extends React.Component {
         <h5 id="titleSectionSummaryId" className={styles.summary}>
           {this.props.summary}
         </h5>
-        <hr className={styles.lineCopy} />
+        <DecorativeDash width={5.5} />
         {this.props.sectionHeaders.length > 0 ? titleLinks : ''}
-        <hr className={styles.hrLine} />
+        <hr />
       </div>
     )
   }
@@ -53,5 +46,7 @@ TitleSection.propTypes = {
   title: React.PropTypes.string.isRequired,
   summary: React.PropTypes.string.isRequired
 }
+
+export { TitleSection }
 
 export default TitleSection

@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as ModalActions from '../../../actions/show-modal.js'
-import { BasicLink } from 'atoms'
+import styles from './social-media-link.scss'
+import { Link } from 'atoms'
 
 class SocialMediaLink extends React.Component {
   handleSocialMediaClick(e) {
@@ -12,10 +13,11 @@ class SocialMediaLink extends React.Component {
   }
 
   render() {
+    // TODO: should this even be a Link?
     return (
-      <BasicLink onClick={this.handleSocialMediaClick.bind(this)}>
-        <img src={this.props.image} alt={this.props.altText} />
-      </BasicLink>
+      <Link onClick={this.handleSocialMediaClick.bind(this)}>
+        <img className={styles.socialMediaIcons} src={this.props.image} alt={this.props.altText} />
+      </Link>
     )
   }
 }

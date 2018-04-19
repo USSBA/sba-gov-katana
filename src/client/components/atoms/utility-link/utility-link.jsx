@@ -1,31 +1,25 @@
 import React from 'react'
 
 import styles from './utility-link.scss'
-import { BasicLink } from 'atoms'
+import { Link } from 'atoms'
 
 class UtilityLink extends React.Component {
   render() {
-    let anchorClass = styles.link + ' ' + (this.props.visible ? '' : styles.hidden)
+    const { text, url, visible, ...linkProps } = this.props
+    let anchorClass = styles.link + ' ' + (visible ? '' : styles.hidden)
 
-    const picked = (({ id, text, url, onClick, onBlur, onFocus, onKeyDown }) => ({
-      id,
-      text,
-      url,
-      onClick,
-      onBlur,
-      onFocus,
-      onKeyDown
-    }))(this.props)
     return (
       <li className={styles.UtilityLink}>
-        <BasicLink {...picked} myClassName={anchorClass} />
+        <Link {...linkProps} className={anchorClass} to={url}>
+          {text}
+        </Link>
       </li>
     )
   }
 }
 
 UtilityLink.defaultProps = {
-  url: '#',
+  url: 'javascript:;',
   visible: true
 }
 

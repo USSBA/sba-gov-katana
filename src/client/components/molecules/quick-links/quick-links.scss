@@ -9,7 +9,7 @@
 }
 
 .card {
-  background-color: $grey-lighter;
+  background-color: $sba-gray-lighter;
 
   @include grid-media($sba-grid-medium-and-small) {
     margin-top: 20px;
@@ -23,7 +23,7 @@
   }
 
   & a {
-    color: $base-font-color !important;
+    color: $secondary-black-ish !important;
   }
 }
 
@@ -50,11 +50,6 @@
 .title {
   display: inline-block;
   margin-bottom: 0px;
-}
-
-.dash {
-  margin: 16px 0 16px 0;
-  width: 30px;
 }
 
 .seeAll {
