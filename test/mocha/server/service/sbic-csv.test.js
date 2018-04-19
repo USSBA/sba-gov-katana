@@ -1,8 +1,5 @@
 // Test the Creation of an SBIC CSV file
 
-// pull in sbic data by query parameters
-// result should equal expected data based on query
-
 import chai from 'chai'
 import sinon from 'sinon'
 import axios from 'axios'
@@ -10,7 +7,7 @@ import fs from 'fs'
 import path from 'path'
 
 // import sbic-csv controller
-// return csv file
+// return csv file (based on the contacts.json file input)
 
 describe('SbicCsv', () => {
   before(() => {
