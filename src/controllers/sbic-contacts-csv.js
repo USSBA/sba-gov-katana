@@ -10,9 +10,6 @@ function downloadCsv(req, res) {
     .get(url)
     .then(result => {
       const csv = createCsvFromJson(result.data)
-
-      console.log('AA---', csv.length)
-
       res
         .header('Content-Type', 'text/csv')
         .status(HttpStatus.OK)
