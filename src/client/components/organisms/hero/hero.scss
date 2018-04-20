@@ -73,6 +73,7 @@
   padding: 50px;
 }
 
+// for Safari small screen size
 @include for-small-only {
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
     _::-webkit-full-page-media,
