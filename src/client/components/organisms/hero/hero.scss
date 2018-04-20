@@ -72,3 +72,12 @@
   box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
   padding: 50px;
 }
+
+@include for-small-only {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    _::-webkit-full-page-media,
+    .arrow {
+      padding-top: 346px;
+    }
+  }
+}
