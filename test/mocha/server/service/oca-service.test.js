@@ -13,7 +13,9 @@ describe('linc soap request test', function() {
       lenderMatchEmailConfirmationDeleteStub,
       lenderMatchSoapResponseDeleteStub
 
-    it('should result in saving a lenderMatchSoapResponse to the database when responseCode is F', function(done) {
+    it('should result in saving a lenderMatchSoapResponse to the database when responseCode is F', function(
+      done
+    ) {
       lenderMatchSoapResponseCreateStub = sinon
         .stub(lenderMatchSoapResponse, 'create')
         .returns(Promise.resolve(1))
@@ -44,7 +46,9 @@ describe('linc soap request test', function() {
         .catch(done)
     })
 
-    it('should result in saving a lenderMatchSoapResponse to the database when responseCode is P', function(done) {
+    it('should result in saving a lenderMatchSoapResponse to the database when responseCode is P', function(
+      done
+    ) {
       lenderMatchSoapResponseCreateStub = sinon
         .stub(lenderMatchSoapResponse, 'create')
         .returns(Promise.resolve(1))
