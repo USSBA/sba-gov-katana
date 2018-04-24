@@ -5,94 +5,100 @@ import sinon from 'sinon'
 import axios from 'axios'
 import fs from 'fs'
 import path from 'path'
-import * as SbicContactsCsv from '../../../../src/controllers/sbic-contacts-csv.js'
 import HttpStatus from 'http-status-codes'
-//import Promise from 'bluebird'
+import * as SbicContactsCsv from '../../../../src/controllers/sbic-contacts-csv.js'
 
 // import sbic-contacts-csv controller
 // return csv file (based on the contacts.json file input)
 
 describe('SbicContactsCsv', () => {
   let stub
-  let sandbox
   let contacts
-  let response
 
   before(() => {
     // simulate axios get and return contacts data
-    //sandbox = sinon.sandbox.create()
-    contacts = fs.readFileSync(path.join(__dirname, './data/sbic/contacts.json'))
+    contacts = JSON.parse(fs.readFileSync(path.join(__dirname, './data/sbic/contacts.json')))
     stub = sinon.stub(axios, 'get')
     stub.returns(
       Promise.resolve({
-        data: JSON.parse(contacts)
+        data: contacts
       })
     )
-
-    // add spies to response object
-    response = {
-      header: sinon.spy(function() {
-        return this
-      }),
-      status: sinon.spy(function() {
-        return this
-      }),
-      send: sinon.spy(function() {
-        return this
-      })
-    }
-
-    console.log('ACAC--', contacts.length)
   })
 
   after(() => {
     stub.restore()
   })
 
-  afterEach(() => {
-    response.status.reset()
-    response.send.reset()
+  describe('#createCsvFromJson', () => {
+    it('expected csv file should match the result csv file', done => {
+      // compare result Csv to the expected Csv
+      const result = SbicContactsCsv.createCsvFromJson(contacts)
+      const expected = String(fs.readFileSync(path.join(__dirname, './data/sbic/contacts-expected.csv')))
+      result.should.equal(expected)
+      done()
+    })
   })
 
-  it('#createCsvFromJson', done => {
-    const result = String(SbicContactsCsv.createCsvFromJson(JSON.parse(contacts)))
-    const expected = String(fs.readFileSync(path.join(__dirname, './data/sbic/contacts-expected.csv')))
-    expected.should.equal(result)
-    done()
-  })
+  describe('#downloadCsv', () => {
+    let response
 
-  it.skip('#downloadCsv', done => {
-    // create spy
-    // analyze response object
+    beforeEach(() => {
+      // add spies to response object
+      // then overwrite methods with spies that assert expectations
 
-    // spy on downloadCsv
-
-    //const spy = sinon.spy(SbicContactsCsv, "downloadCsv")
-
-    const request = {
-      body: {
-        result: true
-      },
-      header: function() {
-        return ''
+      response = {
+        header: sinon.spy(function(resultField, resultValue) {
+          return this
+        }),
+        status: sinon.spy(function(result) {
+          return this
+        }),
+        send: sinon.spy(function(result) {
+          return this
+        })
       }
-    }
+    })
 
-    //const response = {}
-    //const spy = sandbox.spy(response, "status")
+    afterEach(() => {
+      response.header.reset()
+      response.status.reset()
+      response.send.reset()
+    })
 
-    SbicContactsCsv.downloadCsv(request, response)
+    it('should set the response header Content-Type to text/csv', function(done) {
+      response.header = sinon.spy(function(resultField, resultValue) {
+        // if there is a timeout then that means one of these asserts evaluated to false
+        const expectedField = 'Content-Type'
+        const expectedValue = 'text/csv'
+        resultField.should.equal(expectedField)
+        resultValue.should.equal(expectedValue)
+        done()
+      })
 
-    //spy.calledWith(request, {})
-    // was response.status called with 200?
-    //console.log(response.status.calledWith(200))
-    //console.log("BB--", spy.calledWith(request, response))
-    console.log(response.send.called.should.be.true)
+      SbicContactsCsv.downloadCsv({}, response)
+    })
 
-    /*const contacts = fs.readFileSync(path.join(__dirname, './data/sbic/contacts.json'));
-    const result = String(SbicContactsCsv.downloadCsv(JSON.parse(contacts)));
-    expected.should.equal(result);*/
+    it('should set the response status to 200', done => {
+      response.status = sinon.spy(function(result) {
+        // if there is a timeout then that means this assert evaluated to false
+        const expected = HttpStatus.OK
+        result.should.equal(expected)
+        done()
+      })
 
-    done()
+      SbicContactsCsv.downloadCsv({}, response)
+    })
+
+    it('should provide csv file to be downloaded', done => {
+      response.send = sinon.spy(function(result) {
+        // if there is a timeout then that means one of these asserts evaluated to false
+        const expected = SbicContactsCsv.createCsvFromJson(contacts)
+        result.should.equal(expected)
+        done()
+      })
+
+      SbicContactsCsv.downloadCsv({}, response)
+    })
   })
 })
