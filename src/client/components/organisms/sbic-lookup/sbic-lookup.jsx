@@ -251,15 +251,21 @@ class SbicLookup extends React.Component {
     })
   }
 
+  downloadCsv() {
+    console.log('AAAA')
+  }
+
   render() {
     return (
       <div>
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
           {this.renderMultiSelects()}
-          <a href={this.createDownloadHref()} download="sbic-contacts.csv">
+          <a href="/api/content/sbic-contacts.csv" download="sbic-contacts.csv">
             <SmallInverseSecondaryButton
-              url="#"
+              onClick={e => {
+                e.preventDefault()
+              }}
               extraClassName={s.downloadBtn}
               text="download list (.XLS)"
             />

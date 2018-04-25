@@ -3,6 +3,7 @@
 import chai from 'chai'
 import sinon from 'sinon'
 import axios from 'axios'
+import config from 'config'
 import fs from 'fs'
 import path from 'path'
 import HttpStatus from 'http-status-codes'
@@ -12,22 +13,10 @@ import * as SbicContactsCsv from '../../../../src/controllers/sbic-contacts-csv.
 // return csv file (based on the contacts.json file input)
 
 describe('SbicContactsCsv', () => {
-  let stub
   let contacts
 
   before(() => {
-    // simulate axios get and return contacts data
     contacts = JSON.parse(fs.readFileSync(path.join(__dirname, './data/sbic/contacts.json')))
-    stub = sinon.stub(axios, 'get')
-    stub.returns(
-      Promise.resolve({
-        data: contacts
-      })
-    )
-  })
-
-  after(() => {
-    stub.restore()
   })
 
   describe('#createCsvFromJson', () => {
@@ -41,7 +30,28 @@ describe('SbicContactsCsv', () => {
   })
 
   describe('#downloadCsv', () => {
+    let stubAxiosGet
+    let stubConfigGet
     let response
+
+    before(() => {
+      // simulate axios get and return contacts data
+      stubAxiosGet = sinon.stub(axios, 'get')
+      stubAxiosGet.returns(
+        Promise.resolve({
+          data: contacts
+        })
+      )
+
+      // simulate config get and return contacts data
+      stubConfigGet = sinon.stub(config, 'get')
+      stubConfigGet.returns('no-domain.com')
+    })
+
+    after(() => {
+      stubAxiosGet.restore()
+      stubConfigGet.restore()
+    })
 
     beforeEach(() => {
       // add spies to response object

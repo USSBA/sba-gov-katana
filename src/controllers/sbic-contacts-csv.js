@@ -1,11 +1,12 @@
 import axios from 'axios'
 import HttpStatus from 'http-status-codes'
 import json2csv from 'json2csv'
+import config from 'config'
 
 // get SBIC json data return a csv file
 
 function downloadCsv(req, res) {
-  const url = '/api/content/contacts.json?category=SBIC'
+  const url = 'https://' + config.get('server.fqdn') + '/api/content/contacts.json?category=SBIC'
   axios
     .get(url)
     .then(result => {
