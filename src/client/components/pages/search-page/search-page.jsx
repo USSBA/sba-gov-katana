@@ -312,27 +312,27 @@ const ResultsList = props => {
           if (!isEmpty(item.fields)) {
             title = item.fields.title
             summary = item.fields.summary
-            url = item.fields.url
+            url = item.fields.url[0]
           }
 
           // only show results with URL
-          // if (url) {
-          return (
-            <div key={index} className={`${styles.result}  result-box`}>
-              <div className={styles.title}>
-                <Link to={url} className="result-title">
-                  {title}
-                </Link>
+          if (url) {
+            return (
+              <div key={index} className={`${styles.result}  result-box`}>
+                <div className={styles.title}>
+                  <Link to={url} className="result-title">
+                    {title}
+                  </Link>
+                </div>
+                <div className={`${styles.summary} result-summary`}>{summary}</div>
+                <div className={styles.url}>
+                  <Link to={url} className="result-url">
+                    {url}
+                  </Link>
+                </div>
               </div>
-              <div className={`${styles.summary} result-summary`}>{summary}</div>
-              <div className={styles.url}>
-                <Link to={url} className="result-url">
-                  {url}
-                </Link>
-              </div>
-            </div>
-          )
-          // }
+            )
+          }
         })}
       </div>
     )
