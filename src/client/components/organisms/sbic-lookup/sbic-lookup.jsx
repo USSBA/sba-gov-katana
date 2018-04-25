@@ -251,10 +251,6 @@ class SbicLookup extends React.Component {
     })
   }
 
-  downloadCsv() {
-    console.log('AAAA')
-  }
-
   render() {
     return (
       <div>
