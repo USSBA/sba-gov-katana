@@ -1,4 +1,3 @@
-import BasicLink from './basic-link/basic-link'
 import Button from './button/button'
 import CaptionText from './caption-text/caption-text'
 import CaretDownIcon from './icons/caret-down'
@@ -38,7 +37,6 @@ import ValidationIcon from './validation-icon/validation-icon'
 import VersionsList from './versions-list/versions-list'
 
 export {
-  BasicLink,
   Button,
   CaptionText,
   CaretDownIcon,
