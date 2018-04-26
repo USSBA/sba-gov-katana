@@ -17,11 +17,11 @@
 }
 
 .itemTitleDesktop {
-  @include font-size($h5-font-sizes);
+  // @include font-size($h5-font-sizes);
   color: black;
   font-weight: 700;
-  padding-top: $margin-20;
-  padding-bottom: $margin-20;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .itemDesktopFour {

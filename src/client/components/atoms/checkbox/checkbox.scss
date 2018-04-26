@@ -57,47 +57,11 @@
 }
 
 .rc-checkbox-checked:hover .rc-checkbox-inner {
-  border-color: $money-green;
+  border-color: $secondary-green;
 }
 .rc-checkbox-checked .rc-checkbox-inner {
-  border-color: $money-green;
-  background-color: $money-green;
-}
-
-:global(.sba-blue) .rc-checkbox-checked:hover .rc-checkbox-inner {
-  border-color: $sba-blue;
-}
-
-:global(.sba-blue) .rc-checkbox-checked .rc-checkbox-inner {
-  border-color: $sba-blue;
-  background-color: $sba-blue;
-}
-
-:global(.money-green) .rc-checkbox-checked:hover .rc-checkbox-inner {
-  border-color: $money-green;
-}
-
-:global(.money-green) .rc-checkbox-checked .rc-checkbox-inner {
-  border-color: $money-green;
-  background-color: $money-green;
-}
-
-:global(.byzantine) .rc-checkbox-checked:hover .rc-checkbox-inner {
-  border-color: $byzantine;
-}
-
-:global(.byzantine) .rc-checkbox-checked .rc-checkbox-inner {
-  border-color: $byzantine;
-  background-color: $byzantine;
-}
-
-:global(.cobalt-blue) .rc-checkbox-checked:hover .rc-checkbox-inner {
-  border-color: $cobalt-blue;
-}
-
-:global(.cobalt-blue) .rc-checkbox-checked .rc-checkbox-inner {
-  border-color: $cobalt-blue;
-  background-color: $cobalt-blue;
+  border-color: $secondary-green;
+  background-color: $secondary-green;
 }
 
 .rc-checkbox-checked .rc-checkbox-inner:after {
@@ -176,26 +140,6 @@
 .rc-checkbox-container-checked {
   @extend .rc-checkbox-container;
   border: 1px solid #666666;
-}
-
-:global(.sba-blue) .rc-checkbox-container-focused {
-  @extend .rc-checkbox-container;
-  border: 1px solid $sba-blue;
-}
-
-:global(.money-green) .rc-checkbox-container-focused {
-  @extend .rc-checkbox-container;
-  border: 1px solid $money-green;
-}
-
-:global(.byzantine) .rc-checkbox-container-focused {
-  @extend .rc-checkbox-container;
-  border: 1px solid $byzantine;
-}
-
-:global(.cobalt-blue) .rc-checkbox-container-focused {
-  @extend .rc-checkbox-container;
-  border: 1px solid $cobalt-blue;
 }
 
 .rc-checkbox-label {

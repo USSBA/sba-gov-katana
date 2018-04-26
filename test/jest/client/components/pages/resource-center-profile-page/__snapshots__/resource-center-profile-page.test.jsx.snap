@@ -4,12 +4,14 @@ exports[`ResourceCenterProfilePage Entering non-optional fields allows form to b
 Object {
   "address": "1675 W Garden of the Gods Rd, El Paso County Citizen's Center, Colorado Springs, CO, 80907",
   "businessStage": "New and early stage businesses",
+  "email": "",
   "expertise": Array [
     "Networking",
   ],
   "hours": Object {
     "fridayClose": null,
     "fridayOpen": null,
+    "furtherDescription": "",
     "mondayClose": null,
     "mondayOpen": null,
     "saturdayClose": null,
@@ -50,7 +52,7 @@ exports[`ResourceCenterProfilePage Getting isSubmitted=true response causes mess
     To update your office address and phone number, contact SBA's
      
     <a
-      href="mailto:anna.kojzar@sba.gov?subject=Resource Center Profile- updates"
+      href="mailto:edmis@sba.gov?subject=Resource Center Profile- updates"
     >
       Office of Entrepreneurial Development
     </a>

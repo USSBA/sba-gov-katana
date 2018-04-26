@@ -1,8 +1,9 @@
 import React from 'react'
+import moment from 'moment'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import moment from 'moment'
-import { SmallPrimaryButton, BasicLink } from 'atoms'
+
+import { Link, SmallPrimaryButton } from 'atoms'
 import * as ContentActions from '../../../../actions/content.js'
 import styles from './blog.scss'
 
@@ -38,7 +39,9 @@ class Blog extends React.Component {
             return (
               <div key={i} className={styles.blogColumn}>
                 <div className={styles.blogTitleContainer}>
-                  <BasicLink myClassName={styles.blogTitle} url={item.url} text={item.title} />
+                  <Link className={styles.blogTitle} to={item.url}>
+                    {item.title}
+                  </Link>
                 </div>
               </div>
             )
@@ -74,12 +77,12 @@ class Blog extends React.Component {
       <div className={styles.containerMobile}>
         {items.map(function(item, i) {
           return (
-            <BasicLink key={i} url={item.url}>
+            <Link key={i} to={item.url}>
               <div className={styles.singleBlog}>
                 <div className={styles.blogTitle}>{item.title}</div>
                 <div className={styles.blogInfo}>{blogThis.returnFormatedDate(item.date)}</div>
               </div>
-            </BasicLink>
+            </Link>
           )
         })}
       </div>

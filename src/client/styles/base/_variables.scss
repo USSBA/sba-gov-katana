@@ -1,433 +1,161 @@
-@mixin theme($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}) {
-    #{$component} {
-      background-color: $background-color;
-      color: $text-color;
-      border-color: $border-color;
-      &:disabled {
-        cursor: not-allowed;
-        background-color: #c4c4c4;
-        border-color: #c4c4c4;
-        color: #fff;
-      }
-    }
-  }
-}
+// # Typography --------------------------------------------------------------
 
-//theme boilerplate..
-// @include theme(sba-blue, '.LargeInversePrimaryButton', #fff, $sba-blue, #fff);
-// @include theme(byzantine, '.LargeInversePrimaryButton', #fff, $byzantine, #fff);
-// @include theme(money-green, '.LargeInversePrimaryButton', #fff, $money-green, #fff);
-// @include theme(cobalt-blue, '.LargeInversePrimaryButton', #fff, $cobalt-blue, #fff);
+$sans-serif-font-family: 'Source Sans Pro', $font-stack-helvetica;
+$serif-font-family: Merriweather, $font-stack-georgia;
 
-@mixin theme-hover($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}) {
-    #{$component} {
-      &:hover,
-      &:focus {
-        background-color: $background-color;
-        color: $text-color;
-        border-color: $border-color;
-        &:disabled {
-          cursor: not-allowed;
-          background-color: #c4c4c4;
-          color: #fff;
-          border-color: #c4c4c4;
-        }
-      }
-    }
-  }
-}
+$base-font-size: 18px;
 
-@mixin theme-focus($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}) {
-    #{$component} {
-      &:focus {
-        background-color: $background-color;
-        color: $text-color;
-        border-color: $border-color;
-      }
-    }
-  }
-}
+$base-line-height: 1.5;
+$heading-line-height: 1.1;
 
-@mixin theme-active($theme, $component, $background-color, $text-color, $border-color) {
-  :global(.#{$theme}) {
-    #{$component} {
-      &:active {
-        background-color: $background-color;
-        color: $text-color;
-        border-color: $border-color;
-      }
-    }
-  }
-}
+// for compatibility with Bourbon
+$base-font-family: $sans-serif-font-family;
 
-// Breakpoints
-$smallest-screen: 0px;
-$small-screen: 767px;
-$medium-screen: 768px;
-$large-screen: 1080px;
-$max-screen: 1440px;
+// # Colors -------------------------------------------------------------------
 
-// Grid
+// ## Primary =================================================================
 
-$sba-grid-max: (
-  columns: 12,
-  gutter: 30px,
-  media: '(min-width: $max-screen)'
-);
+// e.g. links
+$sba-blue: #002e6d;
+$sba-blue-dark: #000441;
+$sba-blue-light: #41569c;
 
+// e.g. primary buttons
+$sba-red: #cc0000;
+$sba-red-dark: #930000;
+$sba-red-light: #ff4f30;
+
+// e.g. borders
+$sba-gray: #969696;
+$sba-gray-dark: #686868;
+$sba-gray-light: #c5c5c5;
+$sba-gray-lighter: #f5f5f5;
+
+// e.g. everywhere
+$sba-white: #ffffff;
+
+// ## Secondary ===============================================================
+
+// e.g. secondary buttons
+$secondary-blue: #007dbc;
+$secondary-blue-dark: #00518b;
+$secondary-blue-light: #58acef;
+
+// e.g. basic text
+$secondary-black-ish: #1b1e29;
+
+// e.g. success
+$secondary-green: #197e4e;
+
+// e.g. alert
+$secondary-yellow: #f1c400;
+
+// for compatibility with Bourbon
+$action-color: $sba-red;
+$base-background-color: white;
+$base-font-color: $secondary-black-ish;
+
+// # Box model and spacing ----------------------------------------------------
+
+// TODO: standardize spacing
+$base-spacing: $base-line-height * 1rem;
+$base-z-index: 0;
+$small-spacing: $base-spacing / 2;
+
+// # Borders, outlines and shadows --------------------------------------------
+
+$base-border-color: $sba-gray-dark;
+$base-border-radius: 0;
+$base-border: 1px solid $base-border-color;
+
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow-focus: none;
+
+$focus-outline-color: $sba-gray-light;
+$focus-outline-width: 2px;
+$focus-outline: $focus-outline-width dotted $focus-outline-color;
+$focus-outline-offset: 3px;
+
+// # Breakpoints (mobile-first) -----------------------------------------------
+
+$breakpoint-small: 0px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1200px;
+
+// # Animations ---------------------------------------------------------------
+
+$base-duration: 150ms;
+$base-timing: ease;
+
+// # Grid ---------------------------------------------------------------------
+
+// TODO: rename to $grid-large-up
 $sba-grid-large: (
   columns: 12,
   gutter: 30px,
-  media: '(min-width: $large-screen)'
+  media: '(min-width: $breakpoint-large)'
 );
 
+// TODO: rename to $grid-medium-up
 $sba-grid-medium: (
   columns: 12,
   gutter: 30px,
-  media: '(min-width: $medium-screen)'
+  media: '(min-width: $breakpoint-medium)'
 );
 
+// TODO: refactor to $grid-small-up and $grid-large-only
 $sba-grid-medium-and-small: (
   columns: 6,
   gutter: 20px,
-  media: '(min-width: 0px) and (max-width: 1079px)'
+  media: '(min-width: 0px) and (max-width: 1199px)'
 );
 
+// TODO: refactor to $grid-small-only
 $sba-grid-small: (
   columns: 6,
   gutter: 20px,
-  media: '(max-width: $small-screen)'
+  media: '(max-width: 767px)'
 );
 
+// TODO: refactor these to use function?
 $desktop-0gutter: (
   columns: 12,
   gutter: 0px,
-  media: '(min-width: $large-screen)'
+  media: '(min-width: $breakpoint-large)'
 );
 
 $tablet-0gutter: (
   columns: 12,
   gutter: 0,
-  media: '(min-width: $medium-screen) and (max-width: 1079px)'
+  media: '(min-width: $breakpoint-medium) and (max-width: 1199px)'
 );
 
 $tablet-mobile-0gutter: (
   columns: 6,
   gutter: 0,
-  media: '(min-width: 0px) and (max-width: 1079px)'
+  media: '(min-width: 0px) and (max-width: 1199px)'
 );
 
 $mobile-0gutter: (
   columns: 6,
   gutter: 0,
-  media: '(max-width: 768px)'
+  media: '(max-width: 767px)'
 );
 
 $desktop-nav: (
   columns: 12,
   gutter: 0,
-  media: '(min-width: $large-screen)'
+  media: '(min-width: $breakpoint-large)'
 );
 
 $tablet-nav: (
   columns: 12,
   gutter: 0,
-  media: '(min-width: $medium-screen) and (max-width: 1079px)'
+  media: '(min-width: $breakpoint-medium) and (max-width: 1199px)'
 );
 
 $mobile-nav: (
   columns: 6,
   gutter: 0,
-  media: '(max-width: 768px)'
+  media: '(max-width: 767px)'
 );
-
-// Typography
-$san-serif-font: 'Source Sans Pro', $font-stack-helvetica;
-$serif-font: 'Merriweather Regular', $font-stack-georgia;
-$base-font-family: $san-serif-font;
-$heading-font-family: $base-font-family;
-
-// // Font Sizes
-@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
-  @each $fs-breakpoint, $fs-font-size in $fs-map {
-    @if $fs-breakpoint == null {
-      font-size: $fs-font-size;
-    } @else {
-      // If $fs-font-size is a key that exists in
-      // $fs-breakpoints, use the value
-      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
-        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
-      }
-      @media screen and (min-width: $fs-breakpoint) {
-        font-size: $fs-font-size;
-      }
-    }
-  }
-}
-
-$breakpoints: (
-  null : 767px,
-  medium: 768px,
-  large : 1080px
-);
-
-$base-font-sizes: (
-  null: 16px,
-  medium: 18px,
-  large: 18px
-);
-
-$extra-large-title-font-sizes: (
-  null: 2.875rem,
-  medium: 5rem,
-  large: 6.66rem
-);
-
-$h1-font-sizes: (
-  null: 2rem,
-  medium: 3rem,
-  large: 4rem
-);
-
-$h2-font-sizes: (
-  null: 1.5rem,
-  medium: 2rem,
-  large: 3rem
-);
-
-$h3-font-sizes: (
-  null: 1.25rem,
-  medium: 1.5rem,
-  large: 2rem
-);
-
-$h4-font-sizes: (
-  null: 1.1rem,
-  medium: 1.25rem,
-  large: 1.5rem
-);
-
-$h5-font-sizes: (
-  null: 1rem,
-  medium: 1rem,
-  large: 1.2rem
-);
-
-$h6-font-sizes: (
-  null: 1rem,
-  medium: 1rem,
-  large: 1rem
-);
-
-$paragraph-font-sizes: (
-  null: 1rem,
-  medium: 1rem,
-  large: 1rem
-);
-
-// 508 requires minimum of 25px in low contrast ratio non-bold text
-$low-contrast-font-sizes: (
-  null: 25px,
-  medium: 25px,
-  large: 25px
-);
-
-// Line height
-$base-line-height: 1.5;
-$heading-line-height: 1;
-
-$margin-50: 50px;
-$margin-30: 30px;
-$margin-20: 20px;
-$margin-10: 10px;
-
-// Other Sizes
-$base-border-radius: 0;
-$base-spacing: $base-line-height * 1em;
-$small-spacing: $base-spacing / 2;
-$base-z-index: 0;
-
-// Colors
-$white: #ffffff;
-$blue: #1565c0;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #ddd;
-$error: #e21c3d;
-
-// Font Colors
-$base-font-color: #333333;
-$action-color: #0b97dd;
-
-// Colors
-$sba-blue: #0b97dd;
-$sba-blue-darkest: #004265;
-$sba-blue-dark: #006ba2;
-$sba-blue-light: #9dddff;
-$sba-blue-lightest: #d6ecfc;
-
-$byzantine: #ab3ea0;
-$byzantine-darkest: #511d4c;
-$byzantine-dark: #7e2e76;
-$byzantine-light: #c661bb;
-$byzantine-lightest: #e7bee3;
-
-$money-green: #609f00;
-$money-green-darkest: #1f3a00;
-$money-green-dark: #336200;
-$money-green-light: #8bc03b;
-$money-green-lightest: #dbedc0;
-
-$cobalt-blue: #0f48aa;
-$cobalt-blue-darkest: #05183a;
-$cobalt-blue-dark: #0a3072;
-$cobalt-blue-light: #4e89ef;
-$cobalt-blue-lightest: #c8dafa;
-
-$grey: #666666;
-$grey-dark: #333333;
-$grey-light: #c4c4c4;
-$grey-lighter: #ebebeb;
-$grey-lightest: #f7f7f7;
-
-$crimson: #e21234;
-
-// SBA
-$sba-blue: #0b97dd;
-$byzantine: #ab3ea0;
-$money-green: #609f00;
-$cobalt-blue: #0f48aa;
-$sba-blue-dark: #006ba2;
-$byzantine-dark: #7e2e76;
-$money-green-dark: #336200;
-$cobalt-blue-dark: #0a3072;
-
-// Font Colors
-$text-grey: #333333;
-$base-font-color: $text-grey;
-$action-color: $sba-blue;
-
-// Border
-$base-border-color: #666666;
-$base-border: 1px solid $base-border-color;
-
-// Background Colors
-$base-background-color: #fff;
-$secondary-background-color: tint($base-border-color, 75%);
-
-// Forms
-$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
-$form-box-shadow-focus: none;
-
-// Animations
-$base-duration: 150ms;
-$base-timing: ease;
-
-$primary-color-map: (
-  'sba-blue': $sba-blue,
-  'byzantine': $byzantine,
-  'money-green': $money-green,
-  'cobalt-blue': $cobalt-blue
-);
-
-$lightest-color-map: (
-  'sba-blue': $sba-blue-lightest,
-  'byzantine': $byzantine-lightest,
-  'money-green': $money-green-lightest,
-  'cobalt-blue': $cobalt-blue-lightest
-);
-$dark-color-map: (
-  'sba-blue': $sba-blue-dark,
-  'byzantine': $byzantine-dark,
-  'money-green': $money-green-dark,
-  'cobalt-blue': $cobalt-blue-dark
-);
-$darkest-color-map: (
-  'sba-blue': $sba-blue-darkest,
-  'byzantine': $byzantine-darkest,
-  'money-green': $money-green-darkest,
-  'cobalt-blue': $cobalt-blue-darkest
-);
-
-@mixin small-button($component) {
-  #{$component} {
-    font-size: 1.2em;
-    font-weight: 700;
-  }
-}
-
-@mixin single-color-button($component, $my-color) {
-  @each $name, $value in $primary-color-map {
-    :global(.#{$name}) {
-      #{$component} {
-        background-color: #fff;
-        color: $my-color;
-        border-color: null;
-
-        &:focus,
-        &:hover {
-          background-color: $my-color;
-          color: #fff;
-          border-color: my-color;
-        }
-      }
-    }
-  }
-}
-
-@mixin border-color-theme($component, $color-map : $primary-color-map) {
-  @each $name, $value in $color-map {
-    :global(.#{$name}) {
-      #{$component} {
-        border-color: $value;
-      }
-    }
-  }
-}
-
-@mixin background-color-theme($component, $color-map : $primary-color-map) {
-  @each $name, $value in $color-map {
-    :global(.#{$name}) {
-      #{$component} {
-        background-color: $value;
-      }
-    }
-  }
-}
-
-@mixin background-color-theme-hover($component, $color-map : $primary-color-map) {
-  @each $name, $value in $color-map {
-    :global(.#{$name}) {
-      #{$component} {
-        &:hover {
-          background-color: $value;
-        }
-      }
-    }
-  }
-}
-
-@mixin color-theme($component, $color-map : $primary-color-map) {
-  @each $name, $value in $color-map {
-    :global(.#{$name}) {
-      #{$component} {
-        color: $value;
-      }
-    }
-  }
-}
-@mixin clearFix {
-  &:after {
-    content: ' ';
-    /* Older browser do not support empty content */
-    visibility: hidden;
-    display: block;
-    height: 0;
-    clear: both;
-  }
-}
-
-$homepage-gutter-size: 8.333vw;

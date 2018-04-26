@@ -13,7 +13,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
-          className="container"
+          className="container paginator"
           id={undefined}
         >
           <p
@@ -104,7 +104,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-1-0"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -132,7 +138,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-1-1"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -160,7 +172,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-1-2"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -188,7 +206,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-1-3"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -225,7 +249,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-2-0"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -253,7 +283,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-2-1"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -281,7 +317,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-2-2"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -309,7 +351,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-2-3"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -346,7 +394,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-3-0"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -374,7 +428,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-3-1"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -402,7 +462,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-3-2"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -430,7 +496,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </p>
                 <div>
                   <hr
-                    className="decorativeDash itemHr"
+                    className="dash"
+                    id="hr-3-3"
+                    style={
+                      Object {
+                        "width": "3.333rem",
+                      }
+                    }
                   />
                   <p
                     className="itemSubTitle"
@@ -448,7 +520,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
-          className="container"
+          className="container paginator"
           id={undefined}
         >
           <p

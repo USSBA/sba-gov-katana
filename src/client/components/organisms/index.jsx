@@ -7,31 +7,37 @@ import DeveloperTester from './developer-tester/developer-tester.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
-import DocumentCardCollection from './document-card-collection/document-card-collection.jsx'
+import DetailCardCollection from './detail-card-collection/detail-card-collection.jsx'
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
 import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
 import FederalContractingTileCollection from './federal-contracting-tile-collection/federal-contracting-tile-collection.jsx'
-import FrontPageHero from './front-page-hero/front-page-hero.jsx'
 import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
-import Hero from './hero/hero.jsx'
 import GlobalSearch from './global-search/global-search.jsx'
+import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
+import OfficesLayout from './offices-layout/offices-layout.jsx'
+import OfficeResult from './office-result/office-result.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
 import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
+import PrimarySearchBar from './primary-search-bar/primary-search-bar.jsx'
 import ProgramDetailsCardCollection from './program-details-card-collection/program-details-card-collection.jsx'
 import RelatedDocumentCards from './related-document-cards/related-document-cards.jsx'
+import Results from './results/results.jsx'
 import SbicLookup from './sbic-lookup/sbic-lookup'
 import SearchBox from './search-box/search-box.jsx'
+import SecondarySearchBar from './secondary-search-bar/secondary-search-bar.jsx'
 import SectionNav from './section-nav/section-nav.jsx'
 import SizeStandardsTool from './size-standards-tool/size-standards-tool.jsx'
 import StyleGrayBackground from './style-gray-background/style-gray-background.jsx'
 import SubMenu from './sub-menu/sub-menu'
 import SuretyLookup from './surety-lookup/surety-lookup'
-import TenStepsSection from './ten-steps-section/ten-steps-section'
+import LongScrollSection from './long-scroll-section/long-scroll-section'
 import TextReadMoreSection from './text-readmore-section/text-readmore-section'
+import Tile from './tile-collection/tile.jsx'
 import TileCollection from './tile-collection/tile-collection.jsx'
+import MenuTileCollection from './menu-tile-collection/menu-tile-collection.jsx'
 
 // header-footer organisms
 import Footer from './header-footer/footer/footer.jsx'
@@ -40,7 +46,7 @@ import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
 
 // homepage organisms
 import Blog from './homepage/blog/blog.jsx'
-import FrontPageLady from './homepage/front-page-lady/front-page-lady.jsx'
+import FrontPageHero from '../templates/homepage/front-page-hero/front-page-hero.jsx'
 import HappeningNow from './homepage/happening-now/happening-now.jsx'
 
 // lender match organisms
@@ -79,38 +85,44 @@ export {
   DisasterAlert,
   DocumentArticle,
   DocumentArticleLookup,
-  DocumentCardCollection,
+  DetailCardCollection,
   DropdownMenu,
   ForPartnersTileCollection,
   FederalContractingTileCollection,
-  FrontPageHero,
   FundingProgramsTileCollection,
-  Hero,
   GlobalSearch,
+  Hero,
   Lookup,
   ModalController,
   NotificationBar,
+  OfficeResult,
+  OfficesLayout,
   PagingLookup,
   PagingMultiviewLayout,
+  PrimarySearchBar,
   ProgramDetailsCardCollection,
   RelatedDocumentCards,
+  Results,
   SbicLookup,
   SearchBox,
+  SecondarySearchBar,
   SectionNav,
   SizeStandardsTool,
   StyleGrayBackground,
   SubMenu,
   SuretyLookup,
-  TenStepsSection,
+  LongScrollSection,
   TextReadMoreSection,
-  TileCollection
+  TileCollection,
+  Tile,
+  MenuTileCollection
 }
 
 // header-footer organisms
 export { Footer, Header, MobileNav }
 
 // homepage organisms
-export { Blog, FrontPageLady, HappeningNow }
+export { Blog, FrontPageHero, HappeningNow }
 
 // lender match organisms
 export {

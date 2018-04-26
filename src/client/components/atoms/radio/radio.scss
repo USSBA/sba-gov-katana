@@ -35,24 +35,8 @@
   content: ' ';
 }
 
-:global(.sba-blue) .regularRadio:checked + label:after {
-  background: none repeat scroll 0 0 $sba-blue;
-}
-
-:global(.money-green) .regularRadio:checked + label:after {
-  background: none repeat scroll 0 0 $money-green;
-}
-
-:global(.byzantine) .regularRadio:checked + label:after {
-  background: none repeat scroll 0 0 $cobalt-blue;
-}
-
-:global(.cobalt-blue) .regularRadio:checked + label:after {
-  background: none repeat scroll 0 0 $byzantine;
-}
-
 .regularRadio:checked + label:after {
-  background: none repeat scroll 0 0 $money-green;
+  background: none repeat scroll 0 0 $secondary-green;
   border-radius: 50px;
   content: ' ';
   font-size: 36px;
@@ -61,22 +45,6 @@
   position: absolute;
   top: 2px;
   width: 14px;
-}
-
-:global(.sba-blue) .regularRadio:checked + label {
-  border: 2px solid $sba-blue;
-}
-
-:global(.money-green) .regularRadio:checked + label {
-  border: 2px solid $money-green;
-}
-
-:global(.byzantine) .regularRadio:checked + label {
-  border: 2px solid $cobalt-blue;
-}
-
-:global(.cobalt-blue) .regularRadio:checked + label {
-  border: 2px solid $byzantine;
 }
 
 .regularRadio:checked + label {
@@ -100,8 +68,3 @@
   outline: none;
   box-shadow: none;
 }
-
-@include theme-focus('money-green', '.radioItem', null, null, $money-green);
-@include theme-focus('sba-blue', '.radioItem', null, null, $sba-blue);
-@include theme-focus('cobalt-blue', '.radioItem', null, null, $cobalt-blue);
-@include theme-focus('byzantine', '.radioItem', null, null, $byzantine);

@@ -23,3 +23,4 @@ sizestandards:
     endpoint: SIZE_STANDARDS_ENDPOINT
 cache:
   s3BucketName: S3BUCKET
+publicPath: PUBLIC_PATH

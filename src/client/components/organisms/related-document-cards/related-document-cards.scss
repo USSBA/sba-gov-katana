@@ -52,7 +52,7 @@
 
   transform: translateY(-50%);
 
-  @include font-size($paragraph-font-sizes);
+  // @include font-size($paragraph-font-sizes);
   @include grid-media($sba-grid-medium-and-small) {
     @include grid-column(2);
   }

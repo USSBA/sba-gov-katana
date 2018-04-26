@@ -5,12 +5,11 @@ class HamburgerIcon extends React.Component {
   getOpen() {
     return (
       <div className={styles.menuIconContainer}>
-        <svg viewBox="0 0 40 40" className={styles.menuIconClose}>
+        <svg viewBox="0 0 31 30" className={styles.menuIconClose}>
           <path
             className={styles.closeIcon}
-            strokeWidth={4}
+            strokeWidth={3}
             fill="transparent"
-            strokeLinecap="round"
             d="M 10,10 L 30,30 M 30,10 L 10,30"
           />
         </svg>

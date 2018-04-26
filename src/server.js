@@ -27,11 +27,6 @@ if (config.get('developmentOptions.webpack.enabled')) {
   enableWebpackHotModuleReplacement(app, config.get('developmentOptions.webpack.silent'))
 }
 
-if (config.get('newrelic.enabled')) {
-  console.log('Starting NewRelic')
-  require('newrelic') // eslint-disable-line global-require
-}
-
 const metaVariables = {
   description:
     "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
@@ -65,15 +60,17 @@ app.use(function(req, res, next) {
       }
 
       const clientConfig = {
-        responseStatus: responseStatus,
-        isUserLoggedIn: hasSessionCookie || false,
-        googleAnalytics: config.get('googleAnalytics'),
         debug: config.get('developmentOptions.client.logging'),
+        forPartners: config.get('features.forPartners'),
+        googleAnalytics: config.get('googleAnalytics'),
         govdelivery: config.get('govdelivery.popupEnabled'),
-        showSbic: config.get('features.showSbic'),
+        isUserLoggedIn: hasSessionCookie || false,
+        katanaRedirectPaths: config.get('nginx.katanaRedirectPaths').split('|'),
         moon: config.get('features.moon'),
+        responseStatus: responseStatus,
+        sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
-        forPartners: config.get('features.forPartners')
+        showSbic: config.get('features.showSbic')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       next()
@@ -161,6 +158,7 @@ app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     lang: req.preferredLanguage,
     config: JSON.stringify(req.sessionAndConfig),
+    cdnPathFromBackend: config.get('publicPath'),
     optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
     tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
     foreseeEnabled: config.get('foresee.enabled'),

@@ -1,12 +1,13 @@
-import { isEmpty } from 'lodash'
 import React, { PureComponent } from 'react'
+import { isEmpty } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { BasicLink, SmallPrimaryButton, TextInput } from 'atoms'
-import { Paginator } from 'molecules'
+
 import styles from './search-page.scss'
-import { logPageEvent } from '../../../services/analytics.js'
 import * as ContentActions from '../../../actions/content.js'
+import { Link, SmallPrimaryButton, TextInput } from 'atoms'
+import { Paginator } from 'molecules'
+import { logPageEvent } from '../../../services/analytics.js'
 
 const getQueryParams = search => {
   const decoded = decodeURIComponent(search)
@@ -311,27 +312,27 @@ const ResultsList = props => {
           if (!isEmpty(item.fields)) {
             title = item.fields.title
             summary = item.fields.summary
-            url = item.fields.url
+            url = item.fields.url[0]
           }
 
           // only show results with URL
-          // if (url) {
-          return (
-            <div key={index} className={`${styles.result}  result-box`}>
-              <div className={styles.title}>
-                <BasicLink url={url} myClassName={'result-title'}>
-                  {title}
-                </BasicLink>
+          if (url) {
+            return (
+              <div key={index} className={`${styles.result}  result-box`}>
+                <div className={styles.title}>
+                  <Link to={url} className="result-title">
+                    {title}
+                  </Link>
+                </div>
+                <div className={`${styles.summary} result-summary`}>{summary}</div>
+                <div className={styles.url}>
+                  <Link to={url} className="result-url">
+                    {url}
+                  </Link>
+                </div>
               </div>
-              <div className={`${styles.summary} result-summary`}>{summary}</div>
-              <div className={styles.url}>
-                <BasicLink url={url} myClassName={'result-url'}>
-                  {url}
-                </BasicLink>
-              </div>
-            </div>
-          )
-          // }
+            )
+          }
         })}
       </div>
     )

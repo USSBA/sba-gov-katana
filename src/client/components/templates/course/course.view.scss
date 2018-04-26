@@ -24,10 +24,10 @@
   }
   @include grid-media($sba-grid-medium) {
     padding: 15px 0;
-    border-bottom: 1px solid $grey-light;
+    border-bottom: 1px solid $sba-gray-light;
   }
   @include grid-media($sba-grid-large) {
-    border-top: 1px solid $grey-light;
+    border-top: 1px solid $sba-gray-light;
   }
 }
 
@@ -60,10 +60,6 @@
   font-weight: 400;
   line-height: 1.5;
   font-size: 1.5rem;
-}
-
-.decorativeDash {
-  width: 80px;
 }
 
 .downloadFlash {

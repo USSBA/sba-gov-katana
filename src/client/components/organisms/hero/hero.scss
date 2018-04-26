@@ -1,105 +1,84 @@
-$hero-container-grid: (
-  columns: 12,
-  gutter: 0px
-);
+@value breakpointMedium: calc(#{$breakpoint-medium} - 1px);
 
-.heroContainer {
-  @include grid-column(12, $hero-container-grid);
-  position: relative;
+.image {
+  @include for-small-only {
+    align-items: end;
+    justify-content: center;
+    max-height: 369px;
+    min-height: 200px;
+  }
+
+  @include for-medium-up {
+    align-items: center;
+    margin-left: 135px;
+    // This also prevents the callout from overlapping with the nav.
+    min-height: 542px;
+  }
+
+  background-repeat: no-repeat top center;
+  background-size: cover;
+  display: flex;
+
+  > .callout {
+    @include for-small-only {
+      align-self: flex-end;
+      margin-left: 20px;
+      margin-right: 20px;
+      transform: translateY(75%);
+      width: 100%;
+    }
+
+    @include for-medium-only {
+      @include grid-column(6, (gutter: 30px)) min-width: 339px;
+    }
+
+    @include for-large-up {
+      @include grid-column(5, (gutter: 30px)) min-width: 500px;
+    }
+
+    // Override grid column left margin.
+    @include for-medium-up {
+      margin-left: -60px;
+    }
+  }
+}
+
+.noImage {
+  background-color: $sba-gray-lighter;
+  padding: 30px;
+  text-align: center;
+  width: 100%;
+
+  // hide the second button on small screens
+  *[class~='button']:nth-child(2) {
+    @include for-small-only {
+      display: none;
+    }
+  }
+}
+
+.arrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 
 .callout {
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6);
-    position: relative;
-    bottom: 100px;
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(6);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(5);
-  }
+  background-color: white;
+  border-top: 5px solid $sba-blue;
+  // TODO: DRY
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
+  padding: 50px;
 }
 
-.inHeroWithNoImage {
-  text-align: center;
-
-  @include grid-media($sba-grid-small) {
-    margin: 0;
-    width: 100%;
-  }
-  @include grid-media($sba-grid-medium) {
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-}
-
-.inHeroWithNoImage p {
-  font-weight: lighter;
-}
-
-@include theme(sba-blue, '.inHeroWithNoImage', $sba-blue, #fff, #fff);
-@include theme(byzantine, '.inHeroWithNoImage', $byzantine, #fff, #fff);
-@include theme(money-green, '.inHeroWithNoImage', $money-green, #fff, #fff);
-@include theme(cobalt-blue, '.inHeroWithNoImage', $cobalt-blue, #fff, #fff);
-
-.calloutContainer {
-  @include grid-media($sba-grid-medium) {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-}
-
-.heroDesktopImage {
-  @include grid-media($sba-grid-small) {
-    display: none;
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(11);
-    @include grid-push(1);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(10);
-    @include grid-push(2);
-  }
-}
-
-.heroMobileImageContainer {
-  @include grid-media($sba-grid-small) {
-    width: 100%;
-    height: 350px;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-}
-
-// .heroDesktopImageContainer {
-// 	@include grid-media($sba-grid-small){
-// 		min-height: 350px;
-// 	}
-// 	@include grid-media($sba-grid-medium){
-// 		@include grid-column(11);
-// 		@include grid-push(1)
-// 	}
-// 	@include grid-media($sba-grid-large){
-// 		@include grid-column(10);
-// 		@include grid-push(2)
-// 		height: 1000px;
-// 	}
-// }
-
-.heroMobileImage {
-  @include grid-media($sba-grid-small) {
-    width: 100%;
-  }
-  @include grid-media($sba-grid-medium) {
-    display: none;
+// for Safari small screen size
+@include for-small-only {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    _::-webkit-full-page-media,
+    .arrow {
+      padding-top: 420px;
+    }
   }
 }

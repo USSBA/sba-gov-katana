@@ -1,3 +1,5 @@
+$homepage-gutter-size: 5.333vw;
+
 .container {
   padding-left: 0;
   padding-right: 0;
@@ -21,7 +23,7 @@
 }
 .section,
 .sectionWithPadding {
-  @include clearFix;
+  @include clearfix;
 }
 
 .sectionWithPadding {
@@ -33,4 +35,53 @@
     padding-left: $homepage-gutter-size;
     padding-right: $homepage-gutter-size;
   }
+}
+
+.sectionPanelMenu {
+  @include clearfix;
+
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+  }
+}
+
+.panelMenuContainer {
+  @include grid-media($sba-grid-small) {
+    max-width: 100vw;
+  }
+
+  @include grid-media($sba-grid-medium) {
+    max-width: 94.66vw;
+  }
+}
+
+.sectionHeader {
+  margin-top: 25px;
+}
+
+.container h2[id^='section-header'] {
+  margin-left: 27px;
+  margin-right: 27px;
+
+  @include grid-media($sba-grid-medium) {
+    margin-bottom: -5px;
+  }
+
+  @include grid-media($sba-grid-medium) {
+    margin-bottom: -25px;
+  }
+}
+
+.container div[id^='card'] p[id^='title'] {
+  line-height: 1.1;
+}
+
+.callToAction,
+.cardCollection {
+  @include grid-column(12, $sba-grid-large);
+}
+
+.container div[id^='call-to-action'] {
+  margin-top: -30px;
 }

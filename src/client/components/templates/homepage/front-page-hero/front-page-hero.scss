@@ -1,0 +1,130 @@
+$homepage-gutter-size: 5.333vw;
+
+@include grid-media($sba-grid-small) {
+  .container button {
+    padding: 0.75em 3em;
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.boxContainer {
+  @include grid-media($sba-grid-small) {
+    visibility: visible;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-left: $homepage-gutter-size;
+    padding-right: $homepage-gutter-size;
+    position: absolute;
+    left: 0;
+    top: 45%;
+    transform: translateY(-50%);
+  }
+}
+
+.heroLarge {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: block !important;
+    width: 100%;
+  }
+}
+
+.heroMedium {
+  @include grid-media($sba-grid-small) {
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
+}
+
+.heroSmall {
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+  @include grid-media($sba-grid-medium) {
+    display: none;
+  }
+  @include grid-media($sba-grid-large) {
+    display: none;
+  }
+}
+
+.box {
+  @include clearfix;
+  @include grid-media($sba-grid-small) {
+    background: white;
+    border-top: 5px $sba-blue solid;
+    box-shadow: 6px 7px 20px 0 rgba(0, 0, 0, 0.1);
+    z-index: 0;
+    width: 90vw;
+    position: relative;
+    top: -29vw;
+    margin-bottom: -29vw;
+    padding: 6.9vw 8.5vw 8.5vw;
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(6);
+    padding: 60px 10px 50px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+    padding: 70px 10px 50px;
+  }
+}
+
+.title {
+  color: $sba-blue;
+  @include grid-media($sba-grid-small) {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 52px;
+    margin-bottom: 10px;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 52px;
+    margin-bottom: 20px;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 60.75px;
+    font-weight: 600;
+    line-height: 66px;
+    margin-bottom: 20px;
+  }
+}
+
+.text {
+  color: $sba-gray-dark;
+  font-family: Merriweather;
+  font-style: italic;
+  @include grid-media($sba-grid-small) {
+    font-size: 21px;
+    margin-bottom: 20px;
+    line-height: 35px;
+    font-weight: 600;
+  }
+  @include grid-media($sba-grid-medium) {
+    font-size: 21px;
+    line-height: 35px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 21px;
+    line-height: 35px;
+  }
+}

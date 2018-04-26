@@ -1,8 +1,13 @@
-.mobileHeader {
+.mobileHeaderOpen,
+.mobileHeaderClosed {
   display: none;
-  background-color: #ffffff;
-  height: 53px;
-  margin: 10px 20px;
+  background-color: white;
+  border-bottom: 1px solid $sba-gray-light;
+  height: 2.944rem;
+  padding: 0.556rem 1.111rem 3rem 1.111rem;
+  @include grid-media($sba-grid-medium) {
+    padding-bottom: 3.5rem;
+  }
   @include grid-media( $tablet-nav) {
     display: block;
   }
@@ -14,29 +19,20 @@
 .menuButtonOpen,
 .menuButtonClosed {
   float: right;
-  border: 2px solid;
-  width: 110px;
-  padding: 10px 13px 11px;
+  border: 0.111rem solid $sba-blue;
+  width: 6.111rem;
+  padding: 0.278rem 0.722rem 0.333rem 0.722rem;
   text-decoration: none;
   &:hover {
     text-decoration: none;
   }
 }
 
-@include theme(sba-blue, '.menuButtonClosed', null, $sba-blue, $sba-blue);
-@include theme(byzantine, '.menuButtonClosed', null, $byzantine, $byzantine);
-@include theme(money-green, '.menuButtonClosed', null, $money-green, $money-green);
-@include theme(cobalt-blue, '.menuButtonClosed', null, $cobalt-blue, $cobalt-blue);
-
-@include theme(sba-blue, '.menuButtonOpen', null, $sba-blue-dark, $sba-blue-dark);
-@include theme(byzantine, '.menuButtonOpen', null, $byzantine-dark, $byzantine-dark);
-@include theme(money-green, '.menuButtonOpen', null, $money-green-dark, $money-green-dark);
-@include theme(cobalt-blue, '.menuButtonOpen', null, $cobalt-blue-dark, $cobalt-blue-dark);
-
 .mainNavNew .mobileNavMenuLink {
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid $sba-gray-light;
   display: block;
-  padding: 20px 50px;
+  padding: 1.389rem 2.778rem;
+  font-size: 1rem;
 }
 
 .mobile-search-new {
@@ -46,7 +42,7 @@
 .mainNavNew {
   width: 100%;
   display: none;
-  background-color: #ffffff;
+  background-color: white;
   overflow: auto;
 }
 
@@ -59,46 +55,41 @@
 }
 
 .mobileSearchContainerNew {
-  background-color: #ebebeb;
-  height: 60px;
-  padding: 10px 0;
+  background-color: $sba-gray-lighter;
+  height: 3.333rem;
+  padding: 0.556rem 0;
   position: relative;
   width: 100%;
 }
 
 .searchIconContainerNew {
   position: absolute;
-  left: 10%;
+  left: 88%;
   top: 33%;
   z-index: 1;
 }
 
 .searchIconNew {
-  width: 15px;
+  width: 0.833rem;
 }
 
 input.searchInputFieldNew {
   position: relative;
-  height: 40px;
-  width: 90vw;
-  font-size: 16px;
-  color: #666666;
-  text-indent: 10%;
-  border: 1px solid #c4c4c4;
+  height: 2.222rem;
+  width: 85vw;
+  font-size: 1rem;
+  color: $sba-gray-dark;
+  text-indent: 2%;
+  border: 1px solid $sba-gray-light;
   border-radius: 0;
   box-shadow: none;
   margin: 0 auto;
 }
 
-@include theme(sba-blue, 'a.navLinkSpecialNew', null, $grey, null);
-@include theme(byzantine, 'a.navLinkSpecialNew', null, $grey, null);
-@include theme(money-green, 'a.navLinkSpecialNew', null, $grey, null);
-@include theme(cobalt-blue, 'a.navLinkSpecialNew', null, $grey, null);
-
 .linkIcon {
-  height: 18px;
-  width: 17px;
+  height: 1rem;
+  width: 0.944rem;
   vertical-align: middle;
-  margin-top: -2px;
-  margin-right: 12px;
+  margin-top: -0.111rem;
+  margin-right: 0.667rem;
 }

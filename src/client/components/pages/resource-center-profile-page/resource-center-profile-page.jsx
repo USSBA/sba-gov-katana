@@ -1,5 +1,4 @@
 import resourceCenterProfileReducer from '../../../reducers/resource-center-profile'
-import PageLink from '../../atoms/page-link/page-link'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { submitProfile } from '../../../actions/resource-center-profile'
@@ -11,7 +10,8 @@ import {
   MultiSelect,
   TextInput,
   LargePrimaryButton,
-  FormErrorMessage
+  FormErrorMessage,
+  TextArea
 } from 'atoms'
 import _ from 'lodash'
 import {
@@ -22,13 +22,14 @@ import {
 import style from './resource-center-profile-page.scss'
 
 const idPrefix = 'resource-center-profile-'
+const enableResourceCenterOverride = ['SBDC', 'VBOC', 'SCORE', 'WBC']
 
 class ResourceCenterProfilePage extends React.Component {
   constructor() {
     super()
     this.state = {
       submitted: false,
-      partners: getPartners(),
+      partners: getPartners(enableResourceCenterOverride),
       honeyPotText: '',
       offices: null,
       selectedOfficeOption: null,
@@ -42,6 +43,7 @@ class ResourceCenterProfilePage extends React.Component {
         businessStage: null,
         serviceArea: null,
         needsUpdating: null,
+        email: null,
         url: null,
         hours: true, // optional so always valid
         expertise: null,
@@ -57,6 +59,7 @@ class ResourceCenterProfilePage extends React.Component {
         businessStage: '',
         serviceArea: null,
         needsUpdating: '',
+        email: '',
         url: '',
         hours: {
           mondayOpen: null,
@@ -72,7 +75,8 @@ class ResourceCenterProfilePage extends React.Component {
           saturdayOpen: null,
           saturdayClose: null,
           sundayOpen: null,
-          sundayClose: null
+          sundayClose: null,
+          furtherDescription: ''
         },
         expertise: [],
         services: [],
@@ -92,7 +96,11 @@ class ResourceCenterProfilePage extends React.Component {
     let offices = _.reject(getPartnerOffices(partner), office => {
       return _.isEmpty(office)
     })
-    offices = _.orderBy(offices, [office => office.name2.toLowerCase()])
+    offices = _.orderBy(offices, [
+      office => {
+        return office.name2.toLowerCase()
+      }
+    ])
     this.setState({
       offices: offices
     })
@@ -176,6 +184,12 @@ class ResourceCenterProfilePage extends React.Component {
     this.setState({ honeyPotText: e.target.value })
   }
 
+  handleFurtherDescription(event) {
+    const newProfile = _.cloneDeep(this.state.profile)
+    newProfile.hours.furtherDescription = event.target.value
+    this.setState({ profile: newProfile })
+  }
+
   validateFields() {
     let allFieldsValid = true
     const requiredFields = [
@@ -183,6 +197,7 @@ class ResourceCenterProfilePage extends React.Component {
       'name',
       'businessStage',
       'serviceArea',
+      'email',
       'url',
       'expertise',
       'services',
@@ -243,7 +258,9 @@ class ResourceCenterProfilePage extends React.Component {
           value={this.state.profile.type}
           options={partners}
           multi={false}
-          onChange={e => this.handleSelect(e, 'type')}
+          onChange={e => {
+            return this.handleSelect(e, 'type')
+          }}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           aria-labelledby={idPrefix + 'partner-label'}
@@ -328,7 +345,9 @@ class ResourceCenterProfilePage extends React.Component {
             id={idPrefix + 'service-area-other'}
             name="serviceArea"
             placeholder="Custom other value"
-            onChange={e => this.setState({ otherServiceArea: e.target.value })}
+            onChange={e => {
+              return this.setState({ otherServiceArea: e.target.value })
+            }}
             value={this.state.otherServiceArea}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
@@ -345,7 +364,9 @@ class ResourceCenterProfilePage extends React.Component {
     // generate hours from 12:00 am to 11:30 pm
     for (let i = 0; i < 48; i++) {
       let hour = Math.floor(i / 2) % 12
-      if (hour === 0) hour = 12
+      if (hour === 0) {
+        hour = 12
+      }
       let minutes = ':00'
       if (i % 2 > 0) {
         minutes = ':30'
@@ -383,7 +404,9 @@ class ResourceCenterProfilePage extends React.Component {
               multi={false}
               key={dayOpen}
               placeholder={dayOpenPlaceholder}
-              onChange={e => this.handleSelect(e, dayOpen)}
+              onChange={e => {
+                return this.handleSelect(e, dayOpen)
+              }}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               aria-label={'Select your normal ' + day + ' opening time'}
@@ -399,7 +422,9 @@ class ResourceCenterProfilePage extends React.Component {
               multi={false}
               key={dayClose}
               placeholder={dayClosePlaceholder}
-              onChange={e => this.handleSelect(e, dayClose)}
+              onChange={e => {
+                return this.handleSelect(e, dayClose)
+              }}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
               aria-label={'Select your normal ' + day + ' closing time'}
@@ -422,14 +447,17 @@ class ResourceCenterProfilePage extends React.Component {
     const expertiseOptions = _.map(
       [
         'Creating a plan',
-        'Getting a loan',
+        'Access & Capital',
         'Business finances',
         'Marketing and sales',
         'Government contracting',
         'Legal issues',
         'International trade',
         'Networking',
-        'Business management'
+        'Business management',
+        'Technology development',
+        'Disaster preparedness',
+        'HR/hiring'
       ],
       expertise => {
         return (
@@ -438,7 +466,9 @@ class ResourceCenterProfilePage extends React.Component {
             name={expertise}
             label={expertise}
             key={expertise}
-            handleChange={e => this.handleCheckbox(e, 'expertise')}
+            handleChange={e => {
+              return this.handleCheckbox(e, 'expertise')
+            }}
             checked={this.state.profile.expertise.includes(expertise)}
           />
         )
@@ -475,7 +505,9 @@ class ResourceCenterProfilePage extends React.Component {
             name={service}
             label={service}
             key={service}
-            handleChange={e => this.handleCheckbox(e, 'services')}
+            handleChange={e => {
+              return this.handleCheckbox(e, 'services')
+            }}
             checked={this.state.profile.services.includes(service)}
           />
         )
@@ -517,7 +549,9 @@ class ResourceCenterProfilePage extends React.Component {
             label={language}
             key={language}
             checked={this.state.profile.languages.includes(language)}
-            handleChange={e => this.handleCheckbox(e, 'languages')}
+            handleChange={e => {
+              return this.handleCheckbox(e, 'languages')
+            }}
           />
         )
       }
@@ -551,13 +585,15 @@ class ResourceCenterProfilePage extends React.Component {
           id={idPrefix + 'business-stage-label'}
           className={this.isFieldInvalid('businessStage') ? style.invalid : style.formLabel}
         >
-          Which business stage does your office best serve?
+          Which business stage does your office primarily serve?
         </label>
         <Radio
           id={idPrefix + 'business-stage'}
           options={businessStageOptions}
           value={this.state.profile.businessStage}
-          onChange={e => this.handleRadio(e, 'businessStage')}
+          onChange={e => {
+            return this.handleRadio(e, 'businessStage')
+          }}
           textStyle={style.radioText}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
@@ -586,7 +622,7 @@ class ResourceCenterProfilePage extends React.Component {
             id={idPrefix + 'needs-updating-label'}
             className={this.isFieldInvalid('needsUpdating') ? style.invalid : style.formLabel}
           >
-            Is this your office address and phone number?
+            Is this your physical office address and phone number?
           </label>
           <div>{selectedOffice.street1}</div>
           <div>{selectedOffice.street2}</div>
@@ -625,7 +661,7 @@ class ResourceCenterProfilePage extends React.Component {
         </p>
         <p>
           To update your office address and phone number, contact SBA's{' '}
-          <a href="mailto:anna.kojzar@sba.gov?subject=Resource Center Profile- updates">
+          <a href="mailto:edmis@sba.gov?subject=Resource Center Profile- updates">
             Office of Entrepreneurial Development
           </a>
         </p>
@@ -655,6 +691,19 @@ class ResourceCenterProfilePage extends React.Component {
             {selectedOffice && this.renderShouldUpdateAddressRadios()}
 
             <TextInput
+              id={idPrefix + 'email'}
+              name="email"
+              onChange={this.handleChange.bind(this)}
+              value={this.state.profile.email}
+              placeholder="me@myemaildomain.com"
+              onBlur={this.onBlur.bind(this)}
+              onFocus={this.onFocus.bind(this)}
+              label="What's your office email?"
+              labelStyle={this.isFieldInvalid('email') ? style.invalid : style.formLabel}
+              required={true}
+            />
+
+            <TextInput
               id={idPrefix + 'url'}
               name="url"
               onChange={this.handleChange.bind(this)}
@@ -668,6 +717,16 @@ class ResourceCenterProfilePage extends React.Component {
             />
 
             <div className={style.grid}>{this.renderHourDropdowns()}</div>
+
+            <TextArea
+              id={idPrefix + 'furtherDescription'}
+              name="furtherDescription"
+              onChange={this.handleFurtherDescription.bind(this)}
+              value={this.state.profile.hours.furtherDescription}
+              label="Please indicate any special/ or occasional hours outside of regular operation. i.e. (open every other Saturday)"
+              labelStyle={style.formLabel + ' ' + style.paddingTop20}
+              placeholder="Open every first Saturday of month"
+            />
 
             {this.renderAreaSelect()}
 

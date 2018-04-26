@@ -7,9 +7,11 @@ html(lang="en")
     title= title
     script(type="text/javascript").
         window.CONFIG = !{config}
+        window.cdnPathFromBackend = !{cdnPathFromBackend}
     style(type="text/css")
         .async-hide { opacity: 0 !important}
-    include includes/google-optimize.pug
+    //- TODO: will completely remove in future story
+    //- include includes/google-optimize.pug
     include includes/google-tag-manager-head.pug
   body
     include includes/google-tag-manager.pug

@@ -1,27 +1,31 @@
 import React from 'react'
-import _ from 'lodash'
+import { compact } from 'lodash'
 
-import { ImageSection, ParagraphPlaceholder, SectionHeader, SubsectionHeader, TextSection } from 'atoms'
+import { ImageSection, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
   Lookup,
+  MenuTileCollection,
   ProgramDetailsCardCollection,
   SearchBox,
   StyleGrayBackground,
   TextReadMoreSection
 } from 'organisms'
+import { panelMenuContainer } from './homepage/homepage.scss'
 
 function makeParagraphs(
   paragraphData = [],
   optionalSectionHeaderFunction,
   lineage,
-  paragraphEventConfig = {}
+  paragraphEventConfig = {},
+  // TODO: organize parameters to make sense
+  sectionData = {}
 ) {
   let paragraphs = []
   let skipNextReadmore = false
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
-    let paragraph = <ParagraphPlaceholder data={item} index={index} />
+    let paragraph = <p>{JSON.stringify(item)}</p>
     let paragraphType = item.type
     if (item && item.type) {
       // Google Analytics Event
@@ -54,11 +58,12 @@ function makeParagraphs(
         }
       } else if (item.type === 'sectionHeader') {
         const sectionHeaderFunction = optionalSectionHeaderFunction || makeSectionHeaderId
-        paragraph = <SectionHeader refId={sectionHeaderFunction(index)} text={item.text} />
+        paragraph = <h2 id={sectionHeaderFunction(index)}>{item.text}</h2>
       } else if (item.type === 'subsectionHeader') {
-        paragraph = <SubsectionHeader text={item.text} />
+        paragraph = <h3>{item.text}</h3>
       } else if (item.type === 'image') {
-        paragraph = <ImageSection imageObj={item.image} captionText={item.captionText} />
+        const { alt, url } = item.image
+        paragraph = <ImageSection alt={alt} src={url} caption={item.captionText} />
       } else if (item.type === 'lookup') {
         paragraph = (
           <Lookup
@@ -110,6 +115,13 @@ function makeParagraphs(
       } else if (item.type === 'childPageMenu' && item.pagesInclude === 'All child pages') {
         const cards = lineage[lineage.length - 1].children
         paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig} />
+      } else if (item.type === 'panelMenu') {
+        // TODO: fix hard-coding of pathname
+        paragraph = (
+          <div className={panelMenuContainer}>
+            <MenuTileCollection data={sectionData.children} pathname="/" splitTitle />
+          </div>
+        )
       }
     }
     return {
@@ -118,7 +130,7 @@ function makeParagraphs(
     }
   })
 
-  return _.compact(paragraphs)
+  return compact(paragraphs)
 }
 
 function wrapParagraphs(paragraphsList, wrapperClassMapping) {

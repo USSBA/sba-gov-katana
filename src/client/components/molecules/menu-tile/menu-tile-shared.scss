@@ -1,23 +1,26 @@
 .largeTitle {
-  font-weight: 900;
-  @include grid-media($sba-grid-small) {
+  @include for-small-only {
+    margin-top: 1.56rem;
     margin-bottom: 0;
   }
-  @include grid-media($sba-grid-medium) {
+  @include for-medium-up {
     text-align: center;
     margin-top: 12px;
     margin-bottom: 0;
-    line-height: 50px;
+    line-height: 30px;
+  }
+  @include for-large-up {
+    padding: 0 20px;
   }
 }
 
 .smallTitle {
-  font-weight: 700;
-  @include grid-media($sba-grid-small) {
-    font-size: 20px;
+  @include for-small-only {
+    margin-top: 4px;
   }
-  @include grid-media($sba-grid-medium) {
+  @include for-medium-up {
     text-align: center;
+    margin-top: 4px;
     margin-bottom: 0;
     line-height: 31px;
     font-size: 1.33em;

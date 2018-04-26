@@ -1,9 +1,8 @@
 import React from 'react'
-import _ from 'lodash'
 import { isEmpty } from 'lodash'
 
 import styles from './card.scss'
-import { BasicLink, DecorativeDash } from 'atoms'
+import { DecorativeDash, Link } from 'atoms'
 
 class Card extends React.Component {
   constructor() {
@@ -44,6 +43,7 @@ class Card extends React.Component {
   render() {
     const cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
 
+    // TODO: use lede text instead of subtitle text
     const { index, item: { eventConfig, image, link, subtitleText, titleText }, parentIndex } = this.props
     let title = 'Learn more'
     let url = ''
@@ -66,19 +66,21 @@ class Card extends React.Component {
       )
 
       if (!isEmpty(link) && url) {
-        imageMarkup = <BasicLink url={url}>{imageMarkup}</BasicLink>
+        imageMarkup = <Link to={url}>{imageMarkup}</Link>
       }
     }
 
     const titleMarkup = url ? (
-      <BasicLink myClassName={styles.unstyledLink} text={titleText} url={url} eventConfig={eventConfig} />
+      <Link className={styles.unstyledLink} to={url}>
+        {titleText}
+      </Link>
     ) : (
       titleText
     )
 
     const learnMoreMarkup = url ? (
       <p>
-        <BasicLink text={title} url={url} eventConfig={eventConfig} />
+        <Link to={url}>{title}</Link>
       </p>
     ) : (
       undefined
@@ -94,7 +96,7 @@ class Card extends React.Component {
         ) : null}
         {subtitleText ? (
           <div>
-            <DecorativeDash id={'hr-' + parentIndex + '-' + index} className={styles.itemHr} />
+            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={3.333} />
             <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
               {subtitleText}
             </p>

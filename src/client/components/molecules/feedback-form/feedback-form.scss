@@ -1,22 +1,16 @@
-$sba-red: #f0415e;
-@include single-color-button('.RedButton', $sba-red);
-@include single-color-button('.GreenButton', $money-green);
-
 .question {
   font-size: 1.3rem;
-  margin-bottom: $margin-30;
+  margin-bottom: 30px;
 }
-@include small-button('.GreenButton');
-@include small-button('.RedButton');
 
 .GreenButton {
-  margin-right: $margin-30;
+  margin-right: 30px;
 }
 
 .GreenButton,
 .RedButton {
-  padding-left: $margin-30;
-  padding-right: $margin-30;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .QuestionContainer {
@@ -36,12 +30,12 @@ $sba-red: #f0415e;
 }
 
 .checkIcon {
-  color: $money-green;
+  color: $secondary-green;
   font-size: 1.8rem;
 }
 
 .thanksAgain {
-  margin-left: $margin-10;
+  margin-left: 10px;
   display: inline;
 }
 

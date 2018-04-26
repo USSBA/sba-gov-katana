@@ -1,0 +1,5 @@
+.container {
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+}

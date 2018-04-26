@@ -16,26 +16,28 @@ exports[`QuickLinks Future effective date is not displayed 1`] = `
         SOPs
       </h3>
       <a
-        autoFocus={false}
         className="seeAll"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
       >
         See all
       </a>
     </div>
     <hr
-      className="decorativeDash dash"
+      className="dash"
+      style={
+        Object {
+          "width": "1.667rem",
+        }
+      }
     />
     <div>
       <div>
         <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           SOP 691 - Document Title 2
         </a>
@@ -66,26 +68,28 @@ exports[`QuickLinks Most recent effective date displayed 1`] = `
         SOPs
       </h3>
       <a
-        autoFocus={false}
         className="seeAll"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
       >
         See all
       </a>
     </div>
     <hr
-      className="decorativeDash dash"
+      className="dash"
+      style={
+        Object {
+          "width": "1.667rem",
+        }
+      }
     />
     <div>
       <div>
         <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           SOP 873 - Document Title 1
         </a>
@@ -116,26 +120,28 @@ exports[`QuickLinks No SOP number so it is not displayed 1`] = `
         SOPs
       </h3>
       <a
-        autoFocus={false}
         className="seeAll"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
       >
         See all
       </a>
     </div>
     <hr
-      className="decorativeDash dash"
+      className="dash"
+      style={
+        Object {
+          "width": "1.667rem",
+        }
+      }
     />
     <div>
       <div>
         <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Document Title 4
         </a>
@@ -166,26 +172,28 @@ exports[`QuickLinks SOP number exists and is displayed 1`] = `
         SOPs
       </h3>
       <a
-        autoFocus={false}
         className="seeAll"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
       >
         See all
       </a>
     </div>
     <hr
-      className="decorativeDash dash"
+      className="dash"
+      style={
+        Object {
+          "width": "1.667rem",
+        }
+      }
     />
     <div>
       <div>
         <a
-          autoFocus={false}
-          className=""
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           SOP 42 - Document Title 3
         </a>

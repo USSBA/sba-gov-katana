@@ -29,7 +29,7 @@
   height: 40px;
   display: inline;
   border-radius: 5px;
-  border-color: $grey-light;
+  border-color: $sba-gray-light;
   width: 12vw;
 }
 
@@ -38,16 +38,3 @@
   right: 0.5vw;
   top: 12px;
 }
-
-.searchIcon {
-}
-
-@include theme('sba-blue', '.searchIcon i', null, #757575, null);
-@include theme('byzantine', '.searchIcon i', null, #757575, null);
-@include theme('money-green', '.searchIcon i', null, #757575, null);
-@include theme('cobalt-blue', '.searchIcon i', null, #757575, null);
-
-@include theme-hover('sba-blue', '.searchIcon i', null, $grey-dark, null);
-@include theme-hover('byzantine', '.searchIcon i', null, $grey-dark, null);
-@include theme-hover('money-green', '.searchIcon i', null, $grey-dark, null);
-@include theme-hover('cobalt-blue', '.searchIcon i', null, $grey-dark, null);

@@ -8,7 +8,7 @@ class Paginator extends React.Component {
     let start = Math.min(1 + (this.props.pageNumber - 1) * this.props.pageSize, this.props.total) // needs to Math.min with total in case total is zero
     let end = Math.min(start + this.props.pageSize - 1, this.props.total)
     return (
-      <div id={this.props.id} className={s.container}>
+      <div id={this.props.id} className={s.container + ' paginator'}>
         <p className="pagination-status">
           <span>Showing&nbsp;&nbsp;</span>
           <span className={s.bold}>

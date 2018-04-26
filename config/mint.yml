@@ -1,10 +1,11 @@
-foresee:
-    environment: staging
 googleAnalytics:
     enabled: true
     accountId: UA-96147768-1
     optimizeContainerId: GTM-NPDXPPF
     tagManagerAccountId: GTM-WN49BK2
+    debug: false
+foresee:
+    environment: staging
 server:
     fqdn: mint.sba.fun
 features:
@@ -24,4 +25,5 @@ cache:
   useS3: true
 aws:
   cloudsearch:
-    endpoint: 'doc-integration-l3hya3o2kdvr3gpbxb33qznllm.us-east-1.cloudsearch.amazonaws.com'
+    searchEndpoint: 'doc-integration-l3hya3o2kdvr3gpbxb33qznllm.us-east-1.cloudsearch.amazonaws.com'
+    officeEndpoint: 'doc-mint-offices-mjhazqnua7k5nqkxojddfhkrw4.us-east-1.cloudsearch.amazonaws.com'

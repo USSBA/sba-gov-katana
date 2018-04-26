@@ -15,7 +15,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="searchBox"
       >
         <div
-          className="inputContainer"
+          className="inputContainer "
           hidden={undefined}
           id="document-lookup-text-input-container"
         >
@@ -29,7 +29,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             className="textInputContainer"
           >
             <input
-              className="textInput"
+              className="textInput "
               id="document-lookup-text-input"
               onChange={[Function]}
               onKeyUp={[Function]}
@@ -187,29 +187,23 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       <div
         className="applyButton"
       >
-        <div>
-          <button
-            autoFocus={false}
-            className="SmallInverseSecondaryButton applyButton "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
-          >
-            Apply
-          </button>
-        </div>
+        <button
+          className="button alternate primary responsive spacing"
+          onClick={[Function]}
+        >
+          Apply
+        </button>
       </div>
     </div>
   </div>
-  <div>
+  <div
+    className="result"
+  >
     <div
       className="paginator"
     >
       <div
-        className="container"
+        className="container paginator"
         id={undefined}
       >
         <p
@@ -286,7 +280,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -296,17 +292,15 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -319,7 +313,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -335,7 +334,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -345,17 +346,15 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -368,7 +367,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -384,7 +388,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -394,17 +400,15 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -417,7 +421,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -437,7 +446,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div
               className="document-card-container "
             >
-              <div>
+              <div
+                className="innerContainer"
+              >
                 <div
                   className="documentTypeContainer"
                 >
@@ -447,17 +458,15 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     <div
                       className="type"
                     >
-                      MEMO
+                      <h6>
+                        MEMO
+                      </h6>
                     </div>
                   </div>
                 </div>
                 <div />
                 <a
-                  autoFocus={false}
-                  className=""
-                  onKeyPress={[Function]}
-                  onTouchTap={[Function]}
-                  tabIndex="0"
+                  href="javascript:;"
                 >
                   <h6
                     className="document-card-title title"
@@ -470,7 +479,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                   >
                     <hr
-                      className="decorativeDash"
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
                     />
                   </div>
                   <table>
@@ -487,7 +501,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="paginator"
     >
       <div
-        className="container"
+        className="container paginator"
         id={undefined}
       >
         <p

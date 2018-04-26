@@ -12,8 +12,6 @@ govdelivery:
 foresee:
     environment: staging
     enabled: false
-newrelic:
-    enabled: false
 googleAnalytics:
     enabled: false
     accountId: UA-96147768-1
@@ -75,6 +73,8 @@ features:
         enabled: false
         tableName: DrupalUrlRedirect
     true404: false
+    office:
+        sbaOfficeNames: ['SBA district office', 'SBA regional office']
 sizestandards:
     endpoint: placeholder
 cache:
@@ -82,6 +82,10 @@ cache:
   useS3: true
 aws:
   cloudsearch:
-    endpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+    searchEndpoint: 'doc-sba-gov-development-qahfpwnaijrcpgdecf7kwpfi3a.us-east-1.cloudsearch.amazonaws.com'
+    officeEndpoint: 'doc-sba-gov-dev-offices-owb6n33f3b7y5u4y3mtlsiuzsa.us-east-1.cloudsearch.amazonaws.com'
   dynamodb:
     endpoint: placeholder
+publicPath: "/build/"
+nginx:
+  katanaRedirectPaths: 'api|assets|build|lendermatch|actions|styleguide|business-guide|funding-programs|document|article|disaster-assistance|partners|naics|isSmallBusiness|size-standards|resource-partner-survey|learning-center|course|federal-contracting|search|national-small-business-week|nsbw'

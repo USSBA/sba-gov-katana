@@ -52,6 +52,7 @@ function getProfiles(sessionId) {
         'timestamp',
         'businessStage',
         'serviceArea',
+        'email',
         'url',
         'phone',
         'needsUpdating'
@@ -76,7 +77,8 @@ function getProfiles(sessionId) {
             'saturdayOpen',
             'saturdayClose',
             'sundayOpen',
-            'sundayClose'
+            'sundayClose',
+            'furtherDescription'
           ]
         },
         {

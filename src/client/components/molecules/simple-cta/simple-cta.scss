@@ -1,28 +1,55 @@
 .container {
-  padding: 20px 0;
+  background-color: $sba-blue;
   text-align: center;
-  position: relative;
+
+  @include grid-media($sba-grid-small) {
+    @include grid-container;
+    @include grid-column(6);
+    margin: 20px 0 20px 20px;
+    padding-bottom: 20px;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-container;
+    @include grid-column(12);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  $sba-grid-large-custom: (
+    columns: 12,
+    gutter: 42px,
+    media: '(min-width: $breakpoint-large)'
+  );
+
+  @include grid-media($sba-grid-large-custom) {
+    @include grid-column(2.94);
+    position: absolute;
+    margin-top: -170px;
+    margin-bottom: 0px;
+    padding-bottom: 28px;
+    top: 839px;
+  }
 }
 
-@include theme(byzantine, '.container', $byzantine-dark, #fff , null);
-
-.container p {
-  color: $white;
+.container h6 {
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 15px;
   text-align: center;
-  @include font-size($h6-font-sizes);
-  font-weight: 600;
-  @include grid-media($sba-grid-medium) {
+  @include for-medium-only {
     display: inline;
     margin-right: 30px;
   }
-  @include grid-media($sba-grid-large) {
-    margin-right: 0;
+  @include for-large-up {
     display: block;
+    margin: 0;
+    padding-top: 2px;
+    padding-bottom: 20px;
   }
 }
-
-@include theme(byzantine, '.container button', $white, $byzantine , $white);
-@include theme-hover(byzantine, '.container button', $byzantine-lightest, $byzantine, $byzantine-lightest);
 
 .cornerLines {
   position: absolute;

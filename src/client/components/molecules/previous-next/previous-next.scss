@@ -1,8 +1,3 @@
-@include theme(sba-blue, '.chevronNext, .chevronPrevious', #fff, $sba-blue, null);
-@include theme(byzantine, '.chevronNext, .chevronPrevious', #fff, $byzantine, null);
-@include theme(money-green, '.chevronNext, .chevronPrevious', #fff, $money-green, null);
-@include theme(cobalt-blue, '.chevronNext, .chevronPrevious', #fff, $cobalt-blue, null);
-
 .previousNextContainer {
   @include grid-column(12, $desktop-0gutter);
 }

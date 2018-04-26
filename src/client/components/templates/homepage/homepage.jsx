@@ -1,93 +1,87 @@
-import React from 'react'
-import { FrontPageLady, HappeningNow, FrontPageHero, Blog } from 'organisms'
+import React, { PropTypes } from 'react'
+import path from 'path'
+import { kebabCase } from 'lodash'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import styles from './homepage.scss'
+import * as ContentActions from '../../../actions/content'
+import * as LoadingActions from '../../../actions/loading'
+import { FrontPageHero, HappeningNow, Blog, MenuTileCollection } from 'organisms'
+import { makeParagraphs, wrapParagraphs, makeSectionHeaderId } from '../paragraph-mapper'
+import { findSection } from '../../../services/menu'
 
 class Homepage extends React.Component {
+  static propTypes = {
+    // TODO: PropTypes.shape({})
+    // data: PropTypes.object.isRequired,
+    fetchContentIfNeeded: PropTypes.func.isRequired,
+    removeLoader: PropTypes.func.isRequired
+    // siteMap: PropTypes.array.isRequired
+  }
+
+  componentDidMount() {
+    const { fetchContentIfNeeded, removeLoader } = this.props
+    fetchContentIfNeeded('siteMap', 'siteMap')
+      .then(({ data }) => findSection(data, 'home-page'))
+      .then(({ node }) => fetchContentIfNeeded('node', path.join('node', node)))
+      .then(() => removeLoader())
+  }
+
   render() {
-    const startLinks = [
-      {
-        link: '/starting-business/how-start-business/10-steps-starting-business',
-        title: '10 steps to get started'
-      },
-      {
-        link: '/tools/local-assistance#locations-page',
-        title: 'Find local mentoring and support'
-      },
-      {
-        link: '/tools/business-plan/1?from_mobile=true',
-        title: 'Create a business plan'
-      }
-    ]
-    const financeLinks = [
-      {
-        link: '/loans-grants/see-what-sba-offers/what-sba-offers-help-small-businesses-grow',
-        title: 'What SBA offers'
-      },
-      {
-        link: '/loans-grants/see-what-sba-offers/sba-loan-programs',
-        title: 'Loan programs'
-      },
-      {
-        link: '/lendermatch',
-        title: 'Connect with SBA lenders'
-      }
-    ]
-    const sellLinks = [
-      {
-        link: '/contracting/getting-started-contractor',
-        title: 'Is government contracting for me?'
-      },
-      {
-        link: '/contracting/resources-small-businesses/government-contracting-classroom',
-        title: 'Contracting classroom'
-      },
-      {
-        link: '/size-standards',
-        title: 'Qualify for government contracts'
-      }
-    ]
+    const { data, siteMap, removeLoader } = this.props
+
+    if (!data) {
+      return null
+    }
+
+    const { buttons, hero, paragraphs } = data
+
+    // Get the menu tile collection content
+    const [{ siteSection }] = paragraphs.filter(({ type }) => type === 'panelMenu')
+    const sectionData = findSection(siteMap, kebabCase(siteSection))
+
+    const paragraphElements = wrapParagraphs(makeParagraphs(paragraphs, null, null, {}, sectionData), {
+      other: styles.textSection,
+      textSection: styles.textSection,
+      sectionHeader: styles.sectionHeader,
+      image: styles.image,
+      callToAction: styles.callToAction,
+      cardCollection: styles.cardCollection
+    })
+
     return (
       <div className={styles.container}>
         <div className={styles.section}>
-          <FrontPageLady />
+          <FrontPageHero hero={hero} button={buttons[0]} />
         </div>
-        <div className={styles.sectionWithPadding}>
-          <HappeningNow />
-        </div>
-        <div className={styles.section}>
-          <FrontPageHero
-            color="purple"
-            title="Start your business."
-            image="assets/images/homepage/start-image.jpg"
-            imageAlt="Start your own business."
-            links={startLinks}
-          />
-        </div>
-        <div className={styles.section}>
-          <FrontPageHero
-            reverse
-            color="green"
-            title="Finance your business."
-            image="assets/images/homepage/finance.jpg"
-            imageAlt="Finance your business."
-            links={financeLinks}
-          />
-        </div>
-        <div className={styles.section}>
-          <FrontPageHero
-            color="blue"
-            title="Sell to the government."
-            image="assets/images/homepage/contract.jpg"
-            imageAlt="Sell to the government."
-            links={sellLinks}
-          />
-        </div>
-        <div className={styles.sectionWithPadding + ' ' + styles.last}>
-          <Blog />
-        </div>
+        {paragraphElements.map(element => {
+          const { props: { id } } = element
+          const sectionClassName = id.startsWith('panelMenu')
+            ? styles.sectionPanelMenu
+            : styles.sectionWithPadding
+          return (
+            <div className={sectionClassName} key={id}>
+              {element}
+            </div>
+          )
+        })}
       </div>
     )
   }
 }
 
-export default Homepage
+function mapStateToProps(state) {
+  const { contentReducer: { node, siteMap } } = state
+  return { data: node, siteMap }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    ...bindActionCreators(ContentActions, dispatch),
+    ...bindActionCreators(LoadingActions, dispatch)
+  }
+}
+
+export { Homepage }
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage)

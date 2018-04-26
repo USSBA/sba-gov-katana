@@ -1,25 +1,21 @@
-@include theme(sba-blue, '.type', $sba-blue-lightest, black, $sba-blue-lightest);
-@include theme(byzantine, '.type', $byzantine-lightest, black, $byzantine-lightest);
-@include theme(money-green, '.type', $money-green-lightest, black, $money-green-lightest);
-@include theme(cobalt-blue, '.type', $cobalt-blue-lightest, black, $cobalt-blue-lightest);
-
-@include theme(sba-blue, '.number', #fff, black, $sba-blue-lightest);
-@include theme(byzantine, '.number', #fff, black, $byzantine-lightest);
-@include theme(money-green, '.number', #fff, black, $money-green-lightest);
-@include theme(cobalt-blue, '.number', #fff, black, $cobalt-blue-lightest);
-
 .type,
 .number {
   font-size: 25px;
   font-weight: bold;
-
   display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  h6 {
+    color: $secondary-black-ish !important;
+    padding-top: 6px;
+  }
+}
 
-  padding: 5px 10px 5px 10px;
-
-  border: 2px solid #bcbcbc;
+.number {
+  border: 2px solid $sba-gray-lighter;
 }
 
 .type {
-  background-color: #bcbcbc;
+  background-color: $sba-gray-lighter;
+  border: 2px solid $sba-gray-lighter;
 }

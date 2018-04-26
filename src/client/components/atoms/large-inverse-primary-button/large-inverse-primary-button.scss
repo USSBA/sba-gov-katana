@@ -1,9 +1,1 @@
-@include theme(sba-blue, '.LargeInversePrimaryButton', #fff, $sba-blue, #fff);
-@include theme(byzantine, '.LargeInversePrimaryButton', #fff, $byzantine, #fff);
-@include theme(money-green, '.LargeInversePrimaryButton', #fff, $money-green, #fff);
-@include theme(cobalt-blue, '.LargeInversePrimaryButton', #fff, $cobalt-blue, #fff);
 
-@include theme-hover(sba-blue, '.LargeInversePrimaryButton', $sba-blue-lightest, $sba-blue, $sba-blue-lightest);
-@include theme-hover(byzantine, '.LargeInversePrimaryButton', $byzantine-lightest, $byzantine, $byzantine-lightest);
-@include theme-hover(money-green, '.LargeInversePrimaryButton', $money-green-lightest, $money-green, $money-green-lightest);
-@include theme-hover(cobalt-blue, '.LargeInversePrimaryButton', $cobalt-blue-lightest, $cobalt-blue, $cobalt-blue-lightest);

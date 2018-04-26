@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import isMobile from 'ismobilejs'
 import _ from 'lodash'
 
 import CourseContent from './course-content'
@@ -50,7 +51,7 @@ class CourseView extends PureComponent {
                 <div className={styles.container + ' ' + styles.topContainer}>
                   <h1>{title}</h1>
                   {description && <Description {...this.props} />}
-                  <DecorativeDash className={styles.decorativeDash} aria-hidden="true" />
+                  <DecorativeDash aria-hidden="true" width={4.444} />
                 </div>
               </div>
             )}
@@ -93,7 +94,7 @@ const TableOfContents = props => {
       <h2 id="contentLabel">Content</h2>
       <ul role="menu" aria-labelledby="contentLabel">
         <li role="menuitem">
-          <a href="#course">Course</a>
+          <a href="#course-content">Course</a>
         </li>
         <li role="menuitem">
           <a href="#worksheets">Worksheets</a>
@@ -104,17 +105,23 @@ const TableOfContents = props => {
 }
 
 const DownloadFlash = props => {
-  return (
-    <div className={styles.downloadFlash + ' download-flash'}>
-      <div className={styles.icon}>
-        <i className="fa fa-exclamation-triangle" />
+  if (!isMobile.any) {
+    return (
+      <div className={styles.downloadFlash + ' download-flash'}>
+        <div className={styles.icon}>
+          <i className="fa fa-info-circle" />
+        </div>
+        <p>
+          This course uses Adobe Flash. Please make sure you have it installed and enabled before beginning.
+        </p>
+        <a href="https://get.adobe.com/flashplayer/" target="_blank">
+          <SmallSecondaryButton className={styles.button} text="Install Flash" />
+        </a>
       </div>
-      <p>You need to enable Flash to view this course.</p>
-      <a href="https://get.adobe.com/flashplayer/" target="_blank">
-        <SmallSecondaryButton className={styles.button} text="Learn How" />
-      </a>
-    </div>
-  )
+    )
+  }
+
+  return null
 }
 
 const Tagcloud = props => {
@@ -232,4 +239,13 @@ CourseView.propTypes = {
 
 export default CourseView
 
-export { Description, TableOfContents, DownloadFlash, Tagcloud, Worksheets, RelatedCourses, RelatedArticles, CTA }
+export {
+  Description,
+  TableOfContents,
+  DownloadFlash,
+  Tagcloud,
+  Worksheets,
+  RelatedCourses,
+  RelatedArticles,
+  CTA
+}
