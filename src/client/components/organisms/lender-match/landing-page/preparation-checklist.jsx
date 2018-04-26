@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { SmallSecondaryButton, SmallPrimaryButton } from 'atoms'
+import { Button } from 'atoms'
 import * as LocationChangeActions from '../../../../actions/navigation.js'
 import planIcon from 'assets/images/lender-match/business-plan.png'
 import fundsIcon from 'assets/images/lender-match/use-of-funds.png'
@@ -59,8 +59,12 @@ class PreparationChecklist extends React.Component {
           Have questions or need help getting prepared? Take advantage of free, local counseling.
         </p>
         <div className={styles.ButtonGroup}>
-          <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP" />
-          <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)} />
+          <Button secondary url="/tools/local-assistance">
+            Expert help
+          </Button>
+          <Button onClick={this.handleLenderMatchBtnClick.bind(this)} primary>
+            Find lenders
+          </Button>
         </div>
       </div>
     )

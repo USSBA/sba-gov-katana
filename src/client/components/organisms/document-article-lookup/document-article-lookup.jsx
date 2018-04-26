@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import styles from './document-article-lookup.scss'
-import { Button, MultiSelect, SearchIcon, SmallInverseSecondaryButton, TextInput } from 'atoms'
+import { Button, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { DetailCardCollection } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'

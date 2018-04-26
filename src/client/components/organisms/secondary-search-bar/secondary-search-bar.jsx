@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './secondary-search-bar.scss'
-import { ApplyButton, SearchIcon } from 'atoms'
+import { SearchIcon } from 'atoms'
 
 export class SecondarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {

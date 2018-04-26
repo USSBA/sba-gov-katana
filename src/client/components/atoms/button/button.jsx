@@ -5,21 +5,35 @@ import styles from './button.scss'
 import { Link } from 'atoms'
 
 const Button = props => {
-  const { alternate, children, fullWidth, icon, spacing, primary, secondary, url, ...nativeProps } = props
+  const {
+    alternate,
+    children,
+    fullWidth,
+    icon,
+    small,
+    spacing,
+    primary,
+    secondary,
+    url,
+    ...nativeProps
+  } = props
 
-  const className = `button ${classNames({
+  const className = `${classNames({
+    button: true,
     [styles.alternate]: alternate,
     [styles.fullWidth]: fullWidth,
+    [styles.large]: !small,
     [styles.link]: url,
     [styles.primary]: primary,
     [styles.responsive]: true,
     [styles.secondary]: secondary,
+    [styles.small]: small,
     [styles.spacing]: spacing
   })}`
 
   // TODO: check native props map correctly to anchor or button
   return url ? (
-    <Link {...nativeProps} to={url} className={className}>
+    <Link {...nativeProps} className={className} to={url}>
       {children}
     </Link>
   ) : (
@@ -66,8 +80,11 @@ Button.propTypes = {
   // Span button to the full width of its parent
   fullWidth: PropTypes.bool,
 
-  // Adds spacing to sibling buttons depending on context. Set to true by default.
+  // Add spacing to sibling buttons depending on context. Set to true by default.
   spacing: PropTypes.bool,
+
+  // Decrease the font size and padding of the button,
+  small: PropTypes.bool,
 
   // The location to navigate to when the button is activated. Setting this
   // prop will render the button as an anchor internally.

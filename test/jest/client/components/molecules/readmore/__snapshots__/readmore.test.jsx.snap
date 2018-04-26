@@ -42,14 +42,9 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
      
   </p>
   <button
-    autoFocus={false}
-    className="SmallSecondaryButton readMore "
-    disabled={undefined}
-    formTarget="_self"
+    className="button alternate large primary responsive spacing"
     id="text-readmore-section-3-read-more-btn"
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+    onClick={[Function]}
   >
     CLOSE
   </button>

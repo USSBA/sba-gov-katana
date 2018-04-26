@@ -76,10 +76,16 @@
   }
 }
 
+// TODO: DRY
 .applyButton {
   display: inline-block;
-  margin-top: 33px;
+  font-size: 22px;
+  margin-top: 34px;
   vertical-align: top;
+
+  > button {
+    padding: 13px 26px;
+  }
 }
 
 .table {

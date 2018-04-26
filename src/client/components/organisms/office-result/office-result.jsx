@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './office-result.scss'
 import { Address, PhoneNumber } from 'molecules'
-import { SmallSecondaryButton } from 'atoms'
+import { Button } from 'atoms'
 import PropTypes from 'prop-types'
 import clientConfig from '../../../services/client-config.js'
 
@@ -64,7 +64,9 @@ class OfficeResult extends React.PureComponent {
                 id={`office-website-button-${id}`}
                 className={styles.officeWebsiteButton + ' website-button'}
               >
-                <SmallSecondaryButton url={item.office_website[0]} text="View Website" />
+                <Button url={item.office_website[0]} secondary small>
+                  View website
+                </Button>
               </div>
             ) : null}
           </div>

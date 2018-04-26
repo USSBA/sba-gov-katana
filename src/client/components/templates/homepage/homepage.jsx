@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import styles from './homepage.scss'
 import * as ContentActions from '../../../actions/content'
 import * as LoadingActions from '../../../actions/loading'
-import { FrontPageHero, HappeningNow, Blog, MenuTileCollection } from 'organisms'
+import { FrontPageHero, MenuTileCollection } from 'organisms'
 import { makeParagraphs, wrapParagraphs, makeSectionHeaderId } from '../paragraph-mapper'
 import { findSection } from '../../../services/menu'
 

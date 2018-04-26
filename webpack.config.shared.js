@@ -90,6 +90,7 @@ module.exports = function(styleNamingFormat) {
       alias: {
         assets: path.resolve(__dirname, 'public/assets'),
         atoms: path.resolve(__dirname, 'src/client/components/atoms'),
+        styles: path.resolve(__dirname, 'src/client/styles'),
         molecules: path.resolve(__dirname, 'src/client/components/molecules'),
         organisms: path.resolve(__dirname, 'src/client/components/organisms')
       },

@@ -13,66 +13,63 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
-          className="container paginator"
+          className="paginator"
           id={undefined}
         >
-          <p
-            className="pagination-status"
-          >
-            <span>
-              Showing  
-            </span>
-            <span
-              className="bold"
+          <span>
+            Showing 
+            <strong
+              className="text-primary"
             >
               1
-                - 
-              12
-                
-            </span>
-            <span>
-              of  
-            </span>
+            </strong>
+             
             <span
-              className="bold"
+              className="spacing"
+            >
+              -
+            </span>
+             
+            <strong
+              className="text-primary"
+            >
+              12
+            </strong>
+             
+            <span
+              className="spacing"
+            >
+              of
+            </span>
+             
+            <strong
+              className="text-primary"
             >
               25
-            </span>
-          </p>
-          <span
-            className="previous-arrow"
-          >
-            <a
-              className="ArrowButton "
-              id={undefined}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              tabIndex="0"
-            >
-              <i
-                alt="previous page"
-                aria-hidden="true"
-                className=" fa fa-chevron-left"
-              />
-            </a>
+            </strong>
           </span>
-          <span
-            className="next-arrow"
+          <button
+            className="button large responsive secondary"
+            id={undefined}
+            onClick={[Function]}
           >
-            <a
-              className="ArrowButton noLeftBorder"
-              id={undefined}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              tabIndex="0"
-            >
-              <i
-                alt="next page"
-                aria-hidden="true"
-                className=" fa fa-chevron-right"
-              />
-            </a>
-          </span>
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className="fa fa-fw fa-chevron-left"
+            />
+          </button>
+          <button
+            className="button large responsive secondary"
+            id={undefined}
+            onClick={[Function]}
+          >
+            <i
+              alt="next page"
+              aria-hidden="true"
+              className="fa fa-fw fa-chevron-right"
+            />
+          </button>
         </div>
       </div>
       <div
@@ -520,66 +517,63 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
-          className="container paginator"
+          className="paginator"
           id={undefined}
         >
-          <p
-            className="pagination-status"
-          >
-            <span>
-              Showing  
-            </span>
-            <span
-              className="bold"
+          <span>
+            Showing 
+            <strong
+              className="text-primary"
             >
               1
-                - 
-              12
-                
-            </span>
-            <span>
-              of  
-            </span>
+            </strong>
+             
             <span
-              className="bold"
+              className="spacing"
+            >
+              -
+            </span>
+             
+            <strong
+              className="text-primary"
+            >
+              12
+            </strong>
+             
+            <span
+              className="spacing"
+            >
+              of
+            </span>
+             
+            <strong
+              className="text-primary"
             >
               25
-            </span>
-          </p>
-          <span
-            className="previous-arrow"
-          >
-            <a
-              className="ArrowButton "
-              id={undefined}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              tabIndex="0"
-            >
-              <i
-                alt="previous page"
-                aria-hidden="true"
-                className=" fa fa-chevron-left"
-              />
-            </a>
+            </strong>
           </span>
-          <span
-            className="next-arrow"
+          <button
+            className="button large responsive secondary"
+            id={undefined}
+            onClick={[Function]}
           >
-            <a
-              className="ArrowButton noLeftBorder"
-              id={undefined}
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              tabIndex="0"
-            >
-              <i
-                alt="next page"
-                aria-hidden="true"
-                className=" fa fa-chevron-right"
-              />
-            </a>
-          </span>
+            <i
+              alt="previous page"
+              aria-hidden="true"
+              className="fa fa-fw fa-chevron-left"
+            />
+          </button>
+          <button
+            className="button large responsive secondary"
+            id={undefined}
+            onClick={[Function]}
+          >
+            <i
+              alt="next page"
+              aria-hidden="true"
+              className="fa fa-fw fa-chevron-right"
+            />
+          </button>
         </div>
       </div>
     </div>

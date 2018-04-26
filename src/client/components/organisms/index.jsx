@@ -45,9 +45,7 @@ import Header from './header-footer/header/header.jsx'
 import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
 
 // homepage organisms
-import Blog from './homepage/blog/blog.jsx'
 import FrontPageHero from '../templates/homepage/front-page-hero/front-page-hero.jsx'
-import HappeningNow from './homepage/happening-now/happening-now.jsx'
 
 // lender match organisms
 // -- form
@@ -122,7 +120,7 @@ export {
 export { Footer, Header, MobileNav }
 
 // homepage organisms
-export { Blog, FrontPageHero, HappeningNow }
+export { FrontPageHero }
 
 // lender match organisms
 export {

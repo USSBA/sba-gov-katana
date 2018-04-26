@@ -1,10 +1,10 @@
 import Modal from 'react-modal'
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import ModalCloseIcon from 'assets/svg/modal-close-icon.svg'
 import sbaLogo from 'assets/images/logo.png'
 import styles from './sba-modal.scss'
-import { SmallPrimaryButton, SmallGreySecondaryButton } from 'atoms'
+import { Button } from 'atoms'
 
 class SbaModal extends React.Component {
   handleEnter(e) {
@@ -14,12 +14,23 @@ class SbaModal extends React.Component {
   }
 
   render() {
-    let logo = this.props.showLogo ? <img className={styles.logo} src={sbaLogo} /> : undefined
+    const {
+      cancelButtonText,
+      children,
+      okButtonText,
+      onClickOk,
+      onClose,
+      showLogo,
+      text,
+      title
+    } = this.props
+
+    let logo = showLogo ? <img className={styles.logo} src={sbaLogo} /> : undefined
     return (
       <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
         <img
           tabIndex={0}
-          onClick={this.props.onClose}
+          onClick={onClose}
           onKeyDown={e => {
             this.handleEnter(e)
           }}
@@ -27,13 +38,17 @@ class SbaModal extends React.Component {
           src={ModalCloseIcon}
         />
         {logo}
-        <h3 className={styles.title}>{this.props.title}</h3>
+        <h3 className={styles.title}>{title}</h3>
         <div className={styles.divider} />
-        <p className={styles.text}>{this.props.text}</p>
-        {this.props.children}
+        <p className={styles.text}>{text}</p>
+        {children}
         <div className={styles.btnContainer}>
-          <SmallPrimaryButton onClick={this.props.onClickOk} text={this.props.okButtonText} />
-          <SmallGreySecondaryButton onClick={this.props.onClose} text={this.props.cancelButtonText} />
+          <Button onClick={onClickOk} primary small>
+            {okButtonText}
+          </Button>
+          <Button onClick={onClose} secondary small>
+            {cancelButtonText}
+          </Button>
         </div>
       </Modal>
     )
@@ -41,15 +56,15 @@ class SbaModal extends React.Component {
 }
 
 SbaModal.propTypes = {
-  cancelButtonText: React.PropTypes.string,
-  okButtonText: React.PropTypes.string,
-  showCancel: React.PropTypes.boolean,
-  showOk: React.PropTypes.boolean,
-  title: React.PropTypes.string.isRequired,
-  text: React.PropTypes.string.isRequired,
-  showLogo: React.PropTypes.boolean,
-  onClickOk: React.PropTypes.func.isRequired,
-  onClose: React.PropTypes.func
+  cancelButtonText: PropTypes.string,
+  okButtonText: PropTypes.string,
+  showCancel: PropTypes.boolean,
+  showOk: PropTypes.boolean,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  showLogo: PropTypes.boolean,
+  onClickOk: PropTypes.func.isRequired,
+  onClose: PropTypes.func
 }
 
 SbaModal.defaultProps = {

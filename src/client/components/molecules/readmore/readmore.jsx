@@ -1,13 +1,14 @@
 import React from 'react'
 
 import styles from './readmore.scss'
-import { SmallSecondaryButton } from 'atoms'
+import { Button } from 'atoms'
 
 class ReadMore extends React.Component {
   handleClick(e) {
     e.preventDefault()
     this.props.onToggleStatus(!this.props.expanded)
   }
+
   makeExpanded(text) {
     if (text) {
       const split = text.split('\n')
@@ -54,12 +55,9 @@ class ReadMore extends React.Component {
         )}
         {expandedHr}
         {this.props.isHTML ? expandedHtmlSection : expandedTextSection}
-        <SmallSecondaryButton
-          id={this.props.parentId + '-btn'}
-          extraClassName={styles.readMore}
-          text={btnText}
-          onClick={this.handleClick.bind(this)}
-        />
+        <Button alternate id={this.props.parentId + '-btn'} onClick={this.handleClick.bind(this)} primary>
+          {btnText}
+        </Button>
       </div>
     )
   }

@@ -45,23 +45,20 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
         <div
           className="previousnext-previous-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-left"
+            />
+             
             Pick your business location
-          </button>
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-left chevronPrevious"
-        />
       </div>
       <div
         className="nextContainer"
@@ -70,23 +67,20 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
         <div
           className="previousnext-next-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
             Choose your business name
-          </button>
+             
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-right"
+            />
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-right chevronNext"
-        />
       </div>
     </div>
   </div>
@@ -111,23 +105,20 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
       <a
         className="previousnext-next-url"
       >
-        <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+        <a
+          className="button link responsive secondary small spacing"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Choose your business name
-        </button>
+           
+          <i
+            aria-hidden="true"
+            className="fa fa-chevron-right"
+          />
+        </a>
       </a>
-      <i
-        aria-hidden="true"
-        className="fa fa-chevron-right chevronNext"
-      />
     </div>
   </div>
 </div>
@@ -178,23 +169,20 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
         <div
           className="previousnext-previous-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-left"
+            />
+             
             Buy an existing business or franchise
-          </button>
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-left chevronPrevious"
-        />
       </div>
       <div
         className="nextContainer"
@@ -203,23 +191,20 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
         <div
           className="previousnext-next-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
             Choose a business structure
-          </button>
+             
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-right"
+            />
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-right chevronNext"
-        />
       </div>
     </div>
   </div>
@@ -244,23 +229,20 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
       <a
         className="previousnext-next-url"
       >
-        <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+        <a
+          className="button link responsive secondary small spacing"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Choose a business structure
-        </button>
+           
+          <i
+            aria-hidden="true"
+            className="fa fa-chevron-right"
+          />
+        </a>
       </a>
-      <i
-        aria-hidden="true"
-        className="fa fa-chevron-right chevronNext"
-      />
     </div>
   </div>
 </div>
@@ -307,14 +289,8 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
         className="previousContainerHide"
       >
         <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          className="button responsive secondary small spacing"
+          disabled={true}
         >
           No previous article
         </button>
@@ -326,23 +302,20 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
         <div
           className="previousnext-next-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
             Write your business plan
-          </button>
+             
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-right"
+            />
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-right chevronNext"
-        />
       </div>
     </div>
   </div>
@@ -367,23 +340,20 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
       <a
         className="previousnext-next-url"
       >
-        <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+        <a
+          className="button link responsive secondary small spacing"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Write your business plan
-        </button>
+           
+          <i
+            aria-hidden="true"
+            className="fa fa-chevron-right"
+          />
+        </a>
       </a>
-      <i
-        aria-hidden="true"
-        className="fa fa-chevron-right chevronNext"
-      />
     </div>
   </div>
 </div>
@@ -434,23 +404,20 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
         <div
           className="previousnext-previous-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-left"
+            />
+             
             Open a business bank account
-          </button>
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-left chevronPrevious"
-        />
       </div>
       <div
         className="nextContainer"
@@ -459,23 +426,20 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
         <div
           className="previousnext-next-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
             Manage your finances
-          </button>
+             
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-right"
+            />
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-right chevronNext"
-        />
       </div>
     </div>
   </div>
@@ -500,23 +464,20 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
       <a
         className="previousnext-next-url"
       >
-        <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+        <a
+          className="button link responsive secondary small spacing"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Manage your finances
-        </button>
+           
+          <i
+            aria-hidden="true"
+            className="fa fa-chevron-right"
+          />
+        </a>
       </a>
-      <i
-        aria-hidden="true"
-        className="fa fa-chevron-right chevronNext"
-      />
     </div>
   </div>
 </div>
@@ -558,23 +519,20 @@ exports[`PreviousNext Business Guide When in the last article of the last sectio
         <div
           className="previousnext-previous-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-left"
+            />
+             
             Native American-owned businesses
-          </button>
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-left chevronPrevious"
-        />
       </div>
       <div />
     </div>
@@ -634,23 +592,20 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
         <div
           className="previousnext-previous-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-left"
+            />
+             
             Operate as a 7(a) Lender
-          </button>
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-left chevronPrevious"
-        />
       </div>
       <div
         className="nextContainer"
@@ -659,23 +614,20 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
         <div
           className="previousnext-next-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
             Training and Courses
-          </button>
+             
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-right"
+            />
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-right chevronNext"
-        />
       </div>
     </div>
   </div>
@@ -700,23 +652,20 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
       <a
         className="previousnext-next-url"
       >
-        <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+        <a
+          className="button link responsive secondary small spacing"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Training and Courses
-        </button>
+           
+          <i
+            aria-hidden="true"
+            className="fa fa-chevron-right"
+          />
+        </a>
       </a>
-      <i
-        aria-hidden="true"
-        className="fa fa-chevron-right chevronNext"
-      />
     </div>
   </div>
 </div>
@@ -763,14 +712,8 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
         className="previousContainerHide"
       >
         <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+          className="button responsive secondary small spacing"
+          disabled={true}
         >
           No previous article
         </button>
@@ -782,23 +725,20 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
         <div
           className="previousnext-next-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
             Operate as a 7(a) Lender
-          </button>
+             
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-right"
+            />
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-right chevronNext"
-        />
       </div>
     </div>
   </div>
@@ -823,23 +763,20 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
       <a
         className="previousnext-next-url"
       >
-        <button
-          autoFocus={false}
-          className="SmallSecondaryButton  "
-          disabled={undefined}
-          formTarget="_self"
-          id={undefined}
-          onKeyPress={[Function]}
-          onTouchTap={[Function]}
-          tabIndex="0"
+        <a
+          className="button link responsive secondary small spacing"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           Operate as a 7(a) Lender
-        </button>
+           
+          <i
+            aria-hidden="true"
+            className="fa fa-chevron-right"
+          />
+        </a>
       </a>
-      <i
-        aria-hidden="true"
-        className="fa fa-chevron-right chevronNext"
-      />
     </div>
   </div>
 </div>
@@ -881,23 +818,20 @@ exports[`PreviousNext For Partners When in the last article of a section it rend
         <div
           className="previousnext-previous-url"
         >
-          <button
-            autoFocus={false}
-            className="SmallSecondaryButton  "
-            disabled={undefined}
-            formTarget="_self"
-            id={undefined}
-            onKeyPress={[Function]}
-            onTouchTap={[Function]}
-            tabIndex="0"
+          <a
+            className="button link responsive secondary small spacing"
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
           >
+            <i
+              aria-hidden="true"
+              className="fa fa-chevron-left"
+            />
+             
             Training and Courses
-          </button>
+          </a>
         </div>
-        <i
-          aria-hidden="true"
-          className="fa fa-chevron-left chevronPrevious"
-        />
       </div>
       <div />
     </div>

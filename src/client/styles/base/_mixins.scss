@@ -11,14 +11,20 @@
   }
 }
 
-@mixin for-medium-only {
-  @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large - 1) {
+@mixin for-small-and-medium-only {
+  @media (max-width: $breakpoint-large - 1) {
     @content;
   }
 }
 
 @mixin for-medium-up {
   @media (min-width: $breakpoint-medium) {
+    @content;
+  }
+}
+
+@mixin for-medium-only {
+  @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large - 1) {
     @content;
   }
 }
@@ -38,12 +44,10 @@
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
-  font-size: 1.222rem;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
   letter-spacing: 0.6px;
   line-height: 1;
-  padding: 1.063rem 1.375rem;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;

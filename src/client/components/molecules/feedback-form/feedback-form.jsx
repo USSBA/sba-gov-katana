@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import styles from './feedback-form.scss'
 import * as FeedbackActions from '../../../actions/feedback.js'
-import { SmallPrimaryButton, TextArea } from 'atoms'
+import { Button, TextArea } from 'atoms'
 
 let question = 'Was this article helpful?'
 let firstThankYou = 'Thanks for your feedback!'
@@ -60,12 +60,14 @@ class FeedbackForm extends React.Component {
           <div className={styles.maidenNameContainer}>
             <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
           </div>
-          <SmallPrimaryButton
+          <Button
             id="feedback-submit-button"
-            text="SUBMIT"
             onClick={this.handleSubmit.bind(this)}
             disabled={!this.state.feedbackText || this.state.feedbackText.length === 0}
-          />
+            primary
+          >
+            Submit
+          </Button>
         </div>
       )
     } else if (this.state.displayState === states[2]) {
@@ -86,20 +88,12 @@ class FeedbackForm extends React.Component {
         <div id="feedback-module-question" className={styles.QuestionContainer}>
           <h4 className={styles.question}>{question}</h4>
           <div>
-            <button
-              id="feedback-yes-button"
-              className={styles.GreenButton}
-              onClick={this.handleYesClick.bind(this)}
-            >
-              YES
-            </button>
-            <button
-              id="feedback-no-button"
-              className={styles.RedButton}
-              onClick={this.handleNoClick.bind(this)}
-            >
-              NO
-            </button>
+            <Button id="feedback-yes-button" onClick={this.handleYesClick.bind(this)} primary>
+              Yes
+            </Button>
+            <Button id="feedback-no-button" onClick={this.handleNoClick.bind(this)} primary>
+              No
+            </Button>
           </div>
         </div>
       )
