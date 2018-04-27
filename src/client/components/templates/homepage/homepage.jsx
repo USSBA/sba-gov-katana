@@ -21,6 +21,7 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
+    console.log('AAA, Homepage')
     const { fetchContentIfNeeded, removeLoader } = this.props
     fetchContentIfNeeded('siteMap', 'siteMap')
       .then(({ data }) => findSection(data, 'home-page'))
