@@ -40,6 +40,13 @@
     @include for-medium-up {
       margin-left: -60px;
     }
+
+    // Use vertical stacking for two buttons.
+    *[class~='button']:nth-of-type(2) {
+      @include for-medium-up {
+        margin-top: $small-spacing;
+      }
+    }
   }
 }
 
@@ -49,8 +56,8 @@
   text-align: center;
   width: 100%;
 
-  // hide the second button on small screens
-  *[class~='button']:nth-child(2) {
+  // Hide the second button on small screens.
+  > .callout *[class~='button']:nth-of-type(2) {
     @include for-small-only {
       display: none;
     }

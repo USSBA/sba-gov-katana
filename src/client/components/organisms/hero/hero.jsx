@@ -56,7 +56,13 @@ class Hero extends React.Component {
             <h5>{message}</h5>
             {buttons &&
               buttons.map((item, index) => (
-                <Button key={index} primary={index === 0} secondary={index > 0} url={item.url}>
+                <Button
+                  key={index}
+                  primary={index === 0}
+                  secondary={index > 0}
+                  spacing={!imageUrl}
+                  url={item.url}
+                >
                   {item.btnText}
                 </Button>
               ))}
