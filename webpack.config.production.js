@@ -41,7 +41,7 @@ module.exports = function(env) {
         extractComments: true,
         uglifyOptions: {
           compress: {
-            drop_console: false
+            drop_console: true
           }
         }
       }),
