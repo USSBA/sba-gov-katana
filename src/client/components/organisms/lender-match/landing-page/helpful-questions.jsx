@@ -127,15 +127,13 @@ class HelpfulQuestions extends React.Component {
             </Panel>
           </Collapse>
         </div>
-        <div className={styles.CallToAction}>
-          <div className={styles.ButtonGroup}>
-            <Button secondary url="/tools/local-assistance">
-              Expert help
-            </Button>
-            <Button onClick={this.handleLenderMatchBtnClick.bind(this)} primary>
-              Find lenders
-            </Button>
-          </div>
+        <div className={styles.buttonGroup}>
+          <Button secondary url="/tools/local-assistance">
+            Expert help
+          </Button>
+          <Button onClick={this.handleLenderMatchBtnClick.bind(this)} primary>
+            Find lenders
+          </Button>
         </div>
       </div>
     )

@@ -127,11 +127,11 @@ class PreviousNextSection extends React.Component {
           )}
           {nextArticle !== null ? (
             <div id="nextContainerMobileId" className={styles.nextContainer}>
-              <a className={'previousnext-next-url'}>
+              <div className={'previousnext-next-url'}>
                 <Button secondary small url={nextArticle.fullUrl}>
                   {nextArticle.title} <i className="fa fa-chevron-right" aria-hidden="true" />
                 </Button>
-              </a>
+              </div>
             </div>
           ) : (
             <div />

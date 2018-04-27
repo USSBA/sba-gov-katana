@@ -15,6 +15,7 @@ class PreparationChecklist extends React.Component {
   handleLenderMatchBtnClick() {
     document.location = 'https://catran.sba.gov/lendermatch/form/contact.cfm'
   }
+
   render() {
     return (
       <div id={this.props.tellMeHowAnchor} className={styles.section}>
@@ -55,10 +56,10 @@ class PreparationChecklist extends React.Component {
             caption="Industry experience isn't required, but it's helpful. Firsthand knowledge about your industry can make your lender feel confident about your loan request."
           />
         </div>
-        <p className={styles.CallToAction}>
+        <p className={styles.callToAction}>
           Have questions or need help getting prepared? Take advantage of free, local counseling.
         </p>
-        <div className={styles.ButtonGroup}>
+        <div className={styles.buttonGroup}>
           <Button secondary url="/tools/local-assistance">
             Expert help
           </Button>
