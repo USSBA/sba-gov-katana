@@ -70,10 +70,10 @@ class DetailCard extends React.Component {
           <DecorativeDash />
         </div>
         <table>
-          <tbody>
+          <tbody className={s['program-summary-table']}>
             {rows.map((row, index) => {
               return (
-                <tr key={index}>
+                <tr className={s['program-summary-data']} key={index}>
                   <td className={s.columnOne}>
                     <h6>{row.name}</h6>
                   </td>
