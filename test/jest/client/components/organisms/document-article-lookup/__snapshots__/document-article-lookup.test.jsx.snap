@@ -322,7 +322,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     />
                   </div>
                   <table>
-                    <tbody />
+                    <tbody
+                      className="program-summary-table"
+                    />
                   </table>
                 </div>
               </div>
@@ -376,7 +378,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     />
                   </div>
                   <table>
-                    <tbody />
+                    <tbody
+                      className="program-summary-table"
+                    />
                   </table>
                 </div>
               </div>
@@ -430,7 +434,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     />
                   </div>
                   <table>
-                    <tbody />
+                    <tbody
+                      className="program-summary-table"
+                    />
                   </table>
                 </div>
               </div>
@@ -488,7 +494,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     />
                   </div>
                   <table>
-                    <tbody />
+                    <tbody
+                      className="program-summary-table"
+                    />
                   </table>
                 </div>
               </div>

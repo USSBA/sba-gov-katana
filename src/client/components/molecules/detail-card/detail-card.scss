@@ -1,14 +1,15 @@
-tbody {
+.program-summary-table {
   border: none;
 }
 
-tr {
+.program-summary-data {
   border-color: white;
 }
 
-tr:nth-child(even) {
-  background-color: white;
-}
+// Not sure if needed
+// .program-summary-data:nth-child(even) {
+//   background-color: white;
+// }
 
 .container {
   border: 1px solid #bebdbd;
