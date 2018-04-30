@@ -81,9 +81,13 @@ describe('SbicContactsCsv', () => {
         // if there is a timeout then that means one of these asserts evaluated to false
         const expectedField = 'Content-Type'
         const expectedValue = 'text/csv'
-        resultField.should.equal(expectedField)
-        resultValue.should.equal(expectedValue)
-        done()
+        try {
+          resultField.should.equal(expectedField)
+          resultValue.should.equal(expectedValue)
+          done()
+        } catch (e) {
+          done(e)
+        }
       })
 
       SbicContactsCsv.downloadCsv({}, response)
@@ -102,10 +106,14 @@ describe('SbicContactsCsv', () => {
 
     it('should provide csv file to be downloaded', done => {
       response.send = sinon.spy(function(result) {
-        // if there is a timeout then that means one of these asserts evaluated to false
+        // if there is a timeout then that means this assert evaluated to false
         const expected = SbicContactsCsv.createCsvFromJson(contacts)
-        result.should.equal(expected)
-        done()
+        try {
+          result.should.equal(expected)
+          done()
+        } catch (e) {
+          done(e)
+        }
       })
 
       SbicContactsCsv.downloadCsv({}, response)
