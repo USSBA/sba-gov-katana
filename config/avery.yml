@@ -1,3 +1,6 @@
+developmentOptions:
+    client:
+        logging: true
 googleAnalytics:
     enabled: true
     accountId: UA-96147768-1
