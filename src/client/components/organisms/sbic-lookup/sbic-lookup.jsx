@@ -252,14 +252,27 @@ class SbicLookup extends React.Component {
     })
   }
 
+  downloadCsv() {
+    if (window !== undefined) {
+      window.open(SBIC_URL, '_blank')
+    }
+  }
+
   render() {
     return (
       <div>
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
           {this.renderMultiSelects()}
-          <a href={SBIC_URL} download="sbic-contacts.csv">
+          <a
+            onClick={e => {
+              e.preventDefault()
+              this.downloadCsv()
+            }}
+          >
             <SmallInverseSecondaryButton
+              // IE recognizes this button click
+              // so prevent it from firing
               onClick={e => {
                 e.preventDefault()
               }}
