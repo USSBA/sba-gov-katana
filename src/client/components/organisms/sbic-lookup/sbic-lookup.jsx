@@ -7,6 +7,7 @@ import { SmallInverseSecondaryButton, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
 
 var pageSize = 10
+const SBIC_URL = '/api/content/sbic-contacts.csv'
 class SbicLookup extends React.Component {
   constructor(ownProps) {
     super()
@@ -257,7 +258,7 @@ class SbicLookup extends React.Component {
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
           {this.renderMultiSelects()}
-          <a href="/api/content/sbic-contacts.csv" download="sbic-contacts.csv">
+          <a href={SBIC_URL} download="sbic-contacts.csv">
             <SmallInverseSecondaryButton
               onClick={e => {
                 e.preventDefault()
