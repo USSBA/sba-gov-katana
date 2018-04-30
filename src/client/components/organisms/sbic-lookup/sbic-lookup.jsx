@@ -264,22 +264,14 @@ class SbicLookup extends React.Component {
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
           {this.renderMultiSelects()}
-          <a
+          <SmallInverseSecondaryButton
             onClick={e => {
               e.preventDefault()
               this.downloadCsv()
             }}
-          >
-            <SmallInverseSecondaryButton
-              // IE recognizes this button click
-              // so prevent it from firing
-              onClick={e => {
-                e.preventDefault()
-              }}
-              extraClassName={s.downloadBtn}
-              text="download list (.XLS)"
-            />
-          </a>
+            extraClassName={s.downloadBtn}
+            text="download list (.XLS)"
+          />
         </div>
         <table className={s.table}>
           <thead>
