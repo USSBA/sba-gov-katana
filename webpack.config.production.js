@@ -5,7 +5,7 @@ const sharedConfig = require('./webpack.config.shared.js')
 var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 var CompressionPlugin = require('compression-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const DynamicPublicPathPlugin = require("dynamic-public-path-webpack-plugin")
+const DynamicPublicPathPlugin = require('dynamic-public-path-webpack-plugin')
 
 module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
@@ -38,7 +38,12 @@ module.exports = function(env) {
         }
       }),
       new UglifyJSPlugin({
-        extractComments: true
+        extractComments: true,
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
       }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.optimize.OccurrenceOrderPlugin(true),
@@ -51,10 +56,12 @@ module.exports = function(env) {
       })
     ],
     module: {
-      rules: [{
-        test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
-        loader: 'url-loader?limit=3000'
-      }]
+      rules: [
+        {
+          test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
+          loader: 'url-loader?limit=3000'
+        }
+      ]
     }
   })
 }
