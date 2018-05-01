@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import styles from './search-page.scss'
 import * as ContentActions from '../../../actions/content.js'
-import { Link, SmallPrimaryButton, TextInput } from 'atoms'
+import { Button, Link, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { logPageEvent } from '../../../services/analytics.js'
 
@@ -246,16 +246,19 @@ const SearchBar = props => {
         />
       </div>
       <div className={styles.searchButton}>
-        <SmallPrimaryButton
+        <Button
+          alternate
+          aria-controls="results-list"
           id="submit-button"
-          text="Search"
           onClick={() => {
             if (newSearchTerm.length > 0) {
               onSubmit(1)
             }
           }}
-          aria-controls="results-list"
-        />
+          primary
+        >
+          Search
+        </Button>
       </div>
     </div>
   )

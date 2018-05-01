@@ -15,7 +15,7 @@ import {
 } from 'lodash'
 import { bindActionCreators } from 'redux'
 
-import { ApplyButton, MultiSelect, TextInput, SearchIcon } from 'atoms'
+import { MultiSelect, TextInput, SearchIcon } from 'atoms'
 import { Paginator } from 'molecules'
 import { PrimarySearchBar, CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'

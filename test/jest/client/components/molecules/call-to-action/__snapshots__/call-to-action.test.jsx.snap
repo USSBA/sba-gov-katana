@@ -45,7 +45,7 @@ exports[`CallToAction renders a button only 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="button alternate link primary responsive spacing"
+        className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"
       >
         Call To Action
@@ -100,7 +100,7 @@ exports[`CallToAction renders a large size 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="button alternate link primary responsive spacing"
+        className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"
       >
         Call To Action
@@ -155,7 +155,7 @@ exports[`CallToAction renders a medium size 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="button alternate link primary responsive spacing"
+        className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"
       >
         Call To Action
@@ -210,7 +210,7 @@ exports[`CallToAction renders a small size 1`] = `
         This is the blurb for the CTA.
       </p>
       <a
-        className="button alternate link primary responsive spacing"
+        className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"
       >
         Call To Action

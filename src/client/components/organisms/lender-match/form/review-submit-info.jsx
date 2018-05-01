@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { startCase } from 'lodash'
-import { SmallGreySecondaryButton } from 'atoms'
+import { Button } from 'atoms'
 import { FormPageButtons } from 'molecules'
 
 import * as LenderMatchActions from '../../../../actions/lender-match.js'
@@ -90,13 +90,17 @@ class ReviewSubmitInfoForm extends React.Component {
 
 const EditButton = props => {
   return (
-    <SmallGreySecondaryButton
-      id={props.parentId + '-edit-button'}
-      extraClassName={styles.editButton}
-      autoFocus={props.autofocus}
-      onClick={props.onEditClick}
-      text="EDIT"
-    />
+    <div className={styles.editButton}>
+      <Button
+        autoFocus={props.autoFocus}
+        id={`${props.parentId}-edit-button`}
+        onClick={props.onEditClick}
+        secondary
+        small
+      >
+        Edit
+      </Button>
+    </div>
   )
 }
 

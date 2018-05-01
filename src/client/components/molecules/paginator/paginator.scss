@@ -1,12 +1,40 @@
-.bold {
-  font-weight: 700;
+.paginator {
+  button {
+    // Remove inside borders rendered through the box shadow hack.
+    box-shadow: none !important;
+    // Use normal borders because we need the right border of the first button
+    // to be hidden.
+    border: 2px solid $sba-blue;
+    font-size: 18px;
+    padding: 10px 7px;
+
+    &:hover {
+      border-color: $secondary-blue-light;
+    }
+
+    // TODO: Not sure why this is necessary.
+    &:focus {
+      border: 2px solid;
+    }
+  }
+
+  button:first-of-type {
+    border-right-width: 0;
+    margin-left: 15px;
+
+    // Ensure the whole button is highlighed (even with the border hiding) when
+    // hovered.
+    &:hover {
+      border-right-width: 2px;
+
+      + button {
+        border-left-width: 0;
+      }
+    }
+  }
 }
 
-.container {
-}
-
-.container p {
-  display: inline;
-  // @include font-size($h5-font-sizes);
-  margin-right: 0.5em;
+.spacing {
+  padding-left: 2px;
+  padding-right: 2px;
 }

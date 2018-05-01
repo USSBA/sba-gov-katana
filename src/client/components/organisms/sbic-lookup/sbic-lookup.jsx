@@ -3,7 +3,7 @@ import json2csv from 'json2csv'
 import { pick } from 'lodash'
 
 import s from './sbic-lookup.scss'
-import { SmallInverseSecondaryButton, MultiSelect } from 'atoms'
+import { Button, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
 
 var pageSize = 10
@@ -101,10 +101,6 @@ class SbicLookup extends React.Component {
       let csv = json2csv({ data: this.state.contacts, fields: fields })
       this.setState({ contactsCsv: csv })
     }
-  }
-
-  createDownloadHref() {
-    return 'data:text/plain;charset=utf-8,' + encodeURIComponent(this.state.contactsCsv)
   }
 
   renderMultiSelects() {
@@ -263,15 +259,17 @@ class SbicLookup extends React.Component {
       <div>
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
-          {this.renderMultiSelects()}
-          <SmallInverseSecondaryButton
-            onClick={e => {
-              e.preventDefault()
-              this.downloadCsv()
-            }}
-            extraClassName={s.downloadBtn}
-            text="download list (.XLS)"
-          />
+          <div className={s.downloadBtn}>
+            <Button
+              children="Download list (.XLS)"
+              onClick={e => {
+                e.preventDefault()
+                this.downloadCsv()
+              }}
+              secondary
+              small
+            />
+          </div>
         </div>
         <table className={s.table}>
           <thead>

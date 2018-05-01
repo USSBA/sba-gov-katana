@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import { submitProfile } from '../../../actions/resource-center-profile'
 import React from 'react'
 import {
+  Button,
   CheckBox,
-  Radio,
   Checkbox,
-  MultiSelect,
-  TextInput,
-  LargePrimaryButton,
   FormErrorMessage,
-  TextArea
+  MultiSelect,
+  Radio,
+  TextArea,
+  TextInput
 } from 'atoms'
 import _ from 'lodash'
 import {
@@ -738,7 +738,9 @@ class ResourceCenterProfilePage extends React.Component {
 
             {this.renderLanguageCheckboxes()}
             <div className={style.submitButton} onClick={this.handleSubmit.bind(this)}>
-              <LargePrimaryButton id={idPrefix + 'form-submit-button'} text="SUBMIT" url="" />
+              <Button id={idPrefix + 'form-submit-button'} primary>
+                Submit
+              </Button>
             </div>
             {_.some(isFieldValid, field => {
               return field === false

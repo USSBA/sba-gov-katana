@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Hero } from 'organisms'
 
 class FindLendersIntro extends React.Component {
@@ -19,10 +20,11 @@ class FindLendersIntro extends React.Component {
     let buttonsArray = [
       {
         url: 'https://catran.sba.gov/lendermatch/form/contact.cfm',
-        btnText: 'FIND LENDERS',
-        btnType: 'LargeInversePrimaryButton'
+        btnText: 'FIND LENDERS'
       }
     ]
+
+    // TODO: Hero can probably use a render prop.
     return (
       <Hero
         title={calloutTitle}

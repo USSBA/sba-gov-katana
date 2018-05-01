@@ -13,7 +13,7 @@ describe('<CourseContent />', () => {
   const component = mount(<CourseContent {...sharedProps} />)
 
   test('initially has a button in an overlay', () => {
-    const result = component.find('.course-overlay LargePrimaryButton').length
+    const result = component.find('.course-overlay Button').length
     const expected = 1
 
     expect(result).toEqual(expected)

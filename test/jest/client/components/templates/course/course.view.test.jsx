@@ -168,7 +168,7 @@ describe('<CourseView />', () => {
 
     test('has "See All Courses" button', () => {
       const component = shallow(<RelatedCourses {...props} />)
-      const result = component.find('LargeSecondaryButton').length
+      const result = component.find('Button').length
       const expected = 1
 
       expect(result).toEqual(expected)

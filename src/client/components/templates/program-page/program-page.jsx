@@ -10,13 +10,15 @@ class ProgramPage extends React.Component {
       button: { category: 'Program-Page-Paragraph-ButtonCTA' },
       childPageMenu: { category: 'Program-Details-Learn-More' }
     }
-    let paragraphList = paragraphMapper.makeParagraphs(
+
+    const paragraphList = paragraphMapper.makeParagraphs(
       paragraphData,
       null,
       this.props.lineage,
       paragraphEventConfig
     )
-    let wrapperClassMapping = {
+
+    const wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
       readMore: styles.readMore,
@@ -47,12 +49,7 @@ class ProgramPage extends React.Component {
         : buttons.map((button, index) => {
             return {
               url: button.url,
-              btnText: button.title,
-              btnType: index === 0 ? 'LargeInversePrimaryButton' : 'LargePrimaryButton',
-              eventConfig: {
-                category: 'Program-Landing-CTA',
-                action: button.title
-              }
+              btnText: button.title
             }
           })
 

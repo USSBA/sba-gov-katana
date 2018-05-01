@@ -1,9 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
+import styles from './leave-sba-modal.scss'
+import { Link } from 'atoms'
 import { SbaModal } from 'molecules'
 import * as ModalActions from '../../../../actions/show-modal.js'
-import styles from './leave-sba-modal.scss'
 
 class LeaveSbaModal extends React.Component {
   continueLink() {
@@ -12,9 +14,12 @@ class LeaveSbaModal extends React.Component {
   }
 
   render() {
+    const { actions: { closeLeaveSba }, url } = this.props
+
     const title = "You're leaving the Small Business Administration website."
     const text =
       'This link is provided for your reference only. The SBA doesn’t endorse non-government websites, companies, or applications. The SBA doesn’t attest to the accuracy of information provided by third-parties and other linked sites.'
+
     return (
       <SbaModal
         showLogo={true}
@@ -22,15 +27,13 @@ class LeaveSbaModal extends React.Component {
         text={text}
         cancelButtonText="CANCEL"
         okButtonText="CONTINUE"
-        onClose={this.props.actions.closeLeaveSba}
+        onClose={closeLeaveSba}
         onClickOk={this.continueLink.bind(this)}
       >
         <div className={styles.linkContainer}>
           <span>Link to website:</span>
           <br />
-          <a className={styles.link} tabIndex="0" onClick={this.continueLink.bind(this)}>
-            {this.props.url}
-          </a>
+          <Link to={url}>{url}</Link>
         </div>
       </SbaModal>
     )

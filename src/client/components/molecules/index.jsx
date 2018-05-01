@@ -24,7 +24,6 @@ import QuickLinks from './quick-links/quick-links'
 import ReadMore from './readmore/readmore'
 import ReadMoreSection from './readmore-section/readmore-section'
 import RemoveMainLoader from './main-loader/remove-main-loader'
-import ResourceCard from './resource-card/resource-card'
 import SbaModal from './sba-modal/sba-modal'
 import SbaNewsModal from './news-modal/news-modal'
 import SearchBar from './search-bar/search-bar'
@@ -60,7 +59,6 @@ export {
   ReadMore,
   ReadMoreSection,
   RemoveMainLoader,
-  ResourceCard,
   SbaModal,
   SbaNewsModal,
   SearchBar,
