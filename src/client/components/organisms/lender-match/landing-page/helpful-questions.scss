@@ -1,46 +1,31 @@
+.buttonGroup {
+  margin-top: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
 .section {
   margin-bottom: 50px;
 }
 
-.ButtonGroup {
-  @include grid-container;
-}
-
 @include grid-media($sba-grid-small) {
-  .section h2 {
-    @include grid-column(6, $sba-grid-small);
-  }
-
-  .mobileFAQs {
-    @include grid-column(6, $mobile-0gutter);
-    margin-bottom: 25px;
-  }
   .desktopFAQs {
     display: none;
   }
 
-  .ButtonGroup button {
-    @include grid-column(6);
-  }
-
-  .ButtonGroup button:first-child {
-    margin-bottom: 20px;
+  .mobileFAQs {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
 @include grid-media($sba-grid-medium) {
-  .section h2 {
-    @include grid-column(12);
-  }
   .mobileFAQs {
     display: none;
   }
-
-  .ButtonGroup button {
-    @include grid-column(3);
-    @include grid-shift(3);
-  }
 }
 
-@include grid-media($sba-grid-large) {
+// TODO: stopgap in removing the grid
+.section h2 {
+  padding-left: 30px;
 }

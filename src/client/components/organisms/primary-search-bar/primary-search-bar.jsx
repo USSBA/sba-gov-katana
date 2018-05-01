@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './primary-search-bar.scss'
-import { ApplyButton, SearchIcon } from 'atoms'
+import { Button, SearchIcon } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
@@ -14,7 +14,10 @@ export class PrimarySearchBar extends React.PureComponent {
   onSearch() {
     if (this.props.onSearch) {
       this.props.onSearch()
+      return false
     }
+
+    return true
   }
 
   render() {
@@ -35,16 +38,19 @@ export class PrimarySearchBar extends React.PureComponent {
           <h2 id={`${id ? id : 'primary-search-bar'}-title`} className={styles.header}>
             {this.props.title}
           </h2>
-          <div>
+          <form>
             {childrenWithProps}
             <div className={styles.applyButton}>
-              <ApplyButton
+              <Button
+                primary
+                alternate
                 id={`${id ? id : 'primary-search-bar'}-search-button`}
-                submit={this.onSearch.bind(this)}
-                text={this.props.searchButtonText}
-              />
+                onClick={this.onSearch.bind(this)}
+              >
+                {this.props.searchButtonText}
+              </Button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     )

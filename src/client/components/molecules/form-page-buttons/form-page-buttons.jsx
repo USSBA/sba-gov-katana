@@ -1,34 +1,37 @@
 import React from 'react'
-import _ from 'lodash'
-
-import { SmallGraySecondaryFormButton, SmallPrimaryFormButton } from 'atoms'
+import { kebabCase } from 'lodash'
 
 import styles from './form-page-buttons.scss'
+import { Button } from 'atoms'
 
-class FormPageButtons extends React.Component {
-  render() {
-    return (
-      <div
-        className={styles.container + ' ' + (this.props.continueButtonFullWidth ? styles.oneButton : '')}
+const FormPageButtons = props => {
+  const {
+    backButtonText,
+    backButtonHandler,
+    continueButtonDisabled,
+    continueButtonFullWidth,
+    continueButtonHandler,
+    continueButtonText,
+    showBackButton
+  } = props
+
+  return (
+    <div className={styles.container + ' ' + (continueButtonFullWidth ? styles.oneButton : '')}>
+      {showBackButton ? (
+        <Button id={`${parentId}-${kebabCase(backButtonText)}`} onClick={backButtonHandler} secondary>
+          {backButtonText}
+        </Button>
+      ) : null}
+      <Button
+        id={`${parentId}-${kebabCase(continueButtonText)}`}
+        disabled={continueButtonDisabled}
+        onClick={continueButtonHandler}
+        primary
       >
-        {this.props.showBackButton ? (
-          <SmallGraySecondaryFormButton
-            id={this.props.parentId + '-' + _.kebabCase(this.props.backButtonText)}
-            text={this.props.backButtonText}
-            onClick={this.props.backButtonHandler}
-          />
-        ) : (
-          ''
-        )}
-        <SmallPrimaryFormButton
-          id={this.props.parentId + '-' + _.kebabCase(this.props.continueButtonText)}
-          text={this.props.continueButtonText}
-          disabled={this.props.continueButtonDisabled}
-          onClick={this.props.continueButtonHandler}
-        />
-      </div>
-    )
-  }
+        {continueButtonText}
+      </Button>
+    </div>
+  )
 }
 
 FormPageButtons.defaultProps = {

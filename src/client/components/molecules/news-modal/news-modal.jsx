@@ -11,7 +11,7 @@ import exitIcon from 'assets/svg/close_button.svg'
 import styles from './news-modal.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { TextInput, NewsletterSmallPrimaryButton } from 'atoms'
+import { Button, TextInput } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
 import {
   containsErrorOrNull,
@@ -183,11 +183,9 @@ class SbaNewsModal extends React.Component {
                 />
               </div>
               <div className={styles.btnContainer}>
-                <NewsletterSmallPrimaryButton
-                  text="SUBSCRIBE"
-                  type="submit"
-                  disabled={!this.isValidForm()}
-                />
+                <Button disabled={!this.isValidForm()} primary small type="submit">
+                  Subscribe
+                </Button>
               </div>
             </div>
             <p className={styles.privacyLinkContainer}>

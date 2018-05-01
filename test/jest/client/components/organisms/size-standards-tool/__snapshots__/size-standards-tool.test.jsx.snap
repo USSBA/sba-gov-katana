@@ -32,18 +32,17 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
     <br />
     employees over the last 12 months.
   </p>
-  <button
-    autoFocus={false}
-    className="LargePrimaryButton  button submit-button"
-    disabled={true}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+  <div
+    className="button submit-button"
   >
-    SEE RESULTS
-  </button>
+    <button
+      className="button large primary responsive spacing"
+      disabled={true}
+      onClick={[Function]}
+    >
+      See results
+    </button>
+  </div>
 </div>
 `;
 
@@ -108,16 +107,12 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div>
+  <div
+    className="button submit-button"
+  >
     <button
-      autoFocus={false}
-      className="LargePrimaryButton  button submit-button"
-      disabled={undefined}
-      formTarget="_self"
-      id={undefined}
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      className="button large primary responsive spacing"
+      onClick={[Function]}
     >
       Next
     </button>
@@ -316,18 +311,17 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
   <p>
     Your revenue is determined by your annual receipts, or total income plus cost of goods sold.
   </p>
-  <button
-    autoFocus={false}
-    className="LargePrimaryButton  button submit-button"
-    disabled={true}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+  <div
+    className="button submit-button"
   >
-    SEE RESULTS
-  </button>
+    <button
+      className="button alternate large primary responsive spacing"
+      disabled={true}
+      onClick={[Function]}
+    >
+      See results
+    </button>
+  </div>
 </div>
 `;
 
@@ -345,18 +339,16 @@ exports[`SizeStandardsTool StartScreen should match snapshot 1`] = `
   <p>
     Do you qualify as a small business for government contracting purposes?
   </p>
-  <button
-    autoFocus={false}
-    className="LargePrimaryButton  button submit-button"
-    disabled={undefined}
-    formTarget="_self"
-    id={undefined}
-    onKeyPress={[Function]}
-    onTouchTap={[Function]}
-    tabIndex="0"
+  <div
+    className="button submit-button"
   >
-    Start
-  </button>
+    <button
+      className="button large primary responsive spacing"
+      onClick={[Function]}
+    >
+      Start
+    </button>
+  </div>
 </div>
 `;
 
@@ -382,18 +374,16 @@ exports[`SizeStandardsTool should match snapshot 1`] = `
       <p>
         Do you qualify as a small business for government contracting purposes?
       </p>
-      <button
-        autoFocus={false}
-        className="LargePrimaryButton  button submit-button"
-        disabled={undefined}
-        formTarget="_self"
-        id={undefined}
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+      <div
+        className="button submit-button"
       >
-        Start
-      </button>
+        <button
+          className="button large primary responsive spacing"
+          onClick={[Function]}
+        >
+          Start
+        </button>
+      </div>
     </div>
   </div>
 </div>

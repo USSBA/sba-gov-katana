@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { SmallSecondaryButton, SmallPrimaryButton } from 'atoms'
+import { Button } from 'atoms'
 import * as LocationChangeActions from '../../../../actions/navigation.js'
 import styles from './helpful-questions.scss'
 import thumbNail from '../../../../../../public/assets/images/placeholder370x170.png'
@@ -127,11 +127,13 @@ class HelpfulQuestions extends React.Component {
             </Panel>
           </Collapse>
         </div>
-        <div className={styles.CallToAction}>
-          <div className={styles.ButtonGroup}>
-            <SmallSecondaryButton url="/tools/local-assistance" text="EXPERT HELP" />
-            <SmallPrimaryButton text="FIND LENDERS" onClick={this.handleLenderMatchBtnClick.bind(this)} />
-          </div>
+        <div className={styles.buttonGroup}>
+          <Button secondary url="/tools/local-assistance">
+            Expert help
+          </Button>
+          <Button onClick={this.handleLenderMatchBtnClick.bind(this)} primary>
+            Find lenders
+          </Button>
         </div>
       </div>
     )

@@ -2,7 +2,7 @@ import React, { PropTypes, PureComponent } from 'react'
 import isMobile from 'ismobilejs'
 
 import styles from './course-content.scss'
-import { LargePrimaryButton } from 'atoms'
+import { Button } from 'atoms'
 import { ReadMore } from 'molecules'
 import { logEvent } from '../../../services/analytics'
 import { eventCategories } from '../../../services/constants'
@@ -21,7 +21,9 @@ const Overlay = ({ isStarted, onClick }) => {
   } else {
     if (!isStarted) {
       return renderOverlay(
-        <LargePrimaryButton text={buttonText} url="javascript:;" ariaLabel={buttonText} />
+        <Button aria-label={buttonText} primary>
+          {buttonText}
+        </Button>
       )
     }
 

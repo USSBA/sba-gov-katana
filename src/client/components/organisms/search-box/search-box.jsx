@@ -1,7 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
 
-import { LargeInversePrimaryButton, MultiSelect, SearchIcon, TextInput } from 'atoms'
+import { Button, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import styles from './search-box.scss'
 import { logPageEvent } from '../../../services/analytics.js'
 import { navigateNow } from '../../../services/navigation.js'
@@ -114,7 +114,7 @@ class SearchBox extends React.Component {
     }
   }
 
-  handleOnClick() {
+  handleClick() {
     logPageEvent({
       category: _.kebabCase('Documentation-Lookup-Ancillary'),
       action: `Search CTA-Click:
@@ -171,11 +171,9 @@ class SearchBox extends React.Component {
             return this.renderMultiSelect(filterName)
           })}
           <div className={styles.clear} />
-          <LargeInversePrimaryButton
-            onClick={this.handleOnClick.bind(this)}
-            className={styles.submitButton}
-            text="Search"
-          />
+          <Button alternate className={styles.submitButton} onClick={this.handleClick.bind(this)} primary>
+            Search
+          </Button>
         </div>
       </div>
     )

@@ -42,16 +42,16 @@ describe('searchBox', () => {
 
   test('has 1 Submit Button Component', () => {
     const component = shallow(<SearchBox />)
-    expect(component.find('LargeInversePrimaryButton')).toHaveLength(1)
+    expect(component.find('Button')).toHaveLength(1)
   })
 
   test("Submit Button Component reads, 'Search'", () => {
     const mockText = 'Search'
     const component = shallow(<SearchBox />)
     const expectedText = component
-      .find('LargeInversePrimaryButton')
+      .find('Button')
       .first()
-      .props().text
+      .props().children
     expect(expectedText).toBe(mockText)
   })
 

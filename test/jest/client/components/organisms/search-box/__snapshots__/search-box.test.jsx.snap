@@ -251,11 +251,15 @@ ShallowWrapper {
         <div
             className="clear"
         />
-        <LargeInversePrimaryButton
+        <Button
+            alternate={true}
             className="submitButton"
             onClick={[Function]}
-            text="Search"
-        />
+            primary={true}
+            spacing={true}
+        >
+            Search
+        </Button>
     </div>
 </div>,
   "nodes": Array [
@@ -502,11 +506,15 @@ ShallowWrapper {
             <div
                   className="clear"
             />
-            <LargeInversePrimaryButton
+            <Button
+                  alternate={true}
                   className="submitButton"
                   onClick={[Function]}
-                  text="Search"
-            />
+                  primary={true}
+                  spacing={true}
+            >
+                  Search
+            </Button>
       </div>
 </div>,
   ],
@@ -888,11 +896,15 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
         "_debugID": 12,
@@ -1139,11 +1151,15 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
       },
@@ -1463,11 +1479,15 @@ ShallowWrapper {
         <div
             className="clear"
         />
-        <LargeInversePrimaryButton
+        <Button
+            alternate={true}
             className="submitButton"
             onClick={[Function]}
-            text="Search"
-        />
+            primary={true}
+            spacing={true}
+        >
+            Search
+        </Button>
     </div>
 </div>,
   "nodes": Array [
@@ -1714,11 +1734,15 @@ ShallowWrapper {
             <div
                   className="clear"
             />
-            <LargeInversePrimaryButton
+            <Button
+                  alternate={true}
                   className="submitButton"
                   onClick={[Function]}
-                  text="Search"
-            />
+                  primary={true}
+                  spacing={true}
+            >
+                  Search
+            </Button>
       </div>
 </div>,
   ],
@@ -1780,7 +1804,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
 />,
-      "_debugID": 75,
+      "_debugID": 73,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -1850,7 +1874,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 23,
+      "_mountOrder": 21,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -2100,14 +2124,18 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
-        "_debugID": 76,
+        "_debugID": 74,
         "_renderedOutput": <div
           className="container"
 >
@@ -2351,11 +2379,15 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
       },
@@ -2674,14 +2706,8 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="clear"
     />
     <button
-      autoFocus={false}
-      className="LargeInversePrimaryButton  submitButton"
-      disabled={undefined}
-      formTarget="_self"
-      id={undefined}
-      onKeyPress={[Function]}
-      onTouchTap={[Function]}
-      tabIndex="0"
+      className="button alternate large primary responsive spacing"
+      onClick={[Function]}
     >
       Search
     </button>
@@ -2940,11 +2966,15 @@ ShallowWrapper {
         <div
             className="clear"
         />
-        <LargeInversePrimaryButton
+        <Button
+            alternate={true}
             className="submitButton"
             onClick={[Function]}
-            text="Search"
-        />
+            primary={true}
+            spacing={true}
+        >
+            Search
+        </Button>
     </div>
 </div>,
   "nodes": Array [
@@ -3191,11 +3221,15 @@ ShallowWrapper {
             <div
                   className="clear"
             />
-            <LargeInversePrimaryButton
+            <Button
+                  alternate={true}
                   className="submitButton"
                   onClick={[Function]}
-                  text="Search"
-            />
+                  primary={true}
+                  spacing={true}
+            >
+                  Search
+            </Button>
       </div>
 </div>,
   ],
@@ -3257,7 +3291,7 @@ ShallowWrapper {
         sectionHeaderText="new title"
         subtitleText="new subtitle"
 />,
-      "_debugID": 77,
+      "_debugID": 75,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -3327,7 +3361,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 24,
+      "_mountOrder": 22,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -3577,14 +3611,18 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
-        "_debugID": 78,
+        "_debugID": 76,
         "_renderedOutput": <div
           className="container"
 >
@@ -3828,11 +3866,15 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
       },
@@ -4152,11 +4194,15 @@ ShallowWrapper {
         <div
             className="clear"
         />
-        <LargeInversePrimaryButton
+        <Button
+            alternate={true}
             className="submitButton"
             onClick={[Function]}
-            text="Search"
-        />
+            primary={true}
+            spacing={true}
+        >
+            Search
+        </Button>
     </div>
 </div>,
   "nodes": Array [
@@ -4403,11 +4449,15 @@ ShallowWrapper {
             <div
                   className="clear"
             />
-            <LargeInversePrimaryButton
+            <Button
+                  alternate={true}
                   className="submitButton"
                   onClick={[Function]}
-                  text="Search"
-            />
+                  primary={true}
+                  spacing={true}
+            >
+                  Search
+            </Button>
       </div>
 </div>,
   ],
@@ -4469,7 +4519,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
 />,
-      "_debugID": 73,
+      "_debugID": 71,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -4539,7 +4589,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 22,
+      "_mountOrder": 20,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -4789,14 +4839,18 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
-        "_debugID": 74,
+        "_debugID": 72,
         "_renderedOutput": <div
           className="container"
 >
@@ -5040,11 +5094,15 @@ ShallowWrapper {
                     <div
                               className="clear"
                     />
-                    <LargeInversePrimaryButton
+                    <Button
+                              alternate={true}
                               className="submitButton"
                               onClick={[Function]}
-                              text="Search"
-                    />
+                              primary={true}
+                              spacing={true}
+                    >
+                              Search
+                    </Button>
           </div>
 </div>,
       },

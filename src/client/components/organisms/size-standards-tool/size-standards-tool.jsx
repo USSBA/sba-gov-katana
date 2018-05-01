@@ -5,13 +5,7 @@ import axios from 'axios'
 
 import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/Size_standards_graphic.png'
 import styles from './size-standards-tool.scss'
-import {
-  LargePrimaryButton,
-  SearchIcon,
-  SmallInversePrimaryButton,
-  SmallPrimaryButton,
-  TextInput
-} from 'atoms'
+import { Button, SearchIcon, TextInput } from 'atoms'
 import { NaicsLookup } from 'molecules'
 
 const formatRevenueLimit = revenueLimit => {
@@ -258,15 +252,16 @@ class SizeStandardsTool extends PureComponent {
     const { buttonText, sectionTarget } = data
 
     return (
-      <div className={styles.appBar}>
-        <SmallInversePrimaryButton
-          className={'back-button'}
-          text={buttonText}
+      <div className={`${styles.appBar} back-button`}>
+        <Button
           onClick={() => {
             this.gotoSection(sectionTarget)
             this.setFocusTo('size-standards-tool')
           }}
-        />
+          secondary
+        >
+          {buttonText}
+        </Button>
       </div>
     )
   }
@@ -365,13 +360,11 @@ const StartScreen = props => {
 
       <p>Do you qualify as a small business for government contracting purposes?</p>
 
-      <LargePrimaryButton
-        className={styles.button + ' submit-button'}
-        text="Start"
-        onClick={() => {
-          props.gotoSection('NAICS')
-        }}
-      />
+      <div className={`${styles.button} submit-button`}>
+        <Button onClick={() => props.gotoSection('NAICS')} primary>
+          Start
+        </Button>
+      </div>
     </div>
   )
 }
@@ -596,10 +589,8 @@ class NaicsScreen extends PureComponent {
         )}
 
         {selectedNaicsCodes.length > 0 && (
-          <div>
-            <LargePrimaryButton
-              className={styles.button + ' submit-button'}
-              text="Next"
+          <div className={`${styles.button} submit-button`}>
+            <Button
               onClick={() => {
                 let sectionTarget = 'NO_SECTION_SET'
 
@@ -611,7 +602,10 @@ class NaicsScreen extends PureComponent {
 
                 this.props.gotoSection(sectionTarget)
               }}
-            />
+              primary
+            >
+              Next
+            </Button>
           </div>
         )}
       </div>
@@ -656,14 +650,16 @@ const RevenueScreen = props => {
 
       <p>Your revenue is determined by your annual receipts, or total income plus cost of goods sold.</p>
 
-      <LargePrimaryButton
-        className={styles.button + ' submit-button'}
-        text={shouldShowEmployeesSection ? 'NEXT' : 'SEE RESULTS'}
-        disabled={!(revenueTotal > 0)}
-        onClick={() => {
-          props.gotoSection(shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS')
-        }}
-      />
+      <div className={`${styles.button} submit-button`}>
+        <Button
+          alternate
+          disabled={!(revenueTotal > 0)}
+          onClick={() => props.gotoSection(shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS')}
+          primary
+        >
+          {shouldShowEmployeesSection ? 'Next' : 'See results'}
+        </Button>
+      </div>
     </div>
   )
 }
@@ -704,14 +700,11 @@ const EmployeesScreen = props => {
         This should be the average number of full-time or part-time <br />employees over the last 12 months.
       </p>
 
-      <LargePrimaryButton
-        className={styles.button + ' submit-button'}
-        text="SEE RESULTS"
-        disabled={!(employeeTotal > 0)}
-        onClick={() => {
-          props.gotoSection('RESULTS')
-        }}
-      />
+      <div className={`${styles.button} submit-button`}>
+        <Button disabled={!(employeeTotal > 0)} onClick={() => props.gotoSection('RESULTS')} primary>
+          See results
+        </Button>
+      </div>
     </div>
   )
 }

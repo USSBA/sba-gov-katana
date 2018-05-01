@@ -5,7 +5,7 @@ import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty } from '
 import { bindActionCreators } from 'redux'
 
 import styles from './global-search.scss'
-import { ApplyButton, MultiSelect } from 'atoms'
+import { Button, MultiSelect } from 'atoms'
 import { CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'
 import { logPageEvent } from '../../../services/analytics.js'
@@ -139,12 +139,17 @@ export class GlobalSearch extends React.PureComponent {
   onReset() {
     if (this.props.type === 'courses') {
       this.setState({ filterValues: { businessStage: 'All' } }, () => {
-        this.onSubmit()
+        this.submit()
       })
     }
   }
 
-  onSubmit() {
+  onSubmit(e) {
+    e.preventDefault()
+    this.submit()
+  }
+
+  submit() {
     const queryParams = this.props.location.query
     let query
 
@@ -193,12 +198,14 @@ export class GlobalSearch extends React.PureComponent {
         <div className={styles.banner}>
           <h2 className={styles.header}>{this.props.title}</h2>
           {this.props.taxonomies && (
-            <div>
+            <form onSubmit={this.onSubmit.bind(this)}>
               {this.renderMultiSelects(this.props.taxonomies)}
               <div className={styles.applyButton}>
-                <ApplyButton submit={this.onSubmit.bind(this)} />
+                <Button primary alternate type="submit">
+                  Apply
+                </Button>
               </div>
-            </div>
+            </form>
           )}
         </div>
         {this.props.items && <div>{this.renderItems(this.props.items)}</div>}

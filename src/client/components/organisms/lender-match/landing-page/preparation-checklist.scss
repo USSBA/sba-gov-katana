@@ -8,10 +8,12 @@
   padding: 3vw;
   border: 1px solid #c4c4c4;
   margin-bottom: 20px;
+
   img {
     margin-bottom: 10px;
     width: 25px;
   }
+
   hr {
     width: 40px;
     border-bottom: 2px solid #609f00;
@@ -19,26 +21,19 @@
   }
 }
 
-.CallToAction {
+.buttonGroup,
+.callToAction {
   text-align: center;
 }
 
-.ButtonGroup {
-  @include grid-container;
+.buttonGroup {
+  padding: 1rem;
 }
 
 @include grid-media($sba-grid-small) {
   .section h2,
   .section h5 {
     @include grid-column(6, $sba-grid-small);
-  }
-  .ButtonGroup button,
-  .CallToAction {
-    @include grid-column(6);
-  }
-
-  .ButtonGroup button:first-child {
-    margin-bottom: 20px;
   }
 }
 
@@ -47,15 +42,11 @@
   .section h5 {
     @include grid-column(12);
   }
+
   .card {
     @include grid-column(4);
     min-height: 250px;
     height: 350px;
-  }
-
-  .ButtonGroup button {
-    @include grid-column(3);
-    @include grid-shift(3);
   }
 }
 

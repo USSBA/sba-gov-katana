@@ -4,7 +4,7 @@ import _ from 'lodash'
 
 import CourseContent from './course-content'
 import styles from './course.view.scss'
-import { DecorativeDash, LargePrimaryButton, LargeSecondaryButton, SmallSecondaryButton } from 'atoms'
+import { Button, DecorativeDash } from 'atoms'
 import { Breadcrumb, CallToAction, ReadMore } from 'molecules'
 import { CardCollection } from 'organisms'
 
@@ -114,9 +114,9 @@ const DownloadFlash = props => {
         <p>
           This course uses Adobe Flash. Please make sure you have it installed and enabled before beginning.
         </p>
-        <a href="https://get.adobe.com/flashplayer/" target="_blank">
-          <SmallSecondaryButton className={styles.button} text="Install Flash" />
-        </a>
+        <Button secondary small target="_blank" url="https://get.adobe.com/flashplayer/">
+          Install Flash
+        </Button>
       </div>
     )
   }
@@ -196,9 +196,11 @@ const RelatedCourses = props => {
     <div className={styles.relatedCourses + ' related-courses'}>
       <h3>Related Courses</h3>
       <CardCollection parentIndex={0} cards={props.relatedCourses} />
-      <a href="/course/">
-        <LargeSecondaryButton className={styles.button} text="See All Courses" />
-      </a>
+      <div className={styles.button}>
+        <Button secondary url="/course/">
+          See all courses
+        </Button>
+      </div>
     </div>
   )
 }

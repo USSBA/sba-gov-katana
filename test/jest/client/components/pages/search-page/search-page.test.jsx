@@ -32,10 +32,10 @@ describe('SearchPage', () => {
       })
     })
 
-    describe('SmallPrimaryButton', () => {
+    describe('Button', () => {
       it('has one submit button', () => {
         const component = mount(<SearchBar />)
-        const result = component.find('SmallPrimaryButton').length
+        const result = component.find('Button').length
         const expected = 1
 
         expect(result).toEqual(expected)
@@ -43,7 +43,7 @@ describe('SearchPage', () => {
 
       it('the submit button has a label of "Search"', () => {
         const component = mount(<SearchBar />)
-        const result = component.find('SmallPrimaryButton').props().text
+        const result = component.find('Button').text()
         const expected = 'Search'
 
         expect(result).toEqual(expected)

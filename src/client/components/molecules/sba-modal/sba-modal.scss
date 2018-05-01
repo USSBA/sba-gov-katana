@@ -64,23 +64,5 @@
 }
 
 .btnContainer {
-  margin: 0 auto;
-  @include grid-media($sba-grid-small) {
-    button {
-      width: 100%;
-
-      &:first-child {
-      }
-    }
-  }
-  @include grid-media($sba-grid-medium) {
-    max-width: 18.056rem;
-
-    button {
-      &:first-child {
-        margin-left: 1.667rem;
-        float: right;
-      }
-    }
-  }
+  text-align: center;
 }

@@ -40,14 +40,10 @@ exports[`SearchPage to match snapshot 1`] = `
       className="searchButton"
     >
       <button
-        autoFocus={false}
-        className="SmallPrimaryButton  "
-        disabled={undefined}
-        formTarget="_self"
+        aria-controls="results-list"
+        className="button alternate large primary responsive spacing"
         id="submit-button"
-        onKeyPress={[Function]}
-        onTouchTap={[Function]}
-        tabIndex="0"
+        onClick={[Function]}
       >
         Search
       </button>
