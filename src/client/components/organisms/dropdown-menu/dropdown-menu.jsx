@@ -2,14 +2,14 @@ import React from 'react'
 import { isEmpty } from 'lodash'
 
 import styles from './dropdown-menu.scss'
-import { FeaturedCallout, UtilityLink } from 'atoms'
-import { PageLinkGroup, SmallInverseCta } from 'molecules'
+import { Link, Button, UtilityLink } from 'atoms'
+import { PageLinkGroup } from 'molecules'
 import clientConfig from '../../../services/client-config.js'
 import constants from '../../../services/constants.js'
 
 class DropdownMenu extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       goToNextSectionShown: false
     }
@@ -36,17 +36,30 @@ class DropdownMenu extends React.Component {
   }
 
   render() {
+    const {
+      featuredCallout,
+      hasNext,
+      id,
+      links,
+      menuId,
+      onFinalBlur,
+      shown,
+      target,
+      text,
+      title
+    } = this.props
+
     let sizingStyle = ''
     let indent = false
-    let menuId = this.props.menuId
-    let smallInverseCta = false
+    let shouldShowCallToAction = false
+
     if (menuId === 0) {
       sizingStyle = styles.one
-      smallInverseCta = true
+      shouldShowCallToAction = true
     }
     if (menuId === 1) {
-      sizingStyle = this.props.featuredCallout ? styles.twoWithFeaturedCallout : styles.two
-      indent = this.props.featuredCallout ? false : true
+      sizingStyle = featuredCallout ? styles.twoWithFeaturedCallout : styles.two
+      indent = featuredCallout ? false : true
     }
     if (menuId === 2) {
       sizingStyle = styles.three
@@ -61,41 +74,33 @@ class DropdownMenu extends React.Component {
       sizingStyle = styles.six
     }
 
-    let businessGuideCtaData = {
-      url: constants.routes.tenSteps,
-      buttonText: 'See the guide',
-      actionText: 'Not sure where to start? Start your business in 10 steps.',
-      eventCategory: 'Ten Steps CTA',
-      eventLabel: 'Inverse Small'
-    }
-
-    if (!isEmpty(this.props.links)) {
-      let pageLinkGroups = this.props.links.map((data, index) => {
+    if (!isEmpty(links)) {
+      let pageLinkGroups = links.map((data, index) => {
         let children = data.children || []
         let mappedChildren = children.map(function(item) {
           return { url: item.link, text: item.linkTitle }
         })
 
-        const isLastGroup = index === this.props.links.length - 1 && !smallInverseCta
+        const isLastGroup = index === links.length - 1 && !shouldShowCallToAction
 
         return (
           <PageLinkGroup
             key={index}
-            id={this.props.id + '-group-' + index}
+            id={id + '-group-' + index}
             title={data.linkTitle}
             titleLink={data.link}
             isLastGroup={isLastGroup}
-            onFinalBlur={this.props.onFinalBlur.bind(this)}
+            onFinalBlur={onFinalBlur.bind(this)}
             links={mappedChildren}
             indent={indent}
           />
         )
       })
 
-      const goToNextButton = this.props.hasNext ? (
+      const goToNextButton = hasNext ? (
         <ul className={styles.skipLink}>
           <UtilityLink
-            id={this.props.id + '-go-to-next'}
+            id={id + '-go-to-next'}
             visible={this.state.goToNextSectionShown}
             text="Go to Next Section"
             onKeyDown={event => this.handleSkipLinkKeyDown(event)}
@@ -108,23 +113,27 @@ class DropdownMenu extends React.Component {
       )
       return (
         <ul
-          id={this.props.id}
+          id={id}
           key={1}
           aria-label="submenu"
-          className={
-            styles.dropdownMenu + ' ' + sizingStyle + ' ' + (this.props.shown ? styles.show : styles.hide)
-          }
+          className={styles.dropdownMenu + ' ' + sizingStyle + ' ' + (shown ? styles.show : styles.hide)}
         >
           {goToNextButton}
           {pageLinkGroups}
-          {this.props.featuredCallout ? <FeaturedCallout {...this.props.featuredCallout} /> : undefined}
-          {smallInverseCta ? (
-            <div className={styles.businessGuideCTA}>
-              <SmallInverseCta {...businessGuideCtaData} />
+          {featuredCallout ? (
+            <div className={styles.featuredCallout}>
+              <Link to={target} title={title}>
+                <img src="/assets/image/disaster.png" alt={text} title={title} />
+                <p>{text}</p>
+              </Link>
             </div>
-          ) : (
-            undefined
-          )}
+          ) : null}
+          {shouldShowCallToAction ? (
+            <div className={styles.callToAction}>
+              <h6>Not sure where to start? Start your business in 10 steps.</h6>
+              <Button children="See the guide" url={constants.routes.tenSteps} secondary />
+            </div>
+          ) : null}
         </ul>
       )
     } else {

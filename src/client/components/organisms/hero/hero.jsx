@@ -5,7 +5,6 @@ import { debounce } from 'lodash'
 import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './hero.scss'
 import { Button } from 'atoms'
-import { Callout } from 'molecules'
 
 class Hero extends React.Component {
   constructor(props) {
