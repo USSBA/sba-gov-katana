@@ -30,15 +30,13 @@
 
     @include for-medium-only {
       @include grid-column(6, (gutter: 30px)) min-width: 339px;
-    }
-
-    // Override grid column left margin.
-    @include for-medium-up {
+      // Override grid column left margin.
       margin-left: -60px;
     }
 
     @include for-large-up {
       @include grid-column(5, (gutter: 30px)) min-width: 500px;
+      margin-left: -80px;
     }
 
     // Use vertical stacking for two buttons.
