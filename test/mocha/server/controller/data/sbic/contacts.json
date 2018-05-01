@@ -1,0 +1,36 @@
+[
+  {
+    "type": "contact",
+    "activeSince": 2006,
+    "city": "Birmingham",
+    "contactFirstName": "Rob",
+    "contactLastName": "Bourquin",
+    "email": "abrown@harbert.net",
+    "industry": "Diversified",
+    "investingStatus": "notinvesting",
+    "phoneNumber": "615-301-6389",
+    "category": "SBIC",
+    "state": "AL",
+    "streetAddress": "2100 Third Avenue North, Suite 600",
+    "zipCode": 35203,
+    "title": "Harbert Mezzanine Partners II SBIC, L.P.",
+    "id": 3060
+  },
+  {
+    "type": "contact",
+    "activeSince": 2014,
+    "city": "Little Rock",
+    "contactFirstName": "Joe",
+    "contactLastName": "Hays",
+    "email": "jhays@arcapital.com",
+    "industry": "Diversified",
+    "investingStatus": "investing",
+    "phoneNumber": "501-374-9247",
+    "category": "SBIC",
+    "state": "AR",
+    "streetAddress": "200 River Market Avenue Suite 400",
+    "zipCode": 72201,
+    "title": "Diamond State Ventures III, L.P.",
+    "id": 3061
+  }
+]
