@@ -267,7 +267,8 @@ class SbicLookup extends React.Component {
                 this.downloadCsv()
               }}
               secondary
-              small />
+              small
+            />
           </div>
         </div>
         <table className={s.table}>
