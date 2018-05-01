@@ -62,8 +62,7 @@ class TextArea extends React.Component {
 TextArea.defaultProps = {
   showCounter: true,
   showSuccessIcon: true,
-  showErrorIcon: false,
-  value: ''
+  showErrorIcon: false
 }
 
 export default TextArea
