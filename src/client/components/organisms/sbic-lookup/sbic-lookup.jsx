@@ -7,6 +7,7 @@ import { SmallInverseSecondaryButton, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
 
 var pageSize = 10
+const SBIC_URL = '/api/content/sbic-contacts.csv'
 class SbicLookup extends React.Component {
   constructor(ownProps) {
     super()
@@ -251,19 +252,26 @@ class SbicLookup extends React.Component {
     })
   }
 
+  downloadCsv() {
+    if (window !== undefined) {
+      window.open(SBIC_URL, '_blank')
+    }
+  }
+
   render() {
     return (
       <div>
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
           {this.renderMultiSelects()}
-          <a href={this.createDownloadHref()} download="sbic-contacts.csv">
-            <SmallInverseSecondaryButton
-              url="#"
-              extraClassName={s.downloadBtn}
-              text="download list (.XLS)"
-            />
-          </a>
+          <SmallInverseSecondaryButton
+            onClick={e => {
+              e.preventDefault()
+              this.downloadCsv()
+            }}
+            extraClassName={s.downloadBtn}
+            text="download list (.XLS)"
+          />
         </div>
         <table className={s.table}>
           <thead>
