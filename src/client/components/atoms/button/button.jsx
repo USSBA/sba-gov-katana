@@ -18,7 +18,7 @@ const Button = props => {
     ...nativeProps
   } = props
 
-  const className = `${classNames({
+  const className = classNames({
     button: true,
     [styles.alternate]: alternate,
     [styles.fullWidth]: fullWidth,
@@ -29,7 +29,7 @@ const Button = props => {
     [styles.secondary]: secondary,
     [styles.small]: small,
     [styles.spacing]: spacing
-  })}`
+  })
 
   // TODO: check native props map correctly to anchor or button
   return url ? (

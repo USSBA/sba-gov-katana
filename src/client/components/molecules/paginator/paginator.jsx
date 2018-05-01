@@ -4,7 +4,6 @@ import classNames from 'classnames'
 import styles from './paginator.scss'
 import { Button } from 'atoms'
 
-// TODO: documentation
 const Paginator = props => {
   const { id, onBack, onForward, pageNumber, pageSize, total } = props
 
