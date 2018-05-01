@@ -69,6 +69,7 @@
     @include clearfix;
     padding: 30px;
 
+    // Position the button and heading on the same line.
     *[class~='button'] {
       float: right;
     }

@@ -18,7 +18,7 @@ const CallToAction = props => {
   })
 
   const backgroundImageStyle = {
-    backgroundImage: `url(https://kevin.sba.fun/${image})`
+    backgroundImage: `url(${image})`
   }
 
   return (

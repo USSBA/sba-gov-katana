@@ -27,7 +27,7 @@ exports[`CallToAction renders a large size 1`] = `
     className="image"
     style={
       Object {
-        "backgroundImage": "url(https://kevin.sba.fun/http://example.com/someImage.jpg)",
+        "backgroundImage": "url(http://example.com/someImage.jpg)",
       }
     }
     title="alt text for image"
