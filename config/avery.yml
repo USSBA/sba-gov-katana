@@ -10,7 +10,7 @@ googleAnalytics:
 foresee:
     environment: staging
 server:
-    fqdn: avery.sba.fun
+    fqdn: avery.ussba.io
 features:
     forPartners: true
     showSbic: false

@@ -1,7 +1,7 @@
 foresee:
     environment: staging
 server:
-    fqdn: laura.sba.fun
+    fqdn: laura.ussba.io
 features:
     forPartners: true
     showSbic: false

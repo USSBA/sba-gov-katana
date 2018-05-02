@@ -1,7 +1,7 @@
 foresee:
     environment: staging
 server:
-    fqdn: kevin.sba.fun
+    fqdn: kevin.ussba.io
 features:
     forPartners: true
     showSbic: false

@@ -7,7 +7,7 @@ googleAnalytics:
 foresee:
     environment: staging
 server:
-    fqdn: ryan.sba.fun
+    fqdn: ryan.ussba.io
 features:
     forPartners: true
     showSbic: false
