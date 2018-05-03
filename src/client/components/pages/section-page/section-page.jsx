@@ -3,7 +3,8 @@ import path from 'path'
 
 import constants from '../../../services/constants.js'
 import styles from './section-page.scss'
-import { RemoveMainLoader, SimpleCta } from 'molecules'
+import { Button } from 'atoms'
+import { RemoveMainLoader } from 'molecules'
 import { MenuTileCollection } from 'organisms'
 
 class SectionPage extends React.Component {
@@ -18,15 +19,13 @@ class SectionPage extends React.Component {
 
       let tenSteps
       if (sectionName === constants.sections.businessGuide) {
+        // TODO: This is basically styled like a call to action component, but
+        // it will refactored in the design soon.
         tenSteps = (
-          <SimpleCta
-            id="business-guide-panel-10-steps-callout"
-            actionText="Start your business in 10 steps"
-            buttonText="SEE THE GUIDE"
-            url={constants.routes.tenSteps}
-            eventCategory="Ten Steps CTA"
-            labelCategory="Small"
-          />
+          <div className={styles.callToAction} id="business-guide-panel-10-steps-callout">
+            <h6>Start your business in 10 steps</h6>
+            <Button alternate children="See the guide" fullWidth primary url={constants.routes.tenSteps} />
+          </div>
         )
       }
 

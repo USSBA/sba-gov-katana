@@ -8,7 +8,6 @@ import DecorativeDash from './decorative-dash/decorative-dash'
 import DocumentType from './document-type/document-type'
 import ExtraLargeTitleText from './extra-large-title-text/extra-large-title-text'
 import FailureIcon from './icons/failure'
-import FeaturedCallout from './featured-callout/featured-callout'
 import FormErrorMessage from './form-error-message/form-error-message'
 import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
@@ -47,7 +46,6 @@ export {
   DocumentType,
   ExtraLargeTitleText,
   FailureIcon,
-  FeaturedCallout,
   FormErrorMessage,
   HamburgerIcon,
   HomeIcon,

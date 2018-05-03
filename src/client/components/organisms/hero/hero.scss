@@ -30,15 +30,13 @@
 
     @include for-medium-only {
       @include grid-column(6, (gutter: 30px)) min-width: 339px;
+      // Override grid column left margin.
+      margin-left: -60px;
     }
 
     @include for-large-up {
       @include grid-column(5, (gutter: 30px)) min-width: 500px;
-    }
-
-    // Override grid column left margin.
-    @include for-medium-up {
-      margin-left: -60px;
+      margin-left: -80px;
     }
 
     // Use vertical stacking for two buttons.
@@ -65,6 +63,16 @@
 }
 
 .arrow {
+  @include for-small-only {
+    // This is a hack for Safari mobile.
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+      _::-webkit-full-page-media,
+      .arrow {
+        padding-top: 420px;
+      }
+    }
+  }
+
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -78,14 +86,4 @@
   // TODO: DRY
   box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
   padding: 50px;
-}
-
-// for Safari small screen size
-@include for-small-only {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    _::-webkit-full-page-media,
-    .arrow {
-      padding-top: 420px;
-    }
-  }
 }

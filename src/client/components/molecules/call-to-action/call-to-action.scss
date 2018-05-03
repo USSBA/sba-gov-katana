@@ -1,143 +1,111 @@
-// TODO: only for the homepage, which will be changed soon
-
-.blurb {
-  color: white;
-  font-family: $sans-serif-font-family;
-  font-size: 1rem;
-  font-style: italic;
-  font-weight: 300;
-}
-
-.headline {
-  color: white;
-
+.callToAction {
   @include for-small-only {
-    margin-bottom: 1.5rem;
+    @include clearfix;
   }
-}
 
-.ctaContainer {
-  background-color: $sba-blue;
-  position: relative;
-  padding: 30px;
-  margin-top: 30px;
   margin-bottom: 30px;
+  position: relative;
 
-  @include for-medium-up {
-    padding: 50px;
-  }
+  &:not(.buttonOnlyVariation) {
+    background-color: $sba-blue;
 
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(12, $tablet-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(12, $desktop-0gutter);
-  }
-  overflow: hidden;
-}
+    // since content is hidden in the button only variation anyway
+    .content {
+      hr {
+        @include for-small-only {
+          display: none;
+        }
+      }
 
-.btnSecondary {
-  display: none;
-}
+      p {
+        @include lede-type;
+        @include for-small-only {
+          display: none;
+        }
 
-.btnOnly {
-  .ctaContainer {
-    display: none;
-  }
-  .btnSecondary {
-    display: block;
-    margin: 30px auto 30px auto;
-  }
-}
-
-.small {
-  .image {
-    display: none;
-  }
-  .blurb {
-    display: none;
-  }
-  .cornerGraphicLarge {
-    @include grid-media($sba-grid-large) {
-      height: 100%;
+        color: $sba-gray-light;
+        font-size: 1rem;
+      }
     }
   }
-  .contentContainer {
-    @include grid-media($sba-grid-large) {
-      @include grid-column(12, $sba-grid-large);
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-    }
-  }
-  .headline {
-    @include grid-media($sba-grid-large) {
-      margin: 0;
-    }
-  }
-  .btn {
-    @include grid-media($sba-grid-large) {
-      margin: 0;
-    }
-  }
-}
 
-.medium {
-  .image {
-    display: none;
-  }
-  .contentContainer {
-    @include grid-media($sba-grid-large) {
-      text-align: left;
-      @include grid-column(12);
+  &:not(.buttonOnlyVariation) {
+    @include for-small-only {
+      padding: 20px;
+      text-align: center;
     }
-  }
-}
-
-.large {
-  .contentContainer {
-    padding: 100px 50px;
   }
 }
 
 .image {
-  @include grid-media($sba-grid-small) {
+  @include for-small-only {
     display: none;
   }
-  @include grid-media($sba-grid-medium) {
-    display: none;
-  }
-  @include grid-media($sba-grid-large) {
-    position: absolute;
-    height: 100% !important;
-    display: block;
+
+  @include for-medium-up {
+    bottom: 0;
+    left: 0;
     min-height: 300px;
-    @include grid-column(6, $desktop-0gutter);
+    position: absolute;
+    top: 0;
+    width: 50%;
+  }
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.content h3 {
+  color: white;
+}
+
+.buttonOnlyVariation {
+  text-align: center;
+}
+
+.smallVariation {
+  @include for-medium-up {
+    @include clearfix;
+    padding: 30px;
+
+    .content {
+      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      // Not sure why div.column:last-child does not work.
+      div[class~='column']:last-child {
+        justify-self: end;
+      }
+    }
+
+    h3 {
+      margin-bottom: 0;
+      padding-right: $small-spacing;
+    }
   }
 }
 
-.contentContainer {
-  @include grid-media($sba-grid-small) {
-    text-align: center;
-    @include grid-column(6);
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(12);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(6);
-    @include grid-push(6);
+.mediumVariation {
+  @include for-medium-up {
+    padding: 50px;
   }
 }
 
-.blurb {
-  @include grid-media($sba-grid-small) {
-    display: none;
+.largeVariation {
+  @include for-medium-only {
+    padding: 50px;
+  }
+
+  @include for-large-up {
+    padding: 80px 50px;
+  }
+
+  .content {
+    @include for-medium-up {
+      margin-left: 50%;
+      padding-left: 50px;
+    }
   }
 }
