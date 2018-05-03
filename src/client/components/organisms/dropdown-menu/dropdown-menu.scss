@@ -56,9 +56,33 @@
   }
 }
 
-.businessGuideCTA {
-  left: 4%;
+.featuredCallout {
+  width: 351px;
+
+  img {
+    width: 100%;
+  }
+
+  p {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+}
+
+// TODO: Refactor (when we refactor the menu) to not use such specific measurements.
+.callToAction {
+  border: 2px solid $sba-blue;
   bottom: 3.333rem;
+  left: 4%;
+  padding: 10px;
   position: absolute;
+  text-align: center;
   width: 92%;
+
+  h6 {
+    display: inline;
+    margin-right: 30px;
+  }
 }

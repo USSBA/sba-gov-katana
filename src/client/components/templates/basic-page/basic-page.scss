@@ -56,19 +56,6 @@
   }
 }
 
-.callToAction {
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(12, $sba-grid-medium);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(7, $sba-grid-large);
-    @include grid-push(4);
-  }
-}
-
 .breadcrumb {
   @include grid-media($sba-grid-small) {
     display: none;

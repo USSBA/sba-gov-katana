@@ -1,5 +1,5 @@
 import React from 'react'
-import { CallToAction } from 'molecules/call-to-action/call-to-action.jsx'
+import { CallToAction } from 'molecules'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import _ from 'lodash'

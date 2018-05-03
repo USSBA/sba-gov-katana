@@ -2,50 +2,17 @@
 
 exports[`CallToAction renders a button only 1`] = `
 <div
-  className="btnOnly"
+  className="callToAction buttonOnlyVariation"
+  id="call-to-action"
 >
   <div
-    className="ctaContainer"
-    id="call-to-action"
+    className="content"
   >
     <div
-      className="image"
+      className="column"
     >
-      <div
-        style={
-          Object {
-            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
-            "backgroundSize": "cover",
-            "height": "100%",
-            "width": "100%",
-          }
-        }
-        title="alt text for image"
-      />
-    </div>
-    <div
-      className="contentContainer"
-    >
-      <h3
-        className="headline"
-      >
-        This is the headline for the CTA.
-      </h3>
-      <hr
-        className="dash"
-        style={
-          Object {
-            "width": "2rem",
-          }
-        }
-      />
-      <p
-        className="blurb"
-      >
-        This is the blurb for the CTA.
-      </p>
       <a
-        className="button alternate large link primary responsive spacing"
+        className="button large link primary responsive spacing"
         href="http://www.example.com/"
       >
         Call To Action
@@ -57,40 +24,34 @@ exports[`CallToAction renders a button only 1`] = `
 
 exports[`CallToAction renders a large size 1`] = `
 <div
-  className="large"
+  className="callToAction largeVariation"
+  id="call-to-action"
 >
   <div
-    className="ctaContainer"
-    id="call-to-action"
+    className="image"
+    style={
+      Object {
+        "backgroundImage": "url(http://example.com/someImage.jpg)",
+      }
+    }
+    title="alt text for image"
+  />
+  <div
+    className="content"
   >
     <div
-      className="image"
+      className="column"
     >
-      <div
-        style={
-          Object {
-            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
-            "backgroundSize": "cover",
-            "height": "100%",
-            "width": "100%",
-          }
-        }
-        title="alt text for image"
-      />
-    </div>
-    <div
-      className="contentContainer"
-    >
-      <h3
-        className="headline"
-      >
+      <h3>
         This is the headline for the CTA.
       </h3>
+    </div>
+    <div>
       <hr
         className="dash"
         style={
           Object {
-            "width": "2rem",
+            "width": "1.611rem",
           }
         }
       />
@@ -99,6 +60,10 @@ exports[`CallToAction renders a large size 1`] = `
       >
         This is the blurb for the CTA.
       </p>
+    </div>
+    <div
+      className="column"
+    >
       <a
         className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"
@@ -112,40 +77,25 @@ exports[`CallToAction renders a large size 1`] = `
 
 exports[`CallToAction renders a medium size 1`] = `
 <div
-  className="medium"
+  className="callToAction mediumVariation"
+  id="call-to-action"
 >
   <div
-    className="ctaContainer"
-    id="call-to-action"
+    className="content"
   >
     <div
-      className="image"
+      className="column"
     >
-      <div
-        style={
-          Object {
-            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
-            "backgroundSize": "cover",
-            "height": "100%",
-            "width": "100%",
-          }
-        }
-        title="alt text for image"
-      />
-    </div>
-    <div
-      className="contentContainer"
-    >
-      <h3
-        className="headline"
-      >
+      <h3>
         This is the headline for the CTA.
       </h3>
+    </div>
+    <div>
       <hr
         className="dash"
         style={
           Object {
-            "width": "2rem",
+            "width": "1.611rem",
           }
         }
       />
@@ -154,6 +104,10 @@ exports[`CallToAction renders a medium size 1`] = `
       >
         This is the blurb for the CTA.
       </p>
+    </div>
+    <div
+      className="column"
+    >
       <a
         className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"
@@ -167,48 +121,22 @@ exports[`CallToAction renders a medium size 1`] = `
 
 exports[`CallToAction renders a small size 1`] = `
 <div
-  className="small"
+  className="callToAction smallVariation"
+  id="call-to-action"
 >
   <div
-    className="ctaContainer"
-    id="call-to-action"
+    className="content"
   >
     <div
-      className="image"
+      className="column"
     >
-      <div
-        style={
-          Object {
-            "background": "url(http://example.com/someImage.jpg) no-repeat center center",
-            "backgroundSize": "cover",
-            "height": "100%",
-            "width": "100%",
-          }
-        }
-        title="alt text for image"
-      />
-    </div>
-    <div
-      className="contentContainer"
-    >
-      <h3
-        className="headline"
-      >
+      <h3>
         This is the headline for the CTA.
       </h3>
-      <hr
-        className="dash"
-        style={
-          Object {
-            "width": "2rem",
-          }
-        }
-      />
-      <p
-        className="blurb"
-      >
-        This is the blurb for the CTA.
-      </p>
+    </div>
+    <div
+      className="column"
+    >
       <a
         className="button alternate large link primary responsive spacing"
         href="http://www.example.com/"

@@ -1,11 +1,30 @@
 .tiles {
+  @include clearfix;
+
+  background-color: $sba-gray-lighter;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: $sba-gray-lighter;
 }
 
-.tiles:after {
-  content: '';
-  display: table;
-  clear: both;
+.callToAction {
+  @include grid-column(12, (gutter: 20px)) @include grid-container;
+
+  background-color: $sba-blue;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  text-align: center;
+
+  @include for-large-up {
+    @include grid-column(2.94, (gutter: 42px)) margin-bottom: 0;
+    margin-top: -170px;
+    padding-bottom: 28px;
+    position: absolute;
+    transform: translateY(40%);
+    top: 839px;
+  }
+
+  h6 {
+    color: white;
+  }
 }

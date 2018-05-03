@@ -2,7 +2,6 @@ import Address from './address/address'
 import Breadcrumb from './breadcrumb/breadcrumb'
 import ButtonCta from './button-cta/button-cta'
 import CallToAction from './call-to-action/call-to-action'
-import Callout from './callout/callout'
 import Card from './card/card'
 import CardGrid from './card-grid/card-grid'
 import ContactCard from './contact-card/contact-card'
@@ -27,8 +26,6 @@ import RemoveMainLoader from './main-loader/remove-main-loader'
 import SbaModal from './sba-modal/sba-modal'
 import SbaNewsModal from './news-modal/news-modal'
 import SearchBar from './search-bar/search-bar'
-import SimpleCta from './simple-cta/simple-cta'
-import SmallInverseCta from './small-inverse-cta/small-inverse-cta'
 import LongScrollNav from './long-scroll-nav/long-scroll-nav'
 import TitleSection from './title-section/title-section'
 
@@ -37,7 +34,6 @@ export {
   Breadcrumb,
   ButtonCta,
   CallToAction,
-  Callout,
   Card,
   CardGrid,
   ContactCard,
@@ -62,8 +58,6 @@ export {
   SbaModal,
   SbaNewsModal,
   SearchBar,
-  SimpleCta,
-  SmallInverseCta,
   LongScrollNav,
   TitleSection
 }
