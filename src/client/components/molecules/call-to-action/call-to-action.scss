@@ -56,7 +56,7 @@
   background-size: cover;
 }
 
-.content > h3 {
+.content h3 {
   color: white;
 }
 
@@ -69,16 +69,20 @@
     @include clearfix;
     padding: 30px;
 
-    // Position the button and heading on the same line.
-    *[class~='button'] {
-      float: right;
+    .content {
+      align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      // Not sure why div.column:last-child does not work.
+      div[class~='column']:last-child {
+        justify-self: end;
+      }
     }
 
     h3 {
-      float: left;
       margin-bottom: 0;
       padding-right: $small-spacing;
-      width: 50%;
     }
   }
 }
