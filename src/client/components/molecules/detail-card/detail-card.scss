@@ -1,12 +1,12 @@
-tbody {
+.program-summary-table {
   border: none;
 }
 
-tr {
+.program-summary-data {
   border-color: white;
 }
 
-tr:nth-child(even) {
+.program-summary-data:nth-child(even) {
   background-color: white;
 }
 
