@@ -5,8 +5,7 @@ server:
 features:
     forPartners: true
     showSbic: false
-    moon: false
-    searchUrl:/search/?q=
+    moon: true
     urlRedirect:
         tableName: UrlToNodeBrian
         enabled: true
