@@ -11,7 +11,6 @@ features:
     forPartners: true
     showSbic: false
     moon: true
-    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeProduction
         enabled: true

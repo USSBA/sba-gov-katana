@@ -6,7 +6,6 @@ features:
     forPartners: true
     showSbic: false
     moon: true
-    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeStaging
         enabled: true

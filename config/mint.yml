@@ -12,7 +12,6 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeIntegration
         enabled: true
