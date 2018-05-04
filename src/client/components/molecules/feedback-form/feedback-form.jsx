@@ -7,12 +7,12 @@ import styles from './feedback-form.scss'
 import * as FeedbackActions from '../../../actions/feedback.js'
 import { Button, TextArea } from 'atoms'
 
-let question = 'Was this article helpful?'
-let firstThankYou = 'Thanks for your feedback!'
-let subtext = 'Please let us know how you think we can improve this article'
-let placeholder = 'Add your suggestions here'
-let thanksAgain = 'Thanks again for your feedback!'
-let states = ['QUESTION', 'INPUT', 'THANKYOU']
+const question = 'Was this article helpful?'
+const firstThankYou = 'Thanks for your feedback!'
+const subtext = 'Please let us know how you think we can improve this article'
+const placeholder = 'Add your suggestions here'
+const thanksAgain = 'Thanks again for your feedback!'
+const states = ['QUESTION', 'INPUT', 'THANKYOU']
 class FeedbackForm extends React.Component {
   constructor() {
     super()
@@ -56,6 +56,7 @@ class FeedbackForm extends React.Component {
             placeholder={placeholder}
             showCounter={false}
             onChange={this.handleChange.bind(this)}
+            value={this.state.feedbackText}
           />
           <div className={styles.maidenNameContainer}>
             <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
