@@ -18,6 +18,7 @@ const Paginator = props => {
       key={direction}
       secondary
       spacing={false}
+      responsive={false}
     >
       <i
         alt={`${direction === 'left' ? 'previous' : 'next'} page`}

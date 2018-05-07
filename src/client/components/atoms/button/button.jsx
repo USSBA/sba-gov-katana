@@ -13,6 +13,7 @@ const Button = props => {
     small,
     spacing,
     primary,
+    responsive,
     secondary,
     url,
     ...nativeProps
@@ -25,7 +26,7 @@ const Button = props => {
     [styles.large]: !small,
     [styles.link]: url,
     [styles.primary]: primary,
-    [styles.responsive]: true,
+    [styles.responsive]: responsive,
     [styles.secondary]: secondary,
     [styles.small]: small,
     [styles.spacing]: spacing
@@ -44,7 +45,8 @@ const Button = props => {
 }
 
 Button.defaultProps = {
-  spacing: true
+  spacing: true,
+  responsive: true
 }
 
 Button.propTypes = {
@@ -83,8 +85,11 @@ Button.propTypes = {
   // Add spacing to sibling buttons depending on context. Set to true by default.
   spacing: PropTypes.bool,
 
-  // Decrease the font size and padding of the button,
+  // Decrease the font size and padding of the button.
   small: PropTypes.bool,
+
+  // Render as full-width at small screen sizes.
+  responsive: PropTypes.bool,
 
   // The location to navigate to when the button is activated. Setting this
   // prop will render the button as an anchor internally.
