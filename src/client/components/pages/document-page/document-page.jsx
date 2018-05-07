@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import Document from '../../templates/document/document.jsx'
+import DocumentArticle from '../../templates/document-article/document-article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import s from './document-page.scss'
 import * as ContentActions from '../../../actions/content.js'
@@ -42,7 +42,7 @@ class DocumentPage extends React.Component {
     const { document, location: { pathname } } = this.props
     if (pathname && document !== null) {
       if (document) {
-        return <Document document={document} />
+        return <DocumentArticle document={document} />
       } else {
         return <div>Loading Document...</div>
       }
