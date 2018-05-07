@@ -25,10 +25,8 @@
     // Ensure the whole button is highlighed (even with the border hiding) when
     // hovered.
     &:hover {
-      border-right-width: 2px;
-
       + button {
-        border-left-width: 0;
+        border-left-color: $secondary-blue-light;
       }
     }
   }

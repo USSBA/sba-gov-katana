@@ -256,6 +256,7 @@ ShallowWrapper {
             className="submitButton"
             onClick={[Function]}
             primary={true}
+            responsive={true}
             spacing={true}
         >
             Search
@@ -511,6 +512,7 @@ ShallowWrapper {
                   className="submitButton"
                   onClick={[Function]}
                   primary={true}
+                  responsive={true}
                   spacing={true}
             >
                   Search
@@ -901,6 +903,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -1156,6 +1159,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -1484,6 +1488,7 @@ ShallowWrapper {
             className="submitButton"
             onClick={[Function]}
             primary={true}
+            responsive={true}
             spacing={true}
         >
             Search
@@ -1739,6 +1744,7 @@ ShallowWrapper {
                   className="submitButton"
                   onClick={[Function]}
                   primary={true}
+                  responsive={true}
                   spacing={true}
             >
                   Search
@@ -2129,6 +2135,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -2384,6 +2391,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -2971,6 +2979,7 @@ ShallowWrapper {
             className="submitButton"
             onClick={[Function]}
             primary={true}
+            responsive={true}
             spacing={true}
         >
             Search
@@ -3226,6 +3235,7 @@ ShallowWrapper {
                   className="submitButton"
                   onClick={[Function]}
                   primary={true}
+                  responsive={true}
                   spacing={true}
             >
                   Search
@@ -3616,6 +3626,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -3871,6 +3882,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -4199,6 +4211,7 @@ ShallowWrapper {
             className="submitButton"
             onClick={[Function]}
             primary={true}
+            responsive={true}
             spacing={true}
         >
             Search
@@ -4454,6 +4467,7 @@ ShallowWrapper {
                   className="submitButton"
                   onClick={[Function]}
                   primary={true}
+                  responsive={true}
                   spacing={true}
             >
                   Search
@@ -4844,6 +4858,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
@@ -5099,6 +5114,7 @@ ShallowWrapper {
                               className="submitButton"
                               onClick={[Function]}
                               primary={true}
+                              responsive={true}
                               spacing={true}
                     >
                               Search
