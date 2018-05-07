@@ -36,7 +36,6 @@ workflows:
             only:
             - master
             - integration
-            - master-integration
             - staging
             - /RELEASE-\d+/
             - /[Ff]eature-\w+-\d+[-\w]*/
@@ -47,7 +46,6 @@ workflows:
             only:
             - master
             - integration
-            - master-integration
             - staging
             - /RELEASE-\d+/
             - /[Ff]eature-\w+-\d+[-\w]*/
