@@ -51,16 +51,16 @@ export class DocumentArticle extends React.Component {
 
     const dateLine = dates.map((object, index) => {
       return (
-        <span key={index}>
+        <div key={index}>
           {index > 0 && <span className={s.dateSeperator}> | </span>}
-          <span className={s.date}>
+          <h5 className={s.date}>
             {object.title} {object.date}
-          </span>
-        </span>
+          </h5>
+        </div>
       )
     })
 
-    return <p className={s.dates}> {dateLine} </p>
+    return <div className={s.dates}> {dateLine} </div>
   }
 
   render() {
@@ -94,7 +94,9 @@ export class DocumentArticle extends React.Component {
             undefined
           )}
           <h1
-            className={'document-article-title ' + s.title + ' ' + (documentTypeString ? s.marginTop : '')}
+            className={
+              'document-article-title ' + s.title + ' ' + (documentTypeString ? s.titleMarginBottom : '')
+            }
           >
             {data.title}
           </h1>
@@ -110,15 +112,22 @@ export class DocumentArticle extends React.Component {
           )}
           <hr className={s.hr} />
           <div className={s.summaryContainer}>
-            <h5 className={s.summary}>{data.summary}</h5>
-            <Button
-              className="document-article-pdf-download-btn"
-              onClick={e => this.downloadClick(currentFile)}
-              disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
-              primary
-            >{`Download ${currentFileExtension}`}</Button>
+            <div className="column">
+              <Button
+                className="document-article-pdf-download-btn"
+                disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
+                fullWidth
+                onClick={e => this.downloadClick(currentFile)}
+                primary
+              >
+                {`Download ${currentFileExtension}`}
+              </Button>
+            </div>
+            <div className="column">
+              <h5 className={s.summary}>{data.summary}</h5>
+            </div>
           </div>
-          <div className={s.dashContainer}>
+          <div className={s.dash}>
             <DecorativeDash width={4.278} />
           </div>
           {/* TODO: body style for grid media queries should be baked into text section? */}
