@@ -9,10 +9,11 @@ import { Button, TextArea } from 'atoms'
 
 const question = 'Was this article helpful?'
 const firstThankYou = 'Thanks for your feedback!'
+const secondThankYou = 'Thanks again for your feedback!'
 const subtext = 'Please let us know how you think we can improve this article'
 const placeholder = 'Add your suggestions here'
-const thanksAgain = 'Thanks again for your feedback!'
 const states = ['QUESTION', 'INPUT', 'THANKYOU']
+
 class FeedbackForm extends React.Component {
   constructor() {
     super()
@@ -22,21 +23,25 @@ class FeedbackForm extends React.Component {
       honeyPotText: ''
     }
   }
+
   handleYesClick() {
     this.props.actions.submitResults('yes', uuid.v4())
     this.setState({ displayState: states[1] })
   }
+
   handleNoClick() {
     this.props.actions.submitResults('no', uuid.v4())
     this.setState({ displayState: states[1] })
   }
+
   handleSubmit() {
-    this.props.actions.submitText(this.props.lastFeedbackId, {
-      feedbackText: this.state.feedbackText,
-      honeyPotText: this.state.honeyPotText
-    })
+    const { actions: { submitText }, lastFeedbackId } = this.props
+    const { feedbackText, honeyPotText } = this.state
+
+    submitText(lastFeedbackId, { feedbackText, honeyPotText })
     this.setState({ displayState: states[2] })
   }
+
   handleChange(e) {
     this.setState({ feedbackText: e.target.value })
   }
@@ -46,47 +51,50 @@ class FeedbackForm extends React.Component {
   }
 
   render() {
-    if (this.state.displayState === states[1]) {
+    const { displayState, feedbackText } = this.state
+
+    if (displayState === states[1]) {
       return (
-        <div id="feedback-module-input" className={styles.InputContainer}>
-          <h4 className={styles.question}>{firstThankYou}</h4>
+        <div id="feedback-module-input" className={styles.container}>
+          <h4 className={styles.firstThankYou}>{firstThankYou}</h4>
           <p>{subtext}</p>
           <TextArea
             id="feedback-input"
             placeholder={placeholder}
             showCounter={false}
             onChange={this.handleChange.bind(this)}
-            value={this.state.feedbackText}
+            value={feedbackText}
           />
+          {/* This is a honeypot input to catch bots. */}
           <div className={styles.maidenNameContainer}>
             <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
           </div>
           <Button
             id="feedback-submit-button"
             onClick={this.handleSubmit.bind(this)}
-            disabled={!this.state.feedbackText || this.state.feedbackText.length === 0}
+            disabled={!feedbackText || feedbackText.length === 0}
             primary
           >
             Submit
           </Button>
         </div>
       )
-    } else if (this.state.displayState === states[2]) {
+    } else if (displayState === states[2]) {
       return (
-        <div id="feedback-module-thankyou" className={styles.ThankYouContainer}>
+        <div id="feedback-module-thank-you" className={styles.container}>
           <i
             id="thank-you-check-circle"
             tabIndex="-1"
             alt="thank-you"
-            className={'fa fa-check-circle ' + styles.checkIcon}
+            className={'fa fa-check-circle fa-2x'}
             aria-hidden="true"
           />
-          <h4 className={styles.thanksAgain}>{thanksAgain}</h4>
+          <h4>{secondThankYou}</h4>
         </div>
       )
     } else {
       return (
-        <div id="feedback-module-question" className={styles.QuestionContainer}>
+        <div id="feedback-module-question" className={styles.container}>
           <h4 className={styles.question}>{question}</h4>
           <div>
             <Button id="feedback-yes-button" onClick={this.handleYesClick.bind(this)} primary>

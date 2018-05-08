@@ -24,7 +24,7 @@ const VersionsList = props => {
       (version ? version : 'N/A')
 
     const effectiveDateMessage = `Effective: ${effectiveDate || 'N/A'}`
-    const effectiveDateInTheFuture = moment(effectiveDate).isAfter(moment())
+    const effectiveDateInTheFuture = effectiveDate && moment(effectiveDate, 'YYYY-MM-DD').isAfter(moment())
     const eventConfig = {
       category: 'Document-Version',
       action: `docname - ${title}: previous version #${version || 'N/A'}`

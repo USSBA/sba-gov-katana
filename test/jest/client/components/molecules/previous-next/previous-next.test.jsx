@@ -38,19 +38,17 @@ describe('PreviousNext', () => {
       test('it sets the desktop previous url appropriately', () => {
         const expectedUrl = '/business-guide/launch/pick-your-business-location-zoning-laws'
         const component = shallow(<PreviousNext lineage={lineageBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url Button').props().url).toBe(
-          expectedUrl
-        )
+        expect(component.find('.previous Link').props().to).toBe(expectedUrl)
       })
       test('it sets the desktop next url appropriately', () => {
         const expectedUrl = '/business-guide/launch/choose-your-business-name-register'
         const component = shallow(<PreviousNext lineage={lineageBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
       test('it sets the mobile next url appropriately', () => {
         const expectedUrl = '/business-guide/launch/choose-your-business-name-register'
         const component = shallow(<PreviousNext lineage={lineageBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
     })
     describe('When in the first article of a middle section', () => {
@@ -67,9 +65,7 @@ describe('PreviousNext', () => {
       test('it assigns Previous Article to the last article of the previous section', () => {
         const expectedUrl = '/business-guide/plan/buy-existing-business-franchise'
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url Button').props().url).toBe(
-          expectedUrl
-        )
+        expect(component.find('.previous Link').props().to).toBe(expectedUrl)
       })
     })
     describe('When in the last article of a middle section', () => {
@@ -86,7 +82,7 @@ describe('PreviousNext', () => {
       test('it assigns Next Article to the first article of the next section', () => {
         const expectedUrl = '/business-guide/manage/manage-your-finances-business-credit'
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
     })
     describe('When in the first article of the first section', () => {
@@ -103,16 +99,16 @@ describe('PreviousNext', () => {
       test('it sets the desktop next url appropriately', () => {
         const expectedUrl = '/business-guide/plan/write-your-business-plan-template'
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
       test('it sets the mobile next url appropriately', () => {
         const expectedUrl = '/business-guide/plan/write-your-business-plan-template'
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
       test('it does not have a desktop Previous Article element', () => {
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url').exists()).toBe(false)
+        expect(component.find('.previous Link').exists()).toBe(false)
       })
     })
     describe('When in the last article of the last section', () => {
@@ -129,13 +125,11 @@ describe('PreviousNext', () => {
       test('it sets the desktop previous url appropriately', () => {
         const expectedUrl = '/business-guide/grow/native-american-owned-businesses-programs'
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url Button').props().url).toBe(
-          expectedUrl
-        )
+        expect(component.find('.previous Link').props().to).toBe(expectedUrl)
       })
       test('it does not have a Next Article element', () => {
         const component = shallow(<PreviousNext lineage={modifiedBusinessGuide} />)
-        expect(component.find('#desktopDivId .previousnext-next-url').exists()).toBe(false)
+        expect(component.find('.next Link').exists()).toBe(false)
       })
     })
   })
@@ -149,19 +143,17 @@ describe('PreviousNext', () => {
       test('it sets the desktop previous url appropriately', () => {
         const expectedUrl = '/for-partners/lenders/7a-loans/operate-as-a-7a-lender'
         const component = shallow(<PreviousNext lineage={lineageForPartners} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url Button').props().url).toBe(
-          expectedUrl
-        )
+        expect(component.find('.previous Link').props().to).toBe(expectedUrl)
       })
       test('it sets the desktop next url appropriately', () => {
         const expectedUrl = '/for-partners/lenders/7a-loans/training-and-courses'
         const component = shallow(<PreviousNext lineage={lineageForPartners} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
       test('it sets the mobile next url appropriately', () => {
         const expectedUrl = '/for-partners/lenders/7a-loans/training-and-courses'
         const component = shallow(<PreviousNext lineage={lineageForPartners} />)
-        expect(component.find('#mobileDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
     })
     describe('When in the first article of a section', () => {
@@ -178,17 +170,17 @@ describe('PreviousNext', () => {
       })
       test('it does not have a desktop Previous Article element', () => {
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url').exists()).toBe(false)
+        expect(component.find('.previous Link').exists()).toBe(false)
       })
       test('it sets the desktop next url appropriately', () => {
         const expectedUrl = '/for-partners/lenders/7a-loans/operate-as-a-7a-lender'
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />)
-        expect(component.find('#desktopDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
       test('it sets the mobile next url appropriately', () => {
         const expectedUrl = '/for-partners/lenders/7a-loans/operate-as-a-7a-lender'
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />)
-        expect(component.find('#mobileDivId .previousnext-next-url Button').props().url).toBe(expectedUrl)
+        expect(component.find('.next Link').props().to).toBe(expectedUrl)
       })
     })
     describe('When in the last article of a section', () => {
@@ -205,14 +197,12 @@ describe('PreviousNext', () => {
       })
       test('it does not have a Next Article element', () => {
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />)
-        expect(component.find('#desktopDivId .previousnext-next-url').exists()).toBe(false)
+        expect(component.find('.next Link').exists()).toBe(false)
       })
       test('it sets the desktop previous url appropriately', () => {
         const expectedUrl = '/for-partners/lenders/7a-loans/training-and-courses'
         const component = shallow(<PreviousNext lineage={modifiedLineageForPartners} />)
-        expect(component.find('#desktopDivId .previousnext-previous-url Button').props().url).toBe(
-          expectedUrl
-        )
+        expect(component.find('.previous Link').props().to).toBe(expectedUrl)
       })
     })
   })

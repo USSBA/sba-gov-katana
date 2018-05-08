@@ -2,846 +2,344 @@
 
 exports[`PreviousNext Business Guide When in a middle article it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous false"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
+    <h6>
+      Previous
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <div
-        className="previousTitle"
-        id="previousTitleId"
-      >
-        <h6
-          className="previousTitle"
-        >
-          Previous
-        </h6>
-      </div>
-      <div
-        className="nextTitle"
-        id="nextTitleDesktopId"
-      >
-        <h6
-          className="nextTitle"
-        >
-          Next
-        </h6>
-      </div>
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainer"
-        id="previousContainerId"
-      >
-        <div
-          className="previousnext-previous-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-left"
-            />
-             
-            Pick your business location
-          </a>
-        </div>
-      </div>
-      <div
-        className="nextContainer"
-        id="nextContainerDesktopId"
-      >
-        <div
-          className="previousnext-next-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            Choose your business name
-             
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-right"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-left"
+      />
+      <span>
+        Pick your business location
+      </span>
+    </a>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next false"
   >
-    <div
-      className="nextTitle"
-      id="nextTitleMobileId"
+    <h6>
+      Next
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <h6
-        className="nextTitle"
-      >
-        Next
-      </h6>
-    </div>
-    <div
-      className="nextContainer"
-      id="nextContainerMobileId"
-    >
-      <div
-        className="previousnext-next-url"
-      >
-        <a
-          className="button link responsive secondary small spacing"
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Choose your business name
-           
-          <i
-            aria-hidden="true"
-            className="fa fa-chevron-right"
-          />
-        </a>
-      </div>
-    </div>
+      <span>
+        Choose your business name
+      </span>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right"
+      />
+    </a>
   </div>
 </div>
 `;
 
 exports[`PreviousNext Business Guide When in the first article of a middle section it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous false"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
+    <h6>
+      Previous
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <div
-        className="previousTitle"
-        id="previousTitleId"
-      >
-        <h6
-          className="previousTitle"
-        >
-          Previous
-        </h6>
-      </div>
-      <div
-        className="nextTitle"
-        id="nextTitleDesktopId"
-      >
-        <h6
-          className="nextTitle"
-        >
-          Next
-        </h6>
-      </div>
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainer"
-        id="previousContainerId"
-      >
-        <div
-          className="previousnext-previous-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-left"
-            />
-             
-            Buy an existing business or franchise
-          </a>
-        </div>
-      </div>
-      <div
-        className="nextContainer"
-        id="nextContainerDesktopId"
-      >
-        <div
-          className="previousnext-next-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            Choose a business structure
-             
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-right"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-left"
+      />
+      <span>
+        Buy an existing business or franchise
+      </span>
+    </a>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next false"
   >
-    <div
-      className="nextTitle"
-      id="nextTitleMobileId"
+    <h6>
+      Next
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <h6
-        className="nextTitle"
-      >
-        Next
-      </h6>
-    </div>
-    <div
-      className="nextContainer"
-      id="nextContainerMobileId"
-    >
-      <div
-        className="previousnext-next-url"
-      >
-        <a
-          className="button link responsive secondary small spacing"
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Choose a business structure
-           
-          <i
-            aria-hidden="true"
-            className="fa fa-chevron-right"
-          />
-        </a>
-      </div>
-    </div>
+      <span>
+        Choose a business structure
+      </span>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right"
+      />
+    </a>
   </div>
 </div>
 `;
 
 exports[`PreviousNext Business Guide When in the first article of the first section it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous invisible"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
-    >
-      <div
-        className="titleHide"
-      >
-        <h6
-          className="previousTitle"
-        >
-          No Previous Article
-        </h6>
-      </div>
-      <div
-        className="nextTitle"
-        id="nextTitleDesktopId"
-      >
-        <h6
-          className="nextTitle"
-        >
-          Next
-        </h6>
-      </div>
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainerHide"
-      >
-        <button
-          className="button responsive secondary small spacing"
-          disabled={true}
-        >
-          No previous article
-        </button>
-      </div>
-      <div
-        className="nextContainer"
-        id="nextContainerDesktopId"
-      >
-        <div
-          className="previousnext-next-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            Write your business plan
-             
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-right"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+    <h6>
+      Previous
+    </h6>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next false"
   >
-    <div
-      className="nextTitle"
-      id="nextTitleMobileId"
+    <h6>
+      Next
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <h6
-        className="nextTitle"
-      >
-        Next
-      </h6>
-    </div>
-    <div
-      className="nextContainer"
-      id="nextContainerMobileId"
-    >
-      <div
-        className="previousnext-next-url"
-      >
-        <a
-          className="button link responsive secondary small spacing"
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Write your business plan
-           
-          <i
-            aria-hidden="true"
-            className="fa fa-chevron-right"
-          />
-        </a>
-      </div>
-    </div>
+      <span>
+        Write your business plan
+      </span>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right"
+      />
+    </a>
   </div>
 </div>
 `;
 
 exports[`PreviousNext Business Guide When in the last article of a middle section it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous false"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
+    <h6>
+      Previous
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <div
-        className="previousTitle"
-        id="previousTitleId"
-      >
-        <h6
-          className="previousTitle"
-        >
-          Previous
-        </h6>
-      </div>
-      <div
-        className="nextTitle"
-        id="nextTitleDesktopId"
-      >
-        <h6
-          className="nextTitle"
-        >
-          Next
-        </h6>
-      </div>
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainer"
-        id="previousContainerId"
-      >
-        <div
-          className="previousnext-previous-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-left"
-            />
-             
-            Open a business bank account
-          </a>
-        </div>
-      </div>
-      <div
-        className="nextContainer"
-        id="nextContainerDesktopId"
-      >
-        <div
-          className="previousnext-next-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            Manage your finances
-             
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-right"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-left"
+      />
+      <span>
+        Open a business bank account
+      </span>
+    </a>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next false"
   >
-    <div
-      className="nextTitle"
-      id="nextTitleMobileId"
+    <h6>
+      Next
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <h6
-        className="nextTitle"
-      >
-        Next
-      </h6>
-    </div>
-    <div
-      className="nextContainer"
-      id="nextContainerMobileId"
-    >
-      <div
-        className="previousnext-next-url"
-      >
-        <a
-          className="button link responsive secondary small spacing"
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Manage your finances
-           
-          <i
-            aria-hidden="true"
-            className="fa fa-chevron-right"
-          />
-        </a>
-      </div>
-    </div>
+      <span>
+        Manage your finances
+      </span>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right"
+      />
+    </a>
   </div>
 </div>
 `;
 
 exports[`PreviousNext Business Guide When in the last article of the last section it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous false"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
+    <h6>
+      Previous
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <div
-        className="previousTitle"
-        id="previousTitleId"
-      >
-        <h6
-          className="previousTitle"
-        >
-          Previous
-        </h6>
-      </div>
-      <div />
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainer"
-        id="previousContainerId"
-      >
-        <div
-          className="previousnext-previous-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-left"
-            />
-             
-            Native American-owned businesses
-          </a>
-        </div>
-      </div>
-      <div />
-    </div>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-left"
+      />
+      <span>
+        Native American-owned businesses
+      </span>
+    </a>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next invisible"
   >
-    <div />
-    <div />
+    <h6>
+      Next
+    </h6>
   </div>
 </div>
 `;
 
 exports[`PreviousNext For Partners When in a middle article it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous false"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
+    <h6>
+      Previous
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <div
-        className="previousTitle"
-        id="previousTitleId"
-      >
-        <h6
-          className="previousTitle"
-        >
-          Previous
-        </h6>
-      </div>
-      <div
-        className="nextTitle"
-        id="nextTitleDesktopId"
-      >
-        <h6
-          className="nextTitle"
-        >
-          Next
-        </h6>
-      </div>
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainer"
-        id="previousContainerId"
-      >
-        <div
-          className="previousnext-previous-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-left"
-            />
-             
-            Operate as a 7(a) Lender
-          </a>
-        </div>
-      </div>
-      <div
-        className="nextContainer"
-        id="nextContainerDesktopId"
-      >
-        <div
-          className="previousnext-next-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            Training and Courses
-             
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-right"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-left"
+      />
+      <span>
+        Operate as a 7(a) Lender
+      </span>
+    </a>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next false"
   >
-    <div
-      className="nextTitle"
-      id="nextTitleMobileId"
+    <h6>
+      Next
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <h6
-        className="nextTitle"
-      >
-        Next
-      </h6>
-    </div>
-    <div
-      className="nextContainer"
-      id="nextContainerMobileId"
-    >
-      <div
-        className="previousnext-next-url"
-      >
-        <a
-          className="button link responsive secondary small spacing"
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Training and Courses
-           
-          <i
-            aria-hidden="true"
-            className="fa fa-chevron-right"
-          />
-        </a>
-      </div>
-    </div>
+      <span>
+        Training and Courses
+      </span>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right"
+      />
+    </a>
   </div>
 </div>
 `;
 
 exports[`PreviousNext For Partners When in the first article of a section it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous invisible"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
-    >
-      <div
-        className="titleHide"
-      >
-        <h6
-          className="previousTitle"
-        >
-          No Previous Article
-        </h6>
-      </div>
-      <div
-        className="nextTitle"
-        id="nextTitleDesktopId"
-      >
-        <h6
-          className="nextTitle"
-        >
-          Next
-        </h6>
-      </div>
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainerHide"
-      >
-        <button
-          className="button responsive secondary small spacing"
-          disabled={true}
-        >
-          No previous article
-        </button>
-      </div>
-      <div
-        className="nextContainer"
-        id="nextContainerDesktopId"
-      >
-        <div
-          className="previousnext-next-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            Operate as a 7(a) Lender
-             
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-right"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+    <h6>
+      Previous
+    </h6>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next false"
   >
-    <div
-      className="nextTitle"
-      id="nextTitleMobileId"
+    <h6>
+      Next
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <h6
-        className="nextTitle"
-      >
-        Next
-      </h6>
-    </div>
-    <div
-      className="nextContainer"
-      id="nextContainerMobileId"
-    >
-      <div
-        className="previousnext-next-url"
-      >
-        <a
-          className="button link responsive secondary small spacing"
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Operate as a 7(a) Lender
-           
-          <i
-            aria-hidden="true"
-            className="fa fa-chevron-right"
-          />
-        </a>
-      </div>
-    </div>
+      <span>
+        Operate as a 7(a) Lender
+      </span>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-right"
+      />
+    </a>
   </div>
 </div>
 `;
 
 exports[`PreviousNext For Partners When in the last article of a section it renders properly 1`] = `
 <div
-  className="previousNextContainer"
-  id="previousNextSectionId"
+  className="previousNext"
+  id="previous-next"
 >
   <div
-    className="desktop"
-    id="desktopDivId"
+    className="previous false"
   >
-    <div
-      className="prevNextTitleContainer"
-      id="prevNextTitleContainerId"
+    <h6>
+      Previous
+    </h6>
+    <a
+      className="button"
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
     >
-      <div
-        className="previousTitle"
-        id="previousTitleId"
-      >
-        <h6
-          className="previousTitle"
-        >
-          Previous
-        </h6>
-      </div>
-      <div />
-    </div>
-    <div
-      className="prevNextButtonsContainer"
-      id="prevNextButtonsContainerId"
-    >
-      <div
-        className="previousContainer"
-        id="previousContainerId"
-      >
-        <div
-          className="previousnext-previous-url"
-        >
-          <a
-            className="button link responsive secondary small spacing"
-            onClick={[Function]}
-            style={Object {}}
-            target="_self"
-          >
-            <i
-              aria-hidden="true"
-              className="fa fa-chevron-left"
-            />
-             
-            Training and Courses
-          </a>
-        </div>
-      </div>
-      <div />
-    </div>
+      <i
+        aria-hidden="true"
+        className="fa fa-chevron-left"
+      />
+      <span>
+        Training and Courses
+      </span>
+    </a>
   </div>
   <div
-    className="mobile"
-    id="mobileDivId"
+    className="next invisible"
   >
-    <div />
-    <div />
+    <h6>
+      Next
+    </h6>
   </div>
 </div>
 `;
