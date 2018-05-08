@@ -42,6 +42,7 @@ workflows:
           tags:
             only:
             - /RELEASE-\d+/
+            - /v-\d+/
     - build-push-image:
         requires: [build-webpack]
         filters:
@@ -55,6 +56,7 @@ workflows:
           tags:
             only:
             - /RELEASE-\d+/
+            - /v-\d+/
     - force-mint-redeploy:
         requires: [build-push-image]
         filters:
@@ -203,9 +205,9 @@ jobs:
           #loginupper="$(export AWS_ACCESS_KEY_ID=${UPPER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${UPPER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
           tagpush ${CIRCLE_SHA1}
           if [ -z "${CIRCLE_BRANCH}" ]; then
-            tagpush ${CIRCLE_BRANCH}
-          else
             tagpush ${CIRCLE_TAG}
+          else
+            tagpush ${CIRCLE_BRANCH}
           fi
           tagpush circle-${CIRCLE_BUILD_NUM}
   force-mint-redeploy:
