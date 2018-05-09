@@ -51,7 +51,6 @@ const VersionsList = props => {
     <div className={styles.allVersionsList}>
       <h3>All versions</h3>
       <ul>{list}</ul>
-      <hr className={styles.hr} />
     </div>
   )
 }

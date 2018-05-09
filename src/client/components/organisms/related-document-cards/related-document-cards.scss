@@ -1,62 +1,76 @@
+.container {
+  background-color: $sba-gray-lighter;
+
+  @include for-small-only {
+    padding: 110px 20px 10px 20px;
+  }
+
+  @include for-medium-only {
+    padding: 110px 30px 10px 30px;
+  }
+
+  @include for-large-up {
+    padding: 50px 70px 50px 70px;
+  }
+}
+
 .title {
   @include grid-media($sba-grid-medium-and-small) {
     margin-top: 10px;
     margin-bottom: 20px;
-
-    @include grid-column(5);
-  }
-  @include grid-media($sba-grid-large) {
-    margin-top: 30px;
-    margin-bottom: 40px;
-
-    @include grid-column(11);
-  }
-}
-
-.sectionTitle {
-  position: relative;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(4);
-  }
-  @include grid-media($desktop-0gutter) {
-    @include grid-column(10);
   }
 }
 
 .sectionHeader {
   position: relative;
+  padding-top: 12px;
+}
 
-  @include grid-container;
-  @include grid-media($tablet-mobile-0gutter) {
-    height: 90px;
-
-    @include grid-column(6);
+.sectionTitle {
+  @include for-small-only {
+    float: left;
   }
-  @include grid-media($sba-grid-large) {
-    height: 126px;
 
-    @include grid-column(12);
+  @include for-medium-only {
+    display: inline-block;
+    @include grid-column(10, (gutter: 0));
+    margin-left: 0px;
+  }
+
+  @include for-large-up {
+    @include grid-column(10, (gutter: 0));
+    margin-left: 0px;
   }
 }
 
 .browseAll {
-  font-weight: normal;
-  cursor: pointer;
-  text-align: right;
-  position: relative;
-  top: 50%;
+  color: $secondary-blue;
+  float: right;
 
-  transform: translateY(-50%);
+  @include for-small-and-medium-only {
+    display: inline-block;
+  }
 
-  // @include font-size($paragraph-font-sizes);
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(2);
+  @include for-large-up {
+    display: inline-block;
   }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(2);
-  }
+}
+
+.container div[class*='card'] {
+  border-top: none;
+  // margin-bottom: 20px;
+
+  // @include for-large-up {
+  //   :nth-child(4n) {
+  //     float: none;
+  //   }
+  // }
+}
+
+.container :global(.document-card-container) div[class*='innerContainer'] {
+  min-height: 0;
+}
+
+.container :global(.document-card-container) div[class*='download'] {
+  margin-top: 20px;
 }

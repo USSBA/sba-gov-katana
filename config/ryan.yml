@@ -21,3 +21,6 @@ features:
 cache:
   s3BucketName: ryan-content-sba-gov
   useS3: true
+aws:
+  cloudsearch:
+    officeEndpoint: 'doc-ryan-viytyt5s4g2yoosw7skocf2v64.us-east-1.cloudsearch.amazonaws.com'

@@ -1,6 +1,5 @@
 .allVersionsList {
   clear: both;
-  padding: 1px 30px;
 
   h3 {
     margin-top: 40px;
@@ -29,13 +28,6 @@
 
 .hr {
   border: 1px solid #dadada;
-
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(12, $desktop-0gutter);
-  }
 }
 
 .future {

@@ -5,7 +5,7 @@ import Carousel from './carousel/carousel'
 import Checkbox from './checkbox/checkbox'
 import CloseIcon from './icons/close'
 import DecorativeDash from './decorative-dash/decorative-dash'
-import DocumentType from './document-type/document-type'
+import Label from './label/label'
 import ExtraLargeTitleText from './extra-large-title-text/extra-large-title-text'
 import FailureIcon from './icons/failure'
 import FormErrorMessage from './form-error-message/form-error-message'
@@ -43,7 +43,7 @@ export {
   Checkbox,
   CloseIcon,
   DecorativeDash,
-  DocumentType,
+  Label,
   ExtraLargeTitleText,
   FailureIcon,
   FormErrorMessage,

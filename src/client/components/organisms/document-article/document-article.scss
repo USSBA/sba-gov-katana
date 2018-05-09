@@ -1,131 +1,119 @@
-.page {
-  margin-top: 50px;
-  margin-bottom: 10px;
-
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(12);
-  }
-  & a {
-    cursor: pointer;
-  }
-}
-
-.marginTop {
-  margin-top: 30px;
+.titleMarginBottom {
+  margin-bottom: 28px;
 }
 
 .title {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(4, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(8, $desktop-0gutter);
+  @include for-large-up {
+    width: 66.666%;
   }
 }
 
 .dates {
   font-family: Merriweather;
 
-  color: $sba-gray;
+  color: $sba-gray-dark;
 
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(4, $mobile-0gutter);
-    & .dateSeperator {
-      display: none;
-    }
-    & .date {
-      display: block;
-    }
+  h5 {
+    margin-bottom: 20px;
   }
-  @include grid-media($sba-grid-large) {
-    font-size: 24px;
-
-    @include grid-column(8, $desktop-0gutter);
-    & div {
-      display: none;
-    }
-  }
+  // @include grid-media($sba-grid-medium-and-small) {
+  //   @include grid-column(4, $mobile-0gutter);
+  //   & .dateSeperator {
+  //     display: none;
+  //   }
+  //   & .date {
+  //     display: block;
+  //   }
+  // }
+  // @include grid-media($sba-grid-large) {
+  //   @include grid-column(8, $desktop-0gutter);
+  //   & div {
+  //     display: none;
+  //   }
+  // }
 }
 
 .office {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(4, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(8, $desktop-0gutter);
-  }
+  margin-bottom: 46px;
+  // @include grid-media($sba-grid-medium-and-small) {
+  //   @include grid-column(4, $mobile-0gutter);
+  // }
+  // @include grid-media($sba-grid-large) {
+  //   @include grid-column(8, $desktop-0gutter);
+  // }
 }
 
 .hr {
-  border: 0.5px solid $sba-gray-light;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 50px;
+  border: 1px solid $sba-gray-light;
+  // margin-bottom: 32px;
+  // margin-top: 42px;
 
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(12, $desktop-0gutter);
-  }
+  // @include grid-media($sba-grid-medium-and-small) {
+  //   @include grid-column(6, $mobile-0gutter);
+  // }
+  // @include grid-media($sba-grid-large) {
+  //   @include grid-column(12, $desktop-0gutter);
+  // }
 }
 
 .summaryContainer {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    // @include font-size($h4-font-sizes);
-    @include grid-column(12, $desktop-0gutter);
+  // download button
+  @include for-small-and-medium-only {
+    div[class~='column']:first-child {
+      margin-bottom: 30px;
+    }
   }
 
-  button {
-    margin-bottom: 20px;
+  @include for-large-up {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 30px;
 
-    @include for-large-up {
-      float: left;
-      padding-left: 36px;
-      padding-right: 36px;
+    div[class~='column']:last-child {
+      // Reverse the visual order of the columns
+      grid-column: 1;
+      grid-row: 1;
+      // This is for the summary column
+      padding-right: 30px;
+      margin-bottom: 6px;
+    }
+
+    h5 {
+      margin-bottom: 0;
     }
   }
 }
 
-.summary {
-  float: left;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  padding-right: 20px;
+.dash {
+  @include for-small-and-medium-only {
+    margin-bottom: 30px;
+  }
+
+  @include for-large-up {
+    margin-bottom: 40px;
+  }
 }
 
 .body {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
+  @include for-small-and-medium-only {
+    margin-bottom: 50px;
   }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(8, $desktop-0gutter);
+
+  @include for-large-up {
+    width: 66.666%;
+    margin-bottom: 50px;
   }
 }
 
-.dashContainer {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(8, $desktop-0gutter);
-  }
+.dash {
+  margin-top: 0;
 }
 
 .relatedProgramsContainer {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(12, $desktop-0gutter);
-  }
-  & hr {
-    margin: 10px 0 10px 0;
+  hr:first-child {
+    margin-bottom: 4px;
+    border: 1px solid $sba-gray-light;
   }
 }
 
