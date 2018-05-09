@@ -89,14 +89,10 @@ export class DocumentArticle extends React.Component {
 
       return (
         <div className={'document-article ' + s.page}>
-          {documentTypeString ? (
-            <Label
-              type={documentTypeString}
-              id={!isEmpty(data.documentIdNumber) && data.documentIdNumber}
-            />
-          ) : (
-            undefined
-          )}
+          <Label
+            type={documentTypeString || undefined}
+            id={!isEmpty(data.documentIdNumber) && data.documentIdNumber}
+          />
           <h1
             className={
               'document-article-title ' + s.title + ' ' + (documentTypeString ? s.titleMarginBottom : '')
