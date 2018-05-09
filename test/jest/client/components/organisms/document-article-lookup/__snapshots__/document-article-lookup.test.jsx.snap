@@ -285,7 +285,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 >
                   <h6
                     className="type"
-                  />
+                  >
+                    Memo
+                  </h6>
                 </div>
               </div>
               <div />
@@ -337,7 +339,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 >
                   <h6
                     className="type"
-                  />
+                  >
+                    Memo
+                  </h6>
                 </div>
               </div>
               <div />
@@ -389,7 +393,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 >
                   <h6
                     className="type"
-                  />
+                  >
+                    Memo
+                  </h6>
                 </div>
               </div>
               <div />
@@ -441,7 +447,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 >
                   <h6
                     className="type"
-                  />
+                  >
+                    Memo
+                  </h6>
                 </div>
               </div>
               <div />

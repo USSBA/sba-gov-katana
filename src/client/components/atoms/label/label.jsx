@@ -32,4 +32,9 @@ Label.PropTypes = {
   type: PropTypes.string.isRequired
 }
 
+Label.defaultProps = {
+  // This is a text placement for article related cards because it doesn't have any type or id
+  type: 'Memo'
+}
+
 export default Label
