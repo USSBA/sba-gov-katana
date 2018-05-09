@@ -27,8 +27,8 @@
   @include for-small-only {
     margin-bottom: 50px;
 
-    .previous + .next {
-      margin-top: $small-spacing;
+    .previous {
+      display: none;
     }
   }
 
@@ -60,7 +60,7 @@
 
   .button {
     align-items: center;
-    border: 2px solid $secondary-black-ish;
+    border: 2px solid $sba-blue;
     display: grid;
     font-size: 1rem;
     font-weight: 500;
@@ -68,8 +68,8 @@
     transition: border-color $base-duration $base-timing;
 
     &:hover {
-      border-color: $sba-blue;
-      color: $sba-blue;
+      border-color: $secondary-blue;
+      color: $secondary-blue;
     }
   }
 }
