@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './document.scss'
+import styles from './document-article.scss'
 import { VersionsList } from 'atoms'
 import { DocumentArticle, RelatedDocumentCards } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
@@ -18,11 +18,14 @@ class DocumentArticleTemplate extends React.Component {
     }
 
     if (!data) return <div />
+    console.log('ONE', data)
     return (
       <div>
-        <DocumentArticle data={data} type={doc ? 'document' : 'article'} />
-        {doc && <VersionsList doc={data} />}
-        <RelatedDocumentCards data={data} />
+        <div className={styles.container}>
+          <DocumentArticle data={data} type={doc ? 'document' : 'article'} />
+          {doc && <VersionsList doc={data} />}
+        </div>
+        {data.relatedDocuments.length > 0 && <RelatedDocumentCards data={data} />}
       </div>
     )
   }
