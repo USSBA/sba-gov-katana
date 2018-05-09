@@ -1,0 +1,27 @@
+.label {
+  margin-bottom: 22px;
+  h6 {
+    display: inline-block;
+    color: $secondary-black-ish;
+  }
+}
+
+.large h6 {
+  font-size: 27px;
+  padding: 15px;
+}
+
+.small h6 {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.id {
+  border: 2px solid $sba-gray-lighter;
+}
+
+.type {
+  background-color: $sba-gray-lighter;
+  border: 2px solid $sba-gray-lighter;
+  text-transform: uppercase;
+}

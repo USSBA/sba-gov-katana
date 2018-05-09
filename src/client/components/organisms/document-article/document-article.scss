@@ -1,17 +1,3 @@
-.page {
-  @include for-small-only {
-    margin: 110px 20px 10px 20px;
-  }
-
-  @include for-medium-only {
-    margin: 110px 30px 10px 30px;
-  }
-
-  @include for-large-up {
-    margin: 50px 70px 10px 70px;
-  }
-}
-
 .titleMarginBottom {
   margin-bottom: 28px;
 }
@@ -72,6 +58,13 @@
 }
 
 .summaryContainer {
+  // download button
+  @include for-small-and-medium-only {
+    div[class~='column']:first-child {
+      margin-bottom: 30px;
+    }
+  }
+
   @include for-large-up {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -81,7 +74,7 @@
       // Reverse the visual order of the columns
       grid-column: 1;
       grid-row: 1;
-      // This is for the download button column
+      // This is for the summary column
       padding-right: 30px;
       margin-bottom: 6px;
     }
@@ -93,58 +86,34 @@
 }
 
 .dash {
+  @include for-small-and-medium-only {
+    margin-bottom: 30px;
+  }
+
   @include for-large-up {
     margin-bottom: 40px;
   }
 }
 
-.summary {
-  // margin-bottom: 20px;
-  // margin-top: 20px;
-  // padding-right: 20px;
-
-  @include for-large-up {
-    // float: left;
-  }
-}
-
-// .summary {
-//   margin-bottom: 20px;
-//   margin-top: 20px;
-//   padding-right: 20px;
-// }
-
 .body {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
+  @include for-small-and-medium-only {
+    margin-bottom: 50px;
   }
+
   @include for-large-up {
     width: 66.666%;
+    margin-bottom: 50px;
   }
 }
-
-// .dashContainer {
-//   @include grid-media($sba-grid-medium-and-small) {
-//     @include grid-column(6, $mobile-0gutter);
-//   }
-//   @include grid-media($sba-grid-large) {
-//     @include grid-column(8, $desktop-0gutter);
-//   }
-// }
 
 .dash {
   margin-top: 0;
 }
 
 .relatedProgramsContainer {
-  @include grid-media($sba-grid-medium-and-small) {
-    @include grid-column(6, $mobile-0gutter);
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(12, $desktop-0gutter);
-  }
-  & hr {
-    margin: 10px 0 10px 0;
+  hr:first-child {
+    margin-bottom: 4px;
+    border: 1px solid $sba-gray-light;
   }
 }
 

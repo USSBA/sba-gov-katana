@@ -1,3 +1,7 @@
+table {
+  table-layout: auto;
+}
+
 .program-summary-table {
   border: none;
 }
@@ -22,16 +26,13 @@
   }
 }
 
-.innerContainer {
+.innerContainer,
+:global(.innerContainer) {
   min-height: 19.5rem;
 }
 
 .documentTypeContainer {
   margin-bottom: 20px;
-}
-
-.documentType > div {
-  padding: 5px 10px;
 }
 
 .title {
@@ -81,5 +82,4 @@
   color: $secondary-blue;
   cursor: pointer;
   margin-right: 10px;
-  text-decoration: underline;
 }

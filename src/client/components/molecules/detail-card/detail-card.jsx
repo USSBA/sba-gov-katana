@@ -1,8 +1,8 @@
 import React from 'react'
-import _ from 'lodash'
+import _, { isObject } from 'lodash'
 
 import s from './detail-card.scss'
-import { DecorativeDash, DocumentType, Link, PdfIcon } from 'atoms'
+import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
@@ -115,10 +115,10 @@ class DetailCard extends React.Component {
         <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
           <div className={s.innerContainer}>
             <div className={s.documentTypeContainer}>
-              <DocumentType
-                className={s.documentType}
+              <Label
                 type={doc.documentIdType}
-                number={doc.documentIdNumber}
+                id={!isObject(doc.documentIdNumber) && doc.documentIdNumber}
+                small
               />
             </div>
             <div />
