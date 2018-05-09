@@ -239,7 +239,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           </strong>
         </span>
         <button
-          className="button large responsive secondary"
+          className="button large secondary"
           id={undefined}
           onClick={[Function]}
         >
@@ -250,7 +250,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           />
         </button>
         <button
-          className="button large responsive secondary"
+          className="button large secondary"
           id={undefined}
           onClick={[Function]}
         >
@@ -269,217 +269,233 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="document-card-collection cardCollection"
       >
         <div
-          className="card-container card"
+          className="cardRow"
         >
           <div
-            className="document-card-container "
+            className="card-container card"
           >
             <div
-              className="innerContainer"
+              className="document-card-container "
             >
               <div
-                className="documentTypeContainer"
+                className="innerContainer"
               >
                 <div
-                  className="label small"
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      <h6>
+                        MEMO
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  href="javascript:;"
                 >
                   <h6
-                    className="type"
+                    className="document-card-title title"
                   >
-                    Memo
+                    Master
                   </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
+                    />
+                  </div>
+                  <table>
+                    <tbody
+                      className="program-summary-table"
+                    />
+                  </table>
                 </div>
               </div>
-              <div />
-              <a
-                href="javascript:;"
+            </div>
+          </div>
+          <div
+            className="card-container card"
+          >
+            <div
+              className="document-card-container "
+            >
+              <div
+                className="innerContainer"
               >
-                <h6
-                  className="document-card-title title"
-                >
-                  Master
-                </h6>
-              </a>
-              <div>
                 <div
-                  className="dash"
+                  className="documentTypeContainer"
                 >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "18.667rem",
-                      }
-                    }
-                  />
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      <h6>
+                        MEMO
+                      </h6>
+                    </div>
+                  </div>
                 </div>
-                <table>
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
+                <div />
+                <a
+                  href="javascript:;"
+                >
+                  <h6
+                    className="document-card-title title"
+                  >
+                    Knight
+                  </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
+                    />
+                  </div>
+                  <table>
+                    <tbody
+                      className="program-summary-table"
+                    />
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="card-container card"
+          >
+            <div
+              className="document-card-container "
+            >
+              <div
+                className="innerContainer"
+              >
+                <div
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      <h6>
+                        MEMO
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  href="javascript:;"
+                >
+                  <h6
+                    className="document-card-title title"
+                  >
+                    Master
+                  </h6>
+                </a>
+                <div>
+                  <div
+                    className="dash"
+                  >
+                    <hr
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
+                      }
+                    />
+                  </div>
+                  <table>
+                    <tbody
+                      className="program-summary-table"
+                    />
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="card-container card"
+          className="cardRow"
         >
           <div
-            className="document-card-container "
+            className="card-container card"
           >
             <div
-              className="innerContainer"
+              className="document-card-container "
             >
               <div
-                className="documentTypeContainer"
+                className="innerContainer"
               >
                 <div
-                  className="label small"
+                  className="documentTypeContainer"
+                >
+                  <div
+                    className="documentType"
+                  >
+                    <div
+                      className="type"
+                    >
+                      <h6>
+                        MEMO
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div />
+                <a
+                  href="javascript:;"
                 >
                   <h6
-                    className="type"
+                    className="document-card-title title"
                   >
-                    Memo
+                    Knight
                   </h6>
-                </div>
-              </div>
-              <div />
-              <a
-                href="javascript:;"
-              >
-                <h6
-                  className="document-card-title title"
-                >
-                  Knight
-                </h6>
-              </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
+                </a>
+                <div>
+                  <div
                     className="dash"
-                    style={
-                      Object {
-                        "width": "18.667rem",
-                      }
-                    }
-                  />
-                </div>
-                <table>
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="card-container card"
-        >
-          <div
-            className="document-card-container "
-          >
-            <div
-              className="innerContainer"
-            >
-              <div
-                className="documentTypeContainer"
-              >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
                   >
-                    Memo
-                  </h6>
-                </div>
-              </div>
-              <div />
-              <a
-                href="javascript:;"
-              >
-                <h6
-                  className="document-card-title title"
-                >
-                  Master
-                </h6>
-              </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "18.667rem",
+                    <hr
+                      className="dash"
+                      style={
+                        Object {
+                          "width": "18.667rem",
+                        }
                       }
-                    }
-                  />
+                    />
+                  </div>
+                  <table>
+                    <tbody
+                      className="program-summary-table"
+                    />
+                  </table>
                 </div>
-                <table>
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="card-container card"
-        >
-          <div
-            className="document-card-container "
-          >
-            <div
-              className="innerContainer"
-            >
-              <div
-                className="documentTypeContainer"
-              >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
-              <div />
-              <a
-                href="javascript:;"
-              >
-                <h6
-                  className="document-card-title title"
-                >
-                  Knight
-                </h6>
-              </a>
-              <div>
-                <div
-                  className="dash"
-                >
-                  <hr
-                    className="dash"
-                    style={
-                      Object {
-                        "width": "18.667rem",
-                      }
-                    }
-                  />
-                </div>
-                <table>
-                  <tbody
-                    className="program-summary-table"
-                  />
-                </table>
               </div>
             </div>
           </div>
@@ -526,7 +542,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           </strong>
         </span>
         <button
-          className="button large responsive secondary"
+          className="button large secondary"
           id={undefined}
           onClick={[Function]}
         >
@@ -537,7 +553,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           />
         </button>
         <button
-          className="button large responsive secondary"
+          className="button large secondary"
           id={undefined}
           onClick={[Function]}
         >

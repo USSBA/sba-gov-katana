@@ -10,12 +10,11 @@ googleAnalytics:
 foresee:
     environment: staging
 server:
-    fqdn: avery.sba.fun
+    fqdn: avery.ussba.io
 features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeAvery
         enabled: true

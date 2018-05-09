@@ -7,12 +7,11 @@ googleAnalytics:
 foresee:
     environment: staging
 server:
-    fqdn: ryan.sba.fun
+    fqdn: ryan.ussba.io
 features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: "/tools/search-result-page?search="
     urlRedirect:
         tableName: UrlToNodeRyan
         enabled: true
@@ -24,4 +23,4 @@ cache:
   useS3: true
 aws:
   cloudsearch:
-    officeEndpoint: 'doc-ryan-viytyt5s4g2yoosw7skocf2v64.us-east-1.cloudsearch.amazonaws.com'
+officeEndpoint: 'doc-ryan-viytyt5s4g2yoosw7skocf2v64.us-east-1.cloudsearch.amazonaws.com'

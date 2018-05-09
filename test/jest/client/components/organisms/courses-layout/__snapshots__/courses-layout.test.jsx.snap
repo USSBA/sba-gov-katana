@@ -49,7 +49,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             </strong>
           </span>
           <button
-            className="button large responsive secondary"
+            className="button large secondary"
             id={undefined}
             onClick={[Function]}
           >
@@ -60,7 +60,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             />
           </button>
           <button
-            className="button large responsive secondary"
+            className="button large secondary"
             id={undefined}
             onClick={[Function]}
           >
@@ -553,7 +553,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             </strong>
           </span>
           <button
-            className="button large responsive secondary"
+            className="button large secondary"
             id={undefined}
             onClick={[Function]}
           >
@@ -564,7 +564,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             />
           </button>
           <button
-            className="button large responsive secondary"
+            className="button large secondary"
             id={undefined}
             onClick={[Function]}
           >

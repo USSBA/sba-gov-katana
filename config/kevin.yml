@@ -1,12 +1,11 @@
 foresee:
     environment: staging
 server:
-    fqdn: kevin.sba.fun
+    fqdn: kevin.ussba.io
 features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: /search/?q=
     urlRedirect:
         tableName: UrlToNodeKevin
         enabled: true

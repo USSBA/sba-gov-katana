@@ -1,13 +1,11 @@
 foresee:
     environment: staging
 server:
-    fqdn: laura.sba.fun
+    fqdn: laura.ussba.io
 features:
     forPartners: true
     showSbic: false
     moon: false
-
-    searchUrl: /search/?q=
     urlRedirect:
         tableName: UrlToNodeLaura
         enabled: true

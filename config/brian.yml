@@ -1,12 +1,11 @@
 foresee:
     environment: staging
 server:
-    fqdn: brian.sba.fun
+    fqdn: brian.ussba.io
 features:
     forPartners: true
     showSbic: false
-    moon: false
-    searchUrl: "/tools/search-result-page?search="
+    moon: true
     urlRedirect:
         tableName: UrlToNodeBrian
         enabled: true

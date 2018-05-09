@@ -7,12 +7,11 @@ googleAnalytics:
 foresee:
     environment: staging
 server:
-    fqdn: mint.sba.fun
+    fqdn: mint.ussba.io
 features:
     forPartners: true
     showSbic: false
     moon: false
-    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeIntegration
         enabled: true
