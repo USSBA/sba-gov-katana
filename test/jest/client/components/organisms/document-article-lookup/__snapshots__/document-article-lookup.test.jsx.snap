@@ -269,233 +269,217 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="document-card-collection cardCollection"
       >
         <div
-          className="cardRow"
+          className="card-container card"
         >
           <div
-            className="card-container card"
+            className="document-card-container "
           >
             <div
-              className="document-card-container "
+              className="innerContainer"
             >
               <div
-                className="innerContainer"
+                className="documentTypeContainer"
               >
                 <div
-                  className="documentTypeContainer"
-                >
-                  <div
-                    className="documentType"
-                  >
-                    <div
-                      className="type"
-                    >
-                      <h6>
-                        MEMO
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                <div />
-                <a
-                  href="javascript:;"
+                  className="label small"
                 >
                   <h6
-                    className="document-card-title title"
+                    className="type"
                   >
-                    Master
+                    Memo
                   </h6>
-                </a>
-                <div>
-                  <div
-                    className="dash"
-                  >
-                    <hr
-                      className="dash"
-                      style={
-                        Object {
-                          "width": "18.667rem",
-                        }
-                      }
-                    />
-                  </div>
-                  <table>
-                    <tbody
-                      className="program-summary-table"
-                    />
-                  </table>
                 </div>
               </div>
-            </div>
-          </div>
-          <div
-            className="card-container card"
-          >
-            <div
-              className="document-card-container "
-            >
-              <div
-                className="innerContainer"
+              <div />
+              <a
+                href="javascript:;"
               >
+                <h6
+                  className="document-card-title title"
+                >
+                  Master
+                </h6>
+              </a>
+              <div>
                 <div
-                  className="documentTypeContainer"
+                  className="dash"
                 >
-                  <div
-                    className="documentType"
-                  >
-                    <div
-                      className="type"
-                    >
-                      <h6>
-                        MEMO
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                <div />
-                <a
-                  href="javascript:;"
-                >
-                  <h6
-                    className="document-card-title title"
-                  >
-                    Knight
-                  </h6>
-                </a>
-                <div>
-                  <div
+                  <hr
                     className="dash"
-                  >
-                    <hr
-                      className="dash"
-                      style={
-                        Object {
-                          "width": "18.667rem",
-                        }
+                    style={
+                      Object {
+                        "width": "18.667rem",
                       }
-                    />
-                  </div>
-                  <table>
-                    <tbody
-                      className="program-summary-table"
-                    />
-                  </table>
+                    }
+                  />
                 </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="card-container card"
-          >
-            <div
-              className="document-card-container "
-            >
-              <div
-                className="innerContainer"
-              >
-                <div
-                  className="documentTypeContainer"
-                >
-                  <div
-                    className="documentType"
-                  >
-                    <div
-                      className="type"
-                    >
-                      <h6>
-                        MEMO
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                <div />
-                <a
-                  href="javascript:;"
-                >
-                  <h6
-                    className="document-card-title title"
-                  >
-                    Master
-                  </h6>
-                </a>
-                <div>
-                  <div
-                    className="dash"
-                  >
-                    <hr
-                      className="dash"
-                      style={
-                        Object {
-                          "width": "18.667rem",
-                        }
-                      }
-                    />
-                  </div>
-                  <table>
-                    <tbody
-                      className="program-summary-table"
-                    />
-                  </table>
-                </div>
+                <table>
+                  <tbody
+                    className="program-summary-table"
+                  />
+                </table>
               </div>
             </div>
           </div>
         </div>
         <div
-          className="cardRow"
+          className="card-container card"
         >
           <div
-            className="card-container card"
+            className="document-card-container "
           >
             <div
-              className="document-card-container "
+              className="innerContainer"
             >
               <div
-                className="innerContainer"
+                className="documentTypeContainer"
               >
                 <div
-                  className="documentTypeContainer"
-                >
-                  <div
-                    className="documentType"
-                  >
-                    <div
-                      className="type"
-                    >
-                      <h6>
-                        MEMO
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                <div />
-                <a
-                  href="javascript:;"
+                  className="label small"
                 >
                   <h6
-                    className="document-card-title title"
+                    className="type"
                   >
-                    Knight
+                    Memo
                   </h6>
-                </a>
-                <div>
-                  <div
-                    className="dash"
-                  >
-                    <hr
-                      className="dash"
-                      style={
-                        Object {
-                          "width": "18.667rem",
-                        }
-                      }
-                    />
-                  </div>
-                  <table>
-                    <tbody
-                      className="program-summary-table"
-                    />
-                  </table>
                 </div>
+              </div>
+              <div />
+              <a
+                href="javascript:;"
+              >
+                <h6
+                  className="document-card-title title"
+                >
+                  Knight
+                </h6>
+              </a>
+              <div>
+                <div
+                  className="dash"
+                >
+                  <hr
+                    className="dash"
+                    style={
+                      Object {
+                        "width": "18.667rem",
+                      }
+                    }
+                  />
+                </div>
+                <table>
+                  <tbody
+                    className="program-summary-table"
+                  />
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card-container card"
+        >
+          <div
+            className="document-card-container "
+          >
+            <div
+              className="innerContainer"
+            >
+              <div
+                className="documentTypeContainer"
+              >
+                <div
+                  className="label small"
+                >
+                  <h6
+                    className="type"
+                  >
+                    Memo
+                  </h6>
+                </div>
+              </div>
+              <div />
+              <a
+                href="javascript:;"
+              >
+                <h6
+                  className="document-card-title title"
+                >
+                  Master
+                </h6>
+              </a>
+              <div>
+                <div
+                  className="dash"
+                >
+                  <hr
+                    className="dash"
+                    style={
+                      Object {
+                        "width": "18.667rem",
+                      }
+                    }
+                  />
+                </div>
+                <table>
+                  <tbody
+                    className="program-summary-table"
+                  />
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card-container card"
+        >
+          <div
+            className="document-card-container "
+          >
+            <div
+              className="innerContainer"
+            >
+              <div
+                className="documentTypeContainer"
+              >
+                <div
+                  className="label small"
+                >
+                  <h6
+                    className="type"
+                  >
+                    Memo
+                  </h6>
+                </div>
+              </div>
+              <div />
+              <a
+                href="javascript:;"
+              >
+                <h6
+                  className="document-card-title title"
+                >
+                  Knight
+                </h6>
+              </a>
+              <div>
+                <div
+                  className="dash"
+                >
+                  <hr
+                    className="dash"
+                    style={
+                      Object {
+                        "width": "18.667rem",
+                      }
+                    }
+                  />
+                </div>
+                <table>
+                  <tbody
+                    className="program-summary-table"
+                  />
+                </table>
               </div>
             </div>
           </div>
