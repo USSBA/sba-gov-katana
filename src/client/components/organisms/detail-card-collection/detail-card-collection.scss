@@ -5,6 +5,7 @@
 .cardRow {
   overflow: hidden;
   position: relative;
+
   @include grid-media($sba-grid-large) {
     margin-bottom: 30px;
   }
@@ -13,15 +14,22 @@
 .card {
   background-color: white;
   border-top: 3px solid $sba-blue;
-  @include grid-media($sba-grid-medium-and-small) {
-    height: auto;
-    margin-bottom: 30px;
+  height: auto;
+  margin-bottom: 30px;
+
+  @include for-small-only {
     padding: 30px;
-    @include grid-column(6, $sba-grid-medium-and-small);
+    @include grid-column(12);
   }
-  @include grid-media($sba-grid-large) {
+
+  @include for-medium-only {
+    padding: 30px;
+    @include grid-column(6, $sba-grid-medium);
+  }
+
+  @include for-large-up {
     padding: 20px;
-    @include grid-column(4, $sba-grid-large);
+    @include grid-column(4);
   }
 }
 
