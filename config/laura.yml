@@ -15,7 +15,3 @@ features:
 cache:
   s3BucketName: laura-content-sba-gov
   useS3: true
-aws:
-  cloudsearch:
-    searchEndpoint: 'doc-laura-26evoc5xorgki5mbhdiktpp7q4.us-east-1.cloudsearch.amazonaws.com'
-    officeEndpoint: 'doc-laura-offices-ovmfppym46ea6hgq6ms2f6d3ye.us-east-1.cloudsearch.amazonaws.com'
