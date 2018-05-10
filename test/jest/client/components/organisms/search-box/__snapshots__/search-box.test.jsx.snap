@@ -12,7 +12,7 @@ ShallowWrapper {
     className="container"
 >
     <div
-        className="greyParagraph"
+        className="blueParagraph"
     >
         <h2>
             Search documents, forms, and SOPs
@@ -268,7 +268,7 @@ ShallowWrapper {
       className="container"
 >
       <div
-            className="greyParagraph"
+            className="blueParagraph"
       >
             <h2>
                   Search documents, forms, and SOPs
@@ -659,7 +659,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               Search documents, forms, and SOPs
@@ -915,7 +915,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               Search documents, forms, and SOPs
@@ -1244,7 +1244,7 @@ ShallowWrapper {
     className="container"
 >
     <div
-        className="greyParagraph"
+        className="blueParagraph"
     >
         <h2>
             Search documents, forms, and SOPs
@@ -1500,7 +1500,7 @@ ShallowWrapper {
       className="container"
 >
       <div
-            className="greyParagraph"
+            className="blueParagraph"
       >
             <h2>
                   Search documents, forms, and SOPs
@@ -1891,7 +1891,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               Search documents, forms, and SOPs
@@ -2147,7 +2147,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               Search documents, forms, and SOPs
@@ -2469,7 +2469,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
   className="container"
 >
   <div
-    className="greyParagraph"
+    className="blueParagraph"
   >
     <h2>
       Search documents, forms, and SOPs
@@ -2735,7 +2735,7 @@ ShallowWrapper {
     className="container"
 >
     <div
-        className="greyParagraph"
+        className="blueParagraph"
     >
         <h2>
             new title
@@ -2991,7 +2991,7 @@ ShallowWrapper {
       className="container"
 >
       <div
-            className="greyParagraph"
+            className="blueParagraph"
       >
             <h2>
                   new title
@@ -3382,7 +3382,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               new title
@@ -3638,7 +3638,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               new title
@@ -3967,7 +3967,7 @@ ShallowWrapper {
     className="container"
 >
     <div
-        className="greyParagraph"
+        className="blueParagraph"
     >
         <h2>
             Search documents, forms, and SOPs
@@ -4223,7 +4223,7 @@ ShallowWrapper {
       className="container"
 >
       <div
-            className="greyParagraph"
+            className="blueParagraph"
       >
             <h2>
                   Search documents, forms, and SOPs
@@ -4614,7 +4614,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               Search documents, forms, and SOPs
@@ -4870,7 +4870,7 @@ ShallowWrapper {
           className="container"
 >
           <div
-                    className="greyParagraph"
+                    className="blueParagraph"
           >
                     <h2>
                               Search documents, forms, and SOPs
