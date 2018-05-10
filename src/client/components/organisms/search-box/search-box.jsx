@@ -147,7 +147,7 @@ class SearchBox extends React.Component {
     const filterNames = ['documentType', 'program', 'documentActivity']
     return (
       <div className={styles.container}>
-        <div className={styles.greyParagraph}>
+        <div className={styles.blueParagraph}>
           <h2>{this.props.sectionHeaderText}</h2>
           <p>{this.props.subtitleText}</p>
           <div className={styles.searchBox}>
