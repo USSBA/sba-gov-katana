@@ -1,92 +1,64 @@
-$wrapper-tablet-height: 55px;
-$wrapper-mobile-height: 113px;
-$mobile-nav-height: 53px;
-
-.wrapper {
-  position: static;
-  width: 100%;
-  z-index: 1000000000;
-  // top: 0;
-  // left: 0;
-  @include grid-media($tablet-nav) {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  @include grid-media($mobile-nav) {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-}
-
-.wrapper:after {
-  content: '';
-  display: block;
-}
-
 .alert {
+  align-items: center;
+  background-color: $secondary-yellow;
+  color: $secondary-black-ish;
+  display: grid;
+  // TODO: The browser prefix will be handled by build tool later
+  grid-template-columns: 1fr 6fr 1fr;
+  -ms-grid-columns: 1fr 6fr 1fr;
+  padding: 13px 23px;
+  position: fixed;
   top: 0;
   width: 100%;
-  background-color: #ffc63d;
-  color: #333333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 10;
+}
+
+.description {
   text-align: center;
-  padding: 11px 0;
-  @include grid-media($sba-grid-small) {
-    margin: 0 auto;
-    display: block;
-    padding: 11px 60px;
+
+  h6 {
+    display: inline;
+
+    i {
+      @include for-small-and-medium-only {
+        display: none;
+      }
+
+      @include for-large-up {
+        margin-right: $small-spacing;
+      }
+    }
+  }
+
+  @include for-small-and-medium-only {
+    i {
+      display: none;
+    }
   }
 }
 
-.alert .alertIcon {
-  font-size: 16px;
-  color: #333333;
-  @include grid-media($sba-grid-small) {
-    display: none;
-  }
+.button {
+  margin-left: $small-spacing;
+  // TODO: Stop gap measure
+  text-decoration: underline;
+  white-space: nowrap;
 }
 
-.alert .disasterDescription {
-  color: #333333;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 15px;
-  @include grid-media($sba-grid-small) {
-    margin: 0 15px 10px;
+.column {
+  justify-self: end;
+  -ms-grid-column-align: end;
+
+  &:first-child {
+    align-self: baseline;
+    -ms-grid-row-align: baseline;
   }
-}
 
-.alert .alertButton {
-  position: relative;
-  text-align: center;
-  border: 2px solid #333333;
-  padding: 5px 12px;
-  text-decoration: none;
-  color: #333333;
-  font-size: 13px;
-  font-weight: 700;
-  display: inline-block;
-
-  &:hover,
-  &:focus {
-    background: #333;
-    color: #ffc63d;
+  i {
+    @include for-small-and-medium-only {
+      margin-right: 15px;
+    }
+    @include for-large-up {
+      display: none;
+    }
   }
-}
-
-img.alertClose {
-  opacity: 0.6;
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  display: inline-block;
-  cursor: pointer;
-  z-index: 10000;
-  width: 20px;
-  height: auto;
 }
