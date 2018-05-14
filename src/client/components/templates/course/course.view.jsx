@@ -64,7 +64,7 @@ class CourseView extends PureComponent {
                 readMoreExpanded={this.state.readMoreExpanded}
               />
               {tags && <Tagcloud {...this.props} />}
-              {course.worksheets && <Worksheets {...this.props} />}
+              {course.worksheets.length > 0 && <Worksheets {...this.props} />}
               {!_.isEmpty(relatedCourses) && <RelatedCourses {...this.props} />}
               {!_.isEmpty(relatedArticles) && <RelatedArticles {...this.props} />}
               <CTA {...this.props} />
@@ -91,7 +91,7 @@ const Description = props => {
 const TableOfContents = props => {
   return (
     <div className="table-of-contents">
-      <h2 id="contentLabel">Content</h2>
+      <h3 id="contentLabel">Content</h3>
       <ul role="menu" aria-labelledby="contentLabel">
         <li role="menuitem">
           <a href="#course-content">Course</a>
