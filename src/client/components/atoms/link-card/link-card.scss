@@ -1,17 +1,13 @@
-.itemLink {
-  font-weight: bold;
-}
+.linkCard {
+  border: 1px solid $sba-gray-light;
+  padding: 30px;
 
-.card {
-  border: 2px solid #c4c4c4;
-  width: 85%;
-  padding: 20px;
-  margin: 30px auto;
-}
+  a {
+    text-decoration: underline;
+  }
 
-.card i {
-  margin-left: 5px;
-}
-
-.itemData {
+  p {
+    font-style: italic;
+    margin: 10px 0 0 0;
+  }
 }

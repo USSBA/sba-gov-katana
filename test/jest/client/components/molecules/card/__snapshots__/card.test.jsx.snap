@@ -2,8 +2,8 @@
 
 exports[`Card does not error check malformed link 1`] = `
 <div
-  className="twoColumn leftAligned"
-  id="card-4-0"
+  className="card twoColumn leftAligned noImage"
+  id="card"
 >
   <a
     onClick={[Function]}
@@ -17,52 +17,54 @@ exports[`Card does not error check malformed link 1`] = `
       src="https://placekitten.com/588/364"
     />
   </a>
-  <p
-    className="itemTitle"
-    id="title-4-0"
+  <div
+    className="content"
   >
-    <a
-      className="unstyledLink"
-      onClick={[Function]}
-      style={Object {}}
-      target="_self"
+    <h4
+      className="itemTitle"
+      id="title"
     >
-      Kitten
-    </a>
-  </p>
-  <div>
-    <hr
-      className="dash"
-      id="hr-4-0"
-      style={
-        Object {
-          "width": "3.333rem",
+      <a
+        className="unstyledLink"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      >
+        Kitten
+      </a>
+    </h4>
+    <div>
+      <hr
+        className="dash"
+        id="hr-4-0"
+        style={
+          Object {
+            "width": "1.667rem",
+          }
         }
-      }
-    />
-    <p
-      className="itemSubTitle"
-      id="subtitle-text-4-0"
-    >
-      A kitten, also known as a kitty or kitty cat, is a juvenile cat
-    </p>
+      />
+      <p
+        className="itemSubTitle"
+        id="subtitle-text-4-0"
+      >
+        A kitten, also known as a kitty or kitty cat, is a juvenile cat
+      </p>
+    </div>
   </div>
-  <p>
-    <a
-      onClick={[Function]}
-      style={Object {}}
-      target="_self"
-    >
-      dogs
-    </a>
-  </p>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+    target="_self"
+  >
+    dogs
+  </a>
 </div>
 `;
 
 exports[`Card to render correctly 1`] = `
 <div
-  className="twoColumn leftAligned"
-  id="card-4-0"
+  className="card twoColumn leftAligned noImage"
+  id="card"
 >
   <a
     href="https://en.wikipedia.org/wiki/Kitten"
@@ -74,48 +76,50 @@ exports[`Card to render correctly 1`] = `
       src="https://placekitten.com/588/364"
     />
   </a>
-  <p
-    className="itemTitle"
-    id="title-4-0"
+  <div
+    className="content"
   >
-    <a
-      className="unstyledLink"
-      href="https://en.wikipedia.org/wiki/Kitten"
+    <h4
+      className="itemTitle"
+      id="title"
     >
-      Kitten
-    </a>
-  </p>
-  <div>
-    <hr
-      className="dash"
-      id="hr-4-0"
-      style={
-        Object {
-          "width": "3.333rem",
+      <a
+        className="unstyledLink"
+        href="https://en.wikipedia.org/wiki/Kitten"
+      >
+        Kitten
+      </a>
+    </h4>
+    <div>
+      <hr
+        className="dash"
+        id="hr-4-0"
+        style={
+          Object {
+            "width": "1.667rem",
+          }
         }
-      }
-    />
-    <p
-      className="itemSubTitle"
-      id="subtitle-text-4-0"
-    >
-      A kitten, also known as a kitty or kitty cat, is a juvenile cat
-    </p>
+      />
+      <p
+        className="itemSubTitle"
+        id="subtitle-text-4-0"
+      >
+        A kitten, also known as a kitty or kitty cat, is a juvenile cat
+      </p>
+    </div>
   </div>
-  <p>
-    <a
-      href="https://en.wikipedia.org/wiki/Kitten"
-    >
-      Learn more about kittens
-    </a>
-  </p>
+  <a
+    href="https://en.wikipedia.org/wiki/Kitten"
+  >
+    Learn more about kittens
+  </a>
 </div>
 `;
 
 exports[`Card to render correctly if the link is just a string 1`] = `
 <div
-  className="twoColumn leftAligned"
-  id="card-4-0"
+  className="card twoColumn leftAligned noImage"
+  id="card"
 >
   <a
     onClick={[Function]}
@@ -129,52 +133,54 @@ exports[`Card to render correctly if the link is just a string 1`] = `
       src="https://placekitten.com/588/364"
     />
   </a>
-  <p
-    className="itemTitle"
-    id="title-4-0"
+  <div
+    className="content"
   >
-    <a
-      className="unstyledLink"
-      onClick={[Function]}
-      style={Object {}}
-      target="_self"
+    <h4
+      className="itemTitle"
+      id="title"
     >
-      Kitten
-    </a>
-  </p>
-  <div>
-    <hr
-      className="dash"
-      id="hr-4-0"
-      style={
-        Object {
-          "width": "3.333rem",
+      <a
+        className="unstyledLink"
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      >
+        Kitten
+      </a>
+    </h4>
+    <div>
+      <hr
+        className="dash"
+        id="hr-4-0"
+        style={
+          Object {
+            "width": "1.667rem",
+          }
         }
-      }
-    />
-    <p
-      className="itemSubTitle"
-      id="subtitle-text-4-0"
-    >
-      A kitten, also known as a kitty or kitty cat, is a juvenile cat
-    </p>
+      />
+      <p
+        className="itemSubTitle"
+        id="subtitle-text-4-0"
+      >
+        A kitten, also known as a kitty or kitty cat, is a juvenile cat
+      </p>
+    </div>
   </div>
-  <p>
-    <a
-      onClick={[Function]}
-      style={Object {}}
-      target="_self"
-    >
-      Learn more
-    </a>
-  </p>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+    target="_self"
+  >
+    Learn more
+  </a>
 </div>
 `;
 
 exports[`Card to render correctly with null link 1`] = `
 <div
-  className="twoColumn leftAligned"
-  id="card-4-0"
+  className="card twoColumn leftAligned noImage"
+  id="card"
 >
   <img
     alt="kitten"
@@ -182,28 +188,32 @@ exports[`Card to render correctly with null link 1`] = `
     id="image-4-0"
     src="https://placekitten.com/588/364"
   />
-  <p
-    className="itemTitle"
-    id="title-4-0"
+  <div
+    className="content"
   >
-    Kitten
-  </p>
-  <div>
-    <hr
-      className="dash"
-      id="hr-4-0"
-      style={
-        Object {
-          "width": "3.333rem",
-        }
-      }
-    />
-    <p
-      className="itemSubTitle"
-      id="subtitle-text-4-0"
+    <h4
+      className="itemTitle"
+      id="title"
     >
-      A kitten, also known as a kitty or kitty cat, is a juvenile cat
-    </p>
+      Kitten
+    </h4>
+    <div>
+      <hr
+        className="dash"
+        id="hr-4-0"
+        style={
+          Object {
+            "width": "1.667rem",
+          }
+        }
+      />
+      <p
+        className="itemSubTitle"
+        id="subtitle-text-4-0"
+      >
+        A kitten, also known as a kitty or kitty cat, is a juvenile cat
+      </p>
+    </div>
   </div>
 </div>
 `;

@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux'
 
 import DocumentArticle from '../../templates/document-article/document-article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
-import s from './document-page.scss'
+import styles from './document-page.scss'
 import * as ContentActions from '../../../actions/content.js'
+import { Loader } from 'atoms'
 
 class DocumentPage extends React.Component {
   constructor() {
@@ -44,7 +45,11 @@ class DocumentPage extends React.Component {
       if (document) {
         return <DocumentArticle document={document} />
       } else {
-        return <div>Loading Document...</div>
+        return (
+          <div className={styles.container}>
+            <Loader />
+          </div>
+        )
       }
     } else {
       return <ErrorPage />

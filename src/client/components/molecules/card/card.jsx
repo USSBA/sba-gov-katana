@@ -1,5 +1,5 @@
 import React from 'react'
-import { isEmpty } from 'lodash'
+import { isEmpty, snakeCase } from 'lodash'
 
 import styles from './card.scss'
 import { DecorativeDash, Link } from 'atoms'
@@ -41,7 +41,9 @@ class Card extends React.Component {
   }
 
   render() {
-    const cardStyle = `${this.computeCardStyle()} ${styles.leftAligned}`
+    const cardStyle = `${styles.card} ${this.computeCardStyle()} ${styles.leftAligned} ${
+      image ? styles.image : styles.noImage
+    }`
 
     // TODO: use lede text instead of subtitle text
     const { index, item: { eventConfig, image, link, subtitleText, titleText }, parentIndex } = this.props
@@ -78,30 +80,26 @@ class Card extends React.Component {
       titleText
     )
 
-    const learnMoreMarkup = url ? (
-      <p>
-        <Link to={url}>{title}</Link>
-      </p>
-    ) : (
-      undefined
-    )
+    const learnMoreMarkup = url ? <Link to={url}>{title}</Link> : undefined
 
     return (
-      <div id={'card-' + parentIndex + '-' + index} className={cardStyle}>
+      <div id={snakeCase('card', parentIndex, index)} className={cardStyle}>
         {imageMarkup}
-        {titleText ? (
-          <p id={'title-' + parentIndex + '-' + index} className={styles.itemTitle}>
-            {titleMarkup}
-          </p>
-        ) : null}
-        {subtitleText ? (
-          <div>
-            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={3.333} />
-            <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
-              {subtitleText}
-            </p>
-          </div>
-        ) : null}
+        <div className={styles.content}>
+          {titleText ? (
+            <h4 className={styles.itemTitle} id={snakeCase('title', parentIndex, index)}>
+              {titleMarkup}
+            </h4>
+          ) : null}
+          {subtitleText ? (
+            <div>
+              <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={1.667} />
+              <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
+                {subtitleText}
+              </p>
+            </div>
+          ) : null}
+        </div>
         {learnMoreMarkup}
       </div>
     )

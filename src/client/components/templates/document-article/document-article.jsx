@@ -18,7 +18,7 @@ class DocumentArticleTemplate extends React.Component {
     }
 
     if (!data) return <div />
-    console.log('ONE', data)
+
     return (
       <div>
         <div className={styles.container}>

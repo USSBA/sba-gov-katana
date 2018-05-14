@@ -1,20 +1,6 @@
-.cardCollection {
-  clear: left;
-}
-
-.cardRow {
-  overflow: hidden;
-  position: relative;
-
-  @include grid-media($sba-grid-large) {
-    margin-bottom: 30px;
-  }
-}
-
 .card {
   background-color: white;
   border-top: 3px solid $sba-blue;
-  height: auto;
   margin-bottom: 30px;
 
   @include for-small-only {
@@ -24,24 +10,11 @@
 
   @include for-medium-only {
     padding: 30px;
-    @include grid-column(6, $sba-grid-medium);
+    @include grid-column(6, (gutter: 30px));
   }
 
   @include for-large-up {
     padding: 20px;
-    @include grid-column(4);
+    @include grid-column(4, (gutter: 30px));
   }
 }
-
-// Do we need this?
-// .card:before {
-//   @include grid-media($sba-grid-large) {
-//     @include grid-column(4, $sba-grid-large);
-//     content: '';
-//     position: absolute;
-//     top: 0;
-//     bottom: 0;
-//     z-index: -1;
-//     margin-left: -20px;
-//   }
-// }

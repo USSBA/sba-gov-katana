@@ -84,8 +84,8 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-1-0"
             >
               <div
-                className="fourColumn leftAligned"
-                id="card-1-0"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -93,33 +93,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-1-0"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-1-0"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-1-0"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-1-0"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-1-0"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-1-0"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-1-1"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -127,33 +131,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-1-1"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-1-1"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-1-1"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-1-1"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-1-1"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-1-1"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-1-2"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -161,33 +169,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-1-2"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-1-2"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-1-2"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-1-2"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-1-2"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-1-2"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-1-3"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -195,28 +207,32 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-1-3"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-1-3"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-1-3"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-1-3"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-1-3"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-1-3"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -229,8 +245,8 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-2-0"
             >
               <div
-                className="fourColumn leftAligned"
-                id="card-2-0"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -238,33 +254,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-2-0"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-2-0"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-2-0"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-2-0"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-2-0"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-2-0"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-2-1"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -272,33 +292,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-2-1"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-2-1"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-2-1"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-2-1"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-2-1"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-2-1"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-2-2"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -306,33 +330,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-2-2"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-2-2"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-2-2"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-2-2"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-2-2"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-2-2"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-2-3"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -340,28 +368,32 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-2-3"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-2-3"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-2-3"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-2-3"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-2-3"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-2-3"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -374,8 +406,8 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-3-0"
             >
               <div
-                className="fourColumn leftAligned"
-                id="card-3-0"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -383,33 +415,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-3-0"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-3-0"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-3-0"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-3-0"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-3-0"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-3-0"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-3-1"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -417,33 +453,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-3-1"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-3-1"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-3-1"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-3-1"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-3-1"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-3-1"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-3-2"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -451,33 +491,37 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-3-2"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-3-2"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-3-2"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-3-2"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-3-2"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-3-2"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div
-                className="fourColumn leftAligned"
-                id="card-3-3"
+                className="card fourColumn leftAligned noImage"
+                id="card"
               >
                 <img
                   alt="How to Write a Business Plan"
@@ -485,28 +529,32 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   id="image-3-3"
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
-                <p
-                  className="itemTitle"
-                  id="title-3-3"
+                <div
+                  className="content"
                 >
-                  How to Write a Business Plan
-                </p>
-                <div>
-                  <hr
-                    className="dash"
-                    id="hr-3-3"
-                    style={
-                      Object {
-                        "width": "3.333rem",
-                      }
-                    }
-                  />
-                  <p
-                    className="itemSubTitle"
-                    id="subtitle-text-3-3"
+                  <h4
+                    className="itemTitle"
+                    id="title"
                   >
-                    Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
-                  </p>
+                    How to Write a Business Plan
+                  </h4>
+                  <div>
+                    <hr
+                      className="dash"
+                      id="hr-3-3"
+                      style={
+                        Object {
+                          "width": "1.667rem",
+                        }
+                      }
+                    />
+                    <p
+                      className="itemSubTitle"
+                      id="subtitle-text-3-3"
+                    >
+                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

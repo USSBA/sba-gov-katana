@@ -18,7 +18,21 @@ exports[`PagingLookup should render with all the information 1`] = `
     <div
       className="documentCardCollection"
     >
-      Loading...
+      <div
+        className="loaderContainer"
+      >
+        <div
+          className="loader container undefined"
+        >
+          <img
+            className="logo"
+            src="test-file-stub"
+          />
+          <div
+            className="loader"
+          />
+        </div>
+      </div>
     </div>
     <div />
   </div>
