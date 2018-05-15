@@ -23,8 +23,9 @@ class Tile extends React.Component {
     return arr.join(' ')
   }
 
-  _openNavMenu() {
-    if (!this.isLinkToPage() && window.innerWidth <= 1080) {
+  _openNavMenu(pixelBreakpoint) {
+    console.log(pixelBreakpoint)
+    if (!this.isLinkToPage() && window.innerWidth <= pixelBreakpoint) {
       this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     } else if (this.isLinkToPage()) {
       navigateNow(this.props.data.fullUrl, {
@@ -43,20 +44,20 @@ class Tile extends React.Component {
     }
   }
 
-  _mouseEnterTile() {
-    if (window.innerWidth >= 1080) {
+  _mouseEnterTile(pixelBreakpoint) {
+    if (window.innerWidth >= pixelBreakpoint) {
       this.props.onFocus()
     }
   }
 
-  _mouseExitTile() {
-    if (window.innerWidth >= 1080) {
+  _mouseExitTile(pixelBreakpoint) {
+    if (window.innerWidth >= pixelBreakpoint) {
       this.props.onMouseExit()
     }
   }
 
-  handleBlur() {
-    if (window.innerWidth >= 1080 && this.isLinkToPage()) {
+  handleBlur(pixelBreakpoint) {
+    if (window.innerWidth >= pixelBreakpoint && this.isLinkToPage()) {
       this.props.onBlur()
     }
   }
@@ -127,6 +128,8 @@ class Tile extends React.Component {
       widthStyle = s.homePageTileFour
     }
 
+    const breakpointLarge = parseInt(s.breakpointLarge.slice(0, -2), 10)
+
     const toggleMenuLink = (
       <Link
         className={s.tabDisplayMenu}
@@ -134,7 +137,7 @@ class Tile extends React.Component {
           e ? e.preventDefault() : ''
         }}
         onFocus={this._mouseEnterTile.bind(this)}
-        onBlur={this.handleBlur.bind(this)}
+        onBlur={this.handleBlur.bind(this, breakpointLarge)}
         onKeyDown={this.handleKeyDown.bind(this)}
       >
         toggle {data.title} menu
@@ -145,9 +148,9 @@ class Tile extends React.Component {
       <div
         id={id}
         className={s.tile + ' ' + widthStyle}
-        onClick={this._openNavMenu.bind(this)}
-        onMouseEnter={this._mouseEnterTile.bind(this)}
-        onMouseLeave={this._mouseExitTile.bind(this)}
+        onClick={this._openNavMenu.bind(this, breakpointLarge)}
+        onMouseEnter={this._mouseEnterTile.bind(this, breakpointLarge)}
+        onMouseLeave={this._mouseExitTile.bind(this, breakpointLarge)}
         onKeyDown={this.handleTileKeyDown.bind(this)}
       >
         {toggleMenuLink}
