@@ -1,46 +1,55 @@
-import React from 'react'
-import _ from 'lodash'
+import React, { PropTypes } from 'react'
+import { compact, findIndex, flatMap, last, nth } from 'lodash'
 
 import styles from './previous-next.scss'
-import { Button } from 'atoms'
+import { Button, Link } from 'atoms'
 
 const businessGuideUrl = '/business-guide'
 
-class PreviousNextSection extends React.Component {
-  getCurrentArticle(lineage) {
-    return _.last(lineage)
-  }
+class PreviousNext extends React.Component {
+  render() {
+    const previousArticle = this.getPreviousArticle()
+    const nextArticle = this.getNextArticle()
 
-  getSections() {
-    let thirdToLast = _.nth(this.props.lineage, -3)
-    return thirdToLast ? thirdToLast.children : null
-  }
-
-  getArticlesFromSections(sections) {
-    return _.compact(
-      _.flatMap(sections, section => {
-        return section.children
-      })
+    return (
+      <div className={styles.previousNext} id="previous-next">
+        <div className={`${styles.previous} ${!previousArticle && styles.invisible}`}>
+          <h6>Previous</h6>
+          {previousArticle && (
+            <Link className={styles.button} to={previousArticle.fullUrl}>
+              <i className="fa fa-chevron-left" aria-hidden="true" />
+              <span>{previousArticle.title}</span>
+            </Link>
+          )}
+        </div>
+        <div className={`${styles.next} ${!nextArticle && styles.invisible}`}>
+          <h6>Next</h6>
+          {nextArticle && (
+            <Link className={styles.button} to={nextArticle.fullUrl}>
+              <span>{nextArticle.title}</span>
+              <i className="fa fa-chevron-right" aria-hidden="true" />
+            </Link>
+          )}
+        </div>
+      </div>
     )
   }
 
-  getCurrentArticleIndex(articles, currentArticle) {
-    return _.findIndex(articles, article => {
-      return article && article.fullUrl && article.fullUrl === currentArticle.fullUrl
-    })
-  }
+  getAdjacentArticle = indexDifference => {
+    const { lineage } = this.props
 
-  getAdjacentArticle(indexDifference) {
-    if (!this.props.lineage) {
+    if (!lineage) {
       return null
     }
-    const includeAdjacentSections = this.props.lineage[0].fullUrl === businessGuideUrl
-    const currentArticle = this.getCurrentArticle(this.props.lineage)
+
+    const includeAdjacentSections = lineage[0].fullUrl === businessGuideUrl
+    const currentArticle = this.getCurrentArticle(lineage)
     const sections = this.getSections()
     const articles = includeAdjacentSections
       ? this.getArticlesFromSections(sections)
-      : _.nth(this.props.lineage, -2).children
+      : nth(lineage, -2).children
     const currentArticleIndex = this.getCurrentArticleIndex(articles, currentArticle)
+
     if (indexDifference > 0) {
       if (currentArticleIndex < 0 || currentArticleIndex >= articles.length - indexDifference) {
         return null
@@ -55,95 +64,31 @@ class PreviousNextSection extends React.Component {
     }
   }
 
-  getNextArticle() {
-    return this.getAdjacentArticle(1)
+  getArticlesFromSections = sections => {
+    return compact(flatMap(sections, section => section.children))
   }
 
-  getPreviousArticle() {
-    return this.getAdjacentArticle(-1)
-  }
+  getCurrentArticle = lineage => last(lineage)
 
-  render() {
-    const previousArticle = this.getPreviousArticle()
-    const nextArticle = this.getNextArticle()
-
-    return (
-      <div id="previousNextSectionId" className={styles.previousNextContainer}>
-        <div id="desktopDivId" className={styles.desktop}>
-          <div id="prevNextTitleContainerId" className={styles.prevNextTitleContainer}>
-            {previousArticle !== null ? (
-              <div id="previousTitleId" className={styles.previousTitle}>
-                <h6 className={styles.previousTitle}>Previous</h6>
-              </div>
-            ) : (
-              <div className={styles.titleHide}>
-                <h6 className={styles.previousTitle}>No Previous Article</h6>
-              </div>
-            )}
-            {nextArticle !== null ? (
-              <div id="nextTitleDesktopId" className={styles.nextTitle}>
-                <h6 className={styles.nextTitle}>Next</h6>
-              </div>
-            ) : (
-              <div />
-            )}
-          </div>
-          <div id="prevNextButtonsContainerId" className={styles.prevNextButtonsContainer}>
-            {previousArticle !== null ? (
-              <div id="previousContainerId" className={styles.previousContainer}>
-                <div className={'previousnext-previous-url'}>
-                  <Button secondary small url={previousArticle.fullUrl}>
-                    <i className="fa fa-chevron-left" aria-hidden="true" /> {previousArticle.title}
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className={styles.previousContainerHide}>
-                <Button disabled secondary small>
-                  No previous article
-                </Button>
-              </div>
-            )}
-            {nextArticle !== null ? (
-              <div id="nextContainerDesktopId" className={styles.nextContainer}>
-                <div className={'previousnext-next-url'}>
-                  <Button secondary small url={nextArticle.fullUrl}>
-                    {nextArticle.title} <i className="fa fa-chevron-right" aria-hidden="true" />
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div />
-            )}
-          </div>
-        </div>
-        <div id="mobileDivId" className={styles.mobile}>
-          {nextArticle !== null ? (
-            <div id="nextTitleMobileId" className={styles.nextTitle}>
-              <h6 className={styles.nextTitle}>Next</h6>
-            </div>
-          ) : (
-            <div />
-          )}
-          {nextArticle !== null ? (
-            <div id="nextContainerMobileId" className={styles.nextContainer}>
-              <div className={'previousnext-next-url'}>
-                <Button secondary small url={nextArticle.fullUrl}>
-                  {nextArticle.title} <i className="fa fa-chevron-right" aria-hidden="true" />
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <div />
-          )}
-        </div>
-      </div>
+  getCurrentArticleIndex = (articles, currentArticle) => {
+    return findIndex(
+      articles,
+      article => article && article.fullUrl && article.fullUrl === currentArticle.fullUrl
     )
   }
+
+  getNextArticle = () => this.getAdjacentArticle(1)
+
+  getPreviousArticle = () => this.getAdjacentArticle(-1)
+
+  getSections = () => {
+    const thirdToLast = nth(this.props.lineage, -3)
+    return thirdToLast ? thirdToLast.children : null
+  }
 }
 
-PreviousNextSection.propTypes = {
-  lineage: React.PropTypes.array.isRequired
+PreviousNext.propTypes = {
+  lineage: PropTypes.array.isRequired
 }
 
-export default PreviousNextSection
+export default PreviousNext

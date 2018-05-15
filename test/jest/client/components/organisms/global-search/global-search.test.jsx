@@ -6,10 +6,7 @@ import { shallow } from 'enzyme'
 import { GlobalSearch } from 'organisms/global-search/global-search'
 
 jest.mock('../../../../../../src/client/services/utils.js')
-// getQueryParams.mockImplementation(() => {
-//   return {}
-// })
-// import { getQueryParams } from '../../../../../../src/client/services/utils.js'
+
 const fetchContentIfNeeded = jest.fn()
 
 const testPropsOne = {

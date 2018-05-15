@@ -80,6 +80,9 @@
 }
 
 // ---
+
+// TODO: This should be a mixin that takes in parameters for border width, box
+// shadow and maybe padding.
 @mixin call-to-action {
   background-color: white;
   border-top: 5px solid $sba-blue;

@@ -1,42 +1,37 @@
+.container {
+  border-top: 3px solid $sba-blue;
+  background-color: white;
+  box-shadow: 6px 7px 20px 0 rgba(black, 0.1);
+  margin-bottom: 3em;
+  padding: 40px 30px;
+  text-align: center;
+
+  i {
+    color: $secondary-green;
+    margin-right: $small-spacing;
+    vertical-align: middle;
+
+    + h4 {
+      display: inline;
+      vertical-align: middle;
+    }
+  }
+
+  p {
+    margin: 0.5em;
+  }
+
+  textarea {
+    margin-bottom: 20px;
+  }
+}
+
+.firstThankYou {
+  margin-bottom: 0;
+}
+
 .question {
-  font-size: 1.3rem;
-  margin-bottom: 30px;
-}
-
-.GreenButton {
-  margin-right: 30px;
-}
-
-.GreenButton,
-.RedButton {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.QuestionContainer {
-  text-align: center;
-}
-
-.InputContainer {
-  text-align: center;
-}
-
-.InputContainer button {
-  float: right;
-}
-
-.ThankYouContainer {
-  text-align: center;
-}
-
-.checkIcon {
-  color: $secondary-green;
-  font-size: 1.8rem;
-}
-
-.thanksAgain {
-  margin-left: 10px;
-  display: inline;
+  margin-bottom: 28px;
 }
 
 .maidenNameContainer {

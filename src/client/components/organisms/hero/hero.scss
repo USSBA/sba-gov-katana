@@ -40,9 +40,14 @@
     }
 
     // Use vertical stacking for two buttons.
-    *[class~='button']:nth-of-type(2) {
-      @include for-medium-up {
-        margin-top: $small-spacing;
+    *[class~='button'] {
+      // display block without stretch
+      display: table;
+
+      &:nth-of-type(2) {
+        @include for-medium-up {
+          margin-top: $small-spacing;
+        }
       }
     }
   }
