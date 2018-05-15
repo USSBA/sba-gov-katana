@@ -15,7 +15,12 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
     id="text-readmore-section-3-read-more-preview"
   />
   <hr
-    className="lineCopy"
+    className="dash"
+    style={
+      Object {
+        "width": "1.75rem",
+      }
+    }
   />
   <p
     className="expandedCopyText"

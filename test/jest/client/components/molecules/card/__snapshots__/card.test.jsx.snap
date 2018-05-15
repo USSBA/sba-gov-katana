@@ -2,7 +2,7 @@
 
 exports[`Card does not error check malformed link 1`] = `
 <div
-  className="card twoColumn leftAligned noImage"
+  className="card twoColumn"
   id="card"
 >
   <a
@@ -18,14 +18,13 @@ exports[`Card does not error check malformed link 1`] = `
     />
   </a>
   <div
-    className="content"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
       id="title"
     >
       <a
-        className="unstyledLink"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -63,7 +62,7 @@ exports[`Card does not error check malformed link 1`] = `
 
 exports[`Card to render correctly 1`] = `
 <div
-  className="card twoColumn leftAligned noImage"
+  className="card twoColumn"
   id="card"
 >
   <a
@@ -77,14 +76,13 @@ exports[`Card to render correctly 1`] = `
     />
   </a>
   <div
-    className="content"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
       id="title"
     >
       <a
-        className="unstyledLink"
         href="https://en.wikipedia.org/wiki/Kitten"
       >
         Kitten
@@ -118,7 +116,7 @@ exports[`Card to render correctly 1`] = `
 
 exports[`Card to render correctly if the link is just a string 1`] = `
 <div
-  className="card twoColumn leftAligned noImage"
+  className="card twoColumn"
   id="card"
 >
   <a
@@ -134,14 +132,13 @@ exports[`Card to render correctly if the link is just a string 1`] = `
     />
   </a>
   <div
-    className="content"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"
       id="title"
     >
       <a
-        className="unstyledLink"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -179,7 +176,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
 
 exports[`Card to render correctly with null link 1`] = `
 <div
-  className="card twoColumn leftAligned noImage"
+  className="card twoColumn"
   id="card"
 >
   <img
@@ -189,7 +186,7 @@ exports[`Card to render correctly with null link 1`] = `
     src="https://placekitten.com/588/364"
   />
   <div
-    className="content"
+    className="content-with-image"
   >
     <h4
       className="itemTitle"

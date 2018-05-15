@@ -1,7 +1,13 @@
 .readMoreSection {
-  padding: 40px;
+  background-color: white;
+  border-top: 2px solid $secondary-blue;
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
-  background-color: #ebebeb;
+  padding: 40px;
+
+  h3 {
+    color: $sba-blue;
+  }
 }
 
 .lineCopy {

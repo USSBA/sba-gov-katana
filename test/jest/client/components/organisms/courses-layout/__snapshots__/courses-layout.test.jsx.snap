@@ -84,7 +84,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-1-0"
             >
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -94,7 +94,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -122,7 +122,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -132,7 +132,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -160,7 +160,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -170,7 +170,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -198,7 +198,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -208,7 +208,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -245,7 +245,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-2-0"
             >
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -255,7 +255,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -283,7 +283,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -293,7 +293,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -321,7 +321,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -331,7 +331,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -359,7 +359,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -369,7 +369,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -406,7 +406,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
               id="card-row-3-0"
             >
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -416,7 +416,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -444,7 +444,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -454,7 +454,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -482,7 +482,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -492,7 +492,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -520,7 +520,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 </div>
               </div>
               <div
-                className="card fourColumn leftAligned noImage"
+                className="card fourColumn"
                 id="card"
               >
                 <img
@@ -530,7 +530,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content"
+                  className="content-with-image"
                 >
                   <h4
                     className="itemTitle"

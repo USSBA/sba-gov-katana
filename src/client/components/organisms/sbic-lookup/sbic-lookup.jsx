@@ -6,8 +6,9 @@ import s from './sbic-lookup.scss'
 import { Button, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
 
-var pageSize = 10
+const pageSize = 10
 const SBIC_URL = '/api/content/sbic-contacts.csv'
+
 class SbicLookup extends React.Component {
   constructor(ownProps) {
     super()
@@ -255,34 +256,38 @@ class SbicLookup extends React.Component {
   }
 
   render() {
+    console.log('state', this.state)
     return (
       <div>
         <div className={s.banner}>
           <h2 className={s.header}>{this.props.title}</h2>
+          {this.renderMultiSelects()}
           <div className={s.downloadBtn}>
             <Button
+              alternate
               children="Download list (.XLS)"
               onClick={e => {
                 e.preventDefault()
                 this.downloadCsv()
               }}
-              secondary
-              small
+              primary
             />
           </div>
         </div>
-        <table className={s.table}>
-          <thead>
-            <tr>
-              <th className={s.nameAndAddressHead}>Investor name & address</th>
-              <th className={s.industryHead}>Industry</th>
-              <th className={s.activeSinceHead}>Active since</th>
-              <th className={s.investingStatusHead}>Investing status</th>
-              <th className={s.contactInfoHead}>Contact info</th>
-            </tr>
-          </thead>
-          {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
-        </table>
+        <div className={s.tableContainer}>
+          <table className={s.table}>
+            <thead>
+              <tr>
+                <th className={s.nameAndAddressHead}>Investor name & address</th>
+                <th className={s.industryHead}>Industry</th>
+                <th className={s.activeSinceHead}>Active since</th>
+                <th className={s.investingStatusHead}>Investing status</th>
+                <th className={s.contactInfoHead}>Contact info</th>
+              </tr>
+            </thead>
+            {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
+          </table>
+        </div>
         <div className={s.paginator}>
           <Paginator
             pageNumber={this.state.pageNumber}
