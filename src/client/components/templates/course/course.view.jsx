@@ -64,7 +64,7 @@ class CourseView extends PureComponent {
                 readMoreExpanded={this.state.readMoreExpanded}
               />
               {tags && <Tagcloud {...this.props} />}
-              {course.worksheets.length > 0 && <Worksheets {...this.props} />}
+              {course.worksheets && course.worksheets.length ? <Worksheets {...this.props} /> : ''}
               {!_.isEmpty(relatedCourses) && <RelatedCourses {...this.props} />}
               {!_.isEmpty(relatedArticles) && <RelatedArticles {...this.props} />}
               <CTA {...this.props} />
