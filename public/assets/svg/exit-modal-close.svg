@@ -1,15 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
-    <title>Close Button</title>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="31px" viewBox="0 0 30 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>atoms/icon/close</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Style-Guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Close-Button" fill="#333333">
-            <g id="Group">
-                <rect id="Rectangle-7" transform="translate(13.081475, 13.081475) rotate(45.000000) translate(-13.081475, -13.081475) " x="11.5814755" y="-3.91852455" width="3" height="34" rx="1"></rect>
-                <rect id="Rectangle-7" transform="translate(13.081475, 13.081475) scale(-1, 1) rotate(45.000000) translate(-13.081475, -13.081475) " x="11.5814755" y="-3.91852455" width="3" height="34" rx="1"></rect>
-            </g>
-        </g>
+    <g id="atoms/icon/close" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M15,13.7240629 L27.3529412,1.37112175 L28.2352941,0.48876881 L30,2.25347469 L29.1176471,3.13582763 L16.7647059,15.4887688 L29.1176471,27.84171 L30,28.7240629 L28.2352941,30.4887688 L27.3529412,29.6064159 L15,17.2534747 L2.64705882,29.6064159 L1.76470588,30.4887688 L0,28.7240629 L0.882352941,27.84171 L13.2352941,15.4887688 L0.882352941,3.13582763 L0,2.25347469 L1.76470588,0.48876881 L2.64705882,1.37112175 L15,13.7240629 Z" id="Combined-Shape" fill="#969696"></path>
     </g>
 </svg>
