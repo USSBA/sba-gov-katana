@@ -5,7 +5,6 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
   className="readMoreSection"
 >
   <h3
-    className="title"
     id="text-readmore-section-3-read-more-title"
   >
     This is a title

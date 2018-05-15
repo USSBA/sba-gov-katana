@@ -38,9 +38,7 @@ class ReadMore extends React.Component {
 
     return (
       <div className={styles.readMoreSection}>
-        <h3 id={this.props.parentId + '-title'} className={styles.title}>
-          {this.props.readMoreSectionItem.titleText}
-        </h3>
+        <h3 id={this.props.parentId + '-title'}>{this.props.readMoreSectionItem.titleText}</h3>
         {this.props.isHTML ? (
           <div
             dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}

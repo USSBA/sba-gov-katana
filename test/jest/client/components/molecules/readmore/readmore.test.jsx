@@ -21,7 +21,6 @@ describe('ReadMore', () => {
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
-    expect(tree.children[0].props.className).toBe('title')
     expect(tree.children[0].children[0]).toBe('This is a title')
     expect(tree.children[3].type).toBe('p')
     expect(tree.children[3].children[0]).toBe('This is a test.\r')

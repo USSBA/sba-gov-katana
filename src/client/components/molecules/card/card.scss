@@ -1,31 +1,42 @@
+.card {
+  @include for-small-only {
+    @include grid-column(12);
+  }
+}
 .noImage {
   border-top: 3px solid $sba-blue;
 }
 
-.leftAligned {
-  text-align: left;
-
-  hr {
-    text-align: left;
-    margin-top: 14px;
-    margin-bottom: 9px;
+.twoColumn {
+  @include for-large-up {
+    @include grid-column(6);
   }
 }
 
-.twoColumn {
-  @include grid-column(6);
-}
-
 .threeColumn {
-  @include grid-column(4);
+  @include for-large-up {
+    @include grid-column(4);
+  }
 }
 
 .fourColumn {
-  @include grid-column(3);
+  @include for-medium-only {
+    @include grid-column(6);
+  }
+
+  @include for-large-up {
+    @include grid-column(3);
+  }
 }
 
 .sixColumn {
-  @include grid-column(2);
+  @include for-medium-only {
+    @include grid-column(4);
+  }
+
+  @include for-large-up {
+    @include grid-column(2);
+  }
 }
 
 .card {
