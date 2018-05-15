@@ -62,10 +62,12 @@
   border-top: none;
 }
 
-.container :global(.document-card-container) div[class*='innerContainer'] {
+// Select the inner container in the detail card.
+.container :global(.document-card-container) > div:first-child {
   min-height: 7.5rem;
 }
 
-.container :global(.document-card-container) div[class*='download'] {
+// Select the download link in the detail card.
+.container :global(.document-card-container) > div:last-child {
   margin-top: 20px;
 }
