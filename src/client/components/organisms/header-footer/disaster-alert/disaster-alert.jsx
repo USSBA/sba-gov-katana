@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 import styles from './disaster-alert.scss'
 import exitIcon from '../../../../../../public/assets/svg/exit-modal-close.svg'
@@ -7,37 +7,29 @@ import { Link } from 'atoms'
 const DisasterAlert = props => {
   const { buttonText, description, link, onClose, visible } = props
 
-  if (!visible) {
-    return null
-  }
-
-  const icon = <i className="fa fa-exclamation-triangle" aria-hidden="true" />
-
-  return (
-    <div className={styles.alert} id="disaster-alert">
-      <div className={styles.column}>{icon}</div>
-      <div className={styles.description}>
-        <h6>
-          {icon}
-          {description}
-          <Link className={styles.button} to={link}>
+  if (visible) {
+    return (
+      <div className={styles.wrapper} id="disaster-alert">
+        <div className={styles.alert}>
+          <div className={styles.alertIcon + ' fa fa-exclamation-triangle'} aria-hidden="true" />
+          <div className={styles.disasterDescription}>{description}</div>
+          <img className={styles.alertClose} onClick={onClose} src={exitIcon} alt="Close" />
+          <Link className={styles.alertLink} to={link}>
             {buttonText}
           </Link>
-        </h6>
+        </div>
       </div>
-      <div className={styles.column}>
-        <img className={styles.close} onClick={onClose} src={exitIcon} alt="Close" />
-      </div>
-    </div>
-  )
+    )
+  } else {
+    return null
+  }
 }
 
 DisasterAlert.defaultProps = {
-  visible: false
-}
-
-DisasterAlert.propTypes = {
-  visible: PropTypes.bool.isRequired
+  visible: false,
+  link: '',
+  buttonText: '',
+  description: ''
 }
 
 export default DisasterAlert
