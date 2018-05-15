@@ -1,11 +1,17 @@
 .container {
 }
 
-.greyParagraph {
-  background-color: $sba-gray;
+.blueParagraph {
+  background-color: $sba-blue;
   color: #fff;
   padding: 50px;
   margin-bottom: 50px;
+  h2 {
+    color: white;
+  }
+  p {
+    color: white;
+  }
 }
 
 .searchBox {
@@ -66,7 +72,7 @@
   clear: both;
 }
 
-.greyParagraph button[class~='button'] {
+.blueParagraph button[class~='button'] {
   @include for-small-and-medium-only {
     margin-top: 25px;
   }
