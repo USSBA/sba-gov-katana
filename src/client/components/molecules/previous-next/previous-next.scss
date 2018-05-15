@@ -2,6 +2,7 @@
   @include for-medium-up {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
     margin-bottom: 80px;
 
     .previous,
@@ -11,6 +12,7 @@
 
     .previous {
       justify-self: end;
+      -ms-grid-column-align: end;
       padding-right: 15px;
 
       h6 {
@@ -20,6 +22,7 @@
 
     .next {
       justify-self: start;
+      -ms-grid-column-align: start;
       padding-left: 15px;
     }
   }
@@ -37,16 +40,19 @@
 
     i {
       justify-self: start;
+      -ms-grid-column-align: start;
       padding-right: 25px;
     }
 
     span {
       justify-self: end;
+      -ms-grid-column-align: end;
     }
   }
 
   .next .button {
     grid-template-columns: 4fr 1fr;
+    -ms-grid-columns: 4fr 1fr;
 
     i {
       justify-self: end;
