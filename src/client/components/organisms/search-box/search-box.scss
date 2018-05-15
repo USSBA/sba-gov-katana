@@ -72,7 +72,7 @@
   clear: both;
 }
 
-.greyParagraph button[class~='button'] {
+.blueParagraph button[class~='button'] {
   @include for-small-and-medium-only {
     margin-top: 25px;
   }
