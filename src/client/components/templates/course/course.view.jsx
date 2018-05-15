@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import isMobile from 'ismobilejs'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import CourseContent from './course-content'
 import styles from './course.view.scss'
@@ -65,8 +65,8 @@ class CourseView extends PureComponent {
               />
               {tags && <Tagcloud {...this.props} />}
               {course.worksheets && course.worksheets.length ? <Worksheets {...this.props} /> : ''}
-              {!_.isEmpty(relatedCourses) && <RelatedCourses {...this.props} />}
-              {!_.isEmpty(relatedArticles) && <RelatedArticles {...this.props} />}
+              {!isEmpty(relatedCourses) && <RelatedCourses {...this.props} />}
+              {!isEmpty(relatedArticles) && <RelatedArticles {...this.props} />}
               <CTA {...this.props} />
             </div>
           </div>
