@@ -29,8 +29,6 @@ class TileCollection extends React.Component {
   }
 
   onTabBackwards(index, recentlyEnteringInReverse) {
-    console.log('index', index)
-    console.log('recentlyEnteringInReverse', recentlyEnteringInReverse)
     this.setState({
       panelShowingHoverState: index,
       markAsEnteringInReverse: true
@@ -73,8 +71,6 @@ class TileCollection extends React.Component {
       return <div />
     } else if (this.props.data.length !== this.props.icons.length) {
       console.error('Invalid number of icons provided to tile collection')
-      console.error(this.props.data)
-      console.error(this.props.icons)
       return <div />
     }
     return <div>{this.props.data.map(this.makeTile.bind(this))}</div>

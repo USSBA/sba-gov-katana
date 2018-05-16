@@ -24,7 +24,6 @@ class Tile extends React.Component {
   }
 
   _openNavMenu(pixelBreakpoint) {
-    console.log(pixelBreakpoint)
     if (!this.isLinkToPage() && window.innerWidth <= pixelBreakpoint) {
       this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     } else if (this.isLinkToPage()) {
