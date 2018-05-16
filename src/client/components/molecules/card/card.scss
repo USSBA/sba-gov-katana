@@ -8,13 +8,13 @@
 }
 
 .twoColumn {
-  @include for-large-up {
+  @include for-medium-up {
     @include grid-column(6);
   }
 }
 
 .threeColumn {
-  @include for-large-up {
+  @include for-medium-up {
     @include grid-column(4);
   }
 }
