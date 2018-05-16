@@ -58,7 +58,7 @@ const Card = props => {
       {imageMarkup}
       {/* If a card has a an image, a parent StyledGrayBackground will add
         padding to the card using the class name as a hook. */}
-      <div className={`${!isEmpty(image) && 'content-with-image'}`}>
+      <div className={`${styles.content} ${!isEmpty(image) && 'content-with-image'}`}>
         {titleText ? (
           <h4 className={styles.itemTitle} id={snakeCase('title', parentIndex, index)}>
             {titleMarkup}

@@ -35,28 +35,24 @@ describe('ContactCard', () => {
   test('should render without an address ', () => {
     let cardData = _.omit(card, 'streetAddress')
     const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card-link-line')).toHaveLength(3)
-    expect(component.find('.contact-card-plain-line')).toHaveLength(0)
+    expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a zip code ', () => {
     let cardData = _.omit(card, 'zipCode')
     const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card-link-line')).toHaveLength(3)
-    expect(component.find('.contact-card-plain-line')).toHaveLength(0)
+    expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a phone number ', () => {
     let cardData = _.omit(card, 'phoneNumber')
     const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card-link-line')).toHaveLength(3)
-    expect(component.find('.contact-card-plain-line')).toHaveLength(0)
+    expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without the state served (which is normally invisible)', () => {
     let cardData = _.omit(card, 'stateServed')
     const component = shallow(<ContactCard {...cardData} />)
-    expect(component.find('.contact-card-link-line')).toHaveLength(4)
-    expect(component.find('.contact-card-plain-line')).toHaveLength(0)
+    expect(component.find('.contact-card').children()).toHaveLength(5)
   })
 })

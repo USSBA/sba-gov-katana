@@ -2,7 +2,24 @@
   @include for-small-only {
     @include grid-column(12);
   }
+
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+
+  .itemTitle {
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+    a {
+      color: $sba-blue;
+    }
+  }
 }
+
+.content {
+  background-color: white;
+}
+
 .noImage {
   border-top: 3px solid $sba-blue;
 }
@@ -36,24 +53,5 @@
 
   @include for-large-up {
     @include grid-column(2);
-  }
-}
-
-.card {
-  background-color: white;
-  margin-bottom: 1.5em;
-  margin-top: 1.5em;
-
-  .itemTitle {
-    margin-top: 15px;
-    margin-bottom: 10px;
-
-    a {
-      color: $sba-blue;
-    }
-  }
-
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6);
   }
 }

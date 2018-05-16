@@ -79,11 +79,9 @@ class ContactCardLookup extends React.Component {
     return (
       <div>
         <div className={styles.container}>
-          <div className={styles.titleContainer}>
-            <h4 key={6} className={styles.title}>
-              {this.props.title || 'Look up your state'}
-            </h4>
-          </div>
+          <h4 key={6} className={styles.title}>
+            {this.props.title || 'Look up your state'}
+          </h4>
           <div key={1} className={styles.selectContainer}>
             <MultiSelect {...multiselectProps} />
           </div>

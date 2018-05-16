@@ -94,7 +94,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -132,7 +132,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -170,7 +170,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -208,7 +208,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -255,7 +255,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -293,7 +293,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -331,7 +331,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -369,7 +369,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -416,7 +416,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -454,7 +454,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -492,7 +492,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
@@ -530,7 +530,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   src="/sites/default/files/2018-01/2-plan_500.jpg"
                 />
                 <div
-                  className="content-with-image"
+                  className="content content-with-image"
                 >
                   <h4
                     className="itemTitle"
