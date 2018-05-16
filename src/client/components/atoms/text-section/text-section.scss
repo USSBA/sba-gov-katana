@@ -4,7 +4,7 @@
 
 // redundant with normalize css, but better to be explicit
 .textSection ul {
-  list-style: disc;
+  list-style: circle;
 }
 
 .textSection ul > li {
@@ -14,13 +14,10 @@
 
 .textSection > ul ul,
 .textSection > ol ul {
-  margin-left: 65px;
+  margin-left: 26px;
 
   li {
-    color: #333333;
-
     &::before {
-      content: '';
       height: 12px;
       width: 12px;
       border: 3px solid #333333;
@@ -62,7 +59,8 @@
 }
 
 .textSection ul li p {
-  padding-left: 2em;
+  color: $sba-blue;
+  padding-left: 10.5px;
 }
 
 // formatting for the unordered list bullets

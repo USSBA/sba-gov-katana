@@ -28,8 +28,8 @@ $mobile-nav-height: 53px;
 .alert {
   top: 0;
   width: 100%;
-  background-color: #ffc63d;
-  color: #333333;
+  background-color: $secondary-yellow;
+  color: $secondary-black-ish;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,14 +44,14 @@ $mobile-nav-height: 53px;
 
 .alert .alertIcon {
   font-size: 16px;
-  color: #333333;
+  color: $secondary-black-ish;
   @include grid-media($sba-grid-small) {
     display: none;
   }
 }
 
 .alert .disasterDescription {
-  color: #333333;
+  color: $secondary-black-ish;
   display: inline-block;
   font-size: 16px;
   font-weight: 700;
@@ -61,26 +61,13 @@ $mobile-nav-height: 53px;
   }
 }
 
-.alert .alertButton {
-  position: relative;
-  text-align: center;
-  border: 2px solid #333333;
-  padding: 5px 12px;
-  text-decoration: none;
-  color: #333333;
-  font-size: 13px;
-  font-weight: 700;
-  display: inline-block;
-
-  &:hover,
-  &:focus {
-    background: #333;
-    color: #ffc63d;
-  }
+.alert .alertLink {
+  color: $secondary-black-ish;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 img.alertClose {
-  opacity: 0.6;
   position: absolute;
   right: 20px;
   top: 15px;
