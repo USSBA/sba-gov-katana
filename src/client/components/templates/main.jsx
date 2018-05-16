@@ -121,11 +121,17 @@ class Main extends React.Component {
           }}
         />
 
+        <a className={styles.skipNav} href="#main-content">
+          Skip to main content
+        </a>
+
         <Header additionalMenuOffset={visible ? 53 : 0} />
 
         <MainLoader />
 
-        <div className={styles.mainContent}>{this.props.children}</div>
+        <div id="main-content" className={styles.mainContent}>
+          {this.props.children}
+        </div>
 
         {showNotificationBar && (
           <NotificationBar

@@ -70,3 +70,16 @@ nav {
     padding-top: 12.778rem;
   }
 }
+
+.skipNav {
+  background: transparent;
+  color: transparent;
+  padding: 0.5rem 0.5rem;
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  &:focus {
+    background-color: $sba-gray-light;
+    color: $sba-blue;
+    transition: all 0.2s ease-in-out;
+  }
+}
