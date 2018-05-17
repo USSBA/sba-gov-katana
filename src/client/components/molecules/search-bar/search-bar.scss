@@ -1,40 +1,29 @@
-// .searchIcon {
-//     cursor: pointer;
-//     color: #757575;
-//     font-size: 1.2vw;
-//     line-height: 1.4vw;
-//     margin-left: 1.1vw;
-//     margin-top: 5px;
-//     text-decoration: none;
-// }
-//
-// #searchBar {
-//     margin-left: 1.1vw;
-//     display: inline;
-// }
-//
-// #searchInput {
-//     margin-right: 11px;
-//     -webkit-appearance: textfield;
-//     width: 20vw;
-// }
-
 .searchBar {
   position: relative;
   display: inline-block;
   margin-left: 10px;
-}
 
-.searchBar input {
-  height: 40px;
-  display: inline;
-  border-radius: 5px;
-  border-color: $sba-gray-light;
-  width: 12vw;
-}
+  i {
+    position: absolute;
+    right: 6px;
+    top: calc(25% + 2px);
 
-.searchBar a {
-  position: absolute;
-  right: 0.5vw;
-  top: 12px;
+    // The icon cannot be a link because it should be hidden from screen
+    // readers, it is styled like one.
+    cursor: pointer;
+    color: $sba-gray;
+    transition: color $base-duration $base-timing;
+
+    &:hover {
+      color: $secondary-blue-light;
+    }
+  }
+
+  input {
+    border-color: $sba-gray-light;
+    border-radius: 5px;
+    display: inline;
+    height: 40px;
+    width: 12vw;
+  }
 }

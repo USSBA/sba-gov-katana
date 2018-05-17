@@ -1,12 +1,12 @@
 import React from 'react'
 
-import styles from './search-bar.scss'
-import { SmallIcon, TextInput } from 'atoms'
 import clientConfig from '../../../services/client-config.js'
+import styles from './search-bar.scss'
+import { Link, TextInput } from 'atoms'
 
 class SearchBar extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       expanded: false,
       searchValue: ''
@@ -38,46 +38,49 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    if (this.state.expanded) {
+    const { expanded } = this.state
+    const searchLabel = 'Search SBA.gov'
+    const toggleLabel = 'toggle search bar'
+
+    if (expanded) {
       return (
         <form
-          key={2}
+          aria-expanded={expanded}
           id="search-bar"
+          key={2}
           className={styles.searchBar}
           onBlur={this.handleSearchToggle.bind(this)}
           onSubmit={this.submitSearch.bind(this)}
         >
           <TextInput
+            aria-label={searchLabel}
             id="search-input"
-            placeholder="Search SBA.gov"
+            placeholder={searchLabel}
             onChange={this.handleSearchChange.bind(this)}
-            onKeyDown={this.handleKeyPressOnSearch}
+            onKeyDown={this.handleSearchKeypress.bind(this)}
             autoFocus
           />
-          <SmallIcon
-            extraClassName={styles.searchIcon}
+          <i
+            alt="search button"
+            aria-hidden="true"
+            className=" fa fa-search"
             id="search-button"
             onClick={this.submitSearch.bind(this)}
-            alt="search button"
-            fontAwesomeIconClassName="search"
           />
         </form>
       )
     } else {
       return (
-        <SmallIcon
-          id="search-toggle-link"
-          extraClassName={styles.searchIcon}
+        <Link
+          aria-label={toggleLabel}
           onClick={this.handleSearchToggle.bind(this)}
           onKeyDown={this.handleSearchKeypress.bind(this)}
-          alt="search icon"
-          fontAwesomeIconClassName="search"
-        />
+        >
+          <i alt={toggleLabel} aria-hidden="true" className="fa fa-search" id="search-toggle-link" />
+        </Link>
       )
     }
   }
 }
-
-SearchBar.propTypes = {}
 
 export default SearchBar
