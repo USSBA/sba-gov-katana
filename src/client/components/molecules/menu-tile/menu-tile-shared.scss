@@ -15,14 +15,11 @@
 }
 
 .smallTitle {
-  @include for-small-only {
-    margin-top: 4px;
-  }
+  font-size: 1.3rem;
+  padding-top: 4px;
+
   @include for-medium-up {
     text-align: center;
-    margin-top: 4px;
     margin-bottom: 0;
-    line-height: 31px;
-    font-size: 1.33em;
   }
 }
