@@ -40,8 +40,3 @@ Only send in string values to Type and ID props. No need to declare `large` if y
 // Large is set by default
 <Label type="good" id="1590" large />
 ```
----
-
-## Related components
-
-* [Link](/src/client/components/atoms/label) ([atom](/src/client/components/atoms))
