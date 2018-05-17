@@ -57,11 +57,7 @@ class Lookup extends React.Component {
         case 'CDC/504':
         case 'Microloan':
           let cardRendererFunction = (item, index) => {
-            return (
-              <div key={index}>
-                <ContactCard {...item} />
-              </div>
-            )
+            return <ContactCard key={index} {...item} />
           }
           let cdcProps = assign({}, _props, {
             cardRenderer: cardRendererFunction

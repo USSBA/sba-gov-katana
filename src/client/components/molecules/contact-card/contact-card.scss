@@ -1,6 +1,5 @@
 .contactCard {
   border: 2px solid $sba-gray-lighter;
-  margin-top: 30px;
   padding: 30px;
 
   a,
@@ -10,10 +9,6 @@
 
   i {
     color: $sba-blue;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 30px;
   }
 }
 

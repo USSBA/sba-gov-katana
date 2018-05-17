@@ -12,8 +12,13 @@
   margin-top: 0;
 }
 
+.dataContainer div[class~='contact-card']:not(:last-child) {
+  margin-bottom: 30px;
+}
+
 .selectContainer {
   margin: auto;
+  margin-bottom: 20px;
   width: 50%;
 }
 
