@@ -1,50 +1,48 @@
 .collection {
-  overflow: auto;
+  @include clearfix;
 
-  margin-bottom: 30px !important;
+  margin-bottom: 80px;
 
-  @include grid-media($sba-grid-large) {
-    display: flex;
+  hr {
+    margin: 15px 0;
   }
 }
 
 .card {
-  background-color: $sba-gray-lighter;
+  border-top: 3px solid $sba-blue;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  padding-top: 20px;
 
-  @include grid-media($sba-grid-medium-and-small) {
-    margin-top: 20px;
-    padding: 20px;
-
+  @include for-small-and-medium-only {
     @include grid-column(6);
-  }
-  @include grid-media($sba-grid-large) {
-    margin-top: 30px;
-    padding: 30px;
-  }
-
-  & a {
-    color: $secondary-black-ish !important;
   }
 }
 
 .oneCard {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(12);
   }
 }
 .twoCards {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(6);
   }
 }
 .manyCards {
-  @include grid-media($sba-grid-large) {
+  @include for-large-up {
     @include grid-column(4);
   }
 }
 
 .titleContainer {
   position: relative;
+
+  a {
+    bottom: 1px;
+    right: 0;
+    position: absolute;
+  }
 }
 
 .title {
@@ -52,14 +50,9 @@
   margin-bottom: 0px;
 }
 
-.seeAll {
-  position: absolute;
-  right: 0;
-  bottom: 1px;
-}
-
 .date {
   font-style: italic;
+  margin-bottom: 15px;
 }
 
 .rateContainer {
