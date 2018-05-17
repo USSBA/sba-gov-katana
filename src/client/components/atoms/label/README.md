@@ -10,17 +10,17 @@
 
 ```jsx
 // Large label
-<Label type='SBA form' id='1011-01' />
+<Label type="SBA form" id="1011-01" />
 ```
 
 ```jsx
 // Small label
-<Label type='7(a)' id='1012-01 small />
+<Label type="7(a)" id="1012-01 small" />
 ```
 
 ```jsx
 // Label with only type
-<Label type='TechNote' />
+<Label type="TechNote" />
 ```
 
 ## Usage guidelines
