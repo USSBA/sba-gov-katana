@@ -125,7 +125,9 @@ class Main extends React.Component {
 
         <MainLoader />
 
-        <div className={styles.mainContent}>{this.props.children}</div>
+        <div id="main-content" className={styles.mainContent}>
+          {this.props.children}
+        </div>
 
         {showNotificationBar && (
           <NotificationBar
