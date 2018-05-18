@@ -1,5 +1,5 @@
 import React from 'react'
-import Document from '../templates/document/document.jsx'
+import DocumentArticle from '../templates/document-article/document-article.jsx'
 import ProgramPage from '../templates/program-page/program-page.jsx'
 import * as RestContentActions from '../../actions/rest-content.js'
 import { connect } from 'react-redux'
@@ -33,7 +33,7 @@ class SamplePage extends React.Component {
           />
         )
       } else {
-        return <Document document={this.props.data} />
+        return <DocumentArticle document={this.props.data} />
       }
     } else {
       return <div>Loading....</div>

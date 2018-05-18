@@ -2,165 +2,82 @@
 
 exports[`ContactCard should render with all the information 1`] = `
 <div
-  className="contact-card card"
+  className="contact-card contactCard"
 >
-  <div
-    className="title"
-  >
+  <h6>
     Grand Moff Tarkin
+  </h6>
+  <div
+    className="row"
+  >
+    <i
+      alt="123 Death Star Street, Suite 1<br />Galactic City, MD 12345"
+      aria-hidden="true"
+      className="fa fa-map-marker"
+    />
+    <a
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "123 Death Star Street, Suite 1<br />Galactic City, MD 12345",
+        }
+      }
+      href="https://maps.google.com?q=123%20Death%20Star%20Street%2C%20Suite%201%0AGalactic%20City%2C%20MD%2012345"
+    />
   </div>
   <div
-    className="container"
+    className="row"
   >
-    <div
-      className="contact-card-link-line line"
-    >
-      <div
-        className="icon"
-      >
-        <a
-          className={undefined}
-          href="https://maps.google.com?q=123%20Death%20Star%20Street%2C%20Suite%201%0AGalactic%20City%2CMD%2012345"
-          id={undefined}
-          onClick={undefined}
-          onKeyDown={undefined}
-          tabIndex="-1"
-        >
-          <i
-            alt="123 Death Star Street, Suite 1
-          Galactic City,MD 12345"
-            aria-hidden="true"
-            className=" fa fa-map-marker"
-          />
-        </a>
-      </div>
-      <div
-        className="text"
-      >
-        <a
-          className="address"
-          href="https://maps.google.com?q=123%20Death%20Star%20Street%2C%20Suite%201%0AGalactic%20City%2CMD%2012345"
-          target="_blank"
-        >
-          <span>
-            123 Death Star Street, Suite 1
-            <br />
-          </span>
-          <span>
-            Galactic City,MD 12345
-            <br />
-          </span>
-        </a>
-      </div>
-    </div>
-    <div
-      className="contact-card-link-line line"
-    >
-      <div
-        className="icon"
-      >
-        <a
-          className={undefined}
-          href="tel:123-456-5665"
-          id={undefined}
-          onClick={undefined}
-          onKeyDown={undefined}
-          tabIndex="-1"
-        >
-          <i
-            alt="123-456-5665"
-            aria-hidden="true"
-            className=" fa fa-phone"
-          />
-        </a>
-      </div>
-      <div
-        className="text"
-      >
-        <a
-          className="phoneNumber"
-          href="tel:123-456-5665"
-          target="_blank"
-        >
-          <span>
-            123-456-5665
-            <br />
-          </span>
-        </a>
-      </div>
-    </div>
-    <div
-      className="contact-card-link-line line"
-    >
-      <div
-        className="icon"
-      >
-        <a
-          className={undefined}
-          href="mailto:tarkin@deathstar.org"
-          id={undefined}
-          onClick={undefined}
-          onKeyDown={undefined}
-          tabIndex="-1"
-        >
-          <i
-            alt="tarkin@deathstar.org"
-            aria-hidden="true"
-            className=" fa fa-envelope-o"
-          />
-        </a>
-      </div>
-      <div
-        className="text"
-      >
-        <a
-          className="email"
-          href="mailto:tarkin@deathstar.org"
-          target="_blank"
-        >
-          <span>
-            tarkin@deathstar.org
-            <br />
-          </span>
-        </a>
-      </div>
-    </div>
-    <div
-      className="contact-card-link-line line"
-    >
-      <div
-        className="icon"
-      >
-        <a
-          className={undefined}
-          href="http://starwars.wikia.com/wiki/Wilhuff_Tarkin"
-          id={undefined}
-          onClick={undefined}
-          onKeyDown={undefined}
-          tabIndex="-1"
-        >
-          <i
-            alt="Visit website"
-            aria-hidden="true"
-            className=" fa fa-external-link-square"
-          />
-        </a>
-      </div>
-      <div
-        className="text"
-      >
-        <a
-          className="link"
-          href="http://starwars.wikia.com/wiki/Wilhuff_Tarkin"
-          target="_blank"
-        >
-          <span>
-            Visit website
-            <br />
-          </span>
-        </a>
-      </div>
-    </div>
+    <i
+      alt="123-456-5665"
+      aria-hidden="true"
+      className="fa fa-phone"
+    />
+    <a
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "123-456-5665",
+        }
+      }
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <i
+      alt="Visit website"
+      aria-hidden="true"
+      className="fa fa-external-link-square"
+    />
+    <a
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Visit website",
+        }
+      }
+      href="http://starwars.wikia.com/wiki/Wilhuff_Tarkin"
+    />
+  </div>
+  <div
+    className="row"
+  >
+    <i
+      alt="tarkin@deathstar.org"
+      aria-hidden="true"
+      className="fa fa-envelope-o"
+    />
+    <a
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "tarkin@deathstar.org",
+        }
+      }
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
+    />
   </div>
 </div>
 `;

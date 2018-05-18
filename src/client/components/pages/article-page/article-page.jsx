@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import Article from '../../templates/article/article.jsx'
+import DocumentArticle from '../../templates/document-article/document-article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
-import s from './article-page.scss'
+import styles from './article-page.scss'
 import * as ContentActions from '../../../actions/content.js'
+import { Loader } from 'atoms'
 
 class ArticlePage extends React.Component {
   constructor() {
@@ -29,9 +30,13 @@ class ArticlePage extends React.Component {
     const { article, location: { pathname } } = this.props
     if (pathname && document !== null) {
       if (article) {
-        return <Article article={article} />
+        return <DocumentArticle article={article} />
       } else {
-        return <div>Loading Article...</div>
+        return (
+          <div className={styles.container}>
+            <Loader />
+          </div>
+        )
       }
     } else {
       return <ErrorPage />

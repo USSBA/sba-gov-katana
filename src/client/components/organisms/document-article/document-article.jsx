@@ -1,13 +1,13 @@
 import React from 'react'
 import moment from 'moment'
 import queryString from 'querystring'
-import _ from 'lodash'
+import { isEmpty, last } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import s from './document-article.scss'
 import * as NavigationActions from '../../../actions/navigation.js'
-import { Button, DecorativeDash, DocumentType, Link, TextSection } from 'atoms'
+import { Button, DecorativeDash, Label, Link, TextSection } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
 
@@ -51,16 +51,16 @@ export class DocumentArticle extends React.Component {
 
     const dateLine = dates.map((object, index) => {
       return (
-        <span key={index}>
+        <div key={index}>
           {index > 0 && <span className={s.dateSeperator}> | </span>}
-          <span className={s.date}>
+          <h5 className={s.date}>
             {object.title} {object.date}
-          </span>
-        </span>
+          </h5>
+        </div>
       )
     })
 
-    return <p className={s.dates}> {dateLine} </p>
+    return <div className={s.dates}> {dateLine} </div>
   }
 
   render() {
@@ -75,7 +75,7 @@ export class DocumentArticle extends React.Component {
         currentFile.fileUrl.includes &&
         currentFile.fileUrl.includes('.')
       ) {
-        currentFileExtension = '.' + _.last(currentFile.fileUrl.split('.'))
+        currentFileExtension = '.' + last(currentFile.fileUrl.split('.'))
       }
       let documentTypeString = null
       switch (data.type) {
@@ -86,20 +86,22 @@ export class DocumentArticle extends React.Component {
           documentTypeString = null
           break
       }
+
       return (
         <div className={'document-article ' + s.page}>
-          {documentTypeString ? (
-            <DocumentType type={documentTypeString} number={data.documentIdNumber} />
-          ) : (
-            undefined
-          )}
+          <Label
+            type={documentTypeString || undefined}
+            id={!isEmpty(data.documentIdNumber) && data.documentIdNumber}
+          />
           <h1
-            className={'document-article-title ' + s.title + ' ' + (documentTypeString ? s.marginTop : '')}
+            className={
+              'document-article-title ' + s.title + ' ' + (documentTypeString ? s.titleMarginBottom : '')
+            }
           >
             {data.title}
           </h1>
 
-          {!_.isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
+          {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
           {data.officeLink.url ? (
             <div className={s.office}>
@@ -110,23 +112,29 @@ export class DocumentArticle extends React.Component {
           )}
           <hr className={s.hr} />
           <div className={s.summaryContainer}>
-            <h5 className={s.summary}>{data.summary}</h5>
-            <Button
-              className="document-article-pdf-download-btn"
-              onClick={e => this.downloadClick(currentFile)}
-              disabled={!currentFile || _.isEmpty(currentFile.fileUrl)}
-              primary
-            >{`Download ${currentFileExtension}`}</Button>
+            <div className="column">
+              <Button
+                className="document-article-pdf-download-btn"
+                disabled={!currentFile || isEmpty(currentFile.fileUrl)}
+                fullWidth
+                onClick={e => this.downloadClick(currentFile)}
+                primary
+              >
+                {`Download ${currentFileExtension}`}
+              </Button>
+            </div>
+            <div className="column">
+              <h5 className={s.summary}>{data.summary}</h5>
+            </div>
           </div>
-          <div className={s.dashContainer}>
+          <div className={s.dash}>
             <DecorativeDash width={4.278} />
           </div>
           {/* TODO: body style for grid media queries should be baked into text section? */}
           <TextSection className={s.body} text={body} />
           <div className={'document-article-related-programs-container ' + s.relatedProgramsContainer}>
-            <hr className={s.hr} />
+            <hr />
             <span className={s.relatedPrograms}>Related programs: </span>
-
             {data.programs.map((program, index) => {
               return (
                 <span className="document-article-related-programs-link" key={index}>

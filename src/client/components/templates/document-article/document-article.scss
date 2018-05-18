@@ -1,0 +1,17 @@
+.container {
+  @include for-small-only {
+    margin: 50px 20px 50px 20px;
+  }
+
+  @include for-medium-only {
+    margin: 50px 30px 50px 30px;
+  }
+
+  @include for-large-up {
+    margin: 50px 70px 50px 70px;
+  }
+}
+
+div[class~='document-card-collection'] {
+  @include grid-collapse((gutter: 30px));
+}

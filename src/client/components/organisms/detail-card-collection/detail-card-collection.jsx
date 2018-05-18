@@ -9,7 +9,6 @@ class DetailCardCollection extends React.Component {
     return (
       <div className={'card-container ' + styles.card} key={index}>
         <DetailCard
-          type={this.props.type}
           data={item}
           showDetails={this.props.showDetails}
           showBorder={false}
@@ -19,21 +18,12 @@ class DetailCardCollection extends React.Component {
     )
   }
 
-  renderRow(chunk, index) {
-    return (
-      <div className={styles.cardRow} key={index}>
-        {chunk.map(this.renderCard.bind(this))}
-      </div>
-    )
-  }
-
   renderCards() {
-    const chunks = _.chunk(this.props.cards, 3)
-    return chunks.map(this.renderRow.bind(this))
+    return this.props.cards.map((card, index) => this.renderCard(card, index))
   }
 
   render() {
-    return <div className={'document-card-collection ' + styles.cardCollection}>{this.renderCards()}</div>
+    return <div className="document-card-collection">{this.renderCards()}</div>
   }
 }
 

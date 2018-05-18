@@ -1,7 +1,18 @@
+.readMore {
+  @include for-small-only {
+    width: 100%;
+  }
+}
 .readMoreSection {
-  padding: 40px;
+  background-color: white;
+  border-top: 2px solid $sba-blue;
+  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
-  background-color: #ebebeb;
+  padding: 40px;
+
+  h3 {
+    color: $sba-blue;
+  }
 }
 
 .lineCopy {
@@ -10,34 +21,21 @@
   width: 60px;
   border: 3px solid;
   text-align: left;
+
   @include grid-media($sba-grid-small) {
     width: 80px;
     text-align: left;
   }
 }
 
-.title {
-  color: #333333;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 26px;
-}
-
 .preview {
-  color: #333333;
   font-size: 18px;
   font-style: italic;
-  line-height: 27px;
+  line-height: 1.333;
 }
 
 .expandedCopyText {
   color: #333333;
   font-size: 18px;
   line-height: 27px;
-}
-
-@include grid-media( $sba-grid-small) {
-  .readMore {
-    width: 100%;
-  }
 }

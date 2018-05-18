@@ -10,6 +10,10 @@ $homepage-gutter-size: 5.333vw;
   position: relative;
 }
 
+.imageContainer {
+  min-height: 400px;
+}
+
 .boxContainer {
   @include grid-media($sba-grid-small) {
     visibility: visible;

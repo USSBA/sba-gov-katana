@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './readmore.scss'
-import { Button } from 'atoms'
+import { Button, DecorativeDash } from 'atoms'
 
 class ReadMore extends React.Component {
   handleClick(e) {
@@ -34,13 +34,11 @@ class ReadMore extends React.Component {
     ) : (
       ''
     )
+    const expandedHr = this.props.expanded ? <DecorativeDash width={1.75} /> : ''
 
-    const expandedHr = this.props.expanded ? <hr className={styles.lineCopy} /> : ''
     return (
       <div className={styles.readMoreSection}>
-        <h3 id={this.props.parentId + '-title'} className={styles.title}>
-          {this.props.readMoreSectionItem.titleText}
-        </h3>
+        <h3 id={this.props.parentId + '-title'}>{this.props.readMoreSectionItem.titleText}</h3>
         {this.props.isHTML ? (
           <div
             dangerouslySetInnerHTML={{ __html: this.props.readMoreSectionItem.preview }}

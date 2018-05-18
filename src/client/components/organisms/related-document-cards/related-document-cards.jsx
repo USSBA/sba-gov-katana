@@ -89,7 +89,7 @@ class RelatedDocumentCards extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={s.container}>
         {!_.isEmpty(this.state.sortedDocuments) ? (
           <div>
             <h2 className={s.title}>Related documents</h2>

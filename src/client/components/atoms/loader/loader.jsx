@@ -5,7 +5,7 @@ import s from './loader.scss'
 
 const Loader = props => {
   return (
-    <div className={s.container + ' ' + props.className}>
+    <div className={`loader ${s.container}`}>
       <img className={s.logo} src={logo} />
       <div className={s.loader} />
     </div>
