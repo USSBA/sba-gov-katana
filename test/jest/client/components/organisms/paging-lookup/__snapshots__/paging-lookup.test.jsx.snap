@@ -22,7 +22,7 @@ exports[`PagingLookup should render with all the information 1`] = `
         className="loaderContainer"
       >
         <div
-          className="loader container undefined"
+          className="loader container"
         >
           <img
             className="logo"

@@ -1,11 +1,11 @@
 .loaderContainer {
   position: relative;
   height: 20vw;
-}
 
-.loader {
-  margin: auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  div[class~='loader'] {
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }

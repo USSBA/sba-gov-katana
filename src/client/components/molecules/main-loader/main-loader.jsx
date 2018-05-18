@@ -30,7 +30,7 @@ class MainLoader extends React.Component {
       <div>
         {this.shouldLoaderDisplay() ? (
           <div className={s.loaderContainer}>
-            <Loader className={s.loader} />
+            <Loader />
           </div>
         ) : null}
       </div>
