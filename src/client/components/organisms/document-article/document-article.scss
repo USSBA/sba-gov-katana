@@ -16,45 +16,15 @@
   h5 {
     margin-bottom: 20px;
   }
-  // @include grid-media($sba-grid-medium-and-small) {
-  //   @include grid-column(4, $mobile-0gutter);
-  //   & .dateSeperator {
-  //     display: none;
-  //   }
-  //   & .date {
-  //     display: block;
-  //   }
-  // }
-  // @include grid-media($sba-grid-large) {
-  //   @include grid-column(8, $desktop-0gutter);
-  //   & div {
-  //     display: none;
-  //   }
-  // }
 }
 
 .office {
   margin-bottom: 46px;
-  // @include grid-media($sba-grid-medium-and-small) {
-  //   @include grid-column(4, $mobile-0gutter);
-  // }
-  // @include grid-media($sba-grid-large) {
-  //   @include grid-column(8, $desktop-0gutter);
-  // }
 }
 
 .hr {
   margin-bottom: 50px;
   border: 1px solid $sba-gray-light;
-  // margin-bottom: 32px;
-  // margin-top: 42px;
-
-  // @include grid-media($sba-grid-medium-and-small) {
-  //   @include grid-column(6, $mobile-0gutter);
-  // }
-  // @include grid-media($sba-grid-large) {
-  //   @include grid-column(12, $desktop-0gutter);
-  // }
 }
 
 .summaryContainer {
