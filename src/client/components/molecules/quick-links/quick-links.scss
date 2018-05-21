@@ -14,15 +14,17 @@
   margin-top: 1.5em;
   padding-top: 20px;
 
-  @include for-small-and-medium-only {
+  @include for-small-only {
+    @include grid-column(12);
+  }
+
+  @include for-medium-only {
     @include grid-column(6);
   }
 }
 
 .oneCard {
-  @include for-large-up {
-    @include grid-column(12);
-  }
+  @include grid-column(12);
 }
 .twoCards {
   @include for-large-up {
