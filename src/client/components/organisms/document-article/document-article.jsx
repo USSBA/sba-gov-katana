@@ -138,13 +138,13 @@ export class DocumentArticle extends React.Component {
             {data.programs.map((program, index) => {
               return (
                 <span className="document-article-related-programs-link" key={index}>
-                  <a
+                  <Link
                     onClick={() => {
                       return this.handleRelatedPrograms(program)
                     }}
                   >
                     {program}
-                  </a>
+                  </Link>
                   {index == data.programs.length - 1 ? null : ', '}
                 </span>
               )
