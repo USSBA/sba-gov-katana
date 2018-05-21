@@ -109,13 +109,12 @@ const LatestDocumentsCard = props => {
   return (
     <div className={props.classname}>
       <div className={s.titleContainer}>
-        <h3 className={s.title}>{props.sectionHeaderText}</h3>
+        <h4 className={s.title}>{props.sectionHeaderText}</h4>
         <Link
           to={`/document?${queryString.stringify({
             type: props.documentType,
             program: props.documentProgram
           })}`}
-          className={s.seeAll}
         >
           See all
         </Link>
@@ -156,7 +155,7 @@ const LatestDocumentsCard = props => {
 const RatesCard = props => {
   return (
     <div className={props.classname}>
-      <h3 className={s.title}>Rates</h3>
+      <h4 className={s.title}>Rates</h4>
       <DecorativeDash width={1.667} />
       {props.rate.map((rate, index) => {
         return (
@@ -177,7 +176,7 @@ const ArticlesCard = props => {
   return (
     <div className={props.classname}>
       <div className={s.titleContainer}>
-        <h3 className={s.title}>{props.sectionHeaderText}</h3>
+        <h4 className={s.title}>{props.sectionHeaderText}</h4>
         <Link
           to={`/article?${queryString.stringify({
             program: props.articleProgram

@@ -10,13 +10,12 @@ exports[`QuickLinks Future effective date is not displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h3
+      <h4
         className="title"
       >
         SOPs
-      </h3>
+      </h4>
       <a
-        className="seeAll"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -62,13 +61,12 @@ exports[`QuickLinks Most recent effective date displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h3
+      <h4
         className="title"
       >
         SOPs
-      </h3>
+      </h4>
       <a
-        className="seeAll"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -114,13 +112,12 @@ exports[`QuickLinks No SOP number so it is not displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h3
+      <h4
         className="title"
       >
         SOPs
-      </h3>
+      </h4>
       <a
-        className="seeAll"
         onClick={[Function]}
         style={Object {}}
         target="_self"
@@ -166,13 +163,12 @@ exports[`QuickLinks SOP number exists and is displayed 1`] = `
     <div
       className="titleContainer"
     >
-      <h3
+      <h4
         className="title"
       >
         SOPs
-      </h3>
+      </h4>
       <a
-        className="seeAll"
         onClick={[Function]}
         style={Object {}}
         target="_self"
