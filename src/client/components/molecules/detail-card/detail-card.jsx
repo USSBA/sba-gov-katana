@@ -21,18 +21,13 @@ class DetailCard extends React.Component {
     if (latestFile) {
       return (
         <div className={'document-card-download ' + s.download}>
-          <a
+          <Link
             onClick={() => {
-              logPageEvent({
-                category: 'Document-Download-Module',
-                action: `docname - ${title}: Download PDF`
-              })
               window.open(latestFile.fileUrl, '_blank')
             }}
-            className={s.link}
           >
             Download PDF
-          </a>
+          </Link>
           <PdfIcon />
         </div>
       )
