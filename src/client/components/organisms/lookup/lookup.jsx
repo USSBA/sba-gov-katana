@@ -51,9 +51,10 @@ class Lookup extends React.Component {
     if (this.props.type === 'contacts') {
       switch (this.props.subtype) {
         case 'State taxes':
+        case 'State registration':
           SelectedLookup = <ContactCardLookup {..._props} />
-
           break
+
         case 'CDC/504':
         case 'Microloan':
           let cardRendererFunction = (item, index) => {
