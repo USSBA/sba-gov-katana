@@ -5,6 +5,7 @@
   width: 100%;
   padding-top: 20px;
   background-color: $sba-blue;
+  text-decoration: none;
 }
 
 .tileHover h3 {
@@ -34,4 +35,8 @@
 .link {
   font-weight: 300;
   color: white;
+}
+
+.tileHover a {
+  text-decoration: none;
 }

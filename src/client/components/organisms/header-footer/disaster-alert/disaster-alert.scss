@@ -5,9 +5,7 @@ $mobile-nav-height: 53px;
 .wrapper {
   position: static;
   width: 100%;
-  z-index: 1000000000;
-  // top: 0;
-  // left: 0;
+  z-index: 10;
   @include grid-media($tablet-nav) {
     position: fixed;
     top: 0;
@@ -64,7 +62,6 @@ $mobile-nav-height: 53px;
 .alert .alertLink {
   color: $secondary-black-ish;
   font-weight: 600;
-  text-decoration: underline;
 }
 
 img.alertClose {
@@ -73,7 +70,6 @@ img.alertClose {
   top: 15px;
   display: inline-block;
   cursor: pointer;
-  z-index: 10000;
   width: 20px;
   height: auto;
 }

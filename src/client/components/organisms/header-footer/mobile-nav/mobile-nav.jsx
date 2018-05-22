@@ -1,5 +1,5 @@
 import React from 'react'
-import { HamburgerIcon, MainLogo, SectionLink } from 'atoms'
+import { HamburgerIcon, Link, MainLogo, SectionLink } from 'atoms'
 
 import clientConfig from '../../../../services/client-config.js'
 import searchIcon from 'assets/svg/mobile-menu/search-icon.svg'
@@ -16,12 +16,6 @@ class MobileNav extends React.Component {
       searchValue: ''
     }
     this.updateNavHeight = this.updateNavHeight.bind(this)
-  }
-  toggleNav(e) {
-    e.preventDefault()
-    this.setState({
-      expanded: !this.state.expanded
-    })
   }
 
   updateNavHeight() {
@@ -105,15 +99,28 @@ class MobileNav extends React.Component {
       <div>
         <div key={4} className={this.state.expanded ? styles.mobileHeaderOpen : styles.mobileHeaderClosed}>
           <MainLogo />
-          <span>
-            <a
-              id="mobile-navigation-button"
-              className={this.state.expanded ? styles.menuButtonOpen : styles.menuButtonClosed}
-              onClick={this.toggleNav.bind(this)}
-            >
-              <HamburgerIcon isOpen={this.state.expanded} />
-            </a>
-          </span>
+          <Link
+            id="mobile-navigation-button"
+            className={this.state.expanded ? styles.menuButtonOpen : styles.menuButtonClosed}
+            onClick={e => {
+              e.preventDefault()
+              this.setState({
+                expanded: !this.state.expanded
+              })
+            }}
+            onKeyDown={e => {
+              // TODO: Change to button
+              // 13 equals to Enter and 32 equals to spacebar
+              if (e.keyCode === 13 || e.keyCode === 32) {
+                e.preventDefault()
+                this.setState({
+                  expanded: !this.state.expanded
+                })
+              }
+            }}
+          >
+            <HamburgerIcon isOpen={this.state.expanded} />
+          </Link>
         </div>
         <div
           key={7}

@@ -121,6 +121,10 @@ class Main extends React.Component {
           }}
         />
 
+        <a className={styles.skipNav} href="#main-content">
+          Skip to main content
+        </a>
+
         <Header additionalMenuOffset={visible ? 53 : 0} />
 
         <MainLoader />
