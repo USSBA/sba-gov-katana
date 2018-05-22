@@ -36,6 +36,7 @@ table {
 }
 
 .title {
+  // This forces the underline color to be the same color as the text.
   text-decoration: underline;
   color: $sba-blue;
   padding-top: 0px;
@@ -73,13 +74,12 @@ table {
 
 .download {
   margin-top: 42px;
+
+  a {
+    margin-right: 10px;
+  }
+
   i {
     color: $secondary-blue;
   }
-}
-
-.link {
-  color: $secondary-blue;
-  cursor: pointer;
-  margin-right: 10px;
 }
