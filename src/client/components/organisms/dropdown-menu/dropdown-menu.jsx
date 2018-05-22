@@ -109,7 +109,20 @@ class DropdownMenu extends React.Component {
           />
         </ul>
       ) : (
-        undefined
+        <ul className={styles.skipLink}>
+          <UtilityLink
+            id={id + '-go-to-main-content'}
+            visible={this.state.goToNextSectionShown}
+            text="Go to Main Content"
+            onKeyDown={event => {
+              if (event.keyDown === 13) {
+                location.href = '#main-content'
+              }
+            }}
+            onFocus={event => this.handleGoToNextFocus(event)}
+            onBlur={event => this.handleGoToNextBlur(event)}
+          />
+        </ul>
       )
       return (
         <ul
