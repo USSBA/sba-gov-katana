@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import styles from './search-page.scss'
 import * as ContentActions from '../../../actions/content.js'
-import { Button, Link, TextInput } from 'atoms'
+import { Button, Link, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { logPageEvent } from '../../../services/analytics.js'
 
@@ -170,17 +170,21 @@ class SearchPage extends PureComponent {
     const { hasNoResults } = this.props
 
     return (
-      <div className={styles.container}>
-        <h1>Search</h1>
-        <SearchBar
-          searchTerm={searchTerm}
-          newSearchTerm={newSearchTerm}
-          onSearchInputChange={this.onSearchInputChange.bind(this)}
-          onSubmit={this.onSubmit.bind(this)}
-        />
+      <div>
+        <div className={styles.banner}>
+          <h2>Search</h2>
+          <SearchBar
+            searchTerm={searchTerm}
+            newSearchTerm={newSearchTerm}
+            onSearchInputChange={this.onSearchInputChange.bind(this)}
+            onSubmit={this.onSubmit.bind(this)}
+          />
+          <div className={styles.searchIcon}>
+            <SearchIcon aria-hidden="true" />
+          </div>
+        </div>
         {!isEmpty(searchTerm) && (
-          <div>
-            <hr />
+          <div className={styles.searchResults}>
             <div>
               {searchResults.length > 0 && (
                 <div>
@@ -345,9 +349,8 @@ const ResultsList = props => {
     <div>
       <div>
         <div className={styles.searchTerm}>
-          <span id="search-term-title">"{searchTerm}"</span>
+          <h3 id="search-term-title">Search results for "{searchTerm}"</h3>
         </div>
-        {renderPaginator('top')}
       </div>
       <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
         {renderList()}

@@ -1,23 +1,37 @@
-.container {
+.banner,
+.searchResults {
   @include grid-media($sba-grid-small) {
-    @include grid-column(6);
-    margin-top: 20px;
-    margin-bottom: 40px;
+    padding: 20px;
   }
   @include grid-media($sba-grid-medium) {
-    @include grid-column(12);
-    margin-top: 20px;
-    margin-bottom: 30px;
+    padding: 20px 30px 20px 30px;
   }
   @include grid-media($sba-grid-large) {
-    @include grid-column(8);
-    @include grid-push(2);
+    height: 220px;
+    padding: 40px 28px 20px 28px;
   }
+}
+
+.banner {
+  background-color: $sba-blue;
+  color: white;
+  position: relative;
+  width: 100%;
+
+  h2 {
+    color: white;
+  }
+}
+
+.searchResults {
+  background-color: $sba-gray-lighter;
+  height: 100%;
 }
 
 .textInput {
   width: 60%;
   display: inline-block;
+  position: relative;
 
   input {
     height: 53px;
@@ -35,16 +49,6 @@
 }
 
 .searchTerm {
-  float: left;
-  margin-top: 15px;
-  word-wrap: break-word;
-  width: 100%;
-
-  span {
-    font-weight: bold;
-    font-size: 120%;
-  }
-
   @media (min-width: 768px) {
     width: 50%;
     margin-bottom: 30px;
@@ -52,29 +56,44 @@
 }
 
 .paginator {
+  background-color: $sba-gray-lighter;
   float: right;
-  margin: 30px 0;
-}
-
-.results {
-  clear: both;
+  margin: 40px 0 40px 0;
 }
 
 .result {
-  border: 1px solid #bebdbd;
-  padding: 20px;
+  background-color: white;
+  padding: 30px;
   margin-top: 30px;
 }
 
+.title {
+  margin-bottom: 6px;
+  a {
+    color: $sba-blue;
+    font-weight: 600;
+  }
+}
+
 .url a {
-  $action-color: #8a8787;
-  color: $action-color;
+  color: $secondary-blue;
 
   &:hover {
-    color: shade($action-color, 25%);
+    color: shade($secondary-blue, 25%);
   }
 }
 
 .results-message {
   text-align: center;
+}
+
+.summary {
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 150px;
+  right: 500px;
 }
