@@ -1,52 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchPage to match snapshot 1`] = `
-<div
-  className="container"
->
-  <h1>
-    Search
-  </h1>
-  <div>
-    <div
-      className="textInput"
-    >
+<div>
+  <div
+    className="banner"
+  >
+    <h2>
+      Search
+    </h2>
+    <div>
       <div
-        className="inputContainer "
-        hidden={undefined}
-        id="search-container"
+        className="textInput"
       >
-        <label
-          className="controlLabel"
-          htmlFor="search"
-        >
-          What are you looking for?
-        </label>
         <div
-          className="textInputContainer"
+          className="inputContainer "
+          hidden={undefined}
+          id="search-container"
         >
-          <input
-            aria-controls="results-list"
-            className="textInput "
-            defaultValue=""
-            id="search"
-            onChange={[Function]}
-            onKeyDown={[Function]}
-          />
+          <label
+            className="controlLabel"
+            htmlFor="search"
+          >
+            What are you looking for?
+          </label>
+          <div
+            className="textInputContainer"
+          >
+            <input
+              aria-controls="results-list"
+              className="textInput "
+              defaultValue=""
+              id="search"
+              onChange={[Function]}
+              onKeyDown={[Function]}
+            />
+          </div>
         </div>
+      </div>
+      <div
+        className="searchButton"
+      >
+        <button
+          aria-controls="results-list"
+          className="button alternate large primary responsive spacing"
+          id="submit-button"
+          onClick={[Function]}
+        >
+          Search
+        </button>
       </div>
     </div>
     <div
-      className="searchButton"
+      className="searchIcon"
     >
-      <button
-        aria-controls="results-list"
-        className="button alternate large primary responsive spacing"
-        id="submit-button"
-        onClick={[Function]}
-      >
-        Search
-      </button>
+      <i
+        className="search fa fa-search"
+      />
     </div>
   </div>
 </div>
