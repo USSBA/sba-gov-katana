@@ -9,7 +9,7 @@
     top: calc(25% + 2px);
 
     // The icon cannot be a link because it should be hidden from screen
-    // readers, it is styled like one.
+    // readers, so it is styled like one.
     cursor: pointer;
     color: $sba-gray;
     transition: color $base-duration $base-timing;
