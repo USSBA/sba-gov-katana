@@ -12,9 +12,9 @@ class MenuTile extends React.Component {
     }
 
     const smallTitleComponent = this.props.smallTitle ? (
-      <h3 className={sharedStyles.smallTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')}>
+      <span className={sharedStyles.smallTitle + ' ' + (this.props.uppercaseFirstWord ? s.upperCase : '')}>
         {this.props.smallTitle}
-      </h3>
+      </span>
     ) : (
       undefined
     )
@@ -29,8 +29,11 @@ class MenuTile extends React.Component {
       <div id={this.props.id} className={tileClass}>
         <img id={this.props.id + '-icon'} className={s.icon} src={iconSource} alt="" />
         <div id={this.props.id + '-title'} className={titleContainerClass}>
-          <h3 className={largeTitleClass}>{this.props.largeTitle}</h3>
-          {smallTitleComponent}
+          <h3 className={largeTitleClass}>
+            {this.props.largeTitle}
+            <br />
+            {smallTitleComponent}
+          </h3>
         </div>
         <img className={s.rightArrow} src={scrollIcon} />
         <div className={lineClass} />
