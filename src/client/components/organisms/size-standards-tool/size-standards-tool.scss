@@ -1,7 +1,9 @@
 .sizeStandardsTool {
+  margin-top: 40px;
   margin-bottom: 50px;
-  border: 2px solid #000;
-  box-shadow: 2px 2px 15px #888888;
+  background-color: white;
+  border-top: 4px solid $sba-blue;
+  box-shadow: $box-shadow;
   text-align: center;
   position: relative;
 
@@ -96,10 +98,23 @@
   }
 
   .appBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
+
     margin-top: 70px;
-    background: #cccccc;
     padding: 20px 30px;
     text-align: left;
+
+    button:first-child {
+      justify-self: start;
+      -ms-grid-column-align: start;
+    }
+
+    button:last-child {
+      justify-self: end;
+      -ms-grid-column-align: end;
+    }
   }
 
   img {
@@ -115,29 +130,19 @@
     margin-right: 10px;
   }
 
-  .button {
-    margin-top: 50px;
-    padding: 0.75em 4.25em;
-
-    @media (max-width: 767px) {
-      width: 100%;
-      padding: 0.75em 0;
-    }
-  }
-
   .naicsCodeInput {
     max-width: 470px;
     margin: 0 auto;
     text-align: left;
 
-    .naicsLookup {
+    .typeahead {
       position: relative;
 
       > div > div:last-child {
         position: absolute;
         right: 0;
         left: 0;
-        background: #fff;
+        background-color: white;
       }
     }
 

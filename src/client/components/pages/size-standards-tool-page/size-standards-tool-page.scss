@@ -1,16 +1,23 @@
-.container {
+.gridContainer {
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
     margin-top: 20px;
     margin-bottom: 40px;
   }
+
   @include grid-media($sba-grid-medium) {
     @include grid-column(12);
     margin-top: 20px;
     margin-bottom: 30px;
   }
+
   @include grid-media($sba-grid-large) {
     @include grid-column(8);
     @include grid-push(2);
   }
+}
+
+.container {
+  @include clearfix;
+  background-color: $sba-gray-lighter;
 }

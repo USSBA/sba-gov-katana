@@ -95,6 +95,6 @@
   background-color: white;
   border-top: 5px solid $sba-blue;
   // TODO: DRY
-  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow;
   padding: 50px;
 }

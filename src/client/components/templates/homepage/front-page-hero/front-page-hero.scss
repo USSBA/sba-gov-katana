@@ -18,6 +18,7 @@ $homepage-gutter-size: 5.333vw;
   @include grid-media($sba-grid-small) {
     visibility: visible;
   }
+
   @include grid-media($sba-grid-medium) {
     padding-left: $homepage-gutter-size;
     padding-right: $homepage-gutter-size;
@@ -32,9 +33,11 @@ $homepage-gutter-size: 5.333vw;
   @include grid-media($sba-grid-small) {
     display: none;
   }
+
   @include grid-media($sba-grid-medium) {
     display: none;
   }
+
   @include grid-media($sba-grid-large) {
     display: block !important;
     width: 100%;
@@ -45,9 +48,11 @@ $homepage-gutter-size: 5.333vw;
   @include grid-media($sba-grid-small) {
     display: none;
   }
+
   @include grid-media($sba-grid-medium) {
     width: 100%;
   }
+
   @include grid-media($sba-grid-large) {
     display: none;
   }
@@ -57,9 +62,11 @@ $homepage-gutter-size: 5.333vw;
   @include grid-media($sba-grid-small) {
     width: 100%;
   }
+
   @include grid-media($sba-grid-medium) {
     display: none;
   }
+
   @include grid-media($sba-grid-large) {
     display: none;
   }
@@ -67,10 +74,11 @@ $homepage-gutter-size: 5.333vw;
 
 .box {
   @include clearfix;
+
   @include grid-media($sba-grid-small) {
     background: white;
     border-top: 5px $sba-blue solid;
-    box-shadow: 6px 7px 20px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: $box-shadow;
     z-index: 0;
     width: 90vw;
     position: relative;
@@ -79,10 +87,12 @@ $homepage-gutter-size: 5.333vw;
     padding: 6.9vw 8.5vw 8.5vw;
     @include grid-column(6);
   }
+
   @include grid-media($sba-grid-medium) {
     @include grid-column(6);
     padding: 60px 10px 50px;
   }
+
   @include grid-media($sba-grid-large) {
     @include grid-column(8);
     padding: 70px 10px 50px;
@@ -91,18 +101,21 @@ $homepage-gutter-size: 5.333vw;
 
 .title {
   color: $sba-blue;
+
   @include grid-media($sba-grid-small) {
     font-size: 48px;
     font-weight: 600;
     line-height: 52px;
     margin-bottom: 10px;
   }
+
   @include grid-media($sba-grid-medium) {
     font-size: 48px;
     font-weight: 600;
     line-height: 52px;
     margin-bottom: 20px;
   }
+
   @include grid-media($sba-grid-large) {
     font-size: 60.75px;
     font-weight: 600;
@@ -115,18 +128,21 @@ $homepage-gutter-size: 5.333vw;
   color: $sba-gray-dark;
   font-family: Merriweather;
   font-style: italic;
+
   @include grid-media($sba-grid-small) {
     font-size: 21px;
     margin-bottom: 20px;
     line-height: 35px;
     font-weight: 600;
   }
+
   @include grid-media($sba-grid-medium) {
     font-size: 21px;
     line-height: 35px;
     font-weight: 400;
     margin-bottom: 20px;
   }
+
   @include grid-media($sba-grid-large) {
     font-size: 21px;
     line-height: 35px;

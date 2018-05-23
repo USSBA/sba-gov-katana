@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import NumberFormat from 'react-number-format'
-import _, { reduce } from 'lodash'
 import axios from 'axios'
+import { endsWith, isEmpty, reduce } from 'lodash'
 
-import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/Size_standards_graphic.png'
+import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/size_standards.png'
 import styles from './size-standards-tool.scss'
 import { Button, SearchIcon, TextInput } from 'atoms'
-import { NaicsLookup } from 'molecules'
+import { Typeahead } from 'molecules'
 
 const formatRevenueLimit = revenueLimit => {
   const annualRevenueConstant = 1000000
@@ -74,7 +74,7 @@ class SizeStandardsTool extends PureComponent {
           })
         ) {
           isDisabled = true
-        } else if (!_.isEmpty(assetLimit)) {
+        } else if (!isEmpty(assetLimit)) {
           isDisabled = true
         }
 
@@ -150,7 +150,7 @@ class SizeStandardsTool extends PureComponent {
     const interval = setInterval(() => {
       const el = document.getElementById(id)
 
-      if (!_.isEmpty(el)) {
+      if (!isEmpty(el)) {
         el.focus()
 
         if (id === 'size-standards-tool') {
@@ -249,7 +249,7 @@ class SizeStandardsTool extends PureComponent {
   }
 
   renderAppBar(data) {
-    const { buttonText, sectionTarget } = data
+    const { buttonText, renderNextButton, sectionTarget } = data
 
     return (
       <div className={`${styles.appBar} back-button`}>
@@ -262,12 +262,25 @@ class SizeStandardsTool extends PureComponent {
         >
           {buttonText}
         </Button>
+        {renderNextButton ? (
+          renderNextButton()
+        ) : (
+          <div>{/* Return an empty div that can be used as a placeholder in the grid. */}</div>
+        )}
       </div>
     )
   }
 
   render() {
-    const { section, naicsCodes, selectedNaicsCodes, shouldShowRevenueSection } = this.state
+    const {
+      employeeTotal,
+      naicsCodes,
+      revenueTotal,
+      section,
+      selectedNaicsCodes,
+      shouldShowEmployeesSection,
+      shouldShowRevenueSection
+    } = this.state
 
     return (
       <div className={styles.sizeStandardsTool} id="size-standards-tool" tabIndex="-1">
@@ -291,6 +304,30 @@ class SizeStandardsTool extends PureComponent {
 
             {this.renderAppBar({
               buttonText: 'BACK',
+              renderNextButton: () => {
+                if (selectedNaicsCodes.length === 0) {
+                  return <div />
+                }
+
+                return (
+                  <Button
+                    onClick={() => {
+                      let sectionTarget = 'NO_SECTION_SET'
+
+                      if (shouldShowRevenueSection === true) {
+                        sectionTarget = 'REVENUE'
+                      } else if (shouldShowEmployeesSection === true) {
+                        sectionTarget = 'EMPLOYEES'
+                      }
+
+                      this.gotoSection(sectionTarget)
+                    }}
+                    primary
+                  >
+                    Next
+                  </Button>
+                )
+              },
               sectionTarget: 'START'
             })}
           </div>
@@ -309,6 +346,15 @@ class SizeStandardsTool extends PureComponent {
 
             {this.renderAppBar({
               buttonText: 'BACK',
+              renderNextButton: () => (
+                <Button
+                  disabled={!(revenueTotal > 0)}
+                  onClick={() => this.gotoSection(shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS')}
+                  primary
+                >
+                  {shouldShowEmployeesSection ? 'Next' : 'See results'}
+                </Button>
+              ),
               sectionTarget: 'NAICS'
             })}
           </div>
@@ -327,6 +373,11 @@ class SizeStandardsTool extends PureComponent {
 
             {this.renderAppBar({
               buttonText: 'BACK',
+              renderNextButton: () => (
+                <Button disabled={!(employeeTotal > 0)} onClick={() => this.gotoSection('RESULTS')} primary>
+                  See results
+                </Button>
+              ),
               sectionTarget: shouldShowRevenueSection ? 'REVENUE' : 'NAICS'
             })}
           </div>
@@ -385,7 +436,7 @@ class NaicsScreen extends PureComponent {
     this.setState(updatedState)
   }
 
-  renderNaicsLookup() {
+  renderTypeahead() {
     // Format the list of naics from the API into a structure suitable for React
     // Autosuggest, i.e. into a list of sections (naics categories/industries) that
     // contain entries (naics codes and descriptions).
@@ -432,7 +483,7 @@ class NaicsScreen extends PureComponent {
       this.props.naicsCodes.filter(object => {
         let result
 
-        if (!_.endsWith(object.code, '_Except')) {
+        if (!endsWith(object.code, '_Except')) {
           result = object
         }
 
@@ -450,8 +501,8 @@ class NaicsScreen extends PureComponent {
     }
 
     return (
-      <div className={styles.naicsLookup}>
-        <NaicsLookup
+      <div className={styles.typeahead}>
+        <Typeahead
           naics={naics}
           inputProps={inputProps}
           inputLengthToGetSuggestions={3}
@@ -537,13 +588,13 @@ class NaicsScreen extends PureComponent {
         {shouldShowNaicsInput || selectedNaicsCodes.length === 0 ? (
           <div>
             <div className={styles.naicsCodeInput}>
-              {!_.isEmpty(naicsCodes) ? (
+              {!isEmpty(naicsCodes) ? (
                 <div>
                   <div id="instructions" className={styles.instructions}>
                     <p>Select your 6-digit NAICS code</p>
                   </div>
 
-                  {this.renderNaicsLookup()}
+                  {this.renderTypeahead()}
                   {this.props.setFocusTo('naics-lookup', 300)}
 
                   <p>
@@ -587,27 +638,6 @@ class NaicsScreen extends PureComponent {
             </p>
           </div>
         )}
-
-        {selectedNaicsCodes.length > 0 && (
-          <div className={`${styles.button} submit-button`}>
-            <Button
-              onClick={() => {
-                let sectionTarget = 'NO_SECTION_SET'
-
-                if (shouldShowRevenueSection === true) {
-                  sectionTarget = 'REVENUE'
-                } else if (shouldShowEmployeesSection === true) {
-                  sectionTarget = 'EMPLOYEES'
-                }
-
-                this.props.gotoSection(sectionTarget)
-              }}
-              primary
-            >
-              Next
-            </Button>
-          </div>
-        )}
       </div>
     )
   }
@@ -649,17 +679,6 @@ const RevenueScreen = props => {
       </div>
 
       <p>Your revenue is determined by your annual receipts, or total income plus cost of goods sold.</p>
-
-      <div className={`${styles.button} submit-button`}>
-        <Button
-          alternate
-          disabled={!(revenueTotal > 0)}
-          onClick={() => props.gotoSection(shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS')}
-          primary
-        >
-          {shouldShowEmployeesSection ? 'Next' : 'See results'}
-        </Button>
-      </div>
     </div>
   )
 }
@@ -699,12 +718,6 @@ const EmployeesScreen = props => {
       <p>
         This should be the average number of full-time or part-time <br />employees over the last 12 months.
       </p>
-
-      <div className={`${styles.button} submit-button`}>
-        <Button disabled={!(employeeTotal > 0)} onClick={() => props.gotoSection('RESULTS')} primary>
-          See results
-        </Button>
-      </div>
     </div>
   )
 }
@@ -861,7 +874,7 @@ class ResultsScreen extends PureComponent {
 
       let result
 
-      if (!_.endsWith(object.code, '_Except')) {
+      if (!endsWith(object.code, '_Except')) {
         result = (
           <li key={index}>
             <div>
@@ -933,7 +946,7 @@ class ResultsScreen extends PureComponent {
       <div id="results-screen" className={styles.screen}>
         <h2>Are you a small business eligible for government contracting?</h2>
 
-        {!_.isEmpty(this.state.selectedNaicsCodes) ? (
+        {!isEmpty(this.state.selectedNaicsCodes) ? (
           <div>{this.renderNaicsList()}</div>
         ) : (
           <div>
@@ -945,7 +958,7 @@ class ResultsScreen extends PureComponent {
           </div>
         )}
 
-        {!_.isEmpty(this.state.selectedNaicsCodes) &&
+        {!isEmpty(this.state.selectedNaicsCodes) &&
           isEligibleForContractingPrograms && (
             <div>
               <p>
