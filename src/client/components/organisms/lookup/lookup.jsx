@@ -18,12 +18,13 @@ class Lookup extends React.Component {
   }
 
   componentWillMount() {
-    let queryArgs = this.props.subtype
+    const { subtype, type } = this.props
+    const queryArgs = subtype
       ? {
-          category: this.props.subtype
+          category: subtype
         }
       : null
-    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryArgs)
+    this.props.actions.fetchContentIfNeeded(type, type, queryArgs)
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -41,7 +42,8 @@ class Lookup extends React.Component {
 
   render() {
     let SelectedLookup = <div />
-    let _props = {
+
+    const _props = {
       items: this.state.filteredItems,
       title: this.props.title,
       name: this.props.subtype,
@@ -57,10 +59,10 @@ class Lookup extends React.Component {
 
         case 'CDC/504':
         case 'Microloan':
-          let cardRendererFunction = (item, index) => {
+          const cardRendererFunction = (item, index) => {
             return <ContactCard key={index} {...item} />
           }
-          let cdcProps = assign({}, _props, {
+          const cdcProps = assign({}, _props, {
             cardRenderer: cardRendererFunction
           })
           SelectedLookup = <ContactCardLookup {...cdcProps} />
