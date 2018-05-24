@@ -57,7 +57,6 @@ class SearchBar extends React.Component {
             id="search-input"
             placeholder={searchLabel}
             onChange={this.handleSearchChange.bind(this)}
-            onKeyDown={this.handleSearchKeypress.bind(this)}
             autoFocus
           />
           <i
