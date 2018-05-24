@@ -4,7 +4,7 @@
     padding: 20px;
   }
   @include grid-media($sba-grid-medium) {
-    padding: 20px 30px 20px 30px;
+    padding: 40px 30px 20px 30px;
   }
   @include grid-media($sba-grid-large) {
     height: 220px;
@@ -15,37 +15,60 @@
 .banner {
   background-color: $sba-blue;
   color: white;
-  position: relative;
-  width: 100%;
 
   h2 {
     color: white;
   }
 }
 
-.searchResults {
-  background-color: $sba-gray-lighter;
-  height: 100%;
+.paginator {
+  float: right;
+  margin: 40px 0 40px 0;
 }
 
-.textInput {
-  width: 60%;
-  display: inline-block;
-  position: relative;
+.result {
+  background-color: white;
+  padding: 30px;
+  margin-top: 30px;
+}
 
-  input {
-    height: 53px;
+.results-message {
+  text-align: center;
+}
+
+.searchBarContainer {
+  display: flex;
+
+  @include for-small-only {
+    flex-direction: column;
   }
 }
 
 .searchButton {
-  display: inline-block;
-
   button {
-    margin-top: -4px;
+    margin-top: 35px;
     font-size: 22px;
     line-height: 0.75;
+
+    @include for-small-only {
+      margin-top: 0px;
+      width: 140px;
+      padding: 17px 22px;
+    }
   }
+}
+
+.searchIcon {
+  position: absolute;
+  top: calc(50% + 5px);
+  transform: translateY(-50%);
+  right: $small-spacing;
+}
+
+.searchResults {
+  @include clearfix;
+  background-color: $sba-gray-lighter;
+  height: 100%;
 }
 
 .searchTerm {
@@ -55,16 +78,22 @@
   }
 }
 
-.paginator {
-  background-color: $sba-gray-lighter;
-  float: right;
-  margin: 40px 0 40px 0;
+.summary {
+  font-style: italic;
+  margin-bottom: 2px;
 }
 
-.result {
-  background-color: white;
-  padding: 30px;
-  margin-top: 30px;
+.textInputContainer {
+  width: 60%;
+  position: relative;
+
+  input {
+    height: 53px;
+  }
+
+  @include for-small-only {
+    width: 100%;
+  }
 }
 
 .title {
@@ -81,19 +110,4 @@
   &:hover {
     color: shade($secondary-blue, 25%);
   }
-}
-
-.results-message {
-  text-align: center;
-}
-
-.summary {
-  font-style: italic;
-  margin-bottom: 2px;
-}
-
-.searchIcon {
-  position: absolute;
-  top: 150px;
-  right: 500px;
 }
