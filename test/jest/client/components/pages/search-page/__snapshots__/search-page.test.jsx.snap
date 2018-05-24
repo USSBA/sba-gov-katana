@@ -8,54 +8,60 @@ exports[`SearchPage to match snapshot 1`] = `
     <h2>
       Search
     </h2>
-    <div>
+    <div
+      className="searchBoxContainer"
+    >
       <div
-        className="textInput"
+        className="searchBarContainer"
       >
         <div
-          className="inputContainer "
-          hidden={undefined}
-          id="search-container"
+          className="textInputContainer"
         >
-          <label
-            className="controlLabel"
-            htmlFor="search"
-          >
-            What are you looking for?
-          </label>
           <div
-            className="textInputContainer"
+            className="inputContainer "
+            hidden={undefined}
+            id="search-container"
           >
-            <input
-              aria-controls="results-list"
-              className="textInput "
-              defaultValue=""
-              id="search"
-              onChange={[Function]}
-              onKeyDown={[Function]}
+            <label
+              className="controlLabel"
+              htmlFor="search"
+            >
+              What are you looking for?
+            </label>
+            <div
+              className="textInputContainer"
+            >
+              <input
+                aria-controls="results-list"
+                className="textInput "
+                defaultValue=""
+                id="search"
+                onChange={[Function]}
+                onKeyDown={[Function]}
+              />
+            </div>
+          </div>
+          <div
+            className="searchIcon"
+          >
+            <i
+              className="search fa fa-search"
             />
           </div>
         </div>
-      </div>
-      <div
-        className="searchButton"
-      >
-        <button
-          aria-controls="results-list"
-          className="button alternate large primary responsive spacing"
-          id="submit-button"
-          onClick={[Function]}
+        <div
+          className="searchButton"
         >
-          Search
-        </button>
+          <button
+            aria-controls="results-list"
+            className="button alternate large primary responsive spacing"
+            id="submit-button"
+            onClick={[Function]}
+          >
+            Search
+          </button>
+        </div>
       </div>
-    </div>
-    <div
-      className="searchIcon"
-    >
-      <i
-        className="search fa fa-search"
-      />
     </div>
   </div>
 </div>

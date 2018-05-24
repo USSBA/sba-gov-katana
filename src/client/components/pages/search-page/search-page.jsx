@@ -144,23 +144,6 @@ class SearchPage extends PureComponent {
         }
       )
     }
-
-    /*const data = {
-      term,
-      pageNumber,
-      pageSize,
-      start
-    }
-
-    //this.props.actions.fetchContentIfNeeded('search', 'search', data)
-
-    // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
-
-    browserHistory.push({
-      pathname: '/search',
-      search: `?q=${term}&p=${pageNumber}`
-    })*/
-
     window.location.href = `/search/?p=${pageNumber}&q=${term}`
   }
 
@@ -173,14 +156,13 @@ class SearchPage extends PureComponent {
       <div>
         <div className={styles.banner}>
           <h2>Search</h2>
-          <SearchBar
-            searchTerm={searchTerm}
-            newSearchTerm={newSearchTerm}
-            onSearchInputChange={this.onSearchInputChange.bind(this)}
-            onSubmit={this.onSubmit.bind(this)}
-          />
-          <div className={styles.searchIcon}>
-            <SearchIcon aria-hidden="true" />
+          <div className={styles.searchBoxContainer}>
+            <SearchBar
+              searchTerm={searchTerm}
+              newSearchTerm={newSearchTerm}
+              onSearchInputChange={this.onSearchInputChange.bind(this)}
+              onSubmit={this.onSubmit.bind(this)}
+            />
           </div>
         </div>
         {!isEmpty(searchTerm) && (
@@ -217,20 +199,12 @@ const SearchBar = props => {
     props.actions.fetchContentIfNeeded('search', 'search', {
       term
     })
-
-    // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
-
-    /*browserHistory.push({
-      pathname: '/search',
-      search: `?q=${term}`
-    })*/
-
     window.location.href = `/search?q=${term}`
   }
 
   return (
-    <div>
-      <div className={styles.textInput}>
+    <div className={styles.searchBarContainer}>
+      <div className={styles.textInputContainer}>
         <TextInput
           id="search"
           errorText={'Please enter the correct thing.'}
@@ -248,6 +222,9 @@ const SearchBar = props => {
           }}
           aria-controls="results-list"
         />
+        <div className={styles.searchIcon}>
+          <SearchIcon aria-hidden="true" />
+        </div>
       </div>
       <div className={styles.searchButton}>
         <Button
