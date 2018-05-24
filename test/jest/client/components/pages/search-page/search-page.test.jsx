@@ -68,7 +68,7 @@ describe('SearchPage', () => {
         }
         const component = mount(<ResultsList {...props} />)
         const result = component.find('Paginator').length
-        const expected = 2
+        const expected = 1
 
         expect(result).toEqual(expected)
       })

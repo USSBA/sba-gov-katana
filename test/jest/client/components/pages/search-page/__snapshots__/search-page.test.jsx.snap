@@ -1,52 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchPage to match snapshot 1`] = `
-<div
-  className="container"
->
-  <h1>
-    Search
-  </h1>
-  <div>
+<div>
+  <div
+    className="banner"
+  >
+    <h2>
+      Search
+    </h2>
     <div
-      className="textInput"
+      className="searchBoxContainer"
     >
       <div
-        className="inputContainer "
-        hidden={undefined}
-        id="search-container"
+        className="searchBarContainer"
       >
-        <label
-          className="controlLabel"
-          htmlFor="search"
-        >
-          What are you looking for?
-        </label>
         <div
           className="textInputContainer"
         >
-          <input
+          <div
+            className="inputContainer "
+            hidden={undefined}
+            id="search-container"
+          >
+            <label
+              className="controlLabel"
+              htmlFor="search"
+            >
+              What are you looking for?
+            </label>
+            <div
+              className="textInputContainer"
+            >
+              <input
+                aria-controls="results-list"
+                className="textInput "
+                defaultValue=""
+                id="search"
+                onChange={[Function]}
+                onKeyDown={[Function]}
+              />
+            </div>
+          </div>
+          <div
+            className="searchIcon"
+          >
+            <i
+              className="search fa fa-search"
+            />
+          </div>
+        </div>
+        <div
+          className="searchButton"
+        >
+          <button
             aria-controls="results-list"
-            className="textInput "
-            defaultValue=""
-            id="search"
-            onChange={[Function]}
-            onKeyDown={[Function]}
-          />
+            className="button alternate large primary responsive spacing"
+            id="submit-button"
+            onClick={[Function]}
+          >
+            Search
+          </button>
         </div>
       </div>
-    </div>
-    <div
-      className="searchButton"
-    >
-      <button
-        aria-controls="results-list"
-        className="button alternate large primary responsive spacing"
-        id="submit-button"
-        onClick={[Function]}
-      >
-        Search
-      </button>
     </div>
   </div>
 </div>
