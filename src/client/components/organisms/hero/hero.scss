@@ -97,4 +97,12 @@
   // TODO: DRY
   box-shadow: $box-shadow;
   padding: 50px;
+
+  @include for-small-only {
+    h1 {
+      // The static part of calc() (1rem) defines the minimum.
+      font-size: calc(1rem + 4vw);
+      hyphens: auto;
+    }
+  }
 }
