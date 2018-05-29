@@ -4,7 +4,7 @@ server:
     fqdn: demo.ussba.io
 features:
     forPartners: true
-    showSbic: false
+    showSbic: true
     moon: false
     urlRedirect:
         tableName: UrlToNodeDemo
