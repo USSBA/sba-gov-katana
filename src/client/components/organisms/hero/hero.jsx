@@ -35,7 +35,7 @@ class Hero extends React.Component {
 
     const style = {
       // We use a background image to take advantage of `background-size: cover`.
-      backgroundImage: `url('http://brian.ussba.io${imageUrl}')`,
+      backgroundImage: `url('${imageUrl}')`,
       height: imageUrl && `calc(100vh - ${imageHeight}px)`,
       marginBottom: imageUrl && isSmallOnly && `${calloutHeight * 0.75}px`
     }
