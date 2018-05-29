@@ -92,14 +92,14 @@
 
 @mixin padded-container {
   @include for-small-only {
-    @include margin(null 20px);
+    @include padding(null 20px);
   }
 
   @include for-medium-only {
-    @include margin(null 30px);
+    @include padding(null 30px);
   }
 
   @include for-large-up {
-    @include margin(null 80px);
+    @include padding(null 80px);
   }
 }
