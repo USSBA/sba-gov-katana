@@ -1,5 +1,9 @@
 @value breakpointMedium: calc(#{$breakpoint-medium} - 1px);
 
+.hero {
+  margin-bottom: 50px;
+}
+
 .image {
   @include for-small-only {
     align-items: end;
