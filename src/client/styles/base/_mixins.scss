@@ -89,3 +89,17 @@
   box-shadow: 6px 7px 20px 0 rgba(black, 0.1);
   padding: 3rem;
 }
+
+@mixin content-container {
+  @include for-small-only {
+    @include margin(null 20px);
+  }
+
+  @include for-medium-only {
+    @include margin(null 30px);
+  }
+
+  @include for-large-up {
+    @include margin(null 80px);
+  }
+}

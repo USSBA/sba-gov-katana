@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import classNames from 'classnames'
 import { debounce } from 'lodash'
 
 import scrollIcon from 'assets/svg/scroll.svg'
@@ -34,22 +33,16 @@ class Hero extends React.Component {
     const { alt, buttons, imageUrl, message, title } = this.props
     const { calloutHeight, imageHeight, isSmallOnly } = this.state
 
-    const className = classNames({
-      hero: true,
-      [styles.image]: imageUrl,
-      [styles.noImage]: !imageUrl
-    })
-
     const style = {
       // We use a background image to take advantage of `background-size: cover`.
-      backgroundImage: `url('${imageUrl}')`,
+      backgroundImage: `url('http://brian.ussba.io${imageUrl}')`,
       height: imageUrl && `calc(100vh - ${imageHeight}px)`,
       marginBottom: imageUrl && isSmallOnly && `${calloutHeight * 0.75}px`
     }
 
     return (
-      <div>
-        <div aria-label={alt} className={className} style={style}>
+      <div className={`hero ${styles.hero}`}>
+        <div aria-label={alt} className={imageUrl ? styles.image : styles.noImage} style={style}>
           <div className={styles.callout} ref={ref => (this.callout = ref)}>
             <h1>{title}</h1>
             <h5>{message}</h5>

@@ -18,23 +18,7 @@ class ProgramPage extends React.Component {
       paragraphEventConfig
     )
 
-    const wrapperClassMapping = {
-      other: styles.textSection,
-      textSection: styles.textSection,
-      readMore: styles.readMore,
-      sectionHeader: styles.sectionHeader,
-      image: styles.image,
-      lookup: styles.lookup,
-      callToAction: styles.callToAction,
-      cardCollection: styles.cardCollection,
-      styleGrayBackground: styles.styleGrayBackground,
-      button: styles.button,
-      quickLinks: styles.quickLinks,
-      searchBox: styles.searchBox,
-      childPageMenu: styles.childPageMenu
-    }
-    let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
-    return wrapped
+    return paragraphMapper.wrapParagraphs(paragraphList, {})
   }
 
   render() {
@@ -65,7 +49,7 @@ class ProgramPage extends React.Component {
           />
         )}
         {!hasBannerImage && <Hero title={title} message={summary} buttons={_formattedButtons} />}
-        <div className={styles.container}>{paragraphs}</div>
+        <div className={styles.contentContainer}>{paragraphs}</div>
       </div>
     )
   }
