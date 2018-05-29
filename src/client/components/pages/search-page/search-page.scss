@@ -1,80 +1,105 @@
-.container {
+.banner,
+.searchResults {
   @include grid-media($sba-grid-small) {
-    @include grid-column(6);
-    margin-top: 20px;
-    margin-bottom: 40px;
+    padding: 20px;
   }
   @include grid-media($sba-grid-medium) {
-    @include grid-column(12);
-    margin-top: 20px;
-    margin-bottom: 30px;
+    padding: 40px 30px 20px 30px;
   }
   @include grid-media($sba-grid-large) {
-    @include grid-column(8);
-    @include grid-push(2);
+    height: 220px;
+    padding: 40px 28px 20px 28px;
   }
 }
 
-.textInput {
-  width: 60%;
-  display: inline-block;
+.banner {
+  background-color: $sba-blue;
+  color: white;
 
-  input {
-    height: 53px;
-  }
-}
-
-.searchButton {
-  display: inline-block;
-
-  button {
-    margin-top: -4px;
-    font-size: 22px;
-    line-height: 0.75;
-  }
-}
-
-.searchTerm {
-  float: left;
-  margin-top: 15px;
-  word-wrap: break-word;
-  width: 100%;
-
-  span {
-    font-weight: bold;
-    font-size: 120%;
-  }
-
-  @media (min-width: 768px) {
-    width: 50%;
-    margin-bottom: 30px;
+  h2 {
+    color: white;
   }
 }
 
 .paginator {
   float: right;
-  margin: 30px 0;
-}
-
-.results {
-  clear: both;
+  margin: 40px 0 40px 0;
 }
 
 .result {
-  border: 1px solid #bebdbd;
-  padding: 20px;
+  background-color: white;
+  padding: 30px;
   margin-top: 30px;
-}
-
-.url a {
-  $action-color: #8a8787;
-  color: $action-color;
-
-  &:hover {
-    color: shade($action-color, 25%);
-  }
 }
 
 .results-message {
   text-align: center;
+}
+
+.searchBarContainer {
+  display: flex;
+
+  @include for-small-only {
+    flex-direction: column;
+  }
+}
+
+.searchButton {
+  button {
+    margin-top: 35px;
+    font-size: 22px;
+    line-height: 0.75;
+
+    @include for-small-only {
+      margin-top: 0px;
+      width: 140px;
+      padding: 17px 22px;
+    }
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  top: calc(50% + 5px);
+  transform: translateY(-50%);
+  right: $small-spacing;
+}
+
+.searchResults {
+  @include clearfix;
+  background-color: $sba-gray-lighter;
+  height: 100%;
+}
+
+.searchTerm {
+  @include for-medium-up {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+}
+
+.summary {
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+.textInputContainer {
+  width: 60%;
+  position: relative;
+
+  input {
+    height: 53px;
+  }
+
+  @include for-small-only {
+    width: 100%;
+  }
+}
+
+.title {
+  margin-bottom: 6px;
+  a {
+    color: $sba-blue;
+    font-weight: 600;
+  }
 }
