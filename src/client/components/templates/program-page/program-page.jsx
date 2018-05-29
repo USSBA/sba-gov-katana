@@ -49,7 +49,7 @@ class ProgramPage extends React.Component {
           />
         )}
         {!hasBannerImage && <Hero title={title} message={summary} buttons={_formattedButtons} />}
-        <div className={styles.contentContainer}>{paragraphs}</div>
+        <div className={styles.container}>{paragraphs}</div>
       </div>
     )
   }

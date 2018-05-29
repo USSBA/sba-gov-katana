@@ -90,7 +90,7 @@
   padding: 3rem;
 }
 
-@mixin content-container {
+@mixin padded-container {
   @include for-small-only {
     @include margin(null 20px);
   }
