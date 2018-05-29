@@ -4,10 +4,10 @@ import isMobile from 'ismobilejs'
 
 import { filter, isInteger, map, reduce, startsWith, take } from 'lodash'
 
-import theme, * as styles from './naics-lookup.scss'
+import theme, * as styles from './typeahead.scss'
 import { SmallIcon } from 'atoms'
 
-class NaicsLookup extends React.PureComponent {
+class Typeahead extends React.PureComponent {
   static defaultProps = {
     // Begin getting suggestions at character n of the input.
     inputLengthToGetSuggestions: 0,
@@ -125,6 +125,7 @@ class NaicsLookup extends React.PureComponent {
     const { suggestions } = this.state
     return (
       <div
+        className={styles.inputContainer}
         style={{
           position: 'relative'
         }}
@@ -134,7 +135,6 @@ class NaicsLookup extends React.PureComponent {
           <SmallIcon
             aria-label="Remove entered text."
             alt="close icon"
-            extraClassName={styles.closeIcon}
             fontAwesomeIconClassName="times"
             onClick={this.onCloseIconSelect}
             onKeyDown={this.onCloseIconSelect}
@@ -231,4 +231,4 @@ class NaicsLookup extends React.PureComponent {
   }
 }
 
-export default NaicsLookup
+export default Typeahead

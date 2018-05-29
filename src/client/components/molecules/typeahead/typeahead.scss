@@ -1,0 +1,52 @@
+$horizontal-padding: 20px;
+
+.input {
+  height: 49px;
+  padding-left: $horizontal-padding;
+  padding-right: $horizontal-padding;
+}
+
+.suggestionsContainerOpen {
+  border: 1px solid $secondary-blue;
+  margin-top: -15px;
+  overflow-y: scroll;
+  padding-bottom: 6px;
+  padding-top: 6px;
+}
+
+.suggestion {
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px $horizontal-padding;
+}
+
+.suggestionHighlighted {
+  background-color: $sba-gray-lighter;
+}
+
+.sectionTitle {
+  color: $sba-gray-dark;
+  font-size: 12px;
+  font-weight: 700;
+  padding-left: $horizontal-padding;
+  padding-right: $horizontal-padding;
+  text-transform: uppercase;
+}
+
+.inputContainer i {
+  bottom: 16px;
+  color: $sba-gray-dark;
+  font-size: 16px;
+  position: absolute;
+  right: 16px;
+}
+
+.entryCode {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.entryDescription {
+  margin: 0;
+}

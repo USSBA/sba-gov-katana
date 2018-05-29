@@ -32,17 +32,6 @@ exports[`SizeStandardsTool EmployeesScreen should match snapshot 1`] = `
     <br />
     employees over the last 12 months.
   </p>
-  <div
-    className="button submit-button"
-  >
-    <button
-      className="button large primary responsive spacing"
-      disabled={true}
-      onClick={[Function]}
-    >
-      See results
-    </button>
-  </div>
 </div>
 `;
 
@@ -106,16 +95,6 @@ exports[`SizeStandardsTool NaicsScreen should match snapshot 1`] = `
         </p>
       </div>
     </div>
-  </div>
-  <div
-    className="button submit-button"
-  >
-    <button
-      className="button large primary responsive spacing"
-      onClick={[Function]}
-    >
-      Next
-    </button>
   </div>
 </div>
 `;
@@ -311,17 +290,6 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
   <p>
     Your revenue is determined by your annual receipts, or total income plus cost of goods sold.
   </p>
-  <div
-    className="button submit-button"
-  >
-    <button
-      className="button alternate large primary responsive spacing"
-      disabled={true}
-      onClick={[Function]}
-    >
-      See results
-    </button>
-  </div>
 </div>
 `;
 

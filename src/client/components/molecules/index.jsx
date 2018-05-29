@@ -13,7 +13,6 @@ import GoogleTranslate from './google-translate/google-translate'
 import MainLoader from './main-loader/main-loader'
 import MenuTile from './menu-tile/menu-tile'
 import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
-import NaicsLookup from './naics-lookup/naics-lookup'
 import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-block'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
@@ -28,6 +27,7 @@ import SbaNewsModal from './news-modal/news-modal'
 import SearchBar from './search-bar/search-bar'
 import LongScrollNav from './long-scroll-nav/long-scroll-nav'
 import TitleSection from './title-section/title-section'
+import Typeahead from './typeahead/typeahead'
 
 export {
   Address,
@@ -45,7 +45,6 @@ export {
   MainLoader,
   MenuTile,
   MenuTileWithLinks,
-  NaicsLookup,
   NumberedCalloutBlock,
   PageLinkGroup,
   Paginator,
@@ -59,5 +58,6 @@ export {
   SbaNewsModal,
   SearchBar,
   LongScrollNav,
-  TitleSection
+  TitleSection,
+  Typeahead
 }

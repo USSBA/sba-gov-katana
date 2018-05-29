@@ -1,6 +1,6 @@
 .container {
   border-top: 3px solid $sba-blue;
-  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow;
   margin-bottom: 50px;
   overflow: visible;
   padding: 40px;
