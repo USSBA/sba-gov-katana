@@ -258,6 +258,7 @@ class SizeStandardsTool extends PureComponent {
             this.gotoSection(sectionTarget)
             this.setFocusTo('size-standards-tool')
           }}
+          responsive={false}
           secondary
         >
           {buttonText}
@@ -323,6 +324,7 @@ class SizeStandardsTool extends PureComponent {
                       this.gotoSection(sectionTarget)
                     }}
                     primary
+                    responsive={false}
                   >
                     Next
                   </Button>
@@ -351,6 +353,7 @@ class SizeStandardsTool extends PureComponent {
                   disabled={!(revenueTotal > 0)}
                   onClick={() => this.gotoSection(shouldShowEmployeesSection ? 'EMPLOYEES' : 'RESULTS')}
                   primary
+                  responsive={false}
                 >
                   {shouldShowEmployeesSection ? 'Next' : 'See results'}
                 </Button>
@@ -374,7 +377,12 @@ class SizeStandardsTool extends PureComponent {
             {this.renderAppBar({
               buttonText: 'BACK',
               renderNextButton: () => (
-                <Button disabled={!(employeeTotal > 0)} onClick={() => this.gotoSection('RESULTS')} primary>
+                <Button
+                  disabled={!(employeeTotal > 0)}
+                  onClick={() => this.gotoSection('RESULTS')}
+                  primary
+                  responsive={false}
+                >
                   See results
                 </Button>
               ),
