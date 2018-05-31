@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Disaster Alert should render correctly 1`] = `
+<div
+  className="wrapper"
+  id="disaster-alert"
+>
+  <div
+    className="alert"
+  >
+    <div
+      aria-hidden="true"
+      className="alertIcon fa fa-exclamation-triangle"
+    />
+    <div
+      aria-label="This is an alert"
+      className="disasterDescription"
+      tabIndex="1"
+    >
+      This is an alert
+    </div>
+    <img
+      alt="close"
+      aria-label="click to close alert"
+      className="alertClose"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      src="test-file-stub"
+      tabIndex="3"
+    />
+    <a
+      aria-label="click to learn more about This is an alert"
+      className="alertLink"
+      href="https://www.sba.gov"
+      tabIndex="2"
+    >
+      Learn more
+    </a>
+  </div>
+</div>
+`;
