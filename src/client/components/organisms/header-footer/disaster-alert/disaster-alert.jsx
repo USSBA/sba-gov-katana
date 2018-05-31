@@ -12,9 +12,18 @@ const DisasterAlert = props => {
       <div className={styles.wrapper} id="disaster-alert">
         <div className={styles.alert}>
           <div className={styles.alertIcon + ' fa fa-exclamation-triangle'} aria-hidden="true" />
-          <div className={styles.disasterDescription}>{description}</div>
-          <Link className={styles.alertLink} to={link} aria-label="Click to Learn More">
-            <img className={styles.alertClose} onClick={onClose} src={exitIcon} alt="Close" />
+          <div className={styles.disasterDescription} tabIndex="1" aria-label={description}>
+            {description}
+          </div>
+          <img
+            className={styles.alertClose}
+            onClick={onClose}
+            src={exitIcon}
+            alt="Close"
+            tabIndex="3"
+            aria-label="Click to close alert box"
+          />
+          <Link className={styles.alertLink} to={link} tabIndex="2" aria-label="Click to Learn More">
             {buttonText}
           </Link>
         </div>
