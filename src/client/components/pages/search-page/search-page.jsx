@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 
 import styles from './search-page.scss'
 import * as ContentActions from '../../../actions/content.js'
-import { Button, Link, TextInput } from 'atoms'
+import { Button, Link, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { logPageEvent } from '../../../services/analytics.js'
 
@@ -144,23 +144,6 @@ class SearchPage extends PureComponent {
         }
       )
     }
-
-    /*const data = {
-      term,
-      pageNumber,
-      pageSize,
-      start
-    }
-
-    //this.props.actions.fetchContentIfNeeded('search', 'search', data)
-
-    // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
-
-    browserHistory.push({
-      pathname: '/search',
-      search: `?q=${term}&p=${pageNumber}`
-    })*/
-
     window.location.href = `/search/?p=${pageNumber}&q=${term}`
   }
 
@@ -170,17 +153,20 @@ class SearchPage extends PureComponent {
     const { hasNoResults } = this.props
 
     return (
-      <div className={styles.container}>
-        <h1>Search</h1>
-        <SearchBar
-          searchTerm={searchTerm}
-          newSearchTerm={newSearchTerm}
-          onSearchInputChange={this.onSearchInputChange.bind(this)}
-          onSubmit={this.onSubmit.bind(this)}
-        />
+      <div>
+        <div className={styles.banner}>
+          <h2>Search</h2>
+          <div className={styles.searchBoxContainer}>
+            <SearchBar
+              searchTerm={searchTerm}
+              newSearchTerm={newSearchTerm}
+              onSearchInputChange={this.onSearchInputChange.bind(this)}
+              onSubmit={this.onSubmit.bind(this)}
+            />
+          </div>
+        </div>
         {!isEmpty(searchTerm) && (
-          <div>
-            <hr />
+          <div className={styles.searchResults}>
             <div>
               {searchResults.length > 0 && (
                 <div>
@@ -213,20 +199,12 @@ const SearchBar = props => {
     props.actions.fetchContentIfNeeded('search', 'search', {
       term
     })
-
-    // browserHistory.push() triggers the HOC componentWillReceiveProps() lifecyle method
-
-    /*browserHistory.push({
-      pathname: '/search',
-      search: `?q=${term}`
-    })*/
-
     window.location.href = `/search?q=${term}`
   }
 
   return (
-    <div>
-      <div className={styles.textInput}>
+    <div className={styles.searchBarContainer}>
+      <div className={styles.textInputContainer}>
         <TextInput
           id="search"
           errorText={'Please enter the correct thing.'}
@@ -244,6 +222,9 @@ const SearchBar = props => {
           }}
           aria-controls="results-list"
         />
+        <div className={styles.searchIcon}>
+          <SearchIcon aria-hidden="true" />
+        </div>
       </div>
       <div className={styles.searchButton}>
         <Button
@@ -328,11 +309,7 @@ const ResultsList = props => {
                   </Link>
                 </div>
                 <div className={`${styles.summary} result-summary`}>{summary}</div>
-                <div className={styles.url}>
-                  <Link to={url} className="result-url">
-                    {url}
-                  </Link>
-                </div>
+                <Link to={url}>{url}</Link>
               </div>
             )
           }
@@ -345,9 +322,8 @@ const ResultsList = props => {
     <div>
       <div>
         <div className={styles.searchTerm}>
-          <span id="search-term-title">"{searchTerm}"</span>
+          <h3 id="search-term-title">Search results for "{searchTerm}"</h3>
         </div>
-        {renderPaginator('top')}
       </div>
       <div role="region" id="results-list" aria-live="polite" aria-relevant="additions removals">
         {renderList()}

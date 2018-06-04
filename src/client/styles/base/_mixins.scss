@@ -86,6 +86,20 @@
 @mixin call-to-action {
   background-color: white;
   border-top: 5px solid $sba-blue;
-  box-shadow: 6px 7px 20px 0 rgba(black, 0.1);
+  box-shadow: $box-shadow;
   padding: 3rem;
+}
+
+@mixin padded-container {
+  @include for-small-only {
+    @include padding(null 20px);
+  }
+
+  @include for-medium-only {
+    @include padding(null 30px);
+  }
+
+  @include for-large-up {
+    @include padding(null 80px);
+  }
 }

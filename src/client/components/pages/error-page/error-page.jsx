@@ -1,9 +1,9 @@
 import React from 'react'
 
 import clientConfig from '../../../services/client-config.js'
-import errorImg from 'assets/images/error-page/SBA_404.png'
+import errorImage from 'assets/images/error-page/moon.png'
 import styles from './error-page.scss'
-import { Link, SmallIcon, TextInput } from 'atoms'
+import { Link, Button, DecorativeDash, TextInput } from 'atoms'
 import { RemoveMainLoader } from 'molecules'
 
 class ErrorPage extends React.Component {
@@ -25,40 +25,40 @@ class ErrorPage extends React.Component {
     document.location = uri
   }
   render() {
-    let text = clientConfig.moon
+    const text = clientConfig.moon
       ? "Just like a business on the moon, the page you're looking for doesn't exist."
-      : "The page you're looking for doesn't exist.  Return to the home page, or search for what you're trying to find."
+      : "The page you're looking for doesn't exist."
+
     return (
-      <div className={styles.errorContainer}>
+      <div className={styles.errorPage}>
         <RemoveMainLoader />
-        {clientConfig.moon ? <img src={errorImg} alt="Error Image" /> : undefined}
-        <div className={styles.formContainer + ' ' + (clientConfig.moon ? styles.moon : styles.noMoon)}>
-          <h1 className={styles.title}>404</h1>
-          <h3 className={styles.subTitle}>{text}</h3>
-          <p>
-            Return to the <Link to="/">home page</Link>, or search for what you're trying to find.
-          </p>
-          <form
-            key={2}
-            id="error-form"
-            className={styles.errorPageSearch}
-            onSubmit={this.submitSearch.bind(this)}
-          >
-            <TextInput
-              aria-label="search sba.gov"
-              id="error-page-search-input"
-              placeholder="Search"
-              onChange={this.handleSearchChange.bind(this)}
-              autoFocus
-            />
-            <SmallIcon
-              extraClassName={styles.errorPageSearchIcon}
-              id="error-page-search-button"
-              onClick={this.submitSearch.bind(this)}
-              alt="error page search button"
-              fontAwesomeIconClassName="search"
-            />
-          </form>
+        <div className={clientConfig.moon && styles.container}>
+          {clientConfig.moon && <img src={errorImage} alt="error image" />}
+          <div className={`${styles.content} ${!clientConfig.moon && styles.darkness}`}>
+            <h1>404</h1>
+            <h2>Page not found</h2>
+            <DecorativeDash width={4.278} />
+            <h3>
+              {text} Return to the <Link to="/">home page</Link>, or search for what you're trying to find.
+            </h3>
+            <form onSubmit={this.submitSearch.bind(this)}>
+              <div className={styles.inputContainer}>
+                <TextInput
+                  aria-label="Search SBA.gov"
+                  autoFocus
+                  id="error-page-search"
+                  placeholder="Search"
+                  onChange={this.handleSearchChange.bind(this)}
+                />
+                <i alt="search icon" aria-hidden="true" className="fa fa-search" />
+              </div>
+              <div className={styles.buttonContainer}>
+                <Button alternate primary submit>
+                  Search
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     )

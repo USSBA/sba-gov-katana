@@ -128,8 +128,8 @@ class SuretyLookup extends React.Component {
         <div className={s.banner}>
           <h2>Contact a surety bond agency</h2>
           <h5 className={s.blurb}>
-            Check the database of surety agencies that offer SBA-guranteed bonds. Contact a surety agency in
-            your state to get started with the application process.
+            Check the database of surety agencies that offer SBA-guaranteed bonds. Contact a surety agency
+            in your state to get started with the application process.
           </h5>
           <div className={s.multiSelect}>
             <MultiSelect

@@ -1,5 +1,9 @@
 @value breakpointMedium: calc(#{$breakpoint-medium} - 1px);
 
+.hero {
+  margin-bottom: 50px;
+}
+
 .image {
   @include for-small-only {
     align-items: end;
@@ -91,6 +95,15 @@
   background-color: white;
   border-top: 5px solid $sba-blue;
   // TODO: DRY
-  box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: $box-shadow;
   padding: 50px;
+
+  @include for-small-only {
+    h1 {
+      // The static part of calc() (1rem) defines the minimum so that the font
+      // size does not become too small as the screen gets smaller.
+      font-size: calc(1rem + 4vw);
+      hyphens: auto;
+    }
+  }
 }

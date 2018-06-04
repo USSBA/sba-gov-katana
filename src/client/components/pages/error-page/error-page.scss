@@ -1,60 +1,84 @@
-.errorPageSearch {
-  position: relative;
-  display: inline-block;
+.errorPage {
+  @include padded-container;
+
+  background-color: $sba-blue;
+  padding-bottom: 155px;
+  padding-top: 140px;
 }
 
-.errorPageSearch input {
-  height: 40px;
-  display: inline;
-  border-radius: 5px;
-  border-color: $sba-gray-light;
-  //width: 36vw;
-}
-
-.errorPageSearch a {
-  position: absolute;
-  right: 0.5vw;
-  top: 12px;
-}
-
-.errorPageSearchIcon {
-  cursor: pointer;
-}
-
-.errorContainer {
-  img {
-    width: 48%;
-    float: left;
+.container {
+  @include for-small-only {
+    img {
+      margin-bottom: 30px;
+    }
   }
-  margin-top: 6%;
-  margin-bottom: 10%;
+
+  @include for-medium-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
+    align-items: center;
+  }
 }
 
-.formContainer {
-  float: right;
-  margin-top: 5%;
+.content {
+  a {
+    color: white;
+  }
+
   form {
-    width: 80%;
+    display: flex;
+
+    .inputContainer {
+      flex: 1;
+      position: relative;
+
+      i {
+        color: $sba-gray;
+        font-size: 22px;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(calc(-50% - 6px));
+      }
+    }
+
+    .buttonContainer {
+      flex: 0;
+      white-space: nowrap;
+    }
+  }
+
+  h3 {
+    margin-bottom: 50px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: white;
+    // TODO: The font-weights in the codebase may need to be reworked.
+    font-weight: 400;
+  }
+
+  hr {
+    @include margin(30px null);
+  }
+
+  button {
+    // vertically align (manually) button with input
+    transform: translateY(7px);
+  }
+
+  input {
+    font-size: 22px;
+    padding: 13px;
   }
 }
 
-.moon {
-  width: 48%;
-}
-
-.noMoon {
-  width: 96%;
-}
-
-.errorContainer:after {
-  clear: both;
-  content: '';
-  display: block;
-}
-
-.title {
-  color: #888888;
-}
-
-.subTitle {
+.darkness {
+  @include for-large-up {
+    // 9 columns
+    width: calc(75% - 30px);
+  }
 }

@@ -5,7 +5,9 @@ import styles from './size-standards-tool-page.scss'
 const sizeStandardsToolPage = () => {
   return (
     <div className={styles.container}>
-      <SizeStandardsTool />
+      <div className={styles.gridContainer}>
+        <SizeStandardsTool />
+      </div>
     </div>
   )
 }
