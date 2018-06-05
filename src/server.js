@@ -10,12 +10,28 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import HttpStatus from 'http-status-codes'
 import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from './util/dev.js'
+const urlUtil = require("url")  // <--- converting server code to require to move away from babel
 
 const app = express()
 app.use(cookieParser())
 //set up template engine
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, './views/'))
+
+
+app.get('/*',function(req,res,next){
+  try {
+    const publicPath = config.get('publicPath');
+    if (publicPath && publicPath.indexOf("https" !== -1)) {
+      const parsedUrl = urlUtil.parse(publicPath);
+      res.header('Access-Control-Allow-Origin', "https://" + parsedUrl.hostname.split(".").slice(1).join("."));
+    }
+  } catch (err) {
+    console.error("Failed to determine public path url");
+  }
+  next(); 
+});
+
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json()
@@ -32,6 +48,9 @@ const metaVariables = {
     "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
   title: 'Small Business Administration'
 }
+
+
+
 
 import { findNodeIdByUrl } from './service/url-redirect.js'
 app.use(function(req, res, next) {
@@ -161,7 +180,7 @@ app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     lang: req.preferredLanguage,
     config: JSON.stringify(req.sessionAndConfig),
-    cdnPathFromBackend: config.get('publicPath'),
+    cdnPathFromBackend: '"' + config.get('publicPath') + '"',
     optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
     tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
     foreseeEnabled: config.get('foresee.enabled'),
