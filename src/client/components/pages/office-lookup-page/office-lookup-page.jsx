@@ -12,7 +12,8 @@ import {
   PrimarySearchBar,
   SecondarySearchBar,
   Results,
-  OfficeResult
+  OfficeResult,
+  OfficeMap
 } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
@@ -95,6 +96,7 @@ class OfficeLookupPage extends React.Component {
             ]}
           />
         </SecondarySearchBar>
+        <OfficeMap id="office-map" />
         <Results id="office-results">
           <OfficeResult />
         </Results>
@@ -115,4 +117,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export { OfficeLookupPage }

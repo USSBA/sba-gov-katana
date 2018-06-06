@@ -49,6 +49,7 @@
     "font-awesome": "4.7.0",
     "font-awesome-webpack2": "0.0.6",
     "google-map-react": "0.24.0",
+    "google-maps-react": "^2.0.2",
     "html-to-text": "3.0.0",
     "http-status-codes": "1.0.6",
     "ismobilejs": "^0.4.1",
