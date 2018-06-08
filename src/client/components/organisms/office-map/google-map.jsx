@@ -1,53 +1,26 @@
 import React from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
-const GOOGLE_MAPS_API_KEY = 'AIzaSyDceQl00lHHE0R9QrY5gonqr4Bu2Q9vLe8'
+import { compose, withProps } from 'recompose'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 
-class GoogleMap extends React.Component {
-  constructor() {
-    super()
+const MyMapComponent = compose(
+  withProps({
+    /**
+     * Note: create and replace your own key in the Google console.
+     * https://console.developers.google.com/apis/dashboard
+     * The key "AIzaSyBkNaAGLEVq0YLQMi-PYEMabFeREadYe1Q" can be ONLY used in this sandbox (no forked).
+     */
+    googleMapURL:
+      'https://maps.googleapis.com/maps/api/js?key=AIzaSyDceQl00lHHE0R9QrY5gonqr4Bu2Q9vLe8&v=3.exp&libraries=geometry,drawing,places',
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `100vh` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props => (
+  <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34.397, lng: 150.644 }}>
+    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+  </GoogleMap>
+))
 
-    const points = [
-      { lat: 42.02, lng: -77.01 },
-      { lat: 42.03, lng: -77.02 },
-      { lat: 41.03, lng: -77.04 },
-      { lat: 42.05, lng: -77.02 }
-    ]
-
-    this.state = {
-      points
-    }
-  }
-
-  componentWillMount() {}
-
-  onMarkerClick() {}
-
-  renderMarkers(items) {
-    return items.map((item, index) => {
-      return <Marker key={index} onClick={this.onMarkerClick} name={'Current location'} position={item} />
-    })
-  }
-
-  render() {
-    const bounds = new this.props.google.maps.LatLngBounds()
-    for (let i = 0; i < this.state.points.length; i++) {
-      bounds.extend(this.state.points[i])
-    }
-
-    return (
-      <Map google={this.props.google} zoom={14} bounds={bounds}>
-        {this.renderMarkers(this.state.points)}
-
-        <InfoWindow onClose={this.onInfoWindowClose}>
-          <div>
-            <h1>test</h1>
-          </div>
-        </InfoWindow>
-      </Map>
-    )
-  }
-}
-
-export default GoogleApiWrapper({
-  apiKey: GOOGLE_MAPS_API_KEY
-})(GoogleMap)
+export default MyMapComponent

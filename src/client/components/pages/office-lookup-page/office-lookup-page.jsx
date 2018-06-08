@@ -97,9 +97,9 @@ class OfficeLookupPage extends React.Component {
           />
         </SecondarySearchBar>
         <OfficeMap id="office-map" />
-        <Results id="office-results">
+        {/*<Results id="office-results">
           <OfficeResult />
-        </Results>
+        </Results>*/}
       </SearchTemplate>
     )
   }

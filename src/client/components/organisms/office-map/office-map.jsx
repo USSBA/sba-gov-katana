@@ -6,7 +6,7 @@ class OfficeMap extends React.PureComponent {
   render() {
     return (
       <div id="google-map" className={styles.googleMap}>
-        <GoogleMap />
+        <GoogleMap isMarkerShown />
       </div>
     )
   }
