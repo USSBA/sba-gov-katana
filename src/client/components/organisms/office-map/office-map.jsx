@@ -25,7 +25,11 @@ const OfficeMap = compose(
   withGoogleMap
 )(props => {
   const { markers } = props
-  let googleMapProps = {}
+  let googleMapProps = {
+    defaultOptions: {
+      streetViewControl: false
+    }
+  }
   if (markers.length > 0) {
     googleMapProps.ref = props.onMapMounted
     googleMapProps.defaultZoom = 4
