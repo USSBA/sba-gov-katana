@@ -1,8 +1,9 @@
 /* eslint-disable id-length,space-infix-ops, object-property-newline */
-import _ from 'lodash'
 import Promise from 'bluebird'
 import config from 'config'
 import moment from 'moment'
+import { assign, filter, includes, isEmpty, isObject, map, mapValues, maxBy, orderBy } from 'lodash'
+
 const langParser = require('accept-language-parser')
 const langCodes = { es: 'es', en: 'en' }
 
@@ -21,11 +22,14 @@ function fetchFormattedNode(nodeId, options) {
   let langCode = langParser.parse(options.headers['accept-language']).filter(lang => {
     return langCodes.hasOwnProperty(lang.code)
   })
-  langCode = _.isEmpty(langCode) ? 'en' : langCode[0].code
+
+  langCode = isEmpty(langCode) ? 'en' : langCode[0].code
+
   return get(nodeId).then(result => {
-    const spanishResult = result[0] && result[0].spanishTranslation
+    const spanishResult = result && result.spanishTranslation
+
     if (spanishResult && langCode === langCodes.es) {
-      return _.castArray(spanishResult)
+      return spanishResult
     } else {
       return result
     }
@@ -35,7 +39,7 @@ function fetchFormattedNode(nodeId, options) {
 function fetchContacts(queryParams) {
   const category = queryParams.category
   return get('contacts').then(result => {
-    return _.filter(result, queryParams)
+    return filter(result, queryParams)
   })
 }
 
@@ -46,7 +50,7 @@ function fetchFormattedMenu() {
 function fetchCounsellorCta() {
   const counsellorCtaNodeId = config.get('counsellorCta.nodeId')
   return get(counsellorCtaNodeId).then(data => {
-    return _.assign({}, data, {
+    return assign({}, data, {
       size: 'Large'
     })
   })
@@ -68,7 +72,7 @@ function sanitizeDocumentParams(params) {
     end: 'all',
     url: 'all'
   }
-  _.mapValues(params, (value, key) => {
+  mapValues(params, (value, key) => {
     if (key === 'start' || key === 'end') {
       if (parseInt(value, 10) || value === '0') {
         sanitizedParams[key] = parseInt(value, 10)
@@ -104,15 +108,15 @@ function filterDocuments(params, docs) {
     const matchesActivitys =
       !params.documentActivity ||
       params.documentActivity === 'all' ||
-      (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity))
+      (!isEmpty(doc.activitys) && doc.activitys.includes(params.documentActivity))
     const matchesActivity =
       !params.activity ||
       params.activity === 'all' ||
-      (!_.isEmpty(doc.activitys) && doc.activitys.includes(params.activity))
+      (!isEmpty(doc.activitys) && doc.activitys.includes(params.activity))
     const matchesProgram =
       !params.program ||
       params.program === 'all' ||
-      (!_.isEmpty(doc.programs) && doc.programs.includes(params.program))
+      (!isEmpty(doc.programs) && doc.programs.includes(params.program))
     const matchesType = !params.type || params.type === 'all' || doc.documentIdType === params.type
     const matchesDocumentType =
       !params.documentType || params.documentType === 'all' || doc.documentIdType === params.documentType
@@ -126,7 +130,7 @@ function filterDocuments(params, docs) {
       (!params.searchTerm ||
         params.searchTerm === 'all' ||
         doc.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
-        (!_.isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.searchTerm)))
+        (!isEmpty(doc.documentIdNumber) && doc.documentIdNumber.includes(params.searchTerm)))
     )
   })
 }
@@ -137,7 +141,7 @@ function filterArticles(params, allArticles) {
     const matchesProgram =
       !params.program ||
       params.program === 'all' ||
-      (!_.isEmpty(article.programs) && article.programs.includes(params.program))
+      (!isEmpty(article.programs) && article.programs.includes(params.program))
     const matchesTitle =
       !params.searchTerm ||
       params.searchTerm === 'all' ||
@@ -164,7 +168,7 @@ function sortDocuments(params, docs) {
   } else {
     return docs
   }
-  return _.orderBy(
+  return orderBy(
     docs,
     [
       doc => {
@@ -176,15 +180,15 @@ function sortDocuments(params, docs) {
 }
 
 function sortDocumentsByDate(docs) {
-  const sortedDocs = _.orderBy(
+  const sortedDocs = orderBy(
     docs,
     [
       doc => {
-        const files = _.filter(doc.files, file => {
+        const files = filter(doc.files, file => {
           const date = moment(file.effectiveDate)
           return date.isValid() && date.isSameOrBefore(moment())
         })
-        const latestFile = _.maxBy(files, 'effectiveDate')
+        const latestFile = maxBy(files, 'effectiveDate')
         return latestFile ? latestFile.effectiveDate : ''
       }
     ],
@@ -195,14 +199,14 @@ function sortDocumentsByDate(docs) {
 
 function fetchTaxonomys(queryParams) {
   return get('taxonomys').then(data => {
-    let names = _.map(data, 'name')
+    let names = map(data, 'name')
     if (queryParams.names) {
       names = queryParams.names.split(',')
     }
     return Promise.resolve(data) // TODO remove unnessary promise wrapper
       .then(results => {
-        return _.filter(results, item => {
-          return _.includes(names, item.name)
+        return filter(results, item => {
+          return includes(names, item.name)
         })
       })
   })
@@ -223,7 +227,7 @@ function fetchArticles(queryParams) {
 
   return get('articles')
     .then(result => {
-      return _.orderBy(result, sortField, sortOrder)
+      return orderBy(result, sortField, sortOrder)
     })
     .then(results => {
       const filteredArticles = filterArticles(queryParams, results)
