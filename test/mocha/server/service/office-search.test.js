@@ -1,13 +1,13 @@
 let sinon = require('sinon')
 let chai = require('chai')
 chai.should()
+let expect = chai.expect
 
 let officeSearch = require('../../../../src/service/office-search.js')
 let dynamoDbClient = require('../../../../src/service/dynamo-db-client.js')
 
 let exampleDynamoDBResponse = {
-  Items: [
-    {
+  Items: [{
       city: 'Old Greenwich',
       zip: '06870',
       dst: 1,
@@ -37,8 +37,7 @@ let exampleCloudSearchResponse = {
   hits: {
     found: 526,
     start: 0,
-    hit: [
-      {
+    hit: [{
         id: '5663',
         fields: {
           location_city: ['Bozeman'],
@@ -105,15 +104,25 @@ describe('# Office Search', () => {
   })
 
   describe('computeLocation', () => {
-    it('should return the lat and long from the first item that DynamoDB returns', async () => {
+    it('should return the lat and long from the first item that DynamoDB returns', async() => {
       dynamoDbClientQueryStub.returns(exampleDynamoDBResponse)
       let result = await officeSearch.computeLocation('11111')
       result.should.eql({ latitude: '41.033347', longitude: '-73.568040' })
     })
+
+    it.only('should return null if the zip code is invalid', async() => {
+      dynamoDbClientQueryStub.returns({
+        Items: [],
+        Count: 0,
+        ScannedCount: 1
+      })
+      let result = await officeSearch.computeLocation('00000')
+      expect(result).to.eql(null)
+    })
   })
 
   describe('officeSearch', () => {
-    it('should properly handle an empty address', async () => {
+    it('should properly handle an empty address', async() => {
       dynamoDbClientQueryStub.returns(exampleDynamoDBResponse)
       officeSearchRunSearchStub.returns(exampleCloudSearchEmptyResponse)
       let result = await officeSearch.officeSearch({ address: null })
@@ -129,7 +138,7 @@ describe('# Office Search', () => {
       result.should.eql(exampleCloudSearchEmptyResponse.hits)
     })
 
-    it('should properly handle no address', async () => {
+    it('should properly handle no address', async() => {
       dynamoDbClientQueryStub.returns(exampleDynamoDBResponse)
       officeSearchRunSearchStub.returns(exampleCloudSearchEmptyResponse)
       let result = await officeSearch.officeSearch({})
@@ -145,7 +154,7 @@ describe('# Office Search', () => {
       result.should.eql(exampleCloudSearchEmptyResponse.hits)
     })
 
-    it('should enter the lat and long into the params for cloudsearch query', async () => {
+    it('should enter the lat and long into the params for cloudsearch query', async() => {
       dynamoDbClientQueryStub.returns(exampleDynamoDBResponse)
       officeSearchRunSearchStub.returns(exampleCloudSearchEmptyResponse)
       let result = await officeSearch.officeSearch({ address: '06870' })
