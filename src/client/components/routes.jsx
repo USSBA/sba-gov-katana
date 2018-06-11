@@ -96,7 +96,7 @@ let LearningCenterLookupPage = props => (
   />
 )
 
-let CounselingLookupPage = props => (
+let OfficeLookupPage = props => (
   <Async componentProps={props} load={import('./pages/office-lookup-page/office-lookup-page.jsx')} />
 )
 
@@ -125,10 +125,8 @@ const mainRoutes = [
   <Redirect key={55} from="/course" to="/course/" />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
-  <Route key={56} path="/counseling/" component={SamplePage} />,
-  <Redirect key={57} from="/counseling" to="/counseling/" />,
-  <Route key={58} path="/office/" component={CounselingLookupPage} />,
-  <Redirect key={59} from="/office" to="/office/" />,
+  <Route key={56} path="/office/" component={OfficeLookupPage} />,
+  <Redirect key={57} from="/office" to="/office/" />,
   <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,

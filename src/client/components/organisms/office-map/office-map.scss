@@ -1,0 +1,8 @@
+.googleMap {
+  display: none;
+  @include grid-media($sba-grid-large) {
+    width: 100%;
+    height: 100vh;
+    display: block;
+  }
+}

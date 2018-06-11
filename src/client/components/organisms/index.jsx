@@ -18,6 +18,7 @@ import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
 import OfficesLayout from './offices-layout/offices-layout.jsx'
+import OfficeMap from './office-map/office-map.jsx'
 import OfficeResult from './office-result/office-result.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
 import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
@@ -95,6 +96,7 @@ export {
   NotificationBar,
   OfficeResult,
   OfficesLayout,
+  OfficeMap,
   PagingLookup,
   PagingMultiviewLayout,
   PrimarySearchBar,

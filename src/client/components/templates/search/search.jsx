@@ -222,7 +222,9 @@ export class SearchTemplate extends React.PureComponent {
 
     switch (viewState) {
       case 'IS_LOADED_WITH_RESULTS':
-        curViewComponentNeeded = <div> {this.renderPaginator()} </div>
+        if (this.props.searchType !== 'offices') {
+          curViewComponentNeeded = <div> {this.renderPaginator()} </div>
+        }
         break
       case 'IS_LOADING':
         curViewComponentNeeded = <LoadingView />
