@@ -31,3 +31,4 @@ aws:
   cloudsearch:
     searchEndpoint: 'doc-production-b4waq4e3rl6daphct5rtlxjmmm.us-east-1.cloudsearch.amazonaws.com'
     officeEndpoint: 'doc-production-offices-lzpi5yk5h5c6jaa42nqkrtxm6e.us-east-1.cloudsearch.amazonaws.com'
+    zipCodeDynamoDBTableName: ZipCodesUpper

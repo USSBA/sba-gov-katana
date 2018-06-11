@@ -84,6 +84,7 @@ aws:
   cloudsearch:
     searchEndpoint: 'doc-mint-hdgvyg66mwvfnu46tzaszesh5u.us-east-1.cloudsearch.amazonaws.com'
     officeEndpoint: 'doc-mint-offices-mjhazqnua7k5nqkxojddfhkrw4.us-east-1.cloudsearch.amazonaws.com'
+    zipCodeDynamoDBTableName: ZipCodesLower
   dynamodb:
     endpoint: placeholder
 publicPath: "/build/"
