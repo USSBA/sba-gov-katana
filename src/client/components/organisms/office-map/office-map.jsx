@@ -1,4 +1,5 @@
 import React from 'react'
+import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import axios from 'axios'
@@ -6,10 +7,11 @@ import queryString from 'query-string'
 import styles from './office-map.scss'
 var geocoder = require('google-geocoder')
 
-const GOOGLE_MAPS_API_KEY = 'AIzaSyDceQl00lHHE0R9QrY5gonqr4Bu2Q9vLe8'
-const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
+const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
+  config.googleMapsApiKey
+}&v=3.exp&libraries=geometry,drawing,places`
 const geo = geocoder({
-  key: GOOGLE_MAPS_API_KEY
+  key: config.googleMapsApiKey
 })
 
 const OfficeMap = compose(
