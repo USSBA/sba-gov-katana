@@ -129,7 +129,7 @@ describe('# Office Search', function() {
       await insertDocuments(masterDocuments)
       let waitingOnInsert = true
       do {
-        waitingOnInsert = !(await checkForDocuments(masterDocuments.length))
+        waitingOnInsert = !await checkForDocuments(masterDocuments.length)
         await sleep(2000)
       } while (waitingOnInsert)
     })
@@ -140,7 +140,7 @@ describe('# Office Search', function() {
       await deleteDocuments(masterDocuments.map(item => item.id))
       let waitingOnDelete = true
       do {
-        waitingOnDelete = !(await checkForDocuments(0))
+        waitingOnDelete = !await checkForDocuments(0)
         await sleep(3000)
       } while (waitingOnDelete)
     })
@@ -174,6 +174,23 @@ describe('# Office Search', function() {
       hits.should.have.length(2)
       hits[0].fields.title[0].should.equal('Office Number 1')
       hits[1].fields.title[0].should.equal('Office Number 2')
+    })
+
+    it('should not return any offices when searching with an invalid zip code 99998', async () => {
+      let result = await officeSearch.officeSearch({ address: '99998', pageSize: 2 })
+      let hits = result.hit
+      hits.should.have.length(0)
+    })
+
+    it('should return offices in alphabetical order when searching without an address', async () => {
+      let result = await officeSearch.officeSearch({ pageSize: 5 })
+      let hits = result.hit
+      hits.should.have.length(5)
+      hits[0].fields.title[0].should.equal('Office Number 1')
+      hits[1].fields.title[0].should.equal('Office Number 2')
+      hits[2].fields.title[0].should.equal('Office Number 3')
+      hits[3].fields.title[0].should.equal('Office Number 4')
+      hits[4].fields.title[0].should.equal('Office Number 5')
     })
   })
 })
