@@ -60,8 +60,9 @@ function buildFilters(service, type) {
   return _.compact(filters)
 }
 
-function buildParams(query, latitude, longitude) {
+function buildParams(query, geo) {
   const { pageSize, start, address, q, service, type, distance } = query //eslint-disable-line id-length
+  const { latitude, longitude } = geo
   const filters = buildFilters(service, type, distance)
   const defaultPageSize = 20
   const defaultStart = 0
@@ -102,9 +103,13 @@ async function computeLocation(address) {
     const result = await dynamoDbClient.queryDynamoDb(params)
     // assumes that there is only one record in DynamoDB per zipcode
     const item = result.Items[0]
-    return {
-      latitude: item.latitude,
-      longitude: item.longitude
+    if(item){
+      return {
+        latitude: item.latitude,
+        longitude: item.longitude
+      }
+    } else{
+      return null;
     }
   } catch (err) {
     console.error(err)
@@ -115,8 +120,12 @@ async function computeLocation(address) {
 /* This is separate from search because it will need to have custom search to handle searching by specific indecies */
 async function officeSearch(query) {
   const { address } = query
-  const { latitude, longitude } = await computeLocation(address)
-  const params = buildParams(query, latitude, longitude)
+  const geo = await computeLocation(address)
+  if(!geo){
+    return [];
+  }
+  
+  const params = buildParams(query, geo)
   try {
     const result = await module.exports.runSearch(params) // call the module.exports version for stubbing during testing
     const hits = result.hits
