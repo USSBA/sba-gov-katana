@@ -40,7 +40,7 @@ class OfficeLookupPage extends React.Component {
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultSearchParams = {
-      zipCode: defaultZipCode,
+      address: defaultZipCode,
       pageSize
     }
     const officeTypeTaxonomy = this.getTaxonomy('officeType')
@@ -64,7 +64,7 @@ class OfficeLookupPage extends React.Component {
 
           <TextInput
             id="zip"
-            queryParamName="zipCode"
+            queryParamName="address"
             className={style.zip}
             label="Near"
             placeholder="Zip Code"
