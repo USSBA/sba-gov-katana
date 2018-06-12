@@ -83,7 +83,7 @@ class OfficeMapApp extends React.PureComponent {
       const params = queryString.parse(window.location.search)
       let qs = ''
       if (params.zipCode) {
-        qs += `zipCode=${params.zipCode}&`
+        qs += `address=${params.zipCode}&`
       }
       if (params.start && typeof params.start === 'number') {
         qs += `start=${params.start}`
