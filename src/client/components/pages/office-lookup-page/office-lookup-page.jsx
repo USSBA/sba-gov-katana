@@ -54,7 +54,7 @@ class OfficeLookupPage extends React.Component {
         <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
           <TextInput
             id="search"
-            queryParamName="term"
+            queryParamName="q"
             className={style.search}
             label="Find"
             placeholder="Counseling, training, mentoring..."
@@ -72,6 +72,7 @@ class OfficeLookupPage extends React.Component {
             validationState={''}
           />
         </PrimarySearchBar>
+        {/* Commenting out for now, but perhaps the children of the secondary search bar can be reused in the primary search bar
         <SecondarySearchBar id="office-secondary-search-bar">
           <TaxonomyMultiSelect
             taxonomy={officeServiceTaxonomy}
@@ -95,7 +96,7 @@ class OfficeLookupPage extends React.Component {
               { name: 'SBA Offices', value: 'true', fontAwesomeIconClassName: 'shield' }
             ]}
           />
-        </SecondarySearchBar>
+        </SecondarySearchBar> */}
         <OfficeMap id="office-map" />
         {/*<Results id="office-results">
           <OfficeResult />
