@@ -33,7 +33,9 @@ app.get('/*', function(req, res, next) {
       )
     }
   } catch (err) {
-    console.error('Failed to determine public path url')
+    console.warn(
+      'Failed to determine public path url for cloudfront; either you are in a development environment or something is wrong'
+    )
   }
   next()
 })
