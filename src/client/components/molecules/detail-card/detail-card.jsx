@@ -25,6 +25,7 @@ class DetailCard extends React.Component {
             onClick={() => {
               window.open(latestFile.fileUrl, '_blank')
             }}
+            to={latestFile.fileUrl}
           >
             Download PDF
           </Link>
