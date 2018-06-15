@@ -11,6 +11,8 @@ import cookieParser from 'cookie-parser'
 import HttpStatus from 'http-status-codes'
 import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from './util/dev.js'
 const urlUtil = require('url') // <--- converting server code to require to move away from babel
+const fs = require('fs')
+let mainBundleFile = ''
 
 const app = express()
 app.use(cookieParser())
@@ -18,27 +20,29 @@ app.use(cookieParser())
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, './views/'))
 
-app.get('/*', function(req, res, next) {
-  try {
-    const publicPath = config.get('publicPath')
-    if (publicPath && publicPath.indexOf('https' !== -1)) {
-      const parsedUrl = urlUtil.parse(publicPath)
-      res.header(
-        'Access-Control-Allow-Origin',
-        'https://' +
-          parsedUrl.hostname
-            .split('.')
-            .slice(1)
-            .join('.')
+if (!config.get('developmentOptions.webpack.enabled')) {
+  app.get('/*', function(req, res, next) {
+    try {
+      const publicPath = config.get('publicPath')
+      if (publicPath && publicPath.indexOf('https' !== -1)) {
+        const parsedUrl = urlUtil.parse(publicPath)
+        res.header(
+          'Access-Control-Allow-Origin',
+          'https://' +
+            parsedUrl.hostname
+              .split('.')
+              .slice(1)
+              .join('.')
+        )
+      }
+    } catch (err) {
+      console.warn(
+        'Failed to determine public path url for cloudfront; either you are in a development environment or something is wrong'
       )
     }
-  } catch (err) {
-    console.warn(
-      'Failed to determine public path url for cloudfront; either you are in a development environment or something is wrong'
-    )
-  }
-  next()
-})
+    next()
+  })
+}
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json()
@@ -48,6 +52,16 @@ app.use(express.static('public'))
 
 if (config.get('developmentOptions.webpack.enabled')) {
   enableWebpackHotModuleReplacement(app, config.get('developmentOptions.webpack.silent'))
+  mainBundleFile = 'bundle.js'
+} else {
+  // using sync because it shouldn't slow down the start up by a measurable amount and will eliminate a potential race condition at launch
+  const files = fs.readdirSync(path.join(__dirname, './public/build/')) //eslint-disable-line no-sync
+  const regex = /^[a-f0-9]{20}\.bundle\.js$/
+  for (let i = 0; i < files.length; i++) {
+    if (regex.test(files[i])) {
+      mainBundleFile = files[i]
+    }
+  }
 }
 
 const metaVariables = {
@@ -189,7 +203,8 @@ app.get(['/', '/*'], function(req, res, next) {
     optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
     tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
     foreseeEnabled: config.get('foresee.enabled'),
-    foreseeEnvironment: config.get('foresee.environment')
+    foreseeEnvironment: config.get('foresee.environment'),
+    mainBundleFile: mainBundleFile
   })
   const handleRedirects = async function() {
     const url = req.url
