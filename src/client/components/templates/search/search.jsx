@@ -234,7 +234,7 @@ export class SearchTemplate extends React.PureComponent {
     })
 
     return (
-      <div>
+      <div className={this.props.searchType === 'offices' ? styles.offices : ''}>
         <div>{childrenWithProps}</div>
         {this.renderLoadingView()}
         {this.renderPaginator()}

@@ -116,9 +116,9 @@ class OfficeLookupPage extends React.Component {
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
         <OfficeMap id="office-map" />
-        {/*<Results id="office-results">
+        <Results id="office-results">
           <OfficeResult />
-        </Results>*/}
+        </Results>
       </SearchTemplate>
     )
   }

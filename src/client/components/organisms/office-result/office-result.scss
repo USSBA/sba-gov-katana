@@ -44,11 +44,10 @@
 
 .colA {
   @include grid-media($sba-grid-medium) {
-    @include grid-column(6);
+    margin-left: 0;
     margin-bottom: 30px;
   }
   @include grid-media($sba-grid-large) {
-    @include grid-column(6);
     margin-bottom: 30px;
   }
 }

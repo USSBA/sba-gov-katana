@@ -3,3 +3,15 @@
     padding: 20px;
   }
 }
+
+.officeResults {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 320px;
+    left: 20px;
+    background-color: #ffffff;
+    width: 321px;
+    height: 94vh;
+    overflow: hidden;
+  }
+}
