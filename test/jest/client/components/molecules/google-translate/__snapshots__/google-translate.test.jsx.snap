@@ -2,10 +2,10 @@
 
 exports[`Google Translate link to render correctly 1`] = `
 <div
-  className="container"
+  className="googleTranslate"
 >
   <div
-    className="googleTranslateElement"
+    className="hide"
     id="google_translate_element"
   />
   <li
@@ -13,7 +13,6 @@ exports[`Google Translate link to render correctly 1`] = `
   >
     <a
       className="link "
-      id="translate-toggle-new"
       onClick={[Function]}
       style={Object {}}
       target="_self"

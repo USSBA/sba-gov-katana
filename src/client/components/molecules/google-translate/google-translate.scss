@@ -1,12 +1,12 @@
-.container {
+.googleTranslate {
   display: inline-block;
 }
 
-.googleTranslateElement {
-  display: none;
-}
-
-.googleTranslateElementVisible {
+.show {
   display: inline-block;
   margin-right: 12px;
+}
+
+.hide {
+  display: none;
 }
