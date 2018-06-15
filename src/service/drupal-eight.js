@@ -265,6 +265,7 @@ export {
   fetchFormattedNode,
   fetchNodes,
   fetchTaxonomys,
+  filterArticles,
   get,
   sortDocumentsByDate
 }
