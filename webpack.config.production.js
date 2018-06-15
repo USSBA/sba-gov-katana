@@ -13,7 +13,7 @@ module.exports = function(env) {
     entry: ['babel-polyfill', './src/client/components/entry.jsx'],
     output: {
       path: path.join(__dirname, 'public', 'build'),
-      filename: 'bundle.js',
+      filename: '[hash].bundle.js',
       publicPath: 'http://this-is-my-public-path.com' // Mandatory!
     },
     plugins: [
