@@ -16,7 +16,7 @@ html(lang="en")
   body
     include includes/google-tag-manager.pug
     #root
-    script(src='/build/bundle.js')
+    script(src=`/build/${mainBundleFile}`)
     link(href="https://fonts.googleapis.com/css?family=Merriweather:400,400i|Source+Sans+Pro:200,300,400,500,600,700,800,900" rel="stylesheet")
     include includes/google-translate.pug
     include includes/foresee.pug
