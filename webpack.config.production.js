@@ -13,7 +13,7 @@ module.exports = function(env) {
     entry: ['babel-polyfill', './src/client/components/entry.jsx'],
     output: {
       path: path.join(__dirname, 'public', 'build'),
-      filename: 'bundle.js',
+      filename: '[hash:20].bundle.js',
       publicPath: 'http://this-is-my-public-path.com' // Mandatory!
     },
     plugins: [
@@ -21,12 +21,12 @@ module.exports = function(env) {
         externalGlobal: 'window.cdnPathFromBackend', //Your global variable name.
         chunkName: 'main' // Chunk name from "entry".
       }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: 'report.html',
-        generateStatsFile: true,
-        statsFilename: 'stats.json'
-      }),
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'static',
+      //   reportFilename: 'report.html',
+      //   generateStatsFile: true,
+      //   statsFilename: 'stats.json'
+      // }),
       new webpack.LoaderOptionsPlugin({
         minimize: true,
         debug: false
