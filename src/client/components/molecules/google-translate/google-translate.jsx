@@ -4,30 +4,36 @@ import styles from './google-translate.scss'
 import { UtilityLink } from 'atoms'
 
 class GoogleTranslate extends React.Component {
-  constructor(props) {
+  componentDidMount() {
+    // Load the Google translate script after the node-to-attach-to has loaded.
+    const script = document.createElement('script')
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    document.body.appendChild(script)
+  }
+
+  constructor() {
     super()
+
     this.state = {
-      expanded: false
+      isExpanded: false
     }
   }
 
   handleGoogleTranslateClick(event) {
     event.preventDefault()
     this.setState({
-      expanded: !this.state.expanded
+      isExpanded: !this.state.isExpanded
     })
   }
 
   render() {
-    const googleTranslateClass = this.state.expanded
-      ? styles.googleTranslateElementVisible
-      : styles.googleTranslateElement
+    const { isExpanded } = this.state
+
     return (
-      <div className={styles.container}>
-        <div className={googleTranslateClass} id="google_translate_element" />
+      <div className={styles.googleTranslate}>
+        <div className={isExpanded ? styles.show : styles.hide} id="google_translate_element" />
         <UtilityLink
-          id="translate-toggle-new"
-          visible={!this.state.expanded}
+          visible={!this.state.isExpanded}
           onClick={this.handleGoogleTranslateClick.bind(this)}
           text="Translate"
         />
@@ -35,7 +41,5 @@ class GoogleTranslate extends React.Component {
     )
   }
 }
-
-GoogleTranslate.propTypes = {}
 
 export default GoogleTranslate
