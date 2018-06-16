@@ -30,13 +30,16 @@ const createSlug = str => {
     .replace(/^-+|-+$/g, '')
 }
 
+/* NOTE: THIS IS SUPPOSED TO BE A GENERIC SEARCH TEMPLATE. PLEASE DO NOT PUT PAGE SPECIFIC LOGIC IN HERE. */
+
 export class SearchTemplate extends React.PureComponent {
   constructor() {
     super()
     this.state = {
       searchParams: {},
       results: [],
-      pageNumber: 1
+      pageNumber: 1,
+      hasNoResults: false
     }
   }
 
@@ -51,10 +54,11 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { items: results } = nextProps
+    const { items: results, isLoading } = nextProps
 
     const newState = {
-      results
+      results,
+      isLoading
     }
 
     this.setState(newState)
@@ -150,6 +154,7 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   doSearch(searchType, searchParams) {
+    this.setState({ isLoading: true })
     this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
   }
 
@@ -158,7 +163,7 @@ export class SearchTemplate extends React.PureComponent {
     const { results, pageNumber } = this.state
 
     let result = <div />
-
+    //only render paginator if there are results
     if (!isEmpty(results)) {
       result = (
         <div className={styles.paginator}>
@@ -169,6 +174,22 @@ export class SearchTemplate extends React.PureComponent {
             onBack={this.handleBack.bind(this)}
             onForward={this.handleForward.bind(this)}
           />
+        </div>
+      )
+    }
+    return result
+  }
+
+  renderLoadingView() {
+    const { isLoading } = this.state
+    let result = <div />
+    //only render if there is loading
+    if (isLoading) {
+      result = (
+        <div className="loading-view">
+          <div className={styles.container}>
+            <p>loading...</p>
+          </div>
         </div>
       )
     }
@@ -200,116 +221,62 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { children, items, hasNoResults, loadDefaultResults } = this.props
+    const { children } = this.props
+    const { results } = this.state
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
-        items: items,
+        items: results,
         onSearch: this.onSearch.bind(this),
         onFieldChange: this.onChange.bind(this),
-        fieldValues: this.state.searchParams
+        fieldValues: this.state.searchParams,
+        isLoading: this.state.isLoading
       })
     })
-
-    let viewState, curViewComponentNeeded
-
-    if (items.length > 0) {
-      viewState = 'IS_LOADED_WITH_RESULTS'
-    } else if (!hasNoResults && items.length === 0) {
-      viewState = 'IS_LOADING'
-    } else if (hasNoResults) {
-      viewState = 'IS_LOADED_WITH_NO_RESULTS'
-    }
-
-    switch (viewState) {
-      case 'IS_LOADED_WITH_RESULTS':
-        if (this.props.searchType !== 'offices') {
-          curViewComponentNeeded = <div> {this.renderPaginator()} </div>
-        }
-        break
-      case 'IS_LOADING':
-        curViewComponentNeeded = <LoadingView />
-        break
-      case 'IS_LOADED_WITH_NO_RESULTS':
-        curViewComponentNeeded = <NoResultsView term={this.state.searchParams.term} />
-        break
-      default:
-    }
 
     return (
       <div>
         <div>{childrenWithProps}</div>
-        <div>{curViewComponentNeeded}</div>
+        {this.renderLoadingView()}
+        {this.renderPaginator()}
       </div>
     )
   }
 }
 
-const LoadingView = props => {
-  return (
-    <div className="loading-view">
-      <div className={styles.container}>
-        <p>loading...</p>
-      </div>
-    </div>
-  )
-}
-
-const NoResultsView = props => {
-  return (
-    <div className="no-results-view">
-      <div className={styles.container + ' ' + styles.emptyDocuments}>
-        <p className={styles.emptyDocumentsMessage}>No results found</p>
-        <div className={styles.resultsMessage}>
-          <p>
-            <strong>Search tips:</strong>
-          </p>
-          <ul>
-            <li>
-              <div className={styles.bullet} />
-              <p>Try a different search term, like “counseling” instead of "counselor".</p>
-            </li>
-            <li>
-              <div className={styles.bullet} />
-              <p>Try searching with different ZIP code.</p>
-            </li>
-            <li>
-              <div className={styles.bullet} />
-              <p>Try filtering by a different service, resource type or distance.</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 SearchTemplate.propTypes = {
+  hasPagination: PropTypes.bool,
   searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
   items: PropTypes.array,
-  location: PropTypes.string
+  location: PropTypes.string,
+  isLoading: PropTypes.bool
 }
 
 SearchTemplate.defaultProps = {
-  items: []
+  items: [],
+  hasPagination: true,
+  isLoading: false
 }
 
 function mapReduxStateToProps(reduxState, props) {
   let items = []
   let count = 0
   let hasNoResults
+  let isLoading = true
 
   if (reduxState.contentReducer[props.searchType]) {
     items = reduxState.contentReducer[props.searchType].hit
     count = reduxState.contentReducer[props.searchType].found
     hasNoResults = count === 0
+    isLoading = false
   }
 
   return {
     items,
     location: props.location,
     count,
-    hasNoResults
+    hasNoResults,
+    isLoading
   }
 }
 
