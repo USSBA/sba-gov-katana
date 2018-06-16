@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import styles from './primary-search-bar.scss'
 import { Button, SearchIcon } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
-    if (this.props.onFieldChange) {
-      this.props.onFieldChange(fieldName, value)
+    const { onFieldChange } = this.props
+    if (onFieldChange) {
+      onFieldChange(fieldName, value)
     }
   }
 
@@ -22,11 +24,12 @@ export class PrimarySearchBar extends React.PureComponent {
 
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
+      const { queryParamName } = child.props
       const clonedChild = React.cloneElement(child, {
         onChange: valueOrEvent => {
           this.onFieldChange.bind(this)
           const value = valueOrEvent.target ? valueOrEvent.target.value : valueOrEvent
-          this.onFieldChange(child.props.queryParamName, value)
+          this.onFieldChange(queryParamName, value)
         }
       })
       return clonedChild
@@ -41,14 +44,15 @@ export class PrimarySearchBar extends React.PureComponent {
           <form>
             {childrenWithProps}
             <div className={styles.applyButton}>
-              <Button
-                primary
-                alternate
+              {/* TODO: changing the following div to a Button causes the page to reload on click and I don't know why */}
+              <div
+                // primary
+                // alternate
                 id={`${id ? id : 'primary-search-bar'}-search-button`}
                 onClick={this.onSearch.bind(this)}
               >
                 {this.props.searchButtonText}
-              </Button>
+              </div>
             </div>
           </form>
         </div>
