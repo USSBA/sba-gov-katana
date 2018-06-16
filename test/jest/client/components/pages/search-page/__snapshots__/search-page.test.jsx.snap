@@ -36,6 +36,7 @@ exports[`SearchPage to match snapshot 1`] = `
                 className="textInput "
                 defaultValue=""
                 id="search"
+                onBlur={[Function]}
                 onChange={[Function]}
                 onKeyDown={[Function]}
               />

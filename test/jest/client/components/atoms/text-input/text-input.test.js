@@ -6,14 +6,14 @@ import { shallow } from 'enzyme'
 
 test('TextInput', () => {
   let lastValue = ''
-  function handleChange(newValue) {
+  function handleChange(event) {
     // console.log(lastValue);
-    lastValue = newValue
+    lastValue = event.target.value
   }
-  function onBlur(newValue) {
+  function onBlur(event) {
     // console.log("onBlur");
   }
-  function onFocus(newValue) {
+  function onFocus(event) {
     // console.log("onFocus");
   }
   const component = shallow(
@@ -30,6 +30,6 @@ test('TextInput', () => {
       onFocus={onFocus}
     />
   )
-  component.find('input').simulate('change', 'Han Solo')
+  component.find('input').simulate('change', { target: { value: 'Han Solo' } })
   expect(lastValue).toEqual('Han Solo')
 })
