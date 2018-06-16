@@ -1,0 +1,37 @@
+.resultsMessage {
+  text-align: left;
+  width: 510px;
+  margin: 0 auto 100px;
+
+  .bullet {
+    margin-top: 10px;
+    background-color: #0b97dd;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    float: left;
+  }
+
+  li p {
+    display: block;
+    margin: 0;
+    margin-left: 25px;
+  }
+
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+}
+
+.emptyDocumentsMessage {
+  font-weight: bold;
+
+  @include grid-media($sba-grid-medium) {
+    font-size: 72px;
+    font-weight: 900;
+  }
+  @include grid-media($sba-grid-large) {
+    font-size: 72px;
+    font-weight: 900;
+  }
+}
