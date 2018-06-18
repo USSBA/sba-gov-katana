@@ -20,7 +20,7 @@ const OfficeMap = compose(
     googleMapURL,
     loadingElement: <div style={{ height: `100vh` }} />,
     containerElement: <div style={{ height: `100vh` }} />,
-    mapElement: <div style={{ height: `100vh` }} />
+    mapElement: <div style={{ height: `100vh`, clear: 'both' }} />
   }),
   withScriptjs,
   withGoogleMap
