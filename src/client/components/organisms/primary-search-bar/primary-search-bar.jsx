@@ -13,7 +13,8 @@ export class PrimarySearchBar extends React.PureComponent {
     }
   }
 
-  onSearch() {
+  onSearch(event) {
+    event.preventDefault()
     if (this.props.onSearch) {
       this.props.onSearch()
       return false
@@ -44,15 +45,14 @@ export class PrimarySearchBar extends React.PureComponent {
           <form>
             {childrenWithProps}
             <div className={styles.applyButton}>
-              {/* TODO: changing the following div to a Button causes the page to reload on click and I don't know why */}
-              <div
-                // primary
-                // alternate
+              <Button
+                primary
+                alternate
                 id={`${id ? id : 'primary-search-bar'}-search-button`}
                 onClick={this.onSearch.bind(this)}
               >
                 {this.props.searchButtonText}
-              </div>
+              </Button>
             </div>
           </form>
         </div>
