@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as ContentActions from '../../../actions/content.js'
 import { find, cloneDeep, isEmpty } from 'lodash'
 
-import style from './office-lookup-page.scss'
+import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, MultiSelect, TextInput, Toggle } from 'atoms'
 import {
   GlobalSearch,
@@ -15,6 +15,7 @@ import {
   OfficeResult,
   OfficeMap
 } from 'organisms'
+import { NoResultsSection } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
@@ -36,6 +37,9 @@ class OfficeLookupPage extends React.Component {
     return taxonomy
   }
 
+  // todo move to own component
+  renderNoResultsView() {}
+
   render() {
     const defaultZipCode = 20024
     const pageSize = 5
@@ -45,6 +49,13 @@ class OfficeLookupPage extends React.Component {
     }
     const officeTypeTaxonomy = this.getTaxonomy('officeType')
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
+    const { items, isLoading } = this.props
+    const searchTips = [
+      'Try a different search term, like “counseling” instead of "counselor".',
+      'Try searching with different ZIP code.',
+      'Try filtering by a different service, resource type or distance.'
+    ]
+
     return (
       <SearchTemplate
         searchType="offices"
@@ -54,8 +65,8 @@ class OfficeLookupPage extends React.Component {
         <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
           <TextInput
             id="search"
-            queryParamName="term"
-            className={style.search}
+            queryParamName="q"
+            className={styles.search}
             label="Find"
             placeholder="Counseling, training, mentoring..."
             validationState={''}
@@ -65,27 +76,32 @@ class OfficeLookupPage extends React.Component {
           <TextInput
             id="zip"
             queryParamName="address"
-            className={style.zip}
+            className={styles.zip}
             label="Near"
             placeholder="Zip Code"
             defaultValue={defaultZipCode}
-            validationState={''}
+            validationFunction={input => {
+              const fiveDigitRegex = /^\d{5}$/g
+              return fiveDigitRegex.test(input)
+            }}
+            errorText="Enter a 5-digit zip code."
           />
         </PrimarySearchBar>
+        {/* Commenting out for now, but perhaps the children of the secondary search bar can be reused in the primary search bar
         <SecondarySearchBar id="office-secondary-search-bar">
           <TaxonomyMultiSelect
             taxonomy={officeServiceTaxonomy}
             queryParamName="service"
             label="Service:"
             multi={false}
-            className={style.search}
+            className={styles.search}
           />
           <TaxonomyMultiSelect
             taxonomy={officeTypeTaxonomy}
             label="Resource Type:"
             queryParamName="type"
             multi={false}
-            className={style.search}
+            className={styles.search}
           />
           <Toggle
             id="allOffices"
@@ -95,7 +111,10 @@ class OfficeLookupPage extends React.Component {
               { name: 'SBA Offices', value: 'true', fontAwesomeIconClassName: 'shield' }
             ]}
           />
-        </SecondarySearchBar>
+        </SecondarySearchBar> */}
+        {/* 
+        TODO: Uncomment this if we need a no results section
+        <NoResultsSection searchTips={searchTips}/> */}
         <OfficeMap id="office-map" />
         {/*<Results id="office-results">
           <OfficeResult />

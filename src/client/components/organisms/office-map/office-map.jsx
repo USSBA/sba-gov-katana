@@ -6,6 +6,7 @@ import axios from 'axios'
 import queryString from 'query-string'
 import styles from './office-map.scss'
 var geocoder = require('google-geocoder')
+import PropTypes from 'prop-types'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
@@ -19,7 +20,7 @@ const OfficeMap = compose(
     googleMapURL,
     loadingElement: <div style={{ height: `100vh` }} />,
     containerElement: <div style={{ height: `100vh` }} />,
-    mapElement: <div style={{ height: `100vh` }} />
+    mapElement: <div style={{ height: `100vh`, clear: 'both' }} />
   }),
   withScriptjs,
   withGoogleMap
@@ -74,27 +75,11 @@ class OfficeMapApp extends React.PureComponent {
     }
   }
 
-  componentWillMount() {
-    // get office data from endpoint
-    // update state points object with results
-
-    let endpoint = '/api/content/offices.json'
-    if (window.location.search.length > 0) {
-      const params = queryString.parse(window.location.search)
-      let qs = ''
-      if (params.address) {
-        qs += `address=${params.address}&`
-      }
-      if (params.start && typeof params.start === 'number') {
-        qs += `start=${params.start}`
-      }
-      endpoint = `${endpoint}?${qs}`
-    }
-
-    axios.get(endpoint).then(result => {
-      this.getLatLngs(result.data.hit).then(result => {
-        const points = result
-        this.setState({ points })
+  componentWillReceiveProps(nextProps) {
+    const { items } = nextProps
+    this.getLatLngs(items).then(results => {
+      this.setState({
+        points: results
       })
     })
   }
@@ -162,5 +147,11 @@ class OfficeMapApp extends React.PureComponent {
     )
   }
 }
+OfficeMapApp.defaultProps = {
+  items: []
+}
 
+OfficeMapApp.propTypes = {
+  items: PropTypes.array
+}
 export default OfficeMapApp
