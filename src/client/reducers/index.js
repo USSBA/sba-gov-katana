@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
 // our customer reducers
-import lenderMatchReducer from '../reducers/lender-match.js'
 import navigationReducer from '../reducers/navigation.js'
 import reviewSubmitInfoReducer from './review-submit-info.js'
 import modalReducer from './modal.js'
@@ -16,7 +15,6 @@ import resourceCenterProfileReducer from '../reducers/resource-center-profile.js
 
 // combine the custom reducers with the routing reducer
 const rootReducer = combineReducers({
-  lenderMatch: lenderMatchReducer,
   reviewSubmitInfoReducer: reviewSubmitInfoReducer,
   routing: routerReducer,
   modalReducer: modalReducer,
