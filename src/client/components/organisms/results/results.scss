@@ -8,17 +8,18 @@
   @include grid-media($sba-grid-large) {
     position: absolute;
     top: 320px;
-    left: 20px;
+    left: 30px;
+    bottom: 27px;
     background-color: #ffffff;
     width: 321px;
-    height: 94vh;
     overflow: hidden;
   }
 }
 
 .scroll {
   overflow: scroll;
-  height: 94vh;
+  height: 100vh;
+  padding-bottom: 72px;
 }
 
 .paginator {
