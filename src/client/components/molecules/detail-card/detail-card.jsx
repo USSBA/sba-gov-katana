@@ -1,5 +1,5 @@
 import React from 'react'
-import _, { isObject } from 'lodash'
+import _, { isEmpty } from 'lodash'
 
 import s from './detail-card.scss'
 import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
@@ -99,6 +99,16 @@ class DetailCard extends React.Component {
   render() {
     const doc = this.props.data
     if (doc) {
+      // TODO: DRY
+      const { category, type: pageType } = doc
+
+      let type
+      if (pageType === 'document') {
+        type = doc.documentIdType
+      } else if (pageType === 'article' && category) {
+        type = category[0]
+      }
+
       const idData =
         doc.documents && doc.documents.length > 0
           ? doc.documents[0]
@@ -111,11 +121,7 @@ class DetailCard extends React.Component {
         <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
           <div className={s.innerContainer}>
             <div className={s.documentTypeContainer}>
-              <Label
-                type={doc.documentIdType}
-                id={!isObject(doc.documentIdNumber) && doc.documentIdNumber}
-                small
-              />
+              <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
             </div>
             <div />
             {this.makeTitle()}
