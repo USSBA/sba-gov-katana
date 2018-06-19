@@ -15,3 +15,18 @@
     overflow: hidden;
   }
 }
+
+.scroll {
+  overflow: scroll;
+  height: 94vh;
+}
+
+.paginator {
+  position: absolute;
+  text-align: right;
+  padding: 15px;
+  background-color: #f5f5f5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

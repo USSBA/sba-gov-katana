@@ -1,9 +1,51 @@
 import React from 'react'
 import styles from './results.scss'
-import { Address, PhoneNumber } from 'molecules'
+import { Address, PhoneNumber, Paginator } from 'molecules'
 import PropTypes from 'prop-types'
 
 class Results extends React.PureComponent {
+  super() {
+    this.renderPaginator = this.renderPaginator.bind(this)
+  }
+
+  /*
+  renderPaginator() {
+    //const { count, defaultSearchParams: { pageSize } } = this.props
+    //const { results, pageNumber } = this.state
+
+    let result = <div />
+
+    //if (!isEmpty(results)) {
+      result = (
+        <div className={styles.paginator}>
+          <Paginator
+            pageNumber={10}
+            pageSize={20}
+            total={100}
+            onBack={() => {}}
+            onForward={() => {}}
+          />
+        </div>
+      )
+    //}
+    return result
+  }*/
+
+  renderDefaultView(children) {
+    return <div>{children}</div>
+  }
+
+  renderOfficeView(children) {
+    return (
+      <div>
+        <div className={styles.scroll}>{children}</div>
+        <div className={styles.paginator}>
+          <Paginator pageNumber={10} pageSize={20} total={100} onBack={() => {}} onForward={() => {}} />
+        </div>
+      </div>
+    )
+  }
+
   render() {
     const { children, id, resultId } = this.props
     const childrenWithProps = this.props.items.map((item, index) => {
@@ -16,17 +58,22 @@ class Results extends React.PureComponent {
       return mappedChildren
     })
 
-    let className = styles.container
+    let renderView
+    let className
 
     switch (this.props.id) {
       case 'office-results':
-        className += ` ${styles.officeResults}`
+        className = `${styles.container} ${styles.officeResults}`
+        renderView = this.renderOfficeView
         break
+      default:
+        className = `${styles.container}`
+        renderView = this.renderDefaultView
     }
 
     return (
-      <div id={id} className={className}>
-        {childrenWithProps}
+      <div id={this.props.id} className={className}>
+        {renderView(childrenWithProps)}
       </div>
     )
   }
