@@ -177,7 +177,7 @@ export class DocumentArticle extends React.Component {
           </h1>
           {includes(data.category, PRESS_RELEASE) && (
             <h5>
-              Lasted updated {moment.unix(data.updated).format('MMMM D, YYYY')}
+              Last updated {moment.unix(data.updated).format('MMMM D, YYYY')}
               {articleIdText}
             </h5>
           )}
