@@ -8,7 +8,7 @@ features:
         tableName: UrlToUrlRedirectBrian
     forPartners: true
     moon: true
-    pressRelease: false
+    pressRelease: true
     showSbic: false
     urlRedirect:
         tableName: UrlToNodeBrian
