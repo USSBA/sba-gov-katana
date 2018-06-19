@@ -76,6 +76,7 @@ export class DocumentArticle extends React.Component {
     const body = data.body && typeof data.body === 'string' ? data.body : ''
 
     if (data) {
+      const { category, type: pageType } = data
       const currentFile = getCurrentFile(data.files, data.file)
 
       let currentFileExtension = ''
@@ -88,15 +89,14 @@ export class DocumentArticle extends React.Component {
         currentFileExtension = '.' + last(currentFile.fileUrl.split('.'))
       }
 
-      let documentTypeString = null
-      switch (data.type) {
-        case 'document':
-          documentTypeString = data.documentIdType
-          break
-        default:
-          documentTypeString = null
-          break
+      let type
+      if (pageType === 'document') {
+        type = data.documentIdType
+      } else if (pageType === 'article' && category) {
+        type = category[0]
       }
+
+      console.log('type', type)
 
       const PRESS_RELEASE = 'Press release'
       const MEDIA_ADVISORY = 'Media advisory'
@@ -104,12 +104,10 @@ export class DocumentArticle extends React.Component {
       let articleIdText = null
       if (data.articleId) {
         let articleIdPrefix
-        if (data.category) {
-          const category = data.category[0]
-
-          if (category === PRESS_RELEASE) {
+        if (category) {
+          if (type === PRESS_RELEASE) {
             articleIdPrefix = 'Release'
-          } else if (category === MEDIA_ADVISORY) {
+          } else if (type === MEDIA_ADVISORY) {
             articleIdPrefix = 'Advisory'
           }
         }
@@ -164,15 +162,8 @@ export class DocumentArticle extends React.Component {
 
       return (
         <div className={'document-article ' + s.page}>
-          <Label
-            type={documentTypeString || undefined}
-            id={!isEmpty(data.documentIdNumber) && data.documentIdNumber}
-          />
-          <h1
-            className={
-              'document-article-title ' + s.title + ' ' + (documentTypeString ? s.titleMarginBottom : '')
-            }
-          >
+          <Label type={type} id={!isEmpty(data.documentIdNumber) && data.documentIdNumber} />
+          <h1 className={`document-article-title ${s.title} ${type && s.titleMarginBottom}`}>
             {data.title}
           </h1>
           {includes(data.category, PRESS_RELEASE) && (

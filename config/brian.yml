@@ -3,15 +3,16 @@ foresee:
 server:
     fqdn: brian.ussba.io
 features:
-    forPartners: true
-    showSbic: false
-    moon: true
-    urlRedirect:
-        tableName: UrlToNodeBrian
-        enabled: true
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectBrian
+    forPartners: true
+    moon: true
+    pressRelease: false
+    showSbic: false
+    urlRedirect:
+        tableName: UrlToNodeBrian
+        enabled: true
 cache:
   s3BucketName: brian-content-sba-gov
   useS3: true
