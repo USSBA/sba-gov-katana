@@ -221,15 +221,28 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { children } = this.props
     const { results } = this.state
+    const {
+      children,
+      items,
+      hasNoResults,
+      loadDefaultResults,
+      count,
+      defaultSearchParams: { pageSize }
+    } = this.props
+
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
         items: results,
         onSearch: this.onSearch.bind(this),
         onFieldChange: this.onChange.bind(this),
         fieldValues: this.state.searchParams,
-        isLoading: this.state.isLoading
+        isLoading: this.state.isLoading,
+        onForward: this.handleForward.bind(this),
+        onBack: this.handleBack.bind(this),
+        pageNumber: this.state.pageNumber,
+        pageSize,
+        total: count
       })
     })
 
