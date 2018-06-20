@@ -77,3 +77,15 @@
 //     top: 44px;
 //   }
 // }
+
+.officeResults {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 320px;
+    left: 30px;
+    bottom: 27px;
+    background-color: #ffffff;
+    width: 321px;
+    overflow: hidden;
+  }
+}
