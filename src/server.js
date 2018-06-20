@@ -86,15 +86,16 @@ app.use(function(req, res, next) {
         debug: config.get('developmentOptions.client.logging'),
         forPartners: config.get('features.forPartners'),
         googleAnalytics: config.get('googleAnalytics'),
+        googleMapsApiKey: config.get('googleMapsApiKey'),
         govdelivery: config.get('govdelivery.popupEnabled'),
         isUserLoggedIn: hasSessionCookie || false,
         katanaRedirectPaths: config.get('nginx.katanaRedirectPaths').split('|'),
         moon: config.get('features.moon'),
+        pressRelease: config.get('features.pressRelease'),
         responseStatus: responseStatus,
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
-        showSbic: config.get('features.showSbic'),
-        googleMapsApiKey: config.get('googleMapsApiKey')
+        showSbic: config.get('features.showSbic')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       next()

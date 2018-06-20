@@ -251,6 +251,14 @@ function fetchNodes() {
   return get('nodes')
 }
 
+function fetchOffices() {
+  return get('offices')
+}
+
+function fetchPersons() {
+  return get('persons')
+}
+
 export {
   fetchAnnouncements,
   fetchArticles,
@@ -260,6 +268,8 @@ export {
   fetchFormattedMenu,
   fetchFormattedNode,
   fetchNodes,
+  fetchOffices,
+  fetchPersons,
   fetchTaxonomys,
   get,
   sortDocumentsByDate
