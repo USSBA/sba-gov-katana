@@ -181,7 +181,6 @@ export class DocumentArticleLookup extends React.PureComponent {
   }
 
   render() {
-    console.log('1', this.props.taxonomies)
     return (
       <div>
         <div className={styles.banner}>
