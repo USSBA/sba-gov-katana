@@ -34,6 +34,9 @@ class OfficeResult extends React.PureComponent {
                 <span className={styles.italic}> {item.office_type[0]}</span>
               </div>
             </div>
+            <div id={`office-miles-${id}`}>
+              {`${Number(this.props.item.exprs.distance).toFixed(1)} miles`}
+            </div>
             <div id={`office-title-${id}`}>
               <h2>{item.title[0]}</h2>
             </div>
