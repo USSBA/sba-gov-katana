@@ -247,34 +247,6 @@ export class SearchTemplate extends React.PureComponent {
       })
     })
 
-<<<<<<< HEAD
-=======
-    let viewState, curViewComponentNeeded
-
-    if (items.length > 0) {
-      viewState = 'IS_LOADED_WITH_RESULTS'
-    } else if (!hasNoResults && items.length === 0) {
-      viewState = 'IS_LOADING'
-    } else if (hasNoResults) {
-      viewState = 'IS_LOADED_WITH_NO_RESULTS'
-    }
-
-    switch (viewState) {
-      case 'IS_LOADED_WITH_RESULTS':
-        if (this.props.paginated) {
-          curViewComponentNeeded = <div> {this.renderPaginator()} </div>
-        }
-        break
-      case 'IS_LOADING':
-        curViewComponentNeeded = <LoadingView />
-        break
-      case 'IS_LOADED_WITH_NO_RESULTS':
-        curViewComponentNeeded = <NoResultsView term={this.state.searchParams.term} />
-        break
-      default:
-    }
-
->>>>>>> TA-561 changed paginate name to paginated
     const divProps = {}
     if (extraClassName) {
       divProps.className = extraClassName
