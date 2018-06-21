@@ -62,7 +62,7 @@ class OfficeLookupPage extends React.Component {
         defaultSearchParams={defaultSearchParams}
         loadDefaultResults={true}
         scrollToTopAfterSearch={false}
-        extraClassName={style.officeSearch}
+        extraClassName={styles.officeSearch}
         paginated={false}
       >
         <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
