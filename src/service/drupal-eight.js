@@ -138,6 +138,10 @@ function filterDocuments(params, docs) {
 function filterArticles(params, allArticles) {
   return allArticles.filter((article, index) => {
     const matchesUrl = !params.url || params.url === 'all' || article.url === params.url
+    const matchesCategory =
+      !params.articleCategory ||
+      params.articleCategory === 'all' ||
+      (!isEmpty(article.category) && article.category.includes(params.articleCategory))
     const matchesProgram =
       !params.program ||
       params.program === 'all' ||
@@ -148,7 +152,7 @@ function filterArticles(params, allArticles) {
       article.title.toLowerCase().includes(params.searchTerm.toLowerCase())
     const matchesType =
       !params.articleType || params.articleType === 'all' || article.type === params.articleType
-    return matchesUrl && matchesProgram && matchesTitle && matchesType
+    return matchesUrl && matchesCategory && matchesProgram && matchesTitle && matchesType
   })
 }
 /* eslint-enable complexity */
@@ -261,6 +265,7 @@ export {
   fetchFormattedNode,
   fetchNodes,
   fetchTaxonomys,
+  filterArticles,
   get,
   sortDocumentsByDate
 }

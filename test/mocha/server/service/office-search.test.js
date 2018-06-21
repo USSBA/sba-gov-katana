@@ -112,7 +112,7 @@ describe('# Office Search', () => {
       result.should.eql({ latitude: '41.033347', longitude: '-73.568040' })
     })
 
-    it.only('should return null if the zip code is invalid', async () => {
+    it('should return null if the zip code is invalid', async () => {
       dynamoDbClientQueryStub.returns({
         Items: [],
         Count: 0,
