@@ -83,7 +83,7 @@ export class SearchTemplate extends React.PureComponent {
         if (_options.shouldTriggerSearch === true) {
           this.onSearch(options)
         }
-        if (!isEmpty(window) && this.props.shouldScrollToTopAfterSearch) {
+        if (!isEmpty(window) && this.props.scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
         }
       }
@@ -228,6 +228,7 @@ export class SearchTemplate extends React.PureComponent {
       hasNoResults,
       loadDefaultResults,
       count,
+      extraClassName,
       defaultSearchParams: { pageSize }
     } = this.props
 
@@ -246,11 +247,16 @@ export class SearchTemplate extends React.PureComponent {
       })
     })
 
+    const divProps = {}
+    if (extraClassName) {
+      divProps.className = extraClassName
+    }
+
     return (
-      <div className={this.props.searchType === 'offices' ? styles.offices : ''}>
+      <div {...divProps}>
         <div>{childrenWithProps}</div>
         {this.renderLoadingView()}
-        {this.renderPaginator()}
+        {this.props.paginate && this.renderPaginator()}
       </div>
     )
   }
@@ -263,14 +269,14 @@ SearchTemplate.propTypes = {
   items: PropTypes.array,
   location: PropTypes.string,
   isLoading: PropTypes.bool,
-  shouldScrollToTopAfterSearch: PropTypes.bool
+  scrollToTopAfterSearch: PropTypes.bool
 }
 
 SearchTemplate.defaultProps = {
   items: [],
   hasPagination: true,
   isLoading: false,
-  shouldScrollToTopAfterSearch: true
+  scrollToTopAfterSearch: true
 }
 
 function mapReduxStateToProps(reduxState, props) {

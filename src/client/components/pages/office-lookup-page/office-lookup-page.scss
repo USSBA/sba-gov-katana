@@ -78,6 +78,10 @@
 //   }
 // }
 
+.officeSearch {
+  position: relative;
+}
+
 .officeResults {
   @include grid-media($sba-grid-large) {
     position: absolute;
