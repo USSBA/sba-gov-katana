@@ -1,17 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import styles from './primary-search-bar.scss'
 import { Button, SearchIcon } from 'atoms'
 
 export class PrimarySearchBar extends React.PureComponent {
   onFieldChange(fieldName, value) {
-    if (this.props.onFieldChange) {
-      this.props.onFieldChange(fieldName, value)
+    const { onFieldChange } = this.props
+    if (onFieldChange) {
+      onFieldChange(fieldName, value)
     }
   }
 
-  onSearch() {
+  onSearch(event) {
+    event.preventDefault()
     if (this.props.onSearch) {
       this.props.onSearch()
       return false
@@ -22,11 +25,12 @@ export class PrimarySearchBar extends React.PureComponent {
 
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
+      const { queryParamName } = child.props
       const clonedChild = React.cloneElement(child, {
         onChange: valueOrEvent => {
           this.onFieldChange.bind(this)
           const value = valueOrEvent.target ? valueOrEvent.target.value : valueOrEvent
-          this.onFieldChange(child.props.queryParamName, value)
+          this.onFieldChange(queryParamName, value)
         }
       })
       return clonedChild

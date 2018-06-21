@@ -103,13 +103,13 @@ async function computeLocation(address) {
     const result = await dynamoDbClient.queryDynamoDb(params)
     // assumes that there is only one record in DynamoDB per zipcode
     const item = result.Items[0]
-    if(item){
+    if (item) {
       return {
         latitude: item.latitude,
         longitude: item.longitude
       }
-    } else{
-      return null;
+    } else {
+      return null
     }
   } catch (err) {
     console.error(err)
@@ -121,10 +121,10 @@ async function computeLocation(address) {
 async function officeSearch(query) {
   const { address } = query
   const geo = await computeLocation(address)
-  if(!geo){
-    return [];
+  if (!geo) {
+    return []
   }
-  
+
   const params = buildParams(query, geo)
   try {
     const result = await module.exports.runSearch(params) // call the module.exports version for stubbing during testing

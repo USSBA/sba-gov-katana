@@ -13,6 +13,7 @@ import GoogleTranslate from './google-translate/google-translate'
 import MainLoader from './main-loader/main-loader'
 import MenuTile from './menu-tile/menu-tile'
 import MenuTileWithLinks from './menu-tile-with-links/menu-tile-with-links'
+import NoResultsSection from './no-results-section/no-results-section'
 import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-block'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
@@ -45,6 +46,7 @@ export {
   MainLoader,
   MenuTile,
   MenuTileWithLinks,
+  NoResultsSection,
   NumberedCalloutBlock,
   PageLinkGroup,
   Paginator,

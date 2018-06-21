@@ -2495,6 +2495,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
           <input
             className="textInput "
             id="document-lookup"
+            onBlur={[Function]}
             onChange={[Function]}
             onKeyUp={[Function]}
             placeholder="Search by title or number"
