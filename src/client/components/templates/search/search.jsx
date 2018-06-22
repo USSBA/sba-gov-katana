@@ -65,6 +65,7 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   onChange(propName, value, options = {}) {
+    const { scrollToTopAfterSearch } = this.props
     const _options = merge(
       {
         shouldTriggerSearch: false,
@@ -83,7 +84,7 @@ export class SearchTemplate extends React.PureComponent {
         if (_options.shouldTriggerSearch === true) {
           this.onSearch(options)
         }
-        if (!isEmpty(window)) {
+        if (!isEmpty(window) && scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
         }
       }
@@ -221,41 +222,63 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { children } = this.props
     const { results } = this.state
+    const {
+      children,
+      items,
+      hasNoResults,
+      loadDefaultResults,
+      count,
+      extraClassName,
+      defaultSearchParams: { pageSize },
+      paginate
+    } = this.props
+
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
         items: results,
         onSearch: this.onSearch.bind(this),
         onFieldChange: this.onChange.bind(this),
         fieldValues: this.state.searchParams,
-        isLoading: this.state.isLoading
+        isLoading: this.state.isLoading,
+        onForward: this.handleForward.bind(this),
+        onBack: this.handleBack.bind(this),
+        pageNumber: this.state.pageNumber,
+        pageSize,
+        total: count
       })
     })
 
+    const divProps = {}
+    if (extraClassName) {
+      divProps.className = extraClassName
+    }
+
     return (
-      <div>
+      <div {...divProps}>
         <div>{childrenWithProps}</div>
         {this.renderLoadingView()}
-        {this.renderPaginator()}
+        {paginate && this.renderPaginator()}
       </div>
     )
   }
 }
 
 SearchTemplate.propTypes = {
-  hasPagination: PropTypes.bool,
+  paginate: PropTypes.bool,
   searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
   items: PropTypes.array,
   location: PropTypes.string,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  scrollToTopAfterSearch: PropTypes.bool
 }
 
 SearchTemplate.defaultProps = {
   items: [],
-  hasPagination: true,
-  isLoading: false
+  paginate: true,
+  isLoading: false,
+  scrollToTopAfterSearch: true
 }
 
 function mapReduxStateToProps(reduxState, props) {

@@ -7,14 +7,13 @@ import clientConfig from '../../../services/client-config.js'
 
 class OfficeResult extends React.PureComponent {
   render() {
-    const id = this.props.id
-    const item = this.props.item.fields
+    const { id, item: { fields: item, exprs: { distance } } } = this.props
     if (!item) {
       return null
     }
 
     const sbaOfficeNames = clientConfig.sbaOfficeNames
-    const officeType = item.office_type[0]
+    const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
     const isFirstResult = id === 'result-0'
 
@@ -31,9 +30,10 @@ class OfficeResult extends React.PureComponent {
             <div id={`office-type-${id}`}>
               <div className={styles.officeType}>
                 {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
-                <span className={styles.italic}> {item.office_type[0]}</span>
+                <span className={styles.italic}>{officeType}</span>
               </div>
             </div>
+            <div id={`office-miles-${id}`}>{`${Number(distance).toFixed(1)} miles`}</div>
             <div id={`office-title-${id}`}>
               <h2>{item.title[0]}</h2>
             </div>

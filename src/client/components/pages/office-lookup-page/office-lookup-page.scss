@@ -77,3 +77,19 @@
 //     top: 44px;
 //   }
 // }
+
+.officeSearch {
+  position: relative;
+}
+
+.officeResults {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 240px;
+    left: 30px;
+    bottom: 27px;
+    background-color: #ffffff;
+    width: 321px;
+    overflow: hidden;
+  }
+}
