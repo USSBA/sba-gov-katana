@@ -12,27 +12,24 @@ class Results extends React.PureComponent {
     return <div>{children}</div>
   }
 
-  renderPaginatedView(children, props) {
-    const { total, pageSize, pageNumber, onBack, onForward } = props
+  renderPaginator(children) {
+    const { total, pageSize, pageNumber, onBack, onForward } = this.props
 
     return (
-      <div>
-        <div className={styles.scroll}>{children}</div>
-        <div className={styles.paginator}>
-          <Paginator
-            pageNumber={pageNumber}
-            pageSize={pageSize}
-            total={total}
-            onBack={onBack}
-            onForward={onForward}
-          />
-        </div>
+      <div className={styles.paginator}>
+        <Paginator
+          pageNumber={pageNumber}
+          pageSize={pageSize}
+          total={total}
+          onBack={onBack}
+          onForward={onForward}
+        />
       </div>
     )
   }
 
   render() {
-    const { children, id, resultId, paginated, extraClassName } = this.props
+    const { children, id, resultId, paginate, scroll, extraClassName } = this.props
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
         return React.cloneElement(child, {
@@ -44,11 +41,16 @@ class Results extends React.PureComponent {
     })
 
     const className = extraClassName ? `${styles.container} ${extraClassName}` : styles.container
-    const renderView = paginated ? this.renderPaginatedView : this.renderDefaultView
+
+    const divProps = {}
+    if (scroll) {
+      divProps.className = styles.scroll
+    }
 
     return (
       <div id={this.props.id} className={className}>
-        {renderView(childrenWithProps, this.props)}
+        <div {...divProps}>{childrenWithProps}</div>
+        {paginate && this.renderPaginator()}
       </div>
     )
   }
@@ -57,13 +59,17 @@ class Results extends React.PureComponent {
 Results.defaultProps = {
   items: [],
   id: null,
-  resultId: 'result'
+  resultId: 'result',
+  paginate: false,
+  scroll: false
 }
 
 Results.propTypes = {
   items: PropTypes.array,
   id: PropTypes.string, //.isRequired,
-  resultId: PropTypes.string
+  resultId: PropTypes.string,
+  paginate: PropTypes.bool,
+  scroll: PropTypes.bool
 }
 
 export default Results

@@ -65,6 +65,7 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   onChange(propName, value, options = {}) {
+    const { scrollToTopAfterSearch } = this.props
     const _options = merge(
       {
         shouldTriggerSearch: false,
@@ -83,7 +84,7 @@ export class SearchTemplate extends React.PureComponent {
         if (_options.shouldTriggerSearch === true) {
           this.onSearch(options)
         }
-        if (!isEmpty(window) && this.props.scrollToTopAfterSearch) {
+        if (!isEmpty(window) && scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
         }
       }
@@ -229,7 +230,8 @@ export class SearchTemplate extends React.PureComponent {
       loadDefaultResults,
       count,
       extraClassName,
-      defaultSearchParams: { pageSize }
+      defaultSearchParams: { pageSize },
+      paginate
     } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
@@ -256,14 +258,14 @@ export class SearchTemplate extends React.PureComponent {
       <div {...divProps}>
         <div>{childrenWithProps}</div>
         {this.renderLoadingView()}
-        {this.props.paginate && this.renderPaginator()}
+        {paginate && this.renderPaginator()}
       </div>
     )
   }
 }
 
 SearchTemplate.propTypes = {
-  hasPagination: PropTypes.bool,
+  paginate: PropTypes.bool,
   searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
   items: PropTypes.array,
@@ -274,7 +276,7 @@ SearchTemplate.propTypes = {
 
 SearchTemplate.defaultProps = {
   items: [],
-  hasPagination: true,
+  paginate: true,
   isLoading: false,
   scrollToTopAfterSearch: true
 }

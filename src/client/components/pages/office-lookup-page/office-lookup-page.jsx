@@ -63,7 +63,7 @@ class OfficeLookupPage extends React.Component {
         loadDefaultResults={true}
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
-        paginated={false}
+        paginate={false}
       >
         <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
           <TextInput
@@ -119,7 +119,7 @@ class OfficeLookupPage extends React.Component {
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
         <OfficeMap id="office-map" />
-        <Results id="office-results" paginated extraClassName={styles.officeResults}>
+        <Results id="office-results" paginate scroll extraClassName={styles.officeResults}>
           <OfficeResult />
         </Results>
       </SearchTemplate>

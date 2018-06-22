@@ -7,8 +7,7 @@ import clientConfig from '../../../services/client-config.js'
 
 class OfficeResult extends React.PureComponent {
   render() {
-    const id = this.props.id
-    const item = this.props.item.fields
+    const { id, item: { fields: item, exprs: { distance } } } = this.props
     if (!item) {
       return null
     }
@@ -34,9 +33,7 @@ class OfficeResult extends React.PureComponent {
                 <span className={styles.italic}>{officeType}</span>
               </div>
             </div>
-            <div id={`office-miles-${id}`}>
-              {`${Number(this.props.item.exprs.distance).toFixed(1)} miles`}
-            </div>
+            <div id={`office-miles-${id}`}>{`${Number(distance).toFixed(1)} miles`}</div>
             <div id={`office-title-${id}`}>
               <h2>{item.title[0]}</h2>
             </div>
