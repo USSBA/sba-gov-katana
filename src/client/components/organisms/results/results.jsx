@@ -48,7 +48,7 @@ class Results extends React.PureComponent {
     }
 
     return (
-      <div id={this.props.id} className={className}>
+      <div id={id} className={className}>
         <div {...divProps}>{childrenWithProps}</div>
         {paginate && this.renderPaginator()}
       </div>
