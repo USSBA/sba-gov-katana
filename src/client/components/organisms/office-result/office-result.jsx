@@ -21,33 +21,23 @@ class OfficeResult extends React.PureComponent {
     return (
       <div className={`card-layout`}>
         <div id={`office-result-${id}`} className={styles.officeResult}>
-          {isFirstResult && (
+          {/*isFirstResult && (
             <div className={styles.firstResult}>
               <hr />
             </div>
-          )}
+          )*/}
           <div className={styles.colA}>
-            <div id={`office-type-${id}`}>
-              <div className={styles.officeType}>
-                {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
-                <span className={styles.italic}>{officeType}</span>
-              </div>
-            </div>
+            <i className={'fa fa-map-marker ' + ' ' + styles.fa + ' ' + styles.marker} />
             <div id={`office-miles-${id}`}>{`${Number(distance).toFixed(1)} miles`}</div>
             <div id={`office-title-${id}`}>
               <h2>{item.title[0]}</h2>
             </div>
-            <Address
-              id={`office-address-${id}`}
-              streetAddress={item.location_street_address[0]}
-              city={item.location_city[0]}
-              state={item.location_state[0]}
-              /*todo: fix zipcode once not null from cloudsearch*/
-              zipCode={item.location_zipcode ? item.location_zipcode[0] : '-'}
-            />
-            {item.location_phone_number ? (
-              <PhoneNumber id={`office-phone-${id}`} phoneNumber={item.location_phone_number[0]} />
-            ) : null}
+            <div id={`office-type-${id}`}>
+              <div className={styles.officeType}>
+                {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
+                <span>{officeType}</span>
+              </div>
+            </div>
           </div>
           <div className={styles.colB}>
             {item.office_service ? (
@@ -70,6 +60,8 @@ class OfficeResult extends React.PureComponent {
               </div>
             ) : null}
           </div>
+        </div>
+        <div className={styles.hr}>
           <hr />
         </div>
       </div>

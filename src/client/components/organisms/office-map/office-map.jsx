@@ -28,7 +28,9 @@ const OfficeMap = compose(
   const { markers } = props
   let googleMapProps = {
     defaultOptions: {
-      streetViewControl: false
+      streetViewControl: false,
+      mapTypeControl: false,
+      fullscreenControl: false
     }
   }
   if (markers.length > 0) {
