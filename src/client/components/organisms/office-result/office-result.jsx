@@ -4,6 +4,7 @@ import { Address, PhoneNumber } from 'molecules'
 import { Button } from 'atoms'
 import PropTypes from 'prop-types'
 import clientConfig from '../../../services/client-config.js'
+import marker from 'assets/svg/marker.svg'
 
 class OfficeResult extends React.PureComponent {
   render() {
@@ -27,8 +28,15 @@ class OfficeResult extends React.PureComponent {
             </div>
           )*/}
           <div className={styles.colA}>
-            <i className={'fa fa-map-marker ' + ' ' + styles.fa + ' ' + styles.marker} />
-            <div id={`office-miles-${id}`}>{`${Number(distance).toFixed(1)} miles`}</div>
+            <div className={styles.distance}>
+              <div>
+                <img src={marker} className={styles.marker} />
+              </div>
+              <div id={`office-miles-${id}`} className={styles.miles}>{`${Number(distance).toFixed(
+                1
+              )} miles`}</div>
+              <div className={styles.clear} />
+            </div>
             <div id={`office-title-${id}`}>
               <h2>{item.title[0]}</h2>
             </div>
