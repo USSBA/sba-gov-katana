@@ -71,7 +71,7 @@ export class DocumentArticle extends React.Component {
   }
 
   render() {
-    const { data, mediaContact, office } = this.props
+    const { data, mediaContact, office, officeLink } = this.props
 
     const body = data.body && typeof data.body === 'string' ? data.body : ''
 
@@ -96,8 +96,6 @@ export class DocumentArticle extends React.Component {
         type = category[0]
       }
 
-      console.log('type', type)
-
       const PRESS_RELEASE = 'Press release'
       const MEDIA_ADVISORY = 'Media advisory'
 
@@ -114,18 +112,18 @@ export class DocumentArticle extends React.Component {
         articleIdText = ` | ${articleIdPrefix && `${articleIdPrefix} Number `}${data.articleId}`
       }
 
-      let officeLink = {}
-      if (clientConfig.pressRelease && office && office.website) {
+      let officeData = {}
+      if (clientConfig.pressRelease && !isEmpty(office) && office.website) {
         const { title, website: { url } } = office
-        officeLink = { title, url }
-      } else if (!clientConfig.pressRelease && data.officeLink.url) {
-        const { title, url } = data.officeLink
-        officeLink = { title, url }
+        officeData = { title, url }
+      } else if (!clientConfig.pressRelease && !isEmpty(officeLink) && officeLink.url) {
+        const { title, url } = officeLink
+        officeData = { title, url }
       }
 
       let officeElement = null
-      if (!isEmpty(officeLink)) {
-        const { title, url } = officeLink
+      if (!isEmpty(officeData)) {
+        const { title, url } = officeData
         officeElement = (
           <span>
             By <Link to={url}>{title}</Link>
@@ -139,11 +137,11 @@ export class DocumentArticle extends React.Component {
         let emailAddressLink
         let phoneLink
 
-        if (emailAddress) {
+        if (!isEmpty(emailAddress)) {
           emailAddressLink = <Link to={`mailto:${emailAddress}`}>{emailAddress}</Link>
         }
 
-        if (phone) {
+        if (!isEmpty(phone)) {
           phoneLink = <Link to={`tel:${phone}`}>{phone}</Link>
         }
 
@@ -175,7 +173,7 @@ export class DocumentArticle extends React.Component {
 
           {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
-          {!isEmpty(officeLink) && (
+          {!isEmpty(officeData) && (
             <p className={s.meta}>
               {officeElement}
               <br />
