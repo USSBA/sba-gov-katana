@@ -48,26 +48,6 @@ import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
 // homepage organisms
 import FrontPageHero from '../templates/homepage/front-page-hero/front-page-hero.jsx'
 
-// lender match organisms
-// -- form
-import AdditionalInfoForm from './lender-match/form/additional-info.jsx'
-import BusinessInfoForm from './lender-match/form/business-info.jsx'
-import ContactInfoForm from './lender-match/form/contact-info.jsx'
-import IndustryInfoForm from './lender-match/form/industry-info.jsx'
-import LoanInfo from './lender-match/form/loan-info.jsx'
-import ReviewSection from './lender-match/form/review-page-helpers.jsx'
-import ReviewSubmitInfoForm from './lender-match/form/review-submit-info.jsx'
-// -- landing page
-import FindLendersIntro from './lender-match/landing-page/find-lenders-intro.jsx'
-import HelpfulQuestions from './lender-match/landing-page/helpful-questions.jsx'
-import { HowItWorksSection } from './lender-match/landing-page/how-it-works.jsx'
-import PreparationChecklist from './lender-match/landing-page/preparation-checklist.jsx'
-// -- success page
-import ConfirmSection from './lender-match/success-page/confirm-section.jsx'
-import DynamicCounselingAndTools from './lender-match/success-page/counseling-and-tools.jsx'
-import CounselorMap from './lender-match/success-page/counselor-map.jsx'
-import EmailConfirmationInvalid from './lender-match/success-page/email-confirmed-page.jsx'
-
 // modal organisms
 import LeaveSbaModal from './modals/leave-sba-modal/leave-sba-modal.jsx'
 import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-nav.jsx'
@@ -123,25 +103,6 @@ export { Footer, Header, MobileNav }
 
 // homepage organisms
 export { FrontPageHero }
-
-// lender match organisms
-export {
-  AdditionalInfoForm,
-  BusinessInfoForm,
-  ConfirmSection,
-  ContactInfoForm,
-  CounselorMap,
-  DynamicCounselingAndTools,
-  EmailConfirmationInvalid,
-  FindLendersIntro,
-  HelpfulQuestions,
-  HowItWorksSection,
-  IndustryInfoForm,
-  LoanInfo,
-  PreparationChecklist,
-  ReviewSection,
-  ReviewSubmitInfoForm
-}
 
 // modal organisms
 export { LeaveSbaModal, MobileSectionNavModal }
