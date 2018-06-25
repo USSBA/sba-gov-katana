@@ -52,6 +52,19 @@ export class DocumentArticleLookup extends React.PureComponent {
         return null
       }
 
+      multiSelectProps.options.sort((a, b) => {
+        let comparison = 0
+
+        if (a.value === 'All' || a.value < b.value) {
+          comparison = -1
+        }
+        if (a.value > b.value) {
+          comparison = 1
+        }
+
+        return comparison
+      })
+
       return (
         <div className={styles.multiSelect} key={index}>
           <MultiSelect
