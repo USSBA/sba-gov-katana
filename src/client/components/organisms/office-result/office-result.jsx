@@ -56,18 +56,6 @@ class OfficeResult extends React.PureComponent {
               </div>
             ) : null}
           </div>
-          <div className={styles.colC}>
-            {item.office_website && item.office_website.length ? (
-              <div
-                id={`office-website-button-${id}`}
-                className={styles.officeWebsiteButton + ' website-button'}
-              >
-                <Button url={item.office_website[0]} secondary small>
-                  View website
-                </Button>
-              </div>
-            ) : null}
-          </div>
         </div>
         <div className={styles.hr}>
           <hr />
