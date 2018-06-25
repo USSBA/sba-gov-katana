@@ -65,6 +65,7 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   onChange(propName, value, options = {}) {
+    console.log(propName, value)
     const { scrollToTopAfterSearch } = this.props
     const _options = merge(
       {

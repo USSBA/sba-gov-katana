@@ -116,15 +116,26 @@ async function computeLocation(address) {
     throw new Error("Failed to geocode user's location")
   }
 }
+function parseGeocodeString(geocodeString) {
+  const [latitude, longitude] = decodeURI(geocodeString).split(',')
+  return {
+    latitude: latitude,
+    longitude: longitude
+  }
+}
 
 /* This is separate from search because it will need to have custom search to handle searching by specific indecies */
 async function officeSearch(query) {
-  const { address } = query
-  const geo = await computeLocation(address)
+  const { address, mapCenter } = query
+  let geo
+  if (mapCenter) {
+    geo = parseGeocodeString(mapCenter)
+  } else {
+    geo = await computeLocation(address)
+  }
   if (!geo) {
     return []
   }
-
   const params = buildParams(query, geo)
   try {
     const result = await module.exports.runSearch(params) // call the module.exports version for stubbing during testing
