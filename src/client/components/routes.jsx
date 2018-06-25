@@ -3,54 +3,11 @@ import Async from 'react-code-splitting'
 import React from 'react'
 
 let Main = props => <Async componentProps={props} load={import('./templates/main.jsx')} />
-let LenderMatchMain = props => (
-  <Async componentProps={props} load={import('./templates/lender-match/lender-match-main.jsx')} />
-)
 
 let StyleGuide = props => (
   <Async componentProps={props} load={import('./templates/style-guide/style-guide.jsx')} />
 )
 
-let LandingPage = props => (
-  <Async componentProps={props} load={import('./templates/lender-match/landing-page.jsx')} />
-)
-let SuccessPage = props => (
-  <Async componentProps={props} load={import('./templates/lender-match/success-page.jsx')} />
-)
-let EmailConfirmedPage = props => (
-  <Async
-    componentProps={props}
-    load={import('./organisms/lender-match/success-page/email-confirmed-page.jsx')}
-  />
-)
-let EmailConfirmationInvalid = props => (
-  <Async
-    componentProps={props}
-    load={import('./organisms/lender-match/success-page/email-confirmation-invalid.jsx')}
-  />
-)
-
-let LoanForm = props => (
-  <Async componentProps={props} load={import('./templates/lender-match/loan-form.jsx')} />
-)
-let ContactInfo = props => (
-  <Async componentProps={props} load={import('./organisms/lender-match/form/contact-info.jsx')} />
-)
-let LoanInfo = props => (
-  <Async componentProps={props} load={import('./organisms/lender-match/form/loan-info.jsx')} />
-)
-let BusinessInfo = props => (
-  <Async componentProps={props} load={import('./organisms/lender-match/form/business-info.jsx')} />
-)
-let IndustryInfo = props => (
-  <Async componentProps={props} load={import('./organisms/lender-match/form/industry-info.jsx')} />
-)
-let AdditionalInfo = props => (
-  <Async componentProps={props} load={import('./organisms/lender-match/form/additional-info.jsx')} />
-)
-let ReviewSubmitInfo = props => (
-  <Async componentProps={props} load={import('./organisms/lender-match/form/review-submit-info.jsx')} />
-)
 let DeveloperTester = props => (
   <Async componentProps={props} load={import('./organisms/developer-tester/developer-tester.jsx')} />
 )
@@ -107,8 +64,6 @@ import MaintenancePage from './pages/maintenance-page/maintenance-page.jsx'
 
 const mainRoutes = [
   <IndexRoute key={1} component={HomepageContainer} />,
-  <Redirect key={27} from="/funding-programs/loans/lendermatch" to="/lendermatch" />,
-  <Route key={2} path="/lendermatch" component={LandingPage} />,
   <Route key={4} path="/samples/:id" component={SamplePage} />,
   <Route key={5} path="/samples/:id/" component={SamplePage} />,
   <Route key={4} path="/document" component={DocumentLookupPage} />,
