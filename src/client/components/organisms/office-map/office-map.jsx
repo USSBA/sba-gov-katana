@@ -82,7 +82,6 @@ class OfficeMapApp extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { items } = nextProps
-    console.log('getting props')
     this.getLatLngs(items).then(results => {
       if (_.difference(results, this.state.points)) {
         this.setState({
@@ -161,7 +160,7 @@ class OfficeMapApp extends React.PureComponent {
               shouldTriggerSearch: true,
               shouldResetPageNumber: true
             })
-            console.log(mapCenter.lat(), mapCenter.lng())
+            onFieldChange('mapCenter', '')
           }}
         />
       </div>
