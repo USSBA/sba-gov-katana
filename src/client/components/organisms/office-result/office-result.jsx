@@ -22,11 +22,6 @@ class OfficeResult extends React.PureComponent {
     return (
       <div className={`card-layout`}>
         <div id={`office-result-${id}`} className={styles.officeResult}>
-          {/*isFirstResult && (
-            <div className={styles.firstResult}>
-              <hr />
-            </div>
-          )*/}
           <div>
             <div className={styles.distance}>
               <div>

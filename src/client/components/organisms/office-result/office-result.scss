@@ -9,7 +9,6 @@
   }
 
   @include grid-media($sba-grid-medium) {
-    /*@include grid-column(12);*/
     margin: 20px;
 
     h2 {
@@ -20,7 +19,6 @@
   }
 
   @include grid-media($sba-grid-large) {
-    /*@include grid-column(12);*/
     margin: 20px;
 
     h2 {
