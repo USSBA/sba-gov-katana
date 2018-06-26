@@ -27,7 +27,7 @@ class OfficeResult extends React.PureComponent {
               <hr />
             </div>
           )*/}
-          <div className={styles.colA}>
+          <div>
             <div className={styles.distance}>
               <div>
                 <img src={marker} className={styles.marker} />
@@ -47,7 +47,7 @@ class OfficeResult extends React.PureComponent {
               </div>
             </div>
           </div>
-          <div className={styles.colB}>
+          <div>
             {item.office_service ? (
               <div className={styles.serviceList + ' service-list'}>
                 {' '}

@@ -45,44 +45,6 @@
   }
 }
 
-.colA {
-  /*
-  @include grid-media($sba-grid-medium) {
-    margin-left: 0;
-    margin-bottom: 30px;
-  }
-  @include grid-media($sba-grid-large) {
-    margin-bottom: 30px;
-  }
-  */
-}
-
-.colB {
-  /*
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(3);
-    margin-bottom: 30px;
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(3);
-    margin-bottom: 30px;
-  }
-  */
-}
-
-.colC {
-  /*
-  @include grid-media($sba-grid-medium) {
-    @include grid-column(3);
-    margin-bottom: 30px;
-  }
-  @include grid-media($sba-grid-large) {
-    @include grid-column(3);
-    margin-bottom: 30px;
-  }
-  */
-}
-
 .officeType {
   color: #6a6a6a;
   font-size: 18px;
