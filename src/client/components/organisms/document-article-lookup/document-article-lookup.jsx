@@ -57,8 +57,7 @@ export class DocumentArticleLookup extends React.PureComponent {
 
         if (a.value === 'All' || a.value < b.value) {
           comparison = -1
-        }
-        if (a.value > b.value) {
+        } else if (a.value > b.value) {
           comparison = 1
         }
 
