@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="20px" viewBox="0 0 16 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/location</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.22921875,19.5964844 C3.55351563,11.3683984 2.5,10.5239453 2.5,7.5 C2.5,3.35785156 5.85785156,0 10,0 C14.1421484,0 17.5,3.35785156 17.5,7.5 C17.5,10.5239453 16.4464844,11.3683984 10.7707812,19.5964844 C10.3983203,20.1345312 9.60164062,20.1344922 9.22921875,19.5964844 Z M10,10.625 C11.7258984,10.625 13.125,9.22589844 13.125,7.5 C13.125,5.77410156 11.7258984,4.375 10,4.375 C8.27410156,4.375 6.875,5.77410156 6.875,7.5 C6.875,9.22589844 8.27410156,10.625 10,10.625 Z" id="path-1"></path>
+    </defs>
+    <g id="Here-We-Go!" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MVP-3" transform="translate(-60.000000, -372.000000)">
+            <g id="Group" transform="translate(30.000000, 338.000000)">
+                <g id="atoms/icon/location" transform="translate(30.000000, 34.000000)">
+                    <g id="Solid/map-marker-alt" transform="translate(-2.000000, 0.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
+                        <g id="Color/sba-red" mask="url(#mask-2)" fill="#CC0000" fill-rule="evenodd">
+                            <rect id="sba-red" x="0" y="0" width="20" height="20"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,6 +4,7 @@ import { Address, PhoneNumber } from 'molecules'
 import { Button } from 'atoms'
 import PropTypes from 'prop-types'
 import clientConfig from '../../../services/client-config.js'
+import marker from 'assets/svg/marker.svg'
 
 class OfficeResult extends React.PureComponent {
   render() {
@@ -21,35 +22,27 @@ class OfficeResult extends React.PureComponent {
     return (
       <div className={`card-layout`}>
         <div id={`office-result-${id}`} className={styles.officeResult}>
-          {isFirstResult && (
-            <div className={styles.firstResult}>
-              <hr />
-            </div>
-          )}
-          <div className={styles.colA}>
-            <div id={`office-type-${id}`}>
-              <div className={styles.officeType}>
-                {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
-                <span className={styles.italic}>{officeType}</span>
+          <div>
+            <div className={styles.distance}>
+              <div>
+                <img src={marker} className={styles.marker} />
               </div>
+              <div id={`office-miles-${id}`} className={styles.miles}>{`${Number(distance).toFixed(
+                1
+              )} miles`}</div>
+              <div className={styles.clear} />
             </div>
-            <div id={`office-miles-${id}`}>{`${Number(distance).toFixed(1)} miles`}</div>
             <div id={`office-title-${id}`}>
               <h2>{item.title[0]}</h2>
             </div>
-            <Address
-              id={`office-address-${id}`}
-              streetAddress={item.location_street_address[0]}
-              city={item.location_city[0]}
-              state={item.location_state[0]}
-              /*todo: fix zipcode once not null from cloudsearch*/
-              zipCode={item.location_zipcode ? item.location_zipcode[0] : '-'}
-            />
-            {item.location_phone_number ? (
-              <PhoneNumber id={`office-phone-${id}`} phoneNumber={item.location_phone_number[0]} />
-            ) : null}
+            <div id={`office-type-${id}`}>
+              <div className={styles.officeType}>
+                {isOfficialOffice && <i className={'fa fa-shield ' + styles.fa} />}
+                <span>{officeType}</span>
+              </div>
+            </div>
           </div>
-          <div className={styles.colB}>
+          <div>
             {item.office_service ? (
               <div className={styles.serviceList + ' service-list'}>
                 {' '}
@@ -58,18 +51,8 @@ class OfficeResult extends React.PureComponent {
               </div>
             ) : null}
           </div>
-          <div className={styles.colC}>
-            {item.office_website && item.office_website.length ? (
-              <div
-                id={`office-website-button-${id}`}
-                className={styles.officeWebsiteButton + ' website-button'}
-              >
-                <Button url={item.office_website[0]} secondary small>
-                  View website
-                </Button>
-              </div>
-            ) : null}
-          </div>
+        </div>
+        <div className={styles.hr}>
           <hr />
         </div>
       </div>
