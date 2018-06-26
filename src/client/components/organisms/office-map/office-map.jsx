@@ -2,6 +2,7 @@ import React from 'react'
 import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import _ from 'lodash'
 import axios from 'axios'
 import queryString from 'query-string'
 import styles from './office-map.scss'
@@ -25,8 +26,9 @@ const OfficeMap = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
-  const { markers } = props
-  let googleMapProps = {
+  const { markers, onMapMounted, onDragEnd } = props
+  const googleMapProps = {
+    onDragEnd: onDragEnd,
     defaultOptions: {
       streetViewControl: false,
       mapTypeControl: false,
@@ -34,7 +36,7 @@ const OfficeMap = compose(
     }
   }
   if (markers.length > 0) {
-    googleMapProps.ref = props.onMapMounted
+    googleMapProps.ref = onMapMounted
     googleMapProps.defaultZoom = 4
 
     const bounds = new google.maps.LatLngBounds()
@@ -73,16 +75,19 @@ class OfficeMapApp extends React.PureComponent {
 
     this.state = {
       points: [],
-      bounds: {}
+      bounds: {},
+      map: {}
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const { items } = nextProps
     this.getLatLngs(items).then(results => {
-      this.setState({
-        points: results
-      })
+      if (_.difference(results, this.state.points)) {
+        this.setState({
+          points: results
+        })
+      }
     })
   }
 
@@ -129,6 +134,9 @@ class OfficeMapApp extends React.PureComponent {
     // after map has mounted
     // auto-zoom the map to fit all marker points
     if (mapRef !== null) {
+      this.setState({
+        map: mapRef
+      })
       mapRef.fitBounds(this.bounds)
     }
   }
@@ -136,14 +144,24 @@ class OfficeMapApp extends React.PureComponent {
   render() {
     // pass array of points with lats and lngs
 
-    const { points } = this.state
+    const { points, map } = this.state
+    const { onFieldChange } = this.props
 
     return (
       <div id="google-map" className={styles.googleMap}>
         <OfficeMap
-          markers={this.state.points}
+          markers={points}
           setBounds={this.setBounds.bind(this)}
           onMapMounted={this.onMapMounted.bind(this)}
+          onDragEnd={() => {
+            const mapCenter = map.getCenter()
+            this.setState({ points: [] })
+            onFieldChange('mapCenter', `${mapCenter.lat()},${mapCenter.lng()}`, {
+              shouldTriggerSearch: true,
+              shouldResetPageNumber: true
+            })
+            onFieldChange('mapCenter', '')
+          }}
         />
       </div>
     )
@@ -154,6 +172,7 @@ OfficeMapApp.defaultProps = {
 }
 
 OfficeMapApp.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  onChange: PropTypes.func
 }
 export default OfficeMapApp
