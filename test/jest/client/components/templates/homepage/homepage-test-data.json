@@ -1,10 +1,8 @@
 {
-  "buttons": [
-    {
-      "url": "/business-guide",
-      "title": "See the guide"
-    }
-  ],
+  "buttons": [{
+    "url": "/business-guide",
+    "title": "See the guide"
+  }],
   "hero": {
     "type": "hero",
     "caption": "Want to be an entrepreneur? Learn how to get started on your business in 10 steps.",
@@ -29,8 +27,7 @@
     "link": {},
     "title": "Start and grow your business"
   },
-  "paragraphs": [
-    {
+  "paragraphs": [{
       "type": "sectionHeader",
       "text": "Browse business topics"
     },
@@ -44,8 +41,7 @@
     },
     {
       "type": "cardCollection",
-      "cards": [
-        {
+      "cards": [{
           "type": "card",
           "image": {
             "url": "/sites/default/files/2018-02/counseling2.jpg",
@@ -108,22 +104,32 @@
       ]
     },
     {
-      "style": "Medium",
-      "type": "callToAction",
-      "id": 6136,
+      "blurb": "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
+      "buttonAction": {
+        "id": 9262,
+        "type": "link",
+        "link": {
+          "url": "/nsbw/",
+          "title": "Learn More"
+        }
+      },
       "headline": "National Small Business Week 2018",
-      "blurb":
-        "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
-      "image": "/sites/default/files/2018-02/counseling2_0.jpg",
-      "imageAlt": "National Small Business Week",
+      "image": {
+        "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+        "alt": "National Small Business Week",
+        "width": 1000,
+        "height": 667
+      },
+      "type": "callToAction",
       "title": "National Small Business Week CTA",
+      "id": 9264,
+      "updated": 1530207368,
+      "created": 1519331979,
       "langCode": "en",
-      "btnTitle": "Learn More",
-      "btnUrl": "/nsbw/"
+      "style": "Medium"
     }
   ],
-  "summary":
-    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
+  "summary": "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
   "type": "homePage",
   "title": "Small Business Administration",
   "id": 6134,

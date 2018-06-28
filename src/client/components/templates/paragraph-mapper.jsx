@@ -84,9 +84,7 @@ function makeParagraphs(
             headline={item.headline}
             blurb={item.blurb}
             image={item.image}
-            imageAlt={item.imageAlt}
-            btnTitle={item.btnTitle}
-            btnUrl={item.btnUrl}
+            buttonAction={item.buttonAction}
             title={item.title}
             eventConfig={eventConfig}
           />
