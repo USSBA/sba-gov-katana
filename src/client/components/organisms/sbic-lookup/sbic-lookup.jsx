@@ -310,8 +310,7 @@ const NameAndAddress = props => {
       <div className={s.addressContainer}>
         <div className={s.streetAddress}>{props.streetAddress}</div>
         <div className={s.cityAddress}>
-          {props.city}, {props.state}
-          {props.zipCode}
+          {props.city}, {props.state} {props.zipCode}
         </div>
       </div>
     </div>
