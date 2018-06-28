@@ -512,12 +512,26 @@ ShallowWrapper {
             >
                 <CallToAction
                     blurb="The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories."
-                    btnTitle="Learn More"
-                    btnUrl="/nsbw/"
+                    buttonAction={
+                        Object {
+                            "id": 9262,
+                            "link": Object {
+                              "title": "Learn More",
+                              "url": "/nsbw/",
+                            },
+                            "type": "link",
+                          }
+                    }
                     eventConfig={undefined}
                     headline="National Small Business Week 2018"
-                    image="/sites/default/files/2018-02/counseling2_0.jpg"
-                    imageAlt="National Small Business Week"
+                    image={
+                        Object {
+                            "alt": "National Small Business Week",
+                            "height": 667,
+                            "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                            "width": 1000,
+                          }
+                    }
                     size="Medium"
                     title="National Small Business Week CTA"
                 />
@@ -1030,12 +1044,26 @@ ShallowWrapper {
                   >
                         <CallToAction
                               blurb="The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories."
-                              btnTitle="Learn More"
-                              btnUrl="/nsbw/"
+                              buttonAction={
+                                    Object {
+                                          "id": 9262,
+                                          "link": Object {
+                                            "title": "Learn More",
+                                            "url": "/nsbw/",
+                                          },
+                                          "type": "link",
+                                        }
+                              }
                               eventConfig={undefined}
                               headline="National Small Business Week 2018"
-                              image="/sites/default/files/2018-02/counseling2_0.jpg"
-                              imageAlt="National Small Business Week"
+                              image={
+                                    Object {
+                                          "alt": "National Small Business Week",
+                                          "height": 667,
+                                          "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                                          "width": 1000,
+                                        }
+                              }
                               size="Medium"
                               title="National Small Business Week CTA"
                         />
@@ -1165,16 +1193,28 @@ ShallowWrapper {
                           },
                           Object {
                             "blurb": "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
-                            "btnTitle": "Learn More",
-                            "btnUrl": "/nsbw/",
+                            "buttonAction": Object {
+                              "id": 9262,
+                              "link": Object {
+                                "title": "Learn More",
+                                "url": "/nsbw/",
+                              },
+                              "type": "link",
+                            },
+                            "created": 1519331979,
                             "headline": "National Small Business Week 2018",
-                            "id": 6136,
-                            "image": "/sites/default/files/2018-02/counseling2_0.jpg",
-                            "imageAlt": "National Small Business Week",
+                            "id": 9264,
+                            "image": Object {
+                              "alt": "National Small Business Week",
+                              "height": 667,
+                              "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                              "width": 1000,
+                            },
                             "langCode": "en",
                             "style": "Medium",
                             "title": "National Small Business Week CTA",
                             "type": "callToAction",
+                            "updated": 1530207368,
                           },
                         ],
                         "summary": "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
@@ -1973,16 +2013,28 @@ ShallowWrapper {
               },
               Object {
                 "blurb": "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
-                "btnTitle": "Learn More",
-                "btnUrl": "/nsbw/",
+                "buttonAction": Object {
+                  "id": 9262,
+                  "link": Object {
+                    "title": "Learn More",
+                    "url": "/nsbw/",
+                  },
+                  "type": "link",
+                },
+                "created": 1519331979,
                 "headline": "National Small Business Week 2018",
-                "id": 6136,
-                "image": "/sites/default/files/2018-02/counseling2_0.jpg",
-                "imageAlt": "National Small Business Week",
+                "id": 9264,
+                "image": Object {
+                  "alt": "National Small Business Week",
+                  "height": 667,
+                  "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                  "width": 1000,
+                },
                 "langCode": "en",
                 "style": "Medium",
                 "title": "National Small Business Week CTA",
                 "type": "callToAction",
+                "updated": 1530207368,
               },
             ],
             "summary": "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
@@ -3180,12 +3232,26 @@ ShallowWrapper {
                               >
                                         <CallToAction
                                                   blurb="The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories."
-                                                  btnTitle="Learn More"
-                                                  btnUrl="/nsbw/"
+                                                  buttonAction={
+                                                            Object {
+                                                                      "id": 9262,
+                                                                      "link": Object {
+                                                                        "title": "Learn More",
+                                                                        "url": "/nsbw/",
+                                                                      },
+                                                                      "type": "link",
+                                                                    }
+                                                  }
                                                   eventConfig={undefined}
                                                   headline="National Small Business Week 2018"
-                                                  image="/sites/default/files/2018-02/counseling2_0.jpg"
-                                                  imageAlt="National Small Business Week"
+                                                  image={
+                                                            Object {
+                                                                      "alt": "National Small Business Week",
+                                                                      "height": 667,
+                                                                      "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                                                                      "width": 1000,
+                                                                    }
+                                                  }
                                                   size="Medium"
                                                   title="National Small Business Week CTA"
                                         />
@@ -3698,12 +3764,26 @@ ShallowWrapper {
                               >
                                         <CallToAction
                                                   blurb="The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories."
-                                                  btnTitle="Learn More"
-                                                  btnUrl="/nsbw/"
+                                                  buttonAction={
+                                                            Object {
+                                                                      "id": 9262,
+                                                                      "link": Object {
+                                                                        "title": "Learn More",
+                                                                        "url": "/nsbw/",
+                                                                      },
+                                                                      "type": "link",
+                                                                    }
+                                                  }
                                                   eventConfig={undefined}
                                                   headline="National Small Business Week 2018"
-                                                  image="/sites/default/files/2018-02/counseling2_0.jpg"
-                                                  imageAlt="National Small Business Week"
+                                                  image={
+                                                            Object {
+                                                                      "alt": "National Small Business Week",
+                                                                      "height": 667,
+                                                                      "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                                                                      "width": 1000,
+                                                                    }
+                                                  }
                                                   size="Medium"
                                                   title="National Small Business Week CTA"
                                         />
@@ -3837,16 +3917,28 @@ ShallowWrapper {
               },
               Object {
                 "blurb": "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
-                "btnTitle": "Learn More",
-                "btnUrl": "/nsbw/",
+                "buttonAction": Object {
+                  "id": 9262,
+                  "link": Object {
+                    "title": "Learn More",
+                    "url": "/nsbw/",
+                  },
+                  "type": "link",
+                },
+                "created": 1519331979,
                 "headline": "National Small Business Week 2018",
-                "id": 6136,
-                "image": "/sites/default/files/2018-02/counseling2_0.jpg",
-                "imageAlt": "National Small Business Week",
+                "id": 9264,
+                "image": Object {
+                  "alt": "National Small Business Week",
+                  "height": 667,
+                  "url": "/sites/default/files/2018-02/counseling2_0.jpg",
+                  "width": 1000,
+                },
                 "langCode": "en",
                 "style": "Medium",
                 "title": "National Small Business Week CTA",
                 "type": "callToAction",
+                "updated": 1530207368,
               },
             ],
             "summary": "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",

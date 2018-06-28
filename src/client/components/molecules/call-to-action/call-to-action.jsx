@@ -7,7 +7,14 @@ import { Button, DecorativeDash } from 'atoms'
 
 const CallToAction = props => {
   let { size: variation } = props
-  const { blurb, btnTitle, btnUrl, image, imageAlt, headline } = props
+  const {
+    blurb,
+    buttonAction: {
+      link: { title: btnTitle, url: btnUrl }
+    },
+    image: { url: imageUrl, alt: imageAlt },
+    headline
+  } = props
 
   // e.g. "Button only" (from Drupal) -> styles.buttonOnlyVariation
   variation = camelCase(`${variation.toLowerCase()} variation`)
@@ -18,7 +25,7 @@ const CallToAction = props => {
   })
 
   const backgroundImageStyle = {
-    backgroundImage: `url(${image})`
+    backgroundImage: `url(${imageUrl})`
   }
 
   return (
