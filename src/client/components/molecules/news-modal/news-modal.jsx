@@ -2,7 +2,7 @@ import React from 'react'
 import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
 import { includes } from 'lodash'
-import { fetchContentById } from '../../../fetch-content-helper.js'
+import { fetchSiteContent } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
 import config from '../../../services/client-config.js'
 import envelopeIcon from 'assets/svg/envelope.svg'
@@ -77,7 +77,7 @@ class SbaNewsModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     //we do not care about the response
-    fetchContentById('newsletterRegistration', 'newsletter-registration', {
+    fetchSiteContent('newsletterRegistration', 'newsletter-registration', {
       userEmailAddress: this.state.userEmailAddress,
       userZipCode: this.state.userZipCode
     })

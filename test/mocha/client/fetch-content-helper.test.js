@@ -2,28 +2,28 @@ import * as helper from '../../../src/client/fetch-content-helper'
 import sinon from 'sinon'
 
 describe('#helper', function() {
-  let fetchContentByIdStub, fetchContentByQuery
+  let fetchSiteContentStub, fetchRestContentStub
   before(function() {
-    fetchContentByIdStub = sinon.stub(helper, 'fetchContentById')
-    fetchContentByIdStub.returns('success')
+    fetchSiteContentStub = sinon.stub(helper, 'fetchSiteContent')
+    fetchSiteContentStub.returns('success')
 
-    fetchContentByQuery = sinon.stub(helper, 'fetchContentByQuery')
-    fetchContentByQuery.returns('success')
+    fetchRestContentStub = sinon.stub(helper, 'fetchRestContent')
+    fetchRestContentStub.returns('success')
   })
 
   after(function() {
-    fetchContentByIdStub.restore()
-    fetchContentByQuery.restore()
+    fetchRestContentStub.restore()
+    fetchSiteContentStub.restore()
   })
 
-  it('should have fetchContentById method', function() {
+  it('should have fetchSiteContent method', function() {
     const expected = 'success'
-    const result = helper.fetchContentById()
+    const result = helper.fetchSiteContent()
     result.should.equal(expected)
   })
-  it('should have fetchContentByQuery method', function() {
+  it('should have fetchRestContent method', function() {
     const expected = 'success'
-    const result = helper.fetchContentByQuery()
+    const result = helper.fetchRestContent()
     result.should.equal(expected)
   })
 })

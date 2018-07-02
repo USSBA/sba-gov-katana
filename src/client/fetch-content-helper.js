@@ -2,7 +2,7 @@ import axios from 'axios'
 import types from './actions/types.js'
 import queryString from 'querystring'
 
-function formatContentByIdResponse(type, id, data) {
+function formatRestContentResponse(type, id, data) {
   return {
     type: types.restContent,
     contentType: type,
@@ -12,19 +12,19 @@ function formatContentByIdResponse(type, id, data) {
   }
 }
 
-async function fetchContentById(type, id) {
+async function fetchRestContent(type, id) {
   let data = null
   try {
     const response = await axios.get('/api/content/' + type + (id ? '/' + id : '') + '.json')
     data = response.data
   } catch (error) {
-    console.error('fetchContentById', error)
+    console.error('fetchRestContent', error)
   }
 
-  return formatContentByIdResponse(type, id, data)
+  return formatRestContentResponse(type, id, data)
 }
 
-function formatContentByQueryResponse(prop, query, data) {
+function formatSiteContentResponse(prop, query, data) {
   return {
     type: types.siteContent,
     contentType: prop,
@@ -34,17 +34,17 @@ function formatContentByQueryResponse(prop, query, data) {
   }
 }
 
-async function fetchContentByQuery(prop, type, query) {
+async function fetchSiteContent(prop, type, query) {
   const url = '/api/content/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
   let data = null
   try {
     const response = await axios.get(url)
     data = response.data
   } catch (error) {
-    console.error('fetchContentByQuery', error)
+    console.error('fetchSiteContent', error)
   }
 
-  return formatContentByQueryResponse(prop, query, data)
+  return formatSiteContentResponse(prop, query, data)
 }
 
-export { fetchContentById, fetchContentByQuery, formatContentByIdResponse, formatContentByQueryResponse }
+export { fetchRestContent, fetchSiteContent, formatRestContentResponse, formatSiteContentResponse }
