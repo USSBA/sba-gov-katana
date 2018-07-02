@@ -1,15 +1,13 @@
 import React from 'react'
 import ReactModal from 'react-modal'
-import { includes } from 'lodash'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
+import { includes } from 'lodash'
+import { fetchSiteContent } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
 import config from '../../../services/client-config.js'
 import envelopeIcon from 'assets/svg/envelope.svg'
 import exitIcon from 'assets/svg/close_button.svg'
 import styles from './news-modal.scss'
-import * as ContentActions from '../../../actions/content.js'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Button, TextInput } from 'atoms'
 import { logEvent } from '../../../services/analytics.js'
@@ -19,6 +17,7 @@ import {
   getZipcodeValidationState
 } from '../../../services/form-validation-helpers.js'
 
+/* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class SbaNewsModal extends React.Component {
   timerId = null
 
@@ -77,7 +76,8 @@ class SbaNewsModal extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.actions.fetchContentIfNeeded('newsletterRegistration', 'newsletter-registration', {
+    //we do not care about the response
+    fetchSiteContent('newsletterRegistration', 'newsletter-registration', {
       userEmailAddress: this.state.userEmailAddress,
       userZipCode: this.state.userZipCode
     })
@@ -210,18 +210,11 @@ class SbaNewsModal extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    userEmailAddress: state.modalReducer.modalProps.userEmailAddress
-  }
-}
-
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ContentActions, dispatch),
     modalActions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SbaNewsModal)
+export default connect(mapDispatchToProps)(SbaNewsModal)
 
 export { SbaNewsModal }
