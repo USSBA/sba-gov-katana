@@ -6,12 +6,29 @@ import _ from 'lodash'
 
 describe('CallToAction', () => {
   const ctaOptions = {
-    btnUrl: 'http://www.example.com/',
-    btnTitle: 'Call To Action',
-    image: 'http://example.com/someImage.jpg',
-    imageAlt: 'alt text for image',
+    blurb: 'This is the blurb for the CTA.',
+    buttonAction: {
+      id: 9262,
+      type: 'link',
+      link: {
+        url: 'http://www.example.com/',
+        title: 'Call To Action'
+      }
+    },
     headline: 'This is the headline for the CTA.',
-    blurb: 'This is the blurb for the CTA.'
+    image: {
+      url: 'http://example.com/someImage.jpg',
+      alt: 'alt text for image',
+      width: 1000,
+      height: 667
+    },
+    type: 'callToAction',
+    title: 'National Small Business Week CTA',
+    id: 9264,
+    updated: 1519332130,
+    created: 1519331979,
+    langCode: 'en',
+    style: 'Medium'
   }
   test('renders a small size', () => {
     const component = renderer.create(<CallToAction size="small" {...ctaOptions} />)
