@@ -32,6 +32,20 @@ describe('Primary Search Bar', () => {
     expect(searchBar.find(TextInput).length).toEqual(1)
   })
 
+  it('sets the value property of child components based on fieldValues map', () => {
+    const fieldValues = {
+      myQueryParam: 'sample value'
+    }
+    const searchBar = shallow(
+      <PrimarySearchBar fieldValues={fieldValues}>
+        <TextInput queryParamName="myQueryParam" />
+      </PrimarySearchBar>
+    )
+    const textInput = searchBar.find(TextInput)
+    expect(textInput.length).toEqual(1)
+    expect(textInput.prop('value')).toEqual(fieldValues.myQueryParam)
+  })
+
   it('runs onSearch when search button is clicked', () => {
     const onSearchSpy = jest.spyOn(PrimarySearchBar.prototype, 'onSearch')
     const searchBar = mount(<PrimarySearchBar />)

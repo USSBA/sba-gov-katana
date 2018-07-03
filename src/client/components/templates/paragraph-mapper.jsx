@@ -75,13 +75,12 @@ function makeParagraphs(
           />
         )
       } else if (item.type === 'callToAction') {
-        
         // this handles backward compatibility for changes by TA-272
         // remove it after the next full reseed is executed
         // \/\/\/\/\/
-        if(item.btnTitle){
+        if (item.btnTitle) {
           item = Object.assign({}, item, {
-            buttonAction:{
+            buttonAction: {
               link: {
                 title: item.btnTitle,
                 url: item.btnUrl
@@ -93,13 +92,12 @@ function makeParagraphs(
             }
           })
         }
-        // end: backward compatibility for changes by TA-272 
-        
+        // end: backward compatibility for changes by TA-272
+
         if (eventConfig) {
           eventConfig.action = item.buttonAction.title
         }
-        
-        
+
         paragraph = (
           <CallToAction
             size={item.style}
