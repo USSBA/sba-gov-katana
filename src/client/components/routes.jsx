@@ -17,7 +17,6 @@ let TenStepsLandingPage = props => (
 let HomepageContainer = props => (
   <Async componentProps={props} load={import('./templates/homepage/homepage-container.jsx')} />
 )
-let SamplePage = props => <Async componentProps={props} load={import('./pages/sample.jsx')} />
 let RootPage = props => <Async componentProps={props} load={import('./pages/root-page.jsx')} />
 let DocumentLookupPage = props => (
   <Async componentProps={props} load={import('./pages/document-lookup-page/document-lookup-page.jsx')} />
@@ -64,8 +63,6 @@ import MaintenancePage from './pages/maintenance-page/maintenance-page.jsx'
 
 const mainRoutes = [
   <IndexRoute key={1} component={HomepageContainer} />,
-  <Route key={4} path="/samples/:id" component={SamplePage} />,
-  <Route key={5} path="/samples/:id/" component={SamplePage} />,
   <Route key={4} path="/document" component={DocumentLookupPage} />,
   <Route key={14} path="/document/" component={DocumentLookupPage} />,
   <Route key={40} path="/article" component={ArticleLookupPage} />,
