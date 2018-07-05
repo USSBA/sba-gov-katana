@@ -275,6 +275,7 @@ SearchTemplate.propTypes = {
 }
 
 SearchTemplate.defaultProps = {
+  defaultSearchParams: { pageSize: 5 },
   items: [],
   paginate: true,
   isLoading: false,
