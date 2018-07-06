@@ -7,7 +7,6 @@ import reviewSubmitInfoReducer from './review-submit-info.js'
 import modalReducer from './modal.js'
 import contentReducer from './content.js'
 import feedbackReducer from './feedback.js'
-import restContentReducer from './rest-content.js'
 import confirmationEmailReducer from './confirmation-email.js'
 import displayReducer from './display.js'
 import loadingReducer from './loading.js'
@@ -20,7 +19,6 @@ const rootReducer = combineReducers({
   modalReducer: modalReducer,
   contentReducer: contentReducer,
   confirmationEmailReducer: confirmationEmailReducer,
-  restContent: restContentReducer,
   feedback: feedbackReducer,
   display: displayReducer,
   navigation: navigationReducer,

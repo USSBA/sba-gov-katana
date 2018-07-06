@@ -21,7 +21,7 @@ async function fetchRestContent(type, id) {
     console.error('fetchRestContent', error)
   }
 
-  return formatRestContentResponse(type, id, data)
+  return data
 }
 
 function formatSiteContentResponse(prop, query, data) {
