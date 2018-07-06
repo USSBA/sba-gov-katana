@@ -3,8 +3,6 @@ import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import _ from 'lodash'
-import axios from 'axios'
-import queryString from 'query-string'
 import styles from './office-map.scss'
 var geocoder = require('google-geocoder')
 import PropTypes from 'prop-types'
@@ -12,9 +10,6 @@ import PropTypes from 'prop-types'
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
 }&v=3.exp&libraries=geometry,drawing,places`
-const geo = geocoder({
-  key: config.googleMapsApiKey
-})
 
 const OfficeMap = compose(
   withProps({
@@ -28,13 +23,19 @@ const OfficeMap = compose(
 )(props => {
   const { markers, onMapMounted, onDragEnd } = props
   const googleMapProps = {
-    onDragEnd: onDragEnd,
     defaultOptions: {
       streetViewControl: false,
       mapTypeControl: false,
       fullscreenControl: false
-    }
+    },
+    defaultZoom: 10,
+    defaultCenter: {
+      lat: 38.910353,
+      lng: -77.017739
+    },
+    onDragEnd: onDragEnd
   }
+  //todo: move to proper lifecycle method
   if (markers.length > 0) {
     googleMapProps.ref = onMapMounted
     googleMapProps.defaultZoom = 4
@@ -45,13 +46,6 @@ const OfficeMap = compose(
     }
     props.setBounds(bounds)
     googleMapProps.defaultCenter = bounds.getCenter()
-  } else {
-    // default to zipcode 20001
-    googleMapProps.defaultZoom = 10
-    googleMapProps.defaultCenter = {
-      lat: 38.910353,
-      lng: -77.017739
-    }
   }
 
   return (
@@ -82,48 +76,28 @@ class OfficeMapApp extends React.PureComponent {
 
   componentWillReceiveProps(nextProps) {
     const { items } = nextProps
-    this.getLatLngs(items).then(results => {
-      if (_.difference(results, this.state.points)) {
-        this.setState({
-          points: results
-        })
-      }
-    })
+    const newPoints = this.getLatLngs(items)
+    if (_.difference(newPoints, this.state.points)) {
+      this.setState({
+        points: newPoints
+      })
+    }
   }
 
   getLatLngs(items) {
-    let geolocations = []
+    const geolocations = []
     items.forEach(item => {
-      // if geolocation data available
-      // set geolocation
-      // else
-      // query geocoder service for geolocation
-
-      let promise
-      if (item.fields.geolocation) {
-        const latLng = item.fields.geolocation[0].split(',')
-        promise = Promise.resolve({
+      const { geolocation } = item.fields
+      if (!_.isEmpty(geolocation)) {
+        const latLng = geolocation[0].split(',')
+        const geocode = {
           lat: Number(latLng[0]),
           lng: Number(latLng[1])
-        })
-      } else {
-        promise = new Promise((resolve, reject) => {
-          const address = `${item.fields.location_street_address} ${item.fields.location_city} ${
-            item.fields.location_state
-          } ${item.fields.location_zipcode}`
-          geo.find(address, (err, result) => {
-            resolve({
-              lat: result[0].location.lat,
-              lng: result[0].location.lng
-            })
-          })
-        })
+        }
+        geolocations.push(geocode)
       }
-
-      geolocations.push(promise)
     })
-
-    return Promise.all(geolocations)
+    return geolocations
   }
 
   setBounds(bounds) {
