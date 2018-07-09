@@ -82,7 +82,7 @@ class OfficeLookupPage extends React.Component {
             className={styles.zip}
             label="Near"
             placeholder="Zip Code"
-            defaultValue={defaultZipCode}
+            value={defaultZipCode}
             validationFunction={input => {
               const fiveDigitRegex = /^\d{5}$/g
               return fiveDigitRegex.test(input)
