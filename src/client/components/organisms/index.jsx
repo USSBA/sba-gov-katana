@@ -44,6 +44,7 @@ import MenuTileCollection from './menu-tile-collection/menu-tile-collection.jsx'
 import Footer from './header-footer/footer/footer.jsx'
 import Header from './header-footer/header/header.jsx'
 import MobileNav from './header-footer/mobile-nav/mobile-nav.jsx'
+import MainMenu from './header-footer/main-menu/main-menu.jsx'
 
 // homepage organisms
 import FrontPageHero from '../templates/homepage/front-page-hero/front-page-hero.jsx'
@@ -99,7 +100,7 @@ export {
 }
 
 // header-footer organisms
-export { Footer, Header, MobileNav }
+export { Footer, Header, MainMenu, MobileNav }
 
 // homepage organisms
 export { FrontPageHero }

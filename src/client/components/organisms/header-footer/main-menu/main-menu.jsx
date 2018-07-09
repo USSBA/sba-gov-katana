@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
+import { map, indexOf } from 'lodash'
 import styles from './main-menu.scss'
 import { SubMenu } from 'organisms'
 
@@ -17,7 +17,7 @@ class MainMenu extends React.Component {
   }
 
   handleSkipToNext(menuId, event) {
-    let nextAnchor =
+    const nextAnchor =
       event.target.parentNode.parentNode.parentNode.parentNode.parentNode.nextSibling.firstChild.firstChild
     this.setState(
       {
@@ -51,17 +51,17 @@ class MainMenu extends React.Component {
   }
 
   determineActiveSection(data) {
-    let topLevelPaths = _.map(data, item => item.link.replace('/', ''))
-    let path = window.location.pathname
-    let split = path.split('/')
-    let sectionName = split && split.length > 0 ? split[1] : ''
-    return _.indexOf(topLevelPaths, sectionName)
+    const topLevelPaths = map(data, item => item.link.replace('/', ''))
+    const path = window.location.pathname
+    const split = path.split('/')
+    const sectionName = split && split.length > 0 ? split[1] : ''
+    return indexOf(topLevelPaths, sectionName)
   }
 
   render() {
     let menuItems = []
     if (this.props.data) {
-      let activeIndex = this.determineActiveSection(this.props.data)
+      const activeIndex = this.determineActiveSection(this.props.data)
       menuItems = this.props.data.map((item, index) => {
         let submenuProps = {
           id: 'sub-menu-' + index,
