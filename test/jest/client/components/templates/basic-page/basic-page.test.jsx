@@ -2,8 +2,10 @@
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TitleSection, Breadcrumb, PreviousNextSection } from 'molecules'
+import Waypoint from 'react-waypoint'
+
 import { SectionNav } from 'organisms'
+import { TitleSection, Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader } from 'molecules'
 import BasicPage from 'templates/basic-page/basic-page.jsx'
 
 const title = 'My Basic Page'
@@ -18,75 +20,53 @@ describe('BasicPage', () => {
     expect(component.find('.basicpage-titlesection')).toHaveLength(1)
   })
 
-  test('creates a TitleSection component with appropriate props', () => {
-    const component = shallow(<BasicPage title={title} summary={summary} />)
-    expect(
-      component
-        .find('.basicpage-titlesection')
-        .childAt(0)
-        .type()
-    ).toBe(TitleSection)
-    expect(
-      component
-        .find('.basicpage-titlesection')
-        .childAt(0)
-        .prop('title')
-    ).toBe(title)
-    expect(
-      component
-        .find('.basicpage-titlesection')
-        .childAt(0)
-        .prop('summary')
-    ).toBe(summary)
+  test('renders the mobilenav when displayMobileNav state is true', () => {
+    const BasicPageComponent = shallow(<BasicPage title="" summary="" />)
+    BasicPageComponent.setState({ displayMobileNav: true })
+    expect(BasicPageComponent.find('.basicpage-mobilenav').hasClass('hideContainer')).toEqual(true)
   })
 
-  test('creates a Breadcrumb component with appropriate props', () => {
-    const component = shallow(
-      <BasicPage
-        title={title}
-        summary={summary}
-        lineage={[{ title: 'lineage1', fullUrl: 'http://example.com/lineage1' }]}
-      />
-    )
-    expect(
-      component
-        .find('.basicpage-breadcrumb')
-        .childAt(0)
-        .type()
-    ).toBe(Breadcrumb)
-    expect(
-      component
-        .find('.basicpage-breadcrumb')
-        .childAt(0)
-        .prop('items')
-    ).toHaveLength(1)
-    expect(
-      component
-        .find('.basicpage-breadcrumb')
-        .childAt(0)
-        .prop('items')[0].title
-    ).toBe('lineage1')
-    expect(
-      component
-        .find('.basicpage-breadcrumb')
-        .childAt(0)
-        .prop('items')[0].url
-    ).toBe('http://example.com/lineage1')
+  test("doesn't render the mobilenav when displayMobileNav state is false", () => {
+    const BasicPageComponent = shallow(<BasicPage title="" summary="" />)
+    BasicPageComponent.setState({ displayMobileNav: false })
+    expect(BasicPageComponent.find('.basicpage-mobilenav').hasClass('container')).toEqual(true)
   })
-  test('creates an empty breadcrumb div without a lineage', () => {
-    const component = shallow(<BasicPage title={title} summary={summary} />)
-    expect(
-      component
-        .find('.basicpage-breadcrumb')
-        .childAt(0)
-        .type()
-    ).toBe('div')
-    expect(
-      component
-        .find('.basicpage-breadcrumb')
-        .childAt(0)
-        .children()
-    ).toHaveLength(0)
+
+  test('render a TitleSection component', () => {
+    const title = 'titleishere'
+    const summary = 'summaryishere'
+
+    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    expect(BasicPageComponent.find(TitleSection).length).toEqual(1)
+    expect(BasicPageComponent.find(TitleSection).prop('title')).toEqual(title)
+    expect(BasicPageComponent.find(TitleSection).prop('summary')).toEqual(summary)
+  })
+
+  test("doesn't render a Breadcrumb component when no lineage prop is passed", () => {
+    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    expect(BasicPageComponent.find(Breadcrumb).length).toEqual(0)
+  })
+
+  test('renders a Breadcrumb component when no lineage prop is passed', () => {
+    const lineage = [{ title: 'onelineage', fullUrl: 'http://good.com/good' }]
+    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
+    expect(BasicPageComponent.find(Breadcrumb).length).toEqual(1)
+    expect(BasicPageComponent.find(Breadcrumb).prop('items')).toBeDefined()
+  })
+
+  test('renders feedback form component', () => {
+    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    expect(BasicPageComponent.find(FeedbackForm).length).toEqual(1)
+  })
+
+  test('renders RemoveMainLoader component', () => {
+    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    expect(BasicPageComponent.find(RemoveMainLoader).length).toEqual(1)
+  })
+
+  test('renders Waypoint library', () => {
+    const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
+    expect(BasicPageComponent.find(Waypoint).length).toEqual(1)
   })
 
   test('has a section navigation when there is a lineage', () => {
