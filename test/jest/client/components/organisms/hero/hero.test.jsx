@@ -4,10 +4,6 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Hero } from 'organisms'
 import { Button } from 'atoms'
-// import data from './hero-test-data.json'
-
-// const title = 'My Basic Page'
-// const summary = 'My Basic Page Summary'
 
 describe('Hero Organism', () => {
   test('displays title in an H1 tag', () => {
