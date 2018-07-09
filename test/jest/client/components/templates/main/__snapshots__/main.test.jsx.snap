@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main should render the happy path 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div
+    className=""
+>
+    <DisasterAlert
+        buttonText=""
+        description=""
+        link=""
+        onClose={[Function]}
+        visible={false}
+    />
+    <a
+        className="skipNav"
+        href="#main-content"
+    >
+        Skip to main content
+    </a>
+    <Connect(Header)
+        additionalMenuOffset={0}
+    />
+    <Connect(MainLoader) />
+    <div
+        className="mainContent"
+        id="main-content"
+    />
+    <Footer />
+    <Connect(ModalController) />
+</div>,
+  "nodes": Array [
+    <div
+      className=""
+>
+      <DisasterAlert
+            buttonText=""
+            description=""
+            link=""
+            onClose={[Function]}
+            visible={false}
+      />
+      <a
+            className="skipNav"
+            href="#main-content"
+      >
+            Skip to main content
+      </a>
+      <Connect(Header)
+            additionalMenuOffset={0}
+      />
+      <Connect(MainLoader) />
+      <div
+            className="mainContent"
+            id="main-content"
+      />
+      <Footer />
+      <Connect(ModalController) />
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <Main
+        location={
+                Object {
+                        "pathname": "/something",
+                      }
+        }
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": Main {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "location": Object {
+            "pathname": "/something",
+          },
+        },
+        "refs": Object {},
+        "state": Object {
+          "disasterAlertHidingCookieIsPresent": false,
+          "notificationBarHidingCookieIsPresent": false,
+        },
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div
+          className=""
+>
+          <DisasterAlert
+                    buttonText=""
+                    description=""
+                    link=""
+                    onClose={[Function]}
+                    visible={false}
+          />
+          <a
+                    className="skipNav"
+                    href="#main-content"
+          >
+                    Skip to main content
+          </a>
+          <Connect(Header)
+                    additionalMenuOffset={0}
+          />
+          <Connect(MainLoader) />
+          <div
+                    className="mainContent"
+                    id="main-content"
+          />
+          <Footer />
+          <Connect(ModalController) />
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div
+          className=""
+>
+          <DisasterAlert
+                    buttonText=""
+                    description=""
+                    link=""
+                    onClose={[Function]}
+                    visible={false}
+          />
+          <a
+                    className="skipNav"
+                    href="#main-content"
+          >
+                    Skip to main content
+          </a>
+          <Connect(Header)
+                    additionalMenuOffset={0}
+          />
+          <Connect(MainLoader) />
+          <div
+                    className="mainContent"
+                    id="main-content"
+          />
+          <Footer />
+          <Connect(ModalController) />
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Main
+    location={
+        Object {
+            "pathname": "/something",
+          }
+    }
+/>,
+}
+`;
