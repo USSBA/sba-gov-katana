@@ -1,21 +1,14 @@
-/*global expect*/
-
-/* eslint-disable no-unused-vars,no-undef */
 import React from 'react'
-/*eslint-enable no-unused-vars*/
-/*
-import ArticleLookupPage from "client/components/pages/article-lookup-page/article-lookup-page.jsx";
-import ShallowRenderer from 'react-test-renderer/shallow';
-import renderer from "react-test-renderer";
-import _ from "lodash";
-*/
+import { shallow } from 'enzyme'
+import ArticleLookupPage from 'pages/article-lookup-page/article-lookup-page'
+import { PagingLookup } from 'organisms'
 
 describe('ArticleLookupPage', () => {
-  test('renders a page lookup with the correct attributes', () => {
-    /*
-    const renderer = new ShallowRenderer();
-    const component = renderer.render(<ArticleLookupPage/>);
-    expect(component).toMatchSnapshot();
-    */
+  test('should render a page lookup', () => {
+    // an article lookup page is just renders a paging lookup and nothing more
+    const component = shallow(<ArticleLookupPage />)
+    const result = component.find(PagingLookup).length
+    const expected = 1
+    expect(result).toEqual(expected)
   })
 })
