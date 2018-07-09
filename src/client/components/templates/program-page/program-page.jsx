@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { PropTypes } from 'react'
 import { Hero } from 'organisms'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import styles from './program-page.scss'
@@ -25,7 +25,7 @@ class ProgramPage extends React.Component {
     let paragraphs = this.makeParagraphs(this.props.paragraphs)
 
     const { title, summary, buttons, bannerImage } = this.props.heroData
-    const hasBannerImage = bannerImage.hasOwnProperty('image')
+    const hasBannerImage = bannerImage && bannerImage.hasOwnProperty('image')
 
     const _formattedButtons =
       buttons === undefined
@@ -53,6 +53,18 @@ class ProgramPage extends React.Component {
       </div>
     )
   }
+}
+
+React.defaultProps = {
+  lineage: [],
+  heroData: {},
+  paragraphs: []
+}
+
+React.propTypes = {
+  lineage: PropTypes.array,
+  heroData: PropTypes.object,
+  paragraphs: PropTypes.array
 }
 
 export default ProgramPage

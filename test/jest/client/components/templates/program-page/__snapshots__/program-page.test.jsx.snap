@@ -1,0 +1,1633 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgramPage should display a Hero with an image 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <Hero
+        buttons={
+            Array [
+                Object {
+                  "btnText": "Find Somewhere",
+                  "url": "/somewhere",
+                },
+              ]
+        }
+        message="This is a summary"
+        title="My title"
+    />
+    <div
+        className="container"
+    >
+        
+    </div>
+</div>,
+  "nodes": Array [
+    <div>
+      <Hero
+            buttons={
+                  Array [
+                        Object {
+                          "btnText": "Find Somewhere",
+                          "url": "/somewhere",
+                        },
+                      ]
+            }
+            message="This is a summary"
+            title="My title"
+      />
+      <div
+            className="container"
+      >
+            
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ProgramPage
+        heroData={
+                Object {
+                        "bannerImage": Array [
+                          Object {
+                            "title": "Find Somewhere",
+                            "url": "/somewhere",
+                          },
+                        ],
+                        "buttons": Array [
+                          Object {
+                            "title": "Find Somewhere",
+                            "url": "/somewhere",
+                          },
+                        ],
+                        "summary": "This is a summary",
+                        "title": "My title",
+                      }
+        }
+        lineage={Array []}
+        paragraphs={Array []}
+        title="My title"
+/>,
+      "_debugID": 5,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ProgramPage {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "heroData": Object {
+            "bannerImage": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "buttons": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "summary": "This is a summary",
+            "title": "My title",
+          },
+          "lineage": Array [],
+          "paragraphs": Array [],
+          "title": "My title",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 3,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <Hero
+                    buttons={
+                              Array [
+                                        Object {
+                                          "btnText": "Find Somewhere",
+                                          "url": "/somewhere",
+                                        },
+                                      ]
+                    }
+                    message="This is a summary"
+                    title="My title"
+          />
+          <div
+                    className="container"
+          >
+                    
+          </div>
+</div>,
+        "_debugID": 6,
+        "_renderedOutput": <div>
+          <Hero
+                    buttons={
+                              Array [
+                                        Object {
+                                          "btnText": "Find Somewhere",
+                                          "url": "/somewhere",
+                                        },
+                                      ]
+                    }
+                    message="This is a summary"
+                    title="My title"
+          />
+          <div
+                    className="container"
+          >
+                    
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ProgramPage
+    heroData={
+        Object {
+            "bannerImage": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "buttons": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "summary": "This is a summary",
+            "title": "My title",
+          }
+    }
+    lineage={Array []}
+    paragraphs={Array []}
+    title="My title"
+/>,
+}
+`;
+
+exports[`ProgramPage should display a Hero with no image 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <Hero
+        buttons={
+            Array [
+                Object {
+                  "btnText": "Find Somewhere",
+                  "url": "/somewhere",
+                },
+              ]
+        }
+        message="This is a summary"
+        title="My title"
+    />
+    <div
+        className="container"
+    >
+        
+    </div>
+</div>,
+  "nodes": Array [
+    <div>
+      <Hero
+            buttons={
+                  Array [
+                        Object {
+                          "btnText": "Find Somewhere",
+                          "url": "/somewhere",
+                        },
+                      ]
+            }
+            message="This is a summary"
+            title="My title"
+      />
+      <div
+            className="container"
+      >
+            
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ProgramPage
+        heroData={
+                Object {
+                        "bannerImage": null,
+                        "buttons": Array [
+                          Object {
+                            "title": "Find Somewhere",
+                            "url": "/somewhere",
+                          },
+                        ],
+                        "summary": "This is a summary",
+                        "title": "My title",
+                      }
+        }
+        lineage={Array []}
+        paragraphs={Array []}
+        title="My title"
+/>,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ProgramPage {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "heroData": Object {
+            "bannerImage": null,
+            "buttons": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "summary": "This is a summary",
+            "title": "My title",
+          },
+          "lineage": Array [],
+          "paragraphs": Array [],
+          "title": "My title",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <Hero
+                    buttons={
+                              Array [
+                                        Object {
+                                          "btnText": "Find Somewhere",
+                                          "url": "/somewhere",
+                                        },
+                                      ]
+                    }
+                    message="This is a summary"
+                    title="My title"
+          />
+          <div
+                    className="container"
+          >
+                    
+          </div>
+</div>,
+        "_debugID": 4,
+        "_renderedOutput": <div>
+          <Hero
+                    buttons={
+                              Array [
+                                        Object {
+                                          "btnText": "Find Somewhere",
+                                          "url": "/somewhere",
+                                        },
+                                      ]
+                    }
+                    message="This is a summary"
+                    title="My title"
+          />
+          <div
+                    className="container"
+          >
+                    
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ProgramPage
+    heroData={
+        Object {
+            "bannerImage": null,
+            "buttons": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "summary": "This is a summary",
+            "title": "My title",
+          }
+    }
+    lineage={Array []}
+    paragraphs={Array []}
+    title="My title"
+/>,
+}
+`;
+
+exports[`ProgramPage should render several common paragraphs 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <div>
+    <Hero
+        alt="some alt text"
+        buttons={
+            Array [
+                Object {
+                  "btnText": "Find Somewhere",
+                  "url": "/somewhere",
+                },
+              ]
+        }
+        imageUrl="/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg"
+        message="This is a summary"
+        title="My title"
+    />
+    <div
+        className="container"
+    >
+        <div
+            className={undefined}
+            id="sectionHeader-0"
+        >
+            <div
+                id="paragraph-1"
+            >
+                <h2
+                    id="section-header-0"
+                >
+                    The SBA helps with things
+                </h2>
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="textSection-1"
+        >
+            <div
+                id="paragraph-2"
+            >
+                <TextSection
+                    text="<p>This is a text section</p>
+                "
+                />
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="image-2"
+        >
+            <div
+                id="paragraph-3"
+            >
+                <ImageSection
+                    alt="other alt text"
+                    caption={null}
+                    src="/sites/default/files/2018-04/FP%20Loans-01.jpg"
+                />
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="sectionHeader-3"
+        >
+            <div
+                id="paragraph-4"
+            >
+                <h2
+                    id="section-header-3"
+                >
+                    Section Header 1
+                </h2>
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="cardCollection-4"
+        >
+            <div
+                id="paragraph-5"
+            >
+                <CardCollection
+                    cards={
+                        Array [
+                            Object {
+                              "image": Object {
+                                "alt": "card image alt 1",
+                                "height": 540,
+                                "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                                "width": 810,
+                              },
+                              "link": Object {},
+                              "subtitleText": "Card One Subtitle",
+                              "titleText": "Card One",
+                              "type": "card",
+                            },
+                            Object {
+                              "image": Object {
+                                "alt": "card image alt 2",
+                                "height": 540,
+                                "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                                "width": 810,
+                              },
+                              "link": Object {},
+                              "subtitleText": "Card Two Subtitle",
+                              "titleText": "Card Two",
+                              "type": "card",
+                            },
+                            Object {
+                              "image": Object {
+                                "alt": "card image alt 3",
+                                "height": 540,
+                                "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                                "width": 810,
+                              },
+                              "link": Object {},
+                              "subtitleText": "Card Three Subtitle",
+                              "titleText": "Card Three",
+                              "type": "card",
+                            },
+                          ]
+                    }
+                    leftAligned={false}
+                    numberOverride={null}
+                    parentIndex={4}
+                />
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="readMore-5"
+        >
+            <div
+                id="paragraph-6"
+            >
+                <ReadMoreSection
+                    parentId="-read-more"
+                    readMoreSectionItem={
+                        Object {
+                            "expandedCopyText": "Read more details and things.",
+                            "preview": "readmore preview text",
+                            "titleText": "Readmore Title",
+                            "type": "readMore",
+                          }
+                    }
+                />
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="callToAction-6"
+        >
+            <div
+                id="paragraph-7"
+            >
+                <CallToAction
+                    blurb="A blurb"
+                    buttonAction={
+                        Object {
+                            "link": Object {
+                              "title": "Find Somewhere",
+                              "url": "/somewhere",
+                            },
+                          }
+                    }
+                    eventConfig={
+                        Object {
+                            "action": undefined,
+                            "category": "Program-Page-Paragraph-CTA",
+                          }
+                    }
+                    headline="A good headline"
+                    image={
+                        Object {
+                            "alt": "image alt text",
+                            "url": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+                          }
+                    }
+                    size="Button only"
+                    title="My CTA"
+                />
+            </div>
+        </div>
+        <div
+            className={undefined}
+            id="styleGrayBackground-7"
+        >
+            <div
+                id="paragraph-8"
+            >
+                <StyleGrayBackground
+                    paragraphs={
+                        Array [
+                            Object {
+                              "text": "Gray Section Header",
+                              "type": "sectionHeader",
+                            },
+                          ]
+                    }
+                    parentIndex={7}
+                />
+            </div>
+        </div>
+    </div>
+</div>,
+  "nodes": Array [
+    <div>
+      <Hero
+            alt="some alt text"
+            buttons={
+                  Array [
+                        Object {
+                          "btnText": "Find Somewhere",
+                          "url": "/somewhere",
+                        },
+                      ]
+            }
+            imageUrl="/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg"
+            message="This is a summary"
+            title="My title"
+      />
+      <div
+            className="container"
+      >
+            <div
+                  className={undefined}
+                  id="sectionHeader-0"
+            >
+                  <div
+                        id="paragraph-1"
+                  >
+                        <h2
+                              id="section-header-0"
+                        >
+                              The SBA helps with things
+                        </h2>
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="textSection-1"
+            >
+                  <div
+                        id="paragraph-2"
+                  >
+                        <TextSection
+                              text="<p>This is a text section</p>
+                        "
+                        />
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="image-2"
+            >
+                  <div
+                        id="paragraph-3"
+                  >
+                        <ImageSection
+                              alt="other alt text"
+                              caption={null}
+                              src="/sites/default/files/2018-04/FP%20Loans-01.jpg"
+                        />
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="sectionHeader-3"
+            >
+                  <div
+                        id="paragraph-4"
+                  >
+                        <h2
+                              id="section-header-3"
+                        >
+                              Section Header 1
+                        </h2>
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="cardCollection-4"
+            >
+                  <div
+                        id="paragraph-5"
+                  >
+                        <CardCollection
+                              cards={
+                                    Array [
+                                          Object {
+                                            "image": Object {
+                                              "alt": "card image alt 1",
+                                              "height": 540,
+                                              "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                                              "width": 810,
+                                            },
+                                            "link": Object {},
+                                            "subtitleText": "Card One Subtitle",
+                                            "titleText": "Card One",
+                                            "type": "card",
+                                          },
+                                          Object {
+                                            "image": Object {
+                                              "alt": "card image alt 2",
+                                              "height": 540,
+                                              "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                                              "width": 810,
+                                            },
+                                            "link": Object {},
+                                            "subtitleText": "Card Two Subtitle",
+                                            "titleText": "Card Two",
+                                            "type": "card",
+                                          },
+                                          Object {
+                                            "image": Object {
+                                              "alt": "card image alt 3",
+                                              "height": 540,
+                                              "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                                              "width": 810,
+                                            },
+                                            "link": Object {},
+                                            "subtitleText": "Card Three Subtitle",
+                                            "titleText": "Card Three",
+                                            "type": "card",
+                                          },
+                                        ]
+                              }
+                              leftAligned={false}
+                              numberOverride={null}
+                              parentIndex={4}
+                        />
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="readMore-5"
+            >
+                  <div
+                        id="paragraph-6"
+                  >
+                        <ReadMoreSection
+                              parentId="-read-more"
+                              readMoreSectionItem={
+                                    Object {
+                                          "expandedCopyText": "Read more details and things.",
+                                          "preview": "readmore preview text",
+                                          "titleText": "Readmore Title",
+                                          "type": "readMore",
+                                        }
+                              }
+                        />
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="callToAction-6"
+            >
+                  <div
+                        id="paragraph-7"
+                  >
+                        <CallToAction
+                              blurb="A blurb"
+                              buttonAction={
+                                    Object {
+                                          "link": Object {
+                                            "title": "Find Somewhere",
+                                            "url": "/somewhere",
+                                          },
+                                        }
+                              }
+                              eventConfig={
+                                    Object {
+                                          "action": undefined,
+                                          "category": "Program-Page-Paragraph-CTA",
+                                        }
+                              }
+                              headline="A good headline"
+                              image={
+                                    Object {
+                                          "alt": "image alt text",
+                                          "url": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+                                        }
+                              }
+                              size="Button only"
+                              title="My CTA"
+                        />
+                  </div>
+            </div>
+            <div
+                  className={undefined}
+                  id="styleGrayBackground-7"
+            >
+                  <div
+                        id="paragraph-8"
+                  >
+                        <StyleGrayBackground
+                              paragraphs={
+                                    Array [
+                                          Object {
+                                            "text": "Gray Section Header",
+                                            "type": "sectionHeader",
+                                          },
+                                        ]
+                              }
+                              parentIndex={7}
+                        />
+                  </div>
+            </div>
+      </div>
+</div>,
+  ],
+  "options": Object {},
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {},
+      "_currentElement": <ProgramPage
+        heroData={
+                Object {
+                        "bannerImage": Object {
+                          "captionText": "TDB",
+                          "image": Object {
+                            "alt": "some alt text",
+                            "height": 900,
+                            "url": "/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg",
+                            "width": 1600,
+                          },
+                          "link": Object {
+                            "title": "TDB",
+                            "url": "#TDB",
+                          },
+                          "type": "bannerImage",
+                        },
+                        "buttons": Array [
+                          Object {
+                            "title": "Find Somewhere",
+                            "url": "/somewhere",
+                          },
+                        ],
+                        "summary": "This is a summary",
+                        "title": "My title",
+                      }
+        }
+        lineage={Array []}
+        paragraphs={
+                Array [
+                        Object {
+                          "text": "The SBA helps with things",
+                          "type": "sectionHeader",
+                        },
+                        Object {
+                          "text": "<p>This is a text section</p>
+                ",
+                          "type": "textSection",
+                        },
+                        Object {
+                          "captionText": null,
+                          "image": Object {
+                            "alt": "other alt text",
+                            "height": 581,
+                            "url": "/sites/default/files/2018-04/FP%20Loans-01.jpg",
+                            "width": 1441,
+                          },
+                          "type": "image",
+                        },
+                        Object {
+                          "text": "Section Header 1",
+                          "type": "sectionHeader",
+                        },
+                        Object {
+                          "cards": Array [
+                            Object {
+                              "image": Object {
+                                "alt": "card image alt 1",
+                                "height": 540,
+                                "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                                "width": 810,
+                              },
+                              "link": Object {},
+                              "subtitleText": "Card One Subtitle",
+                              "titleText": "Card One",
+                              "type": "card",
+                            },
+                            Object {
+                              "image": Object {
+                                "alt": "card image alt 2",
+                                "height": 540,
+                                "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                                "width": 810,
+                              },
+                              "link": Object {},
+                              "subtitleText": "Card Two Subtitle",
+                              "titleText": "Card Two",
+                              "type": "card",
+                            },
+                            Object {
+                              "image": Object {
+                                "alt": "card image alt 3",
+                                "height": 540,
+                                "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                                "width": 810,
+                              },
+                              "link": Object {},
+                              "subtitleText": "Card Three Subtitle",
+                              "titleText": "Card Three",
+                              "type": "card",
+                            },
+                          ],
+                          "type": "cardCollection",
+                        },
+                        Object {
+                          "expandedCopyText": "Read more details and things.",
+                          "preview": "readmore preview text",
+                          "titleText": "Readmore Title",
+                          "type": "readMore",
+                        },
+                        Object {
+                          "blurb": "A blurb",
+                          "btnTitle": "Find Somewhere",
+                          "btnUrl": "/somewhere",
+                          "headline": "A good headline",
+                          "id": 46,
+                          "image": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+                          "imageAlt": "image alt text",
+                          "langCode": "en",
+                          "style": "Button only",
+                          "title": "My CTA",
+                          "type": "callToAction",
+                        },
+                        Object {
+                          "paragraphs": Array [
+                            Object {
+                              "text": "Gray Section Header",
+                              "type": "sectionHeader",
+                            },
+                          ],
+                          "type": "styleGrayBackground",
+                        },
+                      ]
+        }
+        title="My title"
+/>,
+      "_debugID": 1,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": ProgramPage {
+        "_reactInternalInstance": [Circular],
+        "context": Object {},
+        "props": Object {
+          "heroData": Object {
+            "bannerImage": Object {
+              "captionText": "TDB",
+              "image": Object {
+                "alt": "some alt text",
+                "height": 900,
+                "url": "/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg",
+                "width": 1600,
+              },
+              "link": Object {
+                "title": "TDB",
+                "url": "#TDB",
+              },
+              "type": "bannerImage",
+            },
+            "buttons": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "summary": "This is a summary",
+            "title": "My title",
+          },
+          "lineage": Array [],
+          "paragraphs": Array [
+            Object {
+              "text": "The SBA helps with things",
+              "type": "sectionHeader",
+            },
+            Object {
+              "text": "<p>This is a text section</p>
+",
+              "type": "textSection",
+            },
+            Object {
+              "captionText": null,
+              "image": Object {
+                "alt": "other alt text",
+                "height": 581,
+                "url": "/sites/default/files/2018-04/FP%20Loans-01.jpg",
+                "width": 1441,
+              },
+              "type": "image",
+            },
+            Object {
+              "text": "Section Header 1",
+              "type": "sectionHeader",
+            },
+            Object {
+              "cards": Array [
+                Object {
+                  "image": Object {
+                    "alt": "card image alt 1",
+                    "height": 540,
+                    "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                    "width": 810,
+                  },
+                  "link": Object {},
+                  "subtitleText": "Card One Subtitle",
+                  "titleText": "Card One",
+                  "type": "card",
+                },
+                Object {
+                  "image": Object {
+                    "alt": "card image alt 2",
+                    "height": 540,
+                    "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                    "width": 810,
+                  },
+                  "link": Object {},
+                  "subtitleText": "Card Two Subtitle",
+                  "titleText": "Card Two",
+                  "type": "card",
+                },
+                Object {
+                  "image": Object {
+                    "alt": "card image alt 3",
+                    "height": 540,
+                    "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                    "width": 810,
+                  },
+                  "link": Object {},
+                  "subtitleText": "Card Three Subtitle",
+                  "titleText": "Card Three",
+                  "type": "card",
+                },
+              ],
+              "type": "cardCollection",
+            },
+            Object {
+              "expandedCopyText": "Read more details and things.",
+              "preview": "readmore preview text",
+              "titleText": "Readmore Title",
+              "type": "readMore",
+            },
+            Object {
+              "blurb": "A blurb",
+              "btnTitle": "Find Somewhere",
+              "btnUrl": "/somewhere",
+              "headline": "A good headline",
+              "id": 46,
+              "image": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+              "imageAlt": "image alt text",
+              "langCode": "en",
+              "style": "Button only",
+              "title": "My CTA",
+              "type": "callToAction",
+            },
+            Object {
+              "paragraphs": Array [
+                Object {
+                  "text": "Gray Section Header",
+                  "type": "sectionHeader",
+                },
+              ],
+              "type": "styleGrayBackground",
+            },
+          ],
+          "title": "My title",
+        },
+        "refs": Object {},
+        "state": null,
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 1,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <div>
+          <Hero
+                    alt="some alt text"
+                    buttons={
+                              Array [
+                                        Object {
+                                          "btnText": "Find Somewhere",
+                                          "url": "/somewhere",
+                                        },
+                                      ]
+                    }
+                    imageUrl="/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg"
+                    message="This is a summary"
+                    title="My title"
+          />
+          <div
+                    className="container"
+          >
+                    <div
+                              className={undefined}
+                              id="sectionHeader-0"
+                    >
+                              <div
+                                        id="paragraph-1"
+                              >
+                                        <h2
+                                                  id="section-header-0"
+                                        >
+                                                  The SBA helps with things
+                                        </h2>
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="textSection-1"
+                    >
+                              <div
+                                        id="paragraph-2"
+                              >
+                                        <TextSection
+                                                  text="<p>This is a text section</p>
+                                        "
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="image-2"
+                    >
+                              <div
+                                        id="paragraph-3"
+                              >
+                                        <ImageSection
+                                                  alt="other alt text"
+                                                  caption={null}
+                                                  src="/sites/default/files/2018-04/FP%20Loans-01.jpg"
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="sectionHeader-3"
+                    >
+                              <div
+                                        id="paragraph-4"
+                              >
+                                        <h2
+                                                  id="section-header-3"
+                                        >
+                                                  Section Header 1
+                                        </h2>
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="cardCollection-4"
+                    >
+                              <div
+                                        id="paragraph-5"
+                              >
+                                        <CardCollection
+                                                  cards={
+                                                            Array [
+                                                                      Object {
+                                                                        "image": Object {
+                                                                          "alt": "card image alt 1",
+                                                                          "height": 540,
+                                                                          "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                                                                          "width": 810,
+                                                                        },
+                                                                        "link": Object {},
+                                                                        "subtitleText": "Card One Subtitle",
+                                                                        "titleText": "Card One",
+                                                                        "type": "card",
+                                                                      },
+                                                                      Object {
+                                                                        "image": Object {
+                                                                          "alt": "card image alt 2",
+                                                                          "height": 540,
+                                                                          "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                                                                          "width": 810,
+                                                                        },
+                                                                        "link": Object {},
+                                                                        "subtitleText": "Card Two Subtitle",
+                                                                        "titleText": "Card Two",
+                                                                        "type": "card",
+                                                                      },
+                                                                      Object {
+                                                                        "image": Object {
+                                                                          "alt": "card image alt 3",
+                                                                          "height": 540,
+                                                                          "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                                                                          "width": 810,
+                                                                        },
+                                                                        "link": Object {},
+                                                                        "subtitleText": "Card Three Subtitle",
+                                                                        "titleText": "Card Three",
+                                                                        "type": "card",
+                                                                      },
+                                                                    ]
+                                                  }
+                                                  leftAligned={false}
+                                                  numberOverride={null}
+                                                  parentIndex={4}
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="readMore-5"
+                    >
+                              <div
+                                        id="paragraph-6"
+                              >
+                                        <ReadMoreSection
+                                                  parentId="-read-more"
+                                                  readMoreSectionItem={
+                                                            Object {
+                                                                      "expandedCopyText": "Read more details and things.",
+                                                                      "preview": "readmore preview text",
+                                                                      "titleText": "Readmore Title",
+                                                                      "type": "readMore",
+                                                                    }
+                                                  }
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="callToAction-6"
+                    >
+                              <div
+                                        id="paragraph-7"
+                              >
+                                        <CallToAction
+                                                  blurb="A blurb"
+                                                  buttonAction={
+                                                            Object {
+                                                                      "link": Object {
+                                                                        "title": "Find Somewhere",
+                                                                        "url": "/somewhere",
+                                                                      },
+                                                                    }
+                                                  }
+                                                  eventConfig={
+                                                            Object {
+                                                                      "action": undefined,
+                                                                      "category": "Program-Page-Paragraph-CTA",
+                                                                    }
+                                                  }
+                                                  headline="A good headline"
+                                                  image={
+                                                            Object {
+                                                                      "alt": "image alt text",
+                                                                      "url": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+                                                                    }
+                                                  }
+                                                  size="Button only"
+                                                  title="My CTA"
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="styleGrayBackground-7"
+                    >
+                              <div
+                                        id="paragraph-8"
+                              >
+                                        <StyleGrayBackground
+                                                  paragraphs={
+                                                            Array [
+                                                                      Object {
+                                                                        "text": "Gray Section Header",
+                                                                        "type": "sectionHeader",
+                                                                      },
+                                                                    ]
+                                                  }
+                                                  parentIndex={7}
+                                        />
+                              </div>
+                    </div>
+          </div>
+</div>,
+        "_debugID": 2,
+        "_renderedOutput": <div>
+          <Hero
+                    alt="some alt text"
+                    buttons={
+                              Array [
+                                        Object {
+                                          "btnText": "Find Somewhere",
+                                          "url": "/somewhere",
+                                        },
+                                      ]
+                    }
+                    imageUrl="/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg"
+                    message="This is a summary"
+                    title="My title"
+          />
+          <div
+                    className="container"
+          >
+                    <div
+                              className={undefined}
+                              id="sectionHeader-0"
+                    >
+                              <div
+                                        id="paragraph-1"
+                              >
+                                        <h2
+                                                  id="section-header-0"
+                                        >
+                                                  The SBA helps with things
+                                        </h2>
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="textSection-1"
+                    >
+                              <div
+                                        id="paragraph-2"
+                              >
+                                        <TextSection
+                                                  text="<p>This is a text section</p>
+                                        "
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="image-2"
+                    >
+                              <div
+                                        id="paragraph-3"
+                              >
+                                        <ImageSection
+                                                  alt="other alt text"
+                                                  caption={null}
+                                                  src="/sites/default/files/2018-04/FP%20Loans-01.jpg"
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="sectionHeader-3"
+                    >
+                              <div
+                                        id="paragraph-4"
+                              >
+                                        <h2
+                                                  id="section-header-3"
+                                        >
+                                                  Section Header 1
+                                        </h2>
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="cardCollection-4"
+                    >
+                              <div
+                                        id="paragraph-5"
+                              >
+                                        <CardCollection
+                                                  cards={
+                                                            Array [
+                                                                      Object {
+                                                                        "image": Object {
+                                                                          "alt": "card image alt 1",
+                                                                          "height": 540,
+                                                                          "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                                                                          "width": 810,
+                                                                        },
+                                                                        "link": Object {},
+                                                                        "subtitleText": "Card One Subtitle",
+                                                                        "titleText": "Card One",
+                                                                        "type": "card",
+                                                                      },
+                                                                      Object {
+                                                                        "image": Object {
+                                                                          "alt": "card image alt 2",
+                                                                          "height": 540,
+                                                                          "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                                                                          "width": 810,
+                                                                        },
+                                                                        "link": Object {},
+                                                                        "subtitleText": "Card Two Subtitle",
+                                                                        "titleText": "Card Two",
+                                                                        "type": "card",
+                                                                      },
+                                                                      Object {
+                                                                        "image": Object {
+                                                                          "alt": "card image alt 3",
+                                                                          "height": 540,
+                                                                          "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                                                                          "width": 810,
+                                                                        },
+                                                                        "link": Object {},
+                                                                        "subtitleText": "Card Three Subtitle",
+                                                                        "titleText": "Card Three",
+                                                                        "type": "card",
+                                                                      },
+                                                                    ]
+                                                  }
+                                                  leftAligned={false}
+                                                  numberOverride={null}
+                                                  parentIndex={4}
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="readMore-5"
+                    >
+                              <div
+                                        id="paragraph-6"
+                              >
+                                        <ReadMoreSection
+                                                  parentId="-read-more"
+                                                  readMoreSectionItem={
+                                                            Object {
+                                                                      "expandedCopyText": "Read more details and things.",
+                                                                      "preview": "readmore preview text",
+                                                                      "titleText": "Readmore Title",
+                                                                      "type": "readMore",
+                                                                    }
+                                                  }
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="callToAction-6"
+                    >
+                              <div
+                                        id="paragraph-7"
+                              >
+                                        <CallToAction
+                                                  blurb="A blurb"
+                                                  buttonAction={
+                                                            Object {
+                                                                      "link": Object {
+                                                                        "title": "Find Somewhere",
+                                                                        "url": "/somewhere",
+                                                                      },
+                                                                    }
+                                                  }
+                                                  eventConfig={
+                                                            Object {
+                                                                      "action": undefined,
+                                                                      "category": "Program-Page-Paragraph-CTA",
+                                                                    }
+                                                  }
+                                                  headline="A good headline"
+                                                  image={
+                                                            Object {
+                                                                      "alt": "image alt text",
+                                                                      "url": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+                                                                    }
+                                                  }
+                                                  size="Button only"
+                                                  title="My CTA"
+                                        />
+                              </div>
+                    </div>
+                    <div
+                              className={undefined}
+                              id="styleGrayBackground-7"
+                    >
+                              <div
+                                        id="paragraph-8"
+                              >
+                                        <StyleGrayBackground
+                                                  paragraphs={
+                                                            Array [
+                                                                      Object {
+                                                                        "text": "Gray Section Header",
+                                                                        "type": "sectionHeader",
+                                                                      },
+                                                                    ]
+                                                  }
+                                                  parentIndex={7}
+                                        />
+                              </div>
+                    </div>
+          </div>
+</div>,
+      },
+      "_renderedNodeType": 0,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <ProgramPage
+    heroData={
+        Object {
+            "bannerImage": Object {
+              "captionText": "TDB",
+              "image": Object {
+                "alt": "some alt text",
+                "height": 900,
+                "url": "/sites/default/files/2017-06/Loans_Hero%20%281%29.jpg",
+                "width": 1600,
+              },
+              "link": Object {
+                "title": "TDB",
+                "url": "#TDB",
+              },
+              "type": "bannerImage",
+            },
+            "buttons": Array [
+              Object {
+                "title": "Find Somewhere",
+                "url": "/somewhere",
+              },
+            ],
+            "summary": "This is a summary",
+            "title": "My title",
+          }
+    }
+    lineage={Array []}
+    paragraphs={
+        Array [
+            Object {
+              "text": "The SBA helps with things",
+              "type": "sectionHeader",
+            },
+            Object {
+              "text": "<p>This is a text section</p>
+        ",
+              "type": "textSection",
+            },
+            Object {
+              "captionText": null,
+              "image": Object {
+                "alt": "other alt text",
+                "height": 581,
+                "url": "/sites/default/files/2018-04/FP%20Loans-01.jpg",
+                "width": 1441,
+              },
+              "type": "image",
+            },
+            Object {
+              "text": "Section Header 1",
+              "type": "sectionHeader",
+            },
+            Object {
+              "cards": Array [
+                Object {
+                  "image": Object {
+                    "alt": "card image alt 1",
+                    "height": 540,
+                    "url": "/sites/default/files/2017-05/Loans_Competitive_Terms_0.jpg",
+                    "width": 810,
+                  },
+                  "link": Object {},
+                  "subtitleText": "Card One Subtitle",
+                  "titleText": "Card One",
+                  "type": "card",
+                },
+                Object {
+                  "image": Object {
+                    "alt": "card image alt 2",
+                    "height": 540,
+                    "url": "/sites/default/files/2017-05/Loans_Counseling_and_Education_0.jpg",
+                    "width": 810,
+                  },
+                  "link": Object {},
+                  "subtitleText": "Card Two Subtitle",
+                  "titleText": "Card Two",
+                  "type": "card",
+                },
+                Object {
+                  "image": Object {
+                    "alt": "card image alt 3",
+                    "height": 540,
+                    "url": "/sites/default/files/2017-05/Loans_Unique_Benefits_0.jpg",
+                    "width": 810,
+                  },
+                  "link": Object {},
+                  "subtitleText": "Card Three Subtitle",
+                  "titleText": "Card Three",
+                  "type": "card",
+                },
+              ],
+              "type": "cardCollection",
+            },
+            Object {
+              "expandedCopyText": "Read more details and things.",
+              "preview": "readmore preview text",
+              "titleText": "Readmore Title",
+              "type": "readMore",
+            },
+            Object {
+              "blurb": "A blurb",
+              "btnTitle": "Find Somewhere",
+              "btnUrl": "/somewhere",
+              "headline": "A good headline",
+              "id": 46,
+              "image": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
+              "imageAlt": "image alt text",
+              "langCode": "en",
+              "style": "Button only",
+              "title": "My CTA",
+              "type": "callToAction",
+            },
+            Object {
+              "paragraphs": Array [
+                Object {
+                  "text": "Gray Section Header",
+                  "type": "sectionHeader",
+                },
+              ],
+              "type": "styleGrayBackground",
+            },
+          ]
+    }
+    title="My title"
+/>,
+}
+`;

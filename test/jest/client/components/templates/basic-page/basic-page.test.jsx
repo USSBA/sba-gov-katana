@@ -1,8 +1,9 @@
-/*global expect*/
+/* eslint-env jest */
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import { TitleSection, Breadcrumb } from 'molecules'
+import { TitleSection, Breadcrumb, PreviousNextSection } from 'molecules'
+import { SectionNav } from 'organisms'
 import BasicPage from 'templates/basic-page/basic-page.jsx'
 
 const title = 'My Basic Page'
@@ -86,5 +87,45 @@ describe('BasicPage', () => {
         .childAt(0)
         .children()
     ).toHaveLength(0)
+  })
+
+  test('has a section navigation when there is a lineage', () => {
+    const lineage = [{ title: 'lineage1', fullUrl: 'http://example.com/lineage1' }]
+    const component = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
+    const sectionNav = component.find(SectionNav)
+
+    expect(sectionNav.prop('lineage')).toEqual(lineage)
+
+    expect(sectionNav.prop('position')).toEqual(component.state('currentPosition'))
+
+    expect(sectionNav.prop('displayMobileNav')).toEqual(component.state('displayMobileNav'))
+
+    expect(sectionNav.prop('handleSectionNavigationEnter')).toEqual(
+      component.instance.handleSectionNavigationEnter
+    )
+  })
+
+  test('has no section navigation when there is no lineage', () => {
+    const component = shallow(<BasicPage title={title} summary={summary} />)
+    const sectionNav = component.find(SectionNav)
+
+    expect(sectionNav.length).toEqual(0)
+  })
+
+  test('has previous and next buttons when there is a lineage', () => {
+    const lineage = [{ title: 'lineage1', fullUrl: 'http://example.com/lineage1' }]
+    const component = shallow(<BasicPage title={title} summary={summary} lineage={lineage} />)
+    const sectionNav = component.find(PreviousNextSection)
+
+    expect(sectionNav.length).toEqual(1)
+
+    expect(sectionNav.prop('lineage')).toEqual(lineage)
+  })
+
+  test('has no previous and next buttons when there is no lineage', () => {
+    const component = shallow(<BasicPage title={title} summary={summary} />)
+    const sectionNav = component.find(PreviousNextSection)
+
+    expect(sectionNav.length).toEqual(0)
   })
 })
