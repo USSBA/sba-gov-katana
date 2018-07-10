@@ -4,26 +4,40 @@
   }
 }
 
-.scroll {
-  overflow-y: scroll;
+.resultContainerWithPagination {
   max-height: calc(100% - 80px);
-  background-color: white;
 }
 
-.searchInfoPanelPadding {
-  padding-top: 40px;
+.resultsWithPagination {
+  @include grid-media($sba-grid-large) {
+    bottom: 66px;
+  }
+}
+
+.resultsWithSearchInfo {
+  @include grid-media($sba-grid-large) {
+    top: 40px;
+  }
+}
+
+.resultContainer {
+  background-color: white;
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+  }
+}
+
+.scroll {
+  overflow-y: scroll;
 }
 
 .searchInfoPanel {
+  background-color: white;
   padding-left: 20px;
   padding-top: 14px;
   @include grid-media($sba-grid-small) {
     padding-left: 0px;
-  }
-  @include grid-media($sba-grid-large) {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    padding-bottom: 20px;
   }
 }
 
@@ -31,4 +45,10 @@
   text-align: right;
   padding: 15px;
   background-color: white;
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
 }

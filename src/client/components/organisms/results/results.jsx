@@ -62,14 +62,22 @@ class Results extends React.PureComponent {
 
     const divClassName = classNames({
       [styles.scroll]: scroll,
-      [styles.searchInfoPanelPadding]: hasSearchInfoPanel
+      [styles.resultsWithPagination]: paginate,
+      [styles.resultsWithSearchInfo]: hasSearchInfoPanel,
+      [styles.resultContainer]: true
+    })
+
+    const resultsClassName = classNames({
+      [styles.resultContainerWithPagination]: paginate
     })
 
     return (
       <div id={id} className={className}>
-        {hasSearchInfoPanel && this.renderSearchInfoPanel()}
-        <div className={divClassName}>{childrenWithProps}</div>
-        {paginate && this.renderPaginator()}
+        <div className={resultsClassName}>
+          {hasSearchInfoPanel && this.renderSearchInfoPanel()}
+          <div className={divClassName}>{childrenWithProps}</div>
+          {paginate && this.renderPaginator()}
+        </div>
       </div>
     )
   }
