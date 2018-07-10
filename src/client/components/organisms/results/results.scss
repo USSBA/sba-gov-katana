@@ -10,6 +10,23 @@
   background-color: white;
 }
 
+.searchInfoPanelPadding {
+  padding-top: 40px;
+}
+
+.searchInfoPanel {
+  padding-left: 20px;
+  padding-top: 14px;
+  @include grid-media($sba-grid-small) {
+    padding-left: 0px;
+  }
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+}
+
 .paginator {
   text-align: right;
   padding: 15px;
