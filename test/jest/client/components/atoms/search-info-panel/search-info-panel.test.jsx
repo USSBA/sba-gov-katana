@@ -53,12 +53,23 @@ describe('SearchInfoPanel atom', () => {
     expect(spanText).toContain(expected)
   })
 
+  test('displays numbers correctly when on the second page', () => {
+    const [pageNumber, pageSize, total] = [2, 5, 20]
+    const [pageStart, pageEnd] = [6, 10]
+    const expected = `Results ${pageStart} - ${pageEnd} of ${total}`
+    const component = shallow(<SearchInfoPanel pageNumber={pageNumber} pageSize={pageSize} total={total} />)
+    const spanText = component.find('span').map(node => {
+      return node.text()
+    })
+    expect(spanText).toContain(expected)
+  })
+
   test('displays full search text when passed all parameters term', () => {
     const searchTerm = 'my Search Term'
-    const [pageNumber, pageSize, total] = [1, 5, 5]
+    const [pageNumber, pageSize, total] = [1, 5, 20]
     const expected = `Results ${pageNumber} - ${pageSize} of ${total} for "${searchTerm}"`
     const component = shallow(
-      <SearchInfoPanel searchTerm={searchTerm} pageNumber={1} pageSize={5} total={5} />
+      <SearchInfoPanel searchTerm={searchTerm} pageNumber={pageNumber} pageSize={pageSize} total={total} />
     )
     const spanText = component.find('span').map(node => {
       return node.text()
