@@ -21,6 +21,7 @@ import PdfIcon from './icons/pdf'
 import ProgressBar from './progress-bar/progress-bar'
 import Radio from './radio/radio'
 import SearchIcon from './icons/search'
+import SearchInfoPanel from './search-info-panel/search-info-panel'
 import SectionLink from './section-link/section-link'
 import SimpleSelect from './simple-select/simple-select'
 import SmallIcon from './small-icon/small-icon'
@@ -59,6 +60,7 @@ export {
   ProgressBar,
   Radio,
   SearchIcon,
+  SearchInfoPanel,
   SectionLink,
   SimpleSelect,
   SmallIcon,
