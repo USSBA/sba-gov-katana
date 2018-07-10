@@ -74,3 +74,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(ArticlePage)
+
+export { ArticlePage }

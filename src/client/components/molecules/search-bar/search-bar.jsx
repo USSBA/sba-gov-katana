@@ -34,6 +34,10 @@ class SearchBar extends React.Component {
   submitSearch(e) {
     e.preventDefault()
     let uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
+    this.executeSearch(uri)
+  }
+
+  executeSearch(uri) {
     document.location = uri
   }
 
