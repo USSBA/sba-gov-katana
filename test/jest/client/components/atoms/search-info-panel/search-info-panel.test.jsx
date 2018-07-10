@@ -25,7 +25,8 @@ describe('SearchInfoPanel atom', () => {
 
   test('displays text for less results than page size', () => {
     const [pageNumber, pageSize, total] = [1, 5, 3]
-    const expected = `Results ${pageNumber} - ${total} of ${total}`
+    const [pageStart, pageEnd] = [1, 3]
+    const expected = `Results ${pageStart} - ${pageEnd} of ${total}`
     const component = shallow(<SearchInfoPanel pageNumber={pageNumber} pageSize={pageSize} total={total} />)
     const spanText = component.find('span').map(node => {
       return node.text()
@@ -35,7 +36,8 @@ describe('SearchInfoPanel atom', () => {
 
   test('displays text for more results than page size', () => {
     const [pageNumber, pageSize, total] = [1, 5, 9]
-    const expected = `Results ${pageNumber} - ${pageSize} of ${total}`
+    const [pageStart, pageEnd] = [1, 5]
+    const expected = `Results ${pageStart} - ${pageEnd} of ${total}`
     const component = shallow(<SearchInfoPanel pageNumber={pageNumber} pageSize={pageSize} total={total} />)
     const spanText = component.find('span').map(node => {
       return node.text()
@@ -45,7 +47,8 @@ describe('SearchInfoPanel atom', () => {
 
   test('displays text for results equal to page size', () => {
     const [pageNumber, pageSize, total] = [1, 5, 5]
-    const expected = `Results ${pageNumber} - ${pageSize} of ${total}`
+    const [pageStart, pageEnd] = [1, 5]
+    const expected = `Results ${pageStart} - ${pageEnd} of ${total}`
     const component = shallow(<SearchInfoPanel pageNumber={pageNumber} pageSize={pageSize} total={total} />)
     const spanText = component.find('span').map(node => {
       return node.text()
@@ -67,7 +70,8 @@ describe('SearchInfoPanel atom', () => {
   test('displays full search text when passed all parameters term', () => {
     const searchTerm = 'my Search Term'
     const [pageNumber, pageSize, total] = [1, 5, 20]
-    const expected = `Results ${pageNumber} - ${pageSize} of ${total} for "${searchTerm}"`
+    const [pageStart, pageEnd] = [1, 5]
+    const expected = `Results ${pageStart} - ${pageEnd} of ${total} for "${searchTerm}"`
     const component = shallow(
       <SearchInfoPanel searchTerm={searchTerm} pageNumber={pageNumber} pageSize={pageSize} total={total} />
     )
