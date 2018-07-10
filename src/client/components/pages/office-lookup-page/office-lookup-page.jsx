@@ -119,7 +119,14 @@ class OfficeLookupPage extends React.Component {
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
         <OfficeMap id="office-map" />
-        <Results id="office-results" paginate scroll extraClassName={styles.officeResults}>
+        <Results
+          id="office-results"
+          paginate
+          scroll
+          extraClassName={styles.officeResults}
+          hasSearchInfoPanel
+          searchTermName={'q'}
+        >
           <OfficeResult />
         </Results>
       </SearchTemplate>
