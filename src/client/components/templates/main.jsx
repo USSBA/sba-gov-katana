@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import cookie from 'react-cookie'
 import _ from 'lodash'
 
@@ -183,4 +183,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+React.propTypes = {
+  location: PropTypes.object
+}
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(Main)
+export { Main }

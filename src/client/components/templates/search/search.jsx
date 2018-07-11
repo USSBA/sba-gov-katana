@@ -37,6 +37,7 @@ export class SearchTemplate extends React.PureComponent {
     super()
     this.state = {
       searchParams: {},
+      submittedSearchParams: {},
       results: [],
       pageNumber: 1,
       hasNoResults: false
@@ -148,7 +149,6 @@ export class SearchTemplate extends React.PureComponent {
     const filteredSearchParams = this.filterSearchParams(searchParams)
     //todo: doesn't do anything yet but could post query string to history
     const query = this.generateQueryString(filteredSearchParams)
-
     this.setState(data, () => {
       this.doSearch(searchType, filteredSearchParams)
     })
@@ -156,6 +156,7 @@ export class SearchTemplate extends React.PureComponent {
 
   doSearch(searchType, searchParams) {
     this.setState({ isLoading: true })
+    this.setState({ submittedSearchParams: this.state.searchParams })
     this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
   }
 
@@ -240,6 +241,7 @@ export class SearchTemplate extends React.PureComponent {
         onSearch: this.onSearch.bind(this),
         onFieldChange: this.onChange.bind(this),
         fieldValues: this.state.searchParams,
+        submittedFieldValues: this.state.submittedSearchParams,
         isLoading: this.state.isLoading,
         onForward: this.handleForward.bind(this),
         onBack: this.handleBack.bind(this),
