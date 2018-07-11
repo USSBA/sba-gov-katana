@@ -30,19 +30,21 @@ class SectionPage extends React.Component {
       }
 
       let tileCollection
-      if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
-        tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
-      } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
-        tileCollection = (
-          <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
-        )
-      } else if (
-        this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
-        this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)
-      ) {
-        tileCollection = <MenuTileCollection data={sectionData.children} />
-      } else {
-        console.error('Unable to find matching section')
+      if (sectionName) {
+        if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
+          tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
+        } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
+          tileCollection = (
+            <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
+          )
+        } else if (
+          this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)
+        ) {
+          tileCollection = <MenuTileCollection data={sectionData.children} />
+        } else {
+          console.error('Unable to find matching section')
+        }
       }
 
       return (
