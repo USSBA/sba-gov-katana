@@ -1,11 +1,9 @@
 import React from 'react'
-import uuid from 'uuid'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import axios from 'axios'
 
 import styles from './feedback-form.scss'
-import * as FeedbackActions from '../../../actions/feedback.js'
 import { Button, TextArea } from 'atoms'
+import constants from '../../../services/constants.js'
 
 const question = 'Was this article helpful?'
 const firstThankYou = 'Thanks for your feedback!'
@@ -20,34 +18,43 @@ class FeedbackForm extends React.Component {
     this.state = {
       displayState: states[0],
       feedbackText: '',
-      honeyPotText: ''
+      otherFeedback: '',
+      currentData: null
     }
   }
 
+  submitFeedbackToServer(result, newDisplayState) {
+    axios.post(constants.routes.submitFeedbackResults, result).then(response => {
+      if (response && response.status === 200) {
+        let data = response.data;
+        this.setState({ displayState: newDisplayState, currentData: data })
+      }
+      else {
+        console.log(response)
+      }
+    })
+  }
+
   handleYesClick() {
-    this.props.actions.submitResults('yes', uuid.v4())
-    this.setState({ displayState: states[1] })
+    this.submitFeedbackToServer({ result: "yes" }, states[1])
   }
 
   handleNoClick() {
-    this.props.actions.submitResults('no', uuid.v4())
-    this.setState({ displayState: states[1] })
+    this.submitFeedbackToServer({ result: "no" }, states[1])
   }
 
   handleSubmit() {
-    const { actions: { submitText }, lastFeedbackId } = this.props
-    const { feedbackText, honeyPotText } = this.state
-
-    submitText(lastFeedbackId, { feedbackText, honeyPotText })
-    this.setState({ displayState: states[2] })
+    const { feedbackText, otherFeedback } = this.state
+    let newFeedback = Object.assign({},{ feedbackText, otherFeedback }, this.state.currentData);
+    this.submitFeedbackToServer(newFeedback, states[2]);
   }
 
   handleChange(e) {
     this.setState({ feedbackText: e.target.value })
   }
 
-  handleMaidenNameChange(e) {
-    this.setState({ honeyPotText: e.target.value })
+  handleOtherFeedbackChange(e) {
+    this.setState({ otherFeedback: e.target.value })
   }
 
   render() {
@@ -66,8 +73,8 @@ class FeedbackForm extends React.Component {
             value={feedbackText}
           />
           {/* This is a honeypot input to catch bots. */}
-          <div className={styles.maidenNameContainer}>
-            <input id="maiden-name" onChange={this.handleMaidenNameChange.bind(this)} />
+          <div className={styles.otherFeedbackContainer}>
+            <input id="other-feedback" onChange={this.handleOtherFeedbackChange.bind(this)} />
           </div>
           <Button
             id="feedback-submit-button"
@@ -79,7 +86,8 @@ class FeedbackForm extends React.Component {
           </Button>
         </div>
       )
-    } else if (displayState === states[2]) {
+    }
+    else if (displayState === states[2]) {
       return (
         <div id="feedback-module-thank-you" className={styles.container}>
           <i
@@ -92,7 +100,8 @@ class FeedbackForm extends React.Component {
           <h4>{secondThankYou}</h4>
         </div>
       )
-    } else {
+    }
+    else {
       return (
         <div id="feedback-module-question" className={styles.container}>
           <h4 className={styles.question}>{question}</h4>
@@ -110,13 +119,4 @@ class FeedbackForm extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { lastFeedbackId: state.feedback.lastFeedbackId }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(FeedbackActions, dispatch)
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackForm)
+export default FeedbackForm

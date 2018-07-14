@@ -20,8 +20,7 @@ const constants = {
   routes: {
     confirmationEmail: '/lendermatch/resend',
     submitForm: '/lendermatch/matchFormData',
-    submitFeedbackResults: '/actions/feedback/',
-    submitFeedbackText: '/actions/feedback/{id}/text',
+    submitFeedbackResults: '/api/feedback',
     tenSteps: '/business-guide/10-steps-start-your-business/',
     submitProfile: '/actions/resourceCenterProfile'
   },
