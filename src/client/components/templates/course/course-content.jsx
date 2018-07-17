@@ -67,7 +67,10 @@ class CourseContent extends React.PureComponent {
   }
 
   onClick() {
-    const { course: { url }, title } = this.props
+    const {
+      course: { url },
+      title
+    } = this.props
 
     logEvent({
       category: eventCategories.learningCenter,
