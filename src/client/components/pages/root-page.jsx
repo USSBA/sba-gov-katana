@@ -86,7 +86,8 @@ export class RootPage extends React.Component {
         if (
           first === 'disaster-assistance' ||
           first === 'learning-center' ||
-          first === 'national-small-business-week'
+          first === 'national-small-business-week' ||
+          first === 'anuncio-especial'
         ) {
           return this.renderPageOnLineage(pageLineage)
         } else if (sectionData) {
