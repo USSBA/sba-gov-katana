@@ -89,6 +89,14 @@ class OfficeLookupPage extends React.Component {
             }}
             errorText="Enter a 5-digit zip code."
           />
+
+          <TaxonomyMultiSelect
+            taxonomy={officeTypeTaxonomy}
+            label="Resource Type:"
+            queryParamName="type"
+            multi={false}
+            className={styles.search}
+          />
         </PrimarySearchBar>
         {/* Commenting out for now, but perhaps the children of the secondary search bar can be reused in the primary search bar
         <SecondarySearchBar id="office-secondary-search-bar">
@@ -96,13 +104,6 @@ class OfficeLookupPage extends React.Component {
             taxonomy={officeServiceTaxonomy}
             queryParamName="service"
             label="Service:"
-            multi={false}
-            className={styles.search}
-          />
-          <TaxonomyMultiSelect
-            taxonomy={officeTypeTaxonomy}
-            label="Resource Type:"
-            queryParamName="type"
             multi={false}
             className={styles.search}
           />

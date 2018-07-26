@@ -46,6 +46,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documenttype-select"
                 maxValues={3}
@@ -103,6 +104,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="program-select"
                 maxValues={3}
@@ -172,6 +174,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documentactivity-select"
                 maxValues={3}
@@ -302,6 +305,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documenttype-select"
                         maxValues={3}
@@ -359,6 +363,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="program-select"
                         maxValues={3}
@@ -428,6 +433,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documentactivity-select"
                         maxValues={3}
@@ -693,6 +699,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -750,6 +757,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -819,6 +827,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -949,6 +958,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -1006,6 +1016,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -1075,6 +1086,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -1278,6 +1290,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documenttype-select"
                 maxValues={3}
@@ -1335,6 +1348,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="program-select"
                 maxValues={3}
@@ -1404,6 +1418,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documentactivity-select"
                 maxValues={3}
@@ -1534,6 +1549,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documenttype-select"
                         maxValues={3}
@@ -1591,6 +1607,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="program-select"
                         maxValues={3}
@@ -1660,6 +1677,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documentactivity-select"
                         maxValues={3}
@@ -1925,6 +1943,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -1982,6 +2001,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -2051,6 +2071,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -2181,6 +2202,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -2238,6 +2260,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -2307,6 +2330,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -2514,6 +2538,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
+        className=""
         id="documenttype-select-container"
       >
         <label />
@@ -2581,6 +2606,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
+        className=""
         id="program-select-container"
       >
         <label />
@@ -2648,6 +2674,7 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
+        className=""
         id="documentactivity-select-container"
       >
         <label />
@@ -2770,6 +2797,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documenttype-select"
                 maxValues={3}
@@ -2827,6 +2855,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="program-select"
                 maxValues={3}
@@ -2896,6 +2925,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documentactivity-select"
                 maxValues={3}
@@ -3026,6 +3056,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documenttype-select"
                         maxValues={3}
@@ -3083,6 +3114,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="program-select"
                         maxValues={3}
@@ -3152,6 +3184,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documentactivity-select"
                         maxValues={3}
@@ -3417,6 +3450,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -3474,6 +3508,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -3543,6 +3578,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -3673,6 +3709,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -3730,6 +3767,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -3799,6 +3837,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -4002,6 +4041,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documenttype-select"
                 maxValues={3}
@@ -4059,6 +4099,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="program-select"
                 maxValues={3}
@@ -4128,6 +4169,7 @@ ShallowWrapper {
         >
             <MultiSelectBox
                 autoFocus={false}
+                className=""
                 errorText=""
                 id="documentactivity-select"
                 maxValues={3}
@@ -4258,6 +4300,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documenttype-select"
                         maxValues={3}
@@ -4315,6 +4358,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="program-select"
                         maxValues={3}
@@ -4384,6 +4428,7 @@ ShallowWrapper {
             >
                   <MultiSelectBox
                         autoFocus={false}
+                        className=""
                         errorText=""
                         id="documentactivity-select"
                         maxValues={3}
@@ -4649,6 +4694,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -4706,6 +4752,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -4775,6 +4822,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}
@@ -4905,6 +4953,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documenttype-select"
                                         maxValues={3}
@@ -4962,6 +5011,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="program-select"
                                         maxValues={3}
@@ -5031,6 +5081,7 @@ ShallowWrapper {
                     >
                               <MultiSelectBox
                                         autoFocus={false}
+                                        className=""
                                         errorText=""
                                         id="documentactivity-select"
                                         maxValues={3}

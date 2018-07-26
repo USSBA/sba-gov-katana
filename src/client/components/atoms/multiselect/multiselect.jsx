@@ -83,7 +83,7 @@ class MultiSelectBox extends React.Component {
     })
 
     return (
-      <div id={this.props.id + '-container'}>
+      <div id={this.props.id + '-container'} className={this.props.className}>
         <label>{this.props.label}</label>
         <div id={this.props.id} className={styles.errorClass}>
           <ReactSelect
@@ -117,7 +117,8 @@ MultiSelectBox.defaultProps = {
   maxValues: 3,
   onBlur: () => {},
   onFocus: () => {},
-  onChange: () => {}
+  onChange: () => {},
+  className: ''
 }
 
 export default MultiSelectBox
