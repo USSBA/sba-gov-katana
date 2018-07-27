@@ -92,7 +92,7 @@ class OfficeLookupPage extends React.Component {
 
           <TaxonomyMultiSelect
             taxonomy={officeTypeTaxonomy}
-            label="Resource Type:"
+            label="Provided By:"
             queryParamName="type"
             multi={false}
             className={styles.search}
