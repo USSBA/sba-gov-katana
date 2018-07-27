@@ -241,8 +241,10 @@ function mapStateToProps(state, ownProps) {
     office = offices.filter(({ id }) => id === officeId)[0]
   }
 
-  if (persons && mediaContactId) {
+  if (persons && !isNaN(mediaContactId)) {
     mediaContact = persons.filter(({ id }) => id === mediaContactId)[0]
+  } else if (persons && office && !isNaN(office.mediaContact)) {
+    mediaContact = persons.filter(({ id }) => id === office.mediaContact)[0]
   }
 
   return {
