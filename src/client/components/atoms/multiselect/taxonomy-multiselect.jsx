@@ -13,7 +13,7 @@ class TaxonomyMultiSelect extends React.Component {
   }
 
   generatePropsFromTaxonomy() {
-    const { taxonomy, includeAllOption, label, queryParamName, value } = this.props
+    const { taxonomy, includeAllOption, label, value } = this.props
     const { name } = taxonomy
     const id = `${this.createSlug(name)}-select`
     const stateName = camelCase(name)
