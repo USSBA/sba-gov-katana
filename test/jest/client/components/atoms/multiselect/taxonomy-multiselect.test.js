@@ -90,18 +90,17 @@ test('Taxonomy Multiselect sets the value to the first value of the taxonomy whe
   expect(multiselect.props().value).toEqual('one')
 })
 
-test.skip('Taxonomy Multiselect sets the value to a provided value', () => {
-  // When an expected value is part of the taxonomy, when we pass that in as a value
-  // to the component, that becomes the default value for the dropdown and not the
-  // first value of the value list.  This test may need to be updated to change how
-  // that value is passed in.  This is just an outline.  Remove these comments later
-  // too.
-  const expectedValue = 'item123'
+test('Taxonomy Multiselect sets the value to a provided value', () => {
+  const value = 'item123'
+  const expectedValue = {
+    label: value,
+    value
+  }
   const testTaxonomy = {
     name: 'test',
-    terms: ['one', 'two', expectedValue]
+    terms: ['one', 'two', value]
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} value={expectedValue} />)
-  expect(multiselect.props().value).toEqual(expectedValue)
+  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} value={value} />)
+  expect(multiselect.find(MultiSelect).props().value).toEqual(expectedValue)
 })
