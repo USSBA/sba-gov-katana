@@ -13,7 +13,7 @@ class TaxonomyMultiSelect extends React.Component {
   }
 
   generatePropsFromTaxonomy() {
-    const { taxonomy, includeAllOption, label } = this.props
+    const { taxonomy, includeAllOption, label, queryParamName, value } = this.props
     const { name } = taxonomy
     const id = `${this.createSlug(name)}-select`
     const stateName = camelCase(name)
@@ -22,11 +22,18 @@ class TaxonomyMultiSelect extends React.Component {
       return { label: entry, value: entry }
     })
 
+    let _value = ''
+    if (options.length) {
+      const needle = typeof value === 'string' ? { label: value, value } : value
+      const defaultValue = options.find(option => option.value === needle.value)
+      _value = defaultValue || options[0].value
+    }
+
     const multiselectProps = {
       id: id,
       name: id,
       options: options,
-      value: options.length ? options[0].value : ''
+      value: _value
     }
 
     return multiselectProps
@@ -34,7 +41,7 @@ class TaxonomyMultiSelect extends React.Component {
 
   render() {
     const generatedProps = this.generatePropsFromTaxonomy()
-    return <MultiSelect {...generatedProps} {...this.props} />
+    return <MultiSelect {...this.props} {...generatedProps} />
   }
 }
 
@@ -43,12 +50,14 @@ TaxonomyMultiSelect.propTypes = {
   // label: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   includeAllOption: PropTypes.bool,
-  filterValues: PropTypes.object
+  filterValues: PropTypes.object,
+  value: PropTypes.string
 }
 
 TaxonomyMultiSelect.defaultProps = {
   includeAllOption: true,
-  filterValues: {}
+  filterValues: {},
+  value: ''
 }
 
 export default TaxonomyMultiSelect
