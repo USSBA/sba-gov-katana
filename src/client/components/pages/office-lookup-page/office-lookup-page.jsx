@@ -43,11 +43,12 @@ class OfficeLookupPage extends React.Component {
   render() {
     const defaultZipCode = 20024
     const pageSize = 5
+    const defaultType = 'Startup accelerator'
     const defaultSearchParams = {
       address: defaultZipCode,
-      pageSize
+      pageSize,
+      type: defaultType
     }
-    const defaultType = 'All'
     const officeTypeTaxonomy = this.getTaxonomy('officeType')
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
     const { items, isLoading } = this.props

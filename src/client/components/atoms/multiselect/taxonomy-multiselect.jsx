@@ -54,8 +54,7 @@ TaxonomyMultiSelect.propTypes = {
   // label: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   includeAllOption: PropTypes.bool,
-  filterValues: PropTypes.object,
-  value: PropTypes.string
+  filterValues: PropTypes.object
 }
 
 TaxonomyMultiSelect.defaultProps = {
