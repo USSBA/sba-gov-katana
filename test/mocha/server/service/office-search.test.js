@@ -130,8 +130,9 @@ describe('# Office Search', () => {
       let result = await officeSearch.officeSearch({ address: null })
       officeSearchRunSearchStub.calledOnce.should.be.true
       officeSearchRunSearchStub.calledWith({
-        query: 'office',
+        query: `type: 'office'`,
         filterQuery: null,
+        queryParser: 'structured',
         return: '_all_fields',
         sort: 'title asc',
         size: 20,
@@ -146,8 +147,9 @@ describe('# Office Search', () => {
       let result = await officeSearch.officeSearch({})
       officeSearchRunSearchStub.calledOnce.should.be.true
       officeSearchRunSearchStub.calledWith({
-        query: 'office',
+        query: `type: 'office'`,
         filterQuery: null,
+        queryParser: 'structured',
         return: '_all_fields',
         sort: 'title asc',
         size: 20,
@@ -162,8 +164,9 @@ describe('# Office Search', () => {
       let result = await officeSearch.officeSearch({ address: '06870' })
       officeSearchRunSearchStub.calledOnce.should.be.true
       officeSearchRunSearchStub.calledWith({
-        query: 'office',
+        query: `type: 'office'`,
         filterQuery: null,
+        queryParser: 'structured',
         return: '_all_fields,distance',
         sort: 'distance asc',
         size: 20,
