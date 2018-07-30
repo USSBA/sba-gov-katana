@@ -43,7 +43,7 @@ class OfficeLookupPage extends React.Component {
   render() {
     const defaultZipCode = 20024
     const pageSize = 5
-    const defaultType = 'Startup accelerator'
+    const defaultType = 'All'
     const defaultSearchParams = {
       address: defaultZipCode,
       pageSize,
