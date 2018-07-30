@@ -45,12 +45,25 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   componentWillMount() {
-    if (this.props.defaultSearchParams) {
-      this.setState({ searchParams: this.props.defaultSearchParams })
+    const { defaultSearchParams } = this.props
+    let clonedDefaultSearchParams
+
+    if (defaultSearchParams) {
+      clonedDefaultSearchParams = { ...defaultSearchParams }
+      if (
+        clonedDefaultSearchParams.hasOwnProperty('type') &&
+        clonedDefaultSearchParams.type.toLowerCase() === 'all'
+      ) {
+        delete clonedDefaultSearchParams.type
+      }
+    }
+
+    if (clonedDefaultSearchParams) {
+      this.setState({ searchParams: clonedDefaultSearchParams })
     }
 
     if (this.props.loadDefaultResults === true) {
-      this.doSearch(this.props.searchType, this.props.defaultSearchParams)
+      this.doSearch(this.props.searchType, clonedDefaultSearchParams)
     }
   }
 
