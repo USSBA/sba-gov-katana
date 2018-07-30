@@ -23,7 +23,7 @@ test('Taxonomy Multiselect includes "All" option by default', () => {
     value: 'All'
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />)
+  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
   expect(multiselect.props().options).toContainEqual(expectedAllValue)
   expect(multiselect.props().options.length).toEqual(3)
 })
@@ -39,7 +39,7 @@ test('Taxonomy Multiselect includes options passed in by taxonomy prop', () => {
     value: 'one'
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />)
+  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
   expect(multiselect.props().options).toContainEqual(expectedValue)
   expect(multiselect.props().options.length).toEqual(3)
 })
@@ -55,7 +55,7 @@ test('Taxonomy Multiselect without options only includes "All" option by default
     value: 'All'
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />)
+  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
   expect(multiselect.props().options.length).toEqual(1)
   expect(multiselect.props().options).toContainEqual(expectedAllValue)
 })
@@ -66,7 +66,9 @@ test('Taxonomy Multiselect can have "All" option disabled', () => {
     terms: []
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} includeAllOption={false} />)
+  const multiselect = shallow(
+    <TaxonomyMultiSelect taxonomy={testTaxonomy} includeAllOption={false} />
+  ).find(MultiSelect)
   expect(multiselect.props().options.length).toEqual(0)
 })
 
@@ -76,7 +78,7 @@ test('Taxonomy Multiselect sets the value to "All" when "All" option is enabled'
     terms: ['one', 'two']
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />)
+  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} />).find(MultiSelect)
   expect(multiselect.props().value).toEqual('All')
 })
 
@@ -86,7 +88,9 @@ test('Taxonomy Multiselect sets the value to the first value of the taxonomy whe
     terms: ['one', 'two']
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} includeAllOption={false} />)
+  const multiselect = shallow(
+    <TaxonomyMultiSelect taxonomy={testTaxonomy} includeAllOption={false} />
+  ).find(MultiSelect)
   expect(multiselect.props().value).toEqual('one')
 })
 
@@ -101,6 +105,8 @@ test('Taxonomy Multiselect sets the value to a provided value', () => {
     terms: ['one', 'two', value]
   }
 
-  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} value={value} />)
-  expect(multiselect.find(MultiSelect).props().value).toEqual(expectedValue)
+  const multiselect = shallow(<TaxonomyMultiSelect taxonomy={testTaxonomy} value={value} />).find(
+    MultiSelect
+  )
+  expect(multiselect.props().value).toEqual(expectedValue)
 })
