@@ -24,6 +24,11 @@ class TaxonomyMultiSelect extends React.Component {
 
     let _value = ''
     if (options.length) {
+      // The MultiSelect Component can take a string directly but it will implicitly convert it to an object.
+      // So let's mimic that functionality here.
+      // if value is a string, reformat the value to be an object friendly for the MultiSelect Component.
+      // formatting the value as an object at this level, as opposed to at the MultiSelect Component level
+      // enables the TaxonomyMultiSelect unit test to treat this component test an input value as a string, as well.
       const needle = typeof value === 'string' ? { label: value, value } : value
       const defaultValue = options.find(option => option.value === needle.value)
       _value = defaultValue || options[0].value
