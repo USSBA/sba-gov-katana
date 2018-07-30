@@ -25,7 +25,7 @@ export class PrimarySearchBar extends React.PureComponent {
 
   render() {
     const childrenWithProps = React.Children.map(this.props.children, child => {
-      const { queryParamName, value } = child.props
+      const { queryParamName } = child.props
       const { fieldValues } = this.props
       const clonedChild = React.cloneElement(child, {
         onChange: valueOrEvent => {
@@ -33,7 +33,7 @@ export class PrimarySearchBar extends React.PureComponent {
           const value = valueOrEvent.target ? valueOrEvent.target.value : valueOrEvent
           this.onFieldChange(queryParamName, value)
         },
-        value: fieldValues && fieldValues[queryParamName] ? fieldValues[queryParamName] : value ? value : ''
+        value: fieldValues && fieldValues[queryParamName] ? fieldValues[queryParamName] : ''
       })
       return clonedChild
     })
