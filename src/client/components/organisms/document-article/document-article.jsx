@@ -237,12 +237,14 @@ function mapStateToProps(state, ownProps) {
   let office
   let mediaContact
 
-  if (offices && officeId) {
-    office = offices.filter(({ id }) => id === officeId)[0]
+  if (offices && typeof officeId === 'number') {
+    office = offices.find(({ id }) => id === officeId)[0]
   }
 
-  if (persons && mediaContactId) {
-    mediaContact = persons.filter(({ id }) => id === mediaContactId)[0]
+  if (persons && typeof mediaContactId === 'number') {
+    mediaContact = persons.find(({ id }) => id === mediaContactId)[0]
+  } else if (persons && office && typeof office.mediaContact === 'number') {
+    mediaContact = persons.find(({ id }) => id === office.mediaContact)[0]
   }
 
   return {
