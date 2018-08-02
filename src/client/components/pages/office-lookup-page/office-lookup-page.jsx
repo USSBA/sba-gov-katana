@@ -71,7 +71,7 @@ class OfficeLookupPage extends React.Component {
           <TextInput
             id="search"
             queryParamName="q"
-            className={styles.search}
+            className={styles.field + ' ' + styles.search}
             label="Find"
             placeholder="Counseling, training, mentoring..."
             validationState={''}
@@ -81,7 +81,7 @@ class OfficeLookupPage extends React.Component {
           <TextInput
             id="zip"
             queryParamName="address"
-            className={styles.zip}
+            className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
             value={defaultZipCode}
@@ -97,7 +97,7 @@ class OfficeLookupPage extends React.Component {
             label="Provided By"
             queryParamName="type"
             multi={false}
-            className={styles.search}
+            className={styles.field + ' ' + styles.search}
           />
         </PrimarySearchBar>
         {/* Commenting out for now, but perhaps the children of the secondary search bar can be reused in the primary search bar

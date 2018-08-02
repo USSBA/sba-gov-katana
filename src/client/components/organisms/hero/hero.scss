@@ -34,13 +34,25 @@
     }
 
     @include for-medium-only {
-      @include grid-column(6, (gutter: 30px)) min-width: 339px;
+      @include grid-column(
+          6,
+          (
+            gutter: 30px
+          )
+        )
+        min-width: 339px;
       // Override grid column left margin defined above in the @include.
       margin-left: -50px;
     }
 
     @include for-large-up {
-      @include grid-column(5, (gutter: 30px)) min-width: 500px;
+      @include grid-column(
+          5,
+          (
+            gutter: 30px
+          )
+        )
+        min-width: 500px;
       // Override grid column left margin defined above in the @include.
       margin-left: -50px;
     }

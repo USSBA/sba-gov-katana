@@ -37,4 +37,7 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SocialMediaLink)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(SocialMediaLink)

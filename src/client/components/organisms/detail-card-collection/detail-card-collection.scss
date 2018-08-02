@@ -10,11 +10,21 @@
 
   @include for-medium-only {
     padding: 30px;
-    @include grid-column(6, (gutter: 30px));
+    @include grid-column(
+      6,
+      (
+        gutter: 30px
+      )
+    );
   }
 
   @include for-large-up {
     padding: 20px;
-    @include grid-column(4, (gutter: 30px));
+    @include grid-column(
+      4,
+      (
+        gutter: 30px
+      )
+    );
   }
 }

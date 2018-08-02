@@ -28,14 +28,7 @@
   }
 
   @include grid-media($sba-grid-large) {
-    float: left;
-    display: inline-block;
-
     width: 300px;
-    margin-right: 20px;
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   input {
@@ -52,14 +45,7 @@
   }
 
   @include grid-media($sba-grid-large) {
-    float: left;
-    display: inline-block;
-
     width: 170px;
-    margin-right: 20px;
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   input {
@@ -97,5 +83,13 @@
     background-color: unset;
     width: 321px;
     overflow: hidden;
+  }
+}
+
+.field {
+  @include grid-media($sba-grid-large) {
+    margin-right: 20px;
+    float: left;
+    display: inline-block;
   }
 }
