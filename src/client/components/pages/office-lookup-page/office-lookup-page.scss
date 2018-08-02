@@ -19,6 +19,7 @@
 //     width: 10%;
 //     position
 //   }
+
 .search {
   position: relative;
 
@@ -80,6 +81,11 @@
 
 .officeSearch {
   position: relative;
+  background-color: $sba-blue;
+  h2#office-primary-search-bar-title,
+  label {
+    color: white;
+  }
 }
 
 .officeResults {

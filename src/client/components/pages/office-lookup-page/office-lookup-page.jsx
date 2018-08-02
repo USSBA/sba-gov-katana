@@ -118,7 +118,7 @@ class OfficeLookupPage extends React.Component {
             ]}
           />
         </SecondarySearchBar> */}
-        {/* 
+        {/*
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
         <OfficeMap id="office-map" />
@@ -150,5 +150,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(OfficeLookupPage)
 export { OfficeLookupPage }
