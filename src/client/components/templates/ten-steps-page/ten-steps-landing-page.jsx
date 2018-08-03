@@ -286,4 +286,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(TenStepsLandingPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(TenStepsLandingPage)

@@ -170,4 +170,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(Tile)

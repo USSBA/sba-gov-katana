@@ -26,27 +26,26 @@ class FeedbackForm extends React.Component {
   submitFeedbackToServer(result, newDisplayState) {
     axios.post(constants.routes.submitFeedbackResults, result).then(response => {
       if (response && response.status === 200) {
-        let data = response.data;
+        let data = response.data
         this.setState({ displayState: newDisplayState, currentData: data })
-      }
-      else {
+      } else {
         console.log(response)
       }
     })
   }
 
   handleYesClick() {
-    this.submitFeedbackToServer({ result: "yes" }, states[1])
+    this.submitFeedbackToServer({ result: 'yes' }, states[1])
   }
 
   handleNoClick() {
-    this.submitFeedbackToServer({ result: "no" }, states[1])
+    this.submitFeedbackToServer({ result: 'no' }, states[1])
   }
 
   handleSubmit() {
     const { feedbackText, otherFeedback } = this.state
-    let newFeedback = Object.assign({},{ feedbackText, otherFeedback }, this.state.currentData);
-    this.submitFeedbackToServer(newFeedback, states[2]);
+    let newFeedback = Object.assign({}, { feedbackText, otherFeedback }, this.state.currentData)
+    this.submitFeedbackToServer(newFeedback, states[2])
   }
 
   handleChange(e) {
@@ -86,8 +85,7 @@ class FeedbackForm extends React.Component {
           </Button>
         </div>
       )
-    }
-    else if (displayState === states[2]) {
+    } else if (displayState === states[2]) {
       return (
         <div id="feedback-module-thank-you" className={styles.container}>
           <i
@@ -100,8 +98,7 @@ class FeedbackForm extends React.Component {
           <h4>{secondThankYou}</h4>
         </div>
       )
-    }
-    else {
+    } else {
       return (
         <div id="feedback-module-question" className={styles.container}>
           <h4 className={styles.question}>{question}</h4>

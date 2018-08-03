@@ -118,6 +118,9 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(MiniNav)
 
 export { MiniNav }

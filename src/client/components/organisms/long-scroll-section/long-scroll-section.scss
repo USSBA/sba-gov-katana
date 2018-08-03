@@ -36,7 +36,7 @@
 .stepSection:first-of-type img,
 .stepSection:nth-of-type(8n) img {
   @include grid-media($sba-grid-large) {
-    @include grid-column(7,$desktop-0gutter);
+    @include grid-column(7, $desktop-0gutter);
     @include grid-push(5, $desktop-0gutter);
     top: 65%;
   }
@@ -44,7 +44,7 @@
 
 .stepSection:last-of-type img {
   @include grid-media($sba-grid-large) {
-    @include grid-column(4,$desktop-0gutter);
+    @include grid-column(4, $desktop-0gutter);
     @include grid-push(7, $desktop-0gutter);
     max-height: 48%;
   }
@@ -88,7 +88,7 @@
 
 .leftAligned img {
   @include grid-media($sba-grid-large) {
-    @include grid-column(7,$desktop-0gutter);
+    @include grid-column(7, $desktop-0gutter);
     @include grid-push(5, $desktop-0gutter);
   }
 }

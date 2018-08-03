@@ -32,11 +32,7 @@
 ///
 /// @access private
 
-@mixin _directional-property(
-    $property,
-    $suffix,
-    $values
-  ) {
+@mixin _directional-property($property, $suffix, $values) {
   $top: $property + '-top' + if($suffix, '-#{$suffix}', '');
   $bottom: $property + '-bottom' + if($suffix, '-#{$suffix}', '');
   $left: $property + '-left' + if($suffix, '-#{$suffix}', '');

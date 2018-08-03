@@ -7,7 +7,13 @@
 }
 
 .callToAction {
-  @include grid-column(12, (gutter: 20px)) @include grid-container;
+  @include grid-column(
+      12,
+      (
+        gutter: 20px
+      )
+    )
+    @include grid-container;
 
   background-color: $sba-blue;
   margin-bottom: 20px;
@@ -16,7 +22,13 @@
   text-align: center;
 
   @include for-large-up {
-    @include grid-column(2.94, (gutter: 42px)) margin-bottom: 0;
+    @include grid-column(
+        2.94,
+        (
+          gutter: 42px
+        )
+      )
+      margin-bottom: 0;
     margin-top: -170px;
     padding-bottom: 28px;
     position: absolute;
