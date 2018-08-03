@@ -187,5 +187,8 @@ React.propTypes = {
   location: PropTypes.object
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Main)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(Main)
 export { Main }

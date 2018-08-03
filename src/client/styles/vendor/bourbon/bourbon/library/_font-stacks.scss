@@ -16,12 +16,7 @@
 ///     font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 ///   }
 
-$font-stack-helvetica: (
-  'Helvetica Neue',
-  'Helvetica',
-  'Arial',
-  sans-serif
-);
+$font-stack-helvetica: ('Helvetica Neue', 'Helvetica', 'Arial', sans-serif);
 
 /// A variable that outputs a Lucida Grande font stack.
 ///
@@ -39,13 +34,7 @@ $font-stack-helvetica: (
 ///     font-family: "Lucida Grande", "Lucida Sans Unicode", "Geneva", "Verdana", sans-serif;
 ///   }
 
-$font-stack-lucida-grande: (
-  'Lucida Grande',
-  'Lucida Sans Unicode',
-  'Geneva',
-  'Verdana',
-  sans-serif
-);
+$font-stack-lucida-grande: ('Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif);
 
 /// A variable that outputs a Verdana font stack.
 ///
@@ -63,11 +52,7 @@ $font-stack-lucida-grande: (
 ///     font-family: "Verdana", "Geneva", sans-serif;
 ///   }
 
-$font-stack-verdana: (
-  'Verdana',
-  'Geneva',
-  sans-serif
-);
+$font-stack-verdana: ('Verdana', 'Geneva', sans-serif);
 
 /// A variable that outputs a system font stack.
 ///
@@ -148,12 +133,7 @@ $font-stack-garamond: (
 ///     font-family: "Georgia", "Times", "Times New Roman", serif;
 ///   }
 
-$font-stack-georgia: (
-  'Georgia',
-  'Times',
-  'Times New Roman',
-  serif
-);
+$font-stack-georgia: ('Georgia', 'Times', 'Times New Roman', serif);
 
 /// A variable that outputs a Hoefler Text font stack.
 ///
@@ -171,13 +151,7 @@ $font-stack-georgia: (
 ///     font-family: "Hoefler Text", "Baskerville Old Face", "Garamond", "Times New Roman", serif;
 ///   }
 
-$font-stack-hoefler-text: (
-  'Hoefler Text',
-  'Baskerville Old Face',
-  'Garamond',
-  'Times New Roman',
-  serif
-);
+$font-stack-hoefler-text: ('Hoefler Text', 'Baskerville Old Face', 'Garamond', 'Times New Roman', serif);
 
 /// A variable that outputs a Consolas font stack.
 ///
@@ -195,11 +169,7 @@ $font-stack-hoefler-text: (
 ///     font-family: "Consolas", "monaco", monospace;
 ///   }
 
-$font-stack-consolas: (
-  'Consolas',
-  'monaco',
-  monospace
-);
+$font-stack-consolas: ('Consolas', 'monaco', monospace);
 
 /// A variable that outputs a Courier New font stack.
 ///
@@ -241,9 +211,4 @@ $font-stack-courier-new: (
 ///     font-family: "Monaco", "Consolas", "Lucida Console", monospace;
 ///   }
 
-$font-stack-monaco: (
-  'Monaco',
-  'Consolas',
-  'Lucida Console',
-  monospace
-);
+$font-stack-monaco: ('Monaco', 'Consolas', 'Lucida Console', monospace);

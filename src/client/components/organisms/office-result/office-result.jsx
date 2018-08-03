@@ -8,7 +8,13 @@ import marker from 'assets/svg/marker.svg'
 
 class OfficeResult extends React.PureComponent {
   render() {
-    const { id, item: { fields: item, exprs: { distance } } } = this.props
+    const {
+      id,
+      item: {
+        fields: item,
+        exprs: { distance }
+      }
+    } = this.props
     if (!item) {
       return null
     }

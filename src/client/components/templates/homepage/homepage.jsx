@@ -56,7 +56,9 @@ class Homepage extends React.Component {
           <FrontPageHero hero={hero} button={buttons[0]} />
         </div>
         {paragraphElements.map(element => {
-          const { props: { id } } = element
+          const {
+            props: { id }
+          } = element
           const sectionClassName = id.startsWith('panelMenu')
             ? styles.sectionPanelMenu
             : styles.sectionWithPadding
@@ -72,7 +74,9 @@ class Homepage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { contentReducer: { node, siteMap } } = state
+  const {
+    contentReducer: { node, siteMap }
+  } = state
   return { data: node, siteMap }
 }
 
@@ -84,4 +88,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export { Homepage }
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Homepage)

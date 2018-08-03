@@ -21,7 +21,7 @@
 .desktopFooterLinks {
   display: none;
   margin-bottom: 0.833rem;
-  @include grid-media( $sba-grid-large) {
+  @include grid-media($sba-grid-large) {
     @include grid-column(2);
     display: block;
   }

@@ -41,10 +41,10 @@ nav {
 }
 
 .mainContent {
-  @include grid-media( $tablet-nav) {
+  @include grid-media($tablet-nav) {
     padding-top: 4.111rem;
   }
-  @include grid-media( $mobile-nav) {
+  @include grid-media($mobile-nav) {
     padding-top: 3.611rem;
   }
 }

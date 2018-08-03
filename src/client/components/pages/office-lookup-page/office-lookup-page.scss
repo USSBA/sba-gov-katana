@@ -61,6 +61,11 @@
   }
 }
 
+// Balances bottom margin when error is active
+.zip p {
+  margin-bottom: -20px;
+}
+
 // Results
 
 .officeResults {
