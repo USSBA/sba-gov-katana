@@ -100,7 +100,7 @@ export class DocumentArticle extends React.Component {
       const MEDIA_ADVISORY = 'Media advisory'
 
       let articleIdText = null
-      if (data.articleId) {
+      if (data.articleId && typeof data.articleId === 'string') {
         let articleIdPrefix
         if (category) {
           if (type === PRESS_RELEASE) {
