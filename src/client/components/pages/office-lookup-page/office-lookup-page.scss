@@ -1,24 +1,31 @@
-// .container {
-//   @include grid-media($sba-grid-small) {
-//     @include grid-column(6);
-//     margin-top: 20px;
-//     margin-bottom: 40px;
-//   }
-//   @include grid-media($sba-grid-medium) {
-//     @include grid-column(12);
-//     margin-top: 20px;
-//     margin-bottom: 30px;
-//   }
-//   @include grid-media($sba-grid-large) {
-//     @include grid-column(12);
-//     //    @include grid-push(2);
-//   }
-// }
+.officeSearch {
+  position: relative;
+}
 
-// .zip {
-//     width: 10%;
-//     position
-//   }
+.searchBar {
+  background-color: $sba-blue;
+  label,
+  h2 {
+    color: white;
+  }
+  button {
+    padding: 13px 22px;
+    margin-top: 20px;
+    @include grid-media($sba-grid-large) {
+      margin-top: 0px;
+    }
+  }
+}
+
+// Fields
+
+.field {
+  @include grid-media($sba-grid-large) {
+    margin-right: 20px;
+    float: left;
+    display: inline-block;
+  }
+}
 
 .search {
   position: relative;
@@ -51,47 +58,10 @@
   input {
     line-height: 34px;
     height: 48px;
-    // padding-right: 40px !important;
   }
 }
 
-// .searchIcon {
-//   position: absolute;
-//   top: 42px;
-//   right: 15px;
-
-//   @media screen and (min-width: 768px) {
-//     top: 44px;
-//   }
-// }
-
-.officeSearch {
-  position: relative;
-  // background-color: $sba-blue;
-}
-
-.searchBar {
-  background-color: $sba-blue;
-  label,
-  h2 {
-    color: white;
-  }
-  button {
-    padding: 13px 22px;
-    margin-top: 20px;
-    @include grid-media($sba-grid-large) {
-      margin-top: 0px;
-    }
-  }
-}
-
-.field {
-  @include grid-media($sba-grid-large) {
-    margin-right: 20px;
-    float: left;
-    display: inline-block;
-  }
-}
+// Results
 
 .officeResults {
   @include grid-media($sba-grid-large) {
