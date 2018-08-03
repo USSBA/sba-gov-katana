@@ -38,11 +38,11 @@ export class PrimarySearchBar extends React.PureComponent {
       return clonedChild
     })
     const { id } = this.props
-    let className = styles.banner + (!isEmpty(this.props.className) ? ' ' + this.props.className : '')
+    let bannerClassName = styles.banner + (!isEmpty(this.props.className) ? ' ' + this.props.className : '')
 
     return (
       <div id={id}>
-        <div className={className}>
+        <div className={bannerClassName}>
           <h2 id={`${id ? id : 'primary-search-bar'}-title`} className={styles.header}>
             {this.props.title}
           </h2>
