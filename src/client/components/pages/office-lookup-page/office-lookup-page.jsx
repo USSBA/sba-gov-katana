@@ -67,7 +67,11 @@ class OfficeLookupPage extends React.Component {
         extraClassName={styles.officeSearch}
         paginate={false}
       >
-        <PrimarySearchBar id="office-primary-search-bar" title="Find local assistance">
+        <PrimarySearchBar
+          id="office-primary-search-bar"
+          title="Find local assistance"
+          className={styles.white}
+        >
           <TextInput
             id="search"
             queryParamName="q"
