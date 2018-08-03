@@ -67,12 +67,26 @@
 
 .officeSearch {
   position: relative;
-  background-color: $sba-blue;
+  // background-color: $sba-blue;
 }
 
-.officeSearch label,
-.white {
-  color: white;
+.searchBar {
+  background-color: $sba-blue;
+  label,
+  h2 {
+    color: white;
+  }
+  button {
+    padding: 13px 22px;
+  }
+}
+
+.field {
+  @include grid-media($sba-grid-large) {
+    margin-right: 20px;
+    float: left;
+    display: inline-block;
+  }
 }
 
 .officeResults {
@@ -84,13 +98,5 @@
     background-color: unset;
     width: 321px;
     overflow: hidden;
-  }
-}
-
-.field {
-  @include grid-media($sba-grid-large) {
-    margin-right: 20px;
-    float: left;
-    display: inline-block;
   }
 }

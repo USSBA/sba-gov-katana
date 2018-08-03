@@ -70,7 +70,7 @@ class OfficeLookupPage extends React.Component {
         <PrimarySearchBar
           id="office-primary-search-bar"
           title="Find local assistance"
-          className={styles.white}
+          className={styles.searchBar}
         >
           <TextInput
             id="search"
