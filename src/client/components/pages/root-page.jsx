@@ -124,4 +124,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(RootPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(RootPage)

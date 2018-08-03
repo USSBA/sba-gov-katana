@@ -17,7 +17,10 @@ class ArticlePage extends React.Component {
   }
 
   componentWillMount() {
-    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
+    const {
+      actions: { fetchContentIfNeeded },
+      location: { pathname }
+    } = this.props
 
     if (pathname) {
       fetchContentIfNeeded('articles', 'articles', {
@@ -27,7 +30,10 @@ class ArticlePage extends React.Component {
   }
 
   render() {
-    const { article, location: { pathname } } = this.props
+    const {
+      article,
+      location: { pathname }
+    } = this.props
     if (pathname && document !== null) {
       if (article) {
         return <DocumentArticle article={article} />
@@ -45,7 +51,9 @@ class ArticlePage extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  const { contentReducer: { articles } } = reduxState
+  const {
+    contentReducer: { articles }
+  } = reduxState
 
   let articleProp = {}
   if (articles) {
@@ -73,6 +81,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(ArticlePage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(ArticlePage)
 
 export { ArticlePage }

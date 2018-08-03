@@ -68,10 +68,10 @@
 /// @require {function} _retrieve-bourbon-setting
 
 @function modular-scale(
-    $increment,
-    $value: _retrieve-bourbon-setting('modular-scale-base'),
-    $ratio: _retrieve-bourbon-setting('modular-scale-ratio')
-  ) {
+  $increment,
+  $value: _retrieve-bourbon-setting('modular-scale-base'),
+  $ratio: _retrieve-bourbon-setting('modular-scale-ratio')
+) {
   $v1: nth($value, 1);
   $v2: nth($value, length($value));
   $value: $v1;

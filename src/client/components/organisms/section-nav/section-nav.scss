@@ -4,7 +4,7 @@
   display: none;
   width: 16.111rem;
 
-  @include grid-media( $sba-grid-large) {
+  @include grid-media($sba-grid-large) {
     color: white;
     display: block;
     position: absolute;

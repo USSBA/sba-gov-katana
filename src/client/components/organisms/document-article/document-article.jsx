@@ -163,4 +163,7 @@ function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(NavigationActions, dispatch) }
 }
 
-export default connect(null, mapDispatchToProps)(DocumentArticle)
+export default connect(
+  null,
+  mapDispatchToProps
+)(DocumentArticle)

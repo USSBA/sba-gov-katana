@@ -1,6 +1,6 @@
 .desktopNav {
   display: none;
-  @include grid-media( $sba-grid-large) {
+  @include grid-media($sba-grid-large) {
     @include grid-column(12, $sba-grid-large);
     display: block;
     padding: 25px 0 0 0;

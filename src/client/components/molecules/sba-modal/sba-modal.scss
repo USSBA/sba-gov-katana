@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @include grid-media( $sba-grid-small) {
+  @include grid-media($sba-grid-small) {
     padding: 0 1.056rem;
   }
 }
@@ -19,7 +19,7 @@
   position: relative;
   padding: 1.667rem;
   width: calc(100% - 2.111rem);
-  @include grid-media( $sba-grid-medium) {
+  @include grid-media($sba-grid-medium) {
     width: 30.889rem;
   }
 

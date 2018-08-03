@@ -82,7 +82,7 @@ var Slider = React.createClass({
 
     const timeElapsed = new Date().getTime() - dragStartTime.getTime()
     const offset = lastIndex - index
-    const velocity = Math.round(offset / timeElapsed * 10000)
+    const velocity = Math.round((offset / timeElapsed) * 10000)
 
     let newIndex = Math.round(index)
 

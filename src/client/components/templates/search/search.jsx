@@ -165,7 +165,10 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { count, defaultSearchParams: { pageSize } } = this.props
+    const {
+      count,
+      defaultSearchParams: { pageSize }
+    } = this.props
     const { results, pageNumber } = this.state
 
     let result = <div />
@@ -203,7 +206,9 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   handleBack() {
-    const { defaultSearchParams: { pageSize } } = this.props
+    const {
+      defaultSearchParams: { pageSize }
+    } = this.props
     const { pageNumber } = this.state
     const newPageNumber = Math.max(1, pageNumber - 1)
     this.setState({ pageNumber: newPageNumber }, () => {
@@ -215,7 +220,10 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   handleForward() {
-    const { count, defaultSearchParams: { pageSize } } = this.props
+    const {
+      count,
+      defaultSearchParams: { pageSize }
+    } = this.props
     const { pageNumber } = this.state
     const newPageNumber = Math.min(Math.max(1, Math.ceil(count / pageSize)), pageNumber + 1)
     this.setState({ pageNumber: newPageNumber }, () => {
@@ -315,4 +323,7 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(SearchTemplate)

@@ -17,7 +17,10 @@ class DocumentPage extends React.Component {
   }
 
   componentWillMount() {
-    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
+    const {
+      actions: { fetchContentIfNeeded },
+      location: { pathname }
+    } = this.props
 
     if (pathname) {
       fetchContentIfNeeded('documents', 'documents', {
@@ -27,8 +30,13 @@ class DocumentPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
-    const { location: { pathname: nextPathname } } = nextProps
+    const {
+      actions: { fetchContentIfNeeded },
+      location: { pathname }
+    } = this.props
+    const {
+      location: { pathname: nextPathname }
+    } = nextProps
 
     // Re-render the page with new document data when we remain on `/documents`
     // and the DocumentPage but the location has changed.
@@ -40,7 +48,10 @@ class DocumentPage extends React.Component {
   }
 
   render() {
-    const { document, location: { pathname } } = this.props
+    const {
+      document,
+      location: { pathname }
+    } = this.props
     if (pathname && document !== null) {
       if (document) {
         return <DocumentArticle document={document} />
@@ -58,7 +69,9 @@ class DocumentPage extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState, ownProps) {
-  const { contentReducer: { documents } } = reduxState
+  const {
+    contentReducer: { documents }
+  } = reduxState
 
   let documentProp = {}
   if (documents) {
@@ -88,4 +101,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(DocumentPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(DocumentPage)
