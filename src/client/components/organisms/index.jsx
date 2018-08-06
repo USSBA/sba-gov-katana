@@ -17,6 +17,7 @@ import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
 import ModalController from './modal-controller/modal-controller.jsx'
 import NotificationBar from './header-footer/notification-bar.jsx'
+import OfficeDetail from './office-detail/office-detail.jsx'
 import OfficesLayout from './offices-layout/offices-layout.jsx'
 import OfficeMap from './office-map/office-map.jsx'
 import OfficeResult from './office-result/office-result.jsx'
@@ -76,6 +77,7 @@ export {
   ModalController,
   NotificationBar,
   OfficeResult,
+  OfficeDetail,
   OfficesLayout,
   OfficeMap,
   PagingLookup,
