@@ -2,6 +2,11 @@
   h2,
   h3 {
     font-weight: 700;
+    word-break: break-word;
+  }
+
+  h2 {
+    cursor: pointer;
   }
 
   h3 {
@@ -127,4 +132,35 @@
 
 .clear {
   clear: both;
+}
+
+.detailView {
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  position: relative;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+
+  i {
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+.contactCard {
+  border: none;
+  padding: 0;
 }
