@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 
 import styles from './contact-card.scss'
+import classNames from 'classnames'
 import { Link } from 'atoms'
 
 // TODO: The link card component has overlapping functionality and should be
 // combined with the contact card.
 const ContactCard = props => {
-  const { city, email, fax, link, phoneNumber, state, streetAddress, title, zipCode } = props
+  const { city, email, fax, link, phoneNumber, state, streetAddress, title, zipCode, className: cn } = props
   const linkText = 'Visit website'
 
   const address = breakOrNewLine => `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
@@ -38,8 +39,18 @@ const ContactCard = props => {
     }
   ]
 
+  const className = classNames(
+    Object.assign(
+      {
+        'contact-card': true,
+        [styles.contactCard]: true
+      },
+      cn
+    )
+  )
+
   return (
-    <div className={`contact-card ${styles.contactCard}`}>
+    <div className={className}>
       <h6>{title}</h6>
       {fields.map(({ href, icon, text }, index) => {
         if (!text || (text === linkText && !href)) {

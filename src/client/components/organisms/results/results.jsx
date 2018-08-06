@@ -1,14 +1,24 @@
 import React from 'react'
 import styles from './results.scss'
-import { Paginator } from 'molecules'
+import { Address, ContactCard, PhoneNumber, Paginator } from 'molecules'
 import { SearchInfoPanel } from 'atoms'
+import { OfficeDetail } from 'organisms'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { isEmpty } from 'lodash'
 import Search from '../../atoms/icons/search'
 
 class Results extends React.PureComponent {
   super() {
     this.renderPaginator = this.renderPaginator.bind(this)
+  }
+
+  constructor() {
+    super()
+
+    this.state = {
+      selectedItem: {}
+    }
   }
 
   renderDefaultView(children) {
@@ -46,13 +56,26 @@ class Results extends React.PureComponent {
     )
   }
 
+  showDetailState(item) {
+    this.setState({ selectedItem: item })
+  }
+
+  hideDetailState() {
+    this.setState({ selectedItem: {} })
+  }
+
   render() {
+    const { selectedItem } = this.state
+    const shouldShowDetailView = !isEmpty(selectedItem)
     const { children, id, resultId, paginate, scroll, extraClassName, hasSearchInfoPanel } = this.props
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
         return React.cloneElement(child, {
           item: item,
-          id: `${resultId}-${index.toString()}`
+          id: `${resultId}-${index.toString()}`,
+          showDetailState: e => {
+            this.showDetailState(e)
+          }
         })
       })
       return mappedChildren
@@ -74,9 +97,17 @@ class Results extends React.PureComponent {
     return (
       <div id={id} className={className}>
         <div className={resultsClassName}>
-          {hasSearchInfoPanel && this.renderSearchInfoPanel()}
-          <div className={divClassName}>{childrenWithProps}</div>
-          {paginate && this.renderPaginator()}
+          {shouldShowDetailView ? (
+            <div>
+              <OfficeDetail selectedItem={selectedItem} hideDetailState={() => this.hideDetailState()} />
+            </div>
+          ) : (
+            <div>
+              {hasSearchInfoPanel && this.renderSearchInfoPanel()}
+              <div className={divClassName}>{childrenWithProps}</div>
+              {paginate && this.renderPaginator()}
+            </div>
+          )}
         </div>
       </div>
     )
