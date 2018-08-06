@@ -30,7 +30,6 @@ const OfficeMap = compose(
       fullscreenControl: false,
       styles: officeMapStyles
     },
-    // styles: require('/Users/aaronbrooks/Documents/SBAGOV/sba-gov-katana/src/client/components/organisms/office-map/office-map-style.jsx'),
     defaultZoom: 10,
     defaultCenter: {
       lat: 38.910353,
