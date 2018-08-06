@@ -21,13 +21,16 @@ const OfficeMap = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
+  const demoFancyMapStyles = require('./office-map-style.json')
   const { markers, onMapMounted, onDragEnd } = props
   const googleMapProps = {
     defaultOptions: {
       streetViewControl: false,
       mapTypeControl: false,
-      fullscreenControl: false
+      fullscreenControl: false,
+      styles: demoFancyMapStyles
     },
+    // styles: require('/Users/aaronbrooks/Documents/SBAGOV/sba-gov-katana/src/client/components/organisms/office-map/office-map-style.jsx'),
     defaultZoom: 10,
     defaultCenter: {
       lat: 38.910353,
