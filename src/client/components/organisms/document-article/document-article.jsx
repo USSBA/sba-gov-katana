@@ -238,13 +238,13 @@ function mapStateToProps(state, ownProps) {
   let mediaContact
 
   if (offices && typeof officeId === 'number') {
-    office = offices.find(({ id }) => id === officeId)[0]
+    office = offices.find(({ id }) => id === officeId)
   }
 
   if (persons && typeof mediaContactId === 'number') {
-    mediaContact = persons.find(({ id }) => id === mediaContactId)[0]
+    mediaContact = persons.find(({ id }) => id === mediaContactId)
   } else if (persons && office && typeof office.mediaContact === 'number') {
-    mediaContact = persons.find(({ id }) => id === office.mediaContact)[0]
+    mediaContact = persons.find(({ id }) => id === office.mediaContact)
   }
 
   return {
