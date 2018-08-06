@@ -7,7 +7,7 @@ class ProgressBar extends React.Component {
   }
 
   calcProgress() {
-    return (this.props.locationIndex / this.props.pages) * 100 + '%'
+    return this.props.locationIndex / this.props.pages * 100 + '%'
   }
 
   render() {

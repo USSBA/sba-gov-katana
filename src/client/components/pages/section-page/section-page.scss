@@ -12,8 +12,7 @@
       (
         gutter: 20px
       )
-    )
-    @include grid-container;
+    ) @include grid-container;
 
   background-color: $sba-blue;
   margin-bottom: 20px;
@@ -27,8 +26,7 @@
         (
           gutter: 42px
         )
-      )
-      margin-bottom: 0;
+      ) margin-bottom: 0;
     margin-top: -170px;
     padding-bottom: 28px;
     position: absolute;

@@ -228,7 +228,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(GlobalSearch)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(GlobalSearch)

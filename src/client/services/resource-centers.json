@@ -72,7 +72,8 @@
     },
     {
       "name1": "California SBDC ~ Santa Ana ~ Orange County/Inland Empire Regional SBDC ~ CSU Fullerton",
-      "name2": "California SBDC ~ Santa Ana ~ Orange County/Inland Empire SBDC ~ California State University Fullerton",
+      "name2":
+        "California SBDC ~ Santa Ana ~ Orange County/Inland Empire SBDC ~ California State University Fullerton",
       "street1": "800 North State College Blvd.",
       "street2": "SGMH 4210",
       "city": "Fullerton",
@@ -92,7 +93,8 @@
     },
     {
       "name1": "California SBDC ~ Santa Ana ~ Orange County/Inland Empire Regional SBDC ~ CSU Fullerton",
-      "name2": "California SBDC ~ Santa Ana ~ Orange County/Inland Empire SBDC ~TriTech SBDC (Satalite Office)",
+      "name2":
+        "California SBDC ~ Santa Ana ~ Orange County/Inland Empire SBDC ~TriTech SBDC (Satalite Office)",
       "street1": "1650 Spruce Street, Suite 500",
       "street2": "",
       "city": "Riverside",
@@ -102,7 +104,8 @@
     },
     {
       "name1": "California SBDC ~ Santa Ana ~ Orange County/Inland Empire Regional SBDC ~ CSU Fullerton",
-      "name2": "California SBDC ~ Santa Ana ~ Orange County/Inland Empire SBDC ~Inland Empire SBDC (Main Office)",
+      "name2":
+        "California SBDC ~ Santa Ana ~ Orange County/Inland Empire SBDC ~Inland Empire SBDC (Main Office)",
       "street1": "1650 Spruce Street, Suite 500",
       "street2": "",
       "city": "Riverside",
@@ -142,7 +145,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Tarrant County College",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Tarrant County College",
       "street1": "1150 South Fwy.",
       "street2": "Ste 229",
       "city": "Fort Worth",
@@ -152,7 +156,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ North Central Texas College",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ North Central Texas College",
       "street1": "1525 West California",
       "street2": "",
       "city": "Gainesville",
@@ -162,7 +167,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~Kilgore College ~ Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~Kilgore College ~ Small Business Development Center",
       "street1": "911 NW Loop 281,",
       "street2": "",
       "city": "Longview",
@@ -172,7 +178,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~Northeast Texas College ~ Northeast/Texarkana Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~Northeast Texas College ~ Northeast/Texarkana Small Business Development Center",
       "street1": "105 N. Riddle",
       "street2": "",
       "city": "Mt. Pleasant",
@@ -182,7 +189,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Paris Junior College ~ Paris Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Paris Junior College ~ Paris Small Business Development Center",
       "street1": "2400 Clarksville Street",
       "street2": "",
       "city": "Paris",
@@ -192,7 +200,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Collin County Community College ~ Collin Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Collin County Community College ~ Collin Small Business Development Center",
       "street1": "4800 Preston Park Boulevard",
       "street2": "",
       "city": "Plano",
@@ -202,7 +211,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Tyler Junior College ~ Tyler Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Tyler Junior College ~ Tyler Small Business Development Center",
       "street1": "1530 South SW Loop 323",
       "street2": "",
       "city": "Tyler",
@@ -212,7 +222,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ McLennan Community College ~ McLennan Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ McLennan Community College ~ McLennan Small Business Development Center",
       "street1": "1400 College Drive",
       "street2": "",
       "city": "Waco",
@@ -222,7 +233,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas  SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College",
+      "name2":
+        "Texas  SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College",
       "street1": "1402 Corinth Street",
       "street2": "",
       "city": "Dallas",
@@ -232,7 +244,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas  SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College",
+      "name2":
+        "Texas  SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College",
       "street1": "1402 Corinth Street",
       "street2": "",
       "city": "Dallas",
@@ -242,7 +255,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Trinity Valley Community College ~ Trinity Valley Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Trinity Valley Community College ~ Trinity Valley Small Business Development Center",
       "street1": "201 W Corsicana",
       "street2": ".",
       "city": "Athens",
@@ -252,7 +266,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Navarro College ~ Navarro Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Navarro College ~ Navarro Small Business Development Center",
       "street1": "3200 W. 7th Ave.",
       "street2": "",
       "city": "Corsicana",
@@ -262,7 +277,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College ~ Center for Government Contracting Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College ~ Center for Government Contracting Small Business Development Center",
       "street1": "1402 Corinth Street",
       "street2": "",
       "city": "Dallas",
@@ -272,7 +288,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College ~ Dallas Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Dallas County Community College ~ Dallas Small Business Development Center",
       "street1": "1402 Corinth Street",
       "street2": "",
       "city": "Dallas",
@@ -282,7 +299,8 @@
     },
     {
       "name1": "Texas SBDC ~ Dallas ~ North Texas SBDC ~ Dallas County Community College",
-      "name2": "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Grayson County College ~ Grayson Small Business Development Center",
+      "name2":
+        "Texas SBDC ~  Dallas ~ North Texas Small Business Development Center ~ Grayson County College ~ Grayson Small Business Development Center",
       "street1": "6101 Grayson Drive",
       "street2": "",
       "city": "Denison",
@@ -1052,7 +1070,8 @@
     },
     {
       "name1": "California SBDC ~ Los Angeles ~ Los Angeles Regional SBDC ~Long Beach Community College",
-      "name2": "California SBDC ~ Los Angeles ~ Los Angeles Regional SBDC ~ Economic Development Collaborative",
+      "name2":
+        "California SBDC ~ Los Angeles ~ Los Angeles Regional SBDC ~ Economic Development Collaborative",
       "street1": "1601 Carmen Drive, Suite 215",
       "street2": "",
       "city": "Camarillo",
@@ -1302,7 +1321,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University  ~ Caguas Regional Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University  ~ Caguas Regional Center",
       "street1": "Democracia Building",
       "street2": "Luis Munoz Rivera Avenue 1st Floor, PromoCaguas",
       "city": "Caguas",
@@ -1312,7 +1332,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University ~  Lead Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University ~  Lead Center",
       "street1": "416 Ponce De Leon Avenue",
       "street2": "Union Plaza Building Suite 912",
       "city": "San Juan",
@@ -1322,7 +1343,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University Arecibo Campus ~ Arecibo Regional Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University Arecibo Campus ~ Arecibo Regional Center",
       "street1": "Road # 2 Km 80.4",
       "street2": "San Daniel Ward",
       "city": "Arecibo",
@@ -1332,7 +1354,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University Fajardo Campus ~ Fajardo Regional Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University Fajardo Campus ~ Fajardo Regional Center",
       "street1": "Union Batey Central",
       "street2": "Road 196",
       "city": "Fajardo",
@@ -1342,7 +1365,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University ~ International Trade Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University ~ International Trade Center",
       "street1": "416 Ponce De Leon Avenue",
       "street2": "Union Plaza Building Suite 1000",
       "city": "San Juan",
@@ -1352,7 +1376,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University ~ San Juan Regional Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University ~ San Juan Regional Center",
       "street1": "416 Ponce De Leon Avenue",
       "street2": "Union Plaza Building Suite 1013",
       "city": "San Juan",
@@ -1362,7 +1387,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University Ponce Campus ~ Ponce Regional Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University Ponce Campus ~ Ponce Regional Center",
       "street1": "Turpo Industrial Park",
       "street2": "Road 1, Km 123.4,  Mercedita",
       "city": "Ponce",
@@ -1372,7 +1398,8 @@
     },
     {
       "name1": "Puerto Rico Small Business  & Technology Development Center ~ Inter American University",
-      "name2": "Puerto Rico Small Business & Technology Development Centers ~ Inter American University San German Campus ~ San German Regional Center",
+      "name2":
+        "Puerto Rico Small Business & Technology Development Centers ~ Inter American University San German Campus ~ San German Regional Center",
       "street1": "Interamerican University Avenue",
       "street2": "Dr Harris Street Leopoldo Ortiz Building 2nd Floor",
       "city": "San German",
@@ -1392,7 +1419,8 @@
     },
     {
       "name1": "Washington, D.C. Small Business Development Center ~ Howard University School of Business",
-      "name2": "Washington, D.C. Small Business Development Center ~Anacostia Economic Development Corporation",
+      "name2":
+        "Washington, D.C. Small Business Development Center ~Anacostia Economic Development Corporation",
       "street1": "2021 M.L.K. Jr. Avenue, S.E.",
       "street2": "",
       "city": "Washington",
@@ -1411,7 +1439,8 @@
       "phone": "202-624-0606"
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Harper College",
       "street1": "650 E. Higgins Rd.",
       "street2": "Suite 106",
@@ -1421,7 +1450,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Joseph Center",
       "street1": "7600 W. Roosevelt Rd.",
       "street2": "",
@@ -1431,7 +1461,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Industrial Council of Nearwest Chicago",
       "street1": "320 N Damen Ave",
       "street2": "Suite 100",
@@ -1441,7 +1472,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Illinois Hispanic Chamber of Commerce",
       "street1": "855 West Adams",
       "street2": "Suite 100",
@@ -1451,7 +1483,8 @@
       "phone": "312-492-9960"
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~SIU-E/ East St. Louis",
       "street1": "601 James R. Thompson Blvd.",
       "street2": "Bldg D, Room 1017",
@@ -1461,7 +1494,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~University of Illinois Chicago",
       "street1": "815 W. Van Buren",
       "street2": "Ste. 320",
@@ -1471,8 +1505,10 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
-      "name2": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name2":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "street1": "500 E. Monroe Street, 5th Floor",
       "street2": "",
       "city": "Springfield",
@@ -1481,7 +1517,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Southern Illinois University-Carbondale",
       "street1": "150 East Pleasant Hill Road",
       "street2": "",
@@ -1491,7 +1528,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Women's Business Development Center",
       "street1": "8 South Michigan, Suite 400",
       "street2": "Suite 400",
@@ -1501,7 +1539,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~North Business & Industrial Council (NORBIC)",
       "street1": "8430 Bryn Mawr Avenue",
       "street2": "",
@@ -1511,7 +1550,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~McHenry County College",
       "street1": "4100 West Shamrock Lane",
       "street2": "",
@@ -1521,7 +1561,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Danville Area Community College",
       "street1": "2917 N. Vermillion",
       "street2": "",
@@ -1531,7 +1572,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Southern Illinois University-Edwardsville",
       "street1": "Alumni Hall 2126",
       "street2": "Campus Box 1107",
@@ -1541,7 +1583,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Elgin Community College",
       "street1": "1700 Spartan Drive",
       "street2": "",
@@ -1551,7 +1594,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~College of Dupage",
       "street1": "2525 Cabot Drive",
       "street2": "Suite 201",
@@ -1561,7 +1605,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~College of Lake County",
       "street1": "19351 West Washington Street",
       "street2": "Room T-302",
@@ -1571,7 +1616,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Southeastern Illinois College",
       "street1": "2 E. Locust St.",
       "street2": "Suite 200",
@@ -1581,7 +1627,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Joliet Junior College",
       "street1": "214 North Oliver St",
       "street2": "",
@@ -1591,7 +1638,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Western Illinois University",
       "street1": "510 North Pearl Street",
       "street2": "Room 1400",
@@ -1601,7 +1649,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Black Hawk College",
       "street1": "4703 - 16th Street, Suite G",
       "street2": "",
@@ -1611,7 +1660,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Bradley University",
       "street1": "141 Jobst Hall",
       "street2": "1501 West Bradley Avenue",
@@ -1621,7 +1671,8 @@
       "phone": "309/677-2992"
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Lincoln Land Community College",
       "street1": "8 South Old State Capitol Plaza",
       "street2": "C/O Greater Springfield COC",
@@ -1631,7 +1682,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois Small Business Development Center ~Shawnee Community College",
       "street1": "8364 Shawnee College Road",
       "street2": "",
@@ -1641,7 +1693,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois SBDC ~ Champaign County Economic Dev. Corp.",
       "street1": "1817 S. Neil St.",
       "street2": "Ste. 201",
@@ -1651,7 +1704,8 @@
       "phone": "217-359-6261"
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois SBDC ~ Chicagoland Chamber",
       "street1": "200 E. Randolph Street",
       "street2": "Suite 2200",
@@ -1661,7 +1715,8 @@
       "phone": "312-494-6742"
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois SBDC at New Covenant CDC",
       "street1": "1111 S. Homan Ave.",
       "street2": "2nd Floor",
@@ -1671,7 +1726,8 @@
       "phone": ""
     },
     {
-      "name1": "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
+      "name1":
+        "Illinois Small Business Development Center ~ Illinois Department of Commerce and Economic Opportunity",
       "name2": "Illinois SBDC at Bethel New Life",
       "street1": "1140 N. Lamon",
       "street2": "",
@@ -2082,7 +2138,8 @@
     },
     {
       "name1": "Arizona Small Business Development Center  ~ Maricopa County Community Colleges",
-      "name2": "Arizona Small Business Development Center ~ Coconino County Community College SBDC ~ Flagstaff",
+      "name2":
+        "Arizona Small Business Development Center ~ Coconino County Community College SBDC ~ Flagstaff",
       "street1": "3000 North 4th Street",
       "street2": "Suite 17",
       "city": "Flagstaff",
@@ -2122,7 +2179,8 @@
     },
     {
       "name1": "Arizona Small Business Development Center  ~ Maricopa County Community Colleges",
-      "name2": "Arizona Small Business Development Center ~ Mohave Community College SBDC ~  Bullhead Center",
+      "name2":
+        "Arizona Small Business Development Center ~ Mohave Community College SBDC ~  Bullhead Center",
       "street1": "1971 Jagerson Avenue",
       "street2": "",
       "city": "Kingman",
@@ -2382,7 +2440,8 @@
     },
     {
       "name1": "Oklahoma Small Business Development Center ~ Southeastern Oklahoma State University",
-      "name2": "Oklahoma Small Business Development Center ~ Southeastern Oklahoma State University -State Office",
+      "name2":
+        "Oklahoma Small Business Development Center ~ Southeastern Oklahoma State University -State Office",
       "street1": "301 W University Blvd",
       "street2": "",
       "city": "Durant",
@@ -2392,7 +2451,8 @@
     },
     {
       "name1": "Oklahoma Small Business Development Center ~ Southeastern Oklahoma State University",
-      "name2": "Oklahoma Small Business Development Center ~ Southeastern Oklahoma State University -State Office",
+      "name2":
+        "Oklahoma Small Business Development Center ~ Southeastern Oklahoma State University -State Office",
       "street1": "301 W University Blvd",
       "street2": "",
       "city": "Durant",
@@ -2521,7 +2581,8 @@
       "phone": "405-744-4272"
     },
     {
-      "name1": "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
+      "name1":
+        "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
       "name2": "California SBDC ~ San Diego ~ San Diego and Imperial Region SBDC",
       "street1": "880 National City Blvd.",
       "street2": "Suite 103",
@@ -2531,8 +2592,10 @@
       "phone": ""
     },
     {
-      "name1": "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
-      "name2": "California SBDC ~ San Diego ~ San Diego and Imperial Region SBDC ~ North San Diego County SBDC",
+      "name1":
+        "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
+      "name2":
+        "California SBDC ~ San Diego ~ San Diego and Imperial Region SBDC ~ North San Diego County SBDC",
       "street1": "2075 Las Palmas Dr",
       "street2": "",
       "city": "Carlsbad",
@@ -2541,7 +2604,8 @@
       "phone": ""
     },
     {
-      "name1": "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
+      "name1":
+        "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
       "name2": "California SBDC ~ San Diego ~ San Diego and Imperial Region SBDC ~ Imperial Valley SBDC",
       "street1": "1405 N. Imperial Ave",
       "street2": "",
@@ -2551,8 +2615,10 @@
       "phone": ""
     },
     {
-      "name1": "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
-      "name2": "California SBDC ~ San Diego ~ San Diego and Imperial Region SBDC ~ Southwestern Community College",
+      "name1":
+        "California SBDC ~ San Diego ~ San Diego and Imperial Regional SBDC ~Southwestern Community College~San Diego",
+      "name2":
+        "California SBDC ~ San Diego ~ San Diego and Imperial Region SBDC ~ Southwestern Community College",
       "street1": "880 National City Blvd",
       "street2": "",
       "city": "National City",
@@ -2572,7 +2638,8 @@
     },
     {
       "name1": "New Jersey Small Business Development Center ~ Rutgers Business School",
-      "name2": "New Jersey Small Business Development Center ~ Rutgers, The State University of New Jersey Campus at Camden",
+      "name2":
+        "New Jersey Small Business Development Center ~ Rutgers, The State University of New Jersey Campus at Camden",
       "street1": "419 Cooper Street",
       "street2": "",
       "city": "Camden",
@@ -2622,7 +2689,8 @@
     },
     {
       "name1": "New Jersey Small Business Development Center ~ Rutgers Business School",
-      "name2": "New Jersey Small Business Development Center ~ Rutgers, The State University of New Jersey Campus at Newark",
+      "name2":
+        "New Jersey Small Business Development Center ~ Rutgers, The State University of New Jersey Campus at Newark",
       "street1": "25 James Street",
       "street2": "",
       "city": "Newark",
@@ -3102,7 +3170,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~Georgia State University ~ SBDC - Atlanta Office",
+      "name2":
+        "Georgia Small Business Development Center ~Georgia State University ~ SBDC - Atlanta Office",
       "street1": "75 Piedmont Ave, NE",
       "street2": "Suite 700",
       "city": "Atlanta",
@@ -3112,7 +3181,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Augusta Office",
+      "name2":
+        "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Augusta Office",
       "street1": "1454 Greene St.",
       "street2": "",
       "city": "Augusta",
@@ -3122,7 +3192,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Brunswick Office",
+      "name2":
+        "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Brunswick Office",
       "street1": "501 Glouster Street",
       "street2": "Suite 200",
       "city": "Brunswick",
@@ -3132,7 +3203,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~University of West Georgia ~ SBDC - Carrollton Office",
+      "name2":
+        "Georgia Small Business Development Center ~University of West Georgia ~ SBDC - Carrollton Office",
       "street1": "105 Adamsdon Hall",
       "street2": "",
       "city": "Carrollton",
@@ -3142,7 +3214,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Columbus Office",
+      "name2":
+        "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Columbus Office",
       "street1": "3100 Genetian Blvd",
       "street2": "Suite 119",
       "city": "Columbus",
@@ -3152,7 +3225,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Dekalb Office",
+      "name2":
+        "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Dekalb Office",
       "street1": "2296 Henderson Mill Road",
       "street2": "Suite 404B",
       "city": "Atlanta",
@@ -3172,7 +3246,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~Kennesaw State University ~ SBDC - Kennesaw Office",
+      "name2":
+        "Georgia Small Business Development Center ~Kennesaw State University ~ SBDC - Kennesaw Office",
       "street1": "3333 Busbee Drive",
       "street2": "KSU Center - Suite 500",
       "city": "Kennesaw",
@@ -3192,7 +3267,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~Clayton College and State University ~ SBDC - Morrow Office",
+      "name2":
+        "Georgia Small Business Development Center ~Clayton College and State University ~ SBDC - Morrow Office",
       "street1": "2000 Clayton State Blvd",
       "street2": "",
       "city": "Morrow",
@@ -3202,7 +3278,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Savannah Office",
+      "name2":
+        "Georgia Small Business Development Center ~The University of Georgia ~ SBDC - Savannah Office",
       "street1": "513 East Oglethorpe Avenue",
       "street2": "Suite M",
       "city": "Savannah",
@@ -3212,7 +3289,8 @@
     },
     {
       "name1": "Georgia Small Business Development Center ~ The University of Georgia",
-      "name2": "Georgia Small Business Development Center ~Georgia Southern University ~ SBDC - Statesboro Office",
+      "name2":
+        "Georgia Small Business Development Center ~Georgia Southern University ~ SBDC - Statesboro Office",
       "street1": "1100 Brampton Ave.",
       "street2": "Suite C",
       "city": "Statesboro",
@@ -3412,7 +3490,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC  ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Texas Tech University",
+      "name2":
+        "Texas SBDC  ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Texas Tech University",
       "street1": "2579 South Loop 289",
       "street2": "Suite 210",
       "city": "Lubbock",
@@ -3422,7 +3501,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Texas Tech University at Abilene",
+      "name2":
+        "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Texas Tech University at Abilene",
       "street1": "500 Chestnut Street",
       "street2": "Suite 601",
       "city": "Abilene",
@@ -3432,7 +3512,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ West Texas A&M University",
+      "name2":
+        "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ West Texas A&M University",
       "street1": "701 South Taylor",
       "street2": "Suite 118",
       "city": "Amarillo",
@@ -3442,7 +3523,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Texas Tech University at Lubbock",
+      "name2":
+        "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Texas Tech University at Lubbock",
       "street1": "2579 South Loop 289",
       "street2": "Suite 114",
       "city": "Lubbock",
@@ -3452,7 +3534,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ University of Texas/Permian Basin",
+      "name2":
+        "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ University of Texas/Permian Basin",
       "street1": "CEED Bldg 1400 North FM 1788",
       "street2": "",
       "city": "Midland",
@@ -3462,7 +3545,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Tarleton State University",
+      "name2":
+        "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Tarleton State University",
       "street1": "105 N. Stockton",
       "street2": "Suite A",
       "city": "Granbury",
@@ -3472,7 +3556,8 @@
     },
     {
       "name1": "Texas SBDC ~ Lubbock ~ Northwest Texas SBDC ~ Texas Tech University",
-      "name2": "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Midwestern State University",
+      "name2":
+        "Texas SBDC ~ Lubbock ~ Northwest Texas Small Business Development Center ~ Midwestern State University",
       "street1": "3410 Taft Boulevard",
       "street2": "",
       "city": "Wichita Falls",
@@ -3512,7 +3597,8 @@
     },
     {
       "name1": "New York Small Business Development Center ~ State University of New York (SUNY) System",
-      "name2": "New York State Small Business Development Center ~ North Country Small Business Development Center",
+      "name2":
+        "New York State Small Business Development Center ~ North Country Small Business Development Center",
       "street1": "194 US Oval",
       "street2": "Room 248",
       "city": "Plattsburgh",
@@ -3542,7 +3628,8 @@
     },
     {
       "name1": "New York Small Business Development Center ~ State University of New York (SUNY) System",
-      "name2": "New York State Small Business Development Center ~ Rockland Small Business Development Center",
+      "name2":
+        "New York State Small Business Development Center ~ Rockland Small Business Development Center",
       "street1": "145 College Road",
       "street2": "Brucker Hall Room 6102",
       "city": "Suffern",
@@ -3562,7 +3649,8 @@
     },
     {
       "name1": "New York Small Business Development Center ~ State University of New York (SUNY) System",
-      "name2": "New York State Small Business Development Center ~ Mohawk Valley Small Business Development Center",
+      "name2":
+        "New York State Small Business Development Center ~ Mohawk Valley Small Business Development Center",
       "street1": "100 Seymour Road",
       "street2": "Kunsela Hall, Room B206",
       "city": "Utica",
@@ -3672,7 +3760,8 @@
     },
     {
       "name1": "New York Small Business Development Center ~ State University of New York (SUNY) System",
-      "name2": "New York State Small Business Development Center ~ SUNY College of Technology at Farmingdale",
+      "name2":
+        "New York State Small Business Development Center ~ SUNY College of Technology at Farmingdale",
       "street1": "Farmingdale SUNY",
       "street2": "",
       "city": "Farmingdale",
@@ -3702,7 +3791,8 @@
     },
     {
       "name1": "New York Small Business Development Center ~ State University of New York (SUNY) System",
-      "name2": "New York State Small Business Development Center ~ Mid Hudson Small Business Development Center",
+      "name2":
+        "New York State Small Business Development Center ~ Mid Hudson Small Business Development Center",
       "street1": "One Development Court",
       "street2": "Business Resource Center",
       "city": "Kingston",
@@ -3742,7 +3832,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ State of Colorado Office of Economic Development & International Trade",
+      "name2":
+        "Colorado Small Business Development Center ~ State of Colorado Office of Economic Development & International Trade",
       "street1": "1625 Broadway, Suite 2700",
       "street2": "",
       "city": "Denver",
@@ -3752,7 +3843,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ San Luis Valley Small Business Development Center",
+      "name2":
+        "Colorado Small Business Development Center ~ San Luis Valley Small Business Development Center",
       "street1": "610 State Ave.",
       "street2": "Suite 120",
       "city": "Alamosa",
@@ -3782,7 +3874,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ Denver Metro Small Business Development Center",
+      "name2":
+        "Colorado Small Business Development Center ~ Denver Metro Small Business Development Center",
       "street1": "1445 Market Street",
       "street2": "",
       "city": "Denver",
@@ -3792,7 +3885,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ Southwest Colorado Small Business Development Center",
+      "name2":
+        "Colorado Small Business Development Center ~ Southwest Colorado Small Business Development Center",
       "street1": "1000 Rim Drive",
       "street2": "140 EBB",
       "city": "Durango",
@@ -3802,7 +3896,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ Larimer County Small Business Development Center (Satellite of North Metro SBDC)",
+      "name2":
+        "Colorado Small Business Development Center ~ Larimer County Small Business Development Center (Satellite of North Metro SBDC)",
       "street1": "320 E Vine Dr #303",
       "street2": "Rocky Mtn Innosphere",
       "city": "Fort Collins",
@@ -3812,7 +3907,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ East Colorado Small Business Development Center at Fort Morgan (Satellite of East SBDC)",
+      "name2":
+        "Colorado Small Business Development Center ~ East Colorado Small Business Development Center at Fort Morgan (Satellite of East SBDC)",
       "street1": "300 Main Street",
       "street2": "",
       "city": "Fort Morgan",
@@ -3822,7 +3918,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ Grand Junction Small Business Development Center",
+      "name2":
+        "Colorado Small Business Development Center ~ Grand Junction Small Business Development Center",
       "street1": "2591 Legacy Way",
       "street2": "",
       "city": "Grand Junction",
@@ -3832,7 +3929,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ East Colorado Small Business Development Center",
+      "name2":
+        "Colorado Small Business Development Center ~ East Colorado Small Business Development Center",
       "street1": "807 17th St, Suite D",
       "street2": "UNC Biz Hub",
       "city": "Greeley",
@@ -3852,7 +3950,8 @@
     },
     {
       "name1": "Colorado Small Business Development Center ~ State of Colorado",
-      "name2": "Colorado Small Business Development Center ~ Southern Colorado Small Business Development Center",
+      "name2":
+        "Colorado Small Business Development Center ~ Southern Colorado Small Business Development Center",
       "street1": "301 N. Main St.",
       "street2": "Suite 205",
       "city": "Pueblo",
@@ -3901,8 +4000,10 @@
       "phone": "303-326-8690"
     },
     {
-      "name1": "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
-      "name2": "Alaska Small Business Development Center ~ University of Alaska at Anchorage ~  (Statewide Office)",
+      "name1":
+        "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
+      "name2":
+        "Alaska Small Business Development Center ~ University of Alaska at Anchorage ~  (Statewide Office)",
       "street1": "State Office - 1901 Bragaw Street",
       "street2": "Suite 199",
       "city": "Anchorage",
@@ -3911,7 +4012,8 @@
       "phone": "907-786-7201"
     },
     {
-      "name1": "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
+      "name1":
+        "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
       "name2": "Alaska SBDC ~ University of Alaska at Anchorage ~ Small Business Development Center",
       "street1": "Anchorage Center - 1901 Bragaw Street",
       "street2": "Suite 199",
@@ -3921,7 +4023,8 @@
       "phone": ""
     },
     {
-      "name1": "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
+      "name1":
+        "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
       "name2": "Alaska SBDC ~ University of Alaska at Fairbanks ~ Small Business Development Center",
       "street1": "3740 Bonita Street",
       "street2": "",
@@ -3931,7 +4034,8 @@
       "phone": ""
     },
     {
-      "name1": "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
+      "name1":
+        "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
       "name2": "Alaska SBDC ~ University of Alaska ~ Juneau Small Business Development Center",
       "street1": "9301 Glacier Highway",
       "street2": "Suite 110",
@@ -3941,7 +4045,8 @@
       "phone": ""
     },
     {
-      "name1": "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
+      "name1":
+        "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
       "name2": "Alaska SBDC ~ University of Alaska ~ Kenai Peninsula Small Business Development Center",
       "street1": "43335 Kalifornsky Beach Road Suite 12",
       "street2": "PO Box 3029",
@@ -3951,7 +4056,8 @@
       "phone": ""
     },
     {
-      "name1": "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
+      "name1":
+        "Alaska Small Busines Development Center ~ University of Alaska at Anchorage (Statewide Office)",
       "name2": "Alaska SBDC ~ University of Alaska ~ MAT-SU Borough Small Business Development Center",
       "street1": "201 N. Lucille St. Suite. 2a",
       "street2": "",
@@ -3961,7 +4067,8 @@
       "phone": ""
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "name2": "Arkansas SBTDC ~ University of Arkansas at Monticello",
       "street1": "1514 Scoggin Drive",
       "street2": "University of Arkansas At Monticello",
@@ -3971,7 +4078,8 @@
       "phone": ""
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "name2": "Arkansas SBTDC ~ Henderson State University",
       "street1": "1099 President Dr",
       "street2": "140 Mooney Hall",
@@ -3981,7 +4089,8 @@
       "phone": ""
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "name2": "Arkansas SBTDC ~ Arkansas State University",
       "street1": "319 University Loop West",
       "street2": "2nd Floor, Delta Center for Economic Dev",
@@ -3991,7 +4100,8 @@
       "phone": ""
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "name2": "Arkansas SBTDC ~ University of Arkansas, Fayetteville",
       "street1": "145 N. Buchanan",
       "street2": "210 Reynolds Center",
@@ -4001,8 +4111,10 @@
       "phone": ""
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
-      "name2": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name2":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "street1": "2801 S University Ave",
       "street2": "260 Reynolds Business Center",
       "city": "Little Rock",
@@ -4011,7 +4123,8 @@
       "phone": ""
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "name2": "Arkansas SBTDC ~ Arkansas Tech University",
       "street1": "106 West O St",
       "street2": "406 Rothwell Hall",
@@ -4021,7 +4134,8 @@
       "phone": "479-356-2067"
     },
     {
-      "name1": "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
+      "name1":
+        "Arkansas Small Business And Technology Development Center ~ University of Arkansas at Little Rock",
       "name2": "Arkansas SBTDC ~ Southern Arkansas University",
       "street1": "100 E. University Ave",
       "street2": "113B Business/Agri Bldg",
@@ -4162,7 +4276,8 @@
     },
     {
       "name1": "Hawaii Small Business Development Center ~ University of Hawaii at Hilo",
-      "name2": "Hawaii Small Business Development Center ~ East Hawaii Island Small Business Development Center",
+      "name2":
+        "Hawaii Small Business Development Center ~ East Hawaii Island Small Business Development Center",
       "street1": "100 Pauahi Street",
       "street2": "Suite 109",
       "city": "Hilo",
@@ -4612,7 +4727,8 @@
     },
     {
       "name1": "Maryland Small Business Development Center ~ University of Maryland",
-      "name2": "Maryland Small Business Development Center ~ Eastern Region ~ Cambridge Economic Development",
+      "name2":
+        "Maryland Small Business Development Center ~ Eastern Region ~ Cambridge Economic Development",
       "street1": "410 Academy Street",
       "street2": "",
       "city": "Cambridge",
@@ -4622,7 +4738,8 @@
     },
     {
       "name1": "Maryland Small Business Development Center ~ University of Maryland",
-      "name2": "Maryland Small Business Development Center ~ Southern Region ~ St Mary's County Department of Economic and Community Development~SBDC",
+      "name2":
+        "Maryland Small Business Development Center ~ Southern Region ~ St Mary's County Department of Economic and Community Development~SBDC",
       "street1": "23115 Leonard Hall Drive",
       "street2": "",
       "city": "Leonardtown",
@@ -4812,7 +4929,8 @@
     },
     {
       "name1": "Massachusetts Small Busines Development Center ~ University of Massachusetts Amherst",
-      "name2": "Massachusetts Small Business Development Center ~ University of Massachusetts Amherst ~ Berkshire Co",
+      "name2":
+        "Massachusetts Small Business Development Center ~ University of Massachusetts Amherst ~ Berkshire Co",
       "street1": "33 Dunham Mall",
       "street2": "Suite 103",
       "city": "Pittsfield",
@@ -5042,7 +5160,8 @@
     },
     {
       "name1": "Missouri Small Business Development Center ~ University of Missouri",
-      "name2": "Missouri Small Business Development Center ~University of Missouri - Kansas City ~ Small Business Technology Development Center",
+      "name2":
+        "Missouri Small Business Development Center ~University of Missouri - Kansas City ~ Small Business Technology Development Center",
       "street1": "4747 Troost Suite 1000",
       "street2": "",
       "city": "Kansas City",
@@ -5072,7 +5191,8 @@
     },
     {
       "name1": "Missouri Small Business Development Center ~ University of Missouri",
-      "name2": "Missouri Small Business Development Center ~ University of Missouri-Rolla ~ Center for Entrepreneurship & Outreach",
+      "name2":
+        "Missouri Small Business Development Center ~ University of Missouri-Rolla ~ Center for Entrepreneurship & Outreach",
       "street1": "203 Centennial Hall",
       "street2": "",
       "city": "Rolla",
@@ -5491,8 +5611,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
       "street1": "5 West Hargett Street",
       "street2": "Suite 600",
       "city": "Raleigh",
@@ -5501,8 +5623,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Western Carolina University Sub-Center~Asheville SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Western Carolina University Sub-Center~Asheville SBTDC",
       "street1": "46 Haywood Street",
       "street2": "Suite 212",
       "city": "Asheville",
@@ -5511,8 +5635,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Appalachian State University~Northwestern Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Appalachian State University~Northwestern Region SBTDC",
       "street1": "130 Poplar Grove Rd",
       "street2": "",
       "city": "Boone",
@@ -5521,8 +5647,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~ University of North Carolina at Chapel Hill ~Central Carolina Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina at Chapel Hill ~Central Carolina Region SBTDC",
       "street1": "1700 MLK Jr Blvd",
       "street2": "Suite 115 CB 1823",
       "city": "Chapel Hill",
@@ -5531,8 +5659,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~University of North Carolina at Charlotte~Southern Piedmont Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~University of North Carolina at Charlotte~Southern Piedmont Region SBTDC",
       "street1": "PORTAL Building, Suite 232",
       "street2": "9319 Robert D. Snyder Road",
       "city": "Charlotte",
@@ -5541,8 +5671,10 @@
       "phone": "704-687-0440"
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Western Carolina University~Western Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Western Carolina University~Western Region SBTDC",
       "street1": "204 Forsyth Bldg",
       "street2": "WCU School of Business",
       "city": "Cullowhee",
@@ -5551,8 +5683,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Elizabeth City State University~Northeastern Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Elizabeth City State University~Northeastern Region SBTDC",
       "street1": "1704 Weeksville Road",
       "street2": "P.O. Box 874",
       "city": "Elizabeth City",
@@ -5561,8 +5695,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Fayetteville State University~Cape Fear Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Fayetteville State University~Cape Fear Region SBTDC",
       "street1": "1200 Murchison Rd., Suite #6",
       "street2": "",
       "city": "Fayetteville",
@@ -5571,8 +5707,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~North Carolina A&T State University~Northeast Piedmont SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~North Carolina A&T State University~Northeast Piedmont SBTDC",
       "street1": "2007 Yanceyville St, Ste 303",
       "street2": "P.O. Box D-22",
       "city": "Greensboro",
@@ -5581,8 +5719,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~East Carolina University~Eastern Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~East Carolina University~Eastern Region SBTDC",
       "street1": "300 East First Street",
       "street2": "Willis Bldg.",
       "city": "Greenville",
@@ -5591,8 +5731,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Appalachian State University Sub-Center~Hickory SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Appalachian State University Sub-Center~Hickory SBTDC",
       "street1": "1990 Main Ave S.E.",
       "street2": "",
       "city": "Hickory",
@@ -5601,8 +5743,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~University of North Carolina at Pembroke~Small Business & Technology Development Center",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~University of North Carolina at Pembroke~Small Business & Technology Development Center",
       "street1": "P.O. Box 1510",
       "street2": "COMtech Livermore Dr.",
       "city": "Pembroke",
@@ -5611,7 +5755,8 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
       "name2": "North Carolina Small Business and Technology Development Center ~Capital Region SBTDC",
       "street1": "1021 Main Campus Drive, CB 7019",
       "street2": "Poulton Innovation Center",
@@ -5621,8 +5766,10 @@
       "phone": "919-513-1500"
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~University of North Carolina at Wilmington~Southeastern Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~University of North Carolina at Wilmington~Southeastern Region SBTDC",
       "street1": "1612 Military Cutoff Rd",
       "street2": "Suite 208",
       "city": "Wilmington",
@@ -5631,8 +5778,10 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
-      "name2": "North Carolina Small Business and Technology Development Center ~Winston-Salem State University~Northwest Piedmont Region SBTDC",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name2":
+        "North Carolina Small Business and Technology Development Center ~Winston-Salem State University~Northwest Piedmont Region SBTDC",
       "street1": "301 N Main St, 9th Floor",
       "street2": "Suite 921A",
       "city": "Winston-Salem",
@@ -5641,7 +5790,8 @@
       "phone": ""
     },
     {
-      "name1": "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
+      "name1":
+        "North Carolina Small Business and Technology Development Center ~ University of North Carolina",
       "name2": "North Carolina Amall Business and Technology Development Center ~ NCCU-Durham Satellite",
       "street1": "1801 Fayetteville St G08-G09",
       "street2": "",
@@ -5802,7 +5952,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Lehigh University ~ Lehigh Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Lehigh University ~ Lehigh Small Business Development Center",
       "street1": "416 E Fifth St",
       "street2": "",
       "city": "Bethlehem",
@@ -5812,7 +5963,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Kutztown University ~ Kutztown Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Kutztown University ~ Kutztown Small Business Development Center",
       "street1": "15155 Kutztown Road",
       "street2": "",
       "city": "Kutztown",
@@ -5822,7 +5974,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Bucknell University ~ Bucknell Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Bucknell University ~ Bucknell Small Business Development Center",
       "street1": "112 Dana Engineering Building",
       "street2": "",
       "city": "Lewisburg",
@@ -5832,7 +5985,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Lock Haven University ~ Lock Haven Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Lock Haven University ~ Lock Haven Small Business Development Center",
       "street1": "301 West Church Street",
       "street2": "",
       "city": "Lock Haven",
@@ -5842,7 +5996,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~St. Francis College ~ St Francis Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~St. Francis College ~ St Francis Small Business Development Center",
       "street1": "117 Evergreen Drive",
       "street2": "",
       "city": "Loretto",
@@ -5852,7 +6007,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Wharton School ~ Wharton Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Wharton School ~ Wharton Small Business Development Center",
       "street1": "3819 Chestnut St, Ste 100",
       "street2": "",
       "city": "Philadelphia",
@@ -5862,7 +6018,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Temple University ~ Temple Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Temple University ~ Temple Small Business Development Center",
       "street1": "1510 Cecil B. Moore Avenue",
       "street2": "2nd Floor",
       "city": "Philadelphia",
@@ -5872,7 +6029,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~University of Scranton ~ Scranton Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~University of Scranton ~ Scranton Small Business Development Center",
       "street1": "600 Linden Street",
       "street2": "",
       "city": "Scranton",
@@ -5882,7 +6040,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Penn State ~ Penn State Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Penn State ~ Penn State Small Business Development Center",
       "street1": "200 Innovation Blvd",
       "street2": "",
       "city": "State College",
@@ -5892,7 +6051,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Wilkes University ~ Wilkes Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Wilkes University ~ Wilkes Small Business Development Center",
       "street1": "85 South Main Street",
       "street2": "Innovation Center, Suite 200",
       "city": "Wilkes-Barre",
@@ -5902,7 +6062,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Clarion University of Pennsylvania ~ Clarion Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Clarion University of Pennsylvania ~ Clarion Small Business Development Center",
       "street1": "330 North Point Drive",
       "street2": "",
       "city": "Clarion",
@@ -5912,7 +6073,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Gannon University ~ Gannon Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Gannon University ~ Gannon Small Business Development Center",
       "street1": "900 State St, Ste 100",
       "street2": "",
       "city": "Erie",
@@ -5922,7 +6084,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Indiana University of Pennsylvania~Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Indiana University of Pennsylvania~Small Business Development Center",
       "street1": "664 Pratt Drive Room 108",
       "street2": "",
       "city": "Indiana",
@@ -5932,7 +6095,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Saint Vincent College ~ St Vincent Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Saint Vincent College ~ St Vincent Small Business Development Center",
       "street1": "300 Fraser Purchase Road",
       "street2": "",
       "city": "Latrobe",
@@ -5942,7 +6106,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~University of Pittsburgh ~ Pittsburgh Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~University of Pittsburgh ~ Pittsburgh Small Business Development Center",
       "street1": "3520 Forbes Ave",
       "street2": "",
       "city": "Pittsburgh",
@@ -5952,7 +6117,8 @@
     },
     {
       "name1": "Pennsylvania Small Business Development Centers Lead Office ~ University of Pennsylvania",
-      "name2": "Pennsylvania Small Business Development Center ~Duquesne University ~ Duquesne Small Business Development Center",
+      "name2":
+        "Pennsylvania Small Business Development Center ~Duquesne University ~ Duquesne Small Business Development Center",
       "street1": "600 Forbes Avenue",
       "street2": "Rockwell Hall, Room 108",
       "city": "Pittsburgh",
@@ -5962,7 +6128,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ University of South Carolina  - Lead Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ University of South Carolina  - Lead Center",
       "street1": "1014 Greene Street",
       "street2": "Moore School of Business",
       "city": "Columbia",
@@ -5992,7 +6159,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ Clemson University ~ Clemson Regional Small Business Development Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ Clemson University ~ Clemson Regional Small Business Development Center",
       "street1": "413 Sirrine Hall, Clemson University",
       "street2": "College of Business and Public Affairs",
       "city": "Clemson",
@@ -6002,7 +6170,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ University of South Carolina ~ USC Regional Small Business Development Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ University of South Carolina ~ USC Regional Small Business Development Center",
       "street1": "1225 Laurel Street",
       "street2": "",
       "city": "Columbia",
@@ -6022,7 +6191,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ Clemson University/Greenville~ Clemson Regional Small Business Development Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ Clemson University/Greenville~ Clemson Regional Small Business Development Center",
       "street1": "1 North Main Street",
       "street2": "",
       "city": "Greenville",
@@ -6062,7 +6232,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ University of South Carolina/N. Charleston",
+      "name2":
+        "South Carolina Small Business Development Center ~ University of South Carolina/N. Charleston",
       "street1": "6296 Rivers Ave",
       "street2": "Suite 300",
       "city": "North Charleston",
@@ -6072,7 +6243,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ South Carolina State University ~ SCSU Regional Small Business Development Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ South Carolina State University ~ SCSU Regional Small Business Development Center",
       "street1": "300 College Street, Campus Box 7176",
       "street2": "Algernon S. Belcher Hall, SCSU",
       "city": "Orangeburg",
@@ -6082,7 +6254,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ Winthrop University ~ Winthrop Regional Small Business Development Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ Winthrop University ~ Winthrop Regional Small Business Development Center",
       "street1": "800 Park ave",
       "street2": "",
       "city": "Rock Hill",
@@ -6092,7 +6265,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ Spartanburg Community College/Spartanburg",
+      "name2":
+        "South Carolina Small Business Development Center ~ Spartanburg Community College/Spartanburg",
       "street1": "1875 East Main St.",
       "street2": "Spartanburg Community College",
       "city": "Duncan",
@@ -6102,7 +6276,8 @@
     },
     {
       "name1": "South Carolina Small Business Development Center ~ University of South Carolina",
-      "name2": "South Carolina Small Business Development Center ~ University of South Carolina - Sumter~Small Business Development Center",
+      "name2":
+        "South Carolina Small Business Development Center ~ University of South Carolina - Sumter~Small Business Development Center",
       "street1": "200 Miller Rd. Rm 216",
       "street2": "USC Sumter",
       "city": "Sumter",
@@ -6211,8 +6386,10 @@
       "phone": ""
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas at San Antonio ~ Contracting Resource Center",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas at San Antonio ~ Contracting Resource Center",
       "street1": "501 West Cesar E Chavez Blvd",
       "street2": "",
       "city": "San Antonio",
@@ -6221,8 +6398,10 @@
       "phone": "2104582458"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Sul Ross State University/Big Bend",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Sul Ross State University/Big Bend",
       "street1": "500 West Ave. H",
       "street2": "",
       "city": "Alpine",
@@ -6231,8 +6410,10 @@
       "phone": "4328378694"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "street1": "501 West Cesar E Chavez Blvd",
       "street2": "",
       "city": "San Antonio",
@@ -6241,7 +6422,8 @@
       "phone": "2104582460"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Del Mar College",
       "street1": "3209 S. Staples",
       "street2": "CED-146",
@@ -6251,7 +6433,8 @@
       "phone": "(361) 698-1021"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas-Pan American",
       "street1": "1407 E Freddy Gonzalez",
       "street2": "",
@@ -6261,7 +6444,8 @@
       "phone": "9562927535"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ El Paso Community College",
       "street1": "9050 Viscount Blvd.",
       "street2": "B-520",
@@ -6271,8 +6455,10 @@
       "phone": "9158317743"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas at San Antonio SBDC Regional Office",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas at San Antonio SBDC Regional Office",
       "street1": "501 West Cesar E Chavez Blvd",
       "street2": "",
       "city": "San Antonio",
@@ -6281,7 +6467,8 @@
       "phone": "(210) 458-2450"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Texas State University SBDC",
       "street1": "7719 Wood Hollow Dr. Ste 211",
       "street2": "",
@@ -6291,8 +6478,10 @@
       "phone": "512-610-0996"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Sul Ross State University/Rio Grande College",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Sul Ross State University/Rio Grande College",
       "street1": "Route 3, Box 1200 HWY 277",
       "street2": "",
       "city": "Eagle Pass",
@@ -6301,8 +6490,10 @@
       "phone": "8307585025"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Texas A&M International University",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Texas A&M International University",
       "street1": "5201 University Blvd.",
       "street2": "",
       "city": "Laredo",
@@ -6311,7 +6502,8 @@
       "phone": "9563262827"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ Angelo State University",
       "street1": "ASU Station #10910",
       "street2": "",
@@ -6321,8 +6513,10 @@
       "phone": "3259422098"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
-      "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas at San Antonio ~ International Trade Center",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name2":
+        "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Texas at San Antonio ~ International Trade Center",
       "street1": "501 West Cesar E Chavez Blvd",
       "street2": "",
       "city": "San Antonio",
@@ -6331,7 +6525,8 @@
       "phone": "(210) 458-2470"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Texas SBDC ~ San Antonio ~South-West Texas Border SBDC ~ University of Houston-Victoria",
       "street1": "3402 N. Ben Wilson",
       "street2": "",
@@ -6341,7 +6536,8 @@
       "phone": "361-575-8944"
     },
     {
-      "name1": "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
+      "name1":
+        "Texas SBDC ~  San Antonio ~ South-West Texas Border SBDC ~ University of Texas at San Antonio",
       "name2": "Technology Commercialization",
       "street1": "501 W. Cesar E. Chavez BLVD",
       "street2": "",
@@ -7022,7 +7218,8 @@
     },
     {
       "name1": "Washington Small Business Development Center ~ Washington State University",
-      "name2": "Washington Small Business Development Center ~Washington State University/Grays Harbor SBDC",
+      "name2":
+        "Washington Small Business Development Center ~Washington State University/Grays Harbor SBDC",
       "street1": "1620 Edward P Smith Drive, Bldg 200",
       "street2": "",
       "city": "Aberdeen",
@@ -7152,7 +7349,8 @@
     },
     {
       "name1": "Washington Small Business Development Center ~ Washington State University",
-      "name2": "Washington Small Business Development Center ~Economic Development Association of Skagit County SBDC",
+      "name2":
+        "Washington Small Business Development Center ~Economic Development Association of Skagit County SBDC",
       "street1": "204 W. Montgomery",
       "street2": "",
       "city": "Mt. Vernon",
@@ -7162,7 +7360,8 @@
     },
     {
       "name1": "Washington Small Business Development Center ~ Washington State University",
-      "name2": "Washington Small Business Development Center ~Washington State University/Port Townsend SBDC",
+      "name2":
+        "Washington Small Business Development Center ~Washington State University/Port Townsend SBDC",
       "street1": "338 W. First Street, Suite 104-B",
       "street2": "",
       "city": "Port Angeles",
@@ -7182,7 +7381,8 @@
     },
     {
       "name1": "Washington Small Business Development Center ~ Washington State University",
-      "name2": "Washington Small Business Development Center ~Bates Technical College ~ Tacoma Business Assistance Center",
+      "name2":
+        "Washington Small Business Development Center ~Bates Technical College ~ Tacoma Business Assistance Center",
       "street1": "1101 South Yakima Ave., Room M-123",
       "street2": "",
       "city": "Tacoma",
@@ -14070,7 +14270,8 @@
       "phone": "251-867-5600"
     },
     {
-      "name1": "Coachella Valley WBC/University Enterprises Corp. at CA State Uninversity of San Bernandino",
+      "name1":
+        "Coachella Valley WBC/University Enterprises Corp. at CA State Uninversity of San Bernandino",
       "name2": "Coachella Valley WBC/University Enterprises Corp.at CA State University of San Bermadino",
       "street1": "77-806 Flora Road",
       "street2": "Suite C",
@@ -14220,7 +14421,8 @@
       "phone": "904-366-6640"
     },
     {
-      "name1": "Inland Empire Women's Business Center University Enterprise Corp. at CA State University of San Bernardino",
+      "name1":
+        "Inland Empire Women's Business Center University Enterprise Corp. at CA State University of San Bernardino",
       "name2": "Inland Empire Women's Business Center",
       "street1": "3780 Market Street",
       "street2": "",
@@ -14230,7 +14432,8 @@
       "phone": "909-890-1242"
     },
     {
-      "name1": "Women's Business Center of North Carolina/North Carolina Institute of Minority Economic Development",
+      "name1":
+        "Women's Business Center of North Carolina/North Carolina Institute of Minority Economic Development",
       "name2": "North Carolina Institute of Minority Economic Development (WBC)",
       "street1": "114 West Parrish Street",
       "street2": "4th Floor",
@@ -14500,7 +14703,8 @@
       "phone": "307-399-4245/in WY 888-524-1947"
     },
     {
-      "name1": "Western Dairyland Women's Business Center/Western Dairyland Economic Opportunity Council, Inc.",
+      "name1":
+        "Western Dairyland Women's Business Center/Western Dairyland Economic Opportunity Council, Inc.",
       "name2": "Western Dairyland Women's Business Center (WDWBDC)",
       "street1": "418 Wisconsin Street",
       "street2": "",
@@ -14640,7 +14844,8 @@
       "phone": "203-751-9550"
     },
     {
-      "name1": "Instituto Empresarial para la Mujer (Women's Business Institute) Universidad de Sagrado Corazon",
+      "name1":
+        "Instituto Empresarial para la Mujer (Women's Business Institute) Universidad de Sagrado Corazon",
       "name2": "Women's Business Institute (WBI)",
       "street1": "Avenida Ponce de Leon, Parada 26 1/2",
       "street2": "Calle Los Rosales Esquina San Antonio",

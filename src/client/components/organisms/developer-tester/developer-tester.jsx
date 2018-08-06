@@ -84,7 +84,4 @@ function mapDispatchToProps(dispatch) {
   return {}
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(DeveloperTester)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(DeveloperTester)

@@ -9,9 +9,7 @@ const CallToAction = props => {
   let { size: variation } = props
   const {
     blurb,
-    buttonAction: {
-      link: { title: btnTitle, url: btnUrl }
-    },
+    buttonAction: { link: { title: btnTitle, url: btnUrl } },
     image: { url: imageUrl, alt: imageAlt },
     headline
   } = props

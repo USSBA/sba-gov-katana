@@ -36,8 +36,7 @@ $diameter: 7rem;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 
-  @include loader-border('top') @include loader-border('right') @include loader-border('bottom') @include
-    loader-border('left', $sba-red);
+  @include loader-border('top') @include loader-border('right') @include loader-border('bottom') @include loader-border('left', $sba-red);
 }
 @-webkit-keyframes spin {
   0% {
