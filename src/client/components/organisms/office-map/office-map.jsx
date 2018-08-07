@@ -120,7 +120,8 @@ class OfficeMapApp extends React.PureComponent {
       bounds: {},
       map: {},
       newCenter: '',
-      hasSetInitialBounds: false
+      hasSetInitialBounds: false,
+      hoveredMarkerId: ''
     }
   }
 
