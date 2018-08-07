@@ -4,10 +4,12 @@ import styles from './office-detail.scss'
 import officeResultStyles from '../office-result/office-result.scss'
 import marker from 'assets/svg/marker.svg'
 import exitIcon from 'assets/svg/icons/close-icon-sm-blue.svg'
+import { isEmpty } from 'lodash'
 
 const OfficeDetail = ({ selectedItem, hideDetailState }) => {
   const { item, distance } = selectedItem
   const officeType = item.office_type ? item.office_type[0] : ''
+  const officeSummary = item.summary && item.summary.length ? item.summary[0] : ''
   const contactProps = {
     city: item.location_city ? item.location_city[0] : '',
     streetAddress: item.location_street_address ? item.location_street_address[0] : '',
@@ -65,15 +67,19 @@ const OfficeDetail = ({ selectedItem, hideDetailState }) => {
           </div>
         ) : null}
       </div>
-      <div className={officeResultStyles.hr}>
-        <hr />
-      </div>
-      <div className="office-summary">
-        <p>{item.summary && item.summary.length ? item.summary[0] : ""}</p>
-      </div>
-      <div className={officeResultStyles.hr}>
-        <hr />
-      </div>
+      {!isEmpty(officeSummary) && (
+        <div>
+          <div className={officeResultStyles.hr}>
+            <hr />
+          </div>
+          <div className="office-summary">
+            <p>{item.summary && item.summary.length ? item.summary[0] : ''}</p>
+          </div>
+          <div className={officeResultStyles.hr}>
+            <hr />
+          </div>
+        </div>
+      )}
       <ContactCard
         {...contactProps}
         className={{
