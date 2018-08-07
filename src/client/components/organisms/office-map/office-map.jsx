@@ -117,10 +117,6 @@ class OfficeMapApp extends React.PureComponent {
     }
   }
 
-  componentWillMount() {
-    console.log('A--')
-  }
-
   getLatLngs(items) {
     const geolocations = []
     items.forEach(item => {
@@ -151,9 +147,7 @@ class OfficeMapApp extends React.PureComponent {
           map: mapRef
         },
         () => {
-          console.log('B--')
           if (!this.state.hasSetInitialBounds) {
-            console.log('C--')
             mapRef.fitBounds(this.bounds)
             this.setState({ hasSetInitialBounds: true })
           }
