@@ -92,7 +92,7 @@ class SearchTemplate extends React.PureComponent {
     this.setState(newState)
   }
 
-  onChange(propName, value, options = {}) {
+  onChange(propName, value, options = {}, cb) {
     const { scrollToTopAfterSearch } = this.props
     const _options = merge(
       {
@@ -114,6 +114,9 @@ class SearchTemplate extends React.PureComponent {
         }
         if (!isEmpty(window) && scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
+        }
+        if (cb) {
+          cb()
         }
       }
     )
@@ -226,7 +229,9 @@ class SearchTemplate extends React.PureComponent {
     this.onChange('start', start, {
       shouldTriggerSearch: true,
       shouldResetPageNumber: false
-    })
+    },
+      this.props.onHandleEvent()
+    )
   }
 
   handleForward() {
@@ -237,7 +242,9 @@ class SearchTemplate extends React.PureComponent {
     this.onChange('start', start, {
       shouldTriggerSearch: true,
       shouldResetPageNumber: false
-    })
+    },
+      this.props.onHandleEvent()
+    )
   }
 
   render() {
@@ -282,7 +289,8 @@ SearchTemplate.propTypes = {
   items: PropTypes.array,
   location: PropTypes.string,
   isLoading: PropTypes.bool,
-  scrollToTopAfterSearch: PropTypes.bool
+  scrollToTopAfterSearch: PropTypes.bool,
+  onPaginate: PropTypes.func
 }
 
 SearchTemplate.defaultProps = {
@@ -290,7 +298,8 @@ SearchTemplate.defaultProps = {
   items: [],
   paginate: true,
   isLoading: false,
-  scrollToTopAfterSearch: true
+  scrollToTopAfterSearch: true,
+  onPaginate: () => {}
 }
 
 function mapReduxStateToProps(reduxState, props) {

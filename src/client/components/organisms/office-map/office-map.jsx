@@ -94,18 +94,31 @@ class OfficeMapApp extends React.PureComponent {
       points: [],
       bounds: {},
       map: {},
-      newCenter: ''
+      newCenter: '',
+      hasSetInitialBounds: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const { items } = nextProps
+    const { items, isDragging } = nextProps
+    const { map } = this.state
     const newPoints = this.getLatLngs(items)
     if (difference(newPoints, this.state.points)) {
-      this.setState({
-        points: newPoints
-      })
+      this.setState(
+        {
+          points: newPoints
+        },
+        () => {
+          if (!isDragging && !isEmpty(map)) {
+            map.fitBounds(this.bounds)
+          }
+        }
+      )
     }
+  }
+
+  componentWillMount() {
+    console.log('A--')
   }
 
   getLatLngs(items) {
@@ -133,9 +146,19 @@ class OfficeMapApp extends React.PureComponent {
     // after map has mounted
     // auto-zoom the map to fit all marker points
     if (mapRef !== null) {
-      this.setState({
-        map: mapRef
-      })
+      this.setState(
+        {
+          map: mapRef
+        },
+        () => {
+          console.log('B--')
+          if (!this.state.hasSetInitialBounds) {
+            console.log('C--')
+            mapRef.fitBounds(this.bounds)
+            this.setState({ hasSetInitialBounds: true })
+          }
+        }
+      )
       //mapRef.fitBounds(this.bounds)
     }
   }
@@ -187,7 +210,8 @@ class OfficeMapApp extends React.PureComponent {
 }
 OfficeMapApp.defaultProps = {
   selectedItem: null,
-  items: []
+  items: [],
+  isDragging: false
 }
 
 OfficeMapApp.propTypes = {
@@ -196,6 +220,7 @@ OfficeMapApp.propTypes = {
   selectedItem: PropTypes.object,
   onMarkerClick: PropTypes.func,
   onMarkerHover: PropTypes.func,
-  onDragEnd: PropTypes.func
+  onDragEnd: PropTypes.func,
+  isDragging: PropTypes.bool
 }
 export default OfficeMapApp
