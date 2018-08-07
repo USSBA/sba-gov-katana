@@ -24,7 +24,8 @@ class OfficeLookupPage extends React.Component {
 
     this.state = {
       selectedItem: {},
-      newCenter: {}
+      newCenter: {},
+      isDragging: false
     }
   }
 
@@ -66,12 +67,12 @@ class OfficeLookupPage extends React.Component {
     this.setState(newState)
   }
 
-  clearNewCenter() {
-    this.setState({ newCenter: {} })
+  setIsDragging(isDragging) {
+    this.setState({ isDragging })
   }
 
   render() {
-    const { selectedItem, newCenter } = this.state
+    const { selectedItem, newCenter, isDragging } = this.state
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
@@ -97,6 +98,9 @@ class OfficeLookupPage extends React.Component {
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
+        onHandleEvent={() => {
+          this.setIsDragging(false)
+        }}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
@@ -161,7 +165,10 @@ class OfficeLookupPage extends React.Component {
           onMarkerClick={selectedItem => this.setSelectedItem(selectedItem)}
           selectedItem={selectedItem}
           newCenter={newCenter}
-          onDragEnd={() => this.clearNewCenter()}
+          onDragEnd={() => {
+            this.setIsDragging(true)
+          }}
+          isDragging={isDragging}
         />
         <Results
           id="office-results"
