@@ -1,0 +1,58 @@
+// Style generated from https://mapstyle.withgoogle.com/
+[
+  {
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "saturation": -35
+      },
+      {
+        "lightness": -10
+      }
+    ]
+  },
+  {
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "saturation": -35
+      },
+      {
+        "lightness": -30
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "saturation": -20
+      },
+      {
+        "lightness": -15
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "saturation": -80
+      },
+      {
+        "lightness": -80
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "saturation": -100
+      },
+      {
+        "lightness": 100
+      }
+    ]
+  }
+]

@@ -21,12 +21,14 @@ const OfficeMap = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
+  const officeMapStyles = require('./office-map-style.json')
   const { markers, onMapMounted, onDragEnd } = props
   const googleMapProps = {
     defaultOptions: {
       streetViewControl: false,
       mapTypeControl: false,
-      fullscreenControl: false
+      fullscreenControl: false,
+      styles: officeMapStyles
     },
     defaultZoom: 10,
     defaultCenter: {
