@@ -7,6 +7,14 @@
 
   h2 {
     cursor: pointer;
+
+    i {
+      display: inline-block;
+      float: right;
+      font-size: 15px;
+      padding-top: 5px;
+      padding-left: 20px;
+    }
   }
 
   h3 {
