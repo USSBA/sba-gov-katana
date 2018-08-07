@@ -49,7 +49,6 @@ class Results extends React.PureComponent {
   }
 
   showDetailState(item) {
-    console.log('A', item)
     this.props.onClick(item)
   }
 

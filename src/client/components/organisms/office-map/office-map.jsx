@@ -22,7 +22,7 @@ const OfficeMap = compose(
   withGoogleMap
 )(props => {
   const officeMapStyles = require('./office-map-style.json')
-  const { markers, onMapMounted, onDragEnd, onMarkerClick } = props
+  const { markers, onMapMounted, onDragEnd, onMarkerClick, newCenter } = props
   const googleMapProps = {
     defaultOptions: {
       streetViewControl: false,
@@ -46,8 +46,13 @@ const OfficeMap = compose(
     for (let i = 0; i < markers.length; i++) {
       bounds.extend(markers[i])
     }
+
     props.setBounds(bounds)
     googleMapProps.defaultCenter = bounds.getCenter()
+  }
+
+  if (!_.isEmpty(newCenter)) {
+    googleMapProps.center = newCenter
   }
 
   return (
@@ -75,7 +80,8 @@ class OfficeMapApp extends React.PureComponent {
     this.state = {
       points: [],
       bounds: {},
-      map: {}
+      map: {},
+      newCenter: ''
     }
   }
 
@@ -117,12 +123,12 @@ class OfficeMapApp extends React.PureComponent {
       this.setState({
         map: mapRef
       })
-      mapRef.fitBounds(this.bounds)
+      //mapRef.fitBounds(this.bounds)
     }
   }
 
-  handleMarkerClick(item) {
-    this.props.onMarkerClick(item)
+  handleMarkerClick(selectedItem) {
+    this.props.onMarkerClick(selectedItem)
   }
 
   handleMarkerHover(item) {
@@ -133,7 +139,7 @@ class OfficeMapApp extends React.PureComponent {
     // pass array of points with lats and lngs
 
     const { points, map } = this.state
-    const { onFieldChange } = this.props
+    const { onFieldChange, selectedItem, newCenter, onDragEnd } = this.props
 
     return (
       <div id="google-map" className={styles.googleMap}>
@@ -144,6 +150,7 @@ class OfficeMapApp extends React.PureComponent {
           onDragEnd={() => {
             const mapCenter = map.getCenter()
             this.setState({ points: [] })
+            onDragEnd()
             onFieldChange('mapCenter', `${mapCenter.lat()},${mapCenter.lng()}`, {
               shouldTriggerSearch: true,
               shouldResetPageNumber: true
@@ -156,8 +163,9 @@ class OfficeMapApp extends React.PureComponent {
               item,
               distance
             }
-            this.props.onMarkerClick(selectedItem)
+            this.handleMarkerClick(selectedItem)
           }}
+          newCenter={newCenter}
         />
       </div>
     )
@@ -171,6 +179,7 @@ OfficeMapApp.propTypes = {
   items: PropTypes.array,
   onChange: PropTypes.func,
   onMarkerClick: PropTypes.func,
-  onMarkerHover: PropTypes.func
+  onMarkerHover: PropTypes.func,
+  onDragEnd: PropTypes.func
 }
 export default OfficeMapApp
