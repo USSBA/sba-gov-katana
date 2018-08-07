@@ -25,7 +25,16 @@ const OfficeMap = compose(
   withGoogleMap
 )(props => {
   const officeMapStyles = require('./office-map-style.json')
-  const { markers, onMapMounted, onDragEnd, onMarkerClick, newCenter, selectedItem } = props
+  const {
+    markers,
+    onMapMounted,
+    onDragEnd,
+    onMarkerClick,
+    onMarkerHover,
+    newCenter,
+    selectedItem,
+    hoveredMarkerId
+  } = props
   const googleMapProps = {
     defaultOptions: {
       streetViewControl: false,
@@ -61,9 +70,13 @@ const OfficeMap = compose(
   return (
     <GoogleMap {...googleMapProps}>
       {markers.map((item, index) => {
-        let selectedItemTitle = get(selectedItem, "item.title[0]")
-        let itemTitle = get(item, "selfRef.fields.title[0]")
-        let iconScale = itemTitle && selectedItemTitle &&  selectedItemTitle=== itemTitle ? defaultIconScale * 1.25 : defaultIconScale;
+        let selectedItemTitle = get(selectedItem, 'item.title[0]')
+        let itemTitle = get(item, 'selfRef.fields.title[0]')
+        let iconScale =
+          (itemTitle && selectedItemTitle && selectedItemTitle === itemTitle) ||
+          hoveredMarkerId === item.selfRef.id
+            ? defaultIconScale * 1.25
+            : defaultIconScale
         let icon = {
           scaledSize: new google.maps.Size(iconScale, iconScale),
           url: marker
@@ -77,6 +90,12 @@ const OfficeMap = compose(
             }}
             onClick={() => {
               onMarkerClick(item.selfRef)
+            }}
+            onMouseOver={() => {
+              onMarkerHover(item.selfRef.id)
+            }}
+            onMouseOut={() => {
+              onMarkerHover('')
             }}
             icon={icon}
           />
@@ -95,7 +114,8 @@ class OfficeMapApp extends React.PureComponent {
       bounds: {},
       map: {},
       newCenter: '',
-      hasSetInitialBounds: false
+      hasSetInitialBounds: false,
+      hoveredMarkerId: ''
     }
   }
 
@@ -161,14 +181,16 @@ class OfficeMapApp extends React.PureComponent {
     this.props.onMarkerClick(selectedItem)
   }
 
-  handleMarkerHover(item) {
-    this.props.onMarkerHover(item)
+  handleMarkerHover(id) {
+    this.setState({ hoveredMarkerId: id }, () => {
+      this.props.onMarkerHover(id)
+    })
   }
 
   render() {
     // pass array of points with lats and lngs
 
-    const { points, map } = this.state
+    const { points, map, hoveredMarkerId } = this.state
     const { onFieldChange, selectedItem, newCenter, onDragEnd } = this.props
 
     return (
@@ -195,8 +217,12 @@ class OfficeMapApp extends React.PureComponent {
             }
             this.handleMarkerClick(selectedItem)
           }}
+          onMarkerHover={id => {
+            this.handleMarkerHover(id)
+          }}
           newCenter={newCenter}
           selectedItem={this.props.selectedItem}
+          hoveredMarkerId={hoveredMarkerId}
         />
       </div>
     )
@@ -205,7 +231,9 @@ class OfficeMapApp extends React.PureComponent {
 OfficeMapApp.defaultProps = {
   selectedItem: null,
   items: [],
-  isDragging: false
+  isDragging: false,
+  onMarkerClick: () => {},
+  onMarkerHover: () => {}
 }
 
 OfficeMapApp.propTypes = {
