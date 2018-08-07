@@ -1,23 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import {
-  assign,
-  filter,
-  camelCase,
-  chain,
-  includes,
-  pickBy,
-  startCase,
-  isEmpty,
-  cloneDeep,
-  merge
-} from 'lodash'
+import { omit, isEmpty, cloneDeep, merge } from 'lodash'
+import { parse, stringify } from 'querystring'
 import { bindActionCreators } from 'redux'
 
-import { MultiSelect, TextInput, SearchIcon } from 'atoms'
 import { Paginator } from 'molecules'
-import { PrimarySearchBar, CoursesLayout } from 'organisms'
 import * as ContentActions from '../../../actions/content.js'
 import PropTypes from 'prop-types'
 import styles from './search.scss'
@@ -32,29 +20,64 @@ const createSlug = str => {
 
 /* NOTE: THIS IS SUPPOSED TO BE A GENERIC SEARCH TEMPLATE. PLEASE DO NOT PUT PAGE SPECIFIC LOGIC IN HERE. */
 
-export class SearchTemplate extends React.PureComponent {
+class SearchTemplate extends React.PureComponent {
   constructor() {
     super()
     this.state = {
-      searchParams: {},
+      searchParams: {
+        pageSize: 5,
+        start: 0
+      },
       submittedSearchParams: {},
       results: [],
-      pageNumber: 1,
       hasNoResults: false
     }
   }
 
+  calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.props.count) {
+    const maxPageNumber = Math.max(1, Math.ceil(count / pageSize))
+    return maxPageNumber
+  }
+
+  calculatePageNumber(pageSize = this.state.searchParams.pageSize, start = this.state.searchParams.start) {
+    const maxPageNumber = this.calculateMaxPageNumber()
+    let pageNumber = Math.floor(start / pageSize) + 1
+    //make sure page is in bounds
+    pageNumber = Math.min(pageNumber, maxPageNumber)
+    pageNumber = Math.max(pageNumber, 1)
+
+    return pageNumber
+  }
+
+  calculateStartIndex(pageNumber, pageSize = this.state.searchParams.pageSize, count = this.props.count) {
+    const calculatedPageNumber = Math.min(this.calculateMaxPageNumber(pageSize, count), pageNumber)
+    let startIndex = (calculatedPageNumber - 1) * pageSize
+    //make sure start is not less than 0 or greater than the total number of results
+    startIndex = Math.max(0, startIndex)
+    return startIndex
+  }
+
+  generateQueryMap(urlSearchString = document.location.search) {
+    const queryParams = parse(urlSearchString.substring(1))
+    //delete any pageSize property so the user can't affect how results are displayed
+    delete queryParams.pageSize
+    //calculate the actual  start value from the pageNumber parameter
+    let { pageNumber } = queryParams
+    const { searchParams: { pageSize } } = this.state
+    pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
+    //not using the calculate startIndex function here because we won't know the count yet
+    queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
+    return queryParams
+  }
+
   componentWillMount() {
     const { defaultSearchParams } = this.props
-    let filteredSearchParams
+    const { searchParams } = this.state
 
-    if (defaultSearchParams) {
-      filteredSearchParams = this.filterSearchParams(defaultSearchParams)
-      this.setState({ searchParams: filteredSearchParams })
-    }
-
+    const newSearchParams = merge(searchParams, defaultSearchParams || {}, this.generateQueryMap())
+    this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true) {
-      this.doSearch(this.props.searchType, filteredSearchParams)
+      this.doSearch(this.props.searchType, newSearchParams)
     }
   }
 
@@ -96,25 +119,11 @@ export class SearchTemplate extends React.PureComponent {
     )
   }
 
-  generateQueryString(filteredParams) {
-    const queryTermArray = []
-    for (const paramName in filteredParams) {
-      if (filteredParams.hasOwnProperty(paramName)) {
-        const value = filteredParams[paramName]
-        queryTermArray.push(`${paramName}=${value}`)
-      }
-    }
-    let search = ''
-    if (queryTermArray.length) {
-      search += `?${queryTermArray.join('&')}`
-    }
-    // todo:
-    //   browserHistory.push({
-    //     pathname: `/course/`,
-    //     search: `?topic=${query.businessStage}`
-    //   })
-
-    return search
+  filterSearchParamsForUrl(searchParams) {
+    const paramsToIgnore = ['pageSize', 'start']
+    const filteredSearchParams = omit(searchParams, paramsToIgnore)
+    filteredSearchParams.pageNumber = this.calculatePageNumber()
+    return filteredSearchParams
   }
 
   filterSearchParams(searchParams) {
@@ -122,7 +131,7 @@ export class SearchTemplate extends React.PureComponent {
     for (const paramName in searchParams) {
       if (searchParams.hasOwnProperty(paramName)) {
         let value = searchParams[paramName]
-        if (value) {
+        if (value || value === 0) {
           //item.value to handle objects returned from multiselects
           value = value.value || value
           if (value !== 'All') {
@@ -147,26 +156,31 @@ export class SearchTemplate extends React.PureComponent {
     const data = {}
     if (_options.shouldResetPageNumber === true) {
       searchParams.start = 0 //eslint-disable-line no-param-reassign
-      data.pageNumber = 1
       data.searchParams = searchParams
     }
-    const filteredSearchParams = this.filterSearchParams(searchParams)
-    //todo: doesn't do anything yet but could post query string to history
-    const query = this.generateQueryString(filteredSearchParams)
     this.setState(data, () => {
-      this.doSearch(searchType, filteredSearchParams)
+      this.doSearch(searchType, searchParams)
     })
   }
 
   doSearch(searchType, searchParams) {
+    //push search to history
+    const filteredSearchParams = this.filterSearchParams(searchParams)
+    const urlParams = this.filterSearchParamsForUrl(filteredSearchParams)
+    browserHistory.push({
+      pathname: document.location.pathname,
+      search: `?${stringify(urlParams)}`
+    })
+
     this.setState({ isLoading: true })
-    this.setState({ submittedSearchParams: this.state.searchParams })
-    this.props.actions.fetchContentIfNeeded(searchType, searchType, searchParams)
+    this.setState({ submittedSearchParams: filteredSearchParams })
+    this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
   }
 
   renderPaginator() {
-    const { count, defaultSearchParams: { pageSize } } = this.props
-    const { results, pageNumber } = this.state
+    const { count } = this.props
+    const { results, searchParams: { pageSize } } = this.state
+    const pageNumber = this.calculatePageNumber()
 
     let result = <div />
     //only render paginator if there are results
@@ -203,41 +217,30 @@ export class SearchTemplate extends React.PureComponent {
   }
 
   handleBack() {
-    const { defaultSearchParams: { pageSize } } = this.props
-    const { pageNumber } = this.state
-    const newPageNumber = Math.max(1, pageNumber - 1)
-    this.setState({ pageNumber: newPageNumber }, () => {
-      this.onChange('start', (newPageNumber - 1) * pageSize, {
-        shouldTriggerSearch: true,
-        shouldResetPageNumber: false
-      })
+    const pageNumber = this.calculatePageNumber()
+    const start = this.calculateStartIndex(pageNumber - 1)
+
+    // uses onchange to update search param and perform new search
+    this.onChange('start', start, {
+      shouldTriggerSearch: true,
+      shouldResetPageNumber: false
     })
   }
 
   handleForward() {
-    const { count, defaultSearchParams: { pageSize } } = this.props
-    const { pageNumber } = this.state
-    const newPageNumber = Math.min(Math.max(1, Math.ceil(count / pageSize)), pageNumber + 1)
-    this.setState({ pageNumber: newPageNumber }, () => {
-      this.onChange('start', (newPageNumber - 1) * pageSize, {
-        shouldTriggerSearch: true,
-        shouldResetPageNumber: false
-      })
+    const pageNumber = this.calculatePageNumber()
+    const start = this.calculateStartIndex(pageNumber + 1)
+
+    // uses onchange to update search param and perform new search
+    this.onChange('start', start, {
+      shouldTriggerSearch: true,
+      shouldResetPageNumber: false
     })
   }
 
   render() {
-    const { results } = this.state
-    const {
-      children,
-      items,
-      hasNoResults,
-      loadDefaultResults,
-      count,
-      extraClassName,
-      defaultSearchParams: { pageSize },
-      paginate
-    } = this.props
+    const { results, searchParams: { pageSize } } = this.state
+    const { children, count, extraClassName, paginate } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
@@ -249,7 +252,7 @@ export class SearchTemplate extends React.PureComponent {
         isLoading: this.state.isLoading,
         onForward: this.handleForward.bind(this),
         onBack: this.handleBack.bind(this),
-        pageNumber: this.state.pageNumber,
+        pageNumber: this.calculatePageNumber(),
         pageSize,
         total: count
       })
@@ -281,7 +284,7 @@ SearchTemplate.propTypes = {
 }
 
 SearchTemplate.defaultProps = {
-  defaultSearchParams: { pageSize: 5 },
+  defaultSearchParams: {},
   items: [],
   paginate: true,
   isLoading: false,
@@ -316,3 +319,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
+export { SearchTemplate }
