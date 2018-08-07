@@ -8,8 +8,12 @@ import marker from 'assets/svg/marker.svg'
 import classNames from 'classnames'
 
 class OfficeResult extends React.PureComponent {
+  onClick(e) {
+    this.props.showDetailState(e)
+  }
+
   render() {
-    const { id, item: { fields: item, exprs: { distance } }, showDetailState } = this.props
+    const { id, item: { fields: item, exprs: { distance } } } = this.props
     if (!item) {
       return null
     }
@@ -36,7 +40,7 @@ class OfficeResult extends React.PureComponent {
             <div
               id={`office-title-${id}`}
               onClick={() =>
-                showDetailState({
+                this.onClick({
                   item,
                   distance
                 })
