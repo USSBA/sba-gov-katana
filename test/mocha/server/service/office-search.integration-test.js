@@ -129,7 +129,7 @@ describe('# Office Search', function() {
       await insertDocuments(masterDocuments)
       let waitingOnInsert = true
       do {
-        waitingOnInsert = !(await checkForDocuments(masterDocuments.length))
+        waitingOnInsert = !await checkForDocuments(masterDocuments.length)
         await sleep(2000)
       } while (waitingOnInsert)
     })
@@ -140,7 +140,7 @@ describe('# Office Search', function() {
       await deleteDocuments(masterDocuments.map(item => item.id))
       let waitingOnDelete = true
       do {
-        waitingOnDelete = !(await checkForDocuments(0))
+        waitingOnDelete = !await checkForDocuments(0)
         await sleep(3000)
       } while (waitingOnDelete)
     })

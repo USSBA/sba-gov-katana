@@ -123,8 +123,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(SectionNav)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav)
 export { SectionNav }

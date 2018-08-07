@@ -20,7 +20,4 @@ function mapDispatchToProps(dispatch) {
   return {}
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(HomepageContainer)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(HomepageContainer)
