@@ -121,8 +121,10 @@ class SearchTemplate extends React.PureComponent {
 
   filterSearchParamsForUrl(searchParams) {
     const paramsToIgnore = ['pageSize', 'start']
+    const { start, pageSize } = searchParams
     const filteredSearchParams = omit(searchParams, paramsToIgnore)
-    filteredSearchParams.pageNumber = this.calculatePageNumber()
+    filteredSearchParams.pageNumber = Math.max(1, Math.floor(start / pageSize) + 1)
+
     return filteredSearchParams
   }
 
