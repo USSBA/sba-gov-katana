@@ -1,8 +1,15 @@
 .detailView {
   width: 100%;
-  padding: 40px 30px;
+  padding: 34px 30px;
   background: #ffffff;
   position: relative;
+  @include grid-media($sba-grid-small) {
+    padding: 10px 0px;
+  }
+
+  @include grid-media($sba-grid-medium) {
+    padding-left: 20px;
+  }
 
   h2 {
     font-size: 20px;
@@ -16,6 +23,11 @@
   top: 20px;
   right: 10px;
   padding: 10px;
+  @include grid-media($sba-grid-small) {
+    top: 10px;
+    right: 0px;
+    padding: 0px;
+  }
 
   img {
     display: block;
