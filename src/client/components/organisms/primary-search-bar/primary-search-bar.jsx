@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './primary-search-bar.scss'
 import { Button, SearchIcon } from 'atoms'
@@ -38,9 +38,11 @@ export class PrimarySearchBar extends React.PureComponent {
       return clonedChild
     })
     const { id } = this.props
+    let bannerClassName = styles.banner + (!isEmpty(this.props.className) ? ' ' + this.props.className : '')
+
     return (
       <div id={id}>
-        <div className={styles.banner}>
+        <div className={bannerClassName}>
           <h2 id={`${id ? id : 'primary-search-bar'}-title`} className={styles.header}>
             {this.props.title}
           </h2>

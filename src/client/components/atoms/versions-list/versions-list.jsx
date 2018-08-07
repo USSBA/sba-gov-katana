@@ -36,7 +36,8 @@ const VersionsList = props => {
         <strong>|</strong>
         {effectiveDateMessage}.
         <a href={fileUrl} onClick={_ => logPageEvent(eventConfig)} target="_blank">
-          Download PDF<i className="fa fa-file-pdf-o" aria-hidden="true" />
+          Download PDF
+          <i className="fa fa-file-pdf-o" aria-hidden="true" />
         </a>
         {effectiveDateInTheFuture ? (
           <strong className={styles.future} key={30}>

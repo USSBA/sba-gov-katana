@@ -641,7 +641,8 @@ class NaicsScreen extends PureComponent {
                 }}
                 tabIndex="0"
               >
-                <i className="fa fa-plus" aria-hidden="true" />Add another industry
+                <i className="fa fa-plus" aria-hidden="true" />
+                Add another industry
               </a>
             </p>
           </div>
@@ -724,7 +725,8 @@ const EmployeesScreen = props => {
       </div>
 
       <p>
-        This should be the average number of full-time or part-time <br />employees over the last 12 months.
+        This should be the average number of full-time or part-time <br />
+        employees over the last 12 months.
       </p>
     </div>
   )
@@ -851,7 +853,8 @@ class ResultsScreen extends PureComponent {
                   <div>
                     <div className={styles.yes + ' yes'}>
                       <p>
-                        <i className="fa fa-check-circle" aria-hidden="true" />YES
+                        <i className="fa fa-check-circle" aria-hidden="true" />
+                        YES
                       </p>
                     </div>
                   </div>
@@ -859,7 +862,8 @@ class ResultsScreen extends PureComponent {
                   <div>
                     <div className={styles.no + ' no'}>
                       <p>
-                        <i className="fa fa-times-circle" aria-hidden="true" />NO
+                        <i className="fa fa-times-circle" aria-hidden="true" />
+                        NO
                       </p>
                     </div>
                   </div>
@@ -917,7 +921,8 @@ class ResultsScreen extends PureComponent {
                     <div>
                       <div className={styles.yes + ' yes'}>
                         <p>
-                          <i className="fa fa-check-circle" aria-hidden="true" />YES
+                          <i className="fa fa-check-circle" aria-hidden="true" />
+                          YES
                         </p>
                       </div>
                     </div>
@@ -925,7 +930,8 @@ class ResultsScreen extends PureComponent {
                     <div>
                       <div className={styles.no + ' no'}>
                         <p>
-                          <i className="fa fa-times-circle" aria-hidden="true" />NO
+                          <i className="fa fa-times-circle" aria-hidden="true" />
+                          NO
                         </p>
                       </div>
                     </div>
@@ -973,7 +979,8 @@ class ResultsScreen extends PureComponent {
                 You may be eligible to participate in{' '}
                 <a href="/contracting" target="_blank" tabIndex="0">
                   <strong>SBA contracting programs</strong>
-                </a>.
+                </a>
+                .
               </p>
             </div>
           )}
@@ -987,7 +994,8 @@ class ResultsScreen extends PureComponent {
                 target="_blank"
               >
                 SBA small business size standards
-              </a>.
+              </a>
+              .
             </p>
             <p>
               <strong>SBA Office of Size Standards</strong>
@@ -996,12 +1004,10 @@ class ResultsScreen extends PureComponent {
               <li>
                 <i className="fa fa-map-marker" aria-hidden="true" />
                 <p>
-                  409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span
-                    className={styles.comma}
-                  >
-                    ,
-                  </span>{' '}
-                  DC 20416
+                  409 3rd Street
+                  <span className={styles.comma}>,</span> SW <br />
+                  Washington
+                  <span className={styles.comma}>,</span> DC 20416
                 </p>
               </li>
               <li>
@@ -1022,7 +1028,8 @@ class ResultsScreen extends PureComponent {
               Find out{' '}
               <a href="/contracting" target="_blank">
                 how you can sell to the Federal Government
-              </a>.
+              </a>
+              .
             </p>
             <p>
               <strong>SBA Office of Contracting</strong>
@@ -1031,12 +1038,10 @@ class ResultsScreen extends PureComponent {
               <li>
                 <i className="fa fa-map-marker" aria-hidden="true" />
                 <p>
-                  409 3rd Street<span className={styles.comma}>,</span> SW <br />Washington<span
-                    className={styles.comma}
-                  >
-                    ,
-                  </span>{' '}
-                  DC 20416
+                  409 3rd Street
+                  <span className={styles.comma}>,</span> SW <br />
+                  Washington
+                  <span className={styles.comma}>,</span> DC 20416
                 </p>
               </li>
               <li>

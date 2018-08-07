@@ -47,11 +47,11 @@
 /// @require {function} _retrieve-bourbon-setting
 
 @mixin font-face(
-    $font-family,
-    $file-path,
-    $file-formats: _retrieve-bourbon-setting('global-font-file-formats'),
-    $asset-pipeline: _retrieve-bourbon-setting('rails-asset-pipeline')
-  ) {
+  $font-family,
+  $file-path,
+  $file-formats: _retrieve-bourbon-setting('global-font-file-formats'),
+  $asset-pipeline: _retrieve-bourbon-setting('rails-asset-pipeline')
+) {
   @font-face {
     font-family: $font-family;
     src: _font-source-declaration($font-family, $file-path, $asset-pipeline, $file-formats);

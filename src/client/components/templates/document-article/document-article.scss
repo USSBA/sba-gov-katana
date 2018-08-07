@@ -13,5 +13,9 @@
 }
 
 div[class~='document-card-collection'] {
-  @include grid-collapse((gutter: 30px));
+  @include grid-collapse(
+    (
+      gutter: 30px
+    )
+  );
 }
