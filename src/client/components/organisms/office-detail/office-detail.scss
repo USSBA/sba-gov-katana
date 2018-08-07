@@ -1,6 +1,6 @@
 .detailView {
   width: 100%;
-  padding: 20px;
+  padding: 40px 30px;
   background: #ffffff;
   position: relative;
 
@@ -15,11 +15,10 @@
   position: absolute;
   top: 20px;
   right: 10px;
+  padding: 10px;
 
-  i {
+  img {
     display: block;
-    padding: 10px;
-    font-size: 20px;
     cursor: pointer;
   }
 }
