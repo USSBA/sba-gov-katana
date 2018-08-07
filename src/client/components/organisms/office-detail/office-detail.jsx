@@ -69,7 +69,7 @@ const OfficeDetail = ({ selectedItem, hideDetailState }) => {
         <hr />
       </div>
       <div className="office-summary">
-        <p>{item.summary[0]}</p>
+        <p>{item.summary && item.summary.length ? item.summary[0] : ""}</p>
       </div>
       <div className={officeResultStyles.hr}>
         <hr />
