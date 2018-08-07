@@ -2,14 +2,17 @@ import React from 'react'
 import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import _ from 'lodash'
+import {isEmpty, difference, get} from 'lodash'
 import styles from './office-map.scss'
-var geocoder = require('google-geocoder')
 import PropTypes from 'prop-types'
+import marker from 'assets/svg/marker.svg'
+
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
 }&v=3.exp&libraries=geometry,drawing,places`
+
+const defaultIconScale = 40;
 
 const OfficeMap = compose(
   withProps({
@@ -22,7 +25,7 @@ const OfficeMap = compose(
   withGoogleMap
 )(props => {
   const officeMapStyles = require('./office-map-style.json')
-  const { markers, onMapMounted, onDragEnd, onMarkerClick, newCenter } = props
+  const { markers, onMapMounted, onDragEnd, onMarkerClick, newCenter, selectedItem } = props
   const googleMapProps = {
     defaultOptions: {
       streetViewControl: false,
@@ -57,18 +60,28 @@ const OfficeMap = compose(
 
   return (
     <GoogleMap {...googleMapProps}>
-      {markers.map((item, index) => (
-        <Marker
-          key={index}
-          position={{
-            lat: item.lat,
-            lng: item.lng
-          }}
-          onClick={() => {
-            onMarkerClick(item.selfRef)
-          }}
-        />
-      ))}
+      {markers.map((item, index) => {
+        let selectedItemTitle = get(selectedItem, "item.title[0]")
+        let itemTitle = get(item, "selfRef.fields.title[0]")
+        let iconScale = itemTitle && selectedItemTitle &&  selectedItemTitle=== itemTitle ? defaultIconScale * 1.25 : defaultIconScale;
+        let icon = {
+          scaledSize: new google.maps.Size(iconScale, iconScale),
+          url: marker
+        } 
+        return (
+          <Marker
+            key={index}
+            position={{
+              lat: item.lat,
+              lng: item.lng
+            }}
+            onClick={() => {
+              onMarkerClick(item.selfRef)
+            }}
+            icon={icon}
+          />
+        )}
+      )}
     </GoogleMap>
   )
 })
@@ -88,7 +101,7 @@ class OfficeMapApp extends React.PureComponent {
   componentWillReceiveProps(nextProps) {
     const { items } = nextProps
     const newPoints = this.getLatLngs(items)
-    if (_.difference(newPoints, this.state.points)) {
+    if (difference(newPoints, this.state.points)) {
       this.setState({
         points: newPoints
       })
@@ -99,7 +112,7 @@ class OfficeMapApp extends React.PureComponent {
     const geolocations = []
     items.forEach(item => {
       const { geolocation } = item.fields
-      if (!_.isEmpty(geolocation)) {
+      if (!isEmpty(geolocation)) {
         const latLng = geolocation[0].split(',')
         const geocode = {
           lat: Number(latLng[0]),
@@ -166,18 +179,21 @@ class OfficeMapApp extends React.PureComponent {
             this.handleMarkerClick(selectedItem)
           }}
           newCenter={newCenter}
+          selectedItem={this.props.selectedItem}
         />
       </div>
     )
   }
 }
 OfficeMapApp.defaultProps = {
+  selectedItem: null,
   items: []
 }
 
 OfficeMapApp.propTypes = {
   items: PropTypes.array,
   onChange: PropTypes.func,
+  selectedItem: PropTypes.object,
   onMarkerClick: PropTypes.func,
   onMarkerHover: PropTypes.func,
   onDragEnd: PropTypes.func
