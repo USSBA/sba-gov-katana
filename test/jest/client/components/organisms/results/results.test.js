@@ -32,22 +32,11 @@ describe('Results', () => {
   }
 
   test('should display OfficeDetail', () => {
-    const MockOfficeResult = ({ showDetailState, item }) => (
-      <div
-        onClick={() =>
-          showDetailState({
-            item: props.items[0].fields.item,
-            distance: props.items[0].exprs.distance
-          })
-        }
-      />
-    )
-    const component = mount(
-      <Results {...props}>
-        <MockOfficeResult />
-      </Results>
-    )
-    component.find(MockOfficeResult).simulate('click')
+    const mockSelectedItem = {
+      item: props.items[0].fields.item,
+      distance: props.items[0].exprs.distance
+    }
+    const component = mount(<Results {...props} selectedItem={mockSelectedItem} />)
     expect(component.find(OfficeDetail)).toHaveLength(1)
   })
 

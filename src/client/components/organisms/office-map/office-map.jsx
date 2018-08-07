@@ -150,7 +150,14 @@ class OfficeMapApp extends React.PureComponent {
             })
             onFieldChange('mapCenter', '')
           }}
-          onMarkerClick={this.handleMarkerClick}
+          onMarkerClick={e => {
+            const { fields: item, exprs: { distance } } = e
+            const selectedItem = {
+              item,
+              distance
+            }
+            this.props.onMarkerClick(selectedItem)
+          }}
         />
       </div>
     )
