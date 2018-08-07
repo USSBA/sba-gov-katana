@@ -13,14 +13,6 @@ class Results extends React.PureComponent {
     this.renderPaginator = this.renderPaginator.bind(this)
   }
 
-  constructor() {
-    super()
-
-    this.state = {
-      selectedItem: {}
-    }
-  }
-
   renderDefaultView(children) {
     return <div>{children}</div>
   }
