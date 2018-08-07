@@ -22,7 +22,7 @@ const OfficeMap = compose(
   withGoogleMap
 )(props => {
   const officeMapStyles = require('./office-map-style.json')
-  const { markers, onMapMounted, onDragEnd } = props
+  const { markers, onMapMounted, onDragEnd, onMarkerClick } = props
   const googleMapProps = {
     defaultOptions: {
       streetViewControl: false,
@@ -59,6 +59,9 @@ const OfficeMap = compose(
             lat: item.lat,
             lng: item.lng
           }}
+          onClick={() => {
+            onMarkerClick(item.selfRef)
+          }}
         />
       ))}
     </GoogleMap>
@@ -94,7 +97,8 @@ class OfficeMapApp extends React.PureComponent {
         const latLng = geolocation[0].split(',')
         const geocode = {
           lat: Number(latLng[0]),
-          lng: Number(latLng[1])
+          lng: Number(latLng[1]),
+          selfRef: item
         }
         geolocations.push(geocode)
       }
@@ -115,6 +119,14 @@ class OfficeMapApp extends React.PureComponent {
       })
       mapRef.fitBounds(this.bounds)
     }
+  }
+
+  handleMarkerClick(item) {
+    this.props.onMarkerClick(item)
+  }
+
+  handleMarkerHover(item) {
+    this.props.onMarkerHover(item)
   }
 
   render() {
@@ -138,6 +150,7 @@ class OfficeMapApp extends React.PureComponent {
             })
             onFieldChange('mapCenter', '')
           }}
+          onMarkerClick={this.handleMarkerClick}
         />
       </div>
     )
@@ -149,6 +162,8 @@ OfficeMapApp.defaultProps = {
 
 OfficeMapApp.propTypes = {
   items: PropTypes.array,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onMarkerClick: PropTypes.func,
+  onMarkerHover: PropTypes.func
 }
 export default OfficeMapApp
