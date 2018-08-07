@@ -179,10 +179,6 @@ class OfficeMapApp extends React.PureComponent {
     }
   }
 
-  componentWillMount() {
-    console.log('A--')
-  }
-
   getLatLngs(items) {
     const geolocations = []
     items.forEach(item => {
