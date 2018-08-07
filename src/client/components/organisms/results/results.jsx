@@ -13,14 +13,6 @@ class Results extends React.PureComponent {
     this.renderPaginator = this.renderPaginator.bind(this)
   }
 
-  constructor() {
-    super()
-
-    this.state = {
-      selectedItem: {}
-    }
-  }
-
   renderDefaultView(children) {
     return <div>{children}</div>
   }
@@ -57,25 +49,32 @@ class Results extends React.PureComponent {
   }
 
   showDetailState(item) {
-    this.setState({ selectedItem: item })
+    console.log('A', item)
+    this.props.onClick(item)
   }
 
   hideDetailState() {
-    this.setState({ selectedItem: {} })
+    this.props.onClick({})
   }
 
   render() {
-    const { selectedItem } = this.state
+    const {
+      children,
+      id,
+      resultId,
+      paginate,
+      scroll,
+      extraClassName,
+      hasSearchInfoPanel,
+      selectedItem
+    } = this.props
     const shouldShowDetailView = !isEmpty(selectedItem)
-    const { children, id, resultId, paginate, scroll, extraClassName, hasSearchInfoPanel } = this.props
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
         return React.cloneElement(child, {
           item: item,
           id: `${resultId}-${index.toString()}`,
-          showDetailState: e => {
-            this.showDetailState(e)
-          }
+          showDetailState: this.showDetailState.bind(this)
         })
       })
       return mappedChildren
@@ -121,7 +120,8 @@ Results.defaultProps = {
   paginate: false,
   scroll: false,
   hasSearchInfoPanel: false,
-  searchTermName: ''
+  searchTermName: '',
+  onClick: () => {}
 }
 
 Results.propTypes = {
@@ -131,7 +131,8 @@ Results.propTypes = {
   paginate: PropTypes.bool,
   scroll: PropTypes.bool,
   hasSearchInfoPanel: PropTypes.bool,
-  searchTermName: PropTypes.string
+  searchTermName: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default Results

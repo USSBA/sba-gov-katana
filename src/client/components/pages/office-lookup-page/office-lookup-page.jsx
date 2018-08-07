@@ -19,6 +19,14 @@ import { NoResultsSection } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      selectedItem: {}
+    }
+  }
+
   componentWillMount() {
     const necessaryTaxonomies = ['officeType', 'officeService']
     this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
@@ -40,7 +48,12 @@ class OfficeLookupPage extends React.Component {
   // todo move to own component
   renderNoResultsView() {}
 
+  setSelectedItem(item) {
+    this.setState({ selectedItem: item })
+  }
+
   render() {
+    const { selectedItem } = this.state
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
@@ -125,7 +138,11 @@ class OfficeLookupPage extends React.Component {
         {/*
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
-        <OfficeMap id="office-map" />
+        <OfficeMap
+          id="office-map"
+          onMarkerClick={selectedItem => this.setSelectedItem(selectedItem)}
+          selectedItem={selectedItem}
+        />
         <Results
           id="office-results"
           paginate
@@ -133,6 +150,8 @@ class OfficeLookupPage extends React.Component {
           extraClassName={styles.officeResults}
           hasSearchInfoPanel
           searchTermName={'q'}
+          onClick={selectedItem => this.setSelectedItem(selectedItem)}
+          selectedItem={selectedItem}
         >
           <OfficeResult />
         </Results>
