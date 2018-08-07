@@ -3,6 +3,7 @@ import { ContactCard } from 'molecules'
 import styles from './office-detail.scss'
 import officeResultStyles from '../office-result/office-result.scss'
 import marker from 'assets/svg/marker.svg'
+import exitIcon from 'assets/svg/icons/close-icon-sm-blue.svg'
 
 const OfficeDetail = ({ selectedItem, hideDetailState }) => {
   const { item, distance } = selectedItem
@@ -22,8 +23,21 @@ const OfficeDetail = ({ selectedItem, hideDetailState }) => {
     <div className={styles.detailView}>
       <div>
         <div>
-          <div className={styles.close} onClick={() => hideDetailState()}>
-            <i className="fa fa-times" />
+          <div className={styles.close}>
+            <img
+              onClick={() => hideDetailState()}
+              onKeyDown={e => {
+                // Key code 13 equals Enter and 32 equals Spacebar
+                if (e.keyCode === 13 || e.keyCode === 32) {
+                  e.preventDefault()
+                  return hideDetailState()
+                }
+              }}
+              src={exitIcon}
+              alt="close"
+              tabIndex="3"
+              aria-label="click to close alert"
+            />
           </div>
           <div className={'office-distance ' + officeResultStyles.distance}>
             <div>
