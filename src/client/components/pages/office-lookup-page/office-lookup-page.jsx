@@ -23,7 +23,8 @@ class OfficeLookupPage extends React.Component {
     super()
 
     this.state = {
-      selectedItem: {}
+      selectedItem: {},
+      newCenter: {}
     }
   }
 
@@ -48,12 +49,29 @@ class OfficeLookupPage extends React.Component {
   // todo move to own component
   renderNoResultsView() {}
 
-  setSelectedItem(item) {
-    this.setState({ selectedItem: item })
+  setSelectedItem(selectedItem) {
+    const newState = {
+      selectedItem,
+      newCenter: {}
+    }
+
+    if (!_.isEmpty(selectedItem)) {
+      const [lat, lng] = selectedItem.item.geolocation[0].split(',')
+      newState.newCenter = {
+        lat: Number(lat),
+        lng: Number(lng)
+      }
+    }
+
+    this.setState(newState)
+  }
+
+  clearNewCenter() {
+    this.setState({ newCenter: {} })
   }
 
   render() {
-    const { selectedItem } = this.state
+    const { selectedItem, newCenter } = this.state
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
@@ -142,6 +160,8 @@ class OfficeLookupPage extends React.Component {
           id="office-map"
           onMarkerClick={selectedItem => this.setSelectedItem(selectedItem)}
           selectedItem={selectedItem}
+          newCenter={newCenter}
+          onDragEnd={() => this.clearNewCenter()}
         />
         <Results
           id="office-results"
