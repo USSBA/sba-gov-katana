@@ -42,7 +42,10 @@ class OfficeResult extends React.PureComponent {
                 })
               }
             >
-              <h2>{item.title[0]}</h2>
+              <h2>
+                <i className="fa fa-chevron-right" />
+                {item.title[0]}
+              </h2>
             </div>
             <div id={`office-type-${id}`}>
               <div className={styles.officeType}>
@@ -69,70 +72,6 @@ class OfficeResult extends React.PureComponent {
   }
 }
 
-const DetailView = ({ selectedItem, hideDetailState }) => {
-  const { item, distance } = selectedItem
-  const officeType = item.office_type ? item.office_type[0] : ''
-  const contactProps = {
-    city: item.location_city ? item.location_city[0] : '',
-    streetAddress: item.location_street_address ? item.location_street_address[0] : '',
-    state: item.location_state ? item.location_state[0] : '',
-    zipCode: item.location_zipcode ? Number(item.location_zipcode[0]) : '',
-    email: item.location_email ? item.location_email[0] : '',
-    phoneNumber: item.location_phone_number ? item.location_phone_number[0] : '',
-    fax: item.location_fax ? item.location_fax[0] : '',
-    link: item.location_website ? item.location_website[0] : ''
-  }
-
-  return (
-    <div className={styles.detailView}>
-      <div>
-        <div>
-          <div className={styles.close} onClick={() => hideDetailState()}>
-            <i className="fa fa-times" />
-          </div>
-          <div className={'office-distance ' + styles.distance}>
-            <div>
-              <img src={marker} className={styles.marker} />
-            </div>
-            <div id="office-miles" className={styles.miles}>{`${Number(distance).toFixed(1)} miles`}</div>
-            <div className={styles.clear} />
-          </div>
-          <h2 className="office-title">{item.title[0]}</h2>
-        </div>
-        <div id="office-type">
-          <div className={styles.officeType}>
-            <span>{officeType}</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        {item.office_service ? (
-          <div className={styles.serviceList + ' service-list'}>
-            {' '}
-            <h3>Services</h3>
-            <div>{item.office_service.join(', ')}</div>
-          </div>
-        ) : null}
-      </div>
-      <div className={styles.hr}>
-        <hr />
-      </div>
-      <div className="office-summary">
-        <p>{item.summary[0]}</p>
-      </div>
-      <div className={styles.hr}>
-        <hr />
-      </div>
-      <ContactCard
-        {...contactProps}
-        className={{
-          [styles.contactCard]: true
-        }}
-      />
-    </div>
-  )
-}
-
 OfficeResult.defaultProps = {
   id: 'result',
   onClick: () => {}
@@ -145,4 +84,3 @@ OfficeResult.propTypes = {
 }
 
 export default OfficeResult
-export { DetailView }
