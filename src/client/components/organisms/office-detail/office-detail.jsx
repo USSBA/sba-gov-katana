@@ -9,7 +9,7 @@ import { isEmpty } from 'lodash'
 const OfficeDetail = ({ selectedItem, hideDetailState }) => {
   const { item, distance } = selectedItem
   const officeType = item.office_type ? item.office_type[0] : ''
-  const officeSummary = item.summary && item.summary.length ? item.summary[0] : ''
+  const officeSummary = '' //item.summary && item.summary.length ? item.summary[0] : ''
   const contactProps = {
     city: item.location_city ? item.location_city[0] : '',
     streetAddress: item.location_street_address ? item.location_street_address[0] : '',
