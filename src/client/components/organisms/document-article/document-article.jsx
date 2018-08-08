@@ -195,7 +195,7 @@ export class DocumentArticle extends React.Component {
               </Button>
             </div>
             <div className="column">
-              <h5 className={s.summary}>{data.summary}</h5>
+              {!isEmpty(data.summary) && <h5 className={s.summary}>{data.summary}</h5>}
             </div>
           </div>
           <div className={s.dash}>
