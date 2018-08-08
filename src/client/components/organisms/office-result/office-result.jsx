@@ -24,8 +24,6 @@ class OfficeResult extends React.PureComponent {
       return null
     }
 
-    console.log('A', this.props.item.id, hoveredMarkerId)
-
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
