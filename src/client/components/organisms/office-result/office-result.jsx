@@ -18,8 +18,6 @@ class OfficeResult extends React.PureComponent {
       return null
     }
 
-    console.log('A', this.props.item.id, hoveredMarkerId)
-
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
@@ -39,7 +37,14 @@ class OfficeResult extends React.PureComponent {
 
     //elasticsearch returns all single value elements as an array *sigh*
     return (
-      <div className={cardLayoutClassName}>
+      <div
+        className={cardLayoutClassName}
+        onMouseOver={() => {
+          if (!isHovered) {
+            this.props.onResultHover(this.props.item.id)
+          }
+        }}
+      >
         <div id={`office-result-${id}`} className={innerDivClassName}>
           <div>
             <div className={styles.distance}>
@@ -92,13 +97,15 @@ class OfficeResult extends React.PureComponent {
 
 OfficeResult.defaultProps = {
   id: 'result',
-  onClick: () => {}
+  onClick: () => {},
+  onResultHover: () => {}
 }
 
 OfficeResult.propTypes = {
   item: PropTypes.object,
   id: PropTypes.string, //.isRequired
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  onResultHover: PropTypes.func
 }
 
 export default OfficeResult
