@@ -65,7 +65,8 @@ class Results extends React.PureComponent {
       scroll,
       extraClassName,
       hasSearchInfoPanel,
-      selectedItem
+      selectedItem,
+      hoveredMarkerId
     } = this.props
     const shouldShowDetailView = !isEmpty(selectedItem)
     const childrenWithProps = this.props.items.map((item, index) => {
@@ -73,7 +74,8 @@ class Results extends React.PureComponent {
         return React.cloneElement(child, {
           item: item,
           id: `${resultId}-${index.toString()}`,
-          showDetailState: this.showDetailState.bind(this)
+          showDetailState: this.showDetailState.bind(this),
+          hoveredMarkerId
         })
       })
       return mappedChildren

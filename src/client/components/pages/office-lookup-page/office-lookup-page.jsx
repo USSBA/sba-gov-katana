@@ -25,7 +25,8 @@ class OfficeLookupPage extends React.Component {
     this.state = {
       selectedItem: {},
       newCenter: {},
-      isDragging: false
+      isDragging: false,
+      hoveredMarkerId: ''
     }
   }
 
@@ -71,8 +72,12 @@ class OfficeLookupPage extends React.Component {
     this.setState({ isDragging })
   }
 
+  setHoveredMarkerId(hoveredMarkerId) {
+    this.setState({ hoveredMarkerId })
+  }
+
   render() {
-    const { selectedItem, newCenter, isDragging } = this.state
+    const { selectedItem, newCenter, isDragging, hoveredMarkerId } = this.state
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
@@ -169,6 +174,10 @@ class OfficeLookupPage extends React.Component {
             this.setIsDragging(true)
           }}
           isDragging={isDragging}
+          onMarkerHover={id => {
+            this.setHoveredMarkerId(id)
+          }}
+          hoveredMarkerId={hoveredMarkerId}
         />
         <Results
           id="office-results"
@@ -179,6 +188,7 @@ class OfficeLookupPage extends React.Component {
           searchTermName={'q'}
           onClick={selectedItem => this.setSelectedItem(selectedItem)}
           selectedItem={selectedItem}
+          hoveredMarkerId={hoveredMarkerId}
         >
           <OfficeResult />
         </Results>
