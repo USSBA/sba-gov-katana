@@ -172,3 +172,18 @@
   border: none;
   padding: 0;
 }
+
+.hoveredBorder {
+  border-left: 3px solid #002e6d;
+}
+
+.hoveredInnerDiv {
+  margin-top: -20px;
+  margin-left: 17px;
+  padding-top: 20px;
+}
+
+.isFirstHoveredResult {
+  margin-top: 0;
+  padding-top: 20px;
+}
