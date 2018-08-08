@@ -13,20 +13,34 @@ class OfficeResult extends React.PureComponent {
   }
 
   render() {
-    const { id, item: { fields: item, exprs: { distance } } } = this.props
+    const { id, item: { fields: item, exprs: { distance } }, hoveredMarkerId } = this.props
     if (!item) {
       return null
     }
+
+    console.log('A', this.props.item.id, hoveredMarkerId)
 
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
     const isFirstResult = id === 'result-0'
+    const isHovered = this.props.item.id === hoveredMarkerId
+
+    const cardLayoutClassName = classNames({
+      ['card-layout']: true,
+      [styles.hoveredBorder]: isHovered
+    })
+
+    const innerDivClassName = classNames({
+      [styles.officeResult]: true,
+      [styles.hoveredInnerDiv]: isHovered,
+      [styles.isFirstHoveredResult]: isHovered && isFirstResult
+    })
 
     //elasticsearch returns all single value elements as an array *sigh*
     return (
-      <div className={`card-layout`}>
-        <div id={`office-result-${id}`} className={styles.officeResult}>
+      <div className={cardLayoutClassName}>
+        <div id={`office-result-${id}`} className={innerDivClassName}>
           <div>
             <div className={styles.distance}>
               <div>

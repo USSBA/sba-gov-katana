@@ -2,17 +2,16 @@ import React from 'react'
 import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import {isEmpty, difference, get} from 'lodash'
+import { isEmpty, difference, get } from 'lodash'
 import styles from './office-map.scss'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
-
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
 }&v=3.exp&libraries=geometry,drawing,places`
 
-const defaultIconScale = 40;
+const defaultIconScale = 40
 
 const OfficeMap = compose(
   withProps({
@@ -80,7 +79,7 @@ const OfficeMap = compose(
         let icon = {
           scaledSize: new google.maps.Size(iconScale, iconScale),
           url: marker
-        } 
+        }
         return (
           <Marker
             key={index}
@@ -99,8 +98,8 @@ const OfficeMap = compose(
             }}
             icon={icon}
           />
-        )}
-      )}
+        )
+      })}
     </GoogleMap>
   )
 })
@@ -114,8 +113,7 @@ class OfficeMapApp extends React.PureComponent {
       bounds: {},
       map: {},
       newCenter: '',
-      hasSetInitialBounds: false,
-      hoveredMarkerId: ''
+      hasSetInitialBounds: false
     }
   }
 
@@ -182,16 +180,14 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   handleMarkerHover(id) {
-    this.setState({ hoveredMarkerId: id }, () => {
-      this.props.onMarkerHover(id)
-    })
+    this.props.onMarkerHover(id)
   }
 
   render() {
     // pass array of points with lats and lngs
 
-    const { points, map, hoveredMarkerId } = this.state
-    const { onFieldChange, selectedItem, newCenter, onDragEnd } = this.props
+    const { points, map } = this.state
+    const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId } = this.props
 
     return (
       <div id="google-map" className={styles.googleMap}>
