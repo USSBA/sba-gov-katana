@@ -1,5 +1,5 @@
 import React from 'react'
-import _, { isEmpty } from 'lodash'
+import { includes, isEmpty, size } from 'lodash'
 
 import s from './detail-card.scss'
 import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
@@ -39,24 +39,20 @@ class DetailCard extends React.Component {
 
   makeTable(doc) {
     const rows = []
-    if (
-      doc.activities &&
-      doc.activities.length > 0 &&
-      _.includes(this.props.fieldsToShowInDetails, 'Activity')
-    ) {
+    if (size(doc.activities) && includes(this.props.fieldsToShowInDetails, 'Activity')) {
       rows.push({ name: 'Activity:', value: doc.activities.join(', ') })
     }
-    if (doc.programs && _.includes(this.props.fieldsToShowInDetails, 'Program')) {
+    if (size(doc.programs) && includes(this.props.fieldsToShowInDetails, 'Program')) {
       rows.push({ name: 'Program:', value: doc.programs.join(', ') })
     }
 
-    if (doc.published && _.includes(this.props.fieldsToShowInDetails, 'Published')) {
+    if (doc.published && includes(this.props.fieldsToShowInDetails, 'Published')) {
       const publishedDate = new Date(doc.updated)
       const publisheDateString =
         publishedDate.getMonth() + '/' + publishedDate.getDate() + '/' + publishedDate.getYear()
       rows.push({ name: 'Published:', value: publisheDateString })
     }
-    if (doc.summary && _.includes(this.props.fieldsToShowInDetails, 'Summary')) {
+    if (size(doc.summary) && includes(this.props.fieldsToShowInDetails, 'Summary')) {
       rows.push({ name: 'Summary:', value: doc.summary })
     }
 
