@@ -75,6 +75,9 @@ class Results extends React.PureComponent {
           item: item,
           id: `${resultId}-${index.toString()}`,
           showDetailState: this.showDetailState.bind(this),
+          onResultHover: id => {
+            this.props.onResultHover(id)
+          },
           hoveredMarkerId
         })
       })
@@ -122,7 +125,8 @@ Results.defaultProps = {
   scroll: false,
   hasSearchInfoPanel: false,
   searchTermName: '',
-  onClick: () => {}
+  onClick: () => {},
+  onResultHover: () => {}
 }
 
 Results.propTypes = {
@@ -133,7 +137,8 @@ Results.propTypes = {
   scroll: PropTypes.bool,
   hasSearchInfoPanel: PropTypes.bool,
   searchTermName: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  onResultHover: PropTypes.func
 }
 
 export default Results

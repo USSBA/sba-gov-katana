@@ -189,6 +189,9 @@ class OfficeLookupPage extends React.Component {
           onClick={selectedItem => this.setSelectedItem(selectedItem)}
           selectedItem={selectedItem}
           hoveredMarkerId={hoveredMarkerId}
+          onResultHover={id => {
+            this.setHoveredMarkerId(id)
+          }}
         >
           <OfficeResult />
         </Results>
