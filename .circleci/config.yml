@@ -20,15 +20,50 @@ workflows:
   version: 2
   test-build-deploy:
     jobs:
-    - cache-dependencies
+    - cache-dependencies:
+        filters:
+          branches:
+            only: 
+            - /.*/
+          tags:
+            only: 
+            - /.*/
     - test-jest:
         requires: [cache-dependencies]
+        filters:
+          branches:
+            only: 
+            - /.*/
+          tags:
+            only: 
+            - /.*/
     - test-mocha:
         requires: [cache-dependencies]
+        filters:
+          branches:
+            only: 
+            - /.*/
+          tags:
+            only: 
+            - /.*/
     - test-lint:
         requires: [cache-dependencies]
+        filters:
+          branches:
+            only: 
+            - /.*/
+          tags:
+            only: 
+            - /.*/
     - test-format:
         requires: [cache-dependencies]
+        filters:
+          branches:
+            only: 
+            - /.*/
+          tags:
+            only: 
+            - /.*/
     - build-webpack:
         requires: [test-jest, test-mocha, test-lint, test-format]
         filters:
@@ -41,54 +76,59 @@ workflows:
             - /[Ff]eature-\w+-\d+[-\w]*/
           tags:
             only:
+            - production
+            - staging
+            - demo
+            - mint
+            - /int-\w+/
             - /RELEASE-\d+/
-            - /v-\d+/
-    - build-push-image:
+    - build-package:
         requires: [build-webpack]
         filters:
           branches:
             only:
             - master
-            - integration
-            - staging
-            - mint
             - /[Ff]eature-\w+-\d+[-\w]*/
           tags:
             only:
+            - production
+            - staging
+            - demo
+            - mint
+            - /int-\w+/
             - /RELEASE-\d+/
-            - /v-\d+/
-    - force-mint-redeploy:
-        requires: [build-push-image]
+    - upload-package:
+        requires: [build-package]
         filters:
-          branches: {only: [integration]}
-    #- deploy-qint-containers:
-    #    requires: [build-push-image]
-    #    filters:
-    #      branches: {only: [integration]}
-    #- deploy-stge-containers:
-    #    requires: [build-push-image]
-    #    filters:
-    #      branches: {only: [staging]}
-    #- hold-prod-deploy:
-    #    type: approval
-    #    requires: [build-push-image]
-    #    filters:
-    #      branches: {only: [master]}
-    #- deploy-prod-containers:
-    #    requires: [hold-prod-deploy]
-    #    filters:
-    #      branches: {only: [master]}
-  push-dev-tag-workflow:
-    jobs:
-    - push-tag:
-        filters:
-          branches: {ignore: /.*/}
+          branches:
+            ignore:
+            - /.*/
           tags:
-            only: [ avery, brian, laura, kevin ]
+            only:
+            - production
+            - staging
+            - demo
+            - mint
+            - /int-\w+/
+            - /RELEASE-\d+/
+    - deploy-package:
+        requires: [upload-package]
+        filters:
+          branches:
+            ignore:
+            - /.*/
+          tags:
+            only:
+            - production
+            - staging
+            - demo
+            - mint
+            - /int-\w+/
+            - /RELEASE-\d+/
 jobs:
   cache-dependencies:
     docker:
-    - image: circleci/node:8.6
+    - image: circleci/node:8.10
     steps:
       - checkout
       # Download and cache dependencies
@@ -105,7 +145,7 @@ jobs:
           key: v2-dependencies-{{ checksum "package.json" }}
   test-jest:
     docker:
-    - image: circleci/node:8.6
+    - image: circleci/node:8.10
     steps:
       - checkout
       # Download and cache dependencies
@@ -118,7 +158,7 @@ jobs:
             npm run test-jest
   test-mocha:
     docker:
-    - image: circleci/node:8.6
+    - image: circleci/node:8.10
     steps:
       - checkout
       # Download and cache dependencies
@@ -131,7 +171,7 @@ jobs:
             npm run test-mocha
   test-lint:
     docker:
-    - image: circleci/node:8.6
+    - image: circleci/node:8.10
     steps:
       - checkout
       # Download and cache dependencies
@@ -144,7 +184,7 @@ jobs:
             npm run lint
   test-format:
     docker:
-    - image: circleci/node:8.6
+    - image: circleci/node:8.10
     steps:
     - checkout
     # Download and cache dependencies
@@ -157,7 +197,7 @@ jobs:
           npm run test-format
   build-webpack:
     docker:
-    - image: circleci/node:8.6
+    - image: circleci/node:8.10
     steps:
     - checkout
     # Download and cache dependencies
@@ -170,131 +210,170 @@ jobs:
           npm run build
     - save_cache:
         paths:
+        - ./config
         - ./public/build
         - ./dist
         key: v1-webpack-{{ .Revision }}
-  build-push-image:
+  build-package:
     working_directory: /home/circleci/project
     docker:
-    - image: ussba/cc-docker-git-aws
+      - image: circleci/node:8.10
     steps:
-    - checkout
-    - setup_remote_docker:
-        docker_layer_caching: true
-    - restore_cache:
-        keys:
-        - v1-webpack-{{ .Revision }}
-    - run:
-        name: Build application Docker image
-        command: |
-          stat ./dist
-          stat ./public/build
-          docker build -t ${AMAZON_ECR_REPO}:${CIRCLE_SHA1} .
-    - deploy:
-        name: Push application Docker image tagged with Git Commit to ECR
-        command: |
-          function tagpush() {
-            ${loginlower}
-            docker tag ${AMAZON_ECR_REPO}:${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
-            docker push "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${1}"
-            #${loginupper}
-            #docker tag ${AMAZON_ECR_REPO}/${CIRCLE_SHA1} "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
-            #docker push "${AMAZON_ECR_ENDPOINT_UPPER}/${AMAZON_ECR_REPO}:${1}"
-          }
-          loginlower="$(export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
-          #loginupper="$(export AWS_ACCESS_KEY_ID=${UPPER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${UPPER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
-          tagpush ${CIRCLE_SHA1}
-          if [ -z "${CIRCLE_BRANCH}" ]; then
-            tagpush ${CIRCLE_TAG}
-          else
-            tagpush ${CIRCLE_BRANCH}
-          fi
-          tagpush circle-${CIRCLE_BUILD_NUM}
-  force-mint-redeploy:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-webpack-{{ .Revision }}
+      - run:
+          name: create zip package
+          command: |
+            stat ./dist
+            stat ./public/build
+            mkdir build
+            mkdir -p build/public/build/
+            mkdir -p build/config
+            mkdir workspace
+            mkdir -p workspace/build/
+            cp package.json build/
+            cp -R dist/* build/
+            cp -R public/build/* build/public/build/
+            cp -R public/build/* workspace/build/
+            cp -R config/* build/config/
+            cd build
+            find . -name '*.test.js' -delete
+            find . -name '*.integration-test.js' -delete
+            npm i --prod --silent
+            rm package.json
+            zip -r -q ../workspace/katana-lambda.zip .
+            cd ..
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - katana-lambda.zip
+            - build
+  upload-package:
     docker:
-    - image: ussba/cc-docker-git-aws:latest
+      - image: ussba/cc-docker-git-aws:latest
     steps:
-    - deploy:
-        name: Force redeploy of mint containers
-        no_output_timeout: '30m'
-        command: |
-          export AWS_DEFAULT_REGION=us-east-1
-          export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET}
-          export ENVIRONMENT_NAME=mint
-          export SERVICE=katana
-          export ECS_CLUSTER="${ENVIRONMENT_NAME}-ecs"
-          export ECS_SERVICE=$(aws ecs list-services --cluster "${ECS_CLUSTER}" | jq ".serviceArns[]" | grep "${SERVICE}" | grep -v redirect | cut -f 2 -d '"' | cut -f2 -d/)
-
-          if [ -z "${ECS_SERVICE}" ]; then
-            echo "FATAL: Could not retrieve service name for ECS Cluster '${ECS_CLUSTER}' looking for service named '${SERVICE}'.  Ensure proper AWS access and that a service is deployed to that cluster with that name"
-            exit 10
-          else
-            aws ecs update-service --cluster "${ECS_CLUSTER}" --service "${ECS_SERVICE}" --force-new-deployment
-          fi
-
-  deploy-qint-containers:
+      - checkout
+      - attach_workspace:
+          at: workspace
+      - run:
+          name: publish
+          shell: /bin/bash -eo pipefail
+          command: |
+            if [ -z "${CIRCLE_BRANCH}" ]
+            then
+              function set_lower(){ export AWS_ACCESS_KEY_ID=$LOWER_AWS_KEY AWS_SECRET_ACCESS_KEY=$LOWER_AWS_SECRET BUCKET_NAME=$LOWER_BUCKET_NAME;}
+              function set_upper(){ export AWS_ACCESS_KEY_ID=$UPPER_AWS_KEY AWS_SECRET_ACCESS_KEY=$UPPER_AWS_SECRET BUCKET_NAME=$UPPER_BUCKET_NAME;}
+  
+              export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+              export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
+  
+              case $CIRCLE_TAG in
+                production)
+                  export ASSET_BUCKET_NAME_PREFIX=production.sba.gov
+                  ;;
+                staging)
+                  export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
+                  ;;
+                mint)
+                  export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
+                  ;;
+                demo)
+                  export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
+                  ;;
+                int-as)
+                  export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
+                  ;;
+                int-bl)
+                  export ASSET_BUCKET_NAME_PREFIX=brian.ussba.io
+                  ;;
+                int-kl)
+                  export ASSET_BUCKET_NAME_PREFIX=kevin.ussba.io
+                  ;;
+                int-ls)
+                  export ASSET_BUCKET_NAME_PREFIX=laura.ussba.io
+                  ;;
+                int-rh)
+                  export ASSET_BUCKET_NAME_PREFIX=ryan.ussba.io
+                  ;;
+                *)
+                  export ASSET_BUCKET_NAME_PREFIX=${CIRCLE_TAG}
+                  ;;
+              esac
+  
+              aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
+              aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${CIRCLE_TAG}/katana-lambda.zip"
+            fi
+            
+  deploy-package:
     docker:
-    - image: ussba/cc-docker-git-aws:latest
+      - image: ussba/cc-docker-git-aws:latest
     steps:
-    - deploy:
-        name: Update qint katana ECS Task Definition and roll out new containers
-        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
-        shell: /bin/bash
-        no_output_timeout: '30m'
-        command: |
-          ecs-deploy -k ${LOWER_AWS_KEY} \
-                     -s ${LOWER_AWS_SECRET} \
-                     -r us-east-1 -c qint-ecs \
-                     -n qint-katana \
-                     --timeout 1200 \
-                     --enable-rollback \
-                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
-  deploy-stge-containers:
-    docker:
-    - image: ussba/cc-docker-git-aws:latest
-    steps:
-    - deploy:
-        name: Update stge katana ECS Task Definition and roll out new containers
-        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
-        shell: /bin/bash
-        no_output_timeout: '30m'
-        command: |
-          ecs-deploy -k ${LOWER_AWS_KEY} \
-                     -s ${LOWER_AWS_SECRET} \
-                     -r us-east-1 -c stge-ecs \
-                     -n stge-katana \
-                     --timeout 1200 \
-                     --enable-rollback \
-                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
-  deploy-prod-containers:
-    docker:
-    - image: ussba/cc-docker-git-aws:latest
-    steps:
-    - deploy:
-        name: Update prod katana ECS Task Definition and roll out new containers
-        # Ensure default '-eo pipefail' commands aren't used; ecs-deploy doesn't support it at this time
-        shell: /bin/bash
-        no_output_timeout: '30m'
-        command: |
-          ecs-deploy -k ${LOWER_AWS_KEY} \
-                     -s ${LOWER_AWS_SECRET} \
-                     -r us-east-1 -c prod-ecs \
-                     -n prod-katana \
-                     --timeout 1200 \
-                     --enable-rollback \
-                     -i "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
-  push-tag:
-    working_directory: /home/circleci/project
-    docker:
-    - image: ussba/cc-docker-git-aws
-    steps:
-    - setup_remote_docker:
-        docker_layer_caching: true
-    - deploy:
-        name: Pull existing docker image, push to ECR with new tag
-        command: |
-          loginlower="$(export AWS_ACCESS_KEY_ID=${LOWER_AWS_KEY} AWS_SECRET_ACCESS_KEY=${LOWER_AWS_SECRET} && aws ecr get-login --region us-east-1 --no-include-email)"
-          ${loginlower}
-          docker pull "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}"
-          docker tag "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_SHA1}" "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
-          docker push "${AMAZON_ECR_ENDPOINT_LOWER}/${AMAZON_ECR_REPO}:${CIRCLE_TAG}"
+      - checkout
+      - run:
+          name: deploy
+          shell: /bin/bash -eo pipefail
+          command: |
+            if [ -z "${CIRCLE_BRANCH}" ]
+            then
+              function set_lower(){ export AWS_ACCESS_KEY_ID=$LOWER_AWS_KEY AWS_SECRET_ACCESS_KEY=$LOWER_AWS_SECRET BUCKET_NAME=$LOWER_BUCKET_NAME;}
+              function set_upper(){ export AWS_ACCESS_KEY_ID=$UPPER_AWS_KEY AWS_SECRET_ACCESS_KEY=$UPPER_AWS_SECRET BUCKET_NAME=$UPPER_BUCKET_NAME;}
+  
+              case $CIRCLE_TAG in
+                production)
+                  export ENVIRONMENT=production
+                  set_upper
+                  ;;
+                staging)
+                  export ENVIRONMENT=staging
+                  set_upper
+                  ;;
+                *)
+                  export ENVIRONMENT=${CIRCLE_TAG}
+                  set_lower
+                  ;;
+              esac
+              
+              case $ENVIRONMENT in
+                production)
+                  export ASSET_BUCKET_NAME_PREFIX=production.sba.gov
+                  ;;
+                staging)
+                  export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
+                  ;;
+                mint)
+                  export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
+                  ;;
+                demo)
+                  export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
+                  ;;
+                int-as)
+                  export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
+                  ;;
+                int-bl)
+                  export ASSET_BUCKET_NAME_PREFIX=brian.ussba.io
+                  ;;
+                int-kl)
+                  export ASSET_BUCKET_NAME_PREFIX=kevin.ussba.io
+                  ;;
+                int-ls)
+                  export ASSET_BUCKET_NAME_PREFIX=laura.ussba.io
+                  ;;
+                int-rh)
+                  export ASSET_BUCKET_NAME_PREFIX=ryan.ussba.io
+                  ;;
+                *)
+                  export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
+                  ;;
+              esac
+              aws s3 sync public/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
+  
+              export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
+              export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
+  
+              export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${ENVIRONMENT}/katana-lambda.zip" | jq '.Versions[0].VersionId')
+              export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
+  
+              aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
+            fi        

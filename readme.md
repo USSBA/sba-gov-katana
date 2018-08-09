@@ -1,9 +1,9 @@
-#  SBA.gov Node.js Component
+#  SBA.gov Front-End
 ## aka *Katana*
 
-This project represents the new development for the SBA.gov website functionality.
+This project contains the code for the SBA.gov front-end (aka head) that sits in front of the headless Drupal
 
-For the development environment setup, see development.md
+For the development environment setup, see [development.md]
 
 ### Major Technologies Used
 * Node.js
@@ -21,19 +21,20 @@ For the development environment setup, see development.md
         * app.js - contains the high-level references to init.js, server.js and controller.js
         * init.js - configuration bootstrapping
         * server.js - express initializations
-        * controller.js - controller initializations
         * views - pug templates
         * controllers - request handler definitions grouped as controllers
         * models - for constituting objects retrieved from the database.
-        * utils - other utilities and logic
+        * service - service modules
+        * util - other utilities and logic
         * client
-            * views
+            * components 
             * stores
             * actions
     * public - publically accessible folder for static content
         * assets
-            * images
+            * images - pngs and jpgs
             * videos
+            * svgs
         * build
     * test
         * controllers

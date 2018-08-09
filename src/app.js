@@ -1,4 +1,8 @@
 /*application entry point*/
-import init from './init.js'
-init()
-import './server.js'
+import config from 'config'
+const app = require('./server.js')
+
+//listen to port
+const port = config.get('server.port')
+app.listen(port)
+console.log('Express server listening on port ' + port)
