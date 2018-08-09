@@ -25,3 +25,5 @@ cache:
   s3BucketName: S3BUCKET
 publicPath: PUBLIC_PATH
 googleMapsApiKey: GOOGLE_MAPS_API_KEY
+content:
+  endpoint: CONTENT_URL

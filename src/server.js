@@ -1,3 +1,5 @@
+const init = require('./init.js')
+Promise.resolve().then(init)
 //remove this when breaking server.js up into controllers -zandypants
 import zlib from 'zlib'
 import path from 'path'
@@ -10,7 +12,6 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import HttpStatus from 'http-status-codes'
 import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from './util/dev.js'
-const urlUtil = require('url') // <--- converting server code to require to move away from babel
 const fs = require('fs')
 let mainBundleFile = ''
 
@@ -19,30 +20,6 @@ app.use(cookieParser())
 //set up template engine
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, './views/'))
-
-if (!config.get('developmentOptions.webpack.enabled')) {
-  app.get('/*', function(req, res, next) {
-    try {
-      const publicPath = config.get('publicPath')
-      if (publicPath && publicPath.indexOf('https' !== -1)) {
-        const parsedUrl = urlUtil.parse(publicPath)
-        res.header(
-          'Access-Control-Allow-Origin',
-          'https://' +
-            parsedUrl.hostname
-              .split('.')
-              .slice(1)
-              .join('.')
-        )
-      }
-    } catch (err) {
-      console.warn(
-        'Failed to determine public path url for cloudfront; either you are in a development environment or something is wrong'
-      )
-    }
-    next()
-  })
-}
 
 //var urlEncodedParser = bodyParser.urlencoded({extended: false});
 const jsonParser = bodyParser.json()
@@ -145,10 +122,11 @@ app.get('/api/content/counselors-redirect.json', function(req, res) {
   })
 })
 
-import * as feedbackController from './controllers/feedback-controller.js'
-app.post('/actions/feedback', feedbackController.handleFeedback)
-app.get('/api/content/feedback.csv', feedbackController.retrieveFeedback)
-app.put('/actions/feedback/:id/text', jsonParser, feedbackController.handleFeedbackText)
+// this is only reached in local development where the nginx proxy is not present
+app.post('/api/feedback', (req, res , next) => {
+  console.log("Saving feedback", req.body)
+    res.status(HttpStatus.OK).json({message:"It worked"})
+})
 
 import * as resourceCenterProfileController from './controllers/resource-center-profile.js'
 app.post(
@@ -255,7 +233,5 @@ if (config.get('developmentOptions.webpack.enabled')) {
   })
 }
 
-//listen to port
-const port = config.get('server.port')
-app.listen(port)
-console.log('Express server listening on port ' + port)
+
+module.exports = app;
