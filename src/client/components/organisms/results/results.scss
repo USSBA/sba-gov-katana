@@ -22,6 +22,7 @@
 
 .resultContainer {
   background-color: white;
+  min-width: 321px;
   @include grid-media($sba-grid-large) {
     position: absolute;
   }
