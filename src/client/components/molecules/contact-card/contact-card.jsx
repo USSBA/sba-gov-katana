@@ -39,7 +39,7 @@ const ContactCard = props => {
     }
   ]
 
-  const className = classNames(
+  const contactCardClassName = classNames(
     Object.assign(
       {
         'contact-card': true,
@@ -50,7 +50,7 @@ const ContactCard = props => {
   )
 
   return (
-    <div className={className}>
+    <div className={contactCardClassName}>
       <h6>{title}</h6>
       {fields.map(({ href, icon, text }, index) => {
         if (!text || (text === linkText && !href)) {
