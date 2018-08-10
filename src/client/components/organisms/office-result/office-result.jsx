@@ -8,6 +8,12 @@ import marker from 'assets/svg/marker.svg'
 import classNames from 'classnames'
 
 class OfficeResult extends React.PureComponent {
+  componentDidMount() {
+    if (document) {
+      document.getElementById('office-result-container-result-0').focus()
+    }
+  }
+
   onClick(e) {
     this.props.showDetailState(e)
   }
@@ -26,24 +32,43 @@ class OfficeResult extends React.PureComponent {
 
     const cardLayoutClassName = classNames({
       ['card-layout']: true,
-      [styles.hoveredBorder]: isHovered
+      [styles.hoveredBorder]: isHovered,
+      [styles.focus]: true
     })
 
     const innerDivClassName = classNames({
       [styles.officeResult]: true,
       [styles.hoveredInnerDiv]: isHovered,
-      [styles.isFirstHoveredResult]: isHovered && isFirstResult
+      [styles.isFirstHoveredResult]: isHovered && isFirstResult,
+      [styles.focus]: true
     })
 
     //elasticsearch returns all single value elements as an array *sigh*
     return (
       <div
+        id={`office-result-container-${id}`}
         className={cardLayoutClassName}
         onMouseOver={() => {
           if (!isHovered) {
             this.props.onResultHover(this.props.item.id)
           }
         }}
+        onFocus={() => {
+          if (!isHovered) {
+            this.props.onResultHover(this.props.item.id)
+          }
+        }}
+        onMouseOut={() => {
+          if (isHovered) {
+            this.props.onResultHover({})
+          }
+        }}
+        onBlur={() => {
+          if (isHovered) {
+            this.props.onResultHover({})
+          }
+        }}
+        tabIndex="0"
       >
         <div id={`office-result-${id}`} className={innerDivClassName}>
           <div>
@@ -58,12 +83,23 @@ class OfficeResult extends React.PureComponent {
             </div>
             <div
               id={`office-title-${id}`}
+              className={styles.focus}
+              tabIndex="0"
               onClick={() =>
                 this.onClick({
                   item,
                   distance
                 })
               }
+              onKeyPress={obj => {
+                const enterKeyCode = 0
+                if (obj.keyCode === enterKeyCode) {
+                  this.onClick({
+                    item,
+                    distance
+                  })
+                }
+              }}
             >
               <h2>
                 <i className="fa fa-chevron-right" />

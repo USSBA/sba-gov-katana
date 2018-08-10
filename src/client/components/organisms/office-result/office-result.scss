@@ -56,6 +56,12 @@
   }
 }
 
+.focus:focus {
+  border-color: #007dbc;
+  outline: 2px dotted #c5c5c5;
+  outline-offset: 3px;
+}
+
 .officeType {
   color: #1b1e29;
   font-size: 18px;
