@@ -3,9 +3,10 @@ import config from '../../../services/client-config.js'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import { isEmpty, difference, get } from 'lodash'
-import styles from './office-map.scss'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
+import styles from './office-map.scss'
+import officeResultStyles from '../office-result/office-result.scss'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
@@ -97,6 +98,8 @@ const OfficeMap = compose(
               onMarkerHover('')
             }}
             icon={icon}
+            tabIndex="0"
+            className={styles.focus}
           />
         )
       })}
@@ -190,7 +193,7 @@ class OfficeMapApp extends React.PureComponent {
     const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId } = this.props
 
     return (
-      <div id="google-map" className={styles.googleMap}>
+      <div id="google-map" className={styles.googleMap} tabIndex="-1">
         <OfficeMap
           markers={points}
           setBounds={this.setBounds.bind(this)}
