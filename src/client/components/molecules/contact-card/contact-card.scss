@@ -6,10 +6,12 @@
     color: $sba-blue;
     grid-column: 1;
     -ms-grid-column: 1;
+    -ms-grid-row-align: center;
   }
   .secondColumn {
     grid-column: 2;
     -ms-grid-column: 2;
+    -ms-grid-row-align: center;
   }
 }
 
@@ -19,5 +21,4 @@
   display: -ms-grid;
   grid-template-columns: 28px 1fr;
   -ms-grid-columns: 28px 1fr;
-  -ms-grid-row-align: center;
 }
