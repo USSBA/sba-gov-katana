@@ -97,6 +97,11 @@ class Results extends React.PureComponent {
       [styles.resultContainerWithPagination]: paginate
     })
 
+    // the below return statement handles both the office results index case
+    // AND the detailed view case
+    // based on the boolean "shouldShowDetailView"
+    // this code should probably be refactored a bit to be a little more generic
+
     return (
       <div id={id} className={className}>
         <div className={resultsClassName}>

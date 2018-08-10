@@ -92,7 +92,7 @@ class SearchTemplate extends React.PureComponent {
     this.setState(newState)
   }
 
-  onChange(propName, value, options = {}, cb) {
+  onChange(propName, value, options = {}, callback) {
     const { scrollToTopAfterSearch } = this.props
     const _options = merge(
       {
@@ -115,8 +115,8 @@ class SearchTemplate extends React.PureComponent {
         if (!isEmpty(window) && scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
         }
-        if (cb) {
-          cb()
+        if (callback) {
+          callback()
         }
       }
     )
@@ -226,10 +226,13 @@ class SearchTemplate extends React.PureComponent {
     const start = this.calculateStartIndex(pageNumber - 1)
 
     // uses onchange to update search param and perform new search
-    this.onChange('start', start, {
-      shouldTriggerSearch: true,
-      shouldResetPageNumber: false
-    },
+    this.onChange(
+      'start',
+      start,
+      {
+        shouldTriggerSearch: true,
+        shouldResetPageNumber: false
+      },
       this.props.onHandleEvent()
     )
   }
@@ -239,10 +242,13 @@ class SearchTemplate extends React.PureComponent {
     const start = this.calculateStartIndex(pageNumber + 1)
 
     // uses onchange to update search param and perform new search
-    this.onChange('start', start, {
-      shouldTriggerSearch: true,
-      shouldResetPageNumber: false
-    },
+    this.onChange(
+      'start',
+      start,
+      {
+        shouldTriggerSearch: true,
+        shouldResetPageNumber: false
+      },
       this.props.onHandleEvent()
     )
   }
