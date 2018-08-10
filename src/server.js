@@ -125,7 +125,7 @@ app.get('/api/content/counselors-redirect.json', function(req, res) {
 // this is only reached in local development where the nginx proxy is not present
 app.post('/api/feedback', (req, res , next) => {
   console.log("Saving feedback", req.body)
-    res.status(HttpStatus.OK).json({message:"It worked"})
+  res.status(HttpStatus.OK).json({message:"Development Message: It worked.  (In the real system, this request would be forwarded by the nginx proxy to the feedback lambda"})
 })
 
 import * as resourceCenterProfileController from './controllers/resource-center-profile.js'
@@ -135,14 +135,6 @@ app.post(
   resourceCenterProfileController.handleProfileSubmission
 )
 app.get('/api/content/resourceCenterProfile.json', resourceCenterProfileController.retrieveProfiles)
-
-import * as cacheController from './controllers/cache.js'
-app.get('/actions/clearCache/collection/:type.json', cacheController.clearContentCollectionCacheByType)
-app.get('/actions/clearCache/:type/:id.json', cacheController.clearContentCacheById)
-app.get('/actions/clearCache/:type.json', cacheController.clearContentCacheByType)
-app.delete('/api/content/collection/:type.json', cacheController.clearContentCollectionCacheByType)
-app.delete('/api/content/:type/:id.json', cacheController.clearContentCacheById)
-app.delete('/api/content/:type.json', cacheController.clearContentCacheByType)
 
 import * as lincCounselorController from './controllers/linc-counselor.js'
 app.get('/api/content/counselors-by-location.json', lincCounselorController.getCounselorsByLocation)

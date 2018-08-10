@@ -250,6 +250,7 @@ jobs:
           paths:
             - katana-lambda.zip
             - build
+            - public
   upload-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -303,6 +304,7 @@ jobs:
               esac
   
               aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
+              aws s3 sync public/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
               aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${CIRCLE_TAG}/katana-lambda.zip"
             fi
             

@@ -46,3 +46,4 @@ export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
 
 aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
 aws s3 sync public/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
+aws s3 sync public/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
