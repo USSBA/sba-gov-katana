@@ -26,3 +26,4 @@ echo "It's Away!"
 echo "Deploying...."
 scripts/deploy-lambda.sh $1
 echo "Deployment Complete"
+date
