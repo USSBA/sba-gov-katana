@@ -2,19 +2,22 @@
   border: 2px solid $sba-gray-lighter;
   padding: 30px;
 
-  a,
-  i {
-    display: block;
-  }
-
-  i {
+  .firstColumn {
     color: $sba-blue;
+    grid-column: 1;
+    -ms-grid-column: 1;
+  }
+  .secondColumn {
+    grid-column: 2;
+    -ms-grid-column: 2;
   }
 }
 
 .row {
   align-items: center;
   display: grid;
+  display: -ms-grid;
   grid-template-columns: 28px 1fr;
   -ms-grid-columns: 28px 1fr;
+  -ms-grid-row-align: center;
 }
