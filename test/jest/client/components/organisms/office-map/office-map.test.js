@@ -8,9 +8,9 @@ describe('OfficeMap', () => {
     expect(component.find('#google-map').length).toEqual(1)
   })
 
-  test('on pin click, should display office details state', () => {})
+  /*test('on pin click, should display office details state', () => {})
 
   test('on pin hover, pin should enlarge', () => {})
 
-  test('on pin hover, result detail should highlight', () => {})
+  test('on pin hover, result detail should highlight', () => {})*/
 })
