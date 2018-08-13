@@ -10,74 +10,106 @@ exports[`ContactCard should render with all the information 1`] = `
   <div
     className="row"
   >
-    <i
-      alt="123 Death Star Street, Suite 1<br />Galactic City, MD 12345"
-      aria-hidden="true"
-      className="fa fa-map-marker"
-    />
-    <a
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "123 Death Star Street, Suite 1<br />Galactic City, MD 12345",
+    <div
+      className="firstColumn"
+    >
+      <i
+        alt="123 Death Star Street, Suite 1<br />Galactic City, MD 12345"
+        aria-hidden="true"
+        className="fa fa-map-marker"
+      />
+    </div>
+    <div
+      className="secondColumn"
+    >
+      <a
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "123 Death Star Street, Suite 1<br />Galactic City, MD 12345",
+          }
         }
-      }
-      href="https://maps.google.com?q=123%20Death%20Star%20Street%2C%20Suite%201%0AGalactic%20City%2C%20MD%2012345"
-    />
+        href="https://maps.google.com?q=123%20Death%20Star%20Street%2C%20Suite%201%0AGalactic%20City%2C%20MD%2012345"
+      />
+    </div>
   </div>
   <div
     className="row"
   >
-    <i
-      alt="123-456-5665"
-      aria-hidden="true"
-      className="fa fa-phone"
-    />
-    <a
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "123-456-5665",
+    <div
+      className="firstColumn"
+    >
+      <i
+        alt="123-456-5665"
+        aria-hidden="true"
+        className="fa fa-phone"
+      />
+    </div>
+    <div
+      className="secondColumn"
+    >
+      <a
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "123-456-5665",
+          }
         }
-      }
-      onClick={[Function]}
-      style={Object {}}
-      target="_self"
-    />
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      />
+    </div>
   </div>
   <div
     className="row"
   >
-    <i
-      alt="Visit website"
-      aria-hidden="true"
-      className="fa fa-external-link-square"
-    />
-    <a
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "Visit website",
+    <div
+      className="firstColumn"
+    >
+      <i
+        alt="Visit website"
+        aria-hidden="true"
+        className="fa fa-external-link-square"
+      />
+    </div>
+    <div
+      className="secondColumn"
+    >
+      <a
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Visit website",
+          }
         }
-      }
-      href="http://starwars.wikia.com/wiki/Wilhuff_Tarkin"
-    />
+        href="http://starwars.wikia.com/wiki/Wilhuff_Tarkin"
+      />
+    </div>
   </div>
   <div
     className="row"
   >
-    <i
-      alt="tarkin@deathstar.org"
-      aria-hidden="true"
-      className="fa fa-envelope-o"
-    />
-    <a
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "tarkin@deathstar.org",
+    <div
+      className="firstColumn"
+    >
+      <i
+        alt="tarkin@deathstar.org"
+        aria-hidden="true"
+        className="fa fa-envelope-o"
+      />
+    </div>
+    <div
+      className="secondColumn"
+    >
+      <a
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "tarkin@deathstar.org",
+          }
         }
-      }
-      onClick={[Function]}
-      style={Object {}}
-      target="_self"
-    />
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      />
+    </div>
   </div>
 </div>
 `;
