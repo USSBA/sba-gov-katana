@@ -1,9 +1,3 @@
-.container {
-  @include grid-media($sba-grid-small) {
-    padding: 20px;
-  }
-}
-
 .resultContainerWithPagination {
   max-height: calc(100% - 80px);
 }
@@ -37,7 +31,6 @@
   padding-left: 20px;
   padding-top: 14px;
   @include grid-media($sba-grid-small) {
-    padding-left: 0px;
     padding-bottom: 20px;
   }
 }
