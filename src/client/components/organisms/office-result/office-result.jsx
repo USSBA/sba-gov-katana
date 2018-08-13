@@ -48,6 +48,8 @@ class OfficeResult extends React.PureComponent {
       <div
         id={`office-result-container-${id}`}
         className={cardLayoutClassName}
+        aria-label={item.title[0]}
+        tabIndex="0"
         onMouseOver={() => {
           if (!isHovered) {
             this.props.onResultHover(this.props.item.id)
@@ -68,7 +70,21 @@ class OfficeResult extends React.PureComponent {
             this.props.onResultHover({})
           }
         }}
-        tabIndex="0"
+        onClick={() =>
+          this.onClick({
+            item,
+            distance
+          })
+        }
+        onKeyPress={obj => {
+          const enterKeyCode = 0
+          if (obj.keyCode === enterKeyCode) {
+            this.onClick({
+              item,
+              distance
+            })
+          }
+        }}
       >
         <div id={`office-result-${id}`} className={innerDivClassName}>
           <div>
@@ -81,26 +97,7 @@ class OfficeResult extends React.PureComponent {
               )} miles`}</div>
               <div className={styles.clear} />
             </div>
-            <div
-              id={`office-title-${id}`}
-              className={styles.focus}
-              tabIndex="0"
-              onClick={() =>
-                this.onClick({
-                  item,
-                  distance
-                })
-              }
-              onKeyPress={obj => {
-                const enterKeyCode = 0
-                if (obj.keyCode === enterKeyCode) {
-                  this.onClick({
-                    item,
-                    distance
-                  })
-                }
-              }}
-            >
+            <div id={`office-title-${id}`}>
               <h2>
                 <i className="fa fa-chevron-right" />
                 {item.title[0]}
