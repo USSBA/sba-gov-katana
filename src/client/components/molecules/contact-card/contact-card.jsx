@@ -59,8 +59,12 @@ const ContactCard = props => {
 
         return (
           <div className={styles.row} key={index}>
-            <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
-            <Link dangerouslySetInnerHTML={{ __html: text }} to={href} />
+            <div className={styles.firstColumn}>
+              <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
+            </div>
+            <div className={styles.secondColumn}>
+              <Link dangerouslySetInnerHTML={{ __html: text }} to={href} />
+            </div>
           </div>
         )
       })}
