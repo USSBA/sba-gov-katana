@@ -2,29 +2,48 @@
   background-color: white;
   border-top: 3px solid $sba-blue;
   margin-bottom: 30px;
+  padding: 30px;
 
-  @include for-small-only {
-    padding: 30px;
-    @include grid-column(12);
+  @include for-large-up {
+    &:nth-child(3n-2) {
+      margin-left: 30px;
+    }
+
+    &:nth-child(3n-1) {
+      margin-left: 30px;
+      margin-right: 30px;
+    }
+
+    &:nth-child(3n) {
+      margin-right: 30px;
+    }
   }
 
   @include for-medium-only {
-    padding: 30px;
-    @include grid-column(
-      6,
-      (
-        gutter: 30px
-      )
-    );
+    &:nth-child(2n-1) {
+      margin-left: 30px;
+    }
+
+    &:nth-child(2n) {
+      margin-left: 30px;
+      margin-right: 30px;
+    }
   }
 
+  @include for-small-only {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+.detailCardCollection {
+  display: grid;
+
   @include for-large-up {
-    padding: 20px;
-    @include grid-column(
-      4,
-      (
-        gutter: 30px
-      )
-    );
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @include for-medium-only {
+    grid-template-columns: 1fr 1fr;
   }
 }
