@@ -16,8 +16,7 @@ class OfficeDetail extends React.PureComponent {
 
   render() {
     const officeDetailClassName = classNames({
-      [styles.detailView]: true,
-      [officeResultStyles.focus]: true
+      [styles.detailView]: true
     })
 
     const { selectedItem, hideDetailState } = this.props
@@ -41,9 +40,8 @@ class OfficeDetail extends React.PureComponent {
           <div>
             <div className={styles.close}>
               <img
-                className={officeResultStyles.focus}
                 onClick={() => hideDetailState()}
-                onKeyDown={obj => {
+                onKeyUp={obj => {
                   const enterKeyCode = 13
                   if (obj.keyCode === enterKeyCode) {
                     hideDetailState()
