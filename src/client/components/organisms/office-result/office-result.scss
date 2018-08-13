@@ -1,4 +1,6 @@
 .officeResult {
+  margin: 20px;
+
   h2,
   h3 {
     font-weight: 700;
@@ -22,8 +24,6 @@
   }
 
   @include grid-media($sba-grid-medium) {
-    margin: 20px;
-
     h2 {
       font-size: 20px;
       font-weight: 600;
@@ -32,8 +32,6 @@
   }
 
   @include grid-media($sba-grid-large) {
-    margin: 20px;
-
     h2 {
       font-size: 20px;
       font-weight: 600;
