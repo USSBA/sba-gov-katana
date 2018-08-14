@@ -234,7 +234,7 @@ class OfficeMapApp extends React.PureComponent {
     const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId } = this.props
 
     return (
-      <div id="google-map" className={styles.googleMap} tabIndex="-1">
+      <div id="google-map" className={styles.googleMap}>
         <OfficeMap
           markers={points}
           setBounds={this.setBounds.bind(this)}
