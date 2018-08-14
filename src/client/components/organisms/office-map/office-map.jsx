@@ -7,6 +7,8 @@ import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
 import styles from './office-map.scss'
 import officeResultStyles from '../office-result/office-result.scss'
+import { findDOMNode } from 'react-dom'
+import $ from 'jquery'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
@@ -19,7 +21,7 @@ const OfficeMap = compose(
     googleMapURL,
     loadingElement: <div style={{ height: `100vh` }} />,
     containerElement: <div style={{ height: `100vh` }} />,
-    mapElement: <div style={{ height: `100vh`, clear: 'both' }} />
+    mapElement: <div className="map" style={{ height: `100vh`, clear: 'both' }} />
   }),
   withScriptjs,
   withGoogleMap
@@ -33,7 +35,8 @@ const OfficeMap = compose(
     onMarkerHover,
     newCenter,
     selectedItem,
-    hoveredMarkerId
+    hoveredMarkerId,
+    onTilesLoaded
   } = props
   const googleMapProps = {
     defaultOptions: {
@@ -47,7 +50,8 @@ const OfficeMap = compose(
       lat: 38.910353,
       lng: -77.017739
     },
-    onDragEnd: onDragEnd
+    onDragEnd: onDragEnd,
+    onTilesLoaded
   }
   //todo: move to proper lifecycle method
   if (markers.length > 0) {
@@ -136,6 +140,43 @@ class OfficeMapApp extends React.PureComponent {
         }
       )
     }
+
+    const totalElementsToBeRemoved = 9
+    if (document.querySelectorAll('.map [tabindex="-1"]').length !== totalElementsToBeRemoved) {
+      this.removeMapElementsFromTabOrder()
+    }
+  }
+
+  removeMapElementsFromTabOrder() {
+    /*
+      - remove all of the google map elements rendered out of the browser tab order
+      - the google map object should have a total of 9 elements with a tabindex
+      - this includes the following elements:
+      - - .map [tabindex] (1 returns)
+      - - .map iframe (1 returns)
+      - - .map a (4 return)
+      - - .map button (3 return)
+      - we hard-code the 9 amount here because this code has to run in the "componentWillReceiveProps" lifecycle method
+        and not all 9 elements render out during the first few renders
+        but once all 9 have been rendered out AND each has a tabindex set to -1
+        don't run this code any more (this guard clause prevents unneccessary calls made after our goal is met)
+    */
+
+    //console.log('A')
+    const totalElementsToBeRemoved = 9
+    if (document.querySelectorAll('.map [tabindex="999"]').length !== totalElementsToBeRemoved) {
+      //console.log('B', document.querySelectorAll('.map [tabindex="-1"]').length)
+      const removeFromTabOrder = document.querySelectorAll(
+        '.map [tabindex], .map iframe, .map a, .map button'
+      )
+      removeFromTabOrder.forEach(_el => {
+        const tabIndex = _el.getAttribute('tabindex')
+        if (tabIndex !== -1) {
+          //console.log('C')
+          _el.setAttribute('tabindex', 999)
+        }
+      })
+    }
   }
 
   getLatLngs(items) {
@@ -193,7 +234,7 @@ class OfficeMapApp extends React.PureComponent {
     const { onFieldChange, selectedItem, newCenter, onDragEnd, hoveredMarkerId } = this.props
 
     return (
-      <div id="google-map" className={styles.googleMap} tabIndex="-1">
+      <div id="google-map" className={styles.googleMap}>
         <OfficeMap
           markers={points}
           setBounds={this.setBounds.bind(this)}
