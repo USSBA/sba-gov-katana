@@ -35,8 +35,7 @@ const OfficeMap = compose(
     onMarkerHover,
     newCenter,
     selectedItem,
-    hoveredMarkerId,
-    onTilesLoaded
+    hoveredMarkerId
   } = props
   const googleMapProps = {
     defaultOptions: {
@@ -50,8 +49,7 @@ const OfficeMap = compose(
       lat: 38.910353,
       lng: -77.017739
     },
-    onDragEnd: onDragEnd,
-    onTilesLoaded
+    onDragEnd: onDragEnd
   }
   //todo: move to proper lifecycle method
   if (markers.length > 0) {
@@ -102,7 +100,6 @@ const OfficeMap = compose(
               onMarkerHover('')
             }}
             icon={icon}
-            tabIndex="0"
             className={styles.focus}
           />
         )
@@ -120,13 +117,14 @@ class OfficeMapApp extends React.PureComponent {
       bounds: {},
       map: {},
       newCenter: '',
-      hasSetInitialBounds: false
+      hasSetInitialBounds: false,
+      areAllMapElementsRemovedFromTabOrder: false
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const { items, isDragging } = nextProps
-    const { map } = this.state
+    const { map, areAllMapElementsRemovedFromTabOrder } = this.state
     const newPoints = this.getLatLngs(items)
     if (difference(newPoints, this.state.points)) {
       this.setState(
@@ -141,13 +139,6 @@ class OfficeMapApp extends React.PureComponent {
       )
     }
 
-    const totalElementsToBeRemoved = 9
-    if (document.querySelectorAll('.map [tabindex="-1"]').length !== totalElementsToBeRemoved) {
-      this.removeMapElementsFromTabOrder()
-    }
-  }
-
-  removeMapElementsFromTabOrder() {
     /*
       - remove all of the google map elements rendered out of the browser tab order
       - the google map object should have a total of 9 elements with a tabindex
@@ -162,21 +153,27 @@ class OfficeMapApp extends React.PureComponent {
         don't run this code any more (this guard clause prevents unneccessary calls made after our goal is met)
     */
 
-    //console.log('A')
     const totalElementsToBeRemoved = 9
-    if (document.querySelectorAll('.map [tabindex="999"]').length !== totalElementsToBeRemoved) {
-      //console.log('B', document.querySelectorAll('.map [tabindex="-1"]').length)
-      const removeFromTabOrder = document.querySelectorAll(
-        '.map [tabindex], .map iframe, .map a, .map button'
-      )
-      removeFromTabOrder.forEach(_el => {
-        const tabIndex = _el.getAttribute('tabindex')
-        if (tabIndex !== -1) {
-          //console.log('C')
-          _el.setAttribute('tabindex', 999)
-        }
-      })
+    if (
+      !areAllMapElementsRemovedFromTabOrder &&
+      document.querySelectorAll('.map [tabindex="999"]').length !== totalElementsToBeRemoved
+    ) {
+      this.removeMapElementsFromTabOrder()
+    } else {
+      this.setState({ areAllMapElementsRemovedFromTabOrder: true })
     }
+  }
+
+  removeMapElementsFromTabOrder() {
+    const removeFromTabOrder = document.querySelectorAll(
+      '.map [tabindex], .map iframe, .map a, .map button'
+    )
+    removeFromTabOrder.forEach(_el => {
+      const tabIndex = _el.getAttribute('tabindex')
+      if (Number(tabIndex) !== 999) {
+        _el.setAttribute('tabindex', 999)
+      }
+    })
   }
 
   getLatLngs(items) {
