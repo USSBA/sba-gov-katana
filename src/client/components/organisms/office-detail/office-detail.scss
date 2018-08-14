@@ -3,6 +3,7 @@
   padding: 34px 30px;
   background: #ffffff;
   position: relative;
+
   @include grid-media($sba-grid-medium) {
     padding-left: 30px;
   }
