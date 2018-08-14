@@ -231,6 +231,7 @@ jobs:
             mkdir build
             mkdir -p build/public/build/
             mkdir -p build/config
+            mkdir -p build/views
             mkdir workspace
             mkdir -p workspace/build/
             cp package.json build/
@@ -238,6 +239,7 @@ jobs:
             cp -R public/build/* build/public/build/
             cp -R public/build/* workspace/build/
             cp -R config/* build/config/
+            cp -R src/views/* build/views/
             cd build
             find . -name '*.test.js' -delete
             find . -name '*.integration-test.js' -delete
