@@ -20,11 +20,6 @@
   top: 20px;
   right: 10px;
   padding: 10px;
-  @include grid-media($sba-grid-medium) {
-    top: 30px;
-    right: 30px;
-  }
-
   img {
     display: block;
     cursor: pointer;
