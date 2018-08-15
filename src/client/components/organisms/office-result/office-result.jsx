@@ -76,8 +76,8 @@ class OfficeResult extends React.PureComponent {
             distance
           })
         }
-        onKeyPress={obj => {
-          const enterKeyCode = 0
+        onKeyUp={obj => {
+          const enterKeyCode = 13
           if (obj.keyCode === enterKeyCode) {
             this.onClick({
               item,

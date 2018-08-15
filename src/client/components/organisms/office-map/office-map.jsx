@@ -35,7 +35,8 @@ const OfficeMap = compose(
     onMarkerHover,
     newCenter,
     selectedItem,
-    hoveredMarkerId
+    hoveredMarkerId,
+    onTilesLoaded
   } = props
   const googleMapProps = {
     defaultOptions: {
@@ -49,7 +50,8 @@ const OfficeMap = compose(
       lat: 38.910353,
       lng: -77.017739
     },
-    onDragEnd: onDragEnd
+    onDragEnd: onDragEnd,
+    onTilesLoaded
   }
   //todo: move to proper lifecycle method
   if (markers.length > 0) {
@@ -236,6 +238,7 @@ class OfficeMapApp extends React.PureComponent {
           markers={points}
           setBounds={this.setBounds.bind(this)}
           onMapMounted={this.onMapMounted.bind(this)}
+          onTilesLoaded={this.removeMapElementsFromTabOrder.bind(this)}
           onDragEnd={() => {
             const mapCenter = map.getCenter()
             this.setState({ points: [] })
