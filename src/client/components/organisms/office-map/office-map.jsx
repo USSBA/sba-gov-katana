@@ -168,12 +168,13 @@ class OfficeMapApp extends React.PureComponent {
     const removeFromTabOrder = document.querySelectorAll(
       '.map [tabindex], .map iframe, .map a, .map button'
     )
-    removeFromTabOrder.forEach(_el => {
-      const tabIndex = _el.getAttribute('tabindex')
+    for (let i = 0; i < removeFromTabOrder.length; i++) {
+      const el = removeFromTabOrder[i]
+      const tabIndex = el.getAttribute('tabindex')
       if (Number(tabIndex) !== 999) {
-        _el.setAttribute('tabindex', 999)
+        el.setAttribute('tabindex', 999)
       }
-    })
+    }
   }
 
   getLatLngs(items) {
