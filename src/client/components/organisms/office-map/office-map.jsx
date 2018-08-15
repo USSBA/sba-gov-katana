@@ -213,7 +213,6 @@ class OfficeMapApp extends React.PureComponent {
           }
         }
       )
-      //mapRef.fitBounds(this.bounds)
     }
   }
 
