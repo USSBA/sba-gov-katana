@@ -57,15 +57,20 @@ class OfficeDetail extends React.PureComponent {
               <div>
                 <img src={marker} className={officeResultStyles.marker} />
               </div>
-              <div id="office-miles" className={officeResultStyles.miles}>{`${Number(distance).toFixed(
-                1
-              )} miles`}</div>
+              <div
+                id="office-miles"
+                className={officeResultStyles.miles}
+                tabIndex="0"
+                role="text"
+              >{`${Number(distance).toFixed(1)} miles`}</div>
               <div className={officeResultStyles.clear} />
             </div>
-            <h2 className="office-title">{item.title[0]}</h2>
+            <h2 tabIndex="0" role="heading" className="office-title">
+              {item.title[0]}
+            </h2>
           </div>
           <div id="office-type">
-            <div className={officeResultStyles.officeType}>
+            <div tabIndex="0" role="text" className={officeResultStyles.officeType}>
               <span>{officeType}</span>
             </div>
           </div>
@@ -74,7 +79,9 @@ class OfficeDetail extends React.PureComponent {
           {item.office_service ? (
             <div className={officeResultStyles.serviceList + ' service-list'}>
               {' '}
-              <h3>Services</h3>
+              <h3 tabIndex="0" role="heading">
+                Services
+              </h3>
               <div>{item.office_service.join(', ')}</div>
             </div>
           ) : null}
