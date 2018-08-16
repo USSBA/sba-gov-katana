@@ -109,7 +109,7 @@ class DetailCard extends React.Component {
 
       return (
         <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
-          <div className={s.innerContainer}>
+          <div>
             <div className={s.documentTypeContainer}>
               <Label
                 type={doc.documentIdType}

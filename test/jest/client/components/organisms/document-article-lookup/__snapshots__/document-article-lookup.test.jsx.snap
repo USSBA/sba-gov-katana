@@ -275,9 +275,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           <div
             className="document-card-container "
           >
-            <div
-              className="innerContainer"
-            >
+            <div>
               <div
                 className="documentTypeContainer"
               >
@@ -329,9 +327,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           <div
             className="document-card-container "
           >
-            <div
-              className="innerContainer"
-            >
+            <div>
               <div
                 className="documentTypeContainer"
               >
@@ -383,9 +379,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           <div
             className="document-card-container "
           >
-            <div
-              className="innerContainer"
-            >
+            <div>
               <div
                 className="documentTypeContainer"
               >
@@ -437,9 +431,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           <div
             className="document-card-container "
           >
-            <div
-              className="innerContainer"
-            >
+            <div>
               <div
                 className="documentTypeContainer"
               >
