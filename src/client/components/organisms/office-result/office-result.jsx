@@ -50,6 +50,7 @@ class OfficeResult extends React.PureComponent {
         id={`office-result-container-${id}`}
         className={cardLayoutClassName}
         aria-label={item.title[0]}
+        tabIndex="0"
         onMouseOver={() => {
           if (!isHovered) {
             this.props.onResultHover(this.props.item.id)
