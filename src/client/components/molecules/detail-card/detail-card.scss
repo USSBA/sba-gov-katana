@@ -15,6 +15,7 @@ table {
 }
 
 .container {
+  height: 100%;
   border: 1px solid #bebdbd;
   background-color: white;
 
@@ -24,6 +25,11 @@ table {
   @include grid-media($sba-grid-large) {
     padding: 20px;
   }
+}
+
+.innerContainer,
+:global(.innerContainer) {
+  min-height: 19.5rem;
 }
 
 .documentTypeContainer {
