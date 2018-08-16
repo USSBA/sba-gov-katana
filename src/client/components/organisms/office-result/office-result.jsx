@@ -71,12 +71,13 @@ class OfficeResult extends React.PureComponent {
             this.props.onResultHover({})
           }
         }}
-        onClick={() =>
+        onClick={e => {
+          e.preventDefault()
           this.onClick({
             item,
             distance
           })
-        }
+        }}
         onKeyUp={obj => {
           const enterKeyCode = 13
           if (obj.keyCode === enterKeyCode) {
