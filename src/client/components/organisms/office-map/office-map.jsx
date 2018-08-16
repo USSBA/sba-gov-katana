@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
 import styles from './office-map.scss'
 import officeResultStyles from '../office-result/office-result.scss'
-import { findDOMNode } from 'react-dom'
 import $ from 'jquery'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
