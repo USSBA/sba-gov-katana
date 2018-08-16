@@ -32,6 +32,7 @@ class OfficeResult extends React.PureComponent {
 
     const cardLayoutClassName = classNames({
       ['card-layout']: true,
+      [styles.officeResultContainer]: true,
       [styles.hoveredBorder]: isHovered,
       [styles.focus]: true
     })
@@ -45,7 +46,7 @@ class OfficeResult extends React.PureComponent {
 
     //elasticsearch returns all single value elements as an array *sigh*
     return (
-      <div
+      <a
         id={`office-result-container-${id}`}
         className={cardLayoutClassName}
         aria-label={item.title[0]}
@@ -123,7 +124,7 @@ class OfficeResult extends React.PureComponent {
         <div className={styles.hr}>
           <hr />
         </div>
-      </div>
+      </a>
     )
   }
 }
