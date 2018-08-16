@@ -107,17 +107,9 @@ class DetailCard extends React.Component {
               number: 'UNK'
             }
 
-      const latestFile = this.getLatestFile()
-      let innerContainerStyle
-      if (latestFile && !isEmpty(latestFile.fileUrl)) {
-        innerContainerStyle = s.innerContainer
-      } else {
-        innerContainerStyle = s.noDownloadLinkInnerContainer
-      }
-
       return (
         <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
-          <div className={innerContainerStyle}>
+          <div>
             <div className={s.documentTypeContainer}>
               <Label
                 type={doc.documentIdType}
