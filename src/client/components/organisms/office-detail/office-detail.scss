@@ -1,0 +1,32 @@
+.detailView {
+  width: 100%;
+  padding: 34px 30px;
+  background: #ffffff;
+  position: relative;
+
+  @include grid-media($sba-grid-medium) {
+    padding-left: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  padding: 10px;
+  img {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.contactCard {
+  border: none;
+  padding: 0;
+}

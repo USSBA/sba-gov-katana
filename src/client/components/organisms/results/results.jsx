@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from './results.scss'
-import { Paginator } from 'molecules'
+import { Address, ContactCard, PhoneNumber, Paginator } from 'molecules'
 import { SearchInfoPanel } from 'atoms'
+import { OfficeDetail } from 'organisms'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { isEmpty } from 'lodash'
 import Search from '../../atoms/icons/search'
 
 class Results extends React.PureComponent {
@@ -46,13 +48,37 @@ class Results extends React.PureComponent {
     )
   }
 
+  showDetailState(item) {
+    this.props.onClick(item)
+  }
+
+  hideDetailState() {
+    this.props.onClick({})
+  }
+
   render() {
-    const { children, id, resultId, paginate, scroll, extraClassName, hasSearchInfoPanel } = this.props
+    const {
+      children,
+      id,
+      resultId,
+      paginate,
+      scroll,
+      extraClassName,
+      hasSearchInfoPanel,
+      selectedItem,
+      hoveredMarkerId
+    } = this.props
+    const shouldShowDetailView = !isEmpty(selectedItem)
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
         return React.cloneElement(child, {
           item: item,
-          id: `${resultId}-${index.toString()}`
+          id: `${resultId}-${index.toString()}`,
+          showDetailState: this.showDetailState.bind(this),
+          onResultHover: id => {
+            this.props.onResultHover(id)
+          },
+          hoveredMarkerId
         })
       })
       return mappedChildren
@@ -71,12 +97,25 @@ class Results extends React.PureComponent {
       [styles.resultContainerWithPagination]: paginate
     })
 
+    // the below return statement handles both the office results index case
+    // AND the detailed view case
+    // based on the boolean "shouldShowDetailView"
+    // this code should probably be refactored a bit to be a little more generic
+
     return (
-      <div id={id} className={className}>
+      <div id={id} className={className} role="main" aria-live="polite">
         <div className={resultsClassName}>
-          {hasSearchInfoPanel && this.renderSearchInfoPanel()}
-          <div className={divClassName}>{childrenWithProps}</div>
-          {paginate && this.renderPaginator()}
+          {shouldShowDetailView ? (
+            <div>
+              <OfficeDetail selectedItem={selectedItem} hideDetailState={() => this.hideDetailState()} />
+            </div>
+          ) : (
+            <div>
+              {hasSearchInfoPanel && this.renderSearchInfoPanel()}
+              <div className={divClassName}>{childrenWithProps}</div>
+              {paginate && this.renderPaginator()}
+            </div>
+          )}
         </div>
       </div>
     )
@@ -90,7 +129,9 @@ Results.defaultProps = {
   paginate: false,
   scroll: false,
   hasSearchInfoPanel: false,
-  searchTermName: ''
+  searchTermName: '',
+  onClick: () => {},
+  onResultHover: () => {}
 }
 
 Results.propTypes = {
@@ -100,7 +141,9 @@ Results.propTypes = {
   paginate: PropTypes.bool,
   scroll: PropTypes.bool,
   hasSearchInfoPanel: PropTypes.bool,
-  searchTermName: PropTypes.string
+  searchTermName: PropTypes.string,
+  onClick: PropTypes.func,
+  onResultHover: PropTypes.func
 }
 
 export default Results

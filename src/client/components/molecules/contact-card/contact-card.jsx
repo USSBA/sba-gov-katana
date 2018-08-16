@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 
 import styles from './contact-card.scss'
+import classNames from 'classnames'
 import { Link } from 'atoms'
 
 // TODO: The link card component has overlapping functionality and should be
 // combined with the contact card.
 const ContactCard = props => {
-  const { city, email, fax, link, phoneNumber, state, streetAddress, title, zipCode } = props
+  const { city, email, fax, link, phoneNumber, state, streetAddress, title, zipCode, className: cn } = props
   const linkText = 'Visit website'
 
   const address = breakOrNewLine => `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
@@ -38,8 +39,18 @@ const ContactCard = props => {
     }
   ]
 
+  const contactCardClassName = classNames(
+    Object.assign(
+      {
+        'contact-card': true,
+        [styles.contactCard]: true
+      },
+      cn
+    )
+  )
+
   return (
-    <div className={`contact-card ${styles.contactCard}`}>
+    <div className={contactCardClassName}>
       <h6>{title}</h6>
       {fields.map(({ href, icon, text }, index) => {
         if (!text || (text === linkText && !href)) {
@@ -48,8 +59,12 @@ const ContactCard = props => {
 
         return (
           <div className={styles.row} key={index}>
-            <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
-            <Link dangerouslySetInnerHTML={{ __html: text }} to={href} />
+            <div className={styles.firstColumn}>
+              <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
+            </div>
+            <div className={styles.secondColumn}>
+              <Link dangerouslySetInnerHTML={{ __html: text }} to={href} />
+            </div>
           </div>
         )
       })}

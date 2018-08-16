@@ -19,6 +19,17 @@ import { NoResultsSection } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
+  constructor() {
+    super()
+
+    this.state = {
+      selectedItem: {},
+      newCenter: {},
+      isDragging: false,
+      hoveredMarkerId: ''
+    }
+  }
+
   componentWillMount() {
     const necessaryTaxonomies = ['officeType', 'officeService']
     this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
@@ -40,7 +51,33 @@ class OfficeLookupPage extends React.Component {
   // todo move to own component
   renderNoResultsView() {}
 
+  setSelectedItem(selectedItem) {
+    const newState = {
+      selectedItem,
+      newCenter: {}
+    }
+
+    if (!isEmpty(selectedItem)) {
+      const [lat, lng] = selectedItem.item.geolocation[0].split(',')
+      newState.newCenter = {
+        lat: Number(lat),
+        lng: Number(lng)
+      }
+    }
+
+    this.setState(newState)
+  }
+
+  setIsDragging(isDragging) {
+    this.setState({ isDragging })
+  }
+
+  setHoveredMarkerId(hoveredMarkerId) {
+    this.setState({ hoveredMarkerId })
+  }
+
   render() {
+    const { selectedItem, newCenter, isDragging, hoveredMarkerId } = this.state
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
@@ -66,6 +103,9 @@ class OfficeLookupPage extends React.Component {
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
+        onHandleEvent={() => {
+          this.setIsDragging(false)
+        }}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
@@ -125,7 +165,20 @@ class OfficeLookupPage extends React.Component {
         {/*
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
-        <OfficeMap id="office-map" />
+        <OfficeMap
+          id="office-map"
+          onMarkerClick={selectedItem => this.setSelectedItem(selectedItem)}
+          selectedItem={selectedItem}
+          newCenter={newCenter}
+          onDragEnd={() => {
+            this.setIsDragging(true)
+          }}
+          isDragging={isDragging}
+          onMarkerHover={id => {
+            this.setHoveredMarkerId(id)
+          }}
+          hoveredMarkerId={hoveredMarkerId}
+        />
         <Results
           id="office-results"
           paginate
@@ -133,6 +186,12 @@ class OfficeLookupPage extends React.Component {
           extraClassName={styles.officeResults}
           hasSearchInfoPanel
           searchTermName={'q'}
+          onClick={selectedItem => this.setSelectedItem(selectedItem)}
+          selectedItem={selectedItem}
+          hoveredMarkerId={hoveredMarkerId}
+          onResultHover={id => {
+            this.setHoveredMarkerId(id)
+          }}
         >
           <OfficeResult />
         </Results>
