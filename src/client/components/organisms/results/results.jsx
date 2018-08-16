@@ -103,7 +103,7 @@ class Results extends React.PureComponent {
     // this code should probably be refactored a bit to be a little more generic
 
     return (
-      <div id={id} className={className}>
+      <div id={id} className={className} role="main" aria-live="polite">
         <div className={resultsClassName}>
           {shouldShowDetailView ? (
             <div>
