@@ -48,7 +48,6 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.actions.fetchContentIfNeeded('disaster', 'disaster')
-    this.props.actions.fetchContentIfNeeded('notification', 'notification')
   }
 
   componentWillMount() {
@@ -132,16 +131,6 @@ class Main extends React.Component {
         <div id="main-content" className={styles.mainContent}>
           {this.props.children}
         </div>
-
-        {showNotificationBar && (
-          <NotificationBar
-            description={notificationDescription}
-            url={notificationUrl}
-            onClose={() => {
-              this.handleClose('NOTIFICATION')
-            }}
-          />
-        )}
 
         <Footer />
         <ModalController />
