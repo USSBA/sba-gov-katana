@@ -26,6 +26,7 @@ import SectionLink from './section-link/section-link'
 import SimpleSelect from './simple-select/simple-select'
 import SmallIcon from './small-icon/small-icon'
 import SocialMediaLink from './social-media-link/social-media-link'
+import StyleWrapperDiv from './style-wrapper-div/style-wrapper-div'
 import SuccessIcon from './icons/success'
 import TaxonomyMultiSelect from './multiselect/taxonomy-multiselect'
 import TextArea from './textarea/textarea'
@@ -65,6 +66,7 @@ export {
   SimpleSelect,
   SmallIcon,
   SocialMediaLink,
+  StyleWrapperDiv,
   SuccessIcon,
   TaxonomyMultiSelect,
   TextArea,

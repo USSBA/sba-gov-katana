@@ -3,6 +3,7 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import { stub } from 'sinon'
 import { SearchTemplate } from '../../../../../../src/client/components/templates/search/search.jsx'
+import { AssertionError } from 'assert'
 
 const searchTemplateWrapper = shallow(<SearchTemplate searchType="myType" />)
 const searchTemplateInstance = searchTemplateWrapper.instance()
