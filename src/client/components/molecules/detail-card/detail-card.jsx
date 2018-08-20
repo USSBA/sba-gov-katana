@@ -65,7 +65,7 @@ class DetailCard extends React.Component {
         <div className={s.dash}>
           <DecorativeDash />
         </div>
-        <table>
+        <table className={s.programSummaryTableData}>
           <tbody className={s['program-summary-table']}>
             {rows.map((row, index) => {
               return (
@@ -108,7 +108,12 @@ class DetailCard extends React.Component {
             }
 
       return (
-        <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
+        <div
+          className={
+            'document-card-container ' +
+            (this.props.showBorder ? ' ' + s.container : s.containerWithoutBorder)
+          }
+        >
           <div>
             <div className={s.documentTypeContainer}>
               <Label
