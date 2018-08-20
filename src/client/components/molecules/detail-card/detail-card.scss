@@ -33,6 +33,7 @@ table {
 
 .containerWithoutBorder {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .documentTypeContainer {
@@ -88,6 +89,6 @@ table {
   }
 }
 
-.programSummaryTableData {
-  margin-bottom: 72px;
+.typeTitleProgramSummaryContainer {
+  margin-bottom: 60px;
 }
