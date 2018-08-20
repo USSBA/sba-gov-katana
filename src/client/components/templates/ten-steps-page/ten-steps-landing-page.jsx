@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 
 import styles from './ten-steps-landing-page.scss'
 import * as ContentActions from '../../../actions/content.js'
+import { fetchRestContent } from '../../../fetch-content-helper.js'
 import { Link } from 'atoms'
 import { CallToAction, RemoveMainLoader, LongScrollNav } from 'molecules'
 import { BusinessGuideTileCollection, LongScrollSection } from 'organisms'
@@ -21,8 +22,13 @@ class TenStepsLandingPage extends React.Component {
     }
   }
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('menu', 'menu')
-    this.props.actions.fetchContentIfNeeded('counsellorCta', 'counsellorCta')
+    let me = this;
+    this.props.actions.fetchContentIfNeeded('mainMenu', 'mainMenu')
+    fetchRestContent("node", "6").then(data => {
+      me.setState({
+        counsellorCta: data
+      })
+    })
   }
 
   handleSectionEnter(index) {
@@ -186,7 +192,7 @@ class TenStepsLandingPage extends React.Component {
 
     const sectionData =
       findSection(this.props.menu, 'guide') || findSection(this.props.menu, 'business-guide')
-    const counsellorCta = this.props.counsellorCta
+    const counsellorCta = this.state.counsellorCta
     let buttonAction = {}
     let image = {}
     if (counsellorCta) {
@@ -257,12 +263,12 @@ class TenStepsLandingPage extends React.Component {
         {counsellorCta ? (
           <div className={styles.counsellorCtaContainer}>
             <CallToAction
-              size={counsellorCta.size}
+              size="Large"
               headline={counsellorCta.headline}
               blurb={counsellorCta.blurb}
               title={counsellorCta.title}
-              buttonAction={counsellorCta.buttonAction}
-              image={counsellorCta.image}
+              buttonAction={buttonAction}
+              image={image}
             />
           </div>
         ) : (
@@ -275,8 +281,7 @@ class TenStepsLandingPage extends React.Component {
 
 function mapReduxStateToProps(reduxState, ownProps) {
   return {
-    menu: _.get(reduxState, 'contentReducer.menu'),
-    counsellorCta: _.get(reduxState, 'contentReducer.counsellorCta')
+    menu: _.get(reduxState, 'contentReducer.mainMenu')
   }
 }
 

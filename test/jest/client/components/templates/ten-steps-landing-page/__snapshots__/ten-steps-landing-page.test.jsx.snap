@@ -14,7 +14,6 @@ ShallowWrapper {
             "fetchContentIfNeeded": [Function],
           }
     }
-    counsellorCta={undefined}
     menu={undefined}
     store={
         Object {
@@ -46,7 +45,6 @@ ShallowWrapper {
                   "fetchContentIfNeeded": [Function],
                 }
       }
-      counsellorCta={undefined}
       menu={undefined}
       store={
             Object {
@@ -113,7 +111,6 @@ ShallowWrapper {
             "actions": Object {
               "fetchContentIfNeeded": [Function],
             },
-            "counsellorCta": undefined,
             "menu": undefined,
             "store": Object {
               "dispatch": [Function],
@@ -169,7 +166,6 @@ ShallowWrapper {
                               "fetchContentIfNeeded": [Function],
                             }
           }
-          counsellorCta={undefined}
           menu={undefined}
           store={
                     Object {
@@ -201,7 +197,6 @@ ShallowWrapper {
                               "fetchContentIfNeeded": [Function],
                             }
           }
-          counsellorCta={undefined}
           menu={undefined}
           store={
                     Object {
