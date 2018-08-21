@@ -117,12 +117,13 @@ class DetailCard extends React.Component {
       const { showBorder } = this.props
 
       const className = classNames({
+        'document-card-container': true,
         [s.container]: showBorder,
         [s.containerWithoutBorder]: !showBorder
       })
 
       return (
-        <div className={'document-card-container ' + className}>
+        <div className={className}>
           <div>
             <div className={s.documentTypeContainer}>
               <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
