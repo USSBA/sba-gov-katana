@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { includes, isEmpty, isObject, size } from 'lodash'
 
 import s from './detail-card.scss'
@@ -113,14 +114,16 @@ class DetailCard extends React.Component {
               number: 'UNK'
             }
 
+      const { showBorder } = this.props
+
+      const className = classNames({
+        [s.container]: showBorder,
+        [s.containerWithoutBorder]: !showBorder
+      })
+
       return (
-        <div
-          className={
-            'document-card-container ' +
-            (this.props.showBorder ? ' ' + s.container : s.containerWithoutBorder)
-          }
-        >
-          <div className={this.props.showBorder ? '' : s.typeTitleProgramSummaryContainer}>
+        <div className={'document-card-container ' + className}>
+          <div>
             <div className={s.documentTypeContainer}>
               <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
             </div>

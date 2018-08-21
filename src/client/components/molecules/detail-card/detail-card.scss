@@ -33,6 +33,7 @@ table {
 
 .containerWithoutBorder {
   position: relative;
+  margin-bottom: 60px;
 }
 
 .documentTypeContainer {
@@ -88,8 +89,4 @@ table {
   i {
     color: $secondary-blue;
   }
-}
-
-.typeTitleProgramSummaryContainer {
-  margin-bottom: 60px;
 }
