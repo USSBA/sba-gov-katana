@@ -1,5 +1,5 @@
 import React from 'react'
-import _, { isObject } from 'lodash'
+import _, { isEmpty, isObject } from 'lodash'
 
 import s from './detail-card.scss'
 import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
@@ -18,7 +18,7 @@ class DetailCard extends React.Component {
   makeDownloadLink() {
     const latestFile = this.getLatestFile()
     const title = this.props.data.title
-    if (latestFile) {
+    if (latestFile && !isEmpty(latestFile.fileUrl)) {
       return (
         <div className={'document-card-download ' + s.download}>
           <Link
