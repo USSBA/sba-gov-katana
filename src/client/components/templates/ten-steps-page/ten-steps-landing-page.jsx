@@ -12,6 +12,7 @@ import { CallToAction, RemoveMainLoader, LongScrollNav } from 'molecules'
 import { BusinessGuideTileCollection, LongScrollSection } from 'organisms'
 import { findPageLineage, findSubSection, findSection } from '../../../services/menu.js'
 import scrollIcon from 'assets/svg/scroll.svg'
+import clientConfig from '../../../services/client-config.js'
 
 class TenStepsLandingPage extends React.Component {
   constructor() {
@@ -22,9 +23,9 @@ class TenStepsLandingPage extends React.Component {
     }
   }
   componentWillMount() {
-    let me = this;
+    let me = this
     this.props.actions.fetchContentIfNeeded('mainMenu', 'mainMenu')
-    fetchRestContent("node", "6").then(data => {
+    fetchRestContent('node', clientConfig.counsellorCta).then(data => {
       me.setState({
         counsellorCta: data
       })
@@ -192,7 +193,7 @@ class TenStepsLandingPage extends React.Component {
 
     const sectionData =
       findSection(this.props.menu, 'guide') || findSection(this.props.menu, 'business-guide')
-    const counsellorCta = this.state.counsellorCta
+    const { counsellorCta } = this.state
     let buttonAction = {}
     let image = {}
     if (counsellorCta) {

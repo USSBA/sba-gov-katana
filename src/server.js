@@ -85,6 +85,7 @@ app.use(function(req, res, next) {
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
         showSbic: config.get('features.showSbic'),
+        counsellorCta: config.get('counsellorCta.nodeId'),
         googleMapsApiKey: config.get('googleMapsApiKey')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
@@ -123,9 +124,12 @@ app.get('/api/content/counselors-redirect.json', function(req, res) {
 })
 
 // this is only reached in local development where the nginx proxy is not present
-app.post('/api/feedback', (req, res , next) => {
-  console.log("Saving feedback", req.body)
-  res.status(HttpStatus.OK).json({message:"Development Message: It worked.  (In the real system, this request would be forwarded by the nginx proxy to the feedback lambda"})
+app.post('/api/feedback', (req, res, next) => {
+  console.log('Saving feedback', req.body)
+  res.status(HttpStatus.OK).json({
+    message:
+      'Development Message: It worked.  (In the real system, this request would be forwarded by the nginx proxy to the feedback lambda'
+  })
 })
 
 import * as resourceCenterProfileController from './controllers/resource-center-profile.js'
@@ -225,5 +229,4 @@ if (config.get('developmentOptions.webpack.enabled')) {
   })
 }
 
-
-module.exports = app;
+module.exports = app
