@@ -5,16 +5,8 @@ import * as ContentActions from '../../../actions/content.js'
 import { find, cloneDeep, isEmpty } from 'lodash'
 
 import styles from './office-lookup-page.scss'
-import { TaxonomyMultiSelect, MultiSelect, TextInput, Toggle } from 'atoms'
-import {
-  GlobalSearch,
-  OfficesLayout,
-  PrimarySearchBar,
-  SecondarySearchBar,
-  Results,
-  OfficeResult,
-  OfficeMap
-} from 'organisms'
+import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
+import { PrimarySearchBar, Results, OfficeResult, OfficeMap } from 'organisms'
 import { NoResultsSection } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
 
@@ -167,7 +159,9 @@ class OfficeLookupPage extends React.Component {
         <NoResultsSection searchTips={searchTips}/> */}
         <OfficeMap
           id="office-map"
-          onMarkerClick={selectedItem => this.setSelectedItem(selectedItem)}
+          onMarkerClick={item => {
+            this.setSelectedItem(item)
+          }}
           selectedItem={selectedItem}
           newCenter={newCenter}
           onDragEnd={() => {
@@ -179,22 +173,25 @@ class OfficeLookupPage extends React.Component {
           }}
           hoveredMarkerId={hoveredMarkerId}
         />
-        <Results
-          id="office-results"
-          paginate
-          scroll
-          extraClassName={styles.officeResults}
-          hasSearchInfoPanel
-          searchTermName={'q'}
-          onClick={selectedItem => this.setSelectedItem(selectedItem)}
-          selectedItem={selectedItem}
-          hoveredMarkerId={hoveredMarkerId}
-          onResultHover={id => {
-            this.setHoveredMarkerId(id)
-          }}
-        >
-          <OfficeResult />
-        </Results>
+        <StyleWrapperDiv className={styles.officeResults}>
+          <Results
+            id="office-results"
+            paginate
+            scroll
+            hasSearchInfoPanel
+            searchTermName={'q'}
+            onClick={item => {
+              this.setSelectedItem(item)
+            }}
+            selectedItem={selectedItem}
+            hoveredMarkerId={hoveredMarkerId}
+            onResultHover={id => {
+              this.setHoveredMarkerId(id)
+            }}
+          >
+            <OfficeResult />
+          </Results>
+        </StyleWrapperDiv>
       </SearchTemplate>
     )
   }

@@ -63,7 +63,6 @@ class Results extends React.PureComponent {
       resultId,
       paginate,
       scroll,
-      extraClassName,
       hasSearchInfoPanel,
       selectedItem,
       hoveredMarkerId
@@ -84,8 +83,6 @@ class Results extends React.PureComponent {
       return mappedChildren
     })
 
-    const className = extraClassName ? `${styles.container} ${extraClassName}` : styles.container
-
     const divClassName = classNames({
       [styles.scroll]: scroll,
       [styles.resultsWithPagination]: paginate,
@@ -103,7 +100,7 @@ class Results extends React.PureComponent {
     // this code should probably be refactored a bit to be a little more generic
 
     return (
-      <div id={id} className={className} role="main" aria-live="polite">
+      <div id={id} className={styles.container} role="main" aria-live="polite">
         <div className={resultsClassName}>
           {shouldShowDetailView ? (
             <div>
