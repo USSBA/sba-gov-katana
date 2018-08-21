@@ -267,15 +267,17 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="documentCardCollection"
     >
       <div
-        className="document-card-collection"
+        className="detailCardCollection"
       >
         <div
           className="card-container card"
         >
           <div
-            className="document-card-container "
+            className="document-card-container containerWithoutBorder"
           >
-            <div>
+            <div
+              className="typeTitleProgramSummaryContainer"
+            >
               <div
                 className="documentTypeContainer"
               >
@@ -312,7 +314,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     }
                   />
                 </div>
-                <table>
+                <table
+                  className="programSummaryTableData"
+                >
                   <tbody
                     className="program-summary-table"
                   />
@@ -325,9 +329,11 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           className="card-container card"
         >
           <div
-            className="document-card-container "
+            className="document-card-container containerWithoutBorder"
           >
-            <div>
+            <div
+              className="typeTitleProgramSummaryContainer"
+            >
               <div
                 className="documentTypeContainer"
               >
@@ -364,7 +370,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     }
                   />
                 </div>
-                <table>
+                <table
+                  className="programSummaryTableData"
+                >
                   <tbody
                     className="program-summary-table"
                   />
@@ -377,9 +385,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           className="card-container card"
         >
           <div
-            className="document-card-container "
+            className="document-card-container containerWithoutBorder"
           >
             <div>
+            <div
+              className="typeTitleProgramSummaryContainer"
+            >
               <div
                 className="documentTypeContainer"
               >
@@ -416,7 +427,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     }
                   />
                 </div>
-                <table>
+                <table
+                  className="programSummaryTableData"
+                >
                   <tbody
                     className="program-summary-table"
                   />
@@ -429,9 +442,12 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           className="card-container card"
         >
           <div
-            className="document-card-container "
+            className="document-card-container containerWithoutBorder"
           >
             <div>
+            <div
+              className="typeTitleProgramSummaryContainer"
+            >
               <div
                 className="documentTypeContainer"
               >
@@ -468,7 +484,9 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     }
                   />
                 </div>
-                <table>
+                <table
+                  className="programSummaryTableData"
+                >
                   <tbody
                     className="program-summary-table"
                   />

@@ -14,6 +14,11 @@ table {
   background-color: white;
 }
 
+.container,
+.containerWithoutBorder {
+  height: 100%;
+}
+
 .container {
   border: 1px solid #bebdbd;
   background-color: white;
@@ -24,6 +29,11 @@ table {
   @include grid-media($sba-grid-large) {
     padding: 20px;
   }
+}
+
+.containerWithoutBorder {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .documentTypeContainer {
@@ -68,7 +78,7 @@ table {
 }
 
 .download {
-  margin-top: 42px;
+  align-self: flex-end;
 
   a {
     margin-right: 10px;
@@ -77,4 +87,8 @@ table {
   i {
     color: $secondary-blue;
   }
+}
+
+.typeTitleProgramSummaryContainer {
+  margin-bottom: 60px;
 }
