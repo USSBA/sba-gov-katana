@@ -38,6 +38,7 @@
 
 .detailCardCollection {
   display: grid;
+  grid-auto-rows: 1fr;
 
   @include for-large-up {
     grid-template-columns: 1fr 1fr 1fr;
