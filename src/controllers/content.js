@@ -8,13 +8,17 @@ function fetchContentById(req, res) {
   if (req.params && req.params.type && req.params.id) {
     const type = req.params.type
     const id = req.params.id
-    const uri = "https://" + path.join( config.get('content.endpoint'), "Prod", "api", "content", type, id + ".json")
-    axios.get(uri, {params: req.query}).then(result => {
-      res.status(result.status).send(result.data)
-    }).catch(err => {
-      console.error(err)
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
-    })
+    const uri =
+      'https://' + path.join(config.get('content.endpoint'), 'Prod', 'api', 'content', type, id + '.json')
+    axios
+      .get(uri, { params: req.query })
+      .then(result => {
+        res.status(result.status).send(result.data)
+      })
+      .catch(err => {
+        console.error(err)
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
+      })
   } else {
     res.status(HttpStatus.BAD_REQUEST).send('Incorrect request format missing type or id')
   }
@@ -23,13 +27,17 @@ function fetchContentById(req, res) {
 function fetchContentByType(req, res) {
   if (req.params && req.params.type) {
     const type = req.params.type
-    const uri = "https://" + path.join( config.get('content.endpoint'), "Prod", "api", "content", type + ".json")
-    axios.get(uri,{params: req.query}).then(result => {
-      res.status(result.status).send(result.data)
-    }).catch(err => {
-      console.error(err)
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
-    })
+    const uri =
+      'https://' + path.join(config.get('content.endpoint'), 'Prod', 'api', 'content', type + '.json')
+    axios
+      .get(uri, { params: req.query })
+      .then(result => {
+        res.status(result.status).send(result.data)
+      })
+      .catch(err => {
+        console.error(err)
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
+      })
   } else {
     res.status(HttpStatus.BAD_REQUEST).send('Incorrect request format missing type.')
   }
