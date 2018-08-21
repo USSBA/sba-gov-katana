@@ -1,5 +1,6 @@
 import React from 'react'
-import { includes, isEmpty, size } from 'lodash'
+import classNames from 'classnames'
+import { includes, isEmpty, isObject, size } from 'lodash'
 
 import s from './detail-card.scss'
 import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
@@ -18,7 +19,7 @@ class DetailCard extends React.Component {
   makeDownloadLink() {
     const latestFile = this.getLatestFile()
     const title = this.props.data.title
-    if (latestFile) {
+    if (latestFile && !isEmpty(latestFile.fileUrl)) {
       return (
         <div className={'document-card-download ' + s.download}>
           <Link
@@ -61,7 +62,7 @@ class DetailCard extends React.Component {
         <div className={s.dash}>
           <DecorativeDash />
         </div>
-        <table>
+        <table className={s.programSummaryTableData}>
           <tbody className={s['program-summary-table']}>
             {rows.map((row, index) => {
               return (
@@ -113,9 +114,17 @@ class DetailCard extends React.Component {
               number: 'UNK'
             }
 
+      const { showBorder } = this.props
+
+      const className = classNames({
+        'document-card-container': true,
+        [s.container]: showBorder,
+        [s.containerWithoutBorder]: !showBorder
+      })
+
       return (
-        <div className={'document-card-container ' + (this.props.showBorder ? ' ' + s.container : '')}>
-          <div className={s.innerContainer}>
+        <div className={className}>
+          <div>
             <div className={s.documentTypeContainer}>
               <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
             </div>

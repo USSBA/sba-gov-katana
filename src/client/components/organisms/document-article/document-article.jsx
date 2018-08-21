@@ -184,15 +184,17 @@ export class DocumentArticle extends React.Component {
           <hr className={s.hr} />
           <div className={s.summaryContainer}>
             <div className="column">
-              <Button
-                className="document-article-pdf-download-btn"
-                disabled={!currentFile || isEmpty(currentFile.fileUrl)}
-                fullWidth
-                onClick={e => this.downloadClick(currentFile)}
-                primary
-              >
-                {`Download ${currentFileExtension}`}
-              </Button>
+              {currentFile &&
+                !isEmpty(currentFile.fileUrl) && (
+                  <Button
+                    className="document-article-pdf-download-btn"
+                    fullWidth
+                    onClick={e => this.downloadClick(currentFile)}
+                    primary
+                  >
+                    {`Download ${currentFileExtension}`}
+                  </Button>
+                )}
             </div>
             <div className="column">
               {!isEmpty(data.summary) && <h5 className={s.summary}>{data.summary}</h5>}
