@@ -226,6 +226,21 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   render() {
+    //Checks browser for availability of geolocation api, and Prompts for location permission
+    if (navigator.geolocation) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(displayLocationInfo)
+      }
+      function displayLocationInfo(position) {
+        const lng = position.coords.longitude
+        const lat = position.coords.latitude
+
+        console.log(`longitude: ${lng} | latitude: ${lat}`)
+      }
+    } else {
+      //
+    }
+
     // pass array of points with lats and lngs
 
     const { points, map } = this.state
@@ -249,7 +264,10 @@ class OfficeMapApp extends React.PureComponent {
             onFieldChange('mapCenter', '')
           }}
           onMarkerClick={e => {
-            const { fields: item, exprs: { distance } } = e
+            const {
+              fields: item,
+              exprs: { distance }
+            } = e
             const selectedItem = {
               item,
               distance
