@@ -6,6 +6,7 @@ import { isEmpty, difference, get } from 'lodash'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
 import styles from './office-map.scss'
+import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
 import $ from 'jquery'
 
@@ -226,19 +227,19 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   render() {
-    //Checks browser for availability of geolocation api, and Prompts for location permission
-    if (navigator.geolocation) {
+    if (clientConfig.geoLocator == true) {
+      //Checks browser for availability of geolocation api, and Prompts for location permission
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(displayLocationInfo)
-      }
-      function displayLocationInfo(position) {
-        const lng = position.coords.longitude
-        const lat = position.coords.latitude
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(displayLocationInfo)
+        }
+        function displayLocationInfo(position) {
+          const lng = position.coords.longitude
+          const lat = position.coords.latitude
 
-        console.log(`longitude: ${lng} | latitude: ${lat}`)
+          console.log(`longitude: ${lng} | latitude: ${lat}`)
+        }
       }
-    } else {
-      //
     }
 
     // pass array of points with lats and lngs
