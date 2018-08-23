@@ -45,7 +45,7 @@ export class DocumentArticle extends React.Component {
     if (effectiveDate) {
       dates.push({
         title: 'Effective',
-        date: moment(date).format(dateFormat)
+        date: moment(effectiveDate).format(dateFormat)
       })
     }
 
