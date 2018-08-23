@@ -267,7 +267,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       className="documentCardCollection"
     >
       <div
-        className="detailCardCollection"
+        className="document-card-collection detailCardCollection"
       >
         <div
           className="card-container card"
