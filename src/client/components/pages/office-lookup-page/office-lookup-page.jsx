@@ -160,6 +160,7 @@ class OfficeLookupPage extends React.Component {
         <OfficeMap
           id="office-map"
           onMarkerClick={item => {
+            this.centerMap(true)
             this.setSelectedItem(item)
           }}
           selectedItem={selectedItem}
