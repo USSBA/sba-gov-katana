@@ -124,7 +124,7 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { items, isDragging } = nextProps
+    const { items, shouldCenterMap } = nextProps
     const { map, areAllMapElementsRemovedFromTabOrder } = this.state
     const newPoints = this.getLatLngs(items)
     if (difference(newPoints, this.state.points)) {
@@ -133,7 +133,7 @@ class OfficeMapApp extends React.PureComponent {
           points: newPoints
         },
         () => {
-          if (!isDragging && !isEmpty(map)) {
+          if (!shouldCenterMap && !isEmpty(map)) {
             map.fitBounds(this.bounds)
           }
         }
@@ -270,7 +270,7 @@ class OfficeMapApp extends React.PureComponent {
 OfficeMapApp.defaultProps = {
   selectedItem: null,
   items: [],
-  isDragging: false,
+  shouldCenterMap: false,
   onMarkerClick: () => {},
   onMarkerHover: () => {}
 }
@@ -282,6 +282,6 @@ OfficeMapApp.propTypes = {
   onMarkerClick: PropTypes.func,
   onMarkerHover: PropTypes.func,
   onDragEnd: PropTypes.func,
-  isDragging: PropTypes.bool
+  shouldCenterMap: PropTypes.bool
 }
 export default OfficeMapApp

@@ -17,7 +17,7 @@ class OfficeLookupPage extends React.Component {
     this.state = {
       selectedItem: {},
       newCenter: {},
-      isDragging: false,
+      shouldCenterMap: false,
       hoveredMarkerId: ''
     }
   }
@@ -60,8 +60,8 @@ class OfficeLookupPage extends React.Component {
     this.setState(newState)
   }
 
-  setIsDragging(isDragging) {
-    this.setState({ isDragging })
+  centerMap(shouldCenterMap) {
+    this.setState({ shouldCenterMap })
   }
 
   setHoveredMarkerId(hoveredMarkerId) {
@@ -69,7 +69,7 @@ class OfficeLookupPage extends React.Component {
   }
 
   render() {
-    const { selectedItem, newCenter, isDragging, hoveredMarkerId } = this.state
+    const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
     const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
@@ -96,7 +96,7 @@ class OfficeLookupPage extends React.Component {
         extraClassName={styles.officeSearch}
         paginate={false}
         onHandleEvent={() => {
-          this.setIsDragging(false)
+          this.centerMap(false)
         }}
       >
         <PrimarySearchBar
@@ -165,9 +165,9 @@ class OfficeLookupPage extends React.Component {
           selectedItem={selectedItem}
           newCenter={newCenter}
           onDragEnd={() => {
-            this.setIsDragging(true)
+            this.centerMap(true)
           }}
-          isDragging={isDragging}
+          shouldCenterMap={shouldCenterMap}
           onMarkerHover={id => {
             this.setHoveredMarkerId(id)
           }}
@@ -181,6 +181,7 @@ class OfficeLookupPage extends React.Component {
             hasSearchInfoPanel
             searchTermName={'q'}
             onClick={item => {
+              this.centerMap(true)
               this.setSelectedItem(item)
             }}
             selectedItem={selectedItem}
