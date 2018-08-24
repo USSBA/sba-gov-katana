@@ -97,6 +97,7 @@ class OfficeLookupPage extends React.Component {
         paginate={false}
         onHandleEvent={() => {
           this.centerMap(false)
+          this.setSelectedItem({})
         }}
       >
         <PrimarySearchBar
@@ -212,5 +213,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(OfficeLookupPage)
 export { OfficeLookupPage }
