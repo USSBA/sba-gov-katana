@@ -119,8 +119,8 @@ workflows:
             - integration
           tags:
             only:
-            - production
-            - staging
+            # - production
+            # - staging
             - demo
             - mint
             - /int-\w+/
@@ -279,12 +279,14 @@ jobs:
 
             case $ENVIRONMENT in
               production)
-                export ASSET_BUCKET_NAME_PREFIX=production.sba.gov
-                set_upper
+                export ASSET_BUCKET_NAME_PREFIX=sbagovlower-www.sba.gov
+                # set_upper
+                set_lower
                 ;;
               staging)
-                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
-                set_upper
+                export ASSET_BUCKET_NAME_PREFIX=sbagovlower-staging.sba.gov
+                # set_upper
+                set_lower
                 ;;
               mint|integration)
                 export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
