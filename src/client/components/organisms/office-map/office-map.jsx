@@ -237,7 +237,8 @@ class OfficeMapApp extends React.PureComponent {
           const lng = position.coords.longitude
           const lat = position.coords.latitude
 
-          console.log(`longitude: ${lng} | latitude: ${lat}`)
+          //ADDED FOR TESTING PURPOSES. REMOVE WHEN IMPLEMENTING FEATURE
+          alert(`longitude: ${lng} | latitude: ${lat}`)
         }
       }
     }
