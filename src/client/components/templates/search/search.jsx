@@ -111,15 +111,14 @@ class SearchTemplate extends React.PureComponent {
         return { searchParams: searchParamsClone }
       },
       () => {
-        if (callback) {
-          callback()
-        }
-
         if (_options.shouldTriggerSearch === true) {
           this.onSearch(options)
         }
         if (!isEmpty(window) && scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
+        }
+        if (callback) {
+          callback()
         }
       }
     )
@@ -182,6 +181,7 @@ class SearchTemplate extends React.PureComponent {
 
     this.setState({ isLoading: true })
     this.setState({ submittedSearchParams: filteredSearchParams })
+    this.props.onHandleEvent()
     this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
   }
 
