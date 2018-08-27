@@ -3,7 +3,6 @@ foresee:
 server:
     fqdn: laura.ussba.io
 features:
-    geoLocator: true
     forPartners: true
     showSbic: false
     moon: false
