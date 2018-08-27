@@ -98,7 +98,7 @@ class OfficeLookupPage extends React.Component {
         onHandleEvent={callback => {
           console.log('AA: ', selectedItem)
           this.centerMap(false)
-          this.clearSelectedItem()
+          this.setSelectedItem({})
           if (callback) {
             callback()
           }
