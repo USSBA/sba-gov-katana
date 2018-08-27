@@ -235,11 +235,9 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   render() {
-    if (clientConfig.geoLocator === true) {
-      //Checks browser for availability of geolocation api, and Prompts for location permission
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(displayLocationInfo)
-      }
+    //Checks browser for availability of geolocation api, and Prompts for location permission
+    if (clientConfig.geoLocator === true && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(displayLocationInfo)
     }
 
     // pass array of points with lats and lngs
