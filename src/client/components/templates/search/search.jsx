@@ -181,7 +181,6 @@ class SearchTemplate extends React.PureComponent {
 
     this.setState({ isLoading: true })
     this.setState({ submittedSearchParams: filteredSearchParams })
-    this.props.onHandleEvent()
     this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
   }
 

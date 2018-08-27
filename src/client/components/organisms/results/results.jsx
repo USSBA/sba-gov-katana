@@ -68,11 +68,13 @@ class Results extends React.PureComponent {
       scroll,
       hasSearchInfoPanel,
       selectedItem,
-      hoveredMarkerId
+      hoveredMarkerId,
+      isLoading
     } = this.props
     console.log('B: ', selectedItem)
     console.log('C: ', !isEmpty(selectedItem))
     console.log('D: ', shouldShowDetailView)
+    console.log('E: ', isLoading)
     const shouldShowDetailView = !isEmpty(selectedItem)
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
