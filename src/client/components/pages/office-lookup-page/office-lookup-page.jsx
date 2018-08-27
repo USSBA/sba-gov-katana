@@ -95,10 +95,13 @@ class OfficeLookupPage extends React.Component {
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
-        onHandleEvent={() => {
+        onHandleEvent={callback => {
           console.log('AA: ', selectedItem)
           this.centerMap(false)
-          this.setSelectedItem({})
+          this.clearSelectedItem()
+          if (callback) {
+            callback()
+          }
         }}
       >
         <PrimarySearchBar
