@@ -17,7 +17,7 @@ function fetchContentById(req, res) {
       })
       .catch(err => {
         console.error(err)
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
+        res.status(err.response.status).send(err.response.data)
       })
   } else {
     res.status(HttpStatus.BAD_REQUEST).send('Incorrect request format missing type or id')
@@ -36,7 +36,7 @@ function fetchContentByType(req, res) {
       })
       .catch(err => {
         console.error(err)
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send('Error retrieving content')
+        res.status(err.response.status).send(err.response.data)
       })
   } else {
     res.status(HttpStatus.BAD_REQUEST).send('Incorrect request format missing type.')
