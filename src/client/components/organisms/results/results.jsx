@@ -27,8 +27,8 @@ class Results extends React.PureComponent {
           pageSize={pageSize}
           total={total}
           onBack={() => {
-            clearSelectedItem()
             onBack()
+            clearSelectedItem()
           }}
           onForward={onForward}
         />
