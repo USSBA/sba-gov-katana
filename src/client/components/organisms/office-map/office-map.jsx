@@ -14,6 +14,14 @@ const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
 }&v=3.exp&libraries=geometry,drawing,places`
 
+export function displayLocationInfo(position) {
+  const lng = position.coords.longitude
+  const lat = position.coords.latitude
+
+  //ADDED FOR TESTING PURPOSES. REMOVE WHEN IMPLEMENTING FEATURE
+  alert(`longitude: ${lng} | latitude: ${lat}`)
+}
+
 const defaultIconScale = 40
 
 const OfficeMap = compose(
@@ -227,15 +235,7 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   render() {
-    function displayLocationInfo(position) {
-      const lng = position.coords.longitude
-      const lat = position.coords.latitude
-
-      //ADDED FOR TESTING PURPOSES. REMOVE WHEN IMPLEMENTING FEATURE
-      alert(`longitude: ${lng} | latitude: ${lat}`)
-    }
-
-    if (clientConfig.geoLocator == true) {
+    if (clientConfig.geoLocator === true) {
       //Checks browser for availability of geolocation api, and Prompts for location permission
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(displayLocationInfo)
