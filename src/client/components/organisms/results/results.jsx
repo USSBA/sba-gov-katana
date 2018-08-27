@@ -28,6 +28,14 @@ class Results extends React.PureComponent {
           total={total}
           onBack={() => {
             onBack()
+            // If clearSelectedItem() does not execute AFTEr onBack()
+            // then sometimes the `selectedItem` data gets populated
+            // which causes this Results Component to display the OfficeDetail
+            // instead of OfficeResults
+            // This ONLY happens when a user invokes onBack() during the onKeyPress 'ENTER'
+            // call clearSelectedItem() AFTER onBack() is executed to
+            // compensate for the strange race condition that occurs
+            // when onBack() is executed.
             clearSelectedItem()
           }}
           onForward={onForward}
@@ -68,13 +76,8 @@ class Results extends React.PureComponent {
       scroll,
       hasSearchInfoPanel,
       selectedItem,
-      hoveredMarkerId,
-      isLoading
+      hoveredMarkerId
     } = this.props
-    console.log('B: ', selectedItem)
-    console.log('C: ', !isEmpty(selectedItem))
-    console.log('D: ', shouldShowDetailView)
-    console.log('E: ', isLoading)
     const shouldShowDetailView = !isEmpty(selectedItem)
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {

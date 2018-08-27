@@ -29,10 +29,6 @@ class OfficeLookupPage extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('AAA----------: ', this.props.isLoading)
-  }
-
   getTaxonomy(name) {
     if (!this.props.taxonomies) {
       return {
@@ -84,7 +80,7 @@ class OfficeLookupPage extends React.Component {
     }
     const officeTypeTaxonomy = this.getTaxonomy('officeType')
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
-    const { items } = this.props
+    const { items, isLoading } = this.props
     const searchTips = [
       'Try a different search term, like “counseling” instead of "counselor".',
       'Try searching with different ZIP code.',
@@ -100,9 +96,7 @@ class OfficeLookupPage extends React.Component {
         extraClassName={styles.officeSearch}
         paginate={false}
         onHandleEvent={() => {
-          console.log('AA: ', selectedItem)
           this.centerMap(false)
-          this.setSelectedItem({})
         }}
       >
         <PrimarySearchBar
@@ -197,7 +191,6 @@ class OfficeLookupPage extends React.Component {
               this.setHoveredMarkerId(id)
             }}
             clearSelectedItem={() => {
-              console.log('E')
               this.setSelectedItem({})
             }}
           >
