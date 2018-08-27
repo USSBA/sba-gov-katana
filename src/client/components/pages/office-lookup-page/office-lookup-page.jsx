@@ -96,6 +96,7 @@ class OfficeLookupPage extends React.Component {
         extraClassName={styles.officeSearch}
         paginate={false}
         onHandleEvent={() => {
+          console.log('AA: ', selectedItem)
           this.centerMap(false)
           this.setSelectedItem({})
         }}
