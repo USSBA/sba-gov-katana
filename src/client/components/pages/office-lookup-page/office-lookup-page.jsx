@@ -192,6 +192,10 @@ class OfficeLookupPage extends React.Component {
             onResultHover={id => {
               this.setHoveredMarkerId(id)
             }}
+            clearSelectedItem={() => {
+              console.log('E')
+              this.setSelectedItem({})
+            }}
           >
             <OfficeResult />
           </Results>

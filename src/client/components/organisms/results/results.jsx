@@ -18,7 +18,7 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward } = this.props
+    const { total, pageSize, pageNumber, onBack, onForward, clearSelectedItem } = this.props
 
     return (
       <div className={styles.paginator}>
@@ -26,7 +26,10 @@ class Results extends React.PureComponent {
           pageNumber={pageNumber}
           pageSize={pageSize}
           total={total}
-          onBack={onBack}
+          onBack={() => {
+            clearSelectedItem()
+            onBack()
+          }}
           onForward={onForward}
         />
       </div>
