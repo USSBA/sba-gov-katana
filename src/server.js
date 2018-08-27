@@ -10,12 +10,14 @@ import accepts from 'accepts'
 import config from 'config'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import compression from 'compression'
 import HttpStatus from 'http-status-codes'
 import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from './util/dev.js'
 const fs = require('fs')
 let mainBundleFile = ''
 
 const app = express()
+app.use(compression({ level: 1 }))
 app.use(cookieParser())
 //set up template engine
 app.set('view engine', 'pug')
