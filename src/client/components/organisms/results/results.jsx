@@ -67,6 +67,9 @@ class Results extends React.PureComponent {
       selectedItem,
       hoveredMarkerId
     } = this.props
+    console.log('B: ', selectedItem)
+    console.log('C: ', !isEmpty(selectedItem))
+    console.log('D: ', shouldShowDetailView)
     const shouldShowDetailView = !isEmpty(selectedItem)
     const childrenWithProps = this.props.items.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
