@@ -190,6 +190,9 @@ class OfficeLookupPage extends React.Component {
             onResultHover={id => {
               this.setHoveredMarkerId(id)
             }}
+            clearSelectedItem={() => {
+              this.setSelectedItem({})
+            }}
           >
             <OfficeResult />
           </Results>
@@ -212,5 +215,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(OfficeLookupPage)
 export { OfficeLookupPage }

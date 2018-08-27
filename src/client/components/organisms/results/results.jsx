@@ -18,7 +18,7 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward } = this.props
+    const { total, pageSize, pageNumber, onBack, onForward, clearSelectedItem } = this.props
 
     return (
       <div className={styles.paginator}>
@@ -26,7 +26,18 @@ class Results extends React.PureComponent {
           pageNumber={pageNumber}
           pageSize={pageSize}
           total={total}
-          onBack={onBack}
+          onBack={() => {
+            onBack()
+            // If clearSelectedItem() does not execute AFTEr onBack()
+            // then sometimes the `selectedItem` data gets populated
+            // which causes this Results Component to display the OfficeDetail
+            // instead of OfficeResults
+            // This ONLY happens when a user invokes onBack() during the onKeyPress 'ENTER'
+            // call clearSelectedItem() AFTER onBack() is executed to
+            // compensate for the strange race condition that occurs
+            // when onBack() is executed.
+            clearSelectedItem()
+          }}
           onForward={onForward}
         />
       </div>
