@@ -63,7 +63,9 @@ class SearchTemplate extends React.PureComponent {
     delete queryParams.pageSize
     //calculate the actual  start value from the pageNumber parameter
     let { pageNumber } = queryParams
-    const { searchParams: { pageSize } } = this.state
+    const {
+      searchParams: { pageSize }
+    } = this.state
     pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
     //not using the calculate startIndex function here because we won't know the count yet
     queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
@@ -109,14 +111,15 @@ class SearchTemplate extends React.PureComponent {
         return { searchParams: searchParamsClone }
       },
       () => {
+        if (callback) {
+          callback()
+        }
+
         if (_options.shouldTriggerSearch === true) {
           this.onSearch(options)
         }
         if (!isEmpty(window) && scrollToTopAfterSearch) {
           window.scrollTo(0, 0)
-        }
-        if (callback) {
-          callback()
         }
       }
     )
@@ -184,7 +187,10 @@ class SearchTemplate extends React.PureComponent {
 
   renderPaginator() {
     const { count } = this.props
-    const { results, searchParams: { pageSize } } = this.state
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
     const pageNumber = this.calculatePageNumber()
 
     let result = <div />
@@ -254,7 +260,10 @@ class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { results, searchParams: { pageSize } } = this.state
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
     const { children, count, extraClassName, paginate } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
@@ -335,5 +344,8 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(SearchTemplate)
 export { SearchTemplate }
