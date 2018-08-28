@@ -6,12 +6,21 @@ import { isEmpty, difference, get } from 'lodash'
 import PropTypes from 'prop-types'
 import marker from 'assets/svg/marker.svg'
 import styles from './office-map.scss'
+import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
 import $ from 'jquery'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
 }&v=3.exp&libraries=geometry,drawing,places`
+
+export function displayLocationInfo(position) {
+  const lng = position.coords.longitude
+  const lat = position.coords.latitude
+
+  //ADDED FOR TESTING PURPOSES. REMOVE WHEN IMPLEMENTING FEATURE
+  alert(`longitude: ${lng} | latitude: ${lat}`)
+}
 
 const defaultIconScale = 40
 
@@ -226,6 +235,11 @@ class OfficeMapApp extends React.PureComponent {
   }
 
   render() {
+    //Checks browser for availability of geolocation api, and Prompts for location permission
+    if (clientConfig.geoLocator === true && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(displayLocationInfo)
+    }
+
     // pass array of points with lats and lngs
 
     const { points, map } = this.state
@@ -249,7 +263,10 @@ class OfficeMapApp extends React.PureComponent {
             onFieldChange('mapCenter', '')
           }}
           onMarkerClick={e => {
-            const { fields: item, exprs: { distance } } = e
+            const {
+              fields: item,
+              exprs: { distance }
+            } = e
             const selectedItem = {
               item,
               distance

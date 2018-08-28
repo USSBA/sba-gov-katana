@@ -86,6 +86,7 @@ app.use(function(req, res, next) {
         searchUrl: config.get('features.searchUrl'),
         showSbic: config.get('features.showSbic'),
         counsellorCta: config.get('counsellorCta.nodeId'),
+        geoLocator: config.get('features.geoLocator'),
         googleMapsApiKey: config.get('googleMapsApiKey')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign

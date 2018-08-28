@@ -62,6 +62,7 @@ features:
     forPartners: false
     showSbic: false
     moon: false
+    geoLocator: false
     searchUrl: "/search/?q="
     urlRedirect:
         tableName: placeholder
