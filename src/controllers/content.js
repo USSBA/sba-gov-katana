@@ -13,6 +13,7 @@ function fetchContentById(req, res) {
     axios
       .get(uri, {
         params: req.query,
+        responseType: 'json',
         // eslint-disable-next-line arrow-body-style
         transformResponse: rawReq => rawReq
       })
@@ -36,6 +37,7 @@ function fetchContentByType(req, res) {
     axios
       .get(uri, {
         params: req.query,
+        responseType: 'json',
         // eslint-disable-next-line arrow-body-style
         transformResponse: rawReq => rawReq
       })
