@@ -9,7 +9,7 @@ foresee:
 server:
     fqdn: mint.ussba.io
 features:
-    geoLocator: true
+    geoLocator: false
     forPartners: true
     showSbic: false
     moon: false
