@@ -66,7 +66,9 @@ Button.propTypes = {
 
     if (alternate && !primary) {
       return new Error(
-        `${componentName} was specified with "alternate" but only a "primary" ${componentName} can have "alternate"`
+        `${componentName} was specified with "alternate" but only a "primary" ${
+          componentName
+        } can have "alternate"`
       )
     }
   },

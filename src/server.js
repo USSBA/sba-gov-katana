@@ -17,7 +17,7 @@ const fs = require('fs')
 let mainBundleFile = ''
 
 const app = express()
-app.use(compression({ level: 1 }))
+// app.use(compression({ level: 1 }))
 app.use(cookieParser())
 //set up template engine
 app.set('view engine', 'pug')

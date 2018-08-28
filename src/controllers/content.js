@@ -11,7 +11,11 @@ function fetchContentById(req, res) {
     const uri =
       'https://' + path.join(config.get('content.endpoint'), 'Prod', 'api', 'content', type, id + '.json')
     axios
-      .get(uri, { params: req.query })
+      .get(uri, {
+        params: req.query,
+        // eslint-disable-next-line arrow-body-style
+        transformResponse: rawReq => rawReq
+      })
       .then(result => {
         res.status(result.status).send(result.data)
       })
@@ -30,7 +34,11 @@ function fetchContentByType(req, res) {
     const uri =
       'https://' + path.join(config.get('content.endpoint'), 'Prod', 'api', 'content', type + '.json')
     axios
-      .get(uri, { params: req.query })
+      .get(uri, {
+        params: req.query,
+        // eslint-disable-next-line arrow-body-style
+        transformResponse: rawReq => rawReq
+      })
       .then(result => {
         res.status(result.status).send(result.data)
       })
