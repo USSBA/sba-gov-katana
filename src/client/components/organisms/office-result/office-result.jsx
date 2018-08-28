@@ -10,7 +10,10 @@ import classNames from 'classnames'
 class OfficeResult extends React.PureComponent {
   componentDidMount() {
     if (document) {
-      document.getElementById('office-result-container-result-0').focus()
+      const { id } = this.props
+      if (id === 'result-4') {
+        document.querySelector('.search-info-panel').focus()
+      }
     }
   }
 
@@ -19,7 +22,14 @@ class OfficeResult extends React.PureComponent {
   }
 
   render() {
-    const { id, item: { fields: item, exprs: { distance } }, hoveredMarkerId } = this.props
+    const {
+      id,
+      item: {
+        fields: item,
+        exprs: { distance }
+      },
+      hoveredMarkerId
+    } = this.props
     if (!item) {
       return null
     }

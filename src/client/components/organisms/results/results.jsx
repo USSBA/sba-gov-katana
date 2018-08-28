@@ -38,12 +38,14 @@ class Results extends React.PureComponent {
     const searchTerm = submittedFieldValues[searchTermName]
     return (
       <div className={styles.searchInfoPanel}>
-        <SearchInfoPanel
-          pageNumber={pageNumber}
-          pageSize={pageSize}
-          total={total}
-          searchTerm={searchTerm}
-        />
+        <div className="search-info-panel" tabIndex="0" role="text" aria-label="search results information">
+          <SearchInfoPanel
+            pageNumber={pageNumber}
+            pageSize={pageSize}
+            total={total}
+            searchTerm={searchTerm}
+          />
+        </div>
       </div>
     )
   }

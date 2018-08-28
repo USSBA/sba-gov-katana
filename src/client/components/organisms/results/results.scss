@@ -28,8 +28,7 @@
 
 .searchInfoPanel {
   background-color: white;
-  padding-left: 20px;
-  padding-top: 14px;
+  padding: 14px 20px 0;
   @include grid-media($sba-grid-small) {
     padding-bottom: 20px;
   }
