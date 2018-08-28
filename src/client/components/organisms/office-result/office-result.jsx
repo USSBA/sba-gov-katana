@@ -10,8 +10,8 @@ import classNames from 'classnames'
 class OfficeResult extends React.PureComponent {
   componentDidMount() {
     if (document) {
-      const { id } = this.props
-      if (id === 'result-4') {
+      const { id, length } = this.props
+      if (id === `result-${length - 1}`) {
         document.querySelector('.search-info-panel').focus()
       }
     }

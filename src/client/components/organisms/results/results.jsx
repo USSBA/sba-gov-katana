@@ -79,7 +79,8 @@ class Results extends React.PureComponent {
           onResultHover: id => {
             this.props.onResultHover(id)
           },
-          hoveredMarkerId
+          hoveredMarkerId,
+          length: this.props.items.length
         })
       })
       return mappedChildren
