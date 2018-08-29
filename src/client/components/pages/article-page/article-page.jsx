@@ -1,4 +1,5 @@
 import React from 'react'
+import { size } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -22,6 +23,13 @@ class ArticlePage extends React.Component {
     if (pathname) {
       fetchContentIfNeeded('articles', 'articles', {
         url: pathname
+      }).then(result => {
+        const { data: { items } } = result
+
+        if (size(items)) {
+          const { id } = items[0]
+          fetchContentIfNeeded('article', `node/${id}`)
+        }
       })
     }
   }
@@ -44,25 +52,11 @@ class ArticlePage extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  const { contentReducer: { articles } } = reduxState
-
-  let articleProp = {}
-  if (articles) {
-    const { items } = articles
-    if (articles.count === 0) {
-      articleProp = {
-        article: null
-      }
-    } else if (items && items.length > 0) {
-      articleProp = {
-        article: items[0]
-      }
-    }
-  }
+function mapStateToProps(state, ownProps) {
+  const { contentReducer: { article } } = state
 
   return {
-    ...articleProp,
+    article,
     location: ownProps.location
   }
 }
@@ -73,6 +67,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(ArticlePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage)
 
 export { ArticlePage }

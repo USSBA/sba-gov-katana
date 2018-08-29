@@ -1,4 +1,5 @@
 import React from 'react'
+import { size } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -22,6 +23,13 @@ class DocumentPage extends React.Component {
     if (pathname) {
       fetchContentIfNeeded('documents', 'documents', {
         url: pathname
+      }).then(result => {
+        const { data: { items } } = result
+
+        if (size(items)) {
+          const { id } = items[0]
+          fetchContentIfNeeded('document', `node/${id}`)
+        }
       })
     }
   }
@@ -57,25 +65,11 @@ class DocumentPage extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  const { contentReducer: { documents } } = reduxState
-
-  let documentProp = {}
-  if (documents) {
-    const { items } = documents
-    if (documents.count === 0) {
-      documentProp = {
-        document: null
-      }
-    } else if (items && items.length > 0) {
-      documentProp = {
-        document: items[0]
-      }
-    }
-  }
+function mapStateToProps(state, ownProps) {
+  const { contentReducer: { document } } = state
 
   return {
-    ...documentProp,
+    document,
     // must map router location to props here so that props and nextProps
     // differ when location has changed
     location: ownProps.location
@@ -88,4 +82,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(DocumentPage)
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentPage)
