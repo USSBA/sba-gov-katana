@@ -76,8 +76,10 @@ app.use(function(req, res, next) {
       }
 
       const clientConfig = {
+        counsellorCta: config.get('counsellorCta.nodeId'),
         debug: config.get('developmentOptions.client.logging'),
         forPartners: config.get('features.forPartners'),
+        geoLocator: config.get('features.geoLocator'),
         googleAnalytics: config.get('googleAnalytics'),
         googleMapsApiKey: config.get('googleMapsApiKey'),
         govdelivery: config.get('govdelivery.popupEnabled'),
@@ -88,10 +90,7 @@ app.use(function(req, res, next) {
         responseStatus: responseStatus,
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
-        showSbic: config.get('features.showSbic'),
-        counsellorCta: config.get('counsellorCta.nodeId'),
-        geoLocator: config.get('features.geoLocator'),
-        googleMapsApiKey: config.get('googleMapsApiKey')
+        showSbic: config.get('features.showSbic')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       next()
