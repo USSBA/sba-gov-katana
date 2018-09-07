@@ -13,7 +13,7 @@ function fetchContentById(req, res) {
       'https://' + path.join(config.get('content.endpoint'), 'Prod', 'api', 'content', type, id + '.json')
     axios
       .get(uri, {
-        headers: { 'Accept-Language': userPreferredLanguage },
+        // headers: { 'accept-language': userPreferredLanguage },
         params: req.query
       })
       .then(result => {
