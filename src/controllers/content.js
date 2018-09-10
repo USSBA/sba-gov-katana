@@ -8,8 +8,8 @@ function fetchContentById(req, res) {
   let headers = {}
   if (req.headers && req.headers['accept-language']) {
     headers = { 'Accept-Language': req.headers['accept-language'] }
-    console.log('HEADERS', headers)
   }
+  console.log('HEADERS', headers)
   if (req.params && req.params.type && req.params.id) {
     const type = req.params.type
     const id = req.params.id
