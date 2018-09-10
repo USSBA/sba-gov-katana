@@ -175,6 +175,7 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnvironment: config.get('foresee.environment'),
     mainBundleFile: mainBundleFile
   })
+  console.log('langCode', req.preferredLanguage)
   const handleRedirects = async function() {
     const url = req.url
     let redirectUrl
