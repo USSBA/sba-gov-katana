@@ -1,12 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { size } from 'lodash'
 
 import DocumentArticle from '../../templates/document-article/document-article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import styles from './article-page.scss'
-import * as ContentActions from '../../../actions/content.js'
 import { Loader } from 'atoms'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class ArticlePage extends React.Component {
   constructor() {
@@ -16,19 +15,31 @@ class ArticlePage extends React.Component {
     }
   }
 
-  componentWillMount() {
-    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
+  async componentDidMount() {
+    const { location: { pathname } } = this.props
 
     if (pathname) {
-      fetchContentIfNeeded('articles', 'articles', {
-        url: pathname
-      })
+      try {
+        const { data: { items } } = await fetchSiteContent('articles', 'articles', {
+          url: pathname
+        })
+
+        if (size(items)) {
+          const { id } = items[0]
+          const { data: article } = await fetchSiteContent('article', `node/${id}`)
+          this.setState({ article })
+        }
+      } catch (e) {
+        console.error(e)
+      }
     }
   }
 
   render() {
-    const { article, location: { pathname } } = this.props
-    if (pathname && document !== null) {
+    const { location: { pathname } } = this.props
+    const { article } = this.state
+
+    if (pathname && article !== null) {
       if (article) {
         return <DocumentArticle article={article} />
       } else {
@@ -44,35 +55,5 @@ class ArticlePage extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  const { contentReducer: { articles } } = reduxState
-
-  let articleProp = {}
-  if (articles) {
-    const { items } = articles
-    if (articles.count === 0) {
-      articleProp = {
-        article: null
-      }
-    } else if (items && items.length > 0) {
-      articleProp = {
-        article: items[0]
-      }
-    }
-  }
-
-  return {
-    ...articleProp,
-    location: ownProps.location
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(ArticlePage)
-
+export default ArticlePage
 export { ArticlePage }
