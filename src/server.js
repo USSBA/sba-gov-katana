@@ -54,6 +54,7 @@ app.use(function(req, res, next) {
   const sessionCookie = _.find(_.keys(req.cookies), key => {
     return _.startsWith(key, 'SSESS')
   })
+  console.log('ACCEPT', accepts(req))
   console.log('PreferredLanguage: ', req.preferredLanguage)
   let hasSessionCookie = false
   if (sessionCookie) {
