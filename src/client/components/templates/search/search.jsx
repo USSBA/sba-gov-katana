@@ -253,6 +253,11 @@ class SearchTemplate extends React.PureComponent {
     )
   }
 
+  handleSearch() {
+    this.props.onHandleEvent()
+    this.onSearch()
+  }
+
   render() {
     const { results, searchParams: { pageSize } } = this.state
     const { children, count, extraClassName, paginate } = this.props
@@ -260,7 +265,7 @@ class SearchTemplate extends React.PureComponent {
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
         items: results,
-        onSearch: this.onSearch.bind(this),
+        onSearch: this.handleSearch.bind(this),
         onFieldChange: this.onChange.bind(this),
         fieldValues: this.state.searchParams,
         submittedFieldValues: this.state.submittedSearchParams,
@@ -296,7 +301,7 @@ SearchTemplate.propTypes = {
   location: PropTypes.string,
   isLoading: PropTypes.bool,
   scrollToTopAfterSearch: PropTypes.bool,
-  onPaginate: PropTypes.func
+  onHandleEvent: PropTypes.func
 }
 
 SearchTemplate.defaultProps = {
@@ -305,7 +310,7 @@ SearchTemplate.defaultProps = {
   paginate: true,
   isLoading: false,
   scrollToTopAfterSearch: true,
-  onPaginate: () => {}
+  onHandleEvent: () => {}
 }
 
 function mapReduxStateToProps(reduxState, props) {
