@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import moment from 'moment'
 import queryString from 'querystring'
 import { includes, isEmpty, last } from 'lodash'
@@ -158,12 +159,16 @@ export class DocumentArticle extends React.Component {
         }
       }
 
+      const titleClassName = classNames({
+        'document-article-title': true,
+        [s.title]: true,
+        [s.titleMarginBottom]: type
+      })
+
       return (
         <div className={'document-article ' + s.page}>
           <Label type={type} id={!isEmpty(data.documentIdNumber) && data.documentIdNumber} />
-          <h1 className={`document-article-title ${s.title} ${type && s.titleMarginBottom}`}>
-            {data.title}
-          </h1>
+          <h1 className={titleClassName}>{data.title}</h1>
           {includes(data.category, PRESS_RELEASE) && (
             <h5>
               Last updated {moment.unix(data.updated).format('MMMM D, YYYY')}

@@ -96,8 +96,7 @@ class DetailCard extends React.Component {
   render() {
     const doc = this.props.data
     if (doc) {
-      // TODO: DRY
-      const { category, type: pageType } = doc
+      const { category, documents, type: pageType } = doc
 
       let type
       if (pageType === 'document') {
@@ -106,13 +105,12 @@ class DetailCard extends React.Component {
         type = category[0]
       }
 
-      const idData =
-        doc.documents && doc.documents.length > 0
-          ? doc.documents[0]
-          : {
-              idType: 'UNK',
-              number: 'UNK'
-            }
+      const idData = size(documents)
+        ? doc.documents[0]
+        : {
+            idType: 'UNK',
+            number: 'UNK'
+          }
 
       const { showBorder } = this.props
 

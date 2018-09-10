@@ -1,13 +1,11 @@
 import React from 'react'
 import { size } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import DocumentArticle from '../../templates/document-article/document-article.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import styles from './document-page.scss'
-import * as ContentActions from '../../../actions/content.js'
 import { Loader } from 'atoms'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class DocumentPage extends React.Component {
   constructor() {
@@ -17,38 +15,26 @@ class DocumentPage extends React.Component {
     }
   }
 
-  componentWillMount() {
-    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
-
-    if (pathname) {
-      fetchContentIfNeeded('documents', 'documents', {
-        url: pathname
-      }).then(result => {
-        const { data: { items } } = result
-
-        if (size(items)) {
-          const { id } = items[0]
-          fetchContentIfNeeded('document', `node/${id}`)
-        }
-      })
-    }
+  async componentDidMount() {
+    const { location: { pathname } } = this.props
+    await this.fetchDocument(pathname)
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { actions: { fetchContentIfNeeded }, location: { pathname } } = this.props
+  async componentWillReceiveProps(nextProps) {
+    const { location: { pathname } } = this.props
     const { location: { pathname: nextPathname } } = nextProps
 
     // Re-render the page with new document data when we remain on `/documents`
     // and the DocumentPage but the location has changed.
     if (pathname !== nextPathname) {
-      fetchContentIfNeeded('documents', 'documents', {
-        url: nextPathname
-      })
+      await this.fetchDocument(nextPathname)
     }
   }
 
   render() {
-    const { document, location: { pathname } } = this.props
+    const { location: { pathname } } = this.props
+    const { document } = this.state
+
     if (pathname && document !== null) {
       if (document) {
         return <DocumentArticle document={document} />
@@ -63,23 +49,24 @@ class DocumentPage extends React.Component {
       return <ErrorPage />
     }
   }
-}
 
-function mapStateToProps(state, ownProps) {
-  const { contentReducer: { document } } = state
+  async fetchDocument(pathname) {
+    if (pathname) {
+      try {
+        const { data: { items } } = await fetchSiteContent('documents', 'documents', {
+          url: pathname
+        })
 
-  return {
-    document,
-    // must map router location to props here so that props and nextProps
-    // differ when location has changed
-    location: ownProps.location
+        if (size(items)) {
+          const { id } = items[0]
+          const { data: document } = await fetchSiteContent('document', `node/${id}`)
+          this.setState({ document })
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentPage)
+export default DocumentPage
