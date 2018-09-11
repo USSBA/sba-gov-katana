@@ -8,10 +8,12 @@ function fetchContentById(req, res) {
   if (req.params && req.params.type && req.params.id) {
     const type = req.params.type
     const id = req.params.id
+    const userPreferredLanguage = req.headers['accept-language']
     const uri =
       'https://' + path.join(config.get('content.endpoint'), 'Prod', 'api', 'content', type, id + '.json')
     axios
       .get(uri, {
+        headers: { 'Accept-Language': userPreferredLanguage },
         params: req.query,
         responseType: 'json',
         // eslint-disable-next-line arrow-body-style
