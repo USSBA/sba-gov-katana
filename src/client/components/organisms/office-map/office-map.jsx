@@ -53,10 +53,10 @@ const OfficeMap = compose(
       fullscreenControl: false,
       styles: officeMapStyles
     },
-    defaultZoom: 10,
+    defaultZoom: 5.2,
     defaultCenter: {
-      lat: 38.910353,
-      lng: -77.017739
+      lat: 35.7301003,
+      lng: -97.096161
     },
     onDragEnd: onDragEnd,
     onTilesLoaded

@@ -63,7 +63,9 @@ class SearchTemplate extends React.PureComponent {
     delete queryParams.pageSize
     //calculate the actual  start value from the pageNumber parameter
     let { pageNumber } = queryParams
-    const { searchParams: { pageSize } } = this.state
+    const {
+      searchParams: { pageSize }
+    } = this.state
     pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
     //not using the calculate startIndex function here because we won't know the count yet
     queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
@@ -188,7 +190,10 @@ class SearchTemplate extends React.PureComponent {
 
   renderPaginator() {
     const { count } = this.props
-    const { results, searchParams: { pageSize } } = this.state
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
     const pageNumber = this.calculatePageNumber()
 
     let result = <div />
@@ -263,10 +268,17 @@ class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { results, searchParams: { pageSize } } = this.state
-    const { children, count, extraClassName, paginate } = this.props
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
+    console.log('***************', this.state.results)
+    const { children, count, extraClassName, paginate, isZeroState } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
+      if (child.props.hideOnZeroState && isZeroState) {
+        return null
+      }
       return React.cloneElement(child, {
         items: results,
         onSearch: this.handleSearch.bind(this),
@@ -305,7 +317,8 @@ SearchTemplate.propTypes = {
   location: PropTypes.string,
   isLoading: PropTypes.bool,
   scrollToTopAfterSearch: PropTypes.bool,
-  onHandleEvent: PropTypes.func
+  onPaginate: PropTypes.func,
+  isZeroState: PropTypes.bool
 }
 
 SearchTemplate.defaultProps = {
@@ -314,7 +327,8 @@ SearchTemplate.defaultProps = {
   paginate: true,
   isLoading: false,
   scrollToTopAfterSearch: true,
-  onHandleEvent: () => {}
+  isZeroState: true,
+  onPaginate: () => {}
 }
 
 function mapReduxStateToProps(reduxState, props) {
@@ -322,12 +336,14 @@ function mapReduxStateToProps(reduxState, props) {
   let count = 0
   let hasNoResults
   let isLoading = true
+  let isZeroState = props.isZeroState
 
   if (reduxState.contentReducer[props.searchType]) {
     items = reduxState.contentReducer[props.searchType].hit
     count = reduxState.contentReducer[props.searchType].found
     hasNoResults = count === 0
     isLoading = false
+    isZeroState = false
   }
 
   return {
@@ -335,7 +351,8 @@ function mapReduxStateToProps(reduxState, props) {
     location: props.location,
     count,
     hasNoResults,
-    isLoading
+    isLoading,
+    isZeroState
   }
 }
 
@@ -344,5 +361,8 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(SearchTemplate)
 export { SearchTemplate }

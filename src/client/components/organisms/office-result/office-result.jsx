@@ -22,8 +22,17 @@ class OfficeResult extends React.PureComponent {
   }
 
   render() {
+<<<<<<< HEAD
     const { id, item: { fields: item, exprs }, hoveredMarkerId } = this.props
     const distance = exprs ? exprs.distance : null
+=======
+    const {
+      id,
+      item: { fields: item, exprs },
+      hoveredMarkerId
+    } = this.props
+    const distance = exprs ? exprs.distance : ''
+>>>>>>> Zero state and no distance error fix
     if (!item) {
       return null
     }

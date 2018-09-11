@@ -69,10 +69,14 @@ class OfficeLookupPage extends React.Component {
 
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
-    const defaultZipCode = 20024
+    //const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
+<<<<<<< HEAD
+=======
+      //address: defaultZipCode,
+>>>>>>> Zero state and no distance error fix
       pageSize,
       type: defaultType
     }
@@ -88,7 +92,7 @@ class OfficeLookupPage extends React.Component {
       <SearchTemplate
         searchType="offices"
         defaultSearchParams={defaultSearchParams}
-        loadDefaultResults={true}
+        loadDefaultResults={false}
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
@@ -115,6 +119,10 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
+<<<<<<< HEAD
+=======
+            //value={defaultZipCode}
+>>>>>>> Zero state and no distance error fix
             validationFunction={input => {
               // only validate if there is an input value
               let result = true
@@ -173,7 +181,7 @@ class OfficeLookupPage extends React.Component {
           }}
           hoveredMarkerId={hoveredMarkerId}
         />
-        <StyleWrapperDiv className={styles.officeResults}>
+        <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
           <Results
             id="office-results"
             paginate
@@ -213,5 +221,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(OfficeLookupPage)
 export { OfficeLookupPage }
