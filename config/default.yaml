@@ -73,6 +73,7 @@ features:
     true404: false
     office:
         sbaOfficeNames: ['SBA district office', 'SBA regional office']
+    pressRelease: false
 sizestandards:
     endpoint: placeholder
 cache:

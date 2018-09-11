@@ -1,4 +1,5 @@
 import React from 'react'
+import { size } from 'lodash'
 
 import styles from './document-article.scss'
 import { VersionsList } from 'atoms'
@@ -25,7 +26,7 @@ class DocumentArticleTemplate extends React.Component {
           <DocumentArticle data={data} type={doc ? 'document' : 'article'} />
           {doc && <VersionsList doc={data} />}
         </div>
-        {data.relatedDocuments.length > 0 && <RelatedDocumentCards data={data} />}
+        {Boolean(size(data.relatedDocuments)) && <RelatedDocumentCards data={data} />}
       </div>
     )
   }

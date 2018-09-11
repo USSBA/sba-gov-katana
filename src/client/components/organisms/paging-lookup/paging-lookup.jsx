@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { bindActionCreators } from 'redux'
-import _ from 'lodash'
+import { assign, chain, find, includes, map, mapValues, pickBy, size } from 'lodash'
 
 import styles from './paging-lookup.scss'
 import * as ContentActions from '../../../actions/content.js'
@@ -39,7 +39,7 @@ class PagingLookup extends React.Component {
 
   createQueryFromProps(ownProps) {
     const propsSource = ownProps
-    const defaults = _.chain(propsSource.taxonomyFilters)
+    const defaults = chain(propsSource.taxonomyFilters)
       .keyBy()
       .mapValues(_ => {
         return 'All'
@@ -48,18 +48,18 @@ class PagingLookup extends React.Component {
 
     const queryParams = getQueryParams()
     // look for aliases in the query params, but filter out any that are undefined
-    const aliasMapping = _.pickBy({
+    const aliasMapping = pickBy({
       searchTerm: queryParams.search || queryParams.q,
       documentType: queryParams.type,
       documentActivity: queryParams.activity,
       page: Number(queryParams.page) || 1
     })
 
-    const filteredQueryParams = _.pickBy(queryParams, (value, key) => {
-      return _.includes(propsSource.taxonomyFilters, key)
+    const filteredQueryParams = pickBy(queryParams, (value, key) => {
+      return includes(propsSource.taxonomyFilters, key)
     })
 
-    const finalQuery = _.assign(
+    const finalQuery = assign(
       {
         sortBy: queryParams.sortBy || ownProps.defaultSortBy,
         searchTerm: ''
@@ -91,8 +91,8 @@ class PagingLookup extends React.Component {
         taxonomies[index].terms.unshift('All')
       }
 
-      const rearrangedTaxonomyOrder = _.map(this.props.taxonomyFilters, taxonomyVocabularyName => {
-        return _.find(taxonomies, { name: taxonomyVocabularyName })
+      const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName => {
+        return find(taxonomies, { name: taxonomyVocabularyName })
       })
 
       // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
@@ -104,7 +104,7 @@ class PagingLookup extends React.Component {
       updatedProps.taxonomies = rearrangedTaxonomyOrder
     }
 
-    if (nextProps.itemReponse) {
+    if (nextProps.itemResponse) {
       updatedProps.isFetching = false
     }
 
@@ -114,7 +114,7 @@ class PagingLookup extends React.Component {
   handleReset(ownProps) {
     this.fireDocumentationLookupEvent('clearFilters')
     this.setState(
-      _.assign(this.createOriginalState(this.props), {
+      assign(this.createOriginalState(this.props), {
         query: {
           searchTerm: '',
           documentActivity: 'All',
@@ -188,10 +188,10 @@ class PagingLookup extends React.Component {
         const start = (this.state.query.page - 1) * config.pageSize
         const end = start + config.pageSize
 
-        const remappedState = _.mapValues(this.state.query, value => {
+        const remappedState = mapValues(this.state.query, value => {
           return value === 'All' ? 'all' : value
         })
-        const queryTerms = _.assign({}, remappedState, { start, end })
+        const queryTerms = assign({}, remappedState, { start, end })
 
         this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryTerms)
       }
@@ -219,7 +219,7 @@ class PagingLookup extends React.Component {
     const newQueryFieldValue = {}
     newQueryFieldValue[field] = value
     const currentQuery = this.state.query
-    const newQuery = _.assign({}, currentQuery, newQueryFieldValue)
+    const newQuery = assign({}, currentQuery, newQueryFieldValue)
     this.setState({ query: newQuery })
   }
 
@@ -240,8 +240,8 @@ class PagingLookup extends React.Component {
     const lookupProps = {
       title: this.props.title,
       queryState: this.state.query,
-      items: this.props.itemReponse.items,
-      itemCount: this.props.itemReponse.count,
+      items: this.props.itemResponse.items,
+      itemCount: this.props.itemResponse.count,
       pageNumber: this.state.query.page,
       pageSize: config.pageSize,
       taxonomies: this.state.taxonomies,
@@ -271,7 +271,7 @@ PagingLookup.defaultProps = {
   taxonomyFilters: [],
   fieldsToShowInDetails: [],
   sortByOptions: [],
-  itemReponse: {
+  itemResponse: {
     items: undefined,
     count: 0
   }
@@ -279,8 +279,9 @@ PagingLookup.defaultProps = {
 
 function mapReduxStateToProps(reduxState, ownProps) {
   const { taxonomies } = reduxState.contentReducer
+
   return {
-    itemReponse: reduxState.contentReducer[ownProps.type],
+    itemResponse: reduxState.contentReducer[ownProps.type],
     taxonomies: taxonomies
   }
 }

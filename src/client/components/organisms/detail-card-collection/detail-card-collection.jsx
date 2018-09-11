@@ -23,7 +23,9 @@ class DetailCardCollection extends React.Component {
   }
 
   render() {
-    return <div className="document-card-collection">{this.renderCards()}</div>
+    return (
+      <div className={'document-card-collection ' + styles.detailCardCollection}>{this.renderCards()}</div>
+    )
   }
 }
 

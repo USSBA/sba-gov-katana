@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { ArticlePage } from 'pages/article-page/article-page'
+import ArticlePage from 'pages/article-page/article-page'
 
 describe('ArticlePage', () => {
   test('should render an error page when no data is given', () => {
