@@ -54,7 +54,6 @@ app.use(function(req, res, next) {
   const sessionCookie = _.find(_.keys(req.cookies), key => {
     return _.startsWith(key, 'SSESS')
   })
-  // console.log('Session cookie: ', sessionCookie)
   let hasSessionCookie = false
   if (sessionCookie) {
     hasSessionCookie = true
