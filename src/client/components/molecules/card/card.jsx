@@ -25,11 +25,11 @@ const Card = props => {
 
   // TODO: use lede text instead of subtitle text
   let title = 'Learn more'
-  let url = ''
+  let uri = ''
   if (typeof link === 'string') {
-    url = link
+    uri = link
   } else {
-    url = link.url
+    uri = link.uri
     title = link.title
   }
 
@@ -44,14 +44,13 @@ const Card = props => {
       />
     )
 
-    if (!isEmpty(link) && url) {
-      imageMarkup = <Link to={url}>{imageMarkup}</Link>
+    if (!isEmpty(link) && uri) {
+      imageMarkup = <Link to={uri}>{imageMarkup}</Link>
     }
   }
 
-  const titleMarkup = url ? <Link to={url}>{titleText}</Link> : titleText
-
-  const learnMoreMarkup = url ? <Link to={url}>{title}</Link> : undefined
+  const titleMarkup = uri ? <Link to={uri}>{titleText}</Link> : titleText
+  const learnMoreMarkup = uri ? <Link to={uri}>{title}</Link> : undefined
 
   return (
     <div className={className} id={snakeCase('card', parentIndex, index)}>

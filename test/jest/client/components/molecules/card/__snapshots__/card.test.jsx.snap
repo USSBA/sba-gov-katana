@@ -5,18 +5,12 @@ exports[`Card does not error check malformed link 1`] = `
   className="card twoColumn"
   id="card"
 >
-  <a
-    onClick={[Function]}
-    style={Object {}}
-    target="_self"
-  >
-    <img
-      alt="kitten"
-      className="itemImage"
-      id="image-4-0"
-      src="https://placekitten.com/588/364"
-    />
-  </a>
+  <img
+    alt="kitten"
+    className="itemImage"
+    id="image-4-0"
+    src="https://placekitten.com/588/364"
+  />
   <div
     className="content content-with-image"
   >
@@ -24,13 +18,7 @@ exports[`Card does not error check malformed link 1`] = `
       className="itemTitle"
       id="title"
     >
-      <a
-        onClick={[Function]}
-        style={Object {}}
-        target="_self"
-      >
-        Kitten
-      </a>
+      Kitten
     </h4>
     <div>
       <hr
@@ -50,13 +38,6 @@ exports[`Card does not error check malformed link 1`] = `
       </p>
     </div>
   </div>
-  <a
-    onClick={[Function]}
-    style={Object {}}
-    target="_self"
-  >
-    dogs
-  </a>
 </div>
 `;
 
@@ -65,16 +46,12 @@ exports[`Card to render correctly 1`] = `
   className="card twoColumn"
   id="card"
 >
-  <a
-    href="https://en.wikipedia.org/wiki/Kitten"
-  >
-    <img
-      alt="kitten"
-      className="itemImage"
-      id="image-4-0"
-      src="https://placekitten.com/588/364"
-    />
-  </a>
+  <img
+    alt="kitten"
+    className="itemImage"
+    id="image-4-0"
+    src="https://placekitten.com/588/364"
+  />
   <div
     className="content content-with-image"
   >
@@ -82,11 +59,7 @@ exports[`Card to render correctly 1`] = `
       className="itemTitle"
       id="title"
     >
-      <a
-        href="https://en.wikipedia.org/wiki/Kitten"
-      >
-        Kitten
-      </a>
+      Kitten
     </h4>
     <div>
       <hr
@@ -106,11 +79,6 @@ exports[`Card to render correctly 1`] = `
       </p>
     </div>
   </div>
-  <a
-    href="https://en.wikipedia.org/wiki/Kitten"
-  >
-    Learn more about kittens
-  </a>
 </div>
 `;
 
