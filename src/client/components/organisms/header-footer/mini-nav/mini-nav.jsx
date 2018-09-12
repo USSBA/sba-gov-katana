@@ -88,7 +88,12 @@ class MiniNav extends React.Component {
       <div className={styles.miniNav}>
         <ul id="deskop-mini-nav" aria-label="mini-navigation">
           <GoogleTranslate />
-          <UtilityLink id="deskop-mini-nav-1" key={1} url="https://es.sba.gov/" text="SBA en español" />
+          <UtilityLink
+            id="deskop-mini-nav-1"
+            key={1}
+            url="/utilizando-google-translate"
+            text="SBA en Español"
+          />
           {forPartnersOrLenders}
           <UtilityLink id="deskop-mini-nav-3" key={3} url="/about-sba/sba-newsroom" text="Newsroom" />
           <UtilityLink
