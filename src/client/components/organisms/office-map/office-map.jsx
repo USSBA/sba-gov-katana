@@ -256,17 +256,20 @@ class OfficeMapApp extends React.PureComponent {
             const mapCenter = map.getCenter()
             this.setState({ points: [] })
             onDragEnd()
-            onFieldChange('mapCenter', `${mapCenter.lat()},${mapCenter.lng()}`, {
-              shouldTriggerSearch: true,
-              shouldResetPageNumber: true
-            })
-            onFieldChange('mapCenter', '')
+            onFieldChange(
+              'mapCenter',
+              `${mapCenter.lat()},${mapCenter.lng()}`,
+              {
+                shouldTriggerSearch: true,
+                shouldResetPageNumber: true
+              },
+              () => {
+                onFieldChange('address', '')
+              }
+            )
           }}
           onMarkerClick={e => {
-            const {
-              fields: item,
-              exprs: { distance }
-            } = e
+            const { fields: item, exprs: { distance } } = e
             const selectedItem = {
               item,
               distance
