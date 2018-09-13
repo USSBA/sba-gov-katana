@@ -95,9 +95,7 @@ class OfficeLookupPage extends React.Component {
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
-        onHandleEvent={() => {
-          this.centerMap(false)
-        }}
+        onHandleEvent={this.centerMap.bind(this, false)}
       >
         <PrimarySearchBar
           id="office-primary-search-bar"
