@@ -177,9 +177,13 @@ class SearchTemplate extends React.PureComponent {
       search: `?${stringify(urlParams)}`
     })
 
-    this.setState({ isLoading: true })
-    this.setState({ submittedSearchParams: filteredSearchParams })
-    this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
+    this.setState(
+      {
+        isLoading: true,
+        submittedSearchParams: filteredSearchParams
+      },
+      () => this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
+    )
   }
 
   renderPaginator() {
@@ -233,7 +237,7 @@ class SearchTemplate extends React.PureComponent {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
       },
-      this.props.onHandleEvent()
+      this.props.onHandleEvent
     )
   }
 
@@ -249,7 +253,7 @@ class SearchTemplate extends React.PureComponent {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
       },
-      this.props.onHandleEvent()
+      this.props.onHandleEvent
     )
   }
 
