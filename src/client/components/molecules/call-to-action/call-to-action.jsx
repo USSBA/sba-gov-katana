@@ -6,17 +6,21 @@ import styles from './call-to-action.scss'
 import { Button, DecorativeDash } from 'atoms'
 
 const CallToAction = props => {
-  const { blurb, buttonAction, image: { url: imageUrl, alt: imageAlt }, headline } = props
+  const {
+    blurb,
+    buttonAction: { buttonText, file, link, type },
+    image: { url: imageUrl, alt: imageAlt },
+    headline
+  } = props
   let { size: variation } = props
 
   let btnTitle
   let btnUrl
 
-  if (buttonAction.hasOwnProperty('file')) {
-    btnTitle = buttonAction.buttonText
-    btnUrl = buttonAction.file
-  } else if (buttonAction.hasOwnProperty('link')) {
-    const { link } = buttonAction
+  if (type === 'file') {
+    btnTitle = buttonText
+    btnUrl = file
+  } else if (type === 'link') {
     btnTitle = link.title
     btnUrl = link.url
   }
