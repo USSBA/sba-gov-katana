@@ -4,12 +4,12 @@
 }
 .centerContainer {
   @include grid-media($sba-grid-large) {
-    background: white;
     position: absolute;
     bottom: 0px;
     top: 40px;
     right: 0px;
     left: 0px;
+    pointer-events: none;
   }
 }
 .resultsWithPagination {

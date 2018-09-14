@@ -1,9 +1,10 @@
 .resultsMessage {
   text-align: left;
   width: 100%;
-  margin: 10px auto;
   padding: 20px 20px;
   background-color: $sba-gray-lighter;
+  pointer-events: all;
+  border-top: 10px solid #fff;
 
   ul {
     list-style: circle;
