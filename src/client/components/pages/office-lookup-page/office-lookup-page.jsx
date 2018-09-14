@@ -7,7 +7,6 @@ import { find, cloneDeep, isEmpty } from 'lodash'
 import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
 import { PrimarySearchBar, Results, OfficeResult, OfficeMap } from 'organisms'
-import { NoResultsSection } from 'molecules'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
@@ -80,11 +79,10 @@ class OfficeLookupPage extends React.Component {
     }
     const officeTypeTaxonomy = this.getTaxonomy('officeType')
     const officeServiceTaxonomy = this.getTaxonomy('officeService')
-    const { items, isLoading } = this.props
     const searchTips = [
-      'Try a different search term, like “counseling” instead of "counselor".',
-      'Try searching with different ZIP code.',
-      'Try filtering by a different service, resource type or distance.'
+      'Try using different search term.',
+      'Search near a different ZIP code.',
+      'Contact your closest SBA office.'
     ]
 
     return (
@@ -154,7 +152,7 @@ class OfficeLookupPage extends React.Component {
         </SecondarySearchBar> */}
         {/*
         TODO: Uncomment this if we need a no results section
-        <NoResultsSection searchTips={searchTips}/> */}
+         */}
         <OfficeMap
           id="office-map"
           onMarkerClick={item => {
@@ -188,6 +186,8 @@ class OfficeLookupPage extends React.Component {
             onResultHover={id => {
               this.setHoveredMarkerId(id)
             }}
+            searchTips={searchTips}
+            displaySearchTipsOnNoResults
           >
             <OfficeResult />
           </Results>

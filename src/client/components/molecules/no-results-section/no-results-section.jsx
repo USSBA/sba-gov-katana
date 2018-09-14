@@ -9,7 +9,6 @@ class NoResultsSection extends React.Component {
     return searchTips.map(function(tip, index) {
       return (
         <li key={`search-tip-${index}`}>
-          <div className={styles.bullet} />
           <p>{tip}</p>
         </li>
       )
@@ -22,35 +21,12 @@ class NoResultsSection extends React.Component {
       return null
     }
     return (
-      <div className="no-results-view">
-        <div className={styles.container + ' ' + styles.emptyDocuments}>
-          <div>
-            <p className={styles.emptyDocumentsMessage}>{message}</p>
-
-            {searchTips.length > 0 && (
-              <div className={styles.resultsMessage}>
-                <p>
-                  <strong>Search tips:</strong>
-                </p>
-                <ul>
-                  {/* <li>
-                                    <div className={styles.bullet} />
-                                    <p>Try a different search term, like “counseling” instead of "counselor".</p>
-                                </li>
-                                <li>
-                                    <div className={styles.bullet} />
-                                    <p>Try searching with different ZIP code.</p>
-                                </li>
-                                <li>
-                                    <div className={styles.bullet} />
-                                    <p>Try filtering by a different service, resource type or distance.</p>
-                                </li> */}
-                  {this.renderSearchTips()}
-                </ul>
-              </div>
-            )}
+      <div className="no-results-view" tabIndex="0">
+        {searchTips.length > 0 && (
+          <div className={styles.resultsMessage}>
+            <ul>{this.renderSearchTips()}</ul>
           </div>
-        </div>
+        )}
       </div>
     )
   }
@@ -64,7 +40,6 @@ NoResultsSection.propTypes = {
 
 NoResultsSection.defaultProps = {
   searchTips: [],
-  message: 'No results found',
   isLoading: false,
   items: []
 }

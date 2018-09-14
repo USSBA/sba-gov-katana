@@ -2,6 +2,11 @@
   position: relative;
 }
 
+.noResults {
+  position: absolute;
+  top: 70px;
+}
+
 .searchBar {
   background-color: $sba-blue;
   label,

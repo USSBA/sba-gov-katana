@@ -1,13 +1,11 @@
 import React from 'react'
 import styles from './results.scss'
-import { Address, ContactCard, PhoneNumber, Paginator } from 'molecules'
+import { NoResultsSection, Paginator } from 'molecules'
 import { SearchInfoPanel } from 'atoms'
 import { OfficeDetail } from 'organisms'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { isEmpty } from 'lodash'
-import Search from '../../atoms/icons/search'
-
 class Results extends React.PureComponent {
   super() {
     this.renderPaginator = this.renderPaginator.bind(this)
@@ -20,7 +18,7 @@ class Results extends React.PureComponent {
   renderPaginator() {
     const { total, pageSize, pageNumber, onBack, onForward } = this.props
 
-    return (
+    return this.shouldRenderPaginator() ? (
       <div className={styles.paginator}>
         <Paginator
           pageNumber={pageNumber}
@@ -30,24 +28,51 @@ class Results extends React.PureComponent {
           onForward={onForward}
         />
       </div>
-    )
+    ) : null
+  }
+  shouldRenderPaginator() {
+    const { isLoading, hidePaginatorOnNoResults, items, paginate } = this.props
+    //don't render paginator while the page is loading, if pagination is disabled, or if the paginator is
+    //disabled and there are no results
+    return !isLoading && paginate && !(hidePaginatorOnNoResults && !items.length)
+  }
+  shouldShowSearchTips() {
+    const { isLoading, displaySearchTipsOnNoResults, items } = this.props
+    return !isLoading && displaySearchTipsOnNoResults && !items.length
+  }
+
+  renderSearchTips(searchTips = this.props.searchTips) {
+    const { isLoading } = this.props
+    return this.shouldShowSearchTips() && searchTips.length ? (
+      <NoResultsSection searchTips={searchTips} />
+    ) : null
   }
 
   renderSearchInfoPanel() {
-    const { total, pageSize, pageNumber, searchTermName, submittedFieldValues } = this.props
+    const {
+      total,
+      pageSize,
+      pageNumber,
+      searchTermName,
+      submittedFieldValues,
+      hasSearchInfoPanel,
+      isLoading
+    } = this.props
+
     const searchTerm = submittedFieldValues[searchTermName]
-    return (
+    return hasSearchInfoPanel ? (
       <div className={styles.searchInfoPanel}>
-        <div className="search-info-panel" tabIndex="0" role="text" aria-label="search results information">
+        <div className="search-info-panel" tabIndex="0" role="text">
           <SearchInfoPanel
             pageNumber={pageNumber}
             pageSize={pageSize}
             total={total}
             searchTerm={searchTerm}
+            isLoading={isLoading}
           />
         </div>
       </div>
-    )
+    ) : null
   }
 
   showDetailState(item) {
@@ -58,19 +83,9 @@ class Results extends React.PureComponent {
     this.props.onClick({})
   }
 
-  render() {
-    const {
-      children,
-      id,
-      resultId,
-      paginate,
-      scroll,
-      hasSearchInfoPanel,
-      selectedItem,
-      hoveredMarkerId
-    } = this.props
-    const shouldShowDetailView = !isEmpty(selectedItem)
-    const childrenWithProps = this.props.items.map((item, index) => {
+  renderResults(results = this.props.items) {
+    const { children, resultId, hoveredMarkerId, paginate, hasSearchInfoPanel, scroll } = this.props
+    const resultsWithProps = results.map((item, index) => {
       const mappedChildren = React.Children.map(children, child => {
         return React.cloneElement(child, {
           item: item,
@@ -93,6 +108,13 @@ class Results extends React.PureComponent {
       [styles.resultContainer]: true
     })
 
+    return results.length ? <div className={divClassName}>{resultsWithProps}</div> : null
+  }
+
+  render() {
+    const { id, paginate, selectedItem } = this.props
+    const shouldShowDetailView = !isEmpty(selectedItem)
+
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
@@ -104,19 +126,20 @@ class Results extends React.PureComponent {
 
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
-        <div className={resultsClassName}>
-          {shouldShowDetailView ? (
-            <div>
-              <OfficeDetail selectedItem={selectedItem} hideDetailState={() => this.hideDetailState()} />
+        {shouldShowDetailView ? (
+          <div className={resultsClassName}>
+            <OfficeDetail selectedItem={selectedItem} hideDetailState={() => this.hideDetailState()} />
+          </div>
+        ) : (
+          <div className={resultsClassName}>
+            {this.renderSearchInfoPanel()}
+            <div className={styles.centerContainer}>
+              {this.renderSearchTips()}
+              {this.renderResults()}
             </div>
-          ) : (
-            <div>
-              {hasSearchInfoPanel && this.renderSearchInfoPanel()}
-              <div className={divClassName}>{childrenWithProps}</div>
-              {paginate && this.renderPaginator()}
-            </div>
-          )}
-        </div>
+            {this.renderPaginator()}
+          </div>
+        )}
       </div>
     )
   }
@@ -129,21 +152,29 @@ Results.defaultProps = {
   paginate: false,
   scroll: false,
   hasSearchInfoPanel: false,
+  displaySearchTipsOnNoResults: false,
+  hidePaginatorOnNoResults: true,
   searchTermName: '',
+  submittedFieldValues: [],
+  searchTips: [],
   onClick: () => {},
   onResultHover: () => {}
 }
 
 Results.propTypes = {
+  submittedFieldValues: PropTypes.array,
   items: PropTypes.array,
-  id: PropTypes.string, //.isRequired,
+  id: PropTypes.string,
   resultId: PropTypes.string,
   paginate: PropTypes.bool,
   scroll: PropTypes.bool,
   hasSearchInfoPanel: PropTypes.bool,
   searchTermName: PropTypes.string,
   onClick: PropTypes.func,
-  onResultHover: PropTypes.func
+  onResultHover: PropTypes.func,
+  searchTips: PropTypes.array,
+  displaySearchTipsOnNoResults: PropTypes.bool,
+  hidePaginatorOnNoResults: PropTypes.bool
 }
 
 export default Results

@@ -2,7 +2,16 @@
   max-height: calc(100% - 80px);
   pointer-events: all;
 }
-
+.centerContainer {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    bottom: 0px;
+    top: 40px;
+    right: 0px;
+    left: 0px;
+    pointer-events: none;
+  }
+}
 .resultsWithPagination {
   @include grid-media($sba-grid-large) {
     bottom: 66px;
@@ -11,7 +20,7 @@
 
 .resultsWithSearchInfo {
   @include grid-media($sba-grid-large) {
-    top: 40px;
+    top: 0px;
   }
 }
 
