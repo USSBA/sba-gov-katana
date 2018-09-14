@@ -10,16 +10,18 @@ class CoursesLayout extends React.PureComponent {
   makeGridRenderer(items) {
     // assume items is length = 12
     const mappedItems = items.map(item => {
+      const { courseUrl: { title: courseTitle, url: courseUrl }, image, summary, title } = item
       return {
-        image: item.image,
+        image,
         link: {
-          title: 'View course',
-          url: item.url
+          title: courseTitle || 'View course',
+          uri: courseUrl
         },
-        titleText: item.title,
-        subtitleText: item.summary
+        titleText: title,
+        subtitleText: summary
       }
     })
+
     return (
       <div>
         <CardCollection cards={mappedItems.slice(0, 4)} parentIndex={1} numberOverride={4} />
