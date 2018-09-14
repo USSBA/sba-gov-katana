@@ -44,9 +44,7 @@ class Results extends React.PureComponent {
   renderSearchTips(searchTips = this.props.searchTips) {
     const { isLoading } = this.props
     return this.shouldShowSearchTips() && searchTips.length ? (
-      <div>
-        <NoResultsSection searchTips={searchTips} />
-      </div>
+      <NoResultsSection searchTips={searchTips} />
     ) : null
   }
 
@@ -64,7 +62,7 @@ class Results extends React.PureComponent {
     const searchTerm = submittedFieldValues[searchTermName]
     return hasSearchInfoPanel ? (
       <div className={styles.searchInfoPanel}>
-        <div className="search-info-panel" tabIndex="0" role="text" aria-label="search results information">
+        <div className="search-info-panel" tabIndex="0" role="text">
           <SearchInfoPanel
             pageNumber={pageNumber}
             pageSize={pageSize}
@@ -157,12 +155,14 @@ Results.defaultProps = {
   displaySearchTipsOnNoResults: false,
   hidePaginatorOnNoResults: true,
   searchTermName: '',
+  submittedFieldValues: [],
   searchTips: [],
   onClick: () => {},
   onResultHover: () => {}
 }
 
 Results.propTypes = {
+  submittedFieldValues: PropTypes.array,
   items: PropTypes.array,
   id: PropTypes.string,
   resultId: PropTypes.string,
