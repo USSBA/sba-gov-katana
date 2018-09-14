@@ -177,9 +177,13 @@ class SearchTemplate extends React.PureComponent {
       search: `?${stringify(urlParams)}`
     })
 
-    this.setState({ isLoading: true })
-    this.setState({ submittedSearchParams: filteredSearchParams })
-    this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
+    this.setState(
+      {
+        isLoading: true,
+        submittedSearchParams: filteredSearchParams
+      },
+      () => this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
+    )
   }
 
   renderPaginator() {
@@ -233,7 +237,7 @@ class SearchTemplate extends React.PureComponent {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
       },
-      this.props.onHandleEvent()
+      this.props.onHandleEvent
     )
   }
 
@@ -249,8 +253,13 @@ class SearchTemplate extends React.PureComponent {
         shouldTriggerSearch: true,
         shouldResetPageNumber: false
       },
-      this.props.onHandleEvent()
+      this.props.onHandleEvent
     )
+  }
+
+  handleSearch() {
+    this.props.onHandleEvent()
+    this.onSearch()
   }
 
   render() {
@@ -260,7 +269,7 @@ class SearchTemplate extends React.PureComponent {
     const childrenWithProps = React.Children.map(children, child => {
       return React.cloneElement(child, {
         items: results,
-        onSearch: this.onSearch.bind(this),
+        onSearch: this.handleSearch.bind(this),
         onFieldChange: this.onChange.bind(this),
         fieldValues: this.state.searchParams,
         submittedFieldValues: this.state.submittedSearchParams,
@@ -296,7 +305,7 @@ SearchTemplate.propTypes = {
   location: PropTypes.string,
   isLoading: PropTypes.bool,
   scrollToTopAfterSearch: PropTypes.bool,
-  onPaginate: PropTypes.func
+  onHandleEvent: PropTypes.func
 }
 
 SearchTemplate.defaultProps = {
@@ -305,7 +314,7 @@ SearchTemplate.defaultProps = {
   paginate: true,
   isLoading: false,
   scrollToTopAfterSearch: true,
-  onPaginate: () => {}
+  onHandleEvent: () => {}
 }
 
 function mapReduxStateToProps(reduxState, props) {

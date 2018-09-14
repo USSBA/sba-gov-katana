@@ -6,13 +6,24 @@ import styles from './call-to-action.scss'
 import { Button, DecorativeDash } from 'atoms'
 
 const CallToAction = props => {
-  let { size: variation } = props
   const {
     blurb,
-    buttonAction: { link: { title: btnTitle, url: btnUrl } },
+    buttonAction: { buttonText, file, link, type },
     image: { url: imageUrl, alt: imageAlt },
     headline
   } = props
+  let { size: variation } = props
+
+  let btnTitle
+  let btnUrl
+
+  if (type === 'file') {
+    btnTitle = buttonText
+    btnUrl = file
+  } else if (type === 'link') {
+    btnTitle = link.title
+    btnUrl = link.url
+  }
 
   // e.g. "Button only" (from Drupal) -> styles.buttonOnlyVariation
   variation = camelCase(`${variation.toLowerCase()} variation`)
