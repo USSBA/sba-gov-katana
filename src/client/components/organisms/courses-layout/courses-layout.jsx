@@ -10,12 +10,12 @@ class CoursesLayout extends React.PureComponent {
   makeGridRenderer(items) {
     // assume items is length = 12
     const mappedItems = items.map(item => {
-      const { courseUrl: { title: courseTitle, url: courseUrl }, image, summary, title } = item
+      const { image, summary, title, url } = item
       return {
         image,
         link: {
-          title: courseTitle || 'View course',
-          uri: courseUrl
+          title: 'View course',
+          uri: url
         },
         titleText: title,
         subtitleText: summary
