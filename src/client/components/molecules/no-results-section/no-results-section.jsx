@@ -9,7 +9,6 @@ class NoResultsSection extends React.Component {
     return searchTips.map(function(tip, index) {
       return (
         <li key={`search-tip-${index}`}>
-          {/* <div className={styles.bullet} /> */}
           <p>{tip}</p>
         </li>
       )
@@ -24,7 +23,7 @@ class NoResultsSection extends React.Component {
     return (
       <div className="no-results-view">
         {searchTips.length > 0 && (
-          <div className={`${styles.resultsMessage} text-section`}>
+          <div className={styles.resultsMessage}>
             <ul>{this.renderSearchTips()}</ul>
           </div>
         )}
