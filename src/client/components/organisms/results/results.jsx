@@ -52,7 +52,8 @@ class Results extends React.PureComponent {
       pageNumber,
       searchTermName,
       submittedFieldValues,
-      hasSearchInfoPanel
+      hasSearchInfoPanel,
+      isLoading
     } = this.props
 
     const searchTerm = submittedFieldValues[searchTermName]
@@ -64,6 +65,7 @@ class Results extends React.PureComponent {
             pageSize={pageSize}
             total={total}
             searchTerm={searchTerm}
+            isLoading={isLoading}
           />
         </div>
       </div>

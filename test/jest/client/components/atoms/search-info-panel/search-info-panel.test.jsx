@@ -15,7 +15,7 @@ describe('SearchInfoPanel atom', () => {
   })
 
   test('displays text for zero results', () => {
-    const expected = 'Results 0 - 0 of 0'
+    const expected = 'No results found'
     const component = shallow(<SearchInfoPanel />)
     const spanText = component.find('span').map(node => {
       return node.text()
