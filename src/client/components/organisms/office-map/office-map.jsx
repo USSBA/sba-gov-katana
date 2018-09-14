@@ -253,20 +253,22 @@ class OfficeMapApp extends React.PureComponent {
           onMapMounted={this.onMapMounted.bind(this)}
           onTilesLoaded={this.removeMapElementsFromTabOrder.bind(this)}
           onDragEnd={() => {
-            const mapCenter = map.getCenter()
-            this.setState({ points: [] })
-            onDragEnd()
-            onFieldChange(
-              'mapCenter',
-              `${mapCenter.lat()},${mapCenter.lng()}`,
-              {
-                shouldTriggerSearch: true,
-                shouldResetPageNumber: true
-              },
-              () => {
-                onFieldChange('address', '')
-              }
-            )
+            if (!isEmpty(map)) {
+              const mapCenter = map.getCenter()
+              this.setState({ points: [] })
+              onDragEnd()
+              onFieldChange(
+                'mapCenter',
+                `${mapCenter.lat()},${mapCenter.lng()}`,
+                {
+                  shouldTriggerSearch: true,
+                  shouldResetPageNumber: true
+                },
+                () => {
+                  onFieldChange('address', '')
+                }
+              )
+            }
           }}
           onMarkerClick={e => {
             const { fields: item, exprs: { distance } } = e
