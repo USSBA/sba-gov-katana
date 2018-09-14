@@ -16,9 +16,9 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward, paginate } = this.props
+    const { total, pageSize, pageNumber, onBack, onForward } = this.props
 
-    return paginate ? (
+    return this.shouldRenderPaginator() ? (
       <div className={styles.paginator}>
         <Paginator
           pageNumber={pageNumber}
@@ -30,7 +30,12 @@ class Results extends React.PureComponent {
       </div>
     ) : null
   }
-
+  shouldRenderPaginator() {
+    const { isLoading, hidePaginatorOnNoResults, items, paginate } = this.props
+    //don't render paginator while the page is loading, if pagination is disabled, or if the paginator is
+    //disabled and there are no results
+    return !isLoading && paginate && !(hidePaginatorOnNoResults && !items.length)
+  }
   shouldShowSearchTips() {
     const { isLoading, displaySearchTipsOnNoResults, items } = this.props
     return !isLoading && displaySearchTipsOnNoResults && !items.length
@@ -150,6 +155,7 @@ Results.defaultProps = {
   scroll: false,
   hasSearchInfoPanel: false,
   displaySearchTipsOnNoResults: false,
+  hidePaginatorOnNoResults: true,
   searchTermName: '',
   searchTips: [],
   onClick: () => {},
@@ -167,7 +173,8 @@ Results.propTypes = {
   onClick: PropTypes.func,
   onResultHover: PropTypes.func,
   searchTips: PropTypes.array,
-  displaySearchTipsOnNoResults: PropTypes.bool
+  displaySearchTipsOnNoResults: PropTypes.bool,
+  hidePaginatorOnNoResults: PropTypes.bool
 }
 
 export default Results

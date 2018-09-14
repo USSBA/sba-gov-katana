@@ -20,16 +20,16 @@
 
 .resultsWithSearchInfo {
   @include grid-media($sba-grid-large) {
-    top: 40px;
+    top: 0px;
   }
 }
 
 .resultContainer {
   background-color: white;
   min-width: 321px;
-  // @include grid-media($sba-grid-large) {
-  //   position: absolute;
-  // }
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+  }
 }
 
 .scroll {
