@@ -193,12 +193,16 @@ class TenStepsLandingPage extends React.Component {
 
     const sectionData =
       findSection(this.props.menu, 'guide') || findSection(this.props.menu, 'business-guide')
+
     const { counsellorCta } = this.state
-    let buttonAction = {}
-    let image = {}
+    let blurb, buttonAction, headline, image, title
+
     if (counsellorCta) {
-      buttonAction = { link: { title: counsellorCta.btnTitle, url: counsellorCta.btnUrl } }
-      image = { url: counsellorCta.image, alt: counsellorCta.imageAlt }
+      blurb = counsellorCta.blurb
+      buttonAction = counsellorCta.buttonAction
+      headline = counsellorCta.headline
+      image = counsellorCta.image
+      title = counsellorCta.title
     }
 
     return (
@@ -265,9 +269,9 @@ class TenStepsLandingPage extends React.Component {
           <div className={styles.counsellorCtaContainer}>
             <CallToAction
               size="Large"
-              headline={counsellorCta.headline}
-              blurb={counsellorCta.blurb}
-              title={counsellorCta.title}
+              headline={headline}
+              blurb={blurb}
+              title={title}
               buttonAction={buttonAction}
               image={image}
             />

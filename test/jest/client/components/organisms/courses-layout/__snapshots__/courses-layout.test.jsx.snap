@@ -87,12 +87,18 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-1-0"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-1-0"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -100,7 +106,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -120,17 +132,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-1-1"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-1-1"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -138,7 +163,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -158,17 +189,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-1-2"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-1-2"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -176,7 +220,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -196,17 +246,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-1-3"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-1-3"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -214,7 +277,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -234,6 +303,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
             </div>
           </div>
@@ -248,12 +324,18 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-2-0"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-2-0"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -261,7 +343,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -281,17 +369,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-2-1"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-2-1"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -299,7 +400,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -319,17 +426,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-2-2"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-2-2"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -337,7 +457,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -357,17 +483,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-2-3"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-2-3"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -375,7 +514,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -395,6 +540,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
             </div>
           </div>
@@ -409,12 +561,18 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-3-0"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-3-0"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -422,7 +580,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -442,17 +606,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-3-1"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-3-1"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -460,7 +637,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -480,17 +663,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-3-2"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-3-2"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -498,7 +694,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -518,17 +720,30 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
               <div
                 className="card fourColumn"
                 id="card"
               >
-                <img
-                  alt="How to Write a Business Plan"
-                  className="itemImage"
-                  id="image-3-3"
-                  src="/sites/default/files/2018-01/2-plan_500.jpg"
-                />
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  <img
+                    alt="How to Write a Business Plan"
+                    className="itemImage"
+                    id="image-3-3"
+                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                  />
+                </a>
                 <div
                   className="content content-with-image"
                 >
@@ -536,7 +751,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     className="itemTitle"
                     id="title"
                   >
-                    How to Write a Business Plan
+                    <a
+                      onClick={[Function]}
+                      style={Object {}}
+                      target="_self"
+                    >
+                      How to Write a Business Plan
+                    </a>
                   </h4>
                   <div>
                     <hr
@@ -556,6 +777,13 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     </p>
                   </div>
                 </div>
+                <a
+                  onClick={[Function]}
+                  style={Object {}}
+                  target="_self"
+                >
+                  View course
+                </a>
               </div>
             </div>
           </div>
