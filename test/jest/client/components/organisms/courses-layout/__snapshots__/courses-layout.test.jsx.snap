@@ -93,10 +93,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-1-0"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -111,7 +111,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -128,7 +128,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-1-0"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -150,10 +150,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-1-1"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -168,7 +168,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -185,7 +185,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-1-1"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -207,10 +207,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-1-2"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -225,7 +225,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -242,7 +242,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-1-2"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -264,10 +264,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-1-3"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -282,7 +282,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -299,7 +299,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-1-3"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -330,10 +330,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-2-0"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -348,7 +348,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -365,7 +365,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-2-0"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -387,10 +387,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-2-1"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -405,7 +405,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -422,7 +422,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-2-1"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -444,10 +444,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-2-2"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -462,7 +462,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -479,7 +479,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-2-2"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -501,10 +501,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-2-3"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -519,7 +519,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -536,7 +536,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-2-3"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -567,10 +567,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-3-0"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -585,7 +585,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -602,7 +602,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-3-0"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -624,10 +624,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-3-1"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -642,7 +642,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -659,7 +659,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-3-1"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -681,10 +681,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-3-2"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -699,7 +699,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -716,7 +716,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-3-2"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>
@@ -738,10 +738,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   target="_self"
                 >
                   <img
-                    alt="How to Write a Business Plan"
+                    alt="ANC Business Guide: 8(a) Business Development Program"
                     className="itemImage"
                     id="image-3-3"
-                    src="/sites/default/files/2018-01/2-plan_500.jpg"
+                    src="/sites/default/files/2018-02/shutterstock_649579099_500.jpg"
                   />
                 </a>
                 <div
@@ -756,7 +756,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       style={Object {}}
                       target="_self"
                     >
-                      How to Write a Business Plan
+                      ANC Business Guide: 8(a) Business Development Program
                     </a>
                   </h4>
                   <div>
@@ -773,7 +773,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       className="itemSubTitle"
                       id="subtitle-text-3-3"
                     >
-                      Learn the importance of business planning, the components of a business plan, and see sample plans and resources.
+                      Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
                 </div>

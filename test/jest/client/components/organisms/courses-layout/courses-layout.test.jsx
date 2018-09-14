@@ -6,48 +6,32 @@ import { CoursesLayout } from 'organisms'
 describe('CoursesLayout', () => {
   test('should render the first page properly', () => {
     const mockCourse = {
-      body:
-        '<p>This course explains the importance of business planning, defines and describes the components of a business plan, and provides access to sample plans and resources that can help you develop a very good business plan.<br />\r\nDuration: 00:30:01</p>\r\n',
-      courseCategory: ['Plan your business'],
+      body: '<p>some html</p>',
+      courseCategory: ['Grow your business'],
       courseMaterials: [
         {
-          url: '/sites/default/files/2018-01/CHECKLIST_-_How_to_Write_a_Business_Plan.pdf',
-          description: 'Checklist - How to Write a Business Plan'
-        },
-        {
-          url: '/sites/default/files/2018-01/SBA_Keyboard_Shortcuts_6_13.pdf',
-          description: 'SBA Keyboard Shortcuts'
-        },
-        {
-          url: '/sites/default/files/2018-01/BalanceSheet.xlsx',
-          description: 'Balance Sheet Template'
-        },
-        {
-          url: '/sites/default/files/2018-01/Income_Statement_for_BPlan_Course.xlsx',
-          description: 'Income Statement Template'
-        },
-        {
-          url: '/sites/default/files/2018-01/Cash_Flow_Statement.xlsx',
-          description: 'Cash Flow Statement Template'
+          url: '/sites/default/files/2018-02/ANC%20Workbook%20P.pdf',
+          description: 'Workbook'
         }
       ],
       courseType: 'Flash',
       courseUrl: {
-        url: '/tools/learning-center-view-course/363951',
+        url: 'https://s3.amazonaws.com/training.sba.gov/courses/2013/anc/index.htm',
         title: ''
       },
       image: {
-        url: '/sites/default/files/2018-01/2-plan_500.jpg',
-        alt: 'How to Write a Business Plan'
+        url: '/sites/default/files/2018-02/shutterstock_649579099_500.jpg',
+        alt: 'ANC Business Guide: 8(a) Business Development Program'
       },
       summary:
-        'Learn the importance of business planning, the components of a business plan, and see sample plans and resources.',
-      transcript: '<p><strong>How to Write a Business Plan</strong>',
+        'Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.',
+      transcript: '<p>some html</p>',
       type: 'course',
-      title: 'How to Write a Business Plan',
-      id: 5880,
-      updated: 1517602209,
-      created: 1516892830
+      title: 'ANC Business Guide: 8(a) Business Development Program',
+      id: 5922,
+      updated: 1518720798,
+      created: 1517955056,
+      url: '/course/anc-business-guide-8a-business-development-program'
     }
     const mockCourses = Array.apply(null, Array(25)).map(function(x, i) {
       return mockCourse
