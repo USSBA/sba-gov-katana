@@ -16,9 +16,9 @@ class TitleSection extends React.Component {
     })
     return (
       <div>
-        <p id="titleSectionContentId" className={styles.content}>
+        <h3 id="titleSectionContentId" className={styles.content}>
           Content
-        </p>
+        </h3>
         <ul>{titleLinks}</ul>
         <hr className={styles.hr} />
       </div>
