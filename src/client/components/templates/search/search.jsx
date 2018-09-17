@@ -82,7 +82,6 @@ class SearchTemplate extends React.PureComponent {
       this.doSearch(this.props.searchType, newSearchParams)
     }
   }
-
   componentWillReceiveProps(nextProps) {
     const { items: results, isLoading } = nextProps
 
