@@ -33,7 +33,7 @@ class OfficeResult extends React.PureComponent {
     }
 
     const city = item.location_city ? item.location_city[0] : null
-    const state = item.location_state ? item.location_city[0] : null
+    const state = item.location_state ? item.location_state[0] : null
 
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
@@ -105,16 +105,13 @@ class OfficeResult extends React.PureComponent {
               <div>
                 <img src={marker} className={styles.marker} />
               </div>
-              {distance ||
-                !(city === null && state === null)(
-                  <div id={`office-miles-${id}`} className={styles.miles}>
-                    {distance !== null ? (
-                      <Distance id={id} distance={distance} />
-                    ) : (
-                      <Location city={city} state={state} />
-                    )}
-                  </div>
+              <div id={`office-miles-${id}`} className={styles.miles}>
+                {distance !== null ? (
+                  <Distance distance={distance} />
+                ) : (
+                  <Location city={city} state={state} />
                 )}
+              </div>
               <div className={styles.clear} />
             </div>
             <div id={`office-title-${id}`}>
