@@ -53,18 +53,20 @@ class OfficeDetail extends React.PureComponent {
                 aria-label="Closing this panel will take you back to the results list"
               />
             </div>
-            <div className={'office-distance ' + officeResultStyles.distance}>
-              <div>
-                <img src={marker} className={officeResultStyles.marker} />
+            {distance !== undefined && (
+              <div className={'office-distance ' + officeResultStyles.distance}>
+                <div>
+                  <img src={marker} className={officeResultStyles.marker} />
+                </div>
+                <div
+                  id="office-miles"
+                  className={officeResultStyles.miles}
+                  tabIndex="0"
+                  role="text"
+                >{`${Number(distance).toFixed(1)} miles`}</div>
+                <div className={officeResultStyles.clear} />
               </div>
-              <div
-                id="office-miles"
-                className={officeResultStyles.miles}
-                tabIndex="0"
-                role="text"
-              >{`${Number(distance).toFixed(1)} miles`}</div>
-              <div className={officeResultStyles.clear} />
-            </div>
+            )}
             <h2 tabIndex="0" role="heading" className="office-title">
               {item.title[0]}
             </h2>

@@ -73,7 +73,7 @@ class OfficeLookupPage extends React.Component {
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
-      address: defaultZipCode,
+      //address: defaultZipCode,
       pageSize,
       type: defaultType
     }
@@ -116,11 +116,11 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
-            value={defaultZipCode}
-            validationFunction={input => {
+            //value={defaultZipCode}
+            /*validationFunction={input => {
               const fiveDigitRegex = /^\d{5}$/g
               return fiveDigitRegex.test(input)
-            }}
+            }}*/
             errorText="Enter a 5-digit zip code."
           />
 
