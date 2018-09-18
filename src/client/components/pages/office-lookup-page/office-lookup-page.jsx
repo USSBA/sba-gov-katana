@@ -73,7 +73,6 @@ class OfficeLookupPage extends React.Component {
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
-      //address: defaultZipCode,
       pageSize,
       type: defaultType
     }
@@ -116,7 +115,6 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
-            //value={defaultZipCode}
             validationFunction={input => {
               // only validate if there is an input value
               let result = true
