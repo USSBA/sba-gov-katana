@@ -146,9 +146,7 @@ class OfficeResult extends React.PureComponent {
 }
 
 const Distance = ({ distance }) => <div>{`${Number(distance).toFixed(1)} miles`}</div>
-const Location = ({ city, state }) => (
-  <div>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
-)
+const Location = ({ city, state }) => <div>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
 
 OfficeResult.defaultProps = {
   id: 'result',
