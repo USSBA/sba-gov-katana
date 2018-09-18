@@ -114,7 +114,6 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
-            //value={defaultZipCode}
             validationFunction={input => {
               // only validate if there is an input value
               let result = true
