@@ -1,4 +1,5 @@
 .titleSection {
+  margin-bottom: 2.8rem;
   @include grid-media($sba-grid-small) {
     text-align: left;
   }
@@ -20,6 +21,11 @@
   @include grid-media($sba-grid-small) {
     margin-bottom: 9px;
   }
+}
+
+.hr {
+  @include hr;
+  margin-bottom: 0;
 }
 
 .titleLink {

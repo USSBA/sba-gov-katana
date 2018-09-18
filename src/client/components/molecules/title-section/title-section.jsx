@@ -20,6 +20,7 @@ class TitleSection extends React.Component {
           Content
         </p>
         <ul>{titleLinks}</ul>
+        <hr className={styles.hr} />
       </div>
     )
   }
@@ -36,7 +37,6 @@ class TitleSection extends React.Component {
         </h5>
         <DecorativeDash width={5.5} />
         {this.props.sectionHeaders.length > 0 ? titleLinks : ''}
-        <hr />
       </div>
     )
   }
