@@ -155,14 +155,14 @@ Results.defaultProps = {
   displaySearchTipsOnNoResults: false,
   hidePaginatorOnNoResults: true,
   searchTermName: '',
-  submittedFieldValues: [],
+  submittedFieldValues: {},
   searchTips: [],
   onClick: () => {},
   onResultHover: () => {}
 }
 
 Results.propTypes = {
-  submittedFieldValues: PropTypes.array,
+  submittedFieldValues: PropTypes.object,
   items: PropTypes.array,
   id: PropTypes.string,
   resultId: PropTypes.string,
