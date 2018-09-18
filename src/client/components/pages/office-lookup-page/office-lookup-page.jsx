@@ -48,7 +48,7 @@ class OfficeLookupPage extends React.Component {
       newCenter: {}
     }
 
-    if (!isEmpty(selectedItem)) {
+    if (!isEmpty(selectedItem) && !isEmpty(selectedItem.item.geolocation)) {
       const [lat, lng] = selectedItem.item.geolocation[0].split(',')
       newState.newCenter = {
         lat: Number(lat),
