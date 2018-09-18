@@ -29,6 +29,7 @@
   min-width: 321px;
   @include grid-media($sba-grid-large) {
     position: absolute;
+    pointer-events: all;
   }
 }
 

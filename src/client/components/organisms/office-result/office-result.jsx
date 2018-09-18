@@ -22,7 +22,8 @@ class OfficeResult extends React.PureComponent {
   }
 
   render() {
-    const { id, item: { fields: item, exprs: { distance } }, hoveredMarkerId } = this.props
+    const { id, item: { fields: item, exprs }, hoveredMarkerId } = this.props
+    const distance = exprs ? exprs.distance : ''
     if (!item) {
       return null
     }
