@@ -53,7 +53,7 @@ class OfficeDetail extends React.PureComponent {
                 aria-label="Closing this panel will take you back to the results list"
               />
             </div>
-            {distance !== undefined && (
+            {distance !== null && (
               <div className={'office-distance ' + officeResultStyles.distance}>
                 <div>
                   <img src={marker} className={officeResultStyles.marker} />
