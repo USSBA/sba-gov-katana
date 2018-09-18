@@ -22,7 +22,8 @@ class OfficeResult extends React.PureComponent {
   }
 
   render() {
-    const { id, item: { fields: item, exprs: { distance } }, hoveredMarkerId } = this.props
+    const { id, item: { fields: item, exprs }, hoveredMarkerId } = this.props
+    const distance = exprs ? exprs.distance : ''
     if (!item) {
       return null
     }
@@ -97,9 +98,13 @@ class OfficeResult extends React.PureComponent {
               <div>
                 <img src={marker} className={styles.marker} />
               </div>
-              <div id={`office-miles-${id}`} className={styles.miles}>{`${Number(distance).toFixed(
-                1
-              )} miles`}</div>
+              <div id={`office-miles-${id}`} className={styles.miles}>
+                {distance !== null ? (
+                  <Distance id={id} distance={distance} />
+                ) : (
+                  <Location city={item.location_city[0]} state={item.location_state[0]} />
+                )}
+              </div>
               <div className={styles.clear} />
             </div>
             <div id={`office-title-${id}`}>
@@ -132,6 +137,9 @@ class OfficeResult extends React.PureComponent {
     )
   }
 }
+
+const Distance = ({ distance }) => <div>{`${Number(distance).toFixed(1)} miles`}</div>
+const Location = ({ city, state }) => <div>{`${city}, ${state}`}</div>
 
 OfficeResult.defaultProps = {
   id: 'result',

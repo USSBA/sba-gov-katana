@@ -48,7 +48,7 @@ class OfficeLookupPage extends React.Component {
       newCenter: {}
     }
 
-    if (!isEmpty(selectedItem)) {
+    if (!isEmpty(selectedItem) && !isEmpty(selectedItem.item.geolocation)) {
       const [lat, lng] = selectedItem.item.geolocation[0].split(',')
       newState.newCenter = {
         lat: Number(lat),
@@ -73,7 +73,6 @@ class OfficeLookupPage extends React.Component {
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
-      address: defaultZipCode,
       pageSize,
       type: defaultType
     }
@@ -116,10 +115,14 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
-            value={defaultZipCode}
             validationFunction={input => {
-              const fiveDigitRegex = /^\d{5}$/g
-              return fiveDigitRegex.test(input)
+              // only validate if there is an input value
+              let result = true
+              if (!isEmpty(input)) {
+                const fiveDigitRegex = /^\d{5}$/g
+                result = fiveDigitRegex.test(input)
+              }
+              return result
             }}
             errorText="Enter a 5-digit zip code."
           />
