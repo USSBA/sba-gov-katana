@@ -72,13 +72,6 @@ class OfficeLookupPage extends React.Component {
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-      //address: defaultZipCode,
->>>>>>> Zero state and no distance error fix
-=======
->>>>>>> Removed commented out lines
       pageSize,
       type: defaultType
     }
@@ -121,10 +114,7 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Zip Code"
-<<<<<<< HEAD
-=======
             //value={defaultZipCode}
->>>>>>> Zero state and no distance error fix
             validationFunction={input => {
               // only validate if there is an input value
               let result = true
