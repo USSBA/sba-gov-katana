@@ -117,10 +117,15 @@ class OfficeLookupPage extends React.Component {
             label="Near"
             placeholder="Zip Code"
             //value={defaultZipCode}
-            /*validationFunction={input => {
-              const fiveDigitRegex = /^\d{5}$/g
-              return fiveDigitRegex.test(input)
-            }}*/
+            validationFunction={input => {
+              // only validate if there is an input value
+              let result = true
+              if (!isEmpty(input)) {
+                const fiveDigitRegex = /^\d{5}$/g
+                result = fiveDigitRegex.test(input)
+              }
+              return result
+            }}
             errorText="Enter a 5-digit zip code."
           />
 
