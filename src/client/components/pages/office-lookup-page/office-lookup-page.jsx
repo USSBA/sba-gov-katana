@@ -69,14 +69,16 @@ class OfficeLookupPage extends React.Component {
 
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
-    //const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       //address: defaultZipCode,
 >>>>>>> Zero state and no distance error fix
+=======
+>>>>>>> Removed commented out lines
       pageSize,
       type: defaultType
     }
