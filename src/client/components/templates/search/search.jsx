@@ -63,9 +63,7 @@ class SearchTemplate extends React.PureComponent {
     delete queryParams.pageSize
     //calculate the actual  start value from the pageNumber parameter
     let { pageNumber } = queryParams
-    const {
-      searchParams: { pageSize }
-    } = this.state
+    const { searchParams: { pageSize } } = this.state
     pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
     //not using the calculate startIndex function here because we won't know the count yet
     queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
@@ -190,10 +188,7 @@ class SearchTemplate extends React.PureComponent {
 
   renderPaginator() {
     const { count } = this.props
-    const {
-      results,
-      searchParams: { pageSize }
-    } = this.state
+    const { results, searchParams: { pageSize } } = this.state
     const pageNumber = this.calculatePageNumber()
 
     let result = <div />
@@ -221,9 +216,7 @@ class SearchTemplate extends React.PureComponent {
     if (isLoading) {
       result = (
         <div className="loading-view">
-          <div className={styles.container}>
-            <p>loading...</p>
-          </div>
+          <div className={styles.container} />
         </div>
       )
     }
@@ -268,10 +261,7 @@ class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const {
-      results,
-      searchParams: { pageSize }
-    } = this.state
+    const { results, searchParams: { pageSize } } = this.state
     console.log('***************', this.state.results)
     const { children, count, extraClassName, paginate, isZeroState } = this.props
 
@@ -335,7 +325,7 @@ function mapReduxStateToProps(reduxState, props) {
   let items = []
   let count = 0
   let hasNoResults
-  let isLoading = true
+  let isLoading = props.isLoading
   let isZeroState = props.isZeroState
 
   if (reduxState.contentReducer[props.searchType]) {
@@ -361,8 +351,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(SearchTemplate)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
 export { SearchTemplate }
