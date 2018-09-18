@@ -271,7 +271,8 @@ class OfficeMapApp extends React.PureComponent {
             }
           }}
           onMarkerClick={e => {
-            const { fields: item, exprs: { distance } } = e
+            const { fields: item, exprs } = e
+            const distance = exprs ? exprs.distance : null
             const selectedItem = {
               item,
               distance
