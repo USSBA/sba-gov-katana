@@ -28,8 +28,6 @@ class OfficeResult extends React.PureComponent {
       return null
     }
 
-    const distance = this.props.item.exprs ? this.props.item.exprs.distance : null
-
     const sbaOfficeNames = clientConfig.sbaOfficeNames
     const officeType = item.office_type ? item.office_type[0] : ''
     const isOfficialOffice = sbaOfficeNames.includes(officeType)
