@@ -101,7 +101,7 @@ class OfficeResult extends React.PureComponent {
                 <img src={marker} className={styles.marker} />
               </div>
               <div id={`office-miles-${id}`} className={styles.miles}>
-                {distance !== undefined ? (
+                {distance !== null ? (
                   <Distance id={id} distance={distance} />
                 ) : (
                   <Location city={item.location_city[0]} state={item.location_state[0]} />
