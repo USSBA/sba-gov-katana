@@ -88,7 +88,9 @@ export class RootPage extends React.Component {
           first === 'learning-center' ||
           first === 'national-small-business-week' ||
           first === 'anuncio-especial' ||
-          first === 'utilizando-google-translate'
+          first === 'utilizando-google-translate' ||
+          first === 'prestamos' ||
+          first === 'escriba-su-plan-de-negocios'
         ) {
           return this.renderPageOnLineage(pageLineage)
         } else if (sectionData) {
