@@ -63,7 +63,9 @@ class SearchTemplate extends React.PureComponent {
     delete queryParams.pageSize
     //calculate the actual  start value from the pageNumber parameter
     let { pageNumber } = queryParams
-    const { searchParams: { pageSize } } = this.state
+    const {
+      searchParams: { pageSize }
+    } = this.state
     pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
     //not using the calculate startIndex function here because we won't know the count yet
     queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
@@ -73,14 +75,14 @@ class SearchTemplate extends React.PureComponent {
   componentWillMount() {
     const { defaultSearchParams } = this.props
     const { searchParams } = this.state
+    const urlSearchString = document.location.search
 
     const newSearchParams = merge(searchParams, defaultSearchParams || {}, this.generateQueryMap())
     this.setState({ searchParams: newSearchParams })
-    if (this.props.loadDefaultResults === true) {
+    if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
     }
   }
-
   componentWillReceiveProps(nextProps) {
     const { items: results, isLoading } = nextProps
 
@@ -188,7 +190,10 @@ class SearchTemplate extends React.PureComponent {
 
   renderPaginator() {
     const { count } = this.props
-    const { results, searchParams: { pageSize } } = this.state
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
     const pageNumber = this.calculatePageNumber()
 
     let result = <div />
@@ -216,9 +221,7 @@ class SearchTemplate extends React.PureComponent {
     if (isLoading) {
       result = (
         <div className="loading-view">
-          <div className={styles.container}>
-            <p>loading...</p>
-          </div>
+          <div className={styles.container} />
         </div>
       )
     }
@@ -263,10 +266,16 @@ class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { results, searchParams: { pageSize } } = this.state
-    const { children, count, extraClassName, paginate } = this.props
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
+    const { children, count, extraClassName, paginate, isZeroState } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
+      if (child.props.hideOnZeroState && isZeroState) {
+        return null
+      }
       return React.cloneElement(child, {
         items: results,
         onSearch: this.handleSearch.bind(this),
@@ -305,7 +314,8 @@ SearchTemplate.propTypes = {
   location: PropTypes.string,
   isLoading: PropTypes.bool,
   scrollToTopAfterSearch: PropTypes.bool,
-  onHandleEvent: PropTypes.func
+  onPaginate: PropTypes.func,
+  isZeroState: PropTypes.bool
 }
 
 SearchTemplate.defaultProps = {
@@ -314,20 +324,23 @@ SearchTemplate.defaultProps = {
   paginate: true,
   isLoading: false,
   scrollToTopAfterSearch: true,
-  onHandleEvent: () => {}
+  isZeroState: true,
+  onPaginate: () => {}
 }
 
 function mapReduxStateToProps(reduxState, props) {
   let items = []
   let count = 0
   let hasNoResults
-  let isLoading = true
+  let isLoading = props.isLoading
+  let isZeroState = props.isZeroState
 
   if (reduxState.contentReducer[props.searchType]) {
     items = reduxState.contentReducer[props.searchType].hit
     count = reduxState.contentReducer[props.searchType].found
     hasNoResults = count === 0
     isLoading = false
+    isZeroState = false
   }
 
   return {
@@ -335,7 +348,8 @@ function mapReduxStateToProps(reduxState, props) {
     location: props.location,
     count,
     hasNoResults,
-    isLoading
+    isLoading,
+    isZeroState
   }
 }
 
@@ -344,5 +358,8 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(SearchTemplate)
 export { SearchTemplate }
