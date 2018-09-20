@@ -69,7 +69,6 @@ class OfficeLookupPage extends React.Component {
 
   render() {
     const { selectedItem, newCenter, shouldCenterMap, hoveredMarkerId } = this.state
-    const defaultZipCode = 20024
     const pageSize = 5
     const defaultType = 'All'
     const defaultSearchParams = {
@@ -88,7 +87,7 @@ class OfficeLookupPage extends React.Component {
       <SearchTemplate
         searchType="offices"
         defaultSearchParams={defaultSearchParams}
-        loadDefaultResults={true}
+        loadDefaultResults={false}
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
@@ -173,7 +172,7 @@ class OfficeLookupPage extends React.Component {
           }}
           hoveredMarkerId={hoveredMarkerId}
         />
-        <StyleWrapperDiv className={styles.officeResults}>
+        <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
           <Results
             id="office-results"
             paginate
@@ -213,5 +212,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(OfficeLookupPage)
 export { OfficeLookupPage }
