@@ -6,7 +6,6 @@ features:
     forPartners: true
     showSbic: false
     moon: false
-    pressRelease: true
     urlRedirect:
         tableName: UrlToNodeKevin
         enabled: true
