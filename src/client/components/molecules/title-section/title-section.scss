@@ -15,9 +15,8 @@
 
 .content {
   // @include font-size($h4-font-sizes);
-  font-weight: 700;
   margin-bottom: 20px;
-  margin-top: 18.5px;
+  margin-top: 21.25px;
   @include grid-media($sba-grid-small) {
     margin-bottom: 9px;
   }

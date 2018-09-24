@@ -16,9 +16,9 @@ class TitleSection extends React.Component {
     })
     return (
       <div>
-        <p id="titleSectionContentId" className={styles.content}>
+        <h3 id="titleSectionContentId" className={styles.content}>
           Content
-        </p>
+        </h3>
         <ul>{titleLinks}</ul>
         <hr className={styles.hr} />
       </div>
@@ -35,7 +35,7 @@ class TitleSection extends React.Component {
         <h5 id="titleSectionSummaryId" className={styles.summary}>
           {this.props.summary}
         </h5>
-        <DecorativeDash width={5.5} />
+        <DecorativeDash width={4.28} />
         {this.props.sectionHeaders.length > 0 ? titleLinks : ''}
       </div>
     )
