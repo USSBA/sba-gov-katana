@@ -71,7 +71,6 @@ database:
 server:
     port: 3000
 features:
-    forPartners: true
     searchUrl: "/search?q="
 cache:
   s3BucketName: some-bucket-name
