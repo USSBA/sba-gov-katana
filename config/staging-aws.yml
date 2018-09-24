@@ -3,9 +3,7 @@ foresee:
 server:
     fqdn: staging.sba.gov
 features:
-    forPartners: true
     showSbic: false
-    moon: true
     urlRedirect:
         tableName: UrlToNodeStaging
         enabled: true

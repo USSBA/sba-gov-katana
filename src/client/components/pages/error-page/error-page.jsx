@@ -25,16 +25,14 @@ class ErrorPage extends React.Component {
     document.location = uri
   }
   render() {
-    const text = clientConfig.moon
-      ? "Just like a business on the moon, the page you're looking for doesn't exist."
-      : "The page you're looking for doesn't exist."
+    const text = "Just like a business on the moon, the page you're looking for doesn't exist."
 
     return (
       <div className={styles.errorPage}>
         <RemoveMainLoader />
-        <div className={clientConfig.moon && styles.container}>
-          {clientConfig.moon && <img src={errorImage} alt="error image" />}
-          <div className={`${styles.content} ${!clientConfig.moon && styles.darkness}`}>
+        <div className={styles.container}>
+          <img src={errorImage} alt="error image" />
+          <div className={styles.content}>
             <h1>404</h1>
             <h2>Page not found</h2>
             <DecorativeDash width={4.278} />
