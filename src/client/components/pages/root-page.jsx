@@ -86,6 +86,7 @@ export class RootPage extends React.Component {
         if (
           first === 'disaster-assistance' ||
           first === 'learning-center' ||
+          first === 'local-assistance' ||
           first === 'national-small-business-week' ||
           first === 'anuncio-especial' ||
           first === 'utilizando-google-translate' ||
