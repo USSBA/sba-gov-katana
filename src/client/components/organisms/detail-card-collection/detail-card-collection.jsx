@@ -2,20 +2,28 @@ import React from 'react'
 import _ from 'lodash'
 
 import styles from './detail-card-collection.scss'
-import { DetailCard } from 'molecules'
+import { DetailCard, PeopleDetailCard } from 'molecules'
 
 class DetailCardCollection extends React.Component {
   renderCard(item, index) {
-    return (
-      <div className={'card-container ' + styles.card} key={index}>
-        <DetailCard
-          data={item}
-          showDetails={this.props.showDetails}
-          showBorder={false}
-          fieldsToShowInDetails={this.props.fieldsToShowInDetails}
-        />
-      </div>
-    )
+    if (this.props.type === 'person') {
+      return (
+        <div className={'card-container ' + styles.card} key={index}>
+          <PeopleDetailCard data={item} showDetails={this.props.showDetails} showBorder={true} />
+        </div>
+      )
+    } else {
+      return (
+        <div className={'card-container ' + styles.card} key={index}>
+          <DetailCard
+            data={item}
+            showDetails={this.props.showDetails}
+            showBorder={false}
+            fieldsToShowInDetails={this.props.fieldsToShowInDetails}
+          />
+        </div>
+      )
+    }
   }
 
   renderCards() {
