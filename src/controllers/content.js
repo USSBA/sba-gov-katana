@@ -2,7 +2,6 @@ import path from 'path'
 import config from 'config'
 import axios from 'axios'
 import HttpStatus from 'http-status-codes'
-import querystring from 'querystring'
 
 function fetchContentById(req, res) {
   if (req.params && req.params.type && req.params.id) {
@@ -20,7 +19,10 @@ function fetchContentById(req, res) {
         transformResponse: rawReq => rawReq
       })
       .then(result => {
-        res.status(result.status).send(result.data)
+        res
+          .set('Content-Type', 'application/json')
+          .status(result.status)
+          .send(result.data)
       })
       .catch(err => {
         console.error(err)
@@ -44,7 +46,10 @@ function fetchContentByType(req, res) {
         transformResponse: rawReq => rawReq
       })
       .then(result => {
-        res.status(result.status).send(result.data)
+        res
+          .set('Content-Type', 'application/json')
+          .status(result.status)
+          .send(result.data)
       })
       .catch(err => {
         console.error(err)
