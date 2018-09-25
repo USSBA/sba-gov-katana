@@ -10,9 +10,7 @@ server:
     fqdn: mint.ussba.io
 features:
     geoLocator: false
-    forPartners: true
     showSbic: false
-    moon: false
     urlRedirect:
         tableName: UrlToNodeIntegration
         enabled: true

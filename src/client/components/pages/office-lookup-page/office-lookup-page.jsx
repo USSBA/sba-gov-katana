@@ -212,8 +212,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(OfficeLookupPage)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
 export { OfficeLookupPage }

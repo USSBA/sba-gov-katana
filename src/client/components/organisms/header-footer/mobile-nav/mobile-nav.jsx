@@ -49,15 +49,14 @@ class MobileNav extends React.Component {
     }
 
     const baseLength = this.props.mainMenuData ? this.props.mainMenuData.length : 2
-    if (clientConfig.forPartners) {
-      menuItems.push(
-        <div key={baseLength + 1} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
-          <a className={styles.navLinkSpecialNew} href="/partners">
-            For Partners
-          </a>
-        </div>
-      )
-    }
+    menuItems.push(
+      <div key={baseLength + 1} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
+        <a className={styles.navLinkSpecialNew} href="/partners">
+          For Partners
+        </a>
+      </div>
+    )
+
     menuItems.push(
       <div key={baseLength + 2} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
         <a

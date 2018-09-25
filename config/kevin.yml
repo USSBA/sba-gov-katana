@@ -3,9 +3,7 @@ foresee:
 server:
     fqdn: kevin.ussba.io
 features:
-    forPartners: true
     showSbic: false
-    moon: false
     urlRedirect:
         tableName: UrlToNodeKevin
         enabled: true

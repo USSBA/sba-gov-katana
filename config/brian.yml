@@ -6,8 +6,6 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectBrian
-    forPartners: true
-    moon: true
     showSbic: false
     urlRedirect:
         tableName: UrlToNodeBrian

@@ -8,9 +8,7 @@ googleAnalytics:
 server:
     fqdn: sba.gov
 features:
-    forPartners: true
     showSbic: false
-    moon: true
     urlRedirect:
         tableName: UrlToNodeProduction
         enabled: true

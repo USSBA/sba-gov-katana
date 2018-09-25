@@ -79,17 +79,12 @@ class MiniNav extends React.Component {
   }
 
   render() {
-    let forPartnersOrLenders = config.forPartners ? (
-      <UtilityLink id="deskop-mini-nav-2" key={2} url="/partners" text="For Partners" />
-    ) : (
-      <UtilityLink id="deskop-mini-nav-2" key={2} url="/for-lenders" text="For Lenders" />
-    )
     return (
       <div className={styles.miniNav}>
         <ul id="deskop-mini-nav" aria-label="mini-navigation">
           <GoogleTranslate />
           <UtilityLink id="deskop-mini-nav-1" key={1} url="/anuncio-especial" text="SBA en Español" />
-          {forPartnersOrLenders}
+          <UtilityLink id="deskop-mini-nav-2" key={2} url="/partners" text="For Partners" />
           <UtilityLink id="deskop-mini-nav-3" key={3} url="/about-sba/sba-newsroom" text="Newsroom" />
           <UtilityLink
             id="deskop-mini-nav-4"

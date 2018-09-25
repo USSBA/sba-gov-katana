@@ -3,9 +3,7 @@ foresee:
 server:
     fqdn: laura.ussba.io
 features:
-    forPartners: true
     showSbic: false
-    moon: false
     urlRedirect:
         tableName: UrlToNodeLaura
         enabled: true
