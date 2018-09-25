@@ -21,6 +21,7 @@ import OfficeDetail from './office-detail/office-detail.jsx'
 import OfficesLayout from './offices-layout/offices-layout.jsx'
 import OfficeMap from './office-map/office-map.jsx'
 import OfficeResult from './office-result/office-result.jsx'
+import PeopleResult from './people-result/people-result.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
 import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
 import PrimarySearchBar from './primary-search-bar/primary-search-bar.jsx'
@@ -82,6 +83,7 @@ export {
   OfficeMap,
   PagingLookup,
   PagingMultiviewLayout,
+  PeopleResult,
   PrimarySearchBar,
   ProgramDetailsCardCollection,
   RelatedDocumentCards,
