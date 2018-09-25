@@ -5,7 +5,6 @@ import styles from './document-article-lookup.scss'
 import { Button, Loader, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { DetailCardCollection } from 'organisms'
-import { logPageEvent } from '../../../services/analytics.js'
 
 const createSlug = str => {
   return str
@@ -103,6 +102,9 @@ export class DocumentArticleLookup extends React.PureComponent {
     )
     const { items, pageNumber, isFetching } = this.props
     if (!_.isEmpty(items)) {
+      console.log('1', this.props.type)
+      console.log('2', items)
+      console.log('3', this.props.fieldsToShowInDetails)
       result = (
         <DetailCardCollection
           type={this.props.type}
