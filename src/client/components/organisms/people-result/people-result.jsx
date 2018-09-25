@@ -37,8 +37,7 @@ export class PeopleResult extends React.Component {
         let idMatch = offices.find(office => office.id === person.office)
         return idMatch ? { ...person, office: idMatch.title } : person
       })
-
-      result = <DetailCardCollection type={people.type} cards={peopleWithOfficeMatch} />
+      result = <DetailCardCollection cards={peopleWithOfficeMatch} type={peopleWithOfficeMatch[0].type} />
     } else if ((offices === null && isEmpty(offices)) || (people === null && isEmpty(people))) {
       result = (
         <div className={styles.emptyDocuments}>
