@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import clientConfig from '../../../services/client-config.js'
 import styles from './search-bar.scss'
@@ -15,9 +15,12 @@ class SearchBar extends React.Component {
 
   handleSearchToggle(e) {
     e.preventDefault()
-    this.setState({
-      expanded: !this.state.expanded
-    })
+    this.setState(
+      {
+        expanded: !this.state.expanded
+      },
+      () => this.props.onExpand(this.state.expanded)
+    )
   }
 
   handleSearchKeypress(e) {
@@ -84,6 +87,14 @@ class SearchBar extends React.Component {
       )
     }
   }
+}
+
+SearchBar.propTypes = {
+  onExpand: PropTypes.func
+}
+
+SearchBar.defaultProps = {
+  onExpand: () => {}
 }
 
 export default SearchBar
