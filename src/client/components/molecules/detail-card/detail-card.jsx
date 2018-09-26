@@ -16,11 +16,12 @@ class DetailCard extends React.Component {
     }
   }
 
-  makeDownloadLink() {
+  renderReferenceLink() {
     const latestFile = this.getLatestFile()
-    const title = this.props.data.title
+    let link
+
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
-      return (
+      link = (
         <div className={'document-card-download ' + s.download}>
           <Link
             onClick={() => {
@@ -33,28 +34,63 @@ class DetailCard extends React.Component {
           <PdfIcon />
         </div>
       )
+    } else if (this.props.data.type === 'person') {
+      link = (
+        <div className={'bio-link ' + s.download}>
+          <Link to={'/business-guide'}>See Bio</Link>
+        </div>
+      )
     } else {
-      return undefined
+      link = undefined
     }
+    return link
   }
 
-  makeTable(doc) {
+  makeTable(item) {
+    const { fieldsToShowInDetails } = this.props
     const rows = []
-    if (size(doc.activities) && includes(this.props.fieldsToShowInDetails, 'Activity')) {
-      rows.push({ name: 'Activity:', value: doc.activities.join(', ') })
+
+    // Documents and Articles objects
+    if (size(item.activities) && includes(fieldsToShowInDetails, 'Activity')) {
+      rows.push({ name: 'Activity:', value: item.activities.join(', ') })
     }
-    if (size(doc.programs) && includes(this.props.fieldsToShowInDetails, 'Program')) {
-      rows.push({ name: 'Program:', value: doc.programs.join(', ') })
+    if (size(item.programs) && includes(fieldsToShowInDetails, 'Program')) {
+      rows.push({ name: 'Program:', value: item.programs.join(', ') })
     }
 
-    if (doc.published && includes(this.props.fieldsToShowInDetails, 'Published')) {
-      const publishedDate = new Date(doc.updated)
+    if (item.published && includes(fieldsToShowInDetails, 'Published')) {
+      const publishedDate = new Date(item.updated)
       const publisheDateString =
         publishedDate.getMonth() + '/' + publishedDate.getDate() + '/' + publishedDate.getYear()
       rows.push({ name: 'Published:', value: publisheDateString })
     }
-    if (size(doc.summary) && includes(this.props.fieldsToShowInDetails, 'Summary')) {
-      rows.push({ name: 'Summary:', value: doc.summary })
+    if (size(item.summary) && includes(fieldsToShowInDetails, 'Summary')) {
+      rows.push({ name: 'Summary:', value: item.summary })
+    }
+
+    // People object
+    if (size(item.title) && includes(fieldsToShowInDetails, 'Title')) {
+      rows.push({ name: <i className={'fa fa-user ' + s.fa} />, value: item.title })
+    }
+    if (size(item.office) && includes(fieldsToShowInDetails, 'Office')) {
+      rows.push({
+        name: <i className={'fa fa-building ' + s.fa} />,
+        value: <Link to={'/business-guide'}>{item.office}</Link>
+      })
+    }
+    if (size(item.phone) && includes(fieldsToShowInDetails, 'Phone')) {
+      const phoneNum = item.phone.split('-')
+      const phoneNumWithParentheses = `(${phoneNum[0]}) ${phoneNum[1]}-${phoneNum[2]}`
+      rows.push({
+        name: <i className={'fa fa-phone ' + s.fa} />,
+        value: <Link to={`tel:${phoneNumWithParentheses}`}>{phoneNumWithParentheses}</Link>
+      })
+    }
+    if (size(item.emailAddress) && includes(fieldsToShowInDetails, 'Email')) {
+      rows.push({
+        name: <i className={'fa fa-envelope ' + s.fa} />,
+        value: <Link to={`mailto:${item.emailAddress}`}>{item.emailAddress}</Link>
+      })
     }
 
     return (
@@ -81,32 +117,37 @@ class DetailCard extends React.Component {
   }
 
   makeTitle() {
-    const doc = this.props.data
-    const eventConfig = {
-      category: 'Document-Download-Module',
-      action: `docname - ${doc.title}: Document Landing Page`
+    const item = this.props.data
+
+    if (item.type === 'person') {
+      return (
+        <Link to={'/person-link'}>
+          <h6 className={'document-card-title ' + s.title}>{item.name}</h6>
+        </Link>
+      )
+    } else {
+      return (
+        <Link to={item.url}>
+          <h6 className={'document-card-title ' + s.title}>{item.title}</h6>
+        </Link>
+      )
     }
-    return (
-      <Link to={doc.url}>
-        <h6 className={'document-card-title ' + s.title}>{doc.title}</h6>
-      </Link>
-    )
   }
 
   render() {
-    const doc = this.props.data
-    if (doc) {
-      const { category, documents, type: pageType } = doc
+    const item = this.props.data
+    if (item) {
+      const { category, documents, type: pageType } = item
 
       let type
       if (pageType === 'document') {
-        type = doc.documentIdType
+        type = item.documentIdType
       } else if (pageType === 'article' && category) {
         type = category[0]
       }
 
       const idData = size(documents)
-        ? doc.documents[0]
+        ? item.documents[0]
         : {
             idType: 'UNK',
             number: 'UNK'
@@ -124,13 +165,15 @@ class DetailCard extends React.Component {
         <div className={className}>
           <div>
             <div className={s.documentTypeContainer}>
-              <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
+              {!isEmpty(type) && (
+                <Label type={type} id={!isEmpty(item.documentIdNumber) && item.documentIdNumber} small />
+              )}
             </div>
             <div />
             {this.makeTitle()}
-            {this.props.showDetails ? this.makeTable(this.props.data) : null}
+            {this.props.showDetails ? this.makeTable(item) : null}
           </div>
-          {this.makeDownloadLink()}
+          {this.renderReferenceLink()}
         </div>
       )
     } else {
