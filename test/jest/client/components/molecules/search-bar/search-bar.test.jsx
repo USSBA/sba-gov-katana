@@ -25,4 +25,11 @@ describe('SearchBar', () => {
     expect(mockSearcher.mock.calls.length).toBe(1)
     expect(mockSearcher.mock.calls[0][0]).toBe('/mysearch?q=business')
   })
+
+  test('should execute onExpand', () => {
+    let expected
+    const component = shallow(<SearchBar onExpand={isExpanded => (expected = isExpanded)} />)
+    component.find(Link).simulate('click', { preventDefault: _ => true })
+    expect(expected).toEqual(true)
+  })
 })
