@@ -102,9 +102,6 @@ export class DocumentArticleLookup extends React.PureComponent {
     )
     const { items, pageNumber, isFetching } = this.props
     if (!_.isEmpty(items)) {
-      console.log('1', this.props.type)
-      console.log('2', items)
-      console.log('3', this.props.fieldsToShowInDetails)
       result = (
         <DetailCardCollection
           type={this.props.type}
