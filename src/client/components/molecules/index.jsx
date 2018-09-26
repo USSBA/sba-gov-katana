@@ -17,7 +17,6 @@ import NoResultsSection from './no-results-section/no-results-section'
 import NumberedCalloutBlock from './numbered-callout-block/numbered-callout-block'
 import PageLinkGroup from './page-link-group/page-link-group'
 import Paginator from './paginator/paginator'
-import PeopleDetailCard from './people-detail-card/people-detail-card'
 import PhoneNumber from './phone-number/phone-number'
 import PreviousNextSection from './previous-next/previous-next'
 import QuickLinks from './quick-links/quick-links'
@@ -51,7 +50,6 @@ export {
   NumberedCalloutBlock,
   PageLinkGroup,
   Paginator,
-  PeopleDetailCard,
   PhoneNumber,
   PreviousNextSection,
   QuickLinks,
