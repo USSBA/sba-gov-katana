@@ -278,17 +278,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div>
               <div
                 className="documentTypeContainer"
-              >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
+              />
               <div />
               <a
                 href="javascript:;"
@@ -332,17 +322,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div>
               <div
                 className="documentTypeContainer"
-              >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
+              />
               <div />
               <a
                 href="javascript:;"
@@ -386,17 +366,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div>
               <div
                 className="documentTypeContainer"
-              >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
+              />
               <div />
               <a
                 href="javascript:;"
@@ -440,17 +410,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
             <div>
               <div
                 className="documentTypeContainer"
-              >
-                <div
-                  className="label small"
-                >
-                  <h6
-                    className="type"
-                  >
-                    Memo
-                  </h6>
-                </div>
-              </div>
+              />
               <div />
               <a
                 href="javascript:;"

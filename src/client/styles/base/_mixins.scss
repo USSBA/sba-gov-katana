@@ -90,6 +90,13 @@
   padding: 3rem;
 }
 
+@mixin card-collection-result {
+  background-color: $sba-gray-lighter;
+  padding-top: 30px;
+
+  @include clearfix;
+}
+
 @mixin padded-container {
   @include for-small-only {
     @include padding(null 20px);
