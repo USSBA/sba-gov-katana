@@ -33,11 +33,20 @@ export class PeopleResult extends React.Component {
     const { offices, people } = this.props
 
     if (!isEmpty(offices) && !isEmpty(people)) {
+      const fieldsToShowInDetails = ['Title', 'Office', 'Phone', 'Email']
+
       const peopleWithOfficeMatch = people.map(person => {
         let idMatch = offices.find(office => office.id === person.office)
         return idMatch ? { ...person, office: idMatch.title } : person
       })
-      result = <DetailCardCollection cards={peopleWithOfficeMatch} type={peopleWithOfficeMatch[0].type} />
+
+      result = (
+        <DetailCardCollection
+          cards={peopleWithOfficeMatch}
+          type={peopleWithOfficeMatch[0].type}
+          fieldsToShowInDetails={fieldsToShowInDetails}
+        />
+      )
     } else if ((offices === null && isEmpty(offices)) || (people === null && isEmpty(people))) {
       result = (
         <div className={styles.emptyDocuments}>
