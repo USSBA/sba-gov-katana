@@ -24,14 +24,7 @@ class PeopleLookupPage extends React.Component {
   async componentDidMount() {
     const offices = await fetchSiteContent('officesRaw', 'officesRaw')
     const people = await fetchSiteContent('persons', 'persons')
-    // await new Promise(resolve => { setTimeout(resolve, 10000) })
     this.setState({ offices: offices.data, people: people.data })
-    // return Promise.resolve
-    // await fetchSiteContent('persons', 'persons').then(persons => {
-    //   this.setState({
-    //     people: persons.data
-    //   })
-    // })
   }
 
   getTaxonomy(name) {
@@ -92,14 +85,13 @@ class PeopleLookupPage extends React.Component {
   // }
 
   render() {
-    // console.log('2222', this.state.people)
     // const { selectedItem } = this.state
     const defaultType = 'All'
     const defaultSearchParams = {
       type: defaultType
     }
 
-    const officeListTaxonomies = this.getTaxonomy('offices')
+    // const officeListTaxonomies = this.getTaxonomy('offices')
     // const officesListTaxonomy = this.renderMultiSelects(this.createTaxonomies('offices'))
     const { items, isLoading } = this.props
     const searchTips = [
