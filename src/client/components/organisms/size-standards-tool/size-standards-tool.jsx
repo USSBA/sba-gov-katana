@@ -5,7 +5,7 @@ import { endsWith, isEmpty, reduce } from 'lodash'
 
 import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/size_standards.png'
 import styles from './size-standards-tool.scss'
-import { Button, SearchIcon, TextInput, Link } from 'atoms'
+import { Button, SearchIcon, TextInput } from 'atoms'
 import { Typeahead } from 'molecules'
 
 const formatRevenueLimit = revenueLimit => {
