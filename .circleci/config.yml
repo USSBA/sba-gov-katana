@@ -237,8 +237,7 @@ jobs:
             mkdir -p workspace/build/
             cp package.json build/
             cp -R dist/* build/
-            cp -R public/build/* build/public/build/
-            cp -R public/build/* workspace/build/
+            cp public/build/main.txt build/public/build/main.text
             cp -R config/* build/config/
             cp -R src/views/* build/views/
             cd build

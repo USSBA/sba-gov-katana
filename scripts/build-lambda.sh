@@ -6,7 +6,7 @@ mkdir -p temp/views
 mkdir workspace
 cp package.json temp/
 cp -R dist/* temp/
-cp -R public/build/* temp/public/build/
+cp public/build/main.txt temp/public/build/main.text
 cp -R config/* temp/config/
 cp -R src/views/* temp/views/
 cd temp
