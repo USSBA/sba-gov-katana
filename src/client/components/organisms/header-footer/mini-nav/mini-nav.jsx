@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import classNames from 'classnames'
 import { UtilityLink } from 'atoms'
 import { SearchBar, GoogleTranslate } from 'molecules'
+
 import * as ModalActions from '../../../../actions/show-modal.js'
 import * as ContentActions from '../../../../actions/content.js'
 import clientConfig from '../../../../services/client-config.js'
@@ -20,7 +22,8 @@ class MiniNav extends React.Component {
       translateIsExpanded: false,
       userId: '',
       userEmail: '',
-      userLoggedOn: false
+      userLoggedOn: false,
+      isSearchExpanded: false
     }
   }
 
@@ -52,6 +55,12 @@ class MiniNav extends React.Component {
     }
   }
 
+  onSearchBarExpand(isSearchExpanded) {
+    this.setState({
+      isSearchExpanded
+    })
+  }
+
   makeUserAccountSpecificLinks() {
     let links = []
     if (this.state.userLoggedOn) {
@@ -79,8 +88,14 @@ class MiniNav extends React.Component {
   }
 
   render() {
+    const { isSearchExpanded } = this.state
+    const miniNavClassNames = classNames({
+      [styles.miniNav]: true,
+      [styles.searchBar]: isSearchExpanded
+    })
+
     return (
-      <div className={styles.miniNav}>
+      <div className={miniNavClassNames}>
         <ul id="deskop-mini-nav" aria-label="mini-navigation">
           <GoogleTranslate />
           <UtilityLink id="deskop-mini-nav-1" key={1} url="/anuncio-especial" text="SBA en Español" />
@@ -93,7 +108,7 @@ class MiniNav extends React.Component {
             text="Contact Us"
           />
           {this.makeUserAccountSpecificLinks()}
-          <SearchBar />
+          <SearchBar onExpand={isExpanded => this.onSearchBarExpand(isExpanded)} />
         </ul>
       </div>
     )
