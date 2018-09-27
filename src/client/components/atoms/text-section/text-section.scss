@@ -7,7 +7,8 @@
   list-style: circle;
 }
 
-.textSection ul > li {
+.textSection ul > li,
+.textSection ol > li {
   margin-left: 1.5rem;
   padding-left: 0;
 }
