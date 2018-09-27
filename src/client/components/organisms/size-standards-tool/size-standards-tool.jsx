@@ -5,7 +5,7 @@ import { endsWith, isEmpty, reduce } from 'lodash'
 
 import sizeStandardsGraphic from 'assets/images/tools/size-standards-tool/size_standards.png'
 import styles from './size-standards-tool.scss'
-import { Button, SearchIcon, TextInput } from 'atoms'
+import { Button, SearchIcon, TextInput, Link } from 'atoms'
 import { Typeahead } from 'molecules'
 
 const formatRevenueLimit = revenueLimit => {
@@ -664,10 +664,10 @@ const RevenueScreen = props => {
 
   return (
     <div id="revenue-screen" className={styles.screen}>
-      <h2>How much revenue?</h2>
+      <h2>How much average annual receipts/revenue?</h2>
 
       <div className={styles.revenueInput}>
-        <label htmlFor="revenue">Annual Revenue</label>
+        <label htmlFor="revenue">Three-year Average</label>
 
         <NumberFormat
           id="revenue"
@@ -687,7 +687,15 @@ const RevenueScreen = props => {
         {props.setFocusTo('revenue')}
       </div>
 
-      <p>Your revenue is determined by your annual receipts, or total income plus cost of goods sold.</p>
+      <p>
+        Your average annual receipts/revenue is generally calculated as your total receipts/revenue or total
+        income plus cost of goods sold (including all affiliates, if any) over the latest completed three
+        (3) fiscal years divided by three (3). See{' '}
+        <a href="https://www.law.cornell.edu/cfr/text/13/121.104" target="_blank" rel="noopener">
+          13 CFR 121.104
+        </a>{' '}
+        for details.
+      </p>
     </div>
   )
 }

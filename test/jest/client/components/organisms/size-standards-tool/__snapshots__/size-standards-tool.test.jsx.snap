@@ -263,7 +263,7 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
   id="revenue-screen"
 >
   <h2>
-    How much revenue?
+    How much average annual receipts/revenue?
   </h2>
   <div
     className="revenueInput"
@@ -271,7 +271,7 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
     <label
       htmlFor="revenue"
     >
-      Annual Revenue
+      Three-year Average
     </label>
     <input
       id="revenue"
@@ -286,7 +286,17 @@ exports[`SizeStandardsTool RevenueScreen should match snapshot 1`] = `
     />
   </div>
   <p>
-    Your revenue is determined by your annual receipts, or total income plus cost of goods sold.
+    Your average annual receipts/revenue is generally calculated as your total receipts/revenue or total income plus cost of goods sold (including all affiliates, if any) over the latest completed three (3) fiscal years divided by three (3). See
+     
+    <a
+      href="https://www.law.cornell.edu/cfr/text/13/121.104"
+      rel="noopener"
+      target="_blank"
+    >
+      13 CFR 121.104
+    </a>
+     
+    for details.
   </p>
 </div>
 `;
