@@ -14,4 +14,4 @@ cache:
   s3BucketName: laura-content-sba-gov
   useS3: true
 sizestandards:
-    endpoint: ruay9oz348.execute-api.us-east-1.amazonaws.com
+    endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
