@@ -42,14 +42,18 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <SearchBar />,
+      "_currentElement": <SearchBar
+        onExpand={[Function]}
+/>,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBar {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {},
+        "props": Object {
+          "onExpand": [Function],
+        },
         "refs": Object {},
         "state": Object {
           "expanded": false,
@@ -111,6 +115,8 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <SearchBar />,
+  "unrendered": <SearchBar
+    onExpand={[Function]}
+/>,
 }
 `;
