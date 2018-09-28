@@ -131,14 +131,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -188,14 +188,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -245,14 +245,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -302,14 +302,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
             </div>
           </div>
@@ -368,14 +368,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -425,14 +425,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -482,14 +482,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -539,14 +539,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
             </div>
           </div>
@@ -605,14 +605,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -662,14 +662,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -719,14 +719,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
               <div
                 className="card fourColumn"
@@ -776,14 +776,14 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                       Overview of assistance available to Alaska Native Corporations from the 8(a) Business Development Program.
                     </p>
                   </div>
+                  <a
+                    onClick={[Function]}
+                    style={Object {}}
+                    target="_self"
+                  >
+                    View course
+                  </a>
                 </div>
-                <a
-                  onClick={[Function]}
-                  style={Object {}}
-                  target="_self"
-                >
-                  View course
-                </a>
               </div>
             </div>
           </div>

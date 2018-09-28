@@ -71,8 +71,8 @@ const Card = props => {
             </p>
           </div>
         ) : null}
+        {learnMoreMarkup}
       </div>
-      {learnMoreMarkup}
     </div>
   )
 }
