@@ -1,37 +1,20 @@
 import axios from 'axios'
-import types from './actions/types.js'
 import queryString from 'querystring'
 
-function formatRestContentResponse(type, id, data) {
-  return {
-    type: types.restContent,
-    contentType: type,
-    id,
-    data: data,
-    receivedAt: Date.now()
+async function fetchRestContent(type, id, langOverride) {
+  let extraHeaders
+  if (langOverride) {
+    extraHeaders = { headers: { 'accept-language': langOverride } }
   }
-}
-
-async function fetchRestContent(type, id) {
   let data = null
   try {
-    const response = await axios.get('/api/content/' + type + (id ? '/' + id : '') + '.json')
+    const response = await axios.get('/api/content/' + type + (id ? '/' + id : '') + '.json', extraHeaders)
     data = response.data
   } catch (error) {
     console.error('fetchRestContent', error)
   }
 
   return data
-}
-
-function formatSiteContentResponse(prop, query, data) {
-  return {
-    type: types.siteContent,
-    contentType: prop,
-    query,
-    data: data,
-    receivedAt: Date.now()
-  }
 }
 
 async function fetchSiteContent(prop, type, query) {
@@ -43,8 +26,7 @@ async function fetchSiteContent(prop, type, query) {
   } catch (error) {
     console.error('fetchSiteContent', error)
   }
-
-  return formatSiteContentResponse(prop, query, data)
+  return data
 }
 
-export { fetchRestContent, fetchSiteContent, formatRestContentResponse, formatSiteContentResponse }
+export { fetchRestContent, fetchSiteContent }

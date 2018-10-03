@@ -99,12 +99,12 @@ describe('URL Redirect Service', function() {
             S: '32'
           }
         },
-        IndexName: 'NodeId-Timestamp-index',
+        IndexName: 'NodeId-index',
         KeyConditionExpression: 'NodeId = :nodeId',
         ReturnConsumedCapacity: 'TOTAL',
         TableName: 'placeholder'
       }
-      const result = mapNodeIdQueryParams('32')
+      const result = mapNodeIdQueryParams('32', 'en')
       result.should.deep.equal(expected)
     })
   })

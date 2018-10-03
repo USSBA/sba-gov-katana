@@ -53,13 +53,13 @@ class DocumentPage extends React.Component {
   async fetchDocument(pathname) {
     if (pathname) {
       try {
-        const { data: { items } } = await fetchSiteContent('documents', 'documents', {
+        const { items } = await fetchSiteContent('documents', 'documents', {
           url: pathname
         })
 
         if (size(items)) {
           const { id } = items[0]
-          const { data: document } = await fetchSiteContent('document', `node/${id}`)
+          const document = await fetchSiteContent('document', `node/${id}`)
           this.setState({ document })
         }
       } catch (e) {

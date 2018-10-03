@@ -20,13 +20,13 @@ class ArticlePage extends React.Component {
 
     if (pathname) {
       try {
-        const { data: { items } } = await fetchSiteContent('articles', 'articles', {
+        const { items } = await fetchSiteContent('articles', 'articles', {
           url: pathname
         })
 
         if (size(items)) {
           const { id } = items[0]
-          const { data: article } = await fetchSiteContent('article', `node/${id}`)
+          const article  = await fetchSiteContent('article', `node/${id}`)
           this.setState({ article })
         }
       } catch (e) {

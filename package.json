@@ -165,6 +165,7 @@
       "<rootDir>/src/client/components/"
     ],
     "globals": {
+      "URLSearchParams": null,
       "CONFIG": {
         "isUserLoggedIn": false,
         "googleAnalytics": {

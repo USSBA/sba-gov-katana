@@ -66,7 +66,7 @@ app.use(function(req, res, next) {
   const requestPathWithoutTraillingSlack =
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
-    .then(nodeId => {
+    .then(({ nodeId, langCode }) => {
       let responseStatus = HttpStatus.OK
       if (!nodeId && config.get('features.true404')) {
         responseStatus = HttpStatus.NOT_FOUND
@@ -88,6 +88,8 @@ app.use(function(req, res, next) {
         showSbic: config.get('features.showSbic')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
+      req.nodeId = nodeId //eslint-disable-line no-param-reassign
+      req.preferredLanguage = langCode === 'es' ? 'es' : req.preferredLanguage //eslint-disable-line no-param-reassign
       next()
     })
     .catch(next)
@@ -165,7 +167,8 @@ import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
-    lang: req.preferredLanguage,
+    langOverride: req.preferredLanguage,
+    nodeId: req.nodeId,
     config: JSON.stringify(req.sessionAndConfig),
     cdnPathFromBackend: '"' + config.get('publicPath') + '"',
     optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
