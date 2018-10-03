@@ -1,11 +1,10 @@
-import _ from 'lodash'
-
+/* eslint-disable */
 function findByUrl(haystack, needle) {
   if (!haystack) {
     return null
   }
-  const found = _.find(haystack, {
-    url: needle
+  const found = haystack.find(item => {
+    return item.url === needle
   })
   return found
 }
@@ -34,15 +33,53 @@ function findPageLineage(menu, urlFragments) {
   if (!menu) {
     return null
   }
-  const first = urlFragments[0]
-  const rest = _.tail(urlFragments)
+  const [first, ...rest] = urlFragments
   const child = findByUrl(menu, first)
   let descendants = null
   if (child && child.children) {
     descendants = findPageLineage(child.children, rest)
   }
-  const result = _.compact([child].concat(descendants))
+  const result = [child].concat(descendants).filter(item => !!item)
   return result
 }
 
-export { findPage, findSubSection, findSection, findPageLineage }
+function finder(items, key, value) {
+  const id = key
+  const val = value
+  let foundValue
+  let lastChild
+
+  // Search surface level of items
+  for (const item of items) {
+    if (item[id] === val) {
+      foundValue = item
+      break
+    }
+  }
+
+  // If no match was found, then try searching within nested items
+  if (typeof foundValue === 'undefined') {
+    for (const item of items) {
+      if (item.children && item.children.length > 0) {
+        lastChild = item
+        foundValue = finder(item.children, id, val)
+        if (foundValue) {
+          break
+        }
+      }
+    }
+  }
+
+  return foundValue ? [lastChild].concat(foundValue).filter(x => !!x) : null
+}
+
+function findPageLineageByNodeId(menu, nodeId) {
+  return finder(menu, 'node', nodeId)
+}
+
+module.exports.findPage = findPage
+module.exports.findSubSection = findSubSection
+module.exports.findSection = findSection
+module.exports.findPageLineage = findPageLineage
+module.exports.findPageLineageByNodeId = findPageLineageByNodeId
+/* eslint-enable */

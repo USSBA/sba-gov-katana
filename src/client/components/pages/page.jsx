@@ -1,7 +1,9 @@
+/* global URLSearchParams */
 import React, { PropTypes } from 'react'
 import BasicPage from '../templates/basic-page/basic-page.jsx'
 import ProgramPage from '../templates/program-page/program-page.jsx'
 import { fetchRestContent } from '../../fetch-content-helper.js'
+import { getQueryParams } from '../../services/utils.js'
 
 class Page extends React.Component {
   constructor() {
@@ -11,11 +13,35 @@ class Page extends React.Component {
     }
   }
 
+  getLanguageOverride() {
+    let langOverride = null
+    let langQueryParam = null
+
+    if (window) {
+      if (URLSearchParams) {
+        let urlParams = new URLSearchParams(window.location.search)
+        langQueryParam = urlParams.get('lang')
+      } else {
+        // for IE 11, delete me when we no longer support it
+        const parsed = getQueryParams()
+        langQueryParam = parsed.lang
+      }
+    }
+
+    if (langQueryParam) {
+      langOverride = langQueryParam
+    } else if (window && window.langOverride) {
+      langOverride = window.langOverride
+    }
+    return langOverride
+  }
+
   componentWillMount() {
+    let langOverride = this.getLanguageOverride()
     const id = this.props.nodeId
     if (id > 0) {
       let me = this
-      fetchRestContent('node', id).then(data => {
+      fetchRestContent('node', id, langOverride).then(data => {
         me.setState({
           data
         })

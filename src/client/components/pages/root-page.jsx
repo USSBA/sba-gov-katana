@@ -1,107 +1,52 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as ContentActions from '../../actions/content.js'
-import * as NavigationActions from '../../actions/navigation.js'
-import _ from 'lodash'
-import { findPageLineage, findSubSection, findSection } from '../../services/menu.js'
+import { findSection, findPageLineageByNodeId } from '../../services/menu.js'
 import Page from './page.jsx'
 import SectionPage from './section-page/section-page.jsx'
-import path from 'path'
 import ErrorPage from '../pages/error-page/error-page.jsx'
 import DocumentPage from '../pages/document-page/document-page.jsx'
 import ArticlePage from '../pages/article-page/article-page.jsx'
 import { getConfig } from '../../services/client-config.js'
+import { fetchSiteContent } from '../../fetch-content-helper.js'
 
 export class RootPage extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      siteMap: []
+    }
+  }
+
   componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('siteMap', 'siteMap')
-  }
-
-  componentDidUpdate() {
-    this.checkForForward()
-  }
-
-  checkForForward() {
-    const first = this.props.params.first
-    const second = this.props.params.second
-    const third = this.props.params.third
-    if (first && second && !third && first === 'business-guide') {
-      const subSectionData = findSubSection(this.props.menu, first, second)
-      if (subSectionData && subSectionData.children && subSectionData.children[0]) {
-        const page = subSectionData.children[0].url
-        this.props.navigationActions.locationChange(path.join('/', first, second, page), {})
-      }
-    }
-  }
-
-  renderPageOnLineage(pageLineage) {
-    const nodeId = _.last(pageLineage).node
-    if (nodeId) {
-      return <Page lineage={pageLineage} nodeId={nodeId} />
-    } else {
-      return <ErrorPage />
-    }
+    let me = this
+    fetchSiteContent('siteMap', 'siteMap').then(data => {
+      me.setState({
+        siteMap: data
+      })
+    })
   }
 
   renderPage(first, second, third, fourth, fifth) {
-    const pageLineage = findPageLineage(this.props.menu, _.compact([first, second, third, fourth, fifth]))
     if (getConfig('responseStatus') === 404) {
       return <ErrorPage />
     } else if (first === 'document') {
       return <DocumentPage location={this.props.location} />
     } else if (first === 'article') {
-      const year = second
-      const month = third
-      const day = fourth
-      const title = fifth
       return <ArticlePage location={this.props.location} />
-    } else if (this.props.menu) {
-      if (first && second && third && fourth && fifth) {
-        if (pageLineage && pageLineage.length === 5) {
-          return this.renderPageOnLineage(pageLineage)
-        } else {
-          return <ErrorPage />
-        }
-      } else if (first && second && third && fourth) {
-        if (pageLineage && pageLineage.length === 4) {
-          return this.renderPageOnLineage(pageLineage)
-        } else {
-          return <ErrorPage />
-        }
-      } else if (first && second && third) {
-        if (pageLineage && pageLineage.length === 3) {
-          return this.renderPageOnLineage(pageLineage)
-        } else {
-          return <ErrorPage />
-        }
-      } else if (first && second) {
-        if (pageLineage && pageLineage.length === 2) {
-          return this.renderPageOnLineage(pageLineage)
-        } else {
-          return <ErrorPage />
-        }
-      } else if (first) {
-        const sectionData = findSection(this.props.menu, first)
-        if (
-          first === 'disaster-assistance' ||
-          first === 'learning-center' ||
-          first === 'local-assistance' ||
-          first === 'national-small-business-week' ||
-          first === 'anuncio-especial' ||
-          first === 'utilizando-google-translate' ||
-          first === 'prestamos' ||
-          first === 'escriba-su-plan-de-negocios'
-        ) {
-          return this.renderPageOnLineage(pageLineage)
-        } else if (sectionData) {
-          return <SectionPage sectionData={sectionData} />
-        } else {
-          //should never reach this code
-          return <ErrorPage />
-        }
+    } else if (window && window.nodeId && this.state.siteMap.length && Number(window.nodeId) > 0) {
+      const pageLineage = findPageLineageByNodeId(this.state.siteMap, window.nodeId)
+      if (pageLineage) {
+        return <Page lineage={pageLineage} nodeId={window.nodeId} />
+      } else {
+        return <ErrorPage />
+      }
+    } else if (first && !second && !third && !fourth && !fifth) {
+      const sectionData = findSection(this.state.siteMap, first)
+      console.log('sectionData', sectionData)
+      if (sectionData) {
+        return <SectionPage sectionData={sectionData} />
       }
     }
+
     return <div />
   }
 
@@ -116,17 +61,4 @@ export class RootPage extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  return {
-    menu: _.get(reduxState, 'contentReducer.siteMap')
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch),
-    navigationActions: bindActionCreators(NavigationActions, dispatch)
-  }
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(RootPage)
+export default RootPage

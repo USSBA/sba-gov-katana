@@ -16,6 +16,3 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectRyan
-cache:
-  s3BucketName: ryan-content-sba-gov
-  useS3: true

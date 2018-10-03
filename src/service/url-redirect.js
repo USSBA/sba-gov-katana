@@ -1,4 +1,4 @@
-import config from 'config'
+const config = require('config')
 const aws = require('aws-sdk')
 const dynamodb = new aws.DynamoDB({
   apiVersion: '2012-10-08',
@@ -29,14 +29,19 @@ function findNodeIdByUrl(url) {
     .promise()
     .then(result => {
       let nodeId = null
+      let langCode = null
       if (result.Count > 0) {
         const mostRecentItem = findMostRecentItem(result.Items)
         nodeId = mostRecentItem.NodeId.S
+        langCode = mostRecentItem.LangCode ? mostRecentItem.LangCode.S : 'en-US'
       }
-      return nodeId
+      return {
+        nodeId,
+        langCode
+      }
     })
     .catch(error => {
-      console.error('EXCEPTION: Unable to get redirect node id from DynamoDB')
+      console.error('EXCEPTION: Unable to get redirect node id from DynamoDB', url)
       throw error
     })
 }
@@ -62,10 +67,24 @@ function findMostRecentItem(itemList) {
   }
 }
 
-function mapNodeIdQueryParams(nodeId) {
+function findMatchingLangCodes(itemList, langCode) {
+  if (itemList.length < 1) {
+    return []
+  } else {
+    return itemList.filter(item => {
+      if (langCode.startsWith('en')) {
+        return !item.LangCode || langCode.startsWith('en')
+      } else {
+        return item.LangCode && item.LangCode.S === langCode
+      }
+    })
+  }
+}
+
+function mapNodeIdQueryParams(nodeId, langCode) {
   const params = {
     TableName: tableName,
-    IndexName: 'NodeId-Timestamp-index',
+    IndexName: 'NodeId-index',
     KeyConditionExpression: 'NodeId = :nodeId',
     ExpressionAttributeValues: {
       ':nodeId': { S: nodeId }
@@ -76,29 +95,30 @@ function mapNodeIdQueryParams(nodeId) {
 }
 
 function findMostRecentUrlRedirect(url) {
-  return findNodeIdByUrl(url).then(nodeId => {
-    if (nodeId) {
-      return findMostRecentUrlByNodeId(nodeId)
+  return findNodeIdByUrl(url).then(({ nodeId, langCode }) => {
+    if (nodeId && langCode) {
+      return findMostRecentUrlByNodeId(nodeId, langCode)
     }
     return null
   })
 }
 
-function findMostRecentUrlByNodeId(nodeId) {
-  const params = mapNodeIdQueryParams(nodeId)
+function findMostRecentUrlByNodeId(nodeId, langCode) {
+  const params = mapNodeIdQueryParams(nodeId, langCode)
   return dynamodb
     .query(params)
     .promise()
     .then(result => {
       let url = null
       if (result.Count > 0) {
-        const mostRecentItem = findMostRecentItem(result.Items)
+        const makingLangCodes = findMatchingLangCodes(result.Items, langCode)
+        const mostRecentItem = findMostRecentItem(makingLangCodes)
         url = mostRecentItem.Url.S
       }
       return url
     })
     .catch(error => {
-      console.error('EXCEPTION: Unable to get redirect url from DynamoDB')
+      console.error('EXCEPTION: Unable to get redirect url from DynamoDB', nodeId, langCode)
       throw error
     })
 }
@@ -128,13 +148,11 @@ function mapUrlNodeParameters(nodeId, url, timestamp) {
 }
 /* eslint-enable id-length */
 
-export {
-  findNodeIdByUrl,
-  findMostRecentUrlByNodeId,
-  addUrlNodeMapping,
-  mapUrlNodeParameters,
-  mapUrlQueryParameters,
-  mapNodeIdQueryParams,
-  findMostRecentItem,
-  findMostRecentUrlRedirect
-}
+module.exports.findNodeIdByUrl = findNodeIdByUrl
+module.exports.findMostRecentUrlByNodeId = findMostRecentUrlByNodeId
+module.exports.addUrlNodeMapping = addUrlNodeMapping
+module.exports.mapUrlNodeParameters = mapUrlNodeParameters
+module.exports.mapUrlQueryParameters = mapUrlQueryParameters
+module.exports.mapNodeIdQueryParams = mapNodeIdQueryParams
+module.exports.findMostRecentItem = findMostRecentItem
+module.exports.findMostRecentUrlRedirect = findMostRecentUrlRedirect

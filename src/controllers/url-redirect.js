@@ -6,7 +6,7 @@ function handleUrlRedirect(req, res) {
   const url = req.query.url
 
   if (url) {
-    const nodeId = findNodeIdByUrl(url)
+    const { nodeId, langCode } = findNodeIdByUrl(url)
     if (!nodeId) {
       res.status(HttpStatus.NOT_FOUND).send('Url not found in redirect table')
     } else {

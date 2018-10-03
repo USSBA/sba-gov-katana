@@ -21,8 +21,6 @@ oca:
     passwordDecryptionKey: OCA_SOAP_DECRYPTION_KEY
 sizestandards:
     endpoint: SIZE_STANDARDS_ENDPOINT
-cache:
-  s3BucketName: S3BUCKET
 publicPath: PUBLIC_PATH
 googleMapsApiKey: GOOGLE_MAPS_API_KEY
 content:

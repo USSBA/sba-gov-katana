@@ -10,6 +10,3 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectKevin
-cache:
-    s3BucketName: kevin-content-sba-gov
-    useS3: true
