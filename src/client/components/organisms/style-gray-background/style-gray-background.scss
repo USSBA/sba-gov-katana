@@ -1,8 +1,20 @@
 .greyParagraph {
   background-color: $sba-gray-lighter;
-  padding: 4rem 2.8rem;
-  margin-top: 1.5rem;
-  margin-bottom: 2.8rem;
+
+  @media (max-width: 767px) {
+    padding: 4rem 1.1rem;
+    margin: 1.5rem -1.1rem 2.8rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    padding: 4rem 1.5rem 4rem;
+    margin: 1.5rem -1.6rem 2.8rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 4rem 4.4rem 4rem 4.5rem;
+    margin: 1.5rem -4.4rem 2.8rem;
+  }
 
   div[class~='card'] > div[class~='content-with-image'] {
     padding: 20px 30px;
