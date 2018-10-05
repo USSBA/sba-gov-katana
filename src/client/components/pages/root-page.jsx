@@ -41,7 +41,6 @@ export class RootPage extends React.Component {
       }
     } else if (first && !second && !third && !fourth && !fifth) {
       const sectionData = findSection(this.state.siteMap, first)
-      console.log('sectionData', sectionData)
       if (sectionData) {
         return <SectionPage sectionData={sectionData} />
       }
