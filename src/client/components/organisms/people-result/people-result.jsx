@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 
 import styles from './people-result.scss'
@@ -6,23 +7,37 @@ import { Button, Loader, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { DetailCardCollection } from 'organisms'
 
-// const createSlug = str => {
-//   return str
-//     .toLowerCase()
-//     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-//     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-//     .replace(/^-+|-+$/g, '')
-// }
-
-// const createCamelCase = (str) => {
-//
-//   const sliceIndex = 1;
-//   const _str = str[0].toLowerCase() + str.slice(sliceIndex);
-//   return _str.replace(" ", "");
-//
-// };
-
 export class PeopleResult extends React.Component {
+  super() {
+    this.renderPaginator = this.renderPaginator.bind(this)
+  }
+
+  renderDefaultView(children) {
+    return <div>{children}</div>
+  }
+
+  renderPaginator() {
+    const { total, pageSize, pageNumber, onBack, onForward } = this.props
+
+    return this.shouldRenderPaginator() ? (
+      <div className={styles.paginator}>
+        <Paginator
+          pageNumber={pageNumber}
+          pageSize={pageSize}
+          total={total}
+          onBack={onBack}
+          onForward={onForward}
+        />
+      </div>
+    ) : null
+  }
+  shouldRenderPaginator() {
+    const { isLoading, hidePaginatorOnNoResults, items, paginate } = this.props
+    //don't render paginator while the page is loading, if pagination is disabled, or if the paginator is
+    //disabled and there are no results
+    return !isLoading && paginate && !(hidePaginatorOnNoResults && !items.length)
+  }
+
   renderCards() {
     let result = (
       <div className={styles.loaderContainer}>
@@ -30,12 +45,12 @@ export class PeopleResult extends React.Component {
       </div>
     )
 
-    const { offices, people } = this.props
+    const { items, offices } = this.props
 
-    if (!isEmpty(offices) && !isEmpty(people)) {
+    if (!isEmpty(offices) && !isEmpty(items)) {
       const fieldsToShowInDetails = ['Title', 'Office', 'Phone', 'Email']
 
-      const peopleWithOfficeMatch = people.map(person => {
+      const peopleWithOfficeMatch = items.map(person => {
         let idMatch = offices.find(office => office.id === person.office)
         return idMatch ? { ...person, office: idMatch.title } : person
       })
@@ -47,7 +62,7 @@ export class PeopleResult extends React.Component {
           fieldsToShowInDetails={fieldsToShowInDetails}
         />
       )
-    } else if ((offices === null && isEmpty(offices)) || (people === null && isEmpty(people))) {
+    } else if ((offices === null && isEmpty(offices)) || (items === null && isEmpty(items))) {
       result = (
         <div className={styles.emptyDocuments}>
           <p className={styles.emptyDocumentsMessage}>
@@ -65,11 +80,45 @@ export class PeopleResult extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className={styles.result}>{this.renderCards()}</div>
+      <div className={styles.result}>
+        {this.renderPaginator()}
+        {this.renderCards()}
+        {this.renderPaginator()}
       </div>
     )
   }
+}
+
+PeopleResult.defaultProps = {
+  items: [],
+  id: null,
+  resultId: 'result',
+  paginate: false,
+  scroll: false,
+  hasSearchInfoPanel: false,
+  displaySearchTipsOnNoResults: false,
+  hidePaginatorOnNoResults: true,
+  searchTermName: '',
+  submittedFieldValues: {},
+  searchTips: [],
+  onClick: () => {},
+  onResultHover: () => {}
+}
+
+PeopleResult.propTypes = {
+  submittedFieldValues: PropTypes.object,
+  items: PropTypes.array,
+  id: PropTypes.string,
+  resultId: PropTypes.string,
+  paginate: PropTypes.bool,
+  scroll: PropTypes.bool,
+  hasSearchInfoPanel: PropTypes.bool,
+  searchTermName: PropTypes.string,
+  onClick: PropTypes.func,
+  onResultHover: PropTypes.func,
+  searchTips: PropTypes.array,
+  displaySearchTipsOnNoResults: PropTypes.bool,
+  hidePaginatorOnNoResults: PropTypes.bool
 }
 
 export default PeopleResult

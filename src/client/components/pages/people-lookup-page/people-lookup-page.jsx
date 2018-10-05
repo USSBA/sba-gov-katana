@@ -16,20 +16,19 @@ class PeopleLookupPage extends React.Component {
     super()
 
     this.state = {
+      isLoading: null,
       offices: undefined,
-      people: undefined
+      selectedItem: {}
     }
   }
 
   async componentDidMount() {
     const offices = await fetchSiteContent('officesRaw', 'officesRaw')
-    const people = await fetchSiteContent('persons', 'persons')
-    this.setState({ offices: offices.data, people: people.data })
+    this.setState({ offices: offices.data })
   }
 
   getTaxonomy(name) {
     const offices = this.state.offices
-    const people = this.state.people
 
     if (!offices || !offices) {
       return {
@@ -84,10 +83,62 @@ class PeopleLookupPage extends React.Component {
   //   this.setState({ hoveredMarkerId })
   // }
 
+  // handleBack() {
+  //   const { pageNumber, onPageChange } = this.props
+  //   const newPageNumber = Math.max(1, pageNumber - 1)
+  //   onPageChange(newPageNumber)
+  //   logPageEvent({ category: 'Show-More-Results', action: 'Previous' })
+  // }
+
+  // handleForward() {
+  //   const { itemCount, pageNumber, onPageChange } = this.props
+  //   const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
+  //   onPageChange(newPageNumber)
+  //   logPageEvent({ category: 'Show-More-Results', action: 'Next' })
+  // }
+
+  // renderPaginator() {
+  //   const { items, itemCount, pageNumber, pageSize } = this.props
+  //   let result = <div />
+  //   if (!_.isEmpty(items)) {
+  //     result = (
+  //       <div className={styles.paginator}>
+  //         <Paginator
+  //           pageNumber={pageNumber}
+  //           pageSize={pageSize}
+  //           total={itemCount}
+  //           onBack={this.handleBack.bind(this)}
+  //           onForward={this.handleForward.bind(this)}
+  //         />
+  //       </div>
+  //     )
+  //   }
+  //   return result
+  // }
+
+  setSelectedItem(selectedItem) {
+    const newState = {
+      selectedItem,
+      newCenter: {}
+    }
+
+    if (!isEmpty(selectedItem) && !isEmpty(selectedItem.item.geolocation)) {
+      const [lat, lng] = selectedItem.item.geolocation[0].split(',')
+      newState.newCenter = {
+        lat: Number(lat),
+        lng: Number(lng)
+      }
+    }
+
+    this.setState(newState)
+  }
+
   render() {
     // const { selectedItem } = this.state
     const defaultType = 'All'
+    const pageSize = 30
     const defaultSearchParams = {
+      pageSize,
       type: defaultType
     }
 
@@ -108,9 +159,6 @@ class PeopleLookupPage extends React.Component {
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
-        onHandleEvent={() => {
-          this.setIsDragging(false)
-        }}
       >
         <PrimarySearchBar id="person-primary-search-bar" title="Find person" className={styles.searchBar}>
           <TextInput
@@ -123,13 +171,13 @@ class PeopleLookupPage extends React.Component {
             showSearchIcon={true}
           />
 
-          {/*          <TaxonomyMultiSelect
-            taxonomy={officeListTaxonomies}
+          <TaxonomyMultiSelect
+            taxonomy={{ name: 'orderBy', terms: ['First name', 'Last name', 'Office name'] }}
             label="Office"
             queryParamName="type"
             multi={false}
             className={styles.field + ' ' + styles.search}
-      />*/}
+          />
 
           {/*<TaxonomyMultiSelect
             taxonomy={officesTaxonomy}
@@ -160,7 +208,7 @@ class PeopleLookupPage extends React.Component {
         {/*
         TODO: Uncomment this if we need a no results section
         <NoResultsSection searchTips={searchTips}/> */}
-        <PeopleResult offices={this.state.offices} people={this.state.people} />
+        <PeopleResult id="people-result" paginate searchTermName={'q'} offices={this.state.offices} />
         <StyleWrapperDiv />
       </SearchTemplate>
     )
