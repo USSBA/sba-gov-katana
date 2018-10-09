@@ -10,6 +10,3 @@ features:
     urlRedirect:
         tableName: UrlToNodeBrian
         enabled: true
-cache:
-  s3BucketName: brian-content-sba-gov
-  useS3: true

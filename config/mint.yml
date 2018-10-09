@@ -18,6 +18,3 @@ features:
         enabled: true
         tableName: UrlToUrlRedirectIntegration
     true404: true
-cache:
-  s3BucketName: mint-content-sba-gov
-  useS3: true

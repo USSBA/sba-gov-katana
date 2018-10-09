@@ -10,8 +10,5 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectLaura
-cache:
-  s3BucketName: laura-content-sba-gov
-  useS3: true
 sizestandards:
     endpoint: 27b9p5e3fk.execute-api.us-east-1.amazonaws.com/LATEST/
