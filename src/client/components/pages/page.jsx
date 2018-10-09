@@ -1,4 +1,3 @@
-/* global URLSearchParams */
 import React, { PropTypes } from 'react'
 import BasicPage from '../templates/basic-page/basic-page.jsx'
 import ProgramPage from '../templates/program-page/program-page.jsx'
@@ -18,14 +17,8 @@ class Page extends React.Component {
     let langQueryParam = null
 
     if (window) {
-      if (URLSearchParams) {
-        let urlParams = new URLSearchParams(window.location.search)
-        langQueryParam = urlParams.get('lang')
-      } else {
-        // for IE 11, delete me when we no longer support it
-        const parsed = getQueryParams()
-        langQueryParam = parsed.lang
-      }
+      const parsed = getQueryParams()
+      langQueryParam = parsed.lang
     }
 
     if (langQueryParam) {
