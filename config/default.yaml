@@ -59,6 +59,7 @@ oca:
         passwordDecryptionKey: placeholderDecryptionKeyMustBeAtLeast16Characters
         wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl
 features:
+    localAssistMenuHeight: false
     showSbic: false
     geoLocator: false
     searchUrl: "/search/?q="

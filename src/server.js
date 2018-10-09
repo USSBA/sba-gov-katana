@@ -85,7 +85,8 @@ app.use(function(req, res, next) {
         responseStatus: responseStatus,
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
         searchUrl: config.get('features.searchUrl'),
-        showSbic: config.get('features.showSbic')
+        showSbic: config.get('features.showSbic'),
+        localAssistMenuHeight: config.get('features.localAssistMenuHeight')
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       req.nodeId = nodeId //eslint-disable-line no-param-reassign

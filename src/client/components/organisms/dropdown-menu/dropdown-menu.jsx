@@ -68,7 +68,7 @@ class DropdownMenu extends React.Component {
       sizingStyle = styles.four
     }
     if (menuId === 4) {
-      sizingStyle = styles.five
+      sizingStyle = clientConfig.localAssistMenuHeight ? styles.five : styles.fiveOld
     }
     if (menuId === 5) {
       sizingStyle = styles.six
