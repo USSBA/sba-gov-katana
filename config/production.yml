@@ -8,7 +8,7 @@ googleAnalytics:
 server:
     fqdn: sba.gov
 features:
-    localAssistMenuHeight: true
+    localAssistMenuHeight: false
     showSbic: false
     urlRedirect:
         tableName: UrlToNodeProduction
