@@ -35,4 +35,21 @@ function getQueryParams() {
   return queryParams
 }
 
-export { getCurrentFile, getQueryParams }
+function getLanguageOverride() {
+  let langOverride = null
+  let langQueryParam = null
+
+  if (window) {
+    const parsed = getQueryParams()
+    langQueryParam = parsed.lang
+  }
+
+  if (langQueryParam) {
+    langOverride = langQueryParam
+  } else if (window && window.langOverride) {
+    langOverride = window.langOverride
+  }
+  return langOverride
+}
+
+export { getCurrentFile, getLanguageOverride, getQueryParams }
