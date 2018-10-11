@@ -9,7 +9,6 @@ foresee:
 server:
     fqdn: ryan.ussba.io
 features:
-    localAssistMenuHeight: true
     showSbic: false
     urlRedirect:
         tableName: UrlToNodeRyan
