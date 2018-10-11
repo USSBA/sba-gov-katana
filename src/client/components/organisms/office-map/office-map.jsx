@@ -23,6 +23,10 @@ export function displayLocationInfo(position) {
 }
 
 const defaultIconScale = 40
+const defaultMapPadding = {
+  left: 541,
+  right: 541
+}
 
 const OfficeMap = compose(
   withProps({
@@ -143,7 +147,7 @@ class OfficeMapApp extends React.PureComponent {
         },
         () => {
           if (!shouldCenterMap && !isEmpty(map)) {
-            map.fitBounds(this.bounds)
+            this.fitBoundsWithPadding(map, this.bounds, defaultMapPadding)
           }
         }
       )
@@ -218,11 +222,91 @@ class OfficeMapApp extends React.PureComponent {
         },
         () => {
           if (!this.state.hasSetInitialBounds) {
-            mapRef.fitBounds(this.bounds)
+            this.fitBoundsWithPadding(mapRef, this.bounds, defaultMapPadding)
             this.setState({ hasSetInitialBounds: true })
           }
         }
       )
+    }
+  }
+
+  /*
+    - natively, google maps fitBounds() allows for a "padding" parameter to go in as it's second argument
+    - ie: mapRef.fitBounds(bounds, parameter)
+    - the problem with this is that it assigns the same padding value to all four sides of the bounding box
+    - Here is very cool sizing solution found on stackoverflow:
+    - - https://stackoverflow.com/a/43761322
+    - this enables padding values to be assigned to individual sides of the map bounding box
+  */
+
+  fitBoundsWithPadding(gMap, bounds, paddingXY) {
+    var projection = gMap.getProjection()
+    if (projection) {
+      if (!$.isPlainObject(paddingXY)) paddingXY = { x: 0, y: 0 }
+
+      var paddings = {
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
+      }
+
+      if (paddingXY.left) {
+        paddings.left = paddingXY.left
+      } else if (paddingXY.x) {
+        paddings.left = paddingXY.x
+        paddings.right = paddingXY.x
+      }
+
+      if (paddingXY.right) {
+        paddings.right = paddingXY.right
+      }
+
+      if (paddingXY.top) {
+        paddings.top = paddingXY.top
+      } else if (paddingXY.y) {
+        paddings.top = paddingXY.y
+        paddings.bottom = paddingXY.y
+      }
+
+      if (paddingXY.bottom) {
+        paddings.bottom = paddingXY.bottom
+      }
+
+      // copying the bounds object, since we will extend it
+      bounds = new google.maps.LatLngBounds(bounds.getSouthWest(), bounds.getNorthEast())
+
+      // SW
+      var point1 = projection.fromLatLngToPoint(bounds.getSouthWest())
+
+      // we must call fitBounds 2 times - first is necessary to set up a projection with initial (actual) bounds
+      // and then calculate new bounds by adding our pixel-sized paddings to the resulting viewport
+      gMap.fitBounds(bounds)
+
+      var point2 = new google.maps.Point(
+        (typeof paddings.left == 'number' ? paddings.left : 0) / Math.pow(2, gMap.getZoom()) || 0,
+        (typeof paddings.bottom == 'number' ? paddings.bottom : 0) / Math.pow(2, gMap.getZoom()) || 0
+      )
+
+      var newPoint = projection.fromPointToLatLng(
+        new google.maps.Point(point1.x - point2.x, point1.y + point2.y)
+      )
+
+      bounds.extend(newPoint)
+
+      // NE
+      point1 = projection.fromLatLngToPoint(bounds.getNorthEast())
+      point2 = new google.maps.Point(
+        (typeof paddings.right == 'number' ? paddings.right : 0) / Math.pow(2, gMap.getZoom()) || 0,
+        (typeof paddings.top == 'number' ? paddings.top : 0) / Math.pow(2, gMap.getZoom()) || 0
+      )
+      newPoint = projection.fromPointToLatLng(
+        new google.maps.Point(point1.x + point2.x, point1.y - point2.y)
+      )
+
+      bounds.extend(newPoint)
+
+      gMap.fitBounds(bounds)
     }
   }
 
