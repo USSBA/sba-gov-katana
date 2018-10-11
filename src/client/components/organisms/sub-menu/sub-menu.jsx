@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash'
 import styles from './sub-menu.scss'
 import { SectionLink } from 'atoms'
 import { DropdownMenu } from 'organisms'
+import { getLanguageOverride } from '../../../services/utils.js'
 
 class SubMenu extends React.Component {
   constructor() {
@@ -31,9 +32,22 @@ class SubMenu extends React.Component {
   }
 
   render() {
-    let { data, ...rest } = this.props
-
+    const { data, ...rest } = this.props
+    const langOverride = getLanguageOverride()
     const enableTriangleMarker = data.children && !isEmpty(data.children)
+
+    let link
+    let linkTitle
+
+    if (langOverride === 'es' && data.spanishTranslation) {
+      console.log('gogogogogogo')
+      link = data.spanishTranslation.link
+      linkTitle = data.spanishTranslation.linkTitle
+    } else {
+      console.log('nononononono')
+      link = data.link
+      linkTitle = data.linkTitle
+    }
 
     return (
       <li
@@ -46,8 +60,8 @@ class SubMenu extends React.Component {
       >
         <SectionLink
           id={this.props.id + '-title'}
-          url={data.link}
-          text={data.linkTitle}
+          url={link}
+          text={linkTitle}
           showUnderline={this.props.showUnderline}
           enableTriangleMarker={enableTriangleMarker}
           shouldForceTriangleMarkerVisibility={this.props.shown}

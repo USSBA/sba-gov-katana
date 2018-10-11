@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import BasicPage from '../templates/basic-page/basic-page.jsx'
 import ProgramPage from '../templates/program-page/program-page.jsx'
 import { fetchRestContent } from '../../fetch-content-helper.js'
-import { getLanguageOverride, getQueryParams } from '../../services/utils.js'
+import { getLanguageOverride } from '../../services/utils.js'
 
 class Page extends React.Component {
   constructor() {

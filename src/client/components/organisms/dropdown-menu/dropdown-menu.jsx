@@ -7,6 +7,7 @@ import { Link, Button, UtilityLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
 import clientConfig from '../../../services/client-config.js'
 import constants from '../../../services/constants.js'
+import { getLanguageOverride } from '../../../services/utils.js'
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -83,20 +84,40 @@ class DropdownMenu extends React.Component {
     })
 
     if (!isEmpty(links)) {
+      const langOverride = getLanguageOverride()
       let pageLinkGroups = links.map((data, index) => {
         let children = data.children || []
         let mappedChildren = children.map(function(item) {
-          return { url: item.link, text: item.linkTitle }
+          let childLink
+          let childLinkTitle
+
+          if (langOverride === 'es' && item.spanishTranslation) {
+            childLink = item.spanishTranslation.link
+            childLinkTitle = item.spanishTranslation.linkTitle
+          } else {
+            childLink = item.link
+            childLinkTitle = item.linkTitle
+          }
+          return { url: childLink, text: childLinkTitle }
         })
 
         const isLastGroup = index === links.length - 1 && !shouldShowCallToAction
+        let link
+        let linkTitle
 
+        if (langOverride === 'es' && data.spanishTranslation) {
+          link = data.spanishTranslation.link
+          linkTitle = data.spanishTranslation.linkTitle
+        } else {
+          link = data.link
+          linkTitle = data.linkTitle
+        }
         return (
           <PageLinkGroup
             key={index}
             id={id + '-group-' + index}
-            title={data.linkTitle}
-            titleLink={data.link}
+            title={linkTitle}
+            titleLink={link}
             isLastGroup={isLastGroup}
             onFinalBlur={onFinalBlur.bind(this)}
             links={mappedChildren}
