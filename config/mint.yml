@@ -9,6 +9,7 @@ foresee:
 server:
     fqdn: mint.ussba.io
 features:
+    localAssistMenuHeight: true
     geoLocator: false
     showSbic: false
     urlRedirect:

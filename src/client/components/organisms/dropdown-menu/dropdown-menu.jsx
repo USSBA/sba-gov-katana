@@ -1,5 +1,6 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
+import classNames from 'classnames'
 
 import styles from './dropdown-menu.scss'
 import { Link, Button, UtilityLink } from 'atoms'
@@ -68,11 +69,18 @@ class DropdownMenu extends React.Component {
       sizingStyle = styles.four
     }
     if (menuId === 4) {
-      sizingStyle = styles.five
+      sizingStyle = clientConfig.localAssistMenuHeight ? styles.fiveTallLocalAssistMenuHeight : styles.five
     }
     if (menuId === 5) {
       sizingStyle = styles.six
     }
+
+    const ulStyles = classNames({
+      [sizingStyle]: true,
+      [styles.dropdownMenu]: true,
+      [styles.show]: shown,
+      [styles.hide]: !shown
+    })
 
     if (!isEmpty(links)) {
       let pageLinkGroups = links.map((data, index) => {
@@ -125,12 +133,7 @@ class DropdownMenu extends React.Component {
         </ul>
       )
       return (
-        <ul
-          id={id}
-          key={1}
-          aria-label="submenu"
-          className={styles.dropdownMenu + ' ' + sizingStyle + ' ' + (shown ? styles.show : styles.hide)}
-        >
+        <ul id={id} key={1} aria-label="submenu" className={ulStyles}>
           {goToNextButton}
           {pageLinkGroups}
           {featuredCallout ? (
