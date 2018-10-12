@@ -10,7 +10,6 @@ features:
     drupalRedirect:
         tableName: UrlToUrlRedirectStaging
         enabled: true
-    true404: true
 cache:
   s3BucketName: staging-aws-content-sba-gov
   useS3: true

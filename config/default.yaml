@@ -69,7 +69,7 @@ features:
     drupalRedirect:
         enabled: false
         tableName: DrupalUrlRedirect
-    true404: false
+    true404: true
     office:
         sbaOfficeNames: ['SBA district office', 'SBA regional office']
     pressRelease: true

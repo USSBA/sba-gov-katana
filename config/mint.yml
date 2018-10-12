@@ -18,4 +18,3 @@ features:
     drupalRedirect:
         enabled: true
         tableName: UrlToUrlRedirectIntegration
-    true404: true
