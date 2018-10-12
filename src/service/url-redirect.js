@@ -73,7 +73,7 @@ function findMatchingLangCodes(itemList, langCode) {
   } else {
     return itemList.filter(item => {
       if (langCode.startsWith('en')) {
-        return !item.LangCode || langCode.startsWith('en')
+        return !item.LangCode || item.LangCode.S.startsWith('en')
       } else {
         return item.LangCode && item.LangCode.S === langCode
       }
