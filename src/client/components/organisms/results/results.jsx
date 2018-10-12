@@ -62,7 +62,7 @@ class Results extends React.PureComponent {
     const searchTerm = submittedFieldValues[searchTermName]
     return hasSearchInfoPanel ? (
       <div className={styles.searchInfoPanel}>
-        <div className="search-info-panel" tabIndex="0" role="text">
+        <div className={'search-info-panel ' + styles.searchFocusState} tabIndex="0" role="text">
           <SearchInfoPanel
             pageNumber={pageNumber}
             pageSize={pageSize}
