@@ -46,6 +46,7 @@ class DropdownMenu extends React.Component {
       menuId,
       onFinalBlur,
       shown,
+      determineTitleLink,
       target,
       text,
       title
@@ -84,40 +85,25 @@ class DropdownMenu extends React.Component {
     })
 
     if (!isEmpty(links)) {
-      const langOverride = getLanguageOverride()
+      const langCode = getLanguageOverride()
       let pageLinkGroups = links.map((data, index) => {
         let children = data.children || []
         let mappedChildren = children.map(function(item) {
-          let childLink
-          let childLinkTitle
-
-          if (langOverride === 'es' && item.spanishTranslation) {
-            childLink = item.spanishTranslation.link
-            childLinkTitle = item.spanishTranslation.linkTitle
-          } else {
-            childLink = item.link
-            childLinkTitle = item.linkTitle
+          const determinedChildTitleLink = determineTitleLink(langCode, item)
+          return {
+            url: determinedChildTitleLink.link,
+            text: determinedChildTitleLink.linkTitle
           }
-          return { url: childLink, text: childLinkTitle }
         })
 
         const isLastGroup = index === links.length - 1 && !shouldShowCallToAction
-        let link
-        let linkTitle
-
-        if (langOverride === 'es' && data.spanishTranslation) {
-          link = data.spanishTranslation.link
-          linkTitle = data.spanishTranslation.linkTitle
-        } else {
-          link = data.link
-          linkTitle = data.linkTitle
-        }
+        const determinedTitleLink = determineTitleLink(langCode, data)
         return (
           <PageLinkGroup
             key={index}
             id={id + '-group-' + index}
-            title={linkTitle}
-            titleLink={link}
+            title={determinedTitleLink.linkTitle}
+            titleLink={determinedTitleLink.link}
             isLastGroup={isLastGroup}
             onFinalBlur={onFinalBlur.bind(this)}
             links={mappedChildren}

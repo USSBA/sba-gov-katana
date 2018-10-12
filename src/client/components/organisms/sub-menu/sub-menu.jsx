@@ -31,23 +31,21 @@ class SubMenu extends React.Component {
     })
   }
 
-  render() {
-    const { data, ...rest } = this.props
-    const langOverride = getLanguageOverride()
-    const enableTriangleMarker = data.children && !isEmpty(data.children)
-
-    let link
-    let linkTitle
-
-    if (langOverride === 'es' && data.spanishTranslation) {
-      console.log('gogogogogogo')
+  determineTitleLink(langCode, data) {
+    let link = data.link
+    let linkTitle = data.linkTitle
+    if (langCode === 'es' && data.spanishTranslation) {
       link = data.spanishTranslation.link
       linkTitle = data.spanishTranslation.linkTitle
-    } else {
-      console.log('nononononono')
-      link = data.link
-      linkTitle = data.linkTitle
     }
+    return { link, linkTitle }
+  }
+
+  render() {
+    const { data, ...rest } = this.props
+    const langCode = getLanguageOverride()
+    const determinedTitleLink = this.determineTitleLink(langCode, data)
+    const enableTriangleMarker = data.children && !isEmpty(data.children)
 
     return (
       <li
@@ -60,15 +58,20 @@ class SubMenu extends React.Component {
       >
         <SectionLink
           id={this.props.id + '-title'}
-          url={link}
-          text={linkTitle}
+          url={determinedTitleLink.link}
+          text={determinedTitleLink.linkTitle}
           showUnderline={this.props.showUnderline}
           enableTriangleMarker={enableTriangleMarker}
           shouldForceTriangleMarkerVisibility={this.props.shown}
           onMouseOver={this.props.onTitleMouseOver}
           onKeyDown={this.props.onSectionLinkKeyDown}
         >
-          <DropdownMenu links={data.children} {...rest} featuredCallout={data.featuredCallout} />
+          <DropdownMenu
+            links={data.children}
+            {...rest}
+            featuredCallout={data.featuredCallout}
+            determineTitleLink={this.determineTitleLink}
+          />
         </SectionLink>
       </li>
     )
