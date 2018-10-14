@@ -16,7 +16,7 @@ class NoResultsSection extends React.Component {
   }
 
   render() {
-    const { message, searchTips, isLoading, items } = this.props
+    const { searchTips, isLoading, items, renderDefaultResult } = this.props
     if (isLoading || items.length) {
       return null
     }
@@ -27,11 +27,13 @@ class NoResultsSection extends React.Component {
             <ul>{this.renderSearchTips()}</ul>
           </div>
         )}
+        <div>{renderDefaultResult()}</div>
       </div>
     )
   }
 }
 NoResultsSection.propTypes = {
+  renderDefaultResult: PropTypes.func,
   message: PropTypes.string,
   searchTips: PropTypes.array,
   items: PropTypes.array,
@@ -39,6 +41,7 @@ NoResultsSection.propTypes = {
 }
 
 NoResultsSection.defaultProps = {
+  renderDefaultResult: () => {},
   searchTips: [],
   isLoading: false,
   items: []
