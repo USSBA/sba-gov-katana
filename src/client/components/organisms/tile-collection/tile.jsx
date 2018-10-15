@@ -7,18 +7,19 @@ import * as ModalActions from '../../../actions/show-modal.js'
 import { Link } from 'atoms'
 import { MenuTile, MenuTileWithLinks } from 'molecules'
 import { navigateNow } from '../../../services/navigation.js'
+import { getLanguageOverride } from '../../../services/utils.js'
 
 class Tile extends React.Component {
   constructor() {
     super()
   }
 
-  _formatLargeTitle() {
-    return this.props.data.title.split(' ')[0]
+  _formatLargeTitle(title) {
+    return title.split(' ')[0]
   }
 
-  _formatSmallTitle() {
-    const arr = this.props.data.title.split(' ')
+  _formatSmallTitle(title) {
+    const arr = title.split(' ')
     arr.shift()
     return arr.join(' ')
   }
@@ -79,6 +80,18 @@ class Tile extends React.Component {
     return !this.props.data.children || this.props.neverDisplayChildrenOnHoverOverride
   }
 
+  determineMenuTileData(langCode, data) {
+    let description = data.description
+    let title = data.title
+    let fullUrl = data.fullUrl
+    if (langCode === 'es' && data.spanishTranslation) {
+      description = data.spanishTranslation.description
+      title = data.spanishTranslation.title
+      fullUrl = data.spanishTranslation.fullUrl
+    }
+    return { description, title, fullUrl }
+  }
+
   render() {
     const {
       backgroundLines,
@@ -94,14 +107,19 @@ class Tile extends React.Component {
       locationActions,
       uppercaseFirstWord
     } = this.props
+
+    const langCode = getLanguageOverride()
+    const titleDescriptionUrlData = this.determineMenuTileData(langCode, data)
+    const { description, title, fullUrl } = titleDescriptionUrlData
+
     const baseTileData = {
-      link: data.fullUrl,
+      link: fullUrl,
       children: data.children,
-      description: data.description,
+      description: description,
       icon: icon,
       iconWhite: iconWhite,
-      largeTitle: splitTitle ? this._formatLargeTitle() : this.props.data.title,
-      smallTitle: splitTitle ? this._formatSmallTitle() : '',
+      largeTitle: splitTitle ? this._formatLargeTitle(title) : title,
+      smallTitle: splitTitle ? this._formatSmallTitle(title) : '',
       uppercaseFirstWord: uppercaseFirstWord
     }
 

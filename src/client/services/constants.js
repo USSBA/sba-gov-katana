@@ -4,6 +4,7 @@ const constants = {
   sections: {
     businessGuide: 'Business Guide',
     fundingPrograms: 'Funding Programs',
+    programasDeFinanciamiento: 'Programas de financiamiento',
     forPartners: 'For partners',
     disaster: 'Disaster Assistance',
     federalContracting: 'Federal Contracting'
