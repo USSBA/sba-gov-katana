@@ -2,7 +2,7 @@ import querystring from 'querystring'
 import moment from 'moment'
 import _ from 'lodash'
 
-function determineTitleLink(langCode, data) {
+function determineMainMenuTitleLink(langCode, data) {
   let link = data.link
   let linkTitle = data.linkTitle
   if (langCode === 'es' && data.spanishTranslation) {
@@ -62,4 +62,4 @@ function getLanguageOverride() {
   return langOverride
 }
 
-export { determineTitleLink, getCurrentFile, getLanguageOverride, getQueryParams }
+export { determineMainMenuTitleLink, getCurrentFile, getLanguageOverride, getQueryParams }
