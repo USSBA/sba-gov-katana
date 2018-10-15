@@ -3,7 +3,10 @@
   padding: 34px 30px;
   background: #ffffff;
   position: relative;
-
+  &:focus {
+    outline: 2px dotted #c5c5c5;
+    outline-offset: -3px;
+  }
   @include grid-media($sba-grid-medium) {
     padding-left: 30px;
   }
@@ -12,6 +15,11 @@
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 0;
+    display: inline;
+    &:focus {
+      outline: 2px dotted #c5c5c5;
+      outline-offset: 3px;
+    }
   }
 }
 
@@ -24,6 +32,11 @@
     display: block;
     cursor: pointer;
   }
+}
+
+img:focus {
+  outline: 2px dotted #c5c5c5;
+  outline-offset: 3px;
 }
 
 .contactCard {

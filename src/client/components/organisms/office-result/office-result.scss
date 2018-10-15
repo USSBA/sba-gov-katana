@@ -64,6 +64,12 @@
 .officeType {
   color: #1b1e29;
   font-size: 18px;
+  display: inline;
+}
+
+.officeType:focus {
+  outline: 2px dotted #c5c5c5;
+  outline-offset: 3px;
 }
 
 .italic {

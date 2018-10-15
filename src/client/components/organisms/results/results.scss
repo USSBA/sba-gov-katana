@@ -39,10 +39,22 @@
 
 .searchInfoPanel {
   background-color: white;
-  padding: 14px 20px 0;
+  padding: 14px 20px 20px;
   @include grid-media($sba-grid-small) {
     padding-bottom: 20px;
   }
+  @include grid-media($sba-grid-medium) {
+    padding-bottom: 20px;
+  }
+}
+
+.searchFocusState {
+  line-height: 1;
+}
+
+.searchFocusState:focus {
+  outline: 2px dotted #c5c5c5;
+  outline-offset: 3px;
 }
 
 .paginator {
