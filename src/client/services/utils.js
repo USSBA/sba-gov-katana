@@ -2,6 +2,16 @@ import querystring from 'querystring'
 import moment from 'moment'
 import _ from 'lodash'
 
+function determineTitleLink(langCode, data) {
+  let link = data.link
+  let linkTitle = data.linkTitle
+  if (langCode === 'es' && data.spanishTranslation) {
+    link = data.spanishTranslation.link
+    linkTitle = data.spanishTranslation.linkTitle
+  }
+  return { link, linkTitle }
+}
+
 function getCurrentFile(files, oneFile) {
   let found = null
   if (files && files.length > 0) {
@@ -52,4 +62,4 @@ function getLanguageOverride() {
   return langOverride
 }
 
-export { getCurrentFile, getLanguageOverride, getQueryParams }
+export { determineTitleLink, getCurrentFile, getLanguageOverride, getQueryParams }

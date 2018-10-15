@@ -7,7 +7,7 @@ import { Link, Button, UtilityLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
 import clientConfig from '../../../services/client-config.js'
 import constants from '../../../services/constants.js'
-import { getLanguageOverride } from '../../../services/utils.js'
+import { determineTitleLink, getLanguageOverride } from '../../../services/utils.js'
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -46,7 +46,6 @@ class DropdownMenu extends React.Component {
       menuId,
       onFinalBlur,
       shown,
-      determineTitleLink,
       target,
       text,
       title

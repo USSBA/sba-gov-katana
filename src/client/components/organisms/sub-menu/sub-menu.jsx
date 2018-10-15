@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash'
 import styles from './sub-menu.scss'
 import { SectionLink } from 'atoms'
 import { DropdownMenu } from 'organisms'
-import { getLanguageOverride } from '../../../services/utils.js'
+import { determineTitleLink, getLanguageOverride } from '../../../services/utils.js'
 
 class SubMenu extends React.Component {
   constructor() {
@@ -31,20 +31,10 @@ class SubMenu extends React.Component {
     })
   }
 
-  determineTitleLink(langCode, data) {
-    let link = data.link
-    let linkTitle = data.linkTitle
-    if (langCode === 'es' && data.spanishTranslation) {
-      link = data.spanishTranslation.link
-      linkTitle = data.spanishTranslation.linkTitle
-    }
-    return { link, linkTitle }
-  }
-
   render() {
     const { data, ...rest } = this.props
     const langCode = getLanguageOverride()
-    const determinedTitleLink = this.determineTitleLink(langCode, data)
+    const determinedTitleLink = determineTitleLink(langCode, data)
     const enableTriangleMarker = data.children && !isEmpty(data.children)
 
     return (
@@ -66,12 +56,7 @@ class SubMenu extends React.Component {
           onMouseOver={this.props.onTitleMouseOver}
           onKeyDown={this.props.onSectionLinkKeyDown}
         >
-          <DropdownMenu
-            links={data.children}
-            {...rest}
-            featuredCallout={data.featuredCallout}
-            determineTitleLink={this.determineTitleLink}
-          />
+          <DropdownMenu links={data.children} {...rest} featuredCallout={data.featuredCallout} />
         </SectionLink>
       </li>
     )
