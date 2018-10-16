@@ -3,6 +3,7 @@
   pointer-events: all;
 }
 .centerContainer {
+  outline: none;
   @include grid-media($sba-grid-large) {
     position: absolute;
     bottom: 0px;

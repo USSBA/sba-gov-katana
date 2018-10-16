@@ -21,7 +21,7 @@ class NoResultsSection extends React.Component {
       return null
     }
     return (
-      <div className="no-results-view" tabIndex="0">
+      <div className={styles.focus + ' no-results-view'} tabIndex="0">
         {searchTips.length > 0 && (
           <div className={styles.resultsMessage}>
             <ul>{this.renderSearchTips()}</ul>
