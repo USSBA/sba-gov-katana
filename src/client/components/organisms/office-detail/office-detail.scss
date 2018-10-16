@@ -4,7 +4,7 @@
   background: #ffffff;
   position: relative;
   &:focus {
-    outline: 2px dotted #c5c5c5;
+    outline: 2px dotted $sba-gray-light;
     outline-offset: -3px;
   }
   @include grid-media($sba-grid-medium) {
@@ -17,7 +17,7 @@
     margin-bottom: 0;
     display: inline;
     &:focus {
-      outline: 2px dotted #c5c5c5;
+      outline: 2px dotted $sba-gray-light;
       outline-offset: 3px;
     }
   }
@@ -35,7 +35,7 @@
 }
 
 img:focus {
-  outline: 2px dotted #c5c5c5;
+  outline: 2px dotted $sba-gray-light;
   outline-offset: 3px;
 }
 

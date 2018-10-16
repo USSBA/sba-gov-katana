@@ -68,7 +68,7 @@
 }
 
 .officeType:focus {
-  outline: 2px dotted #c5c5c5;
+  outline: 2px dotted $sba-gray-light;
   outline-offset: 3px;
 }
 
@@ -142,7 +142,7 @@
   float: left;
   margin-top: -4px;
   &:focus {
-    outline: 2px dotted #c5c5c5;
+    outline: 2px dotted $sba-gray-light;
     outline-offset: 3px;
   }
 }
