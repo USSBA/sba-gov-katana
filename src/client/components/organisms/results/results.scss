@@ -3,6 +3,7 @@
   pointer-events: all;
 }
 .centerContainer {
+  outline: none;
   @include grid-media($sba-grid-large) {
     position: absolute;
     bottom: 0px;
@@ -53,7 +54,7 @@
 }
 
 .searchFocusState:focus {
-  outline: 2px dotted #c5c5c5;
+  outline: 2px dotted $sba-gray-light;
   outline-offset: 3px;
 }
 

@@ -21,6 +21,11 @@
   }
 }
 
+.focus:focus {
+  outline: 2px dotted $sba-gray-light;
+  outline-offset: -6px;
+}
+
 .emptyDocumentsMessage {
   font-weight: bold;
 
