@@ -31,7 +31,10 @@ class SectionPage extends React.Component {
 
       let tileCollection
       if (sectionName) {
-        if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
+        if (
+          this.equalsIgnoreCase(sectionName, constants.sections.businessGuide) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.guiaDeNegocios)
+        ) {
           tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
         } else if (
           this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms) ||
@@ -42,7 +45,9 @@ class SectionPage extends React.Component {
           )
         } else if (
           this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)
+          this.equalsIgnoreCase(sectionName, constants.sections.federalContracting) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.paraSocios) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.contratacionFederal)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} />
         } else {
