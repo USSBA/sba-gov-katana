@@ -5,12 +5,18 @@ exports[`Card does not error check malformed link 1`] = `
   className="card twoColumn"
   id="card"
 >
-  <img
-    alt="kitten"
-    className="itemImage"
-    id="image-4-0"
-    src="https://placekitten.com/588/364"
-  />
+  <a
+    onClick={[Function]}
+    style={Object {}}
+    target="_self"
+  >
+    <img
+      alt="kitten"
+      className="itemImage"
+      id="image-4-0"
+      src="https://placekitten.com/588/364"
+    />
+  </a>
   <div
     className="content content-with-image"
   >
@@ -18,7 +24,13 @@ exports[`Card does not error check malformed link 1`] = `
       className="itemTitle"
       id="title"
     >
-      Kitten
+      <a
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      >
+        Kitten
+      </a>
     </h4>
     <div>
       <hr
@@ -37,6 +49,13 @@ exports[`Card does not error check malformed link 1`] = `
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
     </div>
+    <a
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
+    >
+      dogs
+    </a>
   </div>
 </div>
 `;
@@ -46,12 +65,16 @@ exports[`Card to render correctly 1`] = `
   className="card twoColumn"
   id="card"
 >
-  <img
-    alt="kitten"
-    className="itemImage"
-    id="image-4-0"
-    src="https://placekitten.com/588/364"
-  />
+  <a
+    href="https://en.wikipedia.org/wiki/Kitten"
+  >
+    <img
+      alt="kitten"
+      className="itemImage"
+      id="image-4-0"
+      src="https://placekitten.com/588/364"
+    />
+  </a>
   <div
     className="content content-with-image"
   >
@@ -59,7 +82,11 @@ exports[`Card to render correctly 1`] = `
       className="itemTitle"
       id="title"
     >
-      Kitten
+      <a
+        href="https://en.wikipedia.org/wiki/Kitten"
+      >
+        Kitten
+      </a>
     </h4>
     <div>
       <hr
@@ -78,6 +105,11 @@ exports[`Card to render correctly 1`] = `
         A kitten, also known as a kitty or kitty cat, is a juvenile cat
       </p>
     </div>
+    <a
+      href="https://en.wikipedia.org/wiki/Kitten"
+    >
+      Learn more about kittens
+    </a>
   </div>
 </div>
 `;

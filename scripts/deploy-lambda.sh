@@ -41,9 +41,22 @@ esac
 export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
 export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
+echo "Uploading Lambda Bundle"
+aws s3api put-object --body "workspace/katana-lambda.zip" --bucket ${BUCKET_NAME} --key "${ENVIRONMENT}/katana-lambda.zip"
+
+echo "Waiting briefly for S3 eventual consistency...."
+sleep 1
+echo "Almost there..."
+sleep 1
+echo "Almost there..."
+sleep 1
+echo "It's Away!"
+
 export VERSION_ID=$(aws s3api list-object-versions --bucket ${BUCKET_NAME} --prefix "${ENVIRONMENT}/katana-lambda.zip" | jq '.Versions[0].VersionId')
 export LAMBDA_NAME="${ENVIRONMENT}-KatanaLambda"
 
+echo "Updating Function Code"
 aws lambda update-function-code --function-name "${LAMBDA_NAME}" --s3-bucket "${BUCKET_NAME}" --s3-key "${ENVIRONMENT}/katana-lambda.zip" --s3-object-version "${VERSION_ID}"
 aws s3 sync public/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
 aws s3 sync public/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+

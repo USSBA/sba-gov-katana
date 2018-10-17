@@ -32,13 +32,7 @@ if (config.get('developmentOptions.webpack.enabled')) {
   mainBundleFile = 'bundle.js'
 } else {
   // using sync because it shouldn't slow down the start up by a measurable amount and will eliminate a potential race condition at launch
-  const files = fs.readdirSync(path.join(__dirname, './public/build/')) //eslint-disable-line no-sync
-  const regex = /^[a-f0-9]{20}\.bundle\.js$/
-  for (let i = 0; i < files.length; i++) {
-    if (regex.test(files[i])) {
-      mainBundleFile = files[i]
-    }
-  }
+  mainBundleFile = fs.readFileSync(path.join(__dirname, './public/build/main.txt'), 'utf-8') //eslint-disable-line no-sync
 }
 
 const metaVariables = {

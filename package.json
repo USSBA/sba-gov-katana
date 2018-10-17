@@ -8,6 +8,7 @@
     "nodemonstart": "nodemon src/app.js --exec babel-node  --presets env",
     "prestart": "npm run clean && npm run lint",
     "build": "scripts/build.sh all",
+    "make-lambda-package": "scripts/make-lambda-package.sh",
     "clean": "rm -rf dist && rm -rf public/build",
     "format": "prettier --write '{src,test}/**/*.{js,json,jsx,scss}'",
     "lint": "eslint src",

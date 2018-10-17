@@ -1,4 +1,3 @@
-import Promise from 'bluebird'
 import React, { PureComponent } from 'react'
 import moment from 'moment'
 import queryString from 'querystring'

@@ -29,7 +29,7 @@ const Card = props => {
   if (typeof link === 'string') {
     uri = link
   } else {
-    uri = link.uri
+    uri = link.uri || link.url
     title = link.title
   }
 
