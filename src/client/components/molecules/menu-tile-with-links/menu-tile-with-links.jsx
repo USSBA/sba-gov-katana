@@ -2,6 +2,7 @@ import React from 'react'
 
 import s from './menu-tile-with-links.scss'
 import { Link } from 'atoms'
+import { determineMenuTileData } from '../../../services/utils.js'
 
 class MenuTileWithLinks extends React.Component {
   render() {
@@ -15,13 +16,16 @@ class MenuTileWithLinks extends React.Component {
         <div className={s.topLine} />
         {this.props.children
           ? this.props.children.map((object, index) => {
+              const titleDescriptionUrlData = determineMenuTileData(this.props.langCode, object)
+              const { title, fullUrl } = titleDescriptionUrlData
+
               const autoFocusOnMe = this.props.autoFocusOnLast && index === this.props.children.length - 1
               return (
                 <HoverLink
                   id={this.props.id + '-link-' + index}
                   key={index}
-                  title={object.title}
-                  link={object.fullUrl}
+                  title={title}
+                  link={fullUrl}
                   autoFocus={autoFocusOnMe}
                 />
               )
