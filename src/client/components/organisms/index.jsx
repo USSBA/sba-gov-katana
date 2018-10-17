@@ -3,6 +3,7 @@ import BusinessGuideTileCollection from './business-guide-tile-collection/busine
 import CardCollection from './card-collection/card-collection.jsx'
 import ClientPagingMultiviewLayout from './client-paging-multiview-layout/client-paging-multiview-layout.jsx'
 import CoursesLayout from './courses-layout/courses-layout.jsx'
+import DefaultOfficeResult from './office-result/default-office-result.jsx'
 import DeveloperTester from './developer-tester/developer-tester.jsx'
 import DisasterAlert from './header-footer/disaster-alert/disaster-alert.jsx'
 import DocumentArticle from './document-article/document-article.jsx'
@@ -62,6 +63,7 @@ export {
   CardCollection,
   ClientPagingMultiviewLayout,
   CoursesLayout,
+  DefaultOfficeResult,
   DeveloperTester,
   DisasterAlert,
   DocumentArticle,

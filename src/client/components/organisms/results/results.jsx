@@ -40,11 +40,14 @@ class Results extends React.PureComponent {
     const { isLoading, displaySearchTipsOnNoResults, items } = this.props
     return !isLoading && displaySearchTipsOnNoResults && !items.length
   }
-
+  shouldRenderDefaultResults() {
+    const { isLoading, displayDefaultResultOnNoResults, items, defaultResults } = this.props
+    return !isLoading && displayDefaultResultOnNoResults && !items.length && defaultResults.length
+  }
   renderSearchTips(searchTips = this.props.searchTips) {
-    const { isLoading } = this.props
+    const { renderDefaultResult } = this.props
     return this.shouldShowSearchTips() && searchTips.length ? (
-      <NoResultsSection searchTips={searchTips} />
+      <NoResultsSection searchTips={searchTips} renderDefaultResult={renderDefaultResult} />
     ) : null
   }
 
@@ -83,10 +86,10 @@ class Results extends React.PureComponent {
     this.props.onClick({})
   }
 
-  renderResults(results = this.props.items) {
-    const { children, resultId, hoveredMarkerId, paginate, hasSearchInfoPanel, scroll } = this.props
+  mapResults(results, resultElement) {
+    const { hoveredMarkerId, resultId } = this.props
     const resultsWithProps = results.map((item, index) => {
-      const mappedChildren = React.Children.map(children, child => {
+      const mappedChildren = React.Children.map(resultElement, child => {
         return React.cloneElement(child, {
           item: item,
           id: `${resultId}-${index.toString()}`,
@@ -100,6 +103,24 @@ class Results extends React.PureComponent {
       })
       return mappedChildren
     })
+    return resultsWithProps
+  }
+
+  renderDefaultResults(defaultResults = this.props.defaultResults) {
+    let result = null
+    const { defaultResultObject, children } = this.props
+    const resultElement = defaultResultObject || children
+    if (this.shouldRenderDefaultResults()) {
+      const resultsWithProps = this.mapResults(defaultResults, resultElement)
+      result = resultsWithProps.length ? (
+        <div className={styles.defaultResults}>{resultsWithProps}</div>
+      ) : null
+    }
+    return result
+  }
+  renderResults(results = this.props.items) {
+    const { paginate, hasSearchInfoPanel, scroll, children } = this.props
+    const resultsWithProps = this.mapResults(results, children)
 
     const divClassName = classNames({
       [styles.scroll]: scroll,
@@ -108,7 +129,7 @@ class Results extends React.PureComponent {
       [styles.resultContainer]: true
     })
 
-    return results.length ? <div className={divClassName}>{resultsWithProps}</div> : null
+    return resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
   }
 
   render() {
@@ -135,6 +156,7 @@ class Results extends React.PureComponent {
             {this.renderSearchInfoPanel()}
             <div className={styles.centerContainer}>
               {this.renderSearchTips()}
+              {this.renderDefaultResults()}
               {this.renderResults()}
             </div>
             {this.renderPaginator()}
@@ -153,6 +175,8 @@ Results.defaultProps = {
   scroll: false,
   hasSearchInfoPanel: false,
   displaySearchTipsOnNoResults: false,
+  displayDefaultResultOnNoResults: false,
+  defaultResultObject: null,
   hidePaginatorOnNoResults: true,
   searchTermName: '',
   submittedFieldValues: {},
@@ -174,7 +198,9 @@ Results.propTypes = {
   onResultHover: PropTypes.func,
   searchTips: PropTypes.array,
   displaySearchTipsOnNoResults: PropTypes.bool,
-  hidePaginatorOnNoResults: PropTypes.bool
+  hidePaginatorOnNoResults: PropTypes.bool,
+  displayDefaultResultOnNoResults: PropTypes.bool,
+  defaultResultObject: PropTypes.object
 }
 
 export default Results

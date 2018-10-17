@@ -82,9 +82,10 @@ class SearchTemplate extends React.PureComponent {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const { items: results, isLoading } = nextProps
+    const { items: results, isLoading, defaultResults } = nextProps
 
     const newState = {
+      defaultResults,
       results,
       isLoading
     }
@@ -261,7 +262,7 @@ class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { results, searchParams: { pageSize } } = this.state
+    const { results, searchParams: { pageSize }, defaultResults } = this.state
     const { children, count, extraClassName, paginate, isZeroState } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
@@ -279,7 +280,8 @@ class SearchTemplate extends React.PureComponent {
         onBack: this.handleBack.bind(this),
         pageNumber: this.calculatePageNumber(),
         pageSize,
-        total: count
+        total: count,
+        defaultResults: defaultResults
       })
     })
 
@@ -326,10 +328,13 @@ function mapReduxStateToProps(reduxState, props) {
   let hasNoResults
   let isLoading = props.isLoading
   let isZeroState = props.isZeroState
+  let defaultResults = []
 
-  if (reduxState.contentReducer[props.searchType]) {
-    items = reduxState.contentReducer[props.searchType].hit
-    count = reduxState.contentReducer[props.searchType].found
+  const searchResults = reduxState.contentReducer[props.searchType]
+  if (searchResults) {
+    items = searchResults.hit
+    count = searchResults.found
+    defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
     hasNoResults = count === 0
     isLoading = false
     isZeroState = false
@@ -341,7 +346,8 @@ function mapReduxStateToProps(reduxState, props) {
     count,
     hasNoResults,
     isLoading,
-    isZeroState
+    isZeroState,
+    defaultResults
   }
 }
 

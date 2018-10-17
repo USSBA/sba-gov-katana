@@ -6,7 +6,7 @@ import { find, cloneDeep, isEmpty } from 'lodash'
 
 import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
-import { PrimarySearchBar, Results, OfficeResult, OfficeMap } from 'organisms'
+import { PrimarySearchBar, Results, OfficeResult, OfficeMap, DefaultOfficeResult } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.Component {
@@ -38,9 +38,6 @@ class OfficeLookupPage extends React.Component {
     const taxonomy = find(this.props.taxonomies, { name: name }) || { name: '', terms: [] }
     return taxonomy
   }
-
-  // todo move to own component
-  renderNoResultsView() {}
 
   setSelectedItem(selectedItem) {
     const newState = {
@@ -134,27 +131,7 @@ class OfficeLookupPage extends React.Component {
             className={styles.field + ' ' + styles.search}
           />
         </PrimarySearchBar>
-        {/* Commenting out for now, but perhaps the children of the secondary search bar can be reused in the primary search bar
-        <SecondarySearchBar id="office-secondary-search-bar">
-          <TaxonomyMultiSelect
-            taxonomy={officeServiceTaxonomy}
-            queryParamName="service"
-            label="Service:"
-            multi={false}
-            className={styles.search}
-          />
-          <Toggle
-            id="allOffices"
-            queryParamName="isSbaOffice"
-            options={[
-              { name: 'All Offices', value: 'All' },
-              { name: 'SBA Offices', value: 'true', fontAwesomeIconClassName: 'shield' }
-            ]}
-          />
-        </SecondarySearchBar> */}
-        {/*
-        TODO: Uncomment this if we need a no results section
-         */}
+
         <OfficeMap
           id="office-map"
           onMarkerClick={item => {
@@ -190,6 +167,8 @@ class OfficeLookupPage extends React.Component {
             }}
             searchTips={searchTips}
             displaySearchTipsOnNoResults
+            displayDefaultResultOnNoResults
+            defaultResultObject={<DefaultOfficeResult />}
           >
             <OfficeResult />
           </Results>
