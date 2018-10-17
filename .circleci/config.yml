@@ -211,7 +211,6 @@ jobs:
           npm run build
     - save_cache:
         paths:
-        - ./config
         - ./public/build
         - ./dist
         key: v1-webpack-{{ .Revision }}
@@ -227,33 +226,13 @@ jobs:
       - run:
           name: create zip package
           command: |
-            stat ./dist
-            stat ./public/build
-            mkdir build
-            mkdir -p build/public/build/
-            mkdir -p build/config
-            mkdir -p build/views
-            mkdir workspace
-            mkdir -p workspace/build/
-            cp package.json build/
-            cp -R dist/* build/
-            cp -R public/build/* build/public/build/
-            cp -R public/build/* workspace/build/
-            cp -R config/* build/config/
-            cp -R src/views/* build/views/
-            cd build
-            find . -name '*.test.js' -delete
-            find . -name '*.integration-test.js' -delete
-            npm i --prod --silent
-            rm package.json
-            zip -r -q ../workspace/katana-lambda.zip .
-            cd ..
+            npm run make-lambda-package
       - persist_to_workspace:
           root: workspace
           paths:
             - katana-lambda.zip
             - build
-            - public
+            - assets
   upload-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -330,7 +309,7 @@ jobs:
             fi
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
-            aws s3 sync public/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
+            aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${SOURCE_PREFIX}/katana-lambda.zip"
             
   deploy-package:

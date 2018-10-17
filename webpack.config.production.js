@@ -8,7 +8,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
-    devtool: 'cheap-module-source-map',
+    devtool: 'no-source-map',
     entry: ['babel-polyfill', './src/client/components/entry.jsx'],
     output: {
       path: path.join(__dirname, 'public', 'build'),
@@ -33,10 +33,14 @@ module.exports = function(env) {
         }
       }),
       new UglifyJSPlugin({
+        sourceMap: false,
         extractComments: true,
         uglifyOptions: {
           compress: {
             drop_console: true
+          },
+          output:{
+            comments: false
           }
         }
       }),

@@ -14,15 +14,8 @@ echo "Starting Build"
 scripts/build.sh $2
 echo "Build Complete"
 echo "Bundling Lambda Package"
-scripts/build-lambda.sh $1
+scripts/make-lambda-package.sh
 echo "Bundle and Upload Complete"
-echo "Waiting briefly for S3 eventual consistency...."
-sleep 1
-echo "Almost there..."
-sleep 1
-echo "Almost there..."
-sleep 1
-echo "It's Away!"
 echo "Deploying...."
 scripts/deploy-lambda.sh $1
 echo "Deployment Complete"
