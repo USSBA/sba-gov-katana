@@ -219,7 +219,8 @@ const CTA = props => {
     link: {
       title: 'Find Counselors',
       url: '/tools/local-assistance'
-    }
+    },
+    type: 'link'
   }
   let image = {
     url: '/assets/images/learning-center/woman-man-chatting.png',
