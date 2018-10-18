@@ -41,10 +41,6 @@ class SectionNav extends React.Component {
       if (item.fullUrl === currentPage.fullUrl) {
         currentLinkClass = styles.currentNavLink
       }
-      const eventConfig = {
-        category: 'Menu-Rail',
-        action: section.title + ' ' + item.title
-      }
       return (
         <li className={currentLinkClass} key={index}>
           <Link
