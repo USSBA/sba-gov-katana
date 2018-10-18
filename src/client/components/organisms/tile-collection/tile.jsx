@@ -7,27 +7,28 @@ import * as ModalActions from '../../../actions/show-modal.js'
 import { Link } from 'atoms'
 import { MenuTile, MenuTileWithLinks } from 'molecules'
 import { navigateNow } from '../../../services/navigation.js'
+import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
 
 class Tile extends React.Component {
   constructor() {
     super()
   }
 
-  _formatLargeTitle() {
-    return this.props.data.title.split(' ')[0]
+  _formatLargeTitle(title) {
+    return title.split(' ')[0]
   }
 
-  _formatSmallTitle() {
-    const arr = this.props.data.title.split(' ')
+  _formatSmallTitle(title) {
+    const arr = title.split(' ')
     arr.shift()
     return arr.join(' ')
   }
 
-  _openNavMenu(pixelBreakpoint) {
+  _openNavMenu(pixelBreakpoint, fullUrl) {
     if (!this.isLinkToPage() && window.innerWidth <= pixelBreakpoint) {
       this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
     } else if (this.isLinkToPage()) {
-      navigateNow(this.props.data.fullUrl, {
+      navigateNow(fullUrl, {
         category: 'Main-Menu',
         action: this.props.data.title,
         label: document.location.pathname
@@ -94,14 +95,20 @@ class Tile extends React.Component {
       locationActions,
       uppercaseFirstWord
     } = this.props
+
+    const langCode = getLanguageOverride()
+    const titleDescriptionUrlData = determineMenuTileData(langCode, data)
+    const { description, title, fullUrl } = titleDescriptionUrlData
+
     const baseTileData = {
-      link: data.fullUrl,
+      link: fullUrl,
       children: data.children,
-      description: data.description,
+      description: description,
       icon: icon,
       iconWhite: iconWhite,
-      largeTitle: splitTitle ? this._formatLargeTitle() : this.props.data.title,
-      smallTitle: splitTitle ? this._formatSmallTitle() : '',
+      langCode,
+      largeTitle: splitTitle ? this._formatLargeTitle(title) : title,
+      smallTitle: splitTitle ? this._formatSmallTitle(title) : '',
       uppercaseFirstWord: uppercaseFirstWord
     }
 
@@ -147,7 +154,7 @@ class Tile extends React.Component {
       <div
         id={id}
         className={s.tile + ' ' + widthStyle}
-        onClick={this._openNavMenu.bind(this, breakpointLarge)}
+        onClick={this._openNavMenu.bind(this, breakpointLarge, fullUrl)}
         onMouseEnter={this._mouseEnterTile.bind(this, breakpointLarge)}
         onMouseLeave={this._mouseExitTile.bind(this, breakpointLarge)}
         onKeyDown={this.handleTileKeyDown.bind(this)}

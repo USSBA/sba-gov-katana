@@ -6,7 +6,16 @@ const constants = {
     fundingPrograms: 'Funding Programs',
     forPartners: 'For partners',
     disaster: 'Disaster Assistance',
-    federalContracting: 'Federal Contracting'
+    federalContracting: 'Federal Contracting',
+    // Spanish version:
+    // Business Guide
+    guiaDeNegocios: 'Guia de negocios',
+    // Funding Programs
+    programasDeFinanciamiento: 'Programas de financiamiento',
+    // Federal Contracting
+    contratacionFederal: 'Contratacion Federal',
+    // For Partners
+    paraSocios: 'Para socios'
   },
   sectionTitles: {
     planYourBusiness: 'Plan your business',

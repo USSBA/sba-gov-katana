@@ -1,16 +1,20 @@
 /* eslint-disable */
-function findByUrl(haystack, needle) {
+function findByUrl(haystack, needle, langCode) {
   if (!haystack) {
     return null
   }
   const found = haystack.find(item => {
-    return item.url === needle
+    if (langCode === 'es' && item.spanishTranslation && item.spanishTranslation.url === needle) {
+      return item.spanishTranslation.url === needle
+    } else {
+      return item.url === needle
+    }
   })
   return found
 }
 
-function findSection(menu, section) {
-  return findByUrl(menu, section)
+function findSection(menu, section, langCode) {
+  return findByUrl(menu, section, langCode)
 }
 
 function findSubSection(menu, section, subsection) {

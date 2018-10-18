@@ -7,6 +7,7 @@ import DocumentPage from '../pages/document-page/document-page.jsx'
 import ArticlePage from '../pages/article-page/article-page.jsx'
 import { getConfig } from '../../services/client-config.js'
 import { fetchSiteContent } from '../../fetch-content-helper.js'
+import { getLanguageOverride } from '../../services/utils.js'
 
 export class RootPage extends React.Component {
   constructor() {
@@ -26,6 +27,7 @@ export class RootPage extends React.Component {
   }
 
   renderPage(first, second, third, fourth, fifth) {
+    const langCode = getLanguageOverride()
     if (getConfig('responseStatus') === 404) {
       return <ErrorPage />
     } else if (first === 'document') {
@@ -40,7 +42,7 @@ export class RootPage extends React.Component {
         return <ErrorPage />
       }
     } else if (first && !second && !third && !fourth && !fifth) {
-      const sectionData = findSection(this.state.siteMap, first)
+      const sectionData = findSection(this.state.siteMap, first, langCode)
       if (sectionData) {
         return <SectionPage sectionData={sectionData} />
       }

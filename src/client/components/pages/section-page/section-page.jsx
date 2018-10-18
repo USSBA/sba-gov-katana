@@ -31,15 +31,23 @@ class SectionPage extends React.Component {
 
       let tileCollection
       if (sectionName) {
-        if (this.equalsIgnoreCase(sectionName, constants.sections.businessGuide)) {
+        if (
+          this.equalsIgnoreCase(sectionName, constants.sections.businessGuide) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.guiaDeNegocios)
+        ) {
           tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
-        } else if (this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms)) {
+        } else if (
+          this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.programasDeFinanciamiento)
+        ) {
           tileCollection = (
             <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
           )
         } else if (
           this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.federalContracting)
+          this.equalsIgnoreCase(sectionName, constants.sections.federalContracting) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.paraSocios) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.contratacionFederal)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} />
         } else {

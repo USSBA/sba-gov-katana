@@ -7,6 +7,7 @@ import { Link, Button, UtilityLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
 import clientConfig from '../../../services/client-config.js'
 import constants from '../../../services/constants.js'
+import { determineMainMenuTitleLink, getLanguageOverride } from '../../../services/utils.js'
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -83,20 +84,25 @@ class DropdownMenu extends React.Component {
     })
 
     if (!isEmpty(links)) {
+      const langCode = getLanguageOverride()
       let pageLinkGroups = links.map((data, index) => {
         let children = data.children || []
         let mappedChildren = children.map(function(item) {
-          return { url: item.link, text: item.linkTitle }
+          const childTitleLinkData = determineMainMenuTitleLink(langCode, item)
+          return {
+            url: childTitleLinkData.link,
+            text: childTitleLinkData.linkTitle
+          }
         })
 
         const isLastGroup = index === links.length - 1 && !shouldShowCallToAction
-
+        const titleLinkData = determineMainMenuTitleLink(langCode, data)
         return (
           <PageLinkGroup
             key={index}
             id={id + '-group-' + index}
-            title={data.linkTitle}
-            titleLink={data.link}
+            title={titleLinkData.linkTitle}
+            titleLink={titleLinkData.link}
             isLastGroup={isLastGroup}
             onFinalBlur={onFinalBlur.bind(this)}
             links={mappedChildren}

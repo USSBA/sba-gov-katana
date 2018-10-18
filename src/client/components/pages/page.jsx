@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import BasicPage from '../templates/basic-page/basic-page.jsx'
 import ProgramPage from '../templates/program-page/program-page.jsx'
 import { fetchRestContent } from '../../fetch-content-helper.js'
-import { getQueryParams } from '../../services/utils.js'
+import { getLanguageOverride } from '../../services/utils.js'
 
 class Page extends React.Component {
   constructor() {
@@ -12,25 +12,8 @@ class Page extends React.Component {
     }
   }
 
-  getLanguageOverride() {
-    let langOverride = null
-    let langQueryParam = null
-
-    if (window) {
-      const parsed = getQueryParams()
-      langQueryParam = parsed.lang
-    }
-
-    if (langQueryParam) {
-      langOverride = langQueryParam
-    } else if (window && window.langOverride) {
-      langOverride = window.langOverride
-    }
-    return langOverride
-  }
-
   componentWillMount() {
-    let langOverride = this.getLanguageOverride()
+    let langOverride = getLanguageOverride()
     const id = this.props.nodeId
     if (id > 0) {
       let me = this

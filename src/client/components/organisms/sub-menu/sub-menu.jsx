@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash'
 import styles from './sub-menu.scss'
 import { SectionLink } from 'atoms'
 import { DropdownMenu } from 'organisms'
+import { determineMainMenuTitleLink, getLanguageOverride } from '../../../services/utils.js'
 
 class SubMenu extends React.Component {
   constructor() {
@@ -31,8 +32,9 @@ class SubMenu extends React.Component {
   }
 
   render() {
-    let { data, ...rest } = this.props
-
+    const { data, ...rest } = this.props
+    const langCode = getLanguageOverride()
+    const titleLinkData = determineMainMenuTitleLink(langCode, data)
     const enableTriangleMarker = data.children && !isEmpty(data.children)
 
     return (
@@ -46,8 +48,8 @@ class SubMenu extends React.Component {
       >
         <SectionLink
           id={this.props.id + '-title'}
-          url={data.link}
-          text={data.linkTitle}
+          url={titleLinkData.link}
+          text={titleLinkData.linkTitle}
           showUnderline={this.props.showUnderline}
           enableTriangleMarker={enableTriangleMarker}
           shouldForceTriangleMarkerVisibility={this.props.shown}
