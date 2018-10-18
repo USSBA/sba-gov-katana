@@ -13,6 +13,7 @@ import {
   TextReadMoreSection
 } from 'organisms'
 import { panelMenuContainer } from './homepage/homepage.scss'
+import { getLanguageOverride } from '../../services/utils.js'
 
 function makeParagraphs(
   paragraphData = [],
@@ -25,6 +26,8 @@ function makeParagraphs(
   let paragraphs = []
   let skipNextReadmore = false
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
+    let currentLanguage = getLanguageOverride()
+
     let paragraph = <p>{JSON.stringify(item)}</p>
     let paragraphType = item.type
     if (item && item.type) {
@@ -132,7 +135,13 @@ function makeParagraphs(
         paragraph = <SearchBox {...searchBoxProps} />
       } else if (item.type === 'childPageMenu' && item.pagesInclude === 'All child pages') {
         const cards = lineage[lineage.length - 1].children
-        paragraph = <ProgramDetailsCardCollection cards={cards} eventConfig={eventConfig} />
+        paragraph = (
+          <ProgramDetailsCardCollection
+            cards={cards}
+            eventConfig={eventConfig}
+            currentLanguage={currentLanguage}
+          />
+        )
       } else if (item.type === 'panelMenu') {
         // TODO: fix hard-coding of pathname
         paragraph = (

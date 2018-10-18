@@ -9,7 +9,10 @@ function determineMainMenuTitleLink(langCode, data) {
     link = data.spanishTranslation.link
     linkTitle = data.spanishTranslation.linkTitle
   }
-  return { link, linkTitle }
+  return { 
+    link, 
+    linkTitle 
+  }
 }
 
 function determineMenuTileData(langCode, data) {
@@ -21,7 +24,19 @@ function determineMenuTileData(langCode, data) {
     title = data.spanishTranslation.title
     fullUrl = data.spanishTranslation.fullUrl
   }
-  return { description, title, fullUrl }
+  return { 
+    description, 
+    title, 
+    fullUrl
+  }
+}
+
+function getDataForLanguage(langCode, data) {
+  let result = data
+  if (langCode === 'es' && data.spanishTranslation) {
+    result = data.spanishTranslation
+  }
+  return result
 }
 
 function getCurrentFile(files, oneFile) {
@@ -79,5 +94,6 @@ export {
   determineMenuTileData,
   getCurrentFile,
   getLanguageOverride,
-  getQueryParams
+  getQueryParams,
+  getDataForLanguage
 }
