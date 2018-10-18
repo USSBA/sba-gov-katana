@@ -85,10 +85,6 @@ class SectionNav extends React.Component {
     const navLinks = this.makeNavLinks()
     const sectionTitle = this.getNthLineage(-2).title
     const navigationTitle = this.makeNavigationTitle(sectionTitle)
-    const eventConfig = {
-      category: 'Menu-Rail',
-      action: sectionTitle
-    }
     return (
       <div
         id="article-navigation-desktop"
