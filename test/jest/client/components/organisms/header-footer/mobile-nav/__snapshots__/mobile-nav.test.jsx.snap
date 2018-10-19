@@ -113,8 +113,10 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
-          className="navLinkSpecialNew"
-          href="/partners"
+          id="mobile-nav-for-partners"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           For Partners
         </a>
@@ -123,12 +125,13 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
-          className="navLinkSpecialNew"
-          href="/tools/local-assistance#locations-page"
-          id="mobile-nav-near-you"
+          id="mobile-nav-sba-near-you"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           <img
-            alt=""
+            aria-hidden={true}
             className="linkIcon"
             src="test-file-stub"
           />
@@ -139,12 +142,13 @@ exports[`Mobile Navigation has the correct structure 1`] = `
         className="mobile-nav-menu-item mobileNavMenuLink"
       >
         <a
-          className="navLinkSpecialNew"
-          href="/tools/events#events-page"
-          id="mobile-nav-events"
+          id="mobile-nav-small-business-events"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
         >
           <img
-            alt=""
+            aria-hidden={true}
             className="linkIcon"
             src="test-file-stub"
           />

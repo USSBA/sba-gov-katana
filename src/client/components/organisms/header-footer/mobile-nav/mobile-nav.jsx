@@ -1,11 +1,14 @@
 import React from 'react'
-import { HamburgerIcon, Link, MainLogo, SectionLink } from 'atoms'
+import { kebabCase } from 'lodash'
 
 import clientConfig from '../../../../services/client-config.js'
 import searchIcon from 'assets/svg/mobile-menu/search-icon.svg'
-import nearyouIcon from 'assets/svg/mobile-menu/near-you-icon.svg'
+import nearYouIcon from 'assets/svg/mobile-menu/near-you-icon.svg'
 import calendarIcon from 'assets/svg/mobile-menu/calendar-icon.svg'
 import styles from './mobile-nav.scss'
+import { determineMainMenuTitleLink, getLanguageOverride } from '../../../../services/utils'
+import { SECONDARY_NAVIGATION_TRANSLATIONS } from '../../../../translations'
+import { HamburgerIcon, Link, MainLogo, SectionLink } from 'atoms'
 
 class MobileNav extends React.Component {
   constructor(props) {
@@ -34,50 +37,55 @@ class MobileNav extends React.Component {
   }
 
   createMenuItems() {
+    const { mainMenuData } = this.props
+    const langCode = getLanguageOverride(true)
     let menuItems = []
-    const me = this
-    if (this.props.mainMenuData) {
-      menuItems = this.props.mainMenuData.map((item, index) => {
-        return (
-          <div key={index} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
-            <SectionLink id={'main-menu-link-' + index} url={item.link} text={item.linkTitle} />
-          </div>
+
+    const wrapLink = (index, child) => (
+      <div key={index} className={`mobile-nav-menu-item ${styles.mobileNavMenuLink}`}>
+        {child}
+      </div>
+    )
+
+    if (mainMenuData) {
+      menuItems = mainMenuData.map((item, index) => {
+        const { link, linkTitle } = determineMainMenuTitleLink(langCode, item)
+
+        return wrapLink(
+          link,
+          <SectionLink id={kebabCase(`main-menu-link ${index}`)} url={link} text={linkTitle} />
         )
       })
     } else {
       menuItems.push(<div key={1} />)
     }
 
-    const baseLength = this.props.mainMenuData ? this.props.mainMenuData.length : 2
-    menuItems.push(
-      <div key={baseLength + 1} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
-        <a className={styles.navLinkSpecialNew} href="/partners">
-          For Partners
-        </a>
-      </div>
-    )
+    const baseLength = mainMenuData ? mainMenuData.length : 2
+    const secondaryMenuItems = [
+      {
+        key: 'forPartners'
+      },
+      {
+        key: 'sbaNearYou',
+        icon: <img aria-hidden className={styles.linkIcon} src={nearYouIcon} />
+      },
+      {
+        key: 'smallBusinessEvents',
+        icon: <img aria-hidden className={styles.linkIcon} src={calendarIcon} />
+      }
+    ].map(({ key, icon }) => {
+      const { text, url } = SECONDARY_NAVIGATION_TRANSLATIONS[key][langCode]
 
-    menuItems.push(
-      <div key={baseLength + 2} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
-        <a
-          id="mobile-nav-near-you"
-          className={styles.navLinkSpecialNew}
-          href="/tools/local-assistance#locations-page"
-        >
-          <img className={styles.linkIcon} src={nearyouIcon} alt="" />
-          SBA Near You
-        </a>
-      </div>
-    )
-    menuItems.push(
-      <div key={baseLength + 3} className={'mobile-nav-menu-item ' + styles.mobileNavMenuLink}>
-        <a id="mobile-nav-events" className={styles.navLinkSpecialNew} href="/tools/events#events-page">
-          <img className={styles.linkIcon} src={calendarIcon} alt="" />
-          Small Business Events
-        </a>
-      </div>
-    )
-    return menuItems
+      return wrapLink(
+        text,
+        <Link id={kebabCase(`mobile-nav ${text}`)} to={url}>
+          {icon && icon}
+          {text}
+        </Link>
+      )
+    })
+
+    return [...menuItems, ...secondaryMenuItems]
   }
 
   handleSearchChange(e) {
