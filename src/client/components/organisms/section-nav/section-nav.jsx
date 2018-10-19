@@ -8,6 +8,7 @@ import constants from '../../../services/constants.js'
 import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
 import styles from './section-nav.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
+import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
 import { Link } from 'atoms'
 
 const businessGuideFullUrl = '/business-guide'
@@ -36,23 +37,24 @@ class SectionNav extends React.Component {
   makeNavLinks() {
     const section = this.getNthLineage(-2)
     const currentPage = this.getNthLineage(-1)
+    const langCode = getLanguageOverride()
     const navLinks = section.children.map(function(item, index) {
+      const titleLinkData = determineMenuTileData(langCode, item)
       let currentLinkClass = ''
-      if (item.fullUrl === currentPage.fullUrl) {
+      if (
+        (langCode === 'es' && titleLinkData.fullUrl === currentPage.spanishTranslation.fullUrl) ||
+        titleLinkData.fullUrl === currentPage.fullUrl
+      ) {
         currentLinkClass = styles.currentNavLink
-      }
-      const eventConfig = {
-        category: 'Menu-Rail',
-        action: section.title + ' ' + item.title
       }
       return (
         <li className={currentLinkClass} key={index}>
           <Link
             className="article-navigation-article-link-desktop"
             id={'desktop-article-link-' + index}
-            to={item.fullUrl}
+            to={titleLinkData.fullUrl}
           >
-            {item.title}
+            {titleLinkData.title}
           </Link>
         </li>
       )
@@ -89,10 +91,6 @@ class SectionNav extends React.Component {
     const navLinks = this.makeNavLinks()
     const sectionTitle = this.getNthLineage(-2).title
     const navigationTitle = this.makeNavigationTitle(sectionTitle)
-    const eventConfig = {
-      category: 'Menu-Rail',
-      action: sectionTitle
-    }
     return (
       <div
         id="article-navigation-desktop"
