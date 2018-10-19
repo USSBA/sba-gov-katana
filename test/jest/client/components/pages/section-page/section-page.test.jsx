@@ -5,6 +5,10 @@ import { MenuTileCollection } from 'organisms'
 import SectionPage from 'pages/section-page/section-page'
 import constants from 'client/services/constants.js'
 
+jest.mock('client/services/utils')
+import { getLanguageOverride } from 'client/services/utils'
+getLanguageOverride.mockImplementation(() => 'en')
+
 describe('SectionPage', () => {
   test('should render a tile collection', () => {
     const component = shallow(<SectionPage />)

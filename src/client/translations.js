@@ -132,4 +132,32 @@ const MISC_TRANSLATIONS = {
   }
 }
 
-export { SECONDARY_NAVIGATION_TRANSLATIONS, MISC_TRANSLATIONS }
+// eslint-disable-next-line id-match
+const TEN_STEPS_CALLOUTS_TRANSLATIONS = {
+  navigation: {
+    en: {
+      headline: 'Not sure where to start? Start your business in 10 steps.',
+      linkText: 'See the guide'
+    },
+    es: {
+      headline: 'No estás seguro por dónde empezar? Comience su negocio en 10 pasos.',
+      linkText: 'Ver la guía'
+    }
+  },
+  panel: {
+    en: {
+      headline: 'Start your business in 10 steps',
+      linkText: 'See the guide'
+    },
+    es: {
+      headline: 'Comience su negocio en 10 pasos',
+      linkText: 'Ver la guía'
+    }
+  }
+}
+
+export {
+  MISC_TRANSLATIONS,
+  TEN_STEPS_CALLOUTS_TRANSLATIONS,
+  SECONDARY_NAVIGATION_TRANSLATIONS
+}

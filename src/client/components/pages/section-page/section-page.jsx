@@ -1,11 +1,13 @@
 import React from 'react'
 import path from 'path'
 
-import constants from '../../../services/constants.js'
+import constants from '../../../services/constants'
 import styles from './section-page.scss'
 import { Button } from 'atoms'
 import { RemoveMainLoader } from 'molecules'
 import { MenuTileCollection } from 'organisms'
+import { getLanguageOverride } from '../../../services/utils'
+import { TEN_STEPS_CALLOUTS_TRANSLATIONS } from '../../../translations'
 
 class SectionPage extends React.Component {
   equalsIgnoreCase(first, second) {
@@ -13,9 +15,11 @@ class SectionPage extends React.Component {
   }
 
   render() {
-    if (this.props.sectionData) {
-      const sectionData = this.props.sectionData
-      const sectionName = this.props.sectionData.title
+    const { sectionData } = this.props
+    if (sectionData) {
+      const sectionName = sectionData.title
+
+      const { headline, linkText } = TEN_STEPS_CALLOUTS_TRANSLATIONS['panel'][getLanguageOverride(true)]
 
       let tenSteps
       if (sectionName === constants.sections.businessGuide) {
@@ -23,8 +27,8 @@ class SectionPage extends React.Component {
         // it will refactored in the design soon.
         tenSteps = (
           <div className={styles.callToAction} id="business-guide-panel-10-steps-callout">
-            <h6>Start your business in 10 steps</h6>
-            <Button alternate children="See the guide" fullWidth primary url={constants.routes.tenSteps} />
+            <h6>{headline}</h6>
+            <Button alternate children={linkText} fullWidth primary url={constants.routes.tenSteps} />
           </div>
         )
       }

@@ -3,11 +3,12 @@ import { isEmpty } from 'lodash'
 import classNames from 'classnames'
 
 import styles from './dropdown-menu.scss'
+import clientConfig from '../../../services/client-config'
+import constants from '../../../services/constants'
 import { Link, Button, UtilityLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
-import clientConfig from '../../../services/client-config.js'
-import constants from '../../../services/constants.js'
-import { determineMainMenuTitleLink, getLanguageOverride } from '../../../services/utils.js'
+import { determineMainMenuTitleLink, getLanguageOverride } from '../../../services/utils'
+import { TEN_STEPS_CALLOUTS_TRANSLATIONS } from '../../../translations'
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class DropdownMenu extends React.Component {
     })
 
     if (!isEmpty(links)) {
-      const langCode = getLanguageOverride()
+      const langCode = getLanguageOverride(true)
       let pageLinkGroups = links.map((data, index) => {
         let children = data.children || []
         let mappedChildren = children.map(function(item) {
@@ -138,6 +139,9 @@ class DropdownMenu extends React.Component {
           />
         </ul>
       )
+
+      const { headline, linkText } = TEN_STEPS_CALLOUTS_TRANSLATIONS['navigation'][langCode]
+
       return (
         <ul id={id} key={1} aria-label="submenu" className={ulStyles}>
           {goToNextButton}
@@ -152,8 +156,8 @@ class DropdownMenu extends React.Component {
           ) : null}
           {shouldShowCallToAction ? (
             <div className={styles.callToAction}>
-              <h6>Not sure where to start? Start your business in 10 steps.</h6>
-              <Button children="See the guide" url={constants.routes.tenSteps} secondary />
+              <h6>{headline}</h6>
+              <Button children={linkText} url={constants.routes.tenSteps} secondary />
             </div>
           ) : null}
         </ul>
