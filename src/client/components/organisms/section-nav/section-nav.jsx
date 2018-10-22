@@ -42,8 +42,10 @@ class SectionNav extends React.Component {
       const titleLinkData = determineMenuTileData(langCode, item)
       let currentLinkClass = ''
       if (
-        (langCode === 'es' && titleLinkData.fullUrl === currentPage.spanishTranslation.fullUrl) ||
-        titleLinkData.fullUrl === currentPage.fullUrl
+        titleLinkData.fullUrl === currentPage.fullUrl ||
+        (langCode === 'es' &&
+          currentPage.spanishTranslation &&
+          titleLinkData.fullUrl === currentPage.spanishTranslation.fullUrl)
       ) {
         currentLinkClass = styles.currentNavLink
       }

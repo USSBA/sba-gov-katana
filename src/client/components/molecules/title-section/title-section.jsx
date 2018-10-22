@@ -3,9 +3,19 @@ import { connect } from 'react-redux'
 
 import styles from './title-section.scss'
 import { DecorativeDash, Link } from 'atoms'
+import { getLanguageOverride } from '../../../services/utils.js'
+<<<<<<< HEAD
+import { MISC_TRANSLATIONS } from '../../../translations.js'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {
+    const { content } = MISC_TRANSLATIONS
+=======
+
+class TitleSection extends React.Component {
+  makeTitleLinks(sectionHeaders) {
+>>>>>>> 5a4e4f5c... T1-990 Display Content in Spanish if langCode is es
+    const langCode = getLanguageOverride()
     let titleLinks = []
     titleLinks = sectionHeaders.map(function(item, index) {
       return (
@@ -17,7 +27,11 @@ class TitleSection extends React.Component {
     return (
       <div>
         <h3 id="titleSectionContentId" className={styles.content}>
-          Content
+<<<<<<< HEAD
+          {langCode !== 'es' ? content.en : content.es}
+=======
+          {langCode !== 'es' ? 'Content' : 'Contenidos'}
+>>>>>>> 5a4e4f5c... T1-990 Display Content in Spanish if langCode is es
         </h3>
         <ul>{titleLinks}</ul>
         <hr className={styles.hr} />
