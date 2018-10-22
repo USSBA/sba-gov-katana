@@ -40,10 +40,14 @@ class SectionNav extends React.Component {
     const langCode = getLanguageOverride()
     const navLinks = section.children.map(function(item, index) {
       const titleLinkData = determineMenuTileData(langCode, item)
+      console.log('item1', titleLinkData.fullUrl === currentPage.fullUrl)
+      console.log('item2', currentPage.fullUrl)
       let currentLinkClass = ''
       if (
-        (langCode === 'es' && titleLinkData.fullUrl === currentPage.spanishTranslation.fullUrl) ||
-        titleLinkData.fullUrl === currentPage.fullUrl
+        titleLinkData.fullUrl === currentPage.fullUrl ||
+        (langCode === 'es' &&
+          currentPage.spanishTranslation &&
+          titleLinkData.fullUrl === currentPage.spanishTranslation.fullUrl)
       ) {
         currentLinkClass = styles.currentNavLink
       }
