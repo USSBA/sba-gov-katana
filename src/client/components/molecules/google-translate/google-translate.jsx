@@ -27,15 +27,16 @@ class GoogleTranslate extends React.Component {
   }
 
   render() {
+    const { text } = this.props
     const { isExpanded } = this.state
 
     return (
       <div className={styles.googleTranslate}>
         <div className={isExpanded ? styles.show : styles.hide} id="google_translate_element" />
         <UtilityLink
-          visible={!this.state.isExpanded}
           onClick={this.handleGoogleTranslateClick.bind(this)}
-          text="Translate"
+          text={text}
+          visible={!isExpanded}
         />
       </div>
     )

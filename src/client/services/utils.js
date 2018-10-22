@@ -57,7 +57,8 @@ function getQueryParams() {
   return queryParams
 }
 
-function getLanguageOverride() {
+// e.g. "en-US" has a country variant
+function getLanguageOverride(excludeVariants = false) {
   let langOverride = null
   let langQueryParam = null
 
@@ -70,6 +71,10 @@ function getLanguageOverride() {
     langOverride = langQueryParam
   } else if (window && window.langOverride) {
     langOverride = window.langOverride
+  }
+
+  if (excludeVariants) {
+    langOverride = langOverride.split('-')[0]
   }
   return langOverride
 }

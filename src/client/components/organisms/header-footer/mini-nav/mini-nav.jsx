@@ -1,23 +1,26 @@
 import React from 'react'
+import classNames from 'classnames'
+import cookie from 'react-cookie'
+import { isFunction, kebabCase, size } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classNames from 'classnames'
+
+import * as ModalActions from '../../../../actions/show-modal'
+import * as ContentActions from '../../../../actions/content'
+import clientConfig from '../../../../services/client-config'
+import config from '../../../../services/client-config'
+import styles from './mini-nav.scss'
+import { getLanguageOverride } from '../../../../services/utils'
+import { SECONDARY_NAVIGATION_TRANSLATIONS } from '../../../../translations'
 import { UtilityLink } from 'atoms'
 import { SearchBar, GoogleTranslate } from 'molecules'
-
-import * as ModalActions from '../../../../actions/show-modal.js'
-import * as ContentActions from '../../../../actions/content.js'
-import clientConfig from '../../../../services/client-config.js'
-import config from '../../../../services/client-config.js'
-
-import cookie from 'react-cookie'
-import styles from './mini-nav.scss'
 
 class MiniNav extends React.Component {
   timerId = null
 
   constructor(props) {
     super()
+
     this.state = {
       translateIsExpanded: false,
       userId: '',
@@ -35,17 +38,19 @@ class MiniNav extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.userId) {
-      this.props.actions.fetchContentIfNeeded('userRoles', this.state.userId + '/roles')
-      if (this.state.userLoggedOn) {
-        //check whether email is already provided
-        this.props.actions.fetchContentIfNeeded('userEmail', this.state.userId + '/email')
+    const { actions: { fetchContentIfNeeded }, modalActions: { showSbaNewsletter } } = this.props
+    const { userEmail, userId, userLoggedOn } = this.state
+
+    if (userId) {
+      fetchContentIfNeeded('userRoles', userId + '/roles')
+      if (userLoggedOn) {
+        // check whether email is already provided
+        fetchContentIfNeeded('userEmail', userId + '/email')
       }
     }
-    if (!this.state.userEmail && config.govdelivery) {
-      this.timerId = setTimeout(() => {
-        this.props.modalActions.showSbaNewsletter(this.state.userEmail)
-      }, 5000)
+
+    if (!userEmail && config.govdelivery) {
+      this.timerId = setTimeout(() => showSbaNewsletter(userEmail), 5000)
     }
   }
 
@@ -61,34 +66,31 @@ class MiniNav extends React.Component {
     })
   }
 
-  makeUserAccountSpecificLinks() {
-    let links = []
-    if (this.state.userLoggedOn) {
-      if (this.props.userRoles && this.props.userRoles.length > 0) {
-        links.push(
-          <UtilityLink id="deskop-mini-nav-admintool" key={11} url="/admintool" text="Admin Tool" />
-        )
+  render() {
+    const { userRoles } = this.props
+    const { isSearchExpanded, userLoggedOn, userId } = this.state
+
+    // e.g. get just "en" if given "en-US"
+    const langCode = getLanguageOverride(true)
+    const { translate } = SECONDARY_NAVIGATION_TRANSLATIONS
+
+    const link = key => {
+      if (!key) {
+        return null
       }
-      links.push(
+
+      const { text, url } = SECONDARY_NAVIGATION_TRANSLATIONS[key][langCode]
+
+      return (
         <UtilityLink
-          id="deskop-mini-nav-my-account"
-          key={12}
-          url={'/user/' + this.state.userId + '/edit'}
-          text="My Account"
+          id={kebabCase(`desktop-mini-nav ${text}`)}
+          key={text}
+          text={text}
+          url={isFunction(url) ? url(userId) : url}
         />
       )
-      links.push(<UtilityLink id="deskop-mini-nav-logout" key={13} url="/user/logout" text="Log Out" />)
-    } else {
-      links.push(
-        <UtilityLink id="deskop-mini-nav-register" key={14} url="/user/register" text="Register" />
-      )
-      links.push(<UtilityLink id="deskop-mini-nav-login" key={15} url="/user/login" text="Log In" />)
     }
-    return links
-  }
 
-  render() {
-    const { isSearchExpanded } = this.state
     const miniNavClassNames = classNames({
       [styles.miniNav]: true,
       [styles.searchBar]: isSearchExpanded
@@ -97,17 +99,11 @@ class MiniNav extends React.Component {
     return (
       <div className={miniNavClassNames}>
         <ul id="deskop-mini-nav" aria-label="mini-navigation">
-          <GoogleTranslate />
-          <UtilityLink id="deskop-mini-nav-1" key={1} url="/anuncio-especial" text="SBA en Español" />
-          <UtilityLink id="deskop-mini-nav-2" key={2} url="/partners" text="For Partners" />
-          <UtilityLink id="deskop-mini-nav-3" key={3} url="/about-sba/sba-newsroom" text="Newsroom" />
-          <UtilityLink
-            id="deskop-mini-nav-4"
-            key={4}
-            url="/about-sba/what-we-do/contact-sba"
-            text="Contact Us"
-          />
-          {this.makeUserAccountSpecificLinks()}
+          <GoogleTranslate text={translate[langCode].text} />
+          {['sbaEnEspanol', 'forPartners', 'newsroom', 'contactUs'].map(link)}
+          {userLoggedOn
+            ? ['adminTool', size(userRoles) && 'myAccount', 'logout'].map(link)
+            : ['register', 'login'].map(link)}
           <SearchBar onExpand={isExpanded => this.onSearchBarExpand(isExpanded)} />
         </ul>
       </div>
@@ -128,6 +124,7 @@ function mapDispatchToProps(dispatch) {
     modalActions: bindActionCreators(ModalActions, dispatch)
   }
 }
+
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav)
 
 export { MiniNav }

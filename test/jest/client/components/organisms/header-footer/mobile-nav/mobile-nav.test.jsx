@@ -5,9 +5,13 @@ import React from 'react'
 /*eslint-enable no-unused-vars*/
 import ReactSelect from 'react-select'
 import { MobileNav } from 'organisms'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import _ from 'lodash'
+
+jest.mock('client/services/utils')
+import { getLanguageOverride } from 'client/services/utils'
+getLanguageOverride.mockImplementation(() => 'en')
 
 test('Mobile Navigation has the correct structure', () => {
   const component = renderer.create(<MobileNav />)
@@ -16,7 +20,7 @@ test('Mobile Navigation has the correct structure', () => {
 })
 
 test('Mobile Navigation shows the For Partners link', () => {
-  const component = shallow(<MobileNav />)
+  const component = mount(<MobileNav />)
   const menuItems = component.find('.mobile-nav-menu-item')
   expect(menuItems.length).toBe(3)
   const anchors = menuItems.find('a')
