@@ -124,4 +124,12 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
   }
 }
 
-export { SECONDARY_NAVIGATION_TRANSLATIONS }
+// eslint-disable-next-line id-match
+const MISC_TRANSLATIONS = {
+  content: {
+    en: 'Content',
+    es: 'Contenidos'
+  }
+}
+
+export { SECONDARY_NAVIGATION_TRANSLATIONS, MISC_TRANSLATIONS }
