@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgramDetailsCardCollection should render the default cards 1`] = `
+<div>
+  <div
+    className="cardCollection"
+  >
+    <div
+      className="cardRow"
+      id="card-row--1-0"
+    >
+      <div
+        className="card sixColumn noImage"
+        id="card"
+      >
+        <div
+          className="content false"
+        >
+          <h4
+            className="itemTitle"
+            id="title"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+            >
+              Title A
+            </a>
+          </h4>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+      <div
+        className="card sixColumn noImage"
+        id="card"
+      >
+        <div
+          className="content false"
+        >
+          <h4
+            className="itemTitle"
+            id="title"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+            >
+              Title B
+            </a>
+          </h4>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+      <div
+        className="card sixColumn noImage"
+        id="card"
+      >
+        <div
+          className="content false"
+        >
+          <h4
+            className="itemTitle"
+            id="title"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+            >
+              Title C
+            </a>
+          </h4>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+      <div
+        className="card sixColumn noImage"
+        id="card"
+      >
+        <div
+          className="content false"
+        >
+          <h4
+            className="itemTitle"
+            id="title"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+            >
+              Title D
+            </a>
+          </h4>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+      <div
+        className="card sixColumn noImage"
+        id="card"
+      >
+        <div
+          className="content false"
+        >
+          <h4
+            className="itemTitle"
+            id="title"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+            >
+              Title E
+            </a>
+          </h4>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+      <div
+        className="card sixColumn noImage"
+        id="card"
+      >
+        <div
+          className="content false"
+        >
+          <h4
+            className="itemTitle"
+            id="title"
+          >
+            <a
+              onClick={[Function]}
+              style={Object {}}
+              target="_self"
+            >
+              Title F
+            </a>
+          </h4>
+          <a
+            onClick={[Function]}
+            style={Object {}}
+            target="_self"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

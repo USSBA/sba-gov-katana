@@ -11,7 +11,6 @@ class ProgramDetailsCardCollection extends Component {
     const remapData = () => {
       return cards.map(data => {
         const item = getDataForLanguage(currentLanguage, data)
-
         let eventConfig = null
         if (this.props.eventConfig) {
           const actionConfig = { action: item.title }
@@ -69,7 +68,14 @@ const defaultCardsData = [
 
 ProgramDetailsCardCollection.defaultProps = {
   cards: defaultCardsData,
-  leftAligned: true
+  leftAligned: true,
+  currentLanguage: 'en'
+}
+
+ProgramDetailsCardCollection.propTypes = {
+  cards: React.PropTypes.array,
+  leftAligned: React.PropTypes.bool,
+  currentLanguage: React.PropTypes.string
 }
 
 export default ProgramDetailsCardCollection
