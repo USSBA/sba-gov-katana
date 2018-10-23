@@ -84,7 +84,7 @@ app.use(function(req, res, next) {
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       req.nodeId = nodeId //eslint-disable-line no-param-reassign
-      req.preferredLanguage = langCode === 'es' ? 'es' : req.preferredLanguage //eslint-disable-line no-param-reassign
+      req.preferredLanguage = langCode === 'es' ? 'es' : 'en' //eslint-disable-line no-param-reassign
       next()
     })
     .catch(next)
