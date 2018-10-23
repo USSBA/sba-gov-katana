@@ -5,7 +5,7 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       text: 'Translate'
     },
     es: {
-      text: 'ES Translate'
+      text: 'Traducir'
     }
   },
   sbaEnEspanol: {
@@ -24,8 +24,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/partners'
     },
     es: {
-      text: 'ES For Partners',
-      url: '/es/partners'
+      text: 'Área de socios',
+      url: '/partners'
     }
   },
   newsroom: {
@@ -34,8 +34,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/about-sba/sba-newsroom'
     },
     es: {
-      text: 'ES Newsroom',
-      url: '/es/about-sba/sba-newsroom'
+      text: 'Sala de prensa',
+      url: '/about-sba/sba-newsroom'
     }
   },
   contactUs: {
@@ -44,8 +44,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/about-sba/what-we-do/contact-sba'
     },
     es: {
-      text: 'ES Contact Us',
-      url: '/es/about-sba/what-we-do/contact-sba'
+      text: 'Contacte',
+      url: '/about-sba/what-we-do/contact-sba'
     }
   },
   register: {
@@ -54,8 +54,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/user/register'
     },
     es: {
-      text: 'ES Register',
-      url: '/es/user/register'
+      text: 'Regístrese',
+      url: '/user/register'
     }
   },
   login: {
@@ -64,8 +64,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/user/login'
     },
     es: {
-      text: 'ES Login',
-      url: '/es/user/login'
+      text: 'Acceda',
+      url: '/user/login'
     }
   },
   adminTool: {
@@ -74,8 +74,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/admintool'
     },
     es: {
-      text: 'ES Admin Tool',
-      url: '/es/admintool'
+      text: 'Administrar',
+      url: '/admintool'
     }
   },
   myAccount: {
@@ -86,9 +86,9 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       }
     },
     es: {
-      text: 'ES My Account',
+      text: 'Mi cuenta',
       url(id) {
-        return `/es/user/${id}/edit`
+        return `/user/${id}/edit`
       }
     }
   },
@@ -98,8 +98,8 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/user/logout'
     },
     es: {
-      text: 'ES Log Out',
-      url: '/es/user/logout'
+      text: 'Cerrar sesión',
+      url: '/user/logout'
     }
   },
   sbaNearYou: {
@@ -108,7 +108,7 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/tools/local-assistance#locations-page'
     },
     es: {
-      text: 'ES SBA Near You',
+      text: 'SBA en tu zona',
       url: '/tools/local-assistance#locations-page'
     }
   },
@@ -118,7 +118,7 @@ const SECONDARY_NAVIGATION_TRANSLATIONS = {
       url: '/tools/events#events-page'
     },
     es: {
-      text: 'ES Small Business Events',
+      text: 'Eventos para pequeñas empresas',
       url: '/tools/events#events-page'
     }
   }
@@ -140,8 +140,8 @@ const TEN_STEPS_CALLOUTS_TRANSLATIONS = {
       linkText: 'See the guide'
     },
     es: {
-      headline: 'No estás seguro por dónde empezar? Comience su negocio en 10 pasos.',
-      linkText: 'Ver la guía'
+      headline: '¿No sabe por dónde empezar? Siga estos 10 pasos.',
+      linkText: 'Vea la guía'
     }
   },
   panel: {
@@ -150,8 +150,8 @@ const TEN_STEPS_CALLOUTS_TRANSLATIONS = {
       linkText: 'See the guide'
     },
     es: {
-      headline: 'Comience su negocio en 10 pasos',
-      linkText: 'Ver la guía'
+      headline: 'Abra su empresa siguiendo estos 10 pasos',
+      linkText: 'Vea la guía'
     }
   }
 }
