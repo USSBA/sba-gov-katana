@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
 
 import styles from './program-details-card-collection.scss'
 import { CardCollection } from 'organisms'
+import { getDataForLanguage } from '../../../services/utils.js'
 
 class ProgramDetailsCardCollection extends Component {
   render() {
     const defaultCategoryConfig = { category: 'Program-Details-Card' }
-    const { cards } = this.props
+    const { cards, currentLanguage } = this.props
     const remapData = () => {
-      return cards.map(item => {
+      return cards.map(data => {
+        const item = getDataForLanguage(currentLanguage, data)
+
         let eventConfig = null
         if (this.props.eventConfig) {
           const actionConfig = { action: item.title }
