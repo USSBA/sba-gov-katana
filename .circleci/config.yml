@@ -283,7 +283,7 @@ jobs:
                 set_upper
                 ;;
               staging)
-                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov-assets
+                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
                 set_upper
                 ;;
               mint|integration)
