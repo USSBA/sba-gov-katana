@@ -84,7 +84,6 @@ app.use(function(req, res, next) {
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       req.nodeId = nodeId //eslint-disable-line no-param-reassign
-      req.preferredLanguage = langCode === 'es' ? 'es' : 'en' //eslint-disable-line no-param-reassign
       next()
     })
     .catch(next)
@@ -162,7 +161,8 @@ import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
-    langOverride: req.preferredLanguage,
+    // default to "en" for lang codes that are not "es"
+    langOverride: req.preferredLanguage === 'es' ? 'es' : 'en',
     nodeId: req.nodeId,
     config: JSON.stringify(req.sessionAndConfig),
     cdnPathFromBackend: '"' + config.get('publicPath') + '"',
