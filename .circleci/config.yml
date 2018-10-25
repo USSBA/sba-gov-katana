@@ -105,6 +105,7 @@ workflows:
             branches:
               only:
               - master
+              - /[Ff]eature-\w+-\d+[-\w]*/
             tags:
               only:
               - production
@@ -116,6 +117,7 @@ workflows:
           branches:
             only:
             - integration
+            - /[Ff]eature-\w+-\d+[-\w]*/
           tags:
             only:
             - production
@@ -139,6 +141,7 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
+            - /[Ff]eature-\w+-\d+[-\w]*/
         context: sba-gov-upper
 jobs:
   cache-dependencies:
