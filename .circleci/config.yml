@@ -104,15 +104,15 @@ workflows:
            - build-package
           filters:
             branches:
-            only:
-            - master
+              only:
+              - master
             tags:
               only:
               - production
               - staging
           context: sba-gov-upper
     - upload-package:
-        requires: [build-package]
+        requires: [hold]
         filters:
           branches:
             only:
