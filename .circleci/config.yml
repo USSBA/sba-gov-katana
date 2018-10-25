@@ -100,8 +100,7 @@ workflows:
             - /RELEASE-\d+/
     - hold:
           type: approval
-          requires:
-           - build-package
+          requires: [build-package]
           filters:
             branches:
               only:
