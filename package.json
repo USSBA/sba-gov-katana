@@ -101,7 +101,7 @@
     "identity-obj-proxy": "3.0.0",
     "ignore-styles": "5.0.1",
     "ismobilejs": "^0.4.1",
-    "jest": "20.0.3",
+    "jest": "20.0.4",
     "jest-enzyme": "3.0.0",
     "jquery": "3.1.1",
     "jsdom": "11.0.0",
