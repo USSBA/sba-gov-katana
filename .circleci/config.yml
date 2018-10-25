@@ -82,8 +82,7 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
-    - hold:
-        type: approval
+    - build-package:
         requires: [build-webpack]
         filters:
           branches:
@@ -99,9 +98,9 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
-    - build-package:
+    - hold:
         type: approval
-        requires: [hold]
+        requires: [build-package]
         filters:
           branches:
             only:
@@ -117,7 +116,7 @@ workflows:
             - /int-\w+/
             - /RELEASE-\d+/
     - upload-package:
-        requires: [build-package]
+        requires: [hold]
         filters:
           branches:
             only:
