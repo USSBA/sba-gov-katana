@@ -98,6 +98,19 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
+    - hold:
+          type: approval
+          requires:
+           - build-package
+          filters:
+            branches:
+            only:
+            - master
+            tags:
+              only:
+              - production
+              - staging
+          context: sba-gov-upper
     - upload-package:
         requires: [build-package]
         filters:
@@ -112,6 +125,7 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
+        context: sba-gov-upper
     - deploy-package:
         requires: [upload-package]
         filters:
@@ -121,11 +135,12 @@ workflows:
           tags:
             only:
             # - production
-            # - staging
+            - staging
             - demo
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
+        context: sba-gov-upper
 jobs:
   cache-dependencies:
     docker:
@@ -260,13 +275,11 @@ jobs:
             case $ENVIRONMENT in
               production)
                 export ASSET_BUCKET_NAME_PREFIX=sbagovlower-www.sba.gov
-                # set_upper
-                set_lower
+                set_upper
                 ;;
               staging)
-                export ASSET_BUCKET_NAME_PREFIX=sbagovlower-staging.sba.gov
-                # set_upper
-                set_lower
+                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov-assets
+                set_upper
                 ;;
               mint|integration)
                 export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
