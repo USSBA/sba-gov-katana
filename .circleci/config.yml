@@ -83,6 +83,7 @@ workflows:
             - /int-\w+/
             - /RELEASE-\d+/
     - build-package:
+        type: approval
         requires: [build-webpack]
         filters:
           branches:
@@ -99,8 +100,7 @@ workflows:
             - /int-\w+/
             - /RELEASE-\d+/
     - upload-package:
-        requires: [build-package]
-        type: approval
+        requires: [approval]
         filters:
           branches:
             only:
