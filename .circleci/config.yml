@@ -98,20 +98,9 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
-    - hold:
-        type: approval
-        requires: [build-package]
-        filters:
-          branches:
-            only:
-            - master
-          tags:
-            only:
-            - production
-            - staging
-        context: sba-gov-upper
     - upload-package:
-        requires: [hold]
+        requires: [build-package]
+        type: approval
         filters:
           branches:
             only:
