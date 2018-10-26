@@ -86,7 +86,10 @@ app.use(function(req, res, next) {
       req.nodeId = nodeId //eslint-disable-line no-param-reassign
 
       // Spanish browser language setting and Spanish url gets priority
-      if (langCode === 'es' || req.preferredLanguage === 'es') {
+      if (
+        (langCode && langCode.startsWith('es')) ||
+        (req.preferredLanguage && req.preferredLanguage.startsWith('es'))
+      ) {
         req.preferredLanguage = 'es' //eslint-disable-line no-param-reassign
       } else {
         req.preferredLanguage = 'en' //eslint-disable-line no-param-reassign
