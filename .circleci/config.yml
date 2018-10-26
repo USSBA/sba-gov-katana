@@ -98,7 +98,7 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
-    - upload-package-lower:
+    - upload-package:
         requires: [build-package]
         filters:
           branches:
@@ -110,8 +110,8 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
-    - deploy-package-lower:
-        requires: [upload-package-lower]
+    - deploy-package:
+        requires: [upload-package]
         filters:
           branches:
             only:
@@ -130,28 +130,27 @@ workflows:
           branches:
             only:
             - master
-            - integration
           tags:
             only:
             - production
             - staging
-    - upload-package-upper:
+    - upload-package:
         requires: [hold]
         filters:
           branches:
             only:
-            - integration
+            - master
           tags:
             only:
             - production
             - staging
         context: sba-gov-upper
-    - deploy-package-upper:
-        requires: [upload-package-upper]
+    - deploy-package:
+        requires: [upload-package]
         filters:
           branches:
             only:
-            - integration
+            - master
           tags:
             only:
             - production
@@ -290,7 +289,7 @@ jobs:
 
             case $ENVIRONMENT in
               production)
-                export ASSET_BUCKET_NAME_PREFIX=sbagovlower-www.sba.gov
+                export ASSET_BUCKET_NAME_PREFIX=www.sba.gov
                 set_upper
                 ;;
               staging)
