@@ -169,7 +169,6 @@ import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
-    // default to "en" for lang codes that are not "es"
     langOverride: req.preferredLanguage,
     nodeId: req.nodeId,
     config: JSON.stringify(req.sessionAndConfig),
