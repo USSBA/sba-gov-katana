@@ -84,6 +84,14 @@ app.use(function(req, res, next) {
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       req.nodeId = nodeId //eslint-disable-line no-param-reassign
+
+      // Spanish browser language setting and Spanish url gets priority
+      if (langCode === 'es' || req.preferredLanguage === 'es') {
+        req.preferredLanguage = 'es' //eslint-disable-line no-param-reassign
+      } else {
+        req.preferredLanguage = 'en' //eslint-disable-line no-param-reassign
+      }
+
       next()
     })
     .catch(next)
@@ -162,7 +170,7 @@ import { findMostRecentUrlRedirect } from './service/url-redirect.js'
 app.get(['/', '/*'], function(req, res, next) {
   const pugVariables = _.merge({}, metaVariables, {
     // default to "en" for lang codes that are not "es"
-    langOverride: req.preferredLanguage === 'es' ? 'es' : 'en',
+    langOverride: req.preferredLanguage,
     nodeId: req.nodeId,
     config: JSON.stringify(req.sessionAndConfig),
     cdnPathFromBackend: '"' + config.get('publicPath') + '"',
