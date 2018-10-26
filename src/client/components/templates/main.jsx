@@ -115,6 +115,7 @@ class Main extends React.Component {
           visible={visible}
           buttonText={this.props.disasterAlertButtonText}
           link={this.props.disasterAlertLink}
+          spanishTranslation={this.props.disasterAlertSpanishTranslation}
           onClose={() => {
             this.handleClose('DISASTER')
           }}
@@ -148,6 +149,7 @@ function mapReduxStateToProps(reduxState) {
     data.disasterAlertDescription = disaster.description
     data.disasterAlertButtonText = disaster.buttonText
     data.disasterAlertLink = disaster.link
+    data.disasterAlertSpanishTranslation = disaster.spanishTranslation
   }
 
   if (notification) {
