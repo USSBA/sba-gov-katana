@@ -98,6 +98,31 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
+    - upload-package-lower:
+        requires: [build-package]
+        filters:
+          branches:
+            only:
+            - integration
+          tags:
+            only:
+            - demo
+            - mint
+            - /int-\w+/
+            - /RELEASE-\d+/
+    - deploy-package-lower:
+        requires: [upload-package-lower]
+        filters:
+          branches:
+            only:
+            - integration
+          tags:
+            only:
+            - demo
+            - mint
+            - /int-\w+/
+            - /RELEASE-\d+/
+            - /[Ff]eature-\w+-\d+[-\w]*/
     - hold:
         type: approval
         requires: [build-package]
@@ -106,16 +131,11 @@ workflows:
             only:
             - master
             - integration
-            - /[Ff]eature-\w+-\d+[-\w]*/
           tags:
             only:
             - production
             - staging
-            - demo
-            - mint
-            - /int-\w+/
-            - /RELEASE-\d+/
-    - upload-package:
+    - upload-package-upper:
         requires: [hold]
         filters:
           branches:
@@ -125,26 +145,17 @@ workflows:
             only:
             - production
             - staging
-            - demo
-            - mint
-            - /int-\w+/
-            - /RELEASE-\d+/
         context: sba-gov-upper
-    - deploy-package:
-        requires: [upload-package]
+    - deploy-package-upper:
+        requires: [upload-package-upper]
         filters:
           branches:
             only:
             - integration
           tags:
             only:
-            # - production
+            - production
             - staging
-            - demo
-            - mint
-            - /int-\w+/
-            - /RELEASE-\d+/
-            - /[Ff]eature-\w+-\d+[-\w]*/
         context: sba-gov-upper
 jobs:
   cache-dependencies:
