@@ -283,8 +283,6 @@ jobs:
               ENVIRONMENT=${CIRCLE_BRANCH}
             fi  
 
-            export AWS_ACCESS_KEY_ID=$LOWER_AWS_KEY AWS_SECRET_ACCESS_KEY=$LOWER_AWS_SECRET BUCKET_NAME=$LOWER_BUCKET_NAME
-
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
 
@@ -340,8 +338,6 @@ jobs:
             else
               TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
             fi 
-            
-            export AWS_ACCESS_KEY_ID=$LOWER_AWS_KEY AWS_SECRET_ACCESS_KEY=$LOWER_AWS_SECRET BUCKET_NAME=$LOWER_BUCKET_NAME
 
             case $TARGET_ENVIRONMENT in
               integration)
@@ -379,16 +375,10 @@ jobs:
               ENVIRONMENT=${CIRCLE_BRANCH}
             fi  
 
-            export AWS_ACCESS_KEY_ID=$UPPER_AWS_KEY AWS_SECRET_ACCESS_KEY=$UPPER_AWS_SECRET BUCKET_NAME=$UPPER_BUCKET_NAME
-
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
             
             SOURCE_PREFIX=${ENVIRONMENT}
-            if [ "$SOURCE_PREFIX" == "integration" ]
-            then
-              SOURCE_PREFIX=mint
-            fi
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
@@ -409,8 +399,6 @@ jobs:
             else
               TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
             fi 
-            
-            export AWS_ACCESS_KEY_ID=$UPPER_AWS_KEY AWS_SECRET_ACCESS_KEY=$UPPER_AWS_SECRET_KEY BUCKET_NAME=$UPPER_BUCKET_NAME
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
