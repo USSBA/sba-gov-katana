@@ -110,6 +110,7 @@ workflows:
             - mint
             - /int-\w+/
             - /RELEASE-\d+/
+          context: sba-gov-lower
     - deploy-package:
         requires: [upload-package]
         filters:
@@ -123,6 +124,7 @@ workflows:
             - /int-\w+/
             - /RELEASE-\d+/
             - /[Ff]eature-\w+-\d+[-\w]*/
+          context: sba-gov-lower
     - hold:
         type: approval
         requires: [build-package]
