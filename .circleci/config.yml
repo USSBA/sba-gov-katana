@@ -345,7 +345,6 @@ jobs:
                 ;;
               *)
                 export ENVIRONMENT=${CIRCLE_TAG}
-                set_lower
                 ;;
             esac
 
