@@ -379,6 +379,14 @@ jobs:
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
             
             SOURCE_PREFIX=${ENVIRONMENT}
+            case ENVIRONMENT in
+              production)
+                export ASSET_BUCKET_NAME_PREFIX=www.sba.gov
+                ;;
+              *)
+                export ASSET_BUCKET_NAME_PREFIX=staging.sba.gov
+                ;;
+            esac
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
