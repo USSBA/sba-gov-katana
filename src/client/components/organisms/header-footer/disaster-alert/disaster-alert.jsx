@@ -6,18 +6,19 @@ import { Link } from 'atoms'
 import { getLanguageOverride } from '../../../../services/utils.js'
 
 const DisasterAlert = props => {
+  const { onClose, spanishTranslation, visible } = props
+
   const langCode = getLanguageOverride()
-  const disasterData = determineDisasterData(props, langCode)
-  const { onClose, visible } = props
-  const { buttonTxt, desc, url } = disasterData
+  const data = langCode === 'es' && spanishTranslation ? spanishTranslation : props
+  const { buttonText, description, link } = data
 
   if (visible) {
     return (
       <div className={styles.wrapper} id="disaster-alert">
         <div className={styles.alert}>
           <div className={styles.alertIcon + ' fa fa-exclamation-triangle'} aria-hidden="true" />
-          <div className={styles.disasterDescription} tabIndex="1" aria-label={desc}>
-            {desc}
+          <div className={styles.disasterDescription} tabIndex="1" aria-label={description}>
+            {description}
           </div>
           <img
             className={styles.alertClose}
@@ -36,38 +37,17 @@ const DisasterAlert = props => {
           />
           <Link
             className={styles.alertLink}
-            to={url}
+            to={link}
             tabIndex="2"
-            aria-label={`click to learn more about ${desc}`}
+            aria-label={`click to learn more about ${description}`}
           >
-            {buttonTxt}
+            {buttonText}
           </Link>
         </div>
       </div>
     )
   } else {
     return null
-  }
-}
-
-function determineDisasterData(data, langCode) {
-  const { buttonText, description, link, spanishTranslation } = data
-  let buttonTxt
-  let desc
-  let url
-
-  if (langCode === 'es' && data && data.spanishTranslation) {
-    buttonTxt = spanishTranslation.buttonText
-    desc = spanishTranslation.description
-    url = spanishTranslation.link
-  } else {
-    ;(buttonTxt = buttonText), (desc = description), (url = link)
-  }
-
-  return {
-    buttonTxt,
-    desc,
-    url
   }
 }
 

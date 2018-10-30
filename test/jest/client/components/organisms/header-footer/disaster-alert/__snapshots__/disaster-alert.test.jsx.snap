@@ -1,5 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Disaster Alert should match snapshot with Spanish content 1`] = `
+<div
+  className="wrapper"
+  id="disaster-alert"
+>
+  <div
+    className="alert"
+  >
+    <div
+      aria-hidden="true"
+      className="alertIcon fa fa-exclamation-triangle"
+    />
+    <div
+      aria-label="Esto es una alerta"
+      className="disasterDescription"
+      tabIndex="1"
+    >
+      Esto es una alerta
+    </div>
+    <img
+      alt="close"
+      aria-label="click to close alert"
+      className="alertClose"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      src="test-file-stub"
+      tabIndex="3"
+    />
+    <a
+      aria-label="click to learn more about Esto es una alerta"
+      className="alertLink"
+      href="https://www.sba.gov"
+      tabIndex="2"
+    >
+      Aprende más
+    </a>
+  </div>
+</div>
+`;
+
 exports[`Disaster Alert should render correctly 1`] = `
 <div
   className="wrapper"
