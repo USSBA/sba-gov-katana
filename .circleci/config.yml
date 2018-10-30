@@ -370,7 +370,7 @@ jobs:
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
             
             SOURCE_PREFIX=${ENVIRONMENT}
-            case ENVIRONMENT in
+            case $ENVIRONMENT in
               production)
                 export ASSET_BUCKET_NAME_PREFIX=www.sba.gov
                 ;;
