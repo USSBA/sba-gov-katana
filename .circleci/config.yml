@@ -129,9 +129,6 @@ workflows:
         type: approval
         requires: [build-package]
         filters:
-          branches:
-            only:
-            - master
           tags:
             only:
             - production
@@ -139,9 +136,6 @@ workflows:
     - upload-package-with-approval:
         requires: [hold]
         filters:
-          branches:
-            only:
-            - master
           tags:
             only:
             - production
@@ -150,9 +144,6 @@ workflows:
     - deploy-package-with-approval:
         requires: [upload-package-with-approval]
         filters:
-          branches:
-            only:
-            - master
           tags:
             only:
             - production
