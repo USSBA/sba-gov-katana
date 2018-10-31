@@ -9,13 +9,14 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <div
-    className=""
+    className={false}
 >
     <DisasterAlert
-        buttonText=""
-        description=""
-        link=""
+        buttonText="Learn more"
+        description="Get information about disaster assistance"
+        link="/disaster-assistance"
         onClose={[Function]}
+        spanishTranslation={undefined}
         visible={false}
     />
     <a
@@ -37,13 +38,14 @@ ShallowWrapper {
 </div>,
   "nodes": Array [
     <div
-      className=""
+      className={false}
 >
       <DisasterAlert
-            buttonText=""
-            description=""
-            link=""
+            buttonText="Learn more"
+            description="Get information about disaster assistance"
+            link="/disaster-assistance"
             onClose={[Function]}
+            spanishTranslation={undefined}
             visible={false}
       />
       <a
@@ -70,28 +72,23 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <Main
-        location={
-                Object {
-                        "pathname": "/something",
-                      }
-        }
-/>,
+      "_currentElement": <Main />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": Main {
         "_reactInternalInstance": [Circular],
         "context": Object {},
-        "props": Object {
-          "location": Object {
-            "pathname": "/something",
-          },
-        },
+        "props": Object {},
         "refs": Object {},
         "state": Object {
-          "disasterAlertHidingCookieIsPresent": false,
-          "notificationBarHidingCookieIsPresent": false,
+          "disasterAlert": Object {
+            "buttonText": "Learn more",
+            "description": "Get information about disaster assistance",
+            "link": "/disaster-assistance",
+            "visible": false,
+          },
+          "disasterAlertCookieExists": false,
         },
         "updater": Object {
           "enqueueCallback": [Function],
@@ -112,13 +109,14 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
-          className=""
+          className={false}
 >
           <DisasterAlert
-                    buttonText=""
-                    description=""
-                    link=""
+                    buttonText="Learn more"
+                    description="Get information about disaster assistance"
+                    link="/disaster-assistance"
                     onClose={[Function]}
+                    spanishTranslation={undefined}
                     visible={false}
           />
           <a
@@ -140,13 +138,14 @@ ShallowWrapper {
 </div>,
         "_debugID": 2,
         "_renderedOutput": <div
-          className=""
+          className={false}
 >
           <DisasterAlert
-                    buttonText=""
-                    description=""
-                    link=""
+                    buttonText="Learn more"
+                    description="Get information about disaster assistance"
+                    link="/disaster-assistance"
                     onClose={[Function]}
+                    spanishTranslation={undefined}
                     visible={false}
           />
           <a
@@ -177,12 +176,6 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <Main
-    location={
-        Object {
-            "pathname": "/something",
-          }
-    }
-/>,
+  "unrendered": <Main />,
 }
 `;

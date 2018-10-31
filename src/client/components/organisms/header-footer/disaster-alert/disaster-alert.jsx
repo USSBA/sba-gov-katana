@@ -3,9 +3,14 @@ import React from 'react'
 import styles from './disaster-alert.scss'
 import exitIcon from '../../../../../../public/assets/svg/exit-modal-close.svg'
 import { Link } from 'atoms'
+import { getLanguageOverride } from '../../../../services/utils.js'
 
 const DisasterAlert = props => {
-  const { buttonText, description, link, onClose, visible } = props
+  const { onClose, spanishTranslation, visible } = props
+
+  const langCode = getLanguageOverride()
+  const data = langCode === 'es' && spanishTranslation ? spanishTranslation : props
+  const { buttonText, description, link } = data
 
   if (visible) {
     return (

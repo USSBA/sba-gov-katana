@@ -1,120 +1,55 @@
 import React, { PropTypes } from 'react'
 import cookie from 'react-cookie'
-import _ from 'lodash'
-
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import styles from '../organisms/header-footer/header/header.scss'
-import * as ContentActions from '../../actions/content.js'
-import * as LoadingActions from '../../actions/loading.js'
+import { getLanguageOverride } from '../../services/utils.js'
+import { fetchRestContent } from '../../fetch-content-helper'
 import { MainLoader } from 'molecules'
-import { DisasterAlert, Footer, Header, ModalController, NotificationBar } from 'organisms'
+import { DisasterAlert, Footer, Header, ModalController } from 'organisms'
 
-const shouldNotificationBarBeVisible = (listOfUrls, currentPathname, isCookiePresent) => {
-  let boolean
-
-  // if location pathname MATCHES a whitelabelurl
-  // show NotificationBar (if cookie is NOT set)
-  // else split whiteLabelUrl by slash-asterisk ("/*")
-  // if contains asterisk
-  // split whiteLabelUrl by slash
-  // split location pathname by slash
-  // if whiteLabelUrl[0] is equal to location pathname[0]
-  // show NotificationBar (if cookie is NOT set)
-
-  if (listOfUrls) {
-    for (let index = 0; index < listOfUrls.length; index++) {
-      const whiteLabeledUrl = listOfUrls[index]
-
-      if (_.startsWith(currentPathname, whiteLabeledUrl)) {
-        boolean = !isCookiePresent
-        break
-      }
-    }
-  }
-
-  return boolean
-}
+const DISASTER_ALERT_COOKIE = 'close_disaster_loan_parature'
 
 class Main extends React.Component {
   constructor(props) {
     super()
     this.state = {
-      disasterAlertHidingCookieIsPresent: false,
-      notificationBarHidingCookieIsPresent: false
+      disasterAlert: {},
+      disasterAlertCookieExists: false
     }
   }
 
-  componentDidMount() {
-    this.props.actions.fetchContentIfNeeded('disaster', 'disaster')
-  }
-
-  componentWillMount() {
-    const updatedState = {
-      disasterAlertHidingCookieIsPresent: cookie.load('close_disaster_loan_parature') ? true : false,
-      notificationBarHidingCookieIsPresent: cookie.load('close_notification_bar') ? true : false
-    }
-
-    this.setState(updatedState)
+  async componentDidMount() {
+    const disasterAlert = await fetchRestContent('disaster', null, getLanguageOverride())
+    this.setState({
+      disasterAlert,
+      disasterAlertCookieExists: cookie.load(DISASTER_ALERT_COOKIE) ? true : false
+    })
   }
 
   handleClose(type) {
-    const updatedState = {}
-    let cookieBoolean = ''
-    let cookieName = ''
+    this.setState({ disasterAlertCookieExists: true })
 
-    switch (type) {
-      case 'DISASTER':
-        cookieBoolean = 'disasterAlertHidingCookieIsPresent'
-        cookieName = 'close_disaster_loan_parature'
-
-        break
-
-      case 'NOTIFICATION':
-        cookieBoolean = 'notificationBarHidingCookieIsPresent'
-        cookieName = 'close_notification_bar'
-
-        break
-
-      default:
-        return
-    }
-
-    updatedState[cookieBoolean] = true
-
-    this.setState(updatedState)
-
-    cookie.save(cookieName, '1', {
+    cookie.save(DISASTER_ALERT_COOKIE, '1', {
       path: '/',
       secure: true
     })
   }
 
   render() {
-    const visible = this.props.disasterAlertVisible && !this.state.disasterAlertHidingCookieIsPresent
+    const { children } = this.props
     const {
-      notificationDescription,
-      notificationUrl,
-      notificationWhiteLabelUrls,
-      location: { pathname }
-    } = this.props
-
-    // determine visibility
-
-    const showNotificationBar = shouldNotificationBarBeVisible(
-      notificationWhiteLabelUrls,
-      pathname,
-      this.state.notificationBarHidingCookieIsPresent
-    )
+      disasterAlert: { buttonText, description, link, spanishTranslation, visible },
+      disasterAlertCookieExists
+    } = this.state
 
     return (
-      <div className={visible ? styles.alertIsActive : ''}>
+      <div className={visible && styles.alertIsActive}>
         <DisasterAlert
-          description={this.props.disasterAlertDescription}
-          visible={visible}
-          buttonText={this.props.disasterAlertButtonText}
-          link={this.props.disasterAlertLink}
+          description={description}
+          visible={visible && !disasterAlertCookieExists}
+          buttonText={buttonText}
+          link={link}
+          spanishTranslation={spanishTranslation}
           onClose={() => {
             this.handleClose('DISASTER')
           }}
@@ -129,7 +64,7 @@ class Main extends React.Component {
         <MainLoader />
 
         <div id="main-content" className={styles.mainContent}>
-          {this.props.children}
+          {children}
         </div>
 
         <Footer />
@@ -139,42 +74,4 @@ class Main extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState) {
-  const data = {}
-  const { disaster, notification } = reduxState.contentReducer
-  const loadingState = reduxState.loading
-  if (disaster) {
-    data.disasterAlertVisible = disaster.visible
-    data.disasterAlertDescription = disaster.description
-    data.disasterAlertButtonText = disaster.buttonText
-    data.disasterAlertLink = disaster.link
-  }
-
-  if (notification) {
-    data.notificationWhiteLabelUrls =
-      notification.visibleOnUrls && notification.visibleOnUrls.split
-        ? notification.visibleOnUrls.split('\r\n')
-        : []
-    data.notificationDescription = notification.title
-    data.notificationUrl = notification.url
-  }
-
-  if (loadingState) {
-    data.loadingState = loadingState
-  }
-
-  return data
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-React.propTypes = {
-  location: PropTypes.object
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Main)
-export { Main }
+export default Main
