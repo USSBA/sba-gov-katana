@@ -20,10 +20,11 @@ class Main extends React.Component {
 
   async componentDidMount() {
     const disasterAlertCookie = cookie.load(DISASTER_ALERT_COOKIE) ? true : false
-    const disasterAlert = await fetchRestContent('disaster', null, getLanguageOverride())
+    const disasterAlertData = await fetchRestContent('disaster', null, getLanguageOverride())
+    const disasterAlert = Object.assign(disasterAlertData, { visible: !disasterAlertCookie })
+
     this.setState({
       disasterAlert,
-      disasterAlert: { visible: disasterAlertCookie },
       disasterAlertCookieExists: disasterAlertCookie
     })
   }
