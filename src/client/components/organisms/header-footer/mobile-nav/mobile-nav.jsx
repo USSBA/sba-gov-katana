@@ -63,6 +63,9 @@ class MobileNav extends React.Component {
     const baseLength = mainMenuData ? mainMenuData.length : 2
     const secondaryMenuItems = [
       {
+        key: 'sbaEnEspanol'
+      },
+      {
         key: 'forPartners'
       },
       {
