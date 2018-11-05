@@ -105,10 +105,22 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       style={
         Object {
           "height": 638,
-          "maxHeight": 234,
+          "maxHeight": 312,
         }
       }
     >
+      <div
+        className="mobile-nav-menu-item mobileNavMenuLink"
+      >
+        <a
+          id="mobile-nav-sba-en-espanol"
+          onClick={[Function]}
+          style={Object {}}
+          target="_self"
+        >
+          SBA en Español
+        </a>
+      </div>
       <div
         className="mobile-nav-menu-item mobileNavMenuLink"
       >
