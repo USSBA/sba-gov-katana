@@ -22,11 +22,12 @@ test('Mobile Navigation has the correct structure', () => {
 test('Mobile Navigation shows the For Partners link', () => {
   const component = mount(<MobileNav />)
   const menuItems = component.find('.mobile-nav-menu-item')
-  expect(menuItems.length).toBe(3)
+  expect(menuItems.length).toBe(4)
   const anchors = menuItems.find('a')
-  expect(anchors.at(0).text()).toBe('For Partners')
-  expect(anchors.at(1).text()).toBe('SBA Near You')
-  expect(anchors.at(2).text()).toBe('Small Business Events')
+  expect(anchors.at(0).text()).toBe('SBA en Español')
+  expect(anchors.at(1).text()).toBe('For Partners')
+  expect(anchors.at(2).text()).toBe('SBA Near You')
+  expect(anchors.at(3).text()).toBe('Small Business Events')
 })
 
 // TODO add test here for to render more than just an empty menu
