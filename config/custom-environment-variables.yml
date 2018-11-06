@@ -15,13 +15,10 @@ database:
 email:
   password: SMTP_PASSWORD
   username: SMTP_USERNAME
-oca:
-  soap:
-    username: OCA_SOAP_USER
-    passwordDecryptionKey: OCA_SOAP_DECRYPTION_KEY
 sizestandards:
-    endpoint: SIZE_STANDARDS_ENDPOINT
-publicPath: PUBLIC_PATH
+  endpoint: SIZE_STANDARDS_ENDPOINT
 googleMapsApiKey: GOOGLE_MAPS_API_KEY
 content:
   endpoint: CONTENT_URL
+misc:
+  endpoint: MISC_API_URL

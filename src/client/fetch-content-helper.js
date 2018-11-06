@@ -29,4 +29,16 @@ async function fetchSiteContent(prop, type, query) {
   return data
 }
 
-export { fetchRestContent, fetchSiteContent }
+async function runMiscAction(prop, type, query) {
+  const url = '/actions/misc/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
+  let data = null
+  try {
+    const response = await axios.get(url)
+    data = response.data
+  } catch (error) {
+    console.error('fetchSiteContent', error)
+  }
+  return data
+}
+
+export { fetchRestContent, fetchSiteContent, runMiscAction }

@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactModal from 'react-modal'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { includes } from 'lodash'
-import { fetchSiteContent } from '../../../fetch-content-helper.js'
+import { runMiscAction } from '../../../fetch-content-helper.js'
 import constants from '../../../services/constants.js'
 import config from '../../../services/client-config.js'
 import envelopeIcon from 'assets/svg/envelope.svg'
@@ -77,7 +78,7 @@ class SbaNewsModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     //we do not care about the response
-    fetchSiteContent('newsletterRegistration', 'newsletter-registration', {
+    runMiscAction('newsletterRegistration', 'newsletter-registration', {
       userEmailAddress: this.state.userEmailAddress,
       userZipCode: this.state.userZipCode
     })

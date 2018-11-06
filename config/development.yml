@@ -12,17 +12,6 @@ govdelivery:
     popupEnabled: false
 foresee:
     enabled: false
-database:
-    nonDrupal:
-        databaseName: sba_katana
-        host: localhost
-        password: password123
-        user: root
-    drupal:
-        databaseName: sba_prod
-        host: localhost
-        password: password123
-        user: root
 aws:
   dynamodb:
     endpoint: UrlToNodeDev1

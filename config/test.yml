@@ -1,9 +1,6 @@
 developmentOptions:
     client:
         logging: false
-oca:
-    soap:
-        passwordDecryptionKey: test123test123test123test123
 aws:
   cloudsearch:
     officeEndpoint: 'doc-automated-testing-offices-xjifz4ykng45x326ysoly4eygi.us-east-1.cloudsearch.amazonaws.com'

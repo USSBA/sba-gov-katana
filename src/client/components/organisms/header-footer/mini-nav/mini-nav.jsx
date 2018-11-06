@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as ModalActions from '../../../../actions/show-modal'
-import * as ContentActions from '../../../../actions/content'
 import clientConfig from '../../../../services/client-config'
 import config from '../../../../services/client-config'
 import styles from './mini-nav.scss'
@@ -14,6 +13,7 @@ import { getLanguageOverride } from '../../../../services/utils'
 import { SECONDARY_NAVIGATION_TRANSLATIONS } from '../../../../translations'
 import { UtilityLink } from 'atoms'
 import { SearchBar, GoogleTranslate } from 'molecules'
+import { runMiscAction } from '../../../../fetch-content-helper'
 
 class MiniNav extends React.Component {
   timerId = null
@@ -38,19 +38,23 @@ class MiniNav extends React.Component {
   }
 
   componentDidMount() {
-    const { actions: { fetchContentIfNeeded }, modalActions: { showSbaNewsletter } } = this.props
-    const { userEmail, userId, userLoggedOn } = this.state
+    const {
+      modalActions: { showSbaNewsletter }
+    } = this.props
+    const { userId, userLoggedOn } = this.state
 
     if (userId) {
-      fetchContentIfNeeded('userRoles', userId + '/roles')
+      runMiscAction(userId + '/roles').then(roles => this.setState({ roles }))
       if (userLoggedOn) {
         // check whether email is already provided
-        fetchContentIfNeeded('userEmail', userId + '/email')
+        runMiscAction(userId + '/email').then(userEmail =>
+          this.setState({ userEmail }, () => {
+            if (!this.state.userEmail && config.govdelivery) {
+              this.timerId = setTimeout(() => showSbaNewsletter(userEmail), 5000)
+            }
+          })
+        )
       }
-    }
-
-    if (!userEmail && config.govdelivery) {
-      this.timerId = setTimeout(() => showSbaNewsletter(userEmail), 5000)
     }
   }
 
@@ -67,7 +71,7 @@ class MiniNav extends React.Component {
   }
 
   render() {
-    const { userRoles } = this.props
+    const { userRoles } = this.state
     const { isSearchExpanded, userLoggedOn, userId } = this.state
 
     // e.g. get just "en" if given "en-US"
@@ -112,15 +116,11 @@ class MiniNav extends React.Component {
 }
 
 function mapReduxStateToProps(reduxState) {
-  return {
-    userRoles: reduxState.contentReducer['userRoles'],
-    userEmail: reduxState.contentReducer['userEmail']
-  }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(ContentActions, dispatch),
     modalActions: bindActionCreators(ModalActions, dispatch)
   }
 }

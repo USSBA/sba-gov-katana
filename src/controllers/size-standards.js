@@ -1,5 +1,5 @@
 import HttpStatus from 'http-status-codes'
-import { get } from '../models/dao/size-standards-client.js'
+import { get } from './size-standards-client.js'
 
 function responseWithResultAsJson(res) {
   return data => {

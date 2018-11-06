@@ -11,9 +11,6 @@ features:
     drupalRedirect:
         tableName: UrlToUrlRedirectStaging
         enabled: true
-cache:
-  s3BucketName: staging-content-sba-gov
-  useS3: true
 aws:
   cloudsearch:
     searchEndpoint: 'doc-staging-2qt6cxrxhpdkdv5pnjgw54wzqi.us-east-1.cloudsearch.amazonaws.com'

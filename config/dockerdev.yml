@@ -1,13 +1,2 @@
-database:
-    nonDrupal:
-        databaseName: sba_katana
-        host: mysql
-        password: password123
-        user: root
 foresee:
     enabled: false
-linc:
-    confirmationEmailBase: http://localhost:3000
-    resendEmailJobEnabled: false
-    sendToOcaJobEnabled: false
-    sendToLincPasswordUpdateEnabled: false
