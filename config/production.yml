@@ -16,16 +16,6 @@ features:
     drupalRedirect:
         tableName: UrlToUrlRedirectProduction
         enabled: true
-linc:
-  resendEmailJobEnabled: false
-  sendToOcaJobEnabled: false
-  sendToLincPasswordUpdateEnabled: false
-oca:
-    soap:
-        wsdlUrl: https://caweb.sba.gov/linc/ws/linc.wsdl
-cache:
-  s3BucketName: blue-content-sba-gov
-  useS3: true
 aws:
   cloudsearch:
     searchEndpoint: 'doc-production-b4waq4e3rl6daphct5rtlxjmmm.us-east-1.cloudsearch.amazonaws.com'

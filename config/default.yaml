@@ -7,6 +7,8 @@ developmentOptions:
     webpack:
         enabled: false
         silent: false
+    assets:
+      endpoint: placeholder 
 govdelivery:
     popupEnabled: false
 foresee:
@@ -20,44 +22,9 @@ googleAnalytics:
     debug: false
 server:
     port: 3000
+    fqdn: placeholder
 counsellorCta:
     nodeId: 6
-email:
-    debugEmailOnly: false
-    sender: '"Small Business Administration" <lendermatch@sba.gov>'
-    hostname: email-smtp.us-east-1.amazonaws.com
-    password: placeholder
-    username: placeholder
-linc:
-    resendEmailJobEnabled: false
-    resendEmailCron: '0 0 * * * *'
-    sendToOcaJobEnabled: false
-    ocaSoapCron: '0 * * * * *'
-    sendToLincPasswordUpdateEnabled: false
-    ocaPasswordUpdateCron: '0 0 0 * * *'
-    ocaVersion: 2
-    lookback: 86400
-    numberOfSecondsForWhichEmailIsValid: 172800
-database:
-    pool:
-        max: 100
-        min: 0
-        idle: 1000
-    nonDrupal:
-        databaseName: placeholder
-        host: placeholder
-        password: placeholder
-        user: placeholder
-    drupal:
-        databaseName: sba
-        host: placeholder
-        password: placeholder
-        user: placeholder
-oca:
-    soap:
-        username: placeholder
-        passwordDecryptionKey: placeholderDecryptionKeyMustBeAtLeast16Characters
-        wsdlUrl: https://catweb2.sba.gov/linc/ws/linc.wsdl
 features:
     localAssistMenuHeight: true
     showSbic: false
@@ -75,9 +42,6 @@ features:
     pressRelease: true
 sizestandards:
     endpoint: placeholder
-cache:
-  s3BucketName: dev1-content-sba-gov
-  useS3: true
 aws:
   cloudsearch:
     searchEndpoint: 'doc-mint-hdgvyg66mwvfnu46tzaszesh5u.us-east-1.cloudsearch.amazonaws.com'
@@ -85,7 +49,10 @@ aws:
     zipCodeDynamoDBTableName: ZipCodesLower
   dynamodb:
     endpoint: placeholder
-publicPath: "/build/"
 nginx:
   katanaRedirectPaths: 'api|assets|build|lendermatch|actions|styleguide|business-guide|funding-programs|document|article|disaster-assistance|partners|naics|isSmallBusiness|size-standards|resource-partner-survey|learning-center|course|federal-contracting|search|national-small-business-week|nsbw'
 googleMapsApiKey: placeholder
+content:
+  endpoint: placeholder
+miscapi:
+  endpoint: placeholder

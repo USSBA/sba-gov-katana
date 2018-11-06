@@ -1,7 +1,3 @@
-const init = require('./init.js')
-Promise.resolve().then(init)
-//remove this when breaking server.js up into controllers -zandypants
-import zlib from 'zlib'
 import path from 'path'
 import _ from 'lodash'
 /*Contains express server setup*/
@@ -14,6 +10,7 @@ import HttpStatus from 'http-status-codes'
 import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from './util/dev.js'
 const fs = require('fs')
 let mainBundleFile = ''
+import axios from 'axios'
 
 const app = express()
 app.use(cookieParser())
@@ -112,19 +109,8 @@ app.get('/naics/:id', sizeStandardsController.getNaicsById)
 app.get('/naics/:id/:property', sizeStandardsController.getNaicsPropertyById)
 app.get('/isSmallBusiness', sizeStandardsController.determineIfSmallBusiness)
 
-app.get('/api/content/counselors-redirect.json', function(req, res) {
-  const zipStr = 'zip:' + req.query.zip + ':distance:50'
-  zlib.deflate(zipStr, function(err, buffer) {
-    if (err) {
-      throw new Error(err)
-    }
-    const url = '/tools/local-assistance/map/filter/'
-    const encodedUrl = url + buffer.toString('hex')
-    res.send({
-      redirectTo: encodedUrl
-    })
-  })
-})
+import * as SbicContactsCsv from './controllers/sbic-contacts-csv.js'
+app.get('/api/content/sbic-contacts.csv', SbicContactsCsv.downloadCsv)
 
 // this is only reached in local development where the nginx proxy is not present
 app.post('/api/feedback', (req, res, next) => {
@@ -135,35 +121,52 @@ app.post('/api/feedback', (req, res, next) => {
   })
 })
 
-import * as resourceCenterProfileController from './controllers/resource-center-profile.js'
-app.post(
-  '/actions/resourceCenterProfile',
-  jsonParser,
-  resourceCenterProfileController.handleProfileSubmission
-)
-app.get('/api/content/resourceCenterProfile.json', resourceCenterProfileController.retrieveProfiles)
+function fetchExternalContent(endpoint, stage, reqPath, queryParams, res, responseType) {
+  axios
+    .get('https://' + path.join(endpoint, stage, reqPath), {
+      params: queryParams,
+      responseType: responseType,
+      // eslint-disable-next-line arrow-body-style
+      transformResponse: rawReq => rawReq
+    })
+    .then(result => {
+      res
+        .set('Content-Type', responseType === 'json' ? 'application/json' : result.headers['Content-Type'])
+        .status(result.status)
+        .send(result.data)
+    })
+    .catch(err => {
+      console.error(err)
+      res.status(err.response.status).send(err.response.data)
+    })
+}
 
-import * as lincCounselorController from './controllers/linc-counselor.js'
-app.get('/api/content/counselors-by-location.json', lincCounselorController.getCounselorsByLocation)
+app.get('/actions/misc/*', (req, res, next) => {
+  fetchExternalContent(config.get('miscapi.endpoint'), 'latest', req.path, req.query, res, 'json')
+})
+app.get('/api/content/*', (req, res, next) => {
+  fetchExternalContent(config.get('content.endpoint'), 'Prod', req.path, req.query, res, 'json')
+})
 
-import { getUserRoles } from './controllers/user-roles.js'
-app.get('/api/content/:userId/roles.json', getUserRoles)
-
-import { getDrupalUserEmail } from './controllers/user-email.js'
-app.get('/api/content/:userId/email.json', getDrupalUserEmail)
-
-import { registerUserForNewsletter } from './controllers/newsletter-registration.js'
-app.get('/api/content/newsletter-registration.json', registerUserForNewsletter)
-
-import * as SbicContactsCsv from './controllers/sbic-contacts-csv.js'
-app.get('/api/content/sbic-contacts.csv', SbicContactsCsv.downloadCsv)
-
-import { fetchContentById, fetchContentByType } from './controllers/content.js'
-app.get('/api/content/:type/:id.json', fetchContentById)
-app.get('/api/content/:type.json', fetchContentByType)
-
-import { handleUrlRedirect } from './controllers/url-redirect.js'
-app.get('/api/content', handleUrlRedirect)
+if (config.get('developmentOptions.webpack.enabled')) {
+  app.get('/sites/default/files/*', (req, res, next) => {
+    const url = `https://${config.get('developmentOptions.assets.endpoint')}${req.path}`
+    console.log('Calling ' + url)
+    axios({
+      method: 'get',
+      url: url,
+      responseType: 'arraybuffer'
+    })
+      .then(function(response) {
+        var headers = { 'Content-Type': response.headers['content-type'] }
+        res.writeHead(HttpStatus.OK, headers)
+        res.end(response.data, 'binary')
+      })
+      .catch(function(error) {
+        res.send('error:' + error)
+      })
+  })
+}
 
 import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
 import { findMostRecentUrlRedirect } from './service/url-redirect.js'
@@ -172,7 +175,6 @@ app.get(['/', '/*'], function(req, res, next) {
     langOverride: req.preferredLanguage,
     nodeId: req.nodeId,
     config: JSON.stringify(req.sessionAndConfig),
-    cdnPathFromBackend: '"' + config.get('publicPath') + '"',
     optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
     tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
     foreseeEnabled: config.get('foresee.enabled'),
