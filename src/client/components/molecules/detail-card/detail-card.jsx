@@ -25,10 +25,18 @@ class DetailCard extends React.Component {
     }
   }
 
+  getFileExtension(fileUrl) {
+    if (fileUrl.includes('.')) {
+      return fileUrl.substr(fileUrl.lastIndexOf('.') + 1).toLowerCase()
+    } else {
+      return undefined
+    }
+  }
+
   makeDownloadLink() {
     const latestFile = this.getLatestFile()
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
-      const fileExtension = latestFile.fileUrl.substr(latestFile.fileUrl.lastIndexOf('.') + 1).toLowerCase()
+      const fileExtension = this.getFileExtension(latestFile.fileUrl)
       return (
         <div className={'document-card-download ' + s.download}>
           <Link
