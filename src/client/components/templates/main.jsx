@@ -19,13 +19,10 @@ class Main extends React.Component {
   }
 
   async componentDidMount() {
-    const disasterAlertCookie = cookie.load(DISASTER_ALERT_COOKIE) ? true : false
-    const disasterAlertData = await fetchRestContent('disaster', null, getLanguageOverride())
-    const disasterAlert = Object.assign(disasterAlertData, { visible: !disasterAlertCookie })
-
+    const disasterAlert = await fetchRestContent('disaster', null, getLanguageOverride())
     this.setState({
       disasterAlert,
-      disasterAlertCookieExists: disasterAlertCookie
+      disasterAlertCookieExists: cookie.load(DISASTER_ALERT_COOKIE) ? true : false
     })
   }
 
@@ -49,7 +46,7 @@ class Main extends React.Component {
     } = this.state
 
     return (
-      <div className={visible && styles.alertIsActive}>
+      <div className={visible && !disasterAlertCookieExists && styles.alertIsActive}>
         <DisasterAlert
           description={description}
           visible={visible && !disasterAlertCookieExists}
