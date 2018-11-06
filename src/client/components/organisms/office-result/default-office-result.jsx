@@ -36,7 +36,7 @@ class DefaultOfficeResult extends React.PureComponent {
           email: this.getPropertyValue(item, 'location_email'),
           phoneNumber: this.getPropertyValue(item, 'location_phone_number'),
           fax: this.getPropertyValue(item, 'location_fax'),
-          link: this.getPropertyValue(item, 'location_website')
+          link: this.getPropertyValue(item, 'office_website')
         }
       : {}
 
