@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import styles from './title-section.scss'
 import { DecorativeDash, Link } from 'atoms'
 import { getLanguageOverride } from '../../../services/utils.js'
-import { MISC_TRANSLATIONS } from '../../../translations.js'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class TitleSection extends React.Component {
   makeTitleLinks(sectionHeaders) {
-    const { content } = MISC_TRANSLATIONS
+    const { content } = TRANSLATIONS
     const langCode = getLanguageOverride()
     let titleLinks = []
     titleLinks = sectionHeaders.map(function(item, index) {

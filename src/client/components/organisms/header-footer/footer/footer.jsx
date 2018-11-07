@@ -1,17 +1,19 @@
 import React from 'react'
-import { SocialMediaLink } from 'atoms'
-import { PageLinkGroup } from 'molecules'
-
-import constants from '../../../../services/constants.js'
 
 import facebookThumbnail from 'assets/images/footer/facebook.png'
-import twitterThumbnail from 'assets/images/footer/twitter.png'
 import googlePlusThumbnail from 'assets/images/footer/googleplus.png'
-import youtubeThumbnail from 'assets/images/footer/youtube-play.png'
-import linkedInThumbnail from 'assets/images/footer/linkedin.png'
 import instagramThumbnail from 'assets/images/footer/instagram.png'
+import linkedInThumbnail from 'assets/images/footer/linkedin.png'
+import twitterThumbnail from 'assets/images/footer/twitter.png'
+import youtubeThumbnail from 'assets/images/footer/youtube-play.png'
 
+import constants from '../../../../services/constants'
 import styles from './footer.scss'
+
+import { TRANSLATIONS } from '../../../../translations'
+import { getLanguageOverride } from '../../../../services/utils'
+import { SocialMediaLink } from 'atoms'
+import { PageLinkGroup } from 'molecules'
 
 const SocialMediaLinkSet = () => {
   return (
@@ -61,6 +63,7 @@ const SocialMediaLinkSet = () => {
     </div>
   )
 }
+
 const Address = () => {
   return (
     <div className={styles.address}>
@@ -72,36 +75,138 @@ const Address = () => {
 
 class Footer extends React.Component {
   render() {
-    let firstTabletColumn = _.slice(constants.footer.tablet, 0, 3)
-    let secondTabletColumn = _.slice(constants.footer.tablet, 3, 6)
-    let thirdTabletColumn = _.slice(constants.footer.tablet, 6)
+    const langCode = getLanguageOverride(true)
+    const desktopLinks = [
+      {
+        title: TRANSLATIONS.customerService,
+        links: [
+          TRANSLATIONS.aboutSba,
+          TRANSLATIONS.contactSba,
+          TRANSLATIONS.sbaEnEspanol,
+          TRANSLATIONS.mediaAndPressRelations,
+          TRANSLATIONS.sbaLocations,
+          TRANSLATIONS.sbaTeam
+        ]
+      },
+      {
+        title: TRANSLATIONS.aboutSbaGov,
+        links: [
+          TRANSLATIONS.siteMap,
+          TRANSLATIONS.privacyPolicy,
+          TRANSLATIONS.linkingPolicy,
+          TRANSLATIONS.accessibility,
+          TRANSLATIONS.disclaimers,
+          TRANSLATIONS.socialMedia,
+          TRANSLATIONS.dataStore,
+          TRANSLATIONS.blog
+        ]
+      },
+      {
+        title: TRANSLATIONS.sbaInformation,
+        links: [
+          TRANSLATIONS.freedomOfInformationAct,
+          TRANSLATIONS.noFearAct,
+          TRANSLATIONS.reportFraudWasteAndAbuse,
+          TRANSLATIONS.initiatives,
+          TRANSLATIONS.plainLanguage
+        ]
+      },
+      {
+        title: TRANSLATIONS.sbaPerformance,
+        links: [
+          TRANSLATIONS.strategicPlanning,
+          TRANSLATIONS.performanceBudgetAndFinancing,
+          TRANSLATIONS.openGovernment,
+          TRANSLATIONS.policyAndRegulations,
+          TRANSLATIONS.eliminatingFraudWasteAndAbuse
+        ]
+      },
+      {
+        title: TRANSLATIONS.oversight,
+        links: [
+          TRANSLATIONS.inspectorGeneral,
+          TRANSLATIONS.advocacy,
+          TRANSLATIONS.hearingsAndAppeals,
+          TRANSLATIONS.ombudsman,
+          TRANSLATIONS.whiteHouseGov,
+          TRANSLATIONS.usaGov,
+          TRANSLATIONS.regulationsGov
+        ]
+      },
+      {
+        title: TRANSLATIONS.toolsAndFeatures,
+        links: [
+          TRANSLATIONS.onlineTraining,
+          TRANSLATIONS.createABusinessPlan,
+          TRANSLATIONS.findEvents,
+          TRANSLATIONS.qualifyForGovernmentContracts,
+          TRANSLATIONS.sbaVideos
+        ]
+      }
+    ]
 
-    let firstMobileColumn = _.slice(constants.footer.mobile, 0, 5)
-    let secondMobileColumn = _.slice(constants.footer.mobile, 5)
     return (
       <footer id="sba-footer" className={styles.footer}>
         <div key={1} className={styles.footerLinks}>
-          {constants.footer.desktop.map((item, index) => {
+          {desktopLinks.map((item, index) => {
             return (
               <div key={index + 10} className={styles.desktopFooterLinks}>
                 <PageLinkGroup
                   id={'footer-group-' + index}
                   key={index + 30}
-                  title={item.title}
+                  langCode={langCode}
                   links={item.links}
+                  title={item.title}
                 />
               </div>
             )
           })}
         </div>
         <div key={2} className={styles.tabletFooterLinks}>
-          <PageLinkGroup id={'tablet-footer-group-1'} key={20} links={firstTabletColumn} />
-          <PageLinkGroup id={'tablet-footer-group-2'} key={21} links={secondTabletColumn} />
-          <PageLinkGroup id={'tablet-footer-group-3'} key={22} links={thirdTabletColumn} />
+          <PageLinkGroup
+            id="tablet-footer-group-1"
+            key={20}
+            langCode={langCode}
+            links={[TRANSLATIONS.whatWeDo, TRANSLATIONS.sbaPerformance, TRANSLATIONS.contactSba]}
+          />
+          <PageLinkGroup
+            id="tablet-footer-group-2"
+            key={21}
+            langCode={langCode}
+            links={[TRANSLATIONS.sbaTeam, TRANSLATIONS.foia, TRANSLATIONS.privacyPolicy]}
+          />
+          <PageLinkGroup
+            id="tablet-footer-group-3"
+            key={22}
+            langCode={langCode}
+            links={[TRANSLATIONS.newsroom, TRANSLATIONS.oversightAndAdvocacy, TRANSLATIONS.sbaEnEspanol]}
+          />
         </div>
         <div key={3} className={styles.mobileFooterLinks}>
-          <PageLinkGroup id={'mobile-footer-group-1'} key={23} links={firstMobileColumn} />
-          <PageLinkGroup id={'mobile-footer-group-2'} key={24} links={secondMobileColumn} />
+          <PageLinkGroup
+            id="mobile-footer-group-1"
+            key={23}
+            langCode={langCode}
+            links={[
+              TRANSLATIONS.whatWeDo,
+              TRANSLATIONS.newsroom,
+              TRANSLATIONS.foia,
+              TRANSLATIONS.contactSba,
+              TRANSLATIONS.sbaEnEspanol
+            ]}
+          />
+          <PageLinkGroup
+            id="mobile-footer-group-2"
+            key={24}
+            langCode={langCode}
+            links={[
+              TRANSLATIONS.sbaTeam,
+              TRANSLATIONS.sbaPerformance,
+              TRANSLATIONS.oversightAndAdvocacy,
+              TRANSLATIONS.privacyPolicy,
+              TRANSLATIONS.blog
+            ]}
+          />
         </div>
         <hr key={4} className={styles.desktopRule} />
         <SocialMediaLinkSet key={5} />

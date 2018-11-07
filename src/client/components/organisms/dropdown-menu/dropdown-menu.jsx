@@ -8,7 +8,7 @@ import constants from '../../../services/constants'
 import { Link, Button, UtilityLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
 import { determineMainMenuTitleLink, getLanguageOverride } from '../../../services/utils'
-import { TEN_STEPS_CALLOUTS_TRANSLATIONS } from '../../../translations'
+import { TRANSLATIONS } from '../../../translations'
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -129,7 +129,7 @@ class DropdownMenu extends React.Component {
         </ul>
       )
 
-      const { headline, linkText } = TEN_STEPS_CALLOUTS_TRANSLATIONS['navigation'][langCode]
+      const { headline, linkText } = TRANSLATIONS['tenStepsNavigationCta'][langCode]
 
       return (
         <ul id={id} key={1} aria-label="submenu" className={ulStyles}>
