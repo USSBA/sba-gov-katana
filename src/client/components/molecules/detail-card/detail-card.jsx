@@ -45,7 +45,8 @@ class DetailCard extends React.Component {
             }}
             to={latestFile.fileUrl}
           >
-            Download {fileExtension}
+            Download
+            {fileExtension ? ' ' + fileExtension : ''}
           </Link>
           {this.getFileTypeIcon(fileExtension)}
         </div>
