@@ -7,13 +7,13 @@ const TRANSLATIONS = {
       url: '/about-sba'
     },
     es: {
-      text: 'Sobre SBA',
+      text: 'Acerca de la SBA',
       url: '/about-sba'
     }
   },
   aboutSbaGov: {
     en: 'About SBA.gov',
-    es: 'Sobre SBA.gov'
+    es: 'Acerca de SBA.gov'
   },
   accessibility: {
     en: {
@@ -41,7 +41,7 @@ const TRANSLATIONS = {
       url: '/advocacy'
     },
     es: {
-      text: 'Abogacía',
+      text: 'Defensa',
       url: '/advocacy'
     }
   },
@@ -65,7 +65,7 @@ const TRANSLATIONS = {
       url: '/about-sba/what-we-do/contact-sba'
     },
     es: {
-      text: 'Contacte',
+      text: 'Contacte con la SBA',
       url: '/about-sba/what-we-do/contact-sba'
     }
   },
@@ -75,7 +75,7 @@ const TRANSLATIONS = {
       url: '/about-sba/what-we-do/contact-sba'
     },
     es: {
-      text: 'Contacte',
+      text: 'Contáctenos',
       url: '/about-sba/what-we-do/contact-sba'
     }
   },
@@ -89,13 +89,13 @@ const TRANSLATIONS = {
       url: '/tools/business-plan'
     },
     es: {
-      text: 'Crear un plan de negocios',
+      text: 'Cree un plan de negocios',
       url: '/tools/business-plan'
     }
   },
   customerService: {
     en: 'Customer Service',
-    es: 'Servicio al cliente'
+    es: 'Atención al cliente'
   },
   dataStore: {
     en: {
@@ -103,7 +103,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/digital-sba/open-data'
     },
     es: {
-      text: 'Almacén de datos',
+      text: 'Almacenamiento de datos',
       url: '/about-sba/sba-performance/open-government/digital-sba/open-data'
     }
   },
@@ -117,7 +117,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer'
     },
     es: {
-      text: 'Renuncias',
+      text: 'Avisos legales',
       url: '/about-sba/sba-performance/open-government/about-sbagov-website/disclaimer'
     }
   },
@@ -127,13 +127,13 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse'
     },
     es: {
-      text: 'Eliminar el fraude, el despilfarro y el abuso.',
+      text: 'Eliminación de fraude, despilfarro y abuso',
       url: '/about-sba/sba-performance/policy-regulations/eliminating-fraud-waste-abuse'
     }
   },
   federalContracting: {
     en: 'Federal Contracting',
-    es: 'Contratacion Federal'
+    es: 'Contratación federal'
   },
   findEvents: {
     en: {
@@ -141,7 +141,7 @@ const TRANSLATIONS = {
       url: '/tools/events'
     },
     es: {
-      text: 'Encontrar eventos',
+      text: 'Encuentre eventos',
       url: '/tools/events'
     }
   },
@@ -175,7 +175,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/foia'
     },
     es: {
-      text: 'Acta de Libertad de Información',
+      text: 'Ley de Libertad de Información',
       url: '/about-sba/sba-performance/open-government/foia'
     }
   },
@@ -205,8 +205,18 @@ const TRANSLATIONS = {
       url: '/office-of-inspector-general'
     },
     es: {
-      text: 'Inspector General',
+      text: 'Inspector general',
       url: '/office-of-inspector-general'
+    }
+  },
+  learningCenter: {
+    en: {
+      text: 'Learning Center',
+      url: '/learning-center'
+    },
+    es: {
+      text: 'Centro de capacitación',
+      url: '/learning-center'
     }
   },
   linkingPolicy: {
@@ -215,8 +225,18 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy'
     },
     es: {
-      text: 'Política de enlace',
+      text: 'Política de enlaces',
       url: '/about-sba/sba-performance/open-government/about-sbagov-website/linking-policy'
+    }
+  },
+  localAssistance: {
+    en: {
+      text: 'Local Assistance',
+      url: '/tools/local-assistance'
+    },
+    es: {
+      text: 'Asistencia local',
+      url: '/tools/local-assistance'
     }
   },
   login: {
@@ -225,7 +245,7 @@ const TRANSLATIONS = {
       url: '/user/login'
     },
     es: {
-      text: 'Acceda',
+      text: 'Ingresar',
       url: '/user/login'
     }
   },
@@ -245,7 +265,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-newsroom'
     },
     es: {
-      text: 'Medios y relaciones con la prensa',
+      text: 'Relaciones con los medios y la prensa',
       url: '/about-sba/sba-newsroom'
     }
   },
@@ -279,7 +299,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act'
     },
     es: {
-      text: 'Ley de No Temor',
+      text: 'Ley de Notificación y Antidiscriminación y Represalias para Empleados Federales (ley No-FEAR)',
       url: '/about-sba/sba-performance/open-government/about-sbagov-website/no-fear-act'
     }
   },
@@ -289,7 +309,7 @@ const TRANSLATIONS = {
       url: '/ombudsman'
     },
     es: {
-      text: 'Defensor del Pueblo',
+      text: 'Defensor general',
       url: '/ombudsman'
     }
   },
@@ -299,7 +319,7 @@ const TRANSLATIONS = {
       url: '/tools/sba-learning-center/search/training'
     },
     es: {
-      text: 'Entrenamiento en linea',
+      text: 'Capacitación en línea',
       url: '/tools/sba-learning-center/search/training'
     }
   },
@@ -315,7 +335,7 @@ const TRANSLATIONS = {
   },
   oversight: {
     en: 'Oversight',
-    es: 'Vigilancia'
+    es: 'Supervisión'
   },
   oversightAndAdvocacy: {
     en: {
@@ -343,7 +363,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page'
     },
     es: {
-      text: 'Lenguaje simple',
+      text: 'Lenguaje claro',
       url: '/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page'
     }
   },
@@ -353,7 +373,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/policy-regulations'
     },
     es: {
-      text: 'Política y Regulaciones',
+      text: 'Política y normativa',
       url: '/about-sba/sba-performance/policy-regulations'
     }
   },
@@ -373,7 +393,7 @@ const TRANSLATIONS = {
       url: '/size-standards'
     },
     es: {
-      text: 'Calificar para contratos gubernamentales',
+      text: 'Gane contratos del gobierno',
       url: '/size-standards'
     }
   },
@@ -403,7 +423,7 @@ const TRANSLATIONS = {
       url: '/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse'
     },
     es: {
-      text: 'Denuncie el fraude, el desperdicio y el abuso',
+      text: 'Informe de fraude, dispendio y abuso',
       url: '/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse'
     }
   },
@@ -413,7 +433,7 @@ const TRANSLATIONS = {
       url: '/anuncio-especial'
     },
     es: {
-      text: 'SBA en Español',
+      text: 'SBA en español',
       url: '/anuncio-especial'
     }
   },
@@ -447,7 +467,7 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance'
     },
     es: {
-      text: 'Rendimiento de la SBA',
+      text: 'Desempeño de la SBA',
       url: '/about-sba/sba-performance'
     }
   },
@@ -497,7 +517,7 @@ const TRANSLATIONS = {
       url: '/tools/events#events-page'
     },
     es: {
-      text: 'Eventos para pequeñas empresas',
+      text: 'Redes sociales',
       url: '/tools/events#events-page'
     }
   },
