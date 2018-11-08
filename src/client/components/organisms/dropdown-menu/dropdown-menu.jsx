@@ -52,33 +52,22 @@ class DropdownMenu extends React.Component {
       title
     } = this.props
 
-    let sizingStyle = ''
     let indent = false
     let shouldShowCallToAction = false
 
     if (menuId === 0) {
-      sizingStyle = styles.one
       shouldShowCallToAction = true
     }
+
     if (menuId === 1) {
-      sizingStyle = featuredCallout ? styles.twoWithFeaturedCallout : styles.two
       indent = featuredCallout ? false : true
     }
-    if (menuId === 2) {
-      sizingStyle = styles.three
-    }
-    if (menuId === 3) {
-      sizingStyle = styles.four
-    }
-    if (menuId === 4) {
-      sizingStyle = clientConfig.localAssistMenuHeight ? styles.fiveTallLocalAssistMenuHeight : styles.five
-    }
-    if (menuId === 5) {
-      sizingStyle = styles.six
-    }
+
+    // if (menuId === 4) {
+    //   sizingStyle = clientConfig.localAssistMenuHeight ? styles.fiveTallLocalAssistMenuHeight : styles.five
+    // }
 
     const ulStyles = classNames({
-      [sizingStyle]: true,
       [styles.dropdownMenu]: true,
       [styles.show]: shown,
       [styles.hide]: !shown
@@ -145,19 +134,19 @@ class DropdownMenu extends React.Component {
       return (
         <ul id={id} key={1} aria-label="submenu" className={ulStyles}>
           {goToNextButton}
-          {pageLinkGroups}
+          <div className={styles.columns}>{pageLinkGroups}</div>
+          {shouldShowCallToAction ? (
+            <div className={styles.callToAction}>
+              <h6>{headline}</h6>
+              <Button children={linkText} url={constants.routes.tenSteps} secondary />
+            </div>
+          ) : null}
           {featuredCallout ? (
             <div className={styles.featuredCallout}>
               <Link to={target} title={title}>
                 <img src="/assets/image/disaster.png" alt={text} title={title} />
                 <p>{text}</p>
               </Link>
-            </div>
-          ) : null}
-          {shouldShowCallToAction ? (
-            <div className={styles.callToAction}>
-              <h6>{headline}</h6>
-              <Button children={linkText} url={constants.routes.tenSteps} secondary />
             </div>
           ) : null}
         </ul>

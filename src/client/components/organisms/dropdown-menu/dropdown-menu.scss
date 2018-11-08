@@ -1,3 +1,6 @@
+$x-padding: 50px;
+$y-padding: 60px;
+
 .show {
   visibility: visible;
 }
@@ -7,54 +10,30 @@
 }
 
 .dropdownMenu {
-  border-top: 5px solid $sba-blue;
-  box-shadow: 0.111rem 0.111rem 0.222rem 0 rgba(0, 0, 0, 0.3);
-  position: absolute;
-  left: -36%;
   background-color: white;
-  width: 136%;
-  padding: 3.333rem 2.778rem;
+  border-top: 5px solid $sba-blue;
+  box-shadow: $box-shadow;
+  position: absolute;
+  right: 0;
+  top: 40px;
   z-index: 10000000000;
+}
+
+.columns {
   display: flex;
-  flex-flow: column wrap;
-  top: 2.278rem;
-}
-
-.one {
-  height: 35.556rem;
-}
-
-.two {
-  height: 27.111rem;
-  width: auto;
-  left: 10%;
-}
-
-.twoWithFeaturedCallout {
-  height: 29.444rem;
-}
-
-.three {
-  height: 28.333rem;
-}
-
-.five {
-  height: 36.111rem;
-}
-
-.fiveTallLocalAssistMenuHeight {
-  height: 25.111rem;
-}
-
-.six {
-  height: 36.556rem;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 680px;
+  padding: $y-padding $x-padding;
+  width: $breakpoint-large - $x-padding;
 }
 
 .skipLink {
+  left: $x-padding;
   pointer-events: none;
-  height: 0;
   position: absolute;
-  top: 0;
+  top: 5px;
+
   a:focus {
     color: $sba-blue;
   }
@@ -75,15 +54,11 @@
   }
 }
 
-// TODO: Refactor (when we refactor the menu) to not use such specific measurements.
 .callToAction {
   border: 2px solid $sba-blue;
-  bottom: 3.333rem;
-  left: 4%;
+  margin: (10px - $x-padding) 40px 40px 40px;
   padding: 10px;
-  position: absolute;
   text-align: center;
-  width: 92%;
 
   h6 {
     display: inline;
