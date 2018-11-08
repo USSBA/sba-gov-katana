@@ -49,8 +49,8 @@ class SectionPage extends React.Component {
           )
         } else if (
           this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
+          this.equalsIgnoreCase(sectionName, constants.sections.paraLosSocios) ||
           this.equalsIgnoreCase(sectionName, constants.sections.federalContracting) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.paraSocios) ||
           this.equalsIgnoreCase(sectionName, constants.sections.contratacionFederal)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} />

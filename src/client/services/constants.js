@@ -9,13 +9,13 @@ const constants = {
     federalContracting: 'Federal Contracting',
     // Spanish version:
     // Business Guide
-    guiaDeNegocios: 'Guia de negocios',
+    guiaDeNegocios: 'Guía de negocios',
     // Funding Programs
     programasDeFinanciamiento: 'Programas de financiamiento',
     // Federal Contracting
     contratacionFederal: 'Contratacion Federal',
     // For Partners
-    paraSocios: 'Para socios'
+    paraLosSocios: 'Para los socios'
   },
   sectionTitles: {
     planYourBusiness: 'Plan your business',
