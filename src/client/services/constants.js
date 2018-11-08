@@ -15,7 +15,7 @@ const constants = {
     // Federal Contracting
     contratacionFederal: 'Contratacion Federal',
     // For Partners
-    paraSocios: 'Para socios'
+    paraLosSocios: 'Para los socios'
   },
   sectionTitles: {
     planYourBusiness: 'Plan your business',
