@@ -4,6 +4,7 @@ import DetailCard from 'client/components/molecules/detail-card/detail-card.jsx'
 import Link from 'client/components/atoms/link/link.jsx'
 import { shallow } from 'enzyme'
 
+// extend this object to add more structure for testing of other features in detail card
 const detailCardItem = JSON.stringify({
   files: [
     {

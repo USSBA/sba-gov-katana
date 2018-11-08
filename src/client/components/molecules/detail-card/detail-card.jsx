@@ -17,7 +17,7 @@ class DetailCard extends React.Component {
   }
 
   getFileTypeIcon(fileExtension) {
-    if (fileExtension == 'pdf') {
+    if (fileExtension === 'pdf') {
       console.log('filetypeicon called')
       return <PdfIcon />
     } else {
