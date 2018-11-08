@@ -9,7 +9,7 @@ const constants = {
     federalContracting: 'Federal Contracting',
     // Spanish version:
     // Business Guide
-    guiaDeNegocios: 'Guía de negocios',
+    guiaDeNegocios: 'Guia de negocios',
     // Funding Programs
     programasDeFinanciamiento: 'Programas de financiamiento',
     // Federal Contracting
