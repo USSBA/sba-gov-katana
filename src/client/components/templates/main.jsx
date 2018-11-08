@@ -27,7 +27,10 @@ class Main extends React.Component {
   }
 
   handleClose(type) {
-    this.setState({ disasterAlertCookieExists: true })
+    this.setState({
+      disasterAlert: { visible: false },
+      disasterAlertCookieExists: true
+    })
 
     cookie.save(DISASTER_ALERT_COOKIE, '1', {
       path: '/',
@@ -43,7 +46,7 @@ class Main extends React.Component {
     } = this.state
 
     return (
-      <div className={visible && styles.alertIsActive}>
+      <div className={visible && !disasterAlertCookieExists && styles.alertIsActive}>
         <DisasterAlert
           description={description}
           visible={visible && !disasterAlertCookieExists}
