@@ -34,10 +34,9 @@ class SectionNav extends React.Component {
     return _.nth(this.props.lineage, n)
   }
 
-  makeNavLinks() {
+  makeNavLinks(langCode) {
     const section = this.getNthLineage(-2)
     const currentPage = this.getNthLineage(-1)
-    const langCode = getLanguageOverride()
     const navLinks = section.children.map(function(item, index) {
       const titleLinkData = determineMenuTileData(langCode, item)
       let currentLinkClass = ''
@@ -64,7 +63,13 @@ class SectionNav extends React.Component {
     return navLinks
   }
 
-  makeNavigationTitle(sectionTitle) {
+  makeNavigationTitle(langCode) {
+    const titleSiteMap = this.getNthLineage(-2)
+    let sectionTitle
+    titleSiteMap && langCode === 'es'
+      ? (sectionTitle = titleSiteMap.spanishTranslation.title)
+      : (sectionTitle = titleSiteMap.title)
+
     return (
       <span id="article-navigation-title-desktop">
         <h3>{sectionTitle}</h3>
@@ -90,9 +95,9 @@ class SectionNav extends React.Component {
   }
 
   render() {
-    const navLinks = this.makeNavLinks()
-    const sectionTitle = this.getNthLineage(-2).title
-    const navigationTitle = this.makeNavigationTitle(sectionTitle)
+    const langCode = getLanguageOverride()
+    const navLinks = this.makeNavLinks(langCode)
+    const navigationTitle = this.makeNavigationTitle(langCode)
     return (
       <div
         id="article-navigation-desktop"
