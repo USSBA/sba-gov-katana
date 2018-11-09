@@ -16,10 +16,27 @@ class DetailCard extends React.Component {
     }
   }
 
+  getFileTypeIcon(fileExtension) {
+    if (fileExtension === 'pdf') {
+      console.log('filetypeicon called')
+      return <PdfIcon />
+    } else {
+      return undefined
+    }
+  }
+
+  getFileExtension(fileUrl) {
+    if (fileUrl.includes('.')) {
+      return fileUrl.substr(fileUrl.lastIndexOf('.') + 1).toLowerCase()
+    } else {
+      return undefined
+    }
+  }
+
   makeDownloadLink() {
     const latestFile = this.getLatestFile()
-    const title = this.props.data.title
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
+      const fileExtension = this.getFileExtension(latestFile.fileUrl)
       return (
         <div className={'document-card-download ' + s.download}>
           <Link
@@ -28,9 +45,10 @@ class DetailCard extends React.Component {
             }}
             to={latestFile.fileUrl}
           >
-            Download PDF
+            Download
+            {fileExtension ? ' ' + fileExtension : ''}
           </Link>
-          <PdfIcon />
+          {this.getFileTypeIcon(fileExtension)}
         </div>
       )
     } else {
