@@ -11,8 +11,6 @@ import * as ModalActions from '../../../actions/show-modal.js'
 import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
 import { Link } from 'atoms'
 
-const businessGuideFullUrl = '/business-guide'
-
 class SectionNav extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayMobileNav) {
@@ -27,7 +25,10 @@ class SectionNav extends React.Component {
   }
 
   isBusinessGuide() {
-    return this.getNthLineage(0).fullUrl === businessGuideFullUrl
+    return (
+      this.getNthLineage(0).fullUrl === '/business-guide' ||
+      this.getNthLineage(0).fullUrl === '/guia-de-negocios'
+    )
   }
 
   getNthLineage(n) {
@@ -66,7 +67,7 @@ class SectionNav extends React.Component {
   makeNavigationTitle(langCode) {
     const titleSiteMap = this.getNthLineage(-2)
     let sectionTitle
-    titleSiteMap && langCode === 'es'
+    titleSiteMap.spanishTranslation && langCode === 'es'
       ? (sectionTitle = titleSiteMap.spanishTranslation.title)
       : (sectionTitle = titleSiteMap.title)
 
@@ -85,13 +86,34 @@ class SectionNav extends React.Component {
     return this.props.position === 'bottom' ? styles.stickyBottom : null
   }
 
-  getBacklinkUrl() {
-    return (this.isBusinessGuide() ? this.getNthLineage(0) : this.getNthLineage(-2)).fullUrl
+  getBacklinkUrl(langCode) {
+    const businessGuideSiteMap = this.getNthLineage(0)
+    const parentSiteMap = this.getNthLineage(-2)
+    let backLink
+    if (businessGuideSiteMap.spanishTranslation && parentSiteMap.spanishTranslation && langCode === 'es') {
+      backLink = (this.isBusinessGuide()
+        ? businessGuideSiteMap.spanishTranslation
+        : parentSiteMap.spanishTranslation
+      ).fullUrl
+    } else {
+      backLink = (this.isBusinessGuide() ? businessGuideSiteMap : parentSiteMap).fullUrl
+    }
+    return backLink
   }
 
-  getBacklinkText() {
-    const backText = this.isBusinessGuide() ? 'all topics' : this.getNthLineage(-2).title
-    return `Back to ${backText}`
+  getBacklinkText(langCode) {
+    const titleSiteMap = this.getNthLineage(-2)
+    let backTo
+    let backText
+
+    if (titleSiteMap.spanishTranslation && langCode === 'es') {
+      backTo = 'Regresar a'
+      backText = this.isBusinessGuide() ? 'todos los temas' : titleSiteMap.spanishTranslation.title
+    } else {
+      backTo = 'Back to'
+      backText = this.isBusinessGuide() ? 'all topics' : titleSiteMap.title
+    }
+    return `${backTo} ${backText}`
   }
 
   render() {
@@ -107,9 +129,9 @@ class SectionNav extends React.Component {
         <Link
           id="article-navigation-back-button-desktop"
           className={styles.backLink}
-          to={this.getBacklinkUrl()}
+          to={this.getBacklinkUrl(langCode)}
         >
-          {this.getBacklinkText()}
+          {this.getBacklinkText(langCode)}
         </Link>
         {navigationTitle}
         <ul>{navLinks}</ul>
@@ -118,15 +140,11 @@ class SectionNav extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState) {
-  return {}
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav)
+export default connect(null, mapDispatchToProps)(SectionNav)
 export { SectionNav }
