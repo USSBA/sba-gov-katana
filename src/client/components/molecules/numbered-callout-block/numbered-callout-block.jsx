@@ -4,11 +4,14 @@ import diagonalLines from 'assets/images/homepage/diagonal-lines.png'
 import diagonalLinesMobile from 'assets/images/homepage/diagonal-lines-mobile.png'
 import styles from './numbered-callout-block.scss'
 import { Button } from 'atoms'
+import { TRANSLATIONS } from '../../../translations'
+import { getLanguageOverride } from '../../../services/utils'
 
 class NumberedCalloutBlock extends React.Component {
   render() {
-    // TODO: rename
     const { link, index, solidBox, text, title } = this.props
+    const langCode = getLanguageOverride(true)
+
     return (
       <div
         id={'title-box-container-' + index}
@@ -20,14 +23,13 @@ class NumberedCalloutBlock extends React.Component {
           <p id={'paragraph-' + index} className={styles.text}>
             {text}
           </p>
-          {/* TODO: clean up */}
           {solidBox ? (
             <Button primary id={'large-inverse-primary-btn-' + index} url={link}>
-              Learn more
+              {TRANSLATIONS.learnMore[langCode].text}
             </Button>
           ) : (
             <Button secondary id={'large-secondary-btn-' + index} url={link}>
-              Learn more
+              {TRANSLATIONS.learnMore[langCode].text}
             </Button>
           )}
           {solidBox ? <div /> : ''}
