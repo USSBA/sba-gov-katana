@@ -15,7 +15,16 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 describe('<CourseContent /> on mobile', () => {
-  const component = mount(<CourseContent {...props} />)
+  var component
+
+  beforeEach(done => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
+    component = mount(<CourseContent {...props} />)
+    done()
+  })
 
   test('on mobile user sees "not supported" message', () => {
     const result = component.find('.course-overlay h2').length
