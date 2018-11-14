@@ -15,10 +15,21 @@ import { Link } from 'atoms'
 class SectionNav extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayMobileNav) {
+      const langCode = getLanguageOverride()
+      const sectionSiteMap = this.getNthLineage(-2)
       let sectionNavIcon
-      const sectionTitle = this.getNthLineage(-2).title
-      const titleConstants = constants.sectionTitles
-      if (sectionTitle === titleConstants.disasterAssistance) {
+      let sectionTitle
+      let disasterAssistance
+
+      if (sectionSiteMap.spanishTranslation && langCode === 'es') {
+        disasterAssistance = constants.sectionTitles.spanishDisasterAssistance
+        sectionTitle = sectionSiteMap.spanishTranslation.title
+      } else {
+        disasterAssistance = constants.sectionTitles.disasterAssistance
+        sectionTitle = sectionSiteMap.title
+      }
+
+      if (sectionTitle === disasterAssistance) {
         sectionNavIcon = hurricaneIcon
       }
       this.props.actions.showMobileSectionNav(
