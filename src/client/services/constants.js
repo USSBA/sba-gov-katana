@@ -22,7 +22,10 @@ const constants = {
     growYourBusiness: 'Grow your business',
     disasterAssistance: 'Disaster assistance',
     suretyProviders: 'Surety Providers',
-    lenders: 'Lenders'
+    lenders: 'Lenders',
+    // Spanish version:
+    // Disaster Assistance
+    spanishDisasterAssistance: 'Ayuda en desastres'
   },
   routes: {
     confirmationEmail: '/lendermatch/resend',
