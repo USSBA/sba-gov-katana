@@ -7,7 +7,7 @@ import nearYouIcon from 'assets/svg/mobile-menu/near-you-icon.svg'
 import calendarIcon from 'assets/svg/mobile-menu/calendar-icon.svg'
 import styles from './mobile-nav.scss'
 import { determineMainMenuTitleLink, getLanguageOverride } from '../../../../services/utils'
-import { SECONDARY_NAVIGATION_TRANSLATIONS } from '../../../../translations'
+import { TRANSLATIONS } from '../../../../translations'
 import { HamburgerIcon, Link, MainLogo, SectionLink } from 'atoms'
 
 class MobileNav extends React.Component {
@@ -77,7 +77,7 @@ class MobileNav extends React.Component {
         icon: <img aria-hidden className={styles.linkIcon} src={calendarIcon} />
       }
     ].map(({ key, icon }) => {
-      const { text, url } = SECONDARY_NAVIGATION_TRANSLATIONS[key][langCode]
+      const { text, url } = TRANSLATIONS[key][langCode]
 
       return wrapLink(
         text,

@@ -1,13 +1,15 @@
 import React from 'react'
 import path from 'path'
 
-import constants from '../../../services/constants'
+import constants, { SECTIONS } from '../../../services/constants'
 import styles from './section-page.scss'
 import { Button } from 'atoms'
 import { RemoveMainLoader } from 'molecules'
 import { MenuTileCollection } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils'
-import { TEN_STEPS_CALLOUTS_TRANSLATIONS } from '../../../translations'
+import { TRANSLATIONS } from '../../../translations'
+
+const { businessGuide, federalContracting, forPartners, fundingPrograms } = TRANSLATIONS
 
 class SectionPage extends React.Component {
   equalsIgnoreCase(first, second) {
@@ -18,11 +20,10 @@ class SectionPage extends React.Component {
     const { sectionData } = this.props
     if (sectionData) {
       const sectionName = sectionData.title
-
-      const { headline, linkText } = TEN_STEPS_CALLOUTS_TRANSLATIONS['panel'][getLanguageOverride(true)]
+      const { headline, linkText } = TRANSLATIONS['tenStepsPanelCta'][getLanguageOverride(true)]
 
       let tenSteps
-      if (sectionName === constants.sections.businessGuide) {
+      if (sectionName && this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en'].text)) {
         // TODO: This is basically styled like a call to action component, but
         // it will refactored in the design soon.
         tenSteps = (
@@ -36,22 +37,22 @@ class SectionPage extends React.Component {
       let tileCollection
       if (sectionName) {
         if (
-          this.equalsIgnoreCase(sectionName, constants.sections.businessGuide) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.guiaDeNegocios)
+          this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['es'].text)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
         } else if (
-          this.equalsIgnoreCase(sectionName, constants.sections.fundingPrograms) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.programasDeFinanciamiento)
+          this.equalsIgnoreCase(sectionName, SECTIONS.fundingPrograms['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.fundingPrograms['es'].text)
         ) {
           tileCollection = (
             <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
           )
         } else if (
-          this.equalsIgnoreCase(sectionName, constants.sections.forPartners) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.paraLosSocios) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.federalContracting) ||
-          this.equalsIgnoreCase(sectionName, constants.sections.contratacionFederal)
+          this.equalsIgnoreCase(sectionName, SECTIONS.forPartners['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.forPartners['es'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.federalContracting['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.federalContracting['es'].text)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} />
         } else {

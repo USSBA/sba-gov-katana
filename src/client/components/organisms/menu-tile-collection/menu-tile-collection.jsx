@@ -30,8 +30,6 @@ class MenuTileCollection extends React.Component {
   }
 
   onTabBackwards(index, recentlyEnteringInReverse) {
-    console.log('index', index)
-    console.log('recentlyEnteringInReverse', recentlyEnteringInReverse)
     this.setState({
       panelShowingHoverState: index,
       markAsEnteringInReverse: true

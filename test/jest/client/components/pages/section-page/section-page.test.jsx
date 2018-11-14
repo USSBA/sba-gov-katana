@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { Button } from 'atoms'
 import { MenuTileCollection } from 'organisms'
 import SectionPage from 'pages/section-page/section-page'
-import constants from 'client/services/constants.js'
+import constants, { SECTIONS } from 'client/services/constants.js'
 
 jest.mock('client/services/utils')
 import { getLanguageOverride } from 'client/services/utils'
@@ -19,7 +19,7 @@ describe('SectionPage', () => {
   test('should render a business guide title', () => {
     const props = {
       sectionData: {
-        title: constants.sections.businessGuide
+        title: SECTIONS.businessGuide['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)
@@ -30,7 +30,7 @@ describe('SectionPage', () => {
   test('should render a business guide button', () => {
     const props = {
       sectionData: {
-        title: constants.sections.businessGuide
+        title: SECTIONS.businessGuide['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)
@@ -41,7 +41,7 @@ describe('SectionPage', () => {
   test('should render menu tile collection organism from "For Partners" data', () => {
     const props = {
       sectionData: {
-        title: constants.sections.forPartners
+        title: SECTIONS.forPartners['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)
@@ -52,7 +52,7 @@ describe('SectionPage', () => {
   test('should render menu tile collection organism from "Federal Contracting" data', () => {
     const props = {
       sectionData: {
-        title: constants.sections.federalContracting
+        title: SECTIONS.federalContracting['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)

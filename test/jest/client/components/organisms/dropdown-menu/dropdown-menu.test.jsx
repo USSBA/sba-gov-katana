@@ -4,7 +4,7 @@ import sinon from 'sinon'
 import { mount } from 'enzyme'
 
 import { DropdownMenu } from 'organisms'
-import { TEN_STEPS_CALLOUTS_TRANSLATIONS } from 'client/translations'
+import { TRANSLATIONS } from 'client/translations'
 
 const props = {
   links: [
@@ -16,7 +16,7 @@ const props = {
 }
 
 describe('dropdown menu', () => {
-  const { navigation: NAV_TRANSLATION } = TEN_STEPS_CALLOUTS_TRANSLATIONS
+  const { tenStepsNavigationCta } = TRANSLATIONS
 
   it('renders with the 10 steps CTA in English', () => {
     Object.defineProperty(window.location, 'search', {
@@ -26,7 +26,7 @@ describe('dropdown menu', () => {
 
     const component = mount(<DropdownMenu {...props} />)
     const headline = component.find('.callToAction h6').text()
-    const expected = NAV_TRANSLATION['en']['headline']
+    const expected = tenStepsNavigationCta['en']['headline']
     expect(headline).toBe(expected)
   })
 
@@ -38,7 +38,7 @@ describe('dropdown menu', () => {
 
     const component = mount(<DropdownMenu {...props} />)
     const headline = component.find('.callToAction h6').text()
-    const expected = NAV_TRANSLATION['es']['headline']
+    const expected = tenStepsNavigationCta['es']['headline']
     expect(headline).toBe(expected)
   })
 })

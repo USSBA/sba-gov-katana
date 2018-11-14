@@ -134,7 +134,7 @@
     "lines-around-directive": ["off"],
     "max-depth": ["error", 6],
     "max-len": ["off"],
-    "max-lines": ["error", { "max": 600, "skipBlankLines": true, "skipComments": true }],
+    "max-lines": ["off", { "max": 600, "skipBlankLines": true, "skipComments": true }],
     "max-nested-callbacks": ["error"],
     "max-params": ["error", 6],
     "max-statements-per-line": ["error"],

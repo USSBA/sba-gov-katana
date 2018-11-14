@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+import { isObject } from 'lodash'
 
 import styles from './page-link-group.scss'
 import PageLink from './page-link'
@@ -8,17 +9,24 @@ import { Link } from 'atoms'
 // May consider refactoring
 class PageLinkGroup extends React.Component {
   render() {
-    const { id, links, title, titleLink, indent, isLastGroup, onFinalBlur } = this.props
+    const { id, langCode, links, titleLink, indent, isLastGroup, onFinalBlur } = this.props
+    let { title } = this.props
 
     const renderedLinks = links.map((item, index) => {
       const isLastLink = index === links.length - 1
+      let { text, url } = item
+
+      if (langCode && isObject(item) && item.hasOwnProperty(langCode)) {
+        text = item[langCode].text
+        url = item[langCode].url
+      }
 
       return (
         <PageLink
           key={index + 1}
           id={this.props.id + '-' + index}
-          text={item.text}
-          url={item.url}
+          text={text}
+          url={url}
           onBlur={() => {
             if (isLastGroup && isLastLink) {
               onFinalBlur()
@@ -54,9 +62,9 @@ class PageLinkGroup extends React.Component {
 }
 
 PageLinkGroup.propTypes = {
-  title: React.PropTypes.string,
-  titleLink: React.PropTypes.string,
-  links: React.PropTypes.array.isRequired
+  title: PropTypes.string,
+  titleLink: PropTypes.string,
+  links: PropTypes.array.isRequired
 }
 
 export default PageLinkGroup

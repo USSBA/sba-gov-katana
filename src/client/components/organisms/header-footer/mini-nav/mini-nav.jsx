@@ -10,7 +10,7 @@ import clientConfig from '../../../../services/client-config'
 import config from '../../../../services/client-config'
 import styles from './mini-nav.scss'
 import { getLanguageOverride } from '../../../../services/utils'
-import { SECONDARY_NAVIGATION_TRANSLATIONS } from '../../../../translations'
+import { TRANSLATIONS } from '../../../../translations'
 import { UtilityLink } from 'atoms'
 import { SearchBar, GoogleTranslate } from 'molecules'
 import { runMiscAction } from '../../../../fetch-content-helper'
@@ -76,14 +76,14 @@ class MiniNav extends React.Component {
 
     // e.g. get just "en" if given "en-US"
     const langCode = getLanguageOverride(true)
-    const { translate } = SECONDARY_NAVIGATION_TRANSLATIONS
+    const { translate } = TRANSLATIONS
 
     const link = key => {
       if (!key) {
         return null
       }
 
-      const { text, url } = SECONDARY_NAVIGATION_TRANSLATIONS[key][langCode]
+      const { text, url } = TRANSLATIONS[key][langCode]
 
       return (
         <UtilityLink
@@ -125,6 +125,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(MiniNav)
 
 export { MiniNav }
