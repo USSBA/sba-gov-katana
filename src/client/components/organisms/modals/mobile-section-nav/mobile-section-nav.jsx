@@ -124,16 +124,12 @@ const NavLink = props => {
   )
 }
 
-function mapReduxStateToProps(reduxState) {
-  return {}
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(MobileNav)
+export default connect(null, mapDispatchToProps)(MobileNav)
 
 export { MobileNav }
