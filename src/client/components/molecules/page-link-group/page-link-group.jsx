@@ -12,15 +12,6 @@ class PageLinkGroup extends React.Component {
     const { id, langCode, links, titleLink, indent, isLastGroup, onFinalBlur } = this.props
     let { title } = this.props
 
-    if (langCode && isObject(title) && title.hasOwnProperty(langCode)) {
-      const content = title[langCode]
-      if (isObject(content)) {
-        title = title[langCode].text
-      } else {
-        title = title[langCode]
-      }
-    }
-
     const renderedLinks = links.map((item, index) => {
       const isLastLink = index === links.length - 1
       let { text, url } = item
@@ -71,7 +62,7 @@ class PageLinkGroup extends React.Component {
 }
 
 PageLinkGroup.propTypes = {
-  title: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  title: PropTypes.string,
   titleLink: PropTypes.string,
   links: PropTypes.array.isRequired
 }

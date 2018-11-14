@@ -19,7 +19,7 @@ describe('SectionPage', () => {
   test('should render a business guide title', () => {
     const props = {
       sectionData: {
-        title: SECTIONS.businessGuide['en']
+        title: SECTIONS.businessGuide['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)
@@ -30,7 +30,7 @@ describe('SectionPage', () => {
   test('should render a business guide button', () => {
     const props = {
       sectionData: {
-        title: SECTIONS.businessGuide['en']
+        title: SECTIONS.businessGuide['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)
@@ -52,7 +52,7 @@ describe('SectionPage', () => {
   test('should render menu tile collection organism from "Federal Contracting" data', () => {
     const props = {
       sectionData: {
-        title: SECTIONS.federalContracting['en']
+        title: SECTIONS.federalContracting['en'].text
       }
     }
     const component = shallow(<SectionPage {...props} />)

@@ -23,7 +23,7 @@ class SectionPage extends React.Component {
       const { headline, linkText } = TRANSLATIONS['tenStepsPanelCta'][getLanguageOverride(true)]
 
       let tenSteps
-      if (sectionName && this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en'])) {
+      if (sectionName && this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en'].text)) {
         // TODO: This is basically styled like a call to action component, but
         // it will refactored in the design soon.
         tenSteps = (
@@ -37,13 +37,13 @@ class SectionPage extends React.Component {
       let tileCollection
       if (sectionName) {
         if (
-          this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en']) ||
-          this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['es'])
+          this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['es'].text)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} splitTitle />
         } else if (
-          this.equalsIgnoreCase(sectionName, SECTIONS.fundingPrograms['en']) ||
-          this.equalsIgnoreCase(sectionName, SECTIONS.fundingPrograms['es'])
+          this.equalsIgnoreCase(sectionName, SECTIONS.fundingPrograms['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.fundingPrograms['es'].text)
         ) {
           tileCollection = (
             <MenuTileCollection data={sectionData.children} neverDisplayChildrenOnHoverOverride />
@@ -51,8 +51,8 @@ class SectionPage extends React.Component {
         } else if (
           this.equalsIgnoreCase(sectionName, SECTIONS.forPartners['en'].text) ||
           this.equalsIgnoreCase(sectionName, SECTIONS.forPartners['es'].text) ||
-          this.equalsIgnoreCase(sectionName, SECTIONS.federalContracting['en']) ||
-          this.equalsIgnoreCase(sectionName, SECTIONS.federalContracting['es'])
+          this.equalsIgnoreCase(sectionName, SECTIONS.federalContracting['en'].text) ||
+          this.equalsIgnoreCase(sectionName, SECTIONS.federalContracting['es'].text)
         ) {
           tileCollection = <MenuTileCollection data={sectionData.children} />
         } else {

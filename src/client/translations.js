@@ -12,8 +12,12 @@ const TRANSLATIONS = {
     }
   },
   aboutSbaGov: {
-    en: 'About SBA.gov',
-    es: 'Acerca de SBA.gov'
+    en: {
+      text: 'About SBA.gov'
+    },
+    es: {
+      text: 'Acerca de SBA.gov'
+    }
   },
   accessibility: {
     en: {
@@ -56,8 +60,12 @@ const TRANSLATIONS = {
     }
   },
   businessGuide: {
-    en: 'Business Guide',
-    es: 'Guia de negocios'
+    en: {
+      text: 'Business Guide'
+    },
+    es: {
+      text: 'Guia de negocios'
+    }
   },
   contactSba: {
     en: {
@@ -94,8 +102,12 @@ const TRANSLATIONS = {
     }
   },
   customerService: {
-    en: 'Customer Service',
-    es: 'Atención al cliente'
+    en: {
+      text: 'Customer Service'
+    },
+    es: {
+      text: 'Atención al cliente'
+    }
   },
   dataStore: {
     en: {
@@ -108,8 +120,12 @@ const TRANSLATIONS = {
     }
   },
   disasterAssistance: {
-    en: 'Disaster Assistance',
-    es: 'Asistencia por desastre'
+    en: {
+      text: 'Disaster Assistance'
+    },
+    es: {
+      text: 'Asistencia por desastre'
+    }
   },
   disclaimers: {
     en: {
@@ -132,8 +148,12 @@ const TRANSLATIONS = {
     }
   },
   federalContracting: {
-    en: 'Federal Contracting',
-    es: 'Contratación federal'
+    en: {
+      text: 'Federal Contracting'
+    },
+    es: {
+      text: 'Contratación federal'
+    }
   },
   findEvents: {
     en: {
@@ -166,8 +186,12 @@ const TRANSLATIONS = {
     }
   },
   fundingPrograms: {
-    en: 'Funding Programs',
-    es: 'Programas de financiamiento'
+    en: {
+      text: 'Funding Programs'
+    },
+    es: {
+      text: 'Programas de financiamiento'
+    }
   },
   freedomOfInformationAct: {
     en: {
@@ -334,8 +358,12 @@ const TRANSLATIONS = {
     }
   },
   oversight: {
-    en: 'Oversight',
-    es: 'Supervisión'
+    en: {
+      text: 'Oversight'
+    },
+    es: {
+      text: 'Supervisión'
+    }
   },
   oversightAndAdvocacy: {
     en: {
@@ -438,8 +466,12 @@ const TRANSLATIONS = {
     }
   },
   sbaInformation: {
-    en: 'SBA Information',
-    es: 'Información de la SBA'
+    en: {
+      text: 'SBA Information'
+    },
+    es: {
+      text: 'Información de la SBA'
+    }
   },
   sbaLocations: {
     en: {
@@ -532,8 +564,12 @@ const TRANSLATIONS = {
     }
   },
   toolsAndFeatures: {
-    en: 'Tools and Features',
-    es: 'Herramientas y características'
+    en: {
+      text: 'Tools and Features'
+    },
+    es: {
+      text: 'Herramientas y características'
+    }
   },
   translate: {
     en: {

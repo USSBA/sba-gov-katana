@@ -1,4 +1,5 @@
 import React from 'react'
+import { kebabCase, startCase } from 'lodash'
 
 import facebookThumbnail from 'assets/images/footer/facebook.png'
 import googlePlusThumbnail from 'assets/images/footer/googleplus.png'
@@ -16,50 +17,50 @@ import { SocialMediaLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
 
 const SocialMediaLinkSet = () => {
+  const socialMediaLinks = [
+    {
+      name: 'facebook',
+      image: facebookThumbnail,
+      url: 'https://facebook.com/SBAgov'
+    },
+    {
+      name: 'twitter',
+      image: twitterThumbnail,
+      url: 'https://twitter.com/sbagov'
+    },
+    {
+      name: 'google plus',
+      image: googlePlusThumbnail,
+      url: 'https://plus.google.com/+sbagov'
+    },
+    {
+      name: 'youtube',
+      image: youtubeThumbnail,
+      url: 'https://youtube.com/user/sba'
+    },
+    {
+      name: 'linkedIn',
+      image: linkedInThumbnail,
+      url: 'https://linkedin.com/company/us-small-business-administration'
+    },
+    {
+      name: 'instagram',
+      image: instagramThumbnail,
+      url: 'https://instagram.com/sbagov'
+    }
+  ]
+
   return (
     <div className={styles.SocialMediaLinkSet}>
-      <SocialMediaLink
-        id="facebook-link"
-        key={1}
-        image={facebookThumbnail}
-        altText="SBA Facebook page"
-        url="https://www.facebook.com/SBAgov"
-      />
-      <SocialMediaLink
-        id="twitter-link"
-        key={2}
-        image={twitterThumbnail}
-        altText="SBA Twitter page"
-        url="https://www.twitter.com/sbagov"
-      />
-      <SocialMediaLink
-        id="google-plus-link"
-        key={3}
-        image={googlePlusThumbnail}
-        altText="SBA Google Plus page"
-        url="https://plus.google.com/+sbagov"
-      />
-      <SocialMediaLink
-        id="youtube-link"
-        key={4}
-        image={youtubeThumbnail}
-        altText="SBA Youtube page"
-        url="https://www.youtube.com/user/sba"
-      />
-      <SocialMediaLink
-        id="linkedin-link"
-        key={5}
-        image={linkedInThumbnail}
-        altText="SBA LinkedIn page"
-        url="https://www.linkedin.com/company/us-small-business-administration"
-      />
-      <SocialMediaLink
-        id="instagram-link"
-        key={6}
-        image={instagramThumbnail}
-        altText="SBA Instagram page"
-        url="https://www.instagram.com/sbagov"
-      />
+      {socialMediaLinks.map(({ name, image, url }) => (
+        <SocialMediaLink
+          altText={`SBA ${startCase(name)} page`}
+          id={kebabCase(`${name} link`)}
+          image={image}
+          key={name}
+          url={url}
+        />
+      ))}
     </div>
   )
 }
@@ -156,7 +157,7 @@ class Footer extends React.Component {
                   key={index + 30}
                   langCode={langCode}
                   links={item.links}
-                  title={item.title}
+                  title={item.title[langCode].text}
                 />
               </div>
             )
