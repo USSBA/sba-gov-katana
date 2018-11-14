@@ -489,7 +489,7 @@ const TRANSLATIONS = {
       url: '/tools/local-assistance#locations-page'
     },
     es: {
-      text: 'SBA en tu zona',
+      text: 'SBA cerca de usted',
       url: '/tools/local-assistance#locations-page'
     }
   },
@@ -595,7 +595,7 @@ const TRANSLATIONS = {
       url: '/about-sba/what-we-do'
     },
     es: {
-      text: 'Lo que hacemos',
+      text: 'Nuestro trabajo',
       url: '/about-sba/what-we-do'
     }
   },
