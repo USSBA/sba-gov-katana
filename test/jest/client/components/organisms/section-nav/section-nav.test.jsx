@@ -18,7 +18,7 @@ describe('SectionNav', () => {
       value: '?lang=en'
     })
   })
-  
+
   describe('Business Guide', () => {
     test('Renders a Third-level Section Navigation', () => {
       const component = renderer.create(<SectionNav lineage={lineageBusinessGuide} />)

@@ -1,3 +1,4 @@
+/* eslint max-lines: ["error", 1000] */
 // eslint-disable-next-line id-match
 const TRANSLATIONS = {
   // The words to translate are the keys:
@@ -82,6 +83,10 @@ const TRANSLATIONS = {
     es: {
       text: 'Guia de negocios'
     }
+  },
+  close: {
+    en: 'Close',
+    es: 'Cerrar'
   },
   contactSba: {
     en: {
@@ -440,6 +445,10 @@ const TRANSLATIONS = {
       text: 'Gane contratos del gobierno',
       url: '/size-standards'
     }
+  },
+  readMore: {
+    en: 'Read more',
+    es: 'Para saber más'
   },
   register: {
     en: {
