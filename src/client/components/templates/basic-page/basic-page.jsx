@@ -7,6 +7,7 @@ import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import { Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
 import { SectionNav } from 'organisms'
+import { getLanguageOverride } from '../../../services/utils.js'
 
 class BasicPage extends React.Component {
   constructor(props) {
@@ -127,6 +128,7 @@ class BasicPage extends React.Component {
       <div />
     )
 
+    const langCode = getLanguageOverride()
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
         <RemoveMainLoader />
@@ -159,9 +161,11 @@ class BasicPage extends React.Component {
             />{' '}
             {paragraphs}
           </div>
-          <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}>
-            <FeedbackForm />
-          </div>
+          {langCode === 'en' && (
+            <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}>
+              <FeedbackForm />
+            </div>
+          )}
           <div className="basicpage-previousnext">{previousAndNextButtons}</div>
         </div>
       </div>
