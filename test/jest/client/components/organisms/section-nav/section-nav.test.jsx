@@ -18,6 +18,7 @@ describe('SectionNav', () => {
       value: '?lang=en'
     })
   })
+
   describe('Business Guide', () => {
     test('Renders a Third-level Section Navigation', () => {
       const component = renderer.create(<SectionNav lineage={lineageBusinessGuide} />)
@@ -56,17 +57,6 @@ describe('SectionNav', () => {
       expect(component.find('#article-navigation-back-button-desktop').props().to).toBe(modifiedBacklinkUrl)
     })
     test('Backlink text is third-level title', () => {
-      // const TRANSLATIONS = {
-      //   backTo: {
-      //     en: {
-      //       text: 'Back to'
-      //     },
-      //     es: {
-      //       text: 'Regresar a'
-      //     }
-      //   }
-      // }
-
       const modifiedTitle = 'My Third Level Title'
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{}, {}, { title: modifiedTitle }])
       const component = shallow(<SectionNav lineage={lineage} />)
