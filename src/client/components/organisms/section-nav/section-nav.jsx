@@ -109,22 +109,14 @@ class SectionNav extends React.Component {
 
   getBacklinkText(langCode) {
     const { allTopics, backTo } = TRANSLATIONS
-    const titleSiteMap = this.getNthLineage(-2)
-    let backToText
-    let backText
+    const backToText = backTo[langCode].text
+    const { spanishTranslation, title } = this.getNthLineage(-2)
 
-    if (titleSiteMap.spanishTranslation && langCode === 'es') {
-      backToText = backTo.es.text
-      backText = this.isBusinessGuide(this.getNthLineage(0), langCode)
-        ? allTopics.es.text
-        : titleSiteMap.spanishTranslation.title
-    } else {
-      backToText = backTo.en.text
-      backText = this.isBusinessGuide(this.getNthLineage(0), langCode)
-        ? allTopics.en.text
-        : titleSiteMap.title
-    }
-    return `${backToText} ${backText}`
+    const backTitleText = this.isBusinessGuide(this.getNthLineage(0), langCode)
+      ? allTopics[langCode].text
+      : spanishTranslation && langCode === 'es' ? spanishTranslation.title : title
+
+    return `${backToText} ${backTitleText}`
   }
 
   render() {

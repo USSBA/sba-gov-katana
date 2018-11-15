@@ -9,8 +9,15 @@ import renderer from 'react-test-renderer'
 import _ from 'lodash'
 import lineageBusinessGuide from '../../test-data/lineage-business-guide.json'
 import lineageForPartners from '../../test-data/lineage-for-partners.json'
+import { getLanguageOverride } from '../../../../../../src/client/services/utils.js'
 
 describe('SectionNav', () => {
+  beforeAll(() => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
+  })
   describe('Business Guide', () => {
     test('Renders a Third-level Section Navigation', () => {
       const component = renderer.create(<SectionNav lineage={lineageBusinessGuide} />)
@@ -49,6 +56,17 @@ describe('SectionNav', () => {
       expect(component.find('#article-navigation-back-button-desktop').props().to).toBe(modifiedBacklinkUrl)
     })
     test('Backlink text is third-level title', () => {
+      // const TRANSLATIONS = {
+      //   backTo: {
+      //     en: {
+      //       text: 'Back to'
+      //     },
+      //     es: {
+      //       text: 'Regresar a'
+      //     }
+      //   }
+      // }
+
       const modifiedTitle = 'My Third Level Title'
       const lineage = _.merge(_.cloneDeep(lineageForPartners), [{}, {}, { title: modifiedTitle }])
       const component = shallow(<SectionNav lineage={lineage} />)
