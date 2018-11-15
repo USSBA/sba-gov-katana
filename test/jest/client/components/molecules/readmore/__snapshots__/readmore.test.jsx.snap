@@ -50,7 +50,87 @@ exports[`ReadMore should render expanded ReadMore component 1`] = `
     id="text-readmore-section-3-read-more-btn"
     onClick={[Function]}
   >
-    CLOSE
+    Close
+  </button>
+</div>
+`;
+
+exports[`ReadMore should render expanded ReadMore component 2`] = `
+<div
+  className="readMoreSection"
+>
+  <h3
+    id="text-readmore-section-3-read-more-title"
+  >
+    This is a title
+  </h3>
+  <p
+    className="preview"
+    id="text-readmore-section-3-read-more-preview"
+  />
+  <hr
+    className="dash"
+    style={
+      Object {
+        "width": "1.75rem",
+      }
+    }
+  />
+  <p
+    className="expandedCopyText"
+  >
+    This is a test.
+     
+  </p>
+  <p
+    className="expandedCopyText"
+  >
+    Yes, this is the test.
+     
+  </p>
+  <p
+    className="expandedCopyText"
+  >
+    Four new lines.
+     
+  </p>
+  <p
+    className="expandedCopyText"
+  >
+    It is good.
+     
+  </p>
+  <button
+    className="button alternate large primary responsive spacing"
+    id="text-readmore-section-3-read-more-btn"
+    onClick={[Function]}
+  >
+    Cerrar
+  </button>
+</div>
+`;
+
+exports[`ReadMore should render read more button when not expanded 1`] = `
+<div
+  className="readMoreSection"
+>
+  <h3
+    id="text-readmore-section-3-read-more-title"
+  >
+    This is a title
+  </h3>
+  <p
+    className="preview"
+    id="text-readmore-section-3-read-more-preview"
+  />
+  
+  
+  <button
+    className="button alternate large primary responsive spacing"
+    id="text-readmore-section-3-read-more-btn"
+    onClick={[Function]}
+  >
+    Read more
   </button>
 </div>
 `;

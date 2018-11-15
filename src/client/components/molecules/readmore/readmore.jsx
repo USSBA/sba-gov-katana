@@ -1,6 +1,9 @@
 import React from 'react'
 
 import styles from './readmore.scss'
+
+import { TRANSLATIONS } from '../../../translations'
+import { getLanguageOverride } from '../../../services/utils'
 import { Button, DecorativeDash } from 'atoms'
 
 class ReadMore extends React.Component {
@@ -25,7 +28,10 @@ class ReadMore extends React.Component {
   }
 
   render() {
-    const btnText = this.props.expanded ? 'CLOSE' : 'READ MORE'
+    const langCode = getLanguageOverride()
+    const btnText = this.props.expanded
+      ? TRANSLATIONS['close'][langCode]
+      : TRANSLATIONS['readMore'][langCode]
     const expandedTextSection = this.props.expanded
       ? this.makeExpanded(this.props.readMoreSectionItem.expandedCopyText)
       : ''
