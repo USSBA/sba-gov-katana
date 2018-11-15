@@ -4,6 +4,8 @@ import { isEmpty, snakeCase } from 'lodash'
 
 import styles from './card.scss'
 import { DecorativeDash, Link } from 'atoms'
+import { TRANSLATIONS } from '../../../translations'
+import { getLanguageOverride } from '../../../services/utils'
 
 const Card = props => {
   const {
@@ -24,7 +26,11 @@ const Card = props => {
   })
 
   // TODO: use lede text instead of subtitle text
-  let title = 'Learn more'
+  let languageOverride = getLanguageOverride()
+  let title =
+    languageOverride && languageOverride.startsWith('es')
+      ? TRANSLATIONS['learnMore']['es'].text
+      : TRANSLATIONS['learnMore']['en'].text
   let uri = ''
   if (typeof link === 'string') {
     uri = link
