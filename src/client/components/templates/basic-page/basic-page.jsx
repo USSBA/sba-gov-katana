@@ -165,9 +165,11 @@ class BasicPage extends React.Component {
             />{' '}
             {paragraphs}
           </div>
-          <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}>
-            <FeedbackForm />
-          </div>
+          {langCode === 'en' && (
+            <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}>
+              <FeedbackForm />
+            </div>
+          )}
           <div className="basicpage-previousnext">{previousAndNextButtons}</div>
         </div>
       </div>
