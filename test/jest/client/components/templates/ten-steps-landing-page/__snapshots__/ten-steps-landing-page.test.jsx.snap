@@ -258,7 +258,7 @@ ShallowWrapper {
             </Waypoint>
         </div>
     </div>
-
+     
     <div />
 </div>,
   "nodes": Array [
@@ -512,7 +512,7 @@ ShallowWrapper {
                   </Waypoint>
             </div>
       </div>
-
+       
       <div />
 </div>,
   ],
@@ -562,7 +562,6 @@ ShallowWrapper {
           "isMounted": [Function],
           "validateCallback": [Function],
         },
-        "version": 18,
       },
       "_mountOrder": 1,
       "_pendingCallbacks": null,
@@ -821,7 +820,7 @@ ShallowWrapper {
                               </Waypoint>
                     </div>
           </div>
-
+           
           <div />
 </div>,
         "_debugID": 2,
@@ -1075,7 +1074,7 @@ ShallowWrapper {
                               </Waypoint>
                     </div>
           </div>
-
+           
           <div />
 </div>,
       },

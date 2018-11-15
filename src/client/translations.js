@@ -64,6 +64,8 @@ const TRANSLATIONS = {
     },
     es: {
       text: 'Regresar a'
+    }
+  },
   backToAllTopics: {
     en: {
       text: 'Back to all topics'
