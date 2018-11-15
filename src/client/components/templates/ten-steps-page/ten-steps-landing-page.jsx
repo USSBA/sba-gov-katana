@@ -197,7 +197,7 @@ class TenStepsLandingPage extends React.Component {
                 this.handleTitleSectionLeave()
               }}
             >
-              <p>{TRANSLATIONS.tenStepsHero[langCode].title}</p>
+              <p>{TRANSLATIONS.tenStepsHero[langCode].text}</p>
             </Waypoint>
           </div>
           <a aria-hidden="true" href="#step-1">
