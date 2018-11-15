@@ -470,7 +470,7 @@ const TRANSLATIONS = {
       url: '/bienvenido-a-la-en-espanol'
     },
     es: {
-      text: 'SBA en Español',
+      text: 'SBA en español',
       url: '/bienvenido-a-la-en-espanol'
     }
   },
