@@ -7,6 +7,8 @@ import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import { Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
 import { SectionNav } from 'organisms'
+import { getLanguageOverride } from '../../../services/utils.js'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class BasicPage extends React.Component {
   constructor(props) {
@@ -127,6 +129,10 @@ class BasicPage extends React.Component {
       <div />
     )
 
+    const langCode = getLanguageOverride()
+    const { allTopics, backTo } = TRANSLATIONS
+    const backToText = backTo[langCode].text
+    const allTopicsText = allTopics[langCode].text
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
         <RemoveMainLoader />
@@ -143,7 +149,7 @@ class BasicPage extends React.Component {
         >
           <div className={`basicpage-backlinkmobile ${styles.backLinkMobile}`}>
             <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked}>
-              Back to all topics
+              {`${backToText} ${allTopicsText}`}
             </a>
           </div>
           <div key={1} className={`basicpage-breadcrumb ${styles.breadcrumb}`}>
