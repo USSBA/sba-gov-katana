@@ -279,4 +279,7 @@ function mapDispatchToProps(dispatch) {
 
 export { QuickLinks }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(QuickLinks)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(QuickLinks)

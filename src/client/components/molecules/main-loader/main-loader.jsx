@@ -50,4 +50,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(MainLoader)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(MainLoader)

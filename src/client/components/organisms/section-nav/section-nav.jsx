@@ -125,7 +125,9 @@ class SectionNav extends React.Component {
 
     const backTitleText = this.isBusinessGuide(this.getNthLineage(0), langCode)
       ? allTopics[langCode].text
-      : spanishTranslation && langCode === 'es' ? spanishTranslation.title : title
+      : spanishTranslation && langCode === 'es'
+        ? spanishTranslation.title
+        : title
 
     return `${backToText} ${backTitleText}`
   }
@@ -160,5 +162,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(SectionNav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(SectionNav)
 export { SectionNav }

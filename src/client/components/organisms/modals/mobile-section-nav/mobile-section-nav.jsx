@@ -130,6 +130,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MobileNav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(MobileNav)
 
 export { MobileNav }

@@ -18,7 +18,10 @@ class RelatedDocumentCards extends React.Component {
   }
 
   componentDidMount() {
-    const { data: { relatedDocuments }, fetchContentIfNeeded } = this.props
+    const {
+      data: { relatedDocuments },
+      fetchContentIfNeeded
+    } = this.props
 
     Promise.all(
       relatedDocuments.map(documentId => {
@@ -109,5 +112,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(RelatedDocumentCards)
+export default connect(
+  null,
+  mapDispatchToProps
+)(RelatedDocumentCards)
 export { RelatedDocumentCards }

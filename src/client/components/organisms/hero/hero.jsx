@@ -35,11 +35,11 @@ class Hero extends React.Component {
 
     const style = {
       // We use a background image to take advantage of `background-size: cover`.
-      backgroundImage: imageUrl &&`url('${imageUrl}')`,
+      backgroundImage: imageUrl && `url('${imageUrl}')`,
       height: imageUrl && `calc(100vh - ${imageHeight}px)`,
       marginBottom: imageUrl && isSmallOnly && `${calloutHeight * 0.75}px`
     }
-    
+
     return (
       <div className={`hero ${styles.hero}`}>
         <div aria-label={alt} className={imageUrl ? styles.image : styles.noImage} style={style}>
