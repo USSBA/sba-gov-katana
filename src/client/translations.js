@@ -50,6 +50,22 @@ const TRANSLATIONS = {
       url: '/advocacy'
     }
   },
+  allTopics: {
+    en: {
+      text: 'all topics'
+    },
+    es: {
+      text: 'todos los temas'
+    }
+  },
+  backTo: {
+    en: {
+      text: 'Back to'
+    },
+    es: {
+      text: 'Regresar a'
+    }
+  },
   blog: {
     en: {
       text: 'Blog',
