@@ -467,11 +467,11 @@ const TRANSLATIONS = {
   sbaEnEspanol: {
     en: {
       text: 'SBA en Español',
-      url: '/anuncio-especial'
+      url: '/bienvenido-a-la-en-espanol'
     },
     es: {
-      text: 'SBA en español',
-      url: '/anuncio-especial'
+      text: 'SBA en Español',
+      url: '/bienvenido-a-la-en-espanol'
     }
   },
   sbaInformation: {
