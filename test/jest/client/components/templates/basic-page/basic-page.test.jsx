@@ -12,6 +12,12 @@ const title = 'My Basic Page'
 const summary = 'My Basic Page Summary'
 
 describe('BasicPage', () => {
+  beforeAll(() => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
+  })
   test('renders default data', () => {
     const component = shallow(<BasicPage title="" summary="" />)
     expect(component.find('.basicpage-mobilenav')).toHaveLength(1)
