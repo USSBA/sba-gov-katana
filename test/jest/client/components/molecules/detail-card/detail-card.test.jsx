@@ -89,4 +89,19 @@ describe('Detail card', () => {
         .text()
     ).toEqual('Download mostrecent')
   })
+
+  it('will not redirect the url when the download link is clicked', () => {
+    let customDetailCardItem = JSON.parse(detailCardItem)
+    customDetailCardItem.files.push({
+      effectiveDate: '2018-10-16',
+      fileUrl: 'filename.ext'
+    })
+
+    const cardComponent = shallow(<DetailCard data={customDetailCardItem} />)
+
+    // finding the second link in cardComponent, i.e. the download document link
+    const linkComponent = cardComponent.find(Link).at(1)
+
+    expect(linkComponent.props()).not.toHaveProperty('to')
+  })
 })
