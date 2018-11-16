@@ -7,45 +7,62 @@ import { bindActionCreators } from 'redux'
 import constants from '../../../services/constants.js'
 import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_Disaster_white.png'
 import styles from './section-nav.scss'
+import { TRANSLATIONS } from '../../../translations.js'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
+import { determineMenuTileData } from '../../../services/utils.js'
 import { Link } from 'atoms'
-
-const businessGuideFullUrl = '/business-guide'
 
 class SectionNav extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayMobileNav) {
+      const { langCode } = this.props
+      const sectionSiteMap = this.getNthLineage(-2)
       let sectionNavIcon
-      const sectionTitle = this.getNthLineage(-2).title
-      const titleConstants = constants.sectionTitles
-      if (sectionTitle === titleConstants.disasterAssistance) {
+      let sectionTitle
+      let disasterAssistance
+
+      if (sectionSiteMap.spanishTranslation && langCode === 'es') {
+        disasterAssistance = constants.sectionTitles.spanishDisasterAssistance
+        sectionTitle = sectionSiteMap.spanishTranslation.title
+      } else {
+        disasterAssistance = constants.sectionTitles.disasterAssistance
+        sectionTitle = sectionSiteMap.title
+      }
+
+      if (sectionTitle === disasterAssistance) {
         sectionNavIcon = hurricaneIcon
       }
-      this.props.actions.showMobileSectionNav(this.getNthLineage(-2), sectionNavIcon, this.getBacklinkUrl())
+      this.props.actions.showMobileSectionNav(
+        this.getNthLineage(-2),
+        sectionNavIcon,
+        this.getBacklinkUrl(this.getNthLineage(0), this.getNthLineage(-2), langCode)
+      )
     }
   }
 
-  isBusinessGuide() {
-    return this.getNthLineage(0).fullUrl === businessGuideFullUrl
+  isBusinessGuide(parentSiteMap, langCode) {
+    let result
+    if (langCode === 'es') {
+      result = parentSiteMap.fullUrl === '/guia-de-negocios'
+    } else {
+      result = parentSiteMap.fullUrl === '/business-guide'
+    }
+    return result
   }
 
   getNthLineage(n) {
     return _.nth(this.props.lineage, n)
   }
 
-  makeNavLinks() {
-    const section = this.getNthLineage(-2)
-    const currentPage = this.getNthLineage(-1)
-    const langCode = getLanguageOverride()
-    const navLinks = section.children.map(function(item, index) {
+  makeNavLinks(sectionSiteMap, currentPageSiteMap, langCode) {
+    const navLinks = sectionSiteMap.children.map(function(item, index) {
       const titleLinkData = determineMenuTileData(langCode, item)
       let currentLinkClass = ''
       if (
-        titleLinkData.fullUrl === currentPage.fullUrl ||
+        titleLinkData.fullUrl === currentPageSiteMap.fullUrl ||
         (langCode === 'es' &&
-          currentPage.spanishTranslation &&
-          titleLinkData.fullUrl === currentPage.spanishTranslation.fullUrl)
+          currentPageSiteMap.spanishTranslation &&
+          titleLinkData.fullUrl === currentPageSiteMap.spanishTranslation.fullUrl)
       ) {
         currentLinkClass = styles.currentNavLink
       }
@@ -64,7 +81,12 @@ class SectionNav extends React.Component {
     return navLinks
   }
 
-  makeNavigationTitle(sectionTitle) {
+  makeNavigationTitle(titleSiteMap, langCode) {
+    let sectionTitle
+    titleSiteMap.spanishTranslation && langCode === 'es'
+      ? (sectionTitle = titleSiteMap.spanishTranslation.title)
+      : (sectionTitle = titleSiteMap.title)
+
     return (
       <span id="article-navigation-title-desktop">
         <h3>{sectionTitle}</h3>
@@ -80,19 +102,38 @@ class SectionNav extends React.Component {
     return this.props.position === 'bottom' ? styles.stickyBottom : null
   }
 
-  getBacklinkUrl() {
-    return (this.isBusinessGuide() ? this.getNthLineage(0) : this.getNthLineage(-2)).fullUrl
+  getBacklinkUrl(businessGuideSiteMap, parentSiteMap, langCode) {
+    let backLink
+    if (businessGuideSiteMap.spanishTranslation && parentSiteMap.spanishTranslation && langCode === 'es') {
+      backLink = (this.isBusinessGuide(businessGuideSiteMap, langCode)
+        ? businessGuideSiteMap.spanishTranslation
+        : parentSiteMap.spanishTranslation
+      ).fullUrl
+    } else {
+      backLink = (this.isBusinessGuide(businessGuideSiteMap, langCode)
+        ? businessGuideSiteMap
+        : parentSiteMap
+      ).fullUrl
+    }
+    return backLink
   }
 
-  getBacklinkText() {
-    const backText = this.isBusinessGuide() ? 'all topics' : this.getNthLineage(-2).title
-    return `Back to ${backText}`
+  getBacklinkText(langCode) {
+    const { allTopics, backTo } = TRANSLATIONS
+    const backToText = backTo[langCode].text
+    const { spanishTranslation, title } = this.getNthLineage(-2)
+
+    const backTitleText = this.isBusinessGuide(this.getNthLineage(0), langCode)
+      ? allTopics[langCode].text
+      : spanishTranslation && langCode === 'es' ? spanishTranslation.title : title
+
+    return `${backToText} ${backTitleText}`
   }
 
   render() {
-    const navLinks = this.makeNavLinks()
-    const sectionTitle = this.getNthLineage(-2).title
-    const navigationTitle = this.makeNavigationTitle(sectionTitle)
+    const { langCode } = this.props
+    const navLinks = this.makeNavLinks(this.getNthLineage(-2), this.getNthLineage(-1), langCode)
+    const navigationTitle = this.makeNavigationTitle(this.getNthLineage(-2), langCode)
     return (
       <div
         id="article-navigation-desktop"
@@ -102,9 +143,9 @@ class SectionNav extends React.Component {
         <Link
           id="article-navigation-back-button-desktop"
           className={styles.backLink}
-          to={this.getBacklinkUrl()}
+          to={this.getBacklinkUrl(this.getNthLineage(0), this.getNthLineage(-2), langCode)}
         >
-          {this.getBacklinkText()}
+          {this.getBacklinkText(langCode)}
         </Link>
         {navigationTitle}
         <ul>{navLinks}</ul>
@@ -113,15 +154,15 @@ class SectionNav extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState) {
-  return {}
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SectionNav)
+SectionNav.defaultProps = {
+  langCode: 'en'
+}
+
+export default connect(null, mapDispatchToProps)(SectionNav)
 export { SectionNav }

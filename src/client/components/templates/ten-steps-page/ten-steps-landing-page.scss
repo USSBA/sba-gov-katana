@@ -138,6 +138,7 @@ a.backLink {
   left: 0;
   text-decoration: none;
   top: 20px;
+
   @include grid-media($sba-grid-small) {
     margin-left: 20px;
   }
@@ -172,6 +173,6 @@ a.backLink:before {
   }
 }
 
-.counsellorCtaContainer {
+.counselorCtaContainer {
   @include grid-column(12, $sba-grid-large);
 }

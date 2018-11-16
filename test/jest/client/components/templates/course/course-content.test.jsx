@@ -10,7 +10,16 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
 describe('<CourseContent />', () => {
-  const component = mount(<CourseContent {...sharedProps} />)
+  var component
+
+  beforeEach(done => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
+    component = mount(<CourseContent {...sharedProps} />)
+    done()
+  })
 
   test('initially has a button in an overlay', () => {
     const result = component.find('.course-overlay Button').length

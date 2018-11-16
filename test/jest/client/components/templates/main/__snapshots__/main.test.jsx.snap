@@ -25,7 +25,7 @@ ShallowWrapper {
     >
         Skip to main content
     </a>
-    <Connect(Header)
+    <Header
         additionalMenuOffset={0}
     />
     <Connect(MainLoader) />
@@ -54,7 +54,7 @@ ShallowWrapper {
       >
             Skip to main content
       </a>
-      <Connect(Header)
+      <Header
             additionalMenuOffset={0}
       />
       <Connect(MainLoader) />
@@ -125,7 +125,7 @@ ShallowWrapper {
           >
                     Skip to main content
           </a>
-          <Connect(Header)
+          <Header
                     additionalMenuOffset={0}
           />
           <Connect(MainLoader) />
@@ -154,7 +154,7 @@ ShallowWrapper {
           >
                     Skip to main content
           </a>
-          <Connect(Header)
+          <Header
                     additionalMenuOffset={0}
           />
           <Connect(MainLoader) />

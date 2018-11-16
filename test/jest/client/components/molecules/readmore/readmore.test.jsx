@@ -7,6 +7,7 @@ import { ReadMore } from 'molecules'
 
 const testProps = {
   parentId: 'text-readmore-section-3-read-more',
+  buttonText: 'Read more',
   expanded: true,
   onToggleStatus: () => {},
   readMoreSectionItem: {
@@ -17,29 +18,36 @@ const testProps = {
 
 describe('ReadMore', () => {
   test('should render expanded ReadMore component', () => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
     const props = _.clone(testProps)
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
-    expect(tree.children[0].children[0]).toBe('This is a title')
-    expect(tree.children[3].type).toBe('p')
-    expect(tree.children[3].children[0]).toBe('This is a test.\r')
-    expect(tree.children[4].type).toBe('p')
-    expect(tree.children[4].children[0]).toBe('Yes, this is the test.\r')
-    expect(tree.children[5].type).toBe('p')
-    expect(tree.children[5].children[0]).toBe('Four new lines.\r')
-    expect(tree.children[6].type).toBe('p')
-    expect(tree.children[6].children[0]).toBe('It is good.')
-    expect(tree.children[7].type).toBe('button')
-    expect(tree.children[7].children[0]).toBe('CLOSE')
   })
 
   test('should render read more button when not expanded', () => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
     const props = _.clone(testProps)
     props.expanded = false
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
-    expect(tree.children[4].type).toBe('button')
-    expect(tree.children[4].children[0]).toBe('READ MORE')
+    expect(tree).toMatchSnapshot()
+  })
+
+  test('should render expanded ReadMore component', () => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=es'
+    })
+    const props = _.clone(testProps)
+    const component = renderer.create(<ReadMore {...props} />)
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

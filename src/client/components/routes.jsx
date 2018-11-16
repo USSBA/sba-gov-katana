@@ -1,6 +1,7 @@
 import Async from 'react-code-splitting'
 
 import React from 'react'
+import { isEmpty } from 'lodash'
 
 let Main = props => <Async componentProps={props} load={import('./templates/main.jsx')} />
 
@@ -79,7 +80,32 @@ const mainRoutes = [
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={56} path="/local-assistance/find/" component={OfficeLookupPage} />,
   <Redirect key={57} from="/local-assistance/find" to="/local-assistance/find/" />,
-  <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
+  <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
+  <Route
+    key={13}
+    path="/business-guide/10-steps-start-your-business"
+    to="/business-guide/10-steps-start-your-business/"
+  />,
+  <Route
+    component={TenStepsLandingPage}
+    key={112}
+    onEnter={(nextState, replace) => {
+      const {
+        location: { pathname, query }
+      } = nextState
+
+      // react-router's query does not have hasOwnProperty()
+      if (!Object.prototype.hasOwnProperty.call(query, 'lang')) {
+        replace({ pathname, query: { ...query, lang: 'es' } })
+      }
+    }}
+    path="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/"
+  />,
+  <Redirect
+    key={113}
+    from="/guia-de-negocios/10-pasos-para-iniciar-su-empresa"
+    to="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/"
+  />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,
   <Route key={8} path="/:first/:second" component={RootPage} />,

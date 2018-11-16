@@ -5,41 +5,36 @@ import { bindActionCreators } from 'redux'
 import DesktopNav from '../desktop-nav/desktop-nav.jsx'
 import MobileNav from '../mobile-nav/mobile-nav.jsx'
 
-import * as ContentActions from '../../../../actions/content.js'
+import { fetchSiteContent } from '../../../../fetch-content-helper'
 
 import styles from './header.scss'
 
 class Header extends React.Component {
-  componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('mainMenu', 'mainMenu')
+  constructor() {
+    super()
+    this.state = {
+      mainMenuData: null
+    }
+  }
+
+  async componentDidMount() {
+    const mainMenuData = await fetchSiteContent('mainMenu')
+    this.setState({ mainMenuData })
   }
 
   render() {
+    const { mainMenuData } = this.state
     return (
       <nav id="nav" className={styles.navbar}>
-        <MobileNav
-          additionalMenuOffset={this.props.additionalMenuOffset}
-          mainMenuData={this.props.mainMenuData}
-        />
-        <DesktopNav mainMenuData={this.props.mainMenuData} />
+        <MobileNav additionalMenuOffset={this.props.additionalMenuOffset} mainMenuData={mainMenuData} />
+        <DesktopNav mainMenuData={mainMenuData} />
       </nav>
     )
   }
 }
 
 Header.defaultProps = {
-  mainMenuData: null,
   additionalMenuOffset: 0
 }
 
-function mapStateToProps(reduxState) {
-  return { mainMenuData: reduxState.contentReducer['mainMenu'] }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default Header

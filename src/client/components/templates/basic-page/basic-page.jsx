@@ -1,12 +1,14 @@
 import React from 'react'
 import Waypoint from 'react-waypoint'
-import _ from 'lodash'
+import { compact, map } from 'lodash'
 import { listenForOverlap } from 'element-overlap'
 
 import styles from './basic-page.scss'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import { Breadcrumb, FeedbackForm, PreviousNextSection, RemoveMainLoader, TitleSection } from 'molecules'
 import { SectionNav } from 'organisms'
+import { getLanguageOverride } from '../../../services/utils.js'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class BasicPage extends React.Component {
   constructor(props) {
@@ -36,7 +38,7 @@ class BasicPage extends React.Component {
       }
       return undefined
     })
-    return _.compact(sectionHeaders)
+    return compact(sectionHeaders)
   }
 
   makeParagraphs(paragraphData) {
@@ -58,8 +60,22 @@ class BasicPage extends React.Component {
   }
 
   makeBreadcrumbs(lineage) {
-    return _.map(lineage, item => {
-      return { url: item.fullUrl, title: item.title }
+    return map(lineage, item => {
+      let lineageItem
+      let spanishTranslation
+      if (item.spanishTranslation) {
+        spanishTranslation = {
+          url: item.spanishTranslation.fullUrl,
+          title: item.spanishTranslation.title
+        }
+      }
+      lineageItem = { url: item.fullUrl, title: item.title, spanishTranslation }
+
+      if (!spanishTranslation) {
+        delete lineageItem.spanishTranslation
+      }
+
+      return lineageItem
     })
   }
 
@@ -100,6 +116,30 @@ class BasicPage extends React.Component {
     })
   }
 
+  sectionNavigation(langCode) {
+    return this.props.lineage ? (
+      <SectionNav
+        onTopEnter={this.handleSectionNavigationEnter}
+        position={this.state.currentPosition}
+        displayMobileNav={this.state.displayMobileNav}
+        lineage={this.props.lineage}
+        langCode={langCode}
+      />
+    ) : (
+      <div />
+    )
+  }
+
+  previousAndNextButtons(langCode) {
+    return this.props.lineage ? (
+      <div key={4} className={styles.previousNext}>
+        <PreviousNextSection lineage={this.props.lineage} langCode={langCode} />
+      </div>
+    ) : (
+      <div />
+    )
+  }
+
   render() {
     const paragraphs = this.makeParagraphs(this.props.paragraphs)
     const sectionHeaders = this.makeSectionHeaders(this.props.paragraphs)
@@ -109,24 +149,10 @@ class BasicPage extends React.Component {
       <div />
     )
 
-    const sectionNavigation = this.props.lineage ? (
-      <SectionNav
-        onTopEnter={this.handleSectionNavigationEnter}
-        position={this.state.currentPosition}
-        displayMobileNav={this.state.displayMobileNav}
-        lineage={this.props.lineage}
-      />
-    ) : (
-      <div />
-    )
-    const previousAndNextButtons = this.props.lineage ? (
-      <div key={4} className={styles.previousNext}>
-        <PreviousNextSection lineage={this.props.lineage} />
-      </div>
-    ) : (
-      <div />
-    )
-
+    const langCode = getLanguageOverride()
+    const { allTopics, backTo } = TRANSLATIONS
+    const backToText = backTo[langCode].text
+    const allTopicsText = allTopics[langCode].text
     return (
       <div className={`basicpage ${styles.articleContainer}`}>
         <RemoveMainLoader />
@@ -135,7 +161,7 @@ class BasicPage extends React.Component {
           onEnter={this.handleTopWaypointEnter}
           onLeave={this.handleTopWaypointLeave}
         />
-        <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
+        <div className="basicpage-sectionnavigation">{this.sectionNavigation(langCode)}</div>
         <div
           className={`basicpage-mobilenav ${
             this.state.displayMobileNav ? styles.hideContainer : styles.container
@@ -143,7 +169,7 @@ class BasicPage extends React.Component {
         >
           <div className={`basicpage-backlinkmobile ${styles.backLinkMobile}`}>
             <a id="backToallTopicsMobile" href="" onClick={this.handleBackLinkClicked}>
-              Back to all topics
+              {`${backToText} ${allTopicsText}`}
             </a>
           </div>
           <div key={1} className={`basicpage-breadcrumb ${styles.breadcrumb}`}>
@@ -159,10 +185,12 @@ class BasicPage extends React.Component {
             />{' '}
             {paragraphs}
           </div>
-          <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}>
-            <FeedbackForm />
-          </div>
-          <div className="basicpage-previousnext">{previousAndNextButtons}</div>
+          {langCode === 'en' && (
+            <div key={3} className={`basicpage-feedbackform ${styles.feedback}`}>
+              <FeedbackForm />
+            </div>
+          )}
+          <div className="basicpage-previousnext">{this.previousAndNextButtons(langCode)}</div>
         </div>
       </div>
     )

@@ -8,7 +8,7 @@ developmentOptions:
         enabled: false
         silent: false
     assets:
-      endpoint: placeholder 
+      endpoint: placeholder
 govdelivery:
     popupEnabled: false
 foresee:
@@ -23,7 +23,7 @@ googleAnalytics:
 server:
     port: 3000
     fqdn: placeholder
-counsellorCta:
+counselorCta:
     nodeId: 6
 features:
     localAssistMenuHeight: true

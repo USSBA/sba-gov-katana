@@ -16,13 +16,19 @@ class DocumentPage extends React.Component {
   }
 
   async componentDidMount() {
-    const { location: { pathname } } = this.props
+    const {
+      location: { pathname }
+    } = this.props
     await this.fetchDocument(pathname)
   }
 
   async componentWillReceiveProps(nextProps) {
-    const { location: { pathname } } = this.props
-    const { location: { pathname: nextPathname } } = nextProps
+    const {
+      location: { pathname }
+    } = this.props
+    const {
+      location: { pathname: nextPathname }
+    } = nextProps
 
     // Re-render the page with new document data when we remain on `/documents`
     // and the DocumentPage but the location has changed.
@@ -32,7 +38,9 @@ class DocumentPage extends React.Component {
   }
 
   render() {
-    const { location: { pathname } } = this.props
+    const {
+      location: { pathname }
+    } = this.props
     const { document } = this.state
 
     if (pathname && document !== null) {
@@ -53,13 +61,13 @@ class DocumentPage extends React.Component {
   async fetchDocument(pathname) {
     if (pathname) {
       try {
-        const { items } = await fetchSiteContent('documents', 'documents', {
+        const { items } = await fetchSiteContent('documents', {
           url: pathname
         })
 
         if (size(items)) {
           const { id } = items[0]
-          const document = await fetchSiteContent('document', `node/${id}`)
+          const document = await fetchSiteContent(`node/${id}`)
           this.setState({ document })
         }
       } catch (e) {

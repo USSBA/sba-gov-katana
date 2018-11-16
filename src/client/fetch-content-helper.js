@@ -2,13 +2,13 @@ import axios from 'axios'
 import queryString from 'querystring'
 
 async function fetchRestContent(type, id, langOverride) {
-  let extraHeaders
-  if (langOverride) {
-    extraHeaders = { headers: { 'accept-language': langOverride } }
-  }
   let data = null
+
   try {
-    const response = await axios.get('/api/content/' + type + (id ? '/' + id : '') + '.json', extraHeaders)
+    const response = await axios.get(
+      '/api/content/' + type + (id ? '/' + id : '') + '.json',
+      langOverride && { headers: { 'accept-language': langOverride } }
+    )
     data = response.data
   } catch (error) {
     console.error('fetchRestContent', error)
@@ -17,7 +17,7 @@ async function fetchRestContent(type, id, langOverride) {
   return data
 }
 
-async function fetchSiteContent(prop, type, query) {
+async function fetchSiteContent(type, query) {
   const url = '/api/content/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
   let data = null
   try {
