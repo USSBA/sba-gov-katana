@@ -4,8 +4,6 @@ import { compact, findIndex, flatMap, last, nth } from 'lodash'
 import styles from './previous-next.scss'
 import { Button, Link } from 'atoms'
 
-const businessGuideUrl = '/business-guide'
-
 class PreviousNext extends React.Component {
   render() {
     const { langCode } = this.props
@@ -36,13 +34,14 @@ class PreviousNext extends React.Component {
     )
   }
 
-  getAdjacentArticle = indexDifference => {
+  getAdjacentArticle = (indexDifference, langCode) => {
     const { lineage } = this.props
 
     if (!lineage) {
       return null
     }
 
+    const businessGuideUrl = langCode === 'es' ? '/guia-de-negocios' : '/business-guide'
     const includeAdjacentSections = lineage[0].fullUrl === businessGuideUrl
     const currentArticle = this.getCurrentArticle(lineage)
     const sections = this.getSections()
@@ -79,7 +78,7 @@ class PreviousNext extends React.Component {
   }
 
   getArticle = (articlePosition, langCode) => {
-    const articleData = this.getAdjacentArticle(articlePosition)
+    const articleData = this.getAdjacentArticle(articlePosition, langCode)
 
     if (articleData) {
       let fullUrl = articleData.fullUrl
