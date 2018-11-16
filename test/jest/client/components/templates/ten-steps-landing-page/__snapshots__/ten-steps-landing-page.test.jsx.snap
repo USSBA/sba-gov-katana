@@ -69,7 +69,7 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/research.png",
-                    "imageAlt": "Do market research.",
+                    "imageAlt": "Conduct market research",
                     "leftAlignBox": true,
                     "link": "/business-guide/plan/market-research-competitive-analysis",
                     "sectionNum": 1,
@@ -86,9 +86,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/plan.jpg",
-                    "imageAlt": "Write your business plan.",
+                    "imageAlt": "Write your business plan",
                     "leftAlignBox": false,
-                    "link": "/business-guide/plan/write-your-business-plan-template",
+                    "link": "/business-guide/plan-your-business/write-your-business-plan",
                     "sectionNum": 2,
                     "solidBox": true,
                     "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
@@ -103,9 +103,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/fund.jpg",
-                    "imageAlt": "Fund your business.",
+                    "imageAlt": "Fund your business",
                     "leftAlignBox": true,
-                    "link": "/business-guide/plan/fund-your-business",
+                    "link": "/business-guide/plan-your-business/fund-your-business",
                     "sectionNum": 3,
                     "solidBox": false,
                     "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
@@ -120,9 +120,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/location.jpg",
-                    "imageAlt": "Fund your business.",
+                    "imageAlt": "Pick your business location",
                     "leftAlignBox": false,
-                    "link": "/business-guide/launch/pick-your-business-location-zoning-laws",
+                    "link": "/business-guide/launch-your-business/pick-your-business-location",
                     "sectionNum": 4,
                     "solidBox": true,
                     "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
@@ -137,7 +137,7 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                    "imageAlt": "Fund your business.",
+                    "imageAlt": "Choose a business structure",
                     "leftAlignBox": true,
                     "link": "/business-guide/launch-your-business/choose-business-structure",
                     "sectionNum": 5,
@@ -154,9 +154,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/name.jpg",
-                    "imageAlt": "Choose your business name.",
+                    "imageAlt": "Choose your business name",
                     "leftAlignBox": true,
-                    "link": "/business-guide/launch/choose-your-business-name-register",
+                    "link": "/business-guide/launch-your-business/choose-your-business-name",
                     "sectionNum": 6,
                     "solidBox": true,
                     "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
@@ -171,9 +171,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/register.jpg",
-                    "imageAlt": "Choose your business name.",
+                    "imageAlt": "Register your business",
                     "leftAlignBox": false,
-                    "link": "/business-guide/launch/register-your-business-federal-state-agency",
+                    "link": "/business-guide/launch-your-business/register-your-business",
                     "sectionNum": 7,
                     "solidBox": true,
                     "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
@@ -188,9 +188,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/tax-ids.png",
-                    "imageAlt": "Choose your business name.",
+                    "imageAlt": "Get federal and state tax IDs",
                     "leftAlignBox": true,
-                    "link": "/business-guide/launch/get-federal-state-tax-id-number-ein",
+                    "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
                     "sectionNum": 8,
                     "solidBox": false,
                     "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
@@ -205,9 +205,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/license.jpg",
-                    "imageAlt": "Choose your business name.",
+                    "imageAlt": "Apply for licenses and permits",
                     "leftAlignBox": false,
-                    "link": "/business-guide/launch/apply-for-licenses-permits-federal-state",
+                    "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
                     "sectionNum": 9,
                     "solidBox": true,
                     "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
@@ -222,9 +222,9 @@ ShallowWrapper {
             sectionItem={
                 Object {
                     "image": "/assets/images/tensteps/bank.png",
-                    "imageAlt": "Choose your business name.",
+                    "imageAlt": "Open a business bank account",
                     "leftAlignBox": true,
-                    "link": "/business-guide/launch/open-business-bank-account-fees-benefits",
+                    "link": "/business-guide/launch-your-business/open-business-bank-account",
                     "sectionNum": 10,
                     "solidBox": false,
                     "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
@@ -323,7 +323,7 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/research.png",
-                              "imageAlt": "Do market research.",
+                              "imageAlt": "Conduct market research",
                               "leftAlignBox": true,
                               "link": "/business-guide/plan/market-research-competitive-analysis",
                               "sectionNum": 1,
@@ -340,9 +340,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/plan.jpg",
-                              "imageAlt": "Write your business plan.",
+                              "imageAlt": "Write your business plan",
                               "leftAlignBox": false,
-                              "link": "/business-guide/plan/write-your-business-plan-template",
+                              "link": "/business-guide/plan-your-business/write-your-business-plan",
                               "sectionNum": 2,
                               "solidBox": true,
                               "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
@@ -357,9 +357,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/fund.jpg",
-                              "imageAlt": "Fund your business.",
+                              "imageAlt": "Fund your business",
                               "leftAlignBox": true,
-                              "link": "/business-guide/plan/fund-your-business",
+                              "link": "/business-guide/plan-your-business/fund-your-business",
                               "sectionNum": 3,
                               "solidBox": false,
                               "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
@@ -374,9 +374,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/location.jpg",
-                              "imageAlt": "Fund your business.",
+                              "imageAlt": "Pick your business location",
                               "leftAlignBox": false,
-                              "link": "/business-guide/launch/pick-your-business-location-zoning-laws",
+                              "link": "/business-guide/launch-your-business/pick-your-business-location",
                               "sectionNum": 4,
                               "solidBox": true,
                               "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
@@ -391,7 +391,7 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                              "imageAlt": "Fund your business.",
+                              "imageAlt": "Choose a business structure",
                               "leftAlignBox": true,
                               "link": "/business-guide/launch-your-business/choose-business-structure",
                               "sectionNum": 5,
@@ -408,9 +408,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/name.jpg",
-                              "imageAlt": "Choose your business name.",
+                              "imageAlt": "Choose your business name",
                               "leftAlignBox": true,
-                              "link": "/business-guide/launch/choose-your-business-name-register",
+                              "link": "/business-guide/launch-your-business/choose-your-business-name",
                               "sectionNum": 6,
                               "solidBox": true,
                               "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
@@ -425,9 +425,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/register.jpg",
-                              "imageAlt": "Choose your business name.",
+                              "imageAlt": "Register your business",
                               "leftAlignBox": false,
-                              "link": "/business-guide/launch/register-your-business-federal-state-agency",
+                              "link": "/business-guide/launch-your-business/register-your-business",
                               "sectionNum": 7,
                               "solidBox": true,
                               "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
@@ -442,9 +442,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/tax-ids.png",
-                              "imageAlt": "Choose your business name.",
+                              "imageAlt": "Get federal and state tax IDs",
                               "leftAlignBox": true,
-                              "link": "/business-guide/launch/get-federal-state-tax-id-number-ein",
+                              "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
                               "sectionNum": 8,
                               "solidBox": false,
                               "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
@@ -459,9 +459,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/license.jpg",
-                              "imageAlt": "Choose your business name.",
+                              "imageAlt": "Apply for licenses and permits",
                               "leftAlignBox": false,
-                              "link": "/business-guide/launch/apply-for-licenses-permits-federal-state",
+                              "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
                               "sectionNum": 9,
                               "solidBox": true,
                               "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
@@ -476,9 +476,9 @@ ShallowWrapper {
                   sectionItem={
                         Object {
                               "image": "/assets/images/tensteps/bank.png",
-                              "imageAlt": "Choose your business name.",
+                              "imageAlt": "Open a business bank account",
                               "leftAlignBox": true,
-                              "link": "/business-guide/launch/open-business-bank-account-fees-benefits",
+                              "link": "/business-guide/launch-your-business/open-business-bank-account",
                               "sectionNum": 10,
                               "solidBox": false,
                               "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
@@ -631,7 +631,7 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/research.png",
-                                                  "imageAlt": "Do market research.",
+                                                  "imageAlt": "Conduct market research",
                                                   "leftAlignBox": true,
                                                   "link": "/business-guide/plan/market-research-competitive-analysis",
                                                   "sectionNum": 1,
@@ -648,9 +648,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/plan.jpg",
-                                                  "imageAlt": "Write your business plan.",
+                                                  "imageAlt": "Write your business plan",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/plan/write-your-business-plan-template",
+                                                  "link": "/business-guide/plan-your-business/write-your-business-plan",
                                                   "sectionNum": 2,
                                                   "solidBox": true,
                                                   "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
@@ -665,9 +665,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/fund.jpg",
-                                                  "imageAlt": "Fund your business.",
+                                                  "imageAlt": "Fund your business",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/plan/fund-your-business",
+                                                  "link": "/business-guide/plan-your-business/fund-your-business",
                                                   "sectionNum": 3,
                                                   "solidBox": false,
                                                   "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
@@ -682,9 +682,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/location.jpg",
-                                                  "imageAlt": "Fund your business.",
+                                                  "imageAlt": "Pick your business location",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/launch/pick-your-business-location-zoning-laws",
+                                                  "link": "/business-guide/launch-your-business/pick-your-business-location",
                                                   "sectionNum": 4,
                                                   "solidBox": true,
                                                   "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
@@ -699,7 +699,7 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                                                  "imageAlt": "Fund your business.",
+                                                  "imageAlt": "Choose a business structure",
                                                   "leftAlignBox": true,
                                                   "link": "/business-guide/launch-your-business/choose-business-structure",
                                                   "sectionNum": 5,
@@ -716,9 +716,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/name.jpg",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Choose your business name",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/launch/choose-your-business-name-register",
+                                                  "link": "/business-guide/launch-your-business/choose-your-business-name",
                                                   "sectionNum": 6,
                                                   "solidBox": true,
                                                   "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
@@ -733,9 +733,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/register.jpg",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Register your business",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/launch/register-your-business-federal-state-agency",
+                                                  "link": "/business-guide/launch-your-business/register-your-business",
                                                   "sectionNum": 7,
                                                   "solidBox": true,
                                                   "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
@@ -750,9 +750,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/tax-ids.png",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Get federal and state tax IDs",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/launch/get-federal-state-tax-id-number-ein",
+                                                  "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
                                                   "sectionNum": 8,
                                                   "solidBox": false,
                                                   "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
@@ -767,9 +767,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/license.jpg",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Apply for licenses and permits",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/launch/apply-for-licenses-permits-federal-state",
+                                                  "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
                                                   "sectionNum": 9,
                                                   "solidBox": true,
                                                   "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
@@ -784,9 +784,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/bank.png",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Open a business bank account",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/launch/open-business-bank-account-fees-benefits",
+                                                  "link": "/business-guide/launch-your-business/open-business-bank-account",
                                                   "sectionNum": 10,
                                                   "solidBox": false,
                                                   "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
@@ -885,7 +885,7 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/research.png",
-                                                  "imageAlt": "Do market research.",
+                                                  "imageAlt": "Conduct market research",
                                                   "leftAlignBox": true,
                                                   "link": "/business-guide/plan/market-research-competitive-analysis",
                                                   "sectionNum": 1,
@@ -902,9 +902,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/plan.jpg",
-                                                  "imageAlt": "Write your business plan.",
+                                                  "imageAlt": "Write your business plan",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/plan/write-your-business-plan-template",
+                                                  "link": "/business-guide/plan-your-business/write-your-business-plan",
                                                   "sectionNum": 2,
                                                   "solidBox": true,
                                                   "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
@@ -919,9 +919,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/fund.jpg",
-                                                  "imageAlt": "Fund your business.",
+                                                  "imageAlt": "Fund your business",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/plan/fund-your-business",
+                                                  "link": "/business-guide/plan-your-business/fund-your-business",
                                                   "sectionNum": 3,
                                                   "solidBox": false,
                                                   "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
@@ -936,9 +936,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/location.jpg",
-                                                  "imageAlt": "Fund your business.",
+                                                  "imageAlt": "Pick your business location",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/launch/pick-your-business-location-zoning-laws",
+                                                  "link": "/business-guide/launch-your-business/pick-your-business-location",
                                                   "sectionNum": 4,
                                                   "solidBox": true,
                                                   "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
@@ -953,7 +953,7 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                                                  "imageAlt": "Fund your business.",
+                                                  "imageAlt": "Choose a business structure",
                                                   "leftAlignBox": true,
                                                   "link": "/business-guide/launch-your-business/choose-business-structure",
                                                   "sectionNum": 5,
@@ -970,9 +970,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/name.jpg",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Choose your business name",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/launch/choose-your-business-name-register",
+                                                  "link": "/business-guide/launch-your-business/choose-your-business-name",
                                                   "sectionNum": 6,
                                                   "solidBox": true,
                                                   "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
@@ -987,9 +987,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/register.jpg",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Register your business",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/launch/register-your-business-federal-state-agency",
+                                                  "link": "/business-guide/launch-your-business/register-your-business",
                                                   "sectionNum": 7,
                                                   "solidBox": true,
                                                   "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
@@ -1004,9 +1004,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/tax-ids.png",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Get federal and state tax IDs",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/launch/get-federal-state-tax-id-number-ein",
+                                                  "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
                                                   "sectionNum": 8,
                                                   "solidBox": false,
                                                   "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
@@ -1021,9 +1021,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/license.jpg",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Apply for licenses and permits",
                                                   "leftAlignBox": false,
-                                                  "link": "/business-guide/launch/apply-for-licenses-permits-federal-state",
+                                                  "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
                                                   "sectionNum": 9,
                                                   "solidBox": true,
                                                   "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
@@ -1038,9 +1038,9 @@ ShallowWrapper {
                               sectionItem={
                                         Object {
                                                   "image": "/assets/images/tensteps/bank.png",
-                                                  "imageAlt": "Choose your business name.",
+                                                  "imageAlt": "Open a business bank account",
                                                   "leftAlignBox": true,
-                                                  "link": "/business-guide/launch/open-business-bank-account-fees-benefits",
+                                                  "link": "/business-guide/launch-your-business/open-business-bank-account",
                                                   "sectionNum": 10,
                                                   "solidBox": false,
                                                   "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",

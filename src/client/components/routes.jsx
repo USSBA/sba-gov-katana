@@ -79,7 +79,22 @@ const mainRoutes = [
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={56} path="/local-assistance/find/" component={OfficeLookupPage} />,
   <Redirect key={57} from="/local-assistance/find" to="/local-assistance/find/" />,
-  <Route key={12} path={constants.routes.tenSteps} component={TenStepsLandingPage} />,
+  <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
+  <Route
+    key={13}
+    path="/business-guide/10-steps-start-your-business"
+    to="/business-guide/10-steps-start-your-business/"
+  />,
+  <Route
+    key={112}
+    path="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/?lang=es"
+    component={TenStepsLandingPage}
+  />,
+  <Route
+    key={113}
+    path="/guia-de-negocios/10-pasos-para-iniciar-su-empresa"
+    to="/guia-de-negocios/10-pasos-para-iniciar-su-empresa/?lang=es"
+  />,
   <Route key={6} path="/:first" component={RootPage} />,
   <Route key={7} path="/:first/" component={RootPage} />,
   <Route key={8} path="/:first/:second" component={RootPage} />,

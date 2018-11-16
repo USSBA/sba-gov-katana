@@ -72,77 +72,59 @@ class TenStepsLandingPage extends React.Component {
       {
         leftAlignBox: true,
         solidBox: false,
-        image: '/assets/images/tensteps/research.png',
-        imageAlt: 'Do market research.',
-        link: '/business-guide/plan/market-research-competitive-analysis'
+        image: '/assets/images/tensteps/research.png'
       },
       {
         leftAlignBox: false,
         solidBox: true,
-        image: '/assets/images/tensteps/plan.jpg',
-        imageAlt: 'Write your business plan.',
-        link: '/business-guide/plan/write-your-business-plan-template'
+        image: '/assets/images/tensteps/plan.jpg'
       },
       {
         leftAlignBox: true,
         solidBox: false,
-        image: '/assets/images/tensteps/fund.jpg',
-        imageAlt: 'Fund your business.',
-        link: '/business-guide/plan/fund-your-business'
+        image: '/assets/images/tensteps/fund.jpg'
       },
       {
         leftAlignBox: false,
         solidBox: true,
-        image: '/assets/images/tensteps/location.jpg',
-        imageAlt: 'Fund your business.',
-        link: '/business-guide/launch/pick-your-business-location-zoning-laws'
+        image: '/assets/images/tensteps/location.jpg'
       },
       {
         leftAlignBox: true,
         solidBox: false,
-        image: '/assets/images/tensteps/business-structure-scrabble.png',
-        imageAlt: 'Fund your business.',
-        link: '/business-guide/launch-your-business/choose-business-structure'
+        image: '/assets/images/tensteps/business-structure-scrabble.png'
       },
       {
         leftAlignBox: true,
         solidBox: true,
-        image: '/assets/images/tensteps/name.jpg',
-        imageAlt: 'Choose your business name.',
-        link: '/business-guide/launch/choose-your-business-name-register'
+        image: '/assets/images/tensteps/name.jpg'
       },
       {
         leftAlignBox: false,
         solidBox: true,
-        image: '/assets/images/tensteps/register.jpg',
-        imageAlt: 'Choose your business name.',
-        link: '/business-guide/launch/register-your-business-federal-state-agency'
+        image: '/assets/images/tensteps/register.jpg'
       },
       {
         leftAlignBox: true,
         solidBox: false,
-        image: '/assets/images/tensteps/tax-ids.png',
-        imageAlt: 'Choose your business name.',
-        link: '/business-guide/launch/get-federal-state-tax-id-number-ein'
+        image: '/assets/images/tensteps/tax-ids.png'
       },
       {
         leftAlignBox: false,
         solidBox: true,
-        image: '/assets/images/tensteps/license.jpg',
-        imageAlt: 'Choose your business name.',
-        link: '/business-guide/launch/apply-for-licenses-permits-federal-state'
+        image: '/assets/images/tensteps/license.jpg'
       },
       {
         leftAlignBox: true,
         solidBox: false,
-        image: '/assets/images/tensteps/bank.png',
-        imageAlt: 'Choose your business name.',
-        link: '/business-guide/launch/open-business-bank-account-fees-benefits'
+        image: '/assets/images/tensteps/bank.png'
       }
     ].map((section, index) => {
       const id = index + 1
-      const { text, title } = TRANSLATIONS[`tenSteps${id}`][langCode]
+      const { link, text, title } = TRANSLATIONS[`tenSteps${id}`][langCode]
 
+      section.imageAlt = title
+      section.link = link
       section.sectionNum = id
       section.text = text
       section.title = title
@@ -203,7 +185,7 @@ class TenStepsLandingPage extends React.Component {
           <a aria-hidden="true" href="#step-1">
             <img className={styles.scrollButton} src={scrollIcon} />
           </a>
-          <Link className={styles.backLink} to="/business-guide">
+          <Link className={styles.backLink} to={TRANSLATIONS.tenStepsHero[langCode].link}>
             {TRANSLATIONS.backToAllTopics[langCode].text}
           </Link>
         </div>
