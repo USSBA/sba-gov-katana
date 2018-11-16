@@ -9,13 +9,13 @@ import hurricaneIcon from 'assets/images/funding-programs/Funding_Programs_Icon_
 import styles from './section-nav.scss'
 import { TRANSLATIONS } from '../../../translations.js'
 import * as ModalActions from '../../../actions/show-modal.js'
-import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
+import { determineMenuTileData } from '../../../services/utils.js'
 import { Link } from 'atoms'
 
 class SectionNav extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.displayMobileNav) {
-      const langCode = getLanguageOverride()
+      const { langCode } = this.props
       const sectionSiteMap = this.getNthLineage(-2)
       let sectionNavIcon
       let sectionTitle
@@ -131,7 +131,7 @@ class SectionNav extends React.Component {
   }
 
   render() {
-    const langCode = getLanguageOverride()
+    const { langCode } = this.props
     const navLinks = this.makeNavLinks(this.getNthLineage(-2), this.getNthLineage(-1), langCode)
     const navigationTitle = this.makeNavigationTitle(this.getNthLineage(-2), langCode)
     return (
@@ -158,6 +158,10 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(ModalActions, dispatch)
   }
+}
+
+SectionNav.defaultProps = {
+  langCode: 'en'
 }
 
 export default connect(null, mapDispatchToProps)(SectionNav)

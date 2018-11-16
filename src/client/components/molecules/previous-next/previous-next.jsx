@@ -3,18 +3,19 @@ import { compact, findIndex, flatMap, last, nth } from 'lodash'
 
 import styles from './previous-next.scss'
 import { Button, Link } from 'atoms'
-
-const businessGuideUrl = '/business-guide'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class PreviousNext extends React.Component {
   render() {
-    const previousArticle = this.getPreviousArticle()
-    const nextArticle = this.getNextArticle()
+    const { langCode } = this.props
+    const { next, previous } = TRANSLATIONS
+    const previousArticle = this.getArticle(-1, langCode)
+    const nextArticle = this.getArticle(1, langCode)
 
     return (
       <div className={styles.previousNext} id="previous-next">
         <div className={`${styles.previous} ${!previousArticle && styles.invisible}`}>
-          <h6>Previous</h6>
+          <h6>{previous[langCode].text}</h6>
           {previousArticle && (
             <Link className={styles.button} to={previousArticle.fullUrl}>
               <i className="fa fa-chevron-left" aria-hidden="true" />
@@ -23,7 +24,7 @@ class PreviousNext extends React.Component {
           )}
         </div>
         <div className={`${styles.next} ${!nextArticle && styles.invisible}`}>
-          <h6>Next</h6>
+          <h6>{next[langCode].text}</h6>
           {nextArticle && (
             <Link className={styles.button} to={nextArticle.fullUrl}>
               <span>{nextArticle.title}</span>
@@ -35,13 +36,14 @@ class PreviousNext extends React.Component {
     )
   }
 
-  getAdjacentArticle = indexDifference => {
+  getAdjacentArticle = (indexDifference, langCode) => {
     const { lineage } = this.props
 
     if (!lineage) {
       return null
     }
 
+    const businessGuideUrl = langCode === 'es' ? '/guia-de-negocios' : '/business-guide'
     const includeAdjacentSections = lineage[0].fullUrl === businessGuideUrl
     const currentArticle = this.getCurrentArticle(lineage)
     const sections = this.getSections()
@@ -77,9 +79,21 @@ class PreviousNext extends React.Component {
     )
   }
 
-  getNextArticle = () => this.getAdjacentArticle(1)
+  getArticle = (articlePosition, langCode) => {
+    const articleData = this.getAdjacentArticle(articlePosition, langCode)
 
-  getPreviousArticle = () => this.getAdjacentArticle(-1)
+    if (articleData) {
+      let fullUrl = articleData.fullUrl
+      let title = articleData.title
+
+      if (articleData.spanishTranslation && langCode === 'es') {
+        const { spanishTranslation } = articleData
+        fullUrl = spanishTranslation.fullUrl
+        title = spanishTranslation.title
+      }
+      return { fullUrl, title }
+    }
+  }
 
   getSections = () => {
     const thirdToLast = nth(this.props.lineage, -3)
@@ -89,6 +103,10 @@ class PreviousNext extends React.Component {
 
 PreviousNext.propTypes = {
   lineage: PropTypes.array.isRequired
+}
+
+PreviousNext.defaultProps = {
+  langCode: 'en'
 }
 
 export default PreviousNext
