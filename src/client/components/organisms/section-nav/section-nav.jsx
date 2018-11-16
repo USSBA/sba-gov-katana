@@ -160,5 +160,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+SectionNav.defaultProps = {
+  langCode: 'en'
+}
+
 export default connect(null, mapDispatchToProps)(SectionNav)
 export { SectionNav }
