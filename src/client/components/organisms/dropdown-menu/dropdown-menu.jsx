@@ -4,7 +4,6 @@ import classNames from 'classnames'
 
 import styles from './dropdown-menu.scss'
 import clientConfig from '../../../services/client-config'
-import constants from '../../../services/constants'
 import { Link, Button, UtilityLink } from 'atoms'
 import { PageLinkGroup } from 'molecules'
 import { determineMainMenuTitleLink, getLanguageOverride } from '../../../services/utils'
@@ -129,7 +128,7 @@ class DropdownMenu extends React.Component {
         </ul>
       )
 
-      const { headline, linkText } = TRANSLATIONS['tenStepsNavigationCta'][langCode]
+      const { headline, link, linkText } = TRANSLATIONS.tenStepsNavigationCta[langCode]
 
       return (
         <ul id={id} key={1} aria-label="submenu" className={ulStyles}>
@@ -138,7 +137,7 @@ class DropdownMenu extends React.Component {
           {shouldShowCallToAction ? (
             <div className={styles.callToAction}>
               <h6>{headline}</h6>
-              <Button children={linkText} url={constants.routes.tenSteps} secondary />
+              <Button children={linkText} url={link} secondary />
             </div>
           ) : null}
           {featuredCallout ? (

@@ -66,6 +66,14 @@ const TRANSLATIONS = {
       text: 'Regresar a'
     }
   },
+  backToAllTopics: {
+    en: {
+      text: 'Back to all topics'
+    },
+    es: {
+      text: 'Regresar a todos los temas'
+    }
+  },
   blog: {
     en: {
       text: 'Blog',
@@ -176,6 +184,14 @@ const TRANSLATIONS = {
       text: 'Contratación federal'
     }
   },
+  findCounselors: {
+    en: {
+      text: 'Find counselors'
+    },
+    es: {
+      text: 'Encontrar asesores'
+    }
+  },
   findEvents: {
     en: {
       text: 'Find Events',
@@ -262,6 +278,14 @@ const TRANSLATIONS = {
     es: {
       text: 'Centro de capacitación',
       url: '/learning-center'
+    }
+  },
+  learnMore: {
+    en: {
+      text: 'Learn more'
+    },
+    es: {
+      text: 'Más información'
     }
   },
   linkingPolicy: {
@@ -652,23 +676,194 @@ const TRANSLATIONS = {
   },
 
   // The context where the translations are found are the keys:
+  tenSteps1: {
+    en: {
+      title: 'Conduct market research',
+      text:
+        'Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.',
+      link: '/business-guide/plan/market-research-competitive-analysis'
+    },
+    es: {
+      title: 'Haga una investigación de mercado',
+      text:
+        'Mediante la investigación de mercado podrá saber si hay oportunidad de convertir su idea en un negocio exitoso. Es una forma de reunir información sobre posibles clientes y empresas que ya funcionan en su zona. Utilice esa información para encontrarle una ventaja competitiva de su empresa.',
+      link: '/guia-de-negocios/planifique-su-empresa/investigacion-de-mercado-y-analisis-competitivo'
+    }
+  },
+  tenSteps2: {
+    en: {
+      title: 'Write your business plan',
+      text:
+        'Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.',
+      link: '/business-guide/plan-your-business/write-your-business-plan'
+    },
+    es: {
+      title: 'Redacte su plan de negocios',
+      text:
+        'Su plan de negocios es la fundación de su empresa. Es un mapa de ruta de cómo estructurar, operar y hacer crecer su nueva empresa. Le servirá para convencer a la gente de que trabajar con usted (o invertir en su compañía) es una opción inteligente.',
+      link: '/guia-de-negocios/planifique-su-empresa/redacte-su-plan-de-negocios'
+    }
+  },
+  tenSteps3: {
+    en: {
+      title: 'Fund your business',
+      text:
+        'Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.',
+      link: '/business-guide/plan-your-business/fund-your-business'
+    },
+    es: {
+      title: 'Financie su empresa',
+      text:
+        'Su plan de negocios le ayudará a calcular cuánto dinero necesitará para iniciar su empresa. Si no cuenta ahora con esa cantidad, tendrá que recaudar fondos o pedir prestado el capital. Afortunadamente, hoy hay más formas que nunca de encontrar el capital que necesita.',
+      link: '/guia-de-negocios/planifique-su-empresa/financie-su-empresa'
+    }
+  },
+  tenSteps4: {
+    en: {
+      title: 'Pick your business location',
+      text:
+        'Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.',
+      link: '/business-guide/launch-your-business/pick-your-business-location'
+    },
+    es: {
+      title: 'Escoja la ubicación de su empresa',
+      text:
+        'Una de las decisiones más importantes que tomará es la ubicación de su empresa. Sea que vaya a establecer una empresa con presencia física o a lanzar una tienda en línea, las decisiones que tome podrían influir en sus impuestos, sus obligaciones legales y sus ganancias.',
+      link: '/guia-de-negocios/lance-su-empresa/escoja-la-ubicacion-de-su-empresa'
+    }
+  },
+  tenSteps5: {
+    en: {
+      title: 'Choose a business structure',
+      text:
+        'The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.',
+      link: '/business-guide/launch-your-business/choose-business-structure'
+    },
+    es: {
+      title: 'Escoja una estructura empresarial',
+      text:
+        'La estructura legal que escoja para su negocio influirá en los requisitos de registro de su empresa, la cantidad de impuestos que pague y su responsabilidad personal.',
+      link: '/guia-de-negocios/lance-su-empresa/escoja-una-estructura-empresarial'
+    }
+  },
+  tenSteps6: {
+    en: {
+      title: 'Choose your business name',
+      text:
+        'It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.',
+      link: '/business-guide/launch-your-business/choose-your-business-name'
+    },
+    es: {
+      title: 'Elija el nombre de su empresa',
+      text:
+        'No es fácil escoger el nombre perfecto. Desearía uno que refleje su marca y que capte su espíritu. También querrá verificar que el nombre por el que se decidió no lo esté usando ya alguien.',
+      link: '/guia-de-negocios/lance-su-empresa/elija-un-nombre-para-su-empresa'
+    }
+  },
+  tenSteps7: {
+    en: {
+      title: 'Register your business',
+      text:
+        'Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.',
+      link: '/business-guide/launch-your-business/register-your-business'
+    },
+    es: {
+      title: 'Registre su empresa',
+      text:
+        'Una vez que haya escogido el nombre ideal para la empresa, será momento de legalizarlo y proteger su marca. Si está haciendo negocios con un nombre diferente de su nombre personal, deberá registrarse ante el gobierno federal y quizá también el gobierno de su estado.',
+      link: '/guia-de-negocios/lance-su-empresa/registre-su-empresa'
+    }
+  },
+  tenSteps8: {
+    en: {
+      title: 'Get federal and state tax IDs',
+      text:
+        'You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.',
+      link: '/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers'
+    },
+    es: {
+      title: 'Obtenga su identificación fiscal federal y estatal',
+      text:
+        'Utilizará su número de identificación de empleador (EIN) en acciones importantes para iniciar y hacer crecer su empresa, como abrir una cuenta bancaria y pagar impuestos. Es como un número del seguro social para su empresa. Algunos estados también piden obtener una identificación fiscal.',
+      link:
+        '/guia-de-negocios/lance-su-empresa/obtenga-su-numero-de-identificacion-del-contribuyente-federal-y-estatal'
+    }
+  },
+  tenSteps9: {
+    en: {
+      title: 'Apply for licenses and permits',
+      text:
+        'Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.',
+      link: '/business-guide/launch-your-business/apply-licenses-and-permits'
+    },
+    es: {
+      title: 'Solicite licencias y permisos',
+      text:
+        'Cumpla siempre con las normas para que su negocio se mantenga funcionando sin tropiezos. Las licencias y permisos que necesite su empresa varían con el sector en que opere, el estado, la ubicación y otros factores.',
+      link: '/guia-de-negocios/lance-su-empresa/solicite-licencias-y-permisos'
+    }
+  },
+  tenSteps10: {
+    en: {
+      title: 'Open a business bank account',
+      text:
+        'A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.',
+      link: '/business-guide/launch-your-business/open-business-bank-account'
+    },
+    es: {
+      title: 'Abra una cuenta bancaria comercial',
+      text:
+        'Una cuenta de cheques para pequeñas empresas puede ayudarle a manejar cuestiones legales, fiscales y del día a día. La buena noticia es que es fácil abrir una si tiene listos los registros y documentos correctos.',
+      link: '/guia-de-negocios/lance-su-empresa/abra-una-cuenta-bancaria-comercial'
+    }
+  },
+  tenStepsHero: {
+    en: {
+      title: '10 steps to start your business',
+      text:
+        'Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.',
+      link: '/business-guide'
+    },
+    es: {
+      title: '10 pasos para iniciar su empresa',
+      text:
+        'Emprender un negocio requiere planificar, tomar decisiones financieras cruciales y realizar una serie de actividades legales. Desplácese hacia abajo para conocer cada paso.',
+      link: '/guia-de-negocios'
+    }
+  },
   tenStepsNavigationCta: {
     en: {
       headline: 'Not sure where to start? Start your business in 10 steps.',
+      link: '/business-guide/10-steps-start-your-business/',
       linkText: 'See the guide'
     },
     es: {
       headline: '¿No sabe por dónde empezar? Siga estos 10 pasos.',
+      link: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa',
       linkText: 'Vea la guía'
+    }
+  },
+  tenStepsOpenShop: {
+    en: {
+      title: 'Open Shop',
+      text:
+        "Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business."
+    },
+    es: {
+      title: 'Empresa abierta',
+      text:
+        '¡Felicidades! Llegó la hora de cortar la cinta. Su negocio está oficialmente establecido. Ahora, concéntrese en administrarlo y hacerlo crecer.'
     }
   },
   tenStepsPanelCta: {
     en: {
       headline: 'Start your business in 10 steps',
+      link: '/business-guide/10-steps-start-your-business/',
       linkText: 'See the guide'
     },
     es: {
       headline: 'Abra su empresa siguiendo estos 10 pasos',
+      link: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa',
       linkText: 'Vea la guía'
     }
   }

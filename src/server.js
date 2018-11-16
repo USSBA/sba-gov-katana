@@ -64,7 +64,7 @@ app.use(function(req, res, next) {
       }
 
       const clientConfig = {
-        counsellorCta: config.get('counsellorCta.nodeId'),
+        counselorCta: config.get('counselorCta.nodeId'),
         debug: config.get('developmentOptions.client.logging'),
         geoLocator: config.get('features.geoLocator'),
         googleAnalytics: config.get('googleAnalytics'),

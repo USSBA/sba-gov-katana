@@ -16,17 +16,19 @@ class ArticlePage extends React.Component {
   }
 
   async componentDidMount() {
-    const { location: { pathname } } = this.props
+    const {
+      location: { pathname }
+    } = this.props
 
     if (pathname) {
       try {
-        const { items } = await fetchSiteContent('articles', 'articles', {
+        const { items } = await fetchSiteContent('articles', {
           url: pathname
         })
 
         if (size(items)) {
           const { id } = items[0]
-          const article  = await fetchSiteContent('article', `node/${id}`)
+          const article = await fetchSiteContent(`node/${id}`)
           this.setState({ article })
         }
       } catch (e) {
@@ -36,7 +38,9 @@ class ArticlePage extends React.Component {
   }
 
   render() {
-    const { location: { pathname } } = this.props
+    const {
+      location: { pathname }
+    } = this.props
     const { article } = this.state
 
     if (pathname && article !== null) {

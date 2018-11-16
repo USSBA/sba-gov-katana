@@ -17,6 +17,11 @@ const store1 = {
 }
 describe('TenStepsLandingPage', () => {
   test('should render TenStepsLandingPage', () => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=en'
+    })
+
     const component = shallow(<TenStepsLandingPage store={store1} />)
     expect(component).toMatchSnapshot()
   })

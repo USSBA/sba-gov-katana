@@ -1,7 +1,7 @@
 import React from 'react'
 import path from 'path'
 
-import constants, { SECTIONS } from '../../../services/constants'
+import { SECTIONS } from '../../../services/constants'
 import styles from './section-page.scss'
 import { Button } from 'atoms'
 import { RemoveMainLoader } from 'molecules'
@@ -20,7 +20,7 @@ class SectionPage extends React.Component {
     const { sectionData } = this.props
     if (sectionData) {
       const sectionName = sectionData.title
-      const { headline, linkText } = TRANSLATIONS['tenStepsPanelCta'][getLanguageOverride(true)]
+      const { headline, link, linkText } = TRANSLATIONS.tenStepsPanelCta[getLanguageOverride(true)]
 
       let tenSteps
       if (sectionName && this.equalsIgnoreCase(sectionName, SECTIONS.businessGuide['en'].text)) {
@@ -29,7 +29,7 @@ class SectionPage extends React.Component {
         tenSteps = (
           <div className={styles.callToAction} id="business-guide-panel-10-steps-callout">
             <h6>{headline}</h6>
-            <Button alternate children={linkText} fullWidth primary url={constants.routes.tenSteps} />
+            <Button alternate children={linkText} fullWidth primary url={link} />
           </div>
         )
       }

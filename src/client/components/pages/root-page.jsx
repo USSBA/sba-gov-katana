@@ -19,7 +19,7 @@ export class RootPage extends React.Component {
 
   componentWillMount() {
     let me = this
-    fetchSiteContent('siteMap', 'siteMap').then(data => {
+    fetchSiteContent('siteMap').then(data => {
       me.setState({
         siteMap: data
       })
