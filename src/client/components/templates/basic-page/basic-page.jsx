@@ -102,29 +102,35 @@ class BasicPage extends React.Component {
     })
   }
 
-  render() {
-    const paragraphs = this.makeParagraphs(this.props.paragraphs)
-    const sectionHeaders = this.makeSectionHeaders(this.props.paragraphs)
-    const breadcrumbs = this.props.lineage ? (
-      <Breadcrumb items={this.makeBreadcrumbs(this.props.lineage)} />
-    ) : (
-      <div />
-    )
-
-    const sectionNavigation = this.props.lineage ? (
+  sectionNavigation(langCode) {
+    return this.props.lineage ? (
       <SectionNav
         onTopEnter={this.handleSectionNavigationEnter}
         position={this.state.currentPosition}
         displayMobileNav={this.state.displayMobileNav}
         lineage={this.props.lineage}
+        langCode={langCode}
       />
     ) : (
       <div />
     )
-    const previousAndNextButtons = this.props.lineage ? (
+  }
+
+  previousAndNextButtons(langCode) {
+    return this.props.lineage ? (
       <div key={4} className={styles.previousNext}>
-        <PreviousNextSection lineage={this.props.lineage} />
+        <PreviousNextSection lineage={this.props.lineage} langCode={langCode} />
       </div>
+    ) : (
+      <div />
+    )
+  }
+
+  render() {
+    const paragraphs = this.makeParagraphs(this.props.paragraphs)
+    const sectionHeaders = this.makeSectionHeaders(this.props.paragraphs)
+    const breadcrumbs = this.props.lineage ? (
+      <Breadcrumb items={this.makeBreadcrumbs(this.props.lineage)} />
     ) : (
       <div />
     )
@@ -141,7 +147,7 @@ class BasicPage extends React.Component {
           onEnter={this.handleTopWaypointEnter}
           onLeave={this.handleTopWaypointLeave}
         />
-        <div className="basicpage-sectionnavigation">{sectionNavigation}</div>
+        <div className="basicpage-sectionnavigation">{this.sectionNavigation(langCode)}</div>
         <div
           className={`basicpage-mobilenav ${
             this.state.displayMobileNav ? styles.hideContainer : styles.container
@@ -170,7 +176,7 @@ class BasicPage extends React.Component {
               <FeedbackForm />
             </div>
           )}
-          <div className="basicpage-previousnext">{previousAndNextButtons}</div>
+          <div className="basicpage-previousnext">{this.previousAndNextButtons(langCode)}</div>
         </div>
       </div>
     )
