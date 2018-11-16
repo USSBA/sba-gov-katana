@@ -18,7 +18,7 @@ class Header extends React.Component {
   }
 
   async componentDidMount() {
-    const mainMenuData = await fetchSiteContent('mainMenu')
+    const mainMenuData = await fetchSiteContent('mainMenu', 'mainMenu')
     this.setState({ mainMenuData })
   }
 

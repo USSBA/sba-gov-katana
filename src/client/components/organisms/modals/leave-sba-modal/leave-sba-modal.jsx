@@ -14,10 +14,7 @@ class LeaveSbaModal extends React.Component {
   }
 
   render() {
-    const {
-      actions: { closeLeaveSba },
-      url
-    } = this.props
+    const { actions: { closeLeaveSba }, url } = this.props
 
     const title = "You're leaving the Small Business Administration website."
     const text =
@@ -52,9 +49,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ModalActions, dispatch)
   }
 }
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(LeaveSbaModal)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(LeaveSbaModal)
 
 export { LeaveSbaModal }

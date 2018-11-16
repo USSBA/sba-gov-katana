@@ -16,9 +16,7 @@ import { getCurrentFile } from '../../../services/utils.js'
 
 export class DocumentArticle extends React.Component {
   componentDidMount() {
-    const {
-      contentActions: { fetchContentIfNeeded }
-    } = this.props
+    const { contentActions: { fetchContentIfNeeded } } = this.props
 
     fetchContentIfNeeded('officesRaw', 'officesRaw')
     fetchContentIfNeeded('persons', 'persons')
@@ -117,10 +115,7 @@ export class DocumentArticle extends React.Component {
 
       let officeData = {}
       if (clientConfig.pressRelease && !isEmpty(office) && office.website) {
-        const {
-          title,
-          website: { url }
-        } = office
+        const { title, website: { url } } = office
         officeData = { title, url }
       } else if (!clientConfig.pressRelease && !isEmpty(officeLink) && officeLink.url) {
         const { title, url } = officeLink
@@ -243,12 +238,8 @@ export class DocumentArticle extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  const {
-    contentReducer: { officesRaw: offices, persons }
-  } = state
-  const {
-    data: { office: officeId, mediaContact: mediaContactId }
-  } = ownProps
+  const { contentReducer: { officesRaw: offices, persons } } = state
+  const { data: { office: officeId, mediaContact: mediaContactId } } = ownProps
 
   let office
   let mediaContact
@@ -276,7 +267,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DocumentArticle)
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)

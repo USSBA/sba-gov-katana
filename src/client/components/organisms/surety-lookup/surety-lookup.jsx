@@ -193,7 +193,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(SuretyLookup)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SuretyLookup)

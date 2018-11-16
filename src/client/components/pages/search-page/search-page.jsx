@@ -357,9 +357,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(SearchPage)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchPage)
 
 export { SearchPage, SearchBar, ResultsList }

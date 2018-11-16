@@ -20,10 +20,7 @@ class DefaultOfficeResult extends React.PureComponent {
   }
 
   render() {
-    const {
-      id,
-      item: { fields: item, exprs }
-    } = this.props
+    const { id, item: { fields: item, exprs } } = this.props
     if (!item) {
       return null
     }

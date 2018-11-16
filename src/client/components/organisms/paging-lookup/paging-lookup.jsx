@@ -291,9 +291,6 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(ContentActions, dispatch)
   }
 }
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(PagingLookup)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(PagingLookup)
 
 export { PagingLookup }

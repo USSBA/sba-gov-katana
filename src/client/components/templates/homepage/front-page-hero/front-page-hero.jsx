@@ -7,10 +7,7 @@ import { eventCategories } from '../../../../services/constants'
 
 class FrontPageHero extends React.Component {
   render() {
-    const {
-      button,
-      hero: { caption, imageLarge, imageMedium, imageSmall, title }
-    } = this.props
+    const { button, hero: { caption, imageLarge, imageMedium, imageSmall, title } } = this.props
 
     return (
       <div className={styles.container}>

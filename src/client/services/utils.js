@@ -9,9 +9,9 @@ function determineMainMenuTitleLink(langCode, data) {
     link = data.spanishTranslation.link
     linkTitle = data.spanishTranslation.linkTitle
   }
-  return {
-    link,
-    linkTitle
+  return { 
+    link, 
+    linkTitle 
   }
 }
 
@@ -24,9 +24,9 @@ function determineMenuTileData(langCode, data) {
     title = data.spanishTranslation.title
     fullUrl = data.spanishTranslation.fullUrl
   }
-  return {
-    description,
-    title,
+  return { 
+    description, 
+    title, 
     fullUrl
   }
 }

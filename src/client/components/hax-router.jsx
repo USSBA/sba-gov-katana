@@ -22,9 +22,7 @@ class HaxRouter extends Component {
         onUpdate={function() {
           // Use a basic anonymous function to get access to this.state.
 
-          const {
-            location: { hash, pathname }
-          } = this.state
+          const { location: { hash, pathname } } = this.state
           const delay = 0
 
           if (hash !== '') {

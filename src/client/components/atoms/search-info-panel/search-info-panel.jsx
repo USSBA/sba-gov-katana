@@ -25,8 +25,7 @@ class SearchInfoPanel extends React.Component {
     return (
       <span>
         <strong className="text-primary">
-          No results found
-          {searchTerm && (
+          No results found{searchTerm && (
             <span>
               {' '}
               for <span>"{searchTerm}"</span>

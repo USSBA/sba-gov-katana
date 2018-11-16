@@ -59,9 +59,7 @@ class MultiSelectBox extends React.Component {
   }
   render() {
     const myValue = this.props.multi
-      ? this.state.value
-        ? this.state.value.split(',')
-        : []
+      ? this.state.value ? this.state.value.split(',') : []
       : this.state.value
 
     const errorMessage =

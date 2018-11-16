@@ -112,7 +112,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(Course)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(Course)
