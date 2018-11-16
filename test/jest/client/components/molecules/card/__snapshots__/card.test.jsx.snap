@@ -60,6 +60,66 @@ exports[`Card does not error check malformed link 1`] = `
 </div>
 `;
 
+exports[`Card should render the spanish version correctly if the link is just a string 1`] = `
+<div
+  className="card twoColumn"
+  id="card"
+>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+    target="_self"
+  >
+    <img
+      alt="kitten"
+      className="itemImage"
+      id="image-4-0"
+      src="https://placekitten.com/588/364"
+    />
+  </a>
+  <div
+    className="content content-with-image"
+  >
+    <h4
+      className="itemTitle"
+      id="title"
+    >
+      <a
+        onClick={[Function]}
+        style={Object {}}
+        target="_self"
+      >
+        Kitten
+      </a>
+    </h4>
+    <div>
+      <hr
+        className="dash"
+        id="hr-4-0"
+        style={
+          Object {
+            "width": "1.667rem",
+          }
+        }
+      />
+      <p
+        className="itemSubTitle"
+        id="subtitle-text-4-0"
+      >
+        A kitten, also known as a kitty or kitty cat, is a juvenile cat
+      </p>
+    </div>
+    <a
+      onClick={[Function]}
+      style={Object {}}
+      target="_self"
+    >
+      Más información
+    </a>
+  </div>
+</div>
+`;
+
 exports[`Card to render correctly 1`] = `
 <div
   className="card twoColumn"

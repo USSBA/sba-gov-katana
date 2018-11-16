@@ -1,7 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { shallow } from 'enzyme'
-
 import { Card } from 'molecules'
 
 const component = link => (
@@ -61,6 +60,16 @@ describe('Card', () => {
 
   test('to render correctly if the link is just a string', () => {
     const tree = renderer.create(component('/my-path/my-page')).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  test('should render the spanish version correctly if the link is just a string', () => {
+    Object.defineProperty(window.location, 'search', {
+      writable: true,
+      value: '?lang=es'
+    })
+
+    const tree = renderer.create(component('/my-spanish-path/my-page')).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
