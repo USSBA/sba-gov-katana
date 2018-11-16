@@ -338,6 +338,14 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-newsroom'
     }
   },
+  next: {
+    en: {
+      text: 'Next'
+    },
+    es: {
+      text: 'Siguiente'
+    }
+  },
   noFearAct: {
     en: {
       text: 'No Fear Act',
@@ -424,6 +432,14 @@ const TRANSLATIONS = {
     es: {
       text: 'Política y normativa',
       url: '/about-sba/sba-performance/policy-regulations'
+    }
+  },
+  previous: {
+    en: {
+      text: 'Previous'
+    },
+    es: {
+      text: 'Anterior'
     }
   },
   privacyPolicy: {

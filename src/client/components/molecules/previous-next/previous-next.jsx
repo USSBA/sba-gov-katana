@@ -3,17 +3,19 @@ import { compact, findIndex, flatMap, last, nth } from 'lodash'
 
 import styles from './previous-next.scss'
 import { Button, Link } from 'atoms'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class PreviousNext extends React.Component {
   render() {
     const { langCode } = this.props
+    const { next, previous } = TRANSLATIONS
     const previousArticle = this.getArticle(-1, langCode)
     const nextArticle = this.getArticle(1, langCode)
 
     return (
       <div className={styles.previousNext} id="previous-next">
         <div className={`${styles.previous} ${!previousArticle && styles.invisible}`}>
-          <h6>{langCode === 'es' ? 'Anterior' : 'Previous'}</h6>
+          <h6>{previous[langCode].text}</h6>
           {previousArticle && (
             <Link className={styles.button} to={previousArticle.fullUrl}>
               <i className="fa fa-chevron-left" aria-hidden="true" />
@@ -22,7 +24,7 @@ class PreviousNext extends React.Component {
           )}
         </div>
         <div className={`${styles.next} ${!nextArticle && styles.invisible}`}>
-          <h6>{langCode === 'es' ? 'Siguiente' : 'Next'}</h6>
+          <h6>{next[langCode].text}</h6>
           {nextArticle && (
             <Link className={styles.button} to={nextArticle.fullUrl}>
               <span>{nextArticle.title}</span>
@@ -101,6 +103,10 @@ class PreviousNext extends React.Component {
 
 PreviousNext.propTypes = {
   lineage: PropTypes.array.isRequired
+}
+
+PreviousNext.defaultProps = {
+  langCode: 'en'
 }
 
 export default PreviousNext
