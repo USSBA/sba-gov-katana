@@ -8,13 +8,14 @@ const businessGuideUrl = '/business-guide'
 
 class PreviousNext extends React.Component {
   render() {
-    const previousArticle = this.getPreviousArticle()
-    const nextArticle = this.getNextArticle()
+    const { langCode } = this.props
+    const previousArticle = this.getArticle(-1, langCode)
+    const nextArticle = this.getArticle(1, langCode)
 
     return (
       <div className={styles.previousNext} id="previous-next">
         <div className={`${styles.previous} ${!previousArticle && styles.invisible}`}>
-          <h6>Previous</h6>
+          <h6>{langCode === 'es' ? 'Anterior' : 'Previous'}</h6>
           {previousArticle && (
             <Link className={styles.button} to={previousArticle.fullUrl}>
               <i className="fa fa-chevron-left" aria-hidden="true" />
@@ -23,7 +24,7 @@ class PreviousNext extends React.Component {
           )}
         </div>
         <div className={`${styles.next} ${!nextArticle && styles.invisible}`}>
-          <h6>Next</h6>
+          <h6>{langCode === 'es' ? 'Siguiente' : 'Next'}</h6>
           {nextArticle && (
             <Link className={styles.button} to={nextArticle.fullUrl}>
               <span>{nextArticle.title}</span>
@@ -77,9 +78,21 @@ class PreviousNext extends React.Component {
     )
   }
 
-  getNextArticle = () => this.getAdjacentArticle(1)
+  getArticle = (articlePosition, langCode) => {
+    const articleData = this.getAdjacentArticle(articlePosition)
 
-  getPreviousArticle = () => this.getAdjacentArticle(-1)
+    if (articleData) {
+      let fullUrl = articleData.fullUrl
+      let title = articleData.title
+
+      if (articleData.spanishTranslation && langCode === 'es') {
+        const { spanishTranslation } = articleData
+        fullUrl = spanishTranslation.fullUrl
+        title = spanishTranslation.title
+      }
+      return { fullUrl, title }
+    }
+  }
 
   getSections = () => {
     const thirdToLast = nth(this.props.lineage, -3)
