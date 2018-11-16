@@ -1,6 +1,6 @@
 import React from 'react'
 import Waypoint from 'react-waypoint'
-import _ from 'lodash'
+import { compact, map } from 'lodash'
 import { listenForOverlap } from 'element-overlap'
 
 import styles from './basic-page.scss'
@@ -38,7 +38,7 @@ class BasicPage extends React.Component {
       }
       return undefined
     })
-    return _.compact(sectionHeaders)
+    return compact(sectionHeaders)
   }
 
   makeParagraphs(paragraphData) {
@@ -60,8 +60,22 @@ class BasicPage extends React.Component {
   }
 
   makeBreadcrumbs(lineage) {
-    return _.map(lineage, item => {
-      return { url: item.fullUrl, title: item.title }
+    return map(lineage, item => {
+      let lineageItem
+      let spanishTranslation
+      if (item.spanishTranslation) {
+        spanishTranslation = {
+          url: item.spanishTranslation.fullUrl,
+          title: item.spanishTranslation.title
+        }
+      }
+      lineageItem = { url: item.fullUrl, title: item.title, spanishTranslation }
+
+      if (!spanishTranslation) {
+        delete lineageItem.spanishTranslation
+      }
+
+      return lineageItem
     })
   }
 
