@@ -823,7 +823,7 @@ const TRANSLATIONS = {
     },
     es: {
       headline: '¿No sabe por dónde empezar? Siga estos 10 pasos.',
-      link: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa/?lang=es',
+      link: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa',
       linkText: 'Vea la guía'
     }
   },
@@ -847,7 +847,7 @@ const TRANSLATIONS = {
     },
     es: {
       headline: 'Abra su empresa siguiendo estos 10 pasos',
-      link: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa/?lang=es',
+      link: '/guia-de-negocios/10-pasos-para-iniciar-su-empresa',
       linkText: 'Vea la guía'
     }
   }
