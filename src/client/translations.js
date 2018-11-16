@@ -270,14 +270,6 @@ const TRANSLATIONS = {
       url: '/office-of-inspector-general'
     }
   },
-  learnMore: {
-    en: {
-      text: 'Learn more'
-    },
-    es: {
-      text: 'Aprende más'
-    }
-  },
   learningCenter: {
     en: {
       text: 'Learning Center',

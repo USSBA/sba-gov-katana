@@ -114,7 +114,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
       style={Object {}}
       target="_self"
     >
-      Aprende más
+      Más información
     </a>
   </div>
 </div>
