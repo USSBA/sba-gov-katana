@@ -2,13 +2,10 @@ import React, { PureComponent } from 'react'
 import moment from 'moment'
 import queryString from 'querystring'
 import { chain, isEmpty } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import s from './quick-links.scss'
-import * as ContentActions from '../../../actions/content.js'
-import * as NavigationActions from '../../../actions/navigation.js'
 import { DecorativeDash, Link } from 'atoms'
+import s from './quick-links.scss'
+import { fetchSiteContent } from '../../../fetch-content-helper'
+
 
 function getCurrentFile(files) {
   let found = null
@@ -29,15 +26,18 @@ function formatDate(date) {
 }
 
 class QuickLinks extends PureComponent {
-  componentWillMount() {
-    this.fetchDocuments()
-    this.fetchArticles()
+  async componentWillMount() {
+    this.setState({
+      documents: await this.fetchDocuments(),
+      articles: await this.fetchArticles()
+    })
   }
 
-  fetchDocuments() {
+  async fetchDocuments() {
+    const results = {}
     this.props.data.typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'documentLookup') {
-        this.props.actions.fetchContentIfNeeded('documents-' + index, 'documents', {
+        results['documents-' + index] = await fetchSiteContent('documents', {
           sortBy: 'Last Updated',
           type: isEmpty(quickLink.documentType[0]) ? 'all' : quickLink.documentType[0],
           program: isEmpty(quickLink.documentProgram[0]) ? 'all' : quickLink.documentProgram[0],
@@ -47,12 +47,14 @@ class QuickLinks extends PureComponent {
         })
       }
     })
+    return results
   }
 
-  fetchArticles() {
+  async fetchArticles() {
+    const results = {}
     this.props.data.typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'articleLookup') {
-        this.props.actions.fetchContentIfNeeded('articles-' + index, 'articles', {
+        results['articles-' + index] = await fetchSiteContent('articles', {
           sortBy: 'Last Updated',
           articleCategory: isEmpty(quickLink.articleCategory[0]) ? 'all' : quickLink.articleCategory[0],
           program: isEmpty(quickLink.articleProgram[0]) ? 'all' : quickLink.articleProgram[0],
@@ -61,6 +63,7 @@ class QuickLinks extends PureComponent {
         })
       }
     })
+    return results
   }
 
   generateGrid(length) {
@@ -70,13 +73,14 @@ class QuickLinks extends PureComponent {
 
   renderQuickLinks() {
     let gridClass = this.generateGrid(this.props.data.typeOfLinks.length)
+    const { documents, articles } = this.state
     return this.props.data.typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'documentLookup') {
         return (
           <LatestDocumentsCard
             key={index}
             classname={s.card + ' ' + gridClass}
-            documents={this.props['documents-' + index]}
+            documents={documents['documents-' + index]}
             {...quickLink}
             locationChange={this.props.navigation.locationChange}
           />
@@ -88,7 +92,7 @@ class QuickLinks extends PureComponent {
           <ArticlesCard
             key={index}
             classname={s.card + ' ' + gridClass}
-            articles={this.props['articles-' + index]}
+            articles={articles['articles-' + index]}
             {...quickLink}
           />
         )
@@ -259,24 +263,6 @@ QuickLinks.defaultProps = {
   }
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  const documentsAndArticles = {}
-
-  Object.keys(reduxState.contentReducer).forEach(key => {
-    if (key.includes('documents-') || key.includes('articles-')) {
-      documentsAndArticles[key] = reduxState.contentReducer[key]
-    }
-  })
-  return documentsAndArticles
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch),
-    navigation: bindActionCreators(NavigationActions, dispatch)
-  }
-}
-
 export { QuickLinks }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(QuickLinks)
+export default QuickLinks
