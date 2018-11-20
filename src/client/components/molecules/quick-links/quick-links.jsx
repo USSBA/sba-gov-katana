@@ -26,16 +26,17 @@ function formatDate(date) {
 }
 
 class QuickLinks extends PureComponent {
-  async componentWillMount() {
+  componentWillMount() {
     this.setState({
-      documents: await this.fetchDocuments(),
-      articles: await this.fetchArticles()
-    })
+      documents: this.fetchDocuments(),
+      articles: this.fetchArticles()
+   })
   }
 
   async fetchDocuments() {
     const results = {}
-    this.props.data.typeOfLinks.map((quickLink, index) => {
+    const { typeOfLinks } = this.props.data
+    typeOfLinks.map(async (quickLink, index) => {
       if (quickLink.type === 'documentLookup') {
         results['documents-' + index] = await fetchSiteContent('documents', {
           sortBy: 'Last Updated',
@@ -52,7 +53,8 @@ class QuickLinks extends PureComponent {
 
   async fetchArticles() {
     const results = {}
-    this.props.data.typeOfLinks.map((quickLink, index) => {
+    const { typeOfLinks } = this.props.data
+    typeOfLinks.map(async (quickLink, index) => {
       if (quickLink.type === 'articleLookup') {
         results['articles-' + index] = await fetchSiteContent('articles', {
           sortBy: 'Last Updated',
