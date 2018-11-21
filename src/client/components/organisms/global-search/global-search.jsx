@@ -1,15 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty } from 'lodash'
-import { bindActionCreators } from 'redux'
-
-import styles from './global-search.scss'
 import { Button, MultiSelect } from 'atoms'
 import { CoursesLayout } from 'organisms'
-import * as ContentActions from '../../../actions/content.js'
+import styles from './global-search.scss'
 import { logPageEvent } from '../../../services/analytics.js'
 import { logEvent } from '../../../services/analytics.js'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 const createSlug = str => {
   return str
@@ -18,26 +15,29 @@ const createSlug = str => {
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, '')
 }
-export class GlobalSearch extends React.PureComponent {
+class GlobalSearch extends React.PureComponent {
   constructor() {
     super()
     this.state = {
-      filterValues: {}
+      filterValues: {},
+      taxonomies: []
     }
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const topicQuery = this.props.location.query.topic
-
-    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
-      names: this.props.taxonomyFilters.join(',')
-    })
+    const taxonomies = await this.getTaxonomies(this.props.taxonomyFilters)
 
     if (this.props.type === 'courses' && topicQuery) {
-      return this.setState(
-        { filterValues: { businessStage: topicQuery, sortBy: this.props.defaultSortBy } },
-        () => {
-          this.getContent(this.state.filterValues)
+      return this.setState({
+        filterValues: {
+          businessStage: topicQuery,
+          sortBy: this.props.defaultSortBy
+        },
+        taxonomies
+      },
+        async () => {
+          await this.getContent(this.state.filterValues)
         }
       )
     }
@@ -45,11 +45,21 @@ export class GlobalSearch extends React.PureComponent {
     const filterValuesWithSortByOption = Object.assign({}, this.state.filterValues, {
       sortBy: this.props.defaultSortBy
     })
-    return this.getContent(filterValuesWithSortByOption)
+    return await this.getContent(filterValuesWithSortByOption)
   }
 
-  getContent(filters) {
-    this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, filters)
+  async getTaxonomies(taxonomyFilters) {
+    const taxonomies = await fetchSiteContent('taxonomys', {
+      names: taxonomyFilters.join(',')
+    })
+    return taxonomies
+  }
+
+  async getContent(filters) {
+    const results = await fetchSiteContent(this.props.type, filters)    
+    this.setState({
+      items: results
+    })
   }
 
   handleChange(event, selectStateKey) {
@@ -150,19 +160,21 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   submit() {
+    const { taxonomies } = this.state
+
     const queryParams = this.props.location.query
     let query
 
     if (
       this.props.type === 'courses' &&
       queryParams.topic &&
-      this.props.taxonomies.indexOf(queryParams.topic) >= 0
+      taxonomies.indexOf(queryParams.topic) >= 0
     ) {
       this.setState({
         filterValues: { businessStage: queryParams.topic, sortBy: this.props.defaultSortBy }
       })
       query = { businessStage: queryParams.topic }
-    } else if (this.props.taxonomies.indexOf(queryParams.topic) < 0) {
+    } else if (taxonomies.indexOf(queryParams.topic) < 0) {
       query = this.state.filterValues
     }
 
@@ -174,7 +186,12 @@ export class GlobalSearch extends React.PureComponent {
     const filterValuesWithSortByOption = Object.assign({}, this.state.filterValues, {
       sortBy: this.props.defaultSortBy
     })
-    this.getContent(filterValuesWithSortByOption)
+
+    this.setState({
+      items: 'IS_LOADING'
+    }, () => {
+      this.getContent(filterValuesWithSortByOption)
+    })
   }
 
   renderItems(items) {
@@ -193,13 +210,15 @@ export class GlobalSearch extends React.PureComponent {
   }
 
   render() {
+    const { taxonomies, items } = this.state
+
     return (
       <div>
         <div className={styles.banner}>
           <h2 className={styles.header}>{this.props.title}</h2>
-          {this.props.taxonomies && (
+          {taxonomies && (
             <form onSubmit={this.onSubmit.bind(this)}>
-              {this.renderMultiSelects(this.props.taxonomies)}
+              {this.renderMultiSelects(taxonomies)}
               <div className={styles.applyButton}>
                 <Button primary alternate type="submit">
                   Apply
@@ -208,24 +227,13 @@ export class GlobalSearch extends React.PureComponent {
             </form>
           )}
         </div>
-        {this.props.items && <div>{this.renderItems(this.props.items)}</div>}
+        {items && items !== 'IS_LOADING' && <div>{this.renderItems(items)}</div>}
       </div>
     )
   }
 }
 
-function mapReduxStateToProps(reduxState, props) {
-  return {
-    taxonomies: reduxState.contentReducer.taxonomies,
-    items: reduxState.contentReducer[props.type],
-    location: props.location
-  }
+export default GlobalSearch
+export {
+  GlobalSearch
 }
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(GlobalSearch)

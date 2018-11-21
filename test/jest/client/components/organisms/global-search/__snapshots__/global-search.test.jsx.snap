@@ -10,6 +10,20 @@ exports[`GlobalSearch should render with one taxonomyFilter 1`] = `
     >
       My Courses
     </h2>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="applyButton"
+      >
+        <button
+          className="button alternate large primary responsive spacing"
+          type="submit"
+        >
+          Apply
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 `;
@@ -24,6 +38,20 @@ exports[`GlobalSearch should render with two taxonomyFilter 1`] = `
     >
       My Courses
     </h2>
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="applyButton"
+      >
+        <button
+          className="button alternate large primary responsive spacing"
+          type="submit"
+        >
+          Apply
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 `;
