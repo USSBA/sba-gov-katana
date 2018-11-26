@@ -9,8 +9,6 @@ import mockGetContentData from '../../test-data/global-search-get-content-data.j
 
 jest.mock('../../../../../../src/client/services/utils.js')
 
-const fetchContentIfNeeded = jest.fn()
-
 const testPropsOne = {
   title: 'My Courses',
   type: 'courses',
@@ -66,6 +64,7 @@ describe('GlobalSearch', () => {
     const props = _.clone(testPropsOne)
     const component = renderer.create(<GlobalSearch {...props} />)
     const tree = component.toJSON()
+    expect(tree).toMatchSnapshot()
   })
 
   test('should render with two taxonomyFilter', () => {
