@@ -219,7 +219,7 @@ const TRANSLATIONS = {
     },
     es: {
       text: 'Para los socios',
-      url: '/partners'
+      url: '/para-los-socios'
     }
   },
   fundingPrograms: {
