@@ -234,6 +234,3 @@ class GlobalSearch extends React.PureComponent {
 }
 
 export default GlobalSearch
-export {
-  GlobalSearch
-}

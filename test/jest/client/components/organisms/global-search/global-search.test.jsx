@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import _ from 'lodash'
 import { shallow } from 'enzyme'
 
-import { GlobalSearch } from 'organisms/global-search/global-search'
+import GlobalSearch from 'organisms/global-search/global-search'
 
 import mockGetContentData from '../../test-data/global-search-get-content-data.json'
 
