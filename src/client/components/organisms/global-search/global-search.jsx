@@ -27,8 +27,9 @@ class GlobalSearch extends React.PureComponent {
   async componentWillMount() {
     const topicQuery = this.props.location.query.topic
     const taxonomies = await this.getTaxonomies(this.props.taxonomyFilters)
-
-    if (this.props.type === 'courses' && topicQuery) {
+    
+    if (this.props.type === 'courses') {
+      let topic = topicQuery || 'All'
       return this.setState({
         filterValues: {
           businessStage: topicQuery,
