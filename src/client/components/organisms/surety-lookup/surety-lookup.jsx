@@ -23,9 +23,13 @@ class SuretyLookup extends React.Component {
   }
 
   async componentWillMount() {
-    this.setState({
-      states: await this.fetchStates()
-    })
+    const states = await this.fetchStates()
+
+    if (states) {
+      this.setState({
+        states: states
+      })
+    }
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
@@ -35,13 +39,17 @@ class SuretyLookup extends React.Component {
   }
 
   async fetchStates() {
-    const result = (await fetchSiteContent('taxonomys', {
+    let states
+    const result = await fetchSiteContent('taxonomys', {
       names: 'state'
-    }))[0]
-    return {
-      name: result.name,
-      terms: result.terms
+    })
+
+    if (result.length > 0) {
+      const { name, terms } = result[0]
+      states = { name, terms }
     }
+
+    return states
   }
 
   handleSelect(e) {
