@@ -1,8 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as ContentActions from '../../../actions/content.js'
-import { find, cloneDeep, isEmpty } from 'lodash'
+import { fetchSiteContent } from '../../../fetch-content-helper'
+import { find, isEmpty } from 'lodash'
 
 import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
@@ -23,19 +21,21 @@ class OfficeLookupPage extends React.Component {
 
   componentWillMount() {
     const necessaryTaxonomies = ['officeType', 'officeService']
-    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
+    fetchSiteContent('taxonomys', {
       names: necessaryTaxonomies.join(',')
+    }).then(results => {
+      this.setState({ taxonomies: results })
     })
   }
 
   getTaxonomy(name) {
-    if (!this.props.taxonomies) {
+    if (!this.state.taxonomies) {
       return {
         name: '',
         terms: []
       }
     }
-    const taxonomy = find(this.props.taxonomies, { name: name }) || { name: '', terms: [] }
+    const taxonomy = find(this.state.taxonomies, { name: name }) || { name: '', terms: [] }
     return taxonomy
   }
 
@@ -178,21 +178,4 @@ class OfficeLookupPage extends React.Component {
   }
 }
 
-function mapReduxStateToProps(reduxState, props) {
-  return {
-    taxonomies: reduxState.contentReducer.taxonomies,
-    location: props.location
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(OfficeLookupPage)
-export { OfficeLookupPage }
+export default OfficeLookupPage

@@ -1,10 +1,7 @@
 import React, { PureComponent } from 'react'
-import _ from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { isEmpty } from 'lodash'
 import CourseView from './course.view.jsx'
-import * as ContentActions from '../../../actions/content.js'
-import * as NavigationActions from '../../../actions/navigation.js'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class Course extends PureComponent {
   constructor() {
@@ -23,14 +20,14 @@ class Course extends PureComponent {
     }
 
     // fetch course
-    this.props.actions.fetchContentIfNeeded('course', 'course', {
+    fetchSiteContent('course', {
       pathname
-    })
+    }).then(result => this.mapCourseData.bind(this, result)())
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!_.isEmpty(nextProps.course)) {
-      const data = nextProps.course
+  mapCourseData(courseData) {
+    if (!isEmpty(courseData)) {
+      const data = courseData
 
       const props = {
         title: data.title,
@@ -39,7 +36,7 @@ class Course extends PureComponent {
         course: {
           url: data.courseUrl.url //'https://www.sba.gov/media/training/howtowriteabusinessplan_02022017/story.html'
         },
-        isLoaded: nextProps.course.isFound
+        isLoaded: data.isFound
       }
 
       // add breadcrumbs
@@ -53,11 +50,10 @@ class Course extends PureComponent {
           title: 'Search results'
         },
         {
-          url: this.location,
+          url: data.location,
           title: data.title
         }
       ]
-
       // set tags
       props.tags = data.courseCategory.map
         ? data.courseCategory.map(category => {
@@ -81,7 +77,6 @@ class Course extends PureComponent {
       // disable relatedCourses and relatedArticles
       props.relatedCourses = []
       props.relatedArticles = []
-
       this.setState(props)
     }
   }
@@ -94,22 +89,4 @@ class Course extends PureComponent {
     )
   }
 }
-
-function mapReduxStateToProps(reduxState) {
-  const { course } = reduxState.contentReducer
-
-  const data = {
-    course
-  }
-
-  return data
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch),
-    navigation: bindActionCreators(NavigationActions, dispatch)
-  }
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Course)
+export default Course

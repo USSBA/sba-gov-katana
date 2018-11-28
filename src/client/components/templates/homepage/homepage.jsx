@@ -1,35 +1,44 @@
 import React, { PropTypes } from 'react'
-import path from 'path'
 import { kebabCase } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import styles from './homepage.scss'
-import * as ContentActions from '../../../actions/content'
 import * as LoadingActions from '../../../actions/loading'
-import { FrontPageHero, MenuTileCollection } from 'organisms'
-import { makeParagraphs, wrapParagraphs, makeSectionHeaderId } from '../paragraph-mapper'
+import { fetchSiteContent, fetchRestContent } from '../../../fetch-content-helper'
+import { FrontPageHero } from 'organisms'
+import { makeParagraphs, wrapParagraphs } from '../paragraph-mapper'
 import { findSection } from '../../../services/menu'
 
 class Homepage extends React.Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
   static propTypes = {
     // TODO: PropTypes.shape({})
-    // data: PropTypes.object.isRequired,
-    fetchContentIfNeeded: PropTypes.func.isRequired,
     removeLoader: PropTypes.func.isRequired
-    // siteMap: PropTypes.array.isRequired
+  }
+
+  async fetchHomepageData() {
+    let siteMap = await fetchSiteContent('siteMap')
+    let homepageNodeId = findSection(siteMap, 'home-page')
+    if (homepageNodeId && homepageNodeId.node) {
+      let homepageData = await fetchRestContent('node', homepageNodeId.node)
+      return { data: homepageData, siteMap }
+    }
   }
 
   componentDidMount() {
-    const { fetchContentIfNeeded, removeLoader } = this.props
-    fetchContentIfNeeded('siteMap', 'siteMap')
-      .then(({ data }) => findSection(data, 'home-page'))
-      .then(({ node }) => fetchContentIfNeeded('node', path.join('node', node)))
+    const { removeLoader } = this.props
+    this.fetchHomepageData()
+      .then(result => this.setState(result))
       .then(() => removeLoader())
   }
 
   render() {
-    const { data, siteMap, removeLoader } = this.props
+    const { data, siteMap } = this.state
 
     if (!data) {
       return null
@@ -56,7 +65,9 @@ class Homepage extends React.Component {
           <FrontPageHero hero={hero} button={buttons[0]} />
         </div>
         {paragraphElements.map(element => {
-          const { props: { id } } = element
+          const {
+            props: { id }
+          } = element
           const sectionClassName = id.startsWith('panelMenu')
             ? styles.sectionPanelMenu
             : styles.sectionWithPadding
@@ -72,13 +83,11 @@ class Homepage extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { contentReducer: { node, siteMap } } = state
-  return { data: node, siteMap }
+  return {}
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    ...bindActionCreators(ContentActions, dispatch),
     ...bindActionCreators(LoadingActions, dispatch)
   }
 }
