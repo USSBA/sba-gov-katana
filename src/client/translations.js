@@ -328,6 +328,14 @@ const TRANSLATIONS = {
       url: '/user/logout'
     }
   },
+  lookUpYourState: {
+    en: {
+      text: 'Look up your state'
+    },
+    es: {
+      text: 'Encuentra tu estado'
+    }
+  },
   mediaAndPressRelations: {
     en: {
       text: 'Media and Press Relations',

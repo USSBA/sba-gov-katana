@@ -4,6 +4,8 @@ import _ from 'lodash'
 import states from '../../../services/us-states.json'
 import styles from './contact-card-lookup.scss'
 import { LinkCard, MultiSelect } from 'atoms'
+import { getLanguageOverride } from '../../../services/utils.js'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class ContactCardLookup extends React.Component {
   constructor() {
@@ -76,11 +78,16 @@ class ContactCardLookup extends React.Component {
       multi: false,
       onFocus: this.handleFocus.bind(this)
     }
+    const langCode = getLanguageOverride()
+    const lookUpYourStateLabel =
+      langCode && langCode.startsWith('es')
+        ? TRANSLATIONS['lookUpYourState']['es'].text
+        : TRANSLATIONS['lookUpYourState']['en'].text
     return (
       <div>
         <div className={styles.container}>
           <h4 key={6} className={styles.title}>
-            {this.props.title || 'Look up your state'}
+            {this.props.title || lookUpYourStateLabel}
           </h4>
           <div key={1} className={styles.selectContainer}>
             <MultiSelect {...multiselectProps} />
