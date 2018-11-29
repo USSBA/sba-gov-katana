@@ -1,12 +1,9 @@
 import React from 'react'
-import { assign, filter } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import styles from './lookup.scss'
-import * as ContentActions from '../../../actions/content.js'
+import { assign } from 'lodash'
 import { ContactCard, ContactCardLookup } from 'molecules'
 import { SbicLookup, SuretyLookup } from 'organisms'
+import styles from './lookup.scss'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import { logEvent } from '../../../services/analytics.js'
 
 class Lookup extends React.Component {
@@ -17,18 +14,21 @@ class Lookup extends React.Component {
     }
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const { subtype, type } = this.props
     const queryArgs = subtype
       ? {
           category: subtype
         }
       : null
-    this.props.actions.fetchContentIfNeeded(type, type, queryArgs)
+    this.setState({
+      filteredItems: await this.getData(type, queryArgs)
+    })
   }
 
-  componentWillReceiveProps(nextProps, ownProps) {
-    this.setState({ filteredItems: nextProps.items })
+  async getData(type, queryArgs) {
+    const result = await fetchSiteContent(type, queryArgs)
+    return result;
   }
 
   fireEvent(category, action, value) {
@@ -98,15 +98,4 @@ Lookup.defaultProps = {
   items: []
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  return {
-    items: reduxState.contentReducer[ownProps.type]
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Lookup)
+export default Lookup
