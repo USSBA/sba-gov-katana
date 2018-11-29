@@ -33,18 +33,7 @@ exports[`QuickLinks Future effective date is not displayed 1`] = `
     />
     <div>
       <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          SOP 691 - Document Title 2
-        </a>
-        <div
-          className="date"
-        >
-          Mar 26, 1991
-        </div>
+        loading
       </div>
     </div>
   </div>
@@ -84,18 +73,7 @@ exports[`QuickLinks Most recent effective date displayed 1`] = `
     />
     <div>
       <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          SOP 873 - Document Title 1
-        </a>
-        <div
-          className="date"
-        >
-          Sep 4, 2016
-        </div>
+        loading
       </div>
     </div>
   </div>
@@ -135,18 +113,7 @@ exports[`QuickLinks No SOP number so it is not displayed 1`] = `
     />
     <div>
       <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          Document Title 4
-        </a>
-        <div
-          className="date"
-        >
-          Mar 26, 1991
-        </div>
+        loading
       </div>
     </div>
   </div>
@@ -186,18 +153,7 @@ exports[`QuickLinks SOP number exists and is displayed 1`] = `
     />
     <div>
       <div>
-        <a
-          onClick={[Function]}
-          style={Object {}}
-          target="_self"
-        >
-          SOP 42 - Document Title 3
-        </a>
-        <div
-          className="date"
-        >
-          Sep 4, 2013
-        </div>
+        loading
       </div>
     </div>
   </div>

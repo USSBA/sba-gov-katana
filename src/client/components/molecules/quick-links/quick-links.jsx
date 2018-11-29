@@ -24,46 +24,61 @@ function formatDate(date) {
   return moment(date).format('MMM D, YYYY')
 }
 
+const valueOrAll = value => (isEmpty(value[0]) ? 'all' : value[0])
+
 class QuickLinks extends PureComponent {
-  componentWillMount() {
+  constructor(props) {
+    super(props)
+    this.state = { article: [], documents: [] }
+  }
+
+  async componentDidMount() {
     this.setState({
-      documents: this.fetchDocuments(),
-      articles: this.fetchArticles()
+      documents: await this.fetchDocuments(),
+      articles: await this.fetchArticles()
     })
   }
 
   async fetchDocuments() {
     const results = {}
     const { typeOfLinks } = this.props.data
-    typeOfLinks.map(async (quickLink, index) => {
-      if (quickLink.type === 'documentLookup') {
-        results['documents-' + index] = await fetchSiteContent('documents', {
+
+    for (const [index, quickLink] of typeOfLinks.entries()) {
+      const { documentActivity, documentType, documentProgram, type } = quickLink
+
+      if (type === 'documentLookup') {
+        results[`documents-${index}`] = await fetchSiteContent('documents', {
           sortBy: 'Last Updated',
-          type: isEmpty(quickLink.documentType[0]) ? 'all' : quickLink.documentType[0],
-          program: isEmpty(quickLink.documentProgram[0]) ? 'all' : quickLink.documentProgram[0],
-          activity: isEmpty(quickLink.documentActivity[0]) ? 'all' : quickLink.documentActivity[0],
+          type: valueOrAll(documentType),
+          program: valueOrAll(documentProgram),
+          activity: valueOrAll(documentActivity),
           start: 0,
           end: 3
         })
       }
-    })
+    }
+
     return results
   }
 
   async fetchArticles() {
     const results = {}
     const { typeOfLinks } = this.props.data
-    typeOfLinks.map(async (quickLink, index) => {
-      if (quickLink.type === 'articleLookup') {
-        results['articles-' + index] = await fetchSiteContent('articles', {
+
+    for (const [index, quickLink] of typeOfLinks.entries()) {
+      const { articleCategory, articleProgram, type } = quickLink
+
+      if (type === 'articleLookup') {
+        results[`articles-${index}`] = await fetchSiteContent('articles', {
           sortBy: 'Last Updated',
-          articleCategory: isEmpty(quickLink.articleCategory[0]) ? 'all' : quickLink.articleCategory[0],
-          program: isEmpty(quickLink.articleProgram[0]) ? 'all' : quickLink.articleProgram[0],
+          articleCategory: valueOrAll(articleCategory),
+          program: valueOrAll(articleProgram),
           start: 0,
           end: 3
         })
       }
-    })
+    }
+
     return results
   }
 
@@ -73,9 +88,13 @@ class QuickLinks extends PureComponent {
   }
 
   renderQuickLinks() {
-    let gridClass = this.generateGrid(this.props.data.typeOfLinks.length)
+    const {
+      data: { typeOfLinks }
+    } = this.props
     const { documents, articles } = this.state
-    return this.props.data.typeOfLinks.map((quickLink, index) => {
+    const gridClass = this.generateGrid(typeOfLinks.length)
+
+    return typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'documentLookup') {
         return (
           <LatestDocumentsCard
