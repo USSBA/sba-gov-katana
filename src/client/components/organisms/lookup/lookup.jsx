@@ -22,13 +22,8 @@ class Lookup extends React.Component {
         }
       : null
     this.setState({
-      filteredItems: await this.getData(type, queryArgs)
+      filteredItems: await fetchSiteContent(type, queryArgs)
     })
-  }
-
-  async getData(type, queryArgs) {
-    const result = await fetchSiteContent(type, queryArgs)
-    return result;
   }
 
   fireEvent(category, action, value) {
