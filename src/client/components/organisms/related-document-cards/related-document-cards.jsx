@@ -1,10 +1,7 @@
 import React from 'react'
 import _ from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { DetailCardCollection } from 'organisms'
-import * as ContentActions from '../../../actions/content'
-import * as NavigationActions from '../../../actions/navigation'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import queryString from 'querystring'
 import { logPageEvent } from '../../../services/analytics'
 import s from './related-document-cards.scss'
@@ -17,21 +14,22 @@ class RelatedDocumentCards extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const { data: { relatedDocuments }, fetchContentIfNeeded } = this.props
+  async componentDidMount() {
+    const {
+      data: { relatedDocuments }
+    } = this.props
+    const relatedDocumentsData = []
 
-    Promise.all(
-      relatedDocuments.map(documentId => {
-        return fetchContentIfNeeded('node', `node/${documentId}`)
-      })
-    ).then(relatedDocumentsData => {
-      return this.sortRelatedDocuments(
-        relatedDocumentsData
-          .map(({ data }) => data)
-          // Gracefully handle related documents that have been deleted.
-          .filter(data => data)
-      )
-    })
+    for (let i = 0; i < relatedDocuments.length; i++) {
+      let data = await this.getRelatedDocument(relatedDocuments[i])
+      relatedDocumentsData.push(data)
+    }
+
+    this.sortRelatedDocuments(relatedDocumentsData)
+  }
+
+  getRelatedDocument(documentId) {
+    return fetchSiteContent(`node/${documentId}`)
   }
 
   sortRelatedDocuments(relatedDocuments) {
@@ -102,12 +100,4 @@ class RelatedDocumentCards extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    ...bindActionCreators(NavigationActions, dispatch),
-    ...bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(null, mapDispatchToProps)(RelatedDocumentCards)
-export { RelatedDocumentCards }
+export default RelatedDocumentCards
