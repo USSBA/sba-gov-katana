@@ -6,7 +6,6 @@ import { DecorativeDash, Link } from 'atoms'
 import s from './quick-links.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
-
 function getCurrentFile(files) {
   let found = null
 
@@ -30,7 +29,7 @@ class QuickLinks extends PureComponent {
     this.setState({
       documents: this.fetchDocuments(),
       articles: this.fetchArticles()
-   })
+    })
   }
 
   async fetchDocuments() {
@@ -84,7 +83,6 @@ class QuickLinks extends PureComponent {
             classname={s.card + ' ' + gridClass}
             documents={documents['documents-' + index]}
             {...quickLink}
-            locationChange={this.props.navigation.locationChange}
           />
         )
       } else if (quickLink.type === 'ratesList') {
