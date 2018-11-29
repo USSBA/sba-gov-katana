@@ -14,11 +14,18 @@ jest.mock('client/services/client-config.js', function() {
 const fetchContentIfNeeded = jest.fn()
 
 describe('QuickLinks', () => {
+
+  var mockFetchDocuments
+  beforeEach(() => {
+    mockFetchDocuments = jest.spyOn(QuickLinks.prototype, 'fetchDocuments')
+  })
+
+  afterEach(() => {
+    mockFetchDocuments.mockRestore()
+  })
+
   test('to match snapshot', () => {
     const testProps = {
-      actions: {
-        fetchContentIfNeeded: fetchContentIfNeeded
-      },
       navigation: {
         locationChange: {}
       }
@@ -143,15 +150,15 @@ describe('QuickLinks', () => {
       ]
     }
     const testProps = {
-      actions: {
-        fetchContentIfNeeded: fetchContentIfNeeded
-      },
       navigation: {
         locationChange: {}
       },
       data: mockData,
-      'documents-0': mockDocuments
     }
+
+    mockFetchDocuments.mockReturnValue({
+      'documents-0': mockDocuments
+    })
 
     const component = renderer.create(<QuickLinks {...testProps} />)
     const tree = component.toJSON()
@@ -229,15 +236,15 @@ describe('QuickLinks', () => {
       ]
     }
     const testProps = {
-      actions: {
-        fetchContentIfNeeded: fetchContentIfNeeded
-      },
       navigation: {
         locationChange: {}
       },
-      data: mockData,
-      'documents-0': mockDocuments
+      data: mockData
     }
+
+    mockFetchDocuments.mockReturnValue({
+      'documents-0': mockDocuments
+    })
 
     const component = renderer.create(<QuickLinks {...testProps} />)
     const tree = component.toJSON()
@@ -338,15 +345,15 @@ describe('QuickLinks', () => {
       ]
     }
     const testProps = {
-      actions: {
-        fetchContentIfNeeded: fetchContentIfNeeded
-      },
       navigation: {
         locationChange: {}
       },
-      data: mockData,
-      'documents-0': mockDocuments
+      data: mockData
     }
+
+    mockFetchDocuments.mockReturnValue({
+      'documents-0': mockDocuments
+    })
 
     const component = renderer.create(<QuickLinks {...testProps} />)
     const tree = component.toJSON()
@@ -412,15 +419,15 @@ describe('QuickLinks', () => {
       ]
     }
     const testProps = {
-      actions: {
-        fetchContentIfNeeded: fetchContentIfNeeded
-      },
       navigation: {
         locationChange: {}
       },
-      data: mockData,
-      'documents-0': mockDocuments
+      data: mockData
     }
+
+    mockFetchDocuments.mockReturnValue({
+      'documents-0': mockDocuments
+    })
 
     const component = renderer.create(<QuickLinks {...testProps} />)
     const tree = component.toJSON()

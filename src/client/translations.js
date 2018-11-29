@@ -219,7 +219,7 @@ const TRANSLATIONS = {
     },
     es: {
       text: 'Para los socios',
-      url: '/partners'
+      url: '/para-los-socios'
     }
   },
   fundingPrograms: {
@@ -326,6 +326,14 @@ const TRANSLATIONS = {
     es: {
       text: 'Cerrar sesión',
       url: '/user/logout'
+    }
+  },
+  lookUpYourState: {
+    en: {
+      text: 'Look up your state'
+    },
+    es: {
+      text: 'Encuentra tu estado'
     }
   },
   mediaAndPressRelations: {

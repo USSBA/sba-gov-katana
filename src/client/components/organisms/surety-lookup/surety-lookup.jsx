@@ -1,15 +1,12 @@
 import React from 'react'
 import _ from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import s from './surety-lookup.scss'
-import * as ContentActions from '../../../actions/content.js'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import { MultiSelect } from 'atoms'
 import { CardGrid, Paginator } from 'molecules'
 
 var pageSize = 9
-var dataProp = 'statesTaxonomy'
 class SuretyLookup extends React.Component {
   constructor(ownProps) {
     super()
@@ -17,20 +14,42 @@ class SuretyLookup extends React.Component {
       filteredContacts: _.sortBy(ownProps.items, 'title') || [],
       suretyState: null,
       pageNumber: 1,
-      numberOfTimesUserHasSelectedAState: 0
+      numberOfTimesUserHasSelectedAState: 0,
+      states: {
+        name: 'state',
+        terms: []
+      }
     }
   }
 
-  componentWillMount() {
-    this.props.actions.fetchContentIfNeeded(dataProp, 'taxonomys', {
-      names: 'state'
-    })
+  async componentWillMount() {
+    const states = await this.fetchStates()
+
+    if (states) {
+      this.setState({
+        states: states
+      })
+    }
   }
 
   componentWillReceiveProps(nextProps, ownProps) {
     this.setState({
       filteredContacts: _.sortBy(nextProps.items, 'title')
     })
+  }
+
+  async fetchStates() {
+    let states
+    const result = await fetchSiteContent('taxonomys', {
+      names: 'state'
+    })
+
+    if (result.length > 0) {
+      const { name, terms } = result[0]
+      states = { name, terms }
+    }
+
+    return states
   }
 
   handleSelect(e) {
@@ -66,7 +85,7 @@ class SuretyLookup extends React.Component {
   }
 
   multiSelectProps() {
-    let options = this.props.states.terms.map(state => {
+    let options = this.state.states.terms.map(state => {
       return { label: state, value: state }
     })
     options.push({ label: '', value: null })
@@ -171,26 +190,4 @@ const EmptyContacts = () => (
   </div>
 )
 
-SuretyLookup.defaultProps = {
-  states: {
-    name: 'state',
-    terms: []
-  }
-}
-
-function mapReduxStateToProps(reduxState, ownProps) {
-  if (reduxState.contentReducer[dataProp]) {
-    return {
-      states: reduxState.contentReducer[dataProp][0]
-    }
-  } else {
-    return {}
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SuretyLookup)
+export default SuretyLookup
