@@ -7,7 +7,7 @@ import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
 import { PrimarySearchBar, Results, OfficeResult, OfficeMap, DefaultOfficeResult } from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
-class OfficeLookupPage extends React.Component {
+class OfficeLookupPage extends React.PureComponent {
   constructor() {
     super()
 
@@ -15,8 +15,13 @@ class OfficeLookupPage extends React.Component {
       selectedItem: {},
       newCenter: {},
       shouldCenterMap: false,
-      hoveredMarkerId: ''
+      hoveredMarkerId: '',
+      taxonomies: null
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.taxonomies
   }
 
   componentWillMount() {

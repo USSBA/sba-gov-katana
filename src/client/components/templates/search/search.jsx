@@ -177,7 +177,7 @@ class SearchTemplate extends React.PureComponent {
       search: `?${stringify(urlParams)}`
     })
 
-    let me = this
+    let _this = this
     this.setState(
       {
         isLoading: true,
@@ -188,8 +188,8 @@ class SearchTemplate extends React.PureComponent {
           let items = []
           let count = 0
           let hasNoResults
-          let isLoading = me.props.isLoading
-          let isZeroState = me.props.isZeroState
+          let isLoading = _this.props.isLoading
+          let isZeroState = _this.props.isZeroState
           let defaultResults = []
           if (searchResults) {
             items = searchResults.hit
@@ -202,7 +202,7 @@ class SearchTemplate extends React.PureComponent {
 
           return {
             items,
-            location: me.props.location,
+            location: _this.props.location,
             count,
             hasNoResults,
             isLoading,
