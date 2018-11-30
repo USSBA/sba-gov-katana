@@ -100,7 +100,7 @@ class OfficeLookupPage extends React.Component {
             queryParamName="q"
             className={styles.field + ' ' + styles.search}
             label="Find"
-            placeholder="Counseling, training, mentoring..."
+            placeholder="Search by keyword"
             validationState={''}
             showSearchIcon={true}
           />
@@ -191,5 +191,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(OfficeLookupPage)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(OfficeLookupPage)
 export { OfficeLookupPage }
