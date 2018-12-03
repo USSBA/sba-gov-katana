@@ -1,12 +1,12 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import { assign, camelCase, chain, includes, pickBy, startCase, isEmpty } from 'lodash'
+import { camelCase, startCase } from 'lodash'
 import { Button, MultiSelect } from 'atoms'
 import { CoursesLayout } from 'organisms'
 import styles from './global-search.scss'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import { logPageEvent } from '../../../services/analytics.js'
 import { logEvent } from '../../../services/analytics.js'
-import { fetchSiteContent } from '../../../fetch-content-helper'
 
 const createSlug = str => {
   return str
