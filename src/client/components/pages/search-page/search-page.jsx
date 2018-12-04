@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react'
 import { isEmpty } from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './search-page.scss'
-import * as ContentActions from '../../../actions/content.js'
 import { Button, Link, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { logPageEvent } from '../../../services/analytics.js'
@@ -70,11 +68,28 @@ class SearchPage extends PureComponent {
           let newStartValue = 0
           pageNumber > 1 ? (newStartValue = (pageNumber - 1) * 10) : (newStartValue = 0)
 
-          this.props.actions.fetchContentIfNeeded('search', 'search', {
+          fetchSiteContent('search', {
             term: searchTerm,
             pageNumber: pageNumber,
             pageSize: this.state.pageSize,
             start: newStartValue
+          }).then(results => {
+            let searchResults = []
+            let itemCount = 0
+            let hasNoResults = false
+
+            if (!isEmpty(results)) {
+              searchResults = results.hits.hit
+              itemCount = results.hits.found
+              hasNoResults = results.hasNoResults
+            }
+
+            let newState = {
+              searchResults,
+              itemCount,
+              hasNoResults
+            }
+            this.setState(newState)
           })
         }
       )
@@ -333,30 +348,6 @@ const ResultsList = props => {
   )
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  let searchResults = []
-  let itemCount = 0
-  let hasNoResults = false
-
-  if (!isEmpty(reduxState.contentReducer.search)) {
-    searchResults = reduxState.contentReducer.search.hits.hit
-    itemCount = reduxState.contentReducer.search.hits.found
-    hasNoResults = reduxState.contentReducer.search.hasNoResults
-  }
-
-  return {
-    searchResults,
-    itemCount,
-    hasNoResults
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchPage)
+export default SearchPage
 
 export { SearchPage, SearchBar, ResultsList }

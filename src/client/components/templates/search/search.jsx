@@ -1,12 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
-import { bindActionCreators } from 'redux'
-
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
-import * as ContentActions from '../../../actions/content.js'
 import PropTypes from 'prop-types'
 import styles from './search.scss'
 
@@ -63,7 +60,9 @@ class SearchTemplate extends React.PureComponent {
     delete queryParams.pageSize
     //calculate the actual  start value from the pageNumber parameter
     let { pageNumber } = queryParams
-    const { searchParams: { pageSize } } = this.state
+    const {
+      searchParams: { pageSize }
+    } = this.state
     pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
     //not using the calculate startIndex function here because we won't know the count yet
     queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
@@ -178,18 +177,48 @@ class SearchTemplate extends React.PureComponent {
       search: `?${stringify(urlParams)}`
     })
 
+    let _this = this
     this.setState(
       {
         isLoading: true,
         submittedSearchParams: filteredSearchParams
       },
-      () => this.props.actions.fetchContentIfNeeded(searchType, searchType, filteredSearchParams)
+      () =>
+        fetchSiteContent(searchType, filteredSearchParams).then(searchResults => {
+          let items = []
+          let count = 0
+          let hasNoResults
+          let isLoading = _this.props.isLoading
+          let isZeroState = _this.props.isZeroState
+          let defaultResults = []
+          if (searchResults) {
+            items = searchResults.hit
+            count = searchResults.found
+            defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
+            hasNoResults = count === 0
+            isLoading = false
+            isZeroState = false
+          }
+
+          return {
+            items,
+            location: _this.props.location,
+            count,
+            hasNoResults,
+            isLoading,
+            isZeroState,
+            defaultResults
+          }
+        })
     )
   }
 
   renderPaginator() {
     const { count } = this.props
-    const { results, searchParams: { pageSize } } = this.state
+    const {
+      results,
+      searchParams: { pageSize }
+    } = this.state
     const pageNumber = this.calculatePageNumber()
 
     let result = <div />
@@ -262,7 +291,11 @@ class SearchTemplate extends React.PureComponent {
   }
 
   render() {
-    const { results, searchParams: { pageSize }, defaultResults } = this.state
+    const {
+      results,
+      searchParams: { pageSize },
+      defaultResults
+    } = this.state
     const { children, count, extraClassName, paginate, isZeroState } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
@@ -322,39 +355,4 @@ SearchTemplate.defaultProps = {
   onPaginate: () => {}
 }
 
-function mapReduxStateToProps(reduxState, props) {
-  let items = []
-  let count = 0
-  let hasNoResults
-  let isLoading = props.isLoading
-  let isZeroState = props.isZeroState
-  let defaultResults = []
-
-  const searchResults = reduxState.contentReducer[props.searchType]
-  if (searchResults) {
-    items = searchResults.hit
-    count = searchResults.found
-    defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
-    hasNoResults = count === 0
-    isLoading = false
-    isZeroState = false
-  }
-
-  return {
-    items,
-    location: props.location,
-    count,
-    hasNoResults,
-    isLoading,
-    isZeroState,
-    defaultResults
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SearchTemplate)
-export { SearchTemplate }
+export default SearchTemplate
