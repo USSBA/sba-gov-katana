@@ -206,11 +206,11 @@ class TenStepsLandingPage extends React.Component {
           </div>
         </div>
         {/*
-          This will need to be updated with MenuTileCollection. Need to do more research on this.props.menu.
+          Render Business Guide Tile using MenuTileCollection.
           sectionData ? (
           <div className={styles.bizguideContainer}>
             <h1>Explore more topics</h1>
-            <BusinessGuideTileCollection sectionData={sectionData} />
+            <MenuTileCollection data={sectionData} />
           </div>
         ) : (
           <div />
