@@ -10,15 +10,14 @@ const testProps = {
   location: {
     pathname: '/'
   },
-  data,
   fetchContentIfNeeded: () => {},
-  removeLoader: () => {},
-  siteMap
+  removeLoader: () => {}
 }
 
 describe('Homepage', () => {
   test('should render', () => {
     const tree = shallow(<Homepage {...testProps} />)
+    tree.setState({ data, siteMap })
     expect(tree).toMatchSnapshot()
   })
 })
