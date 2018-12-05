@@ -3,17 +3,15 @@
 
 import React from 'react'
 import renderer from 'react-test-renderer'
-import _ from 'lodash'
 import { shallow } from 'enzyme'
-
-import { PagingLookup } from 'organisms/paging-lookup/paging-lookup'
-
+import _ from 'lodash'
+import { PagingLookup } from 'organisms'
+import * as helper from 'client/fetch-content-helper'
+import { getQueryParams } from '../../../../../../src/client/services/utils.js'
 jest.mock('../../../../../../src/client/services/utils.js')
 getQueryParams.mockImplementation(() => {
   return {}
 })
-import { getQueryParams } from '../../../../../../src/client/services/utils.js'
-const fetchContentIfNeeded = jest.fn()
 
 const testProps = {
   title: 'My Documents',
@@ -21,19 +19,23 @@ const testProps = {
   taxonomyFilters: ['documentType', 'documentActivity', 'validTaxonomyFilter'],
   fieldsToShowInDetails: ['Type', 'Name', 'Summary'],
   sortByOptions: ['Last Updated', 'Size'],
-  actions: {
-    fetchContentIfNeeded: fetchContentIfNeeded
-  }
 }
 
 describe('PagingLookup', () => {
+  var mockFetchSiteContent
+  beforeEach(() => {
+    mockFetchSiteContent = jest.spyOn(helper, 'fetchSiteContent')
+    mockFetchSiteContent.mockReturnValue([])
+  })
+  afterEach(() => {
+    mockFetchSiteContent.mockRestore()
+  })
   test('should render with all the information', () => {
     const props = _.clone(testProps)
     const component = renderer.create(<PagingLookup {...props} />)
     let tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
-
   test('should have an empty default query search', () => {
     getQueryParams.mockImplementationOnce(() => {
       return {}
@@ -86,22 +88,4 @@ describe('PagingLookup', () => {
     const component = shallow(<PagingLookup {...testProps} />)
     expect(component.first().props().queryState.arbitraryNonsense).toBeUndefined()
   })
-
-  // test('should render without an address ', () => {
-  //   let cardData = _.omit(card, "streetAddress");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".paging-lookup-streetAddress")).toHaveLength(0);
-  // });
-  //
-  // test('should render without a zip code ', () => {
-  //   let cardData = _.omit(card, "zipCode");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".paging-lookup-citystatezip")).toHaveLength(0);
-  // });
-  //
-  // test('should render without the link', () => {
-  //   let cardData = _.omit(card, "link");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".paging-lookup-link")).toHaveLength(0);
-  // });
 })
