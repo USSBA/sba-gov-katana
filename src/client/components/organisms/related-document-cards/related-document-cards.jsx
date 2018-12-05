@@ -14,7 +14,7 @@ class RelatedDocumentCards extends React.Component {
     }
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     const {
       data: { relatedDocuments }
     } = this.props
