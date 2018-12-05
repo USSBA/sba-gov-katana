@@ -21,15 +21,11 @@ class RelatedDocumentCards extends React.Component {
     const relatedDocumentsData = []
 
     for (let i = 0; i < relatedDocuments.length; i++) {
-      let data = await this.getRelatedDocument(relatedDocuments[i])
+      let data = await fetchSiteContent(`node/${relatedDocuments[i]}`)
       relatedDocumentsData.push(data)
     }
 
     this.sortRelatedDocuments(relatedDocumentsData)
-  }
-
-  getRelatedDocument(documentId) {
-    return fetchSiteContent(`node/${documentId}`)
   }
 
   sortRelatedDocuments(relatedDocuments) {
@@ -58,11 +54,11 @@ class RelatedDocumentCards extends React.Component {
   }
 
   renderRelatedDocumentSections() {
-    const sortedDouments = this.state.sortedDocuments
-    return _.keys(this.state.sortedDocuments)
+    const sortedDocuments = this.state.sortedDocuments
+    return _.keys(sortedDocuments)
       .sort()
       .map((documentType, index) => {
-        const documents = sortedDouments[documentType]
+        const documents = sortedDocuments[documentType]
         return (
           <div className={'related-document-section'} key={index}>
             <div className={'related-document-section-header ' + s.sectionHeader}>
