@@ -101,7 +101,7 @@ class PagingLookup extends React.Component {
       name: 'Sort By',
       terms: this.props.sortByOptions
     })
-    return rearrangedTaxonomyOrder
+    return taxonomies
   }
 
   handleReset(ownProps) {
@@ -186,7 +186,8 @@ class PagingLookup extends React.Component {
       isFetching: true
     }, async () => {
       this.setState({
-        itemResponse: await fetchSiteContent(this.props.type, queryTerms)
+        itemResponse: await fetchSiteContent(this.props.type, queryTerms),
+        isFetching: false
       })
     })
   }
