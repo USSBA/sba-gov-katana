@@ -31,14 +31,14 @@ const testTaxonomies = [{
   ]}]
 
 describe('PagingLookup', () => {
-  var mockQetQueryParams, mockFetchSiteContent
+  var mockGetQueryParams, mockFetchSiteContent
   beforeEach(() => {
-    mockQetQueryParams = jest.spyOn(utils, 'getQueryParams')
+    mockGetQueryParams = jest.spyOn(utils, 'getQueryParams')
     mockFetchSiteContent = jest.spyOn(helper, 'fetchSiteContent')
     mockFetchSiteContent.mockReturnValue(testTaxonomies)
   })
   afterEach(() => {
-    mockQetQueryParams.mockRestore()
+    mockGetQueryParams.mockRestore()
     mockFetchSiteContent.mockRestore()
   })
   test('should render with all the information', () => {
@@ -47,7 +47,7 @@ describe('PagingLookup', () => {
     expect(tree).toMatchSnapshot()
   })
   test('should have an empty default query search', () => {
-    mockQetQueryParams.mockReturnValue({})
+    mockGetQueryParams.mockReturnValue({})
     const result = shallow(<PagingLookup {...props} />).props().queryState
     expect(result.searchTerm).toBe('')
     expect(result.documentType).toBe('All')
@@ -55,32 +55,32 @@ describe('PagingLookup', () => {
     expect(result.validTaxonomyFilter).toBe('All')
   })
   test("should accept a 'search' term", () => {
-    mockQetQueryParams.mockReturnValue({ search: 'My Search Term' })
+    mockGetQueryParams.mockReturnValue({ search: 'My Search Term' })
     const result = shallow(<PagingLookup {...props} />).first().props().queryState.searchTerm
     expect(result).toBe('My Search Term')
   })
   test("should accept a 'q' term", () => {
-    mockQetQueryParams.mockReturnValue({q: 'My Q Search Term' })
+    mockGetQueryParams.mockReturnValue({q: 'My Q Search Term' })
     const result = shallow(<PagingLookup {...props} />).first().props().queryState.searchTerm
     expect(result).toBe('My Q Search Term')
   })
   test("should accept 'type' from the query string, converting it to documentType", () => {
-    mockQetQueryParams.mockReturnValue({ type: 'SBA Form' })
+    mockGetQueryParams.mockReturnValue({ type: 'SBA Form' })
     const result = shallow(<PagingLookup {...props} />).first().props().queryState.documentType
     expect(result).toBe('SBA Form')
   })
   test("should accept 'activity' from the query string, converting it to documentActivity", () => {
-    mockQetQueryParams.mockReturnValue({ activity: 'All' })
+    mockGetQueryParams.mockReturnValue({ activity: 'All' })
     const result = shallow(<PagingLookup {...props} />).first().props().queryState.documentActivity
     expect(result).toBe('All')
   })
   test("should accept 'validTaxonomyFilter' from the query string if in the taxonomyFilter", () => {
-    mockQetQueryParams.mockReturnValue({ validTaxonomyFilter: 'My Taxonomy Filter' })
+    mockGetQueryParams.mockReturnValue({ validTaxonomyFilter: 'My Taxonomy Filter' })
     const result = shallow(<PagingLookup {...props} />).first().props().queryState.validTaxonomyFilter
     expect(result).toBe('My Taxonomy Filter')
   })
   test("should reject 'arbitraryNonsense' from the query string if NOT in the taxonomyFilter", () => {
-    mockQetQueryParams.mockReturnValue({ arbitraryNonsense: 'My Arbitrary Nonsense'})
+    mockGetQueryParams.mockReturnValue({ arbitraryNonsense: 'My Arbitrary Nonsense'})
     const result = shallow(<PagingLookup {...props} />).first().props().queryState.arbitraryNonsense
     expect(result).toBeUndefined()
   })
