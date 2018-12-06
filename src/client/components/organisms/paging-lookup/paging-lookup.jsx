@@ -72,38 +72,6 @@ class PagingLookup extends React.Component {
     return finalQuery
   }
 
-  async componentWillMount() {
-    const queryArgs = {
-      names: this.props.taxonomyFilters.join(',')
-    }
-
-    const taxonomies = await fetchSiteContent('taxonomys', queryArgs)
-
-    this.setState({
-      taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
-    })
-  }
-
-  reArrangeTaxonomyOrder(data) {
-    const taxonomies = data.slice()
-
-    // add an "All" filter option to dynamic taxonomies
-    for (let index = 0; index < taxonomies.length; index++) {
-      taxonomies[index].terms.unshift('All')
-    }
-
-    const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName => {
-      return find(taxonomies, { name: taxonomyVocabularyName })
-    })
-
-    // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
-    rearrangedTaxonomyOrder.push({
-      name: 'Sort By',
-      terms: this.props.sortByOptions
-    })
-    return taxonomies
-  }
-
   handleReset(ownProps) {
     this.fireDocumentationLookupEvent('clearFilters')
     this.setState(
@@ -125,8 +93,37 @@ class PagingLookup extends React.Component {
     )
   }
 
-  componentDidMount() {
-    this.submit()
+  async componentDidMount() {
+
+    const queryArgs = {
+      names: this.props.taxonomyFilters.join(',')
+    }
+
+    const taxonomies = await fetchSiteContent('taxonomys', queryArgs)
+
+    this.setState({
+      taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+    }, () => this.submit())
+  }
+
+  reArrangeTaxonomyOrder(data) {
+    const taxonomies = data.slice()
+
+    // add an "All" filter option to dynamic taxonomies
+    for (let index = 0; index < taxonomies.length; index++) {
+      taxonomies[index].terms.unshift('All')
+    }
+
+    const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName => {
+      return find(taxonomies, { name: taxonomyVocabularyName })
+    })
+
+    // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
+    rearrangedTaxonomyOrder.push({
+      name: 'Sort By',
+      terms: this.props.sortByOptions
+    })
+    return rearrangedTaxonomyOrder
   }
 
   handleSubmit() {
