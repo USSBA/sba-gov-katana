@@ -56,15 +56,15 @@ class SearchTemplate extends React.PureComponent {
 
   generateQueryMap(urlSearchString = document.location.search) {
     const queryParams = parse(urlSearchString.substring(1))
-    //delete any pageSize property so the user can't affect how results are displayed
+    // delete any pageSize property so the user can't affect how results are displayed
     delete queryParams.pageSize
-    //calculate the actual  start value from the pageNumber parameter
+    // calculate the actual  start value from the pageNumber parameter
     let { pageNumber } = queryParams
     const {
       searchParams: { pageSize }
     } = this.state
     pageNumber = isNaN(parseInt(pageNumber, 10)) ? 1 : parseInt(pageNumber, 10)
-    //not using the calculate startIndex function here because we won't know the count yet
+    // not using the calculate startIndex function here because we won't know the count yet
     queryParams.start = Math.max(0, (pageNumber - 1) * pageSize)
     return queryParams
   }

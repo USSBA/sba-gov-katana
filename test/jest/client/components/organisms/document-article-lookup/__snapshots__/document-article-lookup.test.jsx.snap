@@ -16,7 +16,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       >
         <div
           className="inputContainer "
-          hidden={undefined}
           id="document-lookup-text-input-container"
         >
           <label
@@ -35,7 +34,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
               onChange={[Function]}
               onKeyUp={[Function]}
               placeholder="Search by title or number"
-              value={undefined}
             />
           </div>
         </div>
@@ -62,7 +60,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           >
             <div
               className="Select  myselect Select--single"
-              style={undefined}
             >
               <div
                 className="Select-control"
@@ -71,7 +68,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 onTouchEnd={[Function]}
                 onTouchMove={[Function]}
                 onTouchStart={[Function]}
-                style={undefined}
               >
                 <span
                   className="Select-multi-value-wrapper"
@@ -131,7 +127,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           >
             <div
               className="Select  myselect Select--single"
-              style={undefined}
             >
               <div
                 className="Select-control"
@@ -140,7 +135,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                 onTouchEnd={[Function]}
                 onTouchMove={[Function]}
                 onTouchStart={[Function]}
-                style={undefined}
               >
                 <span
                   className="Select-multi-value-wrapper"
@@ -190,7 +184,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       >
         <button
           className="button alternate large primary responsive spacing"
-          onClick={[Function]}
+          onClick={[MockFunction]}
         >
           Apply
         </button>
@@ -205,7 +199,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
     >
       <div
         className="paginator"
-        id={undefined}
       >
         <span>
           Showing 
@@ -241,7 +234,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </span>
         <button
           className="button large secondary"
-          id={undefined}
           onClick={[Function]}
         >
           <i
@@ -252,7 +244,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </button>
         <button
           className="button large secondary"
-          id={undefined}
           onClick={[Function]}
         >
           <i
@@ -492,7 +483,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
     >
       <div
         className="paginator"
-        id={undefined}
       >
         <span>
           Showing 
@@ -528,7 +518,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </span>
         <button
           className="button large secondary"
-          id={undefined}
           onClick={[Function]}
         >
           <i
@@ -539,7 +528,6 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         </button>
         <button
           className="button large secondary"
-          id={undefined}
           onClick={[Function]}
         >
           <i

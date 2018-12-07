@@ -11,7 +11,7 @@ export function enableWebpackHotModuleReplacement(app, silent) {
     // eslint-disable-next-line global-require
     require('webpack-dev-middleware')(compiler, {
       publicPath: webpackConfig.output.publicPath,
-      noInfo: silent
+      logLevel: silent ? 'silent' : 'warn'
     })
   )
 

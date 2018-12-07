@@ -13,10 +13,7 @@ describe('<CourseContent />', () => {
   var component
 
   beforeEach(done => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
+    history.pushState({}, null, '?lang=en')
     component = mount(<CourseContent {...sharedProps} />)
     done()
   })

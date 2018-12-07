@@ -2,11 +2,11 @@
 
 echo "Building Server Code"
 rm -rf dist
-NODE_ENV=production $(npm bin)/babel src -d dist --ignore client/* --no-babelrc --env='{ env: { production: { targets: { node: "current" , "uglify" : "true"} } } }'  --plugins transform-object-rest-spread,transform-es2015-modules-commonjs
+NODE_ENV=production $(npm bin)/babel src -d dist --ignore client/* --no-babelrc --env='{ env: { production: { targets: { node: "current" , "uglify" : "true"} } } }'  --plugins=@babel/plugin-proposal-class-properties,@babel/plugin-proposal-object-rest-spread,@babel/plugin-syntax-dynamic-import,@babel/plugin-transform-modules-commonjs --presets=@babel/preset-env,@babel/preset-react
 echo "Server Build Complete"
 
 if [ "$1" == "all" ]
-then 
+then
     echo "Building Webpack"
     rm -rf public/build
     NODE_ENV=production $(npm bin)/webpack --config webpack.config.production.js

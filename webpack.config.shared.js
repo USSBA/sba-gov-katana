@@ -14,6 +14,7 @@ var sassResources = {
 
 module.exports = function(styleNamingFormat) {
   return {
+    mode: 'none',
     module: {
       rules: [
         {
@@ -79,10 +80,6 @@ module.exports = function(styleNamingFormat) {
         {
           test: /\.less$/,
           loader: 'style-loader!css-loader!less-loader'
-        },
-        {
-          test: /\.json$/,
-          loader: 'json-loader'
         }
       ]
     },

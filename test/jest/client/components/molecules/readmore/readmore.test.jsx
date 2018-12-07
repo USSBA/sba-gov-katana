@@ -18,10 +18,8 @@ const testProps = {
 
 describe('ReadMore', () => {
   test('should render expanded ReadMore component', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
+    history.pushState({}, null, '?lang=en')
+
     const props = _.clone(testProps)
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
@@ -29,10 +27,8 @@ describe('ReadMore', () => {
   })
 
   test('should render read more button when not expanded', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
+    history.pushState({}, null, '?lang=en')
+
     const props = _.clone(testProps)
     props.expanded = false
     const component = renderer.create(<ReadMore {...props} />)
@@ -41,10 +37,8 @@ describe('ReadMore', () => {
   })
 
   test('should render expanded ReadMore component', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=es'
-    })
+    history.pushState({}, null, '?lang=es')
+
     const props = _.clone(testProps)
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()

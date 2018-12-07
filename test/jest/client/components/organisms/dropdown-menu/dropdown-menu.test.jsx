@@ -19,10 +19,7 @@ describe('dropdown menu', () => {
   const { tenStepsNavigationCta } = TRANSLATIONS
 
   it('renders with the 10 steps CTA in English', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
+    history.pushState({}, null, '?lang=en')
 
     const component = mount(<DropdownMenu {...props} />)
     const headline = component.find('.callToAction h6').text()
@@ -31,10 +28,7 @@ describe('dropdown menu', () => {
   })
 
   it('renders with the 10 steps CTA in Spanish', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=es'
-    })
+    history.replaceState({}, null, '/?lang=es')
 
     const component = mount(<DropdownMenu {...props} />)
     const headline = component.find('.callToAction h6').text()

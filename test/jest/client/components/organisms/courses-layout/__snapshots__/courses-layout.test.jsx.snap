@@ -14,7 +14,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
       >
         <div
           className="paginator"
-          id={undefined}
         >
           <span>
             Showing 
@@ -50,7 +49,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           </span>
           <button
             className="button large secondary"
-            id={undefined}
             onClick={[Function]}
           >
             <i
@@ -61,7 +59,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           </button>
           <button
             className="button large secondary"
-            id={undefined}
             onClick={[Function]}
           >
             <i
@@ -794,7 +791,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
       >
         <div
           className="paginator"
-          id={undefined}
         >
           <span>
             Showing 
@@ -830,7 +826,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           </span>
           <button
             className="button large secondary"
-            id={undefined}
             onClick={[Function]}
           >
             <i
@@ -841,7 +836,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           </button>
           <button
             className="button large secondary"
-            id={undefined}
             onClick={[Function]}
           >
             <i
