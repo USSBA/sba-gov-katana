@@ -1,11 +1,11 @@
 import React from 'react'
 import classNames from 'classnames'
-import { includes, isEmpty, isObject, size } from 'lodash'
+import { includes, isEmpty, size } from 'lodash'
 
 import s from './detail-card.scss'
 import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
-import { getCurrentFile } from '../../../services/utils.js'
+import { getCurrentFile, getFileExtension } from '../../../services/utils.js'
 
 class DetailCard extends React.Component {
   getLatestFile() {
@@ -17,26 +17,17 @@ class DetailCard extends React.Component {
   }
 
   getFileTypeIcon(fileExtension) {
+    let icon
     if (fileExtension === 'pdf') {
-      console.log('filetypeicon called')
-      return <PdfIcon />
-    } else {
-      return undefined
+      icon = <PdfIcon />
     }
-  }
-
-  getFileExtension(fileUrl) {
-    if (fileUrl.includes('.')) {
-      return fileUrl.substr(fileUrl.lastIndexOf('.') + 1).toLowerCase()
-    } else {
-      return undefined
-    }
+    return icon
   }
 
   makeDownloadLink() {
     const latestFile = this.getLatestFile()
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
-      const fileExtension = this.getFileExtension(latestFile.fileUrl)
+      const fileExtension = getFileExtension(latestFile.fileUrl)
       return (
         <div className={'document-card-download ' + s.download}>
           <Link
