@@ -19,7 +19,7 @@ const VersionsList = props => {
   const { doc } = props
   const { documentIdNumber, documentIdType, files, title } = doc
 
-  if (files.length <= 1) return null
+  if (!files || (files.length && files.length <= 1)) return null
 
   const list = files.map((file, index) => {
     const { effectiveDate, fileUrl, version } = file
