@@ -57,7 +57,7 @@ class RelatedDocumentCards extends React.Component {
   }
 
   renderRelatedDocumentSections() {
-    const sortedDocuments = this.state.sortedDocuments
+    const { sortedDocuments } = this.state
     return _.keys(sortedDocuments)
       .sort()
       .map((documentType, index) => {
