@@ -18,12 +18,15 @@ class RelatedDocumentCards extends React.Component {
     const {
       data: { relatedDocuments }
     } = this.props
-    const relatedDocumentsData = []
+    let relatedDocumentsData = []
 
     for (let i = 0; i < relatedDocuments.length; i++) {
-      let data = await fetchSiteContent(`node/${relatedDocuments[i]}`)
+      const data = await fetchSiteContent(`node/${relatedDocuments[i]}`)
       relatedDocumentsData.push(data)
     }
+
+    // removes deleted documents
+    relatedDocumentsData = relatedDocumentsData.filter(data => data)
 
     this.sortRelatedDocuments(relatedDocumentsData)
   }
