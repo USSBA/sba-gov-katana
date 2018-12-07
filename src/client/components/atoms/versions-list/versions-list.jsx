@@ -4,6 +4,16 @@ import { isObject, isEmpty } from 'lodash'
 
 import styles from './versions-list.scss'
 import { logPageEvent } from '../../../services/analytics.js'
+import { PdfIcon } from 'atoms'
+import { getFileExtension } from '../../../services/utils.js'
+
+function getFileTypeIcon(fileExtension) {
+  let icon
+  if (fileExtension === 'pdf') {
+    icon = <PdfIcon />
+  }
+  return icon
+}
 
 const VersionsList = props => {
   const { doc } = props
@@ -23,6 +33,7 @@ const VersionsList = props => {
       ' ' +
       (version ? version : 'N/A')
 
+    const fileExtension = getFileExtension(fileUrl)
     const effectiveDateMessage = `Effective: ${effectiveDate || 'N/A'}`
     const effectiveDateInTheFuture = effectiveDate && moment(effectiveDate, 'YYYY-MM-DD').isAfter(moment())
     const eventConfig = {
@@ -36,8 +47,9 @@ const VersionsList = props => {
         <strong>|</strong>
         {effectiveDateMessage}.
         <a href={fileUrl} onClick={_ => logPageEvent(eventConfig)} target="_blank">
-          Download PDF
-          <i className="fa fa-file-pdf-o" aria-hidden="true" />
+          Download
+          {fileExtension ? ' ' + fileExtension : ''}
+          {getFileTypeIcon(fileExtension)}
         </a>
         {effectiveDateInTheFuture ? (
           <strong className={styles.future} key={30}>
