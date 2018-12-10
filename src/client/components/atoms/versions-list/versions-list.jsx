@@ -13,7 +13,8 @@ const VersionsList = props => {
 
   if (!files || (files.length && files.length <= 1)) return null
 
-  const list = files.map((file, index) => {
+  const filteredFiles = files.filter(file => file.fileUrl !== null && file.fileUrl !== undefined)
+  const list = filteredFiles.map((file, index) => {
     const { effectiveDate, fileUrl, version } = file
 
     const versionMessage =
