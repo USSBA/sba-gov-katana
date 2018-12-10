@@ -3,7 +3,8 @@ import _ from 'lodash'
 import { DetailCardCollection } from 'organisms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import queryString from 'querystring'
-import { logPageEvent } from '../../../services/analytics'
+import { logEvent, logPageEvent } from '../../../services/analytics'
+import { browserHistory } from 'react-router'
 import s from './related-document-cards.scss'
 
 class RelatedDocumentCards extends React.Component {
@@ -50,10 +51,16 @@ class RelatedDocumentCards extends React.Component {
   }
 
   handleBrowseAll(documentType) {
-    const { locationChange } = this.props
-    logPageEvent({ category: 'Browse-all', action: documentType })
     const params = { type: documentType }
-    locationChange('/document/?' + queryString.stringify(params))
+    const targetLocation = '/document/?' + queryString.stringify(params)
+    window.scrollTo(0, 0)
+    logPageEvent({ category: 'Browse-all', action: documentType })
+    logEvent({
+      category: 'Navigation',
+      action: 'Location Change',
+      label: ''
+    })
+    browserHistory.push(targetLocation)
   }
 
   renderRelatedDocumentSections() {
