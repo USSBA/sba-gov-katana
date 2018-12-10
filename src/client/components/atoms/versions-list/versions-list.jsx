@@ -4,16 +4,8 @@ import { isObject, isEmpty } from 'lodash'
 
 import styles from './versions-list.scss'
 import { logPageEvent } from '../../../services/analytics.js'
-import { PdfIcon } from 'atoms'
 import { getFileExtension } from '../../../services/utils.js'
-
-function getFileTypeIcon(fileExtension) {
-  let icon
-  if (fileExtension === 'pdf') {
-    icon = <PdfIcon />
-  }
-  return icon
-}
+import { FileTypeIcon } from 'atoms'
 
 const VersionsList = props => {
   const { doc } = props
@@ -49,7 +41,7 @@ const VersionsList = props => {
         <a href={fileUrl} onClick={_ => logPageEvent(eventConfig)} target="_blank">
           Download
           {fileExtension ? ' ' + fileExtension : ''}
-          {getFileTypeIcon(fileExtension)}
+          <FileTypeIcon fileExtension={fileExtension} />
         </a>
         {effectiveDateInTheFuture ? (
           <strong className={styles.future} key={30}>

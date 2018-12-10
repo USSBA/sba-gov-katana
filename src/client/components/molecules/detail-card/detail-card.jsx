@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { includes, isEmpty, size } from 'lodash'
 
 import s from './detail-card.scss'
-import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
+import { DecorativeDash, FileTypeIcon, Label, Link } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile, getFileExtension } from '../../../services/utils.js'
 
@@ -14,14 +14,6 @@ class DetailCard extends React.Component {
     } else {
       return null
     }
-  }
-
-  getFileTypeIcon(fileExtension) {
-    let icon
-    if (fileExtension === 'pdf') {
-      icon = <PdfIcon />
-    }
-    return icon
   }
 
   makeDownloadLink() {
@@ -38,7 +30,7 @@ class DetailCard extends React.Component {
             Download
             {fileExtension ? ' ' + fileExtension : ''}
           </Link>
-          {this.getFileTypeIcon(fileExtension)}
+          <FileTypeIcon fileExtension={fileExtension} />
         </div>
       )
     } else {
