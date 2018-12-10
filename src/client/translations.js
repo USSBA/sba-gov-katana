@@ -596,6 +596,14 @@ const TRANSLATIONS = {
       url: '/videos'
     }
   },
+  select: {
+    en: {
+      text: 'Select...'
+    },
+    es: {
+      text: 'Selecciona...'
+    }
+  },
   siteMap: {
     en: {
       text: 'Site Map',

@@ -6,6 +6,8 @@ import 'react-select/dist/react-select.css'
 import chevron from 'assets/svg/chevron.svg'
 import styles from './multiselect.scss'
 import { FormErrorMessage } from 'atoms'
+// import { getLanguageOverride } from '../../../services/utils'
+// import { TRANSLATIONS } from '../../../translations'
 
 class MultiSelectBox extends React.Component {
   constructor() {
@@ -58,8 +60,14 @@ class MultiSelectBox extends React.Component {
     return <i src={chevron} />
   }
   render() {
+    // Only setup to accommodate Spanish and then default to English
+    // const langCode = getLanguageOverride(true).substring(0, 2)
+    // const placeholderText = (langCode === 'es') ? TRANSLATIONS['select'].es.text : TRANSLATIONS['select'].en.text
+
     const myValue = this.props.multi
-      ? this.state.value ? this.state.value.split(',') : []
+      ? this.state.value
+        ? this.state.value.split(',')
+        : []
       : this.state.value
 
     const errorMessage =
@@ -103,6 +111,7 @@ class MultiSelectBox extends React.Component {
             clearRenderer={clearRenderer}
             searchable={this.props.multi}
             placeholder={this.props.placeholder ? this.props.placeholder : 'Select...'}
+            //placeholder={this.props.placeholder ? this.props.placeholder : placeholderText}
             inputProps={inputProps}
           />
         </div>
