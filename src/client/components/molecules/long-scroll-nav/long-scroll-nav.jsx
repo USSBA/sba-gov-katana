@@ -24,9 +24,7 @@ class LongScrollNav extends React.Component {
 
   render() {
     // This section handles Spanish translation
-    // Store either 'en' or 'es' as langCode
-    const langCode = getLanguageOverride(true).substring(0, 2)
-    // Storing order of 10 steps as an array
+    // Storing order of 10 steps as an array (order matters here)
     const stepArray = [
       'research',
       'plan',
@@ -39,14 +37,12 @@ class LongScrollNav extends React.Component {
       'license',
       'banking'
     ]
-    const steps = []
+    // Store either 'en' or 'es' as langCode
+    const langCode = getLanguageOverride()
     // Replace stepArray values with appropriate translations
-    for (let i = 0; i < stepArray.length; i++) {
-      // Using the stepArray to do an in-place replacement
-      stepArray[i] = TRANSLATIONS[stepArray[i]][langCode].text
-      // Cast as object with property title and store in steps[i]
-      steps[i] = { title: stepArray[i] }
-    }
+    const steps = stepArray.map(step => {
+      return { title: TRANSLATIONS[step][langCode].text }
+    })
 
     return (
       <div
