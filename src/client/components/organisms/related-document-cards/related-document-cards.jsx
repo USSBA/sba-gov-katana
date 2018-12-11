@@ -1,12 +1,10 @@
 import React from 'react'
 import _ from 'lodash'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { DetailCardCollection } from 'organisms'
-import * as ContentActions from '../../../actions/content'
-import * as NavigationActions from '../../../actions/navigation'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import queryString from 'querystring'
-import { logPageEvent } from '../../../services/analytics'
+import { logEvent, logPageEvent } from '../../../services/analytics'
+import { browserHistory } from 'react-router'
 import s from './related-document-cards.scss'
 
 class RelatedDocumentCards extends React.Component {
@@ -17,21 +15,21 @@ class RelatedDocumentCards extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const { data: { relatedDocuments }, fetchContentIfNeeded } = this.props
+  async componentWillMount() {
+    const {
+      data: { relatedDocuments }
+    } = this.props
+    let relatedDocumentsData = []
 
-    Promise.all(
-      relatedDocuments.map(documentId => {
-        return fetchContentIfNeeded('node', `node/${documentId}`)
-      })
-    ).then(relatedDocumentsData => {
-      return this.sortRelatedDocuments(
-        relatedDocumentsData
-          .map(({ data }) => data)
-          // Gracefully handle related documents that have been deleted.
-          .filter(data => data)
-      )
-    })
+    for (let i = 0; i < relatedDocuments.length; i++) {
+      const data = await fetchSiteContent(`node/${relatedDocuments[i]}`)
+      relatedDocumentsData.push(data)
+    }
+
+    // removes deleted documents
+    relatedDocumentsData = relatedDocumentsData.filter(data => data)
+
+    this.sortRelatedDocuments(relatedDocumentsData)
   }
 
   sortRelatedDocuments(relatedDocuments) {
@@ -53,18 +51,24 @@ class RelatedDocumentCards extends React.Component {
   }
 
   handleBrowseAll(documentType) {
-    const { locationChange } = this.props
-    logPageEvent({ category: 'Browse-all', action: documentType })
     const params = { type: documentType }
-    locationChange('/document/?' + queryString.stringify(params))
+    const targetLocation = '/document/?' + queryString.stringify(params)
+    window.scrollTo(0, 0)
+    logPageEvent({ category: 'Browse-all', action: documentType })
+    logEvent({
+      category: 'Navigation',
+      action: 'Location Change',
+      label: ''
+    })
+    browserHistory.push(targetLocation)
   }
 
   renderRelatedDocumentSections() {
-    const sortedDouments = this.state.sortedDocuments
-    return _.keys(this.state.sortedDocuments)
+    const { sortedDocuments } = this.state
+    return _.keys(sortedDocuments)
       .sort()
       .map((documentType, index) => {
-        const documents = sortedDouments[documentType]
+        const documents = sortedDocuments[documentType]
         return (
           <div className={'related-document-section'} key={index}>
             <div className={'related-document-section-header ' + s.sectionHeader}>
@@ -102,12 +106,4 @@ class RelatedDocumentCards extends React.Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    ...bindActionCreators(NavigationActions, dispatch),
-    ...bindActionCreators(ContentActions, dispatch)
-  }
-}
-
-export default connect(null, mapDispatchToProps)(RelatedDocumentCards)
-export { RelatedDocumentCards }
+export default RelatedDocumentCards
