@@ -57,6 +57,7 @@ app.use(function(req, res, next) {
   const requestPathWithoutTraillingSlack =
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
+    // eslint-disable-next-line complexity
     .then(({ nodeId, langCode }) => {
       let responseStatus = HttpStatus.OK
       if (!nodeId && config.get('features.true404')) {
