@@ -8,6 +8,7 @@ import DecorativeDash from './decorative-dash/decorative-dash'
 import Label from './label/label'
 import ExtraLargeTitleText from './extra-large-title-text/extra-large-title-text'
 import FailureIcon from './icons/failure'
+import FileTypeIcon from './icons/file-type-icon'
 import FormErrorMessage from './form-error-message/form-error-message'
 import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
@@ -48,6 +49,7 @@ export {
   Label,
   ExtraLargeTitleText,
   FailureIcon,
+  FileTypeIcon,
   FormErrorMessage,
   HamburgerIcon,
   HomeIcon,

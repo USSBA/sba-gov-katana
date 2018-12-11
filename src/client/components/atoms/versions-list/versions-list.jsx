@@ -4,14 +4,17 @@ import { isObject, isEmpty } from 'lodash'
 
 import styles from './versions-list.scss'
 import { logPageEvent } from '../../../services/analytics.js'
+import { getFileExtension } from '../../../services/utils.js'
+import { FileTypeIcon } from 'atoms'
 
 const VersionsList = props => {
   const { doc } = props
   const { documentIdNumber, documentIdType, files, title } = doc
 
-  if (files.length <= 1) return null
+  if (!files || (files.length && files.length <= 1)) return null
 
-  const list = files.map((file, index) => {
+  const filteredFiles = files.filter(file => file.fileUrl !== null && file.fileUrl !== undefined)
+  const list = filteredFiles.map((file, index) => {
     const { effectiveDate, fileUrl, version } = file
 
     const versionMessage =
@@ -23,6 +26,7 @@ const VersionsList = props => {
       ' ' +
       (version ? version : 'N/A')
 
+    const fileExtension = getFileExtension(fileUrl)
     const effectiveDateMessage = `Effective: ${effectiveDate || 'N/A'}`
     const effectiveDateInTheFuture = effectiveDate && moment(effectiveDate, 'YYYY-MM-DD').isAfter(moment())
     const eventConfig = {
@@ -36,8 +40,9 @@ const VersionsList = props => {
         <strong>|</strong>
         {effectiveDateMessage}.
         <a href={fileUrl} onClick={_ => logPageEvent(eventConfig)} target="_blank">
-          Download PDF
-          <i className="fa fa-file-pdf-o" aria-hidden="true" />
+          Download
+          {fileExtension ? ' ' + fileExtension : ''}
+          <FileTypeIcon fileExtension={fileExtension} />
         </a>
         {effectiveDateInTheFuture ? (
           <strong className={styles.future} key={30}>
