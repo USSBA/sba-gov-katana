@@ -9,9 +9,9 @@ function determineMainMenuTitleLink(langCode, data) {
     link = data.spanishTranslation.link
     linkTitle = data.spanishTranslation.linkTitle
   }
-  return { 
-    link, 
-    linkTitle 
+  return {
+    link,
+    linkTitle
   }
 }
 
@@ -24,9 +24,9 @@ function determineMenuTileData(langCode, data) {
     title = data.spanishTranslation.title
     fullUrl = data.spanishTranslation.fullUrl
   }
-  return { 
-    description, 
-    title, 
+  return {
+    description,
+    title,
     fullUrl
   }
 }
@@ -94,11 +94,20 @@ function getLanguageOverride(excludeVariants = false) {
   return langOverride
 }
 
+function getFileExtension(fileUrl) {
+  let result
+  if (fileUrl.includes('.')) {
+    result = fileUrl.substr(fileUrl.lastIndexOf('.') + 1).toLowerCase()
+  }
+  return result
+}
+
 export {
   determineMainMenuTitleLink,
   determineMenuTileData,
   getCurrentFile,
   getLanguageOverride,
   getQueryParams,
-  getDataForLanguage
+  getDataForLanguage,
+  getFileExtension
 }
