@@ -71,3 +71,29 @@ test('MultiSelect maximum values', () => {
   simulateChange(component, ['A', 'B', 'C', 'D'])
   expect(lastValue).toEqual('A,B,C')
 })
+
+test('MultiSelect default values', () => {
+  let lastValue = 'A,B,C'
+  let placeholder = 'Select...'
+  function handleChange(newValue) {
+    lastValue = newValue
+  }
+
+  const component = shallow(
+    <MultiSelect
+      label="Some Label"
+      name="somename"
+      onChange={handleChange}
+      getValidationState={'success'}
+      value={lastValue}
+      options={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
+      autoFocus
+      required
+      placeholder={'Select...'}
+      maxValues={3}
+    />
+  )
+
+  expect(placeholder).toEqual('Select...')
+  // expect(lastValue).toEqual('Select...')
+})

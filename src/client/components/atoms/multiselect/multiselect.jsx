@@ -6,8 +6,8 @@ import 'react-select/dist/react-select.css'
 import chevron from 'assets/svg/chevron.svg'
 import styles from './multiselect.scss'
 import { FormErrorMessage } from 'atoms'
-// import { getLanguageOverride } from '../../../services/utils'
-// import { TRANSLATIONS } from '../../../translations'
+import { getLanguageOverride } from '../../../services/utils.js'
+import { TRANSLATIONS } from '../../../translations.js'
 
 class MultiSelectBox extends React.Component {
   constructor() {
@@ -59,11 +59,8 @@ class MultiSelectBox extends React.Component {
   renderArrow() {
     return <i src={chevron} />
   }
-  render() {
-    // Only setup to accommodate Spanish and then default to English
-    // const langCode = getLanguageOverride(true).substring(0, 2)
-    // const placeholderText = (langCode === 'es') ? TRANSLATIONS['select'].es.text : TRANSLATIONS['select'].en.text
 
+  render() {
     const myValue = this.props.multi
       ? this.state.value
         ? this.state.value.split(',')
@@ -90,28 +87,30 @@ class MultiSelectBox extends React.Component {
       }
     })
 
+    const { autoFocus, id, label, multi, name, options, placeholder } = this.props
+    const langCode = getLanguageOverride()
+
     return (
-      <div id={this.props.id + '-container'}>
-        <label>{this.props.label}</label>
-        <div id={this.props.id} className={styles.errorClass}>
+      <div id={id + '-container'}>
+        <label>{label}</label>
+        <div id={id} className={styles.errorClass}>
           <ReactSelect
             className={errorClass + ' ' + styles.myselect}
             menuBuffer={10}
             tabSelectsValue={false}
-            multi={this.props.multi}
+            multi={multi}
             autoBlur={true}
             onChange={this.handleChange.bind(this)}
-            name={this.props.name}
-            autofocus={this.props.autoFocus}
+            name={name}
+            autofocus={autoFocus}
             value={myValue}
-            options={this.props.options}
+            options={options}
             onBlur={this.handleBlur.bind(this)}
             onFocus={this.handleFocus.bind(this)}
             arrowRenderer={arrowRenderer}
             clearRenderer={clearRenderer}
-            searchable={this.props.multi}
-            placeholder={this.props.placeholder ? this.props.placeholder : 'Select...'}
-            //placeholder={this.props.placeholder ? this.props.placeholder : placeholderText}
+            searchable={multi}
+            placeholder={!placeholder && langCode ? TRANSLATIONS['select'][langCode].text : placeholder}
             inputProps={inputProps}
           />
         </div>
