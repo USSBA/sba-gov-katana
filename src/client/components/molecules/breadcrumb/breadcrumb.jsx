@@ -66,4 +66,13 @@ class Breadcrumb extends React.Component {
   }
 }
 
+Breadcrumb.propTypes = {
+  items: React.PropTypes.arrayOf(
+    React.PropTypes.shape({
+      title: React.PropTypes.string,
+      url: React.PropTypes.string
+    })
+  )
+}
+
 export default Breadcrumb
