@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { camelCase, isEmpty, startsWith } from 'lodash'
 
@@ -30,6 +31,7 @@ const CallToAction = props => {
 
   const className = classNames({
     [styles.callToAction]: true,
+    /* eslint-disable no-implicit-coercion */
     [styles[variation]]: !!variation
   })
 
@@ -62,6 +64,25 @@ const CallToAction = props => {
       </div>
     </div>
   )
+}
+
+CallToAction.propTypes = {
+  blurb: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['Large', 'Medium', 'Small', 'Button only']),
+  buttonAction: React.PropTypes.shape({
+    buttonText: React.PropTypes.string,
+    file: React.PropTypes.string,
+    link: React.PropTypes.shape({
+      title: React.PropTypes.string,
+      url: React.PropTypes.string
+    }),
+    type: React.PropTypes.oneOf(['file', 'link'])
+  }),
+  headline: React.PropTypes.string,
+  image: React.PropTypes.shape({
+    alt: React.PropTypes.string,
+    url: React.PropTypes.string
+  })
 }
 
 export default CallToAction
