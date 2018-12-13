@@ -8,6 +8,7 @@ import { MultiSelect } from 'atoms'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 import _ from 'lodash'
+import { getLanguageOverride } from '../../../../../../src/client/services/utils.js'
 
 // Does not appear to work with React-Select
 // test('MultiSelect render', () => {
@@ -30,6 +31,10 @@ import _ from 'lodash'
 //     expect(tree).toMatchSnapshot();
 // });
 
+jest.mock('../../../../../../src/client/services/utils.js', () => ({
+  getLanguageOverride: jest.fn()
+}))
+
 function makeValueLikeReactSelectReturnsIt(x) {
   return _.map(x, item => {
     return {
@@ -39,35 +44,67 @@ function makeValueLikeReactSelectReturnsIt(x) {
   })
 }
 
-test('MultiSelect maximum values', () => {
-  let lastValue = 'A,B,C'
-  function handleChange(newValue) {
-    lastValue = newValue
-  }
+describe('MultiSelect', () => {
+  test('outputs maximum values', () => {
+    let lastValue = 'A,B,C'
+    function handleChange(newValue) {
+      lastValue = newValue
+    }
 
-  function simulateChange(component, value) {
-    component.find(ReactSelect).simulate('change', makeValueLikeReactSelectReturnsIt(value))
-  }
+    function simulateChange(component, value) {
+      component.find(ReactSelect).simulate('change', makeValueLikeReactSelectReturnsIt(value))
+    }
 
-  const component = shallow(
-    <MultiSelect
-      label="Some Label"
-      name="somename"
-      onChange={handleChange}
-      getValidationState={'success'}
-      value={lastValue}
-      options={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
-      autoFocus
-      required
-      maxValues={3}
-    />
-  )
-  simulateChange(component, ['B'])
-  expect(lastValue).toEqual('B')
-  simulateChange(component, ['A', 'B'])
-  expect(lastValue).toEqual('A,B')
-  simulateChange(component, ['A', 'B', 'C'])
-  expect(lastValue).toEqual('A,B,C')
-  simulateChange(component, ['A', 'B', 'C', 'D'])
-  expect(lastValue).toEqual('A,B,C')
+    const component = shallow(
+      <MultiSelect
+        label="Some Label"
+        name="somename"
+        onChange={handleChange}
+        getValidationState={'success'}
+        value={lastValue}
+        options={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']}
+        autoFocus
+        required
+        maxValues={3}
+      />
+    )
+    simulateChange(component, ['B'])
+    expect(lastValue).toEqual('B')
+    simulateChange(component, ['A', 'B'])
+    expect(lastValue).toEqual('A,B')
+    simulateChange(component, ['A', 'B', 'C'])
+    expect(lastValue).toEqual('A,B,C')
+    simulateChange(component, ['A', 'B', 'C', 'D'])
+    expect(lastValue).toEqual('A,B,C')
+  })
+
+  test('placeholder value renders in Spanish', () => {
+    getLanguageOverride.mockReturnValueOnce('es')
+    const component = shallow(
+      <MultiSelect
+        label="Good label"
+        name="select"
+        options={['Z1', 'N2', 'T1', 'A1']}
+        autoFocus
+        multi={false}
+      />
+    )
+
+    const wrapper = component.find('.myselect')
+    expect(wrapper.props().placeholder).toEqual('Selecciona...')
+  })
+
+  test('placeholder value renders in English', () => {
+    const component = shallow(
+      <MultiSelect
+        label="Good label"
+        name="select"
+        options={['Z1', 'N2', 'T1', 'A1']}
+        autoFocus
+        multi={false}
+      />
+    )
+    const wrapper = component.find('.myselect')
+    expect(wrapper.props().placeholder).toEqual('Select...')
+  })
 })
