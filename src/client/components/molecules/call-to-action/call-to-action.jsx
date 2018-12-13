@@ -68,7 +68,7 @@ const CallToAction = props => {
 
 CallToAction.propTypes = {
   blurb: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['Large', 'Medium', 'Small', 'Button only']),
+  size: React.PropTypes.oneOf(['Large', 'Medium', 'Small', 'Button only']).isRequired,
   buttonAction: React.PropTypes.shape({
     buttonText: React.PropTypes.string,
     file: React.PropTypes.string,
@@ -76,7 +76,7 @@ CallToAction.propTypes = {
       title: React.PropTypes.string,
       url: React.PropTypes.string
     }),
-    type: React.PropTypes.oneOf(['file', 'link'])
+    type: React.PropTypes.oneOf(['file', 'link']).isRequired
   }),
   headline: React.PropTypes.string,
   image: React.PropTypes.shape({
