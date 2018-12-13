@@ -26,11 +26,11 @@ const Card = props => {
   })
 
   // TODO: use lede text instead of subtitle text
-  let languageOverride = getLanguageOverride()
+  const languageOverride = getLanguageOverride()
   let title =
     languageOverride && languageOverride.startsWith('es')
-      ? TRANSLATIONS['learnMore']['es'].text
-      : TRANSLATIONS['learnMore']['en'].text
+      ? TRANSLATIONS.learnMore.es.text
+      : TRANSLATIONS.learnMore.en.text
   let uri = ''
   if (typeof link === 'string') {
     uri = link
@@ -91,10 +91,15 @@ Card.defaultProps = {
 }
 
 Card.propTypes = {
-  item: PropTypes.object,
-  index: PropTypes.number,
-  numCards: PropTypes.number,
-  parentIndex: PropTypes.number
+  item: PropTypes.shape({
+    image: PropTypes.shape({
+      alt: PropTypes.string,
+      url: PropTypes.url
+    }),
+    link: React.PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    subtitleText: React.PropTypes.string,
+    titleText: React.PropTypes.string
+  })
 }
 
 export default Card
