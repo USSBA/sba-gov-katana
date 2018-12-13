@@ -10,7 +10,7 @@ import { getLanguageOverride } from '../../../services/utils'
 const Card = props => {
   const {
     index,
-    item: { eventConfig, image, link, subtitleText, titleText },
+    item: { image, link, subtitleText, titleText },
     numCards,
     parentIndex
   } = props
@@ -96,9 +96,9 @@ Card.propTypes = {
       alt: PropTypes.string,
       url: PropTypes.url
     }),
-    link: React.PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    subtitleText: React.PropTypes.string,
-    titleText: React.PropTypes.string
+    link: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    subtitleText: PropTypes.string,
+    titleText: PropTypes.string
   })
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { last, size, take } from 'lodash'
 
 import styles from './breadcrumb.scss'
@@ -67,10 +67,10 @@ class Breadcrumb extends React.Component {
 }
 
 Breadcrumb.propTypes = {
-  items: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      title: React.PropTypes.string,
-      url: React.PropTypes.string
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string
     })
   )
 }
