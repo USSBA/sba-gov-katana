@@ -31,17 +31,17 @@ describe('CallToAction', () => {
     style: 'Medium'
   }
   test('renders a small size', () => {
-    const component = renderer.create(<CallToAction size="small" {...ctaOptions} />)
+    const component = renderer.create(<CallToAction size="Small" {...ctaOptions} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
   test('renders a medium size', () => {
-    const component = renderer.create(<CallToAction size="medium" {...ctaOptions} />)
+    const component = renderer.create(<CallToAction size="Medium" {...ctaOptions} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
   test('renders a large size', () => {
-    const component = renderer.create(<CallToAction size="large" {...ctaOptions} />)
+    const component = renderer.create(<CallToAction size="Large" {...ctaOptions} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
