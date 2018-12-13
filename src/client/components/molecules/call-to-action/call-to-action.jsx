@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { PropTypes } from 'react'
 import classNames from 'classnames'
 import { camelCase, isEmpty, startsWith } from 'lodash'
 
@@ -67,21 +66,21 @@ const CallToAction = props => {
 }
 
 CallToAction.propTypes = {
-  blurb: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['Large', 'Medium', 'Small', 'Button only']).isRequired,
-  buttonAction: React.PropTypes.shape({
-    buttonText: React.PropTypes.string,
-    file: React.PropTypes.string,
-    link: React.PropTypes.shape({
-      title: React.PropTypes.string,
-      url: React.PropTypes.string
+  blurb: PropTypes.string,
+  size: PropTypes.oneOf(['Large', 'Medium', 'Small', 'Button only']).isRequired,
+  buttonAction: PropTypes.shape({
+    buttonText: PropTypes.string,
+    file: PropTypes.string,
+    link: PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string
     }),
-    type: React.PropTypes.oneOf(['file', 'link']).isRequired
+    type: PropTypes.oneOf(['file', 'link']).isRequired
   }),
-  headline: React.PropTypes.string,
-  image: React.PropTypes.shape({
-    alt: React.PropTypes.string,
-    url: React.PropTypes.string
+  headline: PropTypes.string,
+  image: PropTypes.shape({
+    alt: PropTypes.string,
+    url: PropTypes.string
   })
 }
 
