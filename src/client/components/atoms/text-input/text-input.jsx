@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import styles from './text-input.scss'
 import { FailureIcon, FormErrorMessage, SuccessIcon, SearchIcon, ValidationIcon } from 'atoms'
@@ -124,6 +124,30 @@ TextInput.defaultProps = {
   showSuccessIcon: true,
   showErrorIcon: false,
   id: null
+}
+
+TextInput.propTypes = {
+  className: PropTypes.string,
+
+  // Passed to FormErrorMessage and displayed as a paragraph
+  errorText: PropTypes.string,
+
+  hidden: PropTypes.bool,
+  label: PropTypes.string,
+  labelStyle: PropTypes.string,
+  onChange: PropTypes.func,
+  queryParamName: PropTypes.string,
+
+  // Props that control icon display
+  showSearchIcon: PropTypes.bool,
+  showValidationIcon: PropTypes.bool,
+  showSuccessIcon: PropTypes.bool,
+  showErrorIcon: PropTypes.bool,
+
+  validationFunction: PropTypes.func,
+
+  // Passed to iconValidation() and returns SuccessIcon or FailureIcon
+  validationState: PropTypes.oneOf(['success', 'error', ''])
 }
 
 export default TextInput
