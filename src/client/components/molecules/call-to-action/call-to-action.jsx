@@ -67,7 +67,6 @@ const CallToAction = props => {
 
 CallToAction.propTypes = {
   blurb: PropTypes.string,
-  size: PropTypes.oneOf(['Button only', 'Large', 'Medium', 'Small']).isRequired,
   buttonAction: PropTypes.shape({
     buttonText: PropTypes.string,
     file: PropTypes.string,
@@ -81,7 +80,8 @@ CallToAction.propTypes = {
   image: PropTypes.shape({
     alt: PropTypes.string,
     url: PropTypes.string
-  })
+  }),
+  size: PropTypes.oneOf(['Button only', 'Large', 'Medium', 'Small']).isRequired
 }
 
 export default CallToAction
