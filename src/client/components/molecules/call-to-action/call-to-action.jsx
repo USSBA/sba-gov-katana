@@ -67,7 +67,7 @@ const CallToAction = props => {
 
 CallToAction.propTypes = {
   blurb: PropTypes.string,
-  size: PropTypes.oneOf(['Large', 'Medium', 'Small', 'Button only']).isRequired,
+  size: PropTypes.oneOf(['Button only', 'Large', 'Medium', 'Small']).isRequired,
   buttonAction: PropTypes.shape({
     buttonText: PropTypes.string,
     file: PropTypes.string,
