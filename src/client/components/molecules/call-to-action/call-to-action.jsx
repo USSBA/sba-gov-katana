@@ -31,8 +31,7 @@ const CallToAction = props => {
 
   const className = classNames({
     [styles.callToAction]: true,
-    /* eslint-disable no-implicit-coercion */
-    [styles[variation]]: !!variation
+    [styles[variation]]: Boolean(variation)
   })
 
   const backgroundImageStyle = {
