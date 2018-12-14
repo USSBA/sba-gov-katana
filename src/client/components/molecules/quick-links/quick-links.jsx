@@ -11,7 +11,9 @@ function getCurrentFile(files) {
 
   if (files) {
     found = chain(files)
-      .filter(item => moment(item.effectiveDate).isSameOrBefore(moment()))
+      .filter(item => {
+        return moment(item.effectiveDate).isSameOrBefore(moment())
+      })
       .sortBy('effectiveDate')
       .last()
       .value()
@@ -24,12 +26,14 @@ function formatDate(date) {
   return moment(date).format('MMM D, YYYY')
 }
 
-const valueOrAll = value => (isEmpty(value[0]) ? 'all' : value[0])
+const valueOrAll = value => {
+  return isEmpty(value[0]) ? 'all' : value[0]
+}
 
 class QuickLinks extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { article: [], documents: [] }
+    this.state = { articles: [], documents: [] }
   }
 
   async componentDidMount() {
@@ -83,7 +87,7 @@ class QuickLinks extends PureComponent {
   }
 
   generateGrid(length) {
-    let gridClass = { 1: s.oneCard, 2: s.twoCards }
+    const gridClass = { 1: s.oneCard, 2: s.twoCards }
     return length > 2 ? s.manyCards : gridClass[length]
   }
 
