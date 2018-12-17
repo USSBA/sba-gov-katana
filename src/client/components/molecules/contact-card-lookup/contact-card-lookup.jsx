@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import _ from 'lodash'
 
 import states from '../../../services/us-states.json'
@@ -19,7 +20,7 @@ class ContactCardLookup extends React.Component {
   }
 
   handleChange(selectValue) {
-    let newValueLabel = selectValue.label
+    const newValueLabel = selectValue.label
     let newDisplayedItems = []
     if (
       this.props.items &&
@@ -61,10 +62,10 @@ class ContactCardLookup extends React.Component {
   handleBlur() {}
 
   render() {
-    let statesMap = _.map(states, function(item) {
+    const statesMap = _.map(states, function(item) {
       return { label: item.name, value: item.value }
     })
-    let multiselectProps = {
+    const multiselectProps = {
       id: 'lookup-select',
       errorText: 'Please select a state',
       label: '',
@@ -81,8 +82,8 @@ class ContactCardLookup extends React.Component {
     const langCode = getLanguageOverride()
     const lookUpYourStateLabel =
       langCode && langCode.startsWith('es')
-        ? TRANSLATIONS['lookUpYourState']['es'].text
-        : TRANSLATIONS['lookUpYourState']['en'].text
+        ? TRANSLATIONS.lookUpYourState.es.text
+        : TRANSLATIONS.lookUpYourState.en.text
     return (
       <div>
         <div className={styles.container}>
@@ -108,11 +109,11 @@ class ContactCardLookup extends React.Component {
 }
 
 ContactCardLookup.propTypes = {
-  title: React.PropTypes.string,
-  items: React.PropTypes.array,
-  afterChange: React.PropTypes.func,
-  name: React.PropTypes.string,
-  cardRenderer: React.PropTypes.func
+  title: PropTypes.string,
+  items: PropTypes.array,
+  afterChange: PropTypes.func,
+  name: PropTypes.string,
+  cardRenderer: PropTypes.func
 }
 
 ContactCardLookup.defaultProps = {
