@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { last, size, take } from 'lodash'
 
 import styles from './breadcrumb.scss'

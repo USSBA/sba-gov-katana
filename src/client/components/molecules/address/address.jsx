@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 //todo: use own style sheet
 import styles from '../contact-card/contact-card.scss'
@@ -54,12 +55,12 @@ class Address extends React.Component {
 }
 
 Address.propTypes = {
-  iconName: React.PropTypes.string,
-  streetAddress: React.PropTypes.string,
-  city: React.PropTypes.string,
-  state: React.PropTypes.string,
-  zipCode: React.PropTypes.string,
-  link: React.PropTypes.string
+  iconName: PropTypes.string,
+  streetAddress: PropTypes.string,
+  city: PropTypes.string,
+  state: PropTypes.string,
+  zipCode: PropTypes.string,
+  link: PropTypes.string
 }
 Address.defaultProps = {
   iconName: 'map-marker',
