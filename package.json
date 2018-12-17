@@ -112,6 +112,7 @@
     "postcss-loader": "2.0.5",
     "prettier": "^1.7.4",
     "pretty-data": "^0.40.0",
+    "prop-types": "^15.6.2",
     "rc-checkbox": "2.0.1",
     "rc-collapse": "1.6.12",
     "react": "15.4.1",

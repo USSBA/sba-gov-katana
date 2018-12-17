@@ -215,20 +215,20 @@ const RelatedArticles = props => {
 }
 
 const CTA = props => {
-  let buttonAction = {
+  const buttonAction = {
     link: {
       title: 'Find Counselors',
       url: '/tools/local-assistance'
     },
     type: 'link'
   }
-  let image = {
+  const image = {
     url: '/assets/images/learning-center/woman-man-chatting.png',
     alt: 'woman chatting with man'
   }
   return (
     <CallToAction
-      size="large"
+      size="Large"
       headline="Need help? Get free business counseling."
       blurb="Get advice from partner organizations like SCORE mentors, Small Business Development Centers, and Women’s Business Centers."
       buttonAction={buttonAction}
