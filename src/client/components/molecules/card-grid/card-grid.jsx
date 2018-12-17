@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import { chunk } from 'lodash'
 
 import s from './card-grid.scss'
 
@@ -22,7 +22,7 @@ class CardGrid extends React.Component {
   }
 
   renderCards() {
-    const chunks = _.chunk(this.props.cards, 3)
+    const chunks = chunk(this.props.cards, 3)
     return chunks.map(this.renderRow.bind(this))
   }
 
