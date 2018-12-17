@@ -10,7 +10,9 @@ const ContactCard = props => {
   const { city, email, fax, link, phoneNumber, state, streetAddress, title, zipCode, className: cn } = props
   const linkText = 'Visit website'
 
-  const address = breakOrNewLine => `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
+  const address = breakOrNewLine => {
+    return `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
+  }
 
   const fields = [
     {
@@ -74,6 +76,7 @@ const ContactCard = props => {
 
 ContactCard.propTypes = {
   city: PropTypes.string,
+  className: PropTypes.string,
   email: PropTypes.string,
   fax: PropTypes.string,
   link: PropTypes.string,
