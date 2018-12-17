@@ -91,6 +91,7 @@ Card.defaultProps = {
 }
 
 Card.propTypes = {
+  index: PropTypes.number,
   item: PropTypes.shape({
     image: PropTypes.shape({
       alt: PropTypes.string,
@@ -99,7 +100,9 @@ Card.propTypes = {
     link: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     subtitleText: PropTypes.string,
     titleText: PropTypes.string
-  })
+  }),
+  numCards: PropTypes.number,
+  parentIndex: PropTypes.number
 }
 
 export default Card
