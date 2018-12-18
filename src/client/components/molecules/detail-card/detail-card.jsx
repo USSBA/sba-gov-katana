@@ -95,7 +95,6 @@ class DetailCard extends React.Component {
   }
 
   render() {
-    console.log('1', this.props.data)
     const doc = this.props.data
     if (doc) {
       const { category, documents, type: pageType } = doc
