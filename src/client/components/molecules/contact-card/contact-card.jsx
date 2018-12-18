@@ -77,7 +77,6 @@ const ContactCard = props => {
 
 ContactCard.propTypes = {
   city: PropTypes.string,
-  className: PropTypes.string,
   email: PropTypes.string,
   fax: PropTypes.string,
   link: PropTypes.string,
