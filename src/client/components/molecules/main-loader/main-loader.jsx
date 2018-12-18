@@ -55,7 +55,4 @@ MainLoader.propTypes = {
   displayLoader: PropTypes.bool
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(MainLoader)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(MainLoader)
