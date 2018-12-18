@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { compact, findIndex, flatMap, last, nth } from 'lodash'
 
 import styles from './previous-next.scss'
@@ -102,6 +103,7 @@ class PreviousNext extends React.Component {
 }
 
 PreviousNext.propTypes = {
+  langCode: PropTypes.string,
   lineage: PropTypes.array.isRequired
 }
 

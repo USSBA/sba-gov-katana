@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { isObject } from 'lodash'
 
 import styles from './page-link-group.scss'
@@ -62,8 +63,11 @@ class PageLinkGroup extends React.Component {
 }
 
 PageLinkGroup.propTypes = {
+  isLastGroup: PropTypes.bool,
+  onFinalBlur: PropTypes.func,
   title: PropTypes.string,
   titleLink: PropTypes.string,
+  langCode: PropTypes.string,
   links: PropTypes.array.isRequired
 }
 

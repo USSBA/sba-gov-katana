@@ -1,5 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import Modal from 'react-modal'
-import React, { PropTypes } from 'react'
 
 import ModalCloseIcon from 'assets/svg/modal-close-icon.svg'
 import sbaLogo from 'assets/images/logo.png'

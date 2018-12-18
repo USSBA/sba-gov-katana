@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import s from './menu-tile.scss'
 import sharedStyles from './menu-tile-shared.scss'
@@ -46,15 +47,15 @@ class MenuTile extends React.Component {
 }
 
 MenuTile.propTypes = {
-  id: React.PropTypes.string,
-  inverse: React.PropTypes.bool,
-  largeTitle: React.PropTypes.string,
-  smallTitle: React.PropTypes.string,
-  uppercaseFirstWord: React.PropTypes.bool,
-  icon: React.PropTypes.string,
-  iconWhite: React.PropTypes.string,
-  description: React.PropTypes.string,
-  pathname: React.PropTypes.string
+  id: PropTypes.string,
+  inverse: PropTypes.bool,
+  largeTitle: PropTypes.string,
+  smallTitle: PropTypes.string,
+  uppercaseFirstWord: PropTypes.bool,
+  icon: PropTypes.string,
+  iconWhite: PropTypes.string,
+  description: PropTypes.string,
+  pathname: PropTypes.string
 }
 
 MenuTile.defaultProps = {}

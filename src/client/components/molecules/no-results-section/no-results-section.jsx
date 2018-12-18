@@ -1,6 +1,6 @@
 import React from 'react'
-import { isEmpty } from 'lodash'
 import PropTypes from 'prop-types'
+import { isEmpty } from 'lodash'
 import styles from './no-results-section.scss'
 
 class NoResultsSection extends React.Component {
