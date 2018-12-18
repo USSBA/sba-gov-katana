@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import s from './long-scroll-nav.scss'
 import { getLanguageOverride } from '../../../services/utils'
 import { TRANSLATIONS } from '../../../translations'
@@ -43,7 +44,8 @@ class LongScrollNav extends React.Component {
     const steps = stepArray.map(step => {
       return { title: TRANSLATIONS[step][langCode].text }
     })
-
+    console.log('1', typeof this.props.section)
+    console.log('2', typeof this.props.navType)
     return (
       <div
         id="ten-steps-nav"
@@ -73,6 +75,11 @@ class LongScrollNav extends React.Component {
       </div>
     )
   }
+}
+
+LongScrollNav.propTypes = {
+  // section varies from number, string and undefined
+  navType: PropTypes.string
 }
 
 export default LongScrollNav
