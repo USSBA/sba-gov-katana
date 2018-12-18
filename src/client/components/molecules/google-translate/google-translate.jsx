@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './google-translate.scss'
 import { UtilityLink } from 'atoms'
@@ -41,6 +42,10 @@ class GoogleTranslate extends React.Component {
       </div>
     )
   }
+}
+
+GoogleTranslate.propTypes = {
+  text: PropTypes.string
 }
 
 export default GoogleTranslate
