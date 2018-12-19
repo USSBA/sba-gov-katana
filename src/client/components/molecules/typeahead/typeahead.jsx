@@ -1,5 +1,6 @@
-import AutoSuggest from 'react-autosuggest'
 import React from 'react'
+import PropTypes from 'prop-types'
+import AutoSuggest from 'react-autosuggest'
 import isMobile from 'ismobilejs'
 
 import { filter, isInteger, map, reduce, startsWith, take } from 'lodash'
@@ -229,6 +230,14 @@ class Typeahead extends React.PureComponent {
       suggestions: []
     })
   }
+}
+
+Typeahead.propTypes = {
+  inputLengthToGetSuggestions: PropTypes.number,
+  inputProps: PropTypes.object,
+  maxVisibleSuggestions: PropTypes.number
+  // naics: PropTypes.
+  // onSelect: PropTypes.
 }
 
 export default Typeahead
