@@ -34,7 +34,7 @@ const valueOrAll = value => {
 class QuickLinks extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = { articles: [], documents: [] }
+    this.state = { article: [], documents: [] }
   }
 
   async componentDidMount() {
