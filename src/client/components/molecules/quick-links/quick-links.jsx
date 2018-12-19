@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import queryString from 'querystring'
 import { chain, isEmpty } from 'lodash'
@@ -284,6 +285,22 @@ QuickLinks.defaultProps = {
       }
     ]
   }
+}
+
+QuickLinks.propTypes = {
+  data: PropTypes.shape({
+    typeOfLinks: PropTypes.arrayOf(
+      PropTypes.shape({
+        articleCategory: PropTypes.arrayOf(PropTypes.string),
+        articleProgram: PropTypes.arrayOf(PropTypes.string),
+        documentActivity: PropTypes.arrayOf(PropTypes.string),
+        documentProgram: PropTypes.arrayOf(PropTypes.string),
+        documentType: PropTypes.arrayOf(PropTypes.string),
+        sectionHeaderText: PropTypes.string,
+        type: PropTypes.oneOf(['articleLookup', 'documentLookup', 'ratesList'])
+      })
+    )
+  })
 }
 
 export { QuickLinks }
