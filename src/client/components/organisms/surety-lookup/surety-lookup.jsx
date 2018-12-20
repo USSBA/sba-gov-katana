@@ -1,12 +1,13 @@
 import React from 'react'
 import _ from 'lodash'
 
-import s from './surety-lookup.scss'
+import styles from './surety-lookup.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { MultiSelect } from 'atoms'
 import { CardGrid, Paginator } from 'molecules'
 
-var pageSize = 9
+const pageSize = 9
+
 class SuretyLookup extends React.Component {
   constructor(ownProps) {
     super()
@@ -53,7 +54,7 @@ class SuretyLookup extends React.Component {
   }
 
   handleSelect(e) {
-    let newValue = e.value
+    const newValue = e.value
     this.setState(
       {
         suretyState: e.value,
@@ -74,20 +75,18 @@ class SuretyLookup extends React.Component {
     if (this.state.suretyState === 'All') {
       filteredContacts = this.props.items
     } else {
-      filteredContacts = _.filter(this.props.items, agency => {
-        return !_.isEmpty(
-          _.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState))
-        )
-      })
+      filteredContacts = _.filter(
+        this.props.items,
+        agency =>
+          !_.isEmpty(_.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState)))
+      )
     }
     filteredContacts = _.sortBy(filteredContacts, ['title'])
     this.setState({ filteredContacts: filteredContacts })
   }
 
   multiSelectProps() {
-    let options = this.state.states.terms.map(state => {
-      return { label: state, value: state }
-    })
+    const options = this.state.states.terms.map(state => ({ label: state, value: state }))
     options.push({ label: '', value: null })
     options.unshift({ label: 'All', value: 'All' })
     return {
@@ -115,14 +114,14 @@ class SuretyLookup extends React.Component {
 
   renderCard(data, index) {
     return (
-      <div id={'surety-card' + index} className={s.card}>
-        <h4 className={s.title}>{data.title}</h4>
-        <div className={s.phoneContainer}>
-          <i className={s.phoneIcon + ' fa fa-phone'} aria-hidden="true" />
+      <div id={'surety-card' + index} className={styles.card}>
+        <h4 className={styles.title}>{data.title}</h4>
+        <div className={styles.phoneContainer}>
+          <i className={styles.phoneIcon + ' fa fa-phone'} aria-hidden="true" />
           <span>{data.phoneNumber}</span>
         </div>
         <div>
-          <i className={s.emailIcon + ' fa fa-envelope-o'} aria-hidden="true" />
+          <i className={styles.emailIcon + ' fa fa-envelope-o'} aria-hidden="true" />
           <a href={'mailto:' + data.email}>Email</a>
         </div>
       </div>
@@ -131,8 +130,8 @@ class SuretyLookup extends React.Component {
 
   renderCardContainer() {
     if (!_.isEmpty(this.state.filteredContacts)) {
-      let start = (this.state.pageNumber - 1) * pageSize
-      let slice = this.state.filteredContacts.slice(start, start + pageSize)
+      const start = (this.state.pageNumber - 1) * pageSize
+      const slice = this.state.filteredContacts.slice(start, start + pageSize)
       return <CardGrid cards={slice} renderCard={this.renderCard} />
     } else if (_.isEmpty(this.state.filteredContacts)) {
       return <EmptyContacts />
@@ -144,23 +143,19 @@ class SuretyLookup extends React.Component {
   render() {
     return (
       <div id={'surety-lookup'}>
-        <div className={s.banner}>
+        <div className={styles.banner}>
           <h2>Contact a surety bond agency</h2>
-          <h5 className={s.blurb}>
+          <h5 className={styles.blurb}>
             Check the database of surety agencies that offer SBA-guaranteed bonds. Contact a surety agency
             in your state to get started with the application process.
           </h5>
-          <div className={s.multiSelect}>
+          <div className={styles.multiSelect}>
             <MultiSelect
               {...this.multiSelectProps()}
               onChange={e => this.handleSelect(e)}
               value={this.state.suretyState}
-              onBlur={() => {
-                return null
-              }}
-              onFocus={() => {
-                return null
-              }}
+              onBlur={() => null}
+              onFocus={() => null}
               validationState=""
               errorText=""
               autoFocus={false}
@@ -169,8 +164,8 @@ class SuretyLookup extends React.Component {
           </div>
         </div>
 
-        <div className={s.cardContainer}>{this.renderCardContainer()}</div>
-        <div className={s.paginator}>
+        <div className={styles.cardContainer}>{this.renderCardContainer()}</div>
+        <div className={styles.paginator}>
           <Paginator
             pageNumber={this.state.pageNumber}
             pageSize={pageSize}
@@ -185,7 +180,7 @@ class SuretyLookup extends React.Component {
 }
 
 const EmptyContacts = () => (
-  <div className={s.emptyContacts}>
+  <div className={styles.emptyContacts}>
     <div>No surety agencies found</div>
   </div>
 )

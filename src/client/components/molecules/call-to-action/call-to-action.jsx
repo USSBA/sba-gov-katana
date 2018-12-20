@@ -30,7 +30,7 @@ const CallToAction = props => {
 
   const className = classNames({
     [styles.callToAction]: true,
-    [styles[variation]]: !!variation
+    [styles[variation]]: Boolean(variation)
   })
 
   const backgroundImageStyle = {

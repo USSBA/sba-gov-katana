@@ -65,14 +65,12 @@ const SocialMediaLinkSet = () => {
   )
 }
 
-const Address = () => {
-  return (
-    <div className={styles.address}>
-      <span className={styles.name}>{constants.name}</span>
-      <span className={styles.location}>{constants.address}</span>
-    </div>
-  )
-}
+const Address = () => (
+  <div className={styles.address}>
+    <span className={styles.name}>{constants.name}</span>
+    <span className={styles.location}>{constants.address}</span>
+  </div>
+)
 
 class Footer extends React.Component {
   render() {
@@ -149,8 +147,9 @@ class Footer extends React.Component {
     return (
       <footer id="sba-footer" className={styles.footer}>
         <div key={1} className={styles.footerLinks}>
-          {desktopLinks.map((item, index) => {
-            return (
+          {desktopLinks.map(
+            (item, index) => (
+              /* eslint-disable no-magic-numbers */
               <div key={index + 10} className={styles.desktopFooterLinks}>
                 <PageLinkGroup
                   id={'footer-group-' + index}
@@ -161,7 +160,8 @@ class Footer extends React.Component {
                 />
               </div>
             )
-          })}
+            /* eslint-enable no-magic-numbers */
+          )}
         </div>
         <div key={2} className={styles.tabletFooterLinks}>
           <PageLinkGroup

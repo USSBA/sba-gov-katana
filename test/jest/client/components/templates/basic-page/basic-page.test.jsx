@@ -34,9 +34,6 @@ describe('BasicPage', () => {
   })
 
   test('render a TitleSection component', () => {
-    const title = 'titleishere'
-    const summary = 'summaryishere'
-
     const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
     expect(BasicPageComponent.find(TitleSection).length).toEqual(1)
     expect(BasicPageComponent.find(TitleSection).prop('title')).toEqual(title)

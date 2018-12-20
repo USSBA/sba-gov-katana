@@ -47,13 +47,11 @@ function logPageEvent(eventToLog) {
 
 /* eslint-disable callback-return */
 function googleAnalyticsMiddleware({ getState }) {
-  return next => {
-    return action => {
-      if (action.type === '@@router/LOCATION_CHANGE') {
-        logPageView()
-      }
-      return next(action)
+  return next => action => {
+    if (action.type === '@@router/LOCATION_CHANGE') {
+      logPageView()
     }
+    return next(action)
   }
 }
 /* eslint-enable callback-return */

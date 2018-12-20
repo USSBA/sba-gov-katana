@@ -1,8 +1,8 @@
 import React from 'react'
 import json2csv from 'json2csv'
-import { pick } from 'lodash'
+import { castArray, filter, intersection, isEmpty, isObject, orderBy, pick } from 'lodash'
 
-import s from './sbic-lookup.scss'
+import styles from './sbic-lookup.scss'
 import { Button, MultiSelect } from 'atoms'
 import { Paginator } from 'molecules'
 
@@ -35,8 +35,8 @@ class SbicLookup extends React.Component {
   }
 
   handleChange(e, selectStateKey) {
-    let stateCopy = this.state
-    let newValue = e.value
+    const stateCopy = this.state
+    const newValue = e.value
     stateCopy[selectStateKey] = newValue
     stateCopy.pageNumber = 1
     this.setState(
@@ -58,15 +58,15 @@ class SbicLookup extends React.Component {
   }
 
   sortAndFilterContacts() {
-    let contacts = this.props.items
-    let sortedContacts = this.sortContacts(contacts)
-    let filteredContacts = this.filterContacts(sortedContacts)
+    const contacts = this.props.items
+    const sortedContacts = this.sortContacts(contacts)
+    const filteredContacts = this.filterContacts(sortedContacts)
     this.setState({ contacts: filteredContacts })
   }
 
   sortContacts(contacts) {
-    let orders = []
-    let iteratees = []
+    const orders = []
+    const iteratees = []
     if (this.state.sortByValue === 'Investor Name') {
       orders.push('asc')
       iteratees.push('title')
@@ -74,7 +74,7 @@ class SbicLookup extends React.Component {
       orders.push('desc')
       iteratees.push('activeSince')
     }
-    return _.orderBy(contacts, iteratees, orders)
+    return orderBy(contacts, iteratees, orders)
   }
 
   //TODO remove outer array brackets [contact.industry] when industry field becomes an actual array. keep intersection though.
@@ -82,30 +82,30 @@ class SbicLookup extends React.Component {
   filterContacts(contacts) {
     let filteredContacts = contacts
     if (this.state.industryValue !== 'All') {
-      filteredContacts = _.filter(contacts, contact => {
-        return !_.isEmpty(
-          _.intersection(_.castArray(contact.industry), _.castArray(this.state.industryValue))
-        )
-      })
+      filteredContacts = filter(
+        contacts,
+        contact => !isEmpty(intersection(castArray(contact.industry), castArray(this.state.industryValue)))
+      )
     }
     if (this.state.investingStatusValue !== 'All') {
-      filteredContacts = _.filter(filteredContacts, contact => {
-        return contact.investingStatus === this.state.investingStatusValue
-      })
+      filteredContacts = filter(
+        filteredContacts,
+        contact => contact.investingStatus === this.state.investingStatusValue
+      )
     }
     return filteredContacts
   }
 
   convertContactsToCsv() {
     if (this.state.contacts && this.state.contacts.length > 0) {
-      let fields = Object.keys(this.state.contacts[0])
-      let csv = json2csv({ data: this.state.contacts, fields: fields })
+      const fields = Object.keys(this.state.contacts[0])
+      const csv = json2csv({ data: this.state.contacts, fields: fields })
       this.setState({ contactsCsv: csv })
     }
   }
 
   renderMultiSelects() {
-    let specificMultiSelectProps = [
+    const specificMultiSelectProps = [
       {
         id: 'sort-by-select',
         onChange: e => {
@@ -173,25 +173,19 @@ class SbicLookup extends React.Component {
       }
     ]
 
-    return specificMultiSelectProps.map((multiSelectProps, index) => {
-      return (
-        <div className={s.multiSelect} key={index}>
-          <MultiSelect
-            {...multiSelectProps}
-            onBlur={() => {
-              return null
-            }}
-            onFocus={() => {
-              return null
-            }}
-            validationState=""
-            errorText=""
-            autoFocus={false}
-            multi={false}
-          />
-        </div>
-      )
-    })
+    return specificMultiSelectProps.map((multiSelectProps, index) => (
+      <div className={styles.multiSelect} key={index}>
+        <MultiSelect
+          {...multiSelectProps}
+          onBlur={() => null}
+          onFocus={() => null}
+          validationState=""
+          errorText=""
+          autoFocus={false}
+          multi={false}
+        />
+      </div>
+    ))
   }
 
   handleBack() {
@@ -210,47 +204,45 @@ class SbicLookup extends React.Component {
   }
 
   renderContacts() {
-    let start = (this.state.pageNumber - 1) * pageSize
-    let slice = this.state.contacts.slice(start, start + pageSize)
-    return slice.map((contact, index) => {
-      return (
-        <tr key={index}>
-          <td className={s.nameAndAddressCol}>
-            <div className={s.mobileHeader}>Investor name & address</div>
-            <NameAndAddress
-              title={contact.title}
-              streetAddress={contact.streetAddress}
-              city={contact.city}
-              state={contact.state}
-              zipCode={contact.zipCode}
-            />
-          </td>
-          <td className={s.industryCol}>
-            <div className={s.mobileHeader}>Industry</div>
-            {contact.industry === 'ImpactDiversified' ? 'Impact Diversified' : contact.industry}
-          </td>
-          <td className={s.activeSinceCol}>
-            <div className={s.mobileHeader}>Active since</div>
-            {contact.activeSince}
-          </td>
-          <td className={s.investingStatusCol}>
-            <div className={s.mobileHeader}>Investing status</div>
-            {contact.investingStatus === 'investing' ? 'Likely still investing' : 'Not likely investing'}
-          </td>
-          <td className={s.contactInfoCol}>
-            <div className={s.mobileHeader}>Contact info</div>
-            <ContactInfo
-              name={contact.contactFirstName + ' ' + contact.contactLastName}
-              phoneNumber={contact.phoneNumber}
-            />
-          </td>
-        </tr>
-      )
-    })
+    const start = (this.state.pageNumber - 1) * pageSize
+    const slice = this.state.contacts.slice(start, start + pageSize)
+    return slice.map((contact, index) => (
+      <tr key={index}>
+        <td className={styles.nameAndAddressCol}>
+          <div className={styles.mobileHeader}>Investor name & address</div>
+          <NameAndAddress
+            title={contact.title}
+            streetAddress={contact.streetAddress}
+            city={contact.city}
+            state={contact.state}
+            zipCode={contact.zipCode}
+          />
+        </td>
+        <td className={styles.industryCol}>
+          <div className={styles.mobileHeader}>Industry</div>
+          {contact.industry === 'ImpactDiversified' ? 'Impact Diversified' : contact.industry}
+        </td>
+        <td className={styles.activeSinceCol}>
+          <div className={styles.mobileHeader}>Active since</div>
+          {contact.activeSince}
+        </td>
+        <td className={styles.investingStatusCol}>
+          <div className={styles.mobileHeader}>Investing status</div>
+          {contact.investingStatus === 'investing' ? 'Likely still investing' : 'Not likely investing'}
+        </td>
+        <td className={styles.contactInfoCol}>
+          <div className={styles.mobileHeader}>Contact info</div>
+          <ContactInfo
+            name={contact.contactFirstName + ' ' + contact.contactLastName}
+            phoneNumber={contact.phoneNumber}
+          />
+        </td>
+      </tr>
+    ))
   }
 
   downloadCsv() {
-    if (window !== undefined) {
+    if (isObject(window) && window.hasOwnProperty('open')) {
       window.open(SBIC_URL, '_blank')
     }
   }
@@ -259,10 +251,10 @@ class SbicLookup extends React.Component {
     console.log('state', this.state)
     return (
       <div>
-        <div className={s.banner}>
-          <h2 className={s.header}>{this.props.title}</h2>
+        <div className={styles.banner}>
+          <h2 className={styles.header}>{this.props.title}</h2>
           {this.renderMultiSelects()}
-          <div className={s.downloadBtn}>
+          <div className={styles.downloadBtn}>
             <Button
               alternate
               children="Download list (.XLS)"
@@ -274,21 +266,21 @@ class SbicLookup extends React.Component {
             />
           </div>
         </div>
-        <div className={s.tableContainer}>
-          <table className={s.table}>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
             <thead>
               <tr>
-                <th className={s.nameAndAddressHead}>Investor name & address</th>
-                <th className={s.industryHead}>Industry</th>
-                <th className={s.activeSinceHead}>Active since</th>
-                <th className={s.investingStatusHead}>Investing status</th>
-                <th className={s.contactInfoHead}>Contact info</th>
+                <th className={styles.nameAndAddressHead}>Investor name & address</th>
+                <th className={styles.industryHead}>Industry</th>
+                <th className={styles.activeSinceHead}>Active since</th>
+                <th className={styles.investingStatusHead}>Investing status</th>
+                <th className={styles.contactInfoHead}>Contact info</th>
               </tr>
             </thead>
             {this.state.contacts ? <tbody>{this.renderContacts()}</tbody> : <tbody>loading</tbody>}
           </table>
         </div>
-        <div className={s.paginator}>
+        <div className={styles.paginator}>
           <Paginator
             pageNumber={this.state.pageNumber}
             pageSize={pageSize}
@@ -302,31 +294,27 @@ class SbicLookup extends React.Component {
   }
 }
 
-const NameAndAddress = props => {
-  return (
-    <div className={s.investorNameAndTitle}>
-      <div className={s.investorTitle}>{props.title}</div>
-      <i className={s.mapIcon + ' fa fa-map-marker'} aria-hidden="true" />
-      <div className={s.addressContainer}>
-        <div className={s.streetAddress}>{props.streetAddress}</div>
-        <div className={s.cityAddress}>
-          {props.city}, {props.state} {props.zipCode}
-        </div>
+const NameAndAddress = props => (
+  <div className={styles.investorNameAndTitle}>
+    <div className={styles.investorTitle}>{props.title}</div>
+    <i className={styles.mapIcon + ' fa fa-map-marker'} aria-hidden="true" />
+    <div className={styles.addressContainer}>
+      <div className={styles.streetAddress}>{props.streetAddress}</div>
+      <div className={styles.cityAddress}>
+        {props.city}, {props.state} {props.zipCode}
       </div>
     </div>
-  )
-}
+  </div>
+)
 
-const ContactInfo = props => {
-  return (
-    <div className={s.contactInfo}>
-      <div className={s.investorName}>{props.name}</div>
-      <div className={s.phoneContainer}>
-        <i className={s.phoneIcon + ' fa fa-phone'} aria-hidden="true" />
-        <div className={s.investorPhone}>{props.phoneNumber}</div>
-      </div>
+const ContactInfo = props => (
+  <div className={styles.contactInfo}>
+    <div className={styles.investorName}>{props.name}</div>
+    <div className={styles.phoneContainer}>
+      <i className={styles.phoneIcon + ' fa fa-phone'} aria-hidden="true" />
+      <div className={styles.investorPhone}>{props.phoneNumber}</div>
     </div>
-  )
-}
+  </div>
+)
 
 export default SbicLookup

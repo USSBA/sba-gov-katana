@@ -11,18 +11,18 @@ class TextSection extends React.Component {
       $(table)
         .addClass('text-section-table')
         .find('thead > tr > th')
-        .each((i, theader) => {
+        .each((j, theader) => {
           headers.push(theader.children[0].data)
         })
 
       const trs = $(table).find('tbody > tr')
       const firstRowLength = $($(trs)[0]).find('td').length
 
-      $(trs).each((i, trow) => {
+      $(trs).each((j, trow) => {
         let tds = $(trow).find('td')
 
         if (tds.length !== firstRowLength) {
-          const prevRow = $(trs)[i - 1]
+          const prevRow = $(trs)[j - 1]
           const firstTdCopy = $($(prevRow).find('td')[0]).clone()
           firstTdCopy.removeAttr('rowspan')
           firstTdCopy.find('.table-header-label').remove()

@@ -7,6 +7,7 @@ import { TitleSection } from 'molecules/title-section/title-section'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
+// eslint-disable-next-line id-length
 const f = () => {}
 const options = {
   context: {
@@ -63,6 +64,7 @@ describe('Content section', () => {
       />
     )
     const para = component.find('#titleSectionContentId').first()
+    // eslint-disable-next-line id-length
     const li = component.find('#titleSectionLinkId0')
 
     expect(para.text()).toBe('')

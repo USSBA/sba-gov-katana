@@ -18,9 +18,8 @@ export class RootPage extends React.Component {
   }
 
   componentWillMount() {
-    let me = this
     fetchSiteContent('siteMap').then(data => {
-      me.setState({
+      this.setState({
         siteMap: data
       })
     })
@@ -28,6 +27,7 @@ export class RootPage extends React.Component {
 
   renderPage(first, second, third, fourth, fifth) {
     const langCode = getLanguageOverride()
+    // eslint-disable-next-line no-magic-numbers
     if (getConfig('responseStatus') === 404) {
       return <ErrorPage />
     } else if (first === 'document') {

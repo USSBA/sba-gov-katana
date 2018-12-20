@@ -1,7 +1,6 @@
 import React from 'react'
 import _ from 'lodash'
 import { Tile } from 'organisms'
-import s from './menu-tile-collection.scss'
 import icons from './icons'
 
 class MenuTileCollection extends React.Component {

@@ -12,6 +12,7 @@ const buttonProps = [
 ]
 
 const heroProps = {
+  /* eslint-disable no-magic-numbers */
   type: 'hero',
   caption: 'Want to be an entrepreneur?',
   imageLarge: {

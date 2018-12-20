@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { includes, isEmpty, isObject, size } from 'lodash'
 
-import s from './detail-card.scss'
+import styles from './detail-card.scss'
 import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile } from '../../../services/utils.js'
@@ -18,10 +18,9 @@ class DetailCard extends React.Component {
 
   getFileTypeIcon(fileExtension) {
     if (fileExtension === 'pdf') {
-      console.log('filetypeicon called')
       return <PdfIcon />
     } else {
-      return undefined
+      return null
     }
   }
 
@@ -29,7 +28,7 @@ class DetailCard extends React.Component {
     if (fileUrl.includes('.')) {
       return fileUrl.substr(fileUrl.lastIndexOf('.') + 1).toLowerCase()
     } else {
-      return undefined
+      return null
     }
   }
 
@@ -38,7 +37,7 @@ class DetailCard extends React.Component {
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
       const fileExtension = this.getFileExtension(latestFile.fileUrl)
       return (
-        <div className={'document-card-download ' + s.download}>
+        <div className={'document-card-download ' + styles.download}>
           <Link
             onClick={() => {
               window.open(latestFile.fileUrl, '_blank')
@@ -51,7 +50,7 @@ class DetailCard extends React.Component {
         </div>
       )
     } else {
-      return undefined
+      return null
     }
   }
 
@@ -76,21 +75,19 @@ class DetailCard extends React.Component {
 
     return (
       <div>
-        <div className={s.dash}>
+        <div className={styles.dash}>
           <DecorativeDash />
         </div>
-        <table className={s.programSummaryTableData}>
-          <tbody className={s['program-summary-table']}>
-            {rows.map((row, index) => {
-              return (
-                <tr className={s['program-summary-data']} key={index}>
-                  <td className={s.columnOne}>
-                    <h6>{row.name}</h6>
-                  </td>
-                  <td className={s.columnTwo}>{row.value}</td>
-                </tr>
-              )
-            })}
+        <table className={styles.programSummaryTableData}>
+          <tbody className={styles['program-summary-table']}>
+            {rows.map((row, index) => (
+              <tr className={styles['program-summary-data']} key={index}>
+                <td className={styles.columnOne}>
+                  <h6>{row.name}</h6>
+                </td>
+                <td className={styles.columnTwo}>{row.value}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -105,7 +102,7 @@ class DetailCard extends React.Component {
     }
     return (
       <Link to={doc.url}>
-        <h6 className={'document-card-title ' + s.title}>{doc.title}</h6>
+        <h6 className={'document-card-title ' + styles.title}>{doc.title}</h6>
       </Link>
     )
   }
@@ -133,14 +130,14 @@ class DetailCard extends React.Component {
 
       const className = classNames({
         'document-card-container': true,
-        [s.container]: showBorder,
-        [s.containerWithoutBorder]: !showBorder
+        [styles.container]: showBorder,
+        [styles.containerWithoutBorder]: !showBorder
       })
 
       return (
         <div className={className}>
           <div>
-            <div className={s.documentTypeContainer}>
+            <div className={styles.documentTypeContainer}>
               <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
             </div>
             <div />

@@ -1,9 +1,9 @@
 import React from 'react'
-import s from './icons.scss'
+import styles from './icons.scss'
 
 class PdfIcon extends React.Component {
   render() {
-    return <i className={s.pdf + ' fa fa-file-pdf-o'} />
+    return <i className={`${styles.pdf} fa fa-file-pdf-o`} />
   }
 }
 

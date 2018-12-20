@@ -93,14 +93,8 @@ class ResourceCenterProfilePage extends React.Component {
   onBlur() {}
 
   updateOffices(partner) {
-    let offices = _.reject(getPartnerOffices(partner), office => {
-      return _.isEmpty(office)
-    })
-    offices = _.orderBy(offices, [
-      office => {
-        return office.name2.toLowerCase()
-      }
-    ])
+    let offices = _.reject(getPartnerOffices(partner), office => _.isEmpty(office))
+    offices = _.orderBy(offices, [office => office.name2.toLowerCase()])
     this.setState({
       offices: offices
     })
@@ -119,9 +113,7 @@ class ResourceCenterProfilePage extends React.Component {
     if (event.target.checked) {
       arrayToUpdate.push(itemToUpdate)
     } else {
-      _.remove(arrayToUpdate, item => {
-        return item === itemToUpdate
-      })
+      _.remove(arrayToUpdate, item => item === itemToUpdate)
     }
     this.setState({ profile: newProfile })
   }
@@ -158,12 +150,7 @@ class ResourceCenterProfilePage extends React.Component {
       return 'Please select your office'
     }
     const addressPartList = [address.street1, address.street2, address.city, address.state, address.zip]
-    const addressString = _.join(
-      _.filter(addressPartList, addressPart => {
-        return !_.isEmpty(addressPart)
-      }),
-      ', '
-    )
+    const addressString = _.join(_.filter(addressPartList, addressPart => !_.isEmpty(addressPart)), ', ')
     return addressString
   }
 
@@ -238,12 +225,10 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   renderPartnerSelect() {
-    const partners = _.map(this.state.partners, partner => {
-      return {
-        value: partner,
-        label: partner
-      }
-    })
+    const partners = _.map(this.state.partners, partner => ({
+      value: partner,
+      label: partner
+    }))
 
     return (
       <div>
@@ -258,9 +243,7 @@ class ResourceCenterProfilePage extends React.Component {
           value={this.state.profile.type}
           options={partners}
           multi={false}
-          onChange={e => {
-            return this.handleSelect(e, 'type')
-          }}
+          onChange={e => this.handleSelect(e, 'type')}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           aria-labelledby={idPrefix + 'partner-label'}
@@ -273,12 +256,7 @@ class ResourceCenterProfilePage extends React.Component {
   renderOfficeSelect() {
     const offices = _.map(this.state.offices, office => {
       const locationArray = [office.city, office.state]
-      let locationString = _.join(
-        _.filter(locationArray, location => {
-          return !_.isEmpty(location)
-        }),
-        ', '
-      )
+      let locationString = _.join(_.filter(locationArray, location => !_.isEmpty(location)), ', ')
       if (locationString) {
         locationString = ' (' + locationString + ')'
       }
@@ -311,12 +289,10 @@ class ResourceCenterProfilePage extends React.Component {
     )
   }
   renderAreaSelect() {
-    const areas = _.map(['Entire Nation', 'Entire State', 'Entire City', 'Other'], area => {
-      return {
-        value: area,
-        label: area
-      }
-    })
+    const areas = _.map(['Entire Nation', 'Entire State', 'Entire City', 'Other'], area => ({
+      value: area,
+      label: area
+    }))
 
     return (
       <div>
@@ -345,9 +321,7 @@ class ResourceCenterProfilePage extends React.Component {
             id={idPrefix + 'service-area-other'}
             name="serviceArea"
             placeholder="Custom other value"
-            onChange={e => {
-              return this.setState({ otherServiceArea: e.target.value })
-            }}
+            onChange={e => this.setState({ otherServiceArea: e.target.value })}
             value={this.state.otherServiceArea}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
@@ -362,6 +336,7 @@ class ResourceCenterProfilePage extends React.Component {
   renderHourDropdowns() {
     const hourArray = ['Closed']
     // generate hours from 12:00 am to 11:30 pm
+    /* eslint-disable no-magic-numbers */
     for (let i = 0; i < 48; i++) {
       let hour = Math.floor(i / 2) % 12
       if (hour === 0) {
@@ -378,12 +353,12 @@ class ResourceCenterProfilePage extends React.Component {
       const timeString = hour + minutes + suffix
       hourArray.push(timeString)
     }
-    const hours = _.map(hourArray, hour => {
-      return {
-        value: hour,
-        label: hour
-      }
-    })
+    /* eslint-enable no-magic-numbers */
+    const hours = _.map(hourArray, hour => ({
+      value: hour,
+      label: hour
+    }))
+
     const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     const hoursOptions = _.map(dayOfTheWeek, day => {
       const dayOpen = day.toLowerCase() + 'Open'
@@ -404,9 +379,7 @@ class ResourceCenterProfilePage extends React.Component {
               multi={false}
               key={dayOpen}
               placeholder={dayOpenPlaceholder}
-              onChange={e => {
-                return this.handleSelect(e, dayOpen)
-              }}
+              onChange={e => this.handleSelect(e, dayOpen)}
               onFocus={this.onFocus}
               onBlur={this.onBlur}
               aria-label={'Select your normal ' + day + ' opening time'}
@@ -422,9 +395,7 @@ class ResourceCenterProfilePage extends React.Component {
               multi={false}
               key={dayClose}
               placeholder={dayClosePlaceholder}
-              onChange={e => {
-                return this.handleSelect(e, dayClose)
-              }}
+              onChange={e => this.handleSelect(e, dayClose)}
               onBlur={this.onBlur}
               onFocus={this.onFocus}
               aria-label={'Select your normal ' + day + ' closing time'}
@@ -459,20 +430,16 @@ class ResourceCenterProfilePage extends React.Component {
         'Disaster preparedness',
         'HR/hiring'
       ],
-      expertise => {
-        return (
-          <Checkbox
-            id={idPrefix + expertise}
-            name={expertise}
-            label={expertise}
-            key={expertise}
-            handleChange={e => {
-              return this.handleCheckbox(e, 'expertise')
-            }}
-            checked={this.state.profile.expertise.includes(expertise)}
-          />
-        )
-      }
+      expertise => (
+        <Checkbox
+          id={idPrefix + expertise}
+          name={expertise}
+          label={expertise}
+          key={expertise}
+          handleChange={e => this.handleCheckbox(e, 'expertise')}
+          checked={this.state.profile.expertise.includes(expertise)}
+        />
+      )
     )
     return (
       <div role="group" aria-labelledby={idPrefix + 'expertise-label'}>
@@ -498,20 +465,16 @@ class ResourceCenterProfilePage extends React.Component {
         'Certifications',
         'Night or weekend availability'
       ],
-      service => {
-        return (
-          <Checkbox
-            id={idPrefix + service}
-            name={service}
-            label={service}
-            key={service}
-            handleChange={e => {
-              return this.handleCheckbox(e, 'services')
-            }}
-            checked={this.state.profile.services.includes(service)}
-          />
-        )
-      }
+      service => (
+        <Checkbox
+          id={idPrefix + service}
+          name={service}
+          label={service}
+          key={service}
+          handleChange={e => this.handleCheckbox(e, 'services')}
+          checked={this.state.profile.services.includes(service)}
+        />
+      )
     )
     return (
       <div role="group" aria-labelledby={idPrefix + 'services-label'}>
@@ -541,20 +504,16 @@ class ResourceCenterProfilePage extends React.Component {
         'Italian',
         'Other'
       ],
-      language => {
-        return (
-          <Checkbox
-            id={idPrefix + language}
-            name={language}
-            label={language}
-            key={language}
-            checked={this.state.profile.languages.includes(language)}
-            handleChange={e => {
-              return this.handleCheckbox(e, 'languages')
-            }}
-          />
-        )
-      }
+      language => (
+        <Checkbox
+          id={idPrefix + language}
+          name={language}
+          label={language}
+          key={language}
+          checked={this.state.profile.languages.includes(language)}
+          handleChange={e => this.handleCheckbox(e, 'languages')}
+        />
+      )
     )
 
     return (
@@ -591,9 +550,7 @@ class ResourceCenterProfilePage extends React.Component {
           id={idPrefix + 'business-stage'}
           options={businessStageOptions}
           value={this.state.profile.businessStage}
-          onChange={e => {
-            return this.handleRadio(e, 'businessStage')
-          }}
+          onChange={e => this.handleRadio(e, 'businessStage')}
           textStyle={style.radioText}
           onBlur={this.onBlur}
           onFocus={this.onFocus}
@@ -742,9 +699,7 @@ class ResourceCenterProfilePage extends React.Component {
                 Submit
               </Button>
             </div>
-            {_.some(isFieldValid, field => {
-              return field === false
-            }) && (
+            {_.some(isFieldValid, field => field === false) && (
               <div className={style.submitButton} role="alert">
                 <FormErrorMessage errorText="Please answer all required questions before submitting." />
               </div>
@@ -781,5 +736,8 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceCenterProfilePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResourceCenterProfilePage)
 export { ResourceCenterProfilePage }

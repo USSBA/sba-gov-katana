@@ -8,21 +8,22 @@ import { CardCollection } from 'organisms'
 // should probably just use a render prop
 class StyleGrayBackground extends React.Component {
   makeParagraphs(paragraphData) {
-    let paragraphList = paragraphMapper.makeParagraphs(paragraphData, index => {
-      return 'gray-section-header-' + index
-    })
-    let wrapperClassMapping = {
+    const paragraphList = paragraphMapper.makeParagraphs(
+      paragraphData,
+      index => 'gray-section-header-' + index
+    )
+    const wrapperClassMapping = {
       other: styles.textSection,
       textSection: styles.textSection,
       sectionHeader: styles.sectionHeader,
       cardCollection: styles.cardCollection
     }
-    let wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
+    const wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
     return wrapped
   }
 
   render() {
-    let paragraphs = this.makeParagraphs(this.props.paragraphs)
+    const paragraphs = this.makeParagraphs(this.props.paragraphs)
 
     return <div className={styles.greyParagraph}>{paragraphs}</div>
   }

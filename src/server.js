@@ -42,9 +42,7 @@ import { findNodeIdByUrl } from './service/url-redirect.js'
 app.use(function(req, res, next) {
   // handle Accept-Language header
   req.preferredLanguage = accepts(req).languages()[0] //eslint-disable-line no-param-reassign
-  const sessionCookie = _.find(_.keys(req.cookies), key => {
-    return _.startsWith(key, 'SSESS')
-  })
+  const sessionCookie = _.find(_.keys(req.cookies), key => _.startsWith(key, 'SSESS'))
   let hasSessionCookie = false
   if (sessionCookie) {
     hasSessionCookie = true

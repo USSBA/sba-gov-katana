@@ -19,19 +19,22 @@ exports[`PagingLookup should render with all the information 1`] = `
       className="documentCardCollection"
     >
       <div
-        className="loaderContainer"
+        className="emptyDocuments"
       >
-        <div
-          className="loader container"
+        <p
+          className="emptyDocumentsMessage"
         >
-          <img
-            className="logo"
-            src="test-file-stub"
-          />
-          <div
-            className="loader"
-          />
-        </div>
+          Sorry, we couldn't find any 
+          documents
+           matching that query.
+        </p>
+        <p>
+          <a
+            onClick={[Function]}
+          >
+            Clear all search filters
+          </a>
+        </p>
       </div>
     </div>
     <div />

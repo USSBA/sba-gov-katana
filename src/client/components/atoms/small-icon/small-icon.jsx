@@ -43,7 +43,9 @@ SmallIcon.propTypes = {
 
 SmallIcon.defaultProps = {
   tabbable: true,
-  href: undefined,
+  // TODO: https://stackoverflow.com/a/1830980
+  // eslint-disable-next-line no-script-url
+  href: 'javascript:;',
   'aria-label': ''
 }
 

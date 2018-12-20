@@ -30,7 +30,8 @@ class DropdownMenu extends React.Component {
   }
 
   handleSkipLinkKeyDown(event, menuIndex) {
-    let code = event.keyCode ? event.keyCode : event.which
+    const code = event.keyCode ? event.keyCode : event.which
+    // eslint-disable-next-line no-magic-numbers
     if (code === 13) {
       this.props.onSkipToNext(event)
       event.preventDefault()
@@ -59,7 +60,7 @@ class DropdownMenu extends React.Component {
     }
 
     if (menuId === 1) {
-      indent = featuredCallout ? false : true
+      indent = !featuredCallout
     }
 
     // if (menuId === 4) {
@@ -74,9 +75,9 @@ class DropdownMenu extends React.Component {
 
     if (!isEmpty(links)) {
       const langCode = getLanguageOverride(true)
-      let pageLinkGroups = links.map((data, index) => {
-        let children = data.children || []
-        let mappedChildren = children.map(function(item) {
+      const pageLinkGroups = links.map((data, index) => {
+        const children = data.children || []
+        const mappedChildren = children.map(function(item) {
           const childTitleLinkData = determineMainMenuTitleLink(langCode, item)
           return {
             url: childTitleLinkData.link,
@@ -118,6 +119,7 @@ class DropdownMenu extends React.Component {
             visible={this.state.goToNextSectionShown}
             text="Go to Main Content"
             onKeyDown={event => {
+              // eslint-disable-next-line no-magic-numbers
               if (event.keyDown === 13) {
                 location.href = '#main-content'
               }

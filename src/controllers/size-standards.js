@@ -2,9 +2,7 @@ import HttpStatus from 'http-status-codes'
 import { get } from './size-standards-client.js'
 
 function responseWithResultAsJson(res) {
-  return data => {
-    return res.status(HttpStatus.OK).json(data)
-  }
+  return data => res.status(HttpStatus.OK).json(data)
 }
 
 function getNaics(req, res) {

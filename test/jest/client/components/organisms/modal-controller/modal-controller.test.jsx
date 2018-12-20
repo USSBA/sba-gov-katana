@@ -111,15 +111,9 @@ describe('ModalController', () => {
   test('should render MobileSectionNav component', () => {
     const props = _.clone(mobileSectionNavProps)
     props.modalProps.store = {
-      getState: () => {
-        return false
-      },
-      subscribe: () => {
-        return false
-      },
-      dispatch: () => {
-        return false
-      }
+      getState: () => false,
+      subscribe: () => false,
+      dispatch: () => false
     }
     const component = mount(<ModalController {...props} />)
     expect(component.find('MobileNav')).toHaveLength(1)
@@ -128,15 +122,9 @@ describe('ModalController', () => {
   test('should render MobileSectionNav page', () => {
     const props = _.clone(mobileSectionNavProps)
     props.modalProps.store = {
-      getState: () => {
-        return false
-      },
-      subscribe: () => {
-        return false
-      },
-      dispatch: () => {
-        return false
-      }
+      getState: () => false,
+      subscribe: () => false,
+      dispatch: () => false
     }
     const component = renderer.create(<ModalController {...props} />)
     const tree = component.toJSON()
@@ -149,8 +137,8 @@ describe('ModalController', () => {
     try {
       const props = _.clone(leaveSbaModalProps)
       const component = mount(<ModalController {...props} />)
-    } catch (e) {
-      returnedValue = e.name
+    } catch (error) {
+      returnedValue = error.name
     }
     // checks to make sure an error about the store is given,
     // which means LeaveSbaModal is executed
@@ -164,8 +152,8 @@ describe('ModalController', () => {
     try {
       const props = _.clone(SbaNewsModalProps)
       const component = mount(<ModalController {...props} />)
-    } catch (e) {
-      returnedValue = e.name
+    } catch (error) {
+      returnedValue = error.name
     }
     expect(returnedValue).toEqual(expectedValue)
   })

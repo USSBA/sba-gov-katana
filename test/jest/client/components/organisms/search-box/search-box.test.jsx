@@ -34,6 +34,7 @@ describe('searchBox', () => {
 
   test('has 3 Multiselect Component', () => {
     const component = shallow(<SearchBox />)
+    // eslint-disable-next-line no-magic-numbers
     expect(component.find('.multiSelect')).toHaveLength(3)
   })
 

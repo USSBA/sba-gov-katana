@@ -14,7 +14,6 @@ jest.mock('client/services/client-config.js', function() {
 const fetchContentIfNeeded = jest.fn()
 
 describe('QuickLinks', () => {
-
   var mockFetchDocuments
   beforeEach(() => {
     mockFetchDocuments = jest.spyOn(QuickLinks.prototype, 'fetchDocuments')
@@ -153,7 +152,7 @@ describe('QuickLinks', () => {
       navigation: {
         locationChange: {}
       },
-      data: mockData,
+      data: mockData
     }
 
     mockFetchDocuments.mockReturnValue({
@@ -166,6 +165,7 @@ describe('QuickLinks', () => {
   })
 
   test('Future effective date is not displayed', () => {
+    /* eslint-disable no-magic-numbers */
     // Date.now will return 11/12/2017
     Date.now = jest.fn(() => 1510536484927)
     const currentDate = Date.now()

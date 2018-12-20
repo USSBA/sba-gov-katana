@@ -80,29 +80,25 @@ class CourseView extends PureComponent {
   }
 }
 
-const Description = props => {
-  return (
-    <div className="description">
-      <p className={styles.description} dangerouslySetInnerHTML={{ __html: props.description }} />
-    </div>
-  )
-}
+const Description = props => (
+  <div className="description">
+    <p className={styles.description} dangerouslySetInnerHTML={{ __html: props.description }} />
+  </div>
+)
 
-const TableOfContents = props => {
-  return (
-    <div className="table-of-contents">
-      <h3 id="contentLabel">Content</h3>
-      <ul role="menu" aria-labelledby="contentLabel">
-        <li role="menuitem">
-          <a href="#course-content">Course</a>
-        </li>
-        <li role="menuitem">
-          <a href="#worksheets">Worksheets</a>
-        </li>
-      </ul>
-    </div>
-  )
-}
+const TableOfContents = props => (
+  <div className="table-of-contents">
+    <h3 id="contentLabel">Content</h3>
+    <ul role="menu" aria-labelledby="contentLabel">
+      <li role="menuitem">
+        <a href="#course-content">Course</a>
+      </li>
+      <li role="menuitem">
+        <a href="#worksheets">Worksheets</a>
+      </li>
+    </ul>
+  </div>
+)
 
 const DownloadFlash = props => {
   if (!isMobile.any) {
@@ -191,38 +187,34 @@ const Worksheets = props => {
   )
 }
 
-const RelatedCourses = props => {
-  return (
-    <div className={styles.relatedCourses + ' related-courses'}>
-      <h3>Related Courses</h3>
-      <CardCollection parentIndex={0} cards={props.relatedCourses} />
-      <div className={styles.button}>
-        <Button secondary url="/course/">
-          See all courses
-        </Button>
-      </div>
+const RelatedCourses = props => (
+  <div className={styles.relatedCourses + ' related-courses'}>
+    <h3>Related Courses</h3>
+    <CardCollection parentIndex={0} cards={props.relatedCourses} />
+    <div className={styles.button}>
+      <Button secondary url="/course/">
+        See all courses
+      </Button>
     </div>
-  )
-}
+  </div>
+)
 
-const RelatedArticles = props => {
-  return (
-    <div className={styles.relatedArticles + ' related-articles'}>
-      <h3>Related Articles</h3>
-      <CardCollection parentIndex={0} cards={props.relatedArticles} />
-    </div>
-  )
-}
+const RelatedArticles = props => (
+  <div className={styles.relatedArticles + ' related-articles'}>
+    <h3>Related Articles</h3>
+    <CardCollection parentIndex={0} cards={props.relatedArticles} />
+  </div>
+)
 
 const CTA = props => {
-  let buttonAction = {
+  const buttonAction = {
     link: {
       title: 'Find Counselors',
       url: '/tools/local-assistance'
     },
     type: 'link'
   }
-  let image = {
+  const image = {
     url: '/assets/images/learning-center/woman-man-chatting.png',
     alt: 'woman chatting with man'
   }

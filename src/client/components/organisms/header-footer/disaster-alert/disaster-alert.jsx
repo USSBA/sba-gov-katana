@@ -25,6 +25,7 @@ const DisasterAlert = props => {
             onClick={onClose}
             onKeyDown={e => {
               // Key code 13 equals Enter and 32 equals Spacebar
+              // eslint-disable-next-line no-magic-numbers
               if (e.keyCode === 13 || e.keyCode === 32) {
                 e.preventDefault()
                 return onClose()

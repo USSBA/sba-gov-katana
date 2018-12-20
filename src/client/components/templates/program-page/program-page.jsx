@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Hero } from 'organisms'
+import { size } from 'lodash'
 import * as paragraphMapper from '../paragraph-mapper.jsx'
 import styles from './program-page.scss'
 
@@ -22,20 +23,17 @@ class ProgramPage extends React.Component {
   }
 
   render() {
-    let paragraphs = this.makeParagraphs(this.props.paragraphs)
+    const paragraphs = this.makeParagraphs(this.props.paragraphs)
 
     const { title, summary, buttons, bannerImage } = this.props.heroData
     const hasBannerImage = bannerImage && bannerImage.hasOwnProperty('image')
 
-    const _formattedButtons =
-      buttons === undefined
-        ? []
-        : buttons.map((button, index) => {
-            return {
-              url: button.url,
-              btnText: button.title
-            }
-          })
+    const _formattedButtons = size(buttons)
+      ? buttons.map((button, index) => ({
+          url: button.url,
+          btnText: button.title
+        }))
+      : []
 
     return (
       <div>

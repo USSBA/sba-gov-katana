@@ -56,12 +56,8 @@ ClientPagingMultiviewLayout.defaultProps = {
   onReset: () => {},
   items: [],
   pageSize: 0,
-  rendererOne: item => {
-    return <div>item</div>
-  },
-  rendererTwo: item => {
-    return <div>item</div>
-  },
+  rendererOne: item => <div>item</div>,
+  rendererTwo: item => <div>item</div>,
   rendererOneName: null,
   rendererTwoName: null,
   type: 'items'

@@ -1,13 +1,12 @@
-/*global expect*/
+/* global expect */
 
-/*eslint-disable no-unused-vars*/
+/* eslint-disable no-unused-vars */
 import React from 'react'
-/*eslint-enable no-unused-vars*/
 import ReactSelect from 'react-select'
+import renderer from 'react-test-renderer'
 import { MultiSelect } from 'atoms'
 import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
-import _ from 'lodash'
+import { map } from 'lodash'
 
 // Does not appear to work with React-Select
 // test('MultiSelect render', () => {
@@ -30,17 +29,16 @@ import _ from 'lodash'
 //     expect(tree).toMatchSnapshot();
 // });
 
-function makeValueLikeReactSelectReturnsIt(x) {
-  return _.map(x, item => {
-    return {
-      name: item,
-      value: item
-    }
-  })
+function makeValueLikeReactSelectReturnsIt(value) {
+  return map(value, item => ({
+    name: item,
+    value: item
+  }))
 }
 
 test('MultiSelect maximum values', () => {
   let lastValue = 'A,B,C'
+
   function handleChange(newValue) {
     lastValue = newValue
   }

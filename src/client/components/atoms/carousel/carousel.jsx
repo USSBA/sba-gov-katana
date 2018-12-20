@@ -46,10 +46,10 @@ var Slider = React.createClass({
   },
 
   handleDragStart(event, isTouch) {
-    const x = this.getDragX(event, isTouch)
+    const dragX = this.getDragX(event, isTouch)
 
     this.setState({
-      dragStart: x,
+      dragStart: dragX,
       dragStartTime: new Date(),
       transition: false,
       slideWidth: ReactDOM.findDOMNode(this.refs.slider).offsetWidth
@@ -59,8 +59,8 @@ var Slider = React.createClass({
   handleDragMove(event, isTouch) {
     const { dragStart, lastIndex, slideWidth } = this.state
 
-    const x = this.getDragX(event, isTouch)
-    const offset = dragStart - x
+    const dragX = this.getDragX(event, isTouch)
+    const offset = dragStart - dragX
     const percentageOffset = offset / slideWidth
     const newIndex = lastIndex + percentageOffset
     const SCROLL_OFFSET_TO_STOP_SCROLL = 30
@@ -82,7 +82,7 @@ var Slider = React.createClass({
 
     const timeElapsed = new Date().getTime() - dragStartTime.getTime()
     const offset = lastIndex - index
-    const velocity = Math.round(offset / timeElapsed * 10000)
+    const velocity = Math.round((offset / timeElapsed) * 10000)
 
     let newIndex = Math.round(index)
 
@@ -114,8 +114,10 @@ var Slider = React.createClass({
 
     if (navIsClickable) {
       if (index < 0) {
+        // eslint-disable-next-line no-param-reassign
         index = loop ? items.length - 1 : 0
       } else if (index >= items.length) {
+        // eslint-disable-next-line no-param-reassign
         index = loop ? 0 : items.length - 1
       }
 

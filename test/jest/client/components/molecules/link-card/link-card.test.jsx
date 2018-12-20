@@ -18,26 +18,26 @@ const card = {
 
 describe('LinkCard', () => {
   test('should render with all the information', () => {
-    let cardData = _.clone(card)
+    const cardData = _.clone(card)
     const component = renderer.create(<LinkCard {...cardData} />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   test('should render without an address ', () => {
-    let cardData = _.omit(card, 'streetAddress')
+    const cardData = _.omit(card, 'streetAddress')
     const component = shallow(<LinkCard {...cardData} />)
     expect(component.find('.link-card-streetAddress')).toHaveLength(0)
   })
 
   test('should render without a zip code ', () => {
-    let cardData = _.omit(card, 'zipCode')
+    const cardData = _.omit(card, 'zipCode')
     const component = shallow(<LinkCard {...cardData} />)
     expect(component.find('.link-card-citystatezip')).toHaveLength(0)
   })
 
   test('should render without the link', () => {
-    let cardData = _.omit(card, 'link')
+    const cardData = _.omit(card, 'link')
     const component = shallow(<LinkCard {...cardData} />)
     expect(component.find('.link-card-link')).toHaveLength(0)
   })

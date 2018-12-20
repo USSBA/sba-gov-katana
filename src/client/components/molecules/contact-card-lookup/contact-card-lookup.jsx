@@ -19,7 +19,7 @@ class ContactCardLookup extends React.Component {
   }
 
   handleChange(selectValue) {
-    let newValueLabel = selectValue.label
+    const newValueLabel = selectValue.label
     let newDisplayedItems = []
     if (
       this.props.items &&
@@ -27,9 +27,7 @@ class ContactCardLookup extends React.Component {
       this.props.items[0].stateServed &&
       _.isArray(this.props.items[0].stateServed)
     ) {
-      newDisplayedItems = _.filter(this.props.items, item => {
-        return _.includes(item.stateServed, newValueLabel)
-      })
+      newDisplayedItems = _.filter(this.props.items, item => _.includes(item.stateServed, newValueLabel))
     } else {
       newDisplayedItems = _.filter(this.props.items, {
         stateServed: newValueLabel
@@ -61,10 +59,10 @@ class ContactCardLookup extends React.Component {
   handleBlur() {}
 
   render() {
-    let statesMap = _.map(states, function(item) {
+    const statesMap = _.map(states, function(item) {
       return { label: item.name, value: item.value }
     })
-    let multiselectProps = {
+    const multiselectProps = {
       id: 'lookup-select',
       errorText: 'Please select a state',
       label: '',
@@ -81,8 +79,8 @@ class ContactCardLookup extends React.Component {
     const langCode = getLanguageOverride()
     const lookUpYourStateLabel =
       langCode && langCode.startsWith('es')
-        ? TRANSLATIONS['lookUpYourState']['es'].text
-        : TRANSLATIONS['lookUpYourState']['en'].text
+        ? TRANSLATIONS.lookUpYourState.es.text
+        : TRANSLATIONS.lookUpYourState.en.text
     return (
       <div>
         <div className={styles.container}>
@@ -120,12 +118,10 @@ ContactCardLookup.defaultProps = {
   items: [],
   afterChange: () => {},
   name: 'state-lookup',
-  cardRenderer: (item, index) => {
-    return (
-      <div key={index}>
-        <LinkCard {...item} />
-      </div>
-    )
-  }
+  cardRenderer: (item, index) => (
+    <div key={index}>
+      <LinkCard {...item} />
+    </div>
+  )
 }
 export default ContactCardLookup

@@ -15,13 +15,14 @@ getLanguageOverride.mockImplementation(() => 'en')
 
 test('Mobile Navigation has the correct structure', () => {
   const component = renderer.create(<MobileNav />)
-  let tree = component.toJSON()
+  const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Mobile Navigation shows the For Partners link', () => {
   const component = mount(<MobileNav />)
   const menuItems = component.find('.mobile-nav-menu-item')
+  // eslint-disable-next-line no-magic-numbers
   expect(menuItems.length).toBe(4)
   const anchors = menuItems.find('a')
   expect(anchors.at(0).text()).toBe('SBA en Español')

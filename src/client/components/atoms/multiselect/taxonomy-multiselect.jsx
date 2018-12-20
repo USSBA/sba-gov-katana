@@ -18,9 +18,7 @@ class TaxonomyMultiSelect extends React.Component {
     const id = `${this.createSlug(name)}-select`
     const stateName = camelCase(name)
     const taxonomyTerms = includeAllOption ? ['All', ...taxonomy.terms] : taxonomy.terms
-    const options = taxonomyTerms.map(entry => {
-      return { label: entry, value: entry }
-    })
+    const options = taxonomyTerms.map(entry => ({ label: entry, value: entry }))
 
     let _value = ''
     if (options.length) {

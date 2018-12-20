@@ -6,13 +6,12 @@ import styles from './search-box.scss'
 import { logPageEvent } from '../../../services/analytics.js'
 import { navigateNow } from '../../../services/navigation.js'
 
-const createSlug = str => {
-  return str
+const createSlug = str =>
+  str
     .toLowerCase()
     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, '')
-}
 
 const createCamelCase = str => {
   const sliceIndex = 1
@@ -61,9 +60,7 @@ class SearchBox extends React.Component {
       options
     }
 
-    const returnNull = () => {
-      return null
-    }
+    const returnNull = () => null
 
     return (
       <div key={id} className={styles.multiSelect}>
@@ -156,20 +153,14 @@ class SearchBox extends React.Component {
               id="document-lookup"
               errorText={'Please enter the correct thing.'}
               validationState={''}
-              onKeyUp={e => {
-                return this.handleKeyUp(e)
-              }}
-              onChange={e => {
-                return this.updateSearchTerm(e)
-              }}
+              onKeyUp={e => this.handleKeyUp(e)}
+              onChange={e => this.updateSearchTerm(e)}
             />
             <div className={styles.searchIcon}>
               <SearchIcon aria-hidden="true" />
             </div>
           </div>
-          {filterNames.map(filterName => {
-            return this.renderMultiSelect(filterName)
-          })}
+          {filterNames.map(filterName => this.renderMultiSelect(filterName))}
           <div className={styles.clear} />
           <Button alternate className={styles.submitButton} onClick={this.handleClick.bind(this)} primary>
             Search

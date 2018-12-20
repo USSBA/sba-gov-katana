@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import routes from './routes.jsx'
 import { AppContainer } from 'react-hot-loader'
 import App from './app.jsx'
-let root = document.getElementById('root')
+const root = document.getElementById('root')
 
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
@@ -16,12 +16,12 @@ ReactDOM.render(
   root
 )
 
+/* eslint-disable global-require */
 if (module.hot) {
   require('react-hot-loader/patch')
   module.hot.accept('./routes.jsx', () => {
     // reload the routes file
-    let nextRoutes = require('./routes.jsx')
-    console.log('nextRoutes', nextRoutes)
+    const nextRoutes = require('./routes.jsx')
     ReactDOM.render(
       <AppContainer>
         <App routes={routes} />

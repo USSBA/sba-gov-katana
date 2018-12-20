@@ -16,6 +16,7 @@ describe('SbicContactsCsv', () => {
   let contacts
 
   before(() => {
+    // eslint-disable-next-line no-sync
     contacts = JSON.parse(fs.readFileSync(path.join(__dirname, './data/sbic/contacts.json')))
   })
 
@@ -23,6 +24,7 @@ describe('SbicContactsCsv', () => {
     it('expected csv file should match the result csv file', done => {
       // compare result Csv to the expected Csv
       const result = SbicContactsCsv.createCsvFromJson(contacts)
+      // eslint-disable-next-line no-sync
       const expected = String(fs.readFileSync(path.join(__dirname, './data/sbic/contacts-expected.csv')))
       result.should.equal(expected)
       done()
@@ -59,12 +61,15 @@ describe('SbicContactsCsv', () => {
 
       response = {
         header: sinon.spy(function(resultField, resultValue) {
+          // eslint-disable-next-line no-invalid-this
           return this
         }),
         status: sinon.spy(function(result) {
+          // eslint-disable-next-line no-invalid-this
           return this
         }),
         send: sinon.spy(function(result) {
+          // eslint-disable-next-line no-invalid-this
           return this
         })
       }
@@ -85,8 +90,8 @@ describe('SbicContactsCsv', () => {
           resultField.should.equal(expectedField)
           resultValue.should.equal(expectedValue)
           done()
-        } catch (e) {
-          done(e)
+        } catch (error) {
+          done(error)
         }
       })
 
@@ -111,8 +116,8 @@ describe('SbicContactsCsv', () => {
         try {
           result.should.equal(expected)
           done()
-        } catch (e) {
-          done(e)
+        } catch (error) {
+          done(error)
         }
       })
 

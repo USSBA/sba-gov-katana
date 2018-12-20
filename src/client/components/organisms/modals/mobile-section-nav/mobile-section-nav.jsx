@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import s from './mobile-section-nav.scss'
+import styles from './mobile-section-nav.scss'
 import * as ModalActions from '../../../../actions/show-modal.js'
 import { Link } from 'atoms'
 import { navigateNow } from '../../../../services/navigation'
@@ -23,6 +23,7 @@ class MobileNav extends React.Component {
   _animationTimer() {
     setTimeout(() => {
       this.props.actions.closeMobileNav()
+      // eslint-disable-next-line no-magic-numbers
     }, 1000)
   }
 
@@ -52,9 +53,9 @@ class MobileNav extends React.Component {
 
   _navMenuClassname() {
     if (this.state.navMenu === 'open') {
-      return s.navMenuOpen
+      return styles.navMenuOpen
     } else if (this.state.navMenu === 'close') {
-      return s.navMenuClose
+      return styles.navMenuClose
     }
   }
 
@@ -72,22 +73,20 @@ class MobileNav extends React.Component {
     return (
       <div className={this._navMenuClassname()}>
         <div
-          className={s.navHeader}
+          className={styles.navHeader}
           onClick={() => {
             this._handleBackBtn()
           }}
         >
-          <i className={s.navLeftArrow + ' fa fa-angle-left'} />
-          <div className={s.navTitleContainer}>
-            <h3 className={s.navTitle}>{menuTitle}</h3>
+          <i className={styles.navLeftArrow + ' fa fa-angle-left'} />
+          <div className={styles.navTitleContainer}>
+            <h3 className={styles.navTitle}>{menuTitle}</h3>
           </div>
         </div>
-        <div className={s.navTopLine} />
-        {children.map((linkObject, index) => {
-          return (
-            <NavLink key={index} link={linkObject} handleClick={this._handleClick} langCode={langCode} />
-          )
-        })}
+        <div className={styles.navTopLine} />
+        {children.map((linkObject, index) => (
+          <NavLink key={index} link={linkObject} handleClick={this._handleClick} langCode={langCode} />
+        ))}
       </div>
     )
   }
@@ -107,7 +106,7 @@ const NavLink = props => {
 
   return (
     <Link
-      className={s.navLink}
+      className={styles.navLink}
       id={props.iD}
       to={fullUrl}
       onMouseUp={() => {
@@ -116,7 +115,7 @@ const NavLink = props => {
     >
       {/* <a */}
       {/*   id={props.iD} */}
-      {/*   className={s.navLink} */}
+      {/*   className={styles.navLink} */}
       {/* > */}
       {title}
       {/* </a> */}
@@ -130,6 +129,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MobileNav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(MobileNav)
 
 export { MobileNav }

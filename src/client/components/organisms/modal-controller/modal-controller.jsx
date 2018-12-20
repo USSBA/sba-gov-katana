@@ -18,8 +18,6 @@ const ModalController = ({ modalType, modalProps }) => {
   }
 }
 
-export default connect(state => {
-  return state.modalReducer
-})(ModalController)
+export default connect(state => state.modalReducer)(ModalController)
 
 export { ModalController }

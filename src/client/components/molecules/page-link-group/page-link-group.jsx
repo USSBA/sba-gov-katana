@@ -10,7 +10,7 @@ import { Link } from 'atoms'
 class PageLinkGroup extends React.Component {
   render() {
     const { id, langCode, links, titleLink, indent, isLastGroup, onFinalBlur } = this.props
-    let { title } = this.props
+    const { title } = this.props
 
     const renderedLinks = links.map((item, index) => {
       const isLastLink = index === links.length - 1

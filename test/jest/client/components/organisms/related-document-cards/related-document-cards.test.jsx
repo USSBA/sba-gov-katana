@@ -18,7 +18,10 @@ const doc = relatedDocuments => ({
 })
 
 const jsx = (
-  <RelatedDocumentCards data={doc([333, 444])} fetchContentIfNeeded={_ => Promise.resolve({ data: doc })} />
+  <RelatedDocumentCards
+    data={doc([333, 444]) /* eslint-disable-line no-magic-numbers */}
+    fetchContentIfNeeded={_ => Promise.resolve({ data: doc })}
+  />
 )
 
 describe('related document cards', () => {

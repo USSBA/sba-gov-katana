@@ -19,12 +19,8 @@ function fetchContent(prop, type, query) {
 
     return axios
       .get(url)
-      .then(response => {
-        return response.data
-      })
-      .then(data => {
-        return dispatch(receiveContent(prop, type, query, data))
-      })
+      .then(response => response.data)
+      .then(data => dispatch(receiveContent(prop, type, query, data)))
       .catch(error => {
         console.error('actions/content::fetchContent', error)
         return dispatch(receiveContent(prop, type, query, null))

@@ -89,8 +89,8 @@ class Results extends React.PureComponent {
   mapResults(results, resultElement) {
     const { hoveredMarkerId, resultId } = this.props
     const resultsWithProps = results.map((item, index) => {
-      const mappedChildren = React.Children.map(resultElement, child => {
-        return React.cloneElement(child, {
+      const mappedChildren = React.Children.map(resultElement, child =>
+        React.cloneElement(child, {
           item: item,
           id: `${resultId}-${index.toString()}`,
           showDetailState: this.showDetailState.bind(this),
@@ -100,7 +100,7 @@ class Results extends React.PureComponent {
           hoveredMarkerId,
           length: this.props.items.length
         })
-      })
+      )
       return mappedChildren
     })
     return resultsWithProps

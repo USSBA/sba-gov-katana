@@ -17,6 +17,7 @@ import CourseView, {
 } from 'templates/course/course.view.jsx'
 import sharedProps from './course-test-props'
 
+// eslint-disable-next-line id-length, no-empty-function
 const f = () => {}
 const options = {
   context: {

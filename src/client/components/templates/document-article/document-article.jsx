@@ -18,7 +18,9 @@ class DocumentArticleTemplate extends React.Component {
       data = doc
     }
 
-    if (!data) return <div />
+    if (!data) {
+      return <div />
+    }
 
     return (
       <div>

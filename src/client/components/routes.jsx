@@ -3,57 +3,51 @@ import Async from 'react-code-splitting'
 import React from 'react'
 import { isEmpty } from 'lodash'
 
-let Main = props => <Async componentProps={props} load={import('./templates/main.jsx')} />
-
-let StyleGuide = props => (
+const Main = props => <Async componentProps={props} load={import('./templates/main.jsx')} />
+const StyleGuide = props => (
   <Async componentProps={props} load={import('./templates/style-guide/style-guide.jsx')} />
 )
-
-let DeveloperTester = props => (
+const DeveloperTester = props => (
   <Async componentProps={props} load={import('./organisms/developer-tester/developer-tester.jsx')} />
 )
-let TenStepsLandingPage = props => (
+const TenStepsLandingPage = props => (
   <Async componentProps={props} load={import('./templates/ten-steps-page/ten-steps-landing-page.jsx')} />
 )
-let HomepageContainer = props => (
+const HomepageContainer = props => (
   <Async componentProps={props} load={import('./templates/homepage/homepage-container.jsx')} />
 )
-let RootPage = props => <Async componentProps={props} load={import('./pages/root-page.jsx')} />
-let DocumentLookupPage = props => (
+const RootPage = props => <Async componentProps={props} load={import('./pages/root-page.jsx')} />
+const DocumentLookupPage = props => (
   <Async componentProps={props} load={import('./pages/document-lookup-page/document-lookup-page.jsx')} />
 )
-let ArticleLookupPage = props => (
+const ArticleLookupPage = props => (
   <Async componentProps={props} load={import('./pages/article-lookup-page/article-lookup-page.jsx')} />
 )
-let SizeStandardsToolPage = props => (
+const SizeStandardsToolPage = props => (
   <Async
     componentProps={props}
     load={import('./pages/size-standards-tool-page/size-standards-tool-page.jsx')}
   />
 )
-let ResourceCenterProfilePage = props => (
+const ResourceCenterProfilePage = props => (
   <Async
     componentProps={props}
     load={import('./pages/resource-center-profile-page/resource-center-profile-page.jsx')}
   />
 )
-
-let SearchPage = props => (
+const SearchPage = props => (
   <Async componentProps={props} load={import('./pages/search-page/search-page.jsx')} />
 )
-
-let CourseTemplate = props => (
+const CourseTemplate = props => (
   <Async componentProps={props} load={import('./templates/course/course.jsx')} />
 )
-
-let LearningCenterLookupPage = props => (
+const LearningCenterLookupPage = props => (
   <Async
     componentProps={props}
     load={import('./pages/learning-center-lookup-page/learning-center-lookup-page.jsx')}
   />
 )
-
-let OfficeLookupPage = props => (
+const OfficeLookupPage = props => (
   <Async componentProps={props} load={import('./pages/office-lookup-page/office-lookup-page.jsx')} />
 )
 

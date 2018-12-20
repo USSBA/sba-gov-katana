@@ -14,6 +14,7 @@ import { Link } from 'atoms'
 
 class SectionNav extends React.Component {
   componentWillReceiveProps(nextProps) {
+    /* eslint-disable no-magic-numbers*/
     if (nextProps.displayMobileNav) {
       const { langCode } = this.props
       const sectionSiteMap = this.getNthLineage(-2)
@@ -38,6 +39,7 @@ class SectionNav extends React.Component {
         this.getBacklinkUrl(this.getNthLineage(0), this.getNthLineage(-2), langCode)
       )
     }
+    /* eslint-enable no-magic-numbers*/
   }
 
   isBusinessGuide(parentSiteMap, langCode) {
@@ -118,6 +120,7 @@ class SectionNav extends React.Component {
     return backLink
   }
 
+  /* eslint-disable no-magic-numbers */
   getBacklinkText(langCode) {
     const { allTopics, backTo } = TRANSLATIONS
     const backToText = backTo[langCode].text
@@ -125,7 +128,9 @@ class SectionNav extends React.Component {
 
     const backTitleText = this.isBusinessGuide(this.getNthLineage(0), langCode)
       ? allTopics[langCode].text
-      : spanishTranslation && langCode === 'es' ? spanishTranslation.title : title
+      : spanishTranslation && langCode === 'es'
+      ? spanishTranslation.title
+      : title
 
     return `${backToText} ${backTitleText}`
   }
@@ -152,6 +157,7 @@ class SectionNav extends React.Component {
       </div>
     )
   }
+  /* eslint-enable no-magic-numbers */
 }
 
 function mapDispatchToProps(dispatch) {
@@ -164,5 +170,8 @@ SectionNav.defaultProps = {
   langCode: 'en'
 }
 
-export default connect(null, mapDispatchToProps)(SectionNav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(SectionNav)
 export { SectionNav }

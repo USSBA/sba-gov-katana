@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { camelCase, isEmpty, startCase } from 'lodash'
 
 import styles from './document-article-lookup.scss'
 import { Button, Loader, MultiSelect, SearchIcon, TextInput } from 'atoms'
@@ -7,13 +7,12 @@ import { Paginator } from 'molecules'
 import { DetailCardCollection } from 'organisms'
 import { logPageEvent } from '../../../services/analytics.js'
 
-const createSlug = str => {
-  return str
+const createSlug = str =>
+  str
     .toLowerCase()
     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, '')
-}
 
 // const createCamelCase = (str) => {
 //
@@ -28,10 +27,8 @@ export class DocumentArticleLookup extends React.PureComponent {
     const _multiselects = this.props.taxonomies.map(taxonomy => {
       const { name } = taxonomy
       const id = `${createSlug(name)}-select`
-      const stateName = _.camelCase(name)
-      const options = taxonomy.terms.map(entry => {
-        return { label: entry, value: entry }
-      })
+      const stateName = camelCase(name)
+      const options = taxonomy.terms.map(entry => ({ label: entry, value: entry }))
 
       const _ms = {
         id: id,
@@ -39,7 +36,7 @@ export class DocumentArticleLookup extends React.PureComponent {
           this.handleChange(event, stateName)
         },
         name: id,
-        label: _.startCase(name),
+        label: startCase(name),
         value: this.props.queryState[stateName],
         options: options
       }
@@ -48,10 +45,9 @@ export class DocumentArticleLookup extends React.PureComponent {
     })
 
     return _multiselects.map((multiSelectProps, index) => {
-      const returnNull = () => {
-        return null
-      }
+      const returnNull = () => null
 
+      // eslint-disable-next-line id-length
       multiSelectProps.options.sort((a, b) => {
         let comparison = 0
 
@@ -102,7 +98,7 @@ export class DocumentArticleLookup extends React.PureComponent {
       </div>
     )
     const { items, pageNumber, isFetching } = this.props
-    if (!_.isEmpty(items)) {
+    if (!isEmpty(items)) {
       result = (
         <DetailCardCollection
           type={this.props.type}
@@ -110,7 +106,7 @@ export class DocumentArticleLookup extends React.PureComponent {
           fieldsToShowInDetails={this.props.fieldsToShowInDetails}
         />
       )
-    } else if (items !== undefined && !isFetching) {
+    } else if (typeof items !== 'undefined' && !isFetching) {
       result = (
         <div className={styles.emptyDocuments}>
           <p className={styles.emptyDocumentsMessage}>
@@ -129,7 +125,7 @@ export class DocumentArticleLookup extends React.PureComponent {
   renderPaginator() {
     const { items, itemCount, pageNumber, pageSize } = this.props
     let result = <div />
-    if (!_.isEmpty(items)) {
+    if (!isEmpty(items)) {
       result = (
         <div className={styles.paginator}>
           <Paginator
@@ -166,12 +162,8 @@ export class DocumentArticleLookup extends React.PureComponent {
       errorText: 'Please enter the correct thing.',
       label: 'Search',
       validationState: '',
-      onKeyUp: e => {
-        return this.handleKeyUp(e)
-      },
-      onChange: e => {
-        return this.updateSearchTerm(e)
-      },
+      onKeyUp: e => this.handleKeyUp(e),
+      onChange: e => this.updateSearchTerm(e),
       value: this.props.queryState.searchTerm
     }
     return (

@@ -7,13 +7,12 @@ import { Paginator } from 'molecules'
 import PropTypes from 'prop-types'
 import styles from './search.scss'
 
-const createSlug = str => {
-  return str
+const createSlug = str =>
+  str
     .toLowerCase()
     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, '')
-}
 
 /* NOTE: THIS IS SUPPOSED TO BE A GENERIC SEARCH TEMPLATE. PLEASE DO NOT PUT PAGE SPECIFIC LOGIC IN HERE. */
 
@@ -116,13 +115,14 @@ class SearchTemplate extends React.PureComponent {
           window.scrollTo(0, 0)
         }
         if (callback) {
+          // eslint-disable-next-line callback-return
           callback()
         }
       }
     )
   }
 
-  filterSearchParamsForUrl(searchParams) {
+  static filterSearchParamsForUrl(searchParams) {
     const paramsToIgnore = ['pageSize', 'start']
     const { start, pageSize } = searchParams
     const filteredSearchParams = omit(searchParams, paramsToIgnore)
@@ -131,7 +131,8 @@ class SearchTemplate extends React.PureComponent {
     return filteredSearchParams
   }
 
-  filterSearchParams(searchParams) {
+  // eslint-disable-next-line complexity
+  static filterSearchParams(searchParams) {
     const filteredSearchParams = {}
     for (const paramName in searchParams) {
       if (searchParams.hasOwnProperty(paramName)) {
@@ -170,14 +171,14 @@ class SearchTemplate extends React.PureComponent {
 
   doSearch(searchType, searchParams) {
     //push search to history
-    const filteredSearchParams = this.filterSearchParams(searchParams)
-    const urlParams = this.filterSearchParamsForUrl(filteredSearchParams)
+    const filteredSearchParams = SearchTemplate.filterSearchParams(searchParams)
+    const urlParams = SearchTemplate.filterSearchParamsForUrl(filteredSearchParams)
     browserHistory.push({
       pathname: document.location.pathname,
       search: `?${stringify(urlParams)}`
     })
 
-    let _this = this
+    const _this = this
     this.setState(
       {
         isLoading: true,

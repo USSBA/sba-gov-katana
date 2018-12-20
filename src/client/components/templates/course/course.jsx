@@ -56,12 +56,10 @@ class Course extends PureComponent {
       ]
       // set tags
       props.tags = data.courseCategory.map
-        ? data.courseCategory.map(category => {
-            return {
-              description: category,
-              url: '/course/?topic=' + encodeURI(category)
-            }
-          })
+        ? data.courseCategory.map(category => ({
+            description: category,
+            url: '/course/?topic=' + encodeURI(category)
+          }))
         : []
 
       // add worksheets

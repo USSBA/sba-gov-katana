@@ -148,10 +148,10 @@ class SizeStandardsTool extends PureComponent {
 
   setFocusTo(id, delay = 0) {
     const interval = setInterval(() => {
-      const el = document.getElementById(id)
+      const element = document.getElementById(id)
 
-      if (!isEmpty(el)) {
-        el.focus()
+      if (!isEmpty(element)) {
+        element.focus()
 
         if (id === 'size-standards-tool') {
           window.scrollTo(0, 0)
@@ -410,23 +410,21 @@ class SizeStandardsTool extends PureComponent {
 }
 
 // "START" Screen (stateless)
-const StartScreen = props => {
-  return (
-    <div id="start-screen">
-      <h2>Size Standards Tool</h2>
+const StartScreen = props => (
+  <div id="start-screen">
+    <h2>Size Standards Tool</h2>
 
-      <img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
+    <img src={sizeStandardsGraphic} alt="Illustration of a business being measured by rulers." />
 
-      <p>Do you qualify as a small business for government contracting purposes?</p>
+    <p>Do you qualify as a small business for government contracting purposes?</p>
 
-      <div className={`${styles.button} submit-button`}>
-        <Button onClick={() => props.gotoSection('NAICS')} primary>
-          Start
-        </Button>
-      </div>
+    <div className={`${styles.button} submit-button`}>
+      <Button onClick={() => props.gotoSection('NAICS')} primary>
+        Start
+      </Button>
     </div>
-  )
-}
+  </div>
+)
 
 // "NAICS" Screen (holds state for "shouldShowNaicsInput")
 class NaicsScreen extends PureComponent {
@@ -603,6 +601,7 @@ class NaicsScreen extends PureComponent {
                   </div>
 
                   {this.renderTypeahead()}
+                  {/* eslint-disable-next-line no-magic-numbers */}
                   {this.props.setFocusTo('naics-lookup', 300)}
 
                   <p>
@@ -980,18 +979,17 @@ class ResultsScreen extends PureComponent {
           </div>
         )}
 
-        {!isEmpty(this.state.selectedNaicsCodes) &&
-          isEligibleForContractingPrograms && (
-            <div>
-              <p>
-                You may be eligible to participate in{' '}
-                <a href="/contracting" target="_blank" tabIndex="0">
-                  <strong>SBA contracting programs</strong>
-                </a>
-                .
-              </p>
-            </div>
-          )}
+        {!isEmpty(this.state.selectedNaicsCodes) && isEligibleForContractingPrograms && (
+          <div>
+            <p>
+              You may be eligible to participate in{' '}
+              <a href="/contracting" target="_blank" tabIndex="0">
+                <strong>SBA contracting programs</strong>
+              </a>
+              .
+            </p>
+          </div>
+        )}
 
         <div className={styles.cards}>
           <div className={styles.card}>

@@ -1,7 +1,7 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
-var sassResources = {
+const sassResources = {
   loader: 'sass-resources-loader',
   options: {
     resources: [
@@ -19,13 +19,13 @@ module.exports = function(styleNamingFormat) {
       rules: [
         {
           test: /\.js$/,
-          loaders: ['babel-loader'],
-          include: path.join(__dirname, 'src')
+          loader: 'babel-loader',
+          include: path.join(__dirname, 'src'),
         },
         {
           test: /\.jsx?$/,
-          loaders: ['babel-loader'],
-          exclude: /node_modules/
+          loader: 'babel-loader',
+          exclude: /node_modules/,
         },
         {
           test: /\.css$/,

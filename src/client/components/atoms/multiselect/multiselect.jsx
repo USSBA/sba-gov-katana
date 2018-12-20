@@ -59,20 +59,16 @@ class MultiSelectBox extends React.Component {
   }
   render() {
     const myValue = this.props.multi
-      ? this.state.value ? this.state.value.split(',') : []
+      ? this.state.value
+        ? this.state.value.split(',')
+        : []
       : this.state.value
 
     const errorMessage =
       this.props.validationState === 'error' ? <FormErrorMessage errorText={this.props.errorText} /> : null
     const errorClass = this.props.validationState === 'error' ? styles.redBorder : ''
-    const arrowRenderer = () => {
-      return <img alt="dropdown arrow" className={styles.chevronIcon} src={chevron} />
-    }
-    const clearRenderer = this.props.multi
-      ? null
-      : () => {
-          return <div />
-        }
+    const arrowRenderer = () => <img alt="dropdown arrow" className={styles.chevronIcon} src={chevron} />
+    const clearRenderer = this.props.multi ? null : () => <div />
 
     const inputPropFields = ['aria-labelledby', 'aria-label', 'required']
     const inputProps = {}

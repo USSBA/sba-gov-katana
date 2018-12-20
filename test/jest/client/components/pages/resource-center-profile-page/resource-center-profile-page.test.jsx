@@ -50,13 +50,9 @@ const partners = {
   ]
 }
 
-getPartners.mockImplementation(() => {
-  return Object.keys(partners)
-})
+getPartners.mockImplementation(() => Object.keys(partners))
 
-getPartnerOffices.mockImplementation(partner => {
-  return partners[partner]
-})
+getPartnerOffices.mockImplementation(partner => partners[partner])
 
 describe('ResourceCenterProfilePage', () => {
   test('Office select is hidden until partner is selected and address is hidden until office is selected', () => {

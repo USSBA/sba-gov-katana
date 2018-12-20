@@ -8,18 +8,14 @@ describe('NoResultsSection molecule', () => {
   test('displays search Tips when there are several in the list', () => {
     const searchTips = ['tip1', 'tip2', 'tip3']
     const component = shallow(<NoResultsSection searchTips={searchTips} />)
-    const listText = component.find('li').map(node => {
-      return node.text()
-    })
+    const listText = component.find('li').map(node => node.text())
     expect(listText).toEqual(searchTips)
   })
 
   test('displays search Tips when there is one in the list', () => {
     const searchTips = ['tip1']
     const component = shallow(<NoResultsSection searchTips={searchTips} />)
-    const listText = component.find('li').map(node => {
-      return node.text()
-    })
+    const listText = component.find('li').map(node => node.text())
     expect(listText).toEqual(searchTips)
   })
 
@@ -27,9 +23,7 @@ describe('NoResultsSection molecule', () => {
     const searchTips = ['tip1', 'tip2', 'tip3']
     const isLoading = false
     const component = shallow(<NoResultsSection isLoading={isLoading} searchTips={searchTips} />)
-    const listText = component.find('li').map(node => {
-      return node.text()
-    })
+    const listText = component.find('li').map(node => node.text())
     expect(listText).toEqual(searchTips)
   })
 

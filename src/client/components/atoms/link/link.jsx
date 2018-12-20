@@ -9,6 +9,8 @@ const Link = (props, context) => {
   const { router } = context
   const { children, forceClientRouting, to, ...nativeProps } = props
 
+  // TODO: https://stackoverflow.com/a/1830980
+  /* eslint-disable no-script-url */
   if (!to) {
     // Make sure the link is still tabbable.
     return (
@@ -17,6 +19,7 @@ const Link = (props, context) => {
       </a>
     )
   }
+  /* eslint-enable no-script-url */
 
   let href = isString(to) ? to : router.createHref(to)
 

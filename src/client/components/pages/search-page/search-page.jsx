@@ -7,6 +7,8 @@ import { Button, Link, SearchIcon, TextInput } from 'atoms'
 import { Paginator } from 'molecules'
 import { logPageEvent } from '../../../services/analytics.js'
 
+const PAGE_SIZE = 10
+
 const getQueryParams = search => {
   const decoded = decodeURIComponent(search)
   const formatted = decoded.replace(/\+/g, ' ')
@@ -41,7 +43,7 @@ class SearchPage extends PureComponent {
       newSearchTerm: '',
       searchResults: [],
       pageNumber: 1,
-      pageSize: 10,
+      pageSize: PAGE_SIZE,
       itemCount: 0,
       start: 0
     }
@@ -66,7 +68,7 @@ class SearchPage extends PureComponent {
         },
         () => {
           let newStartValue = 0
-          pageNumber > 1 ? (newStartValue = (pageNumber - 1) * 10) : (newStartValue = 0)
+          pageNumber > 1 ? (newStartValue = (pageNumber - 1) * PAGE_SIZE) : (newStartValue = 0)
 
           fetchSiteContent('search', {
             term: searchTerm,
@@ -84,7 +86,7 @@ class SearchPage extends PureComponent {
               hasNoResults = results.hasNoResults
             }
 
-            let newState = {
+            const newState = {
               searchResults,
               itemCount,
               hasNoResults
@@ -129,7 +131,7 @@ class SearchPage extends PureComponent {
   onPageNumberChange(pageNumber) {
     if (pageNumber > 1) {
       this.setState({
-        start: (pageNumber - 1) * 10
+        start: (pageNumber - 1) * PAGE_SIZE
       })
     } else {
       this.setState({
@@ -155,7 +157,7 @@ class SearchPage extends PureComponent {
           pageNumber: 1
         },
         function() {
-          window.location.href = `/search/?p=${this.state.pageNumber}&q=${term}`
+          window.location.href = `/search/?p=${pageNumber}&q=${term}`
         }
       )
     }
@@ -188,12 +190,11 @@ class SearchPage extends PureComponent {
                   <ResultsList {...this.state} onPageNumberChange={this.onPageNumberChange.bind(this)} />
                 </div>
               )}
-              {!hasNoResults &&
-                searchResults.length === 0 && (
-                  <div>
-                    <p className="results-message">loading...</p>
-                  </div>
-                )}
+              {!hasNoResults && searchResults.length === 0 && (
+                <div>
+                  <p className="results-message">loading...</p>
+                </div>
+              )}
               {hasNoResults && (
                 <div>
                   <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
@@ -281,57 +282,54 @@ const ResultsList = props => {
     })
   }
 
-  const renderPaginator = section => {
-    return (
-      <div className={styles.paginator}>
-        <Paginator
-          id={`current-total-result-number-${section}`}
-          pageNumber={pageNumber}
-          pageSize={pageSize}
-          total={itemCount}
-          onBack={() => {
-            handleBack()
-          }}
-          onForward={() => {
-            handleForward()
-          }}
-        />
-      </div>
-    )
-  }
+  const renderPaginator = section => (
+    <div className={styles.paginator}>
+      <Paginator
+        id={`current-total-result-number-${section}`}
+        pageNumber={pageNumber}
+        pageSize={pageSize}
+        total={itemCount}
+        onBack={() => {
+          handleBack()
+        }}
+        onForward={() => {
+          handleForward()
+        }}
+      />
+    </div>
+  )
 
-  const renderList = () => {
-    return (
-      <div className={styles.results}>
-        {searchResults.map((item, index) => {
-          let title
-          let summary
-          let url
+  const renderList = () => (
+    <div className={styles.results}>
+      {/* eslint-disable-next-line array-callback-return,consistent-return */}
+      {searchResults.map((item, index) => {
+        let title
+        let summary
+        let url
 
-          if (!isEmpty(item.fields)) {
-            title = item.fields.title
-            summary = item.fields.summary
-            url = item.fields.url[0]
-          }
+        if (!isEmpty(item.fields)) {
+          title = item.fields.title
+          summary = item.fields.summary
+          url = item.fields.url[0]
+        }
 
-          // only show results with URL
-          if (url) {
-            return (
-              <div key={index} className={`${styles.result}  result-box`}>
-                <div className={styles.title}>
-                  <Link to={url} className="result-title">
-                    {title}
-                  </Link>
-                </div>
-                <div className={`${styles.summary} result-summary`}>{summary}</div>
-                <Link to={url}>{url}</Link>
+        // only show results with URL
+        if (url) {
+          return (
+            <div key={index} className={`${styles.result}  result-box`}>
+              <div className={styles.title}>
+                <Link to={url} className="result-title">
+                  {title}
+                </Link>
               </div>
-            )
-          }
-        })}
-      </div>
-    )
-  }
+              <div className={`${styles.summary} result-summary`}>{summary}</div>
+              <Link to={url}>{url}</Link>
+            </div>
+          )
+        }
+      })}
+    </div>
+  )
 
   return (
     <div>

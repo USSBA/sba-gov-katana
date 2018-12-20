@@ -21,18 +21,19 @@ class Homepage extends React.Component {
     removeLoader: PropTypes.func.isRequired
   }
 
-  async fetchHomepageData() {
-    let siteMap = await fetchSiteContent('siteMap')
-    let homepageNodeId = findSection(siteMap, 'home-page')
+  // eslint-disable-next-line consistent-return
+  static async fetchHomepageData() {
+    const siteMap = await fetchSiteContent('siteMap')
+    const homepageNodeId = findSection(siteMap, 'home-page')
     if (homepageNodeId && homepageNodeId.node) {
-      let homepageData = await fetchRestContent('node', homepageNodeId.node)
+      const homepageData = await fetchRestContent('node', homepageNodeId.node)
       return { data: homepageData, siteMap }
     }
   }
 
   componentDidMount() {
     const { removeLoader } = this.props
-    this.fetchHomepageData()
+    Homepage.fetchHomepageData()
       .then(result => this.setState(result))
       .then(() => removeLoader())
   }
@@ -93,4 +94,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export { Homepage }
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Homepage)

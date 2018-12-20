@@ -30,7 +30,5 @@ export default {
     preview: 'preview text'
   },
   readMoreExpanded: true,
-  onToggleStatus: () => {
-    return false
-  }
+  onToggleStatus: () => false
 }

@@ -16,7 +16,7 @@ class ReadMoreSection extends React.Component {
   }
 
   render() {
-    let expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
+    const expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
 
     return (
       <ReadMore

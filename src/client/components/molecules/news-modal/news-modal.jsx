@@ -20,10 +20,11 @@ import {
 
 /* 6/29/18: This class is deprecated and may not have full functionality due to the removal of redux for http requests */
 class SbaNewsModal extends React.Component {
-  timerId = null
-
   constructor(props) {
     super()
+
+    this.timerId = null
+
     this.state = {
       userEmailAddress: '',
       userZipCode: '',
@@ -42,7 +43,7 @@ class SbaNewsModal extends React.Component {
   }
 
   validateSingleField(validationFunction, name, defaultWhenNotSuccessful) {
-    let validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
+    const validationState = validationFunction(name, this.state[name], defaultWhenNotSuccessful || null)
     if (validationState[name] === 'error') {
       logEvent({
         category: 'Newsletter Modal',
@@ -90,21 +91,21 @@ class SbaNewsModal extends React.Component {
   }
 
   componentWillUnmount() {
-    if (this.timerId != null) {
-      clearTimeout(timerId)
+    if (this.timerId !== null) {
+      clearTimeout(this.timerId)
     }
   }
 
   handleChange(e) {
-    let newState = {}
-    let name = e.target.name
+    const newState = {}
+    const name = e.target.name
     newState[name] = e.target.value
     this.setState(newState, () => this.validateFields([name]))
   }
 
   handleKeyDown(event) {
-    let code = event.keyCode ? event.keyCode : event.which
-    if (code == 13) {
+    const code = event.keyCode ? event.keyCode : event.which
+    if (code === 13) {
       this.setState({ modalIsOpen: false })
     }
     event.preventDefault()
@@ -115,7 +116,7 @@ class SbaNewsModal extends React.Component {
   }
 
   handleFocus(nameOrEvent) {
-    let name =
+    const name =
       nameOrEvent && nameOrEvent.target && nameOrEvent.target.name ? nameOrEvent.target.name : nameOrEvent
     logEvent({
       category: 'Newsletter Modal',

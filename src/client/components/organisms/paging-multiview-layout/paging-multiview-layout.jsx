@@ -54,20 +54,21 @@ class PagingMultiviewLayout extends React.PureComponent {
 
   handleBack() {
     const { pageNumber, onPageChange, googleAnalyticsCategory } = this.props
-    let newPageNumber = Math.max(1, pageNumber - 1)
+    const newPageNumber = Math.max(1, pageNumber - 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: googleAnalyticsCategory, action: 'Previous' })
   }
 
   handleForward() {
     const { itemCount, pageNumber, onPageChange, googleAnalyticsCategory } = this.props
-    let newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: googleAnalyticsCategory, action: 'Next' })
   }
 
   renderViewTypeSelector() {
-    if (this.props.rendererOneName && this.props.rendererTwoName) {
+    const { rendererOneName, rendererTwoName } = this.props
+    if (rendererOneName && rendererTwoName) {
       return (
         <div className={`view-type-selector ${styles.viewTypeSelector}`}>
           {rendererOneName} | {rendererTwoName}
@@ -97,12 +98,8 @@ PagingMultiviewLayout.defaultProps = {
   items: [],
   pageNumber: 0,
   pageSize: 0,
-  rendererOne: item => {
-    return <div>item</div>
-  },
-  rendererTwo: item => {
-    return <div>item</div>
-  },
+  rendererOne: item => <div>item</div>,
+  rendererTwo: item => <div>item</div>,
   rendererOneName: null,
   rendererTwoName: null,
   googleAnalyticsCategory: 'Show-More-Results',

@@ -29,6 +29,7 @@ class BasicPage extends React.Component {
   // componentWillMount() {}
 
   makeSectionHeaders(paragraphData) {
+    // eslint-disable-next-line array-callback-return,consistent-return
     const sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
       if (item && item.type && item.type === 'sectionHeader') {
         return {
@@ -36,7 +37,6 @@ class BasicPage extends React.Component {
           text: item.text
         }
       }
-      return undefined
     })
     return compact(sectionHeaders)
   }
@@ -61,7 +61,8 @@ class BasicPage extends React.Component {
 
   makeBreadcrumbs(lineage) {
     return map(lineage, item => {
-      let lineageItem
+      const lineageItem = { url: item.fullUrl, title: item.title, spanishTranslation }
+
       let spanishTranslation
       if (item.spanishTranslation) {
         spanishTranslation = {
@@ -69,7 +70,6 @@ class BasicPage extends React.Component {
           title: item.spanishTranslation.title
         }
       }
-      lineageItem = { url: item.fullUrl, title: item.title, spanishTranslation }
 
       if (!spanishTranslation) {
         delete lineageItem.spanishTranslation

@@ -8,13 +8,12 @@ import { fetchSiteContent } from '../../../fetch-content-helper'
 import { logPageEvent } from '../../../services/analytics.js'
 import { logEvent } from '../../../services/analytics.js'
 
-const createSlug = str => {
-  return str
+const createSlug = str =>
+  str
     .toLowerCase()
     .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
     .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
     .replace(/^-+|-+$/g, '')
-}
 class GlobalSearch extends React.PureComponent {
   constructor() {
     super()
@@ -27,16 +26,17 @@ class GlobalSearch extends React.PureComponent {
   async componentWillMount() {
     const topicQuery = this.props.location.query.topic
     const taxonomies = await this.getTaxonomies(this.props.taxonomyFilters)
-    
+
     if (this.props.type === 'courses') {
-      let topic = topicQuery || 'All'
-      return this.setState({
-        filterValues: {
-          businessStage: topicQuery,
-          sortBy: this.props.defaultSortBy
+      const topic = topicQuery || 'All'
+      return this.setState(
+        {
+          filterValues: {
+            businessStage: topicQuery,
+            sortBy: this.props.defaultSortBy
+          },
+          taxonomies
         },
-        taxonomies
-      },
         async () => {
           await this.getContent(this.state.filterValues)
         }
@@ -57,7 +57,7 @@ class GlobalSearch extends React.PureComponent {
   }
 
   async getContent(filters) {
-    const results = await fetchSiteContent(this.props.type, filters)    
+    const results = await fetchSiteContent(this.props.type, filters)
     this.setState({
       items: results
     })
@@ -99,9 +99,7 @@ class GlobalSearch extends React.PureComponent {
       const id = `${createSlug(name)}-select`
       const stateName = camelCase(name)
       const includesAllInTaxonomy = ['All', ...taxonomy.terms]
-      const options = includesAllInTaxonomy.map(entry => {
-        return { label: entry, value: entry }
-      })
+      const options = includesAllInTaxonomy.map(entry => ({ label: entry, value: entry }))
 
       if (name === 'businessStage') {
         newName = 'courseTopic'
@@ -122,9 +120,7 @@ class GlobalSearch extends React.PureComponent {
     })
 
     return _multiselects.map((multiSelectProps, index) => {
-      const returnNull = () => {
-        return null
-      }
+      const returnNull = () => null
 
       let multiSelectStyle = styles.multiSelect
       if (this.props.type === 'courses') {
@@ -166,11 +162,7 @@ class GlobalSearch extends React.PureComponent {
     const queryParams = this.props.location.query
     let query
 
-    if (
-      this.props.type === 'courses' &&
-      queryParams.topic &&
-      taxonomies.indexOf(queryParams.topic) >= 0
-    ) {
+    if (this.props.type === 'courses' && queryParams.topic && taxonomies.indexOf(queryParams.topic) >= 0) {
       this.setState({
         filterValues: { businessStage: queryParams.topic, sortBy: this.props.defaultSortBy }
       })
@@ -188,11 +180,14 @@ class GlobalSearch extends React.PureComponent {
       sortBy: this.props.defaultSortBy
     })
 
-    this.setState({
-      items: 'IS_LOADING'
-    }, () => {
-      this.getContent(filterValuesWithSortByOption)
-    })
+    this.setState(
+      {
+        items: 'IS_LOADING'
+      },
+      () => {
+        this.getContent(filterValuesWithSortByOption)
+      }
+    )
   }
 
   renderItems(items) {

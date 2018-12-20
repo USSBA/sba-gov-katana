@@ -4,7 +4,7 @@ import _ from 'lodash'
 import styles from './card-collection.scss'
 import { Card } from 'molecules'
 
-let cardsPerRowMap = {
+const cardsPerRowMap = {
   '2': 2,
   '3': 3,
   '4': 4,
@@ -25,8 +25,8 @@ class CardCollection extends React.Component {
   }
   render() {
     const { leftAligned, parentIndex, cards, numberOverride } = this.props
-    let numCards = numberOverride ? numberOverride : _.size(this.props.cards)
-    let cardComponents = cards.map(function(item, index) {
+    const numCards = numberOverride ? numberOverride : _.size(this.props.cards)
+    const cardComponents = cards.map(function(item, index) {
       return (
         <Card
           parentIndex={parentIndex}
@@ -38,8 +38,8 @@ class CardCollection extends React.Component {
         />
       )
     })
-    let cardsPerRow = cardsPerRowMap[cardComponents.length]
-    let rows = _.chunk(cardComponents, cardsPerRow)
+    const cardsPerRow = cardsPerRowMap[cardComponents.length]
+    const rows = _.chunk(cardComponents, cardsPerRow)
     return (
       <div className={styles.cardCollection}>
         {rows.map(function(item, index) {

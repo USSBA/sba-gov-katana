@@ -22,27 +22,25 @@ class Toggle extends React.Component {
     }
   }
   renderOptions() {
-    return this.props.options.map((option, index) => {
-      return (
-        <li key={`${this.props.id}-toggle-option-${index}`}>
-          {option.fontAwesomeIconClassName ? (
-            <SmallIcon fontAwesomeIconClassName={option.fontAwesomeIconClassName} />
-          ) : null}
-          {this.getSelectedOptionIndex() === index ? (
-            <span className={styles.selected}> {option.name}</span>
-          ) : (
-            <a
-              onClick={event => {
-                this.handleClick(option, index)
-              }}
-            >
-              {' '}
-              {option.name}
-            </a>
-          )}
-        </li>
-      )
-    })
+    return this.props.options.map((option, index) => (
+      <li key={`${this.props.id}-toggle-option-${index}`}>
+        {option.fontAwesomeIconClassName ? (
+          <SmallIcon fontAwesomeIconClassName={option.fontAwesomeIconClassName} />
+        ) : null}
+        {this.getSelectedOptionIndex() === index ? (
+          <span className={styles.selected}> {option.name}</span>
+        ) : (
+          <a
+            onClick={event => {
+              this.handleClick(option, index)
+            }}
+          >
+            {' '}
+            {option.name}
+          </a>
+        )}
+      </li>
+    ))
   }
 
   render() {

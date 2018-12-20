@@ -16,8 +16,8 @@ function get(resource, query) {
   }
   winston.info('Requesting ', formattedOptions)
 
-  return Promise.resolve().then(() => {
-    return axios
+  return Promise.resolve().then(() =>
+    axios
       .request(formattedOptions)
       .then(function(response) {
         if (response && response.data) {
@@ -30,7 +30,7 @@ function get(resource, query) {
         winston.error(error)
         throw new Error('Error encountered contacting the SizeStandards client in get')
       })
-  })
+  )
 }
 
 export { get }

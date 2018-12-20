@@ -27,7 +27,7 @@ describe('Search Template', () => {
         start: 1,
         myParam: 'hey thar'
       }
-      const filteredSearchParams = searchTemplateInstance.filterSearchParamsForUrl(searchParams)
+      const filteredSearchParams = SearchTemplate.filterSearchParamsForUrl(searchParams)
       expect(filteredSearchParams).not.toHaveProperty('pageSize')
       expect(filteredSearchParams).not.toHaveProperty('start')
     })

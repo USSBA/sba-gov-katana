@@ -3,7 +3,7 @@ var sinon = require('sinon')
 import { shallow } from 'enzyme'
 import * as helper from 'client/fetch-content-helper'
 import Course from 'templates/course/course'
-let exampleCourse = {
+const exampleCourse = {
   body:
     '<p>This course explains the importance of business planning, defines and describes the components of a business plan, and provides access to sample plans and resources that can help you develop a very good business plan.<br />\r\nDuration: 00:30:00</p>\r\n',
   courseCategory: ['Plan your business'],

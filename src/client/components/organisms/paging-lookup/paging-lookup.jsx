@@ -32,7 +32,7 @@ class PagingLookup extends React.Component {
       pageNumber: 1,
       isFetching: false,
       itemResponse: {
-        items: undefined,
+        items: null,
         count: 0
       }
     }
@@ -42,9 +42,7 @@ class PagingLookup extends React.Component {
     const propsSource = ownProps
     const defaults = chain(propsSource.taxonomyFilters)
       .keyBy()
-      .mapValues(_ => {
-        return 'All'
-      })
+      .mapValues(_ => 'All')
       .value()
 
     const queryParams = getQueryParams()
@@ -56,9 +54,9 @@ class PagingLookup extends React.Component {
       page: Number(queryParams.page) || 1
     })
 
-    const filteredQueryParams = pickBy(queryParams, (value, key) => {
-      return includes(propsSource.taxonomyFilters, key)
-    })
+    const filteredQueryParams = pickBy(queryParams, (value, key) =>
+      includes(propsSource.taxonomyFilters, key)
+    )
 
     const finalQuery = assign(
       {
@@ -94,16 +92,18 @@ class PagingLookup extends React.Component {
   }
 
   async componentDidMount() {
-
     const queryArgs = {
       names: this.props.taxonomyFilters.join(',')
     }
 
     const taxonomies = await fetchSiteContent('taxonomys', queryArgs)
 
-    this.setState({
-      taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
-    }, () => this.submit())
+    this.setState(
+      {
+        taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+      },
+      () => this.submit()
+    )
   }
 
   reArrangeTaxonomyOrder(data) {
@@ -114,9 +114,9 @@ class PagingLookup extends React.Component {
       taxonomies[index].terms.unshift('All')
     }
 
-    const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName => {
-      return find(taxonomies, { name: taxonomyVocabularyName })
-    })
+    const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName =>
+      find(taxonomies, { name: taxonomyVocabularyName })
+    )
 
     // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
     rearrangedTaxonomyOrder.push({
@@ -132,7 +132,7 @@ class PagingLookup extends React.Component {
     this.fireDocumentationLookupEvent(`Apply CTA: Term: ${queryObject.searchTerm}`)
     this.setState(
       {
-        items: undefined,
+        items: null,
         pageNumber: 1
       },
       () => {
@@ -170,23 +170,23 @@ class PagingLookup extends React.Component {
   }
 
   submit() {
-
     const start = (this.state.query.page - 1) * config.pageSize
     const end = start + config.pageSize
 
-    const remappedState = mapValues(this.state.query, value => {
-      return value === 'All' ? 'all' : value
-    })
+    const remappedState = mapValues(this.state.query, value => (value === 'All' ? 'all' : value))
     const queryTerms = assign({}, remappedState, { start, end })
 
-    this.setState({
-      isFetching: true
-    }, async () => {
-      this.setState({
-        itemResponse: await fetchSiteContent(this.props.type, queryTerms),
-        isFetching: false
-      })
-    })
+    this.setState(
+      {
+        isFetching: true
+      },
+      async () => {
+        this.setState({
+          itemResponse: await fetchSiteContent(this.props.type, queryTerms),
+          isFetching: false
+        })
+      }
+    )
   }
 
   fireEvent(category, action, value) {

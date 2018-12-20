@@ -27,9 +27,7 @@ class NotificationBar extends React.Component {
 NotificationBar.defaultProps = {
   description: '',
   url: '#',
-  onClose: () => {
-    return false
-  }
+  onClose: () => false
 }
 
 export default NotificationBar

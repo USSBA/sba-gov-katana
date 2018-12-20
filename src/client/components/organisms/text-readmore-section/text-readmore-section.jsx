@@ -5,6 +5,9 @@ import styles from './text-readmore-section.scss'
 import { TextSection } from 'atoms'
 import { ReadMore } from 'molecules'
 
+const BREAKPOINT = 1079
+const DEBOUNCE_RATE = 400
+
 class TextReadMoreSection extends React.Component {
   constructor(props) {
     super()
@@ -46,10 +49,11 @@ class TextReadMoreSection extends React.Component {
    *  the text section.  Toggle the "read more" button twice and notice that the readmore is now collapsed but before the text section.
    *  If resizing becomes slow, remove this code.
    **/
+  // eslint-disable-next-line no-invalid-this
   resize = () => this.forceUpdate()
 
   componentDidMount() {
-    window.addEventListener('resize', debounce(this.resize, 400))
+    window.addEventListener('resize', debounce(this.resize, DEBOUNCE_RATE))
   }
 
   componentWillUnmount() {
@@ -58,10 +62,10 @@ class TextReadMoreSection extends React.Component {
   /** End special render functions **/
 
   render() {
-    let expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
+    const expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
 
     let subcomponents = [this.makeReadMoreSection(), this.makeTextSection()]
-    if (!this.state.readMoreExpanded && window.innerWidth > 1079) {
+    if (!this.state.readMoreExpanded && window.innerWidth > BREAKPOINT) {
       subcomponents = reverse(subcomponents)
     }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import s from './tile.scss'
+import styles from './tile.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Link } from 'atoms'
 import { MenuTile, MenuTileWithLinks } from 'molecules'
@@ -10,10 +10,6 @@ import { navigateNow } from '../../../services/navigation.js'
 import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
 
 class Tile extends React.Component {
-  constructor() {
-    super()
-  }
-
   _formatLargeTitle(title) {
     return title.split(' ')[0]
   }
@@ -40,7 +36,7 @@ class Tile extends React.Component {
     if (this.state.displayMenuOnFocus === false) {
       return ''
     } else if (this.state.displayMenuOnFocus === true) {
-      return s.tabChangeTileBackground
+      return styles.tabChangeTileBackground
     }
   }
 
@@ -64,14 +60,16 @@ class Tile extends React.Component {
 
   handleKeyDown(event) {
     const code = event.keyCode ? event.keyCode : event.which
-    if (code == 9 && event.shiftKey) {
+    // eslint-disable-next-line no-magic-numbers
+    if (code === 9 && event.shiftKey) {
       this.props.onTabBackwards(this.props.enteringInReverse)
     }
   }
 
   handleTileKeyDown(event) {
     const code = event.keyCode ? event.keyCode : event.which
-    if (code == 13) {
+    // eslint-disable-next-line no-magic-numbers
+    if (code === 13) {
       this._openNavMenu()
     }
   }
@@ -124,21 +122,24 @@ class Tile extends React.Component {
     )
 
     let widthStyle = null
-    if (size === 3 && pathname === undefined) {
-      widthStyle = s.tileThree
-    } else if (size === 4 && pathname === undefined) {
-      widthStyle = s.tileFour
-    } else if (size === 5 && pathname === undefined) {
-      widthStyle = s.tileFive
+    /* eslint-disable no-magic-numbers */
+    if (size === 3 && !pathname) {
+      widthStyle = styles.tileThree
+    } else if (size === 4 && !pathname) {
+      widthStyle = styles.tileFour
+    } else if (size === 5 && !pathname) {
+      widthStyle = styles.tileFive
     } else if (size === 4 && pathname === '/') {
-      widthStyle = s.homePageTileFour
+      widthStyle = styles.homePageTileFour
     }
+    /* eslint-enable no-magic-numbers */
 
-    const breakpointLarge = parseInt(s.breakpointLarge.slice(0, -2), 10)
+    // eslint-disable-next-line no-magic-numbers
+    const breakpointLarge = parseInt(styles.breakpointLarge.slice(0, -2), 10)
 
     const toggleMenuLink = (
       <Link
-        className={s.tabDisplayMenu}
+        className={styles.tabDisplayMenu}
         onClick={e => {
           e ? e.preventDefault() : ''
         }}
@@ -153,7 +154,7 @@ class Tile extends React.Component {
     return (
       <div
         id={id}
-        className={s.tile + ' ' + widthStyle}
+        className={styles.tile + ' ' + widthStyle}
         onClick={this._openNavMenu.bind(this, breakpointLarge, fullUrl)}
         onMouseEnter={this._mouseEnterTile.bind(this, breakpointLarge)}
         onMouseLeave={this._mouseExitTile.bind(this, breakpointLarge)}
@@ -161,7 +162,7 @@ class Tile extends React.Component {
       >
         {toggleMenuLink}
         {showHover ? hoverTile : <MenuTile id={id + '-static'} pathname={pathname} {...baseTileData} />}
-        {backgroundLines ? <img className={s.backgroundLines} src={backgroundLines} alt="" /> : undefined}
+        {backgroundLines ? <img className={styles.backgroundLines} src={backgroundLines} alt="" /> : null}
       </div>
     )
   }
@@ -177,4 +178,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(Tile)

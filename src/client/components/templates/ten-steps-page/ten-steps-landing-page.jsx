@@ -40,6 +40,7 @@ class TenStepsLandingPage extends React.Component {
     this.setState({ section: index }, this.toggleNavType)
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleSectionLeave(index) {}
 
   handleTitleSectionEnter() {
@@ -59,9 +60,10 @@ class TenStepsLandingPage extends React.Component {
   }
 
   toggleNavType() {
-    if (this.state.section >= 1) {
+    const { section } = this.state
+    if (section >= 1) {
       this.setState({ navType: 'center' })
-    } else if (this.state.section == 'titleSection') {
+    } else if (section === 'titleSection') {
       this.setState({ navType: 'top' })
     }
   }
@@ -123,30 +125,29 @@ class TenStepsLandingPage extends React.Component {
       const id = index + 1
       const { link, text, title } = TRANSLATIONS[`tenSteps${id}`][langCode]
 
-      section.imageAlt = title
-      section.link = link
-      section.sectionNum = id
-      section.text = text
-      section.title = title
-
-      return section
+      return {
+        ...section,
+        imageAlt: title,
+        link,
+        sectionNum: id,
+        text,
+        title
+      }
     })
 
-    const tenstepSectionItems = titleBoxDataArray.map((item, index) => {
-      return (
-        <LongScrollSection
-          index={index}
-          key={index}
-          sectionItem={item}
-          sectionEnter={() => {
-            this.handleSectionEnter(index)
-          }}
-          sectionLeave={() => {
-            this.handleSectionLeave(index)
-          }}
-        />
-      )
-    })
+    const tenstepSectionItems = titleBoxDataArray.map((item, index) => (
+      <LongScrollSection
+        index={index}
+        key={index}
+        sectionItem={item}
+        sectionEnter={() => {
+          this.handleSectionEnter(index)
+        }}
+        sectionLeave={() => {
+          this.handleSectionLeave(index)
+        }}
+      />
+    ))
 
     const sectionData = findSection(mainMenu, 'guide') || findSection(mainMenu, 'business-guide')
 

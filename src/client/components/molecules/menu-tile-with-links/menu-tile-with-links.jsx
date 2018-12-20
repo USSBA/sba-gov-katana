@@ -1,28 +1,29 @@
 import React from 'react'
 
-import s from './menu-tile-with-links.scss'
+import styles from './menu-tile-with-links.scss'
 import { Link } from 'atoms'
 import { determineMenuTileData } from '../../../services/utils.js'
 
 class MenuTileWithLinks extends React.Component {
   render() {
+    const { autoFocusOnLast, children, id, langCode, largeTitle, link, smallTitle } = this.props
     return (
-      <div id={this.props.id} className={s.tileHover}>
-        <Link to={this.props.link}>
+      <div id={id} className={styles.tileHover}>
+        <Link to={link}>
           <h3>
-            {this.props.largeTitle} {this.props.smallTitle}
+            {largeTitle} {smallTitle}
           </h3>
         </Link>
-        <div className={s.topLine} />
-        {this.props.children
-          ? this.props.children.map((object, index) => {
-              const titleDescriptionUrlData = determineMenuTileData(this.props.langCode, object)
+        <div className={styles.topLine} />
+        {children
+          ? children.map((object, index) => {
+              const titleDescriptionUrlData = determineMenuTileData(langCode, object)
               const { title, fullUrl } = titleDescriptionUrlData
 
-              const autoFocusOnMe = this.props.autoFocusOnLast && index === this.props.children.length - 1
+              const autoFocusOnMe = autoFocusOnLast && index === children.length - 1
               return (
                 <HoverLink
-                  id={this.props.id + '-link-' + index}
+                  id={id + '-link-' + index}
                   key={index}
                   title={title}
                   link={fullUrl}
@@ -38,10 +39,11 @@ class MenuTileWithLinks extends React.Component {
 
 class HoverLink extends React.Component {
   render() {
+    const { autoFocus, id, link, title } = this.props
     return (
-      <div className={s.linkContainer}>
-        <Link id={this.props.id} className={s.link} to={this.props.link} autoFocus={this.props.autoFocus}>
-          {this.props.title}
+      <div className={styles.linkContainer}>
+        <Link id={id} className={styles.link} to={link} autoFocus={autoFocus}>
+          {title}
         </Link>
       </div>
     )

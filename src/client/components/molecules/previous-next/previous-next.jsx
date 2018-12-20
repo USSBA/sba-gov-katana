@@ -36,6 +36,7 @@ class PreviousNext extends React.Component {
     )
   }
 
+  /* eslint-disable no-invalid-this */
   getAdjacentArticle = (indexDifference, langCode) => {
     const { lineage } = this.props
 
@@ -66,18 +67,12 @@ class PreviousNext extends React.Component {
     }
   }
 
-  getArticlesFromSections = sections => {
-    return compact(flatMap(sections, section => section.children))
-  }
+  getArticlesFromSections = sections => compact(flatMap(sections, section => section.children))
 
   getCurrentArticle = lineage => last(lineage)
 
-  getCurrentArticleIndex = (articles, currentArticle) => {
-    return findIndex(
-      articles,
-      article => article && article.fullUrl && article.fullUrl === currentArticle.fullUrl
-    )
-  }
+  getCurrentArticleIndex = (articles, currentArticle) =>
+    findIndex(articles, article => article && article.fullUrl && article.fullUrl === currentArticle.fullUrl)
 
   getArticle = (articlePosition, langCode) => {
     const articleData = this.getAdjacentArticle(articlePosition, langCode)
@@ -99,6 +94,7 @@ class PreviousNext extends React.Component {
     const thirdToLast = nth(this.props.lineage, -3)
     return thirdToLast ? thirdToLast.children : null
   }
+  /* eslint-enable no-invalid-this */
 }
 
 PreviousNext.propTypes = {

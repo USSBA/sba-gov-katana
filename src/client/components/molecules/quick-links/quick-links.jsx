@@ -3,7 +3,7 @@ import moment from 'moment'
 import queryString from 'querystring'
 import { chain, isEmpty } from 'lodash'
 import { DecorativeDash, Link } from 'atoms'
-import s from './quick-links.scss'
+import styles from './quick-links.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 function getCurrentFile(files) {
@@ -83,8 +83,8 @@ class QuickLinks extends PureComponent {
   }
 
   generateGrid(length) {
-    let gridClass = { 1: s.oneCard, 2: s.twoCards }
-    return length > 2 ? s.manyCards : gridClass[length]
+    const gridClass = { 1: styles.oneCard, 2: styles.twoCards }
+    return length > 2 ? styles.manyCards : gridClass[length]
   }
 
   renderQuickLinks() {
@@ -94,23 +94,24 @@ class QuickLinks extends PureComponent {
     const { documents, articles } = this.state
     const gridClass = this.generateGrid(typeOfLinks.length)
 
+    // eslint-disable-next-line array-callback-return
     return typeOfLinks.map((quickLink, index) => {
       if (quickLink.type === 'documentLookup') {
         return (
           <LatestDocumentsCard
             key={index}
-            classname={s.card + ' ' + gridClass}
+            classname={styles.card + ' ' + gridClass}
             documents={documents['documents-' + index]}
             {...quickLink}
           />
         )
       } else if (quickLink.type === 'ratesList') {
-        return <RatesCard key={index} {...quickLink} classname={s.card + ' ' + gridClass} />
+        return <RatesCard key={index} {...quickLink} classname={styles.card + ' ' + gridClass} />
       } else if (quickLink.type === 'articleLookup') {
         return (
           <ArticlesCard
             key={index}
-            classname={s.card + ' ' + gridClass}
+            classname={styles.card + ' ' + gridClass}
             articles={articles['articles-' + index]}
             {...quickLink}
           />
@@ -121,7 +122,9 @@ class QuickLinks extends PureComponent {
 
   render() {
     return (
-      <div className={s.collection}>{this.props.data ? this.renderQuickLinks() : <div>loading</div>}</div>
+      <div className={styles.collection}>
+        {this.props.data ? this.renderQuickLinks() : <div>loading</div>}
+      </div>
     )
   }
 }
@@ -131,8 +134,8 @@ const LatestDocumentsCard = props => {
 
   return (
     <div className={props.classname}>
-      <div className={s.titleContainer}>
-        <h4 className={s.title}>{props.sectionHeaderText}</h4>
+      <div className={styles.titleContainer}>
+        <h4 className={styles.title}>{props.sectionHeaderText}</h4>
         <Link
           to={`/document?${queryString.stringify({
             type: props.documentType,
@@ -148,7 +151,7 @@ const LatestDocumentsCard = props => {
           props.documents.items.map((doc, index) => {
             const currentFile = getCurrentFile(doc.files)
             let effectiveDate
-            if (currentFile !== undefined && currentFile.effectiveDate !== undefined) {
+            if (typeof currentFile !== 'undefined' && typeof currentFile.effectiveDate !== 'undefined') {
               effectiveDate = currentFile.effectiveDate
             }
 
@@ -163,7 +166,7 @@ const LatestDocumentsCard = props => {
               <div key={index}>
                 <Link to={doc.url}>{linkTitle}</Link>
 
-                {effectiveDate && <div className={s.date}>{formatDate(effectiveDate)}</div>}
+                {effectiveDate && <div className={styles.date}>{formatDate(effectiveDate)}</div>}
               </div>
             )
           })
@@ -175,22 +178,18 @@ const LatestDocumentsCard = props => {
   )
 }
 
-const RatesCard = props => {
-  return (
-    <div className={props.classname}>
-      <h4 className={s.title}>Rates</h4>
-      <DecorativeDash width={1.667} />
-      {props.rate.map((rate, index) => {
-        return (
-          <div key={index} className={s.rateContainer}>
-            {rate.name}
-            <div className={s.rate}>{rate.percent}%</div>
-          </div>
-        )
-      })}
-    </div>
-  )
-}
+const RatesCard = props => (
+  <div className={props.classname}>
+    <h4 className={styles.title}>Rates</h4>
+    <DecorativeDash width={1.667} />
+    {props.rate.map((rate, index) => (
+      <div key={index} className={styles.rateContainer}>
+        {rate.name}
+        <div className={styles.rate}>{rate.percent}%</div>
+      </div>
+    ))}
+  </div>
+)
 
 const ArticlesCard = props => {
   const eventCategory = `${props.sectionHeaderText.toLowerCase()}-module`
@@ -198,14 +197,14 @@ const ArticlesCard = props => {
 
   return (
     <div className={props.classname}>
-      <div className={s.titleContainer}>
-        <h4 className={s.title}>{props.sectionHeaderText}</h4>
+      <div className={styles.titleContainer}>
+        <h4 className={styles.title}>{props.sectionHeaderText}</h4>
         <Link
           to={`/article?${queryString.stringify({
             articleCategory: props.articleCategory,
             program: props.articleProgram
           })}`}
-          className={s.seeAll}
+          className={styles.seeAll}
         >
           See all
         </Link>
@@ -221,7 +220,7 @@ const ArticlesCard = props => {
               return (
                 <div key={index}>
                   <Link to={article.url}>{linkTitle}</Link>
-                  <div className={s.date}>{moment.unix(article.updated).format('MMM D, YYYY')}</div>
+                  <div className={styles.date}>{moment.unix(article.updated).format('MMM D, YYYY')}</div>
                 </div>
               )
             })}

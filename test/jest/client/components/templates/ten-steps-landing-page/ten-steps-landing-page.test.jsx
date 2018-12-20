@@ -5,15 +5,9 @@ import renderer from 'react-test-renderer'
 import TenStepsLandingPage from 'templates/ten-steps-page/ten-steps-landing-page.jsx'
 
 const store1 = {
-  getState: () => {
-    return false
-  },
-  subscribe: () => {
-    return false
-  },
-  dispatch: () => {
-    return false
-  }
+  getState: () => false,
+  subscribe: () => false,
+  dispatch: () => false
 }
 describe('TenStepsLandingPage', () => {
   test('should render TenStepsLandingPage', () => {

@@ -22,6 +22,7 @@ class CoursesLayout extends React.PureComponent {
       }
     })
 
+    /* eslint-disable no-magic-numbers */
     return (
       <div>
         <CardCollection cards={mappedItems.slice(0, 4)} parentIndex={1} numberOverride={4} />
@@ -29,6 +30,7 @@ class CoursesLayout extends React.PureComponent {
         <CardCollection cards={mappedItems.slice(8, 12)} parentIndex={3} numberOverride={4} />
       </div>
     )
+    /* eslint-enable no-magic-numbers */
   }
 
   render() {

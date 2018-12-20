@@ -7,7 +7,7 @@ import data from './program-page-test-data.json'
 
 describe('ProgramPage', () => {
   test('should render several common paragraphs', () => {
-    let heroData = {
+    const heroData = {
       title: data.title,
       summary: data.summary,
       buttons: data.buttons,
@@ -19,14 +19,14 @@ describe('ProgramPage', () => {
     expect(component).toMatchSnapshot()
 
     // assert that the program page
-    let cardData = data.paragraphs.find(paragraph => paragraph.type === 'cardCollection')
+    const cardData = data.paragraphs.find(paragraph => paragraph.type === 'cardCollection')
     const result = component.find('CardCollection')
     expect(result.length).toEqual(1)
     expect(result.prop('cards')).toEqual(cardData.cards)
   })
 
   test('should display a Hero with no image', () => {
-    let heroData = {
+    const heroData = {
       title: data.title,
       summary: data.summary,
       buttons: data.buttons,
@@ -39,7 +39,7 @@ describe('ProgramPage', () => {
   })
 
   test('should display a Hero with an image', () => {
-    let heroData = {
+    const heroData = {
       title: data.title,
       summary: data.summary,
       buttons: data.buttons,

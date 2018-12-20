@@ -7,7 +7,7 @@ import * as ContentActions from '../../../actions/content'
 import * as NavigationActions from '../../../actions/navigation'
 import queryString from 'querystring'
 import { logPageEvent } from '../../../services/analytics'
-import s from './related-document-cards.scss'
+import styles from './related-document-cards.scss'
 
 class RelatedDocumentCards extends React.Component {
   constructor() {
@@ -18,34 +18,35 @@ class RelatedDocumentCards extends React.Component {
   }
 
   componentDidMount() {
-    const { data: { relatedDocuments }, fetchContentIfNeeded } = this.props
+    const {
+      data: { relatedDocuments },
+      fetchContentIfNeeded
+    } = this.props
 
     Promise.all(
-      relatedDocuments.map(documentId => {
-        return fetchContentIfNeeded('node', `node/${documentId}`)
-      })
-    ).then(relatedDocumentsData => {
-      return this.sortRelatedDocuments(
+      relatedDocuments.map(documentId => fetchContentIfNeeded('node', `node/${documentId}`))
+    ).then(relatedDocumentsData =>
+      this.sortRelatedDocuments(
         relatedDocumentsData
           .map(({ data }) => data)
           // Gracefully handle related documents that have been deleted.
           .filter(data => data)
       )
-    })
+    )
   }
 
   sortRelatedDocuments(relatedDocuments) {
     if (relatedDocuments) {
       const sortedAndFilteredDocuments = {}
       _.uniq(
-        relatedDocuments.map(relatedDocument => {
-          return relatedDocument.documentIdType
-        })
+        relatedDocuments.map(relatedDocument => relatedDocument.documentIdType)
+        // eslint-disable-next-line array-callback-return
       ).map(docType => {
         const filteredDocuments = _.filter(relatedDocuments, ['documentIdType', docType])
-        const sortedDocuments = filteredDocuments.sort((a, b) => {
-          return a.title.toLowerCase() > b.title.toLowerCase()
-        })
+        const sortedDocuments = filteredDocuments.sort(
+          // eslint-disable-next-line id-length
+          (a, b) => a.title.toLowerCase() > b.title.toLowerCase()
+        )
         sortedAndFilteredDocuments[docType] = sortedDocuments
       })
       this.setState({ sortedDocuments: sortedAndFilteredDocuments })
@@ -67,14 +68,9 @@ class RelatedDocumentCards extends React.Component {
         const documents = sortedDouments[documentType]
         return (
           <div className={'related-document-section'} key={index}>
-            <div className={'related-document-section-header ' + s.sectionHeader}>
-              <h3 className={s.sectionTitle}>{documentType} </h3>
-              <a
-                className={s.browseAll}
-                onClick={() => {
-                  return this.handleBrowseAll(documentType)
-                }}
-              >
+            <div className={'related-document-section-header ' + styles.sectionHeader}>
+              <h3 className={styles.sectionTitle}>{documentType} </h3>
+              <a className={styles.browseAll} onClick={() => this.handleBrowseAll(documentType)}>
                 Browse all
               </a>
             </div>
@@ -88,10 +84,10 @@ class RelatedDocumentCards extends React.Component {
 
   render() {
     return (
-      <div className={s.container}>
+      <div className={styles.container}>
         {!_.isEmpty(this.state.sortedDocuments) ? (
           <div>
-            <h2 className={s.title}>Related documents</h2>
+            <h2 className={styles.title}>Related documents</h2>
             {this.renderRelatedDocumentSections()}
           </div>
         ) : (
@@ -109,5 +105,8 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(RelatedDocumentCards)
+export default connect(
+  null,
+  mapDispatchToProps
+)(RelatedDocumentCards)
 export { RelatedDocumentCards }

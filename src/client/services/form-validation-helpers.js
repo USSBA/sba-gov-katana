@@ -70,9 +70,7 @@ export function getCurrencyValidationState(name, value, defaultWhenNotSuccessful
 }
 
 export function getAlwaysValidValidationState(name, value) {
-  return executeValidation(name, value, null, () => {
-    return true
-  })
+  return executeValidation(name, value, null, () => true)
 }
 
 export function containsErrorOrNull(items) {

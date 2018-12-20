@@ -13,15 +13,20 @@ describe('SearchBar', () => {
 
   test('should expand and then submit search', () => {
     const component = shallow(<SearchBar />)
-    let mockSearcher = jest.fn()
+    const mockSearcher = jest.fn()
     SearchBar.prototype.executeSearch = mockSearcher
-    component.find(Link).simulate('click', { preventDefault: _ => true })
+    component.find(Link).simulate('click', {
+      preventDefault: _ => true
+    })
     expect(component.state('expanded')).toEqual(true)
-    component
-      .find(TextInput)
-      .simulate('change', { target: { value: 'business' }, preventDefault: _ => true })
+    component.find(TextInput).simulate('change', {
+      target: { value: 'business' },
+      preventDefault: _ => true
+    })
     expect(component.state('searchValue')).toEqual('business')
-    component.find('i#search-button').simulate('click', { preventDefault: _ => true })
+    component.find('i#search-button').simulate('click', {
+      preventDefault: _ => true
+    })
     expect(mockSearcher.mock.calls.length).toBe(1)
     expect(mockSearcher.mock.calls[0][0]).toBe('/mysearch?q=business')
   })
@@ -29,7 +34,9 @@ describe('SearchBar', () => {
   test('should execute onExpand', () => {
     let expected
     const component = shallow(<SearchBar onExpand={isExpanded => (expected = isExpanded)} />)
-    component.find(Link).simulate('click', { preventDefault: _ => true })
+    component.find(Link).simulate('click', {
+      preventDefault: _ => true
+    })
     expect(expected).toEqual(true)
   })
 })

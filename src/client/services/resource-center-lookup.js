@@ -8,35 +8,23 @@ const getPartners = (enableResourceCenterOverride = []) => {
   // return filtered keys based on the enableResourceCenterOverride array
   let keys = Object.keys(resourceCenters)
   if (!_.isEmpty(enableResourceCenterOverride)) {
-    keys = enableResourceCenterOverride.filter(partner => {
-      return keys.find(key => {
-        return key === partner ? key : false
-      })
-    })
+    keys = enableResourceCenterOverride.filter(partner => keys.find(key => (key === partner ? key : false)))
   }
   return keys
 }
 
-const getPartnerOffices = partner => {
-  return resourceCenters[partner]
-}
+const getPartnerOffices = partner => resourceCenters[partner]
 
-const getOfficesByZip = (partner, zip) => {
-  return _.filter(
+const getOfficesByZip = (partner, zip) =>
+  _.filter(
     module.exports.getPartnerOffices(partner), // We use the module.exports version to ensure it can be mocked
-    office => {
-      return _.startsWith(office.zip, zip)
-    }
+    office => _.startsWith(office.zip, zip)
   )
-}
 
-const getOfficesByState = (partner, state) => {
-  return _.filter(
+const getOfficesByState = (partner, state) =>
+  _.filter(
     module.exports.getPartnerOffices(partner), // We use the module.exports version to ensure it can be mocked
-    office => {
-      return office.state === state
-    }
+    office => office.state === state
   )
-}
 
 export { getPartners, getPartnerOffices, getOfficesByZip, getOfficesByState }

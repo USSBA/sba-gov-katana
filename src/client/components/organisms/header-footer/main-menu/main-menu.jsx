@@ -42,8 +42,9 @@ class MainMenu extends React.Component {
   }
 
   handleKeyDown(event) {
-    let code = event.keyCode ? event.keyCode : event.which
-    if (code == 9 && event.shiftKey) {
+    const code = event.keyCode ? event.keyCode : event.which
+    // eslint-disable-next-line no-magic-numbers
+    if (code === 9 && event.shiftKey) {
       if (this.state.currentlyFocusedTopLevelMenu === 0) {
         this.setState({ currentlyFocusedTopLevelMenu: -1 })
       }
@@ -63,7 +64,7 @@ class MainMenu extends React.Component {
     if (this.props.data) {
       const activeIndex = this.determineActiveSection(this.props.data)
       menuItems = this.props.data.map((item, index) => {
-        let submenuProps = {
+        const submenuProps = {
           id: 'sub-menu-' + index,
           key: index,
           shown: index === this.state.currentlyFocusedTopLevelMenu,

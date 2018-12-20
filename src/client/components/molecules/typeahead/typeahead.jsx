@@ -59,6 +59,7 @@ class Typeahead extends React.PureComponent {
     )
   }
 
+  /* eslint-disable no-invalid-this */
   onChange = (e, { newValue }) => {
     this.setState({
       value: newValue
@@ -67,7 +68,9 @@ class Typeahead extends React.PureComponent {
 
   onCloseIconSelect = e => {
     const { key } = e
-    if (key && key !== 'Enter' && key !== 'Escape') return
+    if (key && key !== 'Enter' && key !== 'Escape') {
+      return
+    }
 
     this.setState({
       value: '',
@@ -178,7 +181,9 @@ class Typeahead extends React.PureComponent {
   onSuggestionsFetchRequested = ({ value, reason }) => {
     // If the input was changed because the user selected a suggestion, do not
     // update the suggestions.
-    if (reason === 'suggestion-selected') return
+    if (reason === 'suggestion-selected') {
+      return
+    }
 
     const suggestions = this.getSuggestions(value)
     if (suggestions.length === 0 || value === '' || reason === 'escape-pressed') {
@@ -194,20 +199,25 @@ class Typeahead extends React.PureComponent {
     const { maxVisibleSuggestions } = this.props
     let visibleSuggestions = 0
     // add extra top padding + extra bottom padding to container height
+    // eslint-disable-next-line no-magic-numbers
     let suggestionsContainerOpenHeight = 8 + 6
     // Declare an anonymous function, and `return` to break from the nested
     // loop.
     ;(() => {
       for (let i = 0; i < suggestions.length; i++) {
         // add height of section title (category) to container height
+        // eslint-disable-next-line no-magic-numbers
         suggestionsContainerOpenHeight += 18
 
         const { entries } = suggestions[i]
         for (let j = 0; j < entries.length; j++) {
           // add height of suggestion (entry) to container height
+          // eslint-disable-next-line no-magic-numbers
           suggestionsContainerOpenHeight += 57
           visibleSuggestions++
-          if (visibleSuggestions >= maxVisibleSuggestions) return
+          if (visibleSuggestions >= maxVisibleSuggestions) {
+            return
+          }
         }
       }
     })()
@@ -222,6 +232,7 @@ class Typeahead extends React.PureComponent {
     // Call onSelect with the selected suggestion data.
     const { onSelect } = this.props
     const { suggestions } = this.state
+    // eslint-disable-next-line no-useless-call
     onSelect.call(null, suggestions[sectionIndex].entries[suggestionIndex])
 
     // Reset the suggestions.
@@ -229,6 +240,7 @@ class Typeahead extends React.PureComponent {
       suggestions: []
     })
   }
+  /* eslint-enable no-invalid-this */
 }
 
 export default Typeahead

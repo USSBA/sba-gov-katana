@@ -6,7 +6,7 @@ import { Link } from 'atoms'
 class UtilityLink extends React.Component {
   render() {
     const { text, url, visible, ...linkProps } = this.props
-    let anchorClass = styles.link + ' ' + (visible ? '' : styles.hidden)
+    const anchorClass = styles.link + ' ' + (visible ? '' : styles.hidden)
 
     return (
       <li className={styles.UtilityLink}>
@@ -19,6 +19,8 @@ class UtilityLink extends React.Component {
 }
 
 UtilityLink.defaultProps = {
+  // TODO: https://stackoverflow.com/a/1830980
+  // eslint-disable-next-line no-script-url
   url: 'javascript:;',
   visible: true
 }

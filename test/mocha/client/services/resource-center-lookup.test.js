@@ -95,6 +95,7 @@ describe('#ResourceCenterLookup', function() {
 
     it('with two matches, returns a list of a two offices', () => {
       const prtPartners = resourceCenterLookup.getOfficesByState('PrtData', 'DC')
+      // eslint-disable-next-line no-magic-numbers
       prtPartners.should.have.length(2)
       prtPartners[0].name1.should.equal('Second Office')
       prtPartners[1].name1.should.equal('Third Office')

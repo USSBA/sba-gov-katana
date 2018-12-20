@@ -8,8 +8,8 @@ class ProgramDetailsCardCollection extends Component {
   render() {
     const defaultCategoryConfig = { category: 'Program-Details-Card' }
     const { cards, currentLanguage } = this.props
-    const remapData = () => {
-      return cards.map(data => {
+    const remapData = () =>
+      cards.map(data => {
         const item = getDataForLanguage(currentLanguage, data)
         let eventConfig = null
         if (this.props.eventConfig) {
@@ -27,7 +27,6 @@ class ProgramDetailsCardCollection extends Component {
           eventConfig: eventConfig
         }
       })
-    }
 
     return <div>{cards !== null && <CardCollection cards={remapData()} leftAligned />}</div>
   }

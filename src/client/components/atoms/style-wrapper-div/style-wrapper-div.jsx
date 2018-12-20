@@ -5,9 +5,7 @@ class StyleWrapperDiv extends React.Component {
     const { className, children, ...rest } = this.props
     return (
       <div className={className}>
-        {React.Children.map(children, child => {
-          return React.cloneElement(child, { ...rest })
-        })}
+        {React.Children.map(children, child => React.cloneElement(child, { ...rest }))}
       </div>
     )
   }

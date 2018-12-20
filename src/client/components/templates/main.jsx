@@ -22,7 +22,7 @@ class Main extends React.Component {
     const disasterAlert = await fetchRestContent('disaster', null, getLanguageOverride())
     this.setState({
       disasterAlert,
-      disasterAlertCookieExists: cookie.load(DISASTER_ALERT_COOKIE) ? true : false
+      disasterAlertCookieExists: Boolean(cookie.load(DISASTER_ALERT_COOKIE))
     })
   }
 
@@ -39,6 +39,7 @@ class Main extends React.Component {
   }
 
   render() {
+    const OFFSET = 53
     const { children } = this.props
     const {
       disasterAlert: { buttonText, description, link, spanishTranslation, visible },
@@ -62,7 +63,7 @@ class Main extends React.Component {
           Skip to main content
         </a>
 
-        <Header additionalMenuOffset={visible ? 53 : 0} />
+        <Header additionalMenuOffset={visible ? OFFSET : 0} />
 
         <MainLoader />
 

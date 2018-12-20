@@ -26,11 +26,11 @@ const Card = props => {
   })
 
   // TODO: use lede text instead of subtitle text
-  let languageOverride = getLanguageOverride()
+  const languageOverride = getLanguageOverride()
   let title =
     languageOverride && languageOverride.startsWith('es')
-      ? TRANSLATIONS['learnMore']['es'].text
-      : TRANSLATIONS['learnMore']['en'].text
+      ? TRANSLATIONS.learnMore.es.text
+      : TRANSLATIONS.learnMore.en.text
   let uri = ''
   if (typeof link === 'string') {
     uri = link
@@ -56,7 +56,7 @@ const Card = props => {
   }
 
   const titleMarkup = uri ? <Link to={uri}>{titleText}</Link> : titleText
-  const learnMoreMarkup = uri ? <Link to={uri}>{title}</Link> : undefined
+  const learnMoreMarkup = uri ? <Link to={uri}>{title}</Link> : null
 
   return (
     <div className={className} id={snakeCase('card', parentIndex, index)}>

@@ -41,9 +41,7 @@ class SubMenu extends React.Component {
       <li
         className={styles.subMenu}
         key={this.props.menuId}
-        onFocus={event => {
-          return this.handleFocus(event, this.props.menuId)
-        }}
+        onFocus={event => this.handleFocus(event, this.props.menuId)}
         onMouseOut={this.props.onMenuMouseOut}
       >
         <SectionLink
@@ -69,12 +67,12 @@ SubMenu.defaultProps = {
   data: [],
   columnDefintion: [],
   autoFocusOnTitle: false,
-  onFocus: function() {},
-  onSkipToNext: function() {},
-  onFinalBlur: function() {},
-  onTitleMouseOver: function() {},
-  onMenuMouseOut: function() {},
-  onSectionLinkKeyDown: function() {},
+  onFocus: () => {},
+  onSkipToNext: () => {},
+  onFinalBlur: () => {},
+  onTitleMouseOver: () => {},
+  onMenuMouseOut: () => {},
+  onSectionLinkKeyDown: () => {},
   showUnderline: false,
   enableTabbing: false
 }

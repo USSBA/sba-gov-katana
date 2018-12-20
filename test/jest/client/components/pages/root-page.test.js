@@ -9,7 +9,11 @@ import { RootPage } from 'client/components/pages/root-page'
 describe('RootPage', () => {
   describe('404 Page', () => {
     test('shows the 404 page', () => {
-      clientConfig.getConfig = jest.fn().mockImplementation(_ => 404)
+      clientConfig.getConfig = jest.fn().mockImplementation(
+        _ =>
+          // eslint-disable-next-line no-magic-numbers
+          404
+      )
       helpers.fetchSiteContent = jest.fn().mockImplementation(() => Promise.resolve())
 
       const params = { first: 'Does', second: 'Not', third: 'Matter', fourth: 'One', fifth: 'Bit' }

@@ -22,6 +22,7 @@ class MobileNav extends React.Component {
   }
 
   updateNavHeight() {
+    // eslint-disable-next-line no-magic-numbers
     const heightOffset = 130 + this.props.additionalMenuOffset
     const newHeight = window.innerHeight - heightOffset
     this.setState({ navHeight: newHeight })
@@ -104,7 +105,9 @@ class MobileNav extends React.Component {
 
   render() {
     const menuItems = this.createMenuItems()
+    // eslint-disable-next-line no-magic-numbers
     const menuMaxHeight = menuItems.length * 78
+
     return (
       <div>
         <div key={4} className={this.state.expanded ? styles.mobileHeaderOpen : styles.mobileHeaderClosed}>
@@ -121,6 +124,7 @@ class MobileNav extends React.Component {
             onKeyDown={e => {
               // TODO: Change to button
               // 13 equals to Enter and 32 equals to spacebar
+              // eslint-disable-next-line no-magic-numbers
               if (e.keyCode === 13 || e.keyCode === 32) {
                 e.preventDefault()
                 this.setState({

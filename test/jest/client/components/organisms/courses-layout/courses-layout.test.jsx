@@ -5,6 +5,8 @@ import { CoursesLayout } from 'organisms'
 
 describe('CoursesLayout', () => {
   test('should render the first page properly', () => {
+    const TOTAL = 25
+
     const mockCourse = {
       body: '<p>some html</p>',
       courseCategory: ['Grow your business'],
@@ -33,11 +35,10 @@ describe('CoursesLayout', () => {
       created: 1517955056,
       url: '/course/anc-business-guide-8a-business-development-program'
     }
-    const mockCourses = Array.apply(null, Array(25)).map(function(x, i) {
-      return mockCourse
-    })
+    const mockCourses = Array.apply(null, Array(TOTAL)).map((_, i) => mockCourse)
+
     const component = renderer.create(<CoursesLayout items={mockCourses} />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

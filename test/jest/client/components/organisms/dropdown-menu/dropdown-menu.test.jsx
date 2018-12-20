@@ -23,7 +23,7 @@ describe('dropdown menu', () => {
 
     const component = mount(<DropdownMenu {...props} />)
     const headline = component.find('.callToAction h6').text()
-    const expected = tenStepsNavigationCta['en']['headline']
+    const expected = tenStepsNavigationCta.en.headline
     expect(headline).toBe(expected)
   })
 
@@ -32,7 +32,7 @@ describe('dropdown menu', () => {
 
     const component = mount(<DropdownMenu {...props} />)
     const headline = component.find('.callToAction h6').text()
-    const expected = tenStepsNavigationCta['es']['headline']
+    const expected = tenStepsNavigationCta.es.headline
     expect(headline).toBe(expected)
   })
 })

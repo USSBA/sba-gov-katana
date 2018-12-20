@@ -9,7 +9,7 @@ describe('OfficeLookupPage', () => {
   // when OfficeLookUp page renders
   // is the TaxonomyMultiSelect component available?
   it('should detect one TaxonomyMultiSelect component', () => {
-    let stubFetchSiteContent = sinon.stub(helper, 'fetchSiteContent')
+    const stubFetchSiteContent = sinon.stub(helper, 'fetchSiteContent')
     stubFetchSiteContent.returns(Promise.resolve([]))
     const component = shallow(<OfficeLookupPage />)
     expect(component.find(TaxonomyMultiSelect)).toHaveLength(1)

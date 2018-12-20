@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import clientConfig from '../../../services/client-config.js'
-import s from './document-article.scss'
+import styles from './document-article.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
 import { Button, DecorativeDash, Label, Link, TextSection } from 'atoms'
@@ -16,7 +16,9 @@ import { getCurrentFile } from '../../../services/utils.js'
 
 export class DocumentArticle extends React.Component {
   componentDidMount() {
-    const { contentActions: { fetchContentIfNeeded } } = this.props
+    const {
+      contentActions: { fetchContentIfNeeded }
+    } = this.props
 
     fetchContentIfNeeded('officesRaw', 'officesRaw')
     fetchContentIfNeeded('persons', 'persons')
@@ -57,18 +59,16 @@ export class DocumentArticle extends React.Component {
       })
     }
 
-    const dateLine = dates.map((object, index) => {
-      return (
-        <div key={index}>
-          {index > 0 && <span className={s.dateSeperator}> | </span>}
-          <h5 className={s.date}>
-            {object.title} {object.date}
-          </h5>
-        </div>
-      )
-    })
+    const dateLine = dates.map((object, index) => (
+      <div key={index}>
+        {index > 0 && <span className={styles.dateSeperator}> | </span>}
+        <h5 className={styles.date}>
+          {object.title} {object.date}
+        </h5>
+      </div>
+    ))
 
-    return <div className={s.dates}> {dateLine} </div>
+    return <div className={styles.dates}> {dateLine} </div>
   }
 
   render() {
@@ -115,7 +115,10 @@ export class DocumentArticle extends React.Component {
 
       let officeData = {}
       if (clientConfig.pressRelease && !isEmpty(office) && office.website) {
-        const { title, website: { url } } = office
+        const {
+          title,
+          website: { url }
+        } = office
         officeData = { title, url }
       } else if (!clientConfig.pressRelease && !isEmpty(officeLink) && officeLink.url) {
         const { title, url } = officeLink
@@ -161,12 +164,12 @@ export class DocumentArticle extends React.Component {
 
       const titleClassName = classNames({
         'document-article-title': true,
-        [s.title]: true,
-        [s.titleMarginBottom]: type
+        [styles.title]: true,
+        [styles.titleMarginBottom]: type
       })
 
       return (
-        <div className={'document-article ' + s.page}>
+        <div className={'document-article ' + styles.page}>
           <Label type={type} id={!isEmpty(data.documentIdNumber) && data.documentIdNumber} />
           <h1 className={titleClassName}>{data.title}</h1>
           {includes(data.category, PRESS_RELEASE) && (
@@ -179,55 +182,46 @@ export class DocumentArticle extends React.Component {
           {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
           {!isEmpty(officeData) && (
-            <p className={s.meta}>
+            <p className={styles.meta}>
               {officeElement}
               <br />
               {contactElement}
             </p>
           )}
 
-          <hr className={s.hr} />
-          <div className={s.summaryContainer}>
+          <hr className={styles.hr} />
+          <div className={styles.summaryContainer}>
             <div className="column">
-              {currentFile &&
-                !isEmpty(currentFile.fileUrl) && (
-                  <Button
-                    className="document-article-pdf-download-btn"
-                    fullWidth
-                    onClick={e => this.downloadClick(currentFile)}
-                    primary
-                  >
-                    {`Download ${currentFileExtension}`}
-                  </Button>
-                )}
+              {currentFile && !isEmpty(currentFile.fileUrl) && (
+                <Button
+                  className="document-article-pdf-download-btn"
+                  fullWidth
+                  onClick={e => this.downloadClick(currentFile)}
+                  primary
+                >
+                  {`Download ${currentFileExtension}`}
+                </Button>
+              )}
             </div>
             <div className="column">
-              {!isEmpty(data.summary) && <h5 className={s.summary}>{data.summary}</h5>}
+              {!isEmpty(data.summary) && <h5 className={styles.summary}>{data.summary}</h5>}
             </div>
           </div>
-          <div className={s.dash}>
+          <div className={styles.dash}>
             <DecorativeDash width={4.278} />
           </div>
           {/* TODO: body style for grid media queries should be baked into text section? */}
-          <TextSection className={s.body} text={body} />
-          <div className={'document-article-related-programs-container ' + s.relatedProgramsContainer}>
+          <TextSection className={styles.body} text={body} />
+          <div className={'document-article-related-programs-container ' + styles.relatedProgramsContainer}>
             <hr />
-            <span className={s.relatedPrograms}>Related programs: </span>
-            {data.programs.map((program, index) => {
-              return (
-                <span className="document-article-related-programs-link" key={index}>
-                  <Link
-                    onClick={() => {
-                      return this.handleRelatedPrograms(program)
-                    }}
-                  >
-                    {program}
-                  </Link>
-                  {index == data.programs.length - 1 ? null : ', '}
-                </span>
-              )
-            })}
-            <hr className={s.hr} />
+            <span className={styles.relatedPrograms}>Related programs: </span>
+            {data.programs.map((program, index) => (
+              <span className="document-article-related-programs-link" key={index}>
+                <Link onClick={() => this.handleRelatedPrograms(program)}>{program}</Link>
+                {index === data.programs.length - 1 ? null : ', '}
+              </span>
+            ))}
+            <hr className={styles.hr} />
           </div>
         </div>
       )
@@ -238,8 +232,12 @@ export class DocumentArticle extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  const { contentReducer: { officesRaw: offices, persons } } = state
-  const { data: { office: officeId, mediaContact: mediaContactId } } = ownProps
+  const {
+    contentReducer: { officesRaw: offices, persons }
+  } = state
+  const {
+    data: { office: officeId, mediaContact: mediaContactId }
+  } = ownProps
 
   let office
   let mediaContact
@@ -267,4 +265,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DocumentArticle)

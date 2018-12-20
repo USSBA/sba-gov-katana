@@ -10,7 +10,9 @@ const testProps = {
   location: {
     pathname: '/'
   },
+  // eslint-disable-next-line no-empty-function
   fetchContentIfNeeded: () => {},
+  // eslint-disable-next-line no-empty-function
   removeLoader: () => {}
 }
 

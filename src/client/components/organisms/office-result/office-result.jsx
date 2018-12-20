@@ -42,7 +42,7 @@ class OfficeResult extends React.PureComponent {
     const isHovered = this.props.item.id === hoveredMarkerId
 
     const cardLayoutClassName = classNames({
-      ['card-layout']: true,
+      'card-layout': true,
       [styles.officeResultContainer]: true,
       [styles.hoveredBorder]: isHovered,
       [styles.focus]: true
@@ -146,6 +146,7 @@ class OfficeResult extends React.PureComponent {
 }
 
 const Distance = ({ distance }) => <div>{`${Number(distance).toFixed(1)} miles`}</div>
+
 const Location = ({ city, state }) => (
   <div>{`${[city, state].filter(item => item !== null).join(', ')}`}</div>
 )

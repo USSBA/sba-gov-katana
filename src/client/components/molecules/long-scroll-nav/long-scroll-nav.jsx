@@ -1,18 +1,18 @@
 import React from 'react'
-import s from './long-scroll-nav.scss'
+import styles from './long-scroll-nav.scss'
 
 class LongScrollNav extends React.Component {
   renderStep(index) {
-    if (this.props.section == index) {
+    if (this.props.section === index) {
       return (
-        <div className={s.sectionCircleContainer}>
-          <div className={s.activeCircle}>
-            <span className={s.sectionNum}>{index + 1}</span>
+        <div className={styles.sectionCircleContainer}>
+          <div className={styles.activeCircle}>
+            <span className={styles.sectionNum}>{index + 1}</span>
           </div>
         </div>
       )
     } else {
-      return <div className={this.props.navType === 'center' ? s.circleNegative : s.circle} />
+      return <div className={this.props.navType === 'center' ? styles.circleNegative : styles.circle} />
     }
   }
 
@@ -58,28 +58,26 @@ class LongScrollNav extends React.Component {
       <div
         id="ten-steps-nav"
         aria-hidden="true"
-        className={this.props.navType === 'center' ? s.containerCenter : s.containerTop}
+        className={this.props.navType === 'center' ? styles.containerCenter : styles.containerTop}
       >
-        {steps.map((step, index) => {
-          return (
-            <div className={s.section} key={index}>
-              {this.renderStep(index)}
-              <div
-                className={s.hoverBox}
-                onClick={() => {
-                  this.handleAnchorClick(index)
-                }}
-              >
-                <div className={s.title}>{step.title}</div>
-                <div className={s.activeCircleContainer}>
-                  <div className={s.activeCircle}>
-                    <span className={s.sectionNum}>{index + 1}</span>
-                  </div>
+        {steps.map((step, index) => (
+          <div className={styles.section} key={index}>
+            {this.renderStep(index)}
+            <div
+              className={styles.hoverBox}
+              onClick={() => {
+                this.handleAnchorClick(index)
+              }}
+            >
+              <div className={styles.title}>{step.title}</div>
+              <div className={styles.activeCircleContainer}>
+                <div className={styles.activeCircle}>
+                  <span className={styles.sectionNum}>{index + 1}</span>
                 </div>
               </div>
             </div>
-          )
-        })}
+          </div>
+        ))}
       </div>
     )
   }

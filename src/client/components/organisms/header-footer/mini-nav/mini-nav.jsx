@@ -16,10 +16,10 @@ import { SearchBar, GoogleTranslate } from 'molecules'
 import { runMiscAction } from '../../../../fetch-content-helper'
 
 class MiniNav extends React.Component {
-  timerId = null
-
   constructor(props) {
     super()
+
+    this.timerId = null
 
     this.state = {
       translateIsExpanded: false,
@@ -45,12 +45,17 @@ class MiniNav extends React.Component {
 
     if (userId) {
       runMiscAction(userId + '/roles').then(roles => this.setState({ roles }))
+
       if (userLoggedOn) {
         // check whether email is already provided
         runMiscAction(userId + '/email').then(userEmail =>
           this.setState({ userEmail }, () => {
             if (!this.state.userEmail && config.govdelivery) {
-              this.timerId = setTimeout(() => showSbaNewsletter(userEmail), 5000)
+              this.timerId = setTimeout(
+                () => showSbaNewsletter(userEmail),
+                // eslint-disable-next-line no-magic-numbers
+                5000
+              )
             }
           })
         )
@@ -59,8 +64,8 @@ class MiniNav extends React.Component {
   }
 
   componentWillUnmount() {
-    if (this.timerId != null) {
-      clearTimeout(timerId)
+    if (this.timerId !== null) {
+      clearTimeout(this.timerId)
     }
   }
 

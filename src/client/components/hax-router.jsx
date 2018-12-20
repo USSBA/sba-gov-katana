@@ -8,7 +8,8 @@ class HaxRouter extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.routes != this.props.routes) {
+    console.log(this.props.routes)
+    if (prevProps.routes !== this.props.routes) {
       // tear down and set up router internals again
       this.router.componentWillUnmount()
       this.router.componentWillMount()
@@ -22,7 +23,9 @@ class HaxRouter extends Component {
         onUpdate={function() {
           // Use a basic anonymous function to get access to this.state.
 
-          const { location: { hash, pathname } } = this.state
+          const {
+            location: { hash, pathname }
+          } = this.state // eslint-disable-line no-invalid-this
           const delay = 0
 
           if (hash !== '') {
@@ -33,15 +36,15 @@ class HaxRouter extends Component {
             setTimeout(() => checkForHash(hash), delay)
           }
 
-          function checkForHash(hash) {
-            const element = document.getElementById(hash.replace('#', ''))
+          function checkForHash(_hash) {
+            const element = document.getElementById(_hash.replace('#', ''))
 
             if (element) {
               element.scrollIntoView()
             } else {
               // TODO: Implement intelligent retries.
               setTimeout(() => {
-                checkForHash(hash)
+                checkForHash(_hash)
               }, delay)
             }
           }

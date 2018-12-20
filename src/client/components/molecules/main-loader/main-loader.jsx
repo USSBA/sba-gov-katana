@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { bindActionCreators } from 'redux'
 
-import s from './main-loader.scss'
+import styles from './main-loader.scss'
 import * as LoadingActions from '../../../actions/loading.js'
 import { Loader } from 'atoms'
 
@@ -29,7 +29,7 @@ class MainLoader extends React.Component {
     return (
       <div>
         {this.shouldLoaderDisplay() ? (
-          <div className={s.loaderContainer}>
+          <div className={styles.loaderContainer}>
             <Loader />
           </div>
         ) : null}
@@ -50,4 +50,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(MainLoader)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(MainLoader)

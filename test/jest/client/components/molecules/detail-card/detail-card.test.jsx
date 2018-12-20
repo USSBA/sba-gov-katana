@@ -16,7 +16,7 @@ const detailCardItem = JSON.stringify({
 
 describe('Detail card', () => {
   it('renders a download link for recent file with an extension', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files[0].fileUrl = 'file.txt'
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(
@@ -29,7 +29,7 @@ describe('Detail card', () => {
   })
 
   it('renders a download link for recent file without an extension', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files[0].fileUrl = 'file'
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(
@@ -42,7 +42,7 @@ describe('Detail card', () => {
   })
 
   it('renders a download link for recent file with multiple periods in the filename', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files[0].fileUrl = 'file.file.xls'
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(
@@ -55,7 +55,7 @@ describe('Detail card', () => {
   })
 
   it('renders a download link for recent file with a filename ending in a period', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files[0].fileUrl = 'file.'
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(
@@ -68,14 +68,14 @@ describe('Detail card', () => {
   })
 
   it('does not render download link for recent file that contains no file document', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files = []
     const detailCard = shallow(<DetailCard data={customDetailCardItem} />)
     expect(detailCard.find(Link).length).toEqual(1)
   })
 
   it('renders a download link for the most recent file when there are multiple files', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files.push({
       effectiveDate: '2018-10-16',
       fileUrl: 'file.mostrecent'
@@ -91,7 +91,7 @@ describe('Detail card', () => {
   })
 
   it('will not redirect the url when the download link is clicked', () => {
-    let customDetailCardItem = JSON.parse(detailCardItem)
+    const customDetailCardItem = JSON.parse(detailCardItem)
     customDetailCardItem.files.push({
       effectiveDate: '2018-10-16',
       fileUrl: 'filename.ext'
