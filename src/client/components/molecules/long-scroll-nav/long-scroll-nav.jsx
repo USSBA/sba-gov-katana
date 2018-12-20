@@ -44,8 +44,7 @@ class LongScrollNav extends React.Component {
     const steps = stepArray.map(step => {
       return { title: TRANSLATIONS[step][langCode].text }
     })
-    console.log('1', typeof this.props.section)
-    console.log('2', typeof this.props.navType)
+
     return (
       <div
         id="ten-steps-nav"
