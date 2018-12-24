@@ -52,17 +52,7 @@ export class DocumentArticleLookup extends React.PureComponent {
         return null
       }
 
-      multiSelectProps.options.sort((a, b) => {
-        let comparison = 0
-
-        if (a.value === 'All' || a.value < b.value) {
-          comparison = -1
-        } else if (a.value > b.value) {
-          comparison = 1
-        }
-
-        return comparison
-      })
+      this.sortList(multiSelectProps.options)
 
       return (
         <div className={styles.multiSelect} key={index}>
@@ -77,6 +67,21 @@ export class DocumentArticleLookup extends React.PureComponent {
           />
         </div>
       )
+    })
+  }
+
+  // Sorts the list by placing 'All' at the top (if applicable) with the remaining list items sorted alphabetically
+  sortList(listOptions) {
+    listOptions.sort((a, b) => {
+      let comparison = 0
+
+      if ((a.value < b.value && b.value !== 'All') || a.value === 'All') {
+        comparison = -1
+      } else if (a.value > b.value || b.value === 'All') {
+        comparison = 1
+      }
+
+      return comparison
     })
   }
 
