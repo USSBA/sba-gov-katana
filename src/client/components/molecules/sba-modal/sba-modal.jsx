@@ -23,12 +23,18 @@ class SbaModal extends React.Component {
       onClose,
       showLogo,
       text,
-      title
+      title,
+      isOpen
     } = this.props
 
     let logo = showLogo ? <img className={styles.logo} src={sbaLogo} /> : undefined
     return (
-      <Modal isOpen={true} className={styles.content} overlayClassName={styles.overlay}>
+      <Modal
+        isOpen={isOpen}
+        className={styles.content}
+        overlayClassName={styles.overlay}
+        contentLabel={title}
+      >
         <img
           tabIndex={0}
           onClick={onClose}
@@ -59,11 +65,11 @@ class SbaModal extends React.Component {
 SbaModal.propTypes = {
   cancelButtonText: PropTypes.string,
   okButtonText: PropTypes.string,
-  showCancel: PropTypes.boolean,
-  showOk: PropTypes.boolean,
+  showCancel: PropTypes.bool,
+  showOk: PropTypes.bool,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  showLogo: PropTypes.boolean,
+  showLogo: PropTypes.bool,
   onClickOk: PropTypes.func.isRequired,
   onClose: PropTypes.func
 }

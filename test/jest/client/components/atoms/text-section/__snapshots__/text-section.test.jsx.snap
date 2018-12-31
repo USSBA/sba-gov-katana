@@ -1,34 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextSection should render a simple paragraph 1`] = `
-<div
-  className="textSection"
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<p>test</p>",
+<span>
+  <div
+    className="textSection"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>test</p>",
+      }
     }
-  }
-/>
+  />
+  <noscript />
+</span>
 `;
 
 exports[`TextSection should render several paragraphs 1`] = `
-<div
-  className="textSection"
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<p>test</p><p>test</p><p>test</p>",
+<span>
+  <div
+    className="textSection"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>test</p><p>test</p><p>test</p>",
+      }
     }
-  }
-/>
+  />
+  <noscript />
+</span>
 `;
 
 exports[`TextSection should render several paragraphs with an unordered list in the middle 1`] = `
-<div
-  className="textSection"
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<p>test</p><ul><li>1</li>1<li></li></ul><p>test</p>",
+<span>
+  <div
+    className="textSection"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "<p>test</p><ul><li>1</li>1<li></li></ul><p>test</p>",
+      }
     }
-  }
-/>
+  />
+  <noscript />
+</span>
 `;
