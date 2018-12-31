@@ -1,23 +1,43 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
-import * as ModalActions from '../../../actions/show-modal.js'
 import styles from './social-media-link.scss'
 import { Link } from 'atoms'
+import { LeaveSbaModal } from 'organisms'
 
 class SocialMediaLink extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      modalIsOpen: false
+    }
+  }
+
   handleSocialMediaClick(e) {
     e.preventDefault()
-    this.props.actions.leaveSba(this.props.url)
+    this.setModelState(true)
+  }
+
+  setModelState(isOpen) {
+    this.setState({ modalIsOpen: isOpen })
+  }
+
+  handleClose() {
+    this.setModelState(false)
   }
 
   render() {
     // TODO: should this even be a Link?
     return (
-      <Link onClick={this.handleSocialMediaClick.bind(this)}>
-        <img className={styles.socialMediaIcons} src={this.props.image} alt={this.props.altText} />
-      </Link>
+      <span>
+        <Link onClick={this.handleSocialMediaClick.bind(this)}>
+          <img className={styles.socialMediaIcons} src={this.props.image} alt={this.props.altText} />
+        </Link>
+        <LeaveSbaModal
+          url={this.props.url}
+          closeLeaveSba={this.handleClose.bind(this)}
+          isOpen={this.state.modalIsOpen}
+        />
+      </span>
     )
   }
 }
@@ -28,13 +48,4 @@ SocialMediaLink.propTypes = {
   url: React.PropTypes.string.isRequired
 }
 
-function mapReduxStateToProps(reduxState) {
-  return {}
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ModalActions, dispatch)
-  }
-}
-export default connect(mapReduxStateToProps, mapDispatchToProps)(SocialMediaLink)
+export default SocialMediaLink

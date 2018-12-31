@@ -5,7 +5,6 @@ import { mount } from 'enzyme'
 
 import { ModalController } from 'organisms/modal-controller/modal-controller.jsx'
 import { MobileNav as MobileSectionNavModal } from 'organisms/modals/mobile-section-nav/mobile-section-nav.jsx'
-import LeaveSbaModal from 'organisms/modals/leave-sba-modal/leave-sba-modal.jsx'
 import SbaNewsModal from 'molecules/news-modal/news-modal.jsx'
 
 // Quiet warnings about OnTouchTap
@@ -93,13 +92,6 @@ const mobileSectionNavProps = {
   }
 }
 
-const leaveSbaModalProps = {
-  modalType: 'LEAVE_SBA',
-  modalProps: {
-    targetUrl: 'https://testing.testing'
-  }
-}
-
 const SbaNewsModalProps = {
   modalType: 'SBA_NEWSLETTER',
   modalProps: {
@@ -141,21 +133,6 @@ describe('ModalController', () => {
     const component = renderer.create(<ModalController {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
-  })
-
-  test('should invoke LeaveSbaModal and show store error', () => {
-    const expectedValue = 'Invariant Violation'
-    let returnedValue
-    try {
-      const props = _.clone(leaveSbaModalProps)
-      const component = mount(<ModalController {...props} />)
-    } catch (e) {
-      returnedValue = e.name
-    }
-    // checks to make sure an error about the store is given,
-    // which means LeaveSbaModal is executed
-    // This makes sure the component is not null
-    expect(returnedValue).toEqual(expectedValue)
   })
 
   test('should invoke SbaNewsProps and show store error', () => {
