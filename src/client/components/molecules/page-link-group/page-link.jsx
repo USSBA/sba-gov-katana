@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './page-link.scss'
 import { Link } from 'atoms'
@@ -25,13 +26,13 @@ PageLink.defaultProps = {
 
 // either url or onClick should be set
 PageLink.propTypes = {
-  text: React.PropTypes.string.isRequired,
-  id: React.PropTypes.string,
-  url: React.PropTypes.string,
-  onClick: React.PropTypes.func,
-  visible: React.PropTypes.bool,
-  onBlur: React.PropTypes.func,
-  indent: React.PropTypes.bool
+  text: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  url: PropTypes.string,
+  onClick: PropTypes.func,
+  visible: PropTypes.bool,
+  onBlur: PropTypes.func,
+  indent: PropTypes.bool
 }
 
 export default PageLink

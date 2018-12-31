@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './readmore.scss'
 
@@ -68,11 +69,11 @@ class ReadMore extends React.Component {
 }
 
 ReadMore.propTypes = {
-  readMoreSectionItem: React.PropTypes.object.isRequired,
-  expanded: React.PropTypes.bool.isRequired,
-  onToggleStatus: React.PropTypes.func.isRequired,
-  parentId: React.PropTypes.string.isRequired,
-  isHTML: React.PropTypes.bool
+  readMoreSectionItem: PropTypes.object.isRequired,
+  expanded: PropTypes.bool.isRequired,
+  onToggleStatus: PropTypes.func.isRequired,
+  parentId: PropTypes.string.isRequired,
+  isHTML: PropTypes.bool
 }
 
 export default ReadMore

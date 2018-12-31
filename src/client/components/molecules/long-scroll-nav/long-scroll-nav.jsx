@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import s from './long-scroll-nav.scss'
 import { getLanguageOverride } from '../../../services/utils'
 import { TRANSLATIONS } from '../../../translations'
@@ -73,6 +74,11 @@ class LongScrollNav extends React.Component {
       </div>
     )
   }
+}
+
+LongScrollNav.propTypes = {
+  // section varies from number, string and undefined
+  navType: PropTypes.string
 }
 
 export default LongScrollNav

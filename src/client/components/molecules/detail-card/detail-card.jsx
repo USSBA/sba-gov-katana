@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { includes, isEmpty, size } from 'lodash'
 
@@ -140,8 +141,13 @@ class DetailCard extends React.Component {
 }
 
 DetailCard.propTypes = {
-  showBorder: React.PropTypes.bool,
-  type: React.PropTypes.string.isRequired
+  data: PropTypes.shape({
+    documentIdType: PropTypes.string,
+    category: PropTypes.array,
+    type: PropTypes.oneOf(['article', 'document'])
+  }),
+  showBorder: PropTypes.bool,
+  showDetails: PropTypes.bool
 }
 
 DetailCard.defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { bindActionCreators } from 'redux'
@@ -48,6 +49,10 @@ function mapDispatchToProps(dispatch) {
   return {
     loadingActions: bindActionCreators(LoadingActions, dispatch)
   }
+}
+
+MainLoader.propTypes = {
+  displayLoader: PropTypes.bool
 }
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(MainLoader)

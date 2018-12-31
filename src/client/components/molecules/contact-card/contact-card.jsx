@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './contact-card.scss'
 import classNames from 'classnames'
@@ -10,7 +11,9 @@ const ContactCard = props => {
   const { city, email, fax, link, phoneNumber, state, streetAddress, title, zipCode, className: cn } = props
   const linkText = 'Visit website'
 
-  const address = breakOrNewLine => `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
+  const address = breakOrNewLine => {
+    return `${streetAddress}${breakOrNewLine}${city}, ${state} ${zipCode}`
+  }
 
   const fields = [
     {

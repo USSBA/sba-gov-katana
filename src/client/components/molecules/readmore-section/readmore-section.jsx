@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './readmore-section.scss'
 import { ReadMore } from 'molecules'
@@ -30,8 +31,8 @@ class ReadMoreSection extends React.Component {
 }
 
 ReadMoreSection.propTypes = {
-  readMoreSectionItem: React.PropTypes.object.isRequired,
-  parentId: React.PropTypes.string.isRequired
+  readMoreSectionItem: PropTypes.object.isRequired,
+  parentId: PropTypes.string.isRequired
 }
 
 export default ReadMoreSection
