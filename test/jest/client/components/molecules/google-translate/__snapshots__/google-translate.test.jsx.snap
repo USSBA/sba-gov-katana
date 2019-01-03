@@ -9,7 +9,7 @@ exports[`Google Translate link to render correctly 1`] = `
     id="google_translate_element"
   />
   <li
-    className="UtilityLink"
+    className="gray"
   >
     <a
       className="link "
