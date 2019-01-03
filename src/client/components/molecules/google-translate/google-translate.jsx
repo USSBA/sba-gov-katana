@@ -37,6 +37,7 @@ class GoogleTranslate extends React.Component {
         <UtilityLink
           onClick={this.handleGoogleTranslateClick.bind(this)}
           text={text}
+          gray
           visible={!isExpanded}
         />
       </div>
