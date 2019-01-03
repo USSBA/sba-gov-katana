@@ -1,5 +1,5 @@
 /*application entry point*/
-import config from 'config'
+const config = require('config')
 const app = require('./server.js')
 
 //listen to port
