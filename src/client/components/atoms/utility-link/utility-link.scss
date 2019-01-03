@@ -2,8 +2,12 @@
   display: inline;
 }
 
-.UtilityLink a {
+.white a {
   color: white;
+}
+
+.gray a {
+  color: $sba-gray-dark;
 }
 
 // @media screen and (min-width: 768px) {
