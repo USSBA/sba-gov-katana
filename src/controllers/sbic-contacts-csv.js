@@ -1,7 +1,7 @@
-import axios from 'axios'
-import HttpStatus from 'http-status-codes'
-import json2csv from 'json2csv'
-import config from 'config'
+const axios = require('axios')
+const httpStatus = require('http-status-codes')
+const jsonToCsv = require('json2csv')
+const config = require('config')
 
 // get SBIC json data return a csv file
 
@@ -16,20 +16,21 @@ function downloadCsv(req, res) {
       const csv = createCsvFromJson(result.data)
       res
         .header('Content-Type', 'text/csv')
-        .status(HttpStatus.OK)
+        .status(httpStatus.OK)
         .send(csv)
     })
     .catch(error => {
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(error)
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error)
     })
 }
 
 function createCsvFromJson(jsonData) {
   const fields = Object.keys(jsonData[0])
-  return json2csv({
+  return jsonToCsv({
     data: jsonData,
     fields
   })
 }
 
-export { downloadCsv, createCsvFromJson }
+module.exports.downloadCsv = downloadCsv
+module.exports.createCsvFromJson = createCsvFromJson

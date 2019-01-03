@@ -1,6 +1,5 @@
-import { findNodeIdByUrl, fetchNodeDataById } from '../service/url-redirect.js'
-import _ from 'lodash'
-import HttpStatus from 'http-status-codes'
+const { findNodeIdByUrl, fetchNodeDataById } = require('../service/url-redirect.js')
+const httpStatus = require('http-status-codes')
 
 function handleUrlRedirect(req, res) {
   const url = req.query.url
@@ -8,15 +7,15 @@ function handleUrlRedirect(req, res) {
   if (url) {
     const { nodeId, langCode } = findNodeIdByUrl(url)
     if (!nodeId) {
-      res.status(HttpStatus.NOT_FOUND).send('Url not found in redirect table')
+      res.status(httpStatus.NOT_FOUND).send('Url not found in redirect table')
     } else {
       fetchNodeDataById(nodeId).then(data => {
-        res.status(HttpStatus.OK).send(data)
+        res.status(httpStatus.OK).send(data)
       })
     }
   } else {
-    res.status(HttpStatus.NOT_FOUND)
+    res.status(httpStatus.NOT_FOUND)
   }
 }
 
-export { handleUrlRedirect }
+module.exports.handleUrlRedirect = handleUrlRedirect
