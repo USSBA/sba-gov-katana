@@ -139,19 +139,19 @@ app.get('/actions/misc/*', (req, res, next) => {
   fetchExternalContent(config.get('miscapi.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/api/content/*', (req, res, next) => {
-  fetchExternalContent(config.get('content.endpoint'), 'Prod', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('content.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/naics', (req, res, next) => {
-  fetchExternalContent(config.get('sizestandards.endpoint'), 'Prod', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/naics/:id', (req, res, next) => {
-  fetchExternalContent(config.get('sizestandards.endpoint'), 'Prod', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/naics/:id/:property', (req, res, next) => {
-  fetchExternalContent(config.get('sizestandards.endpoint'), 'Prod', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/isSmallBusiness', (req, res, next) => {
-  fetchExternalContent(config.get('sizestandards.endpoint'), 'Prod', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 
 if (config.get('developmentOptions.webpack.enabled')) {
