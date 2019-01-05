@@ -52,14 +52,28 @@ const ContactCard = props => {
     )
   )
 
+  // This will filter out empty fields for contact cards.
+  // Since website text is assigned "Visit Website" in the above code, we check for an empty href instead for filtering.
+  // Discovered strange behavior where the href sometimes comes back as an empty object, so this is also filtering that out.
+  function emptyFieldFilter(field) {
+    const { href, text } = field
+
+    // Checks if this field is a website field.
+    const isFieldNotAWebsite = text !== linkText
+
+    // If it is a website field, it better have an href.
+    const isNotAnEmptyWebsiteLink = isFieldNotAWebsite || href
+
+    // Only keeps hrefs that are empty or is a string. Hrefs are sometimes coming back as empty objects.
+    const isValidHref = !href || typeof href === 'string'
+
+    return text && isNotAnEmptyWebsiteLink && isValidHref
+  }
+
   return (
     <div className={contactCardClassName}>
       <h6>{title}</h6>
-      {fields.map(({ href, icon, text }, index) => {
-        if (!text || (text === linkText && !href)) {
-          return null
-        }
-
+      {fields.filter(emptyFieldFilter).map(({ href, icon, text }, index) => {
         return (
           <div className={styles.row} key={index}>
             <div className={styles.firstColumn}>
