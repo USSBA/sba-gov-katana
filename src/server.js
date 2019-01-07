@@ -172,9 +172,8 @@ const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
 const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
 
 async function getMetaVariables(nodeId) {
-  let description =
-    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business."
-  let title = 'Small Business Administration'
+  let description = config.get('meta.description')
+  let title = config.get('meta.title')
 
   const jsonContent = await axios.get(
     `https://${config.get('content.endpoint')}/latest/api/content/node/${nodeId}.json`
@@ -186,8 +185,8 @@ async function getMetaVariables(nodeId) {
   }
 
   return {
-    description: description,
-    title: title
+    description,
+    title
   }
 }
 
