@@ -14,7 +14,6 @@ import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
 import ImageSection from './image-section/image-section'
 import Link from './link/link'
-import LinkCard from './link-card/link-card'
 import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
 import MultiSelect from './multiselect/multiselect'
@@ -55,7 +54,6 @@ export {
   HomeIcon,
   ImageSection,
   Link,
-  LinkCard,
   Loader,
   MainLogo,
   MultiSelect,
