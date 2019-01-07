@@ -32,12 +32,6 @@ if (config.get('developmentOptions.webpack.enabled')) {
   mainBundleFile = fs.readFileSync(path.join(__dirname, './public/build/main.txt'), 'utf-8') //eslint-disable-line no-sync
 }
 
-const metaVariables = {
-  description:
-    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
-  title: 'Small Business Administration'
-}
-
 const { findNodeIdByUrl } = require('./service/url-redirect.js')
 app.use(function(req, res, next) {
   // handle Accept-Language header
@@ -176,7 +170,29 @@ if (config.get('developmentOptions.webpack.enabled')) {
 
 const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
 const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
-app.get(['/', '/*'], function(req, res, next) {
+
+async function getMetaVariables(nodeId) {
+  let description = config.get('meta.description')
+  let title = config.get('meta.title')
+
+  const jsonContent = await axios.get(
+    `https://${config.get('content.endpoint')}/latest/api/content/node/${nodeId}.json`
+  )
+
+  if (jsonContent.data) {
+    description = jsonContent.data.summary
+    title = jsonContent.data.title
+  }
+
+  return {
+    description,
+    title
+  }
+}
+
+app.get(['/', '/*'], async function(req, res, next) {
+  const metaVariables = await getMetaVariables(req.nodeId)
+
   const pugVariables = _.merge({}, metaVariables, {
     langOverride: req.preferredLanguage,
     nodeId: req.nodeId,
@@ -187,6 +203,7 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnvironment: config.get('foresee.environment'),
     mainBundleFile: mainBundleFile
   })
+
   const handleRedirects = async function() {
     const url = req.url
     let redirectUrl
