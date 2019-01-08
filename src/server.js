@@ -175,7 +175,7 @@ async function getMetaVariables(nodeId) {
   let description = config.get('meta.description')
   let title = config.get('meta.title')
 
-  // This will only allow vaild nodeId's to make an axios call.
+  // This will only allow valid nodeId's to make an axios call.
   // Currently negative nodeId numbers are associated to pages without a nodeId,
   // so we can regard negative nodeId's as invalid.
   if (nodeId > 0) {
