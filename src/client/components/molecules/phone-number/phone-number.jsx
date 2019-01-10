@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 //todo: use own style sheet
 import styles from '../contact-card/contact-card.scss'
 import addressStyles from '../address/address.scss'
@@ -40,9 +41,9 @@ class PhoneNumber extends React.Component {
 }
 
 PhoneNumber.propTypes = {
-  iconName: React.PropTypes.string,
-  phoneNumber: React.PropTypes.string,
-  link: React.PropTypes.string
+  iconName: PropTypes.string,
+  phoneNumber: PropTypes.string,
+  link: PropTypes.string
 }
 PhoneNumber.defaultProps = {
   iconName: 'phone',

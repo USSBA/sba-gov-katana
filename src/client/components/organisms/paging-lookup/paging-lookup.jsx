@@ -1,14 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
-import { bindActionCreators } from 'redux'
-import { assign, chain, find, includes, map, mapValues, pickBy, size } from 'lodash'
-
-import styles from './paging-lookup.scss'
-import * as ContentActions from '../../../actions/content.js'
+import { assign, chain, find, includes, map, mapValues, pickBy } from 'lodash'
 import { DocumentArticleLookup } from 'organisms'
-import { logEvent } from '../../../services/analytics.js'
+import styles from './paging-lookup.scss'
 import { getQueryParams } from '../../../services/utils.js'
+import { fetchSiteContent } from '../../../fetch-content-helper'
+import { logEvent } from '../../../services/analytics.js'
 
 const config = {
   pageSize: 30
@@ -33,7 +30,11 @@ class PagingLookup extends React.Component {
       query: this.createQueryFromProps(ownProps),
       taxonomies: [],
       pageNumber: 1,
-      isFetching: false
+      isFetching: false,
+      itemResponse: {
+        items: undefined,
+        count: 0
+      }
     }
   }
 
@@ -71,46 +72,6 @@ class PagingLookup extends React.Component {
     return finalQuery
   }
 
-  componentWillMount() {
-    this.props.actions.fetchContentIfNeeded('taxonomies', 'taxonomys', {
-      names: this.props.taxonomyFilters.join(',')
-    })
-  }
-
-  componentWillReceiveProps(nextProps, ownProps) {
-    const updatedProps = {}
-
-    // set the taxomonies object when
-    // nextProps.items array is populated, AND state.taxonomies array is NOT populated
-
-    if (nextProps.taxonomies && nextProps.taxonomies.length > 0 && this.state.taxonomies.length === 0) {
-      const taxonomies = nextProps.taxonomies.slice()
-
-      // add an "All" filter option to dynamic taxonomies
-      for (let index = 0; index < taxonomies.length; index++) {
-        taxonomies[index].terms.unshift('All')
-      }
-
-      const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName => {
-        return find(taxonomies, { name: taxonomyVocabularyName })
-      })
-
-      // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
-      rearrangedTaxonomyOrder.push({
-        name: 'Sort By',
-        terms: this.props.sortByOptions
-      })
-
-      updatedProps.taxonomies = rearrangedTaxonomyOrder
-    }
-
-    if (nextProps.itemResponse) {
-      updatedProps.isFetching = false
-    }
-
-    this.setState(updatedProps)
-  }
-
   handleReset(ownProps) {
     this.fireDocumentationLookupEvent('clearFilters')
     this.setState(
@@ -132,8 +93,37 @@ class PagingLookup extends React.Component {
     )
   }
 
-  componentDidMount() {
-    this.submit()
+  async componentDidMount() {
+
+    const queryArgs = {
+      names: this.props.taxonomyFilters.join(',')
+    }
+
+    const taxonomies = await fetchSiteContent('taxonomys', queryArgs)
+
+    this.setState({
+      taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+    }, () => this.submit())
+  }
+
+  reArrangeTaxonomyOrder(data) {
+    const taxonomies = data.slice()
+
+    // add an "All" filter option to dynamic taxonomies
+    for (let index = 0; index < taxonomies.length; index++) {
+      taxonomies[index].terms.unshift('All')
+    }
+
+    const rearrangedTaxonomyOrder = map(this.props.taxonomyFilters, taxonomyVocabularyName => {
+      return find(taxonomies, { name: taxonomyVocabularyName })
+    })
+
+    // add a "Sort By" taxonomy object to append a "Sort By" multiselect component
+    rearrangedTaxonomyOrder.push({
+      name: 'Sort By',
+      terms: this.props.sortByOptions
+    })
+    return rearrangedTaxonomyOrder
   }
 
   handleSubmit() {
@@ -180,22 +170,23 @@ class PagingLookup extends React.Component {
   }
 
   submit() {
-    this.setState(
-      {
-        isFetching: true
-      },
-      () => {
-        const start = (this.state.query.page - 1) * config.pageSize
-        const end = start + config.pageSize
 
-        const remappedState = mapValues(this.state.query, value => {
-          return value === 'All' ? 'all' : value
-        })
-        const queryTerms = assign({}, remappedState, { start, end })
+    const start = (this.state.query.page - 1) * config.pageSize
+    const end = start + config.pageSize
 
-        this.props.actions.fetchContentIfNeeded(this.props.type, this.props.type, queryTerms)
-      }
-    )
+    const remappedState = mapValues(this.state.query, value => {
+      return value === 'All' ? 'all' : value
+    })
+    const queryTerms = assign({}, remappedState, { start, end })
+
+    this.setState({
+      isFetching: true
+    }, async () => {
+      this.setState({
+        itemResponse: await fetchSiteContent(this.props.type, queryTerms),
+        isFetching: false
+      })
+    })
   }
 
   fireEvent(category, action, value) {
@@ -240,8 +231,8 @@ class PagingLookup extends React.Component {
     const lookupProps = {
       title: this.props.title,
       queryState: this.state.query,
-      items: this.props.itemResponse.items,
-      itemCount: this.props.itemResponse.count,
+      items: this.state.itemResponse.items,
+      itemCount: this.state.itemResponse.count,
       pageNumber: this.state.query.page,
       pageSize: config.pageSize,
       taxonomies: this.state.taxonomies,
@@ -270,27 +261,7 @@ PagingLookup.defaultProps = {
   type: '',
   taxonomyFilters: [],
   fieldsToShowInDetails: [],
-  sortByOptions: [],
-  itemResponse: {
-    items: undefined,
-    count: 0
-  }
+  sortByOptions: []
 }
 
-function mapReduxStateToProps(reduxState, ownProps) {
-  const { taxonomies } = reduxState.contentReducer
-
-  return {
-    itemResponse: reduxState.contentReducer[ownProps.type],
-    taxonomies: taxonomies
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(ContentActions, dispatch)
-  }
-}
-export default connect(mapReduxStateToProps, mapDispatchToProps)(PagingLookup)
-
-export { PagingLookup }
+export default PagingLookup

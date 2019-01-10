@@ -1,5 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import s from './long-scroll-nav.scss'
+import { getLanguageOverride } from '../../../services/utils'
+import { TRANSLATIONS } from '../../../translations'
 
 class LongScrollNav extends React.Component {
   renderStep(index) {
@@ -21,38 +24,26 @@ class LongScrollNav extends React.Component {
   }
 
   render() {
-    const steps = [
-      {
-        title: 'Research'
-      },
-      {
-        title: 'Plan'
-      },
-      {
-        title: 'Fund'
-      },
-      {
-        title: 'Location'
-      },
-      {
-        title: 'Structure'
-      },
-      {
-        title: 'Name'
-      },
-      {
-        title: 'Register'
-      },
-      {
-        title: 'Tax IDs'
-      },
-      {
-        title: 'License'
-      },
-      {
-        title: 'Banking'
-      }
+    // This section handles Spanish translation
+    // Storing order of 10 steps as an array (order matters here)
+    const stepArray = [
+      'research',
+      'plan',
+      'fund',
+      'location',
+      'structure',
+      'name',
+      'register',
+      'taxIDs',
+      'license',
+      'banking'
     ]
+    // Store either 'en' or 'es' as langCode
+    const langCode = getLanguageOverride()
+    // Replace stepArray values with appropriate translations
+    const steps = stepArray.map(step => {
+      return { title: TRANSLATIONS[step][langCode].text }
+    })
 
     return (
       <div
@@ -83,6 +74,11 @@ class LongScrollNav extends React.Component {
       </div>
     )
   }
+}
+
+LongScrollNav.propTypes = {
+  // section varies from number, string and undefined
+  navType: PropTypes.string
 }
 
 export default LongScrollNav

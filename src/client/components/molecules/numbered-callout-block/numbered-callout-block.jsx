@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import diagonalLines from 'assets/images/homepage/diagonal-lines.png'
 import diagonalLinesMobile from 'assets/images/homepage/diagonal-lines-mobile.png'
@@ -40,12 +41,12 @@ class NumberedCalloutBlock extends React.Component {
 }
 
 NumberedCalloutBlock.propTypes = {
-  solidBox: React.PropTypes.bool,
-  sectionNum: React.PropTypes.number,
-  title: React.PropTypes.string,
-  text: React.PropTypes.string,
-  link: React.PropTypes.string,
-  index: React.PropTypes.number
+  solidBox: PropTypes.bool,
+  sectionNum: PropTypes.number,
+  title: PropTypes.string,
+  text: PropTypes.string,
+  link: PropTypes.string,
+  index: PropTypes.number
 }
 
 NumberedCalloutBlock.defaultProps = {

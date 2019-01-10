@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import s from './menu-tile-with-links.scss'
 import { Link } from 'atoms'
@@ -49,12 +50,12 @@ class HoverLink extends React.Component {
 }
 
 MenuTileWithLinks.propTypes = {
-  id: React.PropTypes.string,
-  smallTitle: React.PropTypes.string,
-  largeTitle: React.PropTypes.string,
-  children: React.PropTypes.array,
-  autoFocusOnLast: React.PropTypes.bool,
-  description: React.PropTypes.string
+  id: PropTypes.string,
+  smallTitle: PropTypes.string,
+  largeTitle: PropTypes.string,
+  children: PropTypes.array,
+  autoFocusOnLast: PropTypes.bool,
+  description: PropTypes.string
 }
 
 MenuTileWithLinks.defaultProps = {}

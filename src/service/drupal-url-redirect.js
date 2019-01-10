@@ -1,4 +1,4 @@
-import config from 'config'
+const config = require('config')
 const aws = require('aws-sdk')
 
 const dynamodb = new aws.DynamoDB({
@@ -33,11 +33,6 @@ function mapUrlRedirectQueryParameters(oldUrl) {
 }
 /*eslint-enable id-length */
 
-function addUrlRedirectMapping(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy) {
-  var params = mapUrlRedirectPutParameters(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy)
-  return dynamodb.putItem(params).promise()
-}
-
 function mapUrlRedirectPutParameters(oldUrl, newUrl, lastModifiedInEpochMiliseconds, lastModifiedBy) {
   const tableName = config.get('features.drupalRedirect.tableName')
   /* eslint-disable id-length */
@@ -63,9 +58,6 @@ function mapUrlRedirectPutParameters(oldUrl, newUrl, lastModifiedInEpochMiliseco
   return params
 }
 
-export {
-  fetchNewUrlByOldUrl,
-  mapUrlRedirectQueryParameters,
-  addUrlRedirectMapping,
-  mapUrlRedirectPutParameters
-}
+module.exports.fetchNewUrlByOldUrl = fetchNewUrlByOldUrl
+module.exports.mapUrlRedirectQueryParameters = mapUrlRedirectQueryParameters
+module.exports.mapUrlRedirectPutParameters = mapUrlRedirectPutParameters

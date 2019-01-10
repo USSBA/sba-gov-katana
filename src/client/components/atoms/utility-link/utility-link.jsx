@@ -5,11 +5,11 @@ import { Link } from 'atoms'
 
 class UtilityLink extends React.Component {
   render() {
-    const { text, url, visible, ...linkProps } = this.props
+    const { text, url, visible, gray, ...linkProps } = this.props
     let anchorClass = styles.link + ' ' + (visible ? '' : styles.hidden)
 
     return (
-      <li className={styles.UtilityLink}>
+      <li className={gray ? styles.gray : styles.white}>
         <Link {...linkProps} className={anchorClass} to={url}>
           {text}
         </Link>

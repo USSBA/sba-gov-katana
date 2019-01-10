@@ -1,9 +1,19 @@
 import React from 'react'
+// consider someday refactoring cheerio out and only use jquery (cheerio is a subset of jquery and we need jquery for the cross-cutting click handler)
 import cheerio from 'cheerio'
-
+import jquery from 'jquery'
 import styles from './text-section.scss'
+import { LeaveSbaModal } from 'organisms'
 
 class TextSection extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      modalIsOpen: false,
+      targetUrl: ''
+    }
+  }
+
   parseTables() {
     const $ = cheerio.load(this.props.text)
     $('table').each((i, table) => {
@@ -55,15 +65,49 @@ class TextSection extends React.Component {
         }
       })
     })
+    $('a').each((i, anchor) => {
+      if (anchor.attribs.href && !/https?:\/\/[a-zA-Z.0-9]+?\.gov\/.*/.test(anchor.attribs.href)) {
+        $(anchor).addClass('external-link-marker')
+      }
+    })
     return $.html()
+  }
+
+  showModal(targetUrl) {
+    this.setState({
+      modalIsOpen: true,
+      targetUrl
+    })
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false })
+  }
+
+  componentDidMount() {
+    let _this = this
+    jquery('.external-link-marker')
+      .off('click')
+      .on('click', e => {
+        console.log('Click!', e.target.href)
+        _this.showModal(e.target.href)
+        e.preventDefault()
+      })
   }
 
   render() {
     return (
-      <div
-        className={styles.textSection + (this.props.className ? ' ' + this.props.className : '')}
-        dangerouslySetInnerHTML={{ __html: this.parseTables() }}
-      />
+      <span>
+        <div
+          className={styles.textSection + (this.props.className ? ' ' + this.props.className : '')}
+          dangerouslySetInnerHTML={{ __html: this.parseTables() }}
+        />
+        <LeaveSbaModal
+          url={this.state.targetUrl}
+          isOpen={this.state.modalIsOpen}
+          closeLeaveSba={this.closeModal.bind(this)}
+        />
+      </span>
     )
   }
 }

@@ -1,6 +1,6 @@
-import HttpStatus from 'http-status-codes'
+const httpStatus = require('http-status-codes')
 
-export function enableWebpackHotModuleReplacement(app, silent) {
+module.exports.enableWebpackHotModuleReplacement = function(app, silent) {
   console.log('Enabling Webpack')
   // eslint-disable-next-line global-require
   const webpack = require('webpack')
@@ -19,17 +19,17 @@ export function enableWebpackHotModuleReplacement(app, silent) {
   app.use(require('webpack-hot-middleware')(compiler))
 }
 
-export function addDevelopmentErrorHandler(app) {
+module.exports.addDevelopmentErrorHandler = function(app) {
   app.use(function(err, req, res, next) {
     // eslint-disable-line no-unused-vars
     if (err) {
       console.error(err)
       if (req.xhr) {
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
           error: 'Something went wrong! Oh no!'
         })
       } else {
-        res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR)
+        res.status(err.status || httpStatus.INTERNAL_SERVER_ERROR)
         res.render('error', {
           message: err.message,
           error: err

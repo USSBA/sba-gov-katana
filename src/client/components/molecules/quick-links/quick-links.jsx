@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import queryString from 'querystring'
 import { chain, isEmpty } from 'lodash'
@@ -11,7 +12,9 @@ function getCurrentFile(files) {
 
   if (files) {
     found = chain(files)
-      .filter(item => moment(item.effectiveDate).isSameOrBefore(moment()))
+      .filter(item => {
+        return moment(item.effectiveDate).isSameOrBefore(moment())
+      })
       .sortBy('effectiveDate')
       .last()
       .value()
@@ -24,7 +27,9 @@ function formatDate(date) {
   return moment(date).format('MMM D, YYYY')
 }
 
-const valueOrAll = value => (isEmpty(value[0]) ? 'all' : value[0])
+const valueOrAll = value => {
+  return isEmpty(value[0]) ? 'all' : value[0]
+}
 
 class QuickLinks extends PureComponent {
   constructor(props) {
@@ -83,7 +88,7 @@ class QuickLinks extends PureComponent {
   }
 
   generateGrid(length) {
-    let gridClass = { 1: s.oneCard, 2: s.twoCards }
+    const gridClass = { 1: s.oneCard, 2: s.twoCards }
     return length > 2 ? s.manyCards : gridClass[length]
   }
 
@@ -280,6 +285,22 @@ QuickLinks.defaultProps = {
       }
     ]
   }
+}
+
+QuickLinks.propTypes = {
+  data: PropTypes.shape({
+    typeOfLinks: PropTypes.arrayOf(
+      PropTypes.shape({
+        articleCategory: PropTypes.arrayOf(PropTypes.string),
+        articleProgram: PropTypes.arrayOf(PropTypes.string),
+        documentActivity: PropTypes.arrayOf(PropTypes.string),
+        documentProgram: PropTypes.arrayOf(PropTypes.string),
+        documentType: PropTypes.arrayOf(PropTypes.string),
+        sectionHeaderText: PropTypes.string,
+        type: PropTypes.oneOf(['articleLookup', 'documentLookup', 'ratesList'])
+      })
+    )
+  })
 }
 
 export { QuickLinks }

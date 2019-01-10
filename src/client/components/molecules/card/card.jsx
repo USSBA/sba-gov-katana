@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { isEmpty, snakeCase } from 'lodash'
 
@@ -10,7 +11,7 @@ import { getLanguageOverride } from '../../../services/utils'
 const Card = props => {
   const {
     index,
-    item: { eventConfig, image, link, subtitleText, titleText },
+    item: { image, link, subtitleText, titleText },
     numCards,
     parentIndex
   } = props
@@ -26,11 +27,11 @@ const Card = props => {
   })
 
   // TODO: use lede text instead of subtitle text
-  let languageOverride = getLanguageOverride()
+  const languageOverride = getLanguageOverride()
   let title =
     languageOverride && languageOverride.startsWith('es')
-      ? TRANSLATIONS['learnMore']['es'].text
-      : TRANSLATIONS['learnMore']['en'].text
+      ? TRANSLATIONS.learnMore.es.text
+      : TRANSLATIONS.learnMore.en.text
   let uri = ''
   if (typeof link === 'string') {
     uri = link
@@ -91,8 +92,16 @@ Card.defaultProps = {
 }
 
 Card.propTypes = {
-  item: PropTypes.object,
   index: PropTypes.number,
+  item: PropTypes.shape({
+    image: PropTypes.shape({
+      alt: PropTypes.string,
+      url: PropTypes.url
+    }),
+    link: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    subtitleText: PropTypes.string,
+    titleText: PropTypes.string
+  }),
   numCards: PropTypes.number,
   parentIndex: PropTypes.number
 }

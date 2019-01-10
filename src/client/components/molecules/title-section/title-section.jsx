@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import styles from './title-section.scss'
@@ -47,8 +48,10 @@ class TitleSection extends React.Component {
 }
 
 TitleSection.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  summary: React.PropTypes.string.isRequired
+  gridClass: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  sectionHeaders: PropTypes.array,
+  summary: PropTypes.string.isRequired
 }
 
 export { TitleSection }

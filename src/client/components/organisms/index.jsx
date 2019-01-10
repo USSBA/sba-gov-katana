@@ -1,5 +1,4 @@
 // miscellaenous organisms
-import BusinessGuideTileCollection from './business-guide-tile-collection/business-guide-tile-collection.jsx'
 import CardCollection from './card-collection/card-collection.jsx'
 import ClientPagingMultiviewLayout from './client-paging-multiview-layout/client-paging-multiview-layout.jsx'
 import CoursesLayout from './courses-layout/courses-layout.jsx'
@@ -10,9 +9,6 @@ import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
 import DetailCardCollection from './detail-card-collection/detail-card-collection.jsx'
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
-import ForPartnersTileCollection from './for-partners-tile-collection/for-partners-tile-collection.jsx'
-import FederalContractingTileCollection from './federal-contracting-tile-collection/federal-contracting-tile-collection.jsx'
-import FundingProgramsTileCollection from './funding-programs-tile-collection/funding-programs-tile-collection.jsx'
 import GlobalSearch from './global-search/global-search.jsx'
 import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
@@ -58,7 +54,6 @@ import MobileSectionNavModal from './modals/mobile-section-nav/mobile-section-na
 
 // miscellaneous organisms
 export {
-  BusinessGuideTileCollection,
   CardCollection,
   ClientPagingMultiviewLayout,
   CoursesLayout,
@@ -69,9 +64,6 @@ export {
   DocumentArticleLookup,
   DetailCardCollection,
   DropdownMenu,
-  ForPartnersTileCollection,
-  FederalContractingTileCollection,
-  FundingProgramsTileCollection,
   GlobalSearch,
   Hero,
   Lookup,

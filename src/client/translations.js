@@ -58,6 +58,14 @@ const TRANSLATIONS = {
       text: 'todos los temas'
     }
   },
+  banking: {
+    en: {
+      text: 'Banking'
+    },
+    es: {
+      text: 'Cuenta bancaria'
+    }
+  },
   backTo: {
     en: {
       text: 'Back to'
@@ -222,6 +230,14 @@ const TRANSLATIONS = {
       url: '/para-los-socios'
     }
   },
+  fund: {
+    en: {
+      text: 'Fund'
+    },
+    es: {
+      text: 'Financie'
+    }
+  },
   fundingPrograms: {
     en: {
       text: 'Funding Programs'
@@ -288,6 +304,14 @@ const TRANSLATIONS = {
       text: 'Más información'
     }
   },
+  license: {
+    en: {
+      text: 'License'
+    },
+    es: {
+      text: 'Licencias'
+    }
+  },
   linkingPolicy: {
     en: {
       text: 'Linking Policy',
@@ -306,6 +330,14 @@ const TRANSLATIONS = {
     es: {
       text: 'Asistencia local',
       url: '/tools/local-assistance'
+    }
+  },
+  location: {
+    en: {
+      text: 'Location'
+    },
+    es: {
+      text: 'Ubicación'
     }
   },
   login: {
@@ -358,6 +390,14 @@ const TRANSLATIONS = {
       url(id) {
         return `/user/${id}/edit`
       }
+    }
+  },
+  name: {
+    en: {
+      text: 'Name'
+    },
+    es: {
+      text: 'Nombre'
     }
   },
   newsroom: {
@@ -456,6 +496,14 @@ const TRANSLATIONS = {
       url: '/about-sba/sba-performance/open-government/other-plans-reports/plain-language-page'
     }
   },
+  plan: {
+    en: {
+      text: 'Plan'
+    },
+    es: {
+      text: 'Planifique'
+    }
+  },
   policyAndRegulations: {
     en: {
       text: 'Policy and Regulations',
@@ -528,6 +576,14 @@ const TRANSLATIONS = {
       url: '/category/navigation-structure/contracting/contracting-officials/report-fraud-waste-abuse'
     }
   },
+  research: {
+    en: {
+      text: 'Research'
+    },
+    es: {
+      text: 'Investigue'
+    }
+  },
   sbaEnEspanol: {
     en: {
       text: 'SBA en Español',
@@ -596,6 +652,14 @@ const TRANSLATIONS = {
       url: '/videos'
     }
   },
+  select: {
+    en: {
+      text: 'Select...'
+    },
+    es: {
+      text: 'Selecciona...'
+    }
+  },
   siteMap: {
     en: {
       text: 'Site Map',
@@ -634,6 +698,22 @@ const TRANSLATIONS = {
     es: {
       text: 'Planificación estratégica',
       url: '/about-sba/sba-performance/strategic-planning'
+    }
+  },
+  structure: {
+    en: {
+      text: 'Structure'
+    },
+    es: {
+      text: 'Estructura'
+    }
+  },
+  taxIDs: {
+    en: {
+      text: 'Tax IDs'
+    },
+    es: {
+      text: 'Identificaciones fiscales'
     }
   },
   toolsAndFeatures: {

@@ -90,6 +90,7 @@ class MiniNav extends React.Component {
           id={kebabCase(`desktop-mini-nav ${text}`)}
           key={text}
           text={text}
+          gray
           url={isFunction(url) ? url(userId) : url}
         />
       )
@@ -125,9 +126,6 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  mapReduxStateToProps,
-  mapDispatchToProps
-)(MiniNav)
+export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav)
 
 export { MiniNav }

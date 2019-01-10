@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import styles from './paginator.scss'
@@ -19,6 +20,7 @@ const Paginator = props => {
       secondary
       spacing={false}
       responsive={false}
+      aria-label={direction === 'left' ? 'Go to previous results' : 'Go to next results'}
     >
       <i
         alt={`${direction === 'left' ? 'previous' : 'next'} page`}
@@ -34,7 +36,12 @@ const Paginator = props => {
   })
 
   return (
-    <div className={className} id={id}>
+    <div
+      className={className}
+      id={id}
+      role="group"
+      aria-label={`Showing results ${start} to ${end} out of ${total}`}
+    >
       <span>
         Showing <strong className="text-primary">{start}</strong> <span className={styles.spacing}>-</span>{' '}
         <strong className="text-primary">{end}</strong> <span className={styles.spacing}>of</span>{' '}

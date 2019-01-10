@@ -27,11 +27,14 @@ class SearchTemplate extends React.PureComponent {
       },
       submittedSearchParams: {},
       results: [],
-      hasNoResults: false
+      hasNoResults: false,
+      isLoading: false,
+      isZeroState: true,
+      defaultResults: []
     }
   }
 
-  calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.props.count) {
+  calculateMaxPageNumber(pageSize = this.state.searchParams.pageSize, count = this.state.count) {
     const maxPageNumber = Math.max(1, Math.ceil(count / pageSize))
     return maxPageNumber
   }
@@ -46,7 +49,7 @@ class SearchTemplate extends React.PureComponent {
     return pageNumber
   }
 
-  calculateStartIndex(pageNumber, pageSize = this.state.searchParams.pageSize, count = this.props.count) {
+  calculateStartIndex(pageNumber, pageSize = this.state.searchParams.pageSize, count = this.state.count) {
     const calculatedPageNumber = Math.min(this.calculateMaxPageNumber(pageSize, count), pageNumber)
     let startIndex = (calculatedPageNumber - 1) * pageSize
     //make sure start is not less than 0 or greater than the total number of results
@@ -80,17 +83,17 @@ class SearchTemplate extends React.PureComponent {
       this.doSearch(this.props.searchType, newSearchParams)
     }
   }
-  componentWillReceiveProps(nextProps) {
-    const { items: results, isLoading, defaultResults } = nextProps
+  // componentWillReceiveProps(nextProps) {
+  //   const { items: results, isLoading, defaultResults } = nextProps
 
-    const newState = {
-      defaultResults,
-      results,
-      isLoading
-    }
+  //   const newState = {
+  //     defaultResults,
+  //     results,
+  //     isLoading
+  //   }
 
-    this.setState(newState)
-  }
+  //   this.setState(newState)
+  // }
 
   onChange(propName, value, options = {}, callback) {
     const { scrollToTopAfterSearch } = this.props
@@ -184,39 +187,41 @@ class SearchTemplate extends React.PureComponent {
         submittedSearchParams: filteredSearchParams
       },
       () =>
-        fetchSiteContent(searchType, filteredSearchParams).then(searchResults => {
-          let items = []
-          let count = 0
-          let hasNoResults
-          let isLoading = _this.props.isLoading
-          let isZeroState = _this.props.isZeroState
-          let defaultResults = []
-          if (searchResults) {
-            items = searchResults.hit
-            count = searchResults.found
-            defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
-            hasNoResults = count === 0
-            isLoading = false
-            isZeroState = false
-          }
-
-          return {
-            items,
-            location: _this.props.location,
-            count,
-            hasNoResults,
-            isLoading,
-            isZeroState,
-            defaultResults
-          }
-        })
+        fetchSiteContent(searchType, filteredSearchParams)
+          .then(searchResults => {
+            let results = []
+            let count = 0
+            let hasNoResults
+            let isLoading = _this.state.isLoading
+            let isZeroState = _this.state.isZeroState
+            let defaultResults = []
+            if (searchResults) {
+              results = searchResults.hit
+              count = searchResults.found
+              defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
+              hasNoResults = count === 0
+              isLoading = false
+              isZeroState = false
+            }
+            return {
+              results,
+              count,
+              hasNoResults,
+              isLoading,
+              isZeroState,
+              defaultResults
+            }
+          })
+          .then(output => {
+            _this.setState(output)
+          })
     )
   }
 
   renderPaginator() {
-    const { count } = this.props
     const {
       results,
+      count,
       searchParams: { pageSize }
     } = this.state
     const pageNumber = this.calculatePageNumber()
@@ -294,9 +299,11 @@ class SearchTemplate extends React.PureComponent {
     const {
       results,
       searchParams: { pageSize },
+      isZeroState,
+      count,
       defaultResults
     } = this.state
-    const { children, count, extraClassName, paginate, isZeroState } = this.props
+    const { children, extraClassName, paginate } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
       if (child.props.hideOnZeroState && isZeroState) {
@@ -337,22 +344,16 @@ SearchTemplate.propTypes = {
   paginate: PropTypes.bool,
   searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
-  items: PropTypes.array,
-  location: PropTypes.string,
-  isLoading: PropTypes.bool,
-  scrollToTopAfterSearch: PropTypes.bool,
-  onPaginate: PropTypes.func,
-  isZeroState: PropTypes.bool
+  scrollToTopAfterSearch: PropTypes.bool
 }
 
 SearchTemplate.defaultProps = {
   defaultSearchParams: {},
-  items: [],
-  paginate: true,
-  isLoading: false,
+  loadDefaultResults: false,
   scrollToTopAfterSearch: true,
-  isZeroState: true,
-  onPaginate: () => {}
+  extraClassName: null,
+  paginate: true,
+  onHandleEvent: () => {}
 }
 
 export default SearchTemplate

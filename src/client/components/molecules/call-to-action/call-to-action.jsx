@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { camelCase, isEmpty, startsWith } from 'lodash'
 
@@ -30,7 +31,7 @@ const CallToAction = props => {
 
   const className = classNames({
     [styles.callToAction]: true,
-    [styles[variation]]: !!variation
+    [styles[variation]]: Boolean(variation)
   })
 
   const backgroundImageStyle = {
@@ -62,6 +63,25 @@ const CallToAction = props => {
       </div>
     </div>
   )
+}
+
+CallToAction.propTypes = {
+  blurb: PropTypes.string,
+  buttonAction: PropTypes.shape({
+    buttonText: PropTypes.string,
+    file: PropTypes.string,
+    link: PropTypes.shape({
+      title: PropTypes.string,
+      url: PropTypes.string
+    }),
+    type: PropTypes.oneOf(['file', 'link']).isRequired
+  }),
+  headline: PropTypes.string,
+  image: PropTypes.shape({
+    alt: PropTypes.string,
+    url: PropTypes.string
+  }),
+  size: PropTypes.oneOf(['Button only', 'Large', 'Medium', 'Small']).isRequired
 }
 
 export default CallToAction

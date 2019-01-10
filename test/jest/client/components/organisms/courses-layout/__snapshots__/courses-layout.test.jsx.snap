@@ -13,8 +13,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
+          aria-label="Showing results 1 to 12 out of 25"
           className="paginator"
           id={undefined}
+          role="group"
         >
           <span>
             Showing 
@@ -49,6 +51,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             </strong>
           </span>
           <button
+            aria-label="Go to previous results"
             className="button large secondary"
             id={undefined}
             onClick={[Function]}
@@ -60,6 +63,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             />
           </button>
           <button
+            aria-label="Go to next results"
             className="button large secondary"
             id={undefined}
             onClick={[Function]}
@@ -793,8 +797,10 @@ exports[`CoursesLayout should render the first page properly 1`] = `
         className="paginator"
       >
         <div
+          aria-label="Showing results 1 to 12 out of 25"
           className="paginator"
           id={undefined}
+          role="group"
         >
           <span>
             Showing 
@@ -829,6 +835,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             </strong>
           </span>
           <button
+            aria-label="Go to previous results"
             className="button large secondary"
             id={undefined}
             onClick={[Function]}
@@ -840,6 +847,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
             />
           </button>
           <button
+            aria-label="Go to next results"
             className="button large secondary"
             id={undefined}
             onClick={[Function]}

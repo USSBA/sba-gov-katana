@@ -1,16 +1,16 @@
-import path from 'path'
-import _ from 'lodash'
+const path = require('path')
+const _ = require('lodash')
 /*Contains express server setup*/
-import express from 'express'
-import accepts from 'accepts'
-import config from 'config'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import HttpStatus from 'http-status-codes'
-import { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } from './util/dev.js'
+const express = require('express')
+const accepts = require('accepts')
+const config = require('config')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const httpStatus = require('http-status-codes')
+const { enableWebpackHotModuleReplacement, addDevelopmentErrorHandler } = require('./util/dev.js')
 const fs = require('fs')
 let mainBundleFile = ''
-import axios from 'axios'
+const axios = require('axios')
 
 const app = express()
 app.use(cookieParser())
@@ -32,13 +32,7 @@ if (config.get('developmentOptions.webpack.enabled')) {
   mainBundleFile = fs.readFileSync(path.join(__dirname, './public/build/main.txt'), 'utf-8') //eslint-disable-line no-sync
 }
 
-const metaVariables = {
-  description:
-    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
-  title: 'Small Business Administration'
-}
-
-import { findNodeIdByUrl } from './service/url-redirect.js'
+const { findNodeIdByUrl } = require('./service/url-redirect.js')
 app.use(function(req, res, next) {
   // handle Accept-Language header
   req.preferredLanguage = accepts(req).languages()[0] //eslint-disable-line no-param-reassign
@@ -58,9 +52,9 @@ app.use(function(req, res, next) {
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
     .then(({ nodeId, langCode }) => {
-      let responseStatus = HttpStatus.OK
+      let responseStatus = httpStatus.OK
       if (!nodeId && config.get('features.true404')) {
-        responseStatus = HttpStatus.NOT_FOUND
+        responseStatus = httpStatus.NOT_FOUND
       }
 
       const clientConfig = {
@@ -100,22 +94,16 @@ app.use(function(req, res, next) {
 })
 
 app.get('/health', (req, res, next) => {
-  res.status(HttpStatus.OK).send()
+  res.status(httpStatus.OK).send()
 })
 
-import * as sizeStandardsController from './controllers/size-standards.js'
-app.get('/naics', sizeStandardsController.getNaics)
-app.get('/naics/:id', sizeStandardsController.getNaicsById)
-app.get('/naics/:id/:property', sizeStandardsController.getNaicsPropertyById)
-app.get('/isSmallBusiness', sizeStandardsController.determineIfSmallBusiness)
-
-import * as SbicContactsCsv from './controllers/sbic-contacts-csv.js'
-app.get('/api/content/sbic-contacts.csv', SbicContactsCsv.downloadCsv)
+const sbicContactsCsv = require('./controllers/sbic-contacts-csv.js')
+app.get('/api/content/sbic-contacts.csv', sbicContactsCsv.downloadCsv)
 
 // this is only reached in local development where the nginx proxy is not present
 app.post('/api/feedback', (req, res, next) => {
   console.log('Saving feedback', req.body)
-  res.status(HttpStatus.OK).json({
+  res.status(httpStatus.OK).json({
     message:
       'Development Message: It worked.  (In the real system, this request would be forwarded by the nginx proxy to the feedback lambda'
   })
@@ -145,7 +133,19 @@ app.get('/actions/misc/*', (req, res, next) => {
   fetchExternalContent(config.get('miscapi.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/api/content/*', (req, res, next) => {
-  fetchExternalContent(config.get('content.endpoint'), 'Prod', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('content.endpoint'), 'latest', req.path, req.query, res, 'json')
+})
+app.get('/naics', (req, res, next) => {
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
+})
+app.get('/naics/:id', (req, res, next) => {
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
+})
+app.get('/naics/:id/:property', (req, res, next) => {
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
+})
+app.get('/isSmallBusiness', (req, res, next) => {
+  fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 
 if (config.get('developmentOptions.webpack.enabled')) {
@@ -159,7 +159,7 @@ if (config.get('developmentOptions.webpack.enabled')) {
     })
       .then(function(response) {
         var headers = { 'Content-Type': response.headers['content-type'] }
-        res.writeHead(HttpStatus.OK, headers)
+        res.writeHead(httpStatus.OK, headers)
         res.end(response.data, 'binary')
       })
       .catch(function(error) {
@@ -168,9 +168,35 @@ if (config.get('developmentOptions.webpack.enabled')) {
   })
 }
 
-import { fetchNewUrlByOldUrl } from './service/drupal-url-redirect.js'
-import { findMostRecentUrlRedirect } from './service/url-redirect.js'
-app.get(['/', '/*'], function(req, res, next) {
+const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
+const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
+
+async function getMetaVariables(nodeId) {
+  let description = config.get('meta.description')
+  let title = config.get('meta.title')
+
+  // This will only allow valid nodeId's to make an axios call.
+  // Currently negative nodeId numbers are associated to pages without a nodeId,
+  // so we can regard negative nodeId's as invalid.
+  if (nodeId > 0) {
+    const jsonContent = await axios.get(
+      `https://${config.get('content.endpoint')}/api/content/node/${nodeId}.json`
+    )
+    if (jsonContent.data) {
+      description = jsonContent.data.summary
+      title = jsonContent.data.title
+    }
+  }
+
+  return {
+    description,
+    title
+  }
+}
+
+app.get(['/', '/*'], async function(req, res, next) {
+  const metaVariables = await getMetaVariables(req.nodeId)
+
   const pugVariables = _.merge({}, metaVariables, {
     langOverride: req.preferredLanguage,
     nodeId: req.nodeId,
@@ -181,6 +207,7 @@ app.get(['/', '/*'], function(req, res, next) {
     foreseeEnvironment: config.get('foresee.environment'),
     mainBundleFile: mainBundleFile
   })
+
   const handleRedirects = async function() {
     const url = req.url
     let redirectUrl
@@ -192,11 +219,11 @@ app.get(['/', '/*'], function(req, res, next) {
     // to HTTP 301 in the future)
     if (config.get('features.urlRedirect.enabled')) {
       redirectUrl = await findMostRecentUrlRedirect(url)
-      redirectCode = HttpStatus.MOVED_TEMPORARILY
+      redirectCode = httpStatus.MOVED_TEMPORARILY
     }
     if (!redirectUrl && config.get('features.drupalRedirect.enabled')) {
       redirectUrl = await fetchNewUrlByOldUrl(url)
-      redirectCode = HttpStatus.MOVED_TEMPORARILY
+      redirectCode = httpStatus.MOVED_TEMPORARILY
     }
     if (redirectUrl && redirectUrl !== url) {
       console.log('Redirecting to ' + redirectUrl)
@@ -221,11 +248,11 @@ if (config.get('developmentOptions.webpack.enabled')) {
     if (err) {
       console.log(err)
       if (req.xhr) {
-        res.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+        res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
           error: 'Something went wrong! Oh no!'
         })
       } else {
-        res.status(err.status || HttpStatus.INTERNAL_SERVER_ERROR)
+        res.status(err.status || httpStatus.INTERNAL_SERVER_ERROR)
         res.render('error', {
           message: err.message,
           error: {}

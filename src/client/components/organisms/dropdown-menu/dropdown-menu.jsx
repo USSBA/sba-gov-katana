@@ -106,6 +106,7 @@ class DropdownMenu extends React.Component {
             id={id + '-go-to-next'}
             visible={this.state.goToNextSectionShown}
             text="Go to Next Section"
+            white
             onKeyDown={event => this.handleSkipLinkKeyDown(event)}
             onFocus={event => this.handleGoToNextFocus(event)}
             onBlur={event => this.handleGoToNextBlur(event)}
@@ -117,6 +118,7 @@ class DropdownMenu extends React.Component {
             id={id + '-go-to-main-content'}
             visible={this.state.goToNextSectionShown}
             text="Go to Main Content"
+            white
             onKeyDown={event => {
               if (event.keyDown === 13) {
                 location.href = '#main-content'

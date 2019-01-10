@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { includes, isEmpty, isObject, size } from 'lodash'
+import { includes, isEmpty, size } from 'lodash'
 
 import s from './detail-card.scss'
-import { DecorativeDash, Label, Link, PdfIcon } from 'atoms'
+import { DecorativeDash, FileTypeIcon, Label, Link } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
-import { getCurrentFile } from '../../../services/utils.js'
+import { getCurrentFile, getFileExtension } from '../../../services/utils.js'
 
 class DetailCard extends React.Component {
   getLatestFile() {
@@ -16,27 +17,10 @@ class DetailCard extends React.Component {
     }
   }
 
-  getFileTypeIcon(fileExtension) {
-    if (fileExtension === 'pdf') {
-      console.log('filetypeicon called')
-      return <PdfIcon />
-    } else {
-      return undefined
-    }
-  }
-
-  getFileExtension(fileUrl) {
-    if (fileUrl.includes('.')) {
-      return fileUrl.substr(fileUrl.lastIndexOf('.') + 1).toLowerCase()
-    } else {
-      return undefined
-    }
-  }
-
   makeDownloadLink() {
     const latestFile = this.getLatestFile()
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
-      const fileExtension = this.getFileExtension(latestFile.fileUrl)
+      const fileExtension = getFileExtension(latestFile.fileUrl)
       return (
         <div className={'document-card-download ' + s.download}>
           <Link
@@ -47,7 +31,7 @@ class DetailCard extends React.Component {
             Download
             {fileExtension ? ' ' + fileExtension : ''}
           </Link>
-          {this.getFileTypeIcon(fileExtension)}
+          <FileTypeIcon fileExtension={fileExtension} />
         </div>
       )
     } else {
@@ -157,8 +141,13 @@ class DetailCard extends React.Component {
 }
 
 DetailCard.propTypes = {
-  showBorder: React.PropTypes.bool,
-  type: React.PropTypes.string.isRequired
+  data: PropTypes.shape({
+    documentIdType: PropTypes.string,
+    category: PropTypes.array,
+    type: PropTypes.oneOf(['article', 'document'])
+  }),
+  showBorder: PropTypes.bool,
+  showDetails: PropTypes.bool
 }
 
 DetailCard.defaultProps = {

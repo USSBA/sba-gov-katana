@@ -6,7 +6,7 @@ import scrollIcon from 'assets/svg/scroll.svg'
 import styles from './ten-steps-landing-page.scss'
 import { Link } from 'atoms'
 import { CallToAction, RemoveMainLoader, LongScrollNav } from 'molecules'
-import { BusinessGuideTileCollection, LongScrollSection } from 'organisms'
+import { LongScrollSection, MenuTileCollection } from 'organisms'
 import { fetchRestContent, fetchSiteContent } from '../../../fetch-content-helper'
 import { findPageLineage, findSubSection, findSection } from '../../../services/menu'
 import { getLanguageOverride } from '../../../services/utils'
@@ -206,11 +206,11 @@ class TenStepsLandingPage extends React.Component {
           </div>
         </div>
         {/*
-          This will need to be updated with MenuTileCollection. Need to do more research on this.props.menu.
+          Render Business Guide Tile using MenuTileCollection.
           sectionData ? (
           <div className={styles.bizguideContainer}>
             <h1>Explore more topics</h1>
-            <BusinessGuideTileCollection sectionData={sectionData} />
+            <MenuTileCollection data={sectionData} />
           </div>
         ) : (
           <div />
