@@ -93,7 +93,9 @@ ContactCard.propTypes = {
   city: PropTypes.string,
   email: PropTypes.string,
   fax: PropTypes.string,
-  link: PropTypes.string,
+  // TODO: link should be PropTypes.string,
+  // but currently if link is not supplied then an empty object is getting assigned to link instead
+  link: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   phoneNumber: PropTypes.string,
   state: PropTypes.string,
   streetAddress: PropTypes.string,
