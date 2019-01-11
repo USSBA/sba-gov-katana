@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
-import PdfIcon from './pdf.jsx'
+import s from './icons.scss'
 
 const FileTypeIcon = ({ fileExtension }) => {
   let icon = null
   if (fileExtension === 'pdf') {
-    icon = <PdfIcon />
+    icon = <i className={s.pdf + ' fa fa-file-pdf-o'} />
   }
   return icon
 }

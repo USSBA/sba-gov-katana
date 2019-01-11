@@ -17,7 +17,6 @@ import Link from './link/link'
 import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
 import MultiSelect from './multiselect/multiselect'
-import PdfIcon from './icons/pdf'
 import ProgressBar from './progress-bar/progress-bar'
 import Radio from './radio/radio'
 import SearchIcon from './icons/search'
@@ -57,7 +56,6 @@ export {
   Loader,
   MainLogo,
   MultiSelect,
-  PdfIcon,
   ProgressBar,
   Radio,
   SearchIcon,
