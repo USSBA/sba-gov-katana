@@ -59,10 +59,10 @@ const ContactCard = props => {
     const { href, text } = field
 
     // Checks if this field is a website field.
-    const isFieldNotAWebsite = text !== linkText
+    const isNotAWebsiteField = text !== linkText
 
     // If it is a website field, it better have an href.
-    const isNotAnEmptyWebsiteLink = isFieldNotAWebsite || href
+    const isNotAnEmptyWebsiteLink = isNotAWebsiteField || href
 
     // Only keeps hrefs that are empty or is a string. Hrefs are sometimes coming back as empty objects.
     const isValidHref = !href || typeof href === 'string'
