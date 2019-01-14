@@ -54,13 +54,7 @@ class Lookup extends React.Component {
 
         case 'CDC/504':
         case 'Microloan':
-          const cardRendererFunction = (item, index) => {
-            return <ContactCard key={index} {...item} />
-          }
-          const cdcProps = assign({}, _props, {
-            cardRenderer: cardRendererFunction
-          })
-          SelectedLookup = <ContactCardLookup {...cdcProps} />
+          SelectedLookup = <ContactCardLookup {..._props} />
           break
 
         case 'SBIC':
