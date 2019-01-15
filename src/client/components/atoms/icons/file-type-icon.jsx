@@ -11,7 +11,7 @@ const FileTypeIcon = ({ fileExtension }) => {
 }
 
 FileTypeIcon.propTypes = {
-  fileExtension: PropTypes.string
+  fileExtension: PropTypes.string.isRequired
 }
 
 export default FileTypeIcon

@@ -40,9 +40,8 @@ const VersionsList = props => {
         <strong>|</strong>
         {effectiveDateMessage}.
         <a href={fileUrl} onClick={_ => logPageEvent(eventConfig)} target="_blank">
-          Download
-          {fileExtension ? ' ' + fileExtension : ''}
-          <FileTypeIcon fileExtension={fileExtension} />
+          {fileExtension ? 'Download ' + fileExtension : 'Download'}
+          {fileExtension && <FileTypeIcon fileExtension={fileExtension} />}
         </a>
         {effectiveDateInTheFuture ? (
           <strong className={styles.future} key={30}>

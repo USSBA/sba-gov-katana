@@ -28,10 +28,9 @@ class DetailCard extends React.Component {
               window.open(latestFile.fileUrl, '_blank')
             }}
           >
-            Download
-            {fileExtension ? ' ' + fileExtension : ''}
+            {fileExtension ? 'Download ' + fileExtension : 'Download'}
           </Link>
-          <FileTypeIcon fileExtension={fileExtension} />
+          {fileExtension && <FileTypeIcon fileExtension={fileExtension} />}
         </div>
       )
     } else {
