@@ -183,7 +183,7 @@ describe('All Versions', () => {
     mockHtml += `<strong>|</strong>`
     mockHtml += `Effective: N/A.`
     mockHtml += `<a href="${file.fileUrl}" target="_blank">Download pdf`
-    mockHtml += `<i class=\"pdf fa fa-file-pdf-o\"></i>`
+    mockHtml += `<i class=\"fa fa-file-pdf-o\" data-cy=\"pdf icon\"></i>`
     mockHtml += `</a></li>`
 
     expect(
