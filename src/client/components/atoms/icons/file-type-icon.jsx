@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
-import PdfIcon from './pdf.jsx'
 
 const FileTypeIcon = ({ fileExtension }) => {
   let icon = null
   if (fileExtension === 'pdf') {
-    icon = <PdfIcon />
+    // data-cy prop allows us to name this for use in cypress testing.
+    icon = <i className="fa fa-file-pdf-o" data-cy="pdf icon" />
   }
   return icon
 }
 
 FileTypeIcon.propTypes = {
-  fileExtension: PropTypes.string
+  fileExtension: PropTypes.string.isRequired
 }
 
 export default FileTypeIcon

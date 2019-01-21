@@ -4,7 +4,8 @@ import _ from 'lodash'
 
 import states from '../../../services/us-states.json'
 import styles from './contact-card-lookup.scss'
-import { LinkCard, MultiSelect } from 'atoms'
+import { MultiSelect } from 'atoms'
+import { ContactCard } from 'molecules'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
 
@@ -122,11 +123,7 @@ ContactCardLookup.defaultProps = {
   afterChange: () => {},
   name: 'state-lookup',
   cardRenderer: (item, index) => {
-    return (
-      <div key={index}>
-        <LinkCard {...item} />
-      </div>
-    )
+    return <ContactCard key={index} {...item} />
   }
 }
 export default ContactCardLookup

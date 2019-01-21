@@ -138,16 +138,4 @@ describe('DocumentArticleLookup', () => {
   //   const component = shallow(<DocumentArticleLookup {...props}/>);
   //   expect(component.find("Paginator").prop("pageNumber")).toEqual(props.pageNumber);
   // });
-
-  // test('should render without a zip code ', () => {
-  //   let cardData = _.omit(card, "zipCode");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".document-article-lookup-citystatezip")).toHaveLength(0);
-  // });
-  //
-  // test('should render without the link', () => {
-  //   let cardData = _.omit(card, "link");
-  //   const component = shallow(<LinkCard {...cardData}/>);
-  //   expect(component.find(".document-article-lookup-link")).toHaveLength(0);
-  // });
 })

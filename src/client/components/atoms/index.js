@@ -14,11 +14,9 @@ import HamburgerIcon from './hamburger-icon/hamburger-icon'
 import HomeIcon from './icons/home'
 import ImageSection from './image-section/image-section'
 import Link from './link/link'
-import LinkCard from './link-card/link-card'
 import Loader from './loader/loader'
 import MainLogo from './main-logo/main-logo'
 import MultiSelect from './multiselect/multiselect'
-import PdfIcon from './icons/pdf'
 import ProgressBar from './progress-bar/progress-bar'
 import Radio from './radio/radio'
 import SearchIcon from './icons/search'
@@ -55,11 +53,9 @@ export {
   HomeIcon,
   ImageSection,
   Link,
-  LinkCard,
   Loader,
   MainLogo,
   MultiSelect,
-  PdfIcon,
   ProgressBar,
   Radio,
   SearchIcon,

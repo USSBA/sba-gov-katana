@@ -4,7 +4,6 @@ server:
     fqdn: staging.sba.gov
 features:
     showSbic: false
-    searchUrl: '/search/?q='
     urlRedirect:
         tableName: UrlToNodeStaging
         enabled: true
