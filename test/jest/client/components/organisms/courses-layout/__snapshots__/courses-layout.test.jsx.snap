@@ -94,7 +94,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -113,7 +112,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -138,7 +136,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -151,7 +148,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -170,7 +166,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -195,7 +190,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -208,7 +202,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -227,7 +220,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -252,7 +244,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -265,7 +256,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -284,7 +274,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -309,7 +298,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -331,7 +319,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -350,7 +337,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -375,7 +361,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -388,7 +373,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -407,7 +391,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -432,7 +415,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -445,7 +427,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -464,7 +445,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -489,7 +469,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -502,7 +481,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -521,7 +499,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -546,7 +523,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -568,7 +544,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -587,7 +562,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -612,7 +586,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -625,7 +598,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -644,7 +616,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -669,7 +640,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -682,7 +652,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -701,7 +670,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -726,7 +694,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
@@ -739,7 +706,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                 <a
                   onClick={[Function]}
                   style={Object {}}
-                  target="_self"
                 >
                   <img
                     alt="ANC Business Guide: 8(a) Business Development Program"
@@ -758,7 +724,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                     <a
                       onClick={[Function]}
                       style={Object {}}
-                      target="_self"
                     >
                       ANC Business Guide: 8(a) Business Development Program
                     </a>
@@ -783,7 +748,6 @@ exports[`CoursesLayout should render the first page properly 1`] = `
                   <a
                     onClick={[Function]}
                     style={Object {}}
-                    target="_self"
                   >
                     View course
                   </a>
