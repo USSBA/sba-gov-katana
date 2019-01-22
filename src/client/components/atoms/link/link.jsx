@@ -35,7 +35,7 @@ const Link = (props, context) => {
   }
 
   const linkElement = <ReactRouterLink children={children} {...nativeProps} to={href} />
-  return linkElement
+  return React.cloneElement(linkElement, { target: '_self' })
 }
 
 Link.contextTypes = {
