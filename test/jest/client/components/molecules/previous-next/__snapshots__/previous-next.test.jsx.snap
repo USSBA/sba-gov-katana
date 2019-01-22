@@ -15,6 +15,7 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <i
         aria-hidden="true"
@@ -35,6 +36,7 @@ exports[`PreviousNext Business Guide When in a middle article it renders properl
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <span>
         Choose your business name
@@ -63,6 +65,7 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <i
         aria-hidden="true"
@@ -83,6 +86,7 @@ exports[`PreviousNext Business Guide When in the first article of a middle secti
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <span>
         Choose a business structure
@@ -118,6 +122,7 @@ exports[`PreviousNext Business Guide When in the first article of the first sect
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <span>
         Write your business plan
@@ -146,6 +151,7 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <i
         aria-hidden="true"
@@ -166,6 +172,7 @@ exports[`PreviousNext Business Guide When in the last article of a middle sectio
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <span>
         Manage your finances
@@ -194,6 +201,7 @@ exports[`PreviousNext Business Guide When in the last article of the last sectio
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <i
         aria-hidden="true"
@@ -229,6 +237,7 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <i
         aria-hidden="true"
@@ -249,6 +258,7 @@ exports[`PreviousNext For Partners When in a middle article it renders properly 
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <span>
         Training and Courses
@@ -284,6 +294,7 @@ exports[`PreviousNext For Partners When in the first article of a section it ren
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <span>
         Operate as a 7(a) Lender
@@ -312,6 +323,7 @@ exports[`PreviousNext For Partners When in the last article of a section it rend
       className="button"
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       <i
         aria-hidden="true"

@@ -15,6 +15,7 @@ exports[`Google Translate link to render correctly 1`] = `
       className="link "
       onClick={[Function]}
       style={Object {}}
+      target="_self"
     >
       Translate
     </a>

@@ -17,6 +17,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
     id="article-navigation-back-button-desktop"
     onClick={[Function]}
     style={Object {}}
+    target="_self"
   >
     Back to all topics
   </a>
@@ -36,6 +37,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-0"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Pick your business location
       </a>
@@ -48,6 +50,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-1"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Choose a business structure
       </a>
@@ -60,6 +63,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-2"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Choose your business name
       </a>
@@ -72,6 +76,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-3"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Register your business
       </a>
@@ -84,6 +89,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-4"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Get federal and state tax ID numbers
       </a>
@@ -96,6 +102,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-5"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Apply for licenses and permits
       </a>
@@ -108,6 +115,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-6"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Open a business bank account
       </a>
@@ -120,6 +128,7 @@ exports[`SectionNav Business Guide Renders a Third-level Section Navigation 1`] 
         id="desktop-article-link-7"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Get business insurance
       </a>
@@ -145,6 +154,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
     id="article-navigation-back-button-desktop"
     onClick={[Function]}
     style={Object {}}
+    target="_self"
   >
     Back to 7(a) Loans
   </a>
@@ -164,6 +174,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
         id="desktop-article-link-0"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Types of 7(a) Loans
       </a>
@@ -176,6 +187,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
         id="desktop-article-link-1"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Operate as a 7(a) Lender
       </a>
@@ -188,6 +200,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
         id="desktop-article-link-2"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Secondary Markets
       </a>
@@ -200,6 +213,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
         id="desktop-article-link-3"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Training and Courses
       </a>
@@ -212,6 +226,7 @@ exports[`SectionNav For Partners Renders a Fourth-level Section Navigation 1`] =
         id="desktop-article-link-4"
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         Terms and Eligibility
       </a>

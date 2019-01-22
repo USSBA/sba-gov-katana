@@ -55,6 +55,7 @@ exports[`ContactCard should render with all the information 1`] = `
         }
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       />
     </div>
   </div>
@@ -106,6 +107,7 @@ exports[`ContactCard should render with all the information 1`] = `
         }
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       />
     </div>
   </div>

@@ -18,6 +18,7 @@ exports[`QuickLinks Future effective date is not displayed 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         See all
       </a>
@@ -57,6 +58,7 @@ exports[`QuickLinks Most recent effective date displayed 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         See all
       </a>
@@ -96,6 +98,7 @@ exports[`QuickLinks No SOP number so it is not displayed 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         See all
       </a>
@@ -135,6 +138,7 @@ exports[`QuickLinks SOP number exists and is displayed 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
+        target="_self"
       >
         See all
       </a>
