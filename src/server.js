@@ -65,7 +65,6 @@ app.use(function(req, res, next) {
         googleMapsApiKey: config.get('googleMapsApiKey'),
         govdelivery: config.get('govdelivery.popupEnabled'),
         isUserLoggedIn: hasSessionCookie || false,
-        katanaRedirectPaths: config.get('nginx.katanaRedirectPaths').split('|'),
         pressRelease: config.get('features.pressRelease'),
         responseStatus: responseStatus,
         sbaOfficeNames: config.get('features.office.sbaOfficeNames'),
