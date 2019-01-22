@@ -49,7 +49,6 @@ ShallowWrapper {
         </a>
         <Link
             className="backLink"
-            forceClientRouting={false}
             to="/business-guide"
         >
             Back to all topics
@@ -303,7 +302,6 @@ ShallowWrapper {
             </a>
             <Link
                   className="backLink"
-                  forceClientRouting={false}
                   to="/business-guide"
             >
                   Back to all topics
@@ -611,7 +609,6 @@ ShallowWrapper {
                     </a>
                     <Link
                               className="backLink"
-                              forceClientRouting={false}
                               to="/business-guide"
                     >
                               Back to all topics
@@ -865,7 +862,6 @@ ShallowWrapper {
                     </a>
                     <Link
                               className="backLink"
-                              forceClientRouting={false}
                               to="/business-guide"
                     >
                               Back to all topics

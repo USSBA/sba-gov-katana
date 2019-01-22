@@ -11,7 +11,6 @@ exports[`Mobile Navigation has the correct structure 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
-        target="_self"
       >
         <img
           alt="Small Business Administration"
@@ -116,7 +115,6 @@ exports[`Mobile Navigation has the correct structure 1`] = `
           id="mobile-nav-sba-en-espanol"
           onClick={[Function]}
           style={Object {}}
-          target="_self"
         >
           SBA en Español
         </a>
@@ -128,7 +126,6 @@ exports[`Mobile Navigation has the correct structure 1`] = `
           id="mobile-nav-for-partners"
           onClick={[Function]}
           style={Object {}}
-          target="_self"
         >
           For Partners
         </a>
@@ -140,7 +137,6 @@ exports[`Mobile Navigation has the correct structure 1`] = `
           id="mobile-nav-sba-near-you"
           onClick={[Function]}
           style={Object {}}
-          target="_self"
         >
           <img
             aria-hidden={true}
@@ -157,7 +153,6 @@ exports[`Mobile Navigation has the correct structure 1`] = `
           id="mobile-nav-small-business-events"
           onClick={[Function]}
           style={Object {}}
-          target="_self"
         >
           <img
             aria-hidden={true}

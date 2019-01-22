@@ -43,7 +43,6 @@ exports[`Front Page Hero should render correctly 1`] = `
         className="button large link primary responsive spacing"
         onClick={[Function]}
         style={Object {}}
-        target="_self"
       >
         This is a button
       </a>

@@ -8,7 +8,6 @@ exports[`Card does not error check malformed link 1`] = `
   <a
     onClick={[Function]}
     style={Object {}}
-    target="_self"
   >
     <img
       alt="kitten"
@@ -27,7 +26,6 @@ exports[`Card does not error check malformed link 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
-        target="_self"
       >
         Kitten
       </a>
@@ -52,7 +50,6 @@ exports[`Card does not error check malformed link 1`] = `
     <a
       onClick={[Function]}
       style={Object {}}
-      target="_self"
     >
       dogs
     </a>
@@ -68,7 +65,6 @@ exports[`Card should render the spanish version correctly if the link is just a 
   <a
     onClick={[Function]}
     style={Object {}}
-    target="_self"
   >
     <img
       alt="kitten"
@@ -87,7 +83,6 @@ exports[`Card should render the spanish version correctly if the link is just a 
       <a
         onClick={[Function]}
         style={Object {}}
-        target="_self"
       >
         Kitten
       </a>
@@ -112,7 +107,6 @@ exports[`Card should render the spanish version correctly if the link is just a 
     <a
       onClick={[Function]}
       style={Object {}}
-      target="_self"
     >
       Más información
     </a>
@@ -182,7 +176,6 @@ exports[`Card to render correctly if the link is just a string 1`] = `
   <a
     onClick={[Function]}
     style={Object {}}
-    target="_self"
   >
     <img
       alt="kitten"
@@ -201,7 +194,6 @@ exports[`Card to render correctly if the link is just a string 1`] = `
       <a
         onClick={[Function]}
         style={Object {}}
-        target="_self"
       >
         Kitten
       </a>
@@ -226,7 +218,6 @@ exports[`Card to render correctly if the link is just a string 1`] = `
     <a
       onClick={[Function]}
       style={Object {}}
-      target="_self"
     >
       Learn more
     </a>
