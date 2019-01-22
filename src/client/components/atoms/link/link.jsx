@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react'
 import path from 'path'
-import { isEmpty, isString, startsWith } from 'lodash'
+import { isString, startsWith } from 'lodash'
 import { Link as ReactRouterLink } from 'react-router'
-
-import config from '../../../services/client-config'
 
 const Link = (props, context) => {
   const { router } = context
@@ -35,6 +33,7 @@ const Link = (props, context) => {
   }
 
   const linkElement = <ReactRouterLink children={children} {...nativeProps} to={href} />
+  // Adding a `target` forces react-router to send a request to the server.
   return React.cloneElement(linkElement, { target: '_self' })
 }
 
