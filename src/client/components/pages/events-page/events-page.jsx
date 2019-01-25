@@ -8,7 +8,7 @@ class EventsPage extends React.Component {
   render() {
     return (
       <div>
-        <h3 style={styles}>event's find</h3>
+        <h3 style={styles}>events find</h3>
       </div>
     )
   }
