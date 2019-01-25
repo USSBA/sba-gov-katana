@@ -57,7 +57,7 @@ class EventLookupPage extends React.PureComponent {
 
     return (
       <SearchTemplate
-        searchType="offices"
+        searchType="events"
         defaultSearchParams={defaultSearchParams}
         loadDefaultResults={false}
         scrollToTopAfterSearch={false}
@@ -99,7 +99,7 @@ class EventLookupPage extends React.PureComponent {
 
           <TaxonomyMultiSelect
             taxonomy={officeTypeTaxonomy}
-            label="Provided By"
+            label="Distance"
             queryParamName="type"
             multi={false}
             className={styles.field + ' ' + styles.search}
