@@ -57,8 +57,8 @@ let OfficeLookupPage = props => (
   <Async componentProps={props} load={import('./pages/office-lookup-page/office-lookup-page.jsx')} />
 )
 
-let EventsPage = props => (
-  <Async componentProps={props} load={import('./pages/events-page/events-page.jsx')} />
+let EventLookupPage = props => (
+  <Async componentProps={props} load={import('./pages/event-lookup-page/event-lookup-page.jsx')} />
 )
 
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
@@ -84,8 +84,8 @@ const mainRoutes = [
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={56} path="/local-assistance/find/" component={OfficeLookupPage} />,
   <Redirect key={57} from="/local-assistance/find" to="/local-assistance/find/" />,
-  <Route key={56} path="/events/find/" component={EventsPage} />,
-  <Redirect key={57} from="/events/find" to="/events/find/" />,
+  <Route key={56} path="/event/find/" component={EventLookupPage} />,
+  <Redirect key={57} from="/event/find" to="/event/find/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}

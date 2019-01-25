@@ -4,7 +4,7 @@ const styles = {
   textAlign: 'center'
 }
 
-class EventsPage extends React.Component {
+class EventLookupPage extends React.Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class EventsPage extends React.Component {
   }
 }
 
-export default EventsPage
+export default EventLookupPage
