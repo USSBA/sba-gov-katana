@@ -54,10 +54,6 @@ class ContactCardLookup extends React.Component {
     )
   }
 
-  handleFocus() {}
-
-  handleBlur() {}
-
   render() {
     const statesMap = _.map(states, function(item) {
       return { label: item.name, value: item.value }
@@ -71,10 +67,10 @@ class ContactCardLookup extends React.Component {
       validationState: '',
       value: this.state.value,
       options: statesMap,
-      onBlur: this.handleBlur.bind(this),
+      onBlur: () => {},
       autoFocus: false,
       multi: false,
-      onFocus: this.handleFocus.bind(this)
+      onFocus: () => {}
     }
     const langCode = getLanguageOverride()
     const lookUpYourStateLabel =

@@ -36,6 +36,8 @@ class SearchInfoPanel extends React.Component {
       </span>
     )
   }
+
+  // eslint-disable-next-line class-methods-use-this
   renderLoadingState() {
     //no loading state currently
     return <span className={styles.loading}>loading</span>

@@ -10,6 +10,56 @@ import { SectionNav } from 'organisms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
 
+function makeSectionHeaders(paragraphData) {
+  // eslint-disable-next-line array-callback-return,consistent-return
+  const sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
+    if (item && item.type && item.type === 'sectionHeader') {
+      return {
+        id: paragraphMapper.makeSectionHeaderId(index),
+        text: item.text
+      }
+    }
+  })
+  return compact(sectionHeaders)
+}
+
+function makeParagraphs(paragraphData) {
+  const paragraphList = paragraphMapper.makeParagraphs(paragraphData)
+  const wrapperClassMapping = {
+    other: styles.textSection,
+    textSection: styles.textSection,
+    textReadMoreSection: 'none',
+    sectionHeader: styles.sectionHeader,
+    subsectionHeader: styles.subsectionHeader,
+    image: styles.image,
+    lookup: styles.lookup,
+    callToAction: styles.callToAction,
+    cardCollection: styles.cardCollection,
+    styleGrayBackground: styles.textSection
+  }
+  return paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
+}
+
+function makeBreadcrumbs(lineage) {
+  return map(lineage, item => {
+    const lineageItem = { url: item.fullUrl, title: item.title, spanishTranslation }
+
+    let spanishTranslation
+    if (item.spanishTranslation) {
+      spanishTranslation = {
+        url: item.spanishTranslation.fullUrl,
+        title: item.spanishTranslation.title
+      }
+    }
+
+    if (!spanishTranslation) {
+      delete lineageItem.spanishTranslation
+    }
+
+    return lineageItem
+  })
+}
+
 class BasicPage extends React.Component {
   constructor(props) {
     super()
@@ -24,59 +74,6 @@ class BasicPage extends React.Component {
     this.handleTopWaypointLeave = this.handleTopWaypointLeave.bind(this)
     this.handleBackLinkClicked = this.handleBackLinkClicked.bind(this)
     this.handleOverlap = this.handleOverlap.bind(this)
-  }
-
-  // componentWillMount() {}
-
-  makeSectionHeaders(paragraphData) {
-    // eslint-disable-next-line array-callback-return,consistent-return
-    const sectionHeaders = paragraphData.map(function(item, index, paragraphArray) {
-      if (item && item.type && item.type === 'sectionHeader') {
-        return {
-          id: paragraphMapper.makeSectionHeaderId(index),
-          text: item.text
-        }
-      }
-    })
-    return compact(sectionHeaders)
-  }
-
-  makeParagraphs(paragraphData) {
-    const paragraphList = paragraphMapper.makeParagraphs(paragraphData)
-    const wrapperClassMapping = {
-      other: styles.textSection,
-      textSection: styles.textSection,
-      textReadMoreSection: 'none',
-      sectionHeader: styles.sectionHeader,
-      subsectionHeader: styles.subsectionHeader,
-      image: styles.image,
-      lookup: styles.lookup,
-      callToAction: styles.callToAction,
-      cardCollection: styles.cardCollection,
-      styleGrayBackground: styles.textSection
-    }
-    const wrapped = paragraphMapper.wrapParagraphs(paragraphList, wrapperClassMapping)
-    return wrapped
-  }
-
-  makeBreadcrumbs(lineage) {
-    return map(lineage, item => {
-      const lineageItem = { url: item.fullUrl, title: item.title, spanishTranslation }
-
-      let spanishTranslation
-      if (item.spanishTranslation) {
-        spanishTranslation = {
-          url: item.spanishTranslation.fullUrl,
-          title: item.spanishTranslation.title
-        }
-      }
-
-      if (!spanishTranslation) {
-        delete lineageItem.spanishTranslation
-      }
-
-      return lineageItem
-    })
   }
 
   handleBackLinkClicked(e) {
@@ -141,10 +138,10 @@ class BasicPage extends React.Component {
   }
 
   render() {
-    const paragraphs = this.makeParagraphs(this.props.paragraphs)
-    const sectionHeaders = this.makeSectionHeaders(this.props.paragraphs)
+    const paragraphs = makeParagraphs(this.props.paragraphs)
+    const sectionHeaders = makeSectionHeaders(this.props.paragraphs)
     const breadcrumbs = this.props.lineage ? (
-      <Breadcrumb items={this.makeBreadcrumbs(this.props.lineage)} />
+      <Breadcrumb items={makeBreadcrumbs(this.props.lineage)} />
     ) : (
       <div />
     )

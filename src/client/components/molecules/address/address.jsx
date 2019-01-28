@@ -11,10 +11,6 @@ class Address extends React.Component {
     this.state = {}
   }
 
-  generateGoogleMapsLink(address) {
-    return 'https://maps.google.com?q=' + encodeURIComponent(address)
-  }
-
   render() {
     const { iconName, streetAddress, city, state, zipCode } = this.props
     let { link } = this.props
@@ -29,7 +25,7 @@ class Address extends React.Component {
           this.props.zipCode
         : null
 
-    link = link ? link : this.generateGoogleMapsLink(address)
+    link = link ? link : 'https://maps.google.com?q=' + encodeURIComponent(address)
 
     return (
       <div className={'office-address'}>

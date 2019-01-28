@@ -15,6 +15,7 @@ const Card = props => {
     parentIndex
   } = props
 
+  /* eslint-disable no-magic-numbers */
   const className = classNames({
     card: true,
     [styles.card]: true,
@@ -24,6 +25,7 @@ const Card = props => {
     [styles.sixColumn]: [6, 12].includes(numCards) || numCards > 12,
     [styles.noImage]: isEmpty(image)
   })
+  /* eslint-enable no-magic-numbers */
 
   // TODO: use lede text instead of subtitle text
   const languageOverride = getLanguageOverride()

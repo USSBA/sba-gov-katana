@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom'
 import styles from './styles.scss'
 import { Link } from 'atoms'
 
+const BASE_VELOCITY = 10000
+
 var Slider = React.createClass({
   getDefaultProps() {
     return {
@@ -82,7 +84,7 @@ var Slider = React.createClass({
 
     const timeElapsed = new Date().getTime() - dragStartTime.getTime()
     const offset = lastIndex - index
-    const velocity = Math.round((offset / timeElapsed) * 10000)
+    const velocity = Math.round((offset / timeElapsed) * BASE_VELOCITY)
 
     let newIndex = Math.round(index)
 

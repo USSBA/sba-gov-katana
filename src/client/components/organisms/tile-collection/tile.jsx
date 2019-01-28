@@ -9,17 +9,14 @@ import { MenuTile, MenuTileWithLinks } from 'molecules'
 import { navigateNow } from '../../../services/navigation.js'
 import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
 
+const _formatLargeTitle = title => title.split(' ')[0]
+const _formatSmallTitle = title => {
+  const arr = title.split(' ')
+  arr.shift()
+  return arr.join(' ')
+}
+
 class Tile extends React.Component {
-  _formatLargeTitle(title) {
-    return title.split(' ')[0]
-  }
-
-  _formatSmallTitle(title) {
-    const arr = title.split(' ')
-    arr.shift()
-    return arr.join(' ')
-  }
-
   _openNavMenu(pixelBreakpoint, fullUrl) {
     if (!this.isLinkToPage() && window.innerWidth <= pixelBreakpoint) {
       this.props.actions.showMobileSectionNav(this.props.data, this.props.iconWhite, false)
@@ -105,8 +102,8 @@ class Tile extends React.Component {
       icon: icon,
       iconWhite: iconWhite,
       langCode,
-      largeTitle: splitTitle ? this._formatLargeTitle(title) : title,
-      smallTitle: splitTitle ? this._formatSmallTitle(title) : '',
+      largeTitle: splitTitle ? _formatLargeTitle(title) : title,
+      smallTitle: splitTitle ? _formatSmallTitle(title) : '',
       uppercaseFirstWord: uppercaseFirstWord
     }
 

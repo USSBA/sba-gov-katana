@@ -26,9 +26,9 @@
     "accessor-pairs": ["error"],
     "array-callback-return": ["error"],
     "block-scoped-var": ["off"],
-    "class-methods-use-this": ["warn"],
+    "class-methods-use-this": ["warn", { "exceptMethods": ["render", "shouldComponentUpdate"] }],
     "complexity": ["warn", 6],
-    "consistent-return": ["warn"],
+    "consistent-return": ["off"],
     "curly": ["warn"],
     "default-case": ["warn"],
     "dot-location": ["off"],
@@ -57,7 +57,7 @@
     "no-loop-func": ["error"],
     "no-magic-numbers": [
       "warn",
-      { "ignoreArrayIndexes": true, "enforceConst": true, "ignore": [0, 1, -1, 2, 3] }
+      { "ignoreArrayIndexes": true, "enforceConst": true, "ignore": [0, 1, -1, 2, 3, 100] }
     ],
     "no-multi-spaces": ["warn"],
     "no-multi-str": ["warn"],

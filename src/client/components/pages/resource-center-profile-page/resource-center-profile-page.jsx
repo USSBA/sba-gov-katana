@@ -24,6 +24,15 @@ import style from './resource-center-profile-page.scss'
 const idPrefix = 'resource-center-profile-'
 const enableResourceCenterOverride = ['SBDC', 'VBOC', 'SCORE', 'WBC']
 
+const formatAddress = address => {
+  if (!address) {
+    return 'Please select your office'
+  }
+  const addressPartList = [address.street1, address.street2, address.city, address.state, address.zip]
+  const addressString = _.join(_.filter(addressPartList, addressPart => !_.isEmpty(addressPart)), ', ')
+  return addressString
+}
+
 class ResourceCenterProfilePage extends React.Component {
   constructor() {
     super()
@@ -88,9 +97,6 @@ class ResourceCenterProfilePage extends React.Component {
   isFieldInvalid(field) {
     return this.state.isFieldValid[field] === false
   }
-  onFocus() {}
-
-  onBlur() {}
 
   updateOffices(partner) {
     let offices = _.reject(getPartnerOffices(partner), office => _.isEmpty(office))
@@ -145,21 +151,12 @@ class ResourceCenterProfilePage extends React.Component {
     this.setState({ profile: newProfile })
   }
 
-  formatAddress(address) {
-    if (!address) {
-      return 'Please select your office'
-    }
-    const addressPartList = [address.street1, address.street2, address.city, address.state, address.zip]
-    const addressString = _.join(_.filter(addressPartList, addressPart => !_.isEmpty(addressPart)), ', ')
-    return addressString
-  }
-
   handleOfficeSelect(newSelection) {
     const newOffice = newSelection.value
     const newProfile = _.cloneDeep(this.state.profile)
     newProfile.name = newOffice.name1 + ' | ' + newOffice.name2
     newProfile.phone = newOffice.phone
-    newProfile.address = this.formatAddress(newOffice)
+    newProfile.address = formatAddress(newOffice)
     this.setState({
       profile: newProfile,
       selectedOffice: newOffice,
@@ -244,8 +241,8 @@ class ResourceCenterProfilePage extends React.Component {
           options={partners}
           multi={false}
           onChange={e => this.handleSelect(e, 'type')}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onFocus={() => {}}
+          onBlur={() => {}}
           aria-labelledby={idPrefix + 'partner-label'}
           required={true}
         />
@@ -280,8 +277,8 @@ class ResourceCenterProfilePage extends React.Component {
           options={offices}
           multi={false}
           onChange={this.handleOfficeSelect.bind(this)}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onFocus={() => {}}
+          onBlur={() => {}}
           aria-labelledby={idPrefix + 'office-label'}
           required={true}
         />
@@ -311,8 +308,8 @@ class ResourceCenterProfilePage extends React.Component {
             this.handleSelect(e, 'serviceArea')
             this.setState({ otherServiceArea: '' })
           }}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
+          onFocus={() => {}}
+          onBlur={() => {}}
           aria-labelledby={idPrefix + 'service-area-label'}
           required={true}
         />
@@ -323,8 +320,8 @@ class ResourceCenterProfilePage extends React.Component {
             placeholder="Custom other value"
             onChange={e => this.setState({ otherServiceArea: e.target.value })}
             value={this.state.otherServiceArea}
-            onBlur={this.onBlur.bind(this)}
-            onFocus={this.onFocus.bind(this)}
+            onBlur={() => {}}
+            onFocus={() => {}}
             autoFocus={true}
             required={this.state.profile.serviceArea === 'Other'}
           />
@@ -380,8 +377,8 @@ class ResourceCenterProfilePage extends React.Component {
               key={dayOpen}
               placeholder={dayOpenPlaceholder}
               onChange={e => this.handleSelect(e, dayOpen)}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
+              onFocus={() => {}}
+              onBlur={() => {}}
               aria-label={'Select your normal ' + day + ' opening time'}
             />
           </div>
@@ -396,8 +393,8 @@ class ResourceCenterProfilePage extends React.Component {
               key={dayClose}
               placeholder={dayClosePlaceholder}
               onChange={e => this.handleSelect(e, dayClose)}
-              onBlur={this.onBlur}
-              onFocus={this.onFocus}
+              onBlur={() => {}}
+              onFocus={() => {}}
               aria-label={'Select your normal ' + day + ' closing time'}
             />
           </div>
@@ -552,8 +549,8 @@ class ResourceCenterProfilePage extends React.Component {
           value={this.state.profile.businessStage}
           onChange={e => this.handleRadio(e, 'businessStage')}
           textStyle={style.radioText}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
+          onBlur={() => {}}
+          onFocus={() => {}}
           aria-labelledby={idPrefix + 'business-stage-label'}
         />
       </div>
@@ -600,14 +597,15 @@ class ResourceCenterProfilePage extends React.Component {
           value={this.state.profile.needsUpdating.toString()}
           options={updateContactInfoOptions}
           textStyle={style.radioText}
-          onBlur={this.onBlur}
-          onFocus={this.onFocus}
+          onBlur={() => {}}
+          onFocus={() => {}}
           aria-labelledby={idPrefix + 'contact-info'}
         />
       </div>
     )
   }
 
+  // eslint-disable-next-line class-methods-use-this
   renderSubmissionComplete() {
     return (
       <div id={idPrefix + 'submission-complete'}>
@@ -653,8 +651,8 @@ class ResourceCenterProfilePage extends React.Component {
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.email}
               placeholder="me@myemaildomain.com"
-              onBlur={this.onBlur.bind(this)}
-              onFocus={this.onFocus.bind(this)}
+              onBlur={() => {}}
+              onFocus={() => {}}
               label="What's your office email?"
               labelStyle={this.isFieldInvalid('email') ? style.invalid : style.formLabel}
               required={true}
@@ -666,8 +664,8 @@ class ResourceCenterProfilePage extends React.Component {
               onChange={this.handleChange.bind(this)}
               value={this.state.profile.url}
               placeholder="http://"
-              onBlur={this.onBlur.bind(this)}
-              onFocus={this.onFocus.bind(this)}
+              onBlur={() => {}}
+              onFocus={() => {}}
               label="What's your website URL?"
               labelStyle={this.isFieldInvalid('url') ? style.invalid : style.formLabel}
               required={true}

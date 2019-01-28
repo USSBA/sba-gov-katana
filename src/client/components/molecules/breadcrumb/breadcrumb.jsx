@@ -5,32 +5,32 @@ import styles from './breadcrumb.scss'
 import { Link, SmallIcon } from 'atoms'
 import { getLanguageOverride } from '../../../services/utils.js'
 
-class Breadcrumb extends React.Component {
-  makeLastAnchor(tail, languageOverride) {
-    let { title, url } = tail
-    const { spanishTranslation } = tail
+function makeLastAnchor(tail, languageOverride) {
+  let { title, url } = tail
+  const { spanishTranslation } = tail
 
-    if (tail && spanishTranslation && languageOverride === 'es') {
-      title = spanishTranslation.title
-      url = spanishTranslation.url
-    }
-
-    return (
-      <span className={styles.last} key={20}>
-        <Link id={'breadcrumb-current'} to={url}>
-          {title}
-        </Link>
-      </span>
-    )
+  if (tail && spanishTranslation && languageOverride === 'es') {
+    title = spanishTranslation.title
+    url = spanishTranslation.url
   }
 
+  return (
+    <span className={styles.last} key={20}>
+      <Link id={'breadcrumb-current'} to={url}>
+        {title}
+      </Link>
+    </span>
+  )
+}
+
+class Breadcrumb extends React.Component {
   render() {
     const { items } = this.props
     const languageOverride = getLanguageOverride()
 
     if (size(items)) {
       const tail = last(items)
-      const tailAnchor = this.makeLastAnchor(tail, languageOverride)
+      const tailAnchor = makeLastAnchor(tail, languageOverride)
       const rest = take(items, items.length - 1)
 
       return (

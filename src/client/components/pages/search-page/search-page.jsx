@@ -118,10 +118,10 @@ class SearchPage extends PureComponent {
     this.setState(data)
   }
 
-  updateSearchInputValue(value) {
-    const input = document.getElementById('search')
-    input.value = value
-  }
+  // updateSearchInputValue(value) {
+  //   const input = document.getElementById('search')
+  //   input.value = value
+  // }
 
   onSearchInputChange(newSearchTerm) {
     const encoded = encodeURIComponent(newSearchTerm)

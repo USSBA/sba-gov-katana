@@ -3,19 +3,19 @@ import { MultiSelect } from 'atoms'
 import { camelCase, startCase } from 'lodash'
 import PropTypes from 'prop-types'
 
-class TaxonomyMultiSelect extends React.Component {
-  createSlug(str) {
-    return str
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-      .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-      .replace(/^-+|-+$/g, '')
-  }
+function createSlug(str) {
+  return str
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+    .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+    .replace(/^-+|-+$/g, '')
+}
 
+class TaxonomyMultiSelect extends React.Component {
   generatePropsFromTaxonomy() {
     const { taxonomy, includeAllOption, label, value } = this.props
     const { name } = taxonomy
-    const id = `${this.createSlug(name)}-select`
+    const id = `${createSlug(name)}-select`
     const stateName = camelCase(name)
     const taxonomyTerms = includeAllOption ? ['All', ...taxonomy.terms] : taxonomy.terms
     const options = taxonomyTerms.map(entry => ({ label: entry, value: entry }))

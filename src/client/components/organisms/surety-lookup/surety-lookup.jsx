@@ -24,7 +24,7 @@ class SuretyLookup extends React.Component {
   }
 
   async componentWillMount() {
-    const states = await this.fetchStates()
+    const states = await SuretyLookup.fetchStates()
 
     if (states) {
       this.setState({
@@ -39,7 +39,7 @@ class SuretyLookup extends React.Component {
     })
   }
 
-  async fetchStates() {
+  static async fetchStates() {
     let states
     const result = await fetchSiteContent('taxonomys', {
       names: 'state'
@@ -112,6 +112,7 @@ class SuretyLookup extends React.Component {
     })
   }
 
+  // eslint-disable-next-line class-methods-use-this
   renderCard(data, index) {
     return (
       <div id={'surety-card' + index} className={styles.card}>

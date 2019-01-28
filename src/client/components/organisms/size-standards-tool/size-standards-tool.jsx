@@ -146,6 +146,7 @@ class SizeStandardsTool extends PureComponent {
     })
   }
 
+  // eslint-disable-next-line class-methods-use-this
   setFocusTo(id, delay = 0) {
     const interval = setInterval(() => {
       const element = document.getElementById(id)

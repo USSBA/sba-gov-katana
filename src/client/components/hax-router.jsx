@@ -4,7 +4,7 @@ import { Router } from 'react-router'
 class HaxRouter extends Component {
   componentDidMount() {
     // componentWillReceiveProps just whines about changing the routes prop so this shuts that up
-    this.router.componentWillReceiveProps = function() {}
+    this.router.componentWillReceiveProps = () => {}
   }
 
   componentDidUpdate(prevProps) {

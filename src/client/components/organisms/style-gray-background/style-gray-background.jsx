@@ -7,6 +7,7 @@ import { CardCollection } from 'organisms'
 // TODO: is using pararapher mapper here the right abstraction for code re-use?
 // should probably just use a render prop
 class StyleGrayBackground extends React.Component {
+  // eslint-disable-next-line class-methods-use-this
   makeParagraphs(paragraphData) {
     const paragraphList = paragraphMapper.makeParagraphs(
       paragraphData,

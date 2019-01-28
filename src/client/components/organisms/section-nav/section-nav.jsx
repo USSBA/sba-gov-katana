@@ -12,6 +12,56 @@ import * as ModalActions from '../../../actions/show-modal.js'
 import { determineMenuTileData } from '../../../services/utils.js'
 import { Link } from 'atoms'
 
+function isBusinessGuide(parentSiteMap, langCode) {
+  let result
+  if (langCode === 'es') {
+    result = parentSiteMap.fullUrl === '/guia-de-negocios'
+  } else {
+    result = parentSiteMap.fullUrl === '/business-guide'
+  }
+  return result
+}
+
+function makeNavLinks(sectionSiteMap, currentPageSiteMap, langCode) {
+  const navLinks = sectionSiteMap.children.map(function(item, index) {
+    const titleLinkData = determineMenuTileData(langCode, item)
+    let currentLinkClass = ''
+    if (
+      titleLinkData.fullUrl === currentPageSiteMap.fullUrl ||
+      (langCode === 'es' &&
+        currentPageSiteMap.spanishTranslation &&
+        titleLinkData.fullUrl === currentPageSiteMap.spanishTranslation.fullUrl)
+    ) {
+      currentLinkClass = styles.currentNavLink
+    }
+    return (
+      <li className={currentLinkClass} key={index}>
+        <Link
+          className="article-navigation-article-link-desktop"
+          id={'desktop-article-link-' + index}
+          to={titleLinkData.fullUrl}
+        >
+          {titleLinkData.title}
+        </Link>
+      </li>
+    )
+  })
+  return navLinks
+}
+
+function makeNavigationTitle(titleSiteMap, langCode) {
+  let sectionTitle
+  titleSiteMap.spanishTranslation && langCode === 'es'
+    ? (sectionTitle = titleSiteMap.spanishTranslation.title)
+    : (sectionTitle = titleSiteMap.title)
+
+  return (
+    <span id="article-navigation-title-desktop">
+      <h3>{sectionTitle}</h3>
+    </span>
+  )
+}
+
 class SectionNav extends React.Component {
   componentWillReceiveProps(nextProps) {
     /* eslint-disable no-magic-numbers*/
@@ -42,58 +92,8 @@ class SectionNav extends React.Component {
     /* eslint-enable no-magic-numbers*/
   }
 
-  isBusinessGuide(parentSiteMap, langCode) {
-    let result
-    if (langCode === 'es') {
-      result = parentSiteMap.fullUrl === '/guia-de-negocios'
-    } else {
-      result = parentSiteMap.fullUrl === '/business-guide'
-    }
-    return result
-  }
-
   getNthLineage(n) {
     return _.nth(this.props.lineage, n)
-  }
-
-  makeNavLinks(sectionSiteMap, currentPageSiteMap, langCode) {
-    const navLinks = sectionSiteMap.children.map(function(item, index) {
-      const titleLinkData = determineMenuTileData(langCode, item)
-      let currentLinkClass = ''
-      if (
-        titleLinkData.fullUrl === currentPageSiteMap.fullUrl ||
-        (langCode === 'es' &&
-          currentPageSiteMap.spanishTranslation &&
-          titleLinkData.fullUrl === currentPageSiteMap.spanishTranslation.fullUrl)
-      ) {
-        currentLinkClass = styles.currentNavLink
-      }
-      return (
-        <li className={currentLinkClass} key={index}>
-          <Link
-            className="article-navigation-article-link-desktop"
-            id={'desktop-article-link-' + index}
-            to={titleLinkData.fullUrl}
-          >
-            {titleLinkData.title}
-          </Link>
-        </li>
-      )
-    })
-    return navLinks
-  }
-
-  makeNavigationTitle(titleSiteMap, langCode) {
-    let sectionTitle
-    titleSiteMap.spanishTranslation && langCode === 'es'
-      ? (sectionTitle = titleSiteMap.spanishTranslation.title)
-      : (sectionTitle = titleSiteMap.title)
-
-    return (
-      <span id="article-navigation-title-desktop">
-        <h3>{sectionTitle}</h3>
-      </span>
-    )
   }
 
   stickyFunctionTop() {
@@ -107,15 +107,13 @@ class SectionNav extends React.Component {
   getBacklinkUrl(businessGuideSiteMap, parentSiteMap, langCode) {
     let backLink
     if (businessGuideSiteMap.spanishTranslation && parentSiteMap.spanishTranslation && langCode === 'es') {
-      backLink = (this.isBusinessGuide(businessGuideSiteMap, langCode)
+      backLink = (isBusinessGuide(businessGuideSiteMap, langCode)
         ? businessGuideSiteMap.spanishTranslation
         : parentSiteMap.spanishTranslation
       ).fullUrl
     } else {
-      backLink = (this.isBusinessGuide(businessGuideSiteMap, langCode)
-        ? businessGuideSiteMap
-        : parentSiteMap
-      ).fullUrl
+      backLink = (isBusinessGuide(businessGuideSiteMap, langCode) ? businessGuideSiteMap : parentSiteMap)
+        .fullUrl
     }
     return backLink
   }
@@ -126,7 +124,7 @@ class SectionNav extends React.Component {
     const backToText = backTo[langCode].text
     const { spanishTranslation, title } = this.getNthLineage(-2)
 
-    const backTitleText = this.isBusinessGuide(this.getNthLineage(0), langCode)
+    const backTitleText = isBusinessGuide(this.getNthLineage(0), langCode)
       ? allTopics[langCode].text
       : spanishTranslation && langCode === 'es'
       ? spanishTranslation.title
@@ -137,8 +135,8 @@ class SectionNav extends React.Component {
 
   render() {
     const { langCode } = this.props
-    const navLinks = this.makeNavLinks(this.getNthLineage(-2), this.getNthLineage(-1), langCode)
-    const navigationTitle = this.makeNavigationTitle(this.getNthLineage(-2), langCode)
+    const navLinks = makeNavLinks(this.getNthLineage(-2), this.getNthLineage(-1), langCode)
+    const navigationTitle = makeNavigationTitle(this.getNthLineage(-2), langCode)
     return (
       <div
         id="article-navigation-desktop"

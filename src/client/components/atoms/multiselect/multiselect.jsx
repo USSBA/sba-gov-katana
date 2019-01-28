@@ -54,9 +54,6 @@ class MultiSelectBox extends React.Component {
     })
   }
 
-  renderArrow() {
-    return <i src={chevron} />
-  }
   render() {
     const myValue = this.props.multi
       ? this.state.value

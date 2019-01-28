@@ -6,15 +6,11 @@ import { FormErrorMessage } from 'atoms'
 
 class RadioButtonGroup extends React.Component {
   fireChange(index) {
-    this.props.onChange(this.props.options[index].value)
+    const { onChange, options } = this.props
+    onChange(options[index].value)
   }
 
-  handleChange() {}
-
-  handleClick(index, target) {
-    target.fireChange(index)
-  }
-
+  // eslint-disable-next-line class-methods-use-this
   handleKeyPress(event, index, target) {
     const code = event.keyCode ? event.keyCode : event.which
     if (code === 32) {
@@ -39,7 +35,7 @@ class RadioButtonGroup extends React.Component {
   }
 
   render() {
-    const { id: _id, name, options, textStyle: _textStyle, value } = this.props
+    const { id: _id, name, onChange, options, textStyle: _textStyle, value } = this.props
     const radioButtons = options.map((item, index) => {
       const id = _id + '-radio' + index
       const isChecked = item.value === value
@@ -51,7 +47,7 @@ class RadioButtonGroup extends React.Component {
           className={
             styles.radioItem + ' ' + (isChecked ? styles.radioItemSelected : styles.radioItemNotSelected)
           }
-          onClick={event => this.handleClick(index, this)}
+          onClick={event => this.fireChange(index)}
           key={index}
           tabIndex="0"
           onKeyPress={event => this.handleKeyPress(event, index, this)}
@@ -66,7 +62,7 @@ class RadioButtonGroup extends React.Component {
             name={name}
             checked={isChecked}
             tabIndex="0"
-            onChange={this.handleChange}
+            onChange={() => {}}
             id={id}
             value={item.value}
           />
