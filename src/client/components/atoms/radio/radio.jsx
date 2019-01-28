@@ -1,33 +1,34 @@
 import React from 'react'
-import _ from 'lodash'
 
 import styles from './radio.scss'
 import { FormErrorMessage } from 'atoms'
 
 class RadioButtonGroup extends React.Component {
-  constructor(props) {
-    super()
-  }
   fireChange(index) {
     this.props.onChange(this.props.options[index].value)
   }
+
   handleChange() {}
-  handleClick(index, me) {
-    me.fireChange(index)
+
+  handleClick(index) {
+    this.fireChange(index)
   }
-  handleKeyPress(event, index, me) {
-    let code = event.keyCode ? event.keyCode : event.which
-    if (code == 32) {
-      me.fireChange(index)
+
+  handleKeyPress(event, index) {
+    const code = event.keyCode ? event.keyCode : event.which
+    if (code === 32) {
+      this.fireChange(index)
       event.preventDefault()
     }
   }
+
   handleBlur(index) {
-    let isLast = index === this.props.options.length - 1
+    const isLast = index === this.props.options.length - 1
     if (isLast) {
       this.props.onBlur()
     }
   }
+
   handleFocus() {
     this.props.onFocus({
       target: {
@@ -35,12 +36,13 @@ class RadioButtonGroup extends React.Component {
       }
     })
   }
+
+  /* eslint-disable no-invalid-this */
   render() {
-    let me = this
-    let radioButtons = this.props.options.map(function(item, index) {
-      let id = me.props.id + '-radio' + index
-      let isChecked = item.value === me.props.value
-      const textStyle = me.props.textStyle || styles.defaultRadioText
+    const radioButtons = this.props.options.map(function(item, index) {
+      const id = this.props.id + '-radio' + index
+      const isChecked = item.value === this.props.value
+      const textStyle = this.props.textStyle || styles.defaultRadioText
 
       return (
         <div
@@ -48,22 +50,22 @@ class RadioButtonGroup extends React.Component {
           className={
             styles.radioItem + ' ' + (isChecked ? styles.radioItemSelected : styles.radioItemNotSelected)
           }
-          onClick={event => me.handleClick(index, me)}
+          onClick={event => this.handleClick(index).bind(this)}
           key={index}
           tabIndex="0"
-          onKeyPress={event => me.handleKeyPress(event, index, me)}
-          onFocus={me.handleFocus.bind(me)}
-          onBlur={e => me.handleBlur(index)}
+          onKeyPress={event => this.handleKeyPress(event, index).bind(this)}
+          onFocus={this.handleFocus.bind(this)}
+          onBlur={e => this.handleBlur(index).bind(this)}
           role="radio"
           aria-checked={isChecked}
         >
           <input
             className={styles.regularRadio}
             type="radio"
-            name={me.props.name}
+            name={this.props.name}
             checked={isChecked}
             tabIndex="0"
-            onChange={me.handleChange}
+            onChange={this.handleChange}
             id={id}
             value={item.value}
           />
@@ -73,12 +75,8 @@ class RadioButtonGroup extends React.Component {
       )
     })
 
-    let errorMessage =
-      this.props.validationState == 'error' ? (
-        <FormErrorMessage errorText={this.props.errorText} />
-      ) : (
-        undefined
-      )
+    const errorMessage =
+      this.props.validationState === 'error' ? <FormErrorMessage errorText={this.props.errorText} /> : null
 
     return (
       <div id={this.props.id + '-container'}>
@@ -94,6 +92,7 @@ class RadioButtonGroup extends React.Component {
       </div>
     )
   }
+  /* eslint-enable no-invalid-this */
 }
 /* options is array of name/value/text triples */
 RadioButtonGroup.propTypes = {

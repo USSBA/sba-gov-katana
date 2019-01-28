@@ -9,6 +9,7 @@ import styles from './office-map.scss'
 import clientConfig from '../../../services/client-config.js'
 import officeResultStyles from '../office-result/office-result.scss'
 import $ from 'jquery'
+import officeMapStyles from './office-map-style.json'
 
 const googleMapURL = `https://maps.googleapis.com/maps/api/js?key=${
   config.googleMapsApiKey
@@ -28,6 +29,7 @@ const defaultMapPadding = {
   right: 541
 }
 
+/* eslint-disable no-undef */
 const OfficeMap = compose(
   withProps({
     googleMapURL,
@@ -38,7 +40,6 @@ const OfficeMap = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
-  const officeMapStyles = require('./office-map-style.json')
   const {
     markers,
     onMapMounted,
@@ -65,7 +66,7 @@ const OfficeMap = compose(
     onDragEnd: onDragEnd,
     onTilesLoaded
   }
-  //todo: move to proper lifecycle method
+  // TODO: move to proper lifecycle method
   if (markers.length > 0) {
     googleMapProps.ref = onMapMounted
     googleMapProps.defaultZoom = 4
@@ -79,21 +80,21 @@ const OfficeMap = compose(
     googleMapProps.defaultCenter = bounds.getCenter()
   }
 
-  if (!_.isEmpty(newCenter)) {
+  if (!isEmpty(newCenter)) {
     googleMapProps.center = newCenter
   }
 
   return (
     <GoogleMap {...googleMapProps}>
       {markers.map((item, index) => {
-        let selectedItemTitle = get(selectedItem, 'item.title[0]')
-        let itemTitle = get(item, 'selfRef.fields.title[0]')
-        let iconScale =
+        const selectedItemTitle = get(selectedItem, 'item.title[0]')
+        const itemTitle = get(item, 'selfRef.fields.title[0]')
+        const iconScale =
           (itemTitle && selectedItemTitle && selectedItemTitle === itemTitle) ||
           hoveredMarkerId === item.selfRef.id
             ? defaultIconScale * 1.25
             : defaultIconScale
-        let icon = {
+        const icon = {
           scaledSize: new google.maps.Size(iconScale, iconScale),
           url: marker
         }
@@ -183,10 +184,10 @@ class OfficeMapApp extends React.PureComponent {
       '.map [tabindex], .map iframe, .map a, .map button'
     )
     for (let i = 0; i < removeFromTabOrder.length; i++) {
-      const el = removeFromTabOrder[i]
-      const tabIndex = el.getAttribute('tabindex')
+      const element = removeFromTabOrder[i]
+      const tabIndex = element.getAttribute('tabindex')
       if (Number(tabIndex) !== 999) {
-        el.setAttribute('tabindex', 999)
+        element.setAttribute('tabindex', 999)
       }
     }
   }
@@ -239,12 +240,16 @@ class OfficeMapApp extends React.PureComponent {
     - this enables padding values to be assigned to individual sides of the map bounding box
   */
 
+  /* eslint-disable no-param-reassign */
   fitBoundsWithPadding(gMap, bounds, paddingXY) {
-    var projection = gMap.getProjection()
+    const projection = gMap.getProjection()
     if (projection) {
-      if (!$.isPlainObject(paddingXY)) paddingXY = { x: 0, y: 0 }
+      if (!$.isPlainObject(paddingXY)) {
+        paddingXY.x = 0
+        paddingXY.y = 0
+      }
 
-      var paddings = {
+      const paddings = {
         top: 0,
         right: 0,
         bottom: 0,
@@ -274,21 +279,22 @@ class OfficeMapApp extends React.PureComponent {
       }
 
       // copying the bounds object, since we will extend it
+      /* eslint-disable-next-line no-param-reassign */
       bounds = new google.maps.LatLngBounds(bounds.getSouthWest(), bounds.getNorthEast())
 
       // SW
-      var point1 = projection.fromLatLngToPoint(bounds.getSouthWest())
+      let point1 = projection.fromLatLngToPoint(bounds.getSouthWest())
 
       // we must call fitBounds 2 times - first is necessary to set up a projection with initial (actual) bounds
       // and then calculate new bounds by adding our pixel-sized paddings to the resulting viewport
       gMap.fitBounds(bounds)
 
-      var point2 = new google.maps.Point(
-        (typeof paddings.left == 'number' ? paddings.left : 0) / Math.pow(2, gMap.getZoom()) || 0,
-        (typeof paddings.bottom == 'number' ? paddings.bottom : 0) / Math.pow(2, gMap.getZoom()) || 0
+      let point2 = new google.maps.Point(
+        (typeof paddings.left === 'number' ? paddings.left : 0) / Math.pow(2, gMap.getZoom()) || 0,
+        (typeof paddings.bottom === 'number' ? paddings.bottom : 0) / Math.pow(2, gMap.getZoom()) || 0
       )
 
-      var newPoint = projection.fromPointToLatLng(
+      let newPoint = projection.fromPointToLatLng(
         new google.maps.Point(point1.x - point2.x, point1.y + point2.y)
       )
 
@@ -297,8 +303,8 @@ class OfficeMapApp extends React.PureComponent {
       // NE
       point1 = projection.fromLatLngToPoint(bounds.getNorthEast())
       point2 = new google.maps.Point(
-        (typeof paddings.right == 'number' ? paddings.right : 0) / Math.pow(2, gMap.getZoom()) || 0,
-        (typeof paddings.top == 'number' ? paddings.top : 0) / Math.pow(2, gMap.getZoom()) || 0
+        (typeof paddings.right === 'number' ? paddings.right : 0) / Math.pow(2, gMap.getZoom()) || 0,
+        (typeof paddings.top === 'number' ? paddings.top : 0) / Math.pow(2, gMap.getZoom()) || 0
       )
       newPoint = projection.fromPointToLatLng(
         new google.maps.Point(point1.x + point2.x, point1.y - point2.y)
@@ -309,6 +315,8 @@ class OfficeMapApp extends React.PureComponent {
       gMap.fitBounds(bounds)
     }
   }
+  /* eslint-enable no-param-reassign */
+  /* eslint-enable no-undef */
 
   handleMarkerClick(selectedItem) {
     this.props.onMarkerClick(selectedItem)
@@ -357,11 +365,11 @@ class OfficeMapApp extends React.PureComponent {
           onMarkerClick={e => {
             const { fields: item, exprs } = e
             const distance = exprs ? exprs.distance : null
-            const selectedItem = {
+            const markerSelectedItem = {
               item,
               distance
             }
-            this.handleMarkerClick(selectedItem)
+            this.handleMarkerClick(markerSelectedItem)
           }}
           onMarkerHover={id => {
             this.handleMarkerHover(id)

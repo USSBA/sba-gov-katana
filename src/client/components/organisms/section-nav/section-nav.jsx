@@ -1,6 +1,6 @@
 import React from 'react'
 import Waypoint from 'react-waypoint'
-import _ from 'lodash'
+import { nth } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -51,7 +51,7 @@ class SectionNav extends React.Component {
   }
 
   getNthLineage(n) {
-    return _.nth(this.props.lineage, n)
+    return nth(this.props.lineage, n)
   }
 
   makeNavLinks(sectionSiteMap, currentPageSiteMap, langCode) {
@@ -125,7 +125,9 @@ class SectionNav extends React.Component {
 
     const backTitleText = this.isBusinessGuide(this.getNthLineage(0), langCode)
       ? allTopics[langCode].text
-      : spanishTranslation && langCode === 'es' ? spanishTranslation.title : title
+      : spanishTranslation && langCode === 'es'
+      ? spanishTranslation.title
+      : title
 
     return `${backToText} ${backTitleText}`
   }
@@ -164,5 +166,8 @@ SectionNav.defaultProps = {
   langCode: 'en'
 }
 
-export default connect(null, mapDispatchToProps)(SectionNav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(SectionNav)
 export { SectionNav }

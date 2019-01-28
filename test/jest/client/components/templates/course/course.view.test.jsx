@@ -17,19 +17,18 @@ import CourseView, {
 } from 'templates/course/course.view.jsx'
 import sharedProps from './course-test-props'
 
-const f = () => {}
 const options = {
   context: {
     router: {
-      createHref: f,
+      createHref: () => {},
       getCurrentLocation: () => ({ pathname: '' }),
-      go: f,
-      goBack: f,
-      goForward: f,
-      isActive: f,
-      push: f,
-      replace: f,
-      setRouteLeaveHook: f
+      go: () => {},
+      goBack: () => {},
+      goForward: () => {},
+      isActive: () => {},
+      push: () => {},
+      replace: () => {},
+      setRouteLeaveHook: () => {}
     }
   },
   childContextTypes: { router: PropTypes.object }

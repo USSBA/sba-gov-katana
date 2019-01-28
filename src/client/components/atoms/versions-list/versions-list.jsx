@@ -11,9 +11,11 @@ const VersionsList = props => {
   const { doc } = props
   const { documentIdNumber, documentIdType, files, title } = doc
 
-  if (!files || (files.length && files.length <= 1)) return null
+  if (!files || (files.length && files.length <= 1)) {
+    return null
+  }
 
-  const filteredFiles = files.filter(file => file.fileUrl !== null && file.fileUrl !== undefined)
+  const filteredFiles = files.filter(file => Boolean(file.fileUrl))
   const list = filteredFiles.map((file, index) => {
     const { effectiveDate, fileUrl, version } = file
 

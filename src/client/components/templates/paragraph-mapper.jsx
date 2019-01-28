@@ -26,7 +26,7 @@ function makeParagraphs(
   let paragraphs = []
   let skipNextReadmore = false
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
-    let currentLanguage = getLanguageOverride()
+    const currentLanguage = getLanguageOverride()
 
     let paragraph = <p>{JSON.stringify(item)}</p>
     let paragraphType = item.type
@@ -82,6 +82,7 @@ function makeParagraphs(
         // remove it after the next full reseed is executed
         // \/\/\/\/\/
         if (item.btnTitle) {
+          /* eslint-disable-next-line no-param-reassign */
           item = Object.assign({}, item, {
             buttonAction: {
               link: {

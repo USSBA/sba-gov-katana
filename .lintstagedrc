@@ -1,3 +1,4 @@
 {
-  "*.{js,jsx,json,scss}": ["npm run format", "git add"]
+  "{src,test}/**/*.{js,jsx}": ["eslint --fix", "git add"],
+  "{src,test}/**/*.{json,scss}": ["prettier --write", "git add"]
 }

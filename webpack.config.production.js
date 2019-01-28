@@ -1,15 +1,28 @@
-var path = require('path')
-var webpack = require('webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const CompressionPlugin = require('compression-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const path = require('path')
+const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
-const sharedConfig = require('./webpack.config.shared.js')
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-var CompressionPlugin = require('compression-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+
+const sharedConfig = require('./webpack.config.shared')
 
 module.exports = function(env) {
   return webpackMerge(sharedConfig(), {
     devtool: 'no-source-map',
-    entry: ['babel-polyfill', './src/client/components/entry.jsx'],
+    entry: ['@babel/polyfill', './src/client/components/entry.jsx'],
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          extractComments: true,
+          uglifyOptions: {
+            compress: {
+              drop_console: true
+            }
+          }
+        })
+      ]
+    },
     output: {
       path: path.join(__dirname, 'public', 'build'),
       filename: '[hash:20].bundle.js',
@@ -27,31 +40,14 @@ module.exports = function(env) {
         debug: false
       }),
       new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/),
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify('production')
-        }
-      }),
-      new UglifyJSPlugin({
-        sourceMap: false,
-        extractComments: true,
-        uglifyOptions: {
-          compress: {
-            drop_console: true
-          },
-          output:{
-            comments: false
-          }
-        }
-      }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new webpack.optimize.OccurrenceOrderPlugin(true),
       new CompressionPlugin({
-        asset: '[path].gz[query]',
         algorithm: 'gzip',
+        filename: '[path].gz[query]',
+        minRatio: 0.8,
         test: /\.js$|\.css$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8
+        threshold: 10240
       })
     ],
     module: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { RelatedDocumentCards, DetailCardCollection } from 'organisms'
 import * as helper from 'client/fetch-content-helper'
 
@@ -28,41 +28,38 @@ describe('RelatedDocumentCards', () => {
     mockFetchSiteContent.mockRestore()
   })
 
-  test('should not render DetailDocumentCards component when there are no related documents', () => {
-    let customData = JSON.parse(data)
+  test('should not render DetailDocumentCards component when there are no related documents', async () => {
+    const customData = JSON.parse(data)
     mockFetchSiteContent.mockReturnValue('')
 
     const component = shallow(<RelatedDocumentCards data={customData} />)
-    setImmediate(() => {
-      expect(component.find(DetailCardCollection).length).toEqual(0)
-    })
+    await component.instance().componentDidMount()
+    expect(component.find(DetailCardCollection).length).toEqual(0)
   })
 
-  test('should render DetailDocumentCards component when there are related documents', () => {
-    let customData = JSON.parse(data)
+  test('should render DetailDocumentCards component when there are related documents', async () => {
+    const customData = JSON.parse(data)
     customData.relatedDocuments.push(2222)
 
     mockFetchSiteContent.mockReturnValue(customData)
 
     const component = shallow(<RelatedDocumentCards data={customData} />)
-    setImmediate(() => {
-      expect(component.find(DetailCardCollection).length).toEqual(1)
-    })
+    await component.instance().componentDidMount()
+    expect(component.find(DetailCardCollection).length).toEqual(1)
   })
 
-  test('should call fetchSiteContent() for each related document', () => {
-    let customData = JSON.parse(data)
+  test('should call fetchSiteContent() for each related document', async () => {
+    const customData = JSON.parse(data)
     customData.relatedDocuments.push(2222, 3333)
 
     mockFetchSiteContent.mockReturnValue(customData)
 
-    shallow(<RelatedDocumentCards data={customData} />)
-    setImmediate(() => {
-      expect(mockFetchSiteContent.mock.calls.length).toEqual(customData.relatedDocuments.length)
-    })
+    const component = shallow(<RelatedDocumentCards data={customData} />)
+    await component.instance().componentDidMount()
+    expect(mockFetchSiteContent).toHaveBeenCalledTimes(customData.relatedDocuments.length)
   })
 
-  test('should update state with the related document data', () => {
+  test('should update state with the related document data', async () => {
     const firstRelatedDocumentData = JSON.parse(data)
     firstRelatedDocumentData.documentIdType = 'Alternative form'
     firstRelatedDocumentData.id = 2222
@@ -107,9 +104,8 @@ describe('RelatedDocumentCards', () => {
     }
 
     const component = shallow(<RelatedDocumentCards data={mainDocumentData} />)
-    setImmediate(() => {
-      const updatedState = component.state('sortedDocuments')
-      expect(updatedState).toMatchObject(mockSortedDocumentsInState)
-    })
+    await component.instance().componentDidMount()
+    const updatedState = component.state('sortedDocuments')
+    expect(updatedState).toMatchObject(mockSortedDocumentsInState)
   })
 })

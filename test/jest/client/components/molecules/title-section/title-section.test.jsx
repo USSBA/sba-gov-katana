@@ -7,19 +7,18 @@ import { TitleSection } from 'molecules/title-section/title-section'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
-const f = () => {}
 const options = {
   context: {
     router: {
-      createHref: f,
+      createHref: () => {},
       getCurrentLocation: () => ({ pathname: '' }),
-      go: f,
-      goBack: f,
-      goForward: f,
-      isActive: f,
-      push: f,
-      replace: f,
-      setRouteLeaveHook: f
+      go: () => {},
+      goBack: () => {},
+      goForward: () => {},
+      isActive: () => {},
+      push: () => {},
+      replace: () => {},
+      setRouteLeaveHook: () => {}
     }
   },
   childContextTypes: { router: PropTypes.object }
@@ -63,9 +62,9 @@ describe('Content section', () => {
       />
     )
     const para = component.find('#titleSectionContentId').first()
-    const li = component.find('#titleSectionLinkId0')
+    const listElement = component.find('#titleSectionLinkId0')
 
     expect(para.text()).toBe('')
-    expect(li).toHaveLength(0)
+    expect(listElement).toHaveLength(0)
   })
 })

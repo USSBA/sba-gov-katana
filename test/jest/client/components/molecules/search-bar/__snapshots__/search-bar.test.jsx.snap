@@ -12,27 +12,27 @@ ShallowWrapper {
     aria-label="toggle search bar"
     onClick={[Function]}
     onKeyDown={[Function]}
->
+  >
     <i
-        alt="toggle search bar"
-        aria-hidden="true"
-        className="fa fa-search"
-        id="search-toggle-link"
+      alt="toggle search bar"
+      aria-hidden="true"
+      className="fa fa-search"
+      id="search-toggle-link"
     />
-</Link>,
+  </Link>,
   "nodes": Array [
     <Link
       aria-label="toggle search bar"
       onClick={[Function]}
       onKeyDown={[Function]}
->
+    >
       <i
-            alt="toggle search bar"
-            aria-hidden="true"
-            className="fa fa-search"
-            id="search-toggle-link"
+        alt="toggle search bar"
+        aria-hidden="true"
+        className="fa fa-search"
+        id="search-toggle-link"
       />
-</Link>,
+    </Link>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -42,7 +42,7 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <SearchBar
         onExpand={[Function]}
-/>,
+      />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -79,27 +79,27 @@ ShallowWrapper {
           aria-label="toggle search bar"
           onClick={[Function]}
           onKeyDown={[Function]}
->
+        >
           <i
-                    alt="toggle search bar"
-                    aria-hidden="true"
-                    className="fa fa-search"
-                    id="search-toggle-link"
+            alt="toggle search bar"
+            aria-hidden="true"
+            className="fa fa-search"
+            id="search-toggle-link"
           />
-</Link>,
+        </Link>,
         "_debugID": 2,
         "_renderedOutput": <Link
           aria-label="toggle search bar"
           onClick={[Function]}
           onKeyDown={[Function]}
->
+        >
           <i
-                    alt="toggle search bar"
-                    aria-hidden="true"
-                    className="fa fa-search"
-                    id="search-toggle-link"
+            alt="toggle search bar"
+            aria-hidden="true"
+            className="fa fa-search"
+            id="search-toggle-link"
           />
-</Link>,
+        </Link>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,
@@ -113,6 +113,6 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <SearchBar
     onExpand={[Function]}
-/>,
+  />,
 }
 `;

@@ -19,7 +19,6 @@ exports[`SearchPage to match snapshot 1`] = `
         >
           <div
             className="inputContainer "
-            hidden={undefined}
             id="search-container"
           >
             <label

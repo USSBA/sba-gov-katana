@@ -12,6 +12,7 @@ const FormPageButtons = props => {
     continueButtonFullWidth,
     continueButtonHandler,
     continueButtonText,
+    parentId,
     showBackButton
   } = props
 

@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 const icons = {
   'business-guide': [
     {

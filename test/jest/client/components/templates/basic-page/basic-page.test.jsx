@@ -13,11 +13,9 @@ const summary = 'My Basic Page Summary'
 
 describe('BasicPage', () => {
   beforeAll(() => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
+    history.pushState({}, null, '?lang=en')
   })
+
   test('renders default data', () => {
     const component = shallow(<BasicPage title="" summary="" />)
     expect(component.find('.basicpage-mobilenav')).toHaveLength(1)
@@ -39,9 +37,6 @@ describe('BasicPage', () => {
   })
 
   test('render a TitleSection component', () => {
-    const title = 'titleishere'
-    const summary = 'summaryishere'
-
     const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
     expect(BasicPageComponent.find(TitleSection).length).toEqual(1)
     expect(BasicPageComponent.find(TitleSection).prop('title')).toEqual(title)
@@ -61,19 +56,13 @@ describe('BasicPage', () => {
   })
 
   test('renders feedback form component when langCode is set to English', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
+    history.pushState({}, null, '?lang=en')
     const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
     expect(BasicPageComponent.find(FeedbackForm).length).toEqual(1)
   })
 
   test("doesn't render feedback form component when langCode is set to Spanish", () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=es'
-    })
+    history.pushState({}, null, '?lang=es')
     const BasicPageComponent = shallow(<BasicPage title={title} summary={summary} />)
     expect(BasicPageComponent.find(FeedbackForm).length).toEqual(0)
   })

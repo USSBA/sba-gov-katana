@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './small-icon.scss'
 
@@ -14,7 +14,7 @@ class SmallIcon extends React.Component {
       href: this.props.href
     }
 
-    if (!_.isEmpty(this.props['aria-label'])) {
+    if (!isEmpty(this.props['aria-label'])) {
       aProps['aria-label'] = this.props['aria-label']
     }
 
@@ -43,7 +43,8 @@ SmallIcon.propTypes = {
 
 SmallIcon.defaultProps = {
   tabbable: true,
-  href: undefined,
+  /* eslint-disable-next-line no-script-url */
+  href: 'javascript:void(0);',
   'aria-label': ''
 }
 

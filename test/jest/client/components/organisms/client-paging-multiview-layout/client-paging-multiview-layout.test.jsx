@@ -6,9 +6,7 @@ import { ClientPagingMultiviewLayout, PagingMultiviewLayout } from 'organisms'
 
 const totalItems = 25
 const resetMock = jest.fn()
-const itemsStub = Array.apply(null, Array(totalItems)).map(function(x, i) {
-  return i
-})
+const itemsStub = Array.apply(null, Array(totalItems)).map((_, i) => i)
 const rendererOneMock = jest.fn()
 const rendererTwoMock = jest.fn()
 

@@ -22,7 +22,7 @@ class Main extends React.Component {
     const disasterAlert = await fetchRestContent('disaster', null, getLanguageOverride())
     this.setState({
       disasterAlert,
-      disasterAlertCookieExists: cookie.load(DISASTER_ALERT_COOKIE) ? true : false
+      disasterAlertCookieExists: Boolean(cookie.load(DISASTER_ALERT_COOKIE))
     })
   }
 

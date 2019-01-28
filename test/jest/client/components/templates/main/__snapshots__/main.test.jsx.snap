@@ -10,61 +10,59 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className={false}
->
+  >
     <DisasterAlert
+      buttonText="Learn more"
+      description="Get information about disaster assistance"
+      link="/disaster-assistance"
+      onClose={[Function]}
+      visible={false}
+    />
+    <a
+      className="skipNav"
+      href="#main-content"
+    >
+      Skip to main content
+    </a>
+    <Header
+      additionalMenuOffset={0}
+    />
+    <Connect(MainLoader) />
+    <div
+      className="mainContent"
+      id="main-content"
+    />
+    <Footer />
+    <Connect(ModalController) />
+  </div>,
+  "nodes": Array [
+    <div
+      className={false}
+    >
+      <DisasterAlert
         buttonText="Learn more"
         description="Get information about disaster assistance"
         link="/disaster-assistance"
         onClose={[Function]}
-        spanishTranslation={undefined}
         visible={false}
-    />
-    <a
-        className="skipNav"
-        href="#main-content"
-    >
-        Skip to main content
-    </a>
-    <Header
-        additionalMenuOffset={0}
-    />
-    <Connect(MainLoader) />
-    <div
-        className="mainContent"
-        id="main-content"
-    />
-    <Footer />
-    <Connect(ModalController) />
-</div>,
-  "nodes": Array [
-    <div
-      className={false}
->
-      <DisasterAlert
-            buttonText="Learn more"
-            description="Get information about disaster assistance"
-            link="/disaster-assistance"
-            onClose={[Function]}
-            spanishTranslation={undefined}
-            visible={false}
       />
       <a
-            className="skipNav"
-            href="#main-content"
+        className="skipNav"
+        href="#main-content"
       >
-            Skip to main content
+        Skip to main content
       </a>
       <Header
-            additionalMenuOffset={0}
+        additionalMenuOffset={0}
       />
       <Connect(MainLoader) />
       <div
-            className="mainContent"
-            id="main-content"
+        className="mainContent"
+        id="main-content"
       />
       <Footer />
       <Connect(ModalController) />
-</div>,
+    </div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -110,61 +108,59 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className={false}
->
+        >
           <DisasterAlert
-                    buttonText="Learn more"
-                    description="Get information about disaster assistance"
-                    link="/disaster-assistance"
-                    onClose={[Function]}
-                    spanishTranslation={undefined}
-                    visible={false}
+            buttonText="Learn more"
+            description="Get information about disaster assistance"
+            link="/disaster-assistance"
+            onClose={[Function]}
+            visible={false}
           />
           <a
-                    className="skipNav"
-                    href="#main-content"
+            className="skipNav"
+            href="#main-content"
           >
-                    Skip to main content
+            Skip to main content
           </a>
           <Header
-                    additionalMenuOffset={0}
+            additionalMenuOffset={0}
           />
           <Connect(MainLoader) />
           <div
-                    className="mainContent"
-                    id="main-content"
+            className="mainContent"
+            id="main-content"
           />
           <Footer />
           <Connect(ModalController) />
-</div>,
+        </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className={false}
->
+        >
           <DisasterAlert
-                    buttonText="Learn more"
-                    description="Get information about disaster assistance"
-                    link="/disaster-assistance"
-                    onClose={[Function]}
-                    spanishTranslation={undefined}
-                    visible={false}
+            buttonText="Learn more"
+            description="Get information about disaster assistance"
+            link="/disaster-assistance"
+            onClose={[Function]}
+            visible={false}
           />
           <a
-                    className="skipNav"
-                    href="#main-content"
+            className="skipNav"
+            href="#main-content"
           >
-                    Skip to main content
+            Skip to main content
           </a>
           <Header
-                    additionalMenuOffset={0}
+            additionalMenuOffset={0}
           />
           <Connect(MainLoader) />
           <div
-                    className="mainContent"
-                    id="main-content"
+            className="mainContent"
+            id="main-content"
           />
           <Footer />
           <Connect(ModalController) />
-</div>,
+        </div>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,

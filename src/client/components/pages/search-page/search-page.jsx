@@ -84,7 +84,7 @@ class SearchPage extends PureComponent {
               hasNoResults = results.hasNoResults
             }
 
-            let newState = {
+            const newState = {
               searchResults,
               itemCount,
               hasNoResults
@@ -116,6 +116,7 @@ class SearchPage extends PureComponent {
     this.setState(data)
   }
 
+  /* eslint-disable no-invalid-this */
   updateSearchInputValue(value) {
     const input = document.getElementById('search')
     input.value = value
@@ -161,6 +162,7 @@ class SearchPage extends PureComponent {
     }
     window.location.href = `/search/?p=${pageNumber}&q=${term}`
   }
+  /* eslint-enable no-invalid-this */
 
   render() {
     const { searchTerm, newSearchTerm, searchResults } = this.state
@@ -188,12 +190,11 @@ class SearchPage extends PureComponent {
                   <ResultsList {...this.state} onPageNumberChange={this.onPageNumberChange.bind(this)} />
                 </div>
               )}
-              {!hasNoResults &&
-                searchResults.length === 0 && (
-                  <div>
-                    <p className="results-message">loading...</p>
-                  </div>
-                )}
+              {!hasNoResults && searchResults.length === 0 && (
+                <div>
+                  <p className="results-message">loading...</p>
+                </div>
+              )}
               {hasNoResults && (
                 <div>
                   <p className="results-message">Sorry, we couldn't find anything matching that query.</p>
@@ -328,6 +329,8 @@ const ResultsList = props => {
               </div>
             )
           }
+
+          return null
         })}
       </div>
     )

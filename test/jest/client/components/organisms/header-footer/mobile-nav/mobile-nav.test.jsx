@@ -15,7 +15,7 @@ getLanguageOverride.mockImplementation(() => 'en')
 
 test('Mobile Navigation has the correct structure', () => {
   const component = renderer.create(<MobileNav />)
-  let tree = component.toJSON()
+  const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 

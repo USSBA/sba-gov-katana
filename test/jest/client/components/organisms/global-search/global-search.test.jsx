@@ -5,19 +5,17 @@ import { shallow } from 'enzyme'
 import GlobalSearch from 'organisms/global-search/global-search'
 import mockGetContentData from '../../test-data/global-search-get-content-data.json'
 
-describe('GlobalSearch', () => {  
+describe('GlobalSearch', () => {
   var mockGetTaxonomies, mockGetContent
   beforeEach(() => {
     mockGetTaxonomies = jest.spyOn(GlobalSearch.prototype, 'getTaxonomies')
     mockGetContent = jest.spyOn(GlobalSearch.prototype, 'getContent')
-    const mockGetTaxonomiesData = [{
-      name: 'businessStage',
-      terms: [
-        'Plan your business',
-        'Launch your business',
-        'Manage your business',
-        'Grow your business' ]
-      }]
+    const mockGetTaxonomiesData = [
+      {
+        name: 'businessStage',
+        terms: ['Plan your business', 'Launch your business', 'Manage your business', 'Grow your business']
+      }
+    ]
     mockGetTaxonomies.mockReturnValue(mockGetTaxonomiesData)
     mockGetContent.mockReturnValue(mockGetContentData)
   })

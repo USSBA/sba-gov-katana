@@ -1,7 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
-import _ from 'lodash'
+import { shallow } from 'enzyme'
+import { clone } from 'lodash'
 
 import { ReadMore } from 'molecules'
 
@@ -18,22 +18,16 @@ const testProps = {
 
 describe('ReadMore', () => {
   test('should render expanded ReadMore component', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
-    const props = _.clone(testProps)
+    history.pushState({}, null, '?lang=en')
+    const props = clone(testProps)
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   test('should render read more button when not expanded', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=en'
-    })
-    const props = _.clone(testProps)
+    history.pushState({}, null, '?lang=en')
+    const props = clone(testProps)
     props.expanded = false
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
@@ -41,11 +35,8 @@ describe('ReadMore', () => {
   })
 
   test('should render expanded ReadMore component', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=es'
-    })
-    const props = _.clone(testProps)
+    history.pushState({}, null, '?lang=es')
+    const props = clone(testProps)
     const component = renderer.create(<ReadMore {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()

@@ -27,16 +27,17 @@ class GlobalSearch extends React.PureComponent {
   async componentWillMount() {
     const topicQuery = this.props.location.query.topic
     const taxonomies = await this.getTaxonomies(this.props.taxonomyFilters)
-    
+
     if (this.props.type === 'courses') {
-      let topic = topicQuery || 'All'
-      return this.setState({
-        filterValues: {
-          businessStage: topicQuery,
-          sortBy: this.props.defaultSortBy
+      const topic = topicQuery || 'All'
+      return this.setState(
+        {
+          filterValues: {
+            businessStage: topicQuery,
+            sortBy: this.props.defaultSortBy
+          },
+          taxonomies
         },
-        taxonomies
-      },
         async () => {
           await this.getContent(this.state.filterValues)
         }
@@ -57,7 +58,7 @@ class GlobalSearch extends React.PureComponent {
   }
 
   async getContent(filters) {
-    const results = await fetchSiteContent(this.props.type, filters)    
+    const results = await fetchSiteContent(this.props.type, filters)
     this.setState({
       items: results
     })
@@ -166,11 +167,7 @@ class GlobalSearch extends React.PureComponent {
     const queryParams = this.props.location.query
     let query
 
-    if (
-      this.props.type === 'courses' &&
-      queryParams.topic &&
-      taxonomies.indexOf(queryParams.topic) >= 0
-    ) {
+    if (this.props.type === 'courses' && queryParams.topic && taxonomies.indexOf(queryParams.topic) >= 0) {
       this.setState({
         filterValues: { businessStage: queryParams.topic, sortBy: this.props.defaultSortBy }
       })
@@ -188,11 +185,14 @@ class GlobalSearch extends React.PureComponent {
       sortBy: this.props.defaultSortBy
     })
 
-    this.setState({
-      items: 'IS_LOADING'
-    }, () => {
-      this.getContent(filterValuesWithSortByOption)
-    })
+    this.setState(
+      {
+        items: 'IS_LOADING'
+      },
+      () => {
+        this.getContent(filterValuesWithSortByOption)
+      }
+    )
   }
 
   renderItems(items) {

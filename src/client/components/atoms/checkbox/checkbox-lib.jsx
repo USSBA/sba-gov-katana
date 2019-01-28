@@ -46,11 +46,13 @@ export default class Checkbox extends React.Component {
   }
 
   handleChange = e => {
+    /* eslint-disable-next-line no-invalid-this */
     const { props } = this
     if (props.disabled) {
       return
     }
     if (!('checked' in props)) {
+      /* eslint-disable-next-line no-invalid-this */
       this.setState({
         checked: e.target.checked
       })
@@ -106,7 +108,7 @@ export default class Checkbox extends React.Component {
           disabled={disabled}
           tabIndex={tabIndex}
           className={styles['rc-checkbox-input']}
-          checked={!!checked}
+          checked={Boolean(checked)}
           onClick={e => {
             this.handleCheckboxClick(e)
           }}

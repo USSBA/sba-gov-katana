@@ -10,7 +10,9 @@ const Link = (props, context) => {
   if (!to) {
     // Make sure the link is still tabbable.
     return (
-      <a href="javascript:;" {...nativeProps}>
+      // TODO: https://stackoverflow.com/a/49561534/649134
+      /* eslint-disable-next-line no-script-url */
+      <a href="javascript:void(0);" {...nativeProps}>
         {children}
       </a>
     )
@@ -42,7 +44,6 @@ Link.contextTypes = {
 }
 
 Link.propTypes = {
-
   // A url to a linked resource or location.
   to: PropTypes.oneOfType([
     PropTypes.shape({

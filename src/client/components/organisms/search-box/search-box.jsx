@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { kebabCase } from 'lodash'
 
 import { Button, MultiSelect, SearchIcon, TextInput } from 'atoms'
 import styles from './search-box.scss'
@@ -103,7 +103,7 @@ class SearchBox extends React.Component {
     const returnKeyCode = 13
     if (event.keyCode === returnKeyCode) {
       logPageEvent({
-        category: _.kebabCase('Documentation-Lookup-Ancillary'),
+        category: kebabCase('Documentation-Lookup-Ancillary'),
         action: `Search Enter-Button:
           Type: ${this.state.selectedDocumentType};
           Program: ${this.state.selectedProgram};
@@ -116,7 +116,7 @@ class SearchBox extends React.Component {
 
   handleClick() {
     logPageEvent({
-      category: _.kebabCase('Documentation-Lookup-Ancillary'),
+      category: kebabCase('Documentation-Lookup-Ancillary'),
       action: `Search CTA-Click:
         Type: ${this.state.selectedDocumentType};
         Program: ${this.state.selectedProgram};

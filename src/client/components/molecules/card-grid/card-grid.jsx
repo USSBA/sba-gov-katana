@@ -2,21 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { chunk } from 'lodash'
 
-import s from './card-grid.scss'
+import style from './card-grid.scss'
 
 class CardGrid extends React.Component {
   renderCard(item, index) {
     return (
-      <div className={'card-container ' + s.card} key={index}>
+      <div className={'card-container ' + style.card} key={index}>
         {this.props.renderCard(item, index)}
       </div>
     )
   }
 
-  renderRow(chunk, index) {
+  renderRow(row, index) {
     return (
-      <div className={s.cardRow} key={index}>
-        {chunk.map(this.renderCard.bind(this))}
+      <div className={style.cardRow} key={index}>
+        {row.map(this.renderCard.bind(this))}
       </div>
     )
   }
@@ -27,7 +27,7 @@ class CardGrid extends React.Component {
   }
 
   render() {
-    return <div className={'card-grid ' + s.container}>{this.renderCards()}</div>
+    return <div className={'card-grid ' + style.container}>{this.renderCards()}</div>
   }
 }
 

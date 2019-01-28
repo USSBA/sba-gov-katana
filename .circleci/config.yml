@@ -23,46 +23,46 @@ workflows:
     - cache-dependencies:
         filters:
           branches:
-            only: 
+            only:
             - /.*/
           tags:
-            only: 
+            only:
             - /.*/
     - test-jest:
         requires: [cache-dependencies]
         filters:
           branches:
-            only: 
+            only:
             - /.*/
           tags:
-            only: 
+            only:
             - /.*/
     - test-mocha:
         requires: [cache-dependencies]
         filters:
           branches:
-            only: 
+            only:
             - /.*/
           tags:
-            only: 
+            only:
             - /.*/
     - test-lint:
         requires: [cache-dependencies]
         filters:
           branches:
-            only: 
+            only:
             - /.*/
           tags:
-            only: 
+            only:
             - /.*/
     - test-format:
         requires: [cache-dependencies]
         filters:
           branches:
-            only: 
+            only:
             - /.*/
           tags:
-            only: 
+            only:
             - /.*/
     - build-webpack:
         requires: [test-jest, test-mocha, test-lint, test-format]
@@ -206,19 +206,6 @@ jobs:
           name: run mocha
           command: |
             npm run test-mocha
-  test-lint:
-    docker:
-    - image: circleci/node:8.10
-    steps:
-      - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v2-dependencies-{{ checksum "package.json" }}
-      - run:
-          name: run lint
-          command: |
-            npm run lint
   test-format:
     docker:
     - image: circleci/node:8.10
@@ -229,9 +216,9 @@ jobs:
         keys:
         - v2-dependencies-{{ checksum "package.json" }}
     - run:
-        name: run prettier format check
-        command: |
-          npm run test-format
+        name: run eslint fix and prettier
+        command:
+          npm run format
   build-webpack:
     docker:
     - image: circleci/node:8.10
@@ -285,7 +272,7 @@ jobs:
               ENVIRONMENT=${CIRCLE_TAG}
             else
               ENVIRONMENT=${CIRCLE_BRANCH}
-            fi  
+            fi
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
@@ -319,7 +306,7 @@ jobs:
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
                 ;;
             esac
-            
+
             SOURCE_PREFIX=${ENVIRONMENT}
             if [ "$SOURCE_PREFIX" == "integration" ]
             then
@@ -329,7 +316,7 @@ jobs:
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${SOURCE_PREFIX}/katana-lambda.zip"
-            
+
   deploy-package:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -344,7 +331,7 @@ jobs:
               TARGET_ENVIRONMENT=${CIRCLE_TAG}
             else
               TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
-            fi 
+            fi
 
             case $TARGET_ENVIRONMENT in
               integration)
@@ -379,11 +366,11 @@ jobs:
               ENVIRONMENT=${CIRCLE_TAG}
             else
               ENVIRONMENT=${CIRCLE_BRANCH}
-            fi  
+            fi
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
-            
+
             SOURCE_PREFIX=${ENVIRONMENT}
             case $ENVIRONMENT in
               production)
@@ -397,7 +384,7 @@ jobs:
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
             aws s3api put-object --body "workspace/katana-lambda.zip" --bucket "${BUCKET_NAME}" --key "${SOURCE_PREFIX}/katana-lambda.zip"
-            
+
   deploy-package-with-approval:
     docker:
       - image: ussba/cc-docker-git-aws:latest
@@ -412,7 +399,7 @@ jobs:
               TARGET_ENVIRONMENT=${CIRCLE_TAG}
             else
               TARGET_ENVIRONMENT=${CIRCLE_BRANCH}
-            fi 
+            fi
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}

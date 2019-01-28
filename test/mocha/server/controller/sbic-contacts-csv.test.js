@@ -1,13 +1,15 @@
+/* eslint-disable no-sync */
 // Test the Creation of an SBIC CSV file
 
-import chai from 'chai'
-import sinon from 'sinon'
+import HttpStatus from 'http-status-codes'
 import axios from 'axios'
-import config from 'config'
+import chai from 'chai'
 import fs from 'fs'
 import path from 'path'
-import HttpStatus from 'http-status-codes'
+import sinon from 'sinon'
+
 import * as SbicContactsCsv from '../../../../src/controllers/sbic-contacts-csv.js'
+import config from 'config'
 
 // import sbic-contacts-csv controller
 // return csv file (based on the contacts.json file input)
@@ -53,6 +55,7 @@ describe('SbicContactsCsv', () => {
       stubConfigGet.restore()
     })
 
+    /* eslint-disable no-invalid-this */
     beforeEach(() => {
       // add spies to response object
       // then overwrite methods with spies that assert expectations
@@ -69,6 +72,7 @@ describe('SbicContactsCsv', () => {
         })
       }
     })
+    /* eslint-enable no-invalid-this */
 
     afterEach(() => {
       response.header.reset()

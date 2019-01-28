@@ -37,6 +37,7 @@ class PreviousNext extends React.Component {
     )
   }
 
+  /* eslint-disable no-invalid-this */
   getAdjacentArticle = (indexDifference, langCode) => {
     const { lineage } = this.props
 
@@ -100,6 +101,7 @@ class PreviousNext extends React.Component {
     const thirdToLast = nth(this.props.lineage, -3)
     return thirdToLast ? thirdToLast.children : null
   }
+  /* eslint-enable no-invalid-this */
 }
 
 PreviousNext.propTypes = {

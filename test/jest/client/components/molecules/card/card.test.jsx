@@ -64,10 +64,7 @@ describe('Card', () => {
   })
 
   test('should render the spanish version correctly if the link is just a string', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=es'
-    })
+    history.pushState({}, null, '?lang=es')
 
     const tree = renderer.create(component('/my-spanish-path/my-page')).toJSON()
     expect(tree).toMatchSnapshot()

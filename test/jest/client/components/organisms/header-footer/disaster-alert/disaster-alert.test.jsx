@@ -58,10 +58,7 @@ describe('Disaster Alert', () => {
   })
 
   it('should match snapshot with Spanish content', () => {
-    Object.defineProperty(window.location, 'search', {
-      writable: true,
-      value: '?lang=es'
-    })
+    history.pushState({}, null, '?lang=es')
 
     const component = renderer.create(<DisasterAlert {...alertProps1} />)
     const tree = component.toJSON()

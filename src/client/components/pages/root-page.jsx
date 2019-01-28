@@ -18,11 +18,8 @@ export class RootPage extends React.Component {
   }
 
   componentWillMount() {
-    let me = this
     fetchSiteContent('siteMap').then(data => {
-      me.setState({
-        siteMap: data
-      })
+      this.setState({ siteMap: data })
     })
   }
 

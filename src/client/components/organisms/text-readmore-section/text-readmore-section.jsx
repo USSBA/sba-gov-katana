@@ -13,6 +13,7 @@ class TextReadMoreSection extends React.Component {
     }
   }
 
+  /* eslint-disable no-invalid-this */
   handleReadMoreStatus(readMoreStatus) {
     this.setState({ readMoreExpanded: readMoreStatus })
   }
@@ -47,6 +48,7 @@ class TextReadMoreSection extends React.Component {
    *  If resizing becomes slow, remove this code.
    **/
   resize = () => this.forceUpdate()
+  /* eslint-enable no-invalid-this */
 
   componentDidMount() {
     window.addEventListener('resize', debounce(this.resize, 400))
@@ -58,7 +60,7 @@ class TextReadMoreSection extends React.Component {
   /** End special render functions **/
 
   render() {
-    let expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
+    const expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
 
     let subcomponents = [this.makeReadMoreSection(), this.makeTextSection()]
     if (!this.state.readMoreExpanded && window.innerWidth > 1079) {

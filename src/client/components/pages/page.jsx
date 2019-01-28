@@ -13,20 +13,17 @@ class Page extends React.Component {
   }
 
   componentWillMount() {
-    let langOverride = getLanguageOverride()
+    const langOverride = getLanguageOverride()
     const id = this.props.nodeId
     if (id > 0) {
-      let me = this
       fetchRestContent('node', id, langOverride).then(data => {
-        me.setState({
-          data
-        })
+        this.setState({ data })
       })
     }
   }
 
   render() {
-    let { data } = this.state
+    const { data } = this.state
     if (data && this.props.lineage) {
       if (data.type === 'page') {
         return (

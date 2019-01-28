@@ -42,7 +42,7 @@ class OfficeResult extends React.PureComponent {
     const isHovered = this.props.item.id === hoveredMarkerId
 
     const cardLayoutClassName = classNames({
-      ['card-layout']: true,
+      'card-layout': true,
       [styles.officeResultContainer]: true,
       [styles.hoveredBorder]: isHovered,
       [styles.focus]: true

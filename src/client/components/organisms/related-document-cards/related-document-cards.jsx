@@ -1,11 +1,12 @@
 import React from 'react'
-import _ from 'lodash'
+import queryString from 'querystring'
+import { filter, isEmpty, keys, uniq } from 'lodash'
+import { browserHistory } from 'react-router'
+
+import style from './related-document-cards.scss'
 import { DetailCardCollection } from 'organisms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
-import queryString from 'querystring'
 import { logEvent, logPageEvent } from '../../../services/analytics'
-import { browserHistory } from 'react-router'
-import s from './related-document-cards.scss'
 
 class RelatedDocumentCards extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class RelatedDocumentCards extends React.Component {
     }
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const {
       data: { relatedDocuments }
     } = this.props
@@ -35,12 +36,13 @@ class RelatedDocumentCards extends React.Component {
   sortRelatedDocuments(relatedDocuments) {
     if (relatedDocuments) {
       const sortedAndFilteredDocuments = {}
-      _.uniq(
+      uniq(
         relatedDocuments.map(relatedDocument => {
           return relatedDocument.documentIdType
         })
+        /* eslint-disable-next-line array-callback-return */
       ).map(docType => {
-        const filteredDocuments = _.filter(relatedDocuments, ['documentIdType', docType])
+        const filteredDocuments = filter(relatedDocuments, ['documentIdType', docType])
         const sortedDocuments = filteredDocuments.sort((a, b) => {
           return a.title.toLowerCase() > b.title.toLowerCase()
         })
@@ -65,16 +67,16 @@ class RelatedDocumentCards extends React.Component {
 
   renderRelatedDocumentSections() {
     const { sortedDocuments } = this.state
-    return _.keys(sortedDocuments)
+    return keys(sortedDocuments)
       .sort()
       .map((documentType, index) => {
         const documents = sortedDocuments[documentType]
         return (
           <div className={'related-document-section'} key={index}>
-            <div className={'related-document-section-header ' + s.sectionHeader}>
-              <h3 className={s.sectionTitle}>{documentType} </h3>
+            <div className={'related-document-section-header ' + style.sectionHeader}>
+              <h3 className={style.sectionTitle}>{documentType} </h3>
               <a
-                className={s.browseAll}
+                className={style.browseAll}
                 onClick={() => {
                   return this.handleBrowseAll(documentType)
                 }}
@@ -92,10 +94,10 @@ class RelatedDocumentCards extends React.Component {
 
   render() {
     return (
-      <div className={s.container}>
-        {!_.isEmpty(this.state.sortedDocuments) ? (
+      <div className={style.container}>
+        {!isEmpty(this.state.sortedDocuments) ? (
           <div>
-            <h2 className={s.title}>Related documents</h2>
+            <h2 className={style.title}>Related documents</h2>
             {this.renderRelatedDocumentSections()}
           </div>
         ) : (

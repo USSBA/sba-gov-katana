@@ -10,509 +10,509 @@ ShallowWrapper {
   "length": 1,
   "node": <div
     className="tenStepsLandingPage"
->
+  >
     <Connect(RemoveMainLoader) />
     <div
-        className="titleSection"
+      className="titleSection"
     >
-        <LongScrollNav
-            navType="top"
+      <LongScrollNav
+        navType="top"
+      />
+      <div
+        className="titleSectionText"
+      >
+        <h1>
+          10 steps to start your business
+        </h1>
+        <Waypoint
+          bottomOffset="0px"
+          fireOnRapidScroll={true}
+          horizontal={false}
+          onEnter={[Function]}
+          onLeave={[Function]}
+          onPositionChange={[Function]}
+          topOffset="0px"
+        >
+          <p>
+            Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
+          </p>
+        </Waypoint>
+      </div>
+      <a
+        aria-hidden="true"
+        href="#step-1"
+      >
+        <img
+          className="scrollButton"
+          src="test-file-stub"
         />
-        <div
-            className="titleSectionText"
-        >
-            <h1>
-                10 steps to start your business
-            </h1>
-            <Waypoint
-                bottomOffset="0px"
-                fireOnRapidScroll={true}
-                horizontal={false}
-                onEnter={[Function]}
-                onLeave={[Function]}
-                onPositionChange={[Function]}
-                topOffset="0px"
-            >
-                <p>
-                    Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
-                </p>
-            </Waypoint>
-        </div>
-        <a
-            aria-hidden="true"
-            href="#step-1"
-        >
-            <img
-                className="scrollButton"
-                src="test-file-stub"
-            />
-        </a>
-        <Link
-            className="backLink"
-            to="/business-guide"
-        >
-            Back to all topics
-        </Link>
+      </a>
+      <Link
+        className="backLink"
+        to="/business-guide"
+      >
+        Back to all topics
+      </Link>
     </div>
     <span
-        className="anchor"
-        id="step-1"
+      className="anchor"
+      id="step-1"
     />
     <div
-        className="tenStepsLandingPage"
-        id="tensteps-landing-page-id"
+      className="tenStepsLandingPage"
+      id="tensteps-landing-page-id"
     >
-        <LongScrollSection
-            index={0}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/research.png",
-                    "imageAlt": "Conduct market research",
-                    "leftAlignBox": true,
-                    "link": "/business-guide/plan/market-research-competitive-analysis",
-                    "sectionNum": 1,
-                    "solidBox": false,
-                    "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
-                    "title": "Conduct market research",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={1}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/plan.jpg",
-                    "imageAlt": "Write your business plan",
-                    "leftAlignBox": false,
-                    "link": "/business-guide/plan-your-business/write-your-business-plan",
-                    "sectionNum": 2,
-                    "solidBox": true,
-                    "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
-                    "title": "Write your business plan",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={2}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/fund.jpg",
-                    "imageAlt": "Fund your business",
-                    "leftAlignBox": true,
-                    "link": "/business-guide/plan-your-business/fund-your-business",
-                    "sectionNum": 3,
-                    "solidBox": false,
-                    "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
-                    "title": "Fund your business",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={3}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/location.jpg",
-                    "imageAlt": "Pick your business location",
-                    "leftAlignBox": false,
-                    "link": "/business-guide/launch-your-business/pick-your-business-location",
-                    "sectionNum": 4,
-                    "solidBox": true,
-                    "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
-                    "title": "Pick your business location",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={4}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                    "imageAlt": "Choose a business structure",
-                    "leftAlignBox": true,
-                    "link": "/business-guide/launch-your-business/choose-business-structure",
-                    "sectionNum": 5,
-                    "solidBox": false,
-                    "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
-                    "title": "Choose a business structure",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={5}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/name.jpg",
-                    "imageAlt": "Choose your business name",
-                    "leftAlignBox": true,
-                    "link": "/business-guide/launch-your-business/choose-your-business-name",
-                    "sectionNum": 6,
-                    "solidBox": true,
-                    "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
-                    "title": "Choose your business name",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={6}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/register.jpg",
-                    "imageAlt": "Register your business",
-                    "leftAlignBox": false,
-                    "link": "/business-guide/launch-your-business/register-your-business",
-                    "sectionNum": 7,
-                    "solidBox": true,
-                    "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
-                    "title": "Register your business",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={7}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/tax-ids.png",
-                    "imageAlt": "Get federal and state tax IDs",
-                    "leftAlignBox": true,
-                    "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
-                    "sectionNum": 8,
-                    "solidBox": false,
-                    "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
-                    "title": "Get federal and state tax IDs",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={8}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/license.jpg",
-                    "imageAlt": "Apply for licenses and permits",
-                    "leftAlignBox": false,
-                    "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
-                    "sectionNum": 9,
-                    "solidBox": true,
-                    "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
-                    "title": "Apply for licenses and permits",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
-        <LongScrollSection
-            index={9}
-            sectionEnter={[Function]}
-            sectionItem={
-                Object {
-                    "image": "/assets/images/tensteps/bank.png",
-                    "imageAlt": "Open a business bank account",
-                    "leftAlignBox": true,
-                    "link": "/business-guide/launch-your-business/open-business-bank-account",
-                    "sectionNum": 10,
-                    "solidBox": false,
-                    "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
-                    "title": "Open a business bank account",
-                  }
-            }
-            sectionLeave={[Function]}
-        />
+      <LongScrollSection
+        index={0}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/research.png",
+            "imageAlt": "Conduct market research",
+            "leftAlignBox": true,
+            "link": "/business-guide/plan/market-research-competitive-analysis",
+            "sectionNum": 1,
+            "solidBox": false,
+            "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
+            "title": "Conduct market research",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={1}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/plan.jpg",
+            "imageAlt": "Write your business plan",
+            "leftAlignBox": false,
+            "link": "/business-guide/plan-your-business/write-your-business-plan",
+            "sectionNum": 2,
+            "solidBox": true,
+            "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
+            "title": "Write your business plan",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={2}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/fund.jpg",
+            "imageAlt": "Fund your business",
+            "leftAlignBox": true,
+            "link": "/business-guide/plan-your-business/fund-your-business",
+            "sectionNum": 3,
+            "solidBox": false,
+            "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
+            "title": "Fund your business",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={3}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/location.jpg",
+            "imageAlt": "Pick your business location",
+            "leftAlignBox": false,
+            "link": "/business-guide/launch-your-business/pick-your-business-location",
+            "sectionNum": 4,
+            "solidBox": true,
+            "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
+            "title": "Pick your business location",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={4}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/business-structure-scrabble.png",
+            "imageAlt": "Choose a business structure",
+            "leftAlignBox": true,
+            "link": "/business-guide/launch-your-business/choose-business-structure",
+            "sectionNum": 5,
+            "solidBox": false,
+            "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
+            "title": "Choose a business structure",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={5}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/name.jpg",
+            "imageAlt": "Choose your business name",
+            "leftAlignBox": true,
+            "link": "/business-guide/launch-your-business/choose-your-business-name",
+            "sectionNum": 6,
+            "solidBox": true,
+            "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
+            "title": "Choose your business name",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={6}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/register.jpg",
+            "imageAlt": "Register your business",
+            "leftAlignBox": false,
+            "link": "/business-guide/launch-your-business/register-your-business",
+            "sectionNum": 7,
+            "solidBox": true,
+            "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
+            "title": "Register your business",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={7}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/tax-ids.png",
+            "imageAlt": "Get federal and state tax IDs",
+            "leftAlignBox": true,
+            "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
+            "sectionNum": 8,
+            "solidBox": false,
+            "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
+            "title": "Get federal and state tax IDs",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={8}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/license.jpg",
+            "imageAlt": "Apply for licenses and permits",
+            "leftAlignBox": false,
+            "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
+            "sectionNum": 9,
+            "solidBox": true,
+            "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
+            "title": "Apply for licenses and permits",
+          }
+        }
+        sectionLeave={[Function]}
+      />
+      <LongScrollSection
+        index={9}
+        sectionEnter={[Function]}
+        sectionItem={
+          Object {
+            "image": "/assets/images/tensteps/bank.png",
+            "imageAlt": "Open a business bank account",
+            "leftAlignBox": true,
+            "link": "/business-guide/launch-your-business/open-business-bank-account",
+            "sectionNum": 10,
+            "solidBox": false,
+            "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
+            "title": "Open a business bank account",
+          }
+        }
+        sectionLeave={[Function]}
+      />
     </div>
     <div
-        className="lastSection"
+      className="lastSection"
     >
-        <div
-            className="lastSectionText"
+      <div
+        className="lastSectionText"
+      >
+        <h1>
+          Open Shop
+        </h1>
+        <Waypoint
+          bottomOffset="0px"
+          fireOnRapidScroll={true}
+          horizontal={false}
+          onEnter={[Function]}
+          onLeave={[Function]}
+          onPositionChange={[Function]}
+          topOffset="0px"
         >
-            <h1>
-                Open Shop
-            </h1>
-            <Waypoint
-                bottomOffset="0px"
-                fireOnRapidScroll={true}
-                horizontal={false}
-                onEnter={[Function]}
-                onLeave={[Function]}
-                onPositionChange={[Function]}
-                topOffset="0px"
-            >
-                <p>
-                    Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
-                </p>
-            </Waypoint>
-        </div>
+          <p>
+            Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
+          </p>
+        </Waypoint>
+      </div>
     </div>
      
     <div />
-</div>,
+  </div>,
   "nodes": Array [
     <div
       className="tenStepsLandingPage"
->
+    >
       <Connect(RemoveMainLoader) />
       <div
-            className="titleSection"
+        className="titleSection"
       >
-            <LongScrollNav
-                  navType="top"
-            />
-            <div
-                  className="titleSectionText"
-            >
-                  <h1>
-                        10 steps to start your business
-                  </h1>
-                  <Waypoint
-                        bottomOffset="0px"
-                        fireOnRapidScroll={true}
-                        horizontal={false}
-                        onEnter={[Function]}
-                        onLeave={[Function]}
-                        onPositionChange={[Function]}
-                        topOffset="0px"
-                  >
-                        <p>
-                              Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
-                        </p>
-                  </Waypoint>
-            </div>
-            <a
-                  aria-hidden="true"
-                  href="#step-1"
-            >
-                  <img
-                        className="scrollButton"
-                        src="test-file-stub"
-                  />
-            </a>
-            <Link
-                  className="backLink"
-                  to="/business-guide"
-            >
-                  Back to all topics
-            </Link>
+        <LongScrollNav
+          navType="top"
+        />
+        <div
+          className="titleSectionText"
+        >
+          <h1>
+            10 steps to start your business
+          </h1>
+          <Waypoint
+            bottomOffset="0px"
+            fireOnRapidScroll={true}
+            horizontal={false}
+            onEnter={[Function]}
+            onLeave={[Function]}
+            onPositionChange={[Function]}
+            topOffset="0px"
+          >
+            <p>
+              Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
+            </p>
+          </Waypoint>
+        </div>
+        <a
+          aria-hidden="true"
+          href="#step-1"
+        >
+          <img
+            className="scrollButton"
+            src="test-file-stub"
+          />
+        </a>
+        <Link
+          className="backLink"
+          to="/business-guide"
+        >
+          Back to all topics
+        </Link>
       </div>
       <span
-            className="anchor"
-            id="step-1"
+        className="anchor"
+        id="step-1"
       />
       <div
-            className="tenStepsLandingPage"
-            id="tensteps-landing-page-id"
+        className="tenStepsLandingPage"
+        id="tensteps-landing-page-id"
       >
-            <LongScrollSection
-                  index={0}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/research.png",
-                              "imageAlt": "Conduct market research",
-                              "leftAlignBox": true,
-                              "link": "/business-guide/plan/market-research-competitive-analysis",
-                              "sectionNum": 1,
-                              "solidBox": false,
-                              "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
-                              "title": "Conduct market research",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={1}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/plan.jpg",
-                              "imageAlt": "Write your business plan",
-                              "leftAlignBox": false,
-                              "link": "/business-guide/plan-your-business/write-your-business-plan",
-                              "sectionNum": 2,
-                              "solidBox": true,
-                              "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
-                              "title": "Write your business plan",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={2}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/fund.jpg",
-                              "imageAlt": "Fund your business",
-                              "leftAlignBox": true,
-                              "link": "/business-guide/plan-your-business/fund-your-business",
-                              "sectionNum": 3,
-                              "solidBox": false,
-                              "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
-                              "title": "Fund your business",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={3}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/location.jpg",
-                              "imageAlt": "Pick your business location",
-                              "leftAlignBox": false,
-                              "link": "/business-guide/launch-your-business/pick-your-business-location",
-                              "sectionNum": 4,
-                              "solidBox": true,
-                              "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
-                              "title": "Pick your business location",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={4}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                              "imageAlt": "Choose a business structure",
-                              "leftAlignBox": true,
-                              "link": "/business-guide/launch-your-business/choose-business-structure",
-                              "sectionNum": 5,
-                              "solidBox": false,
-                              "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
-                              "title": "Choose a business structure",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={5}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/name.jpg",
-                              "imageAlt": "Choose your business name",
-                              "leftAlignBox": true,
-                              "link": "/business-guide/launch-your-business/choose-your-business-name",
-                              "sectionNum": 6,
-                              "solidBox": true,
-                              "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
-                              "title": "Choose your business name",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={6}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/register.jpg",
-                              "imageAlt": "Register your business",
-                              "leftAlignBox": false,
-                              "link": "/business-guide/launch-your-business/register-your-business",
-                              "sectionNum": 7,
-                              "solidBox": true,
-                              "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
-                              "title": "Register your business",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={7}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/tax-ids.png",
-                              "imageAlt": "Get federal and state tax IDs",
-                              "leftAlignBox": true,
-                              "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
-                              "sectionNum": 8,
-                              "solidBox": false,
-                              "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
-                              "title": "Get federal and state tax IDs",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={8}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/license.jpg",
-                              "imageAlt": "Apply for licenses and permits",
-                              "leftAlignBox": false,
-                              "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
-                              "sectionNum": 9,
-                              "solidBox": true,
-                              "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
-                              "title": "Apply for licenses and permits",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
-            <LongScrollSection
-                  index={9}
-                  sectionEnter={[Function]}
-                  sectionItem={
-                        Object {
-                              "image": "/assets/images/tensteps/bank.png",
-                              "imageAlt": "Open a business bank account",
-                              "leftAlignBox": true,
-                              "link": "/business-guide/launch-your-business/open-business-bank-account",
-                              "sectionNum": 10,
-                              "solidBox": false,
-                              "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
-                              "title": "Open a business bank account",
-                            }
-                  }
-                  sectionLeave={[Function]}
-            />
+        <LongScrollSection
+          index={0}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/research.png",
+              "imageAlt": "Conduct market research",
+              "leftAlignBox": true,
+              "link": "/business-guide/plan/market-research-competitive-analysis",
+              "sectionNum": 1,
+              "solidBox": false,
+              "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
+              "title": "Conduct market research",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={1}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/plan.jpg",
+              "imageAlt": "Write your business plan",
+              "leftAlignBox": false,
+              "link": "/business-guide/plan-your-business/write-your-business-plan",
+              "sectionNum": 2,
+              "solidBox": true,
+              "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
+              "title": "Write your business plan",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={2}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/fund.jpg",
+              "imageAlt": "Fund your business",
+              "leftAlignBox": true,
+              "link": "/business-guide/plan-your-business/fund-your-business",
+              "sectionNum": 3,
+              "solidBox": false,
+              "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
+              "title": "Fund your business",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={3}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/location.jpg",
+              "imageAlt": "Pick your business location",
+              "leftAlignBox": false,
+              "link": "/business-guide/launch-your-business/pick-your-business-location",
+              "sectionNum": 4,
+              "solidBox": true,
+              "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
+              "title": "Pick your business location",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={4}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/business-structure-scrabble.png",
+              "imageAlt": "Choose a business structure",
+              "leftAlignBox": true,
+              "link": "/business-guide/launch-your-business/choose-business-structure",
+              "sectionNum": 5,
+              "solidBox": false,
+              "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
+              "title": "Choose a business structure",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={5}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/name.jpg",
+              "imageAlt": "Choose your business name",
+              "leftAlignBox": true,
+              "link": "/business-guide/launch-your-business/choose-your-business-name",
+              "sectionNum": 6,
+              "solidBox": true,
+              "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
+              "title": "Choose your business name",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={6}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/register.jpg",
+              "imageAlt": "Register your business",
+              "leftAlignBox": false,
+              "link": "/business-guide/launch-your-business/register-your-business",
+              "sectionNum": 7,
+              "solidBox": true,
+              "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
+              "title": "Register your business",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={7}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/tax-ids.png",
+              "imageAlt": "Get federal and state tax IDs",
+              "leftAlignBox": true,
+              "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
+              "sectionNum": 8,
+              "solidBox": false,
+              "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
+              "title": "Get federal and state tax IDs",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={8}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/license.jpg",
+              "imageAlt": "Apply for licenses and permits",
+              "leftAlignBox": false,
+              "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
+              "sectionNum": 9,
+              "solidBox": true,
+              "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
+              "title": "Apply for licenses and permits",
+            }
+          }
+          sectionLeave={[Function]}
+        />
+        <LongScrollSection
+          index={9}
+          sectionEnter={[Function]}
+          sectionItem={
+            Object {
+              "image": "/assets/images/tensteps/bank.png",
+              "imageAlt": "Open a business bank account",
+              "leftAlignBox": true,
+              "link": "/business-guide/launch-your-business/open-business-bank-account",
+              "sectionNum": 10,
+              "solidBox": false,
+              "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
+              "title": "Open a business bank account",
+            }
+          }
+          sectionLeave={[Function]}
+        />
       </div>
       <div
-            className="lastSection"
+        className="lastSection"
       >
-            <div
-                  className="lastSectionText"
-            >
-                  <h1>
-                        Open Shop
-                  </h1>
-                  <Waypoint
-                        bottomOffset="0px"
-                        fireOnRapidScroll={true}
-                        horizontal={false}
-                        onEnter={[Function]}
-                        onLeave={[Function]}
-                        onPositionChange={[Function]}
-                        topOffset="0px"
-                  >
-                        <p>
-                              Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
-                        </p>
-                  </Waypoint>
-            </div>
+        <div
+          className="lastSectionText"
+        >
+          <h1>
+            Open Shop
+          </h1>
+          <Waypoint
+            bottomOffset="0px"
+            fireOnRapidScroll={true}
+            horizontal={false}
+            onEnter={[Function]}
+            onLeave={[Function]}
+            onPositionChange={[Function]}
+            topOffset="0px"
+          >
+            <p>
+              Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
+            </p>
+          </Waypoint>
+        </div>
       </div>
        
       <div />
-</div>,
+    </div>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -522,13 +522,13 @@ ShallowWrapper {
       "_context": Object {},
       "_currentElement": <TenStepsLandingPage
         store={
-                Object {
-                        "dispatch": [Function],
-                        "getState": [Function],
-                        "subscribe": [Function],
-                      }
+          Object {
+            "dispatch": [Function],
+            "getState": [Function],
+            "subscribe": [Function],
+          }
         }
-/>,
+      />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
@@ -570,509 +570,509 @@ ShallowWrapper {
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <div
           className="tenStepsLandingPage"
->
+        >
           <Connect(RemoveMainLoader) />
           <div
-                    className="titleSection"
+            className="titleSection"
           >
-                    <LongScrollNav
-                              navType="top"
-                    />
-                    <div
-                              className="titleSectionText"
-                    >
-                              <h1>
-                                        10 steps to start your business
-                              </h1>
-                              <Waypoint
-                                        bottomOffset="0px"
-                                        fireOnRapidScroll={true}
-                                        horizontal={false}
-                                        onEnter={[Function]}
-                                        onLeave={[Function]}
-                                        onPositionChange={[Function]}
-                                        topOffset="0px"
-                              >
-                                        <p>
-                                                  Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
-                                        </p>
-                              </Waypoint>
-                    </div>
-                    <a
-                              aria-hidden="true"
-                              href="#step-1"
-                    >
-                              <img
-                                        className="scrollButton"
-                                        src="test-file-stub"
-                              />
-                    </a>
-                    <Link
-                              className="backLink"
-                              to="/business-guide"
-                    >
-                              Back to all topics
-                    </Link>
+            <LongScrollNav
+              navType="top"
+            />
+            <div
+              className="titleSectionText"
+            >
+              <h1>
+                10 steps to start your business
+              </h1>
+              <Waypoint
+                bottomOffset="0px"
+                fireOnRapidScroll={true}
+                horizontal={false}
+                onEnter={[Function]}
+                onLeave={[Function]}
+                onPositionChange={[Function]}
+                topOffset="0px"
+              >
+                <p>
+                  Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
+                </p>
+              </Waypoint>
+            </div>
+            <a
+              aria-hidden="true"
+              href="#step-1"
+            >
+              <img
+                className="scrollButton"
+                src="test-file-stub"
+              />
+            </a>
+            <Link
+              className="backLink"
+              to="/business-guide"
+            >
+              Back to all topics
+            </Link>
           </div>
           <span
-                    className="anchor"
-                    id="step-1"
+            className="anchor"
+            id="step-1"
           />
           <div
-                    className="tenStepsLandingPage"
-                    id="tensteps-landing-page-id"
+            className="tenStepsLandingPage"
+            id="tensteps-landing-page-id"
           >
-                    <LongScrollSection
-                              index={0}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/research.png",
-                                                  "imageAlt": "Conduct market research",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/plan/market-research-competitive-analysis",
-                                                  "sectionNum": 1,
-                                                  "solidBox": false,
-                                                  "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
-                                                  "title": "Conduct market research",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={1}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/plan.jpg",
-                                                  "imageAlt": "Write your business plan",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/plan-your-business/write-your-business-plan",
-                                                  "sectionNum": 2,
-                                                  "solidBox": true,
-                                                  "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
-                                                  "title": "Write your business plan",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={2}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/fund.jpg",
-                                                  "imageAlt": "Fund your business",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/plan-your-business/fund-your-business",
-                                                  "sectionNum": 3,
-                                                  "solidBox": false,
-                                                  "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
-                                                  "title": "Fund your business",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={3}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/location.jpg",
-                                                  "imageAlt": "Pick your business location",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/launch-your-business/pick-your-business-location",
-                                                  "sectionNum": 4,
-                                                  "solidBox": true,
-                                                  "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
-                                                  "title": "Pick your business location",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={4}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                                                  "imageAlt": "Choose a business structure",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/choose-business-structure",
-                                                  "sectionNum": 5,
-                                                  "solidBox": false,
-                                                  "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
-                                                  "title": "Choose a business structure",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={5}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/name.jpg",
-                                                  "imageAlt": "Choose your business name",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/choose-your-business-name",
-                                                  "sectionNum": 6,
-                                                  "solidBox": true,
-                                                  "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
-                                                  "title": "Choose your business name",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={6}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/register.jpg",
-                                                  "imageAlt": "Register your business",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/launch-your-business/register-your-business",
-                                                  "sectionNum": 7,
-                                                  "solidBox": true,
-                                                  "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
-                                                  "title": "Register your business",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={7}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/tax-ids.png",
-                                                  "imageAlt": "Get federal and state tax IDs",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
-                                                  "sectionNum": 8,
-                                                  "solidBox": false,
-                                                  "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
-                                                  "title": "Get federal and state tax IDs",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={8}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/license.jpg",
-                                                  "imageAlt": "Apply for licenses and permits",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
-                                                  "sectionNum": 9,
-                                                  "solidBox": true,
-                                                  "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
-                                                  "title": "Apply for licenses and permits",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={9}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/bank.png",
-                                                  "imageAlt": "Open a business bank account",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/open-business-bank-account",
-                                                  "sectionNum": 10,
-                                                  "solidBox": false,
-                                                  "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
-                                                  "title": "Open a business bank account",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
+            <LongScrollSection
+              index={0}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/research.png",
+                  "imageAlt": "Conduct market research",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/plan/market-research-competitive-analysis",
+                  "sectionNum": 1,
+                  "solidBox": false,
+                  "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
+                  "title": "Conduct market research",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={1}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/plan.jpg",
+                  "imageAlt": "Write your business plan",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/plan-your-business/write-your-business-plan",
+                  "sectionNum": 2,
+                  "solidBox": true,
+                  "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
+                  "title": "Write your business plan",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={2}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/fund.jpg",
+                  "imageAlt": "Fund your business",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/plan-your-business/fund-your-business",
+                  "sectionNum": 3,
+                  "solidBox": false,
+                  "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
+                  "title": "Fund your business",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={3}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/location.jpg",
+                  "imageAlt": "Pick your business location",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/launch-your-business/pick-your-business-location",
+                  "sectionNum": 4,
+                  "solidBox": true,
+                  "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
+                  "title": "Pick your business location",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={4}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/business-structure-scrabble.png",
+                  "imageAlt": "Choose a business structure",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/choose-business-structure",
+                  "sectionNum": 5,
+                  "solidBox": false,
+                  "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
+                  "title": "Choose a business structure",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={5}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/name.jpg",
+                  "imageAlt": "Choose your business name",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/choose-your-business-name",
+                  "sectionNum": 6,
+                  "solidBox": true,
+                  "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
+                  "title": "Choose your business name",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={6}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/register.jpg",
+                  "imageAlt": "Register your business",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/launch-your-business/register-your-business",
+                  "sectionNum": 7,
+                  "solidBox": true,
+                  "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
+                  "title": "Register your business",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={7}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/tax-ids.png",
+                  "imageAlt": "Get federal and state tax IDs",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
+                  "sectionNum": 8,
+                  "solidBox": false,
+                  "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
+                  "title": "Get federal and state tax IDs",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={8}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/license.jpg",
+                  "imageAlt": "Apply for licenses and permits",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
+                  "sectionNum": 9,
+                  "solidBox": true,
+                  "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
+                  "title": "Apply for licenses and permits",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={9}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/bank.png",
+                  "imageAlt": "Open a business bank account",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/open-business-bank-account",
+                  "sectionNum": 10,
+                  "solidBox": false,
+                  "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
+                  "title": "Open a business bank account",
+                }
+              }
+              sectionLeave={[Function]}
+            />
           </div>
           <div
-                    className="lastSection"
+            className="lastSection"
           >
-                    <div
-                              className="lastSectionText"
-                    >
-                              <h1>
-                                        Open Shop
-                              </h1>
-                              <Waypoint
-                                        bottomOffset="0px"
-                                        fireOnRapidScroll={true}
-                                        horizontal={false}
-                                        onEnter={[Function]}
-                                        onLeave={[Function]}
-                                        onPositionChange={[Function]}
-                                        topOffset="0px"
-                              >
-                                        <p>
-                                                  Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
-                                        </p>
-                              </Waypoint>
-                    </div>
+            <div
+              className="lastSectionText"
+            >
+              <h1>
+                Open Shop
+              </h1>
+              <Waypoint
+                bottomOffset="0px"
+                fireOnRapidScroll={true}
+                horizontal={false}
+                onEnter={[Function]}
+                onLeave={[Function]}
+                onPositionChange={[Function]}
+                topOffset="0px"
+              >
+                <p>
+                  Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
+                </p>
+              </Waypoint>
+            </div>
           </div>
            
           <div />
-</div>,
+        </div>,
         "_debugID": 2,
         "_renderedOutput": <div
           className="tenStepsLandingPage"
->
+        >
           <Connect(RemoveMainLoader) />
           <div
-                    className="titleSection"
+            className="titleSection"
           >
-                    <LongScrollNav
-                              navType="top"
-                    />
-                    <div
-                              className="titleSectionText"
-                    >
-                              <h1>
-                                        10 steps to start your business
-                              </h1>
-                              <Waypoint
-                                        bottomOffset="0px"
-                                        fireOnRapidScroll={true}
-                                        horizontal={false}
-                                        onEnter={[Function]}
-                                        onLeave={[Function]}
-                                        onPositionChange={[Function]}
-                                        topOffset="0px"
-                              >
-                                        <p>
-                                                  Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
-                                        </p>
-                              </Waypoint>
-                    </div>
-                    <a
-                              aria-hidden="true"
-                              href="#step-1"
-                    >
-                              <img
-                                        className="scrollButton"
-                                        src="test-file-stub"
-                              />
-                    </a>
-                    <Link
-                              className="backLink"
-                              to="/business-guide"
-                    >
-                              Back to all topics
-                    </Link>
+            <LongScrollNav
+              navType="top"
+            />
+            <div
+              className="titleSectionText"
+            >
+              <h1>
+                10 steps to start your business
+              </h1>
+              <Waypoint
+                bottomOffset="0px"
+                fireOnRapidScroll={true}
+                horizontal={false}
+                onEnter={[Function]}
+                onLeave={[Function]}
+                onPositionChange={[Function]}
+                topOffset="0px"
+              >
+                <p>
+                  Starting a business involves planning, making key financial decisions, and completing a series of legal activities. Scroll down to learn about each step.
+                </p>
+              </Waypoint>
+            </div>
+            <a
+              aria-hidden="true"
+              href="#step-1"
+            >
+              <img
+                className="scrollButton"
+                src="test-file-stub"
+              />
+            </a>
+            <Link
+              className="backLink"
+              to="/business-guide"
+            >
+              Back to all topics
+            </Link>
           </div>
           <span
-                    className="anchor"
-                    id="step-1"
+            className="anchor"
+            id="step-1"
           />
           <div
-                    className="tenStepsLandingPage"
-                    id="tensteps-landing-page-id"
+            className="tenStepsLandingPage"
+            id="tensteps-landing-page-id"
           >
-                    <LongScrollSection
-                              index={0}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/research.png",
-                                                  "imageAlt": "Conduct market research",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/plan/market-research-competitive-analysis",
-                                                  "sectionNum": 1,
-                                                  "solidBox": false,
-                                                  "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
-                                                  "title": "Conduct market research",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={1}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/plan.jpg",
-                                                  "imageAlt": "Write your business plan",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/plan-your-business/write-your-business-plan",
-                                                  "sectionNum": 2,
-                                                  "solidBox": true,
-                                                  "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
-                                                  "title": "Write your business plan",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={2}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/fund.jpg",
-                                                  "imageAlt": "Fund your business",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/plan-your-business/fund-your-business",
-                                                  "sectionNum": 3,
-                                                  "solidBox": false,
-                                                  "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
-                                                  "title": "Fund your business",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={3}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/location.jpg",
-                                                  "imageAlt": "Pick your business location",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/launch-your-business/pick-your-business-location",
-                                                  "sectionNum": 4,
-                                                  "solidBox": true,
-                                                  "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
-                                                  "title": "Pick your business location",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={4}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/business-structure-scrabble.png",
-                                                  "imageAlt": "Choose a business structure",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/choose-business-structure",
-                                                  "sectionNum": 5,
-                                                  "solidBox": false,
-                                                  "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
-                                                  "title": "Choose a business structure",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={5}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/name.jpg",
-                                                  "imageAlt": "Choose your business name",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/choose-your-business-name",
-                                                  "sectionNum": 6,
-                                                  "solidBox": true,
-                                                  "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
-                                                  "title": "Choose your business name",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={6}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/register.jpg",
-                                                  "imageAlt": "Register your business",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/launch-your-business/register-your-business",
-                                                  "sectionNum": 7,
-                                                  "solidBox": true,
-                                                  "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
-                                                  "title": "Register your business",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={7}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/tax-ids.png",
-                                                  "imageAlt": "Get federal and state tax IDs",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
-                                                  "sectionNum": 8,
-                                                  "solidBox": false,
-                                                  "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
-                                                  "title": "Get federal and state tax IDs",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={8}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/license.jpg",
-                                                  "imageAlt": "Apply for licenses and permits",
-                                                  "leftAlignBox": false,
-                                                  "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
-                                                  "sectionNum": 9,
-                                                  "solidBox": true,
-                                                  "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
-                                                  "title": "Apply for licenses and permits",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
-                    <LongScrollSection
-                              index={9}
-                              sectionEnter={[Function]}
-                              sectionItem={
-                                        Object {
-                                                  "image": "/assets/images/tensteps/bank.png",
-                                                  "imageAlt": "Open a business bank account",
-                                                  "leftAlignBox": true,
-                                                  "link": "/business-guide/launch-your-business/open-business-bank-account",
-                                                  "sectionNum": 10,
-                                                  "solidBox": false,
-                                                  "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
-                                                  "title": "Open a business bank account",
-                                                }
-                              }
-                              sectionLeave={[Function]}
-                    />
+            <LongScrollSection
+              index={0}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/research.png",
+                  "imageAlt": "Conduct market research",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/plan/market-research-competitive-analysis",
+                  "sectionNum": 1,
+                  "solidBox": false,
+                  "text": "Market research will tell you if there’s an opportunity to turn your idea into a successful business. It’s a way to gather information about potential customers and businesses already operating in your area. Use that information to find a competitive advantage for your business.",
+                  "title": "Conduct market research",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={1}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/plan.jpg",
+                  "imageAlt": "Write your business plan",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/plan-your-business/write-your-business-plan",
+                  "sectionNum": 2,
+                  "solidBox": true,
+                  "text": "Your business plan is the foundation of your business. It’s a roadmap for how to structure, run, and grow your new business. You’ll use it to convince people that working with you — or investing in your company — is a smart choice.",
+                  "title": "Write your business plan",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={2}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/fund.jpg",
+                  "imageAlt": "Fund your business",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/plan-your-business/fund-your-business",
+                  "sectionNum": 3,
+                  "solidBox": false,
+                  "text": "Your business plan will help you figure out how much money you’ll need to start your business. If you don’t have that amount on hand, you’ll need to either raise or borrow the capital. Fortunately, there are more ways than ever to find the capital you need.",
+                  "title": "Fund your business",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={3}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/location.jpg",
+                  "imageAlt": "Pick your business location",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/launch-your-business/pick-your-business-location",
+                  "sectionNum": 4,
+                  "solidBox": true,
+                  "text": "Your business location is one of the most important decisions you’ll make. Whether you’re setting up a brick-and-mortar business or launching an online store, the choices you make could affect your taxes, legal requirements, and revenue.",
+                  "title": "Pick your business location",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={4}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/business-structure-scrabble.png",
+                  "imageAlt": "Choose a business structure",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/choose-business-structure",
+                  "sectionNum": 5,
+                  "solidBox": false,
+                  "text": "The legal structure you choose for your business will impact your business registration requirements, how much you pay in taxes, and your personal liability.",
+                  "title": "Choose a business structure",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={5}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/name.jpg",
+                  "imageAlt": "Choose your business name",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/choose-your-business-name",
+                  "sectionNum": 6,
+                  "solidBox": true,
+                  "text": "It’s not easy to pick the perfect name. You’ll want one that reflects your brand and captures your spirit. You’ll also want to make sure your business name isn’t already being used by someone else.",
+                  "title": "Choose your business name",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={6}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/register.jpg",
+                  "imageAlt": "Register your business",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/launch-your-business/register-your-business",
+                  "sectionNum": 7,
+                  "solidBox": true,
+                  "text": "Once you’ve picked the perfect business name, it’s time to make it legal and protect your brand. If you’re doing business under a name different than your own, you’ll need to register with the federal government, and maybe your state government, too.",
+                  "title": "Register your business",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={7}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/tax-ids.png",
+                  "imageAlt": "Get federal and state tax IDs",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/get-federal-and-state-tax-id-numbers",
+                  "sectionNum": 8,
+                  "solidBox": false,
+                  "text": "You’ll use your employer identification number (EIN) for important steps to start and grow your business, like opening a bank account and paying taxes. It’s like a social security number for your business. Some — but not all — states require you to get a tax ID as well.",
+                  "title": "Get federal and state tax IDs",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={8}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/license.jpg",
+                  "imageAlt": "Apply for licenses and permits",
+                  "leftAlignBox": false,
+                  "link": "/business-guide/launch-your-business/apply-licenses-and-permits",
+                  "sectionNum": 9,
+                  "solidBox": true,
+                  "text": "Keep your business running smoothly by staying legally compliant. The licenses and permits you need for your business will vary by industry, state, location, and other factors.",
+                  "title": "Apply for licenses and permits",
+                }
+              }
+              sectionLeave={[Function]}
+            />
+            <LongScrollSection
+              index={9}
+              sectionEnter={[Function]}
+              sectionItem={
+                Object {
+                  "image": "/assets/images/tensteps/bank.png",
+                  "imageAlt": "Open a business bank account",
+                  "leftAlignBox": true,
+                  "link": "/business-guide/launch-your-business/open-business-bank-account",
+                  "sectionNum": 10,
+                  "solidBox": false,
+                  "text": "A small business checking account can help you handle legal, tax, and day-to-day issues. The good news is it’s easy to set one up if you have the right registrations and paperwork ready.",
+                  "title": "Open a business bank account",
+                }
+              }
+              sectionLeave={[Function]}
+            />
           </div>
           <div
-                    className="lastSection"
+            className="lastSection"
           >
-                    <div
-                              className="lastSectionText"
-                    >
-                              <h1>
-                                        Open Shop
-                              </h1>
-                              <Waypoint
-                                        bottomOffset="0px"
-                                        fireOnRapidScroll={true}
-                                        horizontal={false}
-                                        onEnter={[Function]}
-                                        onLeave={[Function]}
-                                        onPositionChange={[Function]}
-                                        topOffset="0px"
-                              >
-                                        <p>
-                                                  Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
-                                        </p>
-                              </Waypoint>
-                    </div>
+            <div
+              className="lastSectionText"
+            >
+              <h1>
+                Open Shop
+              </h1>
+              <Waypoint
+                bottomOffset="0px"
+                fireOnRapidScroll={true}
+                horizontal={false}
+                onEnter={[Function]}
+                onLeave={[Function]}
+                onPositionChange={[Function]}
+                topOffset="0px"
+              >
+                <p>
+                  Congratulations ! It's time to cut the big ribbon. Your business is officially open. Now, focus on managing and growing your business.
+                </p>
+              </Waypoint>
+            </div>
           </div>
            
           <div />
-</div>,
+        </div>,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,
@@ -1086,12 +1086,12 @@ ShallowWrapper {
   "root": [Circular],
   "unrendered": <TenStepsLandingPage
     store={
-        Object {
-            "dispatch": [Function],
-            "getState": [Function],
-            "subscribe": [Function],
-          }
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "subscribe": [Function],
+      }
     }
-/>,
+  />,
 }
 `;
