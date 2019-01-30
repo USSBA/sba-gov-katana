@@ -4,7 +4,7 @@
   "description": "The application repository for sba.gov",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development babel-node src/app.js --presets @babel/preset-env || true",
+    "start": "NODE_ENV=development node src/app.js || true",
     "nodemonstart": "nodemon src/app.js --exec babel-node  --presets @babel/preset-env",
     "prestart": "npm run clean",
     "build": "scripts/build.sh all",

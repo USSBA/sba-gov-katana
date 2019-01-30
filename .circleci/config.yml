@@ -46,15 +46,6 @@ workflows:
           tags:
             only:
             - /.*/
-    - test-lint:
-        requires: [cache-dependencies]
-        filters:
-          branches:
-            only:
-            - /.*/
-          tags:
-            only:
-            - /.*/
     - test-format:
         requires: [cache-dependencies]
         filters:
@@ -65,7 +56,7 @@ workflows:
             only:
             - /.*/
     - build-webpack:
-        requires: [test-jest, test-mocha, test-lint, test-format]
+        requires: [test-jest, test-mocha, test-format]
         filters:
           branches:
             only:
