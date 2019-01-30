@@ -15,6 +15,8 @@ module.exports = function(env) {
       minimizer: [
         new UglifyJsPlugin({
           extractComments: true,
+          // This is specific to CircleCI, which gives us 36 cores, and our current build time of ~20s
+          parallel: 4,
           uglifyOptions: {
             compress: {
               drop_console: true

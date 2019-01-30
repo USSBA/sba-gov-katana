@@ -99,6 +99,7 @@
     "font-awesome-webpack-4": "1.0.0",
     "google-geocoder": "^0.2.1",
     "google-map-react": "^0.24.0",
+    "hard-source-webpack-plugin": "^0.13.1",
     "husky": "^0.14.3",
     "identity-obj-proxy": "3.0.0",
     "ignore-styles": "5.0.1",

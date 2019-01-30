@@ -1,4 +1,5 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
@@ -21,8 +22,9 @@ module.exports = function(env) {
     },
     plugins: [
       // new BundleAnalyzerPlugin(),
+      new HardSourceWebpackPlugin(),
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/),
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/)
     ],
     module: {
       rules: [
