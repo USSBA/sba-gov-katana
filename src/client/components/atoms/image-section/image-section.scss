@@ -1,7 +1,7 @@
 .imageSection {
   @include grid-media($sba-grid-small) {
     margin: 0;
-    margin-bottom: 0.8rem;
+    margin-bottom: 14.5px;
     text-align: center;
     width: 100%;
   }
@@ -9,7 +9,7 @@
 
 .caption {
   font-style: italic;
-  margin-bottom: 2.778rem;
+  margin-bottom: 50px;
   text-align: center;
 
   @include grid-media($sba-grid-small) {

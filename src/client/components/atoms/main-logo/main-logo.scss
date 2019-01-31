@@ -4,8 +4,8 @@
   position: absolute;
   img {
     height: auto;
-    width: 7.111rem;
-    padding-top: 0.167rem;
+    width: 128px;
+    padding-top: 30px;
   }
   a {
     vertical-align: none;
@@ -13,14 +13,14 @@
 
   @include for-medium-only {
     img {
-      padding-top: 0.389rem;
+      padding-top: 7px;
     }
   }
 
   @include for-large-up {
     img {
       height: auto;
-      width: 10.722rem;
+      width: 193px;
     }
   }
 }

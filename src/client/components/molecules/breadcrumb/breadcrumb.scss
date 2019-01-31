@@ -1,10 +1,10 @@
 .breadcrumb {
-  line-height: 1.5rem;
+  line-height: 1.5;
 }
 
 .breadcrumb a {
   color: $sba-blue;
-  font-size: 0.889rem;
+  font-size: 16px;
 }
 
 .last a {
@@ -15,7 +15,7 @@
 }
 
 .slash {
-  font-size: 0.889rem;
-  margin-right: 0.278rem;
-  margin-left: 0.278rem;
+  font-size: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

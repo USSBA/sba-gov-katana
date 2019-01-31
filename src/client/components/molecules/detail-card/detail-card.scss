@@ -44,7 +44,7 @@ table {
   // This forces the underline color to be the same color as the text.
   text-decoration: underline;
   color: $sba-blue;
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .row {
@@ -59,7 +59,7 @@ table {
 
 .columnOne {
   color: $sba-blue;
-  padding: 0px;
+  padding: 0;
 
   h6 {
     line-height: 1.4;
@@ -72,7 +72,7 @@ table {
 
 .dash {
   hr {
-    margin-top: 0.8rem;
+    margin-top: 15px;
     width: 30px !important;
   }
 }

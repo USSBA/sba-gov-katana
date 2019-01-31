@@ -1,6 +1,6 @@
 .largeTitle {
   @include for-small-only {
-    margin-top: 1.56rem;
+    margin-top: 28px;
     margin-bottom: 0;
   }
   @include for-medium-up {
@@ -15,7 +15,7 @@
 }
 
 .smallTitle {
-  font-size: 1.3rem;
+  font-size: 24px;
   padding-top: 4px;
 
   @include for-medium-up {

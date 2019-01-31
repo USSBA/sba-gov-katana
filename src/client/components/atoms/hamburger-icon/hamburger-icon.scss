@@ -4,14 +4,14 @@
 
 .hamburgerIcon {
   fill: $sba-blue;
-  height: 0.667rem;
-  width: 0.778rem;
+  height: 12px;
+  width: 14px;
 }
 
 .textOpen,
 .textClosed {
   color: $sba-blue;
-  font-size: 1rem;
+  font-size: 18px;
   text-transform: uppercase;
   font-weight: 600;
   display: inline;
@@ -24,13 +24,13 @@
 }
 
 .menuIconHamburger {
-  margin-top: 0.444rem;
+  margin-top: 8px;
 }
 
 .menuIconClose {
-  margin-top: 0.0546rem;
-  width: 1.111rem;
-  height: 1.111rem;
+  margin-top: 1px;
+  width: 20px;
+  height: 20px;
 }
 
 .menuIconContainer {

@@ -15,7 +15,7 @@
   h1 {
     // @include font-size($extra-large-title-font-sizes);
     color: white;
-    margin-bottom: 0.4em;
+    margin-bottom: 7px;
     @include grid-media($sba-grid-small) {
       max-width: 70%;
     }
@@ -25,7 +25,7 @@
     font-family: $serif-font-family;
     font-style: italic;
     line-height: 35px;
-    font-size: 1.167rem;
+    font-size: 21px;
   }
 }
 
@@ -60,20 +60,22 @@
     background-image: url('assets/images/tensteps/title-section-pattern-mobile.png');
     background-position: 100% 100%;
   }
+
   h1 {
     // @include font-size($extra-large-title-font-sizes);
     color: white;
-    margin-bottom: 0.2em;
+    margin-bottom: 4px;
     @include grid-media($sba-grid-small) {
-      margin-top: 0.2em;
+      margin-top: 4px;
       max-width: 70%;
     }
   }
+
   p {
     // @include font-size($h5-font-sizes);
     font-family: $serif-font-family;
     @include grid-media($sba-grid-small) {
-      margin-top: 2em;
+      margin-top: 4px;
     }
   }
 }

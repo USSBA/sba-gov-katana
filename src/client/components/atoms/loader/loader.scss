@@ -1,4 +1,4 @@
-$diameter: 7rem;
+$diameter: 126px;
 
 .container {
   height: $diameter;
@@ -7,7 +7,7 @@ $diameter: 7rem;
 }
 
 .logo {
-  height: 3.75rem;
+  height: 68px;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -22,12 +22,12 @@ $diameter: 7rem;
 }
 
 @mixin loader-border($side, $color: $sba-gray-lighter) {
-  border-#{$side}: 0.6rem solid $color;
+  border-#{$side}: 11px solid $color;
 }
 
 .loader {
   animation: spin 1.1s infinite linear;
-  font-size: 0.556rem;
+  font-size: 10px;
   position: absolute;
   text-indent: -9999em;
   transform: translateZ(0);

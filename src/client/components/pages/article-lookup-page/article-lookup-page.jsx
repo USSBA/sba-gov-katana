@@ -1,6 +1,5 @@
 import React from 'react'
 
-import style from './article-lookup-page.scss'
 import { PagingLookup } from 'organisms'
 
 class ArticleLookupPage extends React.Component {

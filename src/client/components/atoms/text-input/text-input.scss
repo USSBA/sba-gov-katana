@@ -9,17 +9,17 @@
 //TEXT INPUT
 .textInputContainer {
   position: relative;
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 .textInput {
-  margin-bottom: 0px !important;
+  margin-bottom: 0 !important;
 }
 
 .textInputInvalid {
   composes: textInput;
   border: 1px solid $sba-red-light !important;
-  box-shadow: inset 0px 0px 0px 1px $sba-red-light !important;
+  box-shadow: inset 0 0 0 1px $sba-red-light !important;
 }
 
 .searchBar input {

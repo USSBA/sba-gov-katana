@@ -27,7 +27,7 @@
 }
 
 .myselect :global(.Select-control) {
-  border-radius: 0px;
+  border-radius: 0;
   border: 1px solid #666666;
   height: 48px;
 }
@@ -39,7 +39,7 @@
 .myselect :global(.Select-control:focus) {
   outline: none !important;
   border: 1px solid $sba-gray !important;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none !important;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .myselect :global(.Select-input) input[role='combobox'] {
-  border: 0px;
+  border: 0;
 }
 
 .myselect :global(.Select-arrow-zone) i {
@@ -98,7 +98,7 @@
 }
 
 .myselect:global(.Select--single) :global(.Select-clear-zone) {
-  width: 0px;
+  width: 0;
 }
 
 .myselect :global(.Select-control) :global(.Select-value) {

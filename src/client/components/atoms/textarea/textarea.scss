@@ -11,7 +11,7 @@
 .textAreaInvalid {
   composes: textArea;
   border: 1px solid $sba-red-light !important;
-  box-shadow: inset 0px 0px 0px 1px $sba-red-light;
+  box-shadow: inset 0 0 0 1px $sba-red-light;
 }
 
 .validationIcon {

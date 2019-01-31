@@ -17,7 +17,7 @@
     padding: 13px 22px;
     margin-top: 20px;
     @include grid-media($sba-grid-large) {
-      margin-top: 0px;
+      margin-top: 0;
     }
   }
 }

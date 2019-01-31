@@ -1,8 +1,6 @@
 import React from 'react'
 import { isEmpty } from 'lodash'
 
-import styles from './small-icon.scss'
-
 class SmallIcon extends React.Component {
   render() {
     const aProps = {

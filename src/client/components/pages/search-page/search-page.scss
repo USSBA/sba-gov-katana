@@ -51,7 +51,7 @@
     line-height: 0.75;
 
     @include for-small-only {
-      margin-top: 0px;
+      margin-top: 0;
       width: 140px;
       padding: 17px 22px;
     }

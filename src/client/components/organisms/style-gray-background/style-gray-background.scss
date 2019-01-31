@@ -2,18 +2,18 @@
   background-color: $sba-gray-lighter;
 
   @media (max-width: 767px) {
-    padding: 4rem 1.1rem;
-    margin: 1.5rem -1.1rem 2.8rem;
+    padding: 72px 20px;
+    margin: 27px 20px 50px;
   }
 
   @media (min-width: 768px) and (max-width: 1199px) {
-    padding: 4rem 1.5rem 4rem;
-    margin: 1.5rem -1.6rem 2.8rem;
+    padding: 72px 27px 72px;
+    margin: 27px -29px 50px;
   }
 
   @media (min-width: 1200px) {
-    padding: 4rem 4.4rem 4rem 4.5rem;
-    margin: 1.5rem -4.4rem 2.8rem;
+    padding: 72px 79px 72px 81px;
+    margin: 27px -79px 50px;
   }
 
   div[class~='card'] > div[class~='content-with-image'] {

@@ -9,7 +9,7 @@
   border-top: 5px solid $sba-blue;
   @include grid-media($sba-grid-small) {
     cursor: pointer;
-    padding: 0px 27px 27px 27px;
+    padding: 0 27px 27px 27px;
   }
   @include grid-media($sba-grid-medium) {
     cursor: pointer;
@@ -73,7 +73,7 @@
 .line {
   border-top: 2px solid $sba-red;
   width: 50px;
-  margin: 14px auto 0px auto;
+  margin: 14px auto 0 auto;
   @include for-small-only {
     margin: 0;
   }
