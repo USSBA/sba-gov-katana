@@ -40,8 +40,8 @@
       margin-left: 0;
     }
     99% {
-      margin-right: -222.222rem;
-      margin-left: 111.111rem;
+      margin-right: -4000px;
+      margin-left: 2000px;
 
       opacity: 1;
     }
@@ -54,14 +54,14 @@
 .navHeader {
   position: relative;
   display: block;
-  height: 3.889rem;
+  height: 70px;
   cursor: pointer;
 }
 
 .navTitleContainer {
   position: absolute;
   top: 60%;
-  left: 3.111rem;
+  left: 56px;
   display: block;
   transform: translateY(-50%);
 }
@@ -72,22 +72,22 @@
 }
 
 .navLeftArrow {
-  font-size: 1.667rem;
+  font-size: 30px;
   font-weight: 700;
   position: absolute;
   top: 60%;
-  left: 1.722rem;
+  left: 31px;
   transform: translateY(-50%);
   color: white;
 }
 
 .navLink {
   display: block;
-  border-bottom: 0.056rem solid rgba(white, 0.2);
+  border-bottom: 1px solid rgba(white, 0.2);
   cursor: pointer;
   font-weight: 300;
   line-height: 1.6;
-  padding: 0.556rem 1.944rem 0.556rem 1.667rem;
+  padding: 10px 35px 10px 30px;
   position: relative;
 
   &:link,
@@ -100,8 +100,8 @@
 .navTopLine {
   display: block;
   width: 100%;
-  height: 0.056rem;
+  height: 1px;
   margin: 0;
-  margin-top: 1.111rem;
+  margin-top: 20px;
   background-color: rgba(255, 255, 255, 0.2);
 }
