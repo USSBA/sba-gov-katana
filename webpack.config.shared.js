@@ -54,6 +54,9 @@ module.exports = function(styleNamingFormat) {
               }
             },
             {
+              loader: 'postcss-loader'
+            },
+            {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.join(__dirname, 'src', 'client', 'styles')]

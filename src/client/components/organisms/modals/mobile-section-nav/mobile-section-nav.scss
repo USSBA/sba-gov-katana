@@ -14,10 +14,6 @@
 }
 
 .navMenuOpen {
-  -webkit-animation: slideLeft 1s ease-out; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: slideLeft 1s ease-out; /* Firefox < 16 */
-  -ms-animation: slideLeft 1s ease-out; /* Internet Explorer */
-  -o-animation: slideLeft 1s ease-out; /* Opera < 12.1 */
   animation: slideLeft 1s ease-out;
 
   composes: navMenu;
@@ -35,10 +31,6 @@
 }
 
 .navMenuClose {
-  -webkit-animation: slideRight 1s ease-in forwards; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: slideRight 1s ease-in forwards; /* Firefox < 16 */
-  -ms-animation: slideRight 1s ease-in forwards; /* Internet Explorer */
-  -o-animation: slideRight 1s ease-in forwards; /* Opera < 12.1 */
   animation: slideRight 1s ease-in forwards;
 
   composes: navMenu;

@@ -16,8 +16,10 @@
   @include for-medium-up {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    -ms-grid-columns: 1fr 1fr;
-    align-items: center;
+
+    > * {
+      align-self: center;
+    }
   }
 }
 

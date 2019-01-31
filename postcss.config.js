@@ -1,8 +1,9 @@
 const autoprefixer = require('autoprefixer')
+
 module.exports = {
   plugins: [
-    autoprefixer: {
-      grid: true
-    }
+    autoprefixer({
+      grid: 'no-autoplace'
+    })
   ]
 }

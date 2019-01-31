@@ -38,7 +38,9 @@
 
 .detailCardCollection {
   display: grid;
+  /* autoprefixer: ignore next */
   grid-auto-rows: 1fr;
+  -ms-grid-rows: none;
 
   @include for-large-up {
     grid-template-columns: 1fr 1fr 1fr;

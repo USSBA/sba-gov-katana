@@ -70,9 +70,12 @@
     padding: 30px;
 
     .content {
-      align-items: center;
       display: grid;
       grid-template-columns: 1fr 1fr;
+
+      > * {
+        align-self: center;
+      }
 
       // Not sure why div.column:last-child does not work.
       div[class~='column']:last-child {
