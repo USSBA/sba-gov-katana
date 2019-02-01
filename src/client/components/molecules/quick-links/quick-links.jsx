@@ -153,7 +153,7 @@ const LatestDocumentsCard = props => {
           See all
         </Link>
       </div>
-      <DecorativeDash width={1.667} />
+      <DecorativeDash width={30} />
       <div>
         {props.documents && props.documents.items.length ? (
           props.documents.items.map((doc, index) => {
@@ -194,7 +194,7 @@ const RatesCard = props => {
   return (
     <div className={props.classname}>
       <h4 className={style.title}>Rates</h4>
-      <DecorativeDash width={1.667} />
+      <DecorativeDash width={30} />
       {props.rate.map((rate, index) => {
         return (
           <div key={index} className={style.rateContainer}>
@@ -225,7 +225,7 @@ const ArticlesCard = props => {
           See all
         </Link>
       </div>
-      <DecorativeDash width={1.667} />
+      <DecorativeDash width={30} />
       <div>
         {articles && articles.items.length ? (
           <div>

@@ -1,5 +1,7 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const CompressionPlugin = require('compression-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
@@ -7,8 +9,12 @@ const webpackMerge = require('webpack-merge')
 
 const sharedConfig = require('./webpack.config.shared')
 
-module.exports = function(env) {
-  return webpackMerge(sharedConfig(), {
+const publicPath = '/build/'
+
+module.exports = function (env) {
+  return webpackMerge.smartStrategy({
+    'module.rules.use': 'prepend'
+  })(sharedConfig, {
     devtool: 'no-source-map',
     entry: ['@babel/polyfill', './src/client/components/entry.jsx'],
     optimization: {
@@ -22,13 +28,14 @@ module.exports = function(env) {
               drop_console: true
             }
           }
-        })
+        }),
+        new OptimizeCssAssetsPlugin()
       ]
     },
     output: {
       path: path.join(__dirname, 'public', 'build'),
       filename: '[hash:20].bundle.js',
-      publicPath: '/build/'
+      publicPath
     },
     plugins: [
       // new BundleAnalyzerPlugin({
@@ -50,15 +57,39 @@ module.exports = function(env) {
         minRatio: 0.8,
         test: /\.js$|\.css$|\.html$/,
         threshold: 10240
+      }),
+      new MiniCssExtractPlugin({
+        filename: "[hash:20].css"
       })
     ],
     module: {
       rules: [
         {
+          test: /\.scss$/,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: { publicPath }
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                localIdentName: '[hash:base64]'
+              }
+            }
+          ],
+          exclude: [path.resolve(__dirname, 'src/client/styles/common/collapse.scss')]
+        },
+        {
           test: /\.(png|jpg|gif|woff|woff2|ttf|otf|eot|svg)$/,
           loader: 'url-loader?limit=3000'
         }
       ]
+    },
+    stats: {
+      // filter MiniCssExtractPlugin warnings
+      warningsFilter: warn => warn.indexOf('Conflicting order between:') > -1
     }
   })
 }

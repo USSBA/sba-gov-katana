@@ -51,7 +51,7 @@ exports[`CallToAction renders a large size 1`] = `
         className="dash"
         style={
           Object {
-            "width": "1.611rem",
+            "width": "29px",
           }
         }
       />
@@ -95,7 +95,7 @@ exports[`CallToAction renders a medium size 1`] = `
         className="dash"
         style={
           Object {
-            "width": "1.611rem",
+            "width": "29px",
           }
         }
       />

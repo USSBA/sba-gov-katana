@@ -40,7 +40,7 @@ class TitleSection extends React.Component {
         <h5 id="titleSectionSummaryId" className={styles.summary}>
           {this.props.summary}
         </h5>
-        <DecorativeDash width={4.28} />
+        <DecorativeDash width={77} />
         {this.props.sectionHeaders.length > 0 ? titleLinks : ''}
       </div>
     )

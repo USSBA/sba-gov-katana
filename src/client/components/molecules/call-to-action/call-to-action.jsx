@@ -51,7 +51,7 @@ const CallToAction = props => {
         ) : null}
         {startsWith(variation, 'medium') || startsWith(variation, 'large') ? (
           <div>
-            <DecorativeDash width={1.611} />
+            <DecorativeDash width={29} />
             <p className={styles.blurb}>{blurb}</p>
           </div>
         ) : null}

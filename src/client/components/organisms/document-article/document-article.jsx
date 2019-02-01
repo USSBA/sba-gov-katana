@@ -210,7 +210,7 @@ export class DocumentArticle extends React.Component {
             </div>
           </div>
           <div className={style.dash}>
-            <DecorativeDash width={4.278} />
+            <DecorativeDash width={77} />
           </div>
           {/* TODO: body style for grid media queries should be baked into text section? */}
           <TextSection className={style.body} text={body} />

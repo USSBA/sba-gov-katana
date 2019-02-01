@@ -74,7 +74,7 @@ const Card = props => {
         ) : null}
         {subtitleText ? (
           <div>
-            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={1.667} />
+            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
             <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
               {subtitleText}
             </p>

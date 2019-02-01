@@ -302,7 +302,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                     style={
                       Object {
-                        "width": "18.667rem",
+                        "width": "336px",
                       }
                     }
                   />
@@ -356,7 +356,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                     style={
                       Object {
-                        "width": "18.667rem",
+                        "width": "336px",
                       }
                     }
                   />
@@ -410,7 +410,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                     style={
                       Object {
-                        "width": "18.667rem",
+                        "width": "336px",
                       }
                     }
                   />
@@ -464,7 +464,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
                     className="dash"
                     style={
                       Object {
-                        "width": "18.667rem",
+                        "width": "336px",
                       }
                     }
                   />
