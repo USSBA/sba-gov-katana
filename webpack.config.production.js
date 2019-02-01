@@ -67,10 +67,11 @@ module.exports = function (env) {
         {
           test: /\.scss$/,
           use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: { publicPath }
-            },
+            'style-loader',
+            // {
+            //   loader: MiniCssExtractPlugin.loader,
+            //   options: { publicPath }
+            // },
             {
               loader: 'css-loader',
               options: {
