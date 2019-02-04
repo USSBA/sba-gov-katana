@@ -1,38 +1,38 @@
-.applyButton {
-  display: inline-block;
-  font-size: 22px;
-  margin-top: 34px;
-  vertical-align: top;
-
-  > button {
-    padding: 13px 26px;
-  }
-}
-
-.banner {
-  background-color: $sba-blue;
-  color: white;
+.eventSearch {
   position: relative;
-  width: 100%;
+}
 
-  @include grid-media($sba-grid-small) {
-    padding: 20px;
+.noResults {
+  position: absolute;
+  top: 70px;
+}
+
+.searchBar {
+  background-color: $sba-blue;
+  label,
+  h2 {
+    color: white;
   }
-  @include grid-media($sba-grid-medium) {
-    padding: 20px 30px 20px 30px;
+  button {
+    padding: 13px 22px;
+    margin-top: 20px;
+    @include grid-media($sba-grid-large) {
+      margin-top: 0px;
+    }
   }
+}
+
+// Fields
+
+.field {
   @include grid-media($sba-grid-large) {
-    height: 220px;
-    padding: 40px 28px 20px 28px;
+    margin-right: 20px;
+    float: left;
+    display: inline-block;
   }
 }
 
-.header {
-  color: white;
-  margin: 0 0 20px 0;
-}
-
-.searchBox {
+.search {
   position: relative;
 
   @include grid-media($sba-grid-small) {
@@ -40,14 +40,7 @@
   }
 
   @include grid-media($sba-grid-large) {
-    float: left;
-    display: inline-block;
-
-    width: 200px;
-    margin-right: 20px;
-    &:last-child {
-      margin-right: 0;
-    }
+    width: 300px;
   }
 
   input {
@@ -57,22 +50,21 @@
   }
 }
 
-.searchIcon {
-  position: absolute;
-  top: 42px;
-  right: 15px;
+// Results
 
-  @media screen and (min-width: 768px) {
-    top: 44px;
+.eventResults {
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    top: 240px;
+    left: 30px;
+    bottom: 27px;
+    background-color: unset;
+    width: 321px;
+    overflow: hidden;
+    pointer-events: none;
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .searchBox {
-    width: 24%;
-  }
-
-  .multiSelect {
-    width: 13%;
-  }
+.resultsZeroState {
+  display: none;
 }
