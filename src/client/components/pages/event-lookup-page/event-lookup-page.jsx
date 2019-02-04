@@ -4,26 +4,11 @@ import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput } from 'atoms'
 import { PrimarySearchBar, Results } from 'organisms'
-import SearchTemplate from '../../templates/search/search.jsx'
+import SearchTemplate from '../../templates/search/search'
 
 class EventLookupPage extends React.PureComponent {
-  constructor() {
-    super()
-
-    this.state = {
-      events: null,
-      filteredEvents: null,
-      keyword: null
-    }
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.events
-  }
-
   async customSearch(searchType, searchParams) {
     return await fetchSiteContent(searchType).then(searchResults => {
-      console.log('RESULTS', searchResults)
       let keyword = searchParams.q
 
       let results = []
@@ -34,7 +19,7 @@ class EventLookupPage extends React.PureComponent {
       let defaultResults = []
 
       if (searchResults) {
-        let keywordMatcher = RegExp(keyword)
+        let keywordMatcher = RegExp(keyword, 'i')
         results = searchResults.filter(eventRecord => {
           return (
             keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
@@ -79,28 +64,6 @@ class EventLookupPage extends React.PureComponent {
             data-cy="keyword search"
           />
         </PrimarySearchBar>
-        <StyleWrapperDiv className={styles.eventResults} hideOnZeroState={true}>
-          <Results
-            id="event-results"
-            paginate
-            scroll
-            hasSearchInfoPanel
-            searchTermName={'q'}
-            // onClick={item => {
-            //   this.centerMap(true)
-            //   this.setSelectedItem(item)
-            // }}
-            // selectedItem={selectedItem}
-            // hoveredMarkerId={hoveredMarkerId}
-            // onResultHover={id => {
-            //   this.setHoveredMarkerId(id)
-            // }}
-            // searchTips={searchTips}
-            // displaySearchTipsOnNoResults
-            // displayDefaultResultOnNoResults
-            // defaultResultObject={}
-          />
-        </StyleWrapperDiv>
       </SearchTemplate>
     )
   }

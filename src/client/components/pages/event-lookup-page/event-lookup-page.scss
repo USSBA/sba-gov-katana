@@ -49,22 +49,3 @@
     padding-right: 40px !important;
   }
 }
-
-// Results
-
-.eventResults {
-  @include grid-media($sba-grid-large) {
-    position: absolute;
-    top: 240px;
-    left: 30px;
-    bottom: 27px;
-    background-color: unset;
-    width: 321px;
-    overflow: hidden;
-    pointer-events: none;
-  }
-}
-
-.resultsZeroState {
-  display: none;
-}
