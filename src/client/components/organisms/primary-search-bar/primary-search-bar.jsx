@@ -46,7 +46,6 @@ export class PrimarySearchBar extends React.PureComponent {
           <h2
             id={`${id ? id : 'primary-search-bar'}-title`}
             className={styles.header}
-            role="heading"
             aria-label={this.props.title}
           >
             {this.props.title}
