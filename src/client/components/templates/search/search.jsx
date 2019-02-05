@@ -172,6 +172,45 @@ class SearchTemplate extends React.PureComponent {
   }
 
   doSearch(searchType, searchParams) {
+    let _this = this
+    let search = () =>
+      fetchSiteContent(searchType, filteredSearchParams)
+        .then(searchResults => {
+          let results = []
+          let count = 0
+          let hasNoResults
+          let isLoading = _this.state.isLoading
+          let isZeroState = _this.state.isZeroState
+          let defaultResults = []
+          if (searchResults) {
+            results = searchResults.hit
+            count = searchResults.found
+            defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
+            hasNoResults = count === 0
+            isLoading = false
+            isZeroState = false
+          }
+          return {
+            results,
+            count,
+            hasNoResults,
+            isLoading,
+            isZeroState,
+            defaultResults
+          }
+        })
+        .then(output => {
+          _this.setState(output)
+        })
+
+    // override search if a custom search exists
+    if (this.props.customSearch) {
+      search = () =>
+        this.props.customSearch(searchType, searchParams).then(output => {
+          _this.setState(output)
+        })
+    }
+
     //push search to history
     const filteredSearchParams = this.filterSearchParams(searchParams)
     const urlParams = this.filterSearchParamsForUrl(filteredSearchParams)
@@ -180,41 +219,12 @@ class SearchTemplate extends React.PureComponent {
       search: `?${stringify(urlParams)}`
     })
 
-    let _this = this
     this.setState(
       {
         isLoading: true,
         submittedSearchParams: filteredSearchParams
       },
-      () =>
-        fetchSiteContent(searchType, filteredSearchParams)
-          .then(searchResults => {
-            let results = []
-            let count = 0
-            let hasNoResults
-            let isLoading = _this.state.isLoading
-            let isZeroState = _this.state.isZeroState
-            let defaultResults = []
-            if (searchResults) {
-              results = searchResults.hit
-              count = searchResults.found
-              defaultResults = searchResults.suggestedResults ? searchResults.suggestedResults.hit : []
-              hasNoResults = count === 0
-              isLoading = false
-              isZeroState = false
-            }
-            return {
-              results,
-              count,
-              hasNoResults,
-              isLoading,
-              isZeroState,
-              defaultResults
-            }
-          })
-          .then(output => {
-            _this.setState(output)
-          })
+      search
     )
   }
 
@@ -344,7 +354,8 @@ SearchTemplate.propTypes = {
   paginate: PropTypes.bool,
   searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
-  scrollToTopAfterSearch: PropTypes.bool
+  scrollToTopAfterSearch: PropTypes.bool,
+  customSearch: PropTypes.func
 }
 
 SearchTemplate.defaultProps = {

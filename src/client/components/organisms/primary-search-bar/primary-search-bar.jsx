@@ -43,7 +43,11 @@ export class PrimarySearchBar extends React.PureComponent {
     return (
       <div id={id}>
         <div className={bannerClassName}>
-          <h2 id={`${id ? id : 'primary-search-bar'}-title`} className={styles.header}>
+          <h2
+            id={`${id ? id : 'primary-search-bar'}-title`}
+            className={styles.header}
+            aria-label={this.props.title}
+          >
             {this.props.title}
           </h2>
           <form>
