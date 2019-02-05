@@ -173,7 +173,7 @@ class SearchTemplate extends React.PureComponent {
 
   doSearch(searchType, searchParams) {
     let _this = this
-    var search = () =>
+    let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
         .then(searchResults => {
           let results = []
