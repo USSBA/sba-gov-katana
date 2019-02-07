@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { camelCase, isEmpty, startCase } from 'lodash'
 
 import styles from './document-article-lookup.scss'
 import { Button, Loader, MultiSelect, SearchIcon, TextInput } from 'atoms'
@@ -28,7 +28,7 @@ export class DocumentArticleLookup extends React.PureComponent {
     const _multiselects = this.props.taxonomies.map(taxonomy => {
       const { name } = taxonomy
       const id = `${createSlug(name)}-select`
-      const stateName = _.camelCase(name)
+      const stateName = camelCase(name)
       const options = taxonomy.terms.map(entry => {
         return { label: entry, value: entry }
       })
@@ -39,7 +39,7 @@ export class DocumentArticleLookup extends React.PureComponent {
           this.handleChange(event, stateName)
         },
         name: id,
-        label: _.startCase(name),
+        label: startCase(name),
         value: this.props.queryState[stateName],
         options: options
       }
@@ -107,7 +107,7 @@ export class DocumentArticleLookup extends React.PureComponent {
       </div>
     )
     const { items, pageNumber, isFetching } = this.props
-    if (!_.isEmpty(items)) {
+    if (!isEmpty(items)) {
       result = (
         <DetailCardCollection
           type={this.props.type}
@@ -115,7 +115,7 @@ export class DocumentArticleLookup extends React.PureComponent {
           fieldsToShowInDetails={this.props.fieldsToShowInDetails}
         />
       )
-    } else if (items !== undefined && !isFetching) {
+    } else if (typeof items !== 'undefined' && !isFetching) {
       result = (
         <div className={styles.emptyDocuments}>
           <p className={styles.emptyDocumentsMessage}>
@@ -134,7 +134,7 @@ export class DocumentArticleLookup extends React.PureComponent {
   renderPaginator() {
     const { items, itemCount, pageNumber, pageSize } = this.props
     let result = <div />
-    if (!_.isEmpty(items)) {
+    if (!isEmpty(items)) {
       result = (
         <div className={styles.paginator}>
           <Paginator

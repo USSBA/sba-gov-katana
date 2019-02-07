@@ -1,8 +1,22 @@
-import resourceCenterProfileReducer from '../../../reducers/resource-center-profile'
+import React from 'react'
+import {
+  cloneDeep,
+  endsWith,
+  filter,
+  forEach,
+  isEmpty,
+  join,
+  map,
+  orderBy,
+  reject,
+  remove,
+  some
+} from 'lodash'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import resourceCenterProfileReducer from '../../../reducers/resource-center-profile'
 import { submitProfile } from '../../../actions/resource-center-profile'
-import React from 'react'
 import {
   Button,
   CheckBox,
@@ -13,7 +27,6 @@ import {
   TextArea,
   TextInput
 } from 'atoms'
-import _ from 'lodash'
 import {
   getPartners,
   getPartnerOffices,
@@ -93,10 +106,10 @@ class ResourceCenterProfilePage extends React.Component {
   onBlur() {}
 
   updateOffices(partner) {
-    let offices = _.reject(getPartnerOffices(partner), office => {
-      return _.isEmpty(office)
+    let offices = reject(getPartnerOffices(partner), office => {
+      return isEmpty(office)
     })
-    offices = _.orderBy(offices, [
+    offices = orderBy(offices, [
       office => {
         return office.name2.toLowerCase()
       }
@@ -107,19 +120,19 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   handleRadio(value, propName) {
-    const newProfile = _.cloneDeep(this.state.profile)
+    const newProfile = cloneDeep(this.state.profile)
     newProfile[propName] = value
     this.setState({ profile: newProfile })
   }
 
   handleCheckbox(event, propName) {
-    const newProfile = _.cloneDeep(this.state.profile)
+    const newProfile = cloneDeep(this.state.profile)
     const arrayToUpdate = newProfile[propName]
     const itemToUpdate = event.target.name
     if (event.target.checked) {
       arrayToUpdate.push(itemToUpdate)
     } else {
-      _.remove(arrayToUpdate, item => {
+      remove(arrayToUpdate, item => {
         return item === itemToUpdate
       })
     }
@@ -128,8 +141,8 @@ class ResourceCenterProfilePage extends React.Component {
 
   handleSelect(newSelection, propName) {
     const value = newSelection.value
-    const newProfile = _.cloneDeep(this.state.profile)
-    if (_.endsWith(propName, 'Open') || _.endsWith(propName, 'Close')) {
+    const newProfile = cloneDeep(this.state.profile)
+    if (endsWith(propName, 'Open') || endsWith(propName, 'Close')) {
       newProfile.hours[propName] = value
     } else {
       newProfile[propName] = value
@@ -148,7 +161,7 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   handleChange(event, propName) {
-    const newProfile = _.cloneDeep(this.state.profile)
+    const newProfile = cloneDeep(this.state.profile)
     newProfile[event.target.name] = event.target.value
     this.setState({ profile: newProfile })
   }
@@ -158,9 +171,9 @@ class ResourceCenterProfilePage extends React.Component {
       return 'Please select your office'
     }
     const addressPartList = [address.street1, address.street2, address.city, address.state, address.zip]
-    const addressString = _.join(
-      _.filter(addressPartList, addressPart => {
-        return !_.isEmpty(addressPart)
+    const addressString = join(
+      filter(addressPartList, addressPart => {
+        return !isEmpty(addressPart)
       }),
       ', '
     )
@@ -169,7 +182,7 @@ class ResourceCenterProfilePage extends React.Component {
 
   handleOfficeSelect(newSelection) {
     const newOffice = newSelection.value
-    const newProfile = _.cloneDeep(this.state.profile)
+    const newProfile = cloneDeep(this.state.profile)
     newProfile.name = newOffice.name1 + ' | ' + newOffice.name2
     newProfile.phone = newOffice.phone
     newProfile.address = this.formatAddress(newOffice)
@@ -185,7 +198,7 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   handleFurtherDescription(event) {
-    const newProfile = _.cloneDeep(this.state.profile)
+    const newProfile = cloneDeep(this.state.profile)
     newProfile.hours.furtherDescription = event.target.value
     this.setState({ profile: newProfile })
   }
@@ -203,9 +216,9 @@ class ResourceCenterProfilePage extends React.Component {
       'services',
       'needsUpdating'
     ]
-    const newValidationState = _.cloneDeep(this.state.isFieldValid)
-    _.forEach(requiredFields, field => {
-      newValidationState[field] = !_.isEmpty(this.state.profile[field])
+    const newValidationState = cloneDeep(this.state.isFieldValid)
+    forEach(requiredFields, field => {
+      newValidationState[field] = !isEmpty(this.state.profile[field])
       // make sure that one of the update contact options is clicked ('' is the default value)
       if (field === 'needsUpdating') {
         newValidationState[field] = this.state.profile[field] !== ''
@@ -228,7 +241,7 @@ class ResourceCenterProfilePage extends React.Component {
     event.preventDefault()
     const allFieldsValid = this.validateFields()
     if (allFieldsValid) {
-      const profile = _.cloneDeep(this.state.profile)
+      const profile = cloneDeep(this.state.profile)
       // if the service area is specified as other, replace the value in the other text field
       if (profile.serviceArea === 'Other' && this.state.otherServiceArea) {
         profile.serviceArea = this.state.otherServiceArea
@@ -238,7 +251,7 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   renderPartnerSelect() {
-    const partners = _.map(this.state.partners, partner => {
+    const partners = map(this.state.partners, partner => {
       return {
         value: partner,
         label: partner
@@ -271,11 +284,11 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   renderOfficeSelect() {
-    const offices = _.map(this.state.offices, office => {
+    const offices = map(this.state.offices, office => {
       const locationArray = [office.city, office.state]
-      let locationString = _.join(
-        _.filter(locationArray, location => {
-          return !_.isEmpty(location)
+      let locationString = join(
+        filter(locationArray, location => {
+          return !isEmpty(location)
         }),
         ', '
       )
@@ -311,7 +324,7 @@ class ResourceCenterProfilePage extends React.Component {
     )
   }
   renderAreaSelect() {
-    const areas = _.map(['Entire Nation', 'Entire State', 'Entire City', 'Other'], area => {
+    const areas = map(['Entire Nation', 'Entire State', 'Entire City', 'Other'], area => {
       return {
         value: area,
         label: area
@@ -378,14 +391,14 @@ class ResourceCenterProfilePage extends React.Component {
       const timeString = hour + minutes + suffix
       hourArray.push(timeString)
     }
-    const hours = _.map(hourArray, hour => {
+    const hours = map(hourArray, hour => {
       return {
         value: hour,
         label: hour
       }
     })
     const dayOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    const hoursOptions = _.map(dayOfTheWeek, day => {
+    const hoursOptions = map(dayOfTheWeek, day => {
       const dayOpen = day.toLowerCase() + 'Open'
       const dayOpenPlaceholder = day === 'Saturday' || day === 'Sunday' ? 'Closed' : '8:00 am'
       const dayClose = day.toLowerCase() + 'Close'
@@ -444,7 +457,7 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   renderExpertiseCheckboxes() {
-    const expertiseOptions = _.map(
+    const expertiseOptions = map(
       [
         'Creating a plan',
         'Access & Capital',
@@ -487,7 +500,7 @@ class ResourceCenterProfilePage extends React.Component {
     )
   }
   renderServiceCheckboxes() {
-    const serviceOptions = _.map(
+    const serviceOptions = map(
       [
         'Walk-ins',
         'Appointments',
@@ -527,7 +540,7 @@ class ResourceCenterProfilePage extends React.Component {
   }
 
   renderLanguageCheckboxes() {
-    const languageOptions = _.map(
+    const languageOptions = map(
       [
         'Spanish',
         'Chinese',
@@ -742,7 +755,7 @@ class ResourceCenterProfilePage extends React.Component {
                 Submit
               </Button>
             </div>
-            {_.some(isFieldValid, field => {
+            {some(isFieldValid, field => {
               return field === false
             }) && (
               <div className={style.submitButton} role="alert">
@@ -781,5 +794,8 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResourceCenterProfilePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResourceCenterProfilePage)
 export { ResourceCenterProfilePage }

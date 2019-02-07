@@ -1,11 +1,10 @@
 import React from 'react'
 
-import style from './article-lookup-page.scss'
 import { PagingLookup } from 'organisms'
 
 class ArticleLookupPage extends React.Component {
   render() {
-    let articleProps = {
+    const articleProps = {
       title: 'Article lookup',
       type: 'articles',
       taxonomyFilters: ['articleCategory', 'program'],

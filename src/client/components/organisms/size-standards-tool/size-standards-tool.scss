@@ -72,7 +72,7 @@
 
           i {
             margin: auto 11px auto 0;
-            font-size: 1.2em;
+            font-size: 21.5px;
             width: 25px;
             text-align: center;
           }
@@ -99,7 +99,6 @@
   .appBar {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    -ms-grid-columns: 1fr 1fr;
 
     margin-top: 70px;
     padding: 20px 30px;
@@ -107,12 +106,10 @@
 
     button:first-child {
       justify-self: start;
-      -ms-grid-column-align: start;
     }
 
     button:last-child {
       justify-self: end;
-      -ms-grid-column-align: end;
     }
   }
 

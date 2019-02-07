@@ -39,7 +39,8 @@
           (
             gutter: 30px
           )
-        ) min-width: 339px;
+        )
+        min-width: 339px;
       // Override grid column left margin defined above in the @include.
       margin-left: -50px;
     }
@@ -50,7 +51,8 @@
           (
             gutter: 30px
           )
-        ) min-width: 500px;
+        )
+        min-width: 500px;
       // Override grid column left margin defined above in the @include.
       margin-left: -50px;
     }
@@ -112,7 +114,7 @@
     h1 {
       // The static part of calc() (1rem) defines the minimum so that the font
       // size does not become too small as the screen gets smaller.
-      font-size: calc(1rem + 4vw);
+      font-size: calc(18px + 4vw);
       hyphens: auto;
     }
   }

@@ -1,6 +1,6 @@
 .box {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 54px;
+  padding-bottom: 54px;
 
   @include for-small-only {
     padding-top: 0;
@@ -15,11 +15,11 @@
   @include for-small-only {
     margin-top: 30px;
     margin-bottom: 30px;
-    padding: 1.667rem;
+    padding: 30px;
   }
 
   @include for-medium-only {
-    padding: 1.667rem;
+    padding: 30px;
   }
 }
 
@@ -27,10 +27,10 @@
   border-bottom: 2px solid;
   color: $sba-red;
   display: inline-block;
-  font-size: 2.5rem;
+  font-size: 45px;
   font-weight: 600;
-  margin-bottom: 1.25rem;
-  padding-bottom: 0.25rem;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 
 .text {

@@ -9,7 +9,7 @@ import { Button } from 'atoms'
 
 class SbaModal extends React.Component {
   handleEnter(e) {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       this.props.onClose()
     }
   }
@@ -27,7 +27,7 @@ class SbaModal extends React.Component {
       isOpen
     } = this.props
 
-    let logo = showLogo ? <img className={styles.logo} src={sbaLogo} /> : undefined
+    const logo = showLogo ? <img className={styles.logo} src={sbaLogo} /> : null
     return (
       <Modal
         isOpen={isOpen}

@@ -23,12 +23,12 @@ function makeTestDataItem(itemNumber) {
   }
 }
 
-let testData = [makeTestDataItem(0), makeTestDataItem(1), makeTestDataItem(2), makeTestDataItem(3)]
+const testData = [makeTestDataItem(0), makeTestDataItem(1), makeTestDataItem(2), makeTestDataItem(3)]
 
 describe('ProgramDetailsCardCollection', () => {
   test('should render the default cards', () => {
     const component = renderer.create(<ProgramDetailsCardCollection />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
@@ -39,7 +39,7 @@ describe('ProgramDetailsCardCollection', () => {
 
   test('should render english by default', () => {
     const component = shallow(<ProgramDetailsCardCollection cards={testData} />)
-    let cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
+    const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
     expect(cardsPropertyToCardCollection.length).toEqual(4)
     expect(cardsPropertyToCardCollection[0].titleText).toEqual('Title 0')
     expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Summary 0')
@@ -47,7 +47,7 @@ describe('ProgramDetailsCardCollection', () => {
 
   test('should render the spanish translation when the language is set', () => {
     const component = shallow(<ProgramDetailsCardCollection cards={testData} currentLanguage="es" />)
-    let cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
+    const cardsPropertyToCardCollection = component.find('CardCollection').prop('cards')
     expect(cardsPropertyToCardCollection.length).toEqual(4)
     expect(cardsPropertyToCardCollection[0].titleText).toEqual('Título 0')
     expect(cardsPropertyToCardCollection[0].subtitleText).toEqual('Resumen 0')

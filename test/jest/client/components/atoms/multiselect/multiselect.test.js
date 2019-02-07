@@ -35,8 +35,8 @@ jest.mock('../../../../../../src/client/services/utils.js', () => ({
   getLanguageOverride: jest.fn()
 }))
 
-function makeValueLikeReactSelectReturnsIt(x) {
-  return _.map(x, item => {
+function makeValueLikeReactSelectReturnsIt(value) {
+  return _.map(value, item => {
     return {
       name: item,
       value: item

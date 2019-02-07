@@ -5,17 +5,17 @@ import { ValidationIcon } from 'atoms'
 
 class TextArea extends React.Component {
   inputValidation(validationState) {
-    return validationState == 'error' ? styles.textAreaInvalid : styles.textArea
+    return validationState === 'error' ? styles.textAreaInvalid : styles.textArea
   }
 
   errorMessage(validationState, errorText) {
-    return validationState == 'error' ? (
+    return validationState === 'error' ? (
       <FormErrorMessage errorFor={this.props.id} errorText={this.props.errorText} />
     ) : null
   }
 
   render() {
-    let {
+    const {
       id,
       label,
       value,

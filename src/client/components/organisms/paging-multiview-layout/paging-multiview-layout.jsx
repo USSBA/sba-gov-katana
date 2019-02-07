@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 import styles from './paging-multiview-layout.scss'
 import { Paginator } from 'molecules'
@@ -17,7 +17,7 @@ class PagingMultiviewLayout extends React.PureComponent {
   renderItems() {
     let result = 'Loading...'
     const { items, pageNumber, onReset, type } = this.props
-    if (!_.isEmpty(items)) {
+    if (!isEmpty(items)) {
       result = this.state.currentRenderer(items)
     } else {
       result = (
@@ -36,7 +36,7 @@ class PagingMultiviewLayout extends React.PureComponent {
   renderPaginator() {
     const { items, itemCount, pageNumber, pageSize } = this.props
     let result = <div />
-    if (!_.isEmpty(items)) {
+    if (!isEmpty(items)) {
       result = (
         <div className={styles.paginator}>
           <Paginator
@@ -54,20 +54,21 @@ class PagingMultiviewLayout extends React.PureComponent {
 
   handleBack() {
     const { pageNumber, onPageChange, googleAnalyticsCategory } = this.props
-    let newPageNumber = Math.max(1, pageNumber - 1)
+    const newPageNumber = Math.max(1, pageNumber - 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: googleAnalyticsCategory, action: 'Previous' })
   }
 
   handleForward() {
     const { itemCount, pageNumber, onPageChange, googleAnalyticsCategory } = this.props
-    let newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
+    const newPageNumber = Math.min(Math.max(1, Math.ceil(itemCount / this.props.pageSize)), pageNumber + 1)
     onPageChange(newPageNumber)
     logPageEvent({ category: googleAnalyticsCategory, action: 'Next' })
   }
 
   renderViewTypeSelector() {
-    if (this.props.rendererOneName && this.props.rendererTwoName) {
+    const { rendererOneName, rendererTwoName } = this.props
+    if (rendererOneName && rendererTwoName) {
       return (
         <div className={`view-type-selector ${styles.viewTypeSelector}`}>
           {rendererOneName} | {rendererTwoName}

@@ -1,17 +1,18 @@
 import React from 'react'
-import _ from 'lodash'
+import { castArray, filter, intersection, isEmpty, sortBy } from 'lodash'
 
-import s from './surety-lookup.scss'
+import style from './surety-lookup.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { MultiSelect } from 'atoms'
 import { CardGrid, Paginator } from 'molecules'
 
-var pageSize = 9
+const PAGE_SIZE = 9
+
 class SuretyLookup extends React.Component {
   constructor(ownProps) {
     super()
     this.state = {
-      filteredContacts: _.sortBy(ownProps.items, 'title') || [],
+      filteredContacts: sortBy(ownProps.items, 'title') || [],
       suretyState: null,
       pageNumber: 1,
       numberOfTimesUserHasSelectedAState: 0,
@@ -34,7 +35,7 @@ class SuretyLookup extends React.Component {
 
   componentWillReceiveProps(nextProps, ownProps) {
     this.setState({
-      filteredContacts: _.sortBy(nextProps.items, 'title')
+      filteredContacts: sortBy(nextProps.items, 'title')
     })
   }
 
@@ -53,7 +54,7 @@ class SuretyLookup extends React.Component {
   }
 
   handleSelect(e) {
-    let newValue = e.value
+    const newValue = e.value
     this.setState(
       {
         suretyState: e.value,
@@ -74,18 +75,16 @@ class SuretyLookup extends React.Component {
     if (this.state.suretyState === 'All') {
       filteredContacts = this.props.items
     } else {
-      filteredContacts = _.filter(this.props.items, agency => {
-        return !_.isEmpty(
-          _.intersection(_.castArray(agency.stateServed), _.castArray(this.state.suretyState))
-        )
+      filteredContacts = filter(this.props.items, agency => {
+        return !isEmpty(intersection(castArray(agency.stateServed), castArray(this.state.suretyState)))
       })
     }
-    filteredContacts = _.sortBy(filteredContacts, ['title'])
+    filteredContacts = sortBy(filteredContacts, ['title'])
     this.setState({ filteredContacts: filteredContacts })
   }
 
   multiSelectProps() {
-    let options = this.state.states.terms.map(state => {
+    const options = this.state.states.terms.map(state => {
       return { label: state, value: state }
     })
     options.push({ label: '', value: null })
@@ -107,7 +106,7 @@ class SuretyLookup extends React.Component {
   handleForward() {
     this.setState({
       pageNumber: Math.min(
-        Math.max(1, Math.ceil(this.state.filteredContacts.length / pageSize)),
+        Math.max(1, Math.ceil(this.state.filteredContacts.length / PAGE_SIZE)),
         this.state.pageNumber + 1
       )
     })
@@ -115,14 +114,14 @@ class SuretyLookup extends React.Component {
 
   renderCard(data, index) {
     return (
-      <div id={'surety-card' + index} className={s.card}>
-        <h4 className={s.title}>{data.title}</h4>
-        <div className={s.phoneContainer}>
-          <i className={s.phoneIcon + ' fa fa-phone'} aria-hidden="true" />
+      <div id={'surety-card' + index} className={style.card}>
+        <h4 className={style.title}>{data.title}</h4>
+        <div className={style.phoneContainer}>
+          <i className={style.phoneIcon + ' fa fa-phone'} aria-hidden="true" />
           <span>{data.phoneNumber}</span>
         </div>
         <div>
-          <i className={s.emailIcon + ' fa fa-envelope-o'} aria-hidden="true" />
+          <i className={style.emailIcon + ' fa fa-envelope-o'} aria-hidden="true" />
           <a href={'mailto:' + data.email}>Email</a>
         </div>
       </div>
@@ -130,11 +129,11 @@ class SuretyLookup extends React.Component {
   }
 
   renderCardContainer() {
-    if (!_.isEmpty(this.state.filteredContacts)) {
-      let start = (this.state.pageNumber - 1) * pageSize
-      let slice = this.state.filteredContacts.slice(start, start + pageSize)
+    if (!isEmpty(this.state.filteredContacts)) {
+      const start = (this.state.pageNumber - 1) * PAGE_SIZE
+      const slice = this.state.filteredContacts.slice(start, start + PAGE_SIZE)
       return <CardGrid cards={slice} renderCard={this.renderCard} />
-    } else if (_.isEmpty(this.state.filteredContacts)) {
+    } else if (isEmpty(this.state.filteredContacts)) {
       return <EmptyContacts />
     } else {
       return 'Loading'
@@ -144,13 +143,13 @@ class SuretyLookup extends React.Component {
   render() {
     return (
       <div id={'surety-lookup'}>
-        <div className={s.banner}>
+        <div className={style.banner}>
           <h2>Contact a surety bond agency</h2>
-          <h5 className={s.blurb}>
+          <h5 className={style.blurb}>
             Check the database of surety agencies that offer SBA-guaranteed bonds. Contact a surety agency
             in your state to get started with the application process.
           </h5>
-          <div className={s.multiSelect}>
+          <div className={style.multiSelect}>
             <MultiSelect
               {...this.multiSelectProps()}
               onChange={e => this.handleSelect(e)}
@@ -169,11 +168,11 @@ class SuretyLookup extends React.Component {
           </div>
         </div>
 
-        <div className={s.cardContainer}>{this.renderCardContainer()}</div>
-        <div className={s.paginator}>
+        <div className={style.cardContainer}>{this.renderCardContainer()}</div>
+        <div className={style.paginator}>
           <Paginator
             pageNumber={this.state.pageNumber}
-            pageSize={pageSize}
+            pageSize={PAGE_SIZE}
             total={this.state.filteredContacts.length}
             onBack={this.handleBack.bind(this)}
             onForward={this.handleForward.bind(this)}
@@ -185,7 +184,7 @@ class SuretyLookup extends React.Component {
 }
 
 const EmptyContacts = () => (
-  <div className={s.emptyContacts}>
+  <div className={style.emptyContacts}>
     <div>No surety agencies found</div>
   </div>
 )

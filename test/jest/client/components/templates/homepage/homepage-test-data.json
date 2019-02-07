@@ -108,8 +108,7 @@
       ]
     },
     {
-      "blurb":
-        "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
+      "blurb": "The SBA highlights outstanding entrepreneurs, small business owners, and others from all 50 states and U.S. territories.",
       "buttonAction": {
         "id": 9262,
         "type": "link",
@@ -134,8 +133,7 @@
       "style": "Medium"
     }
   ],
-  "summary":
-    "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
+  "summary": "We support America's small businesses. The SBA connects entrepreneurs with lenders and funding to help them plan, start and grow their business.",
   "type": "homePage",
   "title": "Small Business Administration",
   "id": 6134,

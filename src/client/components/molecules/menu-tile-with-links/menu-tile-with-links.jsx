@@ -1,20 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import s from './menu-tile-with-links.scss'
+import style from './menu-tile-with-links.scss'
 import { Link } from 'atoms'
 import { determineMenuTileData } from '../../../services/utils.js'
 
 class MenuTileWithLinks extends React.Component {
   render() {
     return (
-      <div id={this.props.id} className={s.tileHover}>
+      <div id={this.props.id} className={style.tileHover}>
         <Link to={this.props.link}>
           <h3>
             {this.props.largeTitle} {this.props.smallTitle}
           </h3>
         </Link>
-        <div className={s.topLine} />
+        <div className={style.topLine} />
         {this.props.children
           ? this.props.children.map((object, index) => {
               const titleDescriptionUrlData = determineMenuTileData(this.props.langCode, object)
@@ -40,8 +40,13 @@ class MenuTileWithLinks extends React.Component {
 class HoverLink extends React.Component {
   render() {
     return (
-      <div className={s.linkContainer}>
-        <Link id={this.props.id} className={s.link} to={this.props.link} autoFocus={this.props.autoFocus}>
+      <div className={style.linkContainer}>
+        <Link
+          id={this.props.id}
+          className={style.link}
+          to={this.props.link}
+          autoFocus={this.props.autoFocus}
+        >
           {this.props.title}
         </Link>
       </div>

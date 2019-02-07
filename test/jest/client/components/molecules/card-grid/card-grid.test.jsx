@@ -15,11 +15,11 @@ jest.mock('client/services/client-config.js', function() {
 })
 
 test('CardGrid renders a simple 3x3 grid', () => {
-  let cards = _.map(Array(9), (item, index) => {
+  const cards = _.map(Array(9), (item, index) => {
     return { text: 'this is card #' + index }
   })
-  let renderCard = (data, index) => <p>{data.text}</p>
+  const renderCard = (data, index) => <p>{data.text}</p>
   const component = renderer.create(<CardGrid cards={cards} renderCard={renderCard} />)
-  let tree = component.toJSON()
+  const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

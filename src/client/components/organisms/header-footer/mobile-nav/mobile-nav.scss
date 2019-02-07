@@ -3,10 +3,10 @@
   display: none;
   background-color: white;
   border-bottom: 1px solid $sba-gray-light;
-  height: 2.944rem;
-  padding: 0.556rem 1.111rem 3rem 1.111rem;
+  height: 53px;
+  padding: 10px 20px 54px 20px;
   @include grid-media($sba-grid-medium) {
-    padding-bottom: 3.5rem;
+    padding-bottom: 63px;
   }
   @include grid-media($tablet-nav) {
     display: block;
@@ -19,9 +19,9 @@
 .menuButtonOpen,
 .menuButtonClosed {
   float: right;
-  border: 0.111rem solid $sba-blue;
-  width: 6.111rem;
-  padding: 0.278rem 0.722rem 0.333rem 0.722rem;
+  border: 2px solid $sba-blue;
+  width: 110px;
+  padding: 5px 13px 6px 13px;
   text-decoration: none;
   &:hover {
     text-decoration: none;
@@ -31,8 +31,8 @@
 .mainNavNew .mobileNavMenuLink {
   border-bottom: 1px solid $sba-gray-light;
   display: block;
-  padding: 1.389rem 2.778rem;
-  font-size: 1rem;
+  padding: 25px 50px;
+  font-size: 18px;
 }
 
 .mobile-search-new {
@@ -56,8 +56,8 @@
 
 .mobileSearchContainerNew {
   background-color: $sba-gray-lighter;
-  height: 3.333rem;
-  padding: 0.556rem 0;
+  height: 60px;
+  padding: 10px 0;
   position: relative;
   width: 100%;
 }
@@ -70,14 +70,14 @@
 }
 
 .searchIconNew {
-  width: 0.833rem;
+  width: 15px;
 }
 
 input.searchInputFieldNew {
   position: relative;
-  height: 2.222rem;
+  height: 40px;
   width: 85vw;
-  font-size: 1rem;
+  font-size: 18px;
   color: $sba-gray-dark;
   text-indent: 2%;
   border: 1px solid $sba-gray-light;
@@ -87,9 +87,9 @@ input.searchInputFieldNew {
 }
 
 .linkIcon {
-  height: 1rem;
+  height: 18px;
   width: 0.944rem;
   vertical-align: middle;
-  margin-top: -0.111rem;
-  margin-right: 0.667rem;
+  margin-top: -2px;
+  margin-right: 12px;
 }

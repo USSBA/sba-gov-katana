@@ -16,6 +16,7 @@ const Card = props => {
     parentIndex
   } = props
 
+  /* eslint-disable no-magic-numbers */
   const className = classNames({
     card: true,
     [styles.card]: true,
@@ -25,6 +26,7 @@ const Card = props => {
     [styles.sixColumn]: [6, 12].includes(numCards) || numCards > 12,
     [styles.noImage]: isEmpty(image)
   })
+  /* eslint-enable no-magic-numbers */
 
   // TODO: use lede text instead of subtitle text
   const languageOverride = getLanguageOverride()
@@ -57,7 +59,7 @@ const Card = props => {
   }
 
   const titleMarkup = uri ? <Link to={uri}>{titleText}</Link> : titleText
-  const learnMoreMarkup = uri ? <Link to={uri}>{title}</Link> : undefined
+  const learnMoreMarkup = uri ? <Link to={uri}>{title}</Link> : null
 
   return (
     <div className={className} id={snakeCase('card', parentIndex, index)}>
@@ -72,7 +74,7 @@ const Card = props => {
         ) : null}
         {subtitleText ? (
           <div>
-            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={1.667} />
+            <DecorativeDash id={'hr-' + parentIndex + '-' + index} width={30} />
             <p id={'subtitle-text-' + parentIndex + '-' + index} className={styles.itemSubTitle}>
               {subtitleText}
             </p>

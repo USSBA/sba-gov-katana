@@ -25,7 +25,7 @@ const store = createStore(rootReducer, middleware)
 const history = syncHistoryWithStore(browserHistory, store)
 
 import '../styles/base.scss'
-require('font-awesome-webpack2')
+require('font-awesome-webpack-4')
 
 class App extends React.Component {
   render() {

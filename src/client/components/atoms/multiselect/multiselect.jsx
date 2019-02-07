@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactSelect from 'react-select'
-import _ from 'lodash'
 import 'react-select/dist/react-select.css'
+import { forEach, map } from 'lodash'
 
 import chevron from 'assets/svg/chevron.svg'
 import styles from './multiselect.scss'
@@ -28,7 +28,7 @@ class MultiSelectBox extends React.Component {
     let value
     if (this.props.multi) {
       if (newValue.length <= this.props.maxValues) {
-        value = _.map(newValue, 'value').join(',')
+        value = map(newValue, 'value').join(',')
       }
     } else {
       value = newValue
@@ -81,7 +81,7 @@ class MultiSelectBox extends React.Component {
 
     const inputPropFields = ['aria-labelledby', 'aria-label', 'required']
     const inputProps = {}
-    _.forEach(inputPropFields, field => {
+    forEach(inputPropFields, field => {
       if (this.props[field]) {
         inputProps[field] = this.props[field]
       }
@@ -110,7 +110,7 @@ class MultiSelectBox extends React.Component {
             arrowRenderer={arrowRenderer}
             clearRenderer={clearRenderer}
             searchable={multi}
-            placeholder={!placeholder && langCode ? TRANSLATIONS['select'][langCode].text : placeholder}
+            placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
             inputProps={inputProps}
           />
         </div>

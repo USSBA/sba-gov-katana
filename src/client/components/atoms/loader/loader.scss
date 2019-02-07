@@ -1,4 +1,4 @@
-$diameter: 7rem;
+$diameter: 126px;
 
 .container {
   height: $diameter;
@@ -7,7 +7,7 @@ $diameter: 7rem;
 }
 
 .logo {
-  height: 3.75rem;
+  height: 68px;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -22,37 +22,33 @@ $diameter: 7rem;
 }
 
 @mixin loader-border($side, $color: $sba-gray-lighter) {
-  border-#{$side}: 0.6rem solid $color;
+  border-#{$side}: 11px solid $color;
 }
 
 .loader {
-  // TODO: use PostCSS
-  -webkit-animation: spin 1.1s infinite linear;
   animation: spin 1.1s infinite linear;
-  font-size: 0.556rem;
+  font-size: 10px;
   position: absolute;
   text-indent: -9999em;
-  -ms-transform: translateZ(0);
-  -webkit-transform: translateZ(0);
   transform: translateZ(0);
 
-  @include loader-border('top') @include loader-border('right') @include loader-border('bottom') @include loader-border('left', $sba-red);
+  @include loader-border('top') @include loader-border('right') @include loader-border('bottom') @include
+    loader-border('left', $sba-red);
 }
 @-webkit-keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @keyframes spin {
   0% {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);

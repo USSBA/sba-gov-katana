@@ -1,13 +1,13 @@
 import React from 'react'
 
 import logo from 'assets/images/logo-no-text.svg'
-import s from './loader.scss'
+import style from './loader.scss'
 
 const Loader = props => {
   return (
-    <div className={`loader ${s.container}`}>
-      <img className={s.logo} src={logo} />
-      <div className={s.loader} />
+    <div className={`loader ${style.container}`}>
+      <img className={style.logo} src={logo} />
+      <div className={style.loader} />
     </div>
   )
 }

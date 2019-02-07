@@ -1,22 +1,21 @@
 import React from 'react'
-import _ from 'lodash'
 
 import styles from './simple-select.scss'
 import { ValidationIcon } from 'atoms'
 
 class SimpleSelect extends React.Component {
   getValidationIcon() {
-    return this.props.validationState == 'success' ? (
+    return this.props.validationState === 'success' ? (
       <i className={'fa fa-check-circle ' + styles.textInputIconValid} aria-hidden="true" />
     ) : null
   }
 
   getValidationStyle() {
-    return this.props.validationState == 'error' ? styles.textInputInvalid : styles.textInput
+    return this.props.validationState === 'error' ? styles.textInputInvalid : styles.textInput
   }
 
   getErrorMessage() {
-    return this.props.validationState == 'error' ? (
+    return this.props.validationState === 'error' ? (
       <p id={this.props.id + '-error'} className={styles.errorText}>
         {this.props.errorText}
       </p>
@@ -24,8 +23,8 @@ class SimpleSelect extends React.Component {
   }
 
   getLabel() {
-    let labelTag = this.props.label ? (
-      <label htmlFor={id} className={styles.controlLabel}>
+    const labelTag = this.props.label ? (
+      <label htmlFor={this.props.id} className={styles.controlLabel}>
         {this.props.label}
       </label>
     ) : (
@@ -35,14 +34,14 @@ class SimpleSelect extends React.Component {
   }
 
   handleChange(e) {
-    let value = e.target.value
+    const value = e.target.value
     this.props.onChange(value)
   }
 
   render() {
-    let validationIcon = this.getValidationIcon()
-    let errorMessage = this.getErrorMessage()
-    let labelTag = this.getLabel()
+    const validationIcon = this.getValidationIcon()
+    const errorMessage = this.getErrorMessage()
+    const labelTag = this.getLabel()
 
     return (
       <div id={this.props.id + '-container'} className={styles.selectContainer} hidden={this.props.hidden}>

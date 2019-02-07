@@ -6,7 +6,7 @@ nav {
     text-decoration: none;
   }
   @include grid-media($sba-grid-large) {
-    height: 6.444rem;
+    height: 116px;
   }
   @include grid-media($tablet-nav) {
     top: 0;
@@ -20,61 +20,61 @@ nav {
 
 .alertIsActive nav {
   @media only screen and (max-width: 1079px) {
-    top: 2.944rem;
+    top: 53px;
   }
 
   @media only screen and (max-width: 767px) {
-    top: 4.944rem;
+    top: 89p;
   }
 
   @media only screen and (max-width: 506px) {
-    top: 6.278rem;
+    top: 113px;
   }
 
   @media only screen and (max-width: 335px) {
-    top: 7.611rem;
+    top: 137px;
   }
 
   @media only screen and (max-width: 305px) {
-    top: 8.667rem;
+    top: 156px;
   }
 }
 
 .mainContent {
   @include grid-media($tablet-nav) {
-    padding-top: 4.111rem;
+    padding-top: 74px;
   }
   @include grid-media($mobile-nav) {
-    padding-top: 3.611rem;
+    padding-top: 65px;
   }
 }
 
 .alertIsActive .mainContent {
   @media only screen and (max-width: 1079px) {
-    padding-top: 7.056rem;
+    padding-top: 127px;
   }
 
   @media only screen and (max-width: 767px) {
-    padding-top: 9.056rem;
+    padding-top: 163px;
   }
 
   @media only screen and (max-width: 506px) {
-    padding-top: 10.389rem;
+    padding-top: 187px;
   }
 
   @media only screen and (max-width: 335px) {
-    padding-top: 11.667rem;
+    padding-top: 210px;
   }
 
   @media only screen and (max-width: 305px) {
-    padding-top: 12.778rem;
+    padding-top: 230px;
   }
 }
 
 .skipNav {
   background-color: transparent;
   color: transparent;
-  padding: 0.5rem 0.5rem;
+  padding: 9px 9px;
   position: absolute;
   transition: all 0.2s ease-in-out;
   z-index: 20;

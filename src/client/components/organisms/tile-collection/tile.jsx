@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import s from './tile.scss'
+import style from './tile.scss'
 import * as ModalActions from '../../../actions/show-modal.js'
 import { Link } from 'atoms'
 import { MenuTile, MenuTileWithLinks } from 'molecules'
@@ -10,10 +10,6 @@ import { navigateNow } from '../../../services/navigation.js'
 import { determineMenuTileData, getLanguageOverride } from '../../../services/utils.js'
 
 class Tile extends React.Component {
-  constructor() {
-    super()
-  }
-
   _formatLargeTitle(title) {
     return title.split(' ')[0]
   }
@@ -40,7 +36,7 @@ class Tile extends React.Component {
     if (this.state.displayMenuOnFocus === false) {
       return ''
     } else if (this.state.displayMenuOnFocus === true) {
-      return s.tabChangeTileBackground
+      return style.tabChangeTileBackground
     }
   }
 
@@ -64,14 +60,14 @@ class Tile extends React.Component {
 
   handleKeyDown(event) {
     const code = event.keyCode ? event.keyCode : event.which
-    if (code == 9 && event.shiftKey) {
+    if (code === 9 && event.shiftKey) {
       this.props.onTabBackwards(this.props.enteringInReverse)
     }
   }
 
   handleTileKeyDown(event) {
     const code = event.keyCode ? event.keyCode : event.which
-    if (code == 13) {
+    if (code === 13) {
       this._openNavMenu()
     }
   }
@@ -124,21 +120,21 @@ class Tile extends React.Component {
     )
 
     let widthStyle = null
-    if (size === 3 && pathname === undefined) {
-      widthStyle = s.tileThree
-    } else if (size === 4 && pathname === undefined) {
-      widthStyle = s.tileFour
-    } else if (size === 5 && pathname === undefined) {
-      widthStyle = s.tileFive
+    if (size === 3 && pathname === 'undefined') {
+      widthStyle = style.tileThree
+    } else if (size === 4 && typeof pathname === 'undefined') {
+      widthStyle = style.tileFour
+    } else if (size === 5 && typeof pathname === 'undefined') {
+      widthStyle = style.tileFive
     } else if (size === 4 && pathname === '/') {
-      widthStyle = s.homePageTileFour
+      widthStyle = style.homePageTileFour
     }
 
-    const breakpointLarge = parseInt(s.breakpointLarge.slice(0, -2), 10)
+    const breakpointLarge = parseInt(style.breakpointLarge.slice(0, -2), 10)
 
     const toggleMenuLink = (
       <Link
-        className={s.tabDisplayMenu}
+        className={style.tabDisplayMenu}
         onClick={e => {
           e ? e.preventDefault() : ''
         }}
@@ -153,7 +149,7 @@ class Tile extends React.Component {
     return (
       <div
         id={id}
-        className={s.tile + ' ' + widthStyle}
+        className={style.tile + ' ' + widthStyle}
         onClick={this._openNavMenu.bind(this, breakpointLarge, fullUrl)}
         onMouseEnter={this._mouseEnterTile.bind(this, breakpointLarge)}
         onMouseLeave={this._mouseExitTile.bind(this, breakpointLarge)}
@@ -161,7 +157,7 @@ class Tile extends React.Component {
       >
         {toggleMenuLink}
         {showHover ? hoverTile : <MenuTile id={id + '-static'} pathname={pathname} {...baseTileData} />}
-        {backgroundLines ? <img className={s.backgroundLines} src={backgroundLines} alt="" /> : undefined}
+        {backgroundLines ? <img className={style.backgroundLines} src={backgroundLines} alt="" /> : null}
       </div>
     )
   }
@@ -177,4 +173,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(Tile)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(Tile)

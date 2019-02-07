@@ -13,7 +13,7 @@ const reset = jest.fn()
 const queryChange = jest.fn()
 const pageChange = jest.fn()
 
-let lookupProps = {
+const lookupProps = {
   title: 'This is a title',
   queryState: {},
   items: [
@@ -69,21 +69,21 @@ let lookupProps = {
 }
 describe('DocumentArticleLookup', () => {
   test('should render with all the information', () => {
-    let props = _.clone(lookupProps)
+    const props = _.clone(lookupProps)
     const component = renderer.create(<DocumentArticleLookup {...props} />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   test('should fire the submit when the apply button is pressed ', () => {
-    let props = _.clone(lookupProps)
+    const props = _.clone(lookupProps)
     const component = shallow(<DocumentArticleLookup {...props} />)
     component.find('Button').simulate('click')
     expect(submit).toBeCalled()
   })
 
   test('should move All to the top of the MultiSelect options list', () => {
-    let props = _.clone(lookupProps)
+    const props = _.clone(lookupProps)
     props.taxonomies = [
       {
         name: 'Program',
@@ -100,7 +100,7 @@ describe('DocumentArticleLookup', () => {
   })
 
   test('should sort All to the top of the MultiSelect options list', () => {
-    let props = _.clone(lookupProps)
+    const props = _.clone(lookupProps)
     props.taxonomies = [
       {
         name: 'Program',
@@ -117,7 +117,7 @@ describe('DocumentArticleLookup', () => {
   })
 
   test('should not include All in the MultiSelect options list', () => {
-    let props = _.clone(lookupProps)
+    const props = _.clone(lookupProps)
     props.taxonomies = [
       {
         name: 'Program',

@@ -22,10 +22,10 @@ class Homepage extends React.Component {
   }
 
   async fetchHomepageData() {
-    let siteMap = await fetchSiteContent('siteMap')
-    let homepageNodeId = findSection(siteMap, 'home-page')
+    const siteMap = await fetchSiteContent('siteMap')
+    const homepageNodeId = findSection(siteMap, 'home-page')
     if (homepageNodeId && homepageNodeId.node) {
-      let homepageData = await fetchRestContent('node', homepageNodeId.node)
+      const homepageData = await fetchRestContent('node', homepageNodeId.node)
       return { data: homepageData, siteMap }
     }
   }
@@ -93,4 +93,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 export { Homepage }
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Homepage)

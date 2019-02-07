@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { includes, isEmpty, size } from 'lodash'
 
-import s from './detail-card.scss'
+import style from './detail-card.scss'
 import { DecorativeDash, FileTypeIcon, Label, Link } from 'atoms'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile, getFileExtension } from '../../../services/utils.js'
@@ -22,7 +22,7 @@ class DetailCard extends React.Component {
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
       const fileExtension = getFileExtension(latestFile.fileUrl)
       return (
-        <div className={'document-card-download ' + s.download}>
+        <div className={'document-card-download ' + style.download}>
           <Link
             onClick={() => {
               window.open(latestFile.fileUrl, '_blank')
@@ -34,7 +34,7 @@ class DetailCard extends React.Component {
         </div>
       )
     } else {
-      return undefined
+      return null
     }
   }
 
@@ -59,18 +59,18 @@ class DetailCard extends React.Component {
 
     return (
       <div>
-        <div className={s.dash}>
+        <div className={style.dash}>
           <DecorativeDash />
         </div>
-        <table className={s.programSummaryTableData}>
-          <tbody className={s['program-summary-table']}>
+        <table className={style.programSummaryTableData}>
+          <tbody className={style['program-summary-table']}>
             {rows.map((row, index) => {
               return (
-                <tr className={s['program-summary-data']} key={index}>
-                  <td className={s.columnOne}>
+                <tr className={style['program-summary-data']} key={index}>
+                  <td className={style.columnOne}>
                     <h6>{row.name}</h6>
                   </td>
-                  <td className={s.columnTwo}>{row.value}</td>
+                  <td className={style.columnTwo}>{row.value}</td>
                 </tr>
               )
             })}
@@ -88,7 +88,7 @@ class DetailCard extends React.Component {
     }
     return (
       <Link to={doc.url}>
-        <h6 className={'document-card-title ' + s.title}>{doc.title}</h6>
+        <h6 className={'document-card-title ' + style.title}>{doc.title}</h6>
       </Link>
     )
   }
@@ -116,14 +116,14 @@ class DetailCard extends React.Component {
 
       const className = classNames({
         'document-card-container': true,
-        [s.container]: showBorder,
-        [s.containerWithoutBorder]: !showBorder
+        [style.container]: showBorder,
+        [style.containerWithoutBorder]: !showBorder
       })
 
       return (
         <div className={className}>
           <div>
-            <div className={s.documentTypeContainer}>
+            <div className={style.documentTypeContainer}>
               <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
             </div>
             <div />

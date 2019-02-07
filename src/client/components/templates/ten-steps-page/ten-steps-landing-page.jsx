@@ -61,7 +61,7 @@ class TenStepsLandingPage extends React.Component {
   toggleNavType() {
     if (this.state.section >= 1) {
       this.setState({ navType: 'center' })
-    } else if (this.state.section == 'titleSection') {
+    } else if (this.state.section === 'titleSection') {
       this.setState({ navType: 'top' })
     }
   }
@@ -123,11 +123,13 @@ class TenStepsLandingPage extends React.Component {
       const id = index + 1
       const { link, text, title } = TRANSLATIONS[`tenSteps${id}`][langCode]
 
+      /* eslint-disable no-param-reassign */
       section.imageAlt = title
       section.link = link
       section.sectionNum = id
       section.text = text
       section.title = title
+      /* eslint-enable no-param-reassign */
 
       return section
     })

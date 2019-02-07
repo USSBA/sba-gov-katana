@@ -14,7 +14,6 @@ jest.mock('client/services/client-config.js', function() {
 const fetchContentIfNeeded = jest.fn()
 
 describe('QuickLinks', () => {
-
   var mockFetchDocuments
   beforeEach(() => {
     mockFetchDocuments = jest.spyOn(QuickLinks.prototype, 'fetchDocuments')
@@ -153,7 +152,7 @@ describe('QuickLinks', () => {
       navigation: {
         locationChange: {}
       },
-      data: mockData,
+      data: mockData
     }
 
     mockFetchDocuments.mockReturnValue({

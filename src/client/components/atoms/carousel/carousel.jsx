@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -46,6 +48,7 @@ var Slider = React.createClass({
   },
 
   handleDragStart(event, isTouch) {
+    /* eslint-disable-next-line id-length */
     const x = this.getDragX(event, isTouch)
 
     this.setState({
@@ -59,6 +62,7 @@ var Slider = React.createClass({
   handleDragMove(event, isTouch) {
     const { dragStart, lastIndex, slideWidth } = this.state
 
+    /* eslint-disable-next-line id-length */
     const x = this.getDragX(event, isTouch)
     const offset = dragStart - x
     const percentageOffset = offset / slideWidth
@@ -82,7 +86,7 @@ var Slider = React.createClass({
 
     const timeElapsed = new Date().getTime() - dragStartTime.getTime()
     const offset = lastIndex - index
-    const velocity = Math.round(offset / timeElapsed * 10000)
+    const velocity = Math.round((offset / timeElapsed) * 10000)
 
     let newIndex = Math.round(index)
 
@@ -104,8 +108,9 @@ var Slider = React.createClass({
     })
   },
 
-  goToSlide(index, event) {
+  goToSlide(_index, event) {
     const { items, loop, navIsClickable } = this.props
+    let index = _index
 
     if (event) {
       event.preventDefault()

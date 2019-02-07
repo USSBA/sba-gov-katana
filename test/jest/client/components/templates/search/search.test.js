@@ -9,6 +9,10 @@ const searchTemplateWrapper = shallow(<SearchTemplate searchType="myType" />)
 const searchTemplateInstance = searchTemplateWrapper.instance()
 
 describe('Search Template', () => {
+  beforeEach(() => {
+    global.scrollTo = jest.fn()
+  })
+
   it('updates query parameter values when onchange is called', () => {
     const queryParamName = 'myQueryParam'
     const userEnteredText = 'user entered text'
@@ -209,7 +213,10 @@ describe('Search Template', () => {
         start: 0
       }
       const queryMap = searchTemplateInstance.generateQueryMap(urlQueryString)
-      expect(queryMap).not.toHaveProperty('pageSize') //since we don't need to have the pagesize property
+
+      // The test below the commented line should virtually test the same thing...
+      // expect(queryMap).not.toHaveProperty('pageSize') //since we don't need to have the pagesize property
+      expect(Object.keys(queryMap).length).toBe(1) //since we don't need to have the pagesize property
       expect(queryMap.start).toBe(expectedQueryMap.start)
     })
   })

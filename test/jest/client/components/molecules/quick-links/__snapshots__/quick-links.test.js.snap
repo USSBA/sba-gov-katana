@@ -27,7 +27,7 @@ exports[`QuickLinks Future effective date is not displayed 1`] = `
       className="dash"
       style={
         Object {
-          "width": "1.667rem",
+          "width": "30px",
         }
       }
     />
@@ -67,7 +67,7 @@ exports[`QuickLinks Most recent effective date displayed 1`] = `
       className="dash"
       style={
         Object {
-          "width": "1.667rem",
+          "width": "30px",
         }
       }
     />
@@ -107,7 +107,7 @@ exports[`QuickLinks No SOP number so it is not displayed 1`] = `
       className="dash"
       style={
         Object {
-          "width": "1.667rem",
+          "width": "30px",
         }
       }
     />
@@ -147,7 +147,7 @@ exports[`QuickLinks SOP number exists and is displayed 1`] = `
       className="dash"
       style={
         Object {
-          "width": "1.667rem",
+          "width": "30px",
         }
       }
     />

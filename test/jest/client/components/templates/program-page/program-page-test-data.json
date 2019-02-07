@@ -95,12 +95,19 @@
       "id": 46,
       "headline": "A good headline",
       "blurb": "A blurb",
-      "image": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg",
-      "imageAlt": "image alt text",
+      "image": {
+        "alt": "image alt text",
+        "url": "/sites/default/files/2017-04/Lender_Match_CTA_Image%20%283%29_0.jpg"
+      },
       "title": "My CTA",
       "langCode": "en",
-      "btnTitle": "Find Somewhere",
-      "btnUrl": "/somewhere"
+      "buttonAction": {
+        "link": {
+          "title": "Find Somewhere",
+          "url": "/somewhere"
+        },
+        "type": "link"
+      }
     },
     {
       "type": "styleGrayBackground",

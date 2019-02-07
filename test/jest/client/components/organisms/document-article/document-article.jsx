@@ -61,7 +61,7 @@ describe('DocumentArticle', () => {
       }
     ]
     const component = renderer.create(<DocumentArticle data={mockArticle} />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

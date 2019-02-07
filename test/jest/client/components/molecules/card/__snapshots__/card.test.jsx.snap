@@ -38,7 +38,7 @@ exports[`Card does not error check malformed link 1`] = `
         id="hr-4-0"
         style={
           Object {
-            "width": "1.667rem",
+            "width": "30px",
           }
         }
       />
@@ -98,7 +98,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
         id="hr-4-0"
         style={
           Object {
-            "width": "1.667rem",
+            "width": "30px",
           }
         }
       />
@@ -154,7 +154,7 @@ exports[`Card to render correctly 1`] = `
         id="hr-4-0"
         style={
           Object {
-            "width": "1.667rem",
+            "width": "30px",
           }
         }
       />
@@ -212,7 +212,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
         id="hr-4-0"
         style={
           Object {
-            "width": "1.667rem",
+            "width": "30px",
           }
         }
       />
@@ -260,7 +260,7 @@ exports[`Card to render correctly with null link 1`] = `
         id="hr-4-0"
         style={
           Object {
-            "width": "1.667rem",
+            "width": "30px",
           }
         }
       />

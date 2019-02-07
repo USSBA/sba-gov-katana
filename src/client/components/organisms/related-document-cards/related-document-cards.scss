@@ -41,7 +41,7 @@
         gutter: 0
       )
     );
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   @include for-large-up {
@@ -51,7 +51,7 @@
         gutter: 0
       )
     );
-    margin-left: 0px;
+    margin-left: 0;
   }
 }
 
@@ -74,7 +74,7 @@
 
 // Select the inner container in the detail card.
 .container :global(.document-card-container) > div:first-child {
-  min-height: 7.5rem;
+  min-height: 135px;
 }
 
 // Select the download link in the detail card.

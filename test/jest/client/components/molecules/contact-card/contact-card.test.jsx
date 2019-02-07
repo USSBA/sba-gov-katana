@@ -26,59 +26,59 @@ const card = {
 
 describe('ContactCard', () => {
   test('should render with all the information', () => {
-    let cardData = _.clone(card)
+    const cardData = _.clone(card)
     const component = renderer.create(<ContactCard {...cardData} />)
-    let tree = component.toJSON()
+    const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   test('should render without an address ', () => {
-    let cardData = _.omit(card, 'streetAddress')
+    const cardData = _.omit(card, 'streetAddress')
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a zip code ', () => {
-    let cardData = _.omit(card, 'zipCode')
+    const cardData = _.omit(card, 'zipCode')
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a phone number ', () => {
-    let cardData = _.omit(card, 'phoneNumber')
+    const cardData = _.omit(card, 'phoneNumber')
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a website link ', () => {
-    let cardData = _.omit(card, 'link')
+    const cardData = _.omit(card, 'link')
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a website link if link is an empty object', () => {
-    let cardData = _.clone(card)
+    const cardData = _.clone(card)
     _.set(cardData, 'link', {})
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a website link if link is an empty string', () => {
-    let cardData = _.clone(card)
+    const cardData = _.clone(card)
     _.set(cardData, 'link', '')
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without a website link if link is null', () => {
-    let cardData = _.clone(card)
+    const cardData = _.clone(card)
     _.set(cardData, 'link', null)
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(4)
   })
 
   test('should render without the state served (which is normally invisible)', () => {
-    let cardData = _.omit(card, 'stateServed')
+    const cardData = _.omit(card, 'stateServed')
     const component = shallow(<ContactCard {...cardData} />)
     expect(component.find('.contact-card').children()).toHaveLength(5)
   })

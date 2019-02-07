@@ -2,7 +2,7 @@
   background-color: $sba-blue;
   color: white;
   display: none;
-  width: 16.111rem;
+  width: 290px;
 
   @include grid-media($sba-grid-large) {
     color: white;
@@ -14,10 +14,10 @@
 
   a {
     display: block;
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 300;
     line-height: 1.1;
-    padding: 0.556rem 1.667rem;
+    padding: 10px 30px;
     text-decoration: none;
   }
 
@@ -38,8 +38,8 @@
     font-weight: 500;
     text-align: left;
     padding: 0 30px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 18px;
+    margin-bottom: 18px;
   }
 
   li {

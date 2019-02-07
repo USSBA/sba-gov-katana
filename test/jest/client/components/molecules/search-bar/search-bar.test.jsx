@@ -13,7 +13,7 @@ describe('SearchBar', () => {
 
   test('should expand and then submit search', () => {
     const component = shallow(<SearchBar />)
-    let mockSearcher = jest.fn()
+    const mockSearcher = jest.fn()
     SearchBar.prototype.executeSearch = mockSearcher
     component.find(Link).simulate('click', { preventDefault: _ => true })
     expect(component.state('expanded')).toEqual(true)

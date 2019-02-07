@@ -32,7 +32,7 @@ class PagingLookup extends React.Component {
       pageNumber: 1,
       isFetching: false,
       itemResponse: {
-        items: undefined,
+        items: null,
         count: 0
       }
     }
@@ -94,16 +94,18 @@ class PagingLookup extends React.Component {
   }
 
   async componentDidMount() {
-
     const queryArgs = {
       names: this.props.taxonomyFilters.join(',')
     }
 
     const taxonomies = await fetchSiteContent('taxonomys', queryArgs)
 
-    this.setState({
-      taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
-    }, () => this.submit())
+    this.setState(
+      {
+        taxonomies: this.reArrangeTaxonomyOrder(taxonomies)
+      },
+      () => this.submit()
+    )
   }
 
   reArrangeTaxonomyOrder(data) {
@@ -132,7 +134,7 @@ class PagingLookup extends React.Component {
     this.fireDocumentationLookupEvent(`Apply CTA: Term: ${queryObject.searchTerm}`)
     this.setState(
       {
-        items: undefined,
+        items: null,
         pageNumber: 1
       },
       () => {
@@ -170,7 +172,6 @@ class PagingLookup extends React.Component {
   }
 
   submit() {
-
     const start = (this.state.query.page - 1) * config.pageSize
     const end = start + config.pageSize
 
@@ -179,14 +180,17 @@ class PagingLookup extends React.Component {
     })
     const queryTerms = assign({}, remappedState, { start, end })
 
-    this.setState({
-      isFetching: true
-    }, async () => {
-      this.setState({
-        itemResponse: await fetchSiteContent(this.props.type, queryTerms),
-        isFetching: false
-      })
-    })
+    this.setState(
+      {
+        isFetching: true
+      },
+      async () => {
+        this.setState({
+          itemResponse: await fetchSiteContent(this.props.type, queryTerms),
+          isFetching: false
+        })
+      }
+    )
   }
 
   fireEvent(category, action, value) {

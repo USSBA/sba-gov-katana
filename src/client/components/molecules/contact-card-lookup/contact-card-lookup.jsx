@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import { filter, includes, isArray, map } from 'lodash'
 
 import states from '../../../services/us-states.json'
 import styles from './contact-card-lookup.scss'
@@ -27,13 +27,13 @@ class ContactCardLookup extends React.Component {
       this.props.items &&
       this.props.items.length > 0 &&
       this.props.items[0].stateServed &&
-      _.isArray(this.props.items[0].stateServed)
+      isArray(this.props.items[0].stateServed)
     ) {
-      newDisplayedItems = _.filter(this.props.items, item => {
-        return _.includes(item.stateServed, newValueLabel)
+      newDisplayedItems = filter(this.props.items, item => {
+        return includes(item.stateServed, newValueLabel)
       })
     } else {
-      newDisplayedItems = _.filter(this.props.items, {
+      newDisplayedItems = filter(this.props.items, {
         stateServed: newValueLabel
       })
     }
@@ -63,7 +63,7 @@ class ContactCardLookup extends React.Component {
   handleBlur() {}
 
   render() {
-    const statesMap = _.map(states, function(item) {
+    const statesMap = map(states, function(item) {
       return { label: item.name, value: item.value }
     })
     const multiselectProps = {

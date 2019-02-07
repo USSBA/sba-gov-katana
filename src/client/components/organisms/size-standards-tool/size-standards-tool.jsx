@@ -148,10 +148,10 @@ class SizeStandardsTool extends PureComponent {
 
   setFocusTo(id, delay = 0) {
     const interval = setInterval(() => {
-      const el = document.getElementById(id)
+      const element = document.getElementById(id)
 
-      if (!isEmpty(el)) {
-        el.focus()
+      if (!isEmpty(element)) {
+        element.focus()
 
         if (id === 'size-standards-tool') {
           window.scrollTo(0, 0)
@@ -980,18 +980,17 @@ class ResultsScreen extends PureComponent {
           </div>
         )}
 
-        {!isEmpty(this.state.selectedNaicsCodes) &&
-          isEligibleForContractingPrograms && (
-            <div>
-              <p>
-                You may be eligible to participate in{' '}
-                <a href="/contracting" target="_blank" tabIndex="0">
-                  <strong>SBA contracting programs</strong>
-                </a>
-                .
-              </p>
-            </div>
-          )}
+        {!isEmpty(this.state.selectedNaicsCodes) && isEligibleForContractingPrograms && (
+          <div>
+            <p>
+              You may be eligible to participate in{' '}
+              <a href="/contracting" target="_blank" tabIndex="0">
+                <strong>SBA contracting programs</strong>
+              </a>
+              .
+            </p>
+          </div>
+        )}
 
         <div className={styles.cards}>
           <div className={styles.card}>

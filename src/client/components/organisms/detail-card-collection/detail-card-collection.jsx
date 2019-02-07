@@ -1,5 +1,4 @@
 import React from 'react'
-import _ from 'lodash'
 
 import styles from './detail-card-collection.scss'
 import { DetailCard } from 'molecules'

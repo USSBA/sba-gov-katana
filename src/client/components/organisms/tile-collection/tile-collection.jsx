@@ -1,7 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
 import Tile from './tile.jsx'
-import s from './tile-collection.scss'
 
 class TileCollection extends React.Component {
   constructor() {

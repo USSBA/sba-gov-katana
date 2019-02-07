@@ -26,7 +26,7 @@ class FeedbackForm extends React.Component {
   submitFeedbackToServer(result, newDisplayState) {
     axios.post(constants.routes.submitFeedbackResults, result).then(response => {
       if (response && response.status === 200) {
-        let data = response.data
+        const data = response.data
         this.setState({ displayState: newDisplayState, currentData: data })
       } else {
         console.log(response)
@@ -44,7 +44,7 @@ class FeedbackForm extends React.Component {
 
   handleSubmit() {
     const { feedbackText, otherFeedback } = this.state
-    let newFeedback = Object.assign({}, { feedbackText, otherFeedback }, this.state.currentData)
+    const newFeedback = Object.assign({}, { feedbackText, otherFeedback }, this.state.currentData)
     this.submitFeedbackToServer(newFeedback, states[2])
   }
 

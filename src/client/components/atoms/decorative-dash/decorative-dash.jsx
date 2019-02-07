@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import styles from './decorative-dash.scss'
 
 const Dash = ({ width, ...nativeProps }) => (
-  <hr {...nativeProps} className={styles.dash} style={{ width: `${width}rem` }} />
+  <hr {...nativeProps} className={styles.dash} style={{ width: `${width}px` }} />
 )
 
 Dash.propTypes = {
@@ -11,7 +11,7 @@ Dash.propTypes = {
 }
 
 Dash.defaultProps = {
-  width: 18.667
+  width: 336
 }
 
 export default Dash

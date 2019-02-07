@@ -9,7 +9,7 @@
 
 .textSection ul > li,
 .textSection ol > li {
-  margin-left: 1.5rem;
+  margin-left: 27px;
   padding-left: 0;
 }
 
@@ -82,7 +82,7 @@
     }
     & td {
       overflow: auto;
-      border: 0px;
+      border: 0;
       border-bottom: 2px solid $sba-gray-light;
     }
     & td:last-child {
@@ -139,7 +139,7 @@
     & td {
       padding-right: 15px;
       padding-left: 15px;
-      border: 0px;
+      border: 0;
     }
     & td:first-child {
       color: $sba-blue;

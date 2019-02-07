@@ -5,10 +5,7 @@ import { getLanguageOverride } from 'client/services/utils'
 describe('utils', () => {
   describe('getLanguageOverride', () => {
     beforeAll(() => {
-      Object.defineProperty(window.location, 'search', {
-        writable: true,
-        value: '?lang=en-US'
-      })
+      history.pushState({}, null, '?lang=en-US')
     })
 
     it('returns the correct lang code and variant', () => {

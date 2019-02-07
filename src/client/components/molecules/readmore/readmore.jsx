@@ -30,9 +30,7 @@ class ReadMore extends React.Component {
 
   render() {
     const langCode = getLanguageOverride()
-    const btnText = this.props.expanded
-      ? TRANSLATIONS['close'][langCode]
-      : TRANSLATIONS['readMore'][langCode]
+    const btnText = this.props.expanded ? TRANSLATIONS.close[langCode] : TRANSLATIONS.readMore[langCode]
     const expandedTextSection = this.props.expanded
       ? this.makeExpanded(this.props.readMoreSectionItem.expandedCopyText)
       : ''

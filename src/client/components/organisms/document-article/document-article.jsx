@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import clientConfig from '../../../services/client-config.js'
-import s from './document-article.scss'
+import style from './document-article.scss'
 import * as ContentActions from '../../../actions/content.js'
 import * as NavigationActions from '../../../actions/navigation.js'
 import { Button, DecorativeDash, Label, Link, TextSection } from 'atoms'
@@ -16,7 +16,9 @@ import { getCurrentFile } from '../../../services/utils.js'
 
 export class DocumentArticle extends React.Component {
   componentDidMount() {
-    const { contentActions: { fetchContentIfNeeded } } = this.props
+    const {
+      contentActions: { fetchContentIfNeeded }
+    } = this.props
 
     fetchContentIfNeeded('officesRaw', 'officesRaw')
     fetchContentIfNeeded('persons', 'persons')
@@ -60,15 +62,15 @@ export class DocumentArticle extends React.Component {
     const dateLine = dates.map((object, index) => {
       return (
         <div key={index}>
-          {index > 0 && <span className={s.dateSeperator}> | </span>}
-          <h5 className={s.date}>
+          {index > 0 && <span className={style.dateSeperator}> | </span>}
+          <h5 className={style.date}>
             {object.title} {object.date}
           </h5>
         </div>
       )
     })
 
-    return <div className={s.dates}> {dateLine} </div>
+    return <div className={style.dates}> {dateLine} </div>
   }
 
   render() {
@@ -115,7 +117,10 @@ export class DocumentArticle extends React.Component {
 
       let officeData = {}
       if (clientConfig.pressRelease && !isEmpty(office) && office.website) {
-        const { title, website: { url } } = office
+        const {
+          title,
+          website: { url }
+        } = office
         officeData = { title, url }
       } else if (!clientConfig.pressRelease && !isEmpty(officeLink) && officeLink.url) {
         const { title, url } = officeLink
@@ -161,12 +166,12 @@ export class DocumentArticle extends React.Component {
 
       const titleClassName = classNames({
         'document-article-title': true,
-        [s.title]: true,
-        [s.titleMarginBottom]: type
+        [style.title]: true,
+        [style.titleMarginBottom]: type
       })
 
       return (
-        <div className={'document-article ' + s.page}>
+        <div className={'document-article ' + style.page}>
           <Label type={type} id={!isEmpty(data.documentIdNumber) && data.documentIdNumber} />
           <h1 className={titleClassName}>{data.title}</h1>
           {includes(data.category, PRESS_RELEASE) && (
@@ -179,40 +184,39 @@ export class DocumentArticle extends React.Component {
           {!isEmpty(currentFile) && <div>{this.renderDateLine(currentFile)}</div>}
 
           {!isEmpty(officeData) && (
-            <p className={s.meta}>
+            <p className={style.meta}>
               {officeElement}
               <br />
               {contactElement}
             </p>
           )}
 
-          <hr className={s.hr} />
-          <div className={s.summaryContainer}>
+          <hr className={style.hr} />
+          <div className={style.summaryContainer}>
             <div className="column">
-              {currentFile &&
-                !isEmpty(currentFile.fileUrl) && (
-                  <Button
-                    className="document-article-pdf-download-btn"
-                    fullWidth
-                    onClick={e => this.downloadClick(currentFile)}
-                    primary
-                  >
-                    {`Download ${currentFileExtension}`}
-                  </Button>
-                )}
+              {currentFile && !isEmpty(currentFile.fileUrl) && (
+                <Button
+                  className="document-article-pdf-download-btn"
+                  fullWidth
+                  onClick={e => this.downloadClick(currentFile)}
+                  primary
+                >
+                  {`Download ${currentFileExtension}`}
+                </Button>
+              )}
             </div>
             <div className="column">
-              {!isEmpty(data.summary) && <h5 className={s.summary}>{data.summary}</h5>}
+              {!isEmpty(data.summary) && <h5 className={style.summary}>{data.summary}</h5>}
             </div>
           </div>
-          <div className={s.dash}>
-            <DecorativeDash width={4.278} />
+          <div className={style.dash}>
+            <DecorativeDash width={77} />
           </div>
           {/* TODO: body style for grid media queries should be baked into text section? */}
-          <TextSection className={s.body} text={body} />
-          <div className={'document-article-related-programs-container ' + s.relatedProgramsContainer}>
+          <TextSection className={style.body} text={body} />
+          <div className={'document-article-related-programs-container ' + style.relatedProgramsContainer}>
             <hr />
-            <span className={s.relatedPrograms}>Related programs: </span>
+            <span className={style.relatedPrograms}>Related programs: </span>
             {data.programs.map((program, index) => {
               return (
                 <span className="document-article-related-programs-link" key={index}>
@@ -223,11 +227,11 @@ export class DocumentArticle extends React.Component {
                   >
                     {program}
                   </Link>
-                  {index == data.programs.length - 1 ? null : ', '}
+                  {index === data.programs.length - 1 ? null : ', '}
                 </span>
               )
             })}
-            <hr className={s.hr} />
+            <hr className={style.hr} />
           </div>
         </div>
       )
@@ -238,8 +242,12 @@ export class DocumentArticle extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  const { contentReducer: { officesRaw: offices, persons } } = state
-  const { data: { office: officeId, mediaContact: mediaContactId } } = ownProps
+  const {
+    contentReducer: { officesRaw: offices, persons }
+  } = state
+  const {
+    data: { office: officeId, mediaContact: mediaContactId }
+  } = ownProps
 
   let office
   let mediaContact
@@ -267,4 +275,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentArticle)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DocumentArticle)

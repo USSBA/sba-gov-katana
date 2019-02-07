@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './readmore-section.scss'
 import { ReadMore } from 'molecules'
 
 class ReadMoreSection extends React.Component {
@@ -17,8 +16,6 @@ class ReadMoreSection extends React.Component {
   }
 
   render() {
-    let expandedStyle = this.state.readMoreExpanded ? styles.expanded : ''
-
     return (
       <ReadMore
         parentId={this.props.parentId + '-read-more'}

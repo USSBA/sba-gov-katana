@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import s from './mobile-section-nav.scss'
+import style from './mobile-section-nav.scss'
 import * as ModalActions from '../../../../actions/show-modal.js'
 import { Link } from 'atoms'
 import { navigateNow } from '../../../../services/navigation'
@@ -52,9 +52,9 @@ class MobileNav extends React.Component {
 
   _navMenuClassname() {
     if (this.state.navMenu === 'open') {
-      return s.navMenuOpen
+      return style.navMenuOpen
     } else if (this.state.navMenu === 'close') {
-      return s.navMenuClose
+      return style.navMenuClose
     }
   }
 
@@ -72,17 +72,17 @@ class MobileNav extends React.Component {
     return (
       <div className={this._navMenuClassname()}>
         <div
-          className={s.navHeader}
+          className={style.navHeader}
           onClick={() => {
             this._handleBackBtn()
           }}
         >
-          <i className={s.navLeftArrow + ' fa fa-angle-left'} />
-          <div className={s.navTitleContainer}>
-            <h3 className={s.navTitle}>{menuTitle}</h3>
+          <i className={style.navLeftArrow + ' fa fa-angle-left'} />
+          <div className={style.navTitleContainer}>
+            <h3 className={style.navTitle}>{menuTitle}</h3>
           </div>
         </div>
-        <div className={s.navTopLine} />
+        <div className={style.navTopLine} />
         {children.map((linkObject, index) => {
           return (
             <NavLink key={index} link={linkObject} handleClick={this._handleClick} langCode={langCode} />
@@ -107,7 +107,7 @@ const NavLink = props => {
 
   return (
     <Link
-      className={s.navLink}
+      className={style.navLink}
       id={props.iD}
       to={fullUrl}
       onMouseUp={() => {
@@ -116,7 +116,7 @@ const NavLink = props => {
     >
       {/* <a */}
       {/*   id={props.iD} */}
-      {/*   className={s.navLink} */}
+      {/*   className={style.navLink} */}
       {/* > */}
       {title}
       {/* </a> */}
@@ -130,6 +130,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(MobileNav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(MobileNav)
 
 export { MobileNav }

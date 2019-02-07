@@ -81,9 +81,6 @@ function findPageLineageByNodeId(menu, nodeId) {
   return finder(menu, 'node', nodeId)
 }
 
-module.exports.findPage = findPage
-module.exports.findSubSection = findSubSection
-module.exports.findSection = findSection
-module.exports.findPageLineage = findPageLineage
-module.exports.findPageLineageByNodeId = findPageLineageByNodeId
+export { findPage, findPageLineage, findPageLineageByNodeId, findSection, findSubSection }
+
 /* eslint-enable */

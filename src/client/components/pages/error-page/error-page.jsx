@@ -21,7 +21,7 @@ class ErrorPage extends React.Component {
 
   submitSearch(e) {
     e.preventDefault()
-    let uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
+    const uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
     document.location = uri
   }
   render() {
@@ -35,7 +35,7 @@ class ErrorPage extends React.Component {
           <div className={styles.content}>
             <h1>404</h1>
             <h2>Page not found</h2>
-            <DecorativeDash width={4.278} />
+            <DecorativeDash width={77} />
             <h3>
               {text} Return to the <Link to="/">home page</Link>, or search for what you're trying to find.
             </h3>

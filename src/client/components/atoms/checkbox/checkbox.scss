@@ -21,7 +21,7 @@
   height: 18px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 0px;
+  border-radius: 0;
   border-color: #d9d9d9;
   background-color: #ffffff;
   transition: border-color 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
@@ -52,8 +52,8 @@
   top: -17px;
   bottom: 0;
   right: 0;
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
 }
 
 .rc-checkbox-checked:hover .rc-checkbox-inner {

@@ -5,7 +5,7 @@ import menu from './menu.json'
 describe('Formatter', function() {
   describe('findPageLineage', function() {
     it('should find the lineage for a url', function(done) {
-      let lineage = findPageLineage(menu, ['guide', 'plan', 'market'])
+      const lineage = findPageLineage(menu, ['guide', 'plan', 'market'])
       lineage.should.have.length(3)
       lineage[0].url.should.equal('guide')
       lineage[1].url.should.equal('plan')
@@ -16,7 +16,7 @@ describe('Formatter', function() {
 
   describe('#findPageLineageByNodeId', function() {
     it('should find the lineage using the node id ', function(done) {
-      let lineage = findPageLineageByNodeId(menu, '47')
+      const lineage = findPageLineageByNodeId(menu, '47')
       lineage.should.have.length(3)
       lineage[0].url.should.equal('guide')
       lineage[1].url.should.equal('plan')

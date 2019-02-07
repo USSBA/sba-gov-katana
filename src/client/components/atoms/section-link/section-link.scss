@@ -1,7 +1,7 @@
 a.sectionLink {
   color: $sba-blue;
   display: inline-block;
-  font-size: 1.111rem;
+  font-size: 20px;
   font-weight: 600;
   margin-bottom: 0;
   position: relative;
@@ -11,7 +11,7 @@ a.sectionLink {
   }
 }
 
-$triangle-size: 0.722rem;
+$triangle-size: 13px;
 .triangle {
   visibility: hidden;
   position: relative;
@@ -19,7 +19,7 @@ $triangle-size: 0.722rem;
   width: 0;
   left: 40%;
   right: 60%;
-  bottom: -0.167rem;
+  bottom: -3px;
   border-right: $triangle-size solid transparent;
   border-left: $triangle-size solid transparent;
   border-top: 0;

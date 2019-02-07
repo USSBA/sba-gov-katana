@@ -50,6 +50,7 @@ class MiniNav extends React.Component {
         runMiscAction(userId + '/email').then(userEmail =>
           this.setState({ userEmail }, () => {
             if (!this.state.userEmail && config.govdelivery) {
+              /* eslint-disable-next-line no-magic-numbers */
               this.timerId = setTimeout(() => showSbaNewsletter(userEmail), 5000)
             }
           })
@@ -59,8 +60,8 @@ class MiniNav extends React.Component {
   }
 
   componentWillUnmount() {
-    if (this.timerId != null) {
-      clearTimeout(timerId)
+    if (this.timerId !== null) {
+      clearTimeout(this.timerId)
     }
   }
 
@@ -126,6 +127,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(MiniNav)
+export default connect(
+  mapReduxStateToProps,
+  mapDispatchToProps
+)(MiniNav)
 
 export { MiniNav }
