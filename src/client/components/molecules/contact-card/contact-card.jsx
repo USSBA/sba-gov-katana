@@ -17,25 +17,30 @@ const ContactCard = props => {
 
   const fields = [
     {
+      name: 'contact address',
       text: streetAddress && city && state && zipCode && address('<br />'),
       icon: 'map-marker',
       href: `https://maps.google.com?q=${encodeURIComponent(address('\n'))}`
     },
     {
+      name: 'contact phone',
       text: phoneNumber,
       icon: 'phone',
       href: `tel:${phoneNumber}`
     },
     {
+      name: 'contact fax',
       text: fax,
       icon: 'fax'
     },
     {
+      name: 'contact link',
       text: linkText,
       icon: 'external-link-square',
       href: link
     },
     {
+      name: 'contact email',
       text: email,
       icon: 'envelope-o',
       href: `mailto:${email}`
@@ -73,9 +78,9 @@ const ContactCard = props => {
   return (
     <div className={contactCardClassName}>
       <h6>{title}</h6>
-      {fields.filter(emptyFieldFilter).map(({ href, icon, text }, index) => {
+      {fields.filter(emptyFieldFilter).map(({ href, icon, name, text }, index) => {
         return (
-          <div className={styles.row} key={index}>
+          <div className={styles.row} key={index} data-cy={name}>
             <div className={styles.firstColumn}>
               <i alt={text} aria-hidden="true" className={`fa fa-${icon}`} />
             </div>

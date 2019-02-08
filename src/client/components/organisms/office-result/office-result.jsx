@@ -116,7 +116,7 @@ class OfficeResult extends React.PureComponent {
             </div>
             <div id={`office-title-${id}`}>
               <h2>
-                <i className="fa fa-chevron-right" />
+                <i className="fa fa-chevron-right" data-cy="open detail" />
                 {item.title[0]}
               </h2>
             </div>

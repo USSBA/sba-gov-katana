@@ -51,6 +51,7 @@ class OfficeDetail extends React.PureComponent {
                 alt="close"
                 tabIndex="0"
                 aria-label="Closing this panel will take you back to the results list"
+                data-cy="close detail"
               />
             </div>
             {distance !== null && (
