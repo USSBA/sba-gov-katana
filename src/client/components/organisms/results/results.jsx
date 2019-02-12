@@ -118,6 +118,7 @@ class Results extends React.PureComponent {
     }
     return result
   }
+
   renderResults(results = this.props.items) {
     const { paginate, hasSearchInfoPanel, scroll, children } = this.props
     const resultsWithProps = this.mapResults(results, children)
@@ -132,36 +133,39 @@ class Results extends React.PureComponent {
     return resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
   }
 
+  resultsView(resultsClassName) {
+    return (
+      <div className={resultsClassName}>
+        {this.renderSearchInfoPanel()}
+        <div className={styles.centerContainer}>
+          {this.renderSearchTips()}
+          {this.renderDefaultResults()}
+          {this.renderResults()}
+        </div>
+        {this.renderPaginator()}
+      </div>
+    )
+  }
+
+  // currently no default exists for the detail results view
+  // so to render detail results customDetailResultsView must be passed in as a prop
+  detailResultsView(resultsClassName) {
+    const { customDetailResultsView } = this.props
+    return customDetailResultsView(resultsClassName, this.hideDetailState.bind(this))
+  }
+
   render() {
-    const { id, paginate, selectedItem } = this.props
-    const shouldShowDetailView = !isEmpty(selectedItem)
+    const { customDetailResultsView, id, paginate, selectedItem } = this.props
+    const isItemSelected = !isEmpty(selectedItem)
+    const shouldShowDetail = customDetailResultsView && isItemSelected
 
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
 
-    // the below return statement handles both the office results index case
-    // AND the detailed view case
-    // based on the boolean "shouldShowDetailView"
-    // this code should probably be refactored a bit to be a little more generic
-
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
-        {shouldShowDetailView ? (
-          <div className={resultsClassName}>
-            <OfficeDetail selectedItem={selectedItem} hideDetailState={() => this.hideDetailState()} />
-          </div>
-        ) : (
-          <div className={resultsClassName}>
-            {this.renderSearchInfoPanel()}
-            <div className={styles.centerContainer}>
-              {this.renderSearchTips()}
-              {this.renderDefaultResults()}
-              {this.renderResults()}
-            </div>
-            {this.renderPaginator()}
-          </div>
-        )}
+        {shouldShowDetail ? this.detailResultsView(resultsClassName) : this.resultsView(resultsClassName)}
       </div>
     )
   }
@@ -200,7 +204,8 @@ Results.propTypes = {
   displaySearchTipsOnNoResults: PropTypes.bool,
   hidePaginatorOnNoResults: PropTypes.bool,
   displayDefaultResultOnNoResults: PropTypes.bool,
-  defaultResultObject: PropTypes.object
+  defaultResultObject: PropTypes.object,
+  customDetailResultsView: PropTypes.func
 }
 
 export default Results
