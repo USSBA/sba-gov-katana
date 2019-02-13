@@ -61,15 +61,11 @@ workflows:
           branches:
             only:
             - master
-            - integration
-            - staging
-            - mint
             - /[Ff]eature-\w+-\d+[-\w]*/
           tags:
             only:
             - production
             - staging
-            - demo
             - mint
             - amy
             - /int-\w+/
@@ -80,13 +76,11 @@ workflows:
           branches:
             only:
             - master
-            - integration
             - /[Ff]eature-\w+-\d+[-\w]*/
           tags:
             only:
             - production
             - staging
-            - demo
             - mint
             - amy
             - /int-\w+/
@@ -96,12 +90,11 @@ workflows:
         filters:
           branches:
             only:
-            - integration
+            - master
           tags:
             only:
-            - demo
-            - mint
             - amy
+            - mint
             - /int-\w+/
             - /RELEASE-\d+/
         context: sba-gov-lower
@@ -110,15 +103,12 @@ workflows:
         filters:
           branches:
             only:
-            - integration
+            - master
           tags:
             only:
-            - demo
-            - mint
             - amy
             - /int-\w+/
             - /RELEASE-\d+/
-            - /[Ff]eature-\w+-\d+[-\w]*/
         context: sba-gov-lower
     - hold:
         type: approval
@@ -136,7 +126,7 @@ workflows:
         filters:
           branches:
             ignore:
-            - /.*
+            - /.*/
           tags:
             only:
             - production
@@ -147,7 +137,7 @@ workflows:
         filters:
           branches:
             ignore:
-            - /.*
+            - /.*/
           tags:
             only:
             - production
@@ -267,13 +257,15 @@ jobs:
 
             export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION:-us-east-1}
             export AWS_DEFAULT_OUTPUT=${AWS_DEFAULT_OUTPUT:-json}
+        
+            if [ "$ENVIRONMENT" == "master" ]
+            then
+              $ENVIRONMENT=mint
+            fi
 
             case $ENVIRONMENT in
-              mint|integration)
+              mint)
                 export ASSET_BUCKET_NAME_PREFIX=mint.ussba.io
-                ;;
-              demo)
-                export ASSET_BUCKET_NAME_PREFIX=demo.ussba.io
                 ;;
               int-as)
                 export ASSET_BUCKET_NAME_PREFIX=avery.ussba.io
@@ -283,9 +275,6 @@ jobs:
                 ;;
               int-kl)
                 export ASSET_BUCKET_NAME_PREFIX=kevin.ussba.io
-                ;;
-              int-ls)
-                export ASSET_BUCKET_NAME_PREFIX=laura.ussba.io
                 ;;
               int-rh)
                 export ASSET_BUCKET_NAME_PREFIX=ryan.ussba.io
@@ -297,12 +286,6 @@ jobs:
                 export ASSET_BUCKET_NAME_PREFIX=${ENVIRONMENT}
                 ;;
             esac
-
-            SOURCE_PREFIX=${ENVIRONMENT}
-            if [ "$SOURCE_PREFIX" == "integration" ]
-            then
-              SOURCE_PREFIX=mint
-            fi
 
             aws s3 sync workspace/build/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/build/
             aws s3 sync workspace/assets/ s3://${ASSET_BUCKET_NAME_PREFIX}-assets/assets/
@@ -325,7 +308,7 @@ jobs:
             fi
 
             case $TARGET_ENVIRONMENT in
-              integration)
+              master)
                 export ENVIRONMENT=mint
                 ;;
               *)
