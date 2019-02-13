@@ -49,3 +49,20 @@
     padding-right: 40px !important;
   }
 }
+
+.zip {
+  position: relative;
+
+  @include grid-media($sba-grid-small) {
+    width: 100%;
+  }
+
+  @include grid-media($sba-grid-large) {
+    width: 170px;
+  }
+
+  input {
+    line-height: 34px;
+    height: 48px;
+  }
+}

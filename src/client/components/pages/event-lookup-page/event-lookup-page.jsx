@@ -1,5 +1,6 @@
 import React from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
+import { find, isEmpty } from 'lodash'
 
 import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput } from 'atoms'
@@ -7,8 +8,8 @@ import { PrimarySearchBar, Results } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
 
 class EventLookupPage extends React.PureComponent {
-  async customSearch(searchType, searchParams) {
-    return await fetchSiteContent(searchType).then(searchResults => {
+  customSearch(searchType, searchParams) {
+    return fetchSiteContent(searchType, searchParams).then(searchResults => {
       let keyword = searchParams.q
 
       let results = []
@@ -62,6 +63,23 @@ class EventLookupPage extends React.PureComponent {
             validationState={''}
             showSearchIcon={true}
             data-cy="keyword search"
+          />
+          <TextInput
+            id="zip"
+            queryParamName="address"
+            className={styles.field + ' ' + styles.zip}
+            label="Near"
+            placeholder="Zip Code"
+            validationFunction={input => {
+              // only validate if there is an input value
+              let result = true
+              if (!isEmpty(input)) {
+                const fiveDigitRegex = /^\d{5}$/g
+                result = fiveDigitRegex.test(input)
+              }
+              return result
+            }}
+            errorText="Enter a 5-digit zip code."
           />
         </PrimarySearchBar>
       </SearchTemplate>
