@@ -80,6 +80,7 @@ class EventLookupPage extends React.PureComponent {
               return result
             }}
             errorText="Enter a 5-digit zip code."
+            data-cy="zip"
           />
         </PrimarySearchBar>
       </SearchTemplate>
