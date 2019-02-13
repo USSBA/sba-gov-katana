@@ -33,8 +33,6 @@ class EventLookupPage extends React.PureComponent {
         isZeroState = false
       }
 
-      console.log(MultiSelectBox.defaultProps)
-
       return {
         results,
         count,
@@ -52,23 +50,23 @@ class EventLookupPage extends React.PureComponent {
     const options = [
       {
         label: 'All Upcoming',
-        value: 'All Upcoming'
+        value: 'all'
       },
       {
         label: 'Today',
-        value: 'Today'
+        value: 'today'
       },
       {
         label: 'Tomorrow',
-        value: 'Tomorrow'
+        value: 'tomorrow'
       },
       {
         label: 'Next 7 Days',
-        value: 'Next 7 Days'
+        value: '7days'
       },
       {
         label: 'Next 30 days',
-        value: 'Next 30 Days'
+        value: '30days'
       }
     ]
 
@@ -93,6 +91,7 @@ class EventLookupPage extends React.PureComponent {
             data-cy="keyword search"
           />
 <<<<<<< HEAD
+<<<<<<< HEAD
           <TextInput
             id="zip"
             queryParamName="address"
@@ -114,19 +113,25 @@ class EventLookupPage extends React.PureComponent {
 =======
 
           <div className={styles.multiSelect} />
+=======
+>>>>>>> modified filter values
           <MultiSelect
             id="Event Range Filter"
+            queryParamName="dateRange"
             label="Date Range"
             autoFocus={false}
-            className={styles.multiSelect}
+            className={styles.field + ' ' + styles.search}
             name={multiName}
             multi={multi}
             options={options}
             value="All Upcoming"
-            placeholder="Selec Range..."
+            placeholder="Select Range..."
           />
+<<<<<<< HEAD
           <div />
 >>>>>>> added event date multiselect
+=======
+>>>>>>> modified filter values
         </PrimarySearchBar>
       </SearchTemplate>
     )
