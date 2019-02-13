@@ -133,7 +133,7 @@ class Results extends React.PureComponent {
     return resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
   }
 
-  resultsView(resultsClassName) {
+  renderResultsView(resultsClassName) {
     return (
       <div className={resultsClassName}>
         {this.renderSearchInfoPanel()}
@@ -149,7 +149,7 @@ class Results extends React.PureComponent {
 
   // currently no default exists for the detail results view
   // so to render detail results customDetailResultsView must be passed in as a prop
-  detailResultsView(resultsClassName) {
+  renderDetailResultsView(resultsClassName) {
     const { customDetailResultsView } = this.props
     return customDetailResultsView(resultsClassName, this.hideDetailState.bind(this))
   }
@@ -165,7 +165,9 @@ class Results extends React.PureComponent {
 
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
-        {shouldShowDetail ? this.detailResultsView(resultsClassName) : this.resultsView(resultsClassName)}
+        {shouldShowDetail
+          ? this.renderDetailResultsView(resultsClassName)
+          : this.renderResultsView(resultsClassName)}
       </div>
     )
   }
