@@ -3,9 +3,10 @@ import { fetchSiteContent } from '../../../fetch-content-helper'
 import { isEmpty } from 'lodash'
 
 import styles from './event-lookup-page.scss'
-import { StyleWrapperDiv, TextInput } from 'atoms'
-import { PrimarySearchBar, Results } from 'organisms'
+import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
+import { PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
+//import MultiSelectBox from '../../atoms/multiselect/multiselect'
 
 class EventLookupPage extends React.PureComponent {
   customSearch(searchType, searchParams) {
@@ -32,6 +33,8 @@ class EventLookupPage extends React.PureComponent {
         isZeroState = false
       }
 
+      console.log(MultiSelectBox.defaultProps)
+
       return {
         results,
         count,
@@ -44,6 +47,31 @@ class EventLookupPage extends React.PureComponent {
   }
 
   render() {
+    const multiName = 'Events Page'
+    const multi = false
+    const options = [
+      {
+        label: 'All Upcoming',
+        value: 'All Upcoming'
+      },
+      {
+        label: 'Today',
+        value: 'Today'
+      },
+      {
+        label: 'Tomorrow',
+        value: 'Tomorrow'
+      },
+      {
+        label: 'Next 7 Days',
+        value: 'Next 7 Days'
+      },
+      {
+        label: 'Next 30 days',
+        value: 'Next 30 Days'
+      }
+    ]
+
     return (
       <SearchTemplate
         searchType="events"
@@ -64,6 +92,7 @@ class EventLookupPage extends React.PureComponent {
             showSearchIcon={true}
             data-cy="keyword search"
           />
+<<<<<<< HEAD
           <TextInput
             id="zip"
             queryParamName="address"
@@ -82,6 +111,22 @@ class EventLookupPage extends React.PureComponent {
             errorText="Enter a 5-digit zip code."
             data-cy="zip"
           />
+=======
+
+          <div className={styles.multiSelect} />
+          <MultiSelect
+            id="Event Range Filter"
+            label="Date Range"
+            autoFocus={false}
+            className={styles.multiSelect}
+            name={multiName}
+            multi={multi}
+            options={options}
+            value="All Upcoming"
+            placeholder="Selec Range..."
+          />
+          <div />
+>>>>>>> added event date multiselect
         </PrimarySearchBar>
       </SearchTemplate>
     )
