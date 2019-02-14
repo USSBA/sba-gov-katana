@@ -207,6 +207,9 @@ Results.propTypes = {
   hidePaginatorOnNoResults: PropTypes.bool,
   displayDefaultResultOnNoResults: PropTypes.bool,
   defaultResultObject: PropTypes.object,
+
+  // function that renders the details of a selected item,
+  // takes two params: resultsClassName and hideDetailState function
   customDetailResultsView: PropTypes.func
 }
 
