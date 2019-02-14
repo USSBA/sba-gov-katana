@@ -17,7 +17,7 @@ describe('EventLookupPage', () => {
   	expect(result).toHaveLength(expected)
   })
   // When a user enters a zip code containing characters are equal to 5 digits, do not show an error
-  it('should not show a zip code error when characters are not equal to 5 digits', () => {
+  it('should not show a zip code error when characters are equal to 5 digits', () => {
   	const component = mount(<EventLookupPage />)
   	const correctlyFormattedZipCode = '23938'
   	const zipInput = component.find('#zip')
