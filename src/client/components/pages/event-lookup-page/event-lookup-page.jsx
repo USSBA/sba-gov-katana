@@ -45,31 +45,6 @@ class EventLookupPage extends React.PureComponent {
   }
 
   render() {
-    const multiName = 'Events Page'
-    const multi = false
-    const options = [
-      {
-        label: 'All Upcoming',
-        value: 'all'
-      },
-      {
-        label: 'Today',
-        value: 'today'
-      },
-      {
-        label: 'Tomorrow',
-        value: 'tomorrow'
-      },
-      {
-        label: 'Next 7 Days',
-        value: '7days'
-      },
-      {
-        label: 'Next 30 days',
-        value: '30days'
-      }
-    ]
-
     return (
       <SearchTemplate
         searchType="events"
@@ -109,14 +84,35 @@ class EventLookupPage extends React.PureComponent {
             data-cy="zip"
           />
           <MultiSelect
-            id="Event Range Filter"
+            id="date-filter"
             queryParamName="dateRange"
             label="Date Range"
             autoFocus={false}
             className={styles.field + ' ' + styles.search}
-            name={multiName}
-            multi={multi}
-            options={options}
+            name="Event's Page"
+            multi={false}
+            options={[
+              {
+                label: 'All Upcoming',
+                value: 'all'
+              },
+              {
+                label: 'Today',
+                value: 'today'
+              },
+              {
+                label: 'Tomorrow',
+                value: 'tomorrow'
+              },
+              {
+                label: 'Next 7 Days',
+                value: '7days'
+              },
+              {
+                label: 'Next 30 days',
+                value: '30days'
+              }
+            ]}
             value="All Upcoming"
             placeholder="Select Range..."
           />
