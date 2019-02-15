@@ -11,17 +11,17 @@ import SearchTemplate from '../../templates/search/search'
 class EventLookupPage extends React.PureComponent {
   customSearch(searchType, searchParams) {
     return fetchSiteContent(searchType, searchParams).then(searchResults => {
-      let keyword = searchParams.q
+      const keyword = searchParams.q
 
       let results = []
       let count = 0
       let hasNoResults = true
       let isLoading = false
       let isZeroState = false
-      let defaultResults = []
+      const defaultResults = []
 
       if (searchResults) {
-        let keywordMatcher = RegExp(keyword, 'i')
+        const keywordMatcher = RegExp(keyword, 'i')
         results = searchResults.filter(eventRecord => {
           return (
             keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
@@ -90,8 +90,6 @@ class EventLookupPage extends React.PureComponent {
             showSearchIcon={true}
             data-cy="keyword search"
           />
-<<<<<<< HEAD
-<<<<<<< HEAD
           <TextInput
             id="zip"
             queryParamName="address"
@@ -110,11 +108,6 @@ class EventLookupPage extends React.PureComponent {
             errorText="Enter a 5-digit zip code."
             data-cy="zip"
           />
-=======
-
-          <div className={styles.multiSelect} />
-=======
->>>>>>> modified filter values
           <MultiSelect
             id="Event Range Filter"
             queryParamName="dateRange"
@@ -127,11 +120,6 @@ class EventLookupPage extends React.PureComponent {
             value="All Upcoming"
             placeholder="Select Range..."
           />
-<<<<<<< HEAD
-          <div />
->>>>>>> added event date multiselect
-=======
->>>>>>> modified filter values
         </PrimarySearchBar>
       </SearchTemplate>
     )
