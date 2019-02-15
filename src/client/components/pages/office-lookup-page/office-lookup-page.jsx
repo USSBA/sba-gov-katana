@@ -4,7 +4,14 @@ import { find, isEmpty } from 'lodash'
 
 import styles from './office-lookup-page.scss'
 import { TaxonomyMultiSelect, StyleWrapperDiv, TextInput } from 'atoms'
-import { PrimarySearchBar, Results, OfficeResult, OfficeMap, DefaultOfficeResult } from 'organisms'
+import {
+  PrimarySearchBar,
+  Results,
+  OfficeDetail,
+  OfficeResult,
+  OfficeMap,
+  DefaultOfficeResult
+} from 'organisms'
 import SearchTemplate from '../../templates/search/search.jsx'
 
 class OfficeLookupPage extends React.PureComponent {
@@ -67,6 +74,15 @@ class OfficeLookupPage extends React.PureComponent {
 
   setHoveredMarkerId(hoveredMarkerId) {
     this.setState({ hoveredMarkerId })
+  }
+
+  customDetailResultsView(resultsClassName, hideDetailState) {
+    const { selectedItem } = this.state
+    return (
+      <div className={resultsClassName}>
+        <OfficeDetail selectedItem={selectedItem} hideDetailState={hideDetailState} />
+      </div>
+    )
   }
 
   render() {
@@ -174,6 +190,7 @@ class OfficeLookupPage extends React.PureComponent {
             displaySearchTipsOnNoResults
             displayDefaultResultOnNoResults
             defaultResultObject={<DefaultOfficeResult />}
+            customDetailResultsView={this.customDetailResultsView.bind(this)}
           >
             <OfficeResult />
           </Results>

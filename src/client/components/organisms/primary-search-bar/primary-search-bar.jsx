@@ -59,6 +59,7 @@ export class PrimarySearchBar extends React.PureComponent {
                 alternate
                 id={`${id ? id : 'primary-search-bar'}-search-button`}
                 onClick={this.onSearch.bind(this)}
+                data-cy={'search button'}
               >
                 {this.props.searchButtonText}
               </Button>
