@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import ReactSelect from 'react-select'
 import 'react-select/dist/react-select.css'
 import { forEach, map } from 'lodash'
@@ -87,11 +87,11 @@ class MultiSelectBox extends React.Component {
       }
     })
 
-    const { autoFocus, id, label, multi, name, options, placeholder } = this.props
+    const { autoFocus, className, id, label, multi, name, options, placeholder } = this.props
     const langCode = getLanguageOverride()
 
     return (
-      <div id={id + '-container'}>
+      <div id={id + '-container'} className={className}>
         <label>{label}</label>
         <div id={id} className={styles.errorClass}>
           <ReactSelect
@@ -121,11 +121,16 @@ class MultiSelectBox extends React.Component {
 }
 
 MultiSelectBox.defaultProps = {
+  className: '',
   multi: true,
   maxValues: 3,
   onBlur: () => {},
   onFocus: () => {},
   onChange: () => {}
+}
+
+MultiSelectBox.propTypes = {
+  className: PropTypes.string
 }
 
 export default MultiSelectBox
