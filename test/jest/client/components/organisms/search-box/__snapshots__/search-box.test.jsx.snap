@@ -2540,7 +2540,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         className=""
         id="documenttype-select-container"
       >
-        <label />
+        <label
+          htmlFor="documenttype-select"
+        />
         <div
           className="errorClass"
           id="documenttype-select"
@@ -2606,7 +2608,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         className=""
         id="program-select-container"
       >
-        <label />
+        <label
+          htmlFor="program-select"
+        />
         <div
           className="errorClass"
           id="program-select"
@@ -2672,7 +2676,9 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
         className=""
         id="documentactivity-select-container"
       >
-        <label />
+        <label
+          htmlFor="documentactivity-select"
+        />
         <div
           className="errorClass"
           id="documentactivity-select"

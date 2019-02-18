@@ -92,7 +92,7 @@ class MultiSelectBox extends React.Component {
 
     return (
       <div id={id + '-container'} className={className}>
-        <label>{label}</label>
+        <label htmlFor={id}>{label}</label>
         <div id={id} className={styles.errorClass}>
           <ReactSelect
             className={errorClass + ' ' + styles.myselect}

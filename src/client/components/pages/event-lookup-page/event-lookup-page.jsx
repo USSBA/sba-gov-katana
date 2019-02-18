@@ -109,12 +109,13 @@ class EventLookupPage extends React.PureComponent {
                 value: '7days'
               },
               {
-                label: 'Next 30 days',
+                label: 'Next 30 Days',
                 value: '30days'
               }
             ]}
             value="All Upcoming"
             placeholder="Select Range..."
+            data-cy="date range"
           />
         </PrimarySearchBar>
       </SearchTemplate>
