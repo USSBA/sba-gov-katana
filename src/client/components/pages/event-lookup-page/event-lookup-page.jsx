@@ -3,24 +3,25 @@ import { fetchSiteContent } from '../../../fetch-content-helper'
 import { isEmpty } from 'lodash'
 
 import styles from './event-lookup-page.scss'
-import { StyleWrapperDiv, TextInput } from 'atoms'
-import { PrimarySearchBar, Results } from 'organisms'
+import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
+import { PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
+//import MultiSelectBox from '../../atoms/multiselect/multiselect'
 
 class EventLookupPage extends React.PureComponent {
   customSearch(searchType, searchParams) {
     return fetchSiteContent(searchType, searchParams).then(searchResults => {
-      let keyword = searchParams.q
+      const keyword = searchParams.q
 
       let results = []
       let count = 0
       let hasNoResults = true
       let isLoading = false
       let isZeroState = false
-      let defaultResults = []
+      const defaultResults = []
 
       if (searchResults) {
-        let keywordMatcher = RegExp(keyword, 'i')
+        const keywordMatcher = RegExp(keyword, 'i')
         results = searchResults.filter(eventRecord => {
           return (
             keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
@@ -81,6 +82,40 @@ class EventLookupPage extends React.PureComponent {
             }}
             errorText="Enter a 5-digit zip code."
             data-cy="zip"
+          />
+          <MultiSelect
+            id="date-filter"
+            queryParamName="dateRange"
+            label="Date Range"
+            autoFocus={false}
+            className={styles.field + ' ' + styles.search}
+            name="Event's Page"
+            multi={false}
+            options={[
+              {
+                label: 'All Upcoming',
+                value: 'all'
+              },
+              {
+                label: 'Today',
+                value: 'today'
+              },
+              {
+                label: 'Tomorrow',
+                value: 'tomorrow'
+              },
+              {
+                label: 'Next 7 Days',
+                value: '7days'
+              },
+              {
+                label: 'Next 30 Days',
+                value: '30days'
+              }
+            ]}
+            value="All Upcoming"
+            placeholder="Select Range..."
+            dataCy="date"
           />
         </PrimarySearchBar>
       </SearchTemplate>

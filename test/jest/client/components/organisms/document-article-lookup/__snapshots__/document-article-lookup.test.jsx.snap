@@ -49,13 +49,17 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="multiSelect"
       >
         <div
+          className=""
           id="title-select-container"
         >
-          <label>
+          <label
+            htmlFor="title-select"
+          >
             Title
           </label>
           <div
             className="errorClass"
+            data-cy=""
             id="title-select"
           >
             <div
@@ -116,13 +120,17 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
         className="multiSelect"
       >
         <div
+          className=""
           id="lightsabercolor-select-container"
         >
-          <label>
+          <label
+            htmlFor="lightsabercolor-select"
+          >
             Lightsaber Color
           </label>
           <div
             className="errorClass"
+            data-cy=""
             id="lightsabercolor-select"
           >
             <div
