@@ -59,6 +59,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           </label>
           <div
             className="errorClass"
+            data-cy=""
             id="title-select"
           >
             <div
@@ -129,6 +130,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
           </label>
           <div
             className="errorClass"
+            data-cy=""
             id="lightsabercolor-select"
           >
             <div

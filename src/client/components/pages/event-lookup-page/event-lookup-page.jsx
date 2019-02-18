@@ -115,7 +115,7 @@ class EventLookupPage extends React.PureComponent {
             ]}
             value="All Upcoming"
             placeholder="Select Range..."
-            data-cy="date range"
+            dataCy="date"
           />
         </PrimarySearchBar>
       </SearchTemplate>

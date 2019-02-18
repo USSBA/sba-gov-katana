@@ -87,13 +87,13 @@ class MultiSelectBox extends React.Component {
       }
     })
 
-    const { autoFocus, className, id, label, multi, name, options, placeholder } = this.props
+    const { autoFocus, className, id, label, multi, name, options, placeholder, dataCy } = this.props
     const langCode = getLanguageOverride()
 
     return (
       <div id={id + '-container'} className={className}>
         <label htmlFor={id}>{label}</label>
-        <div id={id} className={styles.errorClass}>
+        <div id={id} className={styles.errorClass} data-cy={dataCy}>
           <ReactSelect
             className={errorClass + ' ' + styles.myselect}
             menuBuffer={10}
@@ -124,6 +124,7 @@ MultiSelectBox.defaultProps = {
   className: '',
   multi: true,
   maxValues: 3,
+  dataCy: '',
   onBlur: () => {},
   onFocus: () => {},
   onChange: () => {}
