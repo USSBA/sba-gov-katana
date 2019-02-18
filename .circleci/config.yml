@@ -260,7 +260,7 @@ jobs:
         
             if [ "$ENVIRONMENT" == "master" ]
             then
-              $ENVIRONMENT=mint
+              ENVIRONMENT=mint
             fi
 
             case $ENVIRONMENT in
