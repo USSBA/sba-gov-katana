@@ -45,7 +45,10 @@ class EventLookupPage extends React.PureComponent {
   }
 
   render() {
-    const defaultSearchParams = { dateRange: 'all' }
+    const defaultSearchParams = {
+      dateRange: 'all',
+      distance: '200'
+    }
 
     return (
       <SearchTemplate
@@ -117,6 +120,34 @@ class EventLookupPage extends React.PureComponent {
               }
             ]}
             dataCy="date"
+          />
+          <MultiSelect
+            id="distance-filter"
+            queryParamName="distance"
+            label="Distance"
+            autoFocus={false}
+            className={styles.field + ' ' + styles.multiSelect}
+            name="Event's Page"
+            multi={false}
+            options={[
+              {
+                label: '200 miles',
+                value: '200'
+              },
+              {
+                label: '100 miles',
+                value: '100'
+              },
+              {
+                label: '50 miles',
+                value: '50'
+              },
+              {
+                label: '25 miles',
+                value: '25'
+              }
+            ]}
+            dataCy="distance"
           />
         </PrimarySearchBar>
       </SearchTemplate>
