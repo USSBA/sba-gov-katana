@@ -53,7 +53,7 @@ class EventLookupPage extends React.PureComponent {
         extraClassName={styles.eventSearch}
         paginate={false}
         customSearch={this.customSearch}
-        efaultSearchParams={{
+        defaultSearchParams={{
           dateRange: 'all'
         }}
       >

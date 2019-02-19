@@ -173,7 +173,7 @@ class SearchTemplate extends React.PureComponent {
   }
 
   doSearch(searchType, searchParams) {
-    let _this = this
+    const _this = this
     let search = () =>
       fetchSiteContent(searchType, filteredSearchParams)
         .then(searchResults => {
@@ -207,7 +207,7 @@ class SearchTemplate extends React.PureComponent {
     // override search if a custom search exists
     if (this.props.customSearch) {
       search = () =>
-        this.props.customSearch(searchType, searchParams).then(output => {
+        this.props.customSearch(searchType, filteredSearchParams).then(output => {
           _this.setState(output)
         })
     }
