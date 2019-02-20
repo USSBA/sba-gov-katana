@@ -45,6 +45,8 @@ class EventLookupPage extends React.PureComponent {
   }
 
   render() {
+    const defaultSearchParams = { dateRange: 'all' }
+
     return (
       <SearchTemplate
         searchType="events"
@@ -53,9 +55,7 @@ class EventLookupPage extends React.PureComponent {
         extraClassName={styles.eventSearch}
         paginate={false}
         customSearch={this.customSearch}
-        defaultSearchParams={{
-          dateRange: 'all'
-        }}
+        defaultSearchParams={defaultSearchParams}
       >
         <PrimarySearchBar id="events-primary-search-bar" title="Find events" className={styles.searchBar}>
           <TextInput
@@ -116,7 +116,6 @@ class EventLookupPage extends React.PureComponent {
                 value: '30days'
               }
             ]}
-            defaultValue="all"
             dataCy="date"
           />
         </PrimarySearchBar>

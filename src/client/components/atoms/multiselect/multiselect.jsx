@@ -15,13 +15,6 @@ class MultiSelectBox extends React.Component {
     this.state = {}
   }
 
-  componentWillMount() {
-    const { defaultValue } = this.props
-    if (defaultValue) {
-      this.setState({ value: defaultValue })
-    }
-  }
-
   componentWillReceiveProps(nextProps) {
     if (
       !this.state.value ||
