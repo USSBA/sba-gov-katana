@@ -196,10 +196,10 @@ jobs:
     - restore_cache:
         keys:
         - v2-dependencies-{{ checksum "package.json" }}
-    - run:
-        name: run eslint fix and prettier
-        command:
-          npm run format
+    # - run:
+    #     name: run eslint fix and prettier
+    #     command:
+    #       npm run format
   build-webpack:
     docker:
     - image: circleci/node:8.10
