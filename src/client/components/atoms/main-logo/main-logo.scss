@@ -17,6 +17,12 @@
     }
   }
 
+  @include for-small-only {
+    img {
+      padding-top: 7px;
+    }
+  }
+
   @include for-large-up {
     img {
       height: auto;
