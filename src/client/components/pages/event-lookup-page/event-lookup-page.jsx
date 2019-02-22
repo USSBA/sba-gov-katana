@@ -6,7 +6,6 @@ import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
 import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
-//import MultiSelectBox from '../../atoms/multiselect/multiselect'
 
 class EventLookupPage extends React.PureComponent {
   customSearch(searchType, searchParams) {
@@ -71,24 +70,6 @@ class EventLookupPage extends React.PureComponent {
             showSearchIcon={true}
             data-cy="keyword search"
           />
-          <TextInput
-            id="zip"
-            queryParamName="address"
-            className={styles.field + ' ' + styles.zip}
-            label="Near"
-            placeholder="Zip Code"
-            validationFunction={input => {
-              // only validate if there is an input value
-              let result = true
-              if (!isEmpty(input)) {
-                const fiveDigitRegex = /^\d{5}$/g
-                result = fiveDigitRegex.test(input)
-              }
-              return result
-            }}
-            errorText="Enter a 5-digit zip code."
-            data-cy="zip"
-          />
           <MultiSelect
             id="date-filter"
             queryParamName="dateRange"
@@ -120,6 +101,24 @@ class EventLookupPage extends React.PureComponent {
               }
             ]}
             dataCy="date"
+          />
+          <TextInput
+            id="zip"
+            queryParamName="address"
+            className={styles.field + ' ' + styles.zip}
+            label="Near"
+            placeholder="Zip Code"
+            validationFunction={input => {
+              // only validate if there is an input value
+              let result = true
+              if (!isEmpty(input)) {
+                const fiveDigitRegex = /^\d{5}$/g
+                result = fiveDigitRegex.test(input)
+              }
+              return result
+            }}
+            errorText="Enter a 5-digit zip code."
+            data-cy="zip"
           />
           <MultiSelect
             id="distance-filter"
