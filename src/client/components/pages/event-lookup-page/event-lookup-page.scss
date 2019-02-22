@@ -85,3 +85,15 @@
     }
   }
 }
+
+.searchResults {
+  @include grid-media($sba-grid-small) {
+    padding: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 40px 30px 20px 30px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 40px 28px 20px 28px;
+  }
+}

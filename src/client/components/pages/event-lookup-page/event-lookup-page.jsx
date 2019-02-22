@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash'
 
 import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
-import { PrimarySearchBar, Results, PagingLookup } from 'organisms'
+import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
 //import MultiSelectBox from '../../atoms/multiselect/multiselect'
 
@@ -150,6 +150,11 @@ class EventLookupPage extends React.PureComponent {
             dataCy="distance"
           />
         </PrimarySearchBar>
+        <StyleWrapperDiv className={styles.searchResults}>
+          <Results paginate={true}>
+            <EventResult />
+          </Results>
+        </StyleWrapperDiv>
       </SearchTemplate>
     )
   }
