@@ -111,9 +111,9 @@ describe('Person page', () => {
   })
 
   test('renders person page correctly', async () => {
-    // fetchSiteContentStub.returns(Promise.resolve(personProps))
+    fetchSiteContentStub.returns(Promise.resolve(personProps))
     fetchSiteContentStub.withArgs('officesRaw').returns(Promise.resolve(officeProps))
-    fetchSiteContentStub.withArgs('persons').returns(Promise.resolve(personProps))
+    // fetchSiteContentStub.returns(Promise.resolve(personProps))
     const component = await shallow(<PersonPage location={{ pathname: '/person/thomas-todt/' }} />)
     // const tree = component.toJSON()
     expect(component).toMatchSnapshot()

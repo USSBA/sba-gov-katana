@@ -8,9 +8,9 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": null,
+  "node": <ErrorPage />,
   "nodes": Array [
-    null,
+    <ErrorPage />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -58,11 +58,11 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": null,
+        "_currentElement": <ErrorPage />,
         "_debugID": 2,
-        "_renderedOutput": null,
+        "_renderedOutput": <ErrorPage />,
       },
-      "_renderedNodeType": 2,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
