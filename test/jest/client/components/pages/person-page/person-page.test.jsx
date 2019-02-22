@@ -110,7 +110,7 @@ describe('Person page', () => {
     done()
   })
 
-  test('renders person page correctly', async () => {
+  test.skip('renders person page correctly', async () => {
     fetchSiteContentStub.returns(Promise.resolve(personProps))
     fetchSiteContentStub.withArgs('officesRaw').returns(Promise.resolve(officeProps))
     // fetchSiteContentStub.returns(Promise.resolve(personProps))
