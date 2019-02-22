@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchSiteContent } from '../../../fetch-content-helper'
-import { isEmpty } from 'lodash'
+import { isEmpty, sortBy } from 'lodash'
+import moment from 'moment-timezone'
 
 import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
@@ -10,6 +11,7 @@ import SearchTemplate from '../../templates/search/search'
 
 class EventLookupPage extends React.PureComponent {
   customSearch(searchType, searchParams) {
+
     return fetchSiteContent(searchType, searchParams).then(searchResults => {
       const keyword = searchParams.q
 
@@ -21,12 +23,43 @@ class EventLookupPage extends React.PureComponent {
       const defaultResults = []
 
       if (searchResults) {
-        const keywordMatcher = RegExp(keyword, 'i')
-        results = searchResults.filter(eventRecord => {
-          return (
-            keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
-          )
+
+        const shouldLog = true
+
+        if (shouldLog) {
+          console.log('unsorted: ', searchResults)
+        }
+
+        // sort by date
+        let resultsSortedByDate = sortBy(searchResults, item => {
+          let normalizedDateTime = new moment(item.start_date)
+          normalizedDateTime = normalizedDateTime.clone().tz('America/New_York').format()
+          return normalizedDateTime
         })
+
+        if (shouldLog) {
+          console.log('sorted by date: ', resultsSortedByDate)
+        }
+
+        // for any results with the same date and time, sort alphabetically
+        const sortEventsWithSameDateAlphabetically = (a, b) => {
+          let result = 0
+          if (a.start_date === b.start_date) {
+            if (a.name > b.name) {
+              result = 1
+            } else if (a.name < b.name) {
+              result = -1
+            }
+          }
+          return result
+        }
+
+        results = resultsSortedByDate.slice().sort(sortEventsWithSameDateAlphabetically)
+
+        if (shouldLog) {
+          console.log('sorted by date AND alphabetically: ', results)
+        }
+
         count = results.length
         hasNoResults = count === 0
         isLoading = false
