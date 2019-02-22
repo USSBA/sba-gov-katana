@@ -73,6 +73,18 @@
 
 // Results
 
+.centerContainer {
+  outline: none;
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    bottom: 0px;
+    top: 40px;
+    right: 0px;
+    left: 0px;
+    pointer-events: none;
+  }
+}
+
 .officeResults {
   @include grid-media($sba-grid-large) {
     position: absolute;
@@ -88,4 +100,12 @@
 
 .resultsZeroState {
   display: none;
+}
+
+.resultContainer {
+  min-width: 321px;
+  @include grid-media($sba-grid-large) {
+    position: absolute;
+    pointer-events: all;
+  }
 }

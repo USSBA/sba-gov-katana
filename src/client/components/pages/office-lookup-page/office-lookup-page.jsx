@@ -191,6 +191,8 @@ class OfficeLookupPage extends React.PureComponent {
             displayDefaultResultOnNoResults
             defaultResultObject={<DefaultOfficeResult />}
             customDetailResultsView={this.customDetailResultsView.bind(this)}
+            extraContainerStyles={styles.centerContainer}
+            extraResultContainerStyles={styles.resultContainer}
           >
             <OfficeResult />
           </Results>
