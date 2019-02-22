@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './results.scss'
 import { NoResultsSection, Paginator } from 'molecules'
 import { SearchInfoPanel } from 'atoms'
-import { OfficeDetail } from 'organisms'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { isEmpty } from 'lodash'
@@ -120,24 +119,37 @@ class Results extends React.PureComponent {
   }
 
   renderResults(results = this.props.items) {
-    const { paginate, hasSearchInfoPanel, scroll, children } = this.props
+    const { extraResultContainerStyles, paginate, hasSearchInfoPanel, scroll, children } = this.props
     const resultsWithProps = this.mapResults(results, children)
+
+    let resultContainerStyles
+    if (extraResultContainerStyles) {
+      resultContainerStyles = styles.resultContainer + ' ' + extraResultContainerStyles
+    } else {
+      resultContainerStyles = styles.resultContainer
+    }
 
     const divClassName = classNames({
       [styles.scroll]: scroll,
       [styles.resultsWithPagination]: paginate,
       [styles.resultsWithSearchInfo]: hasSearchInfoPanel,
-      [styles.resultContainer]: true
+      [resultContainerStyles]: true
     })
 
     return resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
   }
 
   renderResultsView(resultsClassName) {
+    const { extraContainerStyles } = this.props
+    const divProps = {}
+    if (extraContainerStyles) {
+      divProps.className = extraContainerStyles
+    }
+
     return (
       <div className={resultsClassName}>
         {this.renderSearchInfoPanel()}
-        <div className={styles.centerContainer}>
+        <div {...divProps}>
           {this.renderSearchTips()}
           {this.renderDefaultResults()}
           {this.renderResults()}
@@ -188,7 +200,9 @@ Results.defaultProps = {
   submittedFieldValues: {},
   searchTips: [],
   onClick: () => {},
-  onResultHover: () => {}
+  onResultHover: () => {},
+  extraContainerStyles: null,
+  extraResultContainerStyles: null
 }
 
 Results.propTypes = {
