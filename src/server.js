@@ -51,7 +51,7 @@ app.use(function(req, res, next) {
   const requestPathWithoutTraillingSlack =
     requestPath && requestPath.length > 1 ? _.trimEnd(requestPath, '/') : requestPath
   findNodeIdByUrl(requestPathWithoutTraillingSlack)
-    .then(({ nodeId, langCode }) => {
+    .then(({ nodeId, langCode, type }) => {
       let responseStatus = httpStatus.OK
       if (!nodeId && config.get('features.true404')) {
         responseStatus = httpStatus.NOT_FOUND
@@ -74,6 +74,7 @@ app.use(function(req, res, next) {
       }
       req.sessionAndConfig = clientConfig //eslint-disable-line no-param-reassign
       req.nodeId = nodeId //eslint-disable-line no-param-reassign
+      req.type = type //eslint-disable-line no-param-reassign
 
       // Spanish browser language setting and Spanish url gets priority
       if (langCode === 'es' || (req.preferredLanguage && req.preferredLanguage.startsWith('es'))) {
@@ -132,7 +133,7 @@ app.get('/actions/misc/*', (req, res, next) => {
   fetchExternalContent(config.get('miscapi.endpoint'), 'latest', req.path, req.query, res, 'json')
 })
 app.get('/api/content/*', (req, res, next) => {
-  fetchExternalContent(config.get('content.endpoint'), 'latest', req.path, req.query, res, 'json')
+  fetchExternalContent(config.get('content.endpoint'),"", req.path, req.query, res, 'json')
 })
 app.get('/naics', (req, res, next) => {
   fetchExternalContent(config.get('sizestandards.endpoint'), 'latest', req.path, req.query, res, 'json')
@@ -170,7 +171,7 @@ if (config.get('developmentOptions.webpack.enabled')) {
 const { fetchNewUrlByOldUrl } = require('./service/drupal-url-redirect.js')
 const { findMostRecentUrlRedirect } = require('./service/url-redirect.js')
 
-async function getMetaVariables(nodeId) {
+async function getMetaVariables(nodeId, type = 'node') {
   let description = config.get('meta.description')
   let title = config.get('meta.title')
 
@@ -179,7 +180,7 @@ async function getMetaVariables(nodeId) {
   // so we can regard negative nodeId's as invalid.
   if (nodeId > 0) {
     const jsonContent = await axios.get(
-      `https://${config.get('content.endpoint')}/api/content/node/${nodeId}.json`
+      `https://${config.get('content.endpoint')}/api/content/${type}/${nodeId}.json`
     )
     if (jsonContent.data) {
       description = jsonContent.data.summary
@@ -194,45 +195,50 @@ async function getMetaVariables(nodeId) {
 }
 
 app.get(['/', '/*'], async function(req, res, next) {
-  const metaVariables = await getMetaVariables(req.nodeId)
+  let metaVariables
+  try {
+    metaVariables = await getMetaVariables(req.nodeId, req.type)
 
-  const pugVariables = _.merge({}, metaVariables, {
-    langOverride: req.preferredLanguage,
-    nodeId: req.nodeId,
-    config: JSON.stringify(req.sessionAndConfig),
-    optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
-    tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
-    foreseeEnabled: config.get('foresee.enabled'),
-    foreseeEnvironment: config.get('foresee.environment'),
-    mainBundleFile: mainBundleFile
-  })
+    const pugVariables = _.merge({}, metaVariables, {
+      langOverride: req.preferredLanguage,
+      nodeId: req.nodeId,
+      config: JSON.stringify(req.sessionAndConfig),
+      optimizeContainerId: config.get('googleAnalytics.optimizeContainerId'),
+      tagManagerAccountId: config.get('googleAnalytics.tagManagerAccountId'),
+      foreseeEnabled: config.get('foresee.enabled'),
+      foreseeEnvironment: config.get('foresee.environment'),
+      mainBundleFile: mainBundleFile
+    })
 
-  const handleRedirects = async function() {
-    const url = req.url
-    let redirectUrl
-    let redirectCode
+    const handleRedirects = async function() {
+      const url = req.url
+      let redirectUrl
+      let redirectCode
 
-    // this section of code could be refactored since both types of redirects return the
-    // same HTTP 302 now; however, it might be worth leaving it in case we elect to
-    // change them separately in the future (more than likely the first one with be changed
-    // to HTTP 301 in the future)
-    if (config.get('features.urlRedirect.enabled')) {
-      redirectUrl = await findMostRecentUrlRedirect(url)
-      redirectCode = httpStatus.MOVED_TEMPORARILY
+      // this section of code could be refactored since both types of redirects return the
+      // same HTTP 302 now; however, it might be worth leaving it in case we elect to
+      // change them separately in the future (more than likely the first one with be changed
+      // to HTTP 301 in the future)
+      if (config.get('features.urlRedirect.enabled')) {
+        redirectUrl = await findMostRecentUrlRedirect(url)
+        redirectCode = httpStatus.MOVED_TEMPORARILY
+      }
+      if (!redirectUrl && config.get('features.drupalRedirect.enabled')) {
+        redirectUrl = await fetchNewUrlByOldUrl(url)
+        redirectCode = httpStatus.MOVED_TEMPORARILY
+      }
+      if (redirectUrl && redirectUrl !== url) {
+        console.log('Redirecting to ' + redirectUrl)
+        res.redirect(redirectCode, redirectUrl)
+      } else {
+        res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
+      }
     }
-    if (!redirectUrl && config.get('features.drupalRedirect.enabled')) {
-      redirectUrl = await fetchNewUrlByOldUrl(url)
-      redirectCode = httpStatus.MOVED_TEMPORARILY
-    }
-    if (redirectUrl && redirectUrl !== url) {
-      console.log('Redirecting to ' + redirectUrl)
-      res.redirect(redirectCode, redirectUrl)
-    } else {
-      res.status(req.sessionAndConfig.responseStatus).render('main', pugVariables)
-    }
+
+    return handleRedirects()
+  } catch (e) {
+    return next(e)
   }
-
-  handleRedirects().catch(next)
 })
 
 // development error handler
