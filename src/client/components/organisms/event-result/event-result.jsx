@@ -2,10 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import styles from './event-result.scss'
+import { Link } from 'atoms'
 
 class EventResult extends React.PureComponent {
   formatDate(date) {
     return moment(date).format('dddd, MMMM D')
+  }
+
+  formatTime(startTime, endTime, timezone) {
+    const startingTime = moment(startTime).format('h:mm a')
+    const endingTime = moment(endTime).format('h:mm a')
+    return `${startingTime}-${endingTime} ${timezone}`
   }
 
   render() {
@@ -21,11 +28,16 @@ class EventResult extends React.PureComponent {
     return (
       <div id={`event-result-container-${id}`} className={styles.container} data-cy="event result">
         <div id={`event-result-${id}`} className={styles.result}>
-          <div>{this.formatDate(item.startDate)}</div>
           <div>
-            <h6 id={`event-title-${id}`} className={styles.title}>
-              {item.title}
-            </h6>
+            <div className={styles.date}>{this.formatDate(item.startDate)}</div>
+            <div>{this.formatTime(item.startDate, item.endDate, item.timezone)}</div>
+          </div>
+          <div>
+            <Link to={item.registrationUrl}>
+              <h6 id={`event-title-${id}`} className={styles.title}>
+                {item.title}
+              </h6>
+            </Link>
             <div id={`event-location-${id}`}>{`${item.location.city}, ${item.location.state}`}</div>
           </div>
           <div>{`${itemCost}`}</div>

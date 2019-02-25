@@ -2,13 +2,20 @@
   @include grid-media($sba-grid-small) {
     padding: 20px;
     text-align: left;
+    color: $secondary-black-ish;
   }
   @include grid-media($sba-grid-medium) {
     padding: 20px 30px 20px 30px;
+    color: $secondary-black-ish;
   }
   @include grid-media($sba-grid-large) {
     padding: 20px 28px 15px 28px;
+    color: $secondary-black-ish;
   }
+}
+
+.date {
+  font-weight: 600;
 }
 
 .title {
