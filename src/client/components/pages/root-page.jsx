@@ -5,6 +5,7 @@ import SectionPage from './section-page/section-page.jsx'
 import ErrorPage from '../pages/error-page/error-page.jsx'
 import DocumentPage from '../pages/document-page/document-page.jsx'
 import ArticlePage from '../pages/article-page/article-page.jsx'
+import EventPage from '../pages/event-page/event-page.jsx'
 import { getConfig } from '../../services/client-config.js'
 import { fetchSiteContent } from '../../fetch-content-helper.js'
 import { getLanguageOverride } from '../../services/utils.js'
@@ -31,6 +32,8 @@ export class RootPage extends React.Component {
       return <DocumentPage location={this.props.location} />
     } else if (first === 'article') {
       return <ArticlePage location={this.props.location} />
+    } else if (first === 'event') {
+      return <EventPage id={window.nodeId} />
     } else if (window && window.nodeId && this.state.siteMap.length && Number(window.nodeId) > 0) {
       const pageLineage = findPageLineageByNodeId(this.state.siteMap, window.nodeId)
       if (pageLineage) {
