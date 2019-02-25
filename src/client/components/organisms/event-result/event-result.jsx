@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import styles from './event-result.scss'
-import { Link } from 'atoms'
+import { Button, Link } from 'atoms'
 
 class EventResult extends React.PureComponent {
   formatDate(date) {
@@ -42,6 +42,11 @@ class EventResult extends React.PureComponent {
     }
   }
 
+  // TODO
+  renderEventDetailUrl() {
+    return '/events/find'
+  }
+
   render() {
     const { id, item } = this.props
 
@@ -60,7 +65,7 @@ class EventResult extends React.PureComponent {
             <div>{this.formatTime(item.startDate, item.endDate, item.timezone)}</div>
           </div>
           <div>
-            <Link to={item.registrationUrl} className={styles.title}>
+            <Link to={this.renderEventDetailUrl()} className={styles.title}>
               <h6 id={`event-title-${id}`}>{item.title}</h6>
             </Link>
             <div id={`event-location-${id}`}>
@@ -68,6 +73,9 @@ class EventResult extends React.PureComponent {
             </div>
           </div>
           <div>{`${itemCost}`}</div>
+          <div>
+            <Button secondary>REGISTER</Button>
+          </div>
         </div>
       </div>
     )
