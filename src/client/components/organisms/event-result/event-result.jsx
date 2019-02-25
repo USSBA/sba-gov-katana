@@ -10,9 +10,36 @@ class EventResult extends React.PureComponent {
   }
 
   formatTime(startTime, endTime, timezone) {
-    const startingTime = moment(startTime).format('h:mm a')
-    const endingTime = moment(endTime).format('h:mm a')
-    return `${startingTime}-${endingTime} ${timezone}`
+    const startingTimeSuffix = moment(startTime).format('a')
+    let startingTime
+    let endingTime
+
+    if (moment(startTime).format('mm') === '00') {
+      startingTime = moment(startTime).format('h')
+    } else {
+      startingTime = moment(startTime).format('h:mm')
+    }
+
+    if (moment(endTime).format('mm') === '00') {
+      endingTime = moment(endTime).format('h a')
+    } else {
+      endingTime = moment(endTime).format('h:mm a')
+    }
+
+    // don't include the starting time stuffix when starting and ending suffix match
+    if (moment(startTime).format('a') === moment(endTime).format('a')) {
+      return `${startingTime}–${endingTime} ${timezone}`
+    } else {
+      return `${startingTime} ${startingTimeSuffix}-${endingTime} ${timezone}`
+    }
+  }
+
+  renderLocationInfo(locationType, city, state) {
+    if (locationType === 'Online') {
+      return 'Online event'
+    } else {
+      return `${city}, ${state}`
+    }
   }
 
   render() {
@@ -22,7 +49,7 @@ class EventResult extends React.PureComponent {
     if (item.cost === '0.00') {
       itemCost = 'Free'
     } else {
-      itemCost = item.cost
+      itemCost = `$${item.cost}`
     }
 
     return (
@@ -33,12 +60,12 @@ class EventResult extends React.PureComponent {
             <div>{this.formatTime(item.startDate, item.endDate, item.timezone)}</div>
           </div>
           <div>
-            <Link to={item.registrationUrl}>
-              <h6 id={`event-title-${id}`} className={styles.title}>
-                {item.title}
-              </h6>
+            <Link to={item.registrationUrl} className={styles.title}>
+              <h6 id={`event-title-${id}`}>{item.title}</h6>
             </Link>
-            <div id={`event-location-${id}`}>{`${item.location.city}, ${item.location.state}`}</div>
+            <div id={`event-location-${id}`}>
+              {this.renderLocationInfo(item.locationType, item.location.city, item.location.state)}
+            </div>
           </div>
           <div>{`${itemCost}`}</div>
         </div>
