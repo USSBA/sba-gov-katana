@@ -33,3 +33,14 @@
     cursor: pointer;
   }
 }
+
+.resultsStatusMessage {
+  background-color: $sba-gray-lighter;
+  padding: 50px 0;
+  height: 100%;
+  text-align: center;
+}
+
+.loading {
+  margin: 0;
+}

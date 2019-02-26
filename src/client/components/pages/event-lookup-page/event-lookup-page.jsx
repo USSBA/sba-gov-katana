@@ -59,6 +59,7 @@ class EventLookupPage extends React.PureComponent {
         paginate={false}
         customSearch={this.customSearch}
         defaultSearchParams={defaultSearchParams}
+        showStatus={true}
       >
         <PrimarySearchBar id="events-primary-search-bar" title="Find events" className={styles.searchBar}>
           <TextInput
