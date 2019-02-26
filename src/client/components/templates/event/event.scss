@@ -2,18 +2,25 @@
   @include for-small-only {
     margin: 50px 20px 50px 20px;
   }
-
   @include for-medium-only {
     margin: 50px 30px 50px 30px;
   }
-
   @include for-large-up {
-    margin: 50px 70px 50px 70px;
+    margin: 50px 50px 50px 50px;
   }
 }
 
 .title {
-  @include for-large-up {
-    width: 66.666%;
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+    @include grid-push(0);
   }
 }
