@@ -46,6 +46,10 @@ const CourseTemplate = props => (
   <Async componentProps={props} load={import('./templates/course/course.jsx')} />
 )
 
+const PersonPage = props => (
+  <Async componentProps={props} load={import('./pages/person-page/person-page.jsx')} />
+)
+
 const LearningCenterLookupPage = props => (
   <Async
     componentProps={props}
@@ -80,6 +84,8 @@ const mainRoutes = [
   <Redirect key={53} from="/course/:first" to="/course/:first/" />,
   <Route key={54} path="/course/" component={LearningCenterLookupPage} />,
   <Redirect key={55} from="/course" to="/course/" />,
+  <Route key={56} path="/person/:first/" component={PersonPage} />,
+  <Redirect key={57} path="/person/:first" to="/person/:first/" />,
   <Route key={48} path="/resource-partner-survey/" component={ResourceCenterProfilePage} />,
   <Redirect key={49} from="/resource-partner-survey" to="/resource-partner-survey/" />,
   <Route key={56} path="/local-assistance/find/" component={OfficeLookupPage} />,
