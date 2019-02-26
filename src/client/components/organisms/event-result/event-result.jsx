@@ -42,9 +42,8 @@ class EventResult extends React.PureComponent {
     }
   }
 
-  // TODO
-  renderEventDetailUrl() {
-    return '/events/find'
+  renderEventDetailUrl(id) {
+    return `/event/${id}`
   }
 
   render() {
@@ -70,7 +69,7 @@ class EventResult extends React.PureComponent {
           </div>
 
           <div className={styles.column2}>
-            <Link to={this.renderEventDetailUrl()} className={styles.title}>
+            <Link to={this.renderEventDetailUrl(item.id)} className={styles.title}>
               <h6 id={`event-title-${id}`}>{item.title}</h6>
             </Link>
             <div id={`event-location-${id}`}>
