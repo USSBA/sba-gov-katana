@@ -15,10 +15,15 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward } = this.props
+    const { total, pageSize, pageNumber, onBack, onForward, setWhiteBackground } = this.props
+
+    const divClassName = classNames({
+      [styles.paginator]: true,
+      [styles.whiteBackground]: setWhiteBackground
+    })
 
     return this.shouldRenderPaginator() ? (
-      <div className={styles.paginator}>
+      <div className={divClassName}>
         <Paginator
           pageNumber={pageNumber}
           pageSize={pageSize}
@@ -58,12 +63,18 @@ class Results extends React.PureComponent {
       searchTermName,
       submittedFieldValues,
       hasSearchInfoPanel,
+      setWhiteBackground,
       isLoading
     } = this.props
 
+    const divClassName = classNames({
+      [styles.searchInfoPanel]: true,
+      [styles.whiteBackground]: setWhiteBackground
+    })
+
     const searchTerm = submittedFieldValues[searchTermName]
     return hasSearchInfoPanel ? (
-      <div className={styles.searchInfoPanel}>
+      <div className={divClassName}>
         <div className={'search-info-panel ' + styles.searchFocusState} tabIndex="0" role="text">
           <SearchInfoPanel
             pageNumber={pageNumber}
@@ -105,21 +116,33 @@ class Results extends React.PureComponent {
     return resultsWithProps
   }
 
-  renderDefaultResults(defaultResults = this.props.defaultResults) {
+  renderDefaultResults() {
+    const { defaultResults, setWhiteBackground } = this.props
+
+    const divClassName = classNames({
+      [styles.defaultResults]: true,
+      [styles.whiteBackground]: setWhiteBackground
+    })
+
     let result = null
     const { defaultResultObject, children } = this.props
     const resultElement = defaultResultObject || children
     if (this.shouldRenderDefaultResults()) {
       const resultsWithProps = this.mapResults(defaultResults, resultElement)
-      result = resultsWithProps.length ? (
-        <div className={styles.defaultResults}>{resultsWithProps}</div>
-      ) : null
+      result = resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
     }
     return result
   }
 
   renderResults(results = this.props.items) {
-    const { extraResultContainerStyles, paginate, hasSearchInfoPanel, scroll, children } = this.props
+    const {
+      extraResultContainerStyles,
+      paginate,
+      hasSearchInfoPanel,
+      scroll,
+      setWhiteBackground,
+      children
+    } = this.props
     const resultsWithProps = this.mapResults(results, children)
 
     let resultContainerStyles
@@ -133,7 +156,8 @@ class Results extends React.PureComponent {
       [styles.scroll]: scroll,
       [styles.resultsWithPagination]: paginate,
       [styles.resultsWithSearchInfo]: hasSearchInfoPanel,
-      [resultContainerStyles]: true
+      [resultContainerStyles]: true,
+      [styles.whiteBackground]: setWhiteBackground
     })
 
     return resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
@@ -202,7 +226,10 @@ Results.defaultProps = {
   onClick: () => {},
   onResultHover: () => {},
   extraContainerStyles: null,
-  extraResultContainerStyles: null
+  extraResultContainerStyles: null,
+
+  // When true, sets white background to searchInfoPanel, paginator, resultsContainer, and defaultResults
+  setWhiteBackground: false
 }
 
 Results.propTypes = {

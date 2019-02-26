@@ -16,7 +16,6 @@
 }
 
 .resultContainer {
-  background-color: white;
   @include grid-media($sba-grid-large) {
     pointer-events: all;
   }
@@ -27,7 +26,6 @@
 }
 
 .searchInfoPanel {
-  background-color: white;
   padding: 14px 20px 20px;
   @include grid-media($sba-grid-small) {
     padding-bottom: 20px;
@@ -47,7 +45,6 @@
 }
 
 .defaultResults {
-  background-color: white;
   @include grid-media($sba-grid-large) {
     pointer-events: all;
   }
@@ -56,11 +53,14 @@
 .paginator {
   text-align: right;
   padding: 15px;
-  background-color: white;
   @include grid-media($sba-grid-large) {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
   }
+}
+
+.whiteBackground {
+  background-color: white;
 }
