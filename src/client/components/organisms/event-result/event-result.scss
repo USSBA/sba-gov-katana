@@ -1,26 +1,18 @@
 .container {
+  background-color: white;
+  border-top-color: $sba-blue;
+  border-top-style: solid;
+  border-top-width: 3px;
+  color: $secondary-black-ish;
+  padding: 20px 0px 20px 0px;
+  margin-bottom: 25px;
   @include grid-media($sba-grid-small) {
-    border-top-color: $sba-blue;
-    border-top-style: solid;
-    border-top-width: 3px;
-    color: $secondary-black-ish;
-    padding: 20px 0px 20px 0px;
     @include grid-column(12, $sba-grid-small);
   }
   @include grid-media($sba-grid-medium) {
-    border-top-color: $sba-blue;
-    border-top-style: solid;
-    border-top-width: 3px;
-    color: $secondary-black-ish;
-    padding: 20px 0px 20px 0px;
     @include grid-column(12, $sba-grid-medium);
   }
   @include grid-media($sba-grid-large) {
-    border-top-color: $sba-blue;
-    border-top-style: solid;
-    border-top-width: 3px;
-    color: $secondary-black-ish;
-    padding: 20px 0px 20px 0px;
     @include grid-column(12, $sba-grid-large);
   }
 }
