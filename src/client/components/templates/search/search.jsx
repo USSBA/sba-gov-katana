@@ -77,11 +77,8 @@ class SearchTemplate extends React.PureComponent {
   }
 
   componentWillMount() {
-    const { defaultSearchParams } = this.props
-    const { searchParams } = this.state
     const urlSearchString = document.location.search
-
-    const newSearchParams = merge(searchParams, defaultSearchParams || {}, this.generateQueryMap())
+    const newSearchParams = merge(this.state.defaultSearchParams, this.props.defaultSearchParams || {}, this.generateQueryMap())
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
