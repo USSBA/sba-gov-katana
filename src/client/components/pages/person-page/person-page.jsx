@@ -20,11 +20,11 @@ class PersonPage extends Component {
     const pathname = this.props.location.pathname
     const offices = await fetchSiteContent('officesRaw')
     const persons = await fetchSiteContent('persons')
-    const person = persons.find(personObj => personObj.url === pathname.slice(0, -1))
+    const person = persons.find(({ url }) => url === pathname.slice(0, -1))
 
     let officeWithPersonMatch
     if (!isEmpty(person) && !isEmpty(offices)) {
-      officeWithPersonMatch = offices.find(officeObj => officeObj.id === person.office)
+      officeWithPersonMatch = offices.find(({ id }) => id === person.office)
     }
 
     const result = officeWithPersonMatch ? { ...person, officeTitle: officeWithPersonMatch.title } : person

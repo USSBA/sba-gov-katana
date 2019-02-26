@@ -46,15 +46,9 @@ class Person extends Component {
     })
 
     const {
-      bio,
-      emailAddress: email,
-      fax,
-      name,
-      officeTitle,
-      picture,
-      phone: phoneNumber,
-      title
-    } = this.props.personData
+      personData: { bio, emailAddress: email, fax, name, officeTitle, picture, phone: phoneNumber, title },
+      pathname
+    } = this.props
 
     const contact = this.createContact(email, fax, phoneNumber)
 
@@ -73,7 +67,7 @@ class Person extends Component {
               },
               {
                 title: name,
-                url: this.props.pathname
+                url: pathname
               }
             ]}
           />
