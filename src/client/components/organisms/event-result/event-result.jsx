@@ -58,13 +58,18 @@ class EventResult extends React.PureComponent {
     }
 
     return (
-      <div id={`event-result-container-${id}`} className={styles.container} data-cy="event result">
-        <div id={`event-result-${id}`} className={styles.result}>
-          <div>
-            <div className={styles.date}>{this.formatDate(item.startDate)}</div>
-            <div>{this.formatTime(item.startDate, item.endDate, item.timezone)}</div>
+      <div id={`event-result-${id}`} className={styles.container} data-cy="event result">
+        <div className={styles.columnGroupA}>
+          <div className={styles.column1}>
+            <div id={`event-date-${id}`} className={styles.date}>
+              {this.formatDate(item.startDate)}
+            </div>
+            <div id={`event-time-${id}`}>
+              {this.formatTime(item.startDate, item.endDate, item.timezone)}
+            </div>
           </div>
-          <div>
+
+          <div className={styles.column2}>
             <Link to={this.renderEventDetailUrl()} className={styles.title}>
               <h6 id={`event-title-${id}`}>{item.title}</h6>
             </Link>
@@ -72,10 +77,16 @@ class EventResult extends React.PureComponent {
               {this.renderLocationInfo(item.locationType, item.location.city, item.location.state)}
             </div>
           </div>
-          <div>{`${itemCost}`}</div>
-          <div>
-            <Button secondary>REGISTER</Button>
-          </div>
+        </div>
+
+        <div className={styles.column3}>
+          <div id={`event-cost-${id}`}>{`${itemCost}`}</div>
+        </div>
+
+        <div id={`event-registration-${id}`} className={styles.column4}>
+          <Button secondary responsive={false}>
+            REGISTER
+          </Button>
         </div>
       </div>
     )
