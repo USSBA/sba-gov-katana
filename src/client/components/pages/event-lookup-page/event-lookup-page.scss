@@ -88,12 +88,18 @@
 
 .searchResults {
   @include grid-media($sba-grid-small) {
-    padding: 20px;
+    background-color: $sba-gray-lighter;
+    overflow: hidden;
+    padding: 40px 20px 40px 20px;
   }
   @include grid-media($sba-grid-medium) {
-    padding: 40px 30px 20px 30px;
+    background-color: $sba-gray-lighter;
+    overflow: hidden;
+    padding: 45px 30px 45px 30px;
   }
   @include grid-media($sba-grid-large) {
-    padding: 40px 28px 20px 28px;
+    background-color: $sba-gray-lighter;
+    overflow: hidden;
+    padding: 40px 80px 40px 80px;
   }
 }
