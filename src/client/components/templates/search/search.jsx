@@ -365,7 +365,7 @@ class SearchTemplate extends React.PureComponent {
             </div>
           )}
           {!isLoading && hasNoResults && (
-            <div className={styles.resultsStatusMessage}>
+            <div id="no-results" className={styles.resultsStatusMessage} data-cy="no-results">
               <h3>{noResultsHeading}</h3>
               <p>{noResultsBody}</p>
               <p><a onClick={ () => {
