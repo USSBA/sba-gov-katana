@@ -151,7 +151,7 @@ class EventLookupPage extends React.PureComponent {
           />
         </PrimarySearchBar>
         <StyleWrapperDiv className={styles.searchResults}>
-          <Results hasSearchInfoPanel results searchTermName={'q'}>
+          <Results hasSearchInfoPanel paginate results searchTermName={'q'}>
             <EventResult />
           </Results>
         </StyleWrapperDiv>

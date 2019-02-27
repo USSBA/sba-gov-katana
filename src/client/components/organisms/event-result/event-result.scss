@@ -4,15 +4,17 @@
   border-top-style: solid;
   border-top-width: 3px;
   color: $secondary-black-ish;
-  padding: 20px 0px 20px 0px;
   margin-bottom: 25px;
   @include grid-media($sba-grid-small) {
+    padding: 20px 20px 20px 20px;
     @include grid-column(12, $sba-grid-small);
   }
   @include grid-media($sba-grid-medium) {
+    padding: 20px 0 20px 0;
     @include grid-column(12, $sba-grid-medium);
   }
   @include grid-media($sba-grid-large) {
+    padding: 20px 0 20px 0;
     @include grid-column(12, $sba-grid-large);
   }
 }
@@ -29,6 +31,12 @@
 
 // Encompasses date and time display
 .column1 {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 10px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-bottom: 10px;
+  }
   @include grid-media($sba-grid-large) {
     @include grid-column(4, $sba-grid-large);
   }
@@ -36,6 +44,9 @@
 
 // Encompasses title and location display
 .column2 {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 5px;
+  }
   @include grid-media($sba-grid-large) {
     @include grid-column(8, $sba-grid-large);
   }
@@ -43,6 +54,9 @@
 
 // Encompasses cost display
 .column3 {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 20px;
+  }
   @include grid-media($sba-grid-medium) {
     padding: 15px;
     text-align: center;
