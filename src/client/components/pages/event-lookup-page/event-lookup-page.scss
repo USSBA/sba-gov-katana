@@ -17,7 +17,7 @@
     padding: 13px 22px;
     margin-top: 20px;
     @include grid-media($sba-grid-large) {
-      margin-top: 0px;
+      margin-top: 0;
     }
   }
 }
@@ -86,20 +86,18 @@
   }
 }
 
+// Results
+
 .searchResults {
+  background-color: $sba-gray-lighter;
+  overflow: hidden;
   @include grid-media($sba-grid-small) {
-    background-color: $sba-gray-lighter;
-    overflow: hidden;
     padding: 40px 20px 40px 20px;
   }
   @include grid-media($sba-grid-medium) {
-    background-color: $sba-gray-lighter;
-    overflow: hidden;
     padding: 45px 30px 45px 30px;
   }
   @include grid-media($sba-grid-large) {
-    background-color: $sba-gray-lighter;
-    overflow: hidden;
     padding: 40px 80px 40px 80px;
   }
 }
