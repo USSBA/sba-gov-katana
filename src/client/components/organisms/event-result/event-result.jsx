@@ -30,7 +30,7 @@ class EventResult extends React.PureComponent {
     if (moment(startTime).format('a') === moment(endTime).format('a')) {
       return `${startingTime}–${endingTime} ${timezone}`
     } else {
-      return `${startingTime} ${startingTimeSuffix}-${endingTime} ${timezone}`
+      return `${startingTime} ${startingTimeSuffix}–${endingTime} ${timezone}`
     }
   }
 

@@ -6,15 +6,15 @@
   color: $secondary-black-ish;
   margin-bottom: 25px;
   @include grid-media($sba-grid-small) {
-    padding: 20px 20px 20px 20px;
+    padding: 25px 20px 20px 20px;
     @include grid-column(12, $sba-grid-small);
   }
   @include grid-media($sba-grid-medium) {
-    padding: 20px 0 20px 0;
+    padding: 25px 0 20px 0;
     @include grid-column(12, $sba-grid-medium);
   }
   @include grid-media($sba-grid-large) {
-    padding: 20px 0 20px 0;
+    padding: 25px 0 20px 0;
     @include grid-column(12, $sba-grid-large);
   }
 }
