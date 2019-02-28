@@ -17,7 +17,9 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           className="paginator"
           role="group"
         >
-          <span>
+          <span
+            data-cy="showing results text"
+          >
             Showing 
             <strong
               className="text-primary"
@@ -52,6 +54,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to previous results"
             className="button large secondary"
+            data-cy="previous button"
             onClick={[Function]}
           >
             <i
@@ -63,6 +66,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to next results"
             className="button large secondary"
+            data-cy="next button"
             onClick={[Function]}
           >
             <i
@@ -798,7 +802,9 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           className="paginator"
           role="group"
         >
-          <span>
+          <span
+            data-cy="showing results text"
+          >
             Showing 
             <strong
               className="text-primary"
@@ -833,6 +839,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to previous results"
             className="button large secondary"
+            data-cy="previous button"
             onClick={[Function]}
           >
             <i
@@ -844,6 +851,7 @@ exports[`CoursesLayout should render the first page properly 1`] = `
           <button
             aria-label="Go to next results"
             className="button large secondary"
+            data-cy="next button"
             onClick={[Function]}
           >
             <i
