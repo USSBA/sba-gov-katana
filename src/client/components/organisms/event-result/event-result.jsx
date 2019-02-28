@@ -5,11 +5,13 @@ import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
 
 class EventResult extends React.PureComponent {
-  formatDate(date) {
-    return moment(date).format('dddd, MMMM D')
+  formatDate() {
+    const { startDate } = this.props.item
+    return moment(startDate).format('dddd, MMMM D')
   }
 
-  formatTime(startTime, endTime, timezone) {
+  formatTime() {
+    const { startTime, endTime, timezone } = this.props.item
     const startingTimeSuffix = moment(startTime).format('a')
     let startingTime
     let endingTime
@@ -34,61 +36,59 @@ class EventResult extends React.PureComponent {
     }
   }
 
-  renderLocationInfo(locationType, city, state) {
+  renderLocationInfo() {
+    const { locationType, city, state } = this.props.item
     if (locationType === 'Online') {
       return 'Online event'
-    } else {
+    } else if (city && state) {
       return `${city}, ${state}`
     }
   }
 
-  renderEventDetailUrl(id) {
+  renderEventDetailUrl() {
+    const { id } = this.props.item
     return `/event/${id}`
   }
 
   render() {
     const { id, item } = this.props
 
-    let itemCost
-    if (item.cost === '0.00') {
-      itemCost = 'Free'
-    } else {
-      itemCost = `$${item.cost}`
+    // require title, cost, startDate, endDate, timezone to exist in order to render the event
+    if ((item.title, item.cost, item.startDate, item.endDate, item.timezone)) {
+      let itemCost
+      if (item.cost === '0.00') {
+        itemCost = 'Free'
+      } else {
+        itemCost = `$${item.cost}`
+      }
+
+      return (
+        <div id={`event-result-${id}`} className={styles.container} data-cy="event result">
+          <div className={styles.columnGroupA}>
+            <div className={styles.column1}>
+              <div id={`event-date-${id}`} className={styles.date}>
+                {this.formatDate()}
+              </div>
+              <div id={`event-time-${id}`}>{this.formatTime()}</div>
+            </div>
+            <div className={styles.column2}>
+              <Link to={this.renderEventDetailUrl()} className={styles.title}>
+                <h6 id={`event-title-${id}`}>{item.title}</h6>
+              </Link>
+              <div id={`event-location-${id}`}>{this.renderLocationInfo()}</div>
+            </div>
+          </div>
+          <div className={styles.column3}>
+            <div id={`event-cost-${id}`}>{`${itemCost}`}</div>
+          </div>
+          <div id={`event-registration-${id}`} className={styles.column4}>
+            <Button secondary responsive={false}>
+              REGISTER
+            </Button>
+          </div>
+        </div>
+      )
     }
-
-    return (
-      <div id={`event-result-${id}`} className={styles.container} data-cy="event result">
-        <div className={styles.columnGroupA}>
-          <div className={styles.column1}>
-            <div id={`event-date-${id}`} className={styles.date}>
-              {this.formatDate(item.startDate)}
-            </div>
-            <div id={`event-time-${id}`}>
-              {this.formatTime(item.startDate, item.endDate, item.timezone)}
-            </div>
-          </div>
-
-          <div className={styles.column2}>
-            <Link to={this.renderEventDetailUrl(item.id)} className={styles.title}>
-              <h6 id={`event-title-${id}`}>{item.title}</h6>
-            </Link>
-            <div id={`event-location-${id}`}>
-              {this.renderLocationInfo(item.locationType, item.location.city, item.location.state)}
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.column3}>
-          <div id={`event-cost-${id}`}>{`${itemCost}`}</div>
-        </div>
-
-        <div id={`event-registration-${id}`} className={styles.column4}>
-          <Button secondary responsive={false}>
-            REGISTER
-          </Button>
-        </div>
-      </div>
-    )
   }
 }
 
