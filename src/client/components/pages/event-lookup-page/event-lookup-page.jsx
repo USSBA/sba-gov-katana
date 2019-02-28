@@ -46,7 +46,8 @@ class EventLookupPage extends React.PureComponent {
   render() {
     const defaultSearchParams = {
       dateRange: 'all',
-      distance: '200'
+      distance: '200',
+      pageSize: 10
     }
 
     return (
