@@ -28,8 +28,8 @@ class HaxRouter extends Component {
           const delay = 0
 
           if (hash !== '') {
-            // Push onto callback queue so it runs after the DOM is updated,
-            // this is required when navigating from a different page so that
+            // Push onto callback queue so it runs after the DOM is updated.
+            // This is required when navigating from a different page so that
             // the element is rendered on the page before trying to
             // getElementById.
             setTimeout(() => checkForHash(hash), delay)
