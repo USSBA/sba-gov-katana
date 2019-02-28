@@ -54,11 +54,11 @@ class SearchInfoPanel extends React.Component {
     return !isLoading && total > 0
   }
   render() {
-    const { id } = this.props
+    const { id, enableLoadingMessage } = this.props
     return (
       <div className={styles.SearchInfoPanel} id={id}>
-        {this.shouldDisplayLoadingState() && this.renderLoadingState()}
-        {this.shouldDisplayNoResultInfo() && this.renderNoResultInfo()}
+        {enableLoadingMessage && this.shouldDisplayLoadingState() && this.renderLoadingState()}
+        {enableLoadingMessage && this.shouldDisplayNoResultInfo() && this.renderNoResultInfo()}
         {this.shouldDisplayResultInfo() && this.renderResultInfo()}
       </div>
     )
@@ -70,7 +70,8 @@ SearchInfoPanel.defaultProps = {
   pageSize: 1,
   total: 0,
   searchTerm: '',
-  isLoading: false
+  isLoading: false,
+  enableLoadingMessage: true
 }
 
 SearchInfoPanel.PropTypes = {
@@ -79,7 +80,8 @@ SearchInfoPanel.PropTypes = {
   pageSize: PropTypes.number,
   total: PropTypes.number,
   searchTerm: PropTypes.string,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  enableLoadingMessage: PropTypes.bool
 }
 
 export default SearchInfoPanel

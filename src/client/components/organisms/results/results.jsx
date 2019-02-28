@@ -64,7 +64,8 @@ class Results extends React.PureComponent {
       submittedFieldValues,
       hasSearchInfoPanel,
       setWhiteBackground,
-      isLoading
+      isLoading,
+      enableLoadingMessage
     } = this.props
 
     const divClassName = classNames({
@@ -82,6 +83,7 @@ class Results extends React.PureComponent {
             total={total}
             searchTerm={searchTerm}
             isLoading={isLoading}
+            enableLoadingMessage={enableLoadingMessage}
           />
         </div>
       </div>
@@ -225,6 +227,7 @@ Results.defaultProps = {
   searchTips: [],
   onClick: () => {},
   onResultHover: () => {},
+  enableLoadingMessage: true,
   extraContainerStyles: null,
   extraResultContainerStyles: null,
 
@@ -248,6 +251,7 @@ Results.propTypes = {
   hidePaginatorOnNoResults: PropTypes.bool,
   displayDefaultResultOnNoResults: PropTypes.bool,
   defaultResultObject: PropTypes.object,
+  enableLoadingMessage: PropTypes.bool,
 
   // function that renders the details of a selected item,
   // takes two params: resultsClassName and hideDetailState function
