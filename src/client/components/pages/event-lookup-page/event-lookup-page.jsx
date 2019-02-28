@@ -19,9 +19,9 @@ class EventLookupPage extends React.PureComponent {
       let isZeroState = false
       const defaultResults = []
 
-      if (searchResults) {
+      if (searchResults && searchResults.items) {
         const keywordMatcher = RegExp(keyword, 'i')
-        results = searchResults.filter(eventRecord => {
+        results = searchResults.items.filter(eventRecord => {
           return (
             keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
           )
