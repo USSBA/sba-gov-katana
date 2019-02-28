@@ -370,7 +370,7 @@ class SearchTemplate extends React.PureComponent {
               <p>{noResultsBody}</p>
               <p><a onClick={ () => {
                 this.onReset()
-              }}>Clear all search filters</a></p>
+              }}>Clear all filters</a></p>
             </div>
           )}
         </div>}
@@ -401,8 +401,8 @@ SearchTemplate.defaultProps = {
   onHandleEvent: () => {},
   showStatus: true,
   loadingText: "loading...",
-  noResultsHeading: "Sorry, we couldn't find anything matching that query.",
-  noResultsBody: "Try using a different search term."
+  noResultsHeading: "Sorry, we didn't find any results that matched your search.",
+  noResultsBody: "Try changing your search terms, adjusting your zip code, or tweaking your filters."
 }
 
 export default SearchTemplate

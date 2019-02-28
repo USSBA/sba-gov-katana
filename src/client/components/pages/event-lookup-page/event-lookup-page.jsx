@@ -22,7 +22,7 @@ class EventLookupPage extends React.PureComponent {
 
       if (searchResults) {
         const keywordMatcher = RegExp(keyword, 'i')
-        results = searchResults.filter(eventRecord => {
+        results = searchResults.items.filter(eventRecord => {
           return (
             keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
           )
