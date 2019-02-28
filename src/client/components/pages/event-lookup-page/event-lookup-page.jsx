@@ -19,14 +19,9 @@ class EventLookupPage extends React.PureComponent {
       let isZeroState = false
       const defaultResults = []
 
-      if (searchResults && searchResults.items) {
-        const keywordMatcher = RegExp(keyword, 'i')
-        results = searchResults.items.filter(eventRecord => {
-          return (
-            keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
-          )
-        })
-        count = results.length
+      if (searchResults && searchResults.count) {
+        results = searchResults.items
+        count = searchResults.count
         hasNoResults = count === 0
         isLoading = false
         isZeroState = false

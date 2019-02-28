@@ -37,10 +37,11 @@ class EventResult extends React.PureComponent {
   }
 
   renderLocationInfo() {
-    const { locationType, city, state } = this.props.item
+    const { locationType, location } = this.props.item
+    const { city, state } = location
     if (locationType === 'Online') {
       return 'Online event'
-    } else if (city && state) {
+    } else if (location && city && state) {
       return `${city}, ${state}`
     }
   }
