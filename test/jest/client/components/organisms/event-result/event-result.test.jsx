@@ -23,7 +23,7 @@ const mockEvent = JSON.stringify({
 describe('Event result', () => {
   it('renders the title within a link', () => {
     const customMockEvent = JSON.parse(mockEvent)
-    customMockEvent.title = 'Tested title'
+    customMockEvent.title = 'Business Entrepreneurship Course'
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find(Link).find('.event-title')).toHaveLength(1)
@@ -31,7 +31,7 @@ describe('Event result', () => {
       .find(Link)
       .find('.event-title')
       .text()
-    expect(componentTitle).toEqual('Tested title')
+    expect(componentTitle).toEqual('Business Entrepreneurship Course')
   })
 
   it('renders cost as Free when the cost is 0.00', () => {
@@ -71,7 +71,7 @@ describe('Event result', () => {
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find('.event-time')).toHaveLength(1)
     const componentTime = component.find('.event-time').text()
-    expect(componentTime).toEqual('7:30 am–12:30 pm PST') //USE A TO INCLUDE?????????????????????
+    expect(componentTime.includes('PST')).toBe(true)
   })
 
   it('does not render the time suffix if start and end time suffixes are identical', () => {
@@ -80,9 +80,12 @@ describe('Event result', () => {
     customMockEvent.endDate = '2019-02-27T14:00:00-08:00'
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
-    expect(component.find('.event-time')).toHaveLength(1)
     const componentTime = component.find('.event-time').text()
-    expect(componentTime).toEqual('12–2 pm PST')
+
+    // This regex matching will go through the whole sting of componentTime and push all matches of 'pm'
+    // into an array. We want this array to only have one entry since pm should only render once.
+    const timeMatch = componentTime.match(/pm/g) || []
+    expect(timeMatch.length).toEqual(1)
   })
 
   it('renders a whole number for start and end time when there are no minutes', () => {
@@ -93,7 +96,11 @@ describe('Event result', () => {
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find('.event-time')).toHaveLength(1)
     const componentTime = component.find('.event-time').text()
-    expect(componentTime).toEqual('12–2 pm PST')
+
+    // This regex matching will go through the whole sting of componentTime and push all matches of ':00'
+    // into an array. We want this array to be empty since :00 should not render for times on the exact hour
+    const timeMatch = componentTime.match(/:00/g) || []
+    expect(timeMatch.length).toEqual(0)
   })
 
   it('renders a city, state location when the locationType is "In Person"', () => {
