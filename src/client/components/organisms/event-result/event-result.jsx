@@ -6,30 +6,35 @@ import { Button, Link } from 'atoms'
 
 class EventResult extends React.PureComponent {
   formatDate() {
-    const { startDate } = this.props.item
-    return moment(startDate).format('dddd, MMMM D')
+    const {
+      item: { startDate }
+    } = this.props
+    return moment.parseZone(startDate).format('dddd, MMMM D')
   }
 
   formatTime() {
-    const { startTime, endTime, timezone } = this.props.item
-    const startingTimeSuffix = moment(startTime).format('a')
+    const {
+      item: { startDate: startTime, endDate: endTime, timezone }
+    } = this.props
+    const startingTimeSuffix = moment.parseZone(startTime).format('a')
     let startingTime
     let endingTime
 
-    if (moment(startTime).format('mm') === '00') {
-      startingTime = moment(startTime).format('h')
+    if (moment.parseZone(startTime).format('mm') === '00') {
+      startingTime = moment.parseZone(startTime).format('h')
     } else {
-      startingTime = moment(startTime).format('h:mm')
+      startingTime = moment.parseZone(startTime).format('h:mm')
     }
 
-    if (moment(endTime).format('mm') === '00') {
-      endingTime = moment(endTime).format('h a')
+    if (moment.parseZone(endTime).format('mm') === '00') {
+      endingTime = moment.parseZone(endTime).format('h a')
     } else {
-      endingTime = moment(endTime).format('h:mm a')
+      endingTime = moment.parseZone(endTime).format('h:mm a')
     }
 
+    // console.log(startingTime, endingTime);
     // don't include the starting time stuffix when starting and ending suffix match
-    if (moment(startTime).format('a') === moment(endTime).format('a')) {
+    if (moment.parseZone(startTime).format('a') === moment.parseZone(endTime).format('a')) {
       return `${startingTime}–${endingTime} ${timezone}`
     } else {
       return `${startingTime} ${startingTimeSuffix}–${endingTime} ${timezone}`
@@ -37,12 +42,11 @@ class EventResult extends React.PureComponent {
   }
 
   renderLocationInfo() {
-    const { locationType, location } = this.props.item
-    const { city, state } = location
-    if (locationType === 'Online') {
+    const { item } = this.props
+    if (item.locationType === 'Online') {
       return 'Online event'
-    } else if (location && city && state) {
-      return `${city}, ${state}`
+    } else if (item.location && item.location.city && item.location.state) {
+      return `${item.location.city}, ${item.location.state}`
     }
   }
 
@@ -53,9 +57,8 @@ class EventResult extends React.PureComponent {
 
   render() {
     const { id, item } = this.props
-
     // require title, cost, startDate, endDate, timezone to exist in order to render the event
-    if ((item.title, item.cost, item.startDate, item.endDate, item.timezone)) {
+    if ((item.title, item.cost, item.startDate, item.endDate, item.timezone, item.locationType)) {
       let itemCost
       if (item.cost === '0.00') {
         itemCost = 'Free'
@@ -67,28 +70,28 @@ class EventResult extends React.PureComponent {
         <div id={`event-result-${id}`} className={styles.container} data-cy="event result">
           <div className={styles.columnGroupA}>
             <div className={styles.column1}>
-              <div id={`event-date-${id}`} className={styles.date} data-cy="date">
+              <div className={'event-date ' + styles.date} data-cy="date">
                 {this.formatDate()}
               </div>
-              <div id={`event-time-${id}`} data-cy="time">
+              <div className="event-time" data-cy="time">
                 {this.formatTime()}
               </div>
             </div>
             <div className={styles.column2}>
               <Link to={this.renderEventDetailUrl()} className={styles.title}>
-                <h6 id={`event-title-${id}`} data-cy="title">
+                <h6 className="event-title" data-cy="title">
                   {item.title}
                 </h6>
               </Link>
-              <div id={`event-location-${id}`} data-cy="location">
+              <div className="event-location" data-cy="location">
                 {this.renderLocationInfo()}
               </div>
             </div>
           </div>
           <div className={styles.column3}>
-            <div id={`event-cost-${id}`} data-cy="cost">{`${itemCost}`}</div>
+            <div className="event-cost" data-cy="cost">{`${itemCost}`}</div>
           </div>
-          <div id={`event-registration-${id}`} className={styles.column4} data-cy="registration">
+          <div className={'event-registration ' + styles.column4} data-cy="registration">
             <Button secondary responsive={false}>
               REGISTER
             </Button>
