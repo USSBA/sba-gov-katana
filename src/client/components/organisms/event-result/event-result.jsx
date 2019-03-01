@@ -78,7 +78,12 @@ class EventResult extends React.PureComponent {
               </div>
             </div>
             <div className={styles.column2}>
-              <Link to={this.renderEventDetailUrl()} className={styles.title}>
+              <Link
+                onClick={() => {
+                  window.open(this.renderEventDetailUrl())
+                }}
+                className={styles.title}
+              >
                 <h6 className="event-title" data-cy="title">
                   {item.title}
                 </h6>
