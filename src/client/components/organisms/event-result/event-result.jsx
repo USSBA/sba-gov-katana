@@ -32,7 +32,6 @@ class EventResult extends React.PureComponent {
       endingTime = moment.parseZone(endTime).format('h:mm a')
     }
 
-    // console.log(startingTime, endingTime);
     // don't include the starting time stuffix when starting and ending suffix match
     if (moment.parseZone(startTime).format('a') === moment.parseZone(endTime).format('a')) {
       return `${startingTime}–${endingTime} ${timezone}`
@@ -58,7 +57,7 @@ class EventResult extends React.PureComponent {
   render() {
     const { id, item } = this.props
     // require title, cost, startDate, endDate, timezone to exist in order to render the event
-    if ((item.title, item.cost, item.startDate, item.endDate, item.timezone, item.locationType)) {
+    if (item.title && item.cost && item.startDate && item.endDate && item.timezone && item.locationType) {
       let itemCost
       if (item.cost === '0.00') {
         itemCost = 'Free'
