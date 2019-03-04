@@ -80,6 +80,11 @@
 
 .date {
   font-weight: 600;
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }
 
 .registerButton {
@@ -88,11 +93,25 @@
 
 .title {
   margin-bottom: 6px;
+  display: block;
   a {
+    display: block;
     font-weight: 600;
   }
 }
 
 .marginFirstChild {
   margin-top: 40px;
+}
+
+.date,
+.time,
+.title,
+.title a,
+.location,
+.cost {
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
 }

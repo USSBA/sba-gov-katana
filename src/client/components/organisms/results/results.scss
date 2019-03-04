@@ -32,6 +32,10 @@
 .searchFocusState:focus {
   outline: 2px dotted $sba-gray-light;
   outline-offset: 3px;
+
+  @include grid-media($sba-grid-medium) {
+    height: 63px;
+  }
 }
 
 .defaultResults {
@@ -43,14 +47,26 @@
 .paginator {
   text-align: right;
   padding: 15px;
+  @include grid-media($sba-grid-medium) {
+    margin-right: 15px;
+  }
   @include grid-media($sba-grid-large) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    margin-right: 15px;
   }
 }
 
 .whiteBackground {
   background-color: white;
+}
+
+.searchFocusStateWhiteBackground:focus {
+  outline-offset: -6px;
+
+  @include grid-media($sba-grid-medium) {
+    height: 63px;
+  }
+
+  @include grid-media($sba-grid-large) {
+    height: 41px;
+  }
 }

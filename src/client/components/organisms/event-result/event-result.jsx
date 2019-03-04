@@ -74,10 +74,10 @@ class EventResult extends React.PureComponent {
         <div id={`event-result-${id}`} className={divClassName} data-cy="event result">
           <div className={styles.columnGroupA}>
             <div className={styles.column1}>
-              <div className={'event-date ' + styles.date} data-cy="date">
+              <div className={'event-date ' + styles.date} tabIndex="0" data-cy="date">
                 {this.formatDate()}
               </div>
-              <div className="event-time" data-cy="time">
+              <div className={"event-time " + styles.time} tabIndex="0" data-cy="time">
                 {this.formatTime()}
               </div>
             </div>
@@ -87,18 +87,19 @@ class EventResult extends React.PureComponent {
                   window.open(this.renderEventDetailUrl())
                 }}
                 className={styles.title}
+                tabIndex="0"
               >
                 <h6 className="event-title" data-cy="title">
                   {item.title}
                 </h6>
               </Link>
-              <div className="event-location" data-cy="location">
+              <div className={"event-location " + styles.location} tabIndex="0" data-cy="location">
                 {this.renderLocationInfo()}
               </div>
             </div>
           </div>
           <div className={styles.column3}>
-            <div className="event-cost" data-cy="cost">{`${itemCost}`}</div>
+            <div className={"event-cost " + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
           </div>
           <div className={'event-registration ' + styles.column4} data-cy="registration">
             <Button secondary responsive={false}>

@@ -72,11 +72,16 @@ class Results extends React.PureComponent {
       [styles.whiteBackground]: setWhiteBackground
     })
 
+    const searchInfoPanelClassName = classNames({
+      [styles.searchFocusState]: true,
+      [styles.searchFocusStateWhiteBackground]: setWhiteBackground
+    })
+
     const searchTerm = submittedFieldValues[searchTermName]
 
     return hasSearchInfoPanel ? (
       <div className={divClassName}>
-        <div className={'search-info-panel ' + styles.searchFocusState} tabIndex="0" role="text">
+        <div className={'search-info-panel ' + searchInfoPanelClassName} tabIndex="0" role="text">
           <SearchInfoPanel
             pageNumber={pageNumber}
             pageSize={pageSize}
