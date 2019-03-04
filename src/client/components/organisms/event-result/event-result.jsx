@@ -41,11 +41,13 @@ class EventResult extends React.PureComponent {
   }
 
   renderLocationInfo() {
-    const { item } = this.props
-    if (item.locationType === 'Online') {
+    const {
+      item: { locationType, location }
+    } = this.props
+    if (locationType === 'Online') {
       return 'Online event'
-    } else if (item.location && item.location.city && item.location.state) {
-      return `${item.location.city}, ${item.location.state}`
+    } else if (location && location.city && location.state) {
+      return `${location.city}, ${location.state}`
     }
   }
 
@@ -56,14 +58,11 @@ class EventResult extends React.PureComponent {
 
   render() {
     const { id, item } = this.props
-    // require title, cost, startDate, endDate, timezone to exist in order to render the event
+
+    // TODO: move this guard clause to the content api
+    // Require title, cost, startDate, endDate, timezone to exist in order to render the event
     if (item.title && item.cost && item.startDate && item.endDate && item.timezone && item.locationType) {
-      let itemCost
-      if (item.cost === '0.00') {
-        itemCost = 'Free'
-      } else {
-        itemCost = `$${item.cost}`
-      }
+      const itemCost = item.cost === '0.00' ? 'Free' : '$' + item.cost
 
       return (
         <div id={`event-result-${id}`} className={styles.container} data-cy="event result">
@@ -112,7 +111,7 @@ EventResult.defaultProps = {
 
 EventResult.propTypes = {
   item: PropTypes.object,
-  id: PropTypes.string //.isRequired
+  id: PropTypes.string
 }
 
 export default EventResult

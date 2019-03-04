@@ -146,13 +146,8 @@ class Results extends React.PureComponent {
       children
     } = this.props
     const resultsWithProps = this.mapResults(results, children)
-
-    let resultContainerStyles
-    if (extraResultContainerStyles) {
-      resultContainerStyles = styles.resultContainer + ' ' + extraResultContainerStyles
-    } else {
-      resultContainerStyles = styles.resultContainer
-    }
+    const resultContainerStyles =
+      styles.resultContainer + (extraResultContainerStyles ? ' ' + extraResultContainerStyles : '')
 
     const divClassName = classNames({
       [styles.scroll]: scroll,
