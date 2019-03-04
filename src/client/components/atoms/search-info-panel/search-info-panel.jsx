@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import classNames from 'classnames'
 import styles from './search-info-panel.scss'
 
 class SearchInfoPanel extends React.Component {
@@ -54,9 +55,15 @@ class SearchInfoPanel extends React.Component {
     return !isLoading && total > 0
   }
   render() {
-    const { id, enableLoadingMessage } = this.props
+    const { id, enableLoadingMessage, setWhiteBackground } = this.props
+
+    const divClassName = classNames({
+      [styles.searchInfoPanel]: true,
+      [styles.whiteBackground]: setWhiteBackground
+    })
+
     return (
-      <div className={styles.SearchInfoPanel} id={id}>
+      <div className={divClassName} id={id}>
         {enableLoadingMessage && this.shouldDisplayLoadingState() && this.renderLoadingState()}
         {enableLoadingMessage && this.shouldDisplayNoResultInfo() && this.renderNoResultInfo()}
         {this.shouldDisplayResultInfo() && this.renderResultInfo()}
@@ -71,7 +78,8 @@ SearchInfoPanel.defaultProps = {
   total: 0,
   searchTerm: '',
   isLoading: false,
-  enableLoadingMessage: true
+  enableLoadingMessage: true,
+  setWhiteBackground: false
 }
 
 SearchInfoPanel.PropTypes = {
@@ -81,7 +89,8 @@ SearchInfoPanel.PropTypes = {
   total: PropTypes.number,
   searchTerm: PropTypes.string,
   isLoading: PropTypes.bool,
-  enableLoadingMessage: PropTypes.bool
+  enableLoadingMessage: PropTypes.bool,
+  setWhiteBackground: PropTypes.bool
 }
 
 export default SearchInfoPanel

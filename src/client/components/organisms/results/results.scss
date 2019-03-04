@@ -25,16 +25,6 @@
   overflow-y: scroll;
 }
 
-.searchInfoPanel {
-  padding: 14px 20px 20px;
-  @include grid-media($sba-grid-small) {
-    padding-bottom: 20px;
-  }
-  @include grid-media($sba-grid-medium) {
-    padding-bottom: 20px;
-  }
-}
-
 .searchFocusState {
   line-height: 1;
 }

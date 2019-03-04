@@ -69,11 +69,11 @@ class Results extends React.PureComponent {
     } = this.props
 
     const divClassName = classNames({
-      [styles.searchInfoPanel]: true,
       [styles.whiteBackground]: setWhiteBackground
     })
 
     const searchTerm = submittedFieldValues[searchTermName]
+
     return hasSearchInfoPanel ? (
       <div className={divClassName}>
         <div className={'search-info-panel ' + styles.searchFocusState} tabIndex="0" role="text">
@@ -84,6 +84,7 @@ class Results extends React.PureComponent {
             searchTerm={searchTerm}
             isLoading={isLoading}
             enableLoadingMessage={enableLoadingMessage}
+            setWhiteBackground={setWhiteBackground}
           />
         </div>
       </div>

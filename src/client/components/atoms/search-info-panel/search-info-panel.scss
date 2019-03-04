@@ -4,8 +4,31 @@
 }
 .searchInfoPanel {
   height: 100%;
-  background: white;
+  @include grid-media($sba-grid-medium) {
+    padding: 25px 0 20px 0;
+    @include grid-column(12, $sba-grid-medium);
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 25px 0 20px 0;
+    @include grid-column(12, $sba-grid-large);
+  }
 }
 .loading {
   color: white;
+}
+
+.whiteBackground {
+  background-color: white;
+  margin: 0;
+  width: 100%;
+  @include grid-media($sba-grid-small) {
+    padding: 25px 20px 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 25px 20px 20px;
+  }
+  @include grid-media($sba-grid-large) {
+    border-bottom: 3px white solid;
+    padding: 25px 30px 20px;
+  }
 }

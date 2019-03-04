@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import styles from './event-result.scss'
+import classNames from 'classnames'
 import { Button, Link } from 'atoms'
 
 class EventResult extends React.PureComponent {
@@ -64,8 +65,13 @@ class EventResult extends React.PureComponent {
     if (item.title && item.cost && item.startDate && item.endDate && item.timezone && item.locationType) {
       const itemCost = item.cost === '0.00' ? 'Free' : '$' + item.cost
 
+      const divClassName = classNames({
+        [styles.container]: true,
+        [styles.marginFirstChild]: id === 'result-0'
+      })
+
       return (
-        <div id={`event-result-${id}`} className={styles.container} data-cy="event result">
+        <div id={`event-result-${id}`} className={divClassName} data-cy="event result">
           <div className={styles.columnGroupA}>
             <div className={styles.column1}>
               <div className={'event-date ' + styles.date} data-cy="date">
