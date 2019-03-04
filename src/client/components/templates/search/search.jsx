@@ -25,6 +25,10 @@ class SearchTemplate extends React.PureComponent {
         pageSize: 5,
         start: 0
       },
+      defaultSearchParams: {
+        pageSize: 5,
+        start: 0
+      },
       submittedSearchParams: {},
       results: [],
       hasNoResults: false,
@@ -73,11 +77,8 @@ class SearchTemplate extends React.PureComponent {
   }
 
   componentWillMount() {
-    const { defaultSearchParams } = this.props
-    const { searchParams } = this.state
     const urlSearchString = document.location.search
-
-    const newSearchParams = merge(searchParams, defaultSearchParams || {}, this.generateQueryMap())
+    const newSearchParams = merge(this.state.defaultSearchParams, this.props.defaultSearchParams || {}, this.generateQueryMap())
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
@@ -306,15 +307,22 @@ class SearchTemplate extends React.PureComponent {
     this.onSearch()
   }
 
+  onReset() {
+    const searchParams = merge(this.state.defaultSearchParams, this.props.defaultSearchParams)
+    this.onSearch({}, searchParams)
+  }
+
   render() {
     const {
       results,
       searchParams: { pageSize },
       isZeroState,
       count,
-      defaultResults
+      defaultResults,
+      hasNoResults,
+      isLoading
     } = this.state
-    const { children, extraClassName, paginate } = this.props
+    const { children, extraClassName, paginate, showStatus, loadingText, noResultsHeading, noResultsBody } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
       if (child.props.hideOnZeroState && isZeroState) {
@@ -344,8 +352,29 @@ class SearchTemplate extends React.PureComponent {
     return (
       <div {...divProps}>
         <div>{childrenWithProps}</div>
-        {this.renderLoadingView()}
-        {paginate && this.renderPaginator()}
+        {!isLoading && !hasNoResults &&(
+          <div>
+            {this.renderLoadingView()}
+            {paginate && this.renderPaginator()}
+          </div>
+        )}
+        {showStatus && <div>
+          {isLoading && (
+            <div className={styles.resultsStatusMessage}>
+              <p className={styles.loading}>{loadingText}</p>
+            </div>
+          )}
+          {!isLoading && hasNoResults && (
+            <div id="no-results" className={styles.resultsStatusMessage} data-cy="no-results">
+              <h3>{noResultsHeading}</h3>
+              <p>{noResultsBody}</p>
+              <p><a onClick={ () => {
+                this.onReset()
+              }}>Clear all filters</a></p>
+            </div>
+          )}
+        </div>}
+
       </div>
     )
   }
@@ -356,7 +385,11 @@ SearchTemplate.propTypes = {
   searchType: PropTypes.string.isRequired,
   searchTitle: PropTypes.string,
   scrollToTopAfterSearch: PropTypes.bool,
-  customSearch: PropTypes.func
+  customSearch: PropTypes.func,
+  showStatus: PropTypes.bool,
+  loadingText: PropTypes.string,
+  noResultsHeading: PropTypes.string,
+  noResultsBody: PropTypes.string
 }
 
 SearchTemplate.defaultProps = {
@@ -365,7 +398,11 @@ SearchTemplate.defaultProps = {
   scrollToTopAfterSearch: true,
   extraClassName: null,
   paginate: true,
-  onHandleEvent: () => {}
+  onHandleEvent: () => {},
+  showStatus: true,
+  loadingText: "loading...",
+  noResultsHeading: "Sorry, we didn't find any results that matched your search.",
+  noResultsBody: "Try changing your search terms, adjusting your zip code, or tweaking your filters."
 }
 
 export default SearchTemplate

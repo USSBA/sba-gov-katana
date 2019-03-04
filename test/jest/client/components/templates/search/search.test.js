@@ -4,15 +4,20 @@ import { shallow, mount } from 'enzyme'
 import { stub } from 'sinon'
 import SearchTemplate from 'client/components/templates/search/search.jsx'
 import { AssertionError } from 'assert'
+import * as helper from 'client/fetch-content-helper'
 
 const searchTemplateWrapper = shallow(<SearchTemplate searchType="myType" />)
 const searchTemplateInstance = searchTemplateWrapper.instance()
 
 describe('Search Template', () => {
+  var mockFetchSiteContent
   beforeEach(() => {
     global.scrollTo = jest.fn()
+    mockFetchSiteContent = jest.spyOn(helper, 'fetchSiteContent')
   })
-
+  afterEach(() => {
+    mockFetchSiteContent.mockRestore()
+  })
   it('updates query parameter values when onchange is called', () => {
     const queryParamName = 'myQueryParam'
     const userEnteredText = 'user entered text'
@@ -218,6 +223,27 @@ describe('Search Template', () => {
       // expect(queryMap).not.toHaveProperty('pageSize') //since we don't need to have the pagesize property
       expect(Object.keys(queryMap).length).toBe(1) //since we don't need to have the pagesize property
       expect(queryMap.start).toBe(expectedQueryMap.start)
+    })
+  })
+
+  describe('No Results', () => {
+    it('displays the "No Results" messaging when a result set comes back empty', (done) => {
+      mockFetchSiteContent.mockReturnValue(Promise.resolve({
+        found: 0
+      }))
+      const component = mount(<SearchTemplate
+        searchType="none"
+        loadDefaultResults={true}
+      />)
+      setImmediate(() => {
+        try {
+          expect(component.find('#no-results').length).toBe(1)
+          done()
+        } catch (e) {
+          done()
+          return fail(e)
+        }
+      })
     })
   })
 })

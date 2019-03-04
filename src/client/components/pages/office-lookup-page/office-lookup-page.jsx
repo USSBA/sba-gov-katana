@@ -109,6 +109,7 @@ class OfficeLookupPage extends React.PureComponent {
         scrollToTopAfterSearch={false}
         extraClassName={styles.officeSearch}
         paginate={false}
+        showStatus={false}
         onHandleEvent={this.centerMap.bind(this, false)}
       >
         <PrimarySearchBar
