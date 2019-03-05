@@ -16,4 +16,18 @@ describe('Event Template', () => {
     expect(result).toHaveLength(expected)
     expect(result.text()).toBe(title)
   })
+
+  test('should render an event description', () => {
+    const description = 'This is a description'
+    const props = {
+      eventData: {
+        description: description
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const result = component.find('p')
+    const expected = 1
+    expect(result).toHaveLength(expected)
+    expect(result.text()).toBe(description)
+  })
 })

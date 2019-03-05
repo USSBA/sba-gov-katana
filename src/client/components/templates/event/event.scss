@@ -24,3 +24,40 @@
     @include grid-push(0);
   }
 }
+
+.descriptionLabel {
+  color: $secondary-black-ish;
+  padding-top: 45px;
+}
+
+.description {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(7);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(6);
+    @include grid-push(0);
+  }
+}
+
+// .dash {
+//   @include grid-media($sba-grid-small) {
+//     @include grid-column(6);
+//     @include grid-push(0);
+//     padding-bottom: 30px;
+//   }
+//   @include grid-media($sba-grid-medium) {
+//     @include grid-column(3);
+//     @include grid-push(0);
+//     padding-bottom: 30px;
+//   }
+//   @include grid-media($sba-grid-large) {
+//     @include grid-column(3);
+//     @include grid-push(0);
+//   }
+// }
