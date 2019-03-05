@@ -2,10 +2,14 @@ import React, { Component, PropTypes } from 'react'
 import { DecorativeDash } from 'atoms'
 import classNames from 'classnames'
 import styles from './event.scss'
+import moment from 'moment'
 
 class Event extends Component {
   render() {
     const { title, description } = this.props.eventData
+
+    const startDate = moment(this.props.eventData).format('dddd, MMMM D')
+    const startDateDetails = moment(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
 
     // classNames is not necessary when this is created for future extensibility
     // delete this comment if you modify the classNames below to include logic
@@ -14,22 +18,31 @@ class Event extends Component {
       [styles.container]: true
     })
 
-    const titleClassName = classNames({
-      'event-title': true,
-      [styles.title]: true
-    })
+    // const titleClassName = classNames({
+    //   'event-title': true,
+    //   [styles.title]: true
+    // })
 
     return (
       <div className={containerClassNames}>
-        <h1 className={titleClassName} data-cy="event-title">
-          {title}
-        </h1>
-        <div className={styles.description}>
+        <div className={styles.header}>
+          <h3 id="event-header-date">{startDate}</h3>
+          <h1 data-cy="event-title">{title}</h1>
+        </div>
+        <div className={styles.columnA}>
           <DecorativeDash aria-hidden="true" width={80} />
-          <h4 className={styles.descriptionLabel} data-cy="event-escription-label">
+          <h4 className={styles.descriptionLabel} data-cy="event-description-label">
             Description
           </h4>
-          <p data-cy="event-description">{description}</p>
+          <p id="event-details-description" data-cy="event-description">
+            {description}
+          </p>
+        </div>
+        <div className={styles.columnB}>
+          <div className={styles.callout}>
+            <h3>Date and time</h3>
+            <p id="event-details-date">{startDateDetails}</p>
+          </div>
         </div>
       </div>
     )

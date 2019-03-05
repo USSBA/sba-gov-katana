@@ -10,7 +10,7 @@
   }
 }
 
-.title {
+.header {
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
     @include grid-push(0);
@@ -30,34 +30,49 @@
   padding-top: 45px;
 }
 
-.description {
+.columnA {
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
-    @include grid-push(0);
   }
   @include grid-media($sba-grid-medium) {
     @include grid-column(7);
-    @include grid-push(0);
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(6);
-    @include grid-push(0);
   }
 }
 
-// .dash {
-//   @include grid-media($sba-grid-small) {
-//     @include grid-column(6);
-//     @include grid-push(0);
-//     padding-bottom: 30px;
-//   }
-//   @include grid-media($sba-grid-medium) {
-//     @include grid-column(3);
-//     @include grid-push(0);
-//     padding-bottom: 30px;
-//   }
-//   @include grid-media($sba-grid-large) {
-//     @include grid-column(3);
-//     @include grid-push(0);
-//   }
-// }
+.columnB {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(5);
+    @include grid-push(0);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(5);
+    @include grid-push(1);
+  }
+}
+
+.callout {
+  background-color: white;
+  border-top: 5px solid $sba-blue;
+  // TODO: DRY
+  box-shadow: $box-shadow;
+  padding: 50px;
+
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+  }
+
+  @include for-small-only {
+    h1 {
+      // The static part of calc() (1rem) defines the minimum so that the font
+      // size does not become too small as the screen gets smaller.
+      font-size: calc(18px + 4vw);
+      hyphens: auto;
+    }
+  }
+}
