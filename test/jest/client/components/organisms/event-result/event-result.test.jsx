@@ -126,4 +126,40 @@ describe('Event result', () => {
     const componentLocation = component.find('.event-location').text()
     expect(componentLocation).toEqual('Online event')
   })
+
+  it('renders register button when there is a registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = 'https://www.eventbrite.com'
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    expect(component.find('.register-button')).toHaveLength(1)
+    const doesButtonHaveRegister = component.find('.register-button').contains('REGISTER')
+    expect(doesButtonHaveRegister).toBe(true)
+  })
+
+  it('does not render "Open event text when there is a registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = 'https://www.eventbrite.com'
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    const doesHaveOpenEventText = component.find('.event-registration').contains('Open event')
+    expect(doesHaveOpenEventText).toBe(false)
+  })
+
+  it('renders "Open event" when there is no registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = null
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    const componentRegistrationText = component.find('.event-registration').text()
+    expect(componentRegistrationText).toEqual('Open event')
+  })
+
+  it('does not render a register button when there is no registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = null
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    expect(component.find('.register-button')).toHaveLength(0)
+  })
 })

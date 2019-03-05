@@ -56,6 +56,19 @@ class EventResult extends React.PureComponent {
     return `/event/${id}`
   }
 
+  renderRegistrationInfo() {
+    const { item } = this.props
+    if (item.registrationUrl !== null) {
+      return (
+        <Button className="register-button" secondary onClick={() => window.open(item.registrationUrl)}>
+          REGISTER
+        </Button>
+      )
+    } else {
+      return <div className={styles.openEventText}>Open event</div>
+    }
+  }
+
   render() {
     const { id, item } = this.props
 
@@ -95,9 +108,7 @@ class EventResult extends React.PureComponent {
             <div className="event-cost" data-cy="cost">{`${itemCost}`}</div>
           </div>
           <div className={'event-registration ' + styles.column4} data-cy="registration">
-            <Button secondary responsive={false}>
-              REGISTER
-            </Button>
+            {this.renderRegistrationInfo()}
           </div>
         </div>
       )
