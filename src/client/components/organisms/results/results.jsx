@@ -42,7 +42,7 @@ class Results extends React.PureComponent {
     return !isLoading && paginate && !(hidePaginatorOnNoResults && !items.length)
   }
   shouldShowSearchTips() {
-    const { isLoading, displaySearchTipsOnNoResults, items } = this.props
+    const { isLoading, displaySearchTipsOnNoResults, items, } = this.props
     return !isLoading && displaySearchTipsOnNoResults && !items.length
   }
   shouldRenderDefaultResults() {
@@ -168,15 +168,20 @@ class Results extends React.PureComponent {
   }
 
   renderResultsView(resultsClassName) {
-    const { extraContainerStyles } = this.props
+    const { extraContainerStyles, enableNoResultsMessage, items } = this.props
     const divProps = {}
     if (extraContainerStyles) {
       divProps.className = extraContainerStyles
     }
 
+    let shouldShowSearchInfoPanel = true
+    if (!enableNoResultsMessage) {
+      shouldShowSearchInfoPanel = items.length > 0
+    }
+
     return (
       <div className={resultsClassName}>
-        {this.renderSearchInfoPanel()}
+        {shouldShowSearchInfoPanel && this.renderSearchInfoPanel()}
         <div {...divProps}>
           {this.renderSearchTips()}
           {this.renderDefaultResults()}
@@ -205,10 +210,7 @@ class Results extends React.PureComponent {
     const view = shouldShowDetail ? this.renderDetailResultsView(resultsClassName) : this.renderResultsView(resultsClassName)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
-        {hasResults && <div>
-          {enableLoadingMessage && <div>{view}</div>}
-          {!enableLoadingMessage && !isLoading && <div>{view}</div>}
-        </div>}
+        {view}
       </div>
     )
   }
@@ -237,6 +239,7 @@ Results.defaultProps = {
   // When true, sets white background to searchInfoPanel, paginator, resultsContainer, and defaultResults
   setWhiteBackground: false,
   isLoading: false,
+  enableNoResultsMessage: true
 }
 
 Results.propTypes = {
@@ -260,7 +263,8 @@ Results.propTypes = {
   // function that renders the details of a selected item,
   // takes two params: resultsClassName and hideDetailState function
   customDetailResultsView: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  enableNoResultsMessage: PropTypes.bool
 }
 
 export default Results
