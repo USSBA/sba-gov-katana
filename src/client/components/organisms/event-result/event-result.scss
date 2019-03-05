@@ -38,6 +38,7 @@
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(4, $sba-grid-large);
+    margin-left: 0;
   }
 }
 
@@ -94,9 +95,10 @@
 .title {
   margin-bottom: 6px;
   display: block;
-  a {
-    display: block;
-    font-weight: 600;
+  font-weight: 600;
+
+  &:hover h6 {
+    color: $sba-blue-light;
   }
 }
 
@@ -108,7 +110,6 @@
 .date,
 .time,
 .title,
-.title a,
 .location,
 .cost {
   &:focus {
