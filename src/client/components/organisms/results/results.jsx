@@ -42,7 +42,7 @@ class Results extends React.PureComponent {
     return !isLoading && paginate && !(hidePaginatorOnNoResults && !items.length)
   }
   shouldShowSearchTips() {
-    const { isLoading, displaySearchTipsOnNoResults, items, } = this.props
+    const { isLoading, displaySearchTipsOnNoResults, items } = this.props
     return !isLoading && displaySearchTipsOnNoResults && !items.length
   }
   shouldRenderDefaultResults() {
@@ -75,7 +75,8 @@ class Results extends React.PureComponent {
 
     const searchInfoPanelClassName = classNames({
       [styles.searchFocusState]: true,
-      [styles.searchFocusStateWhiteBackground]: setWhiteBackground
+      [styles.searchFocusStateWhiteBackground]: setWhiteBackground,
+      [styles.searchInfoPanelWhiteBackground]: setWhiteBackground
     })
 
     const searchTerm = submittedFieldValues[searchTermName]
@@ -206,7 +207,6 @@ class Results extends React.PureComponent {
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
-    const hasResults = items.length > 0
     const view = shouldShowDetail ? this.renderDetailResultsView(resultsClassName) : this.renderResultsView(resultsClassName)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">

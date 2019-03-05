@@ -32,10 +32,6 @@
 .searchFocusState:focus {
   outline: 2px dotted $sba-gray-light;
   outline-offset: 3px;
-
-  @include grid-media($sba-grid-medium) {
-    height: 63px;
-  }
 }
 
 .defaultResults {
@@ -59,6 +55,14 @@
   background-color: white;
 }
 
+.searchInfoPanelWhiteBackground {
+  background-color: white;
+
+  @include grid-media($sba-grid-medium) {
+    height: 63px;
+  }
+}
+
 .affixToBottom {
   position: absolute;
   bottom: 0;
@@ -69,10 +73,6 @@
 
 .searchFocusStateWhiteBackground:focus {
   outline-offset: -6px;
-
-  @include grid-media($sba-grid-medium) {
-    height: 63px;
-  }
 
   @include grid-media($sba-grid-large) {
     height: 41px;
