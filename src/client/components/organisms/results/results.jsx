@@ -19,7 +19,8 @@ class Results extends React.PureComponent {
 
     const divClassName = classNames({
       [styles.paginator]: true,
-      [styles.whiteBackground]: setWhiteBackground
+      [styles.whiteBackground]: setWhiteBackground,
+      [styles.affixToBottom]: setWhiteBackground
     })
 
     return this.shouldRenderPaginator() ? (
@@ -194,19 +195,20 @@ class Results extends React.PureComponent {
   }
 
   render() {
-    const { customDetailResultsView, id, paginate, selectedItem } = this.props
+    const { customDetailResultsView, id, paginate, selectedItem, enableLoadingMessage, isLoading, items } = this.props
     const isItemSelected = !isEmpty(selectedItem)
     const shouldShowDetail = customDetailResultsView && isItemSelected
-
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
-
+    const hasResults = items.length > 0
+    const view = shouldShowDetail ? this.renderDetailResultsView(resultsClassName) : this.renderResultsView(resultsClassName)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
-        {shouldShowDetail
-          ? this.renderDetailResultsView(resultsClassName)
-          : this.renderResultsView(resultsClassName)}
+        {hasResults && <div>
+          {enableLoadingMessage && <div>{view}</div>}
+          {!enableLoadingMessage && !isLoading && <div>{view}</div>}
+        </div>}
       </div>
     )
   }
@@ -233,7 +235,8 @@ Results.defaultProps = {
   extraResultContainerStyles: null,
 
   // When true, sets white background to searchInfoPanel, paginator, resultsContainer, and defaultResults
-  setWhiteBackground: false
+  setWhiteBackground: false,
+  isLoading: false,
 }
 
 Results.propTypes = {
@@ -256,7 +259,8 @@ Results.propTypes = {
 
   // function that renders the details of a selected item,
   // takes two params: resultsClassName and hideDetailState function
-  customDetailResultsView: PropTypes.func
+  customDetailResultsView: PropTypes.func,
+  isLoading: PropTypes.bool
 }
 
 export default Results

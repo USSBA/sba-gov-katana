@@ -152,7 +152,7 @@ class EventLookupPage extends React.PureComponent {
             results
             paginate
             searchTermName={'q'}
-            enableLoadingMessage={false}
+            enableLoadingMessage={true}
           >
             <EventResult />
           </Results>

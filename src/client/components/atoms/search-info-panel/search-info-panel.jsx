@@ -39,7 +39,7 @@ class SearchInfoPanel extends React.Component {
   }
   renderLoadingState() {
     //no loading state currently
-    return <span className={styles.loading}>loading</span>
+    return <span>loading...</span>
   }
 
   shouldDisplayLoadingState() {
