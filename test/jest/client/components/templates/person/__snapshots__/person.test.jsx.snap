@@ -188,63 +188,23 @@ exports[`Person page renders correctly 1`] = `
       className="avatar"
       src="/sites/default/files/2019-02/Bio_Photo2.jpg"
     />
-    <div>
-      <p
-        className="bio"
-      >
-        Mr. Brandon Ton (pronounced “ton”) is the District Director for the SBA’s Alabama District Office, which is based in Birmingham.  He began his duties as District Director in June 2008.
-      </p>
-      <p
-        className="bio"
-      >
-        
-      </p>
-      <p
-        className="bio"
-      >
-        In his role as District Director, Mr. Todt oversees a professional staff of 10 in the delivery of SBA’s Financial Assistance, Entrepreneurial Development, Business Training, Government Contracting and other marketing and outreach programs throughout Alabama’s 67 counties. This delivery network includes 10 Small Business Development Centers, six SCORE chapters, three Women’s Business Centers, four Certified Development Companies and dozens of lending institutions.
-      </p>
-      <p
-        className="bio"
-      >
-        
-      </p>
-      <p
-        className="bio"
-      >
-        Before his appointment as Alabama District Director, Mr. Todt served as a contractor performing geographic information systems analysis at the Alabama Army National Guard Training Center at Fort McClellan.  He is a former US Army Officer, having served for almost twelve years on active duty in armor, military police and personnel administration roles, with duty assignments in Colorado, Texas, Alabama and Germany. His military and civilian awards include the Meritorious Service Medal and the Alabama Commendation Medal.
-      </p>
-      <p
-        className="bio"
-      >
-        
-      </p>
-      <p
-        className="bio"
-      >
-        He also has twelve years experience in community and economic development including Manager of Marketing, Research and Economic Development, and later as Executive Vice President for a county-wide chamber of commerce in Alabama. He was also the Executive Director for a city-wide retail and commercial recruitment/promotion entity.
-      </p>
-      <p
-        className="bio"
-      >
-        
-      </p>
-      <p
-        className="bio"
-      >
-        An Anniston native, Mr. Todt is a former small business person, having owned and operated a full service marketing firm in northeast Alabama, as well as working in several sales and marketing positions with small businesses.   He holds a Bachelor’s Degree in Marketing from the University of Alabama, and is a graduate of Leadership Calhoun County and the US Chamber of Commerce Institutes for Organization Management. 
-      </p>
-      <p
-        className="bio"
-      >
-        
-      </p>
-      <p
-        className="bio"
-      >
-        Mr. Todt has served as chair of the State of Alabama Business Education Advisory Committee, a member of the Vocational Education State Courses of Study Committee, and a board member of the Alabama Chamber of Commerce Executives Association, as well as many other business, chamber of commerce and community initiatives.
-      </p>
-    </div>
+    <div
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Mr. Brandon Ton (pronounced “ton”) is the District Director for the SBA’s Alabama District Office, which is based in Birmingham.  He began his duties as District Director in June 2008.
+
+In his role as District Director, Mr. Todt oversees a professional staff of 10 in the delivery of SBA’s Financial Assistance, Entrepreneurial Development, Business Training, Government Contracting and other marketing and outreach programs throughout Alabama’s 67 counties. This delivery network includes 10 Small Business Development Centers, six SCORE chapters, three Women’s Business Centers, four Certified Development Companies and dozens of lending institutions.
+
+Before his appointment as Alabama District Director, Mr. Todt served as a contractor performing geographic information systems analysis at the Alabama Army National Guard Training Center at Fort McClellan.  He is a former US Army Officer, having served for almost twelve years on active duty in armor, military police and personnel administration roles, with duty assignments in Colorado, Texas, Alabama and Germany. His military and civilian awards include the Meritorious Service Medal and the Alabama Commendation Medal.
+
+He also has twelve years experience in community and economic development including Manager of Marketing, Research and Economic Development, and later as Executive Vice President for a county-wide chamber of commerce in Alabama. He was also the Executive Director for a city-wide retail and commercial recruitment/promotion entity.
+
+An Anniston native, Mr. Todt is a former small business person, having owned and operated a full service marketing firm in northeast Alabama, as well as working in several sales and marketing positions with small businesses.   He holds a Bachelor’s Degree in Marketing from the University of Alabama, and is a graduate of Leadership Calhoun County and the US Chamber of Commerce Institutes for Organization Management. 
+
+Mr. Todt has served as chair of the State of Alabama Business Education Advisory Committee, a member of the Vocational Education State Courses of Study Committee, and a board member of the Alabama Chamber of Commerce Executives Association, as well as many other business, chamber of commerce and community initiatives.",
+        }
+      }
+    />
   </div>
 </div>
 `;
