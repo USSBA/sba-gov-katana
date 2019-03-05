@@ -27,44 +27,37 @@ describe('Event Template', () => {
       }
     }
     const component = shallow(<Event {...props} />)
-    const result = component.find('p')
+    const result = component.find('#event-details-description')
     const expected = 1
     expect(result).toHaveLength(expected)
     expect(result.text()).toBe(description)
   })
-  test('should render a registration button', () => {
+
+  test('should render an event date', () => {
+    const startDate = '2019-03-05T00:00:00-08:00'
+    const expected = 'Tuesday, March 5'
     const props = {
       eventData: {
-        title: 'my title',
-        registrationUrl: 'my-url'
+        startDate: startDate
       }
     }
     const component = shallow(<Event {...props} />)
-    const result = component.find('.register-button')
-    const expected = 1
-    expect(result).toHaveLength(expected)
+    const result = component.find('#event-header-date')
+    expect(result).toHaveLength(1)
+    expect(result.text()).toBe(expected)
   })
-  test('should not render a registration button with an empty string', () => {
+
+  test('should render an event date in details box', () => {
+    const startDate = '2019-03-05T00:00:00-08:00'
+    const expected = 'Tuesday, March 5, 2019'
     const props = {
       eventData: {
-        title: 'my title',
-        registrationUrl: ''
+        startDate: startDate
       }
     }
     const component = shallow(<Event {...props} />)
-    const result = component.find('.register-button')
-    const expected = 0
-    expect(result).toHaveLength(expected)
-  })
-  test('should not render a registration button with no registrationUrl value', () => {
-    const props = {
-      eventData: {
-        title: 'my title'
-      }
-    }
-    const component = shallow(<Event {...props} />)
-    const result = component.find('.register-button')
-    const expected = 0
-    expect(result).toHaveLength(expected)
+    const result = component.find('#event-details-date')
+    expect(result).toHaveLength(1)
+    expect(result.text()).toBe(expected)
   })
 })

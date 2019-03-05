@@ -4,8 +4,12 @@ import classNames from 'classnames'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import styles from './event.scss'
+<<<<<<< HEAD
 import { LeaveSbaModal } from 'organisms'
 import he from 'he'
+=======
+import moment from 'moment'
+>>>>>>> corrected column styling. Added jest tests
 
 class Event extends Component {
   constructor() {
@@ -34,6 +38,9 @@ class Event extends Component {
     const startDate = moment(this.props.eventData).format('dddd, MMMM D')
     const startDateDetails = moment(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
 
+    const startDate = moment(this.props.eventData).format('dddd, MMMM D')
+    const startDateDetails = moment(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
+
     // classNames is not necessary when this is created for future extensibility
     // delete this comment if you modify the classNames below to include logic
     const containerClassNames = classNames({
@@ -45,11 +52,14 @@ class Event extends Component {
     //   'event-title': true,
     //   [styles.title]: true
     // })
+<<<<<<< HEAD
 
     const iconClassName = classNames({
       'fa fa-external-link': true,
       [styles.registerButtonIcon]: true
     })
+=======
+>>>>>>> corrected column styling. Added jest tests
 
     const eventTitle = he.decode(title)
 
@@ -57,7 +67,11 @@ class Event extends Component {
       <div className={containerClassNames}>
         <div className={styles.header}>
           <h3 id="event-header-date">{startDate}</h3>
+<<<<<<< HEAD
           <h1 data-cy="event-title">{eventTitle}</h1>
+=======
+          <h1 data-cy="event-title">{title}</h1>
+>>>>>>> corrected column styling. Added jest tests
         </div>
         <div className={styles.columnA}>
           <DecorativeDash aria-hidden="true" width={80} />
@@ -81,6 +95,10 @@ class Event extends Component {
               data-cy="leave sba modal"
             />
           </div>}
+          <div className={styles.callout}>
+            <h3>Date and time</h3>
+            <p id="event-details-date">{startDateDetails}</p>
+          </div>
         </div>
       </div>
     )

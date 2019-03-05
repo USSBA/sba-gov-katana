@@ -54,6 +54,7 @@
     @include grid-column(5);
     @include grid-push(1);
   }
+<<<<<<< HEAD
 }
 
 .callout {
@@ -96,3 +97,27 @@
   padding-left: 5px;
   vertical-align: middle;
 }
+=======
+}
+
+.callout {
+  background-color: white;
+  border-top: 5px solid $sba-blue;
+  // TODO: DRY
+  box-shadow: $box-shadow;
+  padding: 50px;
+
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8);
+  }
+
+  @include for-small-only {
+    h1 {
+      // The static part of calc() (1rem) defines the minimum so that the font
+      // size does not become too small as the screen gets smaller.
+      font-size: calc(18px + 4vw);
+      hyphens: auto;
+    }
+  }
+}
+>>>>>>> corrected column styling. Added jest tests
