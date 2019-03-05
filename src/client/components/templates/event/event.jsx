@@ -19,36 +19,17 @@ class Event extends Component {
       [styles.title]: true
     })
 
-    const descriptionLabelClassName = classNames({
-      'description-label': true,
-      [styles.descriptionLabel]: true
-    })
-
-    const descriptionClassName = classNames({
-      description: true,
-      [styles.description]: true
-    })
-
-    const decorativeDashClassName = classNames({
-      decdash: true,
-      [styles.dash]: true
-    })
-
     return (
       <div className={containerClassNames}>
         <h1 className={titleClassName} data-cy="event-title">
           {title}
         </h1>
-        <div className={decorativeDashClassName}>
+        <div className={styles.description}>
           <DecorativeDash aria-hidden="true" width={80} />
-        </div>
-        <div>
-          <h4 className={descriptionLabelClassName} data-cy="eventd-escription-label">
+          <h4 className={styles.descriptionLabel} data-cy="event-escription-label">
             Description
           </h4>
-          <p className={descriptionClassName} data-cy="event-description">
-            {description}
-          </p>
+          <p data-cy="event-description">{description}</p>
         </div>
       </div>
     )
