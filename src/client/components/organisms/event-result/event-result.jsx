@@ -67,17 +67,20 @@ class EventResult extends React.PureComponent {
 
       const divClassName = classNames({
         [styles.container]: true,
-        [styles.marginFirstChild]: id === 'result-0'
+        [styles.marginFirstChild]: id === 'result-0',
+        [styles.result]: true
       })
 
+      const ariaLabelText = `Event Result ${Number(id.split('-')[1]) + 1}`
+
       return (
-        <div id={`event-result-${id}`} className={divClassName} data-cy="event result">
+        <div id={`event-result-${id}`} className={divClassName} tabIndex="0" aria-label={ariaLabelText} data-cy="event result">
           <div className={styles.columnGroupA}>
             <div className={styles.column1}>
               <div className={'event-date ' + styles.date} tabIndex="0" data-cy="date">
                 {this.formatDate()}
               </div>
-              <div className={"event-time " + styles.time} tabIndex="0" data-cy="time">
+              <div className={'event-time ' + styles.time} tabIndex="0" data-cy="time">
                 {this.formatTime()}
               </div>
             </div>
@@ -93,13 +96,13 @@ class EventResult extends React.PureComponent {
                   {item.title}
                 </h6>
               </Link>
-              <div className={"event-location " + styles.location} tabIndex="0" data-cy="location">
+              <div className={'event-location ' + styles.location} tabIndex="0" data-cy="location">
                 {this.renderLocationInfo()}
               </div>
             </div>
           </div>
           <div className={styles.column3}>
-            <div className={"event-cost " + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
+            <div className={'event-cost ' + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
           </div>
           <div className={'event-registration ' + styles.column4} data-cy="registration">
             <Button secondary responsive={false}>
