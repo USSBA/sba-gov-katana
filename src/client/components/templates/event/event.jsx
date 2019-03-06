@@ -1,15 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import { Button, DecorativeDash } from 'atoms'
+import { Button, DecorativeDash, SmallIcon  } from 'atoms'
 import classNames from 'classnames'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import styles from './event.scss'
-<<<<<<< HEAD
 import { LeaveSbaModal } from 'organisms'
 import he from 'he'
-=======
-import moment from 'moment'
->>>>>>> corrected column styling. Added jest tests
 
 class Event extends Component {
   constructor() {
@@ -33,13 +29,52 @@ class Event extends Component {
   }
 
   render() {
-    const { title, description, registrationUrl } = this.props.eventData
+    const { title, description, timezone, recurring, recurringType, cost, location, contact, registrationUrl } = this.props.eventData
 
-    const startDate = moment(this.props.eventData).format('dddd, MMMM D')
-    const startDateDetails = moment(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
+    const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
+    const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
+    const startTime = moment.parseZone(this.props.eventData.startDate).format('h')
+    const endTime = moment.parseZone(this.props.eventData.endDate).format('h a')
 
-    const startDate = moment(this.props.eventData).format('dddd, MMMM D')
-    const startDateDetails = moment(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
+    let recurringDetail
+    if (recurring === "Yes") {
+      switch(recurringType) {
+        case "Recurs monthly (same week &amp; same day of week)":
+          recurringDetail = <p id="event-details-recurring">Reoccurs same day every month</p>
+          break;
+        case "Recurs bi-weekly":
+          recurringDetail = <p id="event-details-recurring">Reoccurs bi-weekly</p>
+          break;
+        case "Recurs weekly":
+          recurringDetail = <p id="event-details-recurring">Reoccurs weekly</p>
+          break;
+        default:
+          recurringDetail = <p id="event-details-recurring">This is a reoccuring event</p>
+          break;
+      }
+    }
+    
+    let costDetail = cost === "0.00" ? "Free" : "$" + cost
+    // let costDetail
+    // if (cost == "0.00") {
+    //   costDetail = "Free"
+    // } else {
+    //   costDetail = "$" + cost
+    // }
+    
+    let link
+    const address =
+      location.address && location.city && location.state && location.zipcode
+        ? location.address +
+          '\n' +
+          location.city +
+          ',' +
+          location.state +
+          ' ' +
+          location.zipcode
+        : ""
+
+    link = 'https://maps.google.com?q=' + encodeURIComponent(address)
 
     // classNames is not necessary when this is created for future extensibility
     // delete this comment if you modify the classNames below to include logic
@@ -52,14 +87,11 @@ class Event extends Component {
     //   'event-title': true,
     //   [styles.title]: true
     // })
-<<<<<<< HEAD
 
     const iconClassName = classNames({
       'fa fa-external-link': true,
       [styles.registerButtonIcon]: true
     })
-=======
->>>>>>> corrected column styling. Added jest tests
 
     const eventTitle = he.decode(title)
 
@@ -67,11 +99,7 @@ class Event extends Component {
       <div className={containerClassNames}>
         <div className={styles.header}>
           <h3 id="event-header-date">{startDate}</h3>
-<<<<<<< HEAD
           <h1 data-cy="event-title">{eventTitle}</h1>
-=======
-          <h1 data-cy="event-title">{title}</h1>
->>>>>>> corrected column styling. Added jest tests
         </div>
         <div className={styles.columnA}>
           <DecorativeDash aria-hidden="true" width={80} />
@@ -97,7 +125,31 @@ class Event extends Component {
           </div>}
           <div className={styles.callout}>
             <h3>Date and time</h3>
-            <p id="event-details-date">{startDateDetails}</p>
+            <div>
+              <div id="event-details-date">{startDateDetails}</div>
+              <div id="event-details-time">{startTime}-{endTime}, {timezone}</div>
+              {recurringDetail}
+            </div>
+            <h3>Cost</h3>
+            <p>{costDetail}</p>
+            <h3>Location</h3>
+            <div>
+              <p>{location.name}<br/>
+                {location.address}, {location.address_additional}<br/>
+                {location.city}, {location.state} {location.zipcode}<br/>
+                <a href={link}>View on Map</a>
+              </p>
+            </div>
+            <h3>Event Organizer</h3>
+            <p>{contact.name}</p>
+            <div>
+              <SmallIcon fontAwesomeIconClassName="envelope"/>
+              {contact.email}
+            </div>
+            <div>
+              <SmallIcon fontAwesomeIconClassName="fax"/>
+              {contact.phone}
+            </div>
           </div>
         </div>
       </div>
