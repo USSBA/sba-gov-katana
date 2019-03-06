@@ -24,21 +24,6 @@ class Person extends Component {
     return contact
   }
 
-  renderText(text) {
-    if (text) {
-      const split = text.split('\n')
-      return split.map(function(item, index) {
-        return (
-          <p className={styles.bio} key={index}>
-            {item}
-          </p>
-        )
-      })
-    } else {
-      return <div />
-    }
-  }
-
   render() {
     const className = classNames({
       'person-page': true,
@@ -76,16 +61,16 @@ class Person extends Component {
         <div className={styles.header}>
           <div>
             <h1>{name}</h1>
-            {!isEmpty(title) ? <h5>{title}</h5> : null}
-            {!isEmpty(officeTitle) ? <p className={styles.officeTitle}>{officeTitle}</p> : null}
+            {!isEmpty(title) && <h5>{title}</h5>}
+            {!isEmpty(officeTitle) && <p className={styles.officeTitle}>{officeTitle}</p>}
           </div>
           <div className={styles.contact}>
             <ContactCard {...contact} />
           </div>
         </div>
         <div className={styles.content}>
-          {!isEmpty(picture) ? <img alt={picture.alt} className={styles.avatar} src={picture.src} /> : null}
-          <div>{!isEmpty(bio) ? this.renderText(bio) : null}</div>
+          {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />}
+          {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>
       </div>
     )
