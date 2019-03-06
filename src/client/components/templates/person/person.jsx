@@ -25,20 +25,26 @@ class Person extends Component {
   }
 
   render() {
-    const className = classNames({
-      'person-page': true,
-      [styles.personPage]: true
-    })
-
     const {
       personData: { bio, emailAddress: email, fax, name, officeTitle, picture, phone: phoneNumber, title },
       pathname
     } = this.props
 
+    const className = classNames({
+      'person-page': true,
+      [styles.personPage]: true
+    })
+
+    const contentClassName = classNames({
+      [styles.content]: true,
+      [styles.hasPicture]: !isEmpty(picture)
+    })
+
     const contact = this.createContact(email, fax, phoneNumber)
 
     return (
       <div className={className}>
+        {/* Breadcrumb will release in future update
         <div className={styles.breadcrumb}>
           <Breadcrumb
             items={[
@@ -57,6 +63,7 @@ class Person extends Component {
             ]}
           />
         </div>
+        */}
         <Label large type="Person" />
         <div className={styles.header}>
           <div>
@@ -68,7 +75,7 @@ class Person extends Component {
             <ContactCard {...contact} />
           </div>
         </div>
-        <div className={styles.content}>
+        <div className={contentClassName}>
           {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />}
           {!isEmpty(bio) && <div dangerouslySetInnerHTML={{ __html: bio }} />}
         </div>

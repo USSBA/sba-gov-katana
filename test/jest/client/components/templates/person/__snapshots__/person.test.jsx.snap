@@ -5,65 +5,6 @@ exports[`Person page renders correctly 1`] = `
   className="person-page personPage"
 >
   <div
-    className="breadcrumb"
-  >
-    <div
-      className="breadcrumb"
-    >
-      <a
-        href="javascript:void(0);"
-        onClick={[Function]}
-        tabIndex="0"
-      >
-        <i
-          aria-hidden="true"
-          className=" fa fa-home"
-        />
-      </a>
-      <span
-        className="slash"
-      >
-        /
-      </span>
-      <a
-        id="breadcrumb-level0"
-        onClick={[Function]}
-        style={Object {}}
-        target="_self"
-      >
-        About SBA
-      </a>
-      <span
-        className="slash"
-      >
-        /
-      </span>
-      <a
-        id="breadcrumb-level1"
-        onClick={[Function]}
-        style={Object {}}
-        target="_self"
-      >
-        People
-      </a>
-      <span
-        className="slash"
-      >
-        /
-      </span>
-      <span
-        className="last"
-      >
-        <a
-          href="javascript:void(0);"
-          id="breadcrumb-current"
-        >
-          Thomas A. Todt
-        </a>
-      </span>
-    </div>
-  </div>
-  <div
     className="label large"
   >
     <h6
@@ -181,7 +122,7 @@ exports[`Person page renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="content"
+    className="content hasPicture"
   >
     <img
       alt="image of Thomas Todt"
