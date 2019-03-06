@@ -1,0 +1,119 @@
+.container {
+  background-color: white;
+  border-top-color: $sba-blue;
+  border-top-style: solid;
+  border-top-width: 3px;
+  color: $secondary-black-ish;
+  margin-bottom: 25px;
+  @include grid-media($sba-grid-small) {
+    padding: 25px 20px 20px 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 25px 0 20px 0;
+    @include grid-column(12, $sba-grid-medium);
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 25px 0 20px 0;
+    @include grid-column(12, $sba-grid-large);
+  }
+}
+
+// This grouping encompasses column1 and column2
+.columnGroupA {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(7, $sba-grid-medium);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(9, $sba-grid-large);
+  }
+}
+
+// Encompasses date and time display
+.column1 {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 10px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding-bottom: 10px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(4, $sba-grid-large);
+    margin-left: 0;
+  }
+}
+
+// Encompasses title and location display
+.column2 {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 5px;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(8, $sba-grid-large);
+  }
+}
+
+// Encompasses cost display
+.column3 {
+  @include grid-media($sba-grid-small) {
+    padding-bottom: 20px;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 15px;
+    text-align: center;
+    @include grid-column(2, $sba-grid-medium);
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 15px;
+    text-align: center;
+    @include grid-column(1, $sba-grid-large);
+  }
+}
+
+// Encompasses registration info display
+.column4 {
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(3, $sba-grid-medium);
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(2, $sba-grid-large);
+  }
+}
+
+.date {
+  font-weight: 600;
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
+}
+
+.registerButton {
+  width: 160px;
+}
+
+.title {
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 600;
+
+  &:hover h6 {
+    color: $sba-blue-light;
+  }
+}
+
+.marginFirstChild {
+  margin-top: 40px;
+}
+
+.result,
+.date,
+.time,
+.title,
+.location,
+.cost {
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
+}

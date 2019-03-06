@@ -4,9 +4,8 @@ import { isEmpty } from 'lodash'
 
 import styles from './event-lookup-page.scss'
 import { StyleWrapperDiv, TextInput, MultiSelect } from 'atoms'
-import { PrimarySearchBar, Results, PagingLookup } from 'organisms'
+import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
-//import MultiSelectBox from '../../atoms/multiselect/multiselect'
 
 class EventLookupPage extends React.PureComponent {
   customSearch(searchType, searchParams) {
@@ -20,14 +19,9 @@ class EventLookupPage extends React.PureComponent {
       let isZeroState = false
       const defaultResults = []
 
-      if (searchResults) {
-        const keywordMatcher = RegExp(keyword, 'i')
-        results = searchResults.items.filter(eventRecord => {
-          return (
-            keywordMatcher.test(eventRecord.description.text) || keywordMatcher.test(eventRecord.name.text)
-          )
-        })
-        count = results.length
+      if (searchResults && searchResults.count) {
+        results = searchResults.items
+        count = searchResults.count
         hasNoResults = count === 0
         isLoading = false
         isZeroState = false
@@ -47,7 +41,8 @@ class EventLookupPage extends React.PureComponent {
   render() {
     const defaultSearchParams = {
       dateRange: 'all',
-      distance: '200'
+      distance: '200',
+      pageSize: 10
     }
 
     return (
@@ -71,24 +66,6 @@ class EventLookupPage extends React.PureComponent {
             validationState={''}
             showSearchIcon={true}
             data-cy="keyword search"
-          />
-          <TextInput
-            id="zip"
-            queryParamName="address"
-            className={styles.field + ' ' + styles.zip}
-            label="Near"
-            placeholder="Zip Code"
-            validationFunction={input => {
-              // only validate if there is an input value
-              let result = true
-              if (!isEmpty(input)) {
-                const fiveDigitRegex = /^\d{5}$/g
-                result = fiveDigitRegex.test(input)
-              }
-              return result
-            }}
-            errorText="Enter a 5-digit zip code."
-            data-cy="zip"
           />
           <MultiSelect
             id="date-filter"
@@ -122,6 +99,24 @@ class EventLookupPage extends React.PureComponent {
             ]}
             dataCy="date"
           />
+          <TextInput
+            id="zip"
+            queryParamName="address"
+            className={styles.field + ' ' + styles.zip}
+            label="Near"
+            placeholder="Zip Code"
+            validationFunction={input => {
+              // only validate if there is an input value
+              let result = true
+              if (!isEmpty(input)) {
+                const fiveDigitRegex = /^\d{5}$/g
+                result = fiveDigitRegex.test(input)
+              }
+              return result
+            }}
+            errorText="Enter a 5-digit zip code."
+            data-cy="zip"
+          />
           <MultiSelect
             id="distance-filter"
             queryParamName="distance"
@@ -151,6 +146,18 @@ class EventLookupPage extends React.PureComponent {
             dataCy="distance"
           />
         </PrimarySearchBar>
+        <StyleWrapperDiv className={styles.searchResults}>
+          <Results
+            hasSearchInfoPanel
+            results
+            paginate
+            searchTermName={'q'}
+            enableLoadingMessage={true}
+            enableNoResultsMessage={false}
+          >
+            <EventResult />
+          </Results>
+        </StyleWrapperDiv>
       </SearchTemplate>
     )
   }

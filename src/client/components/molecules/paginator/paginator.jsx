@@ -21,6 +21,7 @@ const Paginator = props => {
       spacing={false}
       responsive={false}
       aria-label={direction === 'left' ? 'Go to previous results' : 'Go to next results'}
+      data-cy={direction === 'left' ? 'previous button' : 'next button'}
     >
       <i
         alt={`${direction === 'left' ? 'previous' : 'next'} page`}
@@ -42,7 +43,7 @@ const Paginator = props => {
       role="group"
       aria-label={`Showing results ${start} to ${end} out of ${total}`}
     >
-      <span>
+      <span data-cy="showing results text">
         Showing <strong className="text-primary">{start}</strong> <span className={styles.spacing}>-</span>{' '}
         <strong className="text-primary">{end}</strong> <span className={styles.spacing}>of</span>{' '}
         <strong className="text-primary">{total}</strong>

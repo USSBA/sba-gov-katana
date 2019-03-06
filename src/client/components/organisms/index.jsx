@@ -9,6 +9,7 @@ import DocumentArticle from './document-article/document-article.jsx'
 import DocumentArticleLookup from './document-article-lookup/document-article-lookup.jsx'
 import DetailCardCollection from './detail-card-collection/detail-card-collection.jsx'
 import DropdownMenu from './dropdown-menu/dropdown-menu.jsx'
+import EventResult from './event-result/event-result.jsx'
 import GlobalSearch from './global-search/global-search.jsx'
 import Hero from './hero/hero.jsx'
 import Lookup from './lookup/lookup.jsx'
@@ -64,6 +65,7 @@ export {
   DocumentArticleLookup,
   DetailCardCollection,
   DropdownMenu,
+  EventResult,
   GlobalSearch,
   Hero,
   Lookup,

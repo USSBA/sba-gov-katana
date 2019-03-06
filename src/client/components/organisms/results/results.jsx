@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './results.scss'
 import { NoResultsSection, Paginator } from 'molecules'
 import { SearchInfoPanel } from 'atoms'
-import { OfficeDetail } from 'organisms'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { isEmpty } from 'lodash'
@@ -16,10 +15,16 @@ class Results extends React.PureComponent {
   }
 
   renderPaginator() {
-    const { total, pageSize, pageNumber, onBack, onForward } = this.props
+    const { total, pageSize, pageNumber, onBack, onForward, setWhiteBackground } = this.props
+
+    const divClassName = classNames({
+      [styles.paginator]: true,
+      [styles.whiteBackground]: setWhiteBackground,
+      [styles.affixToBottom]: setWhiteBackground
+    })
 
     return this.shouldRenderPaginator() ? (
-      <div className={styles.paginator}>
+      <div className={divClassName}>
         <Paginator
           pageNumber={pageNumber}
           pageSize={pageSize}
@@ -59,19 +64,34 @@ class Results extends React.PureComponent {
       searchTermName,
       submittedFieldValues,
       hasSearchInfoPanel,
-      isLoading
+      setWhiteBackground,
+      isLoading,
+      enableLoadingMessage
     } = this.props
 
+    const divClassName = classNames({
+      [styles.whiteBackground]: setWhiteBackground
+    })
+
+    const searchInfoPanelClassName = classNames({
+      [styles.searchFocusState]: true,
+      [styles.searchFocusStateWhiteBackground]: setWhiteBackground,
+      [styles.searchInfoPanelWhiteBackground]: setWhiteBackground
+    })
+
     const searchTerm = submittedFieldValues[searchTermName]
+
     return hasSearchInfoPanel ? (
-      <div className={styles.searchInfoPanel}>
-        <div className={'search-info-panel ' + styles.searchFocusState} tabIndex="0" role="text">
+      <div className={divClassName}>
+        <div className={'search-info-panel ' + searchInfoPanelClassName} tabIndex="0" role="text">
           <SearchInfoPanel
             pageNumber={pageNumber}
             pageSize={pageSize}
             total={total}
             searchTerm={searchTerm}
             isLoading={isLoading}
+            enableLoadingMessage={enableLoadingMessage}
+            setWhiteBackground={setWhiteBackground}
           />
         </div>
       </div>
@@ -106,38 +126,64 @@ class Results extends React.PureComponent {
     return resultsWithProps
   }
 
-  renderDefaultResults(defaultResults = this.props.defaultResults) {
+  renderDefaultResults() {
+    const { defaultResults, setWhiteBackground } = this.props
+
+    const divClassName = classNames({
+      [styles.defaultResults]: true,
+      [styles.whiteBackground]: setWhiteBackground
+    })
+
     let result = null
     const { defaultResultObject, children } = this.props
     const resultElement = defaultResultObject || children
     if (this.shouldRenderDefaultResults()) {
       const resultsWithProps = this.mapResults(defaultResults, resultElement)
-      result = resultsWithProps.length ? (
-        <div className={styles.defaultResults}>{resultsWithProps}</div>
-      ) : null
+      result = resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
     }
     return result
   }
 
   renderResults(results = this.props.items) {
-    const { paginate, hasSearchInfoPanel, scroll, children } = this.props
+    const {
+      extraResultContainerStyles,
+      paginate,
+      hasSearchInfoPanel,
+      scroll,
+      setWhiteBackground,
+      children
+    } = this.props
     const resultsWithProps = this.mapResults(results, children)
+    const resultContainerStyles =
+      styles.resultContainer + (extraResultContainerStyles ? ' ' + extraResultContainerStyles : '')
 
     const divClassName = classNames({
       [styles.scroll]: scroll,
       [styles.resultsWithPagination]: paginate,
       [styles.resultsWithSearchInfo]: hasSearchInfoPanel,
-      [styles.resultContainer]: true
+      [resultContainerStyles]: true,
+      [styles.whiteBackground]: setWhiteBackground
     })
 
     return resultsWithProps.length ? <div className={divClassName}>{resultsWithProps}</div> : null
   }
 
   renderResultsView(resultsClassName) {
+    const { extraContainerStyles, enableNoResultsMessage, items } = this.props
+    const divProps = {}
+    if (extraContainerStyles) {
+      divProps.className = extraContainerStyles
+    }
+
+    let shouldShowSearchInfoPanel = true
+    if (!enableNoResultsMessage) {
+      shouldShowSearchInfoPanel = items.length > 0
+    }
+
     return (
       <div className={resultsClassName}>
-        {this.renderSearchInfoPanel()}
-        <div className={styles.centerContainer}>
+        {shouldShowSearchInfoPanel && this.renderSearchInfoPanel()}
+        <div {...divProps}>
           {this.renderSearchTips()}
           {this.renderDefaultResults()}
           {this.renderResults()}
@@ -155,19 +201,16 @@ class Results extends React.PureComponent {
   }
 
   render() {
-    const { customDetailResultsView, id, paginate, selectedItem } = this.props
+    const { customDetailResultsView, id, paginate, selectedItem, enableLoadingMessage, isLoading, items } = this.props
     const isItemSelected = !isEmpty(selectedItem)
     const shouldShowDetail = customDetailResultsView && isItemSelected
-
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
-
+    const view = shouldShowDetail ? this.renderDetailResultsView(resultsClassName) : this.renderResultsView(resultsClassName)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
-        {shouldShowDetail
-          ? this.renderDetailResultsView(resultsClassName)
-          : this.renderResultsView(resultsClassName)}
+        {view}
       </div>
     )
   }
@@ -188,7 +231,15 @@ Results.defaultProps = {
   submittedFieldValues: {},
   searchTips: [],
   onClick: () => {},
-  onResultHover: () => {}
+  onResultHover: () => {},
+  enableLoadingMessage: true,
+  extraContainerStyles: null,
+  extraResultContainerStyles: null,
+
+  // When true, sets white background to searchInfoPanel, paginator, resultsContainer, and defaultResults
+  setWhiteBackground: false,
+  isLoading: false,
+  enableNoResultsMessage: true
 }
 
 Results.propTypes = {
@@ -207,10 +258,13 @@ Results.propTypes = {
   hidePaginatorOnNoResults: PropTypes.bool,
   displayDefaultResultOnNoResults: PropTypes.bool,
   defaultResultObject: PropTypes.object,
+  enableLoadingMessage: PropTypes.bool,
 
   // function that renders the details of a selected item,
   // takes two params: resultsClassName and hideDetailState function
-  customDetailResultsView: PropTypes.func
+  customDetailResultsView: PropTypes.func,
+  isLoading: PropTypes.bool,
+  enableNoResultsMessage: PropTypes.bool
 }
 
 export default Results

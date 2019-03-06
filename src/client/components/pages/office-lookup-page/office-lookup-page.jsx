@@ -174,7 +174,7 @@ class OfficeLookupPage extends React.PureComponent {
         <StyleWrapperDiv className={styles.officeResults} hideOnZeroState={true}>
           <Results
             id="office-results"
-            paginate
+            paginate={true}
             scroll
             hasSearchInfoPanel
             searchTermName={'q'}
@@ -192,6 +192,9 @@ class OfficeLookupPage extends React.PureComponent {
             displayDefaultResultOnNoResults
             defaultResultObject={<DefaultOfficeResult />}
             customDetailResultsView={this.customDetailResultsView.bind(this)}
+            extraContainerStyles={styles.centerContainer}
+            extraResultContainerStyles={styles.resultContainer}
+            setWhiteBackground
           >
             <OfficeResult />
           </Results>
