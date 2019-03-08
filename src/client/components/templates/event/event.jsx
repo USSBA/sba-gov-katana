@@ -40,29 +40,22 @@ class Event extends Component {
     if (recurring === "Yes") {
       switch(recurringType) {
         case "Recurs monthly (same week &amp; same day of week)":
-          recurringDetail = <p id="event-details-recurring">Reoccurs same day every month</p>
+          recurringDetail = "Reoccurs same day every month"
           break;
         case "Recurs bi-weekly":
-          recurringDetail = <p id="event-details-recurring">Reoccurs bi-weekly</p>
+          recurringDetail = "Reoccurs bi-weekly"
           break;
         case "Recurs weekly":
-          recurringDetail = <p id="event-details-recurring">Reoccurs weekly</p>
+          recurringDetail = "Reoccurs weekly"
           break;
         default:
-          recurringDetail = <p id="event-details-recurring">This is a reoccuring event</p>
+          recurringDetail = "This is a reoccuring event"
           break;
-      }
+      } 
     }
     
     let costDetail = cost === "0.00" ? "Free" : "$" + cost
-    // let costDetail
-    // if (cost == "0.00") {
-    //   costDetail = "Free"
-    // } else {
-    //   costDetail = "$" + cost
-    // }
     
-    let link
     const address =
       location.address && location.city && location.state && location.zipcode
         ? location.address +
@@ -74,7 +67,7 @@ class Event extends Component {
           location.zipcode
         : ""
 
-    link = 'https://maps.google.com?q=' + encodeURIComponent(address)
+    let link = 'https://maps.google.com?q=' + encodeURIComponent(address)
 
     // classNames is not necessary when this is created for future extensibility
     // delete this comment if you modify the classNames below to include logic
@@ -128,7 +121,7 @@ class Event extends Component {
             <div>
               <div id="event-details-date">{startDateDetails}</div>
               <div id="event-details-time">{startTime}-{endTime}, {timezone}</div>
-              {recurringDetail}
+              <p id="event-details-recurring">{recurringDetail}</p>
             </div>
             <h3>Cost</h3>
             <p>{costDetail}</p>
