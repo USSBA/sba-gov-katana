@@ -94,7 +94,12 @@
 }
 
 .registerButton {
-  width: 160px;
+  min-width: 175px;
+}
+
+.buttonIcon {
+  padding-left: 5px;
+  vertical-align: middle;
 }
 
 .title {

@@ -133,8 +133,11 @@ describe('Event result', () => {
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find('.register-button')).toHaveLength(1)
-    const doesButtonHaveRegister = component.find('.register-button').contains('REGISTER')
-    expect(doesButtonHaveRegister).toBe(true)
+    const buttonText = component
+      .find('.register-button')
+      .render()
+      .text()
+    expect(buttonText).toContain('REGISTER')
   })
 
   it('does not render "Open event text when there is a registration url', () => {

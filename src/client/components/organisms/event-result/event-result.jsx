@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import classNames from 'classnames'
+
 import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
 import { LeaveSbaModal } from 'organisms'
@@ -79,11 +81,17 @@ class EventResult extends React.PureComponent {
 
   renderRegistrationInfo() {
     const { item } = this.props
+
+    const iconClassName = classNames({
+      'fa fa-external-link': true,
+      [styles.buttonIcon]: true
+    })
+
     if (item.registrationUrl !== null) {
       return (
-        <div>
+        <div className={styles.registerButton}>
           <Button className="register-button" secondary onClick={this.handleRegisterButtonClick.bind(this)}>
-            REGISTER
+            REGISTER <i aria-hidden="true" className={iconClassName} />
           </Button>
           <LeaveSbaModal
             closeLeaveSba={this.handleClose.bind(this)}
