@@ -1,11 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import styles from './event-result.scss'
 import classNames from 'classnames'
+
+import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
+import { LeaveSbaModal } from 'organisms'
 
 class EventResult extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      modalIsOpen: false
+    }
+  }
+
+  handleRegisterButtonClick(e) {
+    e.preventDefault()
+    this.setModalState(true)
+  }
+
+  setModalState(isOpen) {
+    this.setState({ modalIsOpen: isOpen })
+  }
+
+  handleClose() {
+    this.setModalState(false)
+  }
+
   formatDate() {
     const {
       item: { startDate }
@@ -68,9 +90,15 @@ class EventResult extends React.PureComponent {
     if (item.registrationUrl !== null) {
       return (
         <div className={styles.registerButton}>
-          <Button className="register-button" secondary onClick={() => window.open(item.registrationUrl)}>
+          <Button className="register-button" secondary onClick={this.handleRegisterButtonClick.bind(this)}>
             REGISTER <i aria-hidden="true" className={iconClassName} />
           </Button>
+          <LeaveSbaModal
+            closeLeaveSba={this.handleClose.bind(this)}
+            isOpen={this.state.modalIsOpen}
+            url={item.registrationUrl}
+            shouldOpenNewWindow
+          />
         </div>
       )
     } else {
