@@ -98,6 +98,7 @@ class EventResult extends React.PureComponent {
             isOpen={this.state.modalIsOpen}
             url={item.registrationUrl}
             shouldOpenNewWindow
+            data-cy="leave sba modal"
           />
         </div>
       )

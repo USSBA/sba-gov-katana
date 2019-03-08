@@ -43,17 +43,22 @@ class SbaModal extends React.Component {
           }}
           className={styles.closeIcon}
           src={ModalCloseIcon}
+          data-cy="close button"
         />
         {logo}
-        <h3 className={styles.title}>{title}</h3>
+        <h3 className={styles.title} data-cy="title">
+          {title}
+        </h3>
         <div className={styles.divider} />
-        <p className={styles.text}>{text}</p>
+        <p className={styles.text} data-cy="message text">
+          {text}
+        </p>
         {children}
         <div className={styles.btnContainer}>
-          <Button onClick={onClickOk} primary small>
+          <Button onClick={onClickOk} primary small data-cy="ok button">
             {okButtonText}
           </Button>
-          <Button onClick={onClose} secondary small>
+          <Button onClick={onClose} secondary small data-cy="cancel button">
             {cancelButtonText}
           </Button>
         </div>
