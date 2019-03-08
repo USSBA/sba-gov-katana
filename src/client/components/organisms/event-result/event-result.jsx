@@ -57,6 +57,27 @@ class EventResult extends React.PureComponent {
     return `/event/${id}`
   }
 
+  renderRegistrationInfo() {
+    const { item } = this.props
+
+    const iconClassName = classNames({
+      'fa fa-external-link': true,
+      [styles.registerButtonIcon]: true
+    })
+
+    if (item.registrationUrl !== null) {
+      return (
+        <div className={styles.registerButton}>
+          <Button className="register-button" secondary onClick={() => window.open(item.registrationUrl)}>
+            REGISTER <i aria-hidden="true" className={iconClassName} />
+          </Button>
+        </div>
+      )
+    } else {
+      return <div className={styles.openEventText}>Open event</div>
+    }
+  }
+
   render() {
     const { id, item } = this.props
 
@@ -74,7 +95,13 @@ class EventResult extends React.PureComponent {
       const ariaLabelText = `Event Result ${Number(id.split('-')[1]) + 1}`
 
       return (
-        <div id={`event-result-${id}`} className={divClassName} tabIndex="0" aria-label={ariaLabelText} data-cy="event result">
+        <div
+          id={`event-result-${id}`}
+          className={divClassName}
+          tabIndex="0"
+          aria-label={ariaLabelText}
+          data-cy="event result"
+        >
           <div className={styles.columnGroupA}>
             <div className={styles.column1}>
               <div className={'event-date ' + styles.date} tabIndex="0" data-cy="date">
@@ -105,9 +132,7 @@ class EventResult extends React.PureComponent {
             <div className={'event-cost ' + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
           </div>
           <div className={'event-registration ' + styles.column4} data-cy="registration">
-            <Button secondary responsive={false}>
-              REGISTER
-            </Button>
+            {this.renderRegistrationInfo()}
           </div>
         </div>
       )

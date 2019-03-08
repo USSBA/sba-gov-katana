@@ -88,8 +88,24 @@
   }
 }
 
+.openEventText {
+  @include grid-media($sba-grid-medium) {
+    padding: 15px;
+    margin-left: 10px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 15px;
+    margin-left: 10px;
+  }
+}
+
 .registerButton {
-  width: 160px;
+  min-width: 175px;
+}
+
+.registerButtonIcon {
+  padding-left: 5px;
+  vertical-align: middle;
 }
 
 .title {
