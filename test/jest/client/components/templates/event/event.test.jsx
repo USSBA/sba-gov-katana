@@ -31,9 +31,34 @@ describe('Event Template', () => {
     expect(result.text()).toBe(description)
   })
   test('should render a registration button', () => {
-    const component = shallow(<Event />)
+    const props = {
+      eventData: {
+        registrationUrl: 'my-url'
+      }
+    }
+    const component = shallow(<Event {...props} />)
     const result = component.find('.register-button')
     const expected = 1
+    expect(result).toHaveLength(expected)
+  })
+  test('should not render a registration button with an empty string', () => {
+    const props = {
+      eventData: {
+        registrationUrl: ''
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const result = component.find('.register-button')
+    const expected = 0
+    expect(result).toHaveLength(expected)
+  })
+  test('should not render a registration button with no registrationUrl value', () => {
+    const props = {
+      eventData: {}
+    }
+    const component = shallow(<Event {...props} />)
+    const result = component.find('.register-button')
+    const expected = 0
     expect(result).toHaveLength(expected)
   })
 })

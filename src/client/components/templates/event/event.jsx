@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { Button, DecorativeDash } from 'atoms'
 import classNames from 'classnames'
-import styles from './event.scss'
 import moment from 'moment'
+import { isEmpty } from 'lodash'
+import styles from './event.scss'
 
 class Event extends Component {
   render() {
-    const { title, description } = this.props.eventData
+    const { title, description, registrationUrl } = this.props.eventData
 
     const startDate = moment(this.props.eventData).format('dddd, MMMM D')
     const startDateDetails = moment(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
@@ -44,11 +45,11 @@ class Event extends Component {
           </p>
         </div>
         <div className={styles.columnB}>
-          <div className={styles.button} data-cy="registration">
+          {!isEmpty(registrationUrl) && <div className={styles.button} data-cy="registration">
             <Button className="register-button" primary onClick={()=>console.log('Register Button Clicked!')}>
               REGISTER <i aria-hidden="true" className={iconClassName} />
             </Button>
-          </div>
+          </div>}
         </div>
       </div>
     )
