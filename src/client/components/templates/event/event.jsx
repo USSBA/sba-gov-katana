@@ -46,7 +46,7 @@ class Event extends Component {
         </div>
         <div className={styles.columnB}>
           {!isEmpty(registrationUrl) && <div className={styles.button} data-cy="registration">
-            <Button className="register-button" primary onClick={()=>console.log('Register Button Clicked!')}>
+            <Button className="register-button" primary onClick={()=>console.log('Register Button Clicked: ', registrationUrl)}>
               REGISTER <i aria-hidden="true" className={iconClassName} />
             </Button>
           </div>}
