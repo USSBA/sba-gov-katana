@@ -24,8 +24,22 @@ class ErrorPage extends React.Component {
     const uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
     document.location = uri
   }
+
+  setLink() {
+    const link = {}
+    if (this.props.type === 'event') {
+      link.url = '/events/find'
+      link.text = 'find events page'
+    } else {
+      link.url = '/'
+      link.text = 'home page'
+    }
+    return link
+  }
+
   render() {
     const text = "Just like a business on the moon, the page you're looking for doesn't exist."
+    const link = this.setLink()
 
     return (
       <div className={styles.errorPage}>
@@ -37,7 +51,8 @@ class ErrorPage extends React.Component {
             <h2>Page not found</h2>
             <DecorativeDash width={77} />
             <h3>
-              {text} Return to the <Link to="/">home page</Link>, or search for what you're trying to find.
+              {text} Return to the <Link to={link.url}>{link.text}</Link>, or search for what you're trying
+              to find.
             </h3>
             <form onSubmit={this.submitSearch.bind(this)}>
               <div className={styles.inputContainer}>

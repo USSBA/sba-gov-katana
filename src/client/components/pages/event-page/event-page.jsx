@@ -55,7 +55,7 @@ class EventPage extends Component {
         )
       }
     } else {
-      return <ErrorPage />
+      return <ErrorPage type="event" />
     }
   }
 }
