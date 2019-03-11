@@ -90,7 +90,12 @@ class EventResult extends React.PureComponent {
     if (item.registrationUrl !== null) {
       return (
         <div className={styles.registerButton}>
-          <Button className="register-button" secondary onClick={this.handleRegisterButtonClick.bind(this)}>
+          <Button
+            className="register-button"
+            tabIndex="0"
+            secondary
+            onClick={this.handleRegisterButtonClick.bind(this)}
+          >
             REGISTER <i aria-hidden="true" className={iconClassName} />
           </Button>
           <LeaveSbaModal
@@ -103,7 +108,11 @@ class EventResult extends React.PureComponent {
         </div>
       )
     } else {
-      return <div className={styles.openEventText}>Open event</div>
+      return (
+        <div className={styles.openEventText} tabIndex="0">
+          Open event
+        </div>
+      )
     }
   }
 

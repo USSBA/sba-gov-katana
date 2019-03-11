@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import EventResult from '../../../../../../src/client/components/organisms/event-result/event-result.jsx'
 import { Link } from 'atoms'
+import { LeaveSbaModal } from 'organisms'
 
 const mockEvent = JSON.stringify({
   title: 'Business Entrepreneurship Course',
@@ -140,7 +141,7 @@ describe('Event result', () => {
     expect(buttonText).toContain('REGISTER')
   })
 
-  it('does not render "Open event text when there is a registration url', () => {
+  it('does not render "Open event" text when there is a registration url', () => {
     const customMockEvent = JSON.parse(mockEvent)
     customMockEvent.registrationUrl = 'https://www.eventbrite.com'
 
@@ -164,5 +165,13 @@ describe('Event result', () => {
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     expect(component.find('.register-button')).toHaveLength(0)
+  })
+
+  it('renders leaving SBA modal when a there is a registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = 'https://www.eventbrite.com'
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    expect(component.find(LeaveSbaModal)).toHaveLength(1)
   })
 })
