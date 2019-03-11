@@ -30,4 +30,10 @@ describe('Event Template', () => {
     expect(result).toHaveLength(expected)
     expect(result.text()).toBe(description)
   })
+  test('should render a registration button', () => {
+    const component = shallow(<Event />)
+    const result = component.find('.register-button')
+    const expected = 1
+    expect(result).toHaveLength(expected)
+  })
 })
