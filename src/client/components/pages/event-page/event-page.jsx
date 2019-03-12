@@ -40,22 +40,23 @@ class EventPage extends Component {
     const { id } = this.props
     const { data } = this.state
 
-    if (id && data !== null) {
-      if (data) {
+    if (id && data) {
+      if (data.title) {
         return (
           <div>
             <Event eventData={data} />
           </div>
         )
       } else {
-        return (
-          <div className={styles.container}>
-            <Loader />
-          </div>
-        )
+        console.log('404')
+        return <ErrorPage type="event" />
       }
     } else {
-      return <ErrorPage type="event" />
+      return (
+        <div className={styles.container}>
+          <Loader />
+        </div>
+      )
     }
   }
 }
