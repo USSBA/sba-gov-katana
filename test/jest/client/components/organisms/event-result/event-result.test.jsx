@@ -2,6 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import EventResult from '../../../../../../src/client/components/organisms/event-result/event-result.jsx'
 import { Link } from 'atoms'
+import { LeaveSbaModal } from 'organisms'
 
 const mockEvent = JSON.stringify({
   title: 'Business Entrepreneurship Course',
@@ -125,5 +126,63 @@ describe('Event result', () => {
     expect(component.find('.event-location')).toHaveLength(1)
     const componentLocation = component.find('.event-location').text()
     expect(componentLocation).toEqual('Online event')
+  })
+
+  it('renders register button when there is a registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = 'https://www.eventbrite.com'
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    expect(component.find('.register-button')).toHaveLength(1)
+    const buttonText = component
+      .find('.register-button')
+      .render()
+      .text()
+    expect(buttonText).toContain('REGISTER')
+  })
+
+  // TODO: Modify or remove this test in the future in the case that
+  // we no longer display "Open event" text in place of a registration button
+  it('does not render "Open event" text when there is a registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = 'https://www.eventbrite.com'
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    const doesHaveOpenEventText = component.find('.event-registration').contains('Open event')
+    expect(doesHaveOpenEventText).toBe(false)
+  })
+
+  it('renders "Open event" when there is no registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = null
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    const componentRegistrationText = component.find('.event-registration').text()
+    expect(componentRegistrationText).toEqual('Open event')
+  })
+
+  it('renders "Open event" when the registration url is an empty string', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = ''
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    const componentRegistrationText = component.find('.event-registration').text()
+    expect(componentRegistrationText).toEqual('Open event')
+  })
+
+  it('does not render a register button when there is no registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = null
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    expect(component.find('.register-button')).toHaveLength(0)
+  })
+
+  it('renders leaving SBA modal when a there is a registration url', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = 'https://www.eventbrite.com'
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    expect(component.find(LeaveSbaModal)).toHaveLength(1)
   })
 })
