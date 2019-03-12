@@ -18,10 +18,12 @@ describe('Event Template', () => {
   })
 
   test('should render an event description', () => {
+    const title = 'This is a title'
     const description = 'This is a description'
     const props = {
       eventData: {
-        description: description
+        title,
+        description
       }
     }
     const component = shallow(<Event {...props} />)
