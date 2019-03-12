@@ -29,45 +29,53 @@ class Event extends Component {
   }
 
   render() {
-    const { title, description, timezone, recurring, recurringType, cost, location, contact, registrationUrl } = this.props.eventData
+    const {
+      title,
+      description,
+      timezone,
+      recurring,
+      recurringType,
+      cost,
+      location,
+      contact,
+      registrationUrl
+    } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
     const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
     const startTime = moment.parseZone(this.props.eventData.startDate).format('h')
     const endTime = moment.parseZone(this.props.eventData.endDate).format('h a')
+    const eventTime = `${startTime}-${endTime}, ${timezone}`
 
     let recurringDetail
-    if (recurring === "Yes") {
-      switch(recurringType) {
-        case "Recurs monthly (same week &amp; same day of week)":
-          recurringDetail = "Reoccurs same day every month"
-          break;
-        case "Recurs bi-weekly":
-          recurringDetail = "Reoccurs bi-weekly"
-          break;
-        case "Recurs weekly":
-          recurringDetail = "Reoccurs weekly"
-          break;
+    if (recurring === 'Yes') {
+      switch (recurringType) {
+        case 'Recurs monthly (same week &amp; same day of week)':
+          recurringDetail = 'Reoccurs same day every month'
+          break
+        case 'Recurs bi-weekly':
+          recurringDetail = 'Reoccurs bi-weekly'
+          break
+        case 'Recurs weekly':
+          recurringDetail = 'Reoccurs weekly'
+          break
+        case 'Recurs daily':
+          recurringDetail = 'Reoccurs daily'
+          break
         default:
-          recurringDetail = "This is a reoccuring event"
-          break;
-      } 
+          recurringDetail = 'This is a reoccuring event'
+          break
+      }
     }
-    
-    let costDetail = cost === "0.00" ? "Free" : "$" + cost
-    
+
+    const costDetail = cost === '0.00' ? 'Free' : '$' + cost
+
     const address =
       location.address && location.city && location.state && location.zipcode
-        ? location.address +
-          '\n' +
-          location.city +
-          ',' +
-          location.state +
-          ' ' +
-          location.zipcode
-        : ""
+        ? location.address + '\n' + location.city + ',' + location.state + ' ' + location.zipcode
+        : null
 
-    let link = 'https://maps.google.com?q=' + encodeURIComponent(address)
+    const link = 'https://maps.google.com?q=' + encodeURIComponent(address)
 
     // classNames is not necessary when this is created for future extensibility
     // delete this comment if you modify the classNames below to include logic
@@ -120,27 +128,33 @@ class Event extends Component {
             <h3>Date and time</h3>
             <div>
               <div id="event-details-date">{startDateDetails}</div>
-              <div id="event-details-time">{startTime}-{endTime}, {timezone}</div>
+              <div id="event-details-time">{eventTime}</div>
               <p id="event-details-recurring">{recurringDetail}</p>
             </div>
             <h3>Cost</h3>
             <p>{costDetail}</p>
             <h3>Location</h3>
             <div>
-              <p>{location.name}<br/>
-                {location.address}, {location.address_additional}<br/>
-                {location.city}, {location.state} {location.zipcode}<br/>
-                <a href={link}>View on Map</a>
+              <p id="event-details-location">
+                {location.name}
+                <br />
+                {location.address}, {location.address_additional}
+                <br />
+                {location.city}, {location.state} {location.zipcode}
+                <br />
+                <a id="event-details-location-link" href={link}>
+                  View on Map
+                </a>
               </p>
             </div>
             <h3>Event Organizer</h3>
-            <p>{contact.name}</p>
+            <p id="event-details-organizer">{contact.name}</p>
             <div>
-              <SmallIcon fontAwesomeIconClassName="envelope"/>
+              <SmallIcon fontAwesomeIconClassName="envelope" />
               {contact.email}
             </div>
             <div>
-              <SmallIcon fontAwesomeIconClassName="fax"/>
+              <SmallIcon fontAwesomeIconClassName="fax" />
               {contact.phone}
             </div>
           </div>

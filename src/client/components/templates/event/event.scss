@@ -25,6 +25,21 @@
   }
 }
 
+.smallIcon {
+  float: left;
+  display: block;
+
+  @include grid-media($sba-grid-small) {
+    i {
+      font-size: 25px;
+    }
+  }
+  @include grid-media($sba-grid-medium) {
+    i {
+      font-size: 25px;
+    }
+  }
+}
 .descriptionLabel {
   color: $secondary-black-ish;
   padding-top: 45px;
