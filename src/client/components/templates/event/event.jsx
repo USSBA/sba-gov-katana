@@ -51,11 +51,13 @@ class Event extends Component {
       [styles.registerButtonIcon]: true
     })
 
+    const eventTitle = he.decode(title)
+
     return (
       <div className={containerClassNames}>
         <div className={styles.header}>
           <h3 id="event-header-date">{startDate}</h3>
-          <h1 data-cy="event-title">{title}</h1>
+          <h1 data-cy="event-title">{eventTitle}</h1>
         </div>
         <div className={styles.columnA}>
           <DecorativeDash aria-hidden="true" width={80} />

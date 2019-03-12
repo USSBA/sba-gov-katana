@@ -7,6 +7,7 @@ import { isEmpty } from 'lodash'
 import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
 import { LeaveSbaModal } from 'organisms'
+import he from 'he'
 
 class EventResult extends React.PureComponent {
   constructor() {
@@ -132,6 +133,7 @@ class EventResult extends React.PureComponent {
       })
 
       const ariaLabelText = `Event Result ${Number(id.split('-')[1]) + 1}`
+      const eventTitle = he.decode(item.title)
 
       return (
         <div
@@ -159,7 +161,7 @@ class EventResult extends React.PureComponent {
                 tabIndex="0"
               >
                 <h6 className="event-title" data-cy="title">
-                  {item.title}
+                  {eventTitle}
                 </h6>
               </Link>
               <div className={'event-location ' + styles.location} tabIndex="0" data-cy="location">
