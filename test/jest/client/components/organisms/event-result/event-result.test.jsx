@@ -141,6 +141,8 @@ describe('Event result', () => {
     expect(buttonText).toContain('REGISTER')
   })
 
+  // TODO: Modify or remove this test in the future in the case that
+  // we no longer display "Open event" text in place of a registration button
   it('does not render "Open event" text when there is a registration url', () => {
     const customMockEvent = JSON.parse(mockEvent)
     customMockEvent.registrationUrl = 'https://www.eventbrite.com'
@@ -153,6 +155,15 @@ describe('Event result', () => {
   it('renders "Open event" when there is no registration url', () => {
     const customMockEvent = JSON.parse(mockEvent)
     customMockEvent.registrationUrl = null
+
+    const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
+    const componentRegistrationText = component.find('.event-registration').text()
+    expect(componentRegistrationText).toEqual('Open event')
+  })
+
+  it('renders "Open event" when the registration url is an empty string', () => {
+    const customMockEvent = JSON.parse(mockEvent)
+    customMockEvent.registrationUrl = ''
 
     const component = shallow(<EventResult id={'result'} item={customMockEvent} />)
     const componentRegistrationText = component.find('.event-registration').text()

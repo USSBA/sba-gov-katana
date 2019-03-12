@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import classNames from 'classnames'
+import { isEmpty } from 'lodash'
 
 import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
@@ -87,7 +88,7 @@ class EventResult extends React.PureComponent {
       [styles.registerButtonIcon]: true
     })
 
-    if (item.registrationUrl !== null) {
+    if (!isEmpty(item.registrationUrl)) {
       return (
         <div className={styles.registerButton}>
           <Button

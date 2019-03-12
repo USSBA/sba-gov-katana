@@ -18,12 +18,10 @@ class LeaveSbaModal extends React.Component {
 
   renderLink() {
     const { shouldOpenNewWindow, url } = this.props
+    const onClick = shouldOpenNewWindow ? () => this.continueLinkNewWindow() : () => this.continueLink()
 
     return (
-      <Link
-        onClick={shouldOpenNewWindow ? () => this.continueLinkNewWindow() : () => this.continueLink()}
-        data-cy="external url"
-      >
+      <Link onClick={onClick} data-cy="external url">
         {url}
       </Link>
     )
