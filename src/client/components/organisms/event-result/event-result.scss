@@ -21,10 +21,10 @@
 // This grouping encompasses column1 and column2
 .columnGroupA {
   @include grid-media($sba-grid-medium) {
-    @include grid-column(7, $sba-grid-medium);
+    @include grid-column(6, $sba-grid-medium);
   }
   @include grid-media($sba-grid-large) {
-    @include grid-column(9, $sba-grid-large);
+    @include grid-column(8, $sba-grid-large);
   }
 }
 
@@ -71,11 +71,18 @@
 
 // Encompasses registration info display
 .column4 {
+  text-align: center;
   @include grid-media($sba-grid-medium) {
-    @include grid-column(3, $sba-grid-medium);
+    @include grid-column(4, $sba-grid-medium);
+    margin-right: 0;
+    padding-right: 15px;
+    float: right;
   }
   @include grid-media($sba-grid-large) {
-    @include grid-column(2, $sba-grid-large);
+    @include grid-column(3, $sba-grid-large);
+    margin-right: 0;
+    padding-right: 15px;
+    float: right;
   }
 }
 
@@ -88,8 +95,31 @@
   }
 }
 
+.openEventText {
+  font-weight: 600;
+  @include grid-media($sba-grid-small) {
+    text-align: left;
+  }
+  @include grid-media($sba-grid-medium) {
+    padding: 15px;
+  }
+  @include grid-media($sba-grid-large) {
+    padding: 15px;
+  }
+
+  &:focus {
+    outline: 2px dotted $sba-gray-light;
+    outline-offset: 3px;
+  }
+}
+
 .registerButton {
-  width: 160px;
+  min-width: 175px;
+}
+
+.registerButtonIcon {
+  padding-left: 5px;
+  vertical-align: middle;
 }
 
 .title {

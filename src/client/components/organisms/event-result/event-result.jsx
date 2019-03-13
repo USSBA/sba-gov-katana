@@ -1,11 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
-import styles from './event-result.scss'
 import classNames from 'classnames'
+import { isEmpty } from 'lodash'
+
+import styles from './event-result.scss'
 import { Button, Link } from 'atoms'
+import { LeaveSbaModal } from 'organisms'
 
 class EventResult extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      modalIsOpen: false
+    }
+  }
+
+  handleRegisterButtonClick(e) {
+    e.preventDefault()
+    this.setModalState(true)
+  }
+
+  setModalState(isOpen) {
+    this.setState({ modalIsOpen: isOpen })
+  }
+
+  handleClose() {
+    this.setModalState(false)
+  }
+
   formatDate() {
     const {
       item: { startDate }
@@ -57,6 +80,43 @@ class EventResult extends React.PureComponent {
     return `/event/${id}`
   }
 
+  renderRegistrationInfo() {
+    const { item } = this.props
+
+    const iconClassName = classNames({
+      'fa fa-external-link': true,
+      [styles.registerButtonIcon]: true
+    })
+
+    if (!isEmpty(item.registrationUrl)) {
+      return (
+        <div className={styles.registerButton}>
+          <Button
+            className="register-button"
+            tabIndex="0"
+            secondary
+            onClick={this.handleRegisterButtonClick.bind(this)}
+          >
+            REGISTER <i aria-hidden="true" className={iconClassName} />
+          </Button>
+          <LeaveSbaModal
+            closeLeaveSba={this.handleClose.bind(this)}
+            isOpen={this.state.modalIsOpen}
+            url={item.registrationUrl}
+            shouldOpenNewWindow
+            data-cy="leave sba modal"
+          />
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.openEventText} tabIndex="0">
+          Open event
+        </div>
+      )
+    }
+  }
+
   render() {
     const { id, item } = this.props
 
@@ -74,7 +134,13 @@ class EventResult extends React.PureComponent {
       const ariaLabelText = `Event Result ${Number(id.split('-')[1]) + 1}`
 
       return (
-        <div id={`event-result-${id}`} className={divClassName} tabIndex="0" aria-label={ariaLabelText} data-cy="event result">
+        <div
+          id={`event-result-${id}`}
+          className={divClassName}
+          tabIndex="0"
+          aria-label={ariaLabelText}
+          data-cy="event result"
+        >
           <div className={styles.columnGroupA}>
             <div className={styles.column1}>
               <div className={'event-date ' + styles.date} tabIndex="0" data-cy="date">
@@ -105,9 +171,7 @@ class EventResult extends React.PureComponent {
             <div className={'event-cost ' + styles.cost} tabIndex="0" data-cy="cost">{`${itemCost}`}</div>
           </div>
           <div className={'event-registration ' + styles.column4} data-cy="registration">
-            <Button secondary responsive={false}>
-              REGISTER
-            </Button>
+            {this.renderRegistrationInfo()}
           </div>
         </div>
       )

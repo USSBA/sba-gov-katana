@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './leave-sba-modal.scss'
 import { Link } from 'atoms'
@@ -10,8 +11,24 @@ class LeaveSbaModal extends React.Component {
     document.location = this.props.url
   }
 
+  continueLinkNewWindow() {
+    this.props.closeLeaveSba()
+    window.open(this.props.url)
+  }
+
+  renderLink() {
+    const { shouldOpenNewWindow, url } = this.props
+    const onClick = shouldOpenNewWindow ? () => this.continueLinkNewWindow() : () => this.continueLink()
+
+    return (
+      <Link onClick={onClick} data-cy="external url">
+        {url}
+      </Link>
+    )
+  }
+
   render() {
-    const { closeLeaveSba, url, isOpen } = this.props
+    const { closeLeaveSba, isOpen, shouldOpenNewWindow } = this.props
 
     const title = "You're leaving the Small Business Administration website."
     const text =
@@ -25,18 +42,28 @@ class LeaveSbaModal extends React.Component {
         cancelButtonText="CANCEL"
         okButtonText="CONTINUE"
         onClose={closeLeaveSba}
-        onClickOk={this.continueLink.bind(this)}
+        onClickOk={
+          shouldOpenNewWindow ? this.continueLinkNewWindow.bind(this) : this.continueLink.bind(this)
+        }
         isOpen={isOpen}
         showCancel={true}
       >
         <div className={styles.linkContainer}>
           <span>Link to website:</span>
           <br />
-          <Link to={url}>{url}</Link>
+          {this.renderLink()}
         </div>
       </SbaModal>
     )
   }
+}
+
+LeaveSbaModal.defaultProps = {
+  shouldOpenNewWindow: false
+}
+
+LeaveSbaModal.propTypes = {
+  shouldOpenNewWindow: PropTypes.bool
 }
 
 export default LeaveSbaModal
