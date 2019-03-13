@@ -18,10 +18,12 @@ describe('Event Template', () => {
   })
 
   test('should render an event description', () => {
+    const title = 'This is a title'
     const description = 'This is a description'
     const props = {
       eventData: {
-        description: description
+        title,
+        description
       }
     }
     const component = shallow(<Event {...props} />)
@@ -33,6 +35,7 @@ describe('Event Template', () => {
   test('should render a registration button', () => {
     const props = {
       eventData: {
+        title: 'my title',
         registrationUrl: 'my-url'
       }
     }
@@ -44,6 +47,7 @@ describe('Event Template', () => {
   test('should not render a registration button with an empty string', () => {
     const props = {
       eventData: {
+        title: 'my title',
         registrationUrl: ''
       }
     }
@@ -54,7 +58,9 @@ describe('Event Template', () => {
   })
   test('should not render a registration button with no registrationUrl value', () => {
     const props = {
-      eventData: {}
+      eventData: {
+        title: 'my title'
+      }
     }
     const component = shallow(<Event {...props} />)
     const result = component.find('.register-button')
