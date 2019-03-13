@@ -4,8 +4,30 @@ import classNames from 'classnames'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
 import styles from './event.scss'
+import { LeaveSbaModal } from 'organisms'
+import he from 'he'
 
 class Event extends Component {
+  constructor() {
+    super()
+    this.state = {
+      modalIsOpen: false
+    }
+  }
+
+  handleRegisterButtonClick(e) {
+    e.preventDefault()
+    this.setModalState(true)
+  }
+
+  setModalState(isOpen) {
+    this.setState({ modalIsOpen: isOpen })
+  }
+
+  handleClose() {
+    this.setModalState(false)
+  }
+
   render() {
     const { title, description, registrationUrl } = this.props.eventData
 
@@ -46,9 +68,16 @@ class Event extends Component {
         </div>
         <div className={styles.columnB}>
           {!isEmpty(registrationUrl) && <div className={styles.button} data-cy="registration">
-            <Button className="register-button" primary onClick={()=>console.log('Register Button Clicked: ', registrationUrl)}>
+            <Button className="register-button" primary onClick={this.handleRegisterButtonClick.bind(this)}>
               REGISTER <i aria-hidden="true" className={iconClassName} />
             </Button>
+            <LeaveSbaModal
+              closeLeaveSba={this.handleClose.bind(this)}
+              isOpen={this.state.modalIsOpen}
+              url={registrationUrl}
+              shouldOpenNewWindow
+              data-cy="leave sba modal"
+            />
           </div>}
         </div>
       </div>
