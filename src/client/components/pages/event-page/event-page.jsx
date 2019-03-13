@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Event from '../../templates/event/event.jsx'
 import ErrorPage from '../error-page/error-page.jsx'
 import { Loader } from 'atoms'
+import { isEmpty } from 'lodash'
 import { fetchRestContent } from '../../../fetch-content-helper'
 import styles from './event-page.scss'
 
@@ -40,22 +41,22 @@ class EventPage extends Component {
     const { id } = this.props
     const { data } = this.state
 
-    if (id && data !== null) {
-      if (data) {
+    if (id && data) {
+      if (!isEmpty(data)) {
         return (
           <div>
             <Event eventData={data} />
           </div>
         )
       } else {
-        return (
-          <div className={styles.container}>
-            <Loader />
-          </div>
-        )
+        return <ErrorPage linkUrl="/events/find" linkMessage="find events page" />
       }
     } else {
-      return <ErrorPage />
+      return (
+        <div className={styles.container}>
+          <Loader />
+        </div>
+      )
     }
   }
 }
