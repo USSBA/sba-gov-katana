@@ -47,10 +47,10 @@ class ErrorPage extends React.Component {
         <div className={styles.container}>
           <img src={errorImage} alt="error image" />
           <div className={styles.content}>
-            <h1>404</h1>
+            <h1 data-cy="error-page-title">404</h1>
             <h2>Page not found</h2>
             <DecorativeDash width={77} />
-            <h3>
+            <h3 data-cy="error-page-message">
               {text} Return to the <Link to={link.url}>{link.text}</Link>, or search for what you're trying
               to find.
             </h3>
