@@ -26,6 +26,7 @@ class ErrorPage extends React.Component {
 
   render() {
     const text = "Just like a business on the moon, the page you're looking for doesn't exist."
+    const { linkUrl, linkMessage } = this.props
 
     return (
       <div className={styles.errorPage}>
@@ -37,8 +38,8 @@ class ErrorPage extends React.Component {
             <h2>Page not found</h2>
             <DecorativeDash width={77} />
             <h3 data-cy="error-page-message">
-              {text} Return to the <Link to={this.props.linkUrl}>{this.props.linkMessage}</Link>, or search
-              for what you're trying to find.
+              {text} Return to the <Link to={linkUrl}>{linkMessage}</Link>, or search for what you're trying
+              to find.
             </h3>
             <form onSubmit={this.submitSearch.bind(this)}>
               <div className={styles.inputContainer}>
