@@ -104,7 +104,7 @@ class EventLookupPage extends React.PureComponent {
             queryParamName="address"
             className={styles.field + ' ' + styles.zip}
             label="Near"
-            placeholder="Zip Code"
+            placeholder="Enter Zip Code"
             validationFunction={input => {
               // only validate if there is an input value
               let result = true
