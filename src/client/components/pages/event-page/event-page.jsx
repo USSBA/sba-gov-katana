@@ -48,8 +48,8 @@ class EventPage extends Component {
           </div>
         )
       } else {
-        console.log('404')
-        return <ErrorPage type="event" />
+        // return <ErrorPage type="event" />
+        return <ErrorPage linkUrl="/events/find" linkMessage="find events page" />
       }
     } else {
       return (
