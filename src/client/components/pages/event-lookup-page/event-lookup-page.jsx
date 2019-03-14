@@ -53,9 +53,8 @@ class EventLookupPage extends React.PureComponent {
       result = fiveDigitRegex.test(input)
     }
 
-    // set state variable shouldDisableDistance in event-lookup-page to false
-    // when there is input and result is valid
-    this.setState({ shouldDisableDistance: !(input && result) })
+    // set state variable shouldDisableDistance in event-lookup-page to false when there is input
+    this.setState({ shouldDisableDistance: !input })
 
     return result
   }
