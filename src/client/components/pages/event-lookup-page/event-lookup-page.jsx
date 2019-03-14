@@ -8,6 +8,13 @@ import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
 
 class EventLookupPage extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      shouldDisableDistance: true
+    }
+  }
+
   customSearch(searchType, searchParams) {
     return fetchSiteContent(searchType, searchParams).then(searchResults => {
       const keyword = searchParams.q
@@ -38,7 +45,23 @@ class EventLookupPage extends React.PureComponent {
     })
   }
 
+  validateZipCode(input) {
+    // only validate if there is an input value
+    let result = true
+    if (!isEmpty(input)) {
+      const fiveDigitRegex = /^\d{5}$/g
+      result = fiveDigitRegex.test(input)
+    }
+
+    // set state variable shouldDisableDistance in event-lookup-page to false
+    // when there is input and result is valid
+    this.setState({ shouldDisableDistance: !(input && result) })
+
+    return result
+  }
+
   render() {
+    const { shouldDisableDistance } = this.state
     const defaultSearchParams = {
       dateRange: 'all',
       distance: '200',
@@ -105,15 +128,7 @@ class EventLookupPage extends React.PureComponent {
             className={styles.field + ' ' + styles.zip}
             label="Near"
             placeholder="Enter Zip Code"
-            validationFunction={input => {
-              // only validate if there is an input value
-              let result = true
-              if (!isEmpty(input)) {
-                const fiveDigitRegex = /^\d{5}$/g
-                result = fiveDigitRegex.test(input)
-              }
-              return result
-            }}
+            validationFunction={this.validateZipCode.bind(this)}
             errorText="Enter a 5-digit zip code."
             data-cy="zip"
           />
@@ -125,6 +140,7 @@ class EventLookupPage extends React.PureComponent {
             className={styles.field + ' ' + styles.multiSelect}
             name="Event's Page"
             multi={false}
+            disabled={shouldDisableDistance}
             options={[
               {
                 label: '200 miles',
