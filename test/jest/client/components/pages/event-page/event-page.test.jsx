@@ -22,9 +22,25 @@ describe('Event Page', () => {
     fetchRestContentStub.restore()
   })
 
-  test('should render the 404 if not id is given', () => {
+  test('should render the loader while waiting of a response from the API', () => {
     const component = shallow(<EventPage />)
+    const result = component.find('Loader')
+    const expected = 1
+    expect(result).toHaveLength(expected)
+  })
+
+  test('should render the 404 page when no event data is found', () => {
+    const component = shallow(<EventPage id="foo" />)
+    component.setState({ data: {} })
     const result = component.find('ErrorPage')
+    const expected = 1
+    expect(result).toHaveLength(expected)
+  })
+
+  test('should render the event component when event data is set', () => {
+    const component = shallow(<EventPage id="foo" />)
+    component.setState({ data: { title: 'foo' } })
+    const result = component.find('Event')
     const expected = 1
     expect(result).toHaveLength(expected)
   })
@@ -39,7 +55,7 @@ describe('Event Page', () => {
   //   const expected = 1
   //   expect(result).toHaveLength(expected)
   // })
-
+  //
   // test('should render the 404 if the event is not found', async () => {
   //   let eventData = {title: "This is a title"};
   //   fetchRestContentStub.returns(eventData)

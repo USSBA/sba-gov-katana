@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { PropTypes } from 'react'
 import clientConfig from '../../../services/client-config.js'
 import errorImage from 'assets/images/error-page/moon.png'
 import styles from './error-page.scss'
@@ -24,8 +23,10 @@ class ErrorPage extends React.Component {
     const uri = encodeURI(clientConfig.searchUrl + this.state.searchValue)
     document.location = uri
   }
+
   render() {
     const text = "Just like a business on the moon, the page you're looking for doesn't exist."
+    const { linkUrl, linkMessage } = this.props
 
     return (
       <div className={styles.errorPage}>
@@ -33,11 +34,12 @@ class ErrorPage extends React.Component {
         <div className={styles.container}>
           <img src={errorImage} alt="error image" />
           <div className={styles.content}>
-            <h1>404</h1>
+            <h1 data-cy="error-page-title">404</h1>
             <h2>Page not found</h2>
             <DecorativeDash width={77} />
-            <h3>
-              {text} Return to the <Link to="/">home page</Link>, or search for what you're trying to find.
+            <h3 data-cy="error-page-message">
+              {text} Return to the <Link to={linkUrl}>{linkMessage}</Link>, or search for what you're trying
+              to find.
             </h3>
             <form onSubmit={this.submitSearch.bind(this)}>
               <div className={styles.inputContainer}>
@@ -61,6 +63,16 @@ class ErrorPage extends React.Component {
       </div>
     )
   }
+}
+
+ErrorPage.defaultProps = {
+  linkUrl: '/',
+  linkMessage: 'home page'
+}
+
+ErrorPage.propTypes = {
+  linkUrl: PropTypes.string,
+  linkMessage: PropTypes.string
 }
 
 export default ErrorPage
