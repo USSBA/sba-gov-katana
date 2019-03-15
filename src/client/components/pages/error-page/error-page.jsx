@@ -33,7 +33,7 @@ class ErrorPage extends React.Component {
         <RemoveMainLoader />
         <div className={styles.container}>
           <img src={errorImage} alt="error image" />
-          <div className={styles.content}>
+          <div tabIndex="0" className={styles.content}>
             <h1 data-cy="error-page-title">404</h1>
             <h2>Page not found</h2>
             <DecorativeDash width={77} />
