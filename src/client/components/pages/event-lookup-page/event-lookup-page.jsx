@@ -95,7 +95,6 @@ class EventLookupPage extends React.PureComponent {
             label="Date Range"
             autoFocus={false}
             className={styles.field + ' ' + styles.multiSelect}
-            name="Event's Page"
             multi={false}
             options={[
               {
@@ -137,7 +136,6 @@ class EventLookupPage extends React.PureComponent {
             label="Distance"
             autoFocus={false}
             className={styles.field + ' ' + styles.multiSelect}
-            name="Event's Page"
             multi={false}
             disabled={shouldDisableDistance}
             options={[
