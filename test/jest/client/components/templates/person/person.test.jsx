@@ -12,7 +12,7 @@ const personPropsWithPhoto = {
   firstName: {},
   lastName: {},
   office: 6386,
-  officeTitle: 'Alabama District Office',
+  officeName: 'Alabama District Office',
   phone: '205-290-7009',
   picture: {
     alt: 'image of Thomas Todt',
@@ -32,7 +32,7 @@ const personPropsWithWithoutPhoto = {
   bio: 'Bio of Thomas Todt',
   emailAddress: 'thomas.todt@sba.gov',
   office: 6386,
-  officeTitle: 'Alabama District Office',
+  officeName: 'Alabama District Office',
   picture: {},
   phone: '205-290-7009',
   title: 'District Director',
