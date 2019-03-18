@@ -37,10 +37,11 @@ describe('Event Template', () => {
     expect(result.text()).toBe(title)
   })
 
-  xtest('should render an event description', () => {
+  test('should render an event description', () => {
     const description = 'This is a description'
     const props = {
       eventData: {
+        title: title,
         description: description,
         location: location,
         contact: contact
@@ -53,10 +54,11 @@ describe('Event Template', () => {
     expect(result.text()).toBe(description)
   })
 
-  xtest('should render an event date', () => {
+  test('should render an event date', () => {
     const expected = 'Tuesday, March 5'
     const props = {
       eventData: {
+        title: title,
         startDate: startDate,
         location: location,
         contact: contact
@@ -68,10 +70,11 @@ describe('Event Template', () => {
     expect(result.text()).toBe(expected)
   })
 
-  xtest('should render an event date in details box', () => {
+  test('should render an event date in details box', () => {
     const expected = 'Tuesday, March 5, 2019'
     const props = {
       eventData: {
+        title: title,
         startDate: startDate,
         location: location,
         contact: contact
@@ -83,12 +86,13 @@ describe('Event Template', () => {
     expect(result.text()).toBe(expected)
   })
 
-  xtest('should render if an event is recurring in details box', () => {
+  test('should render if an event is recurring in details box', () => {
     const recurringType = 'Recurs daily'
     const recurring = 'Yes'
     const expected = 'Reoccurs daily'
     const props = {
       eventData: {
+        title: title,
         location: location,
         contact: contact,
         recurringType: recurringType,
@@ -101,11 +105,12 @@ describe('Event Template', () => {
     expect(result.text()).toBe(expected)
   })
 
-  xtest('should render event location in details box', () => {
+  test('should render event location in details box', () => {
     const expected =
       'Fayetteville State University1200 Murchison Road, Fayetteville, North Carolina 28301View on Map'
     const props = {
       eventData: {
+        title: title,
         location: location,
         contact: contact
       }
@@ -116,44 +121,17 @@ describe('Event Template', () => {
     expect(result.text()).toBe(expected)
   })
 
-  xtest('should render event contact name in details box', () => {
+  test('should render event contact name in details box', () => {
     const expected = 'Sarah Espinosa'
     const props = {
       eventData: {
+        title: title,
         location: location,
         contact: contact
       }
     }
     const component = shallow(<Event {...props} />)
     const result = component.find('#event-details-organizer')
-    expect(result).toHaveLength(1)
-    expect(result.text()).toBe(expected)
-  })
-
-  xtest('should render event contact email in details box', () => {
-    const expected = 'sarah@gmail.com'
-    const props = {
-      eventData: {
-        location: location,
-        contact: contact
-      }
-    }
-    const component = shallow(<Event {...props} />)
-    const result = component.find('#event-details-email')
-    expect(result).toHaveLength(1)
-    expect(result.text()).toBe(expected)
-  })
-
-  xtest('should render event contact phone number in details box', () => {
-    const expected = '443-403-0291'
-    const props = {
-      eventData: {
-        location: location,
-        contact: contact
-      }
-    }
-    const component = shallow(<Event {...props} />)
-    const result = component.find('#event-details-phone')
     expect(result).toHaveLength(1)
     expect(result.text()).toBe(expected)
   })
