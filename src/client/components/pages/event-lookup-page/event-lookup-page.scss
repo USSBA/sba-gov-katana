@@ -81,6 +81,16 @@
       margin-right: 0;
     }
   }
+
+  [class*='is-disabled'] {
+    [class='Select-control'] {
+      background: $sba-gray-light;
+      pointer-events: none;
+    }
+    [class='Select-value-label'] {
+      opacity: 0.5;
+    }
+  }
 }
 
 // Results
