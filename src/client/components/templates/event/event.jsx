@@ -68,6 +68,23 @@ class Event extends Component {
       }
     }
 
+    // let organizerInfo
+    // if (contact.name) {
+    //   organizerInfo = 
+    //     <h3 tabIndex="0">Event Organizer</h3>; 
+    //     <p id="event-details-organizer" tabIndex="0">{contact.name}</p>;
+    //     <div>;
+    //       <SmallIcon fontAwesomeIconClassName="envelope" />;
+    //       {contact.email};
+    //     </div>;
+    //     <div>;
+    //       <SmallIcon fontAwesomeIconClassName="fax" />;
+    //       {contact.phone};
+    //     </div>;
+    // } else {
+    //   organizer = null
+    // }
+
     const costDetail = cost === '0.00' ? 'Free' : '$' + cost
 
     const address =
@@ -111,7 +128,7 @@ class Event extends Component {
             {description}
           </p>
         </div>
-        <div className={styles.columnB}>
+        <div className={styles.columnB} tabIndex="0">
           {!isEmpty(registrationUrl) && <div className={styles.button} data-cy="registration">
             <Button className="register-button" primary onClick={this.handleRegisterButtonClick.bind(this)}>
               REGISTER <i aria-hidden="true" className={iconClassName} />
@@ -125,17 +142,17 @@ class Event extends Component {
             />
           </div>}
           <div className={styles.callout}>
-            <h3>Date and time</h3>
+            <h3 tabIndex="0">Date and time</h3>
             <div>
-              <div id="event-details-date">{startDateDetails}</div>
-              <div id="event-details-time">{eventTime}</div>
-              <p id="event-details-recurring">{recurringDetail}</p>
+              <div id="event-details-date" tabIndex="0">{startDateDetails}</div>
+              <div id="event-details-time" tabIndex="0">{eventTime}</div>
+              <p id="event-details-recurring" tabIndex="0">{recurringDetail}</p>
             </div>
-            <h3>Cost</h3>
-            <p>{costDetail}</p>
-            <h3>Location</h3>
+            <h3 tabIndex="0">Cost</h3>
+            <p tabIndex="0">{costDetail}</p>
+            <h3 tabIndex="0">Location</h3>
             <div>
-              <p id="event-details-location">
+              <p id="event-details-location" tabIndex="0">
                 {location.name}
                 <br />
                 {location.address}, {location.address_additional}
@@ -147,16 +164,22 @@ class Event extends Component {
                 </a>
               </p>
             </div>
-            <h3>Event Organizer</h3>
-            <p id="event-details-organizer">{contact.name}</p>
             <div>
-              <SmallIcon fontAwesomeIconClassName="envelope" />
-              {contact.email}
-            </div>
-            <div>
-              <SmallIcon fontAwesomeIconClassName="fax" />
-              {contact.phone}
-            </div>
+              <h3 tabIndex="0">Event Organizer</h3>
+              <p id="event-details-organizer" tabIndex="0">{contact.name}</p>
+              <div className={styles.contactIcon}>
+                <SmallIcon fontAwesomeIconClassName="envelope" />
+              </div>
+              <div>
+                {contact.email}
+              </div>
+              <div className={styles.contactIcon}>
+                <SmallIcon fontAwesomeIconClassName="fax" />
+              </div>
+              <div>
+                {contact.phone}
+              </div>
+          </div>
           </div>
         </div>
       </div>
