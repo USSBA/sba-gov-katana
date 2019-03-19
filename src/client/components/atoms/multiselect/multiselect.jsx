@@ -94,7 +94,18 @@ class MultiSelectBox extends React.Component {
       }
     })
 
-    const { autoFocus, className, id, label, multi, name, options, placeholder, dataCy } = this.props
+    const {
+      autoFocus,
+      className,
+      disabled,
+      id,
+      label,
+      multi,
+      name,
+      options,
+      placeholder,
+      dataCy
+    } = this.props
     const langCode = getLanguageOverride()
 
     return (
@@ -119,6 +130,7 @@ class MultiSelectBox extends React.Component {
             searchable={multi}
             placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
             inputProps={inputProps}
+            disabled={disabled}
           />
         </div>
         {errorMessage}
@@ -129,6 +141,7 @@ class MultiSelectBox extends React.Component {
 
 MultiSelectBox.defaultProps = {
   className: '',
+  disabled: false,
   multi: true,
   maxValues: 3,
   dataCy: '',
