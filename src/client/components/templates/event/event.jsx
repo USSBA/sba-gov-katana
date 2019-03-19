@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Button, DecorativeDash, SmallIcon  } from 'atoms'
+import { Button, DecorativeDash, SmallIcon } from 'atoms'
 import classNames from 'classnames'
 import moment from 'moment'
 import { isEmpty } from 'lodash'
@@ -45,7 +45,7 @@ class Event extends Component {
     const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
     const startTime = moment.parseZone(this.props.eventData.startDate).format('h')
     const endTime = moment.parseZone(this.props.eventData.endDate).format('h a')
-    const eventTime = `${startTime}-${endTime}, ${timezone}`
+    const eventTime = `${startTime}-${endTime} ${timezone}`
 
     let recurringDetail
     if (recurring === 'Yes') {
@@ -70,8 +70,8 @@ class Event extends Component {
 
     // let organizerInfo
     // if (contact.name) {
-    //   organizerInfo = 
-    //     <h3 tabIndex="0">Event Organizer</h3>; 
+    //   organizerInfo =
+    //     <h3 tabIndex="0">Event Organizer</h3>;
     //     <p id="event-details-organizer" tabIndex="0">{contact.name}</p>;
     //     <div>;
     //       <SmallIcon fontAwesomeIconClassName="envelope" />;
@@ -119,67 +119,79 @@ class Event extends Component {
           <h3 id="event-header-date">{startDate}</h3>
           <h1 data-cy="event-title">{eventTitle}</h1>
         </div>
-        <div className={styles.columnA}>
-          <DecorativeDash aria-hidden="true" width={80} />
-          <h4 className={styles.descriptionLabel} data-cy="event-description-label">
-            Description
-          </h4>
-          <p id="event-details-description" data-cy="event-description">
-            {description}
-          </p>
-        </div>
-        <div className={styles.columnB} tabIndex="0">
-          {!isEmpty(registrationUrl) && <div className={styles.button} data-cy="registration">
-            <Button className="register-button" primary onClick={this.handleRegisterButtonClick.bind(this)}>
-              REGISTER <i aria-hidden="true" className={iconClassName} />
-            </Button>
-            <LeaveSbaModal
-              closeLeaveSba={this.handleClose.bind(this)}
-              isOpen={this.state.modalIsOpen}
-              url={registrationUrl}
-              shouldOpenNewWindow
-              data-cy="leave sba modal"
-            />
-          </div>}
-          <div className={styles.callout}>
-            <h3 tabIndex="0">Date and time</h3>
-            <div>
-              <div id="event-details-date" tabIndex="0">{startDateDetails}</div>
-              <div id="event-details-time" tabIndex="0">{eventTime}</div>
-              <p id="event-details-recurring" tabIndex="0">{recurringDetail}</p>
-            </div>
-            <h3 tabIndex="0">Cost</h3>
-            <p tabIndex="0">{costDetail}</p>
-            <h3 tabIndex="0">Location</h3>
-            <div>
-              <p id="event-details-location" tabIndex="0">
-                {location.name}
-                <br />
-                {location.address}, {location.address_additional}
-                <br />
-                {location.city}, {location.state} {location.zipcode}
-                <br />
-                <a id="event-details-location-link" href={link}>
-                  View on Map
-                </a>
-              </p>
-            </div>
-            <div>
-              <h3 tabIndex="0">Event Organizer</h3>
-              <p id="event-details-organizer" tabIndex="0">{contact.name}</p>
-              <div className={styles.contactIcon}>
-                <SmallIcon fontAwesomeIconClassName="envelope" />
-              </div>
-              <div>
-                {contact.email}
-              </div>
-              <div className={styles.contactIcon}>
-                <SmallIcon fontAwesomeIconClassName="fax" />
-              </div>
-              <div>
-                {contact.phone}
-              </div>
+        <div className={styles.page}>
+          <div className={styles.columnA}>
+            <DecorativeDash aria-hidden="true" width={80} />
+            <h4 className={styles.descriptionLabel} data-cy="event-description-label">
+              Description
+            </h4>
+            <p id="event-details-description" data-cy="event-description">
+              {description}
+            </p>
           </div>
+          <div className={styles.columnB} tabIndex="0">
+            {!isEmpty(registrationUrl) && (
+              <div className={styles.button} data-cy="registration">
+                <Button
+                  className="register-button"
+                  primary
+                  onClick={this.handleRegisterButtonClick.bind(this)}
+                >
+                  REGISTER <i aria-hidden="true" className={iconClassName} />
+                </Button>
+                <LeaveSbaModal
+                  closeLeaveSba={this.handleClose.bind(this)}
+                  isOpen={this.state.modalIsOpen}
+                  url={registrationUrl}
+                  shouldOpenNewWindow
+                  data-cy="leave sba modal"
+                />
+              </div>
+            )}
+            <div className={styles.callout}>
+              <h3 tabIndex="0">Date and time</h3>
+              <div>
+                <div id="event-details-date" tabIndex="0">
+                  {startDateDetails}
+                </div>
+                <div id="event-details-time" tabIndex="0">
+                  {eventTime}
+                </div>
+                <p className={styles.eventDetailsRecurring} id="event-details-recurring" tabIndex="0">
+                  {recurringDetail}
+                </p>
+              </div>
+              <h3 tabIndex="0">Cost</h3>
+              <p tabIndex="0">{costDetail}</p>
+              <h3 tabIndex="0">Location</h3>
+              <div>
+                <p id="event-details-location" tabIndex="0">
+                  {location.name}
+                  <br />
+                  {location.address}, {location.address_additional}
+                  <br />
+                  {location.city}, {location.state} {location.zipcode}
+                  <br />
+                  <a id="event-details-location-link" href={link}>
+                    View on Map
+                  </a>
+                </p>
+              </div>
+              <div>
+                <h3 tabIndex="0">Event Organizer</h3>
+                <p id="event-details-organizer" tabIndex="0">
+                  {contact.name}
+                </p>
+                <div className={styles.contactIcon}>
+                  {!isEmpty(contact.email) && <SmallIcon fontAwesomeIconClassName="envelope" />}
+                </div>
+                <div>{contact.email}</div>
+                <div className={styles.contactIcon}>
+                  {!isEmpty(contact.phone) && <SmallIcon fontAwesomeIconClassName="fax" />}
+                </div>
+                <div>{contact.phone}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
