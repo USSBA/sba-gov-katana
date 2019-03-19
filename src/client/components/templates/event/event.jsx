@@ -143,17 +143,22 @@ class Event extends Component {
                 />
               </div>
             )}
-            <div className={styles.callout}>
+            <div className={styles.detailsBox}>
               <h3 tabIndex="0">Date and time</h3>
               <div>
-                <div id="event-details-date" tabIndex="0">
+                <div id="event-details-date" data-cy="event-details-date" tabIndex="0">
                   {startDateDetails}
                 </div>
-                <div id="event-details-time" tabIndex="0">
+                <div id="event-details-time" data-cy="event-details-time" tabIndex="0">
                   {eventTime}
                 </div>
                 {!isEmpty(recurringDetail) ? (
-                  <p className={styles.eventDetailsRecurring} id="event-details-recurring" tabIndex="0">
+                  <p
+                    className={styles.eventDetailsRecurring}
+                    id="event-details-recurring"
+                    data-cy="event-details-recurring"
+                    tabIndex="0"
+                  >
                     {recurringDetail}
                   </p>
                 ) : (
@@ -189,7 +194,7 @@ class Event extends Component {
               {!isEmpty(contact.name) && (
                 <div>
                   <h3 tabIndex="0">Event Organizer</h3>
-                  <p id="event-details-organizer" tabIndex="0">
+                  <p id="event-details-organizer" data-cy="event-details-organizer" tabIndex="0">
                     {contact.name}
                   </p>
                   <div className={styles.contactIcon}>
@@ -197,13 +202,17 @@ class Event extends Component {
                       <SmallIcon fontAwesomeIconClassName="envelope" tabIndex="-1" disabled />
                     )}
                   </div>
-                  <div tabIndex="0">{contact.email}</div>
+                  <div tabIndex="0" data-cy="email">
+                    {contact.email}
+                  </div>
                   <div className={styles.contactIcon}>
                     {!isEmpty(contact.phone) && (
                       <SmallIcon fontAwesomeIconClassName="fax" tabable="false" />
                     )}
                   </div>
-                  <div tabIndex="0">{contact.phone}</div>
+                  <div tabIndex="0" data-cy="event-details-phone">
+                    {contact.phone}
+                  </div>
                 </div>
               )}
             </div>

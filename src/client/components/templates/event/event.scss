@@ -73,10 +73,9 @@
   padding-bottom: 75px;
 }
 
-.callout {
+.detailsBox {
   background-color: white;
   border-top: 5px solid $sba-blue;
-  // TODO: DRY
   box-shadow: $box-shadow;
   padding: 50px;
 
@@ -116,8 +115,7 @@
 .contactIcon {
   float: left;
   color: $sba-blue;
-  padding-right: 5px;
-  padding-top: 8px;
+  padding-right: 10px;
 }
 
 p.eventDetailsRecurring {
