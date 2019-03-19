@@ -44,8 +44,15 @@ class Event extends Component {
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
     const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
-    const startTime = moment.parseZone(this.props.eventData.startDate).format('h')
-    const endTime = moment.parseZone(this.props.eventData.endDate).format('h a')
+    const startTime =
+      moment.parseZone(this.props.eventData.startDate).format('mm') === '00'
+        ? moment.parseZone(this.props.eventData.startDate).format('h')
+        : moment.parseZone(this.props.eventData.startDate).format('h:mm')
+    const endTime =
+      moment.parseZone(this.props.eventData.endDate).format('mm') === '00'
+        ? moment.parseZone(this.props.eventData.endDate).format('ha')
+        : moment.parseZone(this.props.eventData.endDate).format('h:mma')
+
     const eventTime = `${startTime}-${endTime} ${timezone}`
 
     let recurringDetail
