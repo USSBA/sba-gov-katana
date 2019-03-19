@@ -38,7 +38,8 @@ class Event extends Component {
       cost,
       location,
       contact,
-      registrationUrl
+      registrationUrl,
+      locationType
     } = this.props.eventData
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
@@ -67,23 +68,6 @@ class Event extends Component {
           break
       }
     }
-
-    // let organizerInfo
-    // if (contact.name) {
-    //   organizerInfo =
-    //     <h3 tabIndex="0">Event Organizer</h3>;
-    //     <p id="event-details-organizer" tabIndex="0">{contact.name}</p>;
-    //     <div>;
-    //       <SmallIcon fontAwesomeIconClassName="envelope" />;
-    //       {contact.email};
-    //     </div>;
-    //     <div>;
-    //       <SmallIcon fontAwesomeIconClassName="fax" />;
-    //       {contact.phone};
-    //     </div>;
-    // } else {
-    //   organizer = null
-    // }
 
     const costDetail = cost === '0.00' ? 'Free' : '$' + cost
 
@@ -165,32 +149,40 @@ class Event extends Component {
               <p tabIndex="0">{costDetail}</p>
               <h3 tabIndex="0">Location</h3>
               <div>
-                <p id="event-details-location" tabIndex="0">
-                  {location.name}
-                  <br />
-                  {location.address}, {location.address_additional}
-                  <br />
-                  {location.city}, {location.state} {location.zipcode}
-                  <br />
-                  <a id="event-details-location-link" href={link}>
-                    View on Map
-                  </a>
-                </p>
+                {locationType === 'In Person' ? (
+                  <p id="event-details-location" tabIndex="0">
+                    {location.name}
+                    <br />
+                    {location.address}, {location.address_additional}
+                    <br />
+                    {location.city}, {location.state} {location.zipcode}
+                    <br />
+                    <a id="event-details-location-link" href={link}>
+                      View on Map
+                    </a>
+                  </p>
+                ) : (
+                  <p id="event-details-location" tabIndex="0">
+                    Online
+                  </p>
+                )}
               </div>
-              <div>
-                <h3 tabIndex="0">Event Organizer</h3>
-                <p id="event-details-organizer" tabIndex="0">
-                  {contact.name}
-                </p>
-                <div className={styles.contactIcon}>
-                  {!isEmpty(contact.email) && <SmallIcon fontAwesomeIconClassName="envelope" />}
+              {!isEmpty(contact.name) && (
+                <div>
+                  <h3 tabIndex="0">Event Organizer</h3>
+                  <p id="event-details-organizer" tabIndex="0">
+                    {contact.name}
+                  </p>
+                  <div className={styles.contactIcon}>
+                    {!isEmpty(contact.email) && <SmallIcon fontAwesomeIconClassName="envelope" />}
+                  </div>
+                  <div>{contact.email}</div>
+                  <div className={styles.contactIcon}>
+                    {!isEmpty(contact.phone) && <SmallIcon fontAwesomeIconClassName="fax" />}
+                  </div>
+                  <div>{contact.phone}</div>
                 </div>
-                <div>{contact.email}</div>
-                <div className={styles.contactIcon}>
-                  {!isEmpty(contact.phone) && <SmallIcon fontAwesomeIconClassName="fax" />}
-                </div>
-                <div>{contact.phone}</div>
-              </div>
+              )}
             </div>
           </div>
         </div>

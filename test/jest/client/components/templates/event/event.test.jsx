@@ -105,14 +105,31 @@ describe('Event Template', () => {
     expect(result.text()).toBe(expected)
   })
 
-  test('should render event location in details box', () => {
+  test('should render event location in details box when event is In Person', () => {
     const expected =
       'Fayetteville State University1200 Murchison Road, Fayetteville, North Carolina 28301View on Map'
     const props = {
       eventData: {
         title: title,
         location: location,
-        contact: contact
+        contact: contact,
+        locationType: 'In Person'
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const result = component.find('p#event-details-location')
+    expect(result).toHaveLength(1)
+    expect(result.text()).toBe(expected)
+  })
+
+  test('should render event location as Online in details box when event is Online', () => {
+    const expected = 'Online'
+    const props = {
+      eventData: {
+        title: title,
+        location: location,
+        contact: contact,
+        locationType: 'Online'
       }
     }
     const component = shallow(<Event {...props} />)
