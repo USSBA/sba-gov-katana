@@ -44,7 +44,9 @@ class Event extends Component {
 
     const startDate = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D')
     const startDateDetails = moment.parseZone(this.props.eventData.startDate).format('dddd, MMMM D, YYYY')
-    const startTime =
+
+    const startingTimeSuffix = moment.parseZone(this.props.eventData.startDate).format('a')
+    let startTime =
       moment.parseZone(this.props.eventData.startDate).format('mm') === '00'
         ? moment.parseZone(this.props.eventData.startDate).format('h')
         : moment.parseZone(this.props.eventData.startDate).format('h:mm')
@@ -53,6 +55,12 @@ class Event extends Component {
         ? moment.parseZone(this.props.eventData.endDate).format('ha')
         : moment.parseZone(this.props.eventData.endDate).format('h:mma')
 
+    if (
+      moment.parseZone(this.props.eventData.startDate).format('a') !==
+      moment.parseZone(this.props.eventData.endDate).format('a')
+    ) {
+      startTime = startTime + startingTimeSuffix
+    }
     const eventTime = `${startTime}-${endTime} ${timezone}`
 
     let recurringDetail
@@ -174,7 +182,7 @@ class Event extends Component {
               <h3 tabIndex="0">Location</h3>
               <div>
                 {locationType === 'In Person' ? (
-                  <p id="event-details-location" tabIndex="0">
+                  <p id="event-details-location" tabIndex="0" data-cy="event-details-location">
                     {location.name}
                     <br />
                     {location.address}, {location.address_additional}
