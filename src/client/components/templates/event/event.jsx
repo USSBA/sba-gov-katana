@@ -107,16 +107,20 @@ class Event extends Component {
     return (
       <div className={containerClassNames}>
         <div className={styles.header}>
-          <h3 id="event-header-date">{startDate}</h3>
-          <h1 data-cy="event-title">{eventTitle}</h1>
+          <h3 id="event-header-date" tabIndex="0" data-cy="event-header-date">
+            {startDate}
+          </h3>
+          <h1 data-cy="event-title" tabIndex="0">
+            {eventTitle}
+          </h1>
         </div>
         <div className={styles.page}>
           <div className={styles.columnA}>
             <DecorativeDash aria-hidden="true" width={80} />
-            <h4 className={styles.descriptionLabel} data-cy="event-description-label">
+            <h4 className={styles.descriptionLabel} data-cy="event-description-label" tabIndex="0">
               Description
             </h4>
-            <p id="event-details-description" data-cy="event-description">
+            <p id="event-details-description" data-cy="event-description" tabIndex="0gi">
               {description}
             </p>
           </div>
