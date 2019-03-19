@@ -67,19 +67,19 @@ class Event extends Component {
     if (recurring === 'Yes') {
       switch (recurringType) {
         case 'Recurs monthly (same week &amp; same day of week)':
-          recurringDetail = 'Reoccurs same day every month'
+          recurringDetail = 'Recurs same day every month'
           break
         case 'Recurs bi-weekly':
-          recurringDetail = 'Reoccurs bi-weekly'
+          recurringDetail = 'Recurs bi-weekly'
           break
         case 'Recurs weekly':
-          recurringDetail = 'Reoccurs weekly'
+          recurringDetail = 'Recurs weekly'
           break
         case 'Recurs daily':
-          recurringDetail = 'Reoccurs daily'
+          recurringDetail = 'Recurs daily'
           break
         default:
-          recurringDetail = 'This is a reoccuring event'
+          recurringDetail = 'This is a recuring event'
           break
       }
     }

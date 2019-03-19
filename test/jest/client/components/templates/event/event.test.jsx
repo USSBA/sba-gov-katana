@@ -89,7 +89,7 @@ describe('Event Template', () => {
   test('should render if an event is recurring in details box', () => {
     const recurringType = 'Recurs daily'
     const recurring = 'Yes'
-    const expected = 'Reoccurs daily'
+    const expected = 'Recurs daily'
     const props = {
       eventData: {
         title: title,
@@ -106,8 +106,7 @@ describe('Event Template', () => {
   })
 
   test('should render event location in details box when event is In Person', () => {
-    const expected =
-      'Fayetteville State University1200 Murchison Road, Fayetteville, North Carolina 28301View on Map'
+    const expected = 'Fayetteville State University1200 Murchison Road, Fayetteville, North Carolina 28301'
     const props = {
       eventData: {
         title: title,
@@ -119,7 +118,7 @@ describe('Event Template', () => {
     const component = shallow(<Event {...props} />)
     const result = component.find('p#event-details-location')
     expect(result).toHaveLength(1)
-    expect(result.text()).toBe(expected)
+    expect(result.text()).toContain(expected)
   })
 
   test('should render event location as Online in details box when event is Online', () => {
