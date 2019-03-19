@@ -83,7 +83,7 @@ class Results extends React.PureComponent {
 
     return hasSearchInfoPanel ? (
       <div className={divClassName}>
-        <div className={'search-info-panel ' + searchInfoPanelClassName} tabIndex="0" role="text">
+        <div className={'search-info-panel ' + searchInfoPanelClassName} tabIndex="0">
           <SearchInfoPanel
             pageNumber={pageNumber}
             pageSize={pageSize}
@@ -201,13 +201,23 @@ class Results extends React.PureComponent {
   }
 
   render() {
-    const { customDetailResultsView, id, paginate, selectedItem, enableLoadingMessage, isLoading, items } = this.props
+    const {
+      customDetailResultsView,
+      id,
+      paginate,
+      selectedItem,
+      enableLoadingMessage,
+      isLoading,
+      items
+    } = this.props
     const isItemSelected = !isEmpty(selectedItem)
     const shouldShowDetail = customDetailResultsView && isItemSelected
     const resultsClassName = classNames({
       [styles.resultContainerWithPagination]: paginate
     })
-    const view = shouldShowDetail ? this.renderDetailResultsView(resultsClassName) : this.renderResultsView(resultsClassName)
+    const view = shouldShowDetail
+      ? this.renderDetailResultsView(resultsClassName)
+      : this.renderResultsView(resultsClassName)
     return (
       <div id={id} className={styles.container} role="main" aria-live="polite">
         {view}
