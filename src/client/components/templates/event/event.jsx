@@ -148,12 +148,20 @@ class Event extends Component {
                 <div id="event-details-time" tabIndex="0">
                   {eventTime}
                 </div>
-                <p className={styles.eventDetailsRecurring} id="event-details-recurring" tabIndex="0">
-                  {recurringDetail}
+                {!isEmpty(recurringDetail) ? (
+                  <p className={styles.eventDetailsRecurring} id="event-details-recurring" tabIndex="0">
+                    {recurringDetail}
+                  </p>
+                ) : (
+                  <p tabIndex="-1" />
+                )}
+              </div>
+              <div>
+                <h3 tabIndex="0">Cost</h3>
+                <p tabIndex="0" data-cy="event-details-cost">
+                  {costDetail}
                 </p>
               </div>
-              <h3 tabIndex="0">Cost</h3>
-              <p tabIndex="0">{costDetail}</p>
               <h3 tabIndex="0">Location</h3>
               <div>
                 {locationType === 'In Person' ? (
@@ -181,13 +189,20 @@ class Event extends Component {
                     {contact.name}
                   </p>
                   <div className={styles.contactIcon}>
-                    {!isEmpty(contact.email) && <SmallIcon fontAwesomeIconClassName="envelope" />}
+                    {!isEmpty(contact.email) && <SmallIcon fontAwesomeIconClassName="envelope" disabled />}
                   </div>
-                  <div>{contact.email}</div>
+                  <div tabIndex="0">{contact.email}</div>
                   <div className={styles.contactIcon}>
-                    {!isEmpty(contact.phone) && <SmallIcon fontAwesomeIconClassName="fax" />}
+                    {!isEmpty(contact.phone) && (
+                      <SmallIcon
+                        fontAwesomeIconClassName="fax"
+                        tabbable="false"
+                        aria-label="test"
+                        disabled
+                      />
+                    )}
                   </div>
-                  <div>{contact.phone}</div>
+                  <div tabIndex="0">{contact.phone}</div>
                 </div>
               )}
             </div>
