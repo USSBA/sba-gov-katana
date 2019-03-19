@@ -193,17 +193,14 @@ class Event extends Component {
                     {contact.name}
                   </p>
                   <div className={styles.contactIcon}>
-                    {!isEmpty(contact.email) && <SmallIcon fontAwesomeIconClassName="envelope" disabled />}
+                    {!isEmpty(contact.email) && (
+                      <SmallIcon fontAwesomeIconClassName="envelope" tabIndex="-1" disabled />
+                    )}
                   </div>
                   <div tabIndex="0">{contact.email}</div>
                   <div className={styles.contactIcon}>
                     {!isEmpty(contact.phone) && (
-                      <SmallIcon
-                        fontAwesomeIconClassName="fax"
-                        tabbable="false"
-                        aria-label="test"
-                        disabled
-                      />
+                      <SmallIcon fontAwesomeIconClassName="fax" tabable="false" />
                     )}
                   </div>
                   <div tabIndex="0">{contact.phone}</div>
