@@ -120,7 +120,7 @@ class Tile extends React.Component {
     )
 
     let widthStyle = null
-    if (size === 3 && pathname === 'undefined') {
+    if (size === 3 && typeof pathname === 'undefined') {
       widthStyle = style.tileThree
     } else if (size === 4 && typeof pathname === 'undefined') {
       widthStyle = style.tileFour
