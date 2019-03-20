@@ -68,9 +68,11 @@ class Person extends Component {
             {!isEmpty(title) && <h5>{title}</h5>}
             {!isEmpty(officeName) && <p className={styles.officeName}>{officeName}</p>}
           </div>
-          <div className={styles.contact}>
-            <ContactCard {...contact} />
-          </div>
+          {!isEmpty(contact) && (
+            <div className={styles.contact}>
+              <ContactCard {...contact} />
+            </div>
+          )}
         </div>
         <div className={contentClassName}>
           {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />}
