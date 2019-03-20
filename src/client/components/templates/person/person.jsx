@@ -8,22 +8,6 @@ import { DecorativeDash, Label, Link } from 'atoms'
 import { Breadcrumb, ContactCard } from 'molecules'
 
 class Person extends Component {
-  createContact(email, fax, phoneNumber) {
-    const contact = {}
-
-    if (!isEmpty(email)) {
-      contact.email = email
-    }
-    if (!isEmpty(fax)) {
-      contact.fax = fax
-    }
-    if (!isEmpty(phoneNumber)) {
-      contact.phoneNumber = phoneNumber
-    }
-
-    return contact
-  }
-
   render() {
     const {
       personData: {
@@ -49,7 +33,11 @@ class Person extends Component {
       [styles.hasPicture]: !isEmpty(picture)
     })
 
-    const contact = this.createContact(email, fax, phoneNumber)
+    const contact = {
+      ...(!isEmpty(email) && { email }),
+      ...(!isEmpty(fax) && { fax }),
+      ...(!isEmpty(phoneNumber) && { phoneNumber })
+    }
 
     return (
       <div className={className}>
