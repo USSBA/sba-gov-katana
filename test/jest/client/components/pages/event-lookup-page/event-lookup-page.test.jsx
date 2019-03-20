@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
 import EventLookupPage from 'pages/event-lookup-page/event-lookup-page.jsx'
-import { TextInput } from 'atoms'
+import { MultiSelect } from 'atoms'
 
 describe('EventLookupPage', () => {
   // When a user enters a zip code containing characters are not equal to 5 digits, show an error
@@ -16,6 +16,7 @@ describe('EventLookupPage', () => {
     const result = component.find('#zip-error')
     expect(result).toHaveLength(expected)
   })
+
   // When a user enters a zip code containing characters are equal to 5 digits, do not show an error
   it('should not show a zip code error when characters are equal to 5 digits', () => {
     const component = mount(<EventLookupPage />)
@@ -27,5 +28,31 @@ describe('EventLookupPage', () => {
     const expected = 0
     const result = component.find('#zip-error')
     expect(result).toHaveLength(expected)
+  })
+
+  it('should disable the distance dropdown when zip code input is empty', () => {
+    const component = mount(<EventLookupPage />)
+    const zipCode = ''
+    const zipInput = component.find('#zip')
+    zipInput.simulate('focus')
+    zipInput.simulate('change', { target: { value: zipCode } })
+    zipInput.simulate('blur')
+
+    // distance is the second MultiSelect component on the page
+    const distanceComponent = component.find(MultiSelect).get(1)
+    expect(distanceComponent.props.disabled).toBe(true)
+  })
+
+  it('should NOT disable the distance dropdown when zip code input is NOT empty', () => {
+    const component = mount(<EventLookupPage />)
+    const zipCode = '23938'
+    const zipInput = component.find('#zip')
+    zipInput.simulate('focus')
+    zipInput.simulate('change', { target: { value: zipCode } })
+    zipInput.simulate('blur')
+
+    // distance is the second MultiSelect component on the page
+    const distanceComponent = component.find(MultiSelect).get(1)
+    expect(distanceComponent.props.disabled).toBe(false)
   })
 })

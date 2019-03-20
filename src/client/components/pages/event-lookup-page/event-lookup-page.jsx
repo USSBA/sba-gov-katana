@@ -8,6 +8,13 @@ import { EventResult, PrimarySearchBar, Results, PagingLookup } from 'organisms'
 import SearchTemplate from '../../templates/search/search'
 
 class EventLookupPage extends React.PureComponent {
+  constructor() {
+    super()
+    this.state = {
+      shouldDisableDistance: true
+    }
+  }
+
   customSearch(searchType, searchParams) {
     return fetchSiteContent(searchType, searchParams).then(searchResults => {
       const keyword = searchParams.q
@@ -38,7 +45,22 @@ class EventLookupPage extends React.PureComponent {
     })
   }
 
+  validateZipCode(input) {
+    // only validate if there is an input value
+    let result = true
+    if (!isEmpty(input)) {
+      const fiveDigitRegex = /^\d{5}$/g
+      result = fiveDigitRegex.test(input)
+    }
+
+    // set state variable shouldDisableDistance in event-lookup-page to false when there is input
+    this.setState({ shouldDisableDistance: !input })
+
+    return result
+  }
+
   render() {
+    const { shouldDisableDistance } = this.state
     const defaultSearchParams = {
       dateRange: 'all',
       distance: '200',
@@ -73,7 +95,6 @@ class EventLookupPage extends React.PureComponent {
             label="Date Range"
             autoFocus={false}
             className={styles.field + ' ' + styles.multiSelect}
-            name="Event's Page"
             multi={false}
             options={[
               {
@@ -104,16 +125,8 @@ class EventLookupPage extends React.PureComponent {
             queryParamName="address"
             className={styles.field + ' ' + styles.zip}
             label="Near"
-            placeholder="Zip Code"
-            validationFunction={input => {
-              // only validate if there is an input value
-              let result = true
-              if (!isEmpty(input)) {
-                const fiveDigitRegex = /^\d{5}$/g
-                result = fiveDigitRegex.test(input)
-              }
-              return result
-            }}
+            placeholder="Enter Zip Code"
+            validationFunction={this.validateZipCode.bind(this)}
             errorText="Enter a 5-digit zip code."
             data-cy="zip"
           />
@@ -123,8 +136,8 @@ class EventLookupPage extends React.PureComponent {
             label="Distance"
             autoFocus={false}
             className={styles.field + ' ' + styles.multiSelect}
-            name="Event's Page"
             multi={false}
+            disabled={shouldDisableDistance}
             options={[
               {
                 label: '200 miles',
