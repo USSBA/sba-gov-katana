@@ -8,7 +8,6 @@
 }
 
 .searchBar {
-  padding-bottom: 190px;
   background-color: $sba-blue;
   label,
   h2 {
@@ -20,6 +19,10 @@
     @include grid-media($sba-grid-large) {
       margin-top: 0;
     }
+  }
+
+  @include grid-media($sba-grid-large) {
+    padding-bottom: 190px;
   }
 }
 
