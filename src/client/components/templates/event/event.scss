@@ -80,7 +80,7 @@
   padding: 50px;
 
   @include grid-media($sba-grid-large) {
-    @include grid-column(8);
+    @include grid-column(10);
   }
 
   @include for-small-only {
@@ -118,8 +118,9 @@
   padding-right: 10px;
 }
 
-p.eventDetailsRecurring {
+.eventDetailsRecurring {
   font-style: italic;
+  padding-bottom: 15px;
 }
 
 .page {

@@ -161,14 +161,14 @@ class Event extends Component {
                   {eventTime}
                 </div>
                 {!isEmpty(recurringDetail) ? (
-                  <p
+                  <div
                     className={styles.eventDetailsRecurring}
                     id="event-details-recurring"
                     data-cy="event-details-recurring"
                     tabIndex="0"
                   >
                     {recurringDetail}
-                  </p>
+                  </div>
                 ) : (
                   <p tabIndex="-1" />
                 )}
@@ -202,9 +202,9 @@ class Event extends Component {
               {!isEmpty(contact.name) && (
                 <div>
                   <h3 tabIndex="0">Event Organizer</h3>
-                  <p id="event-details-organizer" data-cy="event-details-organizer" tabIndex="0">
+                  <div id="event-details-organizer" data-cy="event-details-organizer" tabIndex="0">
                     {contact.name}
-                  </p>
+                  </div>
                   <div className={styles.contactIcon}>
                     {!isEmpty(contact.email) && <i className={'fa fa-envelope-o'} aria-hidden="true" />}
                   </div>
