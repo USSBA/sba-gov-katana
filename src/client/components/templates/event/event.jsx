@@ -202,7 +202,12 @@ class Event extends Component {
               {!isEmpty(contact.name) && (
                 <div>
                   <h3 tabIndex="0">Event Organizer</h3>
-                  <div id="event-details-organizer" data-cy="event-details-organizer" tabIndex="0">
+                  <div
+                    className={styles.contactName}
+                    id="event-details-organizer"
+                    data-cy="event-details-organizer"
+                    tabIndex="0"
+                  >
                     {contact.name}
                   </div>
                   <div className={styles.contactIcon}>
