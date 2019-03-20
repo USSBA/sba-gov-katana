@@ -26,7 +26,16 @@ class Person extends Component {
 
   render() {
     const {
-      personData: { bio, emailAddress: email, fax, name, officeName, picture, phone: phoneNumber, title },
+      personData: {
+        bio,
+        emailAddress: email,
+        fax,
+        name,
+        office: { name: officeName },
+        picture,
+        phone: phoneNumber,
+        title
+      },
       pathname
     } = this.props
 
