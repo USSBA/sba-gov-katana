@@ -34,7 +34,7 @@ exports[`Card does not error check malformed link 1`] = `
     </h4>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         id="hr-4-0"
         style={
           Object {
@@ -94,7 +94,7 @@ exports[`Card should render the spanish version correctly if the link is just a 
     </h4>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         id="hr-4-0"
         style={
           Object {
@@ -150,7 +150,7 @@ exports[`Card to render correctly 1`] = `
     </h4>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         id="hr-4-0"
         style={
           Object {
@@ -208,7 +208,7 @@ exports[`Card to render correctly if the link is just a string 1`] = `
     </h4>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         id="hr-4-0"
         style={
           Object {
@@ -256,7 +256,7 @@ exports[`Card to render correctly with null link 1`] = `
     </h4>
     <div>
       <hr
-        className="dash"
+        className="dash dash"
         id="hr-4-0"
         style={
           Object {

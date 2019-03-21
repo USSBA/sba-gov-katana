@@ -1,11 +1,13 @@
+import PropTypes from 'prop-types'
 import React from 'react'
+
 import { browserHistory } from 'react-router'
 import { omit, isEmpty, cloneDeep, merge } from 'lodash'
 import { parse, stringify } from 'querystring'
+
+import styles from './search.scss'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { Paginator } from 'molecules'
-import PropTypes from 'prop-types'
-import styles from './search.scss'
 
 const createSlug = str => {
   return str
@@ -46,7 +48,7 @@ class SearchTemplate extends React.PureComponent {
   calculatePageNumber(pageSize = this.state.searchParams.pageSize, start = this.state.searchParams.start) {
     const maxPageNumber = this.calculateMaxPageNumber()
     let pageNumber = Math.floor(start / pageSize) + 1
-    //make sure page is in bounds
+    // make sure page is in bounds
     pageNumber = Math.min(pageNumber, maxPageNumber)
     pageNumber = Math.max(pageNumber, 1)
 
@@ -56,7 +58,7 @@ class SearchTemplate extends React.PureComponent {
   calculateStartIndex(pageNumber, pageSize = this.state.searchParams.pageSize, count = this.state.count) {
     const calculatedPageNumber = Math.min(this.calculateMaxPageNumber(pageSize, count), pageNumber)
     let startIndex = (calculatedPageNumber - 1) * pageSize
-    //make sure start is not less than 0 or greater than the total number of results
+    // make sure start is not less than 0 or greater than the total number of results
     startIndex = Math.max(0, startIndex)
     return startIndex
   }
@@ -65,7 +67,7 @@ class SearchTemplate extends React.PureComponent {
     const queryParams = parse(urlSearchString.substring(1))
     // delete any pageSize property so the user can't affect how results are displayed
     delete queryParams.pageSize
-    // calculate the actual  start value from the pageNumber parameter
+    // calculate the actual start value from the pageNumber parameter
     let { pageNumber } = queryParams
     const {
       searchParams: { pageSize }
@@ -78,12 +80,17 @@ class SearchTemplate extends React.PureComponent {
 
   componentWillMount() {
     const urlSearchString = document.location.search
-    const newSearchParams = merge(this.state.defaultSearchParams, this.props.defaultSearchParams || {}, this.generateQueryMap())
+    const newSearchParams = merge(
+      this.state.defaultSearchParams,
+      this.props.defaultSearchParams || {},
+      this.generateQueryMap()
+    )
     this.setState({ searchParams: newSearchParams })
     if (this.props.loadDefaultResults === true || urlSearchString.length) {
       this.doSearch(this.props.searchType, newSearchParams)
     }
   }
+
   // componentWillReceiveProps(nextProps) {
   //   const { items: results, isLoading, defaultResults } = nextProps
 
@@ -322,7 +329,15 @@ class SearchTemplate extends React.PureComponent {
       hasNoResults,
       isLoading
     } = this.state
-    const { children, extraClassName, paginate, showStatus, loadingText, noResultsHeading, noResultsBody } = this.props
+    const {
+      children,
+      extraClassName,
+      paginate,
+      showStatus,
+      loadingText,
+      noResultsHeading,
+      noResultsBody
+    } = this.props
 
     const childrenWithProps = React.Children.map(children, child => {
       if (child.props.hideOnZeroState && isZeroState) {
@@ -352,29 +367,36 @@ class SearchTemplate extends React.PureComponent {
     return (
       <div {...divProps}>
         <div>{childrenWithProps}</div>
-        {!isLoading && !hasNoResults &&(
+        {!isLoading && !hasNoResults && (
           <div>
             {this.renderLoadingView()}
             {paginate && this.renderPaginator()}
           </div>
         )}
-        {showStatus && <div>
-          {isLoading && (
-            <div className={styles.resultsStatusMessage}>
-              <p className={styles.loading}>{loadingText}</p>
-            </div>
-          )}
-          {!isLoading && hasNoResults && (
-            <div id="no-results" className={styles.resultsStatusMessage} data-cy="no-results">
-              <h3>{noResultsHeading}</h3>
-              <p>{noResultsBody}</p>
-              <p><a onClick={ () => {
-                this.onReset()
-              }}>Clear all filters</a></p>
-            </div>
-          )}
-        </div>}
-
+        {showStatus && (
+          <div>
+            {isLoading && (
+              <div className={styles.resultsStatusMessage}>
+                <p className={styles.loading}>{loadingText}</p>
+              </div>
+            )}
+            {!isLoading && hasNoResults && (
+              <div id="no-results" className={styles.resultsStatusMessage} data-cy="no-results">
+                <h3>{noResultsHeading}</h3>
+                <p>{noResultsBody}</p>
+                <p>
+                  <a
+                    onClick={() => {
+                      this.onReset()
+                    }}
+                  >
+                    Clear all filters
+                  </a>
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     )
   }
@@ -389,7 +411,10 @@ SearchTemplate.propTypes = {
   showStatus: PropTypes.bool,
   loadingText: PropTypes.string,
   noResultsHeading: PropTypes.string,
-  noResultsBody: PropTypes.string
+  noResultsBody: PropTypes.string,
+
+  // callback called during each event handler
+  onHandleEvent: PropTypes.func
 }
 
 SearchTemplate.defaultProps = {
@@ -400,9 +425,9 @@ SearchTemplate.defaultProps = {
   paginate: true,
   onHandleEvent: () => {},
   showStatus: true,
-  loadingText: "loading...",
+  loadingText: 'Loading...',
   noResultsHeading: "Sorry, we didn't find any results that matched your search.",
-  noResultsBody: "Try changing your search terms, adjusting your zip code, or tweaking your filters."
+  noResultsBody: 'Try changing your search terms, adjusting your zip code, or tweaking your filters.'
 }
 
 export default SearchTemplate

@@ -1,8 +1,8 @@
 import React from 'react'
-import { clone } from 'lodash'
-import { mount, shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
-const sinon = require('sinon')
+import sinon from 'sinon'
+import { mount, shallow } from 'enzyme'
+import { clone } from 'lodash'
 
 import { SearchBox } from 'organisms'
 
@@ -62,7 +62,7 @@ describe('searchBox', () => {
     expect(tree.children[0].children[1].children[0]).toBe('Search by title or document number')
   })
 
-  test('should have default props for document type, program and document activity, and its default labels', () => {
+  test.only('should have default props for document type, program and document activity, and its default labels', () => {
     const component = shallow(<SearchBox />)
     expect(component).toMatchSnapshot()
     expect(component.instance().props.multiSelectDocumentTypeDefaultLabel).toBe('All document types')

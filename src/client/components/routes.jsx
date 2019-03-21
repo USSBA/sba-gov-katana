@@ -50,6 +50,10 @@ const PersonPage = props => (
   <Async componentProps={props} load={import('./pages/person-page/person-page.jsx')} />
 )
 
+const PersonLookupPage = props => (
+  <Async componentProps={props} load={import('./pages/person-lookup-page/person-lookup-page.jsx')} />
+)
+
 const LearningCenterLookupPage = props => (
   <Async
     componentProps={props}
@@ -92,6 +96,8 @@ const mainRoutes = [
   <Redirect key={59} from="/local-assistance/find" to="/local-assistance/find/" />,
   <Route key={60} path="/events/find/" component={EventLookupPage} />,
   <Redirect key={61} from="/events/find" to="/events/find/" />,
+  <Route key={62} path="/person/" component={PersonLookupPage} />,
+  <Redirect key={63} from="/person" to="/person/" />,
   <Route key={12} path="/business-guide/10-steps-start-your-business/" component={TenStepsLandingPage} />,
   <Route
     key={13}

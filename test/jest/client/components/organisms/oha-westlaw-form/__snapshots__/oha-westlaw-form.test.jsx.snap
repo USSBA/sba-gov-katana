@@ -140,15 +140,12 @@ ShallowWrapper {
             Example: 134.202(d)      non-manufacture      "ostensible subcontractor"
           </span>
         </label>
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
           className="multiselect"
-          dataCy=""
-          disabled={false}
           errorText=""
           id="tnc-decision-type-select"
           label="Decision type (optional)"
-          maxValues={3}
           multi={false}
           name="tncDecisionType"
           onBlur={[Function]}
@@ -201,15 +198,12 @@ ShallowWrapper {
           validationState=""
           value=""
         />
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
           className="multiselect"
-          dataCy=""
-          disabled={false}
           errorText=""
           id="tnc-date-select"
           label="Date Restriction (optional)"
-          maxValues={3}
           multi={false}
           name="tncDate"
           onBlur={[Function]}
@@ -391,15 +385,12 @@ ShallowWrapper {
               Example: 134.202(d)      non-manufacture      "ostensible subcontractor"
             </span>
           </label>
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
             className="multiselect"
-            dataCy=""
-            disabled={false}
             errorText=""
             id="tnc-decision-type-select"
             label="Decision type (optional)"
-            maxValues={3}
             multi={false}
             name="tncDecisionType"
             onBlur={[Function]}
@@ -452,15 +443,12 @@ ShallowWrapper {
             validationState=""
             value=""
           />
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
             className="multiselect"
-            dataCy=""
-            disabled={false}
             errorText=""
             id="tnc-date-select"
             label="Date Restriction (optional)"
-            maxValues={3}
             multi={false}
             name="tncDate"
             onBlur={[Function]}
@@ -683,15 +671,12 @@ ShallowWrapper {
                   Example: 134.202(d)      non-manufacture      "ostensible subcontractor"
                 </span>
               </label>
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
                 className="multiselect"
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="tnc-decision-type-select"
                 label="Decision type (optional)"
-                maxValues={3}
                 multi={false}
                 name="tncDecisionType"
                 onBlur={[Function]}
@@ -744,15 +729,12 @@ ShallowWrapper {
                 validationState=""
                 value=""
               />
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
                 className="multiselect"
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="tnc-date-select"
                 label="Date Restriction (optional)"
-                maxValues={3}
                 multi={false}
                 name="tncDate"
                 onBlur={[Function]}
@@ -934,15 +916,12 @@ ShallowWrapper {
                   Example: 134.202(d)      non-manufacture      "ostensible subcontractor"
                 </span>
               </label>
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
                 className="multiselect"
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="tnc-decision-type-select"
                 label="Decision type (optional)"
-                maxValues={3}
                 multi={false}
                 name="tncDecisionType"
                 onBlur={[Function]}
@@ -995,15 +974,12 @@ ShallowWrapper {
                 validationState=""
                 value=""
               />
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
                 className="multiselect"
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="tnc-date-select"
                 label="Date Restriction (optional)"
-                maxValues={3}
                 multi={false}
                 name="tncDate"
                 onBlur={[Function]}

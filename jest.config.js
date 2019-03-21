@@ -15,6 +15,7 @@ module.exports = {
     '\\.(css|scss|less)$': 'identity-obj-proxy'
   },
   modulePaths: ['<rootDir>/src/', '<rootDir>/src/client/components/'],
+  setupFiles: ['<rootDir>/test/jest/setup.js'],
   testEnvironment: '<rootDir>/test/jest/environments/custom.js',
   testPathIgnorePatterns: ['/node_modules/', '.c9'],
   testURL: 'https://www.sba.gov'

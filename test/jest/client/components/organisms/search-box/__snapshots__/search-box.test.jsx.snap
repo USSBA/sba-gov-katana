@@ -44,14 +44,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documenttype-select"
-          maxValues={3}
           multi={false}
           name="documenttype-select"
           onBlur={[Function]}
@@ -104,14 +100,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="program-select"
-          maxValues={3}
           multi={false}
           name="program-select"
           onBlur={[Function]}
@@ -176,14 +168,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documentactivity-select"
-          maxValues={3}
           multi={false}
           name="documentactivity-select"
           onBlur={[Function]}
@@ -309,14 +297,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documenttype-select"
-            maxValues={3}
             multi={false}
             name="documenttype-select"
             onBlur={[Function]}
@@ -369,14 +353,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="program-select"
-            maxValues={3}
             multi={false}
             name="program-select"
             onBlur={[Function]}
@@ -441,14 +421,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documentactivity-select"
-            maxValues={3}
             multi={false}
             name="documentactivity-select"
             onBlur={[Function]}
@@ -596,7 +572,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
       />,
-      "_debugID": 11,
+      "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -666,7 +642,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 6,
+      "_mountOrder": 1,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -709,14 +685,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -769,14 +741,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -841,14 +809,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -937,7 +901,7 @@ ShallowWrapper {
             </Button>
           </div>
         </div>,
-        "_debugID": 12,
+        "_debugID": 2,
         "_renderedOutput": <div
           className="container"
         >
@@ -974,14 +938,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -1034,14 +994,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -1106,14 +1062,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -1312,14 +1264,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documenttype-select"
-          maxValues={3}
           multi={false}
           name="documenttype-select"
           onBlur={[Function]}
@@ -1372,14 +1320,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="program-select"
-          maxValues={3}
           multi={false}
           name="program-select"
           onBlur={[Function]}
@@ -1444,14 +1388,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documentactivity-select"
-          maxValues={3}
           multi={false}
           name="documentactivity-select"
           onBlur={[Function]}
@@ -1577,14 +1517,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documenttype-select"
-            maxValues={3}
             multi={false}
             name="documenttype-select"
             onBlur={[Function]}
@@ -1637,14 +1573,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="program-select"
-            maxValues={3}
             multi={false}
             name="program-select"
             onBlur={[Function]}
@@ -1709,14 +1641,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documentactivity-select"
-            maxValues={3}
             multi={false}
             name="documentactivity-select"
             onBlur={[Function]}
@@ -1864,7 +1792,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
       />,
-      "_debugID": 73,
+      "_debugID": 94,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -1934,7 +1862,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 21,
+      "_mountOrder": 27,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -1977,14 +1905,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -2037,14 +1961,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -2109,14 +2029,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -2205,7 +2121,7 @@ ShallowWrapper {
             </Button>
           </div>
         </div>,
-        "_debugID": 74,
+        "_debugID": 95,
         "_renderedOutput": <div
           className="container"
         >
@@ -2242,14 +2158,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -2302,14 +2214,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -2374,14 +2282,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -2585,67 +2489,107 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
-        className=""
-        id="documenttype-select-container"
+        className="multiselect"
       >
         <label
           htmlFor="documenttype-select"
         />
         <div
-          className="errorClass"
-          data-cy=""
-          id="documenttype-select"
+          className="Select select has-value is-clearable is-searchable Select--single"
         >
+          <input
+            disabled={false}
+            name="documenttype-select"
+            type="hidden"
+            value="All"
+          />
           <div
-            className="Select  myselect Select--single"
+            className="Select-control"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
           >
-            <div
-              className="Select-control"
-              onKeyDown={[Function]}
+            <span
+              className="Select-multi-value-wrapper"
+              id="react-select-2--value"
+            >
+              <div
+                className="Select-value"
+              >
+                <span
+                  aria-selected="true"
+                  className="Select-value-label"
+                  id="react-select-2--value-item"
+                  role="option"
+                >
+                  All document types
+                </span>
+              </div>
+              <div
+                className="Select-input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-activedescendant="react-select-2--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </span>
+            <span
+              aria-label="Clear value"
+              className="Select-clear-zone"
               onMouseDown={[Function]}
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              title="Clear value"
             >
-              <span
-                className="Select-multi-value-wrapper"
-                id="react-select-2--value"
-              >
-                <div
-                  className="Select-placeholder"
-                >
-                  Select...
-                </div>
-                <div
-                  aria-activedescendant="react-select-2--value"
-                  aria-expanded={false}
-                  aria-owns="react-select-2--value"
-                  aria-readonly="false"
-                  className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
-                  style={
-                    Object {
-                      "border": 0,
-                      "display": "inline-block",
-                      "width": 1,
-                    }
-                  }
-                  tabIndex={0}
-                />
-              </span>
-              <span
-                className="Select-arrow-zone"
-                onMouseDown={[Function]}
-              >
-                <img
-                  alt="dropdown arrow"
-                  className="chevronIcon"
-                  src="test-file-stub"
-                />
-              </span>
-            </div>
+              <span />
+            </span>
+            <span
+              className="Select-arrow-zone"
+              onMouseDown={[Function]}
+            >
+              <i
+                alt="drop-down arrow"
+                className="fa fa-chevron-down dropDownArrow"
+              />
+            </span>
           </div>
         </div>
       </div>
@@ -2654,67 +2598,107 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
-        className=""
-        id="program-select-container"
+        className="multiselect"
       >
         <label
           htmlFor="program-select"
         />
         <div
-          className="errorClass"
-          data-cy=""
-          id="program-select"
+          className="Select select has-value is-clearable is-searchable Select--single"
         >
+          <input
+            disabled={false}
+            name="program-select"
+            type="hidden"
+            value="All"
+          />
           <div
-            className="Select  myselect Select--single"
+            className="Select-control"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
           >
-            <div
-              className="Select-control"
-              onKeyDown={[Function]}
+            <span
+              className="Select-multi-value-wrapper"
+              id="react-select-3--value"
+            >
+              <div
+                className="Select-value"
+              >
+                <span
+                  aria-selected="true"
+                  className="Select-value-label"
+                  id="react-select-3--value-item"
+                  role="option"
+                >
+                  All programs
+                </span>
+              </div>
+              <div
+                className="Select-input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-activedescendant="react-select-3--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </span>
+            <span
+              aria-label="Clear value"
+              className="Select-clear-zone"
               onMouseDown={[Function]}
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              title="Clear value"
             >
-              <span
-                className="Select-multi-value-wrapper"
-                id="react-select-3--value"
-              >
-                <div
-                  className="Select-placeholder"
-                >
-                  Select...
-                </div>
-                <div
-                  aria-activedescendant="react-select-3--value"
-                  aria-expanded={false}
-                  aria-owns="react-select-3--value"
-                  aria-readonly="false"
-                  className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
-                  style={
-                    Object {
-                      "border": 0,
-                      "display": "inline-block",
-                      "width": 1,
-                    }
-                  }
-                  tabIndex={0}
-                />
-              </span>
-              <span
-                className="Select-arrow-zone"
-                onMouseDown={[Function]}
-              >
-                <img
-                  alt="dropdown arrow"
-                  className="chevronIcon"
-                  src="test-file-stub"
-                />
-              </span>
-            </div>
+              <span />
+            </span>
+            <span
+              className="Select-arrow-zone"
+              onMouseDown={[Function]}
+            >
+              <i
+                alt="drop-down arrow"
+                className="fa fa-chevron-down dropDownArrow"
+              />
+            </span>
           </div>
         </div>
       </div>
@@ -2723,67 +2707,107 @@ exports[`searchBox should render default sectionHeaderText and subtitleText, h2 
       className="multiSelect"
     >
       <div
-        className=""
-        id="documentactivity-select-container"
+        className="multiselect"
       >
         <label
           htmlFor="documentactivity-select"
         />
         <div
-          className="errorClass"
-          data-cy=""
-          id="documentactivity-select"
+          className="Select select has-value is-clearable is-searchable Select--single"
         >
+          <input
+            disabled={false}
+            name="documentactivity-select"
+            type="hidden"
+            value="All"
+          />
           <div
-            className="Select  myselect Select--single"
+            className="Select-control"
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
           >
-            <div
-              className="Select-control"
-              onKeyDown={[Function]}
+            <span
+              className="Select-multi-value-wrapper"
+              id="react-select-4--value"
+            >
+              <div
+                className="Select-value"
+              >
+                <span
+                  aria-selected="true"
+                  className="Select-value-label"
+                  id="react-select-4--value-item"
+                  role="option"
+                >
+                  All document activity
+                </span>
+              </div>
+              <div
+                className="Select-input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-activedescendant="react-select-4--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </span>
+            <span
+              aria-label="Clear value"
+              className="Select-clear-zone"
               onMouseDown={[Function]}
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              title="Clear value"
             >
-              <span
-                className="Select-multi-value-wrapper"
-                id="react-select-4--value"
-              >
-                <div
-                  className="Select-placeholder"
-                >
-                  Select...
-                </div>
-                <div
-                  aria-activedescendant="react-select-4--value"
-                  aria-expanded={false}
-                  aria-owns="react-select-4--value"
-                  aria-readonly="false"
-                  className="Select-input"
-                  onBlur={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
-                  style={
-                    Object {
-                      "border": 0,
-                      "display": "inline-block",
-                      "width": 1,
-                    }
-                  }
-                  tabIndex={0}
-                />
-              </span>
-              <span
-                className="Select-arrow-zone"
-                onMouseDown={[Function]}
-              >
-                <img
-                  alt="dropdown arrow"
-                  className="chevronIcon"
-                  src="test-file-stub"
-                />
-              </span>
-            </div>
+              <span />
+            </span>
+            <span
+              className="Select-arrow-zone"
+              onMouseDown={[Function]}
+            >
+              <i
+                alt="drop-down arrow"
+                className="fa fa-chevron-down dropDownArrow"
+              />
+            </span>
           </div>
         </div>
       </div>
@@ -2845,14 +2869,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documenttype-select"
-          maxValues={3}
           multi={false}
           name="documenttype-select"
           onBlur={[Function]}
@@ -2905,14 +2925,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="program-select"
-          maxValues={3}
           multi={false}
           name="program-select"
           onBlur={[Function]}
@@ -2977,14 +2993,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documentactivity-select"
-          maxValues={3}
           multi={false}
           name="documentactivity-select"
           onBlur={[Function]}
@@ -3110,14 +3122,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documenttype-select"
-            maxValues={3}
             multi={false}
             name="documenttype-select"
             onBlur={[Function]}
@@ -3170,14 +3178,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="program-select"
-            maxValues={3}
             multi={false}
             name="program-select"
             onBlur={[Function]}
@@ -3242,14 +3246,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documentactivity-select"
-            maxValues={3}
             multi={false}
             name="documentactivity-select"
             onBlur={[Function]}
@@ -3397,7 +3397,7 @@ ShallowWrapper {
         sectionHeaderText="new title"
         subtitleText="new subtitle"
       />,
-      "_debugID": 75,
+      "_debugID": 96,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -3467,7 +3467,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 22,
+      "_mountOrder": 28,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -3510,14 +3510,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -3570,14 +3566,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -3642,14 +3634,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -3738,7 +3726,7 @@ ShallowWrapper {
             </Button>
           </div>
         </div>,
-        "_debugID": 76,
+        "_debugID": 97,
         "_renderedOutput": <div
           className="container"
         >
@@ -3775,14 +3763,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -3835,14 +3819,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -3907,14 +3887,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -4113,14 +4089,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documenttype-select"
-          maxValues={3}
           multi={false}
           name="documenttype-select"
           onBlur={[Function]}
@@ -4173,14 +4145,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="program-select"
-          maxValues={3}
           multi={false}
           name="program-select"
           onBlur={[Function]}
@@ -4245,14 +4213,10 @@ ShallowWrapper {
       <div
         className="multiSelect"
       >
-        <MultiSelectBox
+        <MultiSelect
           autoFocus={false}
-          className=""
-          dataCy=""
-          disabled={false}
           errorText=""
           id="documentactivity-select"
-          maxValues={3}
           multi={false}
           name="documentactivity-select"
           onBlur={[Function]}
@@ -4378,14 +4342,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documenttype-select"
-            maxValues={3}
             multi={false}
             name="documenttype-select"
             onBlur={[Function]}
@@ -4438,14 +4398,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="program-select"
-            maxValues={3}
             multi={false}
             name="program-select"
             onBlur={[Function]}
@@ -4510,14 +4466,10 @@ ShallowWrapper {
         <div
           className="multiSelect"
         >
-          <MultiSelectBox
+          <MultiSelect
             autoFocus={false}
-            className=""
-            dataCy=""
-            disabled={false}
             errorText=""
             id="documentactivity-select"
-            maxValues={3}
             multi={false}
             name="documentactivity-select"
             onBlur={[Function]}
@@ -4665,7 +4617,7 @@ ShallowWrapper {
         sectionHeaderText="Search documents, forms, and SOPs"
         subtitleText="Search by title or document number"
       />,
-      "_debugID": 71,
+      "_debugID": 92,
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchBox {
@@ -4735,7 +4687,7 @@ ShallowWrapper {
           "validateCallback": [Function],
         },
       },
-      "_mountOrder": 20,
+      "_mountOrder": 26,
       "_pendingCallbacks": null,
       "_pendingElement": null,
       "_pendingForceUpdate": false,
@@ -4778,14 +4730,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -4838,14 +4786,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -4910,14 +4854,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}
@@ -5006,7 +4946,7 @@ ShallowWrapper {
             </Button>
           </div>
         </div>,
-        "_debugID": 72,
+        "_debugID": 93,
         "_renderedOutput": <div
           className="container"
         >
@@ -5043,14 +4983,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documenttype-select"
-                maxValues={3}
                 multi={false}
                 name="documenttype-select"
                 onBlur={[Function]}
@@ -5103,14 +5039,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="program-select"
-                maxValues={3}
                 multi={false}
                 name="program-select"
                 onBlur={[Function]}
@@ -5175,14 +5107,10 @@ ShallowWrapper {
             <div
               className="multiSelect"
             >
-              <MultiSelectBox
+              <MultiSelect
                 autoFocus={false}
-                className=""
-                dataCy=""
-                disabled={false}
                 errorText=""
                 id="documentactivity-select"
-                maxValues={3}
                 multi={false}
                 name="documentactivity-select"
                 onBlur={[Function]}

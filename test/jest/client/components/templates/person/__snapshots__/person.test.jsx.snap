@@ -33,7 +33,7 @@ exports[`Person page renders correctly 1`] = `
       className="contact"
     >
       <div
-        className="contact-card contactCard"
+        className="contact-card box contactCard"
       >
         <h6 />
         <div
@@ -80,13 +80,12 @@ exports[`Person page renders correctly 1`] = `
           <div
             className="secondColumn"
           >
-            <a
+            <span
               dangerouslySetInnerHTML={
                 Object {
                   "__html": "202-292-3808",
                 }
               }
-              href="javascript:void(0);"
             />
           </div>
         </div>

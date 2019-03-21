@@ -1,28 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { includes, isEmpty, size } from 'lodash'
 
-import style from './detail-card.scss'
+import styles from './detail-card.scss'
 import { DecorativeDash, FileTypeIcon, Label, Link } from 'atoms'
+import { ContactCard } from 'molecules'
 import { logPageEvent } from '../../../services/analytics.js'
 import { getCurrentFile, getFileExtension } from '../../../services/utils.js'
 
 class DetailCard extends React.Component {
-  getLatestFile() {
-    if (this.props.data && this.props.data.files) {
-      return getCurrentFile(this.props.data.files)
-    } else {
-      return null
-    }
-  }
+  renderDownloadLink() {
+    const { data } = this.props
+    const latestFile = data && size(data.files) ? getCurrentFile(data.files) : null
 
-  makeDownloadLink() {
-    const latestFile = this.getLatestFile()
     if (latestFile && !isEmpty(latestFile.fileUrl)) {
       const fileExtension = getFileExtension(latestFile.fileUrl)
       return (
-        <div className={'document-card-download ' + style.download}>
+        <div className={styles.download}>
           <Link
             onClick={() => {
               window.open(latestFile.fileUrl, '_blank')
@@ -38,39 +33,41 @@ class DetailCard extends React.Component {
     }
   }
 
-  makeTable(doc) {
+  renderTable(doc) {
+    const { fieldsToShowInDetails } = this.props
     const rows = []
-    if (size(doc.activities) && includes(this.props.fieldsToShowInDetails, 'Activity')) {
+
+    if (size(doc.activities) && includes(fieldsToShowInDetails, 'Activity')) {
       rows.push({ name: 'Activity:', value: doc.activities.join(', ') })
     }
-    if (size(doc.programs) && includes(this.props.fieldsToShowInDetails, 'Program')) {
+
+    if (size(doc.programs) && includes(fieldsToShowInDetails, 'Program')) {
       rows.push({ name: 'Program:', value: doc.programs.join(', ') })
     }
 
-    if (doc.published && includes(this.props.fieldsToShowInDetails, 'Published')) {
+    if (doc.published && includes(fieldsToShowInDetails, 'Published')) {
       const publishedDate = new Date(doc.updated)
-      const publisheDateString =
+      const publishedDateString =
         publishedDate.getMonth() + '/' + publishedDate.getDate() + '/' + publishedDate.getYear()
-      rows.push({ name: 'Published:', value: publisheDateString })
+      rows.push({ name: 'Published:', value: publishedDateString })
     }
-    if (size(doc.summary) && includes(this.props.fieldsToShowInDetails, 'Summary')) {
+
+    if (size(doc.summary) && includes(fieldsToShowInDetails, 'Summary')) {
       rows.push({ name: 'Summary:', value: doc.summary })
     }
 
     return (
       <div>
-        <div className={style.dash}>
-          <DecorativeDash />
-        </div>
-        <table className={style.programSummaryTableData}>
-          <tbody className={style['program-summary-table']}>
+        <DecorativeDash />
+        <table className={styles.programSummaryTableData}>
+          <tbody className={styles['program-summary-table']}>
             {rows.map((row, index) => {
               return (
-                <tr className={style['program-summary-data']} key={index}>
-                  <td className={style.columnOne}>
+                <tr className={styles['program-summary-data']} key={index}>
+                  <td className={styles.columnOne}>
                     <h6>{row.name}</h6>
                   </td>
-                  <td className={style.columnTwo}>{row.value}</td>
+                  <td className={styles.columnTwo}>{row.value}</td>
                 </tr>
               )
             })}
@@ -80,21 +77,10 @@ class DetailCard extends React.Component {
     )
   }
 
-  makeTitle() {
-    const doc = this.props.data
-    const eventConfig = {
-      category: 'Document-Download-Module',
-      action: `docname - ${doc.title}: Document Landing Page`
-    }
-    return (
-      <Link to={doc.url}>
-        <h6 className={'document-card-title ' + style.title}>{doc.title}</h6>
-      </Link>
-    )
-  }
-
   render() {
     const doc = this.props.data
+    const { data } = this.props
+
     if (doc) {
       const { category, documents, type: pageType } = doc
 
@@ -115,22 +101,37 @@ class DetailCard extends React.Component {
       const { showBorder } = this.props
 
       const className = classNames({
-        'document-card-container': true,
-        [style.container]: showBorder,
-        [style.containerWithoutBorder]: !showBorder
+        'detail-card': true,
+        [styles.detailCard]: true
       })
+
+      if (pageType === 'person') {
+        return (
+          <div className={className}>
+            <h6>
+              <Link to={data.url}>{data.name}</Link>
+            </h6>
+            <DecorativeDash width={30} />
+            <ContactCard
+              border={false}
+              email={data.emailAddress}
+              office={data.office.name}
+              personTitle={data.title}
+              phoneNumber={data.phone}
+            />
+            <Link to={data.url}>See bio</Link>
+          </div>
+        )
+      }
 
       return (
         <div className={className}>
-          <div>
-            <div className={style.documentTypeContainer}>
-              <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
-            </div>
-            <div />
-            {this.makeTitle()}
-            {this.props.showDetails ? this.makeTable(this.props.data) : null}
-          </div>
-          {this.makeDownloadLink()}
+          <Label type={type} id={!isEmpty(doc.documentIdNumber) && doc.documentIdNumber} small />
+          <h6>
+            <Link to={doc.url}>{doc.title}</Link>
+          </h6>
+          {this.props.showDetails ? this.renderTable(this.props.data) : null}
+          {this.renderDownloadLink()}
         </div>
       )
     } else {
@@ -143,8 +144,9 @@ DetailCard.propTypes = {
   data: PropTypes.shape({
     documentIdType: PropTypes.string,
     category: PropTypes.array,
-    type: PropTypes.oneOf(['article', 'document'])
+    type: PropTypes.oneOf(['article', 'document', 'person'])
   }),
+
   showBorder: PropTypes.bool,
   showDetails: PropTypes.bool
 }

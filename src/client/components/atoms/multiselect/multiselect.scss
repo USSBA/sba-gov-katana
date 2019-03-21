@@ -1,111 +1,77 @@
-.innerContainer {
-  position: relative;
+// NOTE: Every selector overrides react-select's default styles and so is
+// prepended with .select to increase specificity
+
+.error :global(.Select-control) {
+  border-color: $sba-red;
 }
 
-.myselect {
-  border: none;
-  color: #1c2e36 !important;
-}
-
-.myselect::-ms-expand {
+.select::-ms-expand {
   /* for IE 11 */
   display: none;
 }
 
-.myoption {
-  // @include font-size($paragraph-font-sizes);
-  border: 1px solid $sba-gray;
+// override default focus stylings
+.select :global(.Select.is-focused > .Select-control) {
+  border: none;
+  outline: $focus-outline;
+  outline-offset: $focus-outline-offset;
+
+  :global(.Select-input > input) {
+    outline: none;
+  }
+}
+
+// disabled dropdowns aren't dimmed by default
+.select :global(.Select.is-disabled) {
+  :global(.Select-control) {
+    background-color: $sba-gray-light;
+    cursor: not-allowed;
+  }
+
+  :global(.Select-value-label) {
+    opacity: 0.5;
+  }
+
+  // remove highlight for pseudo html input
+  :global(.Select-input) {
+    &:focus {
+      background-color: transparent;
+    }
+  }
+}
+
+.select :global(.Select-control) {
+  box-shadow: none;
   border-radius: 0;
-}
-
-.validationIcon {
-  right: 30px;
-}
-
-.has-success .label {
-  border: 1px solid #3c763d;
-}
-
-.myselect :global(.Select-control) {
-  border-radius: 0;
-  border: 1px solid #666666;
+  border: 1px solid $sba-gray-dark;
   height: 48px;
+
+  // vertically center options in dropdown
+  :global(.Select-value) {
+    top: 6px !important;
+  }
 }
 
-.redBorder :global(.Select-control) {
-  border-color: $sba-red;
-}
-
-.myselect :global(.Select-control:focus) {
-  outline: none !important;
-  border: 1px solid $sba-gray !important;
-  border-radius: 0;
-  box-shadow: none !important;
-}
-
-.myselect :global(.Select-placeholder) {
-  line-height: 21px;
+// vertically center placeholder text because the element is not actually the
+// html placeholder attribute
+.select :global(.Select-placeholder) {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  // NOTE: variable substitution does not work for `6px`
+  transform: translateY(calc(-50% - 6px));
 }
 
-.myselect:global(.is-focused) :global(.Select-control) {
-  box-shadow: none;
-  background: #d6ecfc;
-}
-
-.myselect:global(.Select--multi) :global(.Select-value) {
-  background-color: $sba-gray-lighter;
-  border: 1px solid #666666 !important;
-  color: #333333 !important;
-}
-
-.myselect :global(.Select-value-icon) {
-  border-right: 1px solid #666666 !important;
-}
-
-.myselect :global(.Select-value-icon:hover) {
-  background-color: white !important;
-  background-color: lightgray !important;
-  color: #333333 !important;
-}
-
-.myselect :global(.Select-menu-outer) {
+.select :global(.Select-menu-outer) {
   border-width: 1px;
   border-top: none;
   border-radius: 0;
+
+  &:hover, :global(.is-focused) {
+    background-color: $sba-gray-lighter;
+  }
 }
 
-.myselect :global(.Select-menu-outer) div:hover {
-  background-color: $sba-gray-lighter;
-}
-
-.myselect :global(.Select-menu-outer) div :global(.is-focused) {
-  background-color: $sba-gray-lighter;
-}
-
-.myselect :global(.Select-option):global(.is-focused) {
-  background-color: inherit;
-}
-
-.myselect :global(.Select-input) input[role='combobox'] {
-  border: 0;
-}
-
-.myselect :global(.Select-arrow-zone) i {
-  width: 100%;
-}
-
-.myselect:global(.Select--single) :global(.Select-clear-zone) {
-  width: 0;
-}
-
-.myselect :global(.Select-control) :global(.Select-value) {
-  top: 5px;
-}
-
-.chevronIcon {
-  opacity: 0.75;
-  height: 9px;
+.select :global(.fa-chevron-down) {
+  color: $sba-gray;
+  margin-right: 14px;
 }

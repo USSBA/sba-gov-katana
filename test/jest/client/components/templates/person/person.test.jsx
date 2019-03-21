@@ -69,7 +69,7 @@ describe('Person page', () => {
     const component = shallow(<Person personData={personPropsWithWithoutPhoto} />)
     const subComponent = component.find('ContactCard')
     const subComponentProps = subComponent.node.props
-    expect(Object.keys(subComponentProps).length).toEqual(2)
+    expect(Object.keys(subComponentProps).length).toEqual(3)
     expect(subComponentProps.phoneNumber).toEqual('205-290-7009')
     expect(subComponentProps.email).toEqual('thomas.todt@sba.gov')
   })

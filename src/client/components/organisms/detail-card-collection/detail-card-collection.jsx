@@ -10,7 +10,7 @@ class DetailCardCollection extends React.Component {
         <DetailCard
           data={item}
           showDetails={this.props.showDetails}
-          showBorder={false}
+          showBorder={true}
           fieldsToShowInDetails={this.props.fieldsToShowInDetails}
         />
       </div>

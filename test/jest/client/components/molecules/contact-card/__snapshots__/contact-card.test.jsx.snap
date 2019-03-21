@@ -2,7 +2,7 @@
 
 exports[`ContactCard should render with all the information 1`] = `
 <div
-  className="contact-card contactCard"
+  className="contact-card box contactCard"
 >
   <h6>
     Grand Moff Tarkin

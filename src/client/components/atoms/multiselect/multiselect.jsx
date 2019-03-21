@@ -1,157 +1,89 @@
 import React, { PropTypes } from 'react'
-import ReactSelect from 'react-select'
-import 'react-select/dist/react-select.css'
-import { forEach, map } from 'lodash'
+import ReactDOM from 'react-dom'
+import ReactSelect from 'react-select-v1'
+import classNames from 'classnames'
+import 'react-select-v1/dist/react-select.css'
 
-import chevron from 'assets/svg/chevron.svg'
 import styles from './multiselect.scss'
 import { FormErrorMessage } from 'atoms'
 import { getLanguageOverride } from '../../../services/utils.js'
 import { TRANSLATIONS } from '../../../translations.js'
 
-class MultiSelectBox extends React.Component {
-  constructor() {
-    super()
+class MultiSelect extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {}
   }
 
-  componentWillMount() {
-    const { defaultValue } = this.props
-    if (defaultValue) {
-      this.setState({ value: defaultValue })
-    }
-  }
+  componentDidMount() {
+    if (this.select) {
+      // TODO: This works but breaks tests due to react-dom and requires going
+      // down a rabbit hole to fix them.
 
-  componentWillReceiveProps(nextProps) {
-    if (
-      !this.state.value ||
-      (this.props.value !== nextProps.value && this.state.value !== nextProps.value)
-    ) {
-      this.setState({ value: nextProps.value })
+      // const combobox = ReactDOM.findDOMNode(this.select).querySelector('.Select-input')
+      //
+      // if (this.props.disabled) {
+      //   // Manipulate the attributes that get added on to react-select's custom
+      //   // input so that a screen reader properly reads the component (when
+      //   // disabled) as disabled.
+      //   combobox.removeAttribute('aria-activedescendant')
+      //   combobox.setAttribute('aria-disabled', true)
+      // } else {
+      //   // Fix an issue where the user can type text in the hidden input inside
+      //   // react-select's dropdown when the dropdown is focused.
+      //   const input = combobox.querySelector('input')
+      //   input.setAttribute('aria-readonly', true)
+      //   input.setAttribute('readonly', true)
+      // }
     }
-  }
-
-  handleChange(newValue) {
-    let value
-    if (this.props.multi) {
-      if (newValue.length <= this.props.maxValues) {
-        value = map(newValue, 'value').join(',')
-      }
-    } else {
-      value = newValue
-    }
-
-    if (value && value !== this.state.value) {
-      if (this.props.onChange) {
-        this.props.onChange(value)
-      }
-      this.setState({ value: value })
-    }
-  }
-  handleBlur() {
-    this.props.onBlur({
-      target: {
-        name: this.props.name
-      }
-    })
-  }
-  handleFocus() {
-    this.props.onFocus({
-      target: {
-        name: this.props.name
-      }
-    })
-  }
-
-  renderArrow() {
-    return <i src={chevron} />
   }
 
   render() {
-    const myValue = this.props.multi
-      ? this.state.value
-        ? this.state.value.split(',')
-        : []
-      : this.state.value
-
-    const errorMessage =
-      this.props.validationState === 'error' ? <FormErrorMessage errorText={this.props.errorText} /> : null
-    const errorClass = this.props.validationState === 'error' ? styles.redBorder : ''
-    const arrowRenderer = () => {
-      return <img alt="dropdown arrow" className={styles.chevronIcon} src={chevron} />
-    }
-    const clearRenderer = this.props.multi
-      ? null
-      : () => {
-          return <div />
-        }
-
-    const inputPropFields = ['aria-labelledby', 'aria-label', 'required']
-    const inputProps = {}
-    forEach(inputPropFields, field => {
-      if (this.props[field]) {
-        inputProps[field] = this.props[field]
-      }
-    })
-
     const {
-      autoFocus,
       className,
-      disabled,
+      dataCy,
+      errorText,
       id,
       label,
-      multi,
-      name,
-      options,
       placeholder,
-      dataCy
+      validationState,
+      ...rest
     } = this.props
+
+    const selectClassName = classNames({
+      'select': true,
+      [styles.select]: true,
+      [styles.error]: validationState === 'error',
+      [className]: this.props?.className
+    })
+
     const langCode = getLanguageOverride()
 
     return (
-      <div id={id + '-container'} className={className}>
+      <div className={selectClassName} data-cy={dataCy}>
         <label htmlFor={id}>{label}</label>
-        <div id={id} className={styles.errorClass} data-cy={dataCy}>
-          <ReactSelect
-            className={errorClass + ' ' + styles.myselect}
-            menuBuffer={10}
-            tabSelectsValue={false}
-            multi={multi}
-            autoBlur={true}
-            onChange={this.handleChange.bind(this)}
-            name={name}
-            autofocus={autoFocus}
-            value={myValue}
-            options={options}
-            onBlur={this.handleBlur.bind(this)}
-            onFocus={this.handleFocus.bind(this)}
-            arrowRenderer={arrowRenderer}
-            clearRenderer={clearRenderer}
-            searchable={multi}
-            placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
-            inputProps={inputProps}
-            disabled={disabled}
-          />
-        </div>
-        {errorMessage}
+        <ReactSelect
+          ref={input => (this.select = input)}
+          menuBuffer={10}
+          tabSelectsValue={false}
+          autoBlur={true}
+          value={this.state.value}
+          arrowRenderer={() => (
+            <i className="fa fa-chevron-down" alt="drop-down arrow" />
+          )}
+          clearRenderer={() => <span />}
+          searchable={true}
+          placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
+          inputProps={['aria-label', 'aria-labelledby', 'required']
+            .filter(attr => this.props?.[attr])
+            // eslint-disable-next-line no-param-reassign
+            .reduce((acc, attr) => (acc[attr] = this.props[attr]), {})}
+          {...rest}
+        />
+        {validationState === 'error' && <FormErrorMessage errorText={errorText} />}
       </div>
     )
   }
 }
 
-MultiSelectBox.defaultProps = {
-  className: '',
-  disabled: false,
-  multi: true,
-  maxValues: 3,
-  dataCy: '',
-  onBlur: () => {},
-  onFocus: () => {},
-  onChange: () => {}
-}
-
-MultiSelectBox.propTypes = {
-  className: PropTypes.string
-}
-
-export default MultiSelectBox
+export default MultiSelect

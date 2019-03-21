@@ -1,7 +1,7 @@
 const JsDomEnvironment = require('jest-environment-jsdom')
 
 class CustomEnvironment extends JsDomEnvironment {
-  constructor(config, context) {
+  constructor (config, context) {
     super(
       {
         ...config,
@@ -20,7 +20,7 @@ class CustomEnvironment extends JsDomEnvironment {
     this.global.jsdom = this.dom
   }
 
-  teardown() {
+  teardown () {
     this.global.jsdom = null
     return super.teardown()
   }

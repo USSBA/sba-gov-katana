@@ -15,6 +15,7 @@ export class PrimarySearchBar extends React.PureComponent {
 
   onSearch(event) {
     event.preventDefault()
+
     if (this.props.onSearch) {
       this.props.onSearch()
       return false
@@ -72,10 +73,18 @@ export class PrimarySearchBar extends React.PureComponent {
 }
 
 PrimarySearchBar.propTypes = {
+  // event handler for "search" button
   onSearch: PropTypes.func.isRequired,
+
+  // event handler for when any input changes
   onFieldChange: PropTypes.func.isRequired,
+
   searchButtonText: PropTypes.string,
+
+  // title text above inputs
   title: PropTypes.string,
+
+  // html id attribute for component
   id: PropTypes.string
 }
 
