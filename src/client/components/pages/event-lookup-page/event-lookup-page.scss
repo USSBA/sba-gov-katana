@@ -20,6 +20,10 @@
       margin-top: 0;
     }
   }
+
+  @include grid-media($sba-grid-large) {
+    padding-bottom: 195px;
+  }
 }
 
 // Fields
