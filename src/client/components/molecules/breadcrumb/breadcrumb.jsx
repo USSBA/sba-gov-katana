@@ -36,7 +36,12 @@ class Breadcrumb extends React.Component {
 
       return (
         <div className={styles.breadcrumb} data-cy="naviagation-breadcrumb">
-          <SmallIcon fontAwesomeIconClassName="home" data-cy="breadcrumb-home-icon" onClick={() => {}} />
+          <SmallIcon
+            fontAwesomeIconClassName="home"
+            data-cy="breadcrumb-home-icon"
+            aria-label="Home"
+            onClick={() => {}}
+          />
           <span className={styles.slash}>/</span>
           {rest ? (
             rest.map((item, index) => {
