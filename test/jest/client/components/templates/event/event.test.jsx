@@ -36,7 +36,6 @@ describe('Event Template', () => {
     expect(result).toHaveLength(expected)
     expect(result.text()).toBe(title)
   })
-
   test('should render an event description', () => {
     const description = 'This is a description'
     const props = {
@@ -150,5 +149,18 @@ describe('Event Template', () => {
     const result = component.find('#event-details-organizer')
     expect(result).toHaveLength(1)
     expect(result.text()).toBe(expected)
+  })
+  test('should render a breadcrumb', () => {
+    const props = {
+      eventData: {
+        title: 'example title',
+        location: location,
+        contact: contact
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const breadcrumb = component.find('.breadcrumb')
+    const expected = 1
+    expect(breadcrumb).toHaveLength(expected)
   })
 })

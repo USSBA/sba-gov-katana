@@ -155,7 +155,8 @@ class EventResult extends React.PureComponent {
             <div className={styles.column2}>
               <Link
                 onClick={() => {
-                  window.open(this.renderEventDetailUrl())
+                  // window.open(this.renderEventDetailUrl())
+                  window.location.assign(this.renderEventDetailUrl())
                 }}
                 className={styles.title}
                 tabIndex="0"

@@ -18,7 +18,7 @@ class Breadcrumb extends React.Component {
 
     return (
       <span className={styles.last} key={20}>
-        <Link id={'breadcrumb-current'} to={url}>
+        <Link id={'breadcrumb-current'} to={url} data-cy="last-breadcrumb">
           {title}
         </Link>
       </span>
@@ -35,8 +35,8 @@ class Breadcrumb extends React.Component {
       const rest = take(items, items.length - 1)
 
       return (
-        <div className={styles.breadcrumb}>
-          <SmallIcon fontAwesomeIconClassName="home" onClick={() => {}} />
+        <div className={styles.breadcrumb} data-cy="naviagation-breadcrumb">
+          <SmallIcon fontAwesomeIconClassName="home" data-cy="breadcrumb-home-icon" onClick={() => {}} />
           <span className={styles.slash}>/</span>
           {rest ? (
             rest.map((item, index) => {

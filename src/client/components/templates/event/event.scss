@@ -35,6 +35,26 @@
     }
   }
 }
+
+.breadcrumb {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    @include grid-push(0);
+    display: none;
+  }
+  @include grid-media($sba-grid-medium) {
+    @include grid-column(12);
+    @include grid-push(0);
+    padding: 15px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid $sba-gray-light;
+  }
+  @include grid-media($sba-grid-large) {
+    @include grid-column(12);
+    border-top: 1px solid $sba-gray-light;
+  }
+}
+
 .descriptionLabel {
   color: $secondary-black-ish;
   padding-top: 45px;
