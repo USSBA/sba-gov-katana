@@ -52,7 +52,6 @@
 
 .zip {
   position: relative;
-  margin-bottom: 0 !important;
 
   @include grid-media($sba-grid-small) {
     width: 100%;
@@ -60,6 +59,7 @@
 
   @include grid-media($sba-grid-large) {
     width: 170px;
+    margin-bottom: 0;
   }
 
   input {
