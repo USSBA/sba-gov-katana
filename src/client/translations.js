@@ -121,7 +121,7 @@ const TRANSLATIONS = {
     },
     es: {
       text: 'Contáctenos',
-      url: '/about-sba/what-we-do/contact-sba'
+      url: '/acerca-de-la-sba/organizacion/comuniquese-la-sba'
     }
   },
   content: {
