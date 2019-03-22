@@ -20,10 +20,6 @@
       margin-top: 0;
     }
   }
-
-  @include grid-media($sba-grid-large) {
-    overflow: hidden;
-  }
 }
 
 // Fields
@@ -56,6 +52,7 @@
 
 .zip {
   position: relative;
+  margin-bottom: 0 !important;
 
   @include grid-media($sba-grid-small) {
     width: 100%;
