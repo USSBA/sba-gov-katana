@@ -18,6 +18,7 @@ import OfficeDetail from './office-detail/office-detail.jsx'
 import OfficesLayout from './offices-layout/offices-layout.jsx'
 import OfficeMap from './office-map/office-map.jsx'
 import OfficeResult from './office-result/office-result.jsx'
+import OHAWestlawForm from './oha-westlaw-form/oha-westlaw-form.jsx'
 import PagingLookup from './paging-lookup/paging-lookup.jsx'
 import PagingMultiviewLayout from './paging-multiview-layout/paging-multiview-layout.jsx'
 import PrimarySearchBar from './primary-search-bar/primary-search-bar.jsx'
@@ -74,6 +75,7 @@ export {
   OfficeDetail,
   OfficesLayout,
   OfficeMap,
+  OHAWestlawForm,
   PagingLookup,
   PagingMultiviewLayout,
   PrimarySearchBar,
