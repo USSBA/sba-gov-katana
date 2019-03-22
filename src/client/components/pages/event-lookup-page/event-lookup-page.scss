@@ -59,7 +59,11 @@
 
   @include grid-media($sba-grid-large) {
     width: 170px;
-    margin-bottom: 0;
+
+    // Balances bottom margin when zip code error is active
+    p {
+      margin-bottom: -20px;
+    }
   }
 
   input {
