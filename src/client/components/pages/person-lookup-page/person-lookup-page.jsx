@@ -113,7 +113,7 @@ class PersonLookupPage extends Component {
       location: 0,
       distance: 100,
       minMatchCharLength: 1,
-      keys: ['name', 'officeName', 'title']
+      keys: ['name', 'office.name', 'title']
     })
 
     this.setState({
