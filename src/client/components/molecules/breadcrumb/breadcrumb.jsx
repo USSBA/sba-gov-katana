@@ -54,7 +54,7 @@ class Breadcrumb extends React.Component {
               }
 
               return [
-                <Link id={'breadcrumb-level' + index} to={url}>
+                <Link id={'breadcrumb-level' + index} data-cy={'navigation-breadcrumb-' + index} to={url}>
                   {title}
                 </Link>,
                 <span className={styles.slash}>/</span>
