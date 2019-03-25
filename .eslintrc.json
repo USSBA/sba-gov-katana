@@ -125,7 +125,7 @@
     "func-names": ["off"],
     "func-style": ["off"],
     "id-blacklist": ["off"],
-    "id-length": ["error", { "min": 3, "exceptions": ["$", "_", "a", "b", "e", "i", "j", "k", "n", "en", "es", "fs", "id", "to"], "properties": "never" }],
+    "id-length": ["error", { "min": 3, "exceptions": ["$", "_", "a", "b", "e", "i", "j", "k", "n", "en", "es", "fs", "id", "to", "he"], "properties": "never" }],
     "id-match": ["off", "^[a-z_]+([A-Z][a-z]+)*$", { "onlyDeclarations": true }],
     "indent": ["off"],
     "jsx-quotes": ["error"],
