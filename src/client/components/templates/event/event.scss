@@ -1,13 +1,4 @@
 .container {
-  // @include for-small-only {
-  //   margin: 50px 20px 50px 20px;
-  // }
-  // @include for-medium-only {
-  //   margin: 50px 30px 50px 30px;
-  // }
-  // @include for-large-up {
-  //   margin: 50px 50px 50px 50px;
-  // }
   @include grid-media($sba-grid-large) {
     padding: 30px 30px 0 30px;
   }
@@ -16,17 +7,13 @@
 .header {
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
-    // @include grid-push(0);
     padding-top: 30px;
   }
   @include grid-media($sba-grid-medium) {
     @include grid-column(12);
-    // @include grid-push(0);
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(12);
-    // @include grid-push(0);
-    // padding: 30px 0 0 30px;
   }
 }
 
@@ -52,9 +39,7 @@
 
 .columnA {
   @include grid-media($sba-grid-small) {
-    // @include grid-column(6);
     padding-bottom: 40px;
-    // margin: 20px;
   }
   @include grid-media($sba-grid-medium) {
     @include grid-column(7);
@@ -66,16 +51,11 @@
 }
 
 .columnB {
-  // @include grid-media($sba-grid-small) {
-  //   @include grid-column(6);
-  // }
   @include grid-media($sba-grid-medium) {
     @include grid-column(5);
-    // @include grid-push(0);
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(5);
-    // @include grid-push(1);
   }
 
   padding-bottom: 40px;
@@ -86,14 +66,6 @@
   border-top: 3px solid $sba-blue;
   box-shadow: $box-shadow;
   padding: 30px;
-
-  // @include grid-media($sba-grid-small) {
-  //   margin: 30px;
-  // }
-
-  // @include grid-media($sba-grid-large) {
-  //   @include grid-column(11);
-  // }
 
   @include for-small-only {
     h1 {
@@ -107,18 +79,12 @@
 
 .button {
   margin-bottom: 22px;
-  // @include grid-media($sba-grid-small) {
-  //   button {
-  //     width: 100%;
-  //   }
-  // }
 
   @include grid-media($sba-grid-medium) {
     margin-top: 40px;
   }
 
   @include grid-media($sba-grid-large) {
-    // margin-left: 30px;
     margin-top: 40px;
   }
 }
@@ -149,11 +115,4 @@
     display: flex;
     flex-direction: column-reverse;
   }
-  // @include grid-media($sba-grid-medium) {
-  //   @include grid-column(12);
-  // }
-  // @include grid-media($sba-grid-large) {
-  //   position: relative;
-  //   right: 25px;
-  // }
 }
