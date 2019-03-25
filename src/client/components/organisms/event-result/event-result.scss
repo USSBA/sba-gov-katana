@@ -126,9 +126,12 @@
   margin-bottom: 6px;
   display: block;
   font-weight: 600;
+  text-decoration-color: $sba-blue;
 
   &:hover h6 {
-    color: $sba-blue-light;
+    color: $secondary-blue-light;
+    text-decoration: underline;
+    text-decoration-color: $secondary-blue-light;
   }
 }
 
