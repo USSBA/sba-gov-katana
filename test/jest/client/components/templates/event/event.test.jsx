@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import Event from 'templates/event/event.jsx'
 
 const title = 'This is a title'
@@ -162,5 +162,28 @@ describe('Event Template', () => {
     const breadcrumb = component.find('.breadcrumb')
     const expected = 1
     expect(breadcrumb).toHaveLength(expected)
+  })
+  test('should render Find Events in the breadcrumb', () => {
+    const eventTitle = 'example title'
+    const findEventsBreadcrumb = 'Find Events'
+    const props = {
+      eventData: {
+        title: eventTitle
+      }
+    }
+    const component = mount(<Event {...props} />)
+    const breadcrumb = component.find('#breadcrumb-level0')
+    expect(breadcrumb.text()).toBe(findEventsBreadcrumb)
+  })
+  test('should render the event title in the breadcrumb', () => {
+    const eventTitle = 'example title'
+    const props = {
+      eventData: {
+        title: eventTitle
+      }
+    }
+    const component = mount(<Event {...props} />)
+    const breadcrumbTitle = component.find('#breadcrumb-current')
+    expect(breadcrumbTitle.text()).toBe(eventTitle)
   })
 })
