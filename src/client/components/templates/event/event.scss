@@ -1,30 +1,40 @@
 .container {
-  @include for-small-only {
-    margin: 50px 20px 50px 20px;
+  @include grid-media($sba-grid-large) {
+    padding: 30px 30px 0 30px;
   }
-  @include for-medium-only {
-    margin: 50px 30px 50px 30px;
-  }
-  @include for-large-up {
-    margin: 50px 50px 50px 50px;
+  @include grid-media($sba-grid-medium) {
+    padding: 30px 30px 0 30px;
   }
 }
 
 .header {
   @include grid-media($sba-grid-small) {
     @include grid-column(6);
-    @include grid-push(0);
+    padding-top: 30px;
   }
   @include grid-media($sba-grid-medium) {
     @include grid-column(12);
-    @include grid-push(0);
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(12);
-    @include grid-push(0);
   }
 }
 
+.smallIcon {
+  float: left;
+  display: block;
+
+  @include grid-media($sba-grid-small) {
+    i {
+      font-size: 25px;
+    }
+  }
+  @include grid-media($sba-grid-medium) {
+    i {
+      font-size: 25px;
+    }
+  }
+}
 .descriptionLabel {
   color: $secondary-black-ish;
   padding-top: 45px;
@@ -32,40 +42,33 @@
 
 .columnA {
   @include grid-media($sba-grid-small) {
-    @include grid-column(6);
+    padding-bottom: 40px;
   }
   @include grid-media($sba-grid-medium) {
     @include grid-column(7);
   }
   @include grid-media($sba-grid-large) {
-    @include grid-column(6);
+    @include grid-column(7);
+    padding-right: 100px;
   }
 }
 
 .columnB {
-  @include grid-media($sba-grid-small) {
-    @include grid-column(6);
-  }
   @include grid-media($sba-grid-medium) {
     @include grid-column(5);
-    @include grid-push(0);
   }
   @include grid-media($sba-grid-large) {
     @include grid-column(5);
-    @include grid-push(1);
   }
+
+  padding-bottom: 40px;
 }
 
-.callout {
+.detailsBox {
   background-color: white;
-  border-top: 5px solid $sba-blue;
-  // TODO: DRY
+  border-top: 3px solid $sba-blue;
   box-shadow: $box-shadow;
-  padding: 50px;
-
-  @include grid-media($sba-grid-large) {
-    @include grid-column(8);
-  }
+  padding: 30px;
 
   @include for-small-only {
     h1 {
@@ -78,21 +81,41 @@
 }
 
 .button {
-
   margin-bottom: 22px;
 
-  @include grid-media($sba-grid-small) {
-    button {
-      width: 100%;
-    }
+  @include grid-media($sba-grid-medium) {
+    margin-top: 40px;
   }
 
   @include grid-media($sba-grid-large) {
-    margin-left: 30px;
+    margin-top: 40px;
   }
 }
 
 .registerButtonIcon {
   padding-left: 5px;
   vertical-align: middle;
+}
+
+.contactIcon {
+  float: left;
+  color: $sba-blue;
+  padding-right: 10px;
+}
+
+.contactName {
+  padding-bottom: 5px;
+}
+
+.eventDetailsRecurring {
+  font-style: italic;
+  padding-bottom: 15px;
+}
+
+.page {
+  @include grid-media($sba-grid-small) {
+    @include grid-column(6);
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
