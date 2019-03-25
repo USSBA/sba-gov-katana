@@ -35,7 +35,7 @@ class Breadcrumb extends React.Component {
       const rest = take(items, items.length - 1)
 
       return (
-        <div className={styles.breadcrumb} data-cy="naviagation-breadcrumb">
+        <div className={styles.breadcrumb} data-cy="navigation-breadcrumb">
           <SmallIcon
             fontAwesomeIconClassName="home"
             data-cy="breadcrumb-home-icon"
