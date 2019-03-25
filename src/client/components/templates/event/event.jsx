@@ -79,7 +79,7 @@ class Event extends Component {
           recurringDetail = 'Recurs daily'
           break
         default:
-          recurringDetail = 'This is a recuring event'
+          recurringDetail = 'This is a recurring event'
           break
       }
     }
