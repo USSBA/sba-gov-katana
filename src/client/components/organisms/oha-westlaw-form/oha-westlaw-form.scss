@@ -1,5 +1,22 @@
-form {
-  border: 1px solid black;
-  margin-bottom: 100px;
-  padding: 50px;
+.example {
+  font-weight: normal;
+}
+
+.multiSelect:first-of-type {
+  margin-top: 20px;
+}
+
+.multiSelect:last-of-type {
+  margin-bottom: 20px;
+}
+
+.textbox {
+  margin-bottom: 4px;
+}
+
+.westlawForm {
+  border-top: 2px solid $sba-blue;
+  box-shadow: $box-shadow;
+  margin-bottom: 40px;
+  padding: 40px;
 }
