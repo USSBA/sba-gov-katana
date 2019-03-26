@@ -153,7 +153,7 @@ describe('Event Template', () => {
   test('should render a breadcrumb', () => {
     const props = {
       eventData: {
-        title: 'example title',
+        title: title,
         location: location,
         contact: contact
       }
@@ -168,7 +168,9 @@ describe('Event Template', () => {
     const findEventsBreadcrumb = 'Find Events'
     const props = {
       eventData: {
-        title: eventTitle
+        title: eventTitle,
+        location: location,
+        contact: contact
       }
     }
     const component = mount(<Event {...props} />)
@@ -179,7 +181,9 @@ describe('Event Template', () => {
     const eventTitle = 'example title'
     const props = {
       eventData: {
-        title: eventTitle
+        title: eventTitle,
+        location: location,
+        contact: contact
       }
     }
     const component = mount(<Event {...props} />)
