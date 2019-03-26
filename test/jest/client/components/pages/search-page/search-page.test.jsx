@@ -6,16 +6,15 @@ import { shallow, mount } from 'enzyme'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 
+const mockFunction = jest.fn()
+const props = {
+  actions: {
+    fetchContentIfNeeded: mockFunction
+  }
+}
+
 describe('SearchPage', () => {
   test('to match snapshot', () => {
-    const mockFunction = jest.fn()
-
-    const props = {
-      actions: {
-        fetchContentIfNeeded: mockFunction
-      }
-    }
-
     const component = renderer.create(<SearchPage {...props} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
@@ -72,6 +71,27 @@ describe('SearchPage', () => {
 
         expect(result).toEqual(expected)
       })
+    })
+  })
+
+  describe('SuggestedRoute', () => {
+    it('should display SuggestedRoute Component when there is a search term', () => {
+      const component = shallow(<SearchPage {...props} />)
+      component.setState({
+        searchTerm: 'my search term'
+      })
+      const result = component.find('SuggestedRoute').length
+      const expected = 1
+      expect(result).toEqual(expected)
+    })
+    it('should not display SuggestedRoute Component when there is no search term', () => {
+      const component = shallow(<SearchPage {...props} />)
+      component.setState({
+        searchTerm: ''
+      })
+      const result = component.find('SuggestedRoute').length
+      const expected = 0
+      expect(result).toEqual(expected)
     })
   })
 })

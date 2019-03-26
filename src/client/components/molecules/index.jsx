@@ -26,6 +26,7 @@ import RemoveMainLoader from './main-loader/remove-main-loader'
 import SbaModal from './sba-modal/sba-modal'
 import SbaNewsModal from './news-modal/news-modal'
 import SearchBar from './search-bar/search-bar'
+import SuggestedRoute from './suggested-route/suggested-route'
 import LongScrollNav from './long-scroll-nav/long-scroll-nav'
 import TitleSection from './title-section/title-section'
 import Typeahead from './typeahead/typeahead'
@@ -59,6 +60,7 @@ export {
   SbaModal,
   SbaNewsModal,
   SearchBar,
+  SuggestedRoute,
   LongScrollNav,
   TitleSection,
   Typeahead

@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react'
 import { isEmpty } from 'lodash'
-import { fetchSiteContent } from '../../../fetch-content-helper'
-
-import styles from './search-page.scss'
 import { Button, Link, SearchIcon, TextInput } from 'atoms'
-import { Paginator } from 'molecules'
+import { Paginator, SuggestedRoute } from 'molecules'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 import { logPageEvent } from '../../../services/analytics.js'
+import styles from './search-page.scss'
 
 const getQueryParams = search => {
   const decoded = decodeURIComponent(search)
@@ -184,6 +183,9 @@ class SearchPage extends PureComponent {
         </div>
         {!isEmpty(searchTerm) && (
           <div className={styles.searchResults}>
+            <div>
+              <SuggestedRoute searchTerm={searchTerm} />
+            </div>
             <div>
               {searchResults.length > 0 && (
                 <div>
