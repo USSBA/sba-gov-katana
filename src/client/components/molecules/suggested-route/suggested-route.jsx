@@ -6,10 +6,9 @@ class SuggestedRoute extends PureComponent {
 	constructor() {
 		super()
 		this.state = {
-			title: '',
-			description: '',
-			url: '',
-			suggestedRoute: {}
+			title: 'Title',
+			description: 'this is the description.',
+			url: '#'
 		}
 	}
 	componentWillMount() {
@@ -51,14 +50,10 @@ class SuggestedRoute extends PureComponent {
 }
 
 SuggestedRoute.propTypes = {
-	title: PropTypes.string,
-	description: PropTypes.string,
-	url: PropTypes.string
+	searchTerm: PropTypes.string
 }
 SuggestedRoute.defaultProps = {
-	title: 'Title',
-	description: 'this is the desription.',
-	url: '#'
+	searchTerm: ''
 }
 
 export default SuggestedRoute
