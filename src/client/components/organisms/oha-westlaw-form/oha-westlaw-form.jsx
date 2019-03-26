@@ -51,8 +51,6 @@ class OHAWestlawForm extends React.Component {
       tncDate: '',
       winText: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    // this.renderOption = this.renderOption.bind(this);
   }
 
   handleChange(event) {
