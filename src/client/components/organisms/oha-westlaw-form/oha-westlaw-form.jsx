@@ -1,15 +1,8 @@
 import React from 'react'
+import { kebabCase } from 'lodash'
 
 import { Button, MultiSelect } from 'atoms'
 import styles from './oha-westlaw-form.scss'
-
-const createSlug = str => {
-  return str
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-    .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-    .replace(/^-+|-+$/g, '')
-}
 
 const selectOptions = {
   tncDecisionType: {
@@ -70,7 +63,7 @@ class OHAWestlawForm extends React.Component {
   renderOption(optionName) {
     const config = [
       {
-        id: `${createSlug(optionName)}-select`,
+        id: `${kebabCase(optionName)}-select`,
         onChange: selectedOption => {
           const { value } = selectedOption
           this.setState({ [optionName]: value })
@@ -84,21 +77,20 @@ class OHAWestlawForm extends React.Component {
 
     return config.map((multiSelectProps, index) => {
       return (
-        <div className={styles.multiSelect} key={index}>
-          <MultiSelect
-            {...multiSelectProps}
-            onBlur={() => {
-              return null
-            }}
-            onFocus={() => {
-              return null
-            }}
-            validationState=""
-            errorText=""
-            autoFocus={false}
-            multi={false}
-          />
-        </div>
+        <MultiSelect
+          {...multiSelectProps}
+          className={styles.multiSelect}
+          onBlur={() => {
+            return null
+          }}
+          onFocus={() => {
+            return null
+          }}
+          validationState=""
+          errorText=""
+          autoFocus={false}
+          multi={false}
+        />
       )
     })
   }
