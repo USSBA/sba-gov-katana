@@ -6,7 +6,7 @@
 }
 
 .select::-ms-expand {
-  /* for IE 11 */
+  // for IE 11
   display: none;
 }
 
@@ -18,6 +18,9 @@
 
   :global(.Select-input > input) {
     outline: none;
+    position: relative;
+    // verticially center input for filtering selections
+    top: 6px;
   }
 }
 
@@ -48,7 +51,7 @@
 
   // vertically center options in dropdown
   :global(.Select-value) {
-    top: 6px !important;
+    top: 6px;
   }
 }
 
@@ -66,7 +69,8 @@
   border-top: none;
   border-radius: 0;
 
-  &:hover, :global(.is-focused) {
+  &:hover,
+  :global(.is-focused) {
     background-color: $sba-gray-lighter;
   }
 }

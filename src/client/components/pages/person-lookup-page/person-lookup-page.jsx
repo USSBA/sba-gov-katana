@@ -25,7 +25,7 @@ class PersonLookupPage extends Component {
     pageNumber: 1,
     pageSize: 12,
     order: 'ascending',
-    officeType: 'all'
+    office: 'all'
   }
 
   /* eslint-disable no-invalid-this */
@@ -96,15 +96,17 @@ class PersonLookupPage extends Component {
     const offices = await fetchSiteContent('officesRaw')
     const persons = await fetchSiteContent('persons')
 
-    // Build a set of office types from those in the persons list
+    // Build a set of office names from those in the persons list
     const set = new Set()
-    persons.forEach(({ office: { type } }) => type && set.add(type))
+    persons.forEach(({ office: { name } }) => name && set.add(name))
 
     // Generate the options for the office dropdown from the set
     this.officeOptions = [
-      { label: 'All', value: this.props.officeType },
-      // Format the list of office types appropriately for react-select
-      ...Array.from(set).map(value => ({ label: value, value }))
+      { label: 'All', value: this.props.office },
+      // Format the list of office names appropriately for react-select
+      ...Array.from(set)
+        .sort((a, b) => a.localeCompare(b))
+        .map(value => ({ label: value, value }))
     ]
 
     // Initialize the fuzzy search index and stash it in an instance variable
@@ -133,19 +135,19 @@ class PersonLookupPage extends Component {
     const {
       location: { query: nextQuery }
     } = nextProps
-    const { officeType, order, search } = nextQuery
+    const { office, order, search } = nextQuery
     const { initialPersons } = this.state
 
     // For simplicity, just deep compare the current and next query parameters
     if (!isEqual(query, nextQuery)) {
-      if (query.officeType === officeType && query.order === order && query.search === search) {
+      if (query.office === office && query.order === order && query.search === search) {
         // only pagination has changed
         this.forceUpdate()
       } else {
         let persons = this.fuzzySearch(initialPersons, search)
 
-        if (officeType !== 'all') {
-          persons = persons.filter(({ office: { type } }) => type === officeType)
+        if (office !== 'all') {
+          persons = persons.filter(({ office: { name } }) => name === office)
         }
 
         persons = persons.sort((a, b) => {
@@ -175,7 +177,7 @@ class PersonLookupPage extends Component {
     // or (if they don't exist) the default props
     const pageNumber = query?.pageNumber || this.props?.pageNumber
     const pageSize = query?.pageSize || this.props?.pageSize
-    const officeType = this.state.officeType || query?.officeType || this.props.officeType
+    const office = this.state.office || query?.office || this.props.office
     const order = this.state.order || query?.order || this.props.order
 
     // Handle the (valid) case where the search is an empty string
@@ -195,9 +197,9 @@ class PersonLookupPage extends Component {
 
         results = (
           <div>
-            {this.renderPaginator({ officeType, order, pageNumber, pageSize, search, total })}
+            {this.renderPaginator({ office, order, pageNumber, pageSize, search, total })}
             <DetailCardCollection cards={cards} />
-            {this.renderPaginator({ officeType, order, pageNumber, pageSize, search, total })}
+            {this.renderPaginator({ office, order, pageNumber, pageSize, search, total })}
           </div>
         )
       } else {
@@ -225,7 +227,7 @@ class PersonLookupPage extends Component {
                   pageNumber: 1,
                   pageSize,
                   ...(search && { search }),
-                  ...(officeType && { officeType }),
+                  ...(office && { office }),
                   ...(order && { order })
                 })
               }}
@@ -240,9 +242,9 @@ class PersonLookupPage extends Component {
               <MultiSelect
                 className={styles.select}
                 label="Office"
-                onChange={({ value }) => this.setState({ officeType: value })}
+                onChange={({ value }) => this.setState({ office: value })}
                 options={this.officeOptions}
-                value={officeType}
+                value={office}
               />
               <MultiSelect
                 className={styles.select}
