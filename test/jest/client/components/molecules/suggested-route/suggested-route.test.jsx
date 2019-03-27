@@ -71,7 +71,7 @@ describe('SuggestedRoute', () => {
 	        }
 		})
 	})
-	it.only('should have button', done => {
+	it('should have button', done => {
 		const searchTerm = 'event'
 		const expected = 1
 		const component = shallow(<SuggestedRoute searchTerm={searchTerm} />)
