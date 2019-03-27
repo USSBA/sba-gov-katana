@@ -1,0 +1,20 @@
+.container {
+	background: white;
+	padding: 25px 20px 20px;
+	&:focus {
+		outline: 2px dotted $sba-gray-light;
+		outline-offset: 3px;
+	}
+}
+
+.columnA {
+	float: left;
+}
+
+.columnB {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}

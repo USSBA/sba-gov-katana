@@ -1,49 +1,66 @@
 import React, { PureComponent, PropTypes } from 'React'
-import { fetchSiteContent } from '../../../fetch-content-helper'
 import styles from './suggested-route.scss'
+import { isEmpty } from 'lodash'
+import sinon from 'sinon'
+import { Button } from 'atoms'
+import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class SuggestedRoute extends PureComponent {
 	constructor() {
 		super()
 		this.state = {
-			title: 'Title',
-			description: 'this is the description.',
-			url: '#'
+			title: '',
+			description: '',
+			url: ''
 		}
 	}
-	componentWillMount() {
-		const terms = this.props.searchTerm.split(' ')
-		fetchSiteContent('suggestedRoutes').then( results => {
-			let keywords = []
-			for (let i = 0; i < results.length; i++) {
-				for (let j = 0; j < results[i].keywords.length; j++) {
-					keywords.push(results[i].keywords[j])
-				}
+	getRouteBySearchTerm(searchTerm, routes) {
+		// collect all keywords from each route
+		let keywords = []
+		for (let i = 0; i < routes.length; i++) {
+			for (let j = 0; j < routes[i].keywords.length; j++) {
+				keywords.push(routes[i].keywords[j])
 			}
-			for (let term of terms) {
-				if (keywords.includes(term)) {
-					const {
-						title,
-						description,
-						url
-					} = results.find( route => route.keywords.includes(term))
-					this.setState({
-						title,
-						description,
-						url
-					})
-					break;
-				}
+		}
+		// if a term is found in the keywords collection
+			// return the keyword's associated route
+		let result
+		const terms = searchTerm.split(' ')
+		for (let term of terms) {
+			if (keywords.includes(term)) {
+				result = routes.find( route => route.keywords.includes(term))
+				break;
+			}
+		}
+		return result;
+	}
+	componentWillMount() {
+		const { searchTerm } = this.props
+		fetchSiteContent('suggestedRoutes').then( results => {
+			const route = this.getRouteBySearchTerm(searchTerm, results)
+			if (!isEmpty(route)) {
+				this.setState({...route})
 			}
 		})
 	}
 	render() {
 		const { title, description, url } = this.state
 		return (
-			<div data-cy="suggested route">
-				<div>{title}</div>
-				<div>{description}</div>
-				<div>{url}</div>
+			<div>
+				{!isEmpty(title) &&
+				<div id="suggested-route" className={styles.container} data-cy="suggested route" tabIndex="0">
+					<div className={styles.columnA}>
+						<div>{title}</div>
+						<div>{description}</div>
+						<div>{url}</div>
+					</div>
+					<div className={styles.columnB}>
+						<Button primary>
+							{title}
+						</Button>
+					</div>
+					<div className={styles.clear} />
+				</div>}
 			</div>
 		)
 	}
