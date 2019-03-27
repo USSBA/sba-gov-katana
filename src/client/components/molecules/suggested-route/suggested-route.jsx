@@ -1,4 +1,4 @@
-import React, { PureComponent, PropTypes } from 'React'
+import React, { PureComponent, PropTypes } from 'react'
 import styles from './suggested-route.scss'
 import { isEmpty } from 'lodash'
 import sinon from 'sinon'
