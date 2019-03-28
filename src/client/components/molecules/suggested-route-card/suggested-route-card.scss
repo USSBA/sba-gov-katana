@@ -1,0 +1,40 @@
+.container {
+	margin-bottom: 30px;
+	background: white;
+	padding: 20px;
+	box-shadow: $box-shadow;
+	&:focus {
+		outline: 2px dotted $sba-gray-light;
+		outline-offset: 3px;
+	}
+}
+
+.columnA {
+	h3 {
+		@include for-small-only {
+			margin-bottom: 20px;
+		}
+		@include for-medium-up {
+			margin-top: 12px;
+		}	
+		&:focus {
+			outline: 2px dotted $sba-gray-light;
+			outline-offset: 3px;
+		}
+	}
+	@include for-medium-up {
+		float: left;
+	}
+}
+
+.columnB {
+	@include for-medium-up {
+		float: right;
+	}
+}
+
+.clear {
+	@include for-medium-up {
+		clear: both;
+	}
+}

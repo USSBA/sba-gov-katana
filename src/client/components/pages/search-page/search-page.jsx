@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { isEmpty } from 'lodash'
 import { Button, Link, SearchIcon, TextInput } from 'atoms'
-import { Paginator, SuggestedRoute } from 'molecules'
+import { Paginator, SuggestedRouteCard } from 'molecules'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 import { logPageEvent } from '../../../services/analytics.js'
 import styles from './search-page.scss'
@@ -184,7 +184,7 @@ class SearchPage extends PureComponent {
         {!isEmpty(searchTerm) && (
           <div className={styles.searchResults}>
             <div>
-              <SuggestedRoute searchTerm={searchTerm} />
+              <SuggestedRouteCard searchTerm={searchTerm} />
             </div>
             <div>
               {searchResults.length > 0 && (

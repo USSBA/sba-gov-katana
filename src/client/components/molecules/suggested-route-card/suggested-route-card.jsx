@@ -1,17 +1,17 @@
 import React, { PureComponent, PropTypes } from 'react'
-import styles from './suggested-route.scss'
+import styles from './suggested-route-card.scss'
 import { isEmpty } from 'lodash'
 import sinon from 'sinon'
 import { Button } from 'atoms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
-class SuggestedRoute extends PureComponent {
+class SuggestedRouteCard extends PureComponent {
 	constructor() {
 		super()
 		this.state = {
-			title: '',
-			description: '',
-			url: ''
+			route: '',
+			cardMessage: '',
+			buttonLabel: ''
 		}
 	}
 	getRouteBySearchTerm(searchTerm, routes) {
@@ -44,19 +44,19 @@ class SuggestedRoute extends PureComponent {
 		})
 	}
 	render() {
-		const { title, description, url } = this.state
+		const { route, cardMessage, buttonLabel } = this.state
 		return (
 			<div>
-				{!isEmpty(title) &&
+				{!isEmpty(route) &&
 				<div id="suggested-route" className={styles.container} data-cy="suggested route" tabIndex="0">
 					<div className={styles.columnA}>
-						<div>{title}</div>
-						<div>{description}</div>
-						<div>{url}</div>
+						<div>
+							<h3 tabIndex="0">{cardMessage}</h3>
+						</div>
 					</div>
 					<div className={styles.columnB}>
-						<Button primary>
-							{title}
+						<Button primary url={route}>
+							{buttonLabel}
 						</Button>
 					</div>
 					<div className={styles.clear} />
@@ -66,11 +66,11 @@ class SuggestedRoute extends PureComponent {
 	}
 }
 
-SuggestedRoute.propTypes = {
+SuggestedRouteCard.propTypes = {
 	searchTerm: PropTypes.string
 }
-SuggestedRoute.defaultProps = {
+SuggestedRouteCard.defaultProps = {
 	searchTerm: ''
 }
 
-export default SuggestedRoute
+export default SuggestedRouteCard
