@@ -1,4 +1,5 @@
 import React from 'react'
+import createFragment from 'react-addons-create-fragment'
 import { kebabCase } from 'lodash'
 
 import { Button, MultiSelect } from 'atoms'
@@ -57,6 +58,10 @@ class OHAWestlawForm extends React.Component {
     const url = `https://govt.westlaw.com/sbaoha/Search/Results?t_Method=${method}_querytext=${finalQuery}`
 
     event.preventDefault()
+    this.changeLocation(url)
+  }
+
+  changeLocation(url) {
     window.location = url
   }
 
@@ -75,17 +80,18 @@ class OHAWestlawForm extends React.Component {
       }
     ]
 
-    return config.map((multiSelectProps, index) => {
+    return config.map((multiselectProps, index) => {
       return (
         <MultiSelect
-          {...multiSelectProps}
-          className={styles.multiSelect}
+          {...multiselectProps}
+          className={styles.multiselect}
           onBlur={() => {
             return null
           }}
           onFocus={() => {
             return null
           }}
+          key={index}
           validationState=""
           errorText=""
           autoFocus={false}
@@ -95,108 +101,125 @@ class OHAWestlawForm extends React.Component {
     })
   }
 
+  renderForms() {
+    const formData = [
+      {
+        jsx: (
+          <div key={1}>
+            <h3>Search by Appeal Number</h3>
+            <label>
+              Enter numeric portion only:
+              <input
+                id="appeal-number-textbox"
+                name="appealNumber"
+                type="number"
+                value={this.state.appealNumber}
+                onChange={e => this.handleChange(e)}
+              />
+              <span className={styles.example}>Example: 5248</span>
+            </label>
+            <Button id="appeal-number-submit" type="submit" primary>
+              Go
+            </Button>
+          </div>
+        ),
+        query: { method: 'tnc&t', query: `CI(${this.state.appealNumber})` }
+      },
+      {
+        jsx: (
+          <div key={2}>
+            <h3>Search by Appellant Name</h3>
+            <label>
+              Enter name:
+              <input
+                id="appellant-name-textbox"
+                name="appellantName"
+                type="text"
+                value={this.state.appellantName}
+                onChange={e => this.handleChange(e)}
+                required
+              />
+              <span className={styles.example}>Examples: ACME "Secure Network Systems"</span>
+            </label>
+            <Button id="appellant-name-submit" type="submit" primary>
+              Go
+            </Button>
+          </div>
+        ),
+        query: { method: 'tnc&t', query: `TI(${this.state.appellantName})` }
+      },
+      {
+        jsx: (
+          <div key={3}>
+            <h3>Plain text search</h3>
+            <label>
+              Enter search terms:
+              <input
+                id="win-textbox"
+                name="winText"
+                type="text"
+                value={this.state.winText}
+                onChange={e => this.handleChange(e)}
+                required
+              />
+              <span className={styles.example}>Example: ostensible subcontractor</span>
+            </label>
+            <Button id="win-text-submit" type="submit" primary>
+              Go
+            </Button>
+          </div>
+        ),
+        query: { method: 'win&t', query: `${this.state.winText}` }
+      },
+      {
+        jsx: (
+          <div key={4}>
+            <h3>Boolean search with field limits</h3>
+            <label>
+              Enter search terms:
+              <input
+                id="tnc-textbox"
+                name="tncText"
+                type="text"
+                value={this.state.tncText}
+                onChange={e => this.handleChange(e)}
+                required
+              />
+              <span className={styles.example}>
+                Example: 134.202(d) &nbsp;&nbsp;&nbsp;&nbsp; non-manufacture &nbsp;&nbsp;&nbsp;&nbsp;
+                "ostensible subcontractor"
+              </span>
+            </label>
+            {this.renderOption('tncDecisionType')}
+            {this.renderOption('tncDate')}
+            <Button id="tnc-text-submit" type="submit" primary>
+              Go
+            </Button>
+          </div>
+        ),
+        query: {
+          method: 'tnc&t',
+          query: `${this.state.tncText}${
+            this.state.tncDecisionType !== '' ? `& pr(${this.state.tncDecisionType})` : ''
+          }${this.state.tncDate !== '' ? `& da(${this.state.tncDate})` : ''}`
+        }
+      }
+    ]
+
+    return formData.map(({ jsx, query }, index) => (
+      <form className={styles.westlawForm} onSubmit={e => this.handleSubmit(e, query)} key={index}>
+        {jsx}
+      </form>
+    ))
+  }
+
   render() {
     const { appealNumber, appellantName, tncDate, tncDecisionType, tncText, winText } = this.state
 
     return (
       <div id="westlaw-form">
         <h2>{this.props.title}</h2>
-        <form
-          className={styles.westlawForm}
-          onSubmit={e => this.handleSubmit(e, { method: 'tnc&t', query: `CI(${appealNumber})` })}
-        >
-          <h3>Search by Appeal Number</h3>
-          <label>
-            Enter numeric portion only:
-            <input
-              className={styles.textbox}
-              name="appealNumber"
-              type="number"
-              value={appealNumber}
-              onChange={e => this.handleChange(e)}
-              required
-            />
-            <span className={styles.example}>Example: 5248</span>
-          </label>
-          <Button id="appeal-number-submit" type="submit" primary>
-            Go
-          </Button>
-        </form>
-        <form
-          className={styles.westlawForm}
-          onSubmit={e => this.handleSubmit(e, { method: 'tnc&t', query: `TI(${appellantName})` })}
-        >
-          <h3>Search by Appellant Name</h3>
-          <label>
-            Enter name:
-            <input
-              className={styles.textbox}
-              name="appellantName"
-              type="text"
-              value={appellantName}
-              onChange={e => this.handleChange(e)}
-              required
-            />
-            <span className={styles.example}>Examples: ACME "Secure Network Systems"</span>
-          </label>
-          <Button id="appellant-name-submit" type="submit" primary>
-            Go
-          </Button>
-        </form>
-        <form
-          className={styles.westlawForm}
-          onSubmit={e => this.handleSubmit(e, { method: 'win&t', query: `${winText}` })}
-        >
-          <h3>Plain text search</h3>
-          <label>
-            Enter search terms:
-            <input
-              className={styles.textbox}
-              name="winText"
-              type="text"
-              value={winText}
-              onChange={e => this.handleChange(e)}
-              required
-            />
-            <span className={styles.example}>Example: ostensible subcontractor</span>
-          </label>
-          <Button id="win-text-submit" type="submit" primary>
-            Go
-          </Button>
-        </form>
-        <form
-          className={styles.westlawForm}
-          onSubmit={e =>
-            this.handleSubmit(e, {
-              method: 'tnc&t',
-              query: `${tncText}${tncDecisionType !== '' ? `& pr(${tncDecisionType})` : ''}${
-                tncDate !== '' ? `& da(${tncDate})` : ''
-              }`
-            })
-          }
-        >
-          <h3>Boolean search with field limits</h3>
-          <label>
-            Enter search terms:
-            <input
-              className={styles.textbox}
-              name="tncText"
-              type="text"
-              value={tncText}
-              onChange={e => this.handleChange(e)}
-              required
-            />
-            <span className={styles.example}>
-              Example: 134.202(d) &nbsp;&nbsp;&nbsp;&nbsp; non-manufacture &nbsp;&nbsp;&nbsp;&nbsp;
-              "ostensible subcontractor"
-            </span>
-          </label>
-          {this.renderOption('tncDecisionType')}
-          {this.renderOption('tncDate')}
-          <Button id="win-text-submit" type="submit" primary>
-            Go
-          </Button>
-        </form>
+        {this.renderForms()}
       </div>
     )
   }
