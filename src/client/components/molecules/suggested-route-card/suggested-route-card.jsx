@@ -1,8 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react'
+import { Button } from 'atoms'
 import styles from './suggested-route-card.scss'
 import { isEmpty } from 'lodash'
-import sinon from 'sinon'
-import { Button } from 'atoms'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 class SuggestedRouteCard extends PureComponent {
@@ -60,11 +59,11 @@ class SuggestedRouteCard extends PureComponent {
 				<div id="suggested-route" className={styles.container} data-cy="suggested route" tabIndex="0">
 					<div className={styles.columnA}>
 						<div>
-							<h3 tabIndex="0">{cardMessage}</h3>
+							<h3 data-cy="card message" tabIndex="0">{cardMessage}</h3>
 						</div>
 					</div>
 					<div className={styles.columnB}>
-						<Button primary url={route}>
+						<Button primary url={route} data-cy="button">
 							{buttonLabel}
 						</Button>
 					</div>

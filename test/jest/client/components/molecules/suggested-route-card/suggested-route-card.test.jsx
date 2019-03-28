@@ -1,7 +1,7 @@
 /* eslint-env jest */
 import React from 'react'
 import { SuggestedRouteCard } from 'molecules'
-import { shallow, mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import * as helper from 'client/fetch-content-helper.js'
 
