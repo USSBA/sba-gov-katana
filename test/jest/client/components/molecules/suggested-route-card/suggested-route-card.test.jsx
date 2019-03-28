@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import React from 'react'
 import { SuggestedRouteCard } from 'molecules'
 import { shallow, mount } from 'enzyme'
