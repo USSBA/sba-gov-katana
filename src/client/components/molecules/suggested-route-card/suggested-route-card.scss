@@ -1,7 +1,7 @@
 .container {
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 	background: white;
-	padding: 20px;
+	padding: 20px 30px;
 	box-shadow: $box-shadow;
 	&:focus {
 		outline: 2px dotted $sba-gray-light;
