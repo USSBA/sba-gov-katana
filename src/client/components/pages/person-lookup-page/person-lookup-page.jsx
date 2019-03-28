@@ -114,7 +114,7 @@ class PersonLookupPage extends Component {
       threshold: 0.1,
       location: 0,
       distance: 100,
-      minMatchCharLength: 1,
+      minMatchCharLength: 3,
       keys: ['name', 'office.name', 'title']
     })
 
