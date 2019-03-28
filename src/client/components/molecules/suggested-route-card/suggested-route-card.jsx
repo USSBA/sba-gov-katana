@@ -37,9 +37,18 @@ class SuggestedRouteCard extends PureComponent {
 	componentWillMount() {
 		const { searchTerm } = this.props
 		fetchSiteContent('suggestedRoutes').then( results => {
-			const route = this.getRouteBySearchTerm(searchTerm, results)
-			if (!isEmpty(route)) {
-				this.setState({...route})
+			const result = this.getRouteBySearchTerm(searchTerm, results)
+			if (!isEmpty(result)) {
+				const {
+					route,
+					cardMessage,
+					buttonLabel
+				} = result
+				this.setState({
+					route,
+					cardMessage,
+					buttonLabel
+				})
 			}
 		})
 	}
