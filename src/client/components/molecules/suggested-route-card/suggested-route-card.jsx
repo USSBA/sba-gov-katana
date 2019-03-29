@@ -53,9 +53,9 @@ class SuggestedRouteCard extends PureComponent {
 	}
 	render() {
 		const { route, cardMessage, buttonLabel } = this.state
-		return (
-			<div>
-				{!isEmpty(route) &&
+		let result = null
+		if (!isEmpty(route)) {
+			result = (
 				<div id="suggested-route" className={styles.container} data-cy="suggested route" tabIndex="0">
 					<div className={styles.columnA}>
 						<div>
@@ -68,9 +68,10 @@ class SuggestedRouteCard extends PureComponent {
 						</Button>
 					</div>
 					<div className={styles.clear} />
-				</div>}
-			</div>
-		)
+				</div>
+			)
+		}
+		return result
 	}
 }
 
