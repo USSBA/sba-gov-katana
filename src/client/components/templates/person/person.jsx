@@ -26,7 +26,16 @@ class Person extends Component {
 
   render() {
     const {
-      personData: { bio, emailAddress: email, fax, name, officeTitle, picture, phone: phoneNumber, title },
+      personData: {
+        bio,
+        emailAddress: email,
+        fax,
+        name,
+        office: { name: officeName },
+        picture,
+        phone: phoneNumber,
+        title
+      },
       pathname
     } = this.props
 
@@ -69,7 +78,7 @@ class Person extends Component {
           <div>
             <h1>{name}</h1>
             {!isEmpty(title) && <h5>{title}</h5>}
-            {!isEmpty(officeTitle) && <p className={styles.officeTitle}>{officeTitle}</p>}
+            {!isEmpty(officeName) && <p className={styles.officeName}>{officeName}</p>}
           </div>
           <div className={styles.contact}>
             <ContactCard {...contact} />

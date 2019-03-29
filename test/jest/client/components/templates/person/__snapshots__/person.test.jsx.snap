@@ -24,7 +24,7 @@ exports[`Person page renders correctly 1`] = `
         District Director
       </h5>
       <p
-        className="officeTitle"
+        className="officeName"
       >
         Alabama District Office
       </p>
