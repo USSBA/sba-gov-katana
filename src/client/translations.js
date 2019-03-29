@@ -121,7 +121,7 @@ const TRANSLATIONS = {
     },
     es: {
       text: 'Contáctenos',
-      url: '/about-sba/what-we-do/contact-sba'
+      url: '/acerca-de-la-sba/organizacion/comuniquese-la-sba'
     }
   },
   content: {
@@ -203,11 +203,11 @@ const TRANSLATIONS = {
   findEvents: {
     en: {
       text: 'Find Events',
-      url: '/tools/events'
+      url: '/events/find/'
     },
     es: {
       text: 'Encuentre eventos',
-      url: '/tools/events'
+      url: '/events/find/'
     }
   },
   foia: {

@@ -59,6 +59,11 @@
 
   @include grid-media($sba-grid-large) {
     width: 170px;
+
+    // Balances bottom margin when zip code error is active
+    p {
+      margin-bottom: -20px;
+    }
   }
 
   input {
@@ -102,9 +107,9 @@
     padding: 40px 20px 40px 20px;
   }
   @include grid-media($sba-grid-medium) {
-    padding: 45px 30px 45px 30px;
+    padding: 45px 0px 45px 0px;
   }
   @include grid-media($sba-grid-large) {
-    padding: 40px 80px 40px 80px;
+    padding: 40px 0px 40px 0px;
   }
 }
