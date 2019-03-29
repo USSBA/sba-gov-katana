@@ -31,7 +31,8 @@ describe.only('OHA Westlaw Form', () => {
     const button = component.find('#appeal-number-submit')
     button.simulate('submit')
 
-    expect(spyChangeLocation.args[0][0]).toEqual(expectedValue)
+    const changeLocationArg = spyChangeLocation.args[0][0]
+    expect(changeLocationArg).toEqual(expectedValue)
   })
 
   test('should generate correct URL for Appellant Name Form', () => {
@@ -44,7 +45,8 @@ describe.only('OHA Westlaw Form', () => {
     const button = component.find('#appellant-name-submit')
     button.simulate('submit')
 
-    expect(spyChangeLocation.args[0][0]).toEqual(expectedValue)
+    const changeLocationArg = spyChangeLocation.args[0][0]
+    expect(changeLocationArg).toEqual(expectedValue)
   })
 
   test('should generate correct URL for Plain Text Search Form', () => {
@@ -58,7 +60,8 @@ describe.only('OHA Westlaw Form', () => {
     const button = component.find('#win-text-submit')
     button.simulate('submit')
 
-    expect(spyChangeLocation.args[0][0]).toEqual(expectedValue)
+    const changeLocationArg = spyChangeLocation.args[0][0]
+    expect(changeLocationArg).toEqual(expectedValue)
   })
 
   test('should generate correct URL for Boolean Search with Field Limits Form', () => {
@@ -74,6 +77,7 @@ describe.only('OHA Westlaw Form', () => {
     const button = component.find('#tnc-text-submit')
     button.simulate('submit')
 
-    expect(spyChangeLocation.args[0][0]).toEqual(expectedValue)
+    const changeLocationArg = spyChangeLocation.args[0][0]
+    expect(changeLocationArg).toEqual(expectedValue)
   })
 })
