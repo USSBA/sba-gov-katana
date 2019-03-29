@@ -151,8 +151,8 @@ function makeParagraphs(
             <MenuTileCollection data={sectionData.children} pathname="/" splitTitle />
           </div>
         )
-      } else if (item.type === 'oha') {
-        paragraph = <OHAWestlawForm title={item.title} />
+      } else if (item.type === 'ohaWestlawForm') {
+        paragraph = <OHAWestlawForm title={item.formsTitle} />
       }
     }
     return {
