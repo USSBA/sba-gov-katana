@@ -406,7 +406,6 @@ describe('PersonLookupPage', () => {
   beforeEach(() => {
     stub = sinon.stub(helper, 'fetchSiteContent')
     stub.withArgs('persons').resolves(persons)
-    stub.withArgs('officesRaw').resolves(offices)
   })
 
   afterEach(() => stub.restore())
@@ -429,7 +428,7 @@ describe('PersonLookupPage', () => {
     history.pushState = jest.fn()
 
     const component = shallow(<PersonLookupPage location={location} />)
-    component.setState({ offices })
+    component.setState({ persons })
     component.find('form').simulate('submit', { preventDefault: () => ({}) })
 
     const expectedPathname = '/person?pageNumber=1&pageSize=12&office=all&order=ascending'

@@ -93,7 +93,6 @@ class PersonLookupPage extends Component {
     const {
       location: { query }
     } = this.props
-    const offices = await fetchSiteContent('officesRaw')
     const persons = await fetchSiteContent('persons')
 
     // Build a set of office names from those in the persons list
@@ -120,7 +119,6 @@ class PersonLookupPage extends Component {
 
     this.setState({
       isLoading: false,
-      offices,
 
       // Store both the initial and transformed lists of persons
       initialPersons: persons,
@@ -171,7 +169,7 @@ class PersonLookupPage extends Component {
     const {
       location: { pathname, query }
     } = this.props
-    const { isLoading, offices, persons } = this.state
+    const { isLoading, persons } = this.state
 
     // Determine the pagination/filter values from the query parameters/state
     // or (if they don't exist) the default props
@@ -217,7 +215,7 @@ class PersonLookupPage extends Component {
       <div>
         <div className={styles.banner}>
           <h2>People Lookup</h2>
-          {offices?.length && (
+          {persons?.length && (
             <form
               onSubmit={event => {
                 event.preventDefault()
