@@ -143,38 +143,6 @@ describe('SuggestedRouteCard', () => {
 			        }
 				})
 			})
-			describe.skip('a', () => {
-				it('should exist', done => {
-					const searchTerm = 'event'
-					const expected = 1
-					const component = shallow(<SuggestedRouteCard searchTerm={searchTerm} />)
-					setImmediate(() => {
-				        try {
-							const result = component.find('h3 a').length
-							expect(result).toBe(expected)
-				        	done()
-				        } catch (e) {
-							done()
-							return fail(e)
-				        }
-					})
-				})
-				it('should have text that matches route "cardMessage"', done => {
-					const searchTerm = 'event'
-					const expected = mockRoutesData[0].cardMessage
-					const component = shallow(<SuggestedRouteCard searchTerm={searchTerm} />)
-					setImmediate(() => {
-				        try {
-							const result = component.find('h3 a').text()
-							expect(result).toBe(expected)
-				        	done()
-				        } catch (e) {
-							done()
-							return fail(e)
-				        }
-					})
-				})
-			})
 		})
 		describe('Button', () => {
 			it('should exist with proper search term', done => {
