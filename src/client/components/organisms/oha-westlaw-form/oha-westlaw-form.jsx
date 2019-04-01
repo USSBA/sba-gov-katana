@@ -119,7 +119,7 @@ class OHAWestlawForm extends React.Component {
               <span className={styles.example}>Example: 5248</span>
             </label>
             <Button id="appeal-number-submit" type="submit" primary>
-              Go
+              Search
             </Button>
           </div>
         ),
@@ -142,7 +142,7 @@ class OHAWestlawForm extends React.Component {
               <span className={styles.example}>Examples: ACME "Secure Network Systems"</span>
             </label>
             <Button id="appellant-name-submit" type="submit" primary>
-              Go
+              Search
             </Button>
           </div>
         ),
@@ -165,7 +165,7 @@ class OHAWestlawForm extends React.Component {
               <span className={styles.example}>Example: ostensible subcontractor</span>
             </label>
             <Button id="win-text-submit" type="submit" primary>
-              Go
+              Search
             </Button>
           </div>
         ),
@@ -193,7 +193,7 @@ class OHAWestlawForm extends React.Component {
             {this.renderOption('tncDecisionType')}
             {this.renderOption('tncDate')}
             <Button id="tnc-text-submit" type="submit" primary>
-              Go
+              Search
             </Button>
           </div>
         ),
