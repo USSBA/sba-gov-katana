@@ -1,5 +1,4 @@
 import React from 'react'
-import createFragment from 'react-addons-create-fragment'
 import { kebabCase } from 'lodash'
 
 import { Button, MultiSelect } from 'atoms'
