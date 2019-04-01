@@ -203,11 +203,11 @@ const TRANSLATIONS = {
   findEvents: {
     en: {
       text: 'Find Events',
-      url: '/tools/events'
+      url: '/events/find/'
     },
     es: {
       text: 'Encuentre eventos',
-      url: '/tools/events'
+      url: '/events/find/'
     }
   },
   foia: {

@@ -69,7 +69,7 @@ class Event extends Component {
     ) {
       startTime = startTime + startingTimeSuffix
     }
-    const eventTime = `${startTime}-${endTime} ${timezone}`
+    const eventTime = `${startTime}–${endTime} ${timezone}`
 
     let recurringDetail
     if (recurring === 'Yes') {
@@ -198,7 +198,7 @@ class Event extends Component {
                     {location.city}, {location.state} {location.zipcode}
                     <br />
                     <a id="event-details-location-link" href={link}>
-                      View on Map
+                      View on map
                     </a>
                   </p>
                 ) : (

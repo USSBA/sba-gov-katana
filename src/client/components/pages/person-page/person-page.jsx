@@ -18,17 +18,12 @@ class PersonPage extends Component {
 
   async componentDidMount() {
     const pathname = this.props.location.pathname
-    const offices = await fetchSiteContent('officesRaw')
     const persons = await fetchSiteContent('persons')
     const person = persons.find(({ url }) => url === pathname.slice(0, -1))
 
-    let officeWithPersonMatch
-    if (!isEmpty(person) && !isEmpty(offices)) {
-      officeWithPersonMatch = offices.find(({ id }) => id === person.office)
+    if (!isEmpty(person)) {
+      this.setState({ person })
     }
-
-    const result = officeWithPersonMatch ? { ...person, officeTitle: officeWithPersonMatch.title } : person
-    this.setState({ person: result })
   }
 
   render() {

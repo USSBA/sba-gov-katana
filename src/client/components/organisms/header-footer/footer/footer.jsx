@@ -2,7 +2,6 @@ import React from 'react'
 import { kebabCase, startCase } from 'lodash'
 
 import facebookThumbnail from 'assets/images/footer/facebook.png'
-import googlePlusThumbnail from 'assets/images/footer/googleplus.png'
 import instagramThumbnail from 'assets/images/footer/instagram.png'
 import linkedInThumbnail from 'assets/images/footer/linkedin.png'
 import twitterThumbnail from 'assets/images/footer/twitter.png'
@@ -27,11 +26,6 @@ const SocialMediaLinkSet = () => {
       name: 'twitter',
       image: twitterThumbnail,
       url: 'https://twitter.com/sbagov'
-    },
-    {
-      name: 'google plus',
-      image: googlePlusThumbnail,
-      url: 'https://plus.google.com/+sbagov'
     },
     {
       name: 'youtube',

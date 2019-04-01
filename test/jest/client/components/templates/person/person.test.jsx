@@ -11,8 +11,11 @@ const personPropsWithPhoto = {
   fax: '202-292-3808',
   firstName: {},
   lastName: {},
-  office: 6386,
-  officeTitle: 'Alabama District Office',
+  office: {
+    id: 6386,
+    name: 'Alabama District Office',
+    type: 'SBA District Office'
+  },
   phone: '205-290-7009',
   picture: {
     alt: 'image of Thomas Todt',
@@ -31,8 +34,11 @@ const personPropsWithPhoto = {
 const personPropsWithWithoutPhoto = {
   bio: 'Bio of Thomas Todt',
   emailAddress: 'thomas.todt@sba.gov',
-  office: 6386,
-  officeTitle: 'Alabama District Office',
+  office: {
+    id: 6386,
+    name: 'Alabama District Office',
+    type: 'SBA District Office'
+  },
   picture: {},
   phone: '205-290-7009',
   title: 'District Director',
