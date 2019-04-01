@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { isEmpty } from 'lodash'
+import { isNil, isEmpty, omitBy } from 'lodash'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './person.scss'
@@ -33,11 +33,7 @@ class Person extends Component {
       [styles.hasPicture]: !isEmpty(picture)
     })
 
-    const contact = {
-      ...(!isEmpty(email) && { email }),
-      ...(!isEmpty(fax) && { fax }),
-      ...(!isEmpty(phoneNumber) && { phoneNumber })
-    }
+    const contact = omitBy({ email, fax, phoneNumber }, isEmpty)
 
     return (
       <div className={className}>
