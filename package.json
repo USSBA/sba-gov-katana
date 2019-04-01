@@ -128,7 +128,6 @@
     "rc-checkbox": "2.0.1",
     "rc-collapse": "1.6.12",
     "react": "15.4.1",
-    "react-addons-create-fragment": "^15.6.2",
     "react-addons-test-utils": "15.4.1",
     "react-autosuggest": "^9.3.2",
     "react-code-splitting": "^1.2.0",
