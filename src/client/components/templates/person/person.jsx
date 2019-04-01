@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { isEmpty } from 'lodash'
+import { isEmpty, omitBy } from 'lodash'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './person.scss'
@@ -8,22 +8,6 @@ import { DecorativeDash, Label, Link } from 'atoms'
 import { Breadcrumb, ContactCard } from 'molecules'
 
 class Person extends Component {
-  createContact(email, fax, phoneNumber) {
-    const contact = {}
-
-    if (!isEmpty(email)) {
-      contact.email = email
-    }
-    if (!isEmpty(fax)) {
-      contact.fax = fax
-    }
-    if (!isEmpty(phoneNumber)) {
-      contact.phoneNumber = phoneNumber
-    }
-
-    return contact
-  }
-
   render() {
     const {
       personData: {
@@ -49,7 +33,7 @@ class Person extends Component {
       [styles.hasPicture]: !isEmpty(picture)
     })
 
-    const contact = this.createContact(email, fax, phoneNumber)
+    const contact = omitBy({ email, fax, phoneNumber }, isEmpty)
 
     return (
       <div className={className}>
@@ -80,9 +64,11 @@ class Person extends Component {
             {!isEmpty(title) && <h5>{title}</h5>}
             {!isEmpty(officeName) && <p className={styles.officeName}>{officeName}</p>}
           </div>
-          <div className={styles.contact}>
-            <ContactCard {...contact} />
-          </div>
+          {!isEmpty(contact) && (
+            <div className={styles.contact}>
+              <ContactCard {...contact} />
+            </div>
+          )}
         </div>
         <div className={contentClassName}>
           {!isEmpty(picture) && <img alt={picture.alt} className={styles.avatar} src={picture.src} />}
