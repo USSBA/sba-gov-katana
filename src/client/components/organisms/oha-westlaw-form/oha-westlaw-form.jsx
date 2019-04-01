@@ -105,7 +105,7 @@ class OHAWestlawForm extends React.Component {
     const formData = [
       {
         jsx: (
-          <div id="appealNumber" key={1}>
+          <div key="appealNumber">
             <h3>Search by Appeal Number</h3>
             <label>
               Enter numeric portion only:
@@ -127,7 +127,7 @@ class OHAWestlawForm extends React.Component {
       },
       {
         jsx: (
-          <div id="appellantName" key={2}>
+          <div key="appellantName">
             <h3>Search by Appellant Name</h3>
             <label>
               Enter name:
@@ -150,7 +150,7 @@ class OHAWestlawForm extends React.Component {
       },
       {
         jsx: (
-          <div id="winText" key={3}>
+          <div key="winText">
             <h3>Plain text search</h3>
             <label>
               Enter search terms:
@@ -173,7 +173,7 @@ class OHAWestlawForm extends React.Component {
       },
       {
         jsx: (
-          <div id="tncText" key={4}>
+          <div key="tncText">
             <h3>Boolean search with field limits</h3>
             <label>
               Enter search terms:

@@ -16,9 +16,7 @@ ShallowWrapper {
       className="westlawForm"
       onSubmit={[Function]}
     >
-      <div
-        id="appealNumber"
-      >
+      <div>
         <h3>
           Search by Appeal Number
         </h3>
@@ -52,9 +50,7 @@ ShallowWrapper {
       className="westlawForm"
       onSubmit={[Function]}
     >
-      <div
-        id="appellantName"
-      >
+      <div>
         <h3>
           Search by Appellant Name
         </h3>
@@ -89,9 +85,7 @@ ShallowWrapper {
       className="westlawForm"
       onSubmit={[Function]}
     >
-      <div
-        id="winText"
-      >
+      <div>
         <h3>
           Plain text search
         </h3>
@@ -126,9 +120,7 @@ ShallowWrapper {
       className="westlawForm"
       onSubmit={[Function]}
     >
-      <div
-        id="tncText"
-      >
+      <div>
         <h3>
           Boolean search with field limits
         </h3>
@@ -275,9 +267,7 @@ ShallowWrapper {
         className="westlawForm"
         onSubmit={[Function]}
       >
-        <div
-          id="appealNumber"
-        >
+        <div>
           <h3>
             Search by Appeal Number
           </h3>
@@ -311,9 +301,7 @@ ShallowWrapper {
         className="westlawForm"
         onSubmit={[Function]}
       >
-        <div
-          id="appellantName"
-        >
+        <div>
           <h3>
             Search by Appellant Name
           </h3>
@@ -348,9 +336,7 @@ ShallowWrapper {
         className="westlawForm"
         onSubmit={[Function]}
       >
-        <div
-          id="winText"
-        >
+        <div>
           <h3>
             Plain text search
           </h3>
@@ -385,9 +371,7 @@ ShallowWrapper {
         className="westlawForm"
         onSubmit={[Function]}
       >
-        <div
-          id="tncText"
-        >
+        <div>
           <h3>
             Boolean search with field limits
           </h3>
@@ -575,9 +559,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="appealNumber"
-            >
+            <div>
               <h3>
                 Search by Appeal Number
               </h3>
@@ -611,9 +593,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="appellantName"
-            >
+            <div>
               <h3>
                 Search by Appellant Name
               </h3>
@@ -648,9 +628,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="winText"
-            >
+            <div>
               <h3>
                 Plain text search
               </h3>
@@ -685,9 +663,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="tncText"
-            >
+            <div>
               <h3>
                 Boolean search with field limits
               </h3>
@@ -834,9 +810,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="appealNumber"
-            >
+            <div>
               <h3>
                 Search by Appeal Number
               </h3>
@@ -870,9 +844,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="appellantName"
-            >
+            <div>
               <h3>
                 Search by Appellant Name
               </h3>
@@ -907,9 +879,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="winText"
-            >
+            <div>
               <h3>
                 Plain text search
               </h3>
@@ -944,9 +914,7 @@ ShallowWrapper {
             className="westlawForm"
             onSubmit={[Function]}
           >
-            <div
-              id="tncText"
-            >
+            <div>
               <h3>
                 Boolean search with field limits
               </h3>
