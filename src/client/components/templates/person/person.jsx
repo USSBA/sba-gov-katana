@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
-import { isNil, isEmpty, omitBy } from 'lodash'
+import { isEmpty, omitBy } from 'lodash'
 import { fetchSiteContent } from '../../../fetch-content-helper'
 
 import styles from './person.scss'
