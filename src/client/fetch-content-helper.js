@@ -18,7 +18,7 @@ async function fetchRestContent(type, id, langOverride) {
 }
 
 async function fetchSiteContent(type, query) {
-  const url = '/api/content/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
+  const url = '/api/content/search/' + type + '.json' + (query ? '?' + queryString.stringify(query) : '')
   let data = null
   try {
     const response = await axios.get(url)
