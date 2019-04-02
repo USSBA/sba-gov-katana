@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import Event from 'templates/event/event.jsx'
 
 const title = 'This is a title'
@@ -36,7 +36,6 @@ describe('Event Template', () => {
     expect(result).toHaveLength(expected)
     expect(result.text()).toBe(title)
   })
-
   test('should render an event description', () => {
     const description = 'This is a description'
     const props = {
@@ -150,5 +149,45 @@ describe('Event Template', () => {
     const result = component.find('#event-details-organizer')
     expect(result).toHaveLength(1)
     expect(result.text()).toBe(expected)
+  })
+  test('should render a breadcrumb', () => {
+    const props = {
+      eventData: {
+        title: title,
+        location: location,
+        contact: contact
+      }
+    }
+    const component = shallow(<Event {...props} />)
+    const breadcrumb = component.find('.breadcrumb')
+    const expected = 1
+    expect(breadcrumb).toHaveLength(expected)
+  })
+  test('should render Find Events in the breadcrumb', () => {
+    const eventTitle = 'example title'
+    const findEventsBreadcrumb = 'Find Events'
+    const props = {
+      eventData: {
+        title: eventTitle,
+        location: location,
+        contact: contact
+      }
+    }
+    const component = mount(<Event {...props} />)
+    const breadcrumb = component.find('#breadcrumb-level0')
+    expect(breadcrumb.text()).toBe(findEventsBreadcrumb)
+  })
+  test('should render the event title in the breadcrumb', () => {
+    const eventTitle = 'example title'
+    const props = {
+      eventData: {
+        title: eventTitle,
+        location: location,
+        contact: contact
+      }
+    }
+    const component = mount(<Event {...props} />)
+    const breadcrumbTitle = component.find('#breadcrumb-current')
+    expect(breadcrumbTitle.text()).toBe(eventTitle)
   })
 })

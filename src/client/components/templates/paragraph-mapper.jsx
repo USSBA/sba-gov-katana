@@ -5,6 +5,7 @@ import { ImageSection, TextSection } from 'atoms'
 import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
+  OHAWestlawForm,
   Lookup,
   MenuTileCollection,
   ProgramDetailsCardCollection,
@@ -150,6 +151,8 @@ function makeParagraphs(
             <MenuTileCollection data={sectionData.children} pathname="/" splitTitle />
           </div>
         )
+      } else if (item.type === 'ohaWestlawForm') {
+        paragraph = <OHAWestlawForm title={item.formsTitle} />
       }
     }
     return {

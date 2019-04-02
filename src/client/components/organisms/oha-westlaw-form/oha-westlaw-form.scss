@@ -1,0 +1,21 @@
+.example {
+  font-weight: normal;
+}
+
+.multiselect {
+  &:first-of-type {
+    margin-top: 20px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+}
+
+.westlawForm {
+  @include call-to-action;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}

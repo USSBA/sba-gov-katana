@@ -5,6 +5,7 @@ import moment from 'moment'
 import { isEmpty } from 'lodash'
 import styles from './event.scss'
 import { LeaveSbaModal } from 'organisms'
+import { Breadcrumb } from 'molecules'
 import he from 'he'
 
 class Event extends Component {
@@ -26,6 +27,13 @@ class Event extends Component {
 
   handleClose() {
     this.setModalState(false)
+  }
+
+  makeEventBreadcrumb(eventTitle) {
+    const breadcrumbs = []
+    breadcrumbs.push({ title: 'Find Events', url: '/events/find' })
+    breadcrumbs.push({ title: eventTitle })
+    return breadcrumbs
   }
 
   render() {
@@ -61,7 +69,7 @@ class Event extends Component {
     ) {
       startTime = startTime + startingTimeSuffix
     }
-    const eventTime = `${startTime}-${endTime} ${timezone}`
+    const eventTime = `${startTime}–${endTime} ${timezone}`
 
     let recurringDetail
     if (recurring === 'Yes') {
@@ -100,11 +108,6 @@ class Event extends Component {
       [styles.container]: true
     })
 
-    // const titleClassName = classNames({
-    //   'event-title': true,
-    //   [styles.title]: true
-    // })
-
     const iconClassName = classNames({
       'fa fa-external-link': true,
       [styles.registerButtonIcon]: true
@@ -112,8 +115,13 @@ class Event extends Component {
 
     const eventTitle = he.decode(title)
 
+    const breadcrumbItems = this.makeEventBreadcrumb(eventTitle)
+
     return (
       <div className={containerClassNames}>
+        <div key={1} className={`basicpage-breadcrumb ${styles.breadcrumb}`}>
+          <Breadcrumb items={breadcrumbItems} />
+        </div>
         <div className={styles.header}>
           <h3 id="event-header-date" tabIndex="0" data-cy="event-header-date">
             {startDate}
@@ -190,7 +198,7 @@ class Event extends Component {
                     {location.city}, {location.state} {location.zipcode}
                     <br />
                     <a id="event-details-location-link" href={link}>
-                      View on Map
+                      View on map
                     </a>
                   </p>
                 ) : (
