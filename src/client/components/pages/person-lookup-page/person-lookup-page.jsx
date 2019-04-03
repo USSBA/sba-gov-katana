@@ -232,13 +232,15 @@ class PersonLookupPage extends Component {
             >
               <TextInput
                 className={styles.search}
-                onChange={({ target: { value } }) => this.setState({ search: value })}
+                id="search"
                 label="Search"
+                onChange={({ target: { value } }) => this.setState({ search: value })}
                 placeholder="Search by name, title, or office"
                 showSearchIcon={true}
               />
               <MultiSelect
                 className={styles.select}
+                id="office"
                 label="Office"
                 onChange={({ value }) => this.setState({ office: value })}
                 options={this.officeOptions}
@@ -246,6 +248,7 @@ class PersonLookupPage extends Component {
               />
               <MultiSelect
                 className={styles.select}
+                id="sort-by"
                 label="Sort by"
                 onChange={({ value }) => this.setState({ order: value })}
                 options={[

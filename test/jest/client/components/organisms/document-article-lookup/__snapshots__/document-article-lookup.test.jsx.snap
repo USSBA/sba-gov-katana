@@ -50,6 +50,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       >
         <div
           className="select"
+          data-cy="title-select"
         >
           <label
             htmlFor="title-select"
@@ -137,6 +138,7 @@ exports[`DocumentArticleLookup should render with all the information 1`] = `
       >
         <div
           className="select"
+          data-cy="lightsabercolor-select"
         >
           <label
             htmlFor="lightsabercolor-select"

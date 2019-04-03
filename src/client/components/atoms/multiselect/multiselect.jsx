@@ -19,7 +19,6 @@ class MultiSelect extends React.Component {
     if (this.select) {
       // TODO: This works but breaks tests due to react-dom and requires going
       // down a rabbit hole to fix them.
-
       // const combobox = ReactDOM.findDOMNode(this.select).querySelector('.Select-input')
       //
       // if (this.props.disabled) {
@@ -39,19 +38,10 @@ class MultiSelect extends React.Component {
   }
 
   render() {
-    const {
-      className,
-      dataCy,
-      errorText,
-      id,
-      label,
-      placeholder,
-      validationState,
-      ...rest
-    } = this.props
+    const { className, dataCy, errorText, id, label, placeholder, validationState, ...rest } = this.props
 
     const selectClassName = classNames({
-      'select': true,
+      select: true,
       [styles.select]: true,
       [styles.error]: validationState === 'error',
       [className]: this.props?.className
@@ -60,7 +50,7 @@ class MultiSelect extends React.Component {
     const langCode = getLanguageOverride()
 
     return (
-      <div className={selectClassName} data-cy={dataCy}>
+      <div className={selectClassName} data-cy={dataCy ? dataCy : id}>
         <label htmlFor={id}>{label}</label>
         <ReactSelect
           ref={input => (this.select = input)}
@@ -68,9 +58,7 @@ class MultiSelect extends React.Component {
           tabSelectsValue={false}
           autoBlur={true}
           value={this.state.value}
-          arrowRenderer={() => (
-            <i className="fa fa-chevron-down" alt="drop-down arrow" />
-          )}
+          arrowRenderer={() => <i className="fa fa-chevron-down" alt="drop-down arrow" />}
           clearRenderer={() => <span />}
           searchable={true}
           placeholder={!placeholder && langCode ? TRANSLATIONS.select[langCode].text : placeholder}
