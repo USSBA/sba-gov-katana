@@ -65,10 +65,6 @@ const EventLookupPage = props => (
   <Async componentProps={props} load={import('./pages/event-lookup-page/event-lookup-page.jsx')} />
 )
 
-const BlogLookupPage = props => (
-  <Async componentProps={props} load={import('./pages/blog-lookup-page/blog-lookup-page.jsx')} />
-)
-
 import { Route, IndexRoute, IndexRedirect, Redirect } from 'react-router'
 import constants from '../services/constants.js'
 import clientConfig from '../services/client-config.js'

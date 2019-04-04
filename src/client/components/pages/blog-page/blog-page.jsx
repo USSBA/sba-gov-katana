@@ -13,42 +13,35 @@ class BlogPage extends Component {
   }
 
   async componentDidMount() {
-    const {
-      location: { pathname }
-    } = this.props
-    await this.fetchBlog(pathname)
-  }
-
-  async componentWillReceiveProps(nextProps) {
-    const {
-      location: { pathname }
-    } = this.props
-    const {
-      location: { pathname: nextPathname }
-    } = nextProps
-
-    // Re-render the page with new blog data when we remain on `/blog`
-    // and the BlogPage but the location has changed.
-    if (pathname !== nextPathname) {
-      await this.fetchBlog(nextPathname)
+    if (this.props.id) {
+      return this.fetchBlog(this.props.id)
     }
   }
 
-  fetchBlog(pathname) {
-    if (pathname) {
-      fetchSiteContent('blog', { url: pathname })
+  async componentWillReceiveProps(nextProps) {
+    const { id } = this.props
+    const { id: nextId } = nextProps
+
+    // Re-render the page with new blog data when we remain on `/blog`
+    // and the BlogPage but the location has changed.
+    if (id !== nextId) {
+      return this.fetchBlog(nextId)
+    }
+  }
+
+  fetchBlog(id) {
+    if (id) {
+      fetchSiteContent('blog', id)
         .then(data => this.setState({ data }))
         .catch(_ => this.setState({ data: null }))
     }
   }
 
   render() {
-    const {
-      location: { pathname }
-    } = this.props
+    const { id } = this.props
     const { data } = this.state
 
-    if (pathname && data !== null) {
+    if (id && data) {
       if (!isEmpty(data)) {
         return <Blog blogData={data} />
       } else {

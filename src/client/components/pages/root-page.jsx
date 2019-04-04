@@ -33,10 +33,10 @@ export class RootPage extends React.Component {
       return <DocumentPage location={this.props.location} />
     } else if (first === 'article') {
       return <ArticlePage location={this.props.location} />
-    } else if (first === 'blog') {
-      return <BlogPage location={this.props.location} />
     } else if (first === 'event') {
       return <EventPage id={window.nodeId} />
+    } else if (first === 'blog') {
+      return <BlogPage id={window.nodeId} />
     } else if (window && window.nodeId && this.state.siteMap.length && Number(window.nodeId) > 0) {
       const pageLineage = findPageLineageByNodeId(this.state.siteMap, window.nodeId)
       if (pageLineage) {
