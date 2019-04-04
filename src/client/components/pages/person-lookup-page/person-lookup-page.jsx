@@ -257,7 +257,7 @@ class PersonLookupPage extends Component {
                 ]}
                 value={order}
               />
-              <Button primary alternate children="apply" />
+              <Button primary alternate children="apply" data-cy="search button" />
             </form>
           )}
         </div>
