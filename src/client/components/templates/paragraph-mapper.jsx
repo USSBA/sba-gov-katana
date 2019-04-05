@@ -2,12 +2,12 @@ import React from 'react'
 import { compact } from 'lodash'
 
 import { ImageSection, TextSection } from 'atoms'
-import { ButtonCta, CallToAction, QuickLinks, ReadMoreSection } from 'molecules'
+import { ButtonCta, CallToAction, NewsletterForm, QuickLinks, ReadMoreSection } from 'molecules'
 import {
   CardCollection,
-  OHAWestlawForm,
   Lookup,
   MenuTileCollection,
+  OHAWestlawForm,
   ProgramDetailsCardCollection,
   SearchBox,
   StyleGrayBackground,
@@ -26,6 +26,7 @@ function makeParagraphs(
 ) {
   let paragraphs = []
   let skipNextReadmore = false
+
   paragraphs = paragraphData.map(function(item, index, paragraphArray) {
     const currentLanguage = getLanguageOverride()
 
@@ -153,6 +154,8 @@ function makeParagraphs(
         )
       } else if (item.type === 'ohaWestlawForm') {
         paragraph = <OHAWestlawForm title={item.formsTitle} />
+      } else if (item.type === 'newsletterForm') {
+        paragraph = <NewsletterForm title={item.title} />
       }
     }
     return {
